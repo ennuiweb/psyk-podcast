@@ -73,6 +73,7 @@ def test_build_lecture_bundles_enriches_sources_and_indexes_outputs(tmp_path):
                             "has_prompt_analysis_sidecar": True,
                             "lecture_has_week_analysis_sidecar": True,
                         },
+                        "evidence_origin": "textbook_framing",
                         "file": {
                             "page_count": 10,
                             "estimated_token_count": 7200,
@@ -104,6 +105,7 @@ def test_build_lecture_bundles_enriches_sources_and_indexes_outputs(tmp_path):
                             "has_prompt_analysis_sidecar": False,
                             "lecture_has_week_analysis_sidecar": True,
                         },
+                        "evidence_origin": "reading_grounded",
                         "file": {
                             "page_count": 0,
                             "estimated_token_count": 0,
@@ -136,6 +138,7 @@ def test_build_lecture_bundles_enriches_sources_and_indexes_outputs(tmp_path):
                             "has_prompt_analysis_sidecar": False,
                             "lecture_has_week_analysis_sidecar": False,
                         },
+                        "evidence_origin": "lecture_framed",
                         "file": {
                             "page_count": 4,
                             "estimated_token_count": 1200,
@@ -246,6 +249,7 @@ def test_build_lecture_bundles_enriches_sources_and_indexes_outputs(tmp_path):
     assert reading["source_id"] == "reading-alpha"
     assert reading["priority_band"] == "core"
     assert "grundbog" in reading["priority_reasons"]
+    assert reading["evidence_origin"] == "textbook_framing"
     assert reading["summary"]["summary_lines"] == ["alpha summary"]
     assert reading["analysis"]["present"] is True
     assert reading["analysis"]["sidecars"][0]["content"] == "alpha analysis"

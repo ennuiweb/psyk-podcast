@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W06L1",
   "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
   "sequence_index": 11,
@@ -55,6 +55,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -74,7 +75,7 @@
       "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
       "source_family": "reading",
-      "priority_score": 134,
+      "priority_score": 136,
       "priority_band": "core"
     },
     {
@@ -114,7 +115,8 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": null,
-        "priority_score": 134,
+        "evidence_origin": "textbook_framing",
+        "priority_score": 136,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -169,6 +171,7 @@
         "language_guess": "en",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
@@ -224,6 +227,7 @@
         "language_guess": "en",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
@@ -281,6 +285,7 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 84,
         "priority_band": "supporting",
         "priority_reasons": [

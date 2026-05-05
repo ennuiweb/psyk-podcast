@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W09L1",
   "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
   "sequence_index": 17,
@@ -55,6 +55,7 @@
   },
   "source_intelligence": {
     "dominant_language": "da",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -73,7 +74,7 @@
       "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
       "title": "Grundbog kapitel 10 - Kritisk psykologi",
       "source_family": "reading",
-      "priority_score": 134,
+      "priority_score": 136,
       "priority_band": "core"
     },
     {
@@ -120,7 +121,8 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": null,
-        "priority_score": 134,
+        "evidence_origin": "textbook_framing",
+        "priority_score": 136,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -175,6 +177,7 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
@@ -230,6 +233,7 @@
         "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 116,
         "priority_band": "primary",
         "priority_reasons": [
@@ -284,6 +288,7 @@
         "language_guess": "unknown",
         "length_band": "short",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 110,
         "priority_band": "primary",
         "priority_reasons": [
@@ -339,6 +344,7 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 96,
         "priority_band": "primary",
         "priority_reasons": [

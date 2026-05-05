@@ -223,6 +223,13 @@ def build_concept_graph(
             if source_id in source_weight_by_id
         ]
         weighted_sources.sort(key=lambda item: -int(item.get("weight_score") or 0))
+        supporting_evidence_origins = _unique(
+            [
+                str(item.get("evidence_origin") or "").strip()
+                for item in weighted_sources
+                if str(item.get("evidence_origin") or "").strip()
+            ]
+        )
         distinctions.append(
             {
                 "distinction_id": distinction_id,
@@ -233,6 +240,7 @@ def build_concept_graph(
                 "term_ids": term_ids,
                 "term_labels": [str(term_by_id[term_id].get("label") or "").strip() for term_id in term_ids],
                 "supporting_source_ids": [str(item.get("source_id") or "").strip() for item in weighted_sources[:6]],
+                "supporting_evidence_origins": supporting_evidence_origins,
             }
         )
 

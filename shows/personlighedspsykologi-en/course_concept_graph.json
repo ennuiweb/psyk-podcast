@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T20:59:10Z",
+  "generated_at": "2026-05-05T07:59:06Z",
   "build_inputs": {
     "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
     "course_theory_map": "shows/personlighedspsykologi-en/course_theory_map.json",
@@ -1980,9 +1980,13 @@
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
         "w11l2-mcadams-and-pals-2006-b9675688",
         "w02l2-bleidorn-et-al-2022-25c2d2de",
-        "w11l2-raggatt-2002-d15129af",
         "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
-        "w12l1-elias-2000-f9176ae8"
+        "w11l2-raggatt-2002-d15129af",
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+      ],
+      "supporting_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
       ]
     },
     {
@@ -2007,11 +2011,16 @@
       ],
       "supporting_source_ids": [
         "w08l1-lamiell-2021-be79d36e",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
         "w08l2-tolman-2009-455915e0",
         "w08l2-holzkamp-1982-845aafd2",
-        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
         "w01l2-mayer-and-bryan-2024-07faf915",
         "w08l1-laux-et-al-2010-cfff840c"
+      ],
+      "supporting_evidence_origins": [
+        "reading_grounded",
+        "textbook_framing",
+        "lecture_framed"
       ]
     },
     {
@@ -2035,12 +2044,16 @@
         "existential personality psychology"
       ],
       "supporting_source_ids": [
+        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
         "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
         "w06l1-spinelli-2005-b2f76e93",
-        "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
         "w07l1-cooper-2003-ee3c34b7",
         "w06l2-may-1966-d8406a09",
         "w04l2-laplanche-1970-968862d5"
+      ],
+      "supporting_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
       ]
     },
     {
@@ -2069,7 +2082,11 @@
         "w07l2-maslow-1968-7ea53e34",
         "w04l2-laplanche-1970-968862d5",
         "w05l1-ricoeur-1981-19a5343f",
-        "w07l2-evans-1975-8e8a9d79"
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a"
+      ],
+      "supporting_evidence_origins": [
+        "reading_grounded",
+        "textbook_framing"
       ]
     },
     {
@@ -2096,8 +2113,12 @@
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
         "w11l2-mcadams-and-pals-2006-b9675688",
         "w11l2-bruner-1999-7930abd8",
-        "w10l2-foucault-1997-92cd121d",
-        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+        "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "w10l2-foucault-1997-92cd121d"
+      ],
+      "supporting_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
       ]
     },
     {
@@ -2121,12 +2142,17 @@
         "subjectivation"
       ],
       "supporting_source_ids": [
-        "w10l2-foucault-1997-92cd121d",
         "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "w10l2-foucault-1997-92cd121d",
+        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
         "w10l1-mitchell-2015-bc690b36",
         "w08l2-tolman-2009-455915e0",
-        "w08l2-holzkamp-1982-845aafd2",
-        "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662"
+        "w08l2-holzkamp-1982-845aafd2"
+      ],
+      "supporting_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded",
+        "lecture_framed"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T20:58:22Z",
+  "generated_at": "2026-05-05T07:59:06Z",
   "build_inputs": {
     "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
     "lecture_bundle_index": "shows/personlighedspsykologi-en/lecture_bundles/index.json",
@@ -88,6 +88,11 @@
         "w11l1-gergen-1999-73c2217e",
         "w11l1-hacking-2007-10236bf4"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded",
+        "lecture_framed",
+        "textbook_framing"
+      ],
       "salience_score": 110,
       "related_theories": [
         {
@@ -112,7 +117,8 @@
           "likely_core_sources": [
             "w10l1-mitchell-2015-bc690b36",
             "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
-          ]
+          ],
+          "source_evidence_origins": []
         },
         {
           "lecture_key": "W10L2",
@@ -125,7 +131,8 @@
             "w10l2-davies-1990-65185910",
             "w10l2-foucault-1997-92cd121d",
             "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
-          ]
+          ],
+          "source_evidence_origins": []
         },
         {
           "lecture_key": "W11L1",
@@ -138,7 +145,8 @@
             "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
             "w11l1-gergen-1999-73c2217e",
             "w11l1-hacking-2007-10236bf4"
-          ]
+          ],
+          "source_evidence_origins": []
         }
       ],
       "provenance": {
@@ -211,6 +219,10 @@
         "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
         "w05l2-k-ppe-1992-9a474402"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded",
+        "textbook_framing"
+      ],
       "salience_score": 102,
       "related_theories": [
         {
@@ -235,7 +247,8 @@
           "likely_core_sources": [
             "w04l1-gammelgaard-2007-bcbdbec2",
             "w04l1-freud-1973-1933-98cd9920"
-          ]
+          ],
+          "source_evidence_origins": []
         },
         {
           "lecture_key": "W04L2",
@@ -248,6 +261,9 @@
           "likely_core_sources": [
             "w04l2-laplanche-1970-968862d5",
             "w04l2-lacan-1966-2d720f56"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         },
         {
@@ -262,6 +278,9 @@
             "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
             "w05l1-ricoeur-1981-19a5343f",
             "w05l1-gammelgaard-2010-e6baff8b"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         },
         {
@@ -275,7 +294,8 @@
             "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
             "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
             "w05l2-k-ppe-1992-9a474402"
-          ]
+          ],
+          "source_evidence_origins": []
         }
       ],
       "provenance": {
@@ -344,6 +364,9 @@
         "w02l1-zettler-et-al-2020-0c54e6e4",
         "w02l1-columbus-and-strandsbjerg-2025-2962b765"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 87,
       "related_theories": [
         {
@@ -375,6 +398,9 @@
             "w01l2-mayer-and-bryan-2024-07faf915",
             "w01l2-phan-et-al-2024-bf3395d7",
             "w01l2-koutsoumpis-2025-96f4dcf7"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         },
         {
@@ -387,7 +413,8 @@
           "likely_core_sources": [
             "w02l1-zettler-et-al-2020-0c54e6e4",
             "w02l1-columbus-and-strandsbjerg-2025-2962b765"
-          ]
+          ],
+          "source_evidence_origins": []
         }
       ],
       "provenance": {
@@ -448,6 +475,10 @@
         "w09l1-holzkamp-2013-c3068d8a",
         "w09l1-dreier-1999-35da58b5"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded",
+        "textbook_framing"
+      ],
       "salience_score": 82,
       "related_theories": [
         {
@@ -473,6 +504,9 @@
           "likely_core_sources": [
             "w08l2-tolman-2009-455915e0",
             "w08l2-holzkamp-1982-845aafd2"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         },
         {
@@ -488,6 +522,10 @@
             "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
             "w09l1-holzkamp-2013-c3068d8a",
             "w09l1-dreier-1999-35da58b5"
+          ],
+          "source_evidence_origins": [
+            "textbook_framing",
+            "lecture_framed"
           ]
         }
       ],
@@ -548,6 +586,9 @@
         "w07l1-cooper-2003-ee3c34b7",
         "w07l1-jacobsen-2021-26129bff"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 66,
       "related_theories": [
         {
@@ -573,6 +614,9 @@
           "likely_core_sources": [
             "w06l2-may-1966-d8406a09",
             "w06l2-boss-1963-1feb5a5f"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         },
         {
@@ -586,6 +630,9 @@
           "likely_core_sources": [
             "w07l1-cooper-2003-ee3c34b7",
             "w07l1-jacobsen-2021-26129bff"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         }
       ],
@@ -644,6 +691,9 @@
         "w03l1-volk-and-puchalski-2025-60aaf5d0",
         "w03l1-zettler-et-al-2025-6ce9bdc0"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 58,
       "related_theories": [
         {
@@ -671,6 +721,9 @@
             "w03l1-kandler-and-instinske-2025-01535a8e",
             "w03l1-volk-and-puchalski-2025-60aaf5d0",
             "w03l1-zettler-et-al-2025-6ce9bdc0"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         }
       ],
@@ -726,6 +779,10 @@
         "w11l2-raggatt-2002-d15129af",
         "w11l2-bruner-1999-7930abd8"
       ],
+      "representative_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
+      ],
       "salience_score": 58,
       "related_theories": [
         {
@@ -752,7 +809,8 @@
             "w11l2-mcadams-and-pals-2006-b9675688",
             "w11l2-raggatt-2002-d15129af",
             "w11l2-bruner-1999-7930abd8"
-          ]
+          ],
+          "source_evidence_origins": []
         }
       ],
       "provenance": {
@@ -807,6 +865,10 @@
         "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
         "w12l1-elias-2000-f9176ae8"
       ],
+      "representative_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
+      ],
       "salience_score": 57,
       "related_theories": [
         {
@@ -836,7 +898,8 @@
             "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
             "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
             "w12l1-elias-2000-f9176ae8"
-          ]
+          ],
+          "source_evidence_origins": []
         }
       ],
       "provenance": {
@@ -890,6 +953,9 @@
         "w07l2-giorgi-2005-55ca98f7",
         "w07l2-evans-1975-8e8a9d79"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 57,
       "related_theories": [
         {
@@ -911,6 +977,10 @@
             "w07l2-maslow-1968-7ea53e34",
             "w07l2-giorgi-2005-55ca98f7",
             "w07l2-evans-1975-8e8a9d79"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded",
+            "lecture_framed"
           ]
         }
       ],
@@ -966,6 +1036,10 @@
         "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
         "w06l1-spinelli-2005-b2f76e93"
       ],
+      "representative_evidence_origins": [
+        "textbook_framing",
+        "reading_grounded"
+      ],
       "salience_score": 57,
       "related_theories": [
         {
@@ -992,6 +1066,9 @@
             "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
             "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
             "w06l1-spinelli-2005-b2f76e93"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         }
       ],
@@ -1044,6 +1121,9 @@
         "w08l1-lamiell-2021-be79d36e",
         "w08l1-laux-et-al-2010-cfff840c"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 56,
       "related_theories": [
         {
@@ -1069,6 +1149,10 @@
           "likely_core_sources": [
             "w08l1-lamiell-2021-be79d36e",
             "w08l1-laux-et-al-2010-cfff840c"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded",
+            "lecture_framed"
           ]
         }
       ],
@@ -1123,6 +1207,9 @@
         "w02l2-bleidorn-et-al-2022-25c2d2de",
         "w02l2-li-and-wilt-2025-92f596ad"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 56,
       "related_theories": [
         {
@@ -1147,6 +1234,9 @@
           "likely_core_sources": [
             "w02l2-bleidorn-et-al-2022-25c2d2de",
             "w02l2-li-and-wilt-2025-92f596ad"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded"
           ]
         }
       ],
@@ -1200,6 +1290,9 @@
       "representative_source_ids": [
         "w03l2-sharp-and-wall-2021-cb92ecf4"
       ],
+      "representative_evidence_origins": [
+        "reading_grounded"
+      ],
       "salience_score": 55,
       "related_theories": [
         {
@@ -1219,6 +1312,10 @@
           ],
           "likely_core_sources": [
             "w03l2-sharp-and-wall-2021-cb92ecf4"
+          ],
+          "source_evidence_origins": [
+            "reading_grounded",
+            "lecture_framed"
           ]
         }
       ],

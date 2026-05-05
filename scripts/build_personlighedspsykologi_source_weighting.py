@@ -6,9 +6,16 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from notebooklm_queue.source_intelligence_policy import load_source_intelligence_policy
 
 
 DEFAULT_LECTURE_BUNDLE_DIR = "shows/personlighedspsykologi-en/lecture_bundles"
@@ -16,37 +23,12 @@ DEFAULT_GLOSSARY_PATH = "shows/personlighedspsykologi-en/course_glossary.json"
 DEFAULT_THEORY_MAP_PATH = "shows/personlighedspsykologi-en/course_theory_map.json"
 DEFAULT_OUTPUT_PATH = "shows/personlighedspsykologi-en/source_weighting.json"
 DEFAULT_STALENESS_PATH = "shows/personlighedspsykologi-en/source_intelligence_staleness.json"
+DEFAULT_POLICY_PATH = "shows/personlighedspsykologi-en/source_intelligence_policy.json"
 SOURCE_WEIGHTING_VERSION = 1
-
-FAMILY_WEIGHTS = {
-    "reading": 40,
-    "lecture_slide": 18,
-    "seminar_slide": 14,
-    "exercise_slide": 10,
-}
-PRIORITY_WEIGHTS = {
-    "core": 18,
-    "primary": 14,
-    "supporting": 10,
-    "contextual": 6,
-    "missing": 0,
-}
-LENGTH_WEIGHTS = {
-    "long": 6,
-    "medium": 3,
-}
-BONUS_WEIGHTS = {
-    "manual_summary": 6,
-    "analysis_sidecar": 4,
-    "week_analysis_context": 3,
-    "likely_core_source": 10,
-    "very_substantial_tokens": 6,
-    "substantial_tokens": 3,
-}
 
 
 def _repo_root() -> Path:
-    return Path(__file__).resolve().parents[1]
+    return REPO_ROOT
 
 
 def _load_json(path: Path) -> Any:
@@ -132,11 +114,26 @@ def build_source_weighting(
     theory_map_path: Path,
     output_path: Path,
     staleness_path: Path,
+    policy_path: Path | None = None,
 ) -> dict[str, Any]:
     lecture_bundle_index = _load_json(lecture_bundle_dir / "index.json")
     glossary_payload = _load_json(glossary_path)
     theory_map_payload = _load_json(theory_map_path)
     lecture_bundle_paths = _lecture_bundle_paths(lecture_bundle_dir, lecture_bundle_index)
+    policy = load_source_intelligence_policy(policy_path)
+    weighting_policy = policy.get("source_weighting") if isinstance(policy.get("source_weighting"), dict) else {}
+    family_weights = weighting_policy.get("family_weights") if isinstance(weighting_policy.get("family_weights"), dict) else {}
+    priority_weights = (
+        weighting_policy.get("priority_band_weights")
+        if isinstance(weighting_policy.get("priority_band_weights"), dict)
+        else {}
+    )
+    length_weights = (
+        weighting_policy.get("length_band_weights")
+        if isinstance(weighting_policy.get("length_band_weights"), dict)
+        else {}
+    )
+    bonus_weights = weighting_policy.get("bonus_weights") if isinstance(weighting_policy.get("bonus_weights"), dict) else {}
 
     bundle_by_key: dict[str, dict[str, Any]] = {}
     for entry, bundle_path in zip(lecture_bundle_index.get("bundles", []), lecture_bundle_paths):
@@ -194,6 +191,7 @@ def build_source_weighting(
                     "week_analysis_context": 0,
                     "likely_core_source": 0,
                     "token_volume": 0,
+                    "evidence_origin": 0,
                     "term_coverage": 0,
                     "theory_coverage": 0,
                 }
@@ -201,18 +199,20 @@ def build_source_weighting(
                 family = str(source.get("source_family") or "")
                 priority_band = str(source.get("priority_band") or "")
                 length_band = str(source.get("length_band") or "")
+                evidence_origin = str(source.get("evidence_origin") or "")
                 token_count = int((source.get("file") or {}).get("estimated_token_count") or 0)
                 term_ids = sorted(set(source_to_terms.get(source_id, [])))
                 theory_ids = sorted(set(source_to_theories.get(source_id, [])))
                 breakdown = {
-                    "family_base": FAMILY_WEIGHTS.get(family, 8),
-                    "priority_band": PRIORITY_WEIGHTS.get(priority_band, 0),
-                    "length_band": LENGTH_WEIGHTS.get(length_band, 0),
-                    "manual_summary": BONUS_WEIGHTS["manual_summary"] if ((source.get("summary") or {}).get("present")) else 0,
-                    "analysis_sidecar": BONUS_WEIGHTS["analysis_sidecar"] if ((source.get("analysis") or {}).get("present")) else 0,
-                    "week_analysis_context": BONUS_WEIGHTS["week_analysis_context"] if week_analysis_present and family == "reading" else 0,
-                    "likely_core_source": BONUS_WEIGHTS["likely_core_source"] if source_id in likely_core_sources else 0,
-                    "token_volume": BONUS_WEIGHTS["very_substantial_tokens"] if token_count >= 10000 else BONUS_WEIGHTS["substantial_tokens"] if token_count >= 5000 else 0,
+                    "family_base": int(family_weights.get(family, 8)),
+                    "priority_band": int(priority_weights.get(priority_band, 0)),
+                    "length_band": int(length_weights.get(length_band, 0)),
+                    "manual_summary": int(bonus_weights.get("manual_summary", 6)) if ((source.get("summary") or {}).get("present")) else 0,
+                    "analysis_sidecar": int(bonus_weights.get("analysis_sidecar", 4)) if ((source.get("analysis") or {}).get("present")) else 0,
+                    "week_analysis_context": int(bonus_weights.get("week_analysis_context", 3)) if week_analysis_present and family == "reading" else 0,
+                    "likely_core_source": int(bonus_weights.get("likely_core_source", 10)) if source_id in likely_core_sources else 0,
+                    "token_volume": int(bonus_weights.get("very_substantial_tokens", 6)) if token_count >= 10000 else int(bonus_weights.get("substantial_tokens", 3)) if token_count >= 5000 else 0,
+                    "evidence_origin": int(bonus_weights.get(evidence_origin, 0)),
                     "term_coverage": min(12, len(term_ids) * 3),
                     "theory_coverage": min(12, len(theory_ids) * 4),
                 }
@@ -226,6 +226,7 @@ def build_source_weighting(
                 "lecture_title": str(bundle.get("lecture_title") or "").strip(),
                 "title": str(source.get("title") or "").strip(),
                 "source_family": str(source.get("source_family") or ""),
+                "evidence_origin": str(source.get("evidence_origin") or ""),
                 "priority_band": str(source.get("priority_band") or ""),
                 "length_band": str(source.get("length_band") or ""),
                 "weight_score": score,
@@ -257,12 +258,13 @@ def build_source_weighting(
             "lecture_bundle_index": _display_path(lecture_bundle_dir / "index.json", repo_root),
             "course_glossary": _display_path(glossary_path, repo_root),
             "course_theory_map": _display_path(theory_map_path, repo_root),
+            "source_intelligence_policy": _display_path(policy_path, repo_root) if policy_path else None,
         },
         "weighting_policy": {
-            "family_weights": FAMILY_WEIGHTS,
-            "priority_band_weights": PRIORITY_WEIGHTS,
-            "length_band_weights": LENGTH_WEIGHTS,
-            "bonus_weights": BONUS_WEIGHTS,
+            "family_weights": family_weights,
+            "priority_band_weights": priority_weights,
+            "length_band_weights": length_weights,
+            "bonus_weights": bonus_weights,
         },
         "stats": {
             "lecture_count": len(lectures_payload),
@@ -283,8 +285,10 @@ def build_source_weighting(
         *lecture_bundle_paths,
         glossary_path,
         theory_map_path,
+        policy_path,
         builder_path,
     ]
+    dependency_paths = [path for path in dependency_paths if path is not None]
     input_signature = _signature_for_paths(dependency_paths)
 
     staleness_payload = _load_json(staleness_path) if staleness_path.exists() else {
@@ -331,6 +335,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--theory-map-path", default=DEFAULT_THEORY_MAP_PATH, help="Path to course_theory_map.json.")
     parser.add_argument("--output-path", default=DEFAULT_OUTPUT_PATH, help="Path to source_weighting.json.")
     parser.add_argument("--staleness-path", default=DEFAULT_STALENESS_PATH, help="Path to source_intelligence_staleness.json.")
+    parser.add_argument("--policy-path", default=DEFAULT_POLICY_PATH, help="Path to source_intelligence_policy.json.")
     return parser.parse_args()
 
 
@@ -349,6 +354,7 @@ def main() -> int:
         theory_map_path=_resolve_path(repo_root, args.theory_map_path),
         output_path=_resolve_path(repo_root, args.output_path),
         staleness_path=_resolve_path(repo_root, args.staleness_path),
+        policy_path=_resolve_path(repo_root, args.policy_path),
     )
     print(
         "Built source weighting "

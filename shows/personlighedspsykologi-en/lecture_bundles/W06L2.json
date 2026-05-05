@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W06L2",
   "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
   "sequence_index": 12,
@@ -52,6 +52,7 @@
   },
   "source_intelligence": {
     "dominant_language": "unknown",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -94,6 +95,7 @@
         "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 122,
         "priority_band": "core",
         "priority_reasons": [
@@ -148,6 +150,7 @@
         "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 116,
         "priority_band": "primary",
         "priority_reasons": [

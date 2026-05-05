@@ -23,6 +23,10 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from notebooklm_queue import prompting
+from notebooklm_queue.source_intelligence_policy import (
+    evidence_origin_for_source,
+    load_source_intelligence_policy,
+)
 
 logging.getLogger("pypdf").setLevel(logging.ERROR)
 logging.getLogger("pypdf._reader").setLevel(logging.ERROR)
@@ -37,6 +41,7 @@ DEFAULT_CONTENT_MANIFEST = "shows/personlighedspsykologi-en/content_manifest.jso
 DEFAULT_SLIDES_CATALOG = "shows/personlighedspsykologi-en/slides_catalog.json"
 DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
 DEFAULT_PROMPT_CONFIG = "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json"
+DEFAULT_POLICY_PATH = "shows/personlighedspsykologi-en/source_intelligence_policy.json"
 
 TOKEN_SPLIT_RE = re.compile(r"\b\w+\b", re.UNICODE)
 LANGUAGE_TOKEN_RE = re.compile(r"\b[a-zA-ZæøåÆØÅ]+\b", re.UNICODE)
@@ -255,10 +260,12 @@ def build_source_catalog(
     slides_catalog_path: Path,
     reading_key_path: Path,
     prompt_config_path: Path,
+    policy_path: Path | None = None,
 ) -> dict[str, Any]:
     manifest = _load_json(content_manifest_path)
     slides_catalog = _load_json(slides_catalog_path)
     meta_prompting = _load_meta_prompting(prompt_config_path)
+    policy = load_source_intelligence_policy(policy_path)
 
     reading_sync = _load_reading_sync_module(repo_root)
     reading_entries = reading_sync.parse_reading_key(reading_key_path)
@@ -388,6 +395,11 @@ def build_source_catalog(
                         "has_prompt_analysis_sidecar": bool(sidecars),
                         "lecture_has_week_analysis_sidecar": bool(week_sidecars),
                     },
+                    "evidence_origin": evidence_origin_for_source(
+                        source_family="reading",
+                        is_grundbog="grundbog" in reading_title.lower(),
+                        policy=policy,
+                    ),
                     "file": {
                         "sha256": sha256,
                         "size_bytes": file_size,
@@ -485,6 +497,11 @@ def build_source_catalog(
                     "has_prompt_analysis_sidecar": bool(sidecars),
                     "lecture_has_week_analysis_sidecar": bool(week_sidecars),
                 },
+                "evidence_origin": evidence_origin_for_source(
+                    source_family=f"{subcategory}_slide",
+                    is_grundbog=False,
+                    policy=policy,
+                ),
                 "file": {
                     "sha256": sha256,
                     "size_bytes": file_size,
@@ -535,8 +552,10 @@ def build_source_catalog(
             "slides_catalog": _display_path(slides_catalog_path, repo_root),
             "reading_key": _display_path(reading_key_path, repo_root),
             "prompt_config": _display_path(prompt_config_path, repo_root),
+            "source_intelligence_policy": _display_path(policy_path, repo_root) if policy_path else None,
             "subject_root_name": subject_root.name,
         },
+        "policy": policy,
         "stats": {
             "lecture_count": len(lecture_entries),
             "source_count": len(flat_sources),
@@ -567,6 +586,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--slides-catalog", default=DEFAULT_SLIDES_CATALOG, help="slides_catalog.json path.")
     parser.add_argument("--reading-key", default=DEFAULT_READING_KEY, help="reading-file-key.md path.")
     parser.add_argument("--prompt-config", default=DEFAULT_PROMPT_CONFIG, help="Prompt config path.")
+    parser.add_argument("--policy-path", default=DEFAULT_POLICY_PATH, help="source_intelligence_policy.json path.")
     parser.add_argument(
         "--subject-root",
         default=DEFAULT_SUBJECT_ROOT,
@@ -600,6 +620,11 @@ def main() -> int:
         if not Path(args.prompt_config).is_absolute()
         else Path(args.prompt_config).resolve()
     )
+    policy_path = (
+        (repo_root / args.policy_path).resolve()
+        if not Path(args.policy_path).is_absolute()
+        else Path(args.policy_path).resolve()
+    )
     subject_root = Path(args.subject_root).expanduser().resolve()
 
     catalog = build_source_catalog(
@@ -610,6 +635,7 @@ def main() -> int:
         slides_catalog_path=slides_catalog_path,
         reading_key_path=reading_key_path,
         prompt_config_path=prompt_config_path,
+        policy_path=policy_path,
     )
     rendered = json.dumps(catalog, indent=2, ensure_ascii=False) + "\n"
     output_path.parent.mkdir(parents=True, exist_ok=True)

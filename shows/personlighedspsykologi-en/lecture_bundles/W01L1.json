@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W01L1",
   "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
   "sequence_index": 1,
@@ -58,6 +58,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -76,7 +77,7 @@
       "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
       "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
       "source_family": "reading",
-      "priority_score": 128,
+      "priority_score": 130,
       "priority_band": "core"
     },
     {
@@ -116,7 +117,8 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": null,
-        "priority_score": 128,
+        "evidence_origin": "textbook_framing",
+        "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -171,6 +173,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 124,
         "priority_band": "core",
         "priority_reasons": [
@@ -228,6 +231,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 78,
         "priority_band": "supporting",
         "priority_reasons": [
@@ -274,6 +278,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": "seminar",
+        "evidence_origin": "seminar_applied",
         "priority_score": 64,
         "priority_band": "contextual",
         "priority_reasons": [

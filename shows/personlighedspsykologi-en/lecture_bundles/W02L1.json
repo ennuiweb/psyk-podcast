@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W02L1",
   "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
   "sequence_index": 3,
@@ -61,6 +61,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -126,6 +127,7 @@
         "language_guess": "en",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
@@ -181,6 +183,7 @@
         "language_guess": "en",
         "length_band": "short",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 118,
         "priority_band": "primary",
         "priority_reasons": [
@@ -237,6 +240,7 @@
         "language_guess": "en",
         "length_band": "long",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 88,
         "priority_band": "supporting",
         "priority_reasons": [
@@ -284,6 +288,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": "seminar",
+        "evidence_origin": "seminar_applied",
         "priority_score": 64,
         "priority_band": "contextual",
         "priority_reasons": [
@@ -330,6 +335,7 @@
         "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": "exercise",
+        "evidence_origin": "exercise_clarified",
         "priority_score": 60,
         "priority_band": "contextual",
         "priority_reasons": [

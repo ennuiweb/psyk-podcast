@@ -58,6 +58,10 @@ Operational note:
 - For `personlighedspsykologi`, the canonical local rebuild entrypoint for the
   full `Source Intelligence Layer` is
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`.
+- The course-specific interpretation policy for that layer lives in
+  `shows/personlighedspsykologi-en/source_intelligence_policy.json` and is the
+  canonical place to tune how `grundbog`, lecture slides, seminar slides, and
+  exercise slides should count inside preprocessing.
 
 ## Current operational truths
 

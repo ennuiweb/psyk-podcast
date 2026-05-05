@@ -214,6 +214,7 @@ Preprocessing maturity note:
 
 - `personlighedspsykologi` now also has a first deterministic file-level preprocessing artifact at `shows/personlighedspsykologi-en/source_catalog.json`.
 - This catalog is intentionally richer than `content_manifest.json`: it tracks source hashes, page counts, text-length estimates, language heuristics, simple source-priority signals, and prompt-sidecar presence for raw readings/slides.
+- `personlighedspsykologi` now also has an explicit course-tuned preprocessing policy at `shows/personlighedspsykologi-en/source_intelligence_policy.json`, which controls how `grundbog`, lecture slides, seminar slides, and exercise slides should count inside the `Source Intelligence Layer`.
 - The catalog is currently built locally from the raw source tree and committed to the repo; GitHub Actions cannot rebuild it yet because the workflow does not have the OneDrive-backed source files.
 - `personlighedspsykologi` now also has a deterministic `lecture_bundles/`
   layer built from `source_catalog.json`, `content_manifest.json`, and any
@@ -224,11 +225,12 @@ Preprocessing maturity note:
   layer plus a committed semantic seed file.
 - `personlighedspsykologi` now also has a first deterministic
   `source_weighting.json` layer that ranks lecture sources using source family,
-  bundle priority, summary/analysis coverage, term coverage, and theory
-  coverage.
+  bundle priority, summary/analysis coverage, term coverage, theory
+  coverage, and course-specific evidence-origin roles.
 - `personlighedspsykologi` now also has a first `course_concept_graph.json`
   artifact that makes sideways relations explicit through term/theory nodes,
-  graph edges, and seeded course distinctions.
+  graph edges, seeded course distinctions, and supporting evidence-origin
+  labels.
 - The canonical local rebuild entrypoint for that full stack is now
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`,
   which runs source catalog -> lecture bundles -> semantic artifacts ->

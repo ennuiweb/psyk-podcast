@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W11L2",
   "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
   "sequence_index": 21,
@@ -52,6 +52,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": true,
       "sidecars": [
@@ -76,7 +77,7 @@
       "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
       "title": "Grundbog kapitel 09 - Narrative teorier",
       "source_family": "reading",
-      "priority_score": 146,
+      "priority_score": 148,
       "priority_band": "core"
     },
     {
@@ -116,7 +117,8 @@
         "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
-        "priority_score": 146,
+        "evidence_origin": "textbook_framing",
+        "priority_score": 148,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -179,6 +181,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 128,
         "priority_band": "core",
         "priority_reasons": [
@@ -235,6 +238,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 128,
         "priority_band": "core",
         "priority_reasons": [
@@ -291,6 +295,7 @@
         "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 126,
         "priority_band": "core",
         "priority_reasons": [

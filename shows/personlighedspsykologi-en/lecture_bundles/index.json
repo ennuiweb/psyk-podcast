@@ -1,10 +1,11 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "build_inputs": {
     "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
     "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
+    "source_intelligence_policy": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "subject_root_name": "Personlighedspsykologi"
   },
   "stats": {

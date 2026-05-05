@@ -206,6 +206,7 @@ def _collect_matches(bundle: dict[str, Any], aliases: list[str]) -> dict[str, An
     source_ids: list[str] = []
     core_source_ids: list[str] = []
     supporting_source_ids: list[str] = []
+    source_evidence_origins: list[str] = []
     source_lookup = _bundle_source_lookup(bundle)
 
     for fragment in _bundle_fragments(bundle):
@@ -219,7 +220,11 @@ def _collect_matches(bundle: dict[str, Any], aliases: list[str]) -> dict[str, An
         source_id = fragment.get("source_id")
         if source_id:
             source_ids.append(str(source_id))
-            priority_band = str((source_lookup.get(str(source_id)) or {}).get("priority_band") or "")
+            source_record = source_lookup.get(str(source_id)) or {}
+            priority_band = str(source_record.get("priority_band") or "")
+            evidence_origin = str(source_record.get("evidence_origin") or "").strip()
+            if evidence_origin:
+                source_evidence_origins.append(evidence_origin)
             if priority_band in {"core", "primary"}:
                 core_source_ids.append(str(source_id))
             elif priority_band:
@@ -232,6 +237,7 @@ def _collect_matches(bundle: dict[str, Any], aliases: list[str]) -> dict[str, An
         "source_ids": _unique_preserve_order(source_ids),
         "core_source_ids": _unique_preserve_order(core_source_ids),
         "supporting_source_ids": _unique_preserve_order(supporting_source_ids),
+        "source_evidence_origins": _unique_preserve_order(source_evidence_origins),
         "evidence_fragment_count": len(excerpts),
     }
 
@@ -327,6 +333,7 @@ def build_semantic_artifacts(
         all_source_ids: list[str] = []
         all_core_source_ids: list[str] = []
         all_supporting_source_ids: list[str] = []
+        all_evidence_origins: list[str] = []
         evidence_count = 0
         for lecture_key in scoped_lecture_keys:
             bundle = bundle_by_key.get(lecture_key)
@@ -339,6 +346,7 @@ def build_semantic_artifacts(
             all_source_ids.extend(match_info["source_ids"])
             all_core_source_ids.extend(match_info["core_source_ids"])
             all_supporting_source_ids.extend(match_info["supporting_source_ids"])
+            all_evidence_origins.extend(match_info["source_evidence_origins"])
             evidence_count += int(match_info["evidence_fragment_count"])
             evidence_by_lecture.append(
                 {
@@ -350,6 +358,7 @@ def build_semantic_artifacts(
                     "source_ids": match_info["source_ids"],
                     "core_source_ids": match_info["core_source_ids"],
                     "supporting_source_ids": match_info["supporting_source_ids"],
+                    "source_evidence_origins": match_info["source_evidence_origins"],
                 }
             )
 
@@ -381,6 +390,7 @@ def build_semantic_artifacts(
                 "source_ids": _unique_preserve_order(all_source_ids),
                 "core_source_ids": _unique_preserve_order(all_core_source_ids),
                 "supporting_source_ids": _unique_preserve_order(all_supporting_source_ids),
+                "source_evidence_origins": _unique_preserve_order(all_evidence_origins),
                 "salience_score": _term_salience(
                     importance=importance,
                     lecture_count=len(scoped_lecture_keys),
@@ -451,6 +461,7 @@ def build_semantic_artifacts(
             )
         evidence_by_lecture: list[dict[str, Any]] = []
         representative_source_ids: list[str] = []
+        representative_evidence_origins: list[str] = []
         matched_lecture_keys: list[str] = []
         for lecture_key in scoped_lecture_keys:
             bundle = bundle_by_key.get(lecture_key)
@@ -460,12 +471,18 @@ def build_semantic_artifacts(
             if match_info["evidence_fragment_count"] > 0 or lecture_key in theory_grounded_lecture_keys:
                 matched_lecture_keys.append(lecture_key)
             representative_source_ids.extend(_normalize_list((bundle.get("source_intelligence") or {}).get("likely_core_sources")))
+            source_lookup = _bundle_source_lookup(bundle)
+            for source_id in _normalize_list((bundle.get("source_intelligence") or {}).get("likely_core_sources")):
+                evidence_origin = str((source_lookup.get(source_id) or {}).get("evidence_origin") or "").strip()
+                if evidence_origin:
+                    representative_evidence_origins.append(evidence_origin)
             evidence_by_lecture.append(
                 {
                     "lecture_key": lecture_key,
                     "lecture_title": str(bundle.get("lecture_title") or "").strip(),
                     "representative_excerpts": match_info["representative_excerpts"] or _normalize_list((bundle.get("lecture_summary") or {}).get("summary_lines"))[:2],
                     "likely_core_sources": _normalize_list((bundle.get("source_intelligence") or {}).get("likely_core_sources")),
+                    "source_evidence_origins": match_info["source_evidence_origins"],
                 }
             )
 
@@ -515,6 +532,7 @@ def build_semantic_artifacts(
                     for term_id in core_term_ids
                 ],
                 "representative_source_ids": representative_source_ids[:10],
+                "representative_evidence_origins": _unique_preserve_order(representative_evidence_origins),
                 "salience_score": _theory_salience(
                     importance=importance,
                     lecture_count=len(scoped_lecture_keys),

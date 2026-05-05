@@ -71,8 +71,8 @@ huller er:
   downstream styringslag i prompt selection
 - staleness findes nu som et hash-baseret index, men endnu ikke som et
   automatisk rebuild-/blokkeringslag
-- der findes endnu ikke et eksplicit distinction graph eller et egentligt
-  cross-lecture concept graph
+- det nuvaerende distinction-/concept-graph-lag er stadig foerste generation og
+  endnu ikke dybt nok til at bære mere avanceret selection alene
 - weekly auto-meta er stadig readings-first; lecture/seminar slide-indhold er
   ikke preprocesseret ind i en egentlig lecture bundle
 
@@ -85,6 +85,7 @@ begracnset af de metadata og summaries, der allerede findes.
 De foerste nye artifacts i den modne preprocessing-arkitektur er:
 
 - `shows/personlighedspsykologi-en/source_catalog.json`
+- `shows/personlighedspsykologi-en/source_intelligence_policy.json`
 - `shows/personlighedspsykologi-en/lecture_bundles/index.json`
 - `shows/personlighedspsykologi-en/lecture_bundles/W##L#.json`
 - `shows/personlighedspsykologi-en/source_intelligence_seed.json`
@@ -102,11 +103,23 @@ Formaalet er at faa et stabilt, deterministisk file-level lag med:
 - sideantal, tekstmaengde og token-estimat
 - sprog-heuristik
 - source-type og simple prioritetssignaler
+- course-tunet evidensrolle pr. source (`reading_grounded`,
+  `textbook_framing`, `lecture_framed`, `seminar_applied`,
+  `exercise_clarified`)
 - markering af manuel summary-dackning og eksisterende prompt-sidecars
 
 Kataloget er lokalt bygget fra de raa source files og er derfor mere end en
 manifest-view. Det er den nye base for weighting, invalidation og
 lecture-bundle bygning.
+
+Den nye policy-fil er vigtig, fordi dette subsystem skal vaere tunet til netop
+`personlighedspsykologi`:
+
+- `grundbog` behandles her som conceptual framing snarere end bare endnu en
+  reading
+- forelaesningsslides behandles som framing- og emphasis-evidence
+- seminarslides behandles som application-/diskussionsevidence
+- exerciseslides behandles som clarification-/training-evidence
 
 Kanonisk rebuild-kommando:
 
@@ -140,6 +153,7 @@ Hver lecture bundle samler:
 - grouped sources for readings, lecture slides, seminar slides og exercise
   slides
 - simple source-prioritetsvurderinger
+- course-specifik evidensrolle pr. source
 - summary coverage og analysis coverage
 - week-level analysis sidecars
 - likely core / supporting sources
@@ -153,6 +167,7 @@ context-noter.
 Det nye course-level semantic lag bestaar af:
 
 - `source_intelligence_seed.json` som auditerbar ontologi/seed-fil
+- `source_intelligence_policy.json` som course-specifik fortolkningspolitik
 - `course_glossary.json` som term-lag med lecture/source grounding
 - `course_theory_map.json` som theory cluster-lag med relationer
 - `source_intelligence_staleness.json` som hash-baseret dependency-index
@@ -163,6 +178,7 @@ Glossary-laget giver:
 
 - kanoniske begreber med aliases
 - lecture-tilknytning og evidence
+- evidence-origin labels fra de sources, der bærer et term
 - linked terms og linked theories
 - simple salience-signaler
 
@@ -171,6 +187,7 @@ Theory-map-laget giver:
 - theory clusters paa tvacrs af forelaesninger
 - core terms pr. teori
 - representative source ids
+- representative evidence origins
 - relationer mellem teorier
 
 Concept-graph-laget giver:
@@ -178,6 +195,7 @@ Concept-graph-laget giver:
 - term- og theory-nodes i samme artifact
 - tvacrgaaende edges mellem begreber, teorier og shared lectures
 - eksplicitte distinctions som kursusspacndinger
+- supporting evidence origins for distinction-supporting sources
 - et foerste sideways lag paa tvacrs af semesteret
 
 Staleness-laget giver:

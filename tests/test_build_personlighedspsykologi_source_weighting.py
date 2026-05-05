@@ -56,6 +56,7 @@ def test_build_source_weighting_scores_core_sources_above_missing_ones(tmp_path)
                             "source_id": "source-1",
                             "title": "Core reading",
                             "source_family": "reading",
+                            "evidence_origin": "textbook_framing",
                             "source_exists": True,
                             "priority_band": "core",
                             "length_band": "long",
@@ -67,6 +68,7 @@ def test_build_source_weighting_scores_core_sources_above_missing_ones(tmp_path)
                             "source_id": "source-2",
                             "title": "Missing reading",
                             "source_family": "reading",
+                            "evidence_origin": "reading_grounded",
                             "source_exists": False,
                             "priority_band": "missing",
                             "length_band": "unknown",
@@ -135,7 +137,9 @@ def test_build_source_weighting_scores_core_sources_above_missing_ones(tmp_path)
     assert ranked[0]["weight_band"] == "anchor"
     assert ranked[0]["breakdown"]["family_base"] == 40
     assert ranked[0]["breakdown"]["likely_core_source"] == 10
+    assert ranked[0]["breakdown"]["evidence_origin"] == 4
     assert ranked[0]["breakdown"]["theory_coverage"] == 4
+    assert ranked[0]["evidence_origin"] == "textbook_framing"
     assert ranked[1]["source_id"] == "source-2"
     assert ranked[1]["weight_score"] == 0
     assert ranked[1]["weight_band"] == "missing"

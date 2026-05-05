@@ -83,8 +83,8 @@ def test_build_concept_graph_generates_nodes_edges_and_distinctions(tmp_path):
         json.dumps(
             {
                 "sources": [
-                    {"source_id": "source-1", "weight_score": 90},
-                    {"source_id": "source-2", "weight_score": 70},
+                    {"source_id": "source-1", "weight_score": 90, "evidence_origin": "textbook_framing"},
+                    {"source_id": "source-2", "weight_score": 70, "evidence_origin": "lecture_framed"},
                 ]
             },
             indent=2,
@@ -133,7 +133,7 @@ def test_build_concept_graph_generates_nodes_edges_and_distinctions(tmp_path):
     distinction = payload["distinctions"][0]
     assert distinction["distinction_id"] == "dist-a"
     assert distinction["supporting_source_ids"] == ["source-1", "source-2"]
+    assert distinction["supporting_evidence_origins"] == ["textbook_framing", "lecture_framed"]
 
     staleness = json.loads(staleness_path.read_text(encoding="utf-8"))
     assert staleness["artifacts"]["course_concept_graph"]["path"] == "course_concept_graph.json"
-

@@ -20,6 +20,7 @@ LECTURE_BUNDLES_DIR = SHOW_DIR / "lecture_bundles"
 LECTURE_BUNDLE_INDEX = LECTURE_BUNDLES_DIR / "index.json"
 CONTENT_MANIFEST = SHOW_DIR / "content_manifest.json"
 SOURCE_INTELLIGENCE_SEED = SHOW_DIR / "source_intelligence_seed.json"
+SOURCE_INTELLIGENCE_POLICY = SHOW_DIR / "source_intelligence_policy.json"
 COURSE_GLOSSARY = SHOW_DIR / "course_glossary.json"
 COURSE_THEORY_MAP = SHOW_DIR / "course_theory_map.json"
 SOURCE_INTELLIGENCE_STALENESS = SHOW_DIR / "source_intelligence_staleness.json"
@@ -70,6 +71,7 @@ def _failures(repo_root: Path) -> list[str]:
     lecture_bundles_dir = repo_root / LECTURE_BUNDLES_DIR
     content_manifest = repo_root / CONTENT_MANIFEST
     source_intelligence_seed = repo_root / SOURCE_INTELLIGENCE_SEED
+    source_intelligence_policy = repo_root / SOURCE_INTELLIGENCE_POLICY
     course_glossary = repo_root / COURSE_GLOSSARY
     course_theory_map = repo_root / COURSE_THEORY_MAP
     source_intelligence_staleness = repo_root / SOURCE_INTELLIGENCE_STALENESS
@@ -105,6 +107,8 @@ def _failures(repo_root: Path) -> list[str]:
         failures.append(f"Missing lecture bundle index: {LECTURE_BUNDLE_INDEX}")
     if not source_intelligence_seed.exists():
         failures.append(f"Missing source intelligence seed: {SOURCE_INTELLIGENCE_SEED}")
+    if not source_intelligence_policy.exists():
+        failures.append(f"Missing source intelligence policy: {SOURCE_INTELLIGENCE_POLICY}")
     if not course_glossary.exists():
         failures.append(f"Missing course glossary: {COURSE_GLOSSARY}")
     if not course_theory_map.exists():

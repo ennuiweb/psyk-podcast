@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "description": "Course-specific interpretation policy for the Personlighedspsykologi Source Intelligence Layer.",
+  "interpretation": {
+    "notes": [
+      "Grundbog chapters are treated primarily as conceptual framing texts in this course.",
+      "Lecture slides should shape sequence and emphasis more than standalone theory claims.",
+      "Seminar and exercise slides should count mainly as application and clarification evidence."
+    ],
+    "evidence_origins": {
+      "reading": "reading_grounded",
+      "grundbog_reading": "textbook_framing",
+      "lecture_slide": "lecture_framed",
+      "seminar_slide": "seminar_applied",
+      "exercise_slide": "exercise_clarified"
+    }
+  },
+  "lecture_bundle": {
+    "bonus_weights": {
+      "grundbog": 14
+    }
+  },
+  "source_weighting": {
+    "bonus_weights": {
+      "textbook_framing": 5,
+      "lecture_framed": 2,
+      "seminar_applied": 1
+    }
+  }
+}

@@ -193,6 +193,7 @@ Right now the `Source Intelligence Layer` mainly consists of:
 - manual summaries
 - optional per-source or weekly sidecars
 - a deterministic `source_catalog.json`
+- a course-specific interpretation policy file
 - deterministic `lecture_bundles`
 - a committed course semantic seed
 - `course_glossary.json`
@@ -210,6 +211,17 @@ What is still missing:
 
 Without those, the engine still lacks a rich intermediate understanding of the
 course.
+
+One useful refinement is now explicit: the preprocessing policy for a live
+course does not need to be fully generic. For `personlighedspsykologi`, the
+engine should be allowed to encode course-local assumptions such as:
+
+- `grundbog` chapters functioning mainly as conceptual framing
+- lecture slides functioning mainly as framing/emphasis evidence
+- seminar slides functioning mainly as application/discussion evidence
+
+That kind of course tuning is acceptable when it stays explicit, inspectable,
+and versioned as data rather than being hidden inside prompt prose.
 
 ### 2. Reproducibility is incomplete
 

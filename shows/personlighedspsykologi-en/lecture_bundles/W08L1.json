@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W08L1",
   "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
   "sequence_index": 15,
@@ -55,6 +55,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -106,6 +107,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 124,
         "priority_band": "core",
         "priority_reasons": [
@@ -161,6 +163,7 @@
         "language_guess": "en",
         "length_band": "short",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 118,
         "priority_band": "primary",
         "priority_reasons": [
@@ -217,6 +220,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 78,
         "priority_band": "supporting",
         "priority_reasons": [

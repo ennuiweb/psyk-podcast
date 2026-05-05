@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W03L2",
   "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
   "sequence_index": 6,
@@ -50,6 +50,7 @@
   },
   "source_intelligence": {
     "dominant_language": "en",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -107,6 +108,7 @@
         "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 124,
         "priority_band": "core",
         "priority_reasons": [
@@ -162,6 +164,7 @@
         "language_guess": "unknown",
         "length_band": "short",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 0,
         "priority_band": "missing",
         "priority_reasons": [
@@ -207,6 +210,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 82,
         "priority_band": "supporting",
         "priority_reasons": [

@@ -74,6 +74,7 @@ def test_build_semantic_artifacts_generates_glossary_theory_map_and_staleness(tm
                             "source_id": "source-1",
                             "title": "Phenomenology article",
                             "priority_band": "core",
+                            "evidence_origin": "reading_grounded",
                             "summary": {
                                 "summary_lines": ["Lived experience is central."],
                                 "key_points": ["Meaning is practical."],
@@ -149,6 +150,7 @@ def test_build_semantic_artifacts_generates_glossary_theory_map_and_staleness(tm
     assert term["grounding_status"] == "grounded"
     assert term["matched_lecture_keys"] == ["W01L1"]
     assert term["core_source_ids"] == ["source-1"]
+    assert term["source_evidence_origins"] == ["reading_grounded"]
 
     assert outputs["course_theory_map"]["stats"]["theory_count"] == 1
     theory = outputs["course_theory_map"]["theories"][0]
@@ -156,10 +158,10 @@ def test_build_semantic_artifacts_generates_glossary_theory_map_and_staleness(tm
     assert theory["grounding_status"] == "grounded"
     assert theory["core_terms"] == [{"term_id": "phenomenology", "label": "phenomenology"}]
     assert theory["representative_source_ids"] == ["source-1"]
+    assert theory["representative_evidence_origins"] == ["reading_grounded"]
 
     staleness = json.loads(staleness_path.read_text(encoding="utf-8"))
     assert staleness["artifacts"]["course_glossary"]["path"] == "course_glossary.json"
     assert staleness["artifacts"]["course_theory_map"]["path"] == "course_theory_map.json"
     assert staleness["artifacts"]["lecture_bundles"]["count"] == 1
     assert staleness["derivations"][0]["artifact_path"] == "course_glossary.json"
-

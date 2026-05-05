@@ -5,15 +5,23 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from notebooklm_queue.source_intelligence_policy import load_source_intelligence_policy
+
 
 DEFAULT_OUTPUT_DIR = "shows/personlighedspsykologi-en/lecture_bundles"
 DEFAULT_SOURCE_CATALOG = "shows/personlighedspsykologi-en/source_catalog.json"
 DEFAULT_CONTENT_MANIFEST = "shows/personlighedspsykologi-en/content_manifest.json"
+DEFAULT_POLICY_PATH = "shows/personlighedspsykologi-en/source_intelligence_policy.json"
 DEFAULT_SUBJECT_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter 💾/psykologi/Personlighedspsykologi"
@@ -22,7 +30,7 @@ LECTURE_BUNDLE_VERSION = 1
 
 
 def _repo_root() -> Path:
-    return Path(__file__).resolve().parents[1]
+    return REPO_ROOT
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -88,56 +96,62 @@ def _read_sidecar_entries(*, relative_paths: list[str], subject_root: Path) -> l
     return entries
 
 
-def _priority_base(source: dict[str, Any]) -> int:
+def _priority_base(source: dict[str, Any], policy: dict[str, Any]) -> int:
+    lecture_bundle_policy = policy.get("lecture_bundle") if isinstance(policy.get("lecture_bundle"), dict) else {}
+    priority_base = (
+        lecture_bundle_policy.get("priority_base")
+        if isinstance(lecture_bundle_policy.get("priority_base"), dict)
+        else {}
+    )
     family = str(source.get("source_family") or "")
-    if family == "reading":
-        return 100
-    if family == "lecture_slide":
-        return 72
-    if family == "seminar_slide":
-        return 58
-    if family == "exercise_slide":
-        return 48
-    return 40
+    return int(priority_base.get(family, priority_base.get("default", 40)))
 
 
-def _length_bonus(length_band: str) -> int:
-    if length_band == "long":
-        return 12
-    if length_band == "medium":
-        return 6
-    return 0
+def _length_bonus(length_band: str, policy: dict[str, Any]) -> int:
+    lecture_bundle_policy = policy.get("lecture_bundle") if isinstance(policy.get("lecture_bundle"), dict) else {}
+    length_bonus = (
+        lecture_bundle_policy.get("length_bonus")
+        if isinstance(lecture_bundle_policy.get("length_bonus"), dict)
+        else {}
+    )
+    return int(length_bonus.get(length_band, 0))
 
 
-def _priority_score(source: dict[str, Any]) -> tuple[int, list[str]]:
+def _priority_score(source: dict[str, Any], policy: dict[str, Any]) -> tuple[int, list[str]]:
     if not source.get("source_exists"):
         return 0, ["missing source"]
-    score = _priority_base(source)
+    lecture_bundle_policy = policy.get("lecture_bundle") if isinstance(policy.get("lecture_bundle"), dict) else {}
+    bonus_weights = (
+        lecture_bundle_policy.get("bonus_weights")
+        if isinstance(lecture_bundle_policy.get("bonus_weights"), dict)
+        else {}
+    )
+    score = _priority_base(source, policy)
     reasons: list[str] = [str(source.get("source_family") or "source")]
     priority = source.get("priority_signals") if isinstance(source.get("priority_signals"), dict) else {}
     if priority.get("is_grundbog"):
-        score += 12
+        score += int(bonus_weights.get("grundbog", 12))
         reasons.append("grundbog")
     if priority.get("has_manual_summary"):
-        score += 10
+        score += int(bonus_weights.get("manual_summary", 10))
         reasons.append("manual summary")
     if priority.get("has_prompt_analysis_sidecar"):
-        score += 8
+        score += int(bonus_weights.get("analysis_sidecar", 8))
         reasons.append("analysis sidecar")
     if priority.get("lecture_has_week_analysis_sidecar"):
-        score += 4
+        score += int(bonus_weights.get("week_analysis", 4))
         reasons.append("week analysis")
     length_band = str(source.get("length_band") or "")
-    bonus = _length_bonus(length_band)
+    bonus = _length_bonus(length_band, policy)
     if bonus:
         score += bonus
         reasons.append(f"{length_band} source")
     tokens = int(((source.get("file") or {}) if isinstance(source.get("file"), dict) else {}).get("estimated_token_count") or 0)
     if tokens >= 7000:
-        score += 8
+        score += int(bonus_weights.get("very_substantial_tokens", 8))
         reasons.append("very substantial")
     elif tokens >= 3000:
-        score += 4
+        score += int(bonus_weights.get("substantial_tokens", 4))
         reasons.append("substantial")
     return score, reasons
 
@@ -170,8 +184,9 @@ def _enriched_source(
     source: dict[str, Any],
     reading_summary: dict[str, Any] | None,
     subject_root: Path,
+    policy: dict[str, Any],
 ) -> dict[str, Any]:
-    score, reasons = _priority_score(source)
+    score, reasons = _priority_score(source, policy)
     sidecar_paths = [str(item) for item in source.get("prompt_analysis_sidecars") or [] if str(item).strip()]
     sidecars = _read_sidecar_entries(relative_paths=sidecar_paths, subject_root=subject_root)
     file_meta = source.get("file") if isinstance(source.get("file"), dict) else {}
@@ -188,6 +203,7 @@ def _enriched_source(
         "language_guess": source.get("language_guess"),
         "length_band": source.get("length_band"),
         "slide_subcategory": source.get("slide_subcategory"),
+        "evidence_origin": source.get("evidence_origin"),
         "priority_score": score,
         "priority_band": _priority_band(score),
         "priority_reasons": reasons,
@@ -220,9 +236,11 @@ def build_lecture_bundles(
     source_catalog_path: Path,
     content_manifest_path: Path,
     output_dir: Path,
+    policy_path: Path | None = None,
 ) -> dict[str, Any]:
     source_catalog = _load_json(source_catalog_path)
     content_manifest = _load_json(content_manifest_path)
+    policy = load_source_intelligence_policy(policy_path)
 
     catalog_lectures = source_catalog.get("lectures")
     if not isinstance(catalog_lectures, list):
@@ -293,6 +311,7 @@ def build_lecture_bundles(
                 source=source,
                 reading_summary=reading_summary_by_key.get(str(source.get("source_id") or "").strip()),
                 subject_root=subject_root,
+                policy=policy,
             )
             for source in lecture_sources
         ]
@@ -396,6 +415,7 @@ def build_lecture_bundles(
             },
             "source_intelligence": {
                 "dominant_language": _dominant_language(enriched_sources),
+                "course_policy_path": _display_path(policy_path, repo_root) if policy_path else None,
                 "week_analysis": {
                     "present": bool(week_sidecars),
                     "sidecars": week_sidecars,
@@ -439,6 +459,7 @@ def build_lecture_bundles(
         "build_inputs": {
             "source_catalog": _display_path(source_catalog_path, repo_root),
             "content_manifest": _display_path(content_manifest_path, repo_root),
+            "source_intelligence_policy": _display_path(policy_path, repo_root) if policy_path else None,
             "subject_root_name": subject_root.name,
         },
         "stats": {
@@ -463,6 +484,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="Output directory for lecture bundle JSON files.")
     parser.add_argument("--source-catalog", default=DEFAULT_SOURCE_CATALOG, help="Path to source_catalog.json.")
     parser.add_argument("--content-manifest", default=DEFAULT_CONTENT_MANIFEST, help="Path to content_manifest.json.")
+    parser.add_argument("--policy-path", default=DEFAULT_POLICY_PATH, help="Path to source_intelligence_policy.json.")
     parser.add_argument(
         "--subject-root",
         default=DEFAULT_SUBJECT_ROOT,
@@ -485,6 +507,11 @@ def main() -> int:
         if not Path(args.content_manifest).is_absolute()
         else Path(args.content_manifest).resolve()
     )
+    policy_path = (
+        (repo_root / args.policy_path).resolve()
+        if not Path(args.policy_path).is_absolute()
+        else Path(args.policy_path).resolve()
+    )
     subject_root = Path(args.subject_root).expanduser().resolve()
 
     index_payload = build_lecture_bundles(
@@ -493,6 +520,7 @@ def main() -> int:
         source_catalog_path=source_catalog_path,
         content_manifest_path=content_manifest_path,
         output_dir=output_dir,
+        policy_path=policy_path,
     )
     print(
         f"Wrote {output_dir} "

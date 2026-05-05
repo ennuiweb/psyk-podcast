@@ -198,6 +198,7 @@ def test_build_source_catalog_tracks_readings_slides_and_sidecars(tmp_path):
     )
     assert resolved["priority_signals"]["has_manual_summary"] is True
     assert resolved["priority_signals"]["has_prompt_analysis_sidecar"] is True
+    assert resolved["evidence_origin"] == "textbook_framing"
     assert resolved["prompt_analysis_sidecars"] == [
         "Readings/W01L1 Intro/Grundbog kapitel 1 - Introduktion til personlighed.analysis.md"
     ]
@@ -213,5 +214,6 @@ def test_build_source_catalog_tracks_readings_slides_and_sidecars(tmp_path):
     assert slide["source_exists"] is True
     assert slide["source_kind"] == "slide"
     assert slide["slide_subcategory"] == "lecture"
+    assert slide["evidence_origin"] == "lecture_framed"
     assert slide["subject_relative_path"] == "Forelæsningsrækken/Slides 1.pdf"
     assert slide["prompt_analysis_sidecars"] == ["Forelæsningsrækken/Slides 1.analysis.md"]

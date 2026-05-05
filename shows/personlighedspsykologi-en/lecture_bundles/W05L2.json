@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T19:35:41Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "lecture_key": "W05L2",
   "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
   "sequence_index": 10,
@@ -55,6 +55,7 @@
   },
   "source_intelligence": {
     "dominant_language": "da",
+    "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
@@ -74,7 +75,7 @@
       "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
       "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
       "source_family": "reading",
-      "priority_score": 134,
+      "priority_score": 136,
       "priority_band": "core"
     },
     {
@@ -114,7 +115,8 @@
         "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
-        "priority_score": 134,
+        "evidence_origin": "textbook_framing",
+        "priority_score": 136,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -169,6 +171,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 124,
         "priority_band": "core",
         "priority_reasons": [
@@ -224,6 +227,7 @@
         "language_guess": "da",
         "length_band": "medium",
         "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
         "priority_score": 124,
         "priority_band": "core",
         "priority_reasons": [
@@ -281,6 +285,7 @@
         "language_guess": "da",
         "length_band": "short",
         "slide_subcategory": "lecture",
+        "evidence_origin": "lecture_framed",
         "priority_score": 72,
         "priority_band": "supporting",
         "priority_reasons": [

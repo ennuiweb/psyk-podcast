@@ -1,13 +1,84 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-04T17:33:49Z",
+  "generated_at": "2026-05-05T07:59:05Z",
   "build_inputs": {
     "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
     "slides_catalog": "shows/personlighedspsykologi-en/slides_catalog.json",
     "reading_key": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
     "prompt_config": "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json",
+    "source_intelligence_policy": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "subject_root_name": "Personlighedspsykologi"
+  },
+  "policy": {
+    "version": 1,
+    "subject_slug": "personlighedspsykologi",
+    "interpretation": {
+      "evidence_origins": {
+        "reading": "reading_grounded",
+        "grundbog_reading": "textbook_framing",
+        "lecture_slide": "lecture_framed",
+        "seminar_slide": "seminar_applied",
+        "exercise_slide": "exercise_clarified"
+      },
+      "notes": [
+        "Grundbog chapters are treated primarily as conceptual framing texts in this course.",
+        "Lecture slides should shape sequence and emphasis more than standalone theory claims.",
+        "Seminar and exercise slides should count mainly as application and clarification evidence."
+      ]
+    },
+    "lecture_bundle": {
+      "priority_base": {
+        "reading": 100,
+        "lecture_slide": 72,
+        "seminar_slide": 58,
+        "exercise_slide": 48,
+        "default": 40
+      },
+      "bonus_weights": {
+        "grundbog": 14,
+        "manual_summary": 10,
+        "analysis_sidecar": 8,
+        "week_analysis": 4,
+        "very_substantial_tokens": 8,
+        "substantial_tokens": 4
+      },
+      "length_bonus": {
+        "long": 12,
+        "medium": 6
+      }
+    },
+    "source_weighting": {
+      "family_weights": {
+        "reading": 40,
+        "lecture_slide": 18,
+        "seminar_slide": 14,
+        "exercise_slide": 10
+      },
+      "priority_band_weights": {
+        "core": 18,
+        "primary": 14,
+        "supporting": 10,
+        "contextual": 6,
+        "missing": 0
+      },
+      "length_band_weights": {
+        "long": 6,
+        "medium": 3
+      },
+      "bonus_weights": {
+        "manual_summary": 6,
+        "analysis_sidecar": 4,
+        "week_analysis_context": 3,
+        "likely_core_source": 10,
+        "very_substantial_tokens": 6,
+        "substantial_tokens": 3,
+        "textbook_framing": 5,
+        "lecture_framed": 2,
+        "seminar_applied": 1
+      }
+    },
+    "description": "Course-specific interpretation policy for the Personlighedspsykologi Source Intelligence Layer."
   },
   "stats": {
     "lecture_count": 22,
@@ -308,6 +379,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
         "size_bytes": 3073301,
@@ -341,6 +413,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
         "size_bytes": 261872,
@@ -375,6 +448,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
         "size_bytes": 371038,
@@ -411,6 +485,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "seminar_applied",
       "file": {
         "sha256": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
         "size_bytes": 1710684,
@@ -446,6 +521,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
         "size_bytes": 237072,
@@ -479,6 +555,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "19b42595372a402834bb8d05b8739f168c26068cd91091a99adb465aa3876e4e",
         "size_bytes": 1916037,
@@ -512,6 +589,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
         "size_bytes": 1014259,
@@ -546,6 +624,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "0e14b905130c23c71780529de81a9e24335b68bf11cf4fc60295a36ad1b1e38c",
         "size_bytes": 2272899,
@@ -581,6 +660,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
         "size_bytes": 329563,
@@ -614,6 +694,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
         "size_bytes": 434402,
@@ -648,6 +729,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "exercise_clarified",
       "file": {
         "sha256": "6827926fced9475ba46326fd40232d5f16c97af5eec222160c1eb2a8281b9490",
         "size_bytes": 2316113,
@@ -684,6 +766,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "2e66f6613bc190eaaaf844f0c8accb26b5beaa2d36468ff359c44172b59ea30b",
         "size_bytes": 1000307,
@@ -720,6 +803,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "seminar_applied",
       "file": {
         "sha256": "e415d565bdbf3a7a1a2d151bc9fb55dcf67ca4d74c2ea619f158a17645b95008",
         "size_bytes": 2428573,
@@ -755,6 +839,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
         "size_bytes": 2293136,
@@ -788,6 +873,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
         "size_bytes": 371844,
@@ -822,6 +908,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "4c0cb57f98e4b30223a8a1b2e956814936bd3f8a0908c3695d24affe4d5694de",
         "size_bytes": 1427635,
@@ -857,6 +944,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
         "size_bytes": 414240,
@@ -890,6 +978,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
         "size_bytes": 446063,
@@ -923,6 +1012,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
         "size_bytes": 215027,
@@ -956,6 +1046,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
         "size_bytes": 6347058,
@@ -990,6 +1081,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "35e386410db88acc6d8eaad71f12c4a62cf4869026faf777ccc5188d5a56c6db",
         "size_bytes": 1218194,
@@ -1026,6 +1118,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "seminar_applied",
       "file": {
         "sha256": "551fbde6f6ea6879032ebd75da3fe4f6ca71f12808f78a59e47028c7610c83f7",
         "size_bytes": 1668068,
@@ -1061,6 +1154,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": null,
         "size_bytes": null,
@@ -1094,6 +1188,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
         "size_bytes": 368426,
@@ -1128,6 +1223,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
         "size_bytes": 5068012,
@@ -1163,6 +1259,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "5e11d6e9dbd0d635d6589c4ce15b09f6d7474a89d88181de4fa8fc7b92af8ae3",
         "size_bytes": 2682919,
@@ -1196,6 +1293,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "60b0db759d6715f8798b483648b8e150e9dc75d9c7b02fd09a95871f24c2545f",
         "size_bytes": 4878012,
@@ -1231,6 +1329,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "seminar_applied",
       "file": {
         "sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
         "size_bytes": 1627865,
@@ -1267,6 +1366,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "c23bebbbda7dd79720b69261d38039d4f8cf251e1665ec2f0687facfa1002682",
         "size_bytes": 6585989,
@@ -1302,6 +1402,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
         "size_bytes": 758427,
@@ -1335,6 +1436,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
         "size_bytes": 4555675,
@@ -1369,6 +1471,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
         "size_bytes": 3483377,
@@ -1404,6 +1507,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "1db05ea8535b642191002e1d37b711474c585f441d0c846ae7b40b99ae816008",
         "size_bytes": 996960,
@@ -1437,6 +1541,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
         "size_bytes": 11533368,
@@ -1470,6 +1575,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
         "size_bytes": 196193,
@@ -1504,6 +1610,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "exercise_clarified",
       "file": {
         "sha256": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
         "size_bytes": 1666788,
@@ -1540,6 +1647,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
         "size_bytes": 3084331,
@@ -1575,6 +1683,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
         "size_bytes": 16678564,
@@ -1608,6 +1717,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "1cf0f063a5a052eddb7cd7217326f174838a488b8671e91ab00efc69bc0fe70e",
         "size_bytes": 7089064,
@@ -1641,6 +1751,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
         "size_bytes": 1273162,
@@ -1675,6 +1786,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "27d495d3650ee48b3afc3e1c9a07ae4b709589ea86a0ddcc94b0b29c79d1e8c2",
         "size_bytes": 84262,
@@ -1710,6 +1822,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
         "size_bytes": 6926924,
@@ -1743,6 +1856,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
         "size_bytes": 1868381,
@@ -1776,6 +1890,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
         "size_bytes": 140449,
@@ -1810,6 +1925,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
         "size_bytes": 471274,
@@ -1845,6 +1961,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "f2273465cc0bc5961d4612c7dada5a4233fe8bcac3b436bacb67ad5cb3d80481",
         "size_bytes": 1837265,
@@ -1878,6 +1995,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "77449515bd1e5c736b97a6b1eb54486db787664decf2d3e5307add092f84d085",
         "size_bytes": 7251021,
@@ -1911,6 +2029,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
         "size_bytes": 1545677,
@@ -1944,6 +2063,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
         "size_bytes": 2726840,
@@ -1978,6 +2098,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
         "size_bytes": 914720,
@@ -2013,6 +2134,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
         "size_bytes": 2746087,
@@ -2046,6 +2168,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
         "size_bytes": 101767,
@@ -2079,6 +2202,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
         "size_bytes": 360245,
@@ -2113,6 +2237,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "7c826fb7b6ce5e3c235a0813d53d1517668eac7bf4aeb703c040e289d06879a4",
         "size_bytes": 76472215,
@@ -2148,6 +2273,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
         "size_bytes": 135233,
@@ -2181,6 +2307,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
         "size_bytes": 146911,
@@ -2215,6 +2342,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
         "size_bytes": 1776794,
@@ -2250,6 +2378,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
         "size_bytes": 2387076,
@@ -2283,6 +2412,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
         "size_bytes": 86088,
@@ -2317,6 +2447,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
         "size_bytes": 864674,
@@ -2352,6 +2483,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
         "size_bytes": 812081,
@@ -2385,6 +2517,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
         "size_bytes": 5658598,
@@ -2418,6 +2551,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
         "size_bytes": 1430661,
@@ -2451,6 +2585,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
         "size_bytes": 244474,
@@ -2485,6 +2620,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "46a49de055d1b59728f4d70597573b0e769383ae166250151eec788002a7932b",
         "size_bytes": 1348677,
@@ -2522,6 +2658,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "d7cb28e4a7c241be9b0fb347ad5c61f42e8a302c7579aa73e6a41c5cad3d6d28",
         "size_bytes": 3639718,
@@ -2555,6 +2692,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": false
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
         "size_bytes": 348938,
@@ -2588,6 +2726,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "4e8cdde021c8ce20b80f6a2069e4bc0e5ef900d74f71674cf564afe6ba69429a",
         "size_bytes": 2348174,
@@ -2623,6 +2762,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
         "size_bytes": 2938717,
@@ -2659,6 +2799,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "lecture_framed",
       "file": {
         "sha256": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
         "size_bytes": 780527,
@@ -2696,6 +2837,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
         "size_bytes": 216630,
@@ -2731,6 +2873,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
         "size_bytes": 7251858,
@@ -2766,6 +2909,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
         "size_bytes": 211529,
@@ -2801,6 +2945,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
         "size_bytes": 2270304,
@@ -2834,6 +2979,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
         "size_bytes": 6544243,
@@ -2869,6 +3015,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
         "size_bytes": 589778,
@@ -2902,6 +3049,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
         "size_bytes": 620722,
@@ -2935,6 +3083,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "reading_grounded",
       "file": {
         "sha256": "2916674e58257dd4ab74932ecb074aac36f67ce648b56432d31c6392fe64fc1d",
         "size_bytes": 2282030,
@@ -2968,6 +3117,7 @@
         "has_prompt_analysis_sidecar": false,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
         "size_bytes": 7246738,
@@ -3001,6 +3151,7 @@
         "has_prompt_analysis_sidecar": true,
         "lecture_has_week_analysis_sidecar": true
       },
+      "evidence_origin": "textbook_framing",
       "file": {
         "sha256": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
         "size_bytes": 7873734,

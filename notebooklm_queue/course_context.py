@@ -20,6 +20,91 @@ DEFAULT_COURSE_CONTEXT = {
     "max_course_themes": 22,
 }
 
+SEMANTIC_SELECTION_LIMITS = {
+    "single_reading": {
+        "ranked_sources": 2,
+        "terms": 2,
+        "theories": 1,
+        "distinctions": 1,
+    },
+    "single_slide": {
+        "ranked_sources": 2,
+        "terms": 1,
+        "theories": 1,
+        "distinctions": 1,
+    },
+    "weekly_readings_only": {
+        "ranked_sources": 2,
+        "terms": 2,
+        "theories": 1,
+        "distinctions": 1,
+    },
+    "short": {
+        "ranked_sources": 1,
+        "terms": 1,
+        "theories": 0,
+        "distinctions": 1,
+    },
+    "mixed_sources": {
+        "ranked_sources": 2,
+        "terms": 2,
+        "theories": 1,
+        "distinctions": 1,
+    },
+}
+
+EVIDENCE_ORIGIN_PRIORITIES = {
+    "single_reading": {
+        "textbook_framing": 4,
+        "reading_grounded": 3,
+        "lecture_framed": 1,
+        "seminar_applied": 0,
+        "exercise_clarified": 0,
+    },
+    "single_slide:lecture": {
+        "lecture_framed": 4,
+        "reading_grounded": 3,
+        "textbook_framing": 2,
+        "seminar_applied": 1,
+        "exercise_clarified": 0,
+    },
+    "single_slide:seminar": {
+        "seminar_applied": 4,
+        "reading_grounded": 3,
+        "textbook_framing": 2,
+        "lecture_framed": 1,
+        "exercise_clarified": 0,
+    },
+    "single_slide:exercise": {
+        "exercise_clarified": 4,
+        "reading_grounded": 3,
+        "textbook_framing": 2,
+        "lecture_framed": 1,
+        "seminar_applied": 1,
+    },
+    "weekly_readings_only": {
+        "reading_grounded": 4,
+        "textbook_framing": 3,
+        "lecture_framed": 1,
+        "seminar_applied": 1,
+        "exercise_clarified": 0,
+    },
+    "short": {
+        "reading_grounded": 3,
+        "textbook_framing": 3,
+        "lecture_framed": 2,
+        "seminar_applied": 1,
+        "exercise_clarified": 1,
+    },
+    "mixed_sources": {
+        "reading_grounded": 4,
+        "textbook_framing": 3,
+        "lecture_framed": 2,
+        "seminar_applied": 1,
+        "exercise_clarified": 1,
+    },
+}
+
 
 @dataclass(frozen=True)
 class CoursePromptContextBundle:
@@ -279,11 +364,125 @@ def _semantic_artifact_paths(bundle: CoursePromptContextBundle) -> dict[str, Pat
     }
 
 
+def _source_item_match_candidates(lecture: dict[str, Any], source_item: object | None) -> set[str]:
+    if source_item is None:
+        return set()
+    candidates = {
+        _normalize_match_key(str(getattr(source_item, "base_name", "") or "")),
+        _normalize_match_key(str(getattr(source_item, "slide_key", "") or "")),
+    }
+    source_path = getattr(source_item, "path", None)
+    if isinstance(source_path, Path):
+        candidates.add(_normalize_match_key(source_path.name))
+        candidates.add(_normalize_match_key(source_path.stem))
+    source_type = str(getattr(source_item, "source_type", "") or "").strip().lower()
+    if source_type == "reading":
+        reading = _find_matching_reading(lecture, source_item)
+        if isinstance(reading, dict):
+            candidates.add(_normalize_match_key(str(reading.get("reading_title") or "")))
+            candidates.add(_normalize_match_key(str(reading.get("source_filename") or "")))
+            candidates.add(
+                _normalize_match_key(Path(str(reading.get("source_filename") or "")).stem)
+            )
+    elif source_type == "slide":
+        slide = _find_matching_slide(lecture, source_item)
+        if isinstance(slide, dict):
+            candidates.add(_normalize_match_key(str(slide.get("title") or "")))
+            candidates.add(_normalize_match_key(str(slide.get("source_filename") or "")))
+            candidates.add(_normalize_match_key(Path(str(slide.get("source_filename") or "")).stem))
+    candidates.discard("")
+    return candidates
+
+
+def _source_item_context_key(prompt_type: str, source_item: object | None) -> str:
+    if prompt_type != "single_slide":
+        return prompt_type
+    subcategory = str(getattr(source_item, "slide_subcategory", "") or "").strip().lower()
+    if not subcategory:
+        subcategory = "lecture"
+    return f"{prompt_type}:{subcategory}"
+
+
+def _evidence_origin_priority(prompt_type: str, source_item: object | None, evidence_origin: str) -> int:
+    priorities = EVIDENCE_ORIGIN_PRIORITIES.get(
+        _source_item_context_key(prompt_type, source_item),
+        EVIDENCE_ORIGIN_PRIORITIES.get(prompt_type, {}),
+    )
+    return int(priorities.get(evidence_origin, 0))
+
+
+def _list_match_bonus(values: object, candidates: set[str]) -> int:
+    if not candidates:
+        return 0
+    if isinstance(values, list):
+        raw_values = values
+    elif isinstance(values, str):
+        raw_values = [values]
+    else:
+        return 0
+    normalized = {_normalize_match_key(str(value or "")) for value in raw_values}
+    normalized.discard("")
+    return 2 if normalized & candidates else 0
+
+
+def _source_match_bonus(item: dict[str, Any], candidates: set[str]) -> int:
+    if not candidates:
+        return 0
+    keys = {
+        _normalize_match_key(str(item.get("title") or "")),
+        _normalize_match_key(str(item.get("source_id") or "")),
+    }
+    keys.update(
+        _normalize_match_key(str(value or ""))
+        for value in item.get("term_ids", [])
+        if isinstance(item.get("term_ids"), list)
+    )
+    keys.update(
+        _normalize_match_key(str(value or ""))
+        for value in item.get("theory_ids", [])
+        if isinstance(item.get("theory_ids"), list)
+    )
+    keys.discard("")
+    return 4 if keys & candidates else 0
+
+
+def _sorted_by_signal(
+    items: list[dict[str, Any]],
+    *,
+    prompt_type: str,
+    source_item: object | None,
+    candidates: set[str],
+    importance_key: str,
+    evidence_field: str,
+    source_id_fields: tuple[str, ...],
+) -> list[dict[str, Any]]:
+    def _score(item: dict[str, Any]) -> tuple[int, int]:
+        evidence_values = item.get(evidence_field)
+        evidence_priority = 0
+        if isinstance(evidence_values, list):
+            evidence_priority = max(
+                (_evidence_origin_priority(prompt_type, source_item, str(value or "")) for value in evidence_values),
+                default=0,
+            )
+        elif isinstance(evidence_values, str):
+            evidence_priority = _evidence_origin_priority(prompt_type, source_item, evidence_values)
+        source_match = 0
+        for field in source_id_fields:
+            source_match = max(source_match, _list_match_bonus(item.get(field), candidates))
+        source_match = max(source_match, _source_match_bonus(item, candidates))
+        importance = int(item.get(importance_key) or item.get("salience_score") or 0)
+        return (source_match + evidence_priority, importance)
+
+    return sorted(items, key=_score, reverse=True)
+
+
 def _lecture_semantic_context_lines(
     *,
     bundle: CoursePromptContextBundle,
     lecture_key: str,
-    max_items: int,
+    prompt_type: str,
+    lecture: dict[str, Any],
+    source_item: object | None,
 ) -> list[str]:
     paths = _semantic_artifact_paths(bundle)
     glossary_payload = _load_optional_json(paths["course_glossary"])
@@ -292,6 +491,8 @@ def _lecture_semantic_context_lines(
     concept_graph_payload = _load_optional_json(paths["course_concept_graph"])
 
     lines: list[str] = []
+    limits = SEMANTIC_SELECTION_LIMITS.get(prompt_type, SEMANTIC_SELECTION_LIMITS["mixed_sources"])
+    candidates = _source_item_match_candidates(lecture, source_item)
     if isinstance(weighting_payload, dict):
         weighting_lectures = weighting_payload.get("lectures")
         if isinstance(weighting_lectures, list):
@@ -303,10 +504,18 @@ def _lecture_semantic_context_lines(
                 ranked = lecture.get("ranked_sources")
                 if not isinstance(ranked, list):
                     break
+                ranked_items = [item for item in ranked if isinstance(item, dict)]
+                ranked_items = _sorted_by_signal(
+                    ranked_items,
+                    prompt_type=prompt_type,
+                    source_item=source_item,
+                    candidates=candidates,
+                    importance_key="weight_score",
+                    evidence_field="evidence_origin",
+                    source_id_fields=("source_id",),
+                )
                 ranked_lines = []
-                for item in ranked[:max_items]:
-                    if not isinstance(item, dict):
-                        continue
+                for item in ranked_items[: max(0, int(limits["ranked_sources"]))]:
                     title = str(item.get("title") or item.get("source_id") or "").strip()
                     band = str(item.get("weight_band") or "").strip()
                     if title:
@@ -324,18 +533,28 @@ def _lecture_semantic_context_lines(
                 if isinstance(term, dict)
                 and lecture_key in [canonicalize_lecture_key(item) for item in term.get("lecture_keys", [])]
             ]
-            lecture_terms.sort(key=lambda item: -int(item.get("salience_score") or 0))
+            lecture_terms = _sorted_by_signal(
+                lecture_terms,
+                prompt_type=prompt_type,
+                source_item=source_item,
+                candidates=candidates,
+                importance_key="salience_score",
+                evidence_field="source_evidence_origins",
+                source_id_fields=("source_ids", "core_source_ids", "supporting_source_ids"),
+            )
             if lecture_terms:
-                selected = lecture_terms[:max_items]
-                lines.append(
-                    "- Course concepts in play: "
-                    + "; ".join(
-                        f"{str(term.get('label') or '').strip()} ({str(term.get('category') or '').strip()})"
-                        for term in selected
-                        if str(term.get("label") or "").strip()
+                selected = lecture_terms[: max(0, int(limits["terms"]))]
+                selected_labels = [
+                    f"{str(term.get('label') or '').strip()} ({str(term.get('category') or '').strip()})"
+                    for term in selected
+                    if str(term.get("label") or "").strip()
+                ]
+                if selected_labels:
+                    lines.append(
+                        "- Course concepts in play: "
+                        + "; ".join(selected_labels)
+                        + "."
                     )
-                    + "."
-                )
 
     if isinstance(theory_map_payload, dict):
         theories = theory_map_payload.get("theories")
@@ -346,14 +565,24 @@ def _lecture_semantic_context_lines(
                 if isinstance(theory, dict)
                 and lecture_key in [canonicalize_lecture_key(item) for item in theory.get("lecture_keys", [])]
             ]
-            lecture_theories.sort(key=lambda item: -int(item.get("salience_score") or 0))
+            lecture_theories = _sorted_by_signal(
+                lecture_theories,
+                prompt_type=prompt_type,
+                source_item=source_item,
+                candidates=candidates,
+                importance_key="salience_score",
+                evidence_field="representative_evidence_origins",
+                source_id_fields=("representative_source_ids",),
+            )
             if lecture_theories:
-                selected = lecture_theories[:max_items]
-                lines.append(
-                    "- Theory frame: "
-                    + "; ".join(str(theory.get("label") or "").strip() for theory in selected if str(theory.get("label") or "").strip())
-                    + "."
-                )
+                selected = lecture_theories[: max(0, int(limits["theories"]))]
+                selected_labels = [
+                    str(theory.get("label") or "").strip()
+                    for theory in selected
+                    if str(theory.get("label") or "").strip()
+                ]
+                if selected_labels:
+                    lines.append("- Theory frame: " + "; ".join(selected_labels) + ".")
 
     if isinstance(concept_graph_payload, dict):
         distinctions = concept_graph_payload.get("distinctions")
@@ -364,14 +593,28 @@ def _lecture_semantic_context_lines(
                 if isinstance(distinction, dict)
                 and lecture_key in [canonicalize_lecture_key(item) for item in distinction.get("lecture_keys", [])]
             ]
-            lecture_distinctions.sort(key=lambda item: -int(item.get("importance") or 0))
+            lecture_distinctions = _sorted_by_signal(
+                lecture_distinctions,
+                prompt_type=prompt_type,
+                source_item=source_item,
+                candidates=candidates,
+                importance_key="importance",
+                evidence_field="supporting_evidence_origins",
+                source_id_fields=("supporting_source_ids",),
+            )
             if lecture_distinctions:
-                selected = lecture_distinctions[: max(1, min(2, max_items))]
-                lines.append(
-                    "- Cross-lecture tensions to keep explicit: "
-                    + "; ".join(str(distinction.get("label") or "").strip() for distinction in selected if str(distinction.get("label") or "").strip())
-                    + "."
-                )
+                selected = lecture_distinctions[: max(0, int(limits["distinctions"]))]
+                selected_labels = [
+                    str(distinction.get("label") or "").strip()
+                    for distinction in selected
+                    if str(distinction.get("label") or "").strip()
+                ]
+                if selected_labels:
+                    lines.append(
+                        "- Cross-lecture tensions to keep explicit: "
+                        + "; ".join(selected_labels)
+                        + "."
+                    )
 
     return lines
 
@@ -675,7 +918,9 @@ def build_course_prompt_context_note(
     semantic_lines = _lecture_semantic_context_lines(
         bundle=bundle,
         lecture_key=canonical_key,
-        max_items=3 if prompt_type != "short" else 2,
+        prompt_type=prompt_type,
+        lecture=lecture,
+        source_item=source_item,
     )
     if semantic_lines:
         sections.append("## Semantic guidance\n" + "\n".join(semantic_lines))

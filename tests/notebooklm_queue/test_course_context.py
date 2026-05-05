@@ -233,6 +233,262 @@ class CourseContextTests(unittest.TestCase):
             self.assertIn("seminar slide deck 'Diskussionsspoergsmaal'", slide_note)
             self.assertIn("This is a seminar slide deck", slide_note)
 
+    def test_short_prompt_context_trims_semantic_guidance(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W1L1",
+                                "lecture_title": "Introduktion",
+                                "sequence_index": 1,
+                                "summary": {
+                                    "summary_lines": ["Intro lecture summary."],
+                                },
+                                "readings": [
+                                    {
+                                        "reading_title": "Grundbog kapitel 1",
+                                        "source_filename": "W1L1 Grundbog kapitel 1.pdf",
+                                        "summary": {
+                                            "summary_lines": ["Field-framing overview."],
+                                        },
+                                    }
+                                ],
+                                "slides": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_glossary.json").write_text(
+                json.dumps(
+                    {
+                        "terms": [
+                            {
+                                "term_id": "personality",
+                                "label": "personality",
+                                "category": "construct",
+                                "salience_score": 80,
+                                "lecture_keys": ["W01L1"],
+                                "source_ids": ["w01l1-grundbog-kapitel-1"],
+                                "source_evidence_origins": ["textbook_framing"],
+                            },
+                            {
+                                "term_id": "assessment",
+                                "label": "assessment",
+                                "category": "practice",
+                                "salience_score": 75,
+                                "lecture_keys": ["W01L1"],
+                                "source_ids": ["w01l1-other"],
+                                "source_evidence_origins": ["reading_grounded"],
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_theory_map.json").write_text(
+                json.dumps(
+                    {
+                        "theories": [
+                            {
+                                "theory_id": "trait_theory",
+                                "label": "trait theory",
+                                "salience_score": 70,
+                                "lecture_keys": ["W01L1"],
+                                "representative_source_ids": ["w01l1-grundbog-kapitel-1"],
+                                "representative_evidence_origins": ["textbook_framing"],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "source_weighting.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W01L1",
+                                "ranked_sources": [
+                                    {
+                                        "source_id": "w01l1-grundbog-kapitel-1",
+                                        "title": "Grundbog kapitel 1",
+                                        "weight_band": "anchor",
+                                        "weight_score": 90,
+                                        "evidence_origin": "textbook_framing",
+                                    },
+                                    {
+                                        "source_id": "w01l1-other",
+                                        "title": "Other reading",
+                                        "weight_band": "major",
+                                        "weight_score": 89,
+                                        "evidence_origin": "reading_grounded",
+                                    },
+                                ],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "course_concept_graph.json").write_text(
+                json.dumps(
+                    {
+                        "distinctions": [
+                            {
+                                "distinction_id": "trait-vs-state",
+                                "label": "trait vs state",
+                                "importance": 3,
+                                "lecture_keys": ["W01L1"],
+                                "supporting_source_ids": ["w01l1-grundbog-kapitel-1"],
+                                "supporting_evidence_origins": ["textbook_framing"],
+                            },
+                            {
+                                "distinction_id": "person-vs-variable",
+                                "label": "person vs variable profile",
+                                "importance": 2,
+                                "lecture_keys": ["W01L1"],
+                                "supporting_source_ids": ["w01l1-other"],
+                                "supporting_evidence_origins": ["reading_grounded"],
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text("- W1L1 Introduktion", encoding="utf-8")
+
+            config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W1L1",
+                prompt_type="short",
+                source_item=SimpleNamespace(
+                    source_type="reading",
+                    base_name="Grundbog kapitel 1",
+                    path=Path("/tmp/W1L1 Grundbog kapitel 1.pdf"),
+                ),
+            )
+
+            self.assertIn("Ranked source emphasis: Grundbog kapitel 1 [anchor].", note)
+            self.assertNotIn("Other reading [major]", note)
+            self.assertIn("Course concepts in play: personality (construct).", note)
+            self.assertNotIn("assessment (practice)", note)
+            self.assertNotIn("Theory frame:", note)
+            self.assertIn("Cross-lecture tensions to keep explicit: trait vs state.", note)
+            self.assertNotIn("person vs variable profile", note)
+
+    def test_reading_prompt_prioritizes_matched_target_source(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W1L1",
+                                "lecture_title": "Introduktion",
+                                "sequence_index": 1,
+                                "readings": [
+                                    {
+                                        "reading_title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+                                        "source_filename": "W1L1 Freud source.pdf",
+                                        "summary": {
+                                            "summary_lines": ["Target reading summary."],
+                                        },
+                                    }
+                                ],
+                                "slides": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (show_dir / "source_weighting.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W01L1",
+                                "ranked_sources": [
+                                    {
+                                        "source_id": "w01l1-ricoeur",
+                                        "title": "Ricoeur (1981)",
+                                        "weight_band": "anchor",
+                                        "weight_score": 95,
+                                        "evidence_origin": "reading_grounded",
+                                    },
+                                    {
+                                        "source_id": "w01l1-freud",
+                                        "title": "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse",
+                                        "weight_band": "major",
+                                        "weight_score": 80,
+                                        "evidence_origin": "reading_grounded",
+                                    },
+                                ],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text("- W1L1 Introduktion", encoding="utf-8")
+
+            config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W1L1",
+                prompt_type="single_reading",
+                source_item=SimpleNamespace(
+                    source_type="reading",
+                    base_name="Freud source",
+                    path=Path("/tmp/W1L1 Freud source.pdf"),
+                ),
+            )
+
+            semantic_line = next(
+                line for line in note.splitlines() if line.startswith("- Ranked source emphasis:")
+            )
+            self.assertIn(
+                "Freud, S. (1984/1905). Brudstykke af en hysteri-analyse [major]",
+                semantic_line,
+            )
+            self.assertLess(
+                semantic_line.index("Freud, S. (1984/1905). Brudstykke af en hysteri-analyse [major]"),
+                semantic_line.index("Ricoeur (1981) [anchor]"),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

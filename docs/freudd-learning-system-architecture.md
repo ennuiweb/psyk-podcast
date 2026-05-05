@@ -529,11 +529,29 @@ Recommended outputs:
 2. lecture-level centrality and relevance ranking
 3. stronger slide-informed lecture synthesis
 4. explicit cross-lecture concept reuse
+5. conservative prompt-surface selection that exposes fewer but better-chosen
+   signals to NotebookLM
+
+Current default decisions for this phase:
+
+- keep the backend richer than the final prompt surface
+- treat NotebookLM podcast prompts as a fragile interface that should receive
+  compact, high-value guidance rather than ontology dumps
+- let reading prompts prioritize `reading_grounded` and `textbook_framing`
+  evidence
+- let lecture-slide prompts prioritize `lecture_framed` evidence while still
+  anchoring substantive claims in readings
+- let seminar-slide prompts prioritize `seminar_applied` evidence for likely
+  misunderstandings, applications, and clarifications
+- keep the final prompt surface conservative: usually 1-2 ranked sources, 1-2
+  terms, 1 theory frame, and 1 cross-lecture tension at most
 
 Exit condition:
 
 - prompts are built from ranked and structured course understanding instead of
   relatively flat context blocks
+- outputs improve because selection becomes more disciplined, not because
+  prompts become much longer
 
 ### Phase 3: Add explicit quality loops
 
@@ -558,6 +576,36 @@ Exit condition:
 Goal:
 
 - simplify the system where complexity is transitional rather than essential
+
+## Decision Register
+
+These are the active implementation decisions that do not currently need user
+input and should be treated as default policy unless real evidence suggests
+otherwise.
+
+### Decided defaults
+
+- The `Source Intelligence Layer` may be fairly rich; the NotebookLM prompt
+  surface should stay comparatively thin.
+- `personlighedspsykologi` is allowed to use explicit course-local
+  interpretation policy when it is versioned as data and documented.
+- The system should support bottom-up, top-down, and sideways flow, but mostly
+  through inspectable artifacts rather than recursive prompt logic.
+- New semantic artifacts should first improve selection and coherence, not
+  automatically become visible prompt content.
+
+### Deferred decisions
+
+These are the likely next user-facing decision points, but none blocks the
+current roadmap work yet.
+
+- whether course-level semantic artifacts should stay mostly English, become
+  Danish-first, or stay mixed
+- how much additional LLM enrichment to allow above the current deterministic
+  and manual-summary baseline
+- when stale artifacts should merely warn versus hard-block generation
+- when hosted rebuildability should become mandatory for source-intelligence
+  artifacts
 
 Recommended outputs:
 

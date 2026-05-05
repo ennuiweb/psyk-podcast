@@ -196,6 +196,9 @@ Prompt assembly note:
 
 - `generate_week.py` now compiles a course-aware lecture context from `shows/<show>/content_manifest.json` and `shows/<show>/docs/overblik.md` before building prompts.
 - For `personlighedspsykologi`, that deterministic context layer now also pulls in compact semantic guidance from `course_glossary.json`, `course_theory_map.json`, `source_weighting.json`, and `course_concept_graph.json` when those artifacts exist.
+- That semantic guidance is now intentionally conservative: the goal is to use
+  those artifacts to improve selection while keeping the final NotebookLM
+  prompt surface relatively thin.
 - That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
 - Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
 - Prompt assembly now also injects explicit source-role guidance for normal prompt types so readings, lecture slides, and seminar slides contribute different kinds of signal instead of being blended implicitly.

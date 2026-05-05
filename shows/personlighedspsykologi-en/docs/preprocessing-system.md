@@ -215,6 +215,25 @@ Det er ogsaa begyndt at blive brugt downstream:
 - `course_context.py` kan nu injecte kompakt semantic guidance fra glossary,
   theory map, weighting og concept graph ind i den deterministiske lecture
   context note
+- den downstream brug skal vaere konservativ: artifacts skal foerst og fremmest
+  forbedre selection, ikke bloate den endelige NotebookLM-prompt
+
+## Nuvaerende beslutninger for prompt-side selection
+
+Foelgende defaults gaelder nu, indtil der er en god grund til at aendre dem:
+
+- `Source Intelligence Layer` maa gerne vaere rigere end prompt-overfladen
+- final podcast prompts skal bruge faa, hoejvaerdisignaler frem for mange
+  mellemvaerdige signaler
+- reading prompts skal prioritere `reading_grounded` og `textbook_framing`
+  evidence
+- lecture-slide prompts skal prioritere `lecture_framed` evidence
+- seminar-slide prompts skal prioritere `seminar_applied` evidence
+- short prompts skal vaere ekstra aggressive i trimming
+
+Det betyder konkret, at semantic guidance i `course_context.py` nu skal vaelge
+selektivt i stedet for bare at dumpe de hoejest rangerede artifacts. Maalet er
+et tyndt prompt-surface med bedre selection, ikke et tykkere prompt-surface.
 
 ## Kendte graenser
 

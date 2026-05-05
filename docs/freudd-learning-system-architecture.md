@@ -167,8 +167,9 @@ Implementation status as of 2026-05-05:
   are implemented
 - source-card generation uploads actual PDF/source files to Gemini; the
   lecture-substrate pass also uploads the lecture's raw source PDFs by default
-- no real recursive LLM artifacts have been generated yet, because the current
-  key can list Gemini 3.1 Pro but returns free-tier limit 0 on generation
+- no real recursive LLM artifacts have been generated yet; the Gemini
+  `--preflight-only` check now succeeds for `gemini-3.1-pro-preview`, and the
+  next gate is the first live `W05L1,W06L1` batch
 - `shows/personlighedspsykologi-en/source_intelligence/index.json` is the
   coverage/staleness status file for those LLM-derived artifacts
 
@@ -689,9 +690,10 @@ schema validation, and dry-run prompt output showing compact substrate
 injection. `W03L2` remains allowed as partial because of the known missing
 source.
 
-The remaining blocker is Gemini project quota/billing, not implementation: the
-local secret-store key is available, but generation currently fails with
-free-tier limit 0 for Gemini 3.1 Pro.
+The remaining blocker is no longer basic model/key access: the local
+secret-store key passes `gemini-3.1-pro-preview` preflight. The remaining gate
+is the first live batch, including PDF uploads, artifact inspection, cost
+monitoring, and comparison against the simple baseline.
 
 ### Phase 3: Add explicit quality loops
 

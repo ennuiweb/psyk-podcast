@@ -271,8 +271,9 @@ Recursive preprocessing implementation:
   `scripts/build_personlighedspsykologi_recursive_source_intelligence.py`,
   with `--lectures`, `--all`, `--dry-run`, `--skip-existing`, `--force`, and
   `--fail-on-missing-key`.
-- The wrapper runs a tiny Gemini JSON preflight before live source uploads; use
-  `--preflight-only` to test model/quota access without uploading course files.
+- The wrapper runs a small Gemini JSON preflight before live source uploads;
+  use `--preflight-only` to test model/quota access without uploading course
+  files.
 - LLM-derived artifacts live under
   `shows/personlighedspsykologi-en/source_intelligence/` so they remain
   visually distinct from deterministic artifacts.
@@ -284,10 +285,10 @@ Recursive preprocessing implementation:
   baseline.
 - Treat `W05L1`, `W06L1`, one early lecture, and one late lecture as the first
   readiness batch before running all lectures.
-- Current runtime blocker: the code path is ready, but the shell environment
-  needs Gemini 3.1 Pro quota/billing before real LLM artifacts can be
-  generated. The local secret-store key is available, but the API reports
-  free-tier limit 0 for `gemini-3.1-pro`.
+- Current runtime status: the code path is ready and `--preflight-only`
+  succeeds for `gemini-3.1-pro-preview` using the local secret-store key. Real
+  LLM artifacts have not been generated yet; the next gate is the first live
+  `W05L1,W06L1` batch and quality review.
 
 ## Related docs
 

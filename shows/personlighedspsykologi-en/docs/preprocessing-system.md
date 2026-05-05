@@ -361,9 +361,10 @@ Status 2026-05-05:
 - Gemini key lookup virker nu via environment variabler og fallback til den
   lokale Memory Bridge secret store (`google.gemini.api_key`); secret value er
   ikke gemt i repoet
-- et real LLM-run for `W05L1,W06L1` blev forsoegt, men Gemini returnerede
-  `RESOURCE_EXHAUSTED` med free-tier limit 0 for `gemini-3.1-pro`
-- derfor er der stadig ingen real LLM-artifacts skrevet endnu
+- `--preflight-only` lykkes nu for `gemini-3.1-pro-preview` med den lokale
+  secret-store key
+- der er stadig ingen real LLM-artifacts skrevet endnu; naeste gate er et live
+  `W05L1,W06L1` batch-run og kvalitetsreview
 - `google-genai` er tilfoejet til root `requirements.txt` og installeret i
   den lokale `.venv`
 - `shows/personlighedspsykologi-en/source_intelligence/index.json` er den
@@ -608,7 +609,7 @@ Current dry-run smoke command:
 Preflight command before uploading source PDFs:
 
 ```bash
-./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --preflight-only
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --preflight-only
 ```
 
 Observed 2026-05-05 dry-run plan:
@@ -628,11 +629,10 @@ Live run preconditions:
 - keep `--skip-existing` unless intentionally rebuilding
 - use `--force` only when stale artifacts should be replaced
 
-Current live-run blocker:
+Current live-run gate:
 
-- the current key can list `gemini-3.1-pro-preview`, but generate calls fail
-  because the API reports free-tier request/input-token limit 0 for Gemini 3.1
-  Pro
+- preflight succeeds for `gemini-3.1-pro-preview`, but the first real
+  source-upload/artifact-writing batch has not been run yet
 - no fallback model has been used, because that is a quality/cost decision
 
 Validation command:
@@ -685,5 +685,5 @@ of the known missing source.
 
 Current blocker:
 
-- the code path is ready for the first real test batch, but the environment
-  still needs a Gemini key before LLM artifacts can be generated
+- the code path and Gemini preflight are ready for the first real test batch,
+  but generated LLM artifacts still need to be created and reviewed

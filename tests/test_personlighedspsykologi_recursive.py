@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from notebooklm_queue import personlighedspsykologi_recursive as recursive
 
 
@@ -97,7 +99,7 @@ def _fake_json_generator(*, system_instruction, user_prompt, source_paths, max_o
     raise AssertionError(system_instruction)
 
 
-def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
+def _minimal_course_fixture(tmp_path, *, lecture_keys=("W01L1",)):
     repo_root = tmp_path / "repo"
     subject_root = tmp_path / "subject"
     repo_root.mkdir()
@@ -106,7 +108,7 @@ def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
     source_path.write_bytes(b"%PDF-1.4 source")
 
     source_catalog_path = repo_root / "source_catalog.json"
-    policy_path = repo_root / "policy.json"
+    policy_path = repo_root / "source_intelligence_policy.json"
     lecture_bundle_dir = repo_root / "lecture_bundles"
     recursive_dir = repo_root / "source_intelligence"
     source = {
@@ -128,7 +130,13 @@ def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
     _write_json(
         source_catalog_path,
         {
-            "lectures": [{"lecture_key": "W01L1", "lecture_title": "Phenomenology"}],
+            "lectures": [
+                {
+                    "lecture_key": lecture_key,
+                    "lecture_title": "Phenomenology" if lecture_key == "W01L1" else lecture_key,
+                }
+                for lecture_key in lecture_keys
+            ],
             "sources": [source],
         },
     )
@@ -142,6 +150,26 @@ def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
             "sources": {"readings": [source], "lecture_slides": [], "seminar_slides": [], "exercise_slides": []},
         },
     )
+    return {
+        "repo_root": repo_root,
+        "subject_root": subject_root,
+        "source_catalog_path": source_catalog_path,
+        "policy_path": policy_path,
+        "lecture_bundle_dir": lecture_bundle_dir,
+        "recursive_dir": recursive_dir,
+        "source_path": source_path,
+        "source": source,
+    }
+
+
+def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    repo_root = fixture["repo_root"]
+    subject_root = fixture["subject_root"]
+    source_catalog_path = fixture["source_catalog_path"]
+    policy_path = fixture["policy_path"]
+    lecture_bundle_dir = fixture["lecture_bundle_dir"]
+    recursive_dir = fixture["recursive_dir"]
 
     source_result = recursive.build_source_cards(
         repo_root=repo_root,
@@ -211,3 +239,86 @@ def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
     assert index["complete"]["revised_lecture_substrates"]
     assert index["complete"]["podcast_substrates"]
     assert index["errors"] == []
+    assert index["fresh"]["stale_artifacts"] == []
+
+    stored_index = recursive.load_json(recursive_dir / "index.json")
+    stored_index["generated_at"] = "2000-01-01T00:00:00Z"
+    _write_json(recursive_dir / "index.json", stored_index)
+    rebuilt_index = recursive.build_recursive_index(
+        repo_root=repo_root,
+        source_catalog_path=source_catalog_path,
+        recursive_dir=recursive_dir,
+        output_path=recursive_dir / "index.json",
+    )
+    assert rebuilt_index["generated_at"] == "2000-01-01T00:00:00Z"
+
+
+def test_course_synthesis_requires_all_selected_lecture_substrates(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path, lecture_keys=("W01L1", "W02L1"))
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+        skip_existing=True,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+
+    with pytest.raises(RuntimeError, match="missing lecture substrates.*W02L1"):
+        recursive.build_course_synthesis(
+            repo_root=fixture["repo_root"],
+            lecture_keys=["W01L1", "W02L1"],
+            lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+            output_path=fixture["recursive_dir"] / "course_synthesis.json",
+            source_catalog_path=fixture["source_catalog_path"],
+            json_generator=_fake_json_generator,
+            partial_scope=True,
+        )
+
+
+def test_recursive_index_reports_stale_policy_and_missing_bundle_without_crashing(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+        skip_existing=True,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+    _write_json(fixture["policy_path"], {"version": 2})
+    (fixture["lecture_bundle_dir"] / "W01L1.json").unlink()
+
+    index = recursive.build_recursive_index(
+        repo_root=fixture["repo_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        recursive_dir=fixture["recursive_dir"],
+        output_path=fixture["recursive_dir"] / "index.json",
+    )
+    stale = "\n".join(index["fresh"]["stale_artifacts"])
+    assert "source_intelligence_policy" in stale
+    assert "lecture_bundle_missing" in stale

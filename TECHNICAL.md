@@ -81,9 +81,10 @@ Operational note:
 - Recursive artifact validation and progress tracking lives in
   `shows/personlighedspsykologi-en/source_intelligence/index.json`, rebuilt by
   `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.
-- Runtime blocker as of 2026-05-05: the Gemini key is available from the local
-  secret store, but the API reports free-tier limit 0 for Gemini 3.1 Pro, so
-  real recursive LLM artifacts have not been generated.
+- Runtime status as of 2026-05-05: the Gemini key is available from the local
+  secret store and `--preflight-only` succeeds for `gemini-3.1-pro-preview`.
+  Real recursive LLM artifacts have not been generated yet; the next step is
+  the first live `W05L1,W06L1` batch and quality review.
 - The course-specific interpretation policy for that layer lives in
   `shows/personlighedspsykologi-en/source_intelligence_policy.json` and is the
   canonical place to tune how `grundbog`, lecture slides, seminar slides, and

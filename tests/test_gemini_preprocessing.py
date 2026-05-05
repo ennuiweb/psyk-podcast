@@ -64,8 +64,39 @@ def test_preflight_gemini_json_generation_uses_tiny_json_request():
 
     assert payload == {"ok": True}
     call = fake_client.models.generate_content.call_args.kwargs
-    assert call["config"]["max_output_tokens"] == 64
+    assert call["config"]["max_output_tokens"] == 512
     assert call["contents"] == [{"type": "text", "text": 'Return exactly this JSON object: {"ok": true}'}]
+
+
+def test_generate_json_reports_response_diagnostics_for_truncated_json():
+    fake_client = mock.Mock()
+    response = mock.Mock(text="Here")
+    response.prompt_feedback = None
+    candidate = mock.Mock()
+    candidate.finish_reason = "MAX_TOKENS"
+    candidate.finish_message = ""
+    response.candidates = [candidate]
+    fake_client.models.generate_content.return_value = response
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+
+    try:
+        gemini.generate_json(
+            backend=gemini.GeminiPreprocessingBackend(
+                provider="gemini",
+                client=fake_client,
+                support=fake_support,
+                model="gemini-test",
+            ),
+            system_instruction="system",
+            user_prompt="user",
+            retry_count=0,
+        )
+    except gemini.GeminiPreprocessingGenerationError as exc:
+        assert "MAX_TOKENS" in str(exc)
+    else:
+        raise AssertionError("expected GeminiPreprocessingGenerationError")
 
 
 def test_generate_json_uploads_pdf_and_deletes_upload(tmp_path):

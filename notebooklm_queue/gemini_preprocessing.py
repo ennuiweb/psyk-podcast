@@ -200,6 +200,27 @@ def extract_gemini_text(response: object) -> str:
     return "\n".join(parts).strip()
 
 
+def gemini_response_diagnostics(response: object) -> str:
+    diagnostics: list[str] = []
+    prompt_feedback = getattr(response, "prompt_feedback", None)
+    if prompt_feedback:
+        diagnostics.append(f"prompt_feedback={prompt_feedback}")
+    finish_reasons: list[str] = []
+    finish_messages: list[str] = []
+    for candidate in getattr(response, "candidates", []) or []:
+        finish_reason = getattr(candidate, "finish_reason", None)
+        if finish_reason:
+            finish_reasons.append(str(finish_reason))
+        finish_message = str(getattr(candidate, "finish_message", "") or "").strip()
+        if finish_message:
+            finish_messages.append(finish_message)
+    if finish_reasons:
+        diagnostics.append("finish_reasons=" + ",".join(finish_reasons))
+    if finish_messages:
+        diagnostics.append("finish_messages=" + " | ".join(finish_messages))
+    return "; ".join(diagnostics)
+
+
 def strip_json_fence(text: str) -> str:
     stripped = text.strip()
     match = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", stripped, re.DOTALL | re.IGNORECASE)
@@ -348,8 +369,16 @@ def generate_json(
             )
             text = extract_gemini_text(response)
             if not text:
-                raise GeminiPreprocessingGenerationError("Gemini returned an empty response")
-            return parse_json_response(text)
+                diagnostics = gemini_response_diagnostics(response)
+                suffix = f" ({diagnostics})" if diagnostics else ""
+                raise GeminiPreprocessingGenerationError(f"Gemini returned an empty response{suffix}")
+            try:
+                return parse_json_response(text)
+            except GeminiPreprocessingGenerationError as exc:
+                diagnostics = gemini_response_diagnostics(response)
+                if diagnostics:
+                    raise GeminiPreprocessingGenerationError(f"{exc} ({diagnostics})") from exc
+                raise
         except Exception as exc:
             if _is_non_retryable_quota_error(exc):
                 raise GeminiPreprocessingGenerationError(_quota_error_summary(exc)) from exc
@@ -380,6 +409,6 @@ def preflight_gemini_json_generation(
         backend=active_backend,
         system_instruction="Return only valid JSON.",
         user_prompt='Return exactly this JSON object: {"ok": true}',
-        max_output_tokens=64,
+        max_output_tokens=512,
         retry_count=0,
     )

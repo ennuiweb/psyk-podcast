@@ -91,6 +91,18 @@ def signature_for_files(paths: list[Path]) -> str:
     return sha256_bytes("\n".join(sha256_file(path) for path in existing).encode("utf-8"))
 
 
+def signature_for_source_records(sources: list[dict[str, Any]]) -> str:
+    hashes: list[str] = []
+    for source in sources:
+        if not source.get("source_exists"):
+            continue
+        file_info = source.get("file") if isinstance(source.get("file"), dict) else {}
+        source_hash = str(file_info.get("sha256") or "").strip()
+        if source_hash:
+            hashes.append(source_hash)
+    return sha256_bytes("\n".join(hashes).encode("utf-8"))
+
+
 def normalize_lecture_keys(raw: str | list[str] | tuple[str, ...] | None) -> list[str]:
     if raw is None:
         return []
@@ -709,9 +721,9 @@ def _compact_source_card(card: dict[str, Any]) -> dict[str, Any]:
 def _lecture_substrate_system_instruction() -> str:
     return (
         "You are building a lecture-level learning substrate for a personality psychology course. "
-        "Use the supplied source cards and lecture metadata. Return only valid JSON. Preserve "
-        "missing-source caveats. Do not add claims that are not supported by source cards or explicit "
-        "course metadata."
+        "Use the supplied source cards, lecture metadata, and attached raw source files. Return only "
+        "valid JSON. Preserve missing-source caveats. Do not add claims that are not supported by "
+        "the source cards, attached files, or explicit course metadata."
     )
 
 
@@ -895,10 +907,18 @@ def _compact_lecture_substrate(substrate: dict[str, Any]) -> dict[str, Any]:
 
 def _load_existing_lecture_substrates(lecture_substrate_dir: Path, lecture_keys: list[str]) -> list[dict[str, Any]]:
     substrates: list[dict[str, Any]] = []
+    missing_keys: list[str] = []
     for lecture_key in lecture_keys:
         path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
         if path.exists() and path.is_file():
             substrates.append(validate_lecture_substrate(load_json(path)))
+        else:
+            missing_keys.append(lecture_key)
+    if missing_keys:
+        raise RuntimeError(
+            "missing lecture substrates for selected lectures: "
+            + ", ".join(missing_keys)
+        )
     return substrates
 
 
@@ -1444,6 +1464,9 @@ def build_recursive_index(
     revised_count, revised_errors = valid_files(revised_paths, validate_revised_lecture_substrate)
     podcast_count, podcast_errors = valid_files(podcast_paths, validate_podcast_substrate)
     stale_artifacts: list[str] = []
+    show_dir = source_catalog_path.parent
+    policy_path = show_dir / "source_intelligence_policy.json"
+    policy_hash = sha256_file(policy_path) if policy_path.exists() and policy_path.is_file() else ""
 
     for source_id in expected_source_ids:
         path = _source_card_path(source_card_dir, source_id)
@@ -1456,11 +1479,12 @@ def build_recursive_index(
         dependencies = artifact.get("provenance", {}).get("dependency_hashes", {})
         if dependencies.get("source_catalog") != catalog_hash:
             stale_artifacts.append(f"{display_path(path, repo_root)}: source_catalog")
+        if dependencies.get("source_intelligence_policy") != policy_hash:
+            stale_artifacts.append(f"{display_path(path, repo_root)}: source_intelligence_policy")
         current_source_hash = str(((source_by_id.get(source_id) or {}).get("file") or {}).get("sha256") or "")
         if current_source_hash and dependencies.get("source_file") != current_source_hash:
             stale_artifacts.append(f"{display_path(path, repo_root)}: source_file")
 
-    show_dir = source_catalog_path.parent
     for lecture_key in lecture_keys:
         path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
         if not path.exists() or not path.is_file():
@@ -1473,12 +1497,19 @@ def build_recursive_index(
         if dependencies.get("source_catalog") != catalog_hash:
             stale_artifacts.append(f"{display_path(path, repo_root)}: source_catalog")
         bundle_path = show_dir / "lecture_bundles" / f"{lecture_key}.json"
-        if bundle_path.exists() and dependencies.get("lecture_bundle") != sha256_file(bundle_path):
+        if not bundle_path.exists() or not bundle_path.is_file():
+            stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_bundle_missing")
+        elif dependencies.get("lecture_bundle") != sha256_file(bundle_path):
             stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_bundle")
         source_ids = [str(item or "").strip() for item in artifact.get("provenance", {}).get("input_source_ids", [])]
         source_card_signature = signature_for_files([_source_card_path(source_card_dir, source_id) for source_id in source_ids])
         if dependencies.get("source_cards_signature") != source_card_signature:
             stale_artifacts.append(f"{display_path(path, repo_root)}: source_cards_signature")
+        if bundle_path.exists() and bundle_path.is_file():
+            bundle = _load_bundle(show_dir / "lecture_bundles", lecture_key)
+            raw_sources_signature = signature_for_source_records(_bundle_source_entries(bundle))
+            if dependencies.get("raw_sources_signature") != raw_sources_signature:
+                stale_artifacts.append(f"{display_path(path, repo_root)}: raw_sources_signature")
 
     course_synthesis_path = recursive_dir / "course_synthesis.json"
     course_synthesis_present = False
@@ -1575,5 +1606,17 @@ def build_recursive_index(
             "W03L2 may remain partial because its manifest intentionally keeps Bach & Simonsen (2023) as missing."
         ],
     }
+    if output_path.exists() and output_path.is_file():
+        try:
+            previous_payload = load_json(output_path)
+        except Exception:
+            previous_payload = None
+        if isinstance(previous_payload, dict):
+            previous_without_timestamp = dict(previous_payload)
+            payload_without_timestamp = dict(payload)
+            previous_without_timestamp.pop("generated_at", None)
+            payload_without_timestamp.pop("generated_at", None)
+            if previous_without_timestamp == payload_without_timestamp:
+                payload["generated_at"] = str(previous_payload.get("generated_at") or payload["generated_at"])
     write_json(output_path, payload)
     return payload

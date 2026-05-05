@@ -75,10 +75,6 @@ def _print_result(payload: dict[str, Any]) -> None:
 
 def main() -> int:
     args = _parse_args()
-    source_catalog_path = _resolve(args.source_catalog)
-    lecture_keys = _all_lecture_keys(source_catalog_path) if args.all else recursive.normalize_lecture_keys(args.lectures)
-    if not lecture_keys:
-        raise SystemExit("select --all or --lectures")
     if not has_gemini_api_key():
         if args.dry_run and not args.fail_on_missing_key:
             pass
@@ -91,6 +87,11 @@ def main() -> int:
             raise SystemExit(str(exc)) from exc
         _print_result({"status": "ok", "model": str(args.model)})
         return 0
+
+    source_catalog_path = _resolve(args.source_catalog)
+    lecture_keys = _all_lecture_keys(source_catalog_path) if args.all else recursive.normalize_lecture_keys(args.lectures)
+    if not lecture_keys:
+        raise SystemExit("select --all or --lectures")
     if not args.dry_run and not args.skip_preflight:
         try:
             preflight_gemini_json_generation(model=str(args.model))

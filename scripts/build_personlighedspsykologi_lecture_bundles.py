@@ -190,7 +190,7 @@ def _enriched_source(
     sidecar_paths = [str(item) for item in source.get("prompt_analysis_sidecars") or [] if str(item).strip()]
     sidecars = _read_sidecar_entries(relative_paths=sidecar_paths, subject_root=subject_root)
     file_meta = source.get("file") if isinstance(source.get("file"), dict) else {}
-    return {
+    enriched = {
         "source_id": source["source_id"],
         "title": source["title"],
         "source_kind": source["source_kind"],
@@ -227,6 +227,13 @@ def _enriched_source(
             "sidecars": sidecars,
         },
     }
+    if source.get("source_filenames"):
+        enriched["source_filenames"] = source.get("source_filenames")
+    if source.get("subject_relative_paths"):
+        enriched["subject_relative_paths"] = source.get("subject_relative_paths")
+    if isinstance(file_meta.get("parts"), list):
+        enriched["file"]["parts"] = file_meta.get("parts")
+    return enriched
 
 
 def build_lecture_bundles(

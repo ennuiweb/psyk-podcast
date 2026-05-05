@@ -41,6 +41,9 @@ hvor Python primært er rails:
 
 - Python laver inventory, batching, caching, retries, schema validation,
   staleness og artifact writing
+- Python maa hashe filer og laese metadata som sideantal, men maa ikke lave
+  lokal tekstekstraktion, OCR eller semantisk analyse af readings/textbook
+  chapters
 - Gemini 3.1 Pro laver den semantiske fortolkning af kilder, lectures,
   course arc og relationer
 - NotebookLM prompts faar kun en kompakt valgt substrate-slice
@@ -63,6 +66,8 @@ Source pass:
 
 - sender hver tilgaengelig reading og slide deck som faktisk source file til
   Gemini Files API
+- hvis een logisk reading ligger i flere PDF'er, sendes alle de faktiske PDF'er
+  til Gemini som samme logical source; de maa ikke merges eller forstaas lokalt
 - skriver structured source cards
 - markerer claims, centrale begreber, distinctions, theory role,
   misunderstandings, source role og provenance
@@ -106,9 +111,43 @@ scaffolds:
   prioriteringssubstrat, ikke som erstatning for at Gemini laeser selve
   kilden
 
+## Batch- og raekkefoelgeregler
+
+Systemet maa gerne koeres piecemeal til udvikling, debugging og kvalitetstest.
+Det er derfor meningsfuldt at starte med fx `W05L1,W06L1`, fordi det tester
+filuploads, source-card schema, lecture substrate, downward revision,
+podcast-substrate og downstream promptbrug uden at betale for hele kurset.
+
+Men piecemeal er ikke det samme som den endelige course-understanding state:
+
+- `source_cards` kan bygges i vilkarlig raekkefoelge, fordi hvert source card
+  kun afhaenger af sin egen kilde, `source_catalog.json` og policy-filen
+- `lecture_substrates` kan ogsaa bygges i vilkarlig raekkefoelge, fordi hver
+  lecture kun afhaenger af sin lecture bundle, sine source cards og sine raw
+  source uploads
+- `course_synthesis` boer for den endelige produktion bygges fra alle lectures
+  samlet, fordi course arc, theory map og sideways relations kun bliver rigtige
+  med hele kurset i kontekst
+- `revised_lecture_substrates` og output substrates boer for den endelige
+  produktion genbygges efter en full-course synthesis, ikke efter en partial
+  smoke-test synthesis
+
+Praktisk regel:
+
+- Til smoke tests: koer en partial batch som `W05L1,W06L1`, og accepter at
+  `course_synthesis.scope == "partial"`.
+- Til produktionssubstrat: bygg alle source cards og lecture substrates
+  derefter een full `course_synthesis`, saa downward revisions og output
+  substrates for alle lectures.
+- Kronologisk raekkefoelge er nyttig for menneskelig review, men ikke et
+  teknisk krav foer full-course synthesis-pass.
+
 Guardrails:
 
 - alle LLM artifacts skal schema-validates
+- source-card validation afviser nu ogsaa tomme object-lister og
+  template-/placeholder-tekst, saa Gemini ikke kan "bestaa" ved at ekkoe
+  outputkontrakten
 - alle artifacts skal have input source ids og dependency hashes
 - missing sources skal blive explicit missing, ikke udfyldes af inference
 - claims skal saa vidt muligt markeres som source-grounded, slide-framed eller
@@ -190,7 +229,7 @@ Formaalet er at faa et stabilt, deterministisk file-level lag med:
 - source identity pr. reading/slide
 - lecture-tilknytning
 - sha256 for staleness-sporbarhed
-- sideantal, tekstmaengde og token-estimat
+- sideantal og page-baseret token-estimat
 - sprog-heuristik
 - source-type og simple prioritetssignaler
 - course-tunet evidensrolle pr. source (`reading_grounded`,
@@ -201,6 +240,12 @@ Formaalet er at faa et stabilt, deterministisk file-level lag med:
 Kataloget er lokalt bygget fra de raa source files og er derfor mere end en
 manifest-view. Det er den nye base for weighting, invalidation og
 lecture-bundle bygning.
+
+Vigtigt: `source_catalog.json` er et inventory-/metadata-lag. Det maa ikke
+ekstrahere tekst eller bygge source-forstaaelse lokalt. Feltet
+`text_extraction_status` skal derfor vise metadata-only status, og den
+semantiske forstaaelse skal komme fra Gemini artifacts, hvor de faktiske filer
+uploades via Files API.
 
 Den nye policy-fil er vigtig, fordi dette subsystem skal vaere tunet til netop
 `personlighedspsykologi`:
@@ -220,6 +265,8 @@ Kanonisk rebuild-kommando:
 Manuelle del-kommandoer, hvis et bestemt lag skal rebuildes isoleret:
 
 ```bash
+./.venv/bin/python scripts/audit_personlighedspsykologi_source_alignment.py
+./.venv/bin/python scripts/audit_personlighedspsykologi_slide_mapping.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_source_catalog.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_lecture_bundles.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_semantic_artifacts.py
@@ -340,9 +387,13 @@ For `short` betyder det nu ogsaa:
 - Katalog, lecture bundles og de nye course-level semantic artifacts er derfor i
   foerste version deterministiske lokale build-artifacts, som committes til
   repoet.
-- `W03L2` har fortsat en manifest-markeret missing reading (`Bach & Simonsen
-  (2023)`), og baade katalog og lecture bundle skal bevare den som missing i
-  stedet for at opfinde en filmapping.
+- `W03L2` source-mappingen er nu komplet. `Bach & Simonsen (2023)` er een
+  logical reading med to PDF'er (`kapitel 3` og `kapitel 5`), repraesenteret
+  med `source_filenames`/`subject_relative_paths` og sendt til Gemini som to
+  attached files.
+- `W03L2` er dog stadig partial i lecture-bundle readiness, fordi lecture-level
+  manual summary og Bach & Simonsen summary coverage mangler. Det er en
+  quality/readiness caveat, ikke en missing-source caveat.
 - `overblik.md` bruges fortsat som theme/course-arc input, men er endnu ikke et
   egentligt source-derived semester-resume.
 
@@ -470,7 +521,7 @@ Minimum schema:
 Testing target:
 
 - run for `W05L1` and `W06L1` first
-- then run all non-missing sources
+- then run all mapped sources
 
 Dry-run:
 
@@ -717,9 +768,7 @@ The preprocessing system is ready for podcast quality testing when:
 - validators confirm schema shape, hashes, and missing-source handling
 - dry-run prompts show compact substrate injection
 - generated test podcasts are at least not worse than the simple baseline
-
-For the first production-ish pass, `W03L2` remains allowed as partial because
-of the known missing source.
+- source alignment and slide mapping audits are clean
 
 Current blocker:
 

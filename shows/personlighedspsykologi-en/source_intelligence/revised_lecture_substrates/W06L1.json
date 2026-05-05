@@ -2,10 +2,19 @@
   "artifact_type": "revised_lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:32:36Z",
+  "generated_at": "2026-05-05T13:45:56Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-downward-revision-v1"
+    "prompt_version": "personlighedspsykologi-downward-revision-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -15,8 +24,8 @@
       "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
     ],
     "dependency_hashes": {
-      "lecture_substrate": "de576bca7bc1338b6c0d12a54d52c72df2cbc20de30301e4b7418b6804ae6975",
-      "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3"
+      "lecture_substrate": "f577902faf8d41956d7ab663cca0223c3af0bd245544e4fc66f4ab0df12376be",
+      "course_synthesis": "9498bcf7c252f8b9fccca4631ad226e05dd70e08ce87c54684eb0b2fa82e5663"
     }
   },
   "lecture": {
@@ -25,38 +34,31 @@
     "sequence_index": 11
   },
   "analysis": {
-    "top_down_course_relevance": "W06L1 constitutes the course's major pivot from 'objective' and 'hidden' mechanisms (traits, biology, psychoanalysis) to the 1st-person experiential paradigm. It establishes the foundational concepts of meaning, lived experience, and intentionality necessary for the subsequent existential, humanistic, and critical/narrative blocks.",
+    "top_down_course_relevance": "This lecture acts as the central pivot in the course arc. It transitions students away from paradigms that view personality as measurable internal variables (traits) or hidden unconscious drives (psychoanalysis), introducing the humanistic, first-person perspective. By establishing the subject as a dynamic, situated meaning-maker, it provides the essential groundwork for later critical, poststructural, and narrative theories that examine how these situated subjects are shaped by broader societal and discursive structures.",
     "what_matters_more": [
-      "The epistemological contrast: Emphasizing how phenomenology fundamentally redefines 'valid psychological data' as immediate, lived experience, contrasting sharply with both 3rd-person quantitative trait measurements and psychoanalytic unconscious depths.",
-      "Methodological rigor over introspection: Highlighting 'Epoché' and phenomenological reduction as rigorous scientific tools that prevent 1st-person perspectives from devolving into mere subjective anecdotes.",
-      "Intentionality as a bridge: Focusing on how intentionality dissolves the subject-object divide, presenting personality not as an internal container of traits, but as a dynamic 'way of being-in-the-world'."
+      "The epistemic shift from third-person objective measurement (e.g., trait theory) and depth interpretation (e.g., psychoanalysis) to first-person lived experience and the 'Lifeworld'.",
+      "Methodological concepts like epoché and intentionality as practical psychological tools for understanding personality as a dynamic, situated meaning-making process.",
+      "The concept of the pre-reflective body as the foundational way individuals orient toward and interact with the world."
     ],
     "de_emphasize": [
-      "Deep philosophical genealogies of Husserl, Heidegger, and Merleau-Ponty that drift too far from practical personality psychology.",
-      "Overly granular historical details of the Danish Copenhagen School, unless they directly illustrate the application of exact phenomenological observation."
+      "Deep philosophical biographies or historical chronologies of Husserl, Heidegger, and Merleau-Ponty beyond their direct applied contributions to personality psychology.",
+      "Highly technical, abstract debates between different philosophical schools of phenomenology that do not directly inform empirical or clinical personality research."
     ],
     "strongest_sideways_connections": [
-      {
-        "target": "W05L1 (Psychoanalysis & Hermeneutics)",
-        "relation": "Methodological opposition: Psychoanalysis acts as a detective interpreting hidden, unconscious depth (hermeneutics), whereas phenomenology strictly describes the immediate, pre-reflective surface of consciousness without interpreting underlying causes."
-      },
-      {
-        "target": "W01-W03 (Trait and Assessment Psychology)",
-        "relation": "Critical corrective: Phenomenology serves as a direct critique of trait psychology's tendency to reify human experience into static, 3rd-person aggregate variables, advocating instead for the holistic 'Lifeworld'."
-      }
+      {}
     ],
     "revised_podcast_priorities": [
-      "Utilize the Host A (3rd-person/science) vs. Host B (1st-person/meaning) dialectic to dramatize the debate over whether phenomenological description (Epoché) can truly be considered 'scientific'.",
-      "Ground abstract concepts like 'Intentionality' and 'Epoché' in relatable, everyday experiences (e.g., optical illusions, feeling the mood of a room, experiencing a piece of music) to avoid dense philosophical lecturing.",
-      "Use the 'constructed I' concept to challenge the natural assumption that we are always consciously directing our actions, making the pre-reflective bodily subject intuitive for listeners."
+      "Unpacking 'intentionality' to demonstrate that personality is inherently relational (consciousness is always consciousness *of* something).",
+      "Demystifying the 'epoché' (bracketing) as a radical shift in psychological methodology and how psychologists listen to subjects.",
+      "Illustrating the 'Lifeworld' and the pre-reflective body using relatable, everyday examples to highlight the limitations of static trait measurements."
     ],
     "carry_forward": [
-      "The insight that the 'I' is often constructed retrospectively (reflective vs. pre-reflective consciousness), which paves the way for poststructuralist theories of subjectivation and discursive identity later in the course.",
-      "The phenomenological critique of abstract reductionism, which serves as the springboard for Critical Psychology's insistence on studying situated human action in concrete contexts."
+      "The conception of the subject as fundamentally 'situated' in a world.",
+      "The scientific validity of first-person accounts and subjective meaning-making.",
+      "The phenomenological critique of reductionist, third-person measurements of human beings, which sets the stage for narrative and critical psychology."
     ],
     "warnings": [
-      "The empirical application text (Moeskær Hansen & Roald on aesthetic empathy) uses heavy jargon (e.g., imaginative variation, noematic clues). Scaffold this carefully so students see it as a practical method demonstration rather than getting lost in the vocabulary.",
-      "Ensure students do not mistakenly equate phenomenology's rejection of 'unconscious depth' with a superficial understanding of human beings; frame rigorous description of the 'surface' as profound in itself."
+      "Ensure that heavy philosophical terms (epoché, intentionality, Lifeworld) are consistently grounded in their psychological utility for understanding personality, to prevent the material from feeling like an abstract philosophy detour."
     ]
   }
 }

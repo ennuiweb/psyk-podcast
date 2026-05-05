@@ -412,9 +412,12 @@ def build_scaffold_for_source(
     source_id = str(source.get("source_id") or "").strip()
     if not source_id:
         raise ScaffoldingError("source is missing source_id")
-    source_path = recursive.source_file_path(subject_root, source)
-    if not source_path.exists() or not source_path.is_file():
-        raise ScaffoldingError(f"source file not found: {source_path}")
+    source_paths = recursive.source_file_paths(subject_root, source)
+    if not source_paths:
+        raise ScaffoldingError(f"source has no subject_relative_path: {source_id}")
+    missing_paths = [path for path in source_paths if not path.exists() or not path.is_file()]
+    if missing_paths:
+        raise ScaffoldingError(f"source file not found: {missing_paths[0]}")
     card_path = source_card_path(source_card_dir, source_id)
     if not card_path.exists():
         raise ScaffoldingError(f"source card not found: {card_path}")
@@ -444,7 +447,7 @@ def build_scaffold_for_source(
             lecture_context=_compact_lecture_context(revised_lecture_substrate_dir, lecture_key),
             course_context=_compact_course_context(course_synthesis_path),
         ),
-        source_paths=[source_path],
+        source_paths=source_paths,
         max_output_tokens=12288,
         response_json_schema=scaffold_response_schema(),
     )
@@ -461,7 +464,10 @@ def build_scaffold_for_source(
             "generation_config": generation_config_metadata(),
         },
         "provenance": {
-            "source_file": recursive.sha256_file(source_path),
+            "source_file": recursive.sha256_file(source_paths[0])
+            if len(source_paths) == 1
+            else recursive.signature_for_files(source_paths),
+            "source_files_signature": recursive.signature_for_files(source_paths),
             "source_card": recursive.sha256_file(card_path),
             "revised_lecture_substrate": _sha256_if_exists(revised_lecture_substrate_dir / f"{lecture_key}.json"),
             "course_synthesis": _sha256_if_exists(course_synthesis_path),
@@ -472,8 +478,10 @@ def build_scaffold_for_source(
             "title": str(source.get("title") or ""),
             "source_family": str(source.get("source_family") or ""),
             "evidence_origin": str(source.get("evidence_origin") or ""),
-            "source_path": str(source_path.resolve()),
-            "repo_display_path": recursive.display_path(source_path, repo_root),
+            "source_path": str(source_paths[0].resolve()),
+            "source_paths": [str(path.resolve()) for path in source_paths],
+            "repo_display_path": recursive.display_path(source_paths[0], repo_root),
+            "repo_display_paths": [recursive.display_path(path, repo_root) for path in source_paths],
         },
         "scaffolds": scaffolds,
     }

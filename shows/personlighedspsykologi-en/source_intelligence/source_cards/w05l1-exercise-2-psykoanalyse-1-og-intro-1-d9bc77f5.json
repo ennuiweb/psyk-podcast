@@ -2,10 +2,19 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:17:24Z",
+  "generated_at": "2026-05-05T13:36:52Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-source-card-v1"
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -13,7 +22,8 @@
     ],
     "dependency_hashes": {
       "source_file": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_files_signature": "d866753ae5a93eb4e5919fee23e7b0950289a9bdbcc358c3557604309d1cb74d",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -24,36 +34,42 @@
     "source_family": "exercise_slide",
     "evidence_origin": "exercise_clarified",
     "source_path": "Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf",
+    "source_paths": [
+      "Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf"
+    ],
     "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf"
+    ],
     "source_exists": true,
     "source_sha256": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
     "length_band": "medium",
     "page_count": 22,
-    "estimated_token_count": 3844,
-    "text_extraction_status": "ok"
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Serves as an applied, methodological clarification of Gammelgaard (2010), defining the epistemological boundaries and empirical criteria of psychoanalysis.",
-    "source_role": "Provides a structured breakdown of four criteria for psychoanalytic empiricism (based on Ricoeur/Gammelgaard) and translates these into a practical exercise in psychoanalytic listening using dream sharing.",
-    "relation_to_lecture": "Bridges theoretical discussions of psychoanalysis into concrete clinical epistemology, helping students understand how analysts practically gather and interpret data from unstructured narratives.",
+    "theory_role": "Explains the methodological and epistemological foundations of psychoanalysis, specifically how to define its empirical data through Gammelgaard's four criteria and how to handle classical scientific critiques.",
+    "source_role": "An exercise slide deck (Øvelseshold) designed to clarify complex methodological texts (like Gammelgaard) and apply them practically through group work and a dream interpretation exercise.",
+    "relation_to_lecture": "Translates the primary theoretical concepts of psychoanalysis into practical listening skills (focusing on form over content) and prepares students for clinical reasoning.",
     "central_claims": [
       {
-        "claim": "Psychoanalysis operates as both a treatment and a scientific investigation simultaneously, with unconscious processes serving as its primary empirical data.",
+        "claim": "Psychoanalytic empirical data cannot be isolated from the clinical setting; treatment and scientific investigation happen in the same process.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Because psychoanalysis deals with the unconscious subject which cannot be objectively measured, its method is 'anti-scientistic' (rejecting a reduced understanding of science) but not 'anti-scientific'.",
+        "claim": "Psychoanalysis is not anti-scientific, but 'anti-scientistic', meaning it rejects a reduced, purely objective understanding of science in order to study the unconscious subject.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Psychoanalytic empiricism is not the literal words or concrete actions of the analysand, but the meaning and intention behind what is said or done.",
+        "claim": "The empirical data of psychoanalysis is not literal words or concrete behavior, but the underlying meaning and intention behind what is said.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Due to the unpredictable and sudden manifestations of the unconscious, psychoanalysis relies on reasoning backwards ('at slutte baglæns') from interpretation to cause, creating a verification problem.",
+        "claim": "Because the unconscious manifests through sudden and unpredictable outbursts, psychoanalysis must verify its findings by 'inferring backwards' (slutte baglæns) rather than relying on linear, predictive causality.",
         "grounding": "source-grounded",
         "confidence": "high"
       }
@@ -61,59 +77,69 @@
     "key_concepts": [
       {
         "term": "Overføring (Transference)",
-        "definition": "The spontaneous and unconscious actualization of a patient's past intrapsychic relations, wishes, and conflicts onto the analyst during therapy.",
-        "role": "Explains how the psychoanalytic relationship itself becomes empirical data by restaging the patient's history."
+        "definition": "The actualization of unconscious desires and conflicts in relation to the analyst, where past intrapsychic relations are spontaneously and unconsciously displaced and repeated.",
+        "role": "Explains the relational dynamic in therapy where historical conflicts are re-enacted, serving as key empirical data."
       },
       {
         "term": "Psykisk realitet (Psychic reality)",
-        "definition": "An undeniable inner reality founded on unconscious ideas, blending both fact and fiction, where internal mental processes and subjective feelings are treated as real.",
-        "role": "Limits psychoanalysis's reliance on directly observable empirical data, validating the patient's subjective and affective reality."
+        "definition": "An inner, undeniable reality founded on unconscious ideas where facts and fictions are blended and invested with affect.",
+        "role": "Challenges the purely observational definition of empirical data, arguing that internal mental states and subjective experiences constitute real data in psychoanalysis."
       },
       {
-        "term": "Talekuren (The Talking Cure)",
-        "definition": "The defining characteristic of psychoanalysis where spoken words are the path to empirical data, though the data itself is the underlying intention and meaning rather than the literal speech.",
-        "role": "Establishes language and narrative as the primary methodological tool for accessing the unconscious."
+        "term": "Talekuren (The talking cure)",
+        "definition": "The foundational character of psychoanalysis where language is used as a detour to access empirical data, focusing on the meaning behind words rather than the literal statements.",
+        "role": "Defines the specific method of data extraction in psychoanalytic practice."
       },
       {
-        "term": "Den fortalte historie (The recounted story)",
-        "definition": "The analysand's continuously rewritten, often fragmented life story, which is colored by unconscious impulses and functions as an attempt to create coherence.",
-        "role": "Highlights that memory in psychoanalysis is not an isolated event but a subjective, dynamically updated construction."
+        "term": "Slutte baglæns (Backward inference)",
+        "definition": "The methodological necessity of inferring causes from interpretations after the fact, rather than predicting them, due to the unpredictable nature of the unconscious.",
+        "role": "Addresses the 'verification problem' and explains the specific epistemological network of causality used in psychoanalysis."
+      },
+      {
+        "term": "Den fortalte historie (The told story)",
+        "definition": "The analysand's fragmented and incoherent narrative, which is constantly rewritten outside of consciousness based on internal impulses.",
+        "role": "Highlights that the therapeutic goal is to co-create meaning and coherence out of fragmented life experiences."
       }
     ],
     "distinctions": [
       {
-        "label": "Scientistic vs. Scientific",
-        "summary": "A narrow, strictly observable definition of empirical science (scientistic) versus a broader definition capable of analyzing the unconscious subject's mode of being.",
-        "stakes": "Defends psychoanalysis against criticisms of being unscientific by arguing that demanding directly observable data would reduce and eliminate the phenomenon of the unconscious."
+        "label": "Scientistic vs. Psychoanalytic Science",
+        "summary": "Scientistic approaches demand immediately observable, objective empirical data, whereas psychoanalysis adapts its method to capture the un-objectifiable 'unconscious subject'.",
+        "stakes": "Defends the scientific validity of psychoanalysis against claims that it is unscientific, reframing the debate around the appropriate methods for specific types of data."
       },
       {
-        "label": "Form vs. Content in Psychoanalytic Listening",
-        "summary": "Focusing on *how* a story or dream is told (fragmented, affective, associative form) rather than just *what* is being told (the literal content).",
-        "stakes": "Guides the practical application of psychoanalytic method, as demonstrated in the dream analysis exercise."
+        "label": "Denotative vs. Conative/Intentional content",
+        "summary": "The distinction between what is concretely said (denotative) and the underlying emotive function or unconscious wish (intentional).",
+        "stakes": "Guides the psychoanalytic listening practice to focus on 'how' and 'why' something is expressed rather than just 'what' is said."
       }
     ],
     "likely_misunderstandings": [
-      "Assuming 'anti-scientistic' means psychoanalysis completely rejects being a science, rather than rejecting a narrow positivist definition of science.",
-      "Thinking the empirical data of psychoanalysis is the literal transcript of what the patient says, rather than the unsaid intentions, affects, and transferences.",
-      "Believing that 'psychic reality' means psychoanalysts don't care about the truth; rather, it means subjective, affective experiences have their own objective weight in the psyche."
+      "Believing that psychoanalysis actively rejects being a science (it rejects 'scientism', not science itself).",
+      "Assuming the psychoanalyst focuses on the literal truth or historical accuracy of the patient's story (the focus is on psychic reality, intentions, and form).",
+      "Thinking psychoanalysis uses linear causality to prove a hypothesis (it relies on retrospective inference or 'slutte baglæns')."
     ],
     "quote_targets": [
       {
-        "target": "Spørgsmålet om det ubevidste subjekt er en problemstilling, der ikke kan objektiviseres. Det gør ikke psykoanalysen anti-videnskabelig, [...], men nok anti-scientistisk",
-        "why": "Perfectly captures the course's stance on the scientific status and epistemological framework of psychoanalysis."
+        "target": "anti-scientistisk, det vil sige skeptisk over for en reduceret videnskabsforståelse.",
+        "why": "Core quote summarizing Gammelgaard's defense of psychoanalysis' scientific status."
       },
       {
-        "target": "har vi i psykoanalysen ingen anden mulighed end at slutte baglæns, så at sige fra vores fortolkning til årsagen",
-        "why": "Explains the unique, non-linear causality and verification challenge inherent to psychoanalytic interpretation."
+        "target": "ingen anden mulighed end at slutte baglæns, så at sige fra vores fortolkning til årsagen",
+        "why": "Crucial for understanding how psychoanalysis addresses the verification problem."
+      },
+      {
+        "target": "Psykoanalytisk lytten retter sig mod form (hvordan) snarere end indhold (hvad)",
+        "why": "The primary operational takeaway for the students' practical exercises in the session."
       }
     ],
     "grounding_notes": [
-      "As an exercise_clarified source, this slide deck focuses heavily on application, group work structure, and summarizing textbook concepts (Gammelgaard 2010) rather than introducing novel primary theory.",
-      "The 4 criteria (Talekuren, Intentionalitet, Psykisk realitet, Den fortalte historie) are explicitly mapped to Gammelgaard (2010) and Ricoeur (1981)."
+      "The core methodological framing heavily relies on Gammelgaard (2010), specifically pages 357-371.",
+      "Definitions for clinical concepts like transference and analsadism are sourced from Andkjær Olsen (2002).",
+      "Slide 2 mentions 'Riceuors (1981) 4 principper', which shapes the listening exercise."
     ],
     "warnings": [
-      "OCR contains minor typos (e.g., 'Riceuors' instead of Ricoeur, 'Intorduktion').",
-      "Slides 9 and 16 contain a complex visual table ('Model over psykoanalysens empiri') where OCR mixes columns; students should consult the visual slide to correctly map the denotative, conative, and intentional levels to the clinical example of the dictaphone/urine."
+      "The name 'Riceuors' on slide 2 is almost certainly a typographical error for Paul Ricoeur.",
+      "The slide content consists of highly condensed summaries of Gammelgaard (2010); students should refer to the primary text for full context on the verification problem and the 'Tally argument'."
     ]
   }
 }

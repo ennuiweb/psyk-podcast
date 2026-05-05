@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W06L2",
   "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
   "sequence_index": 12,
@@ -45,7 +45,7 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 45,
-    "total_estimated_tokens": 0,
+    "total_estimated_tokens": 29250,
     "source_family_counts": {
       "reading": 2
     }
@@ -69,15 +69,15 @@
       "source_id": "w06l2-may-1966-d8406a09",
       "title": "May (1966)",
       "source_family": "reading",
-      "priority_score": 122,
+      "priority_score": 130,
       "priority_band": "core"
     },
     {
       "source_id": "w06l2-boss-1963-1feb5a5f",
       "title": "Boss (1963)",
       "source_family": "reading",
-      "priority_score": 116,
-      "priority_band": "primary"
+      "priority_score": 124,
+      "priority_band": "core"
     }
   ],
   "sources": {
@@ -96,12 +96,13 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 122,
+        "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -111,10 +112,10 @@
         },
         "file": {
           "page_count": 34,
-          "estimated_token_count": 0,
+          "estimated_token_count": 22100,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "77449515bd1e5c736b97a6b1eb54486db787664decf2d3e5307add092f84d085",
           "size_bytes": 7251021
         },
@@ -151,12 +152,13 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 116,
-        "priority_band": "primary",
+        "priority_score": 124,
+        "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -166,10 +168,10 @@
         },
         "file": {
           "page_count": 11,
-          "estimated_token_count": 0,
+          "estimated_token_count": 7150,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "f2273465cc0bc5961d4612c7dada5a4233fe8bcac3b436bacb67ad5cb3d80481",
           "size_bytes": 1837265
         },

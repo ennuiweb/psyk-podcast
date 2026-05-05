@@ -315,6 +315,82 @@ def test_source_cards_continue_on_error_records_missing_local_file(tmp_path):
     assert "missing.pdf" in missing["error"]
 
 
+def test_source_card_multi_file_source_uploads_all_files(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    source_b = fixture["subject_root"] / "Readings" / "source-b.pdf"
+    source_b.write_bytes(b"%PDF-1.4 source b")
+    catalog = recursive.load_json(fixture["source_catalog_path"])
+    source = catalog["sources"][0]
+    source["subject_relative_paths"] = ["Readings/source.pdf", "Readings/source-b.pdf"]
+    source["file"]["parts"] = [
+        {
+            "subject_relative_path": "Readings/source.pdf",
+            "sha256": recursive.sha256_file(fixture["source_path"]),
+        },
+        {
+            "subject_relative_path": "Readings/source-b.pdf",
+            "sha256": recursive.sha256_file(source_b),
+        },
+    ]
+    _write_json(fixture["source_catalog_path"], catalog)
+
+    captured_names: list[str] = []
+
+    def capturing_generator(*, system_instruction, user_prompt, source_paths, max_output_tokens):
+        if "structured source card" in system_instruction.lower():
+            captured_names.extend(path.name for path in source_paths)
+        return _fake_json_generator(
+            system_instruction=system_instruction,
+            user_prompt=user_prompt,
+            source_paths=source_paths,
+            max_output_tokens=max_output_tokens,
+        )
+
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=capturing_generator,
+    )
+
+    assert captured_names == ["source.pdf", "source-b.pdf"]
+    artifact = recursive.load_json(fixture["recursive_dir"] / "source_cards" / "source-1.json")
+    assert artifact["source"]["source_paths"] == ["Readings/source.pdf", "Readings/source-b.pdf"]
+    assert artifact["provenance"]["dependency_hashes"]["source_files_signature"]
+
+
+def test_source_card_repairs_empty_required_role_from_model(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+
+    def generator_with_empty_role(*, system_instruction, user_prompt, source_paths, max_output_tokens):
+        payload = _fake_json_generator(
+            system_instruction=system_instruction,
+            user_prompt=user_prompt,
+            source_paths=source_paths,
+            max_output_tokens=max_output_tokens,
+        )
+        if "structured source card" in system_instruction.lower():
+            payload["analysis"]["source_role"] = ""
+        return payload
+
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=generator_with_empty_role,
+    )
+
+    artifact = recursive.load_json(fixture["recursive_dir"] / "source_cards" / "source-1.json")
+    assert artifact["analysis"]["source_role"]
+    assert "filled by a fallback" in "\n".join(artifact["analysis"]["warnings"])
+
+
 def test_lecture_substrates_continue_on_error_records_missing_bundle(tmp_path):
     fixture = _minimal_course_fixture(tmp_path)
     recursive.build_source_cards(

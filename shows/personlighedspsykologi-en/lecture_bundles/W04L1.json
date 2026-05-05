@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W04L1",
   "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
   "sequence_index": 7,
@@ -49,7 +49,7 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 104,
-    "total_estimated_tokens": 6939,
+    "total_estimated_tokens": 67600,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2,
@@ -57,7 +57,7 @@
     }
   },
   "source_intelligence": {
-    "dominant_language": "da",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -69,7 +69,8 @@
       "w04l1-freud-1973-1933-98cd9920"
     ],
     "likely_supporting_sources": [
-      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22"
+      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
     ]
   },
   "source_priority_order": [
@@ -77,29 +78,29 @@
       "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
       "title": "Gammelgaard (2007)",
       "source_family": "reading",
-      "priority_score": 122,
+      "priority_score": 130,
       "priority_band": "core"
     },
     {
       "source_id": "w04l1-freud-1973-1933-98cd9920",
       "title": "Freud (1973/1933)",
       "source_family": "reading",
-      "priority_score": 116,
-      "priority_band": "primary"
+      "priority_score": 124,
+      "priority_band": "core"
     },
     {
       "source_id": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
       "title": "7. Psykoanalysens personbegreb",
       "source_family": "lecture_slide",
-      "priority_score": 88,
+      "priority_score": 92,
       "priority_band": "supporting"
     },
     {
       "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
       "title": "4. Psykoanalyse I",
       "source_family": "seminar_slide",
-      "priority_score": 64,
-      "priority_band": "contextual"
+      "priority_score": 72,
+      "priority_band": "supporting"
     }
   ],
   "sources": {
@@ -118,12 +119,13 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 122,
+        "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -133,10 +135,10 @@
         },
         "file": {
           "page_count": 30,
-          "estimated_token_count": 0,
+          "estimated_token_count": 19500,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "60b0db759d6715f8798b483648b8e150e9dc75d9c7b02fd09a95871f24c2545f",
           "size_bytes": 4878012
         },
@@ -173,12 +175,13 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 116,
-        "priority_band": "primary",
+        "priority_score": 124,
+        "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -188,10 +191,10 @@
         },
         "file": {
           "page_count": 11,
-          "estimated_token_count": 0,
+          "estimated_token_count": 7150,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "5e11d6e9dbd0d635d6589c4ce15b09f6d7474a89d88181de4fa8fc7b92af8ae3",
           "size_bytes": 2682919
         },
@@ -226,16 +229,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 88,
+        "priority_score": 92,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
           "long source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -245,10 +248,10 @@
         },
         "file": {
           "page_count": 46,
-          "estimated_token_count": 5536,
-          "estimated_word_count": 3307,
-          "text_char_count": 22141,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 29900,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "c23bebbbda7dd79720b69261d38039d4f8cf251e1665ec2f0687facfa1002682",
           "size_bytes": 6585989
         },
@@ -274,15 +277,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "seminar",
         "evidence_origin": "seminar_applied",
-        "priority_score": 64,
-        "priority_band": "contextual",
+        "priority_score": 72,
+        "priority_band": "supporting",
         "priority_reasons": [
           "seminar_slide",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -292,10 +296,10 @@
         },
         "file": {
           "page_count": 17,
-          "estimated_token_count": 1403,
-          "estimated_word_count": 885,
-          "text_char_count": 5610,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 11050,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
           "size_bytes": 1627865
         },

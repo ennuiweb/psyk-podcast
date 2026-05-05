@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W12L1",
   "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
   "sequence_index": 22,
@@ -45,7 +45,7 @@
     "manual_reading_summaries_present": 3,
     "source_analyses_present": 1,
     "total_pages": 135,
-    "total_estimated_tokens": 0,
+    "total_estimated_tokens": 87750,
     "source_family_counts": {
       "reading": 3
     }
@@ -76,21 +76,21 @@
       "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
       "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
       "source_family": "reading",
-      "priority_score": 148,
+      "priority_score": 156,
       "priority_band": "core"
     },
     {
       "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
       "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
       "source_family": "reading",
-      "priority_score": 140,
+      "priority_score": 148,
       "priority_band": "core"
     },
     {
       "source_id": "w12l1-elias-2000-f9176ae8",
       "title": "Elias (2000)",
       "source_family": "reading",
-      "priority_score": 120,
+      "priority_score": 128,
       "priority_band": "core"
     }
   ],
@@ -110,7 +110,7 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 148,
+        "priority_score": 156,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -118,7 +118,8 @@
           "manual summary",
           "analysis sidecar",
           "week analysis",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -128,10 +129,10 @@
         },
         "file": {
           "page_count": 72,
-          "estimated_token_count": 0,
+          "estimated_token_count": 46800,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
           "size_bytes": 7873734
         },
@@ -174,14 +175,15 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 140,
+        "priority_score": 148,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "grundbog",
           "manual summary",
           "week analysis",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -191,10 +193,10 @@
         },
         "file": {
           "page_count": 44,
-          "estimated_token_count": 0,
+          "estimated_token_count": 28600,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
           "size_bytes": 7246738
         },
@@ -231,13 +233,14 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 120,
+        "priority_score": 128,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
           "week analysis",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -247,10 +250,10 @@
         },
         "file": {
           "page_count": 19,
-          "estimated_token_count": 0,
+          "estimated_token_count": 12350,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "2916674e58257dd4ab74932ecb074aac36f67ce648b56432d31c6392fe64fc1d",
           "size_bytes": 2282030
         },

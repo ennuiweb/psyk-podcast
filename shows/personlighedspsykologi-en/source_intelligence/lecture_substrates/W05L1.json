@@ -2,10 +2,19 @@
   "artifact_type": "lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:29:31Z",
+  "generated_at": "2026-05-05T13:43:04Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-lecture-substrate-v1"
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -16,9 +25,9 @@
       "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
     ],
     "dependency_hashes": {
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
-      "lecture_bundle": "932fcd153667f84ee72d7599bad5ee7d58164797df4c11d5f9b38422455e0ee0",
-      "source_cards_signature": "2e115df0262df7bbe51529780b12dda6b7d847ef823a2c10569472fb4b0db5c8",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "lecture_bundle": "89753c72dfc75e341b2f79af3b10ed82e602e6cba727ebf876d531b00696093c",
+      "source_cards_signature": "794a9f3f281895d16f78dc321816e98510309006490f5e29387285b2d703950d",
       "raw_sources_signature": "2094f25e9e1e8a14bc407b2d3e2f63caf04e2efd00e756fdc14e5999d287c542"
     }
   },
@@ -28,94 +37,31 @@
     "sequence_index": 9
   },
   "analysis": {
-    "lecture_question": "Hvordan konstitueres, indsamles og valideres empiri i psykoanalysen, når genstandsfeltet er det ubevidste og decentrerede subjekt?",
-    "central_learning_problem": "De studerende skal skifte deres epistemologiske referenceramme fra en positivistisk, naturvidenskabelig forståelse af empiri til en hermeneutisk og fænomenologisk. De skal forstå, at psykoanalytiske 'fakta' ikke er direkte observerbar adfærd, men derimod sproglige, intersubjektive og affektive produktioner (psykisk realitet), der opstår i den kliniske relation (overføring). Udfordringen er at gribe, hvordan psykoanalysen kan opretholde et videnskabeligt sandhedskrav uden at forfalde til eksakte målinger, men i stedet basere sig på narrativ kohærens, teoretisk konsistens og terapeutisk effekt.",
+    "lecture_question": "Hvordan etablerer psykoanalysen sit empiriske grundlag og sine sandhedskrav, nar dens primare genstandsfelt (det ubevidste) unddrager sig direkte naturvidenskabelig observation?",
+    "central_learning_problem": "De studerende har ofte svert ved at forene psykoanalysens videnskabelighed med naturvidenskabelige, positivistiske idealer om malbarhed og objektivitet. Læringsproblemet bestar i at forsta overgangen fra en korrespondanceteoretisk sandhedsforstaelse til en hermeneutisk, processuel sandhedsforstaelse, hvor empiri defineres ud fra sprog (talekuren), intentionalitet (overforing), psykisk realitet og narrativitet, og hvor arsagssammenhange ofte kun kan udledes baglans (Nachtraglichkeit) i det kliniske rum.",
     "source_roles": [
-      {
-        "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
-        "role": "anchor"
-      },
-      {
-        "source_id": "w05l1-ricoeur-1981-19a5343f",
-        "role": "anchor"
-      },
-      {
-        "source_id": "w05l1-gammelgaard-2010-e6baff8b",
-        "role": "framing"
-      },
-      {
-        "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
-        "role": "supporting"
-      },
-      {
-        "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
-        "role": "application"
-      }
+      {}
     ],
     "source_relations": [
-      {
-        "relation": "Gammelgaard (2010) fungerer som en pædagogisk syntetisering af Ricoeurs (1981) komplekse videnskabsteoretiske kriterier for psykoanalysens empiri, hvilket gør dem mere tilgængelige."
-      },
-      {
-        "relation": "Freuds 'Dora'-case (1905) udgør det historiske og empiriske råmateriale, som både Ricoeurs og Gammelgaards tekster reflekterer over og forsøger at legitimere epistemologisk."
-      },
-      {
-        "relation": "Forelæsningsslidesne forbinder den abstrakte epistemologi (Ricoeur/Gammelgaard) direkte med Freuds konkrete og ofte fejlbarlige kliniske praksis i Dora-casen."
-      },
-      {
-        "relation": "Øvelsesslidesne oversætter de fire kriterier for psykoanalytisk empiri (fra Gammelgaard/Ricoeur) til en praktisk anvendelig metode for de studerende gennem en drømmeanalyseøvelse."
-      }
+      {}
     ],
     "core_concepts": [
-      {
-        "concept": "Psykisk realitet",
-        "why_it_matters": "Det udgør psykoanalysens primære undersøgelsesobjekt; subjektets indre verden af fantasier og ubevidste ønsker anerkendes som havende sin egen gyldighed, uafhængigt af den materielle virkelighed."
-      },
-      {
-        "concept": "Overføring",
-        "why_it_matters": "Det forklarer, hvordan patientens ubevidste mønstre aktualiseres i relationen til analytikeren, hvilket gør selve den kliniske situation til psykoanalysens primære empiriske laboratorium."
-      },
-      {
-        "concept": "Talekuren",
-        "why_it_matters": "Understreger, at psykoanalysens empiri altid er medieret af sproget, og at det ikke er de bogstavelige ord, men meningen og intentionaliteten bag, der udgør data."
-      },
-      {
-        "concept": "Nachträglichkeit (Efterlods virkning)",
-        "why_it_matters": "Udfordrer lineær kausalitet ved at vise, at tidlige (ofte infantile) oplevelser først får deres fulde (og evt. traumatiske) betydning senere i livet i lyset af nye begivenheder."
-      },
-      {
-        "concept": "Narrativitet / Den fortalte historie",
-        "why_it_matters": "Sandhed i psykoanalysen er tæt knyttet til evnen til at skabe en sammenhængende livsfortælling ud af fragmenterede og uforståelige symptomer."
-      }
+      {}
     ],
     "core_tensions": [
-      {
-        "tension": "Naturvidenskabelig (scientistisk) evidens vs. Hermeneutisk evidens",
-        "stakes": "Afgør psykoanalysens legitimitet som videnskab. Hvis den bedømmes udelukkende på positivistiske parametre (målbarhed), fejler den; den kræver sine egne kriterier for bevisførelse."
-      },
-      {
-        "tension": "Materiel virkelighed vs. Psykisk realitet",
-        "stakes": "Tvinger analytikeren til at fokusere på patientens subjektive meningsdannelse (fantasien) frem for at agere detektiv, der udelukkende søger historisk, objektiv sandhed."
-      },
-      {
-        "tension": "Teoretisk ideal vs. Klinisk praksis",
-        "stakes": "Som vist i Dora-casen kan der være stor forskel på psykoanalysens metodiske idealer og analytikerens faktiske ageren, især når analytikerens egne blinde vinkler (modoverføring) træder i kraft."
-      }
+      {}
     ],
     "likely_misunderstandings": [
-      "At antage, at psykoanalysen er 'uvidenskabelig' (fordi den afviser ren positivisme), i stedet for at forstå den som en disciplin med en anden epistemologisk standard baseret på sprog og mening.",
-      "At tro, at det primære mål i psykoanalysen er at finde frem til den eksakte, objektive sandhed om patientens barndom, snarere end at forstå den psykiske realitet.",
-      "At forveksle Freuds Dora-case med en ubetinget succesfuld model for terapi; den illustrerer netop metodens grænser og Freuds fejl (manglende håndtering af overføring)."
+      "At 'anti-scientistisk' er det samme som 'anti-videnskabelig', og at psykoanalysen derfor helt afviser videnskabelighed."
     ],
     "must_carry_ideas": [
-      "Psykoanalysen er på én og samme tid en behandlingsmetode og en videnskabelig undersøgelse; det kliniske møde er selve forskningsfeltet.",
-      "Empiri i psykoanalysen defineres gennem fire kriterier: det talte sprog, intentionalitet (henvendelsen til den anden), psykisk realitet og den fortalte historie (narrativet).",
-      "Validering af psykoanalytiske påstande bygger på en synergi mellem teoretisk kohærens, narrativ meningsfuldhed og terapeutisk effekt, ikke på simpel falsifikation."
+      "Psykoanalytisk empiri baserer sig pa fire kriterier: sprog (talekuren), intersubjektivitet (intentionalitet/overforing), psykisk realitet og den fortalte historie (narrativet)."
     ],
-    "missing_sources": [],
+    "missing_sources": [
+      {}
+    ],
     "warnings": [
-      "Ricoeurs filosofiske tekst er meget abstrakt og kræver solid brobygning via Gammelgaards tekst og forelæsningens eksempler for ikke at tabe de studerende.",
-      "Freuds originale Dora-tekst indeholder fodnoter fra senere udgaver (f.eks. 1923), som justerer hans oprindelige teori fra 1905; disse tidslige forskydninger bør holdes for øje."
+      "Den vedlagte Freud-tekst er en engelsk oversaettelse, hvilket kan skabe terminologisk forvirring i forhold til de danske forelaesninger."
     ]
   }
 }

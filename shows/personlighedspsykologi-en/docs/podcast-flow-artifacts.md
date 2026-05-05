@@ -60,7 +60,7 @@ Disse filer er afledte outputs, som må regenereres:
 | `shows/personlighedspsykologi-en/quiz_links.json` | Repo mapping fra audio/episode names til quiz URLs og difficulty metadata. |
 | `shows/personlighedspsykologi-en/spotify_map.json` | Repo sidecar mapping fra episode key/RSS-title til Spotify episode URL. |
 | `shows/personlighedspsykologi-en/content_manifest.json` | Freudd content manifest med lectures, readings, podcast assets, quizzes, slides og Spotify links. |
-| `shows/personlighedspsykologi-en/source_catalog.json` | Deterministisk file-level preprocessing-katalog for raw readings/slides: hashes, page counts, token-estimater, type-signaler og prompt-sidecar-daekning. Bygges lokalt fra source tree, ikke i GitHub Actions. |
+| `shows/personlighedspsykologi-en/source_catalog.json` | Deterministisk file-level inventory-katalog for raw readings/slides: hashes, page counts, page-baserede token-estimater, type-signaler og prompt-sidecar-daekning. Det ekstraherer ikke source-tekst lokalt; source-forstaaelse bygges i Gemini artifacts med de faktiske filer attached. Bygges lokalt fra source tree, ikke i GitHub Actions. |
 
 ## Runtime And Ephemeral State
 

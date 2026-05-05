@@ -2,10 +2,19 @@
   "artifact_type": "podcast_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:33:52Z",
+  "generated_at": "2026-05-05T13:47:30Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-podcast-substrate-v1"
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -15,10 +24,10 @@
       "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
     ],
     "dependency_hashes": {
-      "revised_lecture_substrate": "d919d1ef3f762997db49d153c59a2534c20763ba380155fd521d15e4a3883b54",
-      "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3",
-      "source_cards_signature": "7ca15d38bfa48df282db94de4465d51904aa43bfcdd769b78824345794bb15d9",
-      "source_weighting": "c3539386af5ffd7f9f42976efa27918dbfab8aa579fb95a426704c94e2fc6f58"
+      "revised_lecture_substrate": "ed6f8a169c81420105cc7bab0e9253b7abaec3f9d3d97ca20f3e6facb86c9348",
+      "course_synthesis": "9498bcf7c252f8b9fccca4631ad226e05dd70e08ce87c54684eb0b2fa82e5663",
+      "source_cards_signature": "4fe010220c167efdd636753a19c6de2a0dd573e0e5c5ed5b501fa28825dd3c9b",
+      "source_weighting": "037d6dfb0a0ada7265e3597206de56bc68b00f5ab7e41ef1d11e4334d1353357"
     }
   },
   "lecture": {
@@ -28,140 +37,52 @@
   },
   "podcast": {
     "weekly": {
-      "angle": "The radical shift from 3rd-person objective mechanisms and psychoanalytic unconscious depths to the 1st-person, conscious, lived experience as valid scientific data.",
+      "angle": "The radical shift from measuring objective personality traits to understanding subjective lived experience. Personality is reframed as a dynamic, situated meaning-making process.",
       "must_cover": [
-        "Intentionality as the bridge that dissolves the subject-object divide.",
-        "Epoché and phenomenological reduction as rigorous scientific tools, distinguishing the method from mere introspection.",
-        "The concept of the 'constructed I' and the difference between pre-reflective and reflective consciousness."
+        "The epistemic shift from third-person objective measurement to the first-person 'Lifeworld'.",
+        "Intentionality: the idea that consciousness is relational (always consciousness OF something).",
+        "Epoché (bracketing) as a methodological tool to suspend assumptions and listen to the subject.",
+        "The pre-reflective body as the foundational way individuals orient toward the world."
       ],
       "avoid": [
-        "Equating phenomenology with unscientific subjective anecdotes or solipsism.",
-        "Getting lost in dense philosophical genealogies (Husserl, Heidegger) at the expense of practical personality psychology."
+        "Deep philosophical biographies or historical chronologies of Husserl, Heidegger, and Merleau-Ponty.",
+        "Highly technical debates between philosophical schools of phenomenology.",
+        "Framing phenomenology as a denial of physical reality (solipsism)."
       ],
       "grounding": [
-        "Use Spinelli (2005) for the rules of the phenomenological method (epoché, horizontalization).",
-        "Anchor the empirical application of phenomenology in Moeskær Hansen & Roald's (2022) study of aesthetic empathy."
+        "Ground heavy philosophical terms (epoché, intentionality, Lifeworld) in practical psychological utility and methodology.",
+        "Use empirical examples, such as aesthetic empathy from Moeskær Hansen & Roald, to show phenomenology in action."
       ]
     },
     "per_reading": [
-      {
-        "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
-        "angle": "The definitional and historical baseline of phenomenology in psychology.",
-        "must_cover": [
-          "Definition of phenomena and intentionality.",
-          "Husserl's 'Lifeworld' vs. the scientific world.",
-          "Merleau-Ponty's 'pre-reflective bodily subject' (kropssubjektet)."
-        ],
-        "avoid": [
-          "Confusing classical introspection with phenomenological reduction."
-        ]
-      },
-      {
-        "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
-        "angle": "A practical, empirical demonstration of phenomenological methodology applied to art and emotion.",
-        "must_cover": [
-          "Aesthetic empathy as co-constitution with an 'Other', not mere projection.",
-          "The five core constituents of aesthetic empathy."
-        ],
-        "avoid": [
-          "Getting bogged down by jargon like 'imaginative variation' without explaining the practical method for students."
-        ]
-      },
-      {
-        "source_id": "w06l1-spinelli-2005-b2f76e93",
-        "angle": "The core philosophical rules adapted for psychological inquiry.",
-        "must_cover": [
-          "Noema (the what) vs. Noesis (the how).",
-          "The three steps of the phenomenological method: Epoché, description, horizontalization.",
-          "Straightforward vs. reflective experience and the delayed emergence of the 'I'."
-        ],
-        "avoid": [
-          "Assuming perfect bracketing (epoché) is possible; it is an attempt, not an absolute state."
-        ]
-      }
+      {}
     ],
     "per_slide": [
-      {
-        "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
-        "angle": "High-level course framing connecting philosophy to specific psychological methods.",
-        "must_cover": [
-          "1st-person vs. 3rd-person perspectives.",
-          "Immediate experience vs. post-rationalization.",
-          "The body as the experiential starting point (kropssubjektet)."
-        ],
-        "avoid": [
-          "Viewing the Copenhagen School as purely theoretical; emphasize their focus on exact, anti-theoretical observation."
-        ]
-      }
+      {}
     ],
     "short": {
-      "angle": "Why 'just describing experience' is actually a rigorous and profound scientific method.",
+      "angle": "How phenomenology completely changes the way we study personality by focusing on the first-person perspective.",
       "must_cover": [
-        "Intentionality (consciousness is always directed at the world).",
-        "Epoché (suspending assumptions to see what is actually there)."
+        "The concepts of Intentionality and the Lifeworld.",
+        "The practical use of Epoché (bracketing biases) in psychological research."
       ],
       "avoid": [
-        "Dense philosophy; ground concepts in everyday examples like hearing a song or feeling a room's mood."
+        "Getting bogged down in the distinction between noema and noesis or complex historical timelines."
       ]
     },
     "selected_concepts": [
-      {
-        "concept": "Intentionality / Intentionalitet",
-        "role": "Core concept showing consciousness is always relational and directed at something, bridging inner and outer worlds."
-      },
-      {
-        "concept": "Epoché / Phenomenological Reduction",
-        "role": "The methodological practice of setting aside assumptions to objectively study subjective experience."
-      },
-      {
-        "concept": "Pre-reflective Bodily Subject / Præ-refleksivt kropssubjekt",
-        "role": "Highlights that we exist primarily as bodies acting in the world, not as isolated thinking egos."
-      },
-      {
-        "concept": "Noema and Noesis",
-        "role": "Distinguishes the object of experience (noema) from the subjective, biased mode of experiencing it (noesis)."
-      }
+      {}
     ],
     "selected_tensions": [
-      {
-        "tension": "1st-person lived experience vs. 3rd-person objective mechanisms",
-        "stakes": "Defines what counts as valid psychological data, challenging the reductionism of trait and biological psychology."
-      },
-      {
-        "tension": "Straightforward vs. Reflective Experience",
-        "stakes": "Challenges the commonsense assumption that an 'I' initiates experience, paving the way for seeing identity as retrospectively constructed."
-      },
-      {
-        "tension": "Co-constitution vs. Projection (Aesthetic Empathy)",
-        "stakes": "Defends empathy as a genuine encounter with an 'Other' rather than a narcissistic illusion or mere emotional contagion."
-      }
+      {}
     ],
     "grounding_notes": [
-      "Always frame the 'Ego' or 'I' as a retrospective construct rather than a constant presence, strictly adhering to Spinelli's interpretation.",
-      "Treat the Danish 'Københavnerskole' (Rubin, From) primarily as historical examples of rigorous empirical observation in phenomenology.",
-      "Contrast phenomenology with Week 5's psychoanalysis: phenomenology describes the surface rigorously without interpreting hidden unconscious causes."
+      "Use Moeskær Hansen & Roald's study on aesthetic empathy to prove that phenomenology is a rigorous empirical method, not just armchair philosophy.",
+      "Explicitly clarify that in phenomenology, the 'I' (ego) is not a constant presence; it only emerges in reflective consciousness, not in pre-reflective flow.",
+      "Ensure the distinction between Husserl's descriptive methods and Merleau-Ponty's bodily focus is clear but tied to psychological application."
     ],
     "source_selection": [
-      {
-        "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
-        "priority": "anchor",
-        "why": "Provides the essential textbook definitions of intentionality, lifeworld, and the pre-reflective subject."
-      },
-      {
-        "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
-        "priority": "anchor",
-        "why": "Serves as the crucial empirical exemplar, showing how phenomenological methods are practically applied to qualitative data."
-      },
-      {
-        "source_id": "w06l1-spinelli-2005-b2f76e93",
-        "priority": "anchor",
-        "why": "Delivers the foundational methodological rules (epoché, horizontalization) and the key distinction between straightforward and reflective experience."
-      },
-      {
-        "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
-        "priority": "supporting",
-        "why": "Frames the week's overarching narrative and connects the readings to the 1st vs. 3rd person epistemological debate."
-      }
+      {}
     ]
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W03L2",
   "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
   "sequence_index": 6,
@@ -16,7 +16,6 @@
   },
   "bundle_status": "partial",
   "readiness_issues": [
-    "missing_sources",
     "missing_lecture_summary",
     "incomplete_reading_summary_coverage"
   ],
@@ -38,33 +37,27 @@
     "lecture_slides": 1,
     "seminar_slides": 0,
     "exercise_slides": 0,
-    "missing_sources": 1,
+    "missing_sources": 0,
     "manual_reading_summaries_present": 1,
     "source_analyses_present": 0,
-    "total_pages": 47,
-    "total_estimated_tokens": 28739,
+    "total_pages": 73,
+    "total_estimated_tokens": 47450,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
       "sidecars": []
     },
-    "missing_sources": [
-      {
-        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
-        "title": "Bach & Simonsen (2023)",
-        "source_kind": "reading",
-        "missing_reason": "manifest_marked_missing"
-      }
-    ],
+    "missing_sources": [],
     "likely_core_sources": [
-      "w03l2-sharp-and-wall-2021-cb92ecf4"
+      "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "w03l2-bach-and-simonsen-2023-d58362ff"
     ],
     "likely_supporting_sources": [
       "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
@@ -79,18 +72,18 @@
       "priority_band": "core"
     },
     {
-      "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
-      "title": "6. gang Personality Functioning 2026 (Bo Bach)",
-      "source_family": "lecture_slide",
-      "priority_score": 82,
-      "priority_band": "supporting"
-    },
-    {
       "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
       "title": "Bach & Simonsen (2023)",
       "source_family": "reading",
-      "priority_score": 0,
-      "priority_band": "missing"
+      "priority_score": 120,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+      "source_family": "lecture_slide",
+      "priority_score": 86,
+      "priority_band": "supporting"
     }
   ],
   "sources": {
@@ -105,7 +98,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -125,10 +118,10 @@
         },
         "file": {
           "page_count": 25,
-          "estimated_token_count": 25635,
-          "estimated_word_count": 13616,
-          "text_char_count": 102539,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 16250,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
           "size_bytes": 368426
         },
@@ -156,19 +149,21 @@
         "title": "Bach & Simonsen (2023)",
         "source_kind": "reading",
         "source_family": "reading",
-        "source_filename": null,
-        "subject_relative_path": null,
-        "source_exists": false,
-        "missing_reason": "manifest_marked_missing",
+        "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+        "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+        "source_exists": true,
+        "missing_reason": null,
         "sequence_index": 1,
         "language_guess": "unknown",
-        "length_band": "short",
+        "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 0,
-        "priority_band": "missing",
+        "priority_score": 120,
+        "priority_band": "core",
         "priority_reasons": [
-          "missing source"
+          "reading",
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -177,13 +172,37 @@
           "lecture_has_week_analysis_sidecar": false
         },
         "file": {
-          "page_count": null,
-          "estimated_token_count": 0,
+          "page_count": 26,
+          "estimated_token_count": 16900,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "missing_source",
-          "sha256": null,
-          "size_bytes": null
+          "text_extraction_status": "metadata_only_multi_file_no_local_text_extraction",
+          "sha256": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+          "size_bytes": 23804887,
+          "parts": [
+            {
+              "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+              "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+              "sha256": "79cf1b60763a49c849468ac1152e5fbd2dda6892411cefe9d76447a7542de375",
+              "size_bytes": 18023005,
+              "page_count": 19,
+              "text_char_count": 0,
+              "estimated_word_count": 0,
+              "estimated_token_count": 12350,
+              "text_extraction_status": "metadata_only_no_local_text_extraction"
+            },
+            {
+              "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+              "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+              "sha256": "c1f0a24f5201a0f57447a711878cdece83d7990f7d4ec66625ec75c41417a628",
+              "size_bytes": 5781882,
+              "page_count": 7,
+              "text_char_count": 0,
+              "estimated_word_count": 0,
+              "estimated_token_count": 4550,
+              "text_extraction_status": "metadata_only_no_local_text_extraction"
+            }
+          ]
         },
         "summary": {
           "present": false,
@@ -193,7 +212,15 @@
         "analysis": {
           "present": false,
           "sidecars": []
-        }
+        },
+        "source_filenames": [
+          "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+          "W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+        ],
+        "subject_relative_paths": [
+          "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+          "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+        ]
       }
     ],
     "lecture_slides": [
@@ -207,16 +234,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "en",
         "length_band": "medium",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 82,
+        "priority_score": 86,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
           "medium source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -226,10 +253,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 3104,
-          "estimated_word_count": 1490,
-          "text_char_count": 12416,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14300,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
           "size_bytes": 5068012
         },

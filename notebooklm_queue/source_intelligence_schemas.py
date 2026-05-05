@@ -6,6 +6,24 @@ from datetime import datetime, timezone
 from typing import Any
 
 RECURSIVE_SOURCE_INTELLIGENCE_SCHEMA_VERSION = 1
+SOURCE_CARD_PLACEHOLDERS = {
+    "specific source-grounded claim",
+    "source-grounded | slide-framed | course-inferred",
+    "high | medium | low",
+    "concept",
+    "course-relevant definition",
+    "why it matters",
+    "distinction",
+    "what is being distinguished",
+    "why the student should look for it",
+    "the source's role in a theory/tradition map",
+    "how this source should be used in the lecture",
+    "how it serves the lecture problem",
+    "student misunderstanding to avoid",
+    "short phrase or page/section target if available",
+    "source-grounding or evidence-origin caveat",
+    "quality caveats, OCR caveats, or empty list",
+}
 
 
 class SourceIntelligenceValidationError(ValueError):
@@ -39,9 +57,61 @@ def _require_nonempty_list(payload: object, path: str) -> list[Any]:
     return values
 
 
+def _is_placeholder_string(value: object) -> bool:
+    if not isinstance(value, str):
+        return False
+    return value.strip().lower() in SOURCE_CARD_PLACEHOLDERS
+
+
+def _contains_placeholder(value: object) -> bool:
+    if _is_placeholder_string(value):
+        return True
+    if isinstance(value, dict):
+        return any(_contains_placeholder(item) for item in value.values())
+    if isinstance(value, list):
+        return any(_contains_placeholder(item) for item in value)
+    return False
+
+
+def _has_meaningful_content(value: object) -> bool:
+    if isinstance(value, str):
+        return bool(value.strip()) and not _is_placeholder_string(value)
+    if isinstance(value, dict):
+        return any(_has_meaningful_content(item) for item in value.values())
+    if isinstance(value, list):
+        return any(_has_meaningful_content(item) for item in value)
+    return value is not None
+
+
+def _contains_empty_object(value: object) -> bool:
+    if isinstance(value, dict):
+        return not _has_meaningful_content(value) or any(_contains_empty_object(item) for item in value.values())
+    if isinstance(value, list):
+        return any(_contains_empty_object(item) for item in value)
+    return False
+
+
+def _require_meaningful_nonempty_list(payload: object, path: str) -> list[Any]:
+    values = _require_nonempty_list(payload, path)
+    if not any(_has_meaningful_content(item) for item in values):
+        raise SourceIntelligenceValidationError(f"{path} must contain meaningful non-placeholder content")
+    if _contains_placeholder(values):
+        raise SourceIntelligenceValidationError(f"{path} contains template placeholder content")
+    return values
+
+
+def _reject_placeholder_content(payload: object, path: str) -> None:
+    if _contains_placeholder(payload):
+        raise SourceIntelligenceValidationError(f"{path} contains template placeholder content")
+    if _contains_empty_object(payload):
+        raise SourceIntelligenceValidationError(f"{path} contains empty object content")
+
+
 def _require_nonempty_string(payload: object, path: str) -> str:
     if not isinstance(payload, str) or not payload.strip():
         raise SourceIntelligenceValidationError(f"{path} must be a non-empty string")
+    if _is_placeholder_string(payload):
+        raise SourceIntelligenceValidationError(f"{path} contains template placeholder content")
     return payload.strip()
 
 
@@ -50,6 +120,8 @@ def _require_optional_string(payload: object, path: str) -> str:
         return ""
     if not isinstance(payload, str):
         raise SourceIntelligenceValidationError(f"{path} must be a string")
+    if _is_placeholder_string(payload):
+        raise SourceIntelligenceValidationError(f"{path} contains template placeholder content")
     return payload.strip()
 
 
@@ -87,16 +159,22 @@ def validate_source_card(payload: object) -> dict[str, Any]:
     _require_nonempty_string(source.get("evidence_origin"), "$.source.evidence_origin")
     _require_optional_string(source.get("source_sha256"), "$.source.source_sha256")
     analysis = _require_dict(artifact.get("analysis"), "$.analysis")
-    _require_nonempty_list(analysis.get("central_claims"), "$.analysis.central_claims")
-    _require_nonempty_list(analysis.get("key_concepts"), "$.analysis.key_concepts")
-    _require_list(analysis.get("distinctions"), "$.analysis.distinctions")
+    _require_meaningful_nonempty_list(analysis.get("central_claims"), "$.analysis.central_claims")
+    _require_meaningful_nonempty_list(analysis.get("key_concepts"), "$.analysis.key_concepts")
+    _reject_placeholder_content(_require_list(analysis.get("distinctions"), "$.analysis.distinctions"), "$.analysis.distinctions")
     _require_optional_string(analysis.get("theory_role"), "$.analysis.theory_role")
     _require_nonempty_string(analysis.get("source_role"), "$.analysis.source_role")
     _require_nonempty_string(analysis.get("relation_to_lecture"), "$.analysis.relation_to_lecture")
-    _require_list(analysis.get("likely_misunderstandings"), "$.analysis.likely_misunderstandings")
-    _require_list(analysis.get("quote_targets"), "$.analysis.quote_targets")
-    _require_list(analysis.get("grounding_notes"), "$.analysis.grounding_notes")
-    _require_list(analysis.get("warnings"), "$.analysis.warnings")
+    _reject_placeholder_content(
+        _require_list(analysis.get("likely_misunderstandings"), "$.analysis.likely_misunderstandings"),
+        "$.analysis.likely_misunderstandings",
+    )
+    _reject_placeholder_content(_require_list(analysis.get("quote_targets"), "$.analysis.quote_targets"), "$.analysis.quote_targets")
+    _reject_placeholder_content(
+        _require_list(analysis.get("grounding_notes"), "$.analysis.grounding_notes"),
+        "$.analysis.grounding_notes",
+    )
+    _reject_placeholder_content(_require_list(analysis.get("warnings"), "$.analysis.warnings"), "$.analysis.warnings")
     return artifact
 
 

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W10L2",
   "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
   "sequence_index": 19,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 3,
     "total_pages": 77,
-    "total_estimated_tokens": 4523,
+    "total_estimated_tokens": 50050,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2
     }
   },
   "source_intelligence": {
-    "dominant_language": "da",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": true,
@@ -79,21 +79,21 @@
       "source_id": "w10l2-davies-1990-65185910",
       "title": "Davies (1990)",
       "source_family": "reading",
-      "priority_score": 128,
+      "priority_score": 136,
       "priority_band": "core"
     },
     {
       "source_id": "w10l2-foucault-1997-92cd121d",
       "title": "Foucault (1997)",
       "source_family": "reading",
-      "priority_score": 128,
+      "priority_score": 136,
       "priority_band": "core"
     },
     {
       "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
       "title": "19. gang Sociokulturelle teorier",
       "source_family": "lecture_slide",
-      "priority_score": 100,
+      "priority_score": 104,
       "priority_band": "primary"
     }
   ],
@@ -113,14 +113,15 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 128,
+        "priority_score": 136,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
           "analysis sidecar",
           "week analysis",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -130,10 +131,10 @@
         },
         "file": {
           "page_count": 21,
-          "estimated_token_count": 0,
+          "estimated_token_count": 13650,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "4e8cdde021c8ce20b80f6a2069e4bc0e5ef900d74f71674cf564afe6ba69429a",
           "size_bytes": 2348174
         },
@@ -176,14 +177,15 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 128,
+        "priority_score": 136,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
           "analysis sidecar",
           "week analysis",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -193,10 +195,10 @@
         },
         "file": {
           "page_count": 21,
-          "estimated_token_count": 0,
+          "estimated_token_count": 13650,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
           "size_bytes": 2938717
         },
@@ -237,18 +239,18 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 100,
+        "priority_score": 104,
         "priority_band": "primary",
         "priority_reasons": [
           "lecture_slide",
           "analysis sidecar",
           "week analysis",
           "long source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -258,10 +260,10 @@
         },
         "file": {
           "page_count": 35,
-          "estimated_token_count": 4523,
-          "estimated_word_count": 2769,
-          "text_char_count": 18090,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 22750,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
           "size_bytes": 780527
         },

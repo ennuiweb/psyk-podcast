@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W09L1",
   "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
   "sequence_index": 17,
@@ -47,7 +47,7 @@
     "manual_reading_summaries_present": 4,
     "source_analyses_present": 1,
     "total_pages": 134,
-    "total_estimated_tokens": 29580,
+    "total_estimated_tokens": 87100,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 4
@@ -74,7 +74,7 @@
       "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
       "title": "Grundbog kapitel 10 - Kritisk psykologi",
       "source_family": "reading",
-      "priority_score": 136,
+      "priority_score": 144,
       "priority_band": "core"
     },
     {
@@ -88,8 +88,8 @@
       "source_id": "w09l1-holzkamp-2013-c3068d8a",
       "title": "Holzkamp (2013)",
       "source_family": "reading",
-      "priority_score": 116,
-      "priority_band": "primary"
+      "priority_score": 124,
+      "priority_band": "core"
     },
     {
       "source_id": "w09l1-dreier-1999-35da58b5",
@@ -102,7 +102,7 @@
       "source_id": "w09l1-lecture-17-kritisk-psykologi-30798115",
       "title": "17. Kritisk psykologi",
       "source_family": "lecture_slide",
-      "priority_score": 96,
+      "priority_score": 100,
       "priority_band": "primary"
     }
   ],
@@ -122,13 +122,14 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 136,
+        "priority_score": 144,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "grundbog",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -138,10 +139,10 @@
         },
         "file": {
           "page_count": 35,
-          "estimated_token_count": 0,
+          "estimated_token_count": 22750,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
           "size_bytes": 5658598
         },
@@ -194,10 +195,10 @@
         },
         "file": {
           "page_count": 33,
-          "estimated_token_count": 23767,
-          "estimated_word_count": 15461,
-          "text_char_count": 95068,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 21450,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
           "size_bytes": 244474
         },
@@ -234,12 +235,13 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 116,
-        "priority_band": "primary",
+        "priority_score": 124,
+        "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -249,10 +251,10 @@
         },
         "file": {
           "page_count": 14,
-          "estimated_token_count": 0,
+          "estimated_token_count": 9100,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
           "size_bytes": 1430661
         },
@@ -303,10 +305,10 @@
         },
         "file": {
           "page_count": 3,
-          "estimated_token_count": 0,
+          "estimated_token_count": 1950,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
           "size_bytes": 812081
         },
@@ -345,13 +347,13 @@
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 96,
+        "priority_score": 100,
         "priority_band": "primary",
         "priority_reasons": [
           "lecture_slide",
           "analysis sidecar",
           "long source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -361,10 +363,10 @@
         },
         "file": {
           "page_count": 49,
-          "estimated_token_count": 5813,
-          "estimated_word_count": 3647,
-          "text_char_count": 23252,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 31850,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "46a49de055d1b59728f4d70597573b0e769383ae166250151eec788002a7932b",
           "size_bytes": 1348677
         },

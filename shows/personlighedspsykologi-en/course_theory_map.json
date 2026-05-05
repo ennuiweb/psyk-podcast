@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:06Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "build_inputs": {
     "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
     "lecture_bundle_index": "shows/personlighedspsykologi-en/lecture_bundles/index.json",
@@ -79,8 +79,8 @@
         }
       ],
       "representative_source_ids": [
-        "w10l1-mitchell-2015-bc690b36",
         "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+        "w10l1-mitchell-2015-bc690b36",
         "w10l2-davies-1990-65185910",
         "w10l2-foucault-1997-92cd121d",
         "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
@@ -115,8 +115,8 @@
             "Kilderne viser, hvordan femininitet og maskulinitet formes i samspillet mellem intime erfaringer og institutionelle rammer."
           ],
           "likely_core_sources": [
-            "w10l1-mitchell-2015-bc690b36",
-            "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+            "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+            "w10l1-mitchell-2015-bc690b36"
           ],
           "source_evidence_origins": []
         },
@@ -468,8 +468,8 @@
         }
       ],
       "representative_source_ids": [
-        "w08l2-tolman-2009-455915e0",
         "w08l2-holzkamp-1982-845aafd2",
+        "w08l2-tolman-2009-455915e0",
         "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
         "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
         "w09l1-holzkamp-2013-c3068d8a",
@@ -499,11 +499,11 @@
           "representative_excerpts": [
             "Critical psychology (Forelæsning 16, 2026-03-24)",
             "Forelæsningen samler kritisk psykologi med fokus på subjektivitet, samfundsforhold og handlemuligheder.",
-            "Tolman reviews key commitments of critical psychology and its implications for theory and method."
+            "Holzkamp udvikler et grundlag for kritisk psykologi ved at sætte subjektivitet, samfundsmæssige vilkår og handlemuligheder i centrum."
           ],
           "likely_core_sources": [
-            "w08l2-tolman-2009-455915e0",
-            "w08l2-holzkamp-1982-845aafd2"
+            "w08l2-holzkamp-1982-845aafd2",
+            "w08l2-tolman-2009-455915e0"
           ],
           "source_evidence_origins": [
             "reading_grounded"
@@ -775,9 +775,9 @@
       ],
       "representative_source_ids": [
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-bruner-1999-7930abd8",
         "w11l2-mcadams-and-pals-2006-b9675688",
-        "w11l2-raggatt-2002-d15129af",
-        "w11l2-bruner-1999-7930abd8"
+        "w11l2-raggatt-2002-d15129af"
       ],
       "representative_evidence_origins": [
         "textbook_framing",
@@ -806,9 +806,9 @@
           ],
           "likely_core_sources": [
             "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+            "w11l2-bruner-1999-7930abd8",
             "w11l2-mcadams-and-pals-2006-b9675688",
-            "w11l2-raggatt-2002-d15129af",
-            "w11l2-bruner-1999-7930abd8"
+            "w11l2-raggatt-2002-d15129af"
           ],
           "source_evidence_origins": []
         }
@@ -950,8 +950,8 @@
       ],
       "representative_source_ids": [
         "w07l2-maslow-1968-7ea53e34",
-        "w07l2-giorgi-2005-55ca98f7",
-        "w07l2-evans-1975-8e8a9d79"
+        "w07l2-evans-1975-8e8a9d79",
+        "w07l2-giorgi-2005-55ca98f7"
       ],
       "representative_evidence_origins": [
         "reading_grounded"
@@ -975,8 +975,8 @@
           ],
           "likely_core_sources": [
             "w07l2-maslow-1968-7ea53e34",
-            "w07l2-giorgi-2005-55ca98f7",
-            "w07l2-evans-1975-8e8a9d79"
+            "w07l2-evans-1975-8e8a9d79",
+            "w07l2-giorgi-2005-55ca98f7"
           ],
           "source_evidence_origins": [
             "reading_grounded",
@@ -1288,12 +1288,13 @@
         }
       ],
       "representative_source_ids": [
-        "w03l2-sharp-and-wall-2021-cb92ecf4"
+        "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "w03l2-bach-and-simonsen-2023-d58362ff"
       ],
       "representative_evidence_origins": [
         "reading_grounded"
       ],
-      "salience_score": 55,
+      "salience_score": 56,
       "related_theories": [
         {
           "theory_id": "psychoanalytic_personality_theory",
@@ -1311,7 +1312,8 @@
             "Personality pathology is better treated dimensionally than categorically."
           ],
           "likely_core_sources": [
-            "w03l2-sharp-and-wall-2021-cb92ecf4"
+            "w03l2-sharp-and-wall-2021-cb92ecf4",
+            "w03l2-bach-and-simonsen-2023-d58362ff"
           ],
           "source_evidence_origins": [
             "reading_grounded",

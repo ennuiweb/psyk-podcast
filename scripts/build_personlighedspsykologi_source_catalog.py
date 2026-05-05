@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Build a deterministic raw-source catalog for Personlighedspsykologi."""
+"""Build a deterministic raw-source catalog for Personlighedspsykologi.
+
+This script inventories local course files but does not extract or semantically
+analyse reading text. Source understanding is delegated to Gemini with the
+actual PDFs attached.
+"""
 
 from __future__ import annotations
 
@@ -47,6 +52,7 @@ TOKEN_SPLIT_RE = re.compile(r"\b\w+\b", re.UNICODE)
 LANGUAGE_TOKEN_RE = re.compile(r"\b[a-zA-ZæøåÆØÅ]+\b", re.UNICODE)
 
 SOURCE_CATALOG_VERSION = 1
+PDF_METADATA_TOKEN_ESTIMATE_PER_PAGE = 650
 
 _DANISH_HINTS = {
     "og",
@@ -121,10 +127,20 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _sha256_values(values: list[str]) -> str:
+    return hashlib.sha256("\n".join(values).encode("utf-8")).hexdigest()
+
+
 def _estimate_tokens(*, char_count: int, word_count: int) -> int:
     if char_count <= 0 and word_count <= 0:
         return 0
     return max(int(math.ceil(char_count / 4.0)), int(math.ceil(word_count * 1.3)))
+
+
+def _estimate_tokens_from_pages(page_count: int | None) -> int:
+    if not page_count or page_count <= 0:
+        return 0
+    return int(page_count) * PDF_METADATA_TOKEN_ESTIMATE_PER_PAGE
 
 
 def _guess_language(*, title: str, sample_text: str) -> str:
@@ -194,43 +210,43 @@ def _extract_file_metrics(path: Path) -> tuple[dict[str, Any], str]:
         )
 
     page_count = len(reader.pages)
-    text_char_count = 0
-    word_count = 0
-    sample_parts: list[str] = []
-    page_errors = 0
-
-    for page in reader.pages:
-        try:
-            text = page.extract_text() or ""
-        except Exception:  # pragma: no cover - page-level extraction errors are data dependent
-            page_errors += 1
-            continue
-        if text:
-            text_char_count += len(text)
-            word_count += len(TOKEN_SPLIT_RE.findall(text))
-            if sum(len(part) for part in sample_parts) < 4000:
-                sample_parts.append(text[:1000])
-
-    if page_errors and text_char_count > 0:
-        status = "partial_page_errors"
-    elif page_errors:
-        status = "page_errors_only"
-    elif text_char_count > 0:
-        status = "ok"
-    else:
-        status = "no_text"
-
-    estimated_token_count = _estimate_tokens(char_count=text_char_count, word_count=word_count)
+    estimated_token_count = _estimate_tokens_from_pages(page_count)
     return (
         {
             "page_count": page_count,
-            "text_char_count": text_char_count,
-            "estimated_word_count": word_count,
+            "text_char_count": 0,
+            "estimated_word_count": 0,
             "estimated_token_count": estimated_token_count,
-            "text_extraction_status": status,
+            "text_extraction_status": "metadata_only_no_local_text_extraction",
         },
-        "\n".join(sample_parts),
+        "",
     )
+
+
+def _aggregate_file_metrics(metrics_by_file: list[dict[str, Any]]) -> dict[str, Any]:
+    if not metrics_by_file:
+        return {
+            "page_count": None,
+            "text_char_count": 0,
+            "estimated_word_count": 0,
+            "estimated_token_count": 0,
+            "text_extraction_status": "missing_source",
+        }
+    page_values = [item.get("page_count") for item in metrics_by_file if item.get("page_count") is not None]
+    statuses = [str(item.get("text_extraction_status") or "") for item in metrics_by_file if item.get("text_extraction_status")]
+    if len(set(statuses)) == 1:
+        status = statuses[0]
+    else:
+        status = "mixed_metadata_statuses"
+    if len(metrics_by_file) > 1 and status == "metadata_only_no_local_text_extraction":
+        status = "metadata_only_multi_file_no_local_text_extraction"
+    return {
+        "page_count": sum(int(value or 0) for value in page_values) if page_values else None,
+        "text_char_count": sum(int(item.get("text_char_count") or 0) for item in metrics_by_file),
+        "estimated_word_count": sum(int(item.get("estimated_word_count") or 0) for item in metrics_by_file),
+        "estimated_token_count": sum(int(item.get("estimated_token_count") or 0) for item in metrics_by_file),
+        "text_extraction_status": status,
+    }
 
 
 def _existing_sidecar_paths(
@@ -271,7 +287,10 @@ def build_source_catalog(
     reading_entries = reading_sync.parse_reading_key(reading_key_path)
     week_dir_index = reading_sync.index_week_dirs(subject_root / "Readings")
     reading_resolutions, unresolved_readings = reading_sync.resolve_entries(reading_entries, week_dir_index)
-    resolution_by_key = {item.entry.reading_key: item for item in reading_resolutions}
+    resolution_by_key: dict[str, list[Any]] = {}
+    for item in reading_resolutions:
+        resolution_by_key.setdefault(item.entry.reading_key, []).append(item)
+    expected_source_counts_by_key = Counter(item.reading_key for item in reading_entries)
 
     lectures = manifest.get("lectures")
     if not isinstance(lectures, list):
@@ -337,20 +356,56 @@ def build_source_catalog(
                 continue
             reading_key = str(reading.get("reading_key") or "").strip()
             reading_title = str(reading.get("reading_title") or "").strip()
-            resolution = resolution_by_key.get(reading_key)
-            source_exists = resolution is not None and resolution.source_path.exists()
-            source_path = resolution.source_path if source_exists else None
-            if source_exists and source_path is not None:
-                subject_relative_path = _relativize(source_path, subject_root)
-                file_size = source_path.stat().st_size
-                sha256 = _sha256_file(source_path)
-                metrics, sample_text = _extract_file_metrics(source_path)
-                sidecars = _existing_sidecar_paths(
-                    candidates=prompting._source_prompt_sidecar_candidates(source_path, meta_prompting),
-                    subject_root=subject_root,
-                )
+            resolutions = sorted(
+                resolution_by_key.get(reading_key, []),
+                key=lambda item: str(item.entry.source_filename).casefold(),
+            )
+            expected_source_count = int(expected_source_counts_by_key.get(reading_key, 0))
+            source_paths = [item.source_path for item in resolutions if item.source_path.exists() and item.source_path.is_file()]
+            source_exists = expected_source_count > 0 and len(source_paths) == expected_source_count
+            source_filenames = [str(item.entry.source_filename) for item in resolutions]
+            if source_exists:
+                subject_relative_paths = [_relativize(path, subject_root) for path in source_paths]
+                file_sizes = [path.stat().st_size for path in source_paths]
+                file_hashes = [_sha256_file(path) for path in source_paths]
+                sha256 = file_hashes[0] if len(file_hashes) == 1 else _sha256_values(file_hashes)
+                file_size = sum(file_sizes)
+                metrics_by_file: list[dict[str, Any]] = []
+                file_parts: list[dict[str, Any]] = []
+                sidecars_by_file: list[str] = []
+                for source_path, source_filename, subject_relative_path, file_hash, file_size_bytes in zip(
+                    source_paths,
+                    source_filenames,
+                    subject_relative_paths,
+                    file_hashes,
+                    file_sizes,
+                    strict=True,
+                ):
+                    file_metrics, _sample_text = _extract_file_metrics(source_path)
+                    metrics_by_file.append(file_metrics)
+                    file_parts.append(
+                        {
+                            "source_filename": source_filename,
+                            "subject_relative_path": subject_relative_path,
+                            "sha256": file_hash,
+                            "size_bytes": file_size_bytes,
+                            **file_metrics,
+                        }
+                    )
+                    sidecars_by_file.extend(
+                        _existing_sidecar_paths(
+                            candidates=prompting._source_prompt_sidecar_candidates(source_path, meta_prompting),
+                            subject_root=subject_root,
+                        )
+                    )
+                subject_relative_path = subject_relative_paths[0] if subject_relative_paths else None
+                metrics = _aggregate_file_metrics(metrics_by_file)
+                sample_text = ""
+                sidecars = sorted(dict.fromkeys(sidecars_by_file))
             else:
                 subject_relative_path = None
+                subject_relative_paths = []
+                file_parts = []
                 file_size = None
                 sha256 = None
                 metrics = {
@@ -366,48 +421,55 @@ def build_source_catalog(
 
             if source_exists:
                 missing_reason = None
+            elif expected_source_count and resolutions:
+                missing_reason = "partially_unresolved_source_paths"
             elif reading.get("is_missing"):
                 missing_reason = "manifest_marked_missing"
             else:
                 missing_reason = "unresolved_source_path"
 
-            flat_sources.append(
-                {
-                    "source_id": reading_key,
-                    "source_kind": "reading",
-                    "source_family": "reading",
-                    "lecture_key": lecture_key,
-                    "lecture_keys": [lecture_key],
-                    "sequence_index": int(reading.get("sequence_index") or 0),
-                    "title": reading_title,
-                    "source_filename": reading.get("source_filename"),
-                    "subject_relative_path": subject_relative_path,
-                    "source_exists": source_exists,
-                    "missing_reason": missing_reason,
-                    "language_guess": _guess_language(title=reading_title, sample_text=sample_text),
-                    "length_band": _length_band(
-                        page_count=metrics["page_count"],
-                        estimated_tokens=metrics["estimated_token_count"],
-                    ),
-                    "priority_signals": {
-                        "is_grundbog": "grundbog" in reading_title.lower(),
-                        "has_manual_summary": _has_summary(reading.get("summary")),
-                        "has_prompt_analysis_sidecar": bool(sidecars),
-                        "lecture_has_week_analysis_sidecar": bool(week_sidecars),
-                    },
-                    "evidence_origin": evidence_origin_for_source(
-                        source_family="reading",
-                        is_grundbog="grundbog" in reading_title.lower(),
-                        policy=policy,
-                    ),
-                    "file": {
-                        "sha256": sha256,
-                        "size_bytes": file_size,
-                        **metrics,
-                    },
-                    "prompt_analysis_sidecars": sidecars,
-                }
-            )
+            source_entry = {
+                "source_id": reading_key,
+                "source_kind": "reading",
+                "source_family": "reading",
+                "lecture_key": lecture_key,
+                "lecture_keys": [lecture_key],
+                "sequence_index": int(reading.get("sequence_index") or 0),
+                "title": reading_title,
+                "source_filename": reading.get("source_filename"),
+                "subject_relative_path": subject_relative_path,
+                "source_exists": source_exists,
+                "missing_reason": missing_reason,
+                "language_guess": _guess_language(title=reading_title, sample_text=sample_text),
+                "length_band": _length_band(
+                    page_count=metrics["page_count"],
+                    estimated_tokens=metrics["estimated_token_count"],
+                ),
+                "priority_signals": {
+                    "is_grundbog": "grundbog" in reading_title.lower(),
+                    "has_manual_summary": _has_summary(reading.get("summary")),
+                    "has_prompt_analysis_sidecar": bool(sidecars),
+                    "lecture_has_week_analysis_sidecar": bool(week_sidecars),
+                },
+                "evidence_origin": evidence_origin_for_source(
+                    source_family="reading",
+                    is_grundbog="grundbog" in reading_title.lower(),
+                    policy=policy,
+                ),
+                "file": {
+                    "sha256": sha256,
+                    "size_bytes": file_size,
+                    **metrics,
+                },
+                "prompt_analysis_sidecars": sidecars,
+            }
+            if len(source_filenames) > 1:
+                source_entry["source_filenames"] = source_filenames
+            if len(subject_relative_paths) > 1:
+                source_entry["subject_relative_paths"] = subject_relative_paths
+            if len(file_parts) > 1:
+                source_entry["file"]["parts"] = file_parts
+            flat_sources.append(source_entry)
 
         lecture_summary_map[lecture_key] = {
             "lecture_key": lecture_key,

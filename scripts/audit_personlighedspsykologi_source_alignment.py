@@ -32,6 +32,16 @@ def _load_json(path: Path) -> object:
         return json.load(handle)
 
 
+def _manifest_source_filenames(item: dict[str, object]) -> list[str]:
+    source_filenames = item.get("source_filenames")
+    if isinstance(source_filenames, list):
+        values = [str(value or "").strip() for value in source_filenames if str(value or "").strip()]
+        if values:
+            return values
+    source_filename = str(item.get("source_filename") or "").strip()
+    return [source_filename] if source_filename else []
+
+
 def _manifest_reading_records(path: Path) -> list[tuple[str, str, str, str]]:
     payload = _load_json(path)
     if not isinstance(payload, dict):
@@ -53,9 +63,9 @@ def _manifest_reading_records(path: Path) -> list[tuple[str, str, str, str]]:
                 continue
             reading_key = str(item.get("reading_key") or "").strip()
             title = str(item.get("reading_title") or "").strip()
-            source_filename = str(item.get("source_filename") or "").strip()
-            if reading_key and title and source_filename:
-                records.append((lecture_key, reading_key, title, source_filename))
+            for source_filename in _manifest_source_filenames(item):
+                if reading_key and title and source_filename:
+                    records.append((lecture_key, reading_key, title, source_filename))
     return records
 
 

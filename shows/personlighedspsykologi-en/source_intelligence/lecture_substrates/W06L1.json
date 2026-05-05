@@ -2,10 +2,19 @@
   "artifact_type": "lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:31:00Z",
+  "generated_at": "2026-05-05T13:44:01Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-lecture-substrate-v1"
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -15,9 +24,9 @@
       "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
     ],
     "dependency_hashes": {
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
-      "lecture_bundle": "ff4c3654ac8e80c86c84cb429e4ef81e7e8ba2b40d4566bd562583b7eb8821d2",
-      "source_cards_signature": "7ca15d38bfa48df282db94de4465d51904aa43bfcdd769b78824345794bb15d9",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "lecture_bundle": "285f2d839ce9d6294b3a0671ab79555261d6cf13426dd7b43c798b3612624b6c",
+      "source_cards_signature": "4fe010220c167efdd636753a19c6de2a0dd573e0e5c5ed5b501fa28825dd3c9b",
       "raw_sources_signature": "5a93829e2b97f9cabde45d0080df85556c38070750449c2d5706aa6d728f446a"
     }
   },
@@ -27,80 +36,25 @@
     "sequence_index": 11
   },
   "analysis": {
-    "lecture_question": "How can we scientifically study personality and meaning from a first-person, lived-experience perspective without reducing it to biological or cognitive variables?",
-    "central_learning_problem": "Students are accustomed to viewing personality as a collection of objective traits or underlying biological mechanisms (a 3rd-person perspective). The phenomenological approach requires a radical shift to a 1st-person perspective, where personality is understood as a dynamic, relational 'way of being in the world' (intentionality). The primary learning challenge is to grasp how subjective, pre-reflective experience can be studied rigorously and scientifically—using methods like epoché and descriptive analysis—without slipping into mere anecdotal introspection or theoretical reductionism.",
+    "lecture_question": "How can phenomenological personality psychology investigate structures of subjectivity and lived experience through the first-person perspective?",
+    "central_learning_problem": "Students accustomed to viewing personality as a set of static internal traits or measurable variables must shift to understanding it as a dynamic, situated meaning-making process. The challenge lies in grasping how rigorous scientific inquiry can be conducted from a first-person perspective using concepts like intentionality, epoché, and the pre-reflective body, without reducing the lived experience (Lifeworld) to mere objective data.",
     "source_roles": [
-      {
-        "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
-        "role": "anchor"
-      },
-      {
-        "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
-        "role": "application"
-      },
-      {
-        "source_id": "w06l1-spinelli-2005-b2f76e93",
-        "role": "supporting"
-      },
-      {
-        "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
-        "role": "framing"
-      }
+      {}
     ],
     "source_relations": [
-      {
-        "relation": "The Grundbog acts as the theoretical and historical anchor, introducing phenomenological concepts and specifically linking them to the Danish Copenhagen School. The lecture slides frame this reading by contrasting the 1st-person approach with dominant 3rd-person paradigms. Spinelli supports and deepens the Grundbog by providing a granular breakdown of the phenomenological method (epoché, noema/noesis) and the constructed nature of the 'I'. Finally, Moeskær Hansen & Roald serves as a practical application of phenomenological methodology (using Giorgi's descriptive method) to an empirical study of aesthetic empathy, demonstrating how to extract universal structures from qualitative lived experience."
-      }
+      {}
     ],
     "core_concepts": [
-      {
-        "concept": "Intentionality (Intentionalitet)",
-        "why_it_matters": "The foundational principle that consciousness is always directed toward something. It breaks down the subject-object divide, showing that personality is inherently relational and co-constituted with the world."
-      },
-      {
-        "concept": "Epoché / Phenomenological Reduction",
-        "why_it_matters": "The methodological suspension of 'natural attitudes' and theoretical assumptions. It is crucial for ensuring that psychological research studies phenomena as they actually appear in lived experience, rather than how theories dictate they should appear."
-      },
-      {
-        "concept": "Pre-reflective Bodily Subject (Det præ-refleksive kropssubjekt)",
-        "why_it_matters": "Merleau-Ponty's concept of the body as the unreflected starting point for all experience, highlighting that human engagement with the world is primarily lived, affective, and embodied before it is cognitively reflected upon."
-      },
-      {
-        "concept": "Noema and Noesis",
-        "why_it_matters": "The directional (what is experienced) and referential (how it is experienced) elements of consciousness. They explain why different individuals can experience the exact same objective event in vastly different, personally meaningful ways."
-      },
-      {
-        "concept": "Lifeworld (Livsverden)",
-        "why_it_matters": "Husserl's concept of the pre-scientific, concrete, sensory world of everyday experience. It serves as the grounding reality from which all exact sciences abstract, reinforcing phenomenology's critique of scientific reductionism."
-      }
+      {}
     ],
     "core_tensions": [
-      {
-        "tension": "1st-Person Lived Experience vs. 3rd-Person Reductionism",
-        "stakes": "Determines what counts as valid psychological data. Phenomenology insists on the primacy of subjective experience, arguing that reductionist sciences lose touch with the very meaning of the phenomena they seek to explain."
-      },
-      {
-        "tension": "Pre-reflective vs. Reflective Consciousness",
-        "stakes": "Challenges the common psychological assumption that the 'I' or Ego is the constant initiator of action. Phenomenologists argue the 'I' often disappears in straightforward immersion and is only constructed retrospectively during reflection."
-      },
-      {
-        "tension": "Objective Reality vs. Phenomenal Reality",
-        "stakes": "Shifts the focus of psychology from trying to access an unknowable 'true' reality to understanding how meaning is actively constructed and experienced by subjects through intentionality."
-      }
+      {}
     ],
-    "likely_misunderstandings": [
-      "Conflating the phenomenological method with simple introspection. Phenomenological reduction requires rigorous bracketing of assumptions to find invariant structures of consciousness, not just an uncritical reporting of past feelings.",
-      "Assuming phenomenology denies the existence of the physical world entirely (solipsism). It acknowledges physical reality but insists we can only meaningfully study our phenomenal interpretation of it.",
-      "Believing the 'I' or Ego is constantly present in all experience, missing the existential-phenomenological insight (from Sartre/Spinelli) that the 'I' is largely absent in intense, pre-reflective action."
-    ],
+    "likely_misunderstandings": [],
     "must_carry_ideas": [
-      "Personality is not a container of static internal traits, but a situated, dynamic, and relational way of being-in-the-world.",
-      "Psychological understanding requires methodological bracketing (epoché) to prevent theoretical preconceptions from blinding researchers to actual lived experience.",
-      "The Copenhagen School (Rubin, Tranekjær Rasmussen, From) represents a unique, historically significant anchor for Danish phenomenological psychology that emphasizes exact, objective observation of immediate experience."
+      "missing_sources"
     ],
     "missing_sources": [],
-    "warnings": [
-      "The aesthetic empathy empirical application (Moeskær Hansen & Roald) uses specialized methodological terminology (e.g., imaginative variation, noematic clues) that may require careful scaffolding for students."
-    ]
+    "warnings": []
   }
 }

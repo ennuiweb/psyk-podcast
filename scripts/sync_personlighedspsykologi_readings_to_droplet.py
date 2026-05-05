@@ -35,6 +35,7 @@ SOURCE_NOTE_SUFFIX_RE = re.compile(
     r"\s*\((?=[^)]*\b(?:brief|short|full)\b)[^)]*\)\s*$",
     re.IGNORECASE,
 )
+SOURCE_LIST_SEPARATOR_RE = re.compile(r"\s*;\s*")
 PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
 LECTURE_DIR_RE = re.compile(r"^W0*(?P<week>\d{1,2})L0*(?P<lecture>\d+)\b", re.IGNORECASE)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
@@ -92,6 +93,21 @@ def _clean_source_filename(value: str) -> str:
     cleaned = SOURCE_NOTE_SUFFIX_RE.sub("", str(value or "").strip()).strip()
     cleaned = PATH_SEPARATORS_RE.sub("-", cleaned).strip()
     return cleaned
+
+
+def _split_source_filenames(value: str) -> list[str]:
+    """Return one or more source filenames from a reading-key source field.
+
+    Some syllabus readings are distributed as multiple PDFs but should remain a
+    single logical reading for prompts and Gemini preprocessing. The key file
+    represents those as a semicolon-separated source list.
+    """
+    filenames: list[str] = []
+    for raw_part in SOURCE_LIST_SEPARATOR_RE.split(str(value or "").strip()):
+        filename = _clean_source_filename(raw_part)
+        if filename:
+            filenames.append(filename)
+    return filenames
 
 
 def _load_excluded_reading_keys(config_path: Path, *, subject_slug: str) -> set[str]:
@@ -155,21 +171,22 @@ def parse_reading_key(path: Path) -> list[ReadingEntry]:
         if not reading_match:
             continue
         title = str(reading_match.group("title") or "").strip()
-        source = _clean_source_filename(str(reading_match.group("source") or "").strip())
-        if not title or not source:
+        source_filenames = _split_source_filenames(str(reading_match.group("source") or "").strip())
+        if not title or not source_filenames:
             continue
         base_key = _reading_key(current_lecture, title)
         occurrence = lecture_key_counts.get(base_key, 0) + 1
         lecture_key_counts[base_key] = occurrence
         reading_key = base_key if occurrence == 1 else f"{base_key}-{occurrence}"
-        entries.append(
-            ReadingEntry(
-                lecture_key=current_lecture,
-                reading_key=reading_key,
-                title=title,
-                source_filename=source,
+        for source_filename in source_filenames:
+            entries.append(
+                ReadingEntry(
+                    lecture_key=current_lecture,
+                    reading_key=reading_key,
+                    title=title,
+                    source_filename=source_filename,
+                )
             )
-        )
     return entries
 
 

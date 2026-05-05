@@ -204,6 +204,7 @@ def test_build_source_catalog_tracks_readings_slides_and_sidecars(tmp_path):
     ]
     assert resolved["file"]["page_count"] == 2
     assert resolved["file"]["sha256"]
+    assert resolved["file"]["text_extraction_status"] == "metadata_only_no_local_text_extraction"
 
     missing = by_id["w01l1-missing-reading-12345678"]
     assert missing["source_exists"] is False

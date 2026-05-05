@@ -2,10 +2,19 @@
   "artifact_type": "course_synthesis",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:31:41Z",
+  "generated_at": "2026-05-05T13:44:41Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-course-synthesis-v1"
+    "prompt_version": "personlighedspsykologi-course-synthesis-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -20,8 +29,8 @@
       "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
     ],
     "dependency_hashes": {
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
-      "lecture_substrates_signature": "c39daa3ac6856bbe4237d419ba456a4f100c23ace29411b73584e9d608f6f8a2"
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "lecture_substrates_signature": "0fb36032b4adfe39f7c60c96834c69c64d3f70aebabbfe8112462463641c3191"
     }
   },
   "course": {
@@ -34,182 +43,26 @@
     ]
   },
   "analysis": {
-    "course_arc": "The course progresses from foundational natural-science paradigms (traits, assessment, biosocial models) to depth-psychological hermeneutics (psychoanalysis), then pivots to 1st-person lived experience (phenomenology, existential, humanistic psychology). Finally, it expands outwards into socio-cultural critiques of the individualized subject (critical psychology, poststructuralism, feminism) before synthesizing personality through time and culture via narrative psychology and comparative theory analysis.",
+    "course_arc": "The course progresses from foundational trait, assessment, and biosocial paradigms to interpretive psychoanalytic models, pivots through first-person phenomenological and humanistic approaches, and culminates in a structural critique via critical psychology, poststructuralism, and narrative theory.",
     "theory_tradition_map": [
-      {
-        "label": "Trait and Assessment Psychology",
-        "role": "Provides the early-course baseline, treating personality as patterned, measurable individual differences (3rd-person perspective)."
-      },
-      {
-        "label": "Biosocial Perspectives",
-        "role": "Explains personality through evolutionary, genetic, and cultural constraints, completing the natural-science foundational block."
-      },
-      {
-        "label": "Psychoanalytic Personality Theory",
-        "role": "Forms the first major interpretive block, shifting focus to conflict, unconscious meaning, and hermeneutic empiricism."
-      },
-      {
-        "label": "Phenomenological Psychology",
-        "role": "Reorients the course towards 1st-person lived experience, embodiment, and intentionality, challenging reductive 3rd-person science."
-      },
-      {
-        "label": "Existential & Humanistic Psychology",
-        "role": "Deepens the experiential turn by focusing on freedom, meaning-making, growth, and finitude rather than deficit or static traits."
-      },
-      {
-        "label": "Critical Psychology",
-        "role": "Moves the analytical lens from the individual to structural conditions, historical practices, and contextual action."
-      },
-      {
-        "label": "Sociocultural & Poststructural Approaches",
-        "role": "Radicalizes the critique of the inner self, treating personality as an effect of discourse, power, and subjectivation."
-      },
-      {
-        "label": "Narrative Psychology",
-        "role": "Synthesizes stability and change by framing personality as an ongoing, culturally situated life story."
-      }
+      {}
     ],
     "concept_map": [
-      {
-        "concept": "Psykisk realitet (Psychic Reality)",
-        "role": "Validates the subjective, unconscious inner world as a legitimate empirical object in psychoanalysis, distinct from material truth."
-      },
-      {
-        "concept": "Intentionalitet (Intentionality)",
-        "role": "Serves as the phenomenological bridge between subject and world, showing that consciousness is always directed at something."
-      },
-      {
-        "concept": "Epoché / Fænomenologisk reduktion",
-        "role": "Methodological tool in phenomenology to suspend natural attitudes, ensuring psychology studies lived experience rigorously."
-      },
-      {
-        "concept": "Subjectivation (Subjektivering)",
-        "role": "Connects poststructural and critical approaches, defining personality as a continuous historical and relational production rather than an innate essence."
-      },
-      {
-        "concept": "Stability and Change",
-        "role": "The core meta-problem tracked across all theories, contrasting static traits with dynamic development, states, and narrative revision."
-      }
+      {}
     ],
     "distinction_map": [
-      {
-        "distinction": "Inner depth vs. Lived experience",
-        "stakes": "Dictates whether the psychologist acts as a detective uncovering hidden unconscious drivers (psychoanalysis) or as a describer of conscious, pre-reflective reality (phenomenology)."
-      },
-      {
-        "distinction": "Naturvidenskabelig (scientistisk) evidens vs. Hermeneutisk evidens",
-        "stakes": "Determines the scientific legitimacy of clinical fields like psychoanalysis; posits that meaning and narrative coherence require different validation than quantitative measurement."
-      },
-      {
-        "distinction": "Person vs. Variable profile",
-        "stakes": "Challenges reductionism; contrasts aggregate statistical trait measurements with holistic, critical, and contextual understandings of human agency."
-      },
-      {
-        "distinction": "Individual problem vs. Structural condition",
-        "stakes": "Shifts the locus of psychological distress and personality formation from inside the individual's mind/biology to historical, gendered, and socio-economic power structures."
-      }
+      {}
     ],
     "sideways_relations": [
-      {
-        "from": "W05L1 (Psychoanalysis Empiricism)",
-        "to": "W06L1 (Phenomenology)",
-        "relation": "Methodological pivot: W05L1 legitimizes interpretation of hidden signs (hermeneutics), whereas W06L1 argues for strictly describing what appears in immediate experience without interpreting underlying depth."
-      },
-      {
-        "from": "Trait & Assessment Psychology",
-        "to": "Critical Personalism & Phenomenological Psychology",
-        "relation": "Critical reaction: Phenomenological and personalist approaches are explicitly framed as correctives to the reification and abstract variable-focus of early trait models."
-      },
-      {
-        "from": "Psychoanalysis (Dora Case)",
-        "to": "Feminist Theory & Poststructuralism",
-        "relation": "Historical evolution: The ethical and methodological failures in Freud's early cases (like Dora) are later re-analyzed by feminist and poststructuralist theories focusing on gender and power asymmetries."
-      }
+      {}
     ],
     "lecture_clusters": [
-      {
-        "label": "Trait, Assessment & Biosocial Baseline",
-        "lecture_keys": [
-          "W01L1",
-          "W01L2",
-          "W02L1",
-          "W02L2",
-          "W03L1",
-          "W03L2"
-        ],
-        "theme": "Measurement, individual differences, evolutionary constraints, and dimensional pathology."
-      },
-      {
-        "label": "Psychoanalysis & Depth Interpretations",
-        "lecture_keys": [
-          "W04L1",
-          "W04L2",
-          "W05L1",
-          "W05L2"
-        ],
-        "theme": "Unconscious dynamics, structural subjectivity, transference, and hermeneutic empiricism."
-      },
-      {
-        "label": "First-Person & Experiential Perspectives",
-        "lecture_keys": [
-          "W06L1",
-          "W06L2",
-          "W07L1",
-          "W07L2"
-        ],
-        "theme": "Phenomenology, existentialism, humanism, intentionality, and lived meaning."
-      },
-      {
-        "label": "Critical, Social & Poststructural Turn",
-        "lecture_keys": [
-          "W08L1",
-          "W08L2",
-          "W09L1",
-          "W10L1",
-          "W10L2",
-          "W11L1"
-        ],
-        "theme": "Subjectivation, discourse, gender, power, and structural critique."
-      },
-      {
-        "label": "Narrative Synthesis & Theory Comparison",
-        "lecture_keys": [
-          "W11L2",
-          "W12L1"
-        ],
-        "theme": "Temporality, life stories, identity revision, and comparative theoretical evaluation."
-      }
+      {}
     ],
     "top_down_priorities": [
-      {
-        "priority": "Emphasize the epistemological shifts between positivism, hermeneutics, and phenomenology, specifically highlighting how 'data' is redefined in each tradition.",
-        "lecture_keys": [
-          "W05L1",
-          "W06L1"
-        ]
-      },
-      {
-        "priority": "Ensure Ricoeur's dense epistemology is heavily scaffolded using Gammelgaard's synthesis and anchored to the concrete clinical reality of Freud's Dora case.",
-        "lecture_keys": [
-          "W05L1"
-        ]
-      },
-      {
-        "priority": "Clearly differentiate 1st-person experiential approaches from 3rd-person trait models, demonstrating how phenomenology treats meaning scientifically without reducing it to variables.",
-        "lecture_keys": [
-          "W06L1"
-        ]
-      }
+      {}
     ],
-    "weak_spots": [
-      "Partial scope limitation: Only detailed lecture substrates for W05L1 and W06L1 were provided. The rest of the course mapping relies on the deterministic glossary and meta-data, meaning specific pedagogical framings for the trait, critical, and narrative blocks are extrapolated.",
-      "The practical application of poststructuralist and discursive methodologies might lack concrete case anchors in this map, relying heavily on theoretical descriptors.",
-      "Ricoeur's texts are notoriously difficult for students; there is a risk of generating overly abstract material if not strictly tethered to clinical examples (e.g., dream analysis exercises)."
-    ],
-    "podcast_generation_guidance": [
-      "Adopt a dialectical two-host format: Host A leans toward natural-science, measurement, and 3rd-person objectivity, while Host B advocates for interpretive, 1st-person, and contextual approaches. This will naturally dramatize the course's core epistemological tensions.",
-      "For the Psychoanalysis episode (W05L1), use Freud's Dora case as a 'true crime/clinical mystery' anchor to unpack Ricoeur's dry validation criteria. Let the hosts debate whether Freud discovered the truth or forced a narrative.",
-      "For the Phenomenology episode (W06L1), ground the abstract concepts of 'epoché' and 'intentionality' in relatable everyday experiences—like looking at an optical illusion or feeling the atmosphere of a room—to prevent the audio from becoming a dense philosophy lecture."
-    ]
+    "weak_spots": [],
+    "podcast_generation_guidance": []
   }
 }

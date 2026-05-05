@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W01L1",
   "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
   "sequence_index": 1,
@@ -49,7 +49,7 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 77,
-    "total_estimated_tokens": 27602,
+    "total_estimated_tokens": 50050,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2,
@@ -57,7 +57,7 @@
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -69,7 +69,8 @@
       "w01l1-lewis-1999-295c67e3"
     ],
     "likely_supporting_sources": [
-      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8"
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "w01l1-seminar-1-introduktion-9fe382c8"
     ]
   },
   "source_priority_order": [
@@ -77,7 +78,7 @@
       "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
       "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
       "source_family": "reading",
-      "priority_score": 130,
+      "priority_score": 138,
       "priority_band": "core"
     },
     {
@@ -91,15 +92,15 @@
       "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
       "title": "1. gang . Introduktin PP 2026",
       "source_family": "lecture_slide",
-      "priority_score": 78,
+      "priority_score": 86,
       "priority_band": "supporting"
     },
     {
       "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
       "title": "1. Introduktion",
       "source_family": "seminar_slide",
-      "priority_score": 64,
-      "priority_band": "contextual"
+      "priority_score": 72,
+      "priority_band": "supporting"
     }
   ],
   "sources": {
@@ -118,13 +119,14 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 130,
+        "priority_score": 138,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "grundbog",
           "manual summary",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -134,10 +136,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 0,
+          "estimated_token_count": 14300,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
           "size_bytes": 3073301
         },
@@ -170,7 +172,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -190,10 +192,10 @@
         },
         "file": {
           "page_count": 18,
-          "estimated_token_count": 23080,
-          "estimated_word_count": 14887,
-          "text_char_count": 92320,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 11700,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
           "size_bytes": 261872
         },
@@ -228,15 +230,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 78,
+        "priority_score": 86,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -246,10 +249,10 @@
         },
         "file": {
           "page_count": 14,
-          "estimated_token_count": 2558,
-          "estimated_word_count": 1472,
-          "text_char_count": 10232,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 9100,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
           "size_bytes": 371038
         },
@@ -275,15 +278,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "seminar",
         "evidence_origin": "seminar_applied",
-        "priority_score": 64,
-        "priority_band": "contextual",
+        "priority_score": 72,
+        "priority_band": "supporting",
         "priority_reasons": [
           "seminar_slide",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -293,10 +297,10 @@
         },
         "file": {
           "page_count": 23,
-          "estimated_token_count": 1964,
-          "estimated_word_count": 1185,
-          "text_char_count": 7853,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14950,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
           "size_bytes": 1710684
         },

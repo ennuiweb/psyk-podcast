@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W05L2",
   "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
   "sequence_index": 10,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 3,
     "source_analyses_present": 0,
     "total_pages": 97,
-    "total_estimated_tokens": 40216,
+    "total_estimated_tokens": 63050,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 3
     }
   },
   "source_intelligence": {
-    "dominant_language": "da",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -75,7 +75,7 @@
       "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
       "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
       "source_family": "reading",
-      "priority_score": 136,
+      "priority_score": 144,
       "priority_band": "core"
     },
     {
@@ -96,7 +96,7 @@
       "source_id": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
       "title": "10. Psykoanalysens konstituering",
       "source_family": "lecture_slide",
-      "priority_score": 72,
+      "priority_score": 76,
       "priority_band": "supporting"
     }
   ],
@@ -116,13 +116,14 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 136,
+        "priority_score": 144,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "grundbog",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -132,10 +133,10 @@
         },
         "file": {
           "page_count": 49,
-          "estimated_token_count": 0,
+          "estimated_token_count": 31850,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "1cf0f063a5a052eddb7cd7217326f174838a488b8671e91ab00efc69bc0fe70e",
           "size_bytes": 7089064
         },
@@ -188,10 +189,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 26967,
-          "estimated_word_count": 15272,
-          "text_char_count": 107866,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14300,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
           "size_bytes": 16678564
         },
@@ -244,10 +245,10 @@
         },
         "file": {
           "page_count": 16,
-          "estimated_token_count": 11536,
-          "estimated_word_count": 6845,
-          "text_char_count": 46143,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 10400,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
           "size_bytes": 1273162
         },
@@ -282,14 +283,15 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "short",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 72,
+        "priority_score": 76,
         "priority_band": "supporting",
         "priority_reasons": [
-          "lecture_slide"
+          "lecture_slide",
+          "substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -299,10 +301,10 @@
         },
         "file": {
           "page_count": 10,
-          "estimated_token_count": 1713,
-          "estimated_word_count": 881,
-          "text_char_count": 6850,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 6500,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "27d495d3650ee48b3afc3e1c9a07ae4b709589ea86a0ddcc94b0b29c79d1e8c2",
           "size_bytes": 84262
         },

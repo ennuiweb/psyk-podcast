@@ -2,10 +2,19 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:13:27Z",
+  "generated_at": "2026-05-05T13:33:48Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-source-card-v1"
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -13,7 +22,8 @@
     ],
     "dependency_hashes": {
       "source_file": "1db05ea8535b642191002e1d37b711474c585f441d0c846ae7b40b99ae816008",
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_files_signature": "910ddfa5c1d11ed201519e98eb2c3c573a35c30c61d866d3f3b5cbc2361713b2",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -24,110 +34,101 @@
     "source_family": "reading",
     "evidence_origin": "reading_grounded",
     "source_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
+    "source_paths": [
+      "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf"
+    ],
     "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf"
+    ],
     "source_exists": true,
     "source_sha256": "1db05ea8535b642191002e1d37b711474c585f441d0c846ae7b40b99ae816008",
     "length_band": "long",
     "page_count": 123,
-    "estimated_token_count": 79475,
-    "text_extraction_status": "ok"
+    "estimated_token_count": 79950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Provides the foundational clinical case study for Freud's early psychoanalytic method, illustrating dream interpretation, the psychosexual aetiology of hysteria, and the crucial theoretical discovery of transference.",
-    "source_role": "Serves as the primary empirical text to demonstrate how psychoanalytic theory is applied in practice, tracking the intricate connections between somatic symptoms, repressed sexuality, and family dynamics.",
-    "relation_to_lecture": "Anchors the lecture on empirical methods in psychoanalysis by providing a concrete, highly detailed narrative of how Freud gathered evidence, interpreted symptoms, and managed (or failed to manage) the clinical relationship.",
+    "theory_role": "The text serves as a foundational demonstration of applied psychoanalytic theory, illustrating how concepts like symptom overdetermination, dream interpretation, unconscious homosexuality, and transference operate within a clinical case study.",
+    "source_role": "A primary historical case study providing the clinical and empirical grounding for Freud's theories on the etiology of hysteria and the methodology of psychoanalysis.",
+    "relation_to_lecture": "As a reading for 'Empiri og metode i psykoanalysen', it directly illustrates Freud's clinical methodology (e.g., using dream analysis and symptomatic acts as empirical data) and his approach to establishing evidence for unconscious processes.",
     "central_claims": [
       {
-        "claim": "Hysterical symptoms require both a psychical significance and a 'somatic compliance' (an organic or physical basis) in order to manifest.",
+        "claim": "Every hysterical symptom requires the participation of both psychological meaning and 'somatic compliance' from a bodily organ.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Every hysterical symptom is overdetermined, meaning it can represent several unconscious mental processes or phantasies simultaneously or successively.",
+        "claim": "The motives for illness (secondary gain) do not initiate the symptom but attach to it secondarily, making it highly resistant to treatment because the patient uses the illness to secure external advantages.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Transference is an inevitable necessity in psychoanalytic treatment, wherein the patient replaces an earlier person from their past with the person of the physician.",
-        "grounding": "source-grounded",
-        "confidence": "high"
-      },
-      {
-        "claim": "Dreams represent fulfilled wishes, usually dating back to childhood, and serve to disguise repressed thoughts through mechanisms like displacement and condensation.",
-        "grounding": "source-grounded",
-        "confidence": "high"
-      },
-      {
-        "claim": "Neurotic illnesses are maintained by 'motives of illness', which include both a primary gain (an internal escape from mental conflict) and a secondary gain (external advantages like care or revenge).",
+        "claim": "Transference is an inevitable phenomenon in psychoanalysis where the patient redirects unconscious impulses and phantasies originally aimed at earlier figures onto the physician.",
         "grounding": "source-grounded",
         "confidence": "high"
       }
     ],
     "key_concepts": [
       {
-        "term": "Somatic compliance",
-        "definition": "A normal or pathological organic process in a bodily organ that provides a physical outlet for unconscious mental processes to express themselves as a hysterical symptom.",
-        "role": "Explains why a psychological conflict manifests as a specific physical symptom (e.g., a cough or aphonia) rather than just a mental disturbance."
+        "term": "Somatic Compliance",
+        "definition": "A normal or pathological physical process in a bodily organ that provides the necessary physical outlet for an unconscious mental process to be expressed as a hysterical symptom.",
+        "role": "Explains the mechanism by which purely psychological conflicts manifest as physical afflictions, such as Dora's cough or aphonia."
       },
       {
         "term": "Transference",
-        "definition": "New editions or facsimiles of impulses and phantasies aroused during analysis, characterized by the replacement of an earlier person from the patient's past by the physician.",
-        "role": "Serves as both the greatest obstacle to the treatment (as resistance) and the most powerful therapeutic ally when made conscious."
-      },
-      {
-        "term": "Primary and secondary gain from illness",
-        "definition": "The primary gain is the internal psychological saving of effort (flight into illness) at the onset; the secondary gain is the external advantage (e.g., pity, revenge, avoiding duties) the symptom acquires later.",
-        "role": "Explains the obstinacy of neuroses and why patients unconsciously resist getting well despite conscious desires for a cure."
+        "definition": "New editions or facsimiles of repressed impulses and phantasies in which an earlier person from the patient's past is replaced by the person of the physician.",
+        "role": "A central clinical concept that explains both the resistance to treatment and the premature termination of Dora's analysis."
       },
       {
         "term": "Overdetermination",
-        "definition": "The phenomenon where a single hysterical symptom or dream element is the product of multiple concurrent factors, experiences, or unconscious thoughts.",
-        "role": "Justifies Freud's exhaustive, multi-layered method of interpretation, showing that discovering one cause does not rule out others."
+        "definition": "The principle that a single hysterical symptom or dream element simultaneously represents multiple unconscious meanings, phantasies, or mental processes.",
+        "role": "Justifies the complex, multi-layered interpretations Freud applies to symptoms, indicating that finding one psychological cause does not exclude others."
       },
       {
-        "term": "Reversal of affect",
-        "definition": "A mechanism in the psychology of neuroses where an occasion for sexual excitement elicits preponderantly or exclusively unpleasurable feelings (e.g., disgust).",
-        "role": "Illustrates how repressed sexual impulses are defended against and transformed into hysterical symptoms."
+        "term": "Reversal of Affect",
+        "definition": "A mechanism particularly characteristic of hysteria where a situation that would normally elicit sexual excitement instead predominantly or exclusively elicits unpleasurable feelings, such as disgust.",
+        "role": "Provides the diagnostic basis for Freud labeling Dora's reaction to Herr K.'s kiss at age fourteen as entirely hysterical."
       }
     ],
     "distinctions": [
       {
         "label": "Primary vs. Secondary Gain from Illness",
-        "summary": "Primary gain is the initial, internal psychological relief from conflict, whereas secondary gain involves the external, practical advantages the illness later provides the patient in their social environment.",
-        "stakes": "Crucial for understanding therapeutic resistance; removing the initial trauma is insufficient if the physician does not also address the current, secondary motives anchoring the illness."
+        "summary": "Primary gain is the internal psychological saving of effort (flight into illness) to escape a mental conflict, whereas secondary gain involves the external advantages (e.g., extracting care or revenge) secured once the illness is established.",
+        "stakes": "Helps distinguish between the unconscious economic mechanisms that form a symptom and the interpersonal motives that subsequently maintain it and cause resistance to recovery."
       },
       {
-        "label": "Conscious vs. Unconscious Intentions",
-        "summary": "The difference between what a patient explicitly wants (e.g., to be cured) and their hidden, repressed motives (e.g., a desire for revenge or self-punishment).",
-        "stakes": "Explains why logical persuasion or moral encouragement fails in treating hysteria, making psychoanalytic uncovering of the unconscious strictly necessary."
+        "label": "Conscious vs. Unconscious Disingenuousness",
+        "summary": "Conscious disingenuousness is the deliberate withholding of known facts due to shame or discretion, whereas unconscious disingenuousness involves memories disappearing without deliberate intent while narrating the case history.",
+        "stakes": "Vital for understanding why hysteric patients initially present incoherent or gapped narratives, necessitating the psychoanalytic method to reconstruct the true sequence of events."
       }
     ],
     "likely_misunderstandings": [
-      "Assuming Freud believed hysterical symptoms were purely psychological; he explicitly required 'somatic compliance' (an organic basis) for symptom formation.",
-      "Thinking the 'Dora' case was a complete and successful treatment; Freud explicitly states it was a fragment and broken off prematurely due to his failure to master the transference in time.",
-      "Confusing the primary gain of an illness (internal psychological defense) with the secondary gain (external advantages like attention or revenge) in Freud's etiology."
+      "Assuming Freud viewed hysteria as an exclusively psychological disorder, missing his explicit insistence on the necessity of a physical 'somatic compliance'.",
+      "Believing that the patient's conscious motives for being ill (secondary gain) are the initial cause of the illness, rather than a subsequent adaptation.",
+      "Thinking the Dora case was presented as a therapeutic success; Freud explicitly frames it as a fragment broken off prematurely due to unresolved transference."
     ],
     "quote_targets": [
       {
-        "target": "somatic compliance",
-        "why": "To demonstrate Freud's dual psychical-somatic theory of symptom formation, countering the notion that he viewed hysteria as purely psychological."
+        "target": "every hysterical symptom involves the participation of both sides. It cannot occur without the presence of a certain degree of somatic compliance",
+        "why": "Provides Freud's definitive statement on the psychosomatic nature of hysterical symptom formation (Page 40)."
       },
       {
-        "target": "primary gain from illness and the secondary one",
-        "why": "To understand the economic and external motives that keep a patient anchored in their neurosis and fuel resistance to therapy."
+        "target": "What are transferences? They are new editions or facsimiles of the impulses and phantasies... that they replace some earlier person by the person of the physician.",
+        "why": "A classic, foundational definition of transference that is critical to understanding psychoanalytic methodology (Page 116)."
       },
       {
-        "target": "What are transferences? They are new editions or facsimiles of the impulses and phantasies",
-        "why": "To capture Freud's formal definition of transference, a pivotal concept that emerged as a central therapeutic challenge in this case."
+        "target": "A motive for being ill is sharply to be distinguished as a concept from the possibilities of being ill—from the material out of which symptoms are formed.",
+        "why": "Clarifies the difference between the underlying structural causes of neurosis and the secondary gains that maintain it (Page 42)."
       }
     ],
     "grounding_notes": [
-      "All clinical claims regarding Dora's family dynamics, symptoms, and Freud's interpretations are strictly source-grounded in the provided text.",
-      "The explicit distinction between primary and secondary gain relies on a footnote added by Freud in 1923 (p. 43) to correct and refine his earlier 1905 formulation."
+      "The source text is provided in an English translation ('Fragment of an Analysis of a Case of Hysteria'), though the course metadata and context indicate a Danish setting.",
+      "The relationship to the lecture ('Empiri og metode i psykoanalysen') is inferred directly from the file path provided in the metadata."
     ],
     "warnings": [
-      "The text includes multiple footnotes added by Freud in later editions (e.g., 1923) which slightly modify or expand upon his original 1901/1905 theoretical positions. These should be contextualized chronologically.",
-      "OCR artifacts may be present in the source text; pagination aligns with the provided PDF numbering."
+      "The text contains heavy reliance on Freud's specific, often unfalsifiable interpretative leaps (e.g., equating 'jewel-case' with female genitals). This structured card maps his internal logic, not modern clinical consensus.",
+      "The document is an English translation, which may present terminology mismatches if the lecture and exam are conducted in Danish."
     ]
   }
 }

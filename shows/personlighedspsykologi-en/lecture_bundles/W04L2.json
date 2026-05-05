@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W04L2",
   "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
   "sequence_index": 8,
@@ -49,7 +49,7 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 106,
-    "total_estimated_tokens": 25775,
+    "total_estimated_tokens": 68900,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2,
@@ -57,7 +57,7 @@
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -69,7 +69,8 @@
       "w04l2-lacan-1966-2d720f56"
     ],
     "likely_supporting_sources": [
-      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
     ]
   },
   "source_priority_order": [
@@ -84,7 +85,7 @@
       "source_id": "w04l2-lacan-1966-2d720f56",
       "title": "Lacan (1966)",
       "source_family": "reading",
-      "priority_score": 110,
+      "priority_score": 114,
       "priority_band": "primary"
     },
     {
@@ -98,8 +99,8 @@
       "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
       "title": "4. Psykoanalyse I",
       "source_family": "seminar_slide",
-      "priority_score": 64,
-      "priority_band": "contextual"
+      "priority_score": 72,
+      "priority_band": "supporting"
     }
   ],
   "sources": {
@@ -114,7 +115,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -134,10 +135,10 @@
         },
         "file": {
           "page_count": 26,
-          "estimated_token_count": 17278,
-          "estimated_word_count": 11353,
-          "text_char_count": 69109,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 16900,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
           "size_bytes": 4555675
         },
@@ -174,11 +175,12 @@
         "length_band": "short",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 110,
+        "priority_score": 114,
         "priority_band": "primary",
         "priority_reasons": [
           "reading",
-          "manual summary"
+          "manual summary",
+          "substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -188,10 +190,10 @@
         },
         "file": {
           "page_count": 7,
-          "estimated_token_count": 31,
+          "estimated_token_count": 4550,
           "estimated_word_count": 0,
-          "text_char_count": 121,
-          "text_extraction_status": "ok",
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
           "size_bytes": 758427
         },
@@ -226,7 +228,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
@@ -245,10 +247,10 @@
         },
         "file": {
           "page_count": 56,
-          "estimated_token_count": 7063,
-          "estimated_word_count": 4113,
-          "text_char_count": 28252,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 36400,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
           "size_bytes": 3483377
         },
@@ -274,15 +276,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "seminar",
         "evidence_origin": "seminar_applied",
-        "priority_score": 64,
-        "priority_band": "contextual",
+        "priority_score": 72,
+        "priority_band": "supporting",
         "priority_reasons": [
           "seminar_slide",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -292,10 +295,10 @@
         },
         "file": {
           "page_count": 17,
-          "estimated_token_count": 1403,
-          "estimated_word_count": 885,
-          "text_char_count": 5610,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 11050,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
           "size_bytes": 1627865
         },

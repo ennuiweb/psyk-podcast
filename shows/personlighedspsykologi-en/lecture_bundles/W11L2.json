@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W11L2",
   "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
   "sequence_index": 21,
@@ -45,13 +45,13 @@
     "manual_reading_summaries_present": 4,
     "source_analyses_present": 1,
     "total_pages": 110,
-    "total_estimated_tokens": 32936,
+    "total_estimated_tokens": 71500,
     "source_family_counts": {
       "reading": 4
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": true,
@@ -66,9 +66,9 @@
     "missing_sources": [],
     "likely_core_sources": [
       "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "w11l2-bruner-1999-7930abd8",
       "w11l2-mcadams-and-pals-2006-b9675688",
-      "w11l2-raggatt-2002-d15129af",
-      "w11l2-bruner-1999-7930abd8"
+      "w11l2-raggatt-2002-d15129af"
     ],
     "likely_supporting_sources": []
   },
@@ -77,7 +77,14 @@
       "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
       "title": "Grundbog kapitel 09 - Narrative teorier",
       "source_family": "reading",
-      "priority_score": 148,
+      "priority_score": 156,
+      "priority_band": "core"
+    },
+    {
+      "source_id": "w11l2-bruner-1999-7930abd8",
+      "title": "Bruner (1999)",
+      "source_family": "reading",
+      "priority_score": 134,
       "priority_band": "core"
     },
     {
@@ -92,13 +99,6 @@
       "title": "Raggatt (2002)",
       "source_family": "reading",
       "priority_score": 128,
-      "priority_band": "core"
-    },
-    {
-      "source_id": "w11l2-bruner-1999-7930abd8",
-      "title": "Bruner (1999)",
-      "source_family": "reading",
-      "priority_score": 126,
       "priority_band": "core"
     }
   ],
@@ -118,7 +118,7 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 148,
+        "priority_score": 156,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -126,7 +126,8 @@
           "manual summary",
           "analysis sidecar",
           "week analysis",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -136,10 +137,10 @@
         },
         "file": {
           "page_count": 43,
-          "estimated_token_count": 0,
+          "estimated_token_count": 27950,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
           "size_bytes": 6544243
         },
@@ -169,6 +170,63 @@
         }
       },
       {
+        "source_id": "w11l2-bruner-1999-7930abd8",
+        "title": "Bruner (1999)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W11L2 Bruner (1999).pdf",
+        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "long",
+        "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
+        "priority_score": 134,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "week analysis",
+          "long source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": true
+        },
+        "file": {
+          "page_count": 31,
+          "estimated_token_count": 20150,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
+          "sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+          "size_bytes": 2270304
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Bruner argues that human meaning is fundamentally narrative and culturally organized.",
+            "He links everyday folk psychology to how people interpret action, intention, and disruption.",
+            "Narrative framing is presented as central for making persons intelligible in social life."
+          ],
+          "key_points": [
+            "Meaning-making depends on culturally shared narrative forms.",
+            "Folk psychology provides interpretive background for agency and motive.",
+            "Narratives normalize and problematize conduct through plot structures.",
+            "Identity emerges through storied interpretation of experience."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
+      },
+      {
         "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
         "title": "McAdams & Pals (2006)",
         "source_kind": "reading",
@@ -178,7 +236,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 3,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -199,10 +257,10 @@
         },
         "file": {
           "page_count": 14,
-          "estimated_token_count": 20600,
-          "estimated_word_count": 12281,
-          "text_char_count": 82398,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 9100,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
           "size_bytes": 589778
         },
@@ -235,7 +293,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -256,10 +314,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 12336,
-          "estimated_word_count": 8044,
-          "text_char_count": 49342,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14300,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
           "size_bytes": 620722
         },
@@ -275,62 +333,6 @@
             "Dialogue is both intrapsychic and interpersonal.",
             "Identity stability is achieved through ongoing coordination work.",
             "Methodologically, analysis tracks voice, position, and relation."
-          ]
-        },
-        "analysis": {
-          "present": false,
-          "sidecars": []
-        }
-      },
-      {
-        "source_id": "w11l2-bruner-1999-7930abd8",
-        "title": "Bruner (1999)",
-        "source_kind": "reading",
-        "source_family": "reading",
-        "source_filename": "W11L2 Bruner (1999).pdf",
-        "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
-        "source_exists": true,
-        "missing_reason": null,
-        "sequence_index": 2,
-        "language_guess": "unknown",
-        "length_band": "long",
-        "slide_subcategory": null,
-        "evidence_origin": "reading_grounded",
-        "priority_score": 126,
-        "priority_band": "core",
-        "priority_reasons": [
-          "reading",
-          "manual summary",
-          "week analysis",
-          "long source"
-        ],
-        "priority_signals": {
-          "is_grundbog": false,
-          "has_manual_summary": true,
-          "has_prompt_analysis_sidecar": false,
-          "lecture_has_week_analysis_sidecar": true
-        },
-        "file": {
-          "page_count": 31,
-          "estimated_token_count": 0,
-          "estimated_word_count": 0,
-          "text_char_count": 0,
-          "text_extraction_status": "no_text",
-          "sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
-          "size_bytes": 2270304
-        },
-        "summary": {
-          "present": true,
-          "summary_lines": [
-            "Bruner argues that human meaning is fundamentally narrative and culturally organized.",
-            "He links everyday folk psychology to how people interpret action, intention, and disruption.",
-            "Narrative framing is presented as central for making persons intelligible in social life."
-          ],
-          "key_points": [
-            "Meaning-making depends on culturally shared narrative forms.",
-            "Folk psychology provides interpretive background for agency and motive.",
-            "Narratives normalize and problematize conduct through plot structures.",
-            "Identity emerges through storied interpretation of experience."
           ]
         },
         "analysis": {

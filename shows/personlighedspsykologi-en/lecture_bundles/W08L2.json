@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W08L2",
   "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
   "sequence_index": 16,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 64,
-    "total_estimated_tokens": 12076,
+    "total_estimated_tokens": 41600,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -62,14 +62,21 @@
     },
     "missing_sources": [],
     "likely_core_sources": [
-      "w08l2-tolman-2009-455915e0",
-      "w08l2-holzkamp-1982-845aafd2"
+      "w08l2-holzkamp-1982-845aafd2",
+      "w08l2-tolman-2009-455915e0"
     ],
     "likely_supporting_sources": [
       "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
     ]
   },
   "source_priority_order": [
+    {
+      "source_id": "w08l2-holzkamp-1982-845aafd2",
+      "title": "Holzkamp (1982)",
+      "source_family": "reading",
+      "priority_score": 130,
+      "priority_band": "core"
+    },
     {
       "source_id": "w08l2-tolman-2009-455915e0",
       "title": "Tolman (2009)",
@@ -78,78 +85,15 @@
       "priority_band": "core"
     },
     {
-      "source_id": "w08l2-holzkamp-1982-845aafd2",
-      "title": "Holzkamp (1982)",
-      "source_family": "reading",
-      "priority_score": 122,
-      "priority_band": "core"
-    },
-    {
       "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
       "title": "16. gang Critical psych 2026",
       "source_family": "lecture_slide",
-      "priority_score": 82,
+      "priority_score": 86,
       "priority_band": "supporting"
     }
   ],
   "sources": {
     "readings": [
-      {
-        "source_id": "w08l2-tolman-2009-455915e0",
-        "title": "Tolman (2009)",
-        "source_kind": "reading",
-        "source_family": "reading",
-        "source_filename": "W8L2 Tolman (2009).pdf",
-        "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
-        "source_exists": true,
-        "missing_reason": null,
-        "sequence_index": 2,
-        "language_guess": "en",
-        "length_band": "medium",
-        "slide_subcategory": null,
-        "evidence_origin": "reading_grounded",
-        "priority_score": 124,
-        "priority_band": "core",
-        "priority_reasons": [
-          "reading",
-          "manual summary",
-          "medium source",
-          "very substantial"
-        ],
-        "priority_signals": {
-          "is_grundbog": false,
-          "has_manual_summary": true,
-          "has_prompt_analysis_sidecar": false,
-          "lecture_has_week_analysis_sidecar": false
-        },
-        "file": {
-          "page_count": 12,
-          "estimated_token_count": 8947,
-          "estimated_word_count": 5677,
-          "text_char_count": 35787,
-          "text_extraction_status": "ok",
-          "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
-          "size_bytes": 86088
-        },
-        "summary": {
-          "present": true,
-          "summary_lines": [
-            "Tolman reviews key commitments of critical psychology and its implications for theory and method.",
-            "The text emphasizes praxis, social critique, and the standpoint of subjects in concrete life conditions.",
-            "It positions psychology as a discipline that should illuminate and transform restrictive social arrangements."
-          ],
-          "key_points": [
-            "Standpoint and context are constitutive for psychological explanation.",
-            "Method should track lived practice rather than decontextualized variables alone.",
-            "Critical psychology links diagnosis with transformative possibility.",
-            "Theory is evaluated by explanatory and practical relevance."
-          ]
-        },
-        "analysis": {
-          "present": false,
-          "sidecars": []
-        }
-      },
       {
         "source_id": "w08l2-holzkamp-1982-845aafd2",
         "title": "Holzkamp (1982)",
@@ -164,12 +108,13 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 122,
+        "priority_score": 130,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -179,10 +124,10 @@
         },
         "file": {
           "page_count": 29,
-          "estimated_token_count": 0,
+          "estimated_token_count": 18850,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
           "size_bytes": 2387076
         },
@@ -204,6 +149,62 @@
           "present": false,
           "sidecars": []
         }
+      },
+      {
+        "source_id": "w08l2-tolman-2009-455915e0",
+        "title": "Tolman (2009)",
+        "source_kind": "reading",
+        "source_family": "reading",
+        "source_filename": "W8L2 Tolman (2009).pdf",
+        "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+        "source_exists": true,
+        "missing_reason": null,
+        "sequence_index": 2,
+        "language_guess": "unknown",
+        "length_band": "medium",
+        "slide_subcategory": null,
+        "evidence_origin": "reading_grounded",
+        "priority_score": 124,
+        "priority_band": "core",
+        "priority_reasons": [
+          "reading",
+          "manual summary",
+          "medium source",
+          "very substantial"
+        ],
+        "priority_signals": {
+          "is_grundbog": false,
+          "has_manual_summary": true,
+          "has_prompt_analysis_sidecar": false,
+          "lecture_has_week_analysis_sidecar": false
+        },
+        "file": {
+          "page_count": 12,
+          "estimated_token_count": 7800,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
+          "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+          "size_bytes": 86088
+        },
+        "summary": {
+          "present": true,
+          "summary_lines": [
+            "Tolman reviews key commitments of critical psychology and its implications for theory and method.",
+            "The text emphasizes praxis, social critique, and the standpoint of subjects in concrete life conditions.",
+            "It positions psychology as a discipline that should illuminate and transform restrictive social arrangements."
+          ],
+          "key_points": [
+            "Standpoint and context are constitutive for psychological explanation.",
+            "Method should track lived practice rather than decontextualized variables alone.",
+            "Critical psychology links diagnosis with transformative possibility.",
+            "Theory is evaluated by explanatory and practical relevance."
+          ]
+        },
+        "analysis": {
+          "present": false,
+          "sidecars": []
+        }
       }
     ],
     "lecture_slides": [
@@ -217,16 +218,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 82,
+        "priority_score": 86,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
           "medium source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -236,10 +237,10 @@
         },
         "file": {
           "page_count": 23,
-          "estimated_token_count": 3129,
-          "estimated_word_count": 1731,
-          "text_char_count": 12514,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14950,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
           "size_bytes": 864674
         },

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:06Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "build_inputs": {
     "course_glossary": "shows/personlighedspsykologi-en/course_glossary.json",
     "course_theory_map": "shows/personlighedspsykologi-en/course_theory_map.json",
@@ -526,7 +526,7 @@
       "node_type": "theory",
       "label": "personality functioning and pathology",
       "importance": 2,
-      "salience_score": 55,
+      "salience_score": 56,
       "lecture_keys": [
         "W03L2"
       ],
@@ -1978,11 +1978,11 @@
       ],
       "supporting_source_ids": [
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
-        "w11l2-mcadams-and-pals-2006-b9675688",
-        "w02l2-bleidorn-et-al-2022-25c2d2de",
         "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
-        "w11l2-raggatt-2002-d15129af",
-        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+        "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "w11l2-mcadams-and-pals-2006-b9675688",
+        "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "w11l2-raggatt-2002-d15129af"
       ],
       "supporting_evidence_origins": [
         "textbook_framing",
@@ -2010,16 +2010,16 @@
         "critical psychology"
       ],
       "supporting_source_ids": [
-        "w08l1-lamiell-2021-be79d36e",
         "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
-        "w08l2-tolman-2009-455915e0",
+        "w08l1-lamiell-2021-be79d36e",
         "w08l2-holzkamp-1982-845aafd2",
-        "w01l2-mayer-and-bryan-2024-07faf915",
-        "w08l1-laux-et-al-2010-cfff840c"
+        "w08l2-tolman-2009-455915e0",
+        "w09l1-holzkamp-2013-c3068d8a",
+        "w01l2-mayer-and-bryan-2024-07faf915"
       ],
       "supporting_evidence_origins": [
-        "reading_grounded",
         "textbook_framing",
+        "reading_grounded",
         "lecture_framed"
       ]
     },
@@ -2047,9 +2047,9 @@
         "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
         "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
         "w06l1-spinelli-2005-b2f76e93",
-        "w07l1-cooper-2003-ee3c34b7",
         "w06l2-may-1966-d8406a09",
-        "w04l2-laplanche-1970-968862d5"
+        "w07l1-cooper-2003-ee3c34b7",
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a"
       ],
       "supporting_evidence_origins": [
         "textbook_framing",
@@ -2077,12 +2077,12 @@
         "personality functioning"
       ],
       "supporting_source_ids": [
+        "w07l2-evans-1975-8e8a9d79",
         "w03l2-sharp-and-wall-2021-cb92ecf4",
         "w07l2-giorgi-2005-55ca98f7",
+        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
         "w07l2-maslow-1968-7ea53e34",
-        "w04l2-laplanche-1970-968862d5",
-        "w05l1-ricoeur-1981-19a5343f",
-        "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a"
+        "w04l1-gammelgaard-2007-bcbdbec2"
       ],
       "supporting_evidence_origins": [
         "reading_grounded",
@@ -2111,10 +2111,10 @@
       ],
       "supporting_source_ids": [
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
-        "w11l2-mcadams-and-pals-2006-b9675688",
         "w11l2-bruner-1999-7930abd8",
         "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
-        "w10l2-foucault-1997-92cd121d"
+        "w10l2-foucault-1997-92cd121d",
+        "w11l2-mcadams-and-pals-2006-b9675688"
       ],
       "supporting_evidence_origins": [
         "textbook_framing",
@@ -2145,9 +2145,9 @@
         "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
         "w10l2-foucault-1997-92cd121d",
         "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "w08l2-holzkamp-1982-845aafd2",
         "w10l1-mitchell-2015-bc690b36",
-        "w08l2-tolman-2009-455915e0",
-        "w08l2-holzkamp-1982-845aafd2"
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
       ],
       "supporting_evidence_origins": [
         "textbook_framing",

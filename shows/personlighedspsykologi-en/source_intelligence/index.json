@@ -1,13 +1,13 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:34:48Z",
+  "generated_at": "2026-05-05T13:47:30Z",
   "build_inputs": {
     "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
     "recursive_dir": "shows/personlighedspsykologi-en/source_intelligence"
   },
   "expected": {
-    "source_card_count": 79,
+    "source_card_count": 80,
     "lecture_count": 22
   },
   "coverage": {
@@ -37,6 +37,6 @@
   },
   "errors": [],
   "known_partial_allowances": [
-    "W03L2 may remain partial because its manifest intentionally keeps Bach & Simonsen (2023) as missing."
+    "W03L2 may remain partial only because its manual lecture/reading summaries are incomplete, not because of missing sources."
   ]
 }

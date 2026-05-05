@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W01L2",
   "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
   "sequence_index": 2,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 3,
     "source_analyses_present": 0,
     "total_pages": 122,
-    "total_estimated_tokens": 70695,
+    "total_estimated_tokens": 79300,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 3
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -89,14 +89,14 @@
       "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
       "title": "Koutsoumpis (2025)",
       "source_family": "reading",
-      "priority_score": 118,
+      "priority_score": 114,
       "priority_band": "primary"
     },
     {
       "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
       "title": "2. gang PersPsy 2 260203",
       "source_family": "lecture_slide",
-      "priority_score": 88,
+      "priority_score": 92,
       "priority_band": "supporting"
     }
   ],
@@ -112,7 +112,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -132,10 +132,10 @@
         },
         "file": {
           "page_count": 21,
-          "estimated_token_count": 27118,
-          "estimated_word_count": 16680,
-          "text_char_count": 108469,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 13650,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "19b42595372a402834bb8d05b8739f168c26068cd91091a99adb465aa3876e4e",
           "size_bytes": 1916037
         },
@@ -168,7 +168,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 3,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -188,10 +188,10 @@
         },
         "file": {
           "page_count": 21,
-          "estimated_token_count": 30145,
-          "estimated_word_count": 18354,
-          "text_char_count": 120580,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 13650,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
           "size_bytes": 1014259
         },
@@ -224,16 +224,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "short",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 118,
+        "priority_score": 114,
         "priority_band": "primary",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "very substantial"
+          "substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -243,10 +243,10 @@
         },
         "file": {
           "page_count": 8,
-          "estimated_token_count": 9814,
-          "estimated_word_count": 6848,
-          "text_char_count": 39254,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 5200,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
           "size_bytes": 237072
         },
@@ -281,16 +281,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 88,
+        "priority_score": 92,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
           "long source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -300,10 +300,10 @@
         },
         "file": {
           "page_count": 72,
-          "estimated_token_count": 3618,
-          "estimated_word_count": 2070,
-          "text_char_count": 14472,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 46800,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "0e14b905130c23c71780529de81a9e24335b68bf11cf4fc60295a36ad1b1e38c",
           "size_bytes": 2272899
         },

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W06L1",
   "lecture_title": "Fænomenologi (Forelæsning 11, 2026-03-09)",
   "sequence_index": 11,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 3,
     "source_analyses_present": 0,
     "total_pages": 127,
-    "total_estimated_tokens": 41896,
+    "total_estimated_tokens": 82550,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 3
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "da",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -75,7 +75,7 @@
       "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
       "source_family": "reading",
-      "priority_score": 136,
+      "priority_score": 144,
       "priority_band": "core"
     },
     {
@@ -96,7 +96,7 @@
       "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
       "title": "11. Fænomenologisk personlighedspsykologi2026",
       "source_family": "lecture_slide",
-      "priority_score": 84,
+      "priority_score": 92,
       "priority_band": "supporting"
     }
   ],
@@ -116,13 +116,14 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 136,
+        "priority_score": 144,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
           "grundbog",
           "manual summary",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -132,10 +133,10 @@
         },
         "file": {
           "page_count": 42,
-          "estimated_token_count": 0,
+          "estimated_token_count": 27300,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
           "size_bytes": 6926924
         },
@@ -168,7 +169,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "da",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -188,10 +189,10 @@
         },
         "file": {
           "page_count": 26,
-          "estimated_token_count": 17946,
-          "estimated_word_count": 11088,
-          "text_char_count": 71784,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 16900,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
           "size_bytes": 1868381
         },
@@ -224,7 +225,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -244,10 +245,10 @@
         },
         "file": {
           "page_count": 30,
-          "estimated_token_count": 21887,
-          "estimated_word_count": 14202,
-          "text_char_count": 87545,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 19500,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
           "size_bytes": 140449
         },
@@ -286,11 +287,12 @@
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 84,
+        "priority_score": 92,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -300,10 +302,10 @@
         },
         "file": {
           "page_count": 29,
-          "estimated_token_count": 2063,
-          "estimated_word_count": 1061,
-          "text_char_count": 8252,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 18850,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
           "size_bytes": 471274
         },

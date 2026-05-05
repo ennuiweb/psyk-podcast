@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W08L1",
   "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
   "sequence_index": 15,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 52,
-    "total_estimated_tokens": 23081,
+    "total_estimated_tokens": 33800,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -81,14 +81,14 @@
       "source_id": "w08l1-laux-et-al-2010-cfff840c",
       "title": "Laux et al (2010)",
       "source_family": "reading",
-      "priority_score": 118,
+      "priority_score": 114,
       "priority_band": "primary"
     },
     {
       "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
       "title": "15. gang Critical personalism 2026",
       "source_family": "lecture_slide",
-      "priority_score": 78,
+      "priority_score": 86,
       "priority_band": "supporting"
     }
   ],
@@ -104,7 +104,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -124,10 +124,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 12337,
-          "estimated_word_count": 7909,
-          "text_char_count": 49346,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14300,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
           "size_bytes": 135233
         },
@@ -160,16 +160,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "short",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 118,
+        "priority_score": 114,
         "priority_band": "primary",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "very substantial"
+          "substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -179,10 +179,10 @@
         },
         "file": {
           "page_count": 8,
-          "estimated_token_count": 8357,
-          "estimated_word_count": 5460,
-          "text_char_count": 33426,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 5200,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
           "size_bytes": 146911
         },
@@ -217,15 +217,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "medium",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 78,
+        "priority_score": 86,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -235,10 +236,10 @@
         },
         "file": {
           "page_count": 22,
-          "estimated_token_count": 2387,
-          "estimated_word_count": 1424,
-          "text_char_count": 9548,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 14300,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
           "size_bytes": 1776794
         },

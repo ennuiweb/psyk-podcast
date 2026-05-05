@@ -40,6 +40,11 @@ Hvis en fil ligger i "forkert" mappe ift. undervisningsplanen, er undervisningsp
    - `Øvelseshold/<filnavn>`
 6. Tilføj entry manuelt i `shows/personlighedspsykologi-en/slides_catalog.json`.
 7. Hvis en tidligere mappet slidefil slettes eller omdøbes i OneDrive-kilden, fjern eller ret den tilsvarende entry manuelt i kataloget og slet den gamle uploadede fil under `/var/www/slides/personlighedspsykologi/<W##L#>/<subcategory>/`.
+8. Kør den strukturelle audit, som kun validerer manuel mapping og manifest-expansion:
+
+```bash
+./.venv/bin/python scripts/audit_personlighedspsykologi_slide_mapping.py
+```
 
 ## Hvad mappingen bruges til
 
@@ -77,6 +82,12 @@ Følgende mappings er verificeret mod øvelsesplanen:
 
 - `Seminarhold/Slides/4. Psykoanalyse I.pdf` -> `lecture_key: W04L1`, `lecture_keys: [W04L1, W04L2]`
   Begrundelse: slide-indholdet arbejder direkte med `Freud (1973/1933)` og `Laplanche (1970)`, som ligger under henholdsvis `W04L1` og `W04L2` i `reading-file-key.md`.
+
+Audit-status 2026-05-05:
+
+- `scripts/audit_personlighedspsykologi_slide_mapping.py` passerer.
+- Catalog har 23 slide entries, som udvider til 24 lecture-slide links i `content_manifest.json`.
+- Den eneste multi-lecture mapping er den kendte `W04L1`/`W04L2` seminar-mapping ovenfor.
 
 Når nye øvelses-slides kommer:
 

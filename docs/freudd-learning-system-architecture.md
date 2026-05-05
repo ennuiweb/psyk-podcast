@@ -318,6 +318,18 @@ engine should be allowed to encode course-local assumptions such as:
 That kind of course tuning is acceptable when it stays explicit, inspectable,
 and versioned as data rather than being hidden inside prompt prose.
 
+The local inventory layer is deliberately not the semantic engine. It may hash
+files and read basic metadata such as page counts, but it must not extract
+reading text or build textbook/source understanding locally. Multi-PDF logical
+readings are represented explicitly and uploaded to Gemini as separate attached
+files.
+
+The pipeline supports piecemeal batches for development and quality testing.
+That is a smoke-test mode, not the final course state. Source cards and lecture
+substrates are order-independent, while final course synthesis and downward
+revision should be rebuilt from all lectures together so top-down and sideways
+relations are informed by the whole course.
+
 ### 2. Reproducibility is incomplete
 
 Important preprocessing still depends on local-only source access.
@@ -697,8 +709,9 @@ The first test set should be:
 The system is ready for podcast quality testing when those lectures have source
 cards, lecture substrates, revised lecture substrates, podcast substrates,
 schema validation, and dry-run prompt output showing compact substrate
-injection. `W03L2` remains allowed as partial because of the known missing
-source.
+injection, with source-alignment and slide-mapping audits passing. `W03L2`
+source mapping is now complete; if it is partial, that is a missing-summary
+quality caveat rather than a missing-source caveat.
 
 The remaining blocker is no longer basic model/key access or first artifact
 generation: the local secret-store key passes `gemini-3.1-pro-preview`

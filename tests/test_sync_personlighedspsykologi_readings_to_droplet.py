@@ -37,3 +37,26 @@ def test_clean_source_filename_preserves_parentheses_in_real_filename():
         )
         == "W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf"
     )
+
+
+def test_parse_reading_key_supports_one_logical_reading_with_multiple_pdfs(tmp_path):
+    mod = _load_module()
+    reading_key = tmp_path / "reading-file-key.md"
+    reading_key.write_text(
+        "\n".join(
+            [
+                "**W03L2 Personlighedsfunktion og forstyrrelse**",
+                "- Bach & Simonsen (2023) → W3L2 Bach & Simonsen (2023) kapitel 3.pdf; W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    entries = mod.parse_reading_key(reading_key)
+
+    assert len(entries) == 2
+    assert {entry.source_filename for entry in entries} == {
+        "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+        "W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+    }
+    assert entries[0].reading_key == entries[1].reading_key

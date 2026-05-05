@@ -89,8 +89,18 @@ Operational note:
 - Source cards and lecture substrates upload the actual source PDFs to Gemini
   by default. The lecture-pass escape hatch is
   `--no-raw-lecture-source-uploads`.
+- Local source inventory may hash files and count pages, but it must not
+  extract reading text or build semantic understanding locally. Multi-PDF
+  logical readings are represented with `source_filenames` and
+  `subject_relative_paths` and uploaded to Gemini as separate attached files.
+- Piecemeal batches are valid for smoke tests and quality review. Final
+  production substrate should run all source cards and lecture substrates, then
+  one full-course synthesis, then downward revisions and output substrates.
 - Gemini preprocessing uses explicit `thinking_level=high`, JSON MIME output,
   stage-specific JSON schemas, and the Gemini 3 default temperature behavior.
+- Source alignment and slide mapping audits are:
+  `scripts/audit_personlighedspsykologi_source_alignment.py` and
+  `scripts/audit_personlighedspsykologi_slide_mapping.py`.
 - Recursive artifact validation and progress tracking lives in
   `shows/personlighedspsykologi-en/source_intelligence/index.json`, rebuilt by
   `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.

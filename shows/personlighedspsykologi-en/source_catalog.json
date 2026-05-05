@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "build_inputs": {
     "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
     "slides_catalog": "shows/personlighedspsykologi-en/slides_catalog.json",
@@ -85,13 +85,13 @@
     "source_count": 80,
     "reading_count": 57,
     "slide_count": 23,
-    "missing_source_count": 1,
+    "missing_source_count": 0,
     "manual_source_summary_count": 56,
     "lecture_summary_count": 21,
     "source_prompt_analysis_count": 9,
     "lecture_week_prompt_analysis_count": 4,
-    "total_pages": 2349,
-    "total_estimated_tokens": 767526,
+    "total_pages": 2375,
+    "total_estimated_tokens": 1543750,
     "source_family_counts": {
       "exercise_slide": 2,
       "lecture_slide": 17,
@@ -99,9 +99,8 @@
       "seminar_slide": 4
     },
     "text_extraction_status_counts": {
-      "missing_source": 1,
-      "no_text": 22,
-      "ok": 57
+      "metadata_only_multi_file_no_local_text_extraction": 1,
+      "metadata_only_no_local_text_extraction": 79
     }
   },
   "lectures": [
@@ -166,7 +165,7 @@
       "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
       "reading_count": 2,
       "slide_count": 1,
-      "missing_source_count": 1,
+      "missing_source_count": 0,
       "lecture_summary_present": false,
       "week_prompt_analysis_present": false,
       "week_prompt_analysis_sidecars": []
@@ -386,8 +385,8 @@
         "page_count": 22,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -405,7 +404,7 @@
       "subject_relative_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -418,10 +417,10 @@
         "sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
         "size_bytes": 261872,
         "page_count": 18,
-        "text_char_count": 92320,
-        "estimated_word_count": 14887,
-        "estimated_token_count": 23080,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 11700,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -440,7 +439,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -453,10 +452,10 @@
         "sha256": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
         "size_bytes": 371038,
         "page_count": 14,
-        "text_char_count": 10232,
-        "estimated_word_count": 1472,
-        "estimated_token_count": 2558,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 9100,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W01L1/lecture/1. gang . Introduktin PP 2026.pdf",
@@ -477,7 +476,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "seminar",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -490,10 +489,10 @@
         "sha256": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
         "size_bytes": 1710684,
         "page_count": 23,
-        "text_char_count": 7853,
-        "estimated_word_count": 1185,
-        "estimated_token_count": 1964,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W01L1/seminar/1. Introduktion.pdf",
@@ -513,7 +512,7 @@
       "subject_relative_path": "Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -526,10 +525,10 @@
         "sha256": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
         "size_bytes": 237072,
         "page_count": 8,
-        "text_char_count": 39254,
-        "estimated_word_count": 6848,
-        "estimated_token_count": 9814,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 5200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -547,7 +546,7 @@
       "subject_relative_path": "Readings/W1L2 Personality assessment/W1L2 Mayer & Bryan (2024).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -560,10 +559,10 @@
         "sha256": "19b42595372a402834bb8d05b8739f168c26068cd91091a99adb465aa3876e4e",
         "size_bytes": 1916037,
         "page_count": 21,
-        "text_char_count": 108469,
-        "estimated_word_count": 16680,
-        "estimated_token_count": 27118,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 13650,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -581,7 +580,7 @@
       "subject_relative_path": "Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -594,10 +593,10 @@
         "sha256": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
         "size_bytes": 1014259,
         "page_count": 21,
-        "text_char_count": 120580,
-        "estimated_word_count": 18354,
-        "estimated_token_count": 30145,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 13650,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -616,7 +615,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -629,10 +628,10 @@
         "sha256": "0e14b905130c23c71780529de81a9e24335b68bf11cf4fc60295a36ad1b1e38c",
         "size_bytes": 2272899,
         "page_count": 72,
-        "text_char_count": 14472,
-        "estimated_word_count": 2070,
-        "estimated_token_count": 3618,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 46800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W01L2/lecture/2. gang PersPsy_2_260203.pdf",
@@ -652,7 +651,7 @@
       "subject_relative_path": "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -665,10 +664,10 @@
         "sha256": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
         "size_bytes": 329563,
         "page_count": 7,
-        "text_char_count": 37451,
-        "estimated_word_count": 5677,
-        "estimated_token_count": 9363,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 4550,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -686,7 +685,7 @@
       "subject_relative_path": "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -699,10 +698,10 @@
         "sha256": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
         "size_bytes": 434402,
         "page_count": 38,
-        "text_char_count": 172742,
-        "estimated_word_count": 26800,
-        "estimated_token_count": 43186,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 24700,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -734,10 +733,10 @@
         "sha256": "6827926fced9475ba46326fd40232d5f16c97af5eec222160c1eb2a8281b9490",
         "size_bytes": 2316113,
         "page_count": 29,
-        "text_char_count": 7742,
-        "estimated_word_count": 1188,
-        "estimated_token_count": 1936,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 18850,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W02L1/exercise/1. Intro og træk.pdf",
@@ -758,7 +757,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -771,10 +770,10 @@
         "sha256": "2e66f6613bc190eaaaf844f0c8accb26b5beaa2d36468ff359c44172b59ea30b",
         "size_bytes": 1000307,
         "page_count": 68,
-        "text_char_count": 20235,
-        "estimated_word_count": 3019,
-        "estimated_token_count": 5059,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 44200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W02L1/lecture/3. gang PersPsy_3_260209.pdf",
@@ -808,10 +807,10 @@
         "sha256": "e415d565bdbf3a7a1a2d151bc9fb55dcf67ca4d74c2ea619f158a17645b95008",
         "size_bytes": 2428573,
         "page_count": 19,
-        "text_char_count": 6187,
-        "estimated_word_count": 981,
-        "estimated_token_count": 1547,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 12350,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W02L1/seminar/3. Trækpsykologi II.pdf",
@@ -831,7 +830,7 @@
       "subject_relative_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -844,10 +843,10 @@
         "sha256": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
         "size_bytes": 2293136,
         "page_count": 32,
-        "text_char_count": 212124,
-        "estimated_word_count": 33527,
-        "estimated_token_count": 53031,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 20800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -865,7 +864,7 @@
       "subject_relative_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -878,10 +877,10 @@
         "sha256": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
         "size_bytes": 371844,
         "page_count": 7,
-        "text_char_count": 33654,
-        "estimated_word_count": 4922,
-        "estimated_token_count": 8414,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 4550,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -900,7 +899,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -913,10 +912,10 @@
         "sha256": "4c0cb57f98e4b30223a8a1b2e956814936bd3f8a0908c3695d24affe4d5694de",
         "size_bytes": 1427635,
         "page_count": 72,
-        "text_char_count": 14857,
-        "estimated_word_count": 2119,
-        "estimated_token_count": 3715,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 46800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W02L2/lecture/4. gang PersPsy_4_260210.pdf",
@@ -936,7 +935,7 @@
       "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -949,10 +948,10 @@
         "sha256": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
         "size_bytes": 414240,
         "page_count": 8,
-        "text_char_count": 39522,
-        "estimated_word_count": 6223,
-        "estimated_token_count": 9881,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 5200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -970,7 +969,7 @@
       "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -983,10 +982,10 @@
         "sha256": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
         "size_bytes": 446063,
         "page_count": 28,
-        "text_char_count": 108228,
-        "estimated_word_count": 15907,
-        "estimated_token_count": 27057,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 18200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1004,7 +1003,7 @@
       "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -1017,10 +1016,10 @@
         "sha256": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
         "size_bytes": 215027,
         "page_count": 5,
-        "text_char_count": 28310,
-        "estimated_word_count": 4300,
-        "estimated_token_count": 7078,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 3250,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1038,7 +1037,7 @@
       "subject_relative_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -1051,10 +1050,10 @@
         "sha256": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
         "size_bytes": 6347058,
         "page_count": 3,
-        "text_char_count": 17476,
-        "estimated_word_count": 2781,
-        "estimated_token_count": 4369,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 1950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1073,7 +1072,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1086,10 +1085,10 @@
         "sha256": "35e386410db88acc6d8eaad71f12c4a62cf4869026faf777ccc5188d5a56c6db",
         "size_bytes": 1218194,
         "page_count": 76,
-        "text_char_count": 16650,
-        "estimated_word_count": 2292,
-        "estimated_token_count": 4163,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 49400,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W03L1/lecture/5. gang PersPsy_5_260216.pdf",
@@ -1110,7 +1109,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "seminar",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -1123,10 +1122,10 @@
         "sha256": "551fbde6f6ea6879032ebd75da3fe4f6ca71f12808f78a59e47028c7610c83f7",
         "size_bytes": 1668068,
         "page_count": 15,
-        "text_char_count": 4263,
-        "estimated_word_count": 672,
-        "estimated_token_count": 1066,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 9750,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W03L1/seminar/5. Psykoanalyse II.pdf",
@@ -1142,12 +1141,12 @@
       ],
       "sequence_index": 1,
       "title": "Bach & Simonsen (2023)",
-      "source_filename": null,
-      "subject_relative_path": null,
-      "source_exists": false,
-      "missing_reason": "manifest_marked_missing",
+      "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+      "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+      "source_exists": true,
+      "missing_reason": null,
       "language_guess": "unknown",
-      "length_band": "short",
+      "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
         "has_manual_summary": false,
@@ -1156,15 +1155,47 @@
       },
       "evidence_origin": "reading_grounded",
       "file": {
-        "sha256": null,
-        "size_bytes": null,
-        "page_count": null,
+        "sha256": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+        "size_bytes": 23804887,
+        "page_count": 26,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "missing_source"
+        "estimated_token_count": 16900,
+        "text_extraction_status": "metadata_only_multi_file_no_local_text_extraction",
+        "parts": [
+          {
+            "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+            "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+            "sha256": "79cf1b60763a49c849468ac1152e5fbd2dda6892411cefe9d76447a7542de375",
+            "size_bytes": 18023005,
+            "page_count": 19,
+            "text_char_count": 0,
+            "estimated_word_count": 0,
+            "estimated_token_count": 12350,
+            "text_extraction_status": "metadata_only_no_local_text_extraction"
+          },
+          {
+            "source_filename": "W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+            "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+            "sha256": "c1f0a24f5201a0f57447a711878cdece83d7990f7d4ec66625ec75c41417a628",
+            "size_bytes": 5781882,
+            "page_count": 7,
+            "text_char_count": 0,
+            "estimated_word_count": 0,
+            "estimated_token_count": 4550,
+            "text_extraction_status": "metadata_only_no_local_text_extraction"
+          }
+        ]
       },
-      "prompt_analysis_sidecars": []
+      "prompt_analysis_sidecars": [],
+      "source_filenames": [
+        "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+        "W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+      ],
+      "subject_relative_paths": [
+        "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+        "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+      ]
     },
     {
       "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
@@ -1180,7 +1211,7 @@
       "subject_relative_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -1193,10 +1224,10 @@
         "sha256": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
         "size_bytes": 368426,
         "page_count": 25,
-        "text_char_count": 102539,
-        "estimated_word_count": 13616,
-        "estimated_token_count": 25635,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 16250,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1215,7 +1246,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "en",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -1228,10 +1259,10 @@
         "sha256": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
         "size_bytes": 5068012,
         "page_count": 22,
-        "text_char_count": 12416,
-        "estimated_word_count": 1490,
-        "estimated_token_count": 3104,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W03L2/lecture/6. gang Personality Functioning 2026 (Bo Bach).pdf",
@@ -1266,8 +1297,8 @@
         "page_count": 11,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 7150,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1300,8 +1331,8 @@
         "page_count": 30,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 19500,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1321,7 +1352,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "seminar",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -1334,10 +1365,10 @@
         "sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
         "size_bytes": 1627865,
         "page_count": 17,
-        "text_char_count": 5610,
-        "estimated_word_count": 885,
-        "estimated_token_count": 1403,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 11050,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W04L1/seminar/4. Psykoanalyse I.pdf",
@@ -1358,7 +1389,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1371,10 +1402,10 @@
         "sha256": "c23bebbbda7dd79720b69261d38039d4f8cf251e1665ec2f0687facfa1002682",
         "size_bytes": 6585989,
         "page_count": 46,
-        "text_char_count": 22141,
-        "estimated_word_count": 3307,
-        "estimated_token_count": 5536,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 29900,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W04L1/lecture/7. Psykoanalysens personbegreb.pdf",
@@ -1407,10 +1438,10 @@
         "sha256": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
         "size_bytes": 758427,
         "page_count": 7,
-        "text_char_count": 121,
+        "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 31,
-        "text_extraction_status": "ok"
+        "estimated_token_count": 4550,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1428,7 +1459,7 @@
       "subject_relative_path": "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1441,10 +1472,10 @@
         "sha256": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
         "size_bytes": 4555675,
         "page_count": 26,
-        "text_char_count": 69109,
-        "estimated_word_count": 11353,
-        "estimated_token_count": 17278,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 16900,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1463,7 +1494,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1476,10 +1507,10 @@
         "sha256": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
         "size_bytes": 3483377,
         "page_count": 56,
-        "text_char_count": 28252,
-        "estimated_word_count": 4113,
-        "estimated_token_count": 7063,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 36400,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W04L2/lecture/8. Psykoanalytisk personlighedsstruktur.pdf",
@@ -1499,7 +1530,7 @@
       "subject_relative_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96-.pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "da",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1512,10 +1543,10 @@
         "sha256": "1db05ea8535b642191002e1d37b711474c585f441d0c846ae7b40b99ae816008",
         "size_bytes": 996960,
         "page_count": 123,
-        "text_char_count": 317900,
-        "estimated_word_count": 57468,
-        "estimated_token_count": 79475,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 79950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1546,10 +1577,10 @@
         "sha256": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
         "size_bytes": 11533368,
         "page_count": 12,
-        "text_char_count": 63,
-        "estimated_word_count": 24,
-        "estimated_token_count": 32,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 7800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1567,7 +1598,7 @@
       "subject_relative_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1580,10 +1611,10 @@
         "sha256": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
         "size_bytes": 196193,
         "page_count": 27,
-        "text_char_count": 78273,
-        "estimated_word_count": 12780,
-        "estimated_token_count": 19569,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 17550,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1602,7 +1633,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "exercise",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -1615,10 +1646,10 @@
         "sha256": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
         "size_bytes": 1666788,
         "page_count": 22,
-        "text_char_count": 15376,
-        "estimated_word_count": 2277,
-        "estimated_token_count": 3844,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W05L1/exercise/2. Psykoanalyse 1 og intro (1).pdf",
@@ -1652,10 +1683,10 @@
         "sha256": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
         "size_bytes": 3084331,
         "page_count": 57,
-        "text_char_count": 30973,
-        "estimated_word_count": 4565,
-        "estimated_token_count": 7744,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 37050,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W05L1/lecture/9. Psykoanalysens empiri og metode.pdf",
@@ -1688,10 +1719,10 @@
         "sha256": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
         "size_bytes": 16678564,
         "page_count": 22,
-        "text_char_count": 107866,
-        "estimated_word_count": 15272,
-        "estimated_token_count": 26967,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1724,8 +1755,8 @@
         "page_count": 49,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 31850,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1756,10 +1787,10 @@
         "sha256": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
         "size_bytes": 1273162,
         "page_count": 16,
-        "text_char_count": 46143,
-        "estimated_word_count": 6845,
-        "estimated_token_count": 11536,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 10400,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1778,7 +1809,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -1791,10 +1822,10 @@
         "sha256": "27d495d3650ee48b3afc3e1c9a07ae4b709589ea86a0ddcc94b0b29c79d1e8c2",
         "size_bytes": 84262,
         "page_count": 10,
-        "text_char_count": 6850,
-        "estimated_word_count": 881,
-        "estimated_token_count": 1713,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 6500,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W05L2/lecture/10. Psykoanalysens konstituering.pdf",
@@ -1829,8 +1860,8 @@
         "page_count": 42,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 27300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1848,7 +1879,7 @@
       "subject_relative_path": "Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "da",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1861,10 +1892,10 @@
         "sha256": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
         "size_bytes": 1868381,
         "page_count": 26,
-        "text_char_count": 71784,
-        "estimated_word_count": 11088,
-        "estimated_token_count": 17946,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 16900,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1882,7 +1913,7 @@
       "subject_relative_path": "Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -1895,10 +1926,10 @@
         "sha256": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
         "size_bytes": 140449,
         "page_count": 30,
-        "text_char_count": 87545,
-        "estimated_word_count": 14202,
-        "estimated_token_count": 21887,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 19500,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -1930,10 +1961,10 @@
         "sha256": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
         "size_bytes": 471274,
         "page_count": 29,
-        "text_char_count": 8252,
-        "estimated_word_count": 1061,
-        "estimated_token_count": 2063,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 18850,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W06L1/lecture/11. Fænomenologisk personlighedspsykologi2026.pdf",
@@ -1968,8 +1999,8 @@
         "page_count": 11,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 7150,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2002,8 +2033,8 @@
         "page_count": 34,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 22100,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2021,7 +2052,7 @@
       "subject_relative_path": "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2034,10 +2065,10 @@
         "sha256": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
         "size_bytes": 1545677,
         "page_count": 45,
-        "text_char_count": 105295,
-        "estimated_word_count": 16864,
-        "estimated_token_count": 26324,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 29250,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2070,8 +2101,8 @@
         "page_count": 25,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 16250,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2090,7 +2121,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2103,10 +2134,10 @@
         "sha256": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
         "size_bytes": 914720,
         "page_count": 33,
-        "text_char_count": 16168,
-        "estimated_word_count": 2441,
-        "estimated_token_count": 4042,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 21450,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W07L1/lecture/13. Eksistens II. 2026.pdf",
@@ -2141,8 +2172,8 @@
         "page_count": 18,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 11700,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2160,7 +2191,7 @@
       "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -2173,10 +2204,10 @@
         "sha256": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
         "size_bytes": 101767,
         "page_count": 13,
-        "text_char_count": 32037,
-        "estimated_word_count": 4984,
-        "estimated_token_count": 8010,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 8450,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2194,7 +2225,7 @@
       "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2207,10 +2238,10 @@
         "sha256": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
         "size_bytes": 360245,
         "page_count": 71,
-        "text_char_count": 120690,
-        "estimated_word_count": 20307,
-        "estimated_token_count": 30173,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 46150,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2229,7 +2260,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2242,10 +2273,10 @@
         "sha256": "7c826fb7b6ce5e3c235a0813d53d1517668eac7bf4aeb703c040e289d06879a4",
         "size_bytes": 76472215,
         "page_count": 33,
-        "text_char_count": 5748,
-        "estimated_word_count": 756,
-        "estimated_token_count": 1437,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 21450,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W07L2/lecture/14. Humanistisk psykologi20.pdf",
@@ -2265,7 +2296,7 @@
       "subject_relative_path": "Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -2278,10 +2309,10 @@
         "sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
         "size_bytes": 135233,
         "page_count": 22,
-        "text_char_count": 49346,
-        "estimated_word_count": 7909,
-        "estimated_token_count": 12337,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2299,7 +2330,7 @@
       "subject_relative_path": "Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "short",
       "priority_signals": {
         "is_grundbog": false,
@@ -2312,10 +2343,10 @@
         "sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
         "size_bytes": 146911,
         "page_count": 8,
-        "text_char_count": 33426,
-        "estimated_word_count": 5460,
-        "estimated_token_count": 8357,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 5200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2334,7 +2365,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -2347,10 +2378,10 @@
         "sha256": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
         "size_bytes": 1776794,
         "page_count": 22,
-        "text_char_count": 9548,
-        "estimated_word_count": 1424,
-        "estimated_token_count": 2387,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W08L1/lecture/15. gang Critical personalism 2026.pdf",
@@ -2385,8 +2416,8 @@
         "page_count": 29,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 18850,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2404,7 +2435,7 @@
       "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -2417,10 +2448,10 @@
         "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
         "size_bytes": 86088,
         "page_count": 12,
-        "text_char_count": 35787,
-        "estimated_word_count": 5677,
-        "estimated_token_count": 8947,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 7800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2439,7 +2470,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -2452,10 +2483,10 @@
         "sha256": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
         "size_bytes": 864674,
         "page_count": 23,
-        "text_char_count": 12514,
-        "estimated_word_count": 1731,
-        "estimated_token_count": 3129,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [],
       "catalog_relative_path": "W08L2/lecture/16. gang Critical psych 2026.pdf",
@@ -2490,8 +2521,8 @@
         "page_count": 3,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 1950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2524,8 +2555,8 @@
         "page_count": 35,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 22750,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2558,8 +2589,8 @@
         "page_count": 14,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 9100,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2590,10 +2621,10 @@
         "sha256": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
         "size_bytes": 244474,
         "page_count": 33,
-        "text_char_count": 95068,
-        "estimated_word_count": 15461,
-        "estimated_token_count": 23767,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 21450,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2625,10 +2656,10 @@
         "sha256": "46a49de055d1b59728f4d70597573b0e769383ae166250151eec788002a7932b",
         "size_bytes": 1348677,
         "page_count": 49,
-        "text_char_count": 23252,
-        "estimated_word_count": 3647,
-        "estimated_token_count": 5813,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 31850,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Forelæsningsrækken/17. Kritisk psykologi.analysis.md"
@@ -2665,8 +2696,8 @@
         "page_count": 43,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 27950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2684,7 +2715,7 @@
       "subject_relative_path": "Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2697,10 +2728,10 @@
         "sha256": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
         "size_bytes": 348938,
         "page_count": 33,
-        "text_char_count": 91425,
-        "estimated_word_count": 14946,
-        "estimated_token_count": 22857,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 21450,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2733,8 +2764,8 @@
         "page_count": 21,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 13650,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).analysis.md"
@@ -2769,8 +2800,8 @@
         "page_count": 21,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 13650,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf.analysis.md"
@@ -2791,7 +2822,7 @@
       "source_exists": true,
       "missing_reason": null,
       "slide_subcategory": "lecture",
-      "language_guess": "da",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2804,10 +2835,10 @@
         "sha256": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
         "size_bytes": 780527,
         "page_count": 35,
-        "text_char_count": 18090,
-        "estimated_word_count": 2769,
-        "estimated_token_count": 4523,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 22750,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Forelæsningsrækken/19. Sociokulturelle teorier.analysis.md"
@@ -2829,7 +2860,7 @@
       "subject_relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2842,10 +2873,10 @@
         "sha256": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
         "size_bytes": 216630,
         "page_count": 28,
-        "text_char_count": 81107,
-        "estimated_word_count": 13021,
-        "estimated_token_count": 20277,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 18200,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).analysis.md"
@@ -2880,8 +2911,8 @@
         "page_count": 45,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 29250,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.analysis.md"
@@ -2901,7 +2932,7 @@
       "subject_relative_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "long",
       "priority_signals": {
         "is_grundbog": false,
@@ -2914,10 +2945,10 @@
         "sha256": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
         "size_bytes": 211529,
         "page_count": 34,
-        "text_char_count": 84887,
-        "estimated_word_count": 14408,
-        "estimated_token_count": 21222,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 22100,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).analysis.md"
@@ -2952,8 +2983,8 @@
         "page_count": 31,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 20150,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -2986,8 +3017,8 @@
         "page_count": 43,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 27950,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.analysis.md"
@@ -3007,7 +3038,7 @@
       "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -3020,10 +3051,10 @@
         "sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
         "size_bytes": 589778,
         "page_count": 14,
-        "text_char_count": 82398,
-        "estimated_word_count": 12281,
-        "estimated_token_count": 20600,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 9100,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -3041,7 +3072,7 @@
       "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
       "source_exists": true,
       "missing_reason": null,
-      "language_guess": "en",
+      "language_guess": "unknown",
       "length_band": "medium",
       "priority_signals": {
         "is_grundbog": false,
@@ -3054,10 +3085,10 @@
         "sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
         "size_bytes": 620722,
         "page_count": 22,
-        "text_char_count": 49342,
-        "estimated_word_count": 8044,
-        "estimated_token_count": 12336,
-        "text_extraction_status": "ok"
+        "text_char_count": 0,
+        "estimated_word_count": 0,
+        "estimated_token_count": 14300,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -3090,8 +3121,8 @@
         "page_count": 19,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 12350,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -3124,8 +3155,8 @@
         "page_count": 44,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 28600,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": []
     },
@@ -3158,8 +3189,8 @@
         "page_count": 72,
         "text_char_count": 0,
         "estimated_word_count": 0,
-        "estimated_token_count": 0,
-        "text_extraction_status": "no_text"
+        "estimated_token_count": 46800,
+        "text_extraction_status": "metadata_only_no_local_text_extraction"
       },
       "prompt_analysis_sidecars": [
         "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.analysis.md"

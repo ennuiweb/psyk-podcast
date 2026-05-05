@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "build_inputs": {
     "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
     "content_manifest": "shows/personlighedspsykologi-en/content_manifest.json",
@@ -13,7 +13,7 @@
     "ready_bundle_count": 21,
     "partial_bundle_count": 1,
     "bundle_with_week_analysis_count": 4,
-    "bundle_with_missing_sources_count": 1
+    "bundle_with_missing_sources_count": 0
   },
   "bundles": [
     {
@@ -32,7 +32,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 77,
-        "total_estimated_tokens": 27602,
+        "total_estimated_tokens": 50050,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2,
@@ -60,7 +60,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 0,
         "total_pages": 122,
-        "total_estimated_tokens": 70695,
+        "total_estimated_tokens": 79300,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 3
@@ -88,7 +88,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 161,
-        "total_estimated_tokens": 61091,
+        "total_estimated_tokens": 104650,
         "source_family_counts": {
           "exercise_slide": 1,
           "lecture_slide": 1,
@@ -117,7 +117,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 111,
-        "total_estimated_tokens": 65160,
+        "total_estimated_tokens": 72150,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
@@ -144,7 +144,7 @@
         "manual_reading_summaries_present": 4,
         "source_analyses_present": 0,
         "total_pages": 135,
-        "total_estimated_tokens": 53614,
+        "total_estimated_tokens": 87750,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 4,
@@ -164,7 +164,6 @@
       "relative_path": "W03L2.json",
       "bundle_status": "partial",
       "readiness_issues": [
-        "missing_sources",
         "missing_lecture_summary",
         "incomplete_reading_summary_coverage"
       ],
@@ -174,18 +173,19 @@
         "lecture_slides": 1,
         "seminar_slides": 0,
         "exercise_slides": 0,
-        "missing_sources": 1,
+        "missing_sources": 0,
         "manual_reading_summaries_present": 1,
         "source_analyses_present": 0,
-        "total_pages": 47,
-        "total_estimated_tokens": 28739,
+        "total_pages": 73,
+        "total_estimated_tokens": 47450,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
         }
       },
       "likely_core_sources": [
-        "w03l2-sharp-and-wall-2021-cb92ecf4"
+        "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "w03l2-bach-and-simonsen-2023-d58362ff"
       ]
     },
     {
@@ -204,7 +204,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 104,
-        "total_estimated_tokens": 6939,
+        "total_estimated_tokens": 67600,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2,
@@ -232,7 +232,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 106,
-        "total_estimated_tokens": 25775,
+        "total_estimated_tokens": 68900,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2,
@@ -260,7 +260,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 0,
         "total_pages": 241,
-        "total_estimated_tokens": 110664,
+        "total_estimated_tokens": 156650,
         "source_family_counts": {
           "exercise_slide": 1,
           "lecture_slide": 1,
@@ -289,7 +289,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 0,
         "total_pages": 97,
-        "total_estimated_tokens": 40216,
+        "total_estimated_tokens": 63050,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 3
@@ -317,7 +317,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 0,
         "total_pages": 127,
-        "total_estimated_tokens": 41896,
+        "total_estimated_tokens": 82550,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 3
@@ -345,7 +345,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 45,
-        "total_estimated_tokens": 0,
+        "total_estimated_tokens": 29250,
         "source_family_counts": {
           "reading": 2
         }
@@ -371,7 +371,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 103,
-        "total_estimated_tokens": 30366,
+        "total_estimated_tokens": 66950,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
@@ -398,7 +398,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 0,
         "total_pages": 135,
-        "total_estimated_tokens": 39620,
+        "total_estimated_tokens": 87750,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 3
@@ -406,8 +406,8 @@
       },
       "likely_core_sources": [
         "w07l2-maslow-1968-7ea53e34",
-        "w07l2-giorgi-2005-55ca98f7",
-        "w07l2-evans-1975-8e8a9d79"
+        "w07l2-evans-1975-8e8a9d79",
+        "w07l2-giorgi-2005-55ca98f7"
       ]
     },
     {
@@ -426,7 +426,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 52,
-        "total_estimated_tokens": 23081,
+        "total_estimated_tokens": 33800,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
@@ -453,15 +453,15 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 64,
-        "total_estimated_tokens": 12076,
+        "total_estimated_tokens": 41600,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
         }
       },
       "likely_core_sources": [
-        "w08l2-tolman-2009-455915e0",
-        "w08l2-holzkamp-1982-845aafd2"
+        "w08l2-holzkamp-1982-845aafd2",
+        "w08l2-tolman-2009-455915e0"
       ]
     },
     {
@@ -480,7 +480,7 @@
         "manual_reading_summaries_present": 4,
         "source_analyses_present": 1,
         "total_pages": 134,
-        "total_estimated_tokens": 29580,
+        "total_estimated_tokens": 87100,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 4
@@ -509,14 +509,14 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 0,
         "total_pages": 76,
-        "total_estimated_tokens": 22857,
+        "total_estimated_tokens": 49400,
         "source_family_counts": {
           "reading": 2
         }
       },
       "likely_core_sources": [
-        "w10l1-mitchell-2015-bc690b36",
-        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+        "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+        "w10l1-mitchell-2015-bc690b36"
       ]
     },
     {
@@ -535,7 +535,7 @@
         "manual_reading_summaries_present": 2,
         "source_analyses_present": 3,
         "total_pages": 77,
-        "total_estimated_tokens": 4523,
+        "total_estimated_tokens": 50050,
         "source_family_counts": {
           "lecture_slide": 1,
           "reading": 2
@@ -563,7 +563,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 3,
         "total_pages": 107,
-        "total_estimated_tokens": 41499,
+        "total_estimated_tokens": 69550,
         "source_family_counts": {
           "reading": 3
         }
@@ -590,16 +590,16 @@
         "manual_reading_summaries_present": 4,
         "source_analyses_present": 1,
         "total_pages": 110,
-        "total_estimated_tokens": 32936,
+        "total_estimated_tokens": 71500,
         "source_family_counts": {
           "reading": 4
         }
       },
       "likely_core_sources": [
         "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "w11l2-bruner-1999-7930abd8",
         "w11l2-mcadams-and-pals-2006-b9675688",
-        "w11l2-raggatt-2002-d15129af",
-        "w11l2-bruner-1999-7930abd8"
+        "w11l2-raggatt-2002-d15129af"
       ]
     },
     {
@@ -618,7 +618,7 @@
         "manual_reading_summaries_present": 3,
         "source_analyses_present": 1,
         "total_pages": 135,
-        "total_estimated_tokens": 0,
+        "total_estimated_tokens": 87750,
         "source_family_counts": {
           "reading": 3
         }

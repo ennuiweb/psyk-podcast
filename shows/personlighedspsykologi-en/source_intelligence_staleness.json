@@ -1,118 +1,118 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:06Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "artifacts": {
     "source_weighting": {
       "path": "shows/personlighedspsykologi-en/source_weighting.json",
-      "sha256": "c3539386af5ffd7f9f42976efa27918dbfab8aa579fb95a426704c94e2fc6f58",
-      "input_signature_sha256": "52dfc79dd19edab1722b6dd75666bb01ec383bf786e811b72007db5a765220b1",
+      "sha256": "037d6dfb0a0ada7265e3597206de56bc68b00f5ab7e41ef1d11e4334d1353357",
+      "input_signature_sha256": "2c2573979a0d90ead4b852e598280e741b2c0984f87c244e262aea8d374812bf",
       "builder_script": "scripts/build_personlighedspsykologi_source_weighting.py"
     },
     "course_concept_graph": {
       "path": "shows/personlighedspsykologi-en/course_concept_graph.json",
-      "sha256": "62affe571ea3d6352444c403fdb8c9c01f60d490453c5e75d9c4d19398119a95",
-      "input_signature_sha256": "9b36fcbcfc898e2ee675eae89df0f30af629250f867139327e1069cf04252b19",
+      "sha256": "c64c781aa012919057b0e7207d1765b27be8f3bae1b6ed2a606a0ede2f124c31",
+      "input_signature_sha256": "38bb21e9ade17b2038bee7fa0a1f7bd341d5fd400172473207e87a3d19f31c2b",
       "builder_script": "scripts/build_personlighedspsykologi_concept_graph.py"
     },
     "source_catalog": {
       "path": "shows/personlighedspsykologi-en/source_catalog.json",
-      "sha256": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1"
+      "sha256": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e"
     },
     "lecture_bundle_index": {
       "path": "shows/personlighedspsykologi-en/lecture_bundles/index.json",
-      "sha256": "08be813c47f1f5be2dcc36ca88bf7c8785b858f38f72243d4980bfb81204844d"
+      "sha256": "b200166c63201ee9520646a1f8b0473ac8c2a8b0f39542e5230fd5a56ce9c988"
     },
     "lecture_bundles": {
       "count": 22,
       "items": [
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W01L1.json",
-          "sha256": "06bcd38625722a465329de4cb31ed26e755c4ffd489a479f6a380dbf0b4762e9"
+          "sha256": "c008f351d266e3231794d1165f8a9ceb92c516af8e0d6f66002326351e6339a1"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W01L2.json",
-          "sha256": "d6393f2117574bbc76575167139cbafff84d52ebd90e7d6769c0070ca4029541"
+          "sha256": "a1f82cbd4217dae71ee8af605a428377b99bdf2211d169275fcbbe9789a1a8b4"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W02L1.json",
-          "sha256": "5b793c76fa4ed46c73a7eec3245d494bf761178c64c4895bfeeaca3b6b2ed3cc"
+          "sha256": "8bdac683fa695157356092008ffe14def32d3cf6b307f991695f4141e2eeabae"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W02L2.json",
-          "sha256": "c09ac0648b3262499385fec823ee417399f010e43a41f301836ae22fe4ccdaf1"
+          "sha256": "ec966edf844628db2d61af8deaa04558663b08c2f801178f4a88b08540241e78"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W03L1.json",
-          "sha256": "081b6fc73e9e400455335711c0f80f0ba9abeb7a26005a6964f2766051aafb03"
+          "sha256": "5f881208502ab1dab55edb3088f73c2168c24af661b2244c086b273037114c5f"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W03L2.json",
-          "sha256": "fbf0bbc6d22707bd5ea3ffe15b448419e73cf2ae24ececc91026b7d1a046c294"
+          "sha256": "8160ddac52ce41f90e772dbbdaa24040c7781ad545e0bec0ac15166447525938"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W04L1.json",
-          "sha256": "a343a860438119a89d114c4ea4020dcd00a27fdf9337c17a4503e9e9d5c17194"
+          "sha256": "80fcc8aff922d0e468be121478606c234eb62c07a4fdda51ba51acaaeabea639"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W04L2.json",
-          "sha256": "d3cebefab46bc5b0d9c685cbeb4154598bad0d64ecc3f04e80963d1c6137df67"
+          "sha256": "33ad5fb9e43ea444200d905cbd7ce917060096139344bc098ac62e8ffa3ed486"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W05L1.json",
-          "sha256": "932fcd153667f84ee72d7599bad5ee7d58164797df4c11d5f9b38422455e0ee0"
+          "sha256": "89753c72dfc75e341b2f79af3b10ed82e602e6cba727ebf876d531b00696093c"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W05L2.json",
-          "sha256": "eaecd3c4d7060aace0adb0d479a0f09a1841d5e400ecd58e80480be6109ff3f8"
+          "sha256": "57d12cac54fdb461032c491581f1c2fcdd9ad1b55fa0ebb78fa2a30959464c95"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W06L1.json",
-          "sha256": "ff4c3654ac8e80c86c84cb429e4ef81e7e8ba2b40d4566bd562583b7eb8821d2"
+          "sha256": "285f2d839ce9d6294b3a0671ab79555261d6cf13426dd7b43c798b3612624b6c"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W06L2.json",
-          "sha256": "6c379fc015728828d399bbce5bf63f0d4e405f028f0a3a74381ebee3b869771f"
+          "sha256": "137c23410f984dc19bfd4286555dccade14248aac353e48bd42f821ade6bcee0"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W07L1.json",
-          "sha256": "d9157818b3580f868aaafa338add97c910c94152613390f77487b7378cf53fa9"
+          "sha256": "49c6701b1bbf2e423e15dbcd4b82dd40f6b7f18abaea66ae19f6b94022b4b267"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W07L2.json",
-          "sha256": "8b2557c17ecd461000da8b6ad8bc72d0e08d904044ceaed6f8912d3a94caebda"
+          "sha256": "d58d13788d94b70cd21121f1876321b07147f9c349474053a879c05ef9ed1363"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W08L1.json",
-          "sha256": "d504d901586f7a4c53c0619797ed69c5d0e10422a03cbc646fe6d664d14138e6"
+          "sha256": "768a08a4812ad3c10e6cdfaf4b94c06b36499bd36c2cd84a67d8bfb50c9cfa2d"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W08L2.json",
-          "sha256": "6b7886276b9abee69c01cee87b929091aad5d1849e52a6e51eb4017d537d69de"
+          "sha256": "b31542861c14f3f04200b29deaf83af08d126fc2c5863a0bcec44490ef27947e"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W09L1.json",
-          "sha256": "4c01cf9f5ebb0d3b77c2ea80fff04e3b2309b7e8094fd664213a6fe7ba688bc0"
+          "sha256": "040ae6597bcca7d8402ef5ee2f3368b4679b3731d4a175254e4ef968ab8ac045"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W10L1.json",
-          "sha256": "4a2f54e11e98d86e67c93e5192930ae1e6c7c06a9ad69d19edc1982e3eb6ccd0"
+          "sha256": "1b25065b72b7a02f7586c04b6cddeb99db99d32c3a359ab4b2748c91a69ac9e3"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W10L2.json",
-          "sha256": "756c3d9fb9468576c3d86779102a4a3c0f8b2f24225123192f5e9f0080072519"
+          "sha256": "95efe3749fd4a2685c1a2af3f665c6634d88dfb99e18e6b50ce2b79cd503ecb8"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W11L1.json",
-          "sha256": "aed6a292a356c10198325caa0a622af33c0e43429b3d262928cbf6c3ee9a2123"
+          "sha256": "d6e017f70ac5247fece01e636cb181dd80ddd2a3fcda8d72d360a210807ea1c2"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W11L2.json",
-          "sha256": "1329aab431e52fd8e51c2f985503c61fc05c299aa88b86324274b8a32b1e96dc"
+          "sha256": "4d0166469d3a0169764922e4bf2434c5a639b691f7e62047569295ebcbc0d3ce"
         },
         {
           "path": "shows/personlighedspsykologi-en/lecture_bundles/W12L1.json",
-          "sha256": "acc15bd5affe2a13fcfe8e9e7e6f6188f2b8cce15eae3a82b16421a4a8ce6ee9"
+          "sha256": "d9acff52376469a26544f15cc941a75d32b88fe5e7c20629f78a0aa833157c4d"
         }
       ]
     },
@@ -126,13 +126,13 @@
     },
     "course_glossary": {
       "path": "shows/personlighedspsykologi-en/course_glossary.json",
-      "sha256": "3e59b7ce4f8b0f24726dd8be40805e389620770e54ae76e73b7c4f3799eae7cc",
-      "input_signature_sha256": "f6224c2025b06e9614226442f0f1ca14ada82f196ff104855fa889462815f30e"
+      "sha256": "6764555fb6a6c070a906698767949e2f4212cdd9eb6d612540c0557a833a4cde",
+      "input_signature_sha256": "2a631f674488f5e364c61ef21e6e19e5d13867ca8cee46d108bf8a55845a6472"
     },
     "course_theory_map": {
       "path": "shows/personlighedspsykologi-en/course_theory_map.json",
-      "sha256": "9240f21c01f721d5106fd3556f5decd4c042db87d49788abdf3865b55310bf7d",
-      "input_signature_sha256": "c689c19bcd82e1dd63e8547bbfce29bbe8ff80e15ddb914408fcb701d9e63bc9"
+      "sha256": "a96c13346a5842722cd1edefdb4bef420364b8fc4b4aa733b18a5de4cbf3bc6b",
+      "input_signature_sha256": "b5593f0000115121fda51ae60f3a58042d33ac4afc19f1431c6a954b67624e05"
     }
   },
   "derivations": [

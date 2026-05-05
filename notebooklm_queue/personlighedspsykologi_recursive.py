@@ -172,10 +172,37 @@ def _selected_sources(
 
 
 def source_file_path(subject_root: Path, source: dict[str, Any]) -> Path:
-    relative_path = str(source.get("subject_relative_path") or "").strip()
-    if not relative_path:
+    paths = source_file_paths(subject_root, source)
+    if not paths:
         raise RuntimeError(f"source has no subject_relative_path: {source.get('source_id')}")
-    return subject_root / relative_path
+    return paths[0]
+
+
+def source_file_paths(subject_root: Path, source: dict[str, Any]) -> list[Path]:
+    relative_paths: list[str] = []
+    raw_relative_paths = source.get("subject_relative_paths")
+    if isinstance(raw_relative_paths, list):
+        relative_paths.extend(str(item or "").strip() for item in raw_relative_paths if str(item or "").strip())
+    raw_file_parts = (source.get("file") or {}).get("parts") if isinstance(source.get("file"), dict) else None
+    if isinstance(raw_file_parts, list):
+        for part in raw_file_parts:
+            if not isinstance(part, dict):
+                continue
+            relative_path = str(part.get("subject_relative_path") or "").strip()
+            if relative_path:
+                relative_paths.append(relative_path)
+    relative_path = str(source.get("subject_relative_path") or "").strip()
+    if relative_path:
+        relative_paths.append(relative_path)
+
+    paths: list[Path] = []
+    seen: set[str] = set()
+    for relative_path in relative_paths:
+        if relative_path in seen:
+            continue
+        seen.add(relative_path)
+        paths.append(subject_root / relative_path)
+    return paths
 
 
 def _source_card_path(source_card_dir: Path, source_id: str) -> Path:
@@ -293,16 +320,51 @@ def _analysis_response_schema(properties: dict[str, Any], required: list[str]) -
 
 
 def _source_card_response_schema() -> dict[str, Any]:
+    central_claim_schema = {
+        "type": "object",
+        "properties": {
+            "claim": _string_schema("Concrete claim grounded in the attached source."),
+            "grounding": _string_schema("One of: source-grounded, slide-framed, course-inferred."),
+            "confidence": _string_schema("One of: high, medium, low."),
+        },
+        "required": ["claim", "grounding", "confidence"],
+    }
+    key_concept_schema = {
+        "type": "object",
+        "properties": {
+            "term": _string_schema("Source-specific concept term."),
+            "definition": _string_schema("Course-relevant definition from the attached source."),
+            "role": _string_schema("Why this concept matters for the lecture."),
+        },
+        "required": ["term", "definition", "role"],
+    }
+    distinction_schema = {
+        "type": "object",
+        "properties": {
+            "label": _string_schema("Name of the distinction."),
+            "summary": _string_schema("What is being distinguished."),
+            "stakes": _string_schema("Why the distinction matters."),
+        },
+        "required": ["label", "summary", "stakes"],
+    }
+    quote_target_schema = {
+        "type": "object",
+        "properties": {
+            "target": _string_schema("Short phrase, section, or page target if available."),
+            "why": _string_schema("Why the student should look for it."),
+        },
+        "required": ["target", "why"],
+    }
     return _analysis_response_schema(
         {
-            "central_claims": _object_list_schema(min_items=1),
-            "key_concepts": _object_list_schema(min_items=1),
-            "distinctions": _object_list_schema(),
+            "central_claims": {"type": "array", "items": central_claim_schema, "minItems": 2},
+            "key_concepts": {"type": "array", "items": key_concept_schema, "minItems": 2},
+            "distinctions": {"type": "array", "items": distinction_schema},
             "theory_role": _string_schema(),
             "source_role": _string_schema(),
             "relation_to_lecture": _string_schema(),
             "likely_misunderstandings": _string_list_schema(),
-            "quote_targets": _object_list_schema(),
+            "quote_targets": {"type": "array", "items": quote_target_schema},
             "grounding_notes": _string_list_schema(),
             "warnings": _string_list_schema(),
         },
@@ -451,22 +513,30 @@ def _podcast_substrate_response_schema() -> dict[str, Any]:
     }
 
 
-def _source_identity(source: dict[str, Any], source_path: Path, repo_root: Path, subject_root: Path) -> dict[str, Any]:
+def _source_identity(source: dict[str, Any], source_paths: list[Path], repo_root: Path, subject_root: Path) -> dict[str, Any]:
     file_info = source.get("file") if isinstance(source.get("file"), dict) else {}
     source_exists = bool(source.get("source_exists"))
     source_sha256 = str(file_info.get("sha256") or "").strip()
-    if source_exists and source_path.exists() and source_path.is_file():
-        source_sha256 = sha256_file(source_path)
+    existing_paths = [path for path in source_paths if path.exists() and path.is_file()]
+    if source_exists and existing_paths:
+        source_sha256 = sha256_file(existing_paths[0]) if len(existing_paths) == 1 else signature_for_files(existing_paths)
+    source_path = existing_paths[0] if existing_paths else (source_paths[0] if source_paths else Path(""))
+    source_relative_paths: list[str] = []
+    for path in source_paths:
+        try:
+            source_relative_paths.append(str(path.resolve().relative_to(subject_root.resolve())))
+        except ValueError:
+            source_relative_paths.append(str(path))
     return {
         "source_id": str(source.get("source_id") or "").strip(),
         "lecture_key": canonicalize_lecture_key(str(source.get("lecture_key") or "")),
         "title": str(source.get("title") or "").strip(),
         "source_family": str(source.get("source_family") or "").strip(),
         "evidence_origin": str(source.get("evidence_origin") or "").strip(),
-        "source_path": str(source_path.resolve().relative_to(subject_root.resolve()))
-        if source_path.exists()
-        else str(source.get("subject_relative_path") or ""),
-        "repo_display_path": display_path(source_path, repo_root),
+        "source_path": source_relative_paths[0] if source_relative_paths else str(source.get("subject_relative_path") or ""),
+        "source_paths": source_relative_paths,
+        "repo_display_path": display_path(source_path, repo_root) if source_paths else "",
+        "repo_display_paths": [display_path(path, repo_root) for path in source_paths],
         "source_exists": source_exists,
         "source_sha256": source_sha256,
         "length_band": str(source.get("length_band") or "").strip(),
@@ -519,19 +589,35 @@ def source_card_is_fresh(
     *,
     path: Path,
     source: dict[str, Any],
-    source_path: Path,
+    source_paths: list[Path],
     source_catalog_path: Path,
     policy_path: Path,
 ) -> bool:
-    if not path.exists() or not path.is_file() or not source_path.exists() or not source_path.is_file():
+    if (
+        not path.exists()
+        or not path.is_file()
+        or not source_paths
+        or not all(source_path.exists() and source_path.is_file() for source_path in source_paths)
+    ):
         return False
     try:
         artifact = validate_source_card(load_json(path))
     except Exception:
         return False
     dependencies = _dependencies(artifact)
+    source_signature = signature_for_files(source_paths)
+    if len(source_paths) == 1:
+        source_dependency_matches = (
+            dependencies.get("source_files_signature") == source_signature
+            or dependencies.get("source_file") == sha256_file(source_paths[0])
+        )
+    else:
+        source_dependency_matches = (
+            dependencies.get("source_files_signature") == source_signature
+            or dependencies.get("source_file") == source_signature
+        )
     return (
-        dependencies.get("source_file") == sha256_file(source_path)
+        source_dependency_matches
         and dependencies.get("source_catalog") == sha256_file(source_catalog_path)
         and dependencies.get("source_intelligence_policy") == (sha256_file(policy_path) if policy_path.exists() else "")
         and str((artifact.get("source") or {}).get("source_id") or "") == str(source.get("source_id") or "")
@@ -666,37 +752,42 @@ def _source_card_prompt(*, source: dict[str, Any], policy: dict[str, Any]) -> st
         "course_title": COURSE_TITLE,
         "source_metadata": source,
         "course_specific_policy": policy,
-        "required_json_shape": {
-            "analysis": {
-                "central_claims": [
-                    {
-                        "claim": "specific source-grounded claim",
-                        "grounding": "source-grounded | slide-framed | course-inferred",
-                        "confidence": "high | medium | low",
-                    }
-                ],
-                "key_concepts": [
-                    {"term": "concept", "definition": "course-relevant definition", "role": "why it matters"}
-                ],
-                "distinctions": [
-                    {"label": "distinction", "summary": "what is being distinguished", "stakes": "why it matters"}
-                ],
-                "theory_role": "the source's role in a theory/tradition map",
-                "source_role": "how this source should be used in the lecture",
-                "relation_to_lecture": "how it serves the lecture problem",
-                "likely_misunderstandings": ["student misunderstanding to avoid"],
-                "quote_targets": [
-                    {
-                        "target": "short phrase or page/section target if available",
-                        "why": "why the student should look for it",
-                    }
-                ],
-                "grounding_notes": ["source-grounding or evidence-origin caveat"],
-                "warnings": ["quality caveats, OCR caveats, or empty list"],
-            }
+        "task": (
+            "Read the attached file(s) and fill every field with concrete, source-specific content. "
+            "Never copy example labels or placeholder text from the field rules or response schema. If a field cannot "
+            "be answered from the source, write a concrete caveat in warnings instead of a template string."
+        ),
+        "field_rules": {
+            "central_claims": "Return 2-6 concrete claims. Each item must include claim, grounding, and confidence.",
+            "key_concepts": "Return 2-8 concrete concepts. Each item must include term, definition, and role.",
+            "distinctions": "Return concrete distinctions if the source contains them; otherwise use an empty list.",
+            "quote_targets": "Return concrete phrases, sections, or pages to look for if available; otherwise use an empty list.",
+            "warnings": "Use an empty list unless there are concrete source, OCR, confidence, or scope caveats.",
         },
     }
     return json.dumps(payload, indent=2, ensure_ascii=False)
+
+
+def _repair_source_card_analysis(analysis: dict[str, Any], source: dict[str, Any]) -> dict[str, Any]:
+    warnings = _coerce_list(analysis.get("warnings"))
+    title = str(source.get("title") or source.get("source_id") or "source").strip()
+    lecture_key = canonicalize_lecture_key(str(source.get("lecture_key") or "")) or "the lecture"
+    source_family = str(source.get("source_family") or source.get("source_kind") or "source").replace("_", " ")
+
+    if not _coerce_string(analysis.get("source_role")):
+        analysis["source_role"] = (
+            f"{title} is treated as a {source_family} source for {lecture_key}; "
+            "the model response omitted a more specific role."
+        )
+        warnings.append("source_role was empty in the model response and was filled by a fallback.")
+    if not _coerce_string(analysis.get("relation_to_lecture")):
+        analysis["relation_to_lecture"] = (
+            f"{title} should be related to {lecture_key} according to its source metadata and source-grounded claims."
+        )
+        warnings.append("relation_to_lecture was empty in the model response and was filled by a fallback.")
+
+    analysis["warnings"] = warnings
+    return analysis
 
 
 def build_source_card_for_source(
@@ -714,9 +805,12 @@ def build_source_card_for_source(
     source_id = str(source.get("source_id") or "").strip()
     if not source_id:
         raise RuntimeError("source is missing source_id")
-    source_path = source_file_path(subject_root, source)
-    if not source_path.exists() or not source_path.is_file():
-        raise RuntimeError(f"source file not found: {source_path}")
+    source_paths = source_file_paths(subject_root, source)
+    if not source_paths:
+        raise RuntimeError(f"source has no subject_relative_path: {source_id}")
+    missing_paths = [path for path in source_paths if not path.exists() or not path.is_file()]
+    if missing_paths:
+        raise RuntimeError(f"source file not found: {missing_paths[0]}")
     policy = load_json(policy_path) if policy_path.exists() else {}
     response = _call_json_generator(
         backend=backend,
@@ -724,7 +818,7 @@ def build_source_card_for_source(
         model=model,
         system_instruction=_source_card_system_instruction(),
         user_prompt=_source_card_prompt(source=source, policy=policy),
-        source_paths=[source_path],
+        source_paths=source_paths,
         max_output_tokens=8192,
         response_json_schema=_source_card_response_schema(),
     )
@@ -741,18 +835,20 @@ def build_source_card_for_source(
             "warnings",
         ],
     )
+    analysis = _repair_source_card_analysis(analysis, source)
     artifact = {
         **_build_metadata(
             artifact_type="source_card",
             model=model,
             dependency_hashes={
-                "source_file": sha256_file(source_path),
+                "source_file": sha256_file(source_paths[0]) if len(source_paths) == 1 else signature_for_files(source_paths),
+                "source_files_signature": signature_for_files(source_paths),
                 "source_catalog": sha256_file(source_catalog_path),
                 "source_intelligence_policy": sha256_file(policy_path) if policy_path.exists() else "",
             },
             input_source_ids=[source_id],
         ),
-        "source": _source_identity(source, source_path, repo_root, subject_root),
+        "source": _source_identity(source, source_paths, repo_root, subject_root),
         "analysis": analysis,
     }
     validate_source_card(artifact)
@@ -788,13 +884,16 @@ def build_source_cards(
         if not source.get("source_exists"):
             results.append({"source_id": source_id, "status": "missing_source"})
             continue
-        source_path = source_file_path(subject_root, source)
-        if not source_path.exists() or not source_path.is_file():
+        source_paths = source_file_paths(subject_root, source)
+        missing_paths = [path for path in source_paths if not path.exists() or not path.is_file()]
+        if not source_paths or missing_paths:
+            missing_path = missing_paths[0] if missing_paths else subject_root
             item = {
                 "source_id": source_id,
                 "status": "missing_local_file",
-                "source_path": str(source_path),
-                "error": f"source file not found: {source_path}",
+                "source_paths": [str(path) for path in source_paths],
+                "source_path": str(missing_path),
+                "error": f"source file not found: {missing_path}",
             }
             if dry_run or continue_on_error:
                 results.append(item)
@@ -804,17 +903,31 @@ def build_source_cards(
             if source_card_is_fresh(
                 path=output_path,
                 source=source,
-                source_path=source_path,
+                source_paths=source_paths,
                 source_catalog_path=source_catalog_path,
                 policy_path=policy_path,
             ):
                 results.append({"source_id": source_id, "status": "skipped_existing", "output_path": str(output_path)})
                 continue
             if dry_run:
-                results.append({"source_id": source_id, "status": "planned_stale_rebuild", "source_path": str(source_path)})
+                results.append(
+                    {
+                        "source_id": source_id,
+                        "status": "planned_stale_rebuild",
+                        "source_paths": [str(path) for path in source_paths],
+                        "source_path": str(source_paths[0]) if source_paths else "",
+                    }
+                )
                 continue
         if dry_run:
-            results.append({"source_id": source_id, "status": "planned", "source_path": str(source_path)})
+            results.append(
+                {
+                    "source_id": source_id,
+                    "status": "planned",
+                    "source_paths": [str(path) for path in source_paths],
+                    "source_path": str(source_paths[0]) if source_paths else "",
+                }
+            )
             continue
         try:
             build_source_card_for_source(
@@ -835,7 +948,8 @@ def build_source_cards(
                 {
                     "source_id": source_id,
                     "status": "error",
-                    "source_path": str(source_path),
+                    "source_paths": [str(path) for path in source_paths],
+                    "source_path": str(source_paths[0]) if source_paths else "",
                     "error": format_error(exc),
                 }
             )
@@ -916,17 +1030,14 @@ def _raw_source_paths_for_bundle(subject_root: Path | None, bundle: dict[str, An
     for source in _bundle_source_entries(bundle):
         if not source.get("source_exists"):
             continue
-        relative_path = str(source.get("subject_relative_path") or "").strip()
-        if not relative_path:
-            continue
-        path = subject_root / relative_path
-        if not path.exists() or not path.is_file():
-            continue
-        resolved = path.resolve()
-        if resolved in seen:
-            continue
-        seen.add(resolved)
-        paths.append(path)
+        for path in source_file_paths(subject_root, source):
+            if not path.exists() or not path.is_file():
+                continue
+            resolved = path.resolve()
+            if resolved in seen:
+                continue
+            seen.add(resolved)
+            paths.append(path)
     return paths
 
 
@@ -1901,7 +2012,7 @@ def build_recursive_index(
         },
         "errors": source_card_errors + lecture_errors + course_synthesis_errors + revised_errors + podcast_errors,
         "known_partial_allowances": [
-            "W03L2 may remain partial because its manifest intentionally keeps Bach & Simonsen (2023) as missing."
+            "W03L2 may remain partial only because its manual lecture/reading summaries are incomplete, not because of missing sources."
         ],
     }
     if output_path.exists() and output_path.is_file():

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W07L1",
   "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
   "sequence_index": 13,
@@ -47,14 +47,14 @@
     "manual_reading_summaries_present": 2,
     "source_analyses_present": 0,
     "total_pages": 103,
-    "total_estimated_tokens": 30366,
+    "total_estimated_tokens": 66950,
     "source_family_counts": {
       "lecture_slide": 1,
       "reading": 2
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": false,
@@ -81,14 +81,14 @@
       "source_id": "w07l1-jacobsen-2021-26129bff",
       "title": "Jacobsen (2021)",
       "source_family": "reading",
-      "priority_score": 116,
-      "priority_band": "primary"
+      "priority_score": 124,
+      "priority_band": "core"
     },
     {
       "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
       "title": "13. Eksistens II. 2026",
       "source_family": "lecture_slide",
-      "priority_score": 88,
+      "priority_score": 92,
       "priority_band": "supporting"
     }
   ],
@@ -104,7 +104,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -124,10 +124,10 @@
         },
         "file": {
           "page_count": 45,
-          "estimated_token_count": 26324,
-          "estimated_word_count": 16864,
-          "text_char_count": 105295,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 29250,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
           "size_bytes": 1545677
         },
@@ -164,12 +164,13 @@
         "length_band": "medium",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
-        "priority_score": 116,
-        "priority_band": "primary",
+        "priority_score": 124,
+        "priority_band": "core",
         "priority_reasons": [
           "reading",
           "manual summary",
-          "medium source"
+          "medium source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -179,10 +180,10 @@
         },
         "file": {
           "page_count": 25,
-          "estimated_token_count": 0,
+          "estimated_token_count": 16250,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
           "size_bytes": 2726840
         },
@@ -217,16 +218,16 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": null,
-        "language_guess": "da",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": "lecture",
         "evidence_origin": "lecture_framed",
-        "priority_score": 88,
+        "priority_score": 92,
         "priority_band": "supporting",
         "priority_reasons": [
           "lecture_slide",
           "long source",
-          "substantial"
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": false,
@@ -236,10 +237,10 @@
         },
         "file": {
           "page_count": 33,
-          "estimated_token_count": 4042,
-          "estimated_word_count": 2441,
-          "text_char_count": 16168,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 21450,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
           "size_bytes": 914720
         },

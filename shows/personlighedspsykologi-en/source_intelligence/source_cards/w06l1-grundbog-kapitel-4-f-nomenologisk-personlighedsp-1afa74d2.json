@@ -2,10 +2,19 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:19:54Z",
+  "generated_at": "2026-05-05T13:38:14Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-source-card-v1"
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -13,7 +22,8 @@
     ],
     "dependency_hashes": {
       "source_file": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_files_signature": "9956fc33adeb9e130aa759e7475f4c891db8756a6bc69f08718f05039dad04c6",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -24,116 +34,115 @@
     "source_family": "reading",
     "evidence_origin": "textbook_framing",
     "source_path": "Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+    "source_paths": [
+      "Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf"
+    ],
     "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf"
+    ],
     "source_exists": true,
     "source_sha256": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
     "length_band": "long",
     "page_count": 42,
-    "estimated_token_count": 0,
-    "text_extraction_status": "no_text"
+    "estimated_token_count": 27300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "This text acts as the foundational textbook chapter introducing phenomenological personality psychology. It bridges philosophical roots (Husserl, Merleau-Ponty, Sartre) with experimental psychology (Wundt, Copenhagen School) to establish phenomenology as a rigorous psychological framework.",
-    "source_role": "As the primary 'Grundbog' reading, it frames the lecture conceptually by providing the historical background, key definitions, and methodological principles necessary for understanding phenomenological approaches to personality.",
-    "relation_to_lecture": "It supplies the definitional and theoretical baseline for the lecture, explaining how phenomenology differs from behaviorism and psychoanalysis by focusing on the immediate structures of conscious experience and meaning.",
+    "theory_role": "Provides the foundational framework for phenomenological personality psychology, contrasting mechanistic and psychoanalytic approaches with a focus on first-person lived experience, meaning-making, and consciousness.",
+    "source_role": "Primary textbook chapter (Grundbog) that establishes the historical, philosophical, and methodological baseline for the phenomenological perspective in the course.",
+    "relation_to_lecture": "Serves as the theoretical framing for week 6 (W06L1), introducing core phenomenological vocabulary (Epoché, Intentionality, Lifeworld) that will likely be applied and elaborated upon in the lecture slides.",
     "central_claims": [
       {
-        "claim": "Phenomenology is the study of phenomena, defined as everything that can appear in our immediate, unreflected consciousness before any division between inner and outer worlds.",
+        "claim": "Phenomenology studies 'immediate' or 'pure' experience (det der viser sig), arguing that in spontaneous experience there is no distinct separation between the internal and external world.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Consciousness is fundamentally characterized by intentionality, meaning it is always directed towards or about an object outside itself.",
+        "claim": "Scientific, objective thinking has lost connection to its foundation, which is the pre-scientific, subjective 'Lifeworld' (Livsverden) consisting of flexible morphological essences.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "The Danish 'Københavnerskole' (including Edgar Rubin, Edgar Tranekjær Rasmussen, and Franz From) made pivotal contributions to experimental phenomenology by investigating perception, emotion, and the experience of others' behavior.",
+        "claim": "Consciousness is characterized by 'Intentionality', meaning it is always directed towards an object and relies on a relational connection between subject and world.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "There is a crucial distinction between pre-reflective consciousness, where the subject is bodily immersed in the world without an explicit 'I', and reflective consciousness, where the 'I' or Ego appears as an object of attention.",
-        "grounding": "source-grounded",
-        "confidence": "high"
-      },
-      {
-        "claim": "The phenomenological method aims to return to the 'lifeworld' (livsverden) through the epoché (phenomenological reduction) and eidetic variation to uncover the essential structures of experience.",
+        "claim": "There is no 'I' or ego present in the immediate, pre-reflective consciousness; the ego only comes into existence when consciousness becomes reflective.",
         "grounding": "source-grounded",
         "confidence": "high"
       }
     ],
     "key_concepts": [
       {
-        "term": "Fænomen (Phenomenon)",
-        "definition": "Derived from Greek 'phainómenon' meaning 'that which shows itself'; it encompasses everything that appears in our conscious life.",
-        "role": "Defines the fundamental subject matter of phenomenological psychology."
-      },
-      {
-        "term": "Intentionalitet (Intentionality)",
-        "definition": "The principle that consciousness is inherently relational—it is always consciousness of something.",
-        "role": "Differentiates psychological acts from mere physical phenomena and serves as the core structure of consciousness."
-      },
-      {
         "term": "Livsverden (Lifeworld)",
-        "definition": "Husserl's concept of the pre-scientific, concrete, sensory, and lived world of everyday experience.",
-        "role": "Acts as the foundation from which exact sciences abstract, emphasizing the primacy of subjective, embodied experience."
+        "definition": "The concrete, pre-scientific world of everyday lived experience, characterized by morphological (flexible and imprecise) essences rather than exact abstract determinations.",
+        "role": "Highlights phenomenology's critique of natural science's purely objective approaches, positioning lived experience as the foundation of all understanding."
       },
       {
-        "term": "Præ-refleksivt kropssubjekt (Pre-reflective bodily subject)",
-        "definition": "Merleau-Ponty's notion of our fundamental, unreflected, and bodily way of being in and interacting with the world before conscious thought.",
-        "role": "Grounds personality not in abstract cognition, but in dynamic, affective, and motoric openness to the world."
+        "term": "Intentionalitet",
+        "definition": "The fundamental characteristic of consciousness being 'directed towards' something (rettethed); consciousness is always consciousness of an object.",
+        "role": "Bridges the gap between the internal mind and external world, making it the central mechanism for understanding human experience."
       },
       {
-        "term": "Epoché / Fænomenologisk reduktion",
-        "definition": "The methodological suspension of the 'natural attitude' (our everyday assumptions about reality) to focus purely on how phenomena appear to consciousness.",
-        "role": "Provides the systematic method for phenomenological research to analyze the correlation between experience and its object."
+        "term": "Epoché (Fænomenologisk reduktion)",
+        "definition": "The suspension of the 'natural attitude' or pre-judgments about reality, holding back assumptions to focus purely on how phenomena appear in experience.",
+        "role": "Defines the core methodological step necessary to conduct valid phenomenological research."
       },
       {
-        "term": "Figur-grund-fænomenet (Figure-ground phenomenon)",
-        "definition": "Edgar Rubin's discovery that perception is organized into a dominant 'figure' with distinct form and a receding, formless 'ground'.",
-        "role": "Demonstrates that perception is an active psychological process of organization, not just a passive photographic recording."
+        "term": "Det præ-refleksive kropssubjekt",
+        "definition": "Merleau-Ponty's concept of an original, bodily way of being in the world that precedes reflective thought and language.",
+        "role": "Anchors phenomenological personality psychology in the lived, dynamic body rather than just in cognitive or abstract mental processes."
+      },
+      {
+        "term": "Eidetsk variation",
+        "definition": "A methodological process of using imagination to vary the non-essential traits of an object to discover its invariable, necessary essence (eidos).",
+        "role": "Explains how qualitative phenomenological research derives universal structural insights from subjective first-person experiences."
       }
     ],
     "distinctions": [
       {
         "label": "Præ-refleksiv vs. Refleksiv bevidsthed",
-        "summary": "The immediate, spontaneous immersion in an activity where the 'I' is absent, versus the state where consciousness turns back upon itself and the 'I' (Ego) emerges as an object.",
-        "stakes": "Crucial for understanding that the Ego is not a constant presence in the mind, but a product of reflection (as argued by Sartre and James)."
+        "summary": "Pre-reflective consciousness is the immediate, spontaneous flow of experience where the subject is absorbed in the action. Reflective consciousness is when attention turns back onto the experience or the self.",
+        "stakes": "Crucial for understanding identity in phenomenology; the 'I' (ego) only exists in the reflective state, not in the pre-reflective flow."
       },
       {
-        "label": "Livsverden vs. Videnskabelig verden",
-        "summary": "The concrete, subjective, and sensory world of lived experience versus the objective, abstract, and idealized world described by exact sciences.",
-        "stakes": "Highlights phenomenology's critique of sciences that lose touch with their foundation in human experience, positioning phenomenology as a fundamental discipline."
+        "label": "Videnskabelig verden vs. Livsverden",
+        "summary": "The scientific world attempts exact, objective, and quantitative definition, while the lifeworld is the qualitative, subjective, and approximate everyday experience.",
+        "stakes": "Grounds the phenomenological argument that science is a secondary abstraction that must trace its roots back to primary lived experience."
       },
       {
-        "label": "Det oplevede vs. Det faktiske (From)",
-        "summary": "The distinction between experiencing a person's behavior as meaningful and intentional versus observing it purely as physical, mechanical movement.",
-        "stakes": "Underpins the phenomenological approach to social perception, showing that we immediately perceive intentions and emotions, not just physical movements."
+        "label": "Psykiske vs. Fysiske fænomener (Brentano)",
+        "summary": "Physical phenomena are sensory objects (shapes, colors), while psychic phenomena are acts containing intentional objects (the act of seeing, the act of desiring).",
+        "stakes": "Establishes intentionality as the exclusive defining boundary of the psychological domain."
       }
     ],
     "likely_misunderstandings": [
-      "Confusing classical introspection (observing elements of past conscious states) with phenomenological reduction (describing the immediate structure and meaning of experience).",
-      "Assuming the 'I' or 'Ego' is the constant center of all consciousness, missing the existentialist point (Sartre, Merleau-Ponty) that the 'I' is absent in pre-reflective experience.",
-      "Viewing phenomenology as anti-scientific subjectivism, rather than a rigorous methodological attempt to uncover universal structures of consciousness (via epoché and eidetic variation)."
+      "Equating the phenomenological method with Wundt's element-focused introspection; phenomenology seeks holistic essences, not isolated sensory elements.",
+      "Assuming 'Epoché' means denying that the physical world exists; rather, it merely suspends assumptions about it to focus entirely on the experience itself.",
+      "Thinking that the 'I' or 'ego' is a constant presence in the mind, whereas phenomenology (via Sartre) argues the 'I' is entirely absent during flow/pre-reflective action."
     ],
     "quote_targets": [
       {
-        "target": "Begrebet fænomen stammer fra det græske ord phainómenon der betyder 'det der viser sig'.",
-        "why": "Provides the essential etymological and conceptual definition of a phenomenon."
+        "target": "Livsverdenen er det nærværende, hvor ting og forhold er karakteriseret ved deres relative og tilnærmelsesvise bestemmelse",
+        "why": "Captures Husserl's critical distinction between the lived world and the exactness of the scientific world."
       },
       {
-        "target": "Bevidstheden er i første omgang ikke et spørgsmål om 'jeg tænker at', men om 'jeg kan' (Merleau-Ponty).",
-        "why": "Elegantly captures the shift from a cognitive, reflective understanding of the self to a bodily, pre-reflective, action-oriented understanding."
+        "target": "Bevidstheden er altid bevidsthed om noget, og bevidsthed er altid afhængig af noget andet end sig selv",
+        "why": "Provides a clear, concise definition of Intentionality."
       },
       {
-        "target": "Der er intet Jeg på det ureflekterede plan... Jeg'et dukker op, så snart opmærksomheden rettes mod den ureflekterede bevidsthed (Sartre).",
-        "why": "Clearly illustrates the phenomenological distinction between pre-reflective experience and reflective identity construction."
+        "target": "Der er intet Jeg på det ureflekterede plan.",
+        "why": "Sartre's quote neatly summarizes the counter-intuitive phenomenological position on the ego/identity during immediate experience."
       }
     ],
     "grounding_notes": [
-      "The text heavily emphasizes the Danish 'Københavnerskole' (Rubin, Tranekjær Rasmussen, From), which reflects a specific local historical emphasis that may differ from standard international textbook presentations of phenomenology."
+      "Source provides significant historical context specifically linking phenomenological methods to Danish psychology (Københavnerskolen: Rubin, Tranekjær Rasmussen, From).",
+      "Heavily emphasizes philosophical roots (Husserl, Merleau-Ponty, Sartre, James, Bergson) as prerequisites for psychological application."
     ],
-    "warnings": []
+    "warnings": [
+      "The text transitions heavily between dense philosophical epistemology and psychological theory. Students should focus on how philosophical concepts (like 'Livsverden') translate into psychological methods."
+    ]
   }
 }

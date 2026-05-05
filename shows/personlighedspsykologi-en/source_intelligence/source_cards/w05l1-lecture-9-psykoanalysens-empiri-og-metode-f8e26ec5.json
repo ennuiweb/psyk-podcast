@@ -2,10 +2,19 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T11:18:25Z",
+  "generated_at": "2026-05-05T13:37:34Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-source-card-v1"
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
   },
   "provenance": {
     "input_source_ids": [
@@ -13,7 +22,8 @@
     ],
     "dependency_hashes": {
       "source_file": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
-      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_files_signature": "1f3d003c7e875d6d994525cd14aef60d90ebb2a5904febbefa7864d629e67ed2",
+      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -24,103 +34,112 @@
     "source_family": "lecture_slide",
     "evidence_origin": "lecture_framed",
     "source_path": "Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf"
+    ],
     "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf"
+    ],
     "source_exists": true,
     "source_sha256": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
     "length_band": "long",
     "page_count": 57,
-    "estimated_token_count": 7744,
-    "text_extraction_status": "ok"
+    "estimated_token_count": 37050,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Fungerer som en metodologisk og epistemologisk afrunding af det psykoanalytiske forløb, der retfærdiggør teorien videnskabsteoretisk (Ricoeur) og kritisk evaluerer den gennem casestudier (Dora).",
-    "source_role": "Forelæsningsslides, der rammesætter de primære og sekundære tekster (Freud, Ricoeur, McWilliams, Gammelgaard) og strukturerer undervisningen omkring psykoanalysens epistemologi og forsvarsmekanismer.",
-    "relation_to_lecture": "Adresserer direkte, hvordan psykoanalysen producerer og validerer viden, samt hvordan dens metoder udspiller sig i den kliniske virkelighed (på godt og ondt).",
+    "theory_role": "Presents psychoanalysis as a hermeneutic human science (drawing heavily on Ricoeur), emphasizing that its epistemology is inseparable from the clinical encounter and the interpretation of defense mechanisms.",
+    "source_role": "Primary lecture slides for week 5, session 1, bridging earlier concepts of personality structure and defenses with methodology, epistemology, and a critical case study application (Dora).",
+    "relation_to_lecture": "Provides the structural backbone for Lecture 9, directly detailing defense mechanisms, Ricoeur's criteria for psychoanalytic truth, and a critical review of Freud's Dora case.",
     "central_claims": [
       {
-        "claim": "Psykoanalysen er både en behandlingsform og en videnskabelig undersøgelse i en og samme proces, hvor teorien er en kodificering af det kliniske møde.",
-        "grounding": "slide-framed",
-        "confidence": "high"
-      },
-      {
-        "claim": "Psykoanalysens sandhedsbegreb bygger ikke på en korrespondanceteori, men på sprog, intersubjektivitet, psykisk realitet og narrativitet.",
+        "claim": "Psychoanalytic truth is not based on the correspondence theory of truth, but is instead a processual and contextual truth constituted by four criteria: language, intersubjectivity, psychic reality, and narrativity (Ricoeur).",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Forsvarsmekanismer begynder som uundgåelige, adaptive måder at opleve verden på, og fraværet af modne forsvar karakteriserer psykotiske og borderline strukturer.",
+        "claim": "Psychoanalysis operates as an anti-scientistic human science where the clinical treatment and the scientific investigation of the unconscious are one and the same process.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freud's treatment of Dora (Ida Bauer) illustrates a discrepancy between his theoretical genius and his clinical practice, highlighting how patriarchal biases and suggestive methods led to a failed treatment.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Freuds egen kliniske praksis, som set i Dora-casen, levede ofte ikke op til hans teoretiske anbefalinger og var stærkt farvet af hans egen tids patriarkalske normer.",
-        "grounding": "slide-framed",
+        "claim": "Defense mechanisms are unconscious mechanisms that reduce anxiety, and they can be divided into primary defenses (concerning the boundary between self and the outside world) and secondary defenses (concerning internal boundaries).",
+        "grounding": "source-grounded",
         "confidence": "high"
       }
     ],
     "key_concepts": [
       {
-        "term": "Forsvarsmekanismer",
-        "definition": "Ubevidste psykologiske mekanismer, som mindsker angst, og hvis sammensætning er nøglen til at forstå et menneskes personlighed.",
-        "role": "Centralt for at forstå, hvordan psyken beskytter sig selv, og udgør kernen i den psykoanalytiske modstand, som terapien arbejder med."
-      },
-      {
         "term": "Nachträglichkeit (Efterlods virkning)",
-        "definition": "Det fænomen, at tidligere hændelser eller indtryk først får deres fulde mening og virkning (ofte traumatisk) på et senere tidspunkt i lyset af nye erfaringer.",
-        "role": "Forklarer traumets tidslighed i psykoanalysen og viser, at hukommelse er en aktiv, rekonstruktiv proces."
+        "definition": "The phenomenon where past events, impressions, or memory traces are recast later in life through new experiences, gaining new meaning and efficiency, often becoming traumatic only retroactively.",
+        "role": "Explains how psychoanalysis understands trauma and the temporal structure of psychic reality."
       },
       {
-        "term": "Psykisk realitet",
-        "definition": "Subjektets indre virkelighed, ofte drevet af fantasier, som er delvist løsrevet fra den ydre, materielle virkelighed.",
-        "role": "Udgør det egentlige genstandsfelt for psykoanalysen i modsætning til naturvidenskabernes observerbare fakta."
+        "term": "Overføring (Transference)",
+        "definition": "The unconscious displacement of emotional ties and past psychological experiences onto the present, particularly onto the person of the analyst.",
+        "role": "Highlights both the greatest obstacle and the most powerful tool in psychoanalytic treatment."
       },
       {
         "term": "Projektiv identifikation",
-        "definition": "En forsvarsmekanisme, hvor en person projicerer ubehagelige tilstande over i en anden person, men samtidig ubevidst presser denne person til at føle og agere i overensstemmelse med projektionen.",
-        "role": "Vigtig for at forstå komplekse overføringsrelationer, især ved psykotisk og borderline struktur, men også i almindelige relationer."
+        "definition": "A defense mechanism where a person projects their internal state onto another person, while simultaneously exerting pressure on that person to actually feel and experience the world in accordance with the projection.",
+        "role": "Differentiates severe/primitive defensive blurring of inner and outer worlds from more benign forms of projection like empathy."
       },
       {
-        "term": "Udageren (Acting out)",
-        "definition": "At udtrykke ubevidste og ubærlige følelser eller overføringsholdninger gennem adfærd, fordi de endnu ikke kan rummes i sproget.",
-        "role": "Synliggør modstand i 'the talking cure' ved at erstatte erindring og tale med handling."
+        "term": "Psykisk realitet (Psychic reality)",
+        "definition": "The inner world of the subject, where personal fantasies and subjective meanings hold psychological weight, partially detached from external, objective reality.",
+        "role": "Serves as one of Ricoeur's four core criteria for establishing 'facts' in a psychoanalytic context, distinguishing the field from observational sciences."
+      },
+      {
+        "term": "Udageren (Acting out / Enactment)",
+        "definition": "Behavior assumed to be an expression of transference attitudes that the patient cannot yet articulate in words, effectively substituting action for memory.",
+        "role": "Explains patients' resistance to the 'talking cure', as seen in Freud's explanation of why Dora terminated her treatment."
       }
     ],
     "distinctions": [
       {
         "label": "Primære vs. Sekundære forsvarsmekanismer",
-        "summary": "Primære (primitive) forsvar relaterer sig til grænsen mellem selvet og omverdenen (f.eks. benægtelse, omnipotens), mens sekundære (modne) forsvar håndterer indre grænser mellem f.eks. ego, id og overjeg.",
-        "stakes": "Afgørende for at vurdere en persons udviklingspsykologiske niveau og personlighedsstruktur (neurotisk vs. borderline/psykotisk)."
+        "summary": "Primary (immature) defenses deal with the boundary between self and the outside world and originate preverbally; secondary (advanced) defenses deal with internal boundaries, such as those between the id, ego, and superego.",
+        "stakes": "Crucial for determining a patient's level of psychological maturity and underlying personality structure (e.g., psychotic/borderline vs. neurotic)."
       },
       {
-        "label": "Psykisk realitet vs. Empirisk faktum",
-        "summary": "Observatørvidenskaber fokuserer på materielle fakta, mens psykoanalysen fokuserer på, hvad et subjekt 'gør ud af sine fantasier' (den psykiske realitet).",
-        "stakes": "Legitimerer psykoanalysen som en hermeneutisk humanvidenskab frem for en naturvidenskab."
+        "label": "Observational Science vs. Psychoanalysis",
+        "summary": "Observational sciences focus on empirical, objective facts, whereas psychoanalysis is a human science focusing on the inner world, subjective meaning, and the unobservable unconscious.",
+        "stakes": "Justifies psychoanalysis's unique epistemological and methodological framework (hermeneutics) against critiques from logical empiricism."
       }
     ],
     "likely_misunderstandings": [
-      "At en psykoanalytisk 'sandhed' svarer til en naturvidenskabelig, objektiv sandhed, snarere end en narrativ, kohærent sandhed i den kliniske relation.",
-      "At Freuds egne casestudier er perfekte repræsentationer af hans teori; de viser tværtimod ofte hans fejltrin og blinde vinkler (f.eks. manglende lydhørhed over for kvindelig seksualitet).",
-      "At paranoia udelukkende er simpel mistænksomhed, når det psykoanalytisk forstås som en ondartet form for projektion."
+      "Assuming psychoanalysis relies on the correspondence theory of truth; it actually relies on narrative and processual truth (Ricoeur).",
+      "Equating normal projection with projective identification; the latter involves an interactive pressure forcing the recipient to experience the projected emotion.",
+      "Believing Freud's clinical execution perfectly matched his theoretical ideals; the Dora case is presented to show his significant clinical failures, patriarchal blind spots, and use of suggestion."
     ],
     "quote_targets": [
       {
         "target": "Psychoanalysis is essentially a struggle against resistances.",
-        "why": "Opsummerer grundkernen i det psykoanalytiske behandlingsarbejde ifølge Ricoeur."
+        "why": "A core Ricoeur quote summarizing the fundamental dynamic of the psychoanalytic clinical encounter."
       },
       {
-        "target": "the psychoanalytic “fact,” with its fourfold nature of being able to be said, to be addressed to another person, to be fantasized, figured, or symbolized, and to be recounted in the story of a life.",
-        "why": "Ricoeurs præcise opsummering af de fire kriterier for sandhed i psykoanalysen (Sprog, intersubjektivitet, psykisk realitet, narrativitet)."
+        "target": "...the psychoanalytic “fact,” with its fourfold nature of being able to be said, to be addressed to another person, to be fantasized, figured, or symbolized, and to be recounted in the story of a life.",
+        "why": "Condenses Ricoeur's entire epistemological argument about how truth is constructed in psychoanalysis into a single formulation."
       },
       {
-        "target": "We can go quite far in psychoanalysis by embracing not Freud’s personal example but his recommendations...",
-        "why": "Illustrerer Finks pointe om diskrepansen mellem Freuds teoretiske genialitet og hans ofte mangelfulde kliniske praksis."
+        "target": "Vi udagerer det, vi ikke husker.",
+        "why": "A succinct Freudian explanation of acting out and its relation to repressed material."
       }
     ],
     "grounding_notes": [
-      "Mange af de konceptuelle definitioner trækkes direkte fra citerede værker i sliddet (McWilliams, Ricoeur, Gammelgaard, Fink). Forelæserens egne udtalelser er rammesættende."
+      "Draws heavily on Paul Ricoeur (1977) for epistemology.",
+      "Uses Judy Gammelgaard (2007, 2010) to contextualize clinical methods and Nachträglichkeit.",
+      "Applies Bruce Fink (2017) to provide a modern, critical lens on Freud's treatment of Ida Bauer (Dora).",
+      "Uses Nancy McWilliams (2011) to define primary vs. secondary defense mechanisms."
     ],
     "warnings": [
-      "Sliddet blander engelske og danske citater."
+      "No overall text word count or character count is available due to the extraction status 'metadata_only_no_local_text_extraction', relying solely on OCR text from slides."
     ]
   }
 }

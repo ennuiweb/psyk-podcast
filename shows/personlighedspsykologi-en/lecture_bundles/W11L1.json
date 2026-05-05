@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T07:59:05Z",
+  "generated_at": "2026-05-05T13:07:11Z",
   "lecture_key": "W11L1",
   "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
   "sequence_index": 20,
@@ -45,13 +45,13 @@
     "manual_reading_summaries_present": 3,
     "source_analyses_present": 3,
     "total_pages": 107,
-    "total_estimated_tokens": 41499,
+    "total_estimated_tokens": 69550,
     "source_family_counts": {
       "reading": 3
     }
   },
   "source_intelligence": {
-    "dominant_language": "en",
+    "dominant_language": "unknown",
     "course_policy_path": "shows/personlighedspsykologi-en/source_intelligence_policy.json",
     "week_analysis": {
       "present": true,
@@ -76,7 +76,7 @@
       "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
       "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
       "source_family": "reading",
-      "priority_score": 148,
+      "priority_score": 156,
       "priority_band": "core"
     },
     {
@@ -110,7 +110,7 @@
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "textbook_framing",
-        "priority_score": 148,
+        "priority_score": 156,
         "priority_band": "core",
         "priority_reasons": [
           "reading",
@@ -118,7 +118,8 @@
           "manual summary",
           "analysis sidecar",
           "week analysis",
-          "long source"
+          "long source",
+          "very substantial"
         ],
         "priority_signals": {
           "is_grundbog": true,
@@ -128,10 +129,10 @@
         },
         "file": {
           "page_count": 45,
-          "estimated_token_count": 0,
+          "estimated_token_count": 29250,
           "estimated_word_count": 0,
           "text_char_count": 0,
-          "text_extraction_status": "no_text",
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
           "size_bytes": 7251858
         },
@@ -170,7 +171,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 1,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -192,10 +193,10 @@
         },
         "file": {
           "page_count": 28,
-          "estimated_token_count": 20277,
-          "estimated_word_count": 13021,
-          "text_char_count": 81107,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 18200,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
           "size_bytes": 216630
         },
@@ -234,7 +235,7 @@
         "source_exists": true,
         "missing_reason": null,
         "sequence_index": 2,
-        "language_guess": "en",
+        "language_guess": "unknown",
         "length_band": "long",
         "slide_subcategory": null,
         "evidence_origin": "reading_grounded",
@@ -256,10 +257,10 @@
         },
         "file": {
           "page_count": 34,
-          "estimated_token_count": 21222,
-          "estimated_word_count": 14408,
-          "text_char_count": 84887,
-          "text_extraction_status": "ok",
+          "estimated_token_count": 22100,
+          "estimated_word_count": 0,
+          "text_char_count": 0,
+          "text_extraction_status": "metadata_only_no_local_text_extraction",
           "sha256": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
           "size_bytes": 211529
         },

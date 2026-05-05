@@ -300,6 +300,21 @@ Recursive preprocessing implementation:
   and podcast substrates. The next gate is podcast-output quality testing
   before scaling.
 
+Printable reading scaffolds:
+
+- `scripts/build_personlighedspsykologi_reading_scaffolds.py` is the first
+  explicit Source Intelligence consumer for non-podcast study material.
+- It generates three per-reading artifacts for offline use while reading:
+  abridged preparatory guide, chronological unit-test questions, and
+  cloze/diagram scaffolding sheet.
+- It uploads the actual source PDF to Gemini 3.1 Pro and uses source cards,
+  revised lecture substrates, and course synthesis only as prioritization
+  context. It must not locally extract/OCR/read the source PDF for semantic
+  understanding.
+- Outputs are written under
+  `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/scaffolding/<source_id>/`
+  as JSON, Markdown, and PDFs rendered from Gemini's JSON.
+
 ## Related docs
 
 - [../shows/personlighedspsykologi-en/docs/README.md](../shows/personlighedspsykologi-en/docs/README.md)

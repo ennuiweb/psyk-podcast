@@ -525,15 +525,17 @@ conditions for learning material.
 
 Concretely:
 
-- the full-course LLM preprocessing code path exists, but the real artifact run
-  has not happened yet
+- the full-course LLM preprocessing code path exists, and the first live
+  `W05L1,W06L1` batch has generated source cards, lecture substrates, partial
+  course synthesis, downward revisions, and podcast substrates
 - source-card, lecture-substrate, course-synthesis, downward-revision, and
-  podcast-substrate schemas/builders exist, but artifact coverage is still 0
-  until Gemini is configured and run
+  podcast-substrate schemas/builders are implemented; broad coverage is still
+  pending until the remaining lectures are run
 - the next quality risk is no longer "can we build it?" but "are the generated
   artifacts better than the simple upload-and-prompt baseline?"
   once the whole course arc is visible
-- no compact podcast substrate layer that can be used without bloating prompts
+- the compact podcast substrate layer exists and is wired for prompt
+  injection, but still needs podcast-output quality evaluation before scaling
 - no automatic stale invalidation enforcement for derived understanding
 - sideways comparison across lectures and theories is still more scripted and
   seeded than source-derived

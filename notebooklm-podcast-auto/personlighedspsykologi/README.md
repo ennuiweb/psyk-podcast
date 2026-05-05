@@ -253,6 +253,22 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_r
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L1 --content-types audio,report --profile default
 ```
 
+- Generate printable reading scaffolds from the Gemini Source Intelligence layer:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_reading_scaffolds.py --lectures W06L1
+./.venv/bin/python scripts/build_personlighedspsykologi_reading_scaffolds.py --source-id w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2
+```
+
+- This path uploads the actual source PDF to Gemini 3.1 Pro and uses source
+  cards/course context only as prioritization context; it must not locally
+  extract, OCR, summarize, or understand reading PDFs.
+- Each selected reading writes one JSON artifact plus three printable outputs
+  under `output/<lecture>/scaffolding/<source_id>/`: `01-abridged-guide`,
+  `02-unit-test-suite`, and `03-cloze-scaffold` as Markdown and PDF.
+- Default selection is readings only. Use `--source-family lecture_slide` or
+  `--all-families` only when intentionally generating scaffolds for slide decks.
+
 - Legacy quiz HTML->JSON extraction is no longer part of the default local flow in this branch.
 - Git hook behavior: quiz extraction is disabled by default. Enable with `QUIZ_JSON_EXTRACT_ON_PUSH=1` if the extractor script exists in your checkout.
 

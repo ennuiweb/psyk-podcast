@@ -92,6 +92,19 @@ Output substrate pass:
 - for dette task er podcast substrates i scope
 - setup af alle andre outputfamilier er ikke core scope endnu
 
+Foerste konkrete ikke-podcast consumer efter dette er nu printable reading
+scaffolds:
+
+- `scripts/build_personlighedspsykologi_reading_scaffolds.py`
+- output: `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/scaffolding/<source_id>/`
+- artifacts: `reading-scaffolds.json` plus tre PDF/Markdown-filer:
+  `01-abridged-guide`, `02-unit-test-suite`, `03-cloze-scaffold`
+- denne vej sender altid den faktiske source PDF til Gemini 3.1 Pro via Files
+  API; lokal kode maa kun vaelge, hashe, cache og rendere output
+- source cards, revised lecture substrates og course synthesis bruges som
+  prioriteringssubstrat, ikke som erstatning for at Gemini laeser selve
+  kilden
+
 Guardrails:
 
 - alle LLM artifacts skal schema-validates
@@ -370,9 +383,10 @@ Status 2026-05-05:
   den lokale `.venv`
 - `shows/personlighedspsykologi-en/source_intelligence/index.json` er den
   aktuelle coverage/staleness status for LLM-artifacts
-- nuvaerende coverage er 0 source cards, 0 lecture substrates, 0 course
-  synthesis, 0 revised lecture substrates og 0 podcast substrates
-- stale count er 0, fordi der endnu ikke findes LLM-artifacts at genbruge
+- nuvaerende coverage er 9 source cards, 2 lecture substrates, 1 partial
+  course synthesis, 2 revised lecture substrates og 2 podcast substrates for
+  testbatchen `W05L1,W06L1`
+- stale count er 0 for den nuvaerende artifact set
 
 ### 1. Shared Gemini preprocessing client
 

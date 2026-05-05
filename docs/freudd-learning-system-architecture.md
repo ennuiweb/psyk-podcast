@@ -167,9 +167,9 @@ Implementation status as of 2026-05-05:
   are implemented
 - source-card generation uploads actual PDF/source files to Gemini; the
   lecture-substrate pass also uploads the lecture's raw source PDFs by default
-- no real recursive LLM artifacts have been generated yet; the Gemini
-  `--preflight-only` check now succeeds for `gemini-3.1-pro-preview`, and the
-  next gate is the first live `W05L1,W06L1` batch
+- the first live `W05L1,W06L1` recursive batch has generated and validated
+  source cards, lecture substrates, a partial course synthesis, revised lecture
+  substrates, and podcast substrates
 - `shows/personlighedspsykologi-en/source_intelligence/index.json` is the
   coverage/staleness status file for those LLM-derived artifacts
 
@@ -209,7 +209,7 @@ Scores use a `1-5` scale:
 |---|---:|---:|---:|---:|---|
 | `Freudd Portal` | 4 | 4 | 3 | 3.8 | Product-rich and strongly aligned to learning flow, but too much logic is concentrated in very large files. |
 | `Freudd Content Engine` | 3 | 3 | 3 | 3.2 | Good prompt/context infrastructure, and the upstream engine now has file-, lecture-, and course-level semantic artifacts, but weighting is not yet fully driving downstream selection and hosted rebuildability still lags. |
-| `Source Intelligence Layer` | 3 | 3 | 3 | 3.2 | It now has deterministic source catalog, lecture bundles, glossary, theory map, weighting, concept graph, and the implemented recursive Gemini artifact path; it still needs a real Gemini artifact run and quality evaluation before it can be called mature. |
+| `Source Intelligence Layer` | 3 | 3 | 3 | 3.3 | It now has deterministic source catalog, lecture bundles, glossary, theory map, weighting, concept graph, and a validated first recursive Gemini batch for `W05L1,W06L1`; it still needs podcast-output quality evaluation and broader lecture coverage before it can be called mature. |
 | `Course Context Layer` | 4 | 4 | 4 | 4.0 | Deterministic, reusable, and conceptually clean. One of the better-designed parts of the system. |
 | `Prompt Assembly Layer` | 4 | 4 | 3 | 3.7 | Much better than ad hoc prompt strings, but growing dense and still dependent on relatively weak upstream semantic artifacts. |
 | `Freudd Generation Queue` | 5 | 4 | 4 | 4.3 | The most mature backend subsystem. It owns a serious end-to-end state machine and real publication logic. |
@@ -690,10 +690,11 @@ schema validation, and dry-run prompt output showing compact substrate
 injection. `W03L2` remains allowed as partial because of the known missing
 source.
 
-The remaining blocker is no longer basic model/key access: the local
-secret-store key passes `gemini-3.1-pro-preview` preflight. The remaining gate
-is the first live batch, including PDF uploads, artifact inspection, cost
-monitoring, and comparison against the simple baseline.
+The remaining blocker is no longer basic model/key access or first artifact
+generation: the local secret-store key passes `gemini-3.1-pro-preview`
+preflight, and the first `W05L1,W06L1` recursive artifacts validate cleanly.
+The remaining gate is podcast-output quality testing, cost monitoring, and
+comparison against the simple baseline.
 
 ### Phase 3: Add explicit quality loops
 

@@ -218,7 +218,11 @@
     "max_readings": 3,
     "max_points_per_reading": 2,
     "max_slide_titles": 4,
-    "max_course_themes": 10
+    "max_course_themes": 10,
+    "podcast_substrate": {
+      "enabled": true,
+      "max_items": 4
+    }
   },
   "weekly_overview": {
     "format": "deep-dive",

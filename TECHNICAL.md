@@ -75,6 +75,8 @@ Operational note:
 - For the Gemini-derived recursive layer, the canonical local entrypoint is
   `./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py`.
   First test batch: `--lectures W05L1,W06L1`; full run: `--all`.
+- First live batches should normally use `--stop-after source-cards`, inspect
+  the source cards, then resume with `--start-at lecture-substrates`.
 - Source cards and lecture substrates upload the actual source PDFs to Gemini
   by default. The lecture-pass escape hatch is
   `--no-raw-lecture-source-uploads`.
@@ -83,8 +85,10 @@ Operational note:
   `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.
 - Runtime status as of 2026-05-05: the Gemini key is available from the local
   secret store and `--preflight-only` succeeds for `gemini-3.1-pro-preview`.
-  Real recursive LLM artifacts have not been generated yet; the next step is
-  the first live `W05L1,W06L1` batch and quality review.
+  The first live `W05L1,W06L1` batch has generated 9 source cards, 2 lecture
+  substrates, 1 partial course synthesis, 2 revised lecture substrates, and 2
+  podcast substrates. The next step is podcast-output quality testing before
+  scaling the batch.
 - The course-specific interpretation policy for that layer lives in
   `shows/personlighedspsykologi-en/source_intelligence_policy.json` and is the
   canonical place to tune how `grundbog`, lecture slides, seminar slides, and

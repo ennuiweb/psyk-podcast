@@ -1,0 +1,119 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:17:24Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+    ],
+    "dependency_hashes": {
+      "source_file": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+    "lecture_key": "W05L1",
+    "title": "1. Psykoanalyse",
+    "source_family": "exercise_slide",
+    "evidence_origin": "exercise_clarified",
+    "source_path": "Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/2. Psykoanalyse 1 og intro (1).pdf",
+    "source_exists": true,
+    "source_sha256": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 3844,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "Serves as an applied, methodological clarification of Gammelgaard (2010), defining the epistemological boundaries and empirical criteria of psychoanalysis.",
+    "source_role": "Provides a structured breakdown of four criteria for psychoanalytic empiricism (based on Ricoeur/Gammelgaard) and translates these into a practical exercise in psychoanalytic listening using dream sharing.",
+    "relation_to_lecture": "Bridges theoretical discussions of psychoanalysis into concrete clinical epistemology, helping students understand how analysts practically gather and interpret data from unstructured narratives.",
+    "central_claims": [
+      {
+        "claim": "Psychoanalysis operates as both a treatment and a scientific investigation simultaneously, with unconscious processes serving as its primary empirical data.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Because psychoanalysis deals with the unconscious subject which cannot be objectively measured, its method is 'anti-scientistic' (rejecting a reduced understanding of science) but not 'anti-scientific'.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalytic empiricism is not the literal words or concrete actions of the analysand, but the meaning and intention behind what is said or done.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Due to the unpredictable and sudden manifestations of the unconscious, psychoanalysis relies on reasoning backwards ('at slutte baglæns') from interpretation to cause, creating a verification problem.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Overføring (Transference)",
+        "definition": "The spontaneous and unconscious actualization of a patient's past intrapsychic relations, wishes, and conflicts onto the analyst during therapy.",
+        "role": "Explains how the psychoanalytic relationship itself becomes empirical data by restaging the patient's history."
+      },
+      {
+        "term": "Psykisk realitet (Psychic reality)",
+        "definition": "An undeniable inner reality founded on unconscious ideas, blending both fact and fiction, where internal mental processes and subjective feelings are treated as real.",
+        "role": "Limits psychoanalysis's reliance on directly observable empirical data, validating the patient's subjective and affective reality."
+      },
+      {
+        "term": "Talekuren (The Talking Cure)",
+        "definition": "The defining characteristic of psychoanalysis where spoken words are the path to empirical data, though the data itself is the underlying intention and meaning rather than the literal speech.",
+        "role": "Establishes language and narrative as the primary methodological tool for accessing the unconscious."
+      },
+      {
+        "term": "Den fortalte historie (The recounted story)",
+        "definition": "The analysand's continuously rewritten, often fragmented life story, which is colored by unconscious impulses and functions as an attempt to create coherence.",
+        "role": "Highlights that memory in psychoanalysis is not an isolated event but a subjective, dynamically updated construction."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Scientistic vs. Scientific",
+        "summary": "A narrow, strictly observable definition of empirical science (scientistic) versus a broader definition capable of analyzing the unconscious subject's mode of being.",
+        "stakes": "Defends psychoanalysis against criticisms of being unscientific by arguing that demanding directly observable data would reduce and eliminate the phenomenon of the unconscious."
+      },
+      {
+        "label": "Form vs. Content in Psychoanalytic Listening",
+        "summary": "Focusing on *how* a story or dream is told (fragmented, affective, associative form) rather than just *what* is being told (the literal content).",
+        "stakes": "Guides the practical application of psychoanalytic method, as demonstrated in the dream analysis exercise."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'anti-scientistic' means psychoanalysis completely rejects being a science, rather than rejecting a narrow positivist definition of science.",
+      "Thinking the empirical data of psychoanalysis is the literal transcript of what the patient says, rather than the unsaid intentions, affects, and transferences.",
+      "Believing that 'psychic reality' means psychoanalysts don't care about the truth; rather, it means subjective, affective experiences have their own objective weight in the psyche."
+    ],
+    "quote_targets": [
+      {
+        "target": "Spørgsmålet om det ubevidste subjekt er en problemstilling, der ikke kan objektiviseres. Det gør ikke psykoanalysen anti-videnskabelig, [...], men nok anti-scientistisk",
+        "why": "Perfectly captures the course's stance on the scientific status and epistemological framework of psychoanalysis."
+      },
+      {
+        "target": "har vi i psykoanalysen ingen anden mulighed end at slutte baglæns, så at sige fra vores fortolkning til årsagen",
+        "why": "Explains the unique, non-linear causality and verification challenge inherent to psychoanalytic interpretation."
+      }
+    ],
+    "grounding_notes": [
+      "As an exercise_clarified source, this slide deck focuses heavily on application, group work structure, and summarizing textbook concepts (Gammelgaard 2010) rather than introducing novel primary theory.",
+      "The 4 criteria (Talekuren, Intentionalitet, Psykisk realitet, Den fortalte historie) are explicitly mapped to Gammelgaard (2010) and Ricoeur (1981)."
+    ],
+    "warnings": [
+      "OCR contains minor typos (e.g., 'Riceuors' instead of Ricoeur, 'Intorduktion').",
+      "Slides 9 and 16 contain a complex visual table ('Model over psykoanalysens empiri') where OCR mixes columns; students should consult the visual slide to correctly map the denotative, conative, and intentional levels to the clinical example of the dictaphone/urine."
+    ]
+  }
+}

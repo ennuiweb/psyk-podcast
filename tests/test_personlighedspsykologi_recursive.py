@@ -202,7 +202,7 @@ def test_recursive_builders_create_valid_artifacts_and_index(tmp_path):
         output_path=recursive_dir / "course_synthesis.json",
         source_catalog_path=source_catalog_path,
         json_generator=_fake_json_generator,
-        partial_scope=True,
+        partial_scope=False,
     )
     assert course_result["status"] == "written"
 
@@ -286,6 +286,64 @@ def test_course_synthesis_requires_all_selected_lecture_substrates(tmp_path):
             json_generator=_fake_json_generator,
             partial_scope=True,
         )
+
+
+def test_source_cards_continue_on_error_records_missing_local_file(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    catalog = recursive.load_json(fixture["source_catalog_path"])
+    missing_source = dict(fixture["source"])
+    missing_source["source_id"] = "missing-source"
+    missing_source["subject_relative_path"] = "Readings/missing.pdf"
+    catalog["sources"].append(missing_source)
+    _write_json(fixture["source_catalog_path"], catalog)
+
+    result = recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+        continue_on_error=True,
+    )
+
+    assert result["written_count"] == 1
+    assert result["error_count"] == 1
+    missing = [item for item in result["results"] if item["source_id"] == "missing-source"][0]
+    assert missing["status"] == "missing_local_file"
+    assert "missing.pdf" in missing["error"]
+
+
+def test_lecture_substrates_continue_on_error_records_missing_bundle(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+
+    result = recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1", "W02L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+        continue_on_error=True,
+    )
+
+    assert result["written_count"] == 1
+    assert result["error_count"] == 1
+    missing = [item for item in result["results"] if item["lecture_key"] == "W02L1"][0]
+    assert missing["status"] == "error"
+    assert "lecture bundle not found" in missing["error"]
 
 
 def test_recursive_index_reports_stale_policy_and_missing_bundle_without_crashing(tmp_path):

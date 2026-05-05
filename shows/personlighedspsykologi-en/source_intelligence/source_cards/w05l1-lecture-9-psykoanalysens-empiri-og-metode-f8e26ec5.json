@@ -1,0 +1,126 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:18:25Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5"
+    ],
+    "dependency_hashes": {
+      "source_file": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+    "lecture_key": "W05L1",
+    "title": "9. Psykoanalysens empiri og metode",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/9. Psykoanalysens empiri og metode.pdf",
+    "source_exists": true,
+    "source_sha256": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
+    "length_band": "long",
+    "page_count": 57,
+    "estimated_token_count": 7744,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "Fungerer som en metodologisk og epistemologisk afrunding af det psykoanalytiske forløb, der retfærdiggør teorien videnskabsteoretisk (Ricoeur) og kritisk evaluerer den gennem casestudier (Dora).",
+    "source_role": "Forelæsningsslides, der rammesætter de primære og sekundære tekster (Freud, Ricoeur, McWilliams, Gammelgaard) og strukturerer undervisningen omkring psykoanalysens epistemologi og forsvarsmekanismer.",
+    "relation_to_lecture": "Adresserer direkte, hvordan psykoanalysen producerer og validerer viden, samt hvordan dens metoder udspiller sig i den kliniske virkelighed (på godt og ondt).",
+    "central_claims": [
+      {
+        "claim": "Psykoanalysen er både en behandlingsform og en videnskabelig undersøgelse i en og samme proces, hvor teorien er en kodificering af det kliniske møde.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psykoanalysens sandhedsbegreb bygger ikke på en korrespondanceteori, men på sprog, intersubjektivitet, psykisk realitet og narrativitet.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Forsvarsmekanismer begynder som uundgåelige, adaptive måder at opleve verden på, og fraværet af modne forsvar karakteriserer psykotiske og borderline strukturer.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freuds egen kliniske praksis, som set i Dora-casen, levede ofte ikke op til hans teoretiske anbefalinger og var stærkt farvet af hans egen tids patriarkalske normer.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Forsvarsmekanismer",
+        "definition": "Ubevidste psykologiske mekanismer, som mindsker angst, og hvis sammensætning er nøglen til at forstå et menneskes personlighed.",
+        "role": "Centralt for at forstå, hvordan psyken beskytter sig selv, og udgør kernen i den psykoanalytiske modstand, som terapien arbejder med."
+      },
+      {
+        "term": "Nachträglichkeit (Efterlods virkning)",
+        "definition": "Det fænomen, at tidligere hændelser eller indtryk først får deres fulde mening og virkning (ofte traumatisk) på et senere tidspunkt i lyset af nye erfaringer.",
+        "role": "Forklarer traumets tidslighed i psykoanalysen og viser, at hukommelse er en aktiv, rekonstruktiv proces."
+      },
+      {
+        "term": "Psykisk realitet",
+        "definition": "Subjektets indre virkelighed, ofte drevet af fantasier, som er delvist løsrevet fra den ydre, materielle virkelighed.",
+        "role": "Udgør det egentlige genstandsfelt for psykoanalysen i modsætning til naturvidenskabernes observerbare fakta."
+      },
+      {
+        "term": "Projektiv identifikation",
+        "definition": "En forsvarsmekanisme, hvor en person projicerer ubehagelige tilstande over i en anden person, men samtidig ubevidst presser denne person til at føle og agere i overensstemmelse med projektionen.",
+        "role": "Vigtig for at forstå komplekse overføringsrelationer, især ved psykotisk og borderline struktur, men også i almindelige relationer."
+      },
+      {
+        "term": "Udageren (Acting out)",
+        "definition": "At udtrykke ubevidste og ubærlige følelser eller overføringsholdninger gennem adfærd, fordi de endnu ikke kan rummes i sproget.",
+        "role": "Synliggør modstand i 'the talking cure' ved at erstatte erindring og tale med handling."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Primære vs. Sekundære forsvarsmekanismer",
+        "summary": "Primære (primitive) forsvar relaterer sig til grænsen mellem selvet og omverdenen (f.eks. benægtelse, omnipotens), mens sekundære (modne) forsvar håndterer indre grænser mellem f.eks. ego, id og overjeg.",
+        "stakes": "Afgørende for at vurdere en persons udviklingspsykologiske niveau og personlighedsstruktur (neurotisk vs. borderline/psykotisk)."
+      },
+      {
+        "label": "Psykisk realitet vs. Empirisk faktum",
+        "summary": "Observatørvidenskaber fokuserer på materielle fakta, mens psykoanalysen fokuserer på, hvad et subjekt 'gør ud af sine fantasier' (den psykiske realitet).",
+        "stakes": "Legitimerer psykoanalysen som en hermeneutisk humanvidenskab frem for en naturvidenskab."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At en psykoanalytisk 'sandhed' svarer til en naturvidenskabelig, objektiv sandhed, snarere end en narrativ, kohærent sandhed i den kliniske relation.",
+      "At Freuds egne casestudier er perfekte repræsentationer af hans teori; de viser tværtimod ofte hans fejltrin og blinde vinkler (f.eks. manglende lydhørhed over for kvindelig seksualitet).",
+      "At paranoia udelukkende er simpel mistænksomhed, når det psykoanalytisk forstås som en ondartet form for projektion."
+    ],
+    "quote_targets": [
+      {
+        "target": "Psychoanalysis is essentially a struggle against resistances.",
+        "why": "Opsummerer grundkernen i det psykoanalytiske behandlingsarbejde ifølge Ricoeur."
+      },
+      {
+        "target": "the psychoanalytic “fact,” with its fourfold nature of being able to be said, to be addressed to another person, to be fantasized, figured, or symbolized, and to be recounted in the story of a life.",
+        "why": "Ricoeurs præcise opsummering af de fire kriterier for sandhed i psykoanalysen (Sprog, intersubjektivitet, psykisk realitet, narrativitet)."
+      },
+      {
+        "target": "We can go quite far in psychoanalysis by embracing not Freud’s personal example but his recommendations...",
+        "why": "Illustrerer Finks pointe om diskrepansen mellem Freuds teoretiske genialitet og hans ofte mangelfulde kliniske praksis."
+      }
+    ],
+    "grounding_notes": [
+      "Mange af de konceptuelle definitioner trækkes direkte fra citerede værker i sliddet (McWilliams, Ricoeur, Gammelgaard, Fink). Forelæserens egne udtalelser er rammesættende."
+    ],
+    "warnings": [
+      "Sliddet blander engelske og danske citater."
+    ]
+  }
+}

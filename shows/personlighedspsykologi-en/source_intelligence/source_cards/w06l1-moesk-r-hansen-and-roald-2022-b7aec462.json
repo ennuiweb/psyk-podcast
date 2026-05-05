@@ -1,0 +1,117 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:20:46Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l1-moesk-r-hansen-and-roald-2022-b7aec462"
+    ],
+    "dependency_hashes": {
+      "source_file": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+    "lecture_key": "W06L1",
+    "title": "Moeskær Hansen & Roald (2022)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
+    "source_exists": true,
+    "source_sha256": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
+    "length_band": "long",
+    "page_count": 26,
+    "estimated_token_count": 17946,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "Provides a contemporary phenomenological psychological analysis of aesthetic empathy, explicitly building upon and refining Theodor Lipps's classical aesthetic theory to emphasize co-constitution and intersubjectivity.",
+    "source_role": "Serves as an empirical and methodological exemplar of phenomenological psychology (Giorgi's descriptive method) applied to the study of emotion and aesthetics.",
+    "relation_to_lecture": "Supports the lecture on phenomenology (W06L1) by demonstrating how qualitative phenomenological methods (interviews, meaning units, imaginative variation) are practically used to derive an essential psychological structure.",
+    "central_claims": [
+      {
+        "claim": "Aesthetic empathy is an inherently intersubjective experience where the spectator partakes in and shares feelings expressed in the work of art.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The structure of aesthetic empathy consists of five core constituents: experience of a foreign subjective sense, reliving and affective adherence, interiorisation, pleasure in sharing, and affective understanding.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Aesthetic empathy resists reduction to mere projection; it is instead a process of co-constitution where the subject engages with a distinct sense of 'otherness'.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Theodor Lipps's theory of aesthetic empathy, which divides empathy into basic and sympathetic layers, serves as a foundational but phenomenologically vague precursor to modern descriptions of aesthetic empathy.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Aesthetic Empathy",
+        "definition": "An intersubjective experience in which a spectator engages with a work of art, experiencing a foreign subjective sense and joyfully partaking in reliving, sharing, and understanding.",
+        "role": "The central phenomenon of the paper, demonstrating how aesthetic encounters involve deeply felt emotional and participatory engagement."
+      },
+      {
+        "term": "Interiorisation",
+        "definition": "An act through which the expressive features of a painting obtain an affective and bodily felt existence within the spectator, moving beyond external depiction to bodily sensuous presence.",
+        "role": "Explains the psychological mechanism of how external artistic expressions become internally felt reality for the spectator."
+      },
+      {
+        "term": "Affective Understanding",
+        "definition": "A form of clarification where the artwork's affective sense is understood through internal actualization rather than merely a shift in attention.",
+        "role": "Highlights that empathetic comprehension in art is primarily an emotional, lived insight rather than an intellectual deduction."
+      },
+      {
+        "term": "Co-constitution",
+        "definition": "The relational process where aesthetic experience is formed jointly by the demands of the art object and the formgiving practice/affective adherence of the subject.",
+        "role": "Differentiates aesthetic empathy from 'projectivism', establishing the interaction as an authentic encounter with 'otherness'."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Projection vs. Co-constitution",
+        "summary": "Projection sees empathy as echoing one's own voice in the object, whereas co-constitution views it as a relational act between the artwork's demands and the spectator's bodily affective being.",
+        "stakes": "Crucial for defending aesthetic empathy as a genuine encounter with an 'Other' rather than a narcissistic or purely subjective illusion."
+      },
+      {
+        "label": "Basic Empathy vs. Sympathetic Empathy (Lipps)",
+        "summary": "Basic empathy is the spontaneous experience of activity in an object, while sympathetic empathy occurs when this demanded activity is evaluated positively, leading to feelings of freedom, pleasure, and harmonious reliving.",
+        "stakes": "Provides the historical-theoretical framework to show how general perceptual empathy transforms into a specifically aesthetic, life-affirming experience."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might confuse aesthetic empathy with simple emotional contagion or projection, missing the authors' emphasis on 'otherness' and the foreign subjective origin of the feeling.",
+      "Students might underestimate the methodological rigor of phenomenological psychology, mistaking the structural description for mere literary analysis rather than a systematic extraction via eidetic variation."
+    ],
+    "quote_targets": [
+      {
+        "target": "Qualifying as co-constitution, our description resists the reduction of aesthetic empathy to a matter of projection",
+        "why": "Directly summarizes the paper's theoretical stance on the nature of empathy against historical projectivist critiques."
+      },
+      {
+        "target": "The core aspects of this structure were experience of a foreign subjective sense, reliving and affective adherence, interiorisation, pleasure in sharing, and affective understanding.",
+        "why": "Provides the definitive, concise five-part structure of aesthetic empathy uncovered by the study."
+      }
+    ],
+    "grounding_notes": [
+      "The empirical claims regarding the structure of aesthetic empathy are grounded in a small qualitative phenomenological study of 11 informants (with 5 fully analyzed interviews).",
+      "Connections to the specific lecture context (W06L1) are inferred from metadata indicating its placement in the phenomenology week."
+    ],
+    "warnings": [
+      "The text uses specialized phenomenological terminology (e.g., 'noematic clues', 'imaginative variation', 'eidetic analysis') which may require additional scaffolding for students to fully grasp."
+    ]
+  }
+}

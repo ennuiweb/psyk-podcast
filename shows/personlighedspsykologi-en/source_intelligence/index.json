@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T10:36:57Z",
+  "generated_at": "2026-05-05T11:34:48Z",
   "build_inputs": {
     "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
     "recursive_dir": "shows/personlighedspsykologi-en/source_intelligence"
@@ -11,11 +11,18 @@
     "lecture_count": 22
   },
   "coverage": {
-    "source_cards": 0,
-    "lecture_substrates": 0,
-    "course_synthesis": 0,
-    "revised_lecture_substrates": 0,
-    "podcast_substrates": 0
+    "source_cards": 9,
+    "lecture_substrates": 2,
+    "course_synthesis": 1,
+    "revised_lecture_substrates": 2,
+    "podcast_substrates": 2
+  },
+  "course_synthesis": {
+    "scope": "partial",
+    "lecture_keys": [
+      "W05L1",
+      "W06L1"
+    ]
   },
   "complete": {
     "source_cards": false,

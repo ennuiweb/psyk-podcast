@@ -67,6 +67,10 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def format_error(exc: Exception) -> str:
+    return f"{type(exc).__name__}: {exc}"
+
+
 def display_path(path: Path, repo_root: Path) -> str:
     try:
         return str(path.resolve().relative_to(repo_root.resolve()))
@@ -101,6 +105,10 @@ def signature_for_source_records(sources: list[dict[str, Any]]) -> str:
         if source_hash:
             hashes.append(source_hash)
     return sha256_bytes("\n".join(hashes).encode("utf-8"))
+
+
+def count_error_results(results: list[dict[str, Any]]) -> int:
+    return sum(1 for item in results if item.get("status") in {"error", "missing_local_file"})
 
 
 def normalize_lecture_keys(raw: str | list[str] | tuple[str, ...] | None) -> list[str]:
@@ -561,6 +569,7 @@ def build_source_cards(
     force: bool = False,
     skip_existing: bool = True,
     dry_run: bool = False,
+    continue_on_error: bool = False,
     model: str = DEFAULT_GEMINI_PREPROCESSING_MODEL,
     backend: GeminiPreprocessingBackend | None = None,
     json_generator: JsonGenerator | None = None,
@@ -577,6 +586,17 @@ def build_source_cards(
             results.append({"source_id": source_id, "status": "missing_source"})
             continue
         source_path = source_file_path(subject_root, source)
+        if not source_path.exists() or not source_path.is_file():
+            item = {
+                "source_id": source_id,
+                "status": "missing_local_file",
+                "source_path": str(source_path),
+                "error": f"source file not found: {source_path}",
+            }
+            if dry_run or continue_on_error:
+                results.append(item)
+                continue
+            raise RuntimeError(str(item["error"]))
         if output_path.exists() and skip_existing and not force:
             if source_card_is_fresh(
                 path=output_path,
@@ -593,17 +613,30 @@ def build_source_cards(
         if dry_run:
             results.append({"source_id": source_id, "status": "planned", "source_path": str(source_path)})
             continue
-        artifact = build_source_card_for_source(
-            repo_root=repo_root,
-            subject_root=subject_root,
-            source=source,
-            source_catalog_path=source_catalog_path,
-            policy_path=policy_path,
-            source_card_dir=source_card_dir,
-            model=model,
-            backend=backend,
-            json_generator=json_generator,
-        )
+        try:
+            build_source_card_for_source(
+                repo_root=repo_root,
+                subject_root=subject_root,
+                source=source,
+                source_catalog_path=source_catalog_path,
+                policy_path=policy_path,
+                source_card_dir=source_card_dir,
+                model=model,
+                backend=backend,
+                json_generator=json_generator,
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            results.append(
+                {
+                    "source_id": source_id,
+                    "status": "error",
+                    "source_path": str(source_path),
+                    "error": format_error(exc),
+                }
+            )
+            continue
         results.append({"source_id": source_id, "status": "written", "output_path": str(output_path)})
     return {
         "selected_count": len(selected),
@@ -611,6 +644,7 @@ def build_source_cards(
         "skipped_count": sum(1 for item in results if item["status"].startswith("skipped")),
         "missing_count": sum(1 for item in results if item["status"] == "missing_source"),
         "planned_count": sum(1 for item in results if item["status"].startswith("planned")),
+        "error_count": count_error_results(results),
         "results": results,
     }
 
@@ -840,6 +874,7 @@ def build_lecture_substrates(
     force: bool = False,
     skip_existing: bool = True,
     dry_run: bool = False,
+    continue_on_error: bool = False,
     model: str = DEFAULT_GEMINI_PREPROCESSING_MODEL,
     backend: GeminiPreprocessingBackend | None = None,
     json_generator: JsonGenerator | None = None,
@@ -864,24 +899,38 @@ def build_lecture_substrates(
         if dry_run:
             results.append({"lecture_key": lecture_key, "status": "planned", "output_path": str(output_path)})
             continue
-        build_lecture_substrate_for_lecture(
-            repo_root=repo_root,
-            subject_root=subject_root,
-            lecture_key=lecture_key,
-            lecture_bundle_dir=lecture_bundle_dir,
-            source_card_dir=source_card_dir,
-            lecture_substrate_dir=lecture_substrate_dir,
-            source_catalog_path=source_catalog_path,
-            model=model,
-            backend=backend,
-            json_generator=json_generator,
-        )
+        try:
+            build_lecture_substrate_for_lecture(
+                repo_root=repo_root,
+                subject_root=subject_root,
+                lecture_key=lecture_key,
+                lecture_bundle_dir=lecture_bundle_dir,
+                source_card_dir=source_card_dir,
+                lecture_substrate_dir=lecture_substrate_dir,
+                source_catalog_path=source_catalog_path,
+                model=model,
+                backend=backend,
+                json_generator=json_generator,
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            results.append(
+                {
+                    "lecture_key": lecture_key,
+                    "status": "error",
+                    "output_path": str(output_path),
+                    "error": format_error(exc),
+                }
+            )
+            continue
         results.append({"lecture_key": lecture_key, "status": "written", "output_path": str(output_path)})
     return {
         "selected_count": len(lecture_keys),
         "written_count": sum(1 for item in results if item["status"] == "written"),
         "skipped_count": sum(1 for item in results if item["status"].startswith("skipped")),
         "planned_count": sum(1 for item in results if item["status"].startswith("planned")),
+        "error_count": count_error_results(results),
         "results": results,
     }
 
@@ -1174,6 +1223,7 @@ def build_revised_lecture_substrates(
     force: bool = False,
     skip_existing: bool = True,
     dry_run: bool = False,
+    continue_on_error: bool = False,
     model: str = DEFAULT_GEMINI_PREPROCESSING_MODEL,
     backend: GeminiPreprocessingBackend | None = None,
     json_generator: JsonGenerator | None = None,
@@ -1196,21 +1246,35 @@ def build_revised_lecture_substrates(
         if dry_run:
             results.append({"lecture_key": lecture_key, "status": "planned", "output_path": str(output_path)})
             continue
-        build_revised_lecture_substrate_for_lecture(
-            lecture_key=lecture_key,
-            lecture_substrate_dir=lecture_substrate_dir,
-            course_synthesis_path=course_synthesis_path,
-            revised_lecture_substrate_dir=revised_lecture_substrate_dir,
-            model=model,
-            backend=backend,
-            json_generator=json_generator,
-        )
+        try:
+            build_revised_lecture_substrate_for_lecture(
+                lecture_key=lecture_key,
+                lecture_substrate_dir=lecture_substrate_dir,
+                course_synthesis_path=course_synthesis_path,
+                revised_lecture_substrate_dir=revised_lecture_substrate_dir,
+                model=model,
+                backend=backend,
+                json_generator=json_generator,
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            results.append(
+                {
+                    "lecture_key": lecture_key,
+                    "status": "error",
+                    "output_path": str(output_path),
+                    "error": format_error(exc),
+                }
+            )
+            continue
         results.append({"lecture_key": lecture_key, "status": "written", "output_path": str(output_path)})
     return {
         "selected_count": len(lecture_keys),
         "written_count": sum(1 for item in results if item["status"] == "written"),
         "skipped_count": sum(1 for item in results if item["status"].startswith("skipped")),
         "planned_count": sum(1 for item in results if item["status"].startswith("planned")),
+        "error_count": count_error_results(results),
         "results": results,
     }
 
@@ -1370,6 +1434,7 @@ def build_podcast_substrates(
     force: bool = False,
     skip_existing: bool = True,
     dry_run: bool = False,
+    continue_on_error: bool = False,
     model: str = DEFAULT_GEMINI_PREPROCESSING_MODEL,
     backend: GeminiPreprocessingBackend | None = None,
     json_generator: JsonGenerator | None = None,
@@ -1394,24 +1459,38 @@ def build_podcast_substrates(
         if dry_run:
             results.append({"lecture_key": lecture_key, "status": "planned", "output_path": str(output_path)})
             continue
-        build_podcast_substrate_for_lecture(
-            lecture_key=lecture_key,
-            source_card_dir=source_card_dir,
-            lecture_bundle_dir=lecture_bundle_dir,
-            revised_lecture_substrate_dir=revised_lecture_substrate_dir,
-            course_synthesis_path=course_synthesis_path,
-            podcast_substrate_dir=podcast_substrate_dir,
-            source_weighting_path=source_weighting_path,
-            model=model,
-            backend=backend,
-            json_generator=json_generator,
-        )
+        try:
+            build_podcast_substrate_for_lecture(
+                lecture_key=lecture_key,
+                source_card_dir=source_card_dir,
+                lecture_bundle_dir=lecture_bundle_dir,
+                revised_lecture_substrate_dir=revised_lecture_substrate_dir,
+                course_synthesis_path=course_synthesis_path,
+                podcast_substrate_dir=podcast_substrate_dir,
+                source_weighting_path=source_weighting_path,
+                model=model,
+                backend=backend,
+                json_generator=json_generator,
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            results.append(
+                {
+                    "lecture_key": lecture_key,
+                    "status": "error",
+                    "output_path": str(output_path),
+                    "error": format_error(exc),
+                }
+            )
+            continue
         results.append({"lecture_key": lecture_key, "status": "written", "output_path": str(output_path)})
     return {
         "selected_count": len(lecture_keys),
         "written_count": sum(1 for item in results if item["status"] == "written"),
         "skipped_count": sum(1 for item in results if item["status"].startswith("skipped")),
         "planned_count": sum(1 for item in results if item["status"].startswith("planned")),
+        "error_count": count_error_results(results),
         "results": results,
     }
 
@@ -1513,21 +1592,25 @@ def build_recursive_index(
 
     course_synthesis_path = recursive_dir / "course_synthesis.json"
     course_synthesis_present = False
+    course_synthesis_scope = ""
+    course_synthesis_lecture_keys: list[str] = []
     course_synthesis_errors: list[str] = []
     if course_synthesis_path.exists() and course_synthesis_path.is_file():
         try:
             course_synthesis = validate_course_synthesis(load_json(course_synthesis_path))
             course_synthesis_present = True
+            course = course_synthesis.get("course", {}) if isinstance(course_synthesis.get("course"), dict) else {}
+            course_synthesis_scope = str(course.get("scope") or "").strip()
             dependencies = course_synthesis.get("provenance", {}).get("dependency_hashes", {})
             if dependencies.get("source_catalog") != catalog_hash:
                 stale_artifacts.append(f"{display_path(course_synthesis_path, repo_root)}: source_catalog")
-            synthesis_lecture_keys = [
+            course_synthesis_lecture_keys = [
                 canonicalize_lecture_key(str(item or ""))
-                for item in (course_synthesis.get("course", {}) or {}).get("lecture_keys", [])
+                for item in course.get("lecture_keys", [])
             ]
-            synthesis_lecture_keys = [item for item in synthesis_lecture_keys if item]
+            course_synthesis_lecture_keys = [item for item in course_synthesis_lecture_keys if item]
             synthesis_signature = signature_for_files(
-                [_lecture_substrate_path(lecture_substrate_dir, key) for key in synthesis_lecture_keys]
+                [_lecture_substrate_path(lecture_substrate_dir, key) for key in course_synthesis_lecture_keys]
             )
             if dependencies.get("lecture_substrates_signature") != synthesis_signature:
                 stale_artifacts.append(f"{display_path(course_synthesis_path, repo_root)}: lecture_substrates_signature")
@@ -1590,10 +1673,18 @@ def build_recursive_index(
             "revised_lecture_substrates": revised_count,
             "podcast_substrates": podcast_count,
         },
+        "course_synthesis": {
+            "scope": course_synthesis_scope,
+            "lecture_keys": course_synthesis_lecture_keys,
+        },
         "complete": {
             "source_cards": source_card_count == len(expected_source_ids),
             "lecture_substrates": lecture_count == len(lecture_keys),
-            "course_synthesis": course_synthesis_present,
+            "course_synthesis": (
+                course_synthesis_present
+                and course_synthesis_scope == "full"
+                and course_synthesis_lecture_keys == lecture_keys
+            ),
             "revised_lecture_substrates": revised_count == len(lecture_keys),
             "podcast_substrates": podcast_count == len(lecture_keys),
         },

@@ -1,0 +1,106 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:15:34Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-gammelgaard-2010-e6baff8b"
+    ],
+    "dependency_hashes": {
+      "source_file": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+    "lecture_key": "W05L1",
+    "title": "Gammelgaard (2010)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf",
+    "source_exists": true,
+    "source_sha256": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 32,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "Defends the scientific validity of psychoanalysis from a hermeneutic, phenomenological, and epistemological perspective, heavily drawing on Paul Ricoeur's philosophy of science.",
+    "source_role": "Serves as a core theoretical text for understanding the specific methodological and empirical foundation of psychoanalytic case studies.",
+    "relation_to_lecture": "Directly addresses the lecture's focus on 'Empiri og metode i psykoanalysen' by outlining exactly how psychoanalysis collects, conceptualizes, and validates its data.",
+    "central_claims": [
+      {
+        "claim": "Psychoanalysis has its own unique form of empirical data, where clinical treatment and research are largely intertwined and inseparable.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalytic empiricism is defined by four criteria proposed by Paul Ricoeur: the spoken word, intentionality (directing speech at someone), psychic reality, and narrative history.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalysis cannot be validated using the exact sciences' correspondence principle of objective truth, but instead relies on narrative coherence, self-reflection, and relational meaning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Psykoanalysens empiri (Psychoanalytic empiricism)",
+        "definition": "The systematization of what occurs in the psychoanalytic situation, strictly bound by language, intentionality, psychic reality, and narrative form.",
+        "role": "Defines the epistemological foundation of psychoanalysis and defends it against positivist critiques of being unscientific."
+      },
+      {
+        "term": "Psykisk realitet (Psychic reality)",
+        "definition": "The inner subjective reality formed by fantasies, unconscious wishes, and personal meanings, as opposed to objective external material reality.",
+        "role": "Constitutes the primary object of study in psychoanalytic research and practice, framing patient narratives not as objective facts but as psychological truths."
+      },
+      {
+        "term": "Den fortalte historie (The narrated history / Case study)",
+        "definition": "The case story or narrative format through which psychoanalytic empirical data is structured, understood, and communicated.",
+        "role": "Explains how fragmented clinical experiences and patient memories are transformed into coherent scientific knowledge and theoretical validation."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Exact sciences vs. Psychoanalysis",
+        "summary": "Exact sciences rely on objectifiable data and correspondence principles, whereas psychoanalysis relies on subjective meaning, intersubjectivity, and narrative coherence.",
+        "stakes": "Defends psychoanalysis against critiques of being unscientific (e.g., by Karl Popper or Adolf Grünbaum) by asserting that humane sciences require different epistemological criteria."
+      },
+      {
+        "label": "Material reality vs. Psychic reality",
+        "summary": "Material reality consists of objective external events; psychic reality is the subject's internal experience and fantasy regarding those events.",
+        "stakes": "Clarifies that psychoanalysis investigates internal subjective truth, making criteria of external objective verification less relevant for psychoanalytic validation."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming psychoanalysis lacks empirical data entirely, rather than understanding that it has a fundamentally different definition of what constitutes empirical data.",
+      "Thinking the analyst objectively observes the patient from a distance, ignoring the intersubjective, communicative, and language-bound nature of the psychoanalytic situation."
+    ],
+    "quote_targets": [
+      {
+        "target": "Psykoanalysen har sin egen empiri, hvad angår såvel behandling som forskning, og den har som sagt det særkende, at behandling og forskning til en vis grad falder sammen.",
+        "why": "Summarizes the core thesis that clinical work and research are epistemologically inseparable in psychoanalysis."
+      },
+      {
+        "target": "For at indkredse psykoanalysens empiri har vi betjent os af fire kriterier: 1) det talte ord, 2) henvendelsen eller intentionaliteten, 3) det, som har psykisk virkelighed, og endelig 4) det, der kan fortælles som en historie.",
+        "why": "Provides a clear summary of Paul Ricoeur's four criteria for psychoanalytic empiricism, essential for exam definitions."
+      }
+    ],
+    "grounding_notes": [
+      "Claims are directly extracted from the author's synthesis of Paul Ricoeur's epistemology and Sigmund Freud's clinical methodology."
+    ],
+    "warnings": [
+      "The OCR includes the end of Chapter 20 and the beginning of Chapter 22; this analysis strictly limits itself to Chapter 21 ('Psykoanalysens empiri')."
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:16:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-ricoeur-1981-19a5343f"
+    ],
+    "dependency_hashes": {
+      "source_file": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-ricoeur-1981-19a5343f",
+    "lecture_key": "W05L1",
+    "title": "Ricoeur (1981)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
+    "source_exists": true,
+    "source_sha256": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
+    "length_band": "long",
+    "page_count": 27,
+    "estimated_token_count": 19569,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "Provides a philosophical and epistemological defense of psychoanalysis as a unique science that operates between hermeneutics (interpretation of meaning) and energetics (causal explanations of force).",
+    "source_role": "Serves as a foundational text for understanding the specific methodology and criteria for 'proof' in clinical psychoanalysis.",
+    "relation_to_lecture": "Directly addresses the lecture's core problem (W05L1: Empiri og metode i psykoanalysen) by outlining exactly how psychoanalysis gathers empirical data ('facts') and verifies its theoretical claims without relying on natural-science positivism.",
+    "central_claims": [
+      {
+        "claim": "The epistemological 'facts' of psychoanalysis are not observable behaviors, but rather 'reports' characterized by being sayable, addressed to another, grounded in psychical reality, and capable of forming a narrative.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freudian psychoanalysis necessarily combines two models: a hermeneutic model of meaning (textual interpretation) and an economic model of force (handling resistance).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalysis should not be reduced purely to a hermeneutic or linguistic discipline, because the economic/energic model is required to explain how human self-alienation causes the psyche to simulate the functioning of a thing.",
+        "grounding": "source-grounded",
+        "confidence": "medium"
+      },
+      {
+        "claim": "Verification in psychoanalysis relies on a cumulative 'synergy of partial and heterogeneous criteria' rather than standard empirical proof, avoiding a vicious circle.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Psychical Reality",
+        "definition": "The realm of unconscious manifestations (like fantasies and substitute objects) that possess a coherence and resistance comparable to material reality, even if they lack a basis in objective historical events.",
+        "role": "Serves as the third criterion for psychoanalytic facts, explaining why the objective 'truth' of a patient's childhood memories is less clinically relevant than the subjective structure of their fantasies."
+      },
+      {
+        "term": "Nachträglichkeit (After-the-event)",
+        "definition": "The phenomenon where early experiences are recast, structuralized, and given pathogenic meaning only after a subsequent new experience or developmental stage.",
+        "role": "Challenges linear causal determinism in memory, emphasizing that analytic work is a complex structuralization and narrative reconstruction."
+      },
+      {
+        "term": "Narrative Intelligibility",
+        "definition": "The process of reorganizing fragmented, incoherent life experiences into a meaningful, followable story.",
+        "role": "Functions as a key validation criterion for psychoanalytic truth claims; therapeutic success is tied to the patient's recovered ability to recount their own history."
+      },
+      {
+        "term": "Transference",
+        "definition": "An 'intermediate region' or 'playground' where the patient repeats repressed materials by addressing their desires to the analyst.",
+        "role": "Provides the intersubjective criterion for psychoanalytic facts, showing that desire is fundamentally addressed to another person."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Meaning vs. Force",
+        "summary": "The distinction between the investigatory procedure (which treats symptoms as texts to be deciphered for meaning) and the method of treatment (which handles resistances as a system of forces).",
+        "stakes": "Highlights the dual nature of psychoanalytic theory, which must integrate both hermeneutic (meaning) and energetic (force) metaphors to accurately reflect clinical practice."
+      },
+      {
+        "label": "Motive vs. Cause",
+        "summary": "The semantic dichotomy between reasons for action (motives) and constant antecedents of natural events (causes), which Ricoeur argues is deliberately blurred in psychoanalysis.",
+        "stakes": "Shows how unconscious feelings act as 'causally relevant factors' to explain incongruities in behavior, proving psychoanalysis cannot simply adopt the ordinary philosophy of action."
+      },
+      {
+        "label": "Material Reality vs. Psychical Reality",
+        "summary": "The difference between observable historical/physical events and the internal, structured world of fantasies and abandoned objects.",
+        "stakes": "Shifts the standard of 'facts' away from empirical observation toward the patient's subjective construction of meaning."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might mistakenly think psychoanalysis fails as a science because its facts aren't observable behaviors. Ricoeur argues it operates on a different, but valid, epistemological standard of 'reports' and 'narrativity'.",
+      "Students might believe validation in psychoanalysis is entirely circular or based solely on patient suggestion. Ricoeur defends against this by outlining four distinct, mutually reinforcing criteria of proof.",
+      "Students might conclude Ricoeur completely rejects Freud's 'economic/energic' model in favor of pure narrative. He explicitly defends the economic model as necessary to explain psychological self-alienation."
+    ],
+    "quote_targets": [
+      {
+        "target": "what is psychoanalytically relevant is what a subject makes of his fantasies.",
+        "why": "Succinctly captures the shift from observable material facts to psychical reality."
+      },
+      {
+        "target": "the validation apt to confirm the truth claim belonging to the domain of psychoanalytic facts is an extremely complex process which is based on the synergy of partial and heterogeneous criteria.",
+        "why": "Summarizes Ricoeur's ultimate answer to the question of proof and verification in psychoanalysis."
+      },
+      {
+        "target": "the patient is both the actor and the critic of a history which he is at first unable to recount.",
+        "why": "Illustrates the role of narrativity and 'working through' in the therapeutic process."
+      }
+    ],
+    "grounding_notes": [
+      "The text draws heavily on philosophy of science and hermeneutics, directly critiquing Habermas and referencing thinkers like Lacan and Sherwood.",
+      "The source assumes familiarity with Freudian metapsychology (e.g., economic model, topography, repression)."
+    ],
+    "warnings": [
+      "The philosophical terminology ('saying-true', 'Selbstreflexion', 'Dichtung und Wahrheit') is dense and may require scaffolding during the lecture."
+    ]
+  }
+}

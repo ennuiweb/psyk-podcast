@@ -271,6 +271,10 @@ Recursive preprocessing implementation:
   `scripts/build_personlighedspsykologi_recursive_source_intelligence.py`,
   with `--lectures`, `--all`, `--dry-run`, `--skip-existing`, `--force`, and
   `--fail-on-missing-key`.
+- For safer live runs, use `--stop-after source-cards` for the first pass,
+  inspect source cards, then resume with `--start-at lecture-substrates`.
+  `--continue-on-error` collects item-level failures inside a stage and then
+  blocks downstream work.
 - The wrapper runs a small Gemini JSON preflight before live source uploads;
   use `--preflight-only` to test model/quota access without uploading course
   files.
@@ -286,9 +290,11 @@ Recursive preprocessing implementation:
 - Treat `W05L1`, `W06L1`, one early lecture, and one late lecture as the first
   readiness batch before running all lectures.
 - Current runtime status: the code path is ready and `--preflight-only`
-  succeeds for `gemini-3.1-pro-preview` using the local secret-store key. Real
-  LLM artifacts have not been generated yet; the next gate is the first live
-  `W05L1,W06L1` batch and quality review.
+  succeeds for `gemini-3.1-pro-preview` using the local secret-store key. The
+  first live `W05L1,W06L1` recursive batch has generated source cards,
+  lecture substrates, partial course synthesis, revised lecture substrates,
+  and podcast substrates. The next gate is podcast-output quality testing
+  before scaling.
 
 ## Related docs
 

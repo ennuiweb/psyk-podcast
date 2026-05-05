@@ -1,0 +1,185 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:33:10Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+      "w05l1-ricoeur-1981-19a5343f",
+      "w05l1-gammelgaard-2010-e6baff8b",
+      "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "79da2bfcb95b5e3450e132cf3e6e1f8c6576038111b96c61f1e87ff646b7c3dd",
+      "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3",
+      "source_cards_signature": "2e115df0262df7bbe51529780b12dda6b7d847ef823a2c10569472fb4b0db5c8",
+      "source_weighting": "c3539386af5ffd7f9f42976efa27918dbfab8aa579fb95a426704c94e2fc6f58"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W05L1",
+    "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+    "sequence_index": 9
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "A dialectical epistemological debate framed around a clinical mystery. Host A (pro-measurement/positivism) critiques Freud's bias and lack of 'hard data' in the Dora case, while Host B (pro-hermeneutics) defends 'psychic reality' and narrative coherence as rigorous empirical data using Ricoeur's validation criteria.",
+      "must_cover": [
+        "The epistemological pivot from positivist 3rd-person trait models to hermeneutic interpretation of unconscious meaning.",
+        "Establishing 'Psykisk realitet' (psychic reality) as a scientifically legitimate empirical object distinct from material truth.",
+        "The practical methodological missteps, overdetermination of symptoms, and power dynamics (transference) in Freud's Dora case."
+      ],
+      "avoid": [
+        "Getting bogged down in Ricoeur's abstract philosophical vocabulary without tethering it to Gammelgaard's synthesis.",
+        "Presenting psychoanalysis merely as an outdated historical artifact rather than an active, viable epistemological challenge to mainstream positivist psychology.",
+        "Confusing 'anti-scientistic' (rejecting narrow observability) with 'anti-scientific'."
+      ],
+      "grounding": [
+        "Constantly ground the discussion of hermeneutic criteria in the clinical reality and symptom puzzle of the Dora case.",
+        "Use Gammelgaard's 4 criteria (speech, intentionality, psychic reality, narrative) to structure Ricoeur's complex claims."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w05l1-ricoeur-1981-19a5343f",
+        "angle": "The philosophical defense of psychoanalysis. Focus on how facts are not observable behaviors but narrative 'reports' verified by a synergy of criteria.",
+        "must_cover": [
+          "The necessity of combining the hermeneutic model of meaning with the economic model of force.",
+          "Verification relying on a cumulative synergy of partial criteria rather than standard empirical proof."
+        ],
+        "avoid": [
+          "Over-explaining the dense philosophical critique of Habermas; keep focus on what makes a psychoanalytic fact valid."
+        ]
+      },
+      {
+        "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "angle": "The messy clinical application. Frame this as the primary empirical text demonstrating how psychoanalytic data is gathered and interpreted.",
+        "must_cover": [
+          "The concepts of somatic compliance and overdetermination of hysterical symptoms.",
+          "The discovery and mishandling of transference.",
+          "The distinction between primary and secondary gain from illness."
+        ],
+        "avoid": [
+          "Presenting Dora's case as a completed success; highlight that it was a fragment broken off due to Freud's failure to master the transference."
+        ]
+      },
+      {
+        "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+        "angle": "The pedagogical bridge. Use this to cleanly define psychoanalytic empiricism for a student audience.",
+        "must_cover": [
+          "Psychoanalytic empiricism is defined by four criteria: the spoken word, intentionality, psychic reality, and narrative history.",
+          "Validation relies on narrative coherence and relational meaning rather than objective correspondence."
+        ],
+        "avoid": [
+          "Treating Gammelgaard as entirely separate from Ricoeur; explicitly frame her text as the accessible synthesis of Ricoeur's framework."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "angle": "The classroom synthesis on defense mechanisms and structural pathology.",
+        "must_cover": [
+          "Psychoanalysis as simultaneously a treatment form and a scientific investigation.",
+          "How defense mechanisms start as adaptive and how their maturity defines personality structure (neurotic vs. borderline/psychotic).",
+          "Freud's clinical practice in the Dora case often contradicting his theoretical ideals due to patriarchal norms."
+        ],
+        "avoid": [
+          "Getting lost in the myriad of defense mechanisms; focus on how they operate as 'resistance' in the collection of empirical data."
+        ]
+      },
+      {
+        "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+        "angle": "The practical method of psychoanalytic listening.",
+        "must_cover": [
+          "The distinction between being 'anti-scientistic' (rejecting reductive positivism) and 'anti-scientific'.",
+          "Psychoanalytic empirical data isn't the literal words, but the meaning and intention behind them (form vs. content).",
+          "The verification problem of reasoning backwards from interpretation to cause."
+        ],
+        "avoid": [
+          "Detailing the specific dictaphone/urine clinical example too heavily; stick to the methodological takeaway of 'how to listen'."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "A quick, punchy explainer on why 'Psychic Reality' matters just as much as 'Material Truth' in psychology.",
+      "must_cover": [
+        "The difference between material reality (what objectively happened) and psychic reality (how the subject internalizes and structuralizes it as a fantasy).",
+        "Why psychoanalysis requires a different kind of empirical evidence (narrative coherence) than trait psychology."
+      ],
+      "avoid": [
+        "Detailed historical overviews of Freud's life; keep it strictly conceptual and epistemological."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Psykisk realitet (Psychic Reality)",
+        "role": "The core epistemological object of psychoanalysis; validates subjective, unconscious inner worlds as legitimate empirical data."
+      },
+      {
+        "concept": "Transference (Overføring)",
+        "role": "Explains how the therapeutic relationship itself becomes empirical data by restaging the patient's history, as seen in the Dora case."
+      },
+      {
+        "concept": "Primary vs. Secondary gain",
+        "role": "Crucial for understanding therapeutic resistance and the motives anchoring neuroses, contrasting internal psychological defense with external practical advantages."
+      },
+      {
+        "concept": "Overdetermination",
+        "role": "Justifies the hermeneutic method of multi-layered interpretation; a single symptom can represent several unconscious processes."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Scientistic vs. Scientific",
+        "stakes": "Defends psychoanalysis against critiques of being unscientific by arguing that demanding directly observable data would destroy the phenomenon of the unconscious."
+      },
+      {
+        "tension": "Material reality vs. Psychic reality",
+        "stakes": "Shifts the standard of 'facts' away from empirical observation toward the patient's subjective construction of meaning, framing the course's interpretive turn."
+      },
+      {
+        "tension": "Meaning vs. Force",
+        "stakes": "Highlights psychoanalysis's dual nature: treating symptoms as texts to decipher (hermeneutics) while handling resistance as a system of energies (economics)."
+      }
+    ],
+    "grounding_notes": [
+      "Ensure definitions of primary/secondary gain explicitly reflect Freud's 1923 internal/external distinction footnote.",
+      "All clinical claims regarding Dora must explicitly anchor back to Freud's text, maintaining the tension between his brilliance and his patriarchal blind spots.",
+      "Ricoeur's criteria for facts must be presented through Gammelgaard's four-part pedagogical breakdown to ensure student comprehension."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w05l1-ricoeur-1981-19a5343f",
+        "priority": "anchor",
+        "why": "Provides the foundational philosophical and epistemological defense of psychoanalysis as a unique science, defining the core debate of the lecture."
+      },
+      {
+        "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "priority": "major",
+        "why": "The primary clinical text (Dora case) demonstrating how theory is applied, how empirical data is gathered, and where methodological failures occur."
+      },
+      {
+        "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+        "priority": "major",
+        "why": "A crucial pedagogical synthesis that translates Ricoeur's dense epistemology into clear, testable criteria for students."
+      },
+      {
+        "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "priority": "supporting",
+        "why": "Connects the epistemological texts to broader personality theory concepts like defense mechanisms and structural pathology."
+      },
+      {
+        "source_id": "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+        "priority": "supporting",
+        "why": "Clarifies the methodological distinction between anti-scientistic and anti-scientific, providing practical listening strategies."
+      }
+    ]
+  }
+}

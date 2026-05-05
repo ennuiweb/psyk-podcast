@@ -20,6 +20,14 @@ from notebooklm_queue.gemini_preprocessing import (
     preflight_gemini_json_generation,
 )
 
+STAGES = [
+    "source-cards",
+    "lecture-substrates",
+    "course-synthesis",
+    "revised-lecture-substrates",
+    "podcast-substrates",
+]
+
 
 def _resolve(path_value: str | Path) -> Path:
     path = Path(path_value).expanduser()
@@ -56,6 +64,23 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--no-skip-existing", dest="skip_existing", action="store_false")
     parser.add_argument("--dry-run", action="store_true", help="Plan work without calling Gemini or writing artifacts.")
     parser.add_argument(
+        "--start-at",
+        choices=STAGES,
+        default=STAGES[0],
+        help="Start the wrapper at this stage; earlier artifacts must already exist.",
+    )
+    parser.add_argument(
+        "--stop-after",
+        choices=STAGES,
+        default=STAGES[-1],
+        help="Stop after this stage; useful for source-card-first quality gates.",
+    )
+    parser.add_argument(
+        "--continue-on-error",
+        action="store_true",
+        help="Collect per-item errors within a batch stage before stopping downstream work.",
+    )
+    parser.add_argument(
         "--preflight-only",
         action="store_true",
         help="Only check that Gemini JSON generation works for the selected model.",
@@ -71,6 +96,14 @@ def _parse_args() -> argparse.Namespace:
 
 def _print_result(payload: dict[str, Any]) -> None:
     print(json.dumps(payload, indent=2, ensure_ascii=False))
+
+
+def _stage_key(stage: str) -> str:
+    return stage.replace("-", "_")
+
+
+def _stage_has_errors(payload: dict[str, Any]) -> bool:
+    return bool(payload.get("error_count", 0)) or payload.get("status") == "error"
 
 
 def main() -> int:
@@ -92,6 +125,10 @@ def main() -> int:
     lecture_keys = _all_lecture_keys(source_catalog_path) if args.all else recursive.normalize_lecture_keys(args.lectures)
     if not lecture_keys:
         raise SystemExit("select --all or --lectures")
+    start_index = STAGES.index(args.start_at)
+    stop_index = STAGES.index(args.stop_after)
+    if stop_index < start_index:
+        raise SystemExit("--stop-after cannot be earlier than --start-at")
     if not args.dry_run and not args.skip_preflight:
         try:
             preflight_gemini_json_generation(model=str(args.model))
@@ -111,68 +148,93 @@ def main() -> int:
         "lecture_keys": lecture_keys,
         "scope": "partial" if partial_scope else "full",
         "dry_run": bool(args.dry_run),
+        "start_at": args.start_at,
+        "stop_after": args.stop_after,
+        "continue_on_error": bool(args.continue_on_error),
         "stages": {},
     }
 
-    results["stages"]["source_cards"] = recursive.build_source_cards(
-        repo_root=REPO_ROOT,
-        subject_root=_resolve(args.subject_root),
-        source_catalog_path=source_catalog_path,
-        policy_path=_resolve(args.policy_path),
-        source_card_dir=source_card_dir,
-        lecture_keys=lecture_keys,
-        force=args.force,
-        skip_existing=args.skip_existing,
-        dry_run=args.dry_run,
-        model=str(args.model),
-    )
-    results["stages"]["lecture_substrates"] = recursive.build_lecture_substrates(
-        repo_root=REPO_ROOT,
-        subject_root=None if args.no_raw_lecture_source_uploads else _resolve(args.subject_root),
-        lecture_keys=lecture_keys,
-        lecture_bundle_dir=_resolve(args.lecture_bundle_dir),
-        source_card_dir=source_card_dir,
-        lecture_substrate_dir=lecture_substrate_dir,
-        source_catalog_path=source_catalog_path,
-        force=args.force,
-        skip_existing=args.skip_existing,
-        dry_run=args.dry_run,
-        model=str(args.model),
-    )
-    results["stages"]["course_synthesis"] = recursive.build_course_synthesis(
-        repo_root=REPO_ROOT,
-        lecture_keys=lecture_keys,
-        lecture_substrate_dir=lecture_substrate_dir,
-        output_path=course_synthesis_path,
-        source_catalog_path=source_catalog_path,
-        force=args.force,
-        dry_run=args.dry_run,
-        partial_scope=partial_scope,
-        model=str(args.model),
-    )
-    results["stages"]["revised_lecture_substrates"] = recursive.build_revised_lecture_substrates(
-        lecture_keys=lecture_keys,
-        lecture_substrate_dir=lecture_substrate_dir,
-        course_synthesis_path=course_synthesis_path,
-        revised_lecture_substrate_dir=revised_dir,
-        force=args.force,
-        skip_existing=args.skip_existing,
-        dry_run=args.dry_run,
-        model=str(args.model),
-    )
-    results["stages"]["podcast_substrates"] = recursive.build_podcast_substrates(
-        lecture_keys=lecture_keys,
-        source_card_dir=source_card_dir,
-        lecture_bundle_dir=_resolve(args.lecture_bundle_dir),
-        revised_lecture_substrate_dir=revised_dir,
-        course_synthesis_path=course_synthesis_path,
-        podcast_substrate_dir=podcast_dir,
-        source_weighting_path=_resolve(args.source_weighting_path),
-        force=args.force,
-        skip_existing=args.skip_existing,
-        dry_run=args.dry_run,
-        model=str(args.model),
-    )
+    stage_calls = {
+        "source-cards": lambda: recursive.build_source_cards(
+            repo_root=REPO_ROOT,
+            subject_root=_resolve(args.subject_root),
+            source_catalog_path=source_catalog_path,
+            policy_path=_resolve(args.policy_path),
+            source_card_dir=source_card_dir,
+            lecture_keys=lecture_keys,
+            force=args.force,
+            skip_existing=args.skip_existing,
+            dry_run=args.dry_run,
+            continue_on_error=args.continue_on_error,
+            model=str(args.model),
+        ),
+        "lecture-substrates": lambda: recursive.build_lecture_substrates(
+            repo_root=REPO_ROOT,
+            subject_root=None if args.no_raw_lecture_source_uploads else _resolve(args.subject_root),
+            lecture_keys=lecture_keys,
+            lecture_bundle_dir=_resolve(args.lecture_bundle_dir),
+            source_card_dir=source_card_dir,
+            lecture_substrate_dir=lecture_substrate_dir,
+            source_catalog_path=source_catalog_path,
+            force=args.force,
+            skip_existing=args.skip_existing,
+            dry_run=args.dry_run,
+            continue_on_error=args.continue_on_error,
+            model=str(args.model),
+        ),
+        "course-synthesis": lambda: recursive.build_course_synthesis(
+            repo_root=REPO_ROOT,
+            lecture_keys=lecture_keys,
+            lecture_substrate_dir=lecture_substrate_dir,
+            output_path=course_synthesis_path,
+            source_catalog_path=source_catalog_path,
+            force=args.force,
+            dry_run=args.dry_run,
+            partial_scope=partial_scope,
+            model=str(args.model),
+        ),
+        "revised-lecture-substrates": lambda: recursive.build_revised_lecture_substrates(
+            lecture_keys=lecture_keys,
+            lecture_substrate_dir=lecture_substrate_dir,
+            course_synthesis_path=course_synthesis_path,
+            revised_lecture_substrate_dir=revised_dir,
+            force=args.force,
+            skip_existing=args.skip_existing,
+            dry_run=args.dry_run,
+            continue_on_error=args.continue_on_error,
+            model=str(args.model),
+        ),
+        "podcast-substrates": lambda: recursive.build_podcast_substrates(
+            lecture_keys=lecture_keys,
+            source_card_dir=source_card_dir,
+            lecture_bundle_dir=_resolve(args.lecture_bundle_dir),
+            revised_lecture_substrate_dir=revised_dir,
+            course_synthesis_path=course_synthesis_path,
+            podcast_substrate_dir=podcast_dir,
+            source_weighting_path=_resolve(args.source_weighting_path),
+            force=args.force,
+            skip_existing=args.skip_existing,
+            dry_run=args.dry_run,
+            continue_on_error=args.continue_on_error,
+            model=str(args.model),
+        ),
+    }
+
+    exit_code = 0
+    for stage in STAGES[start_index : stop_index + 1]:
+        stage_key = _stage_key(stage)
+        try:
+            results["stages"][stage_key] = stage_calls[stage]()
+        except Exception as exc:
+            results["stages"][stage_key] = {"status": "error", "error": recursive.format_error(exc)}
+            results["status"] = "failed"
+            exit_code = 1
+            break
+        if _stage_has_errors(results["stages"][stage_key]):
+            results["status"] = f"blocked_after_{stage_key}"
+            exit_code = 1
+            break
+
     if not args.dry_run:
         results["index"] = recursive.build_recursive_index(
             repo_root=REPO_ROOT,
@@ -182,7 +244,7 @@ def main() -> int:
         )
 
     _print_result(results)
-    return 0
+    return exit_code
 
 
 if __name__ == "__main__":

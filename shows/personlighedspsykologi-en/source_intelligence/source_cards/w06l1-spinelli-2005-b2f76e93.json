@@ -1,0 +1,136 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:24:42Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l1-spinelli-2005-b2f76e93"
+    ],
+    "dependency_hashes": {
+      "source_file": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l1-spinelli-2005-b2f76e93",
+    "lecture_key": "W06L1",
+    "title": "Spinelli (2005)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
+    "source_exists": true,
+    "source_sha256": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
+    "length_band": "long",
+    "page_count": 30,
+    "estimated_token_count": 21887,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "This text provides the foundational philosophical and methodological framework of phenomenological psychology, introducing Husserlian concepts and adapting them for psychological inquiry.",
+    "source_role": "Primary theoretical reading for Week 6 Lecture 1, intended to familiarize students with phenomenological vocabulary (intentionality, epoché, noema/noesis) before applying it to personality and identity.",
+    "relation_to_lecture": "It establishes the core methodology of the phenomenological tradition, setting up the subsequent lecture to explore how human personality is understood not as an objective set of traits, but as a meaning-making process in relation to the world.",
+    "central_claims": [
+      {
+        "claim": "True objective reality remains unknown and unknowable; human beings only experience a phenomenal reality constructed through intentionality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Consciousness is always intentional, meaning it is fundamentally directed towards an object and consists of both a directional element (noema) and a referential element (noesis).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The phenomenological method consists of three interrelated steps: the rule of epoché (bracketing assumptions), the rule of description (prioritizing concrete description over theoretical explanation), and the rule of horizontalization (treating all initial items of experience with equal significance).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The self-conscious 'I' does not exist in straightforward, immediate experience; it only emerges after the fact during reflective experience when we attempt to make sense of what occurred.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Intentionality",
+        "definition": "The fundamental inter-relationship between consciousness and reality, indicating that consciousness is always directed toward or 'of' something.",
+        "role": "Serves as the core foundational rule of phenomenology, explaining how unknown stimuli are translated into an object-based phenomenal reality."
+      },
+      {
+        "term": "Noema",
+        "definition": "The directional element of experience; the 'what' or the object towards which attention is focused.",
+        "role": "Distinguishes the content of an experience from the individual's mode of experiencing it."
+      },
+      {
+        "term": "Noesis",
+        "definition": "The referential element of experience; the 'how' or the mode through which an object is defined, including cognitive and affective biases.",
+        "role": "Explains why two individuals can perceive the exact same object or event (noema) but experience it in vastly different ways."
+      },
+      {
+        "term": "Epoché (Bracketing)",
+        "definition": "The practice of setting aside or suspending initial biases, expectations, and assumptions to focus purely on immediate data.",
+        "role": "Forms the first critical step of the phenomenological method, allowing for a more open and unbiased investigation of experience."
+      },
+      {
+        "term": "Horizontalization",
+        "definition": "The practice of initially treating every item of an experience as having equal value or significance.",
+        "role": "Prevents investigators from imposing premature, skewed hierarchies of importance on the data they observe."
+      },
+      {
+        "term": "Straightforward Experience",
+        "definition": "The action-based, timeless, and ineffable activity of experience itself as it occurs in the 'now', largely devoid of self-consciousness.",
+        "role": "Contrasts with reflective experience to highlight that the conscious 'I' is not the initiator of an experience, but a post-hoc construct."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Objective vs. Phenomenal Reality",
+        "summary": "Objective reality exists independently but is inaccessible; phenomenal reality is the interpreted world we actually experience, shaped by our mental frameworks.",
+        "stakes": "Shifts the psychological focus from trying to access 'true' reality to understanding how meaning is actively constructed by the subject."
+      },
+      {
+        "label": "Noema vs. Noesis",
+        "summary": "Noema is the content of an experience (the object), while noesis is the subjective mode of experiencing it (the attitude).",
+        "stakes": "Demonstrates why experiences are only partially shareable; while humans share invariant structural features, the noetic focus introduces unique variables."
+      },
+      {
+        "label": "Straightforward vs. Reflective Experience",
+        "summary": "Straightforward experience is immediate, action-oriented, and lacks an observing 'I'. Reflective experience is retrospective, relies on time/communication, and generates the self-conscious 'I'.",
+        "stakes": "Challenges the commonsense assumption that the 'I' initiates experience, suggesting instead that identity is constructed through reflection."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students may assume phenomenology denies the existence of the physical world entirely (solipsism). The text clarifies that an objective physical reality ('raw matter') exists, but we only have access to our phenomenal interpretation of it.",
+      "Students might believe perfect 'bracketing' (epoché) is achievable. The author explicitly states that a complete suspension of all biases is impossible, but the attempt is still necessary.",
+      "Students often conflate straightforward and reflective experience, assuming they are simultaneously analyzing their experience while it happens."
+    ],
+    "quote_targets": [
+      {
+        "target": "All consciousness, Husserl writes over and over, is consciousness of some thing.",
+        "why": "Provides the most concise and classic definition of intentionality."
+      },
+      {
+        "target": "describe, don't explain",
+        "why": "Serves as a mnemonic for the second rule of the phenomenological method (the Rule of Description)."
+      },
+      {
+        "target": "We cannot describe any experience as it occurs, but only after it has occurred.",
+        "why": "Succinctly captures the separation between straightforward and reflective experience."
+      }
+    ],
+    "grounding_notes": [
+      "All claims and definitions are strictly sourced from the provided Spinelli (2005) text."
+    ],
+    "warnings": [
+      "The OCR text contains a few minor typographical errors (e.g., 'Intentioanlity' on page 12) which should be noted if exact quoting is used."
+    ]
+  }
+}

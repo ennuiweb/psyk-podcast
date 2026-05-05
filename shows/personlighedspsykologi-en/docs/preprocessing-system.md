@@ -363,8 +363,9 @@ Status 2026-05-05:
   ikke gemt i repoet
 - `--preflight-only` lykkes nu for `gemini-3.1-pro-preview` med den lokale
   secret-store key
-- der er stadig ingen real LLM-artifacts skrevet endnu; naeste gate er et live
-  `W05L1,W06L1` batch-run og kvalitetsreview
+- foerste live `W05L1,W06L1` batch har skrevet 9 source cards, 2 lecture
+  substrates, 1 partial course synthesis, 2 revised lecture substrates og 2
+  podcast substrates
 - `google-genai` er tilfoejet til root `requirements.txt` og installeret i
   den lokale `.venv`
 - `shows/personlighedspsykologi-en/source_intelligence/index.json` er den
@@ -595,6 +596,9 @@ Required flags:
 - `--force`
 - `--skip-existing`
 - `--dry-run`
+- `--start-at source-cards|lecture-substrates|course-synthesis|revised-lecture-substrates|podcast-substrates`
+- `--stop-after source-cards|lecture-substrates|course-synthesis|revised-lecture-substrates|podcast-substrates`
+- `--continue-on-error`
 - `--fail-on-missing-key`
 - `--no-raw-lecture-source-uploads`
 - `--preflight-only`
@@ -604,6 +608,18 @@ Current dry-run smoke command:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --dry-run
+```
+
+Safer first live pass:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --stop-after source-cards --continue-on-error
+```
+
+After source-card inspection, resume downstream:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --start-at lecture-substrates
 ```
 
 Preflight command before uploading source PDFs:
@@ -631,8 +647,9 @@ Live run preconditions:
 
 Current live-run gate:
 
-- preflight succeeds for `gemini-3.1-pro-preview`, but the first real
-  source-upload/artifact-writing batch has not been run yet
+- `W05L1,W06L1` artifacts validate cleanly and podcast-substrate injection is
+  enabled in `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json`
+- next gate is podcast-output quality testing before scaling to more lectures
 - no fallback model has been used, because that is a quality/cost decision
 
 Validation command:
@@ -663,7 +680,8 @@ Implemented in `notebooklm_queue/course_context.py` behind:
 }
 ```
 
-Default remains disabled to preserve the current prompt baseline.
+The default in code remains disabled, but the Personlighedspsykologi
+`prompt_config.json` now enables the substrate for generated test podcasts.
 
 Testdaekning:
 

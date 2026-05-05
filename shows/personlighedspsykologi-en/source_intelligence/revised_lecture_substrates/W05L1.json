@@ -1,0 +1,68 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:32:16Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+      "w05l1-ricoeur-1981-19a5343f",
+      "w05l1-gammelgaard-2010-e6baff8b",
+      "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "fb657ba441a00a6f19565ed0ee0a5001ba29acac6dbfd0653487e2315f321db6",
+      "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W05L1",
+    "lecture_title": "Empiri og metode i psykoanalysen (Forelæsning 9, 2026-03-02)",
+    "sequence_index": 9
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture serves as the pivotal hinge in the course arc, marking the departure from natural-science/measurement paradigms. It introduces the hermeneutic claim that subjective, unconscious meaning (psychic reality) is valid data requiring fundamentally different validation criteria (narrative coherence, clinical effect) than quantitative variables. This permanently shifts the course's focus toward interpretation, meaning-making, and subjectivity.",
+    "what_matters_more": [
+      "The epistemological pivot from positivist, 3rd-person trait models to hermeneutic interpretation and meaning-based data.",
+      "Establishing 'Psykisk realitet' (psychic reality) as a scientifically legitimate empirical object, distinct from material truth.",
+      "The power dynamics, counter-transference, and methodological missteps in Freud's Dora case, as they practically illustrate epistemological limits and set up later structural critiques."
+    ],
+    "de_emphasize": [
+      "Ricoeur's dense philosophical vocabulary and textual mechanics in isolation; they must remain strictly tethered to Gammelgaard's pedagogical synthesis.",
+      "Granular details of Freud's psychosexual drive theory, which are secondary to the core focus on how psychoanalytic data is gathered, constituted, and validated."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W06L1 (Fænomenologisk personlighedspsykologi)",
+        "relation": "Epistemological contrast: Psychoanalysis (W05L1) reads behind the surface to uncover hidden unconscious meaning (hermeneutics of suspicion), whereas phenomenology (W06L1) stays with the immediate description of conscious lived experience (epoché)."
+      },
+      {
+        "target": "W08-W11 (Kritisk, Poststrukturalistisk & Feministisk teori)",
+        "relation": "Historical groundwork: Freud's handling of the Dora case (ignoring patriarchal power dynamics and gender asymmetries) serves as a primary historical anchor for later structural and discursive critiques of the individualized subject."
+      },
+      {
+        "target": "W01-W03 (Træk- og Assessmentpsykologi)",
+        "relation": "Methodological opposition: The intersubjective, idiographic, and narrative case-study method directly challenges the nomothetic, variable-centric statistical aggregation of trait psychology."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Dora' case as a clinical mystery: Did Freud discover the truth of her symptoms, or did he force a theoretical narrative onto her?",
+      "Use the dialectical host format to dramatize the epistemological clash: Host A (pro-positivism) demands 'hard data' and critiques Freud's bias, while Host B (pro-hermeneutics) defends the validity of psychic reality and Ricoeur's criteria.",
+      "Translate the 4 criteria for psychoanalytic empiricism (speech, intentionality, psychic reality, narrative) into relatable clinical examples rather than dry philosophical bullet points."
+    ],
+    "carry_forward": [
+      "The concept of 'narrative coherence' as a marker of psychological truth, which will be central to Narrative Psychology (W11-W12).",
+      "The distinction between material truth and psychic reality, which bridges into phenomenological intentionality.",
+      "The therapist-client power dynamic (transference/counter-transference) to be revisited in critical and poststructural approaches."
+    ],
+    "warnings": [
+      "Avoid getting bogged down in Ricoeur's abstract philosophy; constantly ground the discussion in the clinical reality of the Dora case and the dream analysis exercise.",
+      "Do not present psychoanalysis merely as an outdated historical artifact; treat it as an active, viable epistemological challenge to mainstream positivist psychology."
+    ]
+  }
+}

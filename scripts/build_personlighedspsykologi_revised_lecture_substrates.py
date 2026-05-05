@@ -47,6 +47,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-existing", dest="skip_existing", action="store_true", default=True)
     parser.add_argument("--no-skip-existing", dest="skip_existing", action="store_false")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--continue-on-error", action="store_true", help="Collect per-lecture errors instead of stopping at the first failure.")
     return parser.parse_args()
 
 
@@ -64,12 +65,12 @@ def main() -> int:
         force=args.force,
         skip_existing=args.skip_existing,
         dry_run=args.dry_run,
+        continue_on_error=args.continue_on_error,
         model=str(args.model),
     )
     _print_result(result)
-    return 0
+    return 1 if result.get("error_count", 0) else 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

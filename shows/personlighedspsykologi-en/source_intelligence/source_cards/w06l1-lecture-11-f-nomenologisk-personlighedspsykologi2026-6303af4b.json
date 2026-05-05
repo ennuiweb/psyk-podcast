@@ -1,0 +1,128 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T11:22:14Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+    ],
+    "dependency_hashes": {
+      "source_file": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
+      "source_catalog": "6eec0651c6a12a0c5817125f000745363cd907d14c4bb010624a39b0f83761e1",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+    "lecture_key": "W06L1",
+    "title": "11. Fænomenologisk personlighedspsykologi2026",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/11. Fænomenologisk personlighedspsykologi2026.pdf",
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/11. Fænomenologisk personlighedspsykologi2026.pdf",
+    "source_exists": true,
+    "source_sha256": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
+    "length_band": "long",
+    "page_count": 29,
+    "estimated_token_count": 2063,
+    "text_extraction_status": "ok"
+  },
+  "analysis": {
+    "theory_role": "The source maps phenomenological psychology as an anti-reductionist tradition rooted in philosophy (Husserl, Merleau-Ponty) and local Danish history (Copenhagen School), contrasting it with natural science and biological approaches to personality.",
+    "source_role": "Functions as a high-level conceptual framework and historical overview for the lecture, establishing core terminology and methodological guidelines for qualitative phenomenological research.",
+    "relation_to_lecture": "It directly answers the central lecture questions: 'What is phenomenological personality psychology?' and 'Why is it important?', providing the theoretical foundation for week 6.",
+    "central_claims": [
+      {
+        "claim": "Phenomenological personality psychology investigates subjective structures and experiences from a 1st-person perspective, focusing on how the world appears.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychological theory should be anchored in the description of phenomena rather than solely in biological or cognitive processes like those studied by Lazarus, Zajonc, or Damasio.",
+        "grounding": "slide-framed",
+        "confidence": "medium"
+      },
+      {
+        "claim": "The early Copenhagen School of Phenomenology (e.g., Edgar Rubin) was highly anti-theoretical, prioritizing exact, objective observation and description of immediate experiences over grand explanatory theories.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "According to Merleau-Ponty, consciousness is fundamentally anchored in the body, making the body the experiential starting point (kropssubjektet).",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "A sharp methodological distinction must be made between a subject's immediate experience and post-rationalizations, prior expectations, or theoretical preconceptions.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Intentionalitet",
+        "definition": "The principle that consciousness is always directed toward the world (rettethed mod verden); the concepts of subject and object are meaningless without each other.",
+        "role": "Serves as the foundational Husserlian concept explaining the interconnectedness of human experience and the world."
+      },
+      {
+        "term": "Kropssubjektet",
+        "definition": "Merleau-Ponty's concept that the body is the fundamental anchor of consciousness and the starting point for all experience.",
+        "role": "Highlights the embodied nature of phenomenological psychology, linking sensation, perception, and self-understanding."
+      },
+      {
+        "term": "Meningskondensering",
+        "definition": "A method described by Steinar Kvale involving the formulation of shorter, concise expressions of the meanings articulated by informants.",
+        "role": "Provides a practical methodological tool for analyzing qualitative phenomenological data."
+      },
+      {
+        "term": "Husserls bevidsthedsniveauer",
+        "definition": "Three irreducible levels of consciousness: 1) First-person givenness, 2) The ego as a structuring principle and identity pole, 3) The reflecting level.",
+        "role": "Breaks down the structure of self-awareness according to Husserl (via Zahavi)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "1. person vs. 3. personsperspektiv",
+        "summary": "The difference between describing a phenomenon as it is directly experienced by the subject (1st person) versus describing objective, external mechanisms like brain structures (3rd person).",
+        "stakes": "Defines the core boundary of the phenomenological research program, validating subjective experience as a primary scientific object."
+      },
+      {
+        "label": "Empatisk hermeneutik vs. mistankens hermeneutik",
+        "summary": "Ricouer's distinction between reading a text/experience to understand its inherent meaning (empathic) versus reading it to uncover hidden, underlying motives or structures (suspicion).",
+        "stakes": "Represents the 'hermeneutic turn' in phenomenological psychology, acknowledging different layers of interpretation."
+      },
+      {
+        "label": "Umiddelbar oplevelse vs. efterrationalisering",
+        "summary": "The contrast between the raw, direct experience of a situation and the subsequent theoretical explanations, opinions, or rationalizations applied to it.",
+        "stakes": "Crucial for phenomenological research methodology, which aims to capture the essence of the actual phenomenon before cognitive distortion."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might confuse phenomenological description with mere introspection, missing the rigorous methodological steps (reductions) required to separate essence from preconception.",
+      "Students might assume phenomenological psychology ignores biology entirely, whereas it specifically focuses on the 'lived body' (kropssubjektet) as the anchor of consciousness.",
+      "Students may overlook the strong historical connection phenomenological psychology has to Danish academia (e.g., Edgar Rubin, Franz From, Center for Subjectivity Research)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Personlighed vedrører hele vores væremåde: Den måde hvorpå vi oplever verden, hinanden og os selv – den måde hvorpå vi forholder os til, og det vi gør over for verden, hinanden og os selv.",
+        "why": "It is the central, explicit definition of 'personality' provided in the slide deck, attributed to Bertelsen (2009)."
+      },
+      {
+        "target": "Teorier er korthuse som ens efterfølgere skal blæse af bordet... At kunne observere nøjagtig og redelig, at beskrive sine oplevelser korrekt og entydig, det er det svære",
+        "why": "This Edgar Rubin quote perfectly encapsulates the radical empiricism and anti-theoretical stance of the early Copenhagen School of Phenomenology."
+      }
+    ],
+    "grounding_notes": [
+      "The source consists of lecture slides, meaning concepts are presented as brief bullet points rather than fully developed arguments.",
+      "Connections between thinkers (e.g., from Husserl to Spinelli and Giorgi) are listed sequentially but their theoretical transitions are left to the lecturer's oral elaboration."
+    ],
+    "warnings": [
+      "OCR artifacts present in some slide transitions. Claims rely heavily on slide-framed summaries rather than primary source textual depth."
+    ]
+  }
+}

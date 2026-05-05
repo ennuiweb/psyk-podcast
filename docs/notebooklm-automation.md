@@ -243,39 +243,49 @@ Preprocessing maturity note:
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`,
   which runs source catalog -> lecture bundles -> semantic artifacts ->
   weighting -> concept graph -> invariants in order.
-- The next intended preprocessing layer is a Gemini-driven recursive course
-  pass, not more prompt-only tweaks and not primarily more hand-coded semantic
-  inference.
-- The intended recursive pass is: source cards for all available readings and
-  slide decks -> lecture substrates -> course synthesis -> downward lecture
+- The next preprocessing layer is now implemented as a Gemini-driven recursive
+  course pass, not more prompt-only tweaks and not primarily more hand-coded
+  semantic inference.
+- The implemented recursive pass is: source cards for all available readings
+  and slide decks -> lecture substrates -> course synthesis -> downward lecture
   revision -> compact podcast substrates.
 - Python should own orchestration, caching, validation, retries, staleness, and
   artifact writing; Gemini 3.1 Pro should do most semantic interpretation.
+- Source-card generation uploads the actual PDF/source file to Gemini. The
+  lecture-substrate pass also uploads the lecture's raw source PDFs by default,
+  so Gemini can read the material directly when synthesizing the lecture.
 - The podcast prompt path should consume compact podcast substrates rather than
   exposing the whole internal artifact stack to NotebookLM.
 
-Recursive preprocessing implementation plan:
+Recursive preprocessing implementation:
 
-- Add a shared Gemini preprocessing client in
+- Shared Gemini preprocessing client:
   `notebooklm_queue/gemini_preprocessing.py`.
-- Add course-specific builders:
+- Course-specific builders:
   `scripts/build_personlighedspsykologi_source_cards.py`,
   `scripts/build_personlighedspsykologi_lecture_substrates.py`,
   `scripts/build_personlighedspsykologi_course_synthesis.py`,
   `scripts/build_personlighedspsykologi_revised_lecture_substrates.py`,
   and `scripts/build_personlighedspsykologi_podcast_substrates.py`.
-- Add a wrapper command,
+- Wrapper command:
   `scripts/build_personlighedspsykologi_recursive_source_intelligence.py`,
   with `--lectures`, `--all`, `--dry-run`, `--skip-existing`, `--force`, and
   `--fail-on-missing-key`.
-- Write LLM-derived artifacts under
+- LLM-derived artifacts live under
   `shows/personlighedspsykologi-en/source_intelligence/` so they remain
   visually distinct from deterministic artifacts.
-- Gate podcast-substrate injection behind a prompt config flag, so test
-  generations can compare substrate-enabled prompts against the current
+- `scripts/check_personlighedspsykologi_recursive_artifacts.py` validates
+  recursive artifacts, writes `source_intelligence/index.json`, and reports
+  coverage plus stale dependency hashes.
+- Podcast-substrate injection is gated behind `course_context.podcast_substrate`
+  so test generations can compare substrate-enabled prompts against the current
   baseline.
 - Treat `W05L1`, `W06L1`, one early lecture, and one late lecture as the first
   readiness batch before running all lectures.
+- Current runtime blocker: the code path is ready, but the shell environment
+  needs Gemini 3.1 Pro quota/billing before real LLM artifacts can be
+  generated. The local secret-store key is available, but the API reports
+  free-tier limit 0 for `gemini-3.1-pro`.
 
 ## Related docs
 

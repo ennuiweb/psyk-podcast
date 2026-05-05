@@ -18,6 +18,11 @@ DEFAULT_COURSE_CONTEXT = {
     "max_points_per_reading": 2,
     "max_slide_titles": 4,
     "max_course_themes": 22,
+    "podcast_substrate": {
+        "enabled": False,
+        "base_path": "",
+        "max_items": 4,
+    },
 }
 
 SEMANTIC_SELECTION_LIMITS = {
@@ -156,6 +161,25 @@ def normalize_course_context(raw: object) -> dict[str, Any]:
         if not isinstance(value, int) or value < 0:
             raise SystemExit(f"course_context.{field} must be an integer >= 0.")
         normalized[field] = value
+    if "podcast_substrate" in raw:
+        value = raw["podcast_substrate"]
+        if not isinstance(value, dict):
+            raise SystemExit("course_context.podcast_substrate must be an object.")
+        substrate = normalized["podcast_substrate"]
+        if not isinstance(substrate, dict):
+            raise SystemExit("course_context.podcast_substrate default must be an object.")
+        if "enabled" in value:
+            if not isinstance(value["enabled"], bool):
+                raise SystemExit("course_context.podcast_substrate.enabled must be true or false.")
+            substrate["enabled"] = value["enabled"]
+        if "base_path" in value:
+            if not isinstance(value["base_path"], str):
+                raise SystemExit("course_context.podcast_substrate.base_path must be a string.")
+            substrate["base_path"] = value["base_path"].strip()
+        if "max_items" in value:
+            if not isinstance(value["max_items"], int) or value["max_items"] < 0:
+                raise SystemExit("course_context.podcast_substrate.max_items must be an integer >= 0.")
+            substrate["max_items"] = value["max_items"]
     if normalized["max_readings"] < 1:
         raise SystemExit("course_context.max_readings must be >= 1.")
     if normalized["max_points_per_reading"] < 1:
@@ -681,6 +705,185 @@ def _lecture_semantic_context_lines(
     return lines
 
 
+def _podcast_substrate_path(
+    *,
+    bundle: CoursePromptContextBundle,
+    config: dict[str, Any],
+    lecture_key: str,
+) -> Path:
+    show_dir = bundle.content_manifest_path.parent
+    substrate_config = config.get("podcast_substrate") if isinstance(config.get("podcast_substrate"), dict) else {}
+    base_value = str(substrate_config.get("base_path") or "").strip()
+    if not base_value:
+        base_path = show_dir / "source_intelligence" / "podcast_substrates"
+    else:
+        candidate = Path(base_value).expanduser()
+        if candidate.is_absolute():
+            base_path = candidate
+        elif candidate.parts and candidate.parts[0] == "shows":
+            base_path = show_dir.parent.parent / candidate
+        else:
+            base_path = show_dir / candidate
+    if base_path.suffix.lower() == ".json":
+        return base_path
+    return base_path / f"{lecture_key}.json"
+
+
+def _compact_string(value: object, *, limit: int = 220) -> str:
+    text = " ".join(str(value or "").split())
+    if len(text) <= limit:
+        return text
+    return text[: limit - 1].rstrip() + "..."
+
+
+def _stringify_substrate_item(item: object) -> str:
+    if isinstance(item, str):
+        return _compact_string(item)
+    if not isinstance(item, dict):
+        return _compact_string(item)
+    for key in (
+        "point",
+        "priority",
+        "concept",
+        "tension",
+        "angle",
+        "claim",
+        "summary",
+        "why",
+        "role",
+        "stakes",
+    ):
+        value = str(item.get(key) or "").strip()
+        if value:
+            suffix_parts = []
+            for suffix_key in ("why", "role", "stakes"):
+                suffix = str(item.get(suffix_key) or "").strip()
+                if suffix and suffix != value:
+                    suffix_parts.append(suffix)
+            if suffix_parts:
+                return _compact_string(value + " - " + "; ".join(suffix_parts))
+            return _compact_string(value)
+    return _compact_string(json.dumps(item, ensure_ascii=False))
+
+
+def _substrate_item_keys(item: object) -> set[str]:
+    if not isinstance(item, dict):
+        return set()
+    keys: set[str] = set()
+    for field in ("source_id", "title", "source_title", "source_filename", "slide_key"):
+        value = str(item.get(field) or "").strip()
+        if value:
+            keys.add(_normalize_match_key(value))
+            keys.add(_normalize_match_key(Path(value).stem))
+    keys.discard("")
+    return keys
+
+
+def _matching_substrate_item(items: object, candidates: set[str]) -> dict[str, Any] | None:
+    if not isinstance(items, list):
+        return None
+    dict_items = [item for item in items if isinstance(item, dict)]
+    if not dict_items:
+        return None
+    for item in dict_items:
+        if _substrate_item_keys(item) & candidates:
+            return item
+    if len(dict_items) == 1:
+        return dict_items[0]
+    return None
+
+
+def _selected_podcast_substrate_section(
+    *,
+    podcast: dict[str, Any],
+    prompt_type: str,
+    source_item: object | None,
+    lecture: dict[str, Any],
+) -> dict[str, Any]:
+    candidates = _source_item_match_candidates(lecture, source_item)
+    if prompt_type == "short":
+        section = podcast.get("short")
+        return section if isinstance(section, dict) else {}
+    if prompt_type == "single_reading":
+        item = _matching_substrate_item(podcast.get("per_reading"), candidates)
+        if item is not None:
+            return item
+    if prompt_type == "single_slide":
+        item = _matching_substrate_item(podcast.get("per_slide"), candidates)
+        if item is not None:
+            return item
+    section = podcast.get("weekly")
+    return section if isinstance(section, dict) else {}
+
+
+def _podcast_substrate_context_lines(
+    *,
+    bundle: CoursePromptContextBundle,
+    config: dict[str, Any],
+    lecture_key: str,
+    prompt_type: str,
+    lecture: dict[str, Any],
+    source_item: object | None,
+) -> list[str]:
+    substrate_config = config.get("podcast_substrate") if isinstance(config.get("podcast_substrate"), dict) else {}
+    if not substrate_config.get("enabled", False):
+        return []
+    path = _podcast_substrate_path(bundle=bundle, config=config, lecture_key=lecture_key)
+    payload = _load_optional_json(path)
+    if not isinstance(payload, dict):
+        return []
+    podcast = payload.get("podcast")
+    if not isinstance(podcast, dict):
+        return []
+    max_items = max(0, int(substrate_config.get("max_items", 4)))
+    section = _selected_podcast_substrate_section(
+        podcast=podcast,
+        prompt_type=prompt_type,
+        source_item=source_item,
+        lecture=lecture,
+    )
+    lines: list[str] = []
+    angle = str(section.get("angle") or "").strip()
+    if angle:
+        lines.append(f"- Podcast angle: {_compact_string(angle)}")
+    for field, label in (
+        ("must_cover", "Must cover"),
+        ("avoid", "Avoid"),
+        ("grounding", "Grounding"),
+    ):
+        values = section.get(field)
+        if isinstance(values, list):
+            selected = [_stringify_substrate_item(item) for item in values[:max_items]]
+            selected = [item for item in selected if item]
+            if selected:
+                lines.append(f"- {label}: " + "; ".join(selected) + ".")
+    selected_concepts = podcast.get("selected_concepts")
+    if isinstance(selected_concepts, list) and max_items > 0:
+        concepts = [_stringify_substrate_item(item) for item in selected_concepts[:max_items]]
+        concepts = [item for item in concepts if item]
+        if concepts:
+            lines.append("- Selected concepts: " + "; ".join(concepts) + ".")
+    selected_tensions = podcast.get("selected_tensions")
+    if isinstance(selected_tensions, list) and max_items > 0:
+        tensions = [_stringify_substrate_item(item) for item in selected_tensions[:max_items]]
+        tensions = [item for item in tensions if item]
+        if tensions:
+            lines.append("- Selected tensions: " + "; ".join(tensions) + ".")
+    source_selection = podcast.get("source_selection")
+    if prompt_type != "short" and isinstance(source_selection, list) and max_items > 0:
+        sources = [_stringify_substrate_item(item) for item in source_selection[:max_items]]
+        sources = [item for item in sources if item]
+        if sources:
+            lines.append("- Source selection: " + "; ".join(sources) + ".")
+    grounding_notes = podcast.get("grounding_notes")
+    if isinstance(grounding_notes, list) and max_items > 0:
+        notes = [_stringify_substrate_item(item) for item in grounding_notes[: min(2, max_items)]]
+        notes = [item for item in notes if item]
+        if notes:
+            lines.append("- Substrate grounding notes: " + "; ".join(notes) + ".")
+    return lines
+
+
 def _summary_lines(entry: dict[str, Any] | None) -> list[str]:
     if not isinstance(entry, dict):
         return []
@@ -1000,6 +1203,17 @@ def build_course_prompt_context_note(
     )
     if semantic_lines:
         sections.append("## Semantic guidance\n" + "\n".join(semantic_lines))
+
+    podcast_substrate_lines = _podcast_substrate_context_lines(
+        bundle=bundle,
+        config=config,
+        lecture_key=canonical_key,
+        prompt_type=prompt_type,
+        lecture=lecture,
+        source_item=source_item,
+    )
+    if podcast_substrate_lines:
+        sections.append("## Podcast substrate\n" + "\n".join(podcast_substrate_lines))
 
     target_lines: list[str] = []
     if source_item is not None:

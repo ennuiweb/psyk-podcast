@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T10:36:57Z",
+  "build_inputs": {
+    "source_catalog": "shows/personlighedspsykologi-en/source_catalog.json",
+    "recursive_dir": "shows/personlighedspsykologi-en/source_intelligence"
+  },
+  "expected": {
+    "source_card_count": 79,
+    "lecture_count": 22
+  },
+  "coverage": {
+    "source_cards": 0,
+    "lecture_substrates": 0,
+    "course_synthesis": 0,
+    "revised_lecture_substrates": 0,
+    "podcast_substrates": 0
+  },
+  "complete": {
+    "source_cards": false,
+    "lecture_substrates": false,
+    "course_synthesis": false,
+    "revised_lecture_substrates": false,
+    "podcast_substrates": false
+  },
+  "fresh": {
+    "stale_artifact_count": 0,
+    "stale_artifacts": []
+  },
+  "errors": [],
+  "known_partial_allowances": [
+    "W03L2 may remain partial because its manifest intentionally keeps Bach & Simonsen (2023) as missing."
+  ]
+}

@@ -659,6 +659,103 @@ class CourseContextTests(unittest.TestCase):
             )
             self.assertNotIn("Broader course arc in play: Intro;", note)
 
+    def test_podcast_substrate_is_optional_and_compact_when_enabled(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            substrate_dir = show_dir / "source_intelligence" / "podcast_substrates"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+            substrate_dir.mkdir(parents=True, exist_ok=True)
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W1L1",
+                                "lecture_title": "Phenomenology",
+                                "sequence_index": 1,
+                                "readings": [
+                                    {
+                                        "reading_title": "Phenomenology source",
+                                        "source_filename": "source.pdf",
+                                    }
+                                ],
+                                "slides": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text("- W1L1 Phenomenology", encoding="utf-8")
+            (substrate_dir / "W01L1.json").write_text(
+                json.dumps(
+                    {
+                        "podcast": {
+                            "weekly": {
+                                "angle": "Explain phenomenology as a disciplined shift in viewpoint.",
+                                "must_cover": ["lived experience"],
+                                "avoid": ["vague introspection caricature"],
+                                "grounding": ["anchor claims in the reading"],
+                            },
+                            "per_reading": [
+                                {
+                                    "source_filename": "source.pdf",
+                                    "angle": "Use this reading as the anchor.",
+                                    "must_cover": ["description vs explanation"],
+                                    "avoid": [],
+                                }
+                            ],
+                            "per_slide": [],
+                            "short": {"angle": "compact angle", "must_cover": [], "avoid": []},
+                            "selected_concepts": [{"concept": "lived experience", "role": "anchor"}],
+                            "selected_tensions": [{"tension": "description vs explanation", "stakes": "method"}],
+                            "grounding_notes": ["substrate is prioritization only"],
+                            "source_selection": [{"source_id": "source-1", "priority": "anchor", "why": "main text"}],
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            disabled_config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=disabled_config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+            disabled_note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=disabled_config,
+                lecture_key="W1L1",
+                prompt_type="weekly_readings_only",
+            )
+            self.assertNotIn("Podcast substrate", disabled_note)
+
+            enabled_config = course_context.normalize_course_context(
+                {"podcast_substrate": {"enabled": True, "max_items": 2}}
+            )
+            reading_note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=enabled_config,
+                lecture_key="W1L1",
+                prompt_type="single_reading",
+                source_item=SimpleNamespace(
+                    source_type="reading",
+                    base_name="Phenomenology source",
+                    path=Path("/tmp/source.pdf"),
+                ),
+            )
+
+            self.assertIn("## Podcast substrate", reading_note)
+            self.assertIn("Use this reading as the anchor", reading_note)
+            self.assertIn("description vs explanation", reading_note)
+            self.assertIn("lived experience", reading_note)
+
 
 if __name__ == "__main__":
     unittest.main()

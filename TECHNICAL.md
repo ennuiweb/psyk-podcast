@@ -57,7 +57,7 @@ Current direction:
 
 - The main `personlighedspsykologi` maturity task is course preprocessing, not
   more prompt tuning.
-- The next intended substrate layer is Gemini-driven and recursive: source
+- The recursive substrate layer is now implemented as code: source
   cards -> lecture substrates -> course synthesis -> downward lecture revision
   -> compact podcast substrates.
 - Python should orchestrate, cache, validate, and write artifacts; Gemini 3.1
@@ -72,6 +72,18 @@ Operational note:
 - For `personlighedspsykologi`, the canonical local rebuild entrypoint for the
   full `Source Intelligence Layer` is
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`.
+- For the Gemini-derived recursive layer, the canonical local entrypoint is
+  `./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py`.
+  First test batch: `--lectures W05L1,W06L1`; full run: `--all`.
+- Source cards and lecture substrates upload the actual source PDFs to Gemini
+  by default. The lecture-pass escape hatch is
+  `--no-raw-lecture-source-uploads`.
+- Recursive artifact validation and progress tracking lives in
+  `shows/personlighedspsykologi-en/source_intelligence/index.json`, rebuilt by
+  `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.
+- Runtime blocker as of 2026-05-05: the Gemini key is available from the local
+  secret store, but the API reports free-tier limit 0 for Gemini 3.1 Pro, so
+  real recursive LLM artifacts have not been generated.
 - The course-specific interpretation policy for that layer lives in
   `shows/personlighedspsykologi-en/source_intelligence_policy.json` and is the
   canonical place to tune how `grundbog`, lecture slides, seminar slides, and

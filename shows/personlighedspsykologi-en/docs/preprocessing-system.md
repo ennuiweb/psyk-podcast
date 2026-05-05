@@ -60,7 +60,8 @@ Den naeste modne version skal bygges i fem passes:
 
 Source pass:
 
-- sender hver tilgaengelig reading og slide deck til Gemini
+- sender hver tilgaengelig reading og slide deck som faktisk source file til
+  Gemini Files API
 - skriver structured source cards
 - markerer claims, centrale begreber, distinctions, theory role,
   misunderstandings, source role og provenance
@@ -68,7 +69,8 @@ Source pass:
 Lecture pass:
 
 - samler source cards for en lecture
-- inkluderer raw files igen, naar source cards ikke er nok
+- inkluderer som default de faktiske raw source files igen, saa Gemini kan
+  laese readings/slides direkte ved lecture-level syntese
 - skriver lecture substrates med lecture question, source roles,
   reading/slide relationer, centrale tensions og must-carry ideas
 
@@ -353,11 +355,29 @@ podcast substrate i stedet for kun fra generisk prompt-kontekst.
 Foer vi kan teste podcastgenerering ordentligt paa den nye preprocessing-model,
 skal foelgende kode- og artifact-lag bygges.
 
+Status 2026-05-05:
+
+- kodevejen for hele den rekursive model er nu implementeret
+- Gemini key lookup virker nu via environment variabler og fallback til den
+  lokale Memory Bridge secret store (`google.gemini.api_key`); secret value er
+  ikke gemt i repoet
+- et real LLM-run for `W05L1,W06L1` blev forsoegt, men Gemini returnerede
+  `RESOURCE_EXHAUSTED` med free-tier limit 0 for `gemini-3.1-pro`
+- derfor er der stadig ingen real LLM-artifacts skrevet endnu
+- `google-genai` er tilfoejet til root `requirements.txt` og installeret i
+  den lokale `.venv`
+- `shows/personlighedspsykologi-en/source_intelligence/index.json` er den
+  aktuelle coverage/staleness status for LLM-artifacts
+- nuvaerende coverage er 0 source cards, 0 lecture substrates, 0 course
+  synthesis, 0 revised lecture substrates og 0 podcast substrates
+- stale count er 0, fordi der endnu ikke findes LLM-artifacts at genbruge
+
 ### 1. Shared Gemini preprocessing client
 
-Implementer et lille shared client-lag, ikke en stor framework-abstraktion.
+Implementeret som et lille shared client-lag, ikke en stor
+framework-abstraktion.
 
-Foreslaaet placering:
+Placering:
 
 - `notebooklm_queue/gemini_preprocessing.py`
 
@@ -369,6 +389,10 @@ Ansvar:
 - retrye transient failures
 - skrive request metadata uden at gemme secrets
 - returnere parsed JSON eller en tydelig fail-open/fail-closed status
+
+Testdaekning:
+
+- `tests/test_gemini_preprocessing.py`
 
 ### 2. Recursive artifact directories
 
@@ -391,9 +415,12 @@ shows/personlighedspsykologi-en/source_intelligence/
   index.json
 ```
 
+`index.json` skrives af validatoren og viser coverage, completeness,
+validation errors og stale artifacts.
+
 ### 3. Source-card builder
 
-Foreslaaet script:
+Script:
 
 - `scripts/build_personlighedspsykologi_source_cards.py`
 
@@ -425,9 +452,15 @@ Testing target:
 - run for `W05L1` and `W06L1` first
 - then run all non-missing sources
 
+Dry-run:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_source_cards.py --lectures W05L1,W06L1 --dry-run
+```
+
 ### 4. Lecture-substrate builder
 
-Foreslaaet script:
+Script:
 
 - `scripts/build_personlighedspsykologi_lecture_substrates.py`
 
@@ -464,7 +497,7 @@ Testing target:
 
 ### 5. Course-synthesis builder
 
-Foreslaaet script:
+Script:
 
 - `scripts/build_personlighedspsykologi_course_synthesis.py`
 
@@ -491,7 +524,7 @@ Minimum schema:
 
 ### 6. Downward-revision builder
 
-Foreslaaet script:
+Script:
 
 - `scripts/build_personlighedspsykologi_revised_lecture_substrates.py`
 
@@ -514,7 +547,7 @@ Minimum schema:
 
 ### 7. Podcast-substrate builder
 
-Foreslaaet script:
+Script:
 
 - `scripts/build_personlighedspsykologi_podcast_substrates.py`
 
@@ -545,10 +578,10 @@ whole course-intelligence stack directly.
 
 ### 8. Canonical rebuild wrapper
 
-The existing rebuild wrapper should either be extended or paired with a new LLM
-wrapper.
+The deterministic rebuild wrapper remains separate. The recursive LLM layer has
+its own wrapper.
 
-Foreslaaet command:
+Canonical command:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py
@@ -562,15 +595,71 @@ Required flags:
 - `--skip-existing`
 - `--dry-run`
 - `--fail-on-missing-key`
+- `--no-raw-lecture-source-uploads`
+
+Current dry-run smoke command:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py --lectures W05L1,W06L1 --dry-run
+```
+
+Observed 2026-05-05 dry-run plan:
+
+- `W05L1` + `W06L1`
+- 9 source cards
+- 2 lecture substrates
+- 1 partial course synthesis
+- 2 downward revisions
+- 2 podcast substrates
+
+Live run preconditions:
+
+- `GEMINI_API_KEY`, `GOOGLE_API_KEY`, or local secret-store
+  `google.gemini.api_key` must be available
+- the key/project must have billing/quota for `gemini-3.1-pro-preview`
+- keep `--skip-existing` unless intentionally rebuilding
+- use `--force` only when stale artifacts should be replaced
+
+Current live-run blocker:
+
+- the current key can list `gemini-3.1-pro-preview`, but generate calls fail
+  because the API reports free-tier request/input-token limit 0 for Gemini 3.1
+  Pro
+- no fallback model has been used, because that is a quality/cost decision
+
+Validation command:
+
+```bash
+./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial
+```
 
 ### 9. Prompt integration for podcast testing
 
 Do not rewrite the whole prompt system first. Add one narrow integration path:
 
-- if a podcast substrate exists for the lecture/output type, include a compact
+- if enabled and a podcast substrate exists for the lecture/output type, include a compact
   `Podcast substrate` section in the course-context note
 - keep existing prompts as fallback
 - add a config flag so substrate use can be enabled/disabled during A/B tests
+
+Implemented in `notebooklm_queue/course_context.py` behind:
+
+```json
+{
+  "course_context": {
+    "podcast_substrate": {
+      "enabled": true,
+      "max_items": 4
+    }
+  }
+}
+```
+
+Default remains disabled to preserve the current prompt baseline.
+
+Testdaekning:
+
+- `tests/notebooklm_queue/test_course_context.py`
 
 ### 10. Testing readiness criteria
 
@@ -585,3 +674,8 @@ The preprocessing system is ready for podcast quality testing when:
 
 For the first production-ish pass, `W03L2` remains allowed as partial because
 of the known missing source.
+
+Current blocker:
+
+- the code path is ready for the first real test batch, but the environment
+  still needs a Gemini key before LLM artifacts can be generated

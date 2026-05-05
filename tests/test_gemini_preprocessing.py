@@ -1,0 +1,87 @@
+from pathlib import Path
+from unittest import mock
+
+from notebooklm_queue import gemini_preprocessing as gemini
+
+
+def test_parse_json_response_accepts_fenced_json():
+    assert gemini.parse_json_response('```json\n{"ok": true}\n```') == {"ok": True}
+
+
+def test_gemini_api_key_reads_local_secret_store(monkeypatch, tmp_path):
+    secret_path = tmp_path / "secrets.json"
+    secret_path.write_text('{"google": {"gemini": {"api_key": "secret-value"}}}', encoding="utf-8")
+    monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.setenv("OSKAR_MEMORY_BRIDGE_SECRETS_FILE", str(secret_path))
+
+    assert gemini.gemini_api_key() == "secret-value"
+
+
+def test_non_retryable_zero_quota_error_is_summarized(tmp_path):
+    fake_client = mock.Mock()
+    fake_client.models.generate_content.side_effect = RuntimeError(
+        "429 RESOURCE_EXHAUSTED free_tier_input_token_count, limit: 0"
+    )
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+
+    try:
+        gemini.generate_json(
+            backend=gemini.GeminiPreprocessingBackend(
+                provider="gemini",
+                client=fake_client,
+                support=fake_support,
+                model="gemini-test",
+            ),
+            system_instruction="system",
+            user_prompt="user",
+            retry_count=2,
+        )
+    except gemini.GeminiPreprocessingGenerationError as exc:
+        assert "free-tier limit 0" in str(exc)
+    else:
+        raise AssertionError("expected GeminiPreprocessingGenerationError")
+    fake_client.models.generate_content.assert_called_once()
+
+
+def test_generate_json_uploads_pdf_and_deletes_upload(tmp_path):
+    pdf_path = tmp_path / "Source File.pdf"
+    pdf_path.write_bytes(b"%PDF-1.4")
+
+    fake_client = mock.Mock()
+    uploaded = mock.Mock()
+    uploaded.name = "files/source"
+    uploaded.uri = "gs://gemini/source.pdf"
+    uploaded.mime_type = "application/pdf"
+    uploaded.state = None
+    fake_client.files.upload.return_value = uploaded
+    fake_client.models.generate_content.return_value = mock.Mock(text='{"analysis": {"ok": true}}')
+
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+    fake_support.Part.from_uri.side_effect = (
+        lambda *, file_uri, mime_type: {"type": "file", "file_uri": file_uri, "mime_type": mime_type}
+    )
+
+    payload = gemini.generate_json(
+        backend=gemini.GeminiPreprocessingBackend(
+            provider="gemini",
+            client=fake_client,
+            support=fake_support,
+            model="gemini-test",
+        ),
+        system_instruction="system",
+        user_prompt="user",
+        source_paths=[pdf_path],
+    )
+
+    assert payload == {"analysis": {"ok": True}}
+    fake_client.files.upload.assert_called_once()
+    fake_client.files.delete.assert_called_once_with(name="files/source")
+    call = fake_client.models.generate_content.call_args.kwargs
+    assert call["model"] == "gemini-test"
+    assert call["config"]["response_mime_type"] == "application/json"
+    assert any(part.get("type") == "file" for part in call["contents"])

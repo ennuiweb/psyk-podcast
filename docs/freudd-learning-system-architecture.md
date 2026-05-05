@@ -117,7 +117,7 @@ The intended direction is now a Gemini-heavy recursive preprocessing approach.
 The goal is not to replace every script with model output. The goal is to use
 scripts as stable rails around model-generated semantic passes.
 
-The planned passes are:
+The implemented recursive preprocessing wrapper supports these passes:
 
 1. Source pass
 2. Lecture pass
@@ -160,6 +160,18 @@ Guardrails:
 - final podcast prompts should use only the selected substrate slice needed for
   that output
 
+Implementation status as of 2026-05-05:
+
+- the shared Gemini JSON/upload client, course-specific builders, recursive
+  wrapper, validator/index, and optional podcast-substrate prompt integration
+  are implemented
+- source-card generation uploads actual PDF/source files to Gemini; the
+  lecture-substrate pass also uploads the lecture's raw source PDFs by default
+- no real recursive LLM artifacts have been generated yet, because the current
+  key can list Gemini 3.1 Pro but returns free-tier limit 0 on generation
+- `shows/personlighedspsykologi-en/source_intelligence/index.json` is the
+  coverage/staleness status file for those LLM-derived artifacts
+
 ## Overall Verdict
 
 The system is real, useful, and operationally advanced. It is not a prototype.
@@ -196,7 +208,7 @@ Scores use a `1-5` scale:
 |---|---:|---:|---:|---:|---|
 | `Freudd Portal` | 4 | 4 | 3 | 3.8 | Product-rich and strongly aligned to learning flow, but too much logic is concentrated in very large files. |
 | `Freudd Content Engine` | 3 | 3 | 3 | 3.2 | Good prompt/context infrastructure, and the upstream engine now has file-, lecture-, and course-level semantic artifacts, but weighting is not yet fully driving downstream selection and hosted rebuildability still lags. |
-| `Source Intelligence Layer` | 3 | 3 | 3 | 3.1 | It now has source catalog, lecture bundles, course glossary, theory map, a first staleness index, deterministic source weighting, and a first concept graph, but it still lacks deeper graph richness and automatic rebuild enforcement. |
+| `Source Intelligence Layer` | 3 | 3 | 3 | 3.2 | It now has deterministic source catalog, lecture bundles, glossary, theory map, weighting, concept graph, and the implemented recursive Gemini artifact path; it still needs a real Gemini artifact run and quality evaluation before it can be called mature. |
 | `Course Context Layer` | 4 | 4 | 4 | 4.0 | Deterministic, reusable, and conceptually clean. One of the better-designed parts of the system. |
 | `Prompt Assembly Layer` | 4 | 4 | 3 | 3.7 | Much better than ad hoc prompt strings, but growing dense and still dependent on relatively weak upstream semantic artifacts. |
 | `Freudd Generation Queue` | 5 | 4 | 4 | 4.3 | The most mature backend subsystem. It owns a serious end-to-end state machine and real publication logic. |
@@ -509,10 +521,13 @@ conditions for learning material.
 
 Concretely:
 
-- no full-course LLM preprocessing pass over all source material yet
-- no source-card layer for all readings and slide decks yet
-- no Gemini-built lecture substrates that combine readings and slide framing yet
-- no course-level downward revision pass that tells each lecture what matters
+- the full-course LLM preprocessing code path exists, but the real artifact run
+  has not happened yet
+- source-card, lecture-substrate, course-synthesis, downward-revision, and
+  podcast-substrate schemas/builders exist, but artifact coverage is still 0
+  until Gemini is configured and run
+- the next quality risk is no longer "can we build it?" but "are the generated
+  artifacts better than the simple upload-and-prompt baseline?"
   once the whole course arc is visible
 - no compact podcast substrate layer that can be used without bloating prompts
 - no automatic stale invalidation enforcement for derived understanding
@@ -552,13 +567,13 @@ The current baseline is now materially better than a file inventory. It has:
 - `course_theory_map.json`
 - a first hash-based stale/invalidation index
 
-The next missing layers are:
+The remaining missing runtime state is:
 
-- Gemini-generated source cards
-- Gemini-generated lecture substrates
-- Gemini-generated course synthesis and downward revision
-- compact output substrates for generation
-- automatic stale enforcement
+- real Gemini-generated source cards for all available sources
+- real Gemini-generated lecture substrates
+- real Gemini-generated course synthesis and downward revision
+- real compact podcast substrates for generation
+- quality evaluation of whether these artifacts improve NotebookLM podcasts
 
 ### Pain 5: Reproducibility is still incomplete
 
@@ -638,9 +653,10 @@ Exit condition:
 - outputs improve because preprocessing gets better, not because prompts become
   much longer
 
-### Testing Readiness Implementation Plan
+### Testing Readiness Implementation Status
 
-For `personlighedspsykologi`, the code needed before podcast testing is:
+For `personlighedspsykologi`, the code needed before podcast testing now
+exists:
 
 1. shared Gemini preprocessing client
 2. source-card builder
@@ -652,9 +668,9 @@ For `personlighedspsykologi`, the code needed before podcast testing is:
 8. substrate validator
 9. narrow prompt integration behind a config flag
 
-The shared client should live in `notebooklm_queue/` and own Gemini upload,
+The shared client lives in `notebooklm_queue/` and owns Gemini upload,
 generation, JSON parsing, retries, and metadata capture. Course-specific scripts
-should live under `scripts/` and write artifacts under:
+live under `scripts/` and write artifacts under:
 
 ```text
 shows/personlighedspsykologi-en/source_intelligence/
@@ -672,6 +688,10 @@ cards, lecture substrates, revised lecture substrates, podcast substrates,
 schema validation, and dry-run prompt output showing compact substrate
 injection. `W03L2` remains allowed as partial because of the known missing
 source.
+
+The remaining blocker is Gemini project quota/billing, not implementation: the
+local secret-store key is available, but generation currently fails with
+free-tier limit 0 for Gemini 3.1 Pro.
 
 ### Phase 3: Add explicit quality loops
 

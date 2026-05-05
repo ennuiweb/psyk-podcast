@@ -254,6 +254,29 @@ Preprocessing maturity note:
 - The podcast prompt path should consume compact podcast substrates rather than
   exposing the whole internal artifact stack to NotebookLM.
 
+Recursive preprocessing implementation plan:
+
+- Add a shared Gemini preprocessing client in
+  `notebooklm_queue/gemini_preprocessing.py`.
+- Add course-specific builders:
+  `scripts/build_personlighedspsykologi_source_cards.py`,
+  `scripts/build_personlighedspsykologi_lecture_substrates.py`,
+  `scripts/build_personlighedspsykologi_course_synthesis.py`,
+  `scripts/build_personlighedspsykologi_revised_lecture_substrates.py`,
+  and `scripts/build_personlighedspsykologi_podcast_substrates.py`.
+- Add a wrapper command,
+  `scripts/build_personlighedspsykologi_recursive_source_intelligence.py`,
+  with `--lectures`, `--all`, `--dry-run`, `--skip-existing`, `--force`, and
+  `--fail-on-missing-key`.
+- Write LLM-derived artifacts under
+  `shows/personlighedspsykologi-en/source_intelligence/` so they remain
+  visually distinct from deterministic artifacts.
+- Gate podcast-substrate injection behind a prompt config flag, so test
+  generations can compare substrate-enabled prompts against the current
+  baseline.
+- Treat `W05L1`, `W06L1`, one early lecture, and one late lecture as the first
+  readiness batch before running all lectures.
+
 ## Related docs
 
 - [../shows/personlighedspsykologi-en/docs/README.md](../shows/personlighedspsykologi-en/docs/README.md)

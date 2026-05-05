@@ -638,6 +638,41 @@ Exit condition:
 - outputs improve because preprocessing gets better, not because prompts become
   much longer
 
+### Testing Readiness Implementation Plan
+
+For `personlighedspsykologi`, the code needed before podcast testing is:
+
+1. shared Gemini preprocessing client
+2. source-card builder
+3. lecture-substrate builder
+4. course-synthesis builder
+5. downward-revision builder
+6. podcast-substrate builder
+7. recursive rebuild wrapper
+8. substrate validator
+9. narrow prompt integration behind a config flag
+
+The shared client should live in `notebooklm_queue/` and own Gemini upload,
+generation, JSON parsing, retries, and metadata capture. Course-specific scripts
+should live under `scripts/` and write artifacts under:
+
+```text
+shows/personlighedspsykologi-en/source_intelligence/
+```
+
+The first test set should be:
+
+- `W05L1`
+- `W06L1`
+- one early lecture
+- one late lecture
+
+The system is ready for podcast quality testing when those lectures have source
+cards, lecture substrates, revised lecture substrates, podcast substrates,
+schema validation, and dry-run prompt output showing compact substrate
+injection. `W03L2` remains allowed as partial because of the known missing
+source.
+
 ### Phase 3: Add explicit quality loops
 
 Goal:

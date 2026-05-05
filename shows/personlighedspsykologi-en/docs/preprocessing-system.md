@@ -347,3 +347,241 @@ preprocessing-version for eksamensformaal foerst er paa plads, naar hvert
 tilgaengeligt source file har vaeret gennem Gemini source passet, hver lecture
 har et revised lecture substrate, og podcasts kan genereres fra en kompakt
 podcast substrate i stedet for kun fra generisk prompt-kontekst.
+
+## Implementation plan for testing readiness
+
+Foer vi kan teste podcastgenerering ordentligt paa den nye preprocessing-model,
+skal foelgende kode- og artifact-lag bygges.
+
+### 1. Shared Gemini preprocessing client
+
+Implementer et lille shared client-lag, ikke en stor framework-abstraktion.
+
+Foreslaaet placering:
+
+- `notebooklm_queue/gemini_preprocessing.py`
+
+Ansvar:
+
+- laese `GEMINI_API_KEY` eller `GOOGLE_API_KEY` fra environment
+- uploade PDF/source files til Gemini files API
+- kalde Gemini 3.1 Pro med schema-styrede prompts
+- retrye transient failures
+- skrive request metadata uden at gemme secrets
+- returnere parsed JSON eller en tydelig fail-open/fail-closed status
+
+### 2. Recursive artifact directories
+
+LLM-derived artifacts skal ligge separat fra de deterministiske artifacts, saa
+det er tydeligt hvad der er model-output.
+
+Foreslaaet struktur:
+
+```text
+shows/personlighedspsykologi-en/source_intelligence/
+  source_cards/
+    <source_id>.json
+  lecture_substrates/
+    W##L#.json
+  course_synthesis.json
+  revised_lecture_substrates/
+    W##L#.json
+  podcast_substrates/
+    W##L#.json
+  index.json
+```
+
+### 3. Source-card builder
+
+Foreslaaet script:
+
+- `scripts/build_personlighedspsykologi_source_cards.py`
+
+Inputs:
+
+- `source_catalog.json`
+- `source_intelligence_policy.json`
+- raw source files
+
+Outputs:
+
+- `source_intelligence/source_cards/<source_id>.json`
+
+Minimum schema:
+
+- source identity and hashes
+- source family and evidence origin
+- central claims
+- key concepts
+- distinctions
+- theory/tradition role
+- likely misunderstandings
+- relation to lecture
+- quote/page targets if Gemini can infer them safely
+- provenance and confidence
+
+Testing target:
+
+- run for `W05L1` and `W06L1` first
+- then run all non-missing sources
+
+### 4. Lecture-substrate builder
+
+Foreslaaet script:
+
+- `scripts/build_personlighedspsykologi_lecture_substrates.py`
+
+Inputs:
+
+- `lecture_bundles/`
+- source cards for the lecture
+- slide cards and reading cards together
+- raw source files only when the source cards are insufficient
+
+Outputs:
+
+- `source_intelligence/lecture_substrates/W##L#.json`
+
+Minimum schema:
+
+- lecture question
+- central learning problem
+- source roles
+- reading-to-reading relations
+- slide-to-reading relations
+- core concepts
+- core tensions
+- likely misunderstandings
+- must-carry ideas
+- missing-source status
+
+Testing target:
+
+- `W05L1`
+- `W06L1`
+- one early lecture
+- one late lecture
+
+### 5. Course-synthesis builder
+
+Foreslaaet script:
+
+- `scripts/build_personlighedspsykologi_course_synthesis.py`
+
+Inputs:
+
+- all lecture substrates
+- existing deterministic glossary/theory/concept graph as supporting context,
+  not as authority
+
+Outputs:
+
+- `source_intelligence/course_synthesis.json`
+
+Minimum schema:
+
+- course arc
+- theory/tradition map
+- concept map
+- distinction map
+- sideways relations
+- lecture clusters
+- top-down priorities
+- known weak spots or missing-source caveats
+
+### 6. Downward-revision builder
+
+Foreslaaet script:
+
+- `scripts/build_personlighedspsykologi_revised_lecture_substrates.py`
+
+Inputs:
+
+- `course_synthesis.json`
+- each lecture substrate
+
+Outputs:
+
+- `source_intelligence/revised_lecture_substrates/W##L#.json`
+
+Minimum schema:
+
+- what matters more after seeing the whole course
+- what should be de-emphasized locally
+- strongest sideways connections
+- top-down course relevance
+- revised podcast priorities
+
+### 7. Podcast-substrate builder
+
+Foreslaaet script:
+
+- `scripts/build_personlighedspsykologi_podcast_substrates.py`
+
+Inputs:
+
+- revised lecture substrates
+- source cards
+- source weighting
+- course synthesis
+
+Outputs:
+
+- `source_intelligence/podcast_substrates/W##L#.json`
+
+Minimum schema:
+
+- weekly podcast substrate
+- per-reading substrate
+- per-slide substrate where useful
+- short-podcast substrate
+- compact selected concepts
+- compact selected tensions
+- explicit source-grounding notes
+
+This artifact is the intended boundary into `Prompt Assembly Layer`. NotebookLM
+prompts should consume this compact substrate rather than trying to assemble the
+whole course-intelligence stack directly.
+
+### 8. Canonical rebuild wrapper
+
+The existing rebuild wrapper should either be extended or paired with a new LLM
+wrapper.
+
+Foreslaaet command:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py
+```
+
+Required flags:
+
+- `--lectures W05L1,W06L1`
+- `--all`
+- `--force`
+- `--skip-existing`
+- `--dry-run`
+- `--fail-on-missing-key`
+
+### 9. Prompt integration for podcast testing
+
+Do not rewrite the whole prompt system first. Add one narrow integration path:
+
+- if a podcast substrate exists for the lecture/output type, include a compact
+  `Podcast substrate` section in the course-context note
+- keep existing prompts as fallback
+- add a config flag so substrate use can be enabled/disabled during A/B tests
+
+### 10. Testing readiness criteria
+
+The preprocessing system is ready for podcast quality testing when:
+
+- `W05L1` and `W06L1` have source cards, lecture substrates, revised lecture
+  substrates, and podcast substrates
+- one early and one late lecture have the same artifact coverage
+- validators confirm schema shape, hashes, and missing-source handling
+- dry-run prompts show compact substrate injection
+- generated test podcasts are at least not worse than the simple baseline
+
+For the first production-ish pass, `W03L2` remains allowed as partial because
+of the known missing source.

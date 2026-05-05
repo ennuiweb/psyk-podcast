@@ -63,6 +63,9 @@ Current direction:
 - Python should orchestrate, cache, validate, and write artifacts; Gemini 3.1
   Pro should do most semantic interpretation; NotebookLM prompts should consume
   only compact selected substrate.
+- The concrete code plan for testing readiness is tracked in
+  `shows/personlighedspsykologi-en/docs/preprocessing-system.md` and summarized
+  in `docs/notebooklm-automation.md`.
 
 Operational note:
 

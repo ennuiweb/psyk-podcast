@@ -86,6 +86,80 @@ layers. The mature shape is explicit artifacts with inspectable contracts and
 mostly one-way derivation, plus deliberate cross-links where comparison is part
 of the artifact itself.
 
+## Preprocessing Versus Prompt Tuning
+
+The most important distinction for the next phase is:
+
+- preprocessing builds the course substrate
+- prompt tuning decides how a specific generator uses that substrate
+
+The core task is preprocessing. Prompt work matters, especially for NotebookLM
+podcasts, but it is downstream of the substrate. The `Freudd Content Engine`
+should therefore avoid treating prompt edits as the main way to improve course
+understanding.
+
+Near the exam deadline, the finished system should be judged by whether it
+provides a better substrate than the simple baseline of "upload the source files
+and use a simple prompt". If the richer system makes outputs worse, too
+abstract, or less grounded, it has failed even if the architecture looks more
+impressive.
+
+The practical rule is:
+
+- Python should orchestrate, cache, validate, and assemble
+- Gemini should do most semantic interpretation
+- prompts should receive compact selected substrate, not the full internal
+  artifact stack
+
+## Recursive Gemini Preprocessing Strategy
+
+The intended direction is now a Gemini-heavy recursive preprocessing approach.
+The goal is not to replace every script with model output. The goal is to use
+scripts as stable rails around model-generated semantic passes.
+
+The planned passes are:
+
+1. Source pass
+2. Lecture pass
+3. Course pass
+4. Downward revision pass
+5. Output substrate pass
+
+The source pass sends individual readings and slide decks to Gemini and writes
+structured source cards. These cards should capture claims, terms, distinctions,
+theory roles, misunderstandings, source role, and provenance.
+
+The lecture pass combines source cards for each lecture, with raw files included
+where needed, and writes lecture substrates. These should identify the lecture
+question, source roles, reading/slide relations, central tensions, and the few
+ideas that must carry forward.
+
+The course pass reads all lecture substrates and writes course-level artifacts:
+course arc, glossary, theory map, distinction map, and sideways relations.
+
+The downward revision pass revisits each lecture with the course-level map in
+view. This is where top-down information flow becomes explicit: the system asks
+what matters locally once the whole course movement is visible.
+
+The output substrate pass writes compact artifacts for generation. For this
+project phase, podcast substrates are in scope; broader setup for every output
+family is not.
+
+This is recursive in the useful sense: each level compresses and interprets the
+previous one, then course-level structure flows back down to revise lecture
+substrates. It should not become an opaque loop where model prose repeatedly
+rewrites itself without provenance.
+
+Guardrails:
+
+- every LLM artifact must be schema-validated
+- every artifact must carry input source ids and dependency hashes
+- model claims should be marked as source-grounded, slide-framed, or synthetic
+  course interpretation where possible
+- missing sources must remain explicit, not filled in by inference
+- final podcast prompts should use only the selected substrate slice needed for
+  that output
+
 ## Overall Verdict
 
 The system is real, useful, and operationally advanced. It is not a prototype.
@@ -378,13 +452,18 @@ These are the highest-leverage maturity moves from here.
 
 ### Priority 1: Operationalize the `Source Intelligence Layer`
 
-The main baseline artifacts now exist. The next high-leverage work is:
+The deterministic baseline artifacts now exist. The next high-leverage work is
+not more prompt tuning and not primarily more hand-coded semantic inference. It
+is a Gemini-driven recursive preprocessing layer, with scripts providing
+orchestration and validation.
 
-1. prompt-integrated weighting
-2. distinction / concept-graph artifacts
-3. automatic stale enforcement
-4. stronger slide-informed weekly synthesis
-5. clearer top-down/sideways selection contracts into prompt assembly
+The immediate target is:
+
+1. source cards for all available readings and slide decks
+2. lecture substrates built from source cards
+3. course-level synthesis built from lecture substrates
+4. downward revision of each lecture substrate using the course synthesis
+5. compact podcast substrates for generation
 
 This is still the single best way to improve learning-material quality.
 
@@ -430,12 +509,15 @@ conditions for learning material.
 
 Concretely:
 
-- no strong prompt-integrated source weighting
+- no full-course LLM preprocessing pass over all source material yet
+- no source-card layer for all readings and slide decks yet
+- no Gemini-built lecture substrates that combine readings and slide framing yet
+- no course-level downward revision pass that tells each lecture what matters
+  once the whole course arc is visible
+- no compact podcast substrate layer that can be used without bloating prompts
 - no automatic stale invalidation enforcement for derived understanding
-- weekly preprocessing is still readings-first rather than a slide-informed
-  lecture synthesis layer
-- sideways comparison across lectures and theories is still weaker than bottom-up
-  grounding
+- sideways comparison across lectures and theories is still more scripted and
+  seeded than source-derived
 
 ### Pain 2: The live architecture is still partially transitional
 
@@ -472,8 +554,10 @@ The current baseline is now materially better than a file inventory. It has:
 
 The next missing layers are:
 
-- prompt-integrated weighting
-- deeper distinction / concept-graph artifacts
+- Gemini-generated source cards
+- Gemini-generated lecture substrates
+- Gemini-generated course synthesis and downward revision
+- compact output substrates for generation
 - automatic stale enforcement
 
 ### Pain 5: Reproducibility is still incomplete
@@ -497,8 +581,8 @@ without destabilizing what already works.
 
 Goal:
 
-- make the upstream course-understanding layer materially richer before making
-  more prompt changes
+- make the upstream course-understanding layer materially richer through
+  recursive Gemini preprocessing before doing more prompt work
 
 Current baseline delivered:
 
@@ -511,26 +595,25 @@ Current baseline delivered:
 
 Remaining gap before this phase is truly complete:
 
-- prompt-integrated weighting
-- concept graph depth
-- automatic stale enforcement
-- stronger slide-informed lecture synthesis
-- more explicit sideways comparison artifacts
+- source cards for all available readings and slide decks
+- lecture substrates that combine source cards with slide framing
+- course synthesis derived from lecture substrates
+- downward revision of each lecture substrate from the whole-course view
+- podcast substrates that are compact enough for NotebookLM
 
-### Phase 2: Tighten pedagogical selection
+### Phase 2: Produce Output Substrates
 
 Goal:
 
-- improve how the engine decides what matters, not only how it phrases prompts
+- convert the recursive preprocessing results into compact generation inputs
 
 Recommended outputs:
 
-1. source weighting rules
-2. lecture-level centrality and relevance ranking
-3. stronger slide-informed lecture synthesis
-4. explicit cross-lecture concept reuse
-5. conservative prompt-surface selection that exposes fewer but better-chosen
-   signals to NotebookLM
+1. podcast substrate per lecture
+2. source-aware podcast substrate per reading/slide where needed
+3. compact weekly substrate for `Alle kilder (undtagen slides)` audio
+4. validation that each substrate is grounded, concise, and usable
+5. prompt integration that uses the substrate without expanding the final prompt
 
 Current default decisions for this phase:
 
@@ -550,10 +633,10 @@ Current default decisions for this phase:
 
 Exit condition:
 
-- prompts are built from ranked and structured course understanding instead of
-  relatively flat context blocks
-- outputs improve because selection becomes more disciplined, not because
-  prompts become much longer
+- podcasts can be generated from a stable substrate that is visibly better than
+  the simple baseline of raw source files plus a simple prompt
+- outputs improve because preprocessing gets better, not because prompts become
+  much longer
 
 ### Phase 3: Add explicit quality loops
 

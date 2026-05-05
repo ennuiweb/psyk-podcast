@@ -243,9 +243,16 @@ Preprocessing maturity note:
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`,
   which runs source catalog -> lecture bundles -> semantic artifacts ->
   weighting -> concept graph -> invariants in order.
-- The next intended preprocessing layers above that are deeper distinction /
-  concept-graph structure, stronger stale-enforcement, and richer prompt-side
-  use of the weighting layer, not more prompt-only tweaks.
+- The next intended preprocessing layer is a Gemini-driven recursive course
+  pass, not more prompt-only tweaks and not primarily more hand-coded semantic
+  inference.
+- The intended recursive pass is: source cards for all available readings and
+  slide decks -> lecture substrates -> course synthesis -> downward lecture
+  revision -> compact podcast substrates.
+- Python should own orchestration, caching, validation, retries, staleness, and
+  artifact writing; Gemini 3.1 Pro should do most semantic interpretation.
+- The podcast prompt path should consume compact podcast substrates rather than
+  exposing the whole internal artifact stack to NotebookLM.
 
 ## Related docs
 

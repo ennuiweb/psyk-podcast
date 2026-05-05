@@ -25,6 +25,80 @@ Designprincip:
 - det maa ikke blive til fri rekursiv prompt-suppe; flowet skal ske gennem
   eksplicitte og auditerbare artifacts
 
+## Strategisk skift: Gemini som semantic engine
+
+Den vigtigste skelnen fremover er:
+
+- preprocessing bygger course-substratet
+- prompt tuning bestemmer, hvordan en bestemt generator bruger substratet
+
+For eksamensnaer produktion er preprocessing hovedopgaven. Promptarbejde er
+vigtigt, men det maa ikke blive erstatningen for faktisk course-forstaaelse.
+
+Den foretrukne vej er derfor nu en Gemini-tung rekursiv preprocessing-model,
+hvor Python primært er rails:
+
+- Python laver inventory, batching, caching, retries, schema validation,
+  staleness og artifact writing
+- Gemini 3.1 Pro laver den semantiske fortolkning af kilder, lectures,
+  course arc og relationer
+- NotebookLM prompts faar kun en kompakt valgt substrate-slice
+
+Maalet er ikke at bygge flest mulige scripts. Maalet er et substrate, der er
+klart bedre end den simple baseline: upload source files og brug en simpel
+prompt.
+
+## Rekursiv course-preprocessing
+
+Den naeste modne version skal bygges i fem passes:
+
+1. Source pass
+2. Lecture pass
+3. Course pass
+4. Downward revision pass
+5. Output substrate pass
+
+Source pass:
+
+- sender hver tilgaengelig reading og slide deck til Gemini
+- skriver structured source cards
+- markerer claims, centrale begreber, distinctions, theory role,
+  misunderstandings, source role og provenance
+
+Lecture pass:
+
+- samler source cards for en lecture
+- inkluderer raw files igen, naar source cards ikke er nok
+- skriver lecture substrates med lecture question, source roles,
+  reading/slide relationer, centrale tensions og must-carry ideas
+
+Course pass:
+
+- laeser alle lecture substrates
+- skriver course arc, glossary, theory map, distinction map og sideways
+  relations
+
+Downward revision pass:
+
+- genbesoeger hver lecture substrate med course passet i view
+- markerer hvad der faktisk betyder mest lokalt, naar hele kursusbevaegelsen
+  er kendt
+
+Output substrate pass:
+
+- skriver kompakte generation substrates
+- for dette task er podcast substrates i scope
+- setup af alle andre outputfamilier er ikke core scope endnu
+
+Guardrails:
+
+- alle LLM artifacts skal schema-validates
+- alle artifacts skal have input source ids og dependency hashes
+- missing sources skal blive explicit missing, ikke udfyldes af inference
+- claims skal saa vidt muligt markeres som source-grounded, slide-framed eller
+  synthetic course interpretation
+- prompts maa ikke faa hele artifact-stakken, kun den valgte substrate-slice
+
 ## Nuvaerende lag
 
 Preprocessing bestaar i dag af tre forskellige lag:
@@ -260,16 +334,16 @@ For `short` betyder det nu ogsaa:
 
 Den planlagte raekkefoelge er:
 
-1. `source_catalog.json`
-2. `lecture_bundle.json` pr. lecture
-3. `course_glossary.json`
-4. `course_theory_map.json`
-5. hash-baseret stale/invalidation-model
-6. source weighting som egentligt styringslag
-7. dybere distinction graph / cross-lecture concept graph
-8. slide-informed weekly preprocessing
-9. automatic stale enforcement
+1. Gemini source cards for alle tilgaengelige readings og slide decks
+2. Gemini lecture substrates pr. lecture
+3. Gemini course synthesis fra alle lecture substrates
+4. downward revision af lecture substrates ud fra course synthesis
+5. compact podcast substrates til NotebookLM generation
+6. prompt integration, der bruger podcast substrate uden at bloate prompts
+7. automatic stale enforcement for LLM-derived artifacts
 
-Det betyder, at outputs godt kan bygges nu, men at den mest modne version af
-systemet foerst opnaar sit egentlige loft, naar weighting, concept graph og
-automatisk staleness enforcement er pa plads.
+Det betyder, at outputs godt kan bygges nu, men at den faerdige
+preprocessing-version for eksamensformaal foerst er paa plads, naar hvert
+tilgaengeligt source file har vaeret gennem Gemini source passet, hver lecture
+har et revised lecture substrate, og podcasts kan genereres fra en kompakt
+podcast substrate i stedet for kun fra generisk prompt-kontekst.

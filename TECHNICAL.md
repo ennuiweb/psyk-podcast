@@ -53,6 +53,17 @@ This is a deliberate design principle, not accidental complexity. The engine
 should approximate whole-course reasoning through explicit intermediate
 artifacts, not by collapsing everything into opaque prompt text.
 
+Current direction:
+
+- The main `personlighedspsykologi` maturity task is course preprocessing, not
+  more prompt tuning.
+- The next intended substrate layer is Gemini-driven and recursive: source
+  cards -> lecture substrates -> course synthesis -> downward lecture revision
+  -> compact podcast substrates.
+- Python should orchestrate, cache, validate, and write artifacts; Gemini 3.1
+  Pro should do most semantic interpretation; NotebookLM prompts should consume
+  only compact selected substrate.
+
 Operational note:
 
 - For `personlighedspsykologi`, the canonical local rebuild entrypoint for the

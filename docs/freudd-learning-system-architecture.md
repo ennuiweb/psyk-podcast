@@ -167,6 +167,9 @@ Implementation status as of 2026-05-05:
   are implemented
 - source-card generation uploads actual PDF/source files to Gemini; the
   lecture-substrate pass also uploads the lecture's raw source PDFs by default
+- Gemini calls use explicit high thinking, JSON MIME output, and
+  stage-specific structured-output schemas while preserving Gemini 3's default
+  temperature behavior
 - the first live `W05L1,W06L1` recursive batch has generated and validated
   source cards, lecture substrates, a partial course synthesis, revised lecture
   substrates, and podcast substrates

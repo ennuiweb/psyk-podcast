@@ -80,6 +80,8 @@ Operational note:
 - Source cards and lecture substrates upload the actual source PDFs to Gemini
   by default. The lecture-pass escape hatch is
   `--no-raw-lecture-source-uploads`.
+- Gemini preprocessing uses explicit `thinking_level=high`, JSON MIME output,
+  stage-specific JSON schemas, and the Gemini 3 default temperature behavior.
 - Recursive artifact validation and progress tracking lives in
   `shows/personlighedspsykologi-en/source_intelligence/index.json`, rebuilt by
   `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.

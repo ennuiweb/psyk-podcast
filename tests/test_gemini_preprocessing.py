@@ -51,6 +51,7 @@ def test_preflight_gemini_json_generation_uses_tiny_json_request():
     fake_client.models.generate_content.return_value = mock.Mock(text='{"ok": true}')
     fake_support = mock.Mock()
     fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.ThinkingConfig.side_effect = lambda **kwargs: {"type": "thinking", **kwargs}
     fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
 
     payload = gemini.preflight_gemini_json_generation(
@@ -65,7 +66,47 @@ def test_preflight_gemini_json_generation_uses_tiny_json_request():
     assert payload == {"ok": True}
     call = fake_client.models.generate_content.call_args.kwargs
     assert call["config"]["max_output_tokens"] == 512
+    assert call["config"]["response_mime_type"] == "application/json"
+    assert call["config"]["thinking_config"] == {"type": "thinking", "thinking_level": "high"}
+    assert call["config"]["response_json_schema"] == {
+        "type": "object",
+        "properties": {"ok": {"type": "boolean"}},
+        "required": ["ok"],
+    }
+    assert "temperature" not in call["config"]
     assert call["contents"] == [{"type": "text", "text": 'Return exactly this JSON object: {"ok": true}'}]
+
+
+def test_generate_json_passes_structured_output_schema_and_high_thinking():
+    fake_client = mock.Mock()
+    fake_client.models.generate_content.return_value = mock.Mock(text='{"analysis": {"ok": true}}')
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.ThinkingConfig.side_effect = lambda **kwargs: {"type": "thinking", **kwargs}
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+    schema = {
+        "type": "object",
+        "properties": {"analysis": {"type": "object"}},
+        "required": ["analysis"],
+    }
+
+    payload = gemini.generate_json(
+        backend=gemini.GeminiPreprocessingBackend(
+            provider="gemini",
+            client=fake_client,
+            support=fake_support,
+            model="gemini-test",
+        ),
+        system_instruction="system",
+        user_prompt="user",
+        response_json_schema=schema,
+    )
+
+    assert payload == {"analysis": {"ok": True}}
+    call = fake_client.models.generate_content.call_args.kwargs
+    assert call["config"]["response_json_schema"] == schema
+    assert call["config"]["thinking_config"] == {"type": "thinking", "thinking_level": "high"}
+    assert "temperature" not in call["config"]
 
 
 def test_generate_json_reports_response_diagnostics_for_truncated_json():

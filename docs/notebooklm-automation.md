@@ -278,6 +278,10 @@ Recursive preprocessing implementation:
 - The wrapper runs a small Gemini JSON preflight before live source uploads;
   use `--preflight-only` to test model/quota access without uploading course
   files.
+- Gemini preprocessing calls use `gemini-3.1-pro-preview`, explicit
+  `thinking_level=high`, default Gemini 3 temperature behavior, and
+  stage-specific `response_json_schema` contracts with
+  `response_mime_type="application/json"`.
 - LLM-derived artifacts live under
   `shows/personlighedspsykologi-en/source_intelligence/` so they remain
   visually distinct from deterministic artifacts.

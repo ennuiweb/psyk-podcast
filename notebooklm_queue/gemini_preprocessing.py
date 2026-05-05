@@ -19,6 +19,8 @@ GEMINI_FILE_POLL_TIMEOUT_SECONDS = 180
 GEMINI_RATE_LIMIT_RETRY_SECONDS = 60
 DEFAULT_MAX_INLINE_SOURCE_CHARS = 16000
 DEFAULT_MAX_OUTPUT_TOKENS = 8192
+DEFAULT_GEMINI_THINKING_LEVEL = "high"
+GEMINI_PREPROCESSING_GENERATION_CONFIG_VERSION = "gemini-preprocessing-generation-config-v1"
 
 
 class GeminiPreprocessingError(RuntimeError):
@@ -247,6 +249,36 @@ def parse_json_response(text: str) -> dict[str, Any]:
     return payload
 
 
+def build_generate_content_config(
+    *,
+    support: object,
+    system_instruction: str,
+    max_output_tokens: int,
+    response_json_schema: dict[str, Any] | None = None,
+) -> object:
+    config_kwargs: dict[str, Any] = {
+        "system_instruction": system_instruction,
+        "max_output_tokens": max_output_tokens,
+        "response_mime_type": "application/json",
+        "thinking_config": support.ThinkingConfig(thinking_level=DEFAULT_GEMINI_THINKING_LEVEL),
+    }
+    if response_json_schema is not None:
+        config_kwargs["response_json_schema"] = response_json_schema
+    return support.GenerateContentConfig(**config_kwargs)
+
+
+def generation_config_metadata() -> dict[str, Any]:
+    return {
+        "version": GEMINI_PREPROCESSING_GENERATION_CONFIG_VERSION,
+        "thinking_level": DEFAULT_GEMINI_THINKING_LEVEL,
+        "thinking_budget": None,
+        "include_thoughts": False,
+        "temperature": "model_default",
+        "response_mime_type": "application/json",
+        "response_json_schema": "stage_specific",
+    }
+
+
 def _inline_source_payload(path: Path, *, max_chars: int) -> str:
     try:
         text = path.read_text(encoding="utf-8", errors="replace")
@@ -342,6 +374,7 @@ def generate_json(
     source_paths: list[Path] | None = None,
     max_output_tokens: int = DEFAULT_MAX_OUTPUT_TOKENS,
     max_inline_source_chars: int = DEFAULT_MAX_INLINE_SOURCE_CHARS,
+    response_json_schema: dict[str, Any] | None = None,
     retry_count: int = 1,
     retry_sleep_seconds: int = GEMINI_RATE_LIMIT_RETRY_SECONDS,
 ) -> dict[str, Any]:
@@ -361,10 +394,11 @@ def generate_json(
             response = backend.client.models.generate_content(
                 model=backend.model,
                 contents=contents,
-                config=backend.support.GenerateContentConfig(
+                config=build_generate_content_config(
+                    support=backend.support,
                     system_instruction=system_instruction,
                     max_output_tokens=max_output_tokens,
-                    response_mime_type="application/json",
+                    response_json_schema=response_json_schema,
                 ),
             )
             text = extract_gemini_text(response)
@@ -410,5 +444,10 @@ def preflight_gemini_json_generation(
         system_instruction="Return only valid JSON.",
         user_prompt='Return exactly this JSON object: {"ok": true}',
         max_output_tokens=512,
+        response_json_schema={
+            "type": "object",
+            "properties": {"ok": {"type": "boolean"}},
+            "required": ["ok"],
+        },
         retry_count=0,
     )

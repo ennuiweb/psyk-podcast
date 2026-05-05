@@ -13,6 +13,7 @@ from notebooklm_queue.gemini_preprocessing import (
     DEFAULT_GEMINI_PREPROCESSING_MODEL,
     GeminiPreprocessingBackend,
     generate_json,
+    generation_config_metadata,
     make_gemini_backend,
 )
 from notebooklm_queue.source_intelligence_schemas import (
@@ -232,6 +233,7 @@ def _call_json_generator(
     user_prompt: str,
     source_paths: list[Path] | None = None,
     max_output_tokens: int = 8192,
+    response_json_schema: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if json_generator is not None:
         return json_generator(
@@ -247,7 +249,206 @@ def _call_json_generator(
         user_prompt=user_prompt,
         source_paths=source_paths or [],
         max_output_tokens=max_output_tokens,
+        response_json_schema=response_json_schema,
     )
+
+
+def _string_schema(description: str = "") -> dict[str, Any]:
+    schema: dict[str, Any] = {"type": "string"}
+    if description:
+        schema["description"] = description
+    return schema
+
+
+def _string_list_schema(*, min_items: int = 0, description: str = "") -> dict[str, Any]:
+    schema: dict[str, Any] = {"type": "array", "items": {"type": "string"}}
+    if min_items:
+        schema["minItems"] = min_items
+    if description:
+        schema["description"] = description
+    return schema
+
+
+def _object_list_schema(*, min_items: int = 0, description: str = "") -> dict[str, Any]:
+    schema: dict[str, Any] = {"type": "array", "items": {"type": "object"}}
+    if min_items:
+        schema["minItems"] = min_items
+    if description:
+        schema["description"] = description
+    return schema
+
+
+def _analysis_response_schema(properties: dict[str, Any], required: list[str]) -> dict[str, Any]:
+    return {
+        "type": "object",
+        "properties": {
+            "analysis": {
+                "type": "object",
+                "properties": properties,
+                "required": required,
+            }
+        },
+        "required": ["analysis"],
+    }
+
+
+def _source_card_response_schema() -> dict[str, Any]:
+    return _analysis_response_schema(
+        {
+            "central_claims": _object_list_schema(min_items=1),
+            "key_concepts": _object_list_schema(min_items=1),
+            "distinctions": _object_list_schema(),
+            "theory_role": _string_schema(),
+            "source_role": _string_schema(),
+            "relation_to_lecture": _string_schema(),
+            "likely_misunderstandings": _string_list_schema(),
+            "quote_targets": _object_list_schema(),
+            "grounding_notes": _string_list_schema(),
+            "warnings": _string_list_schema(),
+        },
+        [
+            "central_claims",
+            "key_concepts",
+            "distinctions",
+            "theory_role",
+            "source_role",
+            "relation_to_lecture",
+            "likely_misunderstandings",
+            "quote_targets",
+            "grounding_notes",
+            "warnings",
+        ],
+    )
+
+
+def _lecture_substrate_response_schema() -> dict[str, Any]:
+    return _analysis_response_schema(
+        {
+            "lecture_question": _string_schema(),
+            "central_learning_problem": _string_schema(),
+            "source_roles": _object_list_schema(min_items=1),
+            "source_relations": _object_list_schema(),
+            "core_concepts": _object_list_schema(min_items=1),
+            "core_tensions": _object_list_schema(),
+            "likely_misunderstandings": _string_list_schema(),
+            "must_carry_ideas": _string_list_schema(min_items=1),
+            "missing_sources": _object_list_schema(),
+            "warnings": _string_list_schema(),
+        },
+        [
+            "lecture_question",
+            "central_learning_problem",
+            "source_roles",
+            "source_relations",
+            "core_concepts",
+            "core_tensions",
+            "likely_misunderstandings",
+            "must_carry_ideas",
+            "missing_sources",
+            "warnings",
+        ],
+    )
+
+
+def _course_synthesis_response_schema() -> dict[str, Any]:
+    return _analysis_response_schema(
+        {
+            "course_arc": _string_schema(),
+            "theory_tradition_map": _object_list_schema(min_items=1),
+            "concept_map": _object_list_schema(min_items=1),
+            "distinction_map": _object_list_schema(),
+            "sideways_relations": _object_list_schema(),
+            "lecture_clusters": _object_list_schema(),
+            "top_down_priorities": _object_list_schema(min_items=1),
+            "weak_spots": _string_list_schema(),
+            "podcast_generation_guidance": _string_list_schema(),
+        },
+        [
+            "course_arc",
+            "theory_tradition_map",
+            "concept_map",
+            "distinction_map",
+            "sideways_relations",
+            "lecture_clusters",
+            "top_down_priorities",
+            "weak_spots",
+            "podcast_generation_guidance",
+        ],
+    )
+
+
+def _downward_revision_response_schema() -> dict[str, Any]:
+    return _analysis_response_schema(
+        {
+            "what_matters_more": _string_list_schema(min_items=1),
+            "de_emphasize": _string_list_schema(),
+            "strongest_sideways_connections": _object_list_schema(),
+            "top_down_course_relevance": _string_schema(),
+            "revised_podcast_priorities": _string_list_schema(min_items=1),
+            "carry_forward": _string_list_schema(min_items=1),
+            "warnings": _string_list_schema(),
+        },
+        [
+            "what_matters_more",
+            "de_emphasize",
+            "strongest_sideways_connections",
+            "top_down_course_relevance",
+            "revised_podcast_priorities",
+            "carry_forward",
+            "warnings",
+        ],
+    )
+
+
+def _podcast_substrate_response_schema() -> dict[str, Any]:
+    list_schema = _string_list_schema()
+    required_section = {
+        "type": "object",
+        "properties": {
+            "angle": _string_schema(),
+            "must_cover": _string_list_schema(min_items=1),
+            "avoid": list_schema,
+        },
+        "required": ["angle", "must_cover", "avoid"],
+    }
+    return {
+        "type": "object",
+        "properties": {
+            "podcast": {
+                "type": "object",
+                "properties": {
+                    "weekly": {
+                        "type": "object",
+                        "properties": {
+                            "angle": _string_schema(),
+                            "must_cover": _string_list_schema(min_items=1),
+                            "avoid": list_schema,
+                            "grounding": list_schema,
+                        },
+                        "required": ["angle", "must_cover", "avoid", "grounding"],
+                    },
+                    "per_reading": _object_list_schema(),
+                    "per_slide": _object_list_schema(),
+                    "short": required_section,
+                    "selected_concepts": _object_list_schema(min_items=1),
+                    "selected_tensions": _object_list_schema(),
+                    "grounding_notes": list_schema,
+                    "source_selection": _object_list_schema(),
+                },
+                "required": [
+                    "weekly",
+                    "per_reading",
+                    "per_slide",
+                    "short",
+                    "selected_concepts",
+                    "selected_tensions",
+                    "grounding_notes",
+                    "source_selection",
+                ],
+            }
+        },
+        "required": ["podcast"],
+    }
 
 
 def _source_identity(source: dict[str, Any], source_path: Path, repo_root: Path, subject_root: Path) -> dict[str, Any]:
@@ -290,6 +491,7 @@ def _build_metadata(
         "build": {
             "model": model,
             "prompt_version": PROMPT_VERSIONS[artifact_type],
+            "generation_config": generation_config_metadata(),
         },
         "provenance": {
             "input_source_ids": input_source_ids,
@@ -524,6 +726,7 @@ def build_source_card_for_source(
         user_prompt=_source_card_prompt(source=source, policy=policy),
         source_paths=[source_path],
         max_output_tokens=8192,
+        response_json_schema=_source_card_response_schema(),
     )
     analysis = _analysis_from_response(
         response,
@@ -815,6 +1018,7 @@ def build_lecture_substrate_for_lecture(
         user_prompt=_lecture_substrate_prompt(bundle=bundle, source_cards=source_cards, missing_sources=missing_sources),
         source_paths=raw_source_paths,
         max_output_tokens=10000,
+        response_json_schema=_lecture_substrate_response_schema(),
     )
     analysis = _analysis_from_response(
         response,
@@ -1085,6 +1289,7 @@ def build_course_synthesis(
             partial_scope=partial_scope,
         ),
         max_output_tokens=12000,
+        response_json_schema=_course_synthesis_response_schema(),
     )
     analysis = _analysis_from_response(
         response,
@@ -1183,6 +1388,7 @@ def build_revised_lecture_substrate_for_lecture(
             course_synthesis=course_synthesis,
         ),
         max_output_tokens=8192,
+        response_json_schema=_downward_revision_response_schema(),
     )
     analysis = _analysis_from_response(
         response,
@@ -1386,6 +1592,7 @@ def build_podcast_substrate_for_lecture(
             source_weighting=source_weighting,
         ),
         max_output_tokens=10000,
+        response_json_schema=_podcast_substrate_response_schema(),
     )
     podcast = _coerce_dict(response.get("podcast") if "podcast" in response else response)
     normalized_podcast = {

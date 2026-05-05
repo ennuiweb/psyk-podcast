@@ -387,7 +387,10 @@ Ansvar:
 
 - laese `GEMINI_API_KEY` eller `GOOGLE_API_KEY` fra environment
 - uploade PDF/source files til Gemini files API
-- kalde Gemini 3.1 Pro med schema-styrede prompts
+- kalde `gemini-3.1-pro-preview` med `thinking_level=high`
+- bevare Gemini 3 standard-temperature i stedet for at saenke den
+- bruge `response_mime_type="application/json"` plus stage-specifikke
+  `response_json_schema` kontrakter
 - retrye transient failures
 - skrive request metadata uden at gemme secrets
 - returnere parsed JSON eller en tydelig fail-open/fail-closed status
@@ -642,6 +645,8 @@ Live run preconditions:
 - `GEMINI_API_KEY`, `GOOGLE_API_KEY`, or local secret-store
   `google.gemini.api_key` must be available
 - the key/project must have billing/quota for `gemini-3.1-pro-preview`
+- Gemini calls use explicit high thinking and API-level JSON schema
+  constraints; do not switch to thinking budgets for Gemini 3.x models
 - keep `--skip-existing` unless intentionally rebuilding
 - use `--force` only when stale artifacts should be replaced
 

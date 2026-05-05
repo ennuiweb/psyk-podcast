@@ -18,11 +18,11 @@ Use this vocabulary when referring to the system:
 - `Freudd Learning System` - the whole repo-level ecosystem: portal, content generation, queueing, publication, and public podcast surfaces.
 - `Freudd Portal` - the student-facing `freudd.dk` web layer in `freudd_portal/`.
 - `Freudd Content Engine` - the course-material engine whose purpose is to create the best possible conditions for high-quality learning material, across source preprocessing, course framing, prompt construction, generation workflows, and show metadata/artifacts.
-- `Course Understanding Pipeline` - the pre-output subset of the `Freudd Content Engine` that processes source files and builds source-, lecture-, and course-level understanding before output-specific prompts or artifact generators run.
+- `Course Understanding Pipeline` - the pre-output subset of the `Freudd Content Engine` that processes source files and builds source-, lecture-, and course-level understanding before output-specific prompts or artifact generators run; its two main layers are the `Source Intelligence Layer` and the `Course Context Layer`.
 - `Freudd Generation Queue` - the Hetzner-owned queue/orchestration runtime in `notebooklm_queue/`.
 - `Source Intelligence Layer` - the core raw-source intelligence subsystem inside the `Course Understanding Pipeline`, now centered on `source_catalog.json`, `lecture_bundles/`, `source_intelligence/`, `course_glossary.json`, `course_theory_map.json`, and related weighting/staleness artifacts.
-- `Course Context Layer` - the deterministic course/lecture framing compiler in `notebooklm_queue/course_context.py`.
-- `Prompt Assembly Layer` - the shared prompt construction layer in `notebooklm_queue/prompting.py`.
+- `Course Context Layer` - the deterministic selection/compilation layer inside the `Course Understanding Pipeline`, implemented primarily in `notebooklm_queue/course_context.py`; it turns source/course understanding into compact context slices for later prompts and output artifacts.
+- `Prompt Assembly Layer` - the downstream shared prompt construction layer in `notebooklm_queue/prompting.py`.
 - `Distribution Layer` - feed, manifest, Spotify, and publication outputs.
 - `Freudd Podcast Network` - the public podcast surfaces exposed through RSS, Spotify, and podcast apps.
 
@@ -61,9 +61,9 @@ Current direction:
   `personlighedspsykologi`, that includes deterministic source catalog/bundle
   artifacts, Gemini source cards, lecture substrates, course synthesis,
   downward lecture revisions, source weighting, glossary, theory map, concept
-  graph, and progress/staleness indexes. It excludes prompt assembly,
-  NotebookLM generation, scaffold PDF rendering, queue publication, and portal
-  presentation.
+  graph, context selection/compilation, and progress/staleness indexes. It
+  excludes prompt assembly, NotebookLM generation, scaffold PDF rendering, queue
+  publication, and portal presentation.
 - The main `personlighedspsykologi` maturity task is course preprocessing, not
   more prompt tuning.
 - The recursive substrate layer is now implemented as code: source

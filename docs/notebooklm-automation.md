@@ -15,10 +15,13 @@ Naming note:
 - `Course Understanding Pipeline` names the pre-output subset of the content
   engine that processes source files and builds source-, lecture-, and
   course-level understanding before prompt assembly or output-specific artifact
-  generation.
-- `Course Context Layer`, `Prompt Assembly Layer`, and `Source Intelligence
-  Layer` are the canonical names for the main subsystems inside the content
-  engine.
+  generation. Its two main layers are `Source Intelligence Layer` and `Course
+  Context Layer`.
+- `Source Intelligence Layer` builds source-, lecture-, and course-level
+  artifacts. `Course Context Layer` selects and compiles the relevant slice of
+  those artifacts for a concrete lecture/source/output situation.
+- `Prompt Assembly Layer` is downstream of the `Course Understanding Pipeline`;
+  it turns selected context into actual prompts.
 
 Design principle:
 

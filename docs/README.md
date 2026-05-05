@@ -30,9 +30,8 @@ Cross-doc principle:
   alternative to a single giant full-course reasoning pass. Relevant docs should
   preserve the distinction between bottom-up, top-down, and sideways
   information flow when describing the `Course Understanding Pipeline`,
-  `Source Intelligence Layer`, `Course Context Layer`, and `Prompt Assembly
-  Layer`.
+  especially its `Source Intelligence Layer` and `Course Context Layer`.
 - Use `Course Understanding Pipeline` for the pre-output source/course
-  understanding work. Do not use that name for output-specific prompt assembly,
-  NotebookLM runs, scaffold PDF rendering, queue publication, or portal
-  presentation.
+  understanding work. Use `Prompt Assembly Layer` for downstream prompt
+  construction. Do not use the understanding-pipeline name for NotebookLM runs,
+  scaffold PDF rendering, queue publication, or portal presentation.

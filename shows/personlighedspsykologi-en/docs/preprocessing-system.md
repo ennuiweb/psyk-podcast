@@ -8,10 +8,11 @@ Canonical navn:
 
 - `Source Intelligence Layer`
 
-Dette dokument beskriver altsaa den del af `Freudd Content Engine`, der skal
-skabe de bedst mulige betingelser for laeringsmateriale ved at bygge et rigere
-preprocesseret source-lag foer course context, prompt assembly og egentlig
-generation.
+Dette er kerne-artifactlaget inde i `Course Understanding Pipeline`. Dokumentet
+beskriver altsaa den del af `Freudd Content Engine`, der skal skabe de bedst
+mulige betingelser for laeringsmateriale ved at bygge et rigere preprocesseret
+source-lag, som `Course Context Layer` senere kan selektere og kompilere fra,
+foer prompt assembly og egentlig generation.
 
 Designprincip:
 

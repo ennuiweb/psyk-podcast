@@ -275,6 +275,8 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     repo_root = _make_personligheds_repo_root(tmp_path)
     store, job = _seed_personligheds_objects_uploaded_job(tmp_path, repo_root)
     commands: list[tuple[str, list[str]]] = []
+    monkeypatch.setenv("PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION", "podcast-v4")
+    monkeypatch.setenv("PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION", "printout-v2")
 
     def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append((name, command))
@@ -355,6 +357,8 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     assert learning_registry_command[1].endswith("scripts/sync_personlighedspsykologi_learning_material_registry.py")
     assert learning_registry_command[learning_registry_command.index("--lecture-key") + 1] == "W1L1"
     assert learning_registry_command[learning_registry_command.index("--queue-job-id") + 1] == str(job["job_id"])
+    assert learning_registry_command[learning_registry_command.index("--podcast-setup-version") + 1] == "podcast-v4"
+    assert learning_registry_command[learning_registry_command.index("--printout-setup-version") + 1] == "printout-v2"
     assert (
         learning_registry_command[learning_registry_command.index("--registry") + 1]
         == "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"

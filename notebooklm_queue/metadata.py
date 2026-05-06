@@ -30,6 +30,9 @@ SPOTIFY_SHOW_URLS = {
 DEFAULT_METADATA_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS") or "1800"
 )
+PERSONLIGHEDS_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION"
+PERSONLIGHEDS_PODCAST_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION"
+PERSONLIGHEDS_PRINTOUT_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION"
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,6 +74,20 @@ QUIZ_SYNC_SETTINGS = {
         remote_root="/var/www/quizzes/personlighedspsykologi",
     ),
 }
+
+
+def _env_text(name: str) -> str:
+    return str(os.environ.get(name) or "").strip()
+
+
+def _append_personligheds_setup_versions(command: list[str]) -> None:
+    default_setup_version = _env_text(PERSONLIGHEDS_SETUP_VERSION_ENV)
+    podcast_setup_version = _env_text(PERSONLIGHEDS_PODCAST_SETUP_VERSION_ENV) or default_setup_version
+    printout_setup_version = _env_text(PERSONLIGHEDS_PRINTOUT_SETUP_VERSION_ENV) or default_setup_version
+    if podcast_setup_version:
+        command.extend(["--podcast-setup-version", podcast_setup_version])
+    if printout_setup_version:
+        command.extend(["--printout-setup-version", printout_setup_version])
 
 
 def rebuild_repo_metadata(
@@ -494,6 +511,7 @@ def _phase_definitions(
         job_id = str(job.get("job_id") or "").strip()
         if job_id:
             sync_learning_material_registry_command.extend(["--queue-job-id", job_id])
+        _append_personligheds_setup_versions(sync_learning_material_registry_command)
         phases.append(
             {
                 "name": "sync_learning_material_registry",

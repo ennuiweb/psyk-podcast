@@ -125,6 +125,26 @@ Canonical sync command:
 ./.venv/bin/python scripts/sync_personlighedspsykologi_learning_material_registry.py
 ```
 
+Attach human setup versions when a prompt/setup iteration should be tracked by
+name, not only by hashes:
+
+```bash
+./.venv/bin/python scripts/sync_personlighedspsykologi_learning_material_registry.py \
+  --lecture-key W10L2 \
+  --podcast-setup-version podcast-v4 \
+  --printout-setup-version printout-v2
+```
+
+For queue-owned runs, set these environment variables on the queue process:
+
+- `PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION`
+- `PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION`
+- `PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION` as a shared default for both families
+
+When `--lecture-key` is present, setup versions are attached only to matching
+podcast and printout entries. Without `--lecture-key`, the supplied version is
+treated as a ledger-wide label for all discovered materials in that family.
+
 The ledger records learner-facing outputs, not upstream engine internals. It
 tracks podcast, printout, quiz, and slide materials with their lecture key,
 status, generated/published timestamps where available, prompt/generator
@@ -145,6 +165,11 @@ prompt version, and full generation config. The Course Understanding provenance
 is tracked separately as `course_understanding_fingerprint` plus the underlying
 provenance hashes, so prompt/setup changes and source-understanding changes can
 be compared independently.
+
+For podcasts and printouts, `setup_version` is the human-facing setup label
+used during prompt iteration. It complements, but does not replace, the
+hash/fingerprint fields. Once attached to a material, it is retained by later
+syncs until a new setup version is supplied for that same material.
 
 When a material's observed prompt/config identity changes, the previous observed
 identity is retained in `revision_history` so prompt iterations do not erase the

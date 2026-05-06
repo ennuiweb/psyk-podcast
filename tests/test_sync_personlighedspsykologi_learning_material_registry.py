@@ -82,6 +82,31 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         },
     )
     (scaffold_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
+    other_scaffold_path = (
+        output_root / "W02L1" / "scaffolding" / "w02l1-zettler-2020" / "reading-scaffolds.json"
+    )
+    _write_json(
+        other_scaffold_path,
+        {
+            "schema_version": 3,
+            "artifact_type": "reading_scaffolds",
+            "generated_at": "2026-05-06T09:10:00Z",
+            "source": {
+                "source_id": "w02l1-zettler-2020",
+                "lecture_key": "W02L1",
+                "title": "Zettler et al. (2020)",
+                "source_family": "reading",
+            },
+            "generator": {
+                "provider": "gemini",
+                "model": "gemini-2.5-pro",
+                "prompt_version": "reading-scaffolds-v3",
+                "generation_config": {"version": "v3"},
+            },
+            "provenance": {"course_synthesis_sha256": "course-hash"},
+        },
+    )
+    (other_scaffold_path.parent / "00-reading-guide.md").write_text("other guide\n", encoding="utf-8")
 
     success_name = "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"
     inventory_only_name = (
@@ -259,6 +284,8 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         campaign="prompt-refresh",
         queue_job_id="job-1",
         lecture_key="W1L1",
+        podcast_setup_version="podcast-v4",
+        printout_setup_version="printout-v2",
     )
 
     materials = {item["material_id"]: item for item in payload["materials"]}
@@ -267,13 +294,14 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     podcasts = [item for item in payload["materials"] if item.get("family") == "podcast"]
     quizzes = [item for item in payload["materials"] if item.get("family") == "quiz"]
     slides = [item for item in payload["materials"] if item.get("family") == "slide"]
-    assert len(printouts) == 1
+    assert len(printouts) == 2
     assert len(podcasts) == 2
     assert len(quizzes) == 1
     assert len(slides) == 1
 
-    printout = printouts[0]
+    printout = next(item for item in printouts if item["source_id"] == "w01l1-lewis-1999")
     assert printout["status"] == "generated_local"
+    assert printout["setup_version"] == "printout-v2"
     assert printout["generator"]["prompt_version"] == "reading-scaffolds-v3"
     expected_printout_fingerprint = module.sha256_json(
         module.printout_setup_fingerprint_payload(
@@ -292,12 +320,15 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert printout["artifact_paths"]["rendered"] == [
         "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999/00-reading-guide.md"
     ]
+    other_printout = next(item for item in printouts if item["source_id"] == "w02l1-zettler-2020")
+    assert "setup_version" not in other_printout
 
     podcast = next(item for item in podcasts if item["source_name"] == success_name)
     assert podcast["status"] == "published_active"
     assert podcast["lecture_key"] == "W01L1"
     assert podcast["canonical_source_name"] == "W01L1 - Lewis (1999) [EN].mp3"
     assert podcast["config_hash"] == "bbbb2222"
+    assert podcast["setup_version"] == "podcast-v4"
     assert podcast["campaign"] == "prompt-refresh"
     assert podcast["queue_job_id"] == "job-1"
     assert podcast["prompt_sha256"] == hashlib.sha256(prompt.encode("utf-8")).hexdigest()
@@ -308,6 +339,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     inventory_only = next(item for item in podcasts if item["source_name"] == inventory_only_name)
     assert inventory_only["status"] == "published_active"
     assert inventory_only["config_hash"] == "cccc3333"
+    assert inventory_only["setup_version"] == "podcast-v4"
     assert inventory_only["media_sha256"] == "inventory-only-audio-hash"
     assert inventory_only["stable_guid"] == "inventory-only-guid"
     assert inventory_only["feed_published_at"] == "2026-05-06T10:16:00Z"
@@ -328,9 +360,37 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert slide["slide_key"] == "w01l1-lecture-intro"
     assert slide["public_relative_path"] == "/slides/personlighedspsykologi/W01L1/lecture/intro.pdf"
 
-    assert payload["schema_version"] == 2
-    assert payload["summary"]["total"] == 6
+    assert payload["schema_version"] == 3
+    assert payload["summary"]["total"] == 7
     assert payload["summary"]["by_family"]["podcast"] == 2
+    assert payload["summary"]["by_family"]["printout"] == 2
     assert payload["summary"]["by_family"]["quiz"] == 1
     assert payload["summary"]["by_family"]["slide"] == 1
+    assert payload["current_run"]["lecture_key"] == "W01L1"
+    assert payload["current_run"]["podcast_setup_version"] == "podcast-v4"
+    assert payload["current_run"]["printout_setup_version"] == "printout-v2"
     assert payload["source_understanding_snapshot"]["course_synthesis_prompt_version"] == "course-synthesis-v1"
+
+
+def test_merge_entries_preserves_setup_version_when_no_new_label_is_supplied() -> None:
+    module = _load_script_module()
+    previous = {
+        "material_id": "podcast:example",
+        "family": "podcast",
+        "material_type": "audio",
+        "status": "published_active",
+        "setup_version": "podcast-v4",
+        "config_hash": "hash-1",
+    }
+    discovered = {
+        "material_id": "podcast:example",
+        "family": "podcast",
+        "material_type": "audio",
+        "status": "published_active",
+        "config_hash": "hash-1",
+    }
+
+    merged = module.merge_entries({"podcast:example": previous}, {"podcast:example": discovered})
+
+    assert merged[0]["setup_version"] == "podcast-v4"
+    assert "revision_history" not in merged[0]

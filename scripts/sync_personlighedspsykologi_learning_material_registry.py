@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 from datetime import UTC, datetime
@@ -23,6 +24,9 @@ from regeneration_identity import canonical_source_name, parse_config_tags  # no
 DEFAULT_SHOW_ROOT = "shows/personlighedspsykologi-en"
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 DEFAULT_REGISTRY = "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
+SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION"
+PODCAST_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION"
+PRINTOUT_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION"
 
 
 def parse_args() -> argparse.Namespace:
@@ -39,6 +43,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--campaign", help="Optional regeneration campaign label.")
     parser.add_argument("--queue-job-id", help="Optional queue job id for the current run.")
     parser.add_argument("--lecture-key", help="Optional lecture key for the current run.")
+    parser.add_argument(
+        "--setup-version",
+        help=(
+            "Optional human setup version to attach to both podcast and printout "
+            "materials unless a family-specific version is supplied."
+        ),
+    )
+    parser.add_argument(
+        "--podcast-setup-version",
+        help=f"Optional human podcast setup version. Falls back to ${PODCAST_SETUP_VERSION_ENV}.",
+    )
+    parser.add_argument(
+        "--printout-setup-version",
+        help=f"Optional human printout setup version. Falls back to ${PRINTOUT_SETUP_VERSION_ENV}.",
+    )
     parser.add_argument("--generated-at", help="Override registry generated_at timestamp.")
     parser.add_argument("--dry-run", action="store_true", help="Print JSON instead of writing it.")
     return parser.parse_args()
@@ -109,6 +128,37 @@ def normalize_lecture_key(value: str | None) -> str | None:
     if not match:
         return None
     return f"W{int(match.group(1)):02d}L{int(match.group(2))}"
+
+
+def normalize_optional_text(value: str | None) -> str | None:
+    normalized = str(value or "").strip()
+    return normalized or None
+
+
+def resolve_setup_version(
+    *,
+    explicit: str | None,
+    env_name: str,
+    default: str | None = None,
+) -> str | None:
+    return normalize_optional_text(explicit) or normalize_optional_text(os.environ.get(env_name)) or default
+
+
+def material_matches_lecture(entry: dict[str, Any], active_lecture_key: str | None) -> bool:
+    if not active_lecture_key:
+        return True
+    entry_lecture_key = normalize_lecture_key(str(entry.get("lecture_key") or ""))
+    if entry_lecture_key == active_lecture_key:
+        return True
+    for key in entry.get("lecture_keys") or []:
+        if normalize_lecture_key(str(key or "")) == active_lecture_key:
+            return True
+    return False
+
+
+def attach_setup_version(entry: dict[str, Any], *, setup_version: str | None, active_lecture_key: str | None) -> None:
+    if setup_version and material_matches_lecture(entry, active_lecture_key):
+        entry["setup_version"] = setup_version
 
 
 def lecture_from_name(name: str) -> str | None:
@@ -310,14 +360,14 @@ def collect_podcast_entries(
     campaign: str | None,
     queue_job_id: str | None,
     active_lecture_key: str | None,
+    setup_version: str | None,
 ) -> dict[str, dict[str, Any]]:
     media_by_name, inventory_by_name = build_media_maps(show_root)
     entries = collect_published_podcast_entries(show_root=show_root, repo_root=repo_root)
-    if not output_root.exists():
-        return entries
     active_lecture_key = normalize_lecture_key(active_lecture_key)
 
-    for log_path in sorted(output_root.glob("**/*.mp3.request*.json")):
+    log_paths = sorted(output_root.glob("**/*.mp3.request*.json")) if output_root.exists() else []
+    for log_path in log_paths:
         source_name = source_name_from_request_log(log_path)
         payload = maybe_load_json(log_path)
         if not isinstance(payload, dict):
@@ -401,6 +451,7 @@ def collect_podcast_entries(
             entry["campaign"] = campaign
         if queue_job_id and (not active_lecture_key or active_lecture_key == lecture_key):
             entry["queue_job_id"] = queue_job_id
+        attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
 
         attempt = {
             "status": "success" if success else "failed",
@@ -412,6 +463,9 @@ def collect_podcast_entries(
         if not success:
             attempt["error"] = payload.get("error") or payload.get("status")
         merge_attempt(entry, attempt)
+
+    for entry in entries.values():
+        attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
 
     return entries
 
@@ -735,10 +789,17 @@ def printout_setup_fingerprint_payload(
     }
 
 
-def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str, dict[str, Any]]:
+def collect_printout_entries(
+    *,
+    output_root: Path,
+    repo_root: Path,
+    setup_version: str | None,
+    active_lecture_key: str | None,
+) -> dict[str, dict[str, Any]]:
     entries: dict[str, dict[str, Any]] = {}
     if not output_root.exists():
         return entries
+    active_lecture_key = normalize_lecture_key(active_lecture_key)
     for scaffold_path in sorted(output_root.glob("*/scaffolding/*/reading-scaffolds.json")):
         payload = maybe_load_json(scaffold_path)
         if not isinstance(payload, dict):
@@ -784,6 +845,7 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
                 "rendered": rendered_scaffold_paths(scaffold_path, repo_root),
             },
         }
+        attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
         entries[material_id] = entry
     return entries
 
@@ -791,9 +853,12 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
 REVISION_HISTORY_KEYS = (
     "status",
     "source_name",
+    "setup_version",
     "config_hash",
+    "config_fingerprint",
     "source_config_hash",
     "prompt_sha256",
+    "course_understanding_fingerprint",
     "generated_at",
     "published_at",
     "feed_published_at",
@@ -837,6 +902,8 @@ def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dic
                 if isinstance(attempt, dict):
                     merge_attempt(entry, attempt)
         if previous:
+            if not entry.get("setup_version") and previous.get("setup_version"):
+                entry["setup_version"] = previous["setup_version"]
             merge_revision_history(previous, entry)
         merged[material_id] = entry
     return sorted(
@@ -890,12 +957,17 @@ def build_registry(
     campaign: str | None,
     queue_job_id: str | None,
     lecture_key: str | None,
+    podcast_setup_version: str | None,
+    printout_setup_version: str | None,
 ) -> dict[str, Any]:
+    lecture_key = normalize_lecture_key(lecture_key)
     discovered: dict[str, dict[str, Any]] = {}
     discovered.update(
         collect_printout_entries(
             output_root=output_root,
             repo_root=repo_root,
+            setup_version=printout_setup_version,
+            active_lecture_key=lecture_key,
         )
     )
     discovered.update(
@@ -919,11 +991,12 @@ def build_registry(
             campaign=campaign,
             queue_job_id=queue_job_id,
             active_lecture_key=lecture_key,
+            setup_version=podcast_setup_version,
         )
     )
     materials = merge_entries(existing_entries(registry_path), discovered)
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "show_slug": "personlighedspsykologi-en",
         "subject_slug": "personlighedspsykologi",
         "generated_at": generated_at,
@@ -935,6 +1008,8 @@ def build_registry(
             "campaign": campaign,
             "queue_job_id": queue_job_id,
             "lecture_key": lecture_key,
+            "podcast_setup_version": podcast_setup_version,
+            "printout_setup_version": printout_setup_version,
         },
         "source_understanding_snapshot": source_understanding_snapshot(show_root, repo_root),
         "summary": summarize(materials),
@@ -956,6 +1031,20 @@ def main() -> int:
         if not Path(args.registry).is_absolute()
         else Path(args.registry).resolve()
     )
+    default_setup_version = resolve_setup_version(
+        explicit=args.setup_version,
+        env_name=SETUP_VERSION_ENV,
+    )
+    podcast_setup_version = resolve_setup_version(
+        explicit=args.podcast_setup_version,
+        env_name=PODCAST_SETUP_VERSION_ENV,
+        default=default_setup_version,
+    )
+    printout_setup_version = resolve_setup_version(
+        explicit=args.printout_setup_version,
+        env_name=PRINTOUT_SETUP_VERSION_ENV,
+        default=default_setup_version,
+    )
     payload = build_registry(
         repo_root=repo_root,
         show_root=show_root,
@@ -965,6 +1054,8 @@ def main() -> int:
         campaign=args.campaign,
         queue_job_id=args.queue_job_id,
         lecture_key=args.lecture_key,
+        podcast_setup_version=podcast_setup_version,
+        printout_setup_version=printout_setup_version,
     )
     if args.dry_run:
         print(json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True))

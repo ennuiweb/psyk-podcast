@@ -131,15 +131,23 @@ name, not only by hashes:
 ```bash
 ./.venv/bin/python scripts/sync_personlighedspsykologi_learning_material_registry.py \
   --lecture-key W10L2 \
-  --podcast-setup-version podcast-v4 \
-  --printout-setup-version printout-v2
+  --podcast-setup-version personlighedspsykologi-podcast-v1 \
+  --printout-setup-version personlighedspsykologi-reading-printouts-v3
 ```
 
-For queue-owned runs, set these environment variables on the queue process:
+The canonical default labels live in:
+
+- `shows/personlighedspsykologi-en/prompt_versions.json`
+
+For queue-owned runs, these environment variables remain available as explicit
+overrides on the queue process:
 
 - `PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION`
 - `PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION`
 - `PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION` as a shared default for both families
+
+If they are unset, queue-owned runs and manual syncs fall back to the checked-in
+labels in `prompt_versions.json`.
 
 When `--lecture-key` is present, setup versions are attached only to matching
 podcast and printout entries. Without `--lecture-key`, the supplied version is

@@ -17,6 +17,7 @@ from notebooklm_queue.gemini_preprocessing import (
     generation_config_metadata,
     make_gemini_backend,
 )
+from notebooklm_queue.personlighedspsykologi_prompt_versions import configured_prompt_versions
 from notebooklm_queue.source_intelligence_schemas import utc_now_iso
 
 try:
@@ -35,7 +36,7 @@ DEFAULT_REVISED_LECTURE_SUBSTRATE_DIR = recursive.DEFAULT_REVISED_LECTURE_SUBSTR
 DEFAULT_COURSE_SYNTHESIS_PATH = recursive.DEFAULT_COURSE_SYNTHESIS_PATH
 DEFAULT_SUBJECT_ROOT = recursive.DEFAULT_SUBJECT_ROOT
 DEFAULT_OUTPUT_ROOT = Path("notebooklm-podcast-auto/personlighedspsykologi/output")
-PROMPT_VERSION = "personlighedspsykologi-reading-printouts-v1"
+PROMPT_VERSION = configured_prompt_versions().get("reading_printouts", "personlighedspsykologi-reading-printouts-v3")
 SCHEMA_VERSION = 1
 CANONICAL_PRINTOUT_DIRNAME = "printouts"
 LEGACY_PRINTOUT_DIRNAME = "scaffolding"

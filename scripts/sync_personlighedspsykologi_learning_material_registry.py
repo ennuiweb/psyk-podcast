@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import re
 import sys
 from datetime import UTC, datetime
@@ -15,9 +14,16 @@ from typing import Any
 from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) in sys.path:
+    sys.path.remove(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 
+from notebooklm_queue.personlighedspsykologi_prompt_versions import (  # noqa: E402
+    PODCAST_SETUP_VERSION_ENV,
+    PRINTOUT_SETUP_VERSION_ENV,
+    SETUP_VERSION_ENV,
+    resolve_setup_versions,
+)
 from regeneration_identity import canonical_source_name, parse_config_tags  # noqa: E402
 
 
@@ -25,9 +31,6 @@ DEFAULT_SHOW_ROOT = "shows/personlighedspsykologi-en"
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 DEFAULT_REGISTRY = "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
 DEFAULT_PODCAST_PROMPT_CONFIG = "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json"
-SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION"
-PODCAST_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION"
-PRINTOUT_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION"
 PODCAST_PROMPT_CONFIG_KEYS = (
     "language",
     "languages",
@@ -147,20 +150,6 @@ def normalize_lecture_key(value: str | None) -> str | None:
     if not match:
         return None
     return f"W{int(match.group(1)):02d}L{int(match.group(2))}"
-
-
-def normalize_optional_text(value: str | None) -> str | None:
-    normalized = str(value or "").strip()
-    return normalized or None
-
-
-def resolve_setup_version(
-    *,
-    explicit: str | None,
-    env_name: str,
-    default: str | None = None,
-) -> str | None:
-    return normalize_optional_text(explicit) or normalize_optional_text(os.environ.get(env_name)) or default
 
 
 def material_matches_lecture(entry: dict[str, Any], active_lecture_key: str | None) -> bool:
@@ -1139,20 +1128,15 @@ def main() -> int:
         if not Path(args.registry).is_absolute()
         else Path(args.registry).resolve()
     )
-    default_setup_version = resolve_setup_version(
-        explicit=args.setup_version,
-        env_name=SETUP_VERSION_ENV,
+    resolved_setup_versions = resolve_setup_versions(
+        repo_root=repo_root,
+        show_root=show_root,
+        explicit_default=args.setup_version,
+        explicit_podcast=args.podcast_setup_version,
+        explicit_printout=args.printout_setup_version,
     )
-    podcast_setup_version = resolve_setup_version(
-        explicit=args.podcast_setup_version,
-        env_name=PODCAST_SETUP_VERSION_ENV,
-        default=default_setup_version,
-    )
-    printout_setup_version = resolve_setup_version(
-        explicit=args.printout_setup_version,
-        env_name=PRINTOUT_SETUP_VERSION_ENV,
-        default=default_setup_version,
-    )
+    podcast_setup_version = resolved_setup_versions["podcast"]
+    printout_setup_version = resolved_setup_versions["printout"]
     payload = build_registry(
         repo_root=repo_root,
         show_root=show_root,

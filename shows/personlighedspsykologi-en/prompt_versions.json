@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-05-06",
+  "setup_versions": {
+    "default": null,
+    "podcast": "personlighedspsykologi-podcast-v1",
+    "printout": "personlighedspsykologi-reading-printouts-v3"
+  },
+  "prompt_versions": {
+    "source_card": "personlighedspsykologi-source-card-v1",
+    "lecture_substrate": "personlighedspsykologi-lecture-substrate-v2",
+    "course_synthesis": "personlighedspsykologi-course-synthesis-v3",
+    "revised_lecture_substrate": "personlighedspsykologi-downward-revision-v3",
+    "podcast_substrate": "personlighedspsykologi-podcast-substrate-v2",
+    "reading_printouts": "personlighedspsykologi-reading-printouts-v3"
+  }
+}

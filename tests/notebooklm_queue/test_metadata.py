@@ -81,6 +81,17 @@ def _make_personligheds_repo_root(tmp_path: Path) -> Path:
         ),
         ("shows/personlighedspsykologi-en/auto_spec.json", "{}"),
         ("shows/personlighedspsykologi-en/episode_metadata.json", "{}"),
+        (
+            "shows/personlighedspsykologi-en/prompt_versions.json",
+            json.dumps(
+                {
+                    "setup_versions": {
+                        "podcast": "personlighedspsykologi-podcast-v1",
+                        "printout": "personlighedspsykologi-reading-printouts-v3",
+                    }
+                }
+            ),
+        ),
         ("shows/personlighedspsykologi-en/regeneration_registry.json", json.dumps({"entries": []})),
     ):
         path = repo_root / relative
@@ -394,6 +405,73 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     assert (
         learning_registry_command[learning_registry_command.index("--registry") + 1]
         == "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
+    )
+
+
+def test_rebuild_repo_metadata_personligheds_uses_configured_setup_versions_by_default(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = _make_personligheds_repo_root(tmp_path)
+    store, job = _seed_personligheds_objects_uploaded_job(tmp_path, repo_root)
+    commands: list[tuple[str, list[str]]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
+        commands.append((name, command))
+        show_root = repo_root / "shows" / "personlighedspsykologi-en"
+        if name == "sync_quiz_links":
+            (show_root / "quiz_links.json").write_text(
+                json.dumps({"by_name": {"Title 1": [{"url": "https://freudd.dk/q/abc.html"}]}}),
+                encoding="utf-8",
+            )
+        elif name == "generate_feed":
+            (show_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (show_root / "episode_inventory.json").write_text(
+                json.dumps({"episodes": [{"episode_key": "ep-1", "title": "Title 1"}]}),
+                encoding="utf-8",
+            )
+        elif name == "sync_spotify_map":
+            (show_root / "spotify_map.json").write_text(
+                json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
+                encoding="utf-8",
+            )
+        elif name == "rebuild_content_manifest":
+            (show_root / "content_manifest.json").write_text(
+                json.dumps({"lectures": [{"lecture_assets": {"quizzes": [{"url": "https://freudd.dk/q/abc.html"}]}}]}),
+                encoding="utf-8",
+            )
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.delenv("PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION", raising=False)
+    monkeypatch.delenv("PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION", raising=False)
+    monkeypatch.delenv("PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION", raising=False)
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    rebuild_repo_metadata(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        job_id=str(job["job_id"]),
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    learning_registry_command = dict(commands)["sync_learning_material_registry"]
+    assert (
+        learning_registry_command[learning_registry_command.index("--podcast-setup-version") + 1]
+        == "personlighedspsykologi-podcast-v1"
+    )
+    assert (
+        learning_registry_command[learning_registry_command.index("--printout-setup-version") + 1]
+        == "personlighedspsykologi-reading-printouts-v3"
     )
 
 

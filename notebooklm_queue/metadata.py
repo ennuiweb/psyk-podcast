@@ -17,6 +17,7 @@ from .constants import (
     STATE_REBUILDING_METADATA,
 )
 from .processes import run_phase_command
+from .personlighedspsykologi_prompt_versions import resolve_setup_versions
 from .show_artifacts import ShowArtifactPaths, resolve_show_artifact_paths
 from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
 from .store import QueueStore, utc_now_iso
@@ -30,9 +31,6 @@ SPOTIFY_SHOW_URLS = {
 DEFAULT_METADATA_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS") or "1800"
 )
-PERSONLIGHEDS_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION"
-PERSONLIGHEDS_PODCAST_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION"
-PERSONLIGHEDS_PRINTOUT_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION"
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,14 +74,10 @@ QUIZ_SYNC_SETTINGS = {
 }
 
 
-def _env_text(name: str) -> str:
-    return str(os.environ.get(name) or "").strip()
-
-
-def _append_personligheds_setup_versions(command: list[str]) -> None:
-    default_setup_version = _env_text(PERSONLIGHEDS_SETUP_VERSION_ENV)
-    podcast_setup_version = _env_text(PERSONLIGHEDS_PODCAST_SETUP_VERSION_ENV) or default_setup_version
-    printout_setup_version = _env_text(PERSONLIGHEDS_PRINTOUT_SETUP_VERSION_ENV) or default_setup_version
+def _append_personligheds_setup_versions(command: list[str], *, repo_root: Path) -> None:
+    resolved = resolve_setup_versions(repo_root=repo_root)
+    podcast_setup_version = resolved["podcast"]
+    printout_setup_version = resolved["printout"]
     if podcast_setup_version:
         command.extend(["--podcast-setup-version", podcast_setup_version])
     if printout_setup_version:
@@ -522,7 +516,7 @@ def _phase_definitions(
         job_id = str(job.get("job_id") or "").strip()
         if job_id:
             sync_learning_material_registry_command.extend(["--queue-job-id", job_id])
-        _append_personligheds_setup_versions(sync_learning_material_registry_command)
+        _append_personligheds_setup_versions(sync_learning_material_registry_command, repo_root=repo_root)
         phases.append(
             {
                 "name": "sync_learning_material_registry",

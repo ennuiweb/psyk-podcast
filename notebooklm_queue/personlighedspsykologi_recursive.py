@@ -16,6 +16,7 @@ from notebooklm_queue.gemini_preprocessing import (
     generation_config_metadata,
     make_gemini_backend,
 )
+from notebooklm_queue.personlighedspsykologi_prompt_versions import configured_prompt_versions
 from notebooklm_queue.source_intelligence_schemas import (
     RECURSIVE_SOURCE_INTELLIGENCE_SCHEMA_VERSION,
     utc_now_iso,
@@ -48,13 +49,7 @@ DEFAULT_SUBJECT_ROOT = Path(
     "Mine dokumenter 💾/psykologi/Personlighedspsykologi"
 )
 
-PROMPT_VERSIONS = {
-    "source_card": "personlighedspsykologi-source-card-v1",
-    "lecture_substrate": "personlighedspsykologi-lecture-substrate-v1",
-    "course_synthesis": "personlighedspsykologi-course-synthesis-v1",
-    "revised_lecture_substrate": "personlighedspsykologi-downward-revision-v1",
-    "podcast_substrate": "personlighedspsykologi-podcast-substrate-v1",
-}
+PROMPT_VERSIONS = configured_prompt_versions()
 
 JsonGenerator = Callable[..., dict[str, Any]]
 

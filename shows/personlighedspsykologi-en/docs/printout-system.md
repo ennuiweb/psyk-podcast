@@ -249,6 +249,9 @@ For compatibility, live JSON artifacts may still include a mirrored
 `scaffolds` object and legacy alias files under `.../scaffolding/...` while
 the repo finishes migrating readers and generated history.
 
+The canonical source for the current printout prompt version and the human
+setup label is `shows/personlighedspsykologi-en/prompt_versions.json`.
+
 Legacy schema-v2 artifacts can still be rerendered, but new live generation
 targets schema v3.
 

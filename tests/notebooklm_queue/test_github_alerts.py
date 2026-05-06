@@ -6,6 +6,8 @@ from pathlib import Path
 import subprocess
 import sys
 
+import pytest
+
 from notebooklm_queue.github_alerts import build_comment_body, build_title, deliver_alert_to_github, ensure_issue
 
 
@@ -82,6 +84,16 @@ def test_deliver_alert_to_github_comments_on_existing_issue() -> None:
     assert build_comment_body(payload) == commands[0][-1]
 
 
+def test_deliver_alert_to_github_rejects_missing_required_fields() -> None:
+    with pytest.raises(ValueError, match="missing required field"):
+        deliver_alert_to_github(
+            {},
+            repo="ennuiweb/psyk-podcast",
+            labels=[],
+            timeout_seconds=20,
+        )
+
+
 def test_handle_queue_alert_wrapper_executes_with_repo_root_import_path(tmp_path: Path) -> None:
     repo_root = Path(__file__).resolve().parents[2]
     wrapper = repo_root / "scripts" / "handle_queue_alert_github.py"
@@ -124,3 +136,30 @@ def test_handle_queue_alert_wrapper_executes_with_repo_root_import_path(tmp_path
         "issue_number": 99,
         "created": True,
     }
+
+
+def test_handle_queue_alert_wrapper_rejects_empty_payload(tmp_path: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[2]
+    wrapper = repo_root / "scripts" / "handle_queue_alert_github.py"
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_gh = fake_bin / "gh"
+    fake_gh.write_text("#!/bin/sh\necho unexpected >&2\nexit 1\n", encoding="utf-8")
+    fake_gh.chmod(0o755)
+
+    env = os.environ.copy()
+    env["PATH"] = f"{fake_bin}{os.pathsep}{env['PATH']}"
+    env.pop("PYTHONPATH", None)
+
+    completed = subprocess.run(
+        [sys.executable, str(wrapper)],
+        input="{}",
+        text=True,
+        capture_output=True,
+        cwd=repo_root,
+        env=env,
+        check=False,
+    )
+
+    assert completed.returncode == 1
+    assert "missing required field" in completed.stderr

@@ -150,6 +150,7 @@ def rebuild_repo_metadata(
             show_config_path=resolved_show_config_path,
             artifact_paths=artifact_paths,
             job=job,
+            manifest=manifest,
         ):
             result = _run_phase(
                 name=phase["name"],
@@ -177,6 +178,7 @@ def rebuild_repo_metadata(
                 repo_root=options.repo_root,
                 show_slug=show_slug,
                 artifact_paths=artifact_paths,
+                manifest=manifest,
             )
         except MetadataValidationError as exc:
             return _finalize_failure(
@@ -311,11 +313,12 @@ def _phase_definitions(
     show_config_path: Path,
     artifact_paths: ShowArtifactPaths,
     job: dict[str, Any],
+    manifest: dict[str, Any],
 ) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
     quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
-    if quiz_sync is not None:
+    if quiz_sync is not None and _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz"):
         command = [
             python,
             str(repo_root / "scripts" / "sync_quiz_links.py"),
@@ -542,6 +545,7 @@ def _validate_repo_metadata(
     repo_root: Path,
     show_slug: str,
     artifact_paths: ShowArtifactPaths,
+    manifest: dict[str, Any],
 ) -> dict[str, Any]:
     feed_path = artifact_paths.feed_path
     inventory_path = artifact_paths.inventory_path
@@ -564,14 +568,8 @@ def _validate_repo_metadata(
     if show_slug in SHOWS_WITH_CONTENT_MANIFEST:
         quiz_path = artifact_paths.quiz_links_path
         manifest_path = artifact_paths.content_manifest_path
-        if not quiz_path.exists():
-            raise MetadataValidationError(f"Missing quiz_links.json for {show_slug}: {quiz_path}")
         if not manifest_path.exists():
             raise MetadataValidationError(f"Missing content_manifest.json for {show_slug}: {manifest_path}")
-        quiz_payload = json.loads(quiz_path.read_text(encoding="utf-8"))
-        by_name = quiz_payload.get("by_name") if isinstance(quiz_payload, dict) else None
-        if not isinstance(by_name, dict) or not by_name:
-            raise MetadataValidationError(f"quiz_links.by_name is empty for {show_slug}")
         manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
         lectures = manifest_payload.get("lectures") if isinstance(manifest_payload, dict) else []
         quiz_assets = 0
@@ -587,14 +585,50 @@ def _validate_repo_metadata(
                         continue
                     assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
                     quiz_assets += len(assets.get("quizzes") or [])
-        if quiz_assets <= 0:
-            raise MetadataValidationError(f"content_manifest has zero quiz assets for {show_slug}")
-        summary["quiz_links_path"] = str(quiz_path.relative_to(repo_root))
         summary["content_manifest_path"] = str(manifest_path.relative_to(repo_root))
         summary["quiz_assets"] = quiz_assets
-        summary["quiz_links_by_name"] = len(by_name)
+        requires_quiz_assets = _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz")
+        summary["requires_quiz_assets"] = requires_quiz_assets
+        if requires_quiz_assets:
+            if not quiz_path.exists():
+                raise MetadataValidationError(f"Missing quiz_links.json for {show_slug}: {quiz_path}")
+            quiz_payload = json.loads(quiz_path.read_text(encoding="utf-8"))
+            by_name = quiz_payload.get("by_name") if isinstance(quiz_payload, dict) else None
+            if not isinstance(by_name, dict) or not by_name:
+                raise MetadataValidationError(f"quiz_links.by_name is empty for {show_slug}")
+            if quiz_assets <= 0:
+                raise MetadataValidationError(f"content_manifest has zero quiz assets for {show_slug}")
+            summary["quiz_links_path"] = str(quiz_path.relative_to(repo_root))
+            summary["quiz_links_by_name"] = len(by_name)
 
     return summary
+
+
+def _bundle_has_artifact_type(*, manifest: dict[str, Any], artifact_type: str) -> bool:
+    target = str(artifact_type or "").strip().lower()
+    if not target:
+        return False
+    bundle = manifest.get("bundle") if isinstance(manifest, dict) else None
+    if not isinstance(bundle, dict):
+        return False
+    artifact_counts = bundle.get("artifact_counts")
+    if isinstance(artifact_counts, dict):
+        raw_count = artifact_counts.get(target)
+        try:
+            if int(raw_count or 0) > 0:
+                return True
+        except (TypeError, ValueError):
+            pass
+    artifacts = bundle.get("artifacts")
+    if not isinstance(artifacts, list):
+        return False
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            continue
+        candidate = str(artifact.get("artifact_type") or "").strip().lower()
+        if candidate == target:
+            return True
+    return False
 
 
 def _latest_publish_manifest_path(*, store: QueueStore, job: dict[str, Any]) -> Path:

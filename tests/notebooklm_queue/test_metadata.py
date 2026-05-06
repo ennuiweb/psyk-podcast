@@ -101,9 +101,23 @@ def _personligheds_identity() -> JobIdentity:
     )
 
 
-def _seed_personligheds_objects_uploaded_job(tmp_path: Path, repo_root: Path) -> tuple[QueueStore, dict[str, object]]:
+def _seed_personligheds_objects_uploaded_job(
+    tmp_path: Path,
+    repo_root: Path,
+    *,
+    content_types: tuple[str, ...] = ("audio", "quiz"),
+    artifact_counts: dict[str, int] | None = None,
+) -> tuple[QueueStore, dict[str, object]]:
     store = QueueStore(tmp_path / "queue-root")
-    job = store.upsert_job(_personligheds_identity(), initial_state=STATE_OBJECTS_UPLOADED)
+    identity = JobIdentity(
+        show_slug="personlighedspsykologi-en",
+        subject_slug="personlighedspsykologi",
+        lecture_key="W1L1",
+        content_types=content_types,
+        config_hash="cfg-1",
+    )
+    job = store.upsert_job(identity, initial_state=STATE_OBJECTS_UPLOADED)
+    bundle_artifact_counts = artifact_counts or {content_type: 1 for content_type in content_types}
     manifest = {
         "version": 1,
         "bundle_id": "bundle-1",
@@ -114,6 +128,7 @@ def _seed_personligheds_objects_uploaded_job(tmp_path: Path, repo_root: Path) ->
         "bundle": {
             "artifact_count": 1,
             "bundle_hash": "abc123",
+            "artifact_counts": bundle_artifact_counts,
             "artifacts": [],
         },
     }
@@ -133,9 +148,23 @@ def _seed_personligheds_objects_uploaded_job(tmp_path: Path, repo_root: Path) ->
     return store, job
 
 
-def _seed_objects_uploaded_job(tmp_path: Path, repo_root: Path) -> tuple[QueueStore, dict[str, object]]:
+def _seed_objects_uploaded_job(
+    tmp_path: Path,
+    repo_root: Path,
+    *,
+    content_types: tuple[str, ...] = ("audio", "quiz"),
+    artifact_counts: dict[str, int] | None = None,
+) -> tuple[QueueStore, dict[str, object]]:
     store = QueueStore(tmp_path / "queue-root")
-    job = store.upsert_job(_identity(), initial_state=STATE_OBJECTS_UPLOADED)
+    identity = JobIdentity(
+        show_slug="bioneuro",
+        subject_slug="bioneuro",
+        lecture_key="W1L1",
+        content_types=content_types,
+        config_hash="cfg-1",
+    )
+    job = store.upsert_job(identity, initial_state=STATE_OBJECTS_UPLOADED)
+    bundle_artifact_counts = artifact_counts or {content_type: 1 for content_type in content_types}
     manifest = {
         "version": 1,
         "bundle_id": "bundle-1",
@@ -146,6 +175,7 @@ def _seed_objects_uploaded_job(tmp_path: Path, repo_root: Path) -> tuple[QueueSt
         "bundle": {
             "artifact_count": 1,
             "bundle_hash": "abc123",
+            "artifact_counts": bundle_artifact_counts,
             "artifacts": [],
         },
     }
@@ -394,6 +424,83 @@ def test_rebuild_repo_metadata_personligheds_blocks_on_manual_summary_failure(tm
     updated = store.load_job(show_slug="personlighedspsykologi-en", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_BLOCKED_MANUAL_PREREQ
     assert updated["blocked_reason"] == "missing_manual_summary_content"
+
+
+def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_quiz_sync(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = _make_personligheds_repo_root(tmp_path)
+    store, job = _seed_personligheds_objects_uploaded_job(
+        tmp_path,
+        repo_root,
+        content_types=("audio",),
+        artifact_counts={"audio": 1, "quiz": 0},
+    )
+    commands: list[tuple[str, list[str]]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
+        commands.append((name, command))
+        show_root = repo_root / "shows" / "personlighedspsykologi-en"
+        if name == "generate_feed":
+            (show_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (show_root / "episode_inventory.json").write_text(
+                json.dumps({"episodes": [{"episode_key": "ep-1", "title": "Title 1"}]}),
+                encoding="utf-8",
+            )
+        elif name == "sync_spotify_map":
+            (show_root / "spotify_map.json").write_text(
+                json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
+                encoding="utf-8",
+            )
+        elif name == "rebuild_content_manifest":
+            (show_root / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_assets": {
+                                    "quizzes": [],
+                                    "podcasts": [{"title": "Title 1"}],
+                                },
+                                "readings": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    result = rebuild_repo_metadata(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        job_id=str(job["job_id"]),
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_COMMITTING_REPO_ARTIFACTS
+    updated = store.load_job(show_slug="personlighedspsykologi-en", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_COMMITTING_REPO_ARTIFACTS
+    phase_names = [name for name, _ in commands]
+    assert "sync_quiz_links" not in phase_names
+    manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    validation = manifest["metadata"]["validation"]
+    assert validation["requires_quiz_assets"] is False
+    assert validation["quiz_assets"] == 0
 
 
 def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:

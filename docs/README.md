@@ -23,6 +23,7 @@ Canonical repo entrypoints outside this folder:
 - [AGENTS.md](../AGENTS.md) - repo-local operating rules.
 - [freudd_portal/README.md](../freudd_portal/README.md) - full Freudd product and runtime contract.
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
+- [shows/personlighedspsykologi-en/docs/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
 
 Cross-doc principle:
 

@@ -16,6 +16,7 @@ NotebookLM generation mechanics live in
 | Weekly overview summaries | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` |
 | Reading key mirror | `shows/personlighedspsykologi-en/docs/reading-file-key.md` |
 | Slide mapping | `shows/personlighedspsykologi-en/slides_catalog.json` |
+| Learning-material output scope and evaluation | `shows/personlighedspsykologi-en/docs/learning-material-outputs.md` |
 | Artifact ownership | `shows/personlighedspsykologi-en/docs/podcast-flow-artifacts.md` |
 | Operational runbook | `shows/personlighedspsykologi-en/docs/podcast-flow-operations.md` |
 

@@ -88,7 +88,7 @@ an automatically generated Course Understanding artifact.
 
 Canonical printout artifact root:
 
-- `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/scaffolding/<source_id>/reading-scaffolds.json`
+- `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/reading-printouts.json`
 
 Derived render targets:
 
@@ -101,8 +101,8 @@ Derived render targets:
 
 Canonical printout contract:
 
-- `shows/personlighedspsykologi-en/docs/scaffolding-system.md`
-- alternative test mode: `shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md`
+- `shows/personlighedspsykologi-en/docs/printout-system.md`
+- alternative test mode: `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
 - evaluation workspace: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
 
 Important current-state note:
@@ -250,7 +250,7 @@ solvable problems than from outputs that mainly ask for passive intake.
 For that reason, `personlighedspsykologi` now also documents an explicit
 problem-first alternative for printouts:
 
-- `shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md`
+- `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
 
 That mode is intended for learners who engage more reliably when the material
 gives them:
@@ -293,10 +293,10 @@ Current sidecar evaluation workspace:
 
 Current review baseline:
 
-1. review `reading-scaffolds.json` first
+1. review `reading-printouts.json` first
 2. verify it matches the intended scaffold schema for that artifact version
 3. inspect Markdown/PDF renders only as derived usability checks
-4. judge the printout against `scaffolding-system.md`
+4. judge the printout against `printout-system.md`
 
 Current gap:
 

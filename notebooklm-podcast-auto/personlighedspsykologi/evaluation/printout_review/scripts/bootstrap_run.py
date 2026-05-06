@@ -17,7 +17,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-import scaffold_engine
+import printout_engine
 from notebooklm_queue import personlighedspsykologi_recursive as recursive
 from notebooklm_queue.source_intelligence_schemas import utc_now_iso
 
@@ -97,8 +97,15 @@ def _build_manifest(
     entries: list[dict[str, Any]] = []
     for source in sources:
         source_id = str(source.get("source_id") or "").strip()
-        baseline_dir = scaffold_engine.output_dir_for_source(canonical_output_root, source)
-        candidate_dir = scaffold_engine.output_dir_for_source(candidate_output_root, source)
+        baseline_dir = printout_engine.output_dir_for_source(canonical_output_root, source)
+        legacy_baseline_dir = printout_engine.legacy_output_dir_for_source(canonical_output_root, source)
+        baseline_json_path = baseline_dir / printout_engine.CANONICAL_PRINTOUT_JSON_NAME
+        legacy_baseline_json_path = legacy_baseline_dir / printout_engine.LEGACY_PRINTOUT_JSON_NAME
+        resolved_baseline_dir = baseline_dir if baseline_json_path.exists() or not legacy_baseline_json_path.exists() else legacy_baseline_dir
+        resolved_baseline_json_path = (
+            baseline_json_path if baseline_json_path.exists() or not legacy_baseline_json_path.exists() else legacy_baseline_json_path
+        )
+        candidate_dir = printout_engine.output_dir_for_source(candidate_output_root, source)
         note_rel = f"notes/{source_id}.md"
         entry = {
             "source_id": source_id,
@@ -106,14 +113,14 @@ def _build_manifest(
             "title": str(source.get("title") or ""),
             "source_family": str(source.get("source_family") or ""),
             "baseline": {
-                "output_dir": str(baseline_dir.resolve()),
-                "json_path": str((baseline_dir / "reading-scaffolds.json").resolve()),
-                "exists": (baseline_dir / "reading-scaffolds.json").exists(),
+                "output_dir": str(resolved_baseline_dir.resolve()),
+                "json_path": str(resolved_baseline_json_path.resolve()),
+                "exists": resolved_baseline_json_path.exists(),
             },
             "candidate": {
                 "status": "pending",
                 "output_dir": _relative_to(run_dir, candidate_dir),
-                "json_path": _relative_to(run_dir, candidate_dir / "reading-scaffolds.json"),
+                "json_path": _relative_to(run_dir, candidate_dir / "reading-printouts.json"),
                 "markdown_paths": [],
                 "pdf_paths": [],
                 "prompt_capture_paths": {
@@ -161,7 +168,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--source-family", action="append", default=[], help="Source family filter; default: reading.")
     parser.add_argument("--all-families", action="store_true", help="Do not filter by source family.")
     parser.add_argument("--evaluation-root", default=str(DEFAULT_EVALUATION_ROOT))
-    parser.add_argument("--source-catalog", default=str(scaffold_engine.DEFAULT_SOURCE_CATALOG))
+    parser.add_argument("--source-catalog", default=str(printout_engine.DEFAULT_SOURCE_CATALOG))
     parser.add_argument("--canonical-output-root", default=str(DEFAULT_CANONICAL_OUTPUT_ROOT))
     parser.add_argument("--variant-prompt", default=str(DEFAULT_VARIANT_PROMPT_PATH))
     parser.add_argument("--force", action="store_true", help="Overwrite an existing manifest and note files.")
@@ -180,11 +187,11 @@ def main() -> int:
     source_ids = [item.strip() for item in args.source_id if item.strip()]
     if not lecture_keys and not source_ids:
         raise SystemExit("select --all, --lectures, or --source-id")
-    sources = scaffold_engine.select_sources(
+    sources = printout_engine.select_sources(
         source_catalog_path=source_catalog_path,
         lecture_keys=lecture_keys,
         source_ids=source_ids,
-        source_families=scaffold_engine.parse_source_families(
+        source_families=printout_engine.parse_source_families(
             args.source_family,
             all_families=bool(args.all_families),
         ),
@@ -201,7 +208,7 @@ def main() -> int:
             "source_ids": source_ids,
             "all": bool(args.all),
             "source_families": sorted(
-                scaffold_engine.parse_source_families(
+                printout_engine.parse_source_families(
                     args.source_family,
                     all_families=bool(args.all_families),
                 )

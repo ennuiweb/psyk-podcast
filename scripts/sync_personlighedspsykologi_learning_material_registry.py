@@ -841,10 +841,10 @@ def collect_slide_entries(*, show_root: Path, repo_root: Path) -> dict[str, dict
     return entries
 
 
-def rendered_scaffold_paths(scaffold_json: Path, repo_root: Path) -> list[str]:
+def rendered_printout_paths(printout_json: Path, repo_root: Path) -> list[str]:
     rendered: list[str] = []
-    for child in sorted(scaffold_json.parent.iterdir()):
-        if child == scaffold_json:
+    for child in sorted(printout_json.parent.iterdir()):
+        if child == printout_json:
             continue
         if child.suffix.lower() in {".md", ".pdf"}:
             rendered.append(relpath(child, repo_root))
@@ -880,53 +880,60 @@ def collect_printout_entries(
     if not output_root.exists():
         return entries
     active_lecture_key = normalize_lecture_key(active_lecture_key)
-    for scaffold_path in sorted(output_root.glob("*/scaffolding/*/reading-scaffolds.json")):
-        payload = maybe_load_json(scaffold_path)
-        if not isinstance(payload, dict):
-            continue
-        source = payload.get("source") if isinstance(payload.get("source"), dict) else {}
-        generator = payload.get("generator") if isinstance(payload.get("generator"), dict) else {}
-        generation_config = generator.get("generation_config") if isinstance(generator.get("generation_config"), dict) else {}
-        course_understanding = payload.get("provenance") if isinstance(payload.get("provenance"), dict) else {}
-        config_fingerprint = sha256_json(
-            printout_setup_fingerprint_payload(
-                payload=payload,
-                generator=generator,
-                generation_config=generation_config,
+    seen_paths: set[Path] = set()
+    for pattern in ("*/printouts/*/reading-printouts.json", "*/scaffolding/*/reading-scaffolds.json"):
+        for printout_path in sorted(output_root.glob(pattern)):
+            if printout_path in seen_paths:
+                continue
+            seen_paths.add(printout_path)
+            payload = maybe_load_json(printout_path)
+            if not isinstance(payload, dict):
+                continue
+            source = payload.get("source") if isinstance(payload.get("source"), dict) else {}
+            generator = payload.get("generator") if isinstance(payload.get("generator"), dict) else {}
+            generation_config = (
+                generator.get("generation_config") if isinstance(generator.get("generation_config"), dict) else {}
             )
-        )
-        course_understanding_fingerprint = sha256_json(course_understanding) if course_understanding else None
-        source_id = str(source.get("source_id") or scaffold_path.parent.name)
-        material_id = f"printout:reading_scaffolds:{source_id}"
-        entry = {
-            "material_id": material_id,
-            "family": "printout",
-            "material_type": "reading_scaffolds",
-            "status": "generated_local",
-            "schema_version": payload.get("schema_version"),
-            "config_hash": short_hash(config_fingerprint),
-            "config_fingerprint": config_fingerprint,
-            "lecture_key": source.get("lecture_key"),
-            "source_id": source_id,
-            "source_title": source.get("title"),
-            "source_family": source.get("source_family"),
-            "generated_at": payload.get("generated_at"),
-            "generator": {
-                "provider": generator.get("provider"),
-                "model": generator.get("model"),
-                "prompt_version": generator.get("prompt_version"),
-                "generation_config_version": generation_config.get("version"),
-                "generation_config": generation_config,
-            },
-            "course_understanding": course_understanding,
-            "course_understanding_fingerprint": course_understanding_fingerprint,
-            "artifact_paths": {
-                "json": relpath(scaffold_path, repo_root),
-                "rendered": rendered_scaffold_paths(scaffold_path, repo_root),
-            },
-        }
-        attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
-        entries[material_id] = entry
+            course_understanding = payload.get("provenance") if isinstance(payload.get("provenance"), dict) else {}
+            config_fingerprint = sha256_json(
+                printout_setup_fingerprint_payload(
+                    payload=payload,
+                    generator=generator,
+                    generation_config=generation_config,
+                )
+            )
+            course_understanding_fingerprint = sha256_json(course_understanding) if course_understanding else None
+            source_id = str(source.get("source_id") or printout_path.parent.name)
+            material_id = f"printout:reading_printouts:{source_id}"
+            entry = {
+                "material_id": material_id,
+                "family": "printout",
+                "material_type": "reading_printouts",
+                "status": "generated_local",
+                "schema_version": payload.get("schema_version"),
+                "config_hash": short_hash(config_fingerprint),
+                "config_fingerprint": config_fingerprint,
+                "lecture_key": source.get("lecture_key"),
+                "source_id": source_id,
+                "source_title": source.get("title"),
+                "source_family": source.get("source_family"),
+                "generated_at": payload.get("generated_at"),
+                "generator": {
+                    "provider": generator.get("provider"),
+                    "model": generator.get("model"),
+                    "prompt_version": generator.get("prompt_version"),
+                    "generation_config_version": generation_config.get("version"),
+                    "generation_config": generation_config,
+                },
+                "course_understanding": course_understanding,
+                "course_understanding_fingerprint": course_understanding_fingerprint,
+                "artifact_paths": {
+                    "json": relpath(printout_path, repo_root),
+                    "rendered": rendered_printout_paths(printout_path, repo_root),
+                },
+            }
+            attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
+            entries[material_id] = entry
     return entries
 
 

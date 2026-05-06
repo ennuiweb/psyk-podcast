@@ -79,12 +79,12 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         },
     )
 
-    scaffold_path = output_root / "W01L1" / "scaffolding" / "w01l1-lewis-1999" / "reading-scaffolds.json"
+    printout_path = output_root / "W01L1" / "printouts" / "w01l1-lewis-1999" / "reading-printouts.json"
     _write_json(
-        scaffold_path,
+        printout_path,
         {
             "schema_version": 3,
-            "artifact_type": "reading_scaffolds",
+            "artifact_type": "reading_printouts",
             "generated_at": "2026-05-06T09:00:00Z",
             "source": {
                 "source_id": "w01l1-lewis-1999",
@@ -95,21 +95,21 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
             "generator": {
                 "provider": "gemini",
                 "model": "gemini-2.5-pro",
-                "prompt_version": "reading-scaffolds-v3",
+                "prompt_version": "reading-printouts-v3",
                 "generation_config": {"version": "v3"},
             },
             "provenance": {"course_synthesis_sha256": "course-hash"},
         },
     )
-    (scaffold_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
-    other_scaffold_path = (
-        output_root / "W02L1" / "scaffolding" / "w02l1-zettler-2020" / "reading-scaffolds.json"
+    (printout_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
+    other_printout_path = (
+        output_root / "W02L1" / "printouts" / "w02l1-zettler-2020" / "reading-printouts.json"
     )
     _write_json(
-        other_scaffold_path,
+        other_printout_path,
         {
             "schema_version": 3,
-            "artifact_type": "reading_scaffolds",
+            "artifact_type": "reading_printouts",
             "generated_at": "2026-05-06T09:10:00Z",
             "source": {
                 "source_id": "w02l1-zettler-2020",
@@ -120,13 +120,13 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
             "generator": {
                 "provider": "gemini",
                 "model": "gemini-2.5-pro",
-                "prompt_version": "reading-scaffolds-v3",
+                "prompt_version": "reading-printouts-v3",
                 "generation_config": {"version": "v3"},
             },
             "provenance": {"course_synthesis_sha256": "course-hash"},
         },
     )
-    (other_scaffold_path.parent / "00-reading-guide.md").write_text("other guide\n", encoding="utf-8")
+    (other_printout_path.parent / "00-reading-guide.md").write_text("other guide\n", encoding="utf-8")
 
     success_name = "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"
     inventory_only_name = (
@@ -322,14 +322,14 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     printout = next(item for item in printouts if item["source_id"] == "w01l1-lewis-1999")
     assert printout["status"] == "generated_local"
     assert printout["setup_version"] == "printout-v2"
-    assert printout["generator"]["prompt_version"] == "reading-scaffolds-v3"
+    assert printout["generator"]["prompt_version"] == "reading-printouts-v3"
     expected_printout_fingerprint = module.sha256_json(
         module.printout_setup_fingerprint_payload(
-            payload={"schema_version": 3, "artifact_type": "reading_scaffolds"},
+            payload={"schema_version": 3, "artifact_type": "reading_printouts"},
             generator={
                 "provider": "gemini",
                 "model": "gemini-2.5-pro",
-                "prompt_version": "reading-scaffolds-v3",
+                "prompt_version": "reading-printouts-v3",
             },
             generation_config={"version": "v3"},
         )
@@ -338,7 +338,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert printout["config_hash"] == expected_printout_fingerprint[:16]
     assert printout["course_understanding_fingerprint"] == module.sha256_json({"course_synthesis_sha256": "course-hash"})
     assert printout["artifact_paths"]["rendered"] == [
-        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999/00-reading-guide.md"
+        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/printouts/w01l1-lewis-1999/00-reading-guide.md"
     ]
     other_printout = next(item for item in printouts if item["source_id"] == "w02l1-zettler-2020")
     assert "setup_version" not in other_printout

@@ -1,10 +1,10 @@
-# Problem-Driven Scaffolding
+# Problem-Driven Printouts
 
-This document describes an alternative learner-facing scaffolding mode for
+This document describes an alternative learner-facing printout mode for
 `personlighedspsykologi`.
 
 It is not yet the canonical replacement for the existing scaffold contract in
-`scaffolding-system.md`. Treat it as an explicit design variant to implement
+`printout-system.md`. Treat it as an explicit design variant to implement
 and test.
 
 ## Intended Learner Fit
@@ -241,4 +241,4 @@ Useful observations:
 
 - repo-level design principles: [learning-material-design.md](/Users/oskar/repo/podcasts/docs/learning-material-design.md)
 - output-layer boundary and evaluation map: [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning-material-outputs.md)
-- current canonical scaffold contract: [scaffolding-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/scaffolding-system.md)
+- current canonical scaffold contract: [printout-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/printout-system.md)

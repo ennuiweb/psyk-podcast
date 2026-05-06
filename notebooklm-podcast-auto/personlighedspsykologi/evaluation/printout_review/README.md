@@ -3,9 +3,9 @@
 This folder is the sidecar evaluation lane for experimental printout variants.
 
 Its current purpose is to let us generate and inspect problem-driven reading
-scaffolds without touching the canonical scaffold output tree under:
+printouts without touching the canonical printout output tree under:
 
-`notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/scaffolding/<source_id>/`
+`notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
 
 ## Current use
 
@@ -24,19 +24,19 @@ behavior to emphasize:
 
 ## Why This Lives Here
 
-The production scaffold path and the experimental printout path are not the
+The production printout path and the experimental printout path are not the
 same thing.
 
-For now, this workspace deliberately carries its own experimental scaffold
+For now, this workspace deliberately carries its own experimental printout
 engine under `scripts/` so we can test learner-fit changes without turning the
-production scaffold path into a second moving target.
+production printout path into a second moving target.
 
 ## Folder layout
 
 - `prompts/problem-driven-v1.md`
   The editable prompt overlay for the current experiment.
-- `scripts/scaffold_engine.py`
-  The local experimental scaffold engine used only by this workspace.
+- `scripts/printout_engine.py`
+  The local experimental printout engine used only by this workspace.
 - `scripts/bootstrap_run.py`
   Creates a run manifest and review-note skeletons from selected sources.
 - `scripts/generate_candidates.py`
@@ -50,7 +50,7 @@ production scaffold path into a second moving target.
 - `runs/<run-name>/candidate_output/`
   Generated problem-driven candidate printouts for that run.
 
-The manifest also records where the canonical baseline scaffold would normally
+The manifest also records where the canonical baseline printout would normally
 live for each source under the standard output root.
 
 ## Bootstrap a run
@@ -103,7 +103,7 @@ Useful flags:
 
 This is an evaluation path, not the canonical production path.
 
-- do not point candidate output at the canonical live scaffold root
+- do not point candidate output at the canonical live printout root
 - compare candidate printouts against the baseline artifacts recorded in the
   manifest
 - capture exact prompts per run so results are reproducible
@@ -114,7 +114,7 @@ This is an evaluation path, not the canonical production path.
 This workspace currently supports:
 
 - bootstrapping run manifests with baseline and candidate paths
-- generating sidecar problem-driven scaffold candidates
+- generating sidecar problem-driven printout candidates
 - recording exact prompt captures per source
 - keeping all experimental generation code under the review workspace
 

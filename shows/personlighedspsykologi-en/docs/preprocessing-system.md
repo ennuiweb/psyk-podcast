@@ -101,9 +101,9 @@ Output substrate pass:
 Foerste konkrete ikke-podcast consumer efter dette er nu printable reading
 scaffolds:
 
-- `scripts/build_personlighedspsykologi_reading_scaffolds.py`
-- output: `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/scaffolding/<source_id>/`
-- artifacts: `reading-scaffolds.json` plus tre PDF/Markdown-filer:
+- `scripts/build_personlighedspsykologi_printouts.py`
+- output: `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
+- artifacts: `reading-printouts.json` plus tre PDF/Markdown-filer:
   `01-abridged-guide`, `02-unit-test-suite`, `03-cloze-scaffold`
 - denne vej sender altid den faktiske source PDF til Gemini 3.1 Pro via Files
   API; lokal kode maa kun vaelge, hashe, cache og rendere output

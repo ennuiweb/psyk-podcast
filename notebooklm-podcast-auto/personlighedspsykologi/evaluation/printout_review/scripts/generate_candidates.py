@@ -17,7 +17,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
-import scaffold_engine
+import printout_engine
 from notebooklm_queue import personlighedspsykologi_recursive as recursive
 from notebooklm_queue.gemini_preprocessing import (
     GeminiPreprocessingError,
@@ -26,8 +26,8 @@ from notebooklm_queue.gemini_preprocessing import (
 )
 from notebooklm_queue.source_intelligence_schemas import utc_now_iso
 
-DEFAULT_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md"
-DEFAULT_PROMPT_VERSION = "personlighedspsykologi-reading-scaffold-problem-driven-v1"
+DEFAULT_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md"
+DEFAULT_PROMPT_VERSION = "personlighedspsykologi-reading-printouts-problem-driven-v1"
 DEFAULT_VARIANT_KEY = "problem_driven_v1"
 
 
@@ -78,7 +78,7 @@ def _ensure_safe_output_root(candidate_output_root: Path, canonical_output_root:
 def _variant_system_instruction() -> str:
     return "\n".join(
         [
-            scaffold_engine.scaffold_system_instruction(),
+            printout_engine.printout_system_instruction(),
             "This run is an experimental prompt overlay.",
             "Keep the schema-v3 shape and validation contract unchanged.",
             "Let the user-prompt variant instructions change the pedagogical feel, not the artifact structure.",
@@ -95,7 +95,7 @@ def _variant_user_prompt(
     lecture_context: dict[str, Any] | None,
     course_context: dict[str, Any] | None,
 ) -> str:
-    base_prompt = scaffold_engine.scaffold_user_prompt(
+    base_prompt = printout_engine.printout_user_prompt(
         source=source,
         source_card=source_card,
         lecture_context=lecture_context,
@@ -118,7 +118,7 @@ def _build_prompt_capture_builder(
     source_id: str,
     variant_key: str,
     variant_prompt_text: str,
-) -> tuple[str, str, scaffold_engine.UserPromptBuilder]:
+) -> tuple[str, str, printout_engine.UserPromptBuilder]:
     system_rel = f"prompts/{source_id}.system.txt"
     user_rel = f"prompts/{source_id}.user.txt"
     system_text = _variant_system_instruction()
@@ -170,15 +170,15 @@ def _parse_args() -> argparse.Namespace:
         "--variant-prompt",
         help="Optional override for the variant prompt markdown. Defaults to the path recorded in the manifest.",
     )
-    parser.add_argument("--source-catalog", default=str(scaffold_engine.DEFAULT_SOURCE_CATALOG))
-    parser.add_argument("--source-card-dir", default=str(scaffold_engine.DEFAULT_SOURCE_CARD_DIR))
+    parser.add_argument("--source-catalog", default=str(printout_engine.DEFAULT_SOURCE_CATALOG))
+    parser.add_argument("--source-card-dir", default=str(printout_engine.DEFAULT_SOURCE_CARD_DIR))
     parser.add_argument(
         "--revised-lecture-substrate-dir",
-        default=str(scaffold_engine.DEFAULT_REVISED_LECTURE_SUBSTRATE_DIR),
+        default=str(printout_engine.DEFAULT_REVISED_LECTURE_SUBSTRATE_DIR),
     )
-    parser.add_argument("--course-synthesis-path", default=str(scaffold_engine.DEFAULT_COURSE_SYNTHESIS_PATH))
-    parser.add_argument("--subject-root", default=str(scaffold_engine.DEFAULT_SUBJECT_ROOT))
-    parser.add_argument("--model", default=scaffold_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL)
+    parser.add_argument("--course-synthesis-path", default=str(printout_engine.DEFAULT_COURSE_SYNTHESIS_PATH))
+    parser.add_argument("--subject-root", default=str(printout_engine.DEFAULT_SUBJECT_ROOT))
+    parser.add_argument("--model", default=printout_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL)
     parser.add_argument("--prompt-version", default=DEFAULT_PROMPT_VERSION)
     parser.add_argument("--force", action="store_true", help="Overwrite existing candidate scaffold artifacts.")
     parser.add_argument(
@@ -251,7 +251,7 @@ def main() -> int:
         raise SystemExit("no manifest entries matched the requested source ids")
 
     source_ids = [str(entry.get("source_id") or "").strip() for entry in entries]
-    sources = scaffold_engine.select_sources(
+    sources = printout_engine.select_sources(
         source_catalog_path=_resolve(args.source_catalog),
         source_ids=source_ids,
     )
@@ -272,7 +272,7 @@ def main() -> int:
                         {
                             "source_id": source_id,
                             "output_dir": str(
-                                scaffold_engine.output_dir_for_source(candidate_output_root, sources_by_id[source_id])
+                                printout_engine.output_dir_for_source(candidate_output_root, sources_by_id[source_id])
                             ),
                         }
                         for source_id in source_ids
@@ -304,7 +304,7 @@ def main() -> int:
         )
         candidate["prompt_capture_paths"] = {"system": system_rel, "user": user_rel}
         try:
-            result = scaffold_engine.build_scaffold_for_source(
+            result = printout_engine.build_printout_for_source(
                 repo_root=REPO_ROOT,
                 subject_root=_resolve(args.subject_root),
                 source=source,

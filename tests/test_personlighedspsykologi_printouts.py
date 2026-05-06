@@ -1,8 +1,21 @@
 import json
+import importlib.util
+import sys
 from pathlib import Path
 
-from notebooklm_queue import personlighedspsykologi_scaffolding as scaffolding
-from notebooklm_queue import personlighedspsykologi_recursive as recursive
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+RECURSIVE_PATH = REPO_ROOT / "notebooklm_queue" / "personlighedspsykologi_recursive.py"
+MODULE_PATH = Path(__file__).resolve().parents[1] / "notebooklm_queue" / "personlighedspsykologi_printouts.py"
+SPEC = importlib.util.spec_from_file_location("personlighedspsykologi_printouts", MODULE_PATH)
+assert SPEC and SPEC.loader
+printouts = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(printouts)
+RECURSIVE_SPEC = importlib.util.spec_from_file_location("personlighedspsykologi_recursive", RECURSIVE_PATH)
+assert RECURSIVE_SPEC and RECURSIVE_SPEC.loader
+recursive = importlib.util.module_from_spec(RECURSIVE_SPEC)
+RECURSIVE_SPEC.loader.exec_module(recursive)
 
 
 def _write_json(path: Path, payload):
@@ -10,7 +23,7 @@ def _write_json(path: Path, payload):
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
-def _valid_scaffold_response():
+def _valid_printout_response():
     return {
         "metadata": {
             "language": "da",
@@ -45,7 +58,7 @@ def _valid_scaffold_response():
             ],
         },
         "cloze_scaffold": {
-            "title": "Scaffolding-opgaver",
+            "title": "Printout-opgaver",
             "overview": [
                 "Teksten handler om oplevelse.",
                 "Den forklarer metode.",
@@ -109,20 +122,20 @@ def _source_fixture(tmp_path: Path):
     return repo_root, subject_root, output_root, source_card_dir, source_path, source
 
 
-def test_build_scaffold_attaches_source_pdf_to_gemini_and_renders_files(tmp_path, monkeypatch):
+def test_build_printout_attaches_source_pdf_to_gemini_and_renders_files(tmp_path, monkeypatch):
     repo_root, subject_root, output_root, source_card_dir, source_path, source = _source_fixture(tmp_path)
     calls = []
 
     def fake_json_generator(**kwargs):
         calls.append(kwargs)
-        return _valid_scaffold_response()
+        return _valid_printout_response()
 
     def fake_markdown_to_pdf(markdown_path, pdf_path):
-        pdf_path.write_bytes(b"%PDF scaffold")
+        pdf_path.write_bytes(b"%PDF printout")
 
-    monkeypatch.setattr(scaffolding, "markdown_to_pdf", fake_markdown_to_pdf)
+    monkeypatch.setattr(printouts, "markdown_to_pdf", fake_markdown_to_pdf)
 
-    result = scaffolding.build_scaffold_for_source(
+    result = printouts.build_printout_for_source(
         repo_root=repo_root,
         subject_root=subject_root,
         source=source,
@@ -147,7 +160,7 @@ def test_build_scaffold_attaches_source_pdf_to_gemini_and_renders_files(tmp_path
     assert "__________" in cloze_text
 
 
-def test_build_scaffolds_default_family_filter_is_reading_only(tmp_path):
+def test_build_printouts_default_family_filter_is_reading_only(tmp_path):
     catalog_path = tmp_path / "source_catalog.json"
     _write_json(
         catalog_path,
@@ -173,22 +186,22 @@ def test_build_scaffolds_default_family_filter_is_reading_only(tmp_path):
         },
     )
 
-    selected = scaffolding.select_sources(
+    selected = printouts.select_sources(
         source_catalog_path=catalog_path,
         lecture_keys=recursive.normalize_lecture_keys("W01L1"),
-        source_families=scaffolding.parse_source_families([]),
+        source_families=printouts.parse_source_families([]),
     )
 
     assert [item["source_id"] for item in selected] == ["reading-1"]
 
 
-def test_validate_scaffold_requires_blank_markers():
-    payload = _valid_scaffold_response()
+def test_validate_printout_requires_blank_markers():
+    payload = _valid_printout_response()
     payload["cloze_scaffold"]["fill_in_sentences"][0]["sentence"] = "Ingen blank her."
 
     try:
-        scaffolding.validate_scaffold_payload(payload)
-    except scaffolding.ScaffoldingError as exc:
+        printouts.validate_printout_payload(payload)
+    except printouts.PrintoutError as exc:
         assert "blank marker" in str(exc)
     else:
-        raise AssertionError("expected ScaffoldingError")
+        raise AssertionError("expected PrintoutError")

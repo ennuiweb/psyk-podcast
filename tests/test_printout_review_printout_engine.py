@@ -1,16 +1,21 @@
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 MODULE_PATH = (
-    Path(__file__).resolve().parents[1]
-    / "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/scaffold_engine.py"
+    REPO_ROOT
+    / "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py"
 )
-SPEC = importlib.util.spec_from_file_location("printout_review_scaffold_engine", MODULE_PATH)
+SPEC = importlib.util.spec_from_file_location("printout_review_printout_engine", MODULE_PATH)
 assert SPEC and SPEC.loader
-scaffold_engine = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(scaffold_engine)
+printout_engine = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(printout_engine)
 
 
 def _write_json(path: Path, payload):
@@ -212,7 +217,7 @@ def _source_fixture(tmp_path: Path):
     return repo_root, subject_root, output_root, source_card_dir, source
 
 
-def test_scaffold_engine_accepts_prompt_overrides(tmp_path):
+def test_printout_engine_accepts_prompt_overrides(tmp_path):
     repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
     calls = []
 
@@ -223,7 +228,7 @@ def test_scaffold_engine_accepts_prompt_overrides(tmp_path):
     def fake_user_prompt_builder(**kwargs):
         return f"EXPERIMENT\n{kwargs['source']['source_id']}"
 
-    result = scaffold_engine.build_scaffold_for_source(
+    result = printout_engine.build_printout_for_source(
         repo_root=repo_root,
         subject_root=subject_root,
         source=source,

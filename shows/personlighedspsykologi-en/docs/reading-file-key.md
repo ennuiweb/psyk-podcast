@@ -39,7 +39,7 @@ Sources used for this mapping:
 - Zettler et al. (2025) → W3L1 Zettler et al. (2025).pdf
 
 **W03L2 Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)**
-- Bach & Simonsen (2023) → W3L2 Bach & Simonsen (2023) kapitel 3.pdf; W3L2 Bach & Simonsen (2023) kapitel 5.pdf
+- MISSING: Bach & Simonsen (2023)
 - Sharp & Wall (2021) → W3L2 Sharp & Wall (2021).pdf
 
 **W04L1 Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)**

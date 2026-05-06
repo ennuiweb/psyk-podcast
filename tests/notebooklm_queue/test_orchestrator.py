@@ -242,6 +242,54 @@ def test_serve_show_queue_waits_for_retry_scheduled_backlog(tmp_path: Path, monk
     assert len(result["recent_cycles"]) == 2
 
 
+def test_serve_show_queue_uses_real_clock_for_retry_wait_plan(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    retry_at = datetime.now(tz=UTC) + timedelta(seconds=3600)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_RETRY_SCHEDULED,
+        retry_at=retry_at.replace(microsecond=0).isoformat(),
+        expected_states={"queued"},
+    )
+
+    def fake_sleep(seconds: int) -> None:
+        raise RuntimeError(f"stop after planning {seconds}")
+
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.sleep", fake_sleep)
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        lambda **kwargs: {
+            "show_slug": kwargs["show_slug"],
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug=kwargs["show_slug"]),
+        },
+    )
+
+    try:
+        serve_show_queue(
+            store=store,
+            show_slug="bioneuro",
+            options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+        )
+    except RuntimeError as exc:
+        assert "stop after planning" in str(exc)
+    else:  # pragma: no cover - defensive assertion for regression clarity
+        raise AssertionError("expected fake sleep to stop the wait loop")
+
+
 def test_serve_show_queue_does_not_wait_when_blocked_and_retry_jobs_coexist(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()

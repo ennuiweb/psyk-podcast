@@ -221,6 +221,51 @@ def test_publish_repo_artifacts_allows_personligheds_learning_material_registry(
     assert "podcast:1" in remote_registry
 
 
+def test_publish_repo_artifacts_allows_personligheds_regeneration_registry(tmp_path: Path) -> None:
+    repo_root, remote_root = _seed_personligheds_repo(tmp_path)
+    store, job = _seed_personligheds_job(tmp_path)
+    registry_path = repo_root / "shows/personlighedspsykologi-en/regeneration_registry.json"
+    registry_path.write_text(
+        json.dumps(
+            {
+                "entries": [
+                    {
+                        "logical_episode_id": "W10L2|reading|davies-1990|long",
+                        "active_variant": "B",
+                    }
+                ]
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    result = publish_repo_artifacts(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        job_id=str(job["job_id"]),
+        options=RepoPublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_REPO_PUSHED
+    updated = store.load_job(show_slug="personlighedspsykologi-en", job_id=str(job["job_id"]))
+    publish_manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    publish_manifest = json.loads(publish_manifest_path.read_text(encoding="utf-8"))
+    changed_allowlist_paths = publish_manifest["repo_publish"]["changed_allowlist_paths"]
+    assert "shows/personlighedspsykologi-en/regeneration_registry.json" in changed_allowlist_paths
+    remote_registry = _run(
+        [
+            "git",
+            "--git-dir",
+            str(remote_root),
+            "show",
+            "main:shows/personlighedspsykologi-en/regeneration_registry.json",
+        ],
+        repo_root,
+    )
+    assert '"active_variant": "B"' in remote_registry
+
+
 def test_publish_repo_artifacts_fails_on_unexpected_tracked_changes(tmp_path: Path) -> None:
     repo_root, _remote_root = _seed_repo(tmp_path)
     store, job = _seed_job(tmp_path, repo_root)

@@ -2774,7 +2774,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
         )
 
-    def test_build_episode_entry_prepends_regenerated_marker_when_configured(self):
+    def test_build_episode_entry_prepends_regenerated_marker_for_active_b_variant(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "regenerated-file",
@@ -2802,12 +2802,44 @@ class AutoSpecMatchingTests(unittest.TestCase):
             overrides={},
             public_link_template="https://example.com/{file_id}",
             folder_names=["W10L2"],
-            active_b_variant_file_ids={"regenerated-file"},
+            active_b_variant_file_ids={"other-file"},
+            regeneration_variant_slot="B",
             regen_marker="✦",
             regen_marker_position="prefix",
         )
 
         self.assertEqual(episode["title"], "✦ U10F2 · Davies (1990)")
+
+    def test_registry_selection_prefers_active_b_when_a_and_b_match_same_file(self):
+        mod = _load_feed_module()
+        source_name = "W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=92f3a0d2}.mp3"
+        logical_id = "weekly_readings_only__w11l2__alle_kilder_undtagen_slides_en"
+        registry_entries_by_lid = {
+            logical_id: {
+                "logical_episode_id": logical_id,
+                "active_variant": "B",
+                "variants": {
+                    "A": {
+                        "episode_key": "1-tofzRiDfZn4gEu7N1N6u_Gala3-gsMl",
+                        "source_name": source_name,
+                    },
+                    "B": {
+                        "episode_key": "1-tofzRiDfZn4gEu7N1N6u_Gala3-gsMl",
+                        "source_name": source_name,
+                    },
+                },
+            }
+        }
+        file_entry = {
+            "id": "shows/personlighedspsykologi-en/W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=92f3a0d2}.mp3",
+            "name": source_name,
+            "source_path": source_name,
+            "source_storage_key": "shows/personlighedspsykologi-en/W11L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=92f3a0d2}.mp3",
+        }
+
+        decision = mod._registry_selection_for_file(file_entry, registry_entries_by_lid)
+
+        self.assertEqual(decision, (True, logical_id, "B"))
 
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()

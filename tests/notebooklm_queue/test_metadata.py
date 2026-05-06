@@ -380,6 +380,8 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
         == "shows/personlighedspsykologi-en/media_manifest.json"
     )
     assert sync_registry_command[sync_registry_command.index("--activate-lecture") + 1] == "W1L1"
+    validate_regeneration_inventory_command = dict(commands)["validate_regeneration_inventory"]
+    assert validate_regeneration_inventory_command[validate_regeneration_inventory_command.index("--weeks") + 1] == "W1L1"
     audit_command = dict(commands)["audit_slide_briefs"]
     assert "--warn-only" not in audit_command
     assert phase_names[-1] == "sync_learning_material_registry"
@@ -480,9 +482,16 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     phase_names = [name for name, _ in commands]
     assert "sync_quiz_links" not in phase_names
     assert "validate_manual_summaries" not in phase_names
+    assert "sync_regeneration_registry" in phase_names
+    assert phase_names.index("sync_regeneration_registry") < phase_names.index("generate_feed")
     assert "audit_slide_briefs" not in phase_names
     assert "rebuild_content_manifest" not in phase_names
     assert "sync_learning_material_registry" not in phase_names
+    sync_registry_command = dict(commands)["sync_regeneration_registry"]
+    assert sync_registry_command[1].endswith("scripts/sync_regeneration_registry.py")
+    assert sync_registry_command[sync_registry_command.index("--activate-lecture") + 1] == "W1L1"
+    validate_regeneration_inventory_command = dict(commands)["validate_regeneration_inventory"]
+    assert validate_regeneration_inventory_command[validate_regeneration_inventory_command.index("--weeks") + 1] == "W1L1"
     manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     validation = manifest["metadata"]["validation"]

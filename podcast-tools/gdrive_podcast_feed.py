@@ -489,14 +489,14 @@ def _registry_selection_for_file(
     active_slot = str(entry.get("active_variant") or "A").strip().upper()
     if active_slot not in {"A", "B"}:
         active_slot = "A"
-    matched_slot: Optional[str] = None
+    matched_slots: List[str] = []
     for slot in ("A", "B"):
         variant = variants.get(slot) if isinstance(variants.get(slot), dict) else {}
         if variant and _variant_matches_file_entry(variant, file_entry):
-            matched_slot = slot
-            break
-    if matched_slot is None:
+            matched_slots.append(slot)
+    if not matched_slots:
         return (False, logical_id, active_slot)
+    matched_slot = active_slot if active_slot in matched_slots else matched_slots[0]
     return (matched_slot == active_slot, logical_id, matched_slot)
 
 
@@ -3369,6 +3369,7 @@ def build_episode_entry(
     weekly_overview_summaries_cfg: Optional[Dict[str, Any]] = None,
     weekly_overview_summaries: Optional[Dict[str, Any]] = None,
     active_b_variant_file_ids: Optional[Set[str]] = None,
+    regeneration_variant_slot: Optional[str] = None,
     regen_marker: Optional[str] = None,
     regen_marker_position: str = "suffix",
 ) -> Dict[str, Any]:
@@ -3678,11 +3679,15 @@ def build_episode_entry(
             )
         else:
             title_value = _normalize_category_prefix(title_value)
-    if (
-        regen_marker
-        and active_b_variant_file_ids
+    active_regenerated_variant = False
+    if isinstance(regeneration_variant_slot, str) and regeneration_variant_slot.strip().upper() == "B":
+        active_regenerated_variant = True
+    elif (
+        active_b_variant_file_ids
         and str(file_entry.get("id") or "").strip() in active_b_variant_file_ids
     ):
+        active_regenerated_variant = True
+    if regen_marker and active_regenerated_variant:
         title_value = _apply_regeneration_marker(title_value, regen_marker, regen_marker_position)
     meta["title"] = title_value
     if suppress_week_prefix:
@@ -4347,6 +4352,7 @@ def main() -> None:
     for media_file in media_files:
         _apply_existing_identity(media_file, existing_identity_map)
         folder_names = storage.build_folder_path(media_file)
+        matched_slot: Optional[str] = None
         registry_decision = _registry_selection_for_file(media_file, registry_entries_by_lid)
         if registry_decision is None:
             if not matches_filters(media_file, folder_names, filters):
@@ -4438,6 +4444,7 @@ def main() -> None:
                 weekly_overview_summaries_cfg=weekly_overview_summaries_cfg,
                 weekly_overview_summaries=weekly_overview_summaries,
                 active_b_variant_file_ids=active_b_variant_file_ids,
+                regeneration_variant_slot=matched_slot,
                 regen_marker=regen_marker,
                 regen_marker_position=regen_marker_position,
             )

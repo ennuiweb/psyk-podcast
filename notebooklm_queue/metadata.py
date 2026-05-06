@@ -319,6 +319,7 @@ def _phase_definitions(
     phases: list[dict[str, object]] = []
     quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
     requires_portal_sidecars = _requires_portal_sidecars(show_slug=show_slug, manifest=manifest)
+    bundle_has_audio = _bundle_has_artifact_type(manifest=manifest, artifact_type="audio")
     if quiz_sync is not None and _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz"):
         command = [
             python,
@@ -377,6 +378,7 @@ def _phase_definitions(
                 ),
             }
         )
+    if show_slug == "personlighedspsykologi-en" and bundle_has_audio:
         sync_registry_command = [
             python,
             str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_regeneration_registry.py"),
@@ -416,15 +418,19 @@ def _phase_definitions(
         }
     )
     if show_slug == "personlighedspsykologi-en":
+        validate_regeneration_inventory_command = [
+            python,
+            str(repo_root / "scripts" / "validate_regeneration_inventory.py"),
+            "--show-slug",
+            "personlighedspsykologi-en",
+        ]
+        lecture_key = str(job.get("lecture_key") or "").strip()
+        if lecture_key:
+            validate_regeneration_inventory_command.extend(["--weeks", lecture_key])
         phases.append(
             {
                 "name": "validate_regeneration_inventory",
-                "command": [
-                    python,
-                    str(repo_root / "scripts" / "validate_regeneration_inventory.py"),
-                    "--show-slug",
-                    "personlighedspsykologi-en",
-                ],
+                "command": validate_regeneration_inventory_command,
             }
         )
         if requires_portal_sidecars:

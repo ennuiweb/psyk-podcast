@@ -30,6 +30,12 @@ RATE_LIMIT_ERROR_TOKENS = (
     "429",
     "too many requests",
 )
+TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
+    "generator timed out before writing a usable request log",
+    "rpc create_artifact failed",
+    "rpc create_notebook failed",
+    "null result data (possible server error",
+)
 DEFAULT_RATE_LIMIT_RETRY_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS") or "900"
 )
@@ -52,10 +58,15 @@ def _looks_like_rate_limit(message: str | None) -> bool:
     return any(token in text for token in RATE_LIMIT_ERROR_TOKENS)
 
 
+def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:
+    text = str(message or "").lower()
+    return any(token in text for token in TRANSIENT_NOTEBOOKLM_ERROR_TOKENS)
+
+
 def _derived_retry_at(*, explicit_retry_at: str | None, error_text: str | None) -> str | None:
     if explicit_retry_at:
         return explicit_retry_at
-    if not _looks_like_rate_limit(error_text):
+    if not (_looks_like_rate_limit(error_text) or _looks_like_transient_notebooklm_failure(error_text)):
         return None
     retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(DEFAULT_RATE_LIMIT_RETRY_SECONDS, 1))
     return retry_at.replace(microsecond=0).isoformat()

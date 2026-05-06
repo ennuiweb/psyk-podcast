@@ -1,7 +1,16 @@
+import importlib.util
 import json
 from pathlib import Path
 
-from notebooklm_queue import personlighedspsykologi_problem_driven_scaffolding as problem_scaffolding
+
+MODULE_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/scaffold_engine.py"
+)
+SPEC = importlib.util.spec_from_file_location("printout_review_scaffold_engine", MODULE_PATH)
+assert SPEC and SPEC.loader
+scaffold_engine = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(scaffold_engine)
 
 
 def _write_json(path: Path, payload):
@@ -18,20 +27,20 @@ def _valid_scaffold_response():
             "source_title": "Phenomenology source",
         },
         "reading_guide": {
-            "title": "Mission brief",
-            "how_to_use": "Start med missionen og tag ruten ét punkt ad gangen.",
-            "why_this_text_matters": "Teksten afgør et centralt metodisk spørgsmål i forelæsningen.",
+            "title": "Læseguide",
+            "how_to_use": "Læs guiden først, og brug stop-signalerne.",
+            "why_this_text_matters": "Teksten fungerer som metodisk anker for forelæsningen.",
             "overview": [
-                "Teksten gør oplevelse til et systematisk analysepunkt.",
-                "Den afviser en løs introspektionsforståelse.",
-                "Den forbinder metode med personlighedspsykologi.",
+                "Teksten introducerer fænomenologi som metode.",
+                "Den forklarer bevidsthed som rettethed.",
+                "Den viser hvorfor livsverden er central.",
             ],
             "reading_route": [
                 {
                     "number": str(index),
                     "source_location": f"Afsnit {index}",
-                    "task": f"Find den lokale pointe i afsnit {index}.",
-                    "why_it_matters": "Det låser næste trin op.",
+                    "task": f"Find hovedpointen i afsnit {index}.",
+                    "why_it_matters": "Det styrer resten af læsningen.",
                     "stop_signal": "Stop når du har skrevet én kort note.",
                 }
                 for index in range(1, 4)
@@ -42,28 +51,28 @@ def _valid_scaffold_response():
                 {"target": "livsverden", "why": "Forankrer metoden.", "where_to_look": "Afslutningen."},
             ],
             "do_not_get_stuck_on": [
-                "Historiske sidedetaljer.",
+                "Alle historiske detaljer.",
                 "Små terminologiske variationer.",
             ],
         },
         "abridged_reader": {
-            "title": "Guided solve path",
-            "how_to_use": "Løs ét delproblem ad gangen.",
-            "coverage_note": "Denne version bevarer argumentets bevægelse som minimumsvej.",
+            "title": "Abridged reader",
+            "how_to_use": "Læs denne version som minimumsvej gennem teksten.",
+            "coverage_note": "Denne version bevarer argumentets bevægelse, men erstatter ikke alle detaljer.",
             "sections": [
                 {
                     "number": str(index),
                     "source_location": f"Afsnit {index}",
-                    "heading": f"Delproblem {index}",
+                    "heading": f"Argumenttrin {index}",
                     "explanation_paragraphs": [
-                        "Først opstår en lokal spænding i teksten, som gør begrebet nødvendigt.",
-                        "Derefter løser teksten spændingen ved at præcisere begrebet og dets funktion.",
+                        "Teksten gør først pointen enklere ved at placere begrebet i kontekst.",
+                        "Derefter viser den, hvorfor begrebet betyder noget for personlighedspsykologi.",
                     ],
                     "key_points": ["Et centralt begreb.", "En vigtig relation."],
                     "quote_anchors": [
                         {
                             "phrase": "bevidsthed om noget",
-                            "why_it_matters": "Det er tekstens nøgleanker.",
+                            "why_it_matters": "Det er tekstens korte nøgleformulering.",
                             "source_location": f"Afsnit {index}",
                         }
                     ],
@@ -72,7 +81,7 @@ def _valid_scaffold_response():
                     "source_touchpoint_task": "Find nøgleformuleringen og understreg den.",
                     "source_touchpoint_answer_or_marking_format": "en understregning",
                     "source_touchpoint_stop_signal": "Stop når én sætning er markeret.",
-                    "mini_check_question": f"Hvad løser afsnit {index}?",
+                    "mini_check_question": f"Hvad er hovedpointen i afsnit {index}?",
                     "mini_check_answer_shape": "en kort sætning",
                     "mini_check_done_signal": "Stop når du har skrevet én sætning.",
                 }
@@ -80,13 +89,13 @@ def _valid_scaffold_response():
             ],
         },
         "active_reading": {
-            "title": "Evidence hunt",
-            "instructions": "Start med de hurtige checks og gå derefter til tekstens beviser.",
+            "title": "Aktiv læsning",
+            "instructions": "Start med abridged checks, og lav kun source touchpoints hvis du kan.",
             "abridged_checks": [
                 {
                     "number": str(index),
-                    "question": f"Hvilken lokal beslutning træffes i del {index}?",
-                    "abridged_reader_location": f"Guided solve path del {index}",
+                    "question": f"Hvad skal du forstå i del {index}?",
+                    "abridged_reader_location": f"Abridged reader del {index}",
                     "answer_shape": "1-3 ord",
                     "done_signal": "Stop når du har skrevet et kort svar.",
                 }
@@ -96,26 +105,26 @@ def _valid_scaffold_response():
                 {
                     "number": str(index),
                     "source_location": f"Afsnit {index}",
-                    "task": "Find den formulering der beviser pointen og marker den.",
+                    "task": "Find én nøgleformulering og understreg den.",
                     "answer_or_marking_format": "en understregning",
                     "stop_signal": "Stop når én formulering er markeret.",
-                    "why_this_touchpoint": "Det holder kontakt med originalens ordlyd.",
+                    "why_this_touchpoint": "Det bevarer kontakt med originalens ordlyd.",
                 }
                 for index in range(1, 6)
             ],
         },
         "consolidation_sheet": {
-            "title": "Model builder",
+            "title": "Konsolidering",
             "overview": [
-                "Teksten bygger et syn på oplevelse.",
-                "Den viser hvorfor metode betyder noget.",
-                "Den forbinder begreberne i en samlet model.",
+                "Teksten handler om oplevelse.",
+                "Den forklarer metode.",
+                "Den viser centrale begreber.",
             ],
             "fill_in_sentences": [
                 {
                     "number": str(index),
-                    "sentence": f"Begreb {index} fungerer som __________ i modellen.",
-                    "where_to_look": f"Guided solve path del {index}.",
+                    "sentence": f"Begreb {index} hedder __________.",
+                    "where_to_look": f"Abridged reader del {index}.",
                     "answer_shape": "et begreb",
                 }
                 for index in range(1, 6)
@@ -130,8 +139,8 @@ def _valid_scaffold_response():
             ],
         },
         "exam_bridge": {
-            "title": "Boss fight",
-            "instructions": "Brug arket til at bevise at du kan bruge modellen.",
+            "title": "Eksamensbro",
+            "instructions": "Brug arket til at flytte teksten ind i eksamenssvar.",
             "use_this_text_for": [
                 "spørgsmål om metode",
                 "spørgsmål om oplevelse",
@@ -146,7 +155,7 @@ def _valid_scaffold_response():
                 {"compare_with": "psykoanalyse", "how_to_compare": "Sammenlign oplevelse med fortolkning."},
             ],
             "exam_moves": [
-                {"prompt_type": "definer", "use_in_answer": "Brug teksten til at definere metoden præcist.", "caution": "Gør det ikke for bredt."},
+                {"prompt_type": "definer", "use_in_answer": "Brug teksten til at definere metoden.", "caution": "Gør det ikke for bredt."},
                 {"prompt_type": "sammenlign", "use_in_answer": "Brug den som kontrast til træk.", "caution": "Undgå karikatur."},
                 {"prompt_type": "diskuter", "use_in_answer": "Brug den til metodiske konsekvenser.", "caution": "Hold forbindelsen til kurset."},
             ],
@@ -154,8 +163,8 @@ def _valid_scaffold_response():
                 {"trap": "At gøre metoden til introspektion.", "better_reading": "Den er systematisk beskrivelse."},
                 {"trap": "At ignorere kontekst.", "better_reading": "Oplevelse er altid rettet mod noget."},
             ],
-            "mini_exam_prompt_question": "Hvordan løser teksten problemet om oplevelse og metode?",
-            "mini_exam_answer_plan_slots": ["definer problemet", "vis modelens løsning", "sammenlign med en anden teori"],
+            "mini_exam_prompt_question": "Hvordan kan teksten bruges til at forstå personlighed?",
+            "mini_exam_answer_plan_slots": ["definer tekstens metode", "forklar et begreb", "sammenlign med en anden teori"],
         },
     }
 
@@ -203,7 +212,7 @@ def _source_fixture(tmp_path: Path):
     return repo_root, subject_root, output_root, source_card_dir, source
 
 
-def test_problem_driven_scaffold_uses_variant_prompt_and_metadata(tmp_path):
+def test_scaffold_engine_accepts_prompt_overrides(tmp_path):
     repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
     calls = []
 
@@ -211,7 +220,10 @@ def test_problem_driven_scaffold_uses_variant_prompt_and_metadata(tmp_path):
         calls.append(kwargs)
         return _valid_scaffold_response()
 
-    result = problem_scaffolding.build_scaffold_for_source(
+    def fake_user_prompt_builder(**kwargs):
+        return f"EXPERIMENT\n{kwargs['source']['source_id']}"
+
+    result = scaffold_engine.build_scaffold_for_source(
         repo_root=repo_root,
         subject_root=subject_root,
         source=source,
@@ -221,53 +233,16 @@ def test_problem_driven_scaffold_uses_variant_prompt_and_metadata(tmp_path):
         output_root=output_root,
         json_generator=fake_json_generator,
         render_pdf=False,
+        prompt_version="problem-driven-v1",
+        system_instruction="SYSTEM OVERRIDE",
+        user_prompt_builder=fake_user_prompt_builder,
+        variant_metadata={"variant_key": "problem_driven_v1"},
     )
 
     assert result["status"] == "written"
-    assert calls[0]["response_json_schema"] is None
-    assert "mission brief" in calls[0]["system_instruction"].lower()
-    assert "problem to solve" in calls[0]["system_instruction"].lower()
-    assert '"section_roles"' in calls[0]["user_prompt"]
-    assert '"boss_fight"' in calls[0]["user_prompt"]
+    assert calls[0]["system_instruction"] == "SYSTEM OVERRIDE"
+    assert calls[0]["user_prompt"] == "EXPERIMENT\nsource-1"
     artifact = json.loads(Path(result["json_path"]).read_text(encoding="utf-8"))
-    assert artifact["generator"]["prompt_version"] == problem_scaffolding.PROMPT_VERSION
-    assert artifact["variant"]["mode"] == "problem_driven"
-    assert artifact["variant"]["variant_key"] == problem_scaffolding.VARIANT_KEY
+    assert artifact["generator"]["prompt_version"] == "problem-driven-v1"
+    assert artifact["variant"]["variant_key"] == "problem_driven_v1"
     assert len(result["markdown_paths"]) == 5
-
-
-def test_problem_driven_build_scaffolds_dry_run_reports_variant(tmp_path):
-    catalog_path = tmp_path / "source_catalog.json"
-    _write_json(
-        catalog_path,
-        {
-            "sources": [
-                {
-                    "source_id": "reading-1",
-                    "lecture_key": "W01L1",
-                    "lecture_keys": ["W01L1"],
-                    "sequence_index": 1,
-                    "title": "Reading 1",
-                    "source_family": "reading",
-                    "source_exists": True,
-                }
-            ]
-        },
-    )
-
-    result = problem_scaffolding.build_scaffolds(
-        repo_root=tmp_path,
-        subject_root=tmp_path / "subject",
-        source_catalog_path=catalog_path,
-        source_card_dir=tmp_path / "cards",
-        revised_lecture_substrate_dir=tmp_path / "revised",
-        course_synthesis_path=tmp_path / "course.json",
-        output_root=tmp_path / "candidate_output",
-        lecture_keys=["W01L1"],
-        dry_run=True,
-    )
-
-    assert result["status"] == "planned"
-    assert result["variant"] == problem_scaffolding.VARIANT_KEY
-    assert result["source_count"] == 1
-    assert result["sources"][0]["output_dir"].endswith("candidate_output/W01L1/scaffolding/reading-1")

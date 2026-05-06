@@ -383,15 +383,16 @@ def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: P
     assert [phase["name"] for phase in manifest["phases"]] == ["download"]
 
 
-def test_execute_job_marks_waiting_when_artifact_request_persists_after_download_poll(tmp_path: Path) -> None:
+def test_execute_job_marks_awaiting_publish_when_new_outputs_exist_with_pending_requests(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
     request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         "import json, pathlib\n"
         f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
         "request_log.parent.mkdir(parents=True, exist_ok=True)\n"
-        "request_log.write_text(json.dumps({'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': 'episode.mp3', 'artifact_type': 'audio'}), encoding='utf-8')\n"
+        f"request_log.write_text(json.dumps({{'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': {str(output_file)!r}, 'artifact_type': 'audio'}}), encoding='utf-8')\n"
         "print('generated ok')\n",
     )
     _write_phase_script(
@@ -399,6 +400,9 @@ def test_execute_job_marks_waiting_when_artifact_request_persists_after_download
         "import json, pathlib, sys\n"
         "repo_root = pathlib.Path(sys.argv[0]).resolve().parents[3]\n"
         "(repo_root / '.phase-download.json').write_text(json.dumps({'argv': sys.argv[1:]}, ensure_ascii=False), encoding='utf-8')\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
         "print('still waiting upstream')\n",
     )
     store = QueueStore(tmp_path / "queue-root")
@@ -411,17 +415,71 @@ def test_execute_job_marks_waiting_when_artifact_request_persists_after_download
         options=ExecutionOptions(repo_root=repo_root, artifact_wait_timeout_seconds=9, artifact_poll_interval_seconds=5),
     )
 
-    assert result["final_state"] == STATE_WAITING_FOR_ARTIFACT
+    assert result["final_state"] == STATE_AWAITING_PUBLISH
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
-    assert updated["state"] == STATE_WAITING_FOR_ARTIFACT
+    assert updated["state"] == STATE_AWAITING_PUBLISH
     assert updated["next_retry_at"]
     manifest_path = store.root / str(updated["artifacts"]["execution"]["latest_run_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    assert manifest["status"] == "waiting"
+    assert manifest["status"] == "completed"
     assert [phase["name"] for phase in manifest["phases"]] == ["generate", "download"]
     download_args = json.loads((repo_root / ".phase-download.json").read_text(encoding="utf-8"))["argv"]
     assert "--timeout" in download_args and "9" in download_args
     assert "--interval" in download_args and "5" in download_args
+
+
+def test_execute_job_marks_waiting_when_pending_requests_have_no_new_outputs(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_bytes(b"mp3")
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import json, pathlib\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.parent.mkdir(parents=True, exist_ok=True)\n"
+        f"request_log.write_text(json.dumps({{'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': {str(output_file)!r}, 'artifact_type': 'audio'}}), encoding='utf-8')\n"
+        "print('generated ok')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('still waiting upstream')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    # Seed the real completed-bundle hash from the current output so execution treats it as already published.
+    seeded = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root, run_download=False, artifact_poll_interval_seconds=5),
+    )
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    progress = updated["artifacts"]["execution"]["last_progress"]
+    updated["artifacts"]["publish"] = {"last_completed_bundle_hash": progress["publishable_bundle_hash"]}
+    store.save_job(updated)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state="queued",
+        note="Reset to queued after seeding completed bundle hash",
+    )
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root, artifact_wait_timeout_seconds=9, artifact_poll_interval_seconds=5),
+    )
+
+    assert seeded["final_state"] == STATE_AWAITING_PUBLISH
+    assert result["final_state"] == STATE_WAITING_FOR_ARTIFACT
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_WAITING_FOR_ARTIFACT
+    manifest_path = store.root / str(updated["artifacts"]["execution"]["latest_run_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["status"] == "waiting"
 
 
 def test_execute_job_resumes_from_waiting_state_and_skips_generate(tmp_path: Path) -> None:

@@ -421,11 +421,7 @@ def _build_publish_bundle(
         )
 
     request_logs = sorted(path for week_dir in week_dirs for path in week_dir.glob("*.request*.json"))
-    if request_logs:
-        relative_logs = [str(path.relative_to(repo_root)) for path in request_logs]
-        raise PublishValidationError(
-            f"Pending request logs remain for {lecture_key}: {', '.join(relative_logs[:5])}"
-        )
+    relative_logs = [str(path.relative_to(repo_root)) for path in request_logs]
 
     artifacts: list[dict[str, Any]] = []
     counts: dict[str, int] = {"audio": 0, "quiz": 0, "infographic": 0}
@@ -472,6 +468,8 @@ def _build_publish_bundle(
         "requested_types": list(requested_types),
         "artifact_count": len(artifacts),
         "artifact_counts": dict(sorted(counts.items())),
+        "pending_request_count": len(relative_logs),
+        "pending_request_logs": relative_logs,
         "bundle_hash": bundle_hash,
         "artifacts": artifacts,
     }
@@ -631,12 +629,32 @@ def _upload_media_objects(
         raise PublishExecutionError(f"No media artifacts available for R2 upload in job {job['job_id']}")
 
     existing_items = _load_media_manifest_items(target.manifest_path)
+    existing_by_key = {
+        str(item.get("object_key") or item.get("key") or item.get("source_storage_key") or "").strip(): item
+        for item in existing_items
+        if str(item.get("object_key") or item.get("key") or item.get("source_storage_key") or "").strip()
+    }
     uploaded_items: list[dict[str, Any]] = []
     uploaded_at = utc_now_iso()
+    uploaded_object_count = 0
     for artifact in uploadable:
         source_path = repo_root / str(artifact["relative_path"])
         _validate_artifact_source(source_path=source_path, artifact=artifact)
         object_key = _artifact_object_key(repo_root=repo_root, adapter=adapter, artifact=artifact, prefix_parts=target.prefix_parts)
+        existing_item = existing_by_key.get(object_key)
+        if _existing_item_matches_artifact(existing_item=existing_item, artifact=artifact):
+            uploaded_items.append(
+                _build_media_manifest_item(
+                    repo_root=repo_root,
+                    adapter=adapter,
+                    artifact=artifact,
+                    object_key=object_key,
+                    uploaded_at=str(existing_item.get("published_at") or uploaded_at),
+                    bucket=target.bucket,
+                    public_base_url=target.public_base_url,
+                )
+            )
+            continue
         metadata = {
             "sha256": str(artifact["sha256"]),
             "jobid": str(job["job_id"]),
@@ -655,6 +673,7 @@ def _upload_media_objects(
             )
         head = client.head_object(Bucket=target.bucket, Key=object_key)
         _verify_uploaded_object(head=head, artifact=artifact, metadata=metadata, object_key=object_key)
+        uploaded_object_count += 1
         uploaded_items.append(
             _build_media_manifest_item(
                 repo_root=repo_root,
@@ -685,7 +704,7 @@ def _upload_media_objects(
         "bucket": target.bucket,
         "prefix": "/".join(target.prefix_parts),
         "media_manifest_path": str(target.manifest_path.relative_to(repo_root)),
-        "uploaded_object_count": len(uploaded_items),
+        "uploaded_object_count": uploaded_object_count,
         "uploaded_items": uploaded_items,
     }
 
@@ -909,6 +928,17 @@ def _build_media_manifest_item(
         "bucket": bucket,
         "public_url": public_url,
     }
+
+
+def _existing_item_matches_artifact(*, existing_item: dict[str, Any] | None, artifact: dict[str, Any]) -> bool:
+    if not existing_item:
+        return False
+    return (
+        str(existing_item.get("sha256") or "") == str(artifact["sha256"])
+        and int(existing_item.get("size") or -1) == int(artifact["size"])
+        and str(existing_item.get("artifact_type") or "") == str(artifact["artifact_type"])
+        and str(existing_item.get("mime_type") or "") == str(artifact["mime_type"])
+    )
 
 
 def _merge_media_manifest_items(

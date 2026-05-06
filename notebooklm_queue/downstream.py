@@ -5,15 +5,23 @@ from __future__ import annotations
 import json
 import os
 import time
+from datetime import UTC, datetime, timedelta
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from .constants import STATE_COMPLETED, STATE_FAILED_RETRYABLE, STATE_REPO_PUSHED, STATE_SYNCING_DOWNSTREAM
+from .constants import (
+    STATE_COMPLETED,
+    STATE_FAILED_RETRYABLE,
+    STATE_REPO_PUSHED,
+    STATE_SYNCING_DOWNSTREAM,
+    STATE_WAITING_FOR_ARTIFACT,
+)
 from .processes import run_process
-from .store import QueueStore, utc_now_iso
+from .store import QueueStore, parse_utcish_iso, utc_now_iso
 
 FREUDD_DEPLOY_SHOWS = {"bioneuro", "personlighedspsykologi-en"}
+DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS = int(os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60")
 
 
 @dataclass(frozen=True, slots=True)
@@ -81,7 +89,16 @@ def sync_downstream_publication(
 
         downstream_payload["status"] = "completed"
         downstream_payload["completed_at"] = utc_now_iso()
+        pending_request_count = _bundle_pending_request_count(manifest)
+        final_state = STATE_COMPLETED
+        note = "Downstream publication validated successfully."
+        retry_at: str | None = None
         manifest["status"] = "completed"
+        if pending_request_count > 0:
+            final_state = STATE_WAITING_FOR_ARTIFACT
+            note = "Partial publish completed; waiting for remaining NotebookLM artifacts."
+            retry_at = _resume_retry_at(job)
+            manifest["status"] = "waiting_for_artifact"
         manifest["completed_at"] = utc_now_iso()
         manifest_path_rel = store.save_publish_manifest(
             show_slug=show_slug,
@@ -92,15 +109,16 @@ def sync_downstream_publication(
         updated = store.transition_job(
             show_slug=show_slug,
             job_id=str(job["job_id"]),
-            state=STATE_COMPLETED,
+            state=final_state,
             actor=options.actor,
-            note="Downstream publication validated successfully.",
+            note=note,
             details={
                 "bundle_id": bundle_id,
                 "manifest_path": manifest_path_rel,
                 "commit_sha": commit_sha,
                 "target_count": len(targets),
             },
+            retry_at=retry_at,
             expected_states={STATE_SYNCING_DOWNSTREAM},
         )
         updated = _persist_downstream_artifacts(
@@ -109,6 +127,7 @@ def sync_downstream_publication(
             manifest_path=manifest_path_rel,
             commit_sha=commit_sha,
             targets=downstream_payload["targets"],
+            bundle_hash=_bundle_hash(manifest),
         )
         return {
             "job_id": str(updated["job_id"]),
@@ -342,6 +361,7 @@ def _persist_downstream_artifacts(
     manifest_path: str,
     commit_sha: str,
     targets: list[dict[str, Any]],
+    bundle_hash: str | None,
 ) -> dict[str, Any]:
     artifacts = dict(job.get("artifacts") or {})
     publish = dict(artifacts.get("publish") or {})
@@ -353,6 +373,9 @@ def _persist_downstream_artifacts(
             "last_downstream_targets": targets,
         }
     )
+    if bundle_hash:
+        publish["last_completed_bundle_hash"] = bundle_hash
+        publish["last_completed_publish_at"] = utc_now_iso()
     artifacts["publish"] = publish
     job["artifacts"] = artifacts
     store.save_job(job)
@@ -398,6 +421,7 @@ def _finalize_failure(
         manifest_path=manifest_path,
         commit_sha=str(((job.get("artifacts") or {}).get("publish") or {}).get("last_repo_commit_sha") or ""),
         targets=[],
+        bundle_hash=None,
     )
     return {
         "bundle_id": bundle_id,
@@ -407,3 +431,26 @@ def _finalize_failure(
         "manifest_path": manifest_path,
         "error": error_message,
     }
+
+
+def _bundle_pending_request_count(manifest: dict[str, Any]) -> int:
+    bundle = manifest.get("bundle")
+    if not isinstance(bundle, dict):
+        return 0
+    return max(int(bundle.get("pending_request_count") or 0), 0)
+
+
+def _bundle_hash(manifest: dict[str, Any]) -> str | None:
+    bundle = manifest.get("bundle")
+    if not isinstance(bundle, dict):
+        return None
+    value = str(bundle.get("bundle_hash") or "").strip()
+    return value or None
+
+
+def _resume_retry_at(job: dict[str, Any]) -> str:
+    existing = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
+    if existing is not None:
+        return existing.replace(microsecond=0).isoformat()
+    retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS, 1))
+    return retry_at.replace(microsecond=0).isoformat()

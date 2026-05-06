@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 from datetime import UTC, datetime, timedelta
 from dataclasses import dataclass
@@ -150,6 +152,7 @@ def _collect_output_progress(
     counts = {artifact_type: 0 for artifact_type in content_types}
     pending_request_logs: list[str] = []
     error_request_logs: list[str] = []
+    publishable_artifacts: list[dict[str, Any]] = []
     lecture_dirs = _find_lecture_dirs(output_root=adapter.output_root_path(repo_root), lecture_key=lecture_key)
 
     for lecture_dir in lecture_dirs:
@@ -164,6 +167,22 @@ def _collect_output_progress(
             if artifact_type not in counts:
                 continue
             counts[artifact_type] += 1
+            publishable_artifacts.append(
+                {
+                    "relative_path": _relative_to_repo(repo_root, artifact_path),
+                    "artifact_type": artifact_type,
+                    "size": artifact_path.stat().st_size,
+                    "sha256": _sha256_file(artifact_path),
+                }
+            )
+
+    publishable_artifacts.sort(
+        key=lambda item: (
+            str(item["relative_path"]),
+            str(item["artifact_type"]),
+        )
+    )
+    publishable_bundle_hash = _publishable_bundle_hash(publishable_artifacts)
 
     return {
         "lecture_key": lecture_key,
@@ -174,7 +193,52 @@ def _collect_output_progress(
         "error_request_logs": error_request_logs,
         "existing_outputs": counts,
         "existing_output_count": sum(counts.values()),
+        "publishable_bundle_hash": publishable_bundle_hash,
+        "publishable_artifacts": publishable_artifacts,
     }
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(1024 * 1024)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _publishable_bundle_hash(artifacts: list[dict[str, Any]]) -> str | None:
+    if not artifacts:
+        return None
+    payload = [
+        {
+            "relative_path": str(item["relative_path"]),
+            "artifact_type": str(item["artifact_type"]),
+            "size": int(item["size"]),
+            "sha256": str(item["sha256"]),
+        }
+        for item in artifacts
+    ]
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+
+
+def _last_completed_bundle_hash(job: dict[str, Any]) -> str | None:
+    publish = dict((job.get("artifacts") or {}).get("publish") or {})
+    value = str(publish.get("last_completed_bundle_hash") or "").strip()
+    return value or None
+
+
+def _has_unpublished_outputs(*, job: dict[str, Any], progress: dict[str, Any] | None) -> bool:
+    if not progress or int(progress.get("existing_output_count") or 0) <= 0:
+        return False
+    current_hash = str(progress.get("publishable_bundle_hash") or "").strip()
+    if not current_hash:
+        return False
+    return current_hash != _last_completed_bundle_hash(job)
 
 
 def _next_poll_at(*, poll_interval_seconds: int) -> str:
@@ -313,17 +377,29 @@ def execute_job(
             )
             phase["progress"] = latest_progress
             if latest_progress["pending_request_count"] > 0:
-                job = store.transition_job(
-                    show_slug=show_slug,
-                    job_id=str(job["job_id"]),
-                    state=STATE_WAITING_FOR_ARTIFACT,
-                    actor=options.actor,
-                    note="Generate command created NotebookLM artifact requests; waiting for upstream completion.",
-                    retry_at=_next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds),
-                    details={"run_id": run_id, "progress": latest_progress},
-                )
+                next_retry_at = _next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds)
+                if _has_unpublished_outputs(job=job, progress=latest_progress):
+                    job = store.transition_job(
+                        show_slug=show_slug,
+                        job_id=str(job["job_id"]),
+                        state=STATE_AWAITING_PUBLISH,
+                        actor=options.actor,
+                        note="Generate command produced unpublished outputs while other artifacts remain pending.",
+                        retry_at=next_retry_at,
+                        details={"run_id": run_id, "progress": latest_progress},
+                    )
+                else:
+                    job = store.transition_job(
+                        show_slug=show_slug,
+                        job_id=str(job["job_id"]),
+                        state=STATE_WAITING_FOR_ARTIFACT,
+                        actor=options.actor,
+                        note="Generate command created NotebookLM artifact requests; waiting for upstream completion.",
+                        retry_at=next_retry_at,
+                        details={"run_id": run_id, "progress": latest_progress},
+                    )
                 if not options.run_download:
-                    manifest["status"] = "waiting"
+                    manifest["status"] = "completed" if str(job.get("state") or "") == STATE_AWAITING_PUBLISH else "waiting"
                     manifest["completed_at"] = utc_now_iso()
                     manifest["final_state"] = str(job.get("state") or "")
                     return _finalize_execution_manifest(
@@ -402,16 +478,29 @@ def execute_job(
             )
             phase["progress"] = latest_progress
             if latest_progress["pending_request_count"] > 0:
-                job = store.transition_job(
-                    show_slug=show_slug,
-                    job_id=str(job["job_id"]),
-                    state=STATE_WAITING_FOR_ARTIFACT,
-                    actor=options.actor,
-                    note="Download window ended with pending NotebookLM artifacts; scheduling another poll.",
-                    retry_at=_next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds),
-                    details={"run_id": run_id, "progress": latest_progress},
-                )
-                manifest["status"] = "waiting"
+                next_retry_at = _next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds)
+                if _has_unpublished_outputs(job=job, progress=latest_progress):
+                    job = store.transition_job(
+                        show_slug=show_slug,
+                        job_id=str(job["job_id"]),
+                        state=STATE_AWAITING_PUBLISH,
+                        actor=options.actor,
+                        note="Download phase produced unpublished outputs while other artifacts remain pending.",
+                        retry_at=next_retry_at,
+                        details={"run_id": run_id, "progress": latest_progress},
+                    )
+                    manifest["status"] = "completed"
+                else:
+                    job = store.transition_job(
+                        show_slug=show_slug,
+                        job_id=str(job["job_id"]),
+                        state=STATE_WAITING_FOR_ARTIFACT,
+                        actor=options.actor,
+                        note="Download window ended with pending NotebookLM artifacts; scheduling another poll.",
+                        retry_at=next_retry_at,
+                        details={"run_id": run_id, "progress": latest_progress},
+                    )
+                    manifest["status"] = "waiting"
                 manifest["completed_at"] = utc_now_iso()
                 manifest["final_state"] = str(job.get("state") or "")
                 return _finalize_execution_manifest(

@@ -102,7 +102,7 @@ def test_prepare_publish_bundle_fails_when_required_artifacts_are_missing(tmp_pa
     assert "Missing required artifact types" in manifest["last_error"]
 
 
-def test_prepare_publish_bundle_fails_when_request_logs_remain(tmp_path: Path) -> None:
+def test_prepare_publish_bundle_allows_partial_bundle_when_request_logs_remain(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
     week_dir = repo_root / "notebooklm-podcast-auto/bioneuro/output/W1L1"
     week_dir.mkdir(parents=True, exist_ok=True)
@@ -123,10 +123,15 @@ def test_prepare_publish_bundle_fails_when_request_logs_remain(tmp_path: Path) -
         options=PublishOptions(repo_root=repo_root),
     )
 
-    assert result["final_state"] == STATE_FAILED_RETRYABLE
+    assert result["final_state"] == STATE_APPROVED_FOR_PUBLISH
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
-    assert updated["state"] == STATE_FAILED_RETRYABLE
-    assert "Pending request logs remain" in str(updated["last_error"])
+    assert updated["state"] == STATE_APPROVED_FOR_PUBLISH
+    manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["bundle"]["pending_request_count"] == 1
+    assert manifest["bundle"]["pending_request_logs"] == [
+        "notebooklm-podcast-auto/bioneuro/output/W1L1/W1L1 - Reading [EN].request.json"
+    ]
 
 
 class _FakeR2Client:

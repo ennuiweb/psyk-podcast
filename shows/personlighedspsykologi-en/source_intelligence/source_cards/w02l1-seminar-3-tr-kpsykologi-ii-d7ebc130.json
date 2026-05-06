@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-06T21:10:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-seminar-3-tr-kpsykologi-ii-d7ebc130"
+    ],
+    "dependency_hashes": {
+      "source_file": "e415d565bdbf3a7a1a2d151bc9fb55dcf67ca4d74c2ea619f158a17645b95008",
+      "source_files_signature": "08bc1abe41cf82422ee3104aa65463b5c37505502932adea50479bb348ab35a7",
+      "source_catalog": "f2837610ca1ec4dfc445bfbe0fec05b948829b746fa4a5d484b2b3e98cee8920",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l1-seminar-3-tr-kpsykologi-ii-d7ebc130",
+    "lecture_key": "W02L1",
+    "title": "3. Trækpsykologi II",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/3. Trækpsykologi II.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/3. Trækpsykologi II.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/3. Trækpsykologi II.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/3. Trækpsykologi II.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "e415d565bdbf3a7a1a2d151bc9fb55dcf67ca4d74c2ea619f158a17645b95008",
+    "length_band": "medium",
+    "page_count": 19,
+    "estimated_token_count": 12350,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The slides transition the course focus from theoretical trait structures to a critical examination of behavioral genetics and evolutionary psychology, cautioning against biological determinism.",
+    "source_role": "Seminar presentation guiding student group work on peer feedback and facilitating critical discussion on the genetic and environmental foundations of personality.",
+    "relation_to_lecture": "Acts as an applied follow-up to 'Trækpsykologi II' and a lecture on personality disorders, focusing on literature application (Lu et al., 2023) and critical evaluation of biological claims.",
+    "central_claims": [
+      {
+        "claim": "Biological frameworks for psychological phenomena cannot be strictly reduced to genetics or DNA.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Pop-cultural interpretations of biology often fall into deterministic essentialism, falsely equating biological explanations with ultimate truths about personality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "DNA codes for proteins, but proteins are not equivalent to psychological traits, making the direct relationship between DNA and personality traits largely unknown.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The development of a trait depends on the interaction of multiple genes, proteins, molecules, and the environment, rather than a single gene.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Biologisme / Essentialisme",
+        "definition": "The deterministic viewpoint that a person's behavior and traits are strictly and inevitably dictated by their biology.",
+        "role": "Critiqued as a pop-cultural fallacy to warn students against biological reductionism."
+      },
+      {
+        "term": "Genetiske netværk (Genetic networks)",
+        "definition": "Complex systems of tens or hundreds of genes and gene products interacting with each other and the environment to affect trait development.",
+        "role": "Replaces the simplistic notion that single genes map directly to specific psychological traits."
+      },
+      {
+        "term": "Socioecology",
+        "definition": "The environmental and societal context that acts as a root for both culture and personality, as modelled by Lu et al. (2023).",
+        "role": "Forms a central part of the group analysis regarding the environmental sources of personality stability and change."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Biologi vs. Genetik",
+        "summary": "The difference between having a biological framework/prerequisite and being reducible entirely to DNA.",
+        "stakes": "Crucial for understanding that acknowledging the biological basis of personality does not necessitate genetic determinism."
+      },
+      {
+        "label": "DNA vs. Egenskaber (Traits)",
+        "summary": "The distinction between what DNA explicitly does (coding for proteins) and complex psychological manifestations (personality traits).",
+        "stakes": "Prevents the reductionist error of equating the presence of specific genetic material directly with complex psychological traits."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Believing that biological explanations of personality equate to strict genetic determinism.",
+      "Assuming that single genes are primarily responsible for the development of specific personality traits.",
+      "Conflating the mechanism of DNA coding for proteins with DNA directly coding for personality traits."
+    ],
+    "quote_targets": [
+      {
+        "target": "Biologisk forklaring = endegyldig sandhed",
+        "why": "Highlights the exact deterministic fallacy the instructor wants students to critique."
+      },
+      {
+        "target": "Simos Aftenbøn",
+        "why": "Contains the core principles for avoiding genetic reductionism (DNA codes for proteins, not traits)."
+      },
+      {
+        "target": "Kultur/Socioecology (-> personlighed) -> gener",
+        "why": "Points to the epigenetic and theoretically plausible mechanism discussed in the Lu et al. (2023) group work."
+      }
+    ],
+    "grounding_notes": [
+      "The claims regarding genetics and essentialism are strongly grounded in slides 14-16.",
+      "The distinction between DNA and traits is explicitly framed under 'Simos Aftenbøn' on slide 15.",
+      "The theoretical models of interaction between culture, ecology, genes, and personality are drawn directly from the Lu et al. (2023) diagram on slide 18."
+    ],
+    "warnings": [
+      "The source relies heavily on external literature (Lu et al., 2023; Bleidorn et al., 2022; Jablonka & Marion, 2014) which is quoted but not fully contained within this slide deck.",
+      "A significant portion of the slides (pages 5-8) is dedicated to administrative instructions for peer-feedback rather than psychological theory."
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:49:18Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-lu-benet-martinez-and-wang-2023-38a36550"
+    ],
+    "dependency_hashes": {
+      "source_file": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
+      "source_files_signature": "29d0f098f4420a73ffbd9fc2f2ec74567d19c8d0057fcab2946a8b1eeb0ede46",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+    "lecture_key": "W03L1",
+    "title": "Lu, Benet-Martínez & Wang (2023)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+    "source_paths": [
+      "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
+    "length_band": "long",
+    "page_count": 28,
+    "estimated_token_count": 18200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Proposes the 'Socioecological-Genetic Framework of Culture and Personality', an integrative model that synthesizes cultural psychology, personality psychology, socioecology, and genetics.",
+    "source_role": "Serves as a primary theoretical reading that introduces a comprehensive, interdisciplinary framework for understanding personality beyond isolated individual traits.",
+    "relation_to_lecture": "Directly grounds Week 3 Lecture 1 (W03L1) on 'Culture, evolution, genetics, and personality' by providing the core theoretical model linking these exact four domains.",
+    "central_claims": [
+      {
+        "claim": "Culture and personality are mutually constitutive: culture shapes individuals' personalities, and individuals' aggregate personalities collectively shape culture.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Socioecology is a fundamental root of both culture and personality, acting as a third variable that can partly explain the association between the two (e.g., pathogen prevalence predicting both collectivism and lower extraversion).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Socioecological changes, such as increased socioeconomic development and decreased pathogen prevalence, partly explain temporal trends like the global rise in individualism and extraversion.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality is shaped by nature × nurture interactions, where genes moderate cultural and socioecological influences, and cultural/socioecological environments moderate genetic influences.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Sustained exposure to cultural and socioecological environments may alter gene expression (epigenetics), and these epigenetic changes may be mediated by changes in personality.",
+        "grounding": "source-grounded",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Socioecology",
+        "definition": "Macro conditions of the socioeconomic and ecological environment, measured as objective variables with scientific units (e.g., ambient temperature, pathogen prevalence, population density).",
+        "role": "Provides the objective environmental context that acts as a root cause for both cultural evolution and personality development."
+      },
+      {
+        "term": "Mutual Constitution",
+        "definition": "The continuous, dynamic, and reciprocal process of transaction where culture influences individuals' personalities and individuals' personalities collectively influence culture.",
+        "role": "Explains the bidirectional relationship between individual meaning systems (personality) and collective meaning systems (culture)."
+      },
+      {
+        "term": "Epigenetics",
+        "definition": "The study of environmental influences on the expression of genes without changes in the underlying DNA sequence.",
+        "role": "Offers a biological mechanism for how macro-environments (culture and socioecology) might create lasting changes in individuals, challenging the idea that genetic influences are immutable."
+      },
+      {
+        "term": "Personality trait",
+        "definition": "An individual's relatively stable patterns of emotion, motivation, cognition, and behavior, which the authors argue includes stable individual-level cultural orientations (e.g., allocentrism).",
+        "role": "Broadens the traditional definition of personality to explicitly include internalized cultural dimensions alongside standard models like the Big Five."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Objective Socioecological vs. Subjective Cultural Variables",
+        "summary": "Socioecological variables are objective and measured with scientific units (e.g., temperature), whereas cultural variables are subjective (e.g., beliefs, values, norms).",
+        "stakes": "Clarifies the causal direction in research; objective ecological factors can shape subjective cultural values, but subjective values are unlikely to shape objective ecological factors like climate in the short term."
+      },
+      {
+        "label": "Nature vs. Nurture vs. Nature × Nurture",
+        "summary": "Shifts the focus from debating whether genes (nature) or environment (nurture) matter more, to examining how they interact to shape personality.",
+        "stakes": "Promotes an interactionist view where genetic predispositions depend on environmental contexts to be expressed, and environmental influences depend on genetic sensitivities."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might conflate socioecology and culture; the text strictly distinguishes objective socioecological conditions (like climate) from subjective cultural meaning systems (like values).",
+      "Students might assume genetic influences on personality are deterministic, missing the authors' emphasis on epigenetics and gene-environment interactions.",
+      "Students might view personality solely through the lens of the Big Five, overlooking the authors' argument that stable cultural orientations (like individualism/collectivism at the individual level) are also personality traits."
+    ],
+    "quote_targets": [
+      {
+        "target": "Figure 1: The Socioecological-Genetic Framework of Culture and Personality",
+        "why": "It is the core visual model of the entire paper, mapping all the causal and interactive links between socioecology, culture, personality, and genes."
+      },
+      {
+        "target": "Table 1: Socioecological predictors of cultural and personality variables",
+        "why": "Provides a massive, systematic summary of empirical studies linking specific socioecological factors (like pathogen prevalence or climate) to cultural and personality outcomes."
+      },
+      {
+        "target": "Socioecological psychology focuses more on how psychological processes are influenced by objective socioecological conditions, whereas cultural psychology focuses more on how psychological processes are influenced by subjective cultural beliefs",
+        "why": "Clearly defines the boundary and distinction between the two fields."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a review article from the Annual Review of Psychology, meaning it synthesizes existing empirical studies into a new theoretical framework rather than presenting a single new experiment.",
+      "The authors explicitly note that the epigenetic link (culture/socioecology -> personality -> gene expression) is a theoretical proposition awaiting future empirical research."
+    ],
+    "warnings": [
+      "The proposed link between culture/socioecology, personality, and epigenetic changes is explicitly stated as a theoretical proposition that currently lacks direct empirical evidence in this specific context.",
+      "The authors note that strict causal inference is challenging in this field due to the intricate interplay of the variables, relying often on time-lagged or historical data to approximate causality."
+    ]
+  }
+}

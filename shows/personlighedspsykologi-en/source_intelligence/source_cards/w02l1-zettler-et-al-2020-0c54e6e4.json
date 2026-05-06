@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:44:34Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-zettler-et-al-2020-0c54e6e4"
+    ],
+    "dependency_hashes": {
+      "source_file": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
+      "source_files_signature": "88a3e2499a0f53d511fb94295c6e72fccb68add2b7db9aba276d4fb6234df31b",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+    "lecture_key": "W02L1",
+    "title": "Zettler et al. (2020)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf",
+    "source_paths": [
+      "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
+    "length_band": "long",
+    "page_count": 38,
+    "estimated_token_count": 24700,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a comprehensive empirical validation of the HEXACO model's theoretical conceptualization by mapping its dimensions to specific evolutionary and situational outcome domains.",
+    "source_role": "A large-scale meta-analysis serving as a foundational empirical text to establish the construct validity and predictive scope of the HEXACO model.",
+    "relation_to_lecture": "Directly supports the lecture on personality traits and dimensions by providing robust meta-analytic evidence for the HEXACO model's structure and predictive validity.",
+    "central_claims": [
+      {
+        "claim": "Each of the six HEXACO personality dimensions maps uniquely onto one of six broad, theoretically relevant outcome domains derived from the STOA model.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Honesty-Humility is uniquely and strongly linked to the outcome domain of exploitation, which includes criteria like immoral behavior, dark traits, and active cooperation.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The mapping of Agreeableness onto obstruction and Emotionality onto insecurity is comparatively less clear and shows weaker primary relations than the other four dimensions.",
+        "grounding": "source-grounded",
+        "confidence": "medium"
+      },
+      {
+        "claim": "Secondary relations between HEXACO dimensions and non-counterpart outcome domains are mostly attributable to the intercorrelations between the personality dimensions themselves.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Nomological Net",
+        "definition": "The interrelations of a construct with other related constructs and outcome criteria, which provides evidence on whether a construct's operationalization matches its theoretical conceptualization.",
+        "role": "Serves as the central methodological framework for validating the HEXACO model's theoretical claims."
+      },
+      {
+        "term": "HEXACO Model",
+        "definition": "A six-factorial model of basic personality structure comprising Honesty-Humility, Emotionality, Extraversion, Agreeableness, Conscientiousness, and Openness to Experience.",
+        "role": "The primary personality taxonomy being investigated and validated across diverse outcome criteria."
+      },
+      {
+        "term": "STOA Model",
+        "definition": "The Situation, Trait, and Outcome Activation model, which specifies six domain-specific situational affordances (exploitation, insecurity, sociality, obstruction, duty, exploration).",
+        "role": "Provides the theoretical basis for deriving the six broad outcome domains to which the HEXACO dimensions are mapped."
+      },
+      {
+        "term": "Honesty-Humility",
+        "definition": "The tendency to be fair and genuine in dealing with others, in the sense of cooperating with others even when one might exploit them without suffering retaliation.",
+        "role": "The defining sixth factor of the HEXACO model that distinguishes it from the Big Five, shown to specifically predict exploitation-related outcomes."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Primary vs. Secondary Relations",
+        "summary": "Primary relations are the expected strong links between a HEXACO dimension and its theoretical counterpart outcome domain, while secondary relations are the weaker links to non-counterpart domains.",
+        "stakes": "Demonstrates the unique variance and specific predictive power of each HEXACO dimension, proving they capture distinct classes of individual differences."
+      },
+      {
+        "label": "Self-reported vs. Non-self-reported criteria",
+        "summary": "The methodological difference between outcome criteria measured via self-report versus those measured via observer reports or objective behavior.",
+        "stakes": "Highlights that self-reported criteria may inflate effect sizes due to shared method variance, emphasizing the need for diverse assessment methods to gauge true effect sizes."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that HEXACO dimensions only predict their primary outcome domains, ignoring that they also have secondary relations, albeit weaker ones.",
+      "Equating HEXACO Agreeableness and Emotionality directly with Big Five Agreeableness and Neuroticism without recognizing the rotational differences, such as sentimentality versus temper.",
+      "Believing that the meta-analysis relies entirely on objective behavioral data, when in fact the vast majority of included studies used self-reports for both traits and criteria."
+    ],
+    "quote_targets": [
+      {
+        "target": "Specifically, honesty-humility maps onto the outcome domain of exploitation, emotionality onto insecurity, extraversion onto sociality, agreeableness versus anger onto obstruction, conscientiousness onto duty, and openness to experience onto exploration.",
+        "why": "Summarizes the entire core finding and one-to-one mapping of the paper."
+      },
+      {
+        "target": "The nomological net of a construct or its operationalization comprises its interrelations with other (more or less related) constructs and outcomes.",
+        "why": "Defines the central methodological concept of the paper."
+      }
+    ],
+    "grounding_notes": [
+      "The source is a comprehensive meta-analysis synthesizing 426 individual meta-analyses across 436 independent samples.",
+      "Findings are heavily reliant on self-report data, which the authors explicitly acknowledge as a limitation that may inflate effect sizes."
+    ],
+    "warnings": [
+      "The mapping for Agreeableness (to obstruction) and Emotionality (to insecurity) showed weaker primary relations and more overlap compared to the other four dimensions.",
+      "Effect sizes are generally medium at best, and may be inflated by common method variance due to the reliance on self-report measures."
+    ]
+  }
+}

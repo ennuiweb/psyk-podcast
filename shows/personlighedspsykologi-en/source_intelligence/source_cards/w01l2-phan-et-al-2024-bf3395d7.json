@@ -1,0 +1,148 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:15:45Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-phan-et-al-2024-bf3395d7"
+    ],
+    "dependency_hashes": {
+      "source_file": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
+      "source_files_signature": "4b21dad874dd6fd24c522b0a60cb73e43c5507f42b1e68bc9bd2050a0e4a2da1",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+    "lecture_key": "W01L2",
+    "title": "Phan et al. (2024)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf",
+    "source_paths": [
+      "Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Proposes a new meta-theoretical framework (a 2x3 matrix and 25 polytomies) to replace the outdated and conflated nomothetic-idiographic dichotomy in personality research.",
+    "source_role": "A conceptual and methodological critique that provides a systematization of research approaches to improve epistemological clarity in personality science.",
+    "relation_to_lecture": "Directly addresses the 'Personality assessment' theme of W1L2 by clarifying how different research designs and assessment strategies (e.g., N=1 vs. population samples) align with specific inferential goals.",
+    "central_claims": [
+      {
+        "claim": "The traditional nomothetic-idiographic distinction is insufficient for categorizing research approaches in personality science because it conflates inferential goals with focal entities and generalization types.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Research approaches in personality psychology can be systematically categorized using a 2x3 matrix that crosses the focal entity (person vs. population) with the type of generalization (none, entity-specific, cross-entity).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Applying population-level statistical findings directly to individual persons often commits the ergodic fallacy, as psychological phenomena rarely meet the strict mathematical conditions of ergodicity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "To improve epistemological clarity, researchers should use a framework of 25 polytomous criteria to make explicit decisions aligning their research questions, inputs, analyses, and outputs.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Focal Entity",
+        "definition": "The primary subject about which knowledge is produced or to which existing knowledge can be applied, primarily categorized as either person(s) or population(s).",
+        "role": "Clarifies who or what the research is actually about, moving beyond ambiguous statements about 'people' in general."
+      },
+      {
+        "term": "Entity-specific generalization",
+        "definition": "A lawful regularity that applies to a particular focal entity (e.g., a specific person or a specific population) under certain boundary conditions, established by identifying patterns across a sample of lower-level entities nested within it.",
+        "role": "Distinguishes within-entity patterns (like within-person trait distributions) from universal laws."
+      },
+      {
+        "term": "Cross-entity generalization",
+        "definition": "A law that applies to all or certain entities at the same level (e.g., all persons or all populations) given its boundary conditions, generalizing from entity to entity.",
+        "role": "Corresponds to the Wundtian approach of finding commonalities across individual cases rather than aggregating them."
+      },
+      {
+        "term": "Ergodic Fallacy",
+        "definition": "The invalid assumption that population-level parameters (like sample means or between-person correlations) can be directly applied to the psychological functioning of individuals.",
+        "role": "Highlights the danger of the dominant (Neo-)Galtonian approach in psychology when researchers attempt to make person-level inferences from group data."
+      },
+      {
+        "term": "Polytomies",
+        "definition": "A proposed framework of 25 multi-categorical criteria mapping the generic empirical research process, covering research questions, inputs, analyses, and outputs.",
+        "role": "Provides a practical checklist for researchers to make explicit methodological decisions and evaluate the alignment between their research goals and inferences."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Nomothetic vs. Idiographic",
+        "summary": "The classic Windelbandian distinction between seeking general laws (nomothetic) and detailing particular occurrences (idiographic).",
+        "stakes": "The authors argue this dichotomy is historically muddled, conflated with other methodological choices, and needs to be replaced by a more precise matrix of research approaches."
+      },
+      {
+        "label": "Person vs. Population (Focal Entity)",
+        "summary": "Distinguishes whether the research focuses on the individual psychological system or the aggregate group.",
+        "stakes": "Crucial for avoiding the ergodic fallacy; knowledge about a population average does not automatically translate to knowledge about any specific individual."
+      },
+      {
+        "label": "(Neo-)Galtonian vs. Wundtian approaches",
+        "summary": "Galtonian approaches focus on population averages and between-person variances, whereas Wundtian approaches analyze individuals separately (N=1) to find laws common across persons.",
+        "stakes": "Clarifies that mainstream quantitative psychology is mostly Galtonian and produces population-specific generalizations, not universal laws about individual functioning."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'nomothetic' always means quantitative/between-person and 'idiographic' always means qualitative/within-person.",
+      "Believing that population-level findings (e.g., average effects or between-person correlations) automatically apply to the individuals within that population.",
+      "Thinking that idiographic research cannot involve generalizations; the authors show that person-specific generalizations are a key part of modern idiographic approaches."
+    ],
+    "quote_targets": [
+      {
+        "target": "The nomothetic-idiographic distinction alone is insufficient for categorizing research approaches in personality science.",
+        "why": "Core thesis of the paper, located in the abstract."
+      },
+      {
+        "target": "Any study that uses analytical strategies based on population-based parameters and interprets the findings as concerning the psychological functioning of individuals falls prey to the ergodic fallacy",
+        "why": "Crucial methodological warning for personality assessment and interpretation of standard psychological studies."
+      },
+      {
+        "target": "Table 2: Broad Research Approaches in the Psychological Study of Individual Persons and Populations",
+        "why": "Summarizes the authors' proposed 2x3 matrix of broad research approaches, which is the central conceptual tool of the paper."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a non-empirical, conceptual paper proposing a systematization framework.",
+      "The authors heavily reference historical definitions (Windelband, Stern, Allport) to trace the conflation of terms before proposing their own solution."
+    ],
+    "warnings": [
+      "The paper introduces 25 specific polytomies (Table 3) which are highly detailed; students should focus on the conceptual matrix (Table 2) before getting bogged down in the 25 criteria."
+    ]
+  }
+}

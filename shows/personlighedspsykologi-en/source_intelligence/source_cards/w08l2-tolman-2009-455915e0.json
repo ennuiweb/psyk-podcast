@@ -1,0 +1,136 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:13Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-tolman-2009-455915e0"
+    ],
+    "dependency_hashes": {
+      "source_file": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+      "source_files_signature": "c50e8be4d0d4341219320e735ea60da4646b8407c4cb46d0cbd249c9edffbbc0",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l2-tolman-2009-455915e0",
+    "lecture_key": "W08L2",
+    "title": "Tolman (2009)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+    "source_paths": [
+      "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 7800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces Klaus Holzkamp's Critical Psychology, detailing its historical roots in the 1960s student protests, its theoretical reconstruction of the human subject via evolutionary history, and its methodological implications.",
+    "source_role": "Provides a foundational overview of German Critical Psychology, contrasting its emancipatory, subject-oriented framework with traditional causal-empirical psychology.",
+    "relation_to_lecture": "Serves as the primary theoretical background for the W8L2 lecture on Critical Psychology, explaining Holzkamp's critique of mainstream psychology and his alternative framework of agency and reasons.",
+    "central_claims": [
+      {
+        "claim": "Traditional psychology treats the human as an object determined by causal factors, whereas Critical Psychology views the human as a subject who makes choices based on reasons and societal possibilities.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human subjectivity and cognition developed historically and evolutionarily, fundamentally shaped by tool making and the subsequent creation of societal meaning structures.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Many psychological hypotheses regarding human behavior describe 'good reasons' for action rather than contingent causal connections, making them untestable by traditional empirical if-then methods.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "A psychology from the standpoint of the subject requires a methodology where research participants are treated as co-researchers and the research is initiated by the subject's own problems.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Subjektwissenschaft (Subject science)",
+        "definition": "A scientific psychology from the standpoint of the subject, which recognizes that the object of psychological science is a subject that acts on reasons.",
+        "role": "Defines the core epistemological shift and ultimate goal of Holzkamp's Critical Psychology."
+      },
+      {
+        "term": "Handlungsfähigkeit (Action potence / Agency)",
+        "definition": "The power or ability of a person to utilize the possibilities offered by an object or situation, which depends heavily on their historical and societal position.",
+        "role": "Explains how individuals interact with societal structures to fulfill their needs and master their own lives."
+      },
+      {
+        "term": "Emancipatory relevance",
+        "definition": "Knowledge developed to serve the interests of individuals in their efforts to improve the quality of their lives, as opposed to knowledge used to control them.",
+        "role": "Highlights the political and ethical goal of Critical Psychology, contrasting it with the 'technical relevance' of mainstream psychology."
+      },
+      {
+        "term": "Societal meaning structures",
+        "definition": "The socially constructed meanings, traditions, and beliefs that mediate the individual's relation to the world, replacing purely biological or natural relations.",
+        "role": "Explains why human relation to the world is historical rather than merely evolutionary, forming the basis for human possibilities and choices."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Causes vs. Reasons",
+        "summary": "The difference between physical determinants (e.g., a tapped patellar tendon causing a knee jerk) and reasonable actions taken based on premises (e.g., seeking the greatest gains in a bargaining experiment).",
+        "stakes": "Determines whether traditional empirical (if-then) testing is appropriate. Reasons cannot be empirically refuted in the same way causes can, rendering much of traditional social psychology 'pseudo-empirical'."
+      },
+      {
+        "label": "Technical vs. Emancipatory Relevance",
+        "summary": "The difference between knowledge used by those in power to control others (technical) and knowledge that serves individuals trying to improve their lives (emancipatory).",
+        "stakes": "Exposes the ideological function of mainstream psychological science and justifies the need for a critical, subject-oriented approach."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Critical Psychology simply advocates for qualitative methods over quantitative ones (Holzkamp explicitly rejected this dualism, arguing the issue is about reasons vs. causes, not hard vs. soft methods).",
+      "Confusing 'agency' (Handlungsfähigkeit) with absolute free will, ignoring that it is strictly bounded by societal possibilities and one's historical/economic position.",
+      "Thinking Critical Psychology rejects all empirical research, rather than specifically critiquing the misapplication of causal if-then models to reasoned human action."
+    ],
+    "quote_targets": [
+      {
+        "target": "The crux of the matter is that the object of psychological science is no mere object but also a subject that acts on reasons and makes choices among real possibilities for action.",
+        "why": "Summarizes the core thesis of Critical Psychology from the abstract."
+      },
+      {
+        "target": "Holzkamp called this power Handlungsfähigkeit, which has been rendered as 'action potence,' but is more understandably translated as 'agency.'",
+        "why": "Defines the central concept of agency in Holzkamp's theory (page 154)."
+      },
+      {
+        "target": "On this principle, the subjects participating in a research project must be treated as co-researchers.",
+        "why": "Highlights the radical methodological shift required by subject science (page 157-158)."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly grounds Holzkamp's theory in Marxist historical materialism, referencing Marx's Capital and A.N. Leont'ev's evolutionary analysis of the psyche.",
+      "The critique of behaviorism and social psychology is illustrated using specific examples, such as Crott's (1979) bargaining experiments, to demonstrate the 'reasons vs. causes' argument."
+    ],
+    "warnings": []
+  }
+}

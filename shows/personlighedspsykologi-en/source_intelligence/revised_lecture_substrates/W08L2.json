@@ -1,0 +1,83 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:16Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-holzkamp-1982-845aafd2",
+      "w08l2-tolman-2009-455915e0",
+      "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "c7b82f72f0cc2e2a13c15c66a9c5a5247a686968eda0fdee3f56fc74e4296048",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W08L2",
+    "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+    "sequence_index": 16
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture marks the definitive pivot in the course arc from 'internal' models of personality (traits, unconscious drives, inner actualization) to 'external/societal' models. It provides the critical vocabulary to deconstruct the isolated individual, setting the stage for the poststructural and narrative theories that follow.",
+    "what_matters_more": [
+      "Explicit application of the course's 4 orientation points (Essence/Context, Agency, Determination, Historicity) to Critical Psychology, as this is a mandatory exam framework.",
+      "The epistemological shift from 'causes' (mechanical, trait-based) to 'reasons' (subject-standpoint), fulfilling the course's focus on how we know the person.",
+      "The relocation of 'agency' from an inner essence or innate growth drive to a socially situated capacity to navigate and transform societal conditions (restrictive vs. generalized agency)."
+    ],
+    "de_emphasize": [
+      "Deep dives into the evolutionary/phylogenetic history of human consciousness (mentioned in Tolman), keeping the focus strictly on the contemporary societal mediatedness of personality.",
+      "Abstract Marxist terminology that does not directly translate into psychological tools for analyzing the conduct of everyday life."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Methodological and epistemological critique",
+        "rationale": "Critical psychology fundamentally rejects the reification of traits, arguing that trait psychology treats reasoned human actions as mechanical causes and obscures societal context."
+      },
+      {
+        "target": "W07L2 (Humanistic Psychology)",
+        "relation": "Contrastive models of agency",
+        "rationale": "Both traditions emphasize human agency against determinism, but humanism locates it in inner self-actualization, whereas critical psychology locates it in societal participation and structural transformation."
+      },
+      {
+        "target": "W08L1 (Critical Personalism)",
+        "relation": "Shared anti-reductionism",
+        "rationale": "Both Stern and Holzkamp critique mainstream psychology's isolation of variables, demanding a return to the whole acting subject, though Holzkamp adds a distinct socio-political dimension."
+      },
+      {
+        "target": "W12L1 (Meta-theoretical synthesis)",
+        "relation": "Direct application of analytical framework",
+        "rationale": "The seminar for this lecture explicitly operationalizes the course's 4 orientation points, serving as a direct rehearsal for the final exam's comparative requirements."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Reasons vs. Causes' debate: explain why Critical Psychology argues that treating human behavior like a natural science experiment is a fundamental error.",
+      "Use 'Daglig livsførelse' (conduct of everyday life) as a relatable lens: discuss how individuals actively juggle structural demands (work, school) while trying to expand their agency.",
+      "Create a contrast segment comparing Critical Psychology's 'generalized agency' (changing society) with Humanistic Psychology's 'self-actualization' (changing the self)."
+    ],
+    "carry_forward": [
+      "The concept of 'societal mediatedness' and structural constraints, which will be radicalized into 'discourse' and 'power' in poststructuralism (W10L2).",
+      "The critique of mainstream psychology's ideological function, which prepares students for Hacking's 'looping effect' (W11L1) where psychological categories actively shape subjects."
+    ],
+    "warnings": [
+      "The seminar slides reference specific texts by Dreier (1999) and Jensen (2014) which are not in this specific lecture bundle (though Dreier appears in W09L1); instructors must ensure these definitions are provided.",
+      "Ensure the political/Marxist roots of the theory do not overshadow its psychological application; students must be able to use these concepts to analyze personality and everyday life, not just critique capitalism."
+    ]
+  }
+}

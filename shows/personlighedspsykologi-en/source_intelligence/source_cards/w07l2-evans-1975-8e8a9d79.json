@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:13:29Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-evans-1975-8e8a9d79"
+    ],
+    "dependency_hashes": {
+      "source_file": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
+      "source_files_signature": "ccb4b8b21c67259f8b4c6c1974dda9fa35a330864d261e402004b059ebf5ee10",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l2-evans-1975-8e8a9d79",
+    "lecture_key": "W07L2",
+    "title": "Evans (1975)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+    "source_paths": [
+      "Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
+    "length_band": "medium",
+    "page_count": 18,
+    "estimated_token_count": 11700,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Serves as a primary source text where Carl Rogers directly articulates and defends his humanistic personality theory, his concept of the self, and his therapeutic conditions in contrast to psychoanalysis and behaviorism.",
+    "source_role": "An interview transcript (Evans, 1975) that provides conversational, accessible explanations of Rogers' core theoretical constructs and their historical evolution.",
+    "relation_to_lecture": "Directly supports the W7L2 lecture on Humanistic Psychology by providing Rogers' firsthand accounts of self-actualization, the phenomenological field, and client-centered therapy.",
+    "central_claims": [
+      {
+        "claim": "Organisms are primarily motivated by a tendency toward growth, maintenance, and enhancement (actualization), rather than merely seeking tension reduction or homeostasis.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The Freudian concept of the unconscious is better understood as a continuum of awareness, where threatening material is kept in the 'ground' rather than 'figure' of consciousness, rather than as a deterministic force.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Effective psychotherapy depends on three core conditions: therapist congruence (genuineness), unconditional positive regard (acceptance), and empathic understanding.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychological maladjustment occurs due to incongruence, which is a discrepancy between an individual's self-picture and their actual organismic experience.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Actualizing Tendency",
+        "definition": "The inherent tendency of every organism to maintain itself, enhance itself, and grow, which serves as the central aspect of all motivation.",
+        "role": "Provides the foundational motivational theory for Rogers' humanistic approach, contrasting with deficit-driven models."
+      },
+      {
+        "term": "Incongruence",
+        "definition": "A state that results when an individual's actual experience is quite discrepant from the way they have organized their self-concept.",
+        "role": "Explains the mechanism of psychological distress and defense mechanisms in Rogers' personality theory."
+      },
+      {
+        "term": "Congruence (Therapist)",
+        "definition": "The state in which the therapist is a real person in the relationship, without a facade, aware of their own feelings and able to express them appropriately.",
+        "role": "Identified by Rogers as the first and most important of the three necessary conditions for therapeutic growth."
+      },
+      {
+        "term": "Phenomenological Field",
+        "definition": "The individual's subjective reality, encompassing their own field of perception and the meanings they attach to various aspects of their environment.",
+        "role": "Grounds Rogers' epistemological stance that behavior is a function of how the individual perceives their world, not objective reality."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Homeostatic vs. Growth Motivation",
+        "summary": "The difference between theories that view organisms as seeking to reduce tension to achieve equilibrium (homeostasis) and Rogers' view that organisms actively seek growth and enhancement.",
+        "stakes": "Fundamentally shifts the psychological focus from deficit-correction (psychoanalysis) to potential-fulfillment (humanistic psychology)."
+      },
+      {
+        "label": "Nondirective vs. Client-Centered Therapy",
+        "summary": "The evolution from Rogers' early focus on simply not advising or interpreting for the client ('nondirective') to a focus on actively providing therapeutic conditions that enable the client's potential ('client-centered').",
+        "stakes": "Clarifies that Rogers' therapy is not passive, but relies on a specific, active relational climate."
+      },
+      {
+        "label": "Freudian Unconscious vs. Continuum of Awareness",
+        "summary": "Contrasts Freud's view of a deterministic, hidden unconscious with Rogers' view of awareness as a figure/ground continuum where threatening experiences are simply kept out of sharp focus.",
+        "stakes": "Removes the deterministic and deeply pathological framing of hidden motives, replacing it with a dynamic model of perception and defense."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might confuse 'nondirective' therapy with the therapist doing absolutely nothing; Rogers explicitly notes the evolution toward 'client-centered' therapy which involves active empathy and congruence.",
+      "Students might assume Rogers completely rejects the phenomena Freud called 'the unconscious'; in reality, he acknowledges the phenomena but reinterprets them as material kept out of awareness due to threat.",
+      "Students might think Rogers views transference as a necessary therapeutic tool; he actually views it as a learned reaction that should be handled like any other feeling, not as the core mechanism of change."
+    ],
+    "quote_targets": [
+      {
+        "target": "The much more basic thing is that every organism has a tendency to maintain itself, to enhance itself if possible, eventually to reproduce itself.",
+        "why": "Provides Rogers' core definition of the actualizing tendency as the central aspect of motivation (Page 4)."
+      },
+      {
+        "target": "Incongruence results when the individual's experience is quite discrepant from the way he has organized himself.",
+        "why": "Offers a clear, concise definition of incongruence, the root of psychological distress in his model (Page 19)."
+      },
+      {
+        "target": "First, and most important, is therapist congruence or genuineness... Second is the therapist's ability to accept the client as a separate person... The third condition is a real empathic understanding.",
+        "why": "The definitive statement of the three necessary and sufficient conditions for therapeutic change (Page 29)."
+      }
+    ],
+    "grounding_notes": [
+      "The source is an interview format, meaning theoretical concepts are presented conversationally rather than as formal postulates.",
+      "Page numbers referenced in the text correspond to the original book pagination visible in the document margins (e.g., 4, 16, 29)."
+    ],
+    "warnings": [
+      "Because this is an interview, some theoretical nuances are simplified for conversational flow compared to Rogers' formal academic publications."
+    ]
+  }
+}

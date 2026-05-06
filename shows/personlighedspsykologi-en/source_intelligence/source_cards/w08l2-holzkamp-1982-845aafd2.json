@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:03Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-holzkamp-1982-845aafd2"
+    ],
+    "dependency_hashes": {
+      "source_file": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
+      "source_files_signature": "7cb825c67feee8eaba9d343a5c588b8aa7eb06d024c642f36d37928c0ac1bbf6",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l2-holzkamp-1982-845aafd2",
+    "lecture_key": "W08L2",
+    "title": "Holzkamp (1982)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+    "source_paths": [
+      "Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
+    "length_band": "long",
+    "page_count": 29,
+    "estimated_token_count": 18850,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Establishes 'daglig livsførelse' as the central unit of analysis for Critical Psychology, bridging the gap between individual subjectivity and societal structures.",
+    "source_role": "A foundational primary text by Klaus Holzkamp that introduces the core concepts of Critical Psychology's approach to everyday life and critiques mainstream psychological methodology.",
+    "relation_to_lecture": "Provides the primary theoretical framework for the lecture on Critical Psychology, detailing how personality is understood not as internal traits, but as the active conduct of everyday life.",
+    "central_claims": [
+      {
+        "claim": "Traditional psychology and psychoanalysis systematically ignore the subject's everyday conduct of life by isolating them in artificial experimental or therapeutic settings.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The 'everyday conduct of life' (daglig livsførelse) is an active, subjective integration and coordination of various societal demands and life areas, not merely a passive reflection of social structures.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The cyclical routinization of everyday life is a necessary mechanism that relieves the subject from constant reflection and decision-making, providing a stable foundation for existence.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "A true 'science of the subject' must take the subject's own self-understanding and reasons for action as its starting point, rather than imposing external, objective categories.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Daglig livsførelse (Everyday conduct of life)",
+        "definition": "The subject's active integration, coordination, and arrangement of different demands from various life areas (work, family, etc.) into a coherent whole.",
+        "role": "The foundational concept of the text, offering an alternative to traditional psychology's isolated view of the individual."
+      },
+      {
+        "term": "Subjektvidenskab (Science of the subject)",
+        "definition": "A psychological approach that studies phenomena from the standpoint of the subject and their everyday life, rather than treating them as objects of external control.",
+        "role": "Frames Holzkamp's overarching methodological and theoretical alternative to mainstream psychology."
+      },
+      {
+        "term": "Rutinisering / Cyklicitet (Routinization / Cyclicality)",
+        "definition": "The repetitive, cyclical organization of daily activities that provides stability and relieves the individual from having to consciously reflect on every action.",
+        "role": "Explains how everyday life is maintained and why routines are existentially necessary rather than just restrictive."
+      },
+      {
+        "term": "Relativ autonomi (Relative autonomy)",
+        "definition": "The degree of freedom and control an individual has to shape their conduct of life and arrange their life conditions within given societal constraints.",
+        "role": "Highlights the tension between societal structures and individual agency in Critical Psychology."
+      },
+      {
+        "term": "Selvforståelse (Self-understanding)",
+        "definition": "The subject's own understanding of their reasons for acting, which must be the starting point for subject-scientific research.",
+        "role": "The methodological core of how to study the subject without reducing them to an object."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Subjektvidenskab vs. Traditionel psykologi",
+        "summary": "Subject-science studies the individual from their own standpoint within their everyday life, whereas traditional psychology isolates the individual in experimental settings to establish objective laws.",
+        "stakes": "Determines whether psychology can actually understand human life as it is lived, or if it only produces artificial knowledge disconnected from reality."
+      },
+      {
+        "label": "Cyklisk vs. Lineær handlingsstruktur",
+        "summary": "Everyday life is fundamentally cyclical (routines repeating daily), contrasting with traditional psychology's linear models of stimulus-response or goal-directed action.",
+        "stakes": "Essential for understanding how everyday life provides stability and relief (aflastning) through repetition."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'daglig livsførelse' simply means 'daily habits' rather than a complex, active integration of conflicting societal demands.",
+      "Believing Holzkamp rejects all empirical research, when he actually rejects artificial experimental settings in favor of research grounded in everyday life.",
+      "Viewing routines as purely negative or restrictive, missing Holzkamp's point that they are a necessary relief ('aflastning') that makes life possible."
+    ],
+    "quote_targets": [
+      {
+        "target": "Daglig livsførelse som en aktiv integration af de forskellige 'krav' fra de enkelte daglige 'livsområder' (p. 9)",
+        "why": "Provides the core definition of the main concept."
+      },
+      {
+        "target": "Den traditionelle psykologi konstruerede altså en dikotomi mellem en uoverskuelig 'daglig realitet' og en 'eksperimentel realitet' (p. 12)",
+        "why": "Summarizes the critique of traditional experimental psychology."
+      },
+      {
+        "target": "Rutiniseringen af en sådan afvikling er i en vis forstand 'livsnødvendig'. Den sørger for, at 'livet går videre'. (p. 8)",
+        "why": "Highlights the existential necessity of routines and cyclicality."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a Danish translation of Holzkamp's work, with an introduction by Ole Dreier.",
+      "It builds heavily on a critical reinterpretation of the sociological Munich group's project on 'Livsførelse'."
+    ],
+    "warnings": [
+      "The text uses dense, specialized Critical Psychology terminology (e.g., 'betydningsanordninger', 'handlepræmisser') which requires careful contextualization."
+    ]
+  }
+}

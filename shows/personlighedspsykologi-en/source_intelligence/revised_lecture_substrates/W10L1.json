@@ -1,0 +1,77 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:20Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "w10l1-mitchell-2015-bc690b36",
+      "w10l1-lecture-18-k-n-582ebd4f"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "26ec802bc193184d9b58f4e509e38b2f125c546e757304ffd61ef4583315a0a7",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W10L1",
+    "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+    "sequence_index": 18
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture marks a crucial pivot in the course's critical/sociocultural turn. It demonstrates how a phenomenon often mistakenly viewed as a biological given or a static 'trait' (gender) is actually a complex, multi-level psychosocial process. It perfectly illustrates the course's overarching themes of historicity, the decentered subject, and the tension between societal structure and individual agency.",
+    "what_matters_more": [
+      "Explicitly applying the course's '4 orientation points' (especially Historicity and Determination) to the concept of gender, showing how historical shifts in the division of labor shape subjectivity.",
+      "Connecting gender identification to the 'Decentered Subject' introduced in the psychoanalytic block, emphasizing that gender identity is not a purely rational choice but involves deep, unconscious ambivalences.",
+      "The dialectic between 'inner' (psychological/unconscious) and 'outer' (societal/structural) gender, and specifically the temporal lag between them during periods of rapid historical change."
+    ],
+    "de_emphasize": [
+      "The hyper-specific demographic details of the 1991 Norwegian 'Moderne jenter' study, shifting focus instead to the generalizable mechanism of generational psychological lag and 'husmorisering'.",
+      "Deep dives into the Mitchell vs. Butler debate that stray too far into pure gender studies; keep the focus strictly on what this debate means for personality psychology (unconscious transmission vs. performativity)."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W04L1 & W04L2 (Psychoanalytic Personality Theory)",
+        "relation": "Theoretical repurposing and extension",
+        "rationale": "Mitchell directly repurposes psychoanalytic concepts (the unconscious, identification, the decentered subject) to explain why patriarchal gender structures persist internally even when external political equality advances."
+      },
+      {
+        "target": "W12L1 (Meta-theoretical Synthesis & Orientation Points)",
+        "relation": "Application of meta-theory (Historicity)",
+        "rationale": "Nielsen & Rudberg's generational study is a prime example of 'Historicity' in action, demonstrating how changing historical contexts (women entering the workforce) fundamentally alter the psychological production of subjectivity."
+      },
+      {
+        "target": "W08L2 & W09L1 (Critical Psychology)",
+        "relation": "Structural vs. Individual determination",
+        "rationale": "Both critical psychology and this lecture on gender shift the locus of psychological development from isolated inner essences to societal structures (like the division of labor) and how subjects conduct their everyday lives within them."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'lag' between societal change and psychological change: why achieving structural gender equality doesn't instantly erase unconscious gender ambivalence.",
+      "Use the concept of 'husmorisering' (housewifization) as a relatable storytelling device to explain how generations psychologically reconstruct their parents to form their own identities.",
+      "Explicitly put on the 'Historicity' and 'Determination' lenses (from the 4 orientation points) to analyze how gender is historically produced rather than innately given."
+    ],
+    "carry_forward": [
+      "The concept of 'Subjectivation' (how individuals are formed into subjects by societal structures), which will be the central focus in the upcoming poststructuralism and social constructionism lectures (W10L2, W11L1).",
+      "The understanding that psychological identification is often unconscious and contradictory, a concept that will be vital for Narrative Psychology's (W11L2) focus on how people try to weave coherent stories out of fragmented experiences."
+    ],
+    "warnings": [
+      "Instructors must actively compensate for the poor translation quality of the Mitchell text, ensuring students grasp the psychoanalytic definition of 'sexual difference' rather than confusing it with biological sex.",
+      "Avoid letting students reduce gender to a measurable 'variable' (as in trait psychology); continually push them to analyze it as a historical and relational process."
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:44Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "w11l1-gergen-1999-73c2217e",
+      "w11l1-hacking-2007-10236bf4",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "6e353f9a18281fec1e0c84d11470b61032bd5ee79f024cd05cc45a6242512bda",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W11L1",
+    "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+    "sequence_index": 20
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the climax of the course's critical and sociocultural turn. It fundamentally dismantles the 'inner essence' model of personality established in the early weeks, replacing it with a view of subjectivity as historically, discursively, and relationally produced. It equips students with the epistemological critique necessary to evaluate all prior theories as historical constructs.",
+    "what_matters_more": [
+      "Explicit application of the course's four orientation points, particularly 'historicity' and 'context', to demonstrate how poststructuralism fundamentally redefines personality.",
+      "The epistemological deconstruction of early-course trait psychology: using Hacking's 'Looping Effect' to show that personality categories are not natural kinds but historically contingent 'moving targets'.",
+      "The paradox of 'Subjectification' (subjektivering) as a specific answer to the course's ongoing agency vs. structure dialectic, contrasting with humanistic inner freedom and critical psychology's societal participation."
+    ],
+    "de_emphasize": [
+      "Granular details of new materialism or affect theory mentioned in the Grundbog, unless directly used to critique the isolated 'inner essence' model of personality.",
+      "The specific content of seminar case studies (e.g., the Manosphere video) as testable facts; the focus must remain strictly on the analytical method of discursive psychology they illustrate."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W01L2 and W02L1 (Trait and Assessment Psychology)",
+        "relation": "Epistemological deconstruction",
+        "rationale": "Hacking's 'Looping Effect' directly challenges the foundational assumption of trait psychology by arguing that psychological assessments and classifications actively alter the subjects they attempt to objectively measure."
+      },
+      {
+        "target": "W08L2 and W09L1 (Critical Psychology)",
+        "relation": "Contrastive models of agency and structure",
+        "rationale": "Both traditions deconstruct the isolated individual, but they diverge on agency: Critical psychology locates it in the 'conduct of everyday life' and societal participation, whereas poststructuralism locates it in discursive performativity and the paradox of subjectification."
+      },
+      {
+        "target": "W12L1 (Synthesis and Orientation Points)",
+        "relation": "Meta-theoretical foundation",
+        "rationale": "This lecture provides the strongest theoretical vocabulary for the 'historicity' and 'context' orientation points, which students must master to successfully synthesize the course for the final exam."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Looping Effect' as a mind-bending concept: explore how personality tests and psychiatric diagnoses actually change human behavior and identity.",
+      "Create a direct contrast between the 'Trait Profile' (from week 2) and Gergen's 'Relational Self' to highlight the shift from inner causality to performative effect.",
+      "Unpack the paradox of 'Subjectification': explain to listeners how being subjected to societal discourses and power relations is simultaneously what grants us agency."
+    ],
+    "carry_forward": [
+      "The idea that identity is performative and linguistically constructed, which serves as the direct theoretical bridge into Narrative Psychology (W11L2).",
+      "The critical lens that no personality theory is historically neutral; all models must be evaluated as active participants in shaping human subjectivity (crucial for W12L1)."
+    ],
+    "warnings": [
+      "Students frequently misinterpret social constructionism as claiming that psychological distress or personality is 'fake' or 'just in your head'. Instructors must emphasize the material, lived, and deeply felt reality of discursive effects.",
+      "Pages 417-418 of the attached Grundbog PDF belong to a different section (evolutionary/positive psychology) and should be explicitly excluded from reading expectations.",
+      "Seminar slides rely heavily on group work without providing analytical resolutions. Instructors must ensure the theoretical takeaways regarding performativity and discourse are explicitly summarized after group exercises."
+    ]
+  }
+}

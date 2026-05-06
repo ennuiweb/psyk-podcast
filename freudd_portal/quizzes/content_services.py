@@ -53,7 +53,7 @@ SPOTIFY_EPISODE_URL_RE = re.compile(
 )
 HUMAN_MINUTES_RE = re.compile(r"(?P<minutes>\d+)\s*(?:min(?:ute)?s?|minutter)\b", re.IGNORECASE)
 ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
-MANIFEST_VERSION = 3
+MANIFEST_VERSION = 4
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 _MANIFEST_CACHE: dict[str, Any] = {
@@ -236,6 +236,18 @@ def _dedupe_reading_key(base_key: str, *, seen_counts: dict[str, int]) -> str:
     if count == 1:
         return base_key
     return f"{base_key}-{count}"
+
+
+def _reading_source_filenames(reading: Any) -> tuple[str, ...]:
+    source_filenames = getattr(reading, "source_filenames", ())
+    if isinstance(source_filenames, (list, tuple)):
+        values = tuple(str(item).strip() for item in source_filenames if str(item).strip())
+        if values:
+            return values
+    source_filename = getattr(reading, "source_filename", None)
+    if isinstance(source_filename, str) and source_filename.strip():
+        return (source_filename.strip(),)
+    return tuple()
 
 
 def _lecture_title_from_heading(lecture_key: str, heading: str) -> str:
@@ -1362,11 +1374,8 @@ def build_subject_content_manifest(
         reading_key_counts: dict[str, int] = {}
         for reading_position, reading in enumerate(lecture.readings):
             normalized_title = _normalize_title(reading.title)
-            source_filename = (
-                str(reading.source_filename).strip()
-                if isinstance(reading.source_filename, str) and reading.source_filename.strip()
-                else None
-            )
+            source_filenames = _reading_source_filenames(reading)
+            source_filename = source_filenames[0] if source_filenames else None
             base_reading_key = _reading_key(lecture_key, reading.title)
             reading_item = {
                 "reading_key": _dedupe_reading_key(
@@ -1383,6 +1392,8 @@ def build_subject_content_manifest(
                     "podcasts": [],
                 },
             }
+            if len(source_filenames) > 1:
+                reading_item["source_filenames"] = list(source_filenames)
             readings.append(reading_item)
             if normalized_title:
                 _append_lookup_index(reading_lookup, normalized_title, reading_position)
@@ -1391,8 +1402,8 @@ def build_subject_content_manifest(
                     _matching_key_from_normalized(normalized_title),
                     reading_position,
                 )
-            if source_filename:
-                source_stem_normalized = _normalize_title(Path(source_filename).stem)
+            for current_source_filename in source_filenames:
+                source_stem_normalized = _normalize_title(Path(current_source_filename).stem)
                 if source_stem_normalized:
                     _append_lookup_index(reading_lookup, source_stem_normalized, reading_position)
                     _append_lookup_index(

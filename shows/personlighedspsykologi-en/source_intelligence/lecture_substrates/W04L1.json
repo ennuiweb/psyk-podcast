@@ -1,0 +1,177 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:27:11Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-gammelgaard-2007-bcbdbec2",
+      "w04l1-freud-1973-1933-98cd9920",
+      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "d59feb71a4069c6435b63bbd69648360e125da63b8a205034160e80923a969b6",
+      "source_cards_signature": "4c041f89717b3477e088cd3f72d031f8a4e4a7412113b3a7e8c328edefb7301c",
+      "raw_sources_signature": "51f3c659f26f43a905592f20ccdad8fb350c238aef57ec91c07bb269f4cff9f6"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W04L1",
+    "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+    "sequence_index": 7
+  },
+  "analysis": {
+    "lecture_question": "Hvordan forstår psykoanalysen personligheden som en dynamisk og konfliktfyldt struktur formet af ubevidste processer og drifter?",
+    "central_learning_problem": "Studerende skal skifte fra en hverdagsforståelse af personlighed som en bevidst, rationel og samlet enhed til en psykoanalytisk metapsykologi, hvor psyken er fundamentalt splittet (decentreret). Udfordringen er at forstå abstrakte begreber som drift, det ubevidste og den strukturelle model (Id, Ego, Superego) ikke som fysiske steder i hjernen, men som teoretiske værktøjer til at begribe indre konflikter, meningsdannelse og symptomer, der opstår i spændingsfeltet mellem krop, psyke og omverden.",
+    "source_roles": [
+      {
+        "source_id": "w04l1-freud-1973-1933-98cd9920",
+        "role": "anchor",
+        "rationale": "Freuds tekst udgør det primære teoretiske fundament for den strukturelle model (Id, Ego, Superego) og introducerer de originale metapsykologiske begreber."
+      },
+      {
+        "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+        "role": "framing",
+        "rationale": "Gammelgaard sætter Freuds begreber i en historisk og moderne kontekst, og bygger bro mellem klassisk driftsteori og nyere psykoanalytiske strømninger."
+      },
+      {
+        "source_id": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+        "role": "supporting",
+        "rationale": "Forelæsningsslides strukturerer de komplekse tekster, fremhæver de vigtigste pointer om psykisk realitet og det decentrede subjekt, og kobler teorien til klinisk praksis."
+      },
+      {
+        "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+        "role": "application",
+        "rationale": "Seminarslides anvender teorien gennem gruppearbejde og case-arbejde (Nachträglichkeit), og uddyber forskellen på jeg-drifter og seksualdrifter."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w04l1-freud-1973-1933-98cd9920",
+          "w04l1-gammelgaard-2007-bcbdbec2"
+        ],
+        "relation": "Gammelgaard udvider og nuancerer Freuds oprindelige strukturelle model og driftsteori ved at inddrage nyere perspektiver (f.eks. objektrelationsteori og spædbørnsforskning) og begreber som Nachträglichkeit.",
+        "learning_stakes": "Hjælper de studerende med at se psykoanalysen som en levende, udviklende teori frem for et statisk historisk levn."
+      },
+      {
+        "source_ids": [
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ],
+        "relation": "Forelæsningen etablerer de brede metapsykologiske rammer, mens seminaret dykker ned i specifikke mekanismer (som Laplanches læsning af drifter) og anvender dem på konkrete cases.",
+        "learning_stakes": "Sikrer at de abstrakte begreber forankres i klinisk og analytisk praksis."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Det ubevidste",
+        "explanation": "Den del af psyken, der er utilgængelig for bevidst refleksion, men som aktivt påvirker handlinger, drømme og symptomer. Det er ikke et passivt lager, men har sin egen dynamik.",
+        "source_ids": [
+          "w04l1-freud-1973-1933-98cd9920",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16",
+          "w04l1-gammelgaard-2007-bcbdbec2"
+        ]
+      },
+      {
+        "concept": "Den strukturelle model (Id, Ego, Superego)",
+        "explanation": "Freuds model af personligheden som bestående af tre instanser i konstant konflikt: det driftsstyrede Id, det moraliserende Superego og det mæglende Ego.",
+        "source_ids": [
+          "w04l1-freud-1973-1933-98cd9920",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22"
+        ]
+      },
+      {
+        "concept": "Drift (Trieb)",
+        "explanation": "Et psykologisk grænsebegreb mellem krop og psyke; den psykiske repræsentation af en kropslig pirring, som adskiller sig fra rent biologiske instinkter.",
+        "source_ids": [
+          "w04l1-gammelgaard-2007-bcbdbec2",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ]
+      },
+      {
+        "concept": "Psykisk realitet",
+        "explanation": "Fokus på individets subjektive, indre meningsdannelse og fantasier frem for objektiv materiel virkelighed.",
+        "source_ids": [
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16",
+          "w04l1-gammelgaard-2007-bcbdbec2"
+        ]
+      },
+      {
+        "concept": "Nachträglichkeit (Efterlods virkning)",
+        "explanation": "Fænomenet hvor tidlige oplevelser først får deres fulde psykologiske (og potentielt traumatiske) betydning senere i livet gennem nye erfaringer.",
+        "source_ids": [
+          "w04l1-gammelgaard-2007-bcbdbec2",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Instinkt vs. Drift",
+        "stakes": "Afgørende for at forstå psykoanalysens brud med ren biologi og dens fokus på meningsdannelse og psykologisk kompleksitet.",
+        "source_ids": [
+          "w04l1-gammelgaard-2007-bcbdbec2",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ]
+      },
+      {
+        "tension": "Materiel realitet vs. Psykisk realitet",
+        "stakes": "Forklarer hvorfor psykoanalysen fokuserer på patientens indre verden og fantasier frem for objektiv historisk sandhedssøgen.",
+        "source_ids": [
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ]
+      },
+      {
+        "tension": "Det rationelle (Ego) vs. Det irrationelle (Id)",
+        "stakes": "Illustrerer psykoanalysens syn på mennesket som et 'decentreret subjekt', der ikke er herre i eget hus, men underlagt ubevidste kræfter.",
+        "source_ids": [
+          "w04l1-freud-1973-1933-98cd9920",
+          "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "At Id, Ego og Superego er fysiske steder i hjernen frem for teoretiske, metapsykologiske konstruktioner.",
+      "At Freuds begreb om seksualitet (og infantil seksualitet) kun handler om voksnes genitale sex, frem for alt lystbetonet.",
+      "At det ubevidste blot er et passivt opbevaringssted for glemte minder, frem for en aktiv, dynamisk proces med egen logik.",
+      "At psykoanalysen i dag er identisk med Freuds oprindelige teorier og ignorerer moderne empirisk forskning."
+    ],
+    "must_carry_ideas": [
+      "Mennesket er et decentreret subjekt, drevet af ubevidste konflikter mellem drifter, moral og realiteter.",
+      "Psykoanalytiske begreber er metapsykologiske værktøjer udviklet til at forstå kliniske observationer af meningsdannelse og lidelse.",
+      "Psykisk udvikling er ikke lineær, men præget af 'Nachträglichkeit', hvor fortiden løbende omfortolkes i lyset af nutiden."
+    ],
+    "missing_sources": [
+      {
+        "source_id": "kristian-ditlev-jensen-det-bliver-sagt",
+        "impact": "Seminaret bygger på en case-analyse af Kristian Ditlev Jensens tekst for at illustrere 'Nachträglichkeit', men selve casen mangler, hvilket gør det svært at se den konkrete anvendelse af begrebet."
+      }
+    ],
+    "warnings": [
+      "Forelæsnings- og seminarslides indeholder interaktive øvelser og case-arbejde, hvis fulde diskussioner og konklusioner ikke fremgår af materialet.",
+      "Freuds tekst benytter ældre terminologi, der kan kræve ekstra formidling for at relatere til moderne psykologi."
+    ]
+  }
+}

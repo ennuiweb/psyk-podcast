@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:19:23Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l1-mitchell-2015-bc690b36"
+    ],
+    "dependency_hashes": {
+      "source_file": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
+      "source_files_signature": "97abca378499ea9959f66abe861f70da308cf036e6e7c12e76ab4e770bb3c279",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l1-mitchell-2015-bc690b36",
+    "lecture_key": "W10L1",
+    "title": "Mitchell (2015)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
+    "source_paths": [
+      "Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents a high-level theoretical debate between Juliet Mitchell and Judith Butler (with commentary by Jacqueline Rose) on the psychoanalytic foundations of gender, the unconscious transmission of patriarchy, and the nature of the Law.",
+    "source_role": "Primary reading offering a deep dive into feminist psychoanalytic theory, contrasting Mitchell's structuralist/Freudian approach with Butler's post-structuralist/Laplanchian critique.",
+    "relation_to_lecture": "Provides advanced theoretical framing for the Week 10 lecture on Gender (Køn), illustrating how psychoanalysis understands the persistence of gender differences and patriarchal structures despite social progress.",
+    "central_claims": [
+      {
+        "claim": "Mitchell argues that 'gender difference' (sexual difference) is a universal distinction rooted in the prohibition of incest and murder, though its specific content varies across societies.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Butler contends that the unconscious does not transmit an invariable law across generations, but rather a series of transpositions and affective impressions triggered by enigmatic signifiers from adults.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Mitchell asserts that her theoretical focus is on the oppression of women, whereas Butler's focus is on heteronormativity, which leads to their divergent uses and interpretations of psychoanalytic concepts.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Gender difference (Sexual difference)",
+        "definition": "A universal distinction between men and women organized by the prohibitions of incest and violence, which never fully coincides with biological sex or psychic femininity/masculinity.",
+        "role": "Central to Mitchell's explanation of the persistence of patriarchy and the unconscious structures that maintain women's oppression."
+      },
+      {
+        "term": "The Law",
+        "definition": "The fundamental, invariable prohibitions (such as those against incest and murder) that structure human kinship and the unconscious.",
+        "role": "Explains the conservative 'inertia' or countercurrent in gender relations that Mitchell observes, which resists deliberate socialization and political progress."
+      },
+      {
+        "term": "Enigmatic signifiers",
+        "definition": "Laplanche's concept of confusing, irresistible messages relayed unconsciously by the adult world to the child, which implant and initialize drives.",
+        "role": "Used by Butler to argue against the transmission of an intact, universal Law, suggesting instead that drives are formed by the desires of others."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Oppression of women vs. Heteronormativity",
+        "summary": "Mitchell's focus on the structural oppression of women versus Butler's focus on the cruel treatment of homosexuality and heteronormative dominance.",
+        "stakes": "Explains the root of their theoretical divergence and why they interpret Freud, the unconscious, and the goals of feminist psychoanalysis differently."
+      },
+      {
+        "label": "Gender difference vs. Gender",
+        "summary": "Mitchell distinguishes the universal, vertical boundary between sexes (gender difference) from lateral, fluid, and performative social relationships (gender).",
+        "stakes": "Clarifies why Mitchell rejects applying Butler's concept of performativity to the foundational, unconscious difference between the sexes."
+      },
+      {
+        "label": "Drive (Freud) vs. Enigmatic messages (Laplanche)",
+        "summary": "Mitchell defends the Freudian drive as an internal push and psychological conflict, while Butler (via Laplanche) views drives as established by the desires of adults.",
+        "stakes": "Determines whether the unconscious transmits an invariable law (Mitchell) or a mutable series of affective impressions (Butler)."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Mitchell equates gender difference with biological determinism or essentialism (she explicitly states biological femaleness and psychic femininity never fully coincide).",
+      "Conflating Mitchell's use of 'gender difference' (translated from 'sexual difference') with the modern sociological or performative concept of 'gender'.",
+      "Believing Butler and Mitchell completely disagree on the existence of the unconscious; their disagreement is actually about *what* is transmitted (an invariable law vs. enigmatic impressions)."
+    ],
+    "quote_targets": [
+      {
+        "target": "The biological fact of being a woman and psychic femininity never fully coincide",
+        "why": "Demonstrates Mitchell's explicit rejection of biological essentialism."
+      },
+      {
+        "target": "Butler is driven by the desire to design a world free from the appalling discrimination against homosexuality and I by the desire to imagine one in which the oppression of women is no longer inherent in human organization.",
+        "why": "Summarizes the fundamental divergence in their political and theoretical projects."
+      },
+      {
+        "target": "Gender difference is a distinction between women and men and it is this characteristic of distinction that is universal in human societies.",
+        "why": "Defines Mitchell's core concept of gender difference as a universal structural boundary rather than a specific set of traits."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a machine-translated version of a French journal article, which itself translates an English book chapter.",
+      "The document is structured as Mitchell's response to Butler, incorporating excerpts of Butler's critique, and concludes with a commentary by Jacqueline Rose."
+    ],
+    "warnings": [
+      "The text is an 'on-the-fly' machine translation from ProQuest and contains awkward phrasing, OCR errors, and translation artifacts.",
+      "The translation inconsistently uses male pronouns for Judith Butler (e.g., 'his Cambridge communication').",
+      "The English psychoanalytic term 'sexual difference' has been translated here as 'gender difference', which Mitchell notes causes conceptual confusion with the sociological term 'gender'."
+    ]
+  }
+}

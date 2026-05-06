@@ -1,0 +1,130 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:21:24Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-mcadams-and-pals-2006-b9675688"
+    ],
+    "dependency_hashes": {
+      "source_file": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
+      "source_files_signature": "6c3f67c8614d4f370a1a8a83609d5ed3a867ec6bff317b1fa95f00607048df80",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+    "lecture_key": "W11L2",
+    "title": "McAdams & Pals (2006)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+    "source_paths": [
+      "Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Proposes a comprehensive, five-principle framework to integrate the fragmented field of personality psychology, moving beyond isolated grand theories and trait taxonomies to include evolution, adaptations, narratives, and culture.",
+    "source_role": "Foundational theoretical reading that introduces the 'New Big Five' principles, heavily emphasizing the roles of narrative identity and culture in shaping the whole person.",
+    "relation_to_lecture": "Directly supports the W11L2 lecture on narrativity, culture, and meaning by providing the exact theoretical model (McAdams' 3 levels of personality) that situates narrative and culture within the broader science of personality.",
+    "central_claims": [
+      {
+        "claim": "Personality is an individual's unique variation on the general evolutionary design for human nature, expressed as a developing pattern of dispositional traits, characteristic adaptations, and self-defining life narratives, all situated in culture.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Dispositional traits like the Big Five provide a broad, stable outline of human individuality, but they are insufficient for understanding the whole person because they lack contextual and existential depth.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Culture exerts a differential impact across the levels of personality: it has a modest effect on the phenotypic expression of traits, a stronger impact on characteristic adaptations, and a profound influence on life narratives by providing a menu of themes and plots.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Dispositional Traits",
+        "definition": "Broad, nonconditional, decontextualized, and generally linear dimensions of human individuality (e.g., extraversion, neuroticism) that account for general consistencies across situations and over time.",
+        "role": "Constitutes Principle 2, serving as the behavioral outline or 'signature' of a person."
+      },
+      {
+        "term": "Characteristic Adaptations",
+        "definition": "Motivational, social-cognitive, and developmental variables that are contextualized in time, situations, and social roles, such as goals, values, coping strategies, and relational patterns.",
+        "role": "Constitutes Principle 3, filling in the specific details of human individuality and everyday social adaptation that broad traits miss."
+      },
+      {
+        "term": "Integrative Life Narratives",
+        "definition": "Internalized and evolving life stories that individuals construct to reconstruct the past and imagine the future, providing their lives with unity, purpose, and meaning.",
+        "role": "Constitutes Principle 4, representing the most unique and culturally anchored level of personality where modern identity is forged."
+      },
+      {
+        "term": "Evolutionary Design",
+        "definition": "The species-typical universals and general design features of human nature shaped by natural selection to solve problems of survival and reproduction in the environment of evolutionary adaptedness.",
+        "role": "Constitutes Principle 1, providing the ultimate distal context and baseline against which all individual psychological variations exist."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Traits vs. Characteristic Adaptations",
+        "summary": "Traits are broad, stable, and decontextualized outlines of behavior (the 'having' side of personality), whereas characteristic adaptations are specific, contextualized, and malleable responses to everyday social demands (the 'doing' side).",
+        "stakes": "Demonstrates that personality cannot be reduced to traits alone; understanding a person requires examining their specific motives, goals, and contextualized strategies."
+      },
+      {
+        "label": "Traits vs. Life Narratives",
+        "summary": "Traits sketch a behavioral outline and address 'what kind of person' someone is, while life narratives provide unique, culturally anchored meaning and address the existential question of 'who the person is'.",
+        "stakes": "Highlights the necessity of narrative psychology to capture the 'whole person' and shows where culture has its most profound psychological impact."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing the 'New Big Five' principles with the Big Five trait model. The principles are a broader framework that includes the Big Five traits as just one of five components.",
+      "Assuming culture has an equal impact on all aspects of personality. The authors explicitly argue culture's impact is modest on traits but profound on life narratives.",
+      "Conflating characteristic adaptations with life narratives. Adaptations are goals, motives, and schemas, whereas narratives are internalized stories constructed for meaning and identity."
+    ],
+    "quote_targets": [
+      {
+        "target": "Personality is an individual's unique variation on the general evolutionary design for human nature, expressed as a developing pattern of (b) dispositional traits, (c) characteristic adaptations, and (d) self-defining life narratives, complexly and differentially situated (e) in culture and social context.",
+        "why": "This is the core thesis statement on page 204 that summarizes the entire 5-principle framework."
+      },
+      {
+        "target": "Culture exerts different effects on different levels of personality: It exerts a modest effect on the phenotypic expression of traits; it shows a stronger impact on the content and timing of characteristic adaptations; and it reveals its deepest and most profound influence on life stories...",
+        "why": "Perfectly summarizes Principle 5 on page 211 and the differential role of culture across the three levels of personality."
+      }
+    ],
+    "grounding_notes": [
+      "The authors explicitly build on Kluckhohn and Murray's canonical statement that every person is like all others, like some others, and like no other.",
+      "Table 1 on page 212 provides a highly useful summary of the three levels of personality and their specific relations to culture.",
+      "Figure 1 on page 213 offers a schematic diagram of how the five principles interact."
+    ],
+    "warnings": [
+      "This is a theoretical synthesis and framework proposal, not a primary empirical research paper. It reviews existing literature to argue for a new paradigm."
+    ]
+  }
+}

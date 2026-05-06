@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:56:12Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l2-laplanche-1970-968862d5"
+    ],
+    "dependency_hashes": {
+      "source_file": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
+      "source_files_signature": "99f482bda9296fbdef6971be3c0b2bdf975c3699bcd74cdec7faad74ed72dfb7",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l2-laplanche-1970-968862d5",
+    "lecture_key": "W04L2",
+    "title": "Laplanche (1970)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+    "source_paths": [
+      "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
+    "length_band": "long",
+    "page_count": 26,
+    "estimated_token_count": 16900,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a structural and dialectical re-reading of Freud's theory of drives, emphasizing the non-biological genesis of human sexuality through the concepts of propping and auto-erotism.",
+    "source_role": "A critical, theoretical text that challenges standard biological or developmental readings of Freud, offering a rigorous conceptual framework for understanding the origins of the sexual drive.",
+    "relation_to_lecture": "Serves as a foundational reading for understanding the psychoanalytic structure of personality, specifically how drives deviate from biological instincts to form human subjectivity.",
+    "central_claims": [
+      {
+        "claim": "Human sexuality (the drive or Trieb) emerges by 'propping' itself upon vital biological functions (instincts or Instinkt) and subsequently detaching from them.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Auto-erotism is not an original, objectless state, but rather a secondary stage characterized by the loss of the initial object of the vital function.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The object of the sexual drive is never the original object of the vital need (e.g., milk), but a displaced, fantasmatic substitute (e.g., the breast), making the 'finding of an object' a 're-finding' of a different object.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Perversion in the Freudian sense is not merely a deviation from a biological norm, but the very essence of human infantile sexuality, which deflects the instinct and metaphorizes its aim.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Propping (Étayage / Anlehnung)",
+        "definition": "The process by which emergent sexuality initially attaches itself to and leans upon a nonsexual, vital bodily function (such as feeding) before becoming independent.",
+        "role": "Explains the genesis of the sexual drive from biological instincts without reducing psychoanalysis to biology."
+      },
+      {
+        "term": "Trieb (Drive)",
+        "definition": "A process that mimics, displaces, and denatures a biological instinct; it is characterized by an impetus, aim, object, and source, but operates in the realm of sexuality and fantasy.",
+        "role": "Serves as the foundational concept of psychoanalytic motivation, strictly differentiated from preformed animal instincts."
+      },
+      {
+        "term": "Instinkt (Instinct)",
+        "definition": "A preformed behavioral pattern whose arrangement is determined hereditarily and which is repeated according to modalities relatively adapted to a certain type of object.",
+        "role": "Acts as the biological baseline from which the human sexual drive deviates."
+      },
+      {
+        "term": "Auto-erotism",
+        "definition": "A stage of sexuality where the drive, having lost its original vital object, turns toward the subject's own body and fantasmatic objects.",
+        "role": "Corrects the misconception of primary objectlessness and explains the internal turn of the drive."
+      },
+      {
+        "term": "Erotogenic Zone",
+        "definition": "A bodily zone of exchange (often sphincteral) that focalizes parental fantasies and becomes the source of sexual excitation.",
+        "role": "Locates the physical origin of the drive's source while linking it to the subjectivity and fantasies of the caregiver."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Trieb (Drive) vs. Instinkt (Instinct)",
+        "summary": "The difference between a deflected, metaphorized human sexual process (Trieb) and a preformed, hereditary, biologically adaptive behavioral pattern (Instinkt).",
+        "stakes": "Prevents the biologization of psychoanalysis and highlights the unique, non-naturalistic nature of human sexuality."
+      },
+      {
+        "label": "Object of the function vs. Object of the drive",
+        "summary": "The distinction between the real object that satisfies a vital biological need (e.g., milk for hunger) and the fantasmatic object that satisfies the sexual drive (e.g., the breast as a symbol).",
+        "stakes": "Explains why the sexual object is always a substitute and why human desire is marked by a fundamental impossibility of ultimate, original satisfaction."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing 'Trieb' (drive) with 'Instinkt' (instinct) and assuming Freud's theory of sexuality is purely biological.",
+      "Believing auto-erotism means the infant starts in a completely objectless state (biological idealism), rather than it being a secondary stage following the loss of the vital object.",
+      "Assuming the object of the sexual drive is the exact same as the object of the biological need (e.g., confusing the milk with the breast)."
+    ],
+    "quote_targets": [
+      {
+        "target": "it is sexuality which represents the model of every drive and probably constitutes the only drive in the strict sense of the term.",
+        "why": "Highlights Laplanche's central thesis about the primacy of sexuality in the psychoanalytic theory of drives (Internal page 8)."
+      },
+      {
+        "target": "The finding of an object is in fact a re-finding of it.",
+        "why": "A crucial Freudian formulation reinterpreted by Laplanche to show the displacement from the vital object to the sexual object (Internal page 20)."
+      },
+      {
+        "target": "Sexuality, in its entirety, in the human infant, lies in a movement which deflects the instinct, metaphorizes its aim, displaces and internalizes its object...",
+        "why": "Summarizes the entire mechanism of how a drive is formed from an instinct (Internal page 23)."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly critiques the translation of 'Trieb' as 'instinct' in English and French, advocating for 'drive' to maintain the distinction from 'Instinkt'.",
+      "Laplanche heavily relies on close readings of Freud's 'Three Essays on the Theory of Sexuality' and 'Instincts and Their Vicissitudes'."
+    ],
+    "warnings": [
+      "The PDF pages are numbered 1-24 internally, but the source filename indicates pp. 18-38. The internal document pagination does not match the filename's page range.",
+      "The text is highly theoretical and relies on a structuralist reading of Freud, which may contrast with more orthodox or purely clinical interpretations."
+    ]
+  }
+}

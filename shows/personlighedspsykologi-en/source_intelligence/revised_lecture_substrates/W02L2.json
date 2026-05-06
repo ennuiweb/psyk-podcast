@@ -1,0 +1,77 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:05:46Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "w02l2-li-and-wilt-2025-92f596ad",
+      "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "cf735cd1f30563c5a9b17aef5820a02f2b02890fc0ce03f04503c5f12aa536ab",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W02L2",
+    "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+    "sequence_index": 4
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture serves as the crucial pivot from viewing personality as a static, biological essence to recognizing the profound impact of context and time. It introduces the 'Stability vs. Change' and 'Essence vs. Context' dialectics, establishing a mainstream empirical baseline that will be radically reinterpreted, critiqued, and deconstructed by the psychoanalytic, existential, and critical traditions later in the course.",
+    "what_matters_more": [
+      "The 'Essence vs. Context' orientation point: Using the person-situation interplay as the foundational introduction to this mandatory meta-theoretical lens.",
+      "The conceptual distinction between 'traits' (enduring) and 'states' (context-dependent), as this tension anticipates the later course shift toward decentered and socially constructed subjects.",
+      "The 'Maturity Principle' as a normative developmental trajectory, which sets up a baseline that later critical and sociocultural theories will interrogate as potentially culturally bound rather than purely natural."
+    ],
+    "de_emphasize": [
+      "The deep methodological mechanics of cross-sectional versus longitudinal research designs, which, while empirically important, distract from the broader theoretical arc of the course.",
+      "The hyper-specific details of behavioral economics paradigms (e.g., Dictator vs. Ultimatum games), keeping them strictly as brief, illustrative examples of situational affordances rather than core content."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W08L1 and W09L1 (Critical Personalism and Critical Psychology)",
+        "relation": "Theoretical expansion and critique of 'context'",
+        "rationale": "The 'situational affordances' introduced here are radically expanded by critical psychology, which shifts the focus from immediate physical/social situations to the broader 'conduct of everyday life' and societal power structures."
+      },
+      {
+        "target": "W11L1 (Poststructuralism and the Looping Effect)",
+        "relation": "Epistemological deconstruction of stability",
+        "rationale": "While this lecture treats trait stability and change as natural developmental facts, Hacking's 'looping effect' later argues that psychological categories actively shape and change the people being measured, complicating the 'Maturity Principle'."
+      },
+      {
+        "target": "W12L1 (Orientation Points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "The person-situation debate is the most direct, early-course expression of the 'Essence vs. Context' and 'Determination vs. Agency' orientation points required for the final exam."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Essence vs. Context' orientation point: explore the paradox of how we can maintain a stable identity over decades while acting completely differently depending on the room we are in.",
+      "Discuss the 'Maturity Principle' and pose a critical question to foreshadow later weeks: Do we naturally 'mature' into being more agreeable and conscientious, or does society simply demand and mold this behavior as we enter the workforce?",
+      "Use the concept of 'situational affordances' to explain how environments pull certain traits out of us, bridging the gap between inner dispositions and outer behavior."
+    ],
+    "carry_forward": [
+      "The concept of 'situational affordances' as a precursor to understanding 'social structures' and 'discourse' in the critical and poststructural blocks.",
+      "The distinction between rank-order stability and mean-level change as a necessary baseline for understanding lifespan development before Narrative Psychology (W11L2) redefines development as an ongoing process of 'storytelling'."
+    ],
+    "warnings": [
+      "Ensure students do not reduce 'situations' to mere physical environments; prime them to eventually see situations as social, historical, and discursive spaces.",
+      "Bleidorn et al.'s reliance on WEIRD (Western, Educated, Industrialized, Rich, Democratic) samples must be highlighted, as it provides a massive hook for later sociocultural critiques regarding the universality of personality development."
+    ]
+  }
+}

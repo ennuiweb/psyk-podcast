@@ -1,0 +1,154 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:45:52Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1"
+    ],
+    "dependency_hashes": {
+      "source_file": "2e66f6613bc190eaaaf844f0c8accb26b5beaa2d36468ff359c44172b59ea30b",
+      "source_files_signature": "64956f4c44c5b3491cb1a72fdf345e6e157354fb137ea7f22eeef86e99173305",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+    "lecture_key": "W02L1",
+    "title": "3. gang PersPsy 3 260209",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/3. gang PersPsy_3_260209.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/3. gang PersPsy_3_260209.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/3. gang PersPsy_3_260209.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/3. gang PersPsy_3_260209.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "2e66f6613bc190eaaaf844f0c8accb26b5beaa2d36468ff359c44172b59ea30b",
+    "length_band": "long",
+    "page_count": 68,
+    "estimated_token_count": 44200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces the foundational trait perspective, the lexical hypothesis, and structural models of personality (Big Five and HEXACO).",
+    "source_role": "Primary lecture slides outlining the definition of traits, methods for discovering basic dimensions, and empirical evidence for personality structures.",
+    "relation_to_lecture": "Serves as the main visual and structural guide for the 3rd lecture on personality traits and dimensions.",
+    "central_claims": [
+      {
+        "claim": "Personality traits are hypothetical constructs representing probabilistic, relatively stable patterns of emotion, motivation, cognition, and behavior.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality psychology largely adopts a dimensional approach rather than a categorical approach to describe individual differences.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "The lexical hypothesis posits that important personality characteristics become encoded in language as adjectives, which can be factor-analyzed to discover basic personality dimensions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The HEXACO model expands upon the traditional Big Five by incorporating a sixth dimension, Honesty-Humility, supported by cross-cultural lexical studies.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "A construct's validity and meaning are established through its nomological net, which maps its interrelations with other constructs and behavioral outcomes.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Personality Trait",
+        "definition": "Probabilistic descriptions of relatively stable patterns of emotion, motivation, cognition, and behavior across a variety of relevant situations.",
+        "role": "The core unit of analysis for the lecture, establishing how individual differences are conceptualized."
+      },
+      {
+        "term": "Lexical Hypothesis",
+        "definition": "The idea that people invent helpful adjectives to communicate about personality, which become established in dictionaries and can be used to identify basic personality dimensions.",
+        "role": "Provides the theoretical rationale for the inductive approach used to discover the Big Five and HEXACO models."
+      },
+      {
+        "term": "Exploratory Factor Analysis",
+        "definition": "A statistical method used to find rather uncorrelated groups (dimensions) of rather strongly correlated items (traits).",
+        "role": "The methodological tool used to reduce thousands of personality-descriptive adjectives into a few basic dimensions."
+      },
+      {
+        "term": "Nomological Net",
+        "definition": "The interrelations of a construct or its operationalizations with other (more or less related) constructs and outcomes.",
+        "role": "Explains how researchers validate traits by testing if they predict theoretically related behaviors (e.g., Extraversion predicting number of Facebook friends)."
+      },
+      {
+        "term": "HEXACO Model",
+        "definition": "A six-factor model of personality structure comprising Honesty-Humility, Emotionality, eXtraversion, Agreeableness, Conscientiousness, and Openness to Experience.",
+        "role": "Presented as a prominent contemporary structural model of personality, contrasted with the Big Five."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Dimensional vs. Categorical Approach",
+        "summary": "Treating personality differences as continuous dimensions (where most people are average) versus binary categories (e.g., being a 'Narcissist' or not).",
+        "stakes": "Fundamental to modern personality assessment, emphasizing that traits exist on a continuum rather than as discrete types."
+      },
+      {
+        "label": "Inductive vs. Deductive Approach",
+        "summary": "Discovering personality dimensions through data-driven methods (like lexical studies and factor analysis) versus theory-driven methods.",
+        "stakes": "Explains the empirical origins of the most widely accepted structural models of personality (Big Five, HEXACO)."
+      },
+      {
+        "label": "Big Five vs. HEXACO",
+        "summary": "The five-factor model (OCEAN) versus the six-factor model, which adds Honesty-Humility and slightly shifts the definitions of Emotionality and Agreeableness.",
+        "stakes": "Highlights the evolution of personality models based on broader cross-cultural lexical studies."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming traits can be directly observed rather than inferred from coherent thoughts, feelings, and behaviors.",
+      "Believing most people score at the extreme ends of personality dimensions, whereas most people are actually average.",
+      "Thinking traits perfectly predict behavior in single, isolated situations, rather than aggregating across multiple situations to show consistency.",
+      "Confusing the Big Five and HEXACO models as entirely distinct, rather than recognizing HEXACO as an expansion that shares significant overlap with the Big Five."
+    ],
+    "quote_targets": [
+      {
+        "target": "Probabilistic descriptions of relatively stable patterns of emotion, motivation, cognition, and behavior",
+        "why": "DeYoung's (2015) formal definition of personality traits used in the course."
+      },
+      {
+        "target": "The nomological net of a construct or its operationalizations comprises its interrelations with other (more or less related) constructs and outcomes",
+        "why": "Zettler et al.'s (2020) definition of a nomological net, crucial for understanding construct validity."
+      },
+      {
+        "target": "as few basic dimensions as possible / as many basic dimensions as necessary",
+        "why": "A guiding principle for determining the optimal number of basic personality dimensions."
+      }
+    ],
+    "grounding_notes": [
+      "Based directly on the provided lecture slides by Ingo Zettler.",
+      "Includes references to DeYoung (2015), Ashton & Lee (2007/2008), and Moshagen et al. (2019)."
+    ],
+    "warnings": [
+      "Some correlation matrices and factor analysis tables (e.g., slides 28, 29, 52-54) have minor OCR formatting artifacts; refer to the original slide images for precise numerical alignments."
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:00:36Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
+    ],
+    "dependency_hashes": {
+      "source_file": "91e48758d5baf6d13f3f9747122390a1b666c86787e33d5bc72a25e7c0746d89",
+      "source_files_signature": "0e0e6f26184e299e979435458223d9862fc89fa78a3aa5bccf79799eea08bb42",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39",
+    "lecture_key": "W05L1",
+    "title": "3. Psykoanalyse 2 - Dora",
+    "source_family": "exercise_slide",
+    "evidence_origin": "exercise_clarified",
+    "source_path": "Øvelseshold/3. Psykoanalyse 2 - Dora.pdf",
+    "source_paths": [
+      "Øvelseshold/3. Psykoanalyse 2 - Dora.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/3. Psykoanalyse 2 - Dora.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/3. Psykoanalyse 2 - Dora.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "91e48758d5baf6d13f3f9747122390a1b666c86787e33d5bc72a25e7c0746d89",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The slides apply Ricoeur's epistemological framework (the 4 criteria for psychoanalytic empiricism) to critically analyze Freud's classic case study of Dora, bridging theoretical concepts with clinical narrative.",
+    "source_role": "Exercise slides designed to facilitate group work on the Dora case, operationalize Ricoeur's criteria, and prepare students for an upcoming practical exercise in phenomenological interviewing.",
+    "relation_to_lecture": "Serves as the practical application component for the 'Psykoanalyse II' lecture, moving from abstract psychoanalytic theory to concrete case analysis, while also bridging to the next week's topic on Phenomenology.",
+    "central_claims": [
+      {
+        "claim": "Freud argued that the narrative, almost fictional style of his case histories was necessitated by the nature of the psychological subject matter, rather than his own personal preferences.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "According to Ricoeur, psychoanalytic empiricism is based on four criteria: the talking cure, intentionality, psychic reality, and the told story.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "A core feature of psychopathology in psychoanalysis is the analysand's inability to present a coherent life story, resulting in fragmented and disconnected narratives.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The psychoanalytic case study serves as a method to bring forth the unconscious subject, which raises an ethical dilemma between advancing science and respecting the patient's privacy.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Talekuren (The talking cure)",
+        "definition": "The semantic level of psychoanalytic empiricism where meaning is derived from complex mental operations, making understanding an inherent act of interpretation.",
+        "role": "Serves as the first of Ricoeur's four criteria, establishing that psychoanalytic data is fundamentally linguistic and interpretive."
+      },
+      {
+        "term": "Intentionalitet (Intentionality)",
+        "definition": "The focus on not just what is said, but to whom it is addressed, revealing the symbol-creating activity and intention behind the symptom.",
+        "role": "Explains how psychoanalysis interprets the relational and directed aspect of patient communication."
+      },
+      {
+        "term": "Psykisk realitet (Psychic reality)",
+        "definition": "The inner reality of drive intentions opened up by the analysand's verbal gestures, which Freud contrasts with material, outer reality.",
+        "role": "Shifts the focus of psychoanalytic inquiry from objective historical facts to subjective, unconscious meaning."
+      },
+      {
+        "term": "Den fortalte historie (The told story)",
+        "definition": "The fragmented and incoherent way analysands recount their history, which is viewed as a hallmark of pathology.",
+        "role": "Highlights the narrative structure of psychoanalytic data and the therapeutic goal of reconstructing a coherent history."
+      },
+      {
+        "term": "Det ubevidste subjekt (The unconscious subject)",
+        "definition": "The hidden, complex psychological entity that psychoanalysis seeks to give a voice to through case studies.",
+        "role": "The central focus of the Dora case analysis, illustrating how unconscious relations shape symptoms."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Psykisk virkelighed vs. Materiel ydre virkelighed",
+        "summary": "The distinction between the internal, drive-driven psychological reality of the patient and the objective, physical world.",
+        "stakes": "Essential for understanding that psychoanalysis treats the patient's subjective experience and fantasies as its primary empirical data, rather than strictly verifying historical facts."
+      },
+      {
+        "label": "Videnskab vs. Behandlingsform",
+        "summary": "The ethical tension between publishing case studies to advance scientific knowledge and respecting the analysand's privacy in clinical treatment.",
+        "stakes": "Highlights the ethical dilemmas inherent in Freud's detailed case histories, such as the Dora case, and questions the boundaries of clinical confidentiality."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Freud's case studies are literal, objective medical reports rather than narrative reconstructions shaped by the patient's psychic reality.",
+      "Confusing material reality with psychic reality when evaluating the truthfulness of Dora's claims in the case study.",
+      "Thinking the upcoming SMK (Statens Museum for Kunst) excursion is about psychoanalyzing art, rather than practicing phenomenological interviews based on Spinelli."
+    ],
+    "quote_targets": [
+      {
+        "target": "Psykoanalysen vanskeliggøres af, at den kun kan nå frem til sine data og konklusioner ad lange omveje.",
+        "why": "Shows Freud's own methodological reflections on the indirect and complex nature of gathering psychoanalytic data."
+      },
+      {
+        "target": "Bag udsagnets denotation har vi fundet driftens intention... den psykiske virkelighed, som han modstiller den materielle ydre virkelighed.",
+        "why": "Provides the core definition of psychic reality versus material reality according to Ricoeur's criteria."
+      },
+      {
+        "target": "Det er tværtimod indlysende, at en enkelt sygehistorie ikke kan give svar på alle spørgsmål vedrørende hysteriproblemet...",
+        "why": "Illustrates Freud's defense of the single case study's scientific value and his argument that critics must try the method themselves to be convinced."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference Ricoeur's 4 criteria with specific page numbers (s. 359-371), likely pointing to a central textbook chapter.",
+      "The Dora case is used both as an example of unconscious relational dynamics (via a mindmap exercise) and as a test case for Ricoeur's criteria.",
+      "The second half of the slides shifts entirely to logistics and instructions for a phenomenological interview exercise at SMK, introducing Spinelli's method."
+    ],
+    "warnings": [
+      "The exact source text for Ricoeur's 4 criteria is not explicitly named on the slides, only page numbers are provided.",
+      "The slides transition abruptly from Psychoanalysis to Phenomenology; the latter half is preparation for the next week's topic and should not be confused with psychoanalytic theory."
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:16:49Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "w12l1-elias-2000-f9176ae8",
+      "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "3a65f2d8754f773dfe1d35b4edab374188cbdb24651b1d1cca51da760c004c70",
+      "course_synthesis": "bc2d661e854296a89a1663fe1d40d1f978fcb60c605a518ed65e0e3418314113",
+      "source_cards_signature": "706c84fe81a36344208a30be7504ca23614ba8e7d0b294f71e3e4c8b57d7bdd9",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W12L1",
+    "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+    "sequence_index": 22
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "The Capstone Synthesis: Shifting into the 'exam mindset' by using the four orientation points to systematically compare theories, and understanding the psychological subject as a historical, sociogenetic product rather than a static biological essence.",
+      "must_cover": [
+        "The operationalization of the four orientation points (essence/context, agency, determination, historicity) as the mandatory analytical framework for the final exam.",
+        "Norbert Elias's 'Civilisationsprocessen' (The Civilizing Process) as the ultimate example of historicity.",
+        "The dialectic between macro-sociological changes (sociogenesis) and individual psychological development (psychogenesis), specifically the internalization of external constraints into internal shame and self-control."
+      ],
+      "avoid": [
+        "Treating Elias's historical anecdotes (e.g., table manners, meat carving) as core examinable facts rather than illustrative examples of psychological internalization.",
+        "Confusing 'essential' (the core analytical focus of a theory) with 'essentialism' (the ontological claim of a universal, unchanging human nature)."
+      ],
+      "grounding": [
+        "Frame the episode around the transition from learning individual theories to comparing them meta-theoretically.",
+        "Connect the historical subject back to the poststructural critiques (W10L2) to show the evolution from 'inner essence' to 'historical product'."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+        "angle": "The Meta-Theoretical Framework: How to compare apples and oranges in personality psychology.",
+        "must_cover": [
+          "The distinction between the Continental (theory-heavy, philosophical) and Anglo-Saxon (quantitative, evidence-based) traditions.",
+          "The four orientation points: essence vs. context, agency, determination, and historicity."
+        ],
+        "avoid": [
+          "Presenting the Continental vs. Anglo-Saxon divide as a simplistic 'theory vs. no theory' or 'empiricism vs. no empiricism' caricature."
+        ]
+      },
+      {
+        "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "angle": "The Macro-Historical Subject: How society builds the psyche.",
+        "must_cover": [
+          "The concept of Historicity: psychological functions like reflexivity and childhood are not historically constant.",
+          "The division of society into spheres (production, intimacy, circulation) and its impact on modern personality.",
+          "Riesman's shift from inner-directed to other-directed social character."
+        ],
+        "avoid": [
+          "Viewing historical changes in personality as purely biological or evolutionary rather than structural and discursive."
+        ]
+      },
+      {
+        "source_id": "w12l1-elias-2000-f9176ae8",
+        "angle": "The Visceral Reality of Historical Change: Manners, disgust, and the superego.",
+        "must_cover": [
+          "The 'threshold of repugnance' and how it advances historically.",
+          "The transformation of external social constraints into automatic, internalized psychological self-restraints (the formation of the superego).",
+          "The parallel between sociogenesis and psychogenesis."
+        ],
+        "avoid": [
+          "Explaining the improvement of manners as a rational, scientific progression of hygiene rather than an affective shift driven by shame and social distancing."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d",
+        "angle": "Exam Prep and the Dialectic of Consciousness.",
+        "must_cover": [
+          "Applying the four orientation points to combine and contrast theories.",
+          "The cycle of externalizing properties into tools and internalizing new skills as the driver of human cognitive development."
+        ],
+        "avoid": [
+          "Getting bogged down in specific slide examples (like Joan of Arc) without the oral lecture context."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "The Ultimate Exam Tool: The 4 Orientation Points and the Historical Subject.",
+      "must_cover": [
+        "How to use essence/context, agency, determination, and historicity to systematically compare theories.",
+        "Elias's concept of internalized shame as proof that personality is historically produced."
+      ],
+      "avoid": [
+        "Listing all theories from the semester; focus strictly on the *method* of comparison and the concept of historicity."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Orienteringspunkter (Orientation points)",
+        "why": "The mandatory analytical framework (essence/context, agency, determination, historicity) used to compare theories throughout the course and at the exam."
+      },
+      {
+        "concept": "Historicitet (Historicity)",
+        "why": "The core principle that psychological structures and personality are not universal biological constants, but develop through historical epochs."
+      },
+      {
+        "concept": "Civilisationsprocessen (The Civilizing Process)",
+        "why": "Elias's foundational concept explaining the historical shift from external behavioral regulation to internal psychological self-discipline and shame."
+      },
+      {
+        "concept": "Sociogenese vs. Psykogenese",
+        "why": "Highlights the interconnectedness of macro-level societal development (sociogenesis) and individual internal drive/personality development (psychogenesis)."
+      },
+      {
+        "concept": "Threshold of repugnance",
+        "why": "Illustrates how societal changes manifest as deeply personal, visceral emotional reactions (disgust/shame) in the individual."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Essentiel vs. Essentialisme",
+        "why": "Crucial for the exam: prevents students from confusing a theory's primary analytical focus (essential) with an ahistorical, universalizing view of human nature (essentialism)."
+      },
+      {
+        "tension": "External Constraint vs. Internal Self-Restraint",
+        "why": "Explains the historical formation of the modern superego, showing how social control moves from physical threat to automatic, internalized shame."
+      },
+      {
+        "tension": "Continental vs. Anglo-Saxon psychology",
+        "why": "Provides the meta-theoretical context for why the course syllabus prioritizes philosophical, theory-heavy approaches over purely quantitative trait models."
+      }
+    ],
+    "grounding_notes": [
+      "Always frame Elias's historical examples (forks, meat carving, bedrooms) as illustrations of the psychological mechanism of internalization, not as history trivia.",
+      "Explicitly connect the concept of the historically produced subject back to the poststructural critiques from W10L2 to reinforce the course's overarching narrative arc."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+        "why": "Anchor source that provides the four orientation points, which are the absolute most critical methodological tool for the students' final exam."
+      },
+      {
+        "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "why": "Anchor source that establishes the macro-sociological framework for historicity, challenging the naive biological view of personality."
+      },
+      {
+        "source_id": "w12l1-elias-2000-f9176ae8",
+        "why": "Anchor source that provides the concrete, visceral mechanism (internalization of shame and the threshold of repugnance) for the civilizing process."
+      }
+    ]
+  }
+}

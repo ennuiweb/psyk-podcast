@@ -1,0 +1,155 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:47:51Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+    ],
+    "dependency_hashes": {
+      "source_file": "4c0cb57f98e4b30223a8a1b2e956814936bd3f8a0908c3695d24affe4d5694de",
+      "source_files_signature": "56dd6ce3dca635a29a975a89299f978822c9fd04f866c717de21532fe3431448",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+    "lecture_key": "W02L2",
+    "title": "4. gang PersPsy 4 260210",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/4. gang PersPsy_4_260210.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/4. gang PersPsy_4_260210.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/4. gang PersPsy_4_260210.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/4. gang PersPsy_4_260210.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "4c0cb57f98e4b30223a8a1b2e956814936bd3f8a0908c3695d24affe4d5694de",
+    "length_band": "long",
+    "page_count": 72,
+    "estimated_token_count": 46800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The lecture introduces theories of personality change, specifically the Theory of Genotype -> Environment Effects and Neo-Socioanalytic Theory, to explain the biological and environmental mechanisms behind stability and change.",
+    "source_role": "Lecture slides providing a conceptual overview of person-situation interplay, personality states, and the stability and change of individual differences over the lifespan.",
+    "relation_to_lecture": "This is the primary slide deck for the 4th lecture, structuring the sequence and emphasis on traits, states, and developmental stability/change.",
+    "central_claims": [
+      {
+        "claim": "The nomological net of a construct comprises its interrelations with other constructs and outcomes, such as Extraversion correlating positively with the number of Facebook friends.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Honesty-Humility predicts cooperation even in situations where one might exploit others without suffering retaliation, as demonstrated by differences in behavior between the Dictator Game and the Ultimatum Game.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality stability and change must be differentiated into rank-order stability (relative differences between individuals) and mean-level change (average level changes across the lifespan).",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Cross-sectional data is problematic for investigating personality change across the lifespan due to cohort effects; longitudinal studies are required to accurately assess both mean-level change and rank-order stability.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "According to the Theory of Genotype -> Environment Effects, biological factors do not just determine personality directly, but also indirectly by affecting environmental factors and life events through active, passive, and reactive mechanisms.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Nomological net",
+        "definition": "The interrelations of a construct or its operationalizations with other (more or less related) constructs and outcomes.",
+        "role": "Explains how personality traits are validated through their predictive power and correlations with real-world outcomes."
+      },
+      {
+        "term": "Affordances",
+        "definition": "All of the things that a given animal can do in a given environment or situation.",
+        "role": "Explains how situations constrain or allow the expression of specific personality traits, such as an exam constraining extraversion."
+      },
+      {
+        "term": "Personality states",
+        "definition": "A quantitative dimension describing the degree, extent, or level of coherent behaviours, thoughts, and feelings at a particular time.",
+        "role": "Distinguishes momentary, context-sensitive expressions of personality from stable, long-term traits."
+      },
+      {
+        "term": "Rank-order stability",
+        "definition": "The degree to which relative levels in a personality dimension of different individuals remain consistent across the lifespan.",
+        "role": "Provides a metric for assessing trait stability over time, independent of whether the group's average level changes."
+      },
+      {
+        "term": "Mean-level change",
+        "definition": "The typical change in the absolute levels of a personality dimension across the lifespan, such as people generally becoming more agreeable as they age.",
+        "role": "Highlights that personality traits are not entirely fixed but undergo normative developmental shifts."
+      },
+      {
+        "term": "Neo-Socioanalytic Theory",
+        "definition": "A theory of personality change and stability emphasizing the plasticity principle, social-investment principle, identity-development principle, and corresponsive principle.",
+        "role": "Provides a theoretical framework for understanding how age-related social roles and identity commitments drive personality development."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Rank-order stability vs. Mean-level change",
+        "summary": "Distinguishes between individuals maintaining their relative position in a group over time versus the group's average trait level changing over time.",
+        "stakes": "Crucial for understanding that personality can be both highly stable relative to peers while simultaneously changing in absolute levels as one ages."
+      },
+      {
+        "label": "Personality traits vs. Personality states",
+        "summary": "Distinguishes between typical tendencies across situations (traits) and momentary coherent behaviors or feelings at a particular time (states).",
+        "stakes": "Clarifies the difference between stable dispositions and fluctuating situational responses in the person-situation interplay."
+      },
+      {
+        "label": "Dictator Game vs. Ultimatum Game",
+        "summary": "Distinguishes between a situation where exploitation is possible without retaliation (Dictator Game) versus one with potential retaliation (Ultimatum Game).",
+        "stakes": "Used to isolate the specific effect of the Honesty-Humility trait on cooperation when external constraints are removed."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing rank-order stability with mean-level change, assuming that if a trait changes on average across a lifespan, it cannot be considered stable.",
+      "Assuming cross-sectional studies are sufficient to prove developmental personality change, ignoring the confounding impact of cohort effects.",
+      "Thinking personality traits dictate behavior entirely, ignoring situational affordances and the activation of personality states."
+    ],
+    "quote_targets": [
+      {
+        "target": "The nomological net of a construct or its operationalizations comprises its interrelations with other (more or less related) constructs and outcomes",
+        "why": "Core definition for understanding construct validity and how traits are mapped to outcomes."
+      },
+      {
+        "target": "Quantitative dimension describing the degree/extent/level of coherent behaviours, thoughts, and feelings at a particular time",
+        "why": "Formal definition of personality states from Baumert et al. (2017)."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily rely on empirical examples (e.g., Facebook friends, Dictator Game) to illustrate abstract concepts like the nomological net and person-situation interplay.",
+      "Theories of personality change are presented briefly as a 'glimpse', indicating they are framing concepts rather than exhaustive textbook accounts."
+    ],
+    "warnings": [
+      "Several graphs (e.g., Bleidorn et al., 2022; Jackson et al., 2012) lack detailed textual explanations in the slides; their full interpretation depends on the spoken lecture.",
+      "The slides mention 'individual differences in change' but explicitly state they are not considered herein due to time limitations, so students should not expect deep coverage of this specific topic from this source."
+    ]
+  }
+}

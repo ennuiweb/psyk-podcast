@@ -1,0 +1,159 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:32:44Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-holzkamp-1982-845aafd2",
+      "w08l2-tolman-2009-455915e0",
+      "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "f1fa975bcceac704224f705bf39d41af077d23d6d71337640939c64049bcbd34",
+      "source_cards_signature": "890d801a10e692336c39b9cb9c2ac6da06ef937a794b220b64627fb94201c2e0",
+      "raw_sources_signature": "ffb6eca58c233165bf0dc7d041a68ba9397de69136c638100b37157f73e51a8f"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W08L2",
+    "lecture_title": "Critical psychology (Forelæsning 16, 2026-03-24)",
+    "sequence_index": 16
+  },
+  "analysis": {
+    "lecture_question": "How does Critical Psychology reconceptualize human personality and action from the standpoint of the subject within societal structures?",
+    "central_learning_problem": "Students must shift from viewing personality as a set of internal traits or mechanically caused behaviors to understanding it as the active, reasoned conduct of everyday life ('daglig livsførelse') within socially mediated possibilities and constraints. This requires grasping the epistemological distinction between mechanical causes and subjective reasons, and recognizing how societal structures both limit and enable human agency.",
+    "source_roles": [
+      {
+        "source_id": "w08l2-holzkamp-1982-845aafd2",
+        "role": "anchor",
+        "rationale": "Foundational primary text establishing 'daglig livsførelse' as the core unit of analysis and critiquing traditional psychology's isolation of the subject."
+      },
+      {
+        "source_id": "w08l2-tolman-2009-455915e0",
+        "role": "framing",
+        "rationale": "Provides the historical and theoretical overview of German Critical Psychology, explaining the shift from causal-empirical models to a science of the subject based on reasons and agency."
+      },
+      {
+        "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+        "role": "supporting",
+        "rationale": "Synthesizes the readings, traces the Marxist roots, and structures the lecture around key conceptual reconstructions like societal mediatedness and restrictive vs. generalized agency."
+      },
+      {
+        "source_id": "w08l2-seminar-9-kritisk-psykologi-7a7e589c",
+        "role": "application",
+        "rationale": "Operationalizes the theoretical concepts into group exercises, linking them to the course's overarching analytical orientation points (Essence/Context, Agency, Determination, Historicity)."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w08l2-tolman-2009-455915e0",
+          "w08l2-holzkamp-1982-845aafd2"
+        ],
+        "relation": "Tolman provides the broader historical and epistemological context (reasons vs. causes, evolutionary history) that frames Holzkamp's specific conceptualization of 'daglig livsførelse'.",
+        "learning_stakes": "Helps students see how the specific focus on everyday routines is grounded in a larger critique of mainstream psychology's causal methodology."
+      },
+      {
+        "source_ids": [
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ],
+        "relation": "The lecture introduces the theoretical concepts (agency, societal mediatedness), while the seminar slides translate these into analytical tools (praksis, deltagelse, position/standpunkt) to evaluate personality theories.",
+        "learning_stakes": "Bridges the gap between abstract Marxist/Critical theory and the concrete psychological analysis required for the exam."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Daglig livsførelse (Conduct of everyday life)",
+        "explanation": "The subject's active integration and coordination of demands from various life areas into a coherent whole, serving as the primary unit of analysis for personality.",
+        "source_ids": [
+          "w08l2-holzkamp-1982-845aafd2",
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Standpoint of the subject (Subjektstandpunkt)",
+        "explanation": "Analyzing psychological phenomena from the perspective of the acting subject and their reasons, rather than treating them as objects of external control.",
+        "source_ids": [
+          "w08l2-tolman-2009-455915e0",
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+          "w08l2-holzkamp-1982-845aafd2"
+        ]
+      },
+      {
+        "concept": "Agency / Action potence (Handleevne / Handlungsfähigkeit)",
+        "explanation": "The socially situated capacity to secure and expand human needs, divided into restrictive (adapting to power) and generalized (transforming conditions) agency.",
+        "source_ids": [
+          "w08l2-tolman-2009-455915e0",
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Societal mediatedness (Gesamtgesellschaftliche Vermitteltheit)",
+        "explanation": "The principle that human action is not a direct response to the physical world, but is mediated through socially organized meanings, tools, and possibilities.",
+        "source_ids": [
+          "w08l2-tolman-2009-455915e0",
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Reasons vs. Causes (Subject-science vs. Traditional psychology)",
+        "stakes": "Determines the appropriate methodology for psychology; invalidates much of traditional experimental psychology as 'pseudo-empirical' when applied to reasoned human action.",
+        "source_ids": [
+          "w08l2-tolman-2009-455915e0",
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+        ]
+      },
+      {
+        "tension": "Restrictive vs. Generalized Agency",
+        "stakes": "Highlights the political and emancipatory goals of Critical Psychology, showing the difference between merely surviving within oppressive structures and actively transforming them.",
+        "source_ids": [
+          "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+        ]
+      },
+      {
+        "tension": "Position vs. Standpunkt",
+        "stakes": "Crucial for understanding that individuals are not passive victims of structural positions, but actively take a subjective stance towards the practices they participate in.",
+        "source_ids": [
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Critical Psychology simply advocates for qualitative methods over quantitative ones, rather than fundamentally critiquing the 'reasons vs. causes' epistemological error.",
+      "Viewing 'agency' as an innate, individual free will, ignoring that it is strictly bounded by historical and societal possibilities.",
+      "Believing that routines ('rutinisering') are purely restrictive, missing Holzkamp's point that they provide necessary relief ('aflastning') for everyday survival.",
+      "Thinking psychological categories like 'emotion' or 'motivation' are neutral, objective facts rather than socially situated pre-concepts requiring reconstruction."
+    ],
+    "must_carry_ideas": [
+      "Personality is not an internal essence but is formed through participation in social practices and the active conduct of everyday life.",
+      "Human action must be understood through the subject's reasons within a landscape of socially mediated possibilities, not as mechanical reactions to stimuli.",
+      "Mainstream psychology often serves ideological functions by obscuring societal conditions and treating reasoned actions as mechanical causes."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The seminar slides reference specific pages in texts by Dreier (1999) and Jensen (2014) which are not included in this bundle, meaning the exact definitions used in the seminar rely on external knowledge.",
+      "The lecture slides contain an exercise critiquing a specific study (Ren et al., 2023) without providing the resolved answer."
+    ]
+  }
+}

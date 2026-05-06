@@ -1,0 +1,148 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:20:06Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l1-gergen-1999-73c2217e"
+    ],
+    "dependency_hashes": {
+      "source_file": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
+      "source_files_signature": "b12fc843d0c397d489b551593d4fee2bd67419761af5dd8af8c72a132fff263f",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l1-gergen-1999-73c2217e",
+    "lecture_key": "W11L1",
+    "title": "Gergen (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf",
+    "source_paths": [
+      "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Gergen (1999).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
+    "length_band": "long",
+    "page_count": 28,
+    "estimated_token_count": 18200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents a social constructionist critique of individualism and introduces a generative theory of the 'relational self', drawing heavily on Bakhtinian dialogism and performativity.",
+    "source_role": "Serves as a foundational reading for understanding discursive and post-structuralist approaches to personality, shifting the analytical focus from internal traits to relational and linguistic performances.",
+    "relation_to_lecture": "Directly supports W11L1's focus on post-structuralism and discursive psychology by deconstructing the isolated individual and proposing a dialogic, performative understanding of selfhood.",
+    "central_claims": [
+      {
+        "claim": "The traditional Western ideology of the self-contained individual leads to societal problems such as isolation, narcissism, instrumentalism, and systemic blindness.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Generative theory is necessary to move beyond mere reflexive critique; it actively challenges taken-for-granted conventions and invites new worlds of meaning and action.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychological discourse (e.g., saying 'I am angry' or 'I remember') is performative and relationally embedded, functioning as an action within a relationship rather than a report of a private inner state.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Earlier relational theories like symbolic interactionism, cultural psychology, and phenomenology fail to fully overcome individualism because they still presume a pre-existing private subject that internalizes the social world.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Generative Theory",
+        "definition": "Accounts of the world that challenge taken-for-granted conventions of understanding and simultaneously invite us into new worlds of meaning and action.",
+        "role": "Serves as the methodological framework for Gergen's attempt to replace the individualist self with a relational alternative."
+      },
+      {
+        "term": "Individualism",
+        "definition": "The cultural ideology that posits the private, self-contained individual as the center of experience, conscious decision-making, and action.",
+        "role": "The primary target of critique in the text, argued to be a flawed premise that breeds distrust, competition, and a failure to address systemic issues."
+      },
+      {
+        "term": "Dialogism / Heteroglossia",
+        "definition": "Bakhtinian concepts describing how language is a diverse, evolving mix of traditions, and how meaning is only generated through dialogic relationships and utterances.",
+        "role": "Provides the theoretical foundation for Gergen's vision of the relational self, where consciousness and meaning are mutually constituted."
+      },
+      {
+        "term": "Performative Discourse",
+        "definition": "The idea that psychological language does not describe internal mental states, but rather performs social actions that create, modify, or sustain relationships.",
+        "role": "Shifts the focus of psychology from uncovering hidden inner minds to analyzing observable relational practices."
+      },
+      {
+        "term": "Emotional Scenarios",
+        "definition": "Culturally specific, scripted sets of interdependent actions in which emotional performances take place and gain their intelligibility.",
+        "role": "Illustrates how emotions are not biological givens or private possessions, but properties of relationships."
+      },
+      {
+        "term": "Collective Remembering",
+        "definition": "The view that memory is not an individual neurological process, but a socially distributed action fashioned within a complex relational history.",
+        "role": "Demonstrates the practical application of the relational self to cognitive processes traditionally viewed as strictly individual."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Individualist Self vs. Relational Self",
+        "summary": "The individualist self is viewed as a private, self-contained origin of thought and action, whereas the relational self is constituted entirely by and within social relationships.",
+        "stakes": "Determines whether societal and psychological problems are treated by 'fixing' the individual (e.g., therapy, imprisonment) or by altering the relational and systemic scenarios in which the actions occur."
+      },
+      {
+        "label": "Reflexive Inquiry vs. Generative Theory",
+        "summary": "Reflexive inquiry critically explores and ponders our current ways of constructing the world, while generative theory actively creates new vocabularies and alternatives.",
+        "stakes": "Reflexive inquiry alone is insufficient for cultural transformation; generative theory is required to actually 'build new houses' of meaning."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might mistakenly believe Gergen denies the existence of private thoughts or feelings entirely; rather, he argues that 'private' thoughts are essentially public, relational actions carried out in private (like an actor rehearsing lines).",
+      "Students might confuse symbolic interactionism (Mead) or cultural psychology (Vygotsky) with Gergen's fully relational view, missing his specific critique that these earlier theories still harbor traces of individualism.",
+      "Students might interpret 'performative' as meaning 'fake' or 'calculating', whereas Gergen clarifies that performative actions (like expressing anger) are fully engaged and naturalized within cultural rules."
+    ],
+    "quote_targets": [
+      {
+        "target": "In the beginning is the relationship.",
+        "why": "A concise summary of the text's core thesis, quoting Martin Buber to establish the primacy of the relational over the individual."
+      },
+      {
+        "target": "We gain much by replacing the image of private 'feelings' with public action; it's not that we have emotions, a thought, or a memory so much as we do them.",
+        "why": "Perfectly encapsulates the performative view of psychological states, which is central to discursive psychology."
+      },
+      {
+        "target": "From this perspective, emotions are not the private possessions of the individual mind, but are the property of relationships.",
+        "why": "Highlights the radical shift in how emotions are conceptualized in a relational framework."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly reviews and critiques Mead's symbolic interactionism, Vygotsky's cultural psychology, and Husserl/Schutz's phenomenology as stepping stones that ultimately fall short of a fully relational theory.",
+      "The formulation of the relational self relies heavily on Mikhail Bakhtin's literary theory, specifically dialogism and heteroglossia."
+    ],
+    "warnings": [
+      "The OCR text contains several hyphenation artifacts (e.g., 'dis-course', 'pat-terns', 'inven-tive') due to line breaks in the original PDF."
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:04:53Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+    ],
+    "dependency_hashes": {
+      "source_file": "27d495d3650ee48b3afc3e1c9a07ae4b709589ea86a0ddcc94b0b29c79d1e8c2",
+      "source_files_signature": "eb2e63511709bee56d89fcc1357e585405ef1b2510fb87e7ae34d7ec37a66bde",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+    "lecture_key": "W05L2",
+    "title": "10. Psykoanalysens konstituering",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/10. Psykoanalysens konstituering.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/10. Psykoanalysens konstituering.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/10. Psykoanalysens konstituering.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/10. Psykoanalysens konstituering.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "27d495d3650ee48b3afc3e1c9a07ae4b709589ea86a0ddcc94b0b29c79d1e8c2",
+    "length_band": "short",
+    "page_count": 10,
+    "estimated_token_count": 6500,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Slidene sporer den historiske og konceptuelle udvikling af psykoanalysen fra 1886 til 1897, med særligt fokus på Freuds teoretiske skift fra traume/forførelse til drift og infantil seksualitet.",
+    "source_role": "Forelæsningsslides, der fungerer som en kronologisk og strukturel oversigt over psykoanalysens fire tidlige konstitueringsfaser.",
+    "relation_to_lecture": "Udør det primære skelet for forelæsning 10 ved at inddele Freuds tidlige teoriudvikling i fire faser og definere de centrale begreber, der opstod i hver fase.",
+    "central_claims": [
+      {
+        "claim": "Psykoanalysen konstitueredes gennem en udvikling fra neurologi til psykopatologi, hvor fokus skiftede fra anatomiske årsager til psykiske traumer og spaltning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freud opgav forførelsesteorien (faktiske seksuelle overgreb) til fordel for teorien om infantil seksualitet og ubevidste fantasier.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Menneskets drifter adskiller sig fra dyrs instinkter ved at være en psykisk repræsentation af en indre somatisk spændingskilde, som dannes individuelt.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Nachträglichkeit",
+        "definition": "En tilbagefortolkning i puberteten af en tidligere, tilsyneladende uskyldig situation, som nu tillægges seksuel betydning og udløser traumesymptomer.",
+        "role": "Forklarer den tidsmæssige forsinkelse mellem en hændelse og udbruddet af neurotiske symptomer (som i tilfældet med Emma)."
+      },
+      {
+        "term": "Forførelsesteorien",
+        "definition": "Freuds tidlige teori om, at neuroser skyldes faktiske seksuelle overgreb i barndommen, som fører til fortrængning og spaltning.",
+        "role": "Fungerer som en overgangsteori, hvis opgivelse var en forudsætning for at udvikle teorien om den infantile seksualitet."
+      },
+      {
+        "term": "Drift",
+        "definition": "En psykisk repræsentation af en indre somatisk spændingskilde.",
+        "role": "Centralt motivationsbegreb, der adskiller menneskets lystformer fra dyrs biologiske instinkter."
+      },
+      {
+        "term": "Spaltning",
+        "definition": "En proces, hvor forestillinger eller affekter afspaltes fra bevidstheden som følge af et psykisk traume, hvilket danner grundlaget for det ubevidste.",
+        "role": "Forklarer mekanismen bag symptomdannelse i psykoanalysens tidlige faser."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Hysteri vs. Tvangsneurose",
+        "summary": "Hysteri anskues som et oprindeligt ulystbetonet traume med forsinket tilbagefortolkning, mens tvangsneurose anskues som en oprindelig lyst (f.eks. onani), der via straf transformeres til ulyst (affektforvandling).",
+        "stakes": "Freuds valg om at forfølge tvangsneurose-modellen førte til opgivelsen af forførelsesteorien og opdagelsen af den infantile seksualitet."
+      },
+      {
+        "label": "Instinkt vs. Drift",
+        "summary": "Dyr har instinkter (biologisk determinerede), mens mennesker har drifter (psykiske repræsentationer af somatisk spænding).",
+        "stakes": "Understreger at menneskets lystformer dannes individuelt og ikke er rent biologiske reflekser."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At Freud altid fastholdt, at neuroser skyldtes faktiske seksuelle overgreb (han opgav forførelsesteorien).",
+      "At menneskelige drifter (drifter) er det samme som dyriske instinkter (instinkter).",
+      "At psykoanalysen forstår seksualitet udelukkende som genital seksualitet fra fødslen."
+    ],
+    "quote_targets": [
+      {
+        "target": "En psykisk repræsentation af en indre somatisk spændingskilde",
+        "why": "Dette er Freuds præcise og centrale definition af driftsbegrebet, som adskiller det fra instinkter."
+      },
+      {
+        "target": "Nachträglichkeit",
+        "why": "Et afgørende begreb for at forstå Freuds tidlige traume- og tidsopfattelse, specifikt hvordan mening tilskrives med tilbagevirkende kraft."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden opdeler eksplicit psykoanalysens konstituering i fire faser mellem 1886 og 1897.",
+      "Kilden bruger specifikke cases (Anna O, Emma) til at illustrere teoretiske pointer."
+    ],
+    "warnings": [
+      "Slidene er i stikordsform og refererer til specifikke sidetal (s. 277 og side 283), som kræver grundbogen for fuld kontekst.",
+      "Den præcise overgang mellem de fire faser kan fremstå forsimplet i slide-formatet sammenlignet med originallitteraturen."
+    ]
+  }
+}

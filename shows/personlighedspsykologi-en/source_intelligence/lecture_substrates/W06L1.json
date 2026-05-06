@@ -2,16 +2,16 @@
   "artifact_type": "lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:44:01Z",
+  "generated_at": "2026-05-05T19:30:05Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-lecture-substrate-v1",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -21,13 +21,15 @@
       "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
       "w06l1-spinelli-2005-b2f76e93",
-      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+      "w06l1-seminar-6-f-nomenologi-46c58a1a",
+      "w06l1-exercise-4-f-nomenologi-d39d2b0e"
     ],
     "dependency_hashes": {
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
-      "lecture_bundle": "285f2d839ce9d6294b3a0671ab79555261d6cf13426dd7b43c798b3612624b6c",
-      "source_cards_signature": "4fe010220c167efdd636753a19c6de2a0dd573e0e5c5ed5b501fa28825dd3c9b",
-      "raw_sources_signature": "5a93829e2b97f9cabde45d0080df85556c38070750449c2d5706aa6d728f446a"
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "042d13c98c860b0029c6fbeef3f4c5d7a71b757396d407a6c1e3db1d4eb23520",
+      "source_cards_signature": "da8e7001d9f4e831e4943949f1358bcb3df815e60976fd5e581e2063413d3b52",
+      "raw_sources_signature": "86468c2ab2b06298a08f308851f2a45963a5647e58a723edcac4f204b7c80405"
     }
   },
   "lecture": {
@@ -36,25 +38,145 @@
     "sequence_index": 11
   },
   "analysis": {
-    "lecture_question": "How can phenomenological personality psychology investigate structures of subjectivity and lived experience through the first-person perspective?",
-    "central_learning_problem": "Students accustomed to viewing personality as a set of static internal traits or measurable variables must shift to understanding it as a dynamic, situated meaning-making process. The challenge lies in grasping how rigorous scientific inquiry can be conducted from a first-person perspective using concepts like intentionality, epoché, and the pre-reflective body, without reducing the lived experience (Lifeworld) to mere objective data.",
+    "lecture_question": "Hvordan kan personlighed forstås og undersøges med udgangspunkt i menneskets levede erfaring og meningsskabelse?",
+    "central_learning_problem": "Studerende har ofte svært ved at gribe fænomenologien, fordi den flytter fokus fra objektive, målbare træk til den subjektive, levede erfaring. Udfordringen består i at forstå, at fænomenologi ikke blot er ustruktureret introspektion, men en stringent videnskabelig metode til at undersøge, hvordan verden træder frem for bevidstheden (intentionalitet), og hvordan mening co-konstitueres i relationen mellem person og verden.",
     "source_roles": [
-      {}
+      {
+        "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+        "role": "anchor",
+        "rationale": "Etablerer det teoretiske og historiske fundament for fænomenologisk personlighedspsykologi, herunder kernebegreber som intentionalitet, livsverden og kropssubjektet."
+      },
+      {
+        "source_id": "w06l1-spinelli-2005-b2f76e93",
+        "role": "framing",
+        "rationale": "Introducerer den fænomenologiske metode (epoché, beskrivelse, horisontalisering) og begrebsparret noema/noesis, som er afgørende for at kunne udføre fænomenologiske analyser."
+      },
+      {
+        "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+        "role": "application",
+        "rationale": "Demonstrerer, hvordan fænomenologisk metode kan anvendes empirisk til at undersøge et komplekst psykologisk fænomen som æstetisk empati."
+      },
+      {
+        "source_id": "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+        "role": "supporting",
+        "rationale": "Strukturerer forelæsningen ved at fremhæve de vigtigste tænkere og kontrastere førstepersonsperspektivet med naturvidenskabelige tilgange."
+      },
+      {
+        "source_id": "w06l1-seminar-6-f-nomenologi-46c58a1a",
+        "role": "supporting",
+        "rationale": "Kobler fænomenologiens teoretiske begreber til de studerendes akademiske opgaveskrivning og analytiske brug af orienteringspunkter."
+      },
+      {
+        "source_id": "w06l1-exercise-4-f-nomenologi-d39d2b0e",
+        "role": "application",
+        "rationale": "Oversætter Spinellis teoretiske metodeforskrifter til en konkret, praktisk øvelse i fænomenologisk interview og analyse."
+      }
     ],
     "source_relations": [
-      {}
+      {
+        "source_ids": [
+          "w06l1-spinelli-2005-b2f76e93",
+          "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+        ],
+        "relation": "Øvelsesslides operationaliserer Spinellis abstrakte metoderegler (epoché, horisontalisering, beskrivelse) til en konkret dataindsamlingsopgave.",
+        "learning_stakes": "Afgørende for at de studerende forstår, at fænomenologi ikke kun er filosofi, men et praktisk anvendeligt forskningsværktøj i psykologien."
+      },
+      {
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+        ],
+        "relation": "Forelæsningsslides destillerer grundbogens tunge filosofiske og historiske gennemgang til kernefokuspunkter om subjektivitetsstrukturer og førstepersonsperspektivet.",
+        "learning_stakes": "Hjælper de studerende med at navigere i den komplekse tekst og identificere, hvad der er mest centralt for personlighedspsykologien."
+      }
     ],
     "core_concepts": [
-      {}
+      {
+        "concept": "Intentionalitet",
+        "explanation": "Bevidsthedens grundlæggende rettethed mod verden; at man altid er bevidst *om* noget. Subjekt og objekt co-konstituerer hinanden.",
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-spinelli-2005-b2f76e93",
+          "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+          "w06l1-seminar-6-f-nomenologi-46c58a1a",
+          "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+        ]
+      },
+      {
+        "concept": "Epoché (Indklamring)",
+        "explanation": "Den metodiske suspension af forudindtagede holdninger, teorier og den 'naturlige indstilling' for at kunne undersøge fænomenerne, som de umiddelbart træder frem.",
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-spinelli-2005-b2f76e93",
+          "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+        ]
+      },
+      {
+        "concept": "Noema og Noesis",
+        "explanation": "Noema er det objekt, bevidstheden er rettet mod (hvad der opleves), mens noesis er den subjektive måde, det opleves på (hvordan det opleves).",
+        "source_ids": [
+          "w06l1-spinelli-2005-b2f76e93",
+          "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+          "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+        ]
+      },
+      {
+        "concept": "Det præ-refleksive kropssubjekt",
+        "explanation": "Merleau-Pontys begreb for den kropslige, før-bevidste måde at være i verden på, som danner det erfaringsmæssige udgangspunkt for al perception og refleksion.",
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+        ]
+      },
+      {
+        "concept": "Livsverden",
+        "explanation": "Den før-videnskabelige, konkrete og levede erfaringsverden, som danner det nødvendige fundament for enhver videnskabelig abstraktion.",
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2"
+        ]
+      }
     ],
     "core_tensions": [
-      {}
+      {
+        "tension": "1. person vs. 3. personsperspektiv",
+        "stakes": "Definerer fænomenologiens eksistensberettigelse som et nødvendigt korrektiv til naturvidenskabelige og reduktionistiske psykologier, idet den insisterer på at undersøge oplevelsen indefra.",
+        "source_ids": [
+          "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2"
+        ]
+      },
+      {
+        "tension": "Umiddelbar (straightforward) vs. Refleksiv bevidsthed",
+        "stakes": "Afgørende for at forstå, at 'jeget' eller selvet ofte er fraværende i den umiddelbare handling og først opstår som et konstrukt, når vi reflekterer over oplevelsen bagefter.",
+        "source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-spinelli-2005-b2f76e93"
+        ]
+      },
+      {
+        "tension": "Beskrivelse vs. Forklaring",
+        "stakes": "I den fænomenologiske metode er det essentielt at forblive ved beskrivelsen af, *hvordan* noget opleves, frem for for tidligt at påtvinge teoretiske forklaringer på, *hvorfor* det opleves sådan.",
+        "source_ids": [
+          "w06l1-spinelli-2005-b2f76e93",
+          "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+        ]
+      }
     ],
-    "likely_misunderstandings": [],
+    "likely_misunderstandings": [
+      "At fænomenologi blot er ustruktureret introspektion, frem for en stringent metode med specifikke regler (epoché, horisontalisering, beskrivelse).",
+      "At epoché (indklamring) betyder, at man fuldstændig kan slette sin egen subjektivitet og opnå total objektivitet.",
+      "At fænomenologien afviser eksistensen af en objektiv virkelighed, når den i virkeligheden blot påpeger, at vi kun har adgang til virkeligheden, som den fremtræder for os (fænomener).",
+      "At forveksle årsagsforklaringer (hvorfor føler personen sådan?) med fænomenologisk beskrivelse (hvad og hvordan føler personen?)."
+    ],
     "must_carry_ideas": [
-      "missing_sources"
+      "Personlighed skal forstås gennem individets meningsskabende og intentionelle relation til verden, ikke blot som isolerede indre træk.",
+      "Den fænomenologiske metode kræver en bevidst suspension af forforståelser (epoché) for at lade den levede erfaring træde frem.",
+      "Kroppen (kropssubjektet) er ikke blot en biologisk maskine, men vores fundamentale, meningsskabende forankring i verden."
     ],
     "missing_sources": [],
-    "warnings": []
+    "warnings": [
+      "Den filosofiske tæ ঘনত্ব i teksterne om Husserl og Merleau-Ponty kræver omhyggelig stilladsering for at de studerende kan koble det til anvendt personlighedspsykologi.",
+      "Øvelsesslidene er meget specifikke for en bestemt ekskursion (Østre Anlæg/SMK), hvilket skal tænkes ind, hvis materialet genbruges i andre kontekster."
+    ]
   }
 }

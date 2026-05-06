@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:04:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-sharp-and-wall-2021-cb92ecf4"
+    ],
+    "dependency_hashes": {
+      "source_file": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
+      "source_files_signature": "39d4053266c1cce99ebc5c05920fdea2c41e6291694953837628824b55e67828",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+    "lecture_key": "W03L2",
+    "title": "Sharp & Wall (2021)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf",
+    "source_paths": [
+      "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Sharp & Wall (2021).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
+    "length_band": "medium",
+    "page_count": 25,
+    "estimated_token_count": 16250,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The text serves as a comprehensive theoretical defense and empirical review of the Level of Personality Functioning (LPF) construct, arguing for its necessity as the core of personality pathology alongside trait models.",
+    "source_role": "Core reading explaining the conceptualization, measurement, and developmental justification of Criterion A (LPF) in the DSM-5 AMPD for the lecture on personality function and disorder.",
+    "relation_to_lecture": "Provides the foundational understanding of personality functioning and impairment (Criterion A) for W03L2 (Personlighedsfunktion og forstyrrelse).",
+    "central_claims": [
+      {
+        "claim": "The Level of Personality Functioning (LPF), or Criterion A of the DSM-5 AMPD, represents the core, common feature of all personality disorders, defined as maladaptive self and interpersonal functioning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "LPF is conceptually distinct from general psychosocial impairment because it captures the intrapsychic source of personality dysfunction rather than merely the resulting disability or occupational impairment.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "While maladaptive traits (Criterion B) describe the specific stylistic expression or 'flavor' of personality pathology, LPF captures the underlying failure in subjective meaning-making and self-organization.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The typical onset of personality disorders in adolescence is explained by the developmental timeline of the self; personality dysfunction cannot fully emerge until the normative integration of identity and narrative self (person-as-author) occurs.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Level of Personality Functioning (LPF)",
+        "definition": "A dimensional general severity criterion common to all personality disorders, representing maladaptive self (identity and self-direction) and interpersonal (empathy and intimacy) functioning.",
+        "role": "The central construct of the paper, proposed as the core intrapsychic impairment underlying all personality pathology."
+      },
+      {
+        "term": "Alternative Model for Personality Disorders (AMPD)",
+        "definition": "A hybrid diagnostic scheme in DSM-5 Section III that combines a dimensional severity criterion (Criterion A/LPF) with pathological personality traits (Criterion B).",
+        "role": "Provides the structural framework within which LPF is defined, operationalized, and contrasted with traditional categorical diagnoses."
+      },
+      {
+        "term": "Criterion B (Maladaptive Traits)",
+        "definition": "The dimensional maladaptive trait criterion of the AMPD, assessed using the PID-5, which captures five trait domains (negative affectivity, detachment, antagonism, disinhibition, and psychoticism).",
+        "role": "Serves as the descriptive counterpart to Criterion A, providing the specific phenotypic 'flavor' of the personality disorder."
+      },
+      {
+        "term": "Person-as-author",
+        "definition": "The third layer of personality development in McAdams' model, emerging in adolescence, where an individual constructs a coherent, abstract, integrated life story or narrative identity.",
+        "role": "Used to explain the developmental necessity of LPF and why personality disorders typically onset during adolescence when this capacity is derailed."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Disease vs. Disability",
+        "summary": "The distinction between the core intrapsychic personality pathology (disease/LPF) and general psychosocial or occupational impairment (disability/consequence).",
+        "stakes": "Justifies why LPF must focus specifically on self and interpersonal functioning rather than relying on general impairment metrics like the GAF, as the impairment itself cannot be the disease."
+      },
+      {
+        "label": "Criterion A (LPF) vs. Criterion B (Traits)",
+        "summary": "The distinction between the core severity and process of personality dysfunction (the 'how') versus the descriptive, stylistic expression of personality (the 'what' or 'flavor').",
+        "stakes": "Defends the necessity of Criterion A against arguments from purely trait-based models (like HiTOP) that claim a general severity factor makes LPF redundant."
+      },
+      {
+        "label": "Idiographic vs. Nomothetic",
+        "summary": "The distinction between studying the specific, subjective, and unique experience of the individual (idiographic) versus generalizable laws or traits of populations (nomothetic).",
+        "stakes": "Highlights LPF's role in capturing the subjective, person-centered experience of personality pathology, putting the 'person' back into personality disorder."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that LPF (Criterion A) and maladaptive traits (Criterion B) measure the exact same thing; LPF measures the core severity of intrapsychic dysfunction, while traits measure the stylistic behavioral expression.",
+      "Confusing LPF with general psychosocial disability (like the old GAF score); LPF specifically targets intrapsychic self and interpersonal functioning, not just the ability to hold a job or function in society.",
+      "Believing personality disorders can be fully diagnosed in early childhood; the text argues that the necessary self and identity structures (person-as-author) do not mature until adolescence, making true PD onset impossible before then."
+    ],
+    "quote_targets": [
+      {
+        "target": "Criterion A provides the markers of dysfunctional personality, and Criterion B characterizes the specific form ('flavor')",
+        "why": "Succinctly summarizes the distinction and complementary relationship between the two AMPD criteria."
+      },
+      {
+        "target": "putting the 'person' back into person(ality) disorder",
+        "why": "Emphasizes the idiographic, human-centric, and subjective focus of the LPF construct compared to purely descriptive trait models."
+      },
+      {
+        "target": "mental representations of the self and interpersonal relationships are reciprocally influential and inextricably tied",
+        "why": "Highlights the theoretical justification for the unidimensional or highly correlated nature of the LPF domains."
+      }
+    ],
+    "grounding_notes": [
+      "The authors explicitly argue against the HiTOP model's assertion that a general 'p factor' or trait model makes Criterion A redundant.",
+      "The text heavily references McAdams' (2015) developmental model (actor, agent, author) to justify the adolescent onset of personality disorders."
+    ],
+    "warnings": [
+      "The text is a theoretical and review paper; while it cites numerous empirical studies, its primary goal is conceptual synthesis and defense of the AMPD rather than presenting a single new empirical experiment."
+    ]
+  }
+}

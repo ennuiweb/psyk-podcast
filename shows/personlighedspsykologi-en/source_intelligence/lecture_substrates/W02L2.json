@@ -1,0 +1,158 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:26:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "w02l2-li-and-wilt-2025-92f596ad",
+      "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "64e961cbd79fd35a80d52203ea67aaaa0a1252ae621c5e42379805fea6b002bc",
+      "source_cards_signature": "ebc3f730fe652401b4aeae32898bb51b0efa06fb6aae7b45ea8ff118f5d6173c",
+      "raw_sources_signature": "d6311b480cb09af9289033aa3a0ec180c034753622474e1bc96ffe8c7e7319a1"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W02L2",
+    "lecture_title": "Person-situation interplay - stability and change of individual differences (Forelæsning 4, 2026-02-10)",
+    "sequence_index": 4
+  },
+  "analysis": {
+    "lecture_question": "How do personality traits develop over the lifespan, and how does the interplay between person and situation shape behavior?",
+    "central_learning_problem": "Students often struggle to reconcile the definition of personality traits as stable dispositions with the empirical reality that behavior fluctuates across situations and traits change over the lifespan. The central learning problem is to integrate these perspectives by distinguishing between rank-order stability and mean-level change, and by understanding behavior as the product of a dynamic, cyclical interplay between enduring traits and situational affordances.",
+    "source_roles": [
+      {
+        "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+        "role": "anchor",
+        "rationale": "Provides the definitive, state-of-the-art meta-analytic evidence for how personality traits stabilize and change across the lifespan, establishing the empirical reality of both rank-order stability and mean-level change."
+      },
+      {
+        "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+        "role": "anchor",
+        "rationale": "Supplies the core theoretical framework for the person-situation interplay, explaining how traits and situations dynamically interact through selection, construal, and affordances."
+      },
+      {
+        "source_id": "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+        "role": "framing",
+        "rationale": "Structures the lecture by defining key terms (traits vs. states, stability vs. change), introducing developmental theories (Genotype -> Environment, Neo-Socioanalytic), and using concrete examples (e.g., Dictator Game) to illustrate abstract concepts from the readings."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ],
+        "relation": "The lecture slides introduce the conceptual distinction between rank-order stability and mean-level change, while Bleidorn et al. provide the massive empirical dataset that quantifies these developmental trajectories.",
+        "learning_stakes": "Students must connect the abstract definitions of stability and change from the lecture to the actual lifespan curves demonstrated in the meta-analysis to understand how personality develops."
+      },
+      {
+        "source_ids": [
+          "w02l2-li-and-wilt-2025-92f596ad",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ],
+        "relation": "Li & Wilt provide a broad, cyclical model of person-situation interplay, which the lecture grounds using specific behavioral economics paradigms (Dictator vs. Ultimatum games) to show how situational affordances activate specific traits (Honesty-Humility).",
+        "learning_stakes": "Helps students translate complex interactionist theories into observable behavioral outcomes by showing how specific situations constrain or afford trait expression."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Rank-order stability",
+        "explanation": "The degree to which individuals maintain their relative standing on a trait compared to peers over time. It increases into young adulthood and plateaus, showing that personality has an enduring core.",
+        "source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      },
+      {
+        "concept": "Mean-level change",
+        "explanation": "The absolute increase or decrease in a population's average trait level over time. It demonstrates that personality is not entirely fixed, often following the maturity principle.",
+        "source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      },
+      {
+        "concept": "Situational affordances",
+        "explanation": "Opportunities or cues embedded within a situation that invite or allow for the expression of specific personality traits (e.g., a situation allowing exploitation affords the expression of low Honesty-Humility).",
+        "source_ids": [
+          "w02l2-li-and-wilt-2025-92f596ad",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      },
+      {
+        "concept": "Personality states",
+        "explanation": "Momentary, context-sensitive expressions of coherent behaviors, thoughts, and feelings, distinguishing immediate reactions from enduring trait dispositions.",
+        "source_ids": [
+          "w02l2-li-and-wilt-2025-92f596ad",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      },
+      {
+        "concept": "Maturity principle",
+        "explanation": "The normative developmental trend where traits such as Emotional Stability, Conscientiousness, and Agreeableness tend to increase on average as people age.",
+        "source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Rank-order stability vs. Mean-level change",
+        "stakes": "Crucial for understanding that high stability (people keeping their relative rank) does not preclude mean-level change (everyone maturing together). Personality is both enduring and malleable.",
+        "source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      },
+      {
+        "tension": "Strong vs. Weak situations",
+        "stakes": "Determines the relative influence of enduring personality traits versus external environmental constraints on immediate behavior. Strong situations restrict behavioral variance.",
+        "source_ids": [
+          "w02l2-li-and-wilt-2025-92f596ad"
+        ]
+      },
+      {
+        "tension": "Cross-sectional vs. Longitudinal designs",
+        "stakes": "Highlights the methodological necessity of longitudinal data to accurately assess developmental personality change, as cross-sectional data is confounded by cohort effects.",
+        "source_ids": [
+          "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that high rank-order stability means personality trait levels do not change at all, confusing relative rank with absolute levels.",
+      "Believing that individuals are passive recipients of situational forces, ignoring the active role of situation selection.",
+      "Assuming cross-sectional studies are sufficient to prove developmental personality change, ignoring the confounding impact of cohort effects.",
+      "Thinking that strong situations completely eliminate the influence of personality traits, rather than understanding that affordances within situations still promote specific trait expressions."
+    ],
+    "must_carry_ideas": [
+      "Personality development is characterized by both high rank-order stability (which plateaus around age 25) and systematic mean-level changes (often toward greater maturity).",
+      "Behavior emerges from a cyclical interplay between the person and the situation, involving situation selection, construal, and the activation of traits by situational affordances.",
+      "Longitudinal research designs are strictly necessary to differentiate true lifespan development from generational cohort effects."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The lecture slides explicitly state that 'individual differences in change' are not covered due to time limitations, so students should not expect deep coverage of this specific topic.",
+      "Bleidorn et al. note a lack of data from non-WEIRD cultures, limiting the global generalizability of some lifespan development findings.",
+      "Li & Wilt note that empirical work on how specific personality profiles drive 'situation selection' remains limited."
+    ]
+  }
+}

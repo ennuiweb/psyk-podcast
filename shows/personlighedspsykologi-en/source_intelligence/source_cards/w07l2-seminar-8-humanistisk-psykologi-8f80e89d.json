@@ -1,0 +1,128 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:15:57Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-seminar-8-humanistisk-psykologi-8f80e89d"
+    ],
+    "dependency_hashes": {
+      "source_file": "4701591717a8664a55d115201d8f38b35266c296de786c09dcbdcfdb41543283",
+      "source_files_signature": "f4ee7a7bfaf0aff1742afc56c42a28c12be752be5524578ab2009696ad66f2db",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l2-seminar-8-humanistisk-psykologi-8f80e89d",
+    "lecture_key": "W07L2",
+    "title": "8. Humanistisk psykologi",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/8. Humanistisk psykologi.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/8. Humanistisk psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/8. Humanistisk psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/8. Humanistisk psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "4701591717a8664a55d115201d8f38b35266c296de786c09dcbdcfdb41543283",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Slidesne introducerer humanistisk psykologi (særligt Maslow og Rogers) som en vækstorienteret modpol til psykoanalyse og behaviorisme, og opstiller en ramme for at analysere teorien kritisk via faste 'orienteringspunkter'.",
+    "source_role": "Seminarundervisning, der primært fokuserer på at rammesætte de studerendes gruppearbejde (Aktivitetskrav 3), evaluere midtvejs i kurset, og facilitere tekstarbejde med Evans (1975) og Giorgi (2005).",
+    "relation_to_lecture": "Seminaret operationaliserer forelæsningens teoretiske indhold ved at lade de studerende anvende orienteringspunkterne til at sammenligne humanismen med fænomenologi, psykoanalyse og eksistentiel psykologi.",
+    "central_claims": [
+      {
+        "claim": "Den humanistiske psykologi opstod i slutningen af 1950'erne som en eksplicit modbevægelse til den behavioristiske og den psykoanalytiske psykologi.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Carl Rogers anser den grundlæggende tendens til vækst, samt opretholdelse og forbedring af organismen, som det centrale aspekt af al menneskelig motivation.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Eksamen i faget handler om de studerendes selvstændige forståelse og analytisk refleksive kompetence, ikke om at reproducere underviserens pointer.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Selvaktualisering",
+        "definition": "Et centralt begreb hos Maslow, der beskriver menneskets iboende drivkraft mod at udvikle positive egenskaber og realisere sit potentiale på et højere niveau af væren.",
+        "role": "Udgør kernen i den humanistiske motivationsteori og toppen af Maslows behovshierarki."
+      },
+      {
+        "term": "Klient-centreret terapi",
+        "definition": "En terapeutisk tilgang grundlagt af Carl Rogers, der fokuserer på det gode eller sunde menneske og forudsætter tre betingelser for en god relation mellem rådgiver og klient.",
+        "role": "Fungerer som den primære praktiske og kliniske anvendelse af Rogers' humanistiske principper."
+      },
+      {
+        "term": "Orienteringspunkter",
+        "definition": "Analytiske dimensioner bestående af Essens/kontekst, Agency, Determination og Historicitet.",
+        "role": "Brugt som et obligatorisk redskab for de studerende til at analysere og sammenligne forskellige personlighedspsykologiske retninger i deres 'Aktivitetskrav 3' oplæg."
+      },
+      {
+        "term": "Kongruens vs. inkongruens",
+        "definition": "Forholdet og graden af overensstemmelse mellem det reelle selv (Real Self) og det ideelle selv (Ideal Self).",
+        "role": "Et centralt diskussionstema i gruppearbejdet med Evans (1975) for at forstå Rogers' personlighedsteori."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Humanistisk psykologi vs. Behaviorisme og Psykoanalyse",
+        "summary": "Humanismen fokuserer på positive fænomener, hverdagslivet og højere dimensioner af menneskelig eksistens, i modsætning til de to andre retningers mere deterministiske eller patologiske fokus.",
+        "stakes": "Definerer den humanistiske psykologis historiske opståen og teoretiske eksistensberettigelse som den 'tredje kraft' i psykologien."
+      },
+      {
+        "label": "Real Self vs. Ideal Self",
+        "summary": "Skelnen mellem hvordan individet aktuelt opfatter sig selv, og hvordan individet ideelt set ønsker at være.",
+        "stakes": "Er afgørende for at forstå dynamikken i klient-centreret terapi og begreberne kongruens/inkongruens hos Rogers."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Studerende kan fejlagtigt tro, at de kan vælge den samme teori til deres endelige eksamen, som de holder deres obligatoriske oplæg (Aktivitetskrav 3) om. Dette er eksplicit forbudt ifølge slidesne.",
+      "Studerende kan tro, at eksamen kræver udenadslære af underviserens pointer, selvom midtvejsevalueringen understreger, at det er den selvstændige analytisk refleksive kompetence, der testes."
+    ],
+    "quote_targets": [
+      {
+        "target": "A psychology that spoke to persons as we know them in everyday life and aspects of experience and behavior that related to positive phenomena...",
+        "why": "Citatet fra Giorgi (2005, s. 207) opsummerer præcist den humanistiske psykologis kerneambition."
+      },
+      {
+        "target": "To me, that basic tendency toward growth, toward maintaining and enhancing the organism, is the central aspect of all motivation",
+        "why": "Citatet fra Evans (1975, s. 5) indkapsler Carl Rogers' fundamentale syn på menneskelig motivation og vækst."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er et sæt seminarslides, hvilket betyder, at den teoretiske gennemgang er meget overordnet og stikordsbaseret.",
+      "En stor del af dokumentet omhandler praktiske kursusinformationer (midtvejsevaluering, gruppeinddeling, aktivitetskrav)."
+    ],
+    "warnings": [
+      "Slidesne indeholder ikke dybdegående teoretiske forklaringer af Maslows behovspyramide eller Rogers' terapiteknikker, da disse forudsættes læst i teksterne (Evans 1975, Giorgi 2005)."
+    ]
+  }
+}

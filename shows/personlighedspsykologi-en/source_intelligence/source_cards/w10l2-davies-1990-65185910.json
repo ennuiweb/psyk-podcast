@@ -1,0 +1,138 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:05:25Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-davies-1990-65185910"
+    ],
+    "dependency_hashes": {
+      "source_file": "4e8cdde021c8ce20b80f6a2069e4bc0e5ef900d74f71674cf564afe6ba69429a",
+      "source_files_signature": "e9af3b277a8ff257fe96ec26d766593db91c88c1b718e192794945d2d80e4c2c",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l2-davies-1990-65185910",
+    "lecture_key": "W10L2",
+    "title": "Davies (1990)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).pdf",
+    "source_paths": [
+      "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Davies (1990).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "4e8cdde021c8ce20b80f6a2069e4bc0e5ef900d74f71674cf564afe6ba69429a",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a poststructuralist and feminist critique of liberal humanist psychology, demonstrating how subjectivity and agency are constructed through language and social interaction.",
+    "source_role": "An empirical case study analyzing a primary school classroom transcript to theoretically redefine the concept of agency.",
+    "relation_to_lecture": "Directly supports the lecture on sociocultural theories, social constructionism, and poststructuralism by providing a concrete example of discursive psychology in action.",
+    "central_claims": [
+      {
+        "claim": "Agency is not an inherent, individual property but is discursively produced through the practices of the collectives to which a person belongs.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The traditional 'agonistic' model of agency, which views the individual in opposition to society, fails to account for how individuals are discursively constituted and often marginalizes women.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "In educational settings, there is a profound contradiction between teaching children to be socialized into acceptable ways of being and teaching them to be independent, choice-making individuals.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Achieving agency requires access to discursive, personal, and social resources that allow an individual to recognize, mobilize, and potentially resist various subject positionings.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Agency (Discursive)",
+        "definition": "The ability to recognize available discursive practices, make choices among them, and mobilize resources to carry through chosen lines of action, rather than an innate individual trait.",
+        "role": "The central concept being redefined in the text to fit a poststructuralist framework."
+      },
+      {
+        "term": "Positioning",
+        "definition": "The fluid process by which individuals are located within discourses, shaping their subjectivity and the possibilities for action, replacing the static concept of 'role'.",
+        "role": "Explains how individuals are constructed by language and interaction in the classroom."
+      },
+      {
+        "term": "Agonistic model of agency",
+        "definition": "The traditional sociological view of agency as an individual's goals-means-ends action, often pitting the self against society.",
+        "role": "Serves as the theoretical contrast to Davies' discursive model; it is the view she actively critiques."
+      },
+      {
+        "term": "Discursive practice",
+        "definition": "The socially available ways of talking and interacting through which the social world and individual subjectivity are collaboratively constituted.",
+        "role": "Forms the foundation of the sociocultural approach to understanding how the self is formed."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Agonistic vs. Discursive Agency",
+        "summary": "Contrasts the traditional view of agency as an individual's inherent power to act against society with the poststructuralist view of agency as produced through and constrained by available discourses.",
+        "stakes": "Shifts the analytical focus from individual willpower to the social and linguistic resources available to the person."
+      },
+      {
+        "label": "Liberal Humanist Subject vs. Discursively Constituted Subject",
+        "summary": "Contrasts the idea of a unified, 'real' individual existing independently of discourse with the idea of a fragmented subject constituted through multiple, often contradictory, discourses.",
+        "stakes": "Challenges traditional educational ideals of 'liberating' the true self, suggesting instead that desires themselves are socially constructed."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that because individuals are discursively constituted, they have no agency or choice at all (misinterpreting poststructuralism as pure determinism).",
+      "Confusing the 'agonistic' model of agency with Davies' own proposed model.",
+      "Thinking that 'positioning' is just another word for traditional sociological 'roles', missing its fluid, conversational, and shifting nature."
+    ],
+    "quote_targets": [
+      {
+        "target": "The model of the person that I will develop in this paper stands in sharp contrast to the agonistic model.",
+        "why": "Clearly states the theoretical departure point of the paper on page 343."
+      },
+      {
+        "target": "In this definition, agency is discursively produced, but choice is also important.",
+        "why": "Captures the core tension and resolution in Davies' redefinition of agency on page 344."
+      },
+      {
+        "target": "NOTE [1] The concept of positioning is a complex one...",
+        "why": "Provides a detailed definition of 'positioning' and how it replaces the static concept of 'role' on pages 360-361."
+      }
+    ],
+    "grounding_notes": [
+      "The theoretical argument is heavily grounded in a micro-analysis of a transcript from 'Mr Good's' primary school classroom.",
+      "Draws on Bakhtin's concept of language and Smith's feminist critique of agency to build its theoretical framework."
+    ],
+    "warnings": [
+      "The empirical data and gender dynamics discussed reflect a 1990 Australian classroom context, which should be historicized when applying the findings today."
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:05:50Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "w03l2-bach-and-simonsen-2023-d58362ff",
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "6655534d304cd0f3ea09f6171c9582d477f874d160cc83d32340595cee434904",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W03L2",
+    "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+    "sequence_index": 6
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture marks the crucial pivot in the course arc from viewing personality as a set of normal variations (traits) to understanding what happens when the core capacities of personhood break down. It introduces clinical pathology not just as a medical issue, but as a psychological breakdown of meaning-making and relationality, perfectly bridging the early trait models with the upcoming interpretive (psychoanalytic/phenomenological) and critical traditions.",
+    "what_matters_more": [
+      "The epistemological shift from a medical disease model (categorical) to a psychological model (dimensional) of personality functioning, reflecting the course's broader focus on how we 'know' the person.",
+      "The conceptualization of 'self' and 'interpersonal' functioning as the core of personhood, which directly sets up the psychoanalytic exploration of the decentered subject and structural development in the following weeks.",
+      "Applying the '4 orientation points' (especially determination vs. agency and essence vs. context) to clinical diagnosis: how much agency does a person with severe personality dysfunction have, and is the dysfunction an inner essence or a relational breakdown?"
+    ],
+    "de_emphasize": [
+      "Rote memorization of specific ICD-11 or DSM-5 AMPD acronyms and highly granular diagnostic criteria.",
+      "The purely biological or genetic determinants of personality disorders, which should be subordinated to the psychological and socioecological understanding of functioning."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W04L1/W04L2 (Psychoanalytic Personality Theory)",
+        "relation": "Theoretical continuity and deepening",
+        "rationale": "The clinical concepts of 'self-functioning' and 'mentalization' introduced here serve as the modern, empirical bridge into psychoanalytic concepts of ego-strength, structural development, and unconscious conflict."
+      },
+      {
+        "target": "W01L2 / W11L1 (Hacking's Looping Effect)",
+        "relation": "Epistemological deconstruction",
+        "rationale": "The shift from diagnosing someone as 'a borderline' (categorical) to assessing their 'level of functioning' (dimensional) changes the diagnostic label, which in turn alters how the person understands themselves and behaves (dynamic nominalism)."
+      },
+      {
+        "target": "W08L1 (Critical Personalism)",
+        "relation": "Methodological critique",
+        "rationale": "The dimensional model's attempt to capture the 'whole person' through a two-step process (severity + style) will be critically evaluated later by Stern's argument against reducing persons to variable profiles."
+      },
+      {
+        "target": "W07L2 (Humanistic Psychology)",
+        "relation": "Contrastive framing (Deficit vs. Growth)",
+        "rationale": "This lecture establishes the clinical 'deficit' model of personality (focusing on impairment and pathology), which serves as the exact foil for humanistic psychology's focus on self-actualization and inherent growth potential."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the epistemological shift: moving from 'having a personality disease' to 'struggling with the core capacities of personhood'.",
+      "Use the 'How nuts vs. What kind of nuts' heuristic to explain the two-step diagnostic process, but elevate it by asking how this changes the way we treat the 'Person vs. Variable Profile'.",
+      "Explicitly connect 'mentalization' and 'self-functioning' to the upcoming psychoanalytic block, teasing how the 'rational ego' is about to be decentered.",
+      "Discuss how diagnosing a personality disorder might trigger Hacking's 'Looping Effect'."
+    ],
+    "carry_forward": [
+      "The definition of 'self-functioning' and 'interpersonal functioning' as baseline requirements for human agency, which will be challenged and recontextualized by poststructuralism and critical psychology.",
+      "The tension between viewing psychological struggles as individual deficits (this lecture) versus structural/societal conditions (W09/W10)."
+    ],
+    "warnings": [
+      "Ensure the heavy clinical and diagnostic terminology does not cause students to lose sight of the meta-theoretical '4 orientation points'.",
+      "Be careful not to let the medicalized language of the DSM/ICD obscure the lived, psychological reality of the patients, which phenomenological approaches will later emphasize.",
+      "Explicitly bridge the seminar slides on behavioral genetics (from the previous week's topic) to the clinical focus, ensuring students don't fall into biological determinism regarding personality disorders."
+    ]
+  }
+}

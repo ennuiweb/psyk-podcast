@@ -1,0 +1,173 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:28:37Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "w05l2-k-ppe-1992-9a474402",
+      "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "ac2871efa8348d31552e89c002648be9fe878b40540fd00c7f143b0f564f0c4d",
+      "source_cards_signature": "b5812b0a5a14e7a1cb2089cdbafcb8e979ea35ab20e7ed07f1ac9ab0780b3b0a",
+      "raw_sources_signature": "ce26e45766b54f83851d3f26c22bdbf2193e7215cd14b390dd18ec036dd1d4f3"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W05L2",
+    "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+    "sequence_index": 10
+  },
+  "analysis": {
+    "lecture_question": "Hvordan konstitueredes psykoanalysen historisk og teoretisk, og hvordan videreudvikles dens kernebegreber (drifter, objektrelationer, det ubevidste) i nyere retninger?",
+    "central_learning_problem": "De studerende skal forstå, at psykoanalysen ikke opstod som en fiks og færdig teori, men gennemgik afgørende faser (fra forførelsesteori til infantil seksualitet og driftsteori). Samtidig skal de begribe, at 'det ubevidste' ikke er en ekstern deterministisk kraft eller et skjult følelsesliv, men en systemintern, strukturerende instans, som nyere psykoanalytiske skoler (britisk, fransk, tysk) fortolker og videreudvikler forskelligt.",
+    "source_roles": [
+      {
+        "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+        "role": "anchor",
+        "rationale": "Leverer det metapsykologiske og historiske fundament ved at gennemgå de fire faser i psykoanalysens konstituering og definere driftsteoriens økonomiske og dynamiske aspekter."
+      },
+      {
+        "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+        "role": "framing",
+        "rationale": "Sætter Freuds oprindelige begreber i et nutidigt perspektiv ved at kortlægge, hvordan nyere skoledannelser (britisk, fransk, tysk) videreudvikler begreber som objekt, drift og decentrering."
+      },
+      {
+        "source_id": "w05l2-k-ppe-1992-9a474402",
+        "role": "supporting",
+        "rationale": "Uddyber den epistemologiske og ontologiske forståelse af det ubevidste som en systemintern instans frem for en biologisk determinisme."
+      },
+      {
+        "source_id": "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+        "role": "supporting",
+        "rationale": "Strukturerer forelæsningen kronologisk omkring de fire faser i Freuds tidlige teoriudvikling og fremhæver overgangen fra traume til drift."
+      },
+      {
+        "source_id": "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
+        "role": "application",
+        "rationale": "Omsætter de teoretiske begreber til praksis gennem case-arbejde med Laplanches forførelsesteori og systematisk sammenligning med trækpsykologi."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+          "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+        ],
+        "relation": "Forelæsningsslidene opstiller den kronologiske ramme for psykoanalysens fire konstitueringsfaser, som Andkjær Olsen & Køppe udfolder i dybden med metapsykologiske forklaringer.",
+        "learning_stakes": "Hjælper de studerende med at koble Freuds kliniske opdagelser (f.eks. opgivelsen af forførelsesteorien) med de mere abstrakte ændringer i hans topiske og økonomiske modeller."
+      },
+      {
+        "source_ids": [
+          "w05l2-k-ppe-1992-9a474402",
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a"
+        ],
+        "relation": "Køppe (1992) etablerer den grundlæggende ontologi for det freudianske ubevidste, mens Grundbog kapitel 7 viser, hvordan dette decentrerede subjekt tages op og modificeres af senere franske, britiske og tyske skoler.",
+        "learning_stakes": "Forhindrer de studerende i at se nyere teorier som fuldstændige brud med Freud, og viser i stedet, hvordan de bygger videre på den fælles præmis om et decentreret subjekt."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Det ubevidste (som psykisk instans)",
+        "explanation": "En systemintern, dynamisk og strukturerende del af psyken, der rummer affektpotentialiteter (ikke bevidste følelser) og er i konstant konflikt. Det er ikke blot et passivt lager, men en aktivt determinerende kraft, der dog kan modificeres via selvrefleksion.",
+        "source_ids": [
+          "w05l2-k-ppe-1992-9a474402",
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e"
+        ]
+      },
+      {
+        "concept": "Drift vs. Instinkt",
+        "explanation": "Instinkter er biologisk determinerede adfærdsmønstre hos dyr, mens drifter hos mennesker er psykiske repræsentationer af somatiske spændinger. Drifter er uendeligt fleksible med hensyn til, hvilket objekt der kan give tilfredsstillelse.",
+        "source_ids": [
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+          "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+        ]
+      },
+      {
+        "concept": "Nachträglichkeit (Eftervirkning)",
+        "explanation": "Tidsligheden i psykisk udvikling, hvor tidlige (ofte seksuelle) oplevelser først får deres fulde, potentielt traumatiserende betydning senere i livet (f.eks. i puberteten), når subjektet har forudsætningerne for at forstå dem.",
+        "source_ids": [
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+        ]
+      },
+      {
+        "concept": "Objekt",
+        "explanation": "I psykoanalysen er et objekt ikke en fysisk ting, men en konstrueret indre psykisk repræsentation af (dele af) andre mennesker, som subjektet er emotionelt forbundet med, og som driften kan rettes mod.",
+        "source_ids": [
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e"
+        ]
+      },
+      {
+        "concept": "Decentrering",
+        "explanation": "Erkendelsen af, at bevidstheden (jeg'et) ikke er centrum i psyken, og at subjektet ikke er gennemsigtigt for sig selv. Dette er et fundamentalt fællestræk for alle psykoanalytiske retninger.",
+        "source_ids": [
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "w05l2-k-ppe-1992-9a474402"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Forførelsesteori vs. Infantil seksualitet",
+        "stakes": "Freuds skift fra at tro på faktiske seksuelle overgreb som årsag til neuroser, til at forstå dem som ubevidste fantasier forankret i barnets egen seksualitet. Dette markerer psykoanalysens afgørende vending fra ydre begivenheder til indre psykisk virkelighed.",
+        "source_ids": [
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+          "w05l2-lecture-10-psykoanalysens-konstituering-513290eb"
+        ]
+      },
+      {
+        "tension": "Følelser vs. Affektpotentialiteter",
+        "stakes": "Følelser kræver bevidsthed som oplevelseskategori, mens det ubevidste kun rummer potentialet for affekt (psykisk kvantitet). Denne skelnen forhindrer personificering af det ubevidste som et 'lille menneske' med egne bevidste hensigter.",
+        "source_ids": [
+          "w05l2-k-ppe-1992-9a474402"
+        ]
+      },
+      {
+        "tension": "Ekstern vs. Systemintern determination",
+        "stakes": "Klassisk determination kommer udefra (f.eks. biologi), mens det ubevidste determinerer indefra som en del af selve psyken. Dette er afgørende for at forstå, hvorfor psykoanalytisk terapi (via selvrefleksion) overhovedet kan skabe forandring.",
+        "source_ids": [
+          "w05l2-k-ppe-1992-9a474402"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "At 'objekt' i psykoanalysen refererer til fysiske ting i den ydre verden frem for indre psykiske repræsentationer af relationer.",
+      "At det ubevidste er et skjult rum fyldt med færdigdannede følelser og bevidste hensigter (personificering af instanserne).",
+      "At Freuds drifter er det samme som dyrs biologiske instinkter, frem for psykiske repræsentationer der dannes individuelt.",
+      "At Freud fuldstændig afviste, at faktiske overgreb finder sted, da han opgav forførelsesteorien (han skiftede blot fokus til den indre psykiske virkeligheds rolle i symptomdannelsen).",
+      "At psykoanalysen i dag er én samlet og homogen teori, frem for et netværk af forskellige skoledannelser."
+    ],
+    "must_carry_ideas": [
+      "Psykoanalysens primære genstandsfelt er den indre psykiske virkelighed, som er struktureret af det ubevidste og drifterne.",
+      "Det psykoanalytiske subjekt er fundamentalt decentreret; bevidstheden er ikke herre i eget hus.",
+      "Psykoanalysen udviklede sig gennem specifikke faser, hvor kliniske problemer (som hysteri og tvangsneurose) tvang Freud til at revidere sine metapsykologiske modeller.",
+      "Nyere psykoanalytiske teorier (f.eks. Laplanche, Fonagy) forkaster ikke Freuds grundbegreber, men omorganiserer dem med forskellig vægt på kognition, relationer og kultur."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "Grundbogen nævner et meget stort antal nyere teoretikere og historiske forgreninger. De studerende bør fokusere på de overordnede linjer (britisk, fransk, tysk) og de teoretikere, der eksplicit fremhæves i undervisningen (f.eks. Laplanche og Fonagy).",
+      "Køppe (1992) er en tung videnskabsteoretisk tekst; fokus bør holdes på dens definition af det ubevidstes ontologi frem for de specifikke debatter med Habermas og Lorenzer."
+    ]
+  }
+}

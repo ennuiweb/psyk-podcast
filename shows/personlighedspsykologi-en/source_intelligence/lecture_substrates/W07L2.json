@@ -1,0 +1,168 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:31:31Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-maslow-1968-7ea53e34",
+      "w07l2-evans-1975-8e8a9d79",
+      "w07l2-giorgi-2005-55ca98f7",
+      "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+      "w07l2-seminar-8-humanistisk-psykologi-8f80e89d"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "d4fabdde2c31ea78f9bc0ce0d2ce5245afdb26e05fe0eb819d007fa95dec24ca",
+      "source_cards_signature": "b7f4dfbebe382da4038195039ff85e670b1913daf0a00969ec14e4fb9da7e904",
+      "raw_sources_signature": "acdb184802100ed024eb8cc11a14ca080c62495791ef354f7628fb7b48110aad"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W07L2",
+    "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+    "sequence_index": 14
+  },
+  "analysis": {
+    "lecture_question": "How does humanistic psychology conceptualize motivation and personality as driven by growth rather than deficit, and what methodological challenges arise when studying the 'whole person'?",
+    "central_learning_problem": "Students must shift their understanding of motivation from a drive-reduction model (homeostasis) to a growth-oriented model (self-actualization). They need to grasp how Maslow and Rogers position the person as an active, self-determining agent, while also understanding Giorgi's critique that this 'third force' failed to develop a rigorous scientific methodology that breaks free from natural science paradigms.",
+    "source_roles": [
+      {
+        "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+        "role": "framing",
+        "rationale": "Provides the historical context of humanistic psychology as the 'third force' and outlines the core theories of Maslow and Rogers."
+      },
+      {
+        "source_id": "w07l2-maslow-1968-7ea53e34",
+        "role": "anchor",
+        "rationale": "Establishes the foundational theory of motivation, distinguishing between deficiency needs and growth needs."
+      },
+      {
+        "source_id": "w07l2-evans-1975-8e8a9d79",
+        "role": "anchor",
+        "rationale": "Presents Rogers' person-centered theory, focusing on the actualizing tendency, the self-concept, and the necessary conditions for therapeutic growth."
+      },
+      {
+        "source_id": "w07l2-giorgi-2005-55ca98f7",
+        "role": "caveat",
+        "rationale": "Critiques the humanistic movement for lacking a rigorous methodology and proposes phenomenology as the necessary human science framework."
+      },
+      {
+        "source_id": "w07l2-seminar-8-humanistisk-psykologi-8f80e89d",
+        "role": "application",
+        "rationale": "Operationalizes the lecture's concepts by having students use analytical 'orienting points' to compare humanistic psychology with other traditions."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-evans-1975-8e8a9d79"
+        ],
+        "relation": "extend",
+        "learning_stakes": "Maslow provides a broad motivational hierarchy, while Rogers extends this growth-orientation into clinical practice, focusing on the self and relational conditions for actualization."
+      },
+      {
+        "source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-evans-1975-8e8a9d79",
+          "w07l2-giorgi-2005-55ca98f7"
+        ],
+        "relation": "correct",
+        "learning_stakes": "Giorgi acknowledges the theoretical contributions of Maslow and Rogers but corrects their trajectory by arguing that their humanistic image of the person requires a completely different scientific methodology (phenomenology) to be academically viable."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Self-actualization (Selvaktualisering)",
+        "explanation": "The inherent tendency of the organism to develop its capacities, fulfill its potential, and grow, serving as the ultimate goal of human development.",
+        "source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-evans-1975-8e8a9d79",
+          "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+        ]
+      },
+      {
+        "concept": "Deficiency vs. Growth Motivation (Mangel- vs. Vækstbehov)",
+        "explanation": "The distinction between motivation driven by a lack that seeks tension-reduction (homeostasis) and motivation driven by a desire for continuous development that seeks and enjoys tension.",
+        "source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+        ]
+      },
+      {
+        "concept": "Congruence and Incongruence",
+        "explanation": "The degree of alignment between an individual's actual organismic experience and their self-concept. Incongruence leads to psychological distress, while congruence is a goal of therapy.",
+        "source_ids": [
+          "w07l2-evans-1975-8e8a9d79",
+          "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+          "w07l2-seminar-8-humanistisk-psykologi-8f80e89d"
+        ]
+      },
+      {
+        "concept": "Third Force (Den tredje kraft)",
+        "explanation": "The historical positioning of humanistic psychology as an alternative to the deterministic models of behaviorism and the pathology-focused models of psychoanalysis.",
+        "source_ids": [
+          "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+          "w07l2-seminar-8-humanistisk-psykologi-8f80e89d"
+        ]
+      },
+      {
+        "concept": "Human Science vs. Natural Science",
+        "explanation": "The methodological argument that studying human subjectivity and meaning requires qualitative, phenomenological methods rather than the reductive, variable-controlling methods of natural sciences.",
+        "source_ids": [
+          "w07l2-giorgi-2005-55ca98f7"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Homeostasis vs. Growth",
+        "stakes": "Fundamentally shifts the psychological understanding of motivation from merely reducing unpleasant tension (deficits) to actively seeking development and fulfilling potential.",
+        "source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-evans-1975-8e8a9d79",
+          "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+        ]
+      },
+      {
+        "tension": "Image of the Person vs. Method of Study",
+        "stakes": "Highlights the historical dilemma of humanistic psychology: it succeeded in proposing a rich, non-reductionist view of humans but failed to establish a rigorous scientific method to study them, leading to its marginalization.",
+        "source_ids": [
+          "w07l2-giorgi-2005-55ca98f7"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming self-actualization is a final, static state of rest, rather than a dynamic, ongoing process of becoming.",
+      "Believing that humanistic psychology completely rejects biological needs, whereas it actually views them as foundational prerequisites for higher-order growth.",
+      "Confusing Rogers' 'client-centered' therapy with a passive approach where the therapist does nothing; it actually requires active empathy, congruence, and unconditional positive regard.",
+      "Misinterpreting Giorgi's critique as anti-science, when he is actually advocating for a rigorous 'human science' tailored to subjectivity rather than imitating physics."
+    ],
+    "must_carry_ideas": [
+      "The qualitative difference between deficiency-driven behavior (seeking homeostasis) and growth-driven behavior (seeking self-actualization).",
+      "Rogers' concept of the self and the importance of a supportive relational climate (congruence, empathy, positive regard) for psychological growth.",
+      "The historical role of humanistic psychology as a 'third force' protesting against reductionist and deterministic models.",
+      "The methodological necessity of developing human science approaches (like phenomenology) to study lived experience without reducing the person."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The Evans text is an interview transcript, meaning theoretical concepts are presented conversationally and may lack the formal rigor of academic papers.",
+      "The lecture slides contain specific page references and quotes without full bibliographical context, requiring the lecturer's elaboration.",
+      "Giorgi's text assumes prior knowledge of phenomenological philosophy and natural science paradigms, which may need supplementary explanation."
+    ]
+  }
+}

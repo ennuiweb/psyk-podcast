@@ -1,0 +1,129 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:39Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+    ],
+    "dependency_hashes": {
+      "source_file": "6f71cf5e5bc56b2693fdce3ee46a6cc64733d0c4fca94b0706ad8775f42eef85",
+      "source_files_signature": "1b1109aec2064eae1e3da6724c15841d281d01ce85eff9f4cd3852dbbb5fb0ec",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l2-seminar-9-kritisk-psykologi-7a7e589c",
+    "lecture_key": "W08L2",
+    "title": "9. Kritisk psykologi",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/9. Kritisk psykologi.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/9. Kritisk psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/9. Kritisk psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/9. Kritisk psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "6f71cf5e5bc56b2693fdce3ee46a6cc64733d0c4fca94b0706ad8775f42eef85",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 7800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Applies critical psychology (via Dreier and Holzkamp) to conceptualize personality as situated in social practices, while also providing meta-level methodological feedback on how to properly critique psychological theories.",
+    "source_role": "Seminar slides designed to facilitate group work on critical psychology concepts, link them to the course's analytical orientation points, and provide feedback on a previous written assignment.",
+    "relation_to_lecture": "Operationalizes the critical psychology lecture by turning key concepts into group exercises and explicitly connecting them to the course's four orientation points: Essence/Context, Agency, Determination, and Historicity.",
+    "central_claims": [
+      {
+        "claim": "Theories should not be criticized for limitations they explicitly acknowledge and justify; critiques must address the underlying argumentation rather than just the surface feature.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "The Freudian term 'id' in the Danish syllabus text is a translation error and must be referred to as 'det'et' in future assignments.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "In critical psychology, a person's daily conduct of life is understood through their participation in multiple different practices, which are arranged by broader structural conditions.",
+        "grounding": "slide-framed",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Praksis",
+        "definition": "A social context or setting that individuals participate in, which collectively make up the structures of everyday life.",
+        "role": "Serves as the foundational unit of analysis in critical psychology for understanding where human life and personality unfold."
+      },
+      {
+        "term": "Deltagelse",
+        "definition": "The act of taking part in various social practices.",
+        "role": "Explains the dynamic link between the individual person and the social structures they navigate."
+      },
+      {
+        "term": "Handleevne",
+        "definition": "The subject's agency or capacity to act within and across structural conditions.",
+        "role": "Central to evaluating the critical psychological perspective on whether personality contains an active, directing force (Agency)."
+      },
+      {
+        "term": "Daglig livsførelse",
+        "definition": "The conduct of everyday life, referring to how a subject organizes and navigates their participation across multiple practices.",
+        "role": "Provides a holistic framework for understanding personality as an ongoing, situated process rather than an isolated internal essence."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Position vs. Standpunkt",
+        "summary": "The difference between the objective placement or role a person has within a practice (position) and the subjective perspective or attitude they take towards it (standpunkt).",
+        "stakes": "Crucial for understanding how individuals are not merely passive products of structures, but actively relate to and potentially change them."
+      },
+      {
+        "label": "Aktiv vs. passiv reference",
+        "summary": "The academic writing distinction between integrating an author directly into the sentence syntax versus citing them in parentheses at the end of a claim.",
+        "stakes": "A formal requirement for passing the course's written assignments (aktivitetskrav)."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Criticizing a theory for a feature it explicitly defends (e.g., psychoanalysis being time-consuming) without engaging with its theoretical justification.",
+      "Using the English/Latin term 'id' instead of the Danish 'det'et' when discussing Freud in assignments, due to a known translation error in the syllabus.",
+      "Confusing 'position' (objective placement in a practice) with 'standpunkt' (subjective stance)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Id/det - Freud teksten skriver id, I skal bare være opmærksomme på det er en oversættelsesfejl",
+        "why": "Explicit instruction on correcting a syllabus translation error in future assignments."
+      },
+      {
+        "target": "Pas på med at kritisere teorier for noget de ikke ønsker at være",
+        "why": "A core methodological rule for writing academic critiques in this course."
+      }
+    ],
+    "grounding_notes": [
+      "The slides primarily consist of questions for group work rather than definitive answers. The actual definitions of concepts (like 'praksis' or 'handleevne') are pointed to via specific page numbers in the literature (e.g., Dreier p. 6, Jensen p. 294) rather than stated directly on the slides.",
+      "Feedback on 'aktivitetskrav 2' provides explicit, course-specific rules for exam and assignment writing."
+    ],
+    "warnings": [
+      "The slides do not provide the answers to the conceptual questions posed for group work; students must consult the referenced pages in Dreier (1999), Jensen (2014), and the textbook to find the actual definitions."
+    ]
+  }
+}

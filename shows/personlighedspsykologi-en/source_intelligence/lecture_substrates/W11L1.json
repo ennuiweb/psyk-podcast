@@ -1,0 +1,165 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:34:05Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "w11l1-gergen-1999-73c2217e",
+      "w11l1-hacking-2007-10236bf4",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "c22975bd1f9ba62713a1893ea5557c81f05a20d14c2f91968d745e04f29ec4bc",
+      "source_cards_signature": "953c4f3da58b7a968520bb3e61bc49440562ce8ee568a6c08ae8fe28d2a9141a",
+      "raw_sources_signature": "8c4d4c9c1a4af00c289d28a3f72f9c2c84a84915e038d054fbb5c7d9f11c205a"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W11L1",
+    "lecture_title": "Poststrukturalisme, diskursiv psykologi og feministisk teori (Forelæsning 20, 2026-04-20)",
+    "sequence_index": 20
+  },
+  "analysis": {
+    "lecture_question": "How do poststructuralist and social constructionist theories challenge the idea of a stable, inner personality, and instead understand subjectivity as relationally, discursively, and materially produced?",
+    "central_learning_problem": "Students must shift their ontological assumptions from viewing personality as an internal, stable essence that causes behavior (the traditional humanistic and trait view) to understanding subjectivity as a fluid, decentered process. This requires grasping how psychological realities, categories, and identities are actively constructed through discursive practices, power relations, and material-affective interactions. The challenge is to see the 'self' not as a pre-existing entity, but as a performative effect of social and historical conditions, without losing sight of human agency, which is redefined as situated within these very conditions.",
+    "source_roles": [
+      {
+        "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+        "role": "framing",
+        "rationale": "Provides the overarching theoretical framework of postpsychology, defining core concepts like subjectification, discourse, and performativity, and bridging Foucault, Butler, and new materialism."
+      },
+      {
+        "source_id": "w11l1-gergen-1999-73c2217e",
+        "role": "anchor",
+        "rationale": "Presents the core social constructionist critique of the individualist self and introduces the generative theory of the relational, performative self."
+      },
+      {
+        "source_id": "w11l1-hacking-2007-10236bf4",
+        "role": "anchor",
+        "rationale": "Introduces dynamic nominalism and the looping effect, demonstrating how scientific classifications actively make up the people they describe."
+      },
+      {
+        "source_id": "w10l2-seminar-10-poststrukturalisme-70b709db",
+        "role": "application",
+        "rationale": "Applies poststructuralist concepts like discourse and power to concrete cases, such as historical psychiatry and modern gender dynamics."
+      },
+      {
+        "source_id": "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+        "role": "application",
+        "rationale": "Structures the comparison between Gergen's relational self, Hacking's dynamic nominalism, and critical psychology through seminar group work."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w11l1-gergen-1999-73c2217e",
+          "w11l1-hacking-2007-10236bf4"
+        ],
+        "relation": "Both deconstruct the isolated individual, but Gergen focuses on the interpersonal, relational, and linguistic performance of selfhood, while Hacking focuses on the epistemological and institutional mechanisms of scientific classification.",
+        "learning_stakes": "Shows students different levels of social construction, distinguishing between everyday relational practices and macro-level institutional/scientific looping effects."
+      },
+      {
+        "source_ids": [
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w11l1-gergen-1999-73c2217e"
+        ],
+        "relation": "The Grundbog chapter extends the linguistic and discursive focus of Gergen's social constructionism into new materialism and affectivity (post-2000s postpsychology).",
+        "learning_stakes": "Helps students see the evolution of the field from purely linguistic constructionism to approaches that include bodies, physical environments, and material objects as active co-producers of subjectivity."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Subjektivering (Subjectification)",
+        "explanation": "The paradoxical process of becoming a subject by being subjected to specific life conditions, discourses, and power relations, which simultaneously grants the individual agency and mastery.",
+        "source_ids": [
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w10l2-seminar-10-poststrukturalisme-70b709db"
+        ]
+      },
+      {
+        "concept": "Looping effect (Dynamisk nominalisme)",
+        "explanation": "Ian Hacking's concept describing how scientific classifications interact with and change the people classified, making human subjects 'moving targets' that alter the original classification.",
+        "source_ids": [
+          "w11l1-hacking-2007-10236bf4",
+          "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+        ]
+      },
+      {
+        "concept": "Relational Self (Relationelt selv)",
+        "explanation": "The idea that the self is not a private, self-contained entity but is entirely constituted by and within social relationships and performative discourse.",
+        "source_ids": [
+          "w11l1-gergen-1999-73c2217e",
+          "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+        ]
+      },
+      {
+        "concept": "Diskursive praksisser (Discursive practices)",
+        "explanation": "Concrete social practices and language use that produce specific social categories and subject positions, setting the conditions for what can be thought, said, and done.",
+        "source_ids": [
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w10l2-seminar-10-poststrukturalisme-70b709db"
+        ]
+      },
+      {
+        "concept": "Performativitet",
+        "explanation": "The idea that personality and psychological states are not inner causes of behavior, but rather performative effects of actions, cultural expectations, and relational scenarios.",
+        "source_ids": [
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w11l1-gergen-1999-73c2217e"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Kausalitet vs. Performativitet (Inner essence vs. Relational effect)",
+        "stakes": "Fundamentally shifts the unit of psychological analysis from searching for internal traits that cause behavior to analyzing external relations, social practices, and how people 'do' personality.",
+        "source_ids": [
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w11l1-gergen-1999-73c2217e",
+          "w10l2-seminar-10-poststrukturalisme-70b709db"
+        ]
+      },
+      {
+        "tension": "Fixed targets vs. Moving targets",
+        "stakes": "Challenges the traditional objective, static view of psychiatric diagnoses and personality categories, emphasizing that human sciences actively construct and alter the subjects they study.",
+        "source_ids": [
+          "w11l1-hacking-2007-10236bf4",
+          "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that postpsychology or social constructionism completely denies the existence of private thoughts, emotions, or psychological distress, rather than redefining them as relational and cultural actions.",
+      "Confusing 'subjectification' with mere oppression or determinism, missing the paradoxical point that subjection is also the source of agency.",
+      "Believing that the 'looping effect' means people are consciously or maliciously faking symptoms, rather than genuinely experiencing new ways of being.",
+      "Assuming that 'discourse' only refers to spoken or written language, ignoring the material and bodily practices that postpsychology emphasizes."
+    ],
+    "must_carry_ideas": [
+      "Personality is not a static, inner essence but an ongoing, relationally and discursively constructed process (subjectification).",
+      "Psychological categories and scientific diagnoses actively shape the people they describe, creating looping effects.",
+      "The shift from individualistic to relational and performative understandings of the self has profound implications for how we address psychological and societal problems."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "Pages 417-418 of the attached Grundbog PDF suddenly shift to discussing evolutionary and positive psychology (Del V). This appears to be the start of a different chapter included in the scan and is unrelated to the postpsychology content.",
+      "The seminar slides rely heavily on group work questions and external cases (e.g., a YouTube video on the Manosphere) without providing the definitive analytical answers on the slides themselves."
+    ]
+  }
+}

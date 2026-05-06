@@ -1,0 +1,141 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:56Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662"
+    ],
+    "dependency_hashes": {
+      "source_file": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
+      "source_files_signature": "6ebd3f8c9059911792012e3e00ee41ae433995923ca6400e08290e13ceee4453",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+    "lecture_key": "W09L1",
+    "title": "Grundbog kapitel 10 - Kritisk psykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "source_paths": [
+      "Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
+    "length_band": "long",
+    "page_count": 35,
+    "estimated_token_count": 22750,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents Critical Psychology (specifically the German/Scandinavian tradition of Holzkamp and Dreier) as a meta-theoretical framework that redefines personality from being an internal, static entity to a dynamic composition of standpoints developed through social participation.",
+    "source_role": "Textbook chapter (Grundbog) providing the foundational conceptual framing, historical background, and core vocabulary for the Critical Psychology lecture.",
+    "relation_to_lecture": "As a Grundbog reading, this text establishes the primary definitions (e.g., umiddelbarhedspostulatet, handleevne, livsførelse) that the lecture slides will likely use to structure the session's sequence and emphasis.",
+    "central_claims": [
+      {
+        "claim": "Traditional psychology suffers from the 'immediacy postulate' (umiddelbarhedspostulatet), incorrectly assuming that human actions and psychological processes are merely direct reactions to immediate external conditions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality should not be understood as a set of static internal traits, but rather as a 'composition of standpoints' that a person develops through active participation in various social practices.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human agency (handleevne) is always present but can be either restrictive (acting short-sightedly on immediate interests) or expansive (acting to expand possibilities in alignment with others' interests).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The concept of 'everyday conduct of life' (daglig livsførelse) is necessary to understand how individuals organize their daily activities and routines in relation to broader societal demands and structures.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Umiddelbarhedspostulatet (The immediacy postulate)",
+        "definition": "The problematic assumption in traditional psychology that individuals are completely subject to their immediate conditions, making their actions mere reactions to their environment.",
+        "role": "Forms the foundational critique against mainstream psychology, justifying the need for a critical psychological framework."
+      },
+      {
+        "term": "Handleevne (Agency / Action capability)",
+        "definition": "A person's capacity to act and influence their conditions. It is divided into restrictive (adapting to immediate conditions) and expansive (changing conditions to expand possibilities).",
+        "role": "Explains how humans are not just passive receivers of societal structures but active subjects who can alter their circumstances."
+      },
+      {
+        "term": "Deltagelse (Participation)",
+        "definition": "The active involvement of a person in social practices, which is the fundamental way humans exist in and connect to the world.",
+        "role": "Shifts the analytical focus from isolated internal mental states to the person's active engagement in concrete social contexts."
+      },
+      {
+        "term": "Standpunkt (Standpoint)",
+        "definition": "A person's subjective understanding of the rules, conditions, and their own placement within a given social practice, developed from their specific position.",
+        "role": "Serves as the building block for the critical psychological definition of personality."
+      },
+      {
+        "term": "Daglig livsførelse (Everyday conduct of life)",
+        "definition": "The way a person organizes, prioritizes, and integrates their daily activities, obligations, and relations across different social contexts.",
+        "role": "Connects the individual's subjective daily routines to objective societal structures and demands."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Restrictive vs. Expansive Handleevne",
+        "summary": "The difference between acting based on short-term, immediate interests (restrictive) versus acting in ways that expand one's possibilities in alignment with others' interests (expansive).",
+        "stakes": "Determines whether an individual merely adapts to existing societal constraints or actively works to overcome them and change the structural conditions."
+      },
+      {
+        "label": "Lokalitet vs. Position vs. Standpunkt",
+        "summary": "Distinguishes between where a person is physically/temporally (locality), their social role or function in that context (position), and their subjective understanding of that context (standpoint).",
+        "stakes": "Prevents the reduction of a person's subjective experience to merely their objective physical or social placement in a given situation."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'Critical Psychology' simply means being critical of other theories, rather than recognizing it as a specific theoretical tradition rooted in Marxist philosophy and Vygotskian cultural-historical psychology.",
+      "Confusing a 'standpoint' (standpunkt) with a mere 'opinion', rather than understanding it as a structurally grounded perspective developed through concrete participation in a practice.",
+      "Believing that critical psychology denies the existence of internal psychological processes; it actually insists these processes exist but must be understood in relation to concrete social contexts rather than in isolation."
+    ],
+    "quote_targets": [
+      {
+        "target": "Boks 1. Umiddelbarhedspostulatet som grundlæggende problem i psykologien (Page 343)",
+        "why": "Provides the core definition of the primary critique Critical Psychology levels against mainstream psychology."
+      },
+      {
+        "target": "Personligheden som en komposition af standpunkter (Page 365)",
+        "why": "This section contains the definitive critical psychological conceptualization of what 'personality' actually is."
+      },
+      {
+        "target": "Boks 3. Livsførelse (Page 361)",
+        "why": "Summarizes Holzkamp's crucial concept of the everyday conduct of life, which bridges individual routines and societal structures."
+      }
+    ],
+    "grounding_notes": [
+      "The text heavily relies on the works of Klaus Holzkamp (founder of German Critical Psychology) and Ole Dreier (key figure in Danish practice research).",
+      "The theoretical roots are explicitly traced back to Karl Marx (dialectical materialism) and Lev Vygotsky/Alexei Leontjev (cultural-historical psychology)."
+    ],
+    "warnings": []
+  }
+}

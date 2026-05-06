@@ -1,0 +1,141 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:21:23Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-raggatt-2002-d15129af"
+    ],
+    "dependency_hashes": {
+      "source_file": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
+      "source_files_signature": "91ab790e148487e3afed42a325c4c742fce10971c865bc4746a936400273aa48",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l2-raggatt-2002-d15129af",
+    "lecture_key": "W11L2",
+    "title": "Raggatt (2002)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+    "source_paths": [
+      "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Advances the Dialogical Self Theory by providing a concrete methodological framework (Personality Web) to empirically map the plural, multi-voiced nature of personality.",
+    "source_role": "A primary research article and case study demonstrating how to apply narrative psychology and multidimensional scaling to understand identity formation, trauma, and addiction.",
+    "relation_to_lecture": "Directly supports the W11L2 theme of 'Narrativitet, kultur og mening' by showing how personal meaning is constructed through multiple, culturally positioned narrative voices rather than a single underlying trait structure.",
+    "central_claims": [
+      {
+        "claim": "The self is not a singular, integrated entity, but rather a 'polypsychic' plurality of frequently conflicting narrative voices.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "These multiple narrative voices can be empirically mapped by analyzing a person's symbolic attachments (people, objects, events, and body parts) using the Personality Web protocol.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The dialogical oppositions between different voices in the self are fundamentally defined by moral concerns and socio-cultural positioning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Radical social constructionism goes too far in 'deconstructing' the self; a middle position is needed that recognizes internal multiplicity without completely dissolving the individual.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Polypsychism",
+        "definition": "The concept that human mental life is characterized by a multiplicity of subjectivities or dominant narrative voices, rather than a single, coherent ego.",
+        "role": "Serves as the foundational theoretical framework for the paper, challenging traditional Enlightenment models of personality."
+      },
+      {
+        "term": "Narrative Voice",
+        "definition": "A thematic complex or storied version of events that organizes experience and guides action. In a plural self, multiple voices compete to make sense of the world.",
+        "role": "The primary unit of analysis in Raggatt's model of the self."
+      },
+      {
+        "term": "Symbolic Attachments",
+        "definition": "Important people, critical events, places, objects, and body parts that act as signposts in the narrative landscape of the self.",
+        "role": "Provides the empirical data (the 'glue') used in the Personality Web protocol to identify and cluster different narrative voices."
+      },
+      {
+        "term": "Positioning",
+        "definition": "The discursive construction of personal stories that locate a person's moral and personal attributes within a matrix of social relationships.",
+        "role": "Explains how different internal voices take up different evaluative stances (e.g., strong vs. weak, good vs. bad) based on cultural and social contexts."
+      },
+      {
+        "term": "Personality Web (PW)",
+        "definition": "An in-depth interview protocol combining qualitative sorting of attachments with quantitative multidimensional scaling (MDS) to map the multiplicity of the self.",
+        "role": "The methodological tool introduced by the author to empirically test the theory of polypsychism."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Enlightenment Individualism vs. Radical Social Constructionism vs. Polypsychism",
+        "summary": "Enlightenment individualism views the self as a fixed, stable core. Radical social constructionism views the self as entirely dissolved into language and culture ('death of the author'). Polypsychism (Raggatt's stance) is a middle position where the self exists but as a plurality of internal, competing narrative voices.",
+        "stakes": "Positions Raggatt's narrative approach as a viable empirical middle ground that avoids reifying a single ego while also avoiding the complete erasure of individual agency."
+      },
+      {
+        "label": "The Four Voices of Sean",
+        "summary": "The case study divides Sean's self into four distinct narrative voices: 'Lost Boy' (abandonment/trauma), 'Addict' (anaesthesia/abjection), 'Magician' (spiritual rescue/survival), and 'Good Guy' (sporting hero/nurturing).",
+        "stakes": "Illustrates how contradictory moral trajectories and socio-cultural positionings can coexist within a single individual's personality."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'polypsychism' or a 'plural self' is synonymous with Dissociative Identity Disorder (Multiple Personality Disorder). Raggatt argues this multiplicity is a feature of everyday, normal mental life.",
+      "Believing the Personality Web is a purely qualitative method. It actually relies heavily on quantitative Multidimensional Scaling (MDS) to map the Euclidean distances between attachments.",
+      "Thinking Raggatt fully agrees with postmodern social constructionists. He explicitly distances himself from their 'anti-foundationalist' stance, opting for a middle ground."
+    ],
+    "quote_targets": [
+      {
+        "target": "I shall begin from a middle position and from an everyday observation... that to varying degrees we lead a Jekyll and Hyde existence.",
+        "why": "Perfectly encapsulates Raggatt's theoretical departure from both traditional trait psychology and radical social constructionism (Page 124)."
+      },
+      {
+        "target": "A voice is a thematic complex that tells a particular version of events about a life in time.",
+        "why": "Provides the core definition of 'narrative voice' used throughout the methodology (Page 126)."
+      },
+      {
+        "target": "Table 2 Sean's Web of Attachments Grouped into Voices of the Self",
+        "why": "A highly concrete, testable illustration of how symbolic attachments cluster into distinct sub-selves (Page 133)."
+      }
+    ],
+    "grounding_notes": [
+      "The text uses the case study of 'Sean', a 43-year-old recovered addict, to ground its theoretical claims about polypsychism.",
+      "The methodology relies on a specific taxonomy of 24 attachments across four domains: People, Objects-in-the-World, Life Events, and Body Orientations."
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-06T21:06:57Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-lewis-1999-295c67e3"
+    ],
+    "dependency_hashes": {
+      "source_file": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+      "source_files_signature": "a6d31d40f4714545cffacf76189f44025d91da53cde749d7509ba27cad56ec65",
+      "source_catalog": "f2837610ca1ec4dfc445bfbe0fec05b948829b746fa4a5d484b2b3e98cee8920",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l1-lewis-1999-295c67e3",
+    "lecture_key": "W01L1",
+    "title": "Lewis (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+    "source_paths": [
+      "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+    "length_band": "medium",
+    "page_count": 18,
+    "estimated_token_count": 11700,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The source acts as a foundational critique of trait theory and predictive developmental models, advocating for a paradigm shift toward contextualism in personality psychology.",
+    "source_role": "Serves as an introductory reading to problematize the concept of personality as a stable construct, setting up core course debates about cross-situational consistency and developmental change.",
+    "relation_to_lecture": "Directly grounds W1L1's introduction to key concepts in personality psychology by challenging students' assumptions about stability, trait coherence, and predictive models.",
+    "central_claims": [
+      {
+        "claim": "Measurements of personality variables, such as childhood depression, show little consistency across different raters, contexts, and time.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The traditional organismic model fails to account for developmental data, as earlier events and traits explain very little variance in later behavior.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Development is better understood through a contextual model where behavior is an adaptation to current environmental factors rather than a product of past traits.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Organismic Model",
+        "definition": "A developmental model assuming that enduring traits are formed early in life, reside within the person, and causally determine future behavior.",
+        "role": "Represents the traditional approach to personality development that Lewis critiques for failing to fit empirical data."
+      },
+      {
+        "term": "Contextual Model",
+        "definition": "A framework arguing that meaning, memory, and behavior are embedded in and primarily shaped by the present context rather than historical past events.",
+        "role": "Serves as Lewis's proposed alternative paradigm for studying personality and developmental continuity."
+      },
+      {
+        "term": "Additive Model",
+        "definition": "A model where new skills or behaviors are added over time without replacing earlier ones, allowing for multiple levels of capacity and regression under stress.",
+        "role": "Contrasts with transformational models by allowing earlier states to coexist with new ones, requiring contextual choices."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Organismic vs. Contextual Models",
+        "summary": "The organismic model posits internal, stable traits driving development toward an end point, whereas the contextual model views development as ongoing adaptation to fluctuating present environments.",
+        "stakes": "Determines whether researchers should look to a person's history or their current environment to predict and understand their behavior."
+      },
+      {
+        "label": "Memory as Photograph vs. Memory as Construction",
+        "summary": "The traditional view of memory as an accurate historical record versus the contextual view of memory as a narrative constructed to serve current needs and present identity.",
+        "stakes": "Challenges the validity of longitudinal self-reports and implies that meaning is derived from the present, not the past."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might misinterpret Lewis as saying past events have absolutely no biological or psychological reality, rather than arguing that their influence is constantly reconstructed by current contexts.",
+      "Students may confuse the transformational model with the additive model, not realizing that transformational models require the complete replacement of old forms."
+    ],
+    "quote_targets": [
+      {
+        "target": "the organismic model of development traps us in our past",
+        "why": "It vividly captures the deterministic flaw Lewis sees in traditional psychoanalytic and trait-based developmental theories."
+      },
+      {
+        "target": "history may represent not the past acting on the present but the present reconstructing the past",
+        "why": "It perfectly summarizes the contextualist, Jamesian view of memory and personal narrative."
+      }
+    ],
+    "grounding_notes": [
+      "Lewis heavily uses developmental psychopathology (childhood depression) and attachment theory as his primary case studies to disprove trait stability.",
+      "The text integrates philosophical pragmatism (William James) to support its claims about memory and time."
+    ],
+    "warnings": [
+      "The text is an explicit critique rather than a neutral textbook overview, so its characterization of the organismic model is deliberately framed to highlight its flaws.",
+      "Because the source focuses heavily on childhood and adolescent development, its conclusions on personality instability may need careful translation when discussing adult trait psychology later in the course."
+    ]
+  }
+}

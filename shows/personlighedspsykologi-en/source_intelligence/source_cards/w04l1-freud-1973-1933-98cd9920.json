@@ -1,0 +1,142 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:52:25Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-freud-1973-1933-98cd9920"
+    ],
+    "dependency_hashes": {
+      "source_file": "5e11d6e9dbd0d635d6589c4ce15b09f6d7474a89d88181de4fa8fc7b92af8ae3",
+      "source_files_signature": "3b7c6d7e61b5ca3f18b5c7198abe7189a89a24bd454a237fc84cdf9af31a287f",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l1-freud-1973-1933-98cd9920",
+    "lecture_key": "W04L1",
+    "title": "Freud (1973/1933)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf",
+    "source_paths": [
+      "Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "5e11d6e9dbd0d635d6589c4ce15b09f6d7474a89d88181de4fa8fc7b92af8ae3",
+    "length_band": "medium",
+    "page_count": 11,
+    "estimated_token_count": 7150,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Dette er en af de absolutte kernetekster for Freuds strukturelle personlighedsmodel (topografisk model 2.0), hvor han formulerer opdelingen i Id, Ego og Superego.",
+    "source_role": "Primærlitteratur til forelæsningen om psykoanalysens personlighedsbegreb. Giver de studerende direkte adgang til Freuds egne formuleringer og metaforer.",
+    "relation_to_lecture": "Teksten udgør det teoretiske fundament for ugen. Forelæsningen vil sandsynligvis bygge videre på denne model, diskutere dens kliniske implikationer og muligvis udsætte den for moderne kritik.",
+    "central_claims": [
+      {
+        "claim": "Personligheden er struktureret omkring tre primære instanser: Det'et (Id), Jeg'et (Ego) og Over-jeg'et (Superego), som er i konstant dynamisk samspil.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Over-jeg'et dannes gennem barnets identifikation med forældreinstansen, særligt som en løsning på og arv fra Oedipus-komplekset.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Jeg'et er underlagt 'tre strenge herrer' – omverdenen, Over-jeg'et og Det'et – og dets primære funktion er at mægle mellem disse ofte modstridende krav.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Det ubevidste er ikke kun begrænset til Det'et; store og vigtige dele af både Jeg'et (f.eks. modstand og fortrængning) og Over-jeg'et fungerer også ubevidst.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Over-jeg'et (Superego)",
+        "definition": "Den moralske og selviagttagende instans i personligheden, der repræsenterer internaliserede forældrekrav, samvittighed og idealer.",
+        "role": "Forklarer skyldfølelse, moralsk adfærd og den indre regulering af drifter, samt hvordan samfundets normer videregives over generationer."
+      },
+      {
+        "term": "Jeg'et (Ego)",
+        "definition": "Den fornuftige, realitetsorienterede del af psyken, der udvikles fra Det'et gennem kontakt med omverdenen, og som styrer perception og motorik.",
+        "role": "Central for at forstå individets tilpasningsevne, forsvarsmekanismer og evne til at udskyde behovstilfredsstillelse."
+      },
+      {
+        "term": "Det'et (Id)",
+        "definition": "Den ældste, ubevidste del af personligheden, beskrevet som 'en kedel fuld af sydende affekter', der udelukkende styres af lystprincippet uden logik eller tidsfornemmelse.",
+        "role": "Udgør den biologiske og driftsmæssige drivkraft i mennesket, som Jeg'et må forsøge at tæmme og styre."
+      },
+      {
+        "term": "Identificering",
+        "definition": "En psykologisk proces, hvorved et individ assimilerer et aspekt af en anden person (ofte en forælder) og former sig selv efter dette forbillede.",
+        "role": "Den primære mekanisme bag dannelsen af Over-jeg'et og overgangen fra ydre autoritet til indre samvittighed."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Bevidst vs. Førbevidst vs. Ubevidst",
+        "summary": "Forskellen mellem det, der aktuelt er i bevidstheden (bevidst), det der let kan hentes frem (førbevidst), og det der er aktivt fortrængt eller utilgængeligt (ubevidst).",
+        "stakes": "Freud bruger denne skelnen til at vise, at 'ubevidst' er en kvalitet ved flere psykiske processer, ikke et isoleret system, da både dele af Jeg'et og Over-jeg'et er ubevidste."
+      },
+      {
+        "label": "Lystprincippet vs. Realitetsprincippet",
+        "summary": "Det'et opererer blindt efter lystprincippet (øjeblikkelig behovstilfredsstillelse), mens Jeg'et opererer efter realitetsprincippet (tilpasning til omverdenens krav og udskydelse af lyst).",
+        "stakes": "Illustrerer den grundlæggende konflikt mellem menneskets primitive drifter og nødvendigheden af rationel, social tilpasning."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At Id, Ego og Superego er fysiske steder i hjernen frem for teoretiske konstruktioner/funktioner.",
+      "At Jeg'et (Ego) er fuldt ud bevidst. Freud understreger eksplicit, at store dele af Jeg'et (som forsvarsmekanismer) er ubevidste.",
+      "At Over-jeg'et kun er en negativ, straffende instans. Det rummer også jeg-idealet og evnen til selviagttagelse."
+    ],
+    "quote_targets": [
+      {
+        "target": "Hvor der var Id, skal der vorde Jeg. (s. 66)",
+        "why": "Dette er Freuds mest berømte opsummering af psykoanalysens terapeutiske mål: at styrke Jeg'et og gøre det ubevidste bevidst."
+      },
+      {
+        "target": "De tre strenge herrer er omverdenen, over-jeg'et og Id'et. (s. 65)",
+        "why": "Kernen i forståelsen af Jeg'ets udsatte position og årsagen til angstudvikling."
+      },
+      {
+        "target": "Man kunne sammenligne jeg'ets forhold til Id'et med rytterens forhold til hesten. (s. 65)",
+        "why": "En pædagogisk og ofte citeret metafor for dynamikken mellem fornuft/kontrol (Jeg'et) og rå drivkraft (Det'et)."
+      },
+      {
+        "target": "Vi nærmer os Id'et med sammenligninger, kalder det et kaos, en kedel fuld af sydende affekter. (s. 63)",
+        "why": "Den mest præcise og billedrige beskrivelse af Det'ets natur i teksten."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er en dansk oversættelse af Freuds 31. forelæsning 'Den psykiske personligheds bestanddele' fra 'Nye forelæsninger til indføring i Psykoanalysen' (1933).",
+      "Sidetal i analysen refererer til de indscannede sidetal i PDF'en (s. 50-66)."
+    ],
+    "warnings": [
+      "Teksten benytter ældre psykoanalytisk terminologi og et til tider snørklet sprog, som kan kræve ekstra formidling for at relatere til moderne empirisk psykologi."
+    ]
+  }
+}

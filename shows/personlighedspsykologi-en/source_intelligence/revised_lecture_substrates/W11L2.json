@@ -1,0 +1,88 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:45Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "w11l2-bruner-1999-7930abd8",
+      "w11l2-mcadams-and-pals-2006-b9675688",
+      "w11l2-raggatt-2002-d15129af",
+      "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "62e0172b8f13b0c38a9f3693d48f08161502b2e3af897064eb0a789aa5d86b6c",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W11L2",
+    "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+    "sequence_index": 21
+  },
+  "analysis": {
+    "top_down_course_relevance": "W11L2 acts as the final major theoretical paradigm before the exam synthesis. It offers a crucial bridge that integrates the biological/trait baseline of the early course with the sociocultural/poststructural critiques of the late course, framing personality as an ongoing, culturally situated storytelling process.",
+    "what_matters_more": [
+      "McAdams & Pals' 3-level framework as a major course-level synthesis tool, demonstrating how trait psychology (Level 1) can coexist with narrative identity (Level 3).",
+      "The epistemological shift narrative psychology represents: finalizing the course's journey from personality as a 'measurable object' to a 'socially constructed, lived process'.",
+      "Applying the '4 orientation points' (especially historicity and context) to narrative theory, showing how cultural templates constrain and enable the stories we can tell about ourselves.",
+      "The tension between the 'Integrative Life Story' (McAdams) and the 'Polypsychic/Dialogical Self' (Raggatt) as a reflection of the broader course debate between a unified ego and the decentered subject."
+    ],
+    "de_emphasize": [
+      "The granular methodological details of Raggatt's Personality Web protocol, focusing instead on its theoretical implication (the plural self).",
+      "Deep linguistic mechanics in Bruner's text, keeping the focus strictly on the psychological concept of 'meaning readiness' as a bridge between biology and culture."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 & W02L2 (Trait Psychology)",
+        "relation": "Theoretical integration and reconciliation",
+        "rationale": "McAdams explicitly integrates dispositional traits as the first level of personality, providing a late-course reconciliation between early reductionist measurement and late-course interpretive/narrative meaning-making."
+      },
+      {
+        "target": "W04L2 & W10L2 (The Decentered Subject)",
+        "relation": "Conceptual continuation of multiplicity",
+        "rationale": "Raggatt's concept of the 'polypsychic' self connects directly to Lacanian and poststructuralist critiques of the unified ego, showing how narrative handles internal multiplicity and competing voices without defaulting to pathology."
+      },
+      {
+        "target": "W06L1 & W07L2 (Phenomenology and Humanism)",
+        "relation": "Contrastive locus of meaning-making",
+        "rationale": "While both traditions emphasize meaning-making, narrative psychology shifts the locus from an isolated, authentic inner essence (humanism) to the appropriation of externally available cultural and historical narrative templates."
+      },
+      {
+        "target": "W12L1 (Meta-theoretical Synthesis)",
+        "relation": "Direct application of orientation points",
+        "rationale": "Narrative psychology serves as a prime example for the exam's required meta-analytical framework, scoring high on 'historicity' and 'context' while maintaining a specific form of 'agency' through storytelling."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode as the culmination of the course's journey: moving from measuring static traits to understanding the person as an active, culturally situated storyteller.",
+      "Unpack McAdams' 3 levels of personality as a 'have your traits and narrate them too' compromise, showing how it bridges the early and late course.",
+      "Explore the debate between having one unified 'true' story (McAdams) versus a chorus of competing, polypsychic voices (Raggatt), linking this to the 'decentered subject'.",
+      "Discuss how cultural templates act as a menu for identity, tying into the 'historicity' and 'context' orientation points."
+    ],
+    "carry_forward": [
+      "McAdams' 3-level framework (traits, characteristic adaptations, narrative identity) as a highly effective tool for students to use in their final exam synthesis.",
+      "The understanding that personality is not a fixed internal essence, but an ongoing, relationally and historically constructed process.",
+      "The concept of the 'polypsychic' self as a normalized view of human multiplicity, contrasting with early-course deficit models."
+    ],
+    "warnings": [
+      "Students frequently confuse McAdams' 'New Big Five' principles with the 'Big Five' trait model from Week 2; instructors must explicitly clarify that traits are only Level 1 of McAdams' broader framework.",
+      "Avoid letting students reduce narrative psychology to merely 'talking about yourself'; emphasize the constraining role of cultural, material, and historical resources (social constructionism vs. constructivism).",
+      "Ensure students do not read McAdams & Pals (2006) as an empirical study, but rather as a theoretical synthesis proposing a new paradigm."
+    ]
+  }
+}

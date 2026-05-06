@@ -18,6 +18,7 @@ LECTURE_HEADING_RE = re.compile(r"^\*\*(?P<key>W\d{2}L\d+)\s+(?P<title>.+?)\*\*$
 MISSING_READING_RE = re.compile(r"^MISSING:\s*(?P<title>.+)$", re.IGNORECASE)
 BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\b(?:short|brief)\b[^)]*\)\s*$", re.IGNORECASE)
 PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
+SOURCE_LIST_SEPARATOR_RE = re.compile(r"\s*;\s*")
 SUBJECT_PATH_KEYS = {
     "reading_master_path",
     "reading_fallback_path",
@@ -85,6 +86,7 @@ class ReadingItem:
     title: str
     is_missing: bool
     source_filename: str | None
+    source_filenames: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -309,14 +311,25 @@ def _reading_title_from_bullet(bullet_body: str) -> str:
 
 
 def _source_filename_from_bullet(bullet_body: str) -> str | None:
-    if "→" not in bullet_body:
+    filenames = _source_filenames_from_bullet(bullet_body)
+    if not filenames:
         return None
+    return filenames[0]
+
+
+def _source_filenames_from_bullet(bullet_body: str) -> tuple[str, ...]:
+    if "→" not in bullet_body:
+        return tuple()
     right = bullet_body.split("→", 1)[1].strip()
     if not right:
-        return None
-    cleaned = BRIEF_SUFFIX_RE.sub("", right).strip()
-    cleaned = PATH_SEPARATORS_RE.sub("-", cleaned).strip()
-    return cleaned or None
+        return tuple()
+    filenames: list[str] = []
+    for raw_part in SOURCE_LIST_SEPARATOR_RE.split(right):
+        cleaned = BRIEF_SUFFIX_RE.sub("", raw_part).strip()
+        cleaned = PATH_SEPARATORS_RE.sub("-", cleaned).strip()
+        if cleaned:
+            filenames.append(cleaned)
+    return tuple(filenames)
 
 
 def parse_master_readings(path: str | Path) -> ReadingParseResult:
@@ -392,6 +405,7 @@ def parse_master_readings(path: str | Path) -> ReadingParseResult:
                 title=reading_title,
                 is_missing=False,
                 source_filename=_source_filename_from_bullet(bullet_body),
+                source_filenames=_source_filenames_from_bullet(bullet_body),
             )
         )
 

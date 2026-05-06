@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:18:37Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-m-rch-and-hansen-2015-b1dbfc5f"
+    ],
+    "dependency_hashes": {
+      "source_file": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
+      "source_files_signature": "f3dfd74c311896f16cfa50c4d478fef0fc7708f3b6d62bdb6b58174279418012",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+    "lecture_key": "W09L1",
+    "title": "Mørch & Hansen (2015)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf",
+    "source_paths": [
+      "Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Applies critical psychology (Holzkamp, Dreier), social practice theory (Lave, Wenger), and Løgstrup's ethical demand to analyze the lived experience of exiting a gang.",
+    "source_role": "Serves as a primary qualitative case study and a methodological exemplar of 'subject-subject' research in a Danish context.",
+    "relation_to_lecture": "Provides an empirical, first-person perspective on identity transformation, marginalization, and the application of critical psychological concepts like 'livsførelse' and 'anliggender'.",
+    "central_claims": [
+      {
+        "claim": "The established police exit program paradoxically produces stress, loneliness, and 'double-bind' situations rather than facilitating a smooth transition to civilian life.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Subject-subject research, where marginalized individuals act as co-researchers, facilitates expansive learning and helps them build a new, meaningful identity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Exiting a gang is not a linear process but involves complex dualities, continuous negotiations of identity, and the need to establish new meaningful communities.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Livsførelse (Conduct of everyday life)",
+        "definition": "The daily conduct of life, analyzed through critical psychology, which is filled with dualities, dilemmas, and conflicts.",
+        "role": "Provides the framework for understanding Peter's daily struggles, routines, and continuous identity formation."
+      },
+      {
+        "term": "Anliggende (Concerns/Matters)",
+        "definition": "What gives meaning and is important in an individual's daily life, driving their actions across different contexts.",
+        "role": "Explains Peter's core motivations, such as finding a safe home for his family and becoming an academic."
+      },
+      {
+        "term": "Doublebind-situationer (Double-bind situations)",
+        "definition": "A 'checkmate' situation (derived from R.D. Laing) where an individual feels completely stuck, and no matter what they do, they cannot win.",
+        "role": "Captures the severe psychological toll and psychotic symptoms Peter experiences due to the failing exit program."
+      },
+      {
+        "term": "Overskridende læring (Expansive learning)",
+        "definition": "Learning and action possibilities that contribute to partially overcoming a marginal position through small steps and complex changes.",
+        "role": "Describes how Peter's engagement in academic work and helping others allows him to transcend his former rocker identity."
+      },
+      {
+        "term": "Tingsliggørelse (Reification)",
+        "definition": "The process of giving form to experience by producing objects (like logs, films, or articles) that can be negotiated and shared.",
+        "role": "Explains how documenting Peter's journey helps validate his new identity in academic and civilian communities."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Subject-subject vs. Subject-object research",
+        "summary": "Treating research participants as equal co-researchers with shared interests versus treating them as instruments or objects for data collection.",
+        "stakes": "Determines the ethical validity of the research and its ability to empower marginalized individuals."
+      },
+      {
+        "label": "Rocker masculinity ('Jack') vs. Academic/civilian identity ('Peter')",
+        "summary": "The internal conflict between reacting to provocations with physical dominance and aggression versus responding with reflection and neutrality.",
+        "stakes": "Crucial for Peter's successful integration into civilian life and his ability to avoid reproducing his past."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming gang exit is a linear choice rather than a complex, ongoing navigation of dualities and double-binds.",
+      "Viewing the individual solely as a passive recipient of exit programs rather than an active participant who needs meaningful communities.",
+      "Thinking research ethics strictly requires maintaining objective distance, whereas this text argues for deep, boundary-crossing involvement."
+    ],
+    "quote_targets": [
+      {
+        "target": "Der er ingen fremtid for mig i jeres verden... (p. 273)",
+        "why": "Illustrates the profound despair and double-bind experience Peter faces in the exit program."
+      },
+      {
+        "target": "Sp(l)itting on the street log (p. 279)",
+        "why": "Provides a concrete example of Peter negotiating his old rocker identity versus his new reflective identity."
+      },
+      {
+        "target": "Den etiske fordring var uudtalt for os begge... (p. 276)",
+        "why": "Shows the application of Løgstrup's philosophy to research ethics and interpersonal trust in the study."
+      }
+    ],
+    "grounding_notes": [
+      "The text is heavily grounded in qualitative logs (audio/video) produced by the co-author 'Peter' in real-time.",
+      "Theoretical frameworks are explicitly integrated with empirical data, such as applying Laing's double-bind to Peter's housing crisis."
+    ],
+    "warnings": [
+      "The text is a highly specific single-case study; generalizations about all gang exits should be made cautiously.",
+      "The dual role of the authors (researcher and subject) intentionally blurs traditional objective research boundaries, which may challenge conventional methodological standards."
+    ]
+  }
+}

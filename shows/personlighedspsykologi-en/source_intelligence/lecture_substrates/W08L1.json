@@ -1,0 +1,159 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:31:21Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l1-lamiell-2021-be79d36e",
+      "w08l1-laux-et-al-2010-cfff840c",
+      "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "49d044b1806d458af584f719b81de21a55be60e24f4c8e18efd99d9505693c75",
+      "source_cards_signature": "b81ee42ac698d38e33898dc3826b710859922688915258bef68228e9d58cc0ba",
+      "raw_sources_signature": "ecf9a4dd3718271da9a44e13ce1b321456c1866f363c9b68d12963fa0313f182"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W08L1",
+    "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+    "sequence_index": 15
+  },
+  "analysis": {
+    "lecture_question": "How can personality psychology study the individual as a unified, goal-oriented whole rather than a mere aggregate of isolated traits?",
+    "central_learning_problem": "Students often default to viewing personality as a collection of reified, abstract traits (impersonalism) or fall into Cartesian dualism (naïve personalism). The central learning challenge is to grasp 'critical personalism,' which posits the person as a 'unitas multiplex' (a unity in diversity) whose development is driven by the dynamic convergence of inner dispositions and outer environmental affordances. This requires shifting from mechanistic, elementaristic causality to a teleological, holistic understanding of human action.",
+    "source_roles": [
+      {
+        "source_id": "w08l1-lamiell-2021-be79d36e",
+        "role": "anchor",
+        "rationale": "Provides the foundational philosophical and historical introduction to Stern's critical personalism, defining core concepts like psychophysical neutrality, convergence, and introception."
+      },
+      {
+        "source_id": "w08l1-laux-et-al-2010-cfff840c",
+        "role": "application",
+        "rationale": "Demonstrates how Stern's abstract concepts can be neutralized and applied to a concrete, extreme psychobiographical case (Adolf Hitler) to test the theory's boundaries."
+      },
+      {
+        "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+        "role": "framing",
+        "rationale": "Structures the lecture by connecting Stern's foundational philosophy to empirical examples (Muchow's life space) and subsequent trait theory (Allport), showing the theory's broader impact."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-laux-et-al-2010-cfff840c"
+        ],
+        "relation": "Laux et al. extends and qualifies Lamiell's presentation of Stern's theory by showing that its mechanisms can be applied descriptively to destructive figures, stripping away Stern's original optimistic bias.",
+        "learning_stakes": "Helps students see that personalistic mechanisms (like convergence and introception) are scientifically descriptive tools, not just romantic or moralistic ideals."
+      },
+      {
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ],
+        "relation": "The lecture slides extend Lamiell's historical introduction by tracing Stern's influence forward to Lewin's field theory, Muchow's developmental ecology, and Allport's trait hierarchy.",
+        "learning_stakes": "Demonstrates the lasting legacy of critical personalism in shaping modern psychological concepts like 'life space' and dynamic trait organization."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Critical Personalism",
+        "explanation": "A philosophical and psychological framework viewing the person as a unique, inherently valuable, self-activated, and goal-oriented unity, contrasting with mechanistic impersonalism.",
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ]
+      },
+      {
+        "concept": "Convergence",
+        "explanation": "The co-determination of a person's development and actions by the active interplay of their inner dispositions (potentialities) and outer environmental factors (affordances).",
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-laux-et-al-2010-cfff840c",
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ]
+      },
+      {
+        "concept": "Unitas Multiplex",
+        "explanation": "The concept that a person is a unified whole that contains and integrates a multiplicity of diverse, and sometimes contradictory, attributes and tendencies.",
+        "source_ids": [
+          "w08l1-laux-et-al-2010-cfff840c",
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ]
+      },
+      {
+        "concept": "Introception",
+        "explanation": "The active, purposive process of appropriating external goals, meanings, and values (the heterotelic) into one's own self-goals (the autotelic).",
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-laux-et-al-2010-cfff840c"
+        ]
+      },
+      {
+        "concept": "Life Space",
+        "explanation": "The psychological representation of a person's environment, where boundaries and distances are defined functionally and ego-centrically by the individual's actions, rather than purely geographically.",
+        "source_ids": [
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Persons vs. Things",
+        "stakes": "Establishes the fundamental ontological and ethical baseline for Stern's psychology, arguing that it is scientifically and morally wrong to treat humans as mechanistic aggregates of parts.",
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+        ]
+      },
+      {
+        "tension": "Personalism vs. Individualism",
+        "stakes": "Prevents the misunderstanding that focusing on the individual person equates to selfish isolation, highlighting that personalism requires integrating supra-personal and socio-ethical demands.",
+        "source_ids": [
+          "w08l1-lamiell-2021-be79d36e"
+        ]
+      },
+      {
+        "tension": "Idealized vs. Neutralized Personalism",
+        "stakes": "Determines whether Stern's framework can be universally applied as a scientific tool (even to destructive figures like Hitler) or if it remains a value-laden, optimistic philosophy.",
+        "source_ids": [
+          "w08l1-laux-et-al-2010-cfff840c"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating personalism with individualism, ignoring Stern's emphasis on supra-personal and socio-ethical demands.",
+      "Confusing 'convergence' with simple environmental determinism or mechanistic interactionism, missing the active role of the person.",
+      "Assuming 'life space' is identical to physical or geographical space, rather than a subjective, functional representation.",
+      "Viewing contradictory behaviors in an individual as evidence that they lack personality traits, rather than understanding it as the result of a hierarchical trait structure (unitas multiplex)."
+    ],
+    "must_carry_ideas": [
+      "The person-level reality cannot be reduced to abstract trait scores or mechanistic parts; the person is a unified, goal-oriented whole.",
+      "Personality development is multiply determined by the dynamic convergence of inner potentials and outer conditions.",
+      "Action and purposiveness are key units for linking the person and their environment.",
+      "Methodological individualism requires conceptual precision, recognizing that population regularities do not automatically explain singular persons."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "Laux et al. (2010) uses the clinical diagnosis of Borderline Personality Disorder heuristically to apply Stern's concepts to Hitler; this should be treated as an analytical tool rather than a definitive psychiatric assessment.",
+      "The lecture slides provide high-level summaries and translated quotes of complex philosophical concepts (like psychophysical neutrality) that require the Lamiell reading for deep comprehension."
+    ]
+  }
+}

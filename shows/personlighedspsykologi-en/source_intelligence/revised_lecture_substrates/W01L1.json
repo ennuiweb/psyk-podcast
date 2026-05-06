@@ -1,0 +1,78 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:05:22Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "w01l1-lewis-1999-295c67e3",
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "w01l1-seminar-1-introduktion-9fe382c8"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "77c3697f191a06f332347865d3f08c94b1d0f3b314f74f302e58d1cf9e3942aa",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L1",
+    "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+    "sequence_index": 1
+  },
+  "analysis": {
+    "top_down_course_relevance": "W01L1 establishes the indispensable meta-theoretical scaffolding for the entire course. By introducing the four orientation points, it provides the comparative framework necessary to navigate, contrast, and synthesize the fundamentally incompatible paradigms presented from week 2 to week 11, preventing the course from feeling like a disjointed list of theories.",
+    "what_matters_more": [
+      "The four orientation points (essence/context, agency, determination, historicity) as the mandatory meta-analytical framework for the entire course and final exam.",
+      "The epistemological mapping of personality psychology (natural vs. human vs. social sciences), which sets up the fundamental clashes between upcoming theoretical blocks.",
+      "The ontological distinction between 'inner essence' and 'context', which foreshadows the course's overarching trajectory from trait psychology to poststructuralism."
+    ],
+    "de_emphasize": [
+      "The granular details of Lewis's five specific developmental models; they are primarily a vehicle for practicing the application of the orientation points in the seminar, not the core theoretical focus of the course.",
+      "The etymological history of the word 'persona' (mask); while a useful introductory hook, it is secondary to the meta-theoretical framework."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W12L1 (Orienteringspunkter og subjektets historie)",
+        "relation": "Meta-theoretical framing and exam synthesis",
+        "rationale": "W01L1 introduces the exact analytical tools (the four orientation points) that are synthesized and required for the comparative exam preparation in W12L1."
+      },
+      {
+        "target": "W02L1 (Trait Psychology) vs. W08L1 (Critical Personalism)",
+        "relation": "Epistemological and ontological clash",
+        "rationale": "The natural vs. human/social science distinction introduced here perfectly predicts the methodological clash between measuring isolated traits (W02) and understanding the whole person in context (W08)."
+      },
+      {
+        "target": "W10L2 and W11L1 (Sociocultural and Poststructural theories)",
+        "relation": "Essence vs. Context trajectory",
+        "rationale": "The 'essence vs. context' tension introduced in W01L1 reaches its radical conclusion in the late-course theories that entirely deconstruct 'inner essence' in favor of historical and discursive subjectivation."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'impossibility' of a single definition of personality, highlighting the fragmented nature of the field.",
+      "Introduce the four orientation points as the 'decoder ring' or 'lenses' the hosts will use to evaluate every theory throughout the season.",
+      "Use the tension between 'inner essence' and 'context' as a teaser for the course's journey from biological trait models to social constructionism."
+    ],
+    "carry_forward": [
+      "The explicit application of the four orientation points (essence/context, agency, determination, historicity) to every subsequent theory.",
+      "The distinction between ontology (what a person is) and epistemology (how we measure them), which explains why different paradigms use vastly different methods."
+    ],
+    "warnings": [
+      "Students may get bogged down in memorizing Lewis's specific developmental models and miss that they are merely a practice exercise for applying the orientation points.",
+      "Avoid presenting the different paradigms as complementary pieces of a puzzle; emphasize that they often hold mutually exclusive assumptions about human nature."
+    ]
+  }
+}

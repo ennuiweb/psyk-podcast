@@ -2,16 +2,16 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:40:42Z",
+  "generated_at": "2026-05-05T19:07:41Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
     "prompt_version": "personlighedspsykologi-source-card-v1",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -23,7 +23,7 @@
     "dependency_hashes": {
       "source_file": "828a1236769402847c2110564b96afa78c38bd82c64e7ea6f529888487c926a8",
       "source_files_signature": "61c88a67b62736d1e391c69b435fdbf736727d46fa89659d2804006ad65cd328",
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -49,27 +49,27 @@
     "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Slaar til lyd for en antireduktionistisk tilgang i personlighedspsykologien, der bygger paa mening, bevidsthed og subjektets umiddelbare oplevelse frem for naturvidenskabelig hjerneforskning eller adfærdsfysiologi.",
-    "source_role": "Forelaesningsslides der overordnet kortlaegger faenomenologiens historie, noeglepersoner og centrale metodiske greb til brug i personlighedspsykologien.",
-    "relation_to_lecture": "Udgoer fundamentet og de visuelle holdepunkter for forelaesning 11 om faenomenologisk personlighedspsykologi.",
+    "theory_role": "Præsenterer fænomenologien som en grundlæggende teoretisk og metodisk ramme for personlighedspsykologien, der prioriterer meningsskabelse, intentionalitet og førstepersonsperspektivet over reduktionistiske modeller.",
+    "source_role": "Forelæsningsslides, der introducerer den fænomenologiske tradition, dens historiske hovedpersoner (Husserl, Merleau-Ponty, Rubin) og dens metodiske anvendelse i psykologien.",
+    "relation_to_lecture": "Dette er hovedpræsentationen til forelæsning 11 om fænomenologisk personlighedspsykologi.",
     "central_claims": [
       {
-        "claim": "Faenomenologisk personlighedspsykologi tager udgangspunkt i 1. personsperspektivet og intentionalitet for at undersoege subjektivitetsstrukturer og hvordan verden fremtraeder for individet.",
-        "grounding": "lecture-framed",
-        "confidence": "high"
-      },
-      {
-        "claim": "Husserl identificerer tre irreducible niveauer i bevidstheden: den foerste-personlige givethed, egoet som strukturerende princip, og det reflekterende niveau.",
+        "claim": "Fænomenologisk personlighedspsykologi undersøger subjektivitetsstrukturer fra et førstepersonsperspektiv med et centralt fokus på intentionalitet.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Koebehanvnerfaenomenologien (eksemplificeret ved Edgar Rubin og Franz From) lagde enorm vaegt paa noejagtig, antiteoretisk observation og detaljeret beskrivelse af hverdagsoplevelser frem for store forklaringsmodeller.",
+        "claim": "Husserl identificerer tre irreducible bevidsthedsniveauer: den førstepersonlige givethed, egoet som strukturerende princip og det reflekterende niveau.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Ifolge Bertelsen (2009) vedroerer personlighed hele vores vaeremaade: hvordan vi oplever og forholder os til verden, hinanden og os selv.",
+        "claim": "Tidlig Københavnerfænomenologi, særligt repræsenteret ved Edgar Rubin, var stærkt kritisk over for altomfattende teorier og prioriterede i stedet nøjagtig observation og beskrivelse af oplevelser.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Ifølge Merleau-Ponty er bevidstheden forankret i kroppen, hvilket gør kropssubjektet til det erfaringsmæssige udgangspunkt for sansning, perception og affekter.",
         "grounding": "source-grounded",
         "confidence": "high"
       }
@@ -77,64 +77,58 @@
     "key_concepts": [
       {
         "term": "Intentionalitet",
-        "definition": "Bevidsthedens rettethed mod verden; bevidstheden er altid bevidsthed om noget, og koncepter som subjekt og objekt giver ikke mening uden hinanden.",
-        "role": "Udgoer den grundlaeggende antagelse i faenomenologien om, at vi ikke kan forstaa mennesket isoleret fra dets omverden."
+        "definition": "Bevidsthedens rettethed mod verden, hvilket indebærer, at begreber som subjekt og objekt ikke giver mening uden hinanden.",
+        "role": "Fungerer som det ontologiske fundament for fænomenologien, der forklarer, hvordan verden kun kan erkendes gennem bevidstheden."
       },
       {
         "term": "Kropssubjektet",
-        "definition": "Merleau-Pontys begreb for kroppen som det erfaringsmaessige udgangspunkt, hvor bevidstheden er forankret i kroppen.",
-        "role": "Udvider faenomenologien til at omfatte sansning, perception og affekter som fundamentalt kropslige."
-      },
-      {
-        "term": "Faenomenologisk reduktion",
-        "definition": "En metode der kraever aabenhed og stringente horisontale/vertikale beskrivelser for at fange faenomenets essens frem for at blive forstyrret af forudindtagede teorier.",
-        "role": "Sikrer den metodiske stringens i faenomenologiske undersoegelser af psykologiske faenomener."
+        "definition": "Kroppen forstået som det erfaringsmæssige udgangspunkt, hvor bevidsthed, fornuft og selvforståelse er forankret (Merleau-Ponty).",
+        "role": "Udvider det fænomenologiske perspektiv fra ren bevidsthed til at inkludere menneskets kropslige væren i verden."
       },
       {
         "term": "Meningskondensering",
-        "definition": "En kvalitativ analysemetode (Steinar Kvale) der indebaerer en kortere formulering af informanternes udtrykte meninger.",
-        "role": "Fungerer som et praktisk redskab til at strukturere og forstaa faenomenologiske data fra forsogspersoner."
+        "definition": "En metode beskrevet af Steinar Kvale, der indebærer en kortere formulering af informanternes udtrykte meninger.",
+        "role": "Præsenteres som et konkret metodisk redskab til at bearbejde og analysere fænomenologisk empiri."
+      },
+      {
+        "term": "Subjektivitetsstrukturer",
+        "definition": "Strukturer, der er basale for en forståelse af begreber som personlighed, identitet, selv og intersubjektivitet.",
+        "role": "Forbinder den fænomenologiske filosofi direkte med personlighedspsykologiens kernebegreber."
       }
     ],
     "distinctions": [
       {
         "label": "1. person vs. 3. personsperspektiv",
-        "summary": "Forskellen mellem den oplevede erfaring fra subjektets eget synspunkt (1. person) og den udefrakommende observation af objektet (3. person).",
-        "stakes": "Faenomenologien prioriterer 1. personsperspektivet og insisterer paa, at faenomenet maa beskrives subjektivt for at psykologien er videnskabeligt velfunderet."
-      },
-      {
-        "label": "Forsogspersons oplevelse vs. efterrationalisering",
-        "summary": "Metodisk adskillelse mellem den umiddelbare, direkte oplevelse af en situation og de holdninger, teoretiske opfattelser eller rationaliseringer der laegges ned over den.",
-        "stakes": "Det er centralt for den faenomenologiske forskningsmetode at indfange det direkte fænomen renset for teoretiske antagelser."
+        "summary": "Forskellen mellem at undersøge oplevelsen indefra som den fremtræder for subjektet (1. person) og at observere adfærd eller hjernestrukturer udefra (3. person).",
+        "stakes": "Afgørende for fænomenologiens eksistensberettigelse som et korrektiv til naturvidenskabelig og reduktionistisk psykologi."
       },
       {
         "label": "Empatisk hermeneutik vs. mistankens hermeneutik",
-        "summary": "Ricoeurs to tilgange i den hermeneutiske vending: at laese medaabent og forstaaende (empatisk) overfor at lede efter skjulte, bagvedliggende motiver (mistanke).",
-        "stakes": "Afgor om psykologen tager subjektets udsagn for paalydende mening eller anlaegger en kritisk, afsaloerende vinkel paa oplevelsen."
+        "summary": "To forskellige fortolkningstilgange formuleret af Ricouer inden for den hermeneutiske vending.",
+        "stakes": "Definerer forskellen på at forsøge at forstå subjektets oplevelse loyalt versus at afdække skjulte eller ubevidste motiver bag oplevelsen."
       }
     ],
     "likely_misunderstandings": [
-      "At faenomenologi afviser enhver form for struktur (slidne pointerer tvaertimod at faenomenologien undersoeger subjektivitetsstrukturer og essens).",
-      "At intentionalitet blot betyder at have en hensigt, fremfor at bevidstheden principielt er rettet mod objekter i verden.",
-      "At fokus paa bevidsthed ekskluderer kroppen (Merleau-Pontys kropssubjekt viser at bevidsthed er kropsligt forankret)."
+      "At fænomenologi blot er ustruktureret introspektion, frem for en stringent videnskabelig metode til at kortlægge oplevelsesmuligheder og essens.",
+      "At fænomenologien ignorerer kroppen, hvilket modsiges af Merleau-Pontys begreb om kropssubjektet.",
+      "At fænomenologi altid er højteoretisk, idet tidlige skikkelser som Edgar Rubin var eksplicit antiteoretiske."
     ],
     "quote_targets": [
       {
-        "target": "Personlighed vedroerer hele vores vaeremaade: Den maade hvorpaa vi oplever verden, hinanden og os selv",
-        "why": "Det er den eksplicitte arbejdsdefinition af personlighed fra et faenomenologisk synspunkt i kurset (Bertelsen 2009)."
+        "target": "Personlighed vedrører hele vores væremåde: Den måde hvorpå vi oplever verden, hinanden og os selv...",
+        "why": "Bertelsens (2009) citat giver en præcis, fænomenologisk forankret definition af personlighedsbegrebet."
       },
       {
-        "target": "Rubin havde igen talt om sin avsky for teorier, jo mere omfattende desto vaerre var de",
-        "why": "Illustrerer levende Koebehanvnerfaenomenologiens praemiss om at prioritere noejagtig observation og beskrivelse over store korthus-teorier."
+        "target": "Teorier er korthuse som ens efterfølgere skal blæse af bordet, før han begynder at bygge sit eget...",
+        "why": "Edgar Rubins citat illustrerer den tidlige københavnerfænomenologis radikale fokus på observation frem for spekulativ teori."
       }
     ],
     "grounding_notes": [
-      "Slidne prioriterer overblik over figurer (Husserl, Merleau-Ponty, Giorgi) og definitioner, men mangler den bindende mundtlige tekst.",
-      "Visse teoretikere (Zajonc, Damasio, Lazarus) naevnes kort som modsaetninger til den faenomenologiske fundering, formodentlig som referencer til tidligere forelaesninger i kurset."
+      "Slidene refererer eksplicit til både internationale (Husserl, Merleau-Ponty, Giorgi) og danske (Rubin, Tranekjær Rasmussen, From, Zahavi, Bertelsen) fænomenologer.",
+      "Der drages en eksplicit kontrast mellem fænomenologisk forankring og teorier fra Lazarus, Zajonc og Damasio."
     ],
     "warnings": [
-      "Mange slides indeholder aabne spoergsmaal (fx. 'Agency?', 'Determination?') hvor underviserens egne svar ikke fremgaar af kildematerialet alene.",
-      "Konteksten for 'intense interesse karakteriseret ved emotionalitet' paa slide 6 er implicit - det relaterer sig sandsynligvis til et specifikt case-eksempel med kunst eller et specifikt faenomen som underviseren har gennemgaaet muntligt."
+      "Slidene indeholder meget korte stikord til komplekse filosofiske begreber (fx Noema og Noesis, Husserls reduktioner), som kræver supplerende læsning eller forelæsningslyd for at kunne forstås til fulde."
     ]
   }
 }

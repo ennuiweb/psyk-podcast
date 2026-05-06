@@ -1,0 +1,194 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:26:24Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "w03l1-kandler-and-instinske-2025-01535a8e",
+      "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "c988effb434aae0e195339d576df0d6a9663f38b2e70144bc3d7a1034ce65b98",
+      "source_cards_signature": "0e18140fb8e6ebf7b5fcd36908982bf7e3f22b2cda01e624b59861443e9b17c4",
+      "raw_sources_signature": "4517c7e1073874b5d2e41345a55793e31259d284c2c8ba52091a6743f83211f2"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W03L1",
+    "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+    "sequence_index": 5
+  },
+  "analysis": {
+    "lecture_question": "How do genetics, evolution, culture, and socioecology interact to shape and maintain individual differences in personality?",
+    "central_learning_problem": "Students often default to deterministic, single-cause explanations for personality (e.g., 'the gene for extraversion' or 'culture makes you this way'). The central learning challenge is to shift their understanding to a polygenic, poly-environmental, and interactionist framework where macro-level factors (culture, socioecology) and micro-level factors (genes, epigenetics) mutually constitute and adaptively calibrate personality over time.",
+    "source_roles": [
+      {
+        "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+        "role": "anchor",
+        "rationale": "Provides the overarching Socioecological-Genetic Framework that integrates all four domains of the lecture into a single theoretical model."
+      },
+      {
+        "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+        "role": "framing",
+        "rationale": "Structures the lecture's progression from behavioral genetics methodologies to evolutionary psychology and the niche diversity hypothesis."
+      },
+      {
+        "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+        "role": "supporting",
+        "rationale": "Supplies the state-of-the-art behavioral genetics foundation, detailing the polygenic and poly-environmental architecture of personality."
+      },
+      {
+        "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+        "role": "supporting",
+        "rationale": "Supplies the evolutionary foundation, explaining how adaptive trade-offs and developmental calibration maintain personality variation."
+      },
+      {
+        "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+        "role": "application",
+        "rationale": "Offers a massive empirical demonstration of how macro-level societal conditions shape a specific personality factor (the Dark Factor) via adaptive plasticity."
+      },
+      {
+        "source_id": "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5",
+        "role": "caveat",
+        "rationale": "Actively warns against reductionist thinking, using the complexity of genetics to critique pop-cultural biologism and essentialism."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+          "w03l1-zettler-et-al-2025-6ce9bdc0"
+        ],
+        "relation": "Zettler et al. provides a concrete empirical application of the theoretical socioecological framework proposed by Lu et al., specifically linking aversive societal conditions to the development of the Dark Factor of personality.",
+        "learning_stakes": "Helps students see how broad, abstract theories of socioecological influence can be operationalized and tested in large-scale cross-cultural research."
+      },
+      {
+        "source_ids": [
+          "w03l1-kandler-and-instinske-2025-01535a8e",
+          "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+        ],
+        "relation": "The seminar slides use the complex, polygenic reality detailed by Kandler & Instinske to actively critique and dismantle pop-cultural 'biologism' and genetic determinism.",
+        "learning_stakes": "Prevents students from misinterpreting heritability estimates as deterministic biological destiny."
+      },
+      {
+        "source_ids": [
+          "w03l1-volk-and-puchalski-2025-60aaf5d0",
+          "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91"
+        ],
+        "relation": "Both sources extend the discussion of personality variation by introducing evolutionary mechanisms (balancing selection, niche diversity) that explain why individual differences are maintained rather than eliminated.",
+        "learning_stakes": "Shifts the focus from 'how much is genetic' to 'why does this genetic variation exist in the first place'."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Mutual Constitution",
+        "explanation": "The continuous, dynamic, and reciprocal process where culture influences individuals' personalities, and individuals' aggregate personalities collectively shape culture.",
+        "source_ids": [
+          "w03l1-lu-benet-martinez-and-wang-2023-38a36550"
+        ]
+      },
+      {
+        "concept": "Polygenic and Poly-environmental Architecture",
+        "explanation": "The understanding that personality traits are influenced by hundreds of genetic variants and numerous specific environmental experiences, each having only a minuscule effect size.",
+        "source_ids": [
+          "w03l1-kandler-and-instinske-2025-01535a8e"
+        ]
+      },
+      {
+        "concept": "Adaptive Developmental Calibration",
+        "explanation": "The process by which personality traits are shaped during development to meet specific environmental demands, rather than emerging fully formed at birth.",
+        "source_ids": [
+          "w03l1-volk-and-puchalski-2025-60aaf5d0",
+          "w03l1-zettler-et-al-2025-6ce9bdc0"
+        ]
+      },
+      {
+        "concept": "Heritability",
+        "explanation": "A population-level statistic estimating the proportion of phenotypic variance attributable to genotypic variance, which fluctuates based on population and environment.",
+        "source_ids": [
+          "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+          "w03l1-kandler-and-instinske-2025-01535a8e"
+        ]
+      },
+      {
+        "concept": "Niche Diversity Hypothesis",
+        "explanation": "The theory that complex societies with diverse social and occupational niches favor different combinations of traits, leading to greater personality variance and dimensionality.",
+        "source_ids": [
+          "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+          "w03l1-volk-and-puchalski-2025-60aaf5d0"
+        ]
+      },
+      {
+        "concept": "Biologism / Essentialism",
+        "explanation": "The flawed pop-cultural tendency to use biology as a deterministic argument, assuming that biological explanations represent absolute, unchangeable truths about a person.",
+        "source_ids": [
+          "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Genetic Determinism vs. Gene-Environment Interaction",
+        "stakes": "Crucial for moving students away from the idea of 'personality genes' toward an understanding of epigenetics, adaptive calibration, and complex biological networks.",
+        "source_ids": [
+          "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+          "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5",
+          "w03l1-kandler-and-instinske-2025-01535a8e"
+        ]
+      },
+      {
+        "tension": "Shared vs. Nonshared Environment",
+        "stakes": "Clarifies that the primary role of the environment in personality development is to drive individualization and uniqueness (nonshared), not to make family members similar (shared).",
+        "source_ids": [
+          "w03l1-kandler-and-instinske-2025-01535a8e",
+          "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91"
+        ]
+      },
+      {
+        "tension": "Top-down Evolutionary Theory vs. Bottom-up Lexical Approaches",
+        "stakes": "Highlights the limitations of purely statistical models (like the Big Five) and advocates for integrating evolutionary logic (like HEXACO) to understand why traits exist.",
+        "source_ids": [
+          "w03l1-volk-and-puchalski-2025-60aaf5d0"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Believing that heritability percentages apply to an individual's absolute trait level (e.g., 'my extraversion is 50% genetic') rather than explaining variance in a population.",
+      "Equating biological explanations with deterministic, unchangeable truths about an individual's character (biologism).",
+      "Assuming that growing up in the same household (shared environment) is the primary environmental driver of personality, ignoring the larger impact of nonshared environments.",
+      "Thinking evolution implies a single 'optimal' personality type, missing the role of adaptive trade-offs, balancing selection, and niche diversity.",
+      "Assuming that specific single genes directly cause specific personality traits."
+    ],
+    "must_carry_ideas": [
+      "Personality architecture is polygenic and poly-environmental, meaning it is shaped by hundreds of small genetic and environmental influences rather than single dominant causes.",
+      "Culture, socioecology, and genetics are mutually constitutive and interact dynamically, moving beyond simple 'nature vs. nurture' debates.",
+      "Evolutionary mechanisms like balancing selection, niche diversity, and adaptive developmental calibration explain why personality variation is maintained in human populations.",
+      "Heritability is a population-specific statistic that can change over time and between environments, not a fixed biological constant."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The epigenetic link between culture/socioecology and personality proposed by Lu et al. is explicitly theoretical and currently lacks direct empirical evidence.",
+      "Zettler et al.'s findings on societal conditions and the Dark Factor are observational; while the 20-year lag suggests directionality, strict causality cannot be definitively proven.",
+      "The seminar slides rely heavily on oral context and group work, meaning some theoretical depth is missing from the slides alone."
+    ]
+  }
+}

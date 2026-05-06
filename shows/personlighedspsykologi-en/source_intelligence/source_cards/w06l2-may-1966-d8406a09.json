@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:10:00Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l2-may-1966-d8406a09"
+    ],
+    "dependency_hashes": {
+      "source_file": "77449515bd1e5c736b97a6b1eb54486db787664decf2d3e5307add092f84d085",
+      "source_files_signature": "b903b26b18647a5f82c1984407cb88093fa7fcd2a73bd68189fb7ebef6f8aa03",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l2-may-1966-d8406a09",
+    "lecture_key": "W06L2",
+    "title": "May (1966)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 May (1966).pdf",
+    "source_paths": [
+      "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 May (1966).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 May (1966).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 May (1966).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "77449515bd1e5c736b97a6b1eb54486db787664decf2d3e5307add092f84d085",
+    "length_band": "long",
+    "page_count": 34,
+    "estimated_token_count": 22100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the historical and philosophical foundation for existential personality psychology, tracing its roots to Kierkegaard and Nietzsche, and contrasting its ontological approach with orthodox psychoanalysis and behaviorism.",
+    "source_role": "A foundational reading that introduces the existential movement in psychology, explaining why it emerged and what core philosophical assumptions differentiate it from other psychological schools.",
+    "relation_to_lecture": "Serves as the primary theoretical text for Week 6, Lecture 2 ('Eksistentiel personlighedspsykologi I'), establishing the core vocabulary (Dasein, ontology) and historical context needed to understand existential approaches to personality.",
+    "central_claims": [
+      {
+        "claim": "The existential movement in psychology emerged spontaneously as a necessary reaction against traditional scientific and psychoanalytic methods that reduced patients to abstract theories and mechanisms.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Existentialism seeks to understand human beings by undercutting the subject-object cleavage that has dominated Western thought and science since the Renaissance.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Both psychoanalysis and existentialism arose from the same 19th-century cultural crisis, which was characterized by the compartmentalization and fragmentation of the individual.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Kierkegaard's concept of 'truth-as-relationship' is foundational for dynamic psychology, emphasizing that objective facts are less important than the patient's subjective relationship to those facts.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Existence (Dasein)",
+        "definition": "Derived from 'ex-sistere', meaning to 'stand out' or 'emerge'. It portrays the human being not as a collection of static substances or mechanisms, but as constantly emerging and becoming.",
+        "role": "Forms the ontological foundation of existential psychology, shifting the focus from abstract psychological laws to the living reality of the person."
+      },
+      {
+        "term": "Subject-object cleavage",
+        "definition": "The epistemological split in Western science and philosophy that separates the observer (subject) from the observed (object), leading to a detached and fragmented view of humanity.",
+        "role": "Identifies the primary philosophical error that existential psychology attempts to correct in order to see the patient as a whole, living reality."
+      },
+      {
+        "term": "Truth-as-relationship",
+        "definition": "Kierkegaard's formulation that truth is not merely an objective fact, but depends on the individual's subjective relationship, passion, and commitment to it.",
+        "role": "Highlights the necessity of the therapist's and patient's active involvement and commitment in the therapeutic process, countering purely detached observation."
+      },
+      {
+        "term": "Compartmentalization",
+        "definition": "The 19th-century cultural and psychological phenomenon where different aspects of life (reason, emotion, religion, business) were rigidly separated, leading to inner breakdown.",
+        "role": "Contextualizes the historical origins of both neurosis (as described by Freud) and the existential crises (described by Kierkegaard and Nietzsche)."
+      },
+      {
+        "term": "Will to power",
+        "definition": "Nietzsche's concept, which May clarifies is not about aggression or competitive striving, but rather the individual affirming his existence and potentialities as a being in his own right.",
+        "role": "Provides an existential alternative to drive-reduction theories, framing the fundamental human drive as the urge to live out one's potential (potentia)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Existence vs. Essence",
+        "summary": "Essence refers to the static characteristics or substances of a thing (its 'whatness'), while existence refers to the dynamic, living reality of an individual actually being there (its 'thatness').",
+        "stakes": "Traditional science focuses on essences and abstract laws, which omits the living individual. Existential psychology prioritizes existence to understand the actual person in crisis."
+      },
+      {
+        "label": "Ecstatic Reason vs. Technical Reason",
+        "summary": "Ecstatic reason includes intuition, insight, and the capacity to transcend the immediate situation, whereas technical reason is reduced to isolated problem-solving and mechanical techniques.",
+        "stakes": "May argues that psychology's over-reliance on technical reason perpetuates the fragmentation of man, whereas existentialism seeks to recover a broader, more holistic understanding of human beings."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might confuse existentialism with anti-intellectualism or anti-science; May explicitly argues it is a protest to make science more empirical by including the reality of the living person.",
+      "Students might equate Nietzsche's 'will to power' with aggressive dominance over others, whereas May clarifies it means self-realization and affirming one's own potentialities.",
+      "Students might think existential psychology is just another specialized technique or offshoot of Freudianism, rather than a fundamental re-evaluation of the underlying assumptions about human nature."
+    ],
+    "quote_targets": [
+      {
+        "target": "Existentialism, in short, is the endeavor to understand man by cutting below the cleavage between subject and object which has bedeviled Western thought and science since shortly after the Renaissance.",
+        "why": "Succinctly defines the core epistemological goal of the existential movement."
+      },
+      {
+        "target": "The term 'existence,' coming from the root ex-sistere, means literally to stand out, to emerge.",
+        "why": "Provides the crucial etymological and conceptual definition of existence used throughout the text."
+      },
+      {
+        "target": "When the question of the truth is raised subjectively, reflection is directed subjectively to the nature of the individual's relationship; if only the mode of this relationship is in the truth, the individual is in the truth, even if he should happen to be thus related to what is not true.",
+        "why": "Illustrates Kierkegaard's concept of subjective truth and the necessity of commitment over mere objective fact-gathering."
+      }
+    ],
+    "grounding_notes": [
+      "The text heavily references European philosophers (Kierkegaard, Nietzsche, Heidegger, Sartre) and early existential psychiatrists (Binswanger) to build its case.",
+      "May frequently contrasts the 'Leibnitzian' continental tradition with the 'Lockean' pragmatic/behaviorist tradition of American psychology."
+    ],
+    "warnings": [
+      "The text is a historical and philosophical overview; it does not provide empirical studies or specific clinical case data, focusing instead on theoretical frameworks.",
+      "The text uses older academic phrasing and philosophical jargon (e.g., ontology, Dasein, potentia) that requires careful reading to avoid misinterpretation."
+    ]
+  }
+}

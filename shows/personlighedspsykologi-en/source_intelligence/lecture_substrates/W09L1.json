@@ -1,0 +1,205 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:33:07Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "w09l1-holzkamp-2013-c3068d8a",
+      "w09l1-dreier-1999-35da58b5",
+      "w09l1-lecture-17-kritisk-psykologi-30798115",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "2e360574e0edd7a7ebe95c10685e1e8586c982fa0c60d3e69c59f21e73578fff",
+      "source_cards_signature": "7d5a40a752e87e95ab2d494a226652cfeb0b24d1fd7759e645d290b1af442c6f",
+      "raw_sources_signature": "c462b4116cdbbfa0c9c0db0e800a71d67b62045f0ca434052f3f0c284be46281"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W09L1",
+    "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+    "sequence_index": 17
+  },
+  "analysis": {
+    "lecture_question": "How does Critical Psychology redefine personality from an internal, static entity to a dynamic composition of standpoints developed through participation in social practices?",
+    "central_learning_problem": "Students often enter the course accustomed to viewing personality as a set of internal traits or cognitive structures that dictate behavior across situations. The central learning problem in this lecture is shifting from this 'immediacy postulate' (where behavior is seen as a direct reaction to external stimuli or internal traits) to a practice-based, dialectical materialist ontology. Students must learn to analyze subjectivity and personality as distributed across contexts, understanding that individuals are active participants who develop 'standpoints' and 'agency' (handleevne) within the structural constraints and possibilities of their 'everyday conduct of life' (daglig livsførelse). This requires grasping complex concepts like 'double-binds' and 'expansive learning' without reducing them to mere individual choices or absolute structural determinism.",
+    "source_roles": [
+      {
+        "source_id": "w09l1-lecture-17-kritisk-psykologi-30798115",
+        "role": "anchor",
+        "rationale": "Structures the lecture, introduces the core ontology of Critical Psychology, and operationalizes concepts through concrete cases like Kenneth and Søren."
+      },
+      {
+        "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+        "role": "framing",
+        "rationale": "Provides the foundational conceptual framing, historical background, and core vocabulary (e.g., umiddelbarhedspostulatet, handleevne, livsførelse) for the lecture."
+      },
+      {
+        "source_id": "w09l1-dreier-1999-35da58b5",
+        "role": "supporting",
+        "rationale": "Establishes the core theoretical vocabulary of participation, contexts, and social practice, arguing against free-floating conceptions of subjectivity."
+      },
+      {
+        "source_id": "w09l1-holzkamp-2013-c3068d8a",
+        "role": "supporting",
+        "rationale": "Provides the epistemological foundation, critiquing mainstream variable psychology and introducing the 'standpoint of the subject' and 'reason discourse'."
+      },
+      {
+        "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+        "role": "application",
+        "rationale": "Offers an empirical, first-person case study of gang exit, demonstrating concepts like double-binds, expansive learning, and the co-researcher methodology in practice."
+      },
+      {
+        "source_id": "w08l2-seminar-9-kritisk-psykologi-7a7e589c",
+        "role": "application",
+        "rationale": "Operationalizes the lecture concepts into group exercises and connects them to the course's analytical orientation points (Essence/Context, Agency, Determination, Historicity)."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w09l1-holzkamp-2013-c3068d8a",
+          "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "w09l1-lecture-17-kritisk-psykologi-30798115"
+        ],
+        "relation": "Mørch & Hansen and the lecture slides apply Holzkamp's theoretical and methodological ideal of 'co-researchers' (subject-subject research) to concrete empirical cases.",
+        "learning_stakes": "Helps students see how dense epistemological critiques of mainstream psychology translate into actual qualitative research practices that aim to expand participant agency."
+      },
+      {
+        "source_ids": [
+          "w09l1-dreier-1999-35da58b5",
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-lecture-17-kritisk-psykologi-30798115"
+        ],
+        "relation": "The Grundbog and lecture slides synthesize and expand upon Dreier's concept of 'trajectories of participation' to formulate a comprehensive definition of personality.",
+        "learning_stakes": "Demonstrates how abstract concepts of social practice are operationalized to analyze how individuals navigate multiple contexts (e.g., the lecture's case of Kenneth)."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Umiddelbarhedspostulatet (The immediacy postulate)",
+        "explanation": "The problematic assumption in traditional psychology that individuals are completely subject to their immediate conditions, making their actions mere reactions to their environment.",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-lecture-17-kritisk-psykologi-30798115"
+        ]
+      },
+      {
+        "concept": "Deltagelse (Participation)",
+        "explanation": "The active involvement of a person in social practices, which is the fundamental way humans exist in and connect to the world, shifting focus from isolated internal states to situated engagement.",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-dreier-1999-35da58b5",
+          "w09l1-lecture-17-kritisk-psykologi-30798115",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Standpunkt (Standpoint)",
+        "explanation": "A person's subjective understanding of the rules, conditions, and their own placement within a given social practice, developed from their specific position.",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-lecture-17-kritisk-psykologi-30798115",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Handleevne (Agency)",
+        "explanation": "A person's capacity to act and influence their conditions, characterized as 'relative autonomy' because it is always conditioned by cultural, social, and material situatedness.",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-lecture-17-kritisk-psykologi-30798115",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Daglig livsførelse (Everyday conduct of life)",
+        "explanation": "The way a person organizes, prioritizes, and integrates their daily activities, obligations, and relations across different social contexts and structural demands.",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "w09l1-lecture-17-kritisk-psykologi-30798115",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "concept": "Medforskerprincippet (Co-researcher principle)",
+        "explanation": "A methodological stance where research participants are treated as equal, creative subjects with their own rationality, rather than passive objects of study.",
+        "source_ids": [
+          "w09l1-holzkamp-2013-c3068d8a",
+          "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "w09l1-lecture-17-kritisk-psykologi-30798115"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Reason discourse vs. Conditioning discourse",
+        "stakes": "Determines whether psychology treats humans as subjects with agency who act based on grounded reasons (first-person), or as objects mechanically determined by external variables (third-person).",
+        "source_ids": [
+          "w09l1-holzkamp-2013-c3068d8a"
+        ]
+      },
+      {
+        "tension": "Restrictive vs. Expansive Handleevne",
+        "stakes": "Highlights the difference between merely adapting to existing societal constraints (restrictive) versus actively working to overcome them and expand possibilities (expansive).",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662"
+        ]
+      },
+      {
+        "tension": "Position vs. Standpunkt",
+        "stakes": "Crucial for understanding that individuals are not merely passive products of their objective placement in a practice (position), but actively relate to and interpret it (standpunkt).",
+        "source_ids": [
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+        ]
+      },
+      {
+        "tension": "Subject-subject vs. Subject-object research",
+        "stakes": "Defines the ethical and methodological validity of critical psychological research, insisting on intersubjective understanding rather than objective quantification.",
+        "source_ids": [
+          "w09l1-holzkamp-2013-c3068d8a",
+          "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "w09l1-lecture-17-kritisk-psykologi-30798115"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'Critical Psychology' simply means being critical of other theories, rather than recognizing it as a specific theoretical tradition rooted in Marxist philosophy and Vygotskian cultural-historical psychology.",
+      "Equating 'handleevne' (agency) with absolute free will, ignoring the material, social, and cultural structures that condition it (relative autonomy).",
+      "Believing that critical psychology denies the existence of internal psychological processes; it actually insists these processes exist but must be understood in relation to concrete social contexts.",
+      "Confusing 'standpunkt' (standpoint) with a mere 'opinion', rather than understanding it as a structurally grounded perspective developed through concrete participation.",
+      "Thinking that the 'co-researcher principle' means the researcher is just a passive 'microphone holder' who uncritically accepts everything the participant says."
+    ],
+    "must_carry_ideas": [
+      "Personality is not an inherent or static entity, but a practical and contingent action formed through participation in social practices (a 'composition of standpoints').",
+      "Psychology must be conducted from the 'standpoint of the subject', understanding actions as grounded in reasons based on life conditions, rather than as behaviors caused by external variables.",
+      "Human agency is always present but is relatively autonomous, meaning it is shaped by and shapes the structural conditions of everyday life.",
+      "Research should aim for 'genstandsadækvathed' (object adequacy), studying individuals in their actual life conditions rather than in arbitrary experimental settings."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The Dreier (1999) source file only contains the first three pages of the article, meaning some concepts like 'personal conduct of life' are not fully elaborated in the provided excerpt.",
+      "The lecture slides reference unpublished or future works by the lecturer (Sander 2025, Sander et al. 2026) which students cannot access.",
+      "The seminar slides do not provide direct answers to the conceptual questions posed for group work; students must consult the referenced pages in the literature."
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:55:31Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l2-lacan-1966-2d720f56"
+    ],
+    "dependency_hashes": {
+      "source_file": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
+      "source_files_signature": "d2842a1c3e8fae01c8117b200fff6ec883c336c05cb0e29d4606b201877fa15a",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l2-lacan-1966-2d720f56",
+    "lecture_key": "W04L2",
+    "title": "Lacan (1966)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf",
+    "source_paths": [
+      "Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the foundational psychoanalytic theory of the imaginary register and the structural formation of the ego, challenging biological or purely cognitive developmental models of personality.",
+    "source_role": "Primary theoretical text introducing Lacan's reconceptualization of the ego for the lecture on psychoanalytic personality structure.",
+    "relation_to_lecture": "Serves as the core primary reading for Week 4 Lecture 2 ('Psykoanalytisk personlighedsstruktur'), providing the original 1949 theoretical formulation of the mirror stage.",
+    "central_claims": [
+      {
+        "claim": "The mirror stage is a primordial identification process where the infant assumes a specular image, precipitating the formation of the 'I' before it is socially determined.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human infants experience a 'specific prematurity of birth' characterized by motor unco-ordination, which the mirror stage temporarily resolves through an anticipated, imaginary mastery of the body as a unified Gestalt.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The ego is fundamentally characterized by the function of 'méconnaissance' (misrecognition) and an illusion of autonomy, rather than being an objective perception-consciousness system.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Mirror stage",
+        "definition": "A developmental phase (around 6-18 months) where the infant recognizes and jubilantly assumes its own image in a mirror, forming the foundational matrix of the 'I'.",
+        "role": "Serves as the core mechanism for the imaginary formation of the ego in Lacanian psychoanalytic theory."
+      },
+      {
+        "term": "Ideal-I (Ideal-Ich)",
+        "definition": "The primordial, fictional form of the 'I' established through the mirror image, situating the agency of the ego before its social determination.",
+        "role": "Explains how the ego is rooted in an external, alienating image that the subject will asymptotically strive to rejoin."
+      },
+      {
+        "term": "Fragmented body",
+        "definition": "The infant's experience of physical insufficiency, disjointed limbs, and motor unco-ordination prior to the unifying anticipation of the mirror image.",
+        "role": "Highlights the internal anxiety and biological lack of unity that drives the subject's need for the rigid armour of an alienating identity."
+      },
+      {
+        "term": "Méconnaissance",
+        "definition": "The fundamental function of misrecognition that characterizes the ego in all its structures, maintaining an illusion of self-sufficiency.",
+        "role": "Critiques traditional ego-psychology and existentialist views of a rational, autonomous self, framing the ego instead as a defensive fiction."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Animal instrumental intelligence vs. Human specular identification",
+        "summary": "A chimpanzee quickly exhausts the discovery of its mirror image once it realizes it is empty, whereas a human infant rebounds into a jubilant series of gestures to explore the relation between the virtual complex and reality.",
+        "stakes": "Demonstrates that the mirror stage in humans is not merely cognitive recognition, but a foundational libidinal and ontological identification."
+      },
+      {
+        "label": "Fragmented body vs. Orthopaedic totality",
+        "summary": "The contrast between the infant's actual biological reality of motor unco-ordination (fragmented body) and the imaginary, anticipated visual unity provided by the mirror image (Gestalt).",
+        "stakes": "Explains the alienating nature of the ego, which is built on an external mirage rather than an internal, organic reality."
+      },
+      {
+        "label": "Ego as perception-consciousness vs. Ego as méconnaissance",
+        "summary": "The opposition between the traditional view of the ego as an objective system organizing reality, and Lacan's view of the ego as structured by illusion and misrecognition.",
+        "stakes": "Challenges prevailing psychological and philosophical notions of a rational, mastering self, redefining the goal of psychoanalysis."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Taking the 'mirror stage' purely literally as requiring an actual physical mirror, rather than understanding it as a structural metaphor for any reflection of the self by the other.",
+      "Equating the Lacanian 'I' (ego) with a healthy, adaptive, rational agent, missing Lacan's central argument that the ego is fundamentally an alienating fiction.",
+      "Assuming the mirror stage is a phase that is completely outgrown, rather than a structural dynamic that permanently marks the subject's mental development."
+    ],
+    "quote_targets": [
+      {
+        "target": "We have only to understand the mirror stage as an identification, in the full sense that analysis gives to the term: namely, the transformation that takes place in the subject when he assumes an image",
+        "why": "Defines the core mechanism of the mirror stage directly in Lacan's own terms (Page 2)."
+      },
+      {
+        "target": "The fact of a real specific prematurity of birth in man",
+        "why": "Explains the biological basis (motor unco-ordination) that makes the mirror image so captivating and necessary for the infant (Page 4)."
+      },
+      {
+        "target": "Our experience shows that we should start instead from the function of méconnaissance that characterizes the ego in all its structures",
+        "why": "Summarizes Lacan's radical critique of the autonomous ego and sets up his alternative psychoanalytic framework (Page 6)."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a translated essay from Lacan's 'Écrits' (1966), originally delivered at the 16th International Congress of Psychoanalysis in 1949.",
+      "Analysis relies entirely on the provided page screenshots, as the OCR text layer in the provided document is missing or corrupted."
+    ],
+    "warnings": [
+      "The OCR text provided in the source file is almost entirely empty or consists only of dashes. The analysis was performed by reading the visual screenshots of the pages.",
+      "The text is highly dense and philosophical; students may struggle with Lacan's structuralist terminology (e.g., 'imago', 'Gestalt', 'méconnaissance') without lecture framing."
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:36Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l2-may-1966-d8406a09",
+      "w06l2-boss-1963-1feb5a5f",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "855cd8c964e7ee49d7c33ff0d6ae807888f8f1a5cc7aa4a8a14d653bfdfc3c85",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W06L2",
+    "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+    "sequence_index": 12
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture marks the course's major pivot toward the first-person perspective. By introducing 'meaning-making' and radical freedom, it breaks away from the deterministic models of the early course (traits, biosocial, psychoanalysis) and sets the stage for the later sociocultural deconstructions of the subject.",
+    "what_matters_more": [
+      "Explicitly mapping the 'Existence vs. Essence' distinction to the course's mandatory orientation points (specifically Essence/Context and Agency/Determination).",
+      "The epistemological shift from viewing the person as a calculable object (traits/biosocial) or a decentered subject (psychoanalysis) to a conscious, meaning-making agent.",
+      "The concept of psychological suffering as constricted possibilities of being-in-the-world, contrasting with medicalized deficit models."
+    ],
+    "de_emphasize": [
+      "Deep dives into pure Heideggerian ontology or the granular historical timeline of the existential movement, unless directly tied to the course's epistemological progression.",
+      "Abstract philosophical debates that cannot be operationalized into the course's 4 orientation points."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Contrastive epistemology",
+        "rationale": "Existentialism's core tenet that 'existence precedes essence' directly dismantles the reification of static traits introduced early in the course."
+      },
+      {
+        "target": "W04L1/W04L2 (Psychoanalysis)",
+        "relation": "Contrastive agency",
+        "rationale": "Contrasts the psychoanalytic 'decentered subject' driven by unconscious conflict with the existential subject defined by radical freedom, responsibility, and conscious meaning-making."
+      },
+      {
+        "target": "W09L1 (Critical Psychology)",
+        "relation": "Thematic progression of agency",
+        "rationale": "Existentialism locates agency in individual meaning-making and freedom, which critical psychology will later critique and relocate into societal participation and the conduct of everyday life."
+      },
+      {
+        "target": "W12L1 (Meta-theory and Exam Prep)",
+        "relation": "Direct application of meta-framework",
+        "rationale": "The existential rejection of 'essence' is a primary case study for how students must use the orientation points to compare theories in the final exam."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the radical shift from 'personality as a measurable object' to 'personality as lived existence'.",
+      "Use the 'Agency vs. Determination' and 'Essence vs. Context' orientation points as explicit lenses to explain Dasein and Being-in-the-world.",
+      "Discuss existential anxiety not as a clinical deficit, but as an ontological feature of human freedom, contrasting it with earlier pathological models."
+    ],
+    "carry_forward": [
+      "The concept of 'meaning-making' (Meningsskabelse) as the core driver of personality, which will be essential for Humanistic and Narrative psychology.",
+      "The tension between individual freedom and worldly constraints, which sets up the Agency vs. Structure dialectic explored heavily in Critical Psychology and Poststructuralism."
+    ],
+    "warnings": [
+      "Dense philosophical terminology (Dasein, ontology, existentialia) risks alienating students; it must be constantly translated back into the course's 4 orientation points to remain relevant for exam preparation.",
+      "Ensure students do not mistake existentialism for anti-science; frame it as an epistemological critique demanding a science appropriate for human meaning-making."
+    ]
+  }
+}

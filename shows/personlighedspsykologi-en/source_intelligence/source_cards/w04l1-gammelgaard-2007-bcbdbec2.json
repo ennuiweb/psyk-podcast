@@ -1,0 +1,148 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:53:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-gammelgaard-2007-bcbdbec2"
+    ],
+    "dependency_hashes": {
+      "source_file": "60b0db759d6715f8798b483648b8e150e9dc75d9c7b02fd09a95871f24c2545f",
+      "source_files_signature": "19432ff0aae2d904426fa2b0e19eeacf741e8cbe67b0ac06d0ee77e73f3fb701",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+    "lecture_key": "W04L1",
+    "title": "Gammelgaard (2007)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf",
+    "source_paths": [
+      "Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "60b0db759d6715f8798b483648b8e150e9dc75d9c7b02fd09a95871f24c2545f",
+    "length_band": "long",
+    "page_count": 30,
+    "estimated_token_count": 19500,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Teksten fungerer som en bred, historisk og begrebsmæssig introduktion til psykoanalysens udvikling, der bygger bro mellem klassisk freudiansk driftsteori og moderne objektrelations- og selvpsykologi.",
+    "source_role": "Grundbogskapitel, der etablerer det fundamentale vokabular og de teoretiske rammer for kursets behandling af det psykoanalytiske personlighedsbegreb.",
+    "relation_to_lecture": "Giver den nødvendige baggrundsviden til W04L1 om psykoanalysens personlighedsbegreb ved at definere kernebegreber som drift, det ubevidste og udviklingsfaser.",
+    "central_claims": [
+      {
+        "claim": "Psykoanalysen er ikke en statisk, historisk teori, men et levende videnskabeligt system, der løbende revideres og nuanceres af Freuds efterfølgere (f.eks. objektrelationsteoretikere og spædbørnsforskere).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freuds driftsbegreb skal forstås som et grænsebegreb mellem det somatiske og det psykiske, og seksualdriften adskiller sig fundamentalt fra biologiske overlevelsesinstinkter.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psykisk udvikling og traumer følger ikke en lineær tid, men er præget af 'Nachträglichkeit' (med tilbagevirkende kraft), hvor tidlige oplevelser først får deres fulde betydning gennem senere hændelser.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Nyere psykoanalyse har integreret empirisk spædbørnsforskning (f.eks. Daniel Stern) og kognitiv psykologi, hvilket har flyttet fokus fra det 'rekonstruerede barn' i terapien til det 'observerede barn'.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Drift",
+        "definition": "Et psykologisk grænsebegreb mellem psyke og krop; en kontinuerligt flydende indre pirringskilde, der skaber en psykisk repræsentation af et indre pres.",
+        "role": "Centralt for at forstå Freuds motivationsteori og adskillelsen af psykoanalytisk seksualitet fra ren biologi."
+      },
+      {
+        "term": "Nachträglichkeit",
+        "definition": "Et begreb for diakroni i psykisk udvikling, hvor en begivenhed først senere får tilskrevet en betydning og dermed får psykisk effekt som et traume (f.eks. i Freuds case om Emma).",
+        "role": "Forklarer psykoanalysens særlige tidsopfattelse og hvordan traumer og symptomer dannes."
+      },
+      {
+        "term": "Anlehnung",
+        "definition": "Seksualdriftens tilknytning til instinktet i starten af livet (f.eks. at sutte for næring), hvorefter den løsriver sig og bliver en selvstændig søgen efter lyst.",
+        "role": "Forklarer seksualdriftens oprindelse og dens frigørelse fra rene overlevelsesfunktioner."
+      },
+      {
+        "term": "Overgangsobjekt",
+        "definition": "Winnicotts begreb for barnets første 'ikke-mig' objekt (f.eks. en bamse), der befinder sig i et mellemliggende potentielt rum mellem indre fantasi og ydre realitet.",
+        "role": "Illustrerer objektrelationsteoriens fokus på barnets tidlige relationer og udviklingen af evnen til at symbolisere."
+      },
+      {
+        "term": "Selvobjekt",
+        "definition": "Kohuts betegnelse for en funktion, et objekt har for et menneskes følelse af egen værdi, hvor objektet opleves som en del af selvet.",
+        "role": "Centralt for selvpsykologien og forståelsen af narcissisme og moderne personlighedsforstyrrelser."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Instinkt vs. Drift",
+        "summary": "Instinkter er medfødte, biologiske adfærdsmønstre rettet mod overlevelse (f.eks. sult), mens drifter er psykologiske repræsentationer, der opstår, når lysten løsriver sig fra den instinktive tilfredsstillelse.",
+        "stakes": "Afgørende for at undgå en rent biologisk læsning af Freud og for at forstå seksualitetens udvidede betydning i psykoanalysen."
+      },
+      {
+        "label": "Det rekonstruerede barn vs. Det observerede barn",
+        "summary": "Forskellen mellem at udlede barnets psykologi retrospektivt gennem voksne patienters fortællinger i terapi (Freud) og at studere spædbørn direkte gennem empirisk forskning (Stern).",
+        "stakes": "Viser det metodiske skift i moderne psykoanalyse og integrationen af udviklingspsykologisk empiri."
+      },
+      {
+        "label": "Topografisk model vs. Strukturmodel",
+        "summary": "Skiftet fra Freuds tidlige model (bevidst, før-bevidst, ubevidst) til den senere model bestående af instanserne jeget, det'et og over-jeget.",
+        "stakes": "Forklarer udviklingen i Freuds syn på psykiske konflikter og forsvarsmekanismernes ubevidste natur."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At Freuds seksualbegreb udelukkende handler om voksnes genitale reproduktion, frem for en bredere, kropslig lystoplevelse, der starter i spædbarnsalderen.",
+      "At psykoanalysen i dag er identisk med Freuds oprindelige teorier, og at den ignorerer moderne empirisk forskning.",
+      "At det ubevidste blot er et 'sted' i hjernen, frem for en dynamisk proces med sin egen logik og intentionalitet."
+    ],
+    "quote_targets": [
+      {
+        "target": "Nøglebegreber (s. 181-182)",
+        "why": "Indeholder præcise, leksikale definitioner af kapitlets vigtigste termer (Anlehnung, Nachträglichkeit, Overgangsobjekt m.fl.), som er ideelle til eksamensforberedelse."
+      },
+      {
+        "target": "Historien om Emma (s. 166-167)",
+        "why": "Giver den mest pædagogiske og konkrete illustration af begrebet 'Nachträglichkeit' og psykoanalysens ikke-lineære tidsforståelse."
+      },
+      {
+        "target": "Definitionen af drift (s. 157)",
+        "why": "Freuds egen definition af driften som et grænsebegreb mellem det sjælelige og det legemlige citeres og forklares her."
+      }
+    ],
+    "grounding_notes": [
+      "Forfatteren strukturerer eksplicit kapitlet omkring tre hovedudfordringer for Freuds efterfølgere: driftsbegrebet, barndommens betydning og det ubevidste.",
+      "Teksten trækker tråde fra Freud til nyere teoretikere som Laplanche, Green, Winnicott, Kohut og Stern."
+    ],
+    "warnings": [
+      "Teksten er en oversigtsartikel; studerende, der ønsker dybdegående kliniske eksempler på specifikke personlighedsforstyrrelser, skal supplere med anden litteratur."
+    ]
+  }
+}

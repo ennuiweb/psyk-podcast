@@ -1,0 +1,138 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:47Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-dreier-1999-35da58b5"
+    ],
+    "dependency_hashes": {
+      "source_file": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
+      "source_files_signature": "ec5134a3a0fbfd2ff4d2b230e2c24720676984e9c46bb63c83b6039c7f9313e0",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w09l1-dreier-1999-35da58b5",
+    "lecture_key": "W09L1",
+    "title": "Dreier (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf",
+    "source_paths": [
+      "Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
+    "length_band": "short",
+    "page_count": 3,
+    "estimated_token_count": 1950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces a critical psychological perspective (drawing on Holzkamp) that redefines personality and subjectivity through the lens of social practice and participation.",
+    "source_role": "Primary theoretical reading for the lecture on Critical Psychology, establishing the core vocabulary of participation, contexts, and social practice.",
+    "relation_to_lecture": "Provides the foundational argument for shifting the focus of personality psychology from internal, isolated traits to trajectories of participation across various social contexts.",
+    "central_claims": [
+      {
+        "claim": "Psychological theories of individual subjectivity must be grounded in a conception of persons as participants in structures of ongoing social practice.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The concept of participation is superior to concepts like action, activity, relation, dialogue, or discourse because it explicitly situates subjects in concrete, local contexts of social practice rather than treating them as free-floating agents.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Individual participation is always partial and particular; no individual is an omnipotent agent, but rather plays different parts from different positions with varying scopes of possibilities.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human duality involves both acting within the existing limits of a social practice (reproduction) and extending its scope of possibilities (changing the state of affairs).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Participation",
+        "definition": "A key concept used to conceptualize subjects as always already involved in social practice, acting from specific, located positions rather than as isolated individuals.",
+        "role": "Serves as the foundational unit of analysis for understanding subjectivity and personality in critical psychology."
+      },
+      {
+        "term": "Social Practice",
+        "definition": "A non-homogenous structure consisting of diverse, interrelated local contextual practices (like homes, workplaces) where human activity takes place.",
+        "role": "Provides the structural and contextual background that shapes, and is shaped by, individual participation."
+      },
+      {
+        "term": "Partial and Particular Subjectivity",
+        "definition": "The idea that an individual's subjectivity is only a partial aspect of a broader social practice, shaped by their specific position, abilities, and concerns within that practice.",
+        "role": "Explains why individuals experience and influence social contexts differently, countering the idea of an omnipotent or universal subject."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Participation vs. Action/Dialogue/Discourse",
+        "summary": "Participation explicitly locates subjects within particular local social practices, whereas action or discourse can ambiguously treat subjects as free-floating agents located nowhere in particular.",
+        "stakes": "Crucial for grounding psychological analysis in actual, concrete social realities rather than abstract interactions."
+      },
+      {
+        "label": "Diverse Social Practice vs. Homogenous Society",
+        "summary": "Contrasts the view of society as a uniform container that influences all members equally with the view of social practice as a set of interrelated, diverse, and unequal local contexts.",
+        "stakes": "Allows researchers to analyze how individuals navigate different contexts with varying power relations and institutional structures."
+      },
+      {
+        "label": "Grammar of active powers vs. Grammar of inert substances",
+        "summary": "Following Harré, conceptualizing human action through active powers and participation rather than purely individual properties or static qualities.",
+        "stakes": "Shifts personality psychology away from static trait theories toward dynamic, situated practices."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating participation simply with taking part in a colloquial sense, rather than understanding it as a structural relationship to social practice.",
+      "Assuming social practice is a uniform, homogenous society rather than a network of diverse, local contexts.",
+      "Thinking individuals are entirely determined by social practice, ignoring Dreier's emphasis on the human capacity to critique and change social practices."
+    ],
+    "quote_targets": [
+      {
+        "target": "First, to adopt participation as a key concept in a theory of the person means to conceptualize subjects as always already involved in social practice.",
+        "why": "Defines the core premise of the text and the critical psychological view of the subject."
+      },
+      {
+        "target": "Individual subjectivity is a partial personal aspect of a social practice.",
+        "why": "Highlights the non-omnipotent, situated, and limited nature of the individual subject within broader structures."
+      },
+      {
+        "target": "But social practice is not homogenous. It consists of diverse, located contextual practices which are linked in a social structure.",
+        "why": "Provides the essential definition of social practice as differentiated and local, which is key to understanding trajectories across contexts."
+      }
+    ],
+    "grounding_notes": [
+      "The text is an excerpt (pages 5-7) from a 1999 article in the journal Outlines.",
+      "The author heavily references Klaus Holzkamp (1983), indicating strong roots in German-Danish Critical Psychology."
+    ],
+    "warnings": [
+      "The provided source file only contains the first three pages of the article. Concepts mentioned in the summary, such as personal conduct of life and life-trajectory, are not fully elaborated in this excerpt."
+    ]
+  }
+}

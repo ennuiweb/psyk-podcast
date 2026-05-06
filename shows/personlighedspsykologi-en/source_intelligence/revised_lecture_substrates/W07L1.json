@@ -1,0 +1,78 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:54Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l1-cooper-2003-ee3c34b7",
+      "w07l1-jacobsen-2021-26129bff",
+      "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "b50333de2b1176c9b5a8e9dc5c3f82f5c0760c816ad83992f17027d10babc969",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W07L1",
+    "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+    "sequence_index": 13
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the course's major pivot toward the first-person perspective and radical agency. It dismantles the deterministic and essentialist models seen in earlier trait and biosocial lectures, replacing the 'static inner essence' with an ongoing, relational process of meaning-making and self-relation, setting the stage for later critical and narrative deconstructions of the subject.",
+    "what_matters_more": [
+      "Explicitly mapping existential concepts (like Dasein, self-relation, and facticity) onto the course's 4 orientation points (Essence/Context, Agency, Determination, Historicity) to prepare for the W12L1 exam synthesis.",
+      "The 'Agency vs. Structure' dialectic, specifically how existentialism frames this as 'Radical Freedom vs. Facticity'.",
+      "The epistemological shift from natural science models (measuring static traits) to hermeneutic/phenomenological models (understanding lived meaning and 'becoming')."
+    ],
+    "de_emphasize": [
+      "Granular philosophical debates between specific thinkers (e.g., Nietzsche vs. Sartre) that do not directly translate into psychological models of personality.",
+      "Specific therapeutic techniques or clinical interventions, keeping the focus strictly on the underlying ontological assumptions about what a 'person' is."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Ontological and epistemological contrast (Essentialism vs. Existentialism)",
+        "rationale": "Existentialism's core tenet that 'existence precedes essence' serves as a direct critique of the reification of traits, shifting the focus from 'what' a person is (measurable variables) to 'how' they live and choose."
+      },
+      {
+        "target": "W09L1 (Critical Psychology)",
+        "relation": "Contrastive approaches to Agency and Constraints",
+        "rationale": "Both traditions emphasize human agency against determinism, but existentialism locates constraints in ontological 'facticity' (death, thrownness), whereas critical psychology locates them in societal structures and power relations."
+      },
+      {
+        "target": "W12L1 (Synthesis and Meta-Theory)",
+        "relation": "Direct application of the meta-analytical framework",
+        "rationale": "The seminar for this lecture explicitly practices applying the 4 orientation points to existential theory, which is the exact methodological skill required for the final exam synthesis."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Agency vs. Structure' dialectic: Explore how existentialism balances radical freedom with the inescapable limitations of 'facticity'.",
+      "Use the '4 orientation points' as a recurring lens to evaluate how existentialism views the person, explicitly contrasting it with the trait perspective.",
+      "Translate dense philosophical terms (Dasein, Thrownness, Self-relation) into concrete psychological examples of how people navigate everyday choices and existential anxiety."
+    ],
+    "carry_forward": [
+      "The concept of 'Facticity' (unchosen limitations) as a conceptual bridge to the societal and discursive constraints explored in Critical Psychology and Poststructuralism.",
+      "The definition of personality as an ongoing process of 'becoming' and meaning-making, which will be central to Narrative Psychology (W11)."
+    ],
+    "warnings": [
+      "The lecture relies heavily on dense philosophical texts (Kierkegaard, Heidegger, Sartre); there is a high risk students will fail to connect these abstract concepts to psychological models of personality without explicit scaffolding.",
+      "Ensure 'existential anxiety' is clearly distinguished from clinical/neurotic anxiety, as students often conflate the ontological condition with pathology."
+    ]
+  }
+}

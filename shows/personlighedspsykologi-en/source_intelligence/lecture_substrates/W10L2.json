@@ -1,0 +1,186 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:10:46Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-davies-1990-65185910",
+      "w10l2-foucault-1997-92cd121d",
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "df492029e3e05f06838f9dfa9102f224c7a03f210475d4a40395c943b9561f47",
+      "source_cards_signature": "9f69b3a25f52f7b00fb83601a624e6b4704806b255dbf1dcdcbeb65e66114135",
+      "raw_sources_signature": "6a1b6c45befb3524c89884fd46218b659e245c16ca581165b11adfd241a4b38b"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W10L2",
+    "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+    "sequence_index": 19
+  },
+  "analysis": {
+    "lecture_question": "How can psychology think about persons when selves are historically produced through discourse and power rather than simply discovered as innate essences?",
+    "central_learning_problem": "The lecture requires students to abandon the intuitive idea of personality as a stable, pre-social inner core. Instead, they must learn to analyze subjectivity as something actively formed through historical discourses, power relations, and ethical practices of the self. The challenge is to understand how agency and freedom are possible not by escaping social constraints, but by navigating and repositioning oneself within them.",
+    "source_roles": [
+      {
+        "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+        "role": "framing",
+        "rationale": "Provides the overarching historical and theoretical narrative, moving from Nietzsche's critique of truth to Foucault's three axes of knowledge, power, and subjectivation."
+      },
+      {
+        "source_id": "w10l2-foucault-1997-92cd121d",
+        "role": "anchor",
+        "rationale": "Supplies the core theoretical framework for understanding ethics, power, and the constitution of the subject as an active practice of freedom."
+      },
+      {
+        "source_id": "w10l2-davies-1990-65185910",
+        "role": "application",
+        "rationale": "Applies poststructuralist concepts to a concrete empirical setting (a primary school classroom) to redefine agency as discursive positioning."
+      },
+      {
+        "source_id": "w10l2-seminar-10-poststrukturalisme-70b709db",
+        "role": "supporting",
+        "rationale": "Translates Foucault's concepts into seminar exercises, focusing on discourse, subjectification, and psychiatric diagnoses as power relations."
+      },
+      {
+        "source_id": "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+        "role": "supporting",
+        "rationale": "Introduces social constructionism via Gergen and Hacking, contrasting it with critical psychology and focusing on relational selves and looping effects."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-davies-1990-65185910"
+        ],
+        "relation": "Foucault provides the broad conceptual horizon of ethics, power, and subjectivation, while Davies makes this concrete by showing how positioning in discourse shapes agency in lived social practice.",
+        "learning_stakes": "Helps students see that poststructuralism is not just abstract philosophy but a lens for analyzing everyday interactions and the social construction of identity."
+      },
+      {
+        "source_ids": [
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "w10l2-foucault-1997-92cd121d"
+        ],
+        "relation": "The lecture frames Foucault's late work on ethics (the reading) within his broader intellectual trajectory of knowledge and power.",
+        "learning_stakes": "Prevents students from reading Foucault's ethics in isolation, showing why the shift to subjectivation was a necessary response to critiques of his earlier work on power."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Subjectivation (Subjektivering)",
+        "explanation": "The historical process through which individuals are constituted as subjects via practices of power, games of truth, and ethical practices of the self, replacing the idea of an innate personality.",
+        "source_ids": [
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-seminar-10-poststrukturalisme-70b709db"
+        ]
+      },
+      {
+        "concept": "Discourse (Diskurs)",
+        "explanation": "Practices and systems of meaning that systematically form the objects of which they speak, setting the conditions for how we can think, act, and be understood.",
+        "source_ids": [
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "w10l2-seminar-10-poststrukturalisme-70b709db",
+          "w10l2-davies-1990-65185910"
+        ]
+      },
+      {
+        "concept": "Power relations (Magt)",
+        "explanation": "Mobile, reversible relationships where one tries to control the conduct of another. Power is not merely top-down domination but a productive force that requires freedom to operate.",
+        "source_ids": [
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "w10l2-seminar-10-poststrukturalisme-70b709db"
+        ]
+      },
+      {
+        "concept": "Discursive Agency / Positioning",
+        "explanation": "Agency is not an inherent individual trait but the situated ability to recognize, choose, and mobilize available discursive practices and positions within social interactions.",
+        "source_ids": [
+          "w10l2-davies-1990-65185910"
+        ]
+      },
+      {
+        "concept": "Care of the self (Selvpraksis)",
+        "explanation": "An ethical practice of freedom and self-mastery. It is a relational and political practice of shaping one's conduct, not a modern pursuit of narcissistic self-interest.",
+        "source_ids": [
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
+        ]
+      },
+      {
+        "concept": "Looping effect",
+        "explanation": "Hacking's concept describing how classifying people (e.g., with psychiatric diagnoses) creates a feedback loop where the classified individuals interact with and change in response to the category.",
+        "source_ids": [
+          "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Agonistic vs. Discursive Agency",
+        "stakes": "Shifts the analytical focus from individual willpower fighting against society to the social and linguistic resources available to a person to navigate their positioning.",
+        "source_ids": [
+          "w10l2-davies-1990-65185910"
+        ]
+      },
+      {
+        "tension": "Subject as substance vs. Subject as form",
+        "stakes": "Rejects a priori theories of human nature in favor of a historical and contextual analysis of how subjectivity is actively formed through different practices.",
+        "source_ids": [
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
+        ]
+      },
+      {
+        "tension": "Liberation vs. Practices of Freedom",
+        "stakes": "Highlights that merely removing oppression does not automatically result in an ethical society; active, ongoing ethical practices of self-government are required.",
+        "source_ids": [
+          "w10l2-foucault-1997-92cd121d"
+        ]
+      },
+      {
+        "tension": "Fixed targets vs. Moving targets",
+        "stakes": "Challenges the traditional objective view of personality traits, emphasizing that human subjects interact with and are changed by psychological classifications.",
+        "source_ids": [
+          "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Reducing poststructuralism to linguistic idealism ('everything is just language') rather than understanding discourse as materially and historically organized practices.",
+      "Equating Foucault's concept of power entirely with top-down state oppression or domination, missing its immanent, productive, and reversible nature.",
+      "Assuming that because individuals are discursively constituted, they have no agency or freedom, misinterpreting poststructuralism as pure determinism.",
+      "Misinterpreting Foucault's 'care of the self' as modern, private, narcissistic self-improvement rather than a relational, ethical, and political practice."
+    ],
+    "must_carry_ideas": [
+      "Personality is not a pre-social inner essence but is historically and socially produced through discourse, power, and practices of the self.",
+      "Agency and freedom are exercised within power relations and discursive constraints, not by escaping them.",
+      "Psychological categories and diagnoses are not just objective discoveries but participate in 'making up people' and shaping subjectivity."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The seminar slides rely heavily on group work questions and external cases (e.g., a YouTube video on the Manosphere) without providing the definitive answers or case content.",
+      "Davies' empirical data reflects a 1990 Australian classroom context, which should be historicized when applying the findings today."
+    ]
+  }
+}

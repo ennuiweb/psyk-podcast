@@ -1,0 +1,155 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:54:48Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22"
+    ],
+    "dependency_hashes": {
+      "source_file": "c23bebbbda7dd79720b69261d38039d4f8cf251e1665ec2f0687facfa1002682",
+      "source_files_signature": "0b285ac7194e954f552b74406af51f15c7d9127289ffd3df14d48d95728791e1",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+    "lecture_key": "W04L1",
+    "title": "7. Psykoanalysens personbegreb",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/7. Psykoanalysens personbegreb.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/7. Psykoanalysens personbegreb.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/7. Psykoanalysens personbegreb.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/7. Psykoanalysens personbegreb.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "c23bebbbda7dd79720b69261d38039d4f8cf251e1665ec2f0687facfa1002682",
+    "length_band": "long",
+    "page_count": 46,
+    "estimated_token_count": 29900,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces the foundational concepts of psychoanalysis, including metapsychology, the structural model, and the unconscious, as a framework for understanding personality as fundamentally split and conflicted.",
+    "source_role": "Lecture slides providing an overview of psychoanalytic personality theory, its historical context, and its core structural components.",
+    "relation_to_lecture": "This is the primary slide deck for the first lecture on psychoanalysis, setting up the basic vocabulary and conceptual architecture before moving into specific personality structures in the subsequent lecture.",
+    "central_claims": [
+      {
+        "claim": "Psychoanalytic theory is fundamentally rooted in clinical practice and the interpersonal encounter, making it a clinical practice first and a theory of personality second.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalysis focuses on psychic reality rather than material reality, emphasizing how individuals internally interpret and give meaning to their surroundings and fantasies.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The human psyche is not a unified whole but is fundamentally split and conflicted, driven by unconscious forces that we cannot directly access but which influence our actions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Theoretical constructs like the Id, Ego, and Superego are not independently existing physical entities, but rather metapsychological tools used to understand psychological phenomena.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Det ubevidste (The Unconscious)",
+        "definition": "The decentered part of the subject that is inaccessible to conscious reflection but insists and shows itself through symptoms, dreams, slips of the tongue, and irrational behavior.",
+        "role": "Serves as the fundamental object of study in psychoanalysis, challenging the idea of human rational autonomy."
+      },
+      {
+        "term": "Metapsykologi (Metapsychology)",
+        "definition": "The foundational principles and theoretical constructs (like id, ego, superego) used to understand the psyche's function and organization.",
+        "role": "Provides the necessary conceptual apparatus to move beyond everyday intuition and understand complex psychological phenomena."
+      },
+      {
+        "term": "Psykisk realitet (Psychic reality)",
+        "definition": "The internal world and subjective meaning-making of the individual, including fantasies, as opposed to objective material reality.",
+        "role": "Explains the epistemological shift in psychoanalysis from verifying historical trauma (seduction theory) to analyzing internal fantasies."
+      },
+      {
+        "term": "Nachträglichkeit (Efterlods virkning)",
+        "definition": "The phenomenon where events gain psychological effect and meaning long after they occurred, with retroactive force.",
+        "role": "Highlights the non-linear nature of psychological time and how self-narratives are constantly revised."
+      },
+      {
+        "term": "Drift (Drive/Trieb)",
+        "definition": "A psychological concept representing the psychological representative of an organic/somatic demand on the mind, distinct from purely biological instincts.",
+        "role": "Explains the source of energy and motivation in the Id, bridging the gap between the body and the psyche."
+      },
+      {
+        "term": "Den strukturelle model (The Structural Model)",
+        "definition": "The division of the psyche into three interacting provinces: the Id (Det'et), the Ego (Jeg'et), and the Superego (Overjeg'et).",
+        "role": "Provides the framework for understanding intra-psychic conflict and the dynamic nature of personality."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Psychic reality vs. Material reality",
+        "summary": "The difference between the subjective, internal meaning or fantasies an individual constructs versus objective historical facts.",
+        "stakes": "Crucial for understanding why psychoanalysis focuses on the patient's internal world and meaning-making rather than just verifying historical events."
+      },
+      {
+        "label": "Drive (Drift) vs. Instinct (Instinkt)",
+        "summary": "The difference between a psychological representation of a somatic demand (drift) and a purely biological, hardwired reflex (instinct).",
+        "stakes": "Emphasizes that human drives are mediated by the body's interaction with the environment and are psychologically complex, not just animalistic reflexes."
+      },
+      {
+        "label": "Primary process vs. Secondary process",
+        "summary": "The difference between the chaotic, timeless, and contradiction-free functioning of the Id (primary) and the rational, narrative, and reality-oriented functioning of the Ego (secondary).",
+        "stakes": "Explains why unconscious phenomena like dreams seem irrational to the conscious mind and require interpretation."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Thinking the Id, Ego, and Superego are literal physical parts of the brain rather than theoretical tools or metapsychological constructs.",
+      "Confusing the psychoanalytic concept of 'drive' (drift) with purely biological 'instincts'.",
+      "Believing psychoanalysis is primarily concerned with uncovering objective historical truths rather than exploring subjective 'psychic reality'.",
+      "Assuming the goal of psychoanalysis is to completely replace the irrational Id with the rational Ego, rather than achieving a thoughtful appropriation and balance."
+    ],
+    "quote_targets": [
+      {
+        "target": "Psychoanalysis deals with psychical reality and not with material reality",
+        "why": "Illustrates the crucial shift from the seduction theory to the focus on internal fantasy and meaning-making."
+      },
+      {
+        "target": "Wo Es war, soll Ich werden",
+        "why": "Encapsulates the ultimate ethical and therapeutic goal of psychoanalysis regarding the relationship between the Ego and the Id."
+      },
+      {
+        "target": "Man kunne sammenligne jeg'ets forhold til Id'et med rytterens forhold til hesten",
+        "why": "A classic Freudian metaphor explaining the precarious control the Ego has over the powerful drives of the Id."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily quote Freud (1933), Gammelgaard (2007, 2010, 2014), and Ricoeur (1977) to establish core definitions.",
+      "The source explicitly frames psychoanalysis as a clinical practice first, and a theory of personality second."
+    ],
+    "warnings": [
+      "The slides contain several interactive prompts (e.g., '5 min selvanalyse', 'Summeoevelse') whose outcomes and discussions are not captured in the text.",
+      "Visual examples like Elon Musk and the Stine Pilgaard quote are used to illustrate concepts, but the oral context connecting them to the theory is missing from the slides."
+    ]
+  }
+}

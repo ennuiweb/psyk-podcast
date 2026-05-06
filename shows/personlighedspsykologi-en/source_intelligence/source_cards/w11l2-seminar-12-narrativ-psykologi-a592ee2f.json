@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:21:27Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+    ],
+    "dependency_hashes": {
+      "source_file": "5e958c7344f4be382852ad5a24efa1654c2a3b849e24fc6ff7f2d5147d8aa606",
+      "source_files_signature": "823fdb250599bc3bdf52b8afea1e50b740a2da5496fabca7ae0ca6fbb087dd69",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l2-seminar-12-narrativ-psykologi-a592ee2f",
+    "lecture_key": "W11L2",
+    "title": "12. Narrativ psykologi",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/12. Narrativ psykologi.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/12. Narrativ psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/12. Narrativ psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/12. Narrativ psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "5e958c7344f4be382852ad5a24efa1654c2a3b849e24fc6ff7f2d5147d8aa606",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 7800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents narrative psychology as a sociocultural, meaning-making approach where personality is viewed as a continuous, relationally constructed narrative rather than an internal essence.",
+    "source_role": "Seminar slides designed to recap social constructionism, introduce narrative psychology (Bruner, Bank, White), and facilitate group work comparing narrative and existential psychology.",
+    "relation_to_lecture": "Applies the theoretical concepts of narrative psychology through structured group discussions of Bruner (1991) and Bank (2014), connecting it back to the broader course framework via the four orientation points.",
+    "central_claims": [
+      {
+        "claim": "Narratives do not merely describe a pre-existing personality; they are the constitutive fabric from which personality, experiences, and the social world are woven.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "According to Bruner, the self must be understood as contextual, relational, and processual, rather than as an isolated, static entity.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Meaning is not located inside the heads of individuals, but is a social and cultural phenomenon developed through dialogue.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Social constructionism differs from social constructivism by emphasizing that the construction of the world happens through social relations rather than internal cognitive processes.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Narrativ psykologi",
+        "definition": "A psychological approach focusing on how individuals use narratives about themselves, others, and society to create meaning and construct their identity.",
+        "role": "The primary subject of the seminar, representing a shift towards understanding personality as a narrative construction."
+      },
+      {
+        "term": "Socialkonstruktionisme",
+        "definition": "A theoretical perspective emphasizing that the social world consists of socially created meanings, language is constructive rather than just descriptive, and rejecting traditional individualism.",
+        "role": "Serves as the foundational background and epistemological framework for narrative psychology."
+      },
+      {
+        "term": "Narrativ terapi",
+        "definition": "A therapeutic approach developed by Michael White that works to explore, modify, and create narrative self-stories.",
+        "role": "Demonstrates the clinical application of narrative psychology's theoretical understanding of the self."
+      },
+      {
+        "term": "Meaning readiness",
+        "definition": "A concept by Jerome Bruner related to how children develop and enter into culture through narrative.",
+        "role": "Used as a specific analytical focal point for students during group work on Bruner's text."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Socialkonstruktionisme vs. Socialkonstruktivisme",
+        "summary": "Social constructionism locates the construction of reality in social relations and interactions, whereas social constructivism locates it in the individual's internal cognitive processes (e.g., Piaget's schemas).",
+        "stakes": "Crucial for understanding the anti-individualistic stance of the theories discussed in this part of the course."
+      },
+      {
+        "label": "Fortællinger om personlighed vs. Fortællinger som personlighed",
+        "summary": "The difference between viewing narratives as mere descriptions of an underlying personality versus viewing narratives as the actual material that constitutes the personality.",
+        "stakes": "Shifts the ontological understanding of personality from an internal essence to a linguistic and social construction."
+      },
+      {
+        "label": "Narrativ vs. Eksistentiel psykologi",
+        "summary": "A comparative exercise analyzing the two paradigms across four orientation points: Essence vs. context, Agency, Determination, and Historicity.",
+        "stakes": "Helps students integrate narrative psychology into the broader landscape of personality theories covered in the course."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing social constructionism with social constructivism by believing that the construction of meaning happens internally in the mind rather than relationally.",
+      "Thinking of narratives merely as stories people tell about their already-existing personality, rather than the material that actively constitutes the personality.",
+      "Locating 'meaning' inside the individual's head rather than viewing it as a social and cultural product."
+    ],
+    "quote_targets": [
+      {
+        "target": "Mennesker handler på baggrund af mening, der skabes gennem narrativ strukturering af hændelser... (Bank, 2014, s. 255)",
+        "why": "Provides the core definition of how narrative meaning over time becomes what we call 'personality' or 'self'."
+      },
+      {
+        "target": "The particular attempt will be to replace the traditional assumption of individual selves with a vision of self as an expression of relationship (Gergen, 1999, s. 117)",
+        "why": "Highlights the anti-individualistic core of social constructionism."
+      },
+      {
+        "target": "Our sense of the normative is nourished in narrative, but so is our sense of breach and of exception. Stories make 'reality' a mitigated reality. (Bruner, 1991, s. 97)",
+        "why": "A central quote assigned for group work to analyze Bruner's view on how narratives shape our understanding of reality and norms."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference specific pages from Bruner (1991) and Bank (2014) for group work, indicating these are the primary texts for the session.",
+      "The distinction between social constructionism and constructivism is explicitly marked as an 'OBS' (important note) on slide 6."
+    ],
+    "warnings": [
+      "The slides contain several analytical questions for group work (e.g., regarding 'symbolic meaning' and 'meaning readiness') but do not provide the answers, requiring students to consult the primary texts (Bruner 1991, Bank 2014) to resolve them."
+    ]
+  }
+}

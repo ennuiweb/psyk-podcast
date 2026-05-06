@@ -1,0 +1,145 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:48:33Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-kandler-and-instinske-2025-01535a8e"
+    ],
+    "dependency_hashes": {
+      "source_file": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
+      "source_files_signature": "974d967d915586a1ea00fff47acf2a28ed4167443d27ac7f5d4778f03cdbfa62",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+    "lecture_key": "W03L1",
+    "title": "Kandler & Instinske (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf",
+    "source_paths": [
+      "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Kandler & Instinske (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
+    "length_band": "short",
+    "page_count": 8,
+    "estimated_token_count": 5200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a modern behavioral genetics framework that moves beyond classical twin studies by integrating molecular genetics (GWAS) and emphasizing complex gene-environment interdependencies.",
+    "source_role": "A state-of-the-art review article synthesizing recent meta-analyses, GWAS, and extended twin family studies to map the genetic and environmental architecture of personality.",
+    "relation_to_lecture": "Directly grounds the W3L1 lecture on genetics and personality by providing the most current empirical estimates of heritability and explaining the mechanisms behind genetic and environmental variance.",
+    "central_claims": [
+      {
+        "claim": "Personality traits are both polygenic and poly-environmental, meaning they are influenced by hundreds of genetic variants and numerous specific environmental experiences, each having only a very small effect size.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The 'missing heritability' gap—where SNP-heritability (9-18%) is much lower than twin study heritability (40-50%)—can be partially explained by nonadditive genetic effects and rare genetic variants.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Environmental influences primarily contribute to individual uniqueness (nonshared environment), whereas family similarity is primarily driven by genetics.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Relying solely on self-reports overestimates the heritability of personality traits because the way individuals evaluate themselves is itself partly heritable.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Poly-environmental",
+        "definition": "The concept that a single environmental factor does not account for substantial variance; rather, aggregates of numerous specific experiences with very small effect sizes shape personality.",
+        "role": "Provides a parallel to the polygenic model, explaining why researchers struggle to find single life events that drastically alter personality."
+      },
+      {
+        "term": "Missing heritability",
+        "definition": "The statistical gap between the lower SNP-heritability obtained from samples of unrelated individuals and the higher average heritability obtained from twin and family studies.",
+        "role": "Highlights the limitations of current GWAS methods and points to the importance of nonadditive genetic effects and rare variants."
+      },
+      {
+        "term": "Nonadditive genetic effects",
+        "definition": "Genetic influences resulting from allelic dominance deviations or multiple gene-gene interactions, rather than the simple sum of individual gene effects.",
+        "role": "Explains why monozygotic twins are often more than twice as similar as dizygotic twins, accounting for a substantial portion of genetic variance."
+      },
+      {
+        "term": "Extended Twin Family Studies (ETFS)",
+        "definition": "Study designs that include additional family members (parents, partners, non-twin siblings) alongside twins to provide less biased estimates of genetic and environmental variance.",
+        "role": "Overcomes the limitations of classical twin models by allowing simultaneous estimation of nonadditive genetic effects and shared environmental influences."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Shared vs. Nonshared Environment",
+        "summary": "Shared environment refers to influences that make siblings similar (e.g., shared household), which have small and age-specific effects. Nonshared environment refers to individual-specific influences that make siblings different.",
+        "stakes": "Clarifies that the primary role of the environment in personality development is to drive individualization and uniqueness, not to make family members similar."
+      },
+      {
+        "label": "Additive vs. Nonadditive Genetic Variance",
+        "summary": "Additive variance is the sum of individual genetic effects (passed from parents to offspring), while nonadditive variance involves complex gene interactions (shared fully only by identical twins).",
+        "stakes": "Crucial for understanding why classical twin studies might overestimate heritability and why parent-offspring similarity is lower than identical twin similarity."
+      },
+      {
+        "label": "Self-reports vs. Informant-ratings",
+        "summary": "Self-reports measure personality from the subject's own perspective, while informant-ratings use well-informed others. Self-reports consistently yield higher heritability estimates.",
+        "stakes": "Demonstrates the methodological bias in personality genetics; self-assessment itself has a genetic component, inflating trait heritability if multi-rater designs are not used."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Believing that specific 'personality genes' (like a 'neuroticism gene') or single major life events explain large portions of personality differences.",
+      "Assuming that 'missing heritability' implies genetic effects are a myth, rather than a methodological discrepancy between twin studies and SNP-based estimates.",
+      "Thinking that growing up in the same household (shared environment) is the main environmental driver of personality, when in fact nonshared environments drive uniqueness.",
+      "Assuming genetic influences are static across the lifespan; they actually increase from childhood to young adulthood as individuals actively select environments correlated with their genotypes."
+    ],
+    "quote_targets": [
+      {
+        "target": "The gap between the SNP-heritability and the average heritability obtained from twin studies is known as missing heritability",
+        "why": "Key definition of a central methodological problem in modern behavioral genetics."
+      },
+      {
+        "target": "Researchers suppose that personality differences are poly-environmental, as a parallelism to them being polygenic",
+        "why": "Captures the core thesis of the paper regarding how environmental influences operate."
+      },
+      {
+        "target": "If the way how individuals experience the world and see or evaluate themselves is heritable, it is not surprising that self-assessments themselves are partly heritable.",
+        "why": "Explains the discrepancy between self-report and informant-report heritability estimates."
+      }
+    ],
+    "grounding_notes": [
+      "The source explicitly uses the term 'poly-environmental' to mirror 'polygenic', which is a specific framing unique to this text.",
+      "Heritability estimates are heavily quantified in the text (e.g., 47% overall heritability, 9-18% SNP-heritability), providing concrete numbers for lecture grounding."
+    ],
+    "warnings": [
+      "The text is a review article, meaning it aggregates findings from other studies (like GWAS and ETFS) rather than presenting a single novel experiment.",
+      "The source notes that direct evidence for gene-environment correlations and interactions is currently sparse and primarily limited to Neuroticism."
+    ]
+  }
+}

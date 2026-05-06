@@ -1,0 +1,149 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:14:51Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-maslow-1968-7ea53e34"
+    ],
+    "dependency_hashes": {
+      "source_file": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
+      "source_files_signature": "b5a5a2ad816522b12b3b3c94290cd61a05b47470a773b09a7c5429fc96847177",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l2-maslow-1968-7ea53e34",
+    "lecture_key": "W07L2",
+    "title": "Maslow (1968)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+    "source_paths": [
+      "Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
+    "length_band": "long",
+    "page_count": 71,
+    "estimated_token_count": 46150,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the foundational text for humanistic psychology's theory of motivation, establishing the hierarchy of needs and the qualitative shift from deficiency-driven behavior to growth-driven self-actualization.",
+    "source_role": "Primary reading that introduces Maslow's core concepts of D-motivation, Growth-motivation, B-love, and peak experiences.",
+    "relation_to_lecture": "Serves as the primary theoretical grounding for the Week 7 Lecture 2 on Humanistic Psychology, detailing Maslow's specific arguments against purely behaviorist or psychoanalytic drive-reduction models.",
+    "central_claims": [
+      {
+        "claim": "Human motivation is divided into deficiency needs, which aim at tension reduction and are satisfied by the environment, and growth needs, which maintain or increase tension and are idiosyncratic.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Gratification of deficiency needs merely prevents illness, whereas gratification of growth needs produces positive health and continuous development.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Healthy growth requires a foundation of safety; a child will only choose the delights of growth if their safety needs are sufficiently gratified.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "B-love (love for the Being of another) is non-possessive, intrinsically enjoyable, and creates the partner, contrasting with D-love which is based on deficit and need.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Deficiency Motivation (D-motivation)",
+        "definition": "Motivation driven by deficits or empty holes in the organism, such as safety or belongingness, that must be filled from the outside to prevent illness.",
+        "role": "Establishes the baseline of human needs that must be met before self-actualization can occur."
+      },
+      {
+        "term": "Growth Motivation",
+        "definition": "The tendency toward self-actualization, self-perfection, and the fulfillment of idiosyncratic potentials, which increases rather than decreases upon gratification.",
+        "role": "Explains the continuous, non-homeostatic development of psychologically healthy individuals."
+      },
+      {
+        "term": "B-love (Being-love)",
+        "definition": "Unselfish, non-possessive love for the intrinsic nature of another person, independent of their usefulness in satisfying deficits.",
+        "role": "Illustrates how interpersonal relations change when driven by growth rather than deficiency."
+      },
+      {
+        "term": "B-cognition (Cognition of Being)",
+        "definition": "A state of perception, often occurring in peak experiences, where an object or person is seen as a complete, unique whole, detached from its usefulness or purpose.",
+        "role": "Highlights the cognitive shift that accompanies self-actualization and peak experiences."
+      },
+      {
+        "term": "Peak-Experiences",
+        "definition": "Moments of highest happiness, fulfillment, and ecstasy characterized by B-cognition, such as in love, art, or creative moments.",
+        "role": "Provides concrete instances where growth-motivation and B-cognition are most clearly observable."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Deficiency-needs vs. Growth-needs",
+        "summary": "Distinguishes between needs that seek tension-reduction or homeostasis and needs that seek tension-maintenance and continuous development.",
+        "stakes": "Fundamentally alters the psychological understanding of motivation from a purely drive-reduction model to one that includes continuous human growth."
+      },
+      {
+        "label": "D-love vs. B-love",
+        "summary": "Distinguishes between love as a need to fill an emptiness and love as a non-possessive admiration for another's being.",
+        "stakes": "Explains how healthy individuals relate to others without using them merely as need-gratifiers."
+      },
+      {
+        "label": "Safety vs. Growth",
+        "summary": "Distinguishes between the forces that cling to defensiveness or fear and the forces that impel forward toward wholeness.",
+        "stakes": "Explains why people sometimes resist growth and how a safe environment is a prerequisite for self-actualization."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might think self-actualization is a final, static state of rest, whereas Maslow emphasizes it is a dynamic, ongoing process of Becoming.",
+      "Assuming that tension is always negative; Maslow argues that in growth motivation, tension is pleasurable and actively sought.",
+      "Believing that growth can be forced; Maslow insists that safety is prepotent and growth only occurs when the individual feels safe enough to choose it freely."
+    ],
+    "quote_targets": [
+      {
+        "target": "It is these needs which are essentially deficits in the organism, empty holes, so to speak... that I shall call deficits or deficiency needs",
+        "why": "Clearly defines the concept of D-needs."
+      },
+      {
+        "target": "Growth is, in itself, a rewarding and exciting process... The appetite for growth is whetted rather than allayed by gratification",
+        "why": "Contrasts growth motivation with traditional tension-reduction theories."
+      },
+      {
+        "target": "Safety?---------------< PERSON >---------------? Growth",
+        "why": "A crucial visual schema explaining the existential dilemma between defensiveness and self-actualization."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly contrasts Maslow's views with Freudian psychoanalysis and behaviorism, framing them as overly focused on pathology and drive-reduction.",
+      "Maslow uses clinical observations, child psychology, and the study of healthy individuals as his primary evidence base, acknowledging the data is impressionistic."
+    ],
+    "warnings": [
+      "The OCR text contains minor typos such as anxienes instead of anxieties and Funktions-lust.",
+      "The text is an excerpt covering Chapters 3 to 6 of Toward a psychology of being."
+    ]
+  }
+}

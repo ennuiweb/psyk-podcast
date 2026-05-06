@@ -1,0 +1,159 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:15:41Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "w03l2-bach-and-simonsen-2023-d58362ff",
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "abb390487105d2adcff5098fe2b10ff0efc445e9ab4463c8c22798473d3974b9",
+      "course_synthesis": "bc2d661e854296a89a1663fe1d40d1f978fcb60c605a518ed65e0e3418314113",
+      "source_cards_signature": "2c4e005e92889084aa16df2c4da3ebb578ef7dd3a96b4a00a12395a0a8a5914d",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W03L2",
+    "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+    "sequence_index": 6
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "The ontological shift from categorical traits to dimensional functioning, framing Level of Personality Functioning (LPF) as a prime example of how defining 'what personality is' changes how we measure it.",
+      "must_cover": [
+        "The 'Severity vs. Style' distinction as a fundamental redefinition of personality pathology.",
+        "The definition of LPF as intrapsychic self and interpersonal functioning.",
+        "Positioning LPF as an 'inner essence' model of personality, establishing the baseline intrapsychic view that later sociocultural theories will critique."
+      ],
+      "avoid": [
+        "Granular memorization of all specific ICD-11 trait domains and their sub-facets.",
+        "Epidemiological statistics and highly specific clinical vignettes that do not serve the core conceptual shift.",
+        "Confusing LPF with general psychosocial disability."
+      ],
+      "grounding": [
+        "Use the 'how nuts vs. what kind of nuts' analogy from the lecture slides to separate LPF from traits.",
+        "Anchor the developmental justification for LPF in Sharp & Wall's use of McAdams' person-as-author model.",
+        "Reference Bach & Simonsen for the specific ICD-11 operationalization of self and interpersonal capacities."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "angle": "The theoretical defense of LPF as the core intrapsychic impairment underlying all personality pathology.",
+        "must_cover": [
+          "Criterion A (LPF) vs. Criterion B (Traits).",
+          "The distinction between Disease (intrapsychic dysfunction) and Disability (general psychosocial impairment).",
+          "The developmental timeline explaining why personality disorders typically onset in adolescence (person-as-author)."
+        ],
+        "avoid": [
+          "Treating the text as a single empirical experiment rather than a conceptual synthesis and defense of the AMPD."
+        ]
+      },
+      {
+        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+        "angle": "The clinical operationalization of the dimensional model in ICD-11.",
+        "must_cover": [
+          "The division of personality functioning into four self-capacities and four interpersonal capacities.",
+          "The use of five trait domains to describe individual stylistic expression.",
+          "The Borderline pattern as a specific supplementary code rather than a standalone categorical diagnosis."
+        ],
+        "avoid": [
+          "Presenting the five trait domains as independent diagnoses.",
+          "Misunderstanding 'personality difficulties' as a mild personality disorder rather than a subclinical state."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+        "angle": "The practical clinical paradigm shift from a medical 'disease' model to a psychological model of personhood.",
+        "must_cover": [
+          "The 'HOW NUTS vs. WHAT KIND OF NUTS' analogy.",
+          "The distinction between primary interpersonal problems (in PDs) and secondary interpersonal problems (in depression/anxiety).",
+          "Psychotherapy as the strengthening of personality functions (ego functions)."
+        ],
+        "avoid": [
+          "Getting lost in the specific DIPP-11 scoring examples without explaining the broader conceptual context."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "A quick breakdown of the dimensional turn in personality disorders focusing on Severity vs. Style.",
+      "must_cover": [
+        "The shift from categorical diagnoses to dimensional LPF (self/interpersonal functioning) and trait specifiers.",
+        "The 'how nuts vs. what kind of nuts' analogy."
+      ],
+      "avoid": [
+        "Listing all specific traits or capacities; keep it focused on the conceptual shift."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Level of Personality Functioning (LPF)",
+        "why": "It is the central construct of the week, representing the dimensional core of personality pathology focusing on intrapsychic self and interpersonal capacities."
+      },
+      {
+        "concept": "Person-as-author",
+        "why": "Used by Sharp & Wall to explain the developmental necessity of LPF and why personality disorders typically onset during adolescence when narrative identity integrates."
+      },
+      {
+        "concept": "Mentalisering",
+        "why": "A crucial interpersonal capacity in the ICD-11 model that is often impaired in individuals with personality dysfunction."
+      },
+      {
+        "concept": "Borderline-mønster",
+        "why": "Illustrates how the ICD-11 bridges the new dimensional model with existing clinical consensus by using it as a specifier rather than a categorical diagnosis."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Severity vs. Style",
+        "why": "Clarifies the two-step diagnostic process in modern dimensional models, separating the core dysfunction of personality (LPF) from its specific trait expression."
+      },
+      {
+        "tension": "Disease vs. Disability",
+        "why": "Justifies why LPF must focus specifically on intrapsychic self and interpersonal functioning rather than relying on general impairment metrics like occupational success."
+      },
+      {
+        "tension": "Ontology vs. Epistemology",
+        "why": "Explains why redefining what a personality disorder is (ontology) forces a change in how we diagnose and measure it (epistemology)."
+      }
+    ],
+    "grounding_notes": [
+      "Explicitly use the 'how nuts vs. what kind of nuts' analogy from the lecture slides to explain Severity vs. Style.",
+      "Anchor the definition of LPF in Sharp & Wall's intrapsychic focus, contrasting it with general disability.",
+      "Ensure the ICD-11 framework (self/interpersonal capacities and trait domains) is attributed to Bach & Simonsen."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "why": "Anchor source providing the theoretical and developmental justification for LPF and the AMPD model."
+      },
+      {
+        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+        "why": "Major source detailing the specific ICD-11 clinical operationalization of personality functioning and trait domains."
+      },
+      {
+        "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+        "why": "Supporting source providing the crucial pedagogical analogy ('how nuts vs. what kind of nuts') and framing the shift from a medical to a psychological model."
+      }
+    ]
+  }
+}

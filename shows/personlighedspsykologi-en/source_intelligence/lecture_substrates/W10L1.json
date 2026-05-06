@@ -1,0 +1,150 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:33:39Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "w10l1-mitchell-2015-bc690b36",
+      "w10l1-lecture-18-k-n-582ebd4f"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "b8ee0812c22259533f10bb11985d8b3ac249fe666f0db9812514ab56387b492d",
+      "source_cards_signature": "f5525c237128bed629c854289501d972919f4c231207379635faa148a227c025",
+      "raw_sources_signature": "aa7f6867951ffe174969f53019e58ebd38946eb3956a3e46b07b1fbb217e1d37"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W10L1",
+    "lecture_title": "Køn (Forelæsning 18, 2026-04-13)",
+    "sequence_index": 18
+  },
+  "analysis": {
+    "lecture_question": "How does personality psychology understand gender as a psychosocial process, integrating societal structures, intersubjective family dynamics, and intrapsychic processes?",
+    "central_learning_problem": "Students often view gender either as a purely biological given or a purely social construct. The central learning problem is to grasp gender as a complex, multi-level phenomenon where historical and societal changes (like the division of labor) interact with deep, often unconscious psychological processes (like identification and drive). This requires bridging sociological perspectives with psychoanalytic theory to understand how 'inner' and 'outer' gender develop, sometimes in conflict or at different paces.",
+    "source_roles": [
+      {
+        "source_id": "w10l1-lecture-18-k-n-582ebd4f",
+        "role": "framing",
+        "rationale": "Provides the overarching ontological model (Køppe's three levels) and integrates the empirical and theoretical readings into a coherent lecture structure."
+      },
+      {
+        "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+        "role": "anchor",
+        "rationale": "Provides the core empirical grounding through a generational study, illustrating how historical shifts in outer gender affect inner psychological identification."
+      },
+      {
+        "source_id": "w10l1-mitchell-2015-bc690b36",
+        "role": "supporting",
+        "rationale": "Supplies the advanced psychoanalytic theoretical framework on sexual difference, the unconscious, and the transmission of patriarchy, deepening the psychological level of the lecture."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "w10l1-mitchell-2015-bc690b36"
+        ],
+        "relation": "Nielsen & Rudberg provide the historical and sociological context of changing gender roles, while Mitchell provides the psychoanalytic depth to explain why certain psychological structures persist despite these social changes.",
+        "learning_stakes": "Crucial for understanding that achieving political or structural gender equality does not automatically resolve deep-seated internal psychological ambivalences about gender identity."
+      },
+      {
+        "source_ids": [
+          "w10l1-lecture-18-k-n-582ebd4f",
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+        ],
+        "relation": "The slides frame Nielsen & Rudberg's empirical findings within a broader ontological model of gender, specifically highlighting concepts like 'husmorisering' and the distinction between identity and identification.",
+        "learning_stakes": "Helps students connect specific qualitative research findings to general personality psychology models."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Kønnets tre ontologiske niveauer",
+        "explanation": "Simo Køppe's model dividing gender into societal (roles/norms), psychological (drive/identification), and biological (anatomy/hormones) levels.",
+        "source_ids": [
+          "w10l1-lecture-18-k-n-582ebd4f"
+        ]
+      },
+      {
+        "concept": "Sexual difference (Kønsforskel)",
+        "explanation": "A psychoanalytic term referring to the universal line demarcating where a woman cannot be a man and vice versa, but which lacks any specific or given content.",
+        "source_ids": [
+          "w10l1-mitchell-2015-bc690b36",
+          "w10l1-lecture-18-k-n-582ebd4f"
+        ]
+      },
+      {
+        "concept": "Identifikation",
+        "explanation": "The dynamic, conscious and unconscious ways a subject assimilates an aspect, trait, or attribute from another person, distinct from mere imitation or static identity.",
+        "source_ids": [
+          "w10l1-lecture-18-k-n-582ebd4f",
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+        ]
+      },
+      {
+        "concept": "Ydre vs. indre køn",
+        "explanation": "The distinction between societal/cultural gender structures (outer) and personal/psychological gender identification (inner).",
+        "source_ids": [
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "w10l1-lecture-18-k-n-582ebd4f"
+        ]
+      },
+      {
+        "concept": "Husmorisering",
+        "explanation": "A psychological reconstruction by the middle generation in the 'Moderne jenter' study, where they reduced their mothers' identities to full-time housewives to create an identity-forming dividing line.",
+        "source_ids": [
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "w10l1-lecture-18-k-n-582ebd4f"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Inner vs. Outer Gender Development",
+        "stakes": "Highlights that societal norms (outer gender) may change rapidly, but psychological identification (inner gender) often lags behind, creating ambivalence and conflict across generations.",
+        "source_ids": [
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "w10l1-lecture-18-k-n-582ebd4f"
+        ]
+      },
+      {
+        "tension": "Mitchell vs. Butler on the Unconscious Transmission",
+        "stakes": "Determines whether the unconscious transmits an invariable law (Mitchell's focus on the structural oppression of women) or a mutable series of affective impressions (Butler's focus on heteronormativity).",
+        "source_ids": [
+          "w10l1-mitchell-2015-bc690b36"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating 'sexual difference' in the psychoanalytic sense with biological sex or specific gender roles, rather than seeing it as an empty, universal distinction.",
+      "Assuming that inner gender automatically and smoothly aligns with outer gender changes, ignoring the psychological lag and ambivalence.",
+      "Confusing psychological 'identification' with conscious 'imitation', missing the un-willed and unconscious elements.",
+      "Believing the middle generation's mothers in the 'Moderne jenter' study were actually all full-time housewives, rather than recognizing 'husmorisering' as a psychological reconstruction."
+    ],
+    "must_carry_ideas": [
+      "Gender in personality psychology must be analyzed across societal, psychological, and biological levels.",
+      "Psychological gender development is deeply tied to intersubjective family dynamics and unconscious identifications, not just social learning.",
+      "Historical shifts in the division of labor profoundly impact psychological identification, but inner and outer gender do not always change at the same pace."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The Mitchell text is an 'on-the-fly' machine translation from French (originally English) and contains awkward phrasing, OCR errors, and translation artifacts (e.g., translating 'sexual difference' as 'gender difference').",
+      "The 'Moderne jenter' study is based on a specific, highly selected Norwegian demographic (urban, educated women interviewed in 1991); generalizability to other contexts requires caution."
+    ]
+  }
+}

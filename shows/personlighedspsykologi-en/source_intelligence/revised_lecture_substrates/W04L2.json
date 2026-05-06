@@ -1,0 +1,79 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:13Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l2-laplanche-1970-968862d5",
+      "w04l2-lacan-1966-2d720f56",
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "77c1c3f26c6e354560c620f1be5aeaf7c8b6d77c1ac242d0fa0375699869f994",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W04L2",
+    "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+    "sequence_index": 8
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture is the pivotal hinge of the course. It marks the definitive departure from viewing personality as a measurable, biological given (traits/biosocial) and introduces the 'decentered subject.' By establishing the ego as a defensive, socially mediated fiction, it lays the indispensable groundwork for both the existentialist focus on anxiety and the later poststructuralist deconstruction of identity.",
+    "what_matters_more": [
+      "The epistemological break from biological essentialism: Laplanche's concept of 'propping' (étayage) is crucial for showing how human psychology deviates from pure biology, aligning with the course's trajectory away from innate essences.",
+      "The 'Decentered Subject': Lacan's Mirror Stage must be emphasized not just as a developmental milestone, but as a radical critique of the rational, autonomous ego, setting the stage for poststructuralism.",
+      "Application of the 4 orientation points: Explicitly mapping psychoanalysis onto the essence/context, agency, determination, and historicity framework, particularly highlighting its unique stance on internal determination (unconscious) and restricted agency."
+    ],
+    "de_emphasize": [
+      "Granular memorization of specific defense mechanisms or the minutiae of clinical diagnostic criteria (neurotic vs. borderline vs. psychotic), which distracts from the broader theoretical and epistemological shifts of the course.",
+      "Overly dense Lacanian terminology (e.g., the intricate mechanics of the Symbolic, Imaginary, and Real) if it obscures the central takeaway of the ego as an alienating, defensive fiction."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W10L1 (Gender and Psychoanalysis / Mitchell)",
+        "relation": "Theoretical repurposing",
+        "rationale": "Lacan's decentered subject and the mechanisms of unconscious identification introduced here are directly repurposed in W10 to explain the deep, often contradictory, and non-rational psychological anchoring of gender identity."
+      },
+      {
+        "target": "W06 & W07 (Phenomenology and Humanistic Psychology)",
+        "relation": "Contrastive agency and selfhood",
+        "rationale": "The psychoanalytic conceptualization of the ego as an alienating, defensive illusion (méconnaissance) serves as the perfect foil to the humanistic and existential emphasis on an authentic, meaning-making, and growth-oriented self."
+      },
+      {
+        "target": "W01 & W02 (Trait and Biosocial Perspectives)",
+        "relation": "Epistemological rupture",
+        "rationale": "Laplanche's distinction between biological instinct and psychological drive explicitly ruptures the biosocial and trait models' assumptions about natural, measurable, and pre-social personality variables."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Create a dedicated segment contrasting the 'Rational Ego' of early-course trait psychology with Lacan's 'Decentered Subject' and the ego as an illusion.",
+      "Explain Laplanche's 'propping' (étayage) as the exact moment human psychology breaks away from pure biology—a key step in the course's journey toward socially constructed personality.",
+      "Frame the Mirror Stage not as a literal event with a mirror, but as a metaphor for how we build a coherent 'self' to hide our fundamental lack of control."
+    ],
+    "carry_forward": [
+      "The concept of the 'Decentered Subject'—the idea that we are not the masters of our own house.",
+      "The distinction between biological instinct and psychologically mediated drive.",
+      "The understanding of identity and the ego as structural, defensive formations rather than innate, transparent essences."
+    ],
+    "warnings": [
+      "Students frequently get lost in Lacan's philosophical density; instructors must aggressively bridge the Mirror Stage back to the course's core theme of 'what is a person?'",
+      "Ensure that the discussion of clinical structures (neurotic/psychotic) does not turn the lecture into an abnormal psychology class; keep the focus on what these structures reveal about the general theory of subjectivity."
+    ]
+  }
+}

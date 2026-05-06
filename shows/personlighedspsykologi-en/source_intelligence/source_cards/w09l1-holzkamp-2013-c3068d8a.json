@@ -1,0 +1,154 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:18:25Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-holzkamp-2013-c3068d8a"
+    ],
+    "dependency_hashes": {
+      "source_file": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
+      "source_files_signature": "a349d403a1a9521b17916983b650f1fe7a3ac7571fccddbf99a26186c00004b6",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w09l1-holzkamp-2013-c3068d8a",
+    "lecture_key": "W09L1",
+    "title": "Holzkamp (2013)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf",
+    "source_paths": [
+      "Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces the foundational epistemological and methodological framework of Critical Psychology, specifically the shift from variable psychology to a subject science based on reason discourse.",
+    "source_role": "A primary theoretical text outlining Holzkamp's conceptualization of a psychology from the standpoint of the subject and his critique of mainstream experimental psychology.",
+    "relation_to_lecture": "Provides the core theoretical foundation for the lecture on Critical Psychology, establishing the critique of mainstream psychology and introducing the alternative framework of reason discourse.",
+    "central_claims": [
+      {
+        "claim": "Psychology must be conducted from the standpoint of the subject, utilizing a 'reason discourse' rather than a 'conditioning discourse' to understand human action.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Traditional variable psychology mistakenly treats 'reason patterns' as empirical if-then hypotheses, when they are actually linguistic-implicative statements that cannot be empirically falsified.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "In a psychology from the standpoint of the subject, the scientific standpoint coincides with the subject's standpoint, meaning other subjects must be treated as co-researchers rather than objects of research.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Empirical research in subject science should be evaluated by its ability to facilitate the real development of subjective life practice and help subjects overcome restrictions and self-hindrances.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Standpoint of the subject",
+        "definition": "An epistemological perspective where human actions are understood as grounded in reasons based on the individual's life conditions, rather than as behaviors caused by external variables.",
+        "role": "The foundational premise of Holzkamp's Critical Psychology, shifting the focus from external observation to subjective groundedness."
+      },
+      {
+        "term": "Reason discourse",
+        "definition": "A framework for understanding human action which posits that individuals have first-person reasons for their actions based on their specific premises and societal conditions.",
+        "role": "Serves as the alternative scientific language to traditional psychology's conditioning discourse."
+      },
+      {
+        "term": "Conditioning discourse",
+        "definition": "The traditional psychological framework that views individual actions as being directly determined or caused by external circumstances (third-person standpoint).",
+        "role": "The primary target of Holzkamp's critique, representing the mainstream approach that Critical Psychology seeks to overcome."
+      },
+      {
+        "term": "Reason patterns",
+        "definition": "Linguistic-implicative statements that describe what is reasonable under given premises, which traditional psychology often mistakenly formulates and tests as contingent empirical hypotheses.",
+        "role": "Used to demonstrate the methodological flaw in mainstream psychological experiments, which often test self-evident logical relations rather than empirical facts."
+      },
+      {
+        "term": "Co-researchers",
+        "definition": "The role assigned to human subjects in Critical Psychology research, reflecting the elimination of the subject-object divide since the researcher's perspective categorically coincides with the subject's.",
+        "role": "Defines the methodological relationship between researchers and participants in subject science."
+      },
+      {
+        "term": "Transcending immediacy (Unmittelbarkeitsüberschreitung)",
+        "definition": "The process of moving beyond direct, self-curtailing attempts to control a situation, towards understanding the broader societal conditions and the groundedness of others' actions.",
+        "role": "Describes the developmental goal of subject science research, enabling individuals to overcome self-hindrance and resolve conflicts."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Reason discourse vs. Conditioning discourse",
+        "summary": "Understanding actions as grounded in subjective reasons (first-person) versus viewing actions as caused by external variables (third-person).",
+        "stakes": "Determines whether psychology treats humans as subjects with agency who relate to their conditions, or as objects mechanically determined by their environment."
+      },
+      {
+        "label": "Empirical hypotheses vs. Reason patterns",
+        "summary": "Contingent relations that can be empirically tested and potentially falsified versus linguistic-implicative statements that are logically true by definition.",
+        "stakes": "Challenges the scientific validity of many traditional psychological experiments, arguing they merely demonstrate logical tautologies rather than discovering empirical truths."
+      },
+      {
+        "label": "Subject standpoint vs. Subjectivism",
+        "summary": "A rigorous scientific perspective analyzing how experiences are mediated by reality versus an 'internal' self-awareness that ignores objective conditions.",
+        "stakes": "Defends Critical Psychology against accusations of being unscientific or purely introspective, emphasizing its focus on the objective societal conditions of subjective experience."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming 'standpoint of the subject' implies a purely subjective, introspective, or unscientific approach, whereas Holzkamp argues it is the only valid scientific standpoint for psychology.",
+      "Confusing 'reasons' with mere post-hoc rationalizations; in this framework, reasons are objectively grounded in the individual's societal conditions and premises.",
+      "Believing Critical Psychology rejects all empirical research; rather, it redefines empirical research as a cooperative process aimed at facilitating the real development of subjective life practice."
+    ],
+    "quote_targets": [
+      {
+        "target": "The reason discourse distinguishes the subject science approach from the conditioning discourse in traditional variable psychology, which is not based on the subject standpoint as a first-person standpoint but on the external 'third-person standpoint'.",
+        "why": "Clearly states the central distinction and core argument of the text regarding the necessary shift in psychological discourse."
+      },
+      {
+        "target": "Since here the perspective of the subject categorically coincides with that of the researcher, other subjects can only be co-researchers and not the object of research.",
+        "why": "Highlights the radical methodological consequence of adopting the subject standpoint for empirical research."
+      },
+      {
+        "target": "In our view, the level of the 'subjective groundedness' or 'subjective reasons for action' accentuated in this way represents a general meditating level between societal meaning structures and individual life activities.",
+        "why": "Defines the core concept of subjective groundedness and its mediating role."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a translation of Holzkamp's work, originally published in German, and relies heavily on specific terminology.",
+      "The argument is primarily theoretical and methodological, using logical critique of mainstream psychology rather than presenting new empirical data."
+    ],
+    "warnings": [
+      "The text uses dense, philosophical language (e.g., 'linguistic-implicative', 'transcending immediacy') which may require careful unpacking for students.",
+      "As lecture slides are not provided, the exact emphasis placed on specific parts of Holzkamp's argument during the lecture is inferred from the text's core structure."
+    ]
+  }
+}

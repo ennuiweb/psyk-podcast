@@ -1,0 +1,140 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:45:12Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-exercise-1-intro-og-tr-k-93aadd03"
+    ],
+    "dependency_hashes": {
+      "source_file": "6827926fced9475ba46326fd40232d5f16c97af5eec222160c1eb2a8281b9490",
+      "source_files_signature": "2eecbaf7a46372c1b8d9e930d9082ad2451fba0c37c5fceeac81e5d6a26f1bfc",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+    "lecture_key": "W02L1",
+    "title": "1. Trækteori",
+    "source_family": "exercise_slide",
+    "evidence_origin": "exercise_clarified",
+    "source_path": "Øvelseshold/1. Intro og træk.pdf",
+    "source_paths": [
+      "Øvelseshold/1. Intro og træk.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/1. Intro og træk.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/1. Intro og træk.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "6827926fced9475ba46326fd40232d5f16c97af5eec222160c1eb2a8281b9490",
+    "length_band": "long",
+    "page_count": 29,
+    "estimated_token_count": 18850,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces trait theory through a methodological lens, emphasizing how theoretical assumptions about language (the lexical hypothesis) shape the measurement, quantification, and practical application of personality traits.",
+    "source_role": "Exercise slides designed to clarify the methodological foundations of trait psychology, bridging theoretical concepts with practical application like the HEXACO test.",
+    "relation_to_lecture": "Serves as the practical and methodological counterpart to the first lecture on trait theory (W02L1), focusing heavily on 'how' traits are measured and the epistemological implications of these methods.",
+    "central_claims": [
+      {
+        "claim": "The lexical hypothesis is a necessary theoretical assumption for the development of trait theory.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Methodological reduction is the process of specifying and justifying which aspects of a phenomenon can function as empirically valid data for a scientific study.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The lexical hypothesis itself does not inherently assume that personality attributes have long-term stability or a biological basis, even if many researchers in the tradition believe they do.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Trait psychology assumes that natural language is representative of personality and can be used to measure it.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Den leksikale hypotese (The Lexical Hypothesis)",
+        "definition": "The strategy and assumption that the most significant individual differences in daily human transactions eventually become encoded in natural language as personality-descriptive adjectives.",
+        "role": "Serves as the foundational method for identifying major dimensions of personality variation through factor analysis of language."
+      },
+      {
+        "term": "Metodisk reduktion (Methodological reduction)",
+        "definition": "The practical research process of specifying which aspects of an object or phenomenon can function as valid empirical data, driven by theoretical understanding.",
+        "role": "Explains how researchers move from a complex real-world phenomenon to measurable data in personality psychology."
+      },
+      {
+        "term": "Realobjekt vs. Erkendelsesobjekt",
+        "definition": "The distinction between the phenomenon as it exists in reality (Realobjekt) and the specific, reduced aspects of it that are isolated for scientific investigation (Erkendelsesobjekt).",
+        "role": "Highlights the epistemological limits of psychological measurement, showing that tests only capture a theoretical subset of a person."
+      },
+      {
+        "term": "Theoretical relevant outcome criteria",
+        "definition": "Behavioral criteria developed to be confirmed through self-reports and correlated with different trait domains, as added to the lexical model by Zettler et al. (2020).",
+        "role": "Shows how trait psychology attempts to link linguistically derived trait domains to actual behavioral outcomes in practice."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Realobjekt vs. Erkendelsesobjekt",
+        "summary": "The difference between the complete, real-world phenomenon and the theoretically reduced object of scientific study.",
+        "stakes": "Crucial for understanding that personality tests do not measure the whole person, but only the aspects defined by the specific theoretical framework and method."
+      },
+      {
+        "label": "Lexical Hypothesis vs. Biological Trait Assumption",
+        "summary": "The lexical hypothesis identifies personality dimensions through language, but unlike some broader trait theories, it does not strictly require these dimensions to have a biological basis or long-term stability.",
+        "stakes": "Prevents students from conflating the linguistic method of finding traits with ontological claims about what traits fundamentally are."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming the lexical hypothesis inherently claims that traits are biologically based and perfectly stable over time, which the slides explicitly note it does not require.",
+      "Believing that theory and method can be completely separated in practice, whereas the slides argue they are deeply intertwined.",
+      "Thinking that a personality test captures the entirety of a person (Realobjekt), rather than just the theoretically defined aspects (Erkendelsesobjekt)."
+    ],
+    "quote_targets": [
+      {
+        "target": "The primary significance of the lexical hypothesis is that it provides a strategy for research aimed at identifying the major dimensions of personality variation...",
+        "why": "Defines the core purpose and utility of the lexical strategy in trait research according to Ashton (2004)."
+      },
+      {
+        "target": "Ved metodisk reduktion forstås en præcisering af, hvilke aspekter af et objekt eller fænomen der kan fungere som data...",
+        "why": "Provides a precise definition of methodological reduction from Køppe (2015), which is central to the course's focus on method."
+      },
+      {
+        "target": "First, the lexical hypothesis makes no assumption that the personality attributes encoded in the lexicon represent personality 'traits'...",
+        "why": "Clarifies a major theoretical nuance regarding the ontological status of traits within the lexical tradition."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily emphasize the connection between theory and method, using Køppe (2015) to frame methodological reduction.",
+      "Ashton (2004) is used as the primary source for defining the lexical hypothesis and its limitations.",
+      "Zettler et al. (2020) is cited for adding behavioral criteria to the lexical model."
+    ],
+    "warnings": [
+      "The slides contain group exercise prompts and discussion questions (e.g., regarding H&M's use of personality tests) where the actual conclusions are not present in the text.",
+      "Details of the HEXACO model's specific 6 traits are visually implied in diagrams but not explicitly defined or named in the text of these slides."
+    ]
+  }
+}

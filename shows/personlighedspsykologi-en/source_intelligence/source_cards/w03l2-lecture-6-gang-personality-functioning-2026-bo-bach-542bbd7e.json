@@ -1,0 +1,149 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:04:44Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+    ],
+    "dependency_hashes": {
+      "source_file": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
+      "source_files_signature": "f1bb139c4abfb6feaee7f4f3f6f96c982cffdbd10e043c43de08158afbc72228",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+    "lecture_key": "W03L2",
+    "title": "6. gang Personality Functioning 2026 (Bo Bach)",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/6. gang Personality Functioning 2026 (Bo Bach).pdf",
+    "source_paths": [
+      "Forelæsningsrækken/6. gang Personality Functioning 2026 (Bo Bach).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/6. gang Personality Functioning 2026 (Bo Bach).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/6. gang Personality Functioning 2026 (Bo Bach).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "1bd465ef68a66481a5270a383ea16623271e607f1a618f1fd966b6bb51d7786e",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents the new WHO (ICD-11) diagnostic framework for personality disorders, emphasizing a dimensional approach based on the severity of self and interpersonal functioning rather than categorical disease models.",
+    "source_role": "Lecture slides introducing the clinical framework of personality functioning and dysfunction, detailing the shift to the ICD-11 model and its practical implications for diagnosis and therapy.",
+    "relation_to_lecture": "Serves as the primary visual and structural guide for Lecture 6, outlining the agenda, key definitions, and clinical examples of personality functioning.",
+    "central_claims": [
+      {
+        "claim": "The new WHO/ICD-11 model for personality disorders shifts from a medical 'disease' model to a psychological model focusing on what it means to be a person (ego-functions).",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "In personality disorders, problems with self and interpersonal functioning are primary (the source of the problems), whereas in depression and anxiety, these problems are secondary.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychotherapy works by strengthening personality functions (formerly ego functions) such as reality testing, impulse control, and self-esteem regulation.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "At least 6.9% of the Danish general population recognizes having problems corresponding to a personality disorder, with 4.8% at a mild level.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Personlighedsfunktion (Personality functioning)",
+        "definition": "Psychological functions related to how we handle ourselves (identity, self-worth, goal-directedness) and our relations to others (mentalization, conflict management, cooperation).",
+        "role": "The core framework for understanding mental health and diagnosing the severity of personality disorders in the ICD-11."
+      },
+      {
+        "term": "Selv-funktion (Self-functioning)",
+        "definition": "Aspects of the personality including the stability of identity, regulation of self-worth, accuracy of self-appraisal, and goal-directedness.",
+        "role": "One of the two main axes used to determine the severity of a personality disorder."
+      },
+      {
+        "term": "Interpersonel funktion (Interpersonal functioning)",
+        "definition": "The ability to engage in relationships, take others' perspectives, maintain stable mutual relationships, and manage conflicts.",
+        "role": "The second main axis used to determine the severity of a personality disorder."
+      },
+      {
+        "term": "Mentalisering",
+        "definition": "The ability to see things from others' perspectives, characterized by curiosity and avoiding overthinking or misunderstanding.",
+        "role": "A crucial component of interpersonal functioning that is often impaired in individuals with personality dysfunction."
+      },
+      {
+        "term": "Realitetstestning (Reality testing)",
+        "definition": "The cognitive ability to perceive reality accurately, which can become distorted under stress (e.g., catastrophizing, black-and-white thinking, transient psychotic symptoms).",
+        "role": "A key cognitive manifestation of personality functioning that guides behavior and emotional regulation."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "\"HOW NUTS?\" vs. \"WHAT KIND OF NUTS?\"",
+        "summary": "Distinguishes between the overall severity of personality functioning (\"HOW NUTS\") and the specific personality traits or style (\"WHAT KIND OF NUTS\").",
+        "stakes": "Clarifies the two-step diagnostic process in modern personality psychology: first assessing the severity of dysfunction, then identifying specific trait specifiers."
+      },
+      {
+        "label": "Primary vs. Secondary interpersonal problems",
+        "summary": "In personality disorders, self and interpersonal problems are the primary source of the disorder, whereas in depression and anxiety, they are secondary symptoms.",
+        "stakes": "Highlights the unique, foundational nature of personality functioning in psychopathology compared to other mental disorders."
+      },
+      {
+        "label": "Medicinsk model vs. Psykologisk model",
+        "summary": "The established medical model treats personality disorders as a \"disease\", while the new WHO model approaches it as a disturbance in psychological personhood and ego-functions.",
+        "stakes": "Shifts the clinical paradigm towards understanding the patient as a person rather than just treating a categorical disease."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might confuse specific personality traits (the 'what kind') with the overall level of personality functioning (the 'how much/severity').",
+      "Students might assume personality disorders are rare, whereas the slides show nearly 7% of the Danish population experiences corresponding problems.",
+      "Students might think interpersonal problems are unique to personality disorders, missing the nuance that they are primary in PDs but secondary in anxiety/depression."
+    ],
+    "quote_targets": [
+      {
+        "target": "“HOW NUTS” = SVÆRHEDSGRAD/OVERORDNET FUNKTION / “WHAT KIND OF NUTS” = PERSONLIGHEDSTRÆK",
+        "why": "Memorably encapsulates the distinction between functioning severity and trait expression using Nancy McWilliams' analogy."
+      },
+      {
+        "target": "Personlighedsforstyrrelse: Selv- og interpersonelle problemer er primære (kilde til problemerne).",
+        "why": "Defines the core difference between personality disorders and other mental illnesses like depression or anxiety."
+      },
+      {
+        "target": "I dansk almenbefolkning genkender mindst 6.9% at have problemer svarende til en personlighedsforstyrrelse",
+        "why": "Provides concrete epidemiological data relevant to the Danish context."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference the ICD-11 model and WHO guidelines for diagnosing personality disorders.",
+      "Clinical examples and quotes regarding psychotherapy and ego functions are drawn from Cabaniss et al. (2010, 2013).",
+      "Epidemiological data on the Danish population is cited from Bach et al. (2023)."
+    ],
+    "warnings": [
+      "The slides contain several visual models and clinical vignettes (e.g., DIPP-11 scoring examples for Grandiose and Vulnerable Narcissism) that lack full context without the accompanying oral lecture."
+    ]
+  }
+}

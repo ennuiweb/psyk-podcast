@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:10:37Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+    ],
+    "dependency_hashes": {
+      "source_file": "9648819387f634b7396fd21295d97b8df813e60316463fcf6a45f7845f490c9f",
+      "source_files_signature": "a2a6d548706bcd4008501124003b59d0d15b6d94cd7f1b5a288d5013ca3f50b5",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+    "lecture_key": "W06L2",
+    "title": "7. Eksistentiel psykologi",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/7. Eksistentiel psykologi.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/7. Eksistentiel psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/7. Eksistentiel psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/7. Eksistentiel psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "9648819387f634b7396fd21295d97b8df813e60316463fcf6a45f7845f490c9f",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Anvender eksistentialistiske og fænomenologiske begreber (Sartre, Merleau-Ponty) til at udfordre traditionelle træk- og essensbaserede personlighedsforståelser.",
+    "source_role": "Seminarundervisning, der operationaliserer læste tekster (Cooper, Køppe & Dammeyer) gennem diskussionsspørgsmål og begrebsafklaring.",
+    "relation_to_lecture": "Fungerer som et anvendelsesorienteret supplement til hovedforelæsningen om eksistentiel psykologi, med fokus på at relatere teorien til kursets fire orienteringspunkter.",
+    "central_claims": [
+      {
+        "claim": "Kropssubjektet refererer til den levede krop som udgangspunkt for menneskets tilværelse, frem for den medicinske eller fysiologiske krop.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "I eksistentialismen går eksistens (den konkrete, partikulære væren) forud for essens (abstrakte, universelle karakteristika).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Eksistentiel angst opstår, når mennesket indser, at dets handlinger og verden ikke har nogen ultimativ grundvold, men blot er som en teaterscene.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Kropssubjekt",
+        "definition": "Den levede krop, som udgør udgangspunktet for hele vores tilværelse og væren, i modsætning til den medicinske/somatiske krop.",
+        "role": "Forbinder fænomenologi med eksistentialisme ved at forankre oplevelsen i den kropslige væren."
+      },
+      {
+        "term": "Prærefleksive",
+        "definition": "Forudgående subjektstrukturer (fx følelser og intentionalitet), der tager udgangspunkt i kroppen og går forud for bevidst refleksion.",
+        "role": "Forklarer, hvordan vores oplevelser er struktureret kropsligt, før vi tænker over dem."
+      },
+      {
+        "term": "Essens",
+        "definition": "De universelle, abstrakte og uforanderlige karakteristika, der gør en entitet til det, den er.",
+        "role": "Fungerer som kontrast til eksistensbegrebet for at tydeliggøre eksistentialismens opgør med forudbestemte træk."
+      },
+      {
+        "term": "Eksistens",
+        "definition": "Det faktum, at noget er; en partikulær, konkret væren og virkeligheden af den faktiske entitet.",
+        "role": "Kernen i den eksistentielle psykologis subjektforståelse, hvor det levede liv prioriteres over abstrakte kategorier."
+      },
+      {
+        "term": "Angst (Dread)",
+        "definition": "Erkendelsen af, at vores aktiviteter og verden mangler en ultimativ grundvold og let kunne være anderledes.",
+        "role": "Belyser menneskets grundvilkår og frihed i en meningsløs verden."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essens vs. Eksistens",
+        "summary": "Forskellen mellem abstrakte, universelle og uforanderlige træk (essens) og den konkrete, partikulære og faktiske væren (eksistens).",
+        "stakes": "Afgørende for at forstå Sartres påstand om, at 'eksistens går forud for essens', hvilket afviser, at personligheden er determineret af iboende træk fra fødslen."
+      },
+      {
+        "label": "Kropssubjekt vs. Medicinsk krop",
+        "summary": "Forskellen mellem kroppen oplevet indefra som et eksistentielt udgangspunkt (den levede krop) og kroppen anskuet udefra som et fysiologisk, somatisk objekt.",
+        "stakes": "Vigtig for at undgå en reduktionistisk, biologisk forståelse af mennesket i personlighedspsykologien."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At forveksle 'kropssubjektet' med den rent biologiske eller fysiologiske krop.",
+      "At misforstå eksistentiel 'angst' som en klinisk diagnose frem for et ontologisk grundvilkår.",
+      "At tro, at eksistentialismen anerkender en forudbestemt personlighedskerne (essens)."
+    ],
+    "quote_targets": [
+      {
+        "target": "The essence of an entity is what it is: the universal, abtract and unchanging characteristics... (Cooper, 2003, s. 8)",
+        "why": "Definerer essensbegrebet, som eksistentialismen positionerer sig overfor."
+      },
+      {
+        "target": "existance presedes essence (Sartre via Cooper, 2003, s. 14)",
+        "why": "Kernecitater for hele den eksistentielle psykologis menneskesyn."
+      },
+      {
+        "target": "With a flash of dread, we realise that all those activities we assumed were intrinsically meaningful... have no ultimate grounding (Cooper, 2003, s. 23)",
+        "why": "Illustrerer begrebet angst og den eksistentielle meningsløshed."
+      }
+    ],
+    "grounding_notes": [
+      "Sliden om kropssubjektet er markeret som et 'hængeparti' fra en tidligere undervisningsgang (baseret på Funch og Roald, 2014).",
+      "Kildematerialet trækker eksplicit på Cooper (2003) og Køppe & Dammeyer (2014a)."
+    ],
+    "warnings": [
+      "Kilden er et sæt seminarslides bestående primært af diskussionsspørgsmål og løsrevne citater; dybere teoretisk argumentation må findes i grundteksterne (især Cooper 2003).",
+      "Der er slåfejl i kildens citater (fx 'existance', 'perticular', 'abtract', 'soomatiske'), som er bevaret i analysen for at afspejle kilden præcist."
+    ]
+  }
+}

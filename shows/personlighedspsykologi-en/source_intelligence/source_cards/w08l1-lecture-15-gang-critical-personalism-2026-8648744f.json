@@ -1,0 +1,158 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:16:37Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+    ],
+    "dependency_hashes": {
+      "source_file": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
+      "source_files_signature": "c72f2b341a5a0c508bb5fc87f31af69533d2b8bc53a707fb2c18f48055ce51b6",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+    "lecture_key": "W08L1",
+    "title": "15. gang Critical personalism 2026",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/15. Critical personalism 2026.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/15. Critical personalism 2026.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/15. Critical personalism 2026.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/15. Critical personalism 2026.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "9ccdb8ceed5ed97dcd8049980c951ab25939e0ade50fb6383bcf774daa8328a9",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces William Stern's Critical Personalism as a holistic, idiographic foundation for personality psychology, demonstrating its historical evolution and its direct influence on Lewin's field theory, Muchow's developmental ecology, and Allport's trait theory.",
+    "source_role": "Primary lecture slides structuring the 15th session, providing key definitions, historical context, and empirical examples (e.g., Muchow's Hamburg studies) to explain critical personalism.",
+    "relation_to_lecture": "Serves as the visual and structural backbone of the lecture, guiding the narrative from Stern's foundational philosophy to concrete empirical and theoretical applications.",
+    "central_claims": [
+      {
+        "claim": "Critical personalism defines the person as a 'unitas multiplex', a totality where multiplicity is integral to the whole, distinguishing it from both impersonalism and naïve personalism.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality development is driven by 'person-world convergence', meaning psychological life is multiply determined by the interaction of inner potentials and outer conditions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "A person's 'life space' is defined functionally and psychologically rather than purely geographically, as evidenced by children's unique, play-driven use of urban environments.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Traits operate as a dynamic, hierarchical system where a single cardinal trait (e.g., self-centeredness) can drive seemingly contradictory lower-order stylistic traits (e.g., orderliness and disorderliness).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Critical personalism",
+        "definition": "A philosophical and psychological orientation viewing the person as a totality (unitas multiplex) where multiplicity is consonant with the personal whole and the world.",
+        "role": "The core theoretical framework of the lecture, introduced by William Stern."
+      },
+      {
+        "term": "Unitas multiplex",
+        "definition": "The concept that a person is a unified whole that contains and integrates a multiplicity of parts and tendencies.",
+        "role": "Serves as the foundational definition of the person in Stern's critical personalism."
+      },
+      {
+        "term": "Person-world convergence",
+        "definition": "The idea that a person and their world are mutually open to each other, and that development is multiply determined by the convergence of inner and outer conditions.",
+        "role": "Explains the developmental and contextual dimensions of Stern's theory."
+      },
+      {
+        "term": "Life space",
+        "definition": "The psychological representation of a person's environment, where boundaries and distances are defined functionally and ego-centrically rather than geographically.",
+        "role": "Connects Lewin's dynamic theory and Muchow's empirical studies to the personalistic framework."
+      },
+      {
+        "term": "Cardinal trait",
+        "definition": "A dominant, motivational trait that pre-organizes a person's action and can regulate multiple, sometimes contradictory, lower-order stylistic traits.",
+        "role": "Illustrates Allport's extension of Stern's ideas into a dynamic, hierarchical model of personality."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Person vs. Thing",
+        "summary": "A person is a unique, inherently valuable, self-activated, and goal-oriented unity. A thing is an aggregate of parts that lacks this self-activated, valuable whole.",
+        "stakes": "Establishes the fundamental ontological and ethical baseline for Stern's psychology."
+      },
+      {
+        "label": "Nomothetic vs. Idiographic",
+        "summary": "Nomothetic approaches focus on law-like regularities across people, while idiographic approaches focus on the uniqueness of the individual.",
+        "stakes": "Highlights Allport's dilemma of establishing personality psychology as a rigorous 'science' of individuality."
+      },
+      {
+        "label": "Varieties of Personalism",
+        "summary": "Impersonalism treats people as mere aggregates/things; naïve personalism postulates a Cartesian spirit; critical personalism views the person as a 'unitas multiplex'.",
+        "stakes": "Clarifies Stern's specific theoretical position against reductionist and purely dualistic alternatives."
+      },
+      {
+        "label": "Life space vs. Geographical space",
+        "summary": "Geographical space is objective and physical, whereas life space is subjective, functional, and defined by the individual's actions and interests (e.g., a child's perception of a fence as a climbing stimulus rather than a barrier).",
+        "stakes": "Demonstrates how psychological reality differs from physical reality, emphasizing the person-world dialectic."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing Stern's 'critical personalism' with 'naïve personalism' (Cartesian dualism) or 'impersonalism' (reductionism).",
+      "Assuming 'life space' is identical to physical or geographical space, rather than a subjective, functional representation.",
+      "Viewing contradictory behaviors in an individual (like Dr. D's neatness and carelessness) as evidence that they lack personality traits, rather than understanding it as the result of a hierarchical trait structure driven by a cardinal trait."
+    ],
+    "quote_targets": [
+      {
+        "target": "A person is an entity that, though consisting of many parts, forms a unique and inherently valuable unity...",
+        "why": "Provides Stern's foundational definition distinguishing a person from a thing."
+      },
+      {
+        "target": "The person is a totality, that is, a unitas multiplex...",
+        "why": "Captures the core definition of Critical Personalism directly from Stern (1938)."
+      },
+      {
+        "target": "Person-world convergence is the primary reality...",
+        "why": "Highlights Stern's developmental perspective on how inner and outer conditions interact."
+      },
+      {
+        "target": "Dr. D. is ... always neat about his person and desk... in this duty he is careless...",
+        "why": "A crucial case study from Allport (1937) illustrating the dynamic, hierarchical organization of traits."
+      }
+    ],
+    "grounding_notes": [
+      "The slides rely heavily on direct quotes from Stern (1906, 1930, 1938) and Allport (1937).",
+      "Martha Muchow's study of children in Barmbek (Hamburg) is used as the primary empirical grounding for the concept of 'life space'."
+    ],
+    "warnings": [
+      "The slides provide high-level summaries and translated quotes; the deep theoretical nuances of Stern's 'psychophysically neutral' stance may require supplementary reading.",
+      "The distinction between American and German personality structures (Lewin, 1936) is shown visually but lacks detailed textual explanation in the slides."
+    ]
+  }
+}

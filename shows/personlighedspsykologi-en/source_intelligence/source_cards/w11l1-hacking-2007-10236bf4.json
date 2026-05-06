@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:20:49Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l1-hacking-2007-10236bf4"
+    ],
+    "dependency_hashes": {
+      "source_file": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
+      "source_files_signature": "420ab56851ac974a34c04034d8a5e6428a694a3e31ca4751a7ea06259dd69fde",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l1-hacking-2007-10236bf4",
+    "lecture_key": "W11L1",
+    "title": "Hacking (2007)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf",
+    "source_paths": [
+      "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Hacking (2007).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "972bdd056c227738af1268d1112b2d4da825a5aeb757b9740aeab62becb48751",
+    "length_band": "long",
+    "page_count": 34,
+    "estimated_token_count": 22100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a discursive and post-structuralist epistemological framework for understanding how personality categories and psychological diagnoses are socially and scientifically constructed.",
+    "source_role": "A foundational theoretical text that introduces the concepts of the 'looping effect' and 'dynamic nominalism' to explain the unique epistemology of the human sciences.",
+    "relation_to_lecture": "Directly supports the W11L1 theme of post-structuralism and discursive psychology by demonstrating how psychological discourses and classifications actively construct the subjects they claim to merely describe.",
+    "central_claims": [
+      {
+        "claim": "Scientific classifications of people interact with the people classified, altering their behavior and self-experience, which in turn alters the classification itself (the looping effect).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The process of 'making up people' involves five interacting elements: classifications, the people classified, institutions, knowledge, and experts.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The human sciences utilize ten 'engines of discovery' (such as counting, quantifying, medicalizing, and geneticizing) which simultaneously act as engines for making up people.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The concept of 'human kinds' is fundamentally flawed and should be abandoned because it relies on the collapsed philosophical idea of 'natural kinds'.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Looping effect",
+        "definition": "The phenomenon where a scientific classification interacts with the people classified, causing them to change, which consequently makes them a 'moving target' that alters the original classification.",
+        "role": "It is the central mechanism explaining why the human sciences study moving targets rather than static entities."
+      },
+      {
+        "term": "Making up people",
+        "definition": "The process by which a new scientific classification brings into being a new kind of person, conceived of and experienced as a specific way to be a person.",
+        "role": "Provides a framework for understanding how psychological and psychiatric diagnoses actively construct human identity."
+      },
+      {
+        "term": "Dynamic nominalism",
+        "definition": "A historical and Nietzschian philosophical stance asserting that names and classifications actively interact with and shape the people named, rather than just statically labeling them.",
+        "role": "Serves as Hacking's core epistemological position, distinguishing his view from traditional static nominalism and linguistic idealism."
+      },
+      {
+        "term": "Engines of discovery",
+        "definition": "Ten scientific and social imperatives (Count, Quantify, Create Norms, Correlate, Medicalise, Biologise, Geneticise, Normalise, Bureaucratise, Reclaim identity) that drive the human sciences.",
+        "role": "Details the specific methodological and institutional practices through which new kinds of people are generated and managed."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Statement A vs. Statement B (Existence vs. Way of Being)",
+        "summary": "The distinction between claiming a type of person did not physically exist in the past (Statement A) versus claiming that it was not a recognized 'way to be a person' or a way to experience oneself in society (Statement B).",
+        "stakes": "Clarifies that 'making up people' does not mean fabricating physical existence, but rather creating new modes of self-experience and social interaction."
+      },
+      {
+        "label": "Static vs. Dynamic Nominalism",
+        "summary": "Traditional British nominalism (static) treats names as mere labels for reality, whereas dynamic nominalism (Hacking's view) argues that names interact with and change the named subjects.",
+        "stakes": "Highlights the active, constructive power of scientific discourse in the human sciences."
+      },
+      {
+        "label": "Overweight vs. Obese",
+        "summary": "Overweight is treated as a mere characteristic or deviation from a norm, whereas obesity is increasingly treated (via genetics and biology) as an essential property or 'who I am'.",
+        "stakes": "Illustrates how different engines of discovery (quantification vs. geneticization) produce different ontological experiences of human categories."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Hacking believes psychological disorders are 'fake' or purely linguistic inventions (he explicitly rejects linguistic idealism and acknowledges the reality of the people and their conditions).",
+      "Confusing the 'looping effect' with individuals consciously or maliciously faking symptoms.",
+      "Believing Hacking still advocates for the term 'human kinds' (he explicitly repudiates this term in this specific 2007 text, despite having used it in his earlier work)."
+    ],
+    "quote_targets": [
+      {
+        "target": "They are moving targets because our investigations interact with the targets themselves, and change them. And since they are changed, they are not quite the same kind of people as before. That is the looping effect.",
+        "why": "It is the most concise and direct definition of the looping effect in the text."
+      },
+      {
+        "target": "Historical nominalism is only half the cake. My nominalism is historical, but it is also Nietzschian; it is dynamic; it is about the interaction between names and things, or rather names and people.",
+        "why": "Clearly defines Hacking's specific philosophical position (dynamic nominalism) in contrast to Foucault's historical nominalism."
+      },
+      {
+        "target": "(A) There were no multiple personalities in 1955; there were many in 1985. (B) In 1955 this was not a way to be a person, people did not experience themselves in this way...",
+        "why": "Provides the crucial pedagogical distinction needed to understand what it actually means to 'make up people'."
+      }
+    ],
+    "grounding_notes": [
+      "Hacking explicitly retracts his earlier use of the term 'human kinds' on page 291, which is a critical update to his older theories often taught in psychology.",
+      "The text uses Multiple Personality Disorder, Autism, Obesity, Suicide, and Genius as its primary case studies to ground the philosophical framework."
+    ],
+    "warnings": [
+      "This is a philosophical lecture (British Academy Lecture), so it relies on historical and conceptual argumentation rather than empirical psychological data or traditional study designs."
+    ]
+  }
+}

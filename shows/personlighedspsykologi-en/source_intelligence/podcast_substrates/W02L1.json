@@ -1,0 +1,156 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:49:04Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-zettler-et-al-2020-0c54e6e4",
+      "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+      "w02l1-exercise-1-intro-og-tr-k-93aadd03"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "c1b16ef879077ffabefb434a2abffd1e45577b83a97db6e1dc027a7bf88f29a9",
+      "course_synthesis": "92aeb51c276c248534b100a556bb8453f025d0d2aaac8e4265ee751cf2d17c57",
+      "source_cards_signature": "0c6322d90da222f4c7886b2a9544abdc7b4690b71a3398a9c12fcec2ecedb953",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W02L1",
+    "lecture_title": "Personality traits, personality states, and personality dimensions (Forelæsning 3, 2026-02-09)",
+    "sequence_index": 3
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "Frame trait theory as a highly effective but methodologically reduced scientific lens, introducing the fundamental puzzle of stability (traits) versus change (states).",
+      "must_cover": [
+        "The Lexical Hypothesis as the linguistic foundation of trait models.",
+        "The Trait vs. State dynamic to explain cross-situational variability.",
+        "Methodological Reduction and the distinction between Realobjekt and Erkendelsesobjekt."
+      ],
+      "avoid": [
+        "Getting bogged down in the mathematical mechanics of factor analysis.",
+        "Memorizing every specific sub-facet of the HEXACO model."
+      ],
+      "grounding": [
+        "Anchor the discussion of traits in Zettler's HEXACO validation and states in Columbus & Strandsbjerg's Whole Trait Theory."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+        "angle": "Validating the HEXACO model through its nomological net and behavioral outcomes.",
+        "must_cover": [
+          "The addition of Honesty-Humility to personality models.",
+          "Mapping the six HEXACO dimensions to specific STOA outcome domains."
+        ],
+        "avoid": [
+          "Deep statistical mechanics of the 426 meta-analyses."
+        ]
+      },
+      {
+        "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "angle": "The dynamic interplay between short-term states and long-term traits.",
+        "must_cover": [
+          "Whole Trait Theory (WTT).",
+          "Situation-state contingencies and how states accumulate into trait change."
+        ],
+        "avoid": [
+          "Assuming average states perfectly equal trait scores."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+        "angle": "The structural and dimensional approach to personality.",
+        "must_cover": [
+          "Dimensional versus categorical approaches to personality.",
+          "The Lexical Hypothesis.",
+          "Contrasting the Big Five with the HEXACO model."
+        ],
+        "avoid": [
+          "OCR formatting artifacts in correlation matrices."
+        ]
+      },
+      {
+        "source_id": "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+        "angle": "The epistemological limits of trait measurement.",
+        "must_cover": [
+          "Methodological reduction.",
+          "The distinction between Realobjekt and Erkendelsesobjekt."
+        ],
+        "avoid": [
+          "Treating the lexical hypothesis as an inherently biological claim."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "The inner core of personality: how we measure traits and why our states fluctuate.",
+      "must_cover": [
+        "The Trait vs. State distinction.",
+        "The concept of Methodological Reduction (Realobjekt vs. Erkendelsesobjekt)."
+      ],
+      "avoid": [
+        "Overcomplicating with statistical validation methods."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Lexical Hypothesis",
+        "why": "Explains the linguistic origin of major trait models like Big Five and HEXACO."
+      },
+      {
+        "concept": "Nomological Net",
+        "why": "The methodological framework for validating theoretical constructs against behavioral outcomes."
+      },
+      {
+        "concept": "Whole Trait Theory",
+        "why": "Bridges the gap between momentary states and enduring traits."
+      },
+      {
+        "concept": "Methodological Reduction",
+        "why": "Crucial epistemological concept distinguishing the whole person from the measured construct."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Trait vs. State",
+        "why": "Highlights within-person variability versus between-person differences."
+      },
+      {
+        "tension": "Realobjekt vs. Erkendelsesobjekt",
+        "why": "Prevents reification of test scores by acknowledging the limits of scientific measurement."
+      }
+    ],
+    "grounding_notes": [
+      "Ensure trait models are discussed as theoretical constructs (Erkendelsesobjekt), not absolute biological realities.",
+      "Use HEXACO as the primary structural model example, highlighting Honesty-Humility."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+        "why": "Provides robust empirical validation for the HEXACO model and serves as the anchor for trait dimensions."
+      },
+      {
+        "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+        "why": "Offers contemporary evidence on the dynamic relationship between states and traits, anchoring the state perspective."
+      }
+    ]
+  }
+}

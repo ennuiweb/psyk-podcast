@@ -1,0 +1,138 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:06:41Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-seminar-10-poststrukturalisme-70b709db"
+    ],
+    "dependency_hashes": {
+      "source_file": "c77f89490620ed0a92b5ab1b1db0e9ee89c814f2ef263ea91c1389273e1d79cb",
+      "source_files_signature": "42e58b647ad1f5cb5339561381fedbc0c6c92a940366548aeacfe3afc29e78f9",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l2-seminar-10-poststrukturalisme-70b709db",
+    "lecture_key": "W10L2",
+    "title": "10. Poststrukturalisme",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/10. Poststrukturalisme.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/10. Poststrukturalisme.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/10. Poststrukturalisme.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/10. Poststrukturalisme.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "c77f89490620ed0a92b5ab1b1db0e9ee89c814f2ef263ea91c1389273e1d79cb",
+    "length_band": "medium",
+    "page_count": 17,
+    "estimated_token_count": 11050,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents poststructuralism as a critical sociocultural theory that deconstructs traditional understandings of the subject, focusing on how identity is constructed through discourse, power, and subjectification.",
+    "source_role": "Seminar slides designed to apply poststructuralist concepts (Foucault, discourse, power) to concrete cases like historical psychiatry and modern gender dynamics (the Manosphere).",
+    "relation_to_lecture": "Acts as the seminar application for Week 10, bridging theoretical concepts of poststructuralism with active group work on Foucault's texts and a video case study.",
+    "central_claims": [
+      {
+        "claim": "Personality or identity is not an innate essence one 'is', but rather something one 'does' and is subjected to through mechanisms of subjectification and power.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Discourses establish the conditions for how we can think and act; it is not only the subject who speaks the discourse, but the discourse that speaks the subject.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Discursive subjectification is an active practice where individuals engage with discourses by ignoring, avoiding, or confirming them, thereby becoming 'themselves'.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychiatric diagnoses are examples of power relations, where a 'mad subject' is constituted precisely in relation to the authority that declares them mad.",
+        "grounding": "slide-framed",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Diskurs (Discourse)",
+        "definition": "A coherence of meanings and representations that makes it possible to see, think, speak, understand, and act in specific ways, while simultaneously excluding other ways.",
+        "role": "Serves as the foundational structure in poststructuralism that sets the conditions for human action and thought."
+      },
+      {
+        "term": "Diskursive praksisser (Discursive practices)",
+        "definition": "The active processes through which people take up, ignore, avoid, or confirm discourses.",
+        "role": "Explains how subjectification is not just a passive, hidden process, but an active engagement where individuals navigate available discourses."
+      },
+      {
+        "term": "Subjektivering (Subjectification)",
+        "definition": "The process through which people are made into subjects via discourses and power mechanisms in all contexts they participate in.",
+        "role": "Replaces traditional psychological concepts of an innate personality with a socially and discursively constructed identity."
+      },
+      {
+        "term": "Magt (Power)",
+        "definition": "The relational force that produces subjects and categories, such as defining who is considered 'mentally ill' versus 'normal'.",
+        "role": "Highlights that identity and personality categories are political and relational products rather than objective truths."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "At 'være' vs. at 'gøre' personlighed (Being vs. Doing personality)",
+        "summary": "The contrast between viewing personality as an innate, static essence (being) versus viewing it as an active, ongoing construction shaped by subjectification mechanisms (doing).",
+        "stakes": "Fundamentally shifts the psychological focus from internal traits to external power dynamics and discursive practices."
+      },
+      {
+        "label": "Naturvidenskabelig vs. Samfundsvidenskabelig psykologi",
+        "summary": "Natural science approaches (like trait theory) aim to control, predict, and explain, whereas social science approaches (like sociocultural/poststructuralist theories) aim to comprehend, change, and develop through critique.",
+        "stakes": "Frames the epistemological goal of poststructuralism as critical and transformative rather than predictive."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might assume discourses completely and passively determine behavior, missing the active nature of 'diskursive praksisser' where subjects can ignore or refuse specific discourses.",
+      "Students might confuse poststructuralism's view of the subject with humanistic or existential views, missing Foucault's specific emphasis on power and external subjectification mechanisms."
+    ],
+    "quote_targets": [
+      {
+        "target": "Det er dermed ikke blot subjektet, der taler diskursen, men i høj grad også diskursen, der taler subjektet.",
+        "why": "Captures the core poststructuralist inversion of agency and language from Staunæs & Juelskjær (2014)."
+      },
+      {
+        "target": "“Personlighed” eller “identitet” er altså noget, man “gør” og får gjort gennem subjektiveringsmekanismer, fremfor noget, man “er”",
+        "why": "Directly contrasts the poststructuralist view of identity with traditional personality psychology."
+      },
+      {
+        "target": "the mental ill person is constituted as a mad subject precisely in relation to and over against the one who declares him mad",
+        "why": "Provides a clear, concrete example of Foucault's concept of power and subjectification in a psychiatric context."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily rely on quotes from Staunæs & Juelskjær (2014) and Davies (1990) to define discourse and discursive practices.",
+      "Foucault (1997) is used as the primary theoretical framework for understanding power, truth, and subjectification."
+    ],
+    "warnings": [
+      "The slides contain specific group work questions about Foucault (1997) pages 290-299, but the answers to these questions are not provided in the slide text.",
+      "The case study on 'Inside the Manosphere' relies on an external YouTube video; the slides only provide analytical questions, not the content of the case itself."
+    ]
+  }
+}

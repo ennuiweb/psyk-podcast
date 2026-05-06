@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:10:12Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb"
+    ],
+    "dependency_hashes": {
+      "source_file": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
+      "source_files_signature": "28b5689a818d5af10670b12dc8f9c6ee35a58e4739231603c1787dcc3f435f6e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+    "lecture_key": "W12L1",
+    "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "source_paths": [
+      "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
+    "length_band": "long",
+    "page_count": 44,
+    "estimated_token_count": 28600,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a macro-historical and sociological framework for understanding personality, arguing against universalist or essentialist views by showing how concepts like childhood, family, and self-control are historically contingent.",
+    "source_role": "Serves as a foundational textbook chapter (Grundbog) that introduces students to the historical and societal dimensions of personality psychology, drawing heavily on historical sociology.",
+    "relation_to_lecture": "As a reading for 'Sammenligning af teorier og subjektets historie', it frames the concluding discussions of the course by historicizing the psychological theories covered previously, showing how psychology itself is part of the historical development of the subject.",
+    "central_claims": [
+      {
+        "claim": "Human personality and subjectivity are not historically constant; psychological functions like reflexivity, romantic love, and the concept of childhood have developed over time.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The civilizing process, as described by Norbert Elias, involves a historical shift from external physical control to internal psychological self-discipline, shame, and reflexivity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The division of society into distinct spheres (production, intimacy, and circulation) fundamentally shaped modern personality by isolating child-rearing and emotional life within the intimate sphere of the nuclear family.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychological science does not merely describe an existing human nature, but actively participates in forming the normative discourses that shape modern personality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Historicitet (Historicity)",
+        "definition": "The principle that psychological instances and the structure of personality are not universal but develop and change through historical epochs.",
+        "role": "Challenges evolutionary psychology's assumption of a static human nature by showing how societal changes alter the psyche."
+      },
+      {
+        "term": "Civilisationsprocessen (The Civilizing Process)",
+        "definition": "Norbert Elias's concept describing the historical shift from external behavioral regulation to internal psychological self-restraint, characterized by increased thresholds for shame and embarrassment.",
+        "role": "Explains the historical mechanism behind the development of modern self-control and reflexivity."
+      },
+      {
+        "term": "Samfundsmæssige sfærer (Social spheres)",
+        "definition": "The division of society into production, intimacy, and circulation spheres, which emerged during industrialization and the rise of the bourgeoisie.",
+        "role": "Provides the structural background for the modern nuclear family and the privatization of emotional life."
+      },
+      {
+        "term": "Indrestyring vs. Gruppestyring (Inner-directed vs. Other-directed)",
+        "definition": "David Riesman's concepts describing different historical modes of social character: inner-directed relies on an internalized moral compass (psychological gyroscope), while other-directed relies on validation from peers and mass media.",
+        "role": "Illustrates the shift in how individuals conform to society and form their identities in modern vs. late-modern periods."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Medieval vs. Modern view of childhood",
+        "summary": "The Middle Ages viewed children as small adults or unformed nature (often inherently sinful), whereas modernity views childhood as a distinct, innocent phase requiring protection, discipline, and a dedicated intimate sphere.",
+        "stakes": "Highlights how developmental psychology's primary subject (the child) is a historical and cultural construct rather than a biological given."
+      },
+      {
+        "label": "Sociogenese vs. Psykogenese (Sociogenesis vs. Psychogenesis)",
+        "summary": "Norbert Elias's distinction between the structural development of society and the internal development of the human psyche.",
+        "stakes": "Emphasizes that individual psychological development is deeply intertwined with and dependent on macro-level societal changes."
+      },
+      {
+        "label": "Traditionsstyret, indrestyret og gruppestyret",
+        "summary": "Riesman's typology of social control mechanisms across different historical eras: tradition-directed (Middle Ages), inner-directed (Renaissance/Modernity), and other-directed (Late Modernity).",
+        "stakes": "Shows how the source of individual identity and conformity shifts from tradition/religion to internalized parental norms, and finally to peer groups and mass media."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that people in the Middle Ages literally did not love their children, rather than understanding that the institutional and cultural framework of childhood and romantic love did not exist in the modern sense.",
+      "Confusing the 'civilizing process' with a purely positive moral progression, ignoring the psychological costs (like increased anxiety, shame, and neurosis) highlighted by civilization critiques.",
+      "Viewing historical changes in personality as purely biological or evolutionary, rather than structural and discursive."
+    ],
+    "quote_targets": [
+      {
+        "target": "I denne optik fandtes der i den tidlige middelalder ikke et subjekt defineret som et menneske med en selvbevidsthed.",
+        "why": "Captures the radical claim about the historical emergence of the self-conscious subject."
+      },
+      {
+        "target": "Elias skelner mellem tre perioder... Et af hans meget anvendte undersøgelsesmaterialer er etikettebøger...",
+        "why": "Introduces Elias's methodology for tracking the internalization of social norms through everyday manners."
+      },
+      {
+        "target": "Så er personlighedspsykologien ikke blot en beskrivelse og videnskabelig udforskning af personligheden - den er med til at skabe det samme genstandsområde, som den udforsker.",
+        "why": "Summarizes the critical, reflexive takeaway for psychology students regarding their own discipline's role in shaping modern subjectivity."
+      }
+    ],
+    "grounding_notes": [
+      "The text relies heavily on historical sociology (Elias, Ariès, Riesman, Habermas, Foucault) rather than traditional empirical psychological studies.",
+      "The chapter explicitly contrasts its historical approach with evolutionary psychology, which is mentioned as being covered in chapter 12 of the same book."
+    ],
+    "warnings": [
+      "The text covers vast historical periods with broad generalizations; students should be aware this is a macro-level theoretical synthesis rather than detailed historical documentation."
+    ]
+  }
+}

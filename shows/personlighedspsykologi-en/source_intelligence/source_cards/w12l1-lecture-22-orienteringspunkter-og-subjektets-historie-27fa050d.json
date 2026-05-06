@@ -1,0 +1,129 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:13:46Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+    ],
+    "dependency_hashes": {
+      "source_file": "2cb83583ad4a0c25f73a4f029ff07a82baa0e4c5a6e776d4734cb68a66b537ef",
+      "source_files_signature": "9635b91f3811dfc87474dfaa6bca5de8ca60650e33aac1139e534630be9c35fb",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d",
+    "lecture_key": "W12L1",
+    "title": "22. Orienteringspunkter og subjektets historie",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/22. Orienteringspunkter  og subjektets historie.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/22. Orienteringspunkter  og subjektets historie.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/22. Orienteringspunkter  og subjektets historie.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/22. Orienteringspunkter  og subjektets historie.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "2cb83583ad4a0c25f73a4f029ff07a82baa0e4c5a6e776d4734cb68a66b537ef",
+    "length_band": "medium",
+    "page_count": 17,
+    "estimated_token_count": 11050,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a meta-theoretical framework for comparing personality theories and introduces evolutionary and historical perspectives on the formation of the human subject.",
+    "source_role": "Lecture slides serving as a synthesis and exam preparation guide, outlining analytical criteria and discussing the historical emergence of self-consciousness.",
+    "relation_to_lecture": "Directly structures the lecture's comparative review of the course material and introduces the final philosophical discussion on the history of the subject.",
+    "central_claims": [
+      {
+        "claim": "Personality theories can be compared and combined by analyzing their stance on four orientation points: essence vs. context, determination, agency, and historicity.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "The unique speed of human cognitive development, unlike other animals, is driven by a continuous cycle of externalizing properties into tools and internalizing the resulting new skills and perspectives.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Theories about the postmodern subject are not merely descriptive but actively participate in creating and shaping the postmodern subject itself.",
+        "grounding": "source-grounded",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Essentialisme",
+        "definition": "Inner, often universal, unchangeable, and ahistorical descriptions that place properties 'inside' the psyche, transcending context.",
+        "role": "Serves as a contrast to social constructivist and narrative theories that emphasize context and interaction."
+      },
+      {
+        "term": "Agency",
+        "definition": "The starting point for action, which can be attributed to technical instances (like a thermostat) or, in humans, to a subjective center of experience and motivation.",
+        "role": "Provides a metric for understanding where different theories locate the capacity to act."
+      },
+      {
+        "term": "Historicitet",
+        "definition": "The historical background for development, categorized into phylogenesis (species history), ontogenesis (life history), and sociogenesis (societal history).",
+        "role": "Highlights how different psychological traditions prioritize different timelines of human development."
+      },
+      {
+        "term": "Eksternalisering / Internalisering",
+        "definition": "The process of projecting human physiological or cognitive properties into tools (externalization), the use of which develops new skills that become new ways of thinking (internalization).",
+        "role": "Explains the mechanism behind the radical evolution of human consciousness and intersubjectivity."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essentiel vs. Essentialisme",
+        "summary": "Distinguishes between a theory's most important characteristic focus (e.g., the unconscious in psychoanalysis) and an ontological claim about an unchangeable, ahistorical human core.",
+        "stakes": "Prevents students from confusing a theory's primary analytical focus with an ahistorical, universalizing view of human nature."
+      },
+      {
+        "label": "Imitation vs. Eksternalisering/Internalisering",
+        "summary": "Contrasts animal behavior (like macaques copying potato washing) with human tool use, where tools fundamentally change and develop new cognitive capacities.",
+        "stakes": "Clarifies the boundary between animal learning and the unique, accelerating nature of human historical and cognitive development."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing 'essentiel' (a theory's main focus) with 'essentialisme' (an ahistorical, universal claim about human nature).",
+      "Assuming that a theory's acceptance of 'determination' completely rules out free will, missing the nuance that reflection can partially lift determination.",
+      "Equating animal learned behaviors (like macaques washing potatoes) with the human dialectic of externalization and internalization."
+    ],
+    "quote_targets": [
+      {
+        "target": "Det er opprioritering af de enkelte bestanddele som definerer det særegne ved de forskellige teorier, og egentlig ikke bestanddelene i sig selv.",
+        "why": "Highlights the core principle that personality theories differ primarily by emphasis rather than by proposing entirely different components."
+      },
+      {
+        "target": "Er udviklingen af tankerne om det postmoderne subjekt med til at skabe det postmoderne subjekt.",
+        "why": "Captures the meta-reflective conclusion that psychological theories actively shape the modern human condition."
+      }
+    ],
+    "grounding_notes": [
+      "The slides explicitly reference thinkers like Latour, Deacon, Skinner, Foucault, Rousseau, and Giddens to illustrate points about agency and the history of consciousness.",
+      "The text distinguishes between physical, biological, psychological, and societal time to problematize the origins of consciousness."
+    ],
+    "warnings": [
+      "The slides are highly condensed and rely heavily on the oral lecture for full context, particularly regarding the specific historical examples of Joan of Arc and Foucault's view on psychiatry."
+    ]
+  }
+}

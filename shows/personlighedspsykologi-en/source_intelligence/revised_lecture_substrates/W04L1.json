@@ -1,0 +1,78 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:09Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-gammelgaard-2007-bcbdbec2",
+      "w04l1-freud-1973-1933-98cd9920",
+      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "f717aef10905911b44cf68aaf9fcd0e8ebd5e420b3fa8781fdb2118c2aa2b4a8",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W04L1",
+    "lecture_title": "Psykoanalysens personlighedsbegreb (Forelæsning 7, 2026-02-23)",
+    "sequence_index": 7
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the first major epistemological rupture in the course arc. It pivots the focus from personality as a measurable, biologically grounded object to an interpretive, conflicted, and historically layered subject, introducing the crucial concept of the 'decentered subject' that echoes through the rest of the semester.",
+    "what_matters_more": [
+      "The epistemological shift from objective measurement (traits/biology) to the interpretation of 'psychic reality' and meaning-making.",
+      "The concept of the 'Decentered Subject' as a fundamental break from the rational, unified ego, which sets the stage for later critical and poststructural theories.",
+      "Applying the course's 4 orientation points to psychoanalysis, particularly how it views 'historicity' (via Nachträglichkeit) and 'determination' (via unconscious drives and conflict)."
+    ],
+    "de_emphasize": [
+      "Mechanical or overly literal interpretations of the structural model (Id, Ego, Superego) that treat them as static entities or brain regions rather than dynamic, conflicting processes."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Contrastive epistemological relation",
+        "rationale": "Directly contrasts the view of personality as stable, measurable surface variables with the psychoanalytic view of personality as a hidden, conflicted, and dynamic depth structure."
+      },
+      {
+        "target": "W10L1 / W10L2 (Sociocultural and Poststructural Theories)",
+        "relation": "Conceptual foundation",
+        "rationale": "The psychoanalytic 'decentered subject' introduced here is a necessary theoretical prerequisite for understanding later poststructural deconstructions of the unified self, discourse, and gender."
+      },
+      {
+        "target": "W12L1 (Orientation Points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "Psychoanalysis provides a highly specific profile on the course's orientation points, especially regarding inner determination (the unconscious) and complex historicity (Nachträglichkeit)."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Decentered Subject' as a radical break from the rational, measurable self of the first three weeks.",
+      "Highlight the distinction between 'Material Reality' and 'Psychic Reality' to explain the course's shift toward hermeneutics and meaning-making.",
+      "Explicitly apply the 4 orientation points to psychoanalysis, using Nachträglichkeit to illustrate its unique, non-linear approach to historicity."
+    ],
+    "carry_forward": [
+      "The 'Decentered Subject' (essential for understanding poststructuralism and gender theories later).",
+      "Nachträglichkeit (deferred action) as a model for how subjects are historically produced and continuously re-interpreted (highly relevant for narrative psychology).",
+      "The tension between conscious agency and unconscious determination."
+    ],
+    "warnings": [
+      "Students often reify Id, Ego, and Superego into physical brain structures; this must be actively dismantled to preserve the metapsychological and interpretive nature of the theory.",
+      "The missing Kristian Ditlev Jensen case study from the seminar makes the abstract concept of Nachträglichkeit harder to ground practically for the podcast hosts."
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:47:08Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l2-li-and-wilt-2025-92f596ad"
+    ],
+    "dependency_hashes": {
+      "source_file": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
+      "source_files_signature": "493e3aeda476c07fdc2637eb58f62a4b124a44be6445cb303d4cf445df92f69f",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+    "lecture_key": "W02L2",
+    "title": "Li & Wilt (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
+    "source_paths": [
+      "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The text synthesizes interactionist perspectives into a cyclical model of personality expression, building on the STOA (Situation-Trait-Outcome Activation) framework to explain how traits and situations co-regulate behavior over time.",
+    "source_role": "A contemporary review article summarizing recent theoretical and methodological advances in person-situation interplay, situational taxonomies, and dynamic personality expression.",
+    "relation_to_lecture": "Serves as the core theoretical reading for W02L2 (Person-situation interplay), providing the foundational cyclical model for understanding stability and change in individual differences across contexts.",
+    "central_claims": [
+      {
+        "claim": "Personality expression unfolds through a cyclical process comprising four phases: situation selection, situation experience, behavioral state expression, and outcome activation.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Individuals are not passive recipients of their environments; situation selection is itself an expression of personality where individuals proactively curate environments that reinforce or transform their dispositions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Strong situations, characterized by high consequences and clear rules, restrict behavioral variance (e.g., by 23% in social dilemma games) compared to weak situations.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Trait activation theory is supported by evidence showing that traits are most predictive of behavior when situations provide relevant cues or affordances (e.g., Honesty-Humility predicting behavior in situations affording exploitation).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Situational strength",
+        "definition": "The degree to which a situation constrains behavior through clear consequences, stringent constraints, and clear behavioral guidelines.",
+        "role": "Explains why behavioral variability decreases in certain highly structured or high-stakes environments."
+      },
+      {
+        "term": "Trait activation",
+        "definition": "The principle that personality traits are expressed in behavior primarily when trait-relevant cues are present in the situation.",
+        "role": "Provides the mechanism for how specific situations elicit specific trait-consistent behaviors."
+      },
+      {
+        "term": "Situational affordances",
+        "definition": "Opportunities for trait expression that are embedded within specific situations.",
+        "role": "Links environmental features to the HEXACO model, showing how situations invite behaviors that resonate with dispositional tendencies."
+      },
+      {
+        "term": "Situation Characteristic-State contingencies (SCSC)",
+        "definition": "The phenomenon where specific individuals' trait expressions are shaped by their unique, personalized sensitivity to situational cues.",
+        "role": "Highlights that behavioral state expression is deeply personalized based on idiosyncratic construals of situations."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Situational contact vs. Situational construal",
+        "summary": "Situational contact refers to the objective features of a situation (often measured by consensual agreement), whereas situational construal is the subjective, idiosyncratic interpretation of that situation.",
+        "stakes": "Crucial for isolating the psychological experience of a situation from its objective physical or social reality."
+      },
+      {
+        "label": "Strong vs. Weak situations",
+        "summary": "Strong situations impose clear rules and consequences that restrict behavior, while weak situations lack these constraints, allowing more behavioral variance.",
+        "stakes": "Determines the relative influence of enduring personality traits versus external environmental factors on immediate behavior."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that individuals are merely passive recipients of situational forces, ignoring the active role of 'situation selection'.",
+      "Conflating the objective environment (situational contact) with the individual's subjective psychological experience of it (situational construal).",
+      "Believing that strong situations completely eliminate the influence of personality traits, whereas affordances within strong situations can still promote specific trait expressions."
+    ],
+    "quote_targets": [
+      {
+        "target": "B = f(P, S)",
+        "why": "Lewin's foundational formula that reframed the person-situation debate into modern interactionism."
+      },
+      {
+        "target": "Crucially, situation selection is itself an expression of personality.",
+        "why": "Emphasizes the active, agentic role of individuals in shaping the environments that subsequently influence their behavior."
+      },
+      {
+        "target": "Table 1: Key constructs in situation experience and behavioral state expression",
+        "why": "Provides a highly useful, condensed glossary of the core situational constructs (strength, activation, affordances, SCSC) and their empirical summaries."
+      }
+    ],
+    "grounding_notes": [
+      "The source is a 2025 review article by Li & Wilt in Current Opinion in Psychology.",
+      "The text relies heavily on the HEXACO model of personality to illustrate situational affordances (e.g., Honesty-Humility and exploitation)."
+    ],
+    "warnings": [
+      "The authors explicitly note that empirical work on how personality profiles drive 'situation selection' remains limited, so models of this specific phase are still emerging.",
+      "As a brief review article, the text summarizes large meta-analyses and frameworks (like DSSA and STOA) without providing the underlying raw data or extensive methodological details of the cited studies."
+    ]
+  }
+}

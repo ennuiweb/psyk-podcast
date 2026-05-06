@@ -1,0 +1,149 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:20:47Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a"
+    ],
+    "dependency_hashes": {
+      "source_file": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
+      "source_files_signature": "f8440c43444fc69d4040ed1904880ab2e7b1630660246a2e9dee6d32f488a55b",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+    "lecture_key": "W11L2",
+    "title": "Grundbog kapitel 09 - Narrative teorier",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "source_paths": [
+      "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
+    "length_band": "long",
+    "page_count": 43,
+    "estimated_token_count": 27950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the foundational textbook framing for narrative theories of personality, tracing historical roots (existentialism, the linguistic turn) and presenting key theorists (Bruner, Polkinghorne, Gergen, White) who view the self as narratively constructed.",
+    "source_role": "Textbook chapter (Grundbog) serving as the primary conceptual framing for the lecture on Narrativity, Culture, and Meaning.",
+    "relation_to_lecture": "Directly supports the lecture by defining core narrative concepts, contrasting them with earlier paradigms like trait theory, and providing the theoretical basis for understanding personality as a cultural and linguistic construction.",
+    "central_claims": [
+      {
+        "claim": "Personality is not a fixed physical substance or inner essence, but a processual and relational phenomenon created through continuous narrative meaning-making.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The 'linguistic turn' shifted psychology from viewing language as a neutral representation of the world to understanding it as an active constructor of social reality and the self.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Cultural narratives do not strictly determine human action, but rather 'dispose' or constrain it by providing specific resources for meaning-making, leaving room for individual agency.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The self can be understood as a multiplicity of narrative voices or positions (a dialogical self) rather than a single, coherent core, allowing individuals to navigate different social contexts.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Narrativ meningsskabelse",
+        "definition": "The active process of structuring experiences, actions, and events into coherent stories to understand oneself and the world.",
+        "role": "Serves as the foundational mechanism for how personality and identity are formed in narrative psychology."
+      },
+      {
+        "term": "Den sproglige vending",
+        "definition": "A philosophical and scientific shift emphasizing that language does not merely represent reality, but actively interprets and constructs both the world and the self.",
+        "role": "Provides the historical and epistemological background for social constructionist and narrative approaches to personality."
+      },
+      {
+        "term": "Narrativt plot",
+        "definition": "Donald Polkinghorne's concept of how individuals organize separate, temporal events and actions into a meaningful, coherent whole.",
+        "role": "Explains how people experience continuity and identity over time despite constant changes in their lives."
+      },
+      {
+        "term": "Eksternalisering",
+        "definition": "A technique in narrative therapy (developed by Michael White) that separates the person from their problem, encapsulated by the phrase 'the person is not the problem, the problem is the problem'.",
+        "role": "Demonstrates the practical, clinical application of narrative theory in alleviating guilt and opening up new avenues for agency."
+      },
+      {
+        "term": "Disponering (vs. Determination)",
+        "definition": "The idea that cultural narratives and social structures limit and guide (dispose) our possibilities for action and thought, without completely stripping us of agency (determination).",
+        "role": "Resolves the theoretical tension between cultural influence and individual free will within narrative psychology."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Kognitiv psykologi vs. Kulturel narrativ psykologi",
+        "summary": "Cognitive psychology views mental processes as passive information processing (mind as a computer), whereas cultural narrative psychology views them as active meaning-making situated in cultural contexts.",
+        "stakes": "Highlights Jerome Bruner's critique of the cognitive revolution and establishes the necessity of studying human agency and cultural symbols."
+      },
+      {
+        "label": "Essentiel vs. Narrativ personlighedsforståelse",
+        "summary": "Essentialist views see personality as stable, inner traits or substances, while narrative views see personality as fluid, relational, and continuously constructed through stories.",
+        "stakes": "Shifts the focus of psychological inquiry from measuring static traits to understanding life stories, contexts, and meaning-making processes."
+      },
+      {
+        "label": "Problemfortællinger vs. Alternative fortællinger",
+        "summary": "In narrative therapy, problem narratives are dominant, restrictive stories about the self (e.g., 'I am anorexic'), while alternative narratives are marginalized but empowering stories of resistance or success.",
+        "stakes": "Forms the basis of narrative therapeutic intervention, aiming to thicken alternative narratives to restore agency."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Believing that narrative psychology implies people can just 'make up' their personalities freely, ignoring the constraining role of cultural, material, and historical resources.",
+      "Confusing the narrative self with a completely unstable or fragmented self; narrative plots actually provide the mechanism for continuity and coherence over time.",
+      "Misinterpreting 'discourse' or 'narrative' as purely linguistic, ignoring that they are deeply tied to material conditions, institutions, and power dynamics."
+    ],
+    "quote_targets": [
+      {
+        "target": "Mennesker handler på baggrund af mening, der skabes gennem narrativ strukturering af hændelser.",
+        "why": "Core definition of the narrative perspective on personality and human action (page 296)."
+      },
+      {
+        "target": "Selvet er altså mening frem for en substans eller en ting",
+        "why": "Polkinghorne's quote that succinctly captures the ontological shift from essentialist to narrative psychology (page 318)."
+      },
+      {
+        "target": "ikke personen, der er problemet, men problemet, der er problemet",
+        "why": "The classic summary of externalization in Michael White's narrative therapy (page 329)."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly positions narrative psychology as a reaction against both behaviorism and the mechanistic aspects of the cognitive revolution.",
+      "Draws heavily on Jerome Bruner for cultural psychology, Donald Polkinghorne for phenomenological plots, and Michael White for therapeutic application.",
+      "Dan McAdams is mentioned briefly as an integrative theorist, but the chapter leans more heavily into social constructionist and poststructuralist views."
+    ],
+    "warnings": [
+      "While Dan McAdams is introduced, his specific life-story model is only briefly covered compared to Bruner and Gergen. If the lecture focuses heavily on McAdams' three-level framework, supplementary sources or lecture slides will be needed."
+    ]
+  }
+}

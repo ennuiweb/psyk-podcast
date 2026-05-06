@@ -1,0 +1,81 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:20Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "w09l1-holzkamp-2013-c3068d8a",
+      "w09l1-dreier-1999-35da58b5",
+      "w09l1-lecture-17-kritisk-psykologi-30798115",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "1bf2259c28974666d0183f7ef9f5c5a2e03086f7684001a1bc496b9d826393ea",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W09L1",
+    "lecture_title": "Kritisk psykologi (Forelæsning 17, 2026-04-07)",
+    "sequence_index": 17
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture marks the definitive structural pivot in the course arc from 'personality as an internal essence' to 'personality as distributed social practice'. It provides the theoretical vocabulary to deconstruct the isolated individual, setting the stage for the poststructuralist and narrative theories that follow, while directly addressing the course's core Agency vs. Structure dialectic.",
+    "what_matters_more": [
+      "Explicitly mapping Critical Psychology onto the course's 4 orientation points, particularly how it redefines 'Agency' (Handleevne) and 'Context' (social practices) against biological or trait-based 'Determination'.",
+      "The epistemological shift from 'Conditioning Discourse' (third-person, variable-based psychology from early weeks) to 'Reason Discourse' (first-person, grounded standpoints).",
+      "The concept of 'Daglig livsførelse' (everyday conduct of life) as the new primary unit of analysis, replacing the isolated individual or internal trait profile."
+    ],
+    "de_emphasize": [
+      "The granular, specific details of the empirical cases (e.g., gang exit, Kenneth) should be kept secondary to the theoretical mechanisms they illustrate (double-binds, expansive learning).",
+      "Treating Critical Psychology merely as a 'critique' of other theories, rather than emphasizing its positive, standalone dialectical materialist ontology of personality."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 and W02L2 (Trait and Assessment Psychology)",
+        "relation": "Methodological and ontological critique",
+        "rationale": "Critical psychology's critique of the 'immediacy postulate' and 'conditioning discourse' directly attacks the variable-based, reified trait models introduced in week 2, demanding a return to the situated subject."
+      },
+      {
+        "target": "W07L2 (Humanistic Psychology)",
+        "relation": "Contrastive agency",
+        "rationale": "Both traditions emphasize human agency against determinism, but humanism locates it in inner self-actualization, whereas critical psychology locates it in expansive participation within societal structures."
+      },
+      {
+        "target": "W12L1 (Meta-theoretical synthesis)",
+        "relation": "Direct application of orientation points",
+        "rationale": "Critical psychology provides a robust framework for the 'Context' and 'Agency' orientation points, which are mandatory analytical tools for the final exam."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the shift from 'what is inside the person' (traits) to 'how the person conducts life across contexts' (Daglig livsførelse).",
+      "Create a segment contrasting 'Conditioning Discourse' (people as objects reacting to stimuli) with 'Reason Discourse' (people as subjects acting on grounded reasons).",
+      "Highlight the tension between 'Restrictive' and 'Expansive' agency, contrasting it with the humanistic idea of absolute free will."
+    ],
+    "carry_forward": [
+      "The concept of the subject as distributed across contexts (Daglig livsførelse) must be carried into poststructuralism (W10L2) to understand subjectivation.",
+      "The critique of the 'immediacy postulate' serves as a foundational tool for evaluating the sociocultural and narrative theories in the final weeks."
+    ],
+    "warnings": [
+      "The Dreier (1999) source file is incomplete (only 3 pages), requiring instructors to heavily supplement the concept of 'personal conduct of life' to ensure students grasp its full theoretical weight.",
+      "Students frequently confuse Critical Psychology's 'Handleevne' (relative autonomy conditioned by structures) with Humanistic 'free will'; this distinction must be explicitly policed.",
+      "The lecture references unpublished works (Sander 2025, 2026) which students cannot access, potentially causing confusion if relied upon for core definitions."
+    ]
+  }
+}

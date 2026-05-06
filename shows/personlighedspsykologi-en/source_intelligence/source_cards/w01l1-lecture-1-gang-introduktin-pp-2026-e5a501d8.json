@@ -1,0 +1,124 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-06T21:07:42Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8"
+    ],
+    "dependency_hashes": {
+      "source_file": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
+      "source_files_signature": "d583697104ae94c18ddf8cb8801363fdc519c05531a9c097f94a92316d7e6072",
+      "source_catalog": "f2837610ca1ec4dfc445bfbe0fec05b948829b746fa4a5d484b2b3e98cee8920",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+    "lecture_key": "W01L1",
+    "title": "1. gang . Introduktin PP 2026",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/1. gang . Introduktin PP 2026.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/1. gang . Introduktin PP 2026.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/1. gang . Introduktin PP 2026.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/1. gang . Introduktin PP 2026.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "5c77a440f078a2b8939265b0b29df632f3a3aa065c28fce37ac09d9ae8730cd5",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Slidesættet opstiller kursets meta-teoretiske ramme: At feltet er præget af teoretisk pluralisme (ingen teori forklarer alt), og at de studerende derfor skal bruge strukturede grundspørgsmål (orienteringspunkter) for at navigere i og sammenligne teorierne.",
+    "source_role": "Introducerende forelæsning (1. gang) der skitserer de administrative rammer, eksamensformen, formålet med faget og de bærende begrebsmæssige diskussioner for resten af semestret.",
+    "relation_to_lecture": "Dette dokument er selve kernen i W01L1 og fungerer som 'køreplan' for kursets struktur og den forventede analytiske tilgang til grundbogens pensum.",
+    "central_claims": [
+      {
+        "claim": "Personlighedspsykologi rummer både studiet af 'person' og 'personlighed', hvilket indebærer at faget ikke kan reduceres til ren biologi eller et afgrænset sæt af målbare egenskaber.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Der findes ingen enkeltstående personlighedspsykologisk teori, der fuldt ud kan rumme og forklare hele kompleksiteten af det menneskelige subjekt, bevidsthed og krop.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Forskellige personlighedsteorier kan og skal sammenlignes kritisk ved hjælp af fire 'orienteringspunkter': Essens vs. kontekst, Agency, Determination og Livshistorie.",
+        "grounding": "course-inferred",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Persona",
+        "definition": "Et etruskisk/græsk begreb der betyder 'maske', social rolle, eller den karakter en skuespiller fremfører.",
+        "role": "Illustrerer fagets historiske og grundlæggende distinktion mellem det ydre, agerede (rollen) og det indre ('noget andet bag masken')."
+      },
+      {
+        "term": "Differentialpsykologi",
+        "definition": "En akademisk disciplin der bestemmer forskellene mellem mennesker på grundlag af enkelt-egenskaber (træk).",
+        "role": "Repræsenterer et videnskabeligt udgangspunkt i faget, som underviseren problematiserer, idet spørgsmålet rejses, om træk er tilstrækkeligt for en teori om mennesket som subjekt."
+      },
+      {
+        "term": "Orienteringspunkter",
+        "definition": "Grundspørgsmål eller rammeantagelser, som kan stilles til de enkelte psykologiske teorier for at identificere deres syn på subjektet.",
+        "role": "Fungerer som kursets primære analytiske værktøj til at sammenligne pensums forskellige teorier, og er et direkte krav til den mundtlige eksamen."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essens versus kontekst",
+        "summary": "Debatten om, hvorvidt psyken er defineret af en indre, primær essens, eller om subjektet primært eksisterer i og er formet af den udvidede kontekst.",
+        "stakes": "Udgør det første af de fire analytiske 'orienteringspunkter' der bruges til at kortlægge og kontrastere forskellige personlighedsteorier i kurset."
+      },
+      {
+        "label": "Ydre rolle (maske) versus Indre menneske",
+        "summary": "Forskellen mellem den sociale optræden i rummet mellem aktører og præmissen om, at der findes en særskilt psykologisk realitet 'inde i mennesket'.",
+        "stakes": "Sætter scenen for en af fagets helt centrale problemstillinger: Hvordan det 'indre' overhovedet eksisterer og udvikler sig i relation til verden."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At faget vil præsentere én sand eller endegyldig personlighedspsykologisk teori (slides afviser dette eksplicit).",
+      "At personlighed udelukkende forstås som statiske, biologiske træk uden at inddrage subjektivitet, narrativer og kontekst.",
+      "At eksamen blot er en fremlæggelse af én teori uden krav om at relatere den til andre teorier via orienteringspunkterne."
+    ],
+    "quote_targets": [
+      {
+        "target": "Orienteringspunkter... 1) Essens versus kontekst 2) Agency 3) Determination 4) Livshistorie og historicitet",
+        "why": "Disse fire punkter er afgørende at kende og anvende for overhovedet at bestå og strukturere gruppeeksamenen."
+      },
+      {
+        "target": "Der er ingen personlighedspsykologisk teori, der kan rumme det hele.",
+        "why": "Sammenfatter kursets videnskabsteoretiske og pluralistiske holdning til feltet."
+      }
+    ],
+    "grounding_notes": [
+      "Dokumentets formål er orienterende; det kombinerer administrative regler (f.eks. tilstedeværelse og aktivitetskrav) med teoretisk rammesætning.",
+      "Det understreges af underviser (SK) at almen psykologi er udgået, hvilket historisk rammesætter hvorfor personlighedspsykologien nu også skal dække 'subjektivitet'."
+    ],
+    "warnings": [
+      "Da dokumentet er en overordnet introduktion, defineres mange psykologiske begreber (f.eks. narrativer, trajektorier, diskurser) kun overfladisk og skal sandsynligvis understøttes af grundbogen for at opnå analytisk dybde."
+    ]
+  }
+}

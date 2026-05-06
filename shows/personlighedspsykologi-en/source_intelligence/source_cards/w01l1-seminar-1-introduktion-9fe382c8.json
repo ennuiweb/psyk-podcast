@@ -1,0 +1,130 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:02:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-seminar-1-introduktion-9fe382c8"
+    ],
+    "dependency_hashes": {
+      "source_file": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
+      "source_files_signature": "e94ba9556e7f44ab1a6303415d650a58b524ee398e2b12e122c93c72df8d6bf8",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+    "lecture_key": "W01L1",
+    "title": "1. Introduktion",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/1. Introduktion.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/1. Introduktion.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/1. Introduktion.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/1. Introduktion.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "a48f03f18a694a676b7b4ad401eeec54f1c1c925b74c69e5a2082925b9c06507",
+    "length_band": "medium",
+    "page_count": 23,
+    "estimated_token_count": 14950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces the meta-theoretical framework for the course, providing students with analytical orientation points (Køppe & Dammeyer) to critically compare the diverse theories they will encounter.",
+    "source_role": "Seminar slides that establish course logistics, exam requirements, and the foundational meta-theoretical concepts used to analyze personality psychology.",
+    "relation_to_lecture": "Translates the introductory lecture's broad themes into concrete analytical tools (orientation points) and sets up practical group exercises for applying these tools to developmental models.",
+    "central_claims": [
+      {
+        "claim": "There is no consensus in personality psychology regarding what personality is, how it should be studied, or whether it even exists.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality psychology draws on a jumble of theories that span across natural, human, and social sciences.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Different personality theories can be systematically analyzed using specific orientation points: essence vs. context, agency, determination, and historicity.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Essens vs. kontekst",
+        "definition": "The debate over whether personality is located inside the body (e.g., genes, thoughts) or outside the body (e.g., relations, actions).",
+        "role": "Serves as a primary orientation point for comparing where different theories locate personality."
+      },
+      {
+        "term": "Agency",
+        "definition": "The question of what actively controls personality (e.g., consciousness, language, actions) or if the individual is controlled by other forces.",
+        "role": "Used as an analytical tool to determine the level of active control a theory attributes to the individual."
+      },
+      {
+        "term": "Determination",
+        "definition": "The extent to which personality is determined by factors like genes, early childhood, or society, versus being completely 'free'.",
+        "role": "Helps students evaluate the deterministic vs. free-will assumptions underlying different theories."
+      },
+      {
+        "term": "Historicitet",
+        "definition": "The significance of species development (fylogenese), individual life course (ontogenese), and societal development (sociogenese) for understanding personality.",
+        "role": "Provides a temporal and developmental framework for analyzing personality theories."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Naturvidenskabelig vs. Humanvidenskabelig vs. Samfundsvidenskabelig",
+        "summary": "The division of scientific paradigms underlying personality theories, ranging from trait theories (natural science) to psychoanalysis (human science) and sociocultural theories (social science).",
+        "stakes": "Determines the fundamental goal of the theory: to control/predict (natural), to understand/find meaning (human), or to comprehend/change through critique (social)."
+      },
+      {
+        "label": "Fylogenese vs. Ontogenese vs. Sociogenese",
+        "summary": "The distinction between the historical development of the human species, the individual's life course, and the development of society.",
+        "stakes": "Clarifies which level of historical development a specific theory emphasizes when explaining the formation of personality."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming there is a single, universally accepted definition of personality in the field.",
+      "Thinking that psychology relies solely on natural science methods, ignoring its historical shift towards philosophy to understand complex phenomena like personality.",
+      "Believing that the Lewis (1999) models are fully explained in the slides, rather than requiring independent reading."
+    ],
+    "quote_targets": [
+      {
+        "target": "Det er vi faktisk ikke enige om – hverken hvad den er, hvordan man bør undersøge den eller om den overhovedet findes.",
+        "why": "Highlights the fundamental lack of consensus in the field of personality psychology according to Køppe & Dammeyer (2014a)."
+      },
+      {
+        "target": "Figur 1: Teoriernes placering i forhold til videnskaberne.",
+        "why": "Provides a crucial visual map of how different theories (Trait, Cognitive, Psychoanalysis, Phenomenology, Sociocultural) align with different scientific paradigms."
+      }
+    ],
+    "grounding_notes": [
+      "A significant portion of the slides is dedicated to administrative details, such as the three activity requirements (Aktivitetskrav) and exam formats.",
+      "The theoretical content relies heavily on categorizing theories (meta-theory) rather than explaining the specific mechanics of the theories themselves."
+    ],
+    "warnings": [
+      "The slides list five personality development models by Lewis (1999) (organismic, accretional, transformational, additive, contextual) but do not define them; students must consult the original text (pages 331-338).",
+      "The OCR for the model on page 16 (Figur 1) is slightly fragmented, but the visual placement of theories under natural, human, and social sciences is clear in the original image."
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:15:46Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l1-exercise-4-f-nomenologi-d39d2b0e"
+    ],
+    "dependency_hashes": {
+      "source_file": "276dc218814018c635e7aa0f4544c340ec84149af8f6de07f22daffbfc600ef8",
+      "source_files_signature": "e64e35b36de1b2e51afeb3df4ff9bd7e228c7bd8e87a1a50878897878fe7bb4d",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l1-exercise-4-f-nomenologi-d39d2b0e",
+    "lecture_key": "W06L1",
+    "title": "4. Fænomenologi",
+    "source_family": "exercise_slide",
+    "evidence_origin": "exercise_clarified",
+    "source_path": "Øvelseshold/4. Fænomenologi .pdf",
+    "source_paths": [
+      "Øvelseshold/4. Fænomenologi .pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/4. Fænomenologi .pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Øvelseshold/4. Fænomenologi .pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "276dc218814018c635e7aa0f4544c340ec84149af8f6de07f22daffbfc600ef8",
+    "length_band": "long",
+    "page_count": 29,
+    "estimated_token_count": 18850,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the epistemological background (Kant, Husserl) and the methodological framework (Spinelli's rules of Epoché, Horizontalization, Description) necessary for conducting a practical phenomenological interview and analysis.",
+    "source_role": "Exercise slides designed to translate phenomenological theory into a concrete data collection exercise (an aesthetic experience in Østre Anlæg or SMK) and guide the writing of the first exercise report.",
+    "relation_to_lecture": "Applies the broader theoretical concepts of phenomenology from the main lectures to a specific, practical assignment where students act as phenomenological researchers.",
+    "central_claims": [
+      {
+        "claim": "Modern phenomenology investigates how phenomena appear to consciousness rather than attempting to access their objective, true form (the 'Ding an Sich').",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The phenomenological method consists of three simultaneous, ideal principles: Epoché, Description, and Horizontalization.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Intentionality is the foundational descriptive function of consciousness, mediating between the subjective and objective through the components of Noema and Noesis.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Phenomenological analysis in psychology aims to identify invariant structures across different subjects' experiences while acknowledging individual uniqueness.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Epoché",
+        "definition": "The act of bracketing one's own biases, prejudices, and subjectivity to approach the subject's understanding of the phenomenon without imposing preconceived notions.",
+        "role": "Serves as a foundational attitude in the phenomenological method to ensure the researcher does not distort the subject's experience."
+      },
+      {
+        "term": "Horisontalisering",
+        "definition": "The equalization rule; treating all impressions with a flat hierarchy to avoid missing important details by prematurely focusing on what seems most obvious.",
+        "role": "Prevents hierarchical attention during observation and interviews, ensuring all aspects of the subject's experience are considered equally valid initially."
+      },
+      {
+        "term": "Beskrivelse",
+        "definition": "Remaining on a descriptive level of what is said and experienced, rather than seeking underlying causes or interpretations.",
+        "role": "Ensures the researcher stays true to the concrete experience and avoids drawing incorrect, theory-driven conclusions about why the subject feels a certain way."
+      },
+      {
+        "term": "Intentionalitet",
+        "definition": "The concept that consciousness is always directed at something; it is the mediating factor between the subject and the world.",
+        "role": "Forms the theoretical basis for understanding how subjects interact with and make sense of phenomena."
+      },
+      {
+        "term": "Noema",
+        "definition": "What the attention is directed at; the object or phenomenon itself (e.g., the aesthetic impression of a sculpture).",
+        "role": "Helps students isolate the objective trigger of the experience in their phenomenological analysis."
+      },
+      {
+        "term": "Noesis",
+        "definition": "How the attention is directed at a phenomenon; the subjective act or feelings awakened by the object.",
+        "role": "Helps students isolate the subjective, emotional, and cognitive reaction to the phenomenon in their interviews."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Noema vs. Noesis",
+        "summary": "Distinguishes between the object of consciousness (what is experienced) and the mode of consciousness (how it is experienced).",
+        "stakes": "Crucial for students to separate the external trigger from the internal subjective reaction during their interviews and subsequent analysis."
+      },
+      {
+        "label": "Transcendental vs. Moderne fænomenologi",
+        "summary": "Transcendental phenomenology seeks the true nature of phenomena, whereas modern phenomenology investigates how phenomena appear to consciousness.",
+        "stakes": "Frames the psychological approach as modern, focusing on subjective reality and meaning-making rather than objective, material truth."
+      },
+      {
+        "label": "Det delte vs. det unikke (Snefnug metafor)",
+        "summary": "The tension between shared invariant structural features of human experience and the unique factors of individual experience.",
+        "stakes": "Guides students to look for commonalities (invariant structures) across their group interviews while still respecting individual differences."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Analyzing the artwork or nature itself instead of the subject's experience and feelings of the artwork.",
+      "Treating Epoché, Horizontalization, and Description as a linear, step-by-step process rather than simultaneous attitudes.",
+      "Believing Epoché means completely erasing one's subjectivity, rather than just bracketing it to be aware of its influence.",
+      "Focusing on why the subject feels a certain way (interpretation/causes) instead of what and how they feel (description)."
+    ],
+    "quote_targets": [
+      {
+        "target": "All consciousness is conscious of some thing",
+        "why": "Core definition of intentionality provided by Spinelli."
+      },
+      {
+        "target": "Snefnug metafor",
+        "why": "Explains the balance between invariant structures and unique individual experiences, which is central to the report's analytical goal."
+      },
+      {
+        "target": "Bemærk at fænomenet er oplevelsen af følelserne ved kunstoplevelsen og ikke kunsten der skal fremhæves.",
+        "why": "Crucial instruction for the exam report to avoid failing the assignment by analyzing the wrong object."
+      }
+    ],
+    "grounding_notes": [
+      "The slides explicitly reference Spinelli (2005) for the phenomenological method.",
+      "Kant and Husserl are used to establish the epistemological background (Noumenal vs. Phenomenal).",
+      "The exercise instructions are highly specific to a field trip to Østre Anlæg or SMK (Statens Museum for Kunst)."
+    ],
+    "warnings": [
+      "The slides contain English text snippets (likely from Spinelli or a textbook) that are not fully cited with page numbers.",
+      "The exact details of the 'bog eksemplet' and 'politik eksempel' are referenced as being 'fra teksten' but the source text itself is not included in the slides."
+    ]
+  }
+}

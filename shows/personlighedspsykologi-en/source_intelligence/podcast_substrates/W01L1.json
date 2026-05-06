@@ -1,0 +1,163 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:48:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "w01l1-lewis-1999-295c67e3",
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "w01l1-seminar-1-introduktion-9fe382c8"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "c66508c96e909bc5c606d5f206cca5edaeee1fcde34eb7fb76f02debb5191416",
+      "course_synthesis": "92aeb51c276c248534b100a556bb8453f025d0d2aaac8e4265ee751cf2d17c57",
+      "source_cards_signature": "ea70985a511ceaf84ebf053984a6f61600e4ca5131b415245fc6676460aa13e3",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L1",
+    "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+    "sequence_index": 1
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "Frame the episode as a journey from 'measuring the mask' to 'deconstructing the mask', establishing the meta-theoretical scaffolding for the entire course.",
+      "must_cover": [
+        "The 4 Orientation Points (Essence/Context, Agency, Determination, Historicity) as the mandatory comparative engine for the exam.",
+        "The epistemological divide between Natural, Human, and Social Sciences.",
+        "The foundational tension between 'Essence' (inner core) and 'Context' (environment/structure)."
+      ],
+      "avoid": [
+        "Memorizing the granular details of Lewis's five developmental models.",
+        "Administrative details, exam dates, and group sizes specific to the 2026 iteration."
+      ],
+      "grounding": [
+        "Explicitly teach the 4 Orientation Points from the Grundbog as the listener's compass for navigating conflicting theories.",
+        "Use Lewis's critique of the organismic model to highlight the epistemological shock that psychology lacks a unified definition of personality."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "angle": "The foundational compass for the course, defining the fragmented field and the analytical tools needed to survive it.",
+        "must_cover": [
+          "The etymology of Persona as a mask.",
+          "The distinction between Ontology (what a person is) and Epistemology (how we study them).",
+          "The 4 Orientation Points."
+        ],
+        "avoid": [
+          "Deep dives into specific theories like the Big Five or psychoanalysis, which are covered in later weeks."
+        ]
+      },
+      {
+        "source_id": "w01l1-lewis-1999-295c67e3",
+        "angle": "A critical test-case challenging traditional trait stability and organismic development.",
+        "must_cover": [
+          "The critique of the Organismic Model.",
+          "The proposed Contextual Model where behavior is a dynamic adaptation.",
+          "The idea that memory and personal history are constructions created in the present."
+        ],
+        "avoid": [
+          "Getting bogged down in the exact definitions of all five models (accretional, transformational, etc.) at the expense of the main organismic vs. contextual debate."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+        "angle": "Setting the stage for the course's meta-theoretical approach and the limitations of differential psychology.",
+        "must_cover": [
+          "The distinction between the external mask (persona) and internal reality.",
+          "Why biological and trait-based determinations are insufficient to fully capture human subjectivity."
+        ],
+        "avoid": [
+          "2026 specific administrative rules and exam dates."
+        ]
+      },
+      {
+        "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+        "angle": "Applying the orientation points to categorize theories across different scientific paradigms.",
+        "must_cover": [
+          "The division of natural, human, and social sciences in psychology.",
+          "How the orientation points are used in practice to analyze theories."
+        ],
+        "avoid": [
+          "Administrative activity requirements and group work logistics."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "A quick survival guide to the course's meta-framework and the 4 Orientation Points.",
+      "must_cover": [
+        "The 4 Orientation Points as the mandatory exam framework.",
+        "The fundamental debate between Essence and Context."
+      ],
+      "avoid": [
+        "Specific theory details or Lewis's specific developmental models."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Persona",
+        "why": "Introduces the foundational problem of distinguishing between the external social role and the internal self."
+      },
+      {
+        "concept": "Orienteringspunkter (Orientation points)",
+        "why": "The mandatory analytical framework (essence/context, agency, determination, historicity) used to compare all theories for the final exam."
+      },
+      {
+        "concept": "Agency",
+        "why": "A crucial dimension evaluating how much active control a theory attributes to the individual."
+      },
+      {
+        "concept": "Contextual Model",
+        "why": "Lewis's alternative to traditional trait models, emphasizing adaptation to current environments over historical determinism."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Essence vs. Context",
+        "why": "The primary narrative arc of the course, debating whether personality is an inner core or a relational/structural phenomenon."
+      },
+      {
+        "tension": "Ontology vs. Epistemology",
+        "why": "Explains why different paradigms use vastly different methods based on their fundamental definition of what a person is."
+      },
+      {
+        "tension": "Organismic vs. Contextual Models",
+        "why": "Contrasts the view of development as internally driven by past events versus dynamically adapting to the present environment."
+      }
+    ],
+    "grounding_notes": [
+      "Remind hosts that the 4 orientation points are not just introductory concepts, but the mandatory framework for passing the final exam.",
+      "Ensure Lewis is framed as a critique of traditional trait models and longitudinal predictability, not a denial of personality altogether.",
+      "Highlight that the course moves from biological traits to decentered psychoanalytic subjects, and finally to discursively produced poststructural subjects."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "why": "Anchor source providing the textbook framing and the mandatory 4 orientation points."
+      },
+      {
+        "source_id": "w01l1-lewis-1999-295c67e3",
+        "why": "Major source offering a critical test-case against traditional trait stability and organismic development."
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:51:39Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91"
+    ],
+    "dependency_hashes": {
+      "source_file": "35e386410db88acc6d8eaad71f12c4a62cf4869026faf777ccc5188d5a56c6db",
+      "source_files_signature": "7ce630bd27c1f6b572928aa897ac2c53398ea45eefab25e58633d53b3491892e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+    "lecture_key": "W03L1",
+    "title": "5. gang PersPsy 5 260216",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/5. gang PersPsy_5_260216.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/5. gang PersPsy_5_260216.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/5. gang PersPsy_5_260216.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/5. gang PersPsy_5_260216.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "35e386410db88acc6d8eaad71f12c4a62cf4869026faf777ccc5188d5a56c6db",
+    "length_band": "long",
+    "page_count": 76,
+    "estimated_token_count": 49400,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces behavioral genetics and evolutionary psychology as the primary biological frameworks for explaining the origins and maintenance of individual differences in personality.",
+    "source_role": "Lecture slides that structure the session's sequence, moving from a recap of stability/change to behavioral genetics methodologies, and concluding with evolutionary psychology and the niche diversity hypothesis.",
+    "relation_to_lecture": "Serves as the main visual and conceptual scaffolding for the 5th lecture in the Personality Psychology course.",
+    "central_claims": [
+      {
+        "claim": "Heritability estimates the proportion of phenotypic variance attributable to genotypic variance in a population, and does not explain the origins of a specific individual's absolute trait level.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Heritability is a population-specific statistic that can change over time and between different populations, rather than a constant biological process.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Increasing niche diversity in human populations predicts lower personality covariance, greater trait variance, and greater personality dimensionality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Evolution has maintained variation in personality traits likely due to balancing selection, such as fluctuating optimums and frequency-dependency, rather than establishing a single perfect trait level.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Heritability",
+        "definition": "The estimated proportion of phenotypic variance that is attributable to genotypic variance within a population.",
+        "role": "Central metric in quantitative behavioral genetics used to quantify the importance of genes for individual differences."
+      },
+      {
+        "term": "Phenotypic variance",
+        "definition": "Observed individual differences in a characteristic, such as height or personality traits.",
+        "role": "The total observable variation in a population that behavioral genetics attempts to partition into genetic and environmental components."
+      },
+      {
+        "term": "Equal environment assumption",
+        "definition": "The assumption in twin studies that the environments experienced by monozygotic (MZ) twins are not more similar to each other than the environments experienced by dizygotic (DZ) twins.",
+        "role": "A crucial methodological premise that, if violated, could mean larger similarity between MZ twins is due to environment rather than genetics."
+      },
+      {
+        "term": "Balancing selection",
+        "definition": "An evolutionary explanation for maintained variation, occurring when the ideal level of a trait changes across times/places (fluctuating optimum) or when an ideal balance of different levels is needed (frequency-dependency).",
+        "role": "Explains why natural selection has not eliminated individual differences in personality."
+      },
+      {
+        "term": "Niche diversity hypothesis",
+        "definition": "The theory that individuals occupy different micropopulations (niches) with different affordances and cost-benefit structures, favoring different combinations of traits.",
+        "role": "Provides an evolutionary framework for understanding why personality dimensionality and variance increase in more complex societies."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Rank-order stability vs. Mean-level change",
+        "summary": "Distinguishes between individuals maintaining their relative position within a group over time versus the average level of a trait changing across the whole group.",
+        "stakes": "Clarifies the different statistical ways personality continuity and development are measured across the lifespan."
+      },
+      {
+        "label": "Shared vs. Unique environment",
+        "summary": "Shared environment refers to common influences for individuals raised together that make them more similar, while unique (non-shared) environment refers to different influences that make them less similar.",
+        "stakes": "Essential for separating the different ways environmental factors contribute to phenotypic variance in family and adoption studies."
+      },
+      {
+        "label": "Additive vs. Non-additive genetic effects",
+        "summary": "Additive effects involve the simple addition of combined genes, whereas non-additive effects involve complex, multiplicative combinations of genes.",
+        "stakes": "Non-additive effects can lead to the underestimation of heritability in all study designs except those using monozygotic twins."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Believing that heritability percentages apply to an individual's absolute trait level (e.g., thinking 'my conscientiousness is 50% genetic').",
+      "Assuming heritability is a fixed biological constant rather than a statistic that fluctuates based on population and environment.",
+      "Confusing shared environment with all environmental influences, ignoring the significant role of unique/non-shared environments.",
+      "Assuming evolution always optimizes toward a single 'best' personality profile, ignoring balancing selection and niche diversity."
+    ],
+    "quote_targets": [
+      {
+        "target": "Genes vs. environment is about origins of variability in a population -> NOT about origins of a person’s absolute level",
+        "why": "Directly addresses the most common misconception about what heritability actually measures."
+      },
+      {
+        "target": "Heritability is only a statistic, not the biological process",
+        "why": "Emphasizes the methodological and statistical nature of behavioral genetics estimates."
+      },
+      {
+        "target": "Increasing niche diversity -> lower personality covariance... greater personality dimensionality",
+        "why": "Summarizes the core empirical predictions of the Niche Diversity Hypothesis."
+      }
+    ],
+    "grounding_notes": [
+      "The slides rely heavily on empirical examples and meta-analyses (e.g., Bleidorn et al., 2022; Vukasovic & Bratko, 2017; Durkee et al., 2022) to ground theoretical claims.",
+      "Formulas for calculating heritability from twin studies (h2 = 2(rmz - rdz)) are explicitly provided and applied to Danish height data as an illustration."
+    ],
+    "warnings": [
+      "Molecular genetics ('Which' studies) are explicitly mentioned but skipped in this lecture due to time limitations.",
+      "The slides contain placeholder text for a group activity regarding the HEXACO dimensions and survival/reproduction benefits, meaning the actual answers were generated in-class and are not in the source."
+    ]
+  }
+}

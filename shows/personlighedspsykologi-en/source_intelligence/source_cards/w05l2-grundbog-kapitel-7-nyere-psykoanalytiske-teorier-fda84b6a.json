@@ -1,0 +1,148 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:03:28Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a"
+    ],
+    "dependency_hashes": {
+      "source_file": "1cf0f063a5a052eddb7cd7217326f174838a488b8671e91ab00efc69bc0fe70e",
+      "source_files_signature": "f065ca8576b8cf508d0e7f562007b3611c9043ae22da4765bd2b15c5b3569688",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+    "lecture_key": "W05L2",
+    "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
+    "source_paths": [
+      "Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "1cf0f063a5a052eddb7cd7217326f174838a488b8671e91ab00efc69bc0fe70e",
+    "length_band": "long",
+    "page_count": 49,
+    "estimated_token_count": 31850,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Grundbogen fungerer som en bred, begrebslig rammesætning, der kortlægger psykoanalysens historiske og teoretiske fragmentering efter Freud.",
+    "source_role": "Kildetekst (Grundbog), der introducerer de studerende for de nyere psykoanalytiske hovedstrømninger og deres respektive kernebegreber.",
+    "relation_to_lecture": "Lægger det teoretiske fundament for forelæsningen (W05L2) om psykoanalysens konstituering og mangfoldighed ved at definere kernebegreber som objekt, drift og decentrering.",
+    "central_claims": [
+      {
+        "claim": "Psykoanalysen er ikke en homogen teori, men har udviklet sig i tre dominerende retninger: en britisk (fokus på kognition og mentalisering), en fransk (fokus på det ubevidste og 'den anden') og en tysk (fokus på kultur og samfund).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Begrebet 'objekt' i psykoanalysen adskiller sig fra den almindelige betydning ved at referere til indre psykiske repræsentationer af andre mennesker, som driften rettes mod, frem for materielle ting.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Et fællestræk for alle nyere psykoanalytiske teorier er opfattelsen af det decentrerede subjekt, hvor bevidstheden (jeg'et) ikke udgør centrum i psyken.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Ifølge Laplanches franske psykoanalyse konstitueres barnets ubevidste udefra gennem den voksnes 'gådefulde meddelelser', som barnet forsøger at oversætte og give mening.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Mentalisering",
+        "definition": "Evnen til at forstå både sig selv og andre mennesker som besiddende en række psykiske egenskaber (følelser, behov, intentioner), som opøves via spejling i interaktionen med primærpersoner.",
+        "role": "Centralt begreb i den britiske skole (Fonagy-gruppen) for at forklare affektregulering og selveksistens."
+      },
+      {
+        "term": "Nachträglichkeit (Eftervirkning)",
+        "definition": "Freuds begreb for udviklingens tidslighed, hvor tidlige oplevelser (ofte af seksuel karakter) først får deres fulde betydning og traumatiserende kraft senere i livet, når subjektet har forudsætningerne for at forstå dem.",
+        "role": "Afgørende for Laplanches forførelsesteori og forståelsen af psykoanalytisk historicitet."
+      },
+      {
+        "term": "Decentrering",
+        "definition": "Egenskaben ved det psykoanalytiske subjekt, at det ikke er gennemsigtigt for sig selv, og at bevidstheden/jeg'et ikke er bestemmende for dets handlinger og udvikling.",
+        "role": "Fungerer som den primære fællesnævner for alle de præsenterede psykoanalytiske retninger."
+      },
+      {
+        "term": "Interaktionsform",
+        "definition": "Lorenzers begreb for de ubevidste engrammer (registreringer) af primitive mor-barn-interaktioner, som danner grundlag for barnets senere handlinger og symptomdannelse.",
+        "role": "Forbinder biologi, psykologi og samfund i den tyske freudomarxistiske tradition."
+      },
+      {
+        "term": "Objekt",
+        "definition": "En konstrueret indre psykisk repræsentation af (dele af) andre mennesker, som subjektet er emotionelt forbundet med, og som driften kan rettes mod.",
+        "role": "Et af de vigtigste kernebegreber til at forstå forskellen på psykoanalysens indre virkelighed og den ydre materielle virkelighed."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Geografiske/tematiske skoledannelser",
+        "summary": "Forskellen mellem britisk (kognition/tilpasning), fransk (det symbolske/det ubevidste) og tysk (kultur/samfundskritik) psykoanalyse.",
+        "stakes": "Viser, hvordan Freuds oprindelige teori er blevet fortolket og videreudviklet radikalt forskelligt afhængigt af den kulturelle og videnskabshistoriske kontekst."
+      },
+      {
+        "label": "Equivalent Mode vs. Pretend Mode",
+        "summary": "To tidlige stadier i barnets repræsentation af verden: I Equivalent Mode opleves den indre verden som identisk med den ydre. I Pretend Mode (leg) adskilles de, men den indre verden har ingen konsekvens for den ydre.",
+        "stakes": "Integrationen af disse to modi i 4-årsalderen er en forudsætning for etableringen af egentlig mentaliseringsevne."
+      },
+      {
+        "label": "Fysiologisk behov vs. Drift",
+        "summary": "Behov søger overlevelse, mens drifter er indre psykiske aftryk opstået ved lystbetonede tilstande, som er uendeligt fleksible.",
+        "stakes": "Understreger psykoanalysens fokus på den psykiske realitet frem for ren biologisk overlevelse."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At antage, at 'objekt' i psykoanalytisk forstand betyder en fysisk ting, frem for en indre psykisk repræsentation af en relation.",
+      "At tro, at psykoanalysen i dag er én samlet teori, frem for et spraglet netværk af skoledannelser med meget forskellige fokusområder.",
+      "At forveksle biologiske instinkter med psykoanalytiske drifter, som er langt mere fleksible og lystorienterede."
+    ],
+    "quote_targets": [
+      {
+        "target": "Objektet forstået som en konstrueret indre psykisk repræsentation er i høj grad med til at opbygge det enkelte menneskes egenart og identitet.",
+        "why": "Definerer præcist, hvordan objektbegrebet skal forstås i en psykoanalytisk kontekst (s. 206)."
+      },
+      {
+        "target": "Enigheden begrænser sig til, at subjektet er decentreret, fordi bevidstheden ikke er centrum i psyken...",
+        "why": "Sammenfatter den afgørende fællesnævner for alle nyere psykoanalytiske teorier (s. 208)."
+      },
+      {
+        "target": "Barnet mærker, at den voksnes henvendelse er rettet mod barnet, men forstår ikke, hvorfor eller hvad den betyder.",
+        "why": "Kernen i Laplanches teori om den voksnes gådefulde meddelelser og asymmetrien i barnets udvikling (s. 222)."
+      }
+    ],
+    "grounding_notes": [
+      "Teksten er eksplicit struktureret omkring en tredeling af psykoanalysen (Storbritannien, Frankrig, Tyskland).",
+      "Begreber som mentalisering, Nachträglichkeit og interaktionsformer er direkte forankret i specifikke teoretikere (Fonagy, Laplanche, Lorenzer) i teksten."
+    ],
+    "warnings": [
+      "Kapitlet nævner et meget stort antal teoretikere og historiske forgreninger (især i appendiks). De studerende bør orientere sig i forelæsningsslides for at afgøre, hvilke specifikke teoretikere der forventes dybdegående kendskab til."
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:12:02Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l1-jacobsen-2021-26129bff"
+    ],
+    "dependency_hashes": {
+      "source_file": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
+      "source_files_signature": "197528f9384659dd739634c7bc24f47921105ff5fe1c77a1110ddef870d82c32",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l1-jacobsen-2021-26129bff",
+    "lecture_key": "W07L1",
+    "title": "Jacobsen (2021)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf",
+    "source_paths": [
+      "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
+    "length_band": "medium",
+    "page_count": 25,
+    "estimated_token_count": 16250,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the philosophical and psychological foundation of Kierkegaardian existentialism, defining personality as an active, ongoing process of self-relation rather than a set of static traits.",
+    "source_role": "A secondary text (monograph chapter) that translates Kierkegaard's complex philosophical concepts into accessible psychological terms for students.",
+    "relation_to_lecture": "Serves as the core reading for 'W7L1 Eksistentiel personlighedspsykologi II', grounding the lecture's exploration of existential themes like self-relation, possibility, and subjective truth.",
+    "central_claims": [
+      {
+        "claim": "Human existence is fundamentally different from animal existence because humans must actively relate to their own existence, making it a problematic rather than straightforward condition.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Existence cannot be studied as an objective, static object; it must be investigated subjectively as an ongoing, unfolding process within the individual.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Kierkegaard employs indirect communication and pseudonyms to prevent readers from merely acquiring objective knowledge, forcing them instead to engage subjectively with the text.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The human self is constituted by a 'self-relation' that navigates dichotomies such as the finite and the infinite, the temporal and the eternal, and necessity and possibility.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Eksistens (Existence)",
+        "definition": "Not merely being alive, but 'stepping out' (eks-istere) and standing in an active relation to one's own life, choices, and self.",
+        "role": "Forms the foundational concept of existential psychology, shifting focus from objective traits to subjective lived experience."
+      },
+      {
+        "term": "Selvforhold (Self-relation)",
+        "definition": "The concept that a human being is a relation that relates to itself, constantly navigating the tension between various existential dichotomies.",
+        "role": "Explains the dynamic, non-static nature of human personality in Kierkegaard's framework."
+      },
+      {
+        "term": "Fantasien (Imagination)",
+        "definition": "The psychological capacity that opens up the realm of possibility and infinitude, allowing humans to transcend immediate, finite reality.",
+        "role": "Highlights how humans envision possibilities and make choices, which is central to developing a self and avoiding being trapped in mere necessity."
+      },
+      {
+        "term": "Indirekte meddelelse (Indirect communication)",
+        "definition": "A method of writing using pseudonyms and complex narratives designed to obscure objective conclusions and provoke subjective reflection.",
+        "role": "Explains Kierkegaard's methodology for teaching existential truths, emphasizing that the 'how' of understanding is as important as the 'what'."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Objective vs. Subjective Knowledge",
+        "summary": "The difference between studying static facts 'out there' (like natural sciences) and understanding the unfolding reality of one's own life.",
+        "stakes": "Crucial for understanding why existential psychology requires a different epistemological approach than the natural sciences."
+      },
+      {
+        "label": "Tænken (Thinking) vs. Væren (Being)",
+        "summary": "The separation between the abstract conceptualization of life and the actual lived experience of it.",
+        "stakes": "Warns against the psychological trap of over-intellectualizing life instead of actively living and making choices."
+      },
+      {
+        "label": "Animal vs. Human Existence",
+        "summary": "Animals exist straightforwardly ('ligetil') by nature, whereas humans have a 'problematic' existence because they must relate to it.",
+        "stakes": "Establishes the unique psychological burden, freedom, and responsibility of human consciousness."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Kierkegaard's use of the word 'eksperimentere' refers to empirical, scientific experiments rather than thought experiments designed to provoke subjective reflection.",
+      "Confusing the biological fact of being alive with the existential concept of 'eksistens', which requires active self-relation.",
+      "Viewing Kierkegaard's pseudonyms merely as literary flair rather than a deliberate psychological tool to force the reader into subjective engagement."
+    ],
+    "quote_targets": [
+      {
+        "target": "Mennesket er et Forhold, der forholder sig til sig selv (p. 108)",
+        "why": "This is Kierkegaard's most famous and central definition of the human self, essential for understanding his personality psychology."
+      },
+      {
+        "target": "Eksistens adskiller [...] Tænken og Væren (p. 106)",
+        "why": "Highlights the fundamental existential dilemma between abstracting from life and actually living it."
+      },
+      {
+        "target": "At eks-istere betyder at træde ud, at stå i forhold til (p. 96)",
+        "why": "Provides the etymological and conceptual baseline for the entire chapter's discussion of existence."
+      }
+    ],
+    "grounding_notes": [
+      "The text heavily references Kierkegaard's original works (e.g., Sygdommen til Døden, Enten-Eller) but interprets them through a modern psychological lens, occasionally referencing theorists like Winnicott and Rollo May.",
+      "The analysis is strictly bounded to Chapter 4 ('Eksistens') of Jacobsen's book."
+    ],
+    "warnings": []
+  }
+}

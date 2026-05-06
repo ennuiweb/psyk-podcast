@@ -2,16 +2,16 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:39:49Z",
+  "generated_at": "2026-05-05T19:07:00Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
     "prompt_version": "personlighedspsykologi-source-card-v1",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -23,7 +23,7 @@
     "dependency_hashes": {
       "source_file": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
       "source_files_signature": "f962c7a6628350339bb8680d46a345ada519f0c3108d7a407b07526a26d4912b",
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -49,27 +49,27 @@
     "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "This text provides the foundational epistemology and methodology for phenomenological psychology, tracing its roots from Husserl's philosophy to its application in psychological inquiry.",
-    "source_role": "It serves as the core theoretical reading for the course's module on phenomenology, establishing the specialized vocabulary and methodological rules students must grasp before applying phenomenological concepts to personality.",
-    "relation_to_lecture": "Directly supports lecture W06L1 by detailing the foundational concepts of phenomenology (intentionality, epoché) that will be discussed to reframe personality as a meaning-making process rather than a set of objective traits.",
+    "theory_role": "Introduces Husserlian transcendental phenomenology and adapts it into a foundational methodological framework for phenomenological psychology.",
+    "source_role": "Core reading that defines the basic vocabulary (intentionality, epoché, noema/noesis) and methodological steps required to understand the phenomenological perspective in personality psychology.",
+    "relation_to_lecture": "Directly grounds the W06L1 lecture on Phenomenology by providing the primary definitions, historical context (Husserl), and practical examples of the phenomenological method.",
     "central_claims": [
       {
-        "claim": "Human reality is an interpreted, meaning-constructed phenomenon, and we can never directly access or know the objective 'things in themselves'.",
+        "claim": "True objective reality is unknowable; human reality is an interpreted phenomenon resulting from the interaction between raw physical matter and innate mental faculties.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "All consciousness is intentional, meaning it is always consciousness of 'some thing', combining both directional (noematic) and referential (noetic) components.",
+        "claim": "All human consciousness is intentional, meaning it is fundamentally directed towards 'some thing' or object, even if that object is imaginary.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "The phenomenological method consists of three non-linear but interrelated focal points: epoché (bracketing assumptions), description (describing over explaining), and horizontalization (equalizing initial significance).",
+        "claim": "The phenomenological method consists of three interrelated foci: bracketing biases (epoché), describing rather than explaining, and treating all initial items of experience with equal significance (horizontalization).",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "The 'I' or self is not inherently present in straightforward, immediate experience, but rather emerges as a construct during reflective experience.",
+        "claim": "The conscious 'I' (self) is often absent during intense, straightforward experience and primarily emerges as a construct during reflective experience.",
         "grounding": "source-grounded",
         "confidence": "high"
       }
@@ -77,69 +77,71 @@
     "key_concepts": [
       {
         "term": "Intentionality",
-        "definition": "The foundational inter-relationship between consciousness and reality, stating that all consciousness is always directed towards an object (consciousness of some thing).",
-        "role": "Serves as the central assumption of phenomenology, explaining how we translate raw stimuli into a meaningful, object-based reality."
+        "definition": "The foundational correlational rule of phenomenology stating that all consciousness is consciousness of some thing; the mind's translation of unknown stimuli into phenomenal objects.",
+        "role": "Serves as the central assumption of phenomenology, explaining how subjects and objects co-constitute one another."
       },
       {
-        "term": "Noema and Noesis",
-        "definition": "The two correlational poles of intentionality: Noema is the directional element or the 'what' of an experience, while Noesis is the referential element or the 'how' we experience it.",
-        "role": "Explains why different individuals can perceive the exact same event but interpret and react to it in completely unique ways."
+        "term": "Noema",
+        "definition": "The directional element of an intentional experience; the 'what' or the object towards which attention is directed.",
+        "role": "Differentiates the content of an experience from the individual's subjective mode of experiencing it."
+      },
+      {
+        "term": "Noesis",
+        "definition": "The referential element of an intentional experience; the 'how' or the mode (including cognitive and affective biases) through which an object is defined.",
+        "role": "Explains why different individuals can experience the exact same event (noema) in vastly different and unique ways."
       },
       {
         "term": "Epoché (Bracketing)",
-        "definition": "The first rule of the phenomenological method urging the temporary suspension or setting aside of initial biases, assumptions, and expectations.",
-        "role": "Provides the methodological tool for achieving openness in observation, preventing preconceived theories from contaminating the analysis of experience."
+        "definition": "The first rule of the phenomenological method, which urges the temporary suspension of initial biases, expectations, and assumptions to focus on primary experiential data.",
+        "role": "Provides the methodological starting point for unbiased psychological investigation, even though perfect bracketing is acknowledged as impossible."
       },
       {
-        "term": "Straightforward vs. Reflective Experience",
-        "definition": "Straightforward experience is the immediate, timeless, and ineffable act of experiencing as it occurs, whereas reflective experience involves the subsequent attempt to describe, explain, and assign meaning to it.",
-        "role": "Critically distinguishes the act of living an experience from thinking about it, highlighting that self-consciousness (the 'I') belongs only to the reflective domain."
+        "term": "Horizontalization",
+        "definition": "The equalization rule of the phenomenological method, requiring the investigator to initially treat all items of an experience as having equal value or significance.",
+        "role": "Prevents the premature imposition of hierarchies of significance that could skew the interpretation of psychological data."
       }
     ],
     "distinctions": [
       {
-        "label": "Phenomenal vs. Objective Reality",
-        "summary": "Distinguishes between reality as it is perceived and interpreted by human consciousness (phenomenal) and the raw, uninterpreted physical matter of the universe (objective).",
-        "stakes": "Demonstrates that while an objective reality exists, psychology and philosophy can only meaningfully study the interpreted phenomenal world."
+        "label": "Straightforward vs. Reflective Experience",
+        "summary": "Straightforward experience is the timeless, ineffable, action-based activity as it occurs, whereas reflective experience is the subsequent, time-bound attempt to describe, explain, and make meaning of it.",
+        "stakes": "Highlights that we can never describe an experience exactly as it happens, and reveals that the self ('I') is primarily a product of reflection rather than a constant presence in action."
       },
       {
-        "label": "Noematic vs. Noetic Foci",
-        "summary": "Distinguishes the object or content of an experience ('what') from the individual's mode, attitude, or bias in perceiving it ('how').",
-        "stakes": "Prevents psychology from reducing experiences to mere objective stimuli, ensuring the unique, subjective variables of the individual are recognized."
+        "label": "Noema vs. Noesis",
+        "summary": "The distinction between the object being experienced (the 'what') and the subjective mode of experiencing it (the 'how').",
+        "stakes": "Clarifies why human experiences are at best only partially shareable, as individual noetic variables always color the shared noematic content."
       },
       {
-        "label": "I vs. Not I",
-        "summary": "Distinguishes the constructed concept of the self ('I') from everything defined as other ('Not I').",
-        "stakes": "Argues that these are mutually dependent intentional constructs; the self cannot be defined without implicit or explicit comparison to others."
+        "label": "The 'I' vs. The 'not I'",
+        "summary": "The phenomenological separation between the self and others/the world, which are viewed as mutually dependent intentional constructs.",
+        "stakes": "Challenges the assumption of an independent, isolated self, arguing instead that identity is formed through comparative interaction with the world."
       }
     ],
     "likely_misunderstandings": [
-      "Assuming that phenomenology argues objective reality does not exist at all (pure solipsism), whereas Spinelli clarifies it acknowledges a 'raw matter' but insists we cannot access it directly.",
-      "Believing that complete and perfect epoché (bracketing) is possible, whereas the text explicitly notes it is an unachievable ideal used pragmatically to minimize bias.",
-      "Viewing the phenomenological method as a strict, linear 'one-two-three' step process rather than overlapping, simultaneous focal points of investigation.",
-      "Assuming the 'I' is the constant initiator of all experience, rather than something that only emerges post-hoc in reflective experience."
+      "Believing that phenomenology denies the existence of a physical, objective reality entirely, rather than just claiming our direct access to it is impossible.",
+      "Assuming that 'bracketing' (epoché) can be achieved perfectly and completely, whereas phenomenologists view it as an aspirational stance to minimize bias.",
+      "Thinking that the 'I' (self) is a constant, conscious initiator of all actions, rather than a construct that often disappears during intense activity and reappears during reflection.",
+      "Viewing the three steps of the phenomenological method as a rigid, chronological sequence rather than interrelated points of focus."
     ],
     "quote_targets": [
       {
         "target": "describe, don't explain",
-        "why": "It perfectly captures the essence of the Rule of Description (Step B of the phenomenological method), urging students to stick to concrete impressions over abstract theoretical leaps."
+        "why": "Summarizes the essence of the Rule of Description (Step B of the phenomenological method)."
       },
       {
         "target": "All consciousness... is consciousness of some thing",
-        "why": "This is the most concise definition of Husserl's concept of intentionality provided in the text."
+        "why": "The classic, foundational definition of intentionality adapted from Brentano and Husserl."
       },
       {
-        "target": "we experience the phenomena of the world, rather than its reality",
-        "why": "Summarizes the entire phenomenological stance on reality and subjective perception in a single sentence."
+        "target": "The 'I' requires the existence of the 'not I' in order for it... to have any meaningful phenomenal reality.",
+        "why": "Crucial quote for understanding the phenomenological view of self-concept and interpersonal relationships."
       }
     ],
     "grounding_notes": [
-      "Extracted directly from Spinelli (2005) Chapters 1 and 2.",
-      "Focuses heavily on the philosophical translation of Husserlian transcendental phenomenology into psychological methodology."
+      "The text uses highly concrete examples (e.g., Magritte's painting, a distressed friend at a party, walking down a dark country lane) to ground abstract philosophical concepts.",
+      "Spinelli explicitly bridges philosophical phenomenology (Husserl) with applied phenomenological psychology."
     ],
-    "warnings": [
-      "The text uses complex, specialized philosophical terminology (noumenon, invariant structures, noema/noesis) which may require careful unpacking for students without a philosophy background.",
-      "The distinction between transcendental phenomenology (Husserl) and existential phenomenology (Heidegger) is briefly mentioned but primarily deferred to later chapters not included in this extract."
-    ]
+    "warnings": []
   }
 }

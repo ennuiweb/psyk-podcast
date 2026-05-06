@@ -2,16 +2,16 @@
   "artifact_type": "revised_lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:45:56Z",
+  "generated_at": "2026-05-05T20:06:34Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-downward-revision-v1",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -21,11 +21,13 @@
       "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
       "w06l1-spinelli-2005-b2f76e93",
-      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+      "w06l1-seminar-6-f-nomenologi-46c58a1a",
+      "w06l1-exercise-4-f-nomenologi-d39d2b0e"
     ],
     "dependency_hashes": {
-      "lecture_substrate": "f577902faf8d41956d7ab663cca0223c3af0bd245544e4fc66f4ab0df12376be",
-      "course_synthesis": "9498bcf7c252f8b9fccca4631ad226e05dd70e08ce87c54684eb0b2fa82e5663"
+      "lecture_substrate": "cd7614ee0964d76dbccc22937f1bc0e1ec87bab1816d250b37ba38ee30f93135",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
     }
   },
   "lecture": {
@@ -34,31 +36,46 @@
     "sequence_index": 11
   },
   "analysis": {
-    "top_down_course_relevance": "This lecture acts as the central pivot in the course arc. It transitions students away from paradigms that view personality as measurable internal variables (traits) or hidden unconscious drives (psychoanalysis), introducing the humanistic, first-person perspective. By establishing the subject as a dynamic, situated meaning-maker, it provides the essential groundwork for later critical, poststructural, and narrative theories that examine how these situated subjects are shaped by broader societal and discursive structures.",
+    "top_down_course_relevance": "This lecture marks the crucial mid-course pivot from deterministic and objective models (traits, biosocial, psychoanalytic drives) to interpretive, humanistic models. It establishes the epistemological foundation for understanding personality not as a collection of static variables, but as an active, relational process of meaning-making anchored in the 1st-person perspective.",
     "what_matters_more": [
-      "The epistemic shift from third-person objective measurement (e.g., trait theory) and depth interpretation (e.g., psychoanalysis) to first-person lived experience and the 'Lifeworld'.",
-      "Methodological concepts like epoché and intentionality as practical psychological tools for understanding personality as a dynamic, situated meaning-making process.",
-      "The concept of the pre-reflective body as the foundational way individuals orient toward and interact with the world."
+      "The epistemological shift from 3rd-person objective measurement (traits, biology) and unconscious drives (psychoanalysis) to the 1st-person perspective of conscious, lived experience.",
+      "Explicit application of the 4 orientation points, particularly how 'intentionality' resolves the essence/context dialectic by showing that subject and world co-constitute each other.",
+      "Meaning-making (meningsskabelse) as the primary mechanism of personality, contrasting with static traits or deterministic drives."
     ],
     "de_emphasize": [
-      "Deep philosophical biographies or historical chronologies of Husserl, Heidegger, and Merleau-Ponty beyond their direct applied contributions to personality psychology.",
-      "Highly technical, abstract debates between different philosophical schools of phenomenology that do not directly inform empirical or clinical personality research."
+      "The specific logistical details of the SMK/Østre Anlæg excursion, focusing instead on the generalizable methodological skills of epoché and horizontalization.",
+      "Overly dense philosophical minutiae of Husserl's early epistemology that do not directly translate into psychological methodology or personality theory."
     ],
     "strongest_sideways_connections": [
-      {}
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Methodological and epistemological contrast (1st-person lived experience vs. 3rd-person variable profiles).",
+        "rationale": "Phenomenology actively de-reifies traits by demonstrating that personality is a dynamic, meaning-making relation to the world, directly challenging the idea of personality as a static, measurable inner essence."
+      },
+      {
+        "target": "W04L1 / W04L2 (Psychoanalysis)",
+        "relation": "Contrastive view of consciousness and agency.",
+        "rationale": "While psychoanalysis decenters the subject by emphasizing unconscious conflicts and drives, phenomenology recenters the subject through conscious intentionality and the pre-reflective body-subject."
+      },
+      {
+        "target": "W12L1 (Meta-theory / Orientation points)",
+        "relation": "Direct application of the course's meta-analytical framework.",
+        "rationale": "The phenomenological concept of intentionality perfectly illustrates the 'essence/context' orientation point, providing students with a concrete example of how to use the framework for the exam."
+      }
     ],
     "revised_podcast_priorities": [
-      "Unpacking 'intentionality' to demonstrate that personality is inherently relational (consciousness is always consciousness *of* something).",
-      "Demystifying the 'epoché' (bracketing) as a radical shift in psychological methodology and how psychologists listen to subjects.",
-      "Illustrating the 'Lifeworld' and the pre-reflective body using relatable, everyday examples to highlight the limitations of static trait measurements."
+      "Frame the episode around the major 'epistemological shift' in the course: moving from measuring the person from the outside to understanding them from the inside.",
+      "Demystify 'Intentionality' by explaining it as a psychological bridge that shows how the person and their environment co-constitute each other, rather than just a philosophical buzzword.",
+      "Walk through the phenomenological method (Epoché, Noema/Noesis) using a relatable, everyday example to show how it prevents us from jumping to theoretical conclusions.",
+      "Explicitly apply the 4 orientation points to phenomenology, focusing heavily on how it handles agency and the essence/context dialectic."
     ],
     "carry_forward": [
-      "The conception of the subject as fundamentally 'situated' in a world.",
-      "The scientific validity of first-person accounts and subjective meaning-making.",
-      "The phenomenological critique of reductionist, third-person measurements of human beings, which sets the stage for narrative and critical psychology."
+      "The concept of 'meaning-making' (meningsskabelse), which forms the backbone of the upcoming Humanistic (W07) and Narrative (W11) psychology lectures.",
+      "The insistence on the 1st-person perspective, which will serve as a vital counterweight when the course later introduces structural and discursive determinism (Critical Psychology, Poststructuralism)."
     ],
     "warnings": [
-      "Ensure that heavy philosophical terms (epoché, intentionality, Lifeworld) are consistently grounded in their psychological utility for understanding personality, to prevent the material from feeling like an abstract philosophy detour."
+      "The philosophical density of Husserl and Merleau-Ponty can easily alienate students; instructors must constantly bridge these concepts back to applied personality psychology and the 4 orientation points.",
+      "Ensure that the focus on the phenomenological method (epoché, description) does not lead students to mistake it for simple, uncritical introspection."
     ]
   }
 }

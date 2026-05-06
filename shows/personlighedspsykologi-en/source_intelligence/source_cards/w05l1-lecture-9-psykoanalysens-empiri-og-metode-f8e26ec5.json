@@ -2,16 +2,16 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:37:34Z",
+  "generated_at": "2026-05-05T19:01:48Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
     "prompt_version": "personlighedspsykologi-source-card-v1",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -23,7 +23,7 @@
     "dependency_hashes": {
       "source_file": "0992baf412db38c5bc7f7b9efc9945ab79d14cc0fcfe62450dcb913336ef9264",
       "source_files_signature": "1f3d003c7e875d6d994525cd14aef60d90ebb2a5904febbefa7864d629e67ed2",
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -49,97 +49,80 @@
     "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Presents psychoanalysis as a hermeneutic human science (drawing heavily on Ricoeur), emphasizing that its epistemology is inseparable from the clinical encounter and the interpretation of defense mechanisms.",
-    "source_role": "Primary lecture slides for week 5, session 1, bridging earlier concepts of personality structure and defenses with methodology, epistemology, and a critical case study application (Dora).",
-    "relation_to_lecture": "Provides the structural backbone for Lecture 9, directly detailing defense mechanisms, Ricoeur's criteria for psychoanalytic truth, and a critical review of Freud's Dora case.",
+    "theory_role": "Outlines the epistemological and methodological foundations of psychoanalysis, transitioning from theoretical concepts (defense mechanisms) to clinical application and critique (the Dora case).",
+    "source_role": "Lecture slides that structure the 9th session, providing key definitions, theoretical quotes, and a critical framework for analyzing Freud's methodology.",
+    "relation_to_lecture": "Directly represents the content of Lecture 9, focusing on empiricism, method, and the critical evaluation of the Dora case.",
     "central_claims": [
       {
-        "claim": "Psychoanalytic truth is not based on the correspondence theory of truth, but is instead a processual and contextual truth constituted by four criteria: language, intersubjectivity, psychic reality, and narrativity (Ricoeur).",
+        "claim": "Psychoanalytic theory is fundamentally derived from the clinical encounter and the analytic relationship, rather than traditional empirical observation.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Psychoanalysis operates as an anti-scientistic human science where the clinical treatment and the scientific investigation of the unconscious are one and the same process.",
+        "claim": "Truth in psychoanalysis is not based on correspondence theory, but is established through a process involving language, intersubjectivity, psychic reality, and narrativity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freud's treatment of Dora demonstrates significant flaws in his early clinical practice, including patriarchal bias, suggestive coercion, and a failure to recognize her actual desires.",
         "grounding": "slide-framed",
-        "confidence": "high"
-      },
-      {
-        "claim": "Freud's treatment of Dora (Ida Bauer) illustrates a discrepancy between his theoretical genius and his clinical practice, highlighting how patriarchal biases and suggestive methods led to a failed treatment.",
-        "grounding": "source-grounded",
-        "confidence": "high"
-      },
-      {
-        "claim": "Defense mechanisms are unconscious mechanisms that reduce anxiety, and they can be divided into primary defenses (concerning the boundary between self and the outside world) and secondary defenses (concerning internal boundaries).",
-        "grounding": "source-grounded",
         "confidence": "high"
       }
     ],
     "key_concepts": [
       {
-        "term": "Nachträglichkeit (Efterlods virkning)",
-        "definition": "The phenomenon where past events, impressions, or memory traces are recast later in life through new experiences, gaining new meaning and efficiency, often becoming traumatic only retroactively.",
-        "role": "Explains how psychoanalysis understands trauma and the temporal structure of psychic reality."
+        "term": "Nachträglichkeit",
+        "definition": "The phenomenon where a past event only becomes meaningful, effective, and potentially traumatic at a later stage of development through new experiences.",
+        "role": "Explains how trauma is constructed retroactively in psychoanalysis, challenging linear causality."
       },
       {
-        "term": "Overføring (Transference)",
-        "definition": "The unconscious displacement of emotional ties and past psychological experiences onto the present, particularly onto the person of the analyst.",
-        "role": "Highlights both the greatest obstacle and the most powerful tool in psychoanalytic treatment."
+        "term": "Psykisk realitet",
+        "definition": "The subject's internal world and fantasies, which are treated as highly relevant facts in psychoanalysis, even if they are detached from external reality.",
+        "role": "Shifts the epistemological focus from objective, observable facts to subjective meaning and internal experience."
       },
       {
         "term": "Projektiv identifikation",
-        "definition": "A defense mechanism where a person projects their internal state onto another person, while simultaneously exerting pressure on that person to actually feel and experience the world in accordance with the projection.",
-        "role": "Differentiates severe/primitive defensive blurring of inner and outer worlds from more benign forms of projection like empathy."
+        "definition": "A defense mechanism where a person projects their feelings onto another and exerts pressure on them to experience themselves congruently with that unconscious fantasy.",
+        "role": "Highlights the intersubjective nature of severe defense mechanisms, common in borderline and psychotic structures."
       },
       {
-        "term": "Psykisk realitet (Psychic reality)",
-        "definition": "The inner world of the subject, where personal fantasies and subjective meanings hold psychological weight, partially detached from external, objective reality.",
-        "role": "Serves as one of Ricoeur's four core criteria for establishing 'facts' in a psychoanalytic context, distinguishing the field from observational sciences."
-      },
-      {
-        "term": "Udageren (Acting out / Enactment)",
-        "definition": "Behavior assumed to be an expression of transference attitudes that the patient cannot yet articulate in words, effectively substituting action for memory.",
-        "role": "Explains patients' resistance to the 'talking cure', as seen in Freud's explanation of why Dora terminated her treatment."
+        "term": "Overføring",
+        "definition": "The displacement of emotional ties and past psychological experiences onto the analyst in the present.",
+        "role": "Serves as both the greatest obstacle and the most powerful tool in psychoanalytic treatment."
       }
     ],
     "distinctions": [
       {
-        "label": "Primære vs. Sekundære forsvarsmekanismer",
-        "summary": "Primary (immature) defenses deal with the boundary between self and the outside world and originate preverbally; secondary (advanced) defenses deal with internal boundaries, such as those between the id, ego, and superego.",
-        "stakes": "Crucial for determining a patient's level of psychological maturity and underlying personality structure (e.g., psychotic/borderline vs. neurotic)."
+        "label": "Primære vs. sekundære forsvarsmekanismer",
+        "summary": "Primary defenses involve the boundary between the self and the outside world (preverbal), while secondary defenses deal with internal boundaries (e.g., ego vs. id).",
+        "stakes": "Helps categorize the developmental maturity and severity of a patient's psychological structure (e.g., psychotic vs. neurotic)."
       },
       {
-        "label": "Observational Science vs. Psychoanalysis",
-        "summary": "Observational sciences focus on empirical, objective facts, whereas psychoanalysis is a human science focusing on the inner world, subjective meaning, and the unobservable unconscious.",
-        "stakes": "Justifies psychoanalysis's unique epistemological and methodological framework (hermeneutics) against critiques from logical empiricism."
+        "label": "Videnskab vs. Psykoanalyse",
+        "summary": "Traditional science focuses on empirically accessible observables, whereas psychoanalysis is 'anti-scientistic', focusing on the unconscious subject and getting the subject to speak.",
+        "stakes": "Justifies psychoanalysis's unique epistemological criteria (Ricoeur's four criteria) against the demands of logical empiricism."
       }
     ],
     "likely_misunderstandings": [
-      "Assuming psychoanalysis relies on the correspondence theory of truth; it actually relies on narrative and processual truth (Ricoeur).",
-      "Equating normal projection with projective identification; the latter involves an interactive pressure forcing the recipient to experience the projected emotion.",
-      "Believing Freud's clinical execution perfectly matched his theoretical ideals; the Dora case is presented to show his significant clinical failures, patriarchal blind spots, and use of suggestion."
+      "Assuming psychoanalysis claims traditional scientific validity based on objective observation, rather than narrative and psychic reality.",
+      "Believing Freud's clinical practice perfectly reflected his theoretical ideals, ignoring the coercive and suggestive elements highlighted in the Dora critique.",
+      "Confusing 'Nachträglichkeit' with simple delayed memory, rather than the retroactive creation of meaning and trauma."
     ],
     "quote_targets": [
       {
-        "target": "Psychoanalysis is essentially a struggle against resistances.",
-        "why": "A core Ricoeur quote summarizing the fundamental dynamic of the psychoanalytic clinical encounter."
+        "target": "My thesis is that psychoanalytic theory... is the codification of what takes place in the analytic situation",
+        "why": "Establishes the clinical encounter as the empirical bedrock of psychoanalysis according to Ricoeur."
       },
       {
-        "target": "...the psychoanalytic “fact,” with its fourfold nature of being able to be said, to be addressed to another person, to be fantasized, figured, or symbolized, and to be recounted in the story of a life.",
-        "why": "Condenses Ricoeur's entire epistemological argument about how truth is constructed in psychoanalysis into a single formulation."
-      },
-      {
-        "target": "Vi udagerer det, vi ikke husker.",
-        "why": "A succinct Freudian explanation of acting out and its relation to repressed material."
+        "target": "In Freud’s wish to 'penetrate her secrets' in record time, Freud himself was inflicting a kind of violence on her",
+        "why": "Provides a sharp, modern critique (from Fink) of Freud's clinical missteps and suggestive coercion in the Dora case."
       }
     ],
     "grounding_notes": [
-      "Draws heavily on Paul Ricoeur (1977) for epistemology.",
-      "Uses Judy Gammelgaard (2007, 2010) to contextualize clinical methods and Nachträglichkeit.",
-      "Applies Bruce Fink (2017) to provide a modern, critical lens on Freud's treatment of Ida Bauer (Dora).",
-      "Uses Nancy McWilliams (2011) to define primary vs. secondary defense mechanisms."
+      "The slides heavily quote secondary literature (McWilliams, Ricoeur, Gammelgaard, Fink) to explain and critique primary Freudian concepts."
     ],
     "warnings": [
-      "No overall text word count or character count is available due to the extraction status 'metadata_only_no_local_text_extraction', relying solely on OCR text from slides."
+      "The slides use fragmented quotes to summarize complex epistemological arguments by Ricoeur; full comprehension requires reading the syllabus texts."
     ]
   }
 }

@@ -1,0 +1,154 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:11:21Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l1-cooper-2003-ee3c34b7"
+    ],
+    "dependency_hashes": {
+      "source_file": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
+      "source_files_signature": "48b98024a954687a2c719153cfdea5c02b5a101b6ceace8f0e77dd83ae6ffea4",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l1-cooper-2003-ee3c34b7",
+    "lecture_key": "W07L1",
+    "title": "Cooper (2003)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf",
+    "source_paths": [
+      "Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Cooper (2003).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "06900d71b6ec2558084d04983fa570243d0517a2849cdc5c154f9767177a1ff4",
+    "length_band": "long",
+    "page_count": 45,
+    "estimated_token_count": 29250,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the philosophical foundation for existential therapies, outlining core ontological concepts (freedom, facticity, phenomenology, authenticity) that differentiate existential approaches from deterministic or essentialist psychologies.",
+    "source_role": "Serves as a comprehensive introduction to the philosophical roots of existential therapy, mapping out the shared assumptions, historical lineage, and internal debates of the field.",
+    "relation_to_lecture": "As a reading for W7L1 (Eksistentiel personlighedspsykologi II), it frames the conceptual background necessary to understand specific existential personality theories and therapeutic applications discussed in the lecture.",
+    "central_claims": [
+      {
+        "claim": "Existential therapy is not a single, unified approach but a diverse tapestry of practices that share a fundamental concern for human lived-existence.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human existence is fundamentally 'verb-like' (a dynamic process of becoming) rather than a fixed, 'noun-like' essence, meaning that existence precedes essence.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human freedom is absolute but always situated within inescapable limitations, or 'facticity', such as thrownness, chance, and death.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Existential anxiety and guilt are not inherently pathological; rather, they are ontological realities that reveal our freedom, responsibility, and unfulfilled possibilities.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Existence vs. Essence",
+        "definition": "Existence is the concrete, unique, and irreducible manifestation of an entity in its totality, whereas essence refers to universal, abstract, and unchanging characteristics.",
+        "role": "Forms the foundational critique of traditional scientific and essentialist psychologies, which attempt to reduce humans to universal laws or components."
+      },
+      {
+        "term": "Phenomenological method",
+        "definition": "A philosophical method involving epoché (bracketing assumptions), description (rather than explanation), and horizontalisation (giving equal initial value to all experiences).",
+        "role": "Provides the methodological basis for existential therapy's focus on understanding the client's immediate, lived experience without imposing theoretical frameworks."
+      },
+      {
+        "term": "Facticity / Thrownness",
+        "definition": "The given, limiting factors of existence, including the specific historical, social, and biological context we are born into without our choosing.",
+        "role": "Balances the existential emphasis on radical freedom by acknowledging the inescapable boundaries and conditions within which choices must be made."
+      },
+      {
+        "term": "Dasein (Being-in-the-world)",
+        "definition": "Heidegger's term emphasizing that human existence is inextricably immersed in and connected to its world, rather than existing as an isolated, internal mind.",
+        "role": "Challenges Cartesian dualism and isolated individualism, highlighting that human identity is formed in relation to the environment and others."
+      },
+      {
+        "term": "I-Thou vs. I-It",
+        "definition": "Buber's distinction between relating to the Other as a unique, un-analyzable, free subject (I-Thou) versus treating them as a determined, thing-like object (I-It).",
+        "role": "Defines the ethical and relational stance in existential therapy, advocating for genuine, present-centered encounters over clinical objectification."
+      },
+      {
+        "term": "Authenticity",
+        "definition": "A self-relational stance characterized by resolutely facing one's anxiety, freedom, and mortality, rather than denying them or blindly conforming to the crowd ('the One').",
+        "role": "Serves as a guiding, though transient, ideal in existential therapy, encouraging clients to take ownership of their choices and live passionately despite absurdity."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Existence vs. Essence",
+        "summary": "The difference between the concrete, lived reality of a specific human being (existence) and abstract, universal categories or traits (essence).",
+        "stakes": "Determines whether therapy treats the client as a unique, unfolding individual or merely as a specimen of a diagnostic category."
+      },
+      {
+        "label": "Existential vs. Neurotic Anxiety/Guilt",
+        "summary": "The difference between unavoidable distress arising from freedom and unfulfilled potential (existential) and pathological distress arising from evading reality (neurotic).",
+        "stakes": "Normalizes certain forms of deep distress as intrinsic to the human condition, shifting the therapeutic goal from symptom eradication to courageous acceptance."
+      },
+      {
+        "label": "Leaping in vs. Leaping ahead",
+        "summary": "Heidegger's distinction between taking over the Other's concerns and dominating them (leaping in) versus helping the Other address their own concerns and open up to their possibilities (leaping ahead).",
+        "stakes": "Clarifies the role of the existential therapist as a facilitator of the client's autonomy rather than a rescuer who solves problems for them."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating existential philosophy solely with Sartre's atheistic and seemingly pessimistic views, ignoring religious (Kierkegaard, Buber) and hopeful (Marcel) existentialists.",
+      "Assuming existentialism promotes complete, unconstrained freedom, while ignoring the heavy emphasis on 'facticity', 'thrownness', and inescapable limitations.",
+      "Viewing existential anxiety and guilt as purely pathological symptoms to be cured, rather than ontological realities to be faced and learned from.",
+      "Thinking 'authenticity' is a permanent, achievable end-state, rather than fleeting moments of resolute awareness before falling back into everyday inauthenticity."
+    ],
+    "quote_targets": [
+      {
+        "target": "Existence precedes essence",
+        "why": "Summarizes the core Sartrean difference between existential and traditional psychological views of the self, emphasizing that humans create their identity through choices."
+      },
+      {
+        "target": "Describe, don't explain",
+        "why": "Captures the essence of the phenomenological method (the rule of description) used to explore lived experience in existential therapy."
+      },
+      {
+        "target": "The dizziness of freedom",
+        "why": "Kierkegaard's vivid metaphor that perfectly illustrates existential anxiety in the face of limitless possibilities and the burden of choice."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly notes that existential therapy has no single founder (unlike psychoanalysis or person-centered therapy) and is highly diverse.",
+      "Cooper emphasizes that existential philosophy is a direct reaction against 19th-century positivism and essentialist psychologies like behaviorism and psychoanalysis."
+    ],
+    "warnings": [
+      "The provided text is an introductory overview of existential philosophy; specific clinical techniques and case applications are deferred to later chapters not included in this excerpt."
+    ]
+  }
+}

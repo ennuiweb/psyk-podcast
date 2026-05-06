@@ -1,0 +1,134 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:14:05Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-giorgi-2005-55ca98f7"
+    ],
+    "dependency_hashes": {
+      "source_file": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
+      "source_files_signature": "6c9ea75e0af3deaa8a2ac28321dad5a83c19ee12c8f07ac1c897d18e059f53b2",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l2-giorgi-2005-55ca98f7",
+    "lecture_key": "W07L2",
+    "title": "Giorgi (2005)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+    "source_paths": [
+      "Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
+    "length_band": "medium",
+    "page_count": 13,
+    "estimated_token_count": 8450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The text acts as a critical evaluation of humanistic psychology's theoretical and methodological history, proposing phenomenological philosophy as the necessary framework to complete the humanistic project.",
+    "source_role": "A reflective, historical, and programmatic essay by a prominent phenomenological psychologist outlining the future requirements for humanistic psychology to survive in academia.",
+    "relation_to_lecture": "Directly supports the W7L2 lecture on Humanistic Psychology by providing a critical perspective on the movement's scientific validity, its historical context against behaviorism/psychoanalysis, and its theoretical bridge to phenomenology.",
+    "central_claims": [
+      {
+        "claim": "Humanistic psychology successfully restored a non-reductionist image of the human person but failed to develop a corresponding, rigorous scientific methodology.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The natural science paradigm, characterized by determinism, abstracted variables, and a focus on control and prediction, is fundamentally inadequate for studying human freedom and lived experience.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Phenomenology provides the necessary philosophical and methodological foundation for humanistic psychology because it rigorously studies subjectivity and meaning without reducing the human experience.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Humanistic psychology remains marginalized in academia because it has not successfully challenged the dominant, limited conception of what constitutes valid science.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Phenomenology",
+        "definition": "A comprehensive philosophical approach that focuses on direct experience, subjectivity, and the essential meaning of conscious acts (noema) without reductionism.",
+        "role": "Serves as Giorgi's proposed methodological and philosophical solution to humanistic psychology's lack of a rigorous human science framework."
+      },
+      {
+        "term": "Natural Science Paradigm",
+        "definition": "The dominant scientific approach in psychology that relies on determinism, empirical observation of physical reality, and the abstraction of independent/dependent variables.",
+        "role": "Represents the methodological standard that humanistic psychology must break away from to authentically study human beings."
+      },
+      {
+        "term": "The Encapsulated Person",
+        "definition": "A concept (borrowed from Royce) referring to scientists who rigidly use only one methodological approach and claim it is the only valid one.",
+        "role": "Illustrates the dogmatic adherence to natural science methods that early humanistic psychologists protested against."
+      },
+      {
+        "term": "Bracketing",
+        "definition": "A phenomenological procedure of putting aside established knowledge (such as natural science assumptions) to investigate phenomena freshly.",
+        "role": "A specific methodological tool Giorgi suggests humanistic psychologists use to invent a new, appropriate science for human psychological problems."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Image of the Person vs. Method of Study",
+        "summary": "The difference between conceptualizing humans as free, meaning-making beings (where humanistic psychology succeeded) and creating a rigorous way to research them (where it failed).",
+        "stakes": "Explains the historical trajectory of humanistic psychology and why it remains a marginalized 'protest movement' rather than a dominant academic force."
+      },
+      {
+        "label": "Natural Science vs. Human Science",
+        "summary": "Natural science abstracts variables from contexts to establish control and prediction, whereas human science studies situated humans and analyzes lived meanings qualitatively.",
+        "stakes": "Highlights the necessity of developing a new scientific yardstick tailored to human phenomena rather than imitating physics."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might mistakenly believe Giorgi is anti-science; in reality, he strongly advocates for rigorous science, but argues it must be a 'human science' rather than a 'natural science'.",
+      "Students might conflate humanistic psychology and phenomenology as the exact same thing, whereas Giorgi treats phenomenology as a distinct philosophical method that can rescue the humanistic movement.",
+      "Students may assume humanistic psychology is currently a dominant force in academia, missing Giorgi's point that it is highly marginalized (less than 1% of APA members in Division 32 at the time of writing)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Humanistic psychology is very good with humans; it has more trouble with changing science",
+        "why": "Succinctly captures the core thesis regarding the movement's success in clinical/conceptual realms but failure in methodological innovation."
+      },
+      {
+        "target": "The ultimate challenge facing humanistic psychologists is whether we dare to study humans in conceptually clarified and critically intelligent ways and not worry initially about whether the strategies used meet scientific criteria as some understand them today.",
+        "why": "Demonstrates Giorgi's call to action for methodological bravery and the rejection of the natural science monopoly on psychological research."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a theoretical and historical reflection based on an award address, not an empirical research paper.",
+      "The author explicitly positions himself as a phenomenological psychologist critiquing the broader humanistic field from within."
+    ],
+    "warnings": [
+      "The text assumes prior knowledge of behaviorism, psychoanalysis, and basic phenomenological terminology (e.g., noema, lifeworld) which may require supplementary explanation in the lecture."
+    ]
+  }
+}

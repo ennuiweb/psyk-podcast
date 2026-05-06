@@ -1,0 +1,160 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:54:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
+    ],
+    "dependency_hashes": {
+      "source_file": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
+      "source_files_signature": "521d4fb6cbf54ad0f30f3ab6804a4f073fd25753fda4c0305cb3fb68113c8009",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+    "lecture_key": "W04L1",
+    "title": "4. Psykoanalyse I",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/4. Psykoanalyse I.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/4. Psykoanalyse I.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/4. Psykoanalyse I.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/4. Psykoanalyse I.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "f205b7d5d0afe6d5f70b8b73c45c5757cbe6a0c365b3ccbc22b6f64a60b4d16c",
+    "length_band": "medium",
+    "page_count": 17,
+    "estimated_token_count": 11050,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Seminar slides applying psychoanalytic theory (Freud, Laplanche) to understand drives, psychosexual development, and the decentered subject, culminating in case work.",
+    "source_role": "seminar_applied",
+    "relation_to_lecture": "Clarifies and applies concepts from the main lecture on Psychoanalysis I, focusing on group work with Freud and Laplanche, and case work on 'Nachträglichkeit'.",
+    "central_claims": [
+      {
+        "claim": "Psykoanalysen placerer sig videnskabsteoretisk som en humanvidenskab, hvor målet er at forstå, indleve, finde mening og bevidstgøre.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Seksualitet i psykoanalysen er ikke begrænset til genital seksualitet, men omfatter alt lystbetonet, hvilket indebærer, at børn også har en seksualitet (den infantile seksualitet).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psykoanalysen insisterer på en konstant dynamisk proces mellem det fysiske og det psykiske, hvor kropslige oplevelser får psykiske konsekvenser og repræsentationer.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Mennesket er et decentreret subjekt ('ikke herre i eget hus'), fordi psyken har en intern dynamik, og det ubevidste fungerer som en aktør, hvis konklusioner vi kun kan forstå med tilbagevirkende kraft.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Fransk psykoanalyse, herunder Laplanche (1970), skal forstås som en genlæsning og præcision af Freuds arbejde snarere end som noget modstridende.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Jeg-drifter",
+        "definition": "Drifter der er orienteret mod overlevelse.",
+        "role": "Kontrasteres med seksualdrifter for at forklare de grundlæggende motivationsfaktorer i psykoanalysen."
+      },
+      {
+        "term": "Seksualdrifter",
+        "definition": "Drifter der er lystbetonede og søger lystfyldte ting og handlinger.",
+        "role": "Udvider forståelsen af menneskelig motivation ud over ren overlevelse."
+      },
+      {
+        "term": "Den infantile seksualitet",
+        "definition": "Ideen om at seksualitet er medfødt og omfatter alt lystbetonet, hvilket betyder at barnet har en seksualitet fra starten af livet.",
+        "role": "Bryder med antagelsen om, at seksualitet kun er for voksne og kun er genital."
+      },
+      {
+        "term": "Psykisk realitet",
+        "definition": "Forståelsen af at et 'faktum' både er fakta og fiktion; sandheden er processuel og farvet af affekt, kontekst og indre tilstande.",
+        "role": "Forklarer psykoanalysens epistemologiske tilgang til patientens oplevelser og subjektivitet."
+      },
+      {
+        "term": "Det decentrede subjekt",
+        "definition": "Opfattelsen af at psyken er rummelig, opdelt og har en intern dynamik, hvilket gør at jeget ikke har fuld kontrol over sig selv.",
+        "role": "Central for psykoanalysens personlighedsforståelse og ideen om det ubevidstes magt."
+      },
+      {
+        "term": "Nachträglichkeit",
+        "definition": "Et begreb (knyttet til Gammelgaard, 2007) der handler om at forstå ting med tilbagevirkende kraft.",
+        "role": "Anvendes som analytisk værktøj i casearbejdet med Kristian Ditlev Jensens tekst."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Jeg-drifter vs. Seksualdrifter",
+        "summary": "Forskellen mellem drifter rettet mod overlevelse og drifter rettet mod lyst.",
+        "stakes": "Essentiel for at forstå Freuds tidlige driftsteori og kilderne til menneskelig adfærd."
+      },
+      {
+        "label": "Genital seksualitet vs. Seksualitet i psykoanalysen",
+        "summary": "Seksualitet i psykoanalysen er alt lystbetonet (inkl. modebranchen, at drikke vin frem for vand), mens genital seksualitet kun er en specifik, voksen form.",
+        "stakes": "Vigtig for at undgå den typiske misforståelse af Freuds begreb om infantil seksualitet."
+      },
+      {
+        "label": "Fysisk vs. Psykisk",
+        "summary": "Kropslige oplevelser over for deres psykiske repræsentationer.",
+        "stakes": "Understreger psykoanalysens fokus på den dynamiske oversættelse mellem krop og sind."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At seksualitet i psykoanalysen kun handler om sex eller genital seksualitet (det omfatter alt lystbetonet).",
+      "At det ubevidste er et passivt lager (det beskrives som en 'gavtyv' med intern dynamik).",
+      "At fransk psykoanalyse (Laplanche) modsiger Freud (det præsenteres som en genlæsning/præcision).",
+      "At sandhed i psykoanalysen er objektiv og statisk (sandheden beskrives som processuel og farvet af affekt)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Med formuleringen af begrebet drift konkluderede Freud, at udgangspunktet for den seksuelle proces var biologisk og kom fra kroppens indre. (Zeuthen, 2023)",
+        "why": "Viser driftens biologiske forankring i psykoanalysen."
+      },
+      {
+        "target": "Every 'fact' is both a fact and a fiction... (Druck, 2014)",
+        "why": "Illustrerer begrebet psykisk realitet og den processuelle sandhed."
+      },
+      {
+        "target": "Hvor der var id, skal jeg vorde.",
+        "why": "Klassisk Freud-citat der illustrerer målet med psykoanalysen og arbejdet med det decentrede subjekt."
+      }
+    ],
+    "grounding_notes": [
+      "Slides refererer til specifikke tekster af Freud (1973/1933), Laplanche (1970), Zeuthen (2019, 2023), Druck (2014) og Gammelgaard (2007).",
+      "Inkluderer en visuel model af Ødipuskomplekset udarbejdet af Ole Andkjær Olsen."
+    ],
+    "warnings": [
+      "Slides indeholder kun overordnede spørgsmål til gruppearbejdet om Freud og Laplanche, ikke de fulde svar eller facitlister.",
+      "Casen om Kristian Ditlev Jensen ('Det bliver sagt') er ikke inkluderet i selve sliden, kun refereret til som genstand for casearbejde."
+    ]
+  }
+}

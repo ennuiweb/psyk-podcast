@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:09:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l2-boss-1963-1feb5a5f"
+    ],
+    "dependency_hashes": {
+      "source_file": "f2273465cc0bc5961d4612c7dada5a4233fe8bcac3b436bacb67ad5cb3d80481",
+      "source_files_signature": "95c225296409ff610803e28a33c8f1738e7d67684ac56e4095d9b5f0d131854d",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l2-boss-1963-1feb5a5f",
+    "lecture_key": "W06L2",
+    "title": "Boss (1963)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 Boss (1963).pdf",
+    "source_paths": [
+      "Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 Boss (1963).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 Boss (1963).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L2 Eksistentiel personlighedspsykologi I (Funch)/W6L2 Boss (1963).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "f2273465cc0bc5961d4612c7dada5a4233fe8bcac3b436bacb67ad5cb3d80481",
+    "length_band": "medium",
+    "page_count": 11,
+    "estimated_token_count": 7150,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the philosophical and phenomenological foundation for existential personality psychology, drawing heavily on Martin Heidegger's ontology to redefine human existence against natural-scientific reductionism.",
+    "source_role": "Primary text introducing the Daseinsanalytic view of man, contrasting it with traditional psychoanalytic and natural-scientific approaches.",
+    "relation_to_lecture": "Likely serves as the core reading for the lecture on existential personality psychology, introducing students to the phenomenological method and Heideggerian concepts applied to psychology.",
+    "central_claims": [
+      {
+        "claim": "Natural science methods are inadequate for understanding human existence because they force phenomena into preconceived categories rather than letting them show themselves.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human existence (Dasein) is fundamentally an openness or 'lumination' that allows objects and other beings to appear and be understood in their meaning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human spatiality and temporality are not defined by mathematical measurements or clock time, but by existential closeness, care, and the unfolding of meaning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Dasein",
+        "definition": "The fundamental human existence characterized as a luminous realm or openness that allows things to appear and be understood.",
+        "role": "The foundational concept of existential psychology, replacing traditional notions of psyche or ego."
+      },
+      {
+        "term": "Being-in-the-world",
+        "definition": "An original awareness and primary understanding of being-ness and meaningful relationships, rather than a spatial containment.",
+        "role": "Overcomes the subject-object split in traditional psychology by showing man is always already engaged with the world."
+      },
+      {
+        "term": "Existentialia",
+        "definition": "The fundamental characteristics of human Dasein, as opposed to categories which apply only to objects.",
+        "role": "Provides the framework for analyzing human existence without reducing it to object-like properties."
+      },
+      {
+        "term": "Existential spatiality",
+        "definition": "Closeness or remoteness determined by existential significance and care, rather than measurable physical distance.",
+        "role": "Illustrates how human experience of space differs fundamentally from physical, mathematical space."
+      },
+      {
+        "term": "Original temporality",
+        "definition": "Time experienced as the unfolding of existence, caring, and meaning, rather than a sequence of indifferent nows on a clock.",
+        "role": "Explains human historicality and orientation toward the future, present, and past based on meaning."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Natural Science vs. Daseinsanalysis",
+        "summary": "Natural science relies on abstractions and causal explanations of objects, whereas Daseinsanalysis relies on phenomenological observation of human existence as it immediately presents itself.",
+        "stakes": "Determines whether psychology studies humans as calculable objects or as meaning-making beings."
+      },
+      {
+        "label": "Categories vs. Existentialia",
+        "summary": "Categories describe the properties of objects (things present-at-hand), while existentialia describe the fundamental characteristics of human Dasein.",
+        "stakes": "Prevents the reification of human beings into mere things or machines."
+      },
+      {
+        "label": "Mathematical Space vs. Existential Spatiality",
+        "summary": "Measurable distance in meters versus the closeness or remoteness of things based on their meaning and our concern for them.",
+        "stakes": "Highlights that human lived experience cannot be reduced to physical metrics."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Interpreting Being-in-the-world as a physical object contained within a physical space, like water in a glass.",
+      "Equating Dasein with traditional psychological concepts like ego, psyche, or consciousness.",
+      "Viewing Daseinsanalysis as unscientific; Boss argues it is actually more rigorously scientific because it stays true to the phenomena."
+    ],
+    "quote_targets": [
+      {
+        "target": "Nobody, perhaps, has yet been able to formulate the basic working principle appertaining to all natural sciences more poignantly than did Sigmund Freud",
+        "why": "Shows the contrast Boss sets up against Freudian psychoanalysis on page 30."
+      },
+      {
+        "target": "Man's primordial being-in-the-world is not an abstraction but always a concrete occurrence.",
+        "why": "Clarifies the concrete, lived nature of Heidegger's central concept on page 34."
+      },
+      {
+        "target": "If things, plants, animals, and fellow men did not enable man to relate to them, how would he be capable of being in the world in the mode of luminating understanding",
+        "why": "Illustrates the concept of Dasein as a lumination or clearing on page 42."
+      }
+    ],
+    "grounding_notes": [
+      "The text is heavily philosophical, directly translating Heideggerian concepts into a psychological framework.",
+      "Boss explicitly critiques Freudian psychoanalysis for its reliance on natural-scientific presuppositions."
+    ],
+    "warnings": [
+      "The text uses complex Heideggerian terminology which may be difficult to parse without philosophical background.",
+      "The OCR scan contains some artifacts and split words across pages."
+    ]
+  }
+}

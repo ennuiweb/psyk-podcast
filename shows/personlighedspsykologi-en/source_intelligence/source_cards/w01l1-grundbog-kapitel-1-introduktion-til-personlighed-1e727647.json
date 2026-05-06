@@ -1,0 +1,138 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-06T21:06:02Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+    ],
+    "dependency_hashes": {
+      "source_file": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+      "source_files_signature": "04b9b8a862a564ef1399a1cb5bdc0d0ee49cec4a264b732c90110672730d8d86",
+      "source_catalog": "f2837610ca1ec4dfc445bfbe0fec05b948829b746fa4a5d484b2b3e98cee8920",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+    "lecture_key": "W01L1",
+    "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "source_paths": [
+      "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Acts as a broad conceptual map. It introduces the overarching theoretical landscape of personality psychology, dividing it into main paradigms and establishing four key parameters for critical comparison.",
+    "source_role": "Introductory textbook chapter (Grundbog) providing the primary structural and conceptual framing for the entire course.",
+    "relation_to_lecture": "Provides the essential background reading for 'W1L1 Introforelæsning og nøglebegreber', defining the exact comparative dimensions (agency, determinism, essence/context, historicity) that form the course's analytic framework.",
+    "central_claims": [
+      {
+        "claim": "Personality psychology does not possess a unified definition of personality; rather, it is a fragmented field consisting of various theories with incompatible concepts and assumptions.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The theoretical landscape of personality psychology can be categorized into four main traditions: psychoanalysis, phenomenology, trait/cognitive theories, and sociocultural theories.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Different personality theories can be systematically compared across four key orientation points: essence vs. context, agency, determination, and historicity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Epistemological approaches to personality are directly tied to theoretical assumptions, ranging from objective questionnaires (trait theory) to projective tests (psychoanalysis) and phenomenological interviews.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Persona",
+        "definition": "The etymological root of personality, stemming from Etruscan/Greek, originally meaning a mask, social role, or character performed by an actor.",
+        "role": "Introduces the foundational dichotomy between an individual's inner self and outer social performance, which persists in modern theoretical debates."
+      },
+      {
+        "term": "Agency",
+        "definition": "The active, steering element or center in an individual from which actions are governed. Theories vary greatly in whether they attribute high, low, or no agency to the individual.",
+        "role": "Serves as one of the four core comparative dimensions (orienteringspunkter) for evaluating different personality theories in the course."
+      },
+      {
+        "term": "Determination",
+        "definition": "The question of what builds and controls personality, typically categorized into biological (genes/physiology), psychological (inner components like the unconscious), and social (family/culture) determination.",
+        "role": "Provides a framework for understanding causality and limits to free will within different theoretical paradigms."
+      },
+      {
+        "term": "Historicitet",
+        "definition": "The temporal dimension of personality development, divided into phylogenetic (evolution of the species), ontogenetic (the individual's life history), and sociogenetic (historical development of society).",
+        "role": "Highlights how different theories prioritize evolutionary biology, childhood experiences, or cultural shifts in shaping personality."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essens vs. Kontekst",
+        "summary": "The contrast between viewing personality as an internal, inherent set of traits or functions (essence) versus viewing it as something established purely through social, structured relations (context).",
+        "stakes": "This distinction fundamentally alters whether researchers look 'inside' the individual (e.g., biology, traits) or 'outside' at their social environment to understand their personality."
+      },
+      {
+        "label": "Naturvidenskabelig vs. Human/Samfundsvidenskabelig tilgang",
+        "summary": "The methodological divide between natural sciences (aiming to steer, predict, explain) and human/social sciences (aiming to understand, find meaning, conceptualize, and critique).",
+        "stakes": "Explains why trait theories rely on objective, quantitative measurements while phenomenology and sociocultural theories rely on qualitative, meaning-making, or critical methodologies."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming personality psychology has a single, universally agreed-upon definition of personality, rather than recognizing it as a highly fragmented field.",
+      "Confusing 'agency' with simplistic notions of 'free will', rather than understanding it as a complex theoretical construct about the active locus of control.",
+      "Believing that early natural scientific methods were fully sufficient for studying personality, ignoring the text's emphasis on the necessity of philosophical concepts to grasp complex human wholes."
+    ],
+    "quote_targets": [
+      {
+        "target": "Der er ikke enighed om, hvad personligheden er, eller om den overhovedet findes, og, hvis den findes, hvordan den så kan undersøges.",
+        "why": "Sets the foundational premise of the text and course: personality is a heavily contested construct."
+      },
+      {
+        "target": "Boks 1 Fire temaer, som viser væsentlige forskelle teorierne imellem (Essens vs. kontekst, Agency, Determination, Historicitet)",
+        "why": "Provides the core comparative framework that students will likely need to apply to theories throughout the semester."
+      },
+      {
+        "target": "Figur 1: Teoriernes placering i forhold til videnskaberne",
+        "why": "Visually maps the four main theoretical branches onto their respective scientific traditions, crucial for understanding methodological differences."
+      }
+    ],
+    "grounding_notes": [
+      "All claims and concepts are directly grounded in the provided PDF of 'Grundbog kapitel 1' by Køppe & Dammeyer.",
+      "Interpretations align with the specific course policy to treat Grundbog chapters as conceptual framing texts."
+    ],
+    "warnings": [
+      "The text introduces complex traditions (Psychoanalysis, Phenomenology, etc.) very briefly; detailed operationalizations and deep critiques of these specific paradigms are deferred to later chapters not included in this document."
+    ]
+  }
+}

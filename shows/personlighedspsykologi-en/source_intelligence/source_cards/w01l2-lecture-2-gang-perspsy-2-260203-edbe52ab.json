@@ -1,0 +1,145 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:43:15Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+    ],
+    "dependency_hashes": {
+      "source_file": "0e14b905130c23c71780529de81a9e24335b68bf11cf4fc60295a36ad1b1e38c",
+      "source_files_signature": "824daa6d68356a8ff7ccc3d6a1df5debd38aea8909d05b37f4b2142b9080badf",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+    "lecture_key": "W01L2",
+    "title": "2. gang PersPsy 2 260203",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/2. gang PersPsy_2_260203.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/2. gang PersPsy_2_260203.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/2. gang PersPsy_2_260203.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/2. gang PersPsy_2_260203.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "0e14b905130c23c71780529de81a9e24335b68bf11cf4fc60295a36ad1b1e38c",
+    "length_band": "long",
+    "page_count": 72,
+    "estimated_token_count": 46800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces the foundational methods and theoretical frameworks for assessing personality, acting as a methodological primer for the rest of the course.",
+    "source_role": "Primary lecture slide deck providing a broad overview of personality assessment methods, their strengths, limitations, and typical effect sizes.",
+    "relation_to_lecture": "Sets up the methodological basis (assessment approaches) for virtually all following lectures in the course.",
+    "central_claims": [
+      {
+        "claim": "In personality psychology, correlations between predictors and criteria typically range between |.15| and |.40|.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality can be conceptualized through three approaches: the person as an actor (behaving), an agent (striving), and an author (narrating).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "No single assessment method is perfect; collecting multiple types of data yields more reliable and valid information about a person.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Register data, such as employment or marital status, is tricky to use because it can both describe parts of one's personality and reflect the outcomes of one's personality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Error vs. Bias",
+        "definition": "Errors are random mistakes in assessment (e.g., forgetting to consider a specific behavior), whereas biases are systematic, non-appropriate tendencies (e.g., viewing oneself too favorably).",
+        "role": "Explains the necessity of scientific approaches to mitigate inaccuracies in personality assessment."
+      },
+      {
+        "term": "Trait-Reputation-Identity (TRI) Model",
+        "definition": "A multi-rater framework that disentangles self-reports (Identity) and observer reports (Reputation) from the underlying personality characteristic (Trait).",
+        "role": "Provides a structural understanding of how self and observer reports overlap and differ."
+      },
+      {
+        "term": "Picture Story Exercises",
+        "definition": "A thematic assessment approach where individuals describe what is happening in an ambiguous picture to reveal implicit motives, such as affiliation or achievement.",
+        "role": "Serves as a concrete example of implicit/thematic measures in personality assessment."
+      },
+      {
+        "term": "Register Data",
+        "definition": "Objective data concerning life events or facts, such as address, income, driver's license, or school education.",
+        "role": "Highlights a specific, non-reactive source of personality data that comes with unique interpretative challenges."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Scientific vs. Non-scientific assessments",
+        "summary": "Scientific approaches actively attempt to mitigate random errors and systematic biases, unlike non-scientific methods like astrology or palm reading.",
+        "stakes": "Determines the reliability and validity of the personality data being collected."
+      },
+      {
+        "label": "Self-report vs. Observer report",
+        "summary": "Data generated by the target individuals themselves versus data provided by informants (e.g., friends, family, or strangers).",
+        "stakes": "Different sources capture different facets of personality, highlighting the distinction between a person's identity and their reputation."
+      },
+      {
+        "label": "Personal-Source Data vs. External-Source Data",
+        "summary": "Information originating from the person about themselves and their interactions versus data from the environment about the person's environment.",
+        "stakes": "Clarifies that personality psychology studies not just the isolated individual, but also the surrounding systems and interactions."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that a correlation of .30 is 'low' or insignificant, when it is actually a typical and meaningful effect size in personality psychology.",
+      "Believing that there is 'one true' personality that can be perfectly captured if the right assessment method is used.",
+      "Thinking that register data (like marital status) is a direct measure of personality, rather than an outcome that might just reflect personality traits."
+    ],
+    "quote_targets": [
+      {
+        "target": "correlations between ”predictors” and ”criteria” are often around |.15| ≤ r ≤ |.40|",
+        "why": "Provides a crucial benchmark for evaluating effect sizes in personality research."
+      },
+      {
+        "target": "Both there is and there is not “one true” personality",
+        "why": "Highlights the complexity, situational dependency, and measurement challenges inherent in personality psychology."
+      },
+      {
+        "target": "The person as actor (“behaving”) ... agent (“striving”) ... author (“narrating”)",
+        "why": "A core conceptual triad for understanding the different layers and perspectives of personality."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference Phan et al. (2025) for foundational definitions and the alignment of data with inference aims.",
+      "The TRI model is explicitly grounded in McAbee & Connelly (2016).",
+      "Machine learning approaches are grounded in Matz et al. (2024) and Koutsoumpis (2025)."
+    ],
+    "warnings": [
+      "The slides contain several visual diagrams (e.g., TRI model, Machine Learning accuracy charts) whose full statistical details are not fully transcribed in the OCR.",
+      "Some interactive elements (e.g., 'generate as many original uses as possible') are classroom activities and lack full context in the slides alone."
+    ]
+  }
+}

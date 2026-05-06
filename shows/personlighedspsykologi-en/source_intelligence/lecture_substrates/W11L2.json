@@ -1,0 +1,173 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:34:40Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "w11l2-bruner-1999-7930abd8",
+      "w11l2-mcadams-and-pals-2006-b9675688",
+      "w11l2-raggatt-2002-d15129af",
+      "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "da490d0e7bd1a9a21c957fd664932991651341297ec9d5684f163583910c7c30",
+      "source_cards_signature": "afb153d7f5c9a064de51a85f91aae6d6406a4c965a5d5b64ab9123c38761649d",
+      "raw_sources_signature": "e435c8968588f237cb67e1164ff09fc65889f7da1d31f9d2ac73aa6b7087b79a"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W11L2",
+    "lecture_title": "Narrativitet, kultur og mening (Forelæsning 21, 2026-04-21)",
+    "sequence_index": 21
+  },
+  "analysis": {
+    "lecture_question": "How is personality constructed, maintained, and transformed through cultural narratives and meaning-making processes?",
+    "central_learning_problem": "Students must shift from viewing personality as a static, internal essence (such as decontextualized traits) to understanding it as a dynamic, relational, and culturally situated process. They need to grasp how biological predispositions for meaning-making interact with cultural narrative templates to form identity, and navigate the theoretical tension between viewing this narrative identity as a unified, integrative story versus a pluralistic collection of competing voices.",
+    "source_roles": [
+      {
+        "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+        "role": "framing",
+        "rationale": "Provides the broad historical and theoretical context, tracing the linguistic turn and social constructionism, and introduces key narrative theorists like Bruner, Polkinghorne, and White."
+      },
+      {
+        "source_id": "w11l2-bruner-1999-7930abd8",
+        "role": "anchor",
+        "rationale": "Establishes the foundational mechanism of narrative meaning-making, arguing that humans possess an innate, prelinguistic 'readiness for meaning' that drives language acquisition and social navigation."
+      },
+      {
+        "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+        "role": "anchor",
+        "rationale": "Offers an integrative framework that situates narrative identity alongside dispositional traits and characteristic adaptations, demonstrating how narrative addresses the 'whole person' within a cultural context."
+      },
+      {
+        "source_id": "w11l2-raggatt-2002-d15129af",
+        "role": "application",
+        "rationale": "Demonstrates an empirical and clinical application of narrative theory by mapping the 'polypsychic' or plural self through competing narrative voices using the Personality Web protocol."
+      },
+      {
+        "source_id": "w11l2-seminar-12-narrativ-psykologi-a592ee2f",
+        "role": "supporting",
+        "rationale": "Reinforces the distinction between social constructionism and constructivism, and guides the application of narrative concepts to practical examples and comparative exercises."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w11l2-mcadams-and-pals-2006-b9675688",
+          "w11l2-raggatt-2002-d15129af"
+        ],
+        "relation": "McAdams & Pals emphasize the 'integrative life story' that provides unity and purpose to the modern adult, whereas Raggatt contrasts this by emphasizing a 'polypsychic' self composed of multiple, often conflicting narrative voices.",
+        "learning_stakes": "Highlights a core theoretical tension within narrative psychology regarding whether psychological health and identity are best understood through the achievement of narrative unity or the successful navigation of internal multiplicity."
+      },
+      {
+        "source_ids": [
+          "w11l2-bruner-1999-7930abd8",
+          "w11l2-mcadams-and-pals-2006-b9675688"
+        ],
+        "relation": "Bruner focuses on the fundamental, biologically driven need for narrative meaning-making in early development, while McAdams & Pals integrate this narrative drive into a broader, adult personality framework that still acknowledges the biological reality of traits.",
+        "learning_stakes": "Helps students see that narrative psychology does not have to completely reject biological or trait-based approaches; narrative meaning-making can be integrated as the highest, most culturally situated level of personality."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Narrativ meningsskabelse (Narrative meaning-making)",
+        "explanation": "The active process of structuring experiences, actions, and events into coherent stories to understand oneself and the world, serving as the foundational mechanism for identity formation.",
+        "source_ids": [
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+          "w11l2-bruner-1999-7930abd8",
+          "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+        ]
+      },
+      {
+        "concept": "Meaning readiness",
+        "explanation": "Bruner's concept of an innate, prelinguistic predisposition in humans to construe the social world narratively, which drives the acquisition of language and cultural norms.",
+        "source_ids": [
+          "w11l2-bruner-1999-7930abd8",
+          "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+        ]
+      },
+      {
+        "concept": "Polypsychism / Dialogical self",
+        "explanation": "The concept that human mental life is characterized by a multiplicity of subjectivities or dominant narrative voices that may conflict or cooperate, rather than a single, coherent ego.",
+        "source_ids": [
+          "w11l2-raggatt-2002-d15129af",
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a"
+        ]
+      },
+      {
+        "concept": "Integrative life narratives",
+        "explanation": "Internalized and evolving life stories that individuals construct to reconstruct the past and imagine the future, providing their lives with unity, purpose, and meaning within a cultural context.",
+        "source_ids": [
+          "w11l2-mcadams-and-pals-2006-b9675688"
+        ]
+      },
+      {
+        "concept": "Socialkonstruktionisme (Social constructionism)",
+        "explanation": "A theoretical perspective emphasizing that the social world and the self consist of socially created meanings, where language is constructive rather than just descriptive, rejecting traditional individualism.",
+        "source_ids": [
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+          "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Integrative Self vs. Plural/Decentered Self",
+        "stakes": "Determines the clinical and theoretical goal of narrative psychology: whether to help individuals forge a single, coherent life story (McAdams) or to help them map and manage a polyphony of distinct, culturally positioned voices (Raggatt).",
+        "source_ids": [
+          "w11l2-mcadams-and-pals-2006-b9675688",
+          "w11l2-raggatt-2002-d15129af",
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a"
+        ]
+      },
+      {
+        "tension": "Determination vs. Disponering (Disposition)",
+        "stakes": "Resolves the problem of agency in social constructionism. Cultural narratives do not strictly determine human action (stripping free will), but rather 'dispose' or constrain it by providing specific resources for meaning-making.",
+        "source_ids": [
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a"
+        ]
+      },
+      {
+        "tension": "Socialkonstruktionisme vs. Socialkonstruktivisme",
+        "stakes": "Crucial for understanding the anti-individualistic stance of narrative theories. Constructionism locates reality-making in social relations and dialogue, whereas constructivism locates it in internal cognitive processes.",
+        "source_ids": [
+          "w11l2-seminar-12-narrativ-psykologi-a592ee2f"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Confusing social constructionism with social constructivism by believing that the construction of meaning happens internally in the mind rather than relationally.",
+      "Assuming that narrative psychology implies people can freely invent any personality they want, ignoring the constraining role of cultural, material, and historical resources.",
+      "Conflating the 'plural self' or 'polypsychism' with Dissociative Identity Disorder, rather than understanding it as a normal feature of everyday mental life and social positioning.",
+      "Thinking that McAdams' 'New Big Five' principles are synonymous with the Big Five trait model, rather than a broader 3-level framework where traits are only the first level.",
+      "Believing narratives are primarily objective accounts of past events, rather than rhetorical tools used for justification, social negotiation, and identity construction."
+    ],
+    "must_carry_ideas": [
+      "Personality is not merely a fixed internal essence; it is actively and continuously constructed through narrative meaning-making.",
+      "Human beings possess a biological readiness for meaning that is realized through the appropriation of cultural narrative templates.",
+      "The self can be understood as a dynamic, relationally constructed narrative, which can be theorized as either an integrative story or a polyphony of competing voices.",
+      "Cultural narratives provide the menu of themes, plots, and characters that individuals use to forge their identities, thereby linking the individual deeply to their cultural context."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The seminar slides reference group work based on Bank (2014), which is not provided as a standalone primary source, though Mads Bank is the author of the Grundbog chapter.",
+      "McAdams & Pals (2006) is a theoretical synthesis proposing a new framework; students should be careful not to read it as a primary empirical study."
+    ]
+  }
+}

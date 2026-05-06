@@ -1,0 +1,149 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:29:24Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l2-may-1966-d8406a09",
+      "w06l2-boss-1963-1feb5a5f",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "a8041b7b15f4f01345d1f7276d4642a4c9e210d4663a261cedd358e4defdfbe4",
+      "source_cards_signature": "f280f5211acb14016fb9a62f8501abd91f19eb259e7b7d794f835608868bcb7d",
+      "raw_sources_signature": "bad9a6799e285979a13407445ded385d78683b4e0abd96b891823ff89940bcad"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W06L2",
+    "lecture_title": "Eksistentiel personlighedspsykologi I (Funch) (Forelæsning 12, 2026-03-10)",
+    "sequence_index": 12
+  },
+  "analysis": {
+    "lecture_question": "How does existential psychology understand personality, suffering, and freedom compared to traditional natural-scientific and psychoanalytic approaches?",
+    "central_learning_problem": "Students must shift from viewing personality as a collection of static traits or intrapsychic mechanisms (essences) to understanding it as a dynamic, lived 'being-in-the-world' (existence). This requires grasping complex philosophical concepts (ontology, Dasein, existentialia) and seeing how they directly inform clinical practice and the interpretation of psychological suffering as constricted possibilities of being.",
+    "source_roles": [
+      {
+        "source_id": "w06l2-may-1966-d8406a09",
+        "role": "anchor",
+        "rationale": "Provides the historical and philosophical foundation of the existential movement in psychology, contrasting its ontological approach with orthodox psychoanalysis and behaviorism."
+      },
+      {
+        "source_id": "w06l2-boss-1963-1feb5a5f",
+        "role": "framing",
+        "rationale": "Introduces the Daseinsanalytic view, applying Heideggerian phenomenology to psychology to redefine human existence against natural-scientific reductionism."
+      },
+      {
+        "source_id": "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+        "role": "application",
+        "rationale": "Operationalizes the theoretical readings through discussion questions, clarifying the distinction between essence and existence, and applying it to the course's orientation points."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-boss-1963-1feb5a5f"
+        ],
+        "relation": "May provides the broad historical and cultural context for why existential psychology emerged, while Boss extends this by detailing the specific phenomenological and ontological method (Daseinsanalysis) used to study it.",
+        "learning_stakes": "Shows students both the 'why' (cultural crisis, fragmentation) and the 'how' (phenomenological observation, existentialia) of the existential critique of traditional psychology."
+      },
+      {
+        "source_ids": [
+          "w06l2-boss-1963-1feb5a5f",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ],
+        "relation": "Boss introduces complex Heideggerian ontology, which the seminar slides distill into accessible, course-relevant distinctions (existence vs. essence, lived body vs. medical body).",
+        "learning_stakes": "Bridges dense philosophical theory with concrete personality psychology frameworks, ensuring students can apply the concepts to the course's specific orientation points."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Dasein / Being-in-the-world",
+        "explanation": "The fundamental human existence characterized as an openness or 'lumination' that allows things to appear and be understood. It replaces traditional notions of a contained psyche or ego, emphasizing that humans are always already engaged with the world.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-boss-1963-1feb5a5f"
+        ]
+      },
+      {
+        "concept": "Existence vs. Essence",
+        "explanation": "The principle that existence (the concrete, particular reality of being) precedes essence (abstract, universal characteristics). In personality psychology, this means rejecting the idea that personality is determined by static, inherent traits from birth.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ]
+      },
+      {
+        "concept": "Existential Anxiety (Dread)",
+        "explanation": "The realization that our activities and the world lack an ultimate grounding and could easily be otherwise. It is understood as a structural feature of human freedom and responsibility, not merely a clinical pathology.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ]
+      },
+      {
+        "concept": "Truth-as-relationship",
+        "explanation": "Kierkegaard's formulation that truth is not merely an objective fact, but depends on the individual's subjective relationship, passion, and commitment to it. This highlights the necessity of active involvement in the therapeutic process.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09"
+        ]
+      },
+      {
+        "concept": "Kropssubjekt (Lived body)",
+        "explanation": "The body experienced from within as an existential starting point for being, contrasting with the medical or somatic body viewed from the outside as a physiological object.",
+        "source_ids": [
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Natural Science vs. Daseinsanalysis",
+        "stakes": "Determines whether psychology studies humans as calculable objects governed by abstract laws and essences, or as meaning-making beings whose lived existence must be observed phenomenologically.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-boss-1963-1feb5a5f"
+        ]
+      },
+      {
+        "tension": "Technical Reason vs. Ecstatic Reason",
+        "stakes": "Highlights the risk of fragmenting the human being. Technical reason reduces humans to isolated problem-solving and mechanics, while ecstatic reason includes intuition and the capacity to transcend the immediate situation to see the whole person.",
+        "source_ids": [
+          "w06l2-may-1966-d8406a09"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating existentialism with anti-science or anti-intellectualism, rather than an attempt to make science more empirical by including the reality of the living person.",
+      "Confusing Dasein or Being-in-the-world with a physical object contained within a physical space, rather than an original awareness and relational openness.",
+      "Misunderstanding existential anxiety as merely a clinical diagnosis or symptom to be cured, rather than an ontological condition of freedom.",
+      "Believing existentialism acknowledges a predetermined personality core (essence) that dictates behavior."
+    ],
+    "must_carry_ideas": [
+      "Personality is not a static set of traits but a dynamic process of becoming and relating to the world.",
+      "Psychological suffering and symptoms can be understood as restrictions or constrictions in a person's modes of being-in-the-world.",
+      "The distinction between existence and essence is fundamental to existential personality psychology's rejection of deterministic models."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The readings (May, Boss) use dense philosophical terminology (e.g., Heideggerian ontology, Dasein, existentialia) which requires careful unpacking for students without a philosophy background.",
+      "The seminar slides refer to texts (Cooper, Køppe & Dammeyer) that are not included in this specific lecture bundle, meaning some context for the seminar exercises is external."
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:12:51Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+    ],
+    "dependency_hashes": {
+      "source_file": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
+      "source_files_signature": "e4974c7f4dece16e2f14da2685c4e9829afbe0e71e60352089f3ea9bbc96c740",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+    "lecture_key": "W07L1",
+    "title": "13. Eksistens II. 2026",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/13. Eksistens II. 2026.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/13. Eksistens II. 2026.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/13. Eksistens II. 2026.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/13. Eksistens II. 2026.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "a013d6baec5dadb7e135d48417522d2aa8b82b28466f02c72363703464b5b892",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Præsenterer eksistensfilosofiens hovedtænkere (Kierkegaard, Nietzsche, Heidegger, Sartre) som et ontologisk fundament for at forstå personligheden ud fra levet eksistens, frihed og meningsskabelse frem for statiske træk.",
+    "source_role": "Forelæsningsslides der strukturerer gennemgangen af eksistentiel psykologi og bygger bro mellem filosofiske grundbegreber og psykologiske problemstillinger.",
+    "relation_to_lecture": "Dette er selve præsentationsmaterialet til forelæsning 13 om Eksistens II.",
+    "central_claims": [
+      {
+        "claim": "Eksistensfilosofien giver eksistens primat over essens, hvilket betyder et opgør med universelle systemer til fordel for det levede liv og det personlige valg.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Heidegger afviser det kartesianske subjektbegreb og argumenterer for, at mennesket (Dasein) er konstitueret af sin væren-i-verden, før det får et selv eller en personlighed.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Ifølge Sartre er egoet ikke en forudsætning for oplevelsen, men et flygtigt og skrøbeligt objekt, der skabes og konstitueres af den refleksive bevidsthed.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Eksistenstænkningens fundamentale begreber som angst, intet og tidslighed udvider grundlaget for at analysere psykologiske problemstillinger som sorg, tab og meningsløshed.",
+        "grounding": "slide-framed",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Eksistens",
+        "definition": "Livets grundlæggende betingelser og hændemåder, som adskiller sig fra blot at have et empirisk indhold.",
+        "role": "Fungerer som det organiserende begreb for hele forelæsningen og tænkningen."
+      },
+      {
+        "term": "Dasein (Tilstedeværen)",
+        "definition": "Heideggers begreb for menneskets væren, hvis væsen ligger i dets eksistens og som er karakteriseret ved at være i verden.",
+        "role": "Erstatter det traditionelle, isolerede subjektbegreb i psykologien."
+      },
+      {
+        "term": "Angst",
+        "definition": "Hos Kierkegaard knyttet til frihedens mulighed; hos Heidegger en grundstemning, der bringer mennesket foran 'Intet'.",
+        "role": "Viser hvordan ontologiske grundvilkår (frihed, intethed) påvirker menneskets psykologiske tilstand."
+      },
+      {
+        "term": "Tilblivelse",
+        "definition": "Nietzsches begreb for den fortsatte skabelse og vilje til at sætte mening og værdi, frem for at finde en statisk sandhed.",
+        "role": "Forklarer menneskets dynamiske natur og meningsskabelse efter tabet af et fast verdensbillede (Guds død)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essens vs. Eksistens",
+        "summary": "Essens er jagten på det evige og universelle (Hegel/Platon), mens eksistens er det levede, konkrete dagligliv og det personlige valg (Kierkegaard).",
+        "stakes": "Definerer bruddet med systemtænkningen og grundlægger eksistentialismens fokus på individet."
+      },
+      {
+        "label": "Væren-i-sig vs. Væren-for-sig",
+        "summary": "Sartres dualitet mellem tingenes rå, uforanderlige eksistens (i-sig) og menneskets bevidsthed, der bestemmer sig selv gennem handling (for-sig).",
+        "stakes": "Understreger menneskets absolutte frihed og performativitet i skabelsen af sig selv."
+      },
+      {
+        "label": "Subjekt vs. Dasein",
+        "summary": "Forskellen mellem Descartes' tilbagetrukne bevidsthed (subjektet) og Heideggers menneske, der allerede er kastet ind i og konstitueret af verden (Dasein).",
+        "stakes": "Nødvendiggør en ny måde at bedrive psykologi på, hvor mennesket ikke kan isoleres fra sin omverden."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At 'angst' i eksistentiel forstand blot er en klinisk diagnose, frem for et grundlæggende ontologisk vilkår knyttet til frihed og mødet med 'Intet'.",
+      "At Sartres 'ego' er en stabil, indre kerne i mennesket, når det tværtimod beskrives som et flygtigt og skrøbeligt objekt skabt af refleksionen.",
+      "At Nietzsches 'Guds død' udelukkende handler om ateisme, frem for et bredere tab af et fast verdensbillede og objektive meningshorisonter."
+    ],
+    "quote_targets": [
+      {
+        "target": "Hesten er; men den eksisterer ikke",
+        "why": "Illustrerer Heideggers specifikke eksistentielle brug af eksistensbegrebet, forbeholdt mennesket."
+      },
+      {
+        "target": "Ego’et er et objekt, der er grebet og tillige konstitueret af den refleksive bevidsthed",
+        "why": "Central for at forstå Sartres opgør med det indre, stabile selv og egoets skrøbelighed."
+      },
+      {
+        "target": "Tilstedeværens [Dasein] »væsen« ligger i dens eksistens",
+        "why": "Heideggers kerneformulering af menneskets natur og opgøret med essens-tænkningen."
+      }
+    ],
+    "grounding_notes": [
+      "Slidene er tungt baseret på direkte citater fra primærlitteratur (Kierkegaard, Nietzsche, Heidegger, Sartre).",
+      "Den direkte kobling til moderne personlighedspsykologi fremgår primært af de afsluttende konklusionsslides."
+    ],
+    "warnings": [
+      "Slidene forudsætter kendskab til de filosofiske tekster; den konkrete kliniske og psykologiske anvendelse er kun kort skitseret til sidst."
+    ]
+  }
+}

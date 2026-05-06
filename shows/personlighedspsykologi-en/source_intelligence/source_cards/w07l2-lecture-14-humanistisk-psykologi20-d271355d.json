@@ -1,0 +1,134 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:24:01Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-lecture-14-humanistisk-psykologi20-d271355d"
+    ],
+    "dependency_hashes": {
+      "source_file": "7c826fb7b6ce5e3c235a0813d53d1517668eac7bf4aeb703c040e289d06879a4",
+      "source_files_signature": "cd5826621b59968400652077d98e7a5d1c929c0a8342b8715f959bac5f14535e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+    "lecture_key": "W07L2",
+    "title": "14. Humanistisk psykologi20",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/14. Humanistisk psykologi20.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/14. Humanistisk psykologi20.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/14. Humanistisk psykologi20.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/14. Humanistisk psykologi20.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "7c826fb7b6ce5e3c235a0813d53d1517668eac7bf4aeb703c040e289d06879a4",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Præsenterer humanistisk psykologi som et paradigme, der fokuserer på 1. personsperspektivet, anti-reduktionisme, selvrealisering og mennesket som et mål i sig selv med iboende potentialer.",
+    "source_role": "Forelæsningsslides der giver et overblik over humanistisk psykologis grundantagelser, Maslows og Rogers' specifikke teorier, samt kritikpunkter og terapeutiske anvendelser.",
+    "relation_to_lecture": "Dette er hovedpræsentationen til forelæsning 14 om Humanistisk Psykologi.",
+    "central_claims": [
+      {
+        "claim": "Humanistisk psykologi opstod som en 'third force' og et alternativ til tidligere teorier, idet den kritiserer opfattelsen af mennesket som et objekt eller som deterministisk styret.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Motivation kan ikke udelukkende forklares som spændingsreduktion og homeostase (mangeltilstande); den må også inkludere et iboende behov for vækst, selvudvikling og kreativitet.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Maslows behovspyramide kritiseres for at være etnocentrisk og for at mangle empirisk evidens for sit specifikke hierarki, selvom distinktionen mellem mangel- og vækstbehov bekræftes.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Rogeriansk psykoterapi bygger på tre kernebetingelser fra terapeuten: ubetinget positiv anerkendelse, empatisk forståelse og kongruens.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Selv-aktualisering",
+        "definition": "Den vedvarende aktualisering af potentialer, kapaciteter og talenter som en opfyldelse af en mission eller et kald, samt en dybere accept af personens egen indre natur.",
+        "role": "Fungerer som det ultimative mål for menneskelig udvikling i humanistisk psykologi, i modsætning til blot at opnå homeostase."
+      },
+      {
+        "term": "Third force",
+        "definition": "Det tredje alternativ til forståelsen af mennesket i psykologien, repræsenteret ved bl.a. Maslow, Rogers og May.",
+        "role": "Positionerer humanistisk psykologi historisk som et opgør med reduktionistiske og deterministiske (underforstået behavioristiske og psykoanalytiske) traditioner."
+      },
+      {
+        "term": "Selvet (Rogers)",
+        "definition": "Individets samlede perceptioner af sin organisme, sine erfaringer og relationen mellem disse perceptioner og omverdenen.",
+        "role": "Udgør kernen i Rogers' personlighedsteori og er central for at forstå kongruens og inkongruens i terapi."
+      },
+      {
+        "term": "Rogerianske kernebetingelser",
+        "definition": "Terapeutens ubetinget positive anerkendelse, empatiske forståelse og kongruens i relationen til klienten.",
+        "role": "Definerer de nødvendige terapeutiske rammer for, at klienten frit kan udtrykke sig og derved mindske irrationelle aspekter gennem 'forståelsens helende kraft'."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Mangeltilstand vs. Vækstbehov",
+        "summary": "Forskellen mellem behov drevet af homeostase, forsvar og spændingsreduktion (mangeltilstand) og behov drevet af udvikling, kreativitet og selvaktualisering (vækst).",
+        "stakes": "Afgørende for at forklare, hvorfor mennesker søger komplekse stimuli og udvikling, selv når deres basale overlevelsesbehov er dækket."
+      },
+      {
+        "label": "Kongruens vs. Inkongruens",
+        "summary": "Overensstemmelsen (eller manglen på samme) mellem det ideelle selv, det reelle selv og selvet som det aktuelt opfattes.",
+        "stakes": "Central for Rogers' forståelse af psykologisk trivsel og målet med humanistisk psykoterapi."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At Maslows behovspyramide er en universelt og empirisk bevist lovmæssighed (sliden fremhæver Wahba og Brigdewell's kritik af det manglende empiriske belæg for selve hierarkiet).",
+      "At humanistisk psykologi afviser biologiske behov (den anerkender fysiologi som fundament, men afviser at motivation *kun* er behovsreduktion)."
+    ],
+    "quote_targets": [
+      {
+        "target": "\"ongoing actualization of potentials, capacities and talents, as fulfillment of mission...\"",
+        "why": "Dette er Maslows egen centrale definition af selv-aktualisering (citeret fra s. 25 i en uspecificeret grundtekst)."
+      },
+      {
+        "target": "\"[T]he self includes all of the individual’s perceptions of his organism, of his experience...\"",
+        "why": "Dette er Rogers' formelle definition af selvet (citeret fra s. 16 i en uspecificeret grundtekst), som er fundamental for hans personlighedsteori."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden refererer til specifikke sidetal (f.eks. s. 16, p. 25) og forfattere (Nietzsche citeret i May, Wahba og Brigdewell 1979, Elliott og Freire 2009), som sandsynligvis stammer fra kursets pensumlitteratur.",
+      "Begrebet 'Third force' nævnes, men de to første 'forces' (psykoanalyse og behaviorisme) er kun implicit til stede som de 'gamle versjoner'."
+    ],
+    "warnings": [
+      "Sliden indeholder direkte citater med sidetal (s. 16, p. 25), men den fulde bibliografiske reference for disse specifikke sidetal fremgår ikke af selve præsentationen.",
+      "Flere punkter er stikordsbaserede og kræver forelæserens uddybning for at forstå den fulde kontekst (f.eks. 'Giorgis dilemmaer')."
+    ]
+  }
+}

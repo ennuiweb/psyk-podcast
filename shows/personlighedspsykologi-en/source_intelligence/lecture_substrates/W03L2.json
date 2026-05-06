@@ -1,0 +1,174 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:04:08Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "w03l2-bach-and-simonsen-2023-d58362ff",
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "c032a50e495ac35c95bc7da93e77d4559bd307f52feadca082b30cfd22cd73f8",
+      "source_cards_signature": "8574d8928f182d1a71e8f14bae687e2b36d3074c89bbe10ffca9dfb01dea0cae",
+      "raw_sources_signature": "f72a9dfeeb46da9f417851210d482d7acd48a9248edd9160d51403c30240d394"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W03L2",
+    "lecture_title": "Personlighedsfunktion og forstyrrelse (Forelæsning 6, 2026-02-17)",
+    "sequence_index": 6
+  },
+  "analysis": {
+    "lecture_question": "How do modern dimensional models conceptualize and measure the core severity and stylistic expression of personality disorders?",
+    "central_learning_problem": "Students must transition from thinking of personality disorders as discrete, categorical medical diseases to understanding them dimensionally. The central challenge is grasping the two-step diagnostic logic: first, identifying the core severity of personality dysfunction through impairments in self and interpersonal capacities (the 'how much'), and second, describing the specific phenotypic expression through maladaptive trait domains (the 'what kind'). Students often conflate these two or confuse core intrapsychic dysfunction with general psychosocial disability.",
+    "source_roles": [
+      {
+        "source_id": "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+        "role": "framing",
+        "rationale": "Introduces the paradigm shift from a medical disease model to a psychological model of personality functioning, establishing the 'how nuts vs. what kind of nuts' heuristic."
+      },
+      {
+        "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+        "role": "anchor",
+        "rationale": "Provides the definitive clinical operationalization of the ICD-11 framework, detailing the specific capacities of self and interpersonal functioning and the five trait domains."
+      },
+      {
+        "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+        "role": "supporting",
+        "rationale": "Offers a deep theoretical and developmental defense of the Level of Personality Functioning (LPF) construct, distinguishing it from traits and general disability."
+      },
+      {
+        "source_id": "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5",
+        "role": "caveat",
+        "rationale": "Warns against biological reductionism and essentialism, reminding students that personality stability and change rely on complex socioecological networks, not just genetics."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff"
+        ],
+        "relation": "Sharp & Wall provide the theoretical and developmental justification for the DSM-5 AMPD Criterion A, while Bach & Simonsen provide the practical clinical application of the highly similar ICD-11 severity model.",
+        "learning_stakes": "Demonstrates that the shift towards dimensional severity based on self/interpersonal functioning is a robust, cross-nosological consensus (DSM and ICD) grounded in both theory and clinical utility."
+      },
+      {
+        "source_ids": [
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+          "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+        ],
+        "relation": "The lecture focuses on clinical dysfunction and intrapsychic models, while the seminar slides critique biological determinism of traits.",
+        "learning_stakes": "Prevents students from assuming that severe personality dysfunction is simply a hardwired genetic destiny, emphasizing the psychological and socioecological dimensions of personhood."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Level of Personality Functioning (LPF) / Personlighedsfunktion",
+        "explanation": "The dimensional severity of personality pathology, defined by impairments in self and interpersonal functioning, serving as the core common feature of all personality disorders.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff",
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      },
+      {
+        "concept": "Self-functioning (Selv-funktion)",
+        "explanation": "The intrapsychic capacity to maintain a stable identity, regulate self-worth, appraise oneself accurately, and pursue coherent goals.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff",
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      },
+      {
+        "concept": "Interpersonal functioning (Interpersonel funktion)",
+        "explanation": "The capacity for empathy, mentalization, maintaining mutually satisfying intimate relationships, and managing conflicts.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff",
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      },
+      {
+        "concept": "Trait domains (Trækdomæner / Criterion B)",
+        "explanation": "The specific stylistic dimensions (e.g., negative affectivity, detachment, antagonism) that describe the unique phenotypic expression of a person's dysfunction.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff"
+        ]
+      },
+      {
+        "concept": "Mentalization",
+        "explanation": "The ability to understand and reflect upon the mental states (intentions, feelings, thoughts) of oneself and others, which is often compromised in personality disorders.",
+        "source_ids": [
+          "w03l2-bach-and-simonsen-2023-d58362ff",
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Severity vs. Style ('How nuts' vs 'What kind of nuts')",
+        "stakes": "Crucial for understanding the two-step diagnostic process in modern dimensional models (ICD-11 and AMPD) and avoiding the conflation of traits with pathology.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff",
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      },
+      {
+        "tension": "Disease vs. Disability",
+        "stakes": "Justifies why personality disorder criteria must focus on self and interpersonal functioning rather than just general life impairment.",
+        "source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff"
+        ]
+      },
+      {
+        "tension": "Medical Model vs. Psychological Model",
+        "stakes": "Changes the clinical approach from treating a 'disease' to strengthening ego-functions and the patient's capacity to navigate life as a person.",
+        "source_ids": [
+          "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that personality traits (Criterion B) and personality functioning (Criterion A) measure the same thing, missing that traits are stylistic while functioning is about core severity.",
+      "Confusing the ICD-11 'Borderline pattern' with a traditional standalone categorical diagnosis, rather than recognizing it as a specific trait specifier/qualifier.",
+      "Believing that personality disorders are just extreme versions of normal traits, without recognizing the necessary failure in self and interpersonal capacities.",
+      "Equating biological explanations of personality with deterministic, unchangeable truths, ignoring socioecological and developmental factors."
+    ],
+    "must_carry_ideas": [
+      "The transition from categorical to dimensional diagnostic models (ICD-11 and DSM-5 AMPD) is based on assessing the severity of self and interpersonal functioning.",
+      "Personality pathology is fundamentally an impairment in what it means to be a person, specifically the intrapsychic capacities for identity, self-direction, empathy, and intimacy.",
+      "A two-step diagnostic logic is now standard: first determine the presence and severity of personality dysfunction, then describe its stylistic expression using trait domains."
+    ],
+    "missing_sources": [
+      {
+        "source_id": "Lu et al. (2023)",
+        "impact": "The seminar slides heavily reference this paper for the socioecological model of personality, but without the text, the specific mechanisms (like epigenetics) linking culture, environment, and genes cannot be fully detailed."
+      }
+    ],
+    "warnings": [
+      "The seminar slides (w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5) belong to the previous week's topic (Trækpsykologi II) and focus on behavioral genetics, which may feel disconnected from the clinical focus of the main lecture if the instructor does not explicitly bridge the nature/nurture debate with personality pathology.",
+      "The readings contain dense clinical and diagnostic terminology (ICD-11, DSM-5 AMPD, PID-5) that requires careful unpacking to ensure students grasp the underlying psychological concepts rather than just memorizing acronyms."
+    ]
+  }
+}

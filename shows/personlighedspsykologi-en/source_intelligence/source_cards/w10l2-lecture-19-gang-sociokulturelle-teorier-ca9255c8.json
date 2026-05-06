@@ -1,0 +1,133 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:08:12Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8"
+    ],
+    "dependency_hashes": {
+      "source_file": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
+      "source_files_signature": "29b5ff19138b678fa93671a9b6c45a5a57eba711dd6a7cc7ce073209f2d7ccd0",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+    "lecture_key": "W10L2",
+    "title": "19. gang Sociokulturelle teorier",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/19. Sociokulturelle teorier.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/19. Sociokulturelle teorier.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/19. Sociokulturelle teorier.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/19. Sociokulturelle teorier.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "bccc87ea43e45cb288f4e64dc5b43e405ced665992be14541026cbb2a6dfcdab",
+    "length_band": "long",
+    "page_count": 35,
+    "estimated_token_count": 22750,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Foucault's and Nietzsche's theories are utilized to deconstruct the traditional psychological concept of an essential personality, reframing it as a historical construct shaped by discourse, power, and practices of the self.",
+    "source_role": "Lecture slides that structure Foucault's work into three chronological axes (Knowledge, Power, Subjectivation) to present a sociocultural critique of personality psychology.",
+    "relation_to_lecture": "This document constitutes the primary visual and structural framing for the 19th lecture, guiding the progression from Nietzsche's 'death of God' to Foucault's three challenges to psychology.",
+    "central_claims": [
+      {
+        "claim": "The concept of 'man' is a recent historical invention without essential coherence, which challenges the foundational assumptions of psychology.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Power is not a top-down system of domination, but rather a multiplicity of immanent force relations that shape and constitute the subject.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Subjectivity is not an innate, self-contained personality, but is historically constituted through practices of the self ('selvpraksis').",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Diskurs",
+        "definition": "Practices that systematically form the objects of which they speak; they are more than just signs or language.",
+        "role": "Explains how knowledge and scientific objects (like 'man' or 'personality') are historically constructed rather than objectively discovered."
+      },
+      {
+        "term": "Magt (Power)",
+        "definition": "A multiplicity of force relations immanent in the sphere in which they operate, rather than a centralized state sovereignty or global domination.",
+        "role": "Shifts the understanding of how individuals are controlled and shaped, moving away from oppression to productive, disciplinary forces."
+      },
+      {
+        "term": "Subjektivering",
+        "definition": "The historical constitution of the subject through practices of power, games of truth, and practices of the self.",
+        "role": "Provides an alternative to essentialist views of personality, showing how individuals actively and historically form themselves as subjects."
+      },
+      {
+        "term": "Genealogi",
+        "definition": "A method of historical critique (derived from Nietzsche) that investigates the conditions and circumstances under which values and ideals are fabricated.",
+        "role": "Serves as the methodological foundation for Foucault's re-evaluation of contemporary concepts, including psychological truths."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Klassisk episteme vs. Moderne tænkning",
+        "summary": "The classical period did not isolate 'man' as a specific domain of knowledge, whereas modern thinking invented 'man' as a speaking, working being with a history.",
+        "stakes": "Highlights that the human sciences (including psychology) are historically contingent and relatively new, not universal."
+      },
+      {
+        "label": "Pinestraf vs. Disciplin",
+        "summary": "The historical shift from punishing the body through public spectacle and destruction to disciplining the 'soul' through hidden rehabilitation, schedules, and docile bodies.",
+        "stakes": "Illustrates how power transformed to become more pervasive and focused on shaping behavior and capacities rather than merely extracting vengeance."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Foucault denies the existence of the subject entirely, whereas he actually focuses on how the subject is historically constituted.",
+      "Equating Foucault's concept of power solely with state oppression or top-down domination, ignoring its immanent and productive nature.",
+      "Believing that 'man' has always been the natural object of scientific inquiry, missing the claim that 'man' is a recent 19th-century invention."
+    ],
+    "quote_targets": [
+      {
+        "target": "Mennesket er en nylig opfindelse, et blot begreb, som ikke har sin egen essentielle kohærens",
+        "why": "Summarizes the core challenge to psychology from Foucault's knowledge axis."
+      },
+      {
+        "target": "Subjektivitet er altid selvpraksis, aldrig selvberoende personlighed",
+        "why": "Directly contrasts Foucault's view of the subject with traditional personality psychology."
+      },
+      {
+        "target": "Den analyse, der foretages ud fra magtbegreber, bør ikke forudsætte oprindeligt givne størrelser som statens suverænitet",
+        "why": "Defines Foucault's specific, decentralized concept of power."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily quote primary texts from Nietzsche (e.g., Den muntre videnskab) and Foucault (e.g., Ordene og tingene, Viljen til viden).",
+      "The lecture explicitly organizes Foucault's authorship into three chronological axes: 1960s (Viden), 1970s (Magt), and 1980s (Subjektivering)."
+    ],
+    "warnings": [
+      "The slides rely heavily on dense, isolated philosophical quotes which likely require the accompanying oral lecture for full contextual understanding."
+    ]
+  }
+}

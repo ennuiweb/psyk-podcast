@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:46:34Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l2-bleidorn-et-al-2022-25c2d2de"
+    ],
+    "dependency_hashes": {
+      "source_file": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
+      "source_files_signature": "2fe7aec79efd45bf1f57b921498574d641a395206f7c721f9a647e3596c45cfc",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+    "lecture_key": "W02L2",
+    "title": "Bleidorn et al. (2022)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
+    "source_paths": [
+      "Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
+    "length_band": "long",
+    "page_count": 32,
+    "estimated_token_count": 20800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Updates and refines foundational lifespan personality development theories, specifically the cumulative continuity principle and the maturity principle, using a massive contemporary meta-analytic dataset.",
+    "source_role": "Serves as a primary empirical reading providing state-of-the-art meta-analytic estimates of personality stability and change, explicitly challenging older findings regarding stability increases past age 25.",
+    "relation_to_lecture": "Directly grounds the W02L2 lecture on Person-situation interplay by providing the core empirical evidence for how traits develop, stabilize, and change over the lifespan.",
+    "central_claims": [
+      {
+        "claim": "Rank-order stability of personality traits increases significantly during childhood and adolescence, plateaus around age 25, and shows little evidence of increasing further in middle or late adulthood.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Mean-level changes in personality traits generally follow the maturity principle, with traits such as Emotional Stability and Conscientiousness increasing over the lifespan.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Rank-order stability decreases as the time interval between assessments increases, but it plateaus at a modest value around r = .20, indicating an enduring core to personality traits.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Maladaptive traits and narrow facet-level traits exhibit lower rank-order stability compared to adaptive traits and broad domain-level traits.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Rank-order stability",
+        "definition": "The degree to which the relative ordering of individuals on a trait is maintained across two assessments, typically expressed as a test-retest correlation.",
+        "role": "A fundamental metric used in the meta-analysis to assess how consistent individual differences in personality are over time."
+      },
+      {
+        "term": "Mean-level change",
+        "definition": "The degree to which trait levels decrease or increase on average in a population over a certain time, often expressed as a standardized mean-level difference.",
+        "role": "A complementary metric to rank-order stability, used to assess normative, age-graded maturation or development in personality traits."
+      },
+      {
+        "term": "Cumulative continuity principle",
+        "definition": "The theoretical principle that personality traits tend to increase in rank-order stability with age, which this study refines by showing the increase primarily occurs before age 25.",
+        "role": "A major developmental theory that the study tests, refines, and contextualizes within the lifespan."
+      },
+      {
+        "term": "Maturity principle",
+        "definition": "The pattern of steady and significant mean-level increases in Emotional Stability, Conscientiousness, and Agreeableness throughout the adult lifespan.",
+        "role": "Explains the normative direction of mean-level changes observed in the meta-analysis, linking trait development to psychological maturation."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Rank-order stability vs. Mean-level change",
+        "summary": "Rank-order stability refers to the relative positioning of individuals within a group over time, whereas mean-level change refers to absolute increases or decreases in the population's average trait level.",
+        "stakes": "Crucial for understanding that high stability (people keeping their relative rank) does not preclude mean-level change (everyone maturing together)."
+      },
+      {
+        "label": "Broad domains vs. Narrow facets",
+        "summary": "Broad domains refer to the overarching Big Five categories, while narrow facets refer to more specific sub-components of these domains.",
+        "stakes": "The study finds that broad domains are slightly more rank-order stable than narrow facets, highlighting the role of aggregation in personality measurement."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that high rank-order stability means personality trait levels do not change, thereby confusing rank-order stability with mean-level stability.",
+      "Believing that personality stability continues to increase linearly throughout old age, which this study explicitly challenges by showing a plateau around age 25.",
+      "Thinking that a very long time interval between assessments reduces rank-order stability to zero; the study shows it asymptotes around r = .20, implying a stable core."
+    ],
+    "quote_targets": [
+      {
+        "target": "In contrast to previous findings, we found little evidence for increasing rank-order stabilities after Age 25.",
+        "why": "Highlights the study's major departure from previous meta-analyses and refines the cumulative continuity principle."
+      },
+      {
+        "target": "Whereas rank-order stability indicates the degree to which people experience more or less change relative to one another, mean-level change reflects the degree to which trait levels decrease or increase on average in a population.",
+        "why": "Provides a clear, source-grounded distinction between the two primary metrics of personality development."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a meta-analysis combining data from Roberts & DelVecchio (2000), Roberts et al. (2006), and new studies published between 2005 and 2020.",
+      "Analyses rely heavily on the Big Five taxonomy, and measures not originally designed for the Big Five were empirically assigned to these domains by the authors."
+    ],
+    "warnings": [
+      "The study notes a lack of data from non-WEIRD cultures and a lack of informant-report data for older adults, limiting the generalizability of some findings.",
+      "The categorization of non-Big Five measures into Big Five domains inherently leads to some loss of information, which the authors acknowledge as a limitation."
+    ]
+  }
+}

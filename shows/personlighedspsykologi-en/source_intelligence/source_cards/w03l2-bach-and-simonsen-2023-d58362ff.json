@@ -1,0 +1,147 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:02:57Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l2-bach-and-simonsen-2023-d58362ff"
+    ],
+    "dependency_hashes": {
+      "source_file": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+      "source_files_signature": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+    "lecture_key": "W03L2",
+    "title": "Bach & Simonsen (2023)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+    "source_paths": [
+      "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+      "Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L2 Personlighedsfunktion og forstyrrelse/W3L2 Bach & Simonsen (2023) kapitel 5.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+    "length_band": "long",
+    "page_count": 26,
+    "estimated_token_count": 16900,
+    "text_extraction_status": "metadata_only_multi_file_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Teksten præsenterer den kliniske og diagnostiske ramme (specifikt ICD-11's dimensionelle model) for at forstå personlighedsfunktion, sværhedsgrader af dysfunktion og specifikke trækudtryk.",
+    "source_role": "Grundbogskapitler, der operationaliserer overgangen fra kategoriske personlighedsdiagnoser til en dimensionel forståelse baseret på sværhedsgrad og trækdomæner.",
+    "relation_to_lecture": "Læsematerialet understøtter direkte forelæsningen (W3L2) om 'Personlighedsfunktion og forstyrrelse' ved at levere de formelle definitioner af selvets og interpersonelle kapaciteter samt de fem trækdomæner.",
+    "central_claims": [
+      {
+        "claim": "I ICD-11 er bestemmelsen af sværhedsgraden den primære del af klassifikationen af personlighedsforstyrrelser, baseret på en global vurdering af psykosocial funktionsnedsættelse i selvet og interpersonelt.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personlighedsfunktion kan opdeles i fire selv-kapaciteter (identitet, selvværd, realistisk syn på egne evner, målrettethed) og fire interpersonelle kapaciteter (interesse for relationer, social kognition/mentalisering, intimitet/gensidighed, konflikthåndtering).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Udover den generelle sværhedsgrad kan personlighedsforstyrrelser specificeres via fem trækdomæner (Negativ affektivitet, Tilbagetrækning, Dyssocialitet, Disinhibition, Anankasme) for at beskrive det individuelle stilistiske udtryk.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Borderline-mønstret er bevaret i ICD-11 som en specifik tillægskode (ikke en selvstændig diagnose) på grund af den omfattende litteratur og kliniske konsensus, på trods af at det overlapper med de dimensionelle trækdomæner.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Selvets kapaciteter",
+        "definition": "Aspekter af personlighedsfunktionen, der vedrører individets forhold til sig selv, herunder stabilitet i identitet, regulering af selvværd, realistisk selvererkendelse og evnen til at sætte og forfølge mål.",
+        "role": "Udgør den ene halvdel af kernen i vurderingen af personlighedsforstyrrelsens sværhedsgrad i ICD-11."
+      },
+      {
+        "term": "Interpersonelle kapaciteter",
+        "definition": "Aspekter af personlighedsfunktionen, der vedrører relationer til andre, herunder evnen til at engagere sig socialt, mentalisere, opretholde gensidig intimitet og håndtere konflikter.",
+        "role": "Udgør den anden halvdel af kernen i vurderingen af personlighedsforstyrrelsens sværhedsgrad i ICD-11."
+      },
+      {
+        "term": "Trækdomæner (Trait domains)",
+        "definition": "Fem specifikke dimensioner (Negativ affektivitet, Tilbagetrækning, Dyssocialitet, Disinhibition, Anankasme), der bruges til at beskrive de unikke mønstre og stilistiske træk ved en persons forstyrrelse.",
+        "role": "Giver mulighed for en individualiseret beskrivelse af patienten ud over den blotte sværhedsgrad, hvilket er essentielt for at målrette behandlingen."
+      },
+      {
+        "term": "Mentalisering / Social kognition",
+        "definition": "Evnen til at forstå og værdsætte andres perspektiver, dvs. at læse og reflektere over andres mentale tilstande (behov, følelser, overbevisninger).",
+        "role": "En central interpersonel kapacitet, der ofte er kompromitteret ved personlighedsforstyrrelser (f.eks. som hyper-mentalisering eller manglende empati)."
+      },
+      {
+        "term": "Borderline-mønster",
+        "definition": "Et gennemgribende mønster af ustabilitet i interpersonelle relationer, selvbillede og affekt, samt udtalt impulsivitet.",
+        "role": "Fungerer som en valgfri specifikation (tillægskode) i ICD-11 for at bygge bro mellem den nye dimensionelle model og eksisterende kliniske retningslinjer."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Internaliserende vs. Eksternaliserende problemer",
+        "summary": "Forskellen på at vende psykologisk smerte indad (f.eks. tilbagetrækning, mindreværd, undgåelse) versus udad (f.eks. dyssocialitet, grandiositet, udnyttelse af andre).",
+        "stakes": "Hjælper klinikeren med at forstå, at den samme underliggende dysfunktion i personligheden (f.eks. identitetsproblemer) kan komme til udtryk på diametralt modsatte måder adfærdsmæssigt."
+      },
+      {
+        "label": "Personlighedsforstyrrelse vs. Personlighedsvanskeligheder",
+        "summary": "En forstyrrelse indebærer global og gennemgribende funktionsnedsættelse og lidelsestryk, mens vanskeligheder er subkliniske, ofte situationsbestemte problemer, der ikke opfylder tærsklen for en egentlig diagnose.",
+        "stakes": "Vigtig for at undgå overdiagnosticering og sygeliggørelse af normale reaktioner på stress eller livskriser."
+      },
+      {
+        "label": "Idem vs. Ipse (Identitet)",
+        "summary": "Skelnen mellem de stabile, permanente komponenter af selvet ('idem') og de mere tilpasningsdygtige, skiftende og dynamiske aspekter af selvet ('ipse').",
+        "stakes": "En sund identitet balancerer disse to; ved personlighedsforstyrrelser ses ofte en manglende integration, hvilket fører til enten ekstrem rigiditet eller ekstrem ustabilitet/fragmentering."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Studerende kan fejlagtigt tro, at de fem trækdomæner er selvstændige diagnoser, frem for specifikatorer der tilføjes efter den generelle sværhedsgrad er fastslået.",
+      "Studerende kan forveksle ICD-11's 'Borderline-mønster' med en traditionel kategorisk diagnose, og overse at det i det nye system udelukkende er en tillægskode.",
+      "Man kan misforstå 'personlighedsvanskeligheder' som en mild personlighedsforstyrrelse, selvom det eksplicit beskrives som en tilstand under den diagnostiske tærskel."
+    ],
+    "quote_targets": [
+      {
+        "target": "Bestemmelse af sværhedsgraden er den primære del af klassifikationen...",
+        "why": "Dette citat (fra kapitel 3) fastslår det fundamentale paradigmeskift i ICD-11, hvor sværhedsgrad (og ikke specifik type) er kernen i diagnosen."
+      },
+      {
+        "target": "Det skal understreges, at borderline-mønstret udgør en tillægskode og ikke en egentlig diagnose.",
+        "why": "Dette citat (fra kapitel 5) er afgørende for at forstå borderline-begrebets specielle, kompromis-agtige status i den nye dimensionelle ICD-11 model."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er stærkt forankret i WHO's ICD-11 manual og dens specifikke terminologi for personlighedsforstyrrelser.",
+      "Kapitel 3 fokuserer på den generelle model for sværhedsgrad (selv og interpersonel funktion).",
+      "Kapitel 5 fokuserer på de stilistiske trækdomæner og borderline-specifikatoren."
+    ],
+    "warnings": [
+      "Teksten indeholder mange specifikke kliniske eksempler og interview-spørgsmål (f.eks. 'hvor tilfreds er du med dig selv'), som er praktiske retningslinjer snarere end ren personlighedspsykologisk grundteori."
+    ]
+  }
+}

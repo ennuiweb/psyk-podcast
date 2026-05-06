@@ -1,0 +1,163 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:12:37Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "w12l1-elias-2000-f9176ae8",
+      "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "febe8340473125c441b453a19b8de02d5912725a6bbaf4c56c8ae8817e636050",
+      "source_cards_signature": "706c84fe81a36344208a30be7504ca23614ba8e7d0b294f71e3e4c8b57d7bdd9",
+      "raw_sources_signature": "71f2a28a990bdb1370156dc393a41d622f63a223a502cee801c8c9ff97859224"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W12L1",
+    "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+    "sequence_index": 22
+  },
+  "analysis": {
+    "lecture_question": "Hvordan kan vi systematisk sammenligne personlighedspsykologiske teorier, og hvordan er selve det psykologiske subjekt et produkt af en historisk og sociogenetisk udvikling?",
+    "central_learning_problem": "De studerende står over for at skulle integrere et helt semesters teorier til eksamen. Udfordringen er at undgå at se teorierne som isolerede øer eller blot som forskellige meninger, men i stedet anvende et systematisk metateoretisk begrebsapparat (essens/kontekst, agency, determination, historicitet) til at sammenligne dem. Samtidig skal de begribe et radikalt perspektivskift: at selve det menneskelige subjekt og dets psykologiske funktioner (som selvkontrol, skam og refleksivitet) ikke er biologiske konstanter, men historisk og sociogenetisk producerede fænomener, hvilket komplicerer enhver universel personlighedsteori.",
+    "source_roles": [
+      {
+        "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+        "role": "framing",
+        "rationale": "Leverer det metateoretiske rammeværk (de fire orienteringspunkter) til at sammenligne og vurdere kursets teorier systematisk frem mod eksamen."
+      },
+      {
+        "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+        "role": "anchor",
+        "rationale": "Forankrer forståelsen af subjektets historicitet ved at vise, hvordan personlighed, barndom og selvkontrol er formet af makrosociologiske forandringer."
+      },
+      {
+        "source_id": "w12l1-elias-2000-f9176ae8",
+        "role": "supporting",
+        "rationale": "Giver konkret historisk empiri (bordskik, sovevaner) der illustrerer civilisationsprocessen og internaliseringen af ydre tvang til indre skam."
+      },
+      {
+        "source_id": "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d",
+        "role": "application",
+        "rationale": "Omsætter læsestoffet til eksamensrelevante sammenligningskriterier og diskuterer bevidsthedens historiske opståen gennem eksternalisering og internalisering."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+          "w12l1-elias-2000-f9176ae8"
+        ],
+        "relation": "Kapitel 8 indlejrer Elias' specifikke historiske analyser af bordskik og skam i en bredere sociologisk fortælling om samfundssfærer og familiestrukturer.",
+        "learning_stakes": "Hjælper den studerende med at koble mikrosociologiske adfærdsændringer til makrosociologiske strukturer i dannelsen af personligheden."
+      },
+      {
+        "source_ids": [
+          "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ],
+        "relation": "Forelæsningsslidesene operationaliserer kapitel 14's fire orienteringspunkter som et direkte eksamensværktøj.",
+        "learning_stakes": "Gør det abstrakte metateoretiske niveau anvendeligt for den studerende i en konkret eksamenssituation."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Historicitet",
+        "explanation": "Princippet om at psykologiske instanser og personlighedsstrukturer ikke er universelle, men udvikles gennem historiske epoker (fylogenese, ontogenese, sociogenese).",
+        "source_ids": [
+          "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ]
+      },
+      {
+        "concept": "Civilisationsprocessen",
+        "explanation": "Elias' begreb for den historiske bevægelse fra ydre adfærdsregulering til indre psykologisk selvdisciplinering og øget skamfølelse.",
+        "source_ids": [
+          "w12l1-elias-2000-f9176ae8",
+          "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb"
+        ]
+      },
+      {
+        "concept": "Essens vs. kontekst",
+        "explanation": "Et analytisk tema til at vurdere, om en teori forstår personligheden som en iboende kerne eller som noget, der primært dannes i relationer og samfund.",
+        "source_ids": [
+          "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ]
+      },
+      {
+        "concept": "Agency (aktørskab)",
+        "explanation": "Graden af intentionalitet og refleksivitet en teori tillægger subjektet, og hvorvidt subjektet kan overskride sine determineringer.",
+        "source_ids": [
+          "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ]
+      },
+      {
+        "concept": "Eksternalisering og internalisering",
+        "explanation": "Den dialektiske proces, hvor mennesket projicerer egenskaber ud i redskaber, hvis brug derefter internaliseres som nye kognitive færdigheder og bevidsthedsformer.",
+        "source_ids": [
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Angelsaksisk vs. Kontinental tradition",
+        "stakes": "Legitimerer kursets udvalg af teorier og viser, at 'videnskabelighed' forstås forskelligt, fra kvantitativ evidens til filosofisk meningsdannelse.",
+        "source_ids": [
+          "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38"
+        ]
+      },
+      {
+        "tension": "Sociogenese vs. Psykogenese",
+        "stakes": "Understreger, at individets psykologi (psykogenese) ikke kan forstås løsrevet fra makrosociologiske forandringer (sociogenese).",
+        "source_ids": [
+          "w12l1-elias-2000-f9176ae8",
+          "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb"
+        ]
+      },
+      {
+        "tension": "Essentiel vs. Essentialisme",
+        "stakes": "Forhindrer at studerende forveksler en teoris analytiske hovedfokus (essentiel) med en ontologisk påstand om en uforanderlig menneskelig natur (essentialisme).",
+        "source_ids": [
+          "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "At antage, at fortidens mennesker var biologisk eller kognitivt underudviklede, frem for at forstå, at deres psykologiske strukturer var tilpasset en anden samfundsstruktur.",
+      "At forveksle 'civilisationsprocessen' med en moralsk værdidom om, at moderne mennesker er 'bedre', i stedet for en deskriptiv term for øget affektkontrol.",
+      "At tro, at en teoris accept af 'determination' fuldstændig udelukker fri vilje (agency), idet refleksion ofte kan modificere determineringen.",
+      "At forveksle 'essentiel' (det centrale i en teori) med 'essentialisme' (troen på en ahistorisk, universel kerne)."
+    ],
+    "must_carry_ideas": [
+      "Ingen enkelt teori kan forklare hele personligheden; de belyser forskellige aspekter og må sammenlignes systematisk ud fra metateoretiske kriterier.",
+      "Personligheden og dens funktioner (som selvkontrol og skam) er ikke statiske naturfænomener, men historisk og socialt producerede.",
+      "Psykologien som videnskab beskriver ikke blot subjektet, men er selv med til at forme og producere det moderne subjekt."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "Grundbog kapitel 14 indeholder et langt navne- og sagregister i den vedhæftede PDF, som ikke er relevant for læsningen.",
+      "Elias-teksten bruger ældre historiske eksempler; fokus bør være på de underliggende psykologiske mekanismer (internalisering af skam) frem for de specifikke anekdoter."
+    ]
+  }
+}

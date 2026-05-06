@@ -1,0 +1,150 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:18:43Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w09l1-lecture-17-kritisk-psykologi-30798115"
+    ],
+    "dependency_hashes": {
+      "source_file": "46a49de055d1b59728f4d70597573b0e769383ae166250151eec788002a7932b",
+      "source_files_signature": "e95ea483c3a583631a6b14145980ea686493b50a6cb32216693b5951b038ddd3",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w09l1-lecture-17-kritisk-psykologi-30798115",
+    "lecture_key": "W09L1",
+    "title": "17. Kritisk psykologi",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/17. Kritisk psykologi.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/17. Kritisk psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/17. Kritisk psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/17. Kritisk psykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "46a49de055d1b59728f4d70597573b0e769383ae166250151eec788002a7932b",
+    "length_band": "long",
+    "page_count": 49,
+    "estimated_token_count": 31850,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Præsenterer Kritisk Psykologi (særligt via Dreier og Holzkamp) som en ontologisk og metodisk ramme, der forstår personligheden som situeret, praktisk og handlende.",
+    "source_role": "Forelæsningsslides, der introducerer de grundlæggende begreber i kritisk psykologi og demonstrerer deres anvendelse gennem praksisforskning og konkrete cases (Kenneth, Martin, Søren).",
+    "relation_to_lecture": "Dette er hovedpræsentationen til forelæsningen om Kritisk Psykologi (W09L1).",
+    "central_claims": [
+      {
+        "claim": "Personligheden er ikke en iboende eller statisk størrelse, men en praktisk og kontingent handling, der dannes gennem deltagelse i sociale praksisser.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Kritisk psykologi afviser 'umiddelbarhedspostulatet' og insisterer på 'genstandsadækvathed', hvilket betyder, at individet ikke skal undersøges i arbitrære eksperimenter, men i dets faktiske livsbetingelser.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Forskning i kritisk psykologi bør udvide agens hos deltagerne gennem 'medforskerprincippet', hvor deltagerne anerkendes som skabende subjekter med egen rationalitet frem for blot objekter for forskning.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Rusmiddelproblematikker bør anskues som en del af en større livssammenhæng og som komplekse, modsætningsfyldte praksisser, hvor stoffer også kan have en positiv funktion for subjektet i specifikke situationer.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Deltagelse (Participation)",
+        "definition": "At individer altid er forankrede i og en aktiv del af sociale og materielle sammenhænge, hvorigennem de skaber og opretholder verden.",
+        "role": "Forklarer, hvordan psykiske processer altid er situerede, og at agens er indlejret i sociale praksisser."
+      },
+      {
+        "term": "Standpunkter (Stances)",
+        "definition": "En personlig forholden sig til virkeligheden på tværs af praksisser, som er kontingent og kan ændre sig i kraft af deltagelse.",
+        "role": "Bidrager til at forstå subjektet som en form for stabilitet på tværs af forskellige kontekster, uden at det bliver statisk."
+      },
+      {
+        "term": "Anliggender (Concerns)",
+        "definition": "De ting og mål, et subjekt har på spil i en given praksis.",
+        "role": "Driver subjektets handlinger og danner grundlag for de standpunkter, der udvikles."
+      },
+      {
+        "term": "Handleevne (Agency)",
+        "definition": "Rådighed over egne livsbetingelser, som dog ikke er absolut, men betinget af individets kulturelle, sociale og materielle situerethed (relativ autonomi).",
+        "role": "Centralt for at forstå, at subjektet hverken er fuldstændig frit eller fuldstændig determineret af strukturer."
+      },
+      {
+        "term": "Daglig livsførelse (Conduct of everyday life)",
+        "definition": "Måden hvorpå subjekter strukturerer deres dagligliv i forhold til de samfundsmæssige krav og betingelser, de lever under.",
+        "role": "Fungerer som et centralt analysepunkt for den kritiske psykologi til at undersøge subjektivitet og rutiners funktion."
+      },
+      {
+        "term": "Praksisforskning",
+        "definition": "En kritisk psykologisk metode, der stræber mod at overskride dikotomien mellem teori og praksis, ofte gennem samarbejde med medforskere.",
+        "role": "Danner den metodiske ramme for, hvordan kritisk psykologi udføres i virkeligheden (fx via utopiske værksteder og deltagerobservation)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Kritisk psykologi vs. Traditionel psykologi",
+        "summary": "Traditionel psykologi forstår psyken som en objektiv størrelse, der kan undersøges via eksperimenter, mens kritisk psykologi undersøger subjektet i dets faktiske, situerede praksisser (genstandsadækvathed).",
+        "stakes": "Afgør om forskningen fanger menneskets reelle livsbetingelser eller reducerer dem til arbitrære, meningsløse variabler."
+      },
+      {
+        "label": "Almengørelse vs. Generalisering",
+        "summary": "Kritisk psykologisk forskning er prototypisk og sigter mod at almengøre fund (finde fælles træk i praksis) frem for at lave statistiske generaliseringer.",
+        "stakes": "Definerer validitetsbegrebet i kritisk psykologi, som beror på en intersubjektiv forståelsesramme frem for objektiv kvantificering."
+      },
+      {
+        "label": "Forsker vs. Mikrofonholder",
+        "summary": "Selvom forskeren bruger medforskerprincippet, må forskeren ikke reduceres til en passiv 'mikrofonholder', der blot formidler holdninger ukritisk.",
+        "stakes": "Sikrer, at forskningen bevarer sin analytiske og kritiske brod, samtidig med at den respekterer deltagernes rationalitet."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At 'handleevne' (agency) er det samme som absolut fri vilje, frem for en 'relativ autonomi' begrænset af materielle og sociale strukturer.",
+      "At personligheden i kritisk psykologi slet ikke eksisterer, i stedet for at forstå den som en dynamisk 'komposition af standpunkter'.",
+      "At medforskerprincippet betyder, at forskeren blot skal lytte passivt til deltagerne uden at bidrage med kritisk analyse."
+    ],
+    "quote_targets": [
+      {
+        "target": "Personligheden kan anses som en komposition af standpunkter, ud fra anliggender, der dannes ved og igennem deltagelse i praksisser på tværs af livsbanen ved subjektets livsførelse igennem dets handleevne (Dreier, 1999)",
+        "why": "Eksplicit markeret som 'Dagens vigtigste sætning' på to separate slides (slide 7 og 21). Det er kernedefinitionen på personlighed i denne forelæsning."
+      },
+      {
+        "target": "The philosophers have only interpreted the world in various ways; the point is to change it (Marx, 1973)",
+        "why": "Illustrerer det marxistiske, forandringsorienterede fundament for kritisk psykologisk praksisforskning."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er stærkt forankret i Ole Dreiers (1999) og Klaus Holzkamps (1983) teorier.",
+      "Casesektionen bygger på Mørck & Hansen (2015) samt underviserens (Oliver Sander) egen ph.d.-forskning omkring U-turn og æstetiske værksteder."
+    ],
+    "warnings": [
+      "Flere af de refererede tekster (Sander 2025, Sander et al. 2026) er fremtidige/ikke-udgivne publikationer fra underviseren, som de studerende ikke kan slå op.",
+      "Slide 43 indeholder et digt/tekststykke ('Ophold') uden eksplicit analytisk brødtekst; tolkningen afhænger af den mundtlige forelæsning og de omkringliggende slides om æstetiske værksteder."
+    ]
+  }
+}

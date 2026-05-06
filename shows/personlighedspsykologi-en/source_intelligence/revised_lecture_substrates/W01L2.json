@@ -1,0 +1,78 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:05:27Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-mayer-and-bryan-2024-07faf915",
+      "w01l2-phan-et-al-2024-bf3395d7",
+      "w01l2-koutsoumpis-2025-96f4dcf7",
+      "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "26c5964e543371282ddd58acf15874d4c62efaca466e43df5cdce2bba76dcc1c",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L2",
+    "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+    "sequence_index": 2
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture establishes the mainstream empirical baseline of personality as a measurable object. By explicitly highlighting the epistemological assumptions and limitations (e.g., the ergodic fallacy) of these methods early on, it creates the necessary friction that justifies the interpretive, critical, and poststructural turns later in the course.",
+    "what_matters_more": [
+      "The epistemological assumptions embedded in measurement tools, specifically how methods dictate what 'personality' is allowed to be.",
+      "The Ergodic Fallacy (Phan et al.) as a foundational setup for later critiques of mainstream psychology's reliance on population averages.",
+      "The tension between viewing personality as an inner essence (Identity) versus a socially situated construct (Reputation), as operationalized in the TRI model."
+    ],
+    "de_emphasize": [
+      "The technical mechanics and specific predictive validities of Machine Learning algorithms in the Koutsoumpis text.",
+      "The exhaustive memorization of Phan et al.'s 25 research design polytomies, which distracts from the core population vs. person distinction."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W11L1 (Hacking and the Looping Effect)",
+        "relation": "Epistemological deconstruction",
+        "rationale": "W01L2 introduces the tools of objective assessment, while W11L1 deconstructs them by showing how these very assessments actively create and alter the 'moving targets' they attempt to measure."
+      },
+      {
+        "target": "W08L1 (Critical Personalism and Lamiell)",
+        "relation": "Methodological critique",
+        "rationale": "Phan et al.'s warning about the ergodic fallacy directly anticipates Lamiell's critique of using between-person statistics to describe individual persons, bridging early quantitative caveats with later critical theory."
+      },
+      {
+        "target": "W12L1 (Orientation Points)",
+        "relation": "Meta-theoretical framing",
+        "rationale": "The choice of measurement (e.g., self-report vs. observer data) inherently positions the researcher on the essence/context axis, introducing the course's primary meta-analytical tool."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame personality assessment as an epistemological choice rather than a neutral technical task, emphasizing that how we measure defines what we see.",
+      "Unpack the 'Ergodic Fallacy' using a relatable example to show why population averages do not dictate individual behavior, planting a seed for critical personalism.",
+      "Tease the idea that categorizing people via tests or Machine Learning might actually change their behavior, setting up the later discussion of Hacking's looping effect."
+    ],
+    "carry_forward": [
+      "The critical distinction between population-level statistics and individual psychological functioning.",
+      "The concept that all measurement tools inherently carry theoretical assumptions about the nature of the subject (essence vs. context)."
+    ],
+    "warnings": [
+      "Avoid letting the discussion of Machine Learning devolve into a technical debate; keep the focus strictly on its implications for the concept of personality.",
+      "Ensure students do not conclude that one data source (e.g., observer reports or ML) is objectively 'truer' than another; emphasize that they capture different, equally valid facets of the person."
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:06:02Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-foucault-1997-92cd121d"
+    ],
+    "dependency_hashes": {
+      "source_file": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
+      "source_files_signature": "6ead26f2392664c04d99a8789b189f640449f78aa785f59aaf8bbbdcc1d49909",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l2-foucault-1997-92cd121d",
+    "lecture_key": "W10L2",
+    "title": "Foucault (1997)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+    "source_paths": [
+      "Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a poststructuralist perspective on personality, arguing that the 'self' is not a fixed, internal essence but is actively and historically formed through truth games, power relations, and ethical practices.",
+    "source_role": "Primary theoretical text (a 1984 interview) introducing Foucault's late work on ethics, power, and the constitution of the subject.",
+    "relation_to_lecture": "Directly supports the W10L2 focus on sociocultural theories, specifically poststructuralism, by illustrating how subjectivity is socially and historically constructed rather than biologically or intrapsychically innate.",
+    "central_claims": [
+      {
+        "claim": "The subject is not a fixed substance or innate human nature, but a form that constitutes itself differently depending on the specific historical practices and 'games of truth' it engages in.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Power relations are ubiquitous, mobile, and reversible in human interactions, and they fundamentally require the existence of freedom on both sides to operate.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Liberation from oppressive structures is sometimes a necessary condition, but it is insufficient on its own; it must be followed by ethical 'practices of freedom' to define acceptable forms of existence.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "In Greco-Roman antiquity, the 'care of the self' was not a narcissistic pursuit, but an ethical practice of freedom and self-mastery necessary to avoid abusing power over others.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Care of the self (souci de soi)",
+        "definition": "An ascetic practice or exercise of the self on the self by which one attempts to develop, transform oneself, and attain a certain mode of being.",
+        "role": "Explains how individuals ethically constitute themselves as subjects and manage their freedom."
+      },
+      {
+        "term": "Power relations",
+        "definition": "Mobile, reversible, and unstable relationships in which one person tries to control the conduct of another, existing at all levels of society.",
+        "role": "Challenges the view of power as purely oppressive, framing it as a fundamental, strategic aspect of all social interaction."
+      },
+      {
+        "term": "States of domination",
+        "definition": "Situations where power relations are blocked, frozen, and asymmetrical, preventing reversibility or resistance.",
+        "role": "Distinguishes normal, fluid social influence (power) from oppressive structures that require liberation."
+      },
+      {
+        "term": "Games of truth",
+        "definition": "A set of rules and procedures by which truth is produced and considered valid or invalid within a given historical or institutional context.",
+        "role": "Contextualizes how subjects (e.g., the 'mad' subject) are defined and categorized by societal discourses."
+      },
+      {
+        "term": "Governmentality",
+        "definition": "The whole range of practices that constitute, define, organize, and instrumentalize the strategies individuals use in dealing with each other.",
+        "role": "Connects individual ethics (the relationship of the self to itself) to broader political power and social control."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Liberation vs. Practices of Freedom",
+        "summary": "Liberation removes oppressive deadlocks (e.g., political colonization), while practices of freedom are the ongoing ethical behaviors that define how to live post-liberation.",
+        "stakes": "Highlights that removing oppression does not automatically result in a healthy or ethical society; active ethical practices are required."
+      },
+      {
+        "label": "Power relations vs. States of domination",
+        "summary": "Power relations are fluid, reversible, and require freedom to exist; states of domination are fixed, asymmetrical, and block resistance.",
+        "stakes": "Prevents the pessimistic misunderstanding that 'power is everywhere, so there is no freedom' by showing that power actually presupposes freedom."
+      },
+      {
+        "label": "Subject as substance vs. Subject as form",
+        "summary": "The subject is not a fixed, innate essence (substance) but a variable form constituted through different practices and relationships.",
+        "stakes": "Rejects a priori theories of human nature (like phenomenology or existentialism) in favor of a historical and contextual analysis of subjectivity."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating Foucault's concept of 'power' entirely with 'domination' or evil (he explicitly states power is not evil and consists of strategic games).",
+      "Thinking Foucault believes there is no freedom because power is everywhere (he argues power relations actually require freedom to exist).",
+      "Assuming the 'care of the self' is a modern form of narcissistic self-interest (he contrasts it with this, showing it was historically a prerequisite for caring for others).",
+      "Believing Foucault claims the subject does not exist at all (he argues it exists as a historically constituted 'form', not a universal 'substance')."
+    ],
+    "quote_targets": [
+      {
+        "target": "I have always been somewhat suspicious of the notion of liberation... one runs the risk of falling back on the idea that there exists a human nature or base... (p. 282)",
+        "why": "Shows his critique of the repressive hypothesis and the idea of a hidden, innate human nature."
+      },
+      {
+        "target": "The subject is not a substance. It is a form, and this form is not primarily or always identical to itself. (p. 290)",
+        "why": "Provides the core definition of his poststructuralist view of subjectivity."
+      },
+      {
+        "target": "...if there are relations of power in every social field, this is because there is freedom everywhere. (p. 292)",
+        "why": "Clarifies the crucial link between power and freedom, countering nihilistic readings of his work."
+      }
+    ],
+    "grounding_notes": [
+      "The text is an interview ('The Ethics of the Concern of the Self as a Practice of Freedom') conducted in 1984.",
+      "The concepts are heavily grounded in Foucault's readings of Greco-Roman antiquity (Stoicism, Plato) and contrasted with Christian renunciation of the self."
+    ],
+    "warnings": [
+      "Because the text is an interview, the arguments are presented conversationally rather than as a systematic treatise, which may require careful reading to extract formal definitions.",
+      "The translation uses specific philosophical terminology (e.g., ethos, logos, askesis) which requires contextual understanding rather than everyday definitions."
+    ]
+  }
+}

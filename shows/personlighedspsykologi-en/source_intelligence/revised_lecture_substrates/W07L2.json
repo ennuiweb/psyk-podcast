@@ -1,0 +1,80 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:56Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l2-maslow-1968-7ea53e34",
+      "w07l2-evans-1975-8e8a9d79",
+      "w07l2-giorgi-2005-55ca98f7",
+      "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+      "w07l2-seminar-8-humanistisk-psykologi-8f80e89d"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "c82cd6c12cc0b895cedf953534fdc775612734425ca18e59826938211663e2d0",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W07L2",
+    "lecture_title": "Humanistisk psykologi (Forelæsning 14, 2026-03-17)",
+    "sequence_index": 14
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the apex of 'inner agency' and 'authentic essence' in the course arc. It provides a crucial pivot point: it resolves the determinism of earlier trait and psychoanalytic models by granting the subject radical freedom and growth potential, while simultaneously setting up the 'authentic self' that later critical and poststructural theories will aggressively deconstruct.",
+    "what_matters_more": [
+      "Applying the '4 orientation points' (essence/context, agency, determination, historicity) to the humanistic subject, specifically highlighting its strong emphasis on inner essence and high individual agency.",
+      "The epistemological shift demanded by Giorgi (Human Science vs. Natural Science), which aligns with the course's overarching focus on how psychological knowledge is historically and methodologically produced.",
+      "The 'Growth vs. Deficit' distinction, positioning humanism as a direct theoretical rebellion against earlier psychoanalytic and behaviorist models."
+    ],
+    "de_emphasize": [
+      "Granular memorization of every specific tier in Maslow's hierarchy of needs, focusing instead on the broader qualitative shift from deficiency to growth motivation.",
+      "The practical, clinical mechanics of Rogers' client-centered therapy, keeping the focus strictly on what these mechanics reveal about his underlying theory of personality and the self."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "Psychoanalytic Personality Theory (W04-W05)",
+        "relation": "Contrastive (Growth vs. Deficit / Agency vs. Determinism)",
+        "rationale": "Humanistic psychology explicitly defines itself as the 'Third Force' in opposition to psychoanalysis, replacing the decentered, conflict-driven subject with a conscious, growth-oriented, and agentic self."
+      },
+      {
+        "target": "Critical Psychology (W08-W09)",
+        "relation": "Contrastive Agency",
+        "rationale": "Both traditions strongly emphasize human agency against determinism, but while humanism locates agency in inner self-actualization, critical psychology relocates it outward into societal participation and the conduct of everyday life."
+      },
+      {
+        "target": "Sociocultural and Poststructural Approaches (W10-W11)",
+        "relation": "Epistemological Target",
+        "rationale": "The humanistic concept of a true, innate, 'authentic inner self' becomes the exact target of deconstruction for later poststructural theories, which argue the self is historically and discursively produced."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Third Force' rebellion: why psychology needed a model of growth, potential, and agency after weeks of pathology and determinism.",
+      "Explicitly use the '4 orientation points' to map the humanistic subject, showing listeners how to evaluate Rogers and Maslow for the exam.",
+      "Discuss Giorgi's methodological crisis: the tension of having a rich, holistic theory of the person but struggling against the dominance of natural science methods.",
+      "Contrast the 'Rational/Authentic Ego' of humanism with the 'Decentered Subject' of psychoanalysis."
+    ],
+    "carry_forward": [
+      "The concept of the 'authentic inner self', which must be carried forward so students understand exactly what poststructuralism (W10/W11) is critiquing.",
+      "The methodological demand for a 'Human Science' (Giorgi), which paves the way for the qualitative, narrative, and critical methodologies used in the final third of the course."
+    ],
+    "warnings": [
+      "Students often romanticize the humanistic 'authentic self' and may experience theoretical whiplash when poststructuralism later dismantles it. Instructors must frame humanism as a specific historical and epistemological stance, not the final 'truth' of the course.",
+      "Ensure the critique of natural science (Giorgi) is not interpreted by students as 'anti-science', but rather as a rigorous argument for methodological pluralism."
+    ]
+  }
+}

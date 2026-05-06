@@ -1,0 +1,129 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:02:44Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e"
+    ],
+    "dependency_hashes": {
+      "source_file": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
+      "source_files_signature": "2c6a091ce02d722200ebe5a73a8d0491198d248fc102b27c557fe36f506f7cf9",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+    "lecture_key": "W05L2",
+    "title": "Andkjær Olsen & Køppe (1991a + 1991b)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf",
+    "source_paths": [
+      "Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Systematiserer Freuds metapsykologi (den økonomiske og dynamiske synsvinkel) og sporer den historiske udvikling af psykoanalysens grundbegreber.",
+    "source_role": "Fungerer som en grundbogstekst, der pædagogisk inddeler Freuds komplekse teoriudvikling i overskuelige faser og begrebspar.",
+    "relation_to_lecture": "Leverer det teoretiske og historiske fundament for forelæsningen om psykoanalysens konstituering.",
+    "central_claims": [
+      {
+        "claim": "Freuds driftsteori bygger på en økonomisk synsvinkel, hvor indre pirringer fungerer som en konstant strøm af energikvantiteter, der tvinger det psykiske apparat til at arbejde.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psykoanalysens konstituering skete gennem fire faser: fra hypnoidteorien og bevidsthedens spaltning, over forsvarsteorien og opdagelsen af primær/sekundærprocesser, til teorien om det ubevidste og endelig formuleringen af Ødipus-komplekset.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freud opgav forførelsesteorien, da han indså, at patienternes beretninger om tidlige seksuelle overgreb ofte ikke var reelle minder, men derimod ubevidste ønskefantasier knyttet til infantil seksualitet.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Drift (kilde, mål, objekt, trang)",
+        "definition": "En indre pirring med fire elementer: en kilde (fysisk-biologisk organ), et mål (ophævelse af pirringstilstanden), et objekt (det, hvorigennem målet nås), og en trang (størrelsen af arbejdskravet).",
+        "role": "Udgør kernen i Freuds motivationspsykologi og forklarer, hvordan biologiske behov oversættes til psykisk energi."
+      },
+      {
+        "term": "Primærprocesser",
+        "definition": "Ubevidste, uhæmmede psykiske processer, der følger lystprincippet og søger øjeblikkelig udløsning af energi ad de lettest tilgængelige baner.",
+        "role": "Forklarer det ubevidstes funktionsmåde, herunder drømme og symptomdannelse."
+      },
+      {
+        "term": "Sekundærprocesser",
+        "definition": "Normale, realitetsorienterede tankeprocesser, der kan udskyde lystopnåelse og tolerere aktuel ulyst for at opnå mere hensigtsmæssige mål.",
+        "role": "Beskriver jegets rationelle og hæmmende funktion over for drifterne."
+      },
+      {
+        "term": "Forsvar (Fortrængning)",
+        "definition": "En mekanisme, hvor en pinlig eller uholdbar oplevelse gøres ubevidst ved at adskille affekten fra forestillingen.",
+        "role": "Erstatter Breuers hypnoidteori og bliver den centrale forklaringsmodel for neurosedannelse."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Hypnoidteori vs. Forsvarsteori",
+        "summary": "Breuers teori om, at hysteri opstår i en passiv, drømmeagtig tilstand (hypnoid), over for Freuds teori om, at hysteri skyldes et aktivt psykisk forsvar mod uacceptable forestillinger.",
+        "stakes": "Markerer overgangen fra en mekanisk/fysiologisk model til en dynamisk, konfliktbaseret psykologisk model."
+      },
+      {
+        "label": "Livsdrifter (Eros) vs. Dødsdrifter (Thanatos)",
+        "summary": "Livsdrifternes mål er at opretholde og samle livet (kærlighed, seksualitet, selvopholdelse), mens dødsdrifternes mål er at føre organismen tilbage til en uorganisk, spændingsløs tilstand (had, destruktion).",
+        "stakes": "Udvidelsen af driftsteorien gør det muligt for Freud at forklare aggressivitet, gentagelsestvang og masochisme, som lystprincippet ikke kunne redegøre for."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Studerende kan forveksle driftens 'mål' med dens 'objekt'. Teksten præciserer, at målet altid er tilfredsstillelse (spændingsreduktion), mens objektet er udskifteligt.",
+      "Man kan fejlagtigt tro, at Freud altid opererede med dødsdriften. Teksten viser, at dette var en sen tilføjelse (1920), der ændrede hans tidligere driftsdualismer.",
+      "Det misforstås ofte, at Freud afviste virkelige traumer fuldstændigt. Han indså blot, at mange rapporterede traumer var ubevidste fantasier (Ødipus-komplekset), hvilket ændrede fokus fra ydre begivenheder til indre psykisk virkelighed."
+    ],
+    "quote_targets": [
+      {
+        "target": "Freuds driftsteori er hans teori om de 'indre pirringer' i de topiske modeller.",
+        "why": "Kort og præcis definition af driftsteoriens udgangspunkt i den økonomiske synsvinkel."
+      },
+      {
+        "target": "I stedet havde han fundet Ødipus-komplekset som en ubevidst struktur af ønskefantasier, der vedblev med at være aktive.",
+        "why": "Sammenfatter det afgørende skift fra forførelsesteori til teorien om infantil seksualitet."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er en dansk sekundærlitteratur (Andkjær Olsen & Køppe), der systematiserer Freuds primærtekster.",
+      "Tekstens inddeling af psykoanalysens konstituering i fire specifikke faser er forfatternes pædagogiske strukturering."
+    ],
+    "warnings": [
+      "Kildeteksten indeholder en del OCR-fejl (f.eks. 'fglelser' i stedet for 'følelser', 'gkonomiske' i stedet for 'økonomiske'), som er korrigeret i analysen."
+    ]
+  }
+}

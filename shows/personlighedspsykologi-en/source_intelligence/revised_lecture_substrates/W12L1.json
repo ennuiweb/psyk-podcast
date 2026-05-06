@@ -1,0 +1,78 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:08:06Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "w12l1-elias-2000-f9176ae8",
+      "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "9e412f8e66ad1e60c5b9dd4f5fef9aa3942cb519138b3dd87a21c8a29616d540",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W12L1",
+    "lecture_title": "Sammenligning af teorier og subjektets historie og eksamen (Forelæsning 22, 2026-04-27)",
+    "sequence_index": 22
+  },
+  "analysis": {
+    "top_down_course_relevance": "As the capstone lecture, W12L1 is the critical synthesis point of the entire course. It shifts students from learning isolated theories to actively comparing them using a meta-theoretical framework (the 4 orientation points). It completes the course's arc from treating personality as a static, measurable object to understanding it as a historically and socially produced phenomenon.",
+    "what_matters_more": [
+      "Explicit application of the 4 orientation points (essence/context, agency, determination, historicity) as the primary tool for exam synthesis and comparative analysis.",
+      "The concept of 'Historicity' as the ultimate counter-argument to early-course trait essentialism, demonstrating that personality structures like self-control and shame are sociogenetically produced.",
+      "The epistemological shift from viewing theories as competing 'truths' to seeing them as different lenses that illuminate distinct aspects of a historically situated subject."
+    ],
+    "de_emphasize": [
+      "Specific historical anecdotes from Elias (e.g., medieval table manners and sleeping habits), which should be treated strictly as illustrative examples of the broader internalization process.",
+      "The abstract philosophical distinction between Anglo-Saxon and Continental traditions, unless directly tied to how specific theories operationalize 'agency' or 'determination'."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W01L1 (Introduktion til personlighed)",
+        "relation": "Meta-theoretical framing and payoff",
+        "rationale": "The 4 orientation points introduced in the very first week are finally operationalized here as the mandatory comparative framework for the exam, closing the course loop."
+      },
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Contrastive epistemology",
+        "rationale": "Elias's historical sociogenesis of personality provides the ultimate critique of the ahistorical, universalist assumptions of the early-course trait and assessment models."
+      },
+      {
+        "target": "W11L1 (Subjectivation & Looping Effect)",
+        "relation": "Thematic continuation of the socially produced subject",
+        "rationale": "Elias's civilizing process (the internalization of societal demands into psychological shame) historically grounds the poststructuralist concepts of subjectivation and dynamic nominalism."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode as the 'grand finale' and ultimate exam survival guide, focusing heavily on how to practically apply the 4 orientation points to compare theories.",
+      "Use Elias's 'civilizing process' as a mind-bending concept to show that basic personality components like 'shame' and 'self-control' have a history and were socially invented.",
+      "Walk through a concrete example of comparing two radically different theories from the course arc (e.g., Trait Psychology vs. Critical Psychology) using the orientation points."
+    ],
+    "carry_forward": [
+      "The 4 orientation points as the mandatory analytical lens for the final exam.",
+      "The meta-understanding that psychological theories do not just describe a pre-existing subject, but actively participate in the historical production of subjectivity."
+    ],
+    "warnings": [
+      "Ensure students do not treat the 4 orientation points as a rigid, mechanical checklist, but as a dynamic tool for dialectical comparison.",
+      "Avoid letting Elias's fascinating historical examples overshadow the broader epistemological point about the sociogenesis of personality."
+    ]
+  }
+}

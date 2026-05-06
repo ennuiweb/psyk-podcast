@@ -2,16 +2,16 @@
   "artifact_type": "source_card",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:36:52Z",
+  "generated_at": "2026-05-05T18:59:53Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
     "prompt_version": "personlighedspsykologi-source-card-v1",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -23,7 +23,7 @@
     "dependency_hashes": {
       "source_file": "980134279d9418ec358ba9ba3fecceb9f9acac9b2fced06066c50013f0f80fba",
       "source_files_signature": "d866753ae5a93eb4e5919fee23e7b0950289a9bdbcc358c3557604309d1cb74d",
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
       "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
     }
   },
@@ -49,97 +49,96 @@
     "text_extraction_status": "metadata_only_no_local_text_extraction"
   },
   "analysis": {
-    "theory_role": "Explains the methodological and epistemological foundations of psychoanalysis, specifically how to define its empirical data through Gammelgaard's four criteria and how to handle classical scientific critiques.",
-    "source_role": "An exercise slide deck (Øvelseshold) designed to clarify complex methodological texts (like Gammelgaard) and apply them practically through group work and a dream interpretation exercise.",
-    "relation_to_lecture": "Translates the primary theoretical concepts of psychoanalysis into practical listening skills (focusing on form over content) and prepares students for clinical reasoning.",
+    "theory_role": "The slides present psychoanalysis as a unique methodological framework that requires its own epistemological rules (e.g., psychic reality, retroactive causality) because its empirical object—the unconscious—cannot be directly observed.",
+    "source_role": "Exercise (Øvelseshold) slides designed to clarify Gammelgaard's (2010) text on psychoanalytic methodology and apply its 4 criteria through a practical dream interpretation exercise.",
+    "relation_to_lecture": "Serves as the practical application component for the first week on Psychoanalysis, translating theoretical concepts into group work and active listening exercises.",
     "central_claims": [
       {
-        "claim": "Psychoanalytic empirical data cannot be isolated from the clinical setting; treatment and scientific investigation happen in the same process.",
+        "claim": "Psychoanalysis functions simultaneously as a clinical treatment and a scientific investigation, defining its object of study as unconscious processes.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Psychoanalysis is not anti-scientific, but 'anti-scientistic', meaning it rejects a reduced, purely objective understanding of science in order to study the unconscious subject.",
+        "claim": "Psychoanalytic empirical data does not consist of literal words or concrete behavior, but rather the meaning and intention behind what is said and done.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "The empirical data of psychoanalysis is not literal words or concrete behavior, but the underlying meaning and intention behind what is said.",
+        "claim": "Because psychoanalysis deals with the unconscious, it must operate with 'psychic reality', where objective facts and subjective fiction are inextricably blended.",
         "grounding": "source-grounded",
         "confidence": "high"
       },
       {
-        "claim": "Because the unconscious manifests through sudden and unpredictable outbursts, psychoanalysis must verify its findings by 'inferring backwards' (slutte baglæns) rather than relying on linear, predictive causality.",
-        "grounding": "source-grounded",
+        "claim": "Psychoanalytic listening should focus on the form of the narrative (how it is told) rather than just the content (what is told).",
+        "grounding": "slide-framed",
         "confidence": "high"
       }
     ],
     "key_concepts": [
       {
         "term": "Overføring (Transference)",
-        "definition": "The actualization of unconscious desires and conflicts in relation to the analyst, where past intrapsychic relations are spontaneously and unconsciously displaced and repeated.",
-        "role": "Explains the relational dynamic in therapy where historical conflicts are re-enacted, serving as key empirical data."
+        "definition": "An actualization of unconscious desires and conflicts in relation to the analyst, where past intrapsychic relations are spontaneously and unconsciously repeated.",
+        "role": "Explains the relational dynamic between analyst and analysand, which serves as a primary source of psychoanalytic empirical data."
       },
       {
         "term": "Psykisk realitet (Psychic reality)",
-        "definition": "An inner, undeniable reality founded on unconscious ideas where facts and fictions are blended and invested with affect.",
-        "role": "Challenges the purely observational definition of empirical data, arguing that internal mental states and subjective experiences constitute real data in psychoanalysis."
+        "definition": "An internal, undeniable reality based on unconscious ideas, where there is no clear distinction between objective truth and affect-laden fiction.",
+        "role": "Defines the unique epistemological status of psychoanalytic evidence, challenging traditional empirical observation."
+      },
+      {
+        "term": "Anti-scientistisk",
+        "definition": "A skeptical stance towards a reduced, purely objective understanding of science, distinct from being entirely anti-scientific.",
+        "role": "Defends the scientific validity of psychoanalysis by arguing for a broader definition of science that includes the unconscious subject."
       },
       {
         "term": "Talekuren (The talking cure)",
-        "definition": "The foundational character of psychoanalysis where language is used as a detour to access empirical data, focusing on the meaning behind words rather than the literal statements.",
-        "role": "Defines the specific method of data extraction in psychoanalytic practice."
-      },
-      {
-        "term": "Slutte baglæns (Backward inference)",
-        "definition": "The methodological necessity of inferring causes from interpretations after the fact, rather than predicting them, due to the unpredictable nature of the unconscious.",
-        "role": "Addresses the 'verification problem' and explains the specific epistemological network of causality used in psychoanalysis."
-      },
-      {
-        "term": "Den fortalte historie (The told story)",
-        "definition": "The analysand's fragmented and incoherent narrative, which is constantly rewritten outside of consciousness based on internal impulses.",
-        "role": "Highlights that the therapeutic goal is to co-create meaning and coherence out of fragmented life experiences."
+        "definition": "The foundational psychoanalytic method where empirical data is derived from speech, specifically focusing on the meaning and intention behind the words.",
+        "role": "Establishes language as the indirect pathway (omvej) to accessing the unconscious empirical object."
       }
     ],
     "distinctions": [
       {
-        "label": "Scientistic vs. Psychoanalytic Science",
-        "summary": "Scientistic approaches demand immediately observable, objective empirical data, whereas psychoanalysis adapts its method to capture the un-objectifiable 'unconscious subject'.",
-        "stakes": "Defends the scientific validity of psychoanalysis against claims that it is unscientific, reframing the debate around the appropriate methods for specific types of data."
+        "label": "Form vs. Indhold (Form vs. Content)",
+        "summary": "The distinction between how a story or dream is narrated (fragmented, affective) versus the literal events being described.",
+        "stakes": "Crucial for the practical exercise of psychoanalytic listening, as the unconscious reveals itself more through the structure of the telling than the facts of the story."
       },
       {
-        "label": "Denotative vs. Conative/Intentional content",
-        "summary": "The distinction between what is concretely said (denotative) and the underlying emotive function or unconscious wish (intentional).",
-        "stakes": "Guides the psychoanalytic listening practice to focus on 'how' and 'why' something is expressed rather than just 'what' is said."
+        "label": "Mening vs. Hensigt (Meaning vs. Intention)",
+        "summary": "The difference between the semantic meaning of an action or statement and the underlying, often unconscious, motive for expressing it.",
+        "stakes": "Moves the analytical focus from surface-level interpretation to understanding the deeper psychological function of the patient's communication."
+      },
+      {
+        "label": "Selekteret kendsgerning vs. Overvurderet idé",
+        "summary": "The difference between a valid psychoanalytic fact derived from the patient and a subjective, suggestive idea imposed by the analyst.",
+        "stakes": "Addresses the core critique of psychoanalysis regarding verification and the risk of the analyst forcing their own interpretations onto the patient."
       }
     ],
     "likely_misunderstandings": [
-      "Believing that psychoanalysis actively rejects being a science (it rejects 'scientism', not science itself).",
-      "Assuming the psychoanalyst focuses on the literal truth or historical accuracy of the patient's story (the focus is on psychic reality, intentions, and form).",
-      "Thinking psychoanalysis uses linear causality to prove a hypothesis (it relies on retrospective inference or 'slutte baglæns')."
+      "Assuming that psychoanalysis is entirely unscientific, rather than understanding its specific 'anti-scientistic' critique of narrow empirical science.",
+      "Believing that the goal of psychoanalytic listening is to extract a coherent, factual history from the patient, rather than analyzing the fragmentation and form of the narrative.",
+      "Thinking that 'psychic reality' means the patient is simply lying, rather than understanding it as a genuine internal state where fact and fiction merge."
     ],
     "quote_targets": [
       {
-        "target": "anti-scientistisk, det vil sige skeptisk over for en reduceret videnskabsforståelse.",
-        "why": "Core quote summarizing Gammelgaard's defense of psychoanalysis' scientific status."
+        "target": "Gammelgaard, 2010, s. 357",
+        "why": "To find the core argument that psychoanalysis is simultaneously a treatment and a scientific investigation, and to understand the term 'anti-scientistisk'."
       },
       {
-        "target": "ingen anden mulighed end at slutte baglæns, så at sige fra vores fortolkning til årsagen",
-        "why": "Crucial for understanding how psychoanalysis addresses the verification problem."
+        "target": "s. 359-362 (Talekuren & Intentionalitet)",
+        "why": "To review the definitions of the talking cure and intentionality, specifically why literal words are not considered the final empirical data."
       },
       {
-        "target": "Psykoanalytisk lytten retter sig mod form (hvordan) snarere end indhold (hvad)",
-        "why": "The primary operational takeaway for the students' practical exercises in the session."
+        "target": "s. 367-369 (Psykisk realitet)",
+        "why": "To understand the concept of psychic reality and why psychoanalysis operates with a blend of fact and fiction."
       }
     ],
     "grounding_notes": [
-      "The core methodological framing heavily relies on Gammelgaard (2010), specifically pages 357-371.",
-      "Definitions for clinical concepts like transference and analsadism are sourced from Andkjær Olsen (2002).",
-      "Slide 2 mentions 'Riceuors (1981) 4 principper', which shapes the listening exercise."
+      "The slides heavily reference and quote Gammelgaard (2010), indicating this text is the primary theoretical anchor for the exercise.",
+      "The presentation explicitly frames the session as focusing on research methodology rather than clinical methodology, though it notes the two are hard to separate in psychoanalysis."
     ],
     "warnings": [
-      "The name 'Riceuors' on slide 2 is almost certainly a typographical error for Paul Ricoeur.",
-      "The slide content consists of highly condensed summaries of Gammelgaard (2010); students should refer to the primary text for full context on the verification problem and the 'Tally argument'."
+      "The slides contain instructions for group work and a dream-sharing exercise; the actual outcomes and discussions from these exercises cannot be inferred from the document.",
+      "Some quotes are attributed to secondary authors (e.g., Andkjær Olsen, Druck) within the context of explaining Gammelgaard's framework."
     ]
   }
 }

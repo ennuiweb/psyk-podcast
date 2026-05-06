@@ -1,0 +1,140 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:17:55Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-koutsoumpis-2025-96f4dcf7"
+    ],
+    "dependency_hashes": {
+      "source_file": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
+      "source_files_signature": "c58682051f369c8ed4fea0160cd475cb9330a09507ebfe202bf2df71e72f3cda",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+    "lecture_key": "W01L2",
+    "title": "Koutsoumpis (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf",
+    "source_paths": [
+      "Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
+    "length_band": "short",
+    "page_count": 8,
+    "estimated_token_count": 5200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a non-systematic overview of the psychometric properties, including construct validity, reliability, and algorithmic bias, of machine learning-based personality assessment.",
+    "source_role": "A review article summarizing recent empirical findings on the accuracy, reliability, and fairness of ML-PA compared to traditional questionnaire-based methods.",
+    "relation_to_lecture": "Directly supports W01L2 (Personality assessment) by introducing modern computational methods as an alternative or supplement to traditional questionnaire-based assessment.",
+    "central_claims": [
+      {
+        "claim": "Machine learning-based personality assessment (ML-PA) reverses the traditional research paradigm by using behavior as the independent variable to predict personality traits as the dependent variable.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "ML-PA is more accurate at predicting observer-reported personality traits than self-reported personality traits, aligning with the Self-Other Knowledge Asymmetry (SOKA) model.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The accuracy of ML-PA increases with sample size and the amount of input data, reaching an asymptote at approximately n=5000 for self-reports and n=500 for observer reports.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "There is a trade-off in ML-PA between applying bias mitigation techniques and maximizing the overall predictive performance of the models.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Machine learning-based personality assessment (ML-PA)",
+        "definition": "The use of supervised machine learning models to predict questionnaire-based personality ratings using behavioral features like text, voice, or digital footprints as input.",
+        "role": "The core subject of the text, representing a methodological shift in how personality is measured."
+      },
+      {
+        "term": "Self-Other Knowledge Asymmetry (SOKA) model",
+        "definition": "A model positing that observers have more access to evaluative traits and visible behaviors, whereas the self has more access to non-evaluative traits and internal thoughts or feelings.",
+        "role": "Provides a conceptual interpretation for why ML-PA is more accurate for observer reports than self-reports."
+      },
+      {
+        "term": "Trait Activation Theory (TAT)",
+        "definition": "The theory suggesting that to measure a specific personality trait accurately, participants must engage in a task that allows for the activation and behavioral expression of that trait.",
+        "role": "Explains how to maximize the accuracy of ML-PA by aligning behavioral tasks with the evaluated traits."
+      },
+      {
+        "term": "Generalized coefficient of equivalence and stability (GCES)",
+        "definition": "A reliability measure that evaluates whether an algorithm trained on one dataset generalizes to other datasets on which it was not trained.",
+        "role": "Highlights the challenge of generalizability in ML-PA, as it typically shows lower values compared to within-task reliability indices."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Traditional Personality Research vs. ML-PA",
+        "summary": "Traditional research uses personality traits as independent variables to predict behavior, whereas ML-PA uses behavior as the independent variable to predict personality traits.",
+        "stakes": "Fundamentally shifts the methodological paradigm and data flow in personality assessment."
+      },
+      {
+        "label": "Self-reports vs. Observer reports in ML-PA",
+        "summary": "ML-PA achieves higher accuracy (average r=0.55) when predicting observer reports compared to self-reports (average r=0.30).",
+        "stakes": "Determines which type of ground truth data is more reliably predicted by behavioral features extracted by machine learning."
+      },
+      {
+        "label": "Ground truth bias vs. Modeling bias",
+        "summary": "Algorithmic bias can stem from the original human-based data (ground truth bias) or from the machine learning process itself, such as non-representative data splits (modeling bias).",
+        "stakes": "Identifies the source of algorithmic unfairness, which dictates the appropriate bias mitigation techniques required."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming ML-PA captures the full variance of questionnaire-based personality traits, when it actually only captures a proportion.",
+      "Believing ML-PA is equally accurate for self-reports and observer reports, despite evidence showing it is significantly more accurate for observer reports.",
+      "Confusing ground truth bias with modeling bias when discussing algorithmic fairness."
+    ],
+    "quote_targets": [
+      {
+        "target": "In personality research, personality traits serve as the independent variables... Instead, in machine learning-based personality assessment... behavior becomes the independent variable and personality traits the dependent variables",
+        "why": "Clearly defines the paradigm shift in ML-PA compared to traditional methods."
+      },
+      {
+        "target": "The accuracy of ML-PA was larger for observer compared to self-reported personality traits.",
+        "why": "Highlights a key finding regarding the validity of ML-PA across different report types."
+      }
+    ],
+    "grounding_notes": [
+      "The text is a 2025 review by Koutsoumpis focusing specifically on supervised machine learning.",
+      "Effect sizes (Pearson r) are heavily cited to compare self versus observer reports."
+    ],
+    "warnings": [
+      "The review is explicitly non-systematic, meaning it may not cover all literature exhaustively.",
+      "Criterion validity is noted as scarcely measured and based on very small samples (e.g., n=25), so conclusions regarding future job performance prediction are limited."
+    ]
+  }
+}

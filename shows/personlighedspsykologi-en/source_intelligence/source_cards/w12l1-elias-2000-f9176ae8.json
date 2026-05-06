@@ -1,0 +1,133 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:09:29Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-elias-2000-f9176ae8"
+    ],
+    "dependency_hashes": {
+      "source_file": "2916674e58257dd4ab74932ecb074aac36f67ce648b56432d31c6392fe64fc1d",
+      "source_files_signature": "c6b6fa753b0a2c365b4f3929cdf971c6c89a75001799c05e0ffa6fd16dc9879e",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w12l1-elias-2000-f9176ae8",
+    "lecture_key": "W12L1",
+    "title": "Elias (2000)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Elias (2000).pdf",
+    "source_paths": [
+      "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Elias (2000).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Elias (2000).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Elias (2000).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "2916674e58257dd4ab74932ecb074aac36f67ce648b56432d31c6392fe64fc1d",
+    "length_band": "medium",
+    "page_count": 19,
+    "estimated_token_count": 12350,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides a historical-sociological framework for understanding how personality structures, particularly affect control and the superego, are shaped by long-term societal processes.",
+    "source_role": "A primary theoretical text that uses concrete historical examples of etiquette (meat, knives, forks, bedrooms) to illustrate the sociogenetic approach to personality.",
+    "relation_to_lecture": "Supports the Week 12 theme of historicizing the subject by demonstrating that 'personality' (specifically shame, disgust, and affect control) is not static but evolves alongside societal changes.",
+    "central_claims": [
+      {
+        "claim": "The historical shift in table manners, such as moving the carving of meat behind the scenes, reflects an advancing 'threshold of repugnance' where society increasingly seeks to suppress reminders of its animalic nature.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Modern etiquette rules, such as using a fork or avoiding putting a knife in the mouth, originated from emotional reactions of distaste, shame, and fear, rather than from rational understandings of hygiene or safety.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The civilizing process involves the gradual transformation of external social constraints into automatic, internalized psychological self-restraints (the superego).",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Feelings of shame and embarrassment regarding bodily functions and nakedness are not innate but are sociogenetically formed through historical shifts in social relations and privacy.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Threshold of repugnance",
+        "definition": "The socially conditioned level of sensitivity at which individuals experience disgust or discomfort towards bodily functions, animalistic traits, or lack of restraint.",
+        "role": "Illustrates how societal changes manifest as deeply personal, visceral emotional reactions in the individual."
+      },
+      {
+        "term": "Internalization / Self-restraint",
+        "definition": "The process by which external social coercion and rules are absorbed into the individual's psyche, operating automatically even against conscious wishes.",
+        "role": "Explains the psychological mechanism behind the 'civilizing process' and the historical formation of the superego."
+      },
+      {
+        "term": "Sociogenesis and Psychogenesis",
+        "definition": "The parallel and interconnected development of societal structures (sociogenesis) and individual personality or drive structures (psychogenesis).",
+        "role": "Provides the theoretical framework bridging sociology and personality psychology, showing that personality is historically situated."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Rational vs. Affective Explanations of Behavior",
+        "summary": "Elias contrasts modern, post-hoc logical justifications for manners (e.g., using a fork for hygiene) with their actual historical origins in affective shifts (e.g., feelings of disgust and shame).",
+        "stakes": "Demonstrates that personality and behavioral norms are primarily driven by unconscious emotional conditioning and social distancing rather than conscious rational calculation."
+      },
+      {
+        "label": "External Constraint vs. Internal Self-Restraint",
+        "summary": "The historical shift from obeying rules due to direct social pressure or threat from others, to obeying them automatically via an internalized sense of shame.",
+        "stakes": "Highlights how the modern personality structure (specifically the superego) is formed through the historical internalization of social control."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Elias argues that manners improved because people became smarter or scientifically understood hygiene better (he explicitly rejects this 'rational' explanation).",
+      "Interpreting the 'civilizing process' as a moral judgment implying modern people are morally superior, rather than a descriptive term for increased affect control and internalized restraint.",
+      "Thinking that feelings of shame and disgust are purely biological or innate, missing Elias's core argument that they are historically and socially conditioned."
+    ],
+    "quote_targets": [
+      {
+        "target": "The fork is nothing other than the embodiment of a specific standard of emotions and a specific level of revulsion.",
+        "why": "Perfectly encapsulates Elias's argument that everyday objects and manners are physical manifestations of psychological and emotional shifts."
+      },
+      {
+        "target": "Thus the socio-historical process of centuries... is re-enacted in abbreviated form in the life of the individual human being.",
+        "why": "Connects the historical civilizing process to individual developmental psychology and the formation of personality."
+      },
+      {
+        "target": "...the social standard to which the individual was first made to conform from outside by external restraint is finally reproduced more or less smoothly within him or her, through a self-restraint...",
+        "why": "Provides the core definition of internalization and the sociogenetic origin of the superego."
+      }
+    ],
+    "grounding_notes": [
+      "The text relies heavily on historical etiquette manuals (e.g., Erasmus, Courtin, La Salle) to trace psychological changes.",
+      "Elias frequently uses psychoanalytic terminology (e.g., superego, drives, repression) but applies it to historical sociology."
+    ],
+    "warnings": [
+      "The text uses older historical examples and language; students must abstract the underlying psychological mechanisms (internalization of shame) from the specific historical anecdotes about carving meat or sharing beds."
+    ]
+  }
+}

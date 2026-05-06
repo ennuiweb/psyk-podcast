@@ -1,0 +1,177 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:16:16Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-davies-1990-65185910",
+      "w10l2-foucault-1997-92cd121d",
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "dffd44fd84f20a357661ba0479f07f274bda6aa702cb4f23e0184e5bba7060b6",
+      "course_synthesis": "bc2d661e854296a89a1663fe1d40d1f978fcb60c605a518ed65e0e3418314113",
+      "source_cards_signature": "9f69b3a25f52f7b00fb83601a624e6b4704806b255dbf1dcdcbeb65e66114135",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W10L2",
+    "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+    "sequence_index": 19
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "Frame the episode around the 'problem of the person': What if personality isn't an inner essence you possess, but a historical and discursive position you occupy?",
+      "must_cover": [
+        "The explicit mapping of poststructuralist concepts onto the course's four orientation points, particularly redefining 'agency' as discursive positioning.",
+        "The contrast between 'inner essence' ontologies and the historical production of the subject (subjectivation).",
+        "Concrete applications of abstract theory using Davies' classroom study and Hacking's looping effects."
+      ],
+      "avoid": [
+        "Framing poststructuralism as pure determinism or linguistic idealism; emphasize that power requires freedom.",
+        "Getting bogged down in the granular historical details of Foucault's Greek vs. Roman ethics unless illustrating historicity.",
+        "Relying on external seminar media (like the Manosphere video) not detailed in the core texts."
+      ],
+      "grounding": [
+        "Anchor dense Foucauldian philosophy in concrete examples from Davies (1990) and Hacking's dynamic nominalism.",
+        "Directly address the common student misconception that poststructuralism means 'no agency'."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w10l2-davies-1990-65185910",
+        "angle": "Redefining agency from an individual 'agonistic' struggle against society to a discursive practice.",
+        "must_cover": [
+          "The critique of the agonistic model of agency.",
+          "The concept of 'positioning' as a fluid process replacing static sociological roles.",
+          "How achieving agency requires access to discursive resources to recognize and mobilize subject positionings."
+        ],
+        "avoid": [
+          "Confusing the 'agonistic' model with Davies' own proposed discursive model.",
+          "Treating positioning as just another word for traditional roles."
+        ]
+      },
+      {
+        "source_id": "w10l2-foucault-1997-92cd121d",
+        "angle": "The subject as a historical form shaped by power and ethical practices, rather than an innate substance.",
+        "must_cover": [
+          "The distinction between fluid power relations and frozen states of domination.",
+          "The assertion that power fundamentally requires the existence of freedom to operate.",
+          "The 'care of the self' as an ethical practice of freedom."
+        ],
+        "avoid": [
+          "Equating Foucault's concept of power entirely with domination or evil.",
+          "Assuming Foucault claims the subject does not exist at all."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+        "angle": "The historical invention of 'man' and the three axes of Foucault's critique: Knowledge, Power, and Subjectivation.",
+        "must_cover": [
+          "The claim that 'man' is a recent historical invention without essential coherence.",
+          "The shift from punishing the body to disciplining the soul.",
+          "Power as a multiplicity of immanent force relations, not just top-down sovereignty."
+        ],
+        "avoid": [
+          "Believing that 'man' has always been the natural object of scientific inquiry."
+        ]
+      },
+      {
+        "source_id": "w10l2-seminar-10-poststrukturalisme-70b709db",
+        "angle": "Personality as something one 'does' rather than 'is' through discursive practices.",
+        "must_cover": [
+          "The distinction between 'being' and 'doing' personality.",
+          "Discursive subjectification as an active practice of ignoring, avoiding, or confirming discourses.",
+          "Psychiatric diagnoses as examples of power relations."
+        ],
+        "avoid": [
+          "Assuming discourses completely and passively determine behavior without active subject engagement."
+        ]
+      },
+      {
+        "source_id": "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+        "angle": "Social constructionism and the dynamic nature of human classification.",
+        "must_cover": [
+          "Hacking's concept of 'looping effects' and dynamic nominalism.",
+          "The distinction between fixed targets and moving targets in scientific classification.",
+          "Emotions and personality as cultural and relational products."
+        ],
+        "avoid": [
+          "Assuming that because human subjects are 'moving targets', their classifications lack objectivity."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "The radical shift from personality as an 'inner essence' to a 'discursive position'.",
+      "must_cover": [
+        "Foucault's subjectivation (we are historically formed).",
+        "Davies' discursive agency (freedom is navigating discourses)."
+      ],
+      "avoid": [
+        "The misconception that poststructuralism means humans have zero agency."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Subjectivation (Subjektivering)",
+        "why": "Provides the core alternative to essentialist views of personality, showing how individuals actively and historically form themselves as subjects."
+      },
+      {
+        "concept": "Discursive Agency",
+        "why": "Crucial for correcting the student misconception that poststructuralism eliminates agency; redefines it as mobilizing discursive resources."
+      },
+      {
+        "concept": "Looping Effects",
+        "why": "Hacking's concept perfectly illustrates the epistemological stakes of the course, showing how psychiatric categories actively shape the people they classify."
+      },
+      {
+        "concept": "Power Relations (Foucault)",
+        "why": "Essential for understanding that power is productive, ubiquitous, and requires freedom, contrasting with simplistic views of power as mere oppression."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Inner Essence vs. Subjectivation",
+        "why": "This is the primary ontological debate of the course arc, contrasting early trait models with poststructuralism's historically produced subject."
+      },
+      {
+        "tension": "Agonistic Agency vs. Discursive Agency",
+        "why": "Highlights the shift from viewing agency as an individual's willpower against society to viewing it as the navigation of available social and linguistic resources."
+      }
+    ],
+    "grounding_notes": [
+      "Always clarify that Foucault's concept of power requires freedom to operate; it is not synonymous with domination.",
+      "Use Davies' classroom study to provide concrete examples of abstract concepts like 'positioning' and 'discursive practice'.",
+      "Connect Hacking's looping effects back to the clinical diagnoses discussed in W03L2 to show the real-world epistemological stakes of classification."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w10l2-foucault-1997-92cd121d",
+        "why": "The anchor theoretical text defining power, freedom, and the subject as a historical form, essential for the 'historicity' orientation point."
+      },
+      {
+        "source_id": "w10l2-davies-1990-65185910",
+        "why": "The anchor empirical text providing a concrete, classroom-based application of how agency and positioning operate in real-world discursive practices."
+      }
+    ]
+  }
+}

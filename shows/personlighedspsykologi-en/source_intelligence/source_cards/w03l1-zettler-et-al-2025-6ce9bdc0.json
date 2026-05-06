@@ -1,0 +1,126 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:50:23Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-zettler-et-al-2025-6ce9bdc0"
+    ],
+    "dependency_hashes": {
+      "source_file": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
+      "source_files_signature": "dadf84da9cb610bb49c05910b74e4e5725c9982c957f7df9e0bd5adaf9cd3e80",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+    "lecture_key": "W03L1",
+    "title": "Zettler et al. (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf",
+    "source_paths": [
+      "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Zettler et al. (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
+    "length_band": "short",
+    "page_count": 3,
+    "estimated_token_count": 1950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides empirical support for socioecological and behavioral ecology theories of personality, demonstrating that macro-level societal conditions coshape micro-level personality development over time.",
+    "source_role": "A primary empirical research article utilizing a massive cross-cultural dataset to test the relationship between societal environment and dark personality traits.",
+    "relation_to_lecture": "Directly supports the W3L1 theme of 'Culture, evolution, genetics, and personality' by illustrating how cultural/societal environments (ASC) interact with evolutionary mechanisms (adaptive plasticity) to shape personality.",
+    "central_claims": [
+      {
+        "claim": "Aversive societal conditions (ASC), such as corruption, inequality, poverty, and violence, predict higher levels of the Dark Factor of Personality (D) in individuals across countries and US states.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Higher levels of D can be understood as an adaptive response (adaptive phenotypic plasticity) to environments where exploitation is common, helping individuals protect themselves and navigate normalized self-serving behaviors.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Although the statistical relationship between ASC and D is small in absolute magnitude, these small effects are cumulative and have important consequences at a societal scale.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Using a 20-year time lag between the assessment of societal conditions and personality traits helps isolate the directional effect of society on personality and virtually excludes reverse causality.",
+        "grounding": "source-grounded",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Dark Factor of Personality (D)",
+        "definition": "The general tendency to maximize one's individual utility—disregarding, accepting, or malevolently provoking disutility for others—accompanied by beliefs that serve as justifications.",
+        "role": "Serves as the central dependent variable, representing the underlying disposition or 'aversive essence' from which all specific dark traits arise."
+      },
+      {
+        "term": "Aversive Societal Conditions (ASC)",
+        "definition": "Societal environments characterized by high levels of corruption, inequality, poverty, and violence, where self-serving behavior at the cost of others is often perceived as adaptive or justifiable.",
+        "role": "Serves as the central independent variable hypothesized to coshape the development of aversive personality traits."
+      },
+      {
+        "term": "Adaptive phenotypic plasticity",
+        "definition": "The process by which individuals' trait levels develop in response to societal environments in order to enhance success and survival.",
+        "role": "Provides the theoretical evolutionary and behavioral ecology mechanism explaining why societal conditions influence personality development."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "The Dark Factor (D) vs. Specific Aversive Traits",
+        "summary": "D represents the single underlying disposition ('aversive essence'), whereas traits like Machiavellianism, sadism, or psychopathy are specific manifestations that blend D with other characteristics.",
+        "stakes": "Justifies the study's focus on D rather than individual dark traits, as specific traits typically do not yield incremental validity beyond D for self-serving behavior."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that dark personalities cause the aversive societal conditions in this specific study's model; the authors explicitly used a 20-year lag for ASC data to test the reverse—how society shapes personality.",
+      "Dismissing the findings because the effect sizes are 'small'; the authors explicitly argue that in personality and socioecological research, small effects are expected and cumulatively significant.",
+      "Equating D with just psychopathy or narcissism; D is the common core underlying *all* aversive traits."
+    ],
+    "quote_targets": [
+      {
+        "target": "the general tendency to maximize one’s individual utility—disregarding, accepting, or malevolently provoking disutility for others—accompanied by beliefs that serve as justifications",
+        "why": "This is the foundational definition of the Dark Factor of Personality (D) used throughout the text."
+      },
+      {
+        "target": "higher levels of D can be seen as an adaptive response to situational demands, helping individuals avoid being exploited by others",
+        "why": "Captures the core evolutionary/adaptive rationale for why aversive societal conditions breed dark personality traits."
+      }
+    ],
+    "grounding_notes": [
+      "The study relies on a massive online convenience sample (qst.darkfactor.org) of over 1.7 million participants.",
+      "The ASC index is a composite of four 'objectively' assessed variables: corruption, inequality, poverty, and violence."
+    ],
+    "warnings": [
+      "The authors note a limitation: it is unknown how long participants resided in their assessed country or US state, meaning the exact duration of exposure to ASC is unmeasured.",
+      "The reliance on online convenience samples may introduce self-selection effects.",
+      "While the 20-year lag strongly suggests directionality, the study is ultimately observational and cannot definitively prove strict causality."
+    ]
+  }
+}

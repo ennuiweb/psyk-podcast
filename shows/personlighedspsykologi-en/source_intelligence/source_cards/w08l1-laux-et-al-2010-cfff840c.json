@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:16:19Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l1-laux-et-al-2010-cfff840c"
+    ],
+    "dependency_hashes": {
+      "source_file": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
+      "source_files_signature": "21f5ae9d9acb0fb185176bf2ca59fe3ab3b4b2706000dc3a2bf893b29285e679",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l1-laux-et-al-2010-cfff840c",
+    "lecture_key": "W08L1",
+    "title": "Laux et al (2010)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+    "source_paths": [
+      "Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
+    "length_band": "short",
+    "page_count": 8,
+    "estimated_token_count": 5200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Demonstrates the application of William Stern's Critical Personalism to a single, extreme historical case study to test and expand the theory's boundaries.",
+    "source_role": "Provides a concrete psychobiographical case study (Adolf Hitler) to illustrate and operationalize Stern's abstract personalistic concepts.",
+    "relation_to_lecture": "Serves as a primary reading for the lecture on Critical Personalism, showing how Stern's concepts can be applied in psychobiographical analysis.",
+    "central_claims": [
+      {
+        "claim": "William Stern's personalistic principles can be applied to destructive individuals like Adolf Hitler if a neutralized, descriptive version of the concepts is used instead of Stern's original idealized version.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Hitler's rise to power exemplifies the principle of convergence, where his latent personal dispositions actively converged with the specific historical and environmental conditions of post-WWI Germany.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The fanatic devotion of Hitler's followers illustrates the principle of introception, as they internalized the heterotelic goals of the Nazi movement into their own autotelic self-concepts.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Despite exhibiting traits consistent with borderline personality disorder, Hitler achieved a form of unitas multiplex (unity in diversity) through the purposive, self-presentational demonstration of an iron will.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Convergence",
+        "definition": "The active, dynamic mutual connection between a person's latent dispositions and environmental influences (the world factor), where the person converges with the world rather than merely reacting to it.",
+        "role": "Explains how Hitler and his historical era mutually stimulated each other, moving beyond mechanistic interactionism."
+      },
+      {
+        "term": "Introception",
+        "definition": "The process of incorporating the goals, meanings, and values of the outer world (the heterotelic or not-I) into one's own self (the autotelic).",
+        "role": "Explains the reciprocal, almost mystic communion between Hitler and his followers, where supra-personal goals became deeply personal."
+      },
+      {
+        "term": "Unitas multiplex (multiple unity)",
+        "definition": "The concept that a person is a unified whole despite an empirically accessible multiplicity of diverse, and sometimes contradictory, attributes and experiences.",
+        "role": "Used to analyze how Hitler maintained a unified persona despite severe psychological contradictions and a fragmented ego."
+      },
+      {
+        "term": "Purposiveness",
+        "definition": "The conscious, self-specific goal-striving that unifies a person's diverse acts, cognitions, and dispositions.",
+        "role": "Serves as the mechanism through which unitas multiplex is achieved, exemplified by Hitler's constant demonstration of control and iron will."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Idealized vs. Neutralized Personalism",
+        "summary": "The difference between Stern's original value-laden, optimistic view of human nature and the authors' descriptive application of his mechanisms to destructive figures.",
+        "stakes": "Allows Stern's framework to be universally applicable in psychology, rather than being dismissed as merely a romantic or concrete idealist philosophy."
+      },
+      {
+        "label": "Mechanistic Interaction vs. Convergence",
+        "summary": "The difference between unidirectional environmental conditioning and Stern's view of the person actively converging with the world.",
+        "stakes": "Highlights the dynamic, co-determining role of the individual in their own development, showing that environmental factors are coworkers rather than coercing forces."
+      },
+      {
+        "label": "Autotelic vs. Heterotelic",
+        "summary": "The distinction between self-directed goals (autotelic) and outer-directed goals or the not-I (heterotelic).",
+        "stakes": "Forms the basis of introception, showing how external ideologies can be synthesized into the core self without depersonalization."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Stern's theory inherently supports or excuses destructive behavior, missing that the authors are explicitly neutralizing his originally optimistic theory for analytical use.",
+      "Confusing convergence with simple environmental determinism or mechanistic interaction.",
+      "Misinterpreting unitas multiplex as meaning a person has no contradictions, rather than achieving unity despite and through contradictions."
+    ],
+    "quote_targets": [
+      {
+        "target": "The converging principle is not comparable with a mechanistic unidirectional interaction... converging is an active and dynamic process.",
+        "why": "Clarifies the crucial difference between Stern's concept of convergence and standard interactionist models in psychology."
+      },
+      {
+        "target": "Our suggestion is to make a distinction between two possible meanings in each of Stern's principles: (1) the original idealized version and (2) the neutralized version...",
+        "why": "Summarizes the authors' core theoretical contribution that allows Stern's theory to be applied to a destructive figure like Hitler."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly relies on psychobiographical and historical accounts (e.g., Fest, Waite, Speer) to apply Stern's concepts.",
+      "The authors propose a novel neutralized reading of Stern, which is their own theoretical contribution rather than Stern's original intent."
+    ],
+    "warnings": [
+      "The clinical diagnosis of Hitler as having Borderline Personality Disorder is used in the text as a heuristic for applying Stern's concepts, not as a definitive psychiatric assessment."
+    ]
+  }
+}

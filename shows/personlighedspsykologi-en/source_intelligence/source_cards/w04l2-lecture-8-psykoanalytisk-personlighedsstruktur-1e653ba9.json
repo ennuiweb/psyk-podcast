@@ -1,0 +1,149 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:56:54Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+    ],
+    "dependency_hashes": {
+      "source_file": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
+      "source_files_signature": "e0749f0ec541eaccdcd40f8c4b35bc2d7c7ebfb09f382fe6bbef7efac114a6d5",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+    "lecture_key": "W04L2",
+    "title": "8. Psykoanalytisk personlighedsstruktur",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/8. Psykoanalytisk personlighedsstruktur.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/8. Psykoanalytisk personlighedsstruktur.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/8. Psykoanalytisk personlighedsstruktur.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/8. Psykoanalytisk personlighedsstruktur.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "423b363fd7363b3592b46c46b3c6c8e5094c3b79cfdc137792007a5a4529eec8",
+    "length_band": "long",
+    "page_count": 56,
+    "estimated_token_count": 36400,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Præsenterer fundamentet for psykoanalytisk personlighedsforståelse, fra tidlig udvikling og driftsteori til strukturel diagnostik via forsvarsmekanismer.",
+    "source_role": "Forelæsningsslides der strukturerer pensum og fremhæver de vigtigste pointer fra Freud, Laplanche, Lacan og McWilliams.",
+    "relation_to_lecture": "Dette er hovedpræsentationen til forelæsning 8 om psykoanalytisk personlighedsstruktur.",
+    "central_claims": [
+      {
+        "claim": "Menneskebarnet fødes for tidligt og er fundamentalt afhængigt af andre, hvilket betyder, at psyken udvikles gennem interaktion med den sociale verden.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Drifter er psykologiske begreber, der adskiller sig fra biologiske instinkter, og de karakteriseres ved deres kilde, trang, objekt og mål.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personlighedsstruktur forstås traditionelt i psykoanalysen ud fra graden af psykologisk funktionsniveau (neurotisk, borderline, psykotisk) og karaktertype.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Forsvarsmekanismer er ubevidste psykologiske mekanismer, der mindsker angst, og sammensætningen af disse er nøglen til at forstå et menneskes personlighed.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Libido",
+        "definition": "Psykoanalysens begreb for den energi, der knytter sig til kærlighed og stræben efter at være og høre til i verden.",
+        "role": "Forklarer, hvordan individet investerer verden med seksuel energi for at overleve og relatere til andre."
+      },
+      {
+        "term": "Drift",
+        "definition": "Den psykiske repræsentation af en kontinuerligt flydende, intern somatisk pirringskilde, som adskiller det sjælelige fra det legemelige.",
+        "role": "Udgør kernen i den psykoanalytiske motivationsforståelse og adskiller menneskets psykologi fra dyrets instinkter."
+      },
+      {
+        "term": "Infantil seksualitet",
+        "definition": "Ideen om at barnet er et seksuelt væsen på egne præmisser, hvor seksualiteten er diffus, usamlet (polymorf) og løsrevet fra genital reproduktion.",
+        "role": "Udfordrer den folkelige opfattelse af sex og forklarer tidlig psykologisk udvikling, f.eks. amning som en autoerotisk funktion."
+      },
+      {
+        "term": "Gentagelsestvang",
+        "definition": "Det ubevidstes insisteren på at gentage psykiske konflikter gennem symptomer og ofte selvdestruktive adfærdsmønstre.",
+        "role": "Forklarer hvorfor patienter ofte kæmper med de samme problemer hele livet og søger psykoanalytisk behandling."
+      },
+      {
+        "term": "Forsvarsmekanismer",
+        "definition": "Ubevidste psykologiske mekanismer, der udvikles i barndommen for at mindske oplevelsen af negative emotioner og håndtere indre og ydre stimuli.",
+        "role": "Differentierer personlighedsstrukturer (neurotisk vs. psykotisk) baseret på, om forsvaret er modent (sekundært) eller primitivt (primært)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Instinkt vs. Drift",
+        "summary": "Instinkt er rent biologisk (som hos hesten), mens drift begynder i det biologiske, men bliver til et psykologisk begreb, der repræsenterer somatisk pirring.",
+        "stakes": "Afgørende for at forstå, at menneskets motivation og seksualitet ikke er rent biologisk determineret, men psykologisk formidlet."
+      },
+      {
+        "label": "Primære vs. Sekundære forsvarsmekanismer",
+        "summary": "Primære (primitive) forsvarsmekanismer håndterer grænsen mellem selvet og omverdenen (f.eks. benægtelse, projektion), mens sekundære (modne) håndterer indre grænser (f.eks. fortrængning, rationalisering).",
+        "stakes": "Bruges diagnostisk til at vurdere en persons psykologiske funktionsniveau og personlighedsstruktur."
+      },
+      {
+        "label": "Neurotisk vs. Psykotisk personlighedsstruktur",
+        "summary": "Neurotikere har integreret identitet og bruger modne forsvar (fortrængning), mens psykotikere har svækket identitet, bruger primitive forsvar og har en indre verden præget af vrangforestillinger.",
+        "stakes": "Bestemmer den terapeutiske tilgang (selvrealisering vs. støttende terapi for at opbygge struktur)."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At forveksle 'drift' med biologisk 'instinkt'.",
+      "At tro, at 'infantil seksualitet' refererer til voksen, genital seksualitet frem for polymorf, autoerotisk tilfredsstillelse.",
+      "At antage, at forsvarsmekanismer er bevidste strategier, man vælger at bruge.",
+      "At tro, at regression blot er at slappe af (f.eks. binge-watche serier), frem for en ubevidst tilbagevenden til et tidligere udviklingstrin."
+    ],
+    "quote_targets": [
+      {
+        "target": "Laplanche: Sex er perverst!",
+        "why": "Understreger pointen om, at der ikke findes nogen 'naturlig' biologisk norm for menneskelig seksualitet i psykoanalysen."
+      },
+      {
+        "target": "Freuds krystal",
+        "why": "Illustrerer det psykoanalytiske princip om, at studiet af patologi (den brudte krystal) afslører psykens normale struktur."
+      },
+      {
+        "target": "McWilliams (2011) om forsvarsmekanismer",
+        "why": "Giver den diagnostiske ramme for at skelne mellem neurotisk, borderline og psykotisk struktur."
+      }
+    ],
+    "grounding_notes": [
+      "Slidessættet trækker eksplicit på citater fra Freud (1905, 1917, 1933), Laplanche (1970), McWilliams (2011) og Lear (1990).",
+      "Diagnostikken af personlighedsstrukturer er primært forankret i Nancy McWilliams' rammeværk."
+    ],
+    "warnings": [
+      "Da kilden er et sæt forelæsningsslides, er komplekse teorier (som Lacans spejlstadium og Ødipuskomplekset) stærkt kondenserede og kræver læsning af grundteksterne for fuld forståelse."
+    ]
+  }
+}

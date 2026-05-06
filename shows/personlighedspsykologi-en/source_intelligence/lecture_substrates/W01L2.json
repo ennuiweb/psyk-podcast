@@ -1,0 +1,147 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:25:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-mayer-and-bryan-2024-07faf915",
+      "w01l2-phan-et-al-2024-bf3395d7",
+      "w01l2-koutsoumpis-2025-96f4dcf7",
+      "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "f618169196a71006846cc4a123dce3fbdd53e81d165c87bc29a7d5368146f953",
+      "source_cards_signature": "4405c8fc4422db41b1102503aa70bfd54e32aa425f0462293c65e2b5803f7a4d",
+      "raw_sources_signature": "36c6f142b1873a82d31eb1295862750c102b55e340450318f0ca0e42c2f9d783"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L2",
+    "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+    "sequence_index": 2
+  },
+  "analysis": {
+    "lecture_question": "How do we measure personality, and how do our measurement choices align with our theoretical and inferential goals?",
+    "central_learning_problem": "Students often view personality assessment as a purely technical task of finding the 'most accurate' test. The central learning problem is to recognize that assessment is fundamentally theory-laden. Every measurement choice—whether using self-reports, observer ratings, register data, or machine learning—implies specific assumptions about what personality is (e.g., inner experience vs. outward reputation) and dictates what kinds of inferences can legitimately be drawn (e.g., about a population average vs. a specific individual).",
+    "source_roles": [
+      {
+        "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+        "role": "anchor",
+        "rationale": "Provides the foundational epistemological framework, arguing that researchers must explicitly align their focal entity (person vs. population) and generalization type to avoid invalid inferences."
+      },
+      {
+        "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+        "role": "framing",
+        "rationale": "Offers a comprehensive taxonomy of personality data (personal-source vs. external-source) and explains why different methods often fail to converge due to distinct response processes."
+      },
+      {
+        "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+        "role": "application",
+        "rationale": "Applies assessment concepts to the modern context of machine learning, illustrating how computational methods shift the traditional measurement paradigm and introduce new validity and bias challenges."
+      },
+      {
+        "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+        "role": "supporting",
+        "rationale": "Synthesizes the readings into a cohesive lecture narrative, introducing practical frameworks like the TRI model and providing concrete examples of different data types."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w01l2-mayer-and-bryan-2024-07faf915",
+          "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+        ],
+        "relation": "The lecture slides operationalize Mayer & Bryan's theoretical distinction between personal and external source data by introducing the Trait-Reputation-Identity (TRI) model.",
+        "learning_stakes": "Helps students map abstract data taxonomies onto concrete multi-rater assessment frameworks, showing how self (identity) and observer (reputation) reports capture distinct but overlapping variance."
+      },
+      {
+        "source_ids": [
+          "w01l2-phan-et-al-2024-bf3395d7",
+          "w01l2-koutsoumpis-2025-96f4dcf7"
+        ],
+        "relation": "Phan et al. warn against the ergodic fallacy (applying population data to individuals), which serves as a critical caveat for Koutsoumpis's discussion of machine learning models trained on large population datasets.",
+        "learning_stakes": "Prevents students from uncritically accepting machine learning predictions as perfectly accurate for individual cases, highlighting the tension between population-level algorithmic accuracy and individual-level psychological functioning."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Personal-source vs. External-source data",
+        "explanation": "The distinction between data originating from the target's own expressions of inner states (e.g., self-reports, thematic tests) and data collected from the surrounding environment (e.g., observer reports, register data, physiological sensors).",
+        "source_ids": [
+          "w01l2-mayer-and-bryan-2024-07faf915",
+          "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+        ]
+      },
+      {
+        "concept": "Ergodic Fallacy",
+        "explanation": "The invalid assumption that population-level statistical parameters (like sample means or between-person correlations) can be directly applied to the psychological functioning of specific individuals.",
+        "source_ids": [
+          "w01l2-phan-et-al-2024-bf3395d7"
+        ]
+      },
+      {
+        "concept": "Trait-Reputation-Identity (TRI) Model",
+        "explanation": "A multi-rater framework that disentangles a person's self-concept (Identity) and how they are viewed by others (Reputation) from the underlying, shared personality characteristic (Trait).",
+        "source_ids": [
+          "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+        ]
+      },
+      {
+        "concept": "Machine Learning-based Personality Assessment (ML-PA)",
+        "explanation": "The use of supervised algorithms to predict traditional questionnaire-based personality traits using behavioral features (e.g., text, voice, digital footprints) as the independent variables.",
+        "source_ids": [
+          "w01l2-koutsoumpis-2025-96f4dcf7",
+          "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Method Convergence vs. Distinct Response Processes",
+        "stakes": "Historically, researchers expected different measures of the same trait to converge. Recognizing that non-convergence often reflects distinct underlying mental response processes (rather than just measurement error) is crucial for selecting the right tool for the right theoretical question.",
+        "source_ids": [
+          "w01l2-mayer-and-bryan-2024-07faf915"
+        ]
+      },
+      {
+        "tension": "Population-level vs. Person-level Inference",
+        "stakes": "Mainstream quantitative psychology often relies on Galtonian (population-level) approaches. Students must understand that finding an average effect in a sample does not automatically translate to a universal law governing individual psychological systems.",
+        "source_ids": [
+          "w01l2-phan-et-al-2024-bf3395d7"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that a lack of correlation between a self-report and an observer report means one of them is 'wrong', rather than capturing different valid facets of personality (Identity vs. Reputation).",
+      "Believing that 'nomothetic' strictly means quantitative/between-person and 'idiographic' strictly means qualitative/within-person, ignoring the more precise matrix of focal entities and generalization types.",
+      "Thinking that machine learning models capture the 'true' personality directly from behavior, rather than just predicting the variance of traditional questionnaire scores.",
+      "Equating self-estimated abilities (like intelligence) with actual cognitive capacity."
+    ],
+    "must_carry_ideas": [
+      "Personality assessment is not method-neutral; the choice of measurement instrument inherently shapes the theoretical conclusions that can be drawn.",
+      "No single assessment method is perfect; collecting multiple types of data (e.g., self, observer, behavioral) yields a more comprehensive understanding of a person.",
+      "Researchers must explicitly align their research questions, data collection methods, and inferential goals to avoid logical errors like the ergodic fallacy."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The Koutsoumpis (2025) review on machine learning is explicitly non-systematic, and conclusions regarding criterion validity (e.g., predicting job performance) are based on very limited data.",
+      "Phan et al. (2024) introduce 25 highly detailed polytomies for research design; students should focus on the core 2x3 conceptual matrix rather than memorizing all 25 criteria.",
+      "Mayer & Bryan (2024) note that their framework and cited evidence are primarily based on Westernized societies and may not fully generalize across cultures."
+    ]
+  }
+}

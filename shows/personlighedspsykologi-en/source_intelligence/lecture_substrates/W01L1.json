@@ -1,0 +1,168 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:07:52Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "w01l1-lewis-1999-295c67e3",
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "w01l1-seminar-1-introduktion-9fe382c8"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "4a12df8a052cc5fd9451f749411ffe5bd1bab72aa395291acda91c5d6112f8c1",
+      "source_cards_signature": "ea70985a511ceaf84ebf053984a6f61600e4ca5131b415245fc6676460aa13e3",
+      "raw_sources_signature": "b93f2182c8e81ca9b8e7485e24730d057f0669a9ca85ef96adbf6fc13c7e838c"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L1",
+    "lecture_title": "Introforelæsning og nøglebegreber i personlighedspsykologien (Forelæsning 1, 2026-02-02)",
+    "sequence_index": 1
+  },
+  "analysis": {
+    "lecture_question": "What is personality psychology, and how do we navigate its diverse and conflicting theoretical paradigms?",
+    "central_learning_problem": "Students often enter the course expecting a single, unified definition of personality, typically based on measurable traits. The central learning problem is to dismantle this expectation and equip students with a meta-theoretical framework (the four 'orientation points') so they can systematically compare theories that hold fundamentally different ontological and epistemological assumptions about what a person is.",
+    "source_roles": [
+      {
+        "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "role": "anchor",
+        "rationale": "Provides the foundational meta-theoretical framework for the course, defining the four main paradigms and the four comparative dimensions (orientation points) used to analyze them."
+      },
+      {
+        "source_id": "w01l1-lewis-1999-295c67e3",
+        "role": "supporting",
+        "rationale": "Offers a critical deep dive into developmental models, challenging traditional organismic/trait assumptions and advocating for a contextual approach, which serves as a prime example of applying the orientation points."
+      },
+      {
+        "source_id": "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+        "role": "framing",
+        "rationale": "Sets the agenda for the course, introduces the etymological problem of the 'persona', and establishes the necessity of using orientation points to navigate the fragmented field."
+      },
+      {
+        "source_id": "w01l1-seminar-1-introduktion-9fe382c8",
+        "role": "application",
+        "rationale": "Translates the lecture's broad themes into concrete analytical tools and sets up group exercises where students must apply the orientation points to the developmental models presented in Lewis."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8"
+        ],
+        "relation": "The lecture slides frame the overarching problem of defining a person, while the Grundbog provides the detailed taxonomy (paradigms and orientation points) required to solve it.",
+        "learning_stakes": "Students must understand that the lecture's philosophical questions about the 'mask' are operationalized through the textbook's comparative dimensions."
+      },
+      {
+        "source_ids": [
+          "w01l1-lewis-1999-295c67e3",
+          "w01l1-seminar-1-introduktion-9fe382c8"
+        ],
+        "relation": "The seminar slides explicitly require students to apply the course's analytical framework to the five developmental models detailed in the Lewis text.",
+        "learning_stakes": "Demonstrates that the Lewis reading is not just background context, but the primary material for the first practical application of the course's meta-theoretical tools."
+      },
+      {
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lewis-1999-295c67e3"
+        ],
+        "relation": "The Grundbog introduces 'historicitet' and 'determination' as abstract dimensions, while Lewis provides a concrete critique of how traditional (organismic) theories handle these dimensions compared to contextual models.",
+        "learning_stakes": "Helps students see how abstract orientation points manifest in actual theoretical debates about stability, change, and development."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Persona",
+        "explanation": "The etymological root of 'person', meaning a mask or social role. It introduces the foundational psychological problem of distinguishing between an external social presentation and an internal reality.",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8"
+        ]
+      },
+      {
+        "concept": "Orienteringspunkter (Orientation points)",
+        "explanation": "Four comparative dimensions (essence vs. context, agency, determination, historicity) used as an analytical framework to evaluate and compare different personality theories throughout the course.",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+          "w01l1-seminar-1-introduktion-9fe382c8"
+        ]
+      },
+      {
+        "concept": "Organismic vs. Contextual Models",
+        "explanation": "A contrast between developmental models that locate causes in past enduring traits within the individual (organismic) versus models that view behavior as a dynamic adaptation to the current environment (contextual).",
+        "source_ids": [
+          "w01l1-lewis-1999-295c67e3",
+          "w01l1-seminar-1-introduktion-9fe382c8"
+        ]
+      },
+      {
+        "concept": "Ontology vs. Epistemology in Personality",
+        "explanation": "The distinction between what personality actually is (ontology) and how it can be investigated or measured (epistemology), explaining why different paradigms use vastly different methods.",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Essence vs. Context",
+        "stakes": "Determines whether a theory looks for personality inside the individual (e.g., traits, genes, inner core) or outside the individual (e.g., social interactions, relations, structures).",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+          "w01l1-seminar-1-introduktion-9fe382c8"
+        ]
+      },
+      {
+        "tension": "Stability vs. Change",
+        "stakes": "Challenges the traditional assumption that personality is highly consistent over time and across situations, forcing a debate on whether early life events deterministically predict later outcomes.",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-lewis-1999-295c67e3"
+        ]
+      },
+      {
+        "tension": "Natural vs. Human vs. Social Sciences",
+        "stakes": "Maps the epistemological landscape, showing that theories have fundamentally different goals: to control/predict (natural), to understand/find meaning (human), or to critique/develop (social).",
+        "source_ids": [
+          "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+          "w01l1-seminar-1-introduktion-9fe382c8"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming personality psychology has a single, unified definition of 'personality' rather than being a fragmented field of competing paradigms.",
+      "Believing the course will ultimately reveal one 'correct' theory, rather than teaching students how to critically compare them.",
+      "Confusing the modern psychological definition of 'person' with its etymological root 'persona', which originally meant the external mask.",
+      "Thinking Lewis argues that personality does not exist at all, rather than understanding his argument that it is highly context-dependent.",
+      "Assuming that 'agency' simply means 'free will', missing the broader definition as any active steering element, which could be unconscious."
+    ],
+    "must_carry_ideas": [
+      "The four orientation points (essence/context, agency, determination, historicity) form the mandatory analytical framework for the entire course and the final exam.",
+      "A theory's definition of personality (ontology) directly dictates the methods it uses to study it (epistemology).",
+      "Personality psychology spans natural, human, and social sciences, meaning theories often cannot be directly synthesized because their foundational assumptions contradict one another."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The seminar slides list five developmental models by Lewis but do not define them; students must consult the original Lewis (1999) text to complete the seminar exercises.",
+      "The lecture and seminar slides contain specific administrative details (exam dates, group sizes) tied to the 2026 iteration of the course."
+    ]
+  }
+}

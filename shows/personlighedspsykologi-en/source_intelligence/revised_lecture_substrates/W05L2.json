@@ -1,0 +1,81 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:32Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "w05l2-k-ppe-1992-9a474402",
+      "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "8f70a9f4d81d3bba631cb50da3956db9d194cd7c026c76253b0ba1dd165ebc91",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W05L2",
+    "lecture_title": "Psykoanalysens konstituering (Forelæsning 10, 2026-03-03)",
+    "sequence_index": 10
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the course's major epistemological pivot away from the transparent, measurable subject of trait and biosocial psychology. By establishing the 'decentered subject' and 'inner psychic reality', it lays the necessary groundwork for all subsequent interpretive, phenomenological, and poststructural critiques.",
+    "what_matters_more": [
+      "The epistemological shift to the 'decentered subject' as a foundational concept that prepares students for poststructuralism later in the course.",
+      "The distinction between external determination (e.g., biological or environmental) and system-internal determination (the unconscious).",
+      "Applying the 4 orientation points to psychoanalysis, particularly how 'historicity' is uniquely handled via Nachträglichkeit (deferred action)."
+    ],
+    "de_emphasize": [
+      "The exhaustive historical details of Freud's four phases of theory development, focusing instead on the conceptual leaps they represent.",
+      "The specific schisms between British, French, and German psychoanalytic schools, unless they directly illustrate the evolution of the decentered subject.",
+      "Køppe's specific philosophy of science debates with Habermas and Lorenzer."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W10L1 and W10L2 (Sociocultural and Poststructural Theories)",
+        "relation": "Theoretical foundation",
+        "rationale": "The decentered subject introduced in psychoanalysis is the direct prerequisite for understanding poststructuralist critiques of the rational ego and discursive subjectivation."
+      },
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Contrastive epistemology",
+        "rationale": "Contrasts the transparent, measurable surface variables of trait psychology with the hidden, conflicted depth of the psychoanalytic subject."
+      },
+      {
+        "target": "W12L1 (Orientation Points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "Psychoanalysis provides a unique configuration of the orientation points, especially regarding system-internal determination and complex historicity (Nachträglichkeit)."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'Decentered Subject'—what it means that we are not 'masters in our own house'.",
+      "Explain the shift from the seduction theory to infantile sexuality as a massive leap in psychological epistemology (the discovery of inner psychic reality).",
+      "Unpack 'Nachträglichkeit' (deferred action) to show how psychoanalysis views time, meaning, and trauma differently than linear developmental models."
+    ],
+    "carry_forward": [
+      "The Decentered Subject (essential for poststructuralism and gender theories).",
+      "System-internal determination (as a contrast to environmental or biological determinism).",
+      "Nachträglichkeit as a non-linear model of historicity."
+    ],
+    "warnings": [
+      "Avoid getting lost in the dense history of psychoanalytic factions; keep the focus on how the model of the person changes.",
+      "Ensure students do not personify the unconscious (it is not a 'little person' inside the head with conscious intentions, but a structural instance)."
+    ]
+  }
+}

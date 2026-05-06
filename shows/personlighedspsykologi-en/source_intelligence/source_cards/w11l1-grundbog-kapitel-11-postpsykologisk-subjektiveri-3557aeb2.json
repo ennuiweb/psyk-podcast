@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:20:07Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2"
+    ],
+    "dependency_hashes": {
+      "source_file": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
+      "source_files_signature": "6a35239db0ae3f9977ffed485578694723f8aeba21da2a26cc7b0cf657f3d950",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+    "lecture_key": "W11L1",
+    "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+    "source_paths": [
+      "Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
+    "length_band": "long",
+    "page_count": 45,
+    "estimated_token_count": 29250,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces poststructuralist, social constructionist, and new materialist theories (drawing on Foucault, Butler, and Barad) to deconstruct traditional personality psychology and offer a process-oriented alternative.",
+    "source_role": "Serves as a foundational textbook chapter that frames the postpsychological critique of traditional personality psychology, establishing the core vocabulary for the lecture.",
+    "relation_to_lecture": "Provides the primary theoretical framing for W11L1 (Poststrukturalisme, diskursiv psykologi og feministisk teori), defining essential concepts like discourse, subjectification, and performativity.",
+    "central_claims": [
+      {
+        "claim": "Personality is not an inner, stable essence that causes behavior, but rather a performative effect of social, discursive, and material processes.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Subjectification is a paradoxical double movement where an individual is simultaneously subjected to social conditions and achieves agency or mastery through that very subjection.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Post-2000s postpsychology expands the analytical focus beyond language and discourse to include materiality and affectivity, showing how non-human objects and intensities co-constitute subjectivity.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Postpsykologi",
+        "definition": "A theoretical approach that does not abandon psychology, but rethinks it by examining how psychological phenomena like personality are continuously produced as effects of social, discursive, and material processes.",
+        "role": "Frames the entire chapter's departure from traditional, humanistic personality psychology."
+      },
+      {
+        "term": "Subjektivering (Subjectification)",
+        "definition": "The process of becoming a subject, which involves both being subjected to specific life conditions and discourses, and simultaneously gaining agency and mastery.",
+        "role": "Replaces the static concept of 'personality' with a dynamic, ongoing process of becoming."
+      },
+      {
+        "term": "Abjektgørelse (Abjection)",
+        "definition": "The process where someone is made into an 'abject' or non-subject, excluded from the normatively legitimate categories of recognition.",
+        "role": "Highlights the power dynamics, exclusions, and social costs inherent in subjectification processes."
+      },
+      {
+        "term": "Diskursive praksisser",
+        "definition": "Concrete social practices and language use that produce specific social categories and subject positions, setting conditions for what can be thought, said, and done.",
+        "role": "Explains the everyday mechanisms through which subjects are formed and positioned in social contexts."
+      },
+      {
+        "term": "Materialitet og Affektivitet",
+        "definition": "The non-human components (like furniture, technology, bodies) and intensities/emotions that actively participate in shaping and transforming subjectivity.",
+        "role": "Shows the evolution of postpsychology beyond the linguistic turn, emphasizing that physical environments and bodily sensations are active co-producers of the self."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Kausalitet vs. Performativitet",
+        "summary": "Traditional psychology views personality as the inner cause of behavior, whereas postpsychology views it as a performative effect of actions, expectations, and discourses.",
+        "stakes": "Shifts the analytical focus from finding inner traits to analyzing social practices, categorizations, and how people 'do' personality."
+      },
+      {
+        "label": "Entydighed og helhed vs. Multiplicitet",
+        "summary": "The modern view of a coherent, unified personality versus the postpsychological view of multiple, fragmented, and context-dependent selves.",
+        "stakes": "Challenges the pathologization of fragmented selves by normalizing context-specific subjectivity and multiple subject positions."
+      },
+      {
+        "label": "Centreret vs. Distribueret personlighed",
+        "summary": "Locating personality inside the individual versus seeing it as distributed across interactions, relations, and material environments.",
+        "stakes": "Changes the unit of analysis from the isolated individual to the relational network and socio-material context."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that postpsychology completely rejects or destroys psychology, rather than rethinking it and examining its societal effects.",
+      "Confusing 'subjectification' with mere oppression, missing the paradoxical point that subjection is also the source of agency and mastery.",
+      "Assuming that 'discourse' only refers to spoken or written language, ignoring the material and bodily practices that postpsychology emphasizes."
+    ],
+    "quote_targets": [
+      {
+        "target": "Boks 3. Klamme Wahid (Page 383)",
+        "why": "Provides a highly concrete, relatable example of abjection and how socio-cultural categories operate to exclude individuals in a school setting."
+      },
+      {
+        "target": "Å-skolen and the kuglepude (Pages 399-400)",
+        "why": "Illustrates the material and affective turn in postpsychology, showing exactly how physical objects co-produce student subjectivity and manage affect."
+      },
+      {
+        "target": "Freuds sofa (Page 395)",
+        "why": "Demonstrates how material objects (comfort technologies) act as co-producers of subjectivity and management, bridging classical psychoanalysis with new materialism."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly positions itself as a Grundbog chapter introducing postpsychology.",
+      "The claims about Foucault, Butler, and Barad are directly grounded in the text's summaries of their work.",
+      "The three main problematizations of personality (performativity, multiplicity, distribution) are explicitly structured at the end of the chapter."
+    ],
+    "warnings": [
+      "Pages 417-418 of the attached PDF suddenly shift to discussing evolutionary and positive psychology (Del V - Nyere tendenser i personlighedspsykologi). This appears to be the start of a different chapter included in the scan and is unrelated to the postpsychology content."
+    ]
+  }
+}

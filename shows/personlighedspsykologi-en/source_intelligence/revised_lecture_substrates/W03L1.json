@@ -1,0 +1,80 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:05:49Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "w03l1-kandler-and-instinske-2025-01535a8e",
+      "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "29ef727f661112e476b0319157c542e5f7e9b8f0d96db74386376070e428e516",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W03L1",
+    "lecture_title": "Culture, evolution, genetics, and personality (Forelæsning 5, 2026-02-16)",
+    "sequence_index": 5
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the sophisticated peak of the course's natural-science/explanatory paradigm. By demonstrating that even genetics and evolution reject strict determinism in favor of polygenic, context-dependent adaptive calibration, it softens the ground for the radical interpretive, critical, and poststructural turns that dominate the second half of the course.",
+    "what_matters_more": [
+      "Explicitly linking gene-environment interactions and adaptive calibration to the course's mandatory 'Essence vs. Context' and 'Determination' orientation points.",
+      "The critique of biologism and essentialism, as dismantling the idea of a fixed biological destiny is a necessary prerequisite for the later critical and sociocultural turns.",
+      "The concept of 'Mutual Constitution' (Lu et al.) as an early, variable-based introduction to how individuals and environments shape each other, foreshadowing later dialectical models."
+    ],
+    "de_emphasize": [
+      "The statistical minutiae of calculating heritability coefficients, shifting focus instead to the epistemological meaning of heritability as a population-level, context-dependent metric.",
+      "Overly granular debates between specific evolutionary sub-theories, unless they directly serve to explain the maintenance of personality variance (like niche diversity)."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W12L1 (Orienteringspunkter / Orientation points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "The biological and evolutionary models in this lecture must be explicitly mapped onto the 'Determination' and 'Essence vs. Context' orientation points to prepare students for the final exam synthesis."
+      },
+      {
+        "target": "W10L2 and W11L1 (Sociocultural and Poststructural Approaches)",
+        "relation": "Contrastive epistemologies",
+        "rationale": "While this lecture shows how socioecology shapes traits (maintaining a realist, variable-based view of personality), later sociocultural lectures will argue that society constructs the very concept of the subject. Highlighting this difference prevents conceptual blurring."
+      },
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Explanatory foundation",
+        "rationale": "This lecture provides the biological and evolutionary 'why' for the descriptive trait variations (Big Five/HEXACO) mapped out in the previous week, moving from description to explanation."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode using the 'Essence vs. Context' orientation point to explore how genes and culture mutually constitute personality.",
+      "Create a segment debunking the pop-cultural myth of the 'personality gene' (biologism), explaining polygenic and poly-environmental architecture instead.",
+      "Highlight 'Adaptive Developmental Calibration' to show that biological approaches actually require environmental context to make sense of personality variation."
+    ],
+    "carry_forward": [
+      "The critique of essentialism: The idea that personality is not a pre-packaged inner essence, even at the biological level.",
+      "The concept that environments (socioecology) actively demand and shape specific personality configurations, which will be radicalized later by critical psychology's 'conduct of everyday life'."
+    ],
+    "warnings": [
+      "Instructors and students must be careful not to confuse the 'socioecological framework' in this lecture with the 'social constructionist' frameworks in Weeks 10/11. This lecture still treats personality traits as real, measurable biological/psychological entities, whereas later weeks deconstruct the variables themselves.",
+      "Ensure the critique of biologism does not accidentally lead students to dismiss biological factors entirely; the goal is interactionism, not blank-slate environmentalism."
+    ]
+  }
+}

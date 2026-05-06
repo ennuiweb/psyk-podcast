@@ -2,67 +2,374 @@
   "artifact_type": "course_synthesis",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:44:41Z",
+  "generated_at": "2026-05-05T20:05:02Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-course-synthesis-v1",
+    "prompt_version": "personlighedspsykologi-course-synthesis-v3",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
   },
   "provenance": {
     "input_source_ids": [
+      "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "w01l1-lewis-1999-295c67e3",
+      "w01l1-lecture-1-gang-introduktin-pp-2026-e5a501d8",
+      "w01l1-seminar-1-introduktion-9fe382c8",
+      "w01l2-mayer-and-bryan-2024-07faf915",
+      "w01l2-phan-et-al-2024-bf3395d7",
+      "w01l2-koutsoumpis-2025-96f4dcf7",
+      "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+      "w02l1-zettler-et-al-2020-0c54e6e4",
+      "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "w02l1-lecture-3-gang-perspsy-3-260209-08cbaee1",
+      "w02l1-exercise-1-intro-og-tr-k-93aadd03",
+      "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "w02l2-li-and-wilt-2025-92f596ad",
+      "w02l2-lecture-4-gang-perspsy-4-260210-ce33366f",
+      "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "w03l1-kandler-and-instinske-2025-01535a8e",
+      "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "w03l1-lecture-5-gang-perspsy-5-260216-c7e4dd91",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5",
+      "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "w03l2-bach-and-simonsen-2023-d58362ff",
+      "w03l2-lecture-6-gang-personality-functioning-2026-bo-bach-542bbd7e",
+      "w03l1-seminar-3-tr-kpsykologi-ii-9bb252d5",
+      "w04l1-gammelgaard-2007-bcbdbec2",
+      "w04l1-freud-1973-1933-98cd9920",
+      "w04l1-lecture-7-psykoanalysens-personbegreb-1e91ce22",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16",
+      "w04l2-laplanche-1970-968862d5",
+      "w04l2-lacan-1966-2d720f56",
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16",
       "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
       "w05l1-ricoeur-1981-19a5343f",
       "w05l1-gammelgaard-2010-e6baff8b",
       "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
       "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+      "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39",
+      "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "w05l2-k-ppe-1992-9a474402",
+      "w05l2-lecture-10-psykoanalysens-konstituering-513290eb",
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
       "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
       "w06l1-spinelli-2005-b2f76e93",
-      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b"
+      "w06l1-lecture-11-f-nomenologisk-personlighedspsykologi2026-6303af4b",
+      "w06l1-seminar-6-f-nomenologi-46c58a1a",
+      "w06l1-exercise-4-f-nomenologi-d39d2b0e",
+      "w06l2-may-1966-d8406a09",
+      "w06l2-boss-1963-1feb5a5f",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+      "w07l1-cooper-2003-ee3c34b7",
+      "w07l1-jacobsen-2021-26129bff",
+      "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+      "w07l2-maslow-1968-7ea53e34",
+      "w07l2-evans-1975-8e8a9d79",
+      "w07l2-giorgi-2005-55ca98f7",
+      "w07l2-lecture-14-humanistisk-psykologi20-d271355d",
+      "w07l2-seminar-8-humanistisk-psykologi-8f80e89d",
+      "w08l1-lamiell-2021-be79d36e",
+      "w08l1-laux-et-al-2010-cfff840c",
+      "w08l1-lecture-15-gang-critical-personalism-2026-8648744f",
+      "w08l2-holzkamp-1982-845aafd2",
+      "w08l2-tolman-2009-455915e0",
+      "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c",
+      "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "w09l1-holzkamp-2013-c3068d8a",
+      "w09l1-dreier-1999-35da58b5",
+      "w09l1-lecture-17-kritisk-psykologi-30798115",
+      "w08l2-seminar-9-kritisk-psykologi-7a7e589c",
+      "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "w10l1-mitchell-2015-bc690b36",
+      "w10l1-lecture-18-k-n-582ebd4f",
+      "w10l2-davies-1990-65185910",
+      "w10l2-foucault-1997-92cd121d",
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+      "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "w11l1-gergen-1999-73c2217e",
+      "w11l1-hacking-2007-10236bf4",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+      "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "w11l2-bruner-1999-7930abd8",
+      "w11l2-mcadams-and-pals-2006-b9675688",
+      "w11l2-raggatt-2002-d15129af",
+      "w11l2-seminar-12-narrativ-psykologi-a592ee2f",
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "w12l1-elias-2000-f9176ae8",
+      "w12l1-lecture-22-orienteringspunkter-og-subjektets-historie-27fa050d"
     ],
     "dependency_hashes": {
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
-      "lecture_substrates_signature": "0fb36032b4adfe39f7c60c96834c69c64d3f70aebabbfe8112462463641c3191"
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_substrates_signature": "a9f001daac8904de8f08d21104516e6e6bd02190b0d9d451063f97f54a6f5abb"
     }
   },
   "course": {
     "course_title": "Personlighedspsykologi",
-    "lecture_count": 2,
-    "scope": "partial",
+    "lecture_count": 22,
+    "scope": "full",
     "lecture_keys": [
+      "W01L1",
+      "W01L2",
+      "W02L1",
+      "W02L2",
+      "W03L1",
+      "W03L2",
+      "W04L1",
+      "W04L2",
       "W05L1",
-      "W06L1"
+      "W05L2",
+      "W06L1",
+      "W06L2",
+      "W07L1",
+      "W07L2",
+      "W08L1",
+      "W08L2",
+      "W09L1",
+      "W10L1",
+      "W10L2",
+      "W11L1",
+      "W11L2",
+      "W12L1"
     ]
   },
   "analysis": {
-    "course_arc": "The course progresses from foundational trait, assessment, and biosocial paradigms to interpretive psychoanalytic models, pivots through first-person phenomenological and humanistic approaches, and culminates in a structural critique via critical psychology, poststructuralism, and narrative theory.",
+    "course_arc": "The course progresses from foundational trait and assessment models (viewing personality as measurable, stable variables) through biosocial and clinical dimensions, into deep interpretive traditions (psychoanalysis, phenomenology, existentialism, humanism). It culminates in critical, sociocultural, and narrative frameworks that deconstruct the isolated individual, ultimately synthesizing the field using a meta-theoretical framework of four orientation points to understand the historical and social production of subjectivity.",
     "theory_tradition_map": [
-      {}
+      {
+        "label": "Trait and Assessment Psychology",
+        "role": "Provides the early-course baseline of personality as patterned, measurable individual differences, which later traditions critique, qualify, or reinterpret."
+      },
+      {
+        "label": "Biosocial Perspectives",
+        "role": "Supplies a strongly explanatory block linking personality variation to genetics, evolutionary adaptation, and socioecological environments."
+      },
+      {
+        "label": "Psychoanalytic Personality Theory",
+        "role": "Forms the first major interpretive bloc, shifting focus to unconscious conflict, the decentered subject, and structural development over time."
+      },
+      {
+        "label": "Phenomenological, Existential, and Humanistic Psychology",
+        "role": "Pivots the course toward the first-person perspective, emphasizing lived experience, meaning-making, radical freedom, and growth-oriented actualization."
+      },
+      {
+        "label": "Critical Psychology and Personalism",
+        "role": "Acts as a structural and methodological critique of mainstream psychology, relocating agency into the everyday conduct of life and social practices."
+      },
+      {
+        "label": "Sociocultural and Poststructural Approaches",
+        "role": "Deconstructs the inner-essence model of personality, arguing that subjects are historically produced through discourse, power relations, and performativity."
+      },
+      {
+        "label": "Narrative Psychology",
+        "role": "Offers a late-course synthesis where personality is understood as an ongoing, culturally situated process of storytelling and meaning-making."
+      }
     ],
     "concept_map": [
-      {}
+      {
+        "concept": "Orientation points (Orienteringspunkter)",
+        "role": "The mandatory meta-analytical framework (essence/context, agency, determination, historicity) used to systematically compare all theories."
+      },
+      {
+        "concept": "Stability and Change",
+        "role": "A core developmental tension tracking how personality maintains durable patterning while undergoing lifespan maturation and situational fluctuation."
+      },
+      {
+        "concept": "The Decentered Subject",
+        "role": "A foundational concept in psychoanalysis and poststructuralism that dismantles the idea of a transparent, rational ego in control of its own actions."
+      },
+      {
+        "concept": "Meaning-making (Meningsskabelse)",
+        "role": "The interpretive process central to phenomenological, humanistic, and narrative traditions, where personality becomes coherent through lived interpretation."
+      },
+      {
+        "concept": "Subjectivation (Subjektivering)",
+        "role": "The poststructural process by which individuals become subjects through subjection to historical discourses, power relations, and ethical practices."
+      },
+      {
+        "concept": "Conduct of everyday life (Daglig livsførelse)",
+        "role": "Critical psychology's primary unit of analysis, focusing on how subjects actively integrate demands across various social contexts."
+      },
+      {
+        "concept": "Looping Effect (Dynamisk nominalisme)",
+        "role": "Hacking's concept demonstrating how psychological classifications and assessments actively alter the people they describe."
+      }
     ],
     "distinction_map": [
-      {}
+      {
+        "distinction": "Trait vs. State",
+        "stakes": "Crucial for understanding within-person variability versus between-person differences, preventing the over-rigidification of personality profiles."
+      },
+      {
+        "distinction": "Person vs. Variable Profile",
+        "stakes": "Highlights the ethical and methodological tension between holistic understanding (critical personalism) and reductionist measurement (impersonalism)."
+      },
+      {
+        "distinction": "Inner Essence vs. Subjectivation",
+        "stakes": "Pits innate, pre-social models of personality against theories that view identity as historically, discursively, and relationally produced."
+      },
+      {
+        "distinction": "Individual Problem vs. Structural Condition",
+        "stakes": "Contrasts private deficit models with critical and feminist analyses, shifting the locus of psychological distress from the individual to societal power structures."
+      },
+      {
+        "distinction": "Growth vs. Deficit",
+        "stakes": "Differentiates humanistic psychology's focus on self-actualization and potential from psychoanalytic and medical models focused on conflict, homeostasis, and pathology."
+      }
     ],
     "sideways_relations": [
-      {}
+      {
+        "from": "W01L1",
+        "to": "W12L1",
+        "relation": "Meta-theoretical framing",
+        "rationale": "The four orientation points introduced in week 1 are the exact analytical tools required to synthesize the entire course and prepare for the exam in week 12."
+      },
+      {
+        "from": "W02L1",
+        "to": "W08L1",
+        "relation": "Methodological critique",
+        "rationale": "Stern's critical personalism (W08L1) directly critiques the reification of the traits and dimensional models introduced in W02L1, demanding a return to the whole person."
+      },
+      {
+        "from": "W04L2",
+        "to": "W10L1",
+        "relation": "Theoretical repurposing",
+        "rationale": "Psychoanalytic concepts of unconscious identification and the decentered subject are repurposed to explain the deep, often contradictory psychological anchoring of gender."
+      },
+      {
+        "from": "W07L2",
+        "to": "W09L1",
+        "relation": "Contrastive agency",
+        "rationale": "Both humanistic and critical psychology emphasize human agency against determinism, but critical psychology relocates this agency from inner actualization to societal participation."
+      },
+      {
+        "from": "W01L2",
+        "to": "W11L1",
+        "relation": "Epistemological deconstruction",
+        "rationale": "Early assumptions about objective personality assessment are deconstructed by Hacking's looping effect, showing that tests create the 'moving targets' they attempt to measure."
+      }
     ],
     "lecture_clusters": [
-      {}
+      {
+        "label": "Foundations, Traits, and Biosocial Bases",
+        "lecture_keys": [
+          "W01L1",
+          "W01L2",
+          "W02L1",
+          "W02L2",
+          "W03L1"
+        ],
+        "theme": "Measuring and explaining individual differences, their stability, and their biological/ecological roots."
+      },
+      {
+        "label": "Pathology and Psychoanalysis",
+        "lecture_keys": [
+          "W03L2",
+          "W04L1",
+          "W04L2",
+          "W05L1",
+          "W05L2"
+        ],
+        "theme": "Personality functioning, unconscious conflict, structural development, and the decentered subject."
+      },
+      {
+        "label": "Experience, Existence, and Growth",
+        "lecture_keys": [
+          "W06L1",
+          "W06L2",
+          "W07L1",
+          "W07L2"
+        ],
+        "theme": "The first-person perspective, meaning-making, radical freedom, and humanistic actualization."
+      },
+      {
+        "label": "Critical, Sociocultural, and Narrative Turns",
+        "lecture_keys": [
+          "W08L1",
+          "W08L2",
+          "W09L1",
+          "W10L1",
+          "W10L2",
+          "W11L1",
+          "W11L2"
+        ],
+        "theme": "Deconstructing the isolated individual through social practice, discourse, gender, power, and narrative."
+      },
+      {
+        "label": "Synthesis and Meta-Theory",
+        "lecture_keys": [
+          "W12L1"
+        ],
+        "theme": "The historical sociogenesis of the subject and comparative exam preparation using orientation points."
+      }
     ],
     "top_down_priorities": [
-      {}
+      {
+        "priority": "Consistent application of the 4 orientation points",
+        "lecture_keys": [
+          "W01L1",
+          "W12L1"
+        ],
+        "rationale": "Students must use these points (essence/context, agency, determination, historicity) to pass the exam; they must be explicitly woven into every theory's summary."
+      },
+      {
+        "priority": "Epistemological shifts over chronological history",
+        "lecture_keys": [
+          "W01L2",
+          "W05L1",
+          "W08L2",
+          "W10L2"
+        ],
+        "rationale": "The course is a progression of *how* we know the person (from natural science to hermeneutics to poststructuralism), not just a list of theories."
+      },
+      {
+        "priority": "De-reification of traits",
+        "lecture_keys": [
+          "W02L1",
+          "W08L1",
+          "W11L1"
+        ],
+        "rationale": "Students naturally default to trait essentialism; later materials must explicitly dismantle this using personalism and social constructionism."
+      },
+      {
+        "priority": "Agency vs. Structure dialectic",
+        "lecture_keys": [
+          "W06L2",
+          "W09L1",
+          "W10L2"
+        ],
+        "rationale": "A major through-line is how different theories handle human freedom (existentialism) versus societal and discursive constraints (critical psychology, Foucault)."
+      }
     ],
-    "weak_spots": [],
-    "podcast_generation_guidance": []
+    "weak_spots": [
+      "Heavy reliance on dense philosophical texts (Lacan, Foucault, Heidegger) without sufficient clinical bridging in the slides.",
+      "Seminar slides often contain group work prompts or reference external cases (e.g., Manosphere YouTube video, specific case studies) without providing the resolution or analytical answers.",
+      "The transition from biosocial/trait models to psychoanalysis is abrupt and requires explicit meta-theoretical scaffolding to avoid student whiplash.",
+      "Some texts (e.g., Mitchell on gender, Dreier excerpt) are either poorly translated or incomplete, requiring heavy instructor compensation."
+    ],
+    "podcast_generation_guidance": [
+      "Frame the podcast as a journey from 'personality as a measurable object' to 'personality as a socially constructed, lived process'.",
+      "Use the '4 orientation points' as recurring motifs or 'lenses' the hosts put on when examining each new theory.",
+      "Create a dedicated segment contrasting the 'Rational Ego' with the 'Decentered Subject' to explain the psychoanalytic and poststructural turns.",
+      "Highlight the 'Looping Effect' (Hacking) as a mind-bending concept to show how personality tests actually change human behavior."
+    ]
   }
 }

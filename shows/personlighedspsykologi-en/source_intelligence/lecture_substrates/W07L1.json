@@ -1,0 +1,168 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:30:30Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w07l1-cooper-2003-ee3c34b7",
+      "w07l1-jacobsen-2021-26129bff",
+      "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "f669f1e70a92f1258194b49151f01c3d776eaf890c514ababeec5428beb96412",
+      "source_cards_signature": "4512dd395bf78a58c9157211db03fd54e9976a1b5b8a1a16ff8e51d879646f9a",
+      "raw_sources_signature": "a3ab6a86485fc52dd73aca7b8f4321b605af8bb9ca62251e49b9be0ee3201548"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W07L1",
+    "lecture_title": "Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen) (Forelæsning 13, 2026-03-16)",
+    "sequence_index": 13
+  },
+  "analysis": {
+    "lecture_question": "How do existential and phenomenological philosophies reconceptualize personality as a dynamic, lived process, and how does this shift inform therapeutic practice?",
+    "central_learning_problem": "Students often enter the course accustomed to essentialist, trait-based models of personality. The central learning problem is shifting their ontological and epistemological framework to understand personality not as a static set of internal components, but as an ongoing, relational process of 'becoming' (existence precedes essence) situated within inescapable constraints (facticity). They must grasp how this philosophical shift translates into a clinical focus on meaning, choice, and authentic self-relation rather than symptom eradication.",
+    "source_roles": [
+      {
+        "source_id": "w07l1-cooper-2003-ee3c34b7",
+        "role": "anchor",
+        "rationale": "Provides the comprehensive philosophical foundation for existential therapies, outlining core ontological concepts like freedom, facticity, and phenomenology that differentiate existential approaches from essentialist psychologies."
+      },
+      {
+        "source_id": "w07l1-jacobsen-2021-26129bff",
+        "role": "framing",
+        "rationale": "Translates Kierkegaard's complex philosophical concepts into accessible psychological terms, framing personality as an active, ongoing process of self-relation."
+      },
+      {
+        "source_id": "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+        "role": "supporting",
+        "rationale": "Structures the lecture's narrative by connecting primary philosophical thinkers (Kierkegaard, Nietzsche, Heidegger, Sartre) to psychological problems like anxiety and meaninglessness."
+      },
+      {
+        "source_id": "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+        "role": "application",
+        "rationale": "Operationalizes the theoretical readings by applying them to the course's four specific orientation points (e.g., Essens vs. kontekst, Agency) through discussion questions."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-jacobsen-2021-26129bff"
+        ],
+        "relation": "Cooper provides a broad overview of the diverse tapestry of existential therapies, while Jacobsen zooms in specifically on Kierkegaard's contribution to the psychology of self-relation.",
+        "learning_stakes": "Helps students see both the overarching shared assumptions of existential psychology and the specific, nuanced contributions of individual thinkers to modern clinical concepts."
+      },
+      {
+        "source_ids": [
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ],
+        "relation": "The lecture slides introduce heavy ontological concepts (Dasein, absolute freedom), which the seminar slides then explicitly map onto the course's analytical framework (the four orientation points).",
+        "learning_stakes": "Bridges abstract philosophical theory with the concrete analytical tools required for the course exam and overall personality psychology framework."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Existence vs. Essence (Eksistens vs. Essens)",
+        "explanation": "The foundational existential claim that the concrete, lived reality of a specific human being (existence) precedes and is more fundamental than abstract, universal categories or traits (essence).",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ]
+      },
+      {
+        "concept": "Dasein / Being-in-the-world (Tilstedeværen)",
+        "explanation": "Heidegger's concept that human existence is inextricably immersed in and connected to its world, challenging the traditional psychological view of an isolated, internal Cartesian subject.",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+        ]
+      },
+      {
+        "concept": "Self-relation (Selvforhold)",
+        "explanation": "Kierkegaard's concept that a human being is not a static entity but a dynamic relation that relates to itself, constantly navigating existential dichotomies like necessity and possibility.",
+        "source_ids": [
+          "w07l1-jacobsen-2021-26129bff"
+        ]
+      },
+      {
+        "concept": "Facticity / Thrownness (Fakticitet / Kastethed)",
+        "explanation": "The given, limiting factors of existence (e.g., biology, historical context, death) that bound human freedom and form the inescapable conditions within which choices must be made.",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+        ]
+      },
+      {
+        "concept": "Existential Anxiety (Angst)",
+        "explanation": "An ontological reality arising from human freedom, responsibility, and the encounter with 'nothingness', distinguished from neurotic or pathological anxiety.",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Radical Freedom vs. Facticity",
+        "stakes": "Determines how existential therapy balances empowering client agency with acknowledging the real, unchosen limitations and tragedies of human life.",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+        ]
+      },
+      {
+        "tension": "Objective Knowledge vs. Subjective Truth",
+        "stakes": "Highlights the epistemological clash between natural science approaches to psychology (seeking universal laws) and existential approaches (focusing on the unfolding reality of lived experience).",
+        "source_ids": [
+          "w07l1-jacobsen-2021-26129bff",
+          "w07l1-cooper-2003-ee3c34b7"
+        ]
+      },
+      {
+        "tension": "Essentialism vs. Existentialism",
+        "stakes": "Challenges the dominant trait-based models in personality psychology, shifting the focus from 'what' a person is to 'how' a person lives and chooses.",
+        "source_ids": [
+          "w07l1-cooper-2003-ee3c34b7",
+          "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb",
+          "w07l1-lecture-13-eksistens-ii-2026-fb33e095"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating existential anxiety solely with clinical pathology or a diagnosable disorder, rather than recognizing it as a fundamental ontological condition.",
+      "Assuming existentialism promotes absolute, unconstrained freedom, while ignoring the heavy emphasis on facticity, thrownness, and inescapable limitations.",
+      "Viewing the Sartrean 'ego' or the self as a stable, inner core, rather than a fragile, constructed object or an ongoing relational process.",
+      "Confusing the biological/medical body with the phenomenological 'lived body' (kropssubjekt)."
+    ],
+    "must_carry_ideas": [
+      "Personality in existential psychology is not a collection of static traits, but an ongoing, dynamic process of 'becoming' and self-relation.",
+      "Existential therapy prioritizes dialogical exploration and meaning clarification over standardized techniques and symptom eradication.",
+      "Human existence is fundamentally relational ('being-in-the-world') and cannot be fully understood by isolating the individual from their context."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "The lecture slides rely heavily on direct quotes from primary philosophical texts (Kierkegaard, Nietzsche, Heidegger, Sartre); the concrete clinical applications are only briefly sketched.",
+      "The seminar slides contain typos and are primarily discussion prompts; theoretical depth must be drawn from the Cooper and Jacobsen readings."
+    ]
+  }
+}

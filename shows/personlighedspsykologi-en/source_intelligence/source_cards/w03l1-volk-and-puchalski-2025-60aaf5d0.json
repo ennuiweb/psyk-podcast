@@ -1,0 +1,144 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:49:50Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w03l1-volk-and-puchalski-2025-60aaf5d0"
+    ],
+    "dependency_hashes": {
+      "source_file": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
+      "source_files_signature": "11c53d40c80977d637740f1c7a9a416e86dfce4407ad6fcdf5b9b9f52efd6819",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+    "lecture_key": "W03L1",
+    "title": "Volk & Puchalski (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf",
+    "source_paths": [
+      "Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Volk & Puchalski (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
+    "length_band": "short",
+    "page_count": 5,
+    "estimated_token_count": 3250,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides an adaptationist framework to explain the origins, variation, and developmental trajectory of personality traits.",
+    "source_role": "A conceptual review article advocating for the integration of evolutionary theory into personality psychology via three core hypotheses.",
+    "relation_to_lecture": "Directly supports Week 3 Lecture 1 (Culture, evolution, genetics, and personality) by detailing how evolutionary pressures, genetic trade-offs, and developmental calibration shape personality.",
+    "central_claims": [
+      {
+        "claim": "Personality research has been dominated by atheoretical, bottom-up lexical approaches and would benefit from integrating top-down evolutionary theory.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality variation exists because different trait levels represent adaptive trade-offs to recurring evolutionary problems.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality traits are not fixed at birth but are adaptively calibrated during development in response to specific environmental demands.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The HEXACO model has better evolutionary validity than the Big Five because its traits map more clearly onto biological processes like kin selection and reciprocal altruism.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Adaptive developmental calibration",
+        "definition": "The process by which personality traits are shaped during development to meet specific environmental demands, rather than emerging fully formed at birth.",
+        "role": "Explains lifespan personality changes and the emergence of societally maladaptive traits (like psychopathy) in hostile environments."
+      },
+      {
+        "term": "Adaptive trade-offs",
+        "definition": "The evolutionary costs and benefits associated with different behavioral solutions and varying levels of personality traits.",
+        "role": "Explains why there is variation in personality rather than a single optimal human type."
+      },
+      {
+        "term": "Balancing selection",
+        "definition": "An evolutionary process that maintains varying levels of personality traits in a population as a means of dealing with varying environments.",
+        "role": "Provides a genetic mechanism for sustained individual differences, though the text notes recent debates challenging this view."
+      },
+      {
+        "term": "Bottom-up lexical approach",
+        "definition": "A largely atheoretical method of modeling personality by maximizing the variance captured by independent factors derived from language adjectives.",
+        "role": "Contrasted with the top-down evolutionary approach to highlight what current mainstream personality research lacks."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Bottom-up vs. Top-down approaches",
+        "summary": "Bottom-up approaches use data-driven factor analysis of language (e.g., Big Five), while top-down approaches use evolutionary theory to predict adaptive behavioral patterns.",
+        "stakes": "Integrating both provides a more complete, theoretically grounded understanding of personality."
+      },
+      {
+        "label": "Big Five vs. HEXACO",
+        "summary": "The Big Five has less clear evolutionary trade-offs (especially for Neuroticism and Agreeableness), whereas HEXACO traits map directly onto biological theories of cooperation.",
+        "stakes": "Positions the HEXACO model as a superior framework for blending statistical personality research with evolutionary theory."
+      },
+      {
+        "label": "Balancing selection vs. Negative selection",
+        "summary": "Balancing selection maintains trait variation for different environments, whereas negative selection removes harmful mutations toward a single optimum level.",
+        "stakes": "Highlights an ongoing debate regarding the genetic mechanisms that maintain normal distributions of personality traits."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming evolution implies a single 'optimal' personality type, ignoring the role of adaptive trade-offs and environmental variation.",
+      "Thinking personality is entirely fixed by genetics at birth, rather than adaptively calibrated through gene-environment interactions during development.",
+      "Viewing 'dark' traits like psychopathy strictly as clinical disorders or deficits, rather than potentially adaptive calibrations to hostile environments."
+    ],
+    "quote_targets": [
+      {
+        "target": "personality exists not as a means in and of itself, but in service of broader survival and reproductive goals",
+        "why": "Summarizes the core adaptationist perspective on why personality exists."
+      },
+      {
+        "target": "These close ties with well-established biological theories of cooperation afford the HEXACO better evolutionary theory validity than the Big Five",
+        "why": "Highlights the authors' explicit theoretical preference for the HEXACO model in evolutionary research."
+      },
+      {
+        "target": "Personality traits do not emerge fully formed at birth, but rather, are shaped by developmental processes that adaptively calibrate them",
+        "why": "Defines the crucial concept of adaptive developmental calibration."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly favors the HEXACO model over the Big Five for evolutionary research.",
+      "The authors use psychopathy as a key example of adaptive developmental calibration to hostile environments.",
+      "The source outlines three specific hypotheses: past adaptive problems, adaptive trade-offs, and adaptive developmental calibration."
+    ],
+    "warnings": [
+      "The text mentions debates around balancing vs. negative selection (e.g., citing Zietsch 2024) but does not resolve them, presenting balancing selection as the traditional view with recent challenges."
+    ]
+  }
+}

@@ -2,16 +2,16 @@
   "artifact_type": "revised_lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:45:07Z",
+  "generated_at": "2026-05-05T20:06:13Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-downward-revision-v1",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -22,11 +22,13 @@
       "w05l1-ricoeur-1981-19a5343f",
       "w05l1-gammelgaard-2010-e6baff8b",
       "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
-      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
+      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+      "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
     ],
     "dependency_hashes": {
-      "lecture_substrate": "04e5ad06060964faa9588b19b9b8587cb1bec748bccf8adb01dd72e41ac33ebe",
-      "course_synthesis": "9498bcf7c252f8b9fccca4631ad226e05dd70e08ce87c54684eb0b2fa82e5663"
+      "lecture_substrate": "0fd5884e25887a60d76c154e0c0ec53d9460e3831c11f4932d5b78f0cf92ad4c",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
     }
   },
   "lecture": {
@@ -35,30 +37,50 @@
     "sequence_index": 9
   },
   "analysis": {
-    "top_down_course_relevance": "This lecture acts as the pivotal epistemological hinge of the course. It marks the transition from the objective, measurement-oriented paradigms (traits, biosocial) to the interpretive, meaning-oriented paradigms. By introducing hermeneutics, intersubjectivity, and 'psychic reality', it directly prepares the students for the subsequent phenomenological (W06L1) and narrative modules.",
+    "top_down_course_relevance": "This lecture represents the course's first major epistemological pivot. It transitions the study of personality from objective, measurable variables (traits, biosocial) to the interpretive, relational, and language-based realm of the decentered subject, laying the groundwork for all subsequent meaning-based and critical theories.",
     "what_matters_more": [
-      "The epistemological rupture: the shift from a positivist/correspondence theory of truth (measuring objective reality) to a hermeneutic/narrative theory of truth (interpreting meaning).",
-      "Paul Ricoeur's four criteria for psychoanalytic facts (Language/The Talking Cure, Intersubjectivity/Transference, Psychic Reality, and Narrative).",
-      "The distinction between 'historical truth' (material reality) and 'narrative truth' (psychic reality) as the foundation for psychoanalytic empiricism."
+      "The epistemological shift from natural science (traits/biology) to hermeneutics (interpretation of meaning).",
+      "The introduction of the 'decentered subject' as a contrast to the rational, transparent ego.",
+      "Applying the four orientation points (especially agency and determination) to the psychoanalytic framework."
     ],
     "de_emphasize": [
-      "The intricate, soapy details of Dora's family dynamics and Freud's specific diagnostic categories for her symptoms, except where they directly illustrate methodological concepts like transference or Nachträglichkeit.",
-      "Psychoanalysis as a biological or drive-reduction theory (which belongs to earlier Freud), focusing instead on the later hermeneutic and relational reading provided by Ricoeur and Gammelgaard."
+      "The intricate, soap-opera-like biographical details of the Dora case, except where they directly illustrate transference or psychic reality.",
+      "Overly defensive arguments about whether psychoanalysis is a 'true' science, focusing instead on *how* its specific epistemology functions."
     ],
     "strongest_sideways_connections": [
-      {}
+      {
+        "target": "W01L2 and W02L1 (Trait and Assessment Psychology)",
+        "relation": "Epistemological contrast",
+        "rationale": "Contrasts the objective, variable-based measurement of traits with the hermeneutic, relational, and language-based data of psychoanalysis."
+      },
+      {
+        "target": "W11L2 (Narrative Psychology)",
+        "relation": "Methodological precursor",
+        "rationale": "Psychoanalysis introduces narrative truth, meaning-making, and retrospective interpretation (Nachträglichkeit), laying the groundwork for later narrative theories of personality."
+      },
+      {
+        "target": "W10L1 (Gender / Mitchell)",
+        "relation": "Theoretical repurposing",
+        "rationale": "The psychoanalytic method and the concept of the decentered subject are later used to understand the deep, unconscious, and often contradictory anchoring of gender identity."
+      },
+      {
+        "target": "W12L1 (Orientation points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "Psychoanalysis must be mapped onto the course's mandatory meta-framework: essence/context, agency, determination, and historicity."
+      }
     ],
     "revised_podcast_priorities": [
-      "Framing the core conflict: Why psychoanalysis demands a different standard of evidence (hermeneutics) compared to natural-science psychology.",
-      "Unpacking Ricoeur's four criteria to show how the clinical space functions as a rigorous, albeit non-traditional, 'laboratory' for observation.",
-      "Using the 'Dora' case not as historical trivia, but as a vivid illustration of the gap between material reality and psychic reality, and the methodological challenge of transference/countertransference."
+      "Highlight the 'epistemological shock' of moving from trait questionnaires to clinical interpretation and the 'talking cure'.",
+      "Use the Dora case to illustrate the 'Decentered Subject'—how unconscious forces and transference override conscious, rational agency.",
+      "Explicitly evaluate psychoanalysis using the course's four orientation points as analytical lenses."
     ],
     "carry_forward": [
-      "The concept of 'narrative truth' and the idea that human identity is a told story (crucial for the later narrative psychology module).",
-      "The shift from analyzing the subject as an isolated object to analyzing the subject in an intersubjective, relational field (transference), which echoes into humanistic and critical psychology."
+      "The concept of 'psychic reality' and narrative truth, which will be essential for Narrative Psychology (W11L2).",
+      "The 'decentered subject', which becomes a foundational premise for poststructural and sociocultural theories of gender and power (W10)."
     ],
     "warnings": [
-      "The 'Dora' case is historically situated and fraught with patriarchal dynamics. If not carefully framed, students may dismiss the methodological lessons by focusing solely on Freud's problematic authority. Anchor the case strictly to the epistemological learning objectives."
+      "Students may dismiss Freud entirely due to his patriarchal bias in the Dora case; guide them to separate his historical blind spots from the enduring value of the hermeneutic method.",
+      "Ensure the transition to phenomenology at the end of the exercise slides is clearly demarcated so it doesn't bleed into their understanding of psychoanalysis."
     ]
   }
 }

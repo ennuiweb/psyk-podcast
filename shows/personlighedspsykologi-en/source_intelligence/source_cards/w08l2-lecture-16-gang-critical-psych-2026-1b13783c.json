@@ -1,0 +1,140 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:17:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l2-lecture-16-gang-critical-psych-2026-1b13783c"
+    ],
+    "dependency_hashes": {
+      "source_file": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
+      "source_files_signature": "02d22e361b5ba18afcaeed8193f4acdaed88f2c7f044f7ec006198f74e9330ed",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l2-lecture-16-gang-critical-psych-2026-1b13783c",
+    "lecture_key": "W08L2",
+    "title": "16. gang Critical psych 2026",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/16. Critical psych 2026.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/16. Critical psych 2026.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/16. Critical psych 2026.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/16. Critical psych 2026.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "a3f391e51d1f86dcb96472a62a56cb97b3b7b218804d0d7562262b9eb82a0509",
+    "length_band": "medium",
+    "page_count": 23,
+    "estimated_token_count": 14950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces Holzkamp's Marxist-informed Critical Psychology as a framework that critiques mainstream 'bourgeois' psychology and reconstructs psychological concepts around societal mediatedness, agency, and the standpoint of the subject.",
+    "source_role": "Lecture slides providing a structured overview of Critical Psychology, tracing its intellectual roots (Marx, Horkheimer, Vygotsky) and detailing its core methodological and conceptual interventions.",
+    "relation_to_lecture": "Primary presentation material for Lecture 16, guiding the session from historical foundations to specific conceptual reconstructions (e.g., emotion, motivation) and methodological critiques.",
+    "central_claims": [
+      {
+        "claim": "Mainstream 'bourgeois' psychology serves capitalist interests by focusing on the prediction and control of behavior while ignoring broader societal conditions.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human action is not mechanically determined by external causes, but is subjectively reasoned and mediated through socially organized constraints and possibilities.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Mainstream psychological experiments often mistake subjective reasons for action for empirical, mechanical 'if-then' causal connections.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychological concepts like emotion and motivation begin as everyday 'pre-concepts' and must be reconstructed to reflect their grounding in real-life human activity and societal possibilities.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Societal Mediatedness (gesamtgesellschaftliche Vermitteltheit)",
+        "definition": "The principle that human action is not a direct relation between an isolated individual and the world, but is mediated through socially organised meanings and possibilities for action.",
+        "role": "Forms the core ontological claim of Critical Psychology, explaining how humans navigate a world structured by pre-existing institutions, tools, and social practices."
+      },
+      {
+        "term": "Action Potence (Agency)",
+        "definition": "The socially situated capacity to secure and expand human needs through cooperative activity, which is unevenly distributed based on class, power, and wealth.",
+        "role": "Shifts the understanding of agency from an innate personal trait to a capacity dependent on and constrained by social conditions."
+      },
+      {
+        "term": "The Standpoint of the Subject",
+        "definition": "An analytical starting point that focuses on the actor's reasons for action within socially organized constraints, treating subjectivity as thoroughly social.",
+        "role": "Provides the methodological alternative to the 'standard arrangement' of mainstream psychology, centering the lived experience and reasoning of the individual."
+      },
+      {
+        "term": "Conduct of Everyday Life",
+        "definition": "How people organise, navigate, and hold together daily life across different settings (home, work, school) to create order, security, and meaning.",
+        "role": "Grounds psychological analysis in the practical, material routines of individuals rather than isolated laboratory behaviors."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Traditional Theory vs. Critical Theory",
+        "summary": "Traditional theory sees knowledge as neutral and aims to predict/control behavior, whereas Critical theory begins within society, traces internal contradictions, and aims to emancipate people.",
+        "stakes": "Establishes the epistemological and political foundation of Critical Psychology as an emancipatory science rather than a science of control."
+      },
+      {
+        "label": "Restrictive Agency vs. Generalized Agency",
+        "summary": "Restrictive agency involves adapting to existing power relations for short-term benefits, while generalized agency involves acting to achieve long-term transformation of the conditions that organize one's life.",
+        "stakes": "Highlights the different strategies subjects use to navigate power structures and emphasizes the goal of structural transformation."
+      },
+      {
+        "label": "Reasons vs. Empirical (if-then) connections",
+        "summary": "The difference between mechanical, biological reactions (e.g., a knee jerk reflex) and subjectively reasoned human actions (e.g., seeking rewards).",
+        "stakes": "Exposes the methodological flaw in mainstream psychology's 'standard arrangement' which treats reasoned human behavior as if it were a mechanical reflex."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Viewing agency as an innate, individual personality trait rather than a socially situated and unevenly distributed capacity.",
+      "Confusing critical psychology's focus on 'reasons for action' with mainstream psychology's search for mechanical 'causes of behavior'.",
+      "Assuming that psychological categories like 'emotion' or 'intelligence' are neutral, objective facts rather than socially situated 'pre-concepts' requiring reconstruction."
+    ],
+    "quote_targets": [
+      {
+        "target": "Mistaking reasons for empirical (if–then) connections",
+        "why": "Crucial methodological critique by Holzkamp (1986) illustrating how mainstream psychology misinterprets human reasoning as mechanical causality."
+      },
+      {
+        "target": "One is not born a personality; one becomes a personality",
+        "why": "Key quote from Leontiev (1978) demonstrating the cultural-historical foundation that personality is a late product of social development."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference Klaus Holzkamp's critique of the 'standard arrangement' and his reconstruction of psychological concepts.",
+      "Foundational theories are explicitly linked to Marx (dialectical materialism), Horkheimer (Critical Theory), and Vygotsky/Leontiev (Cultural-historical psychology)."
+    ],
+    "warnings": [
+      "The slides provide high-level summaries of complex Marxist and Critical Theory concepts; deeper nuances of dialectical materialism are not fully detailed.",
+      "Slide 13 contains an exercise prompting a critique of a specific study (Ren et al., 2023); the slide provides the prompt but does not contain the resolved critical answer."
+    ]
+  }
+}

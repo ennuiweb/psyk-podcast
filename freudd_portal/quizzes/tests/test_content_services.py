@@ -511,9 +511,9 @@ class SubjectContentManifestTests(TestCase):
         clear_content_service_caches()
 
         refreshed = load_subject_content_manifest("personlighedspsykologi")
-        self.assertEqual(refreshed["version"], 3)
+        self.assertEqual(refreshed["version"], 4)
         persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
-        self.assertEqual(persisted["version"], 3)
+        self.assertEqual(persisted["version"], 4)
 
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(
@@ -691,6 +691,37 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(len(set(reading_keys)), 2)
         self.assertFalse(reading_keys[0].endswith("-2"))
         self.assertTrue(reading_keys[1].endswith("-2"))
+
+    def test_build_manifest_preserves_multi_file_reading_sources(self) -> None:
+        self.primary_reading_file.write_text(
+            "\n".join(
+                [
+                    "# Reading File Key",
+                    "",
+                    "**W03L2 Personlighedsfunktion og forstyrrelse (Forelaesning 6, 2026-02-17)**",
+                    "- Bach & Simonsen (2023) \u2192 W3L2 Bach & Simonsen (2023) kapitel 3.pdf; W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        self.fallback_reading_file.write_text(
+            self.primary_reading_file.read_text(encoding="utf-8"),
+            encoding="utf-8",
+        )
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = build_subject_content_manifest("personlighedspsykologi")
+        reading = manifest["lectures"][0]["readings"][0]
+        self.assertEqual(reading["reading_title"], "Bach & Simonsen (2023)")
+        self.assertEqual(reading["source_filename"], "W3L2 Bach & Simonsen (2023) kapitel 3.pdf")
+        self.assertEqual(
+            reading["source_filenames"],
+            [
+                "W3L2 Bach & Simonsen (2023) kapitel 3.pdf",
+                "W3L2 Bach & Simonsen (2023) kapitel 5.pdf",
+            ],
+        )
 
     def test_build_manifest_extracts_podcast_duration_when_present(self) -> None:
         self.rss_file.write_text(

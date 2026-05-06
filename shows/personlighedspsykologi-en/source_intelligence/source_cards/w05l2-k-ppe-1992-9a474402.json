@@ -1,0 +1,141 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:04:17Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l2-k-ppe-1992-9a474402"
+    ],
+    "dependency_hashes": {
+      "source_file": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
+      "source_files_signature": "b02fd1d4eaff0f582d2811b51e1aafe7b2bc8e47c4a71469aad2f42b80679239",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l2-k-ppe-1992-9a474402",
+    "lecture_key": "W05L2",
+    "title": "Køppe (1992)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf",
+    "source_paths": [
+      "Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
+    "length_band": "medium",
+    "page_count": 16,
+    "estimated_token_count": 10400,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Teksten positionerer Freuds psykoanalyse mellem biologisk reduktionisme, romantisk naturfilosofi og hermeneutik ved at etablere en specifik ontologi for det psykisk ubevidste.",
+    "source_role": "Fungerer som en teoretisk og videnskabsteoretisk grundtekst, der definerer det ubevidstes eksistensform og afgrænser psykoanalysen fra andre discipliner.",
+    "relation_to_lecture": "Understøtter W05L2 (Psykoanalysens konstituering) ved at levere det epistemologiske og historiske fundament for Freuds begreb om det ubevidste.",
+    "central_claims": [
+      {
+        "claim": "Det psykoanalytiske ubevidste er en psykisk instans, hvilket betyder, at dets determination af subjektet er systemintern og kan modificeres gennem selvrefleksion.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Det artsdefinerende for det menneskelige subjekt er ikke bevidstheden i sig selv, men den gensidigt konstituerende relation mellem det psykisk ubevidste og selvrefleksionen.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Det ubevidste rummer ikke følelser eller oplevelser, da dette er en oplevelseskategori, der kræver bevidsthed; det ubevidste rummer derimod affektpotentialiteter og psykiske kvantiteter.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Det ubevidste er permanent struktureret på dynamiske konflikter, og en fuldstændig udligning af disse konflikter ville være identisk med psykologisk død.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Systemintern determination",
+        "definition": "En form for determination, hvor det determinerende (det ubevidste) er en del af det samme system (psyken) som det determinerede, hvilket adskiller sig fra klassisk ekstern determination.",
+        "role": "Forklarer, hvorfor psykoanalysen ikke reducerer mennesket til en maskine, og hvordan terapi (via selvrefleksion) kan justere denne determination."
+      },
+      {
+        "term": "Det topisk ubevidste (ubv)",
+        "definition": "Den del af psyken, der rummer fortrængte forestillinger og aktivt strukturerer subjektets livshistorie, i modsætning til det førbevidste.",
+        "role": "Central for at forstå Freuds topiske modeller og det ubevidstes dynamiske, konfliktfyldte natur."
+      },
+      {
+        "term": "Affektpotentialitet",
+        "definition": "Et metapsykologisk begreb, der betegner dynamiske størrelser i det ubevidste uden at tillægge dem evnen til at opleve (som rigtige følelser/affekter gør).",
+        "role": "Forhindrer personificering af det ubevidste som et selvstændigt 'følende' subjekt inde i psyken."
+      },
+      {
+        "term": "Selvrefleksion",
+        "definition": "Evnen til at have sig selv som indhold/objekt, hvilket udgør modpolen til det ubevidste og er grundlaget for den psykoanalytiske terapi.",
+        "role": "Fungerer som den konstituerende betingelse for det ubevidste; de to definerer hinanden i det menneskelige subjekt."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Tre definitioner af det ubevidste",
+        "summary": "Skelnen mellem det ubevidste som 1) neurofysiologiske processer, 2) en psykisk instans (Freud), og 3) en subjekt-transcenderende dimension (natur/samfund).",
+        "stakes": "Afgør om det ubevidste ses som en ekstern determinerende kraft (biologi/natur) eller en intern, dynamisk del af psyken, der kan påvirkes."
+      },
+      {
+        "label": "Topisk ubevidst vs. Førbevidst",
+        "summary": "Det førbevidste er stort set identisk med hukommelsen og kan umiddelbart blive bevidst, mens det topisk ubevidste er dynamisk fortrængt.",
+        "stakes": "Forhindrer sammenblanding af almindelig hukommelse med det psykoanalytiske ubevidste, som er strukturerende og konfliktfyldt."
+      },
+      {
+        "label": "Følelser vs. Affektpotentialiteter",
+        "summary": "Følelser tilhører bevidstheden som en oplevelseskategori, mens det ubevidste kun indeholder potentialet for affekt (psykisk kvantitet).",
+        "stakes": "Undgår den udbredte romantiske misforståelse, at det ubevidste er et 'skjult følelsesliv' eller et selvstændigt subjekt."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At det ubevidste er et selvstændigt 'lille menneske' inde i hovedet, der har sine egne følelser og bevidste hensigter (personificering af instanserne).",
+      "At psykoanalysen anser mennesket for at være fuldstændig og uundgåeligt determineret af biologi eller drifter, uden mulighed for forandring.",
+      "At det førbevidste (almindelig hukommelse) er det samme som det topisk ubevidste.",
+      "At Freuds brug af 'psykisk kvantitet' og 'energi' betyder, at psykoanalysen blot er kamoufleret neurofysiologi (Habermas' kritik)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Det ubevidste er imidlertid ikke blot processer, men også struktur og indhold.",
+        "why": "Viser hvordan det ubevidste aktivt former subjektets perception og livshistorie, eksemplificeret ved casen om Rottemanden (s. 190)."
+      },
+      {
+        "target": "Freuds opfattelse af det ubevidste er uadskillelig fra definitionen af selvbevidstheden som en modpol i den psykiske dynamik.",
+        "why": "Understreger den dialektiske og gensidigt konstituerende relation mellem det ubevidste og selvrefleksionen (s. 191)."
+      }
+    ],
+    "grounding_notes": [
+      "Køppe bruger Freuds sygehistorie om Rottemanden til at illustrere, hvordan det ubevidste strukturerer bevidst materiale.",
+      "Teksten diskuterer eksplicit og afviser Habermas' og Lorenzers hermeneutiske kritik af Freuds metapsykologi.",
+      "Forfatteren trækker tråde til kunstig intelligens (computere) for at understrege, at ægte bevidsthed forudsætter et ubevidste baseret på dynamiske konflikter."
+    ],
+    "warnings": [
+      "Teksten er overvejende videnskabsteoretisk og ontologisk; den indeholder ikke kliniske retningslinjer eller empiriske studier i traditionel forstand."
+    ]
+  }
+}

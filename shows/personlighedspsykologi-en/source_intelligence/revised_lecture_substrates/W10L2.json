@@ -1,0 +1,85 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:07:39Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-davies-1990-65185910",
+      "w10l2-foucault-1997-92cd121d",
+      "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+      "w10l2-seminar-10-poststrukturalisme-70b709db",
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "967eb2129e8578601d6c748b9dd1e8164cfeccfedff8b794eb77366193feae4e",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W10L2",
+    "lecture_title": "Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme (Forelæsning 19, 2026-04-14)",
+    "sequence_index": 19
+  },
+  "analysis": {
+    "top_down_course_relevance": "This lecture represents the climax of the course's critical deconstruction of the isolated, essentialized individual. It provides the crucial theoretical vocabulary (discourse, subjectivation, looping effects) necessary to understand personality as a historically and socially produced phenomenon, perfectly setting up the final meta-theoretical synthesis and narrative psychology.",
+    "what_matters_more": [
+      "Explicitly mapping Foucault's 'Subjectivation' and Hacking's 'Looping Effect' onto the course's 4 orientation points, particularly 'historicity' and 'essence/context'.",
+      "The epistemological contrast with Weeks 1-3: Highlighting how poststructuralism and social constructionism actively dismantle the reified, objective view of personality traits.",
+      "The Agency vs. Structure dialectic: Emphasizing how Foucault's 'practices of freedom' and Davies' 'discursive positioning' rescue human agency from pure social determinism."
+    ],
+    "de_emphasize": [
+      "The specific empirical details of Davies' 1990 Australian classroom study, shifting focus to the underlying mechanism of discursive positioning.",
+      "The dense historical minutiae of Foucault's analysis of Greek and Roman ethics, focusing instead on the conceptual function of 'care of the self' as an active practice of freedom."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 & W02L2 (Trait Psychology)",
+        "relation": "Epistemological deconstruction",
+        "rationale": "Hacking's 'Looping Effect' and Foucault's 'Subjectivation' directly challenge the foundational assumption of stable, objective traits, arguing that psychological classifications actively 'make up' the people they claim to merely measure."
+      },
+      {
+        "target": "W04L2 (Psychoanalysis / Lacan)",
+        "relation": "The Decentered Subject",
+        "rationale": "Both traditions reject the rational, transparent ego. However, poststructuralism locates this decentering in historical discourse and power relations rather than in the unconscious."
+      },
+      {
+        "target": "W08L2 & W09L1 (Critical Psychology)",
+        "relation": "Contrastive approaches to Agency and Structure",
+        "rationale": "Both critique mainstream individualistic psychology, but critical psychology locates agency in the 'conduct of everyday life' and societal participation, whereas poststructuralism focuses on navigating discourse and power relations."
+      },
+      {
+        "target": "W01L1 & W12L1 (Orientation Points)",
+        "relation": "Meta-theoretical application",
+        "rationale": "This lecture radically shifts the 'essence/context' and 'historicity' orientation points, arguing that 'essence' is an illusion produced by historical context and discourse."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame the episode around the 'death of the inner essence'—how Foucault and social constructionism flip traditional personality psychology upside down.",
+      "Deep dive into Hacking's 'Looping Effect' as a mind-bending concept: discuss how being diagnosed or taking a personality test actively changes who you are.",
+      "Tackle the 'Agency' orientation point: If we are constructed by language and power, how do we have free will? Use Davies' concept of discursive positioning to explain this."
+    ],
+    "carry_forward": [
+      "The concept of the 'Looping Effect' as a critical lens for evaluating all psychological assessments.",
+      "The understanding of 'Subjectivation' as a necessary precursor to Narrative Psychology (W11L2), where the self is seen as an ongoing, culturally situated story.",
+      "The analytical habit of questioning the historical origins and power dynamics behind psychological categories."
+    ],
+    "warnings": [
+      "Students often misinterpret poststructuralism as pure determinism or linguistic nihilism ('if everything is constructed, I have no free will'). It is vital to emphasize Foucault's 'practices of freedom' to prevent this.",
+      "Seminar slides rely on external cases (e.g., a Manosphere YouTube video) without providing the analytical resolution. Instructors must ensure the theoretical takeaway regarding discourse and identity is clear even if the specific media is outdated or misunderstood."
+    ]
+  }
+}

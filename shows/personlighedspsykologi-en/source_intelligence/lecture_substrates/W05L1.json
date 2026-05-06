@@ -2,16 +2,16 @@
   "artifact_type": "lecture_substrate",
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-05T13:43:04Z",
+  "generated_at": "2026-05-05T19:28:47Z",
   "build": {
     "model": "gemini-3.1-pro-preview",
-    "prompt_version": "personlighedspsykologi-lecture-substrate-v1",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
     "generation_config": {
-      "version": "gemini-preprocessing-generation-config-v1",
+      "version": "gemini-preprocessing-generation-config-v2",
       "thinking_level": "high",
       "thinking_budget": null,
       "include_thoughts": false,
-      "temperature": "model_default",
+      "temperature": 0.2,
       "response_mime_type": "application/json",
       "response_json_schema": "stage_specific"
     }
@@ -22,13 +22,15 @@
       "w05l1-ricoeur-1981-19a5343f",
       "w05l1-gammelgaard-2010-e6baff8b",
       "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
-      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
+      "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+      "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
     ],
     "dependency_hashes": {
-      "source_catalog": "bc0585f59cadde213520a9d0f44c540098c197bb6b5ee32987c7d210a608c26e",
-      "lecture_bundle": "89753c72dfc75e341b2f79af3b10ed82e602e6cba727ebf876d531b00696093c",
-      "source_cards_signature": "794a9f3f281895d16f78dc321816e98510309006490f5e29387285b2d703950d",
-      "raw_sources_signature": "2094f25e9e1e8a14bc407b2d3e2f63caf04e2efd00e756fdc14e5999d287c542"
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "6e03306df3bfec5fe1fd285913910271baf72ab99990c68d73610c249acf2b9f",
+      "source_cards_signature": "4ec1e8f41e630fbd7250b0375ecbd6623e89a7da9672e9071b0976e3c9dc512a",
+      "raw_sources_signature": "d3cfa3c83da109eee92a3dbcc1866bc7f5a2009f5370c887cc8db7607f254445"
     }
   },
   "lecture": {
@@ -37,31 +39,140 @@
     "sequence_index": 9
   },
   "analysis": {
-    "lecture_question": "Hvordan etablerer psykoanalysen sit empiriske grundlag og sine sandhedskrav, nar dens primare genstandsfelt (det ubevidste) unddrager sig direkte naturvidenskabelig observation?",
-    "central_learning_problem": "De studerende har ofte svert ved at forene psykoanalysens videnskabelighed med naturvidenskabelige, positivistiske idealer om malbarhed og objektivitet. Læringsproblemet bestar i at forsta overgangen fra en korrespondanceteoretisk sandhedsforstaelse til en hermeneutisk, processuel sandhedsforstaelse, hvor empiri defineres ud fra sprog (talekuren), intentionalitet (overforing), psykisk realitet og narrativitet, og hvor arsagssammenhange ofte kun kan udledes baglans (Nachtraglichkeit) i det kliniske rum.",
+    "lecture_question": "Hvad udgør psykoanalysens empiri, og hvordan kan en fortolkende, klinisk praksis gøre krav på videnskabelig gyldighed?",
+    "central_learning_problem": "Studerende forventer ofte, at psykologisk empiri består af objektive, målbare adfærdsdata. I psykoanalysen er empirien imidlertid uløseligt forbundet med den kliniske situation, sproget, overføring og patientens 'psykiske realitet'. Udfordringen er at forstå, at psykoanalysen ikke er uvidenskabelig, men at den opererer med et andet, hermeneutisk og narrativt sandhedskriterium, hvor fortolkning og behandling (teori og metode) er gensidigt afhængige, hvilket komplicerer traditionelle idealer om objektivitet.",
     "source_roles": [
-      {}
+      {
+        "source_id": "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+        "role": "anchor",
+        "rationale": "Udgør det fundamentale kliniske casestudie, der demonstrerer psykoanalysens metode, drømmetydning og overføring i praksis, og som de øvrige tekster forholder sig til."
+      },
+      {
+        "source_id": "w05l1-ricoeur-1981-19a5343f",
+        "role": "framing",
+        "rationale": "Opstiller den overordnede epistemologiske ramme for, hvad der tæller som fakta i psykoanalysen gennem fire specifikke kriterier."
+      },
+      {
+        "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+        "role": "supporting",
+        "rationale": "Oversætter Ricoeurs filosofiske kriterier til en psykologisk kontekst og forsvarer psykoanalysens videnskabelighed over for positivistisk kritik."
+      },
+      {
+        "source_id": "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+        "role": "supporting",
+        "rationale": "Samler de teoretiske og metodiske tråde og anlægger et kritisk blik på Freuds kliniske praksis i Dora-casen."
+      },
+      {
+        "source_id": "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39",
+        "role": "application",
+        "rationale": "Anvender Ricoeurs fire kriterier direkte på analysen af Dora-casen i en praktisk øvelsessituation."
+      }
     ],
     "source_relations": [
-      {}
+      {
+        "source_ids": [
+          "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b"
+        ],
+        "relation": "Ricoeur og Gammelgaard leverer den epistemologiske begrundelse for den fortolkende metode, som Freud praktiserer i Dora-casen.",
+        "learning_stakes": "Hjælper de studerende med at se, at Freuds metode ikke er vilkårlig, men bygger på en specifik, forsvarlig forståelse af psykisk realitet og narrativitet."
+      },
+      {
+        "source_ids": [
+          "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5"
+        ],
+        "relation": "Forelæsningen bruger Freuds tekst som genstand for kritisk metodisk refleksion, der påpeger Freuds blinde vinkler (f.eks. manglende blik for modoverføring og patriarkalske bias).",
+        "learning_stakes": "Lærer de studerende at adskille psykoanalysens metodiske potentiale fra Freuds personlige og historiske begrænsninger."
+      }
     ],
     "core_concepts": [
-      {}
+      {
+        "concept": "Psykisk realitet",
+        "explanation": "Patientens indre, subjektive virkelighed og fantasier, som i psykoanalysen behandles som gyldige empiriske fakta på linje med materiel virkelighed.",
+        "source_ids": [
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+          "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+          "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
+        ]
+      },
+      {
+        "concept": "Overføring",
+        "explanation": "Forskydningen af patientens ubevidste ønsker og tidligere relationelle mønstre over på analytikeren. Fungerer både som behandlingens største forhindring og dens vigtigste empiriske kilde.",
+        "source_ids": [
+          "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+          "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+        ]
+      },
+      {
+        "concept": "Talekuren",
+        "explanation": "Princippet om, at psykoanalytisk empiri er begrænset til det, der kan udtrykkes i sprog, hvor meningen og intentionen bag ordene er i fokus frem for den bogstavelige adfærd.",
+        "source_ids": [
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5",
+          "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
+        ]
+      },
+      {
+        "concept": "Nachträglichkeit",
+        "explanation": "Fænomenet hvor en tidlig oplevelse først får sin fulde (ofte traumatiske) betydning på et senere tidspunkt i lyset af nye erfaringer og retrospektiv meningsdannelse.",
+        "source_ids": [
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5"
+        ]
+      }
     ],
     "core_tensions": [
-      {}
+      {
+        "tension": "Materiel virkelighed vs. Psykisk realitet",
+        "stakes": "Afgørende for at forstå, at psykoanalysen ikke primært søger historisk-objektiv sandhed, men derimod narrativ og psykologisk sandhed i patientens indre verden.",
+        "source_ids": [
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
+        ]
+      },
+      {
+        "tension": "Naturvidenskabelig evidens vs. Hermeneutisk meningsdannelse",
+        "stakes": "Legitimerer psykoanalysen som en videnskab på dens egne præmisser (anti-scientistisk) frem for at afvise den som uvidenskabelig ud fra et snævert positivistisk ideal.",
+        "source_ids": [
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-lecture-9-psykoanalysens-empiri-og-metode-f8e26ec5",
+          "w05l1-exercise-2-psykoanalyse-1-og-intro-1-d9bc77f5"
+        ]
+      },
+      {
+        "tension": "Behandling vs. Videnskabelig undersøgelse",
+        "stakes": "Belyser de etiske faldgruber i case-metoden og sammenblandingen af analytikerens helbredende rolle og forskerens vidensproducerende rolle, som det ses i Dora-casen.",
+        "source_ids": [
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l1-exercise-3-psykoanalyse-2-dora-a8eb7f39"
+        ]
+      }
     ],
     "likely_misunderstandings": [
-      "At 'anti-scientistisk' er det samme som 'anti-videnskabelig', og at psykoanalysen derfor helt afviser videnskabelighed."
+      "At psykoanalysen er uvidenskabelig, fordi den ikke benytter sig af kvantitative, observerbare data.",
+      "At 'psykisk realitet' blot er et andet ord for, at patienten lyver eller fantaserer bevidst.",
+      "At Freuds behandling af Dora var en ubetinget succes, der tjener som et fejlfrit ideal for psykoanalytisk praksis.",
+      "At psykoanalytiske fortolkninger ikke kan valideres, men udelukkende beror på analytikerens gætværk."
     ],
     "must_carry_ideas": [
-      "Psykoanalytisk empiri baserer sig pa fire kriterier: sprog (talekuren), intersubjektivitet (intentionalitet/overforing), psykisk realitet og den fortalte historie (narrativet)."
+      "Psykoanalytisk empiri er ikke rå data, men meningsfulde, relationelle og sproglige ytringer (Ricoeurs fire kriterier).",
+      "Klinisk praksis (behandling) og videnskabelig undersøgelse (teoridannelse) er uadskillelige i psykoanalysen.",
+      "Sandhed i psykoanalysen handler om narrativ kohærens og terapeutisk virkning, ikke om historisk-objektiv nøjagtighed."
     ],
-    "missing_sources": [
-      {}
-    ],
+    "missing_sources": [],
     "warnings": [
-      "Den vedlagte Freud-tekst er en engelsk oversaettelse, hvilket kan skabe terminologisk forvirring i forhold til de danske forelaesninger."
+      "Øvelsesslides (Psykoanalyse 2 - Dora) skifter i anden halvdel brat fokus til fænomenologi som forberedelse til næste uge; dette materiale må ikke forveksles med psykoanalytisk teori.",
+      "Freuds Dora-case er lang og kompleks; der er risiko for, at de studerende fortaber sig i de kliniske detaljer og overser de overordnede metodiske og epistemologiske pointer, hvis teksten ikke stramt rammesættes af Ricoeur og Gammelgaard."
     ]
   }
 }

@@ -1,0 +1,175 @@
+{
+  "artifact_type": "lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:27:30Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-lecture-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w04l2-laplanche-1970-968862d5",
+      "w04l2-lacan-1966-2d720f56",
+      "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+      "w04l1-seminar-4-psykoanalyse-i-94151a16"
+    ],
+    "dependency_hashes": {
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "lecture_bundle": "9f693e198166e5f571c0ae26f7bb871f3b98e81d5b2f5b3b7d4d7feb9b99e1fc",
+      "source_cards_signature": "a48ae7a6ca11caf0a22977ae724c1895a1a219aabe6d6b416f6563dd37b1d40f",
+      "raw_sources_signature": "0707bd2401bfc37d5c762da3b6bd2d27e2f58fb9d9ec9cedc175ea6a0d7ded34"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W04L2",
+    "lecture_title": "Psykoanalytisk personlighedsstruktur (Forelæsning 8, 2026-02-24)",
+    "sequence_index": 8
+  },
+  "analysis": {
+    "lecture_question": "How does psychoanalysis conceptualize the structure of personality, moving from biological instincts to the formation of a decentered, defensively organized subject?",
+    "central_learning_problem": "Students often confuse psychoanalytic concepts like 'drive' and 'sexuality' with biological instincts and adult genital sex. The central learning problem is to grasp how human subjectivity and personality structure emerge not from natural biological maturation, but through a complex, socially mediated process of 'propping' (Laplanche), imaginary identification (Lacan), and the unconscious organization of defenses against internal and external conflicts.",
+    "source_roles": [
+      {
+        "source_id": "w04l2-laplanche-1970-968862d5",
+        "role": "anchor",
+        "rationale": "Provides the foundational theoretical mechanism (propping/étayage) for how the human sexual drive deviates from biological instinct, establishing the non-naturalistic basis of psychoanalytic personality."
+      },
+      {
+        "source_id": "w04l2-lacan-1966-2d720f56",
+        "role": "anchor",
+        "rationale": "Introduces the structural theory of the ego's formation through the mirror stage, establishing the ego as an alienating, imaginary fiction rather than a rational core."
+      },
+      {
+        "source_id": "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+        "role": "framing",
+        "rationale": "Synthesizes the dense theoretical readings into a coherent lecture narrative, extending the concepts of drive and ego into clinical personality structures and defense mechanisms."
+      },
+      {
+        "source_id": "w04l1-seminar-4-psykoanalyse-i-94151a16",
+        "role": "application",
+        "rationale": "Applies the theoretical concepts of drive, infantile sexuality, and the decentered subject to case work and group discussions, reinforcing the epistemological stance of psychoanalysis."
+      }
+    ],
+    "source_relations": [
+      {
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ],
+        "relation": "The lecture slides translate Laplanche's dense metapsychological account of the drive (source, aim, object, impetus) into a broader developmental and clinical framework.",
+        "learning_stakes": "Helps students connect abstract metapsychology to observable clinical phenomena and personality development."
+      },
+      {
+        "source_ids": [
+          "w04l2-lacan-1966-2d720f56",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ],
+        "relation": "The lecture slides situate Lacan's mirror stage within a broader psychoanalytic understanding of narcissism and structural personality diagnosis.",
+        "learning_stakes": "Ensures students understand the clinical implications of Lacan's philosophical critique of the ego."
+      },
+      {
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lacan-1966-2d720f56"
+        ],
+        "relation": "Both texts provide structural, non-biological accounts of personality formation—Laplanche focusing on the drive, Lacan on the ego.",
+        "learning_stakes": "Demonstrates the shift in psychoanalysis from biological developmental models to structural and linguistic models of subjectivity."
+      }
+    ],
+    "core_concepts": [
+      {
+        "concept": "Drive (Trieb) vs. Instinct (Instinkt)",
+        "explanation": "The distinction between a preformed, biologically adaptive behavioral pattern (instinct) and a deflected, metaphorized human psychological process (drive) characterized by impetus, aim, object, and source.",
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "concept": "Propping (Étayage)",
+        "explanation": "The process by which the emergent sexual drive initially attaches itself to and leans upon a nonsexual, vital bodily function (like feeding) before becoming independent and auto-erotic.",
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "concept": "Mirror Stage",
+        "explanation": "A primordial identification process where the infant assumes a specular image, forming the foundational matrix of the 'I' (ego) as an alienating, imaginary fiction that masks biological motor unco-ordination.",
+        "source_ids": [
+          "w04l2-lacan-1966-2d720f56",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "concept": "Defense Mechanisms",
+        "explanation": "Unconscious psychological mechanisms that reduce anxiety. Their specific configuration (primary/primitive vs. secondary/mature) is the key to diagnosing a person's clinical personality structure (psychotic, borderline, or neurotic).",
+        "source_ids": [
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "concept": "Infantile Sexuality",
+        "explanation": "The concept that children are sexual beings from birth, but their sexuality is polymorphous, auto-erotic, and detached from genital reproduction, encompassing all pleasure-seeking activities.",
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9",
+          "w04l1-seminar-4-psykoanalyse-i-94151a16"
+        ]
+      }
+    ],
+    "core_tensions": [
+      {
+        "tension": "Biological Instinct vs. Psychoanalytic Drive",
+        "stakes": "Crucial for preventing the biologization of psychoanalysis; highlights that human motivation and sexuality are psychologically mediated and structurally displaced, not purely natural.",
+        "source_ids": [
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "tension": "Ego as rational agent vs. Ego as méconnaissance",
+        "stakes": "Challenges traditional psychological notions of a mastering, autonomous self, redefining the ego as a defensive illusion and altering the therapeutic goals of psychoanalysis.",
+        "source_ids": [
+          "w04l2-lacan-1966-2d720f56",
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      },
+      {
+        "tension": "Neurotic vs. Psychotic Personality Structure",
+        "stakes": "Determines the clinical understanding of a patient's functioning based on identity integration and the maturity of defense mechanisms, which dictates whether therapy should be uncovering (self-realization) or supportive (structure-building).",
+        "source_ids": [
+          "w04l2-lecture-8-psykoanalytisk-personlighedsstruktur-1e653ba9"
+        ]
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating the psychoanalytic 'drive' (Trieb) with biological 'instinct' (Instinkt).",
+      "Assuming 'infantile sexuality' refers to adult genital sexuality rather than polymorphous, auto-erotic pleasure.",
+      "Taking the Lacanian 'mirror stage' literally as requiring a physical mirror, rather than understanding it as a structural metaphor for the formation of the ego.",
+      "Believing that defense mechanisms are conscious coping strategies that individuals actively choose to employ.",
+      "Assuming that auto-erotism implies the infant starts in a completely objectless state, rather than it being a secondary stage following the loss of the vital object."
+    ],
+    "must_carry_ideas": [
+      "Personality in psychoanalysis is not a natural biological given, but a structural formation built on the deviation of drives and imaginary identifications.",
+      "The human subject is fundamentally decentered, and the ego is an alienating, defensive construct rather than the core of rational agency.",
+      "Clinical personality structures (neurotic, borderline, psychotic) are differentiated by the maturity of their dominant defense mechanisms and the degree of identity integration."
+    ],
+    "missing_sources": [],
+    "warnings": [
+      "Lacan's text is highly dense and philosophical; students will likely struggle with structuralist terminology without explicit lecture framing.",
+      "The lecture slides condense complex theories (like the Oedipus complex and Lacan's registers) which require engagement with the primary texts for full comprehension.",
+      "The OCR text provided in the Lacan source file is corrupted; analysis relies on visual reading of the document."
+    ]
+  }
+}

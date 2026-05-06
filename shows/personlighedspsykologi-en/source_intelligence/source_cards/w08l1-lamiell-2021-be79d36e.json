@@ -1,0 +1,155 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:16:39Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l1-lamiell-2021-be79d36e"
+    ],
+    "dependency_hashes": {
+      "source_file": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
+      "source_files_signature": "f4482582e6a78bedd2efed91919e99bef0c1b49d5b4a2cfb5a74dbdd6f8b1c43",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w08l1-lamiell-2021-be79d36e",
+    "lecture_key": "W08L1",
+    "title": "Lamiell (2021)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+    "source_paths": [
+      "Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Introduces William Stern's 'Critical Personalism' as a foundational, teleological, and holistic alternative to mechanistic and elementaristic psychological theories.",
+    "source_role": "Serves as a biographical and intellectual introduction to Stern's framework, outlining its core philosophical tenets before diving into his translated works.",
+    "relation_to_lecture": "Provides the primary reading material for the 'W8L1 Critical personalism' lecture, establishing the conceptual vocabulary needed to understand Stern's personality psychology.",
+    "central_claims": [
+      {
+        "claim": "William Stern's critical personalism posits that the whole person is ontologically prior to their constituent parts or 'moments,' opposing mechanistic and elementaristic views of psychology.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Persons are characterized by psychophysical neutrality, meaning the mind-body distinction is secondary to the primary reality of the unified, whole person.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Human development and behavior, such as the development of lying in children, result from the 'convergence' of inner dispositions (potentialities) and outer environmental factors.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personalism is distinct from individualism because it emphasizes that individuals must adjust to and integrate supra-personal (social and ethical) demands, rather than just pursuing individual rights.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Critical Personalism",
+        "definition": "Stern's philosophical worldview emphasizing the person as a unique, inherently valuable, self-activated, and goal-oriented unity, as opposed to a mechanistic 'thing'.",
+        "role": "Serves as the foundational framework for Stern's approach to psychology, contrasting with elementaristic and natural science models."
+      },
+      {
+        "term": "Psychophysical Neutrality",
+        "definition": "The concept that the whole person is ontologically prior to the distinction between physical (body) and psychological (mind) facets.",
+        "role": "Explains how Stern avoids both mechanistic reductionism and mind-body dualism, treating mind and body as 'moments' of a unified whole."
+      },
+      {
+        "term": "Convergence",
+        "definition": "The co-determination of a person's development and actions by their inner dispositions (potentialities) and the external world (affordances).",
+        "role": "Forms the basis of Stern's developmental psychology, illustrating how traits form over time through interaction with the environment."
+      },
+      {
+        "term": "Introception (Introzeption)",
+        "definition": "The active, purposive process of appropriating external (heterotelic) goals and integrating them into one's own self-goals (autotelic).",
+        "role": "Explains how individuals internalize societal and ethical demands without losing their personal unity or being degraded to mere tools."
+      },
+      {
+        "term": "Entelechy",
+        "definition": "A teleological concept adopted from Aristotle to describe the unitary, goal-striving causality of personal doings.",
+        "role": "Provides a scientifically defensible teleology that accounts for the purposeful, goal-oriented nature of human behavior."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Persons vs. Things",
+        "summary": "Persons are unique, inherently valuable unities that are self-activated and goal-oriented; things are mere aggregates of parts without inherent value or self-activation.",
+        "stakes": "Forms the ethical and epistemological foundation of critical personalism, arguing that it is scientifically and morally wrong to treat humans mechanistically."
+      },
+      {
+        "label": "Personalism vs. Individualism",
+        "summary": "Personalism integrates individual uniqueness with supra-personal (social/ethical) demands, whereas one-sided individualism focuses solely on individual rights and happiness.",
+        "stakes": "Prevents the misunderstanding that Stern's focus on the individual person equates to selfish or isolated individualism, highlighting the socio-ethical dimensions of his theory."
+      },
+      {
+        "label": "Genuine lies vs. Pseudo-lies",
+        "summary": "Genuine lies involve awareness of falsehood and intention to deceive; pseudo-lies lack the intention to deceive (e.g., play, defense against unpleasantness).",
+        "stakes": "Demonstrates how Stern applied personalistic concepts (like goal-orientation and convergence) to concrete developmental phenomena."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating personalism with individualism, ignoring Stern's emphasis on supra-personal and socio-ethical demands.",
+      "Thinking 'dispositions' in Stern's theory are fixed, deterministic traits, rather than potentialities realized through convergence with the environment.",
+      "Confusing Stern's holism with Gestalt psychology's approach, missing his critique that Gestalt psychology risks elementarism if it ignores the 'gestalt-ing person'.",
+      "Assuming Stern rejected experimental psychology entirely; he actually valued it as a counterweight to speculation, though he rejected its mechanistic assumptions."
+    ],
+    "quote_targets": [
+      {
+        "target": "A person is an entity that, though consisting of many parts, forms a unique and inherently valuable unity...",
+        "why": "Defines the fundamental distinction between persons and things."
+      },
+      {
+        "target": "Keine Gestalt ohne Gestalter!",
+        "why": "Highlights Stern's critique of Gestalt psychology and emphasizes the ontological priority of the whole person."
+      },
+      {
+        "target": "...just like every other psychological function, lying must be seen as a consequence of the convergence of inner and outer factors",
+        "why": "Perfectly illustrates the concept of convergence in a concrete developmental context."
+      },
+      {
+        "target": "Ich werte, ... also bin ich Wert",
+        "why": "Captures the core ethical and epistemic stance of personalism regarding human value."
+      }
+    ],
+    "grounding_notes": [
+      "The text is an introductory chapter by J.T. Lamiell (2021) to a volume translating Stern's works.",
+      "All claims are grounded directly in the provided PDF text.",
+      "The text frequently contrasts Stern's views with contemporaries like Ebbinghaus, Dilthey, and Wundt to situate his theory historically."
+    ],
+    "warnings": [
+      "The OCR contains some minor artifacting (e.g., missing ligatures represented as unknown characters), but the semantic meaning is fully recoverable.",
+      "The text is a secondary source introducing primary translations; it summarizes Stern's views rather than presenting them in his original voice, though it quotes him extensively."
+    ]
+  }
+}

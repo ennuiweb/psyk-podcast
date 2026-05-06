@@ -1,0 +1,172 @@
+{
+  "artifact_type": "podcast_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:48:32Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-podcast-substrate-v2",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w01l2-mayer-and-bryan-2024-07faf915",
+      "w01l2-phan-et-al-2024-bf3395d7",
+      "w01l2-koutsoumpis-2025-96f4dcf7",
+      "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab"
+    ],
+    "dependency_hashes": {
+      "revised_lecture_substrate": "173cc1129d1065e79b5df3e478572492ebc44fa82618317410048d40155410f9",
+      "course_synthesis": "92aeb51c276c248534b100a556bb8453f025d0d2aaac8e4265ee751cf2d17c57",
+      "source_cards_signature": "4405c8fc4422db41b1102503aa70bfd54e32aa425f0462293c65e2b5803f7a4d",
+      "source_weighting": "c54d8318ed0a93c58a03963293f128ee737a21e2cc336f20c22298df45ee995d"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W01L2",
+    "lecture_title": "Personality assessment (Forelæsning 2, 2026-02-03)",
+    "sequence_index": 2
+  },
+  "podcast": {
+    "weekly": {
+      "angle": "Measuring the Mask: How our assessment tools dictate what we assume personality is, setting the epistemological baseline for the entire course.",
+      "must_cover": [
+        "The epistemological stakes of measurement: Choosing an assessment method inherently defines what personality is assumed to be.",
+        "The Ergodic Fallacy (Phan et al.): Why population-level trait averages cannot be mathematically or logically applied to individual psychological functioning.",
+        "The TRI Model's split between Identity and Reputation: Introducing an early crack in the idea of a unified 'inner core' personality."
+      ],
+      "avoid": [
+        "Getting bogged down in the technical mechanics of Machine Learning algorithms or psychometric formulas.",
+        "Listing all 25 of Phan et al.'s polytomies for research design.",
+        "Treating self-reports as 'true' and observer reports as 'biased' (or vice versa); frame them as distinct epistemological choices."
+      ],
+      "grounding": [
+        "Use Phan et al. to ground the critique of population averages (Ergodic Fallacy).",
+        "Use Mayer & Bryan to establish the foundational taxonomy of Personal-source vs. External-source data.",
+        "Use Koutsoumpis to show how Machine Learning reverses the traditional paradigm by using behavior to predict traits."
+      ]
+    },
+    "per_reading": [
+      {
+        "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+        "angle": "The taxonomy of personality data and the myth of perfect convergence.",
+        "must_cover": [
+          "The fundamental division between Personal-source data (inside the person) and External-source data (surroundings).",
+          "How different measurement methods elicit distinct 'response processes', explaining why they often don't correlate.",
+          "The distinction between self-estimated intelligence and actual ability-measured intelligence."
+        ],
+        "avoid": [
+          "Assuming that a lack of convergence between two measures means one is invalid."
+        ]
+      },
+      {
+        "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+        "angle": "The mathematical limits of population averages in psychology.",
+        "must_cover": [
+          "The Ergodic Fallacy: The danger of applying group-level statistics to individual persons.",
+          "The 2x3 matrix replacing the outdated nomothetic-idiographic distinction.",
+          "The crucial difference in 'Focal Entity' (Person vs. Population)."
+        ],
+        "avoid": [
+          "Attempting to explain or memorize the 25 specific polytomous criteria; focus strictly on the conceptual matrix."
+        ]
+      },
+      {
+        "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+        "angle": "Reversing the paradigm with Machine Learning Personality Assessment (ML-PA).",
+        "must_cover": [
+          "How ML-PA uses behavior as the independent variable to predict traits as the dependent variable.",
+          "The SOKA model: Why ML is more accurate at predicting observer-reported traits than self-reported traits.",
+          "The trade-off between applying bias mitigation and maximizing predictive performance."
+        ],
+        "avoid": [
+          "Technical explanations of supervised machine learning algorithms.",
+          "Assuming ML-PA captures the full variance of questionnaire-based traits."
+        ]
+      }
+    ],
+    "per_slide": [
+      {
+        "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+        "angle": "The methodological primer for personality psychology.",
+        "must_cover": [
+          "The TRI Model (Trait-Reputation-Identity) as a framework for multi-rater assessment.",
+          "The distinction between random errors and systematic biases in assessment.",
+          "The reality of effect sizes in personality psychology (correlations typically ranging from .15 to .40)."
+        ],
+        "avoid": [
+          "Over-explaining the interactive classroom activities (e.g., 'generate original uses') which lack context in audio format."
+        ]
+      }
+    ],
+    "short": {
+      "angle": "The Ergodic Fallacy and the TRI Model: Why population averages and self-reports don't tell the whole story of who you are.",
+      "must_cover": [
+        "The Ergodic Fallacy (Phan et al.) explained simply.",
+        "The tension between Identity (who I think I am) and Reputation (who others say I am) via the TRI model."
+      ],
+      "avoid": [
+        "Technical psychometrics, machine learning mechanics, and detailed research design matrices."
+      ]
+    },
+    "selected_concepts": [
+      {
+        "concept": "Ergodic Fallacy",
+        "why": "It is a crucial conceptual anchor for the entire course, explaining the logical limits of applying population-level trait averages to individual psychological functioning."
+      },
+      {
+        "concept": "Personal-source vs. External-source data",
+        "why": "Defines the primary epistemological divide in how personality data is collected, setting up the contrast between subjective experience and objective observation."
+      },
+      {
+        "concept": "Trait-Reputation-Identity (TRI) Model",
+        "why": "Introduces an early structural crack in the idea of a unified 'inner core', preparing students for the decentering of the subject in later psychoanalytic and poststructural modules."
+      },
+      {
+        "concept": "Machine learning-based personality assessment (ML-PA)",
+        "why": "Represents a modern methodological shift that reverses the traditional paradigm by using behavioral exhaust to predict traits."
+      }
+    ],
+    "selected_tensions": [
+      {
+        "tension": "Identity vs. Reputation",
+        "why": "Highlights that self-reports and observer reports capture fundamentally different facets of a person, proving that personality is not a single, easily captured object."
+      },
+      {
+        "tension": "Person vs. Population (Focal Entity)",
+        "why": "The core stakes of the Ergodic Fallacy; emphasizes that knowledge about a population average does not automatically translate to knowledge about a specific individual."
+      }
+    ],
+    "grounding_notes": [
+      "Always frame measurement choices as epistemological choices (what we assume personality is), not just technical or statistical decisions.",
+      "Use the Ergodic Fallacy as a deliberate bridge to foreshadow the need for idiographic, phenomenological, and critical theories later in the course.",
+      "When discussing ML-PA, explicitly reference the SOKA model to explain why algorithms are better at predicting how others see us (reputation) rather than how we see ourselves (identity)."
+    ],
+    "source_selection": [
+      {
+        "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+        "why": "Anchor source. Provides the comprehensive classification framework for personality measurement and explains method variance through distinct response processes."
+      },
+      {
+        "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+        "why": "Major source. Introduces the Ergodic Fallacy, which is a vital critical tool for students to use when evaluating trait psychology throughout the course."
+      },
+      {
+        "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+        "why": "Major source. Modernizes the assessment discussion by introducing computational methods and the epistemological implications of using behavioral exhaust to predict traits."
+      },
+      {
+        "source_id": "w01l2-lecture-2-gang-perspsy-2-260203-edbe52ab",
+        "why": "Supporting source. Contextualizes the readings with the TRI model and establishes the baseline expectations for effect sizes in personality research."
+      }
+    ]
+  }
+}

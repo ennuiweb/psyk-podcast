@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:08:28Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w06l1-seminar-6-f-nomenologi-46c58a1a"
+    ],
+    "dependency_hashes": {
+      "source_file": "6c704cc8f1ef8606d5b17f556e8ec473880f44e029a3dd69666d0204af0ec190",
+      "source_files_signature": "5a020076b2a5a374a73a49599818119d17b547c863c5949496409587ec4180b7",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w06l1-seminar-6-f-nomenologi-46c58a1a",
+    "lecture_key": "W06L1",
+    "title": "6. Fænomenologi",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/6. Fænomenologi.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/6. Fænomenologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/6. Fænomenologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/6. Fænomenologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "6c704cc8f1ef8606d5b17f556e8ec473880f44e029a3dd69666d0204af0ec190",
+    "length_band": "long",
+    "page_count": 30,
+    "estimated_token_count": 19500,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Fænomenologien præsenteres som en modpol til naturvidenskabelige/fysiske forståelser af psyken, idet den centrerer subjektiv oplevelse, meningsskabelse og bevidsthedens intentionalitet.",
+    "source_role": "Seminarundervisning, der kombinerer teoretisk gennemgang af fænomenologi (særligt Husserl og Funch & Roald) med praktisk opgavevejledning (APA-formalia, argumentation og brug af orienteringspunkter).",
+    "relation_to_lecture": "Seminaret bygger videre på hovedforelæsningen om fænomenologi ved at anvende teorien på konkrete tekster (Funch & Roald) og koble den til de studerendes skriftlige opgaver.",
+    "central_claims": [
+      {
+        "claim": "Fænomenologi er studiet af fænomener, som de optræder for bevidstheden, med det mål at beskrive og forstå den subjektive oplevelse og dens essenser.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psykologisk fænomenologi adskiller sig fra filosofisk fænomenologi ved at have et empirisk grundlag, eksempelvis gennem det fænomenologiske interview.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psyken forstås i fænomenologien ikke som et fysisk fænomen, men som en bevidsthedsstrøm, hvor subjektet aktivt tillægger verden betydning og 'konstituerer' objektet.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Orienteringspunkterne (essens vs. kontekst, determination, historicitet) skal anvendes som analytiske redskaber til nuanceret argumentation, ikke som holdningsbarometre for, om en teori er god eller dårlig.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Fænomenologi",
+        "definition": "Studiet af 'det der viser sig' for bevidstheden; en tilgang der ønsker at beskrive og forstå den subjektive oplevelse i et førstepersonsperspektiv.",
+        "role": "Udgør det teoretiske hovedemne for seminaret og danner rammen om forståelsen af menneskets bevidsthedsliv."
+      },
+      {
+        "term": "Intentionalitet",
+        "definition": "Et begreb inspireret af Brentano og Husserl, der beskriver bevidsthedens rettethed mod objekter, hvor subjektet konstituerer objektet ved at tillægge det betydning.",
+        "role": "Forklarer den fænomenologiske mekanisme for, hvordan mennesker perciperer og interagerer meningsfuldt med verden."
+      },
+      {
+        "term": "Bevidsthedshorisont",
+        "definition": "Den baggrund eller forudsætning, der gør det muligt for subjektet at give mening til en erfaring eller et objekt (fx at opleve en bygning som et 'hus' man kan bo i).",
+        "role": "Illustrerer, at perception ikke blot er sansestimuli, men en aktiv meningsskabende proces."
+      },
+      {
+        "term": "Orienteringspunkterne",
+        "definition": "Metateoretiske værktøjer (essens vs. kontekst, determination, historicitet) brugt til at arbejde i dybden med personlighedspsykologiske teorier.",
+        "role": "Fungerer som et praktisk stillads for de studerendes opgaveskrivning og analytiske læsning af pensum."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Filosofisk vs. Psykologisk fænomenologi",
+        "summary": "Filosofisk fænomenologi (Husserl) undersøger mulighedsbetingelserne for objektiv erkendelse, mens psykologisk fænomenologi er en empirisk videnskab baseret på metoder som fænomenologiske interviews.",
+        "stakes": "Vigtig for at forstå, hvordan fænomenologien oversættes fra abstrakt erkendelsesteori til anvendt psykologisk praksis."
+      },
+      {
+        "label": "Referat vs. Redegørelse",
+        "summary": "Et referat er en simpel, ofte punktformet gengivelse, mens en redegørelse er en sammenhængende tekst, der udvælger centrale pointer og anvender primær litteratur aktivt.",
+        "stakes": "Afgørende for at de studerende kan bestå de skriftlige opgaver ved at demonstrere akademisk argumentation frem for blot at referere."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At tro, at orienteringspunkterne skal bruges til at vurdere, om en teori er 'rigtig' eller 'forkert', frem for at bruge dem som neutrale analytiske redskaber.",
+      "At forveksle en akademisk redegørelse med et simpelt referat af grundbogen.",
+      "At antage, at læseren af opgaven (censoren) er indforstået med teorien, hvilket fører til manglende 'mellemregninger' og eksplicitte argumenter.",
+      "At opfatte psyken som en fysisk, målbar enhed i fænomenologien frem for en meningsskabende bevidsthedsstrøm."
+    ],
+    "quote_targets": [
+      {
+        "target": "Fænomenologien er studiet af (...) alt, hvad der kan optræde i vores bevidsthed i form af fx indtryk af vores omgivelser...",
+        "why": "Central definition af psykologisk fænomenologi fra Funch og Roald (2014, ss. 81-82)."
+      },
+      {
+        "target": "En grad længere nede kommer fremmedfølelsen: opdagelsen af, at verden er 'uigennemtrængelig'...",
+        "why": "Camus' fænomenologiske beskrivelse af absurditeten og tabet af meningsfuldhed (s. 29)."
+      }
+    ],
+    "grounding_notes": [
+      "Kilden er stærkt todelt: Første halvdel fokuserer på akademisk håndværk (APA, opgavestruktur, undgåelse af postulater), mens anden halvdel introducerer fænomenologiens grundbegreber.",
+      "Teorigennemgangen er primært forankret i Funch & Roald (2014) og Husserls grundtanker."
+    ],
+    "warnings": [
+      "Sliden indeholder flere arbejdsspørgsmål til Funch & Roald (2014) (fx om 'livsverden' og 'det præ-refleksive kropssubjekt'), som ikke besvares direkte i præsentationen. De studerende skal selv finde svarene i teksten."
+    ]
+  }
+}

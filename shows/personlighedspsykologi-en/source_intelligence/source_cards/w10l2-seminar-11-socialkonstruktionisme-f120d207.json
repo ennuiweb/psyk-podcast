@@ -1,0 +1,125 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:07:31Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l2-seminar-11-socialkonstruktionisme-f120d207"
+    ],
+    "dependency_hashes": {
+      "source_file": "619b338cf378796735a65dd226d2c3d3d5fbc21ffa30d1365e247766b020b53d",
+      "source_files_signature": "c9f11d37ecbcbc1b42726ccb3fe63551ee3a921443015ab78cf234f8086502db",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l2-seminar-11-socialkonstruktionisme-f120d207",
+    "lecture_key": "W10L2",
+    "title": "11. Socialkonstruktionisme",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/11. Socialkonstruktionisme.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/11. Socialkonstruktionisme.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/11. Socialkonstruktionisme.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/11. Socialkonstruktionisme.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "619b338cf378796735a65dd226d2c3d3d5fbc21ffa30d1365e247766b020b53d",
+    "length_band": "medium",
+    "page_count": 13,
+    "estimated_token_count": 8450,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Presents Social Constructionism as a framework where personality, mind, and emotions are understood as relational and cultural products rather than inner essences, contrasting it with Critical Psychology.",
+    "source_role": "Seminar slides designed to guide student reflection, facilitate group work, and structure the comparison of Gergen's relational self and Hacking's dynamic nominalism.",
+    "relation_to_lecture": "Applies the lecture's theoretical concepts through matrix questions and group comparisons, specifically focusing on texts by Gergen (1991) and Hacking (2007).",
+    "central_claims": [
+      {
+        "claim": "Social constructionism replaces the traditional assumption of individual selves with a vision of the self as an expression of relationships.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Emotions are not inner processes, but rather cultural and relational products.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Categorizing people (e.g., as autistic or having multiple personality disorder) creates a 'looping effect' where the classification interacts with and changes the person.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Dynamisk nominalisme (Dialektisk realisme)",
+        "definition": "Ian Hacking's approach focusing on the mutual interactions between a name/category and a person or thing.",
+        "role": "Provides the philosophical foundation for understanding how psychological classifications actively shape human behavior and identity."
+      },
+      {
+        "term": "Looping effekt",
+        "definition": "Hacking's concept describing how 'making up people' through classification creates a feedback loop where the classified individuals change in response to being categorized.",
+        "role": "Explains why human subjects are 'moving targets' rather than static objects of study."
+      },
+      {
+        "term": "Sociokulturelle teorier",
+        "definition": "Theories situated within the social sciences that aim to comprehend, change, and develop society and individuals through critique.",
+        "role": "Situates social constructionism epistemologically in contrast to natural sciences (aiming to control/predict) and human sciences (aiming to understand/find meaning)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Fixed targets vs. Moving targets",
+        "summary": "Hacking's distinction between objects that remain unchanged by our categorization of them (fixed) and human subjects who interact with and are changed by their classifications (moving).",
+        "stakes": "Challenges the traditional objective, static view of personality traits and psychiatric diagnoses, emphasizing the dynamic nature of human psychology."
+      },
+      {
+        "label": "Essens vs. kontekst",
+        "summary": "The debate over whether personality has an underlying, stable essence or is entirely dependent on and constructed by the surrounding context.",
+        "stakes": "Serves as a core analytical axis for comparing Social Constructionism with Critical Psychology."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that because human subjects are 'moving targets', their classifications lack objectivity; Hacking explicitly states this 'in no way queries their objectivity'.",
+      "Thinking social constructionism denies the existence of psychological phenomena like emotions, rather than redefining them as relational and cultural actions.",
+      "Confusing the epistemological goals of sociocultural theories (to comprehend and change through critique) with natural science goals (to control and predict)."
+    ],
+    "quote_targets": [
+      {
+        "target": "\"[…] to replace the traditional assumption of individual selves with a vision of self as an expression of relationship\" (Gergen, 1999, s. 117)",
+        "why": "Core definition of Gergen's relational view of the self, fundamental to the social constructionist critique of traditional personality psychology."
+      },
+      {
+        "target": "\"I do observe that we tend to think of them [autistic, obese] as directed as fixed targets. I suggest they are more like moving targets. This in no way queries their obejectivity.\" (s. 12)",
+        "why": "Perfectly illustrates Hacking's concept of the looping effect and dynamic nominalism."
+      }
+    ],
+    "grounding_notes": [
+      "The slides are heavily question-based (matrix format), meaning many theoretical points are framed as prompts for student discussion rather than declarative statements.",
+      "Comparisons between Critical Psychology and Social Constructionism are outlined as group work topics (Agency, Essence vs. context, Determination, Historicity) without providing the definitive answers on the slides."
+    ],
+    "warnings": [
+      "The slides do not provide the full answers to the matrix questions about Gergen and Hacking; students must refer to the primary texts to fully answer them.",
+      "The comparison with Critical Psychology lists themes (Agency, Determination, etc.) but lacks the actual comparative analysis, which was likely generated during the seminar."
+    ]
+  }
+}

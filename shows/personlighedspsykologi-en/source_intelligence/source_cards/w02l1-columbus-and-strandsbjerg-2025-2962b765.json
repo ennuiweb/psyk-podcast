@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T18:43:55Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+    ],
+    "dependency_hashes": {
+      "source_file": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
+      "source_files_signature": "e853241701197f62d599e7b2fd34483a670b89b5c688c01c39671bcf2c102de3",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+    "lecture_key": "W02L1",
+    "title": "Columbus & Strandsbjerg (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf",
+    "source_paths": [
+      "Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Reviews empirical evidence for major theories of personality states (WTT, CAPS, LST-R, TAT, TESSERA), highlighting where recent data supports or challenges these theoretical frameworks.",
+    "source_role": "A contemporary review article summarizing recent empirical research (2020-2025) on personality states, their measurement, and their relationship to traits, situations, and outcomes.",
+    "relation_to_lecture": "Directly maps to the lecture topic 'W2L1 Personality traits, personality states, and personality dimensions' by providing the state-of-the-art literature on how states and traits interact.",
+    "central_claims": [
+      {
+        "claim": "Average personality states correlate only imperfectly with trait scores, and average states provide no incremental validity over self-reported traits.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Changes in personality states over time can accumulate into trait change, though evidence shows state deviations from trait levels are more predictive of trait change than absolute state levels.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "There are replicable individual differences in situation-state contingencies, but these do not strongly correspond to stable individual differences in self-rated traits.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personality states are associated with occupational and health outcomes, such as job performance, perceived stress, and sleep quality.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Personality states",
+        "definition": "Quantitative dimensions describing the degree, extent, or level of coherent behaviours, thoughts, and feelings at a particular time.",
+        "role": "The core subject of the paper, distinguishing short-term manifestations from long-term traits."
+      },
+      {
+        "term": "Whole Trait Theory (WTT)",
+        "definition": "A theory positing that personality traits correspond to density distributions of personality states over time.",
+        "role": "Provides a major descriptive and explanatory model linking short-term states to long-term traits."
+      },
+      {
+        "term": "Situation-state contingencies",
+        "definition": "If-then patterns describing how personality states are partly caused by features of the situation.",
+        "role": "Explains cross-situational variability and individual differences in how environments affect states."
+      },
+      {
+        "term": "TESSERA framework",
+        "definition": "A framework proposing that long-term personality development is grounded in a sequence of short-term personality processes including triggering situations, expectancies, states, and reactions.",
+        "role": "Explains the mechanism by which repeated state fluctuations accumulate into long-term trait change."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "States vs. Traits",
+        "summary": "States are short-term, moment-to-moment fluctuations in behaviors and feelings, whereas traits are stable, long-term dispositions often conceptualized as the distribution of states.",
+        "stakes": "Crucial for understanding within-person variability versus between-person differences in personality psychology."
+      },
+      {
+        "label": "Idiographic vs. Nomothetic structure",
+        "summary": "The within-person structure of personality states (idiographic) compared to the between-person structure of traits (nomothetic).",
+        "stakes": "Highlights that individual-level state structures may be more heterogeneous and not perfectly match broad factor models like the Big Five."
+      },
+      {
+        "label": "Central tendency vs. Dispersion",
+        "summary": "The mean level of a personality state versus the variability or variance of that state over time.",
+        "stakes": "Because WTT associates traits with the entire density distribution of states, researchers must measure both mean and dispersion to fully capture personality dynamics."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that an individual's average state perfectly equals their trait score.",
+      "Believing that situation-state contingencies perfectly align with broad personality traits.",
+      "Assuming the idiographic factor structure of states is identical to the nomothetic structure of traits."
+    ],
+    "quote_targets": [
+      {
+        "target": "Box 1. Overview of theories",
+        "why": "Provides concise summaries of WTT, CAPS, LST-R, TAT, and TESSERA."
+      },
+      {
+        "target": "These findings suggest that there are replicable individual differences in situation-state contingencies, but that these do not correspond to stable individual differences in self-rated traits.",
+        "why": "Highlights a major empirical challenge to existing theories like WTT."
+      }
+    ],
+    "grounding_notes": [
+      "The text explicitly limits its scope to broad factor models (Big Five, HEXACO) and ignores lower-order nuances or clinical states.",
+      "The review focuses heavily on studies using experience sampling methods (ESM)."
+    ],
+    "warnings": [
+      "The paper notes a lack of validated measures and reliability estimates in many past studies, which may limit the strength of some synthesized findings."
+    ]
+  }
+}

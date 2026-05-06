@@ -1,0 +1,139 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:19:24Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l1-lecture-18-k-n-582ebd4f"
+    ],
+    "dependency_hashes": {
+      "source_file": "781fb2a2deae08a5692782ad14415bb22bc4b9a8acb46a66dcbf783666b6ca5d",
+      "source_files_signature": "f1ea524e180ce93b18eb4f7bdfb43949c40f6c13f820f386a715782ea0b66717",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l1-lecture-18-k-n-582ebd4f",
+    "lecture_key": "W10L1",
+    "title": "18. Køn",
+    "source_family": "lecture_slide",
+    "evidence_origin": "lecture_framed",
+    "source_path": "Forelæsningsrækken/18. Køn.pdf",
+    "source_paths": [
+      "Forelæsningsrækken/18. Køn.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/18. Køn.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/18. Køn.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "781fb2a2deae08a5692782ad14415bb22bc4b9a8acb46a66dcbf783666b6ca5d",
+    "length_band": "long",
+    "page_count": 28,
+    "estimated_token_count": 18200,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The lecture integrates psychoanalytic theory (Freud, Mitchell) with sociological/historical analysis (Nielsen & Rudberg) to explain how gender develops at the intersection of societal structures, intersubjective family dynamics, and intrapsychic processes.",
+    "source_role": "Lecture slides providing the structural framework, key definitions, and empirical examples (the 'Moderne jenter' study) for understanding gender in personality psychology.",
+    "relation_to_lecture": "This is the primary presentation material for Lecture 18 on Gender (Køn), outlining the main theoretical models and the specific empirical case study used to illustrate them.",
+    "central_claims": [
+      {
+        "claim": "Gender can be understood across three ontological levels: the societal (norms, division of labor), the psychological (drive, identification), and the biological (anatomy, hormones).",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "In psychoanalysis, 'sexual difference' is a universal binary distinction without specific given content, whereas 'identification' is a dynamic, often unconscious process of assimilating aspects of others.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Societal structures, particularly the gendered division of labor, profoundly shape psychological gender development by mediating intersubjective family dynamics and intrapsychic processes.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The middle generation in the 'Moderne jenter' study experienced a historical and psychological conflict that led them to falsely reconstruct their mothers as mere housewives ('husmorisering') to create an identity-forming dividing line.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Kønnets tre ontologiske niveauer",
+        "definition": "Simo Køppe's model dividing gender into societal (roles/norms), psychological (drive/identification), and biological (anatomy/hormones) levels.",
+        "role": "Provides the foundational framework for the lecture's approach to integrating different dimensions of gender."
+      },
+      {
+        "term": "Sexual difference (Kønsforskel)",
+        "definition": "A psychoanalytic term referring to the universal line demarcating where a woman cannot be a man and vice versa, but which lacks any specific or given content.",
+        "role": "Explains the psychoanalytic foundation of binary gender categorization as distinct from dynamic, variable identifications."
+      },
+      {
+        "term": "Identifikation",
+        "definition": "The dynamic, conscious and unconscious ways a subject assimilates an aspect, trait, or attribute from another person (often parents), distinct from mere imitation.",
+        "role": "Explains the mechanism through which personality and gendered self-experience actually develop and change."
+      },
+      {
+        "term": "Husmorisering",
+        "definition": "A psychological 'misconstruction' by the middle generation in the 'Moderne jenter' study, where they reduced their mothers' identities to full-time housewives, downplaying their outward activities.",
+        "role": "Illustrates how societal liberation ideologies (like 1970s feminism) can shape psychological memory and identity construction."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Identitet vs. Identifikation",
+        "summary": "Identity is viewed as a relatively static dimension of gender with a marginal position in psychoanalysis, whereas identification is a dynamic, multifaceted process of assimilating traits from others.",
+        "stakes": "Shifts the psychological focus from static categories to developmental, relational, and unconscious processes."
+      },
+      {
+        "label": "Ydre køn vs. Indre køn",
+        "summary": "Outer gender relates to societal structures like the division of labor and cultural norms, while inner gender relates to personal meaning, identification, and emotional bonds.",
+        "stakes": "Highlights the complex, sometimes conflicting interaction between societal changes and individual psychological development across generations."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Equating 'sexual difference' in the psychoanalytic sense with biological sex or specific gender roles, rather than seeing it as an empty, universal distinction.",
+      "Confusing 'identification' with conscious 'imitation', missing the un-willed and unconscious elements of identification.",
+      "Assuming the middle generation's mothers in the 'Moderne jenter' study were actually all full-time housewives, rather than recognizing 'husmorisering' as a psychological reconstruction."
+    ],
+    "quote_targets": [
+      {
+        "target": "‘Sexual difference’ is a distinction between women and men that as a distinction is universal in human societies: it is also a distinction without any specific or given content whatsoever.",
+        "why": "Defines the core psychoanalytic concept of sexual difference according to Juliet Mitchell."
+      },
+      {
+        "target": "Samfundsstruktur → intersubjektivitet ←→ intrapsykiske forhold",
+        "why": "Summarizes the core model of how societal structures translate into psychological gender via family relations."
+      },
+      {
+        "target": "Frigørelsesprojektet virker ind på hukommelsen, det psykologiske projekt taler ind i samfundsmæssige/ideologiske troper",
+        "why": "Captures the complex interplay between societal ideology and personal memory/identity in the middle generation."
+      }
+    ],
+    "grounding_notes": [
+      "The slides heavily reference Juliet Mitchell (2015) for the psychoanalytic framework and Harriet Bjerrum Nielsen & Monica Rudberg (2006) 'Moderne jenter' for the historical/empirical framework.",
+      "Simo Køppe's model of the three ontological levels is used as an initial framing device."
+    ],
+    "warnings": [
+      "The slides provide summaries of Mitchell and Nielsen & Rudberg; nuanced theoretical arguments from the original texts may be simplified.",
+      "The 'Moderne jenter' study is based on a specific, highly selected Norwegian demographic (urban, educated women interviewed in 1991); generalizability to other contexts requires caution."
+    ]
+  }
+}

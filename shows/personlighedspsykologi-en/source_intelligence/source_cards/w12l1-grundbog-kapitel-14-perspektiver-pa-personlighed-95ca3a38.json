@@ -1,0 +1,135 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T16:11:33Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38"
+    ],
+    "dependency_hashes": {
+      "source_file": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
+      "source_files_signature": "5c6ce2e5a83310fdc3328b747882c51870697c54e704b5bbfc0fa5b57a394f90",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+    "lecture_key": "W12L1",
+    "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "source_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "source_paths": [
+      "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
+    "length_band": "long",
+    "page_count": 72,
+    "estimated_token_count": 46800,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Kapitlet fungerer som en metateoretisk overbygning, der samler op på hele grundbogen ved at tilbyde et rammeværk (de fire temaer og de to traditioner) til at sammenligne og kontrastere personlighedspsykologiske teorier.",
+    "source_role": "Det afsluttende kapitel i grundbogen, der eksplicit har til formål at give et helhedsbillede, pege på udviklingsveje og klæde den studerende på til at sammenligne teorierne.",
+    "relation_to_lecture": "Kildens metaperspektiv er direkte skræddersyet til forelæsningen 'Sammenligning af teorier og subjektets historie og eksamen', da den leverer det præcise begrebsapparat, der forventes anvendt i en eksamenssituation.",
+    "central_claims": [
+      {
+        "claim": "Dansk personlighedspsykologi har historisk været domineret af den kontinentale tradition, hvilket adskiller den fra den angelsaksisk dominerede internationale faglitteratur.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Forskellen mellem den angelsaksiske og kontinentale tradition karikeres ofte som en modsætning mellem reduktiv kvantitativ evidens og teoritung filosofi, men handler snarere om, hvad der anerkendes som empiri og teoriens rolle i forskningsprocessen.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Personlighedspsykologiske teorier kan sammenlignes ud fra fire gennemgående temaer: essens vs. kontekst, agency, determination og historicitet.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Sociokulturelle teorier er anti-essentialistiske og opprioriterer konteksten, idet de forstår meningsdannelse som forankret i kollektive medier (sprog, kultur) frem for i en afgrænset biomasse.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Den kontinentale tradition",
+        "definition": "En psykologisk tradition (typisk europæisk), der vægter teori højt, ofte trækker på filosofi (fænomenologi, hermeneutik, eksistentialisme) og anerkender empiri, der ikke nødvendigvis er kvantitativ.",
+        "role": "Forklarer det historiske og teoretiske fundament for mange af de teorier, der undervises i på danske universiteter, som ofte udelades i internationale lærebøger."
+      },
+      {
+        "term": "Den angelsaksiske tradition",
+        "definition": "En tradition (ofte amerikansk/britisk), der definerer videnskab ud fra evidensbaseret kvantitativ forskning og ofte reducerer genstandsområdet til noget, der kan måles og vejes (f.eks. trækpsykologi).",
+        "role": "Fungerer som kontrast til den danske/kontinentale tilgang og repræsenterer mainstream international personlighedspsykologi."
+      },
+      {
+        "term": "Essens vs. kontekst",
+        "definition": "Et analytisk tema, der beskriver, om en teori forstår personligheden som en iboende, selvstændig kerne (essens) eller som noget, der primært dannes i relationer og samfund (kontekst).",
+        "role": "Udør et centralt sammenligningskriterium for at placere teorier i forhold til hinanden til eksamen."
+      },
+      {
+        "term": "Agency (aktørskab)",
+        "definition": "Graden af frit valg, intentionalitet og refleksivitet, som en teori tillægger subjektet.",
+        "role": "Bruges til at skelne mellem teorier, der ser mennesket som styret af biologi/samfund (determination), og teorier, der centrerer bevidsthedens frie valg (f.eks. eksistentiel psykologi)."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Kontinental vs. Angelsaksisk psykologi",
+        "summary": "Skelnet mellem en overvejende filosofisk/teoretisk funderet tradition og en overvejende kvantitativ/evidensbaseret tradition.",
+        "stakes": "Det legitimerer bogens (og kursets) udvalg af teorier, herunder hvorfor psykoanalyse, fænomenologi og kritisk psykologi fylder meget i en dansk kontekst."
+      },
+      {
+        "label": "Biologisk krop vs. Fænomenologisk/psykisk krop",
+        "summary": "Skelnet mellem at forstå kroppen som ren fysiologi/genetik (naturvidenskab) og at forstå kroppen som et meningsskabende, interagerende subjekt (f.eks. hos Merleau-Ponty eller i psykoanalysen).",
+        "stakes": "Viser, at 'biologi' ikke er et entydigt begreb, og at forskellige paradigmer ontologisk forstår kroppen fundamentalt forskelligt."
+      }
+    ],
+    "likely_misunderstandings": [
+      "At den angelsaksiske tradition slet ikke bruger teori, eller at den kontinentale tradition slet ikke bruger empiri (teksten advarer eksplicit mod denne karikatur).",
+      "At biologiske tilgange fuldstændig afviser eksistensen af bevidsthed (de anser den blot for at være sekundær eller et 'tilsyneladende' centrum).",
+      "At bogen dækker alle grene af personlighedspsykologien (teksten nævner eksplicit udeladelser som neuropsykologi, mindfulness og anvendt praksis)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Når man modstiller den angelsaksiske og den kontinentale tradition, sker det ofte ved kritisk at hævde...",
+        "why": "Dette afsnit (s. 467) nuancerer den forsimplede dikotomi mellem de to videnskabstraditioner og er central for at forstå kursets videnskabsteoretiske afsæt."
+      },
+      {
+        "target": "I indledningen udpegede vi fire temaer - essens vs. kontekst, agency, determination og historicitet...",
+        "why": "Dette afsnit (s. 471) opsummerer det primære analytiske værktøj, den studerende skal bruge til at sammenligne teorier til eksamen."
+      }
+    ],
+    "grounding_notes": [
+      "Teksten er et oversigtskapitel og præsenterer ikke ny primærforskning, men syntetiserer bogens foregående kapitler.",
+      "Forfatterne positionerer eksplicit bogen i en specifik dansk, kontinental tradition, hvilket er vigtigt for at forstå kursets bias og opbygning."
+    ],
+    "warnings": [
+      "Størstedelen af den vedhæftede PDF (fra side 15 til 72 i dokumentet, svarende til bogens s. 480-537) udgøres af bogens navne- og sagregister og indeholder ingen brødtekst.",
+      "Kapitlet er meget overordnet; for specifikke mekanismer i de enkelte teorier (f.eks. Bandura, Freud, Merleau-Ponty) skal der refereres tilbage til de respektive grundbogskapitler."
+    ]
+  }
+}

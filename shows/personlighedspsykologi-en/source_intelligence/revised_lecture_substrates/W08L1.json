@@ -1,0 +1,76 @@
+{
+  "artifact_type": "revised_lecture_substrate",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T20:06:58Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-downward-revision-v3",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w08l1-lamiell-2021-be79d36e",
+      "w08l1-laux-et-al-2010-cfff840c",
+      "w08l1-lecture-15-gang-critical-personalism-2026-8648744f"
+    ],
+    "dependency_hashes": {
+      "lecture_substrate": "dc85c8148328445dd3b8d721b192aed0621056f09a81927be98b3ec0386d8515",
+      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+    }
+  },
+  "lecture": {
+    "lecture_key": "W08L1",
+    "lecture_title": "Critical personalism (Forelæsning 15, 2026-03-23)",
+    "sequence_index": 15
+  },
+  "analysis": {
+    "top_down_course_relevance": "W08L1 serves as the crucial pivot point where the course explicitly critiques the methodological foundations of early-course trait psychology. It introduces the 'Person vs. Variable Profile' distinction, shifting the focus from isolated measurements to the holistic, teleological person interacting with their environment, thereby laying the groundwork for the critical, sociocultural, and narrative theories that follow.",
+    "what_matters_more": [
+      "The explicit methodological critique of trait reification (the 'Person vs. Variable Profile' distinction), positioning Stern's critical personalism as the direct antidote to the dimensional models introduced in W02L1.",
+      "The application of the course's 4 orientation points to Stern's theory, particularly how 'convergence' navigates the dialectic between essence/context and agency/determination.",
+      "The epistemological shift from measuring isolated variables (impersonalism) to understanding the holistic, teleological, and goal-oriented person."
+    ],
+    "de_emphasize": [
+      "The deep historical minutiae of Stern's biography or the specific clinical diagnostics of the Hitler psychobiography (Laux et al.), which should only be used instrumentally to illustrate the mechanisms of convergence and introception."
+    ],
+    "strongest_sideways_connections": [
+      {
+        "target": "W02L1 (Trait Psychology)",
+        "relation": "Methodological critique and de-reification",
+        "rationale": "Stern's concept of 'unitas multiplex' and his critique of impersonalism directly attack the reification of traits and dimensional models, demanding a return to the whole person rather than a profile of variables."
+      },
+      {
+        "target": "W08L2 & W09L1 (Critical Psychology)",
+        "relation": "Foundational precursor to agency-in-context",
+        "rationale": "Stern's focus on the person's active convergence with environmental affordances sets the theoretical stage for Critical Psychology's focus on the 'conduct of everyday life' and the subject's active participation in societal structures."
+      },
+      {
+        "target": "W12L1 (Meta-theoretical Orientation Points)",
+        "relation": "Direct application of the analytical framework",
+        "rationale": "Stern's 'convergence' perfectly illustrates the course's core dialectics, specifically how inner dispositions (essence) interact with outer affordances (context) through goal-oriented action (agency)."
+      }
+    ],
+    "revised_podcast_priorities": [
+      "Frame Stern's Critical Personalism as a radical pushback against reducing people to 'barcodes' or profiles of variables, explicitly contrasting it with early-course trait models.",
+      "Unpack 'Convergence' using the course's 4 orientation points: how does a person's inner potential meet environmental affordances through active agency?",
+      "Discuss the Laux et al. (Hitler) text as a provocative stress-test of the theory: demonstrating how personalistic mechanisms (introception, convergence) can be used as neutral scientific tools to understand even highly destructive figures without romanticizing them."
+    ],
+    "carry_forward": [
+      "The concept of the person as a 'unitas multiplex' (unity in diversity), which provides a strong contrast to later poststructuralist ideas of the completely decentered or fragmented subject (W10L2).",
+      "The critique of 'impersonalism' (reducing people to variables), which will echo strongly in narrative psychology's demand for cohesive life stories (W11L2)."
+    ],
+    "warnings": [
+      "Ensure students do not confuse Stern's 'convergence' with simple behaviorist environmental determinism or mechanistic interactionism; the person's active, teleological agency is central.",
+      "Avoid letting the extreme historical nature of the Hitler case study overshadow the theoretical mechanisms it is meant to illustrate; keep the focus on introception and convergence."
+    ]
+  }
+}

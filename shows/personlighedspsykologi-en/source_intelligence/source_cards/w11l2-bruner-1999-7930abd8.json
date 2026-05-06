@@ -1,0 +1,159 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:20:48Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w11l2-bruner-1999-7930abd8"
+    ],
+    "dependency_hashes": {
+      "source_file": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+      "source_files_signature": "a3155a0b383acb48a0e57da3f6457fc0c1161f5c242bfc5b0695811ae7fdc88a",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w11l2-bruner-1999-7930abd8",
+    "lecture_key": "W11L2",
+    "title": "Bruner (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+    "source_paths": [
+      "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+    "length_band": "long",
+    "page_count": 31,
+    "estimated_token_count": 20150,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Provides the developmental and evolutionary foundation for narrative psychology, arguing that humans are biologically predisposed to organize experience through narrative to navigate cultural and social realities.",
+    "source_role": "A primary theoretical text introducing Bruner's constructivist view of language acquisition and the central role of narrative in human meaning-making.",
+    "relation_to_lecture": "Directly supports the W11L2 theme of 'Narrativitet, kultur og mening' by explaining how culture and biology intersect through narrative, forming the basis of human meaning-making and social interaction.",
+    "central_claims": [
+      {
+        "claim": "Human beings possess an innate 'readiness for meaning'—a prelinguistic predisposition to construe the social world narratively—which drives the acquisition of language.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The acquisition of syntax and grammar is instrumentally driven by the human need to fulfill narrative functions, rather than unfolding autonomously as an innate syntactic device.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Narrative structure requires four crucial constituents: agentivity (action directed toward goals), sequential order (linearization), sensitivity to the canonical vs. noncanonical, and a narrator's perspective.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Children use narrative not merely as an expository tool to report facts, but as a rhetorical instrument to justify actions, mitigate conflicts, and navigate family politics.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Narrative meaning-making is primarily triggered by breaches in or deviations from 'normal' or canonical states of the human condition, serving to make the idiosyncratic comprehensible.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Biology of meaning",
+        "definition": "An innate, prelinguistic precursor system that readies the human organism to traffic in language by predisposing it to search for and construct social meaning.",
+        "role": "Challenges Chomsky's purely syntactic 'language acquisition device' by grounding language development in evolutionary, social, and functional needs."
+      },
+      {
+        "term": "Folk psychology",
+        "definition": "A culture's shared system of expectations about what is canonical and ordinary, which serves as the background against which deviations are interpreted.",
+        "role": "Provides the cultural baseline that makes narrative necessary; narratives are generated to explain actions that violate these folk-psychological norms."
+      },
+      {
+        "term": "Narrative push",
+        "definition": "The innate human drive to organize experience narratively, which determines the order of priority in which grammatical forms are mastered by the young child.",
+        "role": "Explains why children learn certain linguistic features (like agent-action, temporals, and causals) early on—because they are necessary for telling stories."
+      },
+      {
+        "term": "Canonical vs. Noncanonical",
+        "definition": "The distinction between culturally expected, ordinary events (canonical) and unusual, offbeat, or rule-breaking events (noncanonical).",
+        "role": "Forms the trigger for narrative; Bruner argues that humans (and children) are highly sensitive to the noncanonical and use narrative to explicate it."
+      },
+      {
+        "term": "Praxis",
+        "definition": "Practical social interaction and regulation that precedes the child's ability to express or comprehend the same matters through formal language.",
+        "role": "Demonstrates that children understand complex social dynamics (like deception or false beliefs) in action before they can articulate them linguistically."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Chomskian Syntax vs. Brunerian Pragmatics",
+        "summary": "Chomsky posits an innate 'language acquisition device' focused entirely on syntax independent of meaning, whereas Bruner argues for an innate 'readiness for meaning' where syntax is learned instrumentally to serve communicative and narrative functions.",
+        "stakes": "Shifts the understanding of language acquisition from a purely mental, rule-based achievement to a social, functional practice driven by the need to share narratives."
+      },
+      {
+        "label": "Expository vs. Rhetorical Narrative",
+        "summary": "The difference between simply recounting 'what happened' (expository) and telling a story to justify, excuse, or persuade (rhetorical).",
+        "stakes": "Highlights that children learn early on that narratives are tools for social negotiation and self-defense in 'family politics', not just neutral reports."
+      },
+      {
+        "label": "Praxis vs. Logos",
+        "summary": "The distinction between understanding social rules and intentions through action (praxis) versus expressing them through language (logos).",
+        "stakes": "Proves that a 'theory of mind' and narrative understanding begin in practical social behavior before they are formalized in speech."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming Bruner completely rejects innate biological factors in language; he actually proposes an innate 'readiness for meaning' rather than just innate syntax.",
+      "Thinking narrative is only a late-stage linguistic achievement, whereas Bruner argues it begins as prelinguistic social praxis.",
+      "Believing narratives are primarily objective accounts of events, rather than rhetorical tools used for justification and social negotiation.",
+      "Confusing 'folk psychology' with a scientific theory of mind, rather than understanding it as the everyday, cultural common sense used to judge canonical behavior."
+    ],
+    "quote_targets": [
+      {
+        "target": "the human push to organize experience narratively that assures the high priority of these features in the program of language acquisition",
+        "why": "Summarizes Bruner's radical claim that the need to construct narratives drives the order in which children acquire grammar (Page 79)."
+      },
+      {
+        "target": "Narrative requires... four crucial grammatical constituents",
+        "why": "Provides Bruner's structural definition of what makes a narrative: agentivity, sequence, canonical sensitivity, and perspective (Page 77)."
+      },
+      {
+        "target": "Getting what you want very often means getting the right story.",
+        "why": "Highlights the rhetorical and social utility of narrative in early childhood, particularly in navigating family conflicts (Page 86)."
+      },
+      {
+        "target": "Narrative explications have the effect of framing the idiosyncratic in a 'lifelike' fashion that can promote negotiation and avoid confrontational disruption",
+        "why": "Explains the ultimate cultural function of narrative: peacekeeping and resolving divergent interpretations of reality (Page 67)."
+      }
+    ],
+    "grounding_notes": [
+      "The text is Chapter 3 ('Entry into Meaning') from Bruner's 'Acts of Meaning' (1990).",
+      "Bruner heavily contrasts his functionalist, meaning-driven view of language acquisition with Noam Chomsky's syntax-driven LAD.",
+      "Empirical grounding relies on studies by Chandler (hide-and-seek/false belief in action), Lucariello (birthday party violations), Miller (Baltimore narratives), Dunn (family politics), and Nelson/Feldman (Emily's crib soliloquies)."
+    ],
+    "warnings": [
+      "The text is a scanned book chapter; page numbers refer to the printed numbers (67-97) rather than the PDF sequence."
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:19:31Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6"
+    ],
+    "dependency_hashes": {
+      "source_file": "d7cb28e4a7c241be9b0fb347ad5c61f42e8a302c7579aa73e6a41c5cad3d6d28",
+      "source_files_signature": "20c3af3fe975cf22bde8c9f92677e140c10d699667f450f1f8ddc46d6382bc31",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+    "lecture_key": "W10L1",
+    "title": "Bjerrum Nielsen & Rudberg (2006)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "source_path": "Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+    "source_paths": [
+      "Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "d7cb28e4a7c241be9b0fb347ad5c61f42e8a302c7579aa73e6a41c5cad3d6d28",
+    "length_band": "long",
+    "page_count": 43,
+    "estimated_token_count": 27950,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "The text utilizes feminist psychoanalytic theory, particularly drawing on Jessica Benjamin and Nancy Chodorow, to analyze empirical interview data. It bridges sociological generational shifts with deep psychological processes of identification and object relations.",
+    "source_role": "A qualitative, empirical study of three generations of Norwegian women, serving as a primary reading to illustrate how gender identity and family dynamics evolve historically and psychologically.",
+    "relation_to_lecture": "Provides empirical grounding and theoretical framing for a lecture on gender (Køn) in personality psychology, demonstrating how personality and gender identity are shaped by the intersection of historical context and intimate family relations.",
+    "central_claims": [
+      {
+        "claim": "The relationship between outer gender (cultural norms, division of labor) and inner gender (psychological identification) changes across generations, but they do not always change at the same pace.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The middle generation (the mothers) experienced the most rigid gender segregation during childhood and harbors the most ambivalence and negative feelings towards their own mothers.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Across all three generations, daughters tend to idealize their fathers as exciting representatives of the outside world, while viewing their mothers with more ambivalence, criticism, or as restrictive figures.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "The psychological meaning of housework has shifted from a respected competence for the oldest generation, to an oppressive duty for the middle generation, to a potential aesthetic or relaxing activity for the youngest generation.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Ytre kjønn (Outer gender)",
+        "definition": "The cultural consequences, societal norms, and division of labor associated with gender in a given historical period.",
+        "role": "Provides the structural and societal framework that shapes the external realities of the women's lives across generations."
+      },
+      {
+        "term": "Indre kjønn (Inner gender)",
+        "definition": "The psychological processes of personal identification, emotional attachment, and self-understanding related to being a gendered individual.",
+        "role": "Highlights how societal changes are internalized, showing that psychological adaptation often involves ambivalence and lags behind structural changes."
+      },
+      {
+        "term": "Kjønnskomplementaritet (Gender complementarity)",
+        "definition": "The historical idea that men and women have fundamentally different but complementary roles and competencies, prevalent before the modern equality ideal.",
+        "role": "Contrasts with the modern equality contract to illustrate the historical shift in gender ideology and its impact on women's self-worth."
+      },
+      {
+        "term": "Like subjects og love objects",
+        "definition": "Psychoanalytic concepts from Jessica Benjamin describing how children relate to parents through identification (like subjects) and object love (love objects), regardless of strict gender lines.",
+        "role": "Provides a theoretical framework for understanding the complex, often contradictory emotional dynamics in father-daughter and mother-daughter relationships."
+      },
+      {
+        "term": "Husmorisering (Housewifization)",
+        "definition": "The historical process where women's roles were increasingly restricted to the home and domestic duties, particularly affecting the mothers of the middle generation.",
+        "role": "Explains the middle generation's rebellion against traditional female roles and their subsequent devaluation of their own mothers' domestic competencies."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Ytre vs. indre kjønn",
+        "summary": "The distinction between societal/cultural gender structures (outer) and personal/psychological gender identification (inner).",
+        "stakes": "Crucial for understanding that achieving political or structural gender equality does not automatically or immediately resolve deep-seated internal psychological ambivalences about gender identity."
+      },
+      {
+        "label": "Betydningen av husarbeid (Meaning of housework)",
+        "summary": "The shift in viewing housework as a vital competence (grandmothers), an oppressive duty (mothers), and an aesthetic/relaxing choice (daughters).",
+        "stakes": "Illustrates how the psychological meaning of the exact same physical activity changes drastically depending on the historical, cultural, and generational context."
+      },
+      {
+        "label": "Mødre vs. fedre som identifikasjonsobjekter",
+        "summary": "Daughters often view mothers with ambivalence or as restrictive, while idealizing fathers as exciting, autonomous, and representing the outside world.",
+        "stakes": "Reveals underlying patriarchal structures in psychological development and the persistent challenges women face in identifying positively with female authority figures."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Assuming that inner gender automatically and smoothly aligns with outer gender changes, ignoring the psychological lag and ambivalence described in the text.",
+      "Believing that the oldest generation experienced the most rigid gender segregation in childhood, when the text actually points to the middle generation experiencing this most intensely.",
+      "Misinterpreting the youngest generation's renewed interest in housework as a simple regression to traditional gender roles, rather than a re-signification of the activity as an aesthetic or relaxing choice decoupled from duty."
+    ],
+    "quote_targets": [
+      {
+        "target": "Både ytre og indre kjønn endrer seg, men ikke alltid i samme takt.",
+        "why": "Summarizes the core thesis of the chapter, highlighting the discrepancy between structural societal changes and psychological adaptation."
+      },
+      {
+        "target": "Jessica Benjamin framholder imidlertid at hat eller kjærlighet og opplevelsen av å være lik eller forskjellig er dimensjoner som kan koples på kryss og tvers",
+        "why": "Introduces the central psychoanalytic framework used to understand the complex and non-linear nature of parent-child identifications."
+      },
+      {
+        "target": "Det er ikke partnerens kjønn som forteller om den elskende søker likhet eller forskjell.",
+        "why": "Challenges rigid, traditional psychoanalytic views on gender and object choice, supporting a more fluid understanding of identification."
+      }
+    ],
+    "grounding_notes": [
+      "The source text is in Norwegian, which requires careful reading for Danish-speaking students, though the languages are highly mutually intelligible.",
+      "The analysis relies heavily on qualitative interviews with three specific generations of women, making it an empirical rather than purely theoretical text.",
+      "Psychoanalytic concepts are explicitly drawn from feminist theorists like Jessica Benjamin and Nancy Chodorow to interpret the empirical data."
+    ],
+    "warnings": [
+      "The text is specific to a Norwegian context; while highly comparable, minor cultural nuances might differ slightly from a purely Danish context.",
+      "The provided text contains some OCR hyphenation artifacts which have been normalized in this output for clarity."
+    ]
+  }
+}

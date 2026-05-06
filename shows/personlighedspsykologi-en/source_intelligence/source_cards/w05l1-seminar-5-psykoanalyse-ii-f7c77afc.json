@@ -1,0 +1,130 @@
+{
+  "artifact_type": "source_card",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-05T19:01:08Z",
+  "build": {
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-source-card-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v2",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": 0.2,
+      "response_mime_type": "application/json",
+      "response_json_schema": "stage_specific"
+    }
+  },
+  "provenance": {
+    "input_source_ids": [
+      "w05l1-seminar-5-psykoanalyse-ii-f7c77afc"
+    ],
+    "dependency_hashes": {
+      "source_file": "551fbde6f6ea6879032ebd75da3fe4f6ca71f12808f78a59e47028c7610c83f7",
+      "source_files_signature": "d07a8feca7124919679cb736d0d218a9ff2866b98d928b3ad94a29fafffb4614",
+      "source_catalog": "9fc1476d79a404d06481366a68914e111ce71c1038344e91a717223765e02d3f",
+      "source_intelligence_policy": "68b0eebb72795f4bb949be891b49fb418b5ef094415dcd2f233d7e5b94dc08a9"
+    }
+  },
+  "source": {
+    "source_id": "w05l1-seminar-5-psykoanalyse-ii-f7c77afc",
+    "lecture_key": "W05L1",
+    "title": "5. Psykoanalyse II",
+    "source_family": "seminar_slide",
+    "evidence_origin": "seminar_applied",
+    "source_path": "Seminarhold/Slides/5. Psykoanalyse II.pdf",
+    "source_paths": [
+      "Seminarhold/Slides/5. Psykoanalyse II.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/5. Psykoanalyse II.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/5. Psykoanalyse II.pdf"
+    ],
+    "source_exists": true,
+    "source_sha256": "551fbde6f6ea6879032ebd75da3fe4f6ca71f12808f78a59e47028c7610c83f7",
+    "length_band": "medium",
+    "page_count": 15,
+    "estimated_token_count": 9750,
+    "text_extraction_status": "metadata_only_no_local_text_extraction"
+  },
+  "analysis": {
+    "theory_role": "Applies psychoanalytic theory (specifically Freud's personality model and Laplanche's seduction theory) to concrete case work and structures a formal comparison with trait psychology.",
+    "source_role": "Seminar slides detailing the formal requirements for 'Aktivitetskrav 2' and guiding group discussions on Laplanche's seduction theory and four core orientation points.",
+    "relation_to_lecture": "Operationalizes the theoretical content from the 'Psykoanalyse II' lecture into concrete assignment requirements and case application.",
+    "central_claims": [
+      {
+        "claim": "Laplanche's seduction theory can be applied to analyze the autobiographical case 'Det bliver sagt' by Kristian Ditlev Jensen.",
+        "grounding": "source-grounded",
+        "confidence": "high"
+      },
+      {
+        "claim": "Psychoanalysis can be systematically evaluated and compared to trait psychology using four specific orientation points: essence vs. context, agency, determination, and historicity.",
+        "grounding": "slide-framed",
+        "confidence": "high"
+      },
+      {
+        "claim": "Freud's personality model must be analyzed using the exact same orientation point previously applied to trait psychology to effectively compare the two theories' possibilities and limitations.",
+        "grounding": "course-inferred",
+        "confidence": "medium"
+      }
+    ],
+    "key_concepts": [
+      {
+        "term": "Forførelsesteori (Seduction theory)",
+        "definition": "A theory by Laplanche (referenced via Zeuthen & Køppe, 2014) used to conceptualize and articulate dynamics in specific case materials.",
+        "role": "Serves as the primary theoretical framework for the seminar's case work on Kristian Ditlev Jensen."
+      },
+      {
+        "term": "Orienteringspunkter (Orientation points)",
+        "definition": "A set of analytical dimensions used to interrogate personality theories, specifically focusing on essence vs. context, agency, determination, and historicity.",
+        "role": "Provides the structural foundation for 'Aktivitetskrav 2', forcing students to compare psychoanalysis and trait psychology systematically."
+      },
+      {
+        "term": "Agency",
+        "definition": "The degree to which there is an active, steering element within the personality that is allowed to govern behavior.",
+        "role": "One of the four core orientation points students must use to evaluate the psychoanalytic understanding of personality."
+      },
+      {
+        "term": "Historicitet (Historicity)",
+        "definition": "The significance of lived life and different geneses for how the personality is structured today.",
+        "role": "An orientation point used to assess how psychoanalysis views the impact of past experiences on current personality."
+      }
+    ],
+    "distinctions": [
+      {
+        "label": "Essens vs. kontekst",
+        "summary": "The distinction between viewing personality primarily as an inner phenomenon (essence) versus an outer, environmentally situated phenomenon (context).",
+        "stakes": "Determines the foundational locus of personality in psychoanalytic theory and guides the students' comparative analysis."
+      },
+      {
+        "label": "Foranderlig vs. stabil",
+        "summary": "The distinction between a personality structure that can change versus one that is fixed.",
+        "stakes": "Central to the 'Determination' orientation point, helping students evaluate the deterministic nature of psychoanalysis."
+      }
+    ],
+    "likely_misunderstandings": [
+      "Students might fail to reuse the exact same orientation point from their trait psychology assignment when analyzing Freud's model for Aktivitetskrav 2.",
+      "Students might attempt to explain Laplanche's seduction theory without grounding it specifically in the assigned pages of Zeuthen & Køppe (2014).",
+      "Students might exceed the strict character limits for Aktivitetskrav 2 (max 6000 characters of new text)."
+    ],
+    "quote_targets": [
+      {
+        "target": "Zeuthen & Køppe (2014), s. 194-198",
+        "why": "Required reading to define and explain Laplanche's seduction theory for the case work."
+      },
+      {
+        "target": "Det bliver sagt af Kristian Ditlev Jensen",
+        "why": "The specific case material that must be analyzed using the seduction concept."
+      }
+    ],
+    "grounding_notes": [
+      "The slides are heavily focused on administrative tasks, assignment formalia (Aktivitetskrav 2), and group work structures rather than deep theoretical exposition.",
+      "Theoretical concepts (like the orientation points) are framed as interrogative questions for the students to answer rather than declarative statements."
+    ],
+    "warnings": [
+      "The source does not define Freud's personality model or Laplanche's seduction theory directly; it only prompts students to explain them based on external literature.",
+      "The slides mention a Q&A session with 'Simo' and a visit from 'Ingo', which are highly context-dependent and not theoretically relevant."
+    ]
+  }
+}

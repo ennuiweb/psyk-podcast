@@ -508,6 +508,7 @@ Current shipped hardening:
 
 - queue metadata rebuild now runs strict manual-summary coverage validation before feed generation
 - queue metadata rebuild now runs `sync_regeneration_registry.py` before feed generation for this show
+- queue metadata rebuild now passes the media manifest into `sync_regeneration_registry.py` so freshly uploaded regenerated lecture artifacts can become active `B` variants automatically
 - queue metadata rebuild now runs strict registry/inventory validation after feed generation
 - queue metadata rebuild now treats slide-brief coverage failures as blocked manual prerequisites instead of warn-only queue output
 - live `publication.owner` is now `queue`

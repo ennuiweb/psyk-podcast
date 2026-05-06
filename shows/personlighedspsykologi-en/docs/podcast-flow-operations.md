@@ -58,7 +58,8 @@ Registry policy:
 - `active_variant` records which public version is active now.
 - `variants.A` mirrors the currently published baseline from `episode_inventory.json`.
 - `variants.B` is preserved across syncs and should hold rollout/staging/review metadata for regenerated candidates.
-- Feed generation reads `regeneration_registry.json` directly and includes the active variant per logical episode. Do not rely on regex excludes for rollout control.
+- Queue metadata rebuild may auto-activate freshly uploaded regenerated lecture artifacts as `variants.B` when they match existing logical episodes.
+- Feed generation reads `regeneration_registry.json` directly, includes the active variant per logical episode, and prepends `✦` to active regenerated titles. Do not rely on regex excludes for rollout control.
 
 ## Ved Titel- Eller Order-Ændringer
 

@@ -18,7 +18,7 @@ Spotify note: `feed.description_blank_line_marker: "·"` converts blank lines in
 Description order note: for `reading`, `short`, and `weekly_overview`, `feed.description_blocks_by_kind` is set to `quiz -> summary -> key points`; when no quiz link exists, the summary/key-points blocks render without the quiz block.
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_source_pair_priority"` groups by `W#L#` and orders each lecture block as `ALLE KILDER -> [Kort] + full reading pairs -> [Kort] + full Forelæsningsslides pair -> [Lydbog] tail`; source pairs use natural reading order with Grundbog chapters sorted by chapter number.
-Regeneration note: feed generation now selects the public A/B variant directly from `regeneration_registry.json` per `logical_episode_id`. Regex excludes are no longer the rollout mechanism.
+Regeneration note: feed generation now selects the public A/B variant directly from `regeneration_registry.json` per `logical_episode_id`. Active regenerated `B` variants render with `✦` prepended to the title. Regex excludes are no longer the rollout mechanism.
 Slide short note: short generation is intentionally limited to all readings plus lecture slides (`short.apply_to: "readings_and_lecture_slides"`; the older config key is still accepted). Exercise slides keep their full podcast variants but do not get `Kort podcast` entries under the shared `Forelæsningsslides` label.
 Slide short audit note: the queue-owned publish path still fails closed on
 slide-brief coverage gaps. Code changes alone do not make the feed compliant;

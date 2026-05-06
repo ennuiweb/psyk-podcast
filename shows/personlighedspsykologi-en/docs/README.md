@@ -2,6 +2,9 @@ Use this directory to store the syllabus, curriculum PDFs, or other planning mat
 
 Show-level plan and source-of-truth map: `plan.md`.
 
+Oral exam study plan for the 2026-06-03 exam:
+`oral-exam-study-plan-2026.md`.
+
 Slides mapping runbook (manual-only policy): `slides-sync.md`.
 
 Artifact map and ownership model: `podcast-flow-artifacts.md`.

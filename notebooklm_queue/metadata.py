@@ -474,6 +474,32 @@ def _phase_definitions(
                 ],
             }
         )
+    if show_slug == "personlighedspsykologi-en":
+        sync_learning_material_registry_command = [
+            python,
+            str(repo_root / "scripts" / "sync_personlighedspsykologi_learning_material_registry.py"),
+            "--output-root",
+            QUIZ_SYNC_SETTINGS[show_slug].output_root,
+            "--show-root",
+            "shows/personlighedspsykologi-en",
+            "--registry",
+            "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json",
+        ]
+        lecture_key = str(job.get("lecture_key") or "").strip()
+        if lecture_key:
+            sync_learning_material_registry_command.extend(["--lecture-key", lecture_key])
+        campaign = str(job.get("campaign") or "").strip()
+        if campaign:
+            sync_learning_material_registry_command.extend(["--campaign", campaign])
+        job_id = str(job.get("job_id") or "").strip()
+        if job_id:
+            sync_learning_material_registry_command.extend(["--queue-job-id", job_id])
+        phases.append(
+            {
+                "name": "sync_learning_material_registry",
+                "command": sync_learning_material_registry_command,
+            }
+        )
     return phases
 
 

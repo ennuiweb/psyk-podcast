@@ -7,6 +7,7 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `auto_spec.json` - W01-W22 schedule derived from the 2026 forelaesningsplan.
 - `episode_metadata.json` - optional per-file overrides.
 - `regeneration_registry.json` - tracked A/B rollout state for original (`A`) vs regenerated (`B`) variants per logical episode.
+- `learning_material_regeneration_registry.json` - checked-in ledger of podcast and printout materials regenerated under the current prompt/Course Understanding pipeline.
 - `reading_summaries.json` - cached per-reading summary + key-points blocks for episode descriptions.
 - `assets/cover-new.png` - square artwork (min. 1400x1400) referenced by the feed.
 - `docs/` - planning material and any "important text" docs.
@@ -19,6 +20,7 @@ Description order note: for `reading`, `short`, and `weekly_overview`, `feed.des
 Quiz localization note: `quiz.labels` controls heading and difficulty labels in descriptions (currently `Quizzer` with `Let/Mellem/Svær`).
 Feed ordering note: `feed.sort_mode: "wxlx_source_pair_priority"` groups by `W#L#` and orders each lecture block as `ALLE KILDER -> [Kort] + full reading pairs -> [Kort] + full Forelæsningsslides pair -> [Lydbog] tail`; source pairs use natural reading order with Grundbog chapters sorted by chapter number.
 Regeneration note: feed generation now selects the public A/B variant directly from `regeneration_registry.json` per `logical_episode_id`. Active regenerated `B` variants render with `✦` prepended to the title. Regex excludes are no longer the rollout mechanism.
+Learning-material ledger note: after prompt or Course Understanding changes, check `learning_material_regeneration_registry.json` to see which podcasts and printouts have actually been regenerated and when. The queue syncs it automatically after metadata rebuild; manually refresh it with `./.venv/bin/python scripts/sync_personlighedspsykologi_learning_material_registry.py`.
 Slide short note: short generation is intentionally limited to all readings plus lecture slides (`short.apply_to: "readings_and_lecture_slides"`; the older config key is still accepted). Exercise slides keep their full podcast variants but do not get `Kort podcast` entries under the shared `Forelæsningsslides` label.
 Slide short audit note: the queue-owned publish path still fails closed on
 slide-brief coverage gaps. Code changes alone do not make the feed compliant;

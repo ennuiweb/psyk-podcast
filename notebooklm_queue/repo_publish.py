@@ -294,6 +294,8 @@ def _allowed_paths(
     }
     if artifact_paths.media_manifest_path is not None:
         allowlist.add(str(artifact_paths.media_manifest_path.relative_to(repo_root)))
+    if show_slug == "personlighedspsykologi-en":
+        allowlist.add("shows/personlighedspsykologi-en/learning_material_regeneration_registry.json")
     return allowlist
 
 

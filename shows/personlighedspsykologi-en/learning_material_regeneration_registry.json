@@ -1,0 +1,706 @@
+{
+  "current_run": {
+    "campaign": null,
+    "lecture_key": null,
+    "queue_job_id": null
+  },
+  "generated_at": "2026-05-06T11:32:05Z",
+  "materials": [
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "12b2b9ce030ab900be40edff2b2ec74a7726c9e32d53cdab4faeab7cc84420b7",
+        "source_card": "0b817d57167c88f62d9b5543e8ae430f720b23e85f008455bf297466ed404211",
+        "source_file": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+        "source_files_signature": "04b9b8a862a564ef1399a1cb5bdc0d0ee49cec4a264b732c90110672730d8d86"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:26:47Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W01L1",
+      "material_id": "printout:reading_scaffolds:w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "source_title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "12b2b9ce030ab900be40edff2b2ec74a7726c9e32d53cdab4faeab7cc84420b7",
+        "source_card": "6b63d662f2c5924e0e084a839673f650b40f013c060e05ae6537151721ba3fc5",
+        "source_file": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+        "source_files_signature": "a6d31d40f4714545cffacf76189f44025d91da53cde749d7509ba27cad56ec65"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:09:43Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W01L1",
+      "material_id": "printout:reading_scaffolds:w01l1-lewis-1999-295c67e3",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "source_title": "Lewis (1999)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
+        "source_card": "a705a32497c60838d6242f4060ef887a4a5f0373d2171a3df1f46a977815f145",
+        "source_file": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
+        "source_files_signature": "c58682051f369c8ed4fea0160cd475cb9330a09507ebfe202bf2df71e72f3cda"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:25:07Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W01L2",
+      "material_id": "printout:reading_scaffolds:w01l2-koutsoumpis-2025-96f4dcf7",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+      "source_title": "Koutsoumpis (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
+        "source_card": "6cc8c4489050619361f4b32a20c55936038ebdd4bf0108ede908dd65c3978603",
+        "source_file": "19b42595372a402834bb8d05b8739f168c26068cd91091a99adb465aa3876e4e",
+        "source_files_signature": "b4bfb75731aa55d94f6885f7cefac0971ed4a1d8dafbbdca1508b87685b35641"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:28:26Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W01L2",
+      "material_id": "printout:reading_scaffolds:w01l2-mayer-and-bryan-2024-07faf915",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
+      "source_title": "Mayer & Bryan (2024)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
+        "source_card": "7dd9fde73e6f6e25179df6ec7dc0aa48a5c3e5eca7588c70c6588688df5167ef",
+        "source_file": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
+        "source_files_signature": "4b21dad874dd6fd24c522b0a60cb73e43c5507f42b1e68bc9bd2050a0e4a2da1"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:25:05Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W01L2",
+      "material_id": "printout:reading_scaffolds:w01l2-phan-et-al-2024-bf3395d7",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+      "source_title": "Phan et al. (2024)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "eca61d2a84e8b4fddf53703607c584e09b918a6803414dc789cc907c03153fbc",
+        "source_card": "5a4cecfa6f5eadfe4593d5d5f3ee25a19acbc9af78b68b7e12d2b37e79f7cf76",
+        "source_file": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
+        "source_files_signature": "e853241701197f62d599e7b2fd34483a670b89b5c688c01c39671bcf2c102de3"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:13:42Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W02L1",
+      "material_id": "printout:reading_scaffolds:w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "source_title": "Columbus & Strandsbjerg (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "eca61d2a84e8b4fddf53703607c584e09b918a6803414dc789cc907c03153fbc",
+        "source_card": "6ffbbc635dea616c5d2f0f3f28dad26eb25397470da96ac895e73334ebd876d2",
+        "source_file": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
+        "source_files_signature": "88a3e2499a0f53d511fb94295c6e72fccb68add2b7db9aba276d4fb6234df31b"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:30:10Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W02L1",
+      "material_id": "printout:reading_scaffolds:w02l1-zettler-et-al-2020-0c54e6e4",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+      "source_title": "Zettler et al. (2020)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "b3be04cd375fd7036cbfbffd86a635e26536b5398ac51183c52857e3ee597b58",
+        "source_card": "7b714a3ab56262e27b9bb22df67777a1e6689de5d1b878c3fb69093cd635539b",
+        "source_file": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
+        "source_files_signature": "2fe7aec79efd45bf1f57b921498574d641a395206f7c721f9a647e3596c45cfc"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:31:54Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W02L2",
+      "material_id": "printout:reading_scaffolds:w02l2-bleidorn-et-al-2022-25c2d2de",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "source_title": "Bleidorn et al. (2022)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "b3be04cd375fd7036cbfbffd86a635e26536b5398ac51183c52857e3ee597b58",
+        "source_card": "4bd1c2e7350b3518b036dc547211ca2516a7fabd4c7d986141d7e9a35c7d07b0",
+        "source_file": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
+        "source_files_signature": "493e3aeda476c07fdc2637eb58f62a4b124a44be6445cb303d4cf445df92f69f"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:26:49Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W02L2",
+      "material_id": "printout:reading_scaffolds:w02l2-li-and-wilt-2025-92f596ad",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+      "source_title": "Li & Wilt (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
+        "source_card": "f82768ca045c9478bb15fba9792e7c6ac9e82afb067564bae973af59455a9614",
+        "source_file": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
+        "source_files_signature": "974d967d915586a1ea00fff47acf2a28ed4167443d27ac7f5d4778f03cdbfa62"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:33:52Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L1",
+      "material_id": "printout:reading_scaffolds:w03l1-kandler-and-instinske-2025-01535a8e",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
+      "source_title": "Kandler & Instinske (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
+        "source_card": "4e37b8c1a7e74ce91d29e2f90852f612387ec9e4d9ad990d3f63a9b6b82f2ee8",
+        "source_file": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
+        "source_files_signature": "29d0f098f4420a73ffbd9fc2f2ec74567d19c8d0057fcab2946a8b1eeb0ede46"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:28:37Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L1",
+      "material_id": "printout:reading_scaffolds:w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "source_title": "Lu, Benet-Martínez & Wang (2023)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
+        "source_card": "c03e170100fc662700949ccf8c0feb564580427a6cc19d7453af24e9431e7ffc",
+        "source_file": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
+        "source_files_signature": "11c53d40c80977d637740f1c7a9a416e86dfce4407ad6fcdf5b9b9f52efd6819"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:35:28Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L1",
+      "material_id": "printout:reading_scaffolds:w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
+      "source_title": "Volk & Puchalski (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
+        "source_card": "d89ed345f6b89b0110214e4edc8c880a7ec0b71a402f08f8584bc106671ecebd",
+        "source_file": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
+        "source_files_signature": "dadf84da9cb610bb49c05910b74e4e5725c9982c957f7df9e0bd5adaf9cd3e80"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:28:27Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L1",
+      "material_id": "printout:reading_scaffolds:w03l1-zettler-et-al-2025-6ce9bdc0",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
+      "source_title": "Zettler et al. (2025)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "2d87e5a210f40cb488757ebceb110782e9a3c4601c4b4348d4a30133d16234de",
+        "source_card": "761921de4180a4d764194b7b4aab580029e05cb693bc5eb0466e9df4fed2a8f3",
+        "source_file": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
+        "source_files_signature": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:30:14Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L2",
+      "material_id": "printout:reading_scaffolds:w03l2-bach-and-simonsen-2023-d58362ff",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
+      "source_title": "Bach & Simonsen (2023)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/00-reading-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/00-reading-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/01-abridged-reader.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/01-abridged-reader.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/02-active-reading.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/02-active-reading.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/03-consolidation-sheet.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/03-consolidation-sheet.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/04-exam-bridge.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/04-exam-bridge.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "2d87e5a210f40cb488757ebceb110782e9a3c4601c4b4348d4a30133d16234de",
+        "source_card": "65710644a4465b43271983546251e3714371af4af0824d5e7635e98cc0c03882",
+        "source_file": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
+        "source_files_signature": "39d4053266c1cce99ebc5c05920fdea2c41e6291694953837628824b55e67828"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-06T10:30:12Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
+        "provider": "gemini"
+      },
+      "lecture_key": "W03L2",
+      "material_id": "printout:reading_scaffolds:w03l2-sharp-and-wall-2021-cb92ecf4",
+      "material_type": "reading_scaffolds",
+      "schema_version": 3,
+      "source_family": "reading",
+      "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
+      "source_title": "Sharp & Wall (2021)",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/01-abridged-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/01-abridged-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/02-unit-test-suite.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/02-unit-test-suite.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/03-cloze-scaffold.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/03-cloze-scaffold.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3",
+        "revised_lecture_substrate": "d919d1ef3f762997db49d153c59a2534c20763ba380155fd521d15e4a3883b54",
+        "source_card": "d9ddd591189dd5d520f66dd82e8751509b9e99e4833569d7a2b9c4636f0420ab",
+        "source_file": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-05T12:37:20Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v1",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v1",
+        "provider": "gemini"
+      },
+      "lecture_key": "W06L1",
+      "material_id": "printout:reading_scaffolds:w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "material_type": "reading_scaffolds",
+      "schema_version": 1,
+      "source_family": "reading",
+      "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "source_title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+      "status": "generated_local"
+    },
+    {
+      "artifact_paths": {
+        "json": "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/reading-scaffolds.json",
+        "rendered": [
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/01-abridged-guide.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/01-abridged-guide.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/02-unit-test-suite.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/02-unit-test-suite.pdf",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/03-cloze-scaffold.md",
+          "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/03-cloze-scaffold.pdf"
+        ]
+      },
+      "course_understanding": {
+        "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+        "revised_lecture_substrate": "b52a158c88c32ab40ffe13e84f02428090d4544f72fb96f65a90333358ec5ff8",
+        "source_card": "4f5dc9fdacf1641d1e161f9af30cd5c667d777ea609d7d4011dd8ffa0717caa9",
+        "source_file": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
+        "source_files_signature": "b12fc843d0c397d489b551593d4fee2bd67419761af5dd8af8c72a132fff263f"
+      },
+      "family": "printout",
+      "generated_at": "2026-05-05T20:50:27Z",
+      "generator": {
+        "generation_config_version": "gemini-preprocessing-generation-config-v2",
+        "model": "gemini-3.1-pro-preview",
+        "prompt_version": "personlighedspsykologi-reading-scaffold-v2",
+        "provider": "gemini"
+      },
+      "lecture_key": "W11L1",
+      "material_id": "printout:reading_scaffolds:w11l1-gergen-1999-73c2217e",
+      "material_type": "reading_scaffolds",
+      "schema_version": 2,
+      "source_family": "reading",
+      "source_id": "w11l1-gergen-1999-73c2217e",
+      "source_title": "Gergen (1999)",
+      "status": "generated_local"
+    }
+  ],
+  "purpose": "Durable ledger of learner-facing materials regenerated while iterating on the Course Understanding Pipeline and downstream prompt/output layers.",
+  "schema_version": 1,
+  "show_slug": "personlighedspsykologi-en",
+  "source_understanding_snapshot": {
+    "course_synthesis_generated_at": "2026-05-05T20:05:02Z",
+    "course_synthesis_path": "shows/personlighedspsykologi-en/source_intelligence/course_synthesis.json",
+    "course_synthesis_prompt_version": "personlighedspsykologi-course-synthesis-v3",
+    "course_synthesis_sha256": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
+    "index_generated_at": "2026-05-05T20:08:07Z",
+    "index_path": "shows/personlighedspsykologi-en/source_intelligence/index.json",
+    "index_sha256": "cb496899d1edec00eaf4d327a304c777b6960defc301b46b8c56a854d82397fa"
+  },
+  "subject_slug": "personlighedspsykologi",
+  "summary": {
+    "by_family": {
+      "printout": 17
+    },
+    "by_material_type": {
+      "reading_scaffolds": 17
+    },
+    "by_status": {
+      "generated_local": 17
+    },
+    "total": 17
+  }
+}

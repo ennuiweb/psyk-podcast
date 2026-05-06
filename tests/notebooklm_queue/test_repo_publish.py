@@ -20,6 +20,16 @@ def _identity() -> JobIdentity:
     )
 
 
+def _personligheds_identity() -> JobIdentity:
+    return JobIdentity(
+        show_slug="personlighedspsykologi-en",
+        subject_slug="personlighedspsykologi",
+        lecture_key="W01L1",
+        content_types=("audio", "quiz"),
+        config_hash="cfg-1",
+    )
+
+
 def _run(command: list[str], cwd: Path) -> str:
     completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True, check=True)
     return completed.stdout.strip()
@@ -63,6 +73,42 @@ def _seed_repo(tmp_path: Path) -> tuple[Path, Path]:
     return repo_root, remote_root
 
 
+def _seed_personligheds_repo(tmp_path: Path) -> tuple[Path, Path]:
+    repo_root, remote_root = _seed_repo(tmp_path)
+    for relative, content in (
+        (
+            "shows/personlighedspsykologi-en/config.github.json",
+            json.dumps(
+                {
+                    "subject_slug": "personlighedspsykologi",
+                    "output_feed": "shows/personlighedspsykologi-en/feeds/rss.xml",
+                    "output_inventory": "shows/personlighedspsykologi-en/episode_inventory.json",
+                    "quiz": {"links_file": "shows/personlighedspsykologi-en/quiz_links.json"},
+                    "spotify_map_file": "shows/personlighedspsykologi-en/spotify_map.json",
+                    "content_manifest_file": "shows/personlighedspsykologi-en/content_manifest.json",
+                    "storage": {
+                        "provider": "r2",
+                        "manifest_file": "shows/personlighedspsykologi-en/media_manifest.r2.json",
+                    },
+                }
+            ),
+        ),
+        ("shows/personlighedspsykologi-en/feeds/rss.xml", "<rss />\n"),
+        ("shows/personlighedspsykologi-en/episode_inventory.json", json.dumps({"episodes": []}) + "\n"),
+        ("shows/personlighedspsykologi-en/quiz_links.json", json.dumps({"by_name": {}}) + "\n"),
+        ("shows/personlighedspsykologi-en/spotify_map.json", json.dumps({"by_episode_key": {}}) + "\n"),
+        ("shows/personlighedspsykologi-en/content_manifest.json", json.dumps({"lectures": []}) + "\n"),
+        ("shows/personlighedspsykologi-en/media_manifest.r2.json", json.dumps({"items": []}) + "\n"),
+    ):
+        path = repo_root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    subprocess.run(["git", "add", "."], cwd=repo_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "commit", "-m", "add personligheds show"], cwd=repo_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "push", "origin", "main"], cwd=repo_root, check=True, capture_output=True, text=True)
+    return repo_root, remote_root
+
+
 def _seed_job(tmp_path: Path, repo_root: Path) -> tuple[QueueStore, dict[str, object]]:
     store = QueueStore(tmp_path / "queue-root")
     job = store.upsert_job(_identity(), initial_state=STATE_COMMITTING_REPO_ARTIFACTS)
@@ -76,6 +122,33 @@ def _seed_job(tmp_path: Path, repo_root: Path) -> tuple[QueueStore, dict[str, ob
     }
     manifest_path = store.save_publish_manifest(
         show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        payload=manifest,
+        bundle_id="bundle-1",
+    )
+    job["artifacts"] = {
+        "publish": {
+            "latest_bundle_manifest": manifest_path,
+            "latest_bundle_id": "bundle-1",
+        }
+    }
+    store.save_job(job)
+    return store, job
+
+
+def _seed_personligheds_job(tmp_path: Path) -> tuple[QueueStore, dict[str, object]]:
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_personligheds_identity(), initial_state=STATE_COMMITTING_REPO_ARTIFACTS)
+    manifest = {
+        "version": 1,
+        "bundle_id": "bundle-1",
+        "job_id": str(job["job_id"]),
+        "show_slug": "personlighedspsykologi-en",
+        "subject_slug": "personlighedspsykologi",
+        "lecture_key": "W01L1",
+    }
+    manifest_path = store.save_publish_manifest(
+        show_slug="personlighedspsykologi-en",
         job_id=str(job["job_id"]),
         payload=manifest,
         bundle_id="bundle-1",
@@ -114,6 +187,38 @@ def test_publish_repo_artifacts_commits_and_pushes_allowlisted_files(tmp_path: P
     local_head = _run(["git", "rev-parse", "HEAD"], repo_root)
     remote_head = _run(["git", "rev-parse", "main"], remote_root)
     assert local_head == remote_head
+
+
+def test_publish_repo_artifacts_allows_personligheds_learning_material_registry(tmp_path: Path) -> None:
+    repo_root, remote_root = _seed_personligheds_repo(tmp_path)
+    store, job = _seed_personligheds_job(tmp_path)
+    registry_path = repo_root / "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
+    registry_path.write_text(json.dumps({"materials": [{"material_id": "podcast:1"}]}) + "\n", encoding="utf-8")
+
+    result = publish_repo_artifacts(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        job_id=str(job["job_id"]),
+        options=RepoPublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_REPO_PUSHED
+    updated = store.load_job(show_slug="personlighedspsykologi-en", job_id=str(job["job_id"]))
+    publish_manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    publish_manifest = json.loads(publish_manifest_path.read_text(encoding="utf-8"))
+    changed_allowlist_paths = publish_manifest["repo_publish"]["changed_allowlist_paths"]
+    assert "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json" in changed_allowlist_paths
+    remote_registry = _run(
+        [
+            "git",
+            "--git-dir",
+            str(remote_root),
+            "show",
+            "main:shows/personlighedspsykologi-en/learning_material_regeneration_registry.json",
+        ],
+        repo_root,
+    )
+    assert "podcast:1" in remote_registry
 
 
 def test_publish_repo_artifacts_fails_on_unexpected_tracked_changes(tmp_path: Path) -> None:

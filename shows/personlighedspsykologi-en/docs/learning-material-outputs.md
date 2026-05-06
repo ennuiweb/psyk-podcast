@@ -80,6 +80,34 @@ Important current-state note:
   version or regenerate a fresh v3 artifact before comparing it to the current
   contract
 
+### Regeneration Ledger
+
+Canonical ledger:
+
+- `shows/personlighedspsykologi-en/learning_material_regeneration_registry.json`
+
+Canonical sync command:
+
+```bash
+./.venv/bin/python scripts/sync_personlighedspsykologi_learning_material_registry.py
+```
+
+The ledger records learner-facing outputs, not upstream engine internals. It
+tracks podcast and printout materials with their lecture key, status,
+generated/published timestamps where available, prompt/generator metadata,
+request attempts, auth profile, artifact paths, and the current
+`source_intelligence/` snapshot hashes.
+
+Queue-owned publication for `personlighedspsykologi-en` runs the sync after RSS,
+inventory, Spotify, and Freudd content-manifest metadata rebuilds. `push-repo`
+allowlists the ledger, so a regenerated podcast can update the public feed and
+commit the tracking file in the same queue-owned publication pass.
+
+Future Course Understanding or prompt iterations should start by checking this
+ledger, then regenerate the relevant materials, then check it again. It is the
+canonical answer to which learner-facing materials have actually been
+regenerated under the current pipeline.
+
 ## Quality Contract
 
 Shared criteria across both families:
@@ -174,6 +202,12 @@ Current gap:
 
 When discussing this layer, use `learning material outputs` only for the two
 learner-facing families above.
+
+When checking whether a prompt or Course Understanding iteration has reached the
+learner-facing layer, use
+`shows/personlighedspsykologi-en/learning_material_regeneration_registry.json`
+first. Queue state and NotebookLM request logs can explain a run, but the ledger
+is the durable checked-in record.
 
 Do not blur:
 

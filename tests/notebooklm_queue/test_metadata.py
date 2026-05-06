@@ -350,6 +350,15 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     assert sync_registry_command[sync_registry_command.index("--activate-lecture") + 1] == "W1L1"
     audit_command = dict(commands)["audit_slide_briefs"]
     assert "--warn-only" not in audit_command
+    assert phase_names[-1] == "sync_learning_material_registry"
+    learning_registry_command = dict(commands)["sync_learning_material_registry"]
+    assert learning_registry_command[1].endswith("scripts/sync_personlighedspsykologi_learning_material_registry.py")
+    assert learning_registry_command[learning_registry_command.index("--lecture-key") + 1] == "W1L1"
+    assert learning_registry_command[learning_registry_command.index("--queue-job-id") + 1] == str(job["job_id"])
+    assert (
+        learning_registry_command[learning_registry_command.index("--registry") + 1]
+        == "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
+    )
 
 
 def test_rebuild_repo_metadata_personligheds_blocks_on_manual_summary_failure(tmp_path: Path, monkeypatch) -> None:

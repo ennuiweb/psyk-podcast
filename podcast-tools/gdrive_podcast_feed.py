@@ -351,6 +351,58 @@ def _load_existing_inventory_identity_map(config: Dict[str, Any]) -> Dict[str, s
     return identity_map
 
 
+def _load_existing_inventory_publication_state_map(config: Dict[str, Any]) -> Dict[str, Dict[str, str]]:
+    inventory_path = _output_inventory_path(config) or _default_inventory_path(
+        Path(str(config.get("output_feed") or "")).expanduser()
+    )
+    if not inventory_path.exists():
+        return _load_existing_feed_publication_state_map(config)
+
+    try:
+        payload = load_json(inventory_path)
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"Warning: failed to load existing inventory publication state from {inventory_path}: {exc}",
+            file=sys.stderr,
+        )
+        return _load_existing_feed_publication_state_map(config)
+
+    raw_episodes = payload.get("episodes")
+    if not isinstance(raw_episodes, list):
+        return _load_existing_feed_publication_state_map(config)
+
+    state_map: Dict[str, Dict[str, str]] = {}
+    for raw_episode in raw_episodes:
+        if not isinstance(raw_episode, dict):
+            continue
+        state = _publication_state_from_episode(raw_episode)
+        if not state:
+            continue
+        for key_name in (
+            "guid",
+            "episode_key",
+            "source_storage_key",
+            "source_path",
+            "source_drive_file_id",
+            "source_name",
+            "title",
+        ):
+            raw_key = str(raw_episode.get(key_name) or "").strip()
+            if raw_key and raw_key not in state_map:
+                state_map[raw_key] = state
+        source_name = str(raw_episode.get("source_name") or "").strip()
+        if source_name:
+            logical_id = logical_episode_id(source_name)
+            if logical_id and logical_id not in state_map:
+                state_map[logical_id] = state
+
+    feed_state_map = _load_existing_feed_publication_state_map(config)
+    for raw_key, state in feed_state_map.items():
+        if raw_key and raw_key not in state_map:
+            state_map[raw_key] = state
+    return state_map
+
+
 def _load_existing_feed_identity_map(config: Dict[str, Any]) -> Dict[str, str]:
     output_feed = Path(str(config.get("output_feed") or "")).expanduser()
     if not output_feed.exists():
@@ -391,6 +443,46 @@ def _load_existing_feed_identity_map(config: Dict[str, Any]) -> Dict[str, str]:
     return identity_map
 
 
+def _load_existing_feed_publication_state_map(config: Dict[str, Any]) -> Dict[str, Dict[str, str]]:
+    output_feed = Path(str(config.get("output_feed") or "")).expanduser()
+    if not output_feed.exists():
+        return {}
+
+    try:
+        from xml.etree import ElementTree as ET
+
+        root = ET.fromstring(output_feed.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"Warning: failed to load existing feed publication state from {output_feed}: {exc}",
+            file=sys.stderr,
+        )
+        return {}
+
+    state_map: Dict[str, Dict[str, str]] = {}
+    channel = root.find("channel")
+    if channel is None:
+        return state_map
+
+    for item in channel.findall("item"):
+        state = _publication_state_from_feed_item(item)
+        if not state:
+            continue
+        title = str(item.findtext("title") or "").strip()
+        if title and title not in state_map:
+            state_map[title] = state
+        enclosure = item.find("enclosure")
+        if enclosure is None:
+            continue
+        enclosure_url = str(enclosure.get("url") or "").strip()
+        if not enclosure_url:
+            continue
+        file_id = _extract_public_file_id(enclosure_url)
+        if file_id and file_id not in state_map:
+            state_map[file_id] = state
+    return state_map
+
+
 def _extract_public_file_id(url: str) -> str:
     parsed = urlparse(url)
     query_id = parse_qs(parsed.query).get("id", [])
@@ -416,6 +508,90 @@ def _apply_existing_identity(file_entry: Dict[str, Any], identity_map: Dict[str,
         if existing_guid:
             file_entry["stable_guid"] = existing_guid
             return
+
+
+def _publication_state_from_episode(raw_episode: Dict[str, Any]) -> Dict[str, str]:
+    guid = str(raw_episode.get("guid") or raw_episode.get("episode_key") or "").strip()
+    published_at = str(raw_episode.get("published_at") or "").strip()
+    pub_date = str(raw_episode.get("pub_date") or raw_episode.get("pubDate") or "").strip()
+    if not published_at and pub_date:
+        try:
+            published_at = parsedate_to_datetime(pub_date).isoformat()
+        except Exception:  # noqa: BLE001
+            published_at = ""
+    state: Dict[str, str] = {}
+    if guid:
+        state["guid"] = guid
+    if published_at:
+        state["published_at"] = published_at
+    if pub_date:
+        state["pub_date"] = pub_date
+    return state
+
+
+def _publication_state_from_feed_item(item: Any) -> Dict[str, str]:
+    guid = str(item.findtext("guid") or "").strip()
+    pub_date = str(item.findtext("pubDate") or "").strip()
+    published_at = ""
+    if pub_date:
+        try:
+            published_at = parsedate_to_datetime(pub_date).isoformat()
+        except Exception:  # noqa: BLE001
+            published_at = ""
+    state: Dict[str, str] = {}
+    if guid:
+        state["guid"] = guid
+    if published_at:
+        state["published_at"] = published_at
+    if pub_date:
+        state["pub_date"] = pub_date
+    return state
+
+
+def _apply_existing_publication_state(
+    file_entry: Dict[str, Any],
+    publication_state_map: Dict[str, Dict[str, str]],
+) -> None:
+    logical_id = logical_episode_id(str(file_entry.get("name") or file_entry.get("source_name") or "").strip())
+    for candidate in (
+        file_entry.get("stable_guid"),
+        file_entry.get("source_storage_key"),
+        file_entry.get("source_path"),
+        file_entry.get("source_drive_file_id"),
+        file_entry.get("id"),
+        file_entry.get("name"),
+        logical_id,
+    ):
+        key = str(candidate or "").strip()
+        if not key:
+            continue
+        state = publication_state_map.get(key)
+        if not state:
+            continue
+        if not str(file_entry.get("stable_guid") or "").strip():
+            guid = str(state.get("guid") or "").strip()
+            if guid:
+                file_entry["stable_guid"] = guid
+        if not str(file_entry.get("stable_published_at") or "").strip():
+            published_at = str(state.get("published_at") or "").strip()
+            if published_at:
+                file_entry["stable_published_at"] = published_at
+        if str(file_entry.get("stable_guid") or "").strip() and str(file_entry.get("stable_published_at") or "").strip():
+            return
+
+
+def _registry_baseline_published_at(entry: Dict[str, Any]) -> Optional[str]:
+    variants = entry.get("variants") if isinstance(entry.get("variants"), dict) else {}
+    baseline_variant = variants.get("A") if isinstance(variants.get("A"), dict) else {}
+    active_slot = str(entry.get("active_variant") or "A").strip().upper()
+    if active_slot not in {"A", "B"}:
+        active_slot = "A"
+    active_variant = variants.get(active_slot) if isinstance(variants.get(active_slot), dict) else {}
+    for variant in (baseline_variant, active_variant):
+        published_at = str(variant.get("published_at") or "").strip()
+        if published_at:
+            return published_at
+    return None
 
 
 def _load_regeneration_registry(path: Path) -> Dict[str, Any]:
@@ -3408,7 +3584,8 @@ def build_episode_entry(
     if important:
         base_title, prefix_replaced = _replace_text_prefix(base_title, require_start=True)
     pubdate_source = (
-        meta.get("published_at")
+        file_entry.get("stable_published_at")
+        or meta.get("published_at")
         or file_entry.get("createdTime")
         or file_entry.get("modifiedTime")
     )
@@ -4254,6 +4431,7 @@ def main() -> None:
         allowed_mime_types = [allowed_mime_types]
     filters = parse_filters(config.get("filters"))
     existing_identity_map = _load_existing_inventory_identity_map(config)
+    existing_publication_state_map = _load_existing_inventory_publication_state_map(config)
 
     auto_spec: Optional[AutoSpec] = None
     auto_spec_path_value = config.get("auto_spec")
@@ -4351,8 +4529,10 @@ def main() -> None:
     episodes: List[Dict[str, Any]] = []
     for media_file in media_files:
         _apply_existing_identity(media_file, existing_identity_map)
+        _apply_existing_publication_state(media_file, existing_publication_state_map)
         folder_names = storage.build_folder_path(media_file)
         matched_slot: Optional[str] = None
+        logical_id: Optional[str] = None
         registry_decision = _registry_selection_for_file(media_file, registry_entries_by_lid)
         if registry_decision is None:
             if not matches_filters(media_file, folder_names, filters):
@@ -4367,6 +4547,11 @@ def main() -> None:
                         f"{logical_id}: slot {matched_slot} skipped for {media_file.get('name', '')}"
                     )
                 continue
+            registry_entry = registry_entries_by_lid.get(logical_id) if logical_id else None
+            if registry_entry is not None:
+                baseline_published_at = _registry_baseline_published_at(registry_entry)
+                if baseline_published_at:
+                    media_file["stable_published_at"] = baseline_published_at
 
         permission_added = storage.ensure_public_access(
             media_file,

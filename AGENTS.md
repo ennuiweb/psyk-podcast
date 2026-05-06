@@ -15,7 +15,9 @@
 
 - Always deploy after implementing changes; implementation is not complete until the required deploy step has succeeded.
 - `freudd_portal` changes: deploy to `freudd-portal` as the final step.
-- Podcast repo changes: commit + push, then run `gh workflow run generate-feed.yml --ref main`.
+- Podcast repo changes:
+  - queue-owned publication/runtime changes: commit + push, deploy the relevant host/runtime, and run the required queue or service smoke checks
+  - `legacy_workflow` show changes, shared feed/workflow changes, or explicit cross-show validation changes: also run `gh workflow run generate-feed.yml --ref main`
 - `freudd_portal` model/schema changes: always run `makemigrations` + `migrate`.
 
 ## Local Context Map

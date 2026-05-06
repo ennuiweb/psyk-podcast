@@ -72,6 +72,12 @@ The feed generator preserves `guid` / `episode_key` continuity by:
 - honoring `stable_guid` in manifest entries when present
 - falling back to the existing checked-in RSS feed identity map when a show does not yet keep a committed `episode_inventory.json`
 
+The feed generator preserves public episode chronology by:
+
+- reusing the existing `published_at` / `pubDate` for already-published logical episodes when rebuilding from `episode_inventory.json`
+- falling back to the checked-in RSS feed's existing `pubDate` only when an inventory file is unavailable
+- treating regeneration as a variant swap, not a republication event, so active `B` variants inherit the existing public date rather than getting a new one
+
 ## Publication ownership
 
 Shows now also support `publication.owner` in `shows/<show-slug>/config.github.json`:
@@ -140,6 +146,11 @@ For each show it:
 4. runs `gdrive_podcast_feed.py`
 5. for quiz-enabled subjects, syncs quiz links from local NotebookLM output when present; on legacy non-queue subjects where no local `output/` tree is present in CI, it reuses the committed `quiz_links.json` catalog for remote validation instead of failing on the missing directory, then rebuilds the subject content manifest
 6. commits generated artifacts back to `main` when needed
+
+Operationally, this means:
+
+- queue-owned show publishes do not require `generate-feed.yml` on every commit because the queue is already the canonical writer
+- the workflow is still required when a `legacy_workflow` show changes, when shared feed/workflow code changes, or when you explicitly want cross-show CI validation
 
 Tracked feed artifacts live under:
 

@@ -2774,7 +2774,7 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
         )
 
-    def test_build_episode_entry_prepends_regenerated_marker_for_active_b_variant(self):
+    def test_build_episode_entry_appends_regenerated_marker_for_active_b_variant(self):
         mod = _load_feed_module()
         file_entry = {
             "id": "regenerated-file",
@@ -2805,10 +2805,63 @@ class AutoSpecMatchingTests(unittest.TestCase):
             active_b_variant_file_ids={"other-file"},
             regeneration_variant_slot="B",
             regen_marker="✦",
-            regen_marker_position="prefix",
+            regen_marker_position="suffix",
         )
 
-        self.assertEqual(episode["title"], "✦ U10F2 · Davies (1990)")
+        self.assertEqual(episode["title"], "U10F2 · Davies (1990) ✦")
+
+    def test_build_episode_entry_prefers_stable_published_at_for_publication_continuity(self):
+        mod = _load_feed_module()
+        episode = mod.build_episode_entry(
+            {
+                "id": "r2-key",
+                "name": "W01L1 - Intro [EN].mp3",
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "createdTime": "2026-05-06T10:00:00+00:00",
+                "stable_published_at": "2026-02-02T08:00:00+00:00",
+            },
+            {
+                "title": "Test feed",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+        )
+
+        self.assertEqual(
+            episode["published_at"].isoformat(),
+            "2026-02-02T08:00:00+00:00",
+        )
+
+    def test_build_episode_entry_prefers_stable_published_at_over_auto_meta_schedule(self):
+        mod = _load_feed_module()
+        episode = mod.build_episode_entry(
+            {
+                "id": "r2-key",
+                "name": "W01L1 - Intro [EN].mp3",
+                "mimeType": "audio/mpeg",
+                "size": 123,
+                "createdTime": "2026-05-06T10:00:00+00:00",
+                "stable_published_at": "2026-02-02T08:00:00+00:00",
+            },
+            {
+                "title": "Test feed",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            auto_meta={"published_at": "2026-04-01T12:00:00+00:00"},
+        )
+
+        self.assertEqual(
+            episode["published_at"].isoformat(),
+            "2026-02-02T08:00:00+00:00",
+        )
 
     def test_registry_selection_prefers_active_b_when_a_and_b_match_same_file(self):
         mod = _load_feed_module()
@@ -2840,6 +2893,25 @@ class AutoSpecMatchingTests(unittest.TestCase):
         decision = mod._registry_selection_for_file(file_entry, registry_entries_by_lid)
 
         self.assertEqual(decision, (True, logical_id, "B"))
+
+    def test_apply_existing_publication_state_uses_logical_episode_id(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "shows/example/W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}.mp3",
+            "name": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=deadbeef}.mp3",
+        }
+        mod._apply_existing_publication_state(
+            file_entry,
+            {
+                "single_reading__w10l2__davies_1990_en": {
+                    "guid": "legacy-guid-1",
+                    "published_at": "2026-04-14T10:00:00+00:00",
+                }
+            },
+        )
+
+        self.assertEqual(file_entry["stable_guid"], "legacy-guid-1")
+        self.assertEqual(file_entry["stable_published_at"], "2026-04-14T10:00:00+00:00")
 
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()

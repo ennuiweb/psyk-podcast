@@ -318,6 +318,7 @@ def _phase_definitions(
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
     quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
+    requires_portal_sidecars = _requires_portal_sidecars(show_slug=show_slug, manifest=manifest)
     if quiz_sync is not None and _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz"):
         command = [
             python,
@@ -357,7 +358,7 @@ def _phase_definitions(
                 "command": command,
             }
         )
-    if show_slug == "personlighedspsykologi-en":
+    if show_slug == "personlighedspsykologi-en" and requires_portal_sidecars:
         phases.append(
             {
                 "name": "validate_manual_summaries",
@@ -426,19 +427,20 @@ def _phase_definitions(
                 ],
             }
         )
-        phases.append(
-            {
-                "name": "audit_slide_briefs",
-                "command": [
-                    python,
-                    str(repo_root / "scripts" / "audit_personlighedspsykologi_slide_briefs.py"),
-                ],
-                "failure_policy": PhaseFailurePolicy(
-                    state=STATE_BLOCKED_MANUAL_PREREQ,
-                    blocked_reason="missing_slide_mapping_or_briefs",
-                ),
-            }
-        )
+        if requires_portal_sidecars:
+            phases.append(
+                {
+                    "name": "audit_slide_briefs",
+                    "command": [
+                        python,
+                        str(repo_root / "scripts" / "audit_personlighedspsykologi_slide_briefs.py"),
+                    ],
+                    "failure_policy": PhaseFailurePolicy(
+                        state=STATE_BLOCKED_MANUAL_PREREQ,
+                        blocked_reason="missing_slide_mapping_or_briefs",
+                    ),
+                }
+            )
     if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
         spotify_credentials_available = bool(
             str(os.environ.get("SPOTIFY_CLIENT_ID") or "").strip()
@@ -471,7 +473,7 @@ def _phase_definitions(
                 "command": command,
             }
         )
-    if show_slug in SHOWS_WITH_CONTENT_MANIFEST:
+    if show_slug in SHOWS_WITH_CONTENT_MANIFEST and _requires_content_manifest(show_slug=show_slug, manifest=manifest):
         phases.append(
             {
                 "name": "rebuild_content_manifest",
@@ -494,7 +496,7 @@ def _phase_definitions(
                 ],
             }
         )
-    if show_slug == "personlighedspsykologi-en":
+    if show_slug == "personlighedspsykologi-en" and requires_portal_sidecars:
         sync_learning_material_registry_command = [
             python,
             str(repo_root / "scripts" / "sync_personlighedspsykologi_learning_material_registry.py"),
@@ -568,27 +570,31 @@ def _validate_repo_metadata(
     if show_slug in SHOWS_WITH_CONTENT_MANIFEST:
         quiz_path = artifact_paths.quiz_links_path
         manifest_path = artifact_paths.content_manifest_path
-        if not manifest_path.exists():
-            raise MetadataValidationError(f"Missing content_manifest.json for {show_slug}: {manifest_path}")
-        manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
-        lectures = manifest_payload.get("lectures") if isinstance(manifest_payload, dict) else []
         quiz_assets = 0
-        if isinstance(lectures, list):
-            for lecture in lectures:
-                if not isinstance(lecture, dict):
-                    continue
-                lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
-                quiz_assets += len(lecture_assets.get("quizzes") or [])
-                readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
-                for reading in readings:
-                    if not isinstance(reading, dict):
-                        continue
-                    assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
-                    quiz_assets += len(assets.get("quizzes") or [])
-        summary["content_manifest_path"] = str(manifest_path.relative_to(repo_root))
-        summary["quiz_assets"] = quiz_assets
+        requires_content_manifest = _requires_content_manifest(show_slug=show_slug, manifest=manifest)
+        summary["requires_content_manifest"] = requires_content_manifest
         requires_quiz_assets = _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz")
         summary["requires_quiz_assets"] = requires_quiz_assets
+        summary["quiz_assets"] = quiz_assets
+        if requires_content_manifest:
+            if not manifest_path.exists():
+                raise MetadataValidationError(f"Missing content_manifest.json for {show_slug}: {manifest_path}")
+            manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+            lectures = manifest_payload.get("lectures") if isinstance(manifest_payload, dict) else []
+            if isinstance(lectures, list):
+                for lecture in lectures:
+                    if not isinstance(lecture, dict):
+                        continue
+                    lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+                    quiz_assets += len(lecture_assets.get("quizzes") or [])
+                    readings = lecture.get("readings") if isinstance(lecture.get("readings"), list) else []
+                    for reading in readings:
+                        if not isinstance(reading, dict):
+                            continue
+                        assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+                        quiz_assets += len(assets.get("quizzes") or [])
+            summary["content_manifest_path"] = str(manifest_path.relative_to(repo_root))
+            summary["quiz_assets"] = quiz_assets
         if requires_quiz_assets:
             if not quiz_path.exists():
                 raise MetadataValidationError(f"Missing quiz_links.json for {show_slug}: {quiz_path}")
@@ -629,6 +635,21 @@ def _bundle_has_artifact_type(*, manifest: dict[str, Any], artifact_type: str) -
         if candidate == target:
             return True
     return False
+
+
+def _requires_content_manifest(*, show_slug: str, manifest: dict[str, Any]) -> bool:
+    if show_slug != "personlighedspsykologi-en":
+        return True
+    return _requires_portal_sidecars(show_slug=show_slug, manifest=manifest)
+
+
+def _requires_portal_sidecars(*, show_slug: str, manifest: dict[str, Any]) -> bool:
+    if show_slug != "personlighedspsykologi-en":
+        return True
+    return any(
+        _bundle_has_artifact_type(manifest=manifest, artifact_type=artifact_type)
+        for artifact_type in ("quiz", "infographic")
+    )
 
 
 def _latest_publish_manifest_path(*, store: QueueStore, job: dict[str, Any]) -> Path:

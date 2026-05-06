@@ -454,23 +454,6 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
                 json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
                 encoding="utf-8",
             )
-        elif name == "rebuild_content_manifest":
-            (show_root / "content_manifest.json").write_text(
-                json.dumps(
-                    {
-                        "lectures": [
-                            {
-                                "lecture_assets": {
-                                    "quizzes": [],
-                                    "podcasts": [{"title": "Title 1"}],
-                                },
-                                "readings": [],
-                            }
-                        ]
-                    }
-                ),
-                encoding="utf-8",
-            )
         return {
             "name": name,
             "command": command,
@@ -496,11 +479,17 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     assert updated["state"] == STATE_COMMITTING_REPO_ARTIFACTS
     phase_names = [name for name, _ in commands]
     assert "sync_quiz_links" not in phase_names
+    assert "validate_manual_summaries" not in phase_names
+    assert "audit_slide_briefs" not in phase_names
+    assert "rebuild_content_manifest" not in phase_names
+    assert "sync_learning_material_registry" not in phase_names
     manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     validation = manifest["metadata"]["validation"]
+    assert validation["requires_content_manifest"] is False
     assert validation["requires_quiz_assets"] is False
     assert validation["quiz_assets"] == 0
+    assert "content_manifest_path" not in validation
 
 
 def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:

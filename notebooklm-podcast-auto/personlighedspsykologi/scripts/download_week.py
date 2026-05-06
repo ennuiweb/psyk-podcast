@@ -558,7 +558,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--notebooklm",
-        default="notebooklm-podcast-auto/.venv/bin/notebooklm",
+        default=".venv/bin/notebooklm",
         help="Path to the notebooklm CLI.",
     )
     parser.add_argument(

@@ -123,6 +123,9 @@ class ShowAdapter:
             "--week",
             lecture_key,
         ]
+        notebooklm_bin = repo_root / ".venv" / "bin" / "notebooklm"
+        if notebooklm_bin.exists():
+            command.extend(["--notebooklm", str(notebooklm_bin)])
         if timeout_seconds is not None:
             command.extend(["--timeout", str(max(int(timeout_seconds), 1))])
         if interval_seconds is not None:

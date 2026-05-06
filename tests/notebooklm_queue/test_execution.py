@@ -45,6 +45,7 @@ def _make_repo_root(tmp_path: Path) -> Path:
     repo_root = tmp_path / "repo"
     (repo_root / ".venv" / "bin").mkdir(parents=True, exist_ok=True)
     _write_python_shim(repo_root / ".venv" / "bin" / "python")
+    _write_python_shim(repo_root / ".venv" / "bin" / "notebooklm")
     for relative in (
         "shows/bioneuro/config.github.json",
         "shows/bioneuro/auto_spec.json",
@@ -124,6 +125,8 @@ def test_execute_job_runs_generate_and_download_and_persists_manifest(tmp_path: 
     assert "--wait" not in generate_args
     assert "--timeout" in download_args and "11" in download_args
     assert "--interval" in download_args and "7" in download_args
+    assert "--notebooklm" in download_args
+    assert str(repo_root / ".venv" / "bin" / "notebooklm") in download_args
     assert (repo_root / ".phase-generate.json").exists()
     assert (repo_root / ".phase-download.json").exists()
     assert output_file.exists()

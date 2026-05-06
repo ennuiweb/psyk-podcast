@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/bioneuro/output"
-DEFAULT_NOTEBOOKLM = "notebooklm-podcast-auto/.venv/bin/notebooklm"
+DEFAULT_NOTEBOOKLM = ".venv/bin/notebooklm"
 BASE_DOWNLOADER = "notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py"
 WEEK_DIR_PATTERN = re.compile(r"^W\d+L\d+$", re.IGNORECASE)
 

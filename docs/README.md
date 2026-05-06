@@ -26,6 +26,7 @@ Canonical repo entrypoints outside this folder:
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
 - [shows/personlighedspsykologi-en/docs/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
 - [shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md](../shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md) - alternative problem-first scaffolding mode for reward-driven learners.
+- [notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md](../notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md) - sidecar review workspace for problem-driven printout candidates.
 
 Cross-doc principle:
 

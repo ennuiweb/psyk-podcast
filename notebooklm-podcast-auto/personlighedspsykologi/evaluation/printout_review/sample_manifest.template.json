@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_name": "replace-me",
+  "variant": "problem_driven_v1",
+  "created_at": "2026-05-06T00:00:00Z",
+  "updated_at": "2026-05-06T00:00:00Z",
+  "status": "planned",
+  "candidate_output_root": "/absolute/path/to/review-run/candidate_output",
+  "canonical_output_root": "/absolute/path/to/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output",
+  "selection": {
+    "lectures": [
+      "W01L1"
+    ],
+    "source_ids": [],
+    "all": false,
+    "source_families": [
+      "reading"
+    ]
+  },
+  "summary": {
+    "source_count": 1,
+    "written_count": 0,
+    "rerendered_count": 0,
+    "skipped_count": 0,
+    "error_count": 0
+  },
+  "entries": [
+    {
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "lecture_key": "W01L1",
+      "title": "Lewis (1999)",
+      "source_family": "reading",
+      "baseline": {
+        "output_dir": "/absolute/path/to/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3",
+        "json_path": "/absolute/path/to/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/reading-scaffolds.json",
+        "exists": true
+      },
+      "candidate": {
+        "status": "planned",
+        "output_dir": "candidate_output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3",
+        "json_path": "candidate_output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/reading-scaffolds.json",
+        "markdown_paths": [],
+        "pdf_paths": [],
+        "error": ""
+      }
+    }
+  ]
+}

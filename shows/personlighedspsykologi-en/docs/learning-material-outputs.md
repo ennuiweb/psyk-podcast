@@ -70,6 +70,7 @@ Canonical printout contract:
 
 - `shows/personlighedspsykologi-en/docs/scaffolding-system.md`
 - alternative test mode: `shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md`
+- evaluation workspace: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
 
 Important current-state note:
 
@@ -152,8 +153,9 @@ Canonical artifacts for one run:
 
 ### Printouts
 
-There is not yet an equivalent first-class A/B evaluation workspace for
-printouts.
+Current sidecar evaluation workspace:
+
+- `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
 
 Current review baseline:
 
@@ -165,8 +167,8 @@ Current review baseline:
 Current gap:
 
 - podcasts already have run manifests, judge prompts, and summary outputs
-- printouts have a strong generation contract, but not yet a dedicated
-  comparison/evaluation harness
+- printouts now have a sidecar run workspace for problem-driven candidates
+- printouts still do not yet have a full baseline-vs-candidate judge harness
 
 ## Practical Rule
 

@@ -78,6 +78,11 @@ def sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def sha256_json(value: Any) -> str:
+    rendered = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return sha256_text(rendered)
+
+
 def sha256_file(path: Path) -> str | None:
     if not path.exists() or not path.is_file():
         return None
@@ -91,6 +96,10 @@ def sha256_file(path: Path) -> str | None:
 def stable_id(*parts: str) -> str:
     raw = "\n".join(parts)
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
+
+
+def short_hash(value: str, length: int = 16) -> str:
+    return value[:length]
 
 
 def normalize_lecture_key(value: str | None) -> str | None:
@@ -708,6 +717,24 @@ def rendered_scaffold_paths(scaffold_json: Path, repo_root: Path) -> list[str]:
     return rendered
 
 
+def printout_setup_fingerprint_payload(
+    *,
+    payload: dict[str, Any],
+    generator: dict[str, Any],
+    generation_config: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "schema_version": payload.get("schema_version"),
+        "artifact_type": payload.get("artifact_type"),
+        "generator": {
+            "provider": generator.get("provider"),
+            "model": generator.get("model"),
+            "prompt_version": generator.get("prompt_version"),
+            "generation_config": generation_config,
+        },
+    }
+
+
 def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str, dict[str, Any]]:
     entries: dict[str, dict[str, Any]] = {}
     if not output_root.exists():
@@ -719,6 +746,15 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
         source = payload.get("source") if isinstance(payload.get("source"), dict) else {}
         generator = payload.get("generator") if isinstance(payload.get("generator"), dict) else {}
         generation_config = generator.get("generation_config") if isinstance(generator.get("generation_config"), dict) else {}
+        course_understanding = payload.get("provenance") if isinstance(payload.get("provenance"), dict) else {}
+        config_fingerprint = sha256_json(
+            printout_setup_fingerprint_payload(
+                payload=payload,
+                generator=generator,
+                generation_config=generation_config,
+            )
+        )
+        course_understanding_fingerprint = sha256_json(course_understanding) if course_understanding else None
         source_id = str(source.get("source_id") or scaffold_path.parent.name)
         material_id = f"printout:reading_scaffolds:{source_id}"
         entry = {
@@ -727,6 +763,8 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
             "material_type": "reading_scaffolds",
             "status": "generated_local",
             "schema_version": payload.get("schema_version"),
+            "config_hash": short_hash(config_fingerprint),
+            "config_fingerprint": config_fingerprint,
             "lecture_key": source.get("lecture_key"),
             "source_id": source_id,
             "source_title": source.get("title"),
@@ -737,8 +775,10 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
                 "model": generator.get("model"),
                 "prompt_version": generator.get("prompt_version"),
                 "generation_config_version": generation_config.get("version"),
+                "generation_config": generation_config,
             },
-            "course_understanding": payload.get("provenance") if isinstance(payload.get("provenance"), dict) else {},
+            "course_understanding": course_understanding,
+            "course_understanding_fingerprint": course_understanding_fingerprint,
             "artifact_paths": {
                 "json": relpath(scaffold_path, repo_root),
                 "rendered": rendered_scaffold_paths(scaffold_path, repo_root),

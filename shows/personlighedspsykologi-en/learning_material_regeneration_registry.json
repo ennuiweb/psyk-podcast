@@ -4,7 +4,7 @@
     "lecture_key": null,
     "queue_job_id": null
   },
-  "generated_at": "2026-05-06T11:58:44Z",
+  "generated_at": "2026-05-06T16:52:48Z",
   "materials": [
     {
       "artifact_paths": {
@@ -4251,6 +4251,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "12b2b9ce030ab900be40edff2b2ec74a7726c9e32d53cdab4faeab7cc84420b7",
@@ -4258,9 +4260,20 @@
         "source_file": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
         "source_files_signature": "04b9b8a862a564ef1399a1cb5bdc0d0ee49cec4a264b732c90110672730d8d86"
       },
+      "course_understanding_fingerprint": "4bd2ed24b0de009bef149f55bdffa0556cf0c0859eb2b919ed07d7ea0334d337",
       "family": "printout",
       "generated_at": "2026-05-06T10:26:47Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4269,6 +4282,12 @@
       "lecture_key": "W01L1",
       "material_id": "printout:reading_scaffolds:w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:26:47Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
@@ -4291,6 +4310,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999-295c67e3/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "12b2b9ce030ab900be40edff2b2ec74a7726c9e32d53cdab4faeab7cc84420b7",
@@ -4298,9 +4319,20 @@
         "source_file": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
         "source_files_signature": "a6d31d40f4714545cffacf76189f44025d91da53cde749d7509ba27cad56ec65"
       },
+      "course_understanding_fingerprint": "becd3df6819647704e142514826fd804684120c47e51f0054f422541266c221b",
       "family": "printout",
       "generated_at": "2026-05-06T10:09:43Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4309,6 +4341,12 @@
       "lecture_key": "W01L1",
       "material_id": "printout:reading_scaffolds:w01l1-lewis-1999-295c67e3",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:09:43Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w01l1-lewis-1999-295c67e3",
@@ -4331,6 +4369,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-koutsoumpis-2025-96f4dcf7/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
@@ -4338,9 +4378,20 @@
         "source_file": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
         "source_files_signature": "c58682051f369c8ed4fea0160cd475cb9330a09507ebfe202bf2df71e72f3cda"
       },
+      "course_understanding_fingerprint": "9c05a01bd755c9133d04aeebd1891540906de1fedac2e9a1fd4f08eb7afe29c2",
       "family": "printout",
       "generated_at": "2026-05-06T10:25:07Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4349,6 +4400,12 @@
       "lecture_key": "W01L2",
       "material_id": "printout:reading_scaffolds:w01l2-koutsoumpis-2025-96f4dcf7",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:25:07Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
@@ -4371,6 +4428,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-mayer-and-bryan-2024-07faf915/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
@@ -4378,9 +4437,20 @@
         "source_file": "19b42595372a402834bb8d05b8739f168c26068cd91091a99adb465aa3876e4e",
         "source_files_signature": "b4bfb75731aa55d94f6885f7cefac0971ed4a1d8dafbbdca1508b87685b35641"
       },
+      "course_understanding_fingerprint": "d91e9491205f14a8d504d026ce357a902cba1a2b5769468723448e8270b86d5b",
       "family": "printout",
       "generated_at": "2026-05-06T10:28:26Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4389,6 +4459,12 @@
       "lecture_key": "W01L2",
       "material_id": "printout:reading_scaffolds:w01l2-mayer-and-bryan-2024-07faf915",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:28:26Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w01l2-mayer-and-bryan-2024-07faf915",
@@ -4411,6 +4487,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/scaffolding/w01l2-phan-et-al-2024-bf3395d7/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "8be661c808d2280cb114f61f9c17677dbe998b2689a027df201126c2ff8b6969",
@@ -4418,9 +4496,20 @@
         "source_file": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
         "source_files_signature": "4b21dad874dd6fd24c522b0a60cb73e43c5507f42b1e68bc9bd2050a0e4a2da1"
       },
+      "course_understanding_fingerprint": "44d2bffe81d5fd4122412748a210dbe295d5bccb3524bdd5becaece31ab644f2",
       "family": "printout",
       "generated_at": "2026-05-06T10:25:05Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4429,6 +4518,12 @@
       "lecture_key": "W01L2",
       "material_id": "printout:reading_scaffolds:w01l2-phan-et-al-2024-bf3395d7",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:25:05Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w01l2-phan-et-al-2024-bf3395d7",
@@ -4451,6 +4546,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-columbus-and-strandsbjerg-2025-2962b765/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "eca61d2a84e8b4fddf53703607c584e09b918a6803414dc789cc907c03153fbc",
@@ -4458,9 +4555,20 @@
         "source_file": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
         "source_files_signature": "e853241701197f62d599e7b2fd34483a670b89b5c688c01c39671bcf2c102de3"
       },
+      "course_understanding_fingerprint": "0664fd4504ed0eecd843eb6b0fbdf8077651b606002794cc9f316a47a7171489",
       "family": "printout",
       "generated_at": "2026-05-06T10:13:42Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4469,6 +4577,12 @@
       "lecture_key": "W02L1",
       "material_id": "printout:reading_scaffolds:w02l1-columbus-and-strandsbjerg-2025-2962b765",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:13:42Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
@@ -4491,6 +4605,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/scaffolding/w02l1-zettler-et-al-2020-0c54e6e4/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "eca61d2a84e8b4fddf53703607c584e09b918a6803414dc789cc907c03153fbc",
@@ -4498,9 +4614,20 @@
         "source_file": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
         "source_files_signature": "88a3e2499a0f53d511fb94295c6e72fccb68add2b7db9aba276d4fb6234df31b"
       },
+      "course_understanding_fingerprint": "94b64d3815d059c39bcd016cad67b49b7e3801d49f22227f6333515f337961ba",
       "family": "printout",
       "generated_at": "2026-05-06T10:30:10Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4509,6 +4636,12 @@
       "lecture_key": "W02L1",
       "material_id": "printout:reading_scaffolds:w02l1-zettler-et-al-2020-0c54e6e4",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:30:10Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
@@ -4531,6 +4664,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-bleidorn-et-al-2022-25c2d2de/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "b3be04cd375fd7036cbfbffd86a635e26536b5398ac51183c52857e3ee597b58",
@@ -4538,9 +4673,20 @@
         "source_file": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
         "source_files_signature": "2fe7aec79efd45bf1f57b921498574d641a395206f7c721f9a647e3596c45cfc"
       },
+      "course_understanding_fingerprint": "21462ca381e26ad223545589f09628eb7ea2103dda10d0d9f791223a0ef700bb",
       "family": "printout",
       "generated_at": "2026-05-06T10:31:54Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4549,6 +4695,12 @@
       "lecture_key": "W02L2",
       "material_id": "printout:reading_scaffolds:w02l2-bleidorn-et-al-2022-25c2d2de",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:31:54Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
@@ -4571,6 +4723,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/scaffolding/w02l2-li-and-wilt-2025-92f596ad/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "b3be04cd375fd7036cbfbffd86a635e26536b5398ac51183c52857e3ee597b58",
@@ -4578,9 +4732,20 @@
         "source_file": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
         "source_files_signature": "493e3aeda476c07fdc2637eb58f62a4b124a44be6445cb303d4cf445df92f69f"
       },
+      "course_understanding_fingerprint": "a0dae62ac7c3e8ce35769fabaefa70cd7e91514a231ddbc5d235235de44a9f50",
       "family": "printout",
       "generated_at": "2026-05-06T10:26:49Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4589,6 +4754,12 @@
       "lecture_key": "W02L2",
       "material_id": "printout:reading_scaffolds:w02l2-li-and-wilt-2025-92f596ad",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:26:49Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w02l2-li-and-wilt-2025-92f596ad",
@@ -4611,6 +4782,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-kandler-and-instinske-2025-01535a8e/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
@@ -4618,9 +4791,20 @@
         "source_file": "66373d65083f4ce92e94de0b297360e17c35232151d8b4cf676457ed7ecdab5b",
         "source_files_signature": "974d967d915586a1ea00fff47acf2a28ed4167443d27ac7f5d4778f03cdbfa62"
       },
+      "course_understanding_fingerprint": "24753f8151b4e61ac9f6e688ef999ab3aa53cb47cd3acafa8b8db8509f9664c5",
       "family": "printout",
       "generated_at": "2026-05-06T10:33:52Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4629,6 +4813,12 @@
       "lecture_key": "W03L1",
       "material_id": "printout:reading_scaffolds:w03l1-kandler-and-instinske-2025-01535a8e",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:33:52Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l1-kandler-and-instinske-2025-01535a8e",
@@ -4651,6 +4841,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-lu-benet-martinez-and-wang-2023-38a36550/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
@@ -4658,9 +4850,20 @@
         "source_file": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
         "source_files_signature": "29d0f098f4420a73ffbd9fc2f2ec74567d19c8d0057fcab2946a8b1eeb0ede46"
       },
+      "course_understanding_fingerprint": "660a6d5372fb378cbbced4a6c5f93d1a8ae7a1330bf75c8bc97c709765d33bb4",
       "family": "printout",
       "generated_at": "2026-05-06T10:28:37Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4669,6 +4872,12 @@
       "lecture_key": "W03L1",
       "material_id": "printout:reading_scaffolds:w03l1-lu-benet-martinez-and-wang-2023-38a36550",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:28:37Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
@@ -4691,6 +4900,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-volk-and-puchalski-2025-60aaf5d0/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
@@ -4698,9 +4909,20 @@
         "source_file": "00ae60aa4aeed898cda4274d9c04e29f82c866f1cc6e8e551a1b9181d7dd257a",
         "source_files_signature": "11c53d40c80977d637740f1c7a9a416e86dfce4407ad6fcdf5b9b9f52efd6819"
       },
+      "course_understanding_fingerprint": "cbcf2a26da56ff9e0ce8b918315a0e4a90f80a39babca23808a14d6e3865dec7",
       "family": "printout",
       "generated_at": "2026-05-06T10:35:28Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4709,6 +4931,12 @@
       "lecture_key": "W03L1",
       "material_id": "printout:reading_scaffolds:w03l1-volk-and-puchalski-2025-60aaf5d0",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:35:28Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l1-volk-and-puchalski-2025-60aaf5d0",
@@ -4731,6 +4959,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/scaffolding/w03l1-zettler-et-al-2025-6ce9bdc0/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "d11537c2f8c6d1a88c8a6952e4ba58817735f5fd22e43fd7f77af403bbc2c093",
@@ -4738,9 +4968,20 @@
         "source_file": "7dd0526402f14a45f59b7238929c89aa2cda3c44be56cee77118979a18b9d51e",
         "source_files_signature": "dadf84da9cb610bb49c05910b74e4e5725c9982c957f7df9e0bd5adaf9cd3e80"
       },
+      "course_understanding_fingerprint": "fd43ebe228c7691382e79bbfbb75104908d8937d40203364b2cb6151248db0d3",
       "family": "printout",
       "generated_at": "2026-05-06T10:28:27Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4749,6 +4990,12 @@
       "lecture_key": "W03L1",
       "material_id": "printout:reading_scaffolds:w03l1-zettler-et-al-2025-6ce9bdc0",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:28:27Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l1-zettler-et-al-2025-6ce9bdc0",
@@ -4771,6 +5018,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-bach-and-simonsen-2023-d58362ff/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "2d87e5a210f40cb488757ebceb110782e9a3c4601c4b4348d4a30133d16234de",
@@ -4778,9 +5027,20 @@
         "source_file": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2",
         "source_files_signature": "1e29044a95ceb6f79e695be9f5f328573dff07be3d7824eccac6088dc68f06a2"
       },
+      "course_understanding_fingerprint": "d5389797e57f586daa2c0013eb8b5f7b7f9b81f62207ef231f269deee5e91099",
       "family": "printout",
       "generated_at": "2026-05-06T10:30:14Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4789,6 +5049,12 @@
       "lecture_key": "W03L2",
       "material_id": "printout:reading_scaffolds:w03l2-bach-and-simonsen-2023-d58362ff",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:30:14Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l2-bach-and-simonsen-2023-d58362ff",
@@ -4811,6 +5077,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/scaffolding/w03l2-sharp-and-wall-2021-cb92ecf4/04-exam-bridge.pdf"
         ]
       },
+      "config_fingerprint": "e2b67006af15f0044faf880820b77633cc3195c8302992aba777f77954eea2a4",
+      "config_hash": "e2b67006af15f004",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "2d87e5a210f40cb488757ebceb110782e9a3c4601c4b4348d4a30133d16234de",
@@ -4818,9 +5086,20 @@
         "source_file": "56af604db91d2a31cc61e0116e26e6d341bbaf68cf46d2ab9bf5c95c4404a2f1",
         "source_files_signature": "39d4053266c1cce99ebc5c05920fdea2c41e6291694953837628824b55e67828"
       },
+      "course_understanding_fingerprint": "003e5266080ee31f0dbce227ce829f1b0423cf0d6d5da6186e1f69c04a973ae0",
       "family": "printout",
       "generated_at": "2026-05-06T10:30:12Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "json_contract": "prompt_contract_v3_with_local_validation",
+          "response_json_schema": null,
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v3",
@@ -4829,6 +5108,12 @@
       "lecture_key": "W03L2",
       "material_id": "printout:reading_scaffolds:w03l2-sharp-and-wall-2021-cb92ecf4",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-06T10:30:12Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 3,
       "source_family": "reading",
       "source_id": "w03l2-sharp-and-wall-2021-cb92ecf4",
@@ -4847,15 +5132,27 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W06L1/scaffolding/w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2/03-cloze-scaffold.pdf"
         ]
       },
+      "config_fingerprint": "0e07fd5998e894062cbe1e803d97b49afa0b9b45c02a78efd60614ad9cf145d0",
+      "config_hash": "0e07fd5998e89406",
       "course_understanding": {
         "course_synthesis": "a914d018dad7e591dcdcea704096b1ba1cfe5d4a957d11f69df3861fedf7c2c3",
         "revised_lecture_substrate": "d919d1ef3f762997db49d153c59a2534c20763ba380155fd521d15e4a3883b54",
         "source_card": "d9ddd591189dd5d520f66dd82e8751509b9e99e4833569d7a2b9c4636f0420ab",
         "source_file": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2"
       },
+      "course_understanding_fingerprint": "e2d8c7d1bde503ca4ff1894db491877085e2e5b01dde7e673f592b719ca2be12",
       "family": "printout",
       "generated_at": "2026-05-05T12:37:20Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "response_json_schema": "stage_specific",
+          "response_mime_type": "application/json",
+          "temperature": "model_default",
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v1"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v1",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v1",
@@ -4864,6 +5161,12 @@
       "lecture_key": "W06L1",
       "material_id": "printout:reading_scaffolds:w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-05T12:37:20Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 1,
       "source_family": "reading",
       "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
@@ -4882,6 +5185,8 @@
           "notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/scaffolding/w11l1-gergen-1999-73c2217e/03-cloze-scaffold.pdf"
         ]
       },
+      "config_fingerprint": "ccd8d1ed13f7fe1fec6b5cceee8f5501445524ce6d94b9d8b492c76c27b8f87f",
+      "config_hash": "ccd8d1ed13f7fe1f",
       "course_understanding": {
         "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7",
         "revised_lecture_substrate": "b52a158c88c32ab40ffe13e84f02428090d4544f72fb96f65a90333358ec5ff8",
@@ -4889,9 +5194,19 @@
         "source_file": "f5f054e8b91c83a02ce65b72d9bfd7bc5e0e435993a635791f5ff41b040d3684",
         "source_files_signature": "b12fc843d0c397d489b551593d4fee2bd67419761af5dd8af8c72a132fff263f"
       },
+      "course_understanding_fingerprint": "deda6eff5bb0ab4184862f4e30d8dc3c8718a9781f19ca0ce2a74fd58cc994c0",
       "family": "printout",
       "generated_at": "2026-05-05T20:50:27Z",
       "generator": {
+        "generation_config": {
+          "include_thoughts": false,
+          "response_json_schema": "stage_specific",
+          "response_mime_type": "application/json",
+          "temperature": 0.2,
+          "thinking_budget": null,
+          "thinking_level": "high",
+          "version": "gemini-preprocessing-generation-config-v2"
+        },
         "generation_config_version": "gemini-preprocessing-generation-config-v2",
         "model": "gemini-3.1-pro-preview",
         "prompt_version": "personlighedspsykologi-reading-scaffold-v2",
@@ -4900,6 +5215,12 @@
       "lecture_key": "W11L1",
       "material_id": "printout:reading_scaffolds:w11l1-gergen-1999-73c2217e",
       "material_type": "reading_scaffolds",
+      "revision_history": [
+        {
+          "generated_at": "2026-05-05T20:50:27Z",
+          "status": "generated_local"
+        }
+      ],
       "schema_version": 2,
       "source_family": "reading",
       "source_id": "w11l1-gergen-1999-73c2217e",

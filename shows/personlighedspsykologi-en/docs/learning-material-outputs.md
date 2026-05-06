@@ -139,6 +139,13 @@ episode is live. Podcast entries keep `feed_published_at` and
 `media_published_at` separate because feed scheduling and object upload time are
 different operational facts.
 
+For printouts, `config_hash` / `config_fingerprint` are computed from the
+printout generator setup: artifact type, schema version, provider, model,
+prompt version, and full generation config. The Course Understanding provenance
+is tracked separately as `course_understanding_fingerprint` plus the underlying
+provenance hashes, so prompt/setup changes and source-understanding changes can
+be compared independently.
+
 When a material's observed prompt/config identity changes, the previous observed
 identity is retained in `revision_history` so prompt iterations do not erase the
 last known hash.

@@ -64,6 +64,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         scaffold_path,
         {
             "schema_version": 3,
+            "artifact_type": "reading_scaffolds",
             "generated_at": "2026-05-06T09:00:00Z",
             "source": {
                 "source_id": "w01l1-lewis-1999",
@@ -274,6 +275,20 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     printout = printouts[0]
     assert printout["status"] == "generated_local"
     assert printout["generator"]["prompt_version"] == "reading-scaffolds-v3"
+    expected_printout_fingerprint = module.sha256_json(
+        module.printout_setup_fingerprint_payload(
+            payload={"schema_version": 3, "artifact_type": "reading_scaffolds"},
+            generator={
+                "provider": "gemini",
+                "model": "gemini-2.5-pro",
+                "prompt_version": "reading-scaffolds-v3",
+            },
+            generation_config={"version": "v3"},
+        )
+    )
+    assert printout["config_fingerprint"] == expected_printout_fingerprint
+    assert printout["config_hash"] == expected_printout_fingerprint[:16]
+    assert printout["course_understanding_fingerprint"] == module.sha256_json({"course_synthesis_sha256": "course-hash"})
     assert printout["artifact_paths"]["rendered"] == [
         "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999/00-reading-guide.md"
     ]

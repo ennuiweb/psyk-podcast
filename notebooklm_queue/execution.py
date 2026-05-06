@@ -61,6 +61,25 @@ def _derived_retry_at(*, explicit_retry_at: str | None, error_text: str | None) 
     return retry_at.replace(microsecond=0).isoformat()
 
 
+def _phase_primary_error_text(phase: dict[str, Any], fallback: str) -> str:
+    for key in ("stderr", "stdout"):
+        text = str(phase.get(key) or "").strip()
+        if text:
+            return text
+    return fallback
+
+
+def _phase_retry_detection_text(phase: dict[str, Any], fallback: str) -> str:
+    parts = []
+    for key in ("stderr", "stdout"):
+        text = str(phase.get(key) or "").strip()
+        if text:
+            parts.append(text)
+    if fallback:
+        parts.append(fallback)
+    return "\n".join(parts)
+
+
 def execute_job(
     *,
     store: QueueStore,
@@ -279,10 +298,10 @@ def _finalize_failure(
     note: str,
 ) -> dict[str, Any]:
     failed_phase = manifest["phases"][-1]
-    error_text = failed_phase.get("stderr") or failed_phase.get("stdout") or note
+    error_text = _phase_primary_error_text(failed_phase, note)
     retry_at = _derived_retry_at(
         explicit_retry_at=options.retry_at,
-        error_text=error_text,
+        error_text=_phase_retry_detection_text(failed_phase, note),
     )
     effective_failed_state = failed_state
     if retry_at and failed_state == STATE_FAILED_RETRYABLE:

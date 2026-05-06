@@ -149,6 +149,36 @@ def test_execute_job_auto_schedules_retry_for_rate_limit_failures(tmp_path: Path
     assert updated["next_retry_at"]
 
 
+def test_execute_job_detects_rate_limit_stdout_when_stderr_has_rpc_noise(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\n"
+        "print('Generation failed: API rate limit or quota exceeded. Please wait before retrying.')\n"
+        "print('RPC CREATE_ARTIFACT failed after 0.362s', file=sys.stderr)\n"
+        "raise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
+    assert "RPC CREATE_ARTIFACT failed" in updated["last_error"]
+
+
 def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(

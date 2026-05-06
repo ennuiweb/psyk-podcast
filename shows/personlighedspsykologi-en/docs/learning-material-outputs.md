@@ -131,6 +131,18 @@ status, generated/published timestamps where available, prompt/generator
 metadata, config hashes, request attempts, auth profile, artifact paths, and the
 current `source_intelligence/` snapshot hashes.
 
+For podcasts, `episode_inventory.json` and `media_manifest.r2.json` are the
+authoritative current-publication surfaces. Local NotebookLM request logs enrich
+those podcast entries with prompt hashes, auth profile, and attempt history when
+available, but the ledger must not require local request logs to know that an
+episode is live. Podcast entries keep `feed_published_at` and
+`media_published_at` separate because feed scheduling and object upload time are
+different operational facts.
+
+When a material's observed prompt/config identity changes, the previous observed
+identity is retained in `revision_history` so prompt iterations do not erase the
+last known hash.
+
 Queue-owned publication for `personlighedspsykologi-en` runs the sync after RSS,
 inventory, Spotify, and Freudd content-manifest metadata rebuilds. `push-repo`
 allowlists the ledger, so a regenerated podcast can update the public feed and

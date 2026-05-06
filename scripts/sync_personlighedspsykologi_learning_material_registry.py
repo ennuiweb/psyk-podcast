@@ -185,6 +185,88 @@ def build_media_maps(show_root: Path) -> tuple[dict[str, dict[str, Any]], dict[s
     return media_by_name, inventory_by_name
 
 
+def source_name_from_surface_item(item: dict[str, Any]) -> str:
+    for key in ("source_name", "name"):
+        value = str(item.get(key) or "").strip()
+        if value:
+            return Path(value).name
+    for key in ("source_path", "object_key", "source_storage_key", "key"):
+        value = str(item.get(key) or "").strip()
+        if value:
+            return Path(value).name
+    return ""
+
+
+def collect_published_podcast_entries(*, show_root: Path, repo_root: Path) -> dict[str, dict[str, Any]]:
+    entries: dict[str, dict[str, Any]] = {}
+    media_by_name, inventory_by_name = build_media_maps(show_root)
+
+    def upsert(source_name: str, *, media_item: dict[str, Any] | None, inventory_item: dict[str, Any] | None) -> None:
+        source_name = source_name.strip()
+        if not source_name:
+            return
+        canonical_name = canonical_material_name(source_name)
+        material_id = f"podcast:{stable_id(canonical_name)}"
+        tags = parse_config_tags(source_name)
+        entry = entries.setdefault(
+            material_id,
+            {
+                "material_id": material_id,
+                "family": "podcast",
+                "material_type": "audio",
+                "lecture_key": lecture_from_name(source_name),
+                "source_name": source_name,
+                "canonical_source_name": canonical_name,
+                "config_tags": tags,
+                "config_hash": tags.get("hash"),
+                "status": "published_media",
+                "artifact_paths": {},
+                "attempts": [],
+            },
+        )
+        if inventory_item:
+            entry["status"] = "published_active"
+            entry["feed_title"] = inventory_item.get("title")
+            entry["episode_kind"] = inventory_item.get("episode_kind")
+            entry["podcast_kind"] = inventory_item.get("podcast_kind")
+            entry["episode_key"] = inventory_item.get("episode_key")
+            entry["feed_published_at"] = inventory_item.get("published_at")
+            entry["published_at"] = inventory_item.get("published_at") or entry.get("published_at")
+            entry["public_url"] = inventory_item.get("audio_url")
+            entry["artifact_paths"]["episode_inventory"] = relpath(show_root / "episode_inventory.json", repo_root)
+        if media_item:
+            entry["media_published_at"] = media_item.get("published_at")
+            entry["published_at"] = entry.get("published_at") or media_item.get("published_at")
+            entry["public_url"] = media_item.get("public_url") or entry.get("public_url")
+            entry["media_sha256"] = media_item.get("sha256")
+            entry["media_size"] = media_item.get("size")
+            if media_item.get("stable_guid"):
+                entry["stable_guid"] = media_item.get("stable_guid")
+            entry["artifact_paths"]["media_manifest"] = relpath(show_root / "media_manifest.r2.json", repo_root)
+
+    inventory = maybe_load_json(show_root / "episode_inventory.json")
+    if isinstance(inventory, dict):
+        for item in inventory.get("episodes") or []:
+            if not isinstance(item, dict):
+                continue
+            source_name = source_name_from_surface_item(item)
+            canonical_name = canonical_material_name(source_name) if source_name else ""
+            media_item = media_by_name.get(source_name) or media_by_name.get(canonical_name)
+            upsert(source_name, media_item=media_item, inventory_item=item)
+
+    media = maybe_load_json(show_root / "media_manifest.r2.json")
+    if isinstance(media, dict):
+        for item in media.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            source_name = source_name_from_surface_item(item)
+            canonical_name = canonical_material_name(source_name) if source_name else ""
+            inventory_item = inventory_by_name.get(source_name) or inventory_by_name.get(canonical_name)
+            upsert(source_name, media_item=item, inventory_item=inventory_item)
+
+    return entries
+
+
 def merge_attempt(existing: dict[str, Any], attempt: dict[str, Any]) -> None:
     attempts = existing.setdefault("attempts", [])
     if not isinstance(attempts, list):
@@ -221,7 +303,7 @@ def collect_podcast_entries(
     active_lecture_key: str | None,
 ) -> dict[str, dict[str, Any]]:
     media_by_name, inventory_by_name = build_media_maps(show_root)
-    entries: dict[str, dict[str, Any]] = {}
+    entries = collect_published_podcast_entries(show_root=show_root, repo_root=repo_root)
     if not output_root.exists():
         return entries
     active_lecture_key = normalize_lecture_key(active_lecture_key)
@@ -278,8 +360,11 @@ def collect_podcast_entries(
             entry["episode_kind"] = inventory_item.get("episode_kind")
             entry["podcast_kind"] = inventory_item.get("podcast_kind")
             entry["episode_key"] = inventory_item.get("episode_key")
+            entry["feed_published_at"] = inventory_item.get("published_at")
+            entry["published_at"] = inventory_item.get("published_at") or entry.get("published_at")
         if media_item:
-            entry["published_at"] = media_item.get("published_at")
+            entry["media_published_at"] = media_item.get("published_at")
+            entry["published_at"] = entry.get("published_at") or media_item.get("published_at")
             entry["public_url"] = media_item.get("public_url")
             entry["media_sha256"] = media_item.get("sha256")
         if success:
@@ -292,10 +377,14 @@ def collect_podcast_entries(
                 "source": auth.get("source"),
                 "profiles_file": auth.get("profiles_file"),
             }
-            entry["artifact_paths"] = {
-                "mp3": relpath(mp3_path, repo_root),
-                "request_log": relpath(log_path, repo_root),
-            }
+            artifact_paths = entry.get("artifact_paths") if isinstance(entry.get("artifact_paths"), dict) else {}
+            artifact_paths.update(
+                {
+                    "mp3": relpath(mp3_path, repo_root),
+                    "request_log": relpath(log_path, repo_root),
+                }
+            )
+            entry["artifact_paths"] = artifact_paths
             if mp3_path.exists():
                 entry["local_size"] = mp3_path.stat().st_size
                 entry["local_sha256"] = sha256_file(mp3_path)
@@ -659,6 +748,46 @@ def collect_printout_entries(*, output_root: Path, repo_root: Path) -> dict[str,
     return entries
 
 
+REVISION_HISTORY_KEYS = (
+    "status",
+    "source_name",
+    "config_hash",
+    "source_config_hash",
+    "prompt_sha256",
+    "generated_at",
+    "published_at",
+    "feed_published_at",
+    "media_published_at",
+    "media_sha256",
+    "local_sha256",
+    "public_relative_path",
+    "public_url",
+)
+
+
+def revision_snapshot(entry: dict[str, Any]) -> dict[str, Any]:
+    snapshot = {
+        key: entry.get(key)
+        for key in REVISION_HISTORY_KEYS
+        if entry.get(key) not in (None, "", {}, [])
+    }
+    return snapshot
+
+
+def merge_revision_history(previous: dict[str, Any], entry: dict[str, Any]) -> None:
+    history = [
+        item
+        for item in previous.get("revision_history") or []
+        if isinstance(item, dict)
+    ]
+    previous_snapshot = revision_snapshot(previous)
+    current_snapshot = revision_snapshot(entry)
+    if previous_snapshot and current_snapshot and previous_snapshot != current_snapshot and previous_snapshot not in history:
+        history.append(previous_snapshot)
+    if history:
+        entry["revision_history"] = history[-25:]
+
+
 def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     merged = dict(existing)
     for material_id, entry in discovered.items():
@@ -667,6 +796,8 @@ def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dic
             for attempt in previous.get("attempts") or []:
                 if isinstance(attempt, dict):
                     merge_attempt(entry, attempt)
+        if previous:
+            merge_revision_history(previous, entry)
         merged[material_id] = entry
     return sorted(
         merged.values(),

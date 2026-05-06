@@ -46,7 +46,15 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
                     "family": "manual",
                     "material_type": "note",
                     "status": "kept",
-                }
+                },
+                {
+                    "material_id": "quiz:48042f6f",
+                    "family": "quiz",
+                    "material_type": "quiz",
+                    "status": "published_linked",
+                    "source_config_hash": "oldhash",
+                    "public_relative_path": "/q/48042f6f.html",
+                },
             ]
         },
     )
@@ -75,6 +83,9 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     (scaffold_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
 
     success_name = "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"
+    inventory_only_name = (
+        "W01L1 - Inventory Only [EN] {type=audio lang=en format=deep-dive length=long hash=cccc3333}.mp3"
+    )
     failed_name = "W1L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=aaaa1111}.mp3"
     mp3_path = output_root / "W01L1" / success_name
     mp3_path.parent.mkdir(parents=True, exist_ok=True)
@@ -111,7 +122,15 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
                     "published_at": "2026-05-06T10:05:00Z",
                     "public_url": "https://example.test/audio.mp3",
                     "sha256": "audio-hash",
-                }
+                },
+                {
+                    "source_name": inventory_only_name,
+                    "published_at": "2026-05-06T10:15:00Z",
+                    "public_url": "https://example.test/inventory-only.mp3",
+                    "sha256": "inventory-only-audio-hash",
+                    "stable_guid": "inventory-only-guid",
+                    "size": 12345,
+                },
             ]
         },
     )
@@ -124,7 +143,15 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
                     "title": "W01L1 - Lewis (1999)",
                     "episode_key": "episode-1",
                     "episode_kind": "reading",
-                }
+                },
+                {
+                    "source_name": inventory_only_name,
+                    "title": "W01L1 - Inventory Only",
+                    "episode_key": "episode-2",
+                    "episode_kind": "reading",
+                    "published_at": "2026-05-06T10:16:00Z",
+                    "audio_url": "https://example.test/inventory-only.mp3",
+                },
             ]
         },
     )
@@ -240,7 +267,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     quizzes = [item for item in payload["materials"] if item.get("family") == "quiz"]
     slides = [item for item in payload["materials"] if item.get("family") == "slide"]
     assert len(printouts) == 1
-    assert len(podcasts) == 1
+    assert len(podcasts) == 2
     assert len(quizzes) == 1
     assert len(slides) == 1
 
@@ -251,7 +278,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/w01l1-lewis-1999/00-reading-guide.md"
     ]
 
-    podcast = podcasts[0]
+    podcast = next(item for item in podcasts if item["source_name"] == success_name)
     assert podcast["status"] == "published_active"
     assert podcast["lecture_key"] == "W01L1"
     assert podcast["canonical_source_name"] == "W01L1 - Lewis (1999) [EN].mp3"
@@ -260,6 +287,17 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert podcast["queue_job_id"] == "job-1"
     assert podcast["prompt_sha256"] == hashlib.sha256(prompt.encode("utf-8")).hexdigest()
     assert [attempt["status"] for attempt in podcast["attempts"]] == ["failed", "success"]
+    assert podcast["artifact_paths"]["episode_inventory"] == "shows/personlighedspsykologi-en/episode_inventory.json"
+    assert podcast["artifact_paths"]["media_manifest"] == "shows/personlighedspsykologi-en/media_manifest.r2.json"
+
+    inventory_only = next(item for item in podcasts if item["source_name"] == inventory_only_name)
+    assert inventory_only["status"] == "published_active"
+    assert inventory_only["config_hash"] == "cccc3333"
+    assert inventory_only["media_sha256"] == "inventory-only-audio-hash"
+    assert inventory_only["stable_guid"] == "inventory-only-guid"
+    assert inventory_only["feed_published_at"] == "2026-05-06T10:16:00Z"
+    assert inventory_only["media_published_at"] == "2026-05-06T10:15:00Z"
+    assert inventory_only["published_at"] == "2026-05-06T10:16:00Z"
 
     quiz = quizzes[0]
     assert quiz["status"] == "published_active"
@@ -268,6 +306,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert quiz["source_config_hash"] == "bbbb2222"
     assert quiz["generated_at"] == "2026-05-06T10:30:00Z"
     assert quiz["public_relative_path"] == "/q/48042f6f.html"
+    assert quiz["revision_history"][0]["source_config_hash"] == "oldhash"
 
     slide = slides[0]
     assert slide["status"] == "published_active"
@@ -275,8 +314,8 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert slide["public_relative_path"] == "/slides/personlighedspsykologi/W01L1/lecture/intro.pdf"
 
     assert payload["schema_version"] == 2
-    assert payload["summary"]["total"] == 5
-    assert payload["summary"]["by_family"]["podcast"] == 1
+    assert payload["summary"]["total"] == 6
+    assert payload["summary"]["by_family"]["podcast"] == 2
     assert payload["summary"]["by_family"]["quiz"] == 1
     assert payload["summary"]["by_family"]["slide"] == 1
     assert payload["source_understanding_snapshot"]["course_synthesis_prompt_version"] == "course-synthesis-v1"

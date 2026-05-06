@@ -10,6 +10,7 @@ Use these files:
 
 - [freudd-learning-system-architecture.md](freudd-learning-system-architecture.md) - canonical system-wide architecture and maturity assessment for the full Freudd Learning System.
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, GitHub Actions, Apps Script triggers, and feed hosting.
+- [learning-material-design.md](learning-material-design.md) - repo-level design principles for learner-facing study materials, including problem-first reward-loop design.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
 - [notebooklm-queue-operations.md](notebooklm-queue-operations.md) - Hetzner runtime contract, systemd install, env requirements, and failure playbook for the queue-owned NotebookLM publisher.
 - [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md) - canonical implementation plan and backlog for the Hetzner queue + object-storage migration program.
@@ -24,6 +25,7 @@ Canonical repo entrypoints outside this folder:
 - [freudd_portal/README.md](../freudd_portal/README.md) - full Freudd product and runtime contract.
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
 - [shows/personlighedspsykologi-en/docs/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
+- [shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md](../shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md) - alternative problem-first scaffolding mode for reward-driven learners.
 
 Cross-doc principle:
 

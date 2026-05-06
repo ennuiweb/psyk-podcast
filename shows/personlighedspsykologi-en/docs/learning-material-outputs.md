@@ -69,6 +69,7 @@ Derived render targets:
 Canonical printout contract:
 
 - `shows/personlighedspsykologi-en/docs/scaffolding-system.md`
+- alternative test mode: `shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md`
 
 Important current-state note:
 
@@ -83,6 +84,8 @@ Important current-state note:
 Shared criteria across both families:
 
 - source fidelity and accurate conceptual distinctions
+- immediate problem tension where possible
+- visible progress and short closure loops
 - useful prioritization rather than generic summary voice
 - misunderstanding prevention
 - study usefulness for a real university learner
@@ -99,9 +102,28 @@ Printout-specific criteria:
 
 - the canonical review target is the JSON artifact, not only the PDF render
 - each sheet should have one clear job and operational instructions
+- printouts should preferably expose a solvable mission, not only a summary path
 - reading tasks should say what to look for, where to look, and when to stop
 - printouts must not collapse into ordinary summaries with blanks inserted
 - source touchpoints should make opening the real source feel feasible
+
+## Learner-Fit Note
+
+Some learners benefit much more from outputs that feel like a sequence of
+solvable problems than from outputs that mainly ask for passive intake.
+
+For that reason, `personlighedspsykologi` now also documents an explicit
+problem-first alternative for printouts:
+
+- `shows/personlighedspsykologi-en/docs/problem-driven-scaffolding.md`
+
+That mode is intended for learners who engage more reliably when the material
+gives them:
+
+- a question to answer
+- something specific to find
+- a decision to make
+- a quick sense of progress
 
 ## Evaluation Workflows
 

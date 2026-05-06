@@ -11,6 +11,7 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
@@ -114,6 +115,10 @@ def canonical_material_name(source_name: str) -> str:
     if lecture_key:
         name = re.sub(r"\bW\d{1,2}L\d\b", lecture_key, name, count=1, flags=re.IGNORECASE)
     return name
+
+
+def material_identity_name(source_name: str) -> str:
+    return re.sub(r"\.[^.]+$", "", canonical_material_name(source_name))
 
 
 def source_name_from_request_log(path: Path) -> str:
@@ -266,6 +271,7 @@ def collect_podcast_entries(
         if success or is_new_entry or not str(entry.get("source_name") or "").strip():
             entry["source_name"] = output_name
             entry["config_tags"] = parse_config_tags(output_name)
+            entry["config_hash"] = entry["config_tags"].get("hash")
         entry["lecture_key"] = lecture_key
         if inventory_item:
             entry["feed_title"] = inventory_item.get("title")
@@ -309,6 +315,297 @@ def collect_podcast_entries(
             attempt["error"] = payload.get("error") or payload.get("status")
         merge_attempt(entry, attempt)
 
+    return entries
+
+
+def quiz_id_from_link(link: dict[str, Any]) -> str | None:
+    for key in ("quiz_id", "relative_path", "quiz_url", "url"):
+        raw = str(link.get(key) or "").strip()
+        if raw:
+            stem = Path(raw.split("?", 1)[0]).stem
+            if stem:
+                return stem
+    return None
+
+
+def quiz_path_from_link(link: dict[str, Any]) -> str | None:
+    raw = str(link.get("relative_path") or link.get("quiz_url") or link.get("url") or "").strip()
+    if not raw:
+        return None
+    parsed_path = urlparse(raw).path
+    if parsed_path:
+        raw = parsed_path
+    if raw.startswith("/q/"):
+        return raw[3:]
+    if raw.startswith("q/"):
+        return raw[2:]
+    return raw.lstrip("/")
+
+
+def iter_quiz_link_items(payload: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    items: list[tuple[str, dict[str, Any]]] = []
+    by_name = payload.get("by_name")
+    if not isinstance(by_name, dict):
+        return items
+    for source_name, raw_entry in by_name.items():
+        if not isinstance(raw_entry, dict):
+            continue
+        raw_links = raw_entry.get("links")
+        links = [link for link in raw_links if isinstance(link, dict)] if isinstance(raw_links, list) else []
+        if not links:
+            links = [raw_entry]
+        for link in links:
+            items.append((str(source_name), link))
+    return items
+
+
+def content_manifest_contexts(show_root: Path, repo_root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, list[dict[str, Any]]]]:
+    manifest_path = show_root / "content_manifest.json"
+    payload = maybe_load_json(manifest_path)
+    quiz_contexts: dict[str, dict[str, Any]] = {}
+    slide_contexts: dict[str, list[dict[str, Any]]] = {}
+    if not isinstance(payload, dict):
+        return quiz_contexts, slide_contexts
+
+    def add_quiz(raw_quiz: Any, context: dict[str, Any]) -> None:
+        if not isinstance(raw_quiz, dict):
+            return
+        quiz_id = quiz_id_from_link(raw_quiz)
+        if not quiz_id:
+            return
+        quiz_contexts[quiz_id] = {
+            **context,
+            "quiz_url": raw_quiz.get("quiz_url"),
+            "episode_title": raw_quiz.get("episode_title"),
+            "content_manifest_path": relpath(manifest_path, repo_root),
+        }
+
+    for lecture in payload.get("lectures") or []:
+        if not isinstance(lecture, dict):
+            continue
+        lecture_key = normalize_lecture_key(str(lecture.get("lecture_key") or ""))
+        lecture_title = lecture.get("lecture_title")
+        lecture_context = {"scope": "lecture", "lecture_key": lecture_key, "lecture_title": lecture_title}
+
+        lecture_assets = lecture.get("lecture_assets") if isinstance(lecture.get("lecture_assets"), dict) else {}
+        for quiz in lecture_assets.get("quizzes") or []:
+            add_quiz(quiz, lecture_context)
+
+        for reading in lecture.get("readings") or []:
+            if not isinstance(reading, dict):
+                continue
+            context = {
+                "scope": "reading",
+                "lecture_key": lecture_key,
+                "lecture_title": lecture_title,
+                "source_id": reading.get("reading_key"),
+                "source_title": reading.get("reading_title"),
+            }
+            assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
+            for quiz in assets.get("quizzes") or []:
+                add_quiz(quiz, context)
+
+        for slide in lecture.get("slides") or []:
+            if not isinstance(slide, dict):
+                continue
+            slide_key = str(slide.get("slide_key") or "").strip()
+            context = {
+                "scope": "slide",
+                "lecture_key": lecture_key,
+                "lecture_title": lecture_title,
+                "slide_key": slide_key,
+                "slide_title": slide.get("title"),
+                "slide_subcategory": slide.get("subcategory"),
+                "slide_relative_path": slide.get("relative_path"),
+            }
+            if slide_key:
+                slide_contexts.setdefault(slide_key, []).append(
+                    {
+                        "lecture_key": lecture_key,
+                        "lecture_title": lecture_title,
+                        "subcategory": slide.get("subcategory"),
+                        "title": slide.get("title"),
+                        "relative_path": slide.get("relative_path"),
+                        "content_manifest_path": relpath(manifest_path, repo_root),
+                    }
+                )
+            assets = slide.get("assets") if isinstance(slide.get("assets"), dict) else {}
+            for quiz in assets.get("quizzes") or []:
+                add_quiz(quiz, context)
+
+    return quiz_contexts, slide_contexts
+
+
+def collect_local_quiz_entries(*, output_root: Path, repo_root: Path) -> dict[tuple[str, str], dict[str, Any]]:
+    entries: dict[tuple[str, str], dict[str, Any]] = {}
+    if not output_root.exists():
+        return entries
+    for quiz_path in sorted(output_root.glob("**/*.json")):
+        if ".request" in quiz_path.name or quiz_path.name == "quiz_json_manifest.json":
+            continue
+        tags = parse_config_tags(quiz_path.name)
+        if tags.get("type") != "quiz":
+            continue
+        difficulty = str(tags.get("difficulty") or "unknown").strip() or "unknown"
+        identity_name = material_identity_name(quiz_path.name)
+        request_path = Path(f"{quiz_path}.request.json")
+        request_payload = maybe_load_json(request_path)
+        if not isinstance(request_payload, dict):
+            request_payload = {}
+        auth = request_payload.get("auth") if isinstance(request_payload.get("auth"), dict) else {}
+        key = (identity_name, difficulty)
+        entry = {
+            "material_id": f"quiz:{stable_id(identity_name, difficulty)}",
+            "family": "quiz",
+            "material_type": "quiz",
+            "status": "generated_local",
+            "lecture_key": lecture_from_name(quiz_path.name),
+            "source_name": quiz_path.name,
+            "canonical_source_name": canonical_material_name(quiz_path.name),
+            "source_identity": identity_name,
+            "difficulty": difficulty,
+            "format": tags.get("download") or quiz_path.suffix.lstrip("."),
+            "config_tags": tags,
+            "config_hash": tags.get("hash"),
+            "generated_at": request_payload.get("created_at"),
+            "artifact_id": request_payload.get("artifact_id"),
+            "local_size": quiz_path.stat().st_size,
+            "local_sha256": sha256_file(quiz_path),
+            "artifact_paths": {"json": relpath(quiz_path, repo_root)},
+        }
+        if request_path.exists():
+            entry["artifact_paths"]["request_log"] = relpath(request_path, repo_root)
+        instructions = str(request_payload.get("instructions") or "")
+        if instructions:
+            entry["prompt_sha256"] = sha256_text(instructions)
+            entry["prompt_length"] = len(instructions)
+        if auth:
+            entry["auth"] = {
+                "profile": auth.get("profile"),
+                "source": auth.get("source"),
+                "profiles_file": auth.get("profiles_file"),
+            }
+        entries[key] = entry
+    return entries
+
+
+def collect_quiz_entries(*, show_root: Path, output_root: Path, repo_root: Path) -> dict[str, dict[str, Any]]:
+    entries: dict[str, dict[str, Any]] = {}
+    quiz_links_path = show_root / "quiz_links.json"
+    quiz_links = maybe_load_json(quiz_links_path)
+    local_entries = collect_local_quiz_entries(output_root=output_root, repo_root=repo_root)
+    quiz_contexts, _slide_contexts = content_manifest_contexts(show_root, repo_root)
+
+    consumed_local_keys: set[tuple[str, str]] = set()
+    if isinstance(quiz_links, dict):
+        for source_name, link in iter_quiz_link_items(quiz_links):
+            quiz_id = quiz_id_from_link(link)
+            quiz_path = quiz_path_from_link(link)
+            if not quiz_id or not quiz_path:
+                continue
+            difficulty = str(link.get("difficulty") or parse_config_tags(source_name).get("difficulty") or "unknown")
+            identity_name = material_identity_name(source_name)
+            source_config_tags = parse_config_tags(source_name)
+            local_key = (identity_name, difficulty)
+            local_entry = local_entries.get(local_key)
+            context = quiz_contexts.get(quiz_id)
+            status = "published_active" if context else "published_linked"
+            material_id = f"quiz:{quiz_id}"
+            entry: dict[str, Any] = {
+                "material_id": material_id,
+                "family": "quiz",
+                "material_type": "quiz",
+                "status": status,
+                "lecture_key": lecture_from_name(source_name),
+                "source_name": source_name,
+                "canonical_source_name": canonical_material_name(source_name),
+                "source_identity": identity_name,
+                "quiz_id": quiz_id,
+                "difficulty": difficulty,
+                "format": link.get("format") or Path(quiz_path).suffix.lstrip("."),
+                "subject_slug": link.get("subject_slug"),
+                "source_config_tags": source_config_tags,
+                "source_config_hash": source_config_tags.get("hash"),
+                "public_relative_path": f"/q/{quiz_path}",
+                "artifact_paths": {"quiz_links": relpath(quiz_links_path, repo_root)},
+            }
+            if context:
+                entry["content_manifest"] = context
+                entry["artifact_paths"]["content_manifest"] = context["content_manifest_path"]
+                entry["lecture_key"] = context.get("lecture_key") or entry["lecture_key"]
+                if context.get("source_title"):
+                    entry["source_title"] = context.get("source_title")
+                if context.get("slide_title"):
+                    entry["source_title"] = context.get("slide_title")
+            if local_entry:
+                consumed_local_keys.add(local_key)
+                entry["generated_at"] = local_entry.get("generated_at")
+                entry["artifact_id"] = local_entry.get("artifact_id")
+                entry["local_size"] = local_entry.get("local_size")
+                entry["local_sha256"] = local_entry.get("local_sha256")
+                entry["config_tags"] = local_entry.get("config_tags")
+                entry["config_hash"] = local_entry.get("config_hash")
+                if local_entry.get("auth"):
+                    entry["auth"] = local_entry["auth"]
+                if local_entry.get("prompt_sha256"):
+                    entry["prompt_sha256"] = local_entry["prompt_sha256"]
+                    entry["prompt_length"] = local_entry.get("prompt_length")
+                local_paths = local_entry.get("artifact_paths") if isinstance(local_entry.get("artifact_paths"), dict) else {}
+                entry["artifact_paths"].update(local_paths)
+            entries[material_id] = entry
+
+    for key, entry in local_entries.items():
+        if key not in consumed_local_keys:
+            entries[str(entry["material_id"])] = entry
+    return entries
+
+
+def collect_slide_entries(*, show_root: Path, repo_root: Path) -> dict[str, dict[str, Any]]:
+    entries: dict[str, dict[str, Any]] = {}
+    slides_catalog_path = show_root / "slides_catalog.json"
+    payload = maybe_load_json(slides_catalog_path)
+    if not isinstance(payload, dict):
+        return entries
+    _quiz_contexts, slide_contexts = content_manifest_contexts(show_root, repo_root)
+    catalog_generated_at = payload.get("generated_at")
+    for slide in payload.get("slides") or []:
+        if not isinstance(slide, dict):
+            continue
+        slide_key = str(slide.get("slide_key") or "").strip()
+        if not slide_key:
+            continue
+        contexts = slide_contexts.get(slide_key, [])
+        raw_lecture_keys = slide.get("lecture_keys")
+        lecture_keys = [normalize_lecture_key(str(slide.get("lecture_key") or ""))]
+        if isinstance(raw_lecture_keys, list):
+            lecture_keys.extend(normalize_lecture_key(str(item or "")) for item in raw_lecture_keys)
+        if contexts:
+            lecture_keys.extend(normalize_lecture_key(str(item.get("lecture_key") or "")) for item in contexts)
+        lecture_keys = sorted({key for key in lecture_keys if key})
+        relative_path = str(slide.get("relative_path") or "").strip()
+        entry: dict[str, Any] = {
+            "material_id": f"slide:{slide_key}",
+            "family": "slide",
+            "material_type": "slide_deck",
+            "status": "published_active" if contexts else "cataloged",
+            "lecture_key": lecture_keys[0] if lecture_keys else None,
+            "lecture_keys": lecture_keys,
+            "slide_key": slide_key,
+            "slide_subcategory": slide.get("subcategory"),
+            "source_title": slide.get("title"),
+            "source_filename": slide.get("source_filename"),
+            "matched_by": slide.get("matched_by"),
+            "local_relative_path": slide.get("local_relative_path"),
+            "catalog_generated_at": catalog_generated_at,
+            "artifact_paths": {"slides_catalog": relpath(slides_catalog_path, repo_root)},
+        }
+        if relative_path:
+            entry["relative_path"] = relative_path
+            entry["public_relative_path"] = f"/slides/personlighedspsykologi/{relative_path}"
+        if contexts:
+            entry["content_manifest"] = contexts
+            entry["artifact_paths"]["content_manifest"] = contexts[0]["content_manifest_path"]
+        entries[str(entry["material_id"])] = entry
     return entries
 
 
@@ -431,6 +728,19 @@ def build_registry(
         )
     )
     discovered.update(
+        collect_quiz_entries(
+            show_root=show_root,
+            output_root=output_root,
+            repo_root=repo_root,
+        )
+    )
+    discovered.update(
+        collect_slide_entries(
+            show_root=show_root,
+            repo_root=repo_root,
+        )
+    )
+    discovered.update(
         collect_podcast_entries(
             output_root=output_root,
             repo_root=repo_root,
@@ -442,7 +752,7 @@ def build_registry(
     )
     materials = merge_entries(existing_entries(registry_path), discovered)
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "show_slug": "personlighedspsykologi-en",
         "subject_slug": "personlighedspsykologi",
         "generated_at": generated_at,

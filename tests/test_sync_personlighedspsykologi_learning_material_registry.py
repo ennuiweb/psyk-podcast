@@ -128,6 +128,99 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
             ]
         },
     )
+    quiz_name = "W01L1 - Lewis (1999) [EN] {type=quiz lang=en quantity=standard difficulty=medium download=json hash=quiz1234}.json"
+    quiz_path = output_root / "W01L1" / quiz_name
+    _write_json(quiz_path, {"title": "Lewis quiz", "questions": []})
+    _write_json(
+        Path(f"{quiz_path}.request.json"),
+        {
+            "artifact_id": "quiz-artifact-1",
+            "artifact_type": "quiz",
+            "created_at": "2026-05-06T10:30:00Z",
+            "instructions": "Quiz prompt body",
+            "output_path": str(quiz_path),
+            "quiz_difficulty": "medium",
+            "quiz_format": "json",
+            "auth": {"profile": "psykku", "source": "profiles_file"},
+        },
+    )
+    _write_json(
+        show_root / "quiz_links.json",
+        {
+            "by_name": {
+                success_name: {
+                    "relative_path": "48042f6f.html",
+                    "format": "html",
+                    "difficulty": "medium",
+                    "subject_slug": "personlighedspsykologi",
+                    "links": [
+                        {
+                            "relative_path": "https://learn.example/q/48042f6f.html",
+                            "format": "html",
+                            "difficulty": "medium",
+                            "subject_slug": "personlighedspsykologi",
+                        }
+                    ],
+                }
+            }
+        },
+    )
+    _write_json(
+        show_root / "slides_catalog.json",
+        {
+            "version": 1,
+            "subject_slug": "personlighedspsykologi",
+            "generated_at": "2026-05-06T07:00:00Z",
+            "slides": [
+                {
+                    "slide_key": "w01l1-lecture-intro",
+                    "lecture_key": "W01L1",
+                    "subcategory": "lecture",
+                    "title": "Intro slides",
+                    "source_filename": "intro.pdf",
+                    "relative_path": "W01L1/lecture/intro.pdf",
+                    "matched_by": "manual",
+                    "local_relative_path": "Forelæsningsrækken/intro.pdf",
+                }
+            ],
+        },
+    )
+    _write_json(
+        show_root / "content_manifest.json",
+        {
+            "lectures": [
+                {
+                    "lecture_key": "W01L1",
+                    "lecture_title": "Intro",
+                    "readings": [
+                        {
+                            "reading_key": "w01l1-lewis-1999",
+                            "reading_title": "Lewis (1999)",
+                            "assets": {
+                                "quizzes": [
+                                    {
+                                        "quiz_id": "48042f6f",
+                                        "difficulty": "medium",
+                                        "quiz_url": "/q/48042f6f.html",
+                                        "episode_title": success_name,
+                                    }
+                                ]
+                            },
+                        }
+                    ],
+                    "slides": [
+                        {
+                            "slide_key": "w01l1-lecture-intro",
+                            "subcategory": "lecture",
+                            "title": "Intro slides",
+                            "relative_path": "W01L1/lecture/intro.pdf",
+                            "assets": {"quizzes": [], "podcasts": []},
+                        }
+                    ],
+                }
+            ]
+        },
+    )
 
     payload = module.build_registry(
         repo_root=repo_root,
@@ -144,8 +237,12 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert "manual:preserved" in materials
     printouts = [item for item in payload["materials"] if item.get("family") == "printout"]
     podcasts = [item for item in payload["materials"] if item.get("family") == "podcast"]
+    quizzes = [item for item in payload["materials"] if item.get("family") == "quiz"]
+    slides = [item for item in payload["materials"] if item.get("family") == "slide"]
     assert len(printouts) == 1
     assert len(podcasts) == 1
+    assert len(quizzes) == 1
+    assert len(slides) == 1
 
     printout = printouts[0]
     assert printout["status"] == "generated_local"
@@ -158,11 +255,28 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert podcast["status"] == "published_active"
     assert podcast["lecture_key"] == "W01L1"
     assert podcast["canonical_source_name"] == "W01L1 - Lewis (1999) [EN].mp3"
+    assert podcast["config_hash"] == "bbbb2222"
     assert podcast["campaign"] == "prompt-refresh"
     assert podcast["queue_job_id"] == "job-1"
     assert podcast["prompt_sha256"] == hashlib.sha256(prompt.encode("utf-8")).hexdigest()
     assert [attempt["status"] for attempt in podcast["attempts"]] == ["failed", "success"]
 
-    assert payload["summary"]["total"] == 3
+    quiz = quizzes[0]
+    assert quiz["status"] == "published_active"
+    assert quiz["quiz_id"] == "48042f6f"
+    assert quiz["config_hash"] == "quiz1234"
+    assert quiz["source_config_hash"] == "bbbb2222"
+    assert quiz["generated_at"] == "2026-05-06T10:30:00Z"
+    assert quiz["public_relative_path"] == "/q/48042f6f.html"
+
+    slide = slides[0]
+    assert slide["status"] == "published_active"
+    assert slide["slide_key"] == "w01l1-lecture-intro"
+    assert slide["public_relative_path"] == "/slides/personlighedspsykologi/W01L1/lecture/intro.pdf"
+
+    assert payload["schema_version"] == 2
+    assert payload["summary"]["total"] == 5
     assert payload["summary"]["by_family"]["podcast"] == 1
+    assert payload["summary"]["by_family"]["quiz"] == 1
+    assert payload["summary"]["by_family"]["slide"] == 1
     assert payload["source_understanding_snapshot"]["course_synthesis_prompt_version"] == "course-synthesis-v1"

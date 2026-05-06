@@ -6,16 +6,18 @@ This document defines the learner-facing output layer for
 Use it for:
 
 - the boundary between learner-facing outputs and upstream engine artifacts
-- the canonical paths for podcasts and printouts
+- the canonical paths for podcasts, printouts, quizzes, and slides
 - the quality contract for evaluating those outputs
 - the current evaluation workflows and gaps
 
 ## Scope
 
-This layer currently includes only two output families:
+This layer currently includes four output families:
 
 - podcasts
 - printouts / reading scaffolds
+- quizzes
+- slides
 
 This layer does not include:
 
@@ -26,7 +28,7 @@ This layer does not include:
 - `course_theory_map.json`
 - `course_concept_graph.json`
 - queue job state, publish manifests, or RSS/manifest plumbing internals except
-  where they are the public delivery surface for podcasts
+  where they are the public delivery surface for learning materials
 
 Those artifacts support the learner-facing layer, but they are not themselves
 study materials.
@@ -50,6 +52,37 @@ Canonical generation-side docs:
 Canonical local generation root:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/`
+
+### Quizzes
+
+Canonical published quiz surfaces:
+
+- `shows/personlighedspsykologi-en/quiz_links.json`
+- `shows/personlighedspsykologi-en/content_manifest.json`
+- public quiz paths under `/q/<quiz_id>.html`
+
+Canonical local generation root when quiz JSON artifacts are present:
+
+- `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/*.json`
+
+Quiz entries should preserve two separate hash notions when available:
+
+- `config_hash` from the generated quiz filename's `{type=quiz ... hash=...}`
+  tag
+- `source_config_hash` from the source audio/podcast filename in
+  `quiz_links.json` when the quiz itself is only represented by a public link
+
+### Slides
+
+Canonical published slide surfaces:
+
+- `shows/personlighedspsykologi-en/slides_catalog.json`
+- `shows/personlighedspsykologi-en/content_manifest.json`
+- public slide paths under `/slides/personlighedspsykologi/<lecture>/<subcategory>/...`
+
+Slides are manually mapped and synced learning materials. They are tracked as
+learner-facing outputs, but the registry should not treat the slide catalog as
+an automatically generated Course Understanding artifact.
 
 ### Printouts
 
@@ -93,10 +126,10 @@ Canonical sync command:
 ```
 
 The ledger records learner-facing outputs, not upstream engine internals. It
-tracks podcast and printout materials with their lecture key, status,
-generated/published timestamps where available, prompt/generator metadata,
-request attempts, auth profile, artifact paths, and the current
-`source_intelligence/` snapshot hashes.
+tracks podcast, printout, quiz, and slide materials with their lecture key,
+status, generated/published timestamps where available, prompt/generator
+metadata, config hashes, request attempts, auth profile, artifact paths, and the
+current `source_intelligence/` snapshot hashes.
 
 Queue-owned publication for `personlighedspsykologi-en` runs the sync after RSS,
 inventory, Spotify, and Freudd content-manifest metadata rebuilds. `push-repo`
@@ -135,6 +168,24 @@ Printout-specific criteria:
 - reading tasks should say what to look for, where to look, and when to stop
 - printouts must not collapse into ordinary summaries with blanks inserted
 - source touchpoints should make opening the real source feel feasible
+
+Quiz-specific criteria:
+
+- quizzes should map to the correct source or lecture-level episode
+- difficulty variants should be distinguishable and not duplicate each other
+- question rationales should correct likely misunderstandings, not only mark
+  answers
+- the registry should retain the quiz-specific config hash when the generated
+  quiz artifact is available
+
+Slide-specific criteria:
+
+- slide decks should be attached to the correct lecture and subcategory
+- seminar and exercise slides should not be mistaken for lecture slides
+- public slide paths should remain stable enough for Freudd links and study
+  workflows
+- manually mapped slides should stay clearly separated from generated
+  Course Understanding artifacts
 
 ## Learner-Fit Note
 
@@ -200,7 +251,7 @@ Current gap:
 
 ## Practical Rule
 
-When discussing this layer, use `learning material outputs` only for the two
+When discussing this layer, use `learning material outputs` only for the four
 learner-facing families above.
 
 When checking whether a prompt or Course Understanding iteration has reached the

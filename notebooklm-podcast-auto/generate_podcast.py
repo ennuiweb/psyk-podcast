@@ -37,7 +37,6 @@ RATE_LIMIT_TOKENS = (
     "rate limit",
     "quota exceeded",
     "resource_exhausted",
-    "429",
     "too many requests",
 )
 AUTH_TOKENS = (
@@ -48,7 +47,6 @@ AUTH_TOKENS = (
     "not logged in",
     "run 'notebooklm login'",
     "redirected to",
-    "403",
 )
 RATE_LIMIT_COOLDOWN_SECONDS = 300
 AUTH_COOLDOWN_SECONDS = 3600
@@ -64,6 +62,23 @@ QUIZ_DIFFICULTIES = ("easy", "medium", "hard")
 QUIZ_CFG_DIFFICULTY_PATTERN = re.compile(
     r"(\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=)([a-z0-9._:+-]+)",
     re.IGNORECASE,
+)
+TRANSIENT_PROFILE_RPC_METHOD_IDS = {
+    RPCMethod.CREATE_ARTIFACT.value,
+    RPCMethod.CREATE_NOTEBOOK.value,
+    RPCMethod.GET_NOTEBOOK.value,
+    RPCMethod.LIST_ARTIFACTS.value,
+    RPCMethod.LIST_NOTEBOOKS.value,
+}
+TRANSIENT_PROFILE_RPC_MESSAGE_TOKENS = (
+    "http 500",
+    "http 502",
+    "http 503",
+    "http 504",
+    "no result found for rpc id",
+    "null result data",
+    "server error",
+    "temporarily unavailable",
 )
 
 
@@ -263,7 +278,11 @@ def _resolve_auth(args: argparse.Namespace) -> tuple[str | None, dict]:
 
 def _is_rate_limit_error(exc: Exception) -> bool:
     message = str(exc).lower()
-    return any(token in message for token in RATE_LIMIT_TOKENS)
+    return any(token in message for token in RATE_LIMIT_TOKENS) or _has_status_code_context(
+        message,
+        429,
+        extra_phrases=("too many requests",),
+    )
 
 
 def _is_auth_error(exc: Exception) -> bool:
@@ -272,23 +291,30 @@ def _is_auth_error(exc: Exception) -> bool:
         if rpc_code in (401, 403):
             return True
     message = str(exc).lower()
-    return any(token in message for token in AUTH_TOKENS)
+    return any(token in message for token in AUTH_TOKENS) or _has_status_code_context(
+        message,
+        401,
+        extra_phrases=("unauthorized",),
+    ) or _has_status_code_context(
+        message,
+        403,
+        extra_phrases=("forbidden",),
+    )
 
 
 def _is_profile_rotation_error(exc: Exception) -> bool:
     if not isinstance(exc, RPCError):
         return False
 
-    if exc.method_id != RPCMethod.CREATE_NOTEBOOK.value:
+    if exc.method_id not in TRANSIENT_PROFILE_RPC_METHOD_IDS:
         return False
 
     if exc.rpc_code is not None:
-        return True
+        return exc.rpc_code >= 500 or exc.rpc_code in (408, 409, 429)
 
     message = str(exc).lower()
-    return (
-        "null result data" in message
-        or "no result found for rpc id" in message
+    return any(
+        token in message for token in TRANSIENT_PROFILE_RPC_MESSAGE_TOKENS
     )
 
 
@@ -311,6 +337,13 @@ def _should_rotate_profile(exc: Exception) -> bool:
         or _is_auth_error(exc)
         or _is_profile_rotation_error(exc)
     )
+
+
+def _has_status_code_context(message: str, code: int, *, extra_phrases: tuple[str, ...] = ()) -> bool:
+    code_pattern = rf"(?:http|status|code|rpc[_ ]code)\s*[:=]?\s*{code}\b"
+    if re.search(code_pattern, message):
+        return True
+    return any(f"{code} {phrase}" in message for phrase in extra_phrases)
 
 
 def _order_profile_names(profiles: dict[str, str], preferred: str | None) -> list[str]:
@@ -669,6 +702,38 @@ def _build_request_payload(
     if args.artifact_type == "report":
         payload["report_format"] = args.report_format
     return payload
+
+
+def _write_request_log(
+    output_path: Path,
+    *,
+    created_at: str,
+    notebook_id: str,
+    notebook_title: str,
+    artifact_id: str | None,
+    args: argparse.Namespace,
+    sources: list[dict],
+    auth_meta: dict,
+    rotation_attempts: list[dict],
+) -> Path:
+    request_log = output_path.with_suffix(output_path.suffix + ".request.json")
+    payload = _build_request_payload(
+        created_at=created_at,
+        notebook_id=notebook_id,
+        notebook_title=notebook_title,
+        artifact_id=artifact_id,
+        output_path=output_path,
+        args=args,
+        sources=sources,
+        auth_meta=auth_meta,
+    )
+    if rotation_attempts:
+        payload["rotation_attempts"] = rotation_attempts
+    request_log.write_text(
+        json.dumps(payload, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return request_log
 
 
 def _print_profiles(args: argparse.Namespace) -> None:
@@ -1371,6 +1436,19 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             _save_profile_state(state_path, profile_state)
             return 2
 
+        request_log_created_at = datetime.now(timezone.utc).isoformat()
+        _write_request_log(
+            output_path,
+            created_at=request_log_created_at,
+            notebook_id=nb.id,
+            notebook_title=nb.title,
+            artifact_id=status.task_id,
+            args=args,
+            sources=sources,
+            auth_meta=auth_meta,
+            rotation_attempts=rotation_attempts,
+        )
+
         if not args.wait:
             print(
                 "Generation started (non-blocking). "
@@ -1388,7 +1466,6 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                 f"{download_cmd}"
             )
 
-            request_log = output_path.with_suffix(output_path.suffix + ".request.json")
             if auth_meta.get("profile"):
                 _record_profile_result(
                     profile_state,
@@ -1397,22 +1474,6 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                     error_type=None,
                     cooldown_seconds=None,
                 )
-            payload = _build_request_payload(
-                created_at=datetime.now(timezone.utc).isoformat(),
-                notebook_id=nb.id,
-                notebook_title=nb.title,
-                artifact_id=status.task_id,
-                output_path=output_path,
-                args=args,
-                sources=sources,
-                auth_meta=auth_meta,
-            )
-            if rotation_attempts:
-                payload["rotation_attempts"] = rotation_attempts
-            request_log.write_text(
-                json.dumps(payload, indent=2) + "\n",
-                encoding="utf-8",
-            )
             _save_profile_state(state_path, profile_state)
             return 0
 
@@ -1459,7 +1520,6 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
             else:
                 raise RuntimeError(f"Unsupported artifact type: {args.artifact_type}")
 
-        request_log = output_path.with_suffix(output_path.suffix + ".request.json")
         if auth_meta.get("profile"):
             _record_profile_result(
                 profile_state,
@@ -1468,21 +1528,16 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                 error_type=None,
                 cooldown_seconds=None,
             )
-        payload = _build_request_payload(
-            created_at=datetime.now(timezone.utc).isoformat(),
+        _write_request_log(
+            output_path,
+            created_at=request_log_created_at,
             notebook_id=nb.id,
             notebook_title=nb.title,
             artifact_id=final.task_id,
-            output_path=output_path,
             args=args,
             sources=sources,
             auth_meta=auth_meta,
-        )
-        if rotation_attempts:
-            payload["rotation_attempts"] = rotation_attempts
-        request_log.write_text(
-            json.dumps(payload, indent=2) + "\n",
-            encoding="utf-8",
+            rotation_attempts=rotation_attempts,
         )
 
         print(f"Artifact saved to: {output_path}")

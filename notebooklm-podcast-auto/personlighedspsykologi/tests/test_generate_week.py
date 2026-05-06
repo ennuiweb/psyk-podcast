@@ -1231,6 +1231,53 @@ class GenerateWeekTests(unittest.TestCase):
 
             self.assertIn("timed out before writing a usable request log", str(ctx.exception))
 
+    def test_run_generate_nonzero_continues_when_request_log_has_artifact(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_path = Path(tmpdir) / "episode.mp3"
+            request_log = output_path.with_suffix(output_path.suffix + ".request.json")
+
+            def fake_run(*_args, **_kwargs):
+                request_log.write_text(json.dumps({"artifact_id": "artifact-123"}), encoding="utf-8")
+                return mock.Mock(returncode=1)
+
+            with mock.patch.object(mod.subprocess, "run", side_effect=fake_run):
+                mod.run_generate(
+                    Path("/usr/bin/python3"),
+                    Path("/tmp/generate_podcast.py"),
+                    sources_file=None,
+                    source_path=Path("/tmp/source.pdf"),
+                    notebook_title="Notebook",
+                    instructions="Prompt",
+                    artifact_type="audio",
+                    audio_format="deep-dive",
+                    audio_length="long",
+                    infographic_orientation=None,
+                    infographic_detail=None,
+                    language="en",
+                    quiz_quantity=None,
+                    quiz_difficulty=None,
+                    quiz_format=None,
+                    output_path=output_path,
+                    wait=True,
+                    skip_existing=True,
+                    source_timeout=None,
+                    generation_timeout=None,
+                    generator_timeout=1,
+                    artifact_retries=1,
+                    artifact_retry_backoff=5.0,
+                    storage=None,
+                    profile=None,
+                    preferred_profile=None,
+                    profile_priority=None,
+                    profiles_file=None,
+                    exclude_profiles=None,
+                    rotate_on_rate_limit=True,
+                    ensure_sources_ready=True,
+                    append_profile_to_notebook_title=True,
+                    reuse_notebook=False,
+                )
+
     def test_migrate_legacy_weekly_overview_outputs_renames_files(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

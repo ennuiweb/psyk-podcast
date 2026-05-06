@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+import json
+import os
+from pathlib import Path
 import subprocess
+import sys
 
 from notebooklm_queue.github_alerts import build_comment_body, build_title, deliver_alert_to_github, ensure_issue
 
@@ -76,3 +80,47 @@ def test_deliver_alert_to_github_comments_on_existing_issue() -> None:
     assert delivered == {"repo": "ennuiweb/psyk-podcast", "issue_number": 7, "created": False}
     assert commands and commands[0][:3] == ["gh", "issue", "comment"]
     assert build_comment_body(payload) == commands[0][-1]
+
+
+def test_handle_queue_alert_wrapper_executes_with_repo_root_import_path(tmp_path: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[2]
+    wrapper = repo_root / "scripts" / "handle_queue_alert_github.py"
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_gh = fake_bin / "gh"
+    fake_gh.write_text(
+        "#!/bin/sh\n"
+        "if [ \"$1\" = \"issue\" ] && [ \"$2\" = \"list\" ]; then\n"
+        "  echo '[]'\n"
+        "  exit 0\n"
+        "fi\n"
+        "if [ \"$1\" = \"issue\" ] && [ \"$2\" = \"create\" ]; then\n"
+        "  echo 'https://github.com/ennuiweb/psyk-podcast/issues/99'\n"
+        "  exit 0\n"
+        "fi\n"
+        "echo \"unexpected gh invocation: $@\" >&2\n"
+        "exit 1\n",
+        encoding="utf-8",
+    )
+    fake_gh.chmod(0o755)
+
+    env = os.environ.copy()
+    env["PATH"] = f"{fake_bin}{os.pathsep}{env['PATH']}"
+    env.pop("PYTHONPATH", None)
+
+    completed = subprocess.run(
+        [sys.executable, str(wrapper)],
+        input=json.dumps(_payload()),
+        text=True,
+        capture_output=True,
+        cwd=repo_root,
+        env=env,
+        check=False,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert json.loads(completed.stdout) == {
+        "repo": "ennuiweb/psyk-podcast",
+        "issue_number": 99,
+        "created": True,
+    }

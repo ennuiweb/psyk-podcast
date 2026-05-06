@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import smtplib
 import socket
 import subprocess
@@ -26,13 +27,11 @@ AUTH_ERROR_TOKENS = (
     "not logged in",
     "run 'notebooklm login'",
     "redirected to",
-    "403",
 )
 RATE_LIMIT_ERROR_TOKENS = (
     "rate limit",
     "quota exceeded",
     "resource_exhausted",
-    "429",
     "too many requests",
 )
 
@@ -100,12 +99,31 @@ def _resend_api_url() -> str:
 
 def _looks_like_auth_error(text: str | None) -> bool:
     lowered = _lowered(text)
-    return any(token in lowered for token in AUTH_ERROR_TOKENS)
+    return any(token in lowered for token in AUTH_ERROR_TOKENS) or _has_status_code_context(
+        lowered,
+        401,
+        extra_phrases=("unauthorized",),
+    ) or _has_status_code_context(
+        lowered,
+        403,
+        extra_phrases=("forbidden",),
+    )
 
 
 def _looks_like_rate_limit(text: str | None) -> bool:
     lowered = _lowered(text)
-    return any(token in lowered for token in RATE_LIMIT_ERROR_TOKENS)
+    return any(token in lowered for token in RATE_LIMIT_ERROR_TOKENS) or _has_status_code_context(
+        lowered,
+        429,
+        extra_phrases=("too many requests",),
+    )
+
+
+def _has_status_code_context(text: str, code: int, *, extra_phrases: tuple[str, ...] = ()) -> bool:
+    code_pattern = rf"(?:http|status|code|rpc[_ ]code)\s*[:=]?\s*{code}\b"
+    if re.search(code_pattern, text):
+        return True
+    return any(f"{code} {phrase}" in text for phrase in extra_phrases)
 
 
 def classify_failure_alert(

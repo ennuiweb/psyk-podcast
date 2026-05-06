@@ -64,6 +64,17 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertTrue(mod._should_rotate_profile(exc))
         self.assertEqual(mod._classify_error(exc), "profile_error")
 
+    def test_classifies_create_artifact_missing_result_as_profile_error(self):
+        mod = _load_module()
+        exc = RPCError(
+            "RPC R7cb6c returned null result data (possible server error or parameter mismatch)",
+            method_id=RPCMethod.CREATE_ARTIFACT.value,
+        )
+
+        self.assertTrue(mod._is_profile_rotation_error(exc))
+        self.assertTrue(mod._should_rotate_profile(exc))
+        self.assertEqual(mod._classify_error(exc), "profile_error")
+
     def test_error_details_include_rpc_metadata(self):
         mod = _load_module()
         exc = RPCError(
@@ -367,6 +378,88 @@ class GeneratePodcastTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "boom"):
             asyncio.run(mod._resolve_notebook(client, "Target", reuse=False))
         self.assertFalse(client.notebooks.deleted)
+
+    def test_wait_mode_persists_request_log_before_waiting_for_completion(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_path = Path(tmpdir) / "episode.mp3"
+            wait_client_seen_log: dict[str, object] = {}
+            output_exists = False
+
+            class FakeClientContext:
+                def __init__(self, client):
+                    self._client = client
+
+                async def __aenter__(self):
+                    return self._client
+
+                async def __aexit__(self, exc_type, exc, tb):
+                    return False
+
+            class FakeArtifacts:
+                async def wait_for_completion(self, notebook_id, artifact_id, timeout, initial_interval):
+                    request_log = output_path.with_suffix(output_path.suffix + ".request.json")
+                    wait_client_seen_log["exists"] = request_log.exists()
+                    wait_client_seen_log["payload"] = json.loads(request_log.read_text(encoding="utf-8"))
+                    return SimpleNamespace(is_complete=True, task_id=artifact_id)
+
+                async def download_audio(self, notebook_id, output, artifact_id):
+                    Path(output).write_bytes(b"audio")
+
+            fake_client = SimpleNamespace(artifacts=FakeArtifacts())
+            fake_status = SimpleNamespace(task_id="artifact-123")
+            fake_notebook = SimpleNamespace(id="nb-123", title="Notebook")
+            from_storage_calls: list[Path | None] = []
+
+            async def fake_from_storage(storage_path):
+                from_storage_calls.append(storage_path)
+                return FakeClientContext(fake_client)
+
+            args = SimpleNamespace(
+                output=str(output_path),
+                source=[str(Path(tmpdir) / "source.pdf")],
+                sources_file=None,
+                skip_existing=False,
+                notebook_title="Notebook",
+                append_profile_to_notebook_title=False,
+                reuse_notebook=False,
+                source_timeout=30,
+                ensure_sources_ready=False,
+                artifact_type="audio",
+                instructions="Prompt",
+                audio_format="deep-dive",
+                audio_length="long",
+                language="en",
+                artifact_retries=0,
+                artifact_retry_backoff=5.0,
+                infographic_orientation=None,
+                infographic_detail=None,
+                quiz_quantity=None,
+                quiz_difficulty=None,
+                quiz_format="json",
+                report_format="study-guide",
+                wait=True,
+                generation_timeout=30,
+                initial_interval=1,
+                rotate_on_rate_limit=True,
+            )
+
+            with patch.object(mod, "_load_sources", return_value=[{"kind": "file", "value": "source.pdf"}]):
+                with patch.object(mod, "_build_auth_candidates", return_value=[(None, {"profile": "good", "source": "profile"})]):
+                    with patch.object(mod.NotebookLMClient, "from_storage", side_effect=fake_from_storage):
+                        with patch.object(mod, "_resolve_notebook", return_value=fake_notebook):
+                            with patch.object(mod, "_add_sources", return_value=None):
+                                with patch.object(mod, "_generate_audio_with_retry", return_value=fake_status):
+                                    exit_code = asyncio.run(mod._generate_podcast(args))
+                                    output_exists = output_path.exists()
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(from_storage_calls, [None, None])
+        self.assertTrue(wait_client_seen_log["exists"])
+        payload = wait_client_seen_log["payload"]
+        self.assertEqual(payload["artifact_id"], "artifact-123")
+        self.assertEqual(payload["notebook_id"], "nb-123")
+        self.assertTrue(output_exists)
 
 
 if __name__ == "__main__":

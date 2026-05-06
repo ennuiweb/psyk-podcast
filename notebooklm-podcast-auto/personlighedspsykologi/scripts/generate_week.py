@@ -1907,7 +1907,6 @@ RATE_LIMIT_TOKENS = (
     "rate limit",
     "quota exceeded",
     "resource_exhausted",
-    "429",
     "too many requests",
 )
 AUTH_TOKENS = (
@@ -1918,29 +1917,48 @@ AUTH_TOKENS = (
     "not logged in",
     "run 'notebooklm login'",
     "redirected to",
-    "403",
 )
 PROFILE_ERROR_TOKENS = (
     "no result found for rpc id: ccqfvf",
     "rpc ccqfvf returned null result data",
     "profile-scoped notebook creation failure",
+    "profile-scoped notebooklm rpc failure",
 )
 AUTH_COOLDOWN_SECONDS = 3600
 
 
 def is_rate_limit_error(message: str) -> bool:
     lowered = message.lower()
-    return any(token in lowered for token in RATE_LIMIT_TOKENS)
+    return any(token in lowered for token in RATE_LIMIT_TOKENS) or _has_status_code_context(
+        lowered,
+        429,
+        extra_phrases=("too many requests",),
+    )
 
 
 def is_auth_error(message: str) -> bool:
     lowered = message.lower()
-    return any(token in lowered for token in AUTH_TOKENS)
+    return any(token in lowered for token in AUTH_TOKENS) or _has_status_code_context(
+        lowered,
+        401,
+        extra_phrases=("unauthorized",),
+    ) or _has_status_code_context(
+        lowered,
+        403,
+        extra_phrases=("forbidden",),
+    )
 
 
 def is_profile_error(message: str) -> bool:
     lowered = message.lower()
     return any(token in lowered for token in PROFILE_ERROR_TOKENS)
+
+
+def _has_status_code_context(message: str, code: int, *, extra_phrases: tuple[str, ...] = ()) -> bool:
+    code_pattern = rf"(?:http|status|code|rpc[_ ]code)\s*[:=]?\s*{code}\b"
+    if re.search(code_pattern, message):
+        return True
+    return any(f"{code} {phrase}" in message for phrase in extra_phrases)
 
 
 def update_profile_cooldowns(
@@ -2497,6 +2515,12 @@ def run_generate(
             f"for {output_path}"
         ) from exc
     if result.returncode != 0:
+        if request_log_has_artifact(output_path):
+            print(
+                "Generator exited non-zero, but request log exists with artifact_id; "
+                f"continuing so download can recover it later: {output_path}"
+            )
+            return
         raise RuntimeError(f"Generator failed with exit code {result.returncode}")
 
 

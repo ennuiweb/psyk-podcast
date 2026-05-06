@@ -99,6 +99,7 @@ Notes:
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns, and continues automatically when NotebookLM profile quota becomes available again.
 - `serve-show` now waits only when `retry_scheduled` jobs are the sole remaining active backlog. Mixed blocked+retry backlog or invalid retry timestamps stop the worker for manual intervention instead of hiding the problem behind more sleeping.
+- Keep `NOTEBOOKLM_PROFILE_PRIORITY` ordered so accounts that can still create notebooks and artifacts are tried first. The generator now rotates on transient NotebookLM create/list/get RPC failures as well as explicit auth/rate-limit faults, but a good priority order still reduces churn during partial account outages.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
 - The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run while waiting through retry windows.
 

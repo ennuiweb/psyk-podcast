@@ -250,6 +250,35 @@ def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -
     assert delivered["kind"] == "auth_stale"
 
 
+def test_execute_job_does_not_misclassify_decimal_timing_as_auth_error(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\nprint('RPC CREATE_ARTIFACT failed after 0.403s', file=sys.stderr)\nraise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_ALERT_DEDUP_SECONDS", "0")
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert "latest_alert_kind" not in updated["artifacts"]["execution"]
+
+
 def test_execute_job_does_not_alert_rate_limit_before_threshold(tmp_path: Path, monkeypatch) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(

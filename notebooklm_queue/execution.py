@@ -27,7 +27,6 @@ RATE_LIMIT_ERROR_TOKENS = (
     "rate limit",
     "quota exceeded",
     "resource_exhausted",
-    "429",
     "too many requests",
 )
 TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
@@ -55,7 +54,16 @@ class ExecutionOptions:
 
 def _looks_like_rate_limit(message: str | None) -> bool:
     text = str(message or "").lower()
-    return any(token in text for token in RATE_LIMIT_ERROR_TOKENS)
+    return any(token in text for token in RATE_LIMIT_ERROR_TOKENS) or any(
+        token in text
+        for token in (
+            "http 429",
+            "status 429",
+            "code 429",
+            "rpc_code=429",
+            "429 too many requests",
+        )
+    )
 
 
 def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:

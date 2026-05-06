@@ -2774,6 +2774,41 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
         )
 
+    def test_build_episode_entry_prepends_regenerated_marker_when_configured(self):
+        mod = _load_feed_module()
+        file_entry = {
+            "id": "regenerated-file",
+            "name": "W10L2 - Davies (1990) [EN].mp3",
+            "createdTime": "2026-04-14T10:00:00+00:00",
+        }
+        episode = mod.build_episode_entry(
+            file_entry=file_entry,
+            feed_config={
+                "title": "Personlighedspsykologi (EN)",
+                "link": "https://example.com",
+                "description": "Test feed",
+                "language": "en",
+                "semester_week_start_date": "2026-02-02",
+                "semester_week_label": "Semesteruge",
+                "semester_week_title_label": "Uge",
+                "semester_week_number_source": "lecture_key",
+                "title_blocks": ["course_week_lecture", "subject"],
+                "audio_category_prefixes": {
+                    "podcast": "",
+                    "kort_podcast": "[Kort]",
+                    "lydbog": "[Lydbog]",
+                },
+            },
+            overrides={},
+            public_link_template="https://example.com/{file_id}",
+            folder_names=["W10L2"],
+            active_b_variant_file_ids={"regenerated-file"},
+            regen_marker="✦",
+            regen_marker_position="prefix",
+        )
+
+        self.assertEqual(episode["title"], "✦ U10F2 · Davies (1990)")
+
     def test_missing_topic_with_topic_only_block_falls_back_to_descriptor_subject(self):
         mod = _load_feed_module()
         file_entry = {

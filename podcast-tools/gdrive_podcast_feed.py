@@ -458,6 +458,21 @@ def _variant_matches_file_entry(variant: Dict[str, Any], file_entry: Dict[str, A
     return bool(candidates & values)
 
 
+def _apply_regeneration_marker(title_value: str, marker: str, position: str) -> str:
+    title = str(title_value or "").strip()
+    resolved_marker = str(marker or "").strip()
+    if not title or not resolved_marker:
+        return title
+    if title.startswith(f"{resolved_marker} ") or title == resolved_marker:
+        return title
+    if title.endswith(f" {resolved_marker}"):
+        title = title[: -len(resolved_marker)].rstrip()
+    normalized_position = str(position or "").strip().lower()
+    if normalized_position in {"prefix", "prepend", "leading"}:
+        return f"{resolved_marker} {title}"
+    return f"{title} {resolved_marker}"
+
+
 def _registry_selection_for_file(
     file_entry: Dict[str, Any],
     registry_entries_by_lid: Dict[str, Dict[str, Any]],
@@ -3355,6 +3370,7 @@ def build_episode_entry(
     weekly_overview_summaries: Optional[Dict[str, Any]] = None,
     active_b_variant_file_ids: Optional[Set[str]] = None,
     regen_marker: Optional[str] = None,
+    regen_marker_position: str = "suffix",
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -3667,7 +3683,7 @@ def build_episode_entry(
         and active_b_variant_file_ids
         and str(file_entry.get("id") or "").strip() in active_b_variant_file_ids
     ):
-        title_value = f"{title_value} {regen_marker}"
+        title_value = _apply_regeneration_marker(title_value, regen_marker, regen_marker_position)
     meta["title"] = title_value
     if suppress_week_prefix:
         meta.pop("suppress_week_prefix", None)
@@ -4198,10 +4214,12 @@ def main() -> None:
     # and optionally marks active B variants in the title.
     active_b_variant_file_ids: Optional[Set[str]] = None
     regen_marker: Optional[str] = None
+    regen_marker_position = "suffix"
     registry_entries_by_lid: Dict[str, Dict[str, Any]] = {}
     regen_marker_cfg = config.get("regeneration_marker")
     if isinstance(regen_marker_cfg, dict) and regen_marker_cfg.get("enabled", True):
         regen_marker = str(regen_marker_cfg.get("marker") or "✦").strip() or "✦"
+        regen_marker_position = str(regen_marker_cfg.get("position") or "suffix").strip().lower()
         regen_file = regen_marker_cfg.get("file")
         if regen_file:
             regen_path = Path(str(regen_file)).expanduser()
@@ -4421,6 +4439,7 @@ def main() -> None:
                 weekly_overview_summaries=weekly_overview_summaries,
                 active_b_variant_file_ids=active_b_variant_file_ids,
                 regen_marker=regen_marker,
+                regen_marker_position=regen_marker_position,
             )
         )
 

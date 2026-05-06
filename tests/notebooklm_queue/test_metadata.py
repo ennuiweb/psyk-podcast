@@ -341,6 +341,13 @@ def test_rebuild_repo_metadata_personligheds_runs_strict_manual_guard_phases(tmp
     ]
     validate_command = dict(commands)["validate_manual_summaries"]
     assert "--fail-on-validation-issues" in validate_command
+    sync_registry_command = dict(commands)["sync_regeneration_registry"]
+    assert "--media-manifest" in sync_registry_command
+    assert (
+        sync_registry_command[sync_registry_command.index("--media-manifest") + 1]
+        == "shows/personlighedspsykologi-en/media_manifest.json"
+    )
+    assert sync_registry_command[sync_registry_command.index("--activate-lecture") + 1] == "W1L1"
     audit_command = dict(commands)["audit_slide_briefs"]
     assert "--warn-only" not in audit_command
 

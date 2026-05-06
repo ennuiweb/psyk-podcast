@@ -132,6 +132,7 @@ def rebuild_repo_metadata(
             subject_slug=adapter.subject_slug,
             show_config_path=resolved_show_config_path,
             artifact_paths=artifact_paths,
+            job=job,
         ):
             result = _run_phase(
                 name=phase["name"],
@@ -292,6 +293,7 @@ def _phase_definitions(
     subject_slug: str,
     show_config_path: Path,
     artifact_paths: ShowArtifactPaths,
+    job: dict[str, Any],
 ) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
@@ -354,17 +356,31 @@ def _phase_definitions(
                 ),
             }
         )
+        sync_registry_command = [
+            python,
+            str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_regeneration_registry.py"),
+            "--inventory",
+            str(artifact_paths.inventory_path.relative_to(repo_root)),
+            "--registry",
+            "shows/personlighedspsykologi-en/regeneration_registry.json",
+        ]
+        if artifact_paths.media_manifest_path is not None:
+            sync_registry_command.extend(
+                [
+                    "--media-manifest",
+                    str(artifact_paths.media_manifest_path.relative_to(repo_root)),
+                ]
+            )
+        lecture_key = str(job.get("lecture_key") or "").strip()
+        if lecture_key:
+            sync_registry_command.extend(["--activate-lecture", lecture_key])
+        activation_campaign = str(job.get("campaign") or "").strip()
+        if activation_campaign:
+            sync_registry_command.extend(["--activation-campaign", activation_campaign])
         phases.append(
             {
                 "name": "sync_regeneration_registry",
-                "command": [
-                    python,
-                    str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_regeneration_registry.py"),
-                    "--inventory",
-                    str(artifact_paths.inventory_path.relative_to(repo_root)),
-                    "--registry",
-                    "shows/personlighedspsykologi-en/regeneration_registry.json",
-                ],
+                "command": sync_registry_command,
             }
         )
     phases.append(

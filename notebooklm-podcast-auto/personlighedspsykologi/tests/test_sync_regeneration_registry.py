@@ -117,6 +117,76 @@ class SyncRegenerationRegistryTests(unittest.TestCase):
         self.assertEqual(entry["variants"]["B"]["config_hash"], "newhash")
         self.assertEqual(entry["variants"]["B"]["staging_drive_id"], "drive-b")
 
+    def test_sync_registry_auto_activates_new_media_manifest_item_for_requested_lecture(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            inventory_path = root / "episode_inventory.json"
+            registry_path = root / "regeneration_registry.json"
+            media_manifest_path = root / "media_manifest.r2.json"
+            inventory_path.write_text(
+                json.dumps(
+                    {
+                        "episodes": [
+                            {
+                                "episode_key": "drive-a",
+                                "title": "U10F2 · Davies (1990)",
+                                "source_name": (
+                                    "W10L2 - Davies (1990) [EN] "
+                                    "{type=audio lang=en format=deep-dive length=long hash=oldhash}.mp3"
+                                ),
+                                "published_at": "2026-04-14T10:00:00+02:00",
+                                "audio_url": "https://example.com/a.mp3",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            media_manifest_path.write_text(
+                json.dumps(
+                    {
+                        "items": [
+                            {
+                                "object_key": (
+                                    "shows/personlighedspsykologi-en/W10L2/"
+                                    "W10L2 - Davies (1990) [EN] "
+                                    "{type=audio lang=en format=deep-dive length=long hash=newhash}.mp3"
+                                ),
+                                "source_name": (
+                                    "W10L2 - Davies (1990) [EN] "
+                                    "{type=audio lang=en format=deep-dive length=long hash=newhash}.mp3"
+                                ),
+                                "artifact_type": "audio",
+                                "published_at": "2026-05-06T12:00:00Z",
+                                "public_url": "https://example.com/b.mp3",
+                                "sha256": "abc123",
+                                "size": 123,
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            payload = mod.sync_registry(
+                inventory_path,
+                registry_path,
+                "prompt-rollout-2026-04",
+                media_manifest_path=media_manifest_path,
+                activate_lecture_keys=["W10L2"],
+                activation_campaign="course-understanding-prompt-refresh-2026-05-06",
+            )
+
+        entry = payload["entries"][0]
+        self.assertEqual(entry["active_variant"], "B")
+        self.assertEqual(entry["rollout"]["state"], "b_active")
+        self.assertEqual(entry["rollout"]["campaign"], "course-understanding-prompt-refresh-2026-05-06")
+        self.assertEqual(entry["variants"]["A"]["config_hash"], "oldhash")
+        self.assertEqual(entry["variants"]["B"]["config_hash"], "newhash")
+        self.assertEqual(entry["variants"]["B"]["audio_url"], "https://example.com/b.mp3")
+        self.assertEqual(entry["variants"]["B"]["review_outcome"], "queue_auto_activated")
+
     def test_sync_registry_marks_tts_out_of_scope(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

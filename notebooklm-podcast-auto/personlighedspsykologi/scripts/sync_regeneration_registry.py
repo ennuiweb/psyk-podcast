@@ -6,6 +6,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(REPO_ROOT) not in sys.path:
@@ -105,6 +106,62 @@ def build_baseline_variant(episode: dict) -> dict:
         "published_at": episode.get("published_at"),
         "title": episode.get("title"),
         "audio_sha256": None,
+    }
+
+
+def media_manifest_source_name(item: dict) -> str:
+    source_name = str(item.get("source_name") or item.get("name") or "").strip()
+    if source_name:
+        return source_name
+    object_key = str(
+        item.get("object_key")
+        or item.get("source_storage_key")
+        or item.get("key")
+        or item.get("source_path")
+        or ""
+    ).strip()
+    return Path(object_key).name if object_key else ""
+
+
+def media_manifest_episode_key(item: dict) -> str | None:
+    for key in (
+        "object_key",
+        "source_storage_key",
+        "key",
+        "episode_key",
+        "source_drive_file_id",
+        "source_path",
+    ):
+        value = str(item.get(key) or "").strip()
+        if value:
+            return value
+    return None
+
+
+def build_regenerated_variant(item: dict, *, title: object) -> dict:
+    source_name = media_manifest_source_name(item)
+    tags = parse_config_tags(source_name)
+    return {
+        "status": "published",
+        "source_name": source_name,
+        "canonical_source_name": canonical_source_name(source_name),
+        "config_tags": tags,
+        "config_hash": tags.get("hash"),
+        "episode_key": media_manifest_episode_key(item),
+        "audio_url": item.get("public_url") or item.get("audio_url"),
+        "published_at": item.get("published_at") or item.get("createdTime") or item.get("modified_at"),
+        "title": title,
+        "local_audio_path": None,
+        "staging_drive_id": None,
+        "audio_sha256": item.get("sha256") or item.get("audio_sha256"),
+        "generated_at": None,
+        "uploaded_at": item.get("published_at") or item.get("uploaded_at"),
+        "registered_at": utc_now(),
+        "transcribed_at": None,
+        "judged_at": None,
+        "review_outcome": "queue_auto_activated",
+        "size_bytes": item.get("size"),
+        "drive_md5": None,
     }
 
 
@@ -229,6 +286,121 @@ def should_preserve_stale_entry(entry: dict) -> bool:
     return False
 
 
+def _normalize_lecture_keys(values: Iterable[str] | None) -> set[str]:
+    return {str(value or "").strip().upper() for value in (values or []) if str(value or "").strip()}
+
+
+def _media_manifest_candidates(
+    media_manifest_path: Path | None,
+    activate_lecture_keys: set[str],
+) -> dict[str, list[dict]]:
+    if media_manifest_path is None or not activate_lecture_keys or not media_manifest_path.exists():
+        return {}
+    payload = read_json(media_manifest_path)
+    items = payload.get("items")
+    if not isinstance(items, list):
+        return {}
+    by_lid: dict[str, list[dict]] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        artifact_type = str(item.get("artifact_type") or "audio").strip().lower()
+        if artifact_type and artifact_type != "audio":
+            continue
+        source_name = media_manifest_source_name(item)
+        if not source_name:
+            continue
+        lecture_key = extract_lecture_key(source_name).upper()
+        if lecture_key not in activate_lecture_keys:
+            continue
+        lid = logical_episode_id(source_name)
+        by_lid.setdefault(lid, []).append(item)
+    return by_lid
+
+
+def _candidate_matches_declared_variant(candidate: dict, variants: dict) -> bool:
+    source_name = media_manifest_source_name(candidate)
+    episode_key = media_manifest_episode_key(candidate)
+    for slot in ("A", "B"):
+        variant = variants.get(slot) if isinstance(variants.get(slot), dict) else {}
+        if not variant:
+            continue
+        if source_name and source_name == str(variant.get("source_name") or "").strip():
+            return True
+        if episode_key and episode_key == str(variant.get("episode_key") or "").strip():
+            return True
+    return False
+
+
+def _candidate_sort_key(candidate: dict) -> tuple[str, str, str]:
+    return (
+        str(candidate.get("published_at") or candidate.get("modified_at") or candidate.get("createdTime") or ""),
+        media_manifest_source_name(candidate),
+        media_manifest_episode_key(candidate) or "",
+    )
+
+
+def activate_regenerated_variants(
+    entries: list[dict],
+    *,
+    media_manifest_path: Path | None,
+    activate_lecture_keys: Iterable[str] | None,
+    activation_campaign: str | None,
+) -> None:
+    normalized_lecture_keys = _normalize_lecture_keys(activate_lecture_keys)
+    candidates_by_lid = _media_manifest_candidates(media_manifest_path, normalized_lecture_keys)
+    if not candidates_by_lid:
+        return
+
+    activated_at = utc_now()
+    for entry in entries:
+        logical_id = str(entry.get("logical_episode_id") or "").strip()
+        candidates = candidates_by_lid.get(logical_id) if logical_id else None
+        if not candidates:
+            continue
+        variants = entry.get("variants") if isinstance(entry.get("variants"), dict) else {}
+        if not isinstance(variants, dict):
+            variants = {}
+        new_candidates = [
+            candidate for candidate in candidates if not _candidate_matches_declared_variant(candidate, variants)
+        ]
+        if not new_candidates:
+            continue
+        selected = sorted(new_candidates, key=_candidate_sort_key)[-1]
+        existing_b = variants.get("B") if isinstance(variants.get("B"), dict) else {}
+        updated_b = default_variant("B")
+        updated_b.update(existing_b)
+        history = updated_b.get("history")
+        if not isinstance(history, list):
+            history = []
+        history = list(history)
+        history.append(
+            {
+                "at": activated_at,
+                "event": "queue_auto_activated",
+                "source_name": media_manifest_source_name(selected),
+                "episode_key": media_manifest_episode_key(selected),
+                "campaign": activation_campaign,
+            }
+        )
+        updated_b.update(build_regenerated_variant(selected, title=entry.get("title")))
+        updated_b["history"] = history
+        variants["B"] = updated_b
+        if not isinstance(variants.get("A"), dict):
+            variants["A"] = default_variant("A")
+        entry["variants"] = variants
+        entry["active_variant"] = "B"
+        rollout = dict(default_rollout(str(entry.get("prompt_type") or "unknown"), activation_campaign or ""))
+        existing_rollout = entry.get("rollout")
+        if isinstance(existing_rollout, dict):
+            rollout.update(existing_rollout)
+        rollout["in_scope"] = str(entry.get("prompt_type") or "") != "tts"
+        rollout["campaign"] = activation_campaign or rollout.get("campaign")
+        rollout["state"] = "b_active" if rollout["in_scope"] else "out_of_scope"
+        rollout["activated_at"] = activated_at if rollout["in_scope"] else None
+        entry["rollout"] = rollout
+
+
 def entry_sort_key(entry: dict) -> tuple:
     prompt_type = str(entry.get("prompt_type") or "unknown")
     lecture_key = str(entry.get("lecture_key") or "")
@@ -236,7 +408,15 @@ def entry_sort_key(entry: dict) -> tuple:
     return (PROMPT_TYPE_ORDER.get(prompt_type, 99), lecture_key.casefold(), logical_id.casefold())
 
 
-def sync_registry(inventory_path: Path, registry_path: Path, campaign: str) -> dict:
+def sync_registry(
+    inventory_path: Path,
+    registry_path: Path,
+    campaign: str,
+    *,
+    media_manifest_path: Path | None = None,
+    activate_lecture_keys: Iterable[str] | None = None,
+    activation_campaign: str | None = None,
+) -> dict:
     inventory = read_json(inventory_path)
     existing = read_json(registry_path) if registry_path.exists() else {}
     existing_entries = existing.get("entries") if isinstance(existing, dict) else None
@@ -267,6 +447,12 @@ def sync_registry(inventory_path: Path, registry_path: Path, campaign: str) -> d
         stale["inventory_present"] = False
         synced_entries.append(stale)
 
+    activate_regenerated_variants(
+        synced_entries,
+        media_manifest_path=media_manifest_path,
+        activate_lecture_keys=activate_lecture_keys,
+        activation_campaign=activation_campaign or campaign,
+    )
     synced_entries.sort(key=entry_sort_key)
     return {
         "schema_version": 1,
@@ -296,6 +482,20 @@ def build_parser() -> argparse.ArgumentParser:
         default="prompt-rollout-2026-04",
         help="Default campaign assigned to in-scope entries.",
     )
+    parser.add_argument(
+        "--media-manifest",
+        help="Optional media manifest used to auto-activate newly uploaded regenerated files.",
+    )
+    parser.add_argument(
+        "--activate-lecture",
+        action="append",
+        default=[],
+        help="Lecture key whose newly uploaded media-manifest items should become active regenerated variants.",
+    )
+    parser.add_argument(
+        "--activation-campaign",
+        help="Campaign recorded when auto-activating regenerated variants. Defaults to --campaign.",
+    )
     return parser
 
 
@@ -303,7 +503,15 @@ def main() -> int:
     args = build_parser().parse_args()
     inventory_path = (REPO_ROOT / args.inventory).resolve()
     registry_path = (REPO_ROOT / args.registry).resolve()
-    payload = sync_registry(inventory_path, registry_path, args.campaign)
+    media_manifest_path = (REPO_ROOT / args.media_manifest).resolve() if args.media_manifest else None
+    payload = sync_registry(
+        inventory_path,
+        registry_path,
+        args.campaign,
+        media_manifest_path=media_manifest_path,
+        activate_lecture_keys=args.activate_lecture,
+        activation_campaign=args.activation_campaign,
+    )
     write_json(registry_path, payload)
     summary = payload["summary"]
     print(f"Wrote {registry_path}")

@@ -16,7 +16,8 @@
   "regeneration_marker": {
     "enabled": true,
     "file": "shows/personlighedspsykologi-en/regeneration_registry.json",
-    "marker": "✦"
+    "marker": "✦",
+    "position": "prefix"
   },
   "allowed_mime_types": [
     "audio/"

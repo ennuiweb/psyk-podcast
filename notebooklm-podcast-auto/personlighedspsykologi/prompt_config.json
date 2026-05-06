@@ -184,7 +184,7 @@
     }
   },
   "meta_prompting": {
-    "enabled": true,
+    "enabled": false,
     "heading": "External pre-analysis to integrate if useful:",
     "per_source_suffixes": [
       ".prompt.md",
@@ -199,7 +199,7 @@
       "week.analysis.txt"
     ],
     "automatic": {
-      "enabled": true,
+      "enabled": false,
       "provider": "gemini",
       "model": "gemini-3.1-pro-preview",
       "fail_open": false,

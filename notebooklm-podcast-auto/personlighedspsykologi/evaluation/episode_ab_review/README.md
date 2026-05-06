@@ -107,11 +107,13 @@ matched samples as the baseline set.
 Required before a real candidate run:
 
 - NotebookLM auth/profile must work as usual.
-- `GEMINI_API_KEY` or `GOOGLE_API_KEY` should be set so automatic meta-prompting
-  can materialize the missing `*.analysis.md` sidecars.
-- Automatic meta-prompting now sends PDFs directly to Gemini and fails hard if a
-  required PDF cannot be uploaded or processed for Gemini pre-analysis. There is
-  intentionally no summary-cache fallback.
+- The default Personlighedspsykologi candidate prompt path now uses the Course
+  Understanding context plus compact podcast substrates. Legacy automatic
+  meta-prompting is disabled in `prompt_config.json` for this path.
+- `GEMINI_API_KEY` or `GOOGLE_API_KEY` is only needed if you intentionally
+  re-enable `meta_prompting.automatic` to materialize `*.analysis.md`
+  sidecars. In that mode, PDFs are sent directly to Gemini and missing upload
+  or processing support is a hard failure.
 - Do not paste API keys into committed files. Prefer exporting the key in the
   shell for the current session or loading it from a local secret manager.
 

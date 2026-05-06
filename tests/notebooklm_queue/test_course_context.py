@@ -659,6 +659,73 @@ class CourseContextTests(unittest.TestCase):
             )
             self.assertNotIn("Broader course arc in play: Intro;", note)
 
+    def test_non_short_prompt_uses_anchored_course_arc_when_trimmed(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            lectures = [
+                {
+                    "lecture_key": f"W{i:02d}L1",
+                    "lecture_title": title,
+                    "sequence_index": i,
+                    "readings": [],
+                    "slides": [],
+                }
+                for i, title in enumerate(
+                    [
+                        "Intro",
+                        "Assessment",
+                        "Traits",
+                        "Psychoanalysis",
+                        "Phenomenology",
+                        "Humanism",
+                        "Critical psychology",
+                        "Gender",
+                        "Sociocultural theory",
+                        "Narrative theory",
+                        "Synthesis",
+                    ],
+                    start=1,
+                )
+            ]
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps({"lectures": lectures}),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text(
+                "\n".join(
+                    f"| W{i:02d} | x | {lecture['lecture_title']} |"
+                    for i, lecture in enumerate(lectures, start=1)
+                ),
+                encoding="utf-8",
+            )
+
+            config = course_context.normalize_course_context({"max_course_themes": 5})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W09L1",
+                prompt_type="weekly_readings_only",
+            )
+
+            self.assertIn(
+                "Broader course arc in play: Critical psychology; Gender; Sociocultural theory; Narrative theory; Synthesis.",
+                note,
+            )
+            self.assertNotIn("Broader course arc in play: Intro;", note)
+
     def test_podcast_substrate_is_optional_and_compact_when_enabled(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             repo_root = Path(tmpdir)

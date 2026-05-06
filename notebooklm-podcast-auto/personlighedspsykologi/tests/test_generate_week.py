@@ -289,8 +289,15 @@ class GenerateWeekTests(unittest.TestCase):
 
         self.assertIn("Course-aware lecture context:", prompt)
         self.assertIn("This lecture comes after the introductory block.", prompt)
+        self.assertIn("Course understanding usage:", prompt)
+        self.assertIn("Use the course-context and podcast-substrate sections as a selection map", prompt)
+        self.assertIn("Do not mention the Course Understanding Pipeline", prompt)
         self.assertLess(
             prompt.index("Course-aware lecture context:"),
+            prompt.index("Course understanding usage:"),
+        )
+        self.assertLess(
+            prompt.index("Course understanding usage:"),
             prompt.index("Focus on:"),
         )
 
@@ -428,6 +435,7 @@ class GenerateWeekTests(unittest.TestCase):
         )
 
         self.assertIn("Keep the explanation compact, concrete, and easy to carry forward", prompt)
+        self.assertNotIn("Course understanding usage:", prompt)
         self.assertIn("the misunderstanding or oversimplification to avoid", prompt)
         self.assertNotIn("what is most important to carry forward from the source", prompt)
         self.assertIn("make clear the one or two ideas that matter most to carry forward into later lectures", prompt)

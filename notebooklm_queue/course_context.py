@@ -349,15 +349,6 @@ def _fallback_course_theme_titles(lectures: list[dict[str, Any]]) -> list[str]:
     return themes
 
 
-def _format_course_arc_titles(titles: list[str], *, max_items: int) -> str:
-    if max_items <= 0 or not titles:
-        return ""
-    selected = titles[:max_items]
-    if len(selected) <= 5:
-        return "; ".join(selected)
-    return "; ".join([*selected[:3], "...", *selected[-2:]])
-
-
 def _local_course_arc_titles(
     bundle: CoursePromptContextBundle,
     *,
@@ -1117,17 +1108,11 @@ def build_course_prompt_context_note(
     if next_lectures:
         frame_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
     if bundle.course_theme_titles and course_theme_limit > 0:
-        if prompt_type == "short":
-            course_arc = _local_course_arc_titles(
-                bundle,
-                lecture_position=lecture_position,
-                max_items=course_theme_limit,
-            )
-        else:
-            course_arc = _format_course_arc_titles(
-                bundle.course_theme_titles,
-                max_items=course_theme_limit,
-            )
+        course_arc = _local_course_arc_titles(
+            bundle,
+            lecture_position=lecture_position,
+            max_items=course_theme_limit,
+        )
         if course_arc:
             frame_lines.append(f"- Broader course arc in play: {course_arc}.")
     overview_excerpt = _overview_excerpt(bundle, canonical_key)

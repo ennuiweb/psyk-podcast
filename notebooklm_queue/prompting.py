@@ -145,6 +145,13 @@ DEFAULT_META_PROMPTING = {
 DEFAULT_AUDIO_PROMPT_FRAMEWORK = {
     "enabled": True,
     "heading": "Generation rules:",
+    "course_context_heading": "Course understanding usage:",
+    "course_context_rules": [
+        "Use the course-context and podcast-substrate sections as a selection map: what to prioritize, what to avoid, and how this source fits the lecture block.",
+        "Ground every substantive claim in the supplied source material; do not quote or cite course-context artifacts as if they were sources.",
+        "Keep source claims, teaching framing, and course-level interpretation distinct when they pull in different directions.",
+        "Do not mention the Course Understanding Pipeline, source cards, substrates, or internal artifacts in the audio.",
+    ],
     "shared_rules": [
         "Explain the material as a line of thought, not as a disconnected recap.",
         "Distinguish clearly between what the source explicitly argues and what you are inferring from context.",
@@ -476,6 +483,18 @@ def normalize_audio_prompt_framework(raw: object) -> dict:
         stripped = raw["heading"].strip()
         if stripped:
             normalized["heading"] = stripped
+    if "course_context_heading" in raw:
+        if not isinstance(raw["course_context_heading"], str):
+            raise SystemExit("audio_prompt_framework.course_context_heading must be a string.")
+        stripped = raw["course_context_heading"].strip()
+        if stripped:
+            normalized["course_context_heading"] = stripped
+    if "course_context_rules" in raw:
+        normalized["course_context_rules"] = _normalize_string_list(
+            "audio_prompt_framework",
+            "course_context_rules",
+            raw["course_context_rules"],
+        )
     if "shared_rules" in raw:
         normalized["shared_rules"] = _normalize_string_list(
             "audio_prompt_framework",
@@ -615,6 +634,25 @@ def _framework_rules_for_prompt(
         return deduped
 
     return [*shared_rules, *format_rules, *length_rules]
+
+
+def _course_context_rules_for_prompt(*, prompt_framework: dict, prompt_type: str) -> list[str]:
+    rules = [
+        str(rule or "").strip()
+        for rule in prompt_framework.get("course_context_rules", [])
+        if str(rule or "").strip()
+    ]
+    if prompt_type != "short" or len(rules) <= 3:
+        return rules
+    selected = [rules[0], rules[1], rules[-1]]
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for rule in selected:
+        if rule in seen:
+            continue
+        seen.add(rule)
+        deduped.append(rule)
+    return deduped
 
 
 def _source_roles_section(
@@ -772,6 +810,16 @@ def build_audio_prompt(
         if course_context_note:
             heading = str(course_context_heading or "Course-aware lecture context:").strip()
             sections.append(f"{heading}\n{course_context_note.strip()}")
+            if prompt_framework and prompt_framework.get("enabled", False):
+                course_context_rules = _course_context_rules_for_prompt(
+                    prompt_framework=prompt_framework,
+                    prompt_type=prompt_type,
+                )
+                if course_context_rules:
+                    rules_heading = str(
+                        prompt_framework.get("course_context_heading") or "Course understanding usage:"
+                    ).strip()
+                    sections.append(f"{rules_heading}\n{_format_bullets(course_context_rules)}")
         sections.append(
             _source_roles_section(
                 prompt_type=prompt_type,

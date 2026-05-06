@@ -380,6 +380,10 @@ For `short` betyder det nu ogsaa:
 - ingen ekstra grounding-regler inde i course-context-noten, hvis de allerede
   gentages downstream i prompt-frameworket
 
+For alle prompttyper gaelder det nu, at en trimmet course arc skal vaere
+forankret omkring target lecture. Den maa ikke bare tage de foerste temaer i
+semesteret, fordi det giver misvisende kontekst for sene forelaesninger.
+
 ## Kendte graenser
 
 - GitHub Actions kan ikke i dag rebuild’e `source_catalog.json`, fordi workflowet

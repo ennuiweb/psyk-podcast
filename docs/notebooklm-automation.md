@@ -209,12 +209,21 @@ Prompt assembly note:
 - In `short` mode, the course-context note is now also trimmed more
   aggressively: local course arc, narrower reading map, and less duplicated
   grounding prose.
+- When the course arc must be trimmed, the selected arc is anchored around the
+  target lecture instead of taking the first themes from the semester.
 - The final `short` audio wrapper is also thinner now: fewer focus bullets,
   fewer priority-lens bullets, and a smaller generation-rules block.
+- Audio prompts with compiled course context now include a small Course
+  Understanding usage contract: use the context/substrate as prioritization,
+  keep it distinct from source evidence, and do not narrate internal artifacts.
 - That context layer is deterministic and artifact-neutral, and it now feeds both audio prompts and NotebookLM `report` artifacts surfaced as study-guide style Markdown outputs.
 - Current report usage is the first concrete non-audio consumer: abridged preparatory guides for readings, slide decks, lecture-level reading sets, and short variants.
 - Prompt assembly now also injects explicit source-role guidance for normal prompt types so readings, lecture slides, and seminar slides contribute different kinds of signal instead of being blended implicitly.
 - The legacy `exam_focus` config key now acts as a priority lens: it should steer importance and tensions without branding the audio prompts around the exam.
+- For `personlighedspsykologi`, legacy `meta_prompting` sidecars remain
+  supported but are disabled in `prompt_config.json` for Course
+  Understanding-backed podcast candidate runs. Re-enable them only for an
+  intentional comparison.
 
 Prompt-system ambitions that should not drift:
 

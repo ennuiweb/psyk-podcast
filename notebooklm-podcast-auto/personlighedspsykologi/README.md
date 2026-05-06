@@ -104,10 +104,14 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 ```
 
 - Override fields are optional and inherit from the base `per_slide` block. Supported fields are `format`, `length`, and `prompt`.
-- You can attach external pre-analysis from another LLM and have it folded into audio prompts automatically through `meta_prompting`.
+- The current Personlighedspsykologi podcast prompt path uses the Course
+  Understanding context and optional compact podcast substrates as its primary
+  pre-analysis. Legacy external sidecars remain supported through
+  `meta_prompting`, but they are disabled in `prompt_config.json` for
+  pipeline-backed candidate runs.
   - Per-source sidecars: `<source>.prompt.md`, `<source>.prompt.txt`, `<source>.analysis.md`, `<source>.analysis.txt` (both `Foo.pdf.prompt.md` and `Foo.prompt.md` are accepted).
   - Weekly sidecars: `week.prompt.md`, `week.prompt.txt`, `week.analysis.md`, `week.analysis.txt`, plus `W01L1.prompt.md` / `.txt` / `.analysis.md` / `.analysis.txt`.
-  - Sidecars are appended under the configured `meta_prompting.heading`.
+  - When `meta_prompting.enabled=true`, sidecars are appended under the configured `meta_prompting.heading`.
   - Sidecars are excluded from the source inventory, so they are never uploaded to NotebookLM as course materials.
   - `meta_prompting.automatic` can fill in missing sidecars automatically before audio generation. Existing sidecars still win; automation only fills gaps.
   - Automatic mode now always pins Gemini to `provider=gemini` with `model=gemini-3.1-pro-preview`.
@@ -162,7 +166,9 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
   --output-root notebooklm-podcast-auto/personlighedspsykologi/evaluation/episode_ab_review/runs/2026-04-before-baseline/candidate_output
 ```
 
-- Candidate generation should use `GEMINI_API_KEY` or `GOOGLE_API_KEY` when `meta_prompting.automatic.enabled=true`; otherwise auto-meta fails open and the run continues without generated meta sidecars.
+- Candidate generation does not require `GEMINI_API_KEY` or `GOOGLE_API_KEY`
+  for the default pipeline-backed prompt path. Those keys are only needed when
+  intentionally re-enabling `meta_prompting.automatic`.
 - `generate_week.py` also has a wrapper-level `--generator-timeout` (default `420` seconds). If `generate_podcast.py` times out after writing a request log with `artifact_id`, the wrapper treats the artifact as queued and continues to the next sample.
 - After candidate MP3s are downloaded, sync their local paths into the manifest:
 

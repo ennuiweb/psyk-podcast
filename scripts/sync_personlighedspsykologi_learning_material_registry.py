@@ -24,9 +24,28 @@ from regeneration_identity import canonical_source_name, parse_config_tags  # no
 DEFAULT_SHOW_ROOT = "shows/personlighedspsykologi-en"
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 DEFAULT_REGISTRY = "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json"
+DEFAULT_PODCAST_PROMPT_CONFIG = "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json"
 SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION"
 PODCAST_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION"
 PRINTOUT_SETUP_VERSION_ENV = "PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION"
+PODCAST_PROMPT_CONFIG_KEYS = (
+    "language",
+    "languages",
+    "audio_prompt_strategy",
+    "audio_prompt_framework",
+    "exam_focus",
+    "meta_prompting",
+    "course_context",
+    "weekly_overview",
+    "per_reading",
+    "per_slide",
+    "short",
+)
+PODCAST_PROMPT_CODE_PATHS = (
+    "notebooklm_queue/prompting.py",
+    "notebooklm_queue/course_context.py",
+    "notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py",
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -215,6 +234,64 @@ def source_understanding_snapshot(show_root: Path, repo_root: Path) -> dict[str,
     }
 
 
+def podcast_prompt_system_snapshot(*, repo_root: Path, show_root: Path) -> dict[str, Any] | None:
+    prompt_config_path = repo_root / DEFAULT_PODCAST_PROMPT_CONFIG
+    prompt_config = maybe_load_json(prompt_config_path)
+    if not isinstance(prompt_config, dict):
+        return None
+
+    section_hashes = {
+        key: short_hash(sha256_json(prompt_config.get(key)))
+        for key in PODCAST_PROMPT_CONFIG_KEYS
+        if key in prompt_config
+    }
+    code_hashes = {
+        relpath(path, repo_root): sha256_file(path)
+        for path in (repo_root / raw_path for raw_path in PODCAST_PROMPT_CODE_PATHS)
+        if path.exists() and path.is_file()
+    }
+    source_snapshot = source_understanding_snapshot(show_root, repo_root)
+    payload = {
+        "schema_version": 1,
+        "kind": "personlighedspsykologi_podcast_prompt_system",
+        "prompt_config_path": relpath(prompt_config_path, repo_root),
+        "prompt_config_sha256": sha256_file(prompt_config_path),
+        "prompt_section_hashes": section_hashes,
+        "code_hashes": code_hashes,
+        "course_synthesis_prompt_version": source_snapshot.get("course_synthesis_prompt_version"),
+        "summary": {
+            "language": prompt_config.get("language"),
+            "course_context_enabled": bool((prompt_config.get("course_context") or {}).get("enabled")),
+            "podcast_substrate_enabled": bool(
+                ((prompt_config.get("course_context") or {}).get("podcast_substrate") or {}).get("enabled")
+            ),
+            "meta_prompting_enabled": bool((prompt_config.get("meta_prompting") or {}).get("enabled")),
+            "meta_prompting_automatic_enabled": bool(
+                ((prompt_config.get("meta_prompting") or {}).get("automatic") or {}).get("enabled")
+            ),
+        },
+    }
+    fingerprint = sha256_json(payload)
+    return {
+        **payload,
+        "fingerprint": fingerprint,
+        "label": f"personlighedspsykologi-podcast-{short_hash(fingerprint, length=12)}",
+    }
+
+
+def attach_podcast_prompt_system(
+    entry: dict[str, Any],
+    *,
+    prompt_system: dict[str, Any] | None,
+    active_lecture_key: str | None,
+) -> None:
+    if not prompt_system or not active_lecture_key or not material_matches_lecture(entry, active_lecture_key):
+        return
+    entry["prompt_system"] = prompt_system
+    entry["prompt_system_label"] = prompt_system.get("label")
+    entry["prompt_system_fingerprint"] = prompt_system.get("fingerprint")
+
+
 def build_media_maps(show_root: Path) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     media_by_name: dict[str, dict[str, Any]] = {}
     inventory_by_name: dict[str, dict[str, Any]] = {}
@@ -361,6 +438,7 @@ def collect_podcast_entries(
     queue_job_id: str | None,
     active_lecture_key: str | None,
     setup_version: str | None,
+    prompt_system: dict[str, Any] | None,
 ) -> dict[str, dict[str, Any]]:
     media_by_name, inventory_by_name = build_media_maps(show_root)
     entries = collect_published_podcast_entries(show_root=show_root, repo_root=repo_root)
@@ -452,6 +530,7 @@ def collect_podcast_entries(
         if queue_job_id and (not active_lecture_key or active_lecture_key == lecture_key):
             entry["queue_job_id"] = queue_job_id
         attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
+        attach_podcast_prompt_system(entry, prompt_system=prompt_system, active_lecture_key=active_lecture_key)
 
         attempt = {
             "status": "success" if success else "failed",
@@ -466,6 +545,7 @@ def collect_podcast_entries(
 
     for entry in entries.values():
         attach_setup_version(entry, setup_version=setup_version, active_lecture_key=active_lecture_key)
+        attach_podcast_prompt_system(entry, prompt_system=prompt_system, active_lecture_key=active_lecture_key)
 
     return entries
 
@@ -854,6 +934,8 @@ REVISION_HISTORY_KEYS = (
     "status",
     "source_name",
     "setup_version",
+    "prompt_system_label",
+    "prompt_system_fingerprint",
     "config_hash",
     "config_fingerprint",
     "source_config_hash",
@@ -904,6 +986,12 @@ def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dic
         if previous:
             if not entry.get("setup_version") and previous.get("setup_version"):
                 entry["setup_version"] = previous["setup_version"]
+            if not entry.get("prompt_system") and previous.get("prompt_system"):
+                entry["prompt_system"] = previous["prompt_system"]
+            if not entry.get("prompt_system_label") and previous.get("prompt_system_label"):
+                entry["prompt_system_label"] = previous["prompt_system_label"]
+            if not entry.get("prompt_system_fingerprint") and previous.get("prompt_system_fingerprint"):
+                entry["prompt_system_fingerprint"] = previous["prompt_system_fingerprint"]
             merge_revision_history(previous, entry)
         merged[material_id] = entry
     return sorted(
@@ -961,6 +1049,10 @@ def build_registry(
     printout_setup_version: str | None,
 ) -> dict[str, Any]:
     lecture_key = normalize_lecture_key(lecture_key)
+    podcast_prompt_system = podcast_prompt_system_snapshot(repo_root=repo_root, show_root=show_root)
+    resolved_podcast_setup_version = podcast_setup_version
+    if not resolved_podcast_setup_version and lecture_key and podcast_prompt_system:
+        resolved_podcast_setup_version = str(podcast_prompt_system.get("label") or "").strip() or None
     discovered: dict[str, dict[str, Any]] = {}
     discovered.update(
         collect_printout_entries(
@@ -991,7 +1083,8 @@ def build_registry(
             campaign=campaign,
             queue_job_id=queue_job_id,
             active_lecture_key=lecture_key,
-            setup_version=podcast_setup_version,
+            setup_version=resolved_podcast_setup_version,
+            prompt_system=podcast_prompt_system,
         )
     )
     materials = merge_entries(existing_entries(registry_path), discovered)
@@ -1008,8 +1101,16 @@ def build_registry(
             "campaign": campaign,
             "queue_job_id": queue_job_id,
             "lecture_key": lecture_key,
-            "podcast_setup_version": podcast_setup_version,
+            "podcast_setup_version": resolved_podcast_setup_version,
             "printout_setup_version": printout_setup_version,
+            "podcast_prompt_system_label": (
+                podcast_prompt_system.get("label") if lecture_key and isinstance(podcast_prompt_system, dict) else None
+            ),
+            "podcast_prompt_system_fingerprint": (
+                podcast_prompt_system.get("fingerprint")
+                if lecture_key and isinstance(podcast_prompt_system, dict)
+                else None
+            ),
         },
         "source_understanding_snapshot": source_understanding_snapshot(show_root, repo_root),
         "summary": summarize(materials),

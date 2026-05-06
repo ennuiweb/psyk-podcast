@@ -25,6 +25,25 @@ def _write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
+def _write_prompt_config(repo_root: Path) -> None:
+    _write_json(
+        repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "prompt_config.json",
+        {
+            "language": "en",
+            "languages": [{"code": "en", "suffix": "[EN]"}],
+            "audio_prompt_strategy": {"enabled": True},
+            "audio_prompt_framework": {"enabled": True, "shared_rules": ["Keep it grounded."]},
+            "exam_focus": {"enabled": True},
+            "meta_prompting": {"enabled": False, "automatic": {"enabled": False}},
+            "course_context": {"enabled": True, "podcast_substrate": {"enabled": True}},
+            "weekly_overview": {"format": "deep-dive", "length": "long", "prompt": ""},
+            "per_reading": {"format": "deep-dive", "length": "long", "prompt": ""},
+            "per_slide": {"format": "deep-dive", "length": "default", "prompt": ""},
+            "short": {"format": "deep-dive", "length": "short", "prompt": ""},
+        },
+    )
+
+
 def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) -> None:
     module = _load_script_module()
     repo_root = tmp_path / "repo"
@@ -32,6 +51,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     output_root = repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output"
     registry_path = show_root / "learning_material_regeneration_registry.json"
 
+    _write_prompt_config(repo_root)
     _write_json(show_root / "source_intelligence" / "index.json", {"generated_at": "2026-05-06T08:00:00Z"})
     _write_json(
         show_root / "source_intelligence" / "course_synthesis.json",
@@ -329,6 +349,10 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert podcast["canonical_source_name"] == "W01L1 - Lewis (1999) [EN].mp3"
     assert podcast["config_hash"] == "bbbb2222"
     assert podcast["setup_version"] == "podcast-v4"
+    expected_prompt_system = module.podcast_prompt_system_snapshot(repo_root=repo_root, show_root=show_root)
+    assert podcast["prompt_system_label"] == expected_prompt_system["label"]
+    assert podcast["prompt_system_fingerprint"] == expected_prompt_system["fingerprint"]
+    assert podcast["prompt_system"]["course_synthesis_prompt_version"] == "course-synthesis-v1"
     assert podcast["campaign"] == "prompt-refresh"
     assert podcast["queue_job_id"] == "job-1"
     assert podcast["prompt_sha256"] == hashlib.sha256(prompt.encode("utf-8")).hexdigest()
@@ -340,6 +364,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert inventory_only["status"] == "published_active"
     assert inventory_only["config_hash"] == "cccc3333"
     assert inventory_only["setup_version"] == "podcast-v4"
+    assert inventory_only["prompt_system_label"] == expected_prompt_system["label"]
     assert inventory_only["media_sha256"] == "inventory-only-audio-hash"
     assert inventory_only["stable_guid"] == "inventory-only-guid"
     assert inventory_only["feed_published_at"] == "2026-05-06T10:16:00Z"
@@ -369,6 +394,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert payload["current_run"]["lecture_key"] == "W01L1"
     assert payload["current_run"]["podcast_setup_version"] == "podcast-v4"
     assert payload["current_run"]["printout_setup_version"] == "printout-v2"
+    assert payload["current_run"]["podcast_prompt_system_label"] == expected_prompt_system["label"]
     assert payload["source_understanding_snapshot"]["course_synthesis_prompt_version"] == "course-synthesis-v1"
 
 
@@ -394,3 +420,91 @@ def test_merge_entries_preserves_setup_version_when_no_new_label_is_supplied() -
 
     assert merged[0]["setup_version"] == "podcast-v4"
     assert "revision_history" not in merged[0]
+
+
+def test_build_registry_auto_labels_current_lecture_podcasts_when_no_manual_setup_version_is_supplied(
+    tmp_path: Path,
+) -> None:
+    module = _load_script_module()
+    repo_root = tmp_path / "repo"
+    show_root = repo_root / "shows" / "personlighedspsykologi-en"
+    output_root = repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output"
+    registry_path = show_root / "learning_material_regeneration_registry.json"
+
+    _write_prompt_config(repo_root)
+    _write_json(show_root / "source_intelligence" / "index.json", {"generated_at": "2026-05-06T08:00:00Z"})
+    _write_json(
+        show_root / "source_intelligence" / "course_synthesis.json",
+        {"generated_at": "2026-05-06T08:01:00Z", "build": {"prompt_version": "course-synthesis-v1"}},
+    )
+    _write_json(
+        show_root / "episode_inventory.json",
+        {
+            "episodes": [
+                {
+                    "source_name": "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
+                    "title": "W01L1 - Lewis (1999)",
+                    "episode_key": "episode-1",
+                    "episode_kind": "reading",
+                    "published_at": "2026-05-06T10:16:00Z",
+                    "audio_url": "https://example.test/audio.mp3",
+                },
+                {
+                    "source_name": "W02L1 - Other (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=cccc3333}.mp3",
+                    "title": "W02L1 - Other (2020)",
+                    "episode_key": "episode-2",
+                    "episode_kind": "reading",
+                    "published_at": "2026-05-06T10:20:00Z",
+                    "audio_url": "https://example.test/other.mp3",
+                },
+            ]
+        },
+    )
+    _write_json(
+        show_root / "media_manifest.r2.json",
+        {
+            "items": [
+                {
+                    "source_name": "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3",
+                    "published_at": "2026-05-06T10:15:00Z",
+                    "public_url": "https://example.test/audio.mp3",
+                    "sha256": "audio-hash",
+                },
+                {
+                    "source_name": "W02L1 - Other (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=cccc3333}.mp3",
+                    "published_at": "2026-05-06T10:18:00Z",
+                    "public_url": "https://example.test/other.mp3",
+                    "sha256": "other-audio-hash",
+                },
+            ]
+        },
+    )
+
+    payload = module.build_registry(
+        repo_root=repo_root,
+        show_root=show_root,
+        output_root=output_root,
+        registry_path=registry_path,
+        generated_at="2026-05-06T11:00:00Z",
+        campaign="prompt-refresh",
+        queue_job_id="job-1",
+        lecture_key="W01L1",
+        podcast_setup_version=None,
+        printout_setup_version=None,
+    )
+
+    expected_prompt_system = module.podcast_prompt_system_snapshot(repo_root=repo_root, show_root=show_root)
+    podcasts = {item["source_name"]: item for item in payload["materials"] if item.get("family") == "podcast"}
+    assert podcasts["W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"][
+        "setup_version"
+    ] == expected_prompt_system["label"]
+    assert podcasts["W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"][
+        "prompt_system_label"
+    ] == expected_prompt_system["label"]
+    assert "setup_version" not in podcasts[
+        "W02L1 - Other (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=cccc3333}.mp3"
+    ]
+    assert "prompt_system_label" not in podcasts[
+        "W02L1 - Other (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=cccc3333}.mp3"
+    ]
+    assert payload["current_run"]["podcast_setup_version"] == expected_prompt_system["label"]

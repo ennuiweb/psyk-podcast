@@ -144,6 +144,12 @@ For queue-owned runs, set these environment variables on the queue process:
 When `--lecture-key` is present, setup versions are attached only to matching
 podcast and printout entries. Without `--lecture-key`, the supplied version is
 treated as a ledger-wide label for all discovered materials in that family.
+When `--lecture-key` is present and no manual `podcast_setup_version` is
+supplied, the podcast ledger now derives an automatic
+`personlighedspsykologi-podcast-<hash>` label from the active podcast prompt
+system and stores it both as `prompt_system_label` and as the podcast
+`setup_version`. This keeps unattended queue runs queryable by prompt-system
+label without requiring operators to remember an env var first.
 
 The ledger records learner-facing outputs, not upstream engine internals. It
 tracks podcast, printout, quiz, and slide materials with their lecture key,
@@ -157,7 +163,10 @@ those podcast entries with prompt hashes, auth profile, and attempt history when
 available, but the ledger must not require local request logs to know that an
 episode is live. Podcast entries keep `feed_published_at` and
 `media_published_at` separate because feed scheduling and object upload time are
-different operational facts.
+different operational facts. Lecture-scoped queue syncs also stamp matching
+podcast entries with `prompt_system`, `prompt_system_label`, and
+`prompt_system_fingerprint` so future sessions can group podcasts by the prompt
+system that produced them even when request logs have already been cleaned up.
 
 For printouts, `config_hash` / `config_fingerprint` are computed from the
 printout generator setup: artifact type, schema version, provider, model,
@@ -169,7 +178,9 @@ be compared independently.
 For podcasts and printouts, `setup_version` is the human-facing setup label
 used during prompt iteration. It complements, but does not replace, the
 hash/fingerprint fields. Once attached to a material, it is retained by later
-syncs until a new setup version is supplied for that same material.
+syncs until a new setup version is supplied for that same material. For
+podcasts, queue-owned lecture runs now fall back to the automatic
+`prompt_system_label` when no explicit setup version is provided.
 
 When a material's observed prompt/config identity changes, the previous observed
 identity is retained in `revision_history` so prompt iterations do not erase the

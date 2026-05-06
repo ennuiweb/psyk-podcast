@@ -108,13 +108,25 @@ class ShowAdapter:
             command.append("--dry-run")
         return command
 
-    def build_download_command(self, repo_root: Path, *, lecture_key: str, dry_run: bool) -> list[str]:
+    def build_download_command(
+        self,
+        repo_root: Path,
+        *,
+        lecture_key: str,
+        dry_run: bool,
+        timeout_seconds: int | None = None,
+        interval_seconds: int | None = None,
+    ) -> list[str]:
         command = [
             str(repo_root / ".venv" / "bin" / "python"),
             str(repo_root / self.downloader_script),
             "--week",
             lecture_key,
         ]
+        if timeout_seconds is not None:
+            command.extend(["--timeout", str(max(int(timeout_seconds), 1))])
+        if interval_seconds is not None:
+            command.extend(["--interval", str(max(int(interval_seconds), 1))])
         if dry_run:
             command.append("--dry-run")
         return command

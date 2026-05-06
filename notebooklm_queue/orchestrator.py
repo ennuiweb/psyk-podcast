@@ -3,12 +3,19 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
+import os
 from pathlib import Path
 import time
 from typing import Any, Callable
 
-from .constants import BLOCKED_STATES, STATE_FAILED_RETRYABLE, STATE_RETRY_SCHEDULED, TERMINAL_STATES
+from .constants import (
+    BLOCKED_STATES,
+    STATE_FAILED_RETRYABLE,
+    STATE_RETRY_SCHEDULED,
+    STATE_WAITING_FOR_ARTIFACT,
+    TERMINAL_STATES,
+)
 from .discovery import enqueue_discovered_jobs
 from .downstream import DownstreamOptions, sync_downstream_publication
 from .execution import ExecutionOptions, execute_job
@@ -19,6 +26,7 @@ from .show_config import serialize_show_config_path
 from .store import QueueStore, parse_utcish_iso
 
 RECENT_CYCLE_HISTORY_LIMIT = 10
+DEFAULT_WAITING_SLEEP_SECONDS = int(os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60")
 
 
 @dataclass(frozen=True, slots=True)
@@ -200,7 +208,7 @@ def serve_show_queue(
 
         wait_plan = _plan_next_action(store=store, show_slug=show_slug)
         action = str(wait_plan.get("action") or "")
-        if action != "wait_for_retry":
+        if action not in {"wait_for_retry", "wait_for_artifact"}:
             return {
                 "show_slug": show_slug,
                 "cycle_count": cycle_count,
@@ -221,6 +229,7 @@ def serve_show_queue(
 def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
     jobs = store.list_jobs(show_slug=show_slug)
     retry_jobs: list[dict[str, Any]] = []
+    waiting_jobs: list[dict[str, Any]] = []
     blocking_jobs: list[dict[str, Any]] = []
     other_active_jobs: list[dict[str, Any]] = []
     invalid_retry_jobs: list[dict[str, Any]] = []
@@ -233,6 +242,9 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
             if parse_utcish_iso(str(job.get("next_retry_at") or "").strip()) is None:
                 invalid_retry_jobs.append(job)
             retry_jobs.append(job)
+            continue
+        if state == STATE_WAITING_FOR_ARTIFACT:
+            waiting_jobs.append(job)
             continue
         if state in BLOCKED_STATES or state == STATE_FAILED_RETRYABLE:
             blocking_jobs.append(job)
@@ -247,29 +259,41 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
             "job_ids": [str(job.get("job_id") or "") for job in invalid_retry_jobs],
         }
 
-    if blocking_jobs and retry_jobs:
+    timed_wait_jobs = retry_jobs + waiting_jobs
+
+    if blocking_jobs and timed_wait_jobs:
         return {
             "action": "manual_intervention_required",
-            "reason": "mixed_retry_and_blocked_backlog",
-            "state_counts": _state_counts(blocking_jobs + retry_jobs),
+            "reason": "mixed_timed_wait_and_blocked_backlog",
+            "state_counts": _state_counts(blocking_jobs + timed_wait_jobs),
         }
 
-    if other_active_jobs and retry_jobs:
+    if other_active_jobs and timed_wait_jobs:
         return {
             "action": "active_backlog_without_progress",
-            "reason": "mixed_retry_and_active_backlog",
-            "state_counts": _state_counts(other_active_jobs + retry_jobs),
+            "reason": "mixed_timed_wait_and_active_backlog",
+            "state_counts": _state_counts(other_active_jobs + timed_wait_jobs),
         }
 
-    if retry_jobs:
+    if retry_jobs or waiting_jobs:
         earliest_retry = _earliest_retry_at(retry_jobs)
+        earliest_wait = _earliest_waiting_at(waiting_jobs)
+        action = "wait_for_retry"
+        next_at = earliest_retry
+        if earliest_wait is not None and (next_at is None or earliest_wait < next_at):
+            action = "wait_for_artifact"
+            next_at = earliest_wait
+        if next_at is None:
+            action = "wait_for_artifact"
+            next_at = _utc_now()
         now = _utc_now()
-        sleep_seconds = max(int((earliest_retry - now).total_seconds()), 1)
+        sleep_seconds = max(int((next_at - now).total_seconds()), 1)
         return {
-            "action": "wait_for_retry",
+            "action": action,
             "sleep_seconds": sleep_seconds,
             "retry_job_count": len(retry_jobs),
-            "next_retry_at": earliest_retry.replace(microsecond=0).isoformat(),
+            "waiting_job_count": len(waiting_jobs),
+            "next_retry_at": next_at.replace(microsecond=0).isoformat(),
         }
 
     if other_active_jobs:
@@ -295,6 +319,18 @@ def _earliest_retry_at(jobs: list[dict[str, Any]]) -> datetime | None:
             continue
         if earliest is None or retry_at < earliest:
             earliest = retry_at
+    return earliest
+
+
+def _earliest_waiting_at(jobs: list[dict[str, Any]]) -> datetime | None:
+    earliest: datetime | None = None
+    now = _utc_now()
+    for job in jobs:
+        next_poll_at = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
+        if next_poll_at is None:
+            next_poll_at = now.replace(microsecond=0) + timedelta(seconds=max(DEFAULT_WAITING_SLEEP_SECONDS, 1))
+        if earliest is None or next_poll_at < earliest:
+            earliest = next_poll_at
     return earliest
 
 

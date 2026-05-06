@@ -12,16 +12,16 @@ from .adapters import get_show_adapter
 from .alerts import emit_failure_alert
 from .constants import (
     STATE_AWAITING_PUBLISH,
-    STATE_DOWNLOADED,
     STATE_DOWNLOADING,
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
     STATE_GENERATING,
     STATE_QUEUED,
     STATE_RETRY_SCHEDULED,
+    STATE_WAITING_FOR_ARTIFACT,
 )
 from .processes import run_phase_command
-from .store import QueueStore, utc_now_iso
+from .store import QueueStore, parse_utcish_iso, utc_now_iso
 
 RATE_LIMIT_ERROR_TOKENS = (
     "rate limit",
@@ -41,6 +41,12 @@ DEFAULT_RATE_LIMIT_RETRY_SECONDS = int(
 DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS") or "7200"
 )
+DEFAULT_ARTIFACT_WAIT_TIMEOUT_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_WAIT_TIMEOUT_SECONDS") or "60"
+)
+DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60"
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,6 +56,8 @@ class ExecutionOptions:
     actor: str = "system"
     run_download: bool = True
     phase_timeout_seconds: int = DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS
+    artifact_wait_timeout_seconds: int = DEFAULT_ARTIFACT_WAIT_TIMEOUT_SECONDS
+    artifact_poll_interval_seconds: int = DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS
 
 
 def _looks_like_rate_limit(message: str | None) -> bool:
@@ -99,6 +107,147 @@ def _phase_retry_detection_text(phase: dict[str, Any], fallback: str) -> str:
     return "\n".join(parts)
 
 
+def _find_lecture_dirs(*, output_root: Path, lecture_key: str) -> list[Path]:
+    if not output_root.exists():
+        return []
+    matches: list[Path] = []
+    exact = output_root / lecture_key
+    if exact.exists() and exact.is_dir():
+        matches.append(exact)
+    for candidate in sorted(output_root.glob(f"{lecture_key}*"), key=lambda path: path.name):
+        if candidate.is_dir() and candidate not in matches:
+            matches.append(candidate)
+    return matches
+
+
+def _artifact_type_for_output(path: Path) -> str | None:
+    name = path.name
+    if name.endswith(".request.json") or name.endswith(".request.error.json"):
+        return None
+    if path.suffix == ".mp3":
+        return "audio"
+    if path.suffix == ".png":
+        return "infographic"
+    if path.suffix == ".json":
+        return "quiz"
+    return None
+
+
+def _relative_to_repo(repo_root: Path, path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(repo_root.resolve()))
+    except ValueError:
+        return str(path)
+
+
+def _collect_output_progress(
+    *,
+    adapter: Any,
+    repo_root: Path,
+    lecture_key: str,
+    content_types: tuple[str, ...],
+) -> dict[str, Any]:
+    counts = {artifact_type: 0 for artifact_type in content_types}
+    pending_request_logs: list[str] = []
+    error_request_logs: list[str] = []
+    lecture_dirs = _find_lecture_dirs(output_root=adapter.output_root_path(repo_root), lecture_key=lecture_key)
+
+    for lecture_dir in lecture_dirs:
+        for request_log in sorted(lecture_dir.glob("*.request.json"), key=lambda path: path.name):
+            pending_request_logs.append(_relative_to_repo(repo_root, request_log))
+        for error_log in sorted(lecture_dir.glob("*.request.error.json"), key=lambda path: path.name):
+            error_request_logs.append(_relative_to_repo(repo_root, error_log))
+        for artifact_path in lecture_dir.iterdir():
+            if not artifact_path.is_file():
+                continue
+            artifact_type = _artifact_type_for_output(artifact_path)
+            if artifact_type not in counts:
+                continue
+            counts[artifact_type] += 1
+
+    return {
+        "lecture_key": lecture_key,
+        "lecture_dirs": [_relative_to_repo(repo_root, path) for path in lecture_dirs],
+        "pending_request_count": len(pending_request_logs),
+        "pending_request_logs": pending_request_logs,
+        "error_request_count": len(error_request_logs),
+        "error_request_logs": error_request_logs,
+        "existing_outputs": counts,
+        "existing_output_count": sum(counts.values()),
+    }
+
+
+def _next_poll_at(*, poll_interval_seconds: int) -> str:
+    retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(int(poll_interval_seconds), 1))
+    return retry_at.replace(microsecond=0).isoformat()
+
+
+def _persist_execution_artifacts(
+    *,
+    store: QueueStore,
+    job: dict[str, Any],
+    run_id: str,
+    manifest_path: str,
+    manifest: dict[str, Any],
+    progress: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    refreshed = store.load_job(show_slug=str(job["show_slug"]), job_id=str(job["job_id"]))
+    artifacts = dict(refreshed.get("artifacts") or {})
+    execution = dict(artifacts.get("execution") or {})
+    execution.update(
+        {
+            "latest_run_manifest": manifest_path,
+            "latest_run_id": run_id,
+            "last_generate_command": manifest["phases"][0]["command"] if manifest["phases"] else None,
+            "last_download_command": manifest["phases"][1]["command"] if len(manifest["phases"]) > 1 else None,
+            "last_progress_at": utc_now_iso(),
+        }
+    )
+    if progress is not None:
+        execution["last_progress"] = progress
+    if manifest.get("status") == "completed":
+        execution["last_success_at"] = str(manifest.get("completed_at") or utc_now_iso())
+    if manifest.get("status") == "waiting":
+        execution["last_waiting_at"] = str(manifest.get("completed_at") or utc_now_iso())
+    artifacts["execution"] = execution
+    refreshed["artifacts"] = artifacts
+    store.save_job(refreshed)
+    return refreshed
+
+
+def _finalize_execution_manifest(
+    *,
+    store: QueueStore,
+    job: dict[str, Any],
+    show_slug: str,
+    manifest: dict[str, Any],
+    run_id: str,
+    progress: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    manifest_path = store.save_run_manifest(
+        show_slug=show_slug,
+        job_id=str(job["job_id"]),
+        payload=manifest,
+        run_id=run_id,
+    )
+    refreshed = _persist_execution_artifacts(
+        store=store,
+        job=job,
+        run_id=run_id,
+        manifest_path=manifest_path,
+        manifest=manifest,
+        progress=progress,
+    )
+    return {
+        "run_id": run_id,
+        "job_id": str(refreshed["job_id"]),
+        "show_slug": show_slug,
+        "final_state": str(refreshed.get("state") or ""),
+        "manifest_path": manifest_path,
+        "phases": manifest["phases"],
+    }
+
+
 def execute_job(
     *,
     store: QueueStore,
@@ -127,13 +276,16 @@ def execute_job(
 
         lecture_key = str(job.get("lecture_key") or "")
         content_types = tuple(str(item) for item in (job.get("content_types") or []) if str(item).strip())
+        if not content_types:
+            content_types = tuple(adapter.default_content_types)
+        latest_progress: dict[str, Any] | None = None
         if current_state in {STATE_QUEUED, STATE_RETRY_SCHEDULED, STATE_GENERATING}:
             generate_command = adapter.build_generate_command(
                 options.repo_root,
                 lecture_key=lecture_key,
                 content_types=content_types,
                 dry_run=False,
-                wait=True,
+                wait=False,
             )
             phase = _run_phase(
                 name="generate",
@@ -153,16 +305,61 @@ def execute_job(
                     failed_state=STATE_FAILED_RETRYABLE,
                     note="Generate command failed.",
                 )
-            job = store.transition_job(
-                show_slug=show_slug,
-                job_id=str(job["job_id"]),
-                state=STATE_GENERATED,
-                actor=options.actor,
-                note="Generate command completed successfully.",
-                details={"run_id": run_id},
+            latest_progress = _collect_output_progress(
+                adapter=adapter,
+                repo_root=options.repo_root,
+                lecture_key=lecture_key,
+                content_types=content_types,
             )
+            phase["progress"] = latest_progress
+            if latest_progress["pending_request_count"] > 0:
+                job = store.transition_job(
+                    show_slug=show_slug,
+                    job_id=str(job["job_id"]),
+                    state=STATE_WAITING_FOR_ARTIFACT,
+                    actor=options.actor,
+                    note="Generate command created NotebookLM artifact requests; waiting for upstream completion.",
+                    retry_at=_next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds),
+                    details={"run_id": run_id, "progress": latest_progress},
+                )
+                if not options.run_download:
+                    manifest["status"] = "waiting"
+                    manifest["completed_at"] = utc_now_iso()
+                    manifest["final_state"] = str(job.get("state") or "")
+                    return _finalize_execution_manifest(
+                        store=store,
+                        job=job,
+                        show_slug=show_slug,
+                        manifest=manifest,
+                        run_id=run_id,
+                        progress=latest_progress,
+                    )
+            elif latest_progress["existing_output_count"] > 0:
+                job = store.transition_job(
+                    show_slug=show_slug,
+                    job_id=str(job["job_id"]),
+                    state=STATE_GENERATED,
+                    actor=options.actor,
+                    note="Generate command completed with local outputs and no pending request logs.",
+                    details={"run_id": run_id, "progress": latest_progress},
+                )
+            else:
+                return _finalize_failure(
+                    store=store,
+                    job=job,
+                    show_slug=show_slug,
+                    manifest=manifest,
+                    run_id=run_id,
+                    options=options,
+                    failed_state=STATE_FAILED_RETRYABLE,
+                    note="Generate command completed without creating request logs or outputs.",
+                )
 
-        if options.run_download and str(job.get("state") or "") in {STATE_GENERATED, STATE_DOWNLOADING}:
+        if options.run_download and str(job.get("state") or "") in {
+            STATE_WAITING_FOR_ARTIFACT,
+            STATE_GENERATED,
+            STATE_DOWNLOADING,
+        }:
             if str(job.get("state") or "") != STATE_DOWNLOADING:
                 job = store.transition_job(
                     show_slug=show_slug,
@@ -176,6 +373,8 @@ def execute_job(
                 options.repo_root,
                 lecture_key=lecture_key,
                 dry_run=False,
+                timeout_seconds=options.artifact_wait_timeout_seconds,
+                interval_seconds=options.artifact_poll_interval_seconds,
             )
             phase = _run_phase(
                 name="download",
@@ -195,52 +394,65 @@ def execute_job(
                     failed_state=STATE_FAILED_RETRYABLE,
                     note="Download command failed.",
                 )
-            final_state = STATE_DOWNLOADED
-            if options.run_download:
-                final_state = STATE_AWAITING_PUBLISH
+            latest_progress = _collect_output_progress(
+                adapter=adapter,
+                repo_root=options.repo_root,
+                lecture_key=lecture_key,
+                content_types=content_types,
+            )
+            phase["progress"] = latest_progress
+            if latest_progress["pending_request_count"] > 0:
+                job = store.transition_job(
+                    show_slug=show_slug,
+                    job_id=str(job["job_id"]),
+                    state=STATE_WAITING_FOR_ARTIFACT,
+                    actor=options.actor,
+                    note="Download window ended with pending NotebookLM artifacts; scheduling another poll.",
+                    retry_at=_next_poll_at(poll_interval_seconds=options.artifact_poll_interval_seconds),
+                    details={"run_id": run_id, "progress": latest_progress},
+                )
+                manifest["status"] = "waiting"
+                manifest["completed_at"] = utc_now_iso()
+                manifest["final_state"] = str(job.get("state") or "")
+                return _finalize_execution_manifest(
+                    store=store,
+                    job=job,
+                    show_slug=show_slug,
+                    manifest=manifest,
+                    run_id=run_id,
+                    progress=latest_progress,
+                )
+            if latest_progress["existing_output_count"] <= 0:
+                return _finalize_failure(
+                    store=store,
+                    job=job,
+                    show_slug=show_slug,
+                    manifest=manifest,
+                    run_id=run_id,
+                    options=options,
+                    failed_state=STATE_FAILED_RETRYABLE,
+                    note="Download command completed without resolving request logs or producing outputs.",
+                )
             job = store.transition_job(
                 show_slug=show_slug,
                 job_id=str(job["job_id"]),
-                state=final_state,
+                state=STATE_AWAITING_PUBLISH,
                 actor=options.actor,
                 note="Download command completed successfully.",
-                details={"run_id": run_id},
+                details={"run_id": run_id, "progress": latest_progress},
             )
 
         manifest["status"] = "completed"
         manifest["completed_at"] = utc_now_iso()
         manifest["final_state"] = str(job.get("state") or "")
-        manifest_path = store.save_run_manifest(
+        return _finalize_execution_manifest(
+            store=store,
+            job=job,
             show_slug=show_slug,
-            job_id=str(job["job_id"]),
-            payload=manifest,
+            manifest=manifest,
             run_id=run_id,
+            progress=latest_progress,
         )
-        job = store.load_job(show_slug=show_slug, job_id=str(job["job_id"]))
-        artifacts = dict(job.get("artifacts") or {})
-        execution = dict(artifacts.get("execution") or {})
-        execution.update(
-            {
-                "latest_run_manifest": manifest_path,
-                "latest_run_id": run_id,
-                "last_success_at": manifest["completed_at"],
-                "last_generate_command": manifest["phases"][0]["command"] if manifest["phases"] else None,
-                "last_download_command": manifest["phases"][1]["command"]
-                if len(manifest["phases"]) > 1
-                else None,
-            }
-        )
-        artifacts["execution"] = execution
-        job["artifacts"] = artifacts
-        store.save_job(job)
-        return {
-            "run_id": run_id,
-            "job_id": str(job["job_id"]),
-            "show_slug": show_slug,
-            "final_state": str(job.get("state") or ""),
-            "manifest_path": manifest_path,
-            "phases": manifest["phases"],
-        }
 
 
 def _claim_or_resume_job(
@@ -267,13 +479,29 @@ def _claim_or_resume_job(
             )
         return job
 
-    resumable_states = {STATE_DOWNLOADING, STATE_GENERATED, STATE_GENERATING}
-    resumable = [entry for entry in store.list_jobs(show_slug=show_slug) if str(entry.get("state") or "") in resumable_states]
+    now = datetime.now(tz=UTC)
+    resumable_states = {
+        STATE_DOWNLOADING,
+        STATE_WAITING_FOR_ARTIFACT,
+        STATE_GENERATED,
+        STATE_GENERATING,
+    }
+    resumable: list[dict[str, Any]] = []
+    for entry in store.list_jobs(show_slug=show_slug):
+        state = str(entry.get("state") or "")
+        if state not in resumable_states:
+            continue
+        if state == STATE_WAITING_FOR_ARTIFACT:
+            retry_at = parse_utcish_iso(str(entry.get("next_retry_at") or "").strip())
+            if retry_at is not None and retry_at > now:
+                continue
+        resumable.append(entry)
     if resumable:
         state_rank = {
             STATE_DOWNLOADING: 0,
-            STATE_GENERATED: 1,
-            STATE_GENERATING: 2,
+            STATE_WAITING_FOR_ARTIFACT: 1,
+            STATE_GENERATED: 2,
+            STATE_GENERATING: 3,
         }
         resumable.sort(
             key=lambda entry: (

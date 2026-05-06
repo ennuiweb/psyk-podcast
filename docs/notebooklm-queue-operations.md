@@ -48,6 +48,8 @@ NOTEBOOKLM_QUEUE_STORAGE_ROOT=/var/lib/podcasts/notebooklm-queue
 NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS=900
 NOTEBOOKLM_QUEUE_DOWNSTREAM_POLL_SECONDS=10
 NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS=7200
+NOTEBOOKLM_QUEUE_ARTIFACT_WAIT_TIMEOUT_SECONDS=60
+NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS=60
 NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
 NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
 NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
@@ -97,8 +99,9 @@ Notes:
 - `GH_TOKEN` is only needed if the server-side `gh` CLI is not already authenticated in the service user's home.
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
-- `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns, and continues automatically when NotebookLM profile quota becomes available again.
-- `serve-show` now waits only when `retry_scheduled` jobs are the sole remaining active backlog. Mixed blocked+retry backlog or invalid retry timestamps stop the worker for manual intervention instead of hiding the problem behind more sleeping.
+- `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
+- Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move jobs between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
+- `serve-show` now waits only when timed backlog (`retry_scheduled` or `waiting_for_artifact`) is the sole remaining active work. Mixed blocked+timed backlog or invalid retry timestamps stop the worker for manual intervention instead of hiding the problem behind more sleeping.
 - Keep `NOTEBOOKLM_PROFILE_PRIORITY` ordered so accounts that can still create notebooks and artifacts are tried first. The generator now rotates on transient NotebookLM create/list/get RPC failures as well as explicit auth/rate-limit faults, but a good priority order still reduces churn during partial account outages.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
 - The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run while waiting through retry windows.

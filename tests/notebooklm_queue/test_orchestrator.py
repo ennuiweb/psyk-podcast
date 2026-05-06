@@ -3,7 +3,12 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from notebooklm_queue.constants import STATE_COMPLETED, STATE_FAILED_RETRYABLE, STATE_RETRY_SCHEDULED
+from notebooklm_queue.constants import (
+    STATE_COMPLETED,
+    STATE_FAILED_RETRYABLE,
+    STATE_RETRY_SCHEDULED,
+    STATE_WAITING_FOR_ARTIFACT,
+)
 from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
 from notebooklm_queue.store import QueueStore
@@ -242,6 +247,74 @@ def test_serve_show_queue_waits_for_retry_scheduled_backlog(tmp_path: Path, monk
     assert len(result["recent_cycles"]) == 2
 
 
+def test_serve_show_queue_waits_for_waiting_artifact_backlog(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    poll_at = datetime(2026, 1, 1, 12, 1, tzinfo=UTC)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_WAITING_FOR_ARTIFACT,
+        retry_at=poll_at.isoformat(),
+        expected_states={"queued"},
+    )
+
+    current_time = datetime(2026, 1, 1, 12, 0, tzinfo=UTC)
+    drained = {"count": 0}
+    slept: list[int] = []
+
+    def fake_now():
+        return current_time
+
+    def fake_sleep(seconds: int) -> None:
+        nonlocal current_time
+        slept.append(seconds)
+        current_time = current_time + timedelta(seconds=seconds)
+
+    def fake_drain_show_queue(*, store: QueueStore, show_slug: str, options: DrainShowOptions):
+        drained["count"] += 1
+        if drained["count"] == 2:
+            store.transition_job(
+                show_slug=show_slug,
+                job_id=str(job["job_id"]),
+                state=STATE_COMPLETED,
+                expected_states={STATE_WAITING_FOR_ARTIFACT},
+            )
+        return {
+            "show_slug": show_slug,
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug=show_slug),
+        }
+
+    monkeypatch.setattr("notebooklm_queue.orchestrator._utc_now", fake_now)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.sleep", fake_sleep)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.drain_show_queue", fake_drain_show_queue)
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+    )
+
+    assert drained["count"] == 2
+    assert result["cycle_count"] == 2
+    assert slept == [60]
+    assert result["stop_reason"] == "idle"
+    assert result["wait_plan"]["action"] == "idle"
+    assert result["total_sleep_seconds"] == 60
+
+
 def test_serve_show_queue_uses_real_clock_for_retry_wait_plan(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()
@@ -347,7 +420,7 @@ def test_serve_show_queue_does_not_wait_when_blocked_and_retry_jobs_coexist(tmp_
     )
 
     assert result["stop_reason"] == "manual_intervention_required"
-    assert result["wait_plan"]["reason"] == "mixed_retry_and_blocked_backlog"
+    assert result["wait_plan"]["reason"] == "mixed_timed_wait_and_blocked_backlog"
 
 
 def test_serve_show_queue_stops_for_invalid_retry_schedule(tmp_path: Path, monkeypatch) -> None:

@@ -48,7 +48,7 @@ def build_dry_run_plan(
             lecture_key=lecture_key,
             content_types=content_types,
             dry_run=True,
-            wait=True,
+            wait=False,
         ),
         "download_command": adapter.build_download_command(
             repo_root,

@@ -14,6 +14,7 @@ from notebooklm_queue.constants import (
     STATE_GENERATED,
     STATE_GENERATING,
     STATE_RETRY_SCHEDULED,
+    STATE_WAITING_FOR_ARTIFACT,
 )
 from notebooklm_queue.execution import ExecutionOptions, execute_job
 from notebooklm_queue.models import JobIdentity
@@ -56,20 +57,45 @@ def _make_repo_root(tmp_path: Path) -> Path:
     return repo_root
 
 
+def _week_output_dir(repo_root: Path, lecture_key: str = "W1L1") -> Path:
+    return repo_root / "notebooklm-podcast-auto" / "bioneuro" / "output" / lecture_key
+
+
+def _request_log_path(repo_root: Path, lecture_key: str = "W1L1") -> Path:
+    return _week_output_dir(repo_root, lecture_key) / "episode.request.json"
+
+
+def _audio_output_path(repo_root: Path, lecture_key: str = "W1L1") -> Path:
+    return _week_output_dir(repo_root, lecture_key) / "episode.mp3"
+
+
 def test_execute_job_runs_generate_and_download_and_persists_manifest(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         "import json, pathlib, sys\n"
-        "path = pathlib.Path(sys.argv[0]).resolve().parents[3] / '.phase-generate.json'\n"
+        "repo_root = pathlib.Path(sys.argv[0]).resolve().parents[3]\n"
+        "path = repo_root / '.phase-generate.json'\n"
         "path.write_text(json.dumps({'argv': sys.argv[1:]}, ensure_ascii=False), encoding='utf-8')\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.parent.mkdir(parents=True, exist_ok=True)\n"
+        f"payload = {{'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': {output_file.as_posix()!r}, 'artifact_type': 'audio'}}\n"
+        "request_log.write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')\n"
         "print('generated ok')\n",
     )
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
-        "import pathlib, sys\n"
-        "path = pathlib.Path(sys.argv[0]).resolve().parents[3] / '.phase-download.txt'\n"
-        "path.write_text('downloaded', encoding='utf-8')\n"
+        "import json, pathlib, sys\n"
+        "repo_root = pathlib.Path(sys.argv[0]).resolve().parents[3]\n"
+        "path = repo_root / '.phase-download.json'\n"
+        "path.write_text(json.dumps({'argv': sys.argv[1:]}, ensure_ascii=False), encoding='utf-8')\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.unlink(missing_ok=True)\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
         "print('downloaded ok')\n",
     )
     store = QueueStore(tmp_path / "queue-root")
@@ -79,7 +105,11 @@ def test_execute_job_runs_generate_and_download_and_persists_manifest(tmp_path: 
         store=store,
         show_slug="bioneuro",
         job_id=str(job["job_id"]),
-        options=ExecutionOptions(repo_root=repo_root),
+        options=ExecutionOptions(
+            repo_root=repo_root,
+            artifact_wait_timeout_seconds=11,
+            artifact_poll_interval_seconds=7,
+        ),
     )
 
     assert result["final_state"] == STATE_AWAITING_PUBLISH
@@ -89,8 +119,14 @@ def test_execute_job_runs_generate_and_download_and_persists_manifest(tmp_path: 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["status"] == "completed"
     assert [phase["name"] for phase in manifest["phases"]] == ["generate", "download"]
+    generate_args = json.loads((repo_root / ".phase-generate.json").read_text(encoding="utf-8"))["argv"]
+    download_args = json.loads((repo_root / ".phase-download.json").read_text(encoding="utf-8"))["argv"]
+    assert "--wait" not in generate_args
+    assert "--timeout" in download_args and "11" in download_args
+    assert "--interval" in download_args and "7" in download_args
     assert (repo_root / ".phase-generate.json").exists()
-    assert (repo_root / ".phase-download.txt").exists()
+    assert (repo_root / ".phase-download.json").exists()
+    assert output_file.exists()
 
 
 def test_execute_job_marks_failure_and_saves_run_manifest(tmp_path: Path) -> None:
@@ -307,12 +343,17 @@ def test_execute_job_does_not_alert_rate_limit_before_threshold(tmp_path: Path, 
 
 def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
+    output_file = _audio_output_path(repo_root)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         "raise SystemExit('generate should not run')\n",
     )
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "import pathlib\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
         "print('download only ok')\n",
     )
     store = QueueStore(tmp_path / "queue-root")
@@ -339,14 +380,122 @@ def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: P
     assert [phase["name"] for phase in manifest["phases"]] == ["download"]
 
 
-def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Path) -> None:
+def test_execute_job_marks_waiting_when_artifact_request_persists_after_download_poll(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import json, pathlib\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.parent.mkdir(parents=True, exist_ok=True)\n"
+        "request_log.write_text(json.dumps({'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': 'episode.mp3', 'artifact_type': 'audio'}), encoding='utf-8')\n"
+        "print('generated ok')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "import json, pathlib, sys\n"
+        "repo_root = pathlib.Path(sys.argv[0]).resolve().parents[3]\n"
+        "(repo_root / '.phase-download.json').write_text(json.dumps({'argv': sys.argv[1:]}, ensure_ascii=False), encoding='utf-8')\n"
+        "print('still waiting upstream')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root, artifact_wait_timeout_seconds=9, artifact_poll_interval_seconds=5),
+    )
+
+    assert result["final_state"] == STATE_WAITING_FOR_ARTIFACT
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_WAITING_FOR_ARTIFACT
+    assert updated["next_retry_at"]
+    manifest_path = store.root / str(updated["artifacts"]["execution"]["latest_run_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["status"] == "waiting"
+    assert [phase["name"] for phase in manifest["phases"]] == ["generate", "download"]
+    download_args = json.loads((repo_root / ".phase-download.json").read_text(encoding="utf-8"))["argv"]
+    assert "--timeout" in download_args and "9" in download_args
+    assert "--interval" in download_args and "5" in download_args
+
+
+def test_execute_job_resumes_from_waiting_state_and_skips_generate(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
+    request_log.parent.mkdir(parents=True, exist_ok=True)
+    request_log.write_text(
+        json.dumps(
+            {
+                "notebook_id": "nb-1",
+                "artifact_id": "art-1",
+                "output_path": str(output_file),
+                "artifact_type": "audio",
+            }
+        ),
+        encoding="utf-8",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "raise SystemExit('generate should not run')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "import pathlib\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.unlink(missing_ok=True)\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
+        "print('download resumed ok')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_WAITING_FOR_ARTIFACT,
+        retry_at="2000-01-01T00:00:00+00:00",
+        note="Prepared waiting resume test",
+    )
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_AWAITING_PUBLISH
+    manifest_path = store.root / str(
+        store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))["artifacts"]["execution"]["latest_run_manifest"]
+    )
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert [phase["name"] for phase in manifest["phases"]] == ["download"]
+
+
+def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import json, pathlib\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.parent.mkdir(parents=True, exist_ok=True)\n"
+        f"request_log.write_text(json.dumps({{'notebook_id': 'nb-1', 'artifact_id': 'art-1', 'output_path': {output_file.as_posix()!r}, 'artifact_type': 'audio'}}), encoding='utf-8')\n"
         "print('generate ok')\n",
     )
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "import pathlib\n"
+        f"request_log = pathlib.Path({request_log.as_posix()!r})\n"
+        "request_log.unlink(missing_ok=True)\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
         "print('download ok')\n",
     )
     store = QueueStore(tmp_path / "queue-root")
@@ -375,12 +524,17 @@ def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Pat
 
 def test_execute_job_resumes_in_progress_job_when_job_id_is_omitted(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
+    output_file = _audio_output_path(repo_root)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         "raise SystemExit('generate should not run')\n",
     )
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "import pathlib\n"
+        f"output_file = pathlib.Path({output_file.as_posix()!r})\n"
+        "output_file.parent.mkdir(parents=True, exist_ok=True)\n"
+        "output_file.write_bytes(b'mp3')\n"
         "print('download resumed ok')\n",
     )
     store = QueueStore(tmp_path / "queue-root")

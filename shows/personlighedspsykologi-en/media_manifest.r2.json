@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T16:02:38+00:00",
+  "generated_at": "2026-05-07T16:08:07+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -511,6 +511,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Slide%20lecture:%203.%20gang%20PersPsy%203%20260209%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "14NFzyU46SLxg2HMDvv3kKhkXFaenX8OU"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W02L1/W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=88a6244d}.mp3",
+      "source_name": "W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=88a6244d}.mp3",
+      "source_path": "W02L1/W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=88a6244d}.mp3",
+      "path_parts": [
+        "W02L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 95552434,
+      "sha256": "1849dc55fbef9933651f70f7f91b965bb89f386e95f261d11fb3ab2a26229518",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T16:07:59+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Zettler%20et%20al.%20%282020%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D88a6244d%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W02L1/W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",

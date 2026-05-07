@@ -1,12 +1,12 @@
 {
-  "version": 3,
+  "version": 5,
   "subject_slug": "bioneuro",
   "source_meta": {
-    "version": 3,
-    "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
-    "reading_fallback_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
-    "reading_source_used": "shows/bioneuro/docs/freudd-reading-file-key.md",
-    "reading_fallback_used": false,
+    "version": 5,
+    "generated_by": "freudd_portal/manage.py rebuild_content_manifest",
+    "manual_edit_allowed": false,
+    "artifact_ownership_path": null,
+    "reading_key_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
     "reading_error": null,
     "reading_summaries_path": null,
     "weekly_overview_summaries_path": null,

@@ -100,6 +100,7 @@ Notes:
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
+- Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
 - Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move jobs between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
 - Queue-owned metadata rebuild is now bundle-aware: audio-only publish bundles do not block on quiz sync or quiz-asset validation, but quiz bundles still fail closed if refreshed `quiz_links.json` or `content_manifest` quiz assets are missing.
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.

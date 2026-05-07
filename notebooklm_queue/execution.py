@@ -31,6 +31,10 @@ RATE_LIMIT_ERROR_TOKENS = (
     "resource_exhausted",
     "too many requests",
 )
+PROFILE_COOLDOWN_ERROR_TOKENS = (
+    "no usable profiles found after filtering missing/cooldown entries",
+    "is on cooldown",
+)
 TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
     "generator timed out before writing a usable request log",
     "rpc create_artifact failed",
@@ -76,6 +80,11 @@ def _looks_like_rate_limit(message: str | None) -> bool:
     )
 
 
+def _looks_like_profile_cooldown_exhaustion(message: str | None) -> bool:
+    text = str(message or "").lower()
+    return any(token in text for token in PROFILE_COOLDOWN_ERROR_TOKENS)
+
+
 def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:
     text = str(message or "").lower()
     return any(token in text for token in TRANSIENT_NOTEBOOKLM_ERROR_TOKENS)
@@ -84,7 +93,11 @@ def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:
 def _derived_retry_at(*, explicit_retry_at: str | None, error_text: str | None) -> str | None:
     if explicit_retry_at:
         return explicit_retry_at
-    if not (_looks_like_rate_limit(error_text) or _looks_like_transient_notebooklm_failure(error_text)):
+    if not (
+        _looks_like_rate_limit(error_text)
+        or _looks_like_profile_cooldown_exhaustion(error_text)
+        or _looks_like_transient_notebooklm_failure(error_text)
+    ):
         return None
     retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(DEFAULT_RATE_LIMIT_RETRY_SECONDS, 1))
     return retry_at.replace(microsecond=0).isoformat()

@@ -164,7 +164,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
   "description": "Bio / Neuropsychology F26",
   "active": true,
   "paths": {
-    "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
+    "reading_key_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
     "quiz_links_path": "shows/bioneuro/quiz_links.json",
     "feed_rss_path": "shows/bioneuro/feeds/rss.xml",
     "spotify_map_path": "shows/bioneuro/spotify_map.json",
@@ -181,7 +181,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 
 ## Subject content manifest contract (`content_manifest.json`)
 - `subject_slug`: canonical slug for the subject manifest.
-- `source_meta`: source paths + generation metadata (`tekst master`, `rss`, `quiz_links`).
+- `source_meta`: canonical input paths + generation metadata (`reading_key_path`, `rss`, `quiz_links`, optional `artifact_ownership_path`).
 - `lectures[]`: lecture-first tree with `lecture_key`, `lecture_title`, `sequence_index`, `readings[]`, `lecture_assets`, `warnings[]`.
 - `readings[]`: each tekst has deterministic `reading_key`, `reading_title`, optional `source_filename`, `is_missing`, and `assets` (`quizzes[]`, `podcasts[]`). Duplicate tekst titles in the same lecture are disambiguated with `-2`, `-3`, etc.
 - Optional summary sources: `reading_summaries_path` and `weekly_overview_summaries_path` can be configured per subject; manifest build maps them onto `readings[].summary` and lecture-level `summary`.
@@ -263,8 +263,9 @@ Operational behavior:
 - `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - `FREUDD_PORTAL_CSRF_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
-- `FREUDD_READING_MASTER_KEY_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
-- `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
+- `FREUDD_READING_KEY_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
+- `FREUDD_READING_MASTER_KEY_PATH` (deprecated alias for `FREUDD_READING_KEY_PATH`)
+- `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (deprecated compatibility alias; normal runtime no longer uses fallback ownership)
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)
 - `FREUDD_SUBJECT_SPOTIFY_MAP_PATH` (default: `shows/personlighedspsykologi-en/spotify_map.json`)
 - `FREUDD_SUBJECT_CONTENT_MANIFEST_PATH` (default: `shows/personlighedspsykologi-en/content_manifest.json`)

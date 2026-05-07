@@ -160,6 +160,7 @@ class SubjectContentManifestTests(TestCase):
 
         self.override = override_settings(
             FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
+            FREUDD_READING_KEY_PATH=self.primary_reading_file,
             FREUDD_READING_MASTER_KEY_PATH=self.primary_reading_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.fallback_reading_file,
             QUIZ_LINKS_JSON_PATH=self.quiz_links_file,
@@ -398,9 +399,20 @@ class SubjectContentManifestTests(TestCase):
 
         source_meta = manifest["source_meta"]
         self.assertNotIn("generated_at", source_meta)
-        self.assertEqual(source_meta["reading_master_path"], str(self.primary_reading_file))
-        self.assertEqual(source_meta["reading_fallback_path"], str(self.fallback_reading_file))
-        self.assertEqual(source_meta["reading_source_used"], str(self.primary_reading_file))
+        self.assertEqual(source_meta["reading_key_path"], str(self.primary_reading_file))
+        self.assertEqual(
+            source_meta["artifact_ownership_path"],
+            "shows/personlighedspsykologi-en/artifact_ownership.json",
+        )
+        self.assertEqual(
+            source_meta["generated_by"],
+            "freudd_portal/manage.py rebuild_content_manifest",
+        )
+        self.assertIs(source_meta["manual_edit_allowed"], False)
+        self.assertNotIn("reading_master_path", source_meta)
+        self.assertNotIn("reading_fallback_path", source_meta)
+        self.assertNotIn("reading_source_used", source_meta)
+        self.assertNotIn("reading_fallback_used", source_meta)
         self.assertEqual(source_meta["reading_summaries_path"], str(self.reading_summaries_file))
         self.assertEqual(
             source_meta["weekly_overview_summaries_path"],
@@ -511,9 +523,9 @@ class SubjectContentManifestTests(TestCase):
         clear_content_service_caches()
 
         refreshed = load_subject_content_manifest("personlighedspsykologi")
-        self.assertEqual(refreshed["version"], 4)
+        self.assertEqual(refreshed["version"], 5)
         persisted = json.loads(self.manifest_file.read_text(encoding="utf-8"))
-        self.assertEqual(persisted["version"], 4)
+        self.assertEqual(persisted["version"], 5)
 
     def test_build_manifest_sets_source_filename_none_for_missing_readings(self) -> None:
         self.primary_reading_file.write_text(
@@ -1238,15 +1250,14 @@ class SubjectContentManifestTests(TestCase):
         warnings = lecture.get("warnings") or []
         self.assertTrue(any("Duplicate podcast asset detected" in warning for warning in warnings))
 
-    def test_build_manifest_uses_fallback_when_primary_missing(self) -> None:
+    def test_build_manifest_reports_error_when_canonical_reading_key_missing(self) -> None:
         self.primary_reading_file.unlink()
         clear_subject_service_caches()
         clear_content_service_caches()
 
         manifest = build_subject_content_manifest("personlighedspsykologi")
-        self.assertEqual(len(manifest["lectures"]), 2)
-        self.assertTrue(manifest["source_meta"]["reading_fallback_used"])
-        self.assertIsNone(manifest["source_meta"]["reading_error"])
+        self.assertEqual(manifest["lectures"], [])
+        self.assertEqual(manifest["source_meta"]["reading_error"], "Tekst-nøglen kunne ikke indlæses.")
 
     def test_build_manifest_reports_error_when_both_reading_sources_missing(self) -> None:
         self.primary_reading_file.unlink()
@@ -1315,7 +1326,6 @@ class SubjectContentManifestTests(TestCase):
                             "active": True,
                             "paths": {
                                 "reading_master_path": str(reading_file),
-                                "reading_fallback_path": str(fallback_file),
                                 "quiz_links_path": str(quiz_links_file),
                                 "feed_rss_path": str(rss_file),
                                 "spotify_map_path": str(spotify_map_file),

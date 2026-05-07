@@ -27,6 +27,7 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `shows/personlighedspsykologi-en/auto_spec.json` | Forelæsningsstruktur og auto-matching for episoder. |
 | `shows/personlighedspsykologi-en/episode_metadata.json` | Manuelle episode-overrides. |
 | `shows/personlighedspsykologi-en/prompt_versions.json` | Canonical prompt-label registry: human `setup_version` defaults plus current prompt-version strings for podcast, printout og source-intelligence builders. |
+| `shows/personlighedspsykologi-en/artifact_ownership.json` | Maskinlaesbar ownership-kontrakt for canonical inputs, mirrors, derived artifacts og registries. |
 | `shows/personlighedspsykologi-en/regeneration_registry.json` | Canonical A/B rollout-registry for public baseline (`A`) vs. regenerated candidate (`B`) per logisk episode. |
 | `shows/personlighedspsykologi-en/reading_summaries.json` | Manuel cache med summary/key points for reading-, slide-, brief- og lydbogsepisoder. |
 | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` | Manuel cache for `ALLE KILDER`/lecture-level episoder. |

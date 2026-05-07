@@ -74,6 +74,7 @@ class QuizPortalTests(TestCase):
             QUIZ_FILES_ROOT=self.quiz_root,
             QUIZ_LINKS_JSON_PATH=self.links_file,
             FREUDD_SUBJECTS_JSON_PATH=self.subjects_file,
+            FREUDD_READING_KEY_PATH=self.reading_master_file,
             FREUDD_READING_MASTER_KEY_PATH=self.reading_master_file,
             FREUDD_READING_MASTER_KEY_FALLBACK_PATH=self.reading_fallback_file,
             FREUDD_SUBJECT_FEED_RSS_PATH=self.rss_file,

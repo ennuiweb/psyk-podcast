@@ -5,9 +5,11 @@ import json
 import hashlib
 import sys
 from pathlib import Path
+from typing import Any
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
 NOTEBOOKLM_DIR = Path("notebooklm-podcast-auto/personlighedspsykologi")
+FREUDD_SUBJECTS = Path("freudd_portal/subjects.json")
 
 CANONICAL_CONFIG = SHOW_DIR / "config.github.json"
 COMPAT_CONFIG = SHOW_DIR / "config.local.json"
@@ -26,6 +28,34 @@ COURSE_THEORY_MAP = SHOW_DIR / "course_theory_map.json"
 SOURCE_INTELLIGENCE_STALENESS = SHOW_DIR / "source_intelligence_staleness.json"
 SOURCE_WEIGHTING = SHOW_DIR / "source_weighting.json"
 COURSE_CONCEPT_GRAPH = SHOW_DIR / "course_concept_graph.json"
+ARTIFACT_OWNERSHIP = SHOW_DIR / "artifact_ownership.json"
+VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
+PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS = {
+    "reading_key_path",
+    "reading_summaries_path",
+    "weekly_overview_summaries_path",
+    "quiz_links_path",
+    "quiz_files_root",
+    "feed_rss_path",
+    "episode_inventory_path",
+    "spotify_map_path",
+    "content_manifest_path",
+    "reading_files_root",
+    "reading_download_exclusions_path",
+    "slides_catalog_path",
+    "slides_files_root",
+}
+PERSONLIGHEDS_SUBJECT_PATH_TO_ARTIFACT = {
+    "reading_key_path": "reading_key",
+    "reading_summaries_path": "reading_summaries",
+    "weekly_overview_summaries_path": "weekly_overview_summaries",
+    "feed_rss_path": "rss_feed",
+    "episode_inventory_path": "episode_inventory",
+    "spotify_map_path": "spotify_map",
+    "content_manifest_path": "content_manifest",
+    "reading_download_exclusions_path": "reading_download_exclusions",
+    "slides_catalog_path": "slides_catalog",
+}
 
 REFERENCE_FILES = [
     SHOW_DIR / "README.md",
@@ -58,6 +88,102 @@ def _sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _resolve_owned_path(repo_root: Path, raw_path: str) -> Path:
+    candidate = Path(raw_path)
+    if candidate.is_absolute():
+        return candidate
+    return repo_root / candidate
+
+
+def _validate_artifact_ownership(repo_root: Path) -> tuple[list[str], dict[str, dict[str, Any]]]:
+    failures: list[str] = []
+    contract_path = repo_root / ARTIFACT_OWNERSHIP
+    if not contract_path.exists():
+        return ([f"Missing artifact ownership contract: {ARTIFACT_OWNERSHIP}"], {})
+
+    payload = _load_json(contract_path)
+    if not isinstance(payload, dict):
+        return ([f"Artifact ownership payload is invalid: {ARTIFACT_OWNERSHIP}"], {})
+    if payload.get("version") != 1:
+        failures.append(f"Artifact ownership contract has unsupported version in {ARTIFACT_OWNERSHIP}")
+
+    artifacts = payload.get("artifacts")
+    if not isinstance(artifacts, list):
+        return ([f"Artifact ownership contract is missing artifacts list: {ARTIFACT_OWNERSHIP}"], {})
+
+    artifacts_by_id: dict[str, dict[str, Any]] = {}
+    concepts: dict[str, list[dict[str, Any]]] = {}
+    for entry in artifacts:
+        if not isinstance(entry, dict):
+            failures.append(f"Artifact ownership entry is invalid in {ARTIFACT_OWNERSHIP}")
+            continue
+        artifact_id = str(entry.get("artifact_id") or "").strip()
+        concept = str(entry.get("concept") or "").strip()
+        role = str(entry.get("role") or "").strip()
+        path_text = str(entry.get("path") or "").strip()
+        if not artifact_id:
+            failures.append(f"Artifact ownership entry missing artifact_id in {ARTIFACT_OWNERSHIP}")
+            continue
+        if artifact_id in artifacts_by_id:
+            failures.append(f"Duplicate artifact ownership id {artifact_id} in {ARTIFACT_OWNERSHIP}")
+            continue
+        if not concept:
+            failures.append(f"Artifact ownership entry {artifact_id} missing concept in {ARTIFACT_OWNERSHIP}")
+        if role not in VALID_OWNERSHIP_ROLES:
+            failures.append(f"Artifact ownership entry {artifact_id} has invalid role {role!r}")
+        if not path_text:
+            failures.append(f"Artifact ownership entry {artifact_id} missing path in {ARTIFACT_OWNERSHIP}")
+        require_exists = bool(entry.get("require_exists", True))
+        if path_text and require_exists and not _resolve_owned_path(repo_root, path_text).exists():
+            failures.append(f"Owned artifact missing on disk for {artifact_id}: {path_text}")
+        mirror_of = str(entry.get("mirror_of") or "").strip()
+        if role == "mirror" and not mirror_of:
+            failures.append(f"Mirror artifact {artifact_id} missing mirror_of in {ARTIFACT_OWNERSHIP}")
+        artifacts_by_id[artifact_id] = entry
+        concepts.setdefault(concept, []).append(entry)
+
+    for artifact_id, entry in artifacts_by_id.items():
+        if str(entry.get("role") or "").strip() != "mirror":
+            continue
+        mirror_of = str(entry.get("mirror_of") or "").strip()
+        parent = artifacts_by_id.get(mirror_of)
+        if parent is None:
+            failures.append(f"Mirror artifact {artifact_id} references unknown parent {mirror_of}")
+            continue
+        if str(parent.get("role") or "").strip() != "canonical":
+            failures.append(f"Mirror artifact {artifact_id} parent {mirror_of} is not canonical")
+        if str(parent.get("concept") or "").strip() != str(entry.get("concept") or "").strip():
+            failures.append(f"Mirror artifact {artifact_id} concept does not match parent {mirror_of}")
+
+    for concept, entries in concepts.items():
+        if not concept:
+            continue
+        if not any(str(entry.get("role") or "").strip() in {"canonical", "mirror"} for entry in entries):
+            continue
+        canonical_count = sum(1 for entry in entries if str(entry.get("role") or "").strip() == "canonical")
+        if canonical_count != 1:
+            failures.append(
+                f"Ownership concept {concept!r} must have exactly one canonical artifact; found {canonical_count}"
+            )
+
+    return failures, artifacts_by_id
+
+
+def _find_subject_definition(payload: Any, *, slug: str) -> dict[str, Any] | None:
+    if not isinstance(payload, dict):
+        return None
+    subjects = payload.get("subjects")
+    if not isinstance(subjects, list):
+        return None
+    normalized_slug = str(slug or "").strip().lower()
+    for subject in subjects:
+        if not isinstance(subject, dict):
+            continue
+        if str(subject.get("slug") or "").strip().lower() == normalized_slug:
+            return subject
+    return None
+
+
 def _failures(repo_root: Path) -> list[str]:
     failures: list[str] = []
     canonical_config = repo_root / CANONICAL_CONFIG
@@ -77,6 +203,10 @@ def _failures(repo_root: Path) -> list[str]:
     source_intelligence_staleness = repo_root / SOURCE_INTELLIGENCE_STALENESS
     source_weighting = repo_root / SOURCE_WEIGHTING
     course_concept_graph = repo_root / COURSE_CONCEPT_GRAPH
+    freudd_subjects = repo_root / FREUDD_SUBJECTS
+    content_manifest_payload = _load_json(content_manifest) if content_manifest.exists() else None
+    ownership_failures, owned_artifacts = _validate_artifact_ownership(repo_root)
+    failures.extend(ownership_failures)
 
     if not canonical_config.exists():
         failures.append(f"Missing canonical config: {CANONICAL_CONFIG}")
@@ -119,11 +249,87 @@ def _failures(repo_root: Path) -> list[str]:
         failures.append(f"Missing source weighting artifact: {SOURCE_WEIGHTING}")
     if not course_concept_graph.exists():
         failures.append(f"Missing course concept graph: {COURSE_CONCEPT_GRAPH}")
+    if not freudd_subjects.exists():
+        failures.append(f"Missing Freudd subject catalog: {FREUDD_SUBJECTS}")
+
+    if freudd_subjects.exists():
+        freudd_subjects_payload = _load_json(freudd_subjects)
+        person_subject = _find_subject_definition(freudd_subjects_payload, slug="personlighedspsykologi")
+        if person_subject is None:
+            failures.append("Freudd subject catalog missing personlighedspsykologi subject definition")
+        else:
+            raw_paths = person_subject.get("paths")
+            if not isinstance(raw_paths, dict):
+                failures.append("Freudd personlighedspsykologi subject is missing explicit paths object")
+            else:
+                legacy_keys = {"reading_master_path", "reading_fallback_path"} & set(raw_paths.keys())
+                if legacy_keys:
+                    failures.append(
+                        "Freudd personlighedspsykologi subject still uses legacy reading path keys: "
+                        + ", ".join(sorted(legacy_keys))
+                    )
+                missing_paths = PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS - set(raw_paths.keys())
+                if missing_paths:
+                    failures.append(
+                        "Freudd personlighedspsykologi subject missing explicit ownership paths: "
+                        + ", ".join(sorted(missing_paths))
+                    )
+                for subject_key, artifact_id in PERSONLIGHEDS_SUBJECT_PATH_TO_ARTIFACT.items():
+                    if subject_key not in raw_paths:
+                        continue
+                    artifact_entry = owned_artifacts.get(artifact_id)
+                    if artifact_entry is None:
+                        failures.append(
+                            f"Artifact ownership contract missing artifact {artifact_id} referenced by subject path {subject_key}"
+                        )
+                        continue
+                    expected_path = str(artifact_entry.get("path") or "").strip()
+                    actual_path = str(raw_paths.get(subject_key) or "").strip()
+                    if actual_path != expected_path:
+                        failures.append(
+                            f"Freudd personlighedspsykologi path {subject_key} diverged from artifact ownership contract: "
+                            f"{actual_path} != {expected_path}"
+                        )
+
+    if isinstance(content_manifest_payload, dict):
+        if content_manifest_payload.get("version") != 5:
+            failures.append("Content manifest schema version should now be 5")
+        source_meta = content_manifest_payload.get("source_meta")
+        if not isinstance(source_meta, dict):
+            failures.append(f"Content manifest source_meta missing or invalid in {CONTENT_MANIFEST}")
+        else:
+            for legacy_field in (
+                "reading_master_path",
+                "reading_fallback_path",
+                "reading_source_used",
+                "reading_fallback_used",
+            ):
+                if legacy_field in source_meta:
+                    failures.append(
+                        f"Content manifest source_meta still exposes legacy ownership field {legacy_field}"
+                    )
+            if source_meta.get("manual_edit_allowed") is not False:
+                failures.append("Content manifest source_meta must declare manual_edit_allowed=false")
+            if str(source_meta.get("generated_by") or "").strip() != "freudd_portal/manage.py rebuild_content_manifest":
+                failures.append("Content manifest source_meta generated_by is missing or invalid")
+            expected_reading_key_path = str(
+                (owned_artifacts.get("reading_key") or {}).get("path") or PRIMARY_READING_KEY.as_posix()
+            )
+            if str(source_meta.get("reading_key_path") or "").strip() != expected_reading_key_path:
+                failures.append(
+                    f"Content manifest source_meta reading_key_path diverged from canonical ownership path: "
+                    f"{source_meta.get('reading_key_path')} != {expected_reading_key_path}"
+                )
+            expected_ownership_path = str(ARTIFACT_OWNERSHIP)
+            if str(source_meta.get("artifact_ownership_path") or "").strip() != expected_ownership_path:
+                failures.append(
+                    f"Content manifest source_meta artifact_ownership_path diverged from canonical contract: "
+                    f"{source_meta.get('artifact_ownership_path')} != {expected_ownership_path}"
+                )
 
     if source_catalog.exists() and lecture_bundle_index.exists() and content_manifest.exists():
         source_catalog_payload = _load_json(source_catalog)
         lecture_bundle_index_payload = _load_json(lecture_bundle_index)
-        content_manifest_payload = _load_json(content_manifest)
 
         source_catalog_lectures = source_catalog_payload.get("lectures") if isinstance(source_catalog_payload, dict) else None
         manifest_lectures = content_manifest_payload.get("lectures") if isinstance(content_manifest_payload, dict) else None

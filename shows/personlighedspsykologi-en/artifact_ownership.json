@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "artifacts": [
+    {
+      "artifact_id": "reading_key",
+      "concept": "reading_key",
+      "path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "reading_key_onedrive_export",
+      "concept": "reading_key",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md",
+      "role": "mirror",
+      "manual_edit_allowed": false,
+      "mirror_of": "reading_key",
+      "writer": "scripts/sync_personlighedspsykologi_reading_file_key.py",
+      "require_exists": false
+    },
+    {
+      "artifact_id": "show_config",
+      "concept": "show_config",
+      "path": "shows/personlighedspsykologi-en/config.github.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "show_config_local",
+      "concept": "show_config",
+      "path": "shows/personlighedspsykologi-en/config.local.json",
+      "role": "mirror",
+      "manual_edit_allowed": false,
+      "mirror_of": "show_config",
+      "writer": "manual sync / invariant enforcement"
+    },
+    {
+      "artifact_id": "prompt_versions",
+      "concept": "prompt_versions",
+      "path": "shows/personlighedspsykologi-en/prompt_versions.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "reading_summaries",
+      "concept": "reading_summaries",
+      "path": "shows/personlighedspsykologi-en/reading_summaries.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "weekly_overview_summaries",
+      "concept": "weekly_overview_summaries",
+      "path": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "slides_catalog",
+      "concept": "slides_catalog",
+      "path": "shows/personlighedspsykologi-en/slides_catalog.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "reading_download_exclusions",
+      "concept": "reading_download_exclusions",
+      "path": "shows/personlighedspsykologi-en/reading_download_exclusions.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "overblik_doc",
+      "concept": "overblik_doc",
+      "path": "shows/personlighedspsykologi-en/docs/overblik.md",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "freudd_subjects_catalog",
+      "concept": "freudd_subject_paths",
+      "path": "freudd_portal/subjects.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual"
+    },
+    {
+      "artifact_id": "rollout_registry",
+      "concept": "rollout_state",
+      "path": "shows/personlighedspsykologi-en/regeneration_registry.json",
+      "role": "canonical",
+      "manual_edit_allowed": false,
+      "writer": "sync_regeneration_registry.py"
+    },
+    {
+      "artifact_id": "learning_material_registry",
+      "concept": "learning_material_provenance",
+      "path": "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json",
+      "role": "canonical",
+      "manual_edit_allowed": false,
+      "writer": "sync_personlighedspsykologi_learning_material_registry.py"
+    },
+    {
+      "artifact_id": "rss_feed",
+      "concept": "rss_feed",
+      "path": "shows/personlighedspsykologi-en/feeds/rss.xml",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "podcast-tools/gdrive_podcast_feed.py"
+    },
+    {
+      "artifact_id": "episode_inventory",
+      "concept": "episode_inventory",
+      "path": "shows/personlighedspsykologi-en/episode_inventory.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "podcast-tools/gdrive_podcast_feed.py"
+    },
+    {
+      "artifact_id": "content_manifest",
+      "concept": "content_manifest",
+      "path": "shows/personlighedspsykologi-en/content_manifest.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "freudd_portal/manage.py rebuild_content_manifest"
+    },
+    {
+      "artifact_id": "spotify_map",
+      "concept": "spotify_map",
+      "path": "shows/personlighedspsykologi-en/spotify_map.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/sync_spotify_map.py"
+    },
+    {
+      "artifact_id": "source_catalog",
+      "concept": "source_catalog",
+      "path": "shows/personlighedspsykologi-en/source_catalog.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_source_catalog.py"
+    }
+  ]
+}

@@ -191,12 +191,17 @@ FREUDD_SUBJECTS_JSON_PATH = Path(
         BASE_DIR / "subjects.json",
     )
 )
-FREUDD_READING_MASTER_KEY_PATH = Path(
+FREUDD_READING_KEY_PATH = Path(
     os.environ.get(
-        "FREUDD_READING_MASTER_KEY_PATH",
-        BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "docs" / "reading-file-key.md",
+        "FREUDD_READING_KEY_PATH",
+        os.environ.get(
+            "FREUDD_READING_MASTER_KEY_PATH",
+            BASE_DIR.parent / "shows" / "personlighedspsykologi-en" / "docs" / "reading-file-key.md",
+        ),
     )
 )
+# Backward-compatible aliases. New code should use FREUDD_READING_KEY_PATH.
+FREUDD_READING_MASTER_KEY_PATH = FREUDD_READING_KEY_PATH
 FREUDD_READING_MASTER_KEY_FALLBACK_PATH = Path(
     os.environ.get(
         "FREUDD_READING_MASTER_KEY_FALLBACK_PATH",

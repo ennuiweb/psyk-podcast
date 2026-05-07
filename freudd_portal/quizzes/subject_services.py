@@ -20,8 +20,7 @@ BRIEF_SUFFIX_RE = re.compile(r"\s*\([^)]*\b(?:short|brief)\b[^)]*\)\s*$", re.IGN
 PATH_SEPARATORS_RE = re.compile(r"[\\/]+")
 SOURCE_LIST_SEPARATOR_RE = re.compile(r"\s*;\s*")
 SUBJECT_PATH_KEYS = {
-    "reading_master_path",
-    "reading_fallback_path",
+    "reading_key_path",
     "reading_summaries_path",
     "weekly_overview_summaries_path",
     "quiz_links_path",
@@ -34,6 +33,10 @@ SUBJECT_PATH_KEYS = {
     "reading_download_exclusions_path",
     "slides_catalog_path",
     "slides_files_root",
+}
+LEGACY_SUBJECT_PATH_ALIASES = {
+    "reading_master_path": "reading_key_path",
+    "reading_fallback_path": "reading_key_path",
 }
 
 
@@ -48,8 +51,7 @@ class SubjectDefinition:
 
 @dataclass(frozen=True)
 class SubjectAssetPaths:
-    reading_master_path: Path
-    reading_fallback_path: Path
+    reading_key_path: Path
     reading_summaries_path: Path | None
     weekly_overview_summaries_path: Path | None
     quiz_links_path: Path
@@ -128,14 +130,17 @@ def _normalize_subject_paths(raw_paths: Any) -> dict[str, str]:
         if not isinstance(raw_key, str):
             continue
         key = raw_key.strip()
-        if key not in SUBJECT_PATH_KEYS:
+        normalized_key = LEGACY_SUBJECT_PATH_ALIASES.get(key, key)
+        if normalized_key not in SUBJECT_PATH_KEYS:
             continue
         if not isinstance(raw_value, str):
             continue
         value = raw_value.strip()
         if not value:
             continue
-        normalized[key] = value
+        if normalized_key in normalized and key in LEGACY_SUBJECT_PATH_ALIASES:
+            continue
+        normalized[normalized_key] = value
     return normalized
 
 
@@ -152,8 +157,7 @@ def _resolve_subject_path(value: str | Path) -> Path:
 
 def _default_subject_paths() -> SubjectAssetPaths:
     return SubjectAssetPaths(
-        reading_master_path=Path(settings.FREUDD_READING_MASTER_KEY_PATH),
-        reading_fallback_path=Path(settings.FREUDD_READING_MASTER_KEY_FALLBACK_PATH),
+        reading_key_path=Path(settings.FREUDD_READING_KEY_PATH),
         reading_summaries_path=None,
         weekly_overview_summaries_path=None,
         quiz_links_path=Path(settings.QUIZ_LINKS_JSON_PATH),
@@ -181,8 +185,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
         return defaults
 
     values = {
-        "reading_master_path": defaults.reading_master_path,
-        "reading_fallback_path": defaults.reading_fallback_path,
+        "reading_key_path": defaults.reading_key_path,
         "reading_summaries_path": defaults.reading_summaries_path,
         "weekly_overview_summaries_path": defaults.weekly_overview_summaries_path,
         "quiz_links_path": defaults.quiz_links_path,
@@ -206,8 +209,7 @@ def resolve_subject_paths(subject_slug: str) -> SubjectAssetPaths:
             values["episode_inventory_path"] = feed_rss_path.parent.parent / "episode_inventory.json"
 
     return SubjectAssetPaths(
-        reading_master_path=values["reading_master_path"],
-        reading_fallback_path=values["reading_fallback_path"],
+        reading_key_path=values["reading_key_path"],
         reading_summaries_path=values["reading_summaries_path"],
         weekly_overview_summaries_path=values["weekly_overview_summaries_path"],
         quiz_links_path=values["quiz_links_path"],

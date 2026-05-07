@@ -7,10 +7,17 @@
       "description": "Personlighedspsykologi F26",
       "active": true,
       "paths": {
+        "reading_key_path": "shows/personlighedspsykologi-en/docs/reading-file-key.md",
         "reading_summaries_path": "shows/personlighedspsykologi-en/reading_summaries.json",
         "weekly_overview_summaries_path": "shows/personlighedspsykologi-en/weekly_overview_summaries.json",
+        "quiz_links_path": "shows/personlighedspsykologi-en/quiz_links.json",
         "quiz_files_root": "/var/www/quizzes/personlighedspsykologi",
+        "feed_rss_path": "shows/personlighedspsykologi-en/feeds/rss.xml",
         "episode_inventory_path": "shows/personlighedspsykologi-en/episode_inventory.json",
+        "spotify_map_path": "shows/personlighedspsykologi-en/spotify_map.json",
+        "content_manifest_path": "shows/personlighedspsykologi-en/content_manifest.json",
+        "reading_files_root": "/var/www/readings/personlighedspsykologi",
+        "reading_download_exclusions_path": "shows/personlighedspsykologi-en/reading_download_exclusions.json",
         "slides_catalog_path": "shows/personlighedspsykologi-en/slides_catalog.json",
         "slides_files_root": "/var/www/slides/personlighedspsykologi"
       }
@@ -21,8 +28,7 @@
       "description": "Bio / Neuropsychology F26",
       "active": true,
       "paths": {
-        "reading_master_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
-        "reading_fallback_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
+        "reading_key_path": "shows/bioneuro/docs/freudd-reading-file-key.md",
         "quiz_links_path": "shows/bioneuro/quiz_links.json",
         "quiz_files_root": "/var/www/quizzes/bioneuro",
         "feed_rss_path": "shows/bioneuro/feeds/rss.xml",

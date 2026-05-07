@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T20:37:32+00:00",
+  "generated_at": "2026-05-07T20:50:33+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -959,6 +959,21 @@
       "published_at": "2026-05-07T20:27:10+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%205%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0f999d6e%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/[Short] W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ed5f1e}.mp3",
+      "source_name": "[Short] W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ed5f1e}.mp3",
+      "source_path": "W03L2/[Short] W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ed5f1e}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11456300,
+      "sha256": "1713193155cec44f1cc3cfc8168c3c47192696d7d97c656f49f6072b98c57713",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:50:30+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Da3ed5f1e%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",

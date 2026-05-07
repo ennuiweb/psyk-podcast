@@ -2,27 +2,27 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-07T10:09:43Z",
+  "generated_at": "2026-05-07T10:19:53Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 128,
-    "in_scope_entries": 120,
+    "total_entries": 129,
+    "in_scope_entries": 121,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 23,
+      "short": 24,
       "single_reading": 57,
       "single_slide": 19,
       "tts": 8,
       "weekly_readings_only": 21
     },
     "rollout_state_counts": {
-      "b_active": 17,
+      "b_active": 18,
       "original_only": 103,
       "out_of_scope": 8
     },
     "active_variant_counts": {
       "A": 111,
-      "B": 17
+      "B": 18
     }
   },
   "entries": [
@@ -1755,7 +1755,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1fyZ_W63gQd19LRG6O9ZEvoeNkZLXIDvf",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/W02L2%20-%20Bleidorn%20et%20al.%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-02-10T12:00:00+01:00",
+          "published_at": "2026-02-10T14:00:00+01:00",
           "title": "U2F2 · Bleidorn et al. (2022)",
           "audio_sha256": null
         },
@@ -1814,7 +1814,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1lg3Mu80y9sm--AVw79w4wnTDhBbL87sF",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/W02L2%20-%20Li%20%26%20Wilt%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-02-10T14:00:00+01:00",
+          "published_at": "2026-02-10T16:00:00+01:00",
           "title": "U2F2 · Li & Wilt (2025)",
           "audio_sha256": null
         },
@@ -4979,7 +4979,7 @@
           "config_hash": "973c491c",
           "episode_key": "1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/W02L2%20-%20Slide%20lecture:%204.%20gang%20PersPsy%204%20260210%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-02-10T16:00:00+01:00",
+          "published_at": "2026-02-10T18:00:00+01:00",
           "title": "U2F2 · Forelæsningsslides · PersPsy 4 260210",
           "audio_sha256": null
         },
@@ -5977,13 +5977,13 @@
       "title": "U1F1 · [Kort] · Lewis (1999)",
       "canonical_source_name": "[Short] W01L1 - Lewis (1999) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T10:19:53Z"
       },
       "variants": {
         "A": {
@@ -6005,27 +6005,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+          "canonical_source_name": "[Short] W01L1 - Lewis (1999) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "42c500dd"
+          },
+          "config_hash": "42c500dd",
+          "episode_key": "shows/personlighedspsykologi-en/W01L1/[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L1/%5BShort%5D%20W01L1%20-%20Lewis%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D42c500dd%7D.mp3",
+          "published_at": "2026-05-07T10:09:48+00:00",
+          "title": "U1F1 · [Kort] · Lewis (1999)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "ed2f07a50b08488438b8b8af7f1e13d44967df0ba3617de1cafbda70cee45d1e",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T10:09:48+00:00",
+          "registered_at": "2026-05-07T10:19:53Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 8573929,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T10:19:53Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W01L1/[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -6297,6 +6311,65 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/%5BShort%5D%20W02L1%20-%20Columbus%20%26%20Strandsbjerg%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
           "published_at": "2026-02-09T10:00:00+01:00",
           "title": "U2F1 · [Kort] · Columbus & Strandsbjerg (2025)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w02l2__bleidorn_et_al_2022_en",
+      "prompt_type": "short",
+      "lecture_key": "W02L2",
+      "title": "U2F2 · [Kort] · Bleidorn et al. (2022)",
+      "canonical_source_name": "[Short] W02L2 - Bleidorn et al. (2022) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W02L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=eeed9e1f}.mp3",
+          "canonical_source_name": "[Short] W02L2 - Bleidorn et al. (2022) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "eeed9e1f"
+          },
+          "config_hash": "eeed9e1f",
+          "episode_key": "shows/personlighedspsykologi-en/W02L2/[Short] W02L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=eeed9e1f}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/%5BShort%5D%20W02L2%20-%20Bleidorn%20et%20al.%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Deeed9e1f%7D.mp3",
+          "published_at": "2026-02-10T12:00:00+01:00",
+          "title": "U2F2 · [Kort] · Bleidorn et al. (2022)",
           "audio_sha256": null
         },
         "B": {

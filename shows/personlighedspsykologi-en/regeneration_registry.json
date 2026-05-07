@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-07T12:10:09Z",
+  "generated_at": "2026-05-07T12:10:45Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 129,
@@ -16,13 +16,13 @@
       "weekly_readings_only": 21
     },
     "rollout_state_counts": {
-      "b_active": 25,
-      "original_only": 96,
+      "b_active": 27,
+      "original_only": 94,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 104,
-      "B": 25
+      "A": 102,
+      "B": 27
     }
   },
   "entries": [
@@ -90,7 +90,7 @@
       "logical_episode_id": "weekly_readings_only__w01l2__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W01L2",
-      "title": "U1F2 · ALLE KILDER",
+      "title": "U1F2 · ALLE KILDER ✦",
       "canonical_source_name": "W01L2 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -104,7 +104,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W01L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
+          "source_name": "W01L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=6d3be2b1}.mp3",
           "canonical_source_name": "W01L2 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -112,13 +112,13 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "3",
-            "hash": "1b3d31bc"
+            "hash": "6d3be2b1"
           },
-          "config_hash": "1b3d31bc",
+          "config_hash": "6d3be2b1",
           "episode_key": "14vLOunLmHTnFhb8aQxkXZoFTFgdRyC85",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D1b3d31bc%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D6d3be2b1%7D.mp3",
           "published_at": "2026-02-03T10:00:00+01:00",
-          "title": "U1F2 · ALLE KILDER",
+          "title": "U1F2 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1449,7 +1449,7 @@
       "logical_episode_id": "single_reading__w01l2__koutsoumpis_2025_en",
       "prompt_type": "single_reading",
       "lecture_key": "W01L2",
-      "title": "U1F2 · Koutsoumpis (2025)",
+      "title": "U1F2 · Koutsoumpis (2025) ✦",
       "canonical_source_name": "W01L2 - Koutsoumpis (2025) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1463,20 +1463,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=abd6b40a}.mp3",
           "canonical_source_name": "W01L2 - Koutsoumpis (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "abd6b40a"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "abd6b40a",
           "episode_key": "1jpb2bBAtwisRIjsXSNxSEstTm_89G43p",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dabd6b40a%7D.mp3",
           "published_at": "2026-02-03T14:00:00+01:00",
-          "title": "U1F2 · Koutsoumpis (2025)",
+          "title": "U1F2 · Koutsoumpis (2025) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1522,7 +1522,7 @@
       "logical_episode_id": "single_reading__w01l2__mayer_bryan_2024_en",
       "prompt_type": "single_reading",
       "lecture_key": "W01L2",
-      "title": "U1F2 · Mayer & Bryan (2024)",
+      "title": "U1F2 · Mayer & Bryan (2024) ✦",
       "canonical_source_name": "W01L2 - Mayer & Bryan (2024) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1536,20 +1536,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=6bb9175f}.mp3",
           "canonical_source_name": "W01L2 - Mayer & Bryan (2024) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "6bb9175f"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "6bb9175f",
           "episode_key": "1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D6bb9175f%7D.mp3",
           "published_at": "2026-02-03T18:00:00+01:00",
-          "title": "U1F2 · Mayer & Bryan (2024)",
+          "title": "U1F2 · Mayer & Bryan (2024) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1595,7 +1595,7 @@
       "logical_episode_id": "single_reading__w01l2__phan_et_al_2024_en",
       "prompt_type": "single_reading",
       "lecture_key": "W01L2",
-      "title": "U1F2 · Phan et al. (2024)",
+      "title": "U1F2 · Phan et al. (2024) ✦",
       "canonical_source_name": "W01L2 - Phan et al. (2024) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1609,20 +1609,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=b0447890}.mp3",
           "canonical_source_name": "W01L2 - Phan et al. (2024) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "b0447890"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "b0447890",
           "episode_key": "1W8Yvh5biopggfGclBOUhP78035u2QWCE",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db0447890%7D.mp3",
           "published_at": "2026-02-03T22:00:00+01:00",
-          "title": "U1F2 · Phan et al. (2024)",
+          "title": "U1F2 · Phan et al. (2024) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -2202,13 +2202,13 @@
       "title": "U4F1 · Freud (1973-1933) DA",
       "canonical_source_name": "W04L1 - Freud (1973-1933) DA [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T12:10:45Z"
       },
       "variants": {
         "A": {
@@ -2230,27 +2230,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+          "canonical_source_name": "W04L1 - Freud (1973-1933) DA [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "2c34b5c1"
+          },
+          "config_hash": "2c34b5c1",
+          "episode_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/W04L1%20-%20Freud%20%281973-1933%29%20DA%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2c34b5c1%7D.mp3",
+          "published_at": "2026-05-07T12:10:15+00:00",
+          "title": "U4F1 · Freud (1973-1933) DA",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "b9b27f45482faf05ba2cf0faee7ba070b6a7c5084b25942849581ac3c088fb36",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T12:10:15+00:00",
+          "registered_at": "2026-05-07T12:10:45Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 70732111,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T12:10:45Z",
+              "event": "queue_auto_activated",
+              "source_name": "W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2320,13 +2334,13 @@
       "title": "U4F1 · Gammelgaard (2007)",
       "canonical_source_name": "W04L1 - Gammelgaard (2007) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T12:10:45Z"
       },
       "variants": {
         "A": {
@@ -2348,27 +2362,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+          "canonical_source_name": "W04L1 - Gammelgaard (2007) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "25618406"
+          },
+          "config_hash": "25618406",
+          "episode_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/W04L1%20-%20Gammelgaard%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D25618406%7D.mp3",
+          "published_at": "2026-05-07T12:10:15+00:00",
+          "title": "U4F1 · Gammelgaard (2007)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "13ee1b01e63930e2330fc487932beb3a86590e1faa545b8c35aa0123a5b4c32b",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T12:10:15+00:00",
+          "registered_at": "2026-05-07T12:10:45Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 84901066,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T12:10:45Z",
+              "event": "queue_auto_activated",
+              "source_name": "W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -6163,7 +6191,7 @@
       "logical_episode_id": "short__w01l2__koutsoumpis_2025_en",
       "prompt_type": "short",
       "lecture_key": "W01L2",
-      "title": "U1F2 · [Kort] · Koutsoumpis (2025)",
+      "title": "U1F2 · [Kort] · Koutsoumpis (2025) ✦",
       "canonical_source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6177,20 +6205,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=81eb59d5}.mp3",
           "canonical_source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "81eb59d5"
           },
-          "config_hash": "c3f67e82",
+          "config_hash": "81eb59d5",
           "episode_key": "1tYwWOnzzwv6mMrtgdDylBEE8Fg2q72fP",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D81eb59d5%7D.mp3",
           "published_at": "2026-02-03T12:00:00+01:00",
-          "title": "U1F2 · [Kort] · Koutsoumpis (2025)",
+          "title": "U1F2 · [Kort] · Koutsoumpis (2025) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6236,7 +6264,7 @@
       "logical_episode_id": "short__w01l2__mayer_bryan_2024_en",
       "prompt_type": "short",
       "lecture_key": "W01L2",
-      "title": "U1F2 · [Kort] · Mayer & Bryan (2024)",
+      "title": "U1F2 · [Kort] · Mayer & Bryan (2024) ✦",
       "canonical_source_name": "[Short] W01L2 - Mayer & Bryan (2024) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6250,20 +6278,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=6e324d6d}.mp3",
           "canonical_source_name": "[Short] W01L2 - Mayer & Bryan (2024) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "6e324d6d"
           },
-          "config_hash": "c3f67e82",
+          "config_hash": "6e324d6d",
           "episode_key": "1BX-Eq5DgcP2p1SUqTCsbqBTrm9miulno",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D6e324d6d%7D.mp3",
           "published_at": "2026-02-03T16:00:00+01:00",
-          "title": "U1F2 · [Kort] · Mayer & Bryan (2024)",
+          "title": "U1F2 · [Kort] · Mayer & Bryan (2024) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6309,7 +6337,7 @@
       "logical_episode_id": "short__w01l2__phan_et_al_2024_en",
       "prompt_type": "short",
       "lecture_key": "W01L2",
-      "title": "U1F2 · [Kort] · Phan et al. (2024)",
+      "title": "U1F2 · [Kort] · Phan et al. (2024) ✦",
       "canonical_source_name": "[Short] W01L2 - Phan et al. (2024) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6323,20 +6351,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=f9c76252}.mp3",
           "canonical_source_name": "[Short] W01L2 - Phan et al. (2024) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "f9c76252"
           },
-          "config_hash": "c3f67e82",
+          "config_hash": "f9c76252",
           "episode_key": "12t6ZwaNfDYTodeyeUNd4Qt7f_2r1qHVZ",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Df9c76252%7D.mp3",
           "published_at": "2026-02-03T20:00:00+01:00",
-          "title": "U1F2 · [Kort] · Phan et al. (2024)",
+          "title": "U1F2 · [Kort] · Phan et al. (2024) ✦",
           "audio_sha256": null
         },
         "B": {

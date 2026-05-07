@@ -29,7 +29,7 @@ readiness before asserting the smoke routes:
 ssh digitalocean-ennui-droplet-01 '
   set -euo pipefail
   probe_code() {
-    code="$(curl -s -o /dev/null -w "%{http_code}" "$1" 2>/dev/null || true)"
+    code="$(curl --max-time 5 -s -o /dev/null -w "%{http_code}" "$1" 2>/dev/null || true)"
     if [[ "$code" =~ ^[0-9]{3}$ ]]; then
       echo "$code"
     else
@@ -52,7 +52,7 @@ ssh digitalocean-ennui-droplet-01 '
 Use the canonical routes for the final assertions:
 
 ```bash
-ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"'
+ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"'
 ```
 
 Expected:
@@ -70,6 +70,9 @@ Expected:
 - If `systemctl is-active freudd-portal` returns `active` but local login is
   still `000`, the process is not ready yet; keep waiting on
   `127.0.0.1:8001/accounts/login` instead of treating that as a route failure.
+- If the TCP socket accepts connections but `curl --max-time 5` still returns
+  `000`, inspect memory pressure and swap activity before blaming routing. On
+  2026-05-07 the portal only recovered after freeing RAM from other services.
 - If login is `200` but settings is not `302`, inspect Django URL routing and
   auth middleware before checking Caddy.
 - If gunicorn routes work but public routes fail, inspect Caddy routing and

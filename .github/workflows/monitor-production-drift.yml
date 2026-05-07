@@ -95,7 +95,7 @@ jobs:
             set -euo pipefail
             probe_code() {
               url="$1"
-              code="$(curl -s -o /dev/null -w "%{http_code}" "$url" 2>/dev/null || true)"
+              code="$(curl --max-time 5 -s -o /dev/null -w "%{http_code}" "$url" 2>/dev/null || true)"
               if [[ "$code" =~ ^[0-9]{3}$ ]]; then
                 echo "$code"
               else

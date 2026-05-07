@@ -71,33 +71,50 @@ jobs:
             set -euo pipefail
             probe_code() {
               url="$1"
-              attempts=5
-              delay=2
+              code="$(curl -s -o /dev/null -w "%{http_code}" "$url" 2>/dev/null || true)"
+              if [[ "$code" =~ ^[0-9]{3}$ ]]; then
+                echo "$code"
+              else
+                echo "000"
+              fi
+            }
+
+            wait_for_code() {
+              url="$1"
+              expected="$2"
+              attempts="$3"
+              delay="$4"
               i=1
               while [[ "$i" -le "$attempts" ]]; do
-                code="$(curl -sS -o /dev/null -w "%{http_code}" "$url" || true)"
-                if [[ "$code" =~ ^[0-9]{3}$ ]]; then
-                  echo "$code"
+                code="$(probe_code "$url")"
+                echo "wait_for_code attempt=${i}/${attempts} url=${url} code=${code}"
+                if [[ "$code" == "$expected" ]]; then
                   return 0
                 fi
                 sleep "$delay"
                 i=$((i + 1))
               done
-              echo "000"
+
+              echo "Timed out waiting for ${url} to return ${expected}" >&2
+              systemctl status freudd-portal --no-pager -n 25 >&2 || true
+              return 1
             }
 
+            wait_for_code http://127.0.0.1:8001/accounts/login 200 30 2
+            wait_for_code http://64.226.79.109/accounts/login 200 15 2
+
             gunicorn_login=$(probe_code http://127.0.0.1:8001/accounts/login)
-            gunicorn_progress=$(probe_code http://127.0.0.1:8001/progress)
+            gunicorn_settings=$(probe_code http://127.0.0.1:8001/settings)
             public_login=$(probe_code http://64.226.79.109/accounts/login)
-            public_progress=$(probe_code http://64.226.79.109/progress)
+            public_settings=$(probe_code http://64.226.79.109/settings)
 
             echo "gunicorn_login=${gunicorn_login}"
-            echo "gunicorn_progress=${gunicorn_progress}"
+            echo "gunicorn_settings=${gunicorn_settings}"
             echo "public_login=${public_login}"
-            echo "public_progress=${public_progress}"
+            echo "public_settings=${public_settings}"
 
             [[ "${gunicorn_login}" == "200" ]] || { echo "Unexpected gunicorn_login"; exit 1; }
             [[ "${public_login}" == "200" ]] || { echo "Unexpected public_login"; exit 1; }
-            [[ "${gunicorn_progress}" =~ ^30[12]$ ]] || { echo "Unexpected gunicorn_progress"; exit 1; }
-            [[ "${public_progress}" =~ ^30[12]$ ]] || { echo "Unexpected public_progress"; exit 1; }
+            [[ "${gunicorn_settings}" == "302" ]] || { echo "Unexpected gunicorn_settings"; exit 1; }
+            [[ "${public_settings}" == "302" ]] || { echo "Unexpected public_settings"; exit 1; }
           '

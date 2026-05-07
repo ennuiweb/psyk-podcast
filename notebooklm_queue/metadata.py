@@ -640,7 +640,10 @@ def _bundle_has_artifact_type(*, manifest: dict[str, Any], artifact_type: str) -
 def _requires_content_manifest(*, show_slug: str, manifest: dict[str, Any]) -> bool:
     if show_slug != "personlighedspsykologi-en":
         return True
-    return _requires_portal_sidecars(show_slug=show_slug, manifest=manifest)
+    # Audio-only personligheds publishes still need a refreshed lecture-first
+    # content manifest so Freudd sees new podcast assets without waiting for a
+    # later quiz/infographic bundle.
+    return True
 
 
 def _requires_portal_sidecars(*, show_slug: str, manifest: dict[str, Any]) -> bool:

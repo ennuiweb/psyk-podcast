@@ -534,6 +534,20 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
                 json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
                 encoding="utf-8",
             )
+        elif name == "rebuild_content_manifest":
+            (show_root / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_assets": {"podcasts": [{"title": "Title 1"}], "quizzes": []},
+                                "readings": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
         return {
             "name": name,
             "command": command,
@@ -563,7 +577,7 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     assert "sync_regeneration_registry" in phase_names
     assert phase_names.index("sync_regeneration_registry") < phase_names.index("generate_feed")
     assert "audit_slide_briefs" not in phase_names
-    assert "rebuild_content_manifest" not in phase_names
+    assert "rebuild_content_manifest" in phase_names
     assert "sync_learning_material_registry" not in phase_names
     sync_registry_command = dict(commands)["sync_regeneration_registry"]
     assert sync_registry_command[1].endswith("scripts/sync_regeneration_registry.py")
@@ -573,10 +587,10 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     validation = manifest["metadata"]["validation"]
-    assert validation["requires_content_manifest"] is False
+    assert validation["requires_content_manifest"] is True
     assert validation["requires_quiz_assets"] is False
     assert validation["quiz_assets"] == 0
-    assert "content_manifest_path" not in validation
+    assert validation["content_manifest_path"] == "shows/personlighedspsykologi-en/content_manifest.json"
 
 
 def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:

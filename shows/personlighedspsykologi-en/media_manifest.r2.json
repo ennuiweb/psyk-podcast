@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T10:09:49+00:00",
+  "generated_at": "2026-05-07T12:10:24+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -174,6 +174,36 @@
       "stable_guid": "14vLOunLmHTnFhb8aQxkXZoFTFgdRyC85"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=6d3be2b1}.mp3",
+      "source_name": "W01L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=6d3be2b1}.mp3",
+      "source_path": "W01L2/W01L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=6d3be2b1}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 77971973,
+      "sha256": "4d4746b785a69d05eda8c5d9424a1fc5be3f624c4d67d6ada140b6ddbd9c5e36",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D6d3be2b1%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=abd6b40a}.mp3",
+      "source_name": "W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=abd6b40a}.mp3",
+      "source_path": "W01L2/W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=abd6b40a}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 107336741,
+      "sha256": "8ae5890749c9a2fc71125e8285246f774b48abca9634a79785bc51abf38b2d52",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dabd6b40a%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1jpb2bBAtwisRIjsXSNxSEstTm_89G43p",
       "source_name": "W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -191,6 +221,21 @@
       "stable_guid": "1jpb2bBAtwisRIjsXSNxSEstTm_89G43p"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=6bb9175f}.mp3",
+      "source_name": "W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=6bb9175f}.mp3",
+      "source_path": "W01L2/W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=6bb9175f}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 89639661,
+      "sha256": "5f808f0f9540165343c608c26672ba1bbe8786ba0d64f7328d9045fed9c050b7",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D6bb9175f%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8",
       "source_name": "W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -206,6 +251,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1GXS2P3cHE1s842PTkOH1Hs4uHjXKFBq8"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=b0447890}.mp3",
+      "source_name": "W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=b0447890}.mp3",
+      "source_path": "W01L2/W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=b0447890}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 78442092,
+      "sha256": "e080079ab325fc6a3d38342cf833d138273bb3f669991bb813433ba2d4d4f91a",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db0447890%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W01L2/W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -242,6 +302,21 @@
       "stable_guid": "1LaqwKoXVZFqthcf0umQbN0kxhMsOCu5s"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=81eb59d5}.mp3",
+      "source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=81eb59d5}.mp3",
+      "source_path": "W01L2/[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=81eb59d5}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9431130,
+      "sha256": "32ed72e2368d77eca6ff14026e943703b080bb175036118a36157056eabd60da",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D81eb59d5%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
       "source_drive_file_id": "1tYwWOnzzwv6mMrtgdDylBEE8Fg2q72fP",
       "source_name": "[Short] W01L2 - Koutsoumpis (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -257,6 +332,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Koutsoumpis%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "1tYwWOnzzwv6mMrtgdDylBEE8Fg2q72fP"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=6e324d6d}.mp3",
+      "source_name": "[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=6e324d6d}.mp3",
+      "source_path": "W01L2/[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=6e324d6d}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11212650,
+      "sha256": "0092f41c0284b11b61a2ab8e677c80c8c0bb3857e6d0adadf5c6e4985447c4a8",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Mayer%20%26%20Bryan%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D6e324d6d%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Mayer & Bryan (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -291,6 +381,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "12t6ZwaNfDYTodeyeUNd4Qt7f_2r1qHVZ"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=f9c76252}.mp3",
+      "source_name": "[Short] W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=f9c76252}.mp3",
+      "source_path": "W01L2/[Short] W01L2 - Phan et al. (2024) [EN] {type=audio lang=en format=deep-dive length=short hash=f9c76252}.mp3",
+      "path_parts": [
+        "W01L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9783848,
+      "sha256": "6d82330818180fd6eabd4d4a517f8bbfe9c4d65d668ba759e2000dec16f22e54",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:05:56+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L2/%5BShort%5D%20W01L2%20-%20Phan%20et%20al.%20%282024%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Df9c76252%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W01L2/[Short] W01L2 - Slide lecture: 2. gang PersPsy 2 260203 [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -648,6 +753,21 @@
       "stable_guid": "1yFF6sh0yojfoTV1j8xFI-PAplHueEuAK"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+      "source_name": "W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+      "source_path": "W04L1/W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=2c34b5c1}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 70732111,
+      "sha256": "b9b27f45482faf05ba2cf0faee7ba070b6a7c5084b25942849581ac3c088fb36",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:10:15+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/W04L1%20-%20Freud%20%281973-1933%29%20DA%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2c34b5c1%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1AeXAVGCkZ0nfzGqRQYMYxA4KKk1WNVkl",
       "source_name": "W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -682,6 +802,21 @@
       "stable_guid": "1eTY3-1_y0vrz_5hNKbu5PCLUIYIWAcQB"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+      "source_name": "W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+      "source_path": "W04L1/W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=25618406}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 84901066,
+      "sha256": "13ee1b01e63930e2330fc487932beb3a86590e1faa545b8c35aa0123a5b4c32b",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:10:15+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/W04L1%20-%20Gammelgaard%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D25618406%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1mSGGOarvs2TXoUZPvgDjHzuIq7KqB9W1",
       "source_name": "W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -714,6 +849,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/W04L1%20-%20Slide%20lecture:%207.%20Psykoanalysens%20personbegreb%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1s9mTefDUyeVwNyc5uoY33aI8qZYIfeZ6"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W04L1/[Short] W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=short hash=895a3821}.mp3",
+      "source_name": "[Short] W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=short hash=895a3821}.mp3",
+      "source_path": "W04L1/[Short] W04L1 - Freud (1973-1933) DA [EN] {type=audio lang=en format=deep-dive length=short hash=895a3821}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11353956,
+      "sha256": "af4645900643adaf4d01aef2217c4d82de465ffbf6174d24a2852249966c91df",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:10:15+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/%5BShort%5D%20W04L1%20-%20Freud%20%281973-1933%29%20DA%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D895a3821%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W04L1/[Short] W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=306a6341}.mp3",
+      "source_name": "[Short] W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=306a6341}.mp3",
+      "source_path": "W04L1/[Short] W04L1 - Gammelgaard (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=306a6341}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9780113,
+      "sha256": "a797359fdf76a34c0c470a23a8d92de0bf464edbdc116190d279e48795e4fe91",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T12:10:15+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/%5BShort%5D%20W04L1%20-%20Gammelgaard%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D306a6341%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W04L2/W04L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",

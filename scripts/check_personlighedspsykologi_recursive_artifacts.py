@@ -10,8 +10,9 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) in sys.path:
+    sys.path.remove(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 
 from notebooklm_queue import personlighedspsykologi_recursive as recursive
 
@@ -27,6 +28,11 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--recursive-dir", default=str(recursive.DEFAULT_RECURSIVE_DIR))
     parser.add_argument("--output-path", default=str(recursive.DEFAULT_RECURSIVE_INDEX_PATH))
     parser.add_argument("--allow-partial", action="store_true", help="Do not fail if coverage is incomplete.")
+    parser.add_argument(
+        "--require-podcast-substrates",
+        action="store_true",
+        help="Treat podcast substrates as required for completeness, freshness, and validation.",
+    )
     return parser.parse_args()
 
 
@@ -43,11 +49,24 @@ def main() -> int:
         output_path=_resolve(args.output_path),
     )
     _print_result(index)
-    if index["errors"]:
+    core_types = list(index.get("required", {}).get("core_artifact_types", []))
+    optional_types = list(index.get("required", {}).get("optional_artifact_types", []))
+    error_groups = index.get("error_groups", {}) if isinstance(index.get("error_groups"), dict) else {}
+    core_errors = [item for key in core_types for item in error_groups.get(key, [])]
+    optional_errors = [item for key in optional_types for item in error_groups.get(key, [])]
+    fresh = index.get("fresh", {}) if isinstance(index.get("fresh"), dict) else {}
+
+    if core_errors:
         return 1
-    if index.get("fresh", {}).get("stale_artifact_count", 0):
+    if fresh.get("core_stale_artifact_count", 0):
         return 1
-    if not args.allow_partial and not all(index["complete"].values()):
+    if args.require_podcast_substrates and optional_errors:
+        return 1
+    if args.require_podcast_substrates and fresh.get("optional_stale_artifact_count", 0):
+        return 1
+    if not args.allow_partial and not bool(index.get("required", {}).get("core_complete")):
+        return 1
+    if args.require_podcast_substrates and not args.allow_partial and not bool(index.get("required", {}).get("strict_complete")):
         return 1
     return 0
 

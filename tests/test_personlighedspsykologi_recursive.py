@@ -1,4 +1,6 @@
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -456,3 +458,251 @@ def test_recursive_index_reports_stale_policy_and_missing_bundle_without_crashin
     stale = "\n".join(index["fresh"]["stale_artifacts"])
     assert "source_intelligence_policy" in stale
     assert "lecture_bundle_missing" in stale
+
+
+def test_lecture_substrate_freshness_ignores_bundle_generated_at(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+
+    bundle_path = fixture["lecture_bundle_dir"] / "W01L1.json"
+    bundle = recursive.load_json(bundle_path)
+    bundle["generated_at"] = "2030-01-01T00:00:00Z"
+    _write_json(bundle_path, bundle)
+
+    assert recursive.lecture_substrate_is_fresh(
+        path=fixture["recursive_dir"] / "lecture_substrates" / "W01L1.json",
+        lecture_key="W01L1",
+        subject_root=fixture["subject_root"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        source_catalog_path=fixture["source_catalog_path"],
+    )
+
+
+def test_lecture_substrate_freshness_requires_exact_input_source_ids(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+
+    extra_source = {
+        "source_id": "source-2",
+        "lecture_key": "W01L1",
+        "title": "New slide deck",
+        "source_family": "lecture_slide",
+        "source_kind": "slide",
+        "evidence_origin": "lecture_framed",
+        "source_exists": True,
+        "subject_relative_path": "Readings/source.pdf",
+        "length_band": "medium",
+        "file": {
+            "sha256": recursive.sha256_file(fixture["source_path"]),
+            "page_count": 1,
+            "estimated_token_count": 100,
+            "text_extraction_status": "ok",
+        },
+    }
+    bundle_path = fixture["lecture_bundle_dir"] / "W01L1.json"
+    bundle = recursive.load_json(bundle_path)
+    bundle["sources"]["lecture_slides"].append(extra_source)
+    _write_json(bundle_path, bundle)
+
+    assert not recursive.lecture_substrate_is_fresh(
+        path=fixture["recursive_dir"] / "lecture_substrates" / "W01L1.json",
+        lecture_key="W01L1",
+        subject_root=fixture["subject_root"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        source_catalog_path=fixture["source_catalog_path"],
+    )
+
+
+def test_course_synthesis_freshness_tracks_supporting_artifacts(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_course_synthesis(
+        repo_root=fixture["repo_root"],
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        output_path=fixture["recursive_dir"] / "course_synthesis.json",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+        partial_scope=False,
+    )
+
+    glossary_path = fixture["repo_root"] / recursive.DEFAULT_COURSE_GLOSSARY_PATH
+    _write_json(glossary_path, {"generated_at": "2026-05-07T00:00:00Z", "terms": [{"term": "trait"}]})
+
+    assert not recursive.course_synthesis_is_fresh(
+        path=fixture["recursive_dir"] / "course_synthesis.json",
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        partial_scope=False,
+        glossary_path=glossary_path,
+        theory_map_path=fixture["repo_root"] / recursive.DEFAULT_COURSE_THEORY_MAP_PATH,
+        concept_graph_path=fixture["repo_root"] / recursive.DEFAULT_CONCEPT_GRAPH_PATH,
+    )
+
+
+def test_recursive_index_treats_podcast_substrates_as_optional_core_boundary(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_course_synthesis(
+        repo_root=fixture["repo_root"],
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        output_path=fixture["recursive_dir"] / "course_synthesis.json",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+        partial_scope=False,
+    )
+    recursive.build_revised_lecture_substrates(
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        course_synthesis_path=fixture["recursive_dir"] / "course_synthesis.json",
+        revised_lecture_substrate_dir=fixture["recursive_dir"] / "revised_lecture_substrates",
+        json_generator=_fake_json_generator,
+    )
+
+    index = recursive.build_recursive_index(
+        repo_root=fixture["repo_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        recursive_dir=fixture["recursive_dir"],
+        output_path=fixture["recursive_dir"] / "index.json",
+    )
+
+    assert index["required"]["core_complete"] is True
+    assert index["complete"]["podcast_substrates"] is False
+    assert index["fresh"]["core_stale_artifact_count"] == 0
+
+
+def test_recursive_check_script_defaults_to_core_artifacts(tmp_path):
+    fixture = _minimal_course_fixture(tmp_path)
+    recursive.build_source_cards(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        source_catalog_path=fixture["source_catalog_path"],
+        policy_path=fixture["policy_path"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_keys=["W01L1"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_lecture_substrates(
+        repo_root=fixture["repo_root"],
+        subject_root=fixture["subject_root"],
+        lecture_keys=["W01L1"],
+        lecture_bundle_dir=fixture["lecture_bundle_dir"],
+        source_card_dir=fixture["recursive_dir"] / "source_cards",
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+    )
+    recursive.build_course_synthesis(
+        repo_root=fixture["repo_root"],
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        output_path=fixture["recursive_dir"] / "course_synthesis.json",
+        source_catalog_path=fixture["source_catalog_path"],
+        json_generator=_fake_json_generator,
+        partial_scope=False,
+    )
+    recursive.build_revised_lecture_substrates(
+        lecture_keys=["W01L1"],
+        lecture_substrate_dir=fixture["recursive_dir"] / "lecture_substrates",
+        course_synthesis_path=fixture["recursive_dir"] / "course_synthesis.json",
+        revised_lecture_substrate_dir=fixture["recursive_dir"] / "revised_lecture_substrates",
+        json_generator=_fake_json_generator,
+    )
+
+    script_path = Path(__file__).resolve().parents[1] / "scripts" / "check_personlighedspsykologi_recursive_artifacts.py"
+    base_cmd = [
+        sys.executable,
+        str(script_path),
+        "--source-catalog",
+        str(fixture["source_catalog_path"]),
+        "--recursive-dir",
+        str(fixture["recursive_dir"]),
+        "--output-path",
+        str(fixture["recursive_dir"] / "index.json"),
+    ]
+    result = subprocess.run(base_cmd, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+
+    strict_result = subprocess.run(
+        [*base_cmd, "--require-podcast-substrates"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert strict_result.returncode == 1

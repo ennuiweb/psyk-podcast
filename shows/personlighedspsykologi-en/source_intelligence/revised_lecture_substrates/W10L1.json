@@ -19,12 +19,11 @@
   "provenance": {
     "input_source_ids": [
       "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
-      "w10l1-mitchell-2015-bc690b36",
-      "w10l1-lecture-18-k-n-582ebd4f"
+      "w10l1-mitchell-2015-bc690b36"
     ],
     "dependency_hashes": {
-      "lecture_substrate": "26ec802bc193184d9b58f4e509e38b2f125c546e757304ffd61ef4583315a0a7",
-      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+      "lecture_substrate_fingerprint": "3e5f9bf0b5b0d632553ce14ecde0cd8254377f57aa3d76faa3617b3aa8874f2a",
+      "course_synthesis_fingerprint": "6e5a165ea7a8f5e948aaeca5c0c2811aae5221f9e39739b936b9408eb497fd34"
     }
   },
   "lecture": {

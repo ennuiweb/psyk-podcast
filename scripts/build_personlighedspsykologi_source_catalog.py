@@ -24,10 +24,12 @@ from typing import Any
 from pypdf import PdfReader
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) in sys.path:
+    sys.path.remove(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 
 from notebooklm_queue import prompting
+from notebooklm_queue.json_artifact_utils import render_json, write_json_stably
 from notebooklm_queue.source_intelligence_policy import (
     evidence_origin_for_source,
     load_source_intelligence_policy,
@@ -641,6 +643,13 @@ def build_source_catalog(
     }
 
 
+def _write_catalog(path: Path, catalog: dict[str, Any]) -> dict[str, Any]:
+    stored_catalog, _ = write_json_stably(path, catalog)
+    if not isinstance(stored_catalog, dict):
+        raise RuntimeError(f"stored catalog is not an object: {path}")
+    return stored_catalog
+
+
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Catalog JSON path.")
@@ -699,9 +708,8 @@ def main() -> int:
         prompt_config_path=prompt_config_path,
         policy_path=policy_path,
     )
-    rendered = json.dumps(catalog, indent=2, ensure_ascii=False) + "\n"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(rendered, encoding="utf-8")
+    catalog = _write_catalog(output_path, catalog)
+    rendered = render_json(catalog)
     if args.stdout:
         print(rendered, end="")
     print(

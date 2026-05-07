@@ -730,7 +730,20 @@ Current live-run gate:
 Validation command:
 
 ```bash
-./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial
+./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py
+```
+
+Default validation now enforces the core recursive chain only:
+`source_cards`, `lecture_substrates`, `course_synthesis`, and
+`revised_lecture_substrates`. Use
+`./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --require-podcast-substrates`
+when you explicitly want podcast-substrate completeness to be a hard gate.
+
+If dependency metadata needs to be upgraded after a freshness-model change
+without rerunning Gemini, refresh the stored provenance in place:
+
+```bash
+./.venv/bin/python scripts/refresh_personlighedspsykologi_recursive_provenance.py
 ```
 
 ### 9. Prompt integration for podcast testing

@@ -19,12 +19,11 @@
   "provenance": {
     "input_source_ids": [
       "w06l2-may-1966-d8406a09",
-      "w06l2-boss-1963-1feb5a5f",
-      "w06l2-seminar-7-eksistentiel-psykologi-c7363dbb"
+      "w06l2-boss-1963-1feb5a5f"
     ],
     "dependency_hashes": {
-      "lecture_substrate": "855cd8c964e7ee49d7c33ff0d6ae807888f8f1a5cc7aa4a8a14d653bfdfc3c85",
-      "course_synthesis": "d0ca634df6560aa778e7442a1147a4add4150d017da5fb264463a2862a7336e7"
+      "lecture_substrate_fingerprint": "f45000631fdea351d32c038a6b1f9d4c80520dc08d7c7792e0743d117f517a0c",
+      "course_synthesis_fingerprint": "6e5a165ea7a8f5e948aaeca5c0c2811aae5221f9e39739b936b9408eb497fd34"
     }
   },
   "lecture": {

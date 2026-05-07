@@ -103,7 +103,12 @@ Operational note:
   `scripts/audit_personlighedspsykologi_slide_mapping.py`.
 - Recursive artifact validation and progress tracking lives in
   `shows/personlighedspsykologi-en/source_intelligence/index.json`, rebuilt by
-  `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py --allow-partial`.
+  `./.venv/bin/python scripts/check_personlighedspsykologi_recursive_artifacts.py`.
+  Default mode now treats source cards, lecture substrates, course synthesis,
+  and revised lecture substrates as the required core; add
+  `--require-podcast-substrates` for strict output coverage. Existing recursive
+  artifacts can be metadata-upgraded in place with
+  `./.venv/bin/python scripts/refresh_personlighedspsykologi_recursive_provenance.py`.
 - Runtime status as of 2026-05-05: the Gemini key is available from the local
   secret store and `--preflight-only` succeeds for `gemini-3.1-pro-preview`.
   The first live `W05L1,W06L1` batch has generated 9 source cards, 2 lecture

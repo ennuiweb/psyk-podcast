@@ -12,10 +12,12 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) in sys.path:
+    sys.path.remove(str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT))
 
 from notebooklm_queue.source_intelligence_policy import load_source_intelligence_policy
+from notebooklm_queue.json_artifact_utils import write_json_stably
 
 
 DEFAULT_OUTPUT_DIR = "shows/personlighedspsykologi-en/lecture_bundles"
@@ -37,9 +39,11 @@ def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _write_json(path: Path, payload: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+def _write_json(path: Path, payload: dict[str, Any]) -> dict[str, Any]:
+    stored_payload, _ = write_json_stably(path, payload)
+    if not isinstance(stored_payload, dict):
+        raise RuntimeError(f"stored bundle payload is not an object: {path}")
+    return stored_payload
 
 
 def _display_path(path: Path, repo_root: Path) -> str:
@@ -446,7 +450,7 @@ def build_lecture_bundles(
         }
 
         bundle_path = output_dir / f"{lecture_key}.json"
-        _write_json(bundle_path, bundle_payload)
+        bundle_payload = _write_json(bundle_path, bundle_payload)
         bundle_index_entries.append(
             {
                 "lecture_key": lecture_key,
@@ -482,7 +486,7 @@ def build_lecture_bundles(
         },
         "bundles": bundle_index_entries,
     }
-    _write_json(output_dir / "index.json", index_payload)
+    index_payload = _write_json(output_dir / "index.json", index_payload)
     return index_payload
 
 

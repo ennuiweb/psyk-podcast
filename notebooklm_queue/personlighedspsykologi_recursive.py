@@ -16,6 +16,11 @@ from notebooklm_queue.gemini_preprocessing import (
     generation_config_metadata,
     make_gemini_backend,
 )
+from notebooklm_queue.json_artifact_utils import (
+    semantic_fingerprint,
+    semantic_file_fingerprint,
+    write_json_stably,
+)
 from notebooklm_queue.personlighedspsykologi_prompt_versions import configured_prompt_versions
 from notebooklm_queue.source_intelligence_schemas import (
     RECURSIVE_SOURCE_INTELLIGENCE_SCHEMA_VERSION,
@@ -58,9 +63,11 @@ def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def write_json(path: Path, payload: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+def write_json(path: Path, payload: dict[str, Any]) -> dict[str, Any]:
+    stored_payload, _ = write_json_stably(path, payload)
+    if isinstance(stored_payload, dict):
+        return stored_payload
+    return payload
 
 
 def format_error(exc: Exception) -> str:
@@ -86,9 +93,40 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def signature_for_hashes(hashes: list[str]) -> str:
+    return sha256_bytes("\n".join(hashes).encode("utf-8"))
+
+
 def signature_for_files(paths: list[Path]) -> str:
     existing = [path for path in paths if path.exists() and path.is_file()]
-    return sha256_bytes("\n".join(sha256_file(path) for path in existing).encode("utf-8"))
+    return signature_for_hashes([sha256_file(path) for path in existing])
+
+
+def semantic_signature_for_artifacts(
+    paths: list[Path],
+    *,
+    validator: Callable[[object], dict[str, Any]],
+) -> str:
+    fingerprints: list[str] = []
+    for path in paths:
+        if not path.exists() or not path.is_file():
+            continue
+        fingerprints.append(semantic_fingerprint(validator(load_json(path))))
+    return signature_for_hashes(fingerprints)
+
+
+def semantic_fingerprint_for_artifact(
+    path: Path,
+    *,
+    validator: Callable[[object], dict[str, Any]],
+) -> str:
+    return semantic_fingerprint(validator(load_json(path)))
+
+
+def maybe_semantic_file_fingerprint(path: Path) -> str:
+    if not path.exists() or not path.is_file():
+        return ""
+    return semantic_file_fingerprint(path)
 
 
 def signature_for_source_records(sources: list[dict[str, Any]]) -> str:
@@ -96,11 +134,25 @@ def signature_for_source_records(sources: list[dict[str, Any]]) -> str:
     for source in sources:
         if not source.get("source_exists"):
             continue
-        file_info = source.get("file") if isinstance(source.get("file"), dict) else {}
-        source_hash = str(file_info.get("sha256") or "").strip()
-        if source_hash:
-            hashes.append(source_hash)
-    return sha256_bytes("\n".join(hashes).encode("utf-8"))
+        hashes.extend(_source_record_hashes(source))
+    return signature_for_hashes(hashes)
+
+
+def _source_record_hashes(source: dict[str, Any]) -> list[str]:
+    file_info = source.get("file") if isinstance(source.get("file"), dict) else {}
+    parts = file_info.get("parts") if isinstance(file_info.get("parts"), list) else []
+    part_hashes = [str(part.get("sha256") or "").strip() for part in parts if isinstance(part, dict) and str(part.get("sha256") or "").strip()]
+    if part_hashes:
+        return part_hashes
+    source_hash = str(file_info.get("sha256") or "").strip()
+    return [source_hash] if source_hash else []
+
+
+def _legacy_source_file_dependency(source: dict[str, Any]) -> str:
+    hashes = _source_record_hashes(source)
+    if len(hashes) == 1:
+        return hashes[0]
+    return signature_for_hashes(hashes)
 
 
 def count_error_results(results: list[dict[str, Any]]) -> int:
@@ -173,7 +225,7 @@ def source_file_path(subject_root: Path, source: dict[str, Any]) -> Path:
     return paths[0]
 
 
-def source_file_paths(subject_root: Path, source: dict[str, Any]) -> list[Path]:
+def source_relative_paths(source: dict[str, Any]) -> list[str]:
     relative_paths: list[str] = []
     raw_relative_paths = source.get("subject_relative_paths")
     if isinstance(raw_relative_paths, list):
@@ -196,8 +248,12 @@ def source_file_paths(subject_root: Path, source: dict[str, Any]) -> list[Path]:
         if relative_path in seen:
             continue
         seen.add(relative_path)
-        paths.append(subject_root / relative_path)
+        paths.append(relative_path)
     return paths
+
+
+def source_file_paths(subject_root: Path, source: dict[str, Any]) -> list[Path]:
+    return [subject_root / relative_path for relative_path in source_relative_paths(source)]
 
 
 def _source_card_path(source_card_dir: Path, source_id: str) -> Path:
@@ -580,6 +636,306 @@ def _artifact_input_source_ids(payload: dict[str, Any]) -> list[str]:
     return [str(item or "").strip() for item in provenance.get("input_source_ids", []) if str(item or "").strip()]
 
 
+def _bundle_input_source_ids(bundle: dict[str, Any]) -> list[str]:
+    source_ids: list[str] = []
+    seen: set[str] = set()
+    for source in _bundle_source_entries(bundle):
+        if not source.get("source_exists"):
+            continue
+        source_id = str(source.get("source_id") or "").strip()
+        if not source_id or source_id in seen:
+            continue
+        seen.add(source_id)
+        source_ids.append(source_id)
+    return source_ids
+
+
+def _legacy_source_identity_projection(source: dict[str, Any], source_paths: list[Path]) -> dict[str, Any]:
+    file_info = source.get("file") if isinstance(source.get("file"), dict) else {}
+    existing_paths = [path for path in source_paths if path.exists() and path.is_file()]
+    source_sha256 = str(file_info.get("sha256") or "").strip()
+    if existing_paths:
+        source_sha256 = sha256_file(existing_paths[0]) if len(existing_paths) == 1 else signature_for_files(existing_paths)
+    relative_paths = source_relative_paths(source)
+    return {
+        "source_id": str(source.get("source_id") or "").strip(),
+        "lecture_key": canonicalize_lecture_key(str(source.get("lecture_key") or "")),
+        "title": str(source.get("title") or "").strip(),
+        "source_family": str(source.get("source_family") or "").strip(),
+        "evidence_origin": str(source.get("evidence_origin") or "").strip(),
+        "source_path": relative_paths[0] if relative_paths else str(source.get("subject_relative_path") or ""),
+        "source_paths": relative_paths,
+        "source_exists": bool(source.get("source_exists")),
+        "source_sha256": source_sha256,
+        "length_band": str(source.get("length_band") or "").strip(),
+        "page_count": file_info.get("page_count"),
+        "estimated_token_count": file_info.get("estimated_token_count"),
+        "text_extraction_status": str(file_info.get("text_extraction_status") or "").strip(),
+    }
+
+
+def _legacy_source_identity_matches(
+    artifact_source: dict[str, Any],
+    *,
+    source: dict[str, Any],
+    source_paths: list[Path],
+) -> bool:
+    expected = _legacy_source_identity_projection(source, source_paths)
+    return all(artifact_source.get(key) == value for key, value in expected.items())
+
+
+def _source_card_dependency_hashes(
+    *,
+    source: dict[str, Any],
+    source_paths: list[Path],
+    policy_path: Path,
+) -> dict[str, str]:
+    return {
+        "source_files_signature": signature_for_files(source_paths),
+        "source_record_fingerprint": semantic_fingerprint(source),
+        "source_intelligence_policy_fingerprint": maybe_semantic_file_fingerprint(policy_path),
+    }
+
+
+def _lecture_substrate_dependency_hashes(
+    *,
+    bundle: dict[str, Any],
+    source_card_paths: list[Path],
+    raw_source_paths: list[Path],
+) -> dict[str, str]:
+    return {
+        "lecture_bundle_fingerprint": semantic_fingerprint(bundle),
+        "source_cards_signature": semantic_signature_for_artifacts(
+            source_card_paths,
+            validator=validate_source_card,
+        ),
+        "raw_sources_signature": signature_for_files(raw_source_paths),
+    }
+
+
+def _course_synthesis_dependency_hashes(
+    *,
+    lecture_substrate_paths: list[Path],
+    glossary_path: Path,
+    theory_map_path: Path,
+    concept_graph_path: Path,
+) -> dict[str, str]:
+    return {
+        "lecture_substrates_signature": semantic_signature_for_artifacts(
+            lecture_substrate_paths,
+            validator=validate_lecture_substrate,
+        ),
+        "course_glossary_fingerprint": maybe_semantic_file_fingerprint(glossary_path),
+        "course_theory_map_fingerprint": maybe_semantic_file_fingerprint(theory_map_path),
+        "concept_graph_fingerprint": maybe_semantic_file_fingerprint(concept_graph_path),
+    }
+
+
+def _revised_lecture_substrate_dependency_hashes(
+    *,
+    lecture_path: Path,
+    course_synthesis_path: Path,
+) -> dict[str, str]:
+    return {
+        "lecture_substrate_fingerprint": semantic_fingerprint_for_artifact(
+            lecture_path,
+            validator=validate_lecture_substrate,
+        ),
+        "course_synthesis_fingerprint": semantic_fingerprint_for_artifact(
+            course_synthesis_path,
+            validator=validate_course_synthesis,
+        ),
+    }
+
+
+def _podcast_substrate_dependency_hashes(
+    *,
+    revised_path: Path,
+    course_synthesis_path: Path,
+    source_card_paths: list[Path],
+    source_weighting_path: Path,
+) -> dict[str, str]:
+    return {
+        "revised_lecture_substrate_fingerprint": semantic_fingerprint_for_artifact(
+            revised_path,
+            validator=validate_revised_lecture_substrate,
+        ),
+        "course_synthesis_fingerprint": semantic_fingerprint_for_artifact(
+            course_synthesis_path,
+            validator=validate_course_synthesis,
+        ),
+        "source_cards_signature": semantic_signature_for_artifacts(
+            source_card_paths,
+            validator=validate_source_card,
+        ),
+        "source_weighting_fingerprint": maybe_semantic_file_fingerprint(source_weighting_path),
+    }
+
+
+def _source_card_stale_reasons(
+    *,
+    artifact: dict[str, Any],
+    source: dict[str, Any],
+    source_paths: list[Path],
+    policy_path: Path,
+) -> list[str]:
+    dependencies = _dependencies(artifact)
+    reasons: list[str] = []
+    if all(source_path.exists() and source_path.is_file() for source_path in source_paths):
+        source_signature = signature_for_files(source_paths)
+        legacy_source_file = sha256_file(source_paths[0]) if len(source_paths) == 1 else source_signature
+    else:
+        source_signature = signature_for_source_records([source])
+        legacy_source_file = _legacy_source_file_dependency(source)
+    if dependencies.get("source_files_signature") not in {source_signature, legacy_source_file}:
+        reasons.append("source_files_signature")
+
+    policy_fingerprint = maybe_semantic_file_fingerprint(policy_path)
+    legacy_policy_hash = sha256_file(policy_path) if policy_path.exists() and policy_path.is_file() else ""
+    if dependencies.get("source_intelligence_policy_fingerprint") not in {policy_fingerprint, legacy_policy_hash}:
+        reasons.append("source_intelligence_policy")
+
+    if dependencies.get("source_record_fingerprint"):
+        if dependencies.get("source_record_fingerprint") != semantic_fingerprint(source):
+            reasons.append("source_record")
+    else:
+        artifact_source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+        if not _legacy_source_identity_matches(artifact_source, source=source, source_paths=source_paths):
+            reasons.append("source_record")
+    return reasons
+
+
+def _lecture_substrate_stale_reasons(
+    *,
+    artifact: dict[str, Any],
+    lecture_key: str,
+    subject_root: Path | None,
+    lecture_bundle_dir: Path,
+    source_card_dir: Path,
+) -> list[str]:
+    bundle = _load_bundle(lecture_bundle_dir, lecture_key)
+    expected_source_ids = _bundle_input_source_ids(bundle)
+    source_card_paths = [_source_card_path(source_card_dir, source_id) for source_id in expected_source_ids]
+    expected_dependencies = _lecture_substrate_dependency_hashes(
+        bundle=bundle,
+        source_card_paths=source_card_paths,
+        raw_source_paths=_raw_source_paths_for_bundle(subject_root, bundle),
+    )
+    expected_dependencies["raw_sources_signature"] = signature_for_source_records(_bundle_source_entries(bundle))
+    dependencies = _dependencies(artifact)
+    reasons: list[str] = []
+    if _artifact_input_source_ids(artifact) != expected_source_ids:
+        reasons.append("input_source_ids")
+    for key, reason in (
+        ("lecture_bundle_fingerprint", "lecture_bundle"),
+        ("source_cards_signature", "source_cards_signature"),
+        ("raw_sources_signature", "raw_sources_signature"),
+    ):
+        if dependencies.get(key) != expected_dependencies[key]:
+            reasons.append(reason)
+    return reasons
+
+
+def _course_synthesis_stale_reasons(
+    *,
+    artifact: dict[str, Any],
+    lecture_keys: list[str],
+    lecture_substrate_dir: Path,
+    partial_scope: bool,
+    glossary_path: Path,
+    theory_map_path: Path,
+    concept_graph_path: Path,
+) -> list[str]:
+    course = artifact.get("course") if isinstance(artifact.get("course"), dict) else {}
+    existing_scope = str(course.get("scope") or "").strip()
+    expected_scope = "partial" if partial_scope else "full"
+    existing_keys = [canonicalize_lecture_key(str(item or "")) for item in course.get("lecture_keys", [])]
+    existing_keys = [key for key in existing_keys if key]
+    reasons: list[str] = []
+    if existing_scope != expected_scope:
+        reasons.append("scope")
+    if existing_keys != lecture_keys:
+        reasons.append("lecture_keys")
+
+    expected_dependencies = _course_synthesis_dependency_hashes(
+        lecture_substrate_paths=[_lecture_substrate_path(lecture_substrate_dir, key) for key in lecture_keys],
+        glossary_path=glossary_path,
+        theory_map_path=theory_map_path,
+        concept_graph_path=concept_graph_path,
+    )
+    dependencies = _dependencies(artifact)
+    for key, reason in (
+        ("lecture_substrates_signature", "lecture_substrates_signature"),
+        ("course_glossary_fingerprint", "course_glossary"),
+        ("course_theory_map_fingerprint", "course_theory_map"),
+        ("concept_graph_fingerprint", "concept_graph"),
+    ):
+        if dependencies.get(key) != expected_dependencies[key]:
+            reasons.append(reason)
+    return reasons
+
+
+def _revised_lecture_substrate_stale_reasons(
+    *,
+    artifact: dict[str, Any],
+    lecture_key: str,
+    lecture_substrate_dir: Path,
+    course_synthesis_path: Path,
+) -> list[str]:
+    lecture_path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
+    expected_dependencies = _revised_lecture_substrate_dependency_hashes(
+        lecture_path=lecture_path,
+        course_synthesis_path=course_synthesis_path,
+    )
+    reasons: list[str] = []
+    if _artifact_input_source_ids(artifact) != _artifact_input_source_ids(validate_lecture_substrate(load_json(lecture_path))):
+        reasons.append("input_source_ids")
+    dependencies = _dependencies(artifact)
+    for key, reason in (
+        ("lecture_substrate_fingerprint", "lecture_substrate"),
+        ("course_synthesis_fingerprint", "course_synthesis"),
+    ):
+        if dependencies.get(key) != expected_dependencies[key]:
+            reasons.append(reason)
+    return reasons
+
+
+def _podcast_substrate_stale_reasons(
+    *,
+    artifact: dict[str, Any],
+    lecture_key: str,
+    source_card_dir: Path,
+    revised_lecture_substrate_dir: Path,
+    course_synthesis_path: Path,
+    source_weighting_path: Path,
+) -> list[str]:
+    revised_path = _lecture_substrate_path(revised_lecture_substrate_dir, lecture_key)
+    revised = validate_revised_lecture_substrate(load_json(revised_path))
+    source_card_paths = [
+        _source_card_path(source_card_dir, source_id)
+        for source_id in _artifact_input_source_ids(revised)
+    ]
+    expected_dependencies = _podcast_substrate_dependency_hashes(
+        revised_path=revised_path,
+        course_synthesis_path=course_synthesis_path,
+        source_card_paths=source_card_paths,
+        source_weighting_path=source_weighting_path,
+    )
+    reasons: list[str] = []
+    if _artifact_input_source_ids(artifact) != _artifact_input_source_ids(revised):
+        reasons.append("input_source_ids")
+    dependencies = _dependencies(artifact)
+    for key, reason in (
+        ("revised_lecture_substrate_fingerprint", "revised_lecture_substrate"),
+        ("course_synthesis_fingerprint", "course_synthesis"),
+        ("source_cards_signature", "source_cards_signature"),
+        ("source_weighting_fingerprint", "source_weighting"),
+    ):
+        if dependencies.get(key) != expected_dependencies[key]:
+            reasons.append(reason)
+    return reasons
+
+
 def source_card_is_fresh(
     *,
     path: Path,
@@ -599,23 +955,11 @@ def source_card_is_fresh(
         artifact = validate_source_card(load_json(path))
     except Exception:
         return False
-    dependencies = _dependencies(artifact)
-    source_signature = signature_for_files(source_paths)
-    if len(source_paths) == 1:
-        source_dependency_matches = (
-            dependencies.get("source_files_signature") == source_signature
-            or dependencies.get("source_file") == sha256_file(source_paths[0])
-        )
-    else:
-        source_dependency_matches = (
-            dependencies.get("source_files_signature") == source_signature
-            or dependencies.get("source_file") == source_signature
-        )
-    return (
-        source_dependency_matches
-        and dependencies.get("source_catalog") == sha256_file(source_catalog_path)
-        and dependencies.get("source_intelligence_policy") == (sha256_file(policy_path) if policy_path.exists() else "")
-        and str((artifact.get("source") or {}).get("source_id") or "") == str(source.get("source_id") or "")
+    return not _source_card_stale_reasons(
+        artifact=artifact,
+        source=source,
+        source_paths=source_paths,
+        policy_path=policy_path,
     )
 
 
@@ -634,19 +978,12 @@ def lecture_substrate_is_fresh(
         artifact = validate_lecture_substrate(load_json(path))
     except Exception:
         return False
-    dependencies = _dependencies(artifact)
-    bundle = _load_bundle(lecture_bundle_dir, lecture_key)
-    source_card_signature = signature_for_files(
-        [_source_card_path(source_card_dir, source_id) for source_id in _artifact_input_source_ids(artifact)]
-    )
-    raw_sources_signature = signature_for_files(_raw_source_paths_for_bundle(subject_root, bundle))
-    bundle_path = lecture_bundle_dir / f"{lecture_key}.json"
-    return (
-        bundle_path.exists()
-        and dependencies.get("source_catalog") == sha256_file(source_catalog_path)
-        and dependencies.get("lecture_bundle") == sha256_file(bundle_path)
-        and dependencies.get("source_cards_signature") == source_card_signature
-        and dependencies.get("raw_sources_signature", "") == raw_sources_signature
+    return not _lecture_substrate_stale_reasons(
+        artifact=artifact,
+        lecture_key=lecture_key,
+        subject_root=subject_root,
+        lecture_bundle_dir=lecture_bundle_dir,
+        source_card_dir=source_card_dir,
     )
 
 
@@ -657,6 +994,9 @@ def course_synthesis_is_fresh(
     lecture_substrate_dir: Path,
     source_catalog_path: Path,
     partial_scope: bool,
+    glossary_path: Path = DEFAULT_COURSE_GLOSSARY_PATH,
+    theory_map_path: Path = DEFAULT_COURSE_THEORY_MAP_PATH,
+    concept_graph_path: Path = DEFAULT_CONCEPT_GRAPH_PATH,
 ) -> bool:
     if not path.exists() or not path.is_file():
         return False
@@ -664,18 +1004,14 @@ def course_synthesis_is_fresh(
         artifact = validate_course_synthesis(load_json(path))
     except Exception:
         return False
-    course = artifact.get("course") if isinstance(artifact.get("course"), dict) else {}
-    existing_scope = str(course.get("scope") or "").strip()
-    expected_scope = "partial" if partial_scope else "full"
-    existing_keys = [canonicalize_lecture_key(str(item or "")) for item in course.get("lecture_keys", [])]
-    existing_keys = [key for key in existing_keys if key]
-    if existing_scope != expected_scope or existing_keys != lecture_keys:
-        return False
-    dependencies = _dependencies(artifact)
-    substrate_signature = signature_for_files([_lecture_substrate_path(lecture_substrate_dir, key) for key in lecture_keys])
-    return (
-        dependencies.get("source_catalog") == sha256_file(source_catalog_path)
-        and dependencies.get("lecture_substrates_signature") == substrate_signature
+    return not _course_synthesis_stale_reasons(
+        artifact=artifact,
+        lecture_keys=lecture_keys,
+        lecture_substrate_dir=lecture_substrate_dir,
+        partial_scope=partial_scope,
+        glossary_path=glossary_path,
+        theory_map_path=theory_map_path,
+        concept_graph_path=concept_graph_path,
     )
 
 
@@ -695,10 +1031,11 @@ def revised_lecture_substrate_is_fresh(
         artifact = validate_revised_lecture_substrate(load_json(path))
     except Exception:
         return False
-    dependencies = _dependencies(artifact)
-    return (
-        dependencies.get("lecture_substrate") == sha256_file(lecture_path)
-        and dependencies.get("course_synthesis") == sha256_file(course_synthesis_path)
+    return not _revised_lecture_substrate_stale_reasons(
+        artifact=artifact,
+        lecture_key=lecture_key,
+        lecture_substrate_dir=lecture_substrate_dir,
+        course_synthesis_path=course_synthesis_path,
     )
 
 
@@ -720,16 +1057,13 @@ def podcast_substrate_is_fresh(
         artifact = validate_podcast_substrate(load_json(path))
     except Exception:
         return False
-    dependencies = _dependencies(artifact)
-    source_card_signature = signature_for_files(
-        [_source_card_path(source_card_dir, source_id) for source_id in _artifact_input_source_ids(artifact)]
-    )
-    expected_source_weighting = sha256_file(source_weighting_path) if source_weighting_path.exists() else ""
-    return (
-        dependencies.get("revised_lecture_substrate") == sha256_file(revised_path)
-        and dependencies.get("course_synthesis") == sha256_file(course_synthesis_path)
-        and dependencies.get("source_cards_signature") == source_card_signature
-        and dependencies.get("source_weighting") == expected_source_weighting
+    return not _podcast_substrate_stale_reasons(
+        artifact=artifact,
+        lecture_key=lecture_key,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=revised_lecture_substrate_dir,
+        course_synthesis_path=course_synthesis_path,
+        source_weighting_path=source_weighting_path,
     )
 
 
@@ -835,12 +1169,11 @@ def build_source_card_for_source(
         **_build_metadata(
             artifact_type="source_card",
             model=model,
-            dependency_hashes={
-                "source_file": sha256_file(source_paths[0]) if len(source_paths) == 1 else signature_for_files(source_paths),
-                "source_files_signature": signature_for_files(source_paths),
-                "source_catalog": sha256_file(source_catalog_path),
-                "source_intelligence_policy": sha256_file(policy_path) if policy_path.exists() else "",
-            },
+            dependency_hashes=_source_card_dependency_hashes(
+                source=source,
+                source_paths=source_paths,
+                policy_path=policy_path,
+            ),
             input_source_ids=[source_id],
         ),
         "source": _source_identity(source, source_paths, repo_root, subject_root),
@@ -1148,17 +1481,12 @@ def build_lecture_substrate_for_lecture(
         **_build_metadata(
             artifact_type="lecture_substrate",
             model=model,
-            dependency_hashes={
-                "source_catalog": sha256_file(source_catalog_path),
-                "lecture_bundle": sha256_file(lecture_bundle_dir / f"{lecture_key}.json"),
-                "source_cards_signature": signature_for_files(card_paths),
-                "raw_sources_signature": signature_for_files(raw_source_paths),
-            },
-            input_source_ids=[
-                str((card.get("source") or {}).get("source_id") or "")
-                for card in source_cards
-                if str((card.get("source") or {}).get("source_id") or "")
-            ],
+            dependency_hashes=_lecture_substrate_dependency_hashes(
+                bundle=bundle,
+                source_card_paths=card_paths,
+                raw_source_paths=raw_source_paths,
+            ),
+            input_source_ids=_bundle_input_source_ids(bundle),
         ),
         "lecture": {
             "lecture_key": lecture_key,
@@ -1363,6 +1691,9 @@ def build_course_synthesis(
     backend: GeminiPreprocessingBackend | None = None,
     json_generator: JsonGenerator | None = None,
 ) -> dict[str, Any]:
+    resolved_glossary_path = repo_root / glossary_path if not glossary_path.is_absolute() else glossary_path
+    resolved_theory_map_path = repo_root / theory_map_path if not theory_map_path.is_absolute() else theory_map_path
+    resolved_concept_graph_path = repo_root / concept_graph_path if not concept_graph_path.is_absolute() else concept_graph_path
     if output_path.exists() and not force:
         if course_synthesis_is_fresh(
             path=output_path,
@@ -1370,6 +1701,9 @@ def build_course_synthesis(
             lecture_substrate_dir=lecture_substrate_dir,
             source_catalog_path=source_catalog_path,
             partial_scope=partial_scope,
+            glossary_path=resolved_glossary_path,
+            theory_map_path=resolved_theory_map_path,
+            concept_graph_path=resolved_concept_graph_path,
         ):
             return {"status": "skipped_existing", "output_path": str(output_path)}
         if dry_run:
@@ -1380,9 +1714,9 @@ def build_course_synthesis(
     if not lecture_substrates:
         raise RuntimeError("no lecture substrates available for course synthesis")
     supporting_artifacts = _supporting_course_artifacts(
-        glossary_path=repo_root / glossary_path if not glossary_path.is_absolute() else glossary_path,
-        theory_map_path=repo_root / theory_map_path if not theory_map_path.is_absolute() else theory_map_path,
-        concept_graph_path=repo_root / concept_graph_path if not concept_graph_path.is_absolute() else concept_graph_path,
+        glossary_path=resolved_glossary_path,
+        theory_map_path=resolved_theory_map_path,
+        concept_graph_path=resolved_concept_graph_path,
     )
     response = _call_json_generator(
         backend=backend,
@@ -1416,10 +1750,12 @@ def build_course_synthesis(
         **_build_metadata(
             artifact_type="course_synthesis",
             model=model,
-            dependency_hashes={
-                "source_catalog": sha256_file(source_catalog_path),
-                "lecture_substrates_signature": signature_for_files(substrate_paths),
-            },
+            dependency_hashes=_course_synthesis_dependency_hashes(
+                lecture_substrate_paths=substrate_paths,
+                glossary_path=resolved_glossary_path,
+                theory_map_path=resolved_theory_map_path,
+                concept_graph_path=resolved_concept_graph_path,
+            ),
             input_source_ids=[
                 source_id
                 for substrate in lecture_substrates
@@ -1512,10 +1848,10 @@ def build_revised_lecture_substrate_for_lecture(
         **_build_metadata(
             artifact_type="revised_lecture_substrate",
             model=model,
-            dependency_hashes={
-                "lecture_substrate": sha256_file(lecture_path),
-                "course_synthesis": sha256_file(course_synthesis_path),
-            },
+            dependency_hashes=_revised_lecture_substrate_dependency_hashes(
+                lecture_path=lecture_path,
+                course_synthesis_path=course_synthesis_path,
+            ),
             input_source_ids=lecture_substrate.get("provenance", {}).get("input_source_ids", []),
         ),
         "lecture": lecture_substrate["lecture"],
@@ -1719,12 +2055,12 @@ def build_podcast_substrate_for_lecture(
         **_build_metadata(
             artifact_type="podcast_substrate",
             model=model,
-            dependency_hashes={
-                "revised_lecture_substrate": sha256_file(revised_path),
-                "course_synthesis": sha256_file(course_synthesis_path),
-                "source_cards_signature": signature_for_files(source_card_paths),
-                "source_weighting": sha256_file(source_weighting_path) if source_weighting_path.exists() else "",
-            },
+            dependency_hashes=_podcast_substrate_dependency_hashes(
+                revised_path=revised_path,
+                course_synthesis_path=course_synthesis_path,
+                source_card_paths=source_card_paths,
+                source_weighting_path=source_weighting_path,
+            ),
             input_source_ids=revised.get("provenance", {}).get("input_source_ids", []),
         ),
         "lecture": revised["lecture"],
@@ -1808,16 +2144,15 @@ def build_podcast_substrates(
     }
 
 
-def build_recursive_index(
+def refresh_recursive_provenance(
     *,
     repo_root: Path,
+    subject_root: Path,
     source_catalog_path: Path,
     recursive_dir: Path,
-    output_path: Path,
 ) -> dict[str, Any]:
     catalog = _load_source_catalog(source_catalog_path)
     lecture_keys = _source_catalog_lecture_keys(catalog)
-    catalog_hash = sha256_file(source_catalog_path)
     source_by_id = {
         str(source.get("source_id") or "").strip(): source
         for source in catalog.get("sources", [])
@@ -1828,10 +2163,205 @@ def build_recursive_index(
         for source in catalog.get("sources", [])
         if isinstance(source, dict) and source.get("source_exists") and str(source.get("source_id") or "").strip()
     ]
+    show_dir = source_catalog_path.parent
+    policy_path = show_dir / "source_intelligence_policy.json"
+    lecture_bundle_dir = show_dir / "lecture_bundles"
+    source_weighting_path = show_dir / "source_weighting.json"
+    glossary_path = show_dir / "course_glossary.json"
+    theory_map_path = show_dir / "course_theory_map.json"
+    concept_graph_path = show_dir / "course_concept_graph.json"
+
     source_card_dir = recursive_dir / "source_cards"
     lecture_substrate_dir = recursive_dir / "lecture_substrates"
     revised_dir = recursive_dir / "revised_lecture_substrates"
     podcast_dir = recursive_dir / "podcast_substrates"
+    course_synthesis_path = recursive_dir / "course_synthesis.json"
+
+    counts = {
+        "source_cards": 0,
+        "lecture_substrates": 0,
+        "course_synthesis": 0,
+        "revised_lecture_substrates": 0,
+        "podcast_substrates": 0,
+    }
+    errors: list[str] = []
+
+    for source_id in expected_source_ids:
+        path = _source_card_path(source_card_dir, source_id)
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            source = source_by_id[source_id]
+            artifact = validate_source_card(load_json(path))
+            source_paths = source_file_paths(subject_root, source)
+            artifact["provenance"]["input_source_ids"] = [source_id]
+            artifact["provenance"]["dependency_hashes"] = _source_card_dependency_hashes(
+                source=source,
+                source_paths=source_paths,
+                policy_path=policy_path,
+            )
+            artifact["source"] = _source_identity(source, source_paths, repo_root, subject_root)
+            validate_source_card(artifact)
+            write_json(path, artifact)
+            counts["source_cards"] += 1
+        except Exception as exc:
+            errors.append(f"{display_path(path, repo_root)}: {exc}")
+
+    for lecture_key in lecture_keys:
+        path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            artifact = validate_lecture_substrate(load_json(path))
+            bundle = _load_bundle(lecture_bundle_dir, lecture_key)
+            source_cards, _missing_sources = _source_cards_for_bundle(source_card_dir, bundle)
+            raw_source_paths = _raw_source_paths_for_bundle(subject_root, bundle)
+            source_card_paths = [
+                _source_card_path(source_card_dir, str((card.get("source") or {}).get("source_id") or ""))
+                for card in source_cards
+            ]
+            artifact["provenance"]["input_source_ids"] = _bundle_input_source_ids(bundle)
+            artifact["provenance"]["dependency_hashes"] = _lecture_substrate_dependency_hashes(
+                bundle=bundle,
+                source_card_paths=source_card_paths,
+                raw_source_paths=raw_source_paths,
+            )
+            artifact["lecture"] = {
+                "lecture_key": lecture_key,
+                "lecture_title": str(bundle.get("lecture_title") or lecture_key).strip(),
+                "sequence_index": bundle.get("sequence_index"),
+            }
+            validate_lecture_substrate(artifact)
+            write_json(path, artifact)
+            counts["lecture_substrates"] += 1
+        except Exception as exc:
+            errors.append(f"{display_path(path, repo_root)}: {exc}")
+
+    if course_synthesis_path.exists() and course_synthesis_path.is_file():
+        try:
+            artifact = validate_course_synthesis(load_json(course_synthesis_path))
+            course = artifact.get("course") if isinstance(artifact.get("course"), dict) else {}
+            synthesis_keys = [canonicalize_lecture_key(str(item or "")) for item in course.get("lecture_keys", [])]
+            synthesis_keys = [key for key in synthesis_keys if key] or lecture_keys
+            lecture_substrates = _load_existing_lecture_substrates(lecture_substrate_dir, synthesis_keys)
+            artifact["provenance"]["input_source_ids"] = [
+                source_id
+                for substrate in lecture_substrates
+                for source_id in _artifact_input_source_ids(substrate)
+            ]
+            artifact["provenance"]["dependency_hashes"] = _course_synthesis_dependency_hashes(
+                lecture_substrate_paths=[_lecture_substrate_path(lecture_substrate_dir, key) for key in synthesis_keys],
+                glossary_path=glossary_path,
+                theory_map_path=theory_map_path,
+                concept_graph_path=concept_graph_path,
+            )
+            artifact["course"] = {
+                "course_title": str(course.get("course_title") or COURSE_TITLE),
+                "lecture_count": len(synthesis_keys),
+                "scope": str(course.get("scope") or "full").strip() or "full",
+                "lecture_keys": synthesis_keys,
+            }
+            validate_course_synthesis(artifact)
+            write_json(course_synthesis_path, artifact)
+            counts["course_synthesis"] = 1
+        except Exception as exc:
+            errors.append(f"{display_path(course_synthesis_path, repo_root)}: {exc}")
+
+    for lecture_key in lecture_keys:
+        path = _lecture_substrate_path(revised_dir, lecture_key)
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            artifact = validate_revised_lecture_substrate(load_json(path))
+            lecture_path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
+            lecture_substrate = validate_lecture_substrate(load_json(lecture_path))
+            artifact["provenance"]["input_source_ids"] = _artifact_input_source_ids(lecture_substrate)
+            artifact["provenance"]["dependency_hashes"] = _revised_lecture_substrate_dependency_hashes(
+                lecture_path=lecture_path,
+                course_synthesis_path=course_synthesis_path,
+            )
+            artifact["lecture"] = lecture_substrate["lecture"]
+            validate_revised_lecture_substrate(artifact)
+            write_json(path, artifact)
+            counts["revised_lecture_substrates"] += 1
+        except Exception as exc:
+            errors.append(f"{display_path(path, repo_root)}: {exc}")
+
+    for lecture_key in lecture_keys:
+        path = _lecture_substrate_path(podcast_dir, lecture_key)
+        if not path.exists() or not path.is_file():
+            continue
+        try:
+            artifact = validate_podcast_substrate(load_json(path))
+            revised_path = _lecture_substrate_path(revised_dir, lecture_key)
+            revised = validate_revised_lecture_substrate(load_json(revised_path))
+            bundle = _load_bundle(lecture_bundle_dir, lecture_key)
+            source_cards, _missing_sources = _source_cards_for_bundle(source_card_dir, bundle)
+            source_card_paths = [
+                _source_card_path(source_card_dir, str((card.get("source") or {}).get("source_id") or ""))
+                for card in source_cards
+            ]
+            artifact["provenance"]["input_source_ids"] = _artifact_input_source_ids(revised)
+            artifact["provenance"]["dependency_hashes"] = _podcast_substrate_dependency_hashes(
+                revised_path=revised_path,
+                course_synthesis_path=course_synthesis_path,
+                source_card_paths=source_card_paths,
+                source_weighting_path=source_weighting_path,
+            )
+            artifact["lecture"] = revised["lecture"]
+            validate_podcast_substrate(artifact)
+            write_json(path, artifact)
+            counts["podcast_substrates"] += 1
+        except Exception as exc:
+            errors.append(f"{display_path(path, repo_root)}: {exc}")
+
+    return {
+        "refreshed": counts,
+        "error_count": len(errors),
+        "errors": errors,
+    }
+
+
+def build_recursive_index(
+    *,
+    repo_root: Path,
+    source_catalog_path: Path,
+    recursive_dir: Path,
+    output_path: Path,
+) -> dict[str, Any]:
+    catalog = _load_source_catalog(source_catalog_path)
+    lecture_keys = _source_catalog_lecture_keys(catalog)
+    source_by_id = {
+        str(source.get("source_id") or "").strip(): source
+        for source in catalog.get("sources", [])
+        if isinstance(source, dict) and str(source.get("source_id") or "").strip()
+    }
+    expected_source_ids = [
+        str(source.get("source_id") or "").strip()
+        for source in catalog.get("sources", [])
+        if isinstance(source, dict) and source.get("source_exists") and str(source.get("source_id") or "").strip()
+    ]
+    show_dir = source_catalog_path.parent
+    policy_path = show_dir / "source_intelligence_policy.json"
+    lecture_bundle_dir = show_dir / "lecture_bundles"
+    source_weighting_path = show_dir / "source_weighting.json"
+    glossary_path = show_dir / "course_glossary.json"
+    theory_map_path = show_dir / "course_theory_map.json"
+    concept_graph_path = show_dir / "course_concept_graph.json"
+
+    source_card_dir = recursive_dir / "source_cards"
+    lecture_substrate_dir = recursive_dir / "lecture_substrates"
+    revised_dir = recursive_dir / "revised_lecture_substrates"
+    podcast_dir = recursive_dir / "podcast_substrates"
+    course_synthesis_path = recursive_dir / "course_synthesis.json"
+
+    core_types = [
+        "source_cards",
+        "lecture_substrates",
+        "course_synthesis",
+        "revised_lecture_substrates",
+    ]
+    optional_types = ["podcast_substrates"]
 
     def valid_files(paths: list[Path], validator: Callable[[object], dict[str, Any]]) -> tuple[int, list[str]]:
         count = 0
@@ -1855,10 +2385,16 @@ def build_recursive_index(
     lecture_count, lecture_errors = valid_files(lecture_paths, validate_lecture_substrate)
     revised_count, revised_errors = valid_files(revised_paths, validate_revised_lecture_substrate)
     podcast_count, podcast_errors = valid_files(podcast_paths, validate_podcast_substrate)
-    stale_artifacts: list[str] = []
-    show_dir = source_catalog_path.parent
-    policy_path = show_dir / "source_intelligence_policy.json"
-    policy_hash = sha256_file(policy_path) if policy_path.exists() and policy_path.is_file() else ""
+
+    error_groups = {
+        "source_cards": source_card_errors,
+        "lecture_substrates": lecture_errors,
+        "course_synthesis": [],
+        "revised_lecture_substrates": revised_errors,
+        "podcast_substrates": podcast_errors,
+    }
+    core_stale_artifacts: list[str] = []
+    optional_stale_artifacts: list[str] = []
 
     for source_id in expected_source_ids:
         path = _source_card_path(source_card_dir, source_id)
@@ -1866,16 +2402,17 @@ def build_recursive_index(
             continue
         try:
             artifact = validate_source_card(load_json(path))
+            source = source_by_id[source_id]
+            source_paths_for_id = source_file_paths(DEFAULT_SUBJECT_ROOT, source)
+            for reason in _source_card_stale_reasons(
+                artifact=artifact,
+                source=source,
+                source_paths=source_paths_for_id,
+                policy_path=policy_path,
+            ):
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: {reason}")
         except Exception:
             continue
-        dependencies = artifact.get("provenance", {}).get("dependency_hashes", {})
-        if dependencies.get("source_catalog") != catalog_hash:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_catalog")
-        if dependencies.get("source_intelligence_policy") != policy_hash:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_intelligence_policy")
-        current_source_hash = str(((source_by_id.get(source_id) or {}).get("file") or {}).get("sha256") or "")
-        if current_source_hash and dependencies.get("source_file") != current_source_hash:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_file")
 
     for lecture_key in lecture_keys:
         path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
@@ -1883,52 +2420,48 @@ def build_recursive_index(
             continue
         try:
             artifact = validate_lecture_substrate(load_json(path))
+            bundle_path = lecture_bundle_dir / f"{lecture_key}.json"
+            if not bundle_path.exists() or not bundle_path.is_file():
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_bundle_missing")
+                continue
+            for reason in _lecture_substrate_stale_reasons(
+                artifact=artifact,
+                lecture_key=lecture_key,
+                subject_root=DEFAULT_SUBJECT_ROOT,
+                lecture_bundle_dir=lecture_bundle_dir,
+                source_card_dir=source_card_dir,
+            ):
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: {reason}")
         except Exception:
             continue
-        dependencies = artifact.get("provenance", {}).get("dependency_hashes", {})
-        if dependencies.get("source_catalog") != catalog_hash:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_catalog")
-        bundle_path = show_dir / "lecture_bundles" / f"{lecture_key}.json"
-        if not bundle_path.exists() or not bundle_path.is_file():
-            stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_bundle_missing")
-        elif dependencies.get("lecture_bundle") != sha256_file(bundle_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_bundle")
-        source_ids = [str(item or "").strip() for item in artifact.get("provenance", {}).get("input_source_ids", [])]
-        source_card_signature = signature_for_files([_source_card_path(source_card_dir, source_id) for source_id in source_ids])
-        if dependencies.get("source_cards_signature") != source_card_signature:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_cards_signature")
-        if bundle_path.exists() and bundle_path.is_file():
-            bundle = _load_bundle(show_dir / "lecture_bundles", lecture_key)
-            raw_sources_signature = signature_for_source_records(_bundle_source_entries(bundle))
-            if dependencies.get("raw_sources_signature") != raw_sources_signature:
-                stale_artifacts.append(f"{display_path(path, repo_root)}: raw_sources_signature")
 
-    course_synthesis_path = recursive_dir / "course_synthesis.json"
     course_synthesis_present = False
     course_synthesis_scope = ""
     course_synthesis_lecture_keys: list[str] = []
-    course_synthesis_errors: list[str] = []
     if course_synthesis_path.exists() and course_synthesis_path.is_file():
         try:
             course_synthesis = validate_course_synthesis(load_json(course_synthesis_path))
             course_synthesis_present = True
-            course = course_synthesis.get("course", {}) if isinstance(course_synthesis.get("course"), dict) else {}
+            course = course_synthesis.get("course") if isinstance(course_synthesis.get("course"), dict) else {}
             course_synthesis_scope = str(course.get("scope") or "").strip()
-            dependencies = course_synthesis.get("provenance", {}).get("dependency_hashes", {})
-            if dependencies.get("source_catalog") != catalog_hash:
-                stale_artifacts.append(f"{display_path(course_synthesis_path, repo_root)}: source_catalog")
             course_synthesis_lecture_keys = [
                 canonicalize_lecture_key(str(item or ""))
                 for item in course.get("lecture_keys", [])
             ]
-            course_synthesis_lecture_keys = [item for item in course_synthesis_lecture_keys if item]
-            synthesis_signature = signature_for_files(
-                [_lecture_substrate_path(lecture_substrate_dir, key) for key in course_synthesis_lecture_keys]
-            )
-            if dependencies.get("lecture_substrates_signature") != synthesis_signature:
-                stale_artifacts.append(f"{display_path(course_synthesis_path, repo_root)}: lecture_substrates_signature")
+            course_synthesis_lecture_keys = [key for key in course_synthesis_lecture_keys if key]
+            partial_scope = course_synthesis_scope == "partial"
+            for reason in _course_synthesis_stale_reasons(
+                artifact=course_synthesis,
+                lecture_keys=course_synthesis_lecture_keys or lecture_keys,
+                lecture_substrate_dir=lecture_substrate_dir,
+                partial_scope=partial_scope,
+                glossary_path=glossary_path,
+                theory_map_path=theory_map_path,
+                concept_graph_path=concept_graph_path,
+            ):
+                core_stale_artifacts.append(f"{display_path(course_synthesis_path, repo_root)}: {reason}")
         except Exception as exc:
-            course_synthesis_errors.append(f"{display_path(course_synthesis_path, repo_root)}: {exc}")
+            error_groups["course_synthesis"].append(f"{display_path(course_synthesis_path, repo_root)}: {exc}")
 
     for lecture_key in lecture_keys:
         path = _lecture_substrate_path(revised_dir, lecture_key)
@@ -1936,37 +2469,66 @@ def build_recursive_index(
             continue
         try:
             artifact = validate_revised_lecture_substrate(load_json(path))
+            lecture_path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
+            if not lecture_path.exists() or not lecture_path.is_file():
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_substrate_missing")
+                continue
+            if not course_synthesis_path.exists() or not course_synthesis_path.is_file():
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: course_synthesis_missing")
+                continue
+            for reason in _revised_lecture_substrate_stale_reasons(
+                artifact=artifact,
+                lecture_key=lecture_key,
+                lecture_substrate_dir=lecture_substrate_dir,
+                course_synthesis_path=course_synthesis_path,
+            ):
+                core_stale_artifacts.append(f"{display_path(path, repo_root)}: {reason}")
         except Exception:
             continue
-        dependencies = artifact.get("provenance", {}).get("dependency_hashes", {})
-        lecture_path = _lecture_substrate_path(lecture_substrate_dir, lecture_key)
-        if lecture_path.exists() and dependencies.get("lecture_substrate") != sha256_file(lecture_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: lecture_substrate")
-        if course_synthesis_path.exists() and dependencies.get("course_synthesis") != sha256_file(course_synthesis_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: course_synthesis")
 
-    source_weighting_path = show_dir / "source_weighting.json"
     for lecture_key in lecture_keys:
         path = _lecture_substrate_path(podcast_dir, lecture_key)
         if not path.exists() or not path.is_file():
             continue
         try:
             artifact = validate_podcast_substrate(load_json(path))
+            revised_path = _lecture_substrate_path(revised_dir, lecture_key)
+            if not revised_path.exists() or not revised_path.is_file():
+                optional_stale_artifacts.append(f"{display_path(path, repo_root)}: revised_lecture_substrate_missing")
+                continue
+            if not course_synthesis_path.exists() or not course_synthesis_path.is_file():
+                optional_stale_artifacts.append(f"{display_path(path, repo_root)}: course_synthesis_missing")
+                continue
+            for reason in _podcast_substrate_stale_reasons(
+                artifact=artifact,
+                lecture_key=lecture_key,
+                source_card_dir=source_card_dir,
+                revised_lecture_substrate_dir=revised_dir,
+                course_synthesis_path=course_synthesis_path,
+                source_weighting_path=source_weighting_path,
+            ):
+                optional_stale_artifacts.append(f"{display_path(path, repo_root)}: {reason}")
         except Exception:
             continue
-        dependencies = artifact.get("provenance", {}).get("dependency_hashes", {})
-        revised_path = _lecture_substrate_path(revised_dir, lecture_key)
-        if revised_path.exists() and dependencies.get("revised_lecture_substrate") != sha256_file(revised_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: revised_lecture_substrate")
-        if course_synthesis_path.exists() and dependencies.get("course_synthesis") != sha256_file(course_synthesis_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: course_synthesis")
-        source_ids = [str(item or "").strip() for item in artifact.get("provenance", {}).get("input_source_ids", [])]
-        source_card_signature = signature_for_files([_source_card_path(source_card_dir, source_id) for source_id in source_ids])
-        if dependencies.get("source_cards_signature") != source_card_signature:
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_cards_signature")
-        if source_weighting_path.exists() and dependencies.get("source_weighting") != sha256_file(source_weighting_path):
-            stale_artifacts.append(f"{display_path(path, repo_root)}: source_weighting")
 
+    complete = {
+        "source_cards": source_card_count == len(expected_source_ids),
+        "lecture_substrates": lecture_count == len(lecture_keys),
+        "course_synthesis": (
+            course_synthesis_present
+            and course_synthesis_scope == "full"
+            and course_synthesis_lecture_keys == lecture_keys
+        ),
+        "revised_lecture_substrates": revised_count == len(lecture_keys),
+        "podcast_substrates": podcast_count == len(lecture_keys),
+    }
+    errors = (
+        error_groups["source_cards"]
+        + error_groups["lecture_substrates"]
+        + error_groups["course_synthesis"]
+        + error_groups["revised_lecture_substrates"]
+        + error_groups["podcast_substrates"]
+    )
     payload = {
         "version": RECURSIVE_SOURCE_INTELLIGENCE_SCHEMA_VERSION,
         "subject_slug": SUBJECT_SLUG,
@@ -1990,37 +2552,26 @@ def build_recursive_index(
             "scope": course_synthesis_scope,
             "lecture_keys": course_synthesis_lecture_keys,
         },
-        "complete": {
-            "source_cards": source_card_count == len(expected_source_ids),
-            "lecture_substrates": lecture_count == len(lecture_keys),
-            "course_synthesis": (
-                course_synthesis_present
-                and course_synthesis_scope == "full"
-                and course_synthesis_lecture_keys == lecture_keys
-            ),
-            "revised_lecture_substrates": revised_count == len(lecture_keys),
-            "podcast_substrates": podcast_count == len(lecture_keys),
+        "complete": complete,
+        "required": {
+            "core_artifact_types": core_types,
+            "optional_artifact_types": optional_types,
+            "core_complete": all(complete[key] for key in core_types),
+            "strict_complete": all(complete.values()),
         },
         "fresh": {
-            "stale_artifact_count": len(stale_artifacts),
-            "stale_artifacts": stale_artifacts,
+            "stale_artifact_count": len(core_stale_artifacts) + len(optional_stale_artifacts),
+            "stale_artifacts": core_stale_artifacts + optional_stale_artifacts,
+            "core_stale_artifact_count": len(core_stale_artifacts),
+            "core_stale_artifacts": core_stale_artifacts,
+            "optional_stale_artifact_count": len(optional_stale_artifacts),
+            "optional_stale_artifacts": optional_stale_artifacts,
         },
-        "errors": source_card_errors + lecture_errors + course_synthesis_errors + revised_errors + podcast_errors,
+        "error_groups": error_groups,
+        "errors": errors,
         "known_partial_allowances": [
             "W03L2 may remain partial only because its manual lecture/reading summaries are incomplete, not because of missing sources."
         ],
     }
-    if output_path.exists() and output_path.is_file():
-        try:
-            previous_payload = load_json(output_path)
-        except Exception:
-            previous_payload = None
-        if isinstance(previous_payload, dict):
-            previous_without_timestamp = dict(previous_payload)
-            payload_without_timestamp = dict(payload)
-            previous_without_timestamp.pop("generated_at", None)
-            payload_without_timestamp.pop("generated_at", None)
-            if previous_without_timestamp == payload_without_timestamp:
-                payload["generated_at"] = str(previous_payload.get("generated_at") or payload["generated_at"])
-    write_json(output_path, payload)
+    payload = write_json(output_path, payload)
     return payload

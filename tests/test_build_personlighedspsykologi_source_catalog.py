@@ -218,3 +218,31 @@ def test_build_source_catalog_tracks_readings_slides_and_sidecars(tmp_path):
     assert slide["evidence_origin"] == "lecture_framed"
     assert slide["subject_relative_path"] == "Forelæsningsrækken/Slides 1.pdf"
     assert slide["prompt_analysis_sidecars"] == ["Forelæsningsrækken/Slides 1.analysis.md"]
+
+
+def test_write_catalog_preserves_existing_generated_at_when_semantics_match(tmp_path):
+    mod = _load_module()
+    output_path = tmp_path / "source_catalog.json"
+    catalog = {
+        "version": 1,
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-07T12:00:00Z",
+        "lectures": [],
+        "sources": [],
+        "stats": {"lecture_count": 0, "source_count": 0},
+        "warnings": [],
+    }
+
+    stored = mod._write_catalog(output_path, catalog)
+    assert stored["generated_at"] == "2026-05-07T12:00:00Z"
+
+    older = dict(stored)
+    older["generated_at"] = "2000-01-01T00:00:00Z"
+    output_path.write_text(json.dumps(older, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    refreshed = dict(catalog)
+    refreshed["generated_at"] = "2030-01-01T00:00:00Z"
+    stored_again = mod._write_catalog(output_path, refreshed)
+    assert stored_again["generated_at"] == "2000-01-01T00:00:00Z"
+    on_disk = json.loads(output_path.read_text(encoding="utf-8"))
+    assert on_disk["generated_at"] == "2000-01-01T00:00:00Z"

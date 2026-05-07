@@ -306,7 +306,11 @@ Recursive preprocessing implementation:
   visually distinct from deterministic artifacts.
 - `scripts/check_personlighedspsykologi_recursive_artifacts.py` validates
   recursive artifacts, writes `source_intelligence/index.json`, and reports
-  coverage plus stale dependency hashes.
+  coverage plus stale dependency fingerprints. Default mode gates only the core
+  recursive chain; add `--require-podcast-substrates` for strict output
+  coverage. `scripts/refresh_personlighedspsykologi_recursive_provenance.py`
+  can refresh stored dependency metadata in place after fingerprint-model
+  changes without rerunning Gemini.
 - Podcast-substrate injection is gated behind `course_context.podcast_substrate`
   so test generations can compare substrate-enabled prompts against the current
   baseline.

@@ -260,3 +260,85 @@ def test_build_lecture_bundles_enriches_sources_and_indexes_outputs(tmp_path):
         "missing_lecture_summary",
         "no_readings",
     ]
+
+
+def test_build_lecture_bundles_preserves_generated_at_when_semantics_match(tmp_path):
+    mod = _load_module()
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    subject_root = tmp_path / "Personlighedspsykologi"
+    (subject_root / "Readings" / "W01L1 Intro").mkdir(parents=True)
+
+    source_catalog_path = repo_root / "source_catalog.json"
+    source_catalog_path.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "subject_slug": "personlighedspsykologi",
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "sequence_index": 1,
+                        "lecture_title": "Intro",
+                        "week_prompt_analysis_present": False,
+                        "week_prompt_analysis_sidecars": [],
+                    }
+                ],
+                "sources": [],
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    content_manifest_path = repo_root / "content_manifest.json"
+    content_manifest_path.write_text(
+        json.dumps(
+            {
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "lecture_title": "Intro",
+                        "sequence_index": 1,
+                        "summary": {},
+                        "warnings": [],
+                        "readings": [],
+                    }
+                ]
+            },
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    output_dir = repo_root / "lecture_bundles"
+    mod.build_lecture_bundles(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source_catalog_path=source_catalog_path,
+        content_manifest_path=content_manifest_path,
+        output_dir=output_dir,
+    )
+
+    bundle_path = output_dir / "W01L1.json"
+    index_path = output_dir / "index.json"
+    bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+    index_payload = json.loads(index_path.read_text(encoding="utf-8"))
+    bundle["generated_at"] = "2000-01-01T00:00:00Z"
+    index_payload["generated_at"] = "2000-01-01T00:00:00Z"
+    bundle_path.write_text(json.dumps(bundle, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    index_path.write_text(json.dumps(index_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    mod.build_lecture_bundles(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source_catalog_path=source_catalog_path,
+        content_manifest_path=content_manifest_path,
+        output_dir=output_dir,
+    )
+
+    rebuilt_bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+    rebuilt_index = json.loads(index_path.read_text(encoding="utf-8"))
+    assert rebuilt_bundle["generated_at"] == "2000-01-01T00:00:00Z"
+    assert rebuilt_index["generated_at"] == "2000-01-01T00:00:00Z"

@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T20:27:33+00:00",
+  "generated_at": "2026-05-07T20:37:32+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -775,6 +775,66 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Zettler%20et%20al.%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L1/[Short] W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=bd5a6226}.mp3",
+      "source_name": "[Short] W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=bd5a6226}.mp3",
+      "source_path": "W03L1/[Short] W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=bd5a6226}.mp3",
+      "path_parts": [
+        "W03L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11010202,
+      "sha256": "9b090215de598fa649688a3c89e1b14b3d6241e87539efb733eaa5e62e023694",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:37:28+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/%5BShort%5D%20W03L1%20-%20Kandler%20%26%20Instinske%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dbd5a6226%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L1/[Short] W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=short hash=c6de214c}.mp3",
+      "source_name": "[Short] W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=short hash=c6de214c}.mp3",
+      "source_path": "W03L1/[Short] W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=short hash=c6de214c}.mp3",
+      "path_parts": [
+        "W03L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10915213,
+      "sha256": "20aa30d0b32af8854c87e76bd91c9c5319495603ddc3feabbb84f2c0ee6646d9",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:37:28+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/%5BShort%5D%20W03L1%20-%20Lu%2C%20Benet-Marti%CC%81nez%20%26%20Wang%20%282023%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc6de214c%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L1/[Short] W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=095b62d3}.mp3",
+      "source_name": "[Short] W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=095b62d3}.mp3",
+      "source_path": "W03L1/[Short] W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=095b62d3}.mp3",
+      "path_parts": [
+        "W03L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10341371,
+      "sha256": "fde1b48c2f35ca574b41796969caca69833a89f2d2dfcb1aac0134523fa51ba4",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:37:28+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/%5BShort%5D%20W03L1%20-%20Volk%20%26%20Puchalski%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D095b62d3%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L1/[Short] W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=dd25b365}.mp3",
+      "source_name": "[Short] W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=dd25b365}.mp3",
+      "source_path": "W03L1/[Short] W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=dd25b365}.mp3",
+      "path_parts": [
+        "W03L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10747876,
+      "sha256": "2bd5233b37300f44b647662d6e8953117456a4b628686154416d1009099875d0",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:37:28+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/%5BShort%5D%20W03L1%20-%20Zettler%20et%20al.%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Ddd25b365%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=9274f72a}.mp3",

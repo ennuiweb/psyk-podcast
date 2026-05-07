@@ -33,6 +33,7 @@ class GenerateWeekTests(unittest.TestCase):
         return {
             "prompt_strategy": mod.normalize_audio_prompt_strategy({}),
             "exam_focus": mod.normalize_exam_focus({}),
+            "study_context": mod.normalize_study_context({}),
             "prompt_framework": mod.normalize_audio_prompt_framework({}),
             "meta_prompting": mod.normalize_meta_prompting({}),
         }
@@ -40,6 +41,7 @@ class GenerateWeekTests(unittest.TestCase):
     def _default_report_prompt_context(self, mod):
         return {
             "prompt_strategy": mod.normalize_report_prompt_strategy({}),
+            "study_context": mod.normalize_study_context({}),
             "meta_prompting": mod.normalize_meta_prompting({}),
         }
 
@@ -322,6 +324,68 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("This lecture revises the earlier trait framework.", prompt)
         self.assertIn("roughly one page", prompt)
         self.assertIn("3-4 short, relevant quotes", prompt)
+
+    def test_build_audio_prompt_includes_study_context_section(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            prompt_strategy=mod.normalize_audio_prompt_strategy({}),
+            exam_focus=mod.normalize_exam_focus({}),
+            study_context=mod.normalize_study_context(
+                {
+                    "enabled": True,
+                    "items": [
+                        "The exam is oral.",
+                        "There is a longer free discussion after the initial answer.",
+                    ],
+                }
+            ),
+            prompt_framework=mod.normalize_audio_prompt_framework({}),
+            meta_prompting=mod.normalize_meta_prompting({}),
+        )
+
+        self.assertIn("Current study context:", prompt)
+        self.assertIn("The exam is oral.", prompt)
+        self.assertIn("longer free discussion", prompt)
+
+    def test_build_report_prompt_includes_study_context_section(self):
+        mod = _load_module()
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_report_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            prompt_strategy=mod.normalize_report_prompt_strategy({}),
+            study_context=mod.normalize_study_context(
+                {
+                    "enabled": True,
+                    "items": [
+                        "The exam is oral.",
+                        "There is a longer free discussion after the initial answer.",
+                    ],
+                }
+            ),
+            meta_prompting=mod.normalize_meta_prompting({}),
+            course_context_note=None,
+            course_context_heading=None,
+        )
+
+        self.assertIn("Current study context:", prompt)
+        self.assertIn("The exam is oral.", prompt)
+        self.assertIn("longer free discussion", prompt)
 
     def test_build_audio_prompt_includes_format_and_length_guidance(self):
         mod = _load_module()

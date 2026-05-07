@@ -81,6 +81,7 @@ GEMINI_FILE_POLL_INTERVAL_SECONDS = 2
 GEMINI_FILE_POLL_TIMEOUT_SECONDS = 60
 DEFAULT_AUDIO_PROMPT_STRATEGY = prompting.DEFAULT_AUDIO_PROMPT_STRATEGY
 DEFAULT_EXAM_FOCUS = prompting.DEFAULT_EXAM_FOCUS
+DEFAULT_STUDY_CONTEXT = prompting.DEFAULT_STUDY_CONTEXT
 DEFAULT_META_PROMPTING = prompting.DEFAULT_META_PROMPTING
 DEFAULT_AUDIO_PROMPT_FRAMEWORK = prompting.DEFAULT_AUDIO_PROMPT_FRAMEWORK
 DEFAULT_REPORT_PROMPT_STRATEGY = prompting.DEFAULT_REPORT_PROMPT_STRATEGY
@@ -485,6 +486,7 @@ def per_source_audio_settings(
     per_slide_overrides: dict[str, dict] | None = None,
     prompt_strategy: dict | None = None,
     exam_focus: dict | None = None,
+    study_context: dict | None = None,
     prompt_framework: dict | None = None,
     meta_prompting: dict | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
@@ -519,6 +521,7 @@ def per_source_audio_settings(
                 prompt_type="single_slide",
                 prompt_strategy=prompt_strategy,
                 exam_focus=exam_focus,
+                study_context=study_context,
                 prompt_framework=prompt_framework,
                 meta_prompting=meta_prompting,
                 course_title=course_title,
@@ -546,6 +549,7 @@ def per_source_audio_settings(
             prompt_type="single_reading",
             prompt_strategy=prompt_strategy,
             exam_focus=exam_focus,
+            study_context=study_context,
             prompt_framework=prompt_framework,
             meta_prompting=meta_prompting,
             course_title=course_title,
@@ -568,6 +572,7 @@ def per_source_report_settings(
     per_reading_cfg: dict,
     per_slide_cfg: dict,
     prompt_strategy: dict | None = None,
+    study_context: dict | None = None,
     meta_prompting: dict | None = None,
     meta_note_overrides: dict[Path, str] | None = None,
     course_context_bundle: course_context_helpers.CoursePromptContextBundle | None = None,
@@ -590,6 +595,7 @@ def per_source_report_settings(
             prompt_strategy=prompt_strategy,
             course_context_note=course_context_note,
             course_context_heading=course_context_cfg.get("heading") if course_context_cfg else None,
+            study_context=study_context,
             meta_prompting=meta_prompting,
             meta_note_overrides=meta_note_overrides,
             custom_prompt=cfg.get("prompt", ""),
@@ -811,6 +817,10 @@ def normalize_audio_prompt_strategy(raw: object) -> dict:
 
 def normalize_exam_focus(raw: object) -> dict:
     return prompting.normalize_exam_focus(raw)
+
+
+def normalize_study_context(raw: object) -> dict:
+    return prompting.normalize_study_context(raw)
 
 
 def normalize_meta_prompting(raw: object) -> dict:
@@ -1474,6 +1484,7 @@ def build_audio_prompt(
     prompt_type: str,
     prompt_strategy: dict | None,
     exam_focus: dict | None,
+    study_context: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
     course_title: str | None = None,
@@ -1492,6 +1503,7 @@ def build_audio_prompt(
         prompt_type=prompt_type,
         prompt_strategy=prompt_strategy,
         exam_focus=exam_focus,
+        study_context=study_context,
         prompt_framework=prompt_framework,
         meta_prompting=meta_prompting,
         course_title=course_title,
@@ -1514,6 +1526,7 @@ def build_report_prompt(
     prompt_strategy: dict | None,
     course_context_note: str | None,
     course_context_heading: str | None,
+    study_context: dict | None,
     meta_prompting: dict | None,
     meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
@@ -1527,6 +1540,7 @@ def build_report_prompt(
         prompt_strategy=prompt_strategy,
         course_context_note=course_context_note,
         course_context_heading=course_context_heading,
+        study_context=study_context,
         meta_prompting=meta_prompting,
         meta_note_overrides=meta_note_overrides,
         custom_prompt=custom_prompt,
@@ -2779,6 +2793,7 @@ def main() -> int:
     per_slide_overrides = validate_per_slide_audio_config(per_slide_cfg)
     audio_prompt_strategy = normalize_audio_prompt_strategy(config.get("audio_prompt_strategy"))
     exam_focus = normalize_exam_focus(config.get("exam_focus"))
+    study_context = normalize_study_context(config.get("study_context"))
     audio_prompt_framework = normalize_audio_prompt_framework(config.get("audio_prompt_framework"))
     report_prompt_strategy = normalize_report_prompt_strategy(config.get("report_prompt_strategy"))
     meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
@@ -2978,6 +2993,7 @@ def main() -> int:
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    study_context=study_context,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     course_title=course_title,
@@ -3037,6 +3053,7 @@ def main() -> int:
                                     prompt_strategy=report_prompt_strategy,
                                     course_context_note=weekly_course_context_note,
                                     course_context_heading=course_context_cfg.get("heading"),
+                                    study_context=study_context,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_report_cfg.get("prompt", ""),
@@ -3118,6 +3135,7 @@ def main() -> int:
                                     per_slide_overrides=per_slide_overrides,
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    study_context=study_context,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
@@ -3166,6 +3184,7 @@ def main() -> int:
                                         per_reading_cfg=per_report_cfg,
                                         per_slide_cfg=per_slide_report_cfg,
                                         prompt_strategy=report_prompt_strategy,
+                                        study_context=study_context,
                                         meta_prompting=meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         course_context_bundle=course_context_bundle,
@@ -3260,6 +3279,7 @@ def main() -> int:
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
+                                        study_context=study_context,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
                                         course_title=course_title,
@@ -3318,6 +3338,7 @@ def main() -> int:
                                         prompt_strategy=report_prompt_strategy,
                                         course_context_note=brief_course_context_note,
                                         course_context_heading=course_context_cfg.get("heading"),
+                                        study_context=study_context,
                                         meta_prompting=meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=short_report_cfg.get("prompt", ""),
@@ -3411,6 +3432,7 @@ def main() -> int:
                                     prompt_type="weekly_readings_only",
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    study_context=study_context,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     course_title=course_title,
@@ -3456,6 +3478,7 @@ def main() -> int:
                                     prompt_strategy=report_prompt_strategy,
                                     course_context_note=weekly_course_context_note,
                                     course_context_heading=course_context_cfg.get("heading"),
+                                    study_context=study_context,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     custom_prompt=weekly_report_cfg.get("prompt", ""),
@@ -3611,6 +3634,7 @@ def main() -> int:
                                     per_slide_overrides=per_slide_overrides,
                                     prompt_strategy=audio_prompt_strategy,
                                     exam_focus=exam_focus,
+                                    study_context=study_context,
                                     prompt_framework=audio_prompt_framework,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
@@ -3642,6 +3666,7 @@ def main() -> int:
                                     per_reading_cfg=per_report_cfg,
                                     per_slide_cfg=per_slide_report_cfg,
                                     prompt_strategy=report_prompt_strategy,
+                                    study_context=study_context,
                                     meta_prompting=meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     course_context_bundle=course_context_bundle,
@@ -3817,6 +3842,7 @@ def main() -> int:
                                         prompt_type="short",
                                         prompt_strategy=audio_prompt_strategy,
                                         exam_focus=exam_focus,
+                                        study_context=study_context,
                                         prompt_framework=audio_prompt_framework,
                                         meta_prompting=meta_prompting,
                                         course_title=course_title,
@@ -3861,6 +3887,7 @@ def main() -> int:
                                         prompt_strategy=report_prompt_strategy,
                                         course_context_note=brief_course_context_note,
                                         course_context_heading=course_context_cfg.get("heading"),
+                                        study_context=study_context,
                                         meta_prompting=meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         custom_prompt=short_report_cfg.get("prompt", ""),

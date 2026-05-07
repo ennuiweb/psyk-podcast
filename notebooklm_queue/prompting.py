@@ -126,6 +126,11 @@ DEFAULT_EXAM_FOCUS = {
         ],
     },
 }
+DEFAULT_STUDY_CONTEXT = {
+    "enabled": False,
+    "heading": "Current study context:",
+    "items": [],
+}
 DEFAULT_META_PROMPTING = {
     "enabled": True,
     "heading": "External pre-analysis to integrate if useful:",
@@ -371,6 +376,29 @@ def normalize_exam_focus(raw: object) -> dict:
                 "items",
                 items,
             )
+    return normalized
+
+
+def normalize_study_context(raw: object) -> dict:
+    defaults = _deep_copy_prompt_defaults(DEFAULT_STUDY_CONTEXT)
+    if raw in (None, ""):
+        return defaults
+    if not isinstance(raw, dict):
+        raise SystemExit("study_context must be an object.")
+
+    normalized = defaults
+    if "enabled" in raw:
+        if not isinstance(raw["enabled"], bool):
+            raise SystemExit("study_context.enabled must be true or false.")
+        normalized["enabled"] = raw["enabled"]
+    if "heading" in raw:
+        if not isinstance(raw["heading"], str):
+            raise SystemExit("study_context.heading must be a string.")
+        stripped = raw["heading"].strip()
+        if stripped:
+            normalized["heading"] = stripped
+    if "items" in raw:
+        normalized["items"] = _normalize_string_list("study_context", "items", raw["items"])
     return normalized
 
 
@@ -764,6 +792,7 @@ def build_audio_prompt(
     prompt_type: str,
     prompt_strategy: dict | None,
     exam_focus: dict | None,
+    study_context: dict | None,
     prompt_framework: dict | None,
     meta_prompting: dict | None,
     course_title: str | None = None,
@@ -831,6 +860,12 @@ def build_audio_prompt(
             sections.append(
                 "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
             )
+        if study_context and study_context.get("enabled", False):
+            study_items = list(study_context.get("items") or [])
+            if study_items:
+                sections.append(
+                    f"{study_context['heading']}\n{_format_bullets(study_items)}"
+                )
         focus_items = list(prompt_type_cfg["focus"])
         if prompt_type == "short":
             focus_items = _short_prompt_focus_items(focus_items)
@@ -879,6 +914,7 @@ def build_report_prompt(
     prompt_strategy: dict | None,
     course_context_note: str | None,
     course_context_heading: str | None,
+    study_context: dict | None,
     meta_prompting: dict | None,
     meta_note_overrides: dict[Path, str] | None = None,
     custom_prompt: str,
@@ -925,6 +961,10 @@ def build_report_prompt(
     if course_context_note:
         heading = str(course_context_heading or "Course-aware lecture context:").strip()
         sections.append(f"{heading}\n{course_context_note.strip()}")
+    if study_context and study_context.get("enabled", False):
+        study_items = list(study_context.get("items") or [])
+        if study_items:
+            sections.append(f"{study_context['heading']}\n{_format_bullets(study_items)}")
 
     if custom_prompt:
         sections.append(f"Additional instructions:\n{custom_prompt.strip()}")

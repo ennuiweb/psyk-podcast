@@ -13,6 +13,9 @@ not for first-time learning.
 The exam target is not "remember all readings equally." The target is to speak
 clearly about personality theories, compare them through the course's four
 orientation points, and defend choices of concepts, method, and critique.
+The exam is oral and continues into a longer open discussion after the initial
+answer, so preparation should emphasize comparison, qualification, and the
+ability to extend an argument under follow-up questions.
 
 Core orientation points to use throughout:
 

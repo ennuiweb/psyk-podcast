@@ -9,7 +9,7 @@ It is **not** a podcast feed. Feed config now lives in:
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
-- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz + report defaults, including `audio_prompt_strategy`, `report_prompt_strategy`, `audio_prompt_framework`, `exam_focus`, and `meta_prompting`)
+- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz + report defaults, including `audio_prompt_strategy`, `report_prompt_strategy`, `audio_prompt_framework`, `study_context`, `exam_focus`, and `meta_prompting`)
 - OneDrive Readings root (authoritative source dirs):
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports/report markdown + request logs
@@ -72,6 +72,9 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py 
 - `exam_focus` is a separate additive block in `prompt_config.json`.
   - It now functions as a priority lens rather than an exam block, while keeping the legacy config key for compatibility.
   - The defaults emphasize why the source matters in the lecture block, what the teaching framing is prioritizing, and which tensions or limitations deserve attention.
+- `study_context` is a shared additive block in `prompt_config.json`.
+  - It carries timely course conditions that should shape both audio and report outputs without being hardcoded into the generator.
+  - The current `personlighedspsykologi` setup uses it to note that the upcoming exam is oral and followed by a longer free discussion, so outputs should support comparison, qualification, and follow-up reasoning.
 - `audio_prompt_framework` is the shared prompt-assembly layer in `prompt_config.json`.
   - It adds cross-cutting generation rules plus format-aware and length-aware guidance.
   - `format` and `length` now affect the resolved audio prompt itself, not only NotebookLM request params and config-tag hashes.
@@ -136,7 +139,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/bootstrap_episode
   - readings anchor claims, distinctions, and argument structure
   - forelaesning slides provide sequencing, framing, and emphasis
   - seminar slides provide application, clarification, discussion points, and likely misunderstandings
-- Audio prompts should not talk explicitly about the upcoming exam unless a specific downstream artifact genuinely requires it.
+- Audio prompts should not turn into explicit exam narration unless a specific downstream artifact genuinely requires it.
 - Audio prompts should still steer toward what is most important to understand and carry forward, using lecture framing and slide context for prioritization rather than exam branding.
 - Do not add explicit "be engaging" instructions to NotebookLM prompts. Improve focus, structure, and prioritization instead.
 - Prompt generation should preserve grounding:

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-07T16:08:10Z",
+  "generated_at": "2026-05-07T20:37:15Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 132,
@@ -16,13 +16,13 @@
       "weekly_readings_only": 21
     },
     "rollout_state_counts": {
-      "b_active": 31,
-      "original_only": 93,
+      "b_active": 32,
+      "original_only": 92,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 101,
-      "B": 31
+      "A": 100,
+      "B": 32
     }
   },
   "entries": [
@@ -179,7 +179,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W02L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
+          "source_name": "W02L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=9dfefdd0}.mp3",
           "canonical_source_name": "W02L1 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -187,11 +187,11 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "2",
-            "hash": "f104a13e"
+            "hash": "9dfefdd0"
           },
-          "config_hash": "f104a13e",
+          "config_hash": "9dfefdd0",
           "episode_key": "1aG_czSoni1Sx17jZ_zdTdKfZF49Begyv",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Df104a13e%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3D9dfefdd0%7D.mp3",
           "published_at": "2026-02-09T08:00:00+01:00",
           "title": "U2F1 · ALLE KILDER ✦",
           "audio_sha256": null
@@ -1711,18 +1711,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W02L1 - Columbus & Strandsbjerg (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W02L1 - Columbus & Strandsbjerg (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=b07e24ac}.mp3",
           "canonical_source_name": "W02L1 - Columbus & Strandsbjerg (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "b07e24ac"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "b07e24ac",
           "episode_key": "1vhafYsaUPR9CdbyfvOoGBQgTOTyGOvud",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Columbus%20%26%20Strandsbjerg%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Columbus%20%26%20Strandsbjerg%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db07e24ac%7D.mp3",
           "published_at": "2026-02-09T12:00:00+01:00",
           "title": "U2F1 · Columbus & Strandsbjerg (2025) ✦",
           "audio_sha256": null
@@ -1784,7 +1784,7 @@
       "logical_episode_id": "single_reading__w02l1__zettler_et_al_2020_en",
       "prompt_type": "single_reading",
       "lecture_key": "W02L1",
-      "title": "U2F1 · Zettler et al. (2020)",
+      "title": "U2F1 · Zettler et al. (2020) ✦",
       "canonical_source_name": "W02L1 - Zettler et al. (2020) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1798,20 +1798,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W02L1 - Zettler et al. (2020) [EN] {type=audio lang=en format=deep-dive length=long hash=88a6244d}.mp3",
           "canonical_source_name": "W02L1 - Zettler et al. (2020) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "88a6244d"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "88a6244d",
           "episode_key": "17y-cgDNN7bNCJPXu458GOgb6r1N6_WlL",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Zettler%20et%20al.%20%282020%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/W02L1%20-%20Zettler%20et%20al.%20%282020%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D88a6244d%7D.mp3",
           "published_at": "2026-02-09T16:00:00+01:00",
-          "title": "U2F1 · Zettler et al. (2020)",
+          "title": "U2F1 · Zettler et al. (2020) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -2214,13 +2214,13 @@
       "title": "U3F2 · Sharp & Wall (2021)",
       "canonical_source_name": "W03L2 - Sharp & Wall (2021) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T20:37:15Z"
       },
       "variants": {
         "A": {
@@ -2242,27 +2242,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+          "canonical_source_name": "W03L2 - Sharp & Wall (2021) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "b324695e"
+          },
+          "config_hash": "b324695e",
+          "episode_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db324695e%7D.mp3",
+          "published_at": "2026-05-07T20:27:10+00:00",
+          "title": "U3F2 · Sharp & Wall (2021)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "63dafdc35903b28318ca032aac2d7565b7364da29c673608a79b7b890e21a560",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T20:27:10+00:00",
+          "registered_at": "2026-05-07T20:37:15Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 80381353,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T20:37:15Z",
+              "event": "queue_auto_activated",
+              "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -6495,18 +6509,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W02L1 - Columbus & Strandsbjerg (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W02L1 - Columbus & Strandsbjerg (2025) [EN] {type=audio lang=en format=deep-dive length=short hash=e6659e8a}.mp3",
           "canonical_source_name": "[Short] W02L1 - Columbus & Strandsbjerg (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "e6659e8a"
           },
-          "config_hash": "c3f67e82",
+          "config_hash": "e6659e8a",
           "episode_key": "12COVqSZ_akota9hyKyh9v4qF8Z52hbTa",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/%5BShort%5D%20W02L1%20-%20Columbus%20%26%20Strandsbjerg%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L1/%5BShort%5D%20W02L1%20-%20Columbus%20%26%20Strandsbjerg%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3De6659e8a%7D.mp3",
           "published_at": "2026-02-09T10:00:00+01:00",
           "title": "U2F1 · [Kort] · Columbus & Strandsbjerg (2025) ✦",
           "audio_sha256": null

@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T16:08:07+00:00",
+  "generated_at": "2026-05-07T20:27:33+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -777,6 +777,66 @@
       "stable_guid": "1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=9274f72a}.mp3",
+      "source_name": "W03L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=9274f72a}.mp3",
+      "source_path": "W03L2/W03L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=9274f72a}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 83656036,
+      "sha256": "0187a3e2f6ae4e69f701a84f7a8933dd7e73b0b1545b91a4100435f7202596fd",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D9274f72a%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=long hash=0963c0fe}.mp3",
+      "source_name": "W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=long hash=0963c0fe}.mp3",
+      "source_path": "W03L2/W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=long hash=0963c0fe}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 110804943,
+      "sha256": "2da2970499c9809c29cba48729b0e5e2b059c8d15a1574eda707a1542a8a1f08",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%203%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D0963c0fe%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=long hash=99f7e919}.mp3",
+      "source_name": "W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=long hash=99f7e919}.mp3",
+      "source_path": "W03L2/W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=long hash=99f7e919}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 56998796,
+      "sha256": "b2aa937abaf21afc02ec939b99f10ceaea2ae6bb9c75b7ded1b8cac6104c53d4",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%205%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D99f7e919%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+      "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+      "source_path": "W03L2/W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 80381353,
+      "sha256": "63dafdc35903b28318ca032aac2d7565b7364da29c673608a79b7b890e21a560",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db324695e%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W03L2/W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1YoJ53PWInYIt966VrgwQvKiXLdCx_g47",
       "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -809,6 +869,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Slide%20lecture:%206.%20gang%20Personality%20Functioning%202026%20%28Bo%20Bach%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/[Short] W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=short hash=05a7b091}.mp3",
+      "source_name": "[Short] W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=short hash=05a7b091}.mp3",
+      "source_path": "W03L2/[Short] W03L2 - Bach & Simonsen (2023) kapitel 3 [EN] {type=audio lang=en format=deep-dive length=short hash=05a7b091}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10181389,
+      "sha256": "ca9e5128ad9d9d4fdc5e8288c008069a707731f631f02cebdc9c657de94f2ae7",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%203%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D05a7b091%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W03L2/[Short] W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=short hash=0f999d6e}.mp3",
+      "source_name": "[Short] W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=short hash=0f999d6e}.mp3",
+      "source_path": "W03L2/[Short] W03L2 - Bach & Simonsen (2023) kapitel 5 [EN] {type=audio lang=en format=deep-dive length=short hash=0f999d6e}.mp3",
+      "path_parts": [
+        "W03L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10606682,
+      "sha256": "6fc4f57833629d19101081818fa331ed4d61745b5a4d65d49071f7fe0c9a3cf6",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T20:27:10+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%205%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0f999d6e%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W04L1/W04L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",

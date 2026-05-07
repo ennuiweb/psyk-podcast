@@ -211,6 +211,13 @@ def _commit_and_push_show_artifacts(
     max_attempts = max(int(options.max_push_attempts), 1)
     pushed = False
     resolved_conflicts: list[str] = []
+    rebase_env = {
+        "GIT_AUTHOR_NAME": options.git_user_name,
+        "GIT_AUTHOR_EMAIL": options.git_user_email,
+        "GIT_COMMITTER_NAME": options.git_user_name,
+        "GIT_COMMITTER_EMAIL": options.git_user_email,
+        "GIT_EDITOR": "true",
+    }
     local_head = _run_git(repo_root, ["git", "rev-parse", "HEAD"], timeout_seconds=options.git_timeout_seconds).stdout.strip()
     attempts_used = 0
     for attempt in range(1, max_attempts + 1):
@@ -222,6 +229,7 @@ def _commit_and_push_show_artifacts(
                 remote=options.remote,
                 branch=branch,
                 allowlist=allowlist,
+                env=rebase_env,
                 timeout_seconds=options.git_timeout_seconds,
             )
         )
@@ -352,25 +360,42 @@ def _pull_rebase_with_conflict_resolution(
     remote: str,
     branch: str,
     allowlist: set[str],
+    env: dict[str, str] | None,
     timeout_seconds: int,
 ) -> list[str]:
-    completed = _run_git_raw(repo_root, ["git", "pull", "--rebase", remote, branch], timeout_seconds=timeout_seconds)
+    completed = _run_git_raw(
+        repo_root,
+        ["git", "pull", "--rebase", remote, branch],
+        env=env,
+        timeout_seconds=timeout_seconds,
+    )
     if completed.returncode == 0:
         return []
-    return _resolve_rebase_conflicts(repo_root=repo_root, allowlist=allowlist, timeout_seconds=timeout_seconds)
+    return _resolve_rebase_conflicts(
+        repo_root=repo_root,
+        allowlist=allowlist,
+        env=env,
+        timeout_seconds=timeout_seconds,
+    )
 
 
-def _resolve_rebase_conflicts(*, repo_root: Path, allowlist: set[str], timeout_seconds: int) -> list[str]:
+def _resolve_rebase_conflicts(
+    *,
+    repo_root: Path,
+    allowlist: set[str],
+    env: dict[str, str] | None,
+    timeout_seconds: int,
+) -> list[str]:
     completed = _run_git_raw(repo_root, ["git", "diff", "--name-only", "--diff-filter=U"], timeout_seconds=timeout_seconds)
     conflicted_files = [line.strip() for line in completed.stdout.splitlines() if line.strip()]
     if not conflicted_files:
-        _run_git_raw(repo_root, ["git", "rebase", "--abort"], timeout_seconds=timeout_seconds)
+        _run_git_raw(repo_root, ["git", "rebase", "--abort"], env=env, timeout_seconds=timeout_seconds)
         raise RepoPublishError("Rebase failed without conflicted files.")
 
     resolved: list[str] = []
     for conflicted in conflicted_files:
         if conflicted not in allowlist:
-            _run_git_raw(repo_root, ["git", "rebase", "--abort"], timeout_seconds=timeout_seconds)
+            _run_git_raw(repo_root, ["git", "rebase", "--abort"], env=env, timeout_seconds=timeout_seconds)
             raise RepoPublishError(f"Unexpected rebase conflict outside the queue allowlist: {conflicted}")
         # During rebase, "theirs" is the queue-generated commit being replayed.
         _run_git(repo_root, ["git", "checkout", "--theirs", "--", conflicted], timeout_seconds=timeout_seconds)
@@ -380,11 +405,11 @@ def _resolve_rebase_conflicts(*, repo_root: Path, allowlist: set[str], timeout_s
     continued = _run_git_raw(
         repo_root,
         ["git", "rebase", "--continue"],
-        env={"GIT_EDITOR": "true"},
+        env=env,
         timeout_seconds=timeout_seconds,
     )
     if continued.returncode != 0:
-        _run_git_raw(repo_root, ["git", "rebase", "--abort"], timeout_seconds=timeout_seconds)
+        _run_git_raw(repo_root, ["git", "rebase", "--abort"], env=env, timeout_seconds=timeout_seconds)
         raise RepoPublishError(
             f"Failed to continue rebase after resolving generated-file conflicts: "
             f"{continued.stderr.strip() or continued.stdout.strip()}"

@@ -320,6 +320,42 @@ def test_publish_repo_artifacts_resolves_allowlisted_rebase_conflicts(tmp_path: 
     assert remote_rss == "<rss>local</rss>"
 
 
+def test_publish_repo_artifacts_supplies_identity_for_rebase_replay(tmp_path: Path) -> None:
+    repo_root, remote_root = _seed_repo(tmp_path)
+    store, job = _seed_job(tmp_path, repo_root)
+
+    other_root = tmp_path / "other"
+    subprocess.run(
+        ["git", "clone", "--branch", "main", str(remote_root), str(other_root)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    subprocess.run(["git", "config", "user.name", "Other"], cwd=other_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "config", "user.email", "other@example.com"], cwd=other_root, check=True, capture_output=True, text=True)
+    (other_root / "README.md").write_text("remote change\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=other_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "commit", "-m", "remote update"], cwd=other_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "push", "origin", "main"], cwd=other_root, check=True, capture_output=True, text=True)
+
+    subprocess.run(["git", "config", "--unset", "user.name"], cwd=repo_root, check=True, capture_output=True, text=True)
+    subprocess.run(["git", "config", "--unset", "user.email"], cwd=repo_root, check=True, capture_output=True, text=True)
+
+    (repo_root / "shows/bioneuro/feeds/rss.xml").write_text("<rss>local</rss>\n", encoding="utf-8")
+    result = publish_repo_artifacts(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=RepoPublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_REPO_PUSHED
+    assert result["pushed"] is True
+    assert _run(["git", "rev-parse", "HEAD"], repo_root) == _run(["git", "rev-parse", "main"], remote_root)
+    remote_rss = _run(["git", "--git-dir", str(remote_root), "show", "main:shows/bioneuro/feeds/rss.xml"], repo_root)
+    assert remote_rss == "<rss>local</rss>"
+
+
 def test_publish_repo_artifacts_uses_manifest_bound_override_allowlist(tmp_path: Path) -> None:
     repo_root, _remote_root = _seed_repo(tmp_path)
     store, job = _seed_job(tmp_path, repo_root)

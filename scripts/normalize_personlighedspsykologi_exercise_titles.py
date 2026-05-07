@@ -8,10 +8,7 @@ import re
 from pathlib import Path
 
 
-DEFAULT_KEY_PATH = (
-    "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
-    "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md"
-)
+DEFAULT_KEY_PATH = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
 
 EXERCISE_LINE_RE = re.compile(
     r"^(?P<prefix>\s*-\s+)Exercise text(?P<mid>\s*→\s*)(?P<source>.+?)\s*$",
@@ -22,6 +19,21 @@ GENERIC_BULLET_RE = re.compile(
 )
 LECTURE_PREFIX_RE = re.compile(r"^W0*\d{1,2}L0*\d+\s*(?:-\s*)?", re.IGNORECASE)
 X_SOURCE_RE = re.compile(r"^W0*\d{1,2}L0*\d+\s+X\b", re.IGNORECASE)
+
+
+def _resolve_repo_root(script_path: Path) -> Path:
+    for parent in script_path.parents:
+        if (parent / ".git").exists():
+            return parent
+    return script_path.parents[1]
+
+
+def _resolve_key_path(raw_path: str) -> Path:
+    candidate = Path(raw_path).expanduser()
+    if candidate.is_absolute():
+        return candidate.resolve()
+    repo_root = _resolve_repo_root(Path(__file__).resolve())
+    return (repo_root / candidate).resolve()
 
 
 def _title_from_source_filename(source: str) -> str:
@@ -83,7 +95,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    key_path = Path(args.key_path).expanduser().resolve()
+    key_path = _resolve_key_path(args.key_path)
     if not key_path.exists():
         raise SystemExit(f"Reading key not found: {key_path}")
 

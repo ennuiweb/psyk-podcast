@@ -14,7 +14,7 @@ NotebookLM generation mechanics live in
 | Manual episode overrides | `shows/personlighedspsykologi-en/episode_metadata.json` |
 | Reading summaries | `shows/personlighedspsykologi-en/reading_summaries.json` |
 | Weekly overview summaries | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` |
-| Reading key mirror | `shows/personlighedspsykologi-en/docs/reading-file-key.md` |
+| Reading key mapping | `shows/personlighedspsykologi-en/docs/reading-file-key.md` |
 | Slide mapping | `shows/personlighedspsykologi-en/slides_catalog.json` |
 | Learning-material output scope and evaluation | `shows/personlighedspsykologi-en/docs/learning-material-outputs.md` |
 | Artifact ownership | `shows/personlighedspsykologi-en/docs/podcast-flow-artifacts.md` |
@@ -49,9 +49,10 @@ NotebookLM generation mechanics live in
 
 ## Reading And Summary Maintenance
 
-- The OneDrive `.ai/reading-file-key.md` is mirrored into
-  `shows/personlighedspsykologi-en/docs/reading-file-key.md` for repo and CI
-  automation.
+- The canonical reading-key source of truth is
+  `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+- The OneDrive `.ai/reading-file-key.md` copy is an exported mirror for
+  non-repo workflows and should not be edited during normal operation.
 - Important readings are marked by filenames starting with `W##L# X` and are
   surfaced through show metadata as `[Gul tekst]` / important reading context.
 - Reading summary cache is manual and local-first:

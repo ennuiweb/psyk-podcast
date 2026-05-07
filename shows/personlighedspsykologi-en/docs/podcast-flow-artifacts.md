@@ -6,8 +6,8 @@ Personlighedspsykologi-flowet. Driftstrin og fejlsøgning er flyttet til
 
 ## Kort Flow
 
-1. Autoritative inputfiler ligger i OneDrive, show-config og manuelle summary-filer.
-2. Det primære repo-spejl af `reading-file-key.md` gør OneDrive-strukturen tilgængelig for repo-baseret automation.
+1. Autoritative inputfiler ligger i OneDrive for rå læsetekster/slides og i repoet for `reading-file-key.md`, show-config og manuelle summary-filer.
+2. Den canonical repo-ejede `reading-file-key.md` eksporteres til OneDrive-mirror-targets for ikke-repo workflows.
 3. NotebookLM genererer lokale outputs, som efterfølgende uploades eller spejles til Drive/droplet.
 4. `generate-feed.yml` bygger `rss.xml` og `episode_inventory.json` fra Drive.
 5. Downstream sidecars afledes derefter: `spotify_map.json` og `content_manifest.json`.
@@ -22,7 +22,7 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Grundbog/Kapitler/` | Grundbogskapitler og kildemateriale til læsninger/lydbog. |
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/0_Pensum og forelæsningsplan/` | Forelæsningsplan og pensumgrundlag. |
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/` | Lokale slide-kilder. |
-| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md` | Master for læsenøgle: lecture -> reading title -> præcist filnavn. |
+| `shows/personlighedspsykologi-en/docs/reading-file-key.md` | Canonical læsenøgle: lecture -> reading title -> præcist filnavn. Alle repo-, queue- og CI-flows skal læse denne path. |
 | `shows/personlighedspsykologi-en/config.github.json` | Canonical show-config. |
 | `shows/personlighedspsykologi-en/auto_spec.json` | Forelæsningsstruktur og auto-matching for episoder. |
 | `shows/personlighedspsykologi-en/episode_metadata.json` | Manuelle episode-overrides. |
@@ -36,15 +36,15 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` | Prompt-, sprog-, længde-, brief-, slide- og quiz-konfiguration for NotebookLM-generation. |
 | `freudd_portal/subjects.json` | Freudd subject registry med stier til RSS, inventory, manifest, quiz links, Spotify map og slides catalog. |
 
-## Repo Mirrors
+## Repo Mirrors And Exports
 
-Repo-mirrors er afledte kopier af eksterne kilder. Kun den primære mirror-path er canonical.
+Repo-mirrors og eksport-targets er afledte kopier. De må ikke redigeres som source of truth.
 
 | Artefakt | Rolle |
 |---|---|
-| `shows/personlighedspsykologi-en/docs/reading-file-key.md` | Primært repo-spejl af OneDrive `reading-file-key.md`; bruges af feed config og manifest/Freudd. |
+| `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md` | Eksporteret OneDrive-mirror af den canonical repo-læsenøgle til lokale ikke-repo workflows. |
 | `shows/personlighedspsykologi-en/config.local.json` | Lokal kompatibilitetskopi af canonical config. Skal forblive identisk med `config.github.json`. |
-| `scripts/sync_personlighedspsykologi_reading_file_key.py` | Synker OneDrive-læsenøglen til det primære repo-spejl og kan skrive en sekundær compatibility target, hvis den eksplicit angives. |
+| `scripts/sync_personlighedspsykologi_reading_file_key.py` | Auditerer mirror-drift og eksporterer canonical repo-læsenøgle til OneDrive/andre mirror-targets. `--mode import` findes kun til eksplicit recovery. |
 
 Vigtig detalje: GitHub Actions læser repo-filer, ikke OneDrive-stier direkte. For
 reading-key er den aktive path `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
@@ -103,7 +103,8 @@ repoet/Freudd som opslag fra intern episode-identitet til Spotify URL.
 ## Guardrails
 
 - Redigér canonical config i `config.github.json`, ikke i `config.local.json`.
-- Redigér kun det primære reading-key-spejl i `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+- Redigér kun den canonical repo-læsenøgle i `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+- Behandl OneDrive `.ai/reading-file-key.md` som eksporteret mirror, ikke som vedligeholdt input.
 - Kør `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`, når du ændrer config-, mirror- eller docs-strukturen.
 - Hvis en lokal output path er en macOS Alias-fil, skal den ikke committes eller
   slettes som del af repo-oprydning. Brug `PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT`

@@ -99,16 +99,17 @@ Spotify map sync note:
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
 Reading key sync note:
-- Source of truth file: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
-- Primary repo mirror used by feed config: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Canonical source of truth file: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Exported OneDrive mirror target: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
 - Sync commands:
-  - Dry-run: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
-  - Apply: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`
+  - Dry-run audit: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
+  - Fail-on-drift audit: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --fail-on-drift`
+  - Export canonical repo file to mirror target(s): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --apply`
   - Optional compatibility target: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --secondary-target <path> --apply`
-  - Stable fallback mode is default: if OneDrive source is unavailable, primary repo mirror is used as source.
-  - Strict mode (fail when source missing): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --strict-source --apply`
-  - One-time bootstrap source from current repo file: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --bootstrap-source-from-repo --apply`
+  - Explicit recovery import from primary mirror back into repo: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --mode import --apply`
+  - Strict mode (fail when canonical file is missing): `python3 scripts/sync_personlighedspsykologi_reading_file_key.py --strict-source --apply`
   - Invariant check: `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`
+- Pre-push auto-exports the canonical repo file to the configured mirror target(s). Do not edit the OneDrive `.ai/reading-file-key.md` file directly during normal operation.
 
 Slides mapping note (manual only):
 - Slide mapping til `W##L#` + underkategori skal udføres manuelt.

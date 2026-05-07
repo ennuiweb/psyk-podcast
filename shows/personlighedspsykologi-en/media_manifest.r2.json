@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-06T18:24:58+00:00",
+  "generated_at": "2026-05-07T10:09:49+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -89,6 +89,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L1/%5BShort%5D%20W01L1%20-%20Grundbog%20kapitel%201%20-%20Introduktion%20til%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "14zXcjfpRupuFMXm9c2poYRaU_0vnaaYz"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W01L1/[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+      "source_name": "[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+      "source_path": "W01L1/[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=42c500dd}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 8573929,
+      "sha256": "ed2f07a50b08488438b8b8af7f1e13d44967df0ba3617de1cafbda70cee45d1e",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T10:09:48+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W01L1/%5BShort%5D%20W01L1%20-%20Lewis%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D42c500dd%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/[Short] W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -463,6 +478,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/W02L2%20-%20Slide%20lecture:%204.%20gang%20PersPsy%204%20260210%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1wAWczreMHtLtlnsFk0T5vogY2UWkFSNV"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W02L2/[Short] W02L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=eeed9e1f}.mp3",
+      "source_name": "[Short] W02L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=eeed9e1f}.mp3",
+      "source_path": "W02L2/[Short] W02L2 - Bleidorn et al. (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=eeed9e1f}.mp3",
+      "path_parts": [
+        "W02L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10138060,
+      "sha256": "b2bfa00930603560a5f49ae565685c3aa696971c8b4f737c2ef2fb2f80d15c84",
+      "artifact_type": "audio",
+      "published_at": "2026-05-07T10:08:34+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W02L2/%5BShort%5D%20W02L2%20-%20Bleidorn%20et%20al.%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Deeed9e1f%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3",

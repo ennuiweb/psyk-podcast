@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
-  "source_inventory_path": "/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-06T19:02:51Z",
+  "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
+  "generated_at": "2026-05-07T10:09:43Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 128,
@@ -1050,7 +1050,7 @@
       "logical_episode_id": "weekly_readings_only__w10l2__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W10L2",
-      "title": "U10F2 · ALLE KILDER",
+      "title": "U10F2 · ALLE KILDER ✦",
       "canonical_source_name": "W10L2 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1064,7 +1064,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W10L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
+          "source_name": "W10L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=d9a6aecb}.mp3",
           "canonical_source_name": "W10L2 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -1072,13 +1072,13 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "2",
-            "hash": "f104a13e"
+            "hash": "d9a6aecb"
           },
-          "config_hash": "f104a13e",
-          "episode_key": "1qZY4h0AQ_WKNlRPymLEbtrDgqLX-3QZo",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Df104a13e%7D.mp3",
+          "config_hash": "d9a6aecb",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/W10L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=d9a6aecb}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Dd9a6aecb%7D.mp3",
           "published_at": "2026-04-14T10:00:00+02:00",
-          "title": "U10F2 · ALLE KILDER",
+          "title": "U10F2 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1125,7 +1125,7 @@
       "logical_episode_id": "weekly_readings_only__w11l1__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W11L1",
-      "title": "U11F1 · ALLE KILDER",
+      "title": "U11F1 · ALLE KILDER ✦",
       "canonical_source_name": "W11L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1153,7 +1153,7 @@
           "episode_key": "1Hc_wY9SDqXx2TNcz8P-XnkLJBIQsm7Ir",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D287d09de%7D.mp3",
           "published_at": "2026-04-20T08:00:00+02:00",
-          "title": "U11F1 · ALLE KILDER",
+          "title": "U11F1 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1192,7 +1192,7 @@
       "logical_episode_id": "weekly_readings_only__w11l2__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W11L2",
-      "title": "U11F2 · ALLE KILDER",
+      "title": "U11F2 · ALLE KILDER ✦",
       "canonical_source_name": "W11L2 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1220,7 +1220,7 @@
           "episode_key": "1-tofzRiDfZn4gEu7N1N6u_Gala3-gsMl",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3D92f3a0d2%7D.mp3",
           "published_at": "2026-04-21T10:00:00+02:00",
-          "title": "U11F2 · ALLE KILDER",
+          "title": "U11F2 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -1254,7 +1254,7 @@
       "logical_episode_id": "weekly_readings_only__w12l1__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W12L1",
-      "title": "U12F1 · ALLE KILDER",
+      "title": "U12F1 · ALLE KILDER ✦",
       "canonical_source_name": "W12L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -1282,7 +1282,7 @@
           "episode_key": "1rLBUbdnufsZPQ34YDdfFqFCa1zO0hi9t",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3De593d2e1%7D.mp3",
           "published_at": "2026-04-27T08:00:00+02:00",
-          "title": "U12F1 · ALLE KILDER",
+          "title": "U12F1 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -3971,7 +3971,7 @@
       "logical_episode_id": "single_reading__w10l2__davies_1990_en",
       "prompt_type": "single_reading",
       "lecture_key": "W10L2",
-      "title": "U10F2 · Davies (1990)",
+      "title": "U10F2 · Davies (1990) ✦",
       "canonical_source_name": "W10L2 - Davies (1990) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -3985,20 +3985,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=b51663e8}.mp3",
           "canonical_source_name": "W10L2 - Davies (1990) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "b51663e8"
           },
-          "config_hash": "fa9adbcf",
-          "episode_key": "17Dy3PhWnv9khx2_9sY223JfeTYMlDRU2",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Davies%20%281990%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "config_hash": "b51663e8",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=long hash=b51663e8}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Davies%20%281990%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db51663e8%7D.mp3",
           "published_at": "2026-04-14T12:00:00+02:00",
-          "title": "U10F2 · Davies (1990)",
+          "title": "U10F2 · Davies (1990) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -4044,7 +4044,7 @@
       "logical_episode_id": "single_reading__w10l2__foucault_m_1997_s_281_301_en",
       "prompt_type": "single_reading",
       "lecture_key": "W10L2",
-      "title": "U10F2 · Foucault, M. (1997). s. 281-301",
+      "title": "U10F2 · Foucault, M. (1997). s. 281-301 ✦",
       "canonical_source_name": "W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -4058,20 +4058,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=50dcbe11}.mp3",
           "canonical_source_name": "W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "50dcbe11"
           },
-          "config_hash": "fa9adbcf",
-          "episode_key": "1HtnXINp-PNAb8ZqbbPQf4nKrQvg5mjEX",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Foucault%2C%20M.%20%281997%29.%20s.%20281-301%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "config_hash": "50dcbe11",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=long hash=50dcbe11}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Foucault%2C%20M.%20%281997%29.%20s.%20281-301%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D50dcbe11%7D.mp3",
           "published_at": "2026-04-14T16:00:00+02:00",
-          "title": "U10F2 · Foucault, M. (1997). s. 281-301",
+          "title": "U10F2 · Foucault, M. (1997). s. 281-301 ✦",
           "audio_sha256": null
         },
         "B": {
@@ -4117,7 +4117,7 @@
       "logical_episode_id": "single_reading__w11l1__gergen_1999_en",
       "prompt_type": "single_reading",
       "lecture_key": "W11L1",
-      "title": "U11F1 · Gergen (1999)",
+      "title": "U11F1 · Gergen (1999) ✦",
       "canonical_source_name": "W11L1 - Gergen (1999) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -4144,7 +4144,7 @@
           "episode_key": "1vBJ35TBIU8cO1dDo6VW1zqH-9kF0xUbN",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D514662ea%7D.mp3",
           "published_at": "2026-04-20T12:00:00+02:00",
-          "title": "U11F1 · Gergen (1999)",
+          "title": "U11F1 · Gergen (1999) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -4359,7 +4359,7 @@
       "logical_episode_id": "single_reading__w11l2__grundbog_kapitel_9_narrative_teorier_en",
       "prompt_type": "single_reading",
       "lecture_key": "W11L2",
-      "title": "U11F2 · Grundbog 9: Narrative teorier",
+      "title": "U11F2 · Grundbog 9: Narrative teorier ✦",
       "canonical_source_name": "W11L2 - Grundbog kapitel 9 - Narrative teorier [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -4386,7 +4386,7 @@
           "episode_key": "1v1_-5UZB-TC8I4wD9mgwlvoe981B-yTs",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2%20-%20Grundbog%20kapitel%209%20-%20Narrative%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc07197ec%7D.mp3",
           "published_at": "2026-04-21T20:00:00+02:00",
-          "title": "U11F2 · Grundbog 9: Narrative teorier",
+          "title": "U11F2 · Grundbog 9: Narrative teorier ✦",
           "audio_sha256": null
         },
         "B": {
@@ -4597,7 +4597,7 @@
       "logical_episode_id": "single_reading__w12l1__grundbog_kapitel_14_perspektiver_p_personlighedspsykologi_en",
       "prompt_type": "single_reading",
       "lecture_key": "W12L1",
-      "title": "U12F1 · Grundbog 14: Perspektiver",
+      "title": "U12F1 · Grundbog 14: Perspektiver ✦",
       "canonical_source_name": "W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -4624,7 +4624,7 @@
           "episode_key": "1gw_wrONE08c83Co1zjaKaDZtmMgd9um7",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1%20-%20Grundbog%20kapitel%2014%20-%20Perspektiver%20p%C3%A5%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Da199951d%7D.mp3",
           "published_at": "2026-04-27T14:00:00+02:00",
-          "title": "U12F1 · Grundbog 14: Perspektiver",
+          "title": "U12F1 · Grundbog 14: Perspektiver ✦",
           "audio_sha256": null
         },
         "B": {
@@ -5720,7 +5720,7 @@
       "logical_episode_id": "single_slide__w09l1__17_kritisk_psykologi_en",
       "prompt_type": "single_slide",
       "lecture_key": "W09L1",
-      "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
+      "title": "U9F1 · Forelæsningsslides · Kritisk psykologi ✦",
       "canonical_source_name": "W09L1 - Slide lecture: 17. Kritisk psykologi [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -5747,7 +5747,7 @@
           "episode_key": "1SIBD-7ufNrD47A2OQiIBgiJV3rQXXx1J",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1%20-%20Slide%20lecture:%2017.%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D33c53eb1%7D.mp3",
           "published_at": "2026-04-07T18:00:00+02:00",
-          "title": "U9F1 · Forelæsningsslides · Kritisk psykologi",
+          "title": "U9F1 · Forelæsningsslides · Kritisk psykologi ✦",
           "audio_sha256": null
         },
         "B": {
@@ -5781,7 +5781,7 @@
       "logical_episode_id": "single_slide__w10l2__19_gang_sociokulturelle_teorier_en",
       "prompt_type": "single_slide",
       "lecture_key": "W10L2",
-      "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
+      "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier ✦",
       "canonical_source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -5795,20 +5795,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=default hash=7acd082f}.mp3",
+          "source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=default hash=96c944bc}.mp3",
           "canonical_source_name": "W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "default",
-            "hash": "7acd082f"
+            "hash": "96c944bc"
           },
-          "config_hash": "7acd082f",
-          "episode_key": "1QRyNylP6Dbz5GRQEjnk4GV00WLAlqHwZ",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2%20-%20Slide%20lecture:%2019.%20gang%20Sociokulturelle%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D7acd082f%7D.mp3",
+          "config_hash": "96c944bc",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=default hash=96c944bc}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/W10L2%20-%20Slide%20lecture:%2019.%20gang%20Sociokulturelle%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D96c944bc%7D.mp3",
           "published_at": "2026-04-14T20:00:00+02:00",
-          "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier",
+          "title": "U10F2 · Forelæsningsslides · Sociokulturelle teorier ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6446,7 +6446,7 @@
       "logical_episode_id": "short__w10l2__19_gang_sociokulturelle_teorier_en",
       "prompt_type": "short",
       "lecture_key": "W10L2",
-      "title": "U10F2 · [Kort] · Forelæsningsslides · Sociokulturelle teorier",
+      "title": "U10F2 · [Kort] · Forelæsningsslides · Sociokulturelle teorier ✦",
       "canonical_source_name": "[Short] W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6460,20 +6460,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=short hash=c66b095a}.mp3",
           "canonical_source_name": "[Short] W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "c66b095a"
           },
-          "config_hash": "c3f67e82",
-          "episode_key": "1kJXhCR4V_TuWQV5anZZzfQNva1Ngx05b",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Slide%20lecture:%2019.%20gang%20Sociokulturelle%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "config_hash": "c66b095a",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/[Short] W10L2 - Slide lecture: 19. gang Sociokulturelle teorier [EN] {type=audio lang=en format=deep-dive length=short hash=c66b095a}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Slide%20lecture:%2019.%20gang%20Sociokulturelle%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc66b095a%7D.mp3",
           "published_at": "2026-04-14T18:00:00+02:00",
-          "title": "U10F2 · [Kort] · Forelæsningsslides · Sociokulturelle teorier",
+          "title": "U10F2 · [Kort] · Forelæsningsslides · Sociokulturelle teorier ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6519,7 +6519,7 @@
       "logical_episode_id": "short__w10l2__davies_1990_en",
       "prompt_type": "short",
       "lecture_key": "W10L2",
-      "title": "U10F2 · [Kort] · Davies (1990)",
+      "title": "U10F2 · [Kort] · Davies (1990) ✦",
       "canonical_source_name": "[Short] W10L2 - Davies (1990) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6533,20 +6533,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=short hash=aef47b00}.mp3",
           "canonical_source_name": "[Short] W10L2 - Davies (1990) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "aef47b00"
           },
-          "config_hash": "c3f67e82",
-          "episode_key": "1zBWUGyp7EwfhDJhRgfpqcp5iPAIc0NV4",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Davies%20%281990%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "config_hash": "aef47b00",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/[Short] W10L2 - Davies (1990) [EN] {type=audio lang=en format=deep-dive length=short hash=aef47b00}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Davies%20%281990%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Daef47b00%7D.mp3",
           "published_at": "2026-04-14T10:00:00+02:00",
-          "title": "U10F2 · [Kort] · Davies (1990)",
+          "title": "U10F2 · [Kort] · Davies (1990) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6592,7 +6592,7 @@
       "logical_episode_id": "short__w10l2__foucault_m_1997_s_281_301_en",
       "prompt_type": "short",
       "lecture_key": "W10L2",
-      "title": "U10F2 · [Kort] · Foucault, M. (1997). s. 281-301",
+      "title": "U10F2 · [Kort] · Foucault, M. (1997). s. 281-301 ✦",
       "canonical_source_name": "[Short] W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6606,20 +6606,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=short hash=2273bb34}.mp3",
           "canonical_source_name": "[Short] W10L2 - Foucault, M. (1997). s. 281-301 [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "2273bb34"
           },
-          "config_hash": "c3f67e82",
-          "episode_key": "1upL0yUyEYz3ITzX5rY_02Qq-ZHt-eWDP",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Foucault%2C%20M.%20%281997%29.%20s.%20281-301%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "config_hash": "2273bb34",
+          "episode_key": "shows/personlighedspsykologi-en/W10L2/[Short] W10L2 - Foucault, M. (1997). s. 281-301 [EN] {type=audio lang=en format=deep-dive length=short hash=2273bb34}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Foucault%2C%20M.%20%281997%29.%20s.%20281-301%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D2273bb34%7D.mp3",
           "published_at": "2026-04-14T14:00:00+02:00",
-          "title": "U10F2 · [Kort] · Foucault, M. (1997). s. 281-301",
+          "title": "U10F2 · [Kort] · Foucault, M. (1997). s. 281-301 ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6665,7 +6665,7 @@
       "logical_episode_id": "short__w11l1__gergen_1999_en",
       "prompt_type": "short",
       "lecture_key": "W11L1",
-      "title": "U11F1 · [Kort] · Gergen (1999)",
+      "title": "U11F1 · [Kort] · Gergen (1999) ✦",
       "canonical_source_name": "[Short] W11L1 - Gergen (1999) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6692,7 +6692,7 @@
           "episode_key": "1iIvxeaQqXd1iZp_oFyJTI6gBBATrvd4y",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D3c4772ce%7D.mp3",
           "published_at": "2026-04-20T10:00:00+02:00",
-          "title": "U11F1 · [Kort] · Gergen (1999)",
+          "title": "U11F1 · [Kort] · Gergen (1999) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -6907,7 +6907,7 @@
       "logical_episode_id": "short__w11l2__grundbog_kapitel_9_narrative_teorier_en",
       "prompt_type": "short",
       "lecture_key": "W11L2",
-      "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
+      "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier ✦",
       "canonical_source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -6934,7 +6934,7 @@
           "episode_key": "1y7D1O2ns5hLz3AziTg2_uDNf8Jcdb9rj",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/%5BShort%5D%20W11L2%20-%20Grundbog%20kapitel%209%20-%20Narrative%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D285f9a5f%7D.mp3",
           "published_at": "2026-04-21T18:00:00+02:00",
-          "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
+          "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier ✦",
           "audio_sha256": null
         },
         "B": {
@@ -7145,7 +7145,7 @@
       "logical_episode_id": "short__w12l1__grundbog_kapitel_14_perspektiver_p_personlighedspsykologi_en",
       "prompt_type": "short",
       "lecture_key": "W12L1",
-      "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver",
+      "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver ✦",
       "canonical_source_name": "[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -7172,7 +7172,7 @@
           "episode_key": "1i4_BM63u6mad0a0-mPp2CDK-trDTsWf7",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/%5BShort%5D%20W12L1%20-%20Grundbog%20kapitel%2014%20-%20Perspektiver%20p%C3%A5%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D5ede45ff%7D.mp3",
           "published_at": "2026-04-27T12:00:00+02:00",
-          "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver",
+          "title": "U12F1 · [Kort] · Grundbog 14: Perspektiver ✦",
           "audio_sha256": null
         },
         "B": {

@@ -2,27 +2,27 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-07T20:50:48Z",
+  "generated_at": "2026-05-07T20:52:33Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 141,
-    "in_scope_entries": 133,
+    "total_entries": 142,
+    "in_scope_entries": 134,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 33,
+      "short": 34,
       "single_reading": 59,
       "single_slide": 19,
       "tts": 8,
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 32,
-      "original_only": 101,
+      "b_active": 36,
+      "original_only": 98,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 109,
-      "B": 32
+      "A": 106,
+      "B": 36
     }
   },
   "entries": [
@@ -317,13 +317,13 @@
       "title": "U3F1 · ALLE KILDER",
       "canonical_source_name": "W03L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T20:52:33Z"
       },
       "variants": {
         "A": {
@@ -346,27 +346,42 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=0fed937b}.mp3",
+          "canonical_source_name": "W03L1 - Alle kilder (undtagen slides) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "sources": "4",
+            "hash": "0fed937b"
+          },
+          "config_hash": "0fed937b",
+          "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=0fed937b}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3D0fed937b%7D.mp3",
+          "published_at": "2026-05-07T20:52:00+00:00",
+          "title": "U3F1 · ALLE KILDER",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "7f7a7a3d5e2f5276905731b375f3ec7a6db1adb6a9826c746032eabf7618cf1f",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T20:52:00+00:00",
+          "registered_at": "2026-05-07T20:52:33Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 80075698,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T20:52:33Z",
+              "event": "queue_auto_activated",
+              "source_name": "W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=0fed937b}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=0fed937b}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2038,13 +2053,13 @@
       "title": "U3F1 · Kandler & Instinske (2025)",
       "canonical_source_name": "W03L1 - Kandler & Instinske (2025) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T20:52:33Z"
       },
       "variants": {
         "A": {
@@ -2066,27 +2081,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=c2cfac0d}.mp3",
+          "canonical_source_name": "W03L1 - Kandler & Instinske (2025) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "c2cfac0d"
+          },
+          "config_hash": "c2cfac0d",
+          "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=c2cfac0d}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Kandler%20%26%20Instinske%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc2cfac0d%7D.mp3",
+          "published_at": "2026-05-07T20:52:00+00:00",
+          "title": "U3F1 · Kandler & Instinske (2025)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "8e8fbdfb56267bc92781aad8cd95107e6d6c18aab3d0046e9c6f4a912dc2985e",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T20:52:00+00:00",
+          "registered_at": "2026-05-07T20:52:33Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 64376228,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T20:52:33Z",
+              "event": "queue_auto_activated",
+              "source_name": "W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=c2cfac0d}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=c2cfac0d}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2156,13 +2185,13 @@
       "title": "U3F1 · Volk & Puchalski (2025)",
       "canonical_source_name": "W03L1 - Volk & Puchalski (2025) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T20:52:33Z"
       },
       "variants": {
         "A": {
@@ -2184,27 +2213,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=e695e062}.mp3",
+          "canonical_source_name": "W03L1 - Volk & Puchalski (2025) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "e695e062"
+          },
+          "config_hash": "e695e062",
+          "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=e695e062}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Volk%20%26%20Puchalski%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3De695e062%7D.mp3",
+          "published_at": "2026-05-07T20:52:00+00:00",
+          "title": "U3F1 · Volk & Puchalski (2025)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "ad24189b8615bc36a7aff387385ea3b2fb38a64ce8edd97e6644c65642e9549c",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T20:52:00+00:00",
+          "registered_at": "2026-05-07T20:52:33Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 110199610,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T20:52:33Z",
+              "event": "queue_auto_activated",
+              "source_name": "W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=e695e062}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=e695e062}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2215,13 +2258,13 @@
       "title": "U3F1 · Zettler et al. (2025)",
       "canonical_source_name": "W03L1 - Zettler et al. (2025) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-07T20:52:33Z"
       },
       "variants": {
         "A": {
@@ -2243,27 +2286,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=514fac81}.mp3",
+          "canonical_source_name": "W03L1 - Zettler et al. (2025) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "514fac81"
+          },
+          "config_hash": "514fac81",
+          "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=514fac81}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Zettler%20et%20al.%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D514fac81%7D.mp3",
+          "published_at": "2026-05-07T20:52:00+00:00",
+          "title": "U3F1 · Zettler et al. (2025)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "0afc7e9533febd7365af3a25a201bb05d9d7e41897cc3437d091f758de01e569",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-07T20:52:00+00:00",
+          "registered_at": "2026-05-07T20:52:33Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 68298826,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-07T20:52:33Z",
+              "event": "queue_auto_activated",
+              "source_name": "W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=514fac81}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=514fac81}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2403,19 +2460,19 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=b324695e}.mp3",
+          "source_name": "W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W03L2 - Sharp & Wall (2021) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "b324695e"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "b324695e",
+          "config_hash": "fa9adbcf",
           "episode_key": "1YoJ53PWInYIt966VrgwQvKiXLdCx_g47",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db324695e%7D.mp3",
-          "published_at": "2026-02-17T20:00:00+01:00",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-02-17T22:00:00+01:00",
           "title": "U3F2 · Sharp & Wall (2021) ✦",
           "audio_sha256": null
         },
@@ -5452,7 +5509,7 @@
           "config_hash": "973c491c",
           "episode_key": "14rVN-ihuNLPpXswAQm6bPYUk-MkwB6YT",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/W03L2%20-%20Slide%20lecture:%206.%20gang%20Personality%20Functioning%202026%20%28Bo%20Bach%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-02-17T22:00:00+01:00",
+          "published_at": "2026-02-18T00:00:00+01:00",
           "title": "U3F2 · Forelæsningsslides · Personality Functioning 2026 (Bo Bach)",
           "audio_sha256": null
         },
@@ -7208,6 +7265,65 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Bach%20%26%20Simonsen%20%282023%29%20kapitel%205%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0f999d6e%7D.mp3",
           "published_at": "2026-02-17T12:00:00+01:00",
           "title": "U3F2 · [Kort] · Bach & Simonsen (2023) kapitel 5",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w03l2__sharp_wall_2021_en",
+      "prompt_type": "short",
+      "lecture_key": "W03L2",
+      "title": "U3F2 · [Kort] · Sharp & Wall (2021)",
+      "canonical_source_name": "[Short] W03L2 - Sharp & Wall (2021) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ed5f1e}.mp3",
+          "canonical_source_name": "[Short] W03L2 - Sharp & Wall (2021) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "a3ed5f1e"
+          },
+          "config_hash": "a3ed5f1e",
+          "episode_key": "shows/personlighedspsykologi-en/W03L2/[Short] W03L2 - Sharp & Wall (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ed5f1e}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L2/%5BShort%5D%20W03L2%20-%20Sharp%20%26%20Wall%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Da3ed5f1e%7D.mp3",
+          "published_at": "2026-02-17T20:00:00+01:00",
+          "title": "U3F2 · [Kort] · Sharp & Wall (2021)",
           "audio_sha256": null
         },
         "B": {

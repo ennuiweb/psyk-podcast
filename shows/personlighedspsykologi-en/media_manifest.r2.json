@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T15:46:55+00:00",
+  "generated_at": "2026-05-08T15:53:02+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2503,6 +2503,36 @@
       "stable_guid": "1vBJ35TBIU8cO1dDo6VW1zqH-9kF0xUbN"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=c5f78562}.mp3",
+      "source_name": "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=c5f78562}.mp3",
+      "source_path": "W11L1/W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=c5f78562}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 109193001,
+      "sha256": "3f9cde1338a5e0fe613b46a9d56d32c7152b6f0463330b3002c2da5529ab048d",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc5f78562%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=b60dcb28}.mp3",
+      "source_name": "W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=b60dcb28}.mp3",
+      "source_path": "W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=b60dcb28}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 82419223,
+      "sha256": "85bd9fe80b7a9d18d5216a0c8abd978c5eee3307815444ea91f7847e509940f6",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db60dcb28%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz",
       "source_name": "W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2518,6 +2548,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=a1131691}.mp3",
+      "source_name": "W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=a1131691}.mp3",
+      "source_path": "W11L1/W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=a1131691}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 93593003,
+      "sha256": "b7e6b835b17f32dd6585a943888338a7cd34ff332da5a34e54884d7987fdba8d",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Da1131691%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2554,6 +2599,36 @@
       "stable_guid": "1iIvxeaQqXd1iZp_oFyJTI6gBBATrvd4y"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/[Short] W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=40eb6279}.mp3",
+      "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=40eb6279}.mp3",
+      "source_path": "W11L1/[Short] W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=40eb6279}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9832406,
+      "sha256": "1ae4ea545384805ccfc7e49cce0b42d7fb91e5f2d693741a76dc584dd24a9d87",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D40eb6279%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=74e7e939}.mp3",
+      "source_name": "[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=74e7e939}.mp3",
+      "source_path": "W11L1/[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=74e7e939}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10161966,
+      "sha256": "6e937d8fc545d2dd935494b57151d3307f14b56bd53602c35e5b78c241159d8e",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D74e7e939%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W11L1/[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
       "source_drive_file_id": "1NbPJN5rHs3rtxjfqxBCeVvqEbElk84eb",
       "source_name": "[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -2569,6 +2644,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "1NbPJN5rHs3rtxjfqxBCeVvqEbElk84eb"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=bc0c0878}.mp3",
+      "source_name": "[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=bc0c0878}.mp3",
+      "source_path": "W11L1/[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=bc0c0878}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9053759,
+      "sha256": "ca9e9aab793b668528c8b9b7d1ac3f2de7abcb7e3de40781b2e3925bf4a59dda",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:52:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dbc0c0878%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W11L1/[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",

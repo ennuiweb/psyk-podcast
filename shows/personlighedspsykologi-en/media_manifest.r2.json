@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T17:32:46+00:00",
+  "generated_at": "2026-05-08T17:43:42+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1279,6 +1279,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D1b3d31bc%7D.mp3",
       "stable_guid": "1TCuwtYzU7p2NP9m-BlYlojZRr17t0doA"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+      "source_name": "W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+      "source_path": "W05L1/W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+      "path_parts": [
+        "W05L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 74387153,
+      "sha256": "60a21606323fdaaf3a9249c90579c65431376104fed77aba96c7e23d65479134",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T17:43:38+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D4a2a338f%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",

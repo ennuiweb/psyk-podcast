@@ -2,27 +2,27 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-08T17:39:14Z",
+  "generated_at": "2026-05-08T17:47:40Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 145,
-    "in_scope_entries": 137,
+    "total_entries": 148,
+    "in_scope_entries": 140,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 36,
+      "short": 39,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 49,
-      "original_only": 88,
+      "b_active": 50,
+      "original_only": 90,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 96,
-      "B": 49
+      "A": 98,
+      "B": 50
     }
   },
   "entries": [
@@ -572,13 +572,13 @@
       "title": "U5F1 · ALLE KILDER",
       "canonical_source_name": "W05L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-08T17:47:40Z"
       },
       "variants": {
         "A": {
@@ -601,27 +601,42 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+          "canonical_source_name": "W05L1 - Alle kilder (undtagen slides) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "sources": "3",
+            "hash": "4a2a338f"
+          },
+          "config_hash": "4a2a338f",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D4a2a338f%7D.mp3",
+          "published_at": "2026-05-08T17:43:38+00:00",
+          "title": "U5F1 · ALLE KILDER",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "60a21606323fdaaf3a9249c90579c65431376104fed77aba96c7e23d65479134",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-08T17:43:38+00:00",
+          "registered_at": "2026-05-08T17:47:40Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 74387153,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-08T17:47:40Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -2979,7 +2994,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1iR1DJMyES3FG_uMeZzaB1UneS9LOcoia",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Freud%2C%20S.%20%281984-1905%29.%20Brudstykke%20af%20en%20hysteri-analyse%20%28pp.%209-62%2C%20pp.%2096-%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-02T10:00:00+01:00",
+          "published_at": "2026-03-02T12:00:00+01:00",
           "title": "U5F1 · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
           "audio_sha256": null
         },
@@ -3012,7 +3027,7 @@
       "logical_episode_id": "single_reading__w05l1__gammelgaard_2010_en",
       "prompt_type": "single_reading",
       "lecture_key": "W05L1",
-      "title": "U5F1 · Gammelgaard (2010)",
+      "title": "U5F1 · Gammelgaard (2010) ✦",
       "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -3021,28 +3036,10 @@
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": "2026-05-08T17:39:14Z"
+        "activated_at": "2026-05-08T17:47:40Z"
       },
       "variants": {
         "A": {
-          "status": "published",
-          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-          "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
-          "config_tags": {
-            "type": "audio",
-            "lang": "en",
-            "format": "deep-dive",
-            "length": "long",
-            "hash": "fa9adbcf"
-          },
-          "config_hash": "fa9adbcf",
-          "episode_key": "1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-02T12:00:00+01:00",
-          "title": "U5F1 · Gammelgaard (2010)",
-          "audio_sha256": null
-        },
-        "B": {
           "status": "published",
           "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
           "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
@@ -3054,20 +3051,38 @@
             "hash": "71ad77b0"
           },
           "config_hash": "71ad77b0",
-          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+          "episode_key": "1HlHXdhbbedsyofwHMLW4QTDAVWWId5NQ",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D71ad77b0%7D.mp3",
-          "published_at": "2026-05-08T17:32:30+00:00",
-          "title": "U5F1 · Gammelgaard (2010)",
+          "published_at": "2026-03-02T16:00:00+01:00",
+          "title": "U5F1 · Gammelgaard (2010) ✦",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "published",
+          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "fa9adbcf"
+          },
+          "config_hash": "fa9adbcf",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-03-02T09:47:15.831Z",
+          "title": "U5F1 · Gammelgaard (2010) ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": "67c8f597b45a02d36ddb66ffda493d67d27e9517b95d3a3d21d74b8f411a3706",
+          "audio_sha256": "33b92c8fa9c7e1bf168661c953532afcce255c1bd031107613197ef3834ecb1a",
           "generated_at": null,
-          "uploaded_at": "2026-05-08T17:32:30+00:00",
-          "registered_at": "2026-05-08T17:39:14Z",
+          "uploaded_at": "2026-03-02T09:47:15.831Z",
+          "registered_at": "2026-05-08T17:47:40Z",
           "transcribed_at": null,
           "judged_at": null,
           "review_outcome": "queue_auto_activated",
-          "size_bytes": 102660070,
+          "size_bytes": 63935243,
           "drive_md5": null,
           "history": [
             {
@@ -3075,6 +3090,13 @@
               "event": "queue_auto_activated",
               "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
               "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            },
+            {
+              "at": "2026-05-08T17:47:40Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
               "campaign": "podcast-v1-regen-2026-05-07"
             }
           ]
@@ -3111,7 +3133,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1FWbfdyZbNay121b1tfQu7i4sEvqSHnzs",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Ricoeur%20%281981%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-02T14:00:00+01:00",
+          "published_at": "2026-03-02T20:00:00+01:00",
           "title": "U5F1 · Ricoeur (1981)",
           "audio_sha256": null
         },
@@ -5938,7 +5960,7 @@
           "config_hash": "973c491c",
           "episode_key": "1RoomeuQM0CJvVgBvPelApPpiftsm_lfx",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Slide%20exercise:%201.%20Psykoanalyse%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-03-02T16:00:00+01:00",
+          "published_at": "2026-03-02T22:00:00+01:00",
           "title": "U5F1 · Forelæsningsslides · Psykoanalyse",
           "audio_sha256": null
         },
@@ -5997,7 +6019,7 @@
           "config_hash": "973c491c",
           "episode_key": "1z32FCFKLLHi73hvy_EMMEZsIi4_-tKl4",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Slide%20lecture:%209.%20Psykoanalysens%20empiri%20og%20metode%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-03-02T18:00:00+01:00",
+          "published_at": "2026-03-03T00:00:00+01:00",
           "title": "U5F1 · Forelæsningsslides · Psykoanalysens empiri og metode",
           "audio_sha256": null
         },
@@ -7694,6 +7716,183 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/%5BShort%5D%20W04L1%20-%20Gammelgaard%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D306a6341%7D.mp3",
           "published_at": "2026-02-23T16:00:00+01:00",
           "title": "U4F1 · [Kort] · Gammelgaard (2007)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w05l1__freud_s_1984_1905_brudstykke_af_en_hysteri_analyse_pp_9_62_pp_96_en",
+      "prompt_type": "short",
+      "lecture_key": "W05L1",
+      "title": "U5F1 · [Kort] · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+      "canonical_source_name": "[Short] W05L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W05L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=short hash=99961cb1}.mp3",
+          "canonical_source_name": "[Short] W05L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "99961cb1"
+          },
+          "config_hash": "99961cb1",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/[Short] W05L1 - Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96- [EN] {type=audio lang=en format=deep-dive length=short hash=99961cb1}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/%5BShort%5D%20W05L1%20-%20Freud%2C%20S.%20%281984-1905%29.%20Brudstykke%20af%20en%20hysteri-analyse%20%28pp.%209-62%2C%20pp.%2096-%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D99961cb1%7D.mp3",
+          "published_at": "2026-03-02T10:00:00+01:00",
+          "title": "U5F1 · [Kort] · Freud, S. (1984-1905). Brudstykke af en hysteri-analyse (pp. 9-62, pp. 96",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w05l1__gammelgaard_2010_en",
+      "prompt_type": "short",
+      "lecture_key": "W05L1",
+      "title": "U5F1 · [Kort] · Gammelgaard (2010)",
+      "canonical_source_name": "[Short] W05L1 - Gammelgaard (2010) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=short hash=ad85143a}.mp3",
+          "canonical_source_name": "[Short] W05L1 - Gammelgaard (2010) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "ad85143a"
+          },
+          "config_hash": "ad85143a",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/[Short] W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=short hash=ad85143a}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/%5BShort%5D%20W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dad85143a%7D.mp3",
+          "published_at": "2026-03-02T14:00:00+01:00",
+          "title": "U5F1 · [Kort] · Gammelgaard (2010)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w05l1__ricoeur_1981_en",
+      "prompt_type": "short",
+      "lecture_key": "W05L1",
+      "title": "U5F1 · [Kort] · Ricoeur (1981)",
+      "canonical_source_name": "[Short] W05L1 - Ricoeur (1981) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W05L1 - Ricoeur (1981) [EN] {type=audio lang=en format=deep-dive length=short hash=dd34aa59}.mp3",
+          "canonical_source_name": "[Short] W05L1 - Ricoeur (1981) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "dd34aa59"
+          },
+          "config_hash": "dd34aa59",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/[Short] W05L1 - Ricoeur (1981) [EN] {type=audio lang=en format=deep-dive length=short hash=dd34aa59}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/%5BShort%5D%20W05L1%20-%20Ricoeur%20%281981%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Ddd34aa59%7D.mp3",
+          "published_at": "2026-03-02T18:00:00+01:00",
+          "title": "U5F1 · [Kort] · Ricoeur (1981)",
           "audio_sha256": null
         },
         "B": {

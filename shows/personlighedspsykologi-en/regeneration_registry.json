@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-08T16:06:25Z",
+  "generated_at": "2026-05-08T17:39:14Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 145,
@@ -16,13 +16,13 @@
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 48,
-      "original_only": 89,
+      "b_active": 49,
+      "original_only": 88,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 97,
-      "B": 48
+      "A": 96,
+      "B": 49
     }
   },
   "entries": [
@@ -1295,7 +1295,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=287d09de}.mp3",
+          "source_name": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=0209d90a}.mp3",
           "canonical_source_name": "W11L1 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -1303,11 +1303,11 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "3",
-            "hash": "287d09de"
+            "hash": "0209d90a"
           },
-          "config_hash": "287d09de",
+          "config_hash": "0209d90a",
           "episode_key": "1Hc_wY9SDqXx2TNcz8P-XnkLJBIQsm7Ir",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D287d09de%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D0209d90a%7D.mp3",
           "published_at": "2026-04-20T08:00:00+02:00",
           "title": "U11F1 · ALLE KILDER ✦",
           "audio_sha256": null
@@ -3015,13 +3015,13 @@
       "title": "U5F1 · Gammelgaard (2010)",
       "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-08T17:39:14Z"
       },
       "variants": {
         "A": {
@@ -3043,27 +3043,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+          "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "71ad77b0"
+          },
+          "config_hash": "71ad77b0",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D71ad77b0%7D.mp3",
+          "published_at": "2026-05-08T17:32:30+00:00",
+          "title": "U5F1 · Gammelgaard (2010)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "67c8f597b45a02d36ddb66ffda493d67d27e9517b95d3a3d21d74b8f411a3706",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-08T17:32:30+00:00",
+          "registered_at": "2026-05-08T17:39:14Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 102660070,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-08T17:39:14Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -4724,18 +4738,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=c5f78562}.mp3",
+          "source_name": "W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=514662ea}.mp3",
           "canonical_source_name": "W11L1 - Gergen (1999) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "c5f78562"
+            "hash": "514662ea"
           },
-          "config_hash": "c5f78562",
+          "config_hash": "514662ea",
           "episode_key": "1vBJ35TBIU8cO1dDo6VW1zqH-9kF0xUbN",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc5f78562%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D514662ea%7D.mp3",
           "published_at": "2026-04-20T12:00:00+02:00",
           "title": "U11F1 · Gergen (1999) ✦",
           "audio_sha256": null
@@ -4804,18 +4818,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=b60dcb28}.mp3",
+          "source_name": "W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "b60dcb28"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "b60dcb28",
+          "config_hash": "fa9adbcf",
           "episode_key": "1MosIEhgOfScp2d7UhQMgxZR3f4rJCmHz",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Db60dcb28%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
           "published_at": "2026-04-20T20:00:00+02:00",
           "title": "U11F1 · Grundbog 11: Postpsykologisk subjektiveringsteori ✦",
           "audio_sha256": null
@@ -4884,18 +4898,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=a1131691}.mp3",
+          "source_name": "W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W11L1 - Hacking (2007) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "a1131691"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "a1131691",
+          "config_hash": "fa9adbcf",
           "episode_key": "1IEc2m2i74SmIY-g1xaI7tibhxiZg3rIO",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Da1131691%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
           "published_at": "2026-04-20T16:00:00+02:00",
           "title": "U11F1 · Hacking (2007) ✦",
           "audio_sha256": null
@@ -8215,18 +8229,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=40eb6279}.mp3",
+          "source_name": "[Short] W11L1 - Gergen (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=3c4772ce}.mp3",
           "canonical_source_name": "[Short] W11L1 - Gergen (1999) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "40eb6279"
+            "hash": "3c4772ce"
           },
-          "config_hash": "40eb6279",
+          "config_hash": "3c4772ce",
           "episode_key": "1iIvxeaQqXd1iZp_oFyJTI6gBBATrvd4y",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D40eb6279%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Gergen%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D3c4772ce%7D.mp3",
           "published_at": "2026-04-20T10:00:00+02:00",
           "title": "U11F1 · [Kort] · Gergen (1999) ✦",
           "audio_sha256": null
@@ -8295,18 +8309,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=74e7e939}.mp3",
+          "source_name": "[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
           "canonical_source_name": "[Short] W11L1 - Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "74e7e939"
+            "hash": "c3f67e82"
           },
-          "config_hash": "74e7e939",
+          "config_hash": "c3f67e82",
           "episode_key": "1NbPJN5rHs3rtxjfqxBCeVvqEbElk84eb",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D74e7e939%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Grundbog%20kapitel%2011%20-%20Postpsykologisk%20subjektiveringsteori%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
           "published_at": "2026-04-20T18:00:00+02:00",
           "title": "U11F1 · [Kort] · Grundbog 11: Postpsykologisk subjektiveringsteori ✦",
           "audio_sha256": null
@@ -8375,18 +8389,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=bc0c0878}.mp3",
+          "source_name": "[Short] W11L1 - Hacking (2007) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
           "canonical_source_name": "[Short] W11L1 - Hacking (2007) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "bc0c0878"
+            "hash": "c3f67e82"
           },
-          "config_hash": "bc0c0878",
+          "config_hash": "c3f67e82",
           "episode_key": "1mtXi2Y0puku-R7NqYx7H2kbEu_PdhHtU",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dbc0c0878%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/%5BShort%5D%20W11L1%20-%20Hacking%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
           "published_at": "2026-04-20T14:00:00+02:00",
           "title": "U11F1 · [Kort] · Hacking (2007) ✦",
           "audio_sha256": null

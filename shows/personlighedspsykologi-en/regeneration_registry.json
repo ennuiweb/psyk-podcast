@@ -2,14 +2,14 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-08T18:13:45Z",
+  "generated_at": "2026-05-08T18:19:31Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 148,
-    "in_scope_entries": 140,
+    "total_entries": 150,
+    "in_scope_entries": 142,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 39,
+      "short": 41,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
@@ -17,11 +17,11 @@
     },
     "rollout_state_counts": {
       "b_active": 52,
-      "original_only": 88,
+      "original_only": 90,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 96,
+      "A": 98,
       "B": 52
     }
   },
@@ -644,7 +644,7 @@
       "logical_episode_id": "weekly_readings_only__w05l2__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W05L2",
-      "title": "U5F2 · ALLE KILDER",
+      "title": "U5F2 · ALLE KILDER ✦",
       "canonical_source_name": "W05L2 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -653,29 +653,10 @@
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": "2026-05-08T18:13:45Z"
+        "activated_at": "2026-05-08T18:19:31Z"
       },
       "variants": {
         "A": {
-          "status": "published",
-          "source_name": "W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
-          "canonical_source_name": "W05L2 - Alle kilder (undtagen slides) [EN].mp3",
-          "config_tags": {
-            "type": "audio",
-            "lang": "en",
-            "format": "deep-dive",
-            "length": "long",
-            "sources": "3",
-            "hash": "1b3d31bc"
-          },
-          "config_hash": "1b3d31bc",
-          "episode_key": "1h-Vf1K0FaC3Ra-WFSeypHHcssBgbGyvZ",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D1b3d31bc%7D.mp3",
-          "published_at": "2026-03-03T10:00:00+01:00",
-          "title": "U5F2 · ALLE KILDER",
-          "audio_sha256": null
-        },
-        "B": {
           "status": "published",
           "source_name": "W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=8a7f3c99}.mp3",
           "canonical_source_name": "W05L2 - Alle kilder (undtagen slides) [EN].mp3",
@@ -688,20 +669,39 @@
             "hash": "8a7f3c99"
           },
           "config_hash": "8a7f3c99",
-          "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=8a7f3c99}.mp3",
+          "episode_key": "1h-Vf1K0FaC3Ra-WFSeypHHcssBgbGyvZ",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D8a7f3c99%7D.mp3",
-          "published_at": "2026-05-08T18:13:26+00:00",
-          "title": "U5F2 · ALLE KILDER",
+          "published_at": "2026-03-03T10:00:00+01:00",
+          "title": "U5F2 · ALLE KILDER ✦",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "published",
+          "source_name": "W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
+          "canonical_source_name": "W05L2 - Alle kilder (undtagen slides) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "sources": "3",
+            "hash": "1b3d31bc"
+          },
+          "config_hash": "1b3d31bc",
+          "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D1b3d31bc%7D.mp3",
+          "published_at": "2026-03-02T16:33:52.714Z",
+          "title": "U5F2 · ALLE KILDER ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": "7504b0458a4e18e04133362589bad82035463d251bbe0ee07b6cc598c84f081b",
+          "audio_sha256": "730376eb0a8a49f5da1d3c093213d2f6fd21658fdedeeb9bac73172cdd06dbed",
           "generated_at": null,
-          "uploaded_at": "2026-05-08T18:13:26+00:00",
-          "registered_at": "2026-05-08T18:13:45Z",
+          "uploaded_at": "2026-03-02T16:33:52.714Z",
+          "registered_at": "2026-05-08T18:19:31Z",
           "transcribed_at": null,
           "judged_at": null,
           "review_outcome": "queue_auto_activated",
-          "size_bytes": 96904291,
+          "size_bytes": 84970541,
           "drive_md5": null,
           "history": [
             {
@@ -709,6 +709,13 @@
               "event": "queue_auto_activated",
               "source_name": "W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=8a7f3c99}.mp3",
               "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=8a7f3c99}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            },
+            {
+              "at": "2026-05-08T18:19:31Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",
               "campaign": "podcast-v1-regen-2026-05-07"
             }
           ]
@@ -3207,7 +3214,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1YTe29TNTN0IxglYJ0XPub5eHpqAXXUHM",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Andkj%C3%A6r%20Olsen%20%26%20K%C3%B8ppe%20%281991a%20og%20b%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-03T12:00:00+01:00",
+          "published_at": "2026-03-03T14:00:00+01:00",
           "title": "U5F2 · Andkjær Olsen & Køppe (1991a og b)",
           "audio_sha256": null
         },
@@ -3240,7 +3247,7 @@
       "logical_episode_id": "single_reading__w05l2__grundbog_kapitel_07_nyere_psykoanalytiske_teorier_en",
       "prompt_type": "single_reading",
       "lecture_key": "W05L2",
-      "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier",
+      "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier ✦",
       "canonical_source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -3249,28 +3256,10 @@
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": "2026-05-08T18:13:45Z"
+        "activated_at": "2026-05-08T18:19:31Z"
       },
       "variants": {
         "A": {
-          "status": "published",
-          "source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-          "canonical_source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
-          "config_tags": {
-            "type": "audio",
-            "lang": "en",
-            "format": "deep-dive",
-            "length": "long",
-            "hash": "fa9adbcf"
-          },
-          "config_hash": "fa9adbcf",
-          "episode_key": "1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-03T16:00:00+01:00",
-          "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier",
-          "audio_sha256": null
-        },
-        "B": {
           "status": "published",
           "source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=adf958d5}.mp3",
           "canonical_source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
@@ -3282,20 +3271,38 @@
             "hash": "adf958d5"
           },
           "config_hash": "adf958d5",
-          "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=adf958d5}.mp3",
+          "episode_key": "1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dadf958d5%7D.mp3",
-          "published_at": "2026-05-08T18:13:26+00:00",
-          "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier",
+          "published_at": "2026-03-03T20:00:00+01:00",
+          "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier ✦",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "published",
+          "source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "canonical_source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "fa9adbcf"
+          },
+          "config_hash": "fa9adbcf",
+          "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-03-02T09:48:59.359Z",
+          "title": "U5F2 · Grundbog 7: Nyere psykoanalytiske teorier ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": "d87943077c2192785979b2db3670e774d4de365ffac9eec5bc409012a59f5f32",
+          "audio_sha256": "4aa3b2d4870fafd01a642ed8e4fd47f6571f560ead02e04e183ee39489f36f61",
           "generated_at": null,
-          "uploaded_at": "2026-05-08T18:13:26+00:00",
-          "registered_at": "2026-05-08T18:13:45Z",
+          "uploaded_at": "2026-03-02T09:48:59.359Z",
+          "registered_at": "2026-05-08T18:19:31Z",
           "transcribed_at": null,
           "judged_at": null,
           "review_outcome": "queue_auto_activated",
-          "size_bytes": 103482859,
+          "size_bytes": 95171329,
           "drive_md5": null,
           "history": [
             {
@@ -3303,6 +3310,13 @@
               "event": "queue_auto_activated",
               "source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=adf958d5}.mp3",
               "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=adf958d5}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            },
+            {
+              "at": "2026-05-08T18:19:31Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
               "campaign": "podcast-v1-regen-2026-05-07"
             }
           ]
@@ -3339,7 +3353,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1fC2UYNVZA86O5dPLumapdJMpm0dCibQH",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20K%C3%B8ppe%20%281992%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-03T14:00:00+01:00",
+          "published_at": "2026-03-03T16:00:00+01:00",
           "title": "U5F2 · Køppe (1992)",
           "audio_sha256": null
         },
@@ -6107,7 +6121,7 @@
           "config_hash": "973c491c",
           "episode_key": "1EwKQ3KfkzyURddgT4JKHHD3VFwTHoV1V",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Slide%20lecture:%2010.%20Psykoanalysens%20konstituering%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-03-03T18:00:00+01:00",
+          "published_at": "2026-03-03T20:00:00+01:00",
           "title": "U5F2 · Forelæsningsslides · Psykoanalysens konstituering",
           "audio_sha256": null
         },
@@ -7950,6 +7964,124 @@
       }
     },
     {
+      "logical_episode_id": "short__w05l2__andkj_r_olsen_k_ppe_1991a_og_b_en",
+      "prompt_type": "short",
+      "lecture_key": "W05L2",
+      "title": "U5F2 · [Kort] · Andkjær Olsen & Køppe (1991a og b)",
+      "canonical_source_name": "[Short] W05L2 - Andkjær Olsen & Køppe (1991a og b) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W05L2 - Andkjær Olsen & Køppe (1991a og b) [EN] {type=audio lang=en format=deep-dive length=short hash=1ad3c61c}.mp3",
+          "canonical_source_name": "[Short] W05L2 - Andkjær Olsen & Køppe (1991a og b) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "1ad3c61c"
+          },
+          "config_hash": "1ad3c61c",
+          "episode_key": "shows/personlighedspsykologi-en/W05L2/[Short] W05L2 - Andkjær Olsen & Køppe (1991a og b) [EN] {type=audio lang=en format=deep-dive length=short hash=1ad3c61c}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/%5BShort%5D%20W05L2%20-%20Andkj%C3%A6r%20Olsen%20%26%20K%C3%B8ppe%20%281991a%20og%20b%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D1ad3c61c%7D.mp3",
+          "published_at": "2026-03-03T12:00:00+01:00",
+          "title": "U5F2 · [Kort] · Andkjær Olsen & Køppe (1991a og b)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w05l2__grundbog_kapitel_07_nyere_psykoanalytiske_teorier_en",
+      "prompt_type": "short",
+      "lecture_key": "W05L2",
+      "title": "U5F2 · [Kort] · Grundbog 7: Nyere psykoanalytiske teorier",
+      "canonical_source_name": "[Short] W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=short hash=8b1e309d}.mp3",
+          "canonical_source_name": "[Short] W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "8b1e309d"
+          },
+          "config_hash": "8b1e309d",
+          "episode_key": "shows/personlighedspsykologi-en/W05L2/[Short] W05L2 - Grundbog kapitel 07 - Nyere psykoanalytiske teorier [EN] {type=audio lang=en format=deep-dive length=short hash=8b1e309d}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/%5BShort%5D%20W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8b1e309d%7D.mp3",
+          "published_at": "2026-03-03T18:00:00+01:00",
+          "title": "U5F2 · [Kort] · Grundbog 7: Nyere psykoanalytiske teorier",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
       "logical_episode_id": "short__w06l2__boss_1963_en",
       "prompt_type": "short",
       "lecture_key": "W06L2",
@@ -9181,7 +9313,7 @@
           "config_hash": null,
           "episode_key": "1XkFLOjCfYNRJ01wONIg83f6ecWMKQ-I2",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/%5BTTS%5D%20W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%7Btype%3Dtts%20voice%3Dda-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib%20date%3D2026-02-14%7D.mp3",
-          "published_at": "2026-03-03T20:00:00+01:00",
+          "published_at": "2026-03-03T22:00:00+01:00",
           "title": "U5F2 · [Lydbog] · Grundbog 7: Nyere psykoanalytiske teorier",
           "audio_sha256": null
         },

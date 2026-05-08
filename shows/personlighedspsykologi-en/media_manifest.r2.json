@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T15:53:02+00:00",
+  "generated_at": "2026-05-08T15:56:20+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1679,6 +1679,21 @@
       "published_at": "2026-05-08T15:46:39+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L2/%5BShort%5D%20W06L2%20-%20Boss%20%281963%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D9b40fff4%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W06L2/[Short] W06L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=b65dbd54}.mp3",
+      "source_name": "[Short] W06L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=b65dbd54}.mp3",
+      "source_path": "W06L2/[Short] W06L2 - May (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=b65dbd54}.mp3",
+      "path_parts": [
+        "W06L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10315225,
+      "sha256": "df1d81c18a1205e1034bea0ead87092d3613a4dcdd07018d4008c0004d122fd1",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T15:56:16+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L2/%5BShort%5D%20W06L2%20-%20May%20%281966%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Db65dbd54%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W07L1/W07L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",

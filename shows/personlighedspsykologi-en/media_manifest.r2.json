@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T15:56:20+00:00",
+  "generated_at": "2026-05-08T16:06:25+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2482,6 +2482,21 @@
       "published_at": "2026-05-06T18:24:38+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L2/%5BShort%5D%20W10L2%20-%20Slide%20lecture:%2019.%20gang%20Sociokulturelle%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc66b095a%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=0209d90a}.mp3",
+      "source_name": "W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=0209d90a}.mp3",
+      "source_path": "W11L1/W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=0209d90a}.mp3",
+      "path_parts": [
+        "W11L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 102633924,
+      "sha256": "7f93d4971d4c70a0f4d235c2e73fcfdb477b6ccaf19162d9e403f10f607b6cc3",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T16:06:08+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L1/W11L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D3%20hash%3D0209d90a%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W11L1/W11L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=287d09de}.mp3",

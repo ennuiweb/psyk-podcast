@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-07T20:52:28+00:00",
+  "generated_at": "2026-05-08T05:49:10+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2061,6 +2061,21 @@
       "stable_guid": "1ROTyOjFUuoa9x3_9iO02sDkkxJybJ5Q1"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W10L1/W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+      "source_name": "W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+      "source_path": "W10L1/W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+      "path_parts": [
+        "W10L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 65765437,
+      "sha256": "07dfbfec30fbaf8e650667915c4973b09cdc3da8902b89b1872b182c80eacbe2",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T05:49:05+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L1/W10L1%20-%20Mitchell%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D07a7e81f%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W10L1/W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1oUv309xHegJwxCSN6l6GajcfVV6c_ofb",
       "source_name": "W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2093,6 +2108,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L1/%5BShort%5D%20W10L1%20-%20Bjerrum%20Nielsen%20%26%20Rudberg%20%282006%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "1fuao0xiBaSSZ8-SMYXBjnB7Y4883VV39"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W10L1/[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+      "source_name": "[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+      "source_path": "W10L1/[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+      "path_parts": [
+        "W10L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 12125132,
+      "sha256": "37bfa9561a57cc3e6953be0d2eb08e82c828e0c53a3df9ac8d2e6e6d9fbad1ff",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T05:49:05+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L1/%5BShort%5D%20W10L1%20-%20Mitchell%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0df1f8d8%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W10L1/[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",

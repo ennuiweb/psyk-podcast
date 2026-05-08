@@ -2,27 +2,27 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-07T20:52:33Z",
+  "generated_at": "2026-05-08T05:56:43Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 142,
-    "in_scope_entries": 134,
+    "total_entries": 143,
+    "in_scope_entries": 135,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
       "short": 34,
-      "single_reading": 59,
+      "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 36,
-      "original_only": 98,
+      "b_active": 38,
+      "original_only": 97,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 106,
-      "B": 36
+      "A": 105,
+      "B": 38
     }
   },
   "entries": [
@@ -314,7 +314,7 @@
       "logical_episode_id": "weekly_readings_only__w03l1__alle_kilder_undtagen_slides_en",
       "prompt_type": "weekly_readings_only",
       "lecture_key": "W03L1",
-      "title": "U3F1 · ALLE KILDER",
+      "title": "U3F1 · ALLE KILDER ✦",
       "canonical_source_name": "W03L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -328,7 +328,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3",
+          "source_name": "W03L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=0fed937b}.mp3",
           "canonical_source_name": "W03L1 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -336,13 +336,13 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "4",
-            "hash": "a7e138f5"
+            "hash": "0fed937b"
           },
-          "config_hash": "a7e138f5",
+          "config_hash": "0fed937b",
           "episode_key": "1QogySgmAjaZZYWRFUubYy6UwmaEfCTwa",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3Da7e138f5%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3D0fed937b%7D.mp3",
           "published_at": "2026-02-16T08:00:00+01:00",
-          "title": "U3F1 · ALLE KILDER",
+          "title": "U3F1 · ALLE KILDER ✦",
           "audio_sha256": null
         },
         "B": {
@@ -2050,7 +2050,7 @@
       "logical_episode_id": "single_reading__w03l1__kandler_instinske_2025_en",
       "prompt_type": "single_reading",
       "lecture_key": "W03L1",
-      "title": "U3F1 · Kandler & Instinske (2025)",
+      "title": "U3F1 · Kandler & Instinske (2025) ✦",
       "canonical_source_name": "W03L1 - Kandler & Instinske (2025) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -2064,20 +2064,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W03L1 - Kandler & Instinske (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=c2cfac0d}.mp3",
           "canonical_source_name": "W03L1 - Kandler & Instinske (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "c2cfac0d"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "c2cfac0d",
           "episode_key": "1aWpc6yeG9iRqEutYT802ViD8NeEDRQOP",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Kandler%20%26%20Instinske%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Kandler%20%26%20Instinske%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc2cfac0d%7D.mp3",
           "published_at": "2026-02-16T12:00:00+01:00",
-          "title": "U3F1 · Kandler & Instinske (2025)",
+          "title": "U3F1 · Kandler & Instinske (2025) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -2179,10 +2179,69 @@
       }
     },
     {
+      "logical_episode_id": "single_reading__w03l1__lu_benet_marti_nez_wang_2023_en",
+      "prompt_type": "single_reading",
+      "lecture_key": "W03L1",
+      "title": "U3F1 · Lu, Benet-Martínez & Wang (2023)",
+      "canonical_source_name": "W03L1 - Lu, Benet-Martínez & Wang (2023) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=6529b1ac}.mp3",
+          "canonical_source_name": "W03L1 - Lu, Benet-Martínez & Wang (2023) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "6529b1ac"
+          },
+          "config_hash": "6529b1ac",
+          "episode_key": "shows/personlighedspsykologi-en/W03L1/W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=long hash=6529b1ac}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Lu%2C%20Benet-Marti%CC%81nez%20%26%20Wang%20%282023%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D6529b1ac%7D.mp3",
+          "published_at": "2026-02-16T14:00:00+01:00",
+          "title": "U3F1 · Lu, Benet-Martínez & Wang (2023)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
       "logical_episode_id": "single_reading__w03l1__volk_puchalski_2025_en",
       "prompt_type": "single_reading",
       "lecture_key": "W03L1",
-      "title": "U3F1 · Volk & Puchalski (2025)",
+      "title": "U3F1 · Volk & Puchalski (2025) ✦",
       "canonical_source_name": "W03L1 - Volk & Puchalski (2025) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -2196,20 +2255,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W03L1 - Volk & Puchalski (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=e695e062}.mp3",
           "canonical_source_name": "W03L1 - Volk & Puchalski (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "e695e062"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "e695e062",
           "episode_key": "1MUsp_Xiw0xyZR3pl2YAxO2ZUcbTRfcXK",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Volk%20%26%20Puchalski%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Volk%20%26%20Puchalski%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3De695e062%7D.mp3",
           "published_at": "2026-02-16T20:00:00+01:00",
-          "title": "U3F1 · Volk & Puchalski (2025)",
+          "title": "U3F1 · Volk & Puchalski (2025) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -2255,7 +2314,7 @@
       "logical_episode_id": "single_reading__w03l1__zettler_et_al_2025_en",
       "prompt_type": "single_reading",
       "lecture_key": "W03L1",
-      "title": "U3F1 · Zettler et al. (2025)",
+      "title": "U3F1 · Zettler et al. (2025) ✦",
       "canonical_source_name": "W03L1 - Zettler et al. (2025) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -2269,20 +2328,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W03L1 - Zettler et al. (2025) [EN] {type=audio lang=en format=deep-dive length=long hash=514fac81}.mp3",
           "canonical_source_name": "W03L1 - Zettler et al. (2025) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "514fac81"
           },
-          "config_hash": "fa9adbcf",
+          "config_hash": "514fac81",
           "episode_key": "1RSAi0YF-0qg9MaEKJgno2m7qtJt1TERm",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Zettler%20et%20al.%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/W03L1%20-%20Zettler%20et%20al.%20%282025%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D514fac81%7D.mp3",
           "published_at": "2026-02-17T00:00:00+01:00",
-          "title": "U3F1 · Zettler et al. (2025)",
+          "title": "U3F1 · Zettler et al. (2025) ✦",
           "audio_sha256": null
         },
         "B": {
@@ -4327,13 +4386,13 @@
       "title": "U10F1 · Mitchell (2015)",
       "canonical_source_name": "W10L1 - Mitchell (2015) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-08T05:56:43Z"
       },
       "variants": {
         "A": {
@@ -4355,27 +4414,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+          "canonical_source_name": "W10L1 - Mitchell (2015) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "07a7e81f"
+          },
+          "config_hash": "07a7e81f",
+          "episode_key": "shows/personlighedspsykologi-en/W10L1/W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L1/W10L1%20-%20Mitchell%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D07a7e81f%7D.mp3",
+          "published_at": "2026-05-08T05:49:05+00:00",
+          "title": "U10F1 · Mitchell (2015)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "07dfbfec30fbaf8e650667915c4973b09cdc3da8902b89b1872b182c80eacbe2",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-08T05:49:05+00:00",
+          "registered_at": "2026-05-08T05:56:43Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 65765437,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-08T05:56:43Z",
+              "event": "queue_auto_activated",
+              "source_name": "W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W10L1/W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=07a7e81f}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -7027,7 +7100,7 @@
           "config_hash": "c6de214c",
           "episode_key": "shows/personlighedspsykologi-en/W03L1/[Short] W03L1 - Lu, Benet-Martínez & Wang (2023) [EN] {type=audio lang=en format=deep-dive length=short hash=c6de214c}.mp3",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W03L1/%5BShort%5D%20W03L1%20-%20Lu%2C%20Benet-Marti%CC%81nez%20%26%20Wang%20%282023%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc6de214c%7D.mp3",
-          "published_at": "2026-02-16T14:00:00+01:00",
+          "published_at": "2026-02-16T12:00:00+01:00",
           "title": "U3F1 · [Kort] · Lu, Benet-Martínez & Wang (2023)",
           "audio_sha256": null
         },
@@ -7535,13 +7608,13 @@
       "title": "U10F1 · [Kort] · Mitchell (2015)",
       "canonical_source_name": "[Short] W10L1 - Mitchell (2015) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-08T05:56:43Z"
       },
       "variants": {
         "A": {
@@ -7563,27 +7636,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+          "canonical_source_name": "[Short] W10L1 - Mitchell (2015) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "0df1f8d8"
+          },
+          "config_hash": "0df1f8d8",
+          "episode_key": "shows/personlighedspsykologi-en/W10L1/[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W10L1/%5BShort%5D%20W10L1%20-%20Mitchell%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0df1f8d8%7D.mp3",
+          "published_at": "2026-05-08T05:49:05+00:00",
+          "title": "U10F1 · [Kort] · Mitchell (2015)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "37bfa9561a57cc3e6953be0d2eb08e82c828e0c53a3df9ac8d2e6e6d9fbad1ff",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-08T05:49:05+00:00",
+          "registered_at": "2026-05-08T05:56:43Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 12125132,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-08T05:56:43Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W10L1/[Short] W10L1 - Mitchell (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=0df1f8d8}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },

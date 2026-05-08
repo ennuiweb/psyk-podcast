@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 import json
 import stat
 import sys
@@ -13,6 +14,7 @@ from notebooklm_queue.constants import (
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
     STATE_GENERATING,
+    STATE_QUEUED,
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
 )
@@ -275,6 +277,87 @@ def test_execute_job_auto_schedules_retry_for_profile_cooldown_exhaustion(tmp_pa
     assert updated["state"] == STATE_RETRY_SCHEDULED
     assert updated["next_retry_at"]
     assert "No usable profiles found" in updated["last_error"]
+
+
+def test_execute_job_progressively_backs_off_repeated_retryable_failures(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\n"
+        "print('API rate limit or quota exceeded. Please wait before retrying.', file=sys.stderr)\n"
+        "raise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS", "900")
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER", "1.5")
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS", "3600")
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    delays: list[int] = []
+    job_id = str(job["job_id"])
+    for _ in range(4):
+        execute_job(
+            store=store,
+            show_slug="bioneuro",
+            job_id=job_id,
+            options=ExecutionOptions(repo_root=repo_root),
+        )
+        updated = store.load_job(show_slug="bioneuro", job_id=job_id)
+        retry_at = datetime.fromisoformat(str(updated["next_retry_at"]))
+        updated_at = datetime.fromisoformat(str(updated["updated_at"]))
+        delays.append(int((retry_at - updated_at).total_seconds()))
+        store.transition_job(
+            show_slug="bioneuro",
+            job_id=job_id,
+            state=STATE_QUEUED,
+            note="Reset to queued for retry backoff test",
+        )
+
+    assert delays == [900, 1350, 2025, 3038]
+
+
+def test_execute_job_caps_retry_backoff_for_repeated_failures(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\n"
+        "print('RPC CREATE_ARTIFACT failed after 0.362s', file=sys.stderr)\n"
+        "raise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS", "900")
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER", "2")
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS", "3600")
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    updated["attempt_count"] = 8
+    store.save_job(updated)
+
+    execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    retry_at = datetime.fromisoformat(str(updated["next_retry_at"]))
+    updated_at = datetime.fromisoformat(str(updated["updated_at"]))
+    assert int((retry_at - updated_at).total_seconds()) == 3600
 
 
 def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -> None:

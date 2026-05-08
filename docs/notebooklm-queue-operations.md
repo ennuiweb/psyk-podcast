@@ -50,6 +50,9 @@ NOTEBOOKLM_QUEUE_DOWNSTREAM_POLL_SECONDS=10
 NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS=7200
 NOTEBOOKLM_QUEUE_ARTIFACT_WAIT_TIMEOUT_SECONDS=60
 NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS=60
+NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS=900
+NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER=1.5
+NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS=3600
 NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
 NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
 NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
@@ -101,6 +104,7 @@ Notes:
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
 - Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
+- Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Default progression is `15m` base, `1.5x` multiplier, capped at `60m`.
 - Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move jobs between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
 - Queue-owned metadata rebuild is now bundle-aware: audio-only publish bundles do not block on quiz sync or quiz-asset validation, but quiz bundles still fail closed if refreshed `quiz_links.json` or `content_manifest` quiz assets are missing.
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.

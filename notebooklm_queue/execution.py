@@ -7,6 +7,7 @@ import json
 import os
 from datetime import UTC, datetime, timedelta
 from dataclasses import dataclass
+from math import ceil
 from pathlib import Path
 from typing import Any
 
@@ -41,9 +42,9 @@ TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
     "rpc create_notebook failed",
     "null result data (possible server error",
 )
-DEFAULT_RATE_LIMIT_RETRY_SECONDS = int(
-    os.environ.get("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS") or "900"
-)
+DEFAULT_RATE_LIMIT_RETRY_SECONDS = 900
+DEFAULT_RETRY_BACKOFF_MULTIPLIER = 1.5
+DEFAULT_RETRY_BACKOFF_MAX_SECONDS = 3600
 DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS") or "7200"
 )
@@ -90,16 +91,69 @@ def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:
     return any(token in text for token in TRANSIENT_NOTEBOOKLM_ERROR_TOKENS)
 
 
-def _derived_retry_at(*, explicit_retry_at: str | None, error_text: str | None) -> str | None:
+def _int_env(name: str, default: int) -> int:
+    raw = str(os.environ.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _float_env(name: str, default: float) -> float:
+    raw = str(os.environ.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _classify_retryable_failure(message: str | None) -> str | None:
+    if _looks_like_rate_limit(message):
+        return "rate_limit"
+    if _looks_like_profile_cooldown_exhaustion(message):
+        return "profile_cooldown"
+    if _looks_like_transient_notebooklm_failure(message):
+        return "transient_notebooklm"
+    return None
+
+
+def _retry_delay_seconds(*, attempt_count: int, error_text: str | None) -> int | None:
+    if _classify_retryable_failure(error_text) is None:
+        return None
+
+    base_seconds = max(_int_env("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS", DEFAULT_RATE_LIMIT_RETRY_SECONDS), 1)
+    multiplier = max(
+        _float_env("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER", DEFAULT_RETRY_BACKOFF_MULTIPLIER),
+        1.0,
+    )
+    max_seconds = max(
+        _int_env("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS", DEFAULT_RETRY_BACKOFF_MAX_SECONDS),
+        base_seconds,
+    )
+    exponent = max(int(attempt_count) - 1, 0)
+    delay_seconds = ceil(base_seconds * (multiplier**exponent))
+    return min(max(delay_seconds, base_seconds), max_seconds)
+
+
+def _derived_retry_at(
+    *,
+    explicit_retry_at: str | None,
+    error_text: str | None,
+    attempt_count: int,
+) -> str | None:
     if explicit_retry_at:
         return explicit_retry_at
-    if not (
-        _looks_like_rate_limit(error_text)
-        or _looks_like_profile_cooldown_exhaustion(error_text)
-        or _looks_like_transient_notebooklm_failure(error_text)
-    ):
+    delay_seconds = _retry_delay_seconds(
+        attempt_count=attempt_count,
+        error_text=error_text,
+    )
+    if delay_seconds is None:
         return None
-    retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(DEFAULT_RATE_LIMIT_RETRY_SECONDS, 1))
+    retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(delay_seconds, 1))
     return retry_at.replace(microsecond=0).isoformat()
 
 
@@ -651,6 +705,7 @@ def _finalize_failure(
     retry_at = _derived_retry_at(
         explicit_retry_at=options.retry_at,
         error_text=_phase_retry_detection_text(failed_phase, note),
+        attempt_count=max(int(job.get("attempt_count") or 0), 1),
     )
     effective_failed_state = failed_state
     if retry_at and failed_state == STATE_FAILED_RETRYABLE:

@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T18:19:25+00:00",
+  "generated_at": "2026-05-08T18:32:04+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1520,6 +1520,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20Grundbog%20kapitel%2007%20-%20Nyere%20psykoanalytiske%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1sTDWS_ZtybXEupv_k5H5WMnb5B9smwpG"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=c8926b7f}.mp3",
+      "source_name": "W05L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=c8926b7f}.mp3",
+      "source_path": "W05L2/W05L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=c8926b7f}.mp3",
+      "path_parts": [
+        "W05L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 103467104,
+      "sha256": "d936873e98b1207f2fadcfce1a25264569b04550dd47c79ec3343ba7848c85ce",
+      "artifact_type": "audio",
+      "published_at": "2026-05-08T18:31:55+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/W05L2%20-%20K%C3%B8ppe%20%281992%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dc8926b7f%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W05L2/W05L2 - Køppe (1992) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",

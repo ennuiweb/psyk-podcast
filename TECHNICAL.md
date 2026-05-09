@@ -81,6 +81,10 @@ Operational note:
 - For `personlighedspsykologi`, the canonical local rebuild entrypoint for the
   full `Source Intelligence Layer` is
   `./.venv/bin/python scripts/build_personlighedspsykologi_source_intelligence.py`.
+- `personlighedspsykologi` now has multiple public show surfaces over the same
+  subject substrate. `personlighedspsykologi-en` and `personlighedspsykologi-da`
+  are separate queue-owned publication targets with isolated output roots and
+  R2 prefixes.
 - For the Gemini-derived recursive layer, the canonical local entrypoint is
   `./.venv/bin/python scripts/build_personlighedspsykologi_recursive_source_intelligence.py`.
   First test batch: `--lectures W05L1,W06L1`; full run: `--all`.

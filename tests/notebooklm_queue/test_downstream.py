@@ -26,6 +26,19 @@ def _seed_job(
     changed_paths: list[str] | None = None,
     pending_request_count: int = 0,
 ) -> tuple[QueueStore, dict[str, object]]:
+    config_path = tmp_path / "shows" / show_slug / "config.github.json"
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_payload: dict[str, object] = {"subject_slug": "bioneuro" if show_slug == "bioneuro" else show_slug}
+    if show_slug == "personlighedspsykologi-da":
+        config_payload["queue"] = {
+            "freudd_deploy": False,
+            "spotify_sync": False,
+            "content_manifest_mode": "never",
+            "portal_sidecars_mode": "never",
+            "quiz_sync": {"enabled": False},
+        }
+    config_path.write_text(json.dumps(config_payload), encoding="utf-8")
+
     store = QueueStore(tmp_path / "queue-root")
     job = store.upsert_job(_identity(show_slug), initial_state=STATE_REPO_PUSHED)
     manifest = {
@@ -159,3 +172,21 @@ def test_sync_downstream_marks_retryable_failure_on_failed_workflow(tmp_path: Pa
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_FAILED_RETRYABLE
     assert updated["last_error"] == "workflow failed"
+
+
+def test_sync_downstream_skips_freudd_targets_for_danish_mirror(tmp_path: Path) -> None:
+    store, job = _seed_job(
+        tmp_path,
+        show_slug="personlighedspsykologi-da",
+        changed_paths=["shows/personlighedspsykologi-da/content_manifest.json"],
+    )
+
+    result = sync_downstream_publication(
+        store=store,
+        show_slug="personlighedspsykologi-da",
+        job_id=str(job["job_id"]),
+        options=DownstreamOptions(repo_root=tmp_path, timeout_seconds=1, poll_interval_seconds=1),
+    )
+
+    assert result["final_state"] == STATE_COMPLETED
+    assert result["targets"] == []

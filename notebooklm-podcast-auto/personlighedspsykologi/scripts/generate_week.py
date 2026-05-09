@@ -27,6 +27,47 @@ def read_json(path: Path) -> dict:
         return json.load(handle)
 
 
+def load_prompt_config(path: Path) -> dict:
+    raw = read_json(path)
+    if not isinstance(raw, dict):
+        raise ValueError(f"Prompt config must be a JSON object: {path}")
+    return _resolve_prompt_config_extends(path=path, payload=raw, seen={path.resolve()})
+
+
+def _resolve_prompt_config_extends(*, path: Path, payload: dict, seen: set[Path]) -> dict:
+    extends_value = payload.get("extends")
+    if extends_value in (None, ""):
+        return dict(payload)
+    base_path = Path(str(extends_value)).expanduser()
+    if not base_path.is_absolute():
+        base_path = (path.parent / base_path).resolve()
+    else:
+        base_path = base_path.resolve()
+    if base_path in seen:
+        raise ValueError(f"Prompt config extends cycle detected at {base_path}")
+    base_payload = read_json(base_path)
+    if not isinstance(base_payload, dict):
+        raise ValueError(f"Extended prompt config must be a JSON object: {base_path}")
+    resolved_base = _resolve_prompt_config_extends(
+        path=base_path,
+        payload=base_payload,
+        seen={*seen, base_path},
+    )
+    override_payload = dict(payload)
+    override_payload.pop("extends", None)
+    return _deep_merge_dicts(resolved_base, override_payload)
+
+
+def _deep_merge_dicts(base: dict, override: dict) -> dict:
+    merged = dict(base)
+    for key, value in override.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge_dicts(dict(merged[key]), value)
+        else:
+            merged[key] = value
+    return merged
+
+
 WEEK_SELECTOR_PATTERN = re.compile(r"^(?:W)?0*(\d{1,2})(?:L0*(\d{1,2}))?$", re.IGNORECASE)
 WEEK_DIR_PATTERN = re.compile(r"^W0*(\d{1,2})(?:L0*(\d{1,2}))?\b", re.IGNORECASE)
 OUTPUT_TITLE_PREFIX_PATTERN = re.compile(
@@ -2770,7 +2811,7 @@ def main() -> int:
     generator_script = repo_root / "notebooklm-podcast-auto" / "generate_podcast.py"
     notebooklm_cli = repo_root / "notebooklm-podcast-auto" / ".venv" / "bin" / "notebooklm"
 
-    config = read_json(prompt_config)
+    config = load_prompt_config(prompt_config)
     if args.config_tag_len < 1:
         raise SystemExit("--config-tag-len must be >= 1.")
     course_title = str(config.get("course_title") or "Personlighedspsykologi").strip() or "Personlighedspsykologi"

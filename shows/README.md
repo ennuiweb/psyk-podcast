@@ -4,6 +4,7 @@ Each subdirectory contains config and assets for a single podcast feed. The CI w
 
 - `social-psychology` – live show now publishes audio from R2 under the legacy workflow; the checked-in R2 manifest is the feed source of truth.
 - `personlighedspsykologi-en` - Personlighedspsykologi (F26) feed; now R2-backed and queue-owned, with quiz links using deterministic short IDs under `/q/`.
+- `personlighedspsykologi-da` - queue-owned Danish mirror of `personlighedspsykologi`; reuses the shared subject substrate, publishes from its own R2 prefix/output root, and intentionally skips Freudd portal sidecars for now.
 - `bioneuro` - Bio / Neuropsychology feed.
 - `intro-vt` – Intro + VT Deep Dives - Hold 1 - 2024 series; now publishes audio from R2 under the legacy workflow; the checked-in R2 manifest is the feed source of truth.
 - `intro-vt-tss` – Intro + VT Tekst til tale - 1. sem 2024 TTS feed scaffolding (CI currently paused).
@@ -11,7 +12,7 @@ Each subdirectory contains config and assets for a single podcast feed. The CI w
 - `personal` – Private archive feed; now R2-backed under the legacy workflow, with the resumable local-to-R2 publisher as the canonical ingest path.
 - `berlingske` – Berlingske narrated articles feed sourced from the downloader manifest (CI paused).
 
-Add new shows by creating a sibling directory that mirrors this structure, then add the folder name to the matrix in `.github/workflows/generate-feed.yml`. Active shows no longer use Drive-triggered publication.
+Add new shows by creating a sibling directory that mirrors this structure, then add the folder name to the matrix in `.github/workflows/generate-feed.yml`. Queue-owned shows may still be present in the matrix even when the legacy writer path is skipped.
 
 ## Cover artwork style
 

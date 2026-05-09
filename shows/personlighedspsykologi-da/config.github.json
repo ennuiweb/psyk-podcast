@@ -1,0 +1,154 @@
+{
+  "publication": {
+    "owner": "queue"
+  },
+  "storage": {
+    "provider": "r2",
+    "bucket": "freudd",
+    "endpoint": "https://abf1940818ee3c8a0fa4bc84c7b1bba9.r2.cloudflarestorage.com",
+    "region": "auto",
+    "prefix": "shows/personlighedspsykologi-da",
+    "public_base_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev",
+    "manifest_file": "shows/personlighedspsykologi-da/media_manifest.r2.json",
+    "access_key_id_env": "R2_ACCESS_KEY_ID",
+    "secret_access_key_env": "R2_SECRET_ACCESS_KEY"
+  },
+  "regeneration_marker": {
+    "enabled": false
+  },
+  "allowed_mime_types": [
+    "audio/"
+  ],
+  "episode_image_from_infographics": false,
+  "episode_image_mime_types": [
+    "image/png"
+  ],
+  "episode_image_prefer_exts": [
+    ".png"
+  ],
+  "transcode": {
+    "enabled": true,
+    "source_mime_types": [
+      "video/mp4",
+      "audio/mp4",
+      "audio/x-m4a",
+      "audio/wav",
+      "audio/x-wav"
+    ],
+    "target_extension": "mp3",
+    "target_mime_type": "audio/mpeg",
+    "codec": "libmp3lame",
+    "bitrate": "160k"
+  },
+  "skip_permission_updates": false,
+  "subject_slug": "personlighedspsykologi",
+  "output_feed": "shows/personlighedspsykologi-da/feeds/rss.xml",
+  "output_inventory": "shows/personlighedspsykologi-da/episode_inventory.json",
+  "episode_metadata": "shows/personlighedspsykologi-en/episode_metadata.json",
+  "auto_spec": "shows/personlighedspsykologi-en/auto_spec.json",
+  "important_text_docs": [
+    "shows/personlighedspsykologi-en/docs/overblik.md",
+    "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+  ],
+  "important_text_mode": "week_x_only",
+  "only_doc_marked_important": true,
+  "feed": {
+    "title": "Personlighedspsykologi (Dansk)",
+    "link": "https://github.com/ennuiweb/psyk-podcast",
+    "self_link": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi-da/feeds/rss.xml",
+    "description": "Dansk lydspejl af Personlighedspsykologi.",
+    "pubdate_year_rewrite": {
+      "from": 2026,
+      "to": 2025
+    },
+    "semester_week_start_date": "2026-02-02",
+    "semester_week_label": "Semesteruge",
+    "semester_week_title_label": "Uge",
+    "semester_week_description_label": "Semesteruge",
+    "semester_week_number_source": "lecture_key",
+    "enforce_week_label_consistency": true,
+    "language": "da",
+    "author": "Personlighedspsykologi F26 (Dansk)",
+    "default_explicit": false,
+    "image": "https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personlighedspsykologi-en/assets/cover-new.png",
+    "category": {
+      "name": "Education",
+      "sub": "Social Sciences"
+    },
+    "owner": {
+      "name": "Personlighedspsykologi F26",
+      "email": "psykku2025@gmail.com"
+    },
+    "ttl": 60,
+    "sort_mode": "wxlx_source_pair_priority",
+    "title_blocks": [
+      "course_week_lecture",
+      "subject"
+    ],
+    "title_blocks_by_kind": {
+      "weekly_overview": [
+        "course_week_lecture",
+        "type_label"
+      ]
+    },
+    "audio_category_prefixes": {
+      "lydbog": "[Lydbog]",
+      "kort_podcast": "[Kort]",
+      "podcast": ""
+    },
+    "audio_category_prefix_position": "after_first_block",
+    "weekly_overview_label": "ALLE KILDER",
+    "slide_display_label": "Forelæsningsslides",
+    "slide_subject_separator": " · ",
+    "compact_grundbog_subjects": true,
+    "title_subject_aliases": {
+      "Grundbog 1: Introduktion til personlighedspsykologi": "Grundbog 1: Introduktion",
+      "Grundbog 8: Personlighed, subjektivitet og historicitet": "Grundbog 8: Historicitet",
+      "Grundbog 14: Perspektiver på personlighedspsykologi": "Grundbog 14: Perspektiver",
+      "Introduktin PP 2026": "Introduktion",
+      "Fænomenologisk personlighedspsykologi2026": "Fænomenologisk personlighedspsykologi",
+      "Humanistisk psykologi20": "Humanistisk psykologi"
+    },
+    "description_prepend_semester_week_lecture": true,
+    "description_blank_line_marker": "·",
+    "description_blocks_by_kind": {
+      "reading": [
+        "text_link"
+      ],
+      "short": [
+        "text_link"
+      ],
+      "weekly_overview": [
+        "text_link"
+      ]
+    },
+    "lecture_preview_link": {
+      "label": "Link til teksten",
+      "base_url": "https://freudd.dk/subjects/personlighedspsykologi",
+      "preview": true
+    }
+  },
+  "filters": {
+    "include": [
+      {
+        "name_regex": [
+          "\\[DA\\]"
+        ]
+      }
+    ]
+  },
+  "queue": {
+    "spotify_sync": false,
+    "content_manifest_mode": "never",
+    "portal_sidecars_mode": "never",
+    "validate_manual_summaries": false,
+    "regeneration_registry": false,
+    "validate_regeneration_inventory": false,
+    "audit_slide_briefs": false,
+    "learning_material_registry": false,
+    "freudd_deploy": false,
+    "quiz_sync": {
+      "enabled": false
+    }
+  }
+}

@@ -20,14 +20,8 @@ from .processes import run_phase_command
 from .personlighedspsykologi_prompt_versions import resolve_setup_versions
 from .show_artifacts import ShowArtifactPaths, resolve_show_artifact_paths
 from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
+from .show_runtime import QueueShowPolicies, resolve_queue_show_policies
 from .store import QueueStore, utc_now_iso
-
-SHOWS_WITH_SPOTIFY_SYNC = {"bioneuro", "personlighedspsykologi-en"}
-SHOWS_WITH_CONTENT_MANIFEST = {"bioneuro", "personlighedspsykologi-en"}
-SPOTIFY_SHOW_URLS = {
-    "bioneuro": "https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN",
-    "personlighedspsykologi-en": "https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv",
-}
 DEFAULT_METADATA_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS") or "1800"
 )
@@ -42,36 +36,9 @@ class MetadataOptions:
 
 
 @dataclass(frozen=True, slots=True)
-class QuizSyncSettings:
-    output_root: str
-    links_file: str
-    subject_slug: str
-    remote_root: str
-    include_subject_in_flat_id: bool = False
-    language_tag: str = "[EN]"
-
-
-@dataclass(frozen=True, slots=True)
 class PhaseFailurePolicy:
     state: str = STATE_FAILED_RETRYABLE
     blocked_reason: str | None = None
-
-
-QUIZ_SYNC_SETTINGS = {
-    "bioneuro": QuizSyncSettings(
-        output_root="notebooklm-podcast-auto/bioneuro/output",
-        links_file="shows/bioneuro/quiz_links.json",
-        subject_slug="bioneuro",
-        remote_root="/var/www/quizzes/bioneuro",
-        include_subject_in_flat_id=True,
-    ),
-    "personlighedspsykologi-en": QuizSyncSettings(
-        output_root="notebooklm-podcast-auto/personlighedspsykologi/output",
-        links_file="shows/personlighedspsykologi-en/quiz_links.json",
-        subject_slug="personlighedspsykologi",
-        remote_root="/var/www/quizzes/personlighedspsykologi",
-    ),
-}
 
 
 def _append_personligheds_setup_versions(command: list[str], *, repo_root: Path) -> None:
@@ -126,7 +93,8 @@ def rebuild_repo_metadata(
                 show_slug=show_slug,
                 config=config,
             )
-        except ShowConfigSelectionError as exc:
+            queue_policies = resolve_queue_show_policies(show_slug=show_slug, config=config)
+        except (ShowConfigSelectionError, ValueError) as exc:
             return _finalize_failure(
                 store=store,
                 job=job,
@@ -143,6 +111,7 @@ def rebuild_repo_metadata(
             subject_slug=adapter.subject_slug,
             show_config_path=resolved_show_config_path,
             artifact_paths=artifact_paths,
+            queue_policies=queue_policies,
             job=job,
             manifest=manifest,
         ):
@@ -172,6 +141,7 @@ def rebuild_repo_metadata(
                 repo_root=options.repo_root,
                 show_slug=show_slug,
                 artifact_paths=artifact_paths,
+                queue_policies=queue_policies,
                 manifest=manifest,
             )
         except MetadataValidationError as exc:
@@ -306,13 +276,15 @@ def _phase_definitions(
     subject_slug: str,
     show_config_path: Path,
     artifact_paths: ShowArtifactPaths,
+    queue_policies: QueueShowPolicies,
     job: dict[str, Any],
     manifest: dict[str, Any],
 ) -> list[dict[str, object]]:
     python = str(repo_root / ".venv" / "bin" / "python")
     phases: list[dict[str, object]] = []
-    quiz_sync = QUIZ_SYNC_SETTINGS.get(show_slug)
-    requires_portal_sidecars = _requires_portal_sidecars(show_slug=show_slug, manifest=manifest)
+    quiz_sync = queue_policies.quiz_sync
+    requires_portal_sidecars = _requires_portal_sidecars(queue_policies=queue_policies, manifest=manifest)
+    requires_content_manifest = _requires_content_manifest(queue_policies=queue_policies, manifest=manifest)
     bundle_has_audio = _bundle_has_artifact_type(manifest=manifest, artifact_type="audio")
     if quiz_sync is not None and _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz"):
         command = [
@@ -353,7 +325,7 @@ def _phase_definitions(
                 "command": command,
             }
         )
-    if show_slug == "personlighedspsykologi-en" and requires_portal_sidecars:
+    if queue_policies.validate_manual_summaries and requires_portal_sidecars and quiz_sync is not None:
         phases.append(
             {
                 "name": "validate_manual_summaries",
@@ -361,7 +333,7 @@ def _phase_definitions(
                     python,
                     str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_reading_summaries.py"),
                     "--output-root",
-                    QUIZ_SYNC_SETTINGS[show_slug].output_root,
+                    quiz_sync.output_root,
                     "--validate-only",
                     "--validate-weekly",
                     "--fail-on-validation-issues",
@@ -372,7 +344,7 @@ def _phase_definitions(
                 ),
             }
         )
-    if show_slug == "personlighedspsykologi-en" and bundle_has_audio:
+    if queue_policies.regeneration_registry and bundle_has_audio:
         sync_registry_command = [
             python,
             str(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts" / "sync_regeneration_registry.py"),
@@ -411,12 +383,12 @@ def _phase_definitions(
             ],
         }
     )
-    if show_slug == "personlighedspsykologi-en":
+    if queue_policies.validate_regeneration_inventory:
         validate_regeneration_inventory_command = [
             python,
             str(repo_root / "scripts" / "validate_regeneration_inventory.py"),
             "--show-slug",
-            "personlighedspsykologi-en",
+            show_slug,
         ]
         lecture_key = str(job.get("lecture_key") or "").strip()
         if lecture_key:
@@ -427,21 +399,21 @@ def _phase_definitions(
                 "command": validate_regeneration_inventory_command,
             }
         )
-        if requires_portal_sidecars:
-            phases.append(
-                {
-                    "name": "audit_slide_briefs",
-                    "command": [
-                        python,
-                        str(repo_root / "scripts" / "audit_personlighedspsykologi_slide_briefs.py"),
-                    ],
-                    "failure_policy": PhaseFailurePolicy(
-                        state=STATE_BLOCKED_MANUAL_PREREQ,
-                        blocked_reason="missing_slide_mapping_or_briefs",
-                    ),
-                }
-            )
-    if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
+    if queue_policies.audit_slide_briefs and requires_portal_sidecars:
+        phases.append(
+            {
+                "name": "audit_slide_briefs",
+                "command": [
+                    python,
+                    str(repo_root / "scripts" / "audit_personlighedspsykologi_slide_briefs.py"),
+                ],
+                "failure_policy": PhaseFailurePolicy(
+                    state=STATE_BLOCKED_MANUAL_PREREQ,
+                    blocked_reason="missing_slide_mapping_or_briefs",
+                ),
+            }
+        )
+    if queue_policies.spotify_sync:
         spotify_credentials_available = bool(
             str(os.environ.get("SPOTIFY_CLIENT_ID") or "").strip()
             and str(os.environ.get("SPOTIFY_CLIENT_SECRET") or "").strip()
@@ -460,11 +432,11 @@ def _phase_definitions(
             "--prune-stale",
             "--allow-unresolved",
         ]
-        if spotify_credentials_available:
+        if spotify_credentials_available and queue_policies.spotify_show_url:
             command.extend(
                 [
                     "--spotify-show-url",
-                    SPOTIFY_SHOW_URLS[show_slug],
+                    queue_policies.spotify_show_url,
                 ]
             )
         phases.append(
@@ -473,7 +445,7 @@ def _phase_definitions(
                 "command": command,
             }
         )
-    if show_slug in SHOWS_WITH_CONTENT_MANIFEST and _requires_content_manifest(show_slug=show_slug, manifest=manifest):
+    if requires_content_manifest:
         phases.append(
             {
                 "name": "rebuild_content_manifest",
@@ -496,16 +468,16 @@ def _phase_definitions(
                 ],
             }
         )
-    if show_slug == "personlighedspsykologi-en" and requires_portal_sidecars:
+    if queue_policies.learning_material_registry and requires_portal_sidecars and quiz_sync is not None:
         sync_learning_material_registry_command = [
             python,
             str(repo_root / "scripts" / "sync_personlighedspsykologi_learning_material_registry.py"),
             "--output-root",
-            QUIZ_SYNC_SETTINGS[show_slug].output_root,
+            quiz_sync.output_root,
             "--show-root",
-            "shows/personlighedspsykologi-en",
+            f"shows/{show_slug}",
             "--registry",
-            "shows/personlighedspsykologi-en/learning_material_regeneration_registry.json",
+            f"shows/{show_slug}/learning_material_regeneration_registry.json",
         ]
         lecture_key = str(job.get("lecture_key") or "").strip()
         if lecture_key:
@@ -547,6 +519,7 @@ def _validate_repo_metadata(
     repo_root: Path,
     show_slug: str,
     artifact_paths: ShowArtifactPaths,
+    queue_policies: QueueShowPolicies,
     manifest: dict[str, Any],
 ) -> dict[str, Any]:
     feed_path = artifact_paths.feed_path
@@ -559,23 +532,25 @@ def _validate_repo_metadata(
     summary: dict[str, Any] = {
         "feed_path": str(feed_path.relative_to(repo_root)),
         "inventory_path": str(inventory_path.relative_to(repo_root)),
+        "requires_content_manifest": False,
+        "requires_quiz_assets": False,
+        "quiz_assets": 0,
     }
 
-    if show_slug in SHOWS_WITH_SPOTIFY_SYNC:
+    if queue_policies.spotify_sync:
         spotify_map_path = artifact_paths.spotify_map_path
         if not spotify_map_path.exists():
             raise MetadataValidationError(f"Missing spotify_map.json for {show_slug}: {spotify_map_path}")
         summary["spotify_map_path"] = str(spotify_map_path.relative_to(repo_root))
 
-    if show_slug in SHOWS_WITH_CONTENT_MANIFEST:
+    requires_content_manifest = _requires_content_manifest(queue_policies=queue_policies, manifest=manifest)
+    requires_quiz_assets = _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz")
+    if requires_content_manifest or requires_quiz_assets:
         quiz_path = artifact_paths.quiz_links_path
         manifest_path = artifact_paths.content_manifest_path
         quiz_assets = 0
-        requires_content_manifest = _requires_content_manifest(show_slug=show_slug, manifest=manifest)
         summary["requires_content_manifest"] = requires_content_manifest
-        requires_quiz_assets = _bundle_has_artifact_type(manifest=manifest, artifact_type="quiz")
         summary["requires_quiz_assets"] = requires_quiz_assets
-        summary["quiz_assets"] = quiz_assets
         if requires_content_manifest:
             if not manifest_path.exists():
                 raise MetadataValidationError(f"Missing content_manifest.json for {show_slug}: {manifest_path}")
@@ -594,7 +569,7 @@ def _validate_repo_metadata(
                         assets = reading.get("assets") if isinstance(reading.get("assets"), dict) else {}
                         quiz_assets += len(assets.get("quizzes") or [])
             summary["content_manifest_path"] = str(manifest_path.relative_to(repo_root))
-            summary["quiz_assets"] = quiz_assets
+        summary["quiz_assets"] = quiz_assets
         if requires_quiz_assets:
             if not quiz_path.exists():
                 raise MetadataValidationError(f"Missing quiz_links.json for {show_slug}: {quiz_path}")
@@ -602,7 +577,7 @@ def _validate_repo_metadata(
             by_name = quiz_payload.get("by_name") if isinstance(quiz_payload, dict) else None
             if not isinstance(by_name, dict) or not by_name:
                 raise MetadataValidationError(f"quiz_links.by_name is empty for {show_slug}")
-            if quiz_assets <= 0:
+            if requires_content_manifest and quiz_assets <= 0:
                 raise MetadataValidationError(f"content_manifest has zero quiz assets for {show_slug}")
             summary["quiz_links_path"] = str(quiz_path.relative_to(repo_root))
             summary["quiz_links_by_name"] = len(by_name)
@@ -637,22 +612,26 @@ def _bundle_has_artifact_type(*, manifest: dict[str, Any], artifact_type: str) -
     return False
 
 
-def _requires_content_manifest(*, show_slug: str, manifest: dict[str, Any]) -> bool:
-    if show_slug != "personlighedspsykologi-en":
-        return True
-    # Audio-only personligheds publishes still need a refreshed lecture-first
-    # content manifest so Freudd sees new podcast assets without waiting for a
-    # later quiz/infographic bundle.
-    return True
+def _requires_content_manifest(*, queue_policies: QueueShowPolicies, manifest: dict[str, Any]) -> bool:
+    return _resolve_policy_mode(queue_policies.content_manifest_mode, manifest=manifest)
 
 
-def _requires_portal_sidecars(*, show_slug: str, manifest: dict[str, Any]) -> bool:
-    if show_slug != "personlighedspsykologi-en":
+def _requires_portal_sidecars(*, queue_policies: QueueShowPolicies, manifest: dict[str, Any]) -> bool:
+    return _resolve_policy_mode(queue_policies.portal_sidecars_mode, manifest=manifest)
+
+
+def _resolve_policy_mode(mode: str, *, manifest: dict[str, Any]) -> bool:
+    normalized = str(mode or "").strip().lower()
+    if normalized == "always":
         return True
-    return any(
-        _bundle_has_artifact_type(manifest=manifest, artifact_type=artifact_type)
-        for artifact_type in ("quiz", "infographic")
-    )
+    if normalized == "never":
+        return False
+    if normalized == "quiz_or_infographic":
+        return any(
+            _bundle_has_artifact_type(manifest=manifest, artifact_type=artifact_type)
+            for artifact_type in ("quiz", "infographic")
+        )
+    raise ValueError(f"Unsupported queue policy mode: {mode}")
 
 
 def _latest_publish_manifest_path(*, store: QueueStore, job: dict[str, Any]) -> Path:

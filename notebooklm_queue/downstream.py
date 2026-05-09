@@ -10,6 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from .adapters import get_show_adapter
 from .constants import (
     STATE_COMPLETED,
     STATE_FAILED_RETRYABLE,
@@ -18,9 +19,9 @@ from .constants import (
     STATE_WAITING_FOR_ARTIFACT,
 )
 from .processes import run_process
+from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
+from .show_runtime import QueueShowPolicies, resolve_queue_show_policies
 from .store import QueueStore, parse_utcish_iso, utc_now_iso
-
-FREUDD_DEPLOY_SHOWS = {"bioneuro", "personlighedspsykologi-en"}
 DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS = int(os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60")
 
 
@@ -62,8 +63,36 @@ def sync_downstream_publication(
         bundle_id = str(manifest.get("bundle_id") or job.get("artifacts", {}).get("publish", {}).get("latest_bundle_id") or "")
         if not bundle_id:
             raise RuntimeError(f"Missing bundle_id for downstream sync job {job['job_id']}")
+        adapter = get_show_adapter(show_slug)
+        try:
+            resolved_show_config_path = resolve_manifest_bound_show_config_path(
+                repo_root=options.repo_root,
+                default_path=adapter.show_config_path,
+                manifest=manifest,
+                override_path=None,
+            )
+            config = load_show_config(
+                repo_root=options.repo_root,
+                default_path=adapter.show_config_path,
+                override_path=resolved_show_config_path,
+            )
+            queue_policies = resolve_queue_show_policies(show_slug=show_slug, config=config)
+        except (ShowConfigSelectionError, ValueError) as exc:
+            return _finalize_failure(
+                store=store,
+                job=job,
+                manifest=manifest,
+                bundle_id=bundle_id,
+                actor=options.actor,
+                error_message=str(exc),
+            )
         commit_sha = _resolve_commit_sha(job=job, manifest=manifest)
-        targets = _build_targets(show_slug=show_slug, manifest=manifest, options=options)
+        targets = _build_targets(
+            show_slug=show_slug,
+            manifest=manifest,
+            queue_policies=queue_policies,
+            options=options,
+        )
 
         downstream_payload: dict[str, Any] = {
             "status": "running",
@@ -207,13 +236,19 @@ def _claim_or_resume_job(
     )
 
 
-def _build_targets(*, show_slug: str, manifest: dict[str, Any], options: DownstreamOptions) -> list[DownstreamTarget]:
+def _build_targets(
+    *,
+    show_slug: str,
+    manifest: dict[str, Any],
+    queue_policies: QueueShowPolicies,
+    options: DownstreamOptions,
+) -> list[DownstreamTarget]:
     changed_paths = tuple(
         str(path)
         for path in (manifest.get("repo_publish") or {}).get("changed_allowlist_paths") or []
         if isinstance(path, str) and path.strip()
     )
-    if show_slug not in FREUDD_DEPLOY_SHOWS:
+    if not queue_policies.downstream_freudd_deploy:
         return []
     freudd_paths = {
         f"shows/{show_slug}/content_manifest.json",

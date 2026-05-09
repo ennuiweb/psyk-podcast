@@ -43,6 +43,7 @@ Current operational note:
 ## Layout
 
 - `notebooklm-podcast-auto/personlighedspsykologi/` - Personlighedspsykologi wrapper scripts, docs, tests, and evaluation assets.
+- `notebooklm-podcast-auto/personlighedspsykologi-da/` - Danish runtime layer for the shared Personlighedspsykologi generator, owning only Danish prompt/output overrides.
 - `notebooklm-podcast-auto/bioneuro/` - Bioneuro wrapper scripts and output flow.
 - `notebooklm-podcast-auto/notebooklm-py/` - tracked submodule with the underlying client, docs, and test surface.
 - `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable job store, state machine, lock handling, CLI, and the shared prompt-assembly module used by generation wrappers.
@@ -68,6 +69,7 @@ Bioneuro:
 Default output roots:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/output`
+- `notebooklm-podcast-auto/personlighedspsykologi-da/output`
 - `notebooklm-podcast-auto/bioneuro/output`
 
 Mirror helper:
@@ -102,7 +104,7 @@ Queue-core note:
 - current scope now also includes pilot-safe config binding: `discover`, `prepare-publish`, `upload-r2`, `rebuild-metadata`, and `push-repo` accept `--show-config`, and publish manifests now pin the selected config path so later stages cannot silently drift back to the live `config.github.json`
 - pilot-safe artifact routing now also covers Freudd sidecars: queue metadata rebuild and repo publication derive `quiz_links.json`, `spotify_map.json`, `content_manifest.json`, RSS, inventory, and R2 media-manifest paths from the selected show config instead of hardcoded live show paths
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
-- supported discovery adapters currently cover `bioneuro` and `personlighedspsykologi-en`
+- supported discovery adapters currently cover `bioneuro`, `personlighedspsykologi-en`, and `personlighedspsykologi-da`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
 - `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs either to `awaiting_publish` for newly downloaded artifacts or back to `waiting_for_artifact` when no unpublished outputs were added in that poll cycle
 - hosted generation wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
@@ -116,6 +118,7 @@ Queue-core note:
 - `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`; after downstream validation, partial lecture publishes can return the same job to `waiting_for_artifact` for the remaining request logs
 - metadata validation is now bundle-aware: audio-only publishes can complete with an unchanged or missing `quiz_links.json`, while bundles that actually include quiz artifacts still require refreshed quiz links and non-empty quiz assets in `content_manifest.json`
 - `personlighedspsykologi-en` metadata is now split between podcast-critical and portal-only sidecars: audio-only bundles still sync `regeneration_registry.json`, then rebuild and publish RSS/inventory immediately, but they skip manual-summary gates, slide-brief audits, content-manifest rebuilds, and learning-material registry sync until a bundle actually contains quiz or infographic artifacts
+- `personlighedspsykologi-da` now exists as a feed-first queue-owned mirror over the same subject substrate: it uses its own prompt config and output root, filters public media to `[DA]`, and disables Spotify, Freudd sidecars, content-manifest rebuilds, and downstream Freudd deploy checks by show config
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
 - `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase
 
@@ -243,6 +246,7 @@ Preprocessing maturity note:
 - `personlighedspsykologi` now also has a first deterministic file-level preprocessing artifact at `shows/personlighedspsykologi-en/source_catalog.json`.
 - This catalog is intentionally richer than `content_manifest.json`: it tracks source hashes, page counts, text-length estimates, language heuristics, simple source-priority signals, and prompt-sidecar presence for raw readings/slides.
 - `personlighedspsykologi` now also has an explicit course-tuned preprocessing policy at `shows/personlighedspsykologi-en/source_intelligence_policy.json`, which controls how `grundbog`, lecture slides, seminar slides, and exercise slides should count inside the `Source Intelligence Layer`.
+- The explicit semantics of that slide split now live in `shows/personlighedspsykologi-en/docs/preprocessing-system.md`: lecture slides are framing/emphasis sources, seminar slides are application/discussion sources, and exercise slides are clarification/training sources with separate downstream prompt/substrate behavior.
 - The catalog is currently built locally from the raw source tree and committed to the repo; GitHub Actions cannot rebuild it yet because the workflow does not have the OneDrive-backed source files.
 - `personlighedspsykologi` now also has a deterministic `lecture_bundles/`
   layer built from `source_catalog.json`, `content_manifest.json`, and any

@@ -1,0 +1,10 @@
+{
+  "extends": "../personlighedspsykologi/prompt_config.json",
+  "language": "da",
+  "languages": [
+    {
+      "code": "da",
+      "suffix": "[DA]"
+    }
+  ]
+}

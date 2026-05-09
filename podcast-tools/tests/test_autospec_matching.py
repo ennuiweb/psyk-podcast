@@ -87,6 +87,8 @@ class AutoSpecMatchingTests(unittest.TestCase):
         mod = _load_feed_module()
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [EN]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (EN)"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo [DA]"), "W01L1 Foo")
+        self.assertEqual(mod._strip_language_tags("W01L1 Foo (DK)"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [TTS]"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo (tts)"), "W01L1 Foo")
         self.assertEqual(mod._strip_language_tags("W01L1 Foo [Short]"), "W01L1 Foo")
@@ -113,6 +115,12 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "W01L1 Foo",
         )
         self.assertEqual(
+            mod._strip_language_tags(
+                "W01L1 Foo [DA] {type=audio lang=da format=deep-dive length=long hash=deadbeef}"
+            ),
+            "W01L1 Foo",
+        )
+        self.assertEqual(
             mod._strip_language_tags("Reading: Foo [EN] · Emne: Bar [EN]"),
             "Foo · Emne: Bar",
         )
@@ -123,15 +131,29 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "Lewis (1999) · Emne: Intro",
         )
 
+    def test_lookup_normalization_matches_en_and_da_variants(self):
+        mod = _load_feed_module()
+        mapping = {
+            "W01L1 - Lewis (1999) [EN].mp3": {"summary": "en"},
+        }
+        self.assertEqual(
+            mod._lookup_by_name_with_cfg_fallback(mapping, "W01L1 - Lewis (1999) [DA].mp3"),
+            {"summary": "en"},
+        )
+        self.assertEqual(
+            mod._lookup_key_with_cfg_fallback(mapping, "W01L1 - Lewis (1999) [DA].mp3"),
+            "W01L1 - Lewis (1999) [EN].mp3",
+        )
+
     def test_feed_title_strips_language_tag(self):
         mod = _load_feed_module()
         feed = mod.build_feed_document(
             episodes=[],
             feed_config={
-                "title": "Personlighedspsykologi (EN)",
+                "title": "Personlighedspsykologi [DA]",
                 "link": "https://example.com",
                 "description": "Test feed",
-                "language": "en",
+                "language": "da",
             },
             last_build=mod.parse_datetime("2026-02-10T00:00:00+00:00"),
         )
@@ -139,8 +161,8 @@ class AutoSpecMatchingTests(unittest.TestCase):
 
         xml = ET.tostring(feed, encoding="unicode")
         self.assertIn("<title>Personlighedspsykologi</title>", xml)
-        self.assertNotIn("(EN)", xml)
-        self.assertNotIn("[EN]", xml)
+        self.assertNotIn("(DA)", xml)
+        self.assertNotIn("[DA]", xml)
 
     def test_build_episode_entry_prefers_stable_guid_and_storage_key_url(self):
         mod = _load_feed_module()

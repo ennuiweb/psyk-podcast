@@ -31,18 +31,23 @@ class ShowAdapter:
     show_slug: str
     subject_slug: str
     discovery_source: str
+    discovery_path: str
     generator_script: str
     downloader_script: str
     show_config_path: str
     output_root: str
     config_paths: tuple[str, ...]
+    prompt_config_path: str | None = None
     default_content_types: tuple[str, ...] = ("audio", "infographic", "quiz")
+    strict_download_output_root: bool = False
+    generate_extra_args: tuple[str, ...] = ()
+    download_extra_args: tuple[str, ...] = ()
 
     def discover_lectures(self, repo_root: Path) -> list[DiscoveredLecture]:
         if self.discovery_source == "auto_spec_rules":
-            return _discover_from_auto_spec_rules(repo_root / "shows" / self.show_slug / "auto_spec.json")
+            return _discover_from_auto_spec_rules(repo_root / self.discovery_path)
         if self.discovery_source == "episode_metadata_source_folder":
-            return _discover_from_episode_metadata(repo_root / "shows" / self.show_slug / "episode_metadata.json")
+            return _discover_from_episode_metadata(repo_root / self.discovery_path)
         raise ValueError(f"Unsupported discovery source: {self.discovery_source}")
 
     def config_hash(self, repo_root: Path, *, show_config_path: str | Path | None = None) -> str:
@@ -101,7 +106,12 @@ class ShowAdapter:
             lecture_key,
             "--content-types",
             ",".join(content_types),
+            "--output-root",
+            self.output_root,
         ]
+        if self.prompt_config_path:
+            command.extend(["--prompt-config", self.prompt_config_path])
+        command.extend(self.generate_extra_args)
         if wait:
             command.append("--wait")
         if dry_run:
@@ -113,6 +123,7 @@ class ShowAdapter:
         repo_root: Path,
         *,
         lecture_key: str,
+        content_types: tuple[str, ...],
         dry_run: bool,
         timeout_seconds: int | None = None,
         interval_seconds: int | None = None,
@@ -122,7 +133,14 @@ class ShowAdapter:
             str(repo_root / self.downloader_script),
             "--week",
             lecture_key,
+            "--content-types",
+            ",".join(content_types),
+            "--output-root",
+            self.output_root,
         ]
+        if self.strict_download_output_root:
+            command.append("--disable-default-extra-roots")
+        command.extend(self.download_extra_args)
         notebooklm_bin = repo_root / ".venv" / "bin" / "notebooklm"
         if notebooklm_bin.exists():
             command.extend(["--notebooklm", str(notebooklm_bin)])
@@ -140,30 +158,55 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         show_slug="personlighedspsykologi-en",
         subject_slug="personlighedspsykologi",
         discovery_source="auto_spec_rules",
+        discovery_path="shows/personlighedspsykologi-en/auto_spec.json",
         generator_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py",
         downloader_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py",
         show_config_path="shows/personlighedspsykologi-en/config.github.json",
         output_root="notebooklm-podcast-auto/personlighedspsykologi/output",
+        prompt_config_path="notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json",
         config_paths=(
             "shows/personlighedspsykologi-en/auto_spec.json",
             "shows/personlighedspsykologi-en/config.github.json",
             "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json",
         ),
+        strict_download_output_root=True,
+    ),
+    "personlighedspsykologi-da": ShowAdapter(
+        show_slug="personlighedspsykologi-da",
+        subject_slug="personlighedspsykologi",
+        discovery_source="auto_spec_rules",
+        discovery_path="shows/personlighedspsykologi-en/auto_spec.json",
+        generator_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py",
+        downloader_script="notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py",
+        show_config_path="shows/personlighedspsykologi-da/config.github.json",
+        output_root="notebooklm-podcast-auto/personlighedspsykologi-da/output",
+        prompt_config_path="notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json",
+        config_paths=(
+            "shows/personlighedspsykologi-da/config.github.json",
+            "shows/personlighedspsykologi-en/auto_spec.json",
+            "shows/personlighedspsykologi-en/episode_metadata.json",
+            "notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json",
+        ),
+        default_content_types=("audio",),
+        strict_download_output_root=True,
     ),
     "bioneuro": ShowAdapter(
         show_slug="bioneuro",
         subject_slug="bioneuro",
         discovery_source="episode_metadata_source_folder",
+        discovery_path="shows/bioneuro/episode_metadata.json",
         generator_script="notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
         downloader_script="notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
         show_config_path="shows/bioneuro/config.github.json",
         output_root="notebooklm-podcast-auto/bioneuro/output",
+        prompt_config_path="notebooklm-podcast-auto/bioneuro/prompt_config.json",
         config_paths=(
             "shows/bioneuro/auto_spec.json",
             "shows/bioneuro/config.github.json",
             "shows/bioneuro/episode_metadata.json",
             "notebooklm-podcast-auto/bioneuro/prompt_config.json",
         ),
+        strict_download_output_root=True,
     ),
 }
 

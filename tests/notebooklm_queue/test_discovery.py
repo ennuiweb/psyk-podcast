@@ -35,6 +35,44 @@ def test_discover_personlighedspsykologi_jobs_from_auto_spec(tmp_path: Path) -> 
     assert jobs[0]["metadata"]["topic"] == "Intro"
 
 
+def test_discover_personlighedspsykologi_da_jobs_and_build_audio_only_plan(tmp_path: Path) -> None:
+    (tmp_path / "shows" / "personlighedspsykologi-en").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "shows" / "personlighedspsykologi-da").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "personlighedspsykologi-da").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts").mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        ("shows/personlighedspsykologi-da/config.github.json", "{}"),
+        ("shows/personlighedspsykologi-en/episode_metadata.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py", "#!/usr/bin/env python3\n"),
+        ("notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py", "#!/usr/bin/env python3\n"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / ".venv" / "bin").mkdir(parents=True, exist_ok=True)
+    (tmp_path / ".venv" / "bin" / "python").write_text("", encoding="utf-8")
+    (tmp_path / "shows" / "personlighedspsykologi-en" / "auto_spec.json").write_text(
+        json.dumps({"rules": [{"aliases": ["W01L1"], "topic": "Intro"}]}),
+        encoding="utf-8",
+    )
+
+    jobs = discover_show_jobs(repo_root=tmp_path, show_slug="personlighedspsykologi-da")
+    assert [item["identity"].lecture_key for item in jobs] == ["W01L1"]
+    assert jobs[0]["identity"].content_types == ("audio",)
+
+    store = QueueStore(tmp_path / "queue-root")
+    enqueue_discovered_jobs(repo_root=tmp_path, store=store, show_slug="personlighedspsykologi-da")
+    plan = build_dry_run_plan(repo_root=tmp_path, store=store, show_slug="personlighedspsykologi-da")
+
+    assert plan["content_types"] == ["audio"]
+    assert "--prompt-config" in plan["generate_command"]
+    assert "notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json" in plan["generate_command"]
+    assert "--output-root" in plan["generate_command"]
+    assert "notebooklm-podcast-auto/personlighedspsykologi-da/output" in plan["generate_command"]
+    assert "--disable-default-extra-roots" in plan["download_command"]
+
+
 def test_discover_bioneuro_jobs_from_episode_metadata(tmp_path: Path) -> None:
     (tmp_path / "shows" / "bioneuro").mkdir(parents=True, exist_ok=True)
     (tmp_path / "notebooklm-podcast-auto" / "bioneuro").mkdir(parents=True, exist_ok=True)

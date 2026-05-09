@@ -25,6 +25,16 @@ def _identity() -> JobIdentity:
     )
 
 
+def _personligheds_da_identity() -> JobIdentity:
+    return JobIdentity(
+        show_slug="personlighedspsykologi-da",
+        subject_slug="personlighedspsykologi",
+        lecture_key="W01L1",
+        content_types=("audio",),
+        config_hash="cfg-da",
+    )
+
+
 def _make_repo_root(tmp_path: Path, *, config_payload: dict[str, object] | None = None) -> Path:
     repo_root = tmp_path / "repo"
     for relative, content in (
@@ -38,6 +48,35 @@ def _make_repo_root(tmp_path: Path, *, config_payload: dict[str, object] | None 
         ("shows/bioneuro/auto_spec.json", "{}"),
         ("shows/bioneuro/episode_metadata.json", "{}"),
         ("notebooklm-podcast-auto/bioneuro/prompt_config.json", "{}"),
+    ):
+        path = repo_root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    return repo_root
+
+
+def _make_personligheds_da_repo_root(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    for relative, content in (
+        (
+            "shows/personlighedspsykologi-da/config.github.json",
+            json.dumps(
+                {
+                    "subject_slug": "personlighedspsykologi",
+                    "output_inventory": "shows/personlighedspsykologi-da/episode_inventory.json",
+                    "storage": {
+                        "provider": "r2",
+                        "bucket": "freudd-audio",
+                        "endpoint": "https://example.r2.cloudflarestorage.com",
+                        "prefix": "shows/personlighedspsykologi-da",
+                        "manifest_file": "shows/personlighedspsykologi-da/media_manifest.json",
+                    },
+                }
+            ),
+        ),
+        ("shows/personlighedspsykologi-en/auto_spec.json", "{}"),
+        ("shows/personlighedspsykologi-en/episode_metadata.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json", "{}"),
     ):
         path = repo_root / relative
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -75,6 +114,34 @@ def test_prepare_publish_bundle_approves_valid_job_and_saves_manifest(tmp_path: 
     assert manifest["bundle"]["artifact_count"] == 2
     assert manifest["bundle"]["artifact_counts"]["audio"] == 1
     assert manifest["bundle"]["artifact_counts"]["quiz"] == 1
+
+
+def test_prepare_publish_bundle_uses_danish_output_root_and_audio_only_contract(tmp_path: Path) -> None:
+    repo_root = _make_personligheds_da_repo_root(tmp_path)
+    week_dir = repo_root / "notebooklm-podcast-auto/personlighedspsykologi-da/output/W01L1"
+    week_dir.mkdir(parents=True, exist_ok=True)
+    (week_dir / "W01L1 - Reading [DA] {type=audio hash=abc}.mp3").write_bytes(b"audio-data")
+
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_personligheds_da_identity(), initial_state=STATE_AWAITING_PUBLISH)
+
+    result = prepare_publish_bundle(
+        store=store,
+        show_slug="personlighedspsykologi-da",
+        job_id=str(job["job_id"]),
+        options=PublishOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_APPROVED_FOR_PUBLISH
+    updated = store.load_job(show_slug="personlighedspsykologi-da", job_id=str(job["job_id"]))
+    manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["bundle"]["artifact_count"] == 1
+    assert manifest["bundle"]["artifact_counts"]["audio"] == 1
+    assert manifest["bundle"]["artifact_counts"]["quiz"] == 0
+    assert manifest["bundle"]["artifact_counts"]["infographic"] == 0
+    artifact = manifest["bundle"]["artifacts"][0]
+    assert artifact["relative_path"].startswith("notebooklm-podcast-auto/personlighedspsykologi-da/output/")
 
 
 def test_prepare_publish_bundle_fails_when_required_artifacts_are_missing(tmp_path: Path) -> None:

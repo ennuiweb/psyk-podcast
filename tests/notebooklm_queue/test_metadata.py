@@ -112,6 +112,93 @@ def _personligheds_identity() -> JobIdentity:
     )
 
 
+def _make_personligheds_da_repo_root(tmp_path: Path) -> Path:
+    repo_root = tmp_path / "repo"
+    for relative, content in (
+        (
+            "shows/personlighedspsykologi-da/config.github.json",
+            json.dumps(
+                {
+                    "subject_slug": "personlighedspsykologi",
+                    "output_feed": "shows/personlighedspsykologi-da/feeds/rss.xml",
+                    "output_inventory": "shows/personlighedspsykologi-da/episode_inventory.json",
+                    "storage": {
+                        "provider": "r2",
+                        "bucket": "freudd-audio",
+                        "endpoint": "https://example.r2.cloudflarestorage.com",
+                        "prefix": "shows/personlighedspsykologi-da",
+                        "manifest_file": "shows/personlighedspsykologi-da/media_manifest.json",
+                    },
+                    "queue": {
+                        "spotify_sync": False,
+                        "content_manifest_mode": "never",
+                        "portal_sidecars_mode": "never",
+                        "validate_manual_summaries": False,
+                        "regeneration_registry": False,
+                        "validate_regeneration_inventory": False,
+                        "audit_slide_briefs": False,
+                        "learning_material_registry": False,
+                        "freudd_deploy": False,
+                        "quiz_sync": {"enabled": False},
+                    },
+                }
+            ),
+        ),
+        ("shows/personlighedspsykologi-en/auto_spec.json", "{}"),
+        ("shows/personlighedspsykologi-en/episode_metadata.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json", "{}"),
+    ):
+        path = repo_root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (repo_root / ".venv" / "bin").mkdir(parents=True, exist_ok=True)
+    (repo_root / ".venv" / "bin" / "python").write_text("", encoding="utf-8")
+    return repo_root
+
+
+def _personligheds_da_identity() -> JobIdentity:
+    return JobIdentity(
+        show_slug="personlighedspsykologi-da",
+        subject_slug="personlighedspsykologi",
+        lecture_key="W1L1",
+        content_types=("audio",),
+        config_hash="cfg-da",
+    )
+
+
+def _seed_personligheds_da_objects_uploaded_job(tmp_path: Path) -> tuple[QueueStore, dict[str, object]]:
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_personligheds_da_identity(), initial_state=STATE_OBJECTS_UPLOADED)
+    manifest = {
+        "version": 1,
+        "bundle_id": "bundle-da-1",
+        "job_id": str(job["job_id"]),
+        "show_slug": "personlighedspsykologi-da",
+        "subject_slug": "personlighedspsykologi",
+        "lecture_key": "W1L1",
+        "bundle": {
+            "artifact_count": 1,
+            "bundle_hash": "abc123",
+            "artifact_counts": {"audio": 1},
+            "artifacts": [],
+        },
+    }
+    manifest_path = store.save_publish_manifest(
+        show_slug="personlighedspsykologi-da",
+        job_id=str(job["job_id"]),
+        payload=manifest,
+        bundle_id="bundle-da-1",
+    )
+    job["artifacts"] = {
+        "publish": {
+            "latest_bundle_manifest": manifest_path,
+            "latest_bundle_id": "bundle-da-1",
+        }
+    }
+    store.save_job(job)
+    return store, job
+
+
 def _seed_personligheds_objects_uploaded_job(
     tmp_path: Path,
     repo_root: Path,
@@ -591,6 +678,56 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     assert validation["requires_quiz_assets"] is False
     assert validation["quiz_assets"] == 0
     assert validation["content_manifest_path"] == "shows/personlighedspsykologi-en/content_manifest.json"
+
+
+def test_rebuild_repo_metadata_personligheds_da_skips_portal_and_spotify_sidecars(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repo_root = _make_personligheds_da_repo_root(tmp_path)
+    store, job = _seed_personligheds_da_objects_uploaded_job(tmp_path)
+    commands: list[tuple[str, list[str]]] = []
+
+    def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
+        commands.append((name, command))
+        show_root = repo_root / "shows" / "personlighedspsykologi-da"
+        if name == "generate_feed":
+            (show_root / "feeds").mkdir(parents=True, exist_ok=True)
+            (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
+            (show_root / "episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
+        return {
+            "name": name,
+            "command": command,
+            "command_shell": " ".join(command),
+            "started_at": "2026-05-01T00:00:00+00:00",
+            "completed_at": "2026-05-01T00:00:01+00:00",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+        }
+
+    monkeypatch.setattr("notebooklm_queue.metadata._run_phase", fake_run_phase)
+
+    result = rebuild_repo_metadata(
+        store=store,
+        show_slug="personlighedspsykologi-da",
+        job_id=str(job["job_id"]),
+        options=MetadataOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_COMMITTING_REPO_ARTIFACTS
+    updated = store.load_job(show_slug="personlighedspsykologi-da", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_COMMITTING_REPO_ARTIFACTS
+    assert [name for name, _ in commands] == ["generate_feed"]
+    manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    validation = manifest["metadata"]["validation"]
+    assert validation["feed_path"] == "shows/personlighedspsykologi-da/feeds/rss.xml"
+    assert validation["inventory_path"] == "shows/personlighedspsykologi-da/episode_inventory.json"
+    assert validation["requires_content_manifest"] is False
+    assert validation["requires_quiz_assets"] is False
+    assert "spotify_map_path" not in validation
+    assert "content_manifest_path" not in validation
 
 
 def test_rebuild_repo_metadata_uses_manifest_bound_override_config(tmp_path: Path, monkeypatch) -> None:

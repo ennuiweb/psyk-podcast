@@ -391,6 +391,9 @@ def execute_job(
         job = _claim_or_resume_job(store=store, show_slug=show_slug, job_id=job_id, actor=options.actor)
         current_state = str(job.get("state") or "")
         run_id = utc_now_iso().replace(":", "").replace("-", "")
+        content_types = tuple(str(item) for item in (job.get("content_types") or []) if str(item).strip())
+        if not content_types:
+            content_types = tuple(adapter.default_content_types)
         manifest: dict[str, Any] = {
             "version": 1,
             "run_id": run_id,
@@ -398,7 +401,7 @@ def execute_job(
             "subject_slug": adapter.subject_slug,
             "job_id": str(job.get("job_id") or ""),
             "lecture_key": str(job.get("lecture_key") or ""),
-            "content_types": list(job.get("content_types") or []),
+            "content_types": list(content_types),
             "started_at": utc_now_iso(),
             "initial_state": current_state,
             "status": "running",
@@ -406,9 +409,6 @@ def execute_job(
         }
 
         lecture_key = str(job.get("lecture_key") or "")
-        content_types = tuple(str(item) for item in (job.get("content_types") or []) if str(item).strip())
-        if not content_types:
-            content_types = tuple(adapter.default_content_types)
         latest_progress: dict[str, Any] | None = None
         if current_state in {STATE_QUEUED, STATE_RETRY_SCHEDULED, STATE_GENERATING}:
             generate_command = adapter.build_generate_command(
@@ -515,6 +515,7 @@ def execute_job(
             download_command = adapter.build_download_command(
                 options.repo_root,
                 lecture_key=lecture_key,
+                content_types=content_types,
                 dry_run=False,
                 timeout_seconds=options.artifact_wait_timeout_seconds,
                 interval_seconds=options.artifact_poll_interval_seconds,

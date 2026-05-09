@@ -13,6 +13,7 @@ from .constants import STATE_COMMITTING_REPO_ARTIFACTS, STATE_FAILED_RETRYABLE, 
 from .processes import ProcessResult, run_process
 from .show_artifacts import resolve_show_artifact_paths
 from .show_config import ShowConfigSelectionError, load_show_config, resolve_manifest_bound_show_config_path
+from .show_runtime import resolve_queue_show_policies
 from .store import QueueStore, utc_now_iso
 
 
@@ -54,7 +55,7 @@ def publish_repo_artifacts(
                 job=job,
                 manifest=manifest,
             )
-        except ShowConfigSelectionError as exc:
+        except (ShowConfigSelectionError, ValueError) as exc:
             return _finalize_failure(
                 store=store,
                 job=job,
@@ -293,6 +294,7 @@ def _allowed_paths(
         show_slug=show_slug,
         config=config,
     )
+    queue_policies = resolve_queue_show_policies(show_slug=show_slug, config=config)
     allowlist = {
         str(artifact_paths.feed_path.relative_to(repo_root)),
         str(artifact_paths.inventory_path.relative_to(repo_root)),
@@ -302,9 +304,10 @@ def _allowed_paths(
     }
     if artifact_paths.media_manifest_path is not None:
         allowlist.add(str(artifact_paths.media_manifest_path.relative_to(repo_root)))
-    if show_slug == "personlighedspsykologi-en":
-        allowlist.add("shows/personlighedspsykologi-en/regeneration_registry.json")
-        allowlist.add("shows/personlighedspsykologi-en/learning_material_regeneration_registry.json")
+    if queue_policies.regeneration_registry:
+        allowlist.add(f"shows/{show_slug}/regeneration_registry.json")
+    if queue_policies.learning_material_registry:
+        allowlist.add(f"shows/{show_slug}/learning_material_regeneration_registry.json")
     return allowlist
 
 

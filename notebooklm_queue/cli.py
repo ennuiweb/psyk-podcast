@@ -21,7 +21,16 @@ from .store import QueueLockError, QueueStore
 
 
 def _print_json(payload: Any) -> None:
-    print(json.dumps(payload, indent=2, ensure_ascii=False))
+    print(json.dumps(payload, indent=2, ensure_ascii=False, default=_json_default))
+
+
+def _json_default(value: Any) -> Any:
+    if isinstance(value, Path):
+        return str(value)
+    to_payload = getattr(value, "to_payload", None)
+    if callable(to_payload):
+        return to_payload()
+    raise TypeError(f"Object of type {value.__class__.__name__} is not JSON serializable")
 
 
 def _load_json_arg(raw: str | None) -> dict[str, Any]:

@@ -36,6 +36,8 @@ def build_dry_run_plan(
 
     lecture_key = str(job.get("lecture_key") or "")
     content_types = tuple(str(item) for item in (job.get("content_types") or []) if str(item).strip())
+    if not content_types:
+        content_types = tuple(adapter.default_content_types)
     return {
         "show_slug": show_slug,
         "subject_slug": adapter.subject_slug,
@@ -53,6 +55,7 @@ def build_dry_run_plan(
         "download_command": adapter.build_download_command(
             repo_root,
             lecture_key=lecture_key,
+            content_types=content_types,
             dry_run=True,
         ),
         "metadata": dict(job.get("metadata") or {}),

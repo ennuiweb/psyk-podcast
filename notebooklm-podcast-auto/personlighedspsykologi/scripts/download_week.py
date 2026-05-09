@@ -557,6 +557,17 @@ def main() -> int:
         help="If set, read outputs from a profile-based subdirectory.",
     )
     parser.add_argument(
+        "--fallback-output-root",
+        action="append",
+        default=[],
+        help="Additional output root to search for legacy request logs or artifacts.",
+    )
+    parser.add_argument(
+        "--disable-default-extra-roots",
+        action="store_true",
+        help="Only search the configured --output-root plus any explicit --fallback-output-root values.",
+    )
+    parser.add_argument(
         "--notebooklm",
         default=".venv/bin/notebooklm",
         help="Path to the notebooklm CLI.",
@@ -626,10 +637,18 @@ def main() -> int:
     notebooklm = repo_root / args.notebooklm
 
     week_inputs = parse_weeks(args.week, args.weeks)
-    extra_roots = [
-        resolve_output_root(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output"),
-        resolve_output_root(repo_root / "shows" / "personlighedspsykologi" / "output"),
-    ]
+    extra_roots: list[Path] = []
+    if not args.disable_default_extra_roots:
+        extra_roots.extend(
+            [
+                resolve_output_root(repo_root / "notebooklm-podcast-auto" / "personlighedspsykologi" / "output"),
+                resolve_output_root(repo_root / "shows" / "personlighedspsykologi" / "output"),
+            ]
+        )
+    for raw_root in args.fallback_output_root:
+        if not str(raw_root).strip():
+            continue
+        extra_roots.append(resolve_output_root(repo_root / str(raw_root)))
     roots = []
     seen_roots: set[Path] = set()
     for root in [output_root, *extra_roots]:

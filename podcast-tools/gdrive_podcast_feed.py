@@ -40,7 +40,7 @@ ITUNES_NS = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 TEXT_PREFIX = "[Tekst]"
 HIGHLIGHTED_TEXT_PREFIX = "[Gul tekst]"
 LANGUAGE_TAG_PATTERN = re.compile(
-    r"(?:\[\s*(?:en|tts)\s*\]|\(\s*(?:en|tts)\s*\))",
+    r"(?:\[\s*(?:en|da|dk|tts)\s*\]|\(\s*(?:en|da|dk|tts)\s*\))",
     re.IGNORECASE,
 )
 TTS_TAG_PATTERN = re.compile(r"(?:\[\s*tts\s*\]|\(\s*tts\s*\))", re.IGNORECASE)
@@ -4681,7 +4681,11 @@ def main() -> None:
     episodes = _synthesize_tail_grundbog_lydbog_block(episodes, feed_cfg)
 
     if not episodes:
-        raise SystemExit("No audio files found in the configured Google Drive folder.")
+        if media_files:
+            raise SystemExit(
+                "No audio files matched the configured filters, registry selection, or naming rules."
+            )
+        raise SystemExit(f"No audio files found in the configured {provider} media source.")
 
     last_build = max(item["published_at"] for item in episodes)
     feed_document = build_feed_document(episodes, feed_cfg, last_build)

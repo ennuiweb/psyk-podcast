@@ -3,7 +3,7 @@
 This document is the tracked implementation plan for the queue-owned Danish
 mirror of the `personlighedspsykologi` podcast surface.
 
-Status: implementation complete, deployed, and draining on Hetzner
+Status: implementation complete, deployed, and queue self-heal live on Hetzner
 Last updated: 2026-05-09
 
 ## Scope
@@ -115,6 +115,16 @@ public feed outputs and queue runtime state.
 - Added a queue-level self-heal path so stale retryable failures are converted
   back into `retry_scheduled` automatically, and added explicit retry
   classification for `Sources not ready after waiting`.
+- Deployed the repair follow-up on Hetzner at
+  `03a0dc0af599ecf3210cdbbc91cbda917587ac76`
+  (`fix: recover stale queue retries`).
+- Verified post-fix live queue state:
+  - `personlighedspsykologi-en` no longer has blocking `failed_retryable`
+    backlog; it is back to timed work only (`downloading`, `waiting_for_artifact`,
+    `retry_scheduled`)
+  - `personlighedspsykologi-da` is running on the repaired queue code and has
+    resumed active generation with the remaining backlog split between
+    `generating`, `queued`, and `retry_scheduled`
 
 ## Deployment Verification Notes
 
@@ -128,3 +138,9 @@ public feed outputs and queue runtime state.
 - Because the Danish rollout surfaced shared-profile contention with the English
   queue, the implementation now hardens the shared queue service itself instead
   of relying on manual requeues or timer retries.
+- Current live server state after the repair deploy:
+  - `/opt/podcasts` is on `03a0dc0af599ecf3210cdbbc91cbda917587ac76`
+  - `podcasts-notebooklm-queue@personlighedspsykologi-en.service` is active and
+    progressing through download/retry windows
+  - `podcasts-notebooklm-queue@personlighedspsykologi-da.service` is active and
+    running the Danish generation queue

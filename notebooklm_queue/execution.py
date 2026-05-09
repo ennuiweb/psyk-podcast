@@ -41,6 +41,7 @@ TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
     "rpc create_artifact failed",
     "rpc create_notebook failed",
     "null result data (possible server error",
+    "sources not ready after waiting",
 )
 DEFAULT_RATE_LIMIT_RETRY_SECONDS = 900
 DEFAULT_RETRY_BACKOFF_MULTIPLIER = 1.5
@@ -155,6 +156,53 @@ def _derived_retry_at(
         return None
     retry_at = datetime.now(tz=UTC) + timedelta(seconds=max(delay_seconds, 1))
     return retry_at.replace(microsecond=0).isoformat()
+
+
+def _retryable_error_text_for_job(job: dict[str, Any]) -> str | None:
+    direct = str(job.get("last_error") or "").strip()
+    if direct:
+        return direct
+    history = job.get("history")
+    if not isinstance(history, list):
+        return None
+    for entry in reversed(history):
+        if not isinstance(entry, dict):
+            continue
+        error = str(entry.get("error") or "").strip()
+        if error:
+            return error
+    return None
+
+
+def repair_retryable_failures(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    actor: str = "system",
+) -> list[dict[str, Any]]:
+    repaired: list[dict[str, Any]] = []
+    for entry in store.list_jobs(show_slug=show_slug, state=STATE_FAILED_RETRYABLE):
+        error_text = _retryable_error_text_for_job(entry)
+        retry_at = _derived_retry_at(
+            explicit_retry_at=str(entry.get("next_retry_at") or "").strip() or None,
+            error_text=error_text,
+            attempt_count=max(int(entry.get("attempt_count") or 0), 1),
+        )
+        if retry_at is None:
+            continue
+        repaired.append(
+            store.transition_job(
+                show_slug=show_slug,
+                job_id=str(entry["job_id"]),
+                state=STATE_RETRY_SCHEDULED,
+                actor=actor,
+                note="Recovered retryable failure into scheduled retry.",
+                error=error_text,
+                retry_at=retry_at,
+                expected_states={STATE_FAILED_RETRYABLE},
+            )
+        )
+    return repaired
 
 
 def _phase_primary_error_text(phase: dict[str, Any], fallback: str) -> str:

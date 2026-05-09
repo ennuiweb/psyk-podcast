@@ -108,6 +108,13 @@ public feed outputs and queue runtime state.
     `notebooklm-podcast-auto/personlighedspsykologi-da/output`
   - `run-dry` on-host resolves the Danish prompt config and strict DA output
     root correctly
+- Discovered and fixed an existing queue runtime weakness during smoke testing:
+  shared NotebookLM profile exhaustion and source-ingestion stalls could leave
+  older jobs in `failed_retryable`, which then caused `serve-show` to stop on a
+  mixed blocked+timed backlog.
+- Added a queue-level self-heal path so stale retryable failures are converted
+  back into `retry_scheduled` automatically, and added explicit retry
+  classification for `Sources not ready after waiting`.
 
 ## Deployment Verification Notes
 
@@ -118,3 +125,6 @@ public feed outputs and queue runtime state.
   tree matches the intended DA show commands.
 - No Freudd downstream deploy target is registered for the Danish mirror, which
   is the intended phase-1 behavior for a feed-only mirror.
+- Because the Danish rollout surfaced shared-profile contention with the English
+  queue, the implementation now hardens the shared queue service itself instead
+  of relying on manual requeues or timer retries.

@@ -178,6 +178,70 @@ def test_drain_show_queue_stops_when_max_stage_runs_is_hit(tmp_path: Path, monke
     assert result["stopped_due_to_max_stage_runs"] is True
 
 
+def test_drain_show_queue_repairs_retryable_failures_before_planning_progress(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_FAILED_RETRYABLE,
+        error="Generation failed: Sources not ready after waiting. Missing: none. Not ready: 1",
+        expected_states={"queued"},
+    )
+
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.enqueue_discovered_jobs",
+        lambda **kwargs: {"discovered": [], "enqueued": []},
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.sync_downstream_publication",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("sync")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.publish_repo_artifacts",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("push")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.rebuild_repo_metadata",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("metadata")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.upload_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("upload")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.prepare_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("prepare")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.execute_job",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("run")),
+    )
+
+    result = drain_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=DrainShowOptions(repo_root=repo_root),
+    )
+
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert result["repaired_retryable_count"] == 1
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
+
+
 def test_serve_show_queue_waits_for_retry_scheduled_backlog(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()

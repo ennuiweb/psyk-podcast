@@ -18,7 +18,7 @@ from .constants import (
 )
 from .discovery import enqueue_discovered_jobs
 from .downstream import DownstreamOptions, sync_downstream_publication
-from .execution import ExecutionOptions, execute_job
+from .execution import ExecutionOptions, execute_job, repair_retryable_failures
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
@@ -60,6 +60,11 @@ def drain_show_queue(
     repo_root = options.repo_root.resolve()
     show_config_path = options.show_config_path.resolve() if options.show_config_path else None
 
+    repaired_retryable = repair_retryable_failures(
+        store=store,
+        show_slug=show_slug,
+        actor=options.actor,
+    )
     retry_ready = store.retry_ready_jobs(show_slug=show_slug)
     discovery = enqueue_discovered_jobs(
         repo_root=repo_root,
@@ -175,6 +180,7 @@ def drain_show_queue(
         "show_config_path": (
             serialize_show_config_path(repo_root=repo_root, path=show_config_path) if show_config_path else None
         ),
+        "repaired_retryable_count": len(repaired_retryable),
         "retry_ready_count": len(retry_ready),
         "discovery": {
             "discovered_count": len(discovery.get("discovered") or []),

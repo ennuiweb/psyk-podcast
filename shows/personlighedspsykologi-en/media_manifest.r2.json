@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-09T17:41:17+00:00",
+  "generated_at": "2026-05-09T17:46:54+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2110,6 +2110,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/W08L1%20-%20Slide%20lecture:%2015.%20gang%20Critical%20personalism%202026%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1OQtSYxWAxQASfNkZMUhjkDGIM6aw48ng"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W08L1/[Short] W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=053e81ad}.mp3",
+      "source_name": "[Short] W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=053e81ad}.mp3",
+      "source_path": "W08L1/[Short] W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=053e81ad}.mp3",
+      "path_parts": [
+        "W08L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9483423,
+      "sha256": "0f79b91056e3de6bff63691286fb1f1826c7260508ad321e53d1df8494a59d87",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T17:46:52+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/%5BShort%5D%20W08L1%20-%20Lamiell%2C%20J.T.%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D053e81ad%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W08L1/[Short] W08L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=short hash=1759a272}.mp3",

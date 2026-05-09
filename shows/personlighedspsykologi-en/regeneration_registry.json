@@ -2,27 +2,27 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-05-09T06:40:59Z",
+  "generated_at": "2026-05-09T17:41:24Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 154,
-    "in_scope_entries": 146,
+    "total_entries": 155,
+    "in_scope_entries": 147,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 45,
+      "short": 46,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 58,
-      "original_only": 88,
+      "b_active": 60,
+      "original_only": 87,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 96,
-      "B": 58
+      "A": 95,
+      "B": 60
     }
   },
   "entries": [
@@ -998,13 +998,13 @@
       "title": "U8F1 · ALLE KILDER",
       "canonical_source_name": "W08L1 - Alle kilder (undtagen slides) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-09T17:41:24Z"
       },
       "variants": {
         "A": {
@@ -1027,27 +1027,42 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W08L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=05aabf10}.mp3",
+          "canonical_source_name": "W08L1 - Alle kilder (undtagen slides) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "sources": "2",
+            "hash": "05aabf10"
+          },
+          "config_hash": "05aabf10",
+          "episode_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=05aabf10}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/W08L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3D05aabf10%7D.mp3",
+          "published_at": "2026-05-09T17:41:10+00:00",
+          "title": "U8F1 · ALLE KILDER",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "3d9d7467dbef33ae4e9002230e3ba47fc57808bad4ca760029445259b794e3a2",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-09T17:41:10+00:00",
+          "registered_at": "2026-05-09T17:41:24Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 71738720,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-09T17:41:24Z",
+              "event": "queue_auto_activated",
+              "source_name": "W08L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=05aabf10}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=05aabf10}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -1129,7 +1144,7 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W09L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=eb22e214}.mp3",
+          "source_name": "W09L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=a7e138f5}.mp3",
           "canonical_source_name": "W09L1 - Alle kilder (undtagen slides) [EN].mp3",
           "config_tags": {
             "type": "audio",
@@ -1137,11 +1152,11 @@
             "format": "deep-dive",
             "length": "long",
             "sources": "4",
-            "hash": "eb22e214"
+            "hash": "a7e138f5"
           },
-          "config_hash": "eb22e214",
+          "config_hash": "a7e138f5",
           "episode_key": "1-MXkUCm_eduHtEH8JCQWY_SI3LBrCbGB",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3Deb22e214%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3Da7e138f5%7D.mp3",
           "published_at": "2026-04-07T10:00:00+02:00",
           "title": "U9F1 · ALLE KILDER ✦",
           "audio_sha256": null
@@ -4071,13 +4086,13 @@
       "title": "U8F1 · Lamiell, J.T. (2021)",
       "canonical_source_name": "W08L1 - Lamiell, J.T. (2021) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-05-09T17:41:24Z"
       },
       "variants": {
         "A": {
@@ -4099,27 +4114,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=6b5b6aac}.mp3",
+          "canonical_source_name": "W08L1 - Lamiell, J.T. (2021) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "long",
+            "hash": "6b5b6aac"
+          },
+          "config_hash": "6b5b6aac",
+          "episode_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=6b5b6aac}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/W08L1%20-%20Lamiell%2C%20J.T.%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D6b5b6aac%7D.mp3",
+          "published_at": "2026-05-09T17:41:10+00:00",
+          "title": "U8F1 · Lamiell, J.T. (2021)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "c2d9fd3f03370d7c2a36d40a8319ca162fa9ee81f35d7b2a65369eb0caed8252",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-05-09T17:41:10+00:00",
+          "registered_at": "2026-05-09T17:41:24Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 69093276,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-05-09T17:41:24Z",
+              "event": "queue_auto_activated",
+              "source_name": "W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=6b5b6aac}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Lamiell, J.T. (2021) [EN] {type=audio lang=en format=deep-dive length=long hash=6b5b6aac}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -4318,18 +4347,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=2858418a}.mp3",
+          "source_name": "W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W09L1 - Dreier (1999) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "2858418a"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "2858418a",
+          "config_hash": "fa9adbcf",
           "episode_key": "1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Dreier%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2858418a%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Dreier%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
           "published_at": "2026-04-07T12:00:00+02:00",
           "title": "U9F1 · Dreier (1999) ✦",
           "audio_sha256": null
@@ -4398,19 +4427,19 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=5cda0d43}.mp3",
+          "source_name": "W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "5cda0d43"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "5cda0d43",
+          "config_hash": "fa9adbcf",
           "episode_key": "1ScnElqFnmHOwChwMl_2RswSLvjsfmE-L",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Grundbog%20kapitel%2010%20-%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D5cda0d43%7D.mp3",
-          "published_at": "2026-04-07T20:00:00+02:00",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Grundbog%20kapitel%2010%20-%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-04-07T22:00:00+02:00",
           "title": "U9F1 · Grundbog 10: Kritisk psykologi ✦",
           "audio_sha256": null
         },
@@ -4478,18 +4507,18 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=0163cb6b}.mp3",
+          "source_name": "W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W09L1 - Holzkamp (2013) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "0163cb6b"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "0163cb6b",
+          "config_hash": "fa9adbcf",
           "episode_key": "1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Holzkamp%20%282013%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D0163cb6b%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Holzkamp%20%282013%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
           "published_at": "2026-04-07T16:00:00+02:00",
           "title": "U9F1 · Holzkamp (2013) ✦",
           "audio_sha256": null
@@ -4558,19 +4587,19 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=2f24601c}.mp3",
+          "source_name": "W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W09L1 - Mørch & Hansen (2015) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "2f24601c"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "2f24601c",
+          "config_hash": "fa9adbcf",
           "episode_key": "1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2f24601c%7D.mp3",
-          "published_at": "2026-04-07T18:00:00+02:00",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-04-07T20:00:00+02:00",
           "title": "U9F1 · Mørch & Hansen (2015) ✦",
           "audio_sha256": null
         },
@@ -6609,7 +6638,7 @@
           "config_hash": "33c53eb1",
           "episode_key": "1SIBD-7ufNrD47A2OQiIBgiJV3rQXXx1J",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1%20-%20Slide%20lecture:%2017.%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D33c53eb1%7D.mp3",
-          "published_at": "2026-04-07T22:00:00+02:00",
+          "published_at": "2026-04-08T00:00:00+02:00",
           "title": "U9F1 · Forelæsningsslides · Kritisk psykologi ✦",
           "audio_sha256": null
         },
@@ -8570,6 +8599,65 @@
       }
     },
     {
+      "logical_episode_id": "short__w09l1__m_rch_hansen_2015_en",
+      "prompt_type": "short",
+      "lecture_key": "W09L1",
+      "title": "U9F1 · [Kort] · Mørch & Hansen (2015)",
+      "canonical_source_name": "[Short] W09L1 - Mørch & Hansen (2015) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c05fd0ac}.mp3",
+          "canonical_source_name": "[Short] W09L1 - Mørch & Hansen (2015) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "c05fd0ac"
+          },
+          "config_hash": "c05fd0ac",
+          "episode_key": "shows/personlighedspsykologi-en/W09L1/[Short] W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c05fd0ac}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc05fd0ac%7D.mp3",
+          "published_at": "2026-04-07T18:00:00+02:00",
+          "title": "U9F1 · [Kort] · Mørch & Hansen (2015)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
       "logical_episode_id": "short__w10l1__bjerrum_nielsen_rudberg_2006_en",
       "prompt_type": "short",
       "lecture_key": "W10L1",
@@ -9797,7 +9885,7 @@
           "config_hash": null,
           "episode_key": "1Zmppaac88IAEyZjDVolNFyJo87hMg2Dd",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BTTS%5D%20W09L1%20-%20Grundbog%20kapitel%2010%20-%20Kritisk%20psykologi%20%7Btype%3Dtts%20voice%3Dda-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib%20date%3D2026-02-14%7D.mp3",
-          "published_at": "2026-04-08T00:00:00+02:00",
+          "published_at": "2026-04-08T02:00:00+02:00",
           "title": "U9F1 · [Lydbog] · Grundbog 10: Kritisk psykologi",
           "audio_sha256": null
         },

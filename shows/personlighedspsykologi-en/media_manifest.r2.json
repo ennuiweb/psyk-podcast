@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-09T06:36:30+00:00",
+  "generated_at": "2026-05-09T06:40:54+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2368,6 +2368,21 @@
       "published_at": "2026-05-09T06:36:03+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20Holzkamp%20%282013%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3De3aacace%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/[Short] W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c05fd0ac}.mp3",
+      "source_name": "[Short] W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c05fd0ac}.mp3",
+      "source_path": "W09L1/[Short] W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=short hash=c05fd0ac}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9895904,
+      "sha256": "e4fb959a2f2d551e8fc1afbbd1fb2a856dde9616c8bb6dd8b996fc0fff171415",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:40:51+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc05fd0ac%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W09L1/[TTS] W09L1 - Grundbog kapitel 10 - Kritisk psykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.mp3",

@@ -119,6 +119,14 @@ Queue-core note:
 - metadata validation is now bundle-aware: audio-only publishes can complete with an unchanged or missing `quiz_links.json`, while bundles that actually include quiz artifacts still require refreshed quiz links and non-empty quiz assets in `content_manifest.json`
 - `personlighedspsykologi-en` metadata is now split between podcast-critical and portal-only sidecars: audio-only bundles still sync `regeneration_registry.json`, then rebuild and publish RSS/inventory immediately, but they skip manual-summary gates, slide-brief audits, content-manifest rebuilds, and learning-material registry sync until a bundle actually contains quiz or infographic artifacts
 - `personlighedspsykologi-da` now exists as a feed-first queue-owned mirror over the same subject substrate: it uses its own prompt config and output root, filters public media to `[DA]`, and disables Spotify, Freudd sidecars, content-manifest rebuilds, and downstream Freudd deploy checks by show config
+- Danish prompt rendering is now locale-aware rather than wrapper-hardcoded:
+  the English `personlighedspsykologi` prompt config remains canonical, while
+  `personlighedspsykologi-da` sets `prompt_locale=da` and loads Danish prompt
+  override assets plus a tracked Danish course-context translation catalog from
+  `notebooklm-podcast-auto/personlighedspsykologi/locales/`
+- `notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_prompt_translations.py`
+  is the maintenance checker/bootstrapper for the Danish prompt-localization
+  assets; runtime generation itself does not depend on a live translation API
 - `upload-r2` is intentionally R2-only for now; Drive-backed shows are blocked explicitly until their show config is migrated to `storage.provider = "r2"`
 - `sync-downstream` currently validates the existing Freudd deploy workflow for `bioneuro` and `personlighedspsykologi-en` when queue-owned pushes touch `content_manifest.json`, `quiz_links.json`, or `spotify_map.json`; explicit show-ownership gating in `generate-feed.yml` still belongs to a later migration phase
 

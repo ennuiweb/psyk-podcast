@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 
-from notebooklm_queue import course_context
+from notebooklm_queue import course_context, prompt_localization
 
 
 class CourseContextTests(unittest.TestCase):
@@ -822,6 +822,74 @@ class CourseContextTests(unittest.TestCase):
             self.assertIn("Use this reading as the anchor", reading_note)
             self.assertIn("description vs explanation", reading_note)
             self.assertIn("lived experience", reading_note)
+
+    def test_danish_localization_translates_and_omits_course_context_prose(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo_root = Path(tmpdir)
+            show_dir = repo_root / "shows" / "demo-show"
+            docs_dir = show_dir / "docs"
+            docs_dir.mkdir(parents=True, exist_ok=True)
+
+            (show_dir / "slides_catalog.json").write_text(json.dumps({"slides": []}), encoding="utf-8")
+            (show_dir / "content_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "lectures": [
+                            {
+                                "lecture_key": "W1L1",
+                                "lecture_title": "Introduktion",
+                                "sequence_index": 1,
+                                "summary": {
+                                    "summary_lines": [
+                                        "Assessment is theory-laden and not method-neutral.",
+                                        "Action is a key unit for linking person and environment.",
+                                    ]
+                                },
+                                "readings": [],
+                                "slides": [],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (docs_dir / "overblik.md").write_text("- W1L1 Introduktion", encoding="utf-8")
+
+            config = course_context.normalize_course_context({})
+            bundle = course_context.load_course_prompt_context_bundle(
+                repo_root=repo_root,
+                config=config,
+                slides_catalog_path=show_dir / "slides_catalog.json",
+            )
+            assert bundle is not None
+
+            localization = prompt_localization.PromptLocalization(
+                locale="da",
+                prompt_ui=prompt_localization.PROMPT_UI_STRINGS["da"],
+                course_context_ui=prompt_localization.COURSE_CONTEXT_UI_STRINGS["da"],
+                prompt_overrides={},
+                course_context_translations={
+                    "Assessment is theory-laden and not method-neutral.": (
+                        "Assessment er teoriladet og ikke metodeneutral."
+                    )
+                },
+                omit_untranslated_course_context=True,
+                fail_on_missing_course_context_translations=False,
+            )
+
+            note = course_context.build_course_prompt_context_note(
+                bundle=bundle,
+                config=config,
+                lecture_key="W1L1",
+                prompt_type="weekly_readings_only",
+                localization=localization,
+            )
+
+            self.assertIn("## Kursus- og forelaesningsramme", note)
+            self.assertIn("## Forelaesningssyntese", note)
+            self.assertIn("Assessment er teoriladet og ikke metodeneutral.", note)
+            self.assertNotIn("Action is a key unit for linking person and environment.", note)
+            self.assertNotIn("## Course and lecture frame", note)
 
 
 if __name__ == "__main__":

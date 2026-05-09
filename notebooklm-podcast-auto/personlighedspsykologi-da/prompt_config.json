@@ -1,10 +1,24 @@
 {
   "extends": "../personlighedspsykologi/prompt_config.json",
   "language": "da",
+  "prompt_locale": "da",
   "languages": [
     {
       "code": "da",
-      "suffix": "[DA]"
+      "suffix": "[DA]",
+      "prompt_locale": "da"
     }
-  ]
+  ],
+  "prompt_localization": {
+    "enabled": true,
+    "default_locale": "en",
+    "locales": {
+      "da": {
+        "prompt_overrides_path": "../personlighedspsykologi/locales/da.prompt.json",
+        "course_context_translations_path": "../personlighedspsykologi/locales/da.course_context.json",
+        "omit_untranslated_course_context": true,
+        "fail_on_missing_course_context_translations": false
+      }
+    }
+  }
 }

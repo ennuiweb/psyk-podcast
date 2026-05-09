@@ -9,7 +9,8 @@ It is **not** a podcast feed. Feed config now lives in:
 
 ## Key paths
 - `scripts/` - generation helpers (`generate_week.py`, `download_week.py`, `sync_reading_summaries.py`)
-- `prompt_config.json` - prompts + language variants for NotebookLM (audio + infographic + quiz + report defaults, including `audio_prompt_strategy`, `report_prompt_strategy`, `audio_prompt_framework`, `study_context`, `exam_focus`, and `meta_prompting`)
+- `prompt_config.json` - canonical English prompts + language variants for NotebookLM (audio + infographic + quiz + report defaults, including `audio_prompt_strategy`, `report_prompt_strategy`, `audio_prompt_framework`, `study_context`, `exam_focus`, and `meta_prompting`)
+- `locales/` - localized prompt overrides and dynamic course-context translation catalogs used by mirror runtimes such as `personlighedspsykologi-da`
 - OneDrive Readings root (authoritative source dirs):
   - `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings`
 - `output/` - generated MP3s/PNGs/quiz exports/report markdown + request logs
@@ -27,7 +28,20 @@ export PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT="/Users/oskar/Library/CloudStorage/One
 
 Archived show configs are stored in `archive-show-config/` for reference.
 
-Current generation is configured for English-only outputs (see `prompt_config.json`).
+English remains the canonical prompt logic source.
+
+- Mirror runtimes can now localize prompt scaffolding through `prompt_localization`
+  in their wrapper `prompt_config.json`.
+- Static prompt prose is localized through repo-owned override files under
+  `locales/`.
+- Dynamic course-context prose is localized through repo-owned translation
+  catalogs under `locales/`.
+- Runtime generation does not depend on a live translation API.
+- Maintenance/check command:
+
+```bash
+python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_prompt_translations.py --check
+```
 
 ## Authoritative source root
 - `generate_week.py` and `sync_reading_summaries.py` now default `--sources-root` to the OneDrive Readings path above.

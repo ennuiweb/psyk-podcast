@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from notebooklm_queue import prompt_localization
+
 DEFAULT_COURSE_CONTEXT = {
     "enabled": True,
     "heading": "Course-aware lecture context:",
@@ -531,6 +533,8 @@ def _lecture_semantic_context_lines(
     prompt_type: str,
     lecture: dict[str, Any],
     source_item: object | None,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
 ) -> list[str]:
     paths = _semantic_artifact_paths(bundle)
     glossary_payload = _load_optional_json(paths["course_glossary"])
@@ -539,6 +543,7 @@ def _lecture_semantic_context_lines(
     concept_graph_payload = _load_optional_json(paths["course_concept_graph"])
 
     lines: list[str] = []
+    ui = prompt_localization.course_context_ui_strings(localization)
     limits = SEMANTIC_SELECTION_LIMITS.get(prompt_type, SEMANTIC_SELECTION_LIMITS["mixed_sources"])
     candidates = _source_item_match_candidates(lecture, source_item)
     if isinstance(weighting_payload, dict):
@@ -565,11 +570,19 @@ def _lecture_semantic_context_lines(
                 ranked_lines = []
                 for item in ranked_items[: max(0, int(limits["ranked_sources"]))]:
                     title = str(item.get("title") or item.get("source_id") or "").strip()
-                    band = str(item.get("weight_band") or "").strip()
+                    band = prompt_localization.localize_course_context_text(
+                        item.get("weight_band"),
+                        localization=localization,
+                        missing_texts=missing_texts,
+                    )
                     if title:
-                        ranked_lines.append(f"{title} [{band}]")
+                        ranked_lines.append(f"{title} [{band}]" if band else title)
                 if ranked_lines:
-                    lines.append("- Ranked source emphasis: " + "; ".join(ranked_lines) + ".")
+                    lines.append(
+                        ui["ranked_source_emphasis_template"].format(
+                            items="; ".join(ranked_lines)
+                        )
+                    )
                 break
 
     selected_term_ids: set[str] = set()
@@ -607,15 +620,19 @@ def _lecture_semantic_context_lines(
                     if str(theory_id or "").strip()
                 }
                 selected_labels = [
-                    f"{str(term.get('label') or '').strip()} ({str(term.get('category') or '').strip()})"
+                    _semantic_term_label(
+                        term,
+                        localization=localization,
+                        missing_texts=missing_texts,
+                    )
                     for term in selected
-                    if str(term.get("label") or "").strip()
                 ]
+                selected_labels = [label for label in selected_labels if label]
                 if selected_labels:
                     lines.append(
-                        "- Course concepts in play: "
-                        + "; ".join(selected_labels)
-                        + "."
+                        ui["course_concepts_template"].format(
+                            items="; ".join(selected_labels)
+                        )
                     )
 
     if isinstance(theory_map_payload, dict):
@@ -654,12 +671,18 @@ def _lecture_semantic_context_lines(
                         continue
                     filtered_selected.append(theory)
                 selected_labels = [
-                    str(theory.get("label") or "").strip()
+                    prompt_localization.localize_course_context_text(
+                        theory.get("label"),
+                        localization=localization,
+                        missing_texts=missing_texts,
+                    )
                     for theory in filtered_selected
-                    if str(theory.get("label") or "").strip()
                 ]
+                selected_labels = [label for label in selected_labels if label]
                 if selected_labels:
-                    lines.append("- Theory frame: " + "; ".join(selected_labels) + ".")
+                    lines.append(
+                        ui["theory_frame_template"].format(items="; ".join(selected_labels))
+                    )
 
     if isinstance(concept_graph_payload, dict):
         distinctions = concept_graph_payload.get("distinctions")
@@ -682,15 +705,19 @@ def _lecture_semantic_context_lines(
             if lecture_distinctions:
                 selected = lecture_distinctions[: max(0, int(limits["distinctions"]))]
                 selected_labels = [
-                    str(distinction.get("label") or "").strip()
+                    prompt_localization.localize_course_context_text(
+                        distinction.get("label"),
+                        localization=localization,
+                        missing_texts=missing_texts,
+                    )
                     for distinction in selected
-                    if str(distinction.get("label") or "").strip()
                 ]
+                selected_labels = [label for label in selected_labels if label]
                 if selected_labels:
                     lines.append(
-                        "- Cross-lecture tensions to keep explicit: "
-                        + "; ".join(selected_labels)
-                        + "."
+                        ui["cross_lecture_tensions_template"].format(
+                            items="; ".join(selected_labels)
+                        )
                     )
 
     return lines
@@ -728,10 +755,31 @@ def _compact_string(value: object, *, limit: int = 220) -> str:
 
 
 def _stringify_substrate_item(item: object) -> str:
+    return _stringify_substrate_item_localized(item)
+
+
+def _stringify_substrate_item_localized(
+    item: object,
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
+) -> str:
     if isinstance(item, str):
-        return _compact_string(item)
+        return _compact_string(
+            prompt_localization.localize_course_context_text(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+        )
     if not isinstance(item, dict):
-        return _compact_string(item)
+        return _compact_string(
+            prompt_localization.localize_course_context_text(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+        )
     for key in (
         "point",
         "priority",
@@ -744,11 +792,19 @@ def _stringify_substrate_item(item: object) -> str:
         "role",
         "stakes",
     ):
-        value = str(item.get(key) or "").strip()
+        value = prompt_localization.localize_course_context_text(
+            item.get(key),
+            localization=localization,
+            missing_texts=missing_texts,
+        )
         if value:
             suffix_parts = []
             for suffix_key in ("why", "role", "stakes"):
-                suffix = str(item.get(suffix_key) or "").strip()
+                suffix = prompt_localization.localize_course_context_text(
+                    item.get(suffix_key),
+                    localization=localization,
+                    missing_texts=missing_texts,
+                )
                 if suffix and suffix != value:
                     suffix_parts.append(suffix)
             if suffix_parts:
@@ -815,6 +871,8 @@ def _podcast_substrate_context_lines(
     prompt_type: str,
     lecture: dict[str, Any],
     source_item: object | None,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
 ) -> list[str]:
     substrate_config = config.get("podcast_substrate") if isinstance(config.get("podcast_substrate"), dict) else {}
     if not substrate_config.get("enabled", False):
@@ -834,48 +892,95 @@ def _podcast_substrate_context_lines(
         lecture=lecture,
     )
     lines: list[str] = []
-    angle = str(section.get("angle") or "").strip()
+    ui = prompt_localization.course_context_ui_strings(localization)
+    angle = prompt_localization.localize_course_context_text(
+        section.get("angle"),
+        localization=localization,
+        missing_texts=missing_texts,
+    )
     if angle:
-        lines.append(f"- Podcast angle: {_compact_string(angle)}")
-    for field, label in (
-        ("must_cover", "Must cover"),
-        ("avoid", "Avoid"),
-        ("grounding", "Grounding"),
+        lines.append(ui["podcast_angle_template"].format(text=_compact_string(angle)))
+    for field, template_key in (
+        ("must_cover", "must_cover_template"),
+        ("avoid", "avoid_template"),
+        ("grounding", "grounding_template"),
     ):
         values = section.get(field)
         if isinstance(values, list):
-            selected = [_stringify_substrate_item(item) for item in values[:max_items]]
+            selected = [
+                _stringify_substrate_item_localized(
+                    item,
+                    localization=localization,
+                    missing_texts=missing_texts,
+                )
+                for item in values[:max_items]
+            ]
             selected = [item for item in selected if item]
             if selected:
-                lines.append(f"- {label}: " + "; ".join(selected) + ".")
+                lines.append(ui[template_key].format(items="; ".join(selected)))
     selected_concepts = podcast.get("selected_concepts")
     if isinstance(selected_concepts, list) and max_items > 0:
-        concepts = [_stringify_substrate_item(item) for item in selected_concepts[:max_items]]
+        concepts = [
+            _stringify_substrate_item_localized(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+            for item in selected_concepts[:max_items]
+        ]
         concepts = [item for item in concepts if item]
         if concepts:
-            lines.append("- Selected concepts: " + "; ".join(concepts) + ".")
+            lines.append(ui["selected_concepts_template"].format(items="; ".join(concepts)))
     selected_tensions = podcast.get("selected_tensions")
     if isinstance(selected_tensions, list) and max_items > 0:
-        tensions = [_stringify_substrate_item(item) for item in selected_tensions[:max_items]]
+        tensions = [
+            _stringify_substrate_item_localized(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+            for item in selected_tensions[:max_items]
+        ]
         tensions = [item for item in tensions if item]
         if tensions:
-            lines.append("- Selected tensions: " + "; ".join(tensions) + ".")
+            lines.append(ui["selected_tensions_template"].format(items="; ".join(tensions)))
     source_selection = podcast.get("source_selection")
     if prompt_type != "short" and isinstance(source_selection, list) and max_items > 0:
-        sources = [_stringify_substrate_item(item) for item in source_selection[:max_items]]
+        sources = [
+            _stringify_substrate_item_localized(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+            for item in source_selection[:max_items]
+        ]
         sources = [item for item in sources if item]
         if sources:
-            lines.append("- Source selection: " + "; ".join(sources) + ".")
+            lines.append(ui["source_selection_template"].format(items="; ".join(sources)))
     grounding_notes = podcast.get("grounding_notes")
     if isinstance(grounding_notes, list) and max_items > 0:
-        notes = [_stringify_substrate_item(item) for item in grounding_notes[: min(2, max_items)]]
+        notes = [
+            _stringify_substrate_item_localized(
+                item,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
+            for item in grounding_notes[: min(2, max_items)]
+        ]
         notes = [item for item in notes if item]
         if notes:
-            lines.append("- Substrate grounding notes: " + "; ".join(notes) + ".")
+            lines.append(
+                ui["substrate_grounding_notes_template"].format(items="; ".join(notes))
+            )
     return lines
 
 
-def _summary_lines(entry: dict[str, Any] | None) -> list[str]:
+def _summary_lines(
+    entry: dict[str, Any] | None,
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
+) -> list[str]:
     if not isinstance(entry, dict):
         return []
     result: list[str] = []
@@ -884,14 +989,28 @@ def _summary_lines(entry: dict[str, Any] | None) -> list[str]:
         if not isinstance(values, list):
             continue
         for value in values:
-            cleaned = str(value or "").strip()
+            cleaned = prompt_localization.localize_course_context_text(
+                value,
+                localization=localization,
+                missing_texts=missing_texts,
+            )
             if cleaned:
                 result.append(cleaned)
     return result
 
 
-def _reading_summary_points(reading: dict[str, Any], *, max_points: int) -> list[str]:
-    points = _summary_lines(reading.get("summary") if isinstance(reading.get("summary"), dict) else None)
+def _reading_summary_points(
+    reading: dict[str, Any],
+    *,
+    max_points: int,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
+) -> list[str]:
+    points = _summary_lines(
+        reading.get("summary") if isinstance(reading.get("summary"), dict) else None,
+        localization=localization,
+        missing_texts=missing_texts,
+    )
     return points[:max_points]
 
 
@@ -985,7 +1104,36 @@ def _find_matching_slide(lecture: dict[str, Any], source_item: object) -> dict[s
     return None
 
 
-def _overview_excerpt(bundle: CoursePromptContextBundle, lecture_key: str) -> str | None:
+def _semantic_term_label(
+    term: dict[str, Any],
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
+) -> str:
+    label = prompt_localization.localize_course_context_text(
+        term.get("label"),
+        localization=localization,
+        missing_texts=missing_texts,
+    )
+    category = prompt_localization.localize_course_context_text(
+        term.get("category"),
+        localization=localization,
+        missing_texts=missing_texts,
+    )
+    if not label:
+        return ""
+    if not category:
+        return label
+    return f"{label} ({category})"
+
+
+def _overview_excerpt(
+    bundle: CoursePromptContextBundle,
+    lecture_key: str,
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
+) -> str | None:
     if not bundle.course_overview_lines:
         return None
     target_key = canonicalize_lecture_key(lecture_key)
@@ -998,15 +1146,25 @@ def _overview_excerpt(bundle: CoursePromptContextBundle, lecture_key: str) -> st
             continue
         start = max(0, index - 1)
         end = min(len(bundle.course_overview_lines), index + 2)
-        return " | ".join(bundle.course_overview_lines[start:end])
+        excerpt = " | ".join(bundle.course_overview_lines[start:end])
+        localized_excerpt = prompt_localization.localize_course_context_text(
+            excerpt,
+            localization=localization,
+            missing_texts=missing_texts,
+        )
+        return localized_excerpt or excerpt
     return None
 
 
-def _source_character_lines(lecture: dict[str, Any], source_item: object | None) -> list[str]:
+def _source_character_lines(
+    lecture: dict[str, Any],
+    source_item: object | None,
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+) -> list[str]:
+    ui = prompt_localization.course_context_ui_strings(localization)
     if source_item is None:
-        return [
-            "- Treat this as a lecture-block synthesis across multiple readings, informed by teaching framing rather than as one uniform text."
-        ]
+        return [ui["no_source_character_line"]]
 
     source_type = str(getattr(source_item, "source_type", "") or "").strip().lower()
     if source_type == "slide":
@@ -1015,35 +1173,52 @@ def _source_character_lines(lecture: dict[str, Any], source_item: object | None)
         subcategory = str((slide or {}).get("subcategory") or "").strip().lower() or "slide"
         if subcategory == "lecture":
             return [
-                f"- This is a lecture slide deck: fragmentary teaching scaffolding for the theme '{title}'.",
-                "- Treat the deck as a guide to sequence, emphasis, and framing rather than as a complete prose source.",
+                ui["lecture_slide_source_line_1"].format(title=title),
+                ui["lecture_slide_source_line_2"],
             ]
         if subcategory == "seminar":
             return [
-                f"- This is a seminar slide deck: application- and discussion-oriented teaching material for '{title}'.",
-                "- Expect prompts, exercises, and simplifications that presuppose the lecture and readings.",
+                ui["seminar_slide_source_line_1"].format(title=title),
+                ui["seminar_slide_source_line_2"],
             ]
         if subcategory == "exercise":
             return [
-                f"- This is an exercise slide deck: practice-oriented material for '{title}'.",
-                "- Use it to reconstruct what is being trained or clarified, not as a standalone theory text.",
+                ui["exercise_slide_source_line_1"].format(title=title),
+                ui["exercise_slide_source_line_2"],
             ]
         return [
-            "- This is a slide deck rather than a full prose source.",
-            "- Reconstruct structure and emphasis without overstating what the slides explicitly say.",
+            ui["generic_slide_source_line_1"],
+            ui["generic_slide_source_line_2"],
         ]
 
     reading = _find_matching_reading(lecture, source_item)
     title = str((reading or {}).get("reading_title") or getattr(source_item, "base_name", "")).strip()
     if "grundbog kapitel" in title.casefold():
         return [
-            f"- This is a textbook chapter: an orienting or field-mapping text for '{title}'.",
-            "- Use it to frame the lecture theme, key concepts, and major distinctions rather than expecting one narrow empirical claim.",
+            ui["textbook_source_line_1"].format(title=title),
+            ui["textbook_source_line_2"],
         ]
     return [
-        f"- This is an assigned article or chapter centered on the specific contribution '{title}'.",
-        "- Treat it as one perspective on the lecture theme, with its own argument, emphasis, and delimitations.",
+        ui["article_source_line_1"].format(title=title),
+        ui["article_source_line_2"],
     ]
+
+
+def _localized_slide_subcategory(
+    subcategory: str,
+    *,
+    localization: prompt_localization.PromptLocalization | None = None,
+) -> str:
+    normalized = str(subcategory or "").strip().lower()
+    if localization is None or localization.locale == "en":
+        return normalized or "slide"
+    mapping = {
+        "lecture": "forelaesnings",
+        "seminar": "seminar",
+        "exercise": "oevelses",
+        "slide": "slide",
+    }
+    return mapping.get(normalized, normalized or "slide")
 
 
 def build_course_prompt_context_note(
@@ -1053,6 +1228,8 @@ def build_course_prompt_context_note(
     lecture_key: str,
     prompt_type: str,
     source_item: object | None = None,
+    localization: prompt_localization.PromptLocalization | None = None,
+    missing_texts: set[str] | None = None,
 ) -> str:
     if bundle is None or not config or not config.get("enabled", False):
         return ""
@@ -1078,14 +1255,16 @@ def build_course_prompt_context_note(
         course_theme_limit = min(course_theme_limit, 5)
 
     sections: list[str] = []
+    ui = prompt_localization.course_context_ui_strings(localization)
     lecture_theme = _clean_lecture_theme(lecture_title) or lecture_title
 
     frame_lines = [
-        f"- Current lecture: {canonical_key} - {lecture_title}.",
-        f"- Current lecture theme: {lecture_theme}.",
-        (
-            f"- Course position: lecture {sequence_index} of {total_lectures}; "
-            f"this sits in the {stage} portion of the course."
+        ui["current_lecture_template"].format(lecture=f"{canonical_key} - {lecture_title}"),
+        ui["current_lecture_theme_template"].format(theme=lecture_theme),
+        ui["course_position_template"].format(
+            sequence_index=sequence_index,
+            total_lectures=total_lectures,
+            stage=prompt_localization.localize_stage(stage, localization),
         ),
     ]
     previous_lectures = []
@@ -1104,9 +1283,9 @@ def build_course_prompt_context_note(
                 f"{next_lecture.get('lecture_key')} - {str(next_lecture.get('lecture_title') or '').strip()}"
             )
     if previous_lectures:
-        frame_lines.append(f"- It builds on: {', '.join(previous_lectures)}.")
+        frame_lines.append(ui["builds_on_template"].format(items=", ".join(previous_lectures)))
     if next_lectures:
-        frame_lines.append(f"- It leads into: {', '.join(next_lectures)}.")
+        frame_lines.append(ui["leads_into_template"].format(items=", ".join(next_lectures)))
     if bundle.course_theme_titles and course_theme_limit > 0:
         course_arc = _local_course_arc_titles(
             bundle,
@@ -1114,22 +1293,35 @@ def build_course_prompt_context_note(
             max_items=course_theme_limit,
         )
         if course_arc:
-            frame_lines.append(f"- Broader course arc in play: {course_arc}.")
-    overview_excerpt = _overview_excerpt(bundle, canonical_key)
+            frame_lines.append(ui["broader_course_arc_template"].format(items=course_arc))
+    overview_excerpt = _overview_excerpt(
+        bundle,
+        canonical_key,
+        localization=localization,
+        missing_texts=missing_texts,
+    )
     if overview_excerpt:
-        frame_lines.append(f"- Course overview excerpt: {overview_excerpt}.")
-    sections.append("## Course and lecture frame\n" + "\n".join(frame_lines))
+        frame_lines.append(ui["course_overview_excerpt_template"].format(excerpt=overview_excerpt))
+    sections.append(ui["section_course_frame"] + "\n" + "\n".join(frame_lines))
 
-    source_character_lines = _source_character_lines(lecture, source_item)
+    source_character_lines = _source_character_lines(
+        lecture,
+        source_item,
+        localization=localization,
+    )
     if source_character_lines:
-        sections.append("## Source character\n" + "\n".join(source_character_lines))
+        sections.append(ui["section_source_character"] + "\n" + "\n".join(source_character_lines))
 
     lecture_summary = lecture.get("summary") if isinstance(lecture.get("summary"), dict) else None
-    summary_lines = _summary_lines(lecture_summary)
+    summary_lines = _summary_lines(
+        lecture_summary,
+        localization=localization,
+        missing_texts=missing_texts,
+    )
     if summary_lines:
         summary_cap = 2 if prompt_type == "short" else max(4, point_limit + 1)
         sections.append(
-            "## Lecture synthesis\n"
+            ui["section_lecture_synthesis"] + "\n"
             + "\n".join(f"- {line}" for line in summary_lines[:summary_cap])
         )
 
@@ -1138,24 +1330,18 @@ def build_course_prompt_context_note(
         slide_lines: list[str] = []
         if slide_titles.get("lecture"):
             slide_lines.append(
-                "- Forelaesning slides frame the lecture through: "
-                + "; ".join(slide_titles["lecture"])
-                + "."
+                ui["slide_lecture_template"].format(items="; ".join(slide_titles["lecture"]))
             )
         if slide_titles.get("seminar"):
             slide_lines.append(
-                "- Seminar slides operationalize or test the material through: "
-                + "; ".join(slide_titles["seminar"])
-                + "."
+                ui["slide_seminar_template"].format(items="; ".join(slide_titles["seminar"]))
             )
         if slide_titles.get("exercise"):
             slide_lines.append(
-                "- Exercise slides reinforce the block through: "
-                + "; ".join(slide_titles["exercise"])
-                + "."
+                ui["slide_exercise_template"].format(items="; ".join(slide_titles["exercise"]))
             )
         if slide_lines:
-            sections.append("## Teaching context\n" + "\n".join(slide_lines))
+            sections.append(ui["section_teaching_context"] + "\n" + "\n".join(slide_lines))
 
     reading_lines: list[str] = []
     target_reading = None
@@ -1169,7 +1355,12 @@ def build_course_prompt_context_note(
         title = str(reading.get("reading_title") or "").strip()
         if not title:
             continue
-        summary_points = _reading_summary_points(reading, max_points=point_limit)
+        summary_points = _reading_summary_points(
+            reading,
+            max_points=point_limit,
+            localization=localization,
+            missing_texts=missing_texts,
+        )
         if summary_points:
             reading_lines.append(f"- {title}: {' '.join(summary_points)}")
         else:
@@ -1177,7 +1368,7 @@ def build_course_prompt_context_note(
         if len(reading_lines) >= reading_limit:
             break
     if reading_lines:
-        sections.append("## Reading map\n" + "\n".join(reading_lines))
+        sections.append(ui["section_reading_map"] + "\n" + "\n".join(reading_lines))
 
     semantic_lines = _lecture_semantic_context_lines(
         bundle=bundle,
@@ -1185,9 +1376,11 @@ def build_course_prompt_context_note(
         prompt_type=prompt_type,
         lecture=lecture,
         source_item=source_item,
+        localization=localization,
+        missing_texts=missing_texts,
     )
     if semantic_lines:
-        sections.append("## Semantic guidance\n" + "\n".join(semantic_lines))
+        sections.append(ui["section_semantic_guidance"] + "\n" + "\n".join(semantic_lines))
 
     podcast_substrate_lines = _podcast_substrate_context_lines(
         bundle=bundle,
@@ -1196,9 +1389,11 @@ def build_course_prompt_context_note(
         prompt_type=prompt_type,
         lecture=lecture,
         source_item=source_item,
+        localization=localization,
+        missing_texts=missing_texts,
     )
     if podcast_substrate_lines:
-        sections.append("## Podcast substrate\n" + "\n".join(podcast_substrate_lines))
+        sections.append(ui["section_podcast_substrate"] + "\n" + "\n".join(podcast_substrate_lines))
 
     target_lines: list[str] = []
     if source_item is not None:
@@ -1207,12 +1402,17 @@ def build_course_prompt_context_note(
             reading = _find_matching_reading(lecture, source_item)
             if reading is not None:
                 title = str(reading.get("reading_title") or getattr(source_item, "base_name", "")).strip()
-                summary_points = _reading_summary_points(reading, max_points=max(2, point_limit))
+                summary_points = _reading_summary_points(
+                    reading,
+                    max_points=max(2, point_limit),
+                    localization=localization,
+                    missing_texts=missing_texts,
+                )
                 if title:
-                    target_lines.append(f"- Target source: {title}.")
+                    target_lines.append(ui["target_reading_template"].format(title=title))
                 for point in summary_points:
-                    target_lines.append(f"- Use this reading as one contribution to the lecture block, not as the whole block.")
-                    target_lines.append(f"- Source-specific emphasis: {point}")
+                    target_lines.append(ui["target_reading_scope_line"])
+                    target_lines.append(ui["target_reading_emphasis_template"].format(text=point))
                     break
         elif source_type == "slide":
             slide = _find_matching_slide(lecture, source_item)
@@ -1220,19 +1420,18 @@ def build_course_prompt_context_note(
                 title = str(slide.get("title") or getattr(source_item, "base_name", "")).strip()
                 subcategory = str(slide.get("subcategory") or "").strip().lower() or "slide"
                 target_lines.append(
-                    f"- Target source: {subcategory} slide deck '{title}'. Treat it as teaching structure, not as a complete statement of the theory."
+                    ui["target_slide_template"].format(
+                        subcategory=_localized_slide_subcategory(
+                            subcategory,
+                            localization=localization,
+                        ),
+                        title=title,
+                    )
                 )
-                target_lines.append(
-                    "- Reconstruct the lecturer's sequencing and emphasis, then anchor substantive claims in the lecture block and readings where possible."
-                )
+                target_lines.append(ui["target_slide_followup"])
     if target_lines:
-        sections.append("## Target source fit\n" + "\n".join(target_lines))
+        sections.append(ui["section_target_source_fit"] + "\n" + "\n".join(target_lines))
 
     if prompt_type != "short":
-        sections.append(
-            "## Grounding rules\n"
-            "- Treat lecture-level and course-level framing as prioritization aids rather than replacement for what the source explicitly says.\n"
-            "- Let slide framing help decide emphasis and likely misunderstandings, but keep claims anchored in the supplied source material.\n"
-            "- Use slide titles and neighboring lectures to orient the explanation, but do not attribute unsupported claims to authors or lecturers."
-        )
+        sections.append(ui["section_grounding_rules"] + "\n" + "\n".join(ui["grounding_rules"]))
     return "\n\n".join(section for section in sections if section.strip())

@@ -303,6 +303,98 @@ class GenerateWeekTests(unittest.TestCase):
             prompt.index("Focus on:"),
         )
 
+    def test_danish_variant_uses_localized_prompt_scaffolding(self):
+        mod = _load_module()
+        repo_root = Path(__file__).resolve().parents[3]
+        prompt_config_path = (
+            repo_root
+            / "notebooklm-podcast-auto"
+            / "personlighedspsykologi-da"
+            / "prompt_config.json"
+        )
+        config = mod.load_prompt_config(prompt_config_path)
+        variant = mod.build_language_variants(config)[0]
+        localization_cfg = mod.prompt_localization_helpers.normalize_prompt_localization(
+            config.get("prompt_localization")
+        )
+        localization, sections = mod.localized_prompt_context_for_variant(
+            repo_root=repo_root,
+            prompt_config_path=prompt_config_path,
+            variant=variant,
+            prompt_localization_cfg=localization_cfg,
+            localization_cache={},
+            localized_sections_cache={},
+            base_sections={
+                "audio_prompt_strategy": mod.normalize_audio_prompt_strategy(
+                    config.get("audio_prompt_strategy")
+                ),
+                "exam_focus": mod.normalize_exam_focus(config.get("exam_focus")),
+                "study_context": mod.normalize_study_context(config.get("study_context")),
+                "audio_prompt_framework": mod.normalize_audio_prompt_framework(
+                    config.get("audio_prompt_framework")
+                ),
+                "meta_prompting": mod.normalize_meta_prompting(config.get("meta_prompting")),
+                "course_context": mod.normalize_course_context(config.get("course_context")),
+                "weekly_overview": config.get("weekly_overview", {}),
+                "per_reading": config.get("per_reading", {}),
+                "per_slide": mod.ensure_dict(config.get("per_slide", config.get("per_reading", {}))),
+                "short": mod.ensure_dict(config.get("short", config.get("brief", {}))),
+                "report_prompt_strategy": mod.normalize_report_prompt_strategy(
+                    config.get("report_prompt_strategy")
+                ),
+                "weekly_report": mod.ensure_dict(config.get("weekly_report", config.get("report", {}))),
+                "per_reading_report": mod.ensure_dict(
+                    config.get("per_reading_report", config.get("report", {}))
+                ),
+                "per_slide_report": mod.ensure_dict(
+                    config.get("per_slide_report", config.get("per_reading_report", config.get("report", {})))
+                ),
+                "short_report": mod.ensure_dict(config.get("short_report", config.get("report", {}))),
+                "weekly_infographic": mod.ensure_dict(
+                    config.get("weekly_infographic", config.get("infographic", {}))
+                ),
+                "per_reading_infographic": mod.ensure_dict(
+                    config.get("per_reading_infographic", config.get("infographic", {}))
+                ),
+                "short_infographic": mod.ensure_dict(
+                    config.get("short_infographic", config.get("brief_infographic", config.get("infographic", {})))
+                ),
+                "quiz": mod.ensure_dict(config.get("quiz")),
+                "report": mod.ensure_dict(config.get("report")),
+                "infographic": mod.ensure_dict(config.get("infographic")),
+            },
+        )
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_audio_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            course_title="Personlighedspsykologi",
+            source_item=reading_item,
+            course_context_note="## Kursus- og forelaesningsramme\n- Oversat kontekst.",
+            course_context_heading=sections["course_context"].get("heading"),
+            prompt_strategy=sections["audio_prompt_strategy"],
+            exam_focus=sections["exam_focus"],
+            study_context=sections["study_context"],
+            prompt_framework=sections["audio_prompt_framework"],
+            meta_prompting=sections["meta_prompting"],
+            localization=localization,
+        )
+
+        self.assertEqual(variant["prompt_locale"], "da")
+        self.assertIn("Lav en lydgennemgang til", prompt)
+        self.assertIn("Kursus: Personlighedspsykologi", prompt)
+        self.assertIn("Kursusbevidst forelaesningskontekst:", prompt)
+        self.assertIn("Saadan bruges kursuskonteksten:", prompt)
+        self.assertIn("Fortolkningsroller:", prompt)
+        self.assertIn("Fokuser paa:", prompt)
+        self.assertNotIn("Course understanding usage:", prompt)
+        self.assertNotIn("Interpretive roles:", prompt)
+
     def test_build_report_prompt_includes_course_context_section(self):
         mod = _load_module()
         reading_item = mod.SourceItem(
@@ -324,6 +416,90 @@ class GenerateWeekTests(unittest.TestCase):
         self.assertIn("This lecture revises the earlier trait framework.", prompt)
         self.assertIn("roughly one page", prompt)
         self.assertIn("3-4 short, relevant quotes", prompt)
+
+    def test_danish_variant_localizes_report_prompt_scaffolding(self):
+        mod = _load_module()
+        repo_root = Path(__file__).resolve().parents[3]
+        prompt_config_path = (
+            repo_root
+            / "notebooklm-podcast-auto"
+            / "personlighedspsykologi-da"
+            / "prompt_config.json"
+        )
+        config = mod.load_prompt_config(prompt_config_path)
+        variant = mod.build_language_variants(config)[0]
+        localization_cfg = mod.prompt_localization_helpers.normalize_prompt_localization(
+            config.get("prompt_localization")
+        )
+        localization, sections = mod.localized_prompt_context_for_variant(
+            repo_root=repo_root,
+            prompt_config_path=prompt_config_path,
+            variant=variant,
+            prompt_localization_cfg=localization_cfg,
+            localization_cache={},
+            localized_sections_cache={},
+            base_sections={
+                "audio_prompt_strategy": mod.normalize_audio_prompt_strategy(
+                    config.get("audio_prompt_strategy")
+                ),
+                "exam_focus": mod.normalize_exam_focus(config.get("exam_focus")),
+                "study_context": mod.normalize_study_context(config.get("study_context")),
+                "audio_prompt_framework": mod.normalize_audio_prompt_framework(
+                    config.get("audio_prompt_framework")
+                ),
+                "meta_prompting": mod.normalize_meta_prompting(config.get("meta_prompting")),
+                "course_context": mod.normalize_course_context(config.get("course_context")),
+                "report_prompt_strategy": mod.normalize_report_prompt_strategy(
+                    config.get("report_prompt_strategy")
+                ),
+                "report": mod.ensure_dict(config.get("report")),
+                "weekly_report": mod.ensure_dict(config.get("weekly_report", config.get("report", {}))),
+                "per_reading_report": mod.ensure_dict(
+                    config.get("per_reading_report", config.get("report", {}))
+                ),
+                "per_slide_report": mod.ensure_dict(
+                    config.get("per_slide_report", config.get("per_reading_report", config.get("report", {})))
+                ),
+                "short_report": mod.ensure_dict(config.get("short_report", config.get("report", {}))),
+                "weekly_overview": config.get("weekly_overview", {}),
+                "per_reading": config.get("per_reading", {}),
+                "per_slide": mod.ensure_dict(config.get("per_slide", config.get("per_reading", {}))),
+                "short": mod.ensure_dict(config.get("short", config.get("brief", {}))),
+                "weekly_infographic": mod.ensure_dict(
+                    config.get("weekly_infographic", config.get("infographic", {}))
+                ),
+                "per_reading_infographic": mod.ensure_dict(
+                    config.get("per_reading_infographic", config.get("infographic", {}))
+                ),
+                "short_infographic": mod.ensure_dict(
+                    config.get("short_infographic", config.get("brief_infographic", config.get("infographic", {})))
+                ),
+                "quiz": mod.ensure_dict(config.get("quiz")),
+                "infographic": mod.ensure_dict(config.get("infographic")),
+            },
+        )
+        reading_item = mod.SourceItem(
+            path=Path("/tmp/Foucault.pdf"),
+            base_name="Foucault",
+            source_type="reading",
+        )
+
+        prompt = mod.build_report_prompt(
+            prompt_type="single_reading",
+            custom_prompt="",
+            source_item=reading_item,
+            course_context_note="## Kursus- og forelaesningsramme\n- Oversat kontekst.",
+            course_context_heading=sections["course_context"].get("heading"),
+            prompt_strategy=sections["report_prompt_strategy"],
+            study_context=sections["study_context"],
+            meta_prompting=sections["meta_prompting"],
+            localization=localization,
+        )
+
+        self.assertIn("Rapportbrief:", prompt)
+        self.assertIn("Krav til output:", prompt)
+        self.assertIn("Kursusbevidst forelaesningskontekst:", prompt)
+        self.assertNotIn("Output requirements:", prompt)
 
     def test_build_audio_prompt_includes_study_context_section(self):
         mod = _load_module()

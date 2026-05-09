@@ -1,0 +1,210 @@
+{
+  "audio_prompt_strategy": {
+    "audience": "en bachelorstuderende i psykologi",
+    "tone": "rolig, praecis og undervisningsorienteret. Undgaa dramatisering.",
+    "source_roles": {
+      "lecture_slides": "Brug forelaesningsslides til raekkefolge, framing og det underviseren ser ud til at prioritere.",
+      "seminar_slides": "Brug seminarslides til anvendelse, afklaring, diskussionspunkter og sandsynlige misforstaaelser.",
+      "readings": "Brug laesningerne til paastande, begrebslige distinktioner, kvalifikationer og argumentativ dybde."
+    },
+    "prompt_types": {
+      "single_reading": {
+        "focus": [
+          "kildens centrale paastande og argumentationsstruktur",
+          "de vigtigste begrebslige distinktioner og afgraensninger",
+          "hvad kilden udtrykkeligt afviser, korrigerer eller kvalificerer",
+          "hvor en studerende med stoerst sandsynlighed vil misforstaa kilden",
+          "hvad kilden aendrer ved psykologisk taenkning om personlighed og subjektet"
+        ]
+      },
+      "single_slide": {
+        "lead": "Kilden er et slidedeck. Slides er fragmentariske og forudsaetter mundtlig uddybning.",
+        "focus": [
+          "det overordnede problem som forelaesningen proever at adressere",
+          "sekvenslogikken der organiserer forelaesningen",
+          "de begreber og distinktioner som forelaesningen behandler som mest centrale",
+          "hvor slides med stoerst sandsynlighed forenkler noget vigtigt",
+          "hvad materialet udfordrer i psykologiens selvforstaaelse"
+        ]
+      },
+      "weekly_readings_only": {
+        "lead": "Du arbejder med flere laesninger inden for samme forelaesningsblok.",
+        "focus": [
+          "det faelles problem eller spoergsmaal som organiserer materialet",
+          "de centrale begrebslige distinktioner, spaendinger og uenigheder paa tvaers af laesningerne",
+          "hvor laesningerne kvalificerer, uddyber eller korrigerer hinanden",
+          "hvad en studerende med stoerst sandsynlighed vil misforstaa",
+          "hvad der betyder mest for psykologisk taenkning om personlighed og subjektet"
+        ]
+      },
+      "short": {
+        "lead": "Hold forklaringen kompakt, konkret og let at bringe videre uden at den bliver vag.",
+        "focus": [
+          "den ene vigtigste paastand, problemstilling eller indsigt",
+          "den centrale distinktion eller afklaring man skal huske",
+          "misforstaaelsen eller overforenklingen man skal undgaa",
+          "hvad der er vigtigst at tage med videre fra kilden"
+        ]
+      },
+      "mixed_sources": {
+        "lead": "Du arbejder med baade slides og laesninger.",
+        "focus": [
+          "det overordnede problem og den argumentative sekvens i forelaesningsblokken",
+          "de centrale distinktioner, spaendinger og korrektioner paa tvaers af slides og laesninger",
+          "hvordan forelaesnings- og seminarframing hjaelper med at prioritere hvad der er vigtigst at forstaa",
+          "hvor laesningerne nuancerer, komplicerer eller korrigerer forelaesningsframing",
+          "hvad der lettest misforstaas hvis slides laeses for hurtigt eller for bogstaveligt",
+          "hvad materialet aendrer i psykologiens selvforstaaelse"
+        ]
+      }
+    }
+  },
+  "audio_prompt_framework": {
+    "heading": "Genereringsregler:",
+    "course_context_heading": "Saadan bruges kursuskonteksten:",
+    "course_context_rules": [
+      "Brug sektionerne om kursuskontekst og podcastsubstrat som et udvaelgelseskort: hvad der skal prioriteres, hvad der skal undgaas, og hvordan denne kilde passer ind i forelaesningsblokken.",
+      "Forankr hver substantiel paastand i det leverede kildemateriale; citer eller henvis ikke til kursuskontekst-artefakter som om de var kilder.",
+      "Hold kildens paastande, undervisningsframing og fortolkning paa kursusniveau adskilt naar de traekker i forskellige retninger.",
+      "Naevn ikke Course Understanding Pipeline, source cards, substrates eller interne artefakter i lyden."
+    ],
+    "shared_rules": [
+      "Forklar materialet som en tankelinje, ikke som en usammenhaengende recap.",
+      "Skeln tydeligt mellem hvad kilden udtrykkeligt argumenterer for og hvad du selv udleder af konteksten.",
+      "Opfind ikke studier, eksempler, referencer eller forfatterpositioner som ikke er forankret i det leverede materiale.",
+      "Prioriter begrebslige spaendinger, antagelser og indsatser over udtoemmende detaljelister."
+    ],
+    "format_guidance": {
+      "deep-dive": [
+        "Byg en kumulativ forklaring med en tydelig argumentativ bue frem for en punktliste.",
+        "Brug tid paa hvorfor distinktionerne betyder noget, ikke kun paa at navngive dem."
+      ],
+      "brief": [
+        "Komprimer haardt omkring den centrale paastand og en eller to afgoerende distinktioner.",
+        "Udelad sekundaere sidegrene medmindre de aendrer hovedfortolkningen."
+      ],
+      "critique": [
+        "Fremhaev interne spaendinger, blinde vinkler og begraensninger eksplicit, men uden at karikere kilden.",
+        "Forankr kritikken i kildens egne paastande og antagelser."
+      ],
+      "debate": [
+        "Fremstil de staerkeste konkurrerende fortolkninger fair foer du tager stilling.",
+        "Goer uenigheder eksplicitte og forklar hvad der staar paa spil i dem."
+      ]
+    },
+    "length_guidance": {
+      "short": [
+        "Sigt efter en taet forklaring med meget lidt gentagelse.",
+        "Prioriter den ene eller to pointer som den studerende skal huske."
+      ],
+      "default": [
+        "Brug plads nok til at forklare de centrale distinktioner og deres indsats uden at drive vaek."
+      ],
+      "long": [
+        "Tag dig tid til at folde argumentet ud trin for trin og forbinde det til bredere teoretiske indsatser.",
+        "Brug kun gentagelse naar det afklarer en vanskelig distinktion."
+      ]
+    }
+  },
+  "report_prompt_strategy": {
+    "heading": "Rapportbrief:",
+    "prompt_types": {
+      "single_reading": {
+        "lead": "Lav en forkortet forberedelsesguide til laesningen saa den studerende er bedre rustet foer de laeser originalteksten.",
+        "focus": [
+          "forklar tekstens struktur og hovedargumenter paa en kompakt og laesbar maade",
+          "fremhaev de distinktioner eller spaendinger der betyder mest foer foerste gennemlaesning",
+          "inkluder 3-4 korte, relevante citater som den studerende boer lede efter i originalteksten",
+          "behandl guiden som forberedelse til kilden, ikke som en erstatning for kilden"
+        ]
+      },
+      "single_slide": {
+        "lead": "Lav en forkortet forberedelsesguide til slidedecket som rekonstruerer forelaesningens logik og hjaelper den studerende med at vide hvad de skal lytte efter i timen.",
+        "focus": [
+          "rekonstruer slidedeckets struktur og vigtigste argumentationslinje",
+          "afklar hvad slides forudsaetter frem for udtrykkeligt at sige",
+          "peg paa hvilke begreber eller distinktioner den studerende boer foelge saerligt omhyggeligt",
+          "lad ikke som om slides er en fuldstaendig selvstaendig tekst"
+        ]
+      },
+      "weekly_readings_only": {
+        "lead": "Lav en forkortet forberedelsesguide til forelaesningens laesesaet saa den studerende kan gaa ind i originalteksterne med et staerkt overblik.",
+        "focus": [
+          "forklar det faelles problem, sekvensen og hovedargumenterne paa tvaers af laesningerne",
+          "vis hvordan laesningerne adskiller sig, kvalificerer hinanden eller traekker i forskellige retninger",
+          "inkluder 3-4 korte, relevante citater man boer lede efter paa tvaers af laesesaettet",
+          "hold guiden forberedende og kilde-respektfuld frem for udtoemmende"
+        ]
+      },
+      "short": {
+        "lead": "Lav en meget kompakt forkortet forberedelsesguide som hjaelper den studerende med at orientere sig foer laesning af originalkilden.",
+        "focus": [
+          "komprimer haardt omkring struktur, hovedpaastand og en eller to centrale distinktioner",
+          "inkluder kun de mest nyttige 2-3 citatmaal hvis de reelt hjaelper laesningen",
+          "bevar nok specificitet til at den studerende ved hvad de skal lede efter i kilden"
+        ]
+      }
+    }
+  },
+  "study_context": {
+    "heading": "Aktuel studiesammenhaeng:",
+    "items": [
+      "Der er en kommende mundtlig eksamen i dette kursus, saa materialet skal hjaelpe den studerende med at forklare ideer hoejt snarere end kun at genkende dem paa papir.",
+      "Efter det indledende svar gaar eksamen videre i en laengere fri diskussion, saa materialet skal forberede den studerende paa at sammenligne teorier, forsvare fortolkninger, kvalificere paastande og udvide samtalen under opfoelgende spoergsmaal."
+    ]
+  },
+  "exam_focus": {
+    "heading": "Prioriteringslinse:",
+    "prompt_types": {
+      "single_reading": [
+        "afklar hvorfor denne laesning betyder noget for forelaesningsblokken og den bredere kursusbue",
+        "fremhaev de antagelser, distinktioner eller indsatser som undervisningsframing sandsynligvis behandler som afgoerende",
+        "vis hvad denne laesning hjaelper saerligt godt med at forklare og hvor den forbliver partiel eller begraenset",
+        "inkluder mindst en reel spaending, begraensning eller uafklaret problemstilling i stedet for kun at opsummere"
+      ],
+      "single_slide": [
+        "brug slidesekvensen til at udlede hvad forelaesningen prioriterer",
+        "bemark hvad slides fremhaever, nedtoner eller lader vaere underbestemt",
+        "vis hvordan undervisningsframing placerer emnet i det bredere kursus",
+        "mark hvor forelaesningsframing boer kontrolleres mod laesningerne frem for blot at blive gentaget"
+      ],
+      "weekly_readings_only": [
+        "angiv det forelaesningsblok-spoergsmaal som faar disse laesninger til at hoere sammen",
+        "afklar hvilke distinktioner, uenigheder eller spaendinger der fortjener mest opmaerksomhed",
+        "vis hvad forelaesnings- og seminarframing sandsynligvis behandler som vigtigst at tage med videre",
+        "inkluder uafklarede spoergsmaal, begraensninger eller spaendinger i stedet for kun at opsummere konsensus"
+      ],
+      "short": [
+        "goer det tydeligt hvilke en eller to ideer der er vigtigst at tage med videre til senere forelaesninger",
+        "inkluder mindst en begraensning, spaending eller kvalifikation i stedet for kun at opsummere"
+      ],
+      "mixed_sources": [
+        "angiv det forelaesningsblok-spoergsmaal som organiserer baade laesningerne og undervisningsframing",
+        "afklar hvilke distinktioner eller uenigheder forelaesningen ser ud til at prioritere",
+        "vis hvad det samlede materiale forklarer godt og hvor det stadig lader aabne spoergsmaal staa",
+        "inkluder spaendinger, begraensninger eller uafklarede problemstillinger i stedet for kun at opsummere"
+      ]
+    }
+  },
+  "meta_prompting": {
+    "heading": "Ekstern foranalyse til brug hvis relevant:"
+  },
+  "course_context": {
+    "heading": "Kursusbevidst forelaesningskontekst:"
+  },
+  "report": {
+    "prompt": "Hjaelp den studerende med at forstaa kilden gennem en forkortet forberedelsesguide. Forklar struktur og hovedargumenter foer detaljer, og inkluder kun korte relevante citater som peger tilbage paa originalkilden."
+  },
+  "weekly_report": {
+    "prompt": "Syntetiser ugens laesninger og den slide-informerede forelaesningsframing til et forberedende overblik som placerer denne forelaesningsblok i det bredere kursus."
+  },
+  "per_reading_report": {
+    "prompt": "Hold guiden forberedende snarere end erstattende: maalet er at goere den originale laesning lettere at gaa ind i senere."
+  },
+  "per_slide_report": {
+    "prompt": "Rekonstruer forelaesningslogikken omhyggeligt og behandl ikke fragmentariske slidepunkter som om de var en fuld prosakilde."
+  },
+  "short_report": {
+    "prompt": "Producer en meget kompakt forkortet guide med kun den mest nyttige struktur og de mest nyttige citatmaal."
+  }
+}

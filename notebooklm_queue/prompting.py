@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+from notebooklm_queue import prompt_localization
+
 PROMPT_SIDECAR_SUFFIXES = (
     ".prompt.md",
     ".prompt.txt",
@@ -688,7 +690,9 @@ def _source_roles_section(
     prompt_type: str,
     prompt_strategy: dict,
     source_item: object | None,
+    localization: prompt_localization.PromptLocalization | None = None,
 ) -> str:
+    ui = prompt_localization.prompt_ui_strings(localization)
     roles = prompt_strategy["source_roles"]
     lecture_role = roles["lecture_slides"]
     seminar_role = roles["seminar_slides"]
@@ -696,41 +700,41 @@ def _source_roles_section(
 
     if prompt_type == "single_reading":
         items = [
-            "Reading: Use this reading for the actual claims, distinctions, evidence, and qualifications.",
-            f"Lecture slides: {lecture_role}",
-            f"Seminar slides: {seminar_role}",
+            ui["reading_primary_role"],
+            f"{ui['lecture_slides_label']}: {lecture_role}",
+            f"{ui['seminar_slides_label']}: {seminar_role}",
         ]
     elif prompt_type == "single_slide":
         subcategory = str(getattr(source_item, "slide_subcategory", "") or "").strip().lower()
         if subcategory == "seminar":
-            deck_role = "Target slide deck: Use it to reconstruct application, clarification, and discussion priorities."
+            deck_role = ui["target_slide_role_seminar"]
         elif subcategory == "exercise":
-            deck_role = "Target slide deck: Use it to reconstruct what is being practiced, clarified, or stress-tested."
+            deck_role = ui["target_slide_role_exercise"]
         else:
-            deck_role = "Target slide deck: Use it to reconstruct sequence, framing, and what the lecture is emphasizing."
+            deck_role = ui["target_slide_role_lecture"]
         items = [
             deck_role,
-            f"Readings: {reading_role}",
-            f"Seminar slides: {seminar_role}",
+            f"{ui['readings_label']}: {reading_role}",
+            f"{ui['seminar_slides_label']}: {seminar_role}",
         ]
     elif prompt_type == "short":
         if str(getattr(source_item, "source_type", "") or "").strip().lower() == "slide":
             items = [
-                "Target source: Compress around the one or two ideas the slide framing makes most important.",
-                f"Readings: {reading_role}",
+                ui["target_source_short_slide"],
+                f"{ui['readings_label']}: {reading_role}",
             ]
         else:
             items = [
-                "Target source: Compress around the one or two ideas this source contributes most decisively.",
-                f"Lecture slides: {lecture_role}",
+                ui["target_source_short_other"],
+                f"{ui['lecture_slides_label']}: {lecture_role}",
             ]
     else:
         items = [
-            f"Readings: {reading_role}",
-            f"Lecture slides: {lecture_role}",
-            f"Seminar slides: {seminar_role}",
+            f"{ui['readings_label']}: {reading_role}",
+            f"{ui['lecture_slides_label']}: {lecture_role}",
+            f"{ui['seminar_slides_label']}: {seminar_role}",
         ]
-    return "Interpretive roles:\n" + _format_bullets(items)
+    return f"{ui['interpretive_roles_heading']}\n" + _format_bullets(items)
 
 
 def _source_prompt_sidecar_candidates(source_path: Path, meta_prompting: dict) -> list[Path]:
@@ -806,6 +810,7 @@ def build_audio_prompt(
     source_items: list[object] | None = None,
     week_dir: Path | None = None,
     week_label: str | None = None,
+    localization: prompt_localization.PromptLocalization | None = None,
 ) -> str:
     if prompt_type not in AUDIO_PROMPT_TYPES:
         raise ValueError(
@@ -828,16 +833,19 @@ def build_audio_prompt(
             )
 
     sections: list[str] = []
+    ui = prompt_localization.prompt_ui_strings(localization)
     if prompt_strategy and prompt_strategy.get("enabled", False):
         prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
-        sections.append(f"Create an audio overview for {prompt_strategy['audience']}.")
+        sections.append(ui["audio_intro_template"].format(audience=prompt_strategy["audience"]))
         if course_title:
-            sections.append(f"Course: {course_title.strip()}")
+            sections.append(f"{ui['course_label']}: {course_title.strip()}")
         lead = str(prompt_type_cfg.get("lead") or "").strip()
         if lead:
             sections.append(lead)
         if course_context_note:
-            heading = str(course_context_heading or "Course-aware lecture context:").strip()
+            heading = str(
+                course_context_heading or ui["course_context_heading_default"]
+            ).strip()
             sections.append(f"{heading}\n{course_context_note.strip()}")
             if prompt_framework and prompt_framework.get("enabled", False):
                 course_context_rules = _course_context_rules_for_prompt(
@@ -846,7 +854,8 @@ def build_audio_prompt(
                 )
                 if course_context_rules:
                     rules_heading = str(
-                        prompt_framework.get("course_context_heading") or "Course understanding usage:"
+                        prompt_framework.get("course_context_heading")
+                        or ui["course_context_rules_heading_default"]
                     ).strip()
                     sections.append(f"{rules_heading}\n{_format_bullets(course_context_rules)}")
         sections.append(
@@ -854,12 +863,11 @@ def build_audio_prompt(
                 prompt_type=prompt_type,
                 prompt_strategy=prompt_strategy,
                 source_item=source_item,
+                localization=localization,
             )
         )
         if prompt_type == "short" and getattr(source_item, "source_type", None) == "slide":
-            sections.append(
-                "Because the source is a slide deck, reconstruct the argumentative line instead of paraphrasing bullet fragments."
-            )
+            sections.append(ui["slide_short_reconstruct"])
         if study_context and study_context.get("enabled", False):
             study_items = list(study_context.get("items") or [])
             if study_items:
@@ -869,7 +877,7 @@ def build_audio_prompt(
         focus_items = list(prompt_type_cfg["focus"])
         if prompt_type == "short":
             focus_items = _short_prompt_focus_items(focus_items)
-        sections.append(f"Focus on:\n{_format_bullets(focus_items)}")
+        sections.append(f"{ui['focus_heading']}\n{_format_bullets(focus_items)}")
 
     if exam_focus and exam_focus.get("enabled", False):
         exam_items = exam_focus["prompt_types"].get(prompt_type) or []
@@ -891,18 +899,18 @@ def build_audio_prompt(
             )
 
     if prompt_strategy and prompt_strategy.get("enabled", False):
-        sections.append(f"Tone: {prompt_strategy['tone']}")
+        sections.append(f"{ui['tone_label']}: {prompt_strategy['tone']}")
     elif course_context_note:
-        heading = str(course_context_heading or "Course-aware lecture context:").strip()
+        heading = str(course_context_heading or ui["course_context_heading_default"]).strip()
         sections.append(f"{heading}\n{course_context_note.strip()}")
 
     if custom_prompt:
-        sections.append(f"Additional instructions:\n{custom_prompt}")
+        sections.append(f"{ui['additional_instructions_heading']}\n{custom_prompt}")
     if notes:
         heading = (
             meta_prompting["heading"]
             if meta_prompting and meta_prompting.get("enabled", False)
-            else "External pre-analysis:"
+            else ui["external_pre_analysis_heading_default"]
         )
         sections.append(f"{heading}\n{notes}")
     return "\n\n".join(section for section in sections if section.strip())
@@ -922,6 +930,7 @@ def build_report_prompt(
     source_items: list[object] | None = None,
     week_dir: Path | None = None,
     week_label: str | None = None,
+    localization: prompt_localization.PromptLocalization | None = None,
 ) -> str:
     if prompt_type not in {"single_reading", "single_slide", "weekly_readings_only", "short"}:
         raise ValueError(
@@ -944,22 +953,20 @@ def build_report_prompt(
             )
 
     sections: list[str] = []
+    ui = prompt_localization.prompt_ui_strings(localization)
     if prompt_strategy and prompt_strategy.get("enabled", False):
         prompt_type_cfg = prompt_strategy["prompt_types"][prompt_type]
         lead = str(prompt_type_cfg.get("lead") or "").strip()
         if lead:
             sections.append(lead)
         sections.append(
-            "Output requirements:\n"
-            "- Keep the main explanatory body to roughly one page.\n"
-            "- Explain structure before detail so the student can orient themselves quickly.\n"
-            "- Use short quotes sparingly and only when they genuinely help the student locate key moments in the original.\n"
-            "- Do not fabricate quotations or page references."
+            f"{ui['report_output_requirements_heading']}\n"
+            + _format_bullets(list(ui["report_output_requirements_items"]))
         )
         sections.append(f"{prompt_strategy['heading']}\n{_format_bullets(prompt_type_cfg['focus'])}")
 
     if course_context_note:
-        heading = str(course_context_heading or "Course-aware lecture context:").strip()
+        heading = str(course_context_heading or ui["course_context_heading_default"]).strip()
         sections.append(f"{heading}\n{course_context_note.strip()}")
     if study_context and study_context.get("enabled", False):
         study_items = list(study_context.get("items") or [])
@@ -967,12 +974,12 @@ def build_report_prompt(
             sections.append(f"{study_context['heading']}\n{_format_bullets(study_items)}")
 
     if custom_prompt:
-        sections.append(f"Additional instructions:\n{custom_prompt.strip()}")
+        sections.append(f"{ui['additional_instructions_heading']}\n{custom_prompt.strip()}")
     if notes:
         heading = (
             meta_prompting["heading"]
             if meta_prompting and meta_prompting.get("enabled", False)
-            else "External pre-analysis:"
+            else ui["external_pre_analysis_heading_default"]
         )
         sections.append(f"{heading}\n{notes}")
     return "\n\n".join(section for section in sections if section.strip())

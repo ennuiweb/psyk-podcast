@@ -19,7 +19,11 @@ REPO_ROOT_FOR_IMPORTS = Path(__file__).resolve().parents[3]
 if str(REPO_ROOT_FOR_IMPORTS) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT_FOR_IMPORTS))
 
-from notebooklm_queue import course_context as course_context_helpers, prompting
+from notebooklm_queue import (
+    course_context as course_context_helpers,
+    prompt_localization as prompt_localization_helpers,
+    prompting,
+)
 
 
 def read_json(path: Path) -> dict:
@@ -534,6 +538,7 @@ def per_source_audio_settings(
     course_context_bundle: course_context_helpers.CoursePromptContextBundle | None = None,
     course_context_cfg: dict | None = None,
     lecture_key: str | None = None,
+    localization: prompt_localization_helpers.PromptLocalization | None = None,
 ) -> tuple[str, str, str, str]:
     if source_item.source_type == "slide":
         slide_cfg = {
@@ -555,6 +560,7 @@ def per_source_audio_settings(
             lecture_key=lecture_key,
             prompt_type="single_slide",
             source_item=source_item,
+            localization=localization,
         )
         return (
             "per_slide",
@@ -573,6 +579,7 @@ def per_source_audio_settings(
                 audio_format=slide_cfg.get("format", "deep-dive"),
                 audio_length=slide_cfg.get("length", "default"),
                 source_item=source_item,
+                localization=localization,
             ),
             slide_cfg.get("format", "deep-dive"),
             slide_cfg.get("length", "default"),
@@ -583,6 +590,7 @@ def per_source_audio_settings(
         lecture_key=lecture_key,
         prompt_type="single_reading",
         source_item=source_item,
+        localization=localization,
     )
     return (
         "per_reading",
@@ -601,6 +609,7 @@ def per_source_audio_settings(
             audio_format=per_reading_cfg.get("format", "deep-dive"),
             audio_length=per_reading_cfg.get("length", "default"),
             source_item=source_item,
+            localization=localization,
         ),
         per_reading_cfg.get("format", "deep-dive"),
         per_reading_cfg.get("length", "default"),
@@ -619,6 +628,7 @@ def per_source_report_settings(
     course_context_bundle: course_context_helpers.CoursePromptContextBundle | None = None,
     course_context_cfg: dict | None = None,
     lecture_key: str | None = None,
+    localization: prompt_localization_helpers.PromptLocalization | None = None,
 ) -> tuple[str, str, str]:
     prompt_type = "single_slide" if source_item.source_type == "slide" else "single_reading"
     cfg = per_slide_cfg if source_item.source_type == "slide" else per_reading_cfg
@@ -628,6 +638,7 @@ def per_source_report_settings(
         lecture_key=lecture_key,
         prompt_type=prompt_type,
         source_item=source_item,
+        localization=localization,
     )
     return (
         "per_slide" if source_item.source_type == "slide" else "per_reading",
@@ -641,6 +652,7 @@ def per_source_report_settings(
             meta_note_overrides=meta_note_overrides,
             custom_prompt=cfg.get("prompt", ""),
             source_item=source_item,
+            localization=localization,
         ),
         normalize_report_format(cfg.get("format")),
     )
@@ -1539,6 +1551,7 @@ def build_audio_prompt(
     source_items: list[SourceItem] | None = None,
     week_dir: Path | None = None,
     week_label: str | None = None,
+    localization: prompt_localization_helpers.PromptLocalization | None = None,
 ) -> str:
     return prompting.build_audio_prompt(
         prompt_type=prompt_type,
@@ -1558,6 +1571,7 @@ def build_audio_prompt(
         source_items=source_items,
         week_dir=week_dir,
         week_label=week_label,
+        localization=localization,
     )
 
 
@@ -1575,6 +1589,7 @@ def build_report_prompt(
     source_items: list[SourceItem] | None = None,
     week_dir: Path | None = None,
     week_label: str | None = None,
+    localization: prompt_localization_helpers.PromptLocalization | None = None,
 ) -> str:
     return prompting.build_report_prompt(
         prompt_type=prompt_type,
@@ -1589,6 +1604,7 @@ def build_report_prompt(
         source_items=source_items,
         week_dir=week_dir,
         week_label=week_label,
+        localization=localization,
     )
 
 
@@ -1599,6 +1615,7 @@ def build_course_context_note(
     lecture_key: str | None,
     prompt_type: str,
     source_item: SourceItem | None = None,
+    localization: prompt_localization_helpers.PromptLocalization | None = None,
 ) -> str:
     if course_context_bundle is None or not course_context_cfg or not lecture_key:
         return ""
@@ -1608,6 +1625,7 @@ def build_course_context_note(
         lecture_key=lecture_key,
         prompt_type=prompt_type,
         source_item=source_item,
+        localization=localization,
     )
 
 
@@ -1698,13 +1716,21 @@ def validate_per_slide_audio_config(per_slide_cfg: dict) -> dict[str, dict]:
 
 def build_language_variants(config: dict) -> list[dict]:
     variants: list[dict] = []
+    default_prompt_locale = str(config.get("prompt_locale") or "").strip().lower()
     raw = config.get("languages")
     if isinstance(raw, list):
         for entry in raw:
             if isinstance(entry, str):
                 code = entry.strip()
                 if code:
-                    variants.append({"code": code, "suffix": "", "title_suffix": ""})
+                    variants.append(
+                        {
+                            "code": code,
+                            "suffix": "",
+                            "title_suffix": "",
+                            "prompt_locale": default_prompt_locale or code.lower(),
+                        }
+                    )
                 continue
             if not isinstance(entry, dict):
                 continue
@@ -1713,13 +1739,67 @@ def build_language_variants(config: dict) -> list[dict]:
                 continue
             suffix = (entry.get("suffix") or "").strip()
             title_suffix = (entry.get("title_suffix") or suffix).strip()
-            variants.append({"code": code, "suffix": suffix, "title_suffix": title_suffix})
+            prompt_locale = (
+                str(entry.get("prompt_locale") or default_prompt_locale or code).strip().lower()
+            )
+            variants.append(
+                {
+                    "code": code,
+                    "suffix": suffix,
+                    "title_suffix": title_suffix,
+                    "prompt_locale": prompt_locale or None,
+                }
+            )
 
     if not variants:
         code = (config.get("language") or "").strip()
-        variants.append({"code": code or None, "suffix": "", "title_suffix": ""})
+        variants.append(
+            {
+                "code": code or None,
+                "suffix": "",
+                "title_suffix": "",
+                "prompt_locale": default_prompt_locale or (code or "en").lower(),
+            }
+        )
 
     return variants
+
+
+def localized_prompt_context_for_variant(
+    *,
+    repo_root: Path,
+    prompt_config_path: Path,
+    variant: dict,
+    prompt_localization_cfg: dict,
+    localization_cache: dict[str, prompt_localization_helpers.PromptLocalization],
+    localized_sections_cache: dict[str, dict[str, dict]],
+    base_sections: dict[str, dict],
+) -> tuple[prompt_localization_helpers.PromptLocalization, dict[str, dict]]:
+    prompt_locale = str(
+        variant.get("prompt_locale")
+        or prompt_localization_cfg.get("default_locale")
+        or variant.get("code")
+        or "en"
+    ).strip().lower() or "en"
+
+    localization = localization_cache.get(prompt_locale)
+    if localization is None:
+        localization = prompt_localization_helpers.resolve_prompt_localization(
+            repo_root=repo_root,
+            prompt_config_path=prompt_config_path,
+            config=prompt_localization_cfg,
+            prompt_locale=prompt_locale,
+        )
+        localization_cache[prompt_locale] = localization
+
+    localized_sections = localized_sections_cache.get(prompt_locale)
+    if localized_sections is None:
+        localized_sections = prompt_localization_helpers.localize_sections(
+            base_sections,
+            localization,
+        )
+        localized_sections_cache[prompt_locale] = localized_sections
+    return localization, localized_sections
 
 
 def apply_suffix(name: str, suffix: str) -> str:
@@ -2839,6 +2919,9 @@ def main() -> int:
     report_prompt_strategy = normalize_report_prompt_strategy(config.get("report_prompt_strategy"))
     meta_prompting = normalize_meta_prompting(config.get("meta_prompting"))
     course_context_cfg = normalize_course_context(config.get("course_context"))
+    prompt_localization_cfg = prompt_localization_helpers.normalize_prompt_localization(
+        config.get("prompt_localization")
+    )
     brief_cfg = ensure_dict(config.get("short", config.get("brief", {})))
     report_defaults = ensure_dict(config.get("report"))
     weekly_report_cfg = ensure_dict(config.get("weekly_report", report_defaults))
@@ -2855,6 +2938,31 @@ def main() -> int:
     quiz_quantity = normalize_quiz_quantity(quiz_cfg.get("quantity"))
     quiz_difficulty = normalize_quiz_difficulty(quiz_cfg.get("difficulty"))
     quiz_format = normalize_quiz_format(quiz_cfg.get("format"))
+    base_localized_sections = {
+        "audio_prompt_strategy": audio_prompt_strategy,
+        "exam_focus": exam_focus,
+        "study_context": study_context,
+        "audio_prompt_framework": audio_prompt_framework,
+        "report_prompt_strategy": report_prompt_strategy,
+        "meta_prompting": meta_prompting,
+        "course_context": course_context_cfg,
+        "weekly_overview": weekly_cfg,
+        "per_reading": per_cfg,
+        "per_slide": per_slide_cfg,
+        "short": brief_cfg,
+        "report": report_defaults,
+        "weekly_report": weekly_report_cfg,
+        "per_reading_report": per_report_cfg,
+        "per_slide_report": per_slide_report_cfg,
+        "short_report": short_report_cfg,
+        "infographic": infographic_defaults,
+        "weekly_infographic": weekly_infographic_cfg,
+        "per_reading_infographic": per_infographic_cfg,
+        "short_infographic": brief_infographic_cfg,
+        "quiz": quiz_cfg,
+    }
+    localization_cache: dict[str, prompt_localization_helpers.PromptLocalization] = {}
+    localized_sections_cache: dict[str, dict[str, dict]] = {}
     if "quiz" in content_types and quiz_difficulty == "all" and not args.config_tagging:
         raise SystemExit(
             "quiz.difficulty=all requires config-tagged filenames. "
@@ -3022,38 +3130,60 @@ def main() -> int:
                 for content_type in content_types:
                     weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
+                        variant_localization, variant_sections = localized_prompt_context_for_variant(
+                            repo_root=repo_root,
+                            prompt_config_path=prompt_config,
+                            variant=variant,
+                            prompt_localization_cfg=prompt_localization_cfg,
+                            localization_cache=localization_cache,
+                            localized_sections_cache=localized_sections_cache,
+                            base_sections=base_localized_sections,
+                        )
+                        variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                        variant_exam_focus = variant_sections["exam_focus"]
+                        variant_study_context = variant_sections["study_context"]
+                        variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                        variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                        variant_meta_prompting = variant_sections["meta_prompting"]
+                        variant_course_context_cfg = variant_sections["course_context"]
+                        variant_weekly_cfg = variant_sections["weekly_overview"]
+                        variant_weekly_report_cfg = variant_sections["weekly_report"]
+                        variant_weekly_infographic_cfg = variant_sections["weekly_infographic"]
+                        variant_quiz_cfg = variant_sections["quiz"]
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
                                 weekly_course_context_note = build_course_context_note(
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
                                     prompt_type="weekly_readings_only",
+                                    localization=variant_localization,
                                 )
                                 planned_instructions = build_audio_prompt(
                                     prompt_type="weekly_readings_only",
-                                    prompt_strategy=audio_prompt_strategy,
-                                    exam_focus=exam_focus,
-                                    study_context=study_context,
-                                    prompt_framework=audio_prompt_framework,
-                                    meta_prompting=meta_prompting,
+                                    prompt_strategy=variant_audio_prompt_strategy,
+                                    exam_focus=variant_exam_focus,
+                                    study_context=variant_study_context,
+                                    prompt_framework=variant_audio_prompt_framework,
+                                    meta_prompting=variant_meta_prompting,
                                     course_title=course_title,
                                     course_context_note=weekly_course_context_note,
-                                    course_context_heading=course_context_cfg.get("heading"),
+                                    course_context_heading=variant_course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
-                                    custom_prompt=weekly_cfg.get("prompt", ""),
-                                    audio_format=weekly_cfg.get("format", "deep-dive"),
-                                    audio_length=weekly_cfg.get("length", "long"),
+                                    custom_prompt=variant_weekly_cfg.get("prompt", ""),
+                                    audio_format=variant_weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=variant_weekly_cfg.get("length", "long"),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
+                                    localization=variant_localization,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
                                     language=variant["code"],
                                     instructions=planned_instructions,
-                                    audio_format=weekly_cfg.get("format", "deep-dive"),
-                                    audio_length=weekly_cfg.get("length", "long"),
+                                    audio_format=variant_weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=variant_weekly_cfg.get("length", "long"),
                                     infographic_orientation=None,
                                     infographic_detail=None,
                                     quiz_quantity=None,
@@ -3065,7 +3195,7 @@ def main() -> int:
                                 )
                             elif content_type == "infographic":
                                 planned_instructions = ensure_prompt(
-                                    "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
+                                    "weekly_infographic", variant_weekly_infographic_cfg.get("prompt", "")
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3073,8 +3203,8 @@ def main() -> int:
                                     instructions=planned_instructions,
                                     audio_format=None,
                                     audio_length=None,
-                                    infographic_orientation=weekly_infographic_cfg.get("orientation"),
-                                    infographic_detail=weekly_infographic_cfg.get("detail"),
+                                    infographic_orientation=variant_weekly_infographic_cfg.get("orientation"),
+                                    infographic_detail=variant_weekly_infographic_cfg.get("detail"),
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
@@ -3085,22 +3215,24 @@ def main() -> int:
                             elif content_type == "report":
                                 weekly_course_context_note = build_course_context_note(
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
                                     prompt_type="weekly_readings_only",
+                                    localization=variant_localization,
                                 )
                                 planned_instructions = build_report_prompt(
                                     prompt_type="weekly_readings_only",
-                                    prompt_strategy=report_prompt_strategy,
+                                    prompt_strategy=variant_report_prompt_strategy,
                                     course_context_note=weekly_course_context_note,
-                                    course_context_heading=course_context_cfg.get("heading"),
-                                    study_context=study_context,
-                                    meta_prompting=meta_prompting,
+                                    course_context_heading=variant_course_context_cfg.get("heading"),
+                                    study_context=variant_study_context,
+                                    meta_prompting=variant_meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
-                                    custom_prompt=weekly_report_cfg.get("prompt", ""),
+                                    custom_prompt=variant_weekly_report_cfg.get("prompt", ""),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
+                                    localization=variant_localization,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3113,12 +3245,17 @@ def main() -> int:
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
-                                    report_format=normalize_report_format(weekly_report_cfg.get("format")),
+                                    report_format=normalize_report_format(
+                                        variant_weekly_report_cfg.get("format")
+                                    ),
                                     source_count=None,
                                     hash_len=args.config_tag_len,
                                 )
                             else:
-                                planned_instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                planned_instructions = ensure_prompt(
+                                    "quiz",
+                                    variant_quiz_cfg.get("prompt", ""),
+                                )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
                                     language=variant["code"],
@@ -3166,23 +3303,49 @@ def main() -> int:
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
+                        variant_localization, variant_sections = localized_prompt_context_for_variant(
+                            repo_root=repo_root,
+                            prompt_config_path=prompt_config,
+                            variant=variant,
+                            prompt_localization_cfg=prompt_localization_cfg,
+                            localization_cache=localization_cache,
+                            localized_sections_cache=localized_sections_cache,
+                            base_sections=base_localized_sections,
+                        )
+                        variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                        variant_exam_focus = variant_sections["exam_focus"]
+                        variant_study_context = variant_sections["study_context"]
+                        variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                        variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                        variant_meta_prompting = variant_sections["meta_prompting"]
+                        variant_course_context_cfg = variant_sections["course_context"]
+                        variant_per_cfg = variant_sections["per_reading"]
+                        variant_per_slide_cfg = variant_sections["per_slide"]
+                        variant_per_slide_overrides = validate_per_slide_audio_config(
+                            variant_per_slide_cfg
+                        )
+                        variant_per_report_cfg = variant_sections["per_reading_report"]
+                        variant_per_slide_report_cfg = variant_sections["per_slide_report"]
+                        variant_per_infographic_cfg = variant_sections["per_reading_infographic"]
+                        variant_quiz_cfg = variant_sections["quiz"]
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
                                 _, planned_instructions, per_audio_format, per_audio_length = per_source_audio_settings(
                                     source_item,
                                     course_title=course_title,
-                                    per_reading_cfg=per_cfg,
-                                    per_slide_cfg=per_slide_cfg,
-                                    per_slide_overrides=per_slide_overrides,
-                                    prompt_strategy=audio_prompt_strategy,
-                                    exam_focus=exam_focus,
-                                    study_context=study_context,
-                                    prompt_framework=audio_prompt_framework,
-                                    meta_prompting=meta_prompting,
+                                    per_reading_cfg=variant_per_cfg,
+                                    per_slide_cfg=variant_per_slide_cfg,
+                                    per_slide_overrides=variant_per_slide_overrides,
+                                    prompt_strategy=variant_audio_prompt_strategy,
+                                    exam_focus=variant_exam_focus,
+                                    study_context=variant_study_context,
+                                    prompt_framework=variant_audio_prompt_framework,
+                                    meta_prompting=variant_meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
+                                    localization=variant_localization,
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3201,7 +3364,7 @@ def main() -> int:
                                 )
                             elif content_type == "infographic":
                                 planned_instructions = ensure_prompt(
-                                    "per_reading_infographic", per_infographic_cfg.get("prompt", "")
+                                    "per_reading_infographic", variant_per_infographic_cfg.get("prompt", "")
                                 )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
@@ -3209,8 +3372,8 @@ def main() -> int:
                                     instructions=planned_instructions,
                                     audio_format=None,
                                     audio_length=None,
-                                    infographic_orientation=per_infographic_cfg.get("orientation"),
-                                    infographic_detail=per_infographic_cfg.get("detail"),
+                                    infographic_orientation=variant_per_infographic_cfg.get("orientation"),
+                                    infographic_detail=variant_per_infographic_cfg.get("detail"),
                                     quiz_quantity=None,
                                     quiz_difficulty=None,
                                     quiz_format=None,
@@ -3222,15 +3385,16 @@ def main() -> int:
                                 _, planned_instructions, planned_report_format = (
                                     per_source_report_settings(
                                         source_item,
-                                        per_reading_cfg=per_report_cfg,
-                                        per_slide_cfg=per_slide_report_cfg,
-                                        prompt_strategy=report_prompt_strategy,
-                                        study_context=study_context,
-                                        meta_prompting=meta_prompting,
+                                        per_reading_cfg=variant_per_report_cfg,
+                                        per_slide_cfg=variant_per_slide_report_cfg,
+                                        prompt_strategy=variant_report_prompt_strategy,
+                                        study_context=variant_study_context,
+                                        meta_prompting=variant_meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
                                         course_context_bundle=course_context_bundle,
-                                        course_context_cfg=course_context_cfg,
+                                        course_context_cfg=variant_course_context_cfg,
                                         lecture_key=week_label,
+                                        localization=variant_localization,
                                     )
                                 )
                                 planned_tag = build_output_cfg_tag_token(
@@ -3249,7 +3413,10 @@ def main() -> int:
                                     hash_len=args.config_tag_len,
                                 )
                             else:
-                                planned_instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                planned_instructions = ensure_prompt(
+                                    "quiz",
+                                    variant_quiz_cfg.get("prompt", ""),
+                                )
                                 planned_tag = build_output_cfg_tag_token(
                                     content_type=content_type,
                                     language=variant["code"],
@@ -3307,37 +3474,59 @@ def main() -> int:
                     for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
+                            variant_localization, variant_sections = localized_prompt_context_for_variant(
+                                repo_root=repo_root,
+                                prompt_config_path=prompt_config,
+                                variant=variant,
+                                prompt_localization_cfg=prompt_localization_cfg,
+                                localization_cache=localization_cache,
+                                localized_sections_cache=localized_sections_cache,
+                                base_sections=base_localized_sections,
+                            )
+                            variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                            variant_exam_focus = variant_sections["exam_focus"]
+                            variant_study_context = variant_sections["study_context"]
+                            variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                            variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                            variant_meta_prompting = variant_sections["meta_prompting"]
+                            variant_course_context_cfg = variant_sections["course_context"]
+                            variant_brief_cfg = variant_sections["short"]
+                            variant_short_report_cfg = variant_sections["short_report"]
+                            variant_brief_infographic_cfg = variant_sections["short_infographic"]
+                            variant_quiz_cfg = variant_sections["quiz"]
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
                                     brief_course_context_note = build_course_context_note(
                                         course_context_bundle=course_context_bundle,
-                                        course_context_cfg=course_context_cfg,
+                                        course_context_cfg=variant_course_context_cfg,
                                         lecture_key=week_label,
                                         prompt_type="short",
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     planned_instructions = build_audio_prompt(
                                         prompt_type="short",
-                                        prompt_strategy=audio_prompt_strategy,
-                                        exam_focus=exam_focus,
-                                        study_context=study_context,
-                                        prompt_framework=audio_prompt_framework,
-                                        meta_prompting=meta_prompting,
+                                        prompt_strategy=variant_audio_prompt_strategy,
+                                        exam_focus=variant_exam_focus,
+                                        study_context=variant_study_context,
+                                        prompt_framework=variant_audio_prompt_framework,
+                                        meta_prompting=variant_meta_prompting,
                                         course_title=course_title,
                                         course_context_note=brief_course_context_note,
-                                        course_context_heading=course_context_cfg.get("heading"),
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=brief_cfg.get("prompt", ""),
-                                        audio_format=brief_cfg.get("format", "deep-dive"),
-                                        audio_length=brief_cfg.get("length", "long"),
+                                        custom_prompt=variant_brief_cfg.get("prompt", ""),
+                                        audio_format=variant_brief_cfg.get("format", "deep-dive"),
+                                        audio_length=variant_brief_cfg.get("length", "long"),
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
                                         language=variant["code"],
                                         instructions=planned_instructions,
-                                        audio_format=brief_cfg.get("format", "deep-dive"),
-                                        audio_length=brief_cfg.get("length", "long"),
+                                        audio_format=variant_brief_cfg.get("format", "deep-dive"),
+                                        audio_length=variant_brief_cfg.get("length", "long"),
                                         infographic_orientation=None,
                                         infographic_detail=None,
                                         quiz_quantity=None,
@@ -3349,7 +3538,7 @@ def main() -> int:
                                     )
                                 elif content_type == "infographic":
                                     planned_instructions = ensure_prompt(
-                                        "short_infographic", brief_infographic_cfg.get("prompt", "")
+                                        "short_infographic", variant_brief_infographic_cfg.get("prompt", "")
                                     )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
@@ -3357,8 +3546,8 @@ def main() -> int:
                                         instructions=planned_instructions,
                                         audio_format=None,
                                         audio_length=None,
-                                        infographic_orientation=brief_infographic_cfg.get("orientation"),
-                                        infographic_detail=brief_infographic_cfg.get("detail"),
+                                        infographic_orientation=variant_brief_infographic_cfg.get("orientation"),
+                                        infographic_detail=variant_brief_infographic_cfg.get("detail"),
                                         quiz_quantity=None,
                                         quiz_difficulty=None,
                                         quiz_format=None,
@@ -3369,21 +3558,23 @@ def main() -> int:
                                 elif content_type == "report":
                                     brief_course_context_note = build_course_context_note(
                                         course_context_bundle=course_context_bundle,
-                                        course_context_cfg=course_context_cfg,
+                                        course_context_cfg=variant_course_context_cfg,
                                         lecture_key=week_label,
                                         prompt_type="short",
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     planned_instructions = build_report_prompt(
                                         prompt_type="short",
-                                        prompt_strategy=report_prompt_strategy,
+                                        prompt_strategy=variant_report_prompt_strategy,
                                         course_context_note=brief_course_context_note,
-                                        course_context_heading=course_context_cfg.get("heading"),
-                                        study_context=study_context,
-                                        meta_prompting=meta_prompting,
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
+                                        study_context=variant_study_context,
+                                        meta_prompting=variant_meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=short_report_cfg.get("prompt", ""),
+                                        custom_prompt=variant_short_report_cfg.get("prompt", ""),
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
@@ -3397,13 +3588,16 @@ def main() -> int:
                                         quiz_difficulty=None,
                                         quiz_format=None,
                                         report_format=normalize_report_format(
-                                            short_report_cfg.get("format")
+                                            variant_short_report_cfg.get("format")
                                         ),
                                         source_count=None,
                                         hash_len=args.config_tag_len,
                                     )
                                 else:
-                                    planned_instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                    planned_instructions = ensure_prompt(
+                                        "quiz",
+                                        variant_quiz_cfg.get("prompt", ""),
+                                    )
                                     planned_tag = build_output_cfg_tag_token(
                                         content_type=content_type,
                                         language=variant["code"],
@@ -3461,34 +3655,56 @@ def main() -> int:
                 for content_type in content_types:
                     weekly_output = week_output_dir / f"{weekly_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
+                        variant_localization, variant_sections = localized_prompt_context_for_variant(
+                            repo_root=repo_root,
+                            prompt_config_path=prompt_config,
+                            variant=variant,
+                            prompt_localization_cfg=prompt_localization_cfg,
+                            localization_cache=localization_cache,
+                            localized_sections_cache=localized_sections_cache,
+                            base_sections=base_localized_sections,
+                        )
+                        variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                        variant_exam_focus = variant_sections["exam_focus"]
+                        variant_study_context = variant_sections["study_context"]
+                        variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                        variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                        variant_meta_prompting = variant_sections["meta_prompting"]
+                        variant_course_context_cfg = variant_sections["course_context"]
+                        variant_weekly_cfg = variant_sections["weekly_overview"]
+                        variant_weekly_report_cfg = variant_sections["weekly_report"]
+                        variant_weekly_infographic_cfg = variant_sections["weekly_infographic"]
+                        variant_quiz_cfg = variant_sections["quiz"]
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
                                 weekly_course_context_note = build_course_context_note(
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
                                     prompt_type="weekly_readings_only",
+                                    localization=variant_localization,
                                 )
                                 instructions = build_audio_prompt(
                                     prompt_type="weekly_readings_only",
-                                    prompt_strategy=audio_prompt_strategy,
-                                    exam_focus=exam_focus,
-                                    study_context=study_context,
-                                    prompt_framework=audio_prompt_framework,
-                                    meta_prompting=meta_prompting,
+                                    prompt_strategy=variant_audio_prompt_strategy,
+                                    exam_focus=variant_exam_focus,
+                                    study_context=variant_study_context,
+                                    prompt_framework=variant_audio_prompt_framework,
+                                    meta_prompting=variant_meta_prompting,
                                     course_title=course_title,
                                     course_context_note=weekly_course_context_note,
-                                    course_context_heading=course_context_cfg.get("heading"),
+                                    course_context_heading=variant_course_context_cfg.get("heading"),
                                     meta_note_overrides=auto_meta_note_overrides,
-                                    custom_prompt=weekly_cfg.get("prompt", ""),
-                                    audio_format=weekly_cfg.get("format", "deep-dive"),
-                                    audio_length=weekly_cfg.get("length", "long"),
+                                    custom_prompt=variant_weekly_cfg.get("prompt", ""),
+                                    audio_format=variant_weekly_cfg.get("format", "deep-dive"),
+                                    audio_length=variant_weekly_cfg.get("length", "long"),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
+                                    localization=variant_localization,
                                 )
-                                audio_format = weekly_cfg.get("format", "deep-dive")
-                                audio_length = weekly_cfg.get("length", "long")
+                                audio_format = variant_weekly_cfg.get("format", "deep-dive")
+                                audio_length = variant_weekly_cfg.get("length", "long")
                                 infographic_orientation = None
                                 infographic_detail = None
                                 quiz_quantity_arg = None
@@ -3497,12 +3713,12 @@ def main() -> int:
                                 report_format_arg = None
                             elif content_type == "infographic":
                                 instructions = ensure_prompt(
-                                    "weekly_infographic", weekly_infographic_cfg.get("prompt", "")
+                                    "weekly_infographic", variant_weekly_infographic_cfg.get("prompt", "")
                                 )
                                 audio_format = None
                                 audio_length = None
-                                infographic_orientation = weekly_infographic_cfg.get("orientation")
-                                infographic_detail = weekly_infographic_cfg.get("detail")
+                                infographic_orientation = variant_weekly_infographic_cfg.get("orientation")
+                                infographic_detail = variant_weekly_infographic_cfg.get("detail")
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
@@ -3510,22 +3726,24 @@ def main() -> int:
                             elif content_type == "report":
                                 weekly_course_context_note = build_course_context_note(
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
                                     prompt_type="weekly_readings_only",
+                                    localization=variant_localization,
                                 )
                                 instructions = build_report_prompt(
                                     prompt_type="weekly_readings_only",
-                                    prompt_strategy=report_prompt_strategy,
+                                    prompt_strategy=variant_report_prompt_strategy,
                                     course_context_note=weekly_course_context_note,
-                                    course_context_heading=course_context_cfg.get("heading"),
-                                    study_context=study_context,
-                                    meta_prompting=meta_prompting,
+                                    course_context_heading=variant_course_context_cfg.get("heading"),
+                                    study_context=variant_study_context,
+                                    meta_prompting=variant_meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
-                                    custom_prompt=weekly_report_cfg.get("prompt", ""),
+                                    custom_prompt=variant_weekly_report_cfg.get("prompt", ""),
                                     source_items=reading_sources,
                                     week_dir=week_dir,
                                     week_label=week_label,
+                                    localization=variant_localization,
                                 )
                                 audio_format = None
                                 audio_length = None
@@ -3535,10 +3753,13 @@ def main() -> int:
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
                                 report_format_arg = normalize_report_format(
-                                    weekly_report_cfg.get("format")
+                                    variant_weekly_report_cfg.get("format")
                                 )
                             else:
-                                instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                instructions = ensure_prompt(
+                                    "quiz",
+                                    variant_quiz_cfg.get("prompt", ""),
+                                )
                                 audio_format = None
                                 audio_length = None
                                 infographic_orientation = None
@@ -3665,23 +3886,49 @@ def main() -> int:
                 for content_type in content_types:
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
+                        variant_localization, variant_sections = localized_prompt_context_for_variant(
+                            repo_root=repo_root,
+                            prompt_config_path=prompt_config,
+                            variant=variant,
+                            prompt_localization_cfg=prompt_localization_cfg,
+                            localization_cache=localization_cache,
+                            localized_sections_cache=localized_sections_cache,
+                            base_sections=base_localized_sections,
+                        )
+                        variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                        variant_exam_focus = variant_sections["exam_focus"]
+                        variant_study_context = variant_sections["study_context"]
+                        variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                        variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                        variant_meta_prompting = variant_sections["meta_prompting"]
+                        variant_course_context_cfg = variant_sections["course_context"]
+                        variant_per_cfg = variant_sections["per_reading"]
+                        variant_per_slide_cfg = variant_sections["per_slide"]
+                        variant_per_slide_overrides = validate_per_slide_audio_config(
+                            variant_per_slide_cfg
+                        )
+                        variant_per_report_cfg = variant_sections["per_reading_report"]
+                        variant_per_slide_report_cfg = variant_sections["per_slide_report"]
+                        variant_per_infographic_cfg = variant_sections["per_reading_infographic"]
+                        variant_quiz_cfg = variant_sections["quiz"]
                         for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                             if content_type == "audio":
                                 _, instructions, audio_format, audio_length = per_source_audio_settings(
                                     source_item,
                                     course_title=course_title,
-                                    per_reading_cfg=per_cfg,
-                                    per_slide_cfg=per_slide_cfg,
-                                    per_slide_overrides=per_slide_overrides,
-                                    prompt_strategy=audio_prompt_strategy,
-                                    exam_focus=exam_focus,
-                                    study_context=study_context,
-                                    prompt_framework=audio_prompt_framework,
-                                    meta_prompting=meta_prompting,
+                                    per_reading_cfg=variant_per_cfg,
+                                    per_slide_cfg=variant_per_slide_cfg,
+                                    per_slide_overrides=variant_per_slide_overrides,
+                                    prompt_strategy=variant_audio_prompt_strategy,
+                                    exam_focus=variant_exam_focus,
+                                    study_context=variant_study_context,
+                                    prompt_framework=variant_audio_prompt_framework,
+                                    meta_prompting=variant_meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
+                                    localization=variant_localization,
                                 )
                                 infographic_orientation = None
                                 infographic_detail = None
@@ -3691,12 +3938,12 @@ def main() -> int:
                                 report_format_arg = None
                             elif content_type == "infographic":
                                 instructions = ensure_prompt(
-                                    "per_reading_infographic", per_infographic_cfg.get("prompt", "")
+                                    "per_reading_infographic", variant_per_infographic_cfg.get("prompt", "")
                                 )
                                 audio_format = None
                                 audio_length = None
-                                infographic_orientation = per_infographic_cfg.get("orientation")
-                                infographic_detail = per_infographic_cfg.get("detail")
+                                infographic_orientation = variant_per_infographic_cfg.get("orientation")
+                                infographic_detail = variant_per_infographic_cfg.get("detail")
                                 quiz_quantity_arg = None
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
@@ -3704,15 +3951,16 @@ def main() -> int:
                             elif content_type == "report":
                                 _, instructions, report_format_arg = per_source_report_settings(
                                     source_item,
-                                    per_reading_cfg=per_report_cfg,
-                                    per_slide_cfg=per_slide_report_cfg,
-                                    prompt_strategy=report_prompt_strategy,
-                                    study_context=study_context,
-                                    meta_prompting=meta_prompting,
+                                    per_reading_cfg=variant_per_report_cfg,
+                                    per_slide_cfg=variant_per_slide_report_cfg,
+                                    prompt_strategy=variant_report_prompt_strategy,
+                                    study_context=variant_study_context,
+                                    meta_prompting=variant_meta_prompting,
                                     meta_note_overrides=auto_meta_note_overrides,
                                     course_context_bundle=course_context_bundle,
-                                    course_context_cfg=course_context_cfg,
+                                    course_context_cfg=variant_course_context_cfg,
                                     lecture_key=week_label,
+                                    localization=variant_localization,
                                 )
                                 audio_format = None
                                 audio_length = None
@@ -3722,7 +3970,10 @@ def main() -> int:
                                 quiz_difficulty_arg = None
                                 quiz_format_arg = None
                             else:
-                                instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                instructions = ensure_prompt(
+                                    "quiz",
+                                    variant_quiz_cfg.get("prompt", ""),
+                                )
                                 audio_format = None
                                 audio_length = None
                                 infographic_orientation = None
@@ -3870,33 +4121,55 @@ def main() -> int:
                     for content_type in brief_types:
                         brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
                         for variant in language_variants:
+                            variant_localization, variant_sections = localized_prompt_context_for_variant(
+                                repo_root=repo_root,
+                                prompt_config_path=prompt_config,
+                                variant=variant,
+                                prompt_localization_cfg=prompt_localization_cfg,
+                                localization_cache=localization_cache,
+                                localized_sections_cache=localized_sections_cache,
+                                base_sections=base_localized_sections,
+                            )
+                            variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                            variant_exam_focus = variant_sections["exam_focus"]
+                            variant_study_context = variant_sections["study_context"]
+                            variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                            variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                            variant_meta_prompting = variant_sections["meta_prompting"]
+                            variant_course_context_cfg = variant_sections["course_context"]
+                            variant_brief_cfg = variant_sections["short"]
+                            variant_short_report_cfg = variant_sections["short_report"]
+                            variant_brief_infographic_cfg = variant_sections["short_infographic"]
+                            variant_quiz_cfg = variant_sections["quiz"]
                             for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
                                 if content_type == "audio":
                                     brief_course_context_note = build_course_context_note(
                                         course_context_bundle=course_context_bundle,
-                                        course_context_cfg=course_context_cfg,
+                                        course_context_cfg=variant_course_context_cfg,
                                         lecture_key=week_label,
                                         prompt_type="short",
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     instructions = build_audio_prompt(
                                         prompt_type="short",
-                                        prompt_strategy=audio_prompt_strategy,
-                                        exam_focus=exam_focus,
-                                        study_context=study_context,
-                                        prompt_framework=audio_prompt_framework,
-                                        meta_prompting=meta_prompting,
+                                        prompt_strategy=variant_audio_prompt_strategy,
+                                        exam_focus=variant_exam_focus,
+                                        study_context=variant_study_context,
+                                        prompt_framework=variant_audio_prompt_framework,
+                                        meta_prompting=variant_meta_prompting,
                                         course_title=course_title,
                                         course_context_note=brief_course_context_note,
-                                        course_context_heading=course_context_cfg.get("heading"),
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
                                         meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=brief_cfg.get("prompt", ""),
-                                        audio_format=brief_cfg.get("format", "deep-dive"),
-                                        audio_length=brief_cfg.get("length", "long"),
+                                        custom_prompt=variant_brief_cfg.get("prompt", ""),
+                                        audio_format=variant_brief_cfg.get("format", "deep-dive"),
+                                        audio_length=variant_brief_cfg.get("length", "long"),
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
-                                    audio_format = brief_cfg.get("format", "deep-dive")
-                                    audio_length = brief_cfg.get("length", "long")
+                                    audio_format = variant_brief_cfg.get("format", "deep-dive")
+                                    audio_length = variant_brief_cfg.get("length", "long")
                                     infographic_orientation = None
                                     infographic_detail = None
                                     quiz_quantity_arg = None
@@ -3905,12 +4178,12 @@ def main() -> int:
                                     report_format_arg = None
                                 elif content_type == "infographic":
                                     instructions = ensure_prompt(
-                                        "short_infographic", brief_infographic_cfg.get("prompt", "")
+                                        "short_infographic", variant_brief_infographic_cfg.get("prompt", "")
                                     )
                                     audio_format = None
                                     audio_length = None
-                                    infographic_orientation = brief_infographic_cfg.get("orientation")
-                                    infographic_detail = brief_infographic_cfg.get("detail")
+                                    infographic_orientation = variant_brief_infographic_cfg.get("orientation")
+                                    infographic_detail = variant_brief_infographic_cfg.get("detail")
                                     quiz_quantity_arg = None
                                     quiz_difficulty_arg = None
                                     quiz_format_arg = None
@@ -3918,21 +4191,23 @@ def main() -> int:
                                 elif content_type == "report":
                                     brief_course_context_note = build_course_context_note(
                                         course_context_bundle=course_context_bundle,
-                                        course_context_cfg=course_context_cfg,
+                                        course_context_cfg=variant_course_context_cfg,
                                         lecture_key=week_label,
                                         prompt_type="short",
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     instructions = build_report_prompt(
                                         prompt_type="short",
-                                        prompt_strategy=report_prompt_strategy,
+                                        prompt_strategy=variant_report_prompt_strategy,
                                         course_context_note=brief_course_context_note,
-                                        course_context_heading=course_context_cfg.get("heading"),
-                                        study_context=study_context,
-                                        meta_prompting=meta_prompting,
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
+                                        study_context=variant_study_context,
+                                        meta_prompting=variant_meta_prompting,
                                         meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=short_report_cfg.get("prompt", ""),
+                                        custom_prompt=variant_short_report_cfg.get("prompt", ""),
                                         source_item=source_item,
+                                        localization=variant_localization,
                                     )
                                     audio_format = None
                                     audio_length = None
@@ -3942,10 +4217,13 @@ def main() -> int:
                                     quiz_difficulty_arg = None
                                     quiz_format_arg = None
                                     report_format_arg = normalize_report_format(
-                                        short_report_cfg.get("format")
+                                        variant_short_report_cfg.get("format")
                                     )
                                 else:
-                                    instructions = ensure_prompt("quiz", quiz_cfg.get("prompt", ""))
+                                    instructions = ensure_prompt(
+                                        "quiz",
+                                        variant_quiz_cfg.get("prompt", ""),
+                                    )
                                     audio_format = None
                                     audio_length = None
                                     infographic_orientation = None

@@ -3,7 +3,7 @@
 This document tracks the implementation of the Danish prompt-localization
 architecture for the `personlighedspsykologi-da` mirror.
 
-Status: in progress
+Status: implemented and deployed
 Last updated: 2026-05-09
 
 ## Scope
@@ -55,8 +55,8 @@ portal scope.
 - [x] Wire prompt locale through generation, prompt assembly, and
   course-context rendering
 - [x] Add Danish locale assets and translation validation tooling
-- [ ] Add regression tests for Danish prompt rendering
-- [ ] Run verification, deploy runtime changes, and update docs with final
+- [x] Add regression tests for Danish prompt rendering
+- [x] Run verification, deploy runtime changes, and update docs with final
   rollout status
 
 ## Work Log
@@ -85,3 +85,48 @@ portal scope.
 - Began machine backfill of the Danish course-context translation catalog so
   the mirror can use tracked translated dynamic context instead of relying only
   on omission of untranslated English prose.
+- Completed the Danish locale assets:
+  `da.prompt.json` for subject-owned prompt prose and
+  `da.course_context.json` for tracked course-context translations.
+- Added regression coverage for localized prompt assembly, localized
+  course-context rendering, and Danish `generate_week.py` prompt resolution.
+- Verified the translation catalogs with
+  `./.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_prompt_translations.py --check`.
+- Verified the shared regression slice with
+  `./.venv/bin/python -m pytest tests/notebooklm_queue/test_prompt_localization.py tests/notebooklm_queue/test_course_context.py notebooklm-podcast-auto/personlighedspsykologi/tests/test_generate_week.py`
+  (`60 passed`).
+- Verified local Danish prompt resolution with a dry-run `generate_week.py`
+  smoke check and explicit assertions that required Danish scaffolding markers
+  were present while English scaffolding markers were absent.
+- Committed and pushed the implementation as
+  `9fa91495de42a361a86f423950bc2c89dbc1cd5f`
+  (`feat: localize danish prompt layer`).
+- Deployed `/opt/podcasts` on Hetzner to the same commit and verified that the
+  live `personlighedspsykologi-da` queue worker is invoking
+  `generate_podcast.py` with Danish prompt scaffolding in the generated
+  instructions payload.
+
+## Final State
+
+- English remains the canonical prompt logic source.
+- The Danish mirror now sets `prompt_locale=da` and resolves its prompt layer
+  through shared localization code rather than a hand-forked Danish prompt
+  tree.
+- Shared prompt scaffolding in `notebooklm_queue/prompting.py` is locale-aware.
+- Shared course-context rendering in `notebooklm_queue/course_context.py` is
+  locale-aware and can translate tracked dynamic prose from repo-owned locale
+  assets.
+- Translation maintenance is repo-owned and offline at runtime through
+  `sync_prompt_translations.py`.
+- The deployed Danish queue now emits Danish prompt scaffolding in production.
+
+## Ongoing Maintenance
+
+- Keep English prompt logic canonical; add or edit Danish prompt text only
+  through the locale assets under
+  `notebooklm-podcast-auto/personlighedspsykologi/locales/`.
+- Run
+  `./.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_prompt_translations.py --check`
+  whenever English prompt scaffolding or course-context phrasing changes.
+- Treat missing or stale Danish prompt translations as a release blocker for
+  the Danish mirror rather than allowing silent English fallback.

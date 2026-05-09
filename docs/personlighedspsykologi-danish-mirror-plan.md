@@ -3,7 +3,7 @@
 This document is the tracked implementation plan for the queue-owned Danish
 mirror of the `personlighedspsykologi` podcast surface.
 
-Status: implementation complete locally; deploy in progress
+Status: implementation complete, deployed, and draining on Hetzner
 Last updated: 2026-05-09
 
 ## Scope
@@ -60,9 +60,9 @@ public feed outputs and queue runtime state.
 - [x] Add Danish show configs and runtime docs
 - [x] Add tests for Danish adapter, metadata gating, publish isolation, and feed normalization
 - [x] Run local verification
-- [ ] Commit and push
-- [ ] Deploy Hetzner queue runtime for `personlighedspsykologi-da`
-- [ ] Run post-deploy smoke checks
+- [x] Commit and push
+- [x] Deploy Hetzner queue runtime for `personlighedspsykologi-da`
+- [x] Run post-deploy smoke checks
 
 ## Work Log
 
@@ -92,3 +92,29 @@ public feed outputs and queue runtime state.
   - targeted pytest suite: `137 passed`
   - `generate_week.py --dry-run` using the Danish prompt config and output root
   - queue `discover --enqueue` and `run-dry` for `personlighedspsykologi-da`
+- Committed and pushed the rollout on `main` at
+  `75a78e46c5132391c647af3006c9b8153e475355`
+  (`feat: add danish personlighedspsykologi mirror` after rebase).
+- Triggered `generate-feed.yml` on `main`; the workflow completed successfully.
+- Deployed the updated repo on Hetzner under `/opt/podcasts`, installed the new
+  `personlighedspsykologi-da` environment file, reloaded systemd units, enabled
+  the new queue timer, and started the show service.
+- Verified hosted runtime state:
+  - `/opt/podcasts` is on commit `75a78e46c5132391c647af3006c9b8153e475355`
+  - `podcasts-notebooklm-queue@personlighedspsykologi-da.timer` is active
+  - the Danish queue report shows `22` jobs discovered and enqueued
+  - the live service is running the expected Danish
+    `generate_week.py` and `generate_podcast.py` commands against
+    `notebooklm-podcast-auto/personlighedspsykologi-da/output`
+  - `run-dry` on-host resolves the Danish prompt config and strict DA output
+    root correctly
+
+## Deployment Verification Notes
+
+- The first live queue drain entered `generating` state immediately after
+  deployment and is processing `W08L1` through the Danish NotebookLM wrapper.
+- The queue service remains `activating` during the long-running drain by
+  design; the timer is registered for subsequent runs and the active process
+  tree matches the intended DA show commands.
+- No Freudd downstream deploy target is registered for the Danish mirror, which
+  is the intended phase-1 behavior for a feed-only mirror.

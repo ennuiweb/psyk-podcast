@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-08T18:32:04+00:00",
+  "generated_at": "2026-05-09T06:36:30+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2182,6 +2182,36 @@
       "stable_guid": "1-MXkUCm_eduHtEH8JCQWY_SI3LBrCbGB"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=eb22e214}.mp3",
+      "source_name": "W09L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=eb22e214}.mp3",
+      "source_path": "W09L1/W09L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=4 hash=eb22e214}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 60691936,
+      "sha256": "bf99c51c8d8e1bf3f5578d6a2644281f6e60da0c482f1f85e0681c3ac38c253e",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20sources%3D4%20hash%3Deb22e214%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=2858418a}.mp3",
+      "source_name": "W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=2858418a}.mp3",
+      "source_path": "W09L1/W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=2858418a}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 64610914,
+      "sha256": "2e99e767bf43673f7d0999677c358ccc9ae5acba615392c3c4423310d47d1fab",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Dreier%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2858418a%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT",
       "source_name": "W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2197,6 +2227,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Dreier%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1RVZHfiYxPe17tiwPlTEgxFzo_8En8DXT"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=5cda0d43}.mp3",
+      "source_name": "W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=5cda0d43}.mp3",
+      "source_path": "W09L1/W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=5cda0d43}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 83075355,
+      "sha256": "bf3cd519f0f9e059fe66ea544c5ad1b601774c62e9d4e9196bac46e2b4cfe56b",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Grundbog%20kapitel%2010%20-%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D5cda0d43%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2216,6 +2261,21 @@
       "stable_guid": "1ScnElqFnmHOwChwMl_2RswSLvjsfmE-L"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=0163cb6b}.mp3",
+      "source_name": "W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=0163cb6b}.mp3",
+      "source_path": "W09L1/W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=0163cb6b}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 74702519,
+      "sha256": "ddb6d0691e8cf0c8a8c493fbaef2f405c8b2f546d4685584e62edc8c83404d3d",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20Holzkamp%20%282013%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D0163cb6b%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ",
       "source_name": "W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2233,6 +2293,21 @@
       "stable_guid": "1DNLQCvWH6vdD8FsBS9nlWWDh1ujygKzZ"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=2f24601c}.mp3",
+      "source_name": "W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=2f24601c}.mp3",
+      "source_path": "W09L1/W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=2f24601c}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 61183720,
+      "sha256": "8e83339549c4191943468925a3ed02e6a29fc942bda92d7d90fba2338f602814",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2f24601c%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W09L1/W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
       "source_drive_file_id": "1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg",
       "source_name": "W09L1 - Mørch & Hansen (2015) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
@@ -2248,6 +2323,51 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/W09L1%20-%20M%C3%B8rch%20%26%20Hansen%20%282015%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1JWTi0oF_fgjVyf4OJsh4CqE3nS2ebpmg"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/[Short] W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=5169a475}.mp3",
+      "source_name": "[Short] W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=5169a475}.mp3",
+      "source_path": "W09L1/[Short] W09L1 - Dreier (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=5169a475}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10673172,
+      "sha256": "e56b6778a24b49f4d1aca52d829636c297f38b6ab61510f41f14ccbd60ac14e5",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20Dreier%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D5169a475%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/[Short] W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=short hash=feaf0556}.mp3",
+      "source_name": "[Short] W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=short hash=feaf0556}.mp3",
+      "source_path": "W09L1/[Short] W09L1 - Grundbog kapitel 10 - Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=short hash=feaf0556}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10110420,
+      "sha256": "f1227167a28cad22e0cb87b012e7ba21200c746321f2769705ad62915f93626d",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20Grundbog%20kapitel%2010%20-%20Kritisk%20psykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dfeaf0556%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W09L1/[Short] W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=short hash=e3aacace}.mp3",
+      "source_name": "[Short] W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=short hash=e3aacace}.mp3",
+      "source_path": "W09L1/[Short] W09L1 - Holzkamp (2013) [EN] {type=audio lang=en format=deep-dive length=short hash=e3aacace}.mp3",
+      "path_parts": [
+        "W09L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10782987,
+      "sha256": "6813f8f8a1fb97e9624a84d03bcd4388c1672e6201c0cfb45ab0e094a26d145b",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T06:36:03+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W09L1/%5BShort%5D%20W09L1%20-%20Holzkamp%20%282013%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3De3aacace%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W09L1/[TTS] W09L1 - Grundbog kapitel 10 - Kritisk psykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.mp3",

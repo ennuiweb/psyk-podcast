@@ -23,6 +23,7 @@ from notebooklm_queue.source_intelligence_schemas import utc_now_iso
 
 DEFAULT_EVALUATION_ROOT = REPO_ROOT / "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review"
 DEFAULT_CANONICAL_OUTPUT_ROOT = REPO_ROOT / "notebooklm-podcast-auto/personlighedspsykologi/output"
+DEFAULT_REVIEW_OUTPUT_ROOT = DEFAULT_EVALUATION_ROOT / printout_engine.REVIEW_OUTPUT_DIRNAME
 DEFAULT_VARIANT_KEY = "problem_driven_v1"
 DEFAULT_VARIANT_PROMPT_PATH = (
     REPO_ROOT
@@ -97,8 +98,8 @@ def _build_manifest(
     entries: list[dict[str, Any]] = []
     for source in sources:
         source_id = str(source.get("source_id") or "").strip()
-        baseline_dir = printout_engine.output_dir_for_source(canonical_output_root, source)
-        legacy_baseline_dir = printout_engine.legacy_output_dir_for_source(canonical_output_root, source)
+        baseline_dir = printout_engine.canonical_baseline_output_dir_for_source(canonical_output_root, source)
+        legacy_baseline_dir = printout_engine.canonical_baseline_legacy_output_dir_for_source(canonical_output_root, source)
         baseline_json_path = baseline_dir / printout_engine.CANONICAL_PRINTOUT_JSON_NAME
         legacy_baseline_json_path = legacy_baseline_dir / printout_engine.LEGACY_PRINTOUT_JSON_NAME
         resolved_baseline_dir = baseline_dir if baseline_json_path.exists() or not legacy_baseline_json_path.exists() else legacy_baseline_dir
@@ -120,7 +121,10 @@ def _build_manifest(
             "candidate": {
                 "status": "pending",
                 "output_dir": _relative_to(run_dir, candidate_dir),
-                "json_path": _relative_to(run_dir, candidate_dir / "reading-printouts.json"),
+                "json_path": _relative_to(
+                    run_dir,
+                    printout_engine.artifact_json_path_for_output_dir(candidate_output_root, source, candidate_dir),
+                ),
                 "markdown_paths": [],
                 "pdf_paths": [],
                 "prompt_capture_paths": {
@@ -168,6 +172,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--source-family", action="append", default=[], help="Source family filter; default: reading.")
     parser.add_argument("--all-families", action="store_true", help="Do not filter by source family.")
     parser.add_argument("--evaluation-root", default=str(DEFAULT_EVALUATION_ROOT))
+    parser.add_argument("--review-output-root", default=str(DEFAULT_REVIEW_OUTPUT_ROOT))
     parser.add_argument("--source-catalog", default=str(printout_engine.DEFAULT_SOURCE_CATALOG))
     parser.add_argument("--canonical-output-root", default=str(DEFAULT_CANONICAL_OUTPUT_ROOT))
     parser.add_argument("--variant-prompt", default=str(DEFAULT_VARIANT_PROMPT_PATH))
@@ -196,7 +201,7 @@ def main() -> int:
             all_families=bool(args.all_families),
         ),
     )
-    candidate_output_root = run_dir / "candidate_output"
+    candidate_output_root = _resolve(args.review_output_root)
     manifest = _build_manifest(
         run_name=args.run_name,
         run_dir=run_dir,

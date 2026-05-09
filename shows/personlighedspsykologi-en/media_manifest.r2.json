@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-05-09T17:46:54+00:00",
+  "generated_at": "2026-05-09T17:50:58+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2076,6 +2076,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/W08L1%20-%20Lamiell%2C%20J.T.%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1JIfRhundgFHgrFs7_dulbfE5U9W8euMm"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=aa4ca1fb}.mp3",
+      "source_name": "W08L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=aa4ca1fb}.mp3",
+      "source_path": "W08L1/W08L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=aa4ca1fb}.mp3",
+      "path_parts": [
+        "W08L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 33852419,
+      "sha256": "b56ab6b40ef4e1200f6ba56b9b880ba9d2ba4c2cf2577a32396487e589b8533a",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T17:50:55+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L1/W08L1%20-%20Laux%20et%20al.%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Daa4ca1fb%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Laux et al. (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",

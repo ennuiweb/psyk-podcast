@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-09T17:39:18+00:00",
+  "generated_at": "2026-05-09T17:55:45+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-da/W11L2/W11L2 - Bruner (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=17b70652}.mp3",
@@ -81,6 +81,21 @@
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W11L2/%5BShort%5D%20W11L2%20-%20Bruner%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc391bdc8%7D.mp3"
     },
     {
+      "object_key": "shows/personlighedspsykologi-da/W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [DA] {type=audio lang=da format=deep-dive length=short hash=f739500d}.mp3",
+      "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [DA] {type=audio lang=da format=deep-dive length=short hash=f739500d}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [DA] {type=audio lang=da format=deep-dive length=short hash=f739500d}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11031867,
+      "sha256": "49700d9f6a7d1cb831e4a27ddef6f1e14271b62f3a9b17e64560c24359e571b1",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T17:55:42+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W11L2/%5BShort%5D%20W11L2%20-%20Grundbog%20kapitel%209%20-%20Narrative%20teorier%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Df739500d%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-da/W11L2/[Short] W11L2 - McAdams & Pals (2006) [DA] {type=audio lang=da format=deep-dive length=short hash=b9ea8739}.mp3",
       "source_name": "[Short] W11L2 - McAdams & Pals (2006) [DA] {type=audio lang=da format=deep-dive length=short hash=b9ea8739}.mp3",
       "source_path": "W11L2/[Short] W11L2 - McAdams & Pals (2006) [DA] {type=audio lang=da format=deep-dive length=short hash=b9ea8739}.mp3",
@@ -94,6 +109,21 @@
       "published_at": "2026-05-09T17:39:08+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W11L2/%5BShort%5D%20W11L2%20-%20McAdams%20%26%20Pals%20%282006%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Db9ea8739%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W11L2/[Short] W11L2 - Raggatt (2002) [DA] {type=audio lang=da format=deep-dive length=short hash=8b32cddf}.mp3",
+      "source_name": "[Short] W11L2 - Raggatt (2002) [DA] {type=audio lang=da format=deep-dive length=short hash=8b32cddf}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - Raggatt (2002) [DA] {type=audio lang=da format=deep-dive length=short hash=8b32cddf}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 7946931,
+      "sha256": "0bff098b7ad954dd6b166dcef69201c2938fd32b33e63aab820c78890d51b4c7",
+      "artifact_type": "audio",
+      "published_at": "2026-05-09T17:55:42+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W11L2/%5BShort%5D%20W11L2%20-%20Raggatt%20%282002%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8b32cddf%7D.mp3"
     }
   ]
 }

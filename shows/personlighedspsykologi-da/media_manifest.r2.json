@@ -3,8 +3,38 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-09T18:47:12+00:00",
+  "generated_at": "2026-05-10T14:57:00+00:00",
   "items": [
+    {
+      "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=7d697ade}.mp3",
+      "source_name": "W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=7d697ade}.mp3",
+      "source_path": "W01L1/W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=7d697ade}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 45340818,
+      "sha256": "bed30cbf286efa392cfe69e9c3adc848ddd15365984b7acedf36de4c507fc915",
+      "artifact_type": "audio",
+      "published_at": "2026-05-10T14:56:52+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/W01L1%20-%20Lewis%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20hash%3D7d697ade%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W01L1/[Short] W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=short hash=8e065653}.mp3",
+      "source_name": "[Short] W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=short hash=8e065653}.mp3",
+      "source_path": "W01L1/[Short] W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=short hash=8e065653}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10622285,
+      "sha256": "c9096938b82a1787861348875a8e81838fb7fb4786497f52ab3f4e28d4908f26",
+      "artifact_type": "audio",
+      "published_at": "2026-05-10T14:56:52+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/%5BShort%5D%20W01L1%20-%20Lewis%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8e065653%7D.mp3"
+    },
     {
       "object_key": "shows/personlighedspsykologi-da/W11L2/W11L2 - Bruner (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=17b70652}.mp3",
       "source_name": "W11L2 - Bruner (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=17b70652}.mp3",

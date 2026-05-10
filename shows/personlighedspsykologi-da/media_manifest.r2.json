@@ -3,8 +3,23 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-10T14:57:00+00:00",
+  "generated_at": "2026-05-10T15:08:25+00:00",
   "items": [
+    {
+      "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=long hash=9d4799c1}.mp3",
+      "source_name": "W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=long hash=9d4799c1}.mp3",
+      "source_path": "W01L1/W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=long hash=9d4799c1}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 42669859,
+      "sha256": "e8464a74919000bec28edf646f9a2bb41c5501aada128796b22a4d80f173b964",
+      "artifact_type": "audio",
+      "published_at": "2026-05-10T15:08:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/W01L1%20-%20Grundbog%20kapitel%201%20-%20Introduktion%20til%20personlighedspsykologi%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20hash%3D9d4799c1%7D.mp3"
+    },
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=7d697ade}.mp3",
       "source_name": "W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=7d697ade}.mp3",
@@ -19,6 +34,21 @@
       "published_at": "2026-05-10T14:56:52+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/W01L1%20-%20Lewis%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20hash%3D7d697ade%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W01L1/[Short] W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=short hash=6b7b02c8}.mp3",
+      "source_name": "[Short] W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=short hash=6b7b02c8}.mp3",
+      "source_path": "W01L1/[Short] W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=short hash=6b7b02c8}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11256797,
+      "sha256": "8b8dc470b3eb6026d8712d67305d305fe616b6b1a1425bc9fe48d7adc6e22c49",
+      "artifact_type": "audio",
+      "published_at": "2026-05-10T15:08:20+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/%5BShort%5D%20W01L1%20-%20Grundbog%20kapitel%201%20-%20Introduktion%20til%20personlighedspsykologi%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D6b7b02c8%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/[Short] W01L1 - Lewis (1999) [DA] {type=audio lang=da format=deep-dive length=short hash=8e065653}.mp3",

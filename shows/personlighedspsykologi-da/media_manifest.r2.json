@@ -3,8 +3,23 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-10T15:08:25+00:00",
+  "generated_at": "2026-05-10T15:13:22+00:00",
   "items": [
+    {
+      "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
+      "source_name": "W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
+      "source_path": "W01L1/W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
+      "path_parts": [
+        "W01L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 43940288,
+      "sha256": "1bd0df4638623837aedb2237a6df320d97b3b8416fe2d2a694eae337129b1005",
+      "artifact_type": "audio",
+      "published_at": "2026-05-10T15:13:19+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/W01L1%20-%20Alle%20kilder%20%28undtagen%20slides%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20sources%3D2%20hash%3Db78b9f13%7D.mp3"
+    },
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=long hash=9d4799c1}.mp3",
       "source_name": "W01L1 - Grundbog kapitel 1 - Introduktion til personlighedspsykologi [DA] {type=audio lang=da format=deep-dive length=long hash=9d4799c1}.mp3",

@@ -267,13 +267,6 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
 
     timed_wait_jobs = retry_jobs + waiting_jobs
 
-    if blocking_jobs and timed_wait_jobs:
-        return {
-            "action": "manual_intervention_required",
-            "reason": "mixed_timed_wait_and_blocked_backlog",
-            "state_counts": _state_counts(blocking_jobs + timed_wait_jobs),
-        }
-
     if other_active_jobs and timed_wait_jobs:
         return {
             "action": "active_backlog_without_progress",
@@ -300,6 +293,7 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
             "retry_job_count": len(retry_jobs),
             "waiting_job_count": len(waiting_jobs),
             "next_retry_at": next_at.replace(microsecond=0).isoformat(),
+            "blocked_state_counts": _state_counts(blocking_jobs) if blocking_jobs else {},
         }
 
     if other_active_jobs:
@@ -310,7 +304,7 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
 
     if blocking_jobs:
         return {
-            "action": "manual_intervention_required",
+            "action": "blocked_backlog_remaining",
             "state_counts": _state_counts(blocking_jobs),
         }
 

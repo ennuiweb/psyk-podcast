@@ -1,6 +1,6 @@
 # NotebookLM Queue Current State
 
-Last updated: 2026-05-04
+Last updated: 2026-05-11
 
 This document is the current-state checkpoint for the Hetzner-owned NotebookLM queue + R2 migration program. It is intentionally separate from the canonical migration plan in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
 
@@ -100,7 +100,7 @@ That means the queue currently owns:
 The queue runtime now also has a concrete Hetzner packaging layer:
 
 - `drain-show` provides the single-cycle primitive and `serve-show` now provides the quota-aware remote worker entrypoint
-- `serve-show` now waits only when `retry_scheduled` jobs are the sole remaining active backlog, stops for manual intervention on mixed blocked+retry backlog, and fails closed on invalid retry timestamps instead of hot-looping
+- `serve-show` now keeps draining while timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if blocked jobs are also present; it exits cleanly with `blocked_backlog_remaining` only when blocked backlog is all that remains, and still fails closed on invalid retry timestamps instead of hot-looping
 - templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
 - the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 

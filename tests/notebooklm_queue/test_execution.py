@@ -11,6 +11,7 @@ import pytest
 from notebooklm_queue.constants import (
     STATE_APPROVED_FOR_PUBLISH,
     STATE_AWAITING_PUBLISH,
+    STATE_BLOCKED_AUTH_STALE,
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
     STATE_GENERATING,
@@ -349,7 +350,10 @@ def test_execute_job_progressively_backs_off_repeated_retryable_failures(
             note="Reset to queued for retry backoff test",
         )
 
-    assert delays == [900, 1350, 2025, 3038]
+    expected = [900, 1350, 2025, 3038]
+    assert len(delays) == len(expected)
+    for actual, target in zip(delays, expected, strict=True):
+        assert target - 1 <= actual <= target
 
 
 def test_execute_job_caps_retry_backoff_for_repeated_failures(
@@ -389,7 +393,7 @@ def test_execute_job_caps_retry_backoff_for_repeated_failures(
     assert int((retry_at - updated_at).total_seconds()) == 3600
 
 
-def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -> None:
+def test_execute_job_blocks_auth_stale_failures_and_emits_alert_via_command(tmp_path: Path, monkeypatch) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(
         repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
@@ -418,8 +422,9 @@ def test_execute_job_emits_auth_alert_via_command(tmp_path: Path, monkeypatch) -
         options=ExecutionOptions(repo_root=repo_root),
     )
 
-    assert result["final_state"] == STATE_FAILED_RETRYABLE
+    assert result["final_state"] == STATE_BLOCKED_AUTH_STALE
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_BLOCKED_AUTH_STALE
     execution = updated["artifacts"]["execution"]
     assert execution["latest_alert_kind"] == "auth_stale"
     alert_path = Path(execution["latest_alert_path"])

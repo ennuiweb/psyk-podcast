@@ -443,7 +443,7 @@ def main(argv: list[str] | None = None) -> int:
             ),
         )
         _print_json(payload)
-        return 0 if payload.get("stop_reason") == "idle" else 1
+        return 0 if payload.get("stop_reason") in {"idle", "blocked_backlog_remaining"} else 1
 
     parser.error(f"Unhandled command: {args.command}")
     return 2

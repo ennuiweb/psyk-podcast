@@ -15,6 +15,7 @@ from .adapters import get_show_adapter
 from .alerts import emit_failure_alert
 from .constants import (
     STATE_AWAITING_PUBLISH,
+    STATE_BLOCKED_AUTH_STALE,
     STATE_DOWNLOADING,
     STATE_FAILED_RETRYABLE,
     STATE_GENERATED,
@@ -23,26 +24,9 @@ from .constants import (
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
 )
+from .failure_modes import FAILURE_MODE_AUTH_STALE, classify_failure_mode
 from .processes import run_phase_command
 from .store import QueueStore, parse_utcish_iso, utc_now_iso
-
-RATE_LIMIT_ERROR_TOKENS = (
-    "rate limit",
-    "quota exceeded",
-    "resource_exhausted",
-    "too many requests",
-)
-PROFILE_COOLDOWN_ERROR_TOKENS = (
-    "no usable profiles found after filtering missing/cooldown entries",
-    "is on cooldown",
-)
-TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
-    "generator timed out before writing a usable request log",
-    "rpc create_artifact failed",
-    "rpc create_notebook failed",
-    "null result data (possible server error",
-    "sources not ready after waiting",
-)
 DEFAULT_RATE_LIMIT_RETRY_SECONDS = 900
 DEFAULT_RETRY_BACKOFF_MULTIPLIER = 1.5
 DEFAULT_RETRY_BACKOFF_MAX_SECONDS = 3600
@@ -68,30 +52,6 @@ class ExecutionOptions:
     artifact_poll_interval_seconds: int = DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS
 
 
-def _looks_like_rate_limit(message: str | None) -> bool:
-    text = str(message or "").lower()
-    return any(token in text for token in RATE_LIMIT_ERROR_TOKENS) or any(
-        token in text
-        for token in (
-            "http 429",
-            "status 429",
-            "code 429",
-            "rpc_code=429",
-            "429 too many requests",
-        )
-    )
-
-
-def _looks_like_profile_cooldown_exhaustion(message: str | None) -> bool:
-    text = str(message or "").lower()
-    return any(token in text for token in PROFILE_COOLDOWN_ERROR_TOKENS)
-
-
-def _looks_like_transient_notebooklm_failure(message: str | None) -> bool:
-    text = str(message or "").lower()
-    return any(token in text for token in TRANSIENT_NOTEBOOKLM_ERROR_TOKENS)
-
-
 def _int_env(name: str, default: int) -> int:
     raw = str(os.environ.get(name) or "").strip()
     if not raw:
@@ -111,19 +71,9 @@ def _float_env(name: str, default: float) -> float:
     except ValueError:
         return default
 
-
-def _classify_retryable_failure(message: str | None) -> str | None:
-    if _looks_like_rate_limit(message):
-        return "rate_limit"
-    if _looks_like_profile_cooldown_exhaustion(message):
-        return "profile_cooldown"
-    if _looks_like_transient_notebooklm_failure(message):
-        return "transient_notebooklm"
-    return None
-
-
 def _retry_delay_seconds(*, attempt_count: int, error_text: str | None) -> int | None:
-    if _classify_retryable_failure(error_text) is None:
+    failure_mode = classify_failure_mode(error_text)
+    if failure_mode is None or not failure_mode.timed_retry:
         return None
 
     base_seconds = max(_int_env("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS", DEFAULT_RATE_LIMIT_RETRY_SECONDS), 1)
@@ -183,6 +133,23 @@ def repair_retryable_failures(
     repaired: list[dict[str, Any]] = []
     for entry in store.list_jobs(show_slug=show_slug, state=STATE_FAILED_RETRYABLE):
         error_text = _retryable_error_text_for_job(entry)
+        failure_mode = classify_failure_mode(error_text)
+        if failure_mode == FAILURE_MODE_AUTH_STALE:
+            repaired.append(
+                store.transition_job(
+                    show_slug=show_slug,
+                    job_id=str(entry["job_id"]),
+                    state=STATE_BLOCKED_AUTH_STALE,
+                    actor=actor,
+                    note="Recovered auth-stale failure into blocked auth state.",
+                    error=error_text,
+                    expected_states={STATE_FAILED_RETRYABLE},
+                    details={
+                        "failure_mode": failure_mode.code,
+                    },
+                )
+            )
+            continue
         retry_at = _derived_retry_at(
             explicit_retry_at=str(entry.get("next_retry_at") or "").strip() or None,
             error_text=error_text,
@@ -222,6 +189,13 @@ def _phase_retry_detection_text(phase: dict[str, Any], fallback: str) -> str:
     if fallback:
         parts.append(fallback)
     return "\n".join(parts)
+
+
+def _failure_details(*, error_text: str | None) -> dict[str, Any]:
+    failure_mode = classify_failure_mode(error_text)
+    if failure_mode is None:
+        return {}
+    return {"failure_mode": failure_mode.code}
 
 
 def _find_lecture_dirs(*, output_root: Path, lecture_key: str) -> list[Path]:
@@ -751,6 +725,7 @@ def _finalize_failure(
 ) -> dict[str, Any]:
     failed_phase = manifest["phases"][-1]
     error_text = _phase_primary_error_text(failed_phase, note)
+    failure_mode = classify_failure_mode(_phase_retry_detection_text(failed_phase, note))
     retry_at = _derived_retry_at(
         explicit_retry_at=options.retry_at,
         error_text=_phase_retry_detection_text(failed_phase, note),
@@ -759,6 +734,8 @@ def _finalize_failure(
     effective_failed_state = failed_state
     if retry_at and failed_state == STATE_FAILED_RETRYABLE:
         effective_failed_state = STATE_RETRY_SCHEDULED
+    elif failure_mode == FAILURE_MODE_AUTH_STALE:
+        effective_failed_state = STATE_BLOCKED_AUTH_STALE
     manifest["status"] = "failed"
     manifest["completed_at"] = utc_now_iso()
     manifest["final_state"] = effective_failed_state
@@ -777,7 +754,11 @@ def _finalize_failure(
         note=note,
         error=str(manifest["last_error"]),
         retry_at=retry_at,
-        details={"run_id": run_id, "manifest_path": manifest_path},
+        details={
+            "run_id": run_id,
+            "manifest_path": manifest_path,
+            **_failure_details(error_text=error_text),
+        },
     )
     artifacts = dict(updated.get("artifacts") or {})
     execution = dict(artifacts.get("execution") or {})

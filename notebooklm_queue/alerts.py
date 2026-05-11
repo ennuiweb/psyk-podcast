@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import smtplib
 import socket
 import subprocess
@@ -16,24 +15,9 @@ from typing import Any
 from urllib import error as urllib_error
 from urllib import request as urllib_request
 
-from .constants import STATE_DEAD_LETTER, STATE_RETRY_SCHEDULED
+from .constants import STATE_BLOCKED_AUTH_STALE, STATE_DEAD_LETTER, STATE_RETRY_SCHEDULED
+from .failure_modes import looks_like_auth_error, looks_like_rate_limit
 from .store import QueueStore, _load_json, _write_json_atomic, utc_now_iso
-
-AUTH_ERROR_TOKENS = (
-    "authentication expired",
-    "auth expired",
-    "auth invalid",
-    "invalid authentication",
-    "not logged in",
-    "run 'notebooklm login'",
-    "redirected to",
-)
-RATE_LIMIT_ERROR_TOKENS = (
-    "rate limit",
-    "quota exceeded",
-    "resource_exhausted",
-    "too many requests",
-)
 
 ALERT_KIND_AUTH_STALE = "auth_stale"
 ALERT_KIND_RATE_LIMIT_EXHAUSTED = "rate_limit_exhausted"
@@ -97,35 +81,6 @@ def _resend_api_url() -> str:
     return str(os.environ.get("NOTEBOOKLM_QUEUE_RESEND_API_URL") or "").strip() or "https://api.resend.com/emails"
 
 
-def _looks_like_auth_error(text: str | None) -> bool:
-    lowered = _lowered(text)
-    return any(token in lowered for token in AUTH_ERROR_TOKENS) or _has_status_code_context(
-        lowered,
-        401,
-        extra_phrases=("unauthorized",),
-    ) or _has_status_code_context(
-        lowered,
-        403,
-        extra_phrases=("forbidden",),
-    )
-
-
-def _looks_like_rate_limit(text: str | None) -> bool:
-    lowered = _lowered(text)
-    return any(token in lowered for token in RATE_LIMIT_ERROR_TOKENS) or _has_status_code_context(
-        lowered,
-        429,
-        extra_phrases=("too many requests",),
-    )
-
-
-def _has_status_code_context(text: str, code: int, *, extra_phrases: tuple[str, ...] = ()) -> bool:
-    code_pattern = rf"(?:http|status|code|rpc[_ ]code)\s*[:=]?\s*{code}\b"
-    if re.search(code_pattern, text):
-        return True
-    return any(f"{code} {phrase}" in text for phrase in extra_phrases)
-
-
 def classify_failure_alert(
     *,
     failed_state: str,
@@ -143,7 +98,7 @@ def classify_failure_alert(
             summary=f"Queue job moved to dead letter for {show_slug} {lecture_key}",
         )
 
-    if _looks_like_auth_error(error_text):
+    if failed_state == STATE_BLOCKED_AUTH_STALE or looks_like_auth_error(error_text):
         return AlertDecision(
             kind=ALERT_KIND_AUTH_STALE,
             fingerprint=f"{ALERT_KIND_AUTH_STALE}:{show_slug}",
@@ -152,7 +107,7 @@ def classify_failure_alert(
 
     if (
         failed_state == STATE_RETRY_SCHEDULED
-        and _looks_like_rate_limit(error_text)
+        and looks_like_rate_limit(error_text)
         and attempt_count >= max(_rate_limit_alert_attempts(), 1)
     ):
         return AlertDecision(

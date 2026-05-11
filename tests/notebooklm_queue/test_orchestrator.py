@@ -4,6 +4,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from notebooklm_queue.constants import (
+    STATE_BLOCKED_AUTH_STALE,
     STATE_COMPLETED,
     STATE_FAILED_RETRYABLE,
     STATE_RETRY_SCHEDULED,
@@ -242,6 +243,70 @@ def test_drain_show_queue_repairs_retryable_failures_before_planning_progress(
     assert updated["next_retry_at"]
 
 
+def test_drain_show_queue_repairs_auth_failures_into_blocked_auth_state(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_FAILED_RETRYABLE,
+        error="Authentication expired or invalid. Run 'notebooklm login' to re-authenticate.",
+        expected_states={"queued"},
+    )
+
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.enqueue_discovered_jobs",
+        lambda **kwargs: {"discovered": [], "enqueued": []},
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.sync_downstream_publication",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("sync")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.publish_repo_artifacts",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("push")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.rebuild_repo_metadata",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("metadata")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.upload_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("upload")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.prepare_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("prepare")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.execute_job",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("run")),
+    )
+
+    result = drain_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=DrainShowOptions(repo_root=repo_root),
+    )
+
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert result["repaired_retryable_count"] == 1
+    assert updated["state"] == STATE_BLOCKED_AUTH_STALE
+    assert updated["next_retry_at"] is None
+
+
 def test_serve_show_queue_waits_for_retry_scheduled_backlog(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()
@@ -427,7 +492,7 @@ def test_serve_show_queue_uses_real_clock_for_retry_wait_plan(tmp_path: Path, mo
         raise AssertionError("expected fake sleep to stop the wait loop")
 
 
-def test_serve_show_queue_does_not_wait_when_blocked_and_retry_jobs_coexist(tmp_path: Path, monkeypatch) -> None:
+def test_serve_show_queue_continues_waiting_when_blocked_and_retry_jobs_coexist(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()
     store = QueueStore(tmp_path / "queue-root")
@@ -453,29 +518,50 @@ def test_serve_show_queue_does_not_wait_when_blocked_and_retry_jobs_coexist(tmp_
         show_slug="bioneuro",
         job_id=str(retry_job["job_id"]),
         state=STATE_RETRY_SCHEDULED,
-        retry_at="2099-01-01T00:00:00+00:00",
+        retry_at="2026-01-01T12:05:00+00:00",
         expected_states={"queued"},
     )
     store.transition_job(
         show_slug="bioneuro",
         job_id=str(blocked_job["job_id"]),
-        state=STATE_FAILED_RETRYABLE,
+        state=STATE_BLOCKED_AUTH_STALE,
         expected_states={"queued"},
     )
 
-    monkeypatch.setattr(
-        "notebooklm_queue.orchestrator.drain_show_queue",
-        lambda **kwargs: {
+    current_time = datetime(2026, 1, 1, 12, 0, tzinfo=UTC)
+    drained = {"count": 0}
+    slept: list[int] = []
+
+    def fake_sleep(seconds: int) -> None:
+        nonlocal current_time
+        slept.append(seconds)
+        current_time = current_time + timedelta(seconds=seconds)
+        if len(slept) == 1:
+            store.transition_job(
+                show_slug="bioneuro",
+                job_id=str(retry_job["job_id"]),
+                state=STATE_COMPLETED,
+                expected_states={STATE_RETRY_SCHEDULED},
+            )
+
+    def fake_now() -> datetime:
+        return current_time
+
+    def fake_drain_show_queue(**kwargs):
+        drained["count"] += 1
+        return {
             "show_slug": "bioneuro",
             "stopped_due_to_max_stage_runs": False,
             "stage_run_count": 0,
             "queue_summary": store.summarize_jobs(show_slug="bioneuro"),
-        },
-    )
+        }
+
     monkeypatch.setattr(
-        "notebooklm_queue.orchestrator.time.sleep",
-        lambda seconds: (_ for _ in ()).throw(AssertionError("should not sleep when blocked backlog exists")),
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        fake_drain_show_queue,
     )
+    monkeypatch.setattr("notebooklm_queue.orchestrator._utc_now", fake_now)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.sleep", fake_sleep)
 
     result = serve_show_queue(
         store=store,
@@ -483,8 +569,11 @@ def test_serve_show_queue_does_not_wait_when_blocked_and_retry_jobs_coexist(tmp_
         options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
     )
 
-    assert result["stop_reason"] == "manual_intervention_required"
-    assert result["wait_plan"]["reason"] == "mixed_timed_wait_and_blocked_backlog"
+    assert drained["count"] == 2
+    assert slept == [300]
+    assert result["stop_reason"] == "blocked_backlog_remaining"
+    assert result["wait_plan"]["state_counts"] == {STATE_BLOCKED_AUTH_STALE: 1}
+    assert result["total_sleep_seconds"] == 300
 
 
 def test_serve_show_queue_stops_for_invalid_retry_schedule(tmp_path: Path, monkeypatch) -> None:
@@ -526,7 +615,9 @@ def test_serve_show_queue_stops_for_invalid_retry_schedule(tmp_path: Path, monke
     assert result["wait_plan"]["job_ids"] == [str(job["job_id"])]
 
 
-def test_serve_show_queue_stops_for_manual_intervention(tmp_path: Path, monkeypatch) -> None:
+def test_serve_show_queue_reports_blocked_backlog_for_legacy_failed_retryable_jobs(
+    tmp_path: Path, monkeypatch
+) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()
     store = QueueStore(tmp_path / "queue-root")
@@ -562,5 +653,5 @@ def test_serve_show_queue_stops_for_manual_intervention(tmp_path: Path, monkeypa
         options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
     )
 
-    assert result["stop_reason"] == "manual_intervention_required"
+    assert result["stop_reason"] == "blocked_backlog_remaining"
     assert result["wait_plan"]["state_counts"] == {STATE_FAILED_RETRYABLE: 1}

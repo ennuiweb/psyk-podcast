@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from notebooklm_queue.discovery import discover_show_jobs, enqueue_discovered_jobs
+from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.runner import build_dry_run_plan
 from notebooklm_queue.store import QueueStore
 
@@ -230,3 +231,71 @@ def test_discover_jobs_skip_published_even_when_inventory_uses_zero_padded_keys(
     jobs = discover_show_jobs(repo_root=tmp_path, show_slug="bioneuro")
 
     assert jobs == []
+
+
+def test_enqueue_discovered_jobs_dead_letters_superseded_non_terminal_records(tmp_path: Path) -> None:
+    (tmp_path / "shows" / "personlighedspsykologi-en").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "shows" / "personlighedspsykologi-da").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "notebooklm-podcast-auto" / "personlighedspsykologi-da").mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        (
+            "shows/personlighedspsykologi-da/config.github.json",
+            '{"output_inventory":"shows/personlighedspsykologi-da/episode_inventory.json"}',
+        ),
+        ("shows/personlighedspsykologi-en/episode_metadata.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi-da/prompt_config.json", "{}"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / "shows" / "personlighedspsykologi-en" / "auto_spec.json").write_text(
+        json.dumps(
+            {
+                "rules": [
+                    {"aliases": ["W01L1"], "topic": "Intro"},
+                    {"aliases": ["W01L2"], "topic": "Published"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "shows" / "personlighedspsykologi-da" / "episode_inventory.json").write_text(
+        json.dumps({"episodes": [{"lecture_key": "W01L2", "episode_key": "ep-1"}]}),
+        encoding="utf-8",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    stale_unpublished = store.upsert_job(
+        JobIdentity(
+            show_slug="personlighedspsykologi-da",
+            subject_slug="personlighedspsykologi",
+            lecture_key="W01L1",
+            content_types=("audio",),
+            config_hash="old-config",
+        )
+    )
+    stale_published = store.upsert_job(
+        JobIdentity(
+            show_slug="personlighedspsykologi-da",
+            subject_slug="personlighedspsykologi",
+            lecture_key="W01L2",
+            content_types=("audio",),
+            config_hash="old-config",
+        )
+    )
+
+    result = enqueue_discovered_jobs(repo_root=tmp_path, store=store, show_slug="personlighedspsykologi-da")
+
+    assert [item["identity"].lecture_key for item in result["discovered"]] == ["W01L1"]
+    assert {item["job_id"] for item in result["superseded"]} == {
+        stale_unpublished["job_id"],
+        stale_published["job_id"],
+    }
+    assert store.load_job(show_slug="personlighedspsykologi-da", job_id=stale_unpublished["job_id"])["state"] == "dead_letter"
+    assert store.load_job(show_slug="personlighedspsykologi-da", job_id=stale_published["job_id"])["state"] == "dead_letter"
+    current_records = [
+        record
+        for record in store.list_jobs(show_slug="personlighedspsykologi-da")
+        if record["state"] == "queued"
+    ]
+    assert len(current_records) == 1
+    assert current_records[0]["lecture_key"] == "W01L1"

@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 
 from .adapters import get_show_adapter
+from .constants import STATE_DEAD_LETTER, TERMINAL_STATES
 from .models import JobIdentity
 from .show_config import load_show_config, resolve_show_config_path, serialize_show_config_path
 from .store import QueueStore
@@ -79,12 +80,36 @@ def enqueue_discovered_jobs(
     include_published: bool = False,
     priority: int = 100,
 ) -> dict[str, list[dict[str, object]]]:
+    adapter = get_show_adapter(show_slug)
+    effective_content_types = content_types or adapter.default_content_types
+    current_config_hash = adapter.config_hash(repo_root, show_config_path=show_config_path)
+    published_lecture_keys: set[str] = set()
+    if not include_published:
+        config = load_show_config(
+            repo_root=repo_root,
+            default_path=adapter.show_config_path,
+            override_path=show_config_path,
+        )
+        published_lecture_keys = _published_lecture_keys(repo_root=repo_root, config=config)
     discovered = discover_show_jobs(
         repo_root=repo_root,
         show_slug=show_slug,
-        content_types=content_types,
+        content_types=effective_content_types,
         show_config_path=show_config_path,
         include_published=include_published,
+    )
+    current_lecture_keys = {
+        _normalized_lecture_key(str(item["identity"].lecture_key))
+        for item in discovered
+        if isinstance(item.get("identity"), JobIdentity)
+    }
+    superseded = _dead_letter_superseded_records(
+        store=store,
+        show_slug=adapter.show_slug,
+        subject_slug=adapter.subject_slug,
+        content_types=effective_content_types,
+        current_config_hash=current_config_hash,
+        current_lecture_keys=current_lecture_keys | published_lecture_keys,
     )
     created: list[dict[str, object]] = []
     for item in discovered:
@@ -97,7 +122,52 @@ def enqueue_discovered_jobs(
     return {
         "discovered": discovered,
         "enqueued": created,
+        "superseded": superseded,
     }
+
+
+def _dead_letter_superseded_records(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    subject_slug: str,
+    content_types: tuple[str, ...],
+    current_config_hash: str,
+    current_lecture_keys: set[str],
+) -> list[dict[str, object]]:
+    if not current_lecture_keys:
+        return []
+    superseded: list[dict[str, object]] = []
+    expected_content_types = _content_types_key(content_types)
+    for entry in store.list_jobs(show_slug=show_slug):
+        state = str(entry.get("state") or "").strip()
+        if state in TERMINAL_STATES:
+            continue
+        if str(entry.get("subject_slug") or "").strip() != subject_slug:
+            continue
+        if _content_types_key(entry.get("content_types") or []) != expected_content_types:
+            continue
+        if str(entry.get("config_hash") or "").strip() == current_config_hash:
+            continue
+        lecture_key = _normalized_lecture_key(str(entry.get("lecture_key") or ""))
+        if lecture_key not in current_lecture_keys:
+            continue
+        updated = store.transition_job(
+            show_slug=show_slug,
+            job_id=str(entry["job_id"]),
+            state=STATE_DEAD_LETTER,
+            note=(
+                "Superseded by current discovery config "
+                f"{current_config_hash}; stale non-terminal queue record removed from runnable backlog."
+            ),
+            details={
+                "superseded_by_config_hash": current_config_hash,
+                "superseded_lecture_key": lecture_key,
+            },
+            expected_states={state},
+        )
+        superseded.append(updated)
+    return superseded
 
 
 def _published_lecture_keys(*, repo_root: Path, config: dict[str, object]) -> set[str]:
@@ -127,3 +197,9 @@ def _normalized_lecture_key(value: str) -> str:
     if not match:
         return raw
     return f"W{int(match.group(1))}L{int(match.group(2))}"
+
+
+def _content_types_key(values: object) -> tuple[str, ...]:
+    if not isinstance(values, (list, tuple, set)):
+        return ()
+    return tuple(sorted({str(value).strip() for value in values if str(value).strip()}))

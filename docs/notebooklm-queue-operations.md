@@ -106,17 +106,21 @@ Notes:
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
 - The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
 - Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
-- NotebookLM auth expiry now maps to `blocked_auth_stale`, which is treated as an operator-owned blocker instead of a timed retry. The queue keeps draining unrelated `retry_scheduled` and `waiting_for_artifact` jobs for the same show and only exits with `blocked_backlog_remaining` when blocked auth is all that remains.
+- Queue discovery now dead-letters stale non-terminal queue records for the same
+  show, subject, lecture, and content types when the current config hash
+  supersedes them. This also covers stale records whose lectures are already
+  published and therefore skipped by normal discovery.
+- NotebookLM auth expiry now maps to `blocked_auth_stale`, which is treated as an operator-owned blocker instead of a timed retry. The queue keeps draining unrelated `retry_scheduled` and `waiting_for_artifact` queue records for the same show and only exits with `blocked_backlog_remaining` when blocked auth is all that remains.
 - Generic `failed_retryable` backlog still exits nonzero for manual intervention. Only explicit operator-owned blocked states such as `blocked_auth_stale` produce the clean degraded `blocked_backlog_remaining` stop reason.
 - NotebookLM source-ingestion stalls now also map to `retry_scheduled`: if generation ends with `Sources not ready after waiting`, the queue schedules a retry instead of leaving the lecture in a blocking failed state.
-- `drain-show` now performs a repair sweep for stale `failed_retryable` jobs whose stored error text matches a retryable pattern. That lets older backlog created before classifier changes recover into timed retries automatically instead of forcing manual intervention.
+- `drain-show` now performs a repair sweep for stale `failed_retryable` queue records whose stored error text matches a retryable pattern. That lets older backlog created before classifier changes recover into timed retries automatically instead of forcing manual intervention.
 - Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Default progression is `15m` base, `1.5x` multiplier, capped at `60m`.
-- Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move jobs between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
+- Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move queue records between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
 - Queue-owned metadata rebuild is now bundle-aware: audio-only publish bundles do not block on quiz sync or quiz-asset validation, but quiz bundles still fail closed if refreshed `quiz_links.json` or `content_manifest` quiz assets are missing.
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.
-- Queue-owned lecture jobs can now publish incrementally: if one episode finishes downloading while sibling request logs for the same lecture are still pending, the queue uploads and publishes the finished episode(s), then returns the same lecture job to `waiting_for_artifact` for the remaining outputs.
+- Queue-owned lecture records can now publish incrementally: if one episode finishes downloading while sibling request logs for the same lecture are still pending, the queue uploads and publishes the finished episode(s), then returns the same lecture record to `waiting_for_artifact` for the remaining outputs.
 - Incremental publish cycles skip unchanged R2 objects, so a whole-show regeneration does not re-upload already published episodes on every later poll.
-- `serve-show` now keeps waiting and draining whenever timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if blocked jobs are also present.
+- `serve-show` now keeps waiting and draining whenever timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if blocked queue records are also present.
 - If the next retry/poll window would exceed the remaining service budget, `serve-show` exits with `service_timeout_reached` and a zero process exit code so the systemd timer can resume the show on the next tick.
 - Invalid retry timestamps still fail closed for manual intervention, but mixed blocked+timed backlog no longer stalls the whole show.
 - Keep `NOTEBOOKLM_PROFILE_PRIORITY` ordered so accounts that can still create notebooks and artifacts are tried first. The generator now rotates on transient NotebookLM create/list/get RPC failures as well as explicit auth/rate-limit faults, but a good priority order still reduces churn during partial account outages.
@@ -252,7 +256,7 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py report --show-slug bioneuro
 ```
 
-2. Inspect the failing job:
+2. Inspect the failing queue record. The CLI flag is still named `--job-id`:
 
 ```bash
 cd /opt/podcasts
@@ -260,7 +264,7 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py inspect --show-slug bioneuro --job-id <job_id>
 ```
 
-3. Requeue retryable jobs whose retry window has arrived:
+3. Requeue retryable queue records whose retry window has arrived:
 
 ```bash
 cd /opt/podcasts
@@ -291,5 +295,5 @@ If the worker process died mid-stage, retrying `drain-show` is usually enough no
 
 - The timer is intentionally conservative: every 30 minutes with persistence and jitter.
 - `drain-show` prioritizes later publication stages before starting new generation work, so unfinished publish backlog is cleared before the queue creates more output.
-- The service is designed to be rerun safely. Within one service invocation it now performs repeated drain cycles, sleeps until the earliest `retry_scheduled` window when quota is the only blocker, and exits only when the active backlog is cleared or the remaining jobs need manual intervention.
+- The service is designed to be rerun safely. Within one service invocation it now performs repeated drain cycles, sleeps until the earliest `retry_scheduled` window when quota is the only blocker, and exits only when the non-terminal backlog is cleared or the remaining queue records need manual intervention.
 - Discovery skips lecture keys that already exist in the configured `episode_inventory.json` by default, so installing the service on a fresh queue store does not automatically regenerate the entire historical live catalog.

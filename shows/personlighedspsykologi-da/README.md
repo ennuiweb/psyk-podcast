@@ -17,7 +17,7 @@ Current mirror contract:
 - R2-backed
 - audio-first
 - no Freudd portal sidecars
-- no Spotify sync by default
+- Spotify episode-link indexing enabled via the Danish Spotify show
 - no Danish summary cache yet; feed descriptions intentionally use text links
   only to avoid mixed-language summary prose
 
@@ -31,3 +31,16 @@ Publication outputs:
 - `config.github.json` - canonical queue/feed config
 - `config.local.json` - compatibility copy kept identical to `config.github.json`
 - `media_manifest.r2.json` - queue-managed published audio manifest
+- `spotify_map.json` - generated direct Spotify episode-link index once
+  Spotify has ingested matching Danish feed episodes
+
+Spotify map note:
+
+- Danish show URL:
+  `https://open.spotify.com/show/19kk5Oj0ftw4RdQIP46nB4`
+- `scripts/sync_spotify_map.py` syncs
+  `shows/personlighedspsykologi-da/spotify_map.json` from
+  `episode_inventory.json`.
+- The file format matches the English show: version `2`, with
+  `by_episode_key` as the primary map and `by_rss_title` as a compatibility
+  fallback.

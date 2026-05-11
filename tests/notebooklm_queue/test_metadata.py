@@ -130,7 +130,8 @@ def _make_personligheds_da_repo_root(tmp_path: Path) -> Path:
                         "manifest_file": "shows/personlighedspsykologi-da/media_manifest.json",
                     },
                     "queue": {
-                        "spotify_sync": False,
+                        "spotify_sync": True,
+                        "spotify_show_url": "https://open.spotify.com/show/19kk5Oj0ftw4RdQIP46nB4",
                         "content_manifest_mode": "never",
                         "portal_sidecars_mode": "never",
                         "validate_manual_summaries": False,
@@ -680,13 +681,15 @@ def test_rebuild_repo_metadata_personligheds_allows_audio_only_bundle_without_qu
     assert validation["content_manifest_path"] == "shows/personlighedspsykologi-en/content_manifest.json"
 
 
-def test_rebuild_repo_metadata_personligheds_da_skips_portal_and_spotify_sidecars(
+def test_rebuild_repo_metadata_personligheds_da_syncs_spotify_but_skips_portal_sidecars(
     tmp_path: Path,
     monkeypatch,
 ) -> None:
     repo_root = _make_personligheds_da_repo_root(tmp_path)
     store, job = _seed_personligheds_da_objects_uploaded_job(tmp_path)
     commands: list[tuple[str, list[str]]] = []
+    monkeypatch.setenv("SPOTIFY_CLIENT_ID", "client-id")
+    monkeypatch.setenv("SPOTIFY_CLIENT_SECRET", "client-secret")
 
     def fake_run_phase(*, name: str, command: list[str], repo_root: Path, timeout_seconds: int) -> dict[str, object]:
         commands.append((name, command))
@@ -695,6 +698,11 @@ def test_rebuild_repo_metadata_personligheds_da_skips_portal_and_spotify_sidecar
             (show_root / "feeds").mkdir(parents=True, exist_ok=True)
             (show_root / "feeds" / "rss.xml").write_text("<rss />\n", encoding="utf-8")
             (show_root / "episode_inventory.json").write_text(json.dumps({"episodes": []}), encoding="utf-8")
+        elif name == "sync_spotify_map":
+            (show_root / "spotify_map.json").write_text(
+                json.dumps({"by_episode_key": {"ep-1": "https://open.spotify.com/episode/abc"}}),
+                encoding="utf-8",
+            )
         return {
             "name": name,
             "command": command,
@@ -718,7 +726,14 @@ def test_rebuild_repo_metadata_personligheds_da_skips_portal_and_spotify_sidecar
     assert result["final_state"] == STATE_COMMITTING_REPO_ARTIFACTS
     updated = store.load_job(show_slug="personlighedspsykologi-da", job_id=str(job["job_id"]))
     assert updated["state"] == STATE_COMMITTING_REPO_ARTIFACTS
-    assert [name for name, _ in commands] == ["generate_feed"]
+    assert [name for name, _ in commands] == ["generate_feed", "sync_spotify_map"]
+    spotify_command = commands[1][1]
+    assert spotify_command[spotify_command.index("--spotify-map") + 1].endswith(
+        "shows/personlighedspsykologi-da/spotify_map.json"
+    )
+    assert spotify_command[spotify_command.index("--spotify-show-url") + 1] == (
+        "https://open.spotify.com/show/19kk5Oj0ftw4RdQIP46nB4"
+    )
     manifest_path = store.root / str(updated["artifacts"]["publish"]["latest_bundle_manifest"])
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     validation = manifest["metadata"]["validation"]
@@ -726,7 +741,7 @@ def test_rebuild_repo_metadata_personligheds_da_skips_portal_and_spotify_sidecar
     assert validation["inventory_path"] == "shows/personlighedspsykologi-da/episode_inventory.json"
     assert validation["requires_content_manifest"] is False
     assert validation["requires_quiz_assets"] is False
-    assert "spotify_map_path" not in validation
+    assert validation["spotify_map_path"] == "shows/personlighedspsykologi-da/spotify_map.json"
     assert "content_manifest_path" not in validation
 
 

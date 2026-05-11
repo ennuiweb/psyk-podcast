@@ -138,7 +138,8 @@
     ]
   },
   "queue": {
-    "spotify_sync": false,
+    "spotify_sync": true,
+    "spotify_show_url": "https://open.spotify.com/show/19kk5Oj0ftw4RdQIP46nB4",
     "content_manifest_mode": "never",
     "portal_sidecars_mode": "never",
     "validate_manual_summaries": false,

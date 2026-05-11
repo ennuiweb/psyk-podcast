@@ -22,14 +22,25 @@ jobs:
           - show: personlighedspsykologi-en
             subject_slug: personlighedspsykologi
             spotify_show_url: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv
+            rebuild_content_manifest: 'true'
+            content_manifest_path: shows/personlighedspsykologi-en/content_manifest.json
+          - show: personlighedspsykologi-da
+            subject_slug: personlighedspsykologi
+            spotify_show_url: https://open.spotify.com/show/19kk5Oj0ftw4RdQIP46nB4
+            rebuild_content_manifest: 'false'
+            content_manifest_path: ''
           - show: bioneuro
             subject_slug: bioneuro
             spotify_show_url: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN
+            rebuild_content_manifest: 'true'
+            content_manifest_path: shows/bioneuro/content_manifest.json
     env:
       SHOW: ${{ matrix.show }}
       SUBJECT_SLUG: ${{ matrix.subject_slug }}
       SPOTIFY_SHOW_URL: ${{ matrix.spotify_show_url }}
       SPOTIFY_MARKET: DK
+      REBUILD_CONTENT_MANIFEST: ${{ matrix.rebuild_content_manifest }}
+      CONTENT_MANIFEST_PATH: ${{ matrix.content_manifest_path }}
       SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
       SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
     steps:
@@ -65,14 +76,18 @@ jobs:
             --allow-unresolved
 
       - name: Rebuild subject content manifest
+        if: matrix.rebuild_content_manifest == 'true'
         run: python freudd_portal/manage.py rebuild_content_manifest --subject "${SUBJECT_SLUG}"
 
       - name: Commit and push updates
         run: |
           set -euo pipefail
           spotify_map_path="shows/${SHOW}/spotify_map.json"
-          manifest_path="shows/${SHOW}/content_manifest.json"
-          safe_rebase_paths=("$spotify_map_path" "$manifest_path")
+          manifest_path="${CONTENT_MANIFEST_PATH}"
+          safe_rebase_paths=("$spotify_map_path")
+          if [[ -n "$manifest_path" ]]; then
+            safe_rebase_paths+=("$manifest_path")
+          fi
 
           resolve_rebase_conflicts() {
             mapfile -t conflicted_files < <(git diff --name-only --diff-filter=U)
@@ -107,7 +122,7 @@ jobs:
           if [[ -f "$spotify_map_path" && -n "$(git status --porcelain "$spotify_map_path")" ]]; then
             files+=("$spotify_map_path")
           fi
-          if [[ -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
+          if [[ -n "$manifest_path" && -f "$manifest_path" && -n "$(git status --porcelain "$manifest_path")" ]]; then
             files+=("$manifest_path")
           fi
 

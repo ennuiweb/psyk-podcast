@@ -104,6 +104,17 @@ Bilingual episode-link note:
 - Matching uses a language-neutral episode identity derived from the source filename, so `[EN]` and `[DA]` variants of the same lecture/source resolve to each other.
 - Exact short/long counterpart matches are preferred; if only the other length exists, short and long reading episodes can fall back to each other.
 - English descriptions append `Dansk version: <url>` when a Danish counterpart has a Spotify episode URL, falling back to the Danish R2 audio URL if Spotify has not ingested it yet.
+- The link is inserted before the English show footer. Current shape:
+  ```text
+  Dansk version: https://open.spotify.com/episode/<episode-id>
+  ·
+  ·
+  ·
+  Personlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv
+  Bioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN
+  Socialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP
+  ```
+- `sync-spotify-map.yml` rebuilds bilingual feed links after Spotify-map syncs, so this feed updates automatically as new Danish counterparts and Spotify URLs appear.
 
 Reading key sync note:
 - Canonical source of truth file: `shows/personlighedspsykologi-en/docs/reading-file-key.md`

@@ -6,7 +6,7 @@ Current live scope:
 
 - `bioneuro` is the first queue-owned, R2-backed live show.
 - `personlighedspsykologi-en` is now also queue-owned and R2-backed on the Hetzner runtime.
-- `personlighedspsykologi-da` now has a queue/runtime contract as a feed-first Danish mirror of the shared `personlighedspsykologi` subject surface. Its publication path is intentionally audio-only and skips Freudd portal sidecars by config.
+- `personlighedspsykologi-da` now has a queue/runtime contract as a feed-first Danish mirror of the shared `personlighedspsykologi` subject surface. Its publication path is intentionally audio-only, keeps Spotify-map sync enabled for episode links, and skips Freudd portal sidecars by config.
 - The queue runtime is designed as a server-managed `systemd` timer whose service drains one show through timed backlog within a bounded wall-clock budget, waits through retry windows only while budget remains, and exits cleanly so the timer can schedule the next pass.
 
 Repository deploy artifacts:

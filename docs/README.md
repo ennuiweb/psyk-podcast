@@ -9,10 +9,10 @@ system and its subsystems.
 Use these files:
 
 - [freudd-learning-system-architecture.md](freudd-learning-system-architecture.md) - canonical system-wide architecture and maturity assessment for the full Freudd Learning System.
-- [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, GitHub Actions, Apps Script triggers, and feed hosting.
+- [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, bilingual episode links, GitHub Actions, Apps Script triggers, and feed hosting.
 - [learning-material-design.md](learning-material-design.md) - repo-level design principles for learner-facing study materials, including problem-first reward-loop design.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
-- [personlighedspsykologi-danish-mirror-plan.md](personlighedspsykologi-danish-mirror-plan.md) - tracked rollout plan and progress log for the queue-owned Danish `personlighedspsykologi` mirror.
+- [personlighedspsykologi-danish-mirror-plan.md](personlighedspsykologi-danish-mirror-plan.md) - tracked rollout plan and progress log for the queue-owned Danish `personlighedspsykologi` mirror, including bilingual RSS links.
 - [notebooklm-queue-operations.md](notebooklm-queue-operations.md) - Hetzner runtime contract, systemd install, env requirements, and failure playbook for the queue-owned NotebookLM publisher.
 - [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md) - canonical implementation plan and backlog for the Hetzner queue + object-storage migration program.
 - [notebooklm-queue-current-state.md](notebooklm-queue-current-state.md) - current implementation checkpoint for the queue + R2 migration, separate from the longer-term plan.

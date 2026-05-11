@@ -3,8 +3,8 @@
 This document is the tracked implementation plan for the queue-owned Danish
 mirror of the `personlighedspsykologi` podcast surface.
 
-Status: implementation complete, deployed, and queue self-heal live on Hetzner
-Last updated: 2026-05-09
+Status: implementation complete, deployed, queue self-heal live on Hetzner, and bilingual RSS links active
+Last updated: 2026-05-11
 
 ## Scope
 
@@ -16,6 +16,7 @@ feed-first show:
 - isolated queue output root and R2 prefix
 - queue discovery, execution, publish, metadata rebuild, and downstream gating
 - Danish RSS + inventory generation
+- bilingual RSS description links between Danish and English counterpart episodes
 - Hetzner queue runtime install for the new show
 
 This rollout does not add Freudd portal parity as part of the initial mirror.
@@ -33,6 +34,8 @@ separate Danish Freudd subject contract.
 - Replace remaining English-only queue assumptions with show-config-driven
   behavior where Danish rollout safety depends on it.
 - Keep the implementation maintainable for future additional language mirrors.
+- Link Danish and English counterparts in episode descriptions without
+  hand-maintained per-episode URL maps.
 
 ## Architecture Decision
 
@@ -47,6 +50,9 @@ subject:
   `shows/personlighedspsykologi-da/*`
 - Danish show-local runtime layer:
   `notebooklm-podcast-auto/personlighedspsykologi-da/*`
+- cross-language link layer:
+  `feed.alternate_episode_links` in each show config reads the counterpart
+  `episode_inventory.json` and `spotify_map.json`
 
 This keeps schedule and source identity aligned across mirrors while isolating
 public feed outputs and queue runtime state.
@@ -63,6 +69,8 @@ public feed outputs and queue runtime state.
 - [x] Commit and push
 - [x] Deploy Hetzner queue runtime for `personlighedspsykologi-da`
 - [x] Run post-deploy smoke checks
+- [x] Add bilingual episode links in Danish and English RSS descriptions
+- [x] Add scheduled Spotify-map-triggered refresh for bilingual links
 
 ## Work Log
 
@@ -75,9 +83,9 @@ public feed outputs and queue runtime state.
   incomplete `[DA]` normalization in the feed builder.
 - Added a dedicated `personlighedspsykologi-da` queue adapter with isolated
   prompt config and output root.
-- Added config-driven queue policy resolution so the Danish mirror can disable
-  Spotify, Freudd sidecars, content-manifest rebuilds, and downstream portal
-  deploys without more hardcoded English branches.
+- Added config-driven queue policy resolution so the Danish mirror can control
+  Spotify sync, Freudd sidecars, content-manifest rebuilds, and downstream
+  portal deploys without more hardcoded English branches.
 - Added a lightweight prompt-config inheritance layer so the Danish runtime can
   reuse the shared `personlighedspsykologi` prompt system while overriding only
   the language surface.
@@ -126,6 +134,34 @@ public feed outputs and queue runtime state.
     resumed active generation with the remaining backlog split between
     `generating`, `queued`, and `retry_scheduled`
 
+### 2026-05-11
+
+- Added `feed.alternate_episode_links` to both
+  `personlighedspsykologi-en` and `personlighedspsykologi-da`.
+- English feed descriptions now append `Dansk version: <url>` when a Danish
+  counterpart exists.
+- Danish feed descriptions now append `Engelsk version: <url>` when an English
+  counterpart exists.
+- Matching uses the same source filename identity across languages while
+  ignoring language tags such as `[EN]`, `[DA]`, and `[DK]`.
+- Exact short/long counterpart matches are preferred. If a language has only the
+  other reading length published, short and long reading variants can fall back
+  to each other. TTS, slides, and weekly overview identities do not use this
+  fallback.
+- Counterpart Spotify URLs are preferred; counterpart R2 audio URLs are used as
+  a fallback until Spotify ingestion creates an episode URL.
+- Added the `refresh-bilingual-links` job to `sync-spotify-map.yml` so both
+  feeds are rebuilt after scheduled or manual Spotify-map syncs.
+- Verified the pushed RSS files on `main`:
+  - Danish feed: `17/17` current episodes have `Engelsk version` links
+  - English feed: `15/157` current episodes have `Dansk version` links, matching
+    the currently published Danish counterpart set
+- Deployed commit `77d14b5cbc9adf3482536c0b09a82ba382748a95` on Hetzner.
+- Verified local tests: `249 passed`.
+- Verified GitHub Actions:
+  - `sync-spotify-map.yml` succeeded, including `refresh-bilingual-links`
+  - `generate-feed.yml` succeeded for cross-show validation
+
 ## Deployment Verification Notes
 
 - The first live queue drain entered `generating` state immediately after
@@ -135,6 +171,8 @@ public feed outputs and queue runtime state.
   tree matches the intended DA show commands.
 - No Freudd downstream deploy target is registered for the Danish mirror, which
   is the intended phase-1 behavior for a feed-only mirror.
+- Bilingual links live in RSS descriptions only. They do not create a separate
+  Freudd Danish subject or cross-subject Freudd navigation contract.
 - Because the Danish rollout surfaced shared-profile contention with the English
   queue, the implementation now hardens the shared queue service itself instead
   of relying on manual requeues or timer retries.

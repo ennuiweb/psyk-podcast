@@ -19,6 +19,7 @@ Current migration program:
 Active show directories currently include:
 
 - `shows/personlighedspsykologi-en/`
+- `shows/personlighedspsykologi-da/`
 - `shows/bioneuro/`
 - `shows/social-psychology/`
 - `shows/berlingske/`
@@ -38,6 +39,7 @@ python podcast-tools/gdrive_podcast_feed.py --config shows/<show-slug>/config.lo
 Output:
 
 - `shows/<show-slug>/feeds/rss.xml`
+- `shows/<show-slug>/episode_inventory.json`
 
 Per-show metadata files:
 
@@ -77,6 +79,38 @@ The feed generator preserves public episode chronology by:
 - reusing the existing `published_at` / `pubDate` for already-published logical episodes when rebuilding from `episode_inventory.json`
 - falling back to the checked-in RSS feed's existing `pubDate` only when an inventory file is unavailable
 - treating regeneration as a variant swap, not a republication event, so active `B` variants inherit the existing public date rather than getting a new one
+
+## Bilingual episode links
+
+Shows can append links to counterpart episodes in another language with
+`feed.alternate_episode_links`.
+
+Each entry defines:
+
+- `label` - the description label to render, for example `Dansk version` or
+  `Engelsk version`
+- `inventory` - the counterpart show's `episode_inventory.json`
+- `spotify_map` - optional counterpart `spotify_map.json`
+- `url_priority` - ordered URL sources; supported values are `spotify`,
+  `audio_url`, and `link`
+
+Matching uses a language-neutral episode identity derived from the source
+filename. `[EN]`, `[DA]`, and `[DK]` are ignored for matching, while content
+type markers such as `[TTS]`, slide identity, weekly overview identity, and
+short/long reading identity remain distinct. Exact matches win; short and long
+reading variants may fall back to each other only when the counterpart language
+has not published the same length.
+
+For the Personlighedspsykologi mirrors:
+
+- English descriptions append `Dansk version: <url>` for published Danish
+  counterparts.
+- Danish descriptions append `Engelsk version: <url>` for published English
+  counterparts.
+- Spotify episode URLs are preferred; R2 `audio_url` values are the fallback
+  when the counterpart has not yet been ingested by Spotify.
+- `.github/workflows/sync-spotify-map.yml` runs `refresh-bilingual-links` after
+  Spotify map syncs so both RSS files converge when either Spotify map changes.
 
 ## Publication ownership
 

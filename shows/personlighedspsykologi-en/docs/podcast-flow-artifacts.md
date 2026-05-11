@@ -9,8 +9,13 @@ Personlighedspsykologi-flowet. Driftstrin og fejlsøgning er flyttet til
 1. Autoritative inputfiler ligger i OneDrive for rå læsetekster/slides og i repoet for `reading-file-key.md`, show-config og manuelle summary-filer.
 2. Den canonical repo-ejede `reading-file-key.md` eksporteres til OneDrive-mirror-targets for ikke-repo workflows.
 3. NotebookLM genererer lokale outputs, som efterfølgende uploades eller spejles til Drive/droplet.
-4. `generate-feed.yml` bygger `rss.xml` og `episode_inventory.json` fra Drive.
-5. Downstream sidecars afledes derefter: `spotify_map.json` og `content_manifest.json`.
+4. Queue-publicering eller feed-workflows bygger `rss.xml` og
+   `episode_inventory.json` fra den aktuelle storage/config-kilde.
+5. Downstream sidecars afledes derefter: `spotify_map.json` og
+   `content_manifest.json`.
+6. For de engelske/danske podcast-spejle genbygges RSS-beskrivelser også fra
+   modpartens `episode_inventory.json` og `spotify_map.json`, så episoder kan
+   linke til den anden sprogversion.
 
 ## Canonical Ownership
 
@@ -58,9 +63,12 @@ Disse filer er afledte outputs, som må regenereres:
 |---|---|
 | `shows/personlighedspsykologi-en/feeds/rss.xml` | Public RSS-feed. Spotify og podcast apps læser denne. |
 | `shows/personlighedspsykologi-en/episode_inventory.json` | Strukturret inventory fra feed build. Freudd bruger denne før RSS fallback. |
+| `shows/personlighedspsykologi-da/feeds/rss.xml` | Public dansk RSS-spejl. |
+| `shows/personlighedspsykologi-da/episode_inventory.json` | Strukturret dansk inventory. Bruges også af det engelske feed til `Dansk version` links. |
 | `shows/personlighedspsykologi-en/regeneration_registry.json` | Syncet statusoversigt over hvilke episoder der stadig er `A`, hvilke der har en `B`, og hvilken variant der aktuelt er aktiv. |
 | `shows/personlighedspsykologi-en/quiz_links.json` | Repo mapping fra audio/episode names til quiz URLs og difficulty metadata. |
 | `shows/personlighedspsykologi-en/spotify_map.json` | Repo sidecar mapping fra episode key/RSS-title til Spotify episode URL. |
+| `shows/personlighedspsykologi-da/spotify_map.json` | Dansk sidecar mapping. Bruges også af det engelske feed til Spotify-baserede `Dansk version` links. |
 | `shows/personlighedspsykologi-en/content_manifest.json` | Freudd content manifest med lectures, readings, podcast assets, quizzes, slides og Spotify links. |
 | `shows/personlighedspsykologi-en/source_catalog.json` | Deterministisk file-level inventory-katalog for raw readings/slides: hashes, page counts, page-baserede token-estimater, type-signaler og prompt-sidecar-daekning. Det ekstraherer ikke source-tekst lokalt; source-forstaaelse bygges i Gemini artifacts med de faktiske filer attached. Bygges lokalt fra source tree, ikke i GitHub Actions. |
 
@@ -89,6 +97,21 @@ De vigtigste afledninger går i denne retning:
 `spotify_map.json` styrer ikke Spotify. Spotify læser RSS. Map-filen bruges af
 repoet/Freudd som opslag fra intern episode-identitet til Spotify URL.
 
+For sprog-spejlene er der en ekstra krydsafledning:
+
+1. Engelsk RSS/inventory læser dansk inventory/map via
+   `feed.alternate_episode_links` og renderer `Dansk version: <url>`.
+2. Dansk RSS/inventory læser engelsk inventory/map via
+   `feed.alternate_episode_links` og renderer `Engelsk version: <url>`.
+3. `.github/workflows/sync-spotify-map.yml` kører `refresh-bilingual-links`
+   efter Spotify-map sync, så en ny Spotify URL i den ene map også opdaterer den
+   anden feeds episodebeskrivelser.
+
+Counterpart-link matching er sprog-neutral på `[EN]`/`[DA]`/`[DK]` tags, men
+bevarer type-identitet for TTS, slides og weekly overview. Short/long readings
+matcher eksakt først og falder kun tilbage til den anden længde, når den eksakte
+modpartslængde ikke findes.
+
 ## Output Contracts
 
 | Kontrakt | Betydning |
@@ -96,6 +119,7 @@ repoet/Freudd som opslag fra intern episode-identitet til Spotify URL.
 | RSS item title | Lyttervendt titel. Styres af feed config og `gdrive_podcast_feed.py`. |
 | RSS item GUID | Stabil podcast-client identitet. Tail/Grundbog synthetic entries kan bruge suffix som `#tail-grundbog-*`. |
 | RSS enclosure URL | Public R2/object-storage URL til audio. |
+| RSS description counterpart line | `Dansk version: <url>` i engelsk feed eller `Engelsk version: <url>` i dansk feed, når en modpart findes. |
 | `episode_inventory.json` episode key | Intern stabil episode-identitet for Freudd og Spotify map. |
 | `quiz_links.json` by-name entries | Mapping fra episode/audio navn til quiz assets. |
 | `content_manifest.json` reading/lecture keys | Freudd navigation, progress og subject pages. |

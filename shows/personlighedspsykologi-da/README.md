@@ -57,3 +57,14 @@ Bilingual episode-link note:
 - Danish descriptions append `Engelsk version: <url>` when an English
   counterpart has a Spotify episode URL, falling back to the English R2 audio
   URL if needed.
+- The link is rendered as its own final description block after the Freudd text
+  link. Current shape:
+  ```text
+  Semesteruge 1, Forelæsning 1
+  ·
+  Link til teksten: https://freudd.dk/subjects/personlighedspsykologi?lecture=W01L1&preview=true
+  ·
+  Engelsk version: https://open.spotify.com/episode/<episode-id>
+  ```
+- `sync-spotify-map.yml` rebuilds bilingual feed links after Spotify-map syncs,
+  so this feed updates automatically if English Spotify mappings change.

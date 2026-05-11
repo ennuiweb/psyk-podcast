@@ -44,3 +44,16 @@ Spotify map note:
 - The file format matches the English show: version `2`, with
   `by_episode_key` as the primary map and `by_rss_title` as a compatibility
   fallback.
+
+Bilingual episode-link note:
+
+- Feed generation reads the English inventory and Spotify map via
+  `feed.alternate_episode_links`.
+- Matching uses a language-neutral episode identity derived from the source
+  filename, so `[DA]` and `[EN]` variants of the same lecture/source resolve
+  to each other.
+- Exact short/long counterpart matches are preferred; if only the other length
+  exists, short and long reading episodes can fall back to each other.
+- Danish descriptions append `Engelsk version: <url>` when an English
+  counterpart has a Spotify episode URL, falling back to the English R2 audio
+  URL if needed.

@@ -145,6 +145,213 @@ class AutoSpecMatchingTests(unittest.TestCase):
             "W01L1 - Lewis (1999) [EN].mp3",
         )
 
+    def test_cross_language_episode_id_strips_only_language_variant_tags(self):
+        mod = _load_feed_module()
+        english_id = mod._cross_language_episode_id_from_source_name(
+            "W01L1 - Lewis (1999) [EN] {type=audio lang=en hash=aaa}.mp3"
+        )
+        danish_id = mod._cross_language_episode_id_from_source_name(
+            "W01L1 - Lewis (1999) [DA] {type=audio lang=da hash=bbb}.mp3"
+        )
+        tts_id = mod._cross_language_episode_id_from_source_name(
+            "[TTS] W01L1 - Lewis (1999) {type=tts hash=ccc}.mp3"
+        )
+
+        self.assertEqual(english_id, danish_id)
+        self.assertEqual(english_id, "single_reading__w01l1__lewis_1999")
+        self.assertEqual(tts_id, "tts__w01l1__lewis_1999")
+
+    def test_alternate_episode_links_append_counterpart_url(self):
+        mod = _load_feed_module()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            inventory_path = root / "episode_inventory.json"
+            spotify_map_path = root / "spotify_map.json"
+            danish_episode_key = (
+                "shows/personlighedspsykologi-da/W01L1/"
+                "W01L1 - Lewis (1999) [DA] {type=audio lang=da hash=bbb}.mp3"
+            )
+            inventory_path.write_text(
+                json.dumps(
+                    {
+                        "episodes": [
+                            {
+                                "episode_key": danish_episode_key,
+                                "title": "U1F1 · Lewis (1999)",
+                                "source_name": "W01L1 - Lewis (1999) [DA] {type=audio lang=da hash=bbb}.mp3",
+                                "audio_url": "https://audio.example/da-lewis.mp3",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            spotify_map_path.write_text(
+                json.dumps(
+                    {
+                        "by_episode_key": {
+                            danish_episode_key: "https://open.spotify.com/episode/daLewis"
+                        },
+                        "by_rss_title": {},
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            alternate_indexes = mod.load_alternate_episode_link_indexes(
+                {
+                    "feed": {
+                        "alternate_episode_links": [
+                            {
+                                "label": "Dansk version",
+                                "inventory": str(inventory_path),
+                                "spotify_map": str(spotify_map_path),
+                                "url_priority": ["spotify", "audio_url"],
+                            }
+                        ]
+                    }
+                }
+            )
+            episode = mod.build_episode_entry(
+                file_entry={
+                    "id": "file1",
+                    "name": "W01L1 - Lewis (1999) [EN] {type=audio lang=en hash=aaa}.mp3",
+                    "createdTime": "2026-02-02T08:00:00+00:00",
+                },
+                feed_config={
+                    "title": "Personlighedspsykologi",
+                    "link": "https://example.com",
+                    "description": "Test feed",
+                    "language": "en",
+                    "description_blank_line_marker": "·",
+                    "description_footer": "\nFooter",
+                },
+                overrides={},
+                public_link_template="https://example.com/{file_id}",
+                folder_names=["W01L1"],
+                alternate_episode_link_indexes=alternate_indexes,
+            )
+
+        self.assertIn(
+            "Dansk version: https://open.spotify.com/episode/daLewis",
+            episode["description"],
+        )
+        self.assertLess(
+            episode["description"].index("Dansk version:"),
+            episode["description"].index("Footer"),
+        )
+
+    def test_alternate_episode_links_fall_back_from_short_to_single_reading(self):
+        mod = _load_feed_module()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            inventory_path = root / "episode_inventory.json"
+            spotify_map_path = root / "spotify_map.json"
+            english_episode_key = (
+                "shows/personlighedspsykologi-en/W04L2/"
+                "W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=bbb}.mp3"
+            )
+            inventory_path.write_text(
+                json.dumps(
+                    {
+                        "episodes": [
+                            {
+                                "episode_key": english_episode_key,
+                                "title": "U4F2 · Lacan (1966)",
+                                "source_name": "W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=bbb}.mp3",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            spotify_map_path.write_text(
+                json.dumps(
+                    {
+                        "by_episode_key": {
+                            english_episode_key: "https://open.spotify.com/episode/enLacanLong"
+                        },
+                        "by_rss_title": {},
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            alternate_indexes = mod.load_alternate_episode_link_indexes(
+                {
+                    "feed": {
+                        "alternate_episode_links": [
+                            {
+                                "label": "Engelsk version",
+                                "inventory": str(inventory_path),
+                                "spotify_map": str(spotify_map_path),
+                            }
+                        ]
+                    }
+                }
+            )
+            rendered = mod._render_alternate_episode_links(
+                source_name="[Short] W04L2 - Lacan (1966) [DA] {type=audio lang=da hash=aaa}.mp3",
+                alternate_episode_link_indexes=alternate_indexes,
+            )
+
+        self.assertEqual(rendered, "Engelsk version: https://open.spotify.com/episode/enLacanLong")
+
+    def test_alternate_episode_links_prefer_exact_short_counterpart(self):
+        mod = _load_feed_module()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            inventory_path = root / "episode_inventory.json"
+            long_episode_key = (
+                "shows/personlighedspsykologi-en/W04L2/"
+                "W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=bbb}.mp3"
+            )
+            short_episode_key = (
+                "shows/personlighedspsykologi-en/W04L2/"
+                "[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=ccc}.mp3"
+            )
+            inventory_path.write_text(
+                json.dumps(
+                    {
+                        "episodes": [
+                            {
+                                "episode_key": long_episode_key,
+                                "title": "U4F2 · Lacan (1966)",
+                                "source_name": "W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=bbb}.mp3",
+                                "audio_url": "https://audio.example/en-lacan-long.mp3",
+                            },
+                            {
+                                "episode_key": short_episode_key,
+                                "title": "U4F2 · [Kort] · Lacan (1966)",
+                                "source_name": "[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en hash=ccc}.mp3",
+                                "audio_url": "https://audio.example/en-lacan-short.mp3",
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            alternate_indexes = mod.load_alternate_episode_link_indexes(
+                {
+                    "feed": {
+                        "alternate_episode_links": [
+                            {
+                                "label": "Engelsk version",
+                                "inventory": str(inventory_path),
+                                "url_priority": ["audio_url"],
+                            }
+                        ]
+                    }
+                }
+            )
+            rendered = mod._render_alternate_episode_links(
+                source_name="[Short] W04L2 - Lacan (1966) [DA] {type=audio lang=da hash=aaa}.mp3",
+                alternate_episode_link_indexes=alternate_indexes,
+            )
+
+        self.assertEqual(rendered, "Engelsk version: https://audio.example/en-lacan-short.mp3")
+
     def test_feed_title_strips_language_tag(self):
         mod = _load_feed_module()
         feed = mod.build_feed_document(
@@ -3442,6 +3649,24 @@ class AutoSpecMatchingTests(unittest.TestCase):
             ValueError, r"feed\.description_blocks\[0\].*unknown block 'does_not_exist'"
         ):
             mod.validate_feed_block_config({"description_blocks": ["does_not_exist"]})
+
+    def test_validate_feed_block_config_rejects_invalid_alternate_episode_source(self):
+        mod = _load_feed_module()
+        with self.assertRaisesRegex(
+            ValueError,
+            r"feed\.alternate_episode_links\[0\]\.url_priority\[0\].*unknown source 'search'",
+        ):
+            mod.validate_feed_block_config(
+                {
+                    "alternate_episode_links": [
+                        {
+                            "label": "Dansk version",
+                            "inventory": "shows/personlighedspsykologi-da/episode_inventory.json",
+                            "url_priority": ["search"],
+                        }
+                    ]
+                }
+            )
 
     def test_validate_feed_block_config_rejects_non_boolean_description_prepend(self):
         mod = _load_feed_module()

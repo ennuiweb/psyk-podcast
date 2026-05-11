@@ -111,6 +111,17 @@
     },
     "description_prepend_semester_week_lecture": true,
     "description_blank_line_marker": "·",
+    "alternate_episode_links": [
+      {
+        "label": "Engelsk version",
+        "inventory": "shows/personlighedspsykologi-en/episode_inventory.json",
+        "spotify_map": "shows/personlighedspsykologi-en/spotify_map.json",
+        "url_priority": [
+          "spotify",
+          "audio_url"
+        ]
+      }
+    ],
     "description_blocks_by_kind": {
       "reading": [
         "text_link"

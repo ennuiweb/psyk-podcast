@@ -159,3 +159,110 @@ jobs:
             git fetch origin "$branch"
             attempt=$((attempt + 1))
           done
+
+  refresh-bilingual-links:
+    runs-on: ubuntu-latest
+    needs: sync
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rebuild bilingual feed links
+        run: |
+          set -euo pipefail
+          branch="${GITHUB_REF#refs/heads/}"
+          git pull --ff-only origin "$branch"
+          python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-en/config.github.json
+          python podcast-tools/gdrive_podcast_feed.py --config shows/personlighedspsykologi-da/config.github.json
+          python freudd_portal/manage.py rebuild_content_manifest --subject personlighedspsykologi
+
+      - name: Commit and push bilingual feed links
+        run: |
+          set -euo pipefail
+          branch="${GITHUB_REF#refs/heads/}"
+          safe_rebase_paths=(
+            "shows/personlighedspsykologi-en/feeds/rss.xml"
+            "shows/personlighedspsykologi-en/episode_inventory.json"
+            "shows/personlighedspsykologi-en/content_manifest.json"
+            "shows/personlighedspsykologi-da/feeds/rss.xml"
+            "shows/personlighedspsykologi-da/episode_inventory.json"
+          )
+
+          resolve_rebase_conflicts() {
+            mapfile -t conflicted_files < <(git diff --name-only --diff-filter=U)
+            if [[ ${#conflicted_files[@]} -eq 0 ]]; then
+              echo "::error::Rebase failed without conflicted files."
+              git rebase --abort || true
+              return 1
+            fi
+
+            for conflicted in "${conflicted_files[@]}"; do
+              keep_ours=0
+              for safe_path in "${safe_rebase_paths[@]}"; do
+                if [[ "${conflicted}" == "${safe_path}" ]]; then
+                  keep_ours=1
+                  break
+                fi
+              done
+              if [[ "${keep_ours}" == "1" ]]; then
+                git checkout --ours -- "${conflicted}"
+                git add "${conflicted}"
+              else
+                echo "::error::Unexpected rebase conflict in ${conflicted}"
+                git rebase --abort || true
+                return 1
+              fi
+            done
+
+            GIT_EDITOR=true git rebase --continue
+          }
+
+          files=()
+          for path in "${safe_rebase_paths[@]}"; do
+            if [[ -f "$path" && -n "$(git status --porcelain "$path")" ]]; then
+              files+=("$path")
+            fi
+          done
+
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "No bilingual feed link changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${files[@]}"
+          git commit -m "chore: refresh bilingual episode links"
+
+          max_attempts=3
+          attempt=1
+          while [[ "${attempt}" -le "${max_attempts}" ]]; do
+            if ! git pull --rebase origin "$branch"; then
+              echo "Rebase conflict on attempt ${attempt}; resolving generated-file conflicts."
+              resolve_rebase_conflicts
+            fi
+
+            if git push origin HEAD:"$branch"; then
+              echo "Push succeeded on attempt ${attempt}."
+              exit 0
+            fi
+
+            if [[ "${attempt}" -eq "${max_attempts}" ]]; then
+              echo "::error::Failed to push bilingual feed-link update after ${max_attempts} attempts."
+              exit 1
+            fi
+
+            echo "Push rejected on attempt ${attempt}; retrying after refetch."
+            git fetch origin "$branch"
+            attempt=$((attempt + 1))
+          done

@@ -43,6 +43,10 @@ LANGUAGE_TAG_PATTERN = re.compile(
     r"(?:\[\s*(?:en|da|dk|tts)\s*\]|\(\s*(?:en|da|dk|tts)\s*\))",
     re.IGNORECASE,
 )
+CROSS_LANGUAGE_TAG_PATTERN = re.compile(
+    r"(?:\[\s*(?:en|da|dk)\s*\]|\(\s*(?:en|da|dk)\s*\))",
+    re.IGNORECASE,
+)
 TTS_TAG_PATTERN = re.compile(r"(?:\[\s*tts\s*\]|\(\s*tts\s*\))", re.IGNORECASE)
 SHORT_TAG_PATTERN = re.compile(r"\[\s*(?:short|brief)\s*\]", re.IGNORECASE)
 BRIEF_TAG_PATTERN = SHORT_TAG_PATTERN
@@ -2430,6 +2434,8 @@ DESCRIPTION_BLOCKS_ALLOWED = {
 }
 DEFAULT_TITLE_BLOCKS = ["semester_week_lecture", "subject_or_type", "week_range"]
 DEFAULT_DESCRIPTION_BLOCKS = ["descriptor_subject", "topic", "lecture", "semester_week", "quiz"]
+ALTERNATE_EPISODE_URL_SOURCES = {"spotify", "audio_url", "link"}
+DEFAULT_ALTERNATE_EPISODE_URL_PRIORITY = ["spotify", "audio_url", "link"]
 FEED_SORT_MODES = {
     "published_at_desc",
     "wxlx_kind_priority",
@@ -2709,6 +2715,40 @@ def _validate_block_list(
     return blocks
 
 
+def _validate_alternate_episode_links_config(feed_config: Dict[str, Any]) -> None:
+    raw_specs = feed_config.get("alternate_episode_links")
+    if raw_specs is None:
+        return
+    if not isinstance(raw_specs, list):
+        raise ValueError("feed.alternate_episode_links must be a list when provided.")
+    for idx, raw_spec in enumerate(raw_specs):
+        path = f"feed.alternate_episode_links[{idx}]"
+        if not isinstance(raw_spec, dict):
+            raise ValueError(f"{path} must be an object.")
+        label = raw_spec.get("label")
+        if not isinstance(label, str) or not label.strip():
+            raise ValueError(f"{path}.label must be a non-empty string.")
+        inventory = raw_spec.get("inventory")
+        if not isinstance(inventory, str) or not inventory.strip():
+            raise ValueError(f"{path}.inventory must be a non-empty string path.")
+        spotify_map = raw_spec.get("spotify_map")
+        if spotify_map is not None and (not isinstance(spotify_map, str) or not spotify_map.strip()):
+            raise ValueError(f"{path}.spotify_map must be a non-empty string path when provided.")
+        url_priority = raw_spec.get("url_priority")
+        if url_priority is None:
+            continue
+        if not isinstance(url_priority, list) or not url_priority:
+            raise ValueError(f"{path}.url_priority must be a non-empty list when provided.")
+        for source_idx, raw_source in enumerate(url_priority):
+            source = str(raw_source or "").strip()
+            if source not in ALTERNATE_EPISODE_URL_SOURCES:
+                allowed = ", ".join(sorted(ALTERNATE_EPISODE_URL_SOURCES))
+                raise ValueError(
+                    f"{path}.url_priority[{source_idx}] has unknown source '{source}'. "
+                    f"Allowed: {allowed}"
+                )
+
+
 def _resolve_pubdate_year_rewrite(feed_config: Dict[str, Any]) -> Optional[Tuple[int, int]]:
     raw_value = feed_config.get("pubdate_year_rewrite")
     if raw_value is None:
@@ -2850,6 +2890,7 @@ def validate_feed_block_config(feed_config: Dict[str, Any]) -> None:
         raw_description_footer = feed_config.get("description_footer")
         if not isinstance(raw_description_footer, str) or not raw_description_footer.strip():
             raise ValueError("feed.description_footer must be a non-empty string.")
+    _validate_alternate_episode_links_config(feed_config)
 
     mapping_specs = (
         ("title_blocks_by_kind", TITLE_BLOCKS_ALLOWED),
@@ -2935,6 +2976,206 @@ def _render_blocks(
             joiner = "\n\n"
         rendered = f"{rendered}{joiner}{value}"
     return rendered
+
+
+def _resolve_repo_relative_path(config: Dict[str, Any], raw_path: str) -> Path:
+    path = Path(str(raw_path or "").strip()).expanduser()
+    if path.is_absolute():
+        return path
+    if str(raw_path).startswith("shows/"):
+        return REPO_ROOT / path
+    config_path = str(config.get("__config_path__") or "").strip()
+    if config_path:
+        return Path(config_path).resolve().parent / path
+    return REPO_ROOT / path
+
+
+def _cross_language_episode_id_from_source_name(source_name: str) -> Optional[str]:
+    value = str(source_name or "").strip()
+    if not value:
+        return None
+    filename = Path(value).name
+    cleaned = _strip_cfg_tag_from_filename(filename)
+    cleaned = CROSS_LANGUAGE_TAG_PATTERN.sub("", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    if not cleaned:
+        return None
+    return logical_episode_id(cleaned)
+
+
+def _cross_language_episode_id_for_inventory_episode(episode: Dict[str, Any]) -> Optional[str]:
+    candidates = [
+        episode.get("source_name"),
+        episode.get("source_path"),
+        episode.get("episode_key"),
+        episode.get("guid"),
+    ]
+    for candidate in candidates:
+        logical_id = _cross_language_episode_id_from_source_name(str(candidate or ""))
+        if logical_id:
+            return logical_id
+    return None
+
+
+def _cross_language_episode_fallback_ids(logical_id: Optional[str]) -> List[str]:
+    if not logical_id:
+        return []
+    if logical_id.startswith("short__"):
+        return [f"single_reading__{logical_id.removeprefix('short__')}"]
+    if logical_id.startswith("single_reading__"):
+        return [f"short__{logical_id.removeprefix('single_reading__')}"]
+    return []
+
+
+def _load_spotify_map(path: Optional[Path]) -> Dict[str, Any]:
+    if path is None or not path.exists():
+        return {}
+    try:
+        payload = load_json(path)
+    except Exception as exc:  # noqa: BLE001 - feed generation should degrade for stale sidecar maps.
+        print(f"Warning: could not load alternate Spotify map {path}: {exc}", file=sys.stderr)
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _spotify_url_for_inventory_episode(episode: Dict[str, Any], spotify_map: Dict[str, Any]) -> Optional[str]:
+    by_episode_key = spotify_map.get("by_episode_key")
+    if isinstance(by_episode_key, dict):
+        for key_field in ("episode_key", "guid"):
+            episode_key = str(episode.get(key_field) or "").strip()
+            if not episode_key:
+                continue
+            url = by_episode_key.get(episode_key)
+            if isinstance(url, str) and url.strip():
+                return url.strip()
+    by_rss_title = spotify_map.get("by_rss_title")
+    title = str(episode.get("title") or "").strip()
+    if title and isinstance(by_rss_title, dict):
+        url = by_rss_title.get(title)
+        if isinstance(url, str) and url.strip():
+            return url.strip()
+    return None
+
+
+def _alternate_episode_url(
+    episode: Dict[str, Any],
+    *,
+    spotify_map: Dict[str, Any],
+    url_priority: Sequence[str],
+) -> Optional[str]:
+    for source in url_priority:
+        if source == "spotify":
+            url = _spotify_url_for_inventory_episode(episode, spotify_map)
+        elif source == "audio_url":
+            url = str(episode.get("audio_url") or "").strip()
+        elif source == "link":
+            url = str(episode.get("link") or "").strip()
+        else:
+            url = ""
+        if url:
+            return url
+    return None
+
+
+def load_alternate_episode_link_indexes(config: Dict[str, Any]) -> List[Dict[str, Any]]:
+    feed_config = config.get("feed") if isinstance(config.get("feed"), dict) else {}
+    raw_specs = feed_config.get("alternate_episode_links")
+    if not isinstance(raw_specs, list):
+        return []
+
+    indexes: List[Dict[str, Any]] = []
+    for raw_spec in raw_specs:
+        if not isinstance(raw_spec, dict):
+            continue
+        label = str(raw_spec.get("label") or "").strip()
+        inventory_value = str(raw_spec.get("inventory") or "").strip()
+        if not label or not inventory_value:
+            continue
+        inventory_path = _resolve_repo_relative_path(config, inventory_value)
+        if not inventory_path.exists():
+            print(f"Warning: alternate episode inventory not found: {inventory_path}", file=sys.stderr)
+            continue
+        try:
+            inventory_payload = load_json(inventory_path)
+        except Exception as exc:  # noqa: BLE001 - an alternate link index should not break the feed.
+            print(f"Warning: could not load alternate episode inventory {inventory_path}: {exc}", file=sys.stderr)
+            continue
+        raw_episodes = inventory_payload.get("episodes") if isinstance(inventory_payload, dict) else None
+        if not isinstance(raw_episodes, list):
+            print(f"Warning: alternate episode inventory has no episodes list: {inventory_path}", file=sys.stderr)
+            continue
+
+        spotify_map_value = str(raw_spec.get("spotify_map") or "").strip()
+        spotify_map_path = _resolve_repo_relative_path(config, spotify_map_value) if spotify_map_value else None
+        spotify_map = _load_spotify_map(spotify_map_path)
+        url_priority = [
+            str(source).strip()
+            for source in raw_spec.get("url_priority", DEFAULT_ALTERNATE_EPISODE_URL_PRIORITY)
+            if str(source).strip() in ALTERNATE_EPISODE_URL_SOURCES
+        ] or list(DEFAULT_ALTERNATE_EPISODE_URL_PRIORITY)
+
+        index: Dict[str, Dict[str, str]] = {}
+        for raw_episode in raw_episodes:
+            if not isinstance(raw_episode, dict):
+                continue
+            logical_id = _cross_language_episode_id_for_inventory_episode(raw_episode)
+            if not logical_id or logical_id in index:
+                continue
+            url = _alternate_episode_url(
+                raw_episode,
+                spotify_map=spotify_map,
+                url_priority=url_priority,
+            )
+            if not url:
+                continue
+            index[logical_id] = {
+                "url": url,
+                "title": str(raw_episode.get("title") or "").strip(),
+            }
+        indexes.append(
+            {
+                "label": label,
+                "index": index,
+                "inventory": str(inventory_path),
+                "spotify_map": str(spotify_map_path) if spotify_map_path else "",
+            }
+        )
+    return indexes
+
+
+def _render_alternate_episode_links(
+    *,
+    source_name: str,
+    alternate_episode_link_indexes: Optional[Sequence[Dict[str, Any]]],
+) -> Optional[str]:
+    logical_id = _cross_language_episode_id_from_source_name(source_name)
+    if not logical_id or not alternate_episode_link_indexes:
+        return None
+    lines: List[str] = []
+    seen_urls: Set[str] = set()
+    for spec in alternate_episode_link_indexes:
+        if not isinstance(spec, dict):
+            continue
+        label = str(spec.get("label") or "").strip()
+        index = spec.get("index")
+        if not label or not isinstance(index, dict):
+            continue
+        match: Optional[Dict[str, Any]] = None
+        for candidate_id in [logical_id, *_cross_language_episode_fallback_ids(logical_id)]:
+            candidate = index.get(candidate_id)
+            if isinstance(candidate, dict):
+                match = candidate
+                break
+        if match is None:
+            continue
+        url = str(match.get("url") or "").strip()
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        lines.append(f"{label}: {url}")
+    if not lines:
+        return None
+    return "\n".join(lines)
 
 
 def _apply_description_blank_line_marker(text: str, marker: str) -> str:
@@ -3548,6 +3789,7 @@ def build_episode_entry(
     regeneration_variant_slot: Optional[str] = None,
     regen_marker: Optional[str] = None,
     regen_marker_position: str = "suffix",
+    alternate_episode_link_indexes: Optional[Sequence[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     meta: Dict[str, Any] = {}
     if auto_meta:
@@ -4033,6 +4275,12 @@ def build_episode_entry(
     if summary:
         meta["summary"] = _strip_language_tags(summary)
     if meta.get("description"):
+        alternate_episode_links = _render_alternate_episode_links(
+            source_name=str(file_entry.get("name") or ""),
+            alternate_episode_link_indexes=alternate_episode_link_indexes,
+        )
+        if alternate_episode_links and alternate_episode_links not in meta["description"]:
+            meta["description"] = f"{meta['description'].rstrip()}\n\n{alternate_episode_links}"
         meta["description"] = _strip_language_tags(meta["description"], preserve_newlines=True)
         if description_blank_line_marker:
             meta["description"] = _apply_description_blank_line_marker(
@@ -4234,6 +4482,7 @@ def main() -> None:
         validate_feed_block_config(feed_cfg)
     except ValueError as exc:
         raise SystemExit(f"Invalid feed block config: {exc}") from exc
+    alternate_episode_link_indexes = load_alternate_episode_link_indexes(config)
     overrides_path = args.metadata or (Path(config.get("episode_metadata", "")) if config.get("episode_metadata") else None)
     overrides = load_json(overrides_path) if overrides_path and overrides_path.exists() else {}
     reading_summaries_cfg_raw = config.get("reading_summaries")
@@ -4632,6 +4881,7 @@ def main() -> None:
                 regeneration_variant_slot=matched_slot,
                 regen_marker=regen_marker,
                 regen_marker_position=regen_marker_position,
+                alternate_episode_link_indexes=alternate_episode_link_indexes,
             )
         )
 

@@ -99,6 +99,12 @@ Spotify map sync note:
 - Workflow sync runs with `--prune-stale`, so removed inventory episodes are also removed from `by_episode_key`.
 - Workflow `generate-feed.yml` runs this sync automatically for `personlighedspsykologi-en`.
 
+Bilingual episode-link note:
+- Feed generation reads the Danish mirror inventory and Spotify map via `feed.alternate_episode_links`.
+- Matching uses a language-neutral episode identity derived from the source filename, so `[EN]` and `[DA]` variants of the same lecture/source resolve to each other.
+- Exact short/long counterpart matches are preferred; if only the other length exists, short and long reading episodes can fall back to each other.
+- English descriptions append `Dansk version: <url>` when a Danish counterpart has a Spotify episode URL, falling back to the Danish R2 audio URL if Spotify has not ingested it yet.
+
 Reading key sync note:
 - Canonical source of truth file: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
 - Exported OneDrive mirror target: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`

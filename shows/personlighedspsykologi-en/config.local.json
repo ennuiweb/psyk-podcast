@@ -128,6 +128,17 @@
     "description_prepend_semester_week_lecture": true,
     "description_blank_line_marker": "·",
     "description_footer": "\n·\n·\n·\nPersonlighedspsykologi: https://open.spotify.com/show/0jAvkPCcZ1x98lIMno1oqv\nBioneuro: https://open.spotify.com/show/5QIHRkc1N6xuCqtnfmsPfN\nSocialpsykologi: https://open.spotify.com/show/08cv2AZyBv2W9S8GiAysVP",
+    "alternate_episode_links": [
+      {
+        "label": "Dansk version",
+        "inventory": "shows/personlighedspsykologi-da/episode_inventory.json",
+        "spotify_map": "shows/personlighedspsykologi-da/spotify_map.json",
+        "url_priority": [
+          "spotify",
+          "audio_url"
+        ]
+      }
+    ],
     "tail_grundbog_lydbog": {
       "enabled": true,
       "include_forord": true,

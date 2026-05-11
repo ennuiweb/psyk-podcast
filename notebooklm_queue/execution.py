@@ -95,7 +95,12 @@ def _derived_retry_at(
     explicit_retry_at: str | None,
     error_text: str | None,
     attempt_count: int,
+    failure_mode_code: str | None = None,
 ) -> str | None:
+    failure_mode = classify_failure_mode(error_text)
+    resolved_failure_mode_code = failure_mode_code or (failure_mode.code if failure_mode is not None else None)
+    if resolved_failure_mode_code == FAILURE_MODE_AUTH_STALE.code:
+        return None
     if explicit_retry_at:
         return explicit_retry_at
     delay_seconds = _retry_delay_seconds(
@@ -191,11 +196,10 @@ def _phase_retry_detection_text(phase: dict[str, Any], fallback: str) -> str:
     return "\n".join(parts)
 
 
-def _failure_details(*, error_text: str | None) -> dict[str, Any]:
-    failure_mode = classify_failure_mode(error_text)
-    if failure_mode is None:
+def _failure_details(*, failure_mode_code: str | None) -> dict[str, Any]:
+    if not failure_mode_code:
         return {}
-    return {"failure_mode": failure_mode.code}
+    return {"failure_mode": failure_mode_code}
 
 
 def _find_lecture_dirs(*, output_root: Path, lecture_key: str) -> list[Path]:
@@ -730,6 +734,7 @@ def _finalize_failure(
         explicit_retry_at=options.retry_at,
         error_text=_phase_retry_detection_text(failed_phase, note),
         attempt_count=max(int(job.get("attempt_count") or 0), 1),
+        failure_mode_code=failure_mode.code if failure_mode is not None else None,
     )
     effective_failed_state = failed_state
     if retry_at and failed_state == STATE_FAILED_RETRYABLE:
@@ -757,7 +762,7 @@ def _finalize_failure(
         details={
             "run_id": run_id,
             "manifest_path": manifest_path,
-            **_failure_details(error_text=error_text),
+            **_failure_details(failure_mode_code=failure_mode.code if failure_mode is not None else None),
         },
     )
     artifacts = dict(updated.get("artifacts") or {})
@@ -776,6 +781,7 @@ def _finalize_failure(
         manifest=manifest,
         failed_state=effective_failed_state,
         error_text=manifest["last_error"],
+        failure_mode_code=failure_mode.code if failure_mode is not None else None,
         note=note,
     )
     if alert_payload:

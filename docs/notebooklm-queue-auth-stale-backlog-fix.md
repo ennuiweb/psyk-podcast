@@ -37,6 +37,8 @@ The durable fix is to make failure handling explicit and shared:
    present.
 5. Exit cleanly with `blocked_backlog_remaining` only when blocked jobs are the
    sole remaining work.
+6. Keep unknown `failed_retryable` backlog loud and nonzero instead of treating
+   it as an expected degraded state.
 
 ## Implemented Changes
 
@@ -56,9 +58,17 @@ The durable fix is to make failure handling explicit and shared:
   execution, so alerts and runtime state cannot drift.
 - Updated `notebooklm_queue/orchestrator.py` so mixed blocked + timed backlog
   no longer stops the whole worker.
+- Tightened `serve-show` again so only explicit blocked states exit cleanly;
+  legacy or unknown `failed_retryable` backlog still returns
+  `manual_intervention_required`.
 - Updated `notebooklm_queue/cli.py` so `serve-show` returns success for
   `blocked_backlog_remaining` and reserves nonzero exit codes for actual queue
   orchestration failures.
+- Updated alert emission so the resolved execution failure mode is passed
+  directly into alert classification. That keeps repeated rate-limit alerts
+  working even when the primary stored error text is noisy and the real
+  rate-limit signal only appeared in the combined stdout/stderr text used by
+  execution.
 
 ## Operator Contract
 
@@ -71,6 +81,8 @@ Expected behavior after this fix:
 - While any timed backlog still exists, `serve-show` keeps draining it.
 - When only blocked backlog remains, `serve-show` exits with
   `blocked_backlog_remaining` and a zero process exit code.
+- If a lecture remains in generic `failed_retryable`, `serve-show` still exits
+  nonzero for manual intervention.
 
 Required operator action for `blocked_auth_stale`:
 

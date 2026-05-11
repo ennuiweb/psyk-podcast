@@ -20,6 +20,7 @@ from notebooklm_queue.constants import (
     STATE_WAITING_FOR_ARTIFACT,
 )
 from notebooklm_queue.execution import ExecutionOptions, execute_job
+from notebooklm_queue.failure_modes import FAILURE_MODE_AUTH_STALE, classify_failure_mode
 from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.store import QueueStore
 
@@ -435,6 +436,35 @@ def test_execute_job_blocks_auth_stale_failures_and_emits_alert_via_command(tmp_
     assert delivered["kind"] == "auth_stale"
 
 
+def test_execute_job_ignores_explicit_retry_at_for_auth_stale_failures(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\nprint('authentication expired', file=sys.stderr)\nraise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(
+            repo_root=repo_root,
+            retry_at="2099-01-01T00:00:00+00:00",
+        ),
+    )
+
+    assert result["final_state"] == STATE_BLOCKED_AUTH_STALE
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_BLOCKED_AUTH_STALE
+    assert updated["next_retry_at"] is None
+
+
 def test_execute_job_does_not_misclassify_decimal_timing_as_auth_error(
     tmp_path: Path, monkeypatch
 ) -> None:
@@ -464,6 +494,41 @@ def test_execute_job_does_not_misclassify_decimal_timing_as_auth_error(
     assert "latest_alert_kind" not in updated["artifacts"]["execution"]
 
 
+def test_execute_job_uses_resolved_failure_mode_for_rate_limit_alerts(tmp_path: Path, monkeypatch) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "import sys\n"
+        "print('API rate limit or quota exceeded. Please wait before retrying.')\n"
+        "print('RPC CREATE_ARTIFACT failed after 0.362s', file=sys.stderr)\n"
+        "raise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_RATE_LIMIT_ALERT_ATTEMPTS", "1")
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_ALERT_DEDUP_SECONDS", "0")
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    execution = updated["artifacts"]["execution"]
+    assert execution["latest_alert_kind"] == "rate_limit_exhausted"
+    alert_path = Path(execution["latest_alert_path"])
+    alert_payload = json.loads(alert_path.read_text(encoding="utf-8"))
+    assert alert_payload["kind"] == "rate_limit_exhausted"
+    assert alert_payload["failure_mode"] == "rate_limit"
+
+
 def test_execute_job_does_not_alert_rate_limit_before_threshold(tmp_path: Path, monkeypatch) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(
@@ -488,6 +553,14 @@ def test_execute_job_does_not_alert_rate_limit_before_threshold(tmp_path: Path, 
     assert result["final_state"] == STATE_RETRY_SCHEDULED
     updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
     assert "latest_alert_kind" not in updated["artifacts"]["execution"]
+
+
+def test_classify_failure_mode_requires_auth_context_for_redirects() -> None:
+    assert classify_failure_mode("Request redirected to https://example.com/health") is None
+    assert (
+        classify_failure_mode("Request redirected to https://accounts.google.com/ServiceLogin?hl=en")
+        == FAILURE_MODE_AUTH_STALE
+    )
 
 
 def test_execute_job_resumes_from_generated_state_and_skips_generate(tmp_path: Path) -> None:

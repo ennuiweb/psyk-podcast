@@ -615,7 +615,74 @@ def test_serve_show_queue_stops_for_invalid_retry_schedule(tmp_path: Path, monke
     assert result["wait_plan"]["job_ids"] == [str(job["job_id"])]
 
 
-def test_serve_show_queue_reports_blocked_backlog_for_legacy_failed_retryable_jobs(
+def test_serve_show_queue_stops_for_manual_intervention_when_failed_retryable_and_retry_jobs_coexist(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    retry_job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    failed_job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L2",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(retry_job["job_id"]),
+        state=STATE_RETRY_SCHEDULED,
+        retry_at="2026-01-01T12:05:00+00:00",
+        expected_states={"queued"},
+    )
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(failed_job["job_id"]),
+        state=STATE_FAILED_RETRYABLE,
+        expected_states={"queued"},
+    )
+
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        lambda **kwargs: {
+            "show_slug": "bioneuro",
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug="bioneuro"),
+        },
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.time.sleep",
+        lambda seconds: (_ for _ in ()).throw(AssertionError("should not sleep when failed_retryable backlog exists")),
+    )
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+    )
+
+    assert result["stop_reason"] == "manual_intervention_required"
+    assert result["wait_plan"]["reason"] == "mixed_timed_wait_and_failed_retryable_backlog"
+    assert result["wait_plan"]["state_counts"] == {
+        STATE_FAILED_RETRYABLE: 1,
+        STATE_RETRY_SCHEDULED: 1,
+    }
+    assert result["wait_plan"]["job_ids"] == [str(failed_job["job_id"])]
+
+
+def test_serve_show_queue_reports_manual_intervention_for_legacy_failed_retryable_jobs(
     tmp_path: Path, monkeypatch
 ) -> None:
     repo_root = tmp_path / "repo"
@@ -653,5 +720,7 @@ def test_serve_show_queue_reports_blocked_backlog_for_legacy_failed_retryable_jo
         options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
     )
 
-    assert result["stop_reason"] == "blocked_backlog_remaining"
+    assert result["stop_reason"] == "manual_intervention_required"
+    assert result["wait_plan"]["reason"] == "failed_retryable_backlog_remaining"
     assert result["wait_plan"]["state_counts"] == {STATE_FAILED_RETRYABLE: 1}
+    assert result["wait_plan"]["job_ids"] == [str(job["job_id"])]

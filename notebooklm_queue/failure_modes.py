@@ -11,7 +11,12 @@ AUTH_ERROR_TOKENS = (
     "invalid authentication",
     "not logged in",
     "run 'notebooklm login'",
-    "redirected to",
+)
+
+AUTH_REDIRECT_TOKENS = (
+    "accounts.google.com",
+    "servicelogin",
+    "accountchooser",
 )
 
 RATE_LIMIT_ERROR_TOKENS = (
@@ -67,9 +72,17 @@ def _has_status_code_context(text: str, code: int, *, extra_phrases: tuple[str, 
     return any(f"{code} {phrase}" in text for phrase in extra_phrases)
 
 
+def _looks_like_auth_redirect(text: str) -> bool:
+    if "redirected to" not in text:
+        return False
+    return any(token in text for token in AUTH_REDIRECT_TOKENS)
+
+
 def looks_like_auth_error(text: str | None) -> bool:
     lowered = _lowered(text)
-    return any(token in lowered for token in AUTH_ERROR_TOKENS) or _has_status_code_context(
+    return any(token in lowered for token in AUTH_ERROR_TOKENS) or _looks_like_auth_redirect(
+        lowered
+    ) or _has_status_code_context(
         lowered,
         401,
         extra_phrases=("unauthorized",),

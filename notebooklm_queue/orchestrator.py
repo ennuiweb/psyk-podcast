@@ -237,6 +237,7 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
     retry_jobs: list[dict[str, Any]] = []
     waiting_jobs: list[dict[str, Any]] = []
     blocking_jobs: list[dict[str, Any]] = []
+    failed_retryable_jobs: list[dict[str, Any]] = []
     other_active_jobs: list[dict[str, Any]] = []
     invalid_retry_jobs: list[dict[str, Any]] = []
 
@@ -252,8 +253,11 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
         if state == STATE_WAITING_FOR_ARTIFACT:
             waiting_jobs.append(job)
             continue
-        if state in BLOCKED_STATES or state == STATE_FAILED_RETRYABLE:
+        if state in BLOCKED_STATES:
             blocking_jobs.append(job)
+            continue
+        if state == STATE_FAILED_RETRYABLE:
+            failed_retryable_jobs.append(job)
             continue
         other_active_jobs.append(job)
 
@@ -266,6 +270,14 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
         }
 
     timed_wait_jobs = retry_jobs + waiting_jobs
+
+    if failed_retryable_jobs and timed_wait_jobs:
+        return {
+            "action": "manual_intervention_required",
+            "reason": "mixed_timed_wait_and_failed_retryable_backlog",
+            "state_counts": _state_counts(failed_retryable_jobs + blocking_jobs + timed_wait_jobs),
+            "job_ids": [str(job.get("job_id") or "") for job in failed_retryable_jobs],
+        }
 
     if other_active_jobs and timed_wait_jobs:
         return {
@@ -300,6 +312,14 @@ def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:
         return {
             "action": "active_backlog_without_progress",
             "state_counts": _state_counts(other_active_jobs),
+        }
+
+    if failed_retryable_jobs:
+        return {
+            "action": "manual_intervention_required",
+            "reason": "failed_retryable_backlog_remaining",
+            "state_counts": _state_counts(failed_retryable_jobs + blocking_jobs),
+            "job_ids": [str(job.get("job_id") or "") for job in failed_retryable_jobs],
         }
 
     if blocking_jobs:

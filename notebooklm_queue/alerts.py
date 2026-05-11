@@ -86,6 +86,7 @@ def classify_failure_alert(
     failed_state: str,
     error_text: str | None,
     job: dict[str, Any],
+    failure_mode_code: str | None = None,
 ) -> AlertDecision | None:
     show_slug = str(job.get("show_slug") or "").strip()
     lecture_key = str(job.get("lecture_key") or "").strip()
@@ -98,7 +99,7 @@ def classify_failure_alert(
             summary=f"Queue job moved to dead letter for {show_slug} {lecture_key}",
         )
 
-    if failed_state == STATE_BLOCKED_AUTH_STALE or looks_like_auth_error(error_text):
+    if failure_mode_code == "auth_stale" or failed_state == STATE_BLOCKED_AUTH_STALE or looks_like_auth_error(error_text):
         return AlertDecision(
             kind=ALERT_KIND_AUTH_STALE,
             fingerprint=f"{ALERT_KIND_AUTH_STALE}:{show_slug}",
@@ -107,7 +108,7 @@ def classify_failure_alert(
 
     if (
         failed_state == STATE_RETRY_SCHEDULED
-        and looks_like_rate_limit(error_text)
+        and (failure_mode_code == "rate_limit" or looks_like_rate_limit(error_text))
         and attempt_count >= max(_rate_limit_alert_attempts(), 1)
     ):
         return AlertDecision(
@@ -127,12 +128,14 @@ def emit_failure_alert(
     manifest: dict[str, Any],
     failed_state: str,
     error_text: str | None,
+    failure_mode_code: str | None = None,
     note: str,
 ) -> dict[str, Any] | None:
     decision = classify_failure_alert(
         failed_state=failed_state,
         error_text=error_text,
         job=job,
+        failure_mode_code=failure_mode_code,
     )
     if decision is None:
         return None
@@ -171,6 +174,7 @@ def emit_failure_alert(
             "attempt_count": int(job.get("attempt_count") or 0),
             "note": note,
             "error": str(error_text or ""),
+            "failure_mode": failure_mode_code,
             "run_id": str(manifest.get("run_id") or ""),
             "manifest_phase_names": [str(phase.get("name") or "") for phase in list(manifest.get("phases") or [])],
             "manifest_path": str(

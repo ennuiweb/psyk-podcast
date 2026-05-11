@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-10T15:30:51+00:00",
+  "generated_at": "2026-05-11T18:38:20+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
@@ -79,6 +79,36 @@
       "published_at": "2026-05-10T14:56:52+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/%5BShort%5D%20W01L1%20-%20Lewis%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8e065653%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L2/[Short] W04L2 - Lacan (1966) [DA] {type=audio lang=da format=deep-dive length=short hash=d9672dcb}.mp3",
+      "source_name": "[Short] W04L2 - Lacan (1966) [DA] {type=audio lang=da format=deep-dive length=short hash=d9672dcb}.mp3",
+      "source_path": "W04L2/[Short] W04L2 - Lacan (1966) [DA] {type=audio lang=da format=deep-dive length=short hash=d9672dcb}.mp3",
+      "path_parts": [
+        "W04L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9990147,
+      "sha256": "a67a7d1ae6387573847a70d93dd698676eb16a207c484aabce6476754c4974ff",
+      "artifact_type": "audio",
+      "published_at": "2026-05-11T18:38:18+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L2/%5BShort%5D%20W04L2%20-%20Lacan%20%281966%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dd9672dcb%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L2/[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [DA] {type=audio lang=da format=deep-dive length=short hash=199c6f21}.mp3",
+      "source_name": "[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [DA] {type=audio lang=da format=deep-dive length=short hash=199c6f21}.mp3",
+      "source_path": "W04L2/[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [DA] {type=audio lang=da format=deep-dive length=short hash=199c6f21}.mp3",
+      "path_parts": [
+        "W04L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11442107,
+      "sha256": "b5fa88a233e9f10ccaba92b0beb06887a86c09e203fd278ebf3ca27076efe676",
+      "artifact_type": "audio",
+      "published_at": "2026-05-11T18:38:18+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L2/%5BShort%5D%20W04L2%20-%20Laplanche%2C%20J.%20%281970%29.%20Liv%20og%20d%C3%B8d%20i%20psykoanalysen%20%28pp.%2018%E2%80%9038%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D199c6f21%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-da/W11L2/W11L2 - Bruner (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=17b70652}.mp3",

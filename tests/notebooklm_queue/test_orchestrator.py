@@ -492,6 +492,61 @@ def test_serve_show_queue_uses_real_clock_for_retry_wait_plan(tmp_path: Path, mo
         raise AssertionError("expected fake sleep to stop the wait loop")
 
 
+def test_serve_show_queue_respects_service_timeout_before_long_retry_wait(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="bioneuro",
+            subject_slug="bioneuro",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    retry_at = datetime(2026, 1, 1, 12, 30, tzinfo=UTC)
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_RETRY_SCHEDULED,
+        retry_at=retry_at.isoformat(),
+        expected_states={"queued"},
+    )
+
+    current_time = datetime(2026, 1, 1, 12, 0, tzinfo=UTC)
+    monotonic_now = {"value": 100.0}
+    slept: list[int] = []
+
+    monkeypatch.setattr("notebooklm_queue.orchestrator._utc_now", lambda: current_time)
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.monotonic", lambda: monotonic_now["value"])
+    monkeypatch.setattr("notebooklm_queue.orchestrator.time.sleep", lambda seconds: slept.append(seconds))
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        lambda **kwargs: {
+            "show_slug": kwargs["show_slug"],
+            "stopped_due_to_max_stage_runs": False,
+            "stage_run_count": 0,
+            "queue_summary": store.summarize_jobs(show_slug=kwargs["show_slug"]),
+        },
+    )
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="bioneuro",
+        options=ServeShowOptions(
+            drain=DrainShowOptions(repo_root=repo_root),
+            timeout_seconds=300,
+        ),
+    )
+
+    assert slept == []
+    assert result["stop_reason"] == "service_timeout_reached"
+    assert result["wait_plan"]["reason"] == "next_wait_exceeds_time_budget"
+    assert result["wait_plan"]["remaining_budget_seconds"] == 300
+    assert result["wait_plan"]["sleep_seconds"] == 1800
+
+
 def test_serve_show_queue_continues_waiting_when_blocked_and_retry_jobs_coexist(tmp_path: Path, monkeypatch) -> None:
     repo_root = tmp_path / "repo"
     repo_root.mkdir()

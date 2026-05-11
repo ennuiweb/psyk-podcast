@@ -7,7 +7,7 @@ Current live scope:
 - `bioneuro` is the first queue-owned, R2-backed live show.
 - `personlighedspsykologi-en` is now also queue-owned and R2-backed on the Hetzner runtime.
 - `personlighedspsykologi-da` now has a queue/runtime contract as a feed-first Danish mirror of the shared `personlighedspsykologi` subject surface. Its publication path is intentionally audio-only and skips Freudd portal sidecars by config.
-- The queue runtime is designed as a server-managed `systemd` timer whose service now stays alive through quota cooldowns, waits for the next retry window, keeps draining one show while timed backlog remains, and exits cleanly with a degraded blocked-backlog status only when operator-owned blockers are the sole work left.
+- The queue runtime is designed as a server-managed `systemd` timer whose service drains one show through timed backlog within a bounded wall-clock budget, waits through retry windows only while budget remains, and exits cleanly so the timer can schedule the next pass.
 
 Repository deploy artifacts:
 
@@ -104,6 +104,7 @@ Notes:
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
+- The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
 - Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
 - NotebookLM auth expiry now maps to `blocked_auth_stale`, which is treated as an operator-owned blocker instead of a timed retry. The queue keeps draining unrelated `retry_scheduled` and `waiting_for_artifact` jobs for the same show and only exits with `blocked_backlog_remaining` when blocked auth is all that remains.
 - Generic `failed_retryable` backlog still exits nonzero for manual intervention. Only explicit operator-owned blocked states such as `blocked_auth_stale` produce the clean degraded `blocked_backlog_remaining` stop reason.
@@ -115,10 +116,12 @@ Notes:
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.
 - Queue-owned lecture jobs can now publish incrementally: if one episode finishes downloading while sibling request logs for the same lecture are still pending, the queue uploads and publishes the finished episode(s), then returns the same lecture job to `waiting_for_artifact` for the remaining outputs.
 - Incremental publish cycles skip unchanged R2 objects, so a whole-show regeneration does not re-upload already published episodes on every later poll.
-- `serve-show` now keeps waiting and draining whenever timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if blocked jobs are also present. Invalid retry timestamps still fail closed for manual intervention, but mixed blocked+timed backlog no longer stalls the whole show.
+- `serve-show` now keeps waiting and draining whenever timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if blocked jobs are also present.
+- If the next retry/poll window would exceed the remaining service budget, `serve-show` exits with `service_timeout_reached` and a zero process exit code so the systemd timer can resume the show on the next tick.
+- Invalid retry timestamps still fail closed for manual intervention, but mixed blocked+timed backlog no longer stalls the whole show.
 - Keep `NOTEBOOKLM_PROFILE_PRIORITY` ordered so accounts that can still create notebooks and artifacts are tried first. The generator now rotates on transient NotebookLM create/list/get RPC failures as well as explicit auth/rate-limit faults, but a good priority order still reduces churn during partial account outages.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
-- The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run while waiting through retry windows.
+- The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run. The queue loop itself is responsible for exiting on its own wall-clock budget instead of relying on systemd to kill it.
 
 ## Install on Hetzner
 

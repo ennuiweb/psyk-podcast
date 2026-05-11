@@ -46,6 +46,7 @@ class DrainShowOptions:
 @dataclass(frozen=True, slots=True)
 class ServeShowOptions:
     drain: DrainShowOptions
+    timeout_seconds: int | None = None
 
 
 StageCallable = Callable[[], dict[str, Any]]
@@ -202,6 +203,9 @@ def serve_show_queue(
     cycle_results: list[dict[str, Any]] = []
     cycle_count = 0
     total_sleep_seconds = 0
+    deadline: float | None = None
+    if options.timeout_seconds is not None:
+        deadline = time.monotonic() + max(int(options.timeout_seconds), 1)
 
     while True:
         cycle = drain_show_queue(store=store, show_slug=show_slug, options=options.drain)
@@ -210,6 +214,18 @@ def serve_show_queue(
         if len(cycle_results) > RECENT_CYCLE_HISTORY_LIMIT:
             cycle_results = cycle_results[-RECENT_CYCLE_HISTORY_LIMIT:]
         if cycle.get("stopped_due_to_max_stage_runs"):
+            if deadline is not None and time.monotonic() >= deadline:
+                return {
+                    "show_slug": show_slug,
+                    "cycle_count": cycle_count,
+                    "total_sleep_seconds": total_sleep_seconds,
+                    "stop_reason": "service_timeout_reached",
+                    "wait_plan": {"reason": "time_budget_exhausted_after_cycle"},
+                    "last_cycle": cycle_results[-1],
+                    "recent_cycles": cycle_results,
+                    "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
+                    "queue_summary": store.summarize_jobs(show_slug=show_slug),
+                }
             continue
 
         wait_plan = _plan_next_action(store=store, show_slug=show_slug)
@@ -226,6 +242,42 @@ def serve_show_queue(
                 "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
                 "queue_summary": store.summarize_jobs(show_slug=show_slug),
             }
+
+        if deadline is not None:
+            remaining_seconds = max(int(deadline - time.monotonic()), 0)
+            if remaining_seconds <= 0:
+                return {
+                    "show_slug": show_slug,
+                    "cycle_count": cycle_count,
+                    "total_sleep_seconds": total_sleep_seconds,
+                    "stop_reason": "service_timeout_reached",
+                    "wait_plan": {
+                        **wait_plan,
+                        "reason": "time_budget_exhausted_before_wait",
+                        "remaining_budget_seconds": 0,
+                    },
+                    "last_cycle": cycle_results[-1],
+                    "recent_cycles": cycle_results,
+                    "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
+                    "queue_summary": store.summarize_jobs(show_slug=show_slug),
+                }
+            planned_sleep = max(int(wait_plan.get("sleep_seconds") or 0), 1)
+            if planned_sleep > remaining_seconds:
+                return {
+                    "show_slug": show_slug,
+                    "cycle_count": cycle_count,
+                    "total_sleep_seconds": total_sleep_seconds,
+                    "stop_reason": "service_timeout_reached",
+                    "wait_plan": {
+                        **wait_plan,
+                        "reason": "next_wait_exceeds_time_budget",
+                        "remaining_budget_seconds": remaining_seconds,
+                    },
+                    "last_cycle": cycle_results[-1],
+                    "recent_cycles": cycle_results,
+                    "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
+                    "queue_summary": store.summarize_jobs(show_slug=show_slug),
+                }
 
         sleep_seconds = max(int(wait_plan.get("sleep_seconds") or 0), 1)
         time.sleep(sleep_seconds)

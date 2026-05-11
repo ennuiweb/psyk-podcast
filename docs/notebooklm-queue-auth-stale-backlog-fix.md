@@ -58,12 +58,17 @@ The durable fix is to make failure handling explicit and shared:
   execution, so alerts and runtime state cannot drift.
 - Updated `notebooklm_queue/orchestrator.py` so mixed blocked + timed backlog
   no longer stops the whole worker.
+- Updated `notebooklm_queue/orchestrator.py` again so the hosted
+  `serve-show` loop now honors a real wall-clock budget instead of sleeping
+  forever between timed retries. When the next wait window would overrun the
+  configured budget, the worker exits with `service_timeout_reached` and lets
+  the systemd timer schedule the next pass.
 - Tightened `serve-show` again so only explicit blocked states exit cleanly;
   legacy or unknown `failed_retryable` backlog still returns
   `manual_intervention_required`.
 - Updated `notebooklm_queue/cli.py` so `serve-show` returns success for
-  `blocked_backlog_remaining` and reserves nonzero exit codes for actual queue
-  orchestration failures.
+  `blocked_backlog_remaining` and `service_timeout_reached`, and reserves
+  nonzero exit codes for actual queue orchestration failures.
 - Updated alert emission so the resolved execution failure mode is passed
   directly into alert classification. That keeps repeated rate-limit alerts
   working even when the primary stored error text is noisy and the real
@@ -79,6 +84,9 @@ Expected behavior after this fix:
 - If NotebookLM auth is stale, the affected lecture moves to
   `blocked_auth_stale`.
 - While any timed backlog still exists, `serve-show` keeps draining it.
+- If timed backlog remains but the next wait would exceed the configured
+  worker budget, `serve-show` exits with `service_timeout_reached` so the
+  timer can resume later instead of keeping the unit active indefinitely.
 - When only blocked backlog remains, `serve-show` exits with
   `blocked_backlog_remaining` and a zero process exit code.
 - If a lecture remains in generic `failed_retryable`, `serve-show` still exits
@@ -94,12 +102,15 @@ Required operator action for `blocked_auth_stale`:
 
 Local verification completed on 2026-05-11:
 
-- targeted queue regression slice: `38 passed`
-- full `tests/notebooklm_queue` suite: `101 passed`
+- targeted queue regression slices: `38 passed`, then `17 passed`
+- full `tests/notebooklm_queue` suite: `101 passed`, then `107 passed`
 
 Coverage added/updated for:
 
 - auth-stale execution finalization
 - repair of legacy `failed_retryable` auth jobs
 - mixed blocked + timed backlog behavior in `serve-show`
-- CLI success semantics for `blocked_backlog_remaining`
+- CLI success semantics for `blocked_backlog_remaining` and
+  `service_timeout_reached`
+- bounded `serve-show` loop behavior when the next retry window would overrun
+  the configured service budget

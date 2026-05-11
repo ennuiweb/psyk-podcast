@@ -439,11 +439,12 @@ def main(argv: list[str] | None = None) -> int:
                     downstream_poll_interval_seconds=int(args.poll_interval_seconds),
                     remote=args.remote,
                     branch=args.branch,
-                )
+                ),
+                timeout_seconds=int(args.timeout_seconds),
             ),
         )
         _print_json(payload)
-        return 0 if payload.get("stop_reason") in {"idle", "blocked_backlog_remaining"} else 1
+        return 0 if payload.get("stop_reason") in {"idle", "blocked_backlog_remaining", "service_timeout_reached"} else 1
 
     parser.error(f"Unhandled command: {args.command}")
     return 2

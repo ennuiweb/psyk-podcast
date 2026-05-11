@@ -52,6 +52,32 @@ def test_main_serve_show_treats_blocked_backlog_as_success(tmp_path: Path, monke
     assert result == 0
 
 
+def test_main_serve_show_treats_service_timeout_as_success(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setattr(
+        "notebooklm_queue.cli.serve_show_queue",
+        lambda **kwargs: {
+            "show_slug": "bioneuro",
+            "stop_reason": "service_timeout_reached",
+            "wait_plan": {"reason": "next_wait_exceeds_time_budget"},
+        },
+    )
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: None)
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "serve-show",
+            "--show-slug",
+            "bioneuro",
+            "--repo-root",
+            str(tmp_path / "repo"),
+        ]
+    )
+
+    assert result == 0
+
+
 def test_main_serve_show_keeps_manual_intervention_nonzero(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setattr(
         "notebooklm_queue.cli.serve_show_queue",

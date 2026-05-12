@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-11T18:55:07+00:00",
+  "generated_at": "2026-05-12T16:41:20+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
@@ -79,6 +79,66 @@
       "published_at": "2026-05-10T14:56:52+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W01L1/%5BShort%5D%20W01L1%20-%20Lewis%20%281999%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8e065653%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L1/W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=long hash=2b5400b3}.mp3",
+      "source_name": "W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=long hash=2b5400b3}.mp3",
+      "source_path": "W04L1/W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=long hash=2b5400b3}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 50861164,
+      "sha256": "cd99750bc49106b7b4b35b1da2cedc54a28a6fbb6c88aa5838bc53a963053135",
+      "artifact_type": "audio",
+      "published_at": "2026-05-12T16:41:12+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L1/W04L1%20-%20Freud%20%281973-1933%29%20DA%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20hash%3D2b5400b3%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L1/W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=long hash=39a6bfaf}.mp3",
+      "source_name": "W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=long hash=39a6bfaf}.mp3",
+      "source_path": "W04L1/W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=long hash=39a6bfaf}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 25640196,
+      "sha256": "3906d2ddfb8ac3660ee1115b0e6b5209e1d51b8a6d41576651d579d26fa3cdbd",
+      "artifact_type": "audio",
+      "published_at": "2026-05-12T16:41:12+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L1/W04L1%20-%20Gammelgaard%20%282007%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dlong%20hash%3D39a6bfaf%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L1/[Short] W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=short hash=fd7b8558}.mp3",
+      "source_name": "[Short] W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=short hash=fd7b8558}.mp3",
+      "source_path": "W04L1/[Short] W04L1 - Freud (1973-1933) DA [DA] {type=audio lang=da format=deep-dive length=short hash=fd7b8558}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11328557,
+      "sha256": "89d54ecd4c7b28a28c1e14c62969c15f0e13f7b37ff462a3de5822da7771c33c",
+      "artifact_type": "audio",
+      "published_at": "2026-05-12T16:41:12+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L1/%5BShort%5D%20W04L1%20-%20Freud%20%281973-1933%29%20DA%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dfd7b8558%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W04L1/[Short] W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=short hash=12a12cc0}.mp3",
+      "source_name": "[Short] W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=short hash=12a12cc0}.mp3",
+      "source_path": "W04L1/[Short] W04L1 - Gammelgaard (2007) [DA] {type=audio lang=da format=deep-dive length=short hash=12a12cc0}.mp3",
+      "path_parts": [
+        "W04L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11353209,
+      "sha256": "ca51e96f8738e699fb4cf2f15a03cd317b6c73e6fda8204c613e1308342e5296",
+      "artifact_type": "audio",
+      "published_at": "2026-05-12T16:41:12+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L1/%5BShort%5D%20W04L1%20-%20Gammelgaard%20%282007%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D12a12cc0%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-da/W04L2/W04L2 - Lacan (1966) [DA] {type=audio lang=da format=deep-dive length=long hash=97bb67f8}.mp3",

@@ -1,5 +1,6 @@
 import importlib.util
 import asyncio
+import io
 import json
 import os
 import tempfile
@@ -327,6 +328,47 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual(storage_path, str(expected_storage))
         self.assertEqual(auth_meta["source"], "default")
         self.assertIsNone(auth_meta["profile"])
+
+    def test_profile_priority_controls_rotation_without_auto_select_warning(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_root = Path(tmpdir)
+            profiles_path = tmp_root / "profiles.json"
+            first_storage = tmp_root / "freudagsbaren.json"
+            second_storage = tmp_root / "baduljen.json"
+            first_storage.write_text("{}", encoding="utf-8")
+            second_storage.write_text("{}", encoding="utf-8")
+            profiles_path.write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "baduljen": str(second_storage),
+                            "freudagsbaren": str(first_storage),
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            notebooklm_home = tmp_root / "notebooklm-home"
+            notebooklm_home.mkdir()
+            args = SimpleNamespace(
+                storage=None,
+                profile=None,
+                rotate_on_rate_limit=True,
+                profiles_file=str(profiles_path),
+                profile_priority="freudagsbaren,baduljen",
+                preferred_profile=None,
+                exclude_profiles=None,
+            )
+
+            with (
+                patch.dict(os.environ, {"NOTEBOOKLM_HOME": str(notebooklm_home)}, clear=False),
+                patch("sys.stdout", new_callable=io.StringIO) as stdout,
+            ):
+                candidates = mod._build_auth_candidates(args)
+
+        self.assertEqual([meta["profile"] for _, meta in candidates], ["freudagsbaren", "baduljen"])
+        self.assertNotIn("auto-selecting", stdout.getvalue())
 
     def test_resolve_notebook_keeps_original_error_when_no_owned_notebooks_exist(self):
         mod = _load_module()

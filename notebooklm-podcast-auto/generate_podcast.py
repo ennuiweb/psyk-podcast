@@ -208,6 +208,9 @@ def _select_auto_profile(args: argparse.Namespace) -> tuple[str | None, Path | N
     except ValueError as exc:
         print(f"Warning: {exc}. Falling back to default storage.")
         return None, None, None
+    priority_list = _parse_priority_list(_effective_profile_priority_arg(args))
+    if any(name in profiles for name in priority_list):
+        return None, profiles_path, profiles
     if "default" in profiles:
         return "default", profiles_path, profiles
     if len(profiles) == 1:

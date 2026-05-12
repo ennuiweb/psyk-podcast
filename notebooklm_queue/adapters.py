@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -40,6 +41,7 @@ class ShowAdapter:
     prompt_config_path: str | None = None
     default_content_types: tuple[str, ...] = ("audio", "infographic", "quiz")
     strict_download_output_root: bool = False
+    include_profile_env_args: bool = False
     generate_extra_args: tuple[str, ...] = ()
     download_extra_args: tuple[str, ...] = ()
 
@@ -112,6 +114,17 @@ class ShowAdapter:
         if self.prompt_config_path:
             command.extend(["--prompt-config", self.prompt_config_path])
         command.extend(self.generate_extra_args)
+        if self.include_profile_env_args:
+            _append_env_arg(
+                command,
+                option="--profile-priority",
+                env_name="NOTEBOOKLM_PROFILE_PRIORITY",
+            )
+            _append_env_arg(
+                command,
+                option="--profiles-file",
+                env_name="NOTEBOOKLM_PROFILES_FILE",
+            )
         if wait:
             command.append("--wait")
         if dry_run:
@@ -170,6 +183,7 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
             "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json",
         ),
         strict_download_output_root=True,
+        include_profile_env_args=True,
     ),
     "personlighedspsykologi-da": ShowAdapter(
         show_slug="personlighedspsykologi-da",
@@ -189,6 +203,7 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         ),
         default_content_types=("audio",),
         strict_download_output_root=True,
+        include_profile_env_args=True,
     ),
     "bioneuro": ShowAdapter(
         show_slug="bioneuro",
@@ -209,6 +224,14 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         strict_download_output_root=True,
     ),
 }
+
+
+def _append_env_arg(command: list[str], *, option: str, env_name: str) -> None:
+    if option in command:
+        return
+    value = str(os.environ.get(env_name) or "").strip()
+    if value:
+        command.extend([option, value])
 
 
 def get_show_adapter(show_slug: str) -> ShowAdapter:

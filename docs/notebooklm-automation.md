@@ -169,7 +169,7 @@ Important operational note:
 
 ```bash
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
-NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard,djspindoctor,psykku,freudagsbaren
+NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard
 ```
 
 - To be notified when NotebookLM auth goes stale, configure at least one queue alert delivery path in the same env file. Supported paths are:

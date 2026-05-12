@@ -68,8 +68,13 @@ NotebookLM profile rotation on Hetzner:
 
 ```bash
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
-NOTEBOOKLM_PROFILE_PRIORITY=default,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard,djspindoctor,psykku,freudagsbaren
+NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard
 ```
+
+`personlighedspsykologi-en` and `personlighedspsykologi-da` forward these
+environment values into their queue-owned generate commands as
+`--profiles-file` and `--profile-priority`. `bioneuro` does not forward them
+because its current generator wrapper does not accept those flags.
 
 Queue alerting for stale auth and repeated rate-limit exhaustion:
 

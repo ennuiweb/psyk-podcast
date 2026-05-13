@@ -1,0 +1,1220 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T11:00:23Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
+    "source_files_signature": "f8440c43444fc69d4040ed1904880ab2e7b1630660246a2e9dee6d32f488a55b",
+    "source_card": "5f0032038261ca2f9678e88087ade944a6cc0b1f0be5afcce2c6af4abd2b3d65",
+    "revised_lecture_substrate": "84cc978f5038b3317d204d7fed807edb85970a0c3a2144b3f45c5de9374e5fa0",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+    "lecture_key": "W11L2",
+    "title": "Grundbog kapitel 09 - Narrative teorier",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 43,
+    "estimated_token_count": 27950,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf"
+    ],
+    "reading_title": "Grundbog kapitel 09 - Narrative teorier",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W11L2"
+    ],
+    "sequence_index": 4,
+    "source_filename": "W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": true,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": true,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "bde7f9df941d3a709ada61b3931d806e0c003d2bc1f94ff0a042893789375da4",
+      "size_bytes": 6544243,
+      "page_count": 43,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 27950,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": [
+      "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Grundbog kapitel 9 - Narrative teorier.analysis.md"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 43,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "lecture_key": "W11L2",
+      "source_title": "Grundbog kapitel 09 - Narrative teorier"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de vigtigste koncepter. Guiden sætter scenen for teksten og definerer de problemer, du skal finde svar på undervejs.",
+      "teaser_paragraphs": [
+        "I langt størstedelen af den traditionelle psykologi betragtes personligheden som en fast kerne. Vi forestiller os, at vores indre består af målbare træk, biologiske dispositioner og mekaniske kognitive processer, som vi bærer med os overalt.",
+        "Narrativ psykologi vender fuldstændig op og ned på denne tankegang. Her er udgangspunktet et helt andet: Hvad nu hvis vores personlighed i virkeligheden ikke er en materiel ting indeni os, men derimod et produkt af de historier, vi fortæller? Teksten slår fast, at mennesker grundlæggende handler på baggrund af mening. Vi er ikke robotter, der blot reagerer; vi er forfattere, der aktivt skaber vores virkelighed.",
+        "Dette perspektivskift hviler på 'den sproglige vending'. Sproget er ikke længere bare et passivt spejl, vi bruger til at beskrive en allerede eksisterende verden. Sproget former aktivt vores opfattelse af os selv og andre. Det betyder også, at selvet radikalt genforstås. Som Polkinghorne formulerer det, er selvet altså mening frem for en substans. Det er en flydende, relationel størrelse.",
+        "Men hvis personligheden blot er en fortælling, kan vi så bare finde på os selv fra bunden af? Her støder teorien ind i et reelt problem: Kulturen. Vores samfund tilbyder os kun et bestemt sæt af narrative skabeloner. Kulturen dikterer ikke vores skæbne direkte, men den afstikker grænserne for, hvad det overhovedet er muligt at tænke, føle og sige om sig selv.",
+        "Dette kapitel kortlægger dette fundamentale sporskifte. Du skal læse for at forstå mekanismerne i vores meningsskabelse. Du skal finde ud af, hvordan narrativt 'plot' skaber sammenhæng i et foranderligt liv, og hvordan det flertydige selv kan rumme dybt konfliktende stemmer uden at splintres. Det er ikke blot abstrakt teori; det munder ud i konkrete terapeutiske redskaber, hvor selve handlingen er at adskille klienten fra problemet."
+      ],
+      "main_problem": "Hvordan konstrueres vores personlighed kontinuerligt gennem meningsskabende fortællinger, og hvordan betinger kulturelle rammer disse fortællinger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan adskiller den narrative tilgang sig fra tanken om personlighed som statiske, indre træk?",
+          "why_it_matters": "Det er selve det ontologiske brud, der definerer hele det narrative paradigme over for den klassiske essentialisme.",
+          "answer_form": "Kort beskrivelse af kontrasten"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?",
+          "why_it_matters": "Dette epistemologiske skift er forudsætningen for at forstå, at vi kan konstruere virkeligheden og selvet via ord.",
+          "answer_form": "En præcis funktionsbeskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?",
+          "why_it_matters": "Det forklarer, hvorfor vi ikke føler os som forskellige personer hver dag, selvom vi konstant forandrer os.",
+          "answer_form": "En forklaring af en tidslig mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på, at kulturen 'disponerer' frem for at den 'determinerer' vores handlinger?",
+          "why_it_matters": "Det løser spændingen mellem strukturel tvang og individets frie vilje (agency).",
+          "answer_form": "En skarp skelnen mellem de to begreber"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor og hvordan kan selvet fungere som 'dialogisk' eller som en flerhed af stemmer?",
+          "why_it_matters": "Det normaliserer det faktum, at vi har modstridende sider i os selv (som atleten og misbrugeren).",
+          "answer_form": "En kort forklaring på intern flertydighed"
+        },
+        {
+          "number": 6,
+          "question": "Hvad er princippet i 'eksternalisering', og hvordan bruges det i praksis?",
+          "why_it_matters": "Det demonstrerer teoriens konkrete værdi i narrativ terapi og genopretter klientens handlekraft.",
+          "answer_form": "Definition af metoden"
+        }
+      ],
+      "why_this_text_matters": "Kapitlet tilbyder den afgørende brobygning i den sidste del af kurset. Det afmonterer ideen om personlighed som et uforanderligt, biologisk låst objekt og præsenterer i stedet personlighed som en levet, kulturelt forankret og fortalt proces.",
+      "overview": [
+        "Opgøret med essentialisme og introduktionen af den sproglige vending",
+        "Kulturens disponerende magt over vores narrative meningsskabelse",
+        "Klinisk anvendelse: Det dialogiske selv og terapeutisk eksternalisering"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 296-301",
+          "task": "Afdæk hvordan sproget gik fra at beskrive virkeligheden til at skabe den.",
+          "why_it_matters": "Her etableres fundamentet for socialkonstruktionismen.",
+          "stop_signal": "Når du når afsnittet om Jerome Bruner"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 303-309",
+          "task": "Kontrastér aktiv meningsskabelse med den kognitive 'datamaskine'-model.",
+          "why_it_matters": "Viser hvorfor Bruner brød med kognitionspsykologien.",
+          "stop_signal": "Når kapitel-afsnittet om 'Determination og agency' starter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 310-312",
+          "task": "Isolér distinktionen mellem at disponere og at determinere.",
+          "why_it_matters": "Dette er afgørende for at bevare et begreb om handlekraft.",
+          "stop_signal": "Ved 'Kritik og replik'"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 316-318",
+          "task": "Forstå hvordan Polkinghornes plot binder fortid, nutid og fremtid sammen.",
+          "why_it_matters": "Forklarer oplevelsen af en fast identitet gennem forandring.",
+          "stop_signal": "Når McAdams introduceres på side 320"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 321-325",
+          "task": "Analyser Gergens og Raggatts teorier om det mangfoldige, konfliktfyldte selv.",
+          "why_it_matters": "Det er her, ideen om en samlet 'indre kerne' endegyldigt nedbrydes.",
+          "stop_signal": "Ved afsnittet om psykoanalyse"
+        },
+        {
+          "number": 6,
+          "source_location": "S. 328-331",
+          "task": "Grib fat i metoden eksternalisering og dens terapeutiske fordele.",
+          "why_it_matters": "Viser hvordan teori bliver til effektiv praksis.",
+          "stop_signal": "Ved 'Afrunding'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Mennesker handler på baggrund af mening",
+          "why": "Grundantagelsen bag den narrative handlingsforståelse.",
+          "where_to_look": "S. 296"
+        },
+        {
+          "target": "Selvet er altså mening frem for en substans",
+          "why": "Polkinghornes knivskarpe opgør med den essentialistiske tradition.",
+          "where_to_look": "S. 318"
+        },
+        {
+          "target": "disponerende frem for determinerende",
+          "why": "Nøglebegrebet for balancen mellem struktur og fri vilje.",
+          "where_to_look": "S. 311"
+        },
+        {
+          "target": "ikke personen, der er problemet",
+          "why": "Hjørnestenen i Michael Whites eksternaliseringsmetode.",
+          "where_to_look": "S. 329"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Heideggers indviklede fænomenologiske begrebsapparat (Dasein, tilstedeværen).",
+        "De små detaljer i forskellen mellem fransk poststrukturalisme og amerikansk interaktionisme.",
+        "Raggatts specifikke kvantitative metoder til at kortlægge stemmer i personligheden.",
+        "Schafers psykoanalytiske sprogbrug i detaljer."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 296",
+          "excerpt": "I denne forståelse kan personligheden i en radikal udgave være lig med de(n) fortælling(er), man laver om sig selv.",
+          "open_question": "Hvis vi er fortællinger, hvem har så magten over manuskriptet?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 296",
+          "excerpt": "Mennesker handler på baggrund af mening",
+          "open_question": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 318",
+          "excerpt": "Selvet er altså mening frem for en substans",
+          "open_question": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse afsnit som en fokuseret erstatning for tekstens tungeste teoretiske passager. Hvert afsnit løser et specifikt problem. Hold læseren åben, når du går videre til næste ark.",
+      "coverage_note": "Afsnittene dækker de centrale brudflader: fra essens til fortælling, Bruners kulturpsykologi, Polkinghornes plot, Gergens/Raggatts flerhed og Whites terapi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 296-301",
+          "heading": "Fra faste træk til konstruerede fortællinger",
+          "solves_subproblem": "Subproblem 1 og 2",
+          "local_problem": "At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
+          "explanation_paragraphs": [
+            "Inden for traditionel psykologi forstås personligheden oftest som en biologisk substans eller faste iboende træk. Narrativ psykologi repræsenterer et opgør med dette. Her antages det, at vi ikke har en skjult, sand kerne. I stedet består vores selver af de historier, vi fortæller om vores egne oplevelser og handlinger.",
+            "Dette paradigmeskift udspringer af 'den sproglige vending'. Tidligere mente man, at sproget fungerede som et objektivt spejl, der blot repræsenterede verden neutralt. Nu indså man, at sprog aktivt skaber både verden og os selv. Når vi navngiver noget eller trækker på et kulturelt begreb, former vi virkeligheden.",
+            "Når vi indgår i en kultur, benytter vi dens ord og symboler til løbende at skabe vores selvforståelse. Personlighed bliver derved ikke en afsluttet tilstand, men en vedvarende relationel proces udført gennem sproglig meningsskabelse."
+          ],
+          "key_points": [
+            "Personligheden er ikke en ting eller materiel substans.",
+            "Den sproglige vending afviser, at sprog blot repræsenterer virkeligheden neutralt.",
+            "Sproget er derimod et aktivt skabende og fortolkende værktøj."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Mennesker handler på baggrund af mening",
+              "why_it_matters": "Det markerer bruddet med ren stimulus-respons behaviorisme.",
+              "source_location": "S. 296"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 303-312",
+          "heading": "Bruner: Kultur og aktiv meningsskabelse",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "At fastslå forskellen på determinisme og kulturel disponering?",
+          "explanation_paragraphs": [
+            "Jerome Bruner var i begyndelsen en del af den kognitive revolution, men han forlod den, da den reducerede psyken til en datamaskine, der mekanisk og passivt bearbejdede information. Han insisterede på, at mennesket aktivt skaber mening, og at denne mening altid er indlejret i en social og kulturel kontekst.",
+            "Vi fødes ind i et samfund, der allerede er gennemsyret af specifikke fortolkningsmodeller. Gennem opvæksten tilegner vi os disse kulturelle narrativer for, hvordan man bør føle og agere. Kulturen afstikker derfor mulighederne for, hvilke historier vi kan fortælle om vores liv.",
+            "Betyder det så, at vi er fuldstændig styret (determineret) af vores kultur? Nej. Bruner og den narrative psykologi fremhæver, at kulturen virker 'disponerende'. Den gør visse handlinger og selvforståelser mere sandsynlige og lette at gribe til, mens andre gøres svære eller umulige. Men fordi vi aktivt fortolker, bevarer vi vores agency og kan omforme narrativerne."
+          ],
+          "key_points": [
+            "Bruner forkastede kognitionspsykologiens computermetafor til fordel for aktiv meningsskabelse.",
+            "Kulturen tilbyder narrativer, der virker som råmateriale for individets identitet.",
+            "Disponering betyder, at rammerne gør specifikke ruter lette, uden at de fremtvinger dem absolut."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "disponerende frem for determinerende",
+              "why_it_matters": "Bevarer individets handlefrihed på trods af stærk kulturel påvirkning.",
+              "source_location": "S. 311"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 316-318",
+          "heading": "Polkinghorne og det narrative plot",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "explanation_paragraphs": [
+            "Donald Polkinghorne adresserer et logisk problem i den narrative teori: Hvis vores personlighed blot er fortællinger, der konstant ændres afhængigt af konteksten, hvorfor oplever vi så alligevel os selv som relativt stabile og sammenhængende over tid?",
+            "Svaret er begrebet om det narrative 'plot'. Et plot fungerer som en konfiguration, der binder uensartede begivenheder, vores krop, motiver og handlinger sammen til en meningsfuld historie med retning. Ved at knytte vores fortid, vores nuværende situation og vores forventninger til fremtiden sammen, skaber plottet den kontinuitet, vi kalder identitet.",
+            "Selv ved uventede kriser, hvor det gamle plot bryder sammen, er opgaven at skabe et nyt narrativt plot, der igen kan skabe en overordnet mening med tingenes tilstand."
+          ],
+          "key_points": [
+            "Plottet organiserer spredte begivenheder til en tidslig enhed.",
+            "Identitetsoplevelsen skyldes narrativ sammenhæng, ikke en statisk biologisk kerne."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 318",
+            "passage": "\"Selvet er altså mening frem for en substans eller en ting\"",
+            "why_it_matters": "Det er selve grundformlen for den narrative redefinition af identitet."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 321-325",
+          "heading": "Det flertydige og dialogiske selv",
+          "solves_subproblem": "Subproblem 5",
+          "local_problem": "At håndtere interne modsætninger og skiftende roller hos individet?",
+          "explanation_paragraphs": [
+            "Kenneth Gergen radikaliserer ideen og fjerner forestillingen om ét samlet individ. For ham er selvet performativt. Vi har brug for forskellige selvnarrativer afhængigt af, hvilken social arena vi befinder os på. Identitet er noget vi 'gør' frem for noget vi 'er'.",
+            "Peter Raggatt bygger videre på dette med ideen om det flertydige eller 'polypsykiske' selv. Han påpeger, at vores identitet ofte består af flere forskellige narrative stemmer, der repræsenterer forskellige kognitive og følelsesmæssige tilknytninger. Disse stemmer kan sagtens være i dyb konflikt med hinanden.",
+            "I casen om 'Sean' viser Raggatt, at Sean både huser en stærk fortælling som 'den gode dreng' (en dygtig atlet, der passer sin kræftsyge mor) og 'misbrugeren'. Begge er legitime dele af hans personlighed, og problemet opstår oftest kun, når én stemme undertvinger de andre totalt og blokerer for fleksibilitet."
+          ],
+          "key_points": [
+            "Det faste enhedsselv anses som en illusion i mange poststrukturalistiske og dialogiske teorier.",
+            "Vores identitet består af et kor af stemmer (dialogisk selv), som kan skifte i hierarki og styrke.",
+            "Interne konflikter er et udtryk for normalpsykologisk kompleksitet, ikke i sig selv patologi."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 328-331",
+          "heading": "Narrativ terapi og eksternalisering",
+          "solves_subproblem": "Subproblem 6",
+          "local_problem": "At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "explanation_paragraphs": [
+            "Michael White udviklede narrativ terapi for at hjælpe mennesker med at undslippe fastlåste, dominerende problemfortællinger. Når folk søger terapi, har deres problem ofte overtaget hele deres historie, så de oplever sig selv som grundlæggende defekte.",
+            "Kernen i terapien er redskabet 'eksternalisering'. Dette er en teknik og etisk holdning, hvor man sprogligt adskiller problemet fra personen. I stedet for at acceptere udsagnet \"Jeg er anorektisk\" (som gør sygdommen til et iboende personlighedstræk), spørger terapeuten: \"Hvilken effekt har anoreksien på dit liv?\".",
+            "Ved at skabe en distance mellem individet og problemet åbnes der rum for nye handlinger. Skylden fjernes fra klientens kerne. Man frigør herved klientens indre evne til at undersøge og opbygge alternative fortællinger, der viser modstand mod problemet."
+          ],
+          "key_points": [
+            "Problemfortællinger gør ofte uhensigtsmæssigt klienten og problemet til ét.",
+            "Eksternalisering flytter problemet uden for personen.",
+            "Målet er at udvide alternative fortællinger for at genskabe personens frihed (agency)."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 329",
+            "passage": "\"ikke personen, der er problemet, men problemet, der er problemet\"",
+            "why_it_matters": "Formlen for klinisk frigørelse fra essentialistiske diagnoser."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 1 og 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At fastslå forskellen på determinisme og kulturel disponering?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Subproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At håndtere interne modsætninger og skiftende roller hos individet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Subproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan konstrueres vores personlighed kontinuerligt gennem meningsskabende fortællinger, og hvordan betinger kulturelle rammer disse fortællinger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter udelukkende fra hukommelsen for at låse teorien fast. Check først bagefter mod din Abridged Reader for at reparere eventuelle huller.",
+      "overview": [
+        "Teksten argumenterer for, at identitet skabes aktivt gennem narrativer i stedet for at findes som materielle træk.",
+        "Selv om vi danner disse fortællinger selv, tilbyder og afgrænser samfundet det tilgængelige manuskript via disponering.",
+        "Forståelsen skaber et direkte grundlag for at ændre patologi og fastlåsthed via narrativ frigørelse og terapeutiske tiltag."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge narrativ psykologi og Polkinghorne er selvet mening frem for en fast fysisk __________.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Bruddet med ideen om, at sproget kun passivt repræsenterer virkeligheden, kendes som den sproglige __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Jerome Bruner tog stærk afstand fra kognitionspsykologiens antagelse om, at psyken passivt kan lignes ved en __________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Vi kan fastholde en oplevelse af stabilitet i et flydende liv, fordi vores narrativer organiseres i et fremadrettet __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Kulturen fastlåser os ikke strengt deterministisk, men dens skabeloner for adfærd og sprog fungerer __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når identiteten rummer adskillige konkurrerende fortællinger og roller, taler Raggatt om et polypsykisk eller __________ selv.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 7,
+          "sentence": "Terapeutens forsøg på at vise, at problemet ikke ligger i klientens essens, kaldes for __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk model for forholdet mellem individ og kultur.",
+          "required_elements": [
+            "En aktør",
+            "kulturelle begrænsninger",
+            "muligheder",
+            "betegnelsen 'Disponering'"
+          ],
+          "blank_space_hint": "Plads til en tragt- eller sti-tegning."
+        },
+        {
+          "number": 2,
+          "task": "Skitse af det Dialogiske Selv.",
+          "required_elements": [
+            "Et individ med minimum to modstridende tanke",
+            "tale-bobler",
+            "der repræsenterer forskellige narrative positioner"
+          ],
+          "blank_space_hint": "Plads til en krop med indre stemmer omkring."
+        },
+        {
+          "number": 3,
+          "task": "Mekanismen i Eksternalisering.",
+          "required_elements": [
+            "Personen til den ene side",
+            "Problemet til den anden",
+            "med en tydelig pil",
+            "mur imellem for at vise distancen"
+          ],
+          "blank_space_hint": "Plads til to adskilte figurer/objekter."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine mundtlige prøve-cues. Træn i at bruge tekstens centrale teorier til at svare på eksamensspørgsmål, opbygge kontraster og forsvare metodiske svagheder.",
+      "use_this_text_for": [
+        "At levere et dræbende modangreb på trækpsykologiens reificering af 'statiske egenskaber'.",
+        "At forklare, hvordan vi skaber konsistens via et narrativt plot uden at have en biologisk kerne.",
+        "At koble individets frie vilje sammen med samfundets strukturer gennem disponerings-begrebet.",
+        "At integrere radikal flertydighed i psykologien (det dialogiske selv) uden at lade det lyde patologisk.",
+        "At demonstrere en klinisk intervention (eksternalisering), der har rodfæste i et bestemt menneskesyn."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi og Femsfaktormodellen",
+          "connection": "Narrativ psykologi undergraver ideen om, at en test kan måle ægte stabile indre årsager."
+        },
+        {
+          "course_theme": "McAdams' tre niveauer",
+          "connection": "Dette felt udgør Level 3 i McAdams' syntese, hvor selvet samles og skabes gennem den fortalte livshistorie."
+        },
+        {
+          "course_theme": "Eksistentiel fænomenologi",
+          "connection": "Deler respekten for meningsskabelse, men narrativ teori lægger presset over på de sproglige skabeloner udefra, frem for en indre kerne."
+        },
+        {
+          "course_theme": "Poststrukturalisme (Det decentrerede subjekt)",
+          "connection": "Raggatts flertydige selv låner tungt fra ideen om, at mennesket konstrueres af flere forskellige diskurser samtidigt."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kognitiv informationsbearbejdning (computermetaforen)",
+          "how_to_compare": "Sammenlign over for Bruners aktive, meningsskabende og kulturelt filtrede subjekt."
+        },
+        {
+          "compare_with": "Biologisk determinisme i trækpsykologi",
+          "how_to_compare": "Sammenlign stabilitet i nerveceller over for stabilitet sikret af Polkinghornes fortalte plot."
+        },
+        {
+          "compare_with": "Humanistisk indre aktualisering",
+          "how_to_compare": "Sammenlign Rogers 'sande selv' indefra med socialkonstruktionismens performative selv udefra."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at forklare stabilitet uden træk:",
+          "use_in_answer": "Brug begrebet 'narrativt plot' for at vise tidslig konfiguration.",
+          "caution": "Gør ikke plottet til en ny ubevægelig substans; husk at det løbende kan revideres."
+        },
+        {
+          "prompt_type": "Hvis du bliver spurgt om kulturel overstyring:",
+          "use_in_answer": "Lancér Bruners begreb om, at kulturen er 'disponerende' frem for 'determinerende'.",
+          "caution": "Vær omhyggelig med at holde fast i personens evne til at afvise eller ændre fortællingen (agency)."
+        },
+        {
+          "prompt_type": "Hvis eksaminator spørger til modstridende adfærd hos en klient:",
+          "use_in_answer": "Brug Raggatts polypsykiske/dialogiske selv (atleten vs misbrugeren).",
+          "caution": "Undgå psykiatriske diagnoser om personlighedsspaltning; det er en normaltilstand i denne teori."
+        },
+        {
+          "prompt_type": "Hvis du skal vise teoriens anvendelse i praksis:",
+          "use_in_answer": "Brug Michael Whites 'eksternalisering'.",
+          "caution": "Fokuser på distancen mellem problem og person, frem for decideret kurativ medicin."
+        },
+        {
+          "prompt_type": "Hvis metateorien skal trækkes frem:",
+          "use_in_answer": "Nævn 'den sproglige vending' som afvisningen af repræsentationstanken.",
+          "caution": "Forklar lynhurtigt hvad det vil sige, at sprog skaber virkelighed, og lad det ikke stå som et tomt buzzword."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At hævde, at vi i den narrative teori kan opfinde vores personlighed præcis, som vi lyster.",
+          "better_reading": "Husk disponerings-begrebet. Historisk og social ulighed betyder, at nogle narrativer er tungere og sværere at gribe end andre."
+        },
+        {
+          "trap": "At forveksle det dialogiske selv med alvorlig patologi som Multipel Personlighedsforstyrrelse.",
+          "better_reading": "Forklar at indre konflikt og flerhed er et normalpsykologisk grundvilkår, fordi vi indtager utallige forskellige kontekster i et liv."
+        },
+        {
+          "trap": "At diskurs og narrativitet kun forstås som rent 'snak'.",
+          "better_reading": "Gør opmærksom på, at narrativer støttes af magtstrukturer, materielle betingelser og institutioner i den kulturelle psykologi."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for den narrative psykologis opgør med essentialismen, og diskuter, hvordan kulturen spiller en rolle for de fortællinger, der danner vores personlighed.",
+      "mini_exam_answer_plan_slots": [
+        "Indledning: Definér den klassiske essentialistiske tilgang og redegør kort for den sproglige vending.",
+        "Mekanismen: Præsenter personlighed som mening via Polkinghornes begreb om det narrative plot.",
+        "Kulturleddet: Diskuter Bruners observationer af kulturen som ramme og udred forskellen på disponering og determinisme.",
+        "Flerhed: Inddrag Raggatt til at demonstrere, hvordan dette skaber rum for et polypsykisk selv fuldt af modsætninger.",
+        "Perspektivering: Afslut med Whites eksternalisering for at bevise modellens kliniske formålskraft og fokus på agency."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+      "lecture_key": "W11L2",
+      "source_title": "Grundbog kapitel 09 - Narrative teorier"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de vigtigste koncepter. Guiden sætter scenen for teksten og definerer de problemer, du skal finde svar på undervejs.",
+      "teaser_paragraphs": [
+        "I langt størstedelen af den traditionelle psykologi betragtes personligheden som en fast kerne. Vi forestiller os, at vores indre består af målbare træk, biologiske dispositioner og mekaniske kognitive processer, som vi bærer med os overalt.",
+        "Narrativ psykologi vender fuldstændig op og ned på denne tankegang. Her er udgangspunktet et helt andet: Hvad nu hvis vores personlighed i virkeligheden ikke er en materiel ting indeni os, men derimod et produkt af de historier, vi fortæller? Teksten slår fast, at mennesker grundlæggende handler på baggrund af mening. Vi er ikke robotter, der blot reagerer; vi er forfattere, der aktivt skaber vores virkelighed.",
+        "Dette perspektivskift hviler på 'den sproglige vending'. Sproget er ikke længere bare et passivt spejl, vi bruger til at beskrive en allerede eksisterende verden. Sproget former aktivt vores opfattelse af os selv og andre. Det betyder også, at selvet radikalt genforstås. Som Polkinghorne formulerer det, er selvet altså mening frem for en substans. Det er en flydende, relationel størrelse.",
+        "Men hvis personligheden blot er en fortælling, kan vi så bare finde på os selv fra bunden af? Her støder teorien ind i et reelt problem: Kulturen. Vores samfund tilbyder os kun et bestemt sæt af narrative skabeloner. Kulturen dikterer ikke vores skæbne direkte, men den afstikker grænserne for, hvad det overhovedet er muligt at tænke, føle og sige om sig selv.",
+        "Dette kapitel kortlægger dette fundamentale sporskifte. Du skal læse for at forstå mekanismerne i vores meningsskabelse. Du skal finde ud af, hvordan narrativt 'plot' skaber sammenhæng i et foranderligt liv, og hvordan det flertydige selv kan rumme dybt konfliktende stemmer uden at splintres. Det er ikke blot abstrakt teori; det munder ud i konkrete terapeutiske redskaber, hvor selve handlingen er at adskille klienten fra problemet."
+      ],
+      "main_problem": "Hvordan konstrueres vores personlighed kontinuerligt gennem meningsskabende fortællinger, og hvordan betinger kulturelle rammer disse fortællinger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan adskiller den narrative tilgang sig fra tanken om personlighed som statiske, indre træk?",
+          "why_it_matters": "Det er selve det ontologiske brud, der definerer hele det narrative paradigme over for den klassiske essentialisme.",
+          "answer_form": "Kort beskrivelse af kontrasten"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?",
+          "why_it_matters": "Dette epistemologiske skift er forudsætningen for at forstå, at vi kan konstruere virkeligheden og selvet via ord.",
+          "answer_form": "En præcis funktionsbeskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?",
+          "why_it_matters": "Det forklarer, hvorfor vi ikke føler os som forskellige personer hver dag, selvom vi konstant forandrer os.",
+          "answer_form": "En forklaring af en tidslig mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på, at kulturen 'disponerer' frem for at den 'determinerer' vores handlinger?",
+          "why_it_matters": "Det løser spændingen mellem strukturel tvang og individets frie vilje (agency).",
+          "answer_form": "En skarp skelnen mellem de to begreber"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor og hvordan kan selvet fungere som 'dialogisk' eller som en flerhed af stemmer?",
+          "why_it_matters": "Det normaliserer det faktum, at vi har modstridende sider i os selv (som atleten og misbrugeren).",
+          "answer_form": "En kort forklaring på intern flertydighed"
+        },
+        {
+          "number": 6,
+          "question": "Hvad er princippet i 'eksternalisering', og hvordan bruges det i praksis?",
+          "why_it_matters": "Det demonstrerer teoriens konkrete værdi i narrativ terapi og genopretter klientens handlekraft.",
+          "answer_form": "Definition af metoden"
+        }
+      ],
+      "why_this_text_matters": "Kapitlet tilbyder den afgørende brobygning i den sidste del af kurset. Det afmonterer ideen om personlighed som et uforanderligt, biologisk låst objekt og præsenterer i stedet personlighed som en levet, kulturelt forankret og fortalt proces.",
+      "overview": [
+        "Opgøret med essentialisme og introduktionen af den sproglige vending",
+        "Kulturens disponerende magt over vores narrative meningsskabelse",
+        "Klinisk anvendelse: Det dialogiske selv og terapeutisk eksternalisering"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 296-301",
+          "task": "Afdæk hvordan sproget gik fra at beskrive virkeligheden til at skabe den.",
+          "why_it_matters": "Her etableres fundamentet for socialkonstruktionismen.",
+          "stop_signal": "Når du når afsnittet om Jerome Bruner"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 303-309",
+          "task": "Kontrastér aktiv meningsskabelse med den kognitive 'datamaskine'-model.",
+          "why_it_matters": "Viser hvorfor Bruner brød med kognitionspsykologien.",
+          "stop_signal": "Når kapitel-afsnittet om 'Determination og agency' starter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 310-312",
+          "task": "Isolér distinktionen mellem at disponere og at determinere.",
+          "why_it_matters": "Dette er afgørende for at bevare et begreb om handlekraft.",
+          "stop_signal": "Ved 'Kritik og replik'"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 316-318",
+          "task": "Forstå hvordan Polkinghornes plot binder fortid, nutid og fremtid sammen.",
+          "why_it_matters": "Forklarer oplevelsen af en fast identitet gennem forandring.",
+          "stop_signal": "Når McAdams introduceres på side 320"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 321-325",
+          "task": "Analyser Gergens og Raggatts teorier om det mangfoldige, konfliktfyldte selv.",
+          "why_it_matters": "Det er her, ideen om en samlet 'indre kerne' endegyldigt nedbrydes.",
+          "stop_signal": "Ved afsnittet om psykoanalyse"
+        },
+        {
+          "number": 6,
+          "source_location": "S. 328-331",
+          "task": "Grib fat i metoden eksternalisering og dens terapeutiske fordele.",
+          "why_it_matters": "Viser hvordan teori bliver til effektiv praksis.",
+          "stop_signal": "Ved 'Afrunding'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Mennesker handler på baggrund af mening",
+          "why": "Grundantagelsen bag den narrative handlingsforståelse.",
+          "where_to_look": "S. 296"
+        },
+        {
+          "target": "Selvet er altså mening frem for en substans",
+          "why": "Polkinghornes knivskarpe opgør med den essentialistiske tradition.",
+          "where_to_look": "S. 318"
+        },
+        {
+          "target": "disponerende frem for determinerende",
+          "why": "Nøglebegrebet for balancen mellem struktur og fri vilje.",
+          "where_to_look": "S. 311"
+        },
+        {
+          "target": "ikke personen, der er problemet",
+          "why": "Hjørnestenen i Michael Whites eksternaliseringsmetode.",
+          "where_to_look": "S. 329"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Heideggers indviklede fænomenologiske begrebsapparat (Dasein, tilstedeværen).",
+        "De små detaljer i forskellen mellem fransk poststrukturalisme og amerikansk interaktionisme.",
+        "Raggatts specifikke kvantitative metoder til at kortlægge stemmer i personligheden.",
+        "Schafers psykoanalytiske sprogbrug i detaljer."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 296",
+          "excerpt": "I denne forståelse kan personligheden i en radikal udgave være lig med de(n) fortælling(er), man laver om sig selv.",
+          "open_question": "Hvis vi er fortællinger, hvem har så magten over manuskriptet?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 296",
+          "excerpt": "Mennesker handler på baggrund af mening",
+          "open_question": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 318",
+          "excerpt": "Selvet er altså mening frem for en substans",
+          "open_question": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse afsnit som en fokuseret erstatning for tekstens tungeste teoretiske passager. Hvert afsnit løser et specifikt problem. Hold læseren åben, når du går videre til næste ark.",
+      "coverage_note": "Afsnittene dækker de centrale brudflader: fra essens til fortælling, Bruners kulturpsykologi, Polkinghornes plot, Gergens/Raggatts flerhed og Whites terapi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 296-301",
+          "heading": "Fra faste træk til konstruerede fortællinger",
+          "solves_subproblem": "Subproblem 1 og 2",
+          "local_problem": "At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
+          "explanation_paragraphs": [
+            "Inden for traditionel psykologi forstås personligheden oftest som en biologisk substans eller faste iboende træk. Narrativ psykologi repræsenterer et opgør med dette. Her antages det, at vi ikke har en skjult, sand kerne. I stedet består vores selver af de historier, vi fortæller om vores egne oplevelser og handlinger.",
+            "Dette paradigmeskift udspringer af 'den sproglige vending'. Tidligere mente man, at sproget fungerede som et objektivt spejl, der blot repræsenterede verden neutralt. Nu indså man, at sprog aktivt skaber både verden og os selv. Når vi navngiver noget eller trækker på et kulturelt begreb, former vi virkeligheden.",
+            "Når vi indgår i en kultur, benytter vi dens ord og symboler til løbende at skabe vores selvforståelse. Personlighed bliver derved ikke en afsluttet tilstand, men en vedvarende relationel proces udført gennem sproglig meningsskabelse."
+          ],
+          "key_points": [
+            "Personligheden er ikke en ting eller materiel substans.",
+            "Den sproglige vending afviser, at sprog blot repræsenterer virkeligheden neutralt.",
+            "Sproget er derimod et aktivt skabende og fortolkende værktøj."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Mennesker handler på baggrund af mening",
+              "why_it_matters": "Det markerer bruddet med ren stimulus-respons behaviorisme.",
+              "source_location": "S. 296"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 303-312",
+          "heading": "Bruner: Kultur og aktiv meningsskabelse",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "At fastslå forskellen på determinisme og kulturel disponering?",
+          "explanation_paragraphs": [
+            "Jerome Bruner var i begyndelsen en del af den kognitive revolution, men han forlod den, da den reducerede psyken til en datamaskine, der mekanisk og passivt bearbejdede information. Han insisterede på, at mennesket aktivt skaber mening, og at denne mening altid er indlejret i en social og kulturel kontekst.",
+            "Vi fødes ind i et samfund, der allerede er gennemsyret af specifikke fortolkningsmodeller. Gennem opvæksten tilegner vi os disse kulturelle narrativer for, hvordan man bør føle og agere. Kulturen afstikker derfor mulighederne for, hvilke historier vi kan fortælle om vores liv.",
+            "Betyder det så, at vi er fuldstændig styret (determineret) af vores kultur? Nej. Bruner og den narrative psykologi fremhæver, at kulturen virker 'disponerende'. Den gør visse handlinger og selvforståelser mere sandsynlige og lette at gribe til, mens andre gøres svære eller umulige. Men fordi vi aktivt fortolker, bevarer vi vores agency og kan omforme narrativerne."
+          ],
+          "key_points": [
+            "Bruner forkastede kognitionspsykologiens computermetafor til fordel for aktiv meningsskabelse.",
+            "Kulturen tilbyder narrativer, der virker som råmateriale for individets identitet.",
+            "Disponering betyder, at rammerne gør specifikke ruter lette, uden at de fremtvinger dem absolut."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "disponerende frem for determinerende",
+              "why_it_matters": "Bevarer individets handlefrihed på trods af stærk kulturel påvirkning.",
+              "source_location": "S. 311"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 316-318",
+          "heading": "Polkinghorne og det narrative plot",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "explanation_paragraphs": [
+            "Donald Polkinghorne adresserer et logisk problem i den narrative teori: Hvis vores personlighed blot er fortællinger, der konstant ændres afhængigt af konteksten, hvorfor oplever vi så alligevel os selv som relativt stabile og sammenhængende over tid?",
+            "Svaret er begrebet om det narrative 'plot'. Et plot fungerer som en konfiguration, der binder uensartede begivenheder, vores krop, motiver og handlinger sammen til en meningsfuld historie med retning. Ved at knytte vores fortid, vores nuværende situation og vores forventninger til fremtiden sammen, skaber plottet den kontinuitet, vi kalder identitet.",
+            "Selv ved uventede kriser, hvor det gamle plot bryder sammen, er opgaven at skabe et nyt narrativt plot, der igen kan skabe en overordnet mening med tingenes tilstand."
+          ],
+          "key_points": [
+            "Plottet organiserer spredte begivenheder til en tidslig enhed.",
+            "Identitetsoplevelsen skyldes narrativ sammenhæng, ikke en statisk biologisk kerne."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 318",
+            "passage": "\"Selvet er altså mening frem for en substans eller en ting\"",
+            "why_it_matters": "Det er selve grundformlen for den narrative redefinition af identitet."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 321-325",
+          "heading": "Det flertydige og dialogiske selv",
+          "solves_subproblem": "Subproblem 5",
+          "local_problem": "At håndtere interne modsætninger og skiftende roller hos individet?",
+          "explanation_paragraphs": [
+            "Kenneth Gergen radikaliserer ideen og fjerner forestillingen om ét samlet individ. For ham er selvet performativt. Vi har brug for forskellige selvnarrativer afhængigt af, hvilken social arena vi befinder os på. Identitet er noget vi 'gør' frem for noget vi 'er'.",
+            "Peter Raggatt bygger videre på dette med ideen om det flertydige eller 'polypsykiske' selv. Han påpeger, at vores identitet ofte består af flere forskellige narrative stemmer, der repræsenterer forskellige kognitive og følelsesmæssige tilknytninger. Disse stemmer kan sagtens være i dyb konflikt med hinanden.",
+            "I casen om 'Sean' viser Raggatt, at Sean både huser en stærk fortælling som 'den gode dreng' (en dygtig atlet, der passer sin kræftsyge mor) og 'misbrugeren'. Begge er legitime dele af hans personlighed, og problemet opstår oftest kun, når én stemme undertvinger de andre totalt og blokerer for fleksibilitet."
+          ],
+          "key_points": [
+            "Det faste enhedsselv anses som en illusion i mange poststrukturalistiske og dialogiske teorier.",
+            "Vores identitet består af et kor af stemmer (dialogisk selv), som kan skifte i hierarki og styrke.",
+            "Interne konflikter er et udtryk for normalpsykologisk kompleksitet, ikke i sig selv patologi."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 328-331",
+          "heading": "Narrativ terapi og eksternalisering",
+          "solves_subproblem": "Subproblem 6",
+          "local_problem": "At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "explanation_paragraphs": [
+            "Michael White udviklede narrativ terapi for at hjælpe mennesker med at undslippe fastlåste, dominerende problemfortællinger. Når folk søger terapi, har deres problem ofte overtaget hele deres historie, så de oplever sig selv som grundlæggende defekte.",
+            "Kernen i terapien er redskabet 'eksternalisering'. Dette er en teknik og etisk holdning, hvor man sprogligt adskiller problemet fra personen. I stedet for at acceptere udsagnet \"Jeg er anorektisk\" (som gør sygdommen til et iboende personlighedstræk), spørger terapeuten: \"Hvilken effekt har anoreksien på dit liv?\".",
+            "Ved at skabe en distance mellem individet og problemet åbnes der rum for nye handlinger. Skylden fjernes fra klientens kerne. Man frigør herved klientens indre evne til at undersøge og opbygge alternative fortællinger, der viser modstand mod problemet."
+          ],
+          "key_points": [
+            "Problemfortællinger gør ofte uhensigtsmæssigt klienten og problemet til ét.",
+            "Eksternalisering flytter problemet uden for personen.",
+            "Målet er at udvide alternative fortællinger for at genskabe personens frihed (agency)."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 329",
+            "passage": "\"ikke personen, der er problemet, men problemet, der er problemet\"",
+            "why_it_matters": "Formlen for klinisk frigørelse fra essentialistiske diagnoser."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 1 og 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At fastslå forskellen på determinisme og kulturel disponering?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Subproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At håndtere interne modsætninger og skiftende roller hos individet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Subproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan konstrueres vores personlighed kontinuerligt gennem meningsskabende fortællinger, og hvordan betinger kulturelle rammer disse fortællinger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter udelukkende fra hukommelsen for at låse teorien fast. Check først bagefter mod din Abridged Reader for at reparere eventuelle huller.",
+      "overview": [
+        "Teksten argumenterer for, at identitet skabes aktivt gennem narrativer i stedet for at findes som materielle træk.",
+        "Selv om vi danner disse fortællinger selv, tilbyder og afgrænser samfundet det tilgængelige manuskript via disponering.",
+        "Forståelsen skaber et direkte grundlag for at ændre patologi og fastlåsthed via narrativ frigørelse og terapeutiske tiltag."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge narrativ psykologi og Polkinghorne er selvet mening frem for en fast fysisk __________.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Bruddet med ideen om, at sproget kun passivt repræsenterer virkeligheden, kendes som den sproglige __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Jerome Bruner tog stærk afstand fra kognitionspsykologiens antagelse om, at psyken passivt kan lignes ved en __________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Vi kan fastholde en oplevelse af stabilitet i et flydende liv, fordi vores narrativer organiseres i et fremadrettet __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Kulturen fastlåser os ikke strengt deterministisk, men dens skabeloner for adfærd og sprog fungerer __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når identiteten rummer adskillige konkurrerende fortællinger og roller, taler Raggatt om et polypsykisk eller __________ selv.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 7,
+          "sentence": "Terapeutens forsøg på at vise, at problemet ikke ligger i klientens essens, kaldes for __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk model for forholdet mellem individ og kultur.",
+          "required_elements": [
+            "En aktør",
+            "kulturelle begrænsninger",
+            "muligheder",
+            "betegnelsen 'Disponering'"
+          ],
+          "blank_space_hint": "Plads til en tragt- eller sti-tegning."
+        },
+        {
+          "number": 2,
+          "task": "Skitse af det Dialogiske Selv.",
+          "required_elements": [
+            "Et individ med minimum to modstridende tanke",
+            "tale-bobler",
+            "der repræsenterer forskellige narrative positioner"
+          ],
+          "blank_space_hint": "Plads til en krop med indre stemmer omkring."
+        },
+        {
+          "number": 3,
+          "task": "Mekanismen i Eksternalisering.",
+          "required_elements": [
+            "Personen til den ene side",
+            "Problemet til den anden",
+            "med en tydelig pil",
+            "mur imellem for at vise distancen"
+          ],
+          "blank_space_hint": "Plads til to adskilte figurer/objekter."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine mundtlige prøve-cues. Træn i at bruge tekstens centrale teorier til at svare på eksamensspørgsmål, opbygge kontraster og forsvare metodiske svagheder.",
+      "use_this_text_for": [
+        "At levere et dræbende modangreb på trækpsykologiens reificering af 'statiske egenskaber'.",
+        "At forklare, hvordan vi skaber konsistens via et narrativt plot uden at have en biologisk kerne.",
+        "At koble individets frie vilje sammen med samfundets strukturer gennem disponerings-begrebet.",
+        "At integrere radikal flertydighed i psykologien (det dialogiske selv) uden at lade det lyde patologisk.",
+        "At demonstrere en klinisk intervention (eksternalisering), der har rodfæste i et bestemt menneskesyn."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi og Femsfaktormodellen",
+          "connection": "Narrativ psykologi undergraver ideen om, at en test kan måle ægte stabile indre årsager."
+        },
+        {
+          "course_theme": "McAdams' tre niveauer",
+          "connection": "Dette felt udgør Level 3 i McAdams' syntese, hvor selvet samles og skabes gennem den fortalte livshistorie."
+        },
+        {
+          "course_theme": "Eksistentiel fænomenologi",
+          "connection": "Deler respekten for meningsskabelse, men narrativ teori lægger presset over på de sproglige skabeloner udefra, frem for en indre kerne."
+        },
+        {
+          "course_theme": "Poststrukturalisme (Det decentrerede subjekt)",
+          "connection": "Raggatts flertydige selv låner tungt fra ideen om, at mennesket konstrueres af flere forskellige diskurser samtidigt."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kognitiv informationsbearbejdning (computermetaforen)",
+          "how_to_compare": "Sammenlign over for Bruners aktive, meningsskabende og kulturelt filtrede subjekt."
+        },
+        {
+          "compare_with": "Biologisk determinisme i trækpsykologi",
+          "how_to_compare": "Sammenlign stabilitet i nerveceller over for stabilitet sikret af Polkinghornes fortalte plot."
+        },
+        {
+          "compare_with": "Humanistisk indre aktualisering",
+          "how_to_compare": "Sammenlign Rogers 'sande selv' indefra med socialkonstruktionismens performative selv udefra."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at forklare stabilitet uden træk:",
+          "use_in_answer": "Brug begrebet 'narrativt plot' for at vise tidslig konfiguration.",
+          "caution": "Gør ikke plottet til en ny ubevægelig substans; husk at det løbende kan revideres."
+        },
+        {
+          "prompt_type": "Hvis du bliver spurgt om kulturel overstyring:",
+          "use_in_answer": "Lancér Bruners begreb om, at kulturen er 'disponerende' frem for 'determinerende'.",
+          "caution": "Vær omhyggelig med at holde fast i personens evne til at afvise eller ændre fortællingen (agency)."
+        },
+        {
+          "prompt_type": "Hvis eksaminator spørger til modstridende adfærd hos en klient:",
+          "use_in_answer": "Brug Raggatts polypsykiske/dialogiske selv (atleten vs misbrugeren).",
+          "caution": "Undgå psykiatriske diagnoser om personlighedsspaltning; det er en normaltilstand i denne teori."
+        },
+        {
+          "prompt_type": "Hvis du skal vise teoriens anvendelse i praksis:",
+          "use_in_answer": "Brug Michael Whites 'eksternalisering'.",
+          "caution": "Fokuser på distancen mellem problem og person, frem for decideret kurativ medicin."
+        },
+        {
+          "prompt_type": "Hvis metateorien skal trækkes frem:",
+          "use_in_answer": "Nævn 'den sproglige vending' som afvisningen af repræsentationstanken.",
+          "caution": "Forklar lynhurtigt hvad det vil sige, at sprog skaber virkelighed, og lad det ikke stå som et tomt buzzword."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At hævde, at vi i den narrative teori kan opfinde vores personlighed præcis, som vi lyster.",
+          "better_reading": "Husk disponerings-begrebet. Historisk og social ulighed betyder, at nogle narrativer er tungere og sværere at gribe end andre."
+        },
+        {
+          "trap": "At forveksle det dialogiske selv med alvorlig patologi som Multipel Personlighedsforstyrrelse.",
+          "better_reading": "Forklar at indre konflikt og flerhed er et normalpsykologisk grundvilkår, fordi vi indtager utallige forskellige kontekster i et liv."
+        },
+        {
+          "trap": "At diskurs og narrativitet kun forstås som rent 'snak'.",
+          "better_reading": "Gør opmærksom på, at narrativer støttes af magtstrukturer, materielle betingelser og institutioner i den kulturelle psykologi."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for den narrative psykologis opgør med essentialismen, og diskuter, hvordan kulturen spiller en rolle for de fortællinger, der danner vores personlighed.",
+      "mini_exam_answer_plan_slots": [
+        "Indledning: Definér den klassiske essentialistiske tilgang og redegør kort for den sproglige vending.",
+        "Mekanismen: Præsenter personlighed som mening via Polkinghornes begreb om det narrative plot.",
+        "Kulturleddet: Diskuter Bruners observationer af kulturen som ramme og udred forskellen på disponering og determinisme.",
+        "Flerhed: Inddrag Raggatt til at demonstrere, hvordan dette skaber rum for et polypsykisk selv fuldt af modsætninger.",
+        "Perspektivering: Afslut med Whites eksternalisering for at bevise modellens kliniske formålskraft og fokus på agency."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

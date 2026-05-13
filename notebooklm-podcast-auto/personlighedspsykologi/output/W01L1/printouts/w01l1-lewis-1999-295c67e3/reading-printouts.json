@@ -1,0 +1,1303 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-08T19:49:44Z",
+  "generator": {
+    "provider": "openai",
+    "model": "gpt-5.5",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "openai-preprocessing-generation-config-v1",
+      "reasoning_effort": "medium",
+      "text_format": "json_object_or_json_schema",
+      "response_json_schema": "stage_specific",
+      "request_timeout_seconds": 180
+    }
+  },
+  "provenance": {
+    "source_file": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+    "source_files_signature": "a6d31d40f4714545cffacf76189f44025d91da53cde749d7509ba27cad56ec65",
+    "source_card": "f918175e1680d3d1dd03d1d2f6d7057394ee7efb4f19790b71c6db47a6adb5b7",
+    "revised_lecture_substrate": "2fb8e8ff2cda81cf9f5911f8fde19bfefecfbb7cc1605d2660cedc3bb98b79b2",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w01l1-lewis-1999-295c67e3",
+    "lecture_key": "W01L1",
+    "title": "Lewis (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 18,
+    "estimated_token_count": 11700,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf"
+    ],
+    "reading_title": "Issues in the Study of Personality Development",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W01L1"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W1L1 Lewis (1999).pdf",
+    "subject_relative_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Lewis (1999).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "bb02585a1ceda5c22c905f7f025a60e44fd5f9153712492625bc681624646ef9",
+      "size_bytes": 261872,
+      "page_count": 18,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 11700,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 18,
+      "complexity_tier": 0
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "lecture_key": "W01L1",
+      "source_title": "Lewis (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs teaserteksten først. Brug derefter ruten som kort gennem argumentet.",
+      "teaser_paragraphs": [
+        "Lewis begynder med et tilsyneladende enkelt problem: Hvis personlighed betyder træk, der er stabile på tværs af situationer og tid, hvorfor er de så så svære at finde i data? Allerede i starten strammer han skruen med formuleringen *little consistency*.",
+        "Den konkrete krog er børnedepression. Et barn kan se trist ud for en lærer, mindre trist for en mor og beskrive sig selv på en tredje måde. Det er ikke bare støj i målingen; det kan betyde, at barnets adfærd faktisk skifter med konteksten.",
+        "Så flytter teksten problemet fra måling til udvikling. Hvis tidligere begivenheder virkelig styrer senere personlighed, burde langtidsstudier give stærke spor. Lewis viser i stedet, at forbindelserne ofte er svage, og at meget lidt varians forklares.",
+        "Det rammer den model, han kalder den organismiske model: idéen om, at noget tidligt bliver lagt ind i personen og senere driver adfærd indefra. Hans skarpe formulering er, at *the organismic model of development traps us in our past*.",
+        "Alternativet er ikke, at fortiden er ligegyldig. Problemet er, hvordan fortiden får betydning nu. Lewis ender i en kontekstuel model, hvor aktuel tilpasning, selvfortælling og hukommelse betyder mere end en fast indre essens. Derfor bliver den afgørende spænding: må vi forstå personlighed som noget indeni personen, eller som noget der opstår i personens aktuelle livssammenhæng?"
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "p. 1",
+          "excerpt": "little consistency",
+          "open_question": "Hvad sker der med personlighedsbegrebet, hvis stabiliteten er lav?"
+        },
+        {
+          "number": 2,
+          "source_location": "p. 7",
+          "excerpt": "traps us in our past",
+          "open_question": "Hvorfor er det et problem, hvis en udviklingsmodel låser personen fast i fortiden?"
+        },
+        {
+          "number": 3,
+          "source_location": "p. 9",
+          "excerpt": "present reconstructing the past",
+          "open_question": "Hvad betyder det, hvis nutiden former den fortid, personen fortæller om?"
+        }
+      ],
+      "main_problem": "Kan personlighedsudvikling forklares som stabile indre træk over tid, eller passer data bedre med, at adfærd og selvforståelse formes af aktuel kontekst?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er personlighed vanskelig at måle, når forskellige observatører vurderer samme barn?",
+          "why_it_matters": "Det tester antagelsen om, at en egenskab findes stabilt i personen uafhængigt af situation.",
+          "answer_form": "en kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor løser tidslig forudsigelse ikke problemet med lav enighed mellem observatører?",
+          "why_it_matters": "Det viser, om fortiden faktisk kan udpege et stærkt udviklingsspor.",
+          "answer_form": "to led i en kæde"
+        },
+        {
+          "number": 3,
+          "question": "Hvad antager den organismiske model om træk, tidlig erfaring og udviklingens retning?",
+          "why_it_matters": "Det er den model, Lewis vil presse empirisk og teoretisk.",
+          "answer_form": "tre nøgleantagelser"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan ændrer den additive model og den kontekstuelle model forståelsen af udvikling?",
+          "why_it_matters": "Det åbner for, at tidligere niveauer og aktuelle kontekster kan sameksistere.",
+          "answer_form": "en kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan bruger Lewis hukommelse og tilknytning til at vise, at nutiden kan omforme fortidens betydning?",
+          "why_it_matters": "Det gør teksten central for kursusspændingen mellem indre essens og kontekst.",
+          "answer_form": "et eksempel"
+        }
+      ],
+      "why_this_text_matters": "Teksten giver W01L1 et konkret angreb på trait-essentialisme. Den gør de fire orienteringspunkter brugbare fra start: essens/kontekst, agency, determination og historicitet.",
+      "overview": [
+        "Lewis begynder med måleproblemer: personlighedsvariabler viser lav enighed på tværs af observatører, situationer og tid.",
+        "Han kritiserer den organismiske udviklingsmodel, fordi den forudsætter, at tidlige begivenheder skaber varige indre træk, som senere styrer personen.",
+        "Han foreslår en kontekstuel forståelse, hvor aktuel tilpasning, selvfortælling og rekonstruktion af fortiden står centralt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "pp. 1-3",
+          "task": "Fang problemet med observatører: barn, mor og lærer ser ikke nødvendigvis samme personlighedsvariabel.",
+          "why_it_matters": "Det er første brud på idéen om stabil indre egenskab.",
+          "stop_signal": "når du kan sige, hvorfor én vurdering ikke automatisk er facit"
+        },
+        {
+          "number": 2,
+          "source_location": "pp. 3-4",
+          "task": "Følg forsøget på at redde problemet gennem forudsigelse over tid.",
+          "why_it_matters": "Det tester, om fortiden kan afgøre, hvilken måling der er mest gyldig.",
+          "stop_signal": "når du kan beskrive, hvorfor denne redning er svag"
+        },
+        {
+          "number": 3,
+          "source_location": "pp. 4-7",
+          "task": "Find den organismiske models antagelser om tidlige erfaringer, retning og endepunkt.",
+          "why_it_matters": "Det er den klassiske udviklingslogik, Lewis vil erstatte.",
+          "stop_signal": "når du har samlet tre antagelser"
+        },
+        {
+          "number": 4,
+          "source_location": "pp. 6-8",
+          "task": "Afgør forskellen mellem transformation, addition og kontekst.",
+          "why_it_matters": "Det viser, hvorfor udvikling ikke behøver være én lineær kæde.",
+          "stop_signal": "når du kan skelne mellem udskiftning og sameksistens"
+        },
+        {
+          "number": 5,
+          "source_location": "pp. 8-13",
+          "task": "Følg Lewis’ stærkeste beviser: hukommelse, selvfortælling og tilknytning.",
+          "why_it_matters": "Det viser, hvordan nutidige kontekster kan forklare stabilitet og forandring.",
+          "stop_signal": "når du kan give ét empirisk eksempel"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "little consistency",
+          "why": "Skærper måleproblemet ved personlighed som stabilitet.",
+          "where_to_look": "Abridged Reader section 1"
+        },
+        {
+          "target": "traps us in our past",
+          "why": "Samler Lewis’ kritik af den organismiske model.",
+          "where_to_look": "Abridged Reader section 3"
+        },
+        {
+          "target": "present reconstructing the past",
+          "why": "Markerer vendepunktet fra historisk årsag til nutidig konstruktion.",
+          "where_to_look": "Abridged Reader section 4"
+        },
+        {
+          "target": "concurrent adaptation",
+          "why": "Giver nøgleordet for den kontekstuelle forklaring.",
+          "where_to_look": "Abridged Reader section 5"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Alle navne i referencelisten; brug kun dem, der bærer argumentet.",
+        "De mange varianter af udviklingsmodeller; fokuser på kontrasten mellem indre kæde og aktuel kontekst.",
+        "Præcise statistiske detaljer; fang pointen om lav forklaret varians.",
+        "Tilknytningslitteraturens interne debat; brug den som case, ikke som separat pensumblok."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs sektionerne i rækkefølge. De giver en kort, selvstændig vej gennem Lewis’ argument.",
+      "coverage_note": "Denne version bevarer tekstens hovedbevægelse: fra måleproblem, over kritik af organismisk udviklingstænkning, til en kontekstuel model med hukommelse, selvfortælling og tilknytning som centrale cases.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "pp. 1-3",
+          "heading": "Når tre observatører ikke ser samme barn",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvis personlighed er stabil, hvorfor giver forskellige vurderere så forskellige billeder af samme barn?",
+          "explanation_paragraphs": [
+            "Lewis åbner med definitionen af personlighed som individuelle karakteristika, der er konsistente på tværs af kontekst og tid. Problemet er, at denne idé er mere tiltalende end solidt dokumenteret. Når man måler konkrete variabler, finder man ofte statistisk signifikante sammenhænge, men de forklarer kun lidt varians.",
+            "Hans første case er børnedepression. Barnet, moren og læreren kan alle være relevante kilder, men de vurderer ikke nødvendigvis det samme. Barnet kan lægge vægt på indre følelser, forældre på synlig social adfærd, og lærere på adfærd i skolen. Derfor bliver observatøren ikke bare et neutralt måleinstrument.",
+            "Lewis’ pointe er ikke kun, at måleinstrumenter kan være dårlige. Pointen er også, at barnet faktisk befinder sig i forskellige situationer, som kalder forskellige handlinger frem. Hvis adfærd er stabil inden for bestemte situationer, men ikke på tværs af dem, bliver personlighed som en enkel indre egenskab svær at fastholde.",
+            "Det samme problem dukker op ved temperament, frygt og Big Five-lignende træk: sammenhænge findes, men de er ofte moderate. Dermed står forskeren med et valg: enten forbedre målingen eller overveje, om personlighedsvariabler bør forstås sammen med situationen."
+          ],
+          "key_points": [
+            "Personlighed defineres traditionelt som stabilitet på tværs af kontekst og tid.",
+            "Barn, mor og lærer kan give lave eller uenige vurderinger af samme problem.",
+            "Uenigheden kan skyldes både målefejl og reelle kontekstforskelle.",
+            "Lewis bruger måleproblemet til at udfordre idéen om stabile indre træk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "little consistency",
+              "why_it_matters": "Det er Lewis’ korte diagnose af problemet med stabil personlighed.",
+              "source_location": "p. 1"
+            },
+            {
+              "phrase": "different situations that elicit different behaviors",
+              "why_it_matters": "Det peger fra målefejl mod kontekstforklaring.",
+              "source_location": "p. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "pp. 3-4",
+          "heading": "Tidslig forudsigelse redder ikke stabiliteten",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Kan man vælge den rigtige observatør ved at se, hvem der bedst forudsiger senere udvikling?",
+          "explanation_paragraphs": [
+            "Lewis overvejer en mulig redning: hvis mor, lærer og barn er uenige nu, kunne man måske se, hvilken vurdering der bedst hænger sammen med tidligere risikofaktorer. Den vurdering kunne så få status som den mest gyldige.",
+            "I studiet af 9-åriges depression undersøges blandt andet tilknytning, stress og socialt netværk. Resultatet er ikke én stærk udviklingslinje. Barnets egen vurdering forudsiges ikke af de tidlige variabler. Morens vurdering hænger bedst sammen med morens egen depression. Lærerens vurdering hænger sammen med barnets tidligere peer-netværk.",
+            "Det betyder, at forskellige udfald får forskellige forklaringsveje. I stedet for at fortiden klart afslører barnets egentlige personlighed, ser det ud som om hver vurdering hører til en bestemt relation og situation.",
+            "Lewis konkluderer derfor, at forudsigelse over tid ofte er svag. Selv signifikante sammenhænge kan forklare meget lidt. Hvis personlighedsteori bygger på stærk stabilitet, er dette et alvorligt problem."
+          ],
+          "key_points": [
+            "Tidslig forudsigelse kunne have reddet problemet med uenige observatører.",
+            "Lewis finder ikke én stærk, samlet udviklingssti.",
+            "Forskellige vurderere har forskellige forløb og forklaringer.",
+            "Lav forklaret varians svækker idéen om stabile personlighedsvariabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "different outcomes have different paths",
+              "why_it_matters": "Sætningen samler problemet med én lineær udviklingsforklaring.",
+              "source_location": "p. 3"
+            },
+            {
+              "phrase": "less than 12% of the variance",
+              "why_it_matters": "Det konkretiserer, hvor svage nogle stabile sammenhænge er.",
+              "source_location": "p. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "pp. 4-7",
+          "heading": "Den organismiske model: personen som bærer af fortiden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad skal være sandt, hvis tidlige erfaringer skal styre senere personlighed indefra?",
+          "explanation_paragraphs": [
+            "Den organismiske model placerer udviklingsprocesserne i personen. Tidlige relationer, især til moren, antages at skabe varige træk eller dispositioner. Disse træk bliver en del af personen og kan senere forklare følelser, tanker og handlinger.",
+            "Modellen bygger på flere stærke antagelser: udvikling har retning og endepunkt; tidlige begivenheder hænger sammen med senere; ændring er gradvis; de første leveår har særlig kraft; og moren får en central årsagsrolle i barnets socioemotionelle udvikling.",
+            "Lewis problematiserer også idéen om primacy, altså at det tidlige automatisk vejer tungere end det senere. Kritiske perioder og sensitive perioder virker biologisk plausible, men Lewis viser, at sådanne idéer ofte er stærkere som model end som dokumenteret forklaring.",
+            "Den organismiske model er attraktiv, fordi den lover forudsigelse. Hvis fortiden bliver indlejret som træk, kan man principielt forklare og forudsige fremtidig adfærd. Men netop den lovede forudsigelse er det, Lewis mener, data ikke leverer stærkt nok."
+          ],
+          "key_points": [
+            "Organismisk udvikling forklarer senere adfærd med indre, tidligt dannede træk.",
+            "Modellen lægger vægt på retning, kontinuitet, tidlige erfaringer og morens rolle.",
+            "Primacy betyder, at det tidlige får særlig forklaringskraft.",
+            "Lewis kritiserer modellen, fordi dens forudsigelser ofte er empirisk svage."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the organismic model",
+              "why_it_matters": "Det er navnet på den model, Lewis kritiserer.",
+              "source_location": "p. 4"
+            },
+            {
+              "phrase": "traps us in our past",
+              "why_it_matters": "Det udtrykker modellens deterministiske problem.",
+              "source_location": "p. 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "pp. 6-9",
+          "heading": "Fra transformation til kontekst",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Skal udvikling forstås som erstatning af gamle former, eller som flere mulige niveauer i skiftende kontekster?",
+          "explanation_paragraphs": [
+            "Lewis skelner mellem tre udviklingsmodeller. Den akkretionelle model ser udvikling som mere af det samme: en struktur vokser i mængde. Den transformationelle model ser udvikling som metamorfose: en tidligere form erstattes af en ny. Den additive model bevarer tidligere former samtidig med, at nye evner kommer til.",
+            "Den additive model er vigtig, fordi den gør regression og fleksibilitet forståelige. Et barn, der kan gå, kan stadig kravle. En person kan bruge forskellige niveauer afhængigt af opgaven. Dermed bliver kontekst nødvendig: man må vide, hvilken situation der kalder hvilken kapacitet frem.",
+            "Her bevæger Lewis sig mod kontekstualisme. I den kontekstuelle model er adfærd ikke primært et produkt af en indre kæde fra fortiden. Adfærd forstås som tilpasning til aktuelle miljøer, relationer, mål og betydninger.",
+            "Det betyder ikke, at historien slettes. Det betyder, at historien ikke automatisk virker som en fast årsag. Den får betydning gennem nutidige sammenhænge, nuværende selvforståelse og de mål personen handler ud fra."
+          ],
+          "key_points": [
+            "Akkretion betyder vækst i mængde.",
+            "Transformation betyder erstatning af én form med en anden.",
+            "Addition betyder sameksistens af gamle og nye kapaciteter.",
+            "Den additive model åbner for kontekstuel forklaring.",
+            "Kontekstualisme flytter fokus fra indre historisk kæde til aktuel tilpasning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "additive model",
+              "why_it_matters": "Det er overgangsmodellen mellem klassisk udviklingstænkning og kontekstualisme.",
+              "source_location": "p. 7"
+            },
+            {
+              "phrase": "the coexistence of all earlier abilities",
+              "why_it_matters": "Det forklarer, hvorfor tidligere niveauer ikke behøver forsvinde.",
+              "source_location": "p. 7"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "p. 9",
+              "passage": "history may represent not the past acting on the present but the present reconstructing the past.",
+              "why_it_matters": "Denne formulering er medtaget, fordi den præcist vender den normale tidsforståelse om."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "pp. 8-13",
+          "heading": "Hukommelse, selvfortælling og tilknytning som test",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan kan nutiden forme både fortidens betydning og aktuelle udviklingsmønstre?",
+          "explanation_paragraphs": [
+            "Lewis bruger William James og kontekstualismen til at udfordre idéen om historien som en direkte årsagskæde. Hukommelse forstås ikke som et fotografi af det, der skete. Den er en konstruktion, som kan ændre sig med aktuelle behov, relationer og mål.",
+            "Det gør selvfortællingen central. Mennesker vælger og organiserer erindringer, så de kan forklare, hvem de er nu, hvem de ønsker at være, og hvad deres liv betyder. Fortiden bliver derfor ikke bare fundet; den bliver fortolket fra nutiden.",
+            "Lewis’ tilknytningscase gør argumentet empirisk. Hvis tilknytning ved 1 år var et stabilt indre træk, burde den stærkt forudsige tilknytning ved 18 år. I studiet finder Lewis ikke denne kontinuitet. Derimod hænger 18-åriges tilknytning sammen med den aktuelle familiesituation, blandt andet skilsmisse.",
+            "Konklusionen er, at stabilitet ofte kan ligge i konteksten snarere end i barnet. Hvis miljøet forbliver stabilt, kan adfærd se stabil ud. Hvis miljøet ændrer sig, kan personen også ændre tilpasning. Det er Lewis’ stærkeste modtræk til personlighed som fast essens."
+          ],
+          "key_points": [
+            "Hukommelse ses som konstruktion, ikke som fotografi.",
+            "Selvfortællinger skaber mening mellem fortid, nutid og fremtid.",
+            "Tilknytning ved 1 år forudsagde ikke klart tilknytning ved 18 år i Lewis’ studie.",
+            "Aktuel familiesituation var vigtigere for tilknytning ved 18 år.",
+            "Stabilitet kan skyldes stabil kontekst, ikke nødvendigvis stabil indre essens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "memory is a construction",
+              "why_it_matters": "Det samler Lewis’ brud med hukommelse som fotografi.",
+              "source_location": "p. 8"
+            },
+            {
+              "phrase": "concurrent adaptation",
+              "why_it_matters": "Det er nøglebegrebet for Lewis’ kontekstuelle udviklingsforståelse.",
+              "source_location": "p. 13"
+            },
+            {
+              "phrase": "stability and change of the context",
+              "why_it_matters": "Det samler tekstens konklusion om personlighedsudvikling.",
+              "source_location": "p. 14"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personlighed er stabil, hvorfor giver forskellige vurderere så forskellige billeder af samme barn?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan man vælge den rigtige observatør ved at se, hvem der bedst forudsiger senere udvikling?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad skal være sandt, hvis tidlige erfaringer skal styre senere personlighed indefra?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "tre nøgleantagelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Vælg side i spændingen og begrund kort: Skal udvikling forstås som erstatning af gamle former, eller som flere mulige niveauer i skiftende kontekster?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan nutiden forme både fortidens betydning og aktuelle udviklingsmønstre?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "et eksempel",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Kan personlighedsudvikling forklares som stabile indre træk over tid, eller passer data bedre med, at adfærd og selvforståelse formes af aktuel kontekst?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Løs først fra hukommelsen. Tjek bagefter i Abridged Reader, og ret kun det, der mangler.",
+      "overview": [
+        "Lewis undersøger, om personlighed kan forstås som stabile karakteristika på tværs af situationer og tid.",
+        "Han viser, at både måling og langtidsforudsigelse ofte giver svage eller kontekstafhængige resultater.",
+        "Hans alternativ er en kontekstuel model, hvor aktuel tilpasning, selvfortælling og rekonstruktion af fortiden er centrale."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Personlighed bliver problematisk hos Lewis, fordi den forudsætter stabilitet på tværs af __________.",
+          "where_to_look": "Abridged Reader section 1",
+          "answer_shape": "3 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I casen om børnedepression vurderer barn, mor og __________ ikke nødvendigvis samme problem ens.",
+          "where_to_look": "Abridged Reader section 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Når forskellige udfald har forskellige udviklingsveje, svækkes idéen om én stærk __________.",
+          "where_to_look": "Abridged Reader section 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den organismiske model placerer udviklingens drivkraft inde i __________.",
+          "where_to_look": "Abridged Reader section 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den additive model gør det muligt, at gamle og nye kapaciteter kan __________.",
+          "where_to_look": "Abridged Reader section 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Lewis’ hukommelsesargument afviser billedet af hukommelse som et præcist __________.",
+          "where_to_look": "Abridged Reader section 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "I tilknytningscasen bliver stabilitet bedre forklaret gennem aktuel __________ end gennem et tidligt indre træk.",
+          "where_to_look": "Abridged Reader section 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kontrast med to kolonner: organismisk model og kontekstuel model. Sæt tre korte stikord under hver.",
+          "required_elements": [
+            "to modelnavne",
+            "placering af årsag",
+            "syn på fortid",
+            "syn på aktuel kontekst"
+          ],
+          "blank_space_hint": "Brug en halv side."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en lille kæde, der viser Lewis’ bevægelse fra måleproblem til kontekstuel forklaring.",
+          "required_elements": [
+            "uenige observatører",
+            "svag forudsigelse",
+            "kritik af stabilt træk",
+            "aktuel tilpasning"
+          ],
+          "blank_space_hint": "Brug fire bokse og pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug som mundtlige cues. Svar kort først; udvid kun med ét eksempel.",
+      "use_this_text_for": [
+        "Brug Lewis til at problematisere personlighed som stabil indre essens.",
+        "Brug teksten til at forklare, hvorfor kontekst ikke bare er baggrund.",
+        "Brug børnedepression som eksempel på målingens afhængighed af observatør og situation.",
+        "Brug tilknytning som case på forskellen mellem tidligt træk og aktuel kontekst.",
+        "Brug hukommelsesargumentet til historicitet: fortiden virker gennem nutidig betydning."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essens versus kontekst",
+          "connection": "Lewis flytter forklaringen fra stabile indre træk til personens aktuelle livssammenhæng."
+        },
+        {
+          "course_theme": "Determination",
+          "connection": "Teksten kritiserer stærk fortidsdeterminisme og viser svage langtidsforudsigelser."
+        },
+        {
+          "course_theme": "Agency",
+          "connection": "Selvet får en aktiv rolle gennem mål, fortællinger og rekonstruktion af fortiden."
+        },
+        {
+          "course_theme": "Historicitet",
+          "connection": "Historien behandles ikke som fast årsagskæde, men som noget der får betydning i nutiden."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trait psychology",
+          "how_to_compare": "Sammenlign stabilt målbart træk med kontekstafhængig adfærd og lav krydssituationskonsistens."
+        },
+        {
+          "compare_with": "Psykoanalytiske udviklingsmodeller",
+          "how_to_compare": "Sammenlign tidlige erfaringer som varige indre spor med Lewis’ kritik af at være fanget i fortiden."
+        },
+        {
+          "compare_with": "Kritisk personalisme",
+          "how_to_compare": "Sammenlign kritik af isolerede træk med fokus på hele personen i relationer og situationer."
+        },
+        {
+          "compare_with": "Sociokulturelle og poststrukturalistiske teorier",
+          "how_to_compare": "Sammenlign Lewis’ kontekstualisme med senere teorier, hvor subjektet formes historisk og socialt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definér en spænding",
+          "use_in_answer": "Sig højt: Lewis tester om personlighed er stabil essens eller aktuel kontekstuel tilpasning.",
+          "caution": "Undgå at gøre kontekst til ren støj."
+        },
+        {
+          "prompt_type": "Brug empiri",
+          "use_in_answer": "Brug børnedepression eller tilknytning som kort case.",
+          "caution": "Undgå lange metodebeskrivelser."
+        },
+        {
+          "prompt_type": "Kobl til orienteringspunkter",
+          "use_in_answer": "Sæt teksten ind under essens/kontekst, determination og historicitet.",
+          "caution": "Undgå at nævne punkterne uden at anvende dem."
+        },
+        {
+          "prompt_type": "Lav kontrast",
+          "use_in_answer": "Sammenlign organismisk model med kontekstuel model i to sætninger.",
+          "caution": "Undgå at sige, at Lewis bare afviser udvikling."
+        },
+        {
+          "prompt_type": "Afslut med konsekvens",
+          "use_in_answer": "Sig hvad forskeren skal måle, hvis Lewis har ret: aktuel kontekst, relationer og fortællinger.",
+          "caution": "Undgå at lede svaret tilbage til stabile træk som facit."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "Lewis siger, at fortiden ikke findes.",
+          "better_reading": "Han siger, at fortidens betydning ofte rekonstrueres og virker gennem nutiden."
+        },
+        {
+          "trap": "Lav korrelation betyder, at al personlighedsforskning er værdiløs.",
+          "better_reading": "Han bruger de svage fund til at kræve bedre modeller og mere kontekstfølsom måling."
+        },
+        {
+          "trap": "Kontekstualisme betyder, at personen er passiv.",
+          "better_reading": "Lewis giver selvet en aktiv rolle i mål, valg og selvfortælling."
+        },
+        {
+          "trap": "Tilknytning er irrelevant, fordi den ikke er stabil.",
+          "better_reading": "Tilknytning er relevant, men må forstås i forhold til aktuelle relationelle miljøer."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udfordrer Lewis idéen om personlighed som stabil indre essens, og hvordan kan hans kontekstuelle model kobles til kursets fire orienteringspunkter?",
+      "mini_exam_answer_plan_slots": [
+        "Start med definitionen af personlighed som stabilitet på tværs af kontekst og tid.",
+        "Brug måleproblemet: forskellige observatører og lav enighed.",
+        "Forklar organismisk model og hvorfor den lover stærk forudsigelse.",
+        "Indsæt kontekstuel model: aktuel tilpasning, hukommelse og selvfortælling.",
+        "Slut med orienteringspunkterne: essens/kontekst, agency, determination og historicitet."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l1-lewis-1999-295c67e3",
+      "lecture_key": "W01L1",
+      "source_title": "Lewis (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs teaserteksten først. Brug derefter ruten som kort gennem argumentet.",
+      "teaser_paragraphs": [
+        "Lewis begynder med et tilsyneladende enkelt problem: Hvis personlighed betyder træk, der er stabile på tværs af situationer og tid, hvorfor er de så så svære at finde i data? Allerede i starten strammer han skruen med formuleringen *little consistency*.",
+        "Den konkrete krog er børnedepression. Et barn kan se trist ud for en lærer, mindre trist for en mor og beskrive sig selv på en tredje måde. Det er ikke bare støj i målingen; det kan betyde, at barnets adfærd faktisk skifter med konteksten.",
+        "Så flytter teksten problemet fra måling til udvikling. Hvis tidligere begivenheder virkelig styrer senere personlighed, burde langtidsstudier give stærke spor. Lewis viser i stedet, at forbindelserne ofte er svage, og at meget lidt varians forklares.",
+        "Det rammer den model, han kalder den organismiske model: idéen om, at noget tidligt bliver lagt ind i personen og senere driver adfærd indefra. Hans skarpe formulering er, at *the organismic model of development traps us in our past*.",
+        "Alternativet er ikke, at fortiden er ligegyldig. Problemet er, hvordan fortiden får betydning nu. Lewis ender i en kontekstuel model, hvor aktuel tilpasning, selvfortælling og hukommelse betyder mere end en fast indre essens. Derfor bliver den afgørende spænding: må vi forstå personlighed som noget indeni personen, eller som noget der opstår i personens aktuelle livssammenhæng?"
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "p. 1",
+          "excerpt": "little consistency",
+          "open_question": "Hvad sker der med personlighedsbegrebet, hvis stabiliteten er lav?"
+        },
+        {
+          "number": 2,
+          "source_location": "p. 7",
+          "excerpt": "traps us in our past",
+          "open_question": "Hvorfor er det et problem, hvis en udviklingsmodel låser personen fast i fortiden?"
+        },
+        {
+          "number": 3,
+          "source_location": "p. 9",
+          "excerpt": "present reconstructing the past",
+          "open_question": "Hvad betyder det, hvis nutiden former den fortid, personen fortæller om?"
+        }
+      ],
+      "main_problem": "Kan personlighedsudvikling forklares som stabile indre træk over tid, eller passer data bedre med, at adfærd og selvforståelse formes af aktuel kontekst?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er personlighed vanskelig at måle, når forskellige observatører vurderer samme barn?",
+          "why_it_matters": "Det tester antagelsen om, at en egenskab findes stabilt i personen uafhængigt af situation.",
+          "answer_form": "en kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor løser tidslig forudsigelse ikke problemet med lav enighed mellem observatører?",
+          "why_it_matters": "Det viser, om fortiden faktisk kan udpege et stærkt udviklingsspor.",
+          "answer_form": "to led i en kæde"
+        },
+        {
+          "number": 3,
+          "question": "Hvad antager den organismiske model om træk, tidlig erfaring og udviklingens retning?",
+          "why_it_matters": "Det er den model, Lewis vil presse empirisk og teoretisk.",
+          "answer_form": "tre nøgleantagelser"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan ændrer den additive model og den kontekstuelle model forståelsen af udvikling?",
+          "why_it_matters": "Det åbner for, at tidligere niveauer og aktuelle kontekster kan sameksistere.",
+          "answer_form": "en kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan bruger Lewis hukommelse og tilknytning til at vise, at nutiden kan omforme fortidens betydning?",
+          "why_it_matters": "Det gør teksten central for kursusspændingen mellem indre essens og kontekst.",
+          "answer_form": "et eksempel"
+        }
+      ],
+      "why_this_text_matters": "Teksten giver W01L1 et konkret angreb på trait-essentialisme. Den gør de fire orienteringspunkter brugbare fra start: essens/kontekst, agency, determination og historicitet.",
+      "overview": [
+        "Lewis begynder med måleproblemer: personlighedsvariabler viser lav enighed på tværs af observatører, situationer og tid.",
+        "Han kritiserer den organismiske udviklingsmodel, fordi den forudsætter, at tidlige begivenheder skaber varige indre træk, som senere styrer personen.",
+        "Han foreslår en kontekstuel forståelse, hvor aktuel tilpasning, selvfortælling og rekonstruktion af fortiden står centralt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "pp. 1-3",
+          "task": "Fang problemet med observatører: barn, mor og lærer ser ikke nødvendigvis samme personlighedsvariabel.",
+          "why_it_matters": "Det er første brud på idéen om stabil indre egenskab.",
+          "stop_signal": "når du kan sige, hvorfor én vurdering ikke automatisk er facit"
+        },
+        {
+          "number": 2,
+          "source_location": "pp. 3-4",
+          "task": "Følg forsøget på at redde problemet gennem forudsigelse over tid.",
+          "why_it_matters": "Det tester, om fortiden kan afgøre, hvilken måling der er mest gyldig.",
+          "stop_signal": "når du kan beskrive, hvorfor denne redning er svag"
+        },
+        {
+          "number": 3,
+          "source_location": "pp. 4-7",
+          "task": "Find den organismiske models antagelser om tidlige erfaringer, retning og endepunkt.",
+          "why_it_matters": "Det er den klassiske udviklingslogik, Lewis vil erstatte.",
+          "stop_signal": "når du har samlet tre antagelser"
+        },
+        {
+          "number": 4,
+          "source_location": "pp. 6-8",
+          "task": "Afgør forskellen mellem transformation, addition og kontekst.",
+          "why_it_matters": "Det viser, hvorfor udvikling ikke behøver være én lineær kæde.",
+          "stop_signal": "når du kan skelne mellem udskiftning og sameksistens"
+        },
+        {
+          "number": 5,
+          "source_location": "pp. 8-13",
+          "task": "Følg Lewis’ stærkeste beviser: hukommelse, selvfortælling og tilknytning.",
+          "why_it_matters": "Det viser, hvordan nutidige kontekster kan forklare stabilitet og forandring.",
+          "stop_signal": "når du kan give ét empirisk eksempel"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "little consistency",
+          "why": "Skærper måleproblemet ved personlighed som stabilitet.",
+          "where_to_look": "Abridged Reader section 1"
+        },
+        {
+          "target": "traps us in our past",
+          "why": "Samler Lewis’ kritik af den organismiske model.",
+          "where_to_look": "Abridged Reader section 3"
+        },
+        {
+          "target": "present reconstructing the past",
+          "why": "Markerer vendepunktet fra historisk årsag til nutidig konstruktion.",
+          "where_to_look": "Abridged Reader section 4"
+        },
+        {
+          "target": "concurrent adaptation",
+          "why": "Giver nøgleordet for den kontekstuelle forklaring.",
+          "where_to_look": "Abridged Reader section 5"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Alle navne i referencelisten; brug kun dem, der bærer argumentet.",
+        "De mange varianter af udviklingsmodeller; fokuser på kontrasten mellem indre kæde og aktuel kontekst.",
+        "Præcise statistiske detaljer; fang pointen om lav forklaret varians.",
+        "Tilknytningslitteraturens interne debat; brug den som case, ikke som separat pensumblok."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs sektionerne i rækkefølge. De giver en kort, selvstændig vej gennem Lewis’ argument.",
+      "coverage_note": "Denne version bevarer tekstens hovedbevægelse: fra måleproblem, over kritik af organismisk udviklingstænkning, til en kontekstuel model med hukommelse, selvfortælling og tilknytning som centrale cases.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "pp. 1-3",
+          "heading": "Når tre observatører ikke ser samme barn",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvis personlighed er stabil, hvorfor giver forskellige vurderere så forskellige billeder af samme barn?",
+          "explanation_paragraphs": [
+            "Lewis åbner med definitionen af personlighed som individuelle karakteristika, der er konsistente på tværs af kontekst og tid. Problemet er, at denne idé er mere tiltalende end solidt dokumenteret. Når man måler konkrete variabler, finder man ofte statistisk signifikante sammenhænge, men de forklarer kun lidt varians.",
+            "Hans første case er børnedepression. Barnet, moren og læreren kan alle være relevante kilder, men de vurderer ikke nødvendigvis det samme. Barnet kan lægge vægt på indre følelser, forældre på synlig social adfærd, og lærere på adfærd i skolen. Derfor bliver observatøren ikke bare et neutralt måleinstrument.",
+            "Lewis’ pointe er ikke kun, at måleinstrumenter kan være dårlige. Pointen er også, at barnet faktisk befinder sig i forskellige situationer, som kalder forskellige handlinger frem. Hvis adfærd er stabil inden for bestemte situationer, men ikke på tværs af dem, bliver personlighed som en enkel indre egenskab svær at fastholde.",
+            "Det samme problem dukker op ved temperament, frygt og Big Five-lignende træk: sammenhænge findes, men de er ofte moderate. Dermed står forskeren med et valg: enten forbedre målingen eller overveje, om personlighedsvariabler bør forstås sammen med situationen."
+          ],
+          "key_points": [
+            "Personlighed defineres traditionelt som stabilitet på tværs af kontekst og tid.",
+            "Barn, mor og lærer kan give lave eller uenige vurderinger af samme problem.",
+            "Uenigheden kan skyldes både målefejl og reelle kontekstforskelle.",
+            "Lewis bruger måleproblemet til at udfordre idéen om stabile indre træk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "little consistency",
+              "why_it_matters": "Det er Lewis’ korte diagnose af problemet med stabil personlighed.",
+              "source_location": "p. 1"
+            },
+            {
+              "phrase": "different situations that elicit different behaviors",
+              "why_it_matters": "Det peger fra målefejl mod kontekstforklaring.",
+              "source_location": "p. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "pp. 3-4",
+          "heading": "Tidslig forudsigelse redder ikke stabiliteten",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Kan man vælge den rigtige observatør ved at se, hvem der bedst forudsiger senere udvikling?",
+          "explanation_paragraphs": [
+            "Lewis overvejer en mulig redning: hvis mor, lærer og barn er uenige nu, kunne man måske se, hvilken vurdering der bedst hænger sammen med tidligere risikofaktorer. Den vurdering kunne så få status som den mest gyldige.",
+            "I studiet af 9-åriges depression undersøges blandt andet tilknytning, stress og socialt netværk. Resultatet er ikke én stærk udviklingslinje. Barnets egen vurdering forudsiges ikke af de tidlige variabler. Morens vurdering hænger bedst sammen med morens egen depression. Lærerens vurdering hænger sammen med barnets tidligere peer-netværk.",
+            "Det betyder, at forskellige udfald får forskellige forklaringsveje. I stedet for at fortiden klart afslører barnets egentlige personlighed, ser det ud som om hver vurdering hører til en bestemt relation og situation.",
+            "Lewis konkluderer derfor, at forudsigelse over tid ofte er svag. Selv signifikante sammenhænge kan forklare meget lidt. Hvis personlighedsteori bygger på stærk stabilitet, er dette et alvorligt problem."
+          ],
+          "key_points": [
+            "Tidslig forudsigelse kunne have reddet problemet med uenige observatører.",
+            "Lewis finder ikke én stærk, samlet udviklingssti.",
+            "Forskellige vurderere har forskellige forløb og forklaringer.",
+            "Lav forklaret varians svækker idéen om stabile personlighedsvariabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "different outcomes have different paths",
+              "why_it_matters": "Sætningen samler problemet med én lineær udviklingsforklaring.",
+              "source_location": "p. 3"
+            },
+            {
+              "phrase": "less than 12% of the variance",
+              "why_it_matters": "Det konkretiserer, hvor svage nogle stabile sammenhænge er.",
+              "source_location": "p. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "pp. 4-7",
+          "heading": "Den organismiske model: personen som bærer af fortiden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad skal være sandt, hvis tidlige erfaringer skal styre senere personlighed indefra?",
+          "explanation_paragraphs": [
+            "Den organismiske model placerer udviklingsprocesserne i personen. Tidlige relationer, især til moren, antages at skabe varige træk eller dispositioner. Disse træk bliver en del af personen og kan senere forklare følelser, tanker og handlinger.",
+            "Modellen bygger på flere stærke antagelser: udvikling har retning og endepunkt; tidlige begivenheder hænger sammen med senere; ændring er gradvis; de første leveår har særlig kraft; og moren får en central årsagsrolle i barnets socioemotionelle udvikling.",
+            "Lewis problematiserer også idéen om primacy, altså at det tidlige automatisk vejer tungere end det senere. Kritiske perioder og sensitive perioder virker biologisk plausible, men Lewis viser, at sådanne idéer ofte er stærkere som model end som dokumenteret forklaring.",
+            "Den organismiske model er attraktiv, fordi den lover forudsigelse. Hvis fortiden bliver indlejret som træk, kan man principielt forklare og forudsige fremtidig adfærd. Men netop den lovede forudsigelse er det, Lewis mener, data ikke leverer stærkt nok."
+          ],
+          "key_points": [
+            "Organismisk udvikling forklarer senere adfærd med indre, tidligt dannede træk.",
+            "Modellen lægger vægt på retning, kontinuitet, tidlige erfaringer og morens rolle.",
+            "Primacy betyder, at det tidlige får særlig forklaringskraft.",
+            "Lewis kritiserer modellen, fordi dens forudsigelser ofte er empirisk svage."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the organismic model",
+              "why_it_matters": "Det er navnet på den model, Lewis kritiserer.",
+              "source_location": "p. 4"
+            },
+            {
+              "phrase": "traps us in our past",
+              "why_it_matters": "Det udtrykker modellens deterministiske problem.",
+              "source_location": "p. 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "pp. 6-9",
+          "heading": "Fra transformation til kontekst",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Skal udvikling forstås som erstatning af gamle former, eller som flere mulige niveauer i skiftende kontekster?",
+          "explanation_paragraphs": [
+            "Lewis skelner mellem tre udviklingsmodeller. Den akkretionelle model ser udvikling som mere af det samme: en struktur vokser i mængde. Den transformationelle model ser udvikling som metamorfose: en tidligere form erstattes af en ny. Den additive model bevarer tidligere former samtidig med, at nye evner kommer til.",
+            "Den additive model er vigtig, fordi den gør regression og fleksibilitet forståelige. Et barn, der kan gå, kan stadig kravle. En person kan bruge forskellige niveauer afhængigt af opgaven. Dermed bliver kontekst nødvendig: man må vide, hvilken situation der kalder hvilken kapacitet frem.",
+            "Her bevæger Lewis sig mod kontekstualisme. I den kontekstuelle model er adfærd ikke primært et produkt af en indre kæde fra fortiden. Adfærd forstås som tilpasning til aktuelle miljøer, relationer, mål og betydninger.",
+            "Det betyder ikke, at historien slettes. Det betyder, at historien ikke automatisk virker som en fast årsag. Den får betydning gennem nutidige sammenhænge, nuværende selvforståelse og de mål personen handler ud fra."
+          ],
+          "key_points": [
+            "Akkretion betyder vækst i mængde.",
+            "Transformation betyder erstatning af én form med en anden.",
+            "Addition betyder sameksistens af gamle og nye kapaciteter.",
+            "Den additive model åbner for kontekstuel forklaring.",
+            "Kontekstualisme flytter fokus fra indre historisk kæde til aktuel tilpasning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "additive model",
+              "why_it_matters": "Det er overgangsmodellen mellem klassisk udviklingstænkning og kontekstualisme.",
+              "source_location": "p. 7"
+            },
+            {
+              "phrase": "the coexistence of all earlier abilities",
+              "why_it_matters": "Det forklarer, hvorfor tidligere niveauer ikke behøver forsvinde.",
+              "source_location": "p. 7"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "p. 9",
+              "passage": "history may represent not the past acting on the present but the present reconstructing the past.",
+              "why_it_matters": "Denne formulering er medtaget, fordi den præcist vender den normale tidsforståelse om."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "pp. 8-13",
+          "heading": "Hukommelse, selvfortælling og tilknytning som test",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan kan nutiden forme både fortidens betydning og aktuelle udviklingsmønstre?",
+          "explanation_paragraphs": [
+            "Lewis bruger William James og kontekstualismen til at udfordre idéen om historien som en direkte årsagskæde. Hukommelse forstås ikke som et fotografi af det, der skete. Den er en konstruktion, som kan ændre sig med aktuelle behov, relationer og mål.",
+            "Det gør selvfortællingen central. Mennesker vælger og organiserer erindringer, så de kan forklare, hvem de er nu, hvem de ønsker at være, og hvad deres liv betyder. Fortiden bliver derfor ikke bare fundet; den bliver fortolket fra nutiden.",
+            "Lewis’ tilknytningscase gør argumentet empirisk. Hvis tilknytning ved 1 år var et stabilt indre træk, burde den stærkt forudsige tilknytning ved 18 år. I studiet finder Lewis ikke denne kontinuitet. Derimod hænger 18-åriges tilknytning sammen med den aktuelle familiesituation, blandt andet skilsmisse.",
+            "Konklusionen er, at stabilitet ofte kan ligge i konteksten snarere end i barnet. Hvis miljøet forbliver stabilt, kan adfærd se stabil ud. Hvis miljøet ændrer sig, kan personen også ændre tilpasning. Det er Lewis’ stærkeste modtræk til personlighed som fast essens."
+          ],
+          "key_points": [
+            "Hukommelse ses som konstruktion, ikke som fotografi.",
+            "Selvfortællinger skaber mening mellem fortid, nutid og fremtid.",
+            "Tilknytning ved 1 år forudsagde ikke klart tilknytning ved 18 år i Lewis’ studie.",
+            "Aktuel familiesituation var vigtigere for tilknytning ved 18 år.",
+            "Stabilitet kan skyldes stabil kontekst, ikke nødvendigvis stabil indre essens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "memory is a construction",
+              "why_it_matters": "Det samler Lewis’ brud med hukommelse som fotografi.",
+              "source_location": "p. 8"
+            },
+            {
+              "phrase": "concurrent adaptation",
+              "why_it_matters": "Det er nøglebegrebet for Lewis’ kontekstuelle udviklingsforståelse.",
+              "source_location": "p. 13"
+            },
+            {
+              "phrase": "stability and change of the context",
+              "why_it_matters": "Det samler tekstens konklusion om personlighedsudvikling.",
+              "source_location": "p. 14"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personlighed er stabil, hvorfor giver forskellige vurderere så forskellige billeder af samme barn?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan man vælge den rigtige observatør ved at se, hvem der bedst forudsiger senere udvikling?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad skal være sandt, hvis tidlige erfaringer skal styre senere personlighed indefra?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "tre nøgleantagelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Vælg side i spændingen og begrund kort: Skal udvikling forstås som erstatning af gamle former, eller som flere mulige niveauer i skiftende kontekster?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan nutiden forme både fortidens betydning og aktuelle udviklingsmønstre?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "et eksempel",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Kan personlighedsudvikling forklares som stabile indre træk over tid, eller passer data bedre med, at adfærd og selvforståelse formes af aktuel kontekst?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Løs først fra hukommelsen. Tjek bagefter i Abridged Reader, og ret kun det, der mangler.",
+      "overview": [
+        "Lewis undersøger, om personlighed kan forstås som stabile karakteristika på tværs af situationer og tid.",
+        "Han viser, at både måling og langtidsforudsigelse ofte giver svage eller kontekstafhængige resultater.",
+        "Hans alternativ er en kontekstuel model, hvor aktuel tilpasning, selvfortælling og rekonstruktion af fortiden er centrale."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Personlighed bliver problematisk hos Lewis, fordi den forudsætter stabilitet på tværs af __________.",
+          "where_to_look": "Abridged Reader section 1",
+          "answer_shape": "3 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I casen om børnedepression vurderer barn, mor og __________ ikke nødvendigvis samme problem ens.",
+          "where_to_look": "Abridged Reader section 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Når forskellige udfald har forskellige udviklingsveje, svækkes idéen om én stærk __________.",
+          "where_to_look": "Abridged Reader section 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den organismiske model placerer udviklingens drivkraft inde i __________.",
+          "where_to_look": "Abridged Reader section 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den additive model gør det muligt, at gamle og nye kapaciteter kan __________.",
+          "where_to_look": "Abridged Reader section 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Lewis’ hukommelsesargument afviser billedet af hukommelse som et præcist __________.",
+          "where_to_look": "Abridged Reader section 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "I tilknytningscasen bliver stabilitet bedre forklaret gennem aktuel __________ end gennem et tidligt indre træk.",
+          "where_to_look": "Abridged Reader section 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kontrast med to kolonner: organismisk model og kontekstuel model. Sæt tre korte stikord under hver.",
+          "required_elements": [
+            "to modelnavne",
+            "placering af årsag",
+            "syn på fortid",
+            "syn på aktuel kontekst"
+          ],
+          "blank_space_hint": "Brug en halv side."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en lille kæde, der viser Lewis’ bevægelse fra måleproblem til kontekstuel forklaring.",
+          "required_elements": [
+            "uenige observatører",
+            "svag forudsigelse",
+            "kritik af stabilt træk",
+            "aktuel tilpasning"
+          ],
+          "blank_space_hint": "Brug fire bokse og pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug som mundtlige cues. Svar kort først; udvid kun med ét eksempel.",
+      "use_this_text_for": [
+        "Brug Lewis til at problematisere personlighed som stabil indre essens.",
+        "Brug teksten til at forklare, hvorfor kontekst ikke bare er baggrund.",
+        "Brug børnedepression som eksempel på målingens afhængighed af observatør og situation.",
+        "Brug tilknytning som case på forskellen mellem tidligt træk og aktuel kontekst.",
+        "Brug hukommelsesargumentet til historicitet: fortiden virker gennem nutidig betydning."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essens versus kontekst",
+          "connection": "Lewis flytter forklaringen fra stabile indre træk til personens aktuelle livssammenhæng."
+        },
+        {
+          "course_theme": "Determination",
+          "connection": "Teksten kritiserer stærk fortidsdeterminisme og viser svage langtidsforudsigelser."
+        },
+        {
+          "course_theme": "Agency",
+          "connection": "Selvet får en aktiv rolle gennem mål, fortællinger og rekonstruktion af fortiden."
+        },
+        {
+          "course_theme": "Historicitet",
+          "connection": "Historien behandles ikke som fast årsagskæde, men som noget der får betydning i nutiden."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trait psychology",
+          "how_to_compare": "Sammenlign stabilt målbart træk med kontekstafhængig adfærd og lav krydssituationskonsistens."
+        },
+        {
+          "compare_with": "Psykoanalytiske udviklingsmodeller",
+          "how_to_compare": "Sammenlign tidlige erfaringer som varige indre spor med Lewis’ kritik af at være fanget i fortiden."
+        },
+        {
+          "compare_with": "Kritisk personalisme",
+          "how_to_compare": "Sammenlign kritik af isolerede træk med fokus på hele personen i relationer og situationer."
+        },
+        {
+          "compare_with": "Sociokulturelle og poststrukturalistiske teorier",
+          "how_to_compare": "Sammenlign Lewis’ kontekstualisme med senere teorier, hvor subjektet formes historisk og socialt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definér en spænding",
+          "use_in_answer": "Sig højt: Lewis tester om personlighed er stabil essens eller aktuel kontekstuel tilpasning.",
+          "caution": "Undgå at gøre kontekst til ren støj."
+        },
+        {
+          "prompt_type": "Brug empiri",
+          "use_in_answer": "Brug børnedepression eller tilknytning som kort case.",
+          "caution": "Undgå lange metodebeskrivelser."
+        },
+        {
+          "prompt_type": "Kobl til orienteringspunkter",
+          "use_in_answer": "Sæt teksten ind under essens/kontekst, determination og historicitet.",
+          "caution": "Undgå at nævne punkterne uden at anvende dem."
+        },
+        {
+          "prompt_type": "Lav kontrast",
+          "use_in_answer": "Sammenlign organismisk model med kontekstuel model i to sætninger.",
+          "caution": "Undgå at sige, at Lewis bare afviser udvikling."
+        },
+        {
+          "prompt_type": "Afslut med konsekvens",
+          "use_in_answer": "Sig hvad forskeren skal måle, hvis Lewis har ret: aktuel kontekst, relationer og fortællinger.",
+          "caution": "Undgå at lede svaret tilbage til stabile træk som facit."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "Lewis siger, at fortiden ikke findes.",
+          "better_reading": "Han siger, at fortidens betydning ofte rekonstrueres og virker gennem nutiden."
+        },
+        {
+          "trap": "Lav korrelation betyder, at al personlighedsforskning er værdiløs.",
+          "better_reading": "Han bruger de svage fund til at kræve bedre modeller og mere kontekstfølsom måling."
+        },
+        {
+          "trap": "Kontekstualisme betyder, at personen er passiv.",
+          "better_reading": "Lewis giver selvet en aktiv rolle i mål, valg og selvfortælling."
+        },
+        {
+          "trap": "Tilknytning er irrelevant, fordi den ikke er stabil.",
+          "better_reading": "Tilknytning er relevant, men må forstås i forhold til aktuelle relationelle miljøer."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udfordrer Lewis idéen om personlighed som stabil indre essens, og hvordan kan hans kontekstuelle model kobles til kursets fire orienteringspunkter?",
+      "mini_exam_answer_plan_slots": [
+        "Start med definitionen af personlighed som stabilitet på tværs af kontekst og tid.",
+        "Brug måleproblemet: forskellige observatører og lav enighed.",
+        "Forklar organismisk model og hvorfor den lover stærk forudsigelse.",
+        "Indsæt kontekstuel model: aktuel tilpasning, hukommelse og selvfortælling.",
+        "Slut med orienteringspunkterne: essens/kontekst, agency, determination og historicitet."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

@@ -1,0 +1,1381 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-08T19:46:55Z",
+  "generator": {
+    "provider": "openai",
+    "model": "gpt-5.5",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "openai-preprocessing-generation-config-v1",
+      "reasoning_effort": "medium",
+      "text_format": "json_object_or_json_schema",
+      "response_json_schema": "stage_specific",
+      "request_timeout_seconds": 180
+    }
+  },
+  "provenance": {
+    "source_file": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+    "source_files_signature": "04b9b8a862a564ef1399a1cb5bdc0d0ee49cec4a264b732c90110672730d8d86",
+    "source_card": "9874176e45be5efc60b5fddbcb445bcf3c0b1f82d9bd60673104441f4d20aa21",
+    "revised_lecture_substrate": "2fb8e8ff2cda81cf9f5911f8fde19bfefecfbb7cc1605d2660cedc3bb98b79b2",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+    "lecture_key": "W01L1",
+    "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf"
+    ],
+    "reading_title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W01L1"
+    ],
+    "sequence_index": 1,
+    "source_filename": "W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "subject_relative_path": "Readings/W1L1 Introforelæsning og nøglebegreber i personlighedspsykologien/W1L1 Grundbog kapitel 1 - Introduktion til personlighedspsykologi.pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "da",
+    "priority_signals": {
+      "is_grundbog": true,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "9b9e05f4eda46470c9aaad64b608b201e9664cf668d83a9f2f0fef35b98b8539",
+      "size_bytes": 3073301,
+      "page_count": 22,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 14300,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 22,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "lecture_key": "W01L1",
+      "source_title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs teaserteksten først. Brug derefter ruten som en kort vej gennem kapitlets problemer.",
+      "teaser_paragraphs": [
+        "Kapitlet starter med en maske. Ordet person forbindes med persona: en rolle, en karakter, noget man viser for andre. Men hvis masken kan tages af, hvad er så tilbage: et indre selv, en social rolle eller ingenting?",
+        "Den uro bliver ikke hurtigt løst. Teksten siger direkte, at der ikke er enighed om, hvad personligheden er, eller om den overhovedet findes. Det er ikke en detalje; det er selve startproblemet for personlighedspsykologien.",
+        "Derfor bliver kapitlet en slags kort over et ujævnt terræn. Psykoanalysen leder efter konflikter, instanser og det ubevidste. Fænomenologien begynder i bevidsthedens oplevelse. Træk- og kognitive teorier forsøger at måle egenskaber og funktioner. Sociokulturelle teorier flytter blikket ud i relationer, praksisser, sprog og samfund.",
+        "Det afgørende er ikke at huske alle navne. Det afgørende er at få fat i de fire orienteringspunkter: essens versus kontekst, agency, determination og historicitet. De fungerer som kapitlets redskaber til at afgøre, hvad en teori egentlig gør ved personen.",
+        "Når du har læst kapitlet, bør én spænding stå skarpere: Den teori, man vælger, bestemmer også, hvordan man kan undersøge personligheden. En spørgeskematest, en projektiv test, et interview og en samfundskritisk analyse leder ikke bare efter forskellige svar; de bygger på forskellige antagelser om, hvad en person er."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning",
+          "excerpt": "Der er ikke enighed om, hvad personligheden er",
+          "open_question": "Hvad sker der med en videnskab, når dens genstand er omstridt?"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet om persona",
+          "excerpt": "en maske, social rolle eller karakter",
+          "open_question": "Hvor går grænsen mellem det, man er, og det, man viser?"
+        }
+      ],
+      "main_problem": "Hvordan kan personlighedspsykologi sammenligne teorier, når teorierne ikke engang er enige om, hvad personlighed er?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilken grundspænding åbner persona-begrebet mellem indre og ydre?",
+          "why_it_matters": "Den spænding vender tilbage i næsten alle teorierne.",
+          "answer_form": "en kort sætning"
+        },
+        {
+          "number": 2,
+          "question": "Hvilke fire hovedtraditioner tegner kapitlets landskab?",
+          "why_it_matters": "De er grundkortet for resten af kurset.",
+          "answer_form": "4 navne"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan flytter sociokulturelle teorier personligheden ud i relationer, praksis og sprog?",
+          "why_it_matters": "Det forbereder senere kursusdele om kritisk psykologi, socialkonstruktionisme og poststrukturalisme.",
+          "answer_form": "2 korte sætninger"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan bruges de fire orienteringspunkter til at sammenligne teorier?",
+          "why_it_matters": "De er kursets vigtigste sammenligningsværktøj.",
+          "answer_form": "4 korte forklaringer"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
+          "why_it_matters": "Det forbinder ontologi med epistemologi og gør metodeforskelle begribelige.",
+          "answer_form": "en kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Kapitlet giver det metateoretiske kort, som resten af personlighedspsykologi-kurset bruger: teorier skal ikke bare gengives, men placeres efter deres syn på essens, kontekst, agency, determination, historicitet og metode.",
+      "overview": [
+        "Personlighedspsykologien beskrives som et felt uden én fælles definition af personlighed.",
+        "Fire hovedtraditioner præsenteres som landskabets vigtigste teoretiske retninger.",
+        "Fire orienteringspunkter gør det muligt at sammenligne teorier på tværs af videnskabstraditioner."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning og persona-afsnit",
+          "task": "Fang startproblemet og maskebilledet.",
+          "why_it_matters": "Det åbner spændingen mellem indre personlighed og social fremførelse.",
+          "stop_signal": "når du kan formulere spændingen i én sætning"
+        },
+        {
+          "number": 2,
+          "source_location": "Historierids og de fire hovedtilgange",
+          "task": "Find de fire teoretiske traditioner og deres grundantagelser.",
+          "why_it_matters": "Det giver kapitlets problemkort.",
+          "stop_signal": "når du har skrevet fire navne"
+        },
+        {
+          "number": 3,
+          "source_location": "Psykoanalyse, fænomenologi, træk/kognition og sociokulturelle teorier",
+          "task": "Afgør for hver tradition, hvor den leder efter personligheden.",
+          "why_it_matters": "Det gør forskellene konkrete.",
+          "stop_signal": "når hver tradition har én placering"
+        },
+        {
+          "number": 4,
+          "source_location": "Orienteringspunkter og Boks 1",
+          "task": "Find de fire sammenligningspunkter.",
+          "why_it_matters": "De er værktøjet, der skal bæres videre i kurset.",
+          "stop_signal": "når du har fire korte forklaringer"
+        },
+        {
+          "number": 5,
+          "source_location": "Hvad er personligheden? og Hvordan undersøges personligheden?",
+          "task": "Kobl forståelse af personlighed til undersøgelsesmetode.",
+          "why_it_matters": "Det viser, hvorfor metoder ikke er neutrale.",
+          "stop_signal": "når du har én teori-metode-kobling"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Der er ikke enighed om",
+          "why": "Markerer kapitlets grundproblem.",
+          "where_to_look": "Kapitelåbning"
+        },
+        {
+          "target": "en maske, social rolle eller karakter",
+          "why": "Gør indre/ydre-spændingen konkret.",
+          "where_to_look": "Persona-afsnittet"
+        },
+        {
+          "target": "Fire temaer",
+          "why": "Peger på kapitlets vigtigste sammenligningsramme.",
+          "where_to_look": "Boks 1"
+        },
+        {
+          "target": "males og vejes",
+          "why": "Viser den naturvidenskabelige metodeambition.",
+          "where_to_look": "Afsnittet om undersøgelsesmetoder"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Alle historiske navne i første gennemlæsning.",
+        "Detaljer om Lewis’ modeller, hvis de nævnes i undervisningen.",
+        "At tegne figurens præcise layout udenad.",
+        "At kunne alle metoder lige detaljeret fra start."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs sektionerne i rækkefølge. De udgør en kort, selvstændig læsevej gennem kapitlet.",
+      "coverage_note": "Denne forkortede læsevej dækker kapitlets hovedproblem, de fire traditioner, orienteringspunkterne, metodekoblingen og den korte bro til del 1. Den er nok til at løse de efterfølgende ark uden at åbne PDF’en.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning og persona-afsnit",
+          "heading": "Problemet starter med masken",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
+          "explanation_paragraphs": [
+            "Kapitlet åbner med en uenighed: personlighedspsykologien har ikke én fælles definition af personlighed. Feltet arbejder med beslægtede ord som karakter, identitet, selv og subjekt, men de dækker ikke automatisk det samme. Det gør personlighed til et begreb, der både er centralt og uklart.",
+            "Persona-begrebet gør problemet konkret. Oprindeligt peger det på en maske, social rolle eller karakter, som en skuespiller fremfører. Dermed placeres personen fra begyndelsen i relation til andre: en rolle vises for nogen.",
+            "Men teksten standser ikke ved det ydre. Hvis masken tages af, opstår spørgsmålet om, hvad der er tilbage. Er personligheden det indre, der findes uden publikum, eller er den netop den måde, man fremtræder i sociale relationer? Kapitlet fastholder, at der er både indre og ydre."
+          ],
+          "key_points": [
+            "Personlighed er ikke et entydigt defineret objekt i feltet.",
+            "Persona-billedet åbner spændingen mellem social fremførelse og indre væren.",
+            "Indre/ydre-spændingen bliver senere til essens/kontekst-problemet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Der er ikke enighed om",
+              "why_it_matters": "Det sætter kapitlets grundproblem.",
+              "source_location": "Kapitelåbning"
+            },
+            {
+              "phrase": "en maske, social rolle eller karakter",
+              "why_it_matters": "Det gør personlighedens ydre side synlig.",
+              "source_location": "Persona-afsnittet"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Kapitelåbning",
+              "passage": "Der er ikke enighed om, hvad personligheden er, eller om den overhovedet findes, og, hvis den findes, hvordan den så kan undersøges.",
+              "why_it_matters": "Den præcise formulering er kapitlets mest kompakte problem: definition, eksistens og metode er alle åbne spørgsmål."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Historierids samt psykoanalyse, fænomenologi og træk/kognitive teorier",
+          "heading": "Tre måder at placere personligheden på",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "explanation_paragraphs": [
+            "Den tidlige videnskabelige psykologi arbejdede især naturvidenskabeligt med afgrænsede funktioner som sansning, opmærksomhed og hukommelse. Personligheden var sværere, fordi den fremstod som en kompleks helhed. Derfor blev personlighedspsykologien tæt forbundet med filosofiske begreber som fri vilje, bevidsthed, jeg, impulser og selvrefleksion.",
+            "Psykoanalysen placerer ikke personligheden i et samlet, gennemsigtigt centrum. Hos Freud er subjektet decentreret: bevidstheden er ikke hele psyken, og det ubevidste påvirker handlinger og valg. Personligheden forstås som en dynamisk kompromisdannelse mellem jeg, overjeg og det.",
+            "Fænomenologien begynder et andet sted: i bevidsthedens oplevelse. Det centrale er, hvordan verden viser sig for personen. Senere retninger fremhæver livsverden, kroppen, eksistensvilkår, frihed, angst og menneskets potentiale til udvikling.",
+            "Trækteori og kognitive teorier placerer personligheden tættere på naturvidenskabelig undersøgelse. Trækteori beskriver personen gennem afgrænsede egenskaber, som kan måles og sammenlignes. Kognitive teorier interesserer sig for funktioner, skemaer, forventninger og selvorganisering, ofte med mere plads til bevidst valg end klassisk behaviorisme."
+          ],
+          "key_points": [
+            "Psykoanalysen: personligheden er delt, dynamisk og delvist ubevidst.",
+            "Fænomenologien: personligheden forstås gennem oplevelse, livsverden og mening.",
+            "Trækteori/kognition: personligheden beskrives gennem målbare egenskaber og funktioner.",
+            "De tre traditioner har forskellige svar på, hvor personligheden skal findes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "decentrering af subjektet",
+              "why_it_matters": "Det viser psykoanalysens brud med bevidstheden som centrum.",
+              "source_location": "Psykoanalyse"
+            },
+            {
+              "phrase": "bevidsthedens intentionalitet",
+              "why_it_matters": "Det samler fænomenologiens udgangspunkt.",
+              "source_location": "Fænomenologi"
+            },
+            {
+              "phrase": "afgrænsede egenskaber",
+              "why_it_matters": "Det rammer trækteoriens grundidé.",
+              "source_location": "Trækteori og kognitive teorier"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sociokulturelle teorier",
+          "heading": "Når personligheden flyttes ud i verden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "explanation_paragraphs": [
+            "Sociokulturelle teorier har fælles fokus på, at personligheden formes i sociale og kulturelle processer. Her er personlighedens ydre ikke bare pynt omkring et indre selv; det sociale kan være selve stedet, hvor personligheden dannes.",
+            "Symbolsk interaktionisme, især hos Mead, beskriver selvet gennem relationen til andre. Vi forstår os selv ved at se andres reaktioner på os. Selvet består ikke kun af et privat indre, men af jeg, mig og den generaliserede anden.",
+            "Kritisk psykologi begynder med stærk vægt på samfundsmæssig determination, men udvikler sig mod et fokus på deltagelse. Personen lever i konkrete samfundsmæssige kontekster, men kan også erkende handlemuligheder og få større rådighed over sine livsbetingelser.",
+            "Socialkonstruktionistiske og postmodernistiske tilgange går længst i kritikken af et fast indre centrum. Hvis man bruger ordet personlighed, må det forstås som en sproglig og samfundsmæssigt konstrueret enhed, der kan ændre sig med de konstruktioner, personen indgår i."
+          ],
+          "key_points": [
+            "Sociokulturelle teorier gør kontekst personlighedsdannende.",
+            "Mead: selvet formes gennem andres reaktioner.",
+            "Kritisk psykologi: deltagelse og handlemuligheder står centralt.",
+            "Socialkonstruktionisme: personlighed forstås som sprogligt og socialt konstrueret."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "sociale og kulturelle processer",
+              "why_it_matters": "Det samler den sociokulturelle grundantagelse.",
+              "source_location": "Sociokulturelle teorier"
+            },
+            {
+              "phrase": "den generaliserede anden",
+              "why_it_matters": "Det er centralt for Meads forståelse af selvet.",
+              "source_location": "Symbolsk interaktionisme"
+            },
+            {
+              "phrase": "ikke eksisterer som et essentielt indre samlingspunkt",
+              "why_it_matters": "Det viser den radikale anti-essentialisme.",
+              "source_location": "Socialkonstruktionisme og postmodernisme"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Orienteringspunkter og Boks 1",
+          "heading": "Fire beslutningspunkter for enhver teori",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "explanation_paragraphs": [
+            "Efter gennemgangen af traditionerne beskriver kapitlet feltet som et kuperet landskab. Teorierne ligger ikke bare i pæne rækker; de trækker på naturvidenskab, humanvidenskab og samfundsvidenskab. Derfor skal de sammenlignes med faste orienteringspunkter.",
+            "Første punkt er essens versus kontekst. Spørgsmålet er, om personligheden forstås som indre funktioner, træk eller indhold, eller om den findes i sociale sammenhænge, relationer og strukturer. Det svarer til den tidligere spænding mellem indre og ydre.",
+            "Andet punkt er agency. Det handler om, hvad der fungerer som det aktive styrende element: bevidsthed, jeg, handling, motivation, sprog eller måske slet ikke noget centrum. Agency er ikke bare fri vilje; det er teoriens bud på, hvor styring og handling placeres.",
+            "Tredje punkt er determination. Her spørger man, hvad der bestemmer personlighedens opbygning: biologi, indre psykiske komponenter eller sociale forhold. Fjerde punkt er historicitet: om teorien lægger vægt på artens udvikling, individets livshistorie eller samfundets historiske udvikling."
+          ],
+          "key_points": [
+            "Essens/kontekst afgør, om teorien leder indad eller udad.",
+            "Agency afgør, hvor teoriens aktive styring placeres.",
+            "Determination afgør, hvilke kræfter der former personligheden.",
+            "Historicitet afgør, hvilken tidslig udvikling teorien bruger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Fire temaer",
+              "why_it_matters": "Det er kapitlets samlede værktøj.",
+              "source_location": "Boks 1"
+            },
+            {
+              "phrase": "det aktive styrende element",
+              "why_it_matters": "Det præciserer agency.",
+              "source_location": "Orienteringspunkter"
+            },
+            {
+              "phrase": "biologisk determination",
+              "why_it_matters": "Det er en af hovedtyperne af bestemmelse.",
+              "source_location": "Orienteringspunkter"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Hvad er personligheden? og Hvordan undersøges personligheden?",
+          "heading": "Metoden afslører teorien",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "explanation_paragraphs": [
+            "Kapitlet skelner mellem personlighedens ontologi og epistemologi. Ontologi handler om, hvordan personligheden eksisterer. Epistemologi handler om, hvordan den kan erkendes eller undersøges. I personlighedspsykologien er begge dele omstridt.",
+            "Hvis personlighed forstås som stabile træk, giver spørgeskemaer mening. Man kan spørge mange personer om egenskaber og adfærd og undersøge statistiske sammenhænge. Her passer metoden til en antagelse om, at personligheden kan måles forholdsvis objektivt.",
+            "Hvis personlighed forstås som kontekstbundet, er selvvurdering ikke nok. Så kan observation over tid, dagbogsmetoder eller analyser af dagligliv være relevante, fordi personen må ses i de sammenhænge, hvor livet faktisk leves.",
+            "Hvis teorien antager ubevidste motiver, bliver projektive tests og casemetoder mere meningsfulde. Hvis teorien er fænomenologisk, kan interviews og IPA-metode bruges til at analysere oplevet mening. Nogle teorier arbejder desuden primært begrebsligt og filosofisk frem for empirisk."
+          ],
+          "key_points": [
+            "Ontologi: hvad personligheden er eller hvordan den eksisterer.",
+            "Epistemologi: hvordan personligheden kan erkendes og undersøges.",
+            "Spørgeskemaer passer især til trækpsykologiske antagelser.",
+            "Observation, dagbog, cases, projektive tests og interviews bygger på andre personlighedsforståelser.",
+            "Metoder er ikke neutrale; de følger teoriens antagelser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "males og vejes",
+              "why_it_matters": "Det markerer den objektiverende metodeforståelse.",
+              "source_location": "Hvordan undersøges personligheden?"
+            },
+            {
+              "phrase": "personlighedens ontologi",
+              "why_it_matters": "Det navngiver spørgsmålet om, hvad der studeres.",
+              "source_location": "Hvad er personligheden?"
+            },
+            {
+              "phrase": "lige så mange metoder",
+              "why_it_matters": "Det viser koblingen mellem teori og undersøgelse.",
+              "source_location": "Hvordan undersøges personligheden?"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Afrunding og indledning til Del I",
+          "heading": "Første kursusblok: måling, træk og adfærd",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "explanation_paragraphs": [
+            "Afrundingen minder om, at personlighed er en stærk moderne forestilling. Mennesker vurderes, kategoriseres, diagnosticeres, markedsføres til og testes ud fra antagelser om personlighed. Derfor er det ikke ligegyldigt, hvilke teorier og metoder man bruger.",
+            "Indledningen til del 1 peger på de dominerende internationale retninger: træk, adfærd og kognition. Her er idealet ofte en kvantitativ og naturvidenskabelig tilgang, hvor personligheden skal kunne undersøges objektivt gennem tests, registreringer eller målbare funktioner.",
+            "Del 1 bliver dermed ikke kun et nyt emne, men en prøve på kapitlets orienteringspunkter. Trækteori har ofte en indre og biologisk forståelse af træk. Behaviorisme lægger vægt på ydre adfærdsmønstre formet af belønning og straf. Kognitive teorier giver mere plads til indre bearbejdning og agency.",
+            "Kapitlets sidste funktion er derfor at forberede en kritisk læsemåde: Når en teori siger, at personlighed kan måles, skal man spørge, hvad den antager om personen, hvad den udelader, og hvordan den ville blive placeret på de fire orienteringspunkter."
+          ],
+          "key_points": [
+            "Personlighedsteorier bruges praktisk i diagnoser, jobtest, udviklingskultur og markedsføring.",
+            "Del 1 lægger vægt på træk, adfærd, kognition og objektiv måling.",
+            "Træk, behaviorisme og kognition placerer agency og determination forskelligt.",
+            "Orienteringspunkterne skal bruges videre på alle kommende teorier."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "males og vejes",
+              "why_it_matters": "Det viser del 1’s metodeideal.",
+              "source_location": "Indledning til Del I"
+            },
+            {
+              "phrase": "personlig udvikling",
+              "why_it_matters": "Det viser personlighedens moderne hverdagsbetydning.",
+              "source_location": "Afrunding"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "en kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "4 navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "4 korte forklaringer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Lav arket fra hukommelsen først. Tjek først bagefter i Abridged Reader, og ret kun det, du ikke kunne hente frem.",
+      "overview": [
+        "Kapitlet viser, at personlighedspsykologi ikke har én fælles definition af personlighed.",
+        "Det ordner feltet gennem fire hovedtraditioner og fire orienteringspunkter.",
+        "Det viser også, at metodevalg hænger sammen med teoriens antagelser om, hvad personlighed er."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Begrebet person forbindes historisk med __________ som maske, rolle eller karakter.",
+          "where_to_look": "Abridged Reader sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Psykoanalysen antager, at en del af personligheden er __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Fænomenologien tager udgangspunkt i bevidsthedens __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Trækteori beskriver personligheden gennem afgrænsede __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Sociokulturelle teorier gør __________ personlighedsdannende.",
+          "where_to_look": "Abridged Reader sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Orienteringspunktet __________ handler om det aktive styrende element i teorien.",
+          "where_to_look": "Abridged Reader sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Spørgsmålet om, hvordan personligheden kan erkendes, kaldes __________.",
+          "where_to_look": "Abridged Reader sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et firefeltskort over orienteringspunkterne. Skriv ét stikord ved hvert felt.",
+          "required_elements": [
+            "fire felter",
+            "fire orienteringspunkter",
+            "ét stikord pr. felt",
+            "ingen lange forklaringer"
+          ],
+          "blank_space_hint": "Brug en halv side."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en kæde fra teori til metode. Brug to forskellige teorityper og to forskellige metoder.",
+          "required_elements": [
+            "to teorityper",
+            "to metoder",
+            "pile mellem teori og metode",
+            "én kort kobling ved hver pil"
+          ],
+          "blank_space_hint": "Brug 6-8 linjer."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Valgfrit print. Brug arket som mundtlige cues, når du skal bevise, at kapitlets model kan bruges.",
+      "use_this_text_for": [
+        "Brug teksten til at åbne en sammenligning mellem to personlighedsteorier.",
+        "Brug teksten til at forklare, hvorfor feltet ikke har én samlet personlighedsdefinition.",
+        "Brug teksten til at placere en teori på essens/kontekst, agency, determination og historicitet.",
+        "Brug teksten til at koble ontologi og metodevalg.",
+        "Brug teksten til at vise skiftet fra måling af træk til kritiske og sociokulturelle forståelser."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W12L1: orienteringspunkter og eksamenssyntese",
+          "connection": "De fire orienteringspunkter er samme sammenligningsværktøj, der skal bruges på tværs af kurset."
+        },
+        {
+          "course_theme": "W02L1: trait psychology",
+          "connection": "Kapitlet forbereder trækpsykologiens målbare og ofte essentialistiske personlighedsforståelse."
+        },
+        {
+          "course_theme": "W08L1: kritisk personalisme",
+          "connection": "Kapitlet gør det muligt at formulere kritik af at reducere personen til isolerede træk."
+        },
+        {
+          "course_theme": "W10-W11: sociokulturelle og poststrukturelle teorier",
+          "connection": "Essens/kontekst-spændingen føres videre mod teorier, hvor subjektet forstås gennem historie, sprog og samfund."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori",
+          "how_to_compare": "Sammenlign på essens, måling og biologisk eller stabil determination."
+        },
+        {
+          "compare_with": "Psykoanalyse",
+          "how_to_compare": "Sammenlign på ubevidsthed, indre konflikt, agency og ontogenetisk historicitet."
+        },
+        {
+          "compare_with": "Fænomenologi",
+          "how_to_compare": "Sammenlign på oplevelse, livsverden, mening og metode gennem interview eller fortolkning."
+        },
+        {
+          "compare_with": "Sociokulturelle teorier",
+          "how_to_compare": "Sammenlign på kontekst, relationer, samfundsmæssig determination og sproglig konstruktion."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definér feltet",
+          "use_in_answer": "Sig højt, at personlighed er en omstridt genstand, ikke et færdigt objekt.",
+          "caution": "Undgå at starte med én hverdagsdefinition."
+        },
+        {
+          "prompt_type": "Sammenlign teorier",
+          "use_in_answer": "Brug de fire orienteringspunkter som fast rækkefølge.",
+          "caution": "Undgå kun at nævne forfatternavne."
+        },
+        {
+          "prompt_type": "Forklar metode",
+          "use_in_answer": "Kobl metode til teoriens antagelse om personlighedens eksistensform.",
+          "caution": "Undgå at kalde spørgeskemaer neutralt bedre."
+        },
+        {
+          "prompt_type": "Vis kursusoverblik",
+          "use_in_answer": "Placer teorien i naturvidenskabelig, humanvidenskabelig eller samfundsvidenskabelig retning.",
+          "caution": "Undgå at gøre figuren til en ren tidslinje."
+        },
+        {
+          "prompt_type": "Afslut med pointe",
+          "use_in_answer": "Sig, hvad teorien gør synligt, og hvad den risikerer at overse.",
+          "caution": "Undgå at slutte med ren gengivelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at personlighedspsykologi har én accepteret definition.",
+          "better_reading": "Læs feltet som et landskab af konkurrerende ontologier og metoder."
+        },
+        {
+          "trap": "At gøre agency til almindelig fri vilje.",
+          "better_reading": "Læs agency som teoriens placering af styring og handlingscentrum."
+        },
+        {
+          "trap": "At behandle metoder som tekniske valg uden teori.",
+          "better_reading": "Læs metode som bundet til en bestemt forståelse af personligheden."
+        },
+        {
+          "trap": "At overse kontekstteorier, fordi træk virker mere konkrete.",
+          "better_reading": "Læs kontekst som et alternativt svar på, hvor personlighed overhovedet findes."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign to personlighedsteorier med udgangspunkt i kapitlets fire orienteringspunkter, og vis hvordan deres metodevalg følger af deres personlighedsforståelse.",
+      "mini_exam_answer_plan_slots": [
+        "Start: feltet mangler én fælles definition af personlighed.",
+        "Teori 1: placér den på de fire orienteringspunkter.",
+        "Teori 2: placér den på de fire orienteringspunkter.",
+        "Metode: vis hvordan hver teori undersøger personlighed.",
+        "Slut: sig hvad sammenligningen afslører om personen som indre, ydre eller begge dele."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+      "lecture_key": "W01L1",
+      "source_title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs teaserteksten først. Brug derefter ruten som en kort vej gennem kapitlets problemer.",
+      "teaser_paragraphs": [
+        "Kapitlet starter med en maske. Ordet person forbindes med persona: en rolle, en karakter, noget man viser for andre. Men hvis masken kan tages af, hvad er så tilbage: et indre selv, en social rolle eller ingenting?",
+        "Den uro bliver ikke hurtigt løst. Teksten siger direkte, at der ikke er enighed om, hvad personligheden er, eller om den overhovedet findes. Det er ikke en detalje; det er selve startproblemet for personlighedspsykologien.",
+        "Derfor bliver kapitlet en slags kort over et ujævnt terræn. Psykoanalysen leder efter konflikter, instanser og det ubevidste. Fænomenologien begynder i bevidsthedens oplevelse. Træk- og kognitive teorier forsøger at måle egenskaber og funktioner. Sociokulturelle teorier flytter blikket ud i relationer, praksisser, sprog og samfund.",
+        "Det afgørende er ikke at huske alle navne. Det afgørende er at få fat i de fire orienteringspunkter: essens versus kontekst, agency, determination og historicitet. De fungerer som kapitlets redskaber til at afgøre, hvad en teori egentlig gør ved personen.",
+        "Når du har læst kapitlet, bør én spænding stå skarpere: Den teori, man vælger, bestemmer også, hvordan man kan undersøge personligheden. En spørgeskematest, en projektiv test, et interview og en samfundskritisk analyse leder ikke bare efter forskellige svar; de bygger på forskellige antagelser om, hvad en person er."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning",
+          "excerpt": "Der er ikke enighed om, hvad personligheden er",
+          "open_question": "Hvad sker der med en videnskab, når dens genstand er omstridt?"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet om persona",
+          "excerpt": "en maske, social rolle eller karakter",
+          "open_question": "Hvor går grænsen mellem det, man er, og det, man viser?"
+        }
+      ],
+      "main_problem": "Hvordan kan personlighedspsykologi sammenligne teorier, når teorierne ikke engang er enige om, hvad personlighed er?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilken grundspænding åbner persona-begrebet mellem indre og ydre?",
+          "why_it_matters": "Den spænding vender tilbage i næsten alle teorierne.",
+          "answer_form": "en kort sætning"
+        },
+        {
+          "number": 2,
+          "question": "Hvilke fire hovedtraditioner tegner kapitlets landskab?",
+          "why_it_matters": "De er grundkortet for resten af kurset.",
+          "answer_form": "4 navne"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan flytter sociokulturelle teorier personligheden ud i relationer, praksis og sprog?",
+          "why_it_matters": "Det forbereder senere kursusdele om kritisk psykologi, socialkonstruktionisme og poststrukturalisme.",
+          "answer_form": "2 korte sætninger"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan bruges de fire orienteringspunkter til at sammenligne teorier?",
+          "why_it_matters": "De er kursets vigtigste sammenligningsværktøj.",
+          "answer_form": "4 korte forklaringer"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
+          "why_it_matters": "Det forbinder ontologi med epistemologi og gør metodeforskelle begribelige.",
+          "answer_form": "en kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Kapitlet giver det metateoretiske kort, som resten af personlighedspsykologi-kurset bruger: teorier skal ikke bare gengives, men placeres efter deres syn på essens, kontekst, agency, determination, historicitet og metode.",
+      "overview": [
+        "Personlighedspsykologien beskrives som et felt uden én fælles definition af personlighed.",
+        "Fire hovedtraditioner præsenteres som landskabets vigtigste teoretiske retninger.",
+        "Fire orienteringspunkter gør det muligt at sammenligne teorier på tværs af videnskabstraditioner."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning og persona-afsnit",
+          "task": "Fang startproblemet og maskebilledet.",
+          "why_it_matters": "Det åbner spændingen mellem indre personlighed og social fremførelse.",
+          "stop_signal": "når du kan formulere spændingen i én sætning"
+        },
+        {
+          "number": 2,
+          "source_location": "Historierids og de fire hovedtilgange",
+          "task": "Find de fire teoretiske traditioner og deres grundantagelser.",
+          "why_it_matters": "Det giver kapitlets problemkort.",
+          "stop_signal": "når du har skrevet fire navne"
+        },
+        {
+          "number": 3,
+          "source_location": "Psykoanalyse, fænomenologi, træk/kognition og sociokulturelle teorier",
+          "task": "Afgør for hver tradition, hvor den leder efter personligheden.",
+          "why_it_matters": "Det gør forskellene konkrete.",
+          "stop_signal": "når hver tradition har én placering"
+        },
+        {
+          "number": 4,
+          "source_location": "Orienteringspunkter og Boks 1",
+          "task": "Find de fire sammenligningspunkter.",
+          "why_it_matters": "De er værktøjet, der skal bæres videre i kurset.",
+          "stop_signal": "når du har fire korte forklaringer"
+        },
+        {
+          "number": 5,
+          "source_location": "Hvad er personligheden? og Hvordan undersøges personligheden?",
+          "task": "Kobl forståelse af personlighed til undersøgelsesmetode.",
+          "why_it_matters": "Det viser, hvorfor metoder ikke er neutrale.",
+          "stop_signal": "når du har én teori-metode-kobling"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Der er ikke enighed om",
+          "why": "Markerer kapitlets grundproblem.",
+          "where_to_look": "Kapitelåbning"
+        },
+        {
+          "target": "en maske, social rolle eller karakter",
+          "why": "Gør indre/ydre-spændingen konkret.",
+          "where_to_look": "Persona-afsnittet"
+        },
+        {
+          "target": "Fire temaer",
+          "why": "Peger på kapitlets vigtigste sammenligningsramme.",
+          "where_to_look": "Boks 1"
+        },
+        {
+          "target": "males og vejes",
+          "why": "Viser den naturvidenskabelige metodeambition.",
+          "where_to_look": "Afsnittet om undersøgelsesmetoder"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Alle historiske navne i første gennemlæsning.",
+        "Detaljer om Lewis’ modeller, hvis de nævnes i undervisningen.",
+        "At tegne figurens præcise layout udenad.",
+        "At kunne alle metoder lige detaljeret fra start."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs sektionerne i rækkefølge. De udgør en kort, selvstændig læsevej gennem kapitlet.",
+      "coverage_note": "Denne forkortede læsevej dækker kapitlets hovedproblem, de fire traditioner, orienteringspunkterne, metodekoblingen og den korte bro til del 1. Den er nok til at løse de efterfølgende ark uden at åbne PDF’en.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Kapitelåbning og persona-afsnit",
+          "heading": "Problemet starter med masken",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
+          "explanation_paragraphs": [
+            "Kapitlet åbner med en uenighed: personlighedspsykologien har ikke én fælles definition af personlighed. Feltet arbejder med beslægtede ord som karakter, identitet, selv og subjekt, men de dækker ikke automatisk det samme. Det gør personlighed til et begreb, der både er centralt og uklart.",
+            "Persona-begrebet gør problemet konkret. Oprindeligt peger det på en maske, social rolle eller karakter, som en skuespiller fremfører. Dermed placeres personen fra begyndelsen i relation til andre: en rolle vises for nogen.",
+            "Men teksten standser ikke ved det ydre. Hvis masken tages af, opstår spørgsmålet om, hvad der er tilbage. Er personligheden det indre, der findes uden publikum, eller er den netop den måde, man fremtræder i sociale relationer? Kapitlet fastholder, at der er både indre og ydre."
+          ],
+          "key_points": [
+            "Personlighed er ikke et entydigt defineret objekt i feltet.",
+            "Persona-billedet åbner spændingen mellem social fremførelse og indre væren.",
+            "Indre/ydre-spændingen bliver senere til essens/kontekst-problemet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Der er ikke enighed om",
+              "why_it_matters": "Det sætter kapitlets grundproblem.",
+              "source_location": "Kapitelåbning"
+            },
+            {
+              "phrase": "en maske, social rolle eller karakter",
+              "why_it_matters": "Det gør personlighedens ydre side synlig.",
+              "source_location": "Persona-afsnittet"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Kapitelåbning",
+              "passage": "Der er ikke enighed om, hvad personligheden er, eller om den overhovedet findes, og, hvis den findes, hvordan den så kan undersøges.",
+              "why_it_matters": "Den præcise formulering er kapitlets mest kompakte problem: definition, eksistens og metode er alle åbne spørgsmål."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Historierids samt psykoanalyse, fænomenologi og træk/kognitive teorier",
+          "heading": "Tre måder at placere personligheden på",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "explanation_paragraphs": [
+            "Den tidlige videnskabelige psykologi arbejdede især naturvidenskabeligt med afgrænsede funktioner som sansning, opmærksomhed og hukommelse. Personligheden var sværere, fordi den fremstod som en kompleks helhed. Derfor blev personlighedspsykologien tæt forbundet med filosofiske begreber som fri vilje, bevidsthed, jeg, impulser og selvrefleksion.",
+            "Psykoanalysen placerer ikke personligheden i et samlet, gennemsigtigt centrum. Hos Freud er subjektet decentreret: bevidstheden er ikke hele psyken, og det ubevidste påvirker handlinger og valg. Personligheden forstås som en dynamisk kompromisdannelse mellem jeg, overjeg og det.",
+            "Fænomenologien begynder et andet sted: i bevidsthedens oplevelse. Det centrale er, hvordan verden viser sig for personen. Senere retninger fremhæver livsverden, kroppen, eksistensvilkår, frihed, angst og menneskets potentiale til udvikling.",
+            "Trækteori og kognitive teorier placerer personligheden tættere på naturvidenskabelig undersøgelse. Trækteori beskriver personen gennem afgrænsede egenskaber, som kan måles og sammenlignes. Kognitive teorier interesserer sig for funktioner, skemaer, forventninger og selvorganisering, ofte med mere plads til bevidst valg end klassisk behaviorisme."
+          ],
+          "key_points": [
+            "Psykoanalysen: personligheden er delt, dynamisk og delvist ubevidst.",
+            "Fænomenologien: personligheden forstås gennem oplevelse, livsverden og mening.",
+            "Trækteori/kognition: personligheden beskrives gennem målbare egenskaber og funktioner.",
+            "De tre traditioner har forskellige svar på, hvor personligheden skal findes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "decentrering af subjektet",
+              "why_it_matters": "Det viser psykoanalysens brud med bevidstheden som centrum.",
+              "source_location": "Psykoanalyse"
+            },
+            {
+              "phrase": "bevidsthedens intentionalitet",
+              "why_it_matters": "Det samler fænomenologiens udgangspunkt.",
+              "source_location": "Fænomenologi"
+            },
+            {
+              "phrase": "afgrænsede egenskaber",
+              "why_it_matters": "Det rammer trækteoriens grundidé.",
+              "source_location": "Trækteori og kognitive teorier"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sociokulturelle teorier",
+          "heading": "Når personligheden flyttes ud i verden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "explanation_paragraphs": [
+            "Sociokulturelle teorier har fælles fokus på, at personligheden formes i sociale og kulturelle processer. Her er personlighedens ydre ikke bare pynt omkring et indre selv; det sociale kan være selve stedet, hvor personligheden dannes.",
+            "Symbolsk interaktionisme, især hos Mead, beskriver selvet gennem relationen til andre. Vi forstår os selv ved at se andres reaktioner på os. Selvet består ikke kun af et privat indre, men af jeg, mig og den generaliserede anden.",
+            "Kritisk psykologi begynder med stærk vægt på samfundsmæssig determination, men udvikler sig mod et fokus på deltagelse. Personen lever i konkrete samfundsmæssige kontekster, men kan også erkende handlemuligheder og få større rådighed over sine livsbetingelser.",
+            "Socialkonstruktionistiske og postmodernistiske tilgange går længst i kritikken af et fast indre centrum. Hvis man bruger ordet personlighed, må det forstås som en sproglig og samfundsmæssigt konstrueret enhed, der kan ændre sig med de konstruktioner, personen indgår i."
+          ],
+          "key_points": [
+            "Sociokulturelle teorier gør kontekst personlighedsdannende.",
+            "Mead: selvet formes gennem andres reaktioner.",
+            "Kritisk psykologi: deltagelse og handlemuligheder står centralt.",
+            "Socialkonstruktionisme: personlighed forstås som sprogligt og socialt konstrueret."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "sociale og kulturelle processer",
+              "why_it_matters": "Det samler den sociokulturelle grundantagelse.",
+              "source_location": "Sociokulturelle teorier"
+            },
+            {
+              "phrase": "den generaliserede anden",
+              "why_it_matters": "Det er centralt for Meads forståelse af selvet.",
+              "source_location": "Symbolsk interaktionisme"
+            },
+            {
+              "phrase": "ikke eksisterer som et essentielt indre samlingspunkt",
+              "why_it_matters": "Det viser den radikale anti-essentialisme.",
+              "source_location": "Socialkonstruktionisme og postmodernisme"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Orienteringspunkter og Boks 1",
+          "heading": "Fire beslutningspunkter for enhver teori",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "explanation_paragraphs": [
+            "Efter gennemgangen af traditionerne beskriver kapitlet feltet som et kuperet landskab. Teorierne ligger ikke bare i pæne rækker; de trækker på naturvidenskab, humanvidenskab og samfundsvidenskab. Derfor skal de sammenlignes med faste orienteringspunkter.",
+            "Første punkt er essens versus kontekst. Spørgsmålet er, om personligheden forstås som indre funktioner, træk eller indhold, eller om den findes i sociale sammenhænge, relationer og strukturer. Det svarer til den tidligere spænding mellem indre og ydre.",
+            "Andet punkt er agency. Det handler om, hvad der fungerer som det aktive styrende element: bevidsthed, jeg, handling, motivation, sprog eller måske slet ikke noget centrum. Agency er ikke bare fri vilje; det er teoriens bud på, hvor styring og handling placeres.",
+            "Tredje punkt er determination. Her spørger man, hvad der bestemmer personlighedens opbygning: biologi, indre psykiske komponenter eller sociale forhold. Fjerde punkt er historicitet: om teorien lægger vægt på artens udvikling, individets livshistorie eller samfundets historiske udvikling."
+          ],
+          "key_points": [
+            "Essens/kontekst afgør, om teorien leder indad eller udad.",
+            "Agency afgør, hvor teoriens aktive styring placeres.",
+            "Determination afgør, hvilke kræfter der former personligheden.",
+            "Historicitet afgør, hvilken tidslig udvikling teorien bruger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Fire temaer",
+              "why_it_matters": "Det er kapitlets samlede værktøj.",
+              "source_location": "Boks 1"
+            },
+            {
+              "phrase": "det aktive styrende element",
+              "why_it_matters": "Det præciserer agency.",
+              "source_location": "Orienteringspunkter"
+            },
+            {
+              "phrase": "biologisk determination",
+              "why_it_matters": "Det er en af hovedtyperne af bestemmelse.",
+              "source_location": "Orienteringspunkter"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Hvad er personligheden? og Hvordan undersøges personligheden?",
+          "heading": "Metoden afslører teorien",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "explanation_paragraphs": [
+            "Kapitlet skelner mellem personlighedens ontologi og epistemologi. Ontologi handler om, hvordan personligheden eksisterer. Epistemologi handler om, hvordan den kan erkendes eller undersøges. I personlighedspsykologien er begge dele omstridt.",
+            "Hvis personlighed forstås som stabile træk, giver spørgeskemaer mening. Man kan spørge mange personer om egenskaber og adfærd og undersøge statistiske sammenhænge. Her passer metoden til en antagelse om, at personligheden kan måles forholdsvis objektivt.",
+            "Hvis personlighed forstås som kontekstbundet, er selvvurdering ikke nok. Så kan observation over tid, dagbogsmetoder eller analyser af dagligliv være relevante, fordi personen må ses i de sammenhænge, hvor livet faktisk leves.",
+            "Hvis teorien antager ubevidste motiver, bliver projektive tests og casemetoder mere meningsfulde. Hvis teorien er fænomenologisk, kan interviews og IPA-metode bruges til at analysere oplevet mening. Nogle teorier arbejder desuden primært begrebsligt og filosofisk frem for empirisk."
+          ],
+          "key_points": [
+            "Ontologi: hvad personligheden er eller hvordan den eksisterer.",
+            "Epistemologi: hvordan personligheden kan erkendes og undersøges.",
+            "Spørgeskemaer passer især til trækpsykologiske antagelser.",
+            "Observation, dagbog, cases, projektive tests og interviews bygger på andre personlighedsforståelser.",
+            "Metoder er ikke neutrale; de følger teoriens antagelser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "males og vejes",
+              "why_it_matters": "Det markerer den objektiverende metodeforståelse.",
+              "source_location": "Hvordan undersøges personligheden?"
+            },
+            {
+              "phrase": "personlighedens ontologi",
+              "why_it_matters": "Det navngiver spørgsmålet om, hvad der studeres.",
+              "source_location": "Hvad er personligheden?"
+            },
+            {
+              "phrase": "lige så mange metoder",
+              "why_it_matters": "Det viser koblingen mellem teori og undersøgelse.",
+              "source_location": "Hvordan undersøges personligheden?"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Afrunding og indledning til Del I",
+          "heading": "Første kursusblok: måling, træk og adfærd",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "explanation_paragraphs": [
+            "Afrundingen minder om, at personlighed er en stærk moderne forestilling. Mennesker vurderes, kategoriseres, diagnosticeres, markedsføres til og testes ud fra antagelser om personlighed. Derfor er det ikke ligegyldigt, hvilke teorier og metoder man bruger.",
+            "Indledningen til del 1 peger på de dominerende internationale retninger: træk, adfærd og kognition. Her er idealet ofte en kvantitativ og naturvidenskabelig tilgang, hvor personligheden skal kunne undersøges objektivt gennem tests, registreringer eller målbare funktioner.",
+            "Del 1 bliver dermed ikke kun et nyt emne, men en prøve på kapitlets orienteringspunkter. Trækteori har ofte en indre og biologisk forståelse af træk. Behaviorisme lægger vægt på ydre adfærdsmønstre formet af belønning og straf. Kognitive teorier giver mere plads til indre bearbejdning og agency.",
+            "Kapitlets sidste funktion er derfor at forberede en kritisk læsemåde: Når en teori siger, at personlighed kan måles, skal man spørge, hvad den antager om personen, hvad den udelader, og hvordan den ville blive placeret på de fire orienteringspunkter."
+          ],
+          "key_points": [
+            "Personlighedsteorier bruges praktisk i diagnoser, jobtest, udviklingskultur og markedsføring.",
+            "Del 1 lægger vægt på træk, adfærd, kognition og objektiv måling.",
+            "Træk, behaviorisme og kognition placerer agency og determination forskelligt.",
+            "Orienteringspunkterne skal bruges videre på alle kommende teorier."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "males og vejes",
+              "why_it_matters": "Det viser del 1’s metodeideal.",
+              "source_location": "Indledning til Del I"
+            },
+            {
+              "phrase": "personlig udvikling",
+              "why_it_matters": "Det viser personlighedens moderne hverdagsbetydning.",
+              "source_location": "Afrunding"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "en kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "4 navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "4 korte forklaringer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Lav arket fra hukommelsen først. Tjek først bagefter i Abridged Reader, og ret kun det, du ikke kunne hente frem.",
+      "overview": [
+        "Kapitlet viser, at personlighedspsykologi ikke har én fælles definition af personlighed.",
+        "Det ordner feltet gennem fire hovedtraditioner og fire orienteringspunkter.",
+        "Det viser også, at metodevalg hænger sammen med teoriens antagelser om, hvad personlighed er."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Begrebet person forbindes historisk med __________ som maske, rolle eller karakter.",
+          "where_to_look": "Abridged Reader sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Psykoanalysen antager, at en del af personligheden er __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Fænomenologien tager udgangspunkt i bevidsthedens __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Trækteori beskriver personligheden gennem afgrænsede __________.",
+          "where_to_look": "Abridged Reader sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Sociokulturelle teorier gør __________ personlighedsdannende.",
+          "where_to_look": "Abridged Reader sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Orienteringspunktet __________ handler om det aktive styrende element i teorien.",
+          "where_to_look": "Abridged Reader sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Spørgsmålet om, hvordan personligheden kan erkendes, kaldes __________.",
+          "where_to_look": "Abridged Reader sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et firefeltskort over orienteringspunkterne. Skriv ét stikord ved hvert felt.",
+          "required_elements": [
+            "fire felter",
+            "fire orienteringspunkter",
+            "ét stikord pr. felt",
+            "ingen lange forklaringer"
+          ],
+          "blank_space_hint": "Brug en halv side."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en kæde fra teori til metode. Brug to forskellige teorityper og to forskellige metoder.",
+          "required_elements": [
+            "to teorityper",
+            "to metoder",
+            "pile mellem teori og metode",
+            "én kort kobling ved hver pil"
+          ],
+          "blank_space_hint": "Brug 6-8 linjer."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Valgfrit print. Brug arket som mundtlige cues, når du skal bevise, at kapitlets model kan bruges.",
+      "use_this_text_for": [
+        "Brug teksten til at åbne en sammenligning mellem to personlighedsteorier.",
+        "Brug teksten til at forklare, hvorfor feltet ikke har én samlet personlighedsdefinition.",
+        "Brug teksten til at placere en teori på essens/kontekst, agency, determination og historicitet.",
+        "Brug teksten til at koble ontologi og metodevalg.",
+        "Brug teksten til at vise skiftet fra måling af træk til kritiske og sociokulturelle forståelser."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W12L1: orienteringspunkter og eksamenssyntese",
+          "connection": "De fire orienteringspunkter er samme sammenligningsværktøj, der skal bruges på tværs af kurset."
+        },
+        {
+          "course_theme": "W02L1: trait psychology",
+          "connection": "Kapitlet forbereder trækpsykologiens målbare og ofte essentialistiske personlighedsforståelse."
+        },
+        {
+          "course_theme": "W08L1: kritisk personalisme",
+          "connection": "Kapitlet gør det muligt at formulere kritik af at reducere personen til isolerede træk."
+        },
+        {
+          "course_theme": "W10-W11: sociokulturelle og poststrukturelle teorier",
+          "connection": "Essens/kontekst-spændingen føres videre mod teorier, hvor subjektet forstås gennem historie, sprog og samfund."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori",
+          "how_to_compare": "Sammenlign på essens, måling og biologisk eller stabil determination."
+        },
+        {
+          "compare_with": "Psykoanalyse",
+          "how_to_compare": "Sammenlign på ubevidsthed, indre konflikt, agency og ontogenetisk historicitet."
+        },
+        {
+          "compare_with": "Fænomenologi",
+          "how_to_compare": "Sammenlign på oplevelse, livsverden, mening og metode gennem interview eller fortolkning."
+        },
+        {
+          "compare_with": "Sociokulturelle teorier",
+          "how_to_compare": "Sammenlign på kontekst, relationer, samfundsmæssig determination og sproglig konstruktion."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definér feltet",
+          "use_in_answer": "Sig højt, at personlighed er en omstridt genstand, ikke et færdigt objekt.",
+          "caution": "Undgå at starte med én hverdagsdefinition."
+        },
+        {
+          "prompt_type": "Sammenlign teorier",
+          "use_in_answer": "Brug de fire orienteringspunkter som fast rækkefølge.",
+          "caution": "Undgå kun at nævne forfatternavne."
+        },
+        {
+          "prompt_type": "Forklar metode",
+          "use_in_answer": "Kobl metode til teoriens antagelse om personlighedens eksistensform.",
+          "caution": "Undgå at kalde spørgeskemaer neutralt bedre."
+        },
+        {
+          "prompt_type": "Vis kursusoverblik",
+          "use_in_answer": "Placer teorien i naturvidenskabelig, humanvidenskabelig eller samfundsvidenskabelig retning.",
+          "caution": "Undgå at gøre figuren til en ren tidslinje."
+        },
+        {
+          "prompt_type": "Afslut med pointe",
+          "use_in_answer": "Sig, hvad teorien gør synligt, og hvad den risikerer at overse.",
+          "caution": "Undgå at slutte med ren gengivelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at personlighedspsykologi har én accepteret definition.",
+          "better_reading": "Læs feltet som et landskab af konkurrerende ontologier og metoder."
+        },
+        {
+          "trap": "At gøre agency til almindelig fri vilje.",
+          "better_reading": "Læs agency som teoriens placering af styring og handlingscentrum."
+        },
+        {
+          "trap": "At behandle metoder som tekniske valg uden teori.",
+          "better_reading": "Læs metode som bundet til en bestemt forståelse af personligheden."
+        },
+        {
+          "trap": "At overse kontekstteorier, fordi træk virker mere konkrete.",
+          "better_reading": "Læs kontekst som et alternativt svar på, hvor personlighed overhovedet findes."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign to personlighedsteorier med udgangspunkt i kapitlets fire orienteringspunkter, og vis hvordan deres metodevalg følger af deres personlighedsforståelse.",
+      "mini_exam_answer_plan_slots": [
+        "Start: feltet mangler én fælles definition af personlighed.",
+        "Teori 1: placér den på de fire orienteringspunkter.",
+        "Teori 2: placér den på de fire orienteringspunkter.",
+        "Metode: vis hvordan hver teori undersøger personlighed.",
+        "Slut: sig hvad sammenligningen afslører om personen som indre, ydre eller begge dele."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

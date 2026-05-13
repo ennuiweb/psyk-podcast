@@ -1,0 +1,992 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T11:01:43Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
+    "source_files_signature": "91ab790e148487e3afed42a325c4c742fce10971c865bc4746a936400273aa48",
+    "source_card": "403883dc617dfd22374ba70ebb241e1430d6ab203680d73d0ea0d9dc275e9465",
+    "revised_lecture_substrate": "84cc978f5038b3317d204d7fed807edb85970a0c3a2144b3f45c5de9374e5fa0",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w11l2-raggatt-2002-d15129af",
+    "lecture_key": "W11L2",
+    "title": "Raggatt (2002)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf"
+    ],
+    "reading_title": "A Plurality of Selves? An Illustration of Polypsychism in a Recovered Addict",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W11L2"
+    ],
+    "sequence_index": 1,
+    "source_filename": "W11L2 Raggatt (2002).pdf",
+    "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Raggatt (2002).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "87db9d1e8455123c4a4dcf4540d2ddb0e2ec16d4d9fa765eb66885b88d20d8df",
+      "size_bytes": 620722,
+      "page_count": 22,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 14300,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 22,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-raggatt-2002-d15129af",
+      "lecture_key": "W11L2",
+      "source_title": "Raggatt (2002)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kildeteksten.",
+      "teaser_paragraphs": [
+        "Forestil dig en succesfuld, velformuleret mand, der dominerer på cricketbanen og fungerer gnidningsfrit i hverdagen, men som pludselig kan forsvinde i dagevis for at drikke sig fra sans og samling alene i en hytte. Dette er virkeligheden for Sean, en 43-årig tidligere misbruger, som forskeren Peter Raggatt bruger til at kaste lys over et kritisk psykologisk problem: Hvad nu hvis personligheden slet ikke er en samlet, integreret helhed?",
+        "Traditionel psykologi har i århundreder jagtet en fast kerne – et rationelt ego, der sikrer konsistens og forudsigelighed på tværs af situationer. Men Raggatt afviser denne model. Han tager i stedet udgangspunkt i den meget genkendelige observation, at vi i hverdagen ofte lever en form for Jekyll og Hyde-tilværelse med modstridende impulser og moralbegreber.",
+        "I stedet for at acceptere radikale postmodernisters påstand om, at selvet slet ikke eksisterer, forsøger Raggatt at etablere en frugtbar mellemposition. Han kalder dette for polypsykisme: Ideen om at vores mentale liv bedst kan forstås som en flerhed af konkurrerende narrative stemmer, der alle forsøger at tage styringen over vores handlinger og overbevisninger.",
+        "Opgaven for Raggatt er nu at bevise denne flerhed empirisk. Hvordan kortlægger man usynlige, indre stemmer? Gennem metoden Personality Web demonstrerer teksten, hvordan vores vigtigste menneskelige relationer, kropsdele og livsbegivenheder fungerer som stærke symbolske ankre, der afslører de skjulte brudlinjer i vores identitet."
+      ],
+      "main_problem": "Hvordan kan vi kortlægge en personlighed, der består af modstridende indre stemmer, uden hverken at reducere mennesket til ét fast træk eller helt opløse eksistensen af et selv?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller polypsykisme fra den klassiske forestilling om egoet?",
+          "why_it_matters": "Det etablerer tekstens fundamentale opgør med trækpsykologiens idé om absolut stabilitet.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan definerer Raggatt en 'narrativ stemme'?",
+          "why_it_matters": "Det er tekstens primære analyseenhed for at forstå personlighedens byggesten.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle spiller symbolske tilknytninger i metoden Personality Web?",
+          "why_it_matters": "Det viser den empiriske metode bag teorien og broen mellem objekt og mening.",
+          "answer_form": "En kort funktionsbeskrivelse"
+        },
+        {
+          "number": 4,
+          "question": "Hvilke fire distinkte stemmer identificeres i casen om Sean?",
+          "why_it_matters": "Casen fungerer som det konkrete bevis på polypsykisme i praksis.",
+          "answer_form": "4 navne"
+        }
+      ],
+      "why_this_text_matters": "Teksten fungerer som en central bro i kurset: Den viser, hvordan vi kan arbejde empirisk med narrativ identitet som en flerhed af stemmer, og samler derved op på spændingsfeltet mellem biologiske træk og socialkonstruktionistisk opløsning af selvet.",
+      "overview": [
+        "Polypsykisme som det teoretiske kompromis",
+        "Personality Web som den metodiske værktøjskasse",
+        "Casen om Sean og de fire stemmers kamp om magten"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 124-125",
+          "task": "Find forfatterens position mellem oplysningstidens idealer og postmodernismens opløsning.",
+          "why_it_matters": "Sætter de overordnede videnskabsteoretiske rammer op.",
+          "stop_signal": "Når sektionen 'Everyday polypsychism' er læst"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 126-128",
+          "task": "Grib fat i definitionerne på narrative stemmer, symbolsk tilknytning og positionering.",
+          "why_it_matters": "Udgør tekstens tre vigtigste teoretiske begreber.",
+          "stop_signal": "Ved overskriften 'The personality web interview protocol'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 132-138",
+          "task": "Kortlæg de fire narrative stemmer i Seans liv og find frem til de traumer, der skabte dem.",
+          "why_it_matters": "Illustrerer teorien i rå praksis og gør modellen operationel.",
+          "stop_signal": "Ved overskriften 'Conclusions'"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 139-141",
+          "task": "Saml tekstens konklusioner om moral og den udviklingspsykologiske baggrund for stemmernes opdeling.",
+          "why_it_matters": "Binder casen tilbage til det teoretiske niveau.",
+          "stop_signal": "Ved artiklens slutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "we lead a Jekyll and Hyde existence",
+          "why": "Opsummerer afvisningen af det entydige selv.",
+          "where_to_look": "Sektionen om Everyday polypsychism"
+        },
+        {
+          "target": "A voice is a thematic complex",
+          "why": "Kernen i hvordan en narrativ identitet opbygges over tid.",
+          "where_to_look": "Sektionen om Narrative voice"
+        },
+        {
+          "target": "My sister was my mother",
+          "why": "Viser hvordan specifikke traumer tvinger stemmerne til at splitte sig op.",
+          "where_to_look": "Gennemgangen af 'Lost Boy'-stemmen"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De matematiske formler bag Multidimensional Scaling (MDS)",
+        "Den komplette taksonomi i Tabel 1 over alle 24 typer tilknytninger",
+        "Litteraturhistoriske referencer til Bakhtin og Ricoeur"
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede version for at mestre tekstens centrale argumentationslinje. Løs de tilhørende opgaver baseret på denne tekst.",
+      "coverage_note": "Fokuserer på Raggatts opgør med det integrerede ego, introduktionen af polypsykisme, og analysen af casen Sean.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 124-125",
+          "heading": "Den falske faste kerne og den gyldne middelvej",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan vi forsvare selvet, når dekonstruktionen truer med at slette det helt?",
+          "explanation_paragraphs": [
+            "Traditionelt har psykologien bygget på et oplysningstids-ideal, hvor egoet anskues som en idealiseret, integreret enhed. Personlighed mentes at have en fast kerne med forudsigelige egenskaber. I kontrast hertil står den moderne socialkonstruktionisme, der hævder, at selvet slet ikke eksisterer, men udelukkende er formet af diskurser og magtforhold.",
+            "Raggatt afviser begge yderpoler og indtager en empirisk mellemposition, som han kalder for 'hverdags-polypsykisme'. Han peger på den simple observation, at mennesker varierer markant i deres gøren og laden alt efter kontekst. Selvet er ikke slettet, men det er heller ikke en monolit.",
+            "Vores mentale liv domineres ifølge Raggatt af en multiplicitet af subjektiviteter, der jævnligt kommer i konflikt med hinanden. Der findes ikke én central historie om vores liv, men adskillige overlappende og nogle gange krigende versioner."
+          ],
+          "key_points": [
+            "Oplysningstidens personlighedsmodel krævede fuld konsistens og stabilitet.",
+            "Socialkonstruktionismen fjerner individet fuldstændigt (death of the author).",
+            "Polypsykisme anerkender en flerhed af sub-identiteter inde i den enkelte person."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "we lead a Jekyll and Hyde existence",
+              "why_it_matters": "Billedet på den radikale kontrast vi kan have i vores egne handlemønstre.",
+              "source_location": "S. 124"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 2,
+          "source_location": "S. 126-128",
+          "heading": "Narrative stemmer og positionering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvad består denne 'flerhed' rent praktisk af i psyken?",
+          "explanation_paragraphs": [
+            "I et pluralistisk selv organiseres erfaringer som forskellige 'narrative stemmer'. En stemme fungerer som en fortæller, der fremfører en bestemt version af vores liv og guider vores handlinger ud fra den logik. Fordi vi har flere stemmer, konkurrerer de om at give mening til verden.",
+            "For at afgøre hvilken stemme der vinder magten i en given situation, introducerer Raggatt begrebet 'positionering'. Vores indre dialoger har en moralsk og social slagside. Vi positionerer konstant vores handlinger i et evaluativt felt som fx 'den stærke' over for 'den svage', eller 'beskytteren' over for 'offeret'.",
+            "Selvet er dermed ikke en stille tilstand, men en aktiv, indre udveksling, hvor individet udforsker stridende ideer om, hvad et 'godt liv' indebærer. Konflikten mellem stemmerne er ofte af moralsk karakter."
+          ],
+          "key_points": [
+            "En stemme er et tematisk kompleks, der fortæller en specifik historie over tid.",
+            "Stemmer kæmper indbyrdes om kontrollen over individets opmærksomhed og mål.",
+            "Positionering definerer de moralske og kulturelle roller, som stemmerne påtager sig."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "A voice is a thematic complex",
+              "why_it_matters": "Den operationelle definition af, hvordan erfaring bindes sammen til en identitet.",
+              "source_location": "S. 126"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "S. 128-131",
+          "heading": "Metoden: Personality Web og symbolske tilknytninger",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan vi objektivt og videnskabeligt opdage et menneskes usynlige stemmer?",
+          "explanation_paragraphs": [
+            "For at bevise teorien måtte Raggatt designe en metode til at afdække personens narrative landskab. Han udviklede Personality Web-protokollen. Ideen er, at vi ikke har direkte adgang til vores eget ego gennem bevidstheden. Vi forstår kun os selv gennem de tegn og symboler, vi klamrer os til.",
+            "Metoden undersøger personens 24 stærkeste 'symbolske tilknytninger' på tværs af fire domæner: Mennesker, Objekter, Livsbegivenheder og Kropsdele. Disse tilknytninger udgør vejviserne i personligheden.",
+            "Når en person i interviewet bliver bedt om at gruppere disse tilknytninger og give dem et navn, danner de automatisk statistiske og semantiske klynger. Det er den narrative stemme, der udgør den lim, der holder hver gruppe af objekter og minder sammen."
+          ],
+          "key_points": [
+            "Mennesker forstår sig selv gennem konkrete symboler, ikke abstrakt selverkendelse.",
+            "Tilknytninger findes blandt personer, begivenheder, materielle ting og kroppens dele.",
+            "Metoden gør det muligt empirisk at kortlægge strukturen i polypsykismen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the long road of the interpretation of signs",
+              "why_it_matters": "Understreger at selvet kun kan læses indirekte gennem symboler og sprog.",
+              "source_location": "S. 126"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "S. 132-141",
+          "heading": "Casen Sean: Opsplitningen fra traumer til misbrug",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan ser et pluralistisk selv ud hos et levende menneske med en voldsom fortid?",
+          "explanation_paragraphs": [
+            "Gennem Personality Web-interviewet afdækkes fire klare, modstridende stemmer hos Sean, en succesfuld men traumatiseret mand: 'Lost Boy', 'Good Guy', 'Addict' og 'Magician'.",
+            "Hans tidligste udvikling viser en klar spaltning. På den ene side er han den elskede 'Good Guy', der bygger sit værd op som stjernesportsmand. På den anden side er han den traumatiserede 'Lost Boy', der blev forladt af sin familie – ikke mindst sin søster, som fungerede som hans faktiske mor.",
+            "Traumerne fremtvinger en yderligere fraktionering, da hans rigtige mor dør, mens han er teenager. Her udskilles 'Addict'-stemmen, fordi Sean bruger heroin og alkohol til at bedøve den følelsesmæssige smerte."
+          ],
+          "key_points": [
+            "Stemmerne hos Sean har en udviklingshistorie, der er drevet af traumer og spaltning.",
+            "'Addict'-stemmen fungerede oprindeligt som en overlevelsesmekanisme (anæstesi).",
+            "Kroppen fungerer som symboler: rådnende tænder ('Addict') vs. magiske fingre ('Magician')."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Early on I discovered the anaesthetic power of drugs",
+              "why_it_matters": "Viser at misbruger-stemmen ikke var et partydrug-uheld, men et målrettet narrativ om at dræbe smerte.",
+              "source_location": "S. 136"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 136",
+              "passage": "My mother contracted bowel cancer... My sisters fell apart emotionally. My father fell apart emotionally... I was there all the time for my mother, but I slipped out at night when she was asleep. And that is when I started drinking and taking heroin. It was... emotional pain at a really big level.",
+              "why_it_matters": "Viser det præcise bristepunkt, hvor 'Addict' fraspaltes fra 'Lost Boy' for at bære det moralske og emotionelle kollaps i familien."
+            }
+          ]
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi forsvare selvet, når dekonstruktionen truer med at slette det helt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad består denne 'flerhed' rent praktisk af i psyken?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi objektivt og videnskabeligt opdage et menneskes usynlige stemmer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort funktionsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan ser et pluralistisk selv ud hos et levende menneske med en voldsom fortid?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "4 navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi kortlægge en personlighed, der består af modstridende indre stemmer, uden hverken at reducere mennesket til ét fast træk eller helt opløse eksistensen af et selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets huller fra hukommelsen. Tjek bagefter i teksten for at reparere eventuelle mangler.",
+      "overview": [
+        "Teksten argumenterer for et pluralistisk selv frem for en fast kerne.",
+        "Personligheden struktureres empirisk gennem et landskab af tilknytninger.",
+        "Traumer og livsvalg tvinger selvets indre stemmer til at positionere sig mod hinanden."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge Raggatt er vores personlighed ikke en samlet kerne, men derimod en modstridende samling af bevidstheder, hvilket han kalder for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når stemmerne indbyrdes slås om det moralske grundlag, indtager de bestemte kulturelle roller gennem en proces, der kaldes __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Raggatts empiriske undersøgelsesmetode kaldes for __________ og kortlægger personligheden i detaljer.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For overhovedet at få adgang til at måle vores narrative stemmer, er vi afhængige af at kortlægge vores stærke symbolske __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Seans tidligste traumatiske opvækst splittede hans selv i to oprindelige stemmer: 'Good Guy' og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at håndtere den uudholdelige smerte fra familiens sammenbrud etablerede Sean en overlevelsesmekanisme, der gav magten til stemmen __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et basalt forgreningsdiagram (stamtræ), der viser de vigtigste spaltninger i Seans narrativ.",
+          "required_elements": [
+            "To stam-stemmer fra barndommen",
+            "Den stemme, der blev fraspaltet som anæstesi",
+            "Den stemme, der senere opstod som spirituel redning"
+          ],
+          "blank_space_hint": "Tegn fire bokse med pile, der viser udviklingen"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at omsætte kildens begreber til præcise argumenter til den mundtlige eksamen.",
+      "use_this_text_for": [
+        "Når eksamensspørgsmålet omhandler narrativ psykologi og identitet.",
+        "Som empirisk bevis på, hvordan dekonstruktion og postmodernisme fungerer konkret.",
+        "Til at udfordre klassisk trækpsykologi (eks. Big Five) med en mere dynamisk model.",
+        "Når du skal bruge 'historicitet' og 'kontekst' i din meta-teoretiske analyse."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi vs. Narrativ",
+          "connection": "Raggatt placerer mening i et omskifteligt historisk narrativ fremfor i uforanderlige biologiske træk."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt",
+          "connection": "Polypsykismen viser et moderne menneske uden en absolut rationel kerne, men Raggatt nægter at ofre individet fuldstændigt."
+        },
+        {
+          "course_theme": "Dan McAdams' 3-lags model",
+          "connection": "Raggatt opererer på McAdams' niveau 3 (Livshistorie), men insisterer på at historien er flerstrenget, ikke blot én 'Integrative Life Story'."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign objektiv stabilitet med polypsykismens indre, fluktuerende konfliktstruktur."
+        },
+        {
+          "compare_with": "Lacan & Poststrukturalisme",
+          "how_to_compare": "Vis hvordan Raggatt fanger subjektets ubevidste multiplicitet uden at henfalde til total sproglig determinisme."
+        },
+        {
+          "compare_with": "Humanisme (Rogers)",
+          "how_to_compare": "Kontrastér ideen om at 'finde sit ene sande jeg' med Raggatts teori om, at selvet fundamentalt og sundt er spaltet i flere stemmer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Kritik af personlighedstests",
+          "use_in_answer": "Brug 'Personality Web' som et alternativ, der fanger mening frem for blot frekvens af adfærd.",
+          "caution": "Husk at MDS-delen af metoden stadig udgør et stærkt kvantitativt element."
+        },
+        {
+          "prompt_type": "Mening og moral",
+          "use_in_answer": "Argumentér for at personlighed i bund og grund er et moral-evaluerende spil om positionering mellem indre dommere.",
+          "caution": "Gør det ikke til ren filosofi; forankr det altid i Raggatts afhængigheds-case (Sean)."
+        },
+        {
+          "prompt_type": "Kropslighedens rolle",
+          "use_in_answer": "Brug Seans fingre og tænder til at demonstrere, at fortællinger har dybe kropslige rødder.",
+          "caution": "Reducer ikke kroppen til kun at være kød; den fungerer specifikt som et symbolsk anker."
+        },
+        {
+          "prompt_type": "Brug af de fire orienteringspunkter",
+          "use_in_answer": "Placer Raggatt højt på historicitet (livsbegivenheder) og strukturel kontekst (kulturel positionering).",
+          "caution": "Undlad at påstå, der slet ingen 'agency' er. Individet skaber aktivt mening ud fra kulturens råmaterialer."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kalde polypsykisme for en klinisk personlighedsspaltning (DID/Skizofreni).",
+          "better_reading": "Polypsykisme er hverdagspsykologi; Raggatt ser flere stemmer som normalen, ikke en psykose."
+        },
+        {
+          "trap": "At antage Personality Web udelukkende er en kvalitativ interviewmetode.",
+          "better_reading": "Metoden er en hybrid, der i høj grad anvender datareduktion og kvantitativ matematisk afstandsmåling (MDS)."
+        },
+        {
+          "trap": "At tro Raggatt er fuldt ud socialkonstruktionist.",
+          "better_reading": "Han positionerer sig bevidst i midten; han nægter at slå 'forfatteren' helt ihjel, som ekstrem postmodernisme foreskriver."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Raggatts begreb polypsykisme og diskutér, hvordan hans narrative tilgang udfordrer en essentialistisk forståelse af personligheden.",
+      "mini_exam_answer_plan_slots": [
+        "Definér det essentialistiske udgangspunkt (Enlightenment ego) kort",
+        "Introducér polypsykisme som den konkrete løsning i mellempositionen",
+        "Dyk ned i mekanismerne: Stemmer, positionering og symbolske tilknytninger",
+        "Brug Seans case som empirisk løftestang (Lost Boy vs. Addict)",
+        "Konkludér på agency/historicitet ud fra orienteringspunkterne"
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-raggatt-2002-d15129af",
+      "lecture_key": "W11L2",
+      "source_title": "Raggatt (2002)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kildeteksten.",
+      "teaser_paragraphs": [
+        "Forestil dig en succesfuld, velformuleret mand, der dominerer på cricketbanen og fungerer gnidningsfrit i hverdagen, men som pludselig kan forsvinde i dagevis for at drikke sig fra sans og samling alene i en hytte. Dette er virkeligheden for Sean, en 43-årig tidligere misbruger, som forskeren Peter Raggatt bruger til at kaste lys over et kritisk psykologisk problem: Hvad nu hvis personligheden slet ikke er en samlet, integreret helhed?",
+        "Traditionel psykologi har i århundreder jagtet en fast kerne – et rationelt ego, der sikrer konsistens og forudsigelighed på tværs af situationer. Men Raggatt afviser denne model. Han tager i stedet udgangspunkt i den meget genkendelige observation, at vi i hverdagen ofte lever en form for Jekyll og Hyde-tilværelse med modstridende impulser og moralbegreber.",
+        "I stedet for at acceptere radikale postmodernisters påstand om, at selvet slet ikke eksisterer, forsøger Raggatt at etablere en frugtbar mellemposition. Han kalder dette for polypsykisme: Ideen om at vores mentale liv bedst kan forstås som en flerhed af konkurrerende narrative stemmer, der alle forsøger at tage styringen over vores handlinger og overbevisninger.",
+        "Opgaven for Raggatt er nu at bevise denne flerhed empirisk. Hvordan kortlægger man usynlige, indre stemmer? Gennem metoden Personality Web demonstrerer teksten, hvordan vores vigtigste menneskelige relationer, kropsdele og livsbegivenheder fungerer som stærke symbolske ankre, der afslører de skjulte brudlinjer i vores identitet."
+      ],
+      "main_problem": "Hvordan kan vi kortlægge en personlighed, der består af modstridende indre stemmer, uden hverken at reducere mennesket til ét fast træk eller helt opløse eksistensen af et selv?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller polypsykisme fra den klassiske forestilling om egoet?",
+          "why_it_matters": "Det etablerer tekstens fundamentale opgør med trækpsykologiens idé om absolut stabilitet.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan definerer Raggatt en 'narrativ stemme'?",
+          "why_it_matters": "Det er tekstens primære analyseenhed for at forstå personlighedens byggesten.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle spiller symbolske tilknytninger i metoden Personality Web?",
+          "why_it_matters": "Det viser den empiriske metode bag teorien og broen mellem objekt og mening.",
+          "answer_form": "En kort funktionsbeskrivelse"
+        },
+        {
+          "number": 4,
+          "question": "Hvilke fire distinkte stemmer identificeres i casen om Sean?",
+          "why_it_matters": "Casen fungerer som det konkrete bevis på polypsykisme i praksis.",
+          "answer_form": "4 navne"
+        }
+      ],
+      "why_this_text_matters": "Teksten fungerer som en central bro i kurset: Den viser, hvordan vi kan arbejde empirisk med narrativ identitet som en flerhed af stemmer, og samler derved op på spændingsfeltet mellem biologiske træk og socialkonstruktionistisk opløsning af selvet.",
+      "overview": [
+        "Polypsykisme som det teoretiske kompromis",
+        "Personality Web som den metodiske værktøjskasse",
+        "Casen om Sean og de fire stemmers kamp om magten"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 124-125",
+          "task": "Find forfatterens position mellem oplysningstidens idealer og postmodernismens opløsning.",
+          "why_it_matters": "Sætter de overordnede videnskabsteoretiske rammer op.",
+          "stop_signal": "Når sektionen 'Everyday polypsychism' er læst"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 126-128",
+          "task": "Grib fat i definitionerne på narrative stemmer, symbolsk tilknytning og positionering.",
+          "why_it_matters": "Udgør tekstens tre vigtigste teoretiske begreber.",
+          "stop_signal": "Ved overskriften 'The personality web interview protocol'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 132-138",
+          "task": "Kortlæg de fire narrative stemmer i Seans liv og find frem til de traumer, der skabte dem.",
+          "why_it_matters": "Illustrerer teorien i rå praksis og gør modellen operationel.",
+          "stop_signal": "Ved overskriften 'Conclusions'"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 139-141",
+          "task": "Saml tekstens konklusioner om moral og den udviklingspsykologiske baggrund for stemmernes opdeling.",
+          "why_it_matters": "Binder casen tilbage til det teoretiske niveau.",
+          "stop_signal": "Ved artiklens slutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "we lead a Jekyll and Hyde existence",
+          "why": "Opsummerer afvisningen af det entydige selv.",
+          "where_to_look": "Sektionen om Everyday polypsychism"
+        },
+        {
+          "target": "A voice is a thematic complex",
+          "why": "Kernen i hvordan en narrativ identitet opbygges over tid.",
+          "where_to_look": "Sektionen om Narrative voice"
+        },
+        {
+          "target": "My sister was my mother",
+          "why": "Viser hvordan specifikke traumer tvinger stemmerne til at splitte sig op.",
+          "where_to_look": "Gennemgangen af 'Lost Boy'-stemmen"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De matematiske formler bag Multidimensional Scaling (MDS)",
+        "Den komplette taksonomi i Tabel 1 over alle 24 typer tilknytninger",
+        "Litteraturhistoriske referencer til Bakhtin og Ricoeur"
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede version for at mestre tekstens centrale argumentationslinje. Løs de tilhørende opgaver baseret på denne tekst.",
+      "coverage_note": "Fokuserer på Raggatts opgør med det integrerede ego, introduktionen af polypsykisme, og analysen af casen Sean.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 124-125",
+          "heading": "Den falske faste kerne og den gyldne middelvej",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan vi forsvare selvet, når dekonstruktionen truer med at slette det helt?",
+          "explanation_paragraphs": [
+            "Traditionelt har psykologien bygget på et oplysningstids-ideal, hvor egoet anskues som en idealiseret, integreret enhed. Personlighed mentes at have en fast kerne med forudsigelige egenskaber. I kontrast hertil står den moderne socialkonstruktionisme, der hævder, at selvet slet ikke eksisterer, men udelukkende er formet af diskurser og magtforhold.",
+            "Raggatt afviser begge yderpoler og indtager en empirisk mellemposition, som han kalder for 'hverdags-polypsykisme'. Han peger på den simple observation, at mennesker varierer markant i deres gøren og laden alt efter kontekst. Selvet er ikke slettet, men det er heller ikke en monolit.",
+            "Vores mentale liv domineres ifølge Raggatt af en multiplicitet af subjektiviteter, der jævnligt kommer i konflikt med hinanden. Der findes ikke én central historie om vores liv, men adskillige overlappende og nogle gange krigende versioner."
+          ],
+          "key_points": [
+            "Oplysningstidens personlighedsmodel krævede fuld konsistens og stabilitet.",
+            "Socialkonstruktionismen fjerner individet fuldstændigt (death of the author).",
+            "Polypsykisme anerkender en flerhed af sub-identiteter inde i den enkelte person."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "we lead a Jekyll and Hyde existence",
+              "why_it_matters": "Billedet på den radikale kontrast vi kan have i vores egne handlemønstre.",
+              "source_location": "S. 124"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 2,
+          "source_location": "S. 126-128",
+          "heading": "Narrative stemmer og positionering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvad består denne 'flerhed' rent praktisk af i psyken?",
+          "explanation_paragraphs": [
+            "I et pluralistisk selv organiseres erfaringer som forskellige 'narrative stemmer'. En stemme fungerer som en fortæller, der fremfører en bestemt version af vores liv og guider vores handlinger ud fra den logik. Fordi vi har flere stemmer, konkurrerer de om at give mening til verden.",
+            "For at afgøre hvilken stemme der vinder magten i en given situation, introducerer Raggatt begrebet 'positionering'. Vores indre dialoger har en moralsk og social slagside. Vi positionerer konstant vores handlinger i et evaluativt felt som fx 'den stærke' over for 'den svage', eller 'beskytteren' over for 'offeret'.",
+            "Selvet er dermed ikke en stille tilstand, men en aktiv, indre udveksling, hvor individet udforsker stridende ideer om, hvad et 'godt liv' indebærer. Konflikten mellem stemmerne er ofte af moralsk karakter."
+          ],
+          "key_points": [
+            "En stemme er et tematisk kompleks, der fortæller en specifik historie over tid.",
+            "Stemmer kæmper indbyrdes om kontrollen over individets opmærksomhed og mål.",
+            "Positionering definerer de moralske og kulturelle roller, som stemmerne påtager sig."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "A voice is a thematic complex",
+              "why_it_matters": "Den operationelle definition af, hvordan erfaring bindes sammen til en identitet.",
+              "source_location": "S. 126"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "S. 128-131",
+          "heading": "Metoden: Personality Web og symbolske tilknytninger",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan vi objektivt og videnskabeligt opdage et menneskes usynlige stemmer?",
+          "explanation_paragraphs": [
+            "For at bevise teorien måtte Raggatt designe en metode til at afdække personens narrative landskab. Han udviklede Personality Web-protokollen. Ideen er, at vi ikke har direkte adgang til vores eget ego gennem bevidstheden. Vi forstår kun os selv gennem de tegn og symboler, vi klamrer os til.",
+            "Metoden undersøger personens 24 stærkeste 'symbolske tilknytninger' på tværs af fire domæner: Mennesker, Objekter, Livsbegivenheder og Kropsdele. Disse tilknytninger udgør vejviserne i personligheden.",
+            "Når en person i interviewet bliver bedt om at gruppere disse tilknytninger og give dem et navn, danner de automatisk statistiske og semantiske klynger. Det er den narrative stemme, der udgør den lim, der holder hver gruppe af objekter og minder sammen."
+          ],
+          "key_points": [
+            "Mennesker forstår sig selv gennem konkrete symboler, ikke abstrakt selverkendelse.",
+            "Tilknytninger findes blandt personer, begivenheder, materielle ting og kroppens dele.",
+            "Metoden gør det muligt empirisk at kortlægge strukturen i polypsykismen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the long road of the interpretation of signs",
+              "why_it_matters": "Understreger at selvet kun kan læses indirekte gennem symboler og sprog.",
+              "source_location": "S. 126"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "S. 132-141",
+          "heading": "Casen Sean: Opsplitningen fra traumer til misbrug",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan ser et pluralistisk selv ud hos et levende menneske med en voldsom fortid?",
+          "explanation_paragraphs": [
+            "Gennem Personality Web-interviewet afdækkes fire klare, modstridende stemmer hos Sean, en succesfuld men traumatiseret mand: 'Lost Boy', 'Good Guy', 'Addict' og 'Magician'.",
+            "Hans tidligste udvikling viser en klar spaltning. På den ene side er han den elskede 'Good Guy', der bygger sit værd op som stjernesportsmand. På den anden side er han den traumatiserede 'Lost Boy', der blev forladt af sin familie – ikke mindst sin søster, som fungerede som hans faktiske mor.",
+            "Traumerne fremtvinger en yderligere fraktionering, da hans rigtige mor dør, mens han er teenager. Her udskilles 'Addict'-stemmen, fordi Sean bruger heroin og alkohol til at bedøve den følelsesmæssige smerte."
+          ],
+          "key_points": [
+            "Stemmerne hos Sean har en udviklingshistorie, der er drevet af traumer og spaltning.",
+            "'Addict'-stemmen fungerede oprindeligt som en overlevelsesmekanisme (anæstesi).",
+            "Kroppen fungerer som symboler: rådnende tænder ('Addict') vs. magiske fingre ('Magician')."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Early on I discovered the anaesthetic power of drugs",
+              "why_it_matters": "Viser at misbruger-stemmen ikke var et partydrug-uheld, men et målrettet narrativ om at dræbe smerte.",
+              "source_location": "S. 136"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 136",
+              "passage": "My mother contracted bowel cancer... My sisters fell apart emotionally. My father fell apart emotionally... I was there all the time for my mother, but I slipped out at night when she was asleep. And that is when I started drinking and taking heroin. It was... emotional pain at a really big level.",
+              "why_it_matters": "Viser det præcise bristepunkt, hvor 'Addict' fraspaltes fra 'Lost Boy' for at bære det moralske og emotionelle kollaps i familien."
+            }
+          ]
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi forsvare selvet, når dekonstruktionen truer med at slette det helt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad består denne 'flerhed' rent praktisk af i psyken?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi objektivt og videnskabeligt opdage et menneskes usynlige stemmer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort funktionsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan ser et pluralistisk selv ud hos et levende menneske med en voldsom fortid?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "4 navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi kortlægge en personlighed, der består af modstridende indre stemmer, uden hverken at reducere mennesket til ét fast træk eller helt opløse eksistensen af et selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets huller fra hukommelsen. Tjek bagefter i teksten for at reparere eventuelle mangler.",
+      "overview": [
+        "Teksten argumenterer for et pluralistisk selv frem for en fast kerne.",
+        "Personligheden struktureres empirisk gennem et landskab af tilknytninger.",
+        "Traumer og livsvalg tvinger selvets indre stemmer til at positionere sig mod hinanden."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge Raggatt er vores personlighed ikke en samlet kerne, men derimod en modstridende samling af bevidstheder, hvilket han kalder for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når stemmerne indbyrdes slås om det moralske grundlag, indtager de bestemte kulturelle roller gennem en proces, der kaldes __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Raggatts empiriske undersøgelsesmetode kaldes for __________ og kortlægger personligheden i detaljer.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For overhovedet at få adgang til at måle vores narrative stemmer, er vi afhængige af at kortlægge vores stærke symbolske __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Seans tidligste traumatiske opvækst splittede hans selv i to oprindelige stemmer: 'Good Guy' og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at håndtere den uudholdelige smerte fra familiens sammenbrud etablerede Sean en overlevelsesmekanisme, der gav magten til stemmen __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et basalt forgreningsdiagram (stamtræ), der viser de vigtigste spaltninger i Seans narrativ.",
+          "required_elements": [
+            "To stam-stemmer fra barndommen",
+            "Den stemme, der blev fraspaltet som anæstesi",
+            "Den stemme, der senere opstod som spirituel redning"
+          ],
+          "blank_space_hint": "Tegn fire bokse med pile, der viser udviklingen"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at omsætte kildens begreber til præcise argumenter til den mundtlige eksamen.",
+      "use_this_text_for": [
+        "Når eksamensspørgsmålet omhandler narrativ psykologi og identitet.",
+        "Som empirisk bevis på, hvordan dekonstruktion og postmodernisme fungerer konkret.",
+        "Til at udfordre klassisk trækpsykologi (eks. Big Five) med en mere dynamisk model.",
+        "Når du skal bruge 'historicitet' og 'kontekst' i din meta-teoretiske analyse."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi vs. Narrativ",
+          "connection": "Raggatt placerer mening i et omskifteligt historisk narrativ fremfor i uforanderlige biologiske træk."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt",
+          "connection": "Polypsykismen viser et moderne menneske uden en absolut rationel kerne, men Raggatt nægter at ofre individet fuldstændigt."
+        },
+        {
+          "course_theme": "Dan McAdams' 3-lags model",
+          "connection": "Raggatt opererer på McAdams' niveau 3 (Livshistorie), men insisterer på at historien er flerstrenget, ikke blot én 'Integrative Life Story'."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign objektiv stabilitet med polypsykismens indre, fluktuerende konfliktstruktur."
+        },
+        {
+          "compare_with": "Lacan & Poststrukturalisme",
+          "how_to_compare": "Vis hvordan Raggatt fanger subjektets ubevidste multiplicitet uden at henfalde til total sproglig determinisme."
+        },
+        {
+          "compare_with": "Humanisme (Rogers)",
+          "how_to_compare": "Kontrastér ideen om at 'finde sit ene sande jeg' med Raggatts teori om, at selvet fundamentalt og sundt er spaltet i flere stemmer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Kritik af personlighedstests",
+          "use_in_answer": "Brug 'Personality Web' som et alternativ, der fanger mening frem for blot frekvens af adfærd.",
+          "caution": "Husk at MDS-delen af metoden stadig udgør et stærkt kvantitativt element."
+        },
+        {
+          "prompt_type": "Mening og moral",
+          "use_in_answer": "Argumentér for at personlighed i bund og grund er et moral-evaluerende spil om positionering mellem indre dommere.",
+          "caution": "Gør det ikke til ren filosofi; forankr det altid i Raggatts afhængigheds-case (Sean)."
+        },
+        {
+          "prompt_type": "Kropslighedens rolle",
+          "use_in_answer": "Brug Seans fingre og tænder til at demonstrere, at fortællinger har dybe kropslige rødder.",
+          "caution": "Reducer ikke kroppen til kun at være kød; den fungerer specifikt som et symbolsk anker."
+        },
+        {
+          "prompt_type": "Brug af de fire orienteringspunkter",
+          "use_in_answer": "Placer Raggatt højt på historicitet (livsbegivenheder) og strukturel kontekst (kulturel positionering).",
+          "caution": "Undlad at påstå, der slet ingen 'agency' er. Individet skaber aktivt mening ud fra kulturens råmaterialer."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kalde polypsykisme for en klinisk personlighedsspaltning (DID/Skizofreni).",
+          "better_reading": "Polypsykisme er hverdagspsykologi; Raggatt ser flere stemmer som normalen, ikke en psykose."
+        },
+        {
+          "trap": "At antage Personality Web udelukkende er en kvalitativ interviewmetode.",
+          "better_reading": "Metoden er en hybrid, der i høj grad anvender datareduktion og kvantitativ matematisk afstandsmåling (MDS)."
+        },
+        {
+          "trap": "At tro Raggatt er fuldt ud socialkonstruktionist.",
+          "better_reading": "Han positionerer sig bevidst i midten; han nægter at slå 'forfatteren' helt ihjel, som ekstrem postmodernisme foreskriver."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Raggatts begreb polypsykisme og diskutér, hvordan hans narrative tilgang udfordrer en essentialistisk forståelse af personligheden.",
+      "mini_exam_answer_plan_slots": [
+        "Definér det essentialistiske udgangspunkt (Enlightenment ego) kort",
+        "Introducér polypsykisme som den konkrete løsning i mellempositionen",
+        "Dyk ned i mekanismerne: Stemmer, positionering og symbolske tilknytninger",
+        "Brug Seans case som empirisk løftestang (Lost Boy vs. Addict)",
+        "Konkludér på agency/historicitet ud fra orienteringspunkterne"
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

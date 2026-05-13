@@ -1,0 +1,1204 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:55:33Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
+    "source_files_signature": "f3dfd74c311896f16cfa50c4d478fef0fc7708f3b6d62bdb6b58174279418012",
+    "source_card": "92c7585783bc62767f8ad4d00571385408807eabac32d486df6b7c00e6136935",
+    "revised_lecture_substrate": "031ac60325b0294e3bfe7e4ac407bc776693b62bbb276625fc259ef4fb72a0e1",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+    "lecture_key": "W09L1",
+    "title": "Mørch & Hansen (2015)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf"
+    ],
+    "reading_title": "Fra rocker til akademiker",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W09L1"
+    ],
+    "sequence_index": 1,
+    "source_filename": "W9L1 Mørch & Hansen (2015).pdf",
+    "subject_relative_path": "Readings/W9L1 Kritisk psykologi/W9L1 Mørch & Hansen (2015).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "da",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "86840ca54155183cf8cd1c326e3bece8a8f87c05da0901b0a15e535df754c418",
+      "size_bytes": 244474,
+      "page_count": 33,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 21450,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 33,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "lecture_key": "W09L1",
+      "source_title": "Mørch & Hansen (2015)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at kortlægge tekstens problemstillinger, før du læser selve teksten.",
+      "teaser_paragraphs": [
+        "En tidligere rocker sidder i sin bil og bakker ud, da en ung fyr demonstrativt spytter på jorden lige foran ham. Hvordan reagerer man på det, når hele ens tidligere identitet er bygget på dominans og fysisk magt? Tidligere ville han være sprunget ud og have smadret dem. Nu stopper han, trækker vejret dybt og kører væk.",
+        "Manden i bilen er Peter. Han er i gang med at forlade et råt bandemiljø gennem politiets officielle exit-program. Men teksten viser hurtigt, at overgangen ikke blot er et simpelt valg mellem fortid og fremtid. At ændre sin personlighed kræver, at man ændrer hele sit fundamentale liv.",
+        "I stedet for at få ro, skubber det etablerede exit-program ham ud i uløselige klemmer, hvor han mister både bolig, nattesøvn og tryghed. Det psykologiske pres er massivt, og han oplever pludselig psykotiske symptomer. Som han skriver i en desperat besked: \"Der er ingen fremtid for mig i jeres verden\".",
+        "For at overleve dette systemiske svigt bliver Peter medforsker i sit eget liv. Bevæbnet med kritisk psykologi indtaler han daglige lydlogbøger. Her analyserer han koldblodigt sine egne reaktioner og den farlige splittelse mellem sit gamle rocker-jeg, \"Jack\", og sit nye civile jeg.",
+        "Denne case tvinger os til at se kritisk på, hvad psykologisk handleevne egentlig kræver. Kan vi overhovedet vurdere en personlighed uden at forstå de strukturelle barrierer, der enten smadrer eller muliggør den?",
+        "Læs teksten som et radikalt bevis på, hvordan kritisk psykologi bruges empirisk. Det er fortællingen om, hvordan et marginaliseret individ kan bruge akademisk refleksion og forskningsfællesskaber som sit absolut stærkeste våben for at erobre sin handleevne tilbage."
+      ],
+      "main_problem": "Hvordan kan et individ genopbygge sin psykologiske handleevne og daglige livsførelse, når samfundets etablerede hjælpesystemer fastholder ham i magtesløse klemmer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad kendetegner Peters to vigtigste anliggender i hans nye daglige livsførelse?",
+          "why_it_matters": "Det synliggør, hvad der rent faktisk driver og motiverer subjektet på tværs af kontekster.",
+          "answer_form": "To konkrete mål"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor skaber politiets exit-program psykotiske doublebind-situationer frem for hjælp?",
+          "why_it_matters": "Det demonstrerer, hvordan ydre systemfejl kan nedbryde den indre psykologiske struktur.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan fungerer den gamle identitet ('Jack') som en konstant indre modspiller til den nye identitet ('Peter')?",
+          "why_it_matters": "Det viser, at ændring af 'personlighed' er en hård, vedvarende forhandling af sociale praksisser.",
+          "answer_form": "Et kort modsætningsforhold"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den faglige og etiske pointe med at bedrive 'subjekt-subjekt-forskning' frem for at fastholde en objektiv distance?",
+          "why_it_matters": "Dette udgør det radikale opgør med tidlige ugers klassiske observationsmetoder.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 5,
+          "question": "På hvilken måde fungerer 'overskridende læring' som et psykologisk forsvarsværk for Peter?",
+          "why_it_matters": "Det konkretiserer kritisk psykologis begreb om handleevne i praksis.",
+          "answer_form": "En kort sætning"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets mest konkrete empiriske anvendelse af Kritisk Psykologi. Den viser overgangen fra at betragte personlighed som et isoleret internt fænomen til at forstå det som et distribueret socialt fænomen forankret i 'daglig livsførelse'.",
+      "overview": [
+        "En empirisk case-analyse af en tidligere rockers (Peters) forsøg på at etablere en civil identitet.",
+        "En demonstration af, hvordan systemiske barrierer i exit-programmer kan nedbryde individets psykologiske handleevne.",
+        "Et opgør med traditionel forskningsetik gennem brug af Løgstrups etiske fordring og anerkendelse af medforskeren som subjekt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (s. 266-270)",
+          "task": "Afdæk rammen for samarbejdet og Peters grundlæggende situation.",
+          "why_it_matters": "Giver kontekst for, hvem forfatterne er, og hvad en bande-exit egentlig kræver.",
+          "stop_signal": "Når du når afsnit 3: 'Empirisk oversigt og metodologi'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3 (s. 270-275)",
+          "task": "Identificer de analytiske hovedbegreber: moment-movement, livsførelse, anliggende og doublebind.",
+          "why_it_matters": "Dette er tekstens teoretiske maskinrum og nødvendigt til eksamen.",
+          "stop_signal": "Når du når afsnit 4: 'Etik – tillid og den etiske fordring'"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4 (s. 275-278)",
+          "task": "Undersøg hvorfor forskerne bryder datatilsynets normale rammer, og hvordan Løgstrup bruges.",
+          "why_it_matters": "Viser epistemologien i begrundelsesdiskursen.",
+          "stop_signal": "Når du når afsnit 5: 'Analyse'"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 5.1 (s. 278-282)",
+          "task": "Læs om episoden med spyt-klatten for at forstå spændingen mellem 'Jack' og 'Peter'.",
+          "why_it_matters": "Viser hvordan personlighed manifesteres og forhandles i dagligdags situationer.",
+          "stop_signal": "Når du når afsnit 5.2: 'Kontinuitet, brud...'"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5.2 (s. 282-286)",
+          "task": "Kortlæg de massive strukturelle problemer i politiets exit-program.",
+          "why_it_matters": "Demonstrerer hvordan tab af kontekst medfører tab af handleevne.",
+          "stop_signal": "Når du når afsnit 5.2.4: 'At engagere sig...'"
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5.2.4 - 5.3 (s. 286-292)",
+          "task": "Find ud af hvordan overskridende læring og akademisk arbejde redder Peters proces.",
+          "why_it_matters": "Viser hvordan individet konstruktivt kan udvide sine livsbetingelser.",
+          "stop_signal": "Når du når afsnit 6: 'Diskussion og opsamling'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Der er ingen fremtid for mig i jeres verden",
+          "why": "Afslører den totale følelse af skakmat i systemet.",
+          "where_to_look": "Sektion 3.2 (Doublebind-hypotesen)"
+        },
+        {
+          "target": "Sp(l)itting on the street log",
+          "why": "Konkretiserer det interne opgør med rocker-maskuliniteten.",
+          "where_to_look": "Sektion 5.1"
+        },
+        {
+          "target": "Den etiske fordring var uudtalt for os begge",
+          "why": "Forklarer den dybe faglige og menneskelige involvering fra forskerens side.",
+          "where_to_look": "Sektion 4.1"
+        },
+        {
+          "target": "at jeg bidrager med noget",
+          "why": "Essensen af overskridende læring som overlevelsesstrategi.",
+          "where_to_look": "Sektion 5.3"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange oversigter over eksisterende kriminologisk litteratur i afsnit 2.",
+        "De præcise juridiske rammer for Datatilsynet.",
+        "Baggrundsdetaljerne om Peters specifikke bande, da disse bevidst er udeladt."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at hente tekstens kernebegreber og løse de opsatte problemer.",
+      "coverage_note": "Dette kompendium dækker tekstens empiriske historie og de centrale begreber fra Kritisk Psykologi i kronologisk rækkefølge.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2",
+          "heading": "At forske sammen i stedet for at observere",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvem undersøger hvem, og hvorfor bryder teksten med normal metode?",
+          "explanation_paragraphs": [
+            "I traditionel psykologisk forskning observerer forskeren en klient fra afstand. Denne artikel bryder radikalt med det princip. Forskeren Line og den tidligere rocker Peter arbejder sammen som medforskere.",
+            "Peter behandles ikke som et passivt objekt fyldt med variabler. Han er et handlende subjekt og medforfatter til teksten. Ved at skrive artiklen undersøger de i fællesskab Peters ændrede livsførelse i en ekstrem overgangsperiode.",
+            "Dette kaldes subjekt-subjekt-forskning. Det skaber et stærkt alternativ til de etablerede exit-programmer, der har en tendens til blot at kontrollere exit-kandidaterne."
+          ],
+          "key_points": [
+            "Forskningen udføres i samarbejde mellem en akademiker og personen, der undersøges.",
+            "Peter bruges ikke som et middel for forskeren, men deltager aktivt i vidensproduktionen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Fra rocker til akademiker",
+              "why_it_matters": "Opridser tekstens hovedbevægelse og Peters mål.",
+              "source_location": "Titel og Sektion 1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3.1",
+          "heading": "Livsførelse og de afgørende anliggender",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad er det, der fundamentalt styrer og motiverer Peters handlinger nu?",
+          "explanation_paragraphs": [
+            "I kritisk psykologi analyserer man ikke stabile personlighedstræk, men menneskets 'daglige livsførelse'. Livsførelsen struktureres omkring 'anliggender' – de ting, der giver personen eksistentiel mening.",
+            "Peter drives primært af to store anliggender. For det første skal han finde et trygt hjem til sin højgravide kone. For det andet har han et stærkt mål om at blive optaget på universitetet og bygge en akademisk identitet.",
+            "Disse anliggender trækker ham fremad, men kolliderer konstant med den usikre virkelighed, han befinder sig i. For at beskytte sine anliggender indtaler han lydlogbøger (moment-movement) for at bevare et klart blik på sine egne reaktioner."
+          ],
+          "key_points": [
+            "Et anliggende er noget, der giver dagligdagen retning og mening.",
+            "Peters anliggender er en sikker familiebolig og en akademisk fremtid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at finde et trygt hjem",
+              "why_it_matters": "Definerer det primære, praktiske anliggende.",
+              "source_location": "Sektion 1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 3.2",
+          "heading": "Fanget i systemets doublebind",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor bryder Peter mentalt sammen under politiets exit-program?",
+          "explanation_paragraphs": [
+            "Politiets exit-program formår ikke at skaffe Peter og hans familie en varig bolig. I stedet placeres de i et afsides sommerhus. Han bliver presset økonomisk, isoleret fra sine akademiske netværk og frataget muligheden for at påvirke sin egen situation.",
+            "Dette skaber en massiv 'doublebind-situation'. Lige meget hvilke træk Peter foretager, er han sat skakmat. Forsøger han at passe sit nye liv, stoppes han af manglende ressourcer. Bliver han i sommerhuset, mister han forbindelsen til sin fremtid.",
+            "Stressniveauet bliver så massivt, at Peter i perioder udvikler psykotiske symptomer. Hans psykologiske handleevne knuses ikke indefra af ham selv, men udefra af de strukturelle klemmer i systemet."
+          ],
+          "key_points": [
+            "En doublebind-situation er en psykologisk umulig skakmat-position.",
+            "Exit-programmets manglende bolighjælp destruerer Peters fundament."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "Sektion 3.2, s. 273",
+            "passage": "Der er ingen fremtid for mig i jeres verden, når ikke engang jeg kan komme væk herfra. Det har været ansvarsløst af mig at fokusere på andet end netop den ene opgave [at få en bolig].",
+            "why_it_matters": "Originalcitatet indfanger den totale klaustrofobi og systemiske fratagelse af handleevne."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.1",
+          "heading": "Løgstrup og den etiske fordring",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvorfor griber forskeren direkte ind for at redde Peters proces?",
+          "explanation_paragraphs": [
+            "De systemiske svigt tvinger forskeren (Line) og Peter til at redefinere deres roller. Line observerer ikke blot passivt Peters nedtur. Inspireret af filosoffen K.E. Løgstrup forstår de, at der eksisterer en 'uudtalt etisk fordring' i deres møde.",
+            "Når et menneske viser tillid og udleverer sit liv i den andens hænder, kræver etikken, at man tager vare på det liv. Forskerens objektive distance må derfor vige for et radikalt engagement.",
+            "De hjælper hinanden i et praksisfællesskab, fordi Løgstrups filosofi påbyder dem ikke at lade hinanden i stikken, når systemet svigter fatalt."
+          ],
+          "key_points": [
+            "Løgstrups etiske fordring kræver handling, når et andet menneske viser tillid.",
+            "Det retfærdiggør bruddet med klassiske forskeridealer om neutralitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Den etiske fordring var uudtalt",
+              "why_it_matters": "Viser at ansvaret for hinanden ikke kræver en formel kontrakt.",
+              "source_location": "Sektion 4.1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5.1",
+          "heading": "Den indre krig: Jack over for Peter",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan forhandler Peter rent konkret sin gamle og nye identitet i hverdagen?",
+          "explanation_paragraphs": [
+            "Peter bruger logbøgerne til at bekæmpe sit gamle rocker-jeg, som han kalder 'Jack'. I en episode bakker Peter ud af en indkørsel, da en ung mand bevidst spytter foran bilen. 'Jack' ville have reageret med øjeblikkelig vold for at genetablere dominans.",
+            "Men i dag forbliver 'Peter' i bilen og afstår fra konflikt. Det er en sejr for hans nye anliggende, men det efterlader ham med en dyb sårbarhed. Ved at give afkald på rocker-maskuliniteten, mister han sin vante beskyttelse og autoritet.",
+            "Dette illustrerer kritisk psykologis syn på identitet: Man ændrer sig ikke ved bare at træffe en intern beslutning, men ved at skifte handlegrunde midt i hverdagens sociale konfrontationer."
+          ],
+          "key_points": [
+            "Rockeren 'Jack' brugte vold som en nødvendig, logisk positionering i miljøet.",
+            "Akademikeren 'Peter' vælger ro, men må absorbere utrygheden ved at være sårbar."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Sp(l)itting on the street log",
+              "why_it_matters": "Navnet på den nøglesituation, hvor identiteternes konflikt testes.",
+              "source_location": "Sektion 5.1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5.2.4 & 5.3",
+          "heading": "Overskridende læring som overlevelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad bruger Peter til at genvinde magten over sit eget liv?",
+          "explanation_paragraphs": [
+            "Midt i stress og isolation finder Peter handleevne gennem 'overskridende læring'. Overskridende læring betyder at udvide sine egne handlemuligheder for gradvist at bryde ud af en marginaliseret position.",
+            "Han gør det ved at hjælpe andre i nød og ved at holde oplæg for studerende. Når Peter fremlægger engelsk faglitteratur for akademikere, producerer han sig selv som noget nyt. Han tingsliggør sin lidelse til akademisk viden.",
+            "Dette fremtvinger anerkendelse fra omverdenen. Frem for blot at være et dyrt 'exit-problem', bliver han en ressource, der bidrager til universitetet. Det genskaber håbet og beviser, at et civilt liv er muligt."
+          ],
+          "key_points": [
+            "Overskridende læring genskaber psykologisk robusthed gennem aktiv deltagelse.",
+            "Anerkendelse i nye praksisfællesskaber bryder isolationen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at jeg bidrager med noget",
+              "why_it_matters": "Kernen i den terapeutiske effekt af at være en akademisk medforsker.",
+              "source_location": "Sektion 5.3"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv navnet, som besvarer spørgsmålet: Hvem undersøger hvem, og hvorfor bryder teksten med normal metode?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er det, der fundamentalt styrer og motiverer Peters handlinger nu?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "To konkrete mål",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor bryder Peter mentalt sammen under politiets exit-program?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor griber forskeren direkte ind for at redde Peters proces?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forhandler Peter rent konkret sin gamle og nye identitet i hverdagen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et kort modsætningsforhold",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad bruger Peter til at genvinde magten over sit eget liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan et individ genopbygge sin psykologiske handleevne og daglige livsførelse, når samfundets etablerede hjælpesystemer fastholder ham i magtesløse klemmer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at låse teorien fast. Konsulter først Abridged Reader, hvis du går helt i stå.",
+      "overview": [
+        "Mørch & Hansen undersøger en tidligere rockers kamp for at skabe en ny civil identitet.",
+        "Gennem kritisk psykologi analyseres hans daglige livsførelse og de systemiske barrierer, han knuses af under exit-forløbet.",
+        "Teksten konkluderer, at reel psykologisk handleevne forudsætter deltagelse i meningsfulde fællesskaber."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I kritisk psykologi bruger man begrebet __________ om det, der giver eksistentiel mening og dikterer retningen for en persons handlinger i hverdagen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Fordi exit-programmet afskærer Peter fra ressourcer og bolig, skubbes han ud i en skakmat-position kaldet en __________, som udløser stress og psykoser.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 sammensat ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Teksten afviser klassisk objektiv observation til fordel for __________-forskning, hvor Peter er en ligeværdig vidensproducent.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 sammensat begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Peters voldelige og dominerende fortid italesættes i hans logbøger via den gamle persona kaldet __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et egennavn"
+        },
+        {
+          "number": 5,
+          "sentence": "Filosoffen Løgstrup bruges i teksten til at forklare den etiske __________, som opstår, når Peter overdrager dele af sit liv til forskeren.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at erobre kontrollen tilbage over sin egen tilværelse benytter Peter sig af __________ læring ved at holde oplæg og hjælpe andre.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Hovedbegrebet for den analyseenhed, der erstatter fokus på isolerede indre personlighedstræk, er daglig __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Opstil en simpel kontrast-model af Peters to identitetspositioner ('Jack' vs. 'Peter'). Notér den typiske reaktionsmåde over for konflikt under hver.",
+          "required_elements": [
+            "Identitet 1 (voldelig",
+            "dominans",
+            "Identitet 2 (tilbagetrækning",
+            "sårbarhed"
+          ],
+          "blank_space_hint": "Tegn to spalter med hver deres overskrift."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér årsagskæden for Peters sammenbrud. Vis bevægelsen fra ydre systemisk handling til indre psykologisk reaktion.",
+          "required_elements": [
+            "Trin 1: Exit-programmets bolighåndtering",
+            "Trin 2: Doublebind-situationen",
+            "Trin 3: Psykotiske symptomer"
+          ],
+          "blank_space_hint": "Brug pile til at forbinde de tre faser."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at koble casen til kursets overordnede metateori og til at forberede skarpe eksamenssvar.",
+      "use_this_text_for": [
+        "At levere empirisk bevis for den kritiske psykologis anvendelighed.",
+        "At demonstrere hvordan mangel på kontekst og handlemuligheder udløser psykologiske symptomer.",
+        "At illustrere begreberne 'daglig livsførelse' og 'anliggender' i praksis.",
+        "At angribe konditioneringsdiskursens (naturvidenskabens) krav om fuld objektivitet i forskerrollen.",
+        "At vise hvordan 'overskridende læring' genopbygger psykologisk sundhed."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Mørch & Hansen afviser, at Peters aggressioner er faste træk (Big Five). De opstod som logiske handlegrunde i rocker-konteksten og fjernes ved at skifte praksisfællesskab."
+        },
+        {
+          "course_theme": "Humanistisk psykologi (W07)",
+          "connection": "Begge retninger tror på menneskets frie handleevne, men her aktualiserer man ikke sig selv indad – man skaber handleevne udad via 'overskridende læring' i samfundet."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter (W12)",
+          "connection": "Teksten udgør det stærkeste argument for at benytte 'Kontekst' frem for 'Essens', når man analyserer en problemtisk adfærd."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Vis hvordan et spørgeskema ville måle Peter høj på Neuroticisme og lav på Agreeableness i starten, mens kritisk psykologi anser disse som nødvendige positioneringer i et farligt miljø, ikke essenser."
+        },
+        {
+          "compare_with": "Sterns kritiske personalisme",
+          "how_to_compare": "Begge vil redde det hele, situerede menneske fra test-variablerne. Men Mørch & Hansen tilføjer den marxistiske opmærksomhed på samfundsstrukturens magt."
+        },
+        {
+          "compare_with": "Hackings Looping Effect",
+          "how_to_compare": "Sammenlign exit-programmets kategorisering af Peter som en 'besværlig kriminel klient' med Hackings pointe om, at systemets kategorier skaber menneskets selvforståelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Spørgsmål om handleevne",
+          "use_in_answer": "Definer handleevne ud fra teksten som graden af råderet over egne livsbetingelser, illustreret ved at Peters læringsprojekter (oplæg) redder ham.",
+          "caution": "Undgå at tale om fri vilje som en magisk indre ressource. Handleevne er strukturelt betinget."
+        },
+        {
+          "prompt_type": "Spørgsmål om miljø/kontekst",
+          "use_in_answer": "Brug 'doublebind-situationen' omkring boligen til at vise, at selv en ekstremt motiveret person vil fremstå syg og ustabil, hvis systemet smadrer hans råderum.",
+          "caution": "Husk at kontekst i kritisk psykologi ikke kun er passiv baggrund; det er selve den sociale praksis, subjektet deltager i."
+        },
+        {
+          "prompt_type": "Spørgsmål om metodelære",
+          "use_in_answer": "Angrib ideen om distancerede test med argumentet om 'subjekt-subjekt forskning' og Løgstrups etiske fordring.",
+          "caution": "Sørg for at kende forskel på begrundelsesdiskurs (1. person) og konditioneringsdiskurs (3. person)."
+        },
+        {
+          "prompt_type": "Spørgsmål om personlighedsforandring",
+          "use_in_answer": "Brug konflikten mellem 'Jack' og 'Peter' til at vise, at adfærdsændring udløser sårbarhed, når man mister de gamle handlegrundes beskyttelse.",
+          "caution": "Tal ikke om 'Jack' som en skizofren spaltning, men som en tidligere social positionering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse Peter som en svag person, der ikke har viljestyrke til at gennemføre sit exit.",
+          "better_reading": "Han har enorm viljestyrke (sine anliggender), men doublebind-situationen blokerer systematisk hans muligheder."
+        },
+        {
+          "trap": "At forveksle 'anliggende' med et simpelt overfladisk ønske.",
+          "better_reading": "Et anliggende er dybt eksistentielt – det er det kompas, der strukturerer den daglige livsførelse."
+        },
+        {
+          "trap": "At anse Kritisk Psykologi udelukkende som kritik af andre.",
+          "better_reading": "Det er en positiv, fuldt udrustet teori med sin egen ontologi (mennesket er socialt produceret) og sin egen metodologi (moment-movement)."
+        }
+      ],
+      "mini_exam_prompt_question": "Analyser Peters exit-proces med udgangspunkt i begreberne 'livsførelse', 'anliggende' og 'handleevne'. Diskuter kort hvordan denne analysemetode adskiller sig radikalt fra trækpsykologiens blik.",
+      "mini_exam_answer_plan_slots": [
+        "Præsentation af analyseenheden: Daglig livsførelse og Peters to livsdefinerende anliggender.",
+        "Kortlægning af systemets modstand: Hvordan exit-programmet fratager ham råderet (doublebind).",
+        "Generobring af handleevne: Peters brug af overskridende læring for at nedbryde 'Jack'.",
+        "Perspektivering: Trækpsykologi ville have målt hans reaktioner som interne fejl, ikke systemiske klemmer."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+      "lecture_key": "W09L1",
+      "source_title": "Mørch & Hansen (2015)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at kortlægge tekstens problemstillinger, før du læser selve teksten.",
+      "teaser_paragraphs": [
+        "En tidligere rocker sidder i sin bil og bakker ud, da en ung fyr demonstrativt spytter på jorden lige foran ham. Hvordan reagerer man på det, når hele ens tidligere identitet er bygget på dominans og fysisk magt? Tidligere ville han være sprunget ud og have smadret dem. Nu stopper han, trækker vejret dybt og kører væk.",
+        "Manden i bilen er Peter. Han er i gang med at forlade et råt bandemiljø gennem politiets officielle exit-program. Men teksten viser hurtigt, at overgangen ikke blot er et simpelt valg mellem fortid og fremtid. At ændre sin personlighed kræver, at man ændrer hele sit fundamentale liv.",
+        "I stedet for at få ro, skubber det etablerede exit-program ham ud i uløselige klemmer, hvor han mister både bolig, nattesøvn og tryghed. Det psykologiske pres er massivt, og han oplever pludselig psykotiske symptomer. Som han skriver i en desperat besked: \"Der er ingen fremtid for mig i jeres verden\".",
+        "For at overleve dette systemiske svigt bliver Peter medforsker i sit eget liv. Bevæbnet med kritisk psykologi indtaler han daglige lydlogbøger. Her analyserer han koldblodigt sine egne reaktioner og den farlige splittelse mellem sit gamle rocker-jeg, \"Jack\", og sit nye civile jeg.",
+        "Denne case tvinger os til at se kritisk på, hvad psykologisk handleevne egentlig kræver. Kan vi overhovedet vurdere en personlighed uden at forstå de strukturelle barrierer, der enten smadrer eller muliggør den?",
+        "Læs teksten som et radikalt bevis på, hvordan kritisk psykologi bruges empirisk. Det er fortællingen om, hvordan et marginaliseret individ kan bruge akademisk refleksion og forskningsfællesskaber som sit absolut stærkeste våben for at erobre sin handleevne tilbage."
+      ],
+      "main_problem": "Hvordan kan et individ genopbygge sin psykologiske handleevne og daglige livsførelse, når samfundets etablerede hjælpesystemer fastholder ham i magtesløse klemmer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad kendetegner Peters to vigtigste anliggender i hans nye daglige livsførelse?",
+          "why_it_matters": "Det synliggør, hvad der rent faktisk driver og motiverer subjektet på tværs af kontekster.",
+          "answer_form": "To konkrete mål"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor skaber politiets exit-program psykotiske doublebind-situationer frem for hjælp?",
+          "why_it_matters": "Det demonstrerer, hvordan ydre systemfejl kan nedbryde den indre psykologiske struktur.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan fungerer den gamle identitet ('Jack') som en konstant indre modspiller til den nye identitet ('Peter')?",
+          "why_it_matters": "Det viser, at ændring af 'personlighed' er en hård, vedvarende forhandling af sociale praksisser.",
+          "answer_form": "Et kort modsætningsforhold"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den faglige og etiske pointe med at bedrive 'subjekt-subjekt-forskning' frem for at fastholde en objektiv distance?",
+          "why_it_matters": "Dette udgør det radikale opgør med tidlige ugers klassiske observationsmetoder.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 5,
+          "question": "På hvilken måde fungerer 'overskridende læring' som et psykologisk forsvarsværk for Peter?",
+          "why_it_matters": "Det konkretiserer kritisk psykologis begreb om handleevne i praksis.",
+          "answer_form": "En kort sætning"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets mest konkrete empiriske anvendelse af Kritisk Psykologi. Den viser overgangen fra at betragte personlighed som et isoleret internt fænomen til at forstå det som et distribueret socialt fænomen forankret i 'daglig livsførelse'.",
+      "overview": [
+        "En empirisk case-analyse af en tidligere rockers (Peters) forsøg på at etablere en civil identitet.",
+        "En demonstration af, hvordan systemiske barrierer i exit-programmer kan nedbryde individets psykologiske handleevne.",
+        "Et opgør med traditionel forskningsetik gennem brug af Løgstrups etiske fordring og anerkendelse af medforskeren som subjekt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (s. 266-270)",
+          "task": "Afdæk rammen for samarbejdet og Peters grundlæggende situation.",
+          "why_it_matters": "Giver kontekst for, hvem forfatterne er, og hvad en bande-exit egentlig kræver.",
+          "stop_signal": "Når du når afsnit 3: 'Empirisk oversigt og metodologi'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3 (s. 270-275)",
+          "task": "Identificer de analytiske hovedbegreber: moment-movement, livsførelse, anliggende og doublebind.",
+          "why_it_matters": "Dette er tekstens teoretiske maskinrum og nødvendigt til eksamen.",
+          "stop_signal": "Når du når afsnit 4: 'Etik – tillid og den etiske fordring'"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4 (s. 275-278)",
+          "task": "Undersøg hvorfor forskerne bryder datatilsynets normale rammer, og hvordan Løgstrup bruges.",
+          "why_it_matters": "Viser epistemologien i begrundelsesdiskursen.",
+          "stop_signal": "Når du når afsnit 5: 'Analyse'"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 5.1 (s. 278-282)",
+          "task": "Læs om episoden med spyt-klatten for at forstå spændingen mellem 'Jack' og 'Peter'.",
+          "why_it_matters": "Viser hvordan personlighed manifesteres og forhandles i dagligdags situationer.",
+          "stop_signal": "Når du når afsnit 5.2: 'Kontinuitet, brud...'"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5.2 (s. 282-286)",
+          "task": "Kortlæg de massive strukturelle problemer i politiets exit-program.",
+          "why_it_matters": "Demonstrerer hvordan tab af kontekst medfører tab af handleevne.",
+          "stop_signal": "Når du når afsnit 5.2.4: 'At engagere sig...'"
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5.2.4 - 5.3 (s. 286-292)",
+          "task": "Find ud af hvordan overskridende læring og akademisk arbejde redder Peters proces.",
+          "why_it_matters": "Viser hvordan individet konstruktivt kan udvide sine livsbetingelser.",
+          "stop_signal": "Når du når afsnit 6: 'Diskussion og opsamling'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Der er ingen fremtid for mig i jeres verden",
+          "why": "Afslører den totale følelse af skakmat i systemet.",
+          "where_to_look": "Sektion 3.2 (Doublebind-hypotesen)"
+        },
+        {
+          "target": "Sp(l)itting on the street log",
+          "why": "Konkretiserer det interne opgør med rocker-maskuliniteten.",
+          "where_to_look": "Sektion 5.1"
+        },
+        {
+          "target": "Den etiske fordring var uudtalt for os begge",
+          "why": "Forklarer den dybe faglige og menneskelige involvering fra forskerens side.",
+          "where_to_look": "Sektion 4.1"
+        },
+        {
+          "target": "at jeg bidrager med noget",
+          "why": "Essensen af overskridende læring som overlevelsesstrategi.",
+          "where_to_look": "Sektion 5.3"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange oversigter over eksisterende kriminologisk litteratur i afsnit 2.",
+        "De præcise juridiske rammer for Datatilsynet.",
+        "Baggrundsdetaljerne om Peters specifikke bande, da disse bevidst er udeladt."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at hente tekstens kernebegreber og løse de opsatte problemer.",
+      "coverage_note": "Dette kompendium dækker tekstens empiriske historie og de centrale begreber fra Kritisk Psykologi i kronologisk rækkefølge.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2",
+          "heading": "At forske sammen i stedet for at observere",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvem undersøger hvem, og hvorfor bryder teksten med normal metode?",
+          "explanation_paragraphs": [
+            "I traditionel psykologisk forskning observerer forskeren en klient fra afstand. Denne artikel bryder radikalt med det princip. Forskeren Line og den tidligere rocker Peter arbejder sammen som medforskere.",
+            "Peter behandles ikke som et passivt objekt fyldt med variabler. Han er et handlende subjekt og medforfatter til teksten. Ved at skrive artiklen undersøger de i fællesskab Peters ændrede livsførelse i en ekstrem overgangsperiode.",
+            "Dette kaldes subjekt-subjekt-forskning. Det skaber et stærkt alternativ til de etablerede exit-programmer, der har en tendens til blot at kontrollere exit-kandidaterne."
+          ],
+          "key_points": [
+            "Forskningen udføres i samarbejde mellem en akademiker og personen, der undersøges.",
+            "Peter bruges ikke som et middel for forskeren, men deltager aktivt i vidensproduktionen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Fra rocker til akademiker",
+              "why_it_matters": "Opridser tekstens hovedbevægelse og Peters mål.",
+              "source_location": "Titel og Sektion 1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3.1",
+          "heading": "Livsførelse og de afgørende anliggender",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad er det, der fundamentalt styrer og motiverer Peters handlinger nu?",
+          "explanation_paragraphs": [
+            "I kritisk psykologi analyserer man ikke stabile personlighedstræk, men menneskets 'daglige livsførelse'. Livsførelsen struktureres omkring 'anliggender' – de ting, der giver personen eksistentiel mening.",
+            "Peter drives primært af to store anliggender. For det første skal han finde et trygt hjem til sin højgravide kone. For det andet har han et stærkt mål om at blive optaget på universitetet og bygge en akademisk identitet.",
+            "Disse anliggender trækker ham fremad, men kolliderer konstant med den usikre virkelighed, han befinder sig i. For at beskytte sine anliggender indtaler han lydlogbøger (moment-movement) for at bevare et klart blik på sine egne reaktioner."
+          ],
+          "key_points": [
+            "Et anliggende er noget, der giver dagligdagen retning og mening.",
+            "Peters anliggender er en sikker familiebolig og en akademisk fremtid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at finde et trygt hjem",
+              "why_it_matters": "Definerer det primære, praktiske anliggende.",
+              "source_location": "Sektion 1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 3.2",
+          "heading": "Fanget i systemets doublebind",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor bryder Peter mentalt sammen under politiets exit-program?",
+          "explanation_paragraphs": [
+            "Politiets exit-program formår ikke at skaffe Peter og hans familie en varig bolig. I stedet placeres de i et afsides sommerhus. Han bliver presset økonomisk, isoleret fra sine akademiske netværk og frataget muligheden for at påvirke sin egen situation.",
+            "Dette skaber en massiv 'doublebind-situation'. Lige meget hvilke træk Peter foretager, er han sat skakmat. Forsøger han at passe sit nye liv, stoppes han af manglende ressourcer. Bliver han i sommerhuset, mister han forbindelsen til sin fremtid.",
+            "Stressniveauet bliver så massivt, at Peter i perioder udvikler psykotiske symptomer. Hans psykologiske handleevne knuses ikke indefra af ham selv, men udefra af de strukturelle klemmer i systemet."
+          ],
+          "key_points": [
+            "En doublebind-situation er en psykologisk umulig skakmat-position.",
+            "Exit-programmets manglende bolighjælp destruerer Peters fundament."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "Sektion 3.2, s. 273",
+            "passage": "Der er ingen fremtid for mig i jeres verden, når ikke engang jeg kan komme væk herfra. Det har været ansvarsløst af mig at fokusere på andet end netop den ene opgave [at få en bolig].",
+            "why_it_matters": "Originalcitatet indfanger den totale klaustrofobi og systemiske fratagelse af handleevne."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.1",
+          "heading": "Løgstrup og den etiske fordring",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvorfor griber forskeren direkte ind for at redde Peters proces?",
+          "explanation_paragraphs": [
+            "De systemiske svigt tvinger forskeren (Line) og Peter til at redefinere deres roller. Line observerer ikke blot passivt Peters nedtur. Inspireret af filosoffen K.E. Løgstrup forstår de, at der eksisterer en 'uudtalt etisk fordring' i deres møde.",
+            "Når et menneske viser tillid og udleverer sit liv i den andens hænder, kræver etikken, at man tager vare på det liv. Forskerens objektive distance må derfor vige for et radikalt engagement.",
+            "De hjælper hinanden i et praksisfællesskab, fordi Løgstrups filosofi påbyder dem ikke at lade hinanden i stikken, når systemet svigter fatalt."
+          ],
+          "key_points": [
+            "Løgstrups etiske fordring kræver handling, når et andet menneske viser tillid.",
+            "Det retfærdiggør bruddet med klassiske forskeridealer om neutralitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Den etiske fordring var uudtalt",
+              "why_it_matters": "Viser at ansvaret for hinanden ikke kræver en formel kontrakt.",
+              "source_location": "Sektion 4.1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5.1",
+          "heading": "Den indre krig: Jack over for Peter",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan forhandler Peter rent konkret sin gamle og nye identitet i hverdagen?",
+          "explanation_paragraphs": [
+            "Peter bruger logbøgerne til at bekæmpe sit gamle rocker-jeg, som han kalder 'Jack'. I en episode bakker Peter ud af en indkørsel, da en ung mand bevidst spytter foran bilen. 'Jack' ville have reageret med øjeblikkelig vold for at genetablere dominans.",
+            "Men i dag forbliver 'Peter' i bilen og afstår fra konflikt. Det er en sejr for hans nye anliggende, men det efterlader ham med en dyb sårbarhed. Ved at give afkald på rocker-maskuliniteten, mister han sin vante beskyttelse og autoritet.",
+            "Dette illustrerer kritisk psykologis syn på identitet: Man ændrer sig ikke ved bare at træffe en intern beslutning, men ved at skifte handlegrunde midt i hverdagens sociale konfrontationer."
+          ],
+          "key_points": [
+            "Rockeren 'Jack' brugte vold som en nødvendig, logisk positionering i miljøet.",
+            "Akademikeren 'Peter' vælger ro, men må absorbere utrygheden ved at være sårbar."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Sp(l)itting on the street log",
+              "why_it_matters": "Navnet på den nøglesituation, hvor identiteternes konflikt testes.",
+              "source_location": "Sektion 5.1"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5.2.4 & 5.3",
+          "heading": "Overskridende læring som overlevelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad bruger Peter til at genvinde magten over sit eget liv?",
+          "explanation_paragraphs": [
+            "Midt i stress og isolation finder Peter handleevne gennem 'overskridende læring'. Overskridende læring betyder at udvide sine egne handlemuligheder for gradvist at bryde ud af en marginaliseret position.",
+            "Han gør det ved at hjælpe andre i nød og ved at holde oplæg for studerende. Når Peter fremlægger engelsk faglitteratur for akademikere, producerer han sig selv som noget nyt. Han tingsliggør sin lidelse til akademisk viden.",
+            "Dette fremtvinger anerkendelse fra omverdenen. Frem for blot at være et dyrt 'exit-problem', bliver han en ressource, der bidrager til universitetet. Det genskaber håbet og beviser, at et civilt liv er muligt."
+          ],
+          "key_points": [
+            "Overskridende læring genskaber psykologisk robusthed gennem aktiv deltagelse.",
+            "Anerkendelse i nye praksisfællesskaber bryder isolationen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at jeg bidrager med noget",
+              "why_it_matters": "Kernen i den terapeutiske effekt af at være en akademisk medforsker.",
+              "source_location": "Sektion 5.3"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv navnet, som besvarer spørgsmålet: Hvem undersøger hvem, og hvorfor bryder teksten med normal metode?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er det, der fundamentalt styrer og motiverer Peters handlinger nu?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "To konkrete mål",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor bryder Peter mentalt sammen under politiets exit-program?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor griber forskeren direkte ind for at redde Peters proces?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forhandler Peter rent konkret sin gamle og nye identitet i hverdagen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et kort modsætningsforhold",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad bruger Peter til at genvinde magten over sit eget liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan et individ genopbygge sin psykologiske handleevne og daglige livsførelse, når samfundets etablerede hjælpesystemer fastholder ham i magtesløse klemmer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at låse teorien fast. Konsulter først Abridged Reader, hvis du går helt i stå.",
+      "overview": [
+        "Mørch & Hansen undersøger en tidligere rockers kamp for at skabe en ny civil identitet.",
+        "Gennem kritisk psykologi analyseres hans daglige livsførelse og de systemiske barrierer, han knuses af under exit-forløbet.",
+        "Teksten konkluderer, at reel psykologisk handleevne forudsætter deltagelse i meningsfulde fællesskaber."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I kritisk psykologi bruger man begrebet __________ om det, der giver eksistentiel mening og dikterer retningen for en persons handlinger i hverdagen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Fordi exit-programmet afskærer Peter fra ressourcer og bolig, skubbes han ud i en skakmat-position kaldet en __________, som udløser stress og psykoser.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 sammensat ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Teksten afviser klassisk objektiv observation til fordel for __________-forskning, hvor Peter er en ligeværdig vidensproducent.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 sammensat begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Peters voldelige og dominerende fortid italesættes i hans logbøger via den gamle persona kaldet __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et egennavn"
+        },
+        {
+          "number": 5,
+          "sentence": "Filosoffen Løgstrup bruges i teksten til at forklare den etiske __________, som opstår, når Peter overdrager dele af sit liv til forskeren.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at erobre kontrollen tilbage over sin egen tilværelse benytter Peter sig af __________ læring ved at holde oplæg og hjælpe andre.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Hovedbegrebet for den analyseenhed, der erstatter fokus på isolerede indre personlighedstræk, er daglig __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Opstil en simpel kontrast-model af Peters to identitetspositioner ('Jack' vs. 'Peter'). Notér den typiske reaktionsmåde over for konflikt under hver.",
+          "required_elements": [
+            "Identitet 1 (voldelig",
+            "dominans",
+            "Identitet 2 (tilbagetrækning",
+            "sårbarhed"
+          ],
+          "blank_space_hint": "Tegn to spalter med hver deres overskrift."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér årsagskæden for Peters sammenbrud. Vis bevægelsen fra ydre systemisk handling til indre psykologisk reaktion.",
+          "required_elements": [
+            "Trin 1: Exit-programmets bolighåndtering",
+            "Trin 2: Doublebind-situationen",
+            "Trin 3: Psykotiske symptomer"
+          ],
+          "blank_space_hint": "Brug pile til at forbinde de tre faser."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at koble casen til kursets overordnede metateori og til at forberede skarpe eksamenssvar.",
+      "use_this_text_for": [
+        "At levere empirisk bevis for den kritiske psykologis anvendelighed.",
+        "At demonstrere hvordan mangel på kontekst og handlemuligheder udløser psykologiske symptomer.",
+        "At illustrere begreberne 'daglig livsførelse' og 'anliggender' i praksis.",
+        "At angribe konditioneringsdiskursens (naturvidenskabens) krav om fuld objektivitet i forskerrollen.",
+        "At vise hvordan 'overskridende læring' genopbygger psykologisk sundhed."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Mørch & Hansen afviser, at Peters aggressioner er faste træk (Big Five). De opstod som logiske handlegrunde i rocker-konteksten og fjernes ved at skifte praksisfællesskab."
+        },
+        {
+          "course_theme": "Humanistisk psykologi (W07)",
+          "connection": "Begge retninger tror på menneskets frie handleevne, men her aktualiserer man ikke sig selv indad – man skaber handleevne udad via 'overskridende læring' i samfundet."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter (W12)",
+          "connection": "Teksten udgør det stærkeste argument for at benytte 'Kontekst' frem for 'Essens', når man analyserer en problemtisk adfærd."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Vis hvordan et spørgeskema ville måle Peter høj på Neuroticisme og lav på Agreeableness i starten, mens kritisk psykologi anser disse som nødvendige positioneringer i et farligt miljø, ikke essenser."
+        },
+        {
+          "compare_with": "Sterns kritiske personalisme",
+          "how_to_compare": "Begge vil redde det hele, situerede menneske fra test-variablerne. Men Mørch & Hansen tilføjer den marxistiske opmærksomhed på samfundsstrukturens magt."
+        },
+        {
+          "compare_with": "Hackings Looping Effect",
+          "how_to_compare": "Sammenlign exit-programmets kategorisering af Peter som en 'besværlig kriminel klient' med Hackings pointe om, at systemets kategorier skaber menneskets selvforståelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Spørgsmål om handleevne",
+          "use_in_answer": "Definer handleevne ud fra teksten som graden af råderet over egne livsbetingelser, illustreret ved at Peters læringsprojekter (oplæg) redder ham.",
+          "caution": "Undgå at tale om fri vilje som en magisk indre ressource. Handleevne er strukturelt betinget."
+        },
+        {
+          "prompt_type": "Spørgsmål om miljø/kontekst",
+          "use_in_answer": "Brug 'doublebind-situationen' omkring boligen til at vise, at selv en ekstremt motiveret person vil fremstå syg og ustabil, hvis systemet smadrer hans råderum.",
+          "caution": "Husk at kontekst i kritisk psykologi ikke kun er passiv baggrund; det er selve den sociale praksis, subjektet deltager i."
+        },
+        {
+          "prompt_type": "Spørgsmål om metodelære",
+          "use_in_answer": "Angrib ideen om distancerede test med argumentet om 'subjekt-subjekt forskning' og Løgstrups etiske fordring.",
+          "caution": "Sørg for at kende forskel på begrundelsesdiskurs (1. person) og konditioneringsdiskurs (3. person)."
+        },
+        {
+          "prompt_type": "Spørgsmål om personlighedsforandring",
+          "use_in_answer": "Brug konflikten mellem 'Jack' og 'Peter' til at vise, at adfærdsændring udløser sårbarhed, når man mister de gamle handlegrundes beskyttelse.",
+          "caution": "Tal ikke om 'Jack' som en skizofren spaltning, men som en tidligere social positionering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse Peter som en svag person, der ikke har viljestyrke til at gennemføre sit exit.",
+          "better_reading": "Han har enorm viljestyrke (sine anliggender), men doublebind-situationen blokerer systematisk hans muligheder."
+        },
+        {
+          "trap": "At forveksle 'anliggende' med et simpelt overfladisk ønske.",
+          "better_reading": "Et anliggende er dybt eksistentielt – det er det kompas, der strukturerer den daglige livsførelse."
+        },
+        {
+          "trap": "At anse Kritisk Psykologi udelukkende som kritik af andre.",
+          "better_reading": "Det er en positiv, fuldt udrustet teori med sin egen ontologi (mennesket er socialt produceret) og sin egen metodologi (moment-movement)."
+        }
+      ],
+      "mini_exam_prompt_question": "Analyser Peters exit-proces med udgangspunkt i begreberne 'livsførelse', 'anliggende' og 'handleevne'. Diskuter kort hvordan denne analysemetode adskiller sig radikalt fra trækpsykologiens blik.",
+      "mini_exam_answer_plan_slots": [
+        "Præsentation af analyseenheden: Daglig livsførelse og Peters to livsdefinerende anliggender.",
+        "Kortlægning af systemets modstand: Hvordan exit-programmet fratager ham råderet (doublebind).",
+        "Generobring af handleevne: Peters brug af overskridende læring for at nedbryde 'Jack'.",
+        "Perspektivering: Trækpsykologi ville have målt hans reaktioner som interne fejl, ikke systemiske klemmer."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

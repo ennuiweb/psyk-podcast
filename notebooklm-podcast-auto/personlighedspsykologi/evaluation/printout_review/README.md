@@ -1,15 +1,21 @@
 # Printout Review Workspace
 
-This folder is the sidecar evaluation lane for experimental printout variants.
+This folder is the candidate/review workspace for the canonical printout system for
+`personlighedspsykologi`.
 
-Its current purpose is to let us generate and inspect problem-driven reading
-printouts without touching the canonical printout output tree under:
+Its current purpose is to generate, inspect, and iterate problem-driven reading
+printout candidates.
 
-`notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
+The canonical schema-v3 engine now lives in:
 
-## Current use
+`notebooklm_queue/personlighedspsykologi_printouts.py`
 
-The first review track is:
+The review scripts import that main engine instead of owning a separate product
+implementation.
+
+## Current Use
+
+The canonical printout track is:
 
 - `problem_driven_v1`
 
@@ -21,27 +27,28 @@ behavior to emphasize:
 - a self-contained abridged reader
 - guided problem-solving from the abridged reader
 - recall after the solve phase
-- visible progress
 - model-building payoffs
 - a stronger final challenge
 
-Current render preference for this lane:
+Current render preference:
 
-- completion markers stay on by default
+- completion markers/check boxes stay off by default
 - `exam_bridge` stays opt-in and is omitted unless the run explicitly enables it
 
-All candidate printouts in this lane must be generated fresh from the source
-with the current prompt and engine. Seeded or scaffold-recycled candidate
-artifacts are not valid review candidates.
+All printouts generated through this workspace must be generated fresh from the
+source with the current prompt and engine. Seeded or scaffold-recycled
+artifacts are not valid canonical outputs.
 
 ## Why This Lives Here
 
-The production printout path and the experimental printout path are not the
-same thing.
+The main output path and the candidate review path have separate output
+contracts.
 
-For now, this workspace deliberately carries its own experimental printout
-engine under `scripts/` so we can test learner-fit changes without turning the
-production printout path into a second moving target.
+Main outputs are source-scoped under:
+
+`notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
+
+Candidate PDFs remain flat in this workspace's `review/` directory.
 
 ## Folder layout
 
@@ -50,11 +57,13 @@ production printout path into a second moving target.
 - `CODEBASE-GUIDE.md`
   Dense architecture guide for coding LLMs working on this workspace.
 - `scripts/printout_engine.py`
-  The local experimental printout engine used only by this workspace.
+  Compatibility wrapper that re-exports the canonical schema-v3 engine.
 - `scripts/bootstrap_run.py`
   Creates a run manifest and review-note skeletons from selected sources.
 - `scripts/generate_candidates.py`
-  Generates experimental candidate printouts into the shared flat review root.
+  Generates canonical review printouts into the shared flat review root.
+- `scripts/run_parallel_candidates.py`
+  Thin resumable parallel runner around `generate_candidates.py`.
 - `review/`
   Shared user-facing PDF drop zone for all candidate printouts.
 - `runs/<run-name>/manifest.json`
@@ -63,8 +72,9 @@ production printout path into a second moving target.
   Manual review notes for each selected source.
 - `runs/<run-name>/prompts/`
   Exact prompt captures used for candidate generation.
-- `review/.scaffolding/<source_id>/`
-  Hidden per-source JSON and Markdown artifacts used by the shared review root.
+- `review/.scaffolding/artifacts/<provider>-<model>/<source_id>/`
+  Hidden provider/model-scoped JSON, Markdown, and PDF staging artifacts used by
+  the shared review root.
 
 Candidate PDFs now all land in one flat shared directory:
 
@@ -91,9 +101,19 @@ This means reruns with the same provider/model for the same source overwrite the
 same filenames, so file modification time is the easiest way to spot the newest
 candidate set for that LLM.
 
-Internal JSON artifacts live separately under a hidden per-source folder:
+Internal JSON artifacts live separately under a hidden provider/model/source folder:
 
-- `review/.scaffolding/<source_id>/reading-scaffolds.json`
+- `review/.scaffolding/artifacts/<provider>-<model>/<source_id>/reading-scaffolds.json`
+
+PDF rendering publishes source bundles defensively:
+
+- PDFs render first in
+  `review/.scaffolding/artifacts/<provider>-<model>/<source_id>/staging/`
+- public `review/*.pdf` files are replaced only after the expected bundle is
+  fully rendered and validated
+- failed or interrupted renders should not leave new partial public bundles
+- JSON is committed only after rendering succeeds, so existing JSON alone is not
+  treated as completion when expected PDFs are missing
 
 The manifest also records where the canonical baseline printout would normally
 live for each source under the standard output root.
@@ -132,6 +152,44 @@ and plans candidate output under:
   --source-id w01l1-lewis-1999-295c67e3 \
   --no-pdf
 ```
+
+## Parallel candidate generation
+
+For multi-source provider runs, prefer the parallel runner over ad hoc shell
+backgrounding. It keeps one master state file and one per-source manifest per
+worker while still delegating actual generation to `generate_candidates.py`.
+
+```bash
+./.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/run_parallel_candidates.py \
+  start \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/runs/2026-05-problem-driven-pilot/manifest.json \
+  --provider gemini \
+  --model gemini-3.1-pro-preview \
+  --workers 3 \
+  --force
+```
+
+Useful parallel commands:
+
+- `start`
+  Create `parallel-run.json`, create per-source manifests under
+  `runs/<run-name>/parallel/<source_id>/`, then run incomplete sources.
+- `resume`
+  Recompute completion from manifests and files, then run only incomplete
+  source bundles. Semantic options such as provider, model, source selection,
+  `--force`, `--no-pdf`, and `--include-exam-bridge` must match the original
+  run; change `--workers` only.
+- `status`
+  Print source, PDF, and worker status without changing anything.
+- `verify`
+  Like `status`, but exits non-zero if the run is incomplete.
+- `cancel`
+  Requests cancellation in `parallel-run.json`, signals the parent runner when
+  it is alive, and terminates recorded worker process groups. The scheduler does
+  not start more sources after cancellation is requested.
+
+The runner intentionally does not replace `generate_candidates.py`; it is only
+a small orchestration layer for safer parallelism.
 
 ## Generate with another provider/model
 
@@ -189,7 +247,8 @@ Useful flags:
   bundles stop at `04-consolidation-sheet`.
 - `--no-pdf`
   Skip PDF rendering and write Markdown only to the internal
-  `review/.scaffolding/<source_id>/rendered_markdown/` area. The shared
+  `review/.scaffolding/artifacts/<provider>-<model>/<source_id>/rendered_markdown/`
+  area. The shared
   user-facing `review/` directory stays PDF-only. Any previously rendered
   printout PDFs for that source/provider/model artifact set are removed so
   stale visual output cannot be mistaken for the current no-PDF artifact set.
@@ -206,6 +265,8 @@ Batch-run manifests now update during execution:
 - selected entries are marked `pending` at run start
 - OpenAI runs use explicit request timeouts, OCR timeouts for scanned PDFs,
   and visible retry logging for transient transport failures
+- provider generation attempts record `attempt_count`, `transient_error_count`,
+  and `last_transient_error` when available
 - each source writes its own final status as soon as it finishes
 - long provider runs print per-source progress lines to stdout
 
@@ -243,13 +304,13 @@ Typical PDF-required cases:
 
 ## Working rule
 
-This is an evaluation path, not the canonical production path.
+This is the candidate review path for the canonical engine.
 
-- do not point candidate output at the canonical live printout root
+- do not point review output at the main production output root
 - compare candidate printouts against the baseline artifacts recorded in the
   manifest
 - treat baseline artifacts as comparison material only, never as seed material
-- candidate printouts must always be generated fresh from source
+- canonical printouts must always be generated fresh from source
 - capture exact prompts per run so results are reproducible
 - active_reading should solve the reading-guide subproblems with abridged_reader open
 - active-reading and consolidation tasks must be solvable from the abridged
@@ -261,9 +322,9 @@ This is an evaluation path, not the canonical production path.
 This workspace currently supports:
 
 - bootstrapping run manifests with baseline and candidate paths
-- generating sidecar problem-driven printout candidates
+- generating canonical problem-driven printout PDFs
 - recording exact prompt captures per source
-- keeping all experimental generation code under the review workspace
+- promoting accepted candidate PDFs into main output when rerendering is not needed
 
 It does not yet include an automated judge script. For now, review is manual or
 ad hoc.

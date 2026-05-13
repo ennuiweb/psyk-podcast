@@ -7,8 +7,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 RECURSIVE_PATH = REPO_ROOT / "notebooklm_queue" / "personlighedspsykologi_recursive.py"
-MODULE_PATH = Path(__file__).resolve().parents[1] / "notebooklm_queue" / "personlighedspsykologi_printouts.py"
-SPEC = importlib.util.spec_from_file_location("personlighedspsykologi_printouts", MODULE_PATH)
+MODULE_PATH = Path(__file__).resolve().parents[1] / "notebooklm_queue" / "personlighedspsykologi_printouts_legacy.py"
+SPEC = importlib.util.spec_from_file_location("personlighedspsykologi_printouts_legacy", MODULE_PATH)
 assert SPEC and SPEC.loader
 printouts = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(printouts)

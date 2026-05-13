@@ -1,0 +1,840 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:59:03Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
+    "source_files_signature": "ec5134a3a0fbfd2ff4d2b230e2c24720676984e9c46bb63c83b6039c7f9313e0",
+    "source_card": "44f77d0a48b22f97d6be6ed4585edb3548cd83ff6ecd427a92212db856299a49",
+    "revised_lecture_substrate": "031ac60325b0294e3bfe7e4ac407bc776693b62bbb276625fc259ef4fb72a0e1",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w09l1-dreier-1999-35da58b5",
+    "lecture_key": "W09L1",
+    "title": "Dreier (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 3,
+    "estimated_token_count": 1950,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf"
+    ],
+    "reading_title": "Personal Trajectories of Participation across Contexts of Social Practice",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W09L1"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W9L1 Dreier (1999).pdf",
+    "subject_relative_path": "Readings/W9L1 Kritisk psykologi/W9L1 Dreier (1999).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "56a18e85f9ac753ff0122be37255b151af5cf9aeffd4bce00e81d0d2f39908f4",
+      "size_bytes": 812081,
+      "page_count": 3,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 1950,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 3,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-dreier-1999-35da58b5",
+      "lecture_key": "W09L1",
+      "source_title": "Dreier (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug guiden til at orientere dig i Dreiers fundamentale opgør med psykologiens klassiske, isolerede menneskesyn.",
+      "teaser_paragraphs": [
+        "I mange klassiske psykologiske teorier fremstår individet som en \"fritsvævende aktør\". Vi tænker instinktivt på personligheden som noget rent indre og færdigstøbt, en stabil pakke af egenskaber, vi bærer usynligt med os, uanset hvor vi befinder os. Dreier udfordrer denne grundantagelse radikalt: En holdbar personlighedspsykologi kan ikke bygge på et teoretisk reagensglas-menneske.",
+        "For at gribe, hvad folk reelt gør og føler, må vi ifølge kritisk psykologi i stedet forstå dem som *always already involved in social practice*. Det betyder, at vi ikke meningsfuldt kan løsrive personen fra de helt konkrete steder – hjemmet, skolen, arbejdspladsen – hvor deres faktiske liv foregår. Konteksten er ikke blot en passiv baggrundsskærm; den udgør selve materialet for vores gøren og laden.",
+        "Dette fremtvinger samtidig et skarpt skift i analysen af menneskelig handleevne. Hvis individet langtfra er en almægtig agent, men tværtimod kun har et begrænset greb om sine betingelser, hvordan kan vi så nogensinde ændre vores vilkår? Dreiers løsning er at droppe de brede abstraktioner og kræve en ubarmhjertig næranalyse af vores reelle, lokale deltagelse i ulige strukturer."
+      ],
+      "main_problem": "Hvordan kan psykologien genopbygges omkring ideen om personlighed som konkret deltagelse i sociale praksisser, frem for at analysere individet som en bærer af indre, isolerede træk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?",
+          "why_it_matters": "Det definerer præcist opgøret med ideen om mennesket som en uafhængig, kontekstløs enhed.",
+          "answer_form": "Kort liste"
+        },
+        {
+          "number": 2,
+          "question": "Hvad indebærer det, at individets position i en praksis altid er 'delvis og partikulær'?",
+          "why_it_matters": "Det er nøglen til at forstå grænserne for vores umiddelbare handleevne.",
+          "answer_form": "Kort beskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan underminerer begrebet 'social praksis' forestillingen om samfundet som en ensartet beholder?",
+          "why_it_matters": "Det sætter scenen for at analysere den sociale strukturs indbyggede modsætninger og magtforhold.",
+          "answer_form": "En klar kontrast"
+        }
+      ],
+      "why_this_text_matters": "Dette er hovedteksten for at forstå kritisk psykologis syn på 'Context' og 'Agency', to af kursets fire gennemgående orienteringspunkter.",
+      "overview": [
+        "Teksten argumenterer for at forlade tanken om det isolerede individ i klassisk psykologi.",
+        "Den introducerer 'deltagelse' som en skarp, analytisk linse for at undersøge menneskelig handleevne.",
+        "Den dekonstruerer billedet af samfundet som en uniform påvirkningsmaskine."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 5",
+          "task": "Læs indledningen og frem til Dreiers første argument for begrebet deltagelse.",
+          "why_it_matters": "Etablerer tekstens overordnede formål.",
+          "stop_signal": "når du når Dreiers fire opsummerende argumenter"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 6",
+          "task": "Dyk ned i kritikken af de fritsvævende aktører og opdelingen af det delvise subjekt.",
+          "why_it_matters": "Her udfoldes de teoretiske mekanismer omkring begrænset handleevne.",
+          "stop_signal": "når begreberne delvis og partikulær er introduceret"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 7",
+          "task": "Læs det første stykke af sektion 2 om social strukturs diversitet.",
+          "why_it_matters": "Giver dig ammunition til at kritisere ensartede teorier om miljøpåvirkning.",
+          "stop_signal": "når kontrasten mellem beholder-samfundet og lokal praksis er tydelig"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "always already involved in social practice",
+          "why": "Konkretiserer præmissen om, at et neutralt nulpunkt for adfærd ikke findes.",
+          "where_to_look": "s. 5"
+        },
+        {
+          "target": "partial personal aspect of a social practice",
+          "why": "Afgrænser det præcise objekt for kritisk personlighedspsykologi.",
+          "where_to_look": "s. 6"
+        },
+        {
+          "target": "not homogenous. It consists of diverse, located contextual practices",
+          "why": "Leverer selve definitionen af det fragmenterede sociale landskab.",
+          "where_to_look": "s. 7"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange, metodiske referencer til andre teoretikeres udlægninger af diskurs og relation.",
+        "Filosofiske sidebemærkninger om Wittgenstein og sprogspil.",
+        "Den bagvedliggende kliniske historik, som teksten kun berører perifert."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne sektionsopdelte gennemgang for at forstå argumentationen trin for trin. Brug den som dit primære værktøj til at løse de efterfølgende opgaver.",
+      "coverage_note": "Fokuserer på Dreiers begrebslige argumenter for at erstatte handling med deltagelse (s. 5-7).",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 5-6",
+          "heading": "Opgøret med den fritsvævende aktør",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "explanation_paragraphs": [
+            "Dreier kritiserer traditionelle psykologiske teorier, der betragter mennesker som fundamentalt adskilte fra deres omgivelser. Selvom alternative begreber som 'handling', 'relation' eller 'dialog' lyder dynamiske og moderne, mangler de ofte evnen til metodisk at placere personen et bestemt, konkret sted. Dette skaber et farligt analytisk problem, fordi psykologien derved behandler individet, som om handlinger udføres i et teoretisk vakuum uafhængigt af en lokal virkelighed.",
+            "Som løsning insisterer Dreier på, at psykologien må tage eksklusivt udgangspunkt i begrebet 'deltagelse'. Deltagelse som en analytisk figur tvinger forskeren til at betragte subjektet som iboende og uløseligt indlejret i en specifik kontekst. Vi agerer ikke ud fra frit svævende indre motiver, men ud fra de præcise strukturelle muligheder, der stilles til rådighed af den sociale praksis, vi aktuelt står i."
+          ],
+          "key_points": [
+            "Klassiske termer tillader psykologer at ignorere de materielle og sociale rammer.",
+            "Deltagelsesbegrebet sikrer, at ingen adfærd kan adskilles fra sin kontekst."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "always already involved",
+              "why_it_matters": "Markerering af at der ikke findes et forudgående uskyldigt individ.",
+              "source_location": "s. 5"
+            },
+            {
+              "phrase": "free-floating agents",
+              "why_it_matters": "Hovedkritikken mod urealistiske syn på menneskelig vilje.",
+              "source_location": "s. 6"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 6",
+          "heading": "Det delvise og partikulære subjekt",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "explanation_paragraphs": [
+            "Hvis vores eksistens er uløseligt knyttet til social praksis, rejser det straks et problem omkring handleevne. Dreier understreger, at intet menneske er en almægtig agent, der kan overskue eller styre hele den komplekse struktur. Vores evne til at deltage og influere omgivelserne er uundgåeligt delvis; vi griber kun ind i et lille hjørne af praksissen ad gangen.",
+            "Samtidig er vores subjektivitet partikulær. Det betyder simpelthen, at vi træder ind i situationer fra meget bestemte, ulige positioner, der giver os vidt forskellige muligheder og snævre forpligtelser. Dette skaber en basal menneskelig dobbelthed i handling: Vi agerer inden for rammerne af den eksisterende struktur (hvilket uundgåeligt reproducerer den), men det er også fra denne partikulære position, at vi har kapaciteten til langsomt at udvide rammerne og ændre på tingenes tilstand."
+          ],
+          "key_points": [
+            "Personlighed er ikke hel og ensartet, men spændt ud over forskellige ulige positioner.",
+            "Handleevne indebærer altid en kamp mellem at reproducere vilkår og at skubbe til deres grænser."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "s. 6",
+            "passage": "No individual subject is an omnipotent agent or covers it all. Individual subjectivity is a partial personal aspect of a social practice.",
+            "why_it_matters": "Det indkapsler selve hjertet af kritisk psykologis syn på subjektet: som blot én del af et større hele, frem for et isoleret center."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 7",
+          "heading": "Opgøret med samfundet som en ensartet beholder",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "explanation_paragraphs": [
+            "For at bruge deltagelse som begreb effektivt, kræver det en nøjagtig forståelse af selve den struktur, vi deltager i. En række udbredte samfundsteorier fremstiller fejlagtigt samfundet som en gigantisk, ensartet beholder, der rummer og påvirker samtlige borgere på nøjagtig samme diffuse måde. Dreier forkaster denne form for teoretisk oversimplificering.",
+            "Virkelighedens sociale praksis er aldrig homogen. Den består af et mangfoldigt netværk af lokale, kontekstuelle steder – for eksempel det specifikke klasseværelse, familiebordet eller fabriksgulvet. Disse lokaliteter er strukturelt forbundet, men de indeholder markant forskellige regler og ulige magtdynamikker. Et individs daglige livsførelse skabes ved kontinuerligt at navigere og forhandle overgange mellem disse separate kontekster."
+          ],
+          "key_points": [
+            "Miljøet er ikke en monolitisk kraft, men splittet i små lokale enheder.",
+            "Psykologien må kigge på den konkrete struktur, før den vurderer individets adfærd."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "not homogenous",
+              "why_it_matters": "Afgørende skelnen der tvinger analysen væk fra at tale generisk om 'kultur'.",
+              "source_location": "s. 7"
+            },
+            {
+              "phrase": "sort of container",
+              "why_it_matters": "Billedet på den reduktionistiske fejltagelse der skal undgås i eksamensanalyser.",
+              "source_location": "s. 7"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort liste",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort beskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En klar kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien genopbygges omkring ideen om personlighed som konkret deltagelse i sociale praksisser, frem for at analysere individet som en bærer af indre, isolerede træk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Gem Abridged Reader væk og arbejd fra hukommelsen. Brug kun materialet til at tjekke og reparere dine svar bagefter.",
+      "overview": [
+        "Teksten argumenterer for at skrotte tanken om uafhængige individer.",
+        "Den gør deltagelse til omdrejningspunktet for at forstå personens agens i strukturer.",
+        "Den fjerner ideen om et passivt og ensartet samfundsmiljø."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Dreier hævder skarpt, at al klassisk og kritisk analyse i psykologien må basere sig på at betragte mennesker som deltagere i en social __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Begrebet deltagelse er analytisk overlegent, fordi det stærkt forhindrer forskeren i at analysere individet som en rent ud fritsvævende __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Individets faktiske magt og formåen er fundamentalt aldrig almægtig, men derimod grundlæggende delvis og __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Menneskelig handleevne involverer en kontinuerlig dobbelthed af handling, hvor vi reproducerer den eksisterende struktur, mens vi også har kapacitet til at __________ dens muligheder.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 verbum"
+        },
+        {
+          "number": 5,
+          "sentence": "For ikke at forvride analysen, må psykologien afvise den reduktionistiske opfattelse af samfundet som blot værende en enorm, upersonlig __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navneord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel, men præcis oversigtsmodel over en person, der interagerer på tværs af to adskilte lokale kontekster. Anvend pile til at markere, hvordan personens rækkevidde af magt (position) varierer mellem de to steder.",
+          "required_elements": [
+            "En markering af personen",
+            "mindst to tydeligt adskilte lokaliteter",
+            "pile der indikerer en ulig retning af indflydelse"
+          ],
+          "blank_space_hint": "Brug cirka en tredjedel af en blank side"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Disse metoder er designet til at gøre teorien operativ til eksamen. Øv dig i at udtale koncepterne præcist og kort.",
+      "use_this_text_for": [
+        "At levere en stærk analyse af orienteringspunktet 'Context' ved at bytte begrebet ud med 'social praksis'.",
+        "At dekonstruere enhver påstand om, at en person har universelle træk, der virker på tværs af alle situationer.",
+        "At forankre begrebet 'handleevne' sociologisk i stedet for klinisk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Uge 2)",
+          "connection": "Dreiers kritik af 'fritsvævende aktører' er et knivskarpt teoretisk angreb på dimensional trækpsykologi, der netop forsøger at måle reificerede træk isoleret fra personens daglige strukturer."
+        },
+        {
+          "course_theme": "Humanistisk Psykologi (Uge 7)",
+          "connection": "Både kritisk og humanistisk psykologi kæmper for handleevne, men hvor humanismen placerer den i indre, organisk selvrealisering, hævder Dreier den ligger i materiel forandring af lokal praksis."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae",
+          "how_to_compare": "Klargør metodisk hvordan femfaktormodellen nødvendigvis placerer personligheden *inde* i individet, mens kritisk psykologi distribuerer den ud i et netværk af positioner."
+        },
+        {
+          "compare_with": "Rogers' selvaktualisering",
+          "how_to_compare": "Sammenhold Rogers' jagt på universel ubetinget anerkendelse med Dreiers betoning af, at individet umuligt kan være alt for alle, fordi det altid kun er 'partikulært'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du bliver bedt om at vurdere determinisme versus agens",
+          "use_in_answer": "Brug 'dobbeltheden' i deltagelse til at argumentere for en position midt i mellem. Vi reproducerer systemet under pres, men har muligheden for modstand.",
+          "caution": "Påstå aldrig at kritisk psykologi nægter individets evne til at træffe valg."
+        },
+        {
+          "prompt_type": "Når du diskuterer en bestemt empirisk case fra undervisningen",
+          "use_in_answer": "Identificér straks hvilke forskellige lokale praksisser (fx skole, kriminel bande, behandlerkontor) personen forsøger at manøvrere imellem.",
+          "caution": "Kald det ikke bare generisk 'kultur' eller 'miljø'."
+        },
+        {
+          "prompt_type": "Hvis opgaven kræver at du inddrager 'Context'",
+          "use_in_answer": "Sig højt, at subjektivitet teknisk set blot er en \"partial personal aspect of a social practice\". Gør konteksten til byggeklodsen, ikke baggrundstæppet.",
+          "caution": "Undgå at køre fast i de gamle diskussioner om arv kontra miljø."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse kritisk psykologi som rendyrket social determinisme, hvor individet blot er et passivt offer for kapitalisme.",
+          "better_reading": "Deltagelsesbegrebet forudsætter aktiv medskaben. Handlinger reproducerer altid noget, selv når de synes determinerede."
+        },
+        {
+          "trap": "At behandle 'deltagelse' bredt, som at være fysisk til stede i et rum (at 'deltage' i en fest).",
+          "better_reading": "Opfattelsen af deltagelse som en konkret, struktureret greb i en lokal magtfordeling og en formel social institution."
+        }
+      ],
+      "mini_exam_prompt_question": "Anvend kritisk psykologi til at diskutere spændingsfeltet mellem 'Context' og 'Agency'. Hvordan afmonterer begrebet 'deltagelse' trækpsykologiens antagelser om uafhængighed?",
+      "mini_exam_answer_plan_slots": [
+        "Opbyg kritikken af den fritsvævende aktør versus the always already involved person.",
+        "Forklar præcis, hvordan handleevne stadig opretholdes gennem det delvise og partikulære subjekt.",
+        "Demonstrér, at den sociale struktur ikke er en beholder, men lokale arenaer for kamp."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-dreier-1999-35da58b5",
+      "lecture_key": "W09L1",
+      "source_title": "Dreier (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug guiden til at orientere dig i Dreiers fundamentale opgør med psykologiens klassiske, isolerede menneskesyn.",
+      "teaser_paragraphs": [
+        "I mange klassiske psykologiske teorier fremstår individet som en \"fritsvævende aktør\". Vi tænker instinktivt på personligheden som noget rent indre og færdigstøbt, en stabil pakke af egenskaber, vi bærer usynligt med os, uanset hvor vi befinder os. Dreier udfordrer denne grundantagelse radikalt: En holdbar personlighedspsykologi kan ikke bygge på et teoretisk reagensglas-menneske.",
+        "For at gribe, hvad folk reelt gør og føler, må vi ifølge kritisk psykologi i stedet forstå dem som *always already involved in social practice*. Det betyder, at vi ikke meningsfuldt kan løsrive personen fra de helt konkrete steder – hjemmet, skolen, arbejdspladsen – hvor deres faktiske liv foregår. Konteksten er ikke blot en passiv baggrundsskærm; den udgør selve materialet for vores gøren og laden.",
+        "Dette fremtvinger samtidig et skarpt skift i analysen af menneskelig handleevne. Hvis individet langtfra er en almægtig agent, men tværtimod kun har et begrænset greb om sine betingelser, hvordan kan vi så nogensinde ændre vores vilkår? Dreiers løsning er at droppe de brede abstraktioner og kræve en ubarmhjertig næranalyse af vores reelle, lokale deltagelse i ulige strukturer."
+      ],
+      "main_problem": "Hvordan kan psykologien genopbygges omkring ideen om personlighed som konkret deltagelse i sociale praksisser, frem for at analysere individet som en bærer af indre, isolerede træk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?",
+          "why_it_matters": "Det definerer præcist opgøret med ideen om mennesket som en uafhængig, kontekstløs enhed.",
+          "answer_form": "Kort liste"
+        },
+        {
+          "number": 2,
+          "question": "Hvad indebærer det, at individets position i en praksis altid er 'delvis og partikulær'?",
+          "why_it_matters": "Det er nøglen til at forstå grænserne for vores umiddelbare handleevne.",
+          "answer_form": "Kort beskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan underminerer begrebet 'social praksis' forestillingen om samfundet som en ensartet beholder?",
+          "why_it_matters": "Det sætter scenen for at analysere den sociale strukturs indbyggede modsætninger og magtforhold.",
+          "answer_form": "En klar kontrast"
+        }
+      ],
+      "why_this_text_matters": "Dette er hovedteksten for at forstå kritisk psykologis syn på 'Context' og 'Agency', to af kursets fire gennemgående orienteringspunkter.",
+      "overview": [
+        "Teksten argumenterer for at forlade tanken om det isolerede individ i klassisk psykologi.",
+        "Den introducerer 'deltagelse' som en skarp, analytisk linse for at undersøge menneskelig handleevne.",
+        "Den dekonstruerer billedet af samfundet som en uniform påvirkningsmaskine."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 5",
+          "task": "Læs indledningen og frem til Dreiers første argument for begrebet deltagelse.",
+          "why_it_matters": "Etablerer tekstens overordnede formål.",
+          "stop_signal": "når du når Dreiers fire opsummerende argumenter"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 6",
+          "task": "Dyk ned i kritikken af de fritsvævende aktører og opdelingen af det delvise subjekt.",
+          "why_it_matters": "Her udfoldes de teoretiske mekanismer omkring begrænset handleevne.",
+          "stop_signal": "når begreberne delvis og partikulær er introduceret"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 7",
+          "task": "Læs det første stykke af sektion 2 om social strukturs diversitet.",
+          "why_it_matters": "Giver dig ammunition til at kritisere ensartede teorier om miljøpåvirkning.",
+          "stop_signal": "når kontrasten mellem beholder-samfundet og lokal praksis er tydelig"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "always already involved in social practice",
+          "why": "Konkretiserer præmissen om, at et neutralt nulpunkt for adfærd ikke findes.",
+          "where_to_look": "s. 5"
+        },
+        {
+          "target": "partial personal aspect of a social practice",
+          "why": "Afgrænser det præcise objekt for kritisk personlighedspsykologi.",
+          "where_to_look": "s. 6"
+        },
+        {
+          "target": "not homogenous. It consists of diverse, located contextual practices",
+          "why": "Leverer selve definitionen af det fragmenterede sociale landskab.",
+          "where_to_look": "s. 7"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange, metodiske referencer til andre teoretikeres udlægninger af diskurs og relation.",
+        "Filosofiske sidebemærkninger om Wittgenstein og sprogspil.",
+        "Den bagvedliggende kliniske historik, som teksten kun berører perifert."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne sektionsopdelte gennemgang for at forstå argumentationen trin for trin. Brug den som dit primære værktøj til at løse de efterfølgende opgaver.",
+      "coverage_note": "Fokuserer på Dreiers begrebslige argumenter for at erstatte handling med deltagelse (s. 5-7).",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 5-6",
+          "heading": "Opgøret med den fritsvævende aktør",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "explanation_paragraphs": [
+            "Dreier kritiserer traditionelle psykologiske teorier, der betragter mennesker som fundamentalt adskilte fra deres omgivelser. Selvom alternative begreber som 'handling', 'relation' eller 'dialog' lyder dynamiske og moderne, mangler de ofte evnen til metodisk at placere personen et bestemt, konkret sted. Dette skaber et farligt analytisk problem, fordi psykologien derved behandler individet, som om handlinger udføres i et teoretisk vakuum uafhængigt af en lokal virkelighed.",
+            "Som løsning insisterer Dreier på, at psykologien må tage eksklusivt udgangspunkt i begrebet 'deltagelse'. Deltagelse som en analytisk figur tvinger forskeren til at betragte subjektet som iboende og uløseligt indlejret i en specifik kontekst. Vi agerer ikke ud fra frit svævende indre motiver, men ud fra de præcise strukturelle muligheder, der stilles til rådighed af den sociale praksis, vi aktuelt står i."
+          ],
+          "key_points": [
+            "Klassiske termer tillader psykologer at ignorere de materielle og sociale rammer.",
+            "Deltagelsesbegrebet sikrer, at ingen adfærd kan adskilles fra sin kontekst."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "always already involved",
+              "why_it_matters": "Markerering af at der ikke findes et forudgående uskyldigt individ.",
+              "source_location": "s. 5"
+            },
+            {
+              "phrase": "free-floating agents",
+              "why_it_matters": "Hovedkritikken mod urealistiske syn på menneskelig vilje.",
+              "source_location": "s. 6"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 6",
+          "heading": "Det delvise og partikulære subjekt",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "explanation_paragraphs": [
+            "Hvis vores eksistens er uløseligt knyttet til social praksis, rejser det straks et problem omkring handleevne. Dreier understreger, at intet menneske er en almægtig agent, der kan overskue eller styre hele den komplekse struktur. Vores evne til at deltage og influere omgivelserne er uundgåeligt delvis; vi griber kun ind i et lille hjørne af praksissen ad gangen.",
+            "Samtidig er vores subjektivitet partikulær. Det betyder simpelthen, at vi træder ind i situationer fra meget bestemte, ulige positioner, der giver os vidt forskellige muligheder og snævre forpligtelser. Dette skaber en basal menneskelig dobbelthed i handling: Vi agerer inden for rammerne af den eksisterende struktur (hvilket uundgåeligt reproducerer den), men det er også fra denne partikulære position, at vi har kapaciteten til langsomt at udvide rammerne og ændre på tingenes tilstand."
+          ],
+          "key_points": [
+            "Personlighed er ikke hel og ensartet, men spændt ud over forskellige ulige positioner.",
+            "Handleevne indebærer altid en kamp mellem at reproducere vilkår og at skubbe til deres grænser."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "s. 6",
+            "passage": "No individual subject is an omnipotent agent or covers it all. Individual subjectivity is a partial personal aspect of a social practice.",
+            "why_it_matters": "Det indkapsler selve hjertet af kritisk psykologis syn på subjektet: som blot én del af et større hele, frem for et isoleret center."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 7",
+          "heading": "Opgøret med samfundet som en ensartet beholder",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "explanation_paragraphs": [
+            "For at bruge deltagelse som begreb effektivt, kræver det en nøjagtig forståelse af selve den struktur, vi deltager i. En række udbredte samfundsteorier fremstiller fejlagtigt samfundet som en gigantisk, ensartet beholder, der rummer og påvirker samtlige borgere på nøjagtig samme diffuse måde. Dreier forkaster denne form for teoretisk oversimplificering.",
+            "Virkelighedens sociale praksis er aldrig homogen. Den består af et mangfoldigt netværk af lokale, kontekstuelle steder – for eksempel det specifikke klasseværelse, familiebordet eller fabriksgulvet. Disse lokaliteter er strukturelt forbundet, men de indeholder markant forskellige regler og ulige magtdynamikker. Et individs daglige livsførelse skabes ved kontinuerligt at navigere og forhandle overgange mellem disse separate kontekster."
+          ],
+          "key_points": [
+            "Miljøet er ikke en monolitisk kraft, men splittet i små lokale enheder.",
+            "Psykologien må kigge på den konkrete struktur, før den vurderer individets adfærd."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "not homogenous",
+              "why_it_matters": "Afgørende skelnen der tvinger analysen væk fra at tale generisk om 'kultur'.",
+              "source_location": "s. 7"
+            },
+            {
+              "phrase": "sort of container",
+              "why_it_matters": "Billedet på den reduktionistiske fejltagelse der skal undgås i eksamensanalyser.",
+              "source_location": "s. 7"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort liste",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort beskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En klar kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien genopbygges omkring ideen om personlighed som konkret deltagelse i sociale praksisser, frem for at analysere individet som en bærer af indre, isolerede træk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Gem Abridged Reader væk og arbejd fra hukommelsen. Brug kun materialet til at tjekke og reparere dine svar bagefter.",
+      "overview": [
+        "Teksten argumenterer for at skrotte tanken om uafhængige individer.",
+        "Den gør deltagelse til omdrejningspunktet for at forstå personens agens i strukturer.",
+        "Den fjerner ideen om et passivt og ensartet samfundsmiljø."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Dreier hævder skarpt, at al klassisk og kritisk analyse i psykologien må basere sig på at betragte mennesker som deltagere i en social __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Begrebet deltagelse er analytisk overlegent, fordi det stærkt forhindrer forskeren i at analysere individet som en rent ud fritsvævende __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Individets faktiske magt og formåen er fundamentalt aldrig almægtig, men derimod grundlæggende delvis og __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Menneskelig handleevne involverer en kontinuerlig dobbelthed af handling, hvor vi reproducerer den eksisterende struktur, mens vi også har kapacitet til at __________ dens muligheder.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 verbum"
+        },
+        {
+          "number": 5,
+          "sentence": "For ikke at forvride analysen, må psykologien afvise den reduktionistiske opfattelse af samfundet som blot værende en enorm, upersonlig __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navneord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel, men præcis oversigtsmodel over en person, der interagerer på tværs af to adskilte lokale kontekster. Anvend pile til at markere, hvordan personens rækkevidde af magt (position) varierer mellem de to steder.",
+          "required_elements": [
+            "En markering af personen",
+            "mindst to tydeligt adskilte lokaliteter",
+            "pile der indikerer en ulig retning af indflydelse"
+          ],
+          "blank_space_hint": "Brug cirka en tredjedel af en blank side"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Disse metoder er designet til at gøre teorien operativ til eksamen. Øv dig i at udtale koncepterne præcist og kort.",
+      "use_this_text_for": [
+        "At levere en stærk analyse af orienteringspunktet 'Context' ved at bytte begrebet ud med 'social praksis'.",
+        "At dekonstruere enhver påstand om, at en person har universelle træk, der virker på tværs af alle situationer.",
+        "At forankre begrebet 'handleevne' sociologisk i stedet for klinisk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Uge 2)",
+          "connection": "Dreiers kritik af 'fritsvævende aktører' er et knivskarpt teoretisk angreb på dimensional trækpsykologi, der netop forsøger at måle reificerede træk isoleret fra personens daglige strukturer."
+        },
+        {
+          "course_theme": "Humanistisk Psykologi (Uge 7)",
+          "connection": "Både kritisk og humanistisk psykologi kæmper for handleevne, men hvor humanismen placerer den i indre, organisk selvrealisering, hævder Dreier den ligger i materiel forandring af lokal praksis."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae",
+          "how_to_compare": "Klargør metodisk hvordan femfaktormodellen nødvendigvis placerer personligheden *inde* i individet, mens kritisk psykologi distribuerer den ud i et netværk af positioner."
+        },
+        {
+          "compare_with": "Rogers' selvaktualisering",
+          "how_to_compare": "Sammenhold Rogers' jagt på universel ubetinget anerkendelse med Dreiers betoning af, at individet umuligt kan være alt for alle, fordi det altid kun er 'partikulært'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du bliver bedt om at vurdere determinisme versus agens",
+          "use_in_answer": "Brug 'dobbeltheden' i deltagelse til at argumentere for en position midt i mellem. Vi reproducerer systemet under pres, men har muligheden for modstand.",
+          "caution": "Påstå aldrig at kritisk psykologi nægter individets evne til at træffe valg."
+        },
+        {
+          "prompt_type": "Når du diskuterer en bestemt empirisk case fra undervisningen",
+          "use_in_answer": "Identificér straks hvilke forskellige lokale praksisser (fx skole, kriminel bande, behandlerkontor) personen forsøger at manøvrere imellem.",
+          "caution": "Kald det ikke bare generisk 'kultur' eller 'miljø'."
+        },
+        {
+          "prompt_type": "Hvis opgaven kræver at du inddrager 'Context'",
+          "use_in_answer": "Sig højt, at subjektivitet teknisk set blot er en \"partial personal aspect of a social practice\". Gør konteksten til byggeklodsen, ikke baggrundstæppet.",
+          "caution": "Undgå at køre fast i de gamle diskussioner om arv kontra miljø."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse kritisk psykologi som rendyrket social determinisme, hvor individet blot er et passivt offer for kapitalisme.",
+          "better_reading": "Deltagelsesbegrebet forudsætter aktiv medskaben. Handlinger reproducerer altid noget, selv når de synes determinerede."
+        },
+        {
+          "trap": "At behandle 'deltagelse' bredt, som at være fysisk til stede i et rum (at 'deltage' i en fest).",
+          "better_reading": "Opfattelsen af deltagelse som en konkret, struktureret greb i en lokal magtfordeling og en formel social institution."
+        }
+      ],
+      "mini_exam_prompt_question": "Anvend kritisk psykologi til at diskutere spændingsfeltet mellem 'Context' og 'Agency'. Hvordan afmonterer begrebet 'deltagelse' trækpsykologiens antagelser om uafhængighed?",
+      "mini_exam_answer_plan_slots": [
+        "Opbyg kritikken af den fritsvævende aktør versus the always already involved person.",
+        "Forklar præcis, hvordan handleevne stadig opretholdes gennem det delvise og partikulære subjekt.",
+        "Demonstrér, at den sociale struktur ikke er en beholder, men lokale arenaer for kamp."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

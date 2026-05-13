@@ -1,0 +1,1206 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T11:20:56Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
+    "source_files_signature": "5c6ce2e5a83310fdc3328b747882c51870697c54e704b5bbfc0fa5b57a394f90",
+    "source_card": "ef33d20383bf2405def073620269382958004c08b1d550623fa9e38b4ec909b8",
+    "revised_lecture_substrate": "27ff9cf80e19926fd58d04905d08e1c2aef11540b3f986f4fa239ad966476984",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+    "lecture_key": "W12L1",
+    "title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 72,
+    "estimated_token_count": 46800,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf"
+    ],
+    "reading_title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W12L1"
+    ],
+    "sequence_index": 3,
+    "source_filename": "W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "subject_relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "da",
+    "priority_signals": {
+      "is_grundbog": true,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": true,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "582ad8ba215e2152aca2c9a1c5e870134a7e51cb7ead3651b1a2c71fc7ba43f5",
+      "size_bytes": 7873734,
+      "page_count": 72,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 46800,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": [
+      "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 14 - Perspektiver på personlighedspsykologi.analysis.md"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 72,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "lecture_key": "W12L1",
+      "source_title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at skabe overblik over tekstens problemstillinger, før du læser selve teksten.",
+      "teaser_paragraphs": [
+        "Igennem hele kurset har du mødt radikalt forskellige bud på, hvad en personlighed overhovedet er. Nogle vil måle den, nogle vil lytte til dens ubevidste, og nogle vil dekonstruere den.",
+        "Men hvis du forsøger at kaste alle disse teorier ned i én stor, samlet boks, falder psykologien fra hinanden. Der er ganske enkelt grundlæggende ontologiske og epistemologiske forskelle.",
+        "Dette kapitel introducerer den bagvedliggende spænding. En stor del af forklaringen ligger i kløften mellem den angelsaksiske og den kontinentale videnskabstradition. Den ene anklages ofte for at være reduktiv evidensjagt, mens den anden beskyldes for at *\"svinge sig i de filosofiske lianer\"*.",
+        "For at du kan navigere i dette og overleve eksamen, udstyrer teksten dig med fire konkrete orienteringspunkter: *essens vs. kontekst, agency, determination og historicitet*.",
+        "Du skal lære at bruge disse punkter som et kompas. Når du forstår at kroppen ikke bare er biologi for alle, og at bevidstheden kan være både styrende og et overfladefænomen, kan du pludselig lade teorierne tale sammen.",
+        "Din opgave er at fange dette metateoretiske rammeværk. Kan du placere en teori på disse fire akser, har du det ultimative eksamensværktøj."
+      ],
+      "main_problem": "Hvordan kan vi systematisk sammenligne og kontrastere vidt forskellige personlighedspsykologiske teorier uden at reducere deres kompleksitet?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller den kontinentale psykologitradition fra den angelsaksiske?",
+          "why_it_matters": "Det forklarer, hvorfor nogle teorier fokuserer tungt på målinger, mens andre kræver massive filosofiske overbygninger.",
+          "answer_form": "En kort kontrastbeskrivelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er de fire faste temaer, der kan bruges til at sammenligne alle teorier?",
+          "why_it_matters": "Det er din faste tjekliste til enhver eksamensbesvarelse.",
+          "answer_form": "Fire specifikke begreber"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forandrer synet på 'kroppen' sig, når vi rykker fra naturvidenskab til fænomenologi?",
+          "why_it_matters": "Det beviser, at biologi ikke er en objektiv sandhed, der betyder det samme i alle videnskabsparadigmer.",
+          "answer_form": "Et skifte i ontologisk status"
+        },
+        {
+          "number": 4,
+          "question": "Hvor placerer teorierne det frie valg (agency)?",
+          "why_it_matters": "Det viser forskellen på teorier, der ser mennesket som fuldt bevidst handlende, og teorier der ser os som styret udefra.",
+          "answer_form": "En modsætning mellem to yderpunkter"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor kaldes de sociokulturelle teorier for anti-essentialistiske?",
+          "why_it_matters": "Det udgør det stærkeste modargument mod kursets tidlige trækpsykologi.",
+          "answer_form": "En forklaring på, hvor meningen er forankret"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets capstone-tekst. Den flytter dig fra passivt at lære isolerede teorier til aktivt at kunne sammenligne dem til eksamen via de fire obligatoriske orienteringspunkter.",
+      "overview": [
+        "Kapitlet samler op på hele grundbogen ved at give dig et metateoretisk rammeværk.",
+        "Det afliver karikaturen af, at dansk og international psykologi blot er filosofi versus statistik.",
+        "Du får de fire nøglebegreber, der skal bruges til at sammenligne og kontrastere teorier til eksamen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 466-468",
+          "task": "Find den reelle forskel på den angelsaksiske og kontinentale tradition.",
+          "why_it_matters": "Giver dig en baggrundsforståelse af teksternes forskellige afsæt.",
+          "stop_signal": "Når du når afsnittet 'Bogens kapitler'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 469-470",
+          "task": "Skim dette overblik over bogens struktur for at se, hvor tyngden ligger internationalt versus i Danmark.",
+          "why_it_matters": "Placerer de teorier, du allerede har læst, i en historisk kontekst.",
+          "stop_signal": "Når du når 'Personligheden og dens komponenter'"
+        },
+        {
+          "number": 3,
+          "source_location": "Side 471",
+          "task": "Lokaliser de fire gennemgående temaer til teorisammenligning.",
+          "why_it_matters": "Dette er selve eksamensværktøjet.",
+          "stop_signal": "Når du når overskriften 'Biologi og krop'"
+        },
+        {
+          "number": 4,
+          "source_location": "Side 472",
+          "task": "Afgør hvordan kroppen kan forstås psykologisk frem for kun fysiologisk.",
+          "why_it_matters": "Hjælper dig med ikke at reducere fænomenologi til genetik.",
+          "stop_signal": "Når du når overskriften 'Essens og agency'"
+        },
+        {
+          "number": 5,
+          "source_location": "Side 473",
+          "task": "Kontraster eksistentiel absolut frihed (agency) med kritisk psykologis livsbanebegreb.",
+          "why_it_matters": "Viser hvordan agency omdefineres fra et internt valg til social deltagelse.",
+          "stop_signal": "Når du når overskriften 'Kontekst'"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 474-475",
+          "task": "Forstå hvorfor meningsdannelse forskyder fokus fra indre essens til eksterne medier og sprog.",
+          "why_it_matters": "Dette er dekonstruktionen af trækpsykologien.",
+          "stop_signal": "Når du når 'Hvor er personlighedspsykologien på vej hen?'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "svinge sig i de filosofiske lianer og ser empiri som noget sekundært",
+          "why": "Fanger karikaturen af kontinental psykologi over for angelsaksisk.",
+          "where_to_look": "Side 467"
+        },
+        {
+          "target": "essens vs. kontekst, agency, determination og historicitet",
+          "why": "Dette er de fire uundgåelige parametre for enhver eksamensanalyse på kurset.",
+          "where_to_look": "Side 471"
+        },
+        {
+          "target": "kroppen indgår i andre 'udgaver' end den fysiologiske",
+          "why": "Beviser at biologien i personlighedspsykologien ikke er én fast sandhed.",
+          "where_to_look": "Side 472"
+        },
+        {
+          "target": "er pr. definition anti-essentialistiske",
+          "why": "Sammenfatter de sociokulturelle teoriers opgør med en fast indre kerne.",
+          "where_to_look": "Side 474"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede neuropsykologiske afsnit om specifikke gener",
+        "Årstal og specifikke baggrundshistorier for forfatterne nævnt i starten og slutningen",
+        "Opremsninger af teorier, vi ikke har dækket på kurset (fx specifik asiatisk mindfulness)"
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 467",
+          "excerpt": "Når man modstiller den angelsaksiske og den kontinentale tradition, sker det ofte ved kritisk at hævde, at den angelsaksiske definerer videnskab som en udelukkende evidensbaseret kvantitativ forskning...",
+          "open_question": "Er denne modstilling en præcis beskrivelse eller en forsimplet karikatur af forskningsfeltet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Side 467",
+          "excerpt": "svinge sig i de filosofiske lianer og ser empiri som noget sekundært",
+          "open_question": "Hvad er de fire faste temaer, der kan bruges til at sammenligne alle teorier?"
+        },
+        {
+          "number": "3",
+          "source_location": "Side 471",
+          "excerpt": "essens vs. kontekst, agency, determination og historicitet",
+          "open_question": "Hvordan forandrer synet på 'kroppen' sig, når vi rykker fra naturvidenskab til fænomenologi?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at få de nødvendige svar på læseguiden. Sektionerne er bygget, så du kan løse de efterfølgende ark uden at slå op i selve pdf'en.",
+      "coverage_note": "Fokuserer udelukkende på opstillingen af de to traditioner og applikationen af de fire analytiske temaer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 466-468",
+          "heading": "De to traditioner: Karikatur og virkelighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør, hvad der fundamentalt adskiller den danske tilgang fra den internationale hovedstrømning?",
+          "explanation_paragraphs": [
+            "Dansk personlighedspsykologi er historisk stærkt forankret i den kontinentale (europæiske) tradition. Det adskiller sig fra mange internationale, amerikansk-dominerede lærebøger, der er solidt plantet i den angelsaksiske tradition.",
+            "Forskellen opstilles ofte firkantet: Den angelsaksiske tradition fremstilles som en ren kvantitativ, evidensfokuseret maskine, der reducerer mennesket til noget, der kan måles. Omvendt anklages den kontinentale tradition for blot at bedrive løsrevet filosofi, der ignorerer hård data.",
+            "Men teksten slår fast, at dette er en karikatur. Den reelle forskel ligger i opfattelsen af empiri og teoriens rolle. I den kontinentale tradition betragtes teorien som et helt nødvendigt fundament for overhovedet at begribe data. I den angelsaksiske nedtones teoridelen bevidst for at lade 'data tale for sig selv'."
+          ],
+          "key_points": [
+            "Den angelsaksiske tradition har typisk rod i kvantitativ evidens og måling.",
+            "Den kontinentale tradition trækker oftere på fænomenologi, filosofi og teoretisk fortolkning.",
+            "Modstillingen af de to som kun 'matematik vs. filosofi' er en overdrevet karikatur."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "svinge sig i de filosofiske lianer",
+              "why_it_matters": "Dette udtrykker karikaturen af den kontinentale videnskabstradition.",
+              "source_location": "Side 467"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 471",
+          "heading": "Det analytiske værktøj: Fire temaer",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Identificer præcis, hvilke begreber du skal bruge til eksamen?",
+          "explanation_paragraphs": [
+            "Når man ser på det samlede felt, står det klart, at der ikke findes én samlet personlighedspsykologi, der dækker det hele. Man må i stedet sammenligne de forskellige retninger ud fra fælles koordinater.",
+            "Kapitlet udpeger fire gennemgående temaer, som du kan bruge til at positionere enhver teori: essens vs. kontekst, agency, determination og historicitet.",
+            "Disse fire temaer er uløseligt forbundne. Et skift i et af temaerne forrykker som regel forståelsen af de tre andre. Det er dette rammeværk, du skal demonstrere beherskelse af til eksamen."
+          ],
+          "key_points": [
+            "Teorier kan ikke blot reduceres til én objektiv sandhed; de udgør forskellige perspektiver.",
+            "De fire temaer (essens/kontekst, agency, determination, historicitet) er de primære akser for analyse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "essens vs. kontekst, agency, determination",
+              "why_it_matters": "Opremsningen af de eksakte analysebegreber.",
+              "source_location": "Side 471"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 472",
+          "heading": "Biologi og den dobbelte krop",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beskriv hvordan synet på kroppen skifter mellem fysiologisk determination og fænomenologisk bevidsthed?",
+          "explanation_paragraphs": [
+            "Biologiske og naturvidenskabelige tilgange anskuer typisk personen ud fra gener, evolution og nervesystem. Her bliver 'determination' afgørende, mens 'essens og kontekst' udviskes. Bevidstheden ses blot som et tilsyneladende centrum, idet det reelt er biologien, der træffer valgene.",
+            "Men kroppen forstår anderledes i andre traditioner. Allerede i 1890'erne pegede William James på, at kroppen er mere end fysik. Fænomenologien, især ved Merleau-Ponty, insisterer på, at kroppen har bevidsthedsmæssige kvaliteter. Den er en handlende, meningsskabende psykisk størrelse i verden."
+          ],
+          "key_points": [
+            "Naturvidenskaben ser ofte bevidsthed som sekundær til genetisk determination.",
+            "Fænomenologien anser kroppen for at være et radikalt meningsdannende subjekt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "kroppen indgår i andre 'udgaver' end den fysiologiske",
+              "why_it_matters": "Fastslår, at selve kroppens ontologiske natur skifter fra teori til teori.",
+              "source_location": "Side 472"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Side 473",
+          "heading": "Essens og Agency",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Sammenlign teoriernes syn på menneskets frihed til at vælge sit liv?",
+          "explanation_paragraphs": [
+            "Visse teorier opprioriterer subjektets iboende kerne (essens) frem for samfundet (kontekst). Den eksistentielle psykologi er den mest radikale i sit syn på frit valg (agency). Den påstår, at subjektet er transparent for sig selv, og at enhver handling udspringer af et intenst, frit valg forbundet til dødsangst og eksistens.",
+            "I stærk kontrast står f.eks. den kritiske psykologi. Den tror også på, at bevidstgørelse er vigtig, men agency er ikke længere blot en intern, absolut frihed. Her er agency afhængig af de samfundsmæssige betingelser og evnen til at påvirke sin egen livsbane og deltagelse i fællesskabet."
+          ],
+          "key_points": [
+            "Eksistentiel psykologi repræsenterer maksimal intern agency og transparens.",
+            "Kritisk psykologi forstår agency som en kamp for handlevilkår i samfundet (livsbanen)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "enhver handling er frit valgt",
+              "why_it_matters": "Beskriver det eksistentielle ekstrem på agency-skalaen.",
+              "source_location": "Side 473"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 474-475",
+          "heading": "Kontekst og Anti-essentialisme",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forsvar, hvorfor sociokulturelle teorier helt forkaster ideen om et indre biologisk selv?",
+          "explanation_paragraphs": [
+            "I den sociokulturelle og narrative gren af psykologien nedprioriteres det biologiske til fordel for det historiske og samfundsmæssige. Mening er aldrig bare opfundet frit inde i den enkelte persons hoved.",
+            "Mening er altid forankret i et kollektivt medie, typisk det talte eller skrevne sprog. Selve bevidstheden flyttes væk fra en lokaliseret biomasse (hjernen/kroppen) ud i relationerne. Det gør disse teorier fundamentalt anti-essentialistiske, idet de opløser den faste grænse mellem individ og samfund."
+          ],
+          "key_points": [
+            "Sociokulturelle teorier opprioriterer kontekst og relation frem for individuel essens.",
+            "Sprog og kultur fungerer som mediende strukturer for meningsdannelse.",
+            "De afviser den traditionelle naturvidenskabelige trækpsykologis ide om faste, medfødte kerner."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "De er pr. definition anti-essentialistiske",
+              "why_it_matters": "Den afgørende forskel på poststrukturalisme og trækpsykologi.",
+              "source_location": "Side 474"
+            }
+          ],
+          "source_passages": {
+            "source_location": "Side 474",
+            "passage": "Det meningsskabende er placeret i relationer mellem subjekter, måske endda i et kollektivt subjekt. Man kan til en vis grad sige, at subjektet ikke er lokaliseret i den afgrænsede biomasse, som er vores krop, men at det eksisterer i relationer på tværs af kroppen og i et mediebåret meningsunivers.",
+            "why_it_matters": "Dette præcise citat er eksamensbeviset for dekonstruktionen af det indre, afgrænsede selv, som kurset startede med."
+          },
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør, hvad der fundamentalt adskiller den danske tilgang fra den internationale hovedstrømning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrastbeskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Identificer præcis, hvilke begreber du skal bruge til eksamen?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Fire specifikke begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beskriv hvordan synet på kroppen skifter mellem fysiologisk determination og fænomenologisk bevidsthed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et skifte i ontologisk status",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Sammenlign teoriernes syn på menneskets frihed til at vælge sit liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En modsætning mellem to yderpunkter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forsvar, hvorfor sociokulturelle teorier helt forkaster ideen om et indre biologisk selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En forklaring på, hvor meningen er forankret",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi systematisk sammenligne og kontrastere vidt forskellige personlighedspsykologiske teorier uden at reducere deres kompleksitet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader ned. Udfyld dette ark fra hukommelsen for at fastlåse dit metateoretiske overblik. Tjek først tekstmaterialet bagefter for at reparere fejl.",
+      "overview": [
+        "Dette kapitel afslutter kurset ved at levere dit centrale eksamensværktøj.",
+        "Det skelner videnskabsteoretisk mellem den teoritunge kontinentale tradition og den evidensfokuserede angelsaksiske tradition.",
+        "Du skal anvende fire specifikke temaer til at analysere, sammenligne og kontrastere alle kursets teorier."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den ________ tradition i psykologien har historisk domineret universiteterne i Danmark frem for den amerikanske.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Den angelsaksiske tradition fremstilles ofte som fuldstændig reduceret til ________, hvor teorien træder i baggrunden.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det eksamensrelevante tema, der beskriver graden af frit valg og intentionalitet, kaldes ________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Naturvidenskabelige og biologiske teorier hælder ofte tungt mod ________ frem for at anerkende bevidstheden som et reelt handlende centrum.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Fænomenologien forstår ikke kroppen som ren biomasse, men anser den for at have ________ kvaliteter.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Eksistentiel psykologi mener modsat kritisk psykologi, at enhver handling er et udtryk for absolut ________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 kort begreb"
+        },
+        {
+          "number": 7,
+          "sentence": "Fordi sociokulturelle og narrative teorier afviser en fysiologisk, uforanderlig kerne, er de pr. definition ________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 8,
+          "sentence": "I poststrukturalisme og sociokulturel psykologi forankres mening altid i et kollektivt ________ som fx sproget, snarere end inde i hjernen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et to-sidet kontrast-skema, der skiller de to videnskabstraditioner ad.",
+          "required_elements": [
+            "Kolonner for Angelsaksisk",
+            "Kontinental",
+            "med to nøgleord for hver angående deres syn på empiri",
+            "teori"
+          ],
+          "blank_space_hint": "Brug en lodret streg i midten og lav stikord."
+        },
+        {
+          "number": 2,
+          "task": "Tegn et kompas eller et firdelt kryds for det metateoretiske rammeværk.",
+          "required_elements": [
+            "Skriv de fire gennemgående temaer",
+            "som tekstens analyser bygger på",
+            "ude i hver af de fire spidser"
+          ],
+          "blank_space_hint": "Tegn et stort plus-tegn i midten."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at formulere dine mundtlige eksamenssvar. Disse argumenter viser, at du kan tænke på metaniveau tværs over kurset.",
+      "use_this_text_for": [
+        "At bygge din faste eksamensdisposition for enhver teoripræsentation.",
+        "At løfte din analyse til et metaniveau i stedet for kun at genfortælle teorien.",
+        "At dekonstruere de tidlige ugers trækpsykologi med sociokulturelle argumenter.",
+        "At forklare, hvorfor psykologi på et dansk universitet vægter fænomenologi og teori.",
+        "At demonstrere at begreber som 'biologi' og 'kroppen' skifter betydning afhængig af paradigmet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W01L1 (Introduktion til personlighed)",
+          "connection": "Cirklen sluttes. De fire orienteringspunkter (essens, agency, osv.), du blev introduceret for i starten, aktiveres her som dit endelige eksamensværktøj."
+        },
+        {
+          "course_theme": "W02L1 (Trækpsykologi)",
+          "connection": "Tekstens begreb om 'anti-essentialisme' er det direkte våben til metodisk at kritisere de Big Five-test og statiske træk, kurset startede med."
+        },
+        {
+          "course_theme": "W11L1 (Poststrukturalisme og subjektivering)",
+          "connection": "Teksten forklarer grundlaget for Hacking og Foucault: At personlighed dannes i medier og historisk kontekst frem for som en isoleret biologisk essens."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Biologisk krop vs Fænomenologisk krop",
+          "how_to_compare": "Sammenlign genetik/fysiologi over for Merleau-Pontys meningsskabende kropssubjekt."
+        },
+        {
+          "compare_with": "Eksistentialisme vs Konstruktionisme",
+          "how_to_compare": "Kontraster det radikale indre frie valg over for en identitet fastlåst og skabt helt af eksterne diskurser."
+        },
+        {
+          "compare_with": "Angelsaksisk vs Kontinental videnskab",
+          "how_to_compare": "Sammenlign fokuseringen på kvantificerbar bundlinje over for kravet om et solidt teoretisk og filosofisk fundament."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Sammenlign to udvalgte teorier",
+          "use_in_answer": "Sig højt: 'Jeg vil strukturere min sammenligning ved at bruge de fire akser: essens vs. kontekst, agency, determination og historicitet.'",
+          "caution": "Undgå faldgruben med at genfortælle teori A og så teori B. Lad dem mødes i krydsild på akserne."
+        },
+        {
+          "prompt_type": "Kritiser et biologisk syn på personlighed",
+          "use_in_answer": "Sig højt: 'Fra et anti-essentialistisk perspektiv placeres det meningsskabende i relationer, ikke i den afgrænsede biomasse.'",
+          "caution": "Undgå at påstå at biologien slet ikke er der; påstå at den er sekundær for *meningsdannelsen*."
+        },
+        {
+          "prompt_type": "Vurder subjektets handlefrihed i en teori",
+          "use_in_answer": "Brug 'agency'-begrebet. Find ud af, om friheden er absolut (som eksistentialisme) eller betinget af deltagelsesmuligheder (som kritisk psykologi).",
+          "caution": "Glem ikke, at sociokulturelle teorier også tildeler aktørskab, men på en helt anden måde end det frie indre valg."
+        },
+        {
+          "prompt_type": "Diskuter en teoris videnskabelighed",
+          "use_in_answer": "Brug skelnet mellem angelsaksisk reduktiv evidens og kontinental teoritradition.",
+          "caution": "Brug det som tendenser, ikke karikaturer. Begge sider bruger empiri, de anerkender bare ikke det samme *som* empiri."
+        },
+        {
+          "prompt_type": "Afgør hvor personligheden sidder",
+          "use_in_answer": "Diskuter bevægelsen fra en intern kerne til et kollektivt medie, som sproget eller sociale netværk.",
+          "caution": "Skeln skarpt mellem psykisk og fysisk placering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at den kontinentale tradition helt ignorerer empiri og data.",
+          "better_reading": "Forstå at kontinental empiri bare kan være fænomenologiske interviews og teoriudvikling frem for rene tal."
+        },
+        {
+          "trap": "At sætte lighedstegn mellem 'kroppen' og 'determination' i alle tilfælde.",
+          "better_reading": "Husk at psykoanalyse og fænomenologi tildeler kroppen aktiv, selvstændig meningsdannelse."
+        },
+        {
+          "trap": "At tro at 'essens' udelukkende betyder biologi og gener.",
+          "better_reading": "Essens dækker over enhver idé om en fast iboende kerne, der former personen, biologisk eller ej."
+        }
+      ],
+      "mini_exam_prompt_question": "Opstil en systematisk sammenligning af evolutionær psykologi og poststrukturalisme ved hjælp af kapitlets fire metateoretiske temaer.",
+      "mini_exam_answer_plan_slots": [
+        "1. Introducer rammeværket: Nævn de fire orienteringspunkter (Essens/kontekst, osv.).",
+        "2. Placer naturvidenskaben (Biologisk determination, minimal agency, afgrænset biomasse).",
+        "3. Placer poststrukturalismen (Anti-essentialistisk, kollektiv kontekst, decentreret).",
+        "4. Konkluder på kløften: Påvis hvorfor den biologiske model bryder sammen i forsøget på at forklare kontekstuel meningsdannelse."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+      "lecture_key": "W12L1",
+      "source_title": "Grundbog kapitel 14 - Perspektiver på personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at skabe overblik over tekstens problemstillinger, før du læser selve teksten.",
+      "teaser_paragraphs": [
+        "Igennem hele kurset har du mødt radikalt forskellige bud på, hvad en personlighed overhovedet er. Nogle vil måle den, nogle vil lytte til dens ubevidste, og nogle vil dekonstruere den.",
+        "Men hvis du forsøger at kaste alle disse teorier ned i én stor, samlet boks, falder psykologien fra hinanden. Der er ganske enkelt grundlæggende ontologiske og epistemologiske forskelle.",
+        "Dette kapitel introducerer den bagvedliggende spænding. En stor del af forklaringen ligger i kløften mellem den angelsaksiske og den kontinentale videnskabstradition. Den ene anklages ofte for at være reduktiv evidensjagt, mens den anden beskyldes for at *\"svinge sig i de filosofiske lianer\"*.",
+        "For at du kan navigere i dette og overleve eksamen, udstyrer teksten dig med fire konkrete orienteringspunkter: *essens vs. kontekst, agency, determination og historicitet*.",
+        "Du skal lære at bruge disse punkter som et kompas. Når du forstår at kroppen ikke bare er biologi for alle, og at bevidstheden kan være både styrende og et overfladefænomen, kan du pludselig lade teorierne tale sammen.",
+        "Din opgave er at fange dette metateoretiske rammeværk. Kan du placere en teori på disse fire akser, har du det ultimative eksamensværktøj."
+      ],
+      "main_problem": "Hvordan kan vi systematisk sammenligne og kontrastere vidt forskellige personlighedspsykologiske teorier uden at reducere deres kompleksitet?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller den kontinentale psykologitradition fra den angelsaksiske?",
+          "why_it_matters": "Det forklarer, hvorfor nogle teorier fokuserer tungt på målinger, mens andre kræver massive filosofiske overbygninger.",
+          "answer_form": "En kort kontrastbeskrivelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er de fire faste temaer, der kan bruges til at sammenligne alle teorier?",
+          "why_it_matters": "Det er din faste tjekliste til enhver eksamensbesvarelse.",
+          "answer_form": "Fire specifikke begreber"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forandrer synet på 'kroppen' sig, når vi rykker fra naturvidenskab til fænomenologi?",
+          "why_it_matters": "Det beviser, at biologi ikke er en objektiv sandhed, der betyder det samme i alle videnskabsparadigmer.",
+          "answer_form": "Et skifte i ontologisk status"
+        },
+        {
+          "number": 4,
+          "question": "Hvor placerer teorierne det frie valg (agency)?",
+          "why_it_matters": "Det viser forskellen på teorier, der ser mennesket som fuldt bevidst handlende, og teorier der ser os som styret udefra.",
+          "answer_form": "En modsætning mellem to yderpunkter"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor kaldes de sociokulturelle teorier for anti-essentialistiske?",
+          "why_it_matters": "Det udgør det stærkeste modargument mod kursets tidlige trækpsykologi.",
+          "answer_form": "En forklaring på, hvor meningen er forankret"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets capstone-tekst. Den flytter dig fra passivt at lære isolerede teorier til aktivt at kunne sammenligne dem til eksamen via de fire obligatoriske orienteringspunkter.",
+      "overview": [
+        "Kapitlet samler op på hele grundbogen ved at give dig et metateoretisk rammeværk.",
+        "Det afliver karikaturen af, at dansk og international psykologi blot er filosofi versus statistik.",
+        "Du får de fire nøglebegreber, der skal bruges til at sammenligne og kontrastere teorier til eksamen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 466-468",
+          "task": "Find den reelle forskel på den angelsaksiske og kontinentale tradition.",
+          "why_it_matters": "Giver dig en baggrundsforståelse af teksternes forskellige afsæt.",
+          "stop_signal": "Når du når afsnittet 'Bogens kapitler'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 469-470",
+          "task": "Skim dette overblik over bogens struktur for at se, hvor tyngden ligger internationalt versus i Danmark.",
+          "why_it_matters": "Placerer de teorier, du allerede har læst, i en historisk kontekst.",
+          "stop_signal": "Når du når 'Personligheden og dens komponenter'"
+        },
+        {
+          "number": 3,
+          "source_location": "Side 471",
+          "task": "Lokaliser de fire gennemgående temaer til teorisammenligning.",
+          "why_it_matters": "Dette er selve eksamensværktøjet.",
+          "stop_signal": "Når du når overskriften 'Biologi og krop'"
+        },
+        {
+          "number": 4,
+          "source_location": "Side 472",
+          "task": "Afgør hvordan kroppen kan forstås psykologisk frem for kun fysiologisk.",
+          "why_it_matters": "Hjælper dig med ikke at reducere fænomenologi til genetik.",
+          "stop_signal": "Når du når overskriften 'Essens og agency'"
+        },
+        {
+          "number": 5,
+          "source_location": "Side 473",
+          "task": "Kontraster eksistentiel absolut frihed (agency) med kritisk psykologis livsbanebegreb.",
+          "why_it_matters": "Viser hvordan agency omdefineres fra et internt valg til social deltagelse.",
+          "stop_signal": "Når du når overskriften 'Kontekst'"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 474-475",
+          "task": "Forstå hvorfor meningsdannelse forskyder fokus fra indre essens til eksterne medier og sprog.",
+          "why_it_matters": "Dette er dekonstruktionen af trækpsykologien.",
+          "stop_signal": "Når du når 'Hvor er personlighedspsykologien på vej hen?'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "svinge sig i de filosofiske lianer og ser empiri som noget sekundært",
+          "why": "Fanger karikaturen af kontinental psykologi over for angelsaksisk.",
+          "where_to_look": "Side 467"
+        },
+        {
+          "target": "essens vs. kontekst, agency, determination og historicitet",
+          "why": "Dette er de fire uundgåelige parametre for enhver eksamensanalyse på kurset.",
+          "where_to_look": "Side 471"
+        },
+        {
+          "target": "kroppen indgår i andre 'udgaver' end den fysiologiske",
+          "why": "Beviser at biologien i personlighedspsykologien ikke er én fast sandhed.",
+          "where_to_look": "Side 472"
+        },
+        {
+          "target": "er pr. definition anti-essentialistiske",
+          "why": "Sammenfatter de sociokulturelle teoriers opgør med en fast indre kerne.",
+          "where_to_look": "Side 474"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede neuropsykologiske afsnit om specifikke gener",
+        "Årstal og specifikke baggrundshistorier for forfatterne nævnt i starten og slutningen",
+        "Opremsninger af teorier, vi ikke har dækket på kurset (fx specifik asiatisk mindfulness)"
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 467",
+          "excerpt": "Når man modstiller den angelsaksiske og den kontinentale tradition, sker det ofte ved kritisk at hævde, at den angelsaksiske definerer videnskab som en udelukkende evidensbaseret kvantitativ forskning...",
+          "open_question": "Er denne modstilling en præcis beskrivelse eller en forsimplet karikatur af forskningsfeltet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Side 467",
+          "excerpt": "svinge sig i de filosofiske lianer og ser empiri som noget sekundært",
+          "open_question": "Hvad er de fire faste temaer, der kan bruges til at sammenligne alle teorier?"
+        },
+        {
+          "number": "3",
+          "source_location": "Side 471",
+          "excerpt": "essens vs. kontekst, agency, determination og historicitet",
+          "open_question": "Hvordan forandrer synet på 'kroppen' sig, når vi rykker fra naturvidenskab til fænomenologi?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at få de nødvendige svar på læseguiden. Sektionerne er bygget, så du kan løse de efterfølgende ark uden at slå op i selve pdf'en.",
+      "coverage_note": "Fokuserer udelukkende på opstillingen af de to traditioner og applikationen af de fire analytiske temaer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 466-468",
+          "heading": "De to traditioner: Karikatur og virkelighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør, hvad der fundamentalt adskiller den danske tilgang fra den internationale hovedstrømning?",
+          "explanation_paragraphs": [
+            "Dansk personlighedspsykologi er historisk stærkt forankret i den kontinentale (europæiske) tradition. Det adskiller sig fra mange internationale, amerikansk-dominerede lærebøger, der er solidt plantet i den angelsaksiske tradition.",
+            "Forskellen opstilles ofte firkantet: Den angelsaksiske tradition fremstilles som en ren kvantitativ, evidensfokuseret maskine, der reducerer mennesket til noget, der kan måles. Omvendt anklages den kontinentale tradition for blot at bedrive løsrevet filosofi, der ignorerer hård data.",
+            "Men teksten slår fast, at dette er en karikatur. Den reelle forskel ligger i opfattelsen af empiri og teoriens rolle. I den kontinentale tradition betragtes teorien som et helt nødvendigt fundament for overhovedet at begribe data. I den angelsaksiske nedtones teoridelen bevidst for at lade 'data tale for sig selv'."
+          ],
+          "key_points": [
+            "Den angelsaksiske tradition har typisk rod i kvantitativ evidens og måling.",
+            "Den kontinentale tradition trækker oftere på fænomenologi, filosofi og teoretisk fortolkning.",
+            "Modstillingen af de to som kun 'matematik vs. filosofi' er en overdrevet karikatur."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "svinge sig i de filosofiske lianer",
+              "why_it_matters": "Dette udtrykker karikaturen af den kontinentale videnskabstradition.",
+              "source_location": "Side 467"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 471",
+          "heading": "Det analytiske værktøj: Fire temaer",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Identificer præcis, hvilke begreber du skal bruge til eksamen?",
+          "explanation_paragraphs": [
+            "Når man ser på det samlede felt, står det klart, at der ikke findes én samlet personlighedspsykologi, der dækker det hele. Man må i stedet sammenligne de forskellige retninger ud fra fælles koordinater.",
+            "Kapitlet udpeger fire gennemgående temaer, som du kan bruge til at positionere enhver teori: essens vs. kontekst, agency, determination og historicitet.",
+            "Disse fire temaer er uløseligt forbundne. Et skift i et af temaerne forrykker som regel forståelsen af de tre andre. Det er dette rammeværk, du skal demonstrere beherskelse af til eksamen."
+          ],
+          "key_points": [
+            "Teorier kan ikke blot reduceres til én objektiv sandhed; de udgør forskellige perspektiver.",
+            "De fire temaer (essens/kontekst, agency, determination, historicitet) er de primære akser for analyse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "essens vs. kontekst, agency, determination",
+              "why_it_matters": "Opremsningen af de eksakte analysebegreber.",
+              "source_location": "Side 471"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 472",
+          "heading": "Biologi og den dobbelte krop",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beskriv hvordan synet på kroppen skifter mellem fysiologisk determination og fænomenologisk bevidsthed?",
+          "explanation_paragraphs": [
+            "Biologiske og naturvidenskabelige tilgange anskuer typisk personen ud fra gener, evolution og nervesystem. Her bliver 'determination' afgørende, mens 'essens og kontekst' udviskes. Bevidstheden ses blot som et tilsyneladende centrum, idet det reelt er biologien, der træffer valgene.",
+            "Men kroppen forstår anderledes i andre traditioner. Allerede i 1890'erne pegede William James på, at kroppen er mere end fysik. Fænomenologien, især ved Merleau-Ponty, insisterer på, at kroppen har bevidsthedsmæssige kvaliteter. Den er en handlende, meningsskabende psykisk størrelse i verden."
+          ],
+          "key_points": [
+            "Naturvidenskaben ser ofte bevidsthed som sekundær til genetisk determination.",
+            "Fænomenologien anser kroppen for at være et radikalt meningsdannende subjekt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "kroppen indgår i andre 'udgaver' end den fysiologiske",
+              "why_it_matters": "Fastslår, at selve kroppens ontologiske natur skifter fra teori til teori.",
+              "source_location": "Side 472"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Side 473",
+          "heading": "Essens og Agency",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Sammenlign teoriernes syn på menneskets frihed til at vælge sit liv?",
+          "explanation_paragraphs": [
+            "Visse teorier opprioriterer subjektets iboende kerne (essens) frem for samfundet (kontekst). Den eksistentielle psykologi er den mest radikale i sit syn på frit valg (agency). Den påstår, at subjektet er transparent for sig selv, og at enhver handling udspringer af et intenst, frit valg forbundet til dødsangst og eksistens.",
+            "I stærk kontrast står f.eks. den kritiske psykologi. Den tror også på, at bevidstgørelse er vigtig, men agency er ikke længere blot en intern, absolut frihed. Her er agency afhængig af de samfundsmæssige betingelser og evnen til at påvirke sin egen livsbane og deltagelse i fællesskabet."
+          ],
+          "key_points": [
+            "Eksistentiel psykologi repræsenterer maksimal intern agency og transparens.",
+            "Kritisk psykologi forstår agency som en kamp for handlevilkår i samfundet (livsbanen)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "enhver handling er frit valgt",
+              "why_it_matters": "Beskriver det eksistentielle ekstrem på agency-skalaen.",
+              "source_location": "Side 473"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 474-475",
+          "heading": "Kontekst og Anti-essentialisme",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forsvar, hvorfor sociokulturelle teorier helt forkaster ideen om et indre biologisk selv?",
+          "explanation_paragraphs": [
+            "I den sociokulturelle og narrative gren af psykologien nedprioriteres det biologiske til fordel for det historiske og samfundsmæssige. Mening er aldrig bare opfundet frit inde i den enkelte persons hoved.",
+            "Mening er altid forankret i et kollektivt medie, typisk det talte eller skrevne sprog. Selve bevidstheden flyttes væk fra en lokaliseret biomasse (hjernen/kroppen) ud i relationerne. Det gør disse teorier fundamentalt anti-essentialistiske, idet de opløser den faste grænse mellem individ og samfund."
+          ],
+          "key_points": [
+            "Sociokulturelle teorier opprioriterer kontekst og relation frem for individuel essens.",
+            "Sprog og kultur fungerer som mediende strukturer for meningsdannelse.",
+            "De afviser den traditionelle naturvidenskabelige trækpsykologis ide om faste, medfødte kerner."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "De er pr. definition anti-essentialistiske",
+              "why_it_matters": "Den afgørende forskel på poststrukturalisme og trækpsykologi.",
+              "source_location": "Side 474"
+            }
+          ],
+          "source_passages": {
+            "source_location": "Side 474",
+            "passage": "Det meningsskabende er placeret i relationer mellem subjekter, måske endda i et kollektivt subjekt. Man kan til en vis grad sige, at subjektet ikke er lokaliseret i den afgrænsede biomasse, som er vores krop, men at det eksisterer i relationer på tværs af kroppen og i et mediebåret meningsunivers.",
+            "why_it_matters": "Dette præcise citat er eksamensbeviset for dekonstruktionen af det indre, afgrænsede selv, som kurset startede med."
+          },
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør, hvad der fundamentalt adskiller den danske tilgang fra den internationale hovedstrømning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrastbeskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Identificer præcis, hvilke begreber du skal bruge til eksamen?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Fire specifikke begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beskriv hvordan synet på kroppen skifter mellem fysiologisk determination og fænomenologisk bevidsthed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et skifte i ontologisk status",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Sammenlign teoriernes syn på menneskets frihed til at vælge sit liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En modsætning mellem to yderpunkter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forsvar, hvorfor sociokulturelle teorier helt forkaster ideen om et indre biologisk selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En forklaring på, hvor meningen er forankret",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi systematisk sammenligne og kontrastere vidt forskellige personlighedspsykologiske teorier uden at reducere deres kompleksitet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader ned. Udfyld dette ark fra hukommelsen for at fastlåse dit metateoretiske overblik. Tjek først tekstmaterialet bagefter for at reparere fejl.",
+      "overview": [
+        "Dette kapitel afslutter kurset ved at levere dit centrale eksamensværktøj.",
+        "Det skelner videnskabsteoretisk mellem den teoritunge kontinentale tradition og den evidensfokuserede angelsaksiske tradition.",
+        "Du skal anvende fire specifikke temaer til at analysere, sammenligne og kontrastere alle kursets teorier."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den ________ tradition i psykologien har historisk domineret universiteterne i Danmark frem for den amerikanske.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Den angelsaksiske tradition fremstilles ofte som fuldstændig reduceret til ________, hvor teorien træder i baggrunden.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det eksamensrelevante tema, der beskriver graden af frit valg og intentionalitet, kaldes ________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Naturvidenskabelige og biologiske teorier hælder ofte tungt mod ________ frem for at anerkende bevidstheden som et reelt handlende centrum.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Fænomenologien forstår ikke kroppen som ren biomasse, men anser den for at have ________ kvaliteter.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Eksistentiel psykologi mener modsat kritisk psykologi, at enhver handling er et udtryk for absolut ________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 kort begreb"
+        },
+        {
+          "number": 7,
+          "sentence": "Fordi sociokulturelle og narrative teorier afviser en fysiologisk, uforanderlig kerne, er de pr. definition ________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 8,
+          "sentence": "I poststrukturalisme og sociokulturel psykologi forankres mening altid i et kollektivt ________ som fx sproget, snarere end inde i hjernen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et to-sidet kontrast-skema, der skiller de to videnskabstraditioner ad.",
+          "required_elements": [
+            "Kolonner for Angelsaksisk",
+            "Kontinental",
+            "med to nøgleord for hver angående deres syn på empiri",
+            "teori"
+          ],
+          "blank_space_hint": "Brug en lodret streg i midten og lav stikord."
+        },
+        {
+          "number": 2,
+          "task": "Tegn et kompas eller et firdelt kryds for det metateoretiske rammeværk.",
+          "required_elements": [
+            "Skriv de fire gennemgående temaer",
+            "som tekstens analyser bygger på",
+            "ude i hver af de fire spidser"
+          ],
+          "blank_space_hint": "Tegn et stort plus-tegn i midten."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at formulere dine mundtlige eksamenssvar. Disse argumenter viser, at du kan tænke på metaniveau tværs over kurset.",
+      "use_this_text_for": [
+        "At bygge din faste eksamensdisposition for enhver teoripræsentation.",
+        "At løfte din analyse til et metaniveau i stedet for kun at genfortælle teorien.",
+        "At dekonstruere de tidlige ugers trækpsykologi med sociokulturelle argumenter.",
+        "At forklare, hvorfor psykologi på et dansk universitet vægter fænomenologi og teori.",
+        "At demonstrere at begreber som 'biologi' og 'kroppen' skifter betydning afhængig af paradigmet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W01L1 (Introduktion til personlighed)",
+          "connection": "Cirklen sluttes. De fire orienteringspunkter (essens, agency, osv.), du blev introduceret for i starten, aktiveres her som dit endelige eksamensværktøj."
+        },
+        {
+          "course_theme": "W02L1 (Trækpsykologi)",
+          "connection": "Tekstens begreb om 'anti-essentialisme' er det direkte våben til metodisk at kritisere de Big Five-test og statiske træk, kurset startede med."
+        },
+        {
+          "course_theme": "W11L1 (Poststrukturalisme og subjektivering)",
+          "connection": "Teksten forklarer grundlaget for Hacking og Foucault: At personlighed dannes i medier og historisk kontekst frem for som en isoleret biologisk essens."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Biologisk krop vs Fænomenologisk krop",
+          "how_to_compare": "Sammenlign genetik/fysiologi over for Merleau-Pontys meningsskabende kropssubjekt."
+        },
+        {
+          "compare_with": "Eksistentialisme vs Konstruktionisme",
+          "how_to_compare": "Kontraster det radikale indre frie valg over for en identitet fastlåst og skabt helt af eksterne diskurser."
+        },
+        {
+          "compare_with": "Angelsaksisk vs Kontinental videnskab",
+          "how_to_compare": "Sammenlign fokuseringen på kvantificerbar bundlinje over for kravet om et solidt teoretisk og filosofisk fundament."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Sammenlign to udvalgte teorier",
+          "use_in_answer": "Sig højt: 'Jeg vil strukturere min sammenligning ved at bruge de fire akser: essens vs. kontekst, agency, determination og historicitet.'",
+          "caution": "Undgå faldgruben med at genfortælle teori A og så teori B. Lad dem mødes i krydsild på akserne."
+        },
+        {
+          "prompt_type": "Kritiser et biologisk syn på personlighed",
+          "use_in_answer": "Sig højt: 'Fra et anti-essentialistisk perspektiv placeres det meningsskabende i relationer, ikke i den afgrænsede biomasse.'",
+          "caution": "Undgå at påstå at biologien slet ikke er der; påstå at den er sekundær for *meningsdannelsen*."
+        },
+        {
+          "prompt_type": "Vurder subjektets handlefrihed i en teori",
+          "use_in_answer": "Brug 'agency'-begrebet. Find ud af, om friheden er absolut (som eksistentialisme) eller betinget af deltagelsesmuligheder (som kritisk psykologi).",
+          "caution": "Glem ikke, at sociokulturelle teorier også tildeler aktørskab, men på en helt anden måde end det frie indre valg."
+        },
+        {
+          "prompt_type": "Diskuter en teoris videnskabelighed",
+          "use_in_answer": "Brug skelnet mellem angelsaksisk reduktiv evidens og kontinental teoritradition.",
+          "caution": "Brug det som tendenser, ikke karikaturer. Begge sider bruger empiri, de anerkender bare ikke det samme *som* empiri."
+        },
+        {
+          "prompt_type": "Afgør hvor personligheden sidder",
+          "use_in_answer": "Diskuter bevægelsen fra en intern kerne til et kollektivt medie, som sproget eller sociale netværk.",
+          "caution": "Skeln skarpt mellem psykisk og fysisk placering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at den kontinentale tradition helt ignorerer empiri og data.",
+          "better_reading": "Forstå at kontinental empiri bare kan være fænomenologiske interviews og teoriudvikling frem for rene tal."
+        },
+        {
+          "trap": "At sætte lighedstegn mellem 'kroppen' og 'determination' i alle tilfælde.",
+          "better_reading": "Husk at psykoanalyse og fænomenologi tildeler kroppen aktiv, selvstændig meningsdannelse."
+        },
+        {
+          "trap": "At tro at 'essens' udelukkende betyder biologi og gener.",
+          "better_reading": "Essens dækker over enhver idé om en fast iboende kerne, der former personen, biologisk eller ej."
+        }
+      ],
+      "mini_exam_prompt_question": "Opstil en systematisk sammenligning af evolutionær psykologi og poststrukturalisme ved hjælp af kapitlets fire metateoretiske temaer.",
+      "mini_exam_answer_plan_slots": [
+        "1. Introducer rammeværket: Nævn de fire orienteringspunkter (Essens/kontekst, osv.).",
+        "2. Placer naturvidenskaben (Biologisk determination, minimal agency, afgrænset biomasse).",
+        "3. Placer poststrukturalismen (Anti-essentialistisk, kollektiv kontekst, decentreret).",
+        "4. Konkluder på kløften: Påvis hvorfor den biologiske model bryder sammen i forsøget på at forklare kontekstuel meningsdannelse."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

@@ -894,6 +894,13 @@ def collect_printout_entries(
             course_understanding_fingerprint = sha256_json(course_understanding) if course_understanding else None
             source_id = str(source.get("source_id") or printout_path.parent.name)
             material_id = f"printout:reading_printouts:{source_id}"
+            existing = entries.get(material_id)
+            if (
+                existing is not None
+                and "/printouts/" in str(existing.get("artifact_paths", {}).get("json") or "")
+                and "/scaffolding/" in relpath(printout_path, repo_root)
+            ):
+                continue
             entry = {
                 "material_id": material_id,
                 "family": "printout",

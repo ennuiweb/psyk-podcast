@@ -1,0 +1,1196 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:47:17Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
+    "source_files_signature": "7cb825c67feee8eaba9d343a5c588b8aa7eb06d024c642f36d37928c0ac1bbf6",
+    "source_card": "b52a453daacf9f664019fbef156428c8b680d1065c4f702ec67f411ff73e0d14",
+    "revised_lecture_substrate": "14fab3069445f7392496a4b0c9609ec59696dba7d0804de3abe77a4aff0802c5",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w08l2-holzkamp-1982-845aafd2",
+    "lecture_key": "W08L2",
+    "title": "Holzkamp (1982)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 29,
+    "estimated_token_count": 18850,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf"
+    ],
+    "reading_title": "Daglig livsførelse som subjektvidenskabeligt grundkoncept",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W08L2"
+    ],
+    "sequence_index": 1,
+    "source_filename": "W8L2 Holzkamp (1982).pdf",
+    "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Holzkamp (1982).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "a3d74bfeaf4b50033ee30f61ce07949ff2f6b1b432a8b2b0a0b69d8fc9be3c0d",
+      "size_bytes": 2387076,
+      "page_count": 29,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 18850,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 29,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l2-holzkamp-1982-845aafd2",
+      "lecture_key": "W08L2",
+      "source_title": "Holzkamp (1982)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problem.",
+      "teaser_paragraphs": [
+        "Tænk på et klassisk psykologisk eksperiment eller en patients plads på briksen hos psykoanalytikeren. Hvorfor antager vi instinktivt, at vi bedst forstår menneskets komplekse adfærd ved at isolere dem og trække dem ud af deres egentlige hverdagsliv?",
+        "Klaus Holzkamp peger på en massiv brist. Han argumenterer for, at traditionel psykologi systematisk ignorerer vores faktiske eksistens ved at fastlåse os i en kunstig *eksperimentel realitet*. Derved taber videnskaben netop det af syne, som den hævder at ville undersøge.",
+        "I stedet for mekaniske laboratoriestudier foreslår Holzkamp begrebet *daglig livsførelse*. Det skal ikke forstås som en søvndyssende sum af trivielle vaner, men som en konstant og dybt krævende forhandling. Subjektet forsøger hele tiden at få hverdagens modstridende krav fra arbejde, familie og samfund til at hænge sammen.",
+        "I dette komplekse puslespil spiller de mest banale rutiner en uventet hovedrolle. Rutinen er nemlig *livsnødvendig*, fordi dens gentagelser skaber uundværlig *aflastning* fra den strøm af konflikter, der ellers konstant ville overvælde os.",
+        "For at indfange denne realitet kræver Holzkamp, at psykologien omdannes til en decideret *subjektvidenskab*. Videnskaben skal respektere subjektets egne grunde til at handle i stedet for blot at lede efter ydre årsager.",
+        "Spørgsmålet er: Kan man overhovedet opbygge en præcis videnskab, der accepterer menneskets *relative autonomi* og studerer verden indefra subjektets egen standpunkt, uden at det hele ender i uvidenskabeligt gætteri?"
+      ],
+      "main_problem": "Hvordan kan psykologien ændre sin metode for at studere mennesket som en aktiv aktør i sin daglige livsførelse frem for et isoleret, reagerende objekt i et laboratorium?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilken afgørende metodisk fejl begår den traditionelle psykologi?",
+          "why_it_matters": "Det er selve grundlaget for Holzkamps kritik af hovedstrømningen i faget.",
+          "answer_form": "En kort beskrivelse af eksperimentets pris"
+        },
+        {
+          "number": 2,
+          "question": "Hvad indebærer 'daglig livsførelse' som et aktivt arrangement?",
+          "why_it_matters": "Dette udgør kernen i kritisk psykologis menneskesyn.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er hverdagens cykliske rutiner absolut nødvendige?",
+          "why_it_matters": "Det vender vores normale syn på rutiner som 'kedelige' på hovedet og viser deres overlevelsesværdi.",
+          "answer_form": "Begrundelsen"
+        },
+        {
+          "number": 4,
+          "question": "Hvad ligger der i begrebet om subjektets 'relative autonomi'?",
+          "why_it_matters": "Dette balancerer debatten mellem total strukturel dominans og individuel frihed.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan adskiller subjektets egne 'grunde' sig fra ydre 'årsager'?",
+          "why_it_matters": "Det markerer overgangen fra en mekanisk naturvidenskab til en meningssøgende subjektvidenskab.",
+          "answer_form": "En skarp kontrast"
+        },
+        {
+          "number": 6,
+          "question": "Hvad kræver det epistemologisk at bedrive 'subjektvidenskab'?",
+          "why_it_matters": "Det anviser, hvordan vi praktisk producerer viden fremadrettet.",
+          "answer_form": "Forskerens påkrævede positionering"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det fundamentale skift i pensum fra at se personligheden som bestående af indre dimensioner til at se den formet af en aktiv, samfundsmæssig hverdag.",
+      "overview": [
+        "Kritik af eksperimentalpsykologiens blinde vinkler.",
+        "Udvikling af daglig livsførelse og rutiners nødvendighed.",
+        "Kravet om en subjektvidenskab baseret på individets egne grunde."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 3-5",
+          "task": "Læs Introduktionen for at fange Holzkamps undren over hverdagens forsvinden.",
+          "why_it_matters": "Giver baggrunden for problematikken.",
+          "stop_signal": "Når teksten skifter overskrift til sociologien"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 11-17",
+          "task": "Dyk ned i 'Den traditionelle psykologis fornægtelse' for at forstå opgøret med laboratoriet.",
+          "why_it_matters": "Her placeres kniven mod fagets etablerede empiri.",
+          "stop_signal": "Når afsnittet om subjektvidenskaben som udvej slutter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 18-20",
+          "task": "Skim München-gruppens indledende overvejelser om sociologien.",
+          "why_it_matters": "Etablerer inspirationen for livsførelsesbegrebet.",
+          "stop_signal": "Når debatten om metode tager over"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 23-26",
+          "task": "Fokuser på 'Livsførelsens relative autonomi'.",
+          "why_it_matters": "Definerer spændingen mellem frirum og samfundsstruktur.",
+          "stop_signal": "Inden afsnittet om cyklicitet begynder"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 27-30",
+          "task": "Nærlæs 'Den subjektive begrundethed ved den daglige livsførelses cyklicitet'.",
+          "why_it_matters": "Viser rutiners sande psykologiske og eksistentielle funktion.",
+          "stop_signal": "Når referencerne begynder"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "aktiv integration af de forskellige 'krav' fra de enkelte daglige 'livsområder'",
+          "why": "Den mest præcise definition på livsførelse i kritisk psykologi.",
+          "where_to_look": "S. 9"
+        },
+        {
+          "target": "en dikotomi mellem en uoverskuelig 'daglig realitet' og en 'eksperimentel realitet'",
+          "why": "Sætter ord på den kløft, traditionel psykologi har gravet.",
+          "where_to_look": "S. 12"
+        },
+        {
+          "target": "Rutiniseringen af en sådan afvikling er i en vis forstand 'livsnødvendig'",
+          "why": "Konfronterer myten om at rutiner udelukkende er restriktive.",
+          "where_to_look": "S. 8"
+        },
+        {
+          "target": "vende denne mulighed ryggen i forskellige forsvarssprægede former for selvretfærdiggørelse",
+          "why": "Viser hvordan subjektet selv kan opgive sin autonomi og falde i forsvar.",
+          "where_to_look": "S. 2"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede ekskurser om Max Weber og München-gruppens tyske forbundsrepublik.",
+        "Lange polemiske debatter med navngivne moderne sociologer.",
+        "Freudianske metadiskussioner om terapeutens stoleplacering bag briksen."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse opgaverne.",
+      "coverage_note": "Sektionerne omskriver og fortætter Holzkamps primære argumentation i kronologisk orden.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 11-13",
+          "heading": "Den eksperimentelle isolation",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan forvrænger traditionel psykologi forståelsen af mennesket ved at flytte det ind i laboratoriet?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi og klassisk psykoanalyse bygger på en forestilling om, at vi først forstår mennesket, når vi fjerner forstyrrelser. Derfor isoleres forsøgspersonen i et kontrolleret eksperiment, hvor psykologen kun skruer på én variabel ad gangen.",
+            "Holzkamp argumenterer for, at denne metode er en fundamental fejlslutning. Ved at skabe en udelukkende 'eksperimentel realitet' skæres forbindelsen til den rodede 'daglige realitet' over. Laboratoriet gør os blinde for de komplekse betingelser i virkeligheden, og subjektet reduceres til et passivt objekt."
+          ],
+          "key_points": [
+            "Forskning i lukkede laboratorier afskærer subjektet fra dets virkelige omgivelser.",
+            "Mennesket gøres til et passivt objekt, der reagerer mekanisk på stimuli.",
+            "Viden om det isolerede menneske kan ikke altid overføres til hverdagslivet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "en dikotomi mellem en uoverskuelig 'daglig realitet' og en 'eksperimentel realitet'",
+              "why_it_matters": "Formulerer selve kernen i Holzkamps kritik af psykologiens hovedmetode.",
+              "source_location": "S. 12"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 8-10",
+          "heading": "Daglig livsførelse som et aktivt puslespil",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvis vi fjerner blikket fra forsøgsopstillingerne, hvad skal vi så studere?",
+          "explanation_paragraphs": [
+            "I stedet for at kigge på isolerede variabler skal faget zoome ind på begrebet 'daglig livsførelse'. Dette ord misforstås tit som en passiv, ligegyldig række af vaner, men det stik modsatte er tilfældet.",
+            "Livsførelsen er et enormt aktivt og ressourcekrævende arrangement. Individet skal hver eneste dag navigere, forhandle og synkronisere ofte modstridende krav fra arbejde, venner, økonomi og familieliv. Det er subjektets forsøg på at styre tid, energi og forventninger."
+          ],
+          "key_points": [
+            "Livsførelse er ikke summen af blinde vaner, men en højaktiv balanceakt.",
+            "Subjektet må jonglere med knappe ressourcer under pres fra flere livsområder.",
+            "Vi kan ikke blot 'eksistere', vi er tvunget til at arrangere vores eksistens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aktiv integration af de forskellige 'krav' fra de enkelte daglige 'livsområder'",
+              "why_it_matters": "Det udgør den positive grunddefinition på, hvad kritisk psykologi studerer.",
+              "source_location": "S. 9"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 27-29",
+          "heading": "Cyklicitet og nødvendig aflastning",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Er rutiner blot begrænsninger, der gør hverdagen mekanisk og grå?",
+          "explanation_paragraphs": [
+            "Ofte betragtes rutiner som trælse spændetrøjer, der kvæler friheden. Holzkamp insisterer derimod på, at den cykliske gentagelse af de samme handlinger er selve forudsætningen for at kunne overleve rent eksistentielt.",
+            "Når vi indøver mønstre, der gentages dag for dag, skabes der en dybt nødvendig *aflastning*. Hvis vi hver morgen skulle tage aktivt stilling til, hvordan kaffe brygges, eller om selve livet overhovedet er umagen værd, ville den daglige livsførelse bryde sammen under vægten af kriser."
+          ],
+          "key_points": [
+            "Hverdagen organiseres nødvendigvis i tilbagevendende cirkler.",
+            "Gentagelsen fjerner det konstante behov for aktiv beslutningstagen.",
+            "Uden denne mentale aflastning kan individet ikke frigive overskud til resten af tilværelsen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Rutiniseringen af en sådan afvikling er i en vis forstand 'livsnødvendig'",
+              "why_it_matters": "Gør op med ideen om det frie liv som et liv helt uden gentagelse.",
+              "source_location": "S. 8"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 23-26",
+          "heading": "Den relative autonomi",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Er subjektet da bare fuldstændig domineret af stramme samfundskrav og systemer?",
+          "explanation_paragraphs": [
+            "Forholdet mellem det determinerede og det frie formuleres i begrebet *relativ autonomi*. Kritisk psykologi mener hverken, at vi svæver frit i et uendeligt mulighedernes rum, eller at vi er totalt styret af et ansigtsløst system.",
+            "Strukturerne dikterer rammerne for livet, men mennesket har altid et frirum til at forme, arrangere og nogle gange overskride disse rammer i deres egen livsførelse. Autonomien ligger netop i måden, vi personligt indretter det råderum, der trods alt findes."
+          ],
+          "key_points": [
+            "Samfundet bestemmer betingelserne, men ikke detaljerne i vores udførelse.",
+            "Handlemuligheder vokser, når man forstår sine egne begrænsninger.",
+            "Autonomien er relativ; den udspiller sig som et aktivt forhandlingsspil."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 20-22",
+          "heading": "Årsager versus grunde",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan skal videnskaben forklare, hvorfor et menneske gør, som det gør?",
+          "explanation_paragraphs": [
+            "Der er en fundamental kløft mellem at se handlinger som reaktion på kausale *årsager* og som udspringende af bevidste *grunde*.",
+            "Traditionel psykologi leder ofte efter deterministiske årsager (f.eks. genetiske træk, stimuli udefra), hvilket antager, at personen fungerer som et billardbord. En subjektvidenskab kræver derimod, at vi afdækker subjektets egne grunde. Selv-handlinger, der udefra ser irrationelle ud, giver perfekt mening og har rationelle rødder indeni subjektets egne præmisser."
+          ],
+          "key_points": [
+            "Kausale årsager tilhører naturvidenskaben, ikke den komplekse livsførelse.",
+            "Adfærd giver altid mening ud fra subjektets egen logik og selvforståelse.",
+            "Forskerens opgave er at lede efter de grunde, subjektet støtter sig til."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 6,
+          "source_location": "S. 19-21",
+          "heading": "Subjektvidenskabens fundament",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvordan ændrer det i praksis forskerens egen position?",
+          "explanation_paragraphs": [
+            "Når psykologien omdefineres fra et objektivt studium af ydre adfærd til en undersøgelse af handlingens indre grunde, vælter det forskerens trone.",
+            "Forskeren kan ikke længere stille sig overlegent an og diagnosticere mennesket udefra. Der kræves en symmetrisk relation, hvor forskeren respekterer subjektets selvforståelse. Man skal lytte til, hvordan forsøgspersonerne oplever og administrerer deres daglige livsførelse, frem for at tvinge dem ind i videnskabens kunstige skemaer."
+          ],
+          "key_points": [
+            "Objektiv distance gør os reelt ude af stand til at forstå handlingens retning.",
+            "Subjektvidenskab bygger på at anlægge individets standpunkt intersubjektivt.",
+            "Selvforståelse er adgangsbilletten, ikke en irriterende støjkilde."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forvrænger traditionel psykologi forståelsen af mennesket ved at flytte det ind i laboratoriet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort beskrivelse af eksperimentets pris",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis vi fjerner blikket fra forsøgsopstillingerne, hvad skal vi så studere?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er rutiner blot begrænsninger, der gør hverdagen mekanisk og grå?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er subjektet da bare fuldstændig domineret af stramme samfundskrav og systemer?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan skal videnskaben forklare, hvorfor et menneske gør, som det gør?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En skarp kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ændrer det i praksis forskerens egen position?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Forskerens påkrævede positionering",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien ændre sin metode for at studere mennesket som en aktiv aktør i sin daglige livsførelse frem for et isoleret, reagerende objekt i et laboratorium?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter fra hukommelsen først for at lade modellens struktur låse sig fast. Brug bagefter Abridged Reader til at reparere fejl eller finde mangler.",
+      "overview": [
+        "Teksten etablerer daglig livsførelse som det primære, aktive analyseobjekt i faget kritisk psykologi.",
+        "Den kritiserer traditionel forskning voldsomt for at fjerne mennesket fra hverdagen ind i et rent laboratoriemiljø.",
+        "I stedet fremhæves det, at mennesket handler ud fra egne logiske præmisser og forsøger at samle hverdagens mange konflikter."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den traditionelle eksperimentalpsykologi kritiseres for fejlagtigt at skabe en udelukkende __________ realitet uden blik for den daglige.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Begrebet daglig livsførelse skal ikke ses som en passiv sum af vaner, men som en konstant og aktiv __________ af livets modstridende krav.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den cykliske gentagelse af hverdagens rutiner er eksistentielt afgørende, fordi den giver os en livsnødvendig __________ fra evige beslutninger.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Balancen mellem fastlåste samfundsstrukturer og individets handlemuligheder udtrykkes gennem begrebet om subjektets relativ __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Mens naturvidenskaben leder efter deterministiske årsager til en adfærd, søger kritisk psykologi efter subjektets egne __________ til at handle.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 6,
+          "sentence": "Når forskeren afviser at stå over subjektet objektivt udefra, kræver metoden at vi i stedet tager afsæt i individets egen indre __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Holzkamp advarer skarpt mod at isolere mennesket, for uden indblik i vores komplekse __________ livsførelse overser man det vigtigste.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kort visuel model, der kontrasterer klassisk laboratorieforskning med subjektvidenskabens blik.",
+          "required_elements": [
+            "En kasse for 'Eksperimentel realitet'",
+            "en kasse for 'Daglig realitet'",
+            "to pile der viser",
+            "hvor den traditionelle psykologi peger hen",
+            "hvor Holzkamp mener",
+            "vi bør pege hen"
+          ],
+          "blank_space_hint": "Tegn horisontalt. Sørg for at den ene retning tydeligt markeres som problematisk ifølge teksten."
+        },
+        {
+          "number": 2,
+          "task": "Tegn et puslespil eller et forhandlingshjul for at illustrere begrebet 'daglig livsførelse'.",
+          "required_elements": [
+            "Subjektet placeret i midten",
+            "mindst tre udvendige 'krav' (f.eks. arbejde",
+            "familie",
+            "som aktivt skal samles",
+            "integreres med pile mod midten"
+          ],
+          "blank_space_hint": "Brug cirkler til de forskellige elementer og gør det tydeligt, at midten er stedet for konflikt og integration."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som forberedelse til eksamen. Her oversættes de teoretiske modeller til konkrete overvejelser, sammenligninger og argumenter.",
+      "use_this_text_for": [
+        "At levere et frontalt angreb på trækpsykologiens blinde og mekaniske variable.",
+        "At forklare forskellen på et kausalt 'årsags'-perspektiv og et rationelt 'grunde'-perspektiv.",
+        "At introducere spændingsfeltet mellem individets handlefrihed og samfundets struktur (relativ autonomi).",
+        "At demonstrere, hvorfor banale hverdagslige rutiner rent faktisk har en stærk psykologisk beskyttelsesfunktion.",
+        "At fremføre et bud på et nyt, ansvarsfuldt ideal for den psykologiske forskers position."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologiens domæne",
+          "connection": "Holzkamp afviser den tilgang, dimensionelle træktyper læner sig op ad, fordi den skaber et 'eksperimentelt' isoleret vakuum uden hverdagskontekst."
+        },
+        {
+          "course_theme": "Humanistisk psykologi",
+          "connection": "Begge retninger forfægter et stærkt aktørskab (agency), men i kritisk psykologi ses den ikke som indre selvrealisering, men som kamp i ydre samfundsbetingelser."
+        },
+        {
+          "course_theme": "Kritisk Personalisme (Stern)",
+          "connection": "Begge tænkere afviser, at man kan adskille mennesket i psykologiske atomer; de insisterer på handlingens helhed."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter",
+          "connection": "Teksten placerer udtrykkeligt essens/kontekst-linjen helt ude i samfundskonteksten, og den forhandler konstant krydset mellem 'agency' og ydre determination."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign deres søgen efter stabile, mekaniske årsager udefra/indefra med Holzkamps argument for at forstå subjektet indefra ud fra egne handlegrunde."
+        },
+        {
+          "compare_with": "Carl Rogers (Humanisme)",
+          "how_to_compare": "Stil Rogers' formodning om en iboende, fri aktualiseringstendens over for Holzkamps strammere og betingede 'relative autonomi'."
+        },
+        {
+          "compare_with": "William Stern (Personalisme)",
+          "how_to_compare": "Vis hvordan Holzkamp viderefører kritikken af variabler, men trækker det over i en mere decideret samfundsstrukturel og sociologisk ramme end Stern gjorde."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Redegør for begrebet daglig livsførelse",
+          "use_in_answer": "Beskriv det ikke bare som hverdagsvaner, men stærkt som 'en aktiv integration af samfundets modstridende krav'.",
+          "caution": "Undlad at gøre det til en passiv opremsning af f.eks. at børste tænder."
+        },
+        {
+          "prompt_type": "Diskuter fri vilje over for samfundets magt",
+          "use_in_answer": "Placer begrebet 'relativ autonomi' tungt på midten af brættet for at vise, at strukturer sætter grænsen, men vi manøvrerer inden for dem.",
+          "caution": "Påstå aldrig, at kritisk psykologi tror på uindskrænket frihed. Ordet 'relativ' er afgørende."
+        },
+        {
+          "prompt_type": "Analyser rutiners funktion i menneskelivet",
+          "use_in_answer": "Brug teksten kontraintuitivt til at vise, at rutine giver nødvendig kognitiv og eksistentiel 'aflastning'.",
+          "caution": "Gør ikke automatisk rutiner til fjenden. Uden dem er livsførelsen ifølge teksten umulig."
+        },
+        {
+          "prompt_type": "Vurder psykologiens epistemologi",
+          "use_in_answer": "Benyt sondringen mellem objektive årsager i laboratoriet over for subjektive grunde fra et intersubjektivt forskerstandpunkt.",
+          "caution": "Sørg for ikke at hævde, at Holzkamp hader empiri; han hader bare den kunstige."
+        },
+        {
+          "prompt_type": "Vurder individets beskyttelse af egne rammer",
+          "use_in_answer": "Brug hans observation om, at vi i kriser kan ty til selvretfærdiggørelse, fordi stabilitet er så livsnødvendig.",
+          "caution": "Bland det ikke sammen med psykoanalytiske forsvarsmekanismer; det er eksistentiel overlevelse her."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse 'daglig livsførelse' udelukkende som 'trummerum' og kedsomhed.",
+          "better_reading": "Forstå det som et højspændt puslespil af forhandlinger, prioritering og ressourcestyring."
+        },
+        {
+          "trap": "At tro kritisk psykologi mener, samfundet fuldstændig hjernevasker individet mekanisk.",
+          "better_reading": "Fasthold, at vi fastholder en form for 'agency' gennem 'relativ autonomi' og vores evne til at forme betingelserne om."
+        },
+        {
+          "trap": "At bruge ordene 'årsager' og 'grunde' i flæng uden at skelne i eksamenssvaret.",
+          "better_reading": "Husk, at skellet mellem de to ord er selve beviset på en vellykket analyse af metodologier i kurset."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Holzkamps begreb om 'relativ autonomi' med trækpsykologiens opfattelse af, hvordan menneskets handlinger determineres.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort trækpsykologiens antagelse om fastlåste, dimensionelle elementer, der forudsiger adfærd.",
+        "Præsenter den kritiske modreaktion: mennesket skal ses som en aktiv aktør under betingede muligheder (relativ autonomi).",
+        "Sæt dem direkte op mod hinanden via deres syn på kausalitet: mekaniske 'årsager' over for subjektets meningsgivende 'grunde'.",
+        "Konkludér ved at understrege, at trækpsykologien arbejder bedst i 'laboratoriet', mens autonomi-begrebet kun fungerer i analysen af den komplekse 'daglige livsførelse'."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l2-holzkamp-1982-845aafd2",
+      "lecture_key": "W08L2",
+      "source_title": "Holzkamp (1982)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problem.",
+      "teaser_paragraphs": [
+        "Tænk på et klassisk psykologisk eksperiment eller en patients plads på briksen hos psykoanalytikeren. Hvorfor antager vi instinktivt, at vi bedst forstår menneskets komplekse adfærd ved at isolere dem og trække dem ud af deres egentlige hverdagsliv?",
+        "Klaus Holzkamp peger på en massiv brist. Han argumenterer for, at traditionel psykologi systematisk ignorerer vores faktiske eksistens ved at fastlåse os i en kunstig *eksperimentel realitet*. Derved taber videnskaben netop det af syne, som den hævder at ville undersøge.",
+        "I stedet for mekaniske laboratoriestudier foreslår Holzkamp begrebet *daglig livsførelse*. Det skal ikke forstås som en søvndyssende sum af trivielle vaner, men som en konstant og dybt krævende forhandling. Subjektet forsøger hele tiden at få hverdagens modstridende krav fra arbejde, familie og samfund til at hænge sammen.",
+        "I dette komplekse puslespil spiller de mest banale rutiner en uventet hovedrolle. Rutinen er nemlig *livsnødvendig*, fordi dens gentagelser skaber uundværlig *aflastning* fra den strøm af konflikter, der ellers konstant ville overvælde os.",
+        "For at indfange denne realitet kræver Holzkamp, at psykologien omdannes til en decideret *subjektvidenskab*. Videnskaben skal respektere subjektets egne grunde til at handle i stedet for blot at lede efter ydre årsager.",
+        "Spørgsmålet er: Kan man overhovedet opbygge en præcis videnskab, der accepterer menneskets *relative autonomi* og studerer verden indefra subjektets egen standpunkt, uden at det hele ender i uvidenskabeligt gætteri?"
+      ],
+      "main_problem": "Hvordan kan psykologien ændre sin metode for at studere mennesket som en aktiv aktør i sin daglige livsførelse frem for et isoleret, reagerende objekt i et laboratorium?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilken afgørende metodisk fejl begår den traditionelle psykologi?",
+          "why_it_matters": "Det er selve grundlaget for Holzkamps kritik af hovedstrømningen i faget.",
+          "answer_form": "En kort beskrivelse af eksperimentets pris"
+        },
+        {
+          "number": 2,
+          "question": "Hvad indebærer 'daglig livsførelse' som et aktivt arrangement?",
+          "why_it_matters": "Dette udgør kernen i kritisk psykologis menneskesyn.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er hverdagens cykliske rutiner absolut nødvendige?",
+          "why_it_matters": "Det vender vores normale syn på rutiner som 'kedelige' på hovedet og viser deres overlevelsesværdi.",
+          "answer_form": "Begrundelsen"
+        },
+        {
+          "number": 4,
+          "question": "Hvad ligger der i begrebet om subjektets 'relative autonomi'?",
+          "why_it_matters": "Dette balancerer debatten mellem total strukturel dominans og individuel frihed.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan adskiller subjektets egne 'grunde' sig fra ydre 'årsager'?",
+          "why_it_matters": "Det markerer overgangen fra en mekanisk naturvidenskab til en meningssøgende subjektvidenskab.",
+          "answer_form": "En skarp kontrast"
+        },
+        {
+          "number": 6,
+          "question": "Hvad kræver det epistemologisk at bedrive 'subjektvidenskab'?",
+          "why_it_matters": "Det anviser, hvordan vi praktisk producerer viden fremadrettet.",
+          "answer_form": "Forskerens påkrævede positionering"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det fundamentale skift i pensum fra at se personligheden som bestående af indre dimensioner til at se den formet af en aktiv, samfundsmæssig hverdag.",
+      "overview": [
+        "Kritik af eksperimentalpsykologiens blinde vinkler.",
+        "Udvikling af daglig livsførelse og rutiners nødvendighed.",
+        "Kravet om en subjektvidenskab baseret på individets egne grunde."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 3-5",
+          "task": "Læs Introduktionen for at fange Holzkamps undren over hverdagens forsvinden.",
+          "why_it_matters": "Giver baggrunden for problematikken.",
+          "stop_signal": "Når teksten skifter overskrift til sociologien"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 11-17",
+          "task": "Dyk ned i 'Den traditionelle psykologis fornægtelse' for at forstå opgøret med laboratoriet.",
+          "why_it_matters": "Her placeres kniven mod fagets etablerede empiri.",
+          "stop_signal": "Når afsnittet om subjektvidenskaben som udvej slutter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 18-20",
+          "task": "Skim München-gruppens indledende overvejelser om sociologien.",
+          "why_it_matters": "Etablerer inspirationen for livsførelsesbegrebet.",
+          "stop_signal": "Når debatten om metode tager over"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 23-26",
+          "task": "Fokuser på 'Livsførelsens relative autonomi'.",
+          "why_it_matters": "Definerer spændingen mellem frirum og samfundsstruktur.",
+          "stop_signal": "Inden afsnittet om cyklicitet begynder"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 27-30",
+          "task": "Nærlæs 'Den subjektive begrundethed ved den daglige livsførelses cyklicitet'.",
+          "why_it_matters": "Viser rutiners sande psykologiske og eksistentielle funktion.",
+          "stop_signal": "Når referencerne begynder"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "aktiv integration af de forskellige 'krav' fra de enkelte daglige 'livsområder'",
+          "why": "Den mest præcise definition på livsførelse i kritisk psykologi.",
+          "where_to_look": "S. 9"
+        },
+        {
+          "target": "en dikotomi mellem en uoverskuelig 'daglig realitet' og en 'eksperimentel realitet'",
+          "why": "Sætter ord på den kløft, traditionel psykologi har gravet.",
+          "where_to_look": "S. 12"
+        },
+        {
+          "target": "Rutiniseringen af en sådan afvikling er i en vis forstand 'livsnødvendig'",
+          "why": "Konfronterer myten om at rutiner udelukkende er restriktive.",
+          "where_to_look": "S. 8"
+        },
+        {
+          "target": "vende denne mulighed ryggen i forskellige forsvarssprægede former for selvretfærdiggørelse",
+          "why": "Viser hvordan subjektet selv kan opgive sin autonomi og falde i forsvar.",
+          "where_to_look": "S. 2"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede ekskurser om Max Weber og München-gruppens tyske forbundsrepublik.",
+        "Lange polemiske debatter med navngivne moderne sociologer.",
+        "Freudianske metadiskussioner om terapeutens stoleplacering bag briksen."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse opgaverne.",
+      "coverage_note": "Sektionerne omskriver og fortætter Holzkamps primære argumentation i kronologisk orden.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 11-13",
+          "heading": "Den eksperimentelle isolation",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan forvrænger traditionel psykologi forståelsen af mennesket ved at flytte det ind i laboratoriet?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi og klassisk psykoanalyse bygger på en forestilling om, at vi først forstår mennesket, når vi fjerner forstyrrelser. Derfor isoleres forsøgspersonen i et kontrolleret eksperiment, hvor psykologen kun skruer på én variabel ad gangen.",
+            "Holzkamp argumenterer for, at denne metode er en fundamental fejlslutning. Ved at skabe en udelukkende 'eksperimentel realitet' skæres forbindelsen til den rodede 'daglige realitet' over. Laboratoriet gør os blinde for de komplekse betingelser i virkeligheden, og subjektet reduceres til et passivt objekt."
+          ],
+          "key_points": [
+            "Forskning i lukkede laboratorier afskærer subjektet fra dets virkelige omgivelser.",
+            "Mennesket gøres til et passivt objekt, der reagerer mekanisk på stimuli.",
+            "Viden om det isolerede menneske kan ikke altid overføres til hverdagslivet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "en dikotomi mellem en uoverskuelig 'daglig realitet' og en 'eksperimentel realitet'",
+              "why_it_matters": "Formulerer selve kernen i Holzkamps kritik af psykologiens hovedmetode.",
+              "source_location": "S. 12"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 8-10",
+          "heading": "Daglig livsførelse som et aktivt puslespil",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvis vi fjerner blikket fra forsøgsopstillingerne, hvad skal vi så studere?",
+          "explanation_paragraphs": [
+            "I stedet for at kigge på isolerede variabler skal faget zoome ind på begrebet 'daglig livsførelse'. Dette ord misforstås tit som en passiv, ligegyldig række af vaner, men det stik modsatte er tilfældet.",
+            "Livsførelsen er et enormt aktivt og ressourcekrævende arrangement. Individet skal hver eneste dag navigere, forhandle og synkronisere ofte modstridende krav fra arbejde, venner, økonomi og familieliv. Det er subjektets forsøg på at styre tid, energi og forventninger."
+          ],
+          "key_points": [
+            "Livsførelse er ikke summen af blinde vaner, men en højaktiv balanceakt.",
+            "Subjektet må jonglere med knappe ressourcer under pres fra flere livsområder.",
+            "Vi kan ikke blot 'eksistere', vi er tvunget til at arrangere vores eksistens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aktiv integration af de forskellige 'krav' fra de enkelte daglige 'livsområder'",
+              "why_it_matters": "Det udgør den positive grunddefinition på, hvad kritisk psykologi studerer.",
+              "source_location": "S. 9"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 27-29",
+          "heading": "Cyklicitet og nødvendig aflastning",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Er rutiner blot begrænsninger, der gør hverdagen mekanisk og grå?",
+          "explanation_paragraphs": [
+            "Ofte betragtes rutiner som trælse spændetrøjer, der kvæler friheden. Holzkamp insisterer derimod på, at den cykliske gentagelse af de samme handlinger er selve forudsætningen for at kunne overleve rent eksistentielt.",
+            "Når vi indøver mønstre, der gentages dag for dag, skabes der en dybt nødvendig *aflastning*. Hvis vi hver morgen skulle tage aktivt stilling til, hvordan kaffe brygges, eller om selve livet overhovedet er umagen værd, ville den daglige livsførelse bryde sammen under vægten af kriser."
+          ],
+          "key_points": [
+            "Hverdagen organiseres nødvendigvis i tilbagevendende cirkler.",
+            "Gentagelsen fjerner det konstante behov for aktiv beslutningstagen.",
+            "Uden denne mentale aflastning kan individet ikke frigive overskud til resten af tilværelsen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Rutiniseringen af en sådan afvikling er i en vis forstand 'livsnødvendig'",
+              "why_it_matters": "Gør op med ideen om det frie liv som et liv helt uden gentagelse.",
+              "source_location": "S. 8"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 23-26",
+          "heading": "Den relative autonomi",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Er subjektet da bare fuldstændig domineret af stramme samfundskrav og systemer?",
+          "explanation_paragraphs": [
+            "Forholdet mellem det determinerede og det frie formuleres i begrebet *relativ autonomi*. Kritisk psykologi mener hverken, at vi svæver frit i et uendeligt mulighedernes rum, eller at vi er totalt styret af et ansigtsløst system.",
+            "Strukturerne dikterer rammerne for livet, men mennesket har altid et frirum til at forme, arrangere og nogle gange overskride disse rammer i deres egen livsførelse. Autonomien ligger netop i måden, vi personligt indretter det råderum, der trods alt findes."
+          ],
+          "key_points": [
+            "Samfundet bestemmer betingelserne, men ikke detaljerne i vores udførelse.",
+            "Handlemuligheder vokser, når man forstår sine egne begrænsninger.",
+            "Autonomien er relativ; den udspiller sig som et aktivt forhandlingsspil."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 20-22",
+          "heading": "Årsager versus grunde",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan skal videnskaben forklare, hvorfor et menneske gør, som det gør?",
+          "explanation_paragraphs": [
+            "Der er en fundamental kløft mellem at se handlinger som reaktion på kausale *årsager* og som udspringende af bevidste *grunde*.",
+            "Traditionel psykologi leder ofte efter deterministiske årsager (f.eks. genetiske træk, stimuli udefra), hvilket antager, at personen fungerer som et billardbord. En subjektvidenskab kræver derimod, at vi afdækker subjektets egne grunde. Selv-handlinger, der udefra ser irrationelle ud, giver perfekt mening og har rationelle rødder indeni subjektets egne præmisser."
+          ],
+          "key_points": [
+            "Kausale årsager tilhører naturvidenskaben, ikke den komplekse livsførelse.",
+            "Adfærd giver altid mening ud fra subjektets egen logik og selvforståelse.",
+            "Forskerens opgave er at lede efter de grunde, subjektet støtter sig til."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 6,
+          "source_location": "S. 19-21",
+          "heading": "Subjektvidenskabens fundament",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvordan ændrer det i praksis forskerens egen position?",
+          "explanation_paragraphs": [
+            "Når psykologien omdefineres fra et objektivt studium af ydre adfærd til en undersøgelse af handlingens indre grunde, vælter det forskerens trone.",
+            "Forskeren kan ikke længere stille sig overlegent an og diagnosticere mennesket udefra. Der kræves en symmetrisk relation, hvor forskeren respekterer subjektets selvforståelse. Man skal lytte til, hvordan forsøgspersonerne oplever og administrerer deres daglige livsførelse, frem for at tvinge dem ind i videnskabens kunstige skemaer."
+          ],
+          "key_points": [
+            "Objektiv distance gør os reelt ude af stand til at forstå handlingens retning.",
+            "Subjektvidenskab bygger på at anlægge individets standpunkt intersubjektivt.",
+            "Selvforståelse er adgangsbilletten, ikke en irriterende støjkilde."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forvrænger traditionel psykologi forståelsen af mennesket ved at flytte det ind i laboratoriet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort beskrivelse af eksperimentets pris",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis vi fjerner blikket fra forsøgsopstillingerne, hvad skal vi så studere?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er rutiner blot begrænsninger, der gør hverdagen mekanisk og grå?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er subjektet da bare fuldstændig domineret af stramme samfundskrav og systemer?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan skal videnskaben forklare, hvorfor et menneske gør, som det gør?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En skarp kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ændrer det i praksis forskerens egen position?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Forskerens påkrævede positionering",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien ændre sin metode for at studere mennesket som en aktiv aktør i sin daglige livsførelse frem for et isoleret, reagerende objekt i et laboratorium?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter fra hukommelsen først for at lade modellens struktur låse sig fast. Brug bagefter Abridged Reader til at reparere fejl eller finde mangler.",
+      "overview": [
+        "Teksten etablerer daglig livsførelse som det primære, aktive analyseobjekt i faget kritisk psykologi.",
+        "Den kritiserer traditionel forskning voldsomt for at fjerne mennesket fra hverdagen ind i et rent laboratoriemiljø.",
+        "I stedet fremhæves det, at mennesket handler ud fra egne logiske præmisser og forsøger at samle hverdagens mange konflikter."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den traditionelle eksperimentalpsykologi kritiseres for fejlagtigt at skabe en udelukkende __________ realitet uden blik for den daglige.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Begrebet daglig livsførelse skal ikke ses som en passiv sum af vaner, men som en konstant og aktiv __________ af livets modstridende krav.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den cykliske gentagelse af hverdagens rutiner er eksistentielt afgørende, fordi den giver os en livsnødvendig __________ fra evige beslutninger.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Balancen mellem fastlåste samfundsstrukturer og individets handlemuligheder udtrykkes gennem begrebet om subjektets relativ __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Mens naturvidenskaben leder efter deterministiske årsager til en adfærd, søger kritisk psykologi efter subjektets egne __________ til at handle.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 6,
+          "sentence": "Når forskeren afviser at stå over subjektet objektivt udefra, kræver metoden at vi i stedet tager afsæt i individets egen indre __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Holzkamp advarer skarpt mod at isolere mennesket, for uden indblik i vores komplekse __________ livsførelse overser man det vigtigste.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kort visuel model, der kontrasterer klassisk laboratorieforskning med subjektvidenskabens blik.",
+          "required_elements": [
+            "En kasse for 'Eksperimentel realitet'",
+            "en kasse for 'Daglig realitet'",
+            "to pile der viser",
+            "hvor den traditionelle psykologi peger hen",
+            "hvor Holzkamp mener",
+            "vi bør pege hen"
+          ],
+          "blank_space_hint": "Tegn horisontalt. Sørg for at den ene retning tydeligt markeres som problematisk ifølge teksten."
+        },
+        {
+          "number": 2,
+          "task": "Tegn et puslespil eller et forhandlingshjul for at illustrere begrebet 'daglig livsførelse'.",
+          "required_elements": [
+            "Subjektet placeret i midten",
+            "mindst tre udvendige 'krav' (f.eks. arbejde",
+            "familie",
+            "som aktivt skal samles",
+            "integreres med pile mod midten"
+          ],
+          "blank_space_hint": "Brug cirkler til de forskellige elementer og gør det tydeligt, at midten er stedet for konflikt og integration."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som forberedelse til eksamen. Her oversættes de teoretiske modeller til konkrete overvejelser, sammenligninger og argumenter.",
+      "use_this_text_for": [
+        "At levere et frontalt angreb på trækpsykologiens blinde og mekaniske variable.",
+        "At forklare forskellen på et kausalt 'årsags'-perspektiv og et rationelt 'grunde'-perspektiv.",
+        "At introducere spændingsfeltet mellem individets handlefrihed og samfundets struktur (relativ autonomi).",
+        "At demonstrere, hvorfor banale hverdagslige rutiner rent faktisk har en stærk psykologisk beskyttelsesfunktion.",
+        "At fremføre et bud på et nyt, ansvarsfuldt ideal for den psykologiske forskers position."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologiens domæne",
+          "connection": "Holzkamp afviser den tilgang, dimensionelle træktyper læner sig op ad, fordi den skaber et 'eksperimentelt' isoleret vakuum uden hverdagskontekst."
+        },
+        {
+          "course_theme": "Humanistisk psykologi",
+          "connection": "Begge retninger forfægter et stærkt aktørskab (agency), men i kritisk psykologi ses den ikke som indre selvrealisering, men som kamp i ydre samfundsbetingelser."
+        },
+        {
+          "course_theme": "Kritisk Personalisme (Stern)",
+          "connection": "Begge tænkere afviser, at man kan adskille mennesket i psykologiske atomer; de insisterer på handlingens helhed."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter",
+          "connection": "Teksten placerer udtrykkeligt essens/kontekst-linjen helt ude i samfundskonteksten, og den forhandler konstant krydset mellem 'agency' og ydre determination."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign deres søgen efter stabile, mekaniske årsager udefra/indefra med Holzkamps argument for at forstå subjektet indefra ud fra egne handlegrunde."
+        },
+        {
+          "compare_with": "Carl Rogers (Humanisme)",
+          "how_to_compare": "Stil Rogers' formodning om en iboende, fri aktualiseringstendens over for Holzkamps strammere og betingede 'relative autonomi'."
+        },
+        {
+          "compare_with": "William Stern (Personalisme)",
+          "how_to_compare": "Vis hvordan Holzkamp viderefører kritikken af variabler, men trækker det over i en mere decideret samfundsstrukturel og sociologisk ramme end Stern gjorde."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Redegør for begrebet daglig livsførelse",
+          "use_in_answer": "Beskriv det ikke bare som hverdagsvaner, men stærkt som 'en aktiv integration af samfundets modstridende krav'.",
+          "caution": "Undlad at gøre det til en passiv opremsning af f.eks. at børste tænder."
+        },
+        {
+          "prompt_type": "Diskuter fri vilje over for samfundets magt",
+          "use_in_answer": "Placer begrebet 'relativ autonomi' tungt på midten af brættet for at vise, at strukturer sætter grænsen, men vi manøvrerer inden for dem.",
+          "caution": "Påstå aldrig, at kritisk psykologi tror på uindskrænket frihed. Ordet 'relativ' er afgørende."
+        },
+        {
+          "prompt_type": "Analyser rutiners funktion i menneskelivet",
+          "use_in_answer": "Brug teksten kontraintuitivt til at vise, at rutine giver nødvendig kognitiv og eksistentiel 'aflastning'.",
+          "caution": "Gør ikke automatisk rutiner til fjenden. Uden dem er livsførelsen ifølge teksten umulig."
+        },
+        {
+          "prompt_type": "Vurder psykologiens epistemologi",
+          "use_in_answer": "Benyt sondringen mellem objektive årsager i laboratoriet over for subjektive grunde fra et intersubjektivt forskerstandpunkt.",
+          "caution": "Sørg for ikke at hævde, at Holzkamp hader empiri; han hader bare den kunstige."
+        },
+        {
+          "prompt_type": "Vurder individets beskyttelse af egne rammer",
+          "use_in_answer": "Brug hans observation om, at vi i kriser kan ty til selvretfærdiggørelse, fordi stabilitet er så livsnødvendig.",
+          "caution": "Bland det ikke sammen med psykoanalytiske forsvarsmekanismer; det er eksistentiel overlevelse her."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse 'daglig livsførelse' udelukkende som 'trummerum' og kedsomhed.",
+          "better_reading": "Forstå det som et højspændt puslespil af forhandlinger, prioritering og ressourcestyring."
+        },
+        {
+          "trap": "At tro kritisk psykologi mener, samfundet fuldstændig hjernevasker individet mekanisk.",
+          "better_reading": "Fasthold, at vi fastholder en form for 'agency' gennem 'relativ autonomi' og vores evne til at forme betingelserne om."
+        },
+        {
+          "trap": "At bruge ordene 'årsager' og 'grunde' i flæng uden at skelne i eksamenssvaret.",
+          "better_reading": "Husk, at skellet mellem de to ord er selve beviset på en vellykket analyse af metodologier i kurset."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Holzkamps begreb om 'relativ autonomi' med trækpsykologiens opfattelse af, hvordan menneskets handlinger determineres.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort trækpsykologiens antagelse om fastlåste, dimensionelle elementer, der forudsiger adfærd.",
+        "Præsenter den kritiske modreaktion: mennesket skal ses som en aktiv aktør under betingede muligheder (relativ autonomi).",
+        "Sæt dem direkte op mod hinanden via deres syn på kausalitet: mekaniske 'årsager' over for subjektets meningsgivende 'grunde'.",
+        "Konkludér ved at understrege, at trækpsykologien arbejder bedst i 'laboratoriet', mens autonomi-begrebet kun fungerer i analysen af den komplekse 'daglige livsførelse'."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

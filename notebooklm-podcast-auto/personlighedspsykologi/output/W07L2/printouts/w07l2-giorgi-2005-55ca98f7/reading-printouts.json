@@ -1,0 +1,998 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:37:53Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
+    "source_files_signature": "6c9ea75e0af3deaa8a2ac28321dad5a83c19ee12c8f07ac1c897d18e059f53b2",
+    "source_card": "bfe4cd95c55b27ed24a8323c99568bf62f74f21bbd768fc9c89a33916fac8ced",
+    "revised_lecture_substrate": "792e73297dc516efe1ad371d4de999bec80bae632e2c70895d98bb44c151229b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w07l2-giorgi-2005-55ca98f7",
+    "lecture_key": "W07L2",
+    "title": "Giorgi (2005)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 13,
+    "estimated_token_count": 8450,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf"
+    ],
+    "reading_title": "Remaining Challenges for Humanistic Psychology",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W07L2"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W7L2 Giorgi (2005).pdf",
+    "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Giorgi (2005).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "775505481caeacd3e24dc6f95317606c773327433010b60b5e56535a609059ce",
+      "size_bytes": 101767,
+      "page_count": 13,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 8450,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 13,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-giorgi-2005-55ca98f7",
+      "lecture_key": "W07L2",
+      "source_title": "Giorgi (2005)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning og fokusere på tekstens centrale spændinger.",
+      "teaser_paragraphs": [
+        "Da den humanistiske psykologi opstod i 1960'erne, var det som en nødvendig protest mod et amputeret menneskesyn. Man gjorde oprør mod behaviorismens og psykoanalysens reduktionisme, hvor laboratorieforsøg ofte fremstillede forsøgspersonen som en passiv robot uden fri vilje.",
+        "I klinikken og i vores dagligdagsforståelse vandt humanismen. Den genindførte det frie, meningsskabende individ. Men hvorfor er retningen i dag stadig dybt marginaliseret på universiteterne, hvor under én procent af APA's medlemmer tilhører den humanistiske division?",
+        "Problemet er ikke menneskesynet, men metoden. Som Giorgi bemærker, er retningen *very good with humans*, men mangler det metodiske mod til at bygge sit eget videnskabelige fundament. Når det kommer til forskning, sidder psykologien stadig fast i naturvidenskabens skygge.",
+        "Giorgi hævder skarpt, at bevægelsen har haft *trouble with changing science*. Vi forsøger stædigt at studere frie, meningsskabende mennesker med præcis de samme metoder, som fysikken bruger til at måle deterministiske naturkræfter og isolerede variabler.",
+        "Denne tekst er et opråb. Den kræver, at vi indser fejlen ved at imitere fysik og i stedet bruger fænomenologien til at opfinde en metodisk stringent humanvidenskab, der tager menneskets levede erfaring alvorligt."
+      ],
+      "main_problem": "Humanismen har overbevisende genoprettet troen på det frie menneske, men har fejlet i at skabe en valid videnskabelig metode. Hvordan kan fænomenologien løse dette problem?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad var humanismens oprindelige protest, og hvad lykkedes den rent faktisk med?",
+          "why_it_matters": "Du skal vide, hvad der blev vundet på menneskesynet, før du kan forstå, hvad der stadig mangler metodisk.",
+          "answer_form": "To punkter"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er den humanistiske psykologi forblevet en marginaliseret bevægelse i den akademiske verden?",
+          "why_it_matters": "Dette er Giorgis hovedproblem. Retningen vandt i praksis, men tabte kampen om videnskaben.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er det naturvidenskabelige paradigme fundamentalt uegnet til at studere mennesker?",
+          "why_it_matters": "Viser hvorfor isolerede variabler og determinisme ødelægger vores forståelse af det frie subjekt.",
+          "answer_form": "Et konkret logisk eksempel"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan kan fænomenologien levere den strenge metode, som humanismen mangler?",
+          "why_it_matters": "Forbinder den kliniske bevægelse med en valid og anerkendt filosofisk forskningstradition.",
+          "answer_form": "Et centralt begreb eller en kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets epistemologiske kernepunkt, hvor determinismen endeligt forlades, og behovet for en kvalitativ humanvidenskab etableres, hvilket baner vej for de senere kritiske teorier.",
+      "overview": [
+        "Teksten analyserer kløften mellem humanismens succesfulde kliniske menneskesyn og dens uholdbare videnskabelige praksis.",
+        "Den påviser, at naturvidenskabens metoder systematisk overser menneskets kapacitet for frihed og meningsdannelse.",
+        "Løsningen præsenteres som en integration af fænomenologisk metode for at etablere en ægte humanvidenskab."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 204-207",
+          "task": "Læs om den oprindelige protest mod behaviorismen og genkomsten af det frie menneske.",
+          "why_it_matters": "Fastslår bevægelsens historiske udgangspunkt og dens afgørende kliniske sejr.",
+          "stop_signal": "Når teksten stiller spørgsmålet 'So, has the protest been successful?'"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-208",
+          "task": "Kortlæg marginaliseringsproblemet og kløften mellem klinisk succes og akademisk fiasko.",
+          "why_it_matters": "Definerer tekstens centrale spænding: Menneskesynet er reddet, men der mangler forskningsmæssig legitimitet.",
+          "stop_signal": "Når Rogers' gamle advarsel opsummeres"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 208-210",
+          "task": "Følg kritikken af naturvidenskabens dominerende metoderæsonnement og Kimbles vision.",
+          "why_it_matters": "Demonstrerer præcis hvorfor eksperimentel kontrol ødelægger indfangningen af levet erfaring.",
+          "stop_signal": "Når afsnittet slutter med kravet om originale procedurer"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 210-212",
+          "task": "Opfang argumentet for, hvordan fænomenologiens filosofi besvarer humanismens problemer.",
+          "why_it_matters": "Dette er forfatterens primære teoretiske løsningsmodel til kursets metodediskussion.",
+          "stop_signal": "Når du når afsnittet om 'the ultimate challenge'"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 212-214",
+          "task": "Skim de konkrete eksempler på, hvordan de levede erfaringer kan undersøges metodisk.",
+          "why_it_matters": "Sætter en praktisk ramme op for, hvordan variabler skal gentænkes i fremtiden.",
+          "stop_signal": "Når forfatteren opsummerer sine fire afsluttende krav"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "the encapsulated person",
+          "why": "Beskriver den forskertype, der dogmatisk og rigidt insisterer på kun at bruge én videnskabelig metode til alle fænomener.",
+          "where_to_look": "S. 206"
+        },
+        {
+          "target": "very good with humans",
+          "why": "Opsummerer præcist det område, hvor humanismen historisk set har vundet en suveræn sejr.",
+          "where_to_look": "S. 208"
+        },
+        {
+          "target": "trouble with changing science",
+          "why": "Opsummerer bevægelsens største, stadigt uløste svaghed og kilden til dens marginalisering.",
+          "where_to_look": "S. 208"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Specifikke referencer til divisionernes internhistorik i APA i 1960'erne.",
+        "Rollo Mays præcise og komplekse ontologiske udlægninger af 'being'."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede gennemgang for at få tekstens centrale logik på plads. Brug den derefter som opslagsværk til opgaverne.",
+      "coverage_note": "Dækker Giorgis argumentationsrække om humanismens sejr, akademiske fald og fænomenologiske genopstandelse.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 204-207",
+          "heading": "Protesten mod robotten og det reducerede menneske",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad var det for et menneskesyn, humanismen historisk gjorde oprør imod?",
+          "explanation_paragraphs": [
+            "I perioden før 1960'erne var den akademiske psykologi fuldstændig domineret af behaviorismen og en streng, medicinsk inspireret psykoanalyse. Det altdominerende krav var, at psykologien skulle tilpasse sine fakta til fysikkens idealer. Resultatet var et menneskesyn, hvor personen fremstod som en deterministisk robot eller en samling af patologier, styret udefra eller af ubevidste kræfter.",
+            "Den humanistiske psykologi opstod som en målrettet protest mod denne reduktionisme. Særligt klinikere og terapeuter insisterede på at anerkende menneskets kreativitet, frihed og evne til selvtranscendens. De nægtede at reducere klienten til summen af stimuli og responser.",
+            "Humanismen vandt denne første kamp om hverdagens menneskesyn. De lykkedes med at erstatte laboratorierobotten med et levende, meningsskabende individ, hvis potentiale og indre vækst kom i centrum."
+          ],
+          "key_points": [
+            "Behaviorisme og psykoanalyse reducerede mennesket til mekanismer.",
+            "Humanismen protesterede og forsvarede ideen om bevidsthed, frihed og vækst.",
+            "Bevægelsen fik stor succes som et klinisk og praktisk modtræk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "robotlike participant",
+              "why_it_matters": "Beskriver det amputerende menneskesyn, der dominerede den daværende akademiske psykologi.",
+              "source_location": "S. 207"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-208",
+          "heading": "Succes i klinikken, marginalisering på universitetet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor dominerer humanismen ikke den moderne, akademiske psykologi?",
+          "explanation_paragraphs": [
+            "Selvom protestbevægelsen ændrede måden, vi ser personen på, førte det ikke til en institutionel overtagelse. Giorgi bemærker tørt, at under én procent af de registrerede APA-medlemmer i dag officielt tilhører den humanistiske division.",
+            "Forklaringen ligger i humanisternes manglende evne til at ændre de grundlæggende krav til, hvad der udgør valid videnskab. For at fremstå akademisk seriøs, forsøgte retningen løbende at tilpasse sig det samme naturvidenskabelige ideal, som de kritiserede.",
+            "Man endte i et valg mellem at bedrive en mangelfuld kvantitativ videnskab eller helt at afvise videnskabelig stringens. Konsekvensen blev, at humanismen forblev henvist til udkanten af de store akademiske institutioner."
+          ],
+          "key_points": [
+            "Humanismen har mindre end 1% tilslutning i den store faglige sammenslutning APA.",
+            "Marginaliseringen skyldes en manglende evne til at levere anerkendt grundforskning.",
+            "Bevægelsen formåede aldrig at definere et uafhængigt videnskabeligt alternativ."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "trouble with changing science",
+              "why_it_matters": "Afslører kernen i humanismens manglende gennemslagskraft på universiteterne.",
+              "source_location": "S. 208"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 208-210",
+          "heading": "Naturvidenskabens spændetrøje",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor er den traditionelle eksperimentelle metode fundamentalt ubrugelig for humanismen?",
+          "explanation_paragraphs": [
+            "Naturvidenskabens klassiske metode er baseret på determinisme, empirisk observation af fysiske størrelser og isolation af variabler med henblik på kontrol og forudsigelse. Dette system blev opfundet til at studere naturkræfter, ikke menneskelig bevidsthed.",
+            "Når psykologien forsøger at bruge denne model til at studere mennesker, sker der en fatal fejl. Vi fratager forsøgspersonen den meningsskabelse og frihed, som er selve essensen af at være menneske.",
+            "I et menneskeligt liv kan man ikke isolere én snæver variabel. En persons perception er uløseligt sammenvævet med personens hukommelse, forventninger og kontekst. Giorgi påpeger, at hvis forskeren vil fastholde frihed som en præmis, kan målet ikke længere være mekanisk forudsigelse."
+          ],
+          "key_points": [
+            "Naturvidenskaben kræver determinisme og adskillelse af uafhængige variabler.",
+            "Menneskelig erfaring er syntetisk; hukommelse og perception kan ikke isoleres fra hinanden.",
+            "At måle et menneske som et fysisk objekt ødelægger selve genstandsfeltet."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 213",
+              "passage": "One cannot eliminate or hold constant a research participant’s memory while studying his or her perception, nor vice versa. So we have to understand psychological variables as discriminations embedded within synthetic activity.",
+              "why_it_matters": "Demonstrerer logisk og præcist, hvorfor det traditionelle krav om uafhængige variabler kollapser i mødet med det oplevende subjekt."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 210-214",
+          "heading": "Fænomenologi som det manglende fundament",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan humanismen udvikle sig fra en protestbevægelse til en stringent videnskab?",
+          "explanation_paragraphs": [
+            "For at overleve som disciplin skal humanismen stoppe med at imitere fysik og i stedet opfinde en metodologi, der passer til den menneskelige tilstand. Giorgi foreslår fænomenologien som det nødvendige filosofiske og metodiske svar.",
+            "Fænomenologien anerkender subjektiviteten som et legitimt forskningsområde og studerer de levede fænomener kvalitativt, uden at reducere dem til tal eller biologi. Gennem teknikken bracketing lærer forskeren bevidst at sætte sine naturvidenskabelige forforståelser til side.",
+            "Målet bliver ikke længere at forudsige adfærd mekanisk, men derimod tålmodigt at afdække og beskrive de organiserende netværk af mening, der driver et menneskes valg i en given situation."
+          ],
+          "key_points": [
+            "Fænomenologi tilbyder en stringent, men ikke-reducerende ramme.",
+            "Forskeren skal sætte sine forudindtagelser i parentes (bracketing).",
+            "Målet er at forstå helheden af det levede meningsnetværk, frem for frekvens og kausalitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bracket the hold",
+              "why_it_matters": "Angiver den nødvendige handling, hvor psykologien bevidst må fralægge sig sit mindreværdskompleks over for naturvidenskaben.",
+              "source_location": "S. 214"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad var det for et menneskesyn, humanismen historisk gjorde oprør imod?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "To punkter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor dominerer humanismen ikke den moderne, akademiske psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er den traditionelle eksperimentelle metode fundamentalt ubrugelig for humanismen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et konkret logisk eksempel",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan humanismen udvikle sig fra en protestbevægelse til en stringent videnskab?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et centralt begreb eller en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Humanismen har overbevisende genoprettet troen på det frie menneske, men har fejlet i at skabe en valid videnskabelig metode. Hvordan kan fænomenologien løse dette problem?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Brug dette ark til at låse modellen fast i hukommelsen. Udfyld så meget du kan fra hukommelsen først, og slå kun op i din abridged reader for at reparere huller bagefter.",
+      "overview": [
+        "Giorgis tekst analyserer kritisk den humanistiske psykologis manglende gennemslagskraft i den akademiske verden.",
+        "Han argumenterer for, at retningen med succes reddede menneskesynet fra reduktionisme, men glemte at opfinde en valid, uafhængig forskningsmetode.",
+        "Løsningen skal ifølge Giorgi findes i fænomenologien, som kan levere det filosofiske grundlag for en ægte humanvidenskab."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den humanistiske psykologi opstod i 1960'erne som et eksplicit oprør mod behaviorismens og __________ reduktionisme.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et teorinavn"
+        },
+        {
+          "number": 2,
+          "sentence": "Selvom retningen med stor succes ændrede vores __________ på personen i det kliniske rum, forblev den marginaliseret i akademia.",
+          "where_to_look": "Sektion 1 og 2",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 3,
+          "sentence": "Giorgi identificerer kerneproblemet som psykologiens ukritiske accept af et videnskabsideal, der oprindeligt blev skabt til og kopieret fra __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et ord"
+        },
+        {
+          "number": 4,
+          "sentence": "I modsætning til i fysikkens forsøg er det metodisk umuligt at studere en menneskelig erfaring ved hjælp af isolerede __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et flerordsbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "For overhovedet at overleve som en selvstændig videnskab, foreslår Giorgi systematisk at integrere den disciplin, der kaldes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "en filosofisk retning"
+        },
+        {
+          "number": 6,
+          "sentence": "Forskeren skal bruge fænomenologien til at udføre kvalitativ analyse af levede __________, frem for blot at jagte forudsigelighed.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en opstilling, der kontrasterer Naturvidenskabens og Humanvidenskabens tilgang til at studere verden.",
+          "required_elements": [
+            "Et felt der viser naturvidenskabens mål og metoder",
+            "Et felt der viser fænomenologiens/humanvidenskabens mål og metoder",
+            "En markering af hvor 'isolerede variabler' hører hjemme",
+            "En markering af hvor 'levet mening' hører hjemme"
+          ],
+          "blank_space_hint": "Brug en todelt kolonne med plads til at skrive kontrasterne i stikord over for hinanden."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse overvejelser og cues til at omsætte din læsning til skarpe, mundtlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At demonstrere hvordan valget af videnskabelig metode direkte former og begrænser det menneske, vi får at se.",
+        "At kritisere det klassiske eksperimentelle paradigme (naturvidenskab) indefra.",
+        "At bygge den nødvendige bro mellem humanistisk teori (Maslow/Rogers) og en operationel fænomenologisk metode.",
+        "At diskutere 'Agency vs. Determination' ud fra et skarpt metateoretisk og historisk perspektiv."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Psychoanalytic Personality Theory (W04-W05)",
+          "connection": "Klar kontrast: Psykoanalysen opfatter subjektet som overvejende styret og decentreret af ubevidste konflikter; humanismen insisterer radikalt på, at subjektet er bevidst, frit og målrettet."
+        },
+        {
+          "course_theme": "Hacking og Looping Effects (W11)",
+          "connection": "Epistemologisk tråd: Både Hacking og Giorgi peger på, at metodiske kategorier i psykologien ikke blot måler neutralt, men skaber problemer med at fange mennesket som et 'moving target'."
+        },
+        {
+          "course_theme": "Critical Psychology (W08-W09)",
+          "connection": "Delt agentur: Begge retninger forkaster mekanisk determinisme for at redde menneskets frihed. Men hvor humanismen placerer handlekraften som en indre aktualisering, flytter kritisk psykologi den ud i samfundsdeltagelsen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Rogers (Client-centered therapy)",
+          "how_to_compare": "Sammenkobl Rogers' terapeutiske fokus på klientens indre oplevelse med Giorgis argument for, at netop denne levede oplevelse kræver en fuldgyldig videnskabelig metode (fænomenologi) for at blive anerkendt."
+        },
+        {
+          "compare_with": "Freud (Psykoanalysen)",
+          "how_to_compare": "Spil Freuds faste drivkræfter og defekt-motivation ud mod det humanistiske menneskesyn, der vægter mening og selvaktualisering, præcis som Giorgi beskriver protestens udgangspunkt."
+        },
+        {
+          "compare_with": "Foucault (Poststrukturalisme)",
+          "how_to_compare": "Skab spænding ved at kontrastere Giorgis fundamentale tro på den sande, 'autentiske levede erfaring' med Foucaults dekonstruktion, der ser selvet som en historisk produceret magteffekt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når eksaminator beder om videnskabsteoretisk kritik",
+          "use_in_answer": "Brug 'encapsulated person' til stærkt at kritisere forskere, der dogmatisk påstår, at kun det kontrollerede eksperiment producerer sand viden, selv når forsøgspersonen mister sin agens.",
+          "caution": "Benyt dette analytisk til at vise grænserne for naturvidenskab; undgå at bruge det som et personligt angreb på positivismen."
+        },
+        {
+          "prompt_type": "Når du trækker spørgsmål om humanismens indflydelse",
+          "use_in_answer": "Deklarér klart, at bevægelsen var en overvældende succes som klinisk redningsaktion for menneskesynet, men en langvarig fiasko som grundforskningsparadigme.",
+          "caution": "Husk altid at underbygge fiaskoen med Giorgis specifikke pointe om metodisk imitation."
+        },
+        {
+          "prompt_type": "Når du diskuterer de kvalitative metoders værdi",
+          "use_in_answer": "Forsvar fænomenologien ved at vise, at det at opgive kvantificering ikke er lig med at opgive videnskaben, men blot betyder at overgå fra frekvens til at forstå logikken i et levet meningsnetværk.",
+          "caution": "Vær påpasselig med ikke at beskrive fænomenologi som tilfældig eller ustruktureret hyggesnak."
+        },
+        {
+          "prompt_type": "Når du skal bruge de fire orienteringspunkter (Agency vs. Determination)",
+          "use_in_answer": "Brug Giorgis analyse af den isolerede variabel til at vise, at man metodisk *gør* mennesket til et bestemt objekt (Determination), når man nægter at lade det træde frem med hele sin syntetiske erfaring (Agency).",
+          "caution": "Husk at Giorgi ikke afviser determinisme i naturvidenskaben, men blot insisterer på, at det hører til naturvidenskaben alene."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at Giorgi blankt afviser enhver form for videnskab.",
+          "better_reading": "Han kræver stærk, stringent videnskab, men han insisterer kompromisløst på, at metoden skal skræddersyes til at matche menneskets frihed."
+        },
+        {
+          "trap": "At sætte naivt lighedstegn mellem 'Humanisme' og 'Fænomenologi'.",
+          "better_reading": "Humanismen er en psykologisk teoriretning med et bestemt menneskesyn. Fænomenologien er det bagvedliggende metodiske og filosofiske værktøj, der kan redde teorien metodisk."
+        },
+        {
+          "trap": "At forveksle humanismens synlighed i dagligdagen med akademisk magt.",
+          "better_reading": "Tekstens primære krise er, at på trods af en enorm kulturel medvind, forblev bevægelsen statistisk og institutionelt ubetydelig internt på universiteterne."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan forsøger den humanistiske psykologi ifølge Giorgi at frigøre subjektet fra klassisk determinisme, og hvilken skæbnesvanger videnskabelig fejl begik bevægelsen i kølvandet på dette?",
+      "mini_exam_answer_plan_slots": [
+        "Kortlæg først den oprindelige dobbelte protest mod både behaviorismen og psykoanalysen.",
+        "Etablér det nye menneskesyn: Mennesket som udstyret med agens, frihed og potentiale.",
+        "Peg på den fejlslagne strategi: Man beholdt et menneskesyn baseret på frihed, men fastholdt naturvidenskabens metoder (isolerede variabler og kontrol).",
+        "Gennemgå Giorgis argument for, hvorfor disse uafhængige variabler fejler over for syntetisk menneskelig erfaring.",
+        "Afslut med fænomenologien og 'bracketing' som den stringente, filosofiske løsning."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-giorgi-2005-55ca98f7",
+      "lecture_key": "W07L2",
+      "source_title": "Giorgi (2005)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning og fokusere på tekstens centrale spændinger.",
+      "teaser_paragraphs": [
+        "Da den humanistiske psykologi opstod i 1960'erne, var det som en nødvendig protest mod et amputeret menneskesyn. Man gjorde oprør mod behaviorismens og psykoanalysens reduktionisme, hvor laboratorieforsøg ofte fremstillede forsøgspersonen som en passiv robot uden fri vilje.",
+        "I klinikken og i vores dagligdagsforståelse vandt humanismen. Den genindførte det frie, meningsskabende individ. Men hvorfor er retningen i dag stadig dybt marginaliseret på universiteterne, hvor under én procent af APA's medlemmer tilhører den humanistiske division?",
+        "Problemet er ikke menneskesynet, men metoden. Som Giorgi bemærker, er retningen *very good with humans*, men mangler det metodiske mod til at bygge sit eget videnskabelige fundament. Når det kommer til forskning, sidder psykologien stadig fast i naturvidenskabens skygge.",
+        "Giorgi hævder skarpt, at bevægelsen har haft *trouble with changing science*. Vi forsøger stædigt at studere frie, meningsskabende mennesker med præcis de samme metoder, som fysikken bruger til at måle deterministiske naturkræfter og isolerede variabler.",
+        "Denne tekst er et opråb. Den kræver, at vi indser fejlen ved at imitere fysik og i stedet bruger fænomenologien til at opfinde en metodisk stringent humanvidenskab, der tager menneskets levede erfaring alvorligt."
+      ],
+      "main_problem": "Humanismen har overbevisende genoprettet troen på det frie menneske, men har fejlet i at skabe en valid videnskabelig metode. Hvordan kan fænomenologien løse dette problem?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad var humanismens oprindelige protest, og hvad lykkedes den rent faktisk med?",
+          "why_it_matters": "Du skal vide, hvad der blev vundet på menneskesynet, før du kan forstå, hvad der stadig mangler metodisk.",
+          "answer_form": "To punkter"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er den humanistiske psykologi forblevet en marginaliseret bevægelse i den akademiske verden?",
+          "why_it_matters": "Dette er Giorgis hovedproblem. Retningen vandt i praksis, men tabte kampen om videnskaben.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er det naturvidenskabelige paradigme fundamentalt uegnet til at studere mennesker?",
+          "why_it_matters": "Viser hvorfor isolerede variabler og determinisme ødelægger vores forståelse af det frie subjekt.",
+          "answer_form": "Et konkret logisk eksempel"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan kan fænomenologien levere den strenge metode, som humanismen mangler?",
+          "why_it_matters": "Forbinder den kliniske bevægelse med en valid og anerkendt filosofisk forskningstradition.",
+          "answer_form": "Et centralt begreb eller en kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets epistemologiske kernepunkt, hvor determinismen endeligt forlades, og behovet for en kvalitativ humanvidenskab etableres, hvilket baner vej for de senere kritiske teorier.",
+      "overview": [
+        "Teksten analyserer kløften mellem humanismens succesfulde kliniske menneskesyn og dens uholdbare videnskabelige praksis.",
+        "Den påviser, at naturvidenskabens metoder systematisk overser menneskets kapacitet for frihed og meningsdannelse.",
+        "Løsningen præsenteres som en integration af fænomenologisk metode for at etablere en ægte humanvidenskab."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 204-207",
+          "task": "Læs om den oprindelige protest mod behaviorismen og genkomsten af det frie menneske.",
+          "why_it_matters": "Fastslår bevægelsens historiske udgangspunkt og dens afgørende kliniske sejr.",
+          "stop_signal": "Når teksten stiller spørgsmålet 'So, has the protest been successful?'"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-208",
+          "task": "Kortlæg marginaliseringsproblemet og kløften mellem klinisk succes og akademisk fiasko.",
+          "why_it_matters": "Definerer tekstens centrale spænding: Menneskesynet er reddet, men der mangler forskningsmæssig legitimitet.",
+          "stop_signal": "Når Rogers' gamle advarsel opsummeres"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 208-210",
+          "task": "Følg kritikken af naturvidenskabens dominerende metoderæsonnement og Kimbles vision.",
+          "why_it_matters": "Demonstrerer præcis hvorfor eksperimentel kontrol ødelægger indfangningen af levet erfaring.",
+          "stop_signal": "Når afsnittet slutter med kravet om originale procedurer"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 210-212",
+          "task": "Opfang argumentet for, hvordan fænomenologiens filosofi besvarer humanismens problemer.",
+          "why_it_matters": "Dette er forfatterens primære teoretiske løsningsmodel til kursets metodediskussion.",
+          "stop_signal": "Når du når afsnittet om 'the ultimate challenge'"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 212-214",
+          "task": "Skim de konkrete eksempler på, hvordan de levede erfaringer kan undersøges metodisk.",
+          "why_it_matters": "Sætter en praktisk ramme op for, hvordan variabler skal gentænkes i fremtiden.",
+          "stop_signal": "Når forfatteren opsummerer sine fire afsluttende krav"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "the encapsulated person",
+          "why": "Beskriver den forskertype, der dogmatisk og rigidt insisterer på kun at bruge én videnskabelig metode til alle fænomener.",
+          "where_to_look": "S. 206"
+        },
+        {
+          "target": "very good with humans",
+          "why": "Opsummerer præcist det område, hvor humanismen historisk set har vundet en suveræn sejr.",
+          "where_to_look": "S. 208"
+        },
+        {
+          "target": "trouble with changing science",
+          "why": "Opsummerer bevægelsens største, stadigt uløste svaghed og kilden til dens marginalisering.",
+          "where_to_look": "S. 208"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Specifikke referencer til divisionernes internhistorik i APA i 1960'erne.",
+        "Rollo Mays præcise og komplekse ontologiske udlægninger af 'being'."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede gennemgang for at få tekstens centrale logik på plads. Brug den derefter som opslagsværk til opgaverne.",
+      "coverage_note": "Dækker Giorgis argumentationsrække om humanismens sejr, akademiske fald og fænomenologiske genopstandelse.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 204-207",
+          "heading": "Protesten mod robotten og det reducerede menneske",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad var det for et menneskesyn, humanismen historisk gjorde oprør imod?",
+          "explanation_paragraphs": [
+            "I perioden før 1960'erne var den akademiske psykologi fuldstændig domineret af behaviorismen og en streng, medicinsk inspireret psykoanalyse. Det altdominerende krav var, at psykologien skulle tilpasse sine fakta til fysikkens idealer. Resultatet var et menneskesyn, hvor personen fremstod som en deterministisk robot eller en samling af patologier, styret udefra eller af ubevidste kræfter.",
+            "Den humanistiske psykologi opstod som en målrettet protest mod denne reduktionisme. Særligt klinikere og terapeuter insisterede på at anerkende menneskets kreativitet, frihed og evne til selvtranscendens. De nægtede at reducere klienten til summen af stimuli og responser.",
+            "Humanismen vandt denne første kamp om hverdagens menneskesyn. De lykkedes med at erstatte laboratorierobotten med et levende, meningsskabende individ, hvis potentiale og indre vækst kom i centrum."
+          ],
+          "key_points": [
+            "Behaviorisme og psykoanalyse reducerede mennesket til mekanismer.",
+            "Humanismen protesterede og forsvarede ideen om bevidsthed, frihed og vækst.",
+            "Bevægelsen fik stor succes som et klinisk og praktisk modtræk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "robotlike participant",
+              "why_it_matters": "Beskriver det amputerende menneskesyn, der dominerede den daværende akademiske psykologi.",
+              "source_location": "S. 207"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-208",
+          "heading": "Succes i klinikken, marginalisering på universitetet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor dominerer humanismen ikke den moderne, akademiske psykologi?",
+          "explanation_paragraphs": [
+            "Selvom protestbevægelsen ændrede måden, vi ser personen på, førte det ikke til en institutionel overtagelse. Giorgi bemærker tørt, at under én procent af de registrerede APA-medlemmer i dag officielt tilhører den humanistiske division.",
+            "Forklaringen ligger i humanisternes manglende evne til at ændre de grundlæggende krav til, hvad der udgør valid videnskab. For at fremstå akademisk seriøs, forsøgte retningen løbende at tilpasse sig det samme naturvidenskabelige ideal, som de kritiserede.",
+            "Man endte i et valg mellem at bedrive en mangelfuld kvantitativ videnskab eller helt at afvise videnskabelig stringens. Konsekvensen blev, at humanismen forblev henvist til udkanten af de store akademiske institutioner."
+          ],
+          "key_points": [
+            "Humanismen har mindre end 1% tilslutning i den store faglige sammenslutning APA.",
+            "Marginaliseringen skyldes en manglende evne til at levere anerkendt grundforskning.",
+            "Bevægelsen formåede aldrig at definere et uafhængigt videnskabeligt alternativ."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "trouble with changing science",
+              "why_it_matters": "Afslører kernen i humanismens manglende gennemslagskraft på universiteterne.",
+              "source_location": "S. 208"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 208-210",
+          "heading": "Naturvidenskabens spændetrøje",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor er den traditionelle eksperimentelle metode fundamentalt ubrugelig for humanismen?",
+          "explanation_paragraphs": [
+            "Naturvidenskabens klassiske metode er baseret på determinisme, empirisk observation af fysiske størrelser og isolation af variabler med henblik på kontrol og forudsigelse. Dette system blev opfundet til at studere naturkræfter, ikke menneskelig bevidsthed.",
+            "Når psykologien forsøger at bruge denne model til at studere mennesker, sker der en fatal fejl. Vi fratager forsøgspersonen den meningsskabelse og frihed, som er selve essensen af at være menneske.",
+            "I et menneskeligt liv kan man ikke isolere én snæver variabel. En persons perception er uløseligt sammenvævet med personens hukommelse, forventninger og kontekst. Giorgi påpeger, at hvis forskeren vil fastholde frihed som en præmis, kan målet ikke længere være mekanisk forudsigelse."
+          ],
+          "key_points": [
+            "Naturvidenskaben kræver determinisme og adskillelse af uafhængige variabler.",
+            "Menneskelig erfaring er syntetisk; hukommelse og perception kan ikke isoleres fra hinanden.",
+            "At måle et menneske som et fysisk objekt ødelægger selve genstandsfeltet."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 213",
+              "passage": "One cannot eliminate or hold constant a research participant’s memory while studying his or her perception, nor vice versa. So we have to understand psychological variables as discriminations embedded within synthetic activity.",
+              "why_it_matters": "Demonstrerer logisk og præcist, hvorfor det traditionelle krav om uafhængige variabler kollapser i mødet med det oplevende subjekt."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 210-214",
+          "heading": "Fænomenologi som det manglende fundament",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan humanismen udvikle sig fra en protestbevægelse til en stringent videnskab?",
+          "explanation_paragraphs": [
+            "For at overleve som disciplin skal humanismen stoppe med at imitere fysik og i stedet opfinde en metodologi, der passer til den menneskelige tilstand. Giorgi foreslår fænomenologien som det nødvendige filosofiske og metodiske svar.",
+            "Fænomenologien anerkender subjektiviteten som et legitimt forskningsområde og studerer de levede fænomener kvalitativt, uden at reducere dem til tal eller biologi. Gennem teknikken bracketing lærer forskeren bevidst at sætte sine naturvidenskabelige forforståelser til side.",
+            "Målet bliver ikke længere at forudsige adfærd mekanisk, men derimod tålmodigt at afdække og beskrive de organiserende netværk af mening, der driver et menneskes valg i en given situation."
+          ],
+          "key_points": [
+            "Fænomenologi tilbyder en stringent, men ikke-reducerende ramme.",
+            "Forskeren skal sætte sine forudindtagelser i parentes (bracketing).",
+            "Målet er at forstå helheden af det levede meningsnetværk, frem for frekvens og kausalitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bracket the hold",
+              "why_it_matters": "Angiver den nødvendige handling, hvor psykologien bevidst må fralægge sig sit mindreværdskompleks over for naturvidenskaben.",
+              "source_location": "S. 214"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad var det for et menneskesyn, humanismen historisk gjorde oprør imod?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "To punkter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor dominerer humanismen ikke den moderne, akademiske psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er den traditionelle eksperimentelle metode fundamentalt ubrugelig for humanismen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et konkret logisk eksempel",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan humanismen udvikle sig fra en protestbevægelse til en stringent videnskab?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et centralt begreb eller en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Humanismen har overbevisende genoprettet troen på det frie menneske, men har fejlet i at skabe en valid videnskabelig metode. Hvordan kan fænomenologien løse dette problem?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Brug dette ark til at låse modellen fast i hukommelsen. Udfyld så meget du kan fra hukommelsen først, og slå kun op i din abridged reader for at reparere huller bagefter.",
+      "overview": [
+        "Giorgis tekst analyserer kritisk den humanistiske psykologis manglende gennemslagskraft i den akademiske verden.",
+        "Han argumenterer for, at retningen med succes reddede menneskesynet fra reduktionisme, men glemte at opfinde en valid, uafhængig forskningsmetode.",
+        "Løsningen skal ifølge Giorgi findes i fænomenologien, som kan levere det filosofiske grundlag for en ægte humanvidenskab."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den humanistiske psykologi opstod i 1960'erne som et eksplicit oprør mod behaviorismens og __________ reduktionisme.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et teorinavn"
+        },
+        {
+          "number": 2,
+          "sentence": "Selvom retningen med stor succes ændrede vores __________ på personen i det kliniske rum, forblev den marginaliseret i akademia.",
+          "where_to_look": "Sektion 1 og 2",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 3,
+          "sentence": "Giorgi identificerer kerneproblemet som psykologiens ukritiske accept af et videnskabsideal, der oprindeligt blev skabt til og kopieret fra __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et ord"
+        },
+        {
+          "number": 4,
+          "sentence": "I modsætning til i fysikkens forsøg er det metodisk umuligt at studere en menneskelig erfaring ved hjælp af isolerede __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et flerordsbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "For overhovedet at overleve som en selvstændig videnskab, foreslår Giorgi systematisk at integrere den disciplin, der kaldes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "en filosofisk retning"
+        },
+        {
+          "number": 6,
+          "sentence": "Forskeren skal bruge fænomenologien til at udføre kvalitativ analyse af levede __________, frem for blot at jagte forudsigelighed.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en opstilling, der kontrasterer Naturvidenskabens og Humanvidenskabens tilgang til at studere verden.",
+          "required_elements": [
+            "Et felt der viser naturvidenskabens mål og metoder",
+            "Et felt der viser fænomenologiens/humanvidenskabens mål og metoder",
+            "En markering af hvor 'isolerede variabler' hører hjemme",
+            "En markering af hvor 'levet mening' hører hjemme"
+          ],
+          "blank_space_hint": "Brug en todelt kolonne med plads til at skrive kontrasterne i stikord over for hinanden."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse overvejelser og cues til at omsætte din læsning til skarpe, mundtlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At demonstrere hvordan valget af videnskabelig metode direkte former og begrænser det menneske, vi får at se.",
+        "At kritisere det klassiske eksperimentelle paradigme (naturvidenskab) indefra.",
+        "At bygge den nødvendige bro mellem humanistisk teori (Maslow/Rogers) og en operationel fænomenologisk metode.",
+        "At diskutere 'Agency vs. Determination' ud fra et skarpt metateoretisk og historisk perspektiv."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Psychoanalytic Personality Theory (W04-W05)",
+          "connection": "Klar kontrast: Psykoanalysen opfatter subjektet som overvejende styret og decentreret af ubevidste konflikter; humanismen insisterer radikalt på, at subjektet er bevidst, frit og målrettet."
+        },
+        {
+          "course_theme": "Hacking og Looping Effects (W11)",
+          "connection": "Epistemologisk tråd: Både Hacking og Giorgi peger på, at metodiske kategorier i psykologien ikke blot måler neutralt, men skaber problemer med at fange mennesket som et 'moving target'."
+        },
+        {
+          "course_theme": "Critical Psychology (W08-W09)",
+          "connection": "Delt agentur: Begge retninger forkaster mekanisk determinisme for at redde menneskets frihed. Men hvor humanismen placerer handlekraften som en indre aktualisering, flytter kritisk psykologi den ud i samfundsdeltagelsen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Rogers (Client-centered therapy)",
+          "how_to_compare": "Sammenkobl Rogers' terapeutiske fokus på klientens indre oplevelse med Giorgis argument for, at netop denne levede oplevelse kræver en fuldgyldig videnskabelig metode (fænomenologi) for at blive anerkendt."
+        },
+        {
+          "compare_with": "Freud (Psykoanalysen)",
+          "how_to_compare": "Spil Freuds faste drivkræfter og defekt-motivation ud mod det humanistiske menneskesyn, der vægter mening og selvaktualisering, præcis som Giorgi beskriver protestens udgangspunkt."
+        },
+        {
+          "compare_with": "Foucault (Poststrukturalisme)",
+          "how_to_compare": "Skab spænding ved at kontrastere Giorgis fundamentale tro på den sande, 'autentiske levede erfaring' med Foucaults dekonstruktion, der ser selvet som en historisk produceret magteffekt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når eksaminator beder om videnskabsteoretisk kritik",
+          "use_in_answer": "Brug 'encapsulated person' til stærkt at kritisere forskere, der dogmatisk påstår, at kun det kontrollerede eksperiment producerer sand viden, selv når forsøgspersonen mister sin agens.",
+          "caution": "Benyt dette analytisk til at vise grænserne for naturvidenskab; undgå at bruge det som et personligt angreb på positivismen."
+        },
+        {
+          "prompt_type": "Når du trækker spørgsmål om humanismens indflydelse",
+          "use_in_answer": "Deklarér klart, at bevægelsen var en overvældende succes som klinisk redningsaktion for menneskesynet, men en langvarig fiasko som grundforskningsparadigme.",
+          "caution": "Husk altid at underbygge fiaskoen med Giorgis specifikke pointe om metodisk imitation."
+        },
+        {
+          "prompt_type": "Når du diskuterer de kvalitative metoders værdi",
+          "use_in_answer": "Forsvar fænomenologien ved at vise, at det at opgive kvantificering ikke er lig med at opgive videnskaben, men blot betyder at overgå fra frekvens til at forstå logikken i et levet meningsnetværk.",
+          "caution": "Vær påpasselig med ikke at beskrive fænomenologi som tilfældig eller ustruktureret hyggesnak."
+        },
+        {
+          "prompt_type": "Når du skal bruge de fire orienteringspunkter (Agency vs. Determination)",
+          "use_in_answer": "Brug Giorgis analyse af den isolerede variabel til at vise, at man metodisk *gør* mennesket til et bestemt objekt (Determination), når man nægter at lade det træde frem med hele sin syntetiske erfaring (Agency).",
+          "caution": "Husk at Giorgi ikke afviser determinisme i naturvidenskaben, men blot insisterer på, at det hører til naturvidenskaben alene."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at Giorgi blankt afviser enhver form for videnskab.",
+          "better_reading": "Han kræver stærk, stringent videnskab, men han insisterer kompromisløst på, at metoden skal skræddersyes til at matche menneskets frihed."
+        },
+        {
+          "trap": "At sætte naivt lighedstegn mellem 'Humanisme' og 'Fænomenologi'.",
+          "better_reading": "Humanismen er en psykologisk teoriretning med et bestemt menneskesyn. Fænomenologien er det bagvedliggende metodiske og filosofiske værktøj, der kan redde teorien metodisk."
+        },
+        {
+          "trap": "At forveksle humanismens synlighed i dagligdagen med akademisk magt.",
+          "better_reading": "Tekstens primære krise er, at på trods af en enorm kulturel medvind, forblev bevægelsen statistisk og institutionelt ubetydelig internt på universiteterne."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan forsøger den humanistiske psykologi ifølge Giorgi at frigøre subjektet fra klassisk determinisme, og hvilken skæbnesvanger videnskabelig fejl begik bevægelsen i kølvandet på dette?",
+      "mini_exam_answer_plan_slots": [
+        "Kortlæg først den oprindelige dobbelte protest mod både behaviorismen og psykoanalysen.",
+        "Etablér det nye menneskesyn: Mennesket som udstyret med agens, frihed og potentiale.",
+        "Peg på den fejlslagne strategi: Man beholdt et menneskesyn baseret på frihed, men fastholdt naturvidenskabens metoder (isolerede variabler og kontrol).",
+        "Gennemgå Giorgis argument for, hvorfor disse uafhængige variabler fejler over for syntetisk menneskelig erfaring.",
+        "Afslut med fænomenologien og 'bracketing' som den stringente, filosofiske løsning."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

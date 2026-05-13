@@ -1,4 +1,3 @@
-import importlib.util
 import json
 import sys
 from pathlib import Path
@@ -10,14 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-MODULE_PATH = (
-    REPO_ROOT
-    / "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py"
-)
-SPEC = importlib.util.spec_from_file_location("printout_review_printout_engine", MODULE_PATH)
-assert SPEC and SPEC.loader
-printout_engine = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(printout_engine)
+from notebooklm_queue import personlighedspsykologi_printouts as printout_engine
 
 
 def _write_json(path: Path, payload):
@@ -296,7 +288,63 @@ def test_output_dir_for_source_uses_flat_root():
     output_root = Path("/tmp/review-root")
     source = {"source_id": "source-1", "lecture_key": "W01L1"}
 
-    assert printout_engine.output_dir_for_source(output_root, source) == output_root
+    assert (
+        printout_engine.output_dir_for_source(
+            output_root,
+            source,
+            output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+        )
+        == output_root
+    )
+
+
+def test_output_dir_for_source_uses_canonical_main_tree_by_default():
+    output_root = Path("/tmp/output-root")
+    source = {"source_id": "source-1", "lecture_key": "W01L1"}
+
+    assert printout_engine.output_dir_for_source(output_root, source) == (
+        output_root / "W01L1" / "printouts" / "source-1"
+    )
+
+
+def test_canonical_output_layout_writes_stable_main_files(tmp_path, monkeypatch):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+
+    def fake_markdown_to_pdf(markdown_path: Path, pdf_path: Path):
+        pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        pdf_path.write_bytes(b"%PDF-1.4 main")
+
+    monkeypatch.setattr(printout_engine, "markdown_to_pdf", fake_markdown_to_pdf)
+
+    result = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=lambda **kwargs: _valid_scaffold_response(),
+        render_pdf=True,
+        variant_metadata={
+            "mode": "canonical_main",
+            "variant_key": "problem_driven_v1",
+            "render_completion_markers": False,
+            "render_exam_bridge": False,
+        },
+    )
+
+    output_dir = Path(result["output_dir"])
+    assert output_dir == output_root / "W01L1" / "printouts" / "source-1"
+    assert Path(result["json_path"]) == output_dir / "reading-printouts.json"
+    assert sorted(path.name for path in output_dir.glob("*.pdf")) == [
+        "00-cover.pdf",
+        "01-reading-guide.pdf",
+        "02-active-reading.pdf",
+        "03-abridged-version.pdf",
+        "04-consolidation-sheet.pdf",
+    ]
+    assert not any("--source-1--" in path.name for path in output_dir.glob("*.pdf"))
 
 
 def test_review_pdf_filename_includes_provider_model_and_source_id():
@@ -308,6 +356,39 @@ def test_review_pdf_filename_includes_provider_model_and_source_id():
     assert (
         printout_engine._review_pdf_filename(artifact, "01-reading-guide")
         == "openai-gpt-5_5--source-1--01-reading-guide.pdf"
+    )
+
+
+def test_renderers_prefer_reading_title_over_citation_label():
+    artifact = {
+        "source": {
+            "source_id": "w01l1-lewis-1999-295c67e3",
+            "title": "Lewis (1999)",
+            "reading_title": "Issues in the Study of Personality Development",
+            "lecture_key": "W01L1",
+        },
+        "variant": {"mode": "evaluation_sandbox", "render_completion_markers": True, "render_exam_bridge": False},
+    }
+
+    cover_markdown = printout_engine.render_compendium_cover_markdown(artifact)
+    guide_markdown = printout_engine.render_reading_guide_markdown(
+        artifact,
+        {"teaser_paragraphs": ["En kort teaser om personlighedsudvikling."]},
+    )
+
+    assert "Issues in the Study of Personality Development" in cover_markdown
+    assert "Issues in the Study of Personality Development" in guide_markdown
+    assert "Lewis (1999)" not in cover_markdown
+    assert "**Kilde:** Lewis (1999)" not in guide_markdown
+    assert "<!-- printout-source: Issues in the Study of Personality Development -->" in cover_markdown
+
+
+def test_known_review_source_ids_have_reading_title_overrides():
+    assert (
+        printout_engine._reading_title_from_source(
+            {"source_id": "w09l1-dreier-1999-35da58b5", "title": "Dreier (1999)"}
+        )
+        == "Personal Trajectories of Participation across Contexts of Social Practice"
     )
 
 
@@ -335,12 +416,14 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
         prompt_version="problem-driven-v1",
         system_instruction="SYSTEM OVERRIDE",
         user_prompt_builder=fake_user_prompt_builder,
-        variant_metadata={
-            "variant_key": "problem_driven_v1",
-            "render_completion_markers": True,
-            "render_exam_bridge": False,
-        },
-    )
+            variant_metadata={
+                "mode": "evaluation_sandbox",
+                "variant_key": "problem_driven_v1",
+                "render_completion_markers": True,
+                "render_exam_bridge": False,
+            },
+            output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+        )
 
     assert result["status"] == "written"
     assert calls[0]["system_instruction"] == "SYSTEM OVERRIDE"
@@ -348,10 +431,17 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
     artifact = json.loads(Path(result["json_path"]).read_text(encoding="utf-8"))
     assert artifact["generator"]["provider"] == "gemini"
     assert artifact["generator"]["prompt_version"] == "problem-driven-v1"
+    assert artifact["source"]["reading_title"] == "Phenomenology source"
     assert artifact["variant"]["variant_key"] == "problem_driven_v1"
     assert artifact["variant"]["render_completion_markers"] is True
     assert result["output_dir"].endswith("/output")
-    assert result["json_path"].endswith("/output/.scaffolding/source-1/reading-scaffolds.json")
+    expected_json_path = printout_engine.artifact_json_path_for_source_id(
+        output_root,
+        source_id="source-1",
+        provider="gemini",
+        model=printout_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL,
+    )
+    assert Path(result["json_path"]) == expected_json_path
     assert artifact["printouts"]["reading_guide"]["title"] == "Reading Guide"
     assert artifact["printouts"]["abridged_reader"]["title"] == "Abridged Version"
     assert artifact["printouts"]["active_reading"]["title"] == "Active Reading"
@@ -359,7 +449,8 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
     assert artifact["printouts"]["exam_bridge"]["title"] == "Exam Bridge"
     assert artifact["variant"]["render_exam_bridge"] is False
     assert len(result["markdown_paths"]) == 5
-    assert all("/.scaffolding/source-1/rendered_markdown/" in path for path in result["markdown_paths"])
+    assert all("/.scaffolding/artifacts/gemini-" in path for path in result["markdown_paths"])
+    assert all("/source-1/rendered_markdown/" in path for path in result["markdown_paths"])
     output_dir = Path(result["output_dir"])
     assert not any(path.suffix == ".md" for path in output_dir.glob("*"))
     cover_markdown = Path(result["markdown_paths"][0]).read_text(encoding="utf-8")
@@ -372,22 +463,30 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
     assert "Active Reading" in cover_markdown
     assert "Abridged Version" in cover_markdown
     assert "Consolidation Sheet" in cover_markdown
+    assert r"\fbox" not in cover_markdown
     assert guide_markdown.startswith("# Reading Guide")
     assert abridged_markdown.startswith("# Abridged Version")
     assert active_markdown.startswith("# Active Reading")
     assert consolidation_markdown.startswith("# Consolidation Sheet")
     assert "**Problemet.**" not in guide_markdown
-    assert "[ ] læst" in guide_markdown
+    assert "[ ]" not in guide_markdown
     assert printout_engine._vspace_key("guide_paragraph_gap") in guide_markdown
-    assert "## [ ] 1. Argumenttrin 1" in abridged_markdown
+    assert "## 1. Argumenttrin 1" in abridged_markdown
     assert "`afsnit 1`" in abridged_markdown
-    assert "*bevidsthed om noget* | `afsnit 1`" in abridged_markdown
-    assert "[ ] **1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
-    assert "[ ] blanks udfyldt" in consolidation_markdown
-    assert "\\vspace*{\\fill}" in active_markdown
+    assert "*bevidsthed om noget* | `afsnit 1`" not in abridged_markdown
+    assert "**Kort sagt:**" in abridged_markdown
+    assert "> “Bevidsthed er altid rettet mod noget, og den kan ikke forstås som en lukket beholder.”" in abridged_markdown
+    assert "> `afsnit 1`" in abridged_markdown
+    assert "**1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
+    assert "[ ]" not in active_markdown
+    assert "[ ]" not in consolidation_markdown
+    assert "**Overblik**" in consolidation_markdown
+    assert "**Udfyld**" in consolidation_markdown
+    assert "**Tegn**" in consolidation_markdown
+    assert "**Diagram 1.**" in consolidation_markdown
+    assert "______________________________" in consolidation_markdown
+    assert "\\vspace*{\\fill}" not in active_markdown
     assert printout_engine._vspace_key("active_step_gap") in active_markdown
-    assert printout_engine._vspace_key("completion_block_gap") in guide_markdown
-    assert printout_engine._vspace_key("completion_block_gap") in consolidation_markdown
     assert "Der er ikke enighed om, hvad personligheden er" in guide_markdown
     assert ">" not in guide_markdown
     assert "---" not in guide_markdown
@@ -426,10 +525,12 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
         system_instruction="SYSTEM OVERRIDE",
         user_prompt_builder=fake_user_prompt_builder,
         variant_metadata={
+            "mode": "evaluation_sandbox",
             "variant_key": "problem_driven_v1",
             "render_completion_markers": True,
             "render_exam_bridge": False,
         },
+        output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
     )
     assert forced["status"] == "written"
     assert forced["output_dir"].endswith("/output")
@@ -517,6 +618,7 @@ def test_completion_markers_can_be_disabled(tmp_path):
     consolidation_markdown = Path(result["markdown_paths"][4]).read_text(encoding="utf-8")
 
     assert "[ ]" not in cover_markdown
+    assert r"\fbox" not in cover_markdown
     assert "[ ]" not in guide_markdown
     assert "## [ ]" not in abridged_markdown
     assert "[ ] **1.**" not in active_markdown
@@ -524,11 +626,17 @@ def test_completion_markers_can_be_disabled(tmp_path):
     assert len(result["markdown_paths"]) == 5
 
 
+def test_source_passage_renderer_marks_fragments_without_context():
+    block = printout_engine._render_source_passage_block("inherently valuable unity", "Side 6")
+
+    assert block == "> “(...) inherently valuable unity (...)”\n>\n> `s. 6`"
+
+
 def test_exam_bridge_is_optional_at_render_time_and_removed_when_disabled(tmp_path):
     artifact = {
         "schema_version": printout_engine.SCHEMA_VERSION,
         "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
-        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
+        "variant": {"mode": "evaluation_sandbox", "render_completion_markers": True, "render_exam_bridge": False},
         "printouts": _valid_scaffold_response(),
     }
     output_dir = tmp_path / "printouts"
@@ -564,7 +672,7 @@ def test_no_pdf_render_keeps_output_dir_free_of_markdown_and_json(tmp_path):
     artifact = {
         "schema_version": printout_engine.SCHEMA_VERSION,
         "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
-        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
+        "variant": {"mode": "evaluation_sandbox", "render_completion_markers": True, "render_exam_bridge": False},
         "printouts": _valid_scaffold_response(),
     }
     output_dir = tmp_path / "review"
@@ -588,7 +696,7 @@ def test_no_pdf_render_removes_stale_user_facing_pdfs(tmp_path):
     artifact = {
         "schema_version": printout_engine.SCHEMA_VERSION,
         "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
-        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
+        "variant": {"mode": "evaluation_sandbox", "render_completion_markers": True, "render_exam_bridge": False},
         "printouts": _valid_scaffold_response(),
     }
     output_dir = tmp_path / "review"
@@ -626,12 +734,14 @@ def test_pdf_render_keeps_printout_output_pdf_only_and_moves_json_internal(tmp_p
         json_generator=lambda **kwargs: _valid_scaffold_response(),
         render_pdf=True,
         prompt_version="problem-driven-v1",
-        variant_metadata={
-            "variant_key": "problem_driven_v1",
-            "render_completion_markers": True,
-            "render_exam_bridge": False,
-        },
-    )
+            variant_metadata={
+                "mode": "evaluation_sandbox",
+                "variant_key": "problem_driven_v1",
+                "render_completion_markers": True,
+                "render_exam_bridge": False,
+            },
+            output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+        )
 
     output_dir = Path(result["output_dir"])
     files = sorted(path.name for path in output_dir.iterdir() if path.is_file())
@@ -648,6 +758,48 @@ def test_pdf_render_keeps_printout_output_pdf_only_and_moves_json_internal(tmp_p
     assert files == expected_files
     assert Path(result["json_path"]).name == printout_engine.LEGACY_PRINTOUT_JSON_NAME
     assert Path(result["json_path"]).exists()
+
+
+def test_pdf_render_failure_keeps_existing_public_bundle_untouched(tmp_path, monkeypatch):
+    artifact = {
+        "schema_version": printout_engine.SCHEMA_VERSION,
+        "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
+        "generator": {"provider": "gemini", "model": "gemini-3.1-pro-preview"},
+        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
+        "printouts": _valid_scaffold_response(),
+    }
+    output_dir = tmp_path / "review"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    expected_stems = (
+        "00-cover",
+        "01-reading-guide",
+        "02-active-reading",
+        "03-abridged-version",
+        "04-consolidation-sheet",
+    )
+    for stem in expected_stems:
+        (output_dir / printout_engine._review_pdf_filename(artifact, stem)).write_bytes(f"old {stem}".encode())
+
+    monkeypatch.setattr(printout_engine, "preflight_render_toolchain", lambda: {})
+
+    def fake_markdown_to_pdf(markdown_path: Path, pdf_path: Path):
+        pdf_path.write_bytes(f"new {markdown_path.stem}".encode())
+        if markdown_path.stem == "03-abridged-version":
+            raise printout_engine.PrintoutError("render exploded")
+
+    monkeypatch.setattr(printout_engine, "markdown_to_pdf", fake_markdown_to_pdf)
+
+    with pytest.raises(printout_engine.PrintoutError, match="render exploded"):
+        printout_engine.render_v3_printout_files(
+            artifact=artifact,
+            output_dir=output_dir,
+            render_pdf=True,
+        )
+
+    for stem in expected_stems:
+        path = output_dir / printout_engine._review_pdf_filename(artifact, stem)
+        assert path.read_bytes() == f"old {stem}".encode()
+    assert not (output_dir / printout_engine.INTERNAL_REVIEW_ARTIFACT_DIRNAME / "source-1" / printout_engine.PDF_STAGING_DIRNAME).exists()
 
 
 def test_preflight_render_toolchain_requires_known_binaries(monkeypatch):
@@ -709,12 +861,14 @@ def test_rerender_existing_migrates_from_numbered_test_dir_to_flat_output(tmp_pa
         output_root=output_root,
         render_pdf=True,
         rerender_existing=True,
-        variant_metadata={
-            "variant_key": "problem_driven_v1",
-            "render_completion_markers": True,
-            "render_exam_bridge": False,
-        },
-    )
+            variant_metadata={
+                "mode": "evaluation_sandbox",
+                "variant_key": "problem_driven_v1",
+                "render_completion_markers": True,
+                "render_exam_bridge": False,
+            },
+            output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+        )
 
     assert result["status"] == "rerendered_existing"
     assert result["output_dir"].endswith("/output")
@@ -800,14 +954,17 @@ def test_build_printout_auto_rerenders_legacy_run_artifact_into_shared_review_ro
         source_card_dir=source_card_dir,
         revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
         course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
-        output_root=review_root,
-        render_pdf=True,
-    )
+            output_root=review_root,
+            generation_provider="openai",
+            model="gpt-5.5",
+            render_pdf=True,
+            output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+        )
 
     assert result["status"] == "rerendered_existing"
     assert result["output_dir"].endswith("/review")
     assert Path(result["json_path"]).exists()
-    assert Path(result["json_path"]).parent == review_root / ".scaffolding" / "source-1"
+    assert Path(result["json_path"]).parent == review_root / ".scaffolding" / "artifacts" / "openai-gpt-5_5" / "source-1"
     assert sorted(path.name for path in review_root.glob("*.pdf")) == [
         "openai-gpt-5_5--source-1--00-cover.pdf",
         "openai-gpt-5_5--source-1--01-reading-guide.pdf",
@@ -909,6 +1066,7 @@ def test_pdf_wrapper_adds_margin_metadata():
     wrapped = printout_engine._pdf_wrapped_markdown(markdown, total_pages=7)
     assert wrapped.startswith("---\nheader-includes:")
     assert r"\usepackage{fancyhdr}" in wrapped
+    assert rf"\AtBeginDocument{{\linespread{{{printout_engine.PDF_BODY_LINE_SPREAD}}}\selectfont}}" in wrapped
     assert r"\newcommand{\printoutneedspace}[1]{%" in wrapped
     assert r"\renewcommand{\section}{\printoutneedspace{6\baselineskip}\@ifstar{\printoutoldsection*}{\printoutoldsection}}" in wrapped
     assert r"\fancyhead[L]{\printoutmarginpage}" in wrapped
@@ -932,6 +1090,10 @@ def test_consolidation_uses_fill_for_last_diagram_page():
         payload["consolidation_sheet"],
     )
     assert "\\vspace*{\\fill}" in single_diagram_markdown
+    assert "\\hrule" not in single_diagram_markdown
+    assert "---" not in single_diagram_markdown
+    assert "**Tegn**" in single_diagram_markdown
+    assert "**Diagram 1.**" in single_diagram_markdown
 
     payload["consolidation_sheet"]["diagram_tasks"] = [
         {
@@ -953,6 +1115,12 @@ def test_consolidation_uses_fill_for_last_diagram_page():
     )
     assert "\\newpage" in two_diagram_markdown
     assert "\\vspace*{\\fill}" in two_diagram_markdown
+    assert "\\hrule" not in two_diagram_markdown
+    assert "---" not in two_diagram_markdown
+    assert two_diagram_markdown.count("**Tegn**") == 2
+    assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
+    assert "\n- a" in two_diagram_markdown
+    assert printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_inline_space_ceiling")) in two_diagram_markdown
     assert (
         printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_dedicated_page_floor"))
         in two_diagram_markdown
@@ -1053,8 +1221,9 @@ def test_active_reading_moves_large_final_synthesis_to_new_page():
     ]
     markdown = printout_engine.render_active_reading_markdown(artifact, payload["active_reading"])
     assert "\\newpage" not in markdown
+    assert "\\vspace*{\\fill}" not in markdown
     assert r"\printoutneedspace{14\baselineskip}" in markdown
-    assert markdown.count("\\noindent\\rule{\\linewidth}{0.4pt}") >= 8
+    assert markdown.count("\\noindent\\rule{\\linewidth}{0.4pt}") >= 12
 
 
 def test_normalize_scaffold_payload_repairs_source_reference_in_active_reading():
@@ -1340,4 +1509,137 @@ def test_render_active_reading_markdown_keeps_steps_together_without_forced_fina
 
     assert r"\printoutneedspace{8\baselineskip}" in markdown
     assert r"\newpage" not in markdown
-    assert "\\vspace*{\\fill}" in markdown
+    assert "\\vspace*{\\fill}" not in markdown
+
+
+def test_build_printout_commits_json_only_after_render_success(tmp_path, monkeypatch):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+
+    def fake_json_generator(**kwargs):
+        return _valid_scaffold_response()
+
+    def fail_render(**kwargs):
+        raise printout_engine.PrintoutError("render failed")
+
+    monkeypatch.setattr(printout_engine, "render_printout_files", fail_render)
+
+    with pytest.raises(printout_engine.PrintoutError, match="render failed"):
+        printout_engine.build_printout_for_source(
+            repo_root=repo_root,
+            subject_root=subject_root,
+            source=source,
+            source_card_dir=source_card_dir,
+            revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+            course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+            output_root=output_root,
+            json_generator=fake_json_generator,
+            render_pdf=True,
+        )
+
+    expected_json_path = printout_engine.artifact_json_path_for_source_id(
+        output_root,
+        source_id="source-1",
+        provider="gemini",
+        model=printout_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL,
+    )
+    assert not expected_json_path.exists()
+
+
+def test_build_printout_rerenders_existing_json_when_expected_pdfs_are_missing(tmp_path, monkeypatch):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+
+    def fake_json_generator(**kwargs):
+        return _valid_scaffold_response()
+
+    first = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=fake_json_generator,
+        render_pdf=False,
+    )
+    assert Path(first["json_path"]).exists()
+
+    generation_calls = []
+    render_calls = []
+
+    def fail_if_generation_is_called(**kwargs):
+        generation_calls.append(kwargs)
+        raise AssertionError("generation should not be called for existing JSON rerender")
+
+    def fake_render_printout_files(*, artifact, output_dir, render_pdf=True):
+        render_calls.append(render_pdf)
+        pdf_paths = []
+        for stem in sorted(printout_engine._expected_pdf_stems_for_artifact(artifact)):
+            pdf_path = output_dir / printout_engine._review_pdf_filename(artifact, stem)
+            pdf_path.parent.mkdir(parents=True, exist_ok=True)
+            pdf_path.write_bytes(b"%PDF-1.4 fake")
+            pdf_paths.append(str(pdf_path))
+        return {"markdown_paths": [], "pdf_paths": pdf_paths}
+
+    monkeypatch.setattr(printout_engine, "render_printout_files", fake_render_printout_files)
+
+    second = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=fail_if_generation_is_called,
+        render_pdf=True,
+    )
+
+    assert second["status"] == "rerendered_existing"
+    assert not generation_calls
+    assert render_calls == [True]
+    assert len(second["pdf_paths"]) == 5
+
+
+def test_provider_model_scoped_artifacts_can_coexist_for_same_source(tmp_path):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+
+    def fake_json_generator(**kwargs):
+        return _valid_scaffold_response()
+
+    gemini = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=fake_json_generator,
+        render_pdf=False,
+        generation_provider="gemini",
+        model="gemini-3.1-pro-preview",
+        variant_metadata={"mode": "evaluation_sandbox"},
+        output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+    )
+    openai = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=fake_json_generator,
+        render_pdf=False,
+        generation_provider="openai",
+        model="gpt-5.5",
+        variant_metadata={"mode": "evaluation_sandbox"},
+        output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
+    )
+
+    assert Path(gemini["json_path"]).exists()
+    assert Path(openai["json_path"]).exists()
+    assert gemini["json_path"] != openai["json_path"]
+    assert ".scaffolding/artifacts/gemini-gemini-3_1-pro-preview/source-1/" in gemini["json_path"]
+    assert ".scaffolding/artifacts/openai-gpt-5_5/source-1/" in openai["json_path"]

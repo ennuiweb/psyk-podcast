@@ -1,0 +1,1234 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:38:21Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
+    "source_files_signature": "b5a5a2ad816522b12b3b3c94290cd61a05b47470a773b09a7c5429fc96847177",
+    "source_card": "da56240abef0b6784c0b5493da7adc1dc482e4d8f083e8ed66e35a56487c0b08",
+    "revised_lecture_substrate": "792e73297dc516efe1ad371d4de999bec80bae632e2c70895d98bb44c151229b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w07l2-maslow-1968-7ea53e34",
+    "lecture_key": "W07L2",
+    "title": "Maslow (1968)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 71,
+    "estimated_token_count": 46150,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf"
+    ],
+    "reading_title": "Deficiency Motivation and Growth Motivation",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W07L2"
+    ],
+    "sequence_index": 3,
+    "source_filename": "W7L2 Maslow (1968).pdf",
+    "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Maslow (1968).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "2ce19e19153fefe31e65eb71ebb91789f8b1651bc354619b4af3850cd2fa4fdf",
+      "size_bytes": 360245,
+      "page_count": 71,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 46150,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 71,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-maslow-1968-7ea53e34",
+      "lecture_key": "W07L2",
+      "source_title": "Maslow (1968)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "Maslow starter sin tekst med et simpelt, men radikalt spørgsmål: Hvad gør mennesker neurotiske? Hans tidlige svar var, at neuroser er en mangelsygdom. De opstår, når vi mangler kærlighed, sikkerhed eller respekt, præcis ligesom kroppen bliver syg, hvis den mangler livsvigtige vitaminer.",
+        "Men dette kliniske fokus på patologi og overlevelse skaber et dybt ufuldstændigt billede af menneskets potentiale. Maslow indser, at psykologien mangler at forstå, hvad der sker, når disse *empty holes* allerede er fyldt op. Hvad driver egentlig en person, når vedkommende ikke længere er i konstant underskud?",
+        "Her introducerer han sin kernevision om vækstmotivation (growth motivation). Det er en drivkraft, der i modsætning til dyriske drifter ikke handler om at fjerne ubehag eller vende tilbage til ro, men om lysten til at blive alt det, man har potentialet til at blive.",
+        "Det betyder et direkte opgør med årtiers adfærdspsykologi og psykoanalyse. Hvor Freud så indre drifter som forstyrrende trusler, der helst skulle pacificeres gennem spændingsreduktion, insisterer Maslow på det stik modsatte: Sunde individer *nyder* deres vækst og opsøger frivilligt mere spænding, ikke mindre.",
+        "Denne læsning markerer klimakset af kursusbuens fokus på indre frihed og handlekraft. Den tildeler det bevidste subjekt en stærk autonomi og opstiller fundamentet for 'det autentiske selv'. Det er afgørende at forstå denne strukturering nu, for det er nøjagtig dette indre, sande selv, som de senere poststrukturelle teorier systematisk vil forsøge at pille fra hinanden."
+      ],
+      "main_problem": "Hvordan fungerer de mekanismer, der skubber mennesket mod vækst og selvaktualisering frem for blot at søge overlevelse og spændingsreduktion?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller fundamentalt mangelmotivation fra vækstmotivation?",
+          "why_it_matters": "Det er kildens centrale skillelinje og fundamentet for humanistisk teori.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor mener Maslow, at teorien om spændingsreduktion er forkert, når man betragter sunde mennesker?",
+          "why_it_matters": "Viser opgøret med psykoanalyse og behaviorisme.",
+          "answer_form": "Kort stikord"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan ændrer dækkede mangelbehov personens afhængighed af andre?",
+          "why_it_matters": "Forklarer, hvor det humanistiske frihedsbegreb kommer fra.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvad kendetegner B-kærlighed, og hvorfor mener Maslow at ikke-kærlighed gør blind?",
+          "why_it_matters": "Giver et konkret relationelt eksempel på forskellen mellem de to motivationssystemer.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken af de to kræfter i det eksistentielle valg vinder altid, hvis personen føler sig truet?",
+          "why_it_matters": "Afklarer hvorfor selvaktualisering ikke bare sker af sig selv.",
+          "answer_form": "1 ord"
+        },
+        {
+          "number": 6,
+          "question": "Hvorfor kan det til tider føles tryggere at forblive i uvidenhed om sit eget potentiale?",
+          "why_it_matters": "Viser hvordan frygt ikke kun er rettet mod farer, men også mod storhed.",
+          "answer_form": "1 kort begrundelse"
+        }
+      ],
+      "why_this_text_matters": "Maslow (1968) leverer den teoretiske legitimering for 'den tredje vej' i psykologien, der tildeler individet en stærk, iboende kerne fri for ren miljødeterminisme.",
+      "overview": [
+        "Forskellen på biologiske/sociale mangelbehov og iboende vækstbehov.",
+        "Kritikken af tidlige psykologiske systemers besættelse af spændingsreduktion og hvile.",
+        "Den evige indre konflikt mellem at trække sig tilbage i sikkerhed eller at kaste sig ud i selvaktualisering."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "p. 38-40",
+          "task": "Find grunddefinitionen af mangelsygdomme.",
+          "why_it_matters": "Etablerer udgangspunktet for, hvornår noget er et D-behov.",
+          "stop_signal": "når han præciserer udtrykket 'empty holes'"
+        },
+        {
+          "number": 2,
+          "source_location": "p. 47-49",
+          "task": "Aflæs Maslows holdning til spænding.",
+          "why_it_matters": "Kernen i opgøret med de naturvidenskabelige og psykoanalytiske traditioner.",
+          "stop_signal": "når han slår fast, at kreative mennesker ikke ønsker tension-reduction"
+        },
+        {
+          "number": 3,
+          "source_location": "p. 56-59",
+          "task": "Sammenlign graden af ydre styring hos ængstelige og sunde individer.",
+          "why_it_matters": "Forklarer den stigende uafhængighed af omgivelserne i selvaktualisering.",
+          "stop_signal": "når han citerer Allport og begrebet propriate determination"
+        },
+        {
+          "number": 4,
+          "source_location": "p. 66-69",
+          "task": "Notér de afgørende kendetegn ved B-kærlighed.",
+          "why_it_matters": "Det bedste empiriske bevis for at mennesker kan agere uden egoisme.",
+          "stop_signal": "når du har læst den 10-punkts liste færdig"
+        },
+        {
+          "number": 5,
+          "source_location": "p. 73-77",
+          "task": "Analyser mekanismen i valget mellem sikkerhed og vækst.",
+          "why_it_matters": "Det er en operationalisering af, hvordan mennesker overhovedet bevæger sig fremad.",
+          "stop_signal": "når du har set diagrammet over valences"
+        },
+        {
+          "number": 6,
+          "source_location": "p. 91-95",
+          "task": "Forstå sammenhængen mellem viden, frihed og unddragelse af ansvar.",
+          "why_it_matters": "Viser et paradoks i sundheden: Vi modarbejder ofte vores egen udvikling.",
+          "stop_signal": "når han diskuterer the defense of pseudo-stupidity"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "deficits in the organism, empty holes",
+          "why": "Konkretiserer mangelbehov som et regulært biologisk og psykologisk hulrum.",
+          "where_to_look": "Sektion 1"
+        },
+        {
+          "target": "appetite for growth is whetted rather than allayed",
+          "why": "Opsummerer kernen i opgøret med spændingsreduktion: Vækst vil have mere.",
+          "where_to_look": "Sektion 2"
+        },
+        {
+          "target": "Safety?---------------< PERSON >---------------? Growth",
+          "why": "En grafisk fremstilling af den eksistentielle kamp, subjektet konstant står i.",
+          "where_to_look": "Sektion 5"
+        },
+        {
+          "target": "fear of knowledge of oneself",
+          "why": "Understreger hvordan patologi ikke blot er frygt for verden, men frygt for egne evner.",
+          "where_to_look": "Sektion 6"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerne i de mange lister med karaktertræk hos selvaktualiserende.",
+        "Maslows metodiske forbehold i starten; læs videre for at få selve teorien.",
+        "Referencer til meget specifikke tidligere filosoffer, som kun bruges som fyldstof."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at hente de svar, du skal bruge til arbejdsarkene.",
+      "coverage_note": "Teksten sammenfatter Maslows grundargumenter i kildens logiske rækkefølge.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "p. 38-40",
+          "heading": "Mangelbehov: Når overlevelse styrer",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad er den fundamentale årsag til psykiske problemer ifølge de tidlige teorier?",
+          "explanation_paragraphs": [
+            "Maslow starter med at undersøge, hvad der egentlig skaber neuroser og psykisk mistrivsel. Hans konklusion er ganske konkret: de bunder i biologiske og psykologiske mangler. Præcis som kroppen bliver syg uden kalk, bliver psyken syg uden tilstrækkelig kærlighed, respekt og sikkerhed.",
+            "Han kalder disse basale overlevelseskrav for mangelbehov (D-motivation). De opleves som tomme huller i organismen. Disse huller kan kun fyldes op udefra af andre mennesker eller samfundet. Når behovet endelig er dækket, forsvinder selve drivkraften, indtil man igen mangler noget."
+          ],
+          "key_points": [
+            "Mangelbehov fjerner ubehag og forebygger psykisk sygdom.",
+            "Behovene dækkes altid af eksterne ressourcer.",
+            "Når en mangel er fyldt op, indtræder passivitet indtil næste underskud."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "deficits in the organism, empty holes",
+              "why_it_matters": "Giver et klart metaforisk billede af, hvad D-motivation handler om.",
+              "source_location": "p. 40"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "p. 47-51",
+          "heading": "Vækstbehov: Opgøret med spændingsreduktion",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor rammer freudianerne og behavioristerne forbi, når de beskriver sunde mennesker?",
+          "explanation_paragraphs": [
+            "Tidligere teorier, især behaviorismen og den freudianske psykoanalyse, antog, at alle drifter i virkeligheden var ubehagelige forstyrrelser. Målet med al menneskelig adfærd blev derfor anset for at være spændingsreduktion (tension-reduction) og en tilbagevenden til en tilstand af passiv hvile.",
+            "Maslow påpeger, at dette billede er fundamentalt forkert, når vi taler om sunde individer og deres vækstbehov. Selvaktualisering er nemlig lystdrevet. Man ønsker ikke at stoppe kreativitet eller nysgerrighed, bare fordi man er kommet i gang. Spændingen føles behagelig og meningsfuld. Det sunde menneske ønsker mere af denne spænding, ikke mindre."
+          ],
+          "key_points": [
+            "Freud anså drifter for at være noget, man skulle af med.",
+            "Vækstmotivation (B-motivation) skaber bevidst spænding, som individet nyder.",
+            "Lysten til vækst dæmpes ikke ved tilfredsstillelse, men intensiveres i stedet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "appetite for growth is whetted rather than allayed",
+              "why_it_matters": "Viser hvordan vækst opererer stik modsat sult og tørst.",
+              "source_location": "p. 51"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "p. 56-59",
+          "heading": "Afhængighed og uafhængighed af omgivelserne",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad sker der med vores frihed, når vi mangler basale ting?",
+          "explanation_paragraphs": [
+            "Et menneske, der overvejende er styret af mangelbehov, er dybt afhængigt af sine omgivelser. Andre mennesker reduceres ubevidst til funktionelle redskaber, som kan levere tryghed og dække manglerne. Dette skaber stærk ængstelse og gør personen reaktiv og ekstremt styret af ydre normer, i frygt for at miste forsyningerne.",
+            "Den selvaktualiserende person, hvis mangelbehov allerede er stabilt dækket, bliver derimod langt mere uafhængig. Hendes handlinger styres nu indefra. Hun er ikke længere motiveret af en desperat frygt for at miste omverdenens ros, men handler ud fra egne interne love og visioner."
+          ],
+          "key_points": [
+            "Mangel skaber frygtsom afhængighed og ydre styring.",
+            "Selvaktualisering muliggør sand autonomi og uafhængighed af andres anerkendelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the laws of their own inner nature",
+              "why_it_matters": "Understreger hvor den handlende agens stammer fra hos det sunde individ.",
+              "source_location": "p. 57"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "p. 66-69",
+          "heading": "Kærlighed uden at bruge den anden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan man elske uden at bruge den anden person?",
+          "explanation_paragraphs": [
+            "Maslow adskiller selve behovet for kærlighed fra den mere uselviske beundring af et andet menneskes rene væsen. Han kalder dem henholdsvis D-kærlighed og B-kærlighed.",
+            "D-kærlighed fungerer som at få fyldt et underskud. Den er fundamentalt ængstelig, egoistisk og besiddende. B-kærlighed er derimod beundrende og autonom. Den forsøger ikke at ændre, bruge eller udnytte partneren.",
+            "Maslow noterer i en central passage, at mens man tit siger, kærlighed gør blind, forholder det sig lige modsat. Det er selve *manglen* på ægte B-kærlighed, der gør os blinde for det andet menneskes unikke kvaliteter, fordi vi ubevidst bare leder efter det, der kan dække vores egne behov."
+          ],
+          "key_points": [
+            "D-kærlighed betragter andre som midler til mål.",
+            "B-kærlighed muliggør ægte og uforvrænget perception af en anden person."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "love-worthy rather than because he gives out love",
+              "why_it_matters": "Præciserer B-kærlighedens natur: man elsker personen for det, vedkommende er.",
+              "source_location": "p. 59"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "p. 73-77",
+          "heading": "Det store valg mellem sikkerhed og vækst",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvis vækst er så fantastisk, hvorfor vælger vi det så ikke altid?",
+          "explanation_paragraphs": [
+            "Ethvert menneske står i et konstant spændingsfelt mellem to modsatrettede kræfter. Den ene kraft trækker os frygtsomt tilbage mod sikkerhed, komfort og undgåelse af smerte. Den anden skubber os modigt fremad mod uafhængighed, udnyttelse af evner og fri selvaktualisering.",
+            "Dette valg tages hele tiden på ny, skridt for skridt. Men vi tør kun vælge væksten, hvis vores fundament i forvejen er sikkert. Hvis trygheden pludselig trues, vil både barnet og den voksne automatisk regressere og vælge at beskytte sig selv. Sikkerhed er altid et mere potent behov end personlig udvikling."
+          ],
+          "key_points": [
+            "Udvikling er ikke garanteret, men en række konkrete valg.",
+            "Ingen vækst kan tvinges igennem uden et sikkert fundament.",
+            "I et opgør mellem sikkerhed og vækst, vinder sikkerhed altid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Safety?---------------< PERSON >---------------? Growth",
+              "why_it_matters": "Giver et diagrammatisk overblik over den konstante menneskelige konflikt.",
+              "source_location": "p. 73"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "p. 91-95",
+          "heading": "Frygten for viden og ansvar",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvorfor forsøger kloge og sunde mennesker nogle gange at undgå viden?",
+          "explanation_paragraphs": [
+            "At søge viden og fuldt ud at kende sine egne evner er en essentiel del af menneskets vækst. Alligevel opfattes netop det som farligt. Maslow forklarer, at vi ofte er decideret bange for den rene sandhed om vores eget potentiale.",
+            "Årsagen er, at ægte indsigt altid forpligter. Hvis vi virkelig forstår og indrømmer, hvor stærke og dygtige vi faktisk er, bærer vi også det tunge ansvar for at leve fuldt ud op til dette potentiale. Mange vælger derfor hellere at forblive i en form for tryg uvidenhed eller 'pseudo-dumhed' for at undgå at skulle agere og tage konsekvensen."
+          ],
+          "key_points": [
+            "Patologi involverer ofte frygten for at opdage sit eget talent.",
+            "Viden fører ubønhørligt til ansvar og handling, hvilket kan føles ængsteligt.",
+            "Individer forsvarer deres lavere selvværd for at slippe for ansvaret."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fear of knowledge of oneself",
+              "why_it_matters": "Binder frygt og læring sammen som et centralt modstandskompleks i subjektet.",
+              "source_location": "p. 91"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den fundamentale årsag til psykiske problemer ifølge de tidlige teorier?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor rammer freudianerne og behavioristerne forbi, når de beskriver sunde mennesker?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort stikord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvad sker der med vores frihed, når vi mangler basale ting?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan man elske uden at bruge den anden person?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis vækst er så fantastisk, hvorfor vælger vi det så ikke altid?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor forsøger kloge og sunde mennesker nogle gange at undgå viden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1 kort begrundelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan fungerer de mekanismer, der skubber mennesket mod vækst og selvaktualisering frem for blot at søge overlevelse og spændingsreduktion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først arket direkte fra hukommelsen for at låse teorien fast. Åbn derefter Abridged Reader for at dobbelttjekke og reparere eventuelle mangler.",
+      "overview": [
+        "Maslow opstiller et skarpt skel mellem mangelbehov og iboende vækstbehov.",
+        "Kilden kritiserer de tidligere freudianske systemer for fejlagtigt at betragte al motivation som en form for spændingsreduktion.",
+        "Væksten ses som et farligt eksistentielt valg mellem at søge autonomi eller forblive i tryg afhængighed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Maslow sammenligner mangelbehov med fysiske mangelsygdomme og kalder de uforløste behov for __________ i organismen.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "to ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Modsat de tidlige teorier anser Maslow ikke den samlede menneskelige adfærd for at være drevet mod __________, fordi sunde mennesker faktisk aktivt opsøger og nyder behagelig uro under væksten.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "ét begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Når vi stærkt er styret af udækkede mangelbehov, betragter vi primært de andre mennesker som __________, der udelukkende findes for at tilfredsstille vores egne mangler.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den rent uselviske og beundrende form for kærlighed kalder Maslow for __________, og den giver en evne til at se modpartens kvaliteter i sig selv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "ét teoretisk begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Maslow opstiller et afgørende eksistentielt diagram, der viser, at vi hele tiden står i et uundgåeligt spændingsfelt mellem __________ i den ene ende og vækst i den anden ende.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "ét ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Hvis en person oplever stærk trussel eller tab af fundament, vil de næsten altid regressere og beskytte sig selv, fordi behovet for beskyttelse er stærkere og mere __________ end selvaktualiseringsbehovet.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "ét ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Maslow afviser det gamle ordsprog og argumenterer i stedet for, at det er mangel på ægte, moden kærlighed, der reelt gør os __________, da vi dermed mister evnen til objektivt at opfatte andres unikhed.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "ét tillægsord"
+        },
+        {
+          "number": 8,
+          "sentence": "Folk undgår hyppigt at tage fuld viden om deres eget dybe potentiale ind, fordi virkelig selvindsigt automatisk skaber en form for __________, som kan virke overvældende.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "ét ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Genskab det spændingsfelt, Maslow opsætter som kernen i individets konstante valgsituation.",
+          "required_elements": [
+            "Et ord for den tilbagetrækkende kraft",
+            "Personen i midten",
+            "Et ord for den fremaddrivende kraft"
+          ],
+          "blank_space_hint": "Tegn linjen horisontalt."
+        },
+        {
+          "number": 2,
+          "task": "Lav en kort, opsummerende 2-kolonne oversigt over de to typer kærlighed.",
+          "required_elements": [
+            "Klassifikation af de to typer",
+            "Stikord for egoisme/besiddelse vs. uselviskhed/beundring"
+          ],
+          "blank_space_hint": "Brug to sideordnede bokse."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som din afsluttende overførsel. Her løfter du de specifikke fund fra kilden op til et niveau, der tæller direkte i en mundtlig eller skriftlig eksamenssituation.",
+      "use_this_text_for": [
+        "At forklare overgangen fra drifte-teorier til humanistisk fokus på individets frie potentiale.",
+        "At diskutere opgøret med patologisering af ethvert menneskeligt træk.",
+        "At dokumentere Maslows eksakte mekanisme bag vækst frem for blot at nævne 'pyramiden'.",
+        "At belyse den interne handlekraft (agency), der definerer det sunde, tidlige 'autentiske selv'.",
+        "At etablere den positive og ukritiske version af 'indre sandhed', som efterfølgende afmonteres af socialkonstruktionisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Agency vs. Determinisme",
+          "connection": "Bryder radikalt med psykoanalysens biologiske determinisme og tildeler individet en stærk radikal frihed til indefra at vælge at gro og aktualisere."
+        },
+        {
+          "course_theme": "Essens og Det Indre Selv",
+          "connection": "Kilden etablerer et klart begreb om et 'autentisk, indre sandt selv', som senere teorier, især Foucault og Rose, vil rette deres analytiske dekonstruktion direkte imod."
+        },
+        {
+          "course_theme": "Epistemologisk Skift",
+          "connection": "Forsøger at legitimere en forskningsmetode (Human Science), der tør tage udgangspunkt i de absolut sundeste mennesker, i stedet for evigt at ekstrapolere sygelige rottedata."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Freuds psykoanalyse (W04)",
+          "how_to_compare": "Sammenlign drivkraftens natur. Freuds driftssubjekt kæmper reaktivt for passiv spændingsreduktion, mens Maslows humanistiske subjekt bevidst nyder og søger den lystfyldte spænding, som væksten afstedkommer."
+        },
+        {
+          "compare_with": "Kritisk Psykologi v. Holzkamp/Dreier (W08)",
+          "how_to_compare": "Kontraster hvor handlekraften udspiller sig. Maslows autonomi handler udelukkende om en indre, psykologisk realisering. Kritisk psykologi kræver, at den udmønter sig i ydre, politisk og samfundsmæssig deltagelse."
+        },
+        {
+          "compare_with": "Poststrukturalisme v. Rose (W10)",
+          "how_to_compare": "Brug Maslows ideal om 'at finde sit sande selv' som det direkte objekt for kritik. Poststrukturalister vil argumentere, at netop denne selvrealisering i dag er et instrumentelt og disciplinerende sprog, skabt af samfundets magtstruktur."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Gør rede for humanistisk motivationsteori",
+          "use_in_answer": "Brug sproget: Mangelbehov søger spændingsreduktion. Vækstbehov opstår derimod af organismens umættelige lyst til at ekspandere spænding.",
+          "caution": "Tegn ikke den velkendte, folkelige trappe-pyramide op uden først at bevise den præcise driftmæssige mekanisme, den hviler på."
+        },
+        {
+          "prompt_type": "Diskuter subjektets grad af handlefrihed",
+          "use_in_answer": "Anvend spændingsfeltet 'Safety vs. Growth'. Vis hermed, at selv om Maslow insisterer på potentialet for frihed, er mennesket låst, så længe omverdenen truer det basale.",
+          "caution": "Pas på med at fremstille modellen så overoptimistisk, at du glemmer Maslows anerkendelse af, at mangler kan knuse friheden totalt."
+        },
+        {
+          "prompt_type": "Sammenlign to personlighedsteorier",
+          "use_in_answer": "Sæt dynamikken fra den tidlige drift-teori direkte over for B-motivationens uselviske natur.",
+          "caution": "Gør ikke psykoanalysen til en primitiv stråmand; sørg for stramt at fastholde fokus på netop forskellen i nydelsen af *spænding*."
+        },
+        {
+          "prompt_type": "Forklar udvikling af patologi",
+          "use_in_answer": "Argumentér med 'Frygten for viden' (Section 5). Gør rede for, hvordan selv viden om egne unikke evner kan udløse angst for forpligtelse og ansvarsunddragelse.",
+          "caution": "Glem ikke, at patienten muligvis blot mangler basal D-tilfredsstillelse i et dysfunktionelt system."
+        },
+        {
+          "prompt_type": "Diskuter relationelle mønstre",
+          "use_in_answer": "Kontrastér udtømmende D-kærlighedens brug af modparten som et praktisk objekt, der fylder et hul, med B-kærlighedens autonomi.",
+          "caution": "Undgå klichéfyldt, moraliserende hverdagssprog; anvend Maslows begreber objektivt og køligt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At al spænding i individet er problematisk og i sidste ende skadeligt for psyken.",
+          "better_reading": "I selvaktualisering og B-motivation er forhøjet og ustabil spænding ligefrem dybt ønsket og den mest glædesgivende drivkraft."
+        },
+        {
+          "trap": "At selvaktualisering er en specifik statisk slutformål, man lander trygt i, når man dør.",
+          "better_reading": "Det er en uendelig, proaktiv tilblivelsesproces. Drivkraften øges eksponentielt, når den belønnes, uden noget ultimativt nulpunkt."
+        },
+        {
+          "trap": "At enhver neurotiker eller slave bare med en fri viljesakt kan beslutte sig for at ignorere presset og 'vækste' for sig selv.",
+          "better_reading": "Sikkerhedsbehovet dominerer alt andet. Under massiv trussel vil det psykologiske system unægtelig forfalde til den mest basale beskyttelse af organismen."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Maslows syn på menneskelig drivkraft (motivation) med Freuds tidlige psykoanalytiske tilgang. Hvordan ændrer selve deres syn på 'intern spænding' den samlede forståelse af det frie individ?",
+      "mini_exam_answer_plan_slots": [
+        "Præsenter den korrekte udlægning af Freuds syn på drifter som en evig søgen efter passiv spændingsreduktion og homøostatisk ro.",
+        "Definér stramt Maslows fundamentale modtræk: D-motivation versus B-motivation.",
+        "Godtgør specifikt hvordan fuldtonet vækstmotivation (Growth) netop søger og udtalt nyder en *fastholdelse* og *øgning* af spænding.",
+        "Demonstrér præcist, hvordan denne mekanistiske omskrivning udgør selve forudsætningen for det handlende, selvdrevne, radikale humanistiske ideal."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-maslow-1968-7ea53e34",
+      "lecture_key": "W07L2",
+      "source_title": "Maslow (1968)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "Maslow starter sin tekst med et simpelt, men radikalt spørgsmål: Hvad gør mennesker neurotiske? Hans tidlige svar var, at neuroser er en mangelsygdom. De opstår, når vi mangler kærlighed, sikkerhed eller respekt, præcis ligesom kroppen bliver syg, hvis den mangler livsvigtige vitaminer.",
+        "Men dette kliniske fokus på patologi og overlevelse skaber et dybt ufuldstændigt billede af menneskets potentiale. Maslow indser, at psykologien mangler at forstå, hvad der sker, når disse *empty holes* allerede er fyldt op. Hvad driver egentlig en person, når vedkommende ikke længere er i konstant underskud?",
+        "Her introducerer han sin kernevision om vækstmotivation (growth motivation). Det er en drivkraft, der i modsætning til dyriske drifter ikke handler om at fjerne ubehag eller vende tilbage til ro, men om lysten til at blive alt det, man har potentialet til at blive.",
+        "Det betyder et direkte opgør med årtiers adfærdspsykologi og psykoanalyse. Hvor Freud så indre drifter som forstyrrende trusler, der helst skulle pacificeres gennem spændingsreduktion, insisterer Maslow på det stik modsatte: Sunde individer *nyder* deres vækst og opsøger frivilligt mere spænding, ikke mindre.",
+        "Denne læsning markerer klimakset af kursusbuens fokus på indre frihed og handlekraft. Den tildeler det bevidste subjekt en stærk autonomi og opstiller fundamentet for 'det autentiske selv'. Det er afgørende at forstå denne strukturering nu, for det er nøjagtig dette indre, sande selv, som de senere poststrukturelle teorier systematisk vil forsøge at pille fra hinanden."
+      ],
+      "main_problem": "Hvordan fungerer de mekanismer, der skubber mennesket mod vækst og selvaktualisering frem for blot at søge overlevelse og spændingsreduktion?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller fundamentalt mangelmotivation fra vækstmotivation?",
+          "why_it_matters": "Det er kildens centrale skillelinje og fundamentet for humanistisk teori.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor mener Maslow, at teorien om spændingsreduktion er forkert, når man betragter sunde mennesker?",
+          "why_it_matters": "Viser opgøret med psykoanalyse og behaviorisme.",
+          "answer_form": "Kort stikord"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan ændrer dækkede mangelbehov personens afhængighed af andre?",
+          "why_it_matters": "Forklarer, hvor det humanistiske frihedsbegreb kommer fra.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvad kendetegner B-kærlighed, og hvorfor mener Maslow at ikke-kærlighed gør blind?",
+          "why_it_matters": "Giver et konkret relationelt eksempel på forskellen mellem de to motivationssystemer.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken af de to kræfter i det eksistentielle valg vinder altid, hvis personen føler sig truet?",
+          "why_it_matters": "Afklarer hvorfor selvaktualisering ikke bare sker af sig selv.",
+          "answer_form": "1 ord"
+        },
+        {
+          "number": 6,
+          "question": "Hvorfor kan det til tider føles tryggere at forblive i uvidenhed om sit eget potentiale?",
+          "why_it_matters": "Viser hvordan frygt ikke kun er rettet mod farer, men også mod storhed.",
+          "answer_form": "1 kort begrundelse"
+        }
+      ],
+      "why_this_text_matters": "Maslow (1968) leverer den teoretiske legitimering for 'den tredje vej' i psykologien, der tildeler individet en stærk, iboende kerne fri for ren miljødeterminisme.",
+      "overview": [
+        "Forskellen på biologiske/sociale mangelbehov og iboende vækstbehov.",
+        "Kritikken af tidlige psykologiske systemers besættelse af spændingsreduktion og hvile.",
+        "Den evige indre konflikt mellem at trække sig tilbage i sikkerhed eller at kaste sig ud i selvaktualisering."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "p. 38-40",
+          "task": "Find grunddefinitionen af mangelsygdomme.",
+          "why_it_matters": "Etablerer udgangspunktet for, hvornår noget er et D-behov.",
+          "stop_signal": "når han præciserer udtrykket 'empty holes'"
+        },
+        {
+          "number": 2,
+          "source_location": "p. 47-49",
+          "task": "Aflæs Maslows holdning til spænding.",
+          "why_it_matters": "Kernen i opgøret med de naturvidenskabelige og psykoanalytiske traditioner.",
+          "stop_signal": "når han slår fast, at kreative mennesker ikke ønsker tension-reduction"
+        },
+        {
+          "number": 3,
+          "source_location": "p. 56-59",
+          "task": "Sammenlign graden af ydre styring hos ængstelige og sunde individer.",
+          "why_it_matters": "Forklarer den stigende uafhængighed af omgivelserne i selvaktualisering.",
+          "stop_signal": "når han citerer Allport og begrebet propriate determination"
+        },
+        {
+          "number": 4,
+          "source_location": "p. 66-69",
+          "task": "Notér de afgørende kendetegn ved B-kærlighed.",
+          "why_it_matters": "Det bedste empiriske bevis for at mennesker kan agere uden egoisme.",
+          "stop_signal": "når du har læst den 10-punkts liste færdig"
+        },
+        {
+          "number": 5,
+          "source_location": "p. 73-77",
+          "task": "Analyser mekanismen i valget mellem sikkerhed og vækst.",
+          "why_it_matters": "Det er en operationalisering af, hvordan mennesker overhovedet bevæger sig fremad.",
+          "stop_signal": "når du har set diagrammet over valences"
+        },
+        {
+          "number": 6,
+          "source_location": "p. 91-95",
+          "task": "Forstå sammenhængen mellem viden, frihed og unddragelse af ansvar.",
+          "why_it_matters": "Viser et paradoks i sundheden: Vi modarbejder ofte vores egen udvikling.",
+          "stop_signal": "når han diskuterer the defense of pseudo-stupidity"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "deficits in the organism, empty holes",
+          "why": "Konkretiserer mangelbehov som et regulært biologisk og psykologisk hulrum.",
+          "where_to_look": "Sektion 1"
+        },
+        {
+          "target": "appetite for growth is whetted rather than allayed",
+          "why": "Opsummerer kernen i opgøret med spændingsreduktion: Vækst vil have mere.",
+          "where_to_look": "Sektion 2"
+        },
+        {
+          "target": "Safety?---------------< PERSON >---------------? Growth",
+          "why": "En grafisk fremstilling af den eksistentielle kamp, subjektet konstant står i.",
+          "where_to_look": "Sektion 5"
+        },
+        {
+          "target": "fear of knowledge of oneself",
+          "why": "Understreger hvordan patologi ikke blot er frygt for verden, men frygt for egne evner.",
+          "where_to_look": "Sektion 6"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerne i de mange lister med karaktertræk hos selvaktualiserende.",
+        "Maslows metodiske forbehold i starten; læs videre for at få selve teorien.",
+        "Referencer til meget specifikke tidligere filosoffer, som kun bruges som fyldstof."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at hente de svar, du skal bruge til arbejdsarkene.",
+      "coverage_note": "Teksten sammenfatter Maslows grundargumenter i kildens logiske rækkefølge.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "p. 38-40",
+          "heading": "Mangelbehov: Når overlevelse styrer",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad er den fundamentale årsag til psykiske problemer ifølge de tidlige teorier?",
+          "explanation_paragraphs": [
+            "Maslow starter med at undersøge, hvad der egentlig skaber neuroser og psykisk mistrivsel. Hans konklusion er ganske konkret: de bunder i biologiske og psykologiske mangler. Præcis som kroppen bliver syg uden kalk, bliver psyken syg uden tilstrækkelig kærlighed, respekt og sikkerhed.",
+            "Han kalder disse basale overlevelseskrav for mangelbehov (D-motivation). De opleves som tomme huller i organismen. Disse huller kan kun fyldes op udefra af andre mennesker eller samfundet. Når behovet endelig er dækket, forsvinder selve drivkraften, indtil man igen mangler noget."
+          ],
+          "key_points": [
+            "Mangelbehov fjerner ubehag og forebygger psykisk sygdom.",
+            "Behovene dækkes altid af eksterne ressourcer.",
+            "Når en mangel er fyldt op, indtræder passivitet indtil næste underskud."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "deficits in the organism, empty holes",
+              "why_it_matters": "Giver et klart metaforisk billede af, hvad D-motivation handler om.",
+              "source_location": "p. 40"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "p. 47-51",
+          "heading": "Vækstbehov: Opgøret med spændingsreduktion",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor rammer freudianerne og behavioristerne forbi, når de beskriver sunde mennesker?",
+          "explanation_paragraphs": [
+            "Tidligere teorier, især behaviorismen og den freudianske psykoanalyse, antog, at alle drifter i virkeligheden var ubehagelige forstyrrelser. Målet med al menneskelig adfærd blev derfor anset for at være spændingsreduktion (tension-reduction) og en tilbagevenden til en tilstand af passiv hvile.",
+            "Maslow påpeger, at dette billede er fundamentalt forkert, når vi taler om sunde individer og deres vækstbehov. Selvaktualisering er nemlig lystdrevet. Man ønsker ikke at stoppe kreativitet eller nysgerrighed, bare fordi man er kommet i gang. Spændingen føles behagelig og meningsfuld. Det sunde menneske ønsker mere af denne spænding, ikke mindre."
+          ],
+          "key_points": [
+            "Freud anså drifter for at være noget, man skulle af med.",
+            "Vækstmotivation (B-motivation) skaber bevidst spænding, som individet nyder.",
+            "Lysten til vækst dæmpes ikke ved tilfredsstillelse, men intensiveres i stedet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "appetite for growth is whetted rather than allayed",
+              "why_it_matters": "Viser hvordan vækst opererer stik modsat sult og tørst.",
+              "source_location": "p. 51"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "p. 56-59",
+          "heading": "Afhængighed og uafhængighed af omgivelserne",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad sker der med vores frihed, når vi mangler basale ting?",
+          "explanation_paragraphs": [
+            "Et menneske, der overvejende er styret af mangelbehov, er dybt afhængigt af sine omgivelser. Andre mennesker reduceres ubevidst til funktionelle redskaber, som kan levere tryghed og dække manglerne. Dette skaber stærk ængstelse og gør personen reaktiv og ekstremt styret af ydre normer, i frygt for at miste forsyningerne.",
+            "Den selvaktualiserende person, hvis mangelbehov allerede er stabilt dækket, bliver derimod langt mere uafhængig. Hendes handlinger styres nu indefra. Hun er ikke længere motiveret af en desperat frygt for at miste omverdenens ros, men handler ud fra egne interne love og visioner."
+          ],
+          "key_points": [
+            "Mangel skaber frygtsom afhængighed og ydre styring.",
+            "Selvaktualisering muliggør sand autonomi og uafhængighed af andres anerkendelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the laws of their own inner nature",
+              "why_it_matters": "Understreger hvor den handlende agens stammer fra hos det sunde individ.",
+              "source_location": "p. 57"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "p. 66-69",
+          "heading": "Kærlighed uden at bruge den anden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan man elske uden at bruge den anden person?",
+          "explanation_paragraphs": [
+            "Maslow adskiller selve behovet for kærlighed fra den mere uselviske beundring af et andet menneskes rene væsen. Han kalder dem henholdsvis D-kærlighed og B-kærlighed.",
+            "D-kærlighed fungerer som at få fyldt et underskud. Den er fundamentalt ængstelig, egoistisk og besiddende. B-kærlighed er derimod beundrende og autonom. Den forsøger ikke at ændre, bruge eller udnytte partneren.",
+            "Maslow noterer i en central passage, at mens man tit siger, kærlighed gør blind, forholder det sig lige modsat. Det er selve *manglen* på ægte B-kærlighed, der gør os blinde for det andet menneskes unikke kvaliteter, fordi vi ubevidst bare leder efter det, der kan dække vores egne behov."
+          ],
+          "key_points": [
+            "D-kærlighed betragter andre som midler til mål.",
+            "B-kærlighed muliggør ægte og uforvrænget perception af en anden person."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "love-worthy rather than because he gives out love",
+              "why_it_matters": "Præciserer B-kærlighedens natur: man elsker personen for det, vedkommende er.",
+              "source_location": "p. 59"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "p. 73-77",
+          "heading": "Det store valg mellem sikkerhed og vækst",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvis vækst er så fantastisk, hvorfor vælger vi det så ikke altid?",
+          "explanation_paragraphs": [
+            "Ethvert menneske står i et konstant spændingsfelt mellem to modsatrettede kræfter. Den ene kraft trækker os frygtsomt tilbage mod sikkerhed, komfort og undgåelse af smerte. Den anden skubber os modigt fremad mod uafhængighed, udnyttelse af evner og fri selvaktualisering.",
+            "Dette valg tages hele tiden på ny, skridt for skridt. Men vi tør kun vælge væksten, hvis vores fundament i forvejen er sikkert. Hvis trygheden pludselig trues, vil både barnet og den voksne automatisk regressere og vælge at beskytte sig selv. Sikkerhed er altid et mere potent behov end personlig udvikling."
+          ],
+          "key_points": [
+            "Udvikling er ikke garanteret, men en række konkrete valg.",
+            "Ingen vækst kan tvinges igennem uden et sikkert fundament.",
+            "I et opgør mellem sikkerhed og vækst, vinder sikkerhed altid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Safety?---------------< PERSON >---------------? Growth",
+              "why_it_matters": "Giver et diagrammatisk overblik over den konstante menneskelige konflikt.",
+              "source_location": "p. 73"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "p. 91-95",
+          "heading": "Frygten for viden og ansvar",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvorfor forsøger kloge og sunde mennesker nogle gange at undgå viden?",
+          "explanation_paragraphs": [
+            "At søge viden og fuldt ud at kende sine egne evner er en essentiel del af menneskets vækst. Alligevel opfattes netop det som farligt. Maslow forklarer, at vi ofte er decideret bange for den rene sandhed om vores eget potentiale.",
+            "Årsagen er, at ægte indsigt altid forpligter. Hvis vi virkelig forstår og indrømmer, hvor stærke og dygtige vi faktisk er, bærer vi også det tunge ansvar for at leve fuldt ud op til dette potentiale. Mange vælger derfor hellere at forblive i en form for tryg uvidenhed eller 'pseudo-dumhed' for at undgå at skulle agere og tage konsekvensen."
+          ],
+          "key_points": [
+            "Patologi involverer ofte frygten for at opdage sit eget talent.",
+            "Viden fører ubønhørligt til ansvar og handling, hvilket kan føles ængsteligt.",
+            "Individer forsvarer deres lavere selvværd for at slippe for ansvaret."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fear of knowledge of oneself",
+              "why_it_matters": "Binder frygt og læring sammen som et centralt modstandskompleks i subjektet.",
+              "source_location": "p. 91"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den fundamentale årsag til psykiske problemer ifølge de tidlige teorier?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor rammer freudianerne og behavioristerne forbi, når de beskriver sunde mennesker?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort stikord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvad sker der med vores frihed, når vi mangler basale ting?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan man elske uden at bruge den anden person?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis vækst er så fantastisk, hvorfor vælger vi det så ikke altid?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor forsøger kloge og sunde mennesker nogle gange at undgå viden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1 kort begrundelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan fungerer de mekanismer, der skubber mennesket mod vækst og selvaktualisering frem for blot at søge overlevelse og spændingsreduktion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først arket direkte fra hukommelsen for at låse teorien fast. Åbn derefter Abridged Reader for at dobbelttjekke og reparere eventuelle mangler.",
+      "overview": [
+        "Maslow opstiller et skarpt skel mellem mangelbehov og iboende vækstbehov.",
+        "Kilden kritiserer de tidligere freudianske systemer for fejlagtigt at betragte al motivation som en form for spændingsreduktion.",
+        "Væksten ses som et farligt eksistentielt valg mellem at søge autonomi eller forblive i tryg afhængighed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Maslow sammenligner mangelbehov med fysiske mangelsygdomme og kalder de uforløste behov for __________ i organismen.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "to ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Modsat de tidlige teorier anser Maslow ikke den samlede menneskelige adfærd for at være drevet mod __________, fordi sunde mennesker faktisk aktivt opsøger og nyder behagelig uro under væksten.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "ét begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Når vi stærkt er styret af udækkede mangelbehov, betragter vi primært de andre mennesker som __________, der udelukkende findes for at tilfredsstille vores egne mangler.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den rent uselviske og beundrende form for kærlighed kalder Maslow for __________, og den giver en evne til at se modpartens kvaliteter i sig selv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "ét teoretisk begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Maslow opstiller et afgørende eksistentielt diagram, der viser, at vi hele tiden står i et uundgåeligt spændingsfelt mellem __________ i den ene ende og vækst i den anden ende.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "ét ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Hvis en person oplever stærk trussel eller tab af fundament, vil de næsten altid regressere og beskytte sig selv, fordi behovet for beskyttelse er stærkere og mere __________ end selvaktualiseringsbehovet.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "ét ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Maslow afviser det gamle ordsprog og argumenterer i stedet for, at det er mangel på ægte, moden kærlighed, der reelt gør os __________, da vi dermed mister evnen til objektivt at opfatte andres unikhed.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "ét tillægsord"
+        },
+        {
+          "number": 8,
+          "sentence": "Folk undgår hyppigt at tage fuld viden om deres eget dybe potentiale ind, fordi virkelig selvindsigt automatisk skaber en form for __________, som kan virke overvældende.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "ét ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Genskab det spændingsfelt, Maslow opsætter som kernen i individets konstante valgsituation.",
+          "required_elements": [
+            "Et ord for den tilbagetrækkende kraft",
+            "Personen i midten",
+            "Et ord for den fremaddrivende kraft"
+          ],
+          "blank_space_hint": "Tegn linjen horisontalt."
+        },
+        {
+          "number": 2,
+          "task": "Lav en kort, opsummerende 2-kolonne oversigt over de to typer kærlighed.",
+          "required_elements": [
+            "Klassifikation af de to typer",
+            "Stikord for egoisme/besiddelse vs. uselviskhed/beundring"
+          ],
+          "blank_space_hint": "Brug to sideordnede bokse."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som din afsluttende overførsel. Her løfter du de specifikke fund fra kilden op til et niveau, der tæller direkte i en mundtlig eller skriftlig eksamenssituation.",
+      "use_this_text_for": [
+        "At forklare overgangen fra drifte-teorier til humanistisk fokus på individets frie potentiale.",
+        "At diskutere opgøret med patologisering af ethvert menneskeligt træk.",
+        "At dokumentere Maslows eksakte mekanisme bag vækst frem for blot at nævne 'pyramiden'.",
+        "At belyse den interne handlekraft (agency), der definerer det sunde, tidlige 'autentiske selv'.",
+        "At etablere den positive og ukritiske version af 'indre sandhed', som efterfølgende afmonteres af socialkonstruktionisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Agency vs. Determinisme",
+          "connection": "Bryder radikalt med psykoanalysens biologiske determinisme og tildeler individet en stærk radikal frihed til indefra at vælge at gro og aktualisere."
+        },
+        {
+          "course_theme": "Essens og Det Indre Selv",
+          "connection": "Kilden etablerer et klart begreb om et 'autentisk, indre sandt selv', som senere teorier, især Foucault og Rose, vil rette deres analytiske dekonstruktion direkte imod."
+        },
+        {
+          "course_theme": "Epistemologisk Skift",
+          "connection": "Forsøger at legitimere en forskningsmetode (Human Science), der tør tage udgangspunkt i de absolut sundeste mennesker, i stedet for evigt at ekstrapolere sygelige rottedata."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Freuds psykoanalyse (W04)",
+          "how_to_compare": "Sammenlign drivkraftens natur. Freuds driftssubjekt kæmper reaktivt for passiv spændingsreduktion, mens Maslows humanistiske subjekt bevidst nyder og søger den lystfyldte spænding, som væksten afstedkommer."
+        },
+        {
+          "compare_with": "Kritisk Psykologi v. Holzkamp/Dreier (W08)",
+          "how_to_compare": "Kontraster hvor handlekraften udspiller sig. Maslows autonomi handler udelukkende om en indre, psykologisk realisering. Kritisk psykologi kræver, at den udmønter sig i ydre, politisk og samfundsmæssig deltagelse."
+        },
+        {
+          "compare_with": "Poststrukturalisme v. Rose (W10)",
+          "how_to_compare": "Brug Maslows ideal om 'at finde sit sande selv' som det direkte objekt for kritik. Poststrukturalister vil argumentere, at netop denne selvrealisering i dag er et instrumentelt og disciplinerende sprog, skabt af samfundets magtstruktur."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Gør rede for humanistisk motivationsteori",
+          "use_in_answer": "Brug sproget: Mangelbehov søger spændingsreduktion. Vækstbehov opstår derimod af organismens umættelige lyst til at ekspandere spænding.",
+          "caution": "Tegn ikke den velkendte, folkelige trappe-pyramide op uden først at bevise den præcise driftmæssige mekanisme, den hviler på."
+        },
+        {
+          "prompt_type": "Diskuter subjektets grad af handlefrihed",
+          "use_in_answer": "Anvend spændingsfeltet 'Safety vs. Growth'. Vis hermed, at selv om Maslow insisterer på potentialet for frihed, er mennesket låst, så længe omverdenen truer det basale.",
+          "caution": "Pas på med at fremstille modellen så overoptimistisk, at du glemmer Maslows anerkendelse af, at mangler kan knuse friheden totalt."
+        },
+        {
+          "prompt_type": "Sammenlign to personlighedsteorier",
+          "use_in_answer": "Sæt dynamikken fra den tidlige drift-teori direkte over for B-motivationens uselviske natur.",
+          "caution": "Gør ikke psykoanalysen til en primitiv stråmand; sørg for stramt at fastholde fokus på netop forskellen i nydelsen af *spænding*."
+        },
+        {
+          "prompt_type": "Forklar udvikling af patologi",
+          "use_in_answer": "Argumentér med 'Frygten for viden' (Section 5). Gør rede for, hvordan selv viden om egne unikke evner kan udløse angst for forpligtelse og ansvarsunddragelse.",
+          "caution": "Glem ikke, at patienten muligvis blot mangler basal D-tilfredsstillelse i et dysfunktionelt system."
+        },
+        {
+          "prompt_type": "Diskuter relationelle mønstre",
+          "use_in_answer": "Kontrastér udtømmende D-kærlighedens brug af modparten som et praktisk objekt, der fylder et hul, med B-kærlighedens autonomi.",
+          "caution": "Undgå klichéfyldt, moraliserende hverdagssprog; anvend Maslows begreber objektivt og køligt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At al spænding i individet er problematisk og i sidste ende skadeligt for psyken.",
+          "better_reading": "I selvaktualisering og B-motivation er forhøjet og ustabil spænding ligefrem dybt ønsket og den mest glædesgivende drivkraft."
+        },
+        {
+          "trap": "At selvaktualisering er en specifik statisk slutformål, man lander trygt i, når man dør.",
+          "better_reading": "Det er en uendelig, proaktiv tilblivelsesproces. Drivkraften øges eksponentielt, når den belønnes, uden noget ultimativt nulpunkt."
+        },
+        {
+          "trap": "At enhver neurotiker eller slave bare med en fri viljesakt kan beslutte sig for at ignorere presset og 'vækste' for sig selv.",
+          "better_reading": "Sikkerhedsbehovet dominerer alt andet. Under massiv trussel vil det psykologiske system unægtelig forfalde til den mest basale beskyttelse af organismen."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Maslows syn på menneskelig drivkraft (motivation) med Freuds tidlige psykoanalytiske tilgang. Hvordan ændrer selve deres syn på 'intern spænding' den samlede forståelse af det frie individ?",
+      "mini_exam_answer_plan_slots": [
+        "Præsenter den korrekte udlægning af Freuds syn på drifter som en evig søgen efter passiv spændingsreduktion og homøostatisk ro.",
+        "Definér stramt Maslows fundamentale modtræk: D-motivation versus B-motivation.",
+        "Godtgør specifikt hvordan fuldtonet vækstmotivation (Growth) netop søger og udtalt nyder en *fastholdelse* og *øgning* af spænding.",
+        "Demonstrér præcist, hvordan denne mekanistiske omskrivning udgør selve forudsætningen for det handlende, selvdrevne, radikale humanistiske ideal."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

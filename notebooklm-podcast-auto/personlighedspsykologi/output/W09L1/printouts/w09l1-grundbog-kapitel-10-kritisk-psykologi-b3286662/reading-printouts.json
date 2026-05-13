@@ -1,0 +1,1302 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:59:44Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
+    "source_files_signature": "6ebd3f8c9059911792012e3e00ee41ae433995923ca6400e08290e13ceee4453",
+    "source_card": "c884ca0869d958d6a93d56fd9dbdcdf381fe952868dbac5faa66cc90cf8967b4",
+    "revised_lecture_substrate": "031ac60325b0294e3bfe7e4ac407bc776693b62bbb276625fc259ef4fb72a0e1",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+    "lecture_key": "W09L1",
+    "title": "Grundbog kapitel 10 - Kritisk psykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 35,
+    "estimated_token_count": 22750,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf"
+    ],
+    "reading_title": "Grundbog kapitel 10 - Kritisk psykologi",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W09L1"
+    ],
+    "sequence_index": 4,
+    "source_filename": "W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "subject_relative_path": "Readings/W9L1 Kritisk psykologi/W9L1 Grundbog kapitel 10 - Kritisk psykologi.pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "da",
+    "priority_signals": {
+      "is_grundbog": true,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "75686a63be1c068beeb8ab3b88e3d07a887b173ccc32fc06a916043478f3e9ac",
+      "size_bytes": 5658598,
+      "page_count": 35,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 22750,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 35,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "lecture_key": "W09L1",
+      "source_title": "Grundbog kapitel 10 - Kritisk psykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at skabe overblik over tekstens hovedproblemer før du læser. Følg læseruten og de konkrete stop-signaler for at holde fokus.",
+      "teaser_paragraphs": [
+        "Forestil dig at måle et menneskes ekstroversion på en skala fra 1-10 i et laboratorie. Det er klassisk trækteori, og det har vi gjort siden kursets start. Men hvad nu, hvis dette udgangspunkt bygger på en fatal fejl?",
+        "De kritiske psykologer i 1970'ernes Berlin mente præcis dette. De så, hvordan mainstream-psykologien reducerede mennesket til en maskine, hvis handlinger og tanker blot opfattes som noget, der *sker som udtryk for de omstændigheder*, personen befinder sig i.",
+        "Dette problem kaldte de umiddelbarhedspostulatet. Hvis vi bare er passive modtagere af ydre betingelser, hvordan forklarer vi så modstand, forandring, eller mennesker, der nægter at tilpasse sig?",
+        "Teksten kræver et radikalt skift. Du skal holde op med at lede efter personligheden inde i hjernen. I stedet skal du ud i samfundet. Du skal kigge på, hvordan mennesker faktisk deltager i deres egne liv på tværs af familien, skolen og arbejdsmarkedet.",
+        "Her har man ikke en stabil kerne; man opbygger *en komposition af standpunkter*. Opgaven er at undersøge den konstante navigering, som Holzkamp kalder den *daglige livsførelse*, hvor individet balancerer ydre strukturer med egen handleevne."
+      ],
+      "main_problem": "Hvordan kan vi forstå personligheden som noget, der udvikles gennem aktiv samfundsdeltagelse, frem for at reducere den til passive, indre reaktioner på ydre omstændigheder?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er umiddelbarhedspostulatet, og hvorfor lammer det klassisk psykologi?",
+          "why_it_matters": "Det er grundstenen i tekstens kritik og nødvendiggør et helt nyt teoretisk paradigme.",
+          "answer_form": "En kort forklaring af fejlantagelsen"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller ekspansiv handleevne sig fra restriktiv handleevne?",
+          "why_it_matters": "Dette skel forklarer, hvorfor mennesker ikke er totalt determinerede af samfundet.",
+          "answer_form": "En kontrast mellem to måder at håndtere sine betingelser på"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er 'deltagelse' et vigtigere begreb end 'tilstedeværelse'?",
+          "why_it_matters": "Det flytter psykologien ud af hjernen og ind i den sociale praksis.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på lokalitet, position og standpunkt?",
+          "why_it_matters": "Disse tre lag er nødvendige for præcist at analysere en persons konkrete indlejring i en situation.",
+          "answer_form": "Tre korte definitioner"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken funktion har den 'daglige livsførelse'?",
+          "why_it_matters": "Det forklarer, hvordan vi undgår psykisk kollaps, når vi navigerer mellem forskellige praksisser.",
+          "answer_form": "Forklaring af rutiners beskyttende funktion"
+        },
+        {
+          "number": 6,
+          "question": "Hvad er kritisk psykologis definition af personlighed?",
+          "why_it_matters": "Det er kapitlets endelige svar på, hvad personlighed er, når vi forkaster træk-tanken.",
+          "answer_form": "Begrebet"
+        }
+      ],
+      "why_this_text_matters": "Dette kapitel udgør det teoretiske vendepunkt i kurset fra 'Conditioning Discourse' til 'Reason Discourse'. Den giver dig det afgørende ordforråd til at analysere dialektikken mellem social struktur og menneskelig handleevne til eksamen.",
+      "overview": [
+        "Teksten identificerer umiddelbarhedspostulatet som traditionel psykologis grundlæggende blind vinkel.",
+        "Den opbygger en ny model baseret på begreberne handleevne, deltagelse i praksisser og subjektive standpunkter.",
+        "Den konkluderer, at personligheden er en komposition af disse standpunkter, som holdes sammen af den daglige livsførelse."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 342-344",
+          "task": "Læs om kritikkens natur og Boks 1 om umiddelbarhedspostulatet.",
+          "why_it_matters": "Her defineres selve roden til den kritiske psykologis utilfredshed.",
+          "stop_signal": "Når du kan forklare 'umiddelbarhedsproblemet'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 349-350",
+          "task": "Fokuser på afsnittet 'Handleevne'.",
+          "why_it_matters": "Du skal bruge forskellen på restriktiv og ekspansiv handling i alle analyser.",
+          "stop_signal": "Når du forstår, at mennesket altid har muligheder"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 354-357",
+          "task": "Gennemgå 'Personen som deltager' og figurerne for social praksis.",
+          "why_it_matters": "Praksis er den arena, psykologien udspiller sig i ifølge teorien.",
+          "stop_signal": "Når du ser, at andres handlinger former dine muligheder"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 358-359",
+          "task": "Læs boks 2 om lokalitet, position og standpunkt.",
+          "why_it_matters": "Ole Dreiers tredeling er det vigtigste metodiske redskab til case-arbejde.",
+          "stop_signal": "Når de tre niveauer er adskilt i dit hoved"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 361-362",
+          "task": "Dyk ned i Boks 3 'Livsførelse'.",
+          "why_it_matters": "Begrebet forklarer tråden på tværs af de spredte praksisser.",
+          "stop_signal": "Når du forstår rutiners nødvendighed"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 365-366",
+          "task": "Læs 'Personligheden som en komposition af standpunkter'.",
+          "why_it_matters": "Det er kapitlets endelige pointe og din nye definition af personlighed.",
+          "stop_signal": "Når du forstår hvorfor kompositionen må kaldes et navigationskort"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "forstår personer som underlagt deres umiddelbare betingelser",
+          "why": "Definerer den klassiske fejlslutning.",
+          "where_to_look": "Side 343"
+        },
+        {
+          "target": "forskellige forhold ved personers deltagelse: Lokaliteten",
+          "why": "Nøglen til Dreiers analysekategorier.",
+          "where_to_look": "Side 358"
+        },
+        {
+          "target": "Livsførelse er en ordning af vores aktiviteter",
+          "why": "Viser hvordan individet undgår at bryde sammen under pres.",
+          "where_to_look": "Side 361"
+        },
+        {
+          "target": "Personligheden som en komposition af standpunkter",
+          "why": "Dette er kritisk psykologis præcise personlighedsdefinition.",
+          "where_to_look": "Side 365"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De dybe historiske udredninger af marxistisk filosofi i starten.",
+        "Detaljerne omkring forskningsnetværket ved Freie Universität.",
+        "Glen Elders udviklingspsykologiske sidetrack.",
+        "Hvorvidt forskellene på dansk og tysk kritisk psykologi er markante i praksis."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 343, boks 1",
+          "excerpt": "Med dette problem forstås det forhold, at traditionel psykologi altid forstår personer som underlagt deres umiddelbare betingelser.",
+          "open_question": "Hvis dette er antagelsen, hvordan kan psykologien så nogensinde forklare, at to mennesker reagerer helt forskelligt i samme situation?"
+        },
+        {
+          "number": 2,
+          "source_location": "Side 365",
+          "excerpt": "I det kritisk psykologiske perspektiv er personligheden en komposition af standpunkter, hvor personen relaterer dem til hinanden og derved forholder sig til de sammenhænge, vedkommende indgår i.",
+          "open_question": "Gør denne definition det muligt at være stærkt modstridende i sin adfærd uden at være 'abnorm'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Side 343",
+          "excerpt": "forstår personer som underlagt deres umiddelbare betingelser",
+          "open_question": "Hvorfor er 'deltagelse' et vigtigere begreb end 'tilstedeværelse'?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette dokument som din primære tekstgennemgang. Læs hver sektion for at løse de specifikke problemer opstillet i læseguiden. Du kan bruge denne direkte til at løse arbejdsarkene.",
+      "coverage_note": "Fokuserer snævert på Holzkamps og Dreiers grundbegreber (umiddelbarhedspostulatet, handleevne, deltagelse, livsførelse og standpunkter) som anvendes i forelæsningens kursusintegration.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 342-344",
+          "heading": "Opgøret med umiddelbarhedspostulatet",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvilken grundlæggende fejl begår mainstream-psykologien?",
+          "explanation_paragraphs": [
+            "Kritisk psykologi er et radikalt brud med den måde, psykologi traditionelt har forstået psyken på. For Klaus Holzkamp var hovedproblemet det, han kaldte 'umiddelbarhedspostulatet'. Dette er antagelsen om, at individer passivt underkastes og styres af deres ydre betingelser.",
+            "Hvis man accepterer denne præmis, opfatter man menneskets handlinger og følelser som mekaniske, direkte reaktioner på omgivelserne. Dette umuliggør enhver ægte forståelse af menneskelig modstand eller muligheden for systematisk at ændre sine egne kår.",
+            "Traditionel psykologi prøver ofte at løse problemet ved at placere reaktionen indeni personen - som et skjult, statisk personlighedstræk. Kritisk psykologi afviser denne indre forklaring og kræver, at vi i stedet undersøger individets aktive forhold til samfundet."
+          ],
+          "key_points": [
+            "Umiddelbarhedspostulatet gør mennesket til en passiv modtager af stimuli.",
+            "Det overser, at mennesker kan overskride og ændre de rammer, de befinder sig i.",
+            "Fejlen kan ikke lappes ved at indføre hypotetiske indre personlighedstræk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "underlagt deres umiddelbare betingelser",
+              "why_it_matters": "Dette definerer kernen i den antagelse, som kritisk psykologi angriber.",
+              "source_location": "Boks 1, side 343"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Boks 1, side 343",
+              "passage": "Med dette problem forstås det forhold, at traditionel psykologi altid forstår personer som underlagt deres umiddelbare betingelser. Med det menes der, at menneskers handlinger, tanker og følelser er reaktioner på eller sker som udtryk for de omstændigheder, de her og nu befinder sig i.",
+              "why_it_matters": "Passagen er autoritativ og udgør selve startskuddet for teorien."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 349-350",
+          "heading": "Handleevne: At udvide sine muligheder",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Er vi så blot determinerede af samfundets strukturer?",
+          "explanation_paragraphs": [
+            "Som modsvar til umiddelbarhedspostulatet introduceres begrebet handleevne. Fordi mennesket ikke bare reagerer mekanisk, har vi altid muligheder i en given situation. Vi er ikke blinde for vores samfundsbetingelser, men vi kan forholde os til dem og handle på dem.",
+            "Der skelnes skarpt mellem to former. Ved 'restriktiv handleevne' forsøger personen blot at sikre sine umiddelbare, kortsigtede interesser ved at tilpasse sig systemet uden at ændre betingelserne.",
+            "Ved 'ekspansiv handleevne' forsøger personen derimod at ændre på betingelserne, udvide sine muligheder og handle i en retning, der peger fremad, ofte i fællesskab med andres interesser. Dette er kilden til samfundsforandring."
+          ],
+          "key_points": [
+            "Mennesket er udstyret med handleevne og har altid en form for frihed inden for rammerne.",
+            "Restriktiv handleevne er reaktiv tilpasning.",
+            "Ekspansiv handleevne er proaktiv udvidelse af livsmuligheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "udvider vores muligheder",
+              "why_it_matters": "Definerer essensen af ekspansiv handleevne og den reelle agens.",
+              "source_location": "Side 349"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 354-357",
+          "heading": "Altid en deltager",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor finder den menneskelige aktivitet sted?",
+          "explanation_paragraphs": [
+            "Vi eksisterer ikke i et vakuum, men lever vores liv gennem 'deltagelse' i forskellige sociale praksisser. En praksis (fx en folkeskole, en biograf, et mødelokale) er struktureret af normer, konventioner og andres forventninger.",
+            "Deltagelsen er bindeleddet mellem verden og subjektet. Ved at forstå personen som en deltager rykkes fokus fra psykologien i hjernen ud til relationerne i rummet. Vi kan kun forstå psykologiske fænomener, hvis vi ser, hvordan de opstår i forbindelse med, at personen engagerer sig i en konkret praksis.",
+            "Dette betyder også, at strukturer påvirker os, fordi andre menneskers handlinger kan bremse eller muliggøre det, vi gerne vil opnå som deltagere i praksissen."
+          ],
+          "key_points": [
+            "Mennesker er altid deltagere i konkrete strukturer.",
+            "Deltagelse bygger bro mellem de subjektive tanker og den objektive verden.",
+            "Psykiske problemer og løsninger ligger ofte indlejret i den sociale praksis."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forbindelsesled mellem subjekt og verden",
+              "why_it_matters": "Præciserer hvorfor begrebet deltagelse er nødvendigt for at afvise rent indre forklaringer.",
+              "source_location": "Side 354"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 358-359",
+          "heading": "Lokalitet, position og standpunkt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan vi analysere personens præcise plads i en situation?",
+          "explanation_paragraphs": [
+            "Ole Dreier opdeler analysen af en persons situation i tre niveauer, for at vi ikke skal forveksle objektive rammer med subjektive oplevelser. Det første lag er 'lokaliteten', hvilket slet og ret er det fysiske tidspunkt og sted, personen befinder sig på.",
+            "Det andet lag er 'positionen'. Dette er den sociale rolle eller funktion, man har det pågældende sted – fx at være lærer frem for elev, eller at være tilskuer frem for aktør. Rollen begrænser og muliggør bestemte handlinger.",
+            "Det tredje og vigtigste lag er 'standpunktet'. Standpunktet udgør personens helt egen, subjektive forståelse af reglerne og deres egen placering i netop denne praksis set i forhold til resten af deres liv. Det er her, det for alvor bliver psykologisk interessant."
+          ],
+          "key_points": [
+            "Lokalitet = fysisk sted og tidspunkt.",
+            "Position = objektiv social rolle.",
+            "Standpunkt = subjektiv forståelse af situationen i praksissen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forståelsen af de regler eller forhold",
+              "why_it_matters": "Det er definitionen på selve standpunktet.",
+              "source_location": "Boks 2, side 358"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 361-362",
+          "heading": "Livsførelsen binder os sammen",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan overlever vi krav fra så mange forskellige praksisser hver dag?",
+          "explanation_paragraphs": [
+            "Vi færdes dagligt i og på tværs af mange praksisser: familien om morgenen, studiet om formiddagen, arbejdspladsen om aftenen. For at håndtere denne enorme mængde krav, udviklede Holzkamp begrebet 'daglig livsførelse'.",
+            "Den daglige livsførelse er den ordning og integration af aktiviteter og relationer, som vi etablerer for at få vores liv til at hænge sammen. Det resulterer i vaner og rutiner.",
+            "Disse rutiner har en vigtig funktion: De aflaster os. Når vi lader hverdagen foregå rutinemæssigt, slipper vi for bevidst at skulle reflektere over og planlægge hvert eneste lille skridt. Livsførelsen fungerer som en beskyttende buffer mod udbrændthed i et komplekst samfund."
+          ],
+          "key_points": [
+            "Vi deltager ikke i isolerede situationer, men i et netværk af forpligtelser.",
+            "Livsførelsen er den aktive ordning af vores tid og energi.",
+            "Rutiner beskytter personen mod konstant kognitiv overbelastning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "ordning af vores aktiviteter, opgaver, relationer",
+              "why_it_matters": "Giver den funktionelle definition af begrebet livsførelse.",
+              "source_location": "Boks 3, side 361"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 365-366",
+          "heading": "Personligheden som en komposition",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvad er konklusionen: Hvad er 'personlighed' i dette paradigme?",
+          "explanation_paragraphs": [
+            "Traditionel teori ser personlighed som et indre træk. Kritisk psykologi ser i stedet personligheden som 'en komposition af standpunkter'. Din personlighed er med andre ord summen af den måde, du udvikler, samler og forholder dig til de standpunkter, du indtager i alle de praksisser, du deltager i.",
+            "Fordi du deltager i meget forskellige praksisser, kan dit navigationskort rumme store modsætninger. Du kan sagtens udvise dyb tillid i din familie, mens du er kynisk og beregnende på dit arbejde.",
+            "Dette betragtes ikke som et brud eller en falsk adfærd. Tværtimod er kompositionen det ufærdige navigationskort, du bruger til at fastholde forbindelsen mellem dine handlemuligheder på tværs af de vidt forskellige arenaer i din daglige livsførelse."
+          ],
+          "key_points": [
+            "Personligheden er ikke en biologisk eller mental kerne.",
+            "Den er sammensætningen og integreringen af ens standpunkter.",
+            "Variation i adfærd over tid og sted er ikke en fejl, men et resultat af forskellige krav."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "navigationskort over personens nutidige placering",
+              "why_it_matters": "Tydeliggør at personlighed for kritisk psykologi er et praktisk værktøj, man skaber for at navigere.",
+              "source_location": "Side 366"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 365",
+              "passage": "I det kritisk psykologiske perspektiv er personligheden en komposition af standpunkter, hvor personen relaterer dem til hinanden og derved forholder sig til de sammenhænge, vedkommende indgår i.",
+              "why_it_matters": "Det er tekstens egentlige, afsluttende redefinition af kursets hovedemne."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken grundlæggende fejl begår mainstream-psykologien?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort forklaring af fejlantagelsen",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er vi så blot determinerede af samfundets strukturer?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvor finder den menneskelige aktivitet sted?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi analysere personens præcise plads i en situation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Tre korte definitioner",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever vi krav fra så mange forskellige praksisser hver dag?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Forklaring af rutiners beskyttende funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad er konklusionen: Hvad er 'personlighed' i dette paradigme?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Begrebet",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi forstå personligheden som noget, der udvikles gennem aktiv samfundsdeltagelse, frem for at reducere den til passive, indre reaktioner på ydre omstændigheder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arket fra hukommelsen først for at fastlåse dit kendskab til teorien. Brug først Abridged Reader til at reparere dine svar, når du er gået i stå.",
+      "overview": [
+        "Kritisk psykologi gør op med ideen om, at vi blot er passive enheder, der reagerer mekanisk på ydre stimuli.",
+        "Vi er aktive deltagere, der altid forsøger at udøve handleevne for at ændre eller tilpasse os betingelser i sociale praksisser.",
+        "Personligheden skal forstås som det aktive navigationskort af standpunkter, vi sammensætter for at få vores daglige livsførelse til at fungere."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den farlige, klassiske fejlantagelse om, at menneskets psyke udelukkende er en direkte reaktion på ydre vilkår uden aktivt medspil, kalder Holzkamp for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et langt sammensat ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Evnen til at handle og bryde ud af strukturerne ved at udvide sine muligheder betegnes i denne teori som __________ handleevne.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Når man træder ind i en social praksis (fx en folkeskoleklasse), fungerer man ifølge Holzkamp ikke bare som observatør, men som en aktiv __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "En persons fysiske placering i tid og rum kaldes i analysen for dens lokalitet, mens den overordnede sociale rolle (fx underviser) kaldes dens __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Individets egen, subjektive forståelse og strategiske navigering af reglerne på dette specifikke sted udgør personens __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Måden, hvorpå vi koordinerer alle de forskellige praksisser og skaber beskyttende vaner i hverdagen, opsummeres i begrebet 'daglig __________'.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Personligheden betragtes ikke længere som et internt træk, men som det navigationskort der opstår som en __________ af standpunkter.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en lagdelt model over Dreiers tre analysekategorier for en situation. Tegn dem som tre cirkler eller niveauer der går fra det overordnede objektive til det snævert subjektive.",
+          "required_elements": [
+            "Lokalitet (det fysiske sted",
+            "Position (den sociale rolle",
+            "Standpunkt (den subjektive forståelse"
+          ],
+          "blank_space_hint": "Lav tre bokse oven på hinanden, hvor den nederste/inderste er den mest subjektive psykologiske kerne."
+        },
+        {
+          "number": 2,
+          "task": "Visualiser Holzkamps idé om 'daglig livsførelse' ved at tegne en person der navigerer gennem hverdagen.",
+          "required_elements": [
+            "Personen placeret i centrum",
+            "Mindst tre forskellige sociale praksisser i kanten (fx arbejde, hjem, fritid",
+            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration (livsførelsen"
+          ],
+          "blank_space_hint": "Brug midten til selve subjektet, og lad linjerne udgøre det samlende 'netværk' der binder hverdagen sammen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at koble kritisk psykologis skarpe modbegreber til resten af kurset. Teoriens begreber er ideelle til opgaver, der beder dig analysere strukturer, agens eller uoverensstemmelser i en persons adfærd.",
+      "use_this_text_for": [
+        "At diskutere 'Agency' og 'Context' - de to stærkeste sider af kursets orienteringsmodel her.",
+        "At yde hård systemkritik mod tidlige variable- og trækmodeller som Big Five.",
+        "At levere et sociologisk/dialektisk perspektiv på, hvorfor en person pludselig opfører sig irrationelt.",
+        "At forklare hvordan en presset klients forsvar kan ses som 'restriktiv handleevne' fremfor en patologisk forsvarsmekanisme.",
+        "At omformulere diagnosticering; at se adfærd som et 'standpunkt' i en specifik praksis."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02L1)",
+          "connection": "Brug umiddelbarhedspostulatet til at vise, hvorfor kritisk psykologi mener, at et træk som 'ekstroversion' er en illusion skabt af test-situationen."
+        },
+        {
+          "course_theme": "Humanistisk psykologi (W07L2)",
+          "connection": "Både Carl Rogers og Holzkamp tror stærkt på handleevne. Men hvor Rogers ser agens i indre selvrealisering, mener Holzkamp agens kun realiseres i samfundsforandring."
+        },
+        {
+          "course_theme": "Meta-rammen og de 4 punkter (W12L1)",
+          "connection": "Kritisk psykologi udfylder positionen, hvor personlighed ikke er en Essens, men radikalt formet af Kontekst, mens subjektet stadig bevarer handleevne frem for total Determinisme."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five / Trækteori",
+          "how_to_compare": "Kritiser testens de-kontekstualisering. Vis, at Big Five beder om generel adfærd, mens kritisk psykologi nægter at vurdere adfærd, der ikke kan bindes til et specifikt standpunkt i en specifik praksis."
+        },
+        {
+          "compare_with": "Psykoanalysen",
+          "how_to_compare": "Modsat Freud, som graver tilbagevendende konflikter frem fra barndommen og det ubevidste, kigger kritisk psykologi udad for at se konflikterne indlejret i den nutidige sociale praksis."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Begge retninger anerkender strukturers magt over individet. Men hvor poststrukturalismen ofte opløser subjektet, fastholder Holzkamp subjektets dialektiske kapacitet til ekspansiv handleevne."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når opgaven beder dig vurdere en persons irrationelle valg...",
+          "use_in_answer": "Brug 'restriktiv handleevne' til at forsvare, at personen under pres prøver at optimere sine muligheder inden for de snævre rammer, der overhovedet findes.",
+          "caution": "Kald det ikke 'dårlig' adfærd; sig det er logisk tilpasning til en defekt struktur."
+        },
+        {
+          "prompt_type": "Når en case viser, at en person har to vidt forskellige sider (fx arbejdsnarkoman, men uansvarlig far)...",
+          "use_in_answer": "Aktivér begrebet komposition af standpunkter. Sig højt, at personligheden ikke brister, men at standpunkterne naturligt ændrer form, fordi betingelserne i de to praksisser er forskellige.",
+          "caution": "Diagnosticér aldrig personen med en indre splittelse, når miljøerne objektivt kræver forskellig adfærd."
+        },
+        {
+          "prompt_type": "Når en opgave præsenterer en tung psykologisk personlighedstest...",
+          "use_in_answer": "Sving umiddelbarhedspostulatet. Påpeg, at testen tager for givet, at personen er isoleret og passiv.",
+          "caution": "Gør ikke teksten dummere end den er: sig ikke, at test ikke fungerer, men at de fanger et udtryk for test-situationen, ikke den virkelige personlighed."
+        },
+        {
+          "prompt_type": "Når du skal beskrive en stresset klients overvældelse...",
+          "use_in_answer": "Sæt 'daglig livsførelse' i spil. Argumenter for, at sammenbruddet sker, fordi rutinerne ikke længere kan aflaste individet i integrationen af praksissernes modstridende krav.",
+          "caution": "Brug livsførelse som et analytisk overbegreb, ikke bare som et synonym for 'hverdag'."
+        },
+        {
+          "prompt_type": "Når du skal dykke dybt ned i en specifik handling i en case...",
+          "use_in_answer": "Skeln mellem lokalitet (hvor foregår det rent fysisk), position (rollen) og standpunktet (personens eget bud på det hele).",
+          "caution": "Bland aldrig positionen og standpunktet sammen i din opgaveskrivning."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kritisk psykologi blot er et buzzword for at 'være meget systematisk kritisk'.",
+          "better_reading": "Husk, det er en fuldblods, tysk og skandinavisk retning, udledt direkte fra marxistisk dialektisk materialisme, med helt specifikke egne begreber."
+        },
+        {
+          "trap": "At antage, at personlighed ikke findes i dette paradigme.",
+          "better_reading": "Personlighed findes i høj grad! Men den er flyttet ud af hjernen og omdefineret som selve det samlende greb ('kompositionen') om livets mange relationer."
+        },
+        {
+          "trap": "At misforstå standpunkt som blot 'en fiks lille holdning' en person har.",
+          "better_reading": "Standpunkt er en stærkt forankret, kropslig og erfaringsbaseret forståelse af reglerne i en praksis, indlejret gennem deltagelse over tid."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug kritisk psykologi til at analysere en situation, hvor en ansat bryder med en destruktiv arbejdspladskultur i stedet for at parere ordre.",
+      "mini_exam_answer_plan_slots": [
+        "Indledning: Identificer at vi her kigger på et subjekt, der udfordrer rammerne, hvorfor umiddelbarhedspostulatet fejler.",
+        "Analyse af praksis: Adskil arbejdspladsens lokalitet, den ansattes formelle position og den ansattes nuværende subjektive standpunkt.",
+        "Adfærdsvurdering: Definer modstanden præcist som et udtryk for 'ekspansiv handleevne' fremsat imod betingelserne.",
+        "Konklusion: Perspektiver hvordan det kræver en bestemt ordning af den samlede 'daglige livsførelse' og støtte fra andre praksisser for overhovedet at have overskud til dette ryk."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+      "lecture_key": "W09L1",
+      "source_title": "Grundbog kapitel 10 - Kritisk psykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at skabe overblik over tekstens hovedproblemer før du læser. Følg læseruten og de konkrete stop-signaler for at holde fokus.",
+      "teaser_paragraphs": [
+        "Forestil dig at måle et menneskes ekstroversion på en skala fra 1-10 i et laboratorie. Det er klassisk trækteori, og det har vi gjort siden kursets start. Men hvad nu, hvis dette udgangspunkt bygger på en fatal fejl?",
+        "De kritiske psykologer i 1970'ernes Berlin mente præcis dette. De så, hvordan mainstream-psykologien reducerede mennesket til en maskine, hvis handlinger og tanker blot opfattes som noget, der *sker som udtryk for de omstændigheder*, personen befinder sig i.",
+        "Dette problem kaldte de umiddelbarhedspostulatet. Hvis vi bare er passive modtagere af ydre betingelser, hvordan forklarer vi så modstand, forandring, eller mennesker, der nægter at tilpasse sig?",
+        "Teksten kræver et radikalt skift. Du skal holde op med at lede efter personligheden inde i hjernen. I stedet skal du ud i samfundet. Du skal kigge på, hvordan mennesker faktisk deltager i deres egne liv på tværs af familien, skolen og arbejdsmarkedet.",
+        "Her har man ikke en stabil kerne; man opbygger *en komposition af standpunkter*. Opgaven er at undersøge den konstante navigering, som Holzkamp kalder den *daglige livsførelse*, hvor individet balancerer ydre strukturer med egen handleevne."
+      ],
+      "main_problem": "Hvordan kan vi forstå personligheden som noget, der udvikles gennem aktiv samfundsdeltagelse, frem for at reducere den til passive, indre reaktioner på ydre omstændigheder?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er umiddelbarhedspostulatet, og hvorfor lammer det klassisk psykologi?",
+          "why_it_matters": "Det er grundstenen i tekstens kritik og nødvendiggør et helt nyt teoretisk paradigme.",
+          "answer_form": "En kort forklaring af fejlantagelsen"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller ekspansiv handleevne sig fra restriktiv handleevne?",
+          "why_it_matters": "Dette skel forklarer, hvorfor mennesker ikke er totalt determinerede af samfundet.",
+          "answer_form": "En kontrast mellem to måder at håndtere sine betingelser på"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er 'deltagelse' et vigtigere begreb end 'tilstedeværelse'?",
+          "why_it_matters": "Det flytter psykologien ud af hjernen og ind i den sociale praksis.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på lokalitet, position og standpunkt?",
+          "why_it_matters": "Disse tre lag er nødvendige for præcist at analysere en persons konkrete indlejring i en situation.",
+          "answer_form": "Tre korte definitioner"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken funktion har den 'daglige livsførelse'?",
+          "why_it_matters": "Det forklarer, hvordan vi undgår psykisk kollaps, når vi navigerer mellem forskellige praksisser.",
+          "answer_form": "Forklaring af rutiners beskyttende funktion"
+        },
+        {
+          "number": 6,
+          "question": "Hvad er kritisk psykologis definition af personlighed?",
+          "why_it_matters": "Det er kapitlets endelige svar på, hvad personlighed er, når vi forkaster træk-tanken.",
+          "answer_form": "Begrebet"
+        }
+      ],
+      "why_this_text_matters": "Dette kapitel udgør det teoretiske vendepunkt i kurset fra 'Conditioning Discourse' til 'Reason Discourse'. Den giver dig det afgørende ordforråd til at analysere dialektikken mellem social struktur og menneskelig handleevne til eksamen.",
+      "overview": [
+        "Teksten identificerer umiddelbarhedspostulatet som traditionel psykologis grundlæggende blind vinkel.",
+        "Den opbygger en ny model baseret på begreberne handleevne, deltagelse i praksisser og subjektive standpunkter.",
+        "Den konkluderer, at personligheden er en komposition af disse standpunkter, som holdes sammen af den daglige livsførelse."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 342-344",
+          "task": "Læs om kritikkens natur og Boks 1 om umiddelbarhedspostulatet.",
+          "why_it_matters": "Her defineres selve roden til den kritiske psykologis utilfredshed.",
+          "stop_signal": "Når du kan forklare 'umiddelbarhedsproblemet'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 349-350",
+          "task": "Fokuser på afsnittet 'Handleevne'.",
+          "why_it_matters": "Du skal bruge forskellen på restriktiv og ekspansiv handling i alle analyser.",
+          "stop_signal": "Når du forstår, at mennesket altid har muligheder"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 354-357",
+          "task": "Gennemgå 'Personen som deltager' og figurerne for social praksis.",
+          "why_it_matters": "Praksis er den arena, psykologien udspiller sig i ifølge teorien.",
+          "stop_signal": "Når du ser, at andres handlinger former dine muligheder"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 358-359",
+          "task": "Læs boks 2 om lokalitet, position og standpunkt.",
+          "why_it_matters": "Ole Dreiers tredeling er det vigtigste metodiske redskab til case-arbejde.",
+          "stop_signal": "Når de tre niveauer er adskilt i dit hoved"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 361-362",
+          "task": "Dyk ned i Boks 3 'Livsførelse'.",
+          "why_it_matters": "Begrebet forklarer tråden på tværs af de spredte praksisser.",
+          "stop_signal": "Når du forstår rutiners nødvendighed"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 365-366",
+          "task": "Læs 'Personligheden som en komposition af standpunkter'.",
+          "why_it_matters": "Det er kapitlets endelige pointe og din nye definition af personlighed.",
+          "stop_signal": "Når du forstår hvorfor kompositionen må kaldes et navigationskort"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "forstår personer som underlagt deres umiddelbare betingelser",
+          "why": "Definerer den klassiske fejlslutning.",
+          "where_to_look": "Side 343"
+        },
+        {
+          "target": "forskellige forhold ved personers deltagelse: Lokaliteten",
+          "why": "Nøglen til Dreiers analysekategorier.",
+          "where_to_look": "Side 358"
+        },
+        {
+          "target": "Livsførelse er en ordning af vores aktiviteter",
+          "why": "Viser hvordan individet undgår at bryde sammen under pres.",
+          "where_to_look": "Side 361"
+        },
+        {
+          "target": "Personligheden som en komposition af standpunkter",
+          "why": "Dette er kritisk psykologis præcise personlighedsdefinition.",
+          "where_to_look": "Side 365"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De dybe historiske udredninger af marxistisk filosofi i starten.",
+        "Detaljerne omkring forskningsnetværket ved Freie Universität.",
+        "Glen Elders udviklingspsykologiske sidetrack.",
+        "Hvorvidt forskellene på dansk og tysk kritisk psykologi er markante i praksis."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 343, boks 1",
+          "excerpt": "Med dette problem forstås det forhold, at traditionel psykologi altid forstår personer som underlagt deres umiddelbare betingelser.",
+          "open_question": "Hvis dette er antagelsen, hvordan kan psykologien så nogensinde forklare, at to mennesker reagerer helt forskelligt i samme situation?"
+        },
+        {
+          "number": 2,
+          "source_location": "Side 365",
+          "excerpt": "I det kritisk psykologiske perspektiv er personligheden en komposition af standpunkter, hvor personen relaterer dem til hinanden og derved forholder sig til de sammenhænge, vedkommende indgår i.",
+          "open_question": "Gør denne definition det muligt at være stærkt modstridende i sin adfærd uden at være 'abnorm'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Side 343",
+          "excerpt": "forstår personer som underlagt deres umiddelbare betingelser",
+          "open_question": "Hvorfor er 'deltagelse' et vigtigere begreb end 'tilstedeværelse'?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette dokument som din primære tekstgennemgang. Læs hver sektion for at løse de specifikke problemer opstillet i læseguiden. Du kan bruge denne direkte til at løse arbejdsarkene.",
+      "coverage_note": "Fokuserer snævert på Holzkamps og Dreiers grundbegreber (umiddelbarhedspostulatet, handleevne, deltagelse, livsførelse og standpunkter) som anvendes i forelæsningens kursusintegration.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 342-344",
+          "heading": "Opgøret med umiddelbarhedspostulatet",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvilken grundlæggende fejl begår mainstream-psykologien?",
+          "explanation_paragraphs": [
+            "Kritisk psykologi er et radikalt brud med den måde, psykologi traditionelt har forstået psyken på. For Klaus Holzkamp var hovedproblemet det, han kaldte 'umiddelbarhedspostulatet'. Dette er antagelsen om, at individer passivt underkastes og styres af deres ydre betingelser.",
+            "Hvis man accepterer denne præmis, opfatter man menneskets handlinger og følelser som mekaniske, direkte reaktioner på omgivelserne. Dette umuliggør enhver ægte forståelse af menneskelig modstand eller muligheden for systematisk at ændre sine egne kår.",
+            "Traditionel psykologi prøver ofte at løse problemet ved at placere reaktionen indeni personen - som et skjult, statisk personlighedstræk. Kritisk psykologi afviser denne indre forklaring og kræver, at vi i stedet undersøger individets aktive forhold til samfundet."
+          ],
+          "key_points": [
+            "Umiddelbarhedspostulatet gør mennesket til en passiv modtager af stimuli.",
+            "Det overser, at mennesker kan overskride og ændre de rammer, de befinder sig i.",
+            "Fejlen kan ikke lappes ved at indføre hypotetiske indre personlighedstræk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "underlagt deres umiddelbare betingelser",
+              "why_it_matters": "Dette definerer kernen i den antagelse, som kritisk psykologi angriber.",
+              "source_location": "Boks 1, side 343"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Boks 1, side 343",
+              "passage": "Med dette problem forstås det forhold, at traditionel psykologi altid forstår personer som underlagt deres umiddelbare betingelser. Med det menes der, at menneskers handlinger, tanker og følelser er reaktioner på eller sker som udtryk for de omstændigheder, de her og nu befinder sig i.",
+              "why_it_matters": "Passagen er autoritativ og udgør selve startskuddet for teorien."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 349-350",
+          "heading": "Handleevne: At udvide sine muligheder",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Er vi så blot determinerede af samfundets strukturer?",
+          "explanation_paragraphs": [
+            "Som modsvar til umiddelbarhedspostulatet introduceres begrebet handleevne. Fordi mennesket ikke bare reagerer mekanisk, har vi altid muligheder i en given situation. Vi er ikke blinde for vores samfundsbetingelser, men vi kan forholde os til dem og handle på dem.",
+            "Der skelnes skarpt mellem to former. Ved 'restriktiv handleevne' forsøger personen blot at sikre sine umiddelbare, kortsigtede interesser ved at tilpasse sig systemet uden at ændre betingelserne.",
+            "Ved 'ekspansiv handleevne' forsøger personen derimod at ændre på betingelserne, udvide sine muligheder og handle i en retning, der peger fremad, ofte i fællesskab med andres interesser. Dette er kilden til samfundsforandring."
+          ],
+          "key_points": [
+            "Mennesket er udstyret med handleevne og har altid en form for frihed inden for rammerne.",
+            "Restriktiv handleevne er reaktiv tilpasning.",
+            "Ekspansiv handleevne er proaktiv udvidelse af livsmuligheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "udvider vores muligheder",
+              "why_it_matters": "Definerer essensen af ekspansiv handleevne og den reelle agens.",
+              "source_location": "Side 349"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 354-357",
+          "heading": "Altid en deltager",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor finder den menneskelige aktivitet sted?",
+          "explanation_paragraphs": [
+            "Vi eksisterer ikke i et vakuum, men lever vores liv gennem 'deltagelse' i forskellige sociale praksisser. En praksis (fx en folkeskole, en biograf, et mødelokale) er struktureret af normer, konventioner og andres forventninger.",
+            "Deltagelsen er bindeleddet mellem verden og subjektet. Ved at forstå personen som en deltager rykkes fokus fra psykologien i hjernen ud til relationerne i rummet. Vi kan kun forstå psykologiske fænomener, hvis vi ser, hvordan de opstår i forbindelse med, at personen engagerer sig i en konkret praksis.",
+            "Dette betyder også, at strukturer påvirker os, fordi andre menneskers handlinger kan bremse eller muliggøre det, vi gerne vil opnå som deltagere i praksissen."
+          ],
+          "key_points": [
+            "Mennesker er altid deltagere i konkrete strukturer.",
+            "Deltagelse bygger bro mellem de subjektive tanker og den objektive verden.",
+            "Psykiske problemer og løsninger ligger ofte indlejret i den sociale praksis."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forbindelsesled mellem subjekt og verden",
+              "why_it_matters": "Præciserer hvorfor begrebet deltagelse er nødvendigt for at afvise rent indre forklaringer.",
+              "source_location": "Side 354"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 358-359",
+          "heading": "Lokalitet, position og standpunkt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan vi analysere personens præcise plads i en situation?",
+          "explanation_paragraphs": [
+            "Ole Dreier opdeler analysen af en persons situation i tre niveauer, for at vi ikke skal forveksle objektive rammer med subjektive oplevelser. Det første lag er 'lokaliteten', hvilket slet og ret er det fysiske tidspunkt og sted, personen befinder sig på.",
+            "Det andet lag er 'positionen'. Dette er den sociale rolle eller funktion, man har det pågældende sted – fx at være lærer frem for elev, eller at være tilskuer frem for aktør. Rollen begrænser og muliggør bestemte handlinger.",
+            "Det tredje og vigtigste lag er 'standpunktet'. Standpunktet udgør personens helt egen, subjektive forståelse af reglerne og deres egen placering i netop denne praksis set i forhold til resten af deres liv. Det er her, det for alvor bliver psykologisk interessant."
+          ],
+          "key_points": [
+            "Lokalitet = fysisk sted og tidspunkt.",
+            "Position = objektiv social rolle.",
+            "Standpunkt = subjektiv forståelse af situationen i praksissen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forståelsen af de regler eller forhold",
+              "why_it_matters": "Det er definitionen på selve standpunktet.",
+              "source_location": "Boks 2, side 358"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 361-362",
+          "heading": "Livsførelsen binder os sammen",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan overlever vi krav fra så mange forskellige praksisser hver dag?",
+          "explanation_paragraphs": [
+            "Vi færdes dagligt i og på tværs af mange praksisser: familien om morgenen, studiet om formiddagen, arbejdspladsen om aftenen. For at håndtere denne enorme mængde krav, udviklede Holzkamp begrebet 'daglig livsførelse'.",
+            "Den daglige livsførelse er den ordning og integration af aktiviteter og relationer, som vi etablerer for at få vores liv til at hænge sammen. Det resulterer i vaner og rutiner.",
+            "Disse rutiner har en vigtig funktion: De aflaster os. Når vi lader hverdagen foregå rutinemæssigt, slipper vi for bevidst at skulle reflektere over og planlægge hvert eneste lille skridt. Livsførelsen fungerer som en beskyttende buffer mod udbrændthed i et komplekst samfund."
+          ],
+          "key_points": [
+            "Vi deltager ikke i isolerede situationer, men i et netværk af forpligtelser.",
+            "Livsførelsen er den aktive ordning af vores tid og energi.",
+            "Rutiner beskytter personen mod konstant kognitiv overbelastning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "ordning af vores aktiviteter, opgaver, relationer",
+              "why_it_matters": "Giver den funktionelle definition af begrebet livsførelse.",
+              "source_location": "Boks 3, side 361"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 365-366",
+          "heading": "Personligheden som en komposition",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Hvad er konklusionen: Hvad er 'personlighed' i dette paradigme?",
+          "explanation_paragraphs": [
+            "Traditionel teori ser personlighed som et indre træk. Kritisk psykologi ser i stedet personligheden som 'en komposition af standpunkter'. Din personlighed er med andre ord summen af den måde, du udvikler, samler og forholder dig til de standpunkter, du indtager i alle de praksisser, du deltager i.",
+            "Fordi du deltager i meget forskellige praksisser, kan dit navigationskort rumme store modsætninger. Du kan sagtens udvise dyb tillid i din familie, mens du er kynisk og beregnende på dit arbejde.",
+            "Dette betragtes ikke som et brud eller en falsk adfærd. Tværtimod er kompositionen det ufærdige navigationskort, du bruger til at fastholde forbindelsen mellem dine handlemuligheder på tværs af de vidt forskellige arenaer i din daglige livsførelse."
+          ],
+          "key_points": [
+            "Personligheden er ikke en biologisk eller mental kerne.",
+            "Den er sammensætningen og integreringen af ens standpunkter.",
+            "Variation i adfærd over tid og sted er ikke en fejl, men et resultat af forskellige krav."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "navigationskort over personens nutidige placering",
+              "why_it_matters": "Tydeliggør at personlighed for kritisk psykologi er et praktisk værktøj, man skaber for at navigere.",
+              "source_location": "Side 366"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 365",
+              "passage": "I det kritisk psykologiske perspektiv er personligheden en komposition af standpunkter, hvor personen relaterer dem til hinanden og derved forholder sig til de sammenhænge, vedkommende indgår i.",
+              "why_it_matters": "Det er tekstens egentlige, afsluttende redefinition af kursets hovedemne."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken grundlæggende fejl begår mainstream-psykologien?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort forklaring af fejlantagelsen",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Er vi så blot determinerede af samfundets strukturer?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvor finder den menneskelige aktivitet sted?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi analysere personens præcise plads i en situation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Tre korte definitioner",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever vi krav fra så mange forskellige praksisser hver dag?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Forklaring af rutiners beskyttende funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad er konklusionen: Hvad er 'personlighed' i dette paradigme?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Begrebet",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi forstå personligheden som noget, der udvikles gennem aktiv samfundsdeltagelse, frem for at reducere den til passive, indre reaktioner på ydre omstændigheder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arket fra hukommelsen først for at fastlåse dit kendskab til teorien. Brug først Abridged Reader til at reparere dine svar, når du er gået i stå.",
+      "overview": [
+        "Kritisk psykologi gør op med ideen om, at vi blot er passive enheder, der reagerer mekanisk på ydre stimuli.",
+        "Vi er aktive deltagere, der altid forsøger at udøve handleevne for at ændre eller tilpasse os betingelser i sociale praksisser.",
+        "Personligheden skal forstås som det aktive navigationskort af standpunkter, vi sammensætter for at få vores daglige livsførelse til at fungere."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den farlige, klassiske fejlantagelse om, at menneskets psyke udelukkende er en direkte reaktion på ydre vilkår uden aktivt medspil, kalder Holzkamp for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et langt sammensat ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Evnen til at handle og bryde ud af strukturerne ved at udvide sine muligheder betegnes i denne teori som __________ handleevne.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Når man træder ind i en social praksis (fx en folkeskoleklasse), fungerer man ifølge Holzkamp ikke bare som observatør, men som en aktiv __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "En persons fysiske placering i tid og rum kaldes i analysen for dens lokalitet, mens den overordnede sociale rolle (fx underviser) kaldes dens __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Individets egen, subjektive forståelse og strategiske navigering af reglerne på dette specifikke sted udgør personens __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Måden, hvorpå vi koordinerer alle de forskellige praksisser og skaber beskyttende vaner i hverdagen, opsummeres i begrebet 'daglig __________'.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Personligheden betragtes ikke længere som et internt træk, men som det navigationskort der opstår som en __________ af standpunkter.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en lagdelt model over Dreiers tre analysekategorier for en situation. Tegn dem som tre cirkler eller niveauer der går fra det overordnede objektive til det snævert subjektive.",
+          "required_elements": [
+            "Lokalitet (det fysiske sted",
+            "Position (den sociale rolle",
+            "Standpunkt (den subjektive forståelse"
+          ],
+          "blank_space_hint": "Lav tre bokse oven på hinanden, hvor den nederste/inderste er den mest subjektive psykologiske kerne."
+        },
+        {
+          "number": 2,
+          "task": "Visualiser Holzkamps idé om 'daglig livsførelse' ved at tegne en person der navigerer gennem hverdagen.",
+          "required_elements": [
+            "Personen placeret i centrum",
+            "Mindst tre forskellige sociale praksisser i kanten (fx arbejde, hjem, fritid",
+            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration (livsførelsen"
+          ],
+          "blank_space_hint": "Brug midten til selve subjektet, og lad linjerne udgøre det samlende 'netværk' der binder hverdagen sammen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at koble kritisk psykologis skarpe modbegreber til resten af kurset. Teoriens begreber er ideelle til opgaver, der beder dig analysere strukturer, agens eller uoverensstemmelser i en persons adfærd.",
+      "use_this_text_for": [
+        "At diskutere 'Agency' og 'Context' - de to stærkeste sider af kursets orienteringsmodel her.",
+        "At yde hård systemkritik mod tidlige variable- og trækmodeller som Big Five.",
+        "At levere et sociologisk/dialektisk perspektiv på, hvorfor en person pludselig opfører sig irrationelt.",
+        "At forklare hvordan en presset klients forsvar kan ses som 'restriktiv handleevne' fremfor en patologisk forsvarsmekanisme.",
+        "At omformulere diagnosticering; at se adfærd som et 'standpunkt' i en specifik praksis."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02L1)",
+          "connection": "Brug umiddelbarhedspostulatet til at vise, hvorfor kritisk psykologi mener, at et træk som 'ekstroversion' er en illusion skabt af test-situationen."
+        },
+        {
+          "course_theme": "Humanistisk psykologi (W07L2)",
+          "connection": "Både Carl Rogers og Holzkamp tror stærkt på handleevne. Men hvor Rogers ser agens i indre selvrealisering, mener Holzkamp agens kun realiseres i samfundsforandring."
+        },
+        {
+          "course_theme": "Meta-rammen og de 4 punkter (W12L1)",
+          "connection": "Kritisk psykologi udfylder positionen, hvor personlighed ikke er en Essens, men radikalt formet af Kontekst, mens subjektet stadig bevarer handleevne frem for total Determinisme."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five / Trækteori",
+          "how_to_compare": "Kritiser testens de-kontekstualisering. Vis, at Big Five beder om generel adfærd, mens kritisk psykologi nægter at vurdere adfærd, der ikke kan bindes til et specifikt standpunkt i en specifik praksis."
+        },
+        {
+          "compare_with": "Psykoanalysen",
+          "how_to_compare": "Modsat Freud, som graver tilbagevendende konflikter frem fra barndommen og det ubevidste, kigger kritisk psykologi udad for at se konflikterne indlejret i den nutidige sociale praksis."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Begge retninger anerkender strukturers magt over individet. Men hvor poststrukturalismen ofte opløser subjektet, fastholder Holzkamp subjektets dialektiske kapacitet til ekspansiv handleevne."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når opgaven beder dig vurdere en persons irrationelle valg...",
+          "use_in_answer": "Brug 'restriktiv handleevne' til at forsvare, at personen under pres prøver at optimere sine muligheder inden for de snævre rammer, der overhovedet findes.",
+          "caution": "Kald det ikke 'dårlig' adfærd; sig det er logisk tilpasning til en defekt struktur."
+        },
+        {
+          "prompt_type": "Når en case viser, at en person har to vidt forskellige sider (fx arbejdsnarkoman, men uansvarlig far)...",
+          "use_in_answer": "Aktivér begrebet komposition af standpunkter. Sig højt, at personligheden ikke brister, men at standpunkterne naturligt ændrer form, fordi betingelserne i de to praksisser er forskellige.",
+          "caution": "Diagnosticér aldrig personen med en indre splittelse, når miljøerne objektivt kræver forskellig adfærd."
+        },
+        {
+          "prompt_type": "Når en opgave præsenterer en tung psykologisk personlighedstest...",
+          "use_in_answer": "Sving umiddelbarhedspostulatet. Påpeg, at testen tager for givet, at personen er isoleret og passiv.",
+          "caution": "Gør ikke teksten dummere end den er: sig ikke, at test ikke fungerer, men at de fanger et udtryk for test-situationen, ikke den virkelige personlighed."
+        },
+        {
+          "prompt_type": "Når du skal beskrive en stresset klients overvældelse...",
+          "use_in_answer": "Sæt 'daglig livsførelse' i spil. Argumenter for, at sammenbruddet sker, fordi rutinerne ikke længere kan aflaste individet i integrationen af praksissernes modstridende krav.",
+          "caution": "Brug livsførelse som et analytisk overbegreb, ikke bare som et synonym for 'hverdag'."
+        },
+        {
+          "prompt_type": "Når du skal dykke dybt ned i en specifik handling i en case...",
+          "use_in_answer": "Skeln mellem lokalitet (hvor foregår det rent fysisk), position (rollen) og standpunktet (personens eget bud på det hele).",
+          "caution": "Bland aldrig positionen og standpunktet sammen i din opgaveskrivning."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kritisk psykologi blot er et buzzword for at 'være meget systematisk kritisk'.",
+          "better_reading": "Husk, det er en fuldblods, tysk og skandinavisk retning, udledt direkte fra marxistisk dialektisk materialisme, med helt specifikke egne begreber."
+        },
+        {
+          "trap": "At antage, at personlighed ikke findes i dette paradigme.",
+          "better_reading": "Personlighed findes i høj grad! Men den er flyttet ud af hjernen og omdefineret som selve det samlende greb ('kompositionen') om livets mange relationer."
+        },
+        {
+          "trap": "At misforstå standpunkt som blot 'en fiks lille holdning' en person har.",
+          "better_reading": "Standpunkt er en stærkt forankret, kropslig og erfaringsbaseret forståelse af reglerne i en praksis, indlejret gennem deltagelse over tid."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug kritisk psykologi til at analysere en situation, hvor en ansat bryder med en destruktiv arbejdspladskultur i stedet for at parere ordre.",
+      "mini_exam_answer_plan_slots": [
+        "Indledning: Identificer at vi her kigger på et subjekt, der udfordrer rammerne, hvorfor umiddelbarhedspostulatet fejler.",
+        "Analyse af praksis: Adskil arbejdspladsens lokalitet, den ansattes formelle position og den ansattes nuværende subjektive standpunkt.",
+        "Adfærdsvurdering: Definer modstanden præcist som et udtryk for 'ekspansiv handleevne' fremsat imod betingelserne.",
+        "Konklusion: Perspektiver hvordan det kræver en bestemt ordning af den samlede 'daglige livsførelse' og støtte fra andre praksisser for overhovedet at have overskud til dette ryk."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

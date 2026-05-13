@@ -1,0 +1,902 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:46:30Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
+    "source_files_signature": "21f5ae9d9acb0fb185176bf2ca59fe3ab3b4b2706000dc3a2bf893b29285e679",
+    "source_card": "d3fce51e9e782d3099a23beb336e91f0bf41d12166d4596a27897c3d9104150e",
+    "revised_lecture_substrate": "f8f138f815c7df602ca366e41752d32bcecc5e9568d375c8b53dc31416b4c6b4",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w08l1-laux-et-al-2010-cfff840c",
+    "lecture_key": "W08L1",
+    "title": "Laux et al (2010)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 8,
+    "estimated_token_count": 5200,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf"
+    ],
+    "reading_title": "Personalistic Concepts in Action: The Case of Adolf Hitler",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W08L1"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W8L1 Laux et al. (2010).pdf",
+    "subject_relative_path": "Readings/W8L1 Critical personalism/W8L1 Laux et al. (2010).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "d631cc4d392e93fa4a25d9f68c050aae76ac28d4376e3386d4fd281b97cd328e",
+      "size_bytes": 146911,
+      "page_count": 8,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 5200,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 8,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l1-laux-et-al-2010-cfff840c",
+      "lecture_key": "W08L1",
+      "source_title": "Personalistic concepts in action: The case of Adolf Hitler"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at se problemstillingen. Følg derefter læseruten.",
+      "teaser_paragraphs": [
+        "William Sterns 'kritiske personalisme' rummer et markant paradoks. Han anså mennesket for at være grundlæggende værdifuldt og styret af høje mål – en teori, der var så optimistisk, at kolleger kaldte den for en 'konkret idealisme'. Da nazisterne overtog magten i Tyskland i 1933, blev Stern på grund af sin jødiske baggrund smidt ud af sit eget institut, og hans bøger blev brændt.",
+        "Hvordan kan vi overhovedet bruge hans dybt idealistiske teori til at forstå den ultimativt destruktive figur, Adolf Hitler? Kan en psykologisk model, der bygger på iboende menneskeligt værd, kaste lys over en diktator uden at undskylde hans handlinger?",
+        "For at løse dette problem foreslår Laux et al. (2010), at vi adskiller Sterns teori i to og bruger en strengt *neutraliseret version*. Teksten viser, hvordan Hitlers vej til magten ikke kun var en mekanisk påvirkning fra et kriseramt samfund, men en *konvergens*, hvor personen aktivt indgår i et dynamisk samspil med sin samtid.",
+        "Læsningen udforsker desuden, hvordan en nærmest dramatisk relation til de fanatiske følgere lod dem optage nazismens mål dybt i deres egne selv, og endelig hvordan en mand med ekstreme psykologiske splittelser alligevel kunne opretholde sin personligheds *unitas multiplex* gennem en stædig og iscenesat 'jernvilje'."
+      ],
+      "main_problem": "Hvordan kan William Sterns oprindeligt idealistiske begreber om personligheden gøres til neutrale, analytiske værktøjer og forklare en ekstrem historisk case?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan retfærdiggør forfatterne at bruge en værdiladet teori på Hitler?",
+          "why_it_matters": "Det demonstrerer forskellen på en teoris oprindelige normative grundlag og dens metodiske brugbarhed.",
+          "answer_form": "En begrebslig skelnen"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer begrebet 'konvergens' magtovertagelsen bedre end simpel miljødeterminisme?",
+          "why_it_matters": "Viser hvordan individet altid er medskabende af sin egen kontekst, frem for blot et passivt offer for miljøet.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken psykologisk mekanisme fik millioner til at internalisere Hitlers mål?",
+          "why_it_matters": "Afslører hvordan ydre politiske mål (det heteroteliske) kan gøres til dybe personlige drivkræfter (det autoteliske).",
+          "answer_form": "Et teoretisk begreb"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forhindrede Hitlers ekstreme splittelse ham i at gå helt i opløsning?",
+          "why_it_matters": "Beviser Sterns pointe om, at ethvert subjekt stræber efter enhed (unitas multiplex) gennem målrettethed.",
+          "answer_form": "Identifikation af et specifikt kompenserende adfærdstræk"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets tungeste metodiske opgør med tidlig trækpsykologi. Den viser overgangen fra at måle isolerede variabler til at se det holistiske, formålsrettede menneske i direkte interaktion med sin tid.",
+      "overview": [
+        "Sterns kritiske personalisme opstod som modsvar til reduktionistisk psykologi, men kæmpede med sin egen optimisme.",
+        "Laux et al. demonstrerer, at Sterns koncepter (konvergens, introception og unitas multiplex) kan afkodes neutralt.",
+        "Gennem en psykobiografi af Hitler bliver teorien operationel og viser dialektikken mellem aktør og struktur."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 183-185",
+          "task": "Find forfatternes primære teoretiske greb til at redde Sterns teori, og afkod mekanismen i 'konvergens'.",
+          "why_it_matters": "Lægger fundamentet for at kunne bruge personlighedspsykologi på mørke cases.",
+          "stop_signal": "Når sektionen 'Principle of introception' begynder"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 185-187",
+          "task": "Afgør dynamikken mellem diktatoren og masserne. Hvordan optages ydre mål i selvet?",
+          "why_it_matters": "Eksemplificerer dialektikken mellem individ og massen, hvor begge parter skaber hinanden.",
+          "stop_signal": "Når du når overskriften 'Principle of unitas multiplex'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 187-190",
+          "task": "Løs gåden om enheden i det splittede sind. Hvordan kompenseres der for et fragmenteret ego?",
+          "why_it_matters": "Det er selve definitionen på, at personen ikke er en passiv maskine, men altid er målrettet.",
+          "stop_signal": "Når teksten slutter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "make a distinction between two possible meanings",
+          "why": "Dette er selve forfatternes legitimeringsargument for at overføre teorien.",
+          "where_to_look": "Sektionen om konklusion/outlook"
+        },
+        {
+          "target": "the person converges with the world, rather than merely reacting",
+          "why": "Sterns ultimative afvisning af behavioristisk og mekanisk miljøpåvirkning.",
+          "where_to_look": "Sektionen om konvergens"
+        },
+        {
+          "target": "he coped primarily with his anxieties and the splitting of his ego",
+          "why": "Forklarer hvorfor Hitlers rollespil og demonstration af vilje var nødvendig for systemets overlevelse.",
+          "where_to_look": "Sektionen om unitas multiplex"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De spekulative detaljer om Hitlers potentielle borderline-diagnose; fokusér på den strukturelle pointe om splittelse.",
+        "De lange historiske citater fra fx Lore Walbs dagbog eller Albert Speer – brug dem kun som konkrete eksempler på mekanismerne."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 184",
+          "excerpt": "One might wonder, therefore, if Stern's value-laden idealistic approach can be applied to the case of Adolf Hitler – a very destructive and disharmonious figure.",
+          "open_question": "Hvordan fjerner forfatterne moralen fra teorien, så den kan kortlægge de rent dynamiske mekanismer?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om konklusion/outlook",
+          "excerpt": "make a distinction between two possible meanings",
+          "open_question": "Hvordan forklarer begrebet 'konvergens' magtovertagelsen bedre end simpel miljødeterminisme?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse de efterfølgende opgaver.",
+      "coverage_note": "Følger kildens argument kronologisk med fokus på de tre analytiske hovedbegreber.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 184-185",
+          "heading": "Fra idealisme til neutral analyse (Konvergens)",
+          "solves_subproblem": "Subproblem 1 & 2",
+          "local_problem": "Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "explanation_paragraphs": [
+            "William Sterns tidlige model mangler plads til menneskets mørke. Han var overbevist om menneskets iboende godhed. Laux et al. argumenterer derfor for, at vi må skelne mellem Sterns oprindelige, idealiserede version af principperne og en neutraliseret version, som blot beskriver de rent strukturelle psykologiske mekanismer.",
+            "Med denne neutrale ramme aktiveres Sterns første princip: Konvergens. Hitler blev ikke blot formet af et nedbrudt Tyskland efter Første Verdenskrig, og han skabte heller ikke betingelserne alene. Konvergens betyder, at personens latente indre dispositioner møder og aktivt blandes med miljøets påvirkninger (verdensfaktoren). Det er en dynamisk proces.",
+            "Miljøet er ikke en tvingende kraft, der trykker personen ned i en bestemt form, men fungerer snarere som 'medarbejdere', triggere eller råmateriale, som personen gør brug af for at udvikle sig og forfølge mål."
+          ],
+          "key_points": [
+            "Teoriens overlevelse afhænger af afkoblingen fra moral og idealisme.",
+            "Konvergens afviser unidirectional mekanisk interaktionisme.",
+            "Individet griber aktivt ind i og former de miljømæssige vilkår, der omgiver det."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the person converges with the world, rather than merely reacting",
+              "why_it_matters": "Fastslår at personen er en aktiv agent, ikke kun en passiv modtager.",
+              "source_location": "S. 185"
+            }
+          ],
+          "source_passages": {
+            "source_location": "S. 190",
+            "passage": "Our suggestion is to make a distinction between two possible meanings in each of Stern's principles: (1) the original idealized version and (2) the neutralized version involving a mere description of the process.",
+            "why_it_matters": "Dette er kildens helt centrale videnskabsteoretiske greb, som gør det muligt at koble Stern til kurset generelt."
+          },
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 185-187",
+          "heading": "Introception og den fanatiske masse",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "explanation_paragraphs": [
+            "Det andet princip er introception. Stern beskriver dette som processen, hvor personen indoptager mål og værdier fra omverdenen og inkorporerer dem i sit eget psykologiske system.",
+            "Stern bruger begreberne det 'heteroteliske' (det ydre, ikke-jeget, fx staten eller lederen) og det 'autoteliske' (det indre selv, selveksistensen). Gennem introception inkorporeres de ydre heteroteliske mål i det autoteliske system. Individet forfølger nu lederens eller bevægelsens sag, fordi den føles som deres egen.",
+            "I casen med Hitler førte dette til en dramaturgisk relation og en 'mystisk symbiose' mellem ham og masserne. De overgav deres individualitet til en højere sag (Hitlers visioner), men fordi det skete gennem introception, føltes det paradoksalt nok for dem som en forhøjelse af deres eget selvværd og mening."
+          ],
+          "key_points": [
+            "Introception bygger bro mellem omverdenens krav og individets motivation.",
+            "Det heteroteliske gøres autotelisk.",
+            "Skaber en dialektisk afhængighed: Diktatoren er produkt af masserne, og masserne er diktatorens kreation."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "takes up the heterotelic into the autotelic",
+              "why_it_matters": "Opsummerer teknisk præcist den introceptive proces.",
+              "source_location": "S. 185"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 187-190",
+          "heading": "Unitas Multiplex og stædig jernvilje",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "explanation_paragraphs": [
+            "Sterns tredje princip er unitas multiplex – forestillingen om, at et menneske fremstår som en samlet enhed på trods af en stor empirisk mangfoldighed og til tider modstridende erfaringer og adfærd.",
+            "Laux et al. overvejer, om dette princip overhovedet kan passe på Hitler, der fremviste tegn på borderline-personlighed med massiv ego-splittelse. Han var i stand til både at være enormt sentimental og umenneskeligt grusom afhængigt af situationen.",
+            "Men ifølge Stern udelukker splittelse ikke enhed; splittelsen i sig selv er en manifestation af en konstant kamp for at samle systemet. Denne samling sker gennem en bevidst formålsrettethed (purposiveness). For Hitler var løsningen et uendeligt iscenesat rollespil og en aggressiv demonstration af en kontrolleret 'jernvilje'. Denne udefrakommende maske tillod ham at kompensere for sin indre diffuse identitet og holde sig selv samlet."
+          ],
+          "key_points": [
+            "Unitas multiplex er ikke en fravær af konflikt, men evnen til at samle enhed gennem handling.",
+            "Formålsrettethed (purposiveness) er den bindevæv, der forhindrer totalt kollaps.",
+            "Hitlers jernvilje analyseres her ikke som reel styrke, men som kompensatorisk samlingsmekanisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the splitting of a personality is a manifestation of the permanent striving",
+              "why_it_matters": "Viser at selv patologiske mekanismer er forsøg på at opretholde en form for selvenhed.",
+              "source_location": "S. 189"
+            },
+            {
+              "phrase": "he coped primarily with his anxieties and the splitting of his ego",
+              "why_it_matters": "Konkluderer funktionen bag hans adfærd.",
+              "source_location": "S. 190"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 1 & 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan William Sterns oprindeligt idealistiske begreber om personligheden gøres til neutrale, analytiske værktøjer og forklare en ekstrem historisk case?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde arket fra hukommelsen. Brug kun Abridged Reader til at rette eller fuldføre bagefter.",
+      "overview": [
+        "Teksten beviser, at Sterns idealistiske teori om 'kritiske personalisme' kan gøres anvendelig på selv historiens mørkeste kapitler.",
+        "Laux et al. neutraliserer principperne for at forklare magtovertagelsen ikke som skæbne, men som dynamiske psykologiske mekanismer.",
+        "Resultatet er et opgør med tidlig reduktionistisk psykologi, hvor en helhedsorienteret forståelse af konvergens og enhed træder i stedet."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "For at en normativ og idealistisk teori kan bruges analytisk på destruktiv adfærd, argumenterer forfatterne for at anvende en __________ version af Sterns begreber.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I modsætning til mekanisk miljøpåvirkning er __________, ifølge Stern, det aktive og dynamiske møde mellem personens dispositioner og verdens vilkår.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Processen, hvor individet inkorporerer ydre idealer dybt i sig selv, kaldes for __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "En ydre samfundsmæssig dagsorden betegnes som det heteroteliske, mens personens eget iboende selv kaldes for det __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Sterns term for, at et individ udgør en samlet helhed på trods af dybe modsætninger i personligheden, er __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 latinske ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at fastholde en form for enhed overfor sin egen dybe splittelse og grænsesøgende (borderline) ego, iscenesatte Hitler konstant en overdreven demonstration af __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord sammensat af to dele"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en grafisk model, der illustrerer Sterns princip for Introception i praksis mellem diktator og masse.",
+          "required_elements": [
+            "En figur eller boks for individets indre ('Autotelisk'",
+            "En figur eller boks for omverdenens ydre krav/mål ('Heterotelisk'",
+            "En pil, der viser retningen af den introceptive optagelse (hvordan ydre bliver til indre"
+          ],
+          "blank_space_hint": "Brug en stor cirkel der omslutter en mindre for at vise integration, eller to forbundne felter med tydelige retningspile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at inddrage teksten i en mundtlig eller skriftlig eksamensbesvarelse.",
+      "use_this_text_for": [
+        "At levere et tidligt teoretisk forsvar mod reduktionistisk trækpsykologi og 'variabel-profiler'.",
+        "At demonstrere kursets dialektik mellem aktør (agency) og strukturel påvirkning (structure).",
+        "At vise hvordan et teoretisk rammeværk kan re-kalibreres (neutraliseres) til at klare ekstreme cases."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi vs. Personalisme (W02L1)",
+          "connection": "Stern afviser, at vi kan forstå en person ved blot at kigge på isolerede dimensionelle træk. Personen er altid en formålsrettet enhed (unitas multiplex)."
+        },
+        {
+          "course_theme": "Metateoretiske orienteringspunkter (W12L1)",
+          "connection": "Konvergens udmønter præcist punktet om 'essens/kontekst': Personens indre dispositioner betyder intet uden verden, og verden former kun i samspil med dispositionen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Mekanisk behaviorisme/klassisk determinisme",
+          "how_to_compare": "Sammenlign konvergensens dynamiske medskabende rolle med behaviorismens envejs-betingning (stimulus-respons)."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (W08L2/W09L1)",
+          "how_to_compare": "Begge retninger anerkender, at personen altid eksisterer *i* verden. Stern lægger vægt på personlighedspsykologisk introception, mens Holzkamp/Dreier lægger vægt på handleevne i samfundsmæssige praksisser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du diskuterer personlighedspsykologiens videnskabsteori...",
+          "use_in_answer": "Brug forfatternes greb med at 'neutralisere' principperne til at bevise, at vi kan fjerne normativ bias fra en teori for at vinde analytisk skarphed.",
+          "caution": "Gør ikke Stern til en pessimist. Han forblev idealist – det er artiklens forfattere, der skaber den neutrale udgave."
+        },
+        {
+          "prompt_type": "Når du bliver spurgt til miljø vs. arv...",
+          "use_in_answer": "Anvend Sterns 'konvergens' som den tredje vej, der opløser dikotomien: De er medarbejdere, ikke modsætninger.",
+          "caution": "Undgå at beskrive det som et kompromis på 50/50. Det er en kvalitativ proces, ikke et kvantitativt regnestykke."
+        },
+        {
+          "prompt_type": "Når samtalen falder på det splittede eller decentrerede subjekt...",
+          "use_in_answer": "Citer 'unitas multiplex' for at forsvare, at uanset hvor klinisk fragmenteret (f.eks. borderline) et individ er, kæmper psyken altid mekanisk for enhed gennem formålsrettet handling.",
+          "caution": "Sig ikke at unitas multiplex betyder en sund, harmonisk person."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse unitas multiplex som en påstand om, at folk ikke har indre konflikter.",
+          "better_reading": "Det er netop erkendelsen af de voldsomme indre konflikter (multiplex), som overvindes kontinuerligt gennem målrettethed (unitas)."
+        },
+        {
+          "trap": "At forveksle introception med simpel manipulation.",
+          "better_reading": "Introception lykkes kun, fordi det skaber mening og selvværd hos følgeren. Det ydre inkorporeres reelt i det indre."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Sterns princip om konvergens til at kritisere den rene miljødeterministiske opfattelse af menneskelig udvikling. Inddrag desuden begrebet unitas multiplex i din argumentation.",
+      "mini_exam_answer_plan_slots": [
+        "Definér konvergens som et dynamisk medarbejderskab mellem disposition og miljø, snarere end envejs-støbning.",
+        "Anvend eksemplet med Hitlers historiske tidsånd som 'råmateriale' for hans latente drivkræfter.",
+        "Kobl over til unitas multiplex: Hvordan mennesket altid er målrettet (purposive) for at samle sine dispositioner, modsat et passivt mekanisk objekt.",
+        "Konkludér hvorfor denne formålsrettethed kræver en personlighedsmodel, der rummer både agens og kontekst."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l1-laux-et-al-2010-cfff840c",
+      "lecture_key": "W08L1",
+      "source_title": "Personalistic concepts in action: The case of Adolf Hitler"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at se problemstillingen. Følg derefter læseruten.",
+      "teaser_paragraphs": [
+        "William Sterns 'kritiske personalisme' rummer et markant paradoks. Han anså mennesket for at være grundlæggende værdifuldt og styret af høje mål – en teori, der var så optimistisk, at kolleger kaldte den for en 'konkret idealisme'. Da nazisterne overtog magten i Tyskland i 1933, blev Stern på grund af sin jødiske baggrund smidt ud af sit eget institut, og hans bøger blev brændt.",
+        "Hvordan kan vi overhovedet bruge hans dybt idealistiske teori til at forstå den ultimativt destruktive figur, Adolf Hitler? Kan en psykologisk model, der bygger på iboende menneskeligt værd, kaste lys over en diktator uden at undskylde hans handlinger?",
+        "For at løse dette problem foreslår Laux et al. (2010), at vi adskiller Sterns teori i to og bruger en strengt *neutraliseret version*. Teksten viser, hvordan Hitlers vej til magten ikke kun var en mekanisk påvirkning fra et kriseramt samfund, men en *konvergens*, hvor personen aktivt indgår i et dynamisk samspil med sin samtid.",
+        "Læsningen udforsker desuden, hvordan en nærmest dramatisk relation til de fanatiske følgere lod dem optage nazismens mål dybt i deres egne selv, og endelig hvordan en mand med ekstreme psykologiske splittelser alligevel kunne opretholde sin personligheds *unitas multiplex* gennem en stædig og iscenesat 'jernvilje'."
+      ],
+      "main_problem": "Hvordan kan William Sterns oprindeligt idealistiske begreber om personligheden gøres til neutrale, analytiske værktøjer og forklare en ekstrem historisk case?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan retfærdiggør forfatterne at bruge en værdiladet teori på Hitler?",
+          "why_it_matters": "Det demonstrerer forskellen på en teoris oprindelige normative grundlag og dens metodiske brugbarhed.",
+          "answer_form": "En begrebslig skelnen"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer begrebet 'konvergens' magtovertagelsen bedre end simpel miljødeterminisme?",
+          "why_it_matters": "Viser hvordan individet altid er medskabende af sin egen kontekst, frem for blot et passivt offer for miljøet.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken psykologisk mekanisme fik millioner til at internalisere Hitlers mål?",
+          "why_it_matters": "Afslører hvordan ydre politiske mål (det heteroteliske) kan gøres til dybe personlige drivkræfter (det autoteliske).",
+          "answer_form": "Et teoretisk begreb"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forhindrede Hitlers ekstreme splittelse ham i at gå helt i opløsning?",
+          "why_it_matters": "Beviser Sterns pointe om, at ethvert subjekt stræber efter enhed (unitas multiplex) gennem målrettethed.",
+          "answer_form": "Identifikation af et specifikt kompenserende adfærdstræk"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets tungeste metodiske opgør med tidlig trækpsykologi. Den viser overgangen fra at måle isolerede variabler til at se det holistiske, formålsrettede menneske i direkte interaktion med sin tid.",
+      "overview": [
+        "Sterns kritiske personalisme opstod som modsvar til reduktionistisk psykologi, men kæmpede med sin egen optimisme.",
+        "Laux et al. demonstrerer, at Sterns koncepter (konvergens, introception og unitas multiplex) kan afkodes neutralt.",
+        "Gennem en psykobiografi af Hitler bliver teorien operationel og viser dialektikken mellem aktør og struktur."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 183-185",
+          "task": "Find forfatternes primære teoretiske greb til at redde Sterns teori, og afkod mekanismen i 'konvergens'.",
+          "why_it_matters": "Lægger fundamentet for at kunne bruge personlighedspsykologi på mørke cases.",
+          "stop_signal": "Når sektionen 'Principle of introception' begynder"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 185-187",
+          "task": "Afgør dynamikken mellem diktatoren og masserne. Hvordan optages ydre mål i selvet?",
+          "why_it_matters": "Eksemplificerer dialektikken mellem individ og massen, hvor begge parter skaber hinanden.",
+          "stop_signal": "Når du når overskriften 'Principle of unitas multiplex'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 187-190",
+          "task": "Løs gåden om enheden i det splittede sind. Hvordan kompenseres der for et fragmenteret ego?",
+          "why_it_matters": "Det er selve definitionen på, at personen ikke er en passiv maskine, men altid er målrettet.",
+          "stop_signal": "Når teksten slutter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "make a distinction between two possible meanings",
+          "why": "Dette er selve forfatternes legitimeringsargument for at overføre teorien.",
+          "where_to_look": "Sektionen om konklusion/outlook"
+        },
+        {
+          "target": "the person converges with the world, rather than merely reacting",
+          "why": "Sterns ultimative afvisning af behavioristisk og mekanisk miljøpåvirkning.",
+          "where_to_look": "Sektionen om konvergens"
+        },
+        {
+          "target": "he coped primarily with his anxieties and the splitting of his ego",
+          "why": "Forklarer hvorfor Hitlers rollespil og demonstration af vilje var nødvendig for systemets overlevelse.",
+          "where_to_look": "Sektionen om unitas multiplex"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De spekulative detaljer om Hitlers potentielle borderline-diagnose; fokusér på den strukturelle pointe om splittelse.",
+        "De lange historiske citater fra fx Lore Walbs dagbog eller Albert Speer – brug dem kun som konkrete eksempler på mekanismerne."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 184",
+          "excerpt": "One might wonder, therefore, if Stern's value-laden idealistic approach can be applied to the case of Adolf Hitler – a very destructive and disharmonious figure.",
+          "open_question": "Hvordan fjerner forfatterne moralen fra teorien, så den kan kortlægge de rent dynamiske mekanismer?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om konklusion/outlook",
+          "excerpt": "make a distinction between two possible meanings",
+          "open_question": "Hvordan forklarer begrebet 'konvergens' magtovertagelsen bedre end simpel miljødeterminisme?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse de efterfølgende opgaver.",
+      "coverage_note": "Følger kildens argument kronologisk med fokus på de tre analytiske hovedbegreber.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 184-185",
+          "heading": "Fra idealisme til neutral analyse (Konvergens)",
+          "solves_subproblem": "Subproblem 1 & 2",
+          "local_problem": "Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "explanation_paragraphs": [
+            "William Sterns tidlige model mangler plads til menneskets mørke. Han var overbevist om menneskets iboende godhed. Laux et al. argumenterer derfor for, at vi må skelne mellem Sterns oprindelige, idealiserede version af principperne og en neutraliseret version, som blot beskriver de rent strukturelle psykologiske mekanismer.",
+            "Med denne neutrale ramme aktiveres Sterns første princip: Konvergens. Hitler blev ikke blot formet af et nedbrudt Tyskland efter Første Verdenskrig, og han skabte heller ikke betingelserne alene. Konvergens betyder, at personens latente indre dispositioner møder og aktivt blandes med miljøets påvirkninger (verdensfaktoren). Det er en dynamisk proces.",
+            "Miljøet er ikke en tvingende kraft, der trykker personen ned i en bestemt form, men fungerer snarere som 'medarbejdere', triggere eller råmateriale, som personen gør brug af for at udvikle sig og forfølge mål."
+          ],
+          "key_points": [
+            "Teoriens overlevelse afhænger af afkoblingen fra moral og idealisme.",
+            "Konvergens afviser unidirectional mekanisk interaktionisme.",
+            "Individet griber aktivt ind i og former de miljømæssige vilkår, der omgiver det."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the person converges with the world, rather than merely reacting",
+              "why_it_matters": "Fastslår at personen er en aktiv agent, ikke kun en passiv modtager.",
+              "source_location": "S. 185"
+            }
+          ],
+          "source_passages": {
+            "source_location": "S. 190",
+            "passage": "Our suggestion is to make a distinction between two possible meanings in each of Stern's principles: (1) the original idealized version and (2) the neutralized version involving a mere description of the process.",
+            "why_it_matters": "Dette er kildens helt centrale videnskabsteoretiske greb, som gør det muligt at koble Stern til kurset generelt."
+          },
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 185-187",
+          "heading": "Introception og den fanatiske masse",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "explanation_paragraphs": [
+            "Det andet princip er introception. Stern beskriver dette som processen, hvor personen indoptager mål og værdier fra omverdenen og inkorporerer dem i sit eget psykologiske system.",
+            "Stern bruger begreberne det 'heteroteliske' (det ydre, ikke-jeget, fx staten eller lederen) og det 'autoteliske' (det indre selv, selveksistensen). Gennem introception inkorporeres de ydre heteroteliske mål i det autoteliske system. Individet forfølger nu lederens eller bevægelsens sag, fordi den føles som deres egen.",
+            "I casen med Hitler førte dette til en dramaturgisk relation og en 'mystisk symbiose' mellem ham og masserne. De overgav deres individualitet til en højere sag (Hitlers visioner), men fordi det skete gennem introception, føltes det paradoksalt nok for dem som en forhøjelse af deres eget selvværd og mening."
+          ],
+          "key_points": [
+            "Introception bygger bro mellem omverdenens krav og individets motivation.",
+            "Det heteroteliske gøres autotelisk.",
+            "Skaber en dialektisk afhængighed: Diktatoren er produkt af masserne, og masserne er diktatorens kreation."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "takes up the heterotelic into the autotelic",
+              "why_it_matters": "Opsummerer teknisk præcist den introceptive proces.",
+              "source_location": "S. 185"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 187-190",
+          "heading": "Unitas Multiplex og stædig jernvilje",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "explanation_paragraphs": [
+            "Sterns tredje princip er unitas multiplex – forestillingen om, at et menneske fremstår som en samlet enhed på trods af en stor empirisk mangfoldighed og til tider modstridende erfaringer og adfærd.",
+            "Laux et al. overvejer, om dette princip overhovedet kan passe på Hitler, der fremviste tegn på borderline-personlighed med massiv ego-splittelse. Han var i stand til både at være enormt sentimental og umenneskeligt grusom afhængigt af situationen.",
+            "Men ifølge Stern udelukker splittelse ikke enhed; splittelsen i sig selv er en manifestation af en konstant kamp for at samle systemet. Denne samling sker gennem en bevidst formålsrettethed (purposiveness). For Hitler var løsningen et uendeligt iscenesat rollespil og en aggressiv demonstration af en kontrolleret 'jernvilje'. Denne udefrakommende maske tillod ham at kompensere for sin indre diffuse identitet og holde sig selv samlet."
+          ],
+          "key_points": [
+            "Unitas multiplex er ikke en fravær af konflikt, men evnen til at samle enhed gennem handling.",
+            "Formålsrettethed (purposiveness) er den bindevæv, der forhindrer totalt kollaps.",
+            "Hitlers jernvilje analyseres her ikke som reel styrke, men som kompensatorisk samlingsmekanisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the splitting of a personality is a manifestation of the permanent striving",
+              "why_it_matters": "Viser at selv patologiske mekanismer er forsøg på at opretholde en form for selvenhed.",
+              "source_location": "S. 189"
+            },
+            {
+              "phrase": "he coped primarily with his anxieties and the splitting of his ego",
+              "why_it_matters": "Konkluderer funktionen bag hans adfærd.",
+              "source_location": "S. 190"
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 1 & 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan William Sterns oprindeligt idealistiske begreber om personligheden gøres til neutrale, analytiske værktøjer og forklare en ekstrem historisk case?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde arket fra hukommelsen. Brug kun Abridged Reader til at rette eller fuldføre bagefter.",
+      "overview": [
+        "Teksten beviser, at Sterns idealistiske teori om 'kritiske personalisme' kan gøres anvendelig på selv historiens mørkeste kapitler.",
+        "Laux et al. neutraliserer principperne for at forklare magtovertagelsen ikke som skæbne, men som dynamiske psykologiske mekanismer.",
+        "Resultatet er et opgør med tidlig reduktionistisk psykologi, hvor en helhedsorienteret forståelse af konvergens og enhed træder i stedet."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "For at en normativ og idealistisk teori kan bruges analytisk på destruktiv adfærd, argumenterer forfatterne for at anvende en __________ version af Sterns begreber.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I modsætning til mekanisk miljøpåvirkning er __________, ifølge Stern, det aktive og dynamiske møde mellem personens dispositioner og verdens vilkår.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Processen, hvor individet inkorporerer ydre idealer dybt i sig selv, kaldes for __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "En ydre samfundsmæssig dagsorden betegnes som det heteroteliske, mens personens eget iboende selv kaldes for det __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Sterns term for, at et individ udgør en samlet helhed på trods af dybe modsætninger i personligheden, er __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 latinske ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at fastholde en form for enhed overfor sin egen dybe splittelse og grænsesøgende (borderline) ego, iscenesatte Hitler konstant en overdreven demonstration af __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord sammensat af to dele"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en grafisk model, der illustrerer Sterns princip for Introception i praksis mellem diktator og masse.",
+          "required_elements": [
+            "En figur eller boks for individets indre ('Autotelisk'",
+            "En figur eller boks for omverdenens ydre krav/mål ('Heterotelisk'",
+            "En pil, der viser retningen af den introceptive optagelse (hvordan ydre bliver til indre"
+          ],
+          "blank_space_hint": "Brug en stor cirkel der omslutter en mindre for at vise integration, eller to forbundne felter med tydelige retningspile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at inddrage teksten i en mundtlig eller skriftlig eksamensbesvarelse.",
+      "use_this_text_for": [
+        "At levere et tidligt teoretisk forsvar mod reduktionistisk trækpsykologi og 'variabel-profiler'.",
+        "At demonstrere kursets dialektik mellem aktør (agency) og strukturel påvirkning (structure).",
+        "At vise hvordan et teoretisk rammeværk kan re-kalibreres (neutraliseres) til at klare ekstreme cases."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi vs. Personalisme (W02L1)",
+          "connection": "Stern afviser, at vi kan forstå en person ved blot at kigge på isolerede dimensionelle træk. Personen er altid en formålsrettet enhed (unitas multiplex)."
+        },
+        {
+          "course_theme": "Metateoretiske orienteringspunkter (W12L1)",
+          "connection": "Konvergens udmønter præcist punktet om 'essens/kontekst': Personens indre dispositioner betyder intet uden verden, og verden former kun i samspil med dispositionen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Mekanisk behaviorisme/klassisk determinisme",
+          "how_to_compare": "Sammenlign konvergensens dynamiske medskabende rolle med behaviorismens envejs-betingning (stimulus-respons)."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (W08L2/W09L1)",
+          "how_to_compare": "Begge retninger anerkender, at personen altid eksisterer *i* verden. Stern lægger vægt på personlighedspsykologisk introception, mens Holzkamp/Dreier lægger vægt på handleevne i samfundsmæssige praksisser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du diskuterer personlighedspsykologiens videnskabsteori...",
+          "use_in_answer": "Brug forfatternes greb med at 'neutralisere' principperne til at bevise, at vi kan fjerne normativ bias fra en teori for at vinde analytisk skarphed.",
+          "caution": "Gør ikke Stern til en pessimist. Han forblev idealist – det er artiklens forfattere, der skaber den neutrale udgave."
+        },
+        {
+          "prompt_type": "Når du bliver spurgt til miljø vs. arv...",
+          "use_in_answer": "Anvend Sterns 'konvergens' som den tredje vej, der opløser dikotomien: De er medarbejdere, ikke modsætninger.",
+          "caution": "Undgå at beskrive det som et kompromis på 50/50. Det er en kvalitativ proces, ikke et kvantitativt regnestykke."
+        },
+        {
+          "prompt_type": "Når samtalen falder på det splittede eller decentrerede subjekt...",
+          "use_in_answer": "Citer 'unitas multiplex' for at forsvare, at uanset hvor klinisk fragmenteret (f.eks. borderline) et individ er, kæmper psyken altid mekanisk for enhed gennem formålsrettet handling.",
+          "caution": "Sig ikke at unitas multiplex betyder en sund, harmonisk person."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse unitas multiplex som en påstand om, at folk ikke har indre konflikter.",
+          "better_reading": "Det er netop erkendelsen af de voldsomme indre konflikter (multiplex), som overvindes kontinuerligt gennem målrettethed (unitas)."
+        },
+        {
+          "trap": "At forveksle introception med simpel manipulation.",
+          "better_reading": "Introception lykkes kun, fordi det skaber mening og selvværd hos følgeren. Det ydre inkorporeres reelt i det indre."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Sterns princip om konvergens til at kritisere den rene miljødeterministiske opfattelse af menneskelig udvikling. Inddrag desuden begrebet unitas multiplex i din argumentation.",
+      "mini_exam_answer_plan_slots": [
+        "Definér konvergens som et dynamisk medarbejderskab mellem disposition og miljø, snarere end envejs-støbning.",
+        "Anvend eksemplet med Hitlers historiske tidsånd som 'råmateriale' for hans latente drivkræfter.",
+        "Kobl over til unitas multiplex: Hvordan mennesket altid er målrettet (purposive) for at samle sine dispositioner, modsat et passivt mekanisk objekt.",
+        "Konkludér hvorfor denne formålsrettethed kræver en personlighedsmodel, der rummer både agens og kontekst."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

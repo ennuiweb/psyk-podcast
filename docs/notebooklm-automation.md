@@ -46,7 +46,7 @@ Current operational note:
 - `notebooklm-podcast-auto/personlighedspsykologi-da/` - Danish runtime layer for the shared Personlighedspsykologi generator, owning only Danish prompt/output overrides.
 - `notebooklm-podcast-auto/bioneuro/` - Bioneuro wrapper scripts and output flow.
 - `notebooklm-podcast-auto/notebooklm-py/` - tracked submodule with the underlying client, docs, and test surface.
-- `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable job store, state machine, lock handling, CLI, and the shared prompt-assembly module used by generation wrappers.
+- `notebooklm_queue/` - queue-core package for the Hetzner migration path: durable queue-record store, state machine, lock handling, CLI, and the shared prompt-assembly module used by generation wrappers.
 - `scripts/notebooklm_queue.py` - local wrapper that re-execs into `.venv` and exposes the queue CLI.
 
 ## Primary commands
@@ -90,32 +90,32 @@ Pre-push currently mirrors both subjects, but mirror failures are warning-only.
 Queue-core note:
 
 - the first queue-core implementation now exists, but it is intentionally only the control-plane foundation
-- current scope is durable job persistence, idempotent enqueue, state transitions, show locks, indexes, adapter-based discovery, and a management CLI
+- current scope is durable queue-record persistence, idempotent enqueue, state transitions, show locks, indexes, adapter-based discovery, and a management CLI
 - current scope now also includes real queue-owned generate/download execution for supported shows, with per-run manifests and state transitions up to `awaiting_publish`
-- current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, allows partial lecture bundles when required artifacts already exist, persists a publish manifest, and advances successful jobs to `approved_for_publish`
-- current scope now also includes the first real publication stage: `upload-r2` claims jobs in `approved_for_publish`, uploads media artifacts to deterministic R2 object keys, verifies each uploaded object with `head_object`, refreshes the repo-side R2 media manifest, and advances successful jobs to `objects_uploaded`
-- current scope now also includes repo metadata rebuild: `rebuild-metadata` claims jobs in `objects_uploaded`, refreshes queue-owned quiz links only when the publish bundle actually contains quiz artifacts, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful jobs to `committing_repo_artifacts`
+- current scope now also includes publish-bundle preparation: `prepare-publish` validates the local week output, allows partial lecture bundles when required artifacts already exist, persists a publish manifest, and advances successful queue records to `approved_for_publish`
+- current scope now also includes the first real publication stage: `upload-r2` claims queue records in `approved_for_publish`, uploads media artifacts to deterministic R2 object keys, verifies each uploaded object with `head_object`, refreshes the repo-side R2 media manifest, and advances successful queue records to `objects_uploaded`
+- current scope now also includes repo metadata rebuild: `rebuild-metadata` claims queue records in `objects_uploaded`, refreshes queue-owned quiz links only when the publish bundle actually contains quiz artifacts, regenerates RSS and episode inventory from the R2 manifest, runs show-specific sidecars such as Spotify sync and Freudd content-manifest rebuild, validates the resulting repo artifacts, and advances successful queue records to `committing_repo_artifacts`
 - `personlighedspsykologi-en` queue metadata rebuild now also runs strict manual-summary coverage validation before feed generation, syncs `regeneration_registry.json` as part of the publish contract, validates registry/inventory alignment for the lecture being published after feed generation, and fails closed on slide-brief coverage gaps instead of treating them as warn-only queue output
 - Queue-owned feed rebuilds must preserve existing public episode chronology. Regeneration swaps the active variant but must not rewrite an episode's existing `published_at` / `pubDate`.
-- current scope now also includes allowlisted repo publication: `push-repo` claims jobs in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful jobs to `repo_pushed`
-- current scope now also includes downstream completion: `sync-downstream` claims jobs in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful jobs to `completed`
-- current scope now also includes service-oriented draining: `drain-show` remains the single-cycle primitive, while `serve-show` is the Hetzner entrypoint that keeps invoking drain cycles, waits through `retry_scheduled` cooldowns only when they are the sole remaining active backlog, stops for manual intervention on mixed blocked+retry backlog, and continues automatically when NotebookLM profile quota becomes available again
+- current scope now also includes allowlisted repo publication: `push-repo` claims queue records in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful queue records to `repo_pushed`
+- current scope now also includes downstream completion: `sync-downstream` claims queue records in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful queue records to `completed`
+- current scope now also includes service-oriented draining: `drain-show` remains the single-cycle primitive, while `serve-show` is the Hetzner entrypoint that keeps invoking drain cycles, waits through timed backlog (`retry_scheduled` and `waiting_for_artifact`) when appropriate, stops for manual intervention on unresolved `failed_retryable` backlog, and continues automatically when NotebookLM profile quota becomes available again
 - queue discovery now skips lecture keys that already exist in the configured `episode_inventory.json` by default, so a fresh queue store does not automatically regenerate a show's full published back-catalog; operators can still override this with `discover --include-published` when intentionally backfilling or forcing regeneration
 - current scope now also includes pilot-safe config binding: `discover`, `prepare-publish`, `upload-r2`, `rebuild-metadata`, and `push-repo` accept `--show-config`, and publish manifests now pin the selected config path so later stages cannot silently drift back to the live `config.github.json`
 - pilot-safe artifact routing now also covers Freudd sidecars: queue metadata rebuild and repo publication derive `quiz_links.json`, `spotify_map.json`, `content_manifest.json`, RSS, inventory, and R2 media-manifest paths from the selected show config instead of hardcoded live show paths
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro`, `personlighedspsykologi-en`, and `personlighedspsykologi-da`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
-- `run-once` claims or resumes a job, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful jobs either to `awaiting_publish` for newly downloaded artifacts or back to `waiting_for_artifact` when no unpublished outputs were added in that poll cycle
+- `run-once` claims or resumes a queue record, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful queue records either to `awaiting_publish` for newly downloaded artifacts or back to `waiting_for_artifact` when no unpublished outputs were added in that poll cycle
 - hosted generation wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
 - `scripts/sync_notebooklm_profiles_to_hetzner.py` is the canonical helper for copying the local NotebookLM profile bundle to Hetzner and rebuilding `/etc/podcasts/notebooklm-queue/profiles.host.json`
 - queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so the hosted `serve-show` worker can wait through cooldowns and continue draining partial lecture runs instead of leaving them stranded as generic retryable failures; invalid retry schedules now fail closed instead of degrading into a hot poll loop
 - queue execution now applies progressive queue-level retry backoff for repeated NotebookLM cooldown, rate-limit, and transient RPC failures, so long-running show backlogs stop hammering the same lectures every flat `15` minutes forever
 - queue execution now emits durable alert events under the queue storage root for stale-auth failures and repeated rate-limit exhaustion, with optional webhook/email/command delivery configured by env
 - shared queue indexes and alert dedupe state are now protected by global queue locks rather than only per-show locks, so concurrent show drains do not clobber `indexes/jobs.json` or `alerts/state.json`
-- queue-owned stage services now auto-resume interrupted in-progress jobs for execution, bundle preparation, R2 upload, metadata rebuild, and downstream validation instead of requiring an explicit `--job-id` rescue path after a crash
+- queue-owned stage services now auto-resume interrupted in-progress queue records for execution, bundle preparation, R2 upload, metadata rebuild, and downstream validation instead of requiring an explicit `--job-id` queue-record-id rescue path after a crash
 - queue subprocess boundaries are now bounded by env-configurable timeouts for execution, metadata rebuild, downstream `gh` polling, repo Git operations, and the GitHub alert handler, so a wedged external command fails closed instead of holding a show lock indefinitely
-- `prepare-publish` claims or resumes a job in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful jobs to `approved_for_publish`; after downstream validation, partial lecture publishes can return the same job to `waiting_for_artifact` for the remaining request logs
+- `prepare-publish` claims or resumes a queue record in `awaiting_publish`, scans the canonical output directory for that lecture, writes a durable publish manifest under the queue storage root, and moves successful queue records to `approved_for_publish`; after downstream validation, partial lecture publishes can return the same queue record to `waiting_for_artifact` for the remaining request logs
 - metadata validation is now bundle-aware: audio-only publishes can complete with an unchanged or missing `quiz_links.json`, while bundles that actually include quiz artifacts still require refreshed quiz links and non-empty quiz assets in `content_manifest.json`
 - `personlighedspsykologi-en` metadata is now split between podcast-critical and portal-only sidecars: audio-only bundles still sync `regeneration_registry.json`, then rebuild and publish RSS/inventory immediately, but they skip manual-summary gates, slide-brief audits, content-manifest rebuilds, and learning-material registry sync until a bundle actually contains quiz or infographic artifacts
 - `personlighedspsykologi-da` now exists as a feed-first queue-owned mirror over the same subject substrate: it uses its own prompt config and output root, filters public media to `[DA]`, enables Spotify-map sync for Danish episode links, and disables Freudd sidecars, content-manifest rebuilds, and downstream Freudd deploy checks by show config
@@ -243,7 +243,7 @@ Prompt assembly note:
 Prompt-system ambitions that should not drift:
 
 - The system should synthesize each lecture block from all relevant readings plus both forelaesning and seminar slide context before producing downstream prompts.
-- It should situate every lecture in the full course progression, not treat lecture prompts as isolated one-off jobs.
+- It should situate every lecture in the full course progression, not treat lecture prompts as isolated one-off tasks.
 - It should keep source roles explicit so course framing does not overwrite source-grounded claims.
 - It should not lean on explicit exam talk in the podcast prompts; importance and prioritization should come from course framing, source structure, and teaching emphasis instead.
 - It should avoid explicit "be engaging" prompt text for NotebookLM audio; quality should improve through better context compilation and focus selection, not by telling NotebookLM to perform enthusiasm.
@@ -338,18 +338,20 @@ Recursive preprocessing implementation:
 
 Printable reading printouts:
 
-- `scripts/build_personlighedspsykologi_printouts.py` is the first
-  explicit Source Intelligence consumer for non-podcast study material.
-- It generates three per-reading artifacts for offline use while reading:
-  abridged preparatory guide, chronological unit-test questions, and
-  cloze/diagram printout sheet.
-- It uploads the actual source PDF to Gemini 3.1 Pro and uses source cards,
-  revised lecture substrates, and course synthesis only as prioritization
-  context. It must not locally extract/OCR/read the source PDF for semantic
-  understanding.
-- Outputs are written under
+- The current canonical PDF-producing printout engine is
+  `notebooklm_queue/personlighedspsykologi_printouts.py`.
+- It generates the schema-v3, problem-driven printout bundle: `00-cover`,
+  `01-reading-guide`, `02-active-reading`, `03-abridged-version`,
+  `04-consolidation-sheet`, and optional `05-exam-bridge`.
+- Main outputs live under
   `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
-  as JSON, Markdown, and PDFs rendered from Gemini's JSON.
+  with stable sheet filenames such as `00-cover.pdf`.
+- Candidate/review PDFs still land flat in
+  `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/`
+  and are distinguished only by filename.
+- The legacy three-sheet implementation is preserved in
+  `notebooklm_queue/personlighedspsykologi_printouts_legacy.py` for
+  compatibility context only.
 
 ## Related docs
 

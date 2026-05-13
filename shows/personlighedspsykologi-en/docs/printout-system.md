@@ -6,6 +6,35 @@ This is an `Output Adaptation Layer` consumer. It is downstream of the core
 `Course Understanding Pipeline`, and upstream of any visual presentation layer.
 It must not be treated as core source/course understanding.
 
+## Canonical Status
+
+The current canonical printout system is the schema-v3 engine under:
+
+```text
+notebooklm_queue/personlighedspsykologi_printouts.py
+```
+
+Its schema-v3, problem-driven behavior is the canonical product and pedagogy
+contract for future printout work.
+
+The review workspace under
+`notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
+is the candidate/QA lane. It imports the canonical engine and keeps candidate
+PDFs flat in `review/`.
+
+The older three-sheet `abridged_guide` / `unit_test_suite` / `cloze_scaffold`
+implementation is preserved as
+`notebooklm_queue/personlighedspsykologi_printouts_legacy.py` for compatibility
+context only.
+
+Current canonical-generation rule:
+
+- canonical review printouts must always be generated fresh from source
+- canonical baseline artifacts are comparison references only, never seed input
+- rerendering is allowed only for already-fresh candidate artifacts
+- completion markers/check boxes are off by default
+- the current review workspace exports `active_reading` before `abridged_reader` in filenames as an operator-facing bundle-order choice; do not read that as a change to the underlying pedagogical dependency on `abridged_reader`
+
 ## Purpose
 
 The printout generator creates offline reading worksheets that make dense
@@ -36,23 +65,69 @@ that creates clutter and defeats the ADHD-friendly purpose.
 
 Schema v3 core artifacts:
 
-- `reading_guide`: a one-page advance organizer. Its purpose is to lower
-  initiation friction, explain why the source matters, mark the reading route,
-  and say what not to over-focus on. It is not the abridged reader.
+Length rule:
+
+- printout length should be dynamic, not flat
+- shorter/simpler readings should generate shorter kits with fewer sections and tasks
+- longer or denser readings may use the upper end of the safe ranges
+- use source length and concept density as the main budget signals, but keep
+  the existing artifact roles stable and do not let any single worksheet bloat
+  into a mini-book
+  - in practice this mostly changes counts of teaser paragraphs, abridged
+    sections, solve steps, fill-ins, and diagram tasks
+  - it should not change the five-file structure itself
+
+- `reading_guide`: a one-page appetizer. Its purpose is to lower initiation
+  friction by rendering as a short coherent teaser text that stages a few
+  unresolved problems from the reading and makes the learner want to read on.
+  It may weave in short original phrases, but it should not feel like an
+  administrative overview sheet or a fill-out worksheet. Prefer several short
+  teaser paragraphs with visible breathing room on the page, not a few dense
+  essay blocks. At least one early paragraph should hook the learner through
+  something concrete in the text, not only abstract metatheory.
 - `abridged_reader`: an ADHD-friendly shortened reading path through the text.
   Its purpose is to preserve the argument's movement while using shorter
-  paragraphs, section headings, page anchors, short quote targets, lists, and
-  mini-checks. It should make the original source enterable and also work as a
-  minimum viable reading path when the full source does not happen.
-- `active_reading`: a split active-reading worksheet. Its purpose is to provide
-  abridged-reader checks plus short original-source touchpoints.
+  paragraphs, section headings, page anchors, short quote targets, occasional
+  short original passages when wording matters, and lists. It should work as a
+  minimum viable reading path even when the full source does not happen. It is
+  a reading text, not a worksheet, so it should not contain blanks, checkboxes,
+  or mini-tests.
+- `active_reading`: a guided solve worksheet. Its purpose is to let the student
+  solve the reading guide's subproblems with `abridged_reader` open. It should
+  feel explicitly open-book and visibly different from recall practice. It
+  should use fewer, larger solve steps rather than a long fact-quiz. Keep
+  internal location support in the structured data, but do not print visible
+  helper lines such as `Abridged reader sektion 3` on the worksheet itself.
 - `consolidation_sheet`: a consolidation worksheet. Its purpose is to make the
-  student retrieve key terms, distinctions, findings, and relations after or
-  alongside reading. Diagram tasks support dual coding and relation-building.
+  student retrieve key terms, distinctions, findings, and relations after
+  reading the abridged reader. This should be the main recall sheet. Diagram
+  tasks support dual coding and relation-building. It should feel narrower and
+  more memory-first than `active_reading`. It must not depend on original
+  figures, page numbers, or reopening the source PDF. Keep any repair hints in
+  the hidden structure, not as visible helper lines on the printed sheet.
 - `exam_bridge`: a transfer worksheet. Its purpose is to show how the reading
   can be used in exam answers, which course themes it supports, what
   comparisons it enables, and which misunderstandings would weaken an exam
-  response.
+  response. It should read like oral-exam cues, not like a long advice
+  handout, and it should prefer short spoken-style cue labels such as `Brug`,
+  `Sammenlign`, `Sig højt`, and `Undgå`. It remains part of the schema, but it
+  is an optional printout and should not be rendered by default.
+
+Optional render-layer feature:
+
+- `completion_markers`: a legacy/reversible layout flag. The current canonical
+  renderer keeps check boxes off by default.
+
+Visual style contract:
+
+- `bold`: only for fast-scanning targets such as section labels, task verbs,
+  and short cue heads
+- `italics`: only for short original wording and decisive quoted phrases
+- `monospace`: only for navigational metadata such as margin text, page labels,
+  and page/section anchors
+
+This contract should be enforced by rendering, not left to the model's
+stylistic judgment.
 
 Optional add-on artifacts:
 
@@ -67,15 +142,31 @@ Optional add-on artifacts:
 - `answer_key`: optional and separate. Its purpose is delayed self-checking,
   never first-pass reading.
 
-Default target kit in schema v3:
+Default rendered kit in schema v3:
 
 - `00-reading-guide`
 - `01-abridged-reader`
 - `02-active-reading`
 - `03-consolidation-sheet`
+
+Optional rendered add-on:
+
 - `04-exam-bridge`
 
+Review-lane export note:
+
+- the experimental review workspace currently exports `00-cover`,
+  `01-reading-guide`, `02-active-reading`, `03-abridged-version`,
+  `04-consolidation-sheet`, and optional `05-exam-bridge`
+- that numbering is a review-workspace export convention, not the canonical
+  schema-role ordering
+
 ## Abridged-Reader Policy
+
+Across all rendered printouts, keep metatext and helper language minimal. Avoid
+labels such as "how to use this sheet", "role in the workflow", explicit stop
+signals, and other teacherly scaffolding unless a specific artifact genuinely
+needs them.
 
 The `abridged_reader` should be designed around the realistic constraint that
 the student may not manage to read the full original source. That should not be
@@ -86,100 +177,103 @@ Design principle:
 
 - reading only the `abridged_reader` should be a legitimate minimum viable
   learning path
-- the original source should become targeted source contact, not an all-or-
-  nothing wall
-- source contact should happen through short, high-value touchpoints
+- the original source should not be required for the core worksheet flow
+- when exact wording matters, the abridged reader should bring a short original
+  passage to the student instead of sending the student back to the PDF
 - the abridged reader should support completion of the consolidation sheet and
   exam bridge at a useful level
-- the source touchpoints should preserve contact with the author's wording,
-  nuance, and strongest passages
+- optional source contact is an add-on, not the core reading path
 
 The abridged reader should mostly use rewritten explanatory prose. It should
-not be a copy-pasted source excerpt pack. Use short original anchors only where
-the wording matters.
+not be a copy-pasted source excerpt pack. Use short original anchors by default
+and only short paragraph-length excerpts where the wording clearly matters.
 
 Target mix:
 
 - 80-90% ADHD-friendly rewritten explanation
-- 10-20% short quote anchors, quote fragments, and page references
+- 10-20% short quote anchors and occasional short original passages
 - no long reproduced passages unless a future policy explicitly allows it
 
 Each abridged-reader section should normally include:
 
 - page range or source-location anchor
 - short heading for the source move
+- the local problem that this section resolves
+- a pointer to which subproblem from `reading_guide` it advances
 - compact explanation in short paragraphs
 - a few bullets when the source lists concepts, problems, or steps
 - one or more short quote anchors when exact wording matters
-- one "if you can do one source touchpoint" instruction
+- at most one short original passage when the exact wording earns its place
 - one mini-check that can be answered from the abridged reader
 
 The intended modes are:
 
 - `abridged-only mode`: read `00-reading-guide`, read `01-abridged-reader`,
-  answer abridged checks, complete `03-consolidation-sheet`, and use
+  solve `02-active-reading`, complete `03-consolidation-sheet`, and use
   `04-exam-bridge`
-- `source-touchpoint mode`: after the abridged reader, open the source only for
-  5-8 high-value touchpoints
-- `full-source mode`: use `02-source-touchpoints` as a guided path through the
-  original when energy allows
+- `repair mode`: if a recall answer fails, reopen only the referenced section
+  of `01-abridged-reader`
+- `source-contact add-on`: optional future source-touchpoint sheets may still
+  exist, but they are not part of the core five-file flow
 
-## Source-Touchpoint Policy
+## Worksheet Flow
 
-The old unit-test idea is still valuable, but it should not assume that the
-student will read the whole PDF linearly. For this course, the next schema
-should separate two kinds of active-reading tasks:
+The old unit-test idea is still valuable, but for this course `active_reading`
+and `consolidation_sheet` should no longer do the same job.
 
-- `abridged_checks`: questions answerable from the abridged reader
-- `source_touchpoints`: tiny original-source hunts for the most valuable
-  passages, definitions, examples, and quote anchors
+- `active_reading`: guided solve tasks answerable from the abridged reader with
+  the reader open
+- `consolidation_sheet`: later recall tasks done from memory first
 
-`source_touchpoints` should be small enough that opening the PDF feels feasible.
-They should not say "read the whole section" when a narrower task works.
+The boundary should be visible in the rendered printouts:
 
-Good source touchpoint pattern:
+- `abridged_reader`: read-only compact text
+- `active_reading`: open-book solve sheet
+- `consolidation_sheet`: closed-book recall and repair sheet
 
-```text
-Open p. 132. Find the paragraph around the phrase "public action".
-Underline one sentence that shows why psychological language is performative.
-Stop after you have underlined one sentence.
-```
-
-Bad source touchpoint pattern:
+Good active-reading pattern:
 
 ```text
-Read pp. 129-138 and explain Gergen's theory of relational being.
+Delproblem 2: Afgør om teksten placerer kontinuitet i personen eller i
+konteksten.
+Brug abridged reader sektion 3.
 ```
 
-The source-touchpoint list should be shorter than the old unit-test suite:
+Bad active-reading pattern:
 
-- default: 5-8 source touchpoints per reading
-- each touchpoint should include page/location, action, answer/marking format,
-  and stop signal
-- touchpoints should prioritize definitions, argument pivots, canonical
-  examples, and exam-useful quote anchors
+```text
+Luk arket og genkald hele teorien fra hukommelsen.
+```
 
-The abridged checks can be more numerous and easier:
+The active-reading sheet should usually contain:
 
-- default: 8-12 abridged checks
+- default: 4-8 solve steps
+- fewer, larger prompts rather than a long string of one-word checks
+- a mix of narrow decisions and short paragraph explanation, with term-finding
+  only when genuinely central
+- varied task verbs such as `Skriv`, `Vælg`, `Forklar`, and `Afgør` so the
+  sheet does not read like the same quiz prompt repeated
 - answerable from `01-abridged-reader`
-- used to confirm understanding before doing consolidation or exam transfer
+- clear references back to abridged-reader sections
+- enough answer space for paragraph tasks, not only one-line responses
 
-This means the next implementation should not simply add a fourth PDF. It
-should revise the learning flow so the abridged reader becomes central and the
-original source becomes approachable through small source visits.
+The consolidation sheet should be the recall phase after that:
 
-## Implementation Plan
+- default: 5-8 fill-in sentences plus 1-3 diagram tasks
+- solvable from `01-abridged-reader` alone
+- `where_to_look` should point to abridged-reader sections, not source pages
+- no tasks should depend on original figures, page references, or reopening the
+  PDF
+- completed from memory first and checked afterward
 
-Schema v3 implementation target:
+This is the current canonical behavior in the main printout engine.
 
-- bump printout schema from `2` to `3`
-- rename current `abridged_guide` conceptually to `reading_guide`
-- add `abridged_reader` as a first-class JSON section
-- replace or split current `unit_test_suite` into `abridged_checks` and
-  `source_touchpoints`
-- rename rendered cloze/diagram output to `consolidation_sheet`
-- add `exam_bridge` as a first-class JSON section
+## Main-Code Contract
+
+The main builder now targets schema v3. The legacy three-sheet scaffold model is
+kept only in `notebooklm_queue/personlighedspsykologi_printouts_legacy.py`.
+
+Main-code schema:
 
 Proposed JSON sections:
 
@@ -192,26 +286,30 @@ Proposed JSON sections:
 
 `active_reading` should contain:
 
-- `abridged_checks`
-- `source_touchpoints`
+- `solve_steps`
 
-Proposed rendered files:
+Canonical rendered files:
 
-- `00-reading-guide`
-- `01-abridged-reader`
+- `00-cover`
+- `01-reading-guide`
 - `02-active-reading`
-- `03-consolidation-sheet`
-- `04-exam-bridge`
+- `03-abridged-version`
+- `04-consolidation-sheet`
+- `05-exam-bridge` only when explicitly enabled
 
 Validation requirements to add:
 
 - `abridged_reader.sections` must preserve source order
 - each abridged-reader section must include a source location, explanation,
-  quote anchors or explicit `no_quote_anchor_needed`, a source touchpoint, and
-  a mini-check
+- quote anchors or explicit `no_quote_anchor_needed`, optional short original
+  passages when wording matters, a local problem, a subproblem link, and a
+  mini-check
 - quote anchors must be short
-- `abridged_checks` must be answerable from the abridged reader
-- `source_touchpoints` must be fewer, narrower, and source-location anchored
+- original passages must stay short enough to function as one decisive excerpt
+- `solve_steps` must be answerable from the abridged reader
+- `abridged_reader_location` and `where_to_look` must point to abridged-reader
+  sections rather than source pages
+- `active_reading` must support both short answers and short paragraph answers
 - `exam_bridge` must connect the reading to course themes, likely exam uses,
   comparison targets, and misunderstanding traps
 
@@ -224,7 +322,14 @@ Migration rule:
 
 ## Data Contract
 
-Canonical output is JSON:
+Current canonical review JSON lives under each review output root's hidden
+artifact directory:
+
+```text
+notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/<review-output-root>/.scaffolding/<source_id>/reading-scaffolds.json
+```
+
+The target main-code JSON path after integration is:
 
 ```text
 notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/reading-printouts.json
@@ -241,8 +346,9 @@ Current artifact contract:
 - `generator.prompt_version`: `personlighedspsykologi-reading-printouts-v3`
 - `printouts.reading_guide`: one-page advance organizer
 - `printouts.abridged_reader`: ADHD-friendly minimum viable reading path
-- `printouts.active_reading`: abridged checks plus source touchpoints
-- `printouts.consolidation_sheet`: fill-in sentences plus blank diagrams
+- `printouts.active_reading`: abridged-only guided solve steps
+- `printouts.consolidation_sheet`: active-recall fill-in sentences plus blank
+  diagrams
 - `printouts.exam_bridge`: transfer sheet for course and exam use
 
 For compatibility, live JSON artifacts may still include a mirrored
@@ -252,12 +358,17 @@ the repo finishes migrating readers and generated history.
 The canonical source for the current printout prompt version and the human
 setup label is `shows/personlighedspsykologi-en/prompt_versions.json`.
 
-Legacy schema-v2 artifacts can still be rerendered, but new live generation
-targets schema v3.
+Legacy schema-v1/v2 artifacts can still exist and may be rerendered for
+comparison, but new canonical generation targets schema v3 through the main
+printout engine. The review workspace is only the candidate/QA lane.
 
-## Current Generation Status
+## Legacy Main-Code Generation Status
 
 Status date: 2026-05-06.
+
+This section describes older main-code output history and should not be treated
+as proof of current canonical problem-driven coverage. Check the
+`printout_review` run manifests and PDFs for current canonical output.
 
 Weeks 1-3 are complete for reading sources. Each completed source has:
 

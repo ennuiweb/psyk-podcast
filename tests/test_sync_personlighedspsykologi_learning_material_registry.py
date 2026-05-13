@@ -102,6 +102,28 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         },
     )
     (printout_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
+    legacy_duplicate_path = output_root / "W01L1" / "scaffolding" / "w01l1-lewis-1999" / "reading-scaffolds.json"
+    _write_json(
+        legacy_duplicate_path,
+        {
+            "schema_version": 2,
+            "artifact_type": "reading_printouts",
+            "generated_at": "2026-05-05T09:00:00Z",
+            "source": {
+                "source_id": "w01l1-lewis-1999",
+                "lecture_key": "W01L1",
+                "title": "Lewis legacy",
+                "source_family": "reading",
+            },
+            "generator": {
+                "provider": "gemini",
+                "model": "legacy-model",
+                "prompt_version": "legacy-printouts",
+                "generation_config": {"version": "legacy"},
+            },
+        },
+    )
+    (legacy_duplicate_path.parent / "01-abridged-guide.pdf").write_bytes(b"legacy")
     other_printout_path = (
         output_root / "W02L1" / "printouts" / "w02l1-zettler-2020" / "reading-printouts.json"
     )
@@ -323,6 +345,10 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert printout["status"] == "generated_local"
     assert printout["setup_version"] == "printout-v2"
     assert printout["generator"]["prompt_version"] == "reading-printouts-v3"
+    assert printout["artifact_paths"]["json"] == (
+        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/printouts/"
+        "w01l1-lewis-1999/reading-printouts.json"
+    )
     expected_printout_fingerprint = module.sha256_json(
         module.printout_setup_fingerprint_payload(
             payload={"schema_version": 3, "artifact_type": "reading_printouts"},

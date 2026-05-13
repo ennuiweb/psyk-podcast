@@ -1,0 +1,1070 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:46:39Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+    "source_files_signature": "c50e8be4d0d4341219320e735ea60da4646b8407c4cb46d0cbd249c9edffbbc0",
+    "source_card": "4b35e48d4e7c1509adbdaedd0610b93446376086445725b9454e46350f3d2619",
+    "revised_lecture_substrate": "14fab3069445f7392496a4b0c9609ec59696dba7d0804de3abe77a4aff0802c5",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w08l2-tolman-2009-455915e0",
+    "lecture_key": "W08L2",
+    "title": "Tolman (2009)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 7800,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf"
+    ],
+    "reading_title": "Holzkamp's Critical Psychology as a Science from the Standpoint of the Human Subject",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W08L2"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W8L2 Tolman (2009).pdf",
+    "subject_relative_path": "Readings/W8L2 Critical psychology/W8L2 Tolman (2009).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "7660ea501f5092ded3e2048a94886655e0a10aeaef8ea70404b08b359fd27b80",
+      "size_bytes": 86088,
+      "page_count": 12,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 7800,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 12,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l2-tolman-2009-455915e0",
+      "lecture_key": "W08L2",
+      "source_title": "Tolman (2009)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning og fokusere på de centrale problemer i teksten.",
+      "teaser_paragraphs": [
+        "Forestil dig, at en læge slår let på din knæskal med en gummihammer. Dit underben spjætter øjeblikkeligt. Det er en ren fysisk reaktion – en årsag og en virkning. Men hvad sker der, hvis du beder din chef om en lønforhøjelse? Er det også bare en mekanisk reaktion fremkaldt af stimuli?",
+        "Traditionel psykologi har i over hundrede år forsøgt at finde universelle 'årsager' til menneskelig adfærd. Den har ledt efter if-then sammenhænge og bygget modeller, som om mennesker var komplicerede maskiner eller blot en avanceret dyreart.",
+        "Den tyske Kritiske Psykologi voksede ud af 1960'ernes studenteroprør med en radikal påstand: Mennesket er ikke kun et objekt, der bliver påvirket udefra, men *also a subject that acts on reasons*.",
+        "Vi handler ud fra 'gode grunde' i en historisk og samfundsmæssig kontekst. Vi forholder os til verdens muligheder, ikke dens determinanter.",
+        "Det ændrer hele spillet. Hvis vi navigerer efter grunde i stedet for årsager, er det traditionelle psykologiske eksperiment måske dybest set ubrugeligt til at forstå ægte menneskelig handleevne."
+      ],
+      "main_problem": "Hvorfor kan det menneskelige subjekt ikke reduceres til objektive årsags-virknings-forhold, og hvordan skaber vi i stedet en videnskab fra subjektets eget standpunkt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad var problemet med den etablerede psykologis 'politiske neutralitet' i 1960'erne?",
+          "why_it_matters": "Det forklarer det ideologiske brud, der skabte behovet for en emancipatorisk psykologi.",
+          "answer_form": "1-2 korte sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan ændrer 'samfundsmæssige meningsstrukturer' vores møde med verden i forhold til dyr?",
+          "why_it_matters": "Det er nøglen til at forstå springet fra evolution til menneskets historie.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvad betyder begrebet Handlungsfähigkeit (agency)?",
+          "why_it_matters": "Det er kernebegrebet for menneskets evne til at navigere i sine betingelser.",
+          "answer_form": "En klar definition i dine egne ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor ødelægger menneskets brug af 'grunde' det traditionelle if-then eksperiment?",
+          "why_it_matters": "Det leverer det metodiske drabsstød til meget mainstream socialpsykologi.",
+          "answer_form": "1-2 korte sætninger"
+        }
+      ],
+      "why_this_text_matters": "Teksten er fundamentet for kursets forståelse af Kritisk Psykologi. Den demonstrerer en epokegørende anvendelse af de 4 orienteringspunkter, især hvordan agens (agency) flyttes fra indre karaktertræk til samfundsmæssige handlingsrum.",
+      "overview": [
+        "Den historiske og politiske baggrund for Kritiske Psykologi",
+        "Udviklingen af menneskelig handleevne gennem samfund og værktøj",
+        "Opgøret med den naturvidenskabelige årsags-model i psykologien"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion om 1960'er oprøret (s. 150-152)",
+          "task": "Find ud af, hvordan viden kan deles op i teknisk og emancipatorisk relevans.",
+          "why_it_matters": "Sætter den politiske scene for Holzkamps kritik.",
+          "stop_signal": "Når du kan forklare emancipatorisk relevans"
+        },
+        {
+          "number": 2,
+          "source_location": "Reconstruction & Værktøj (s. 152-154)",
+          "task": "Læs om hvordan fremstilling af værktøj skabte en mental afstand, der adskiller os fra dyr.",
+          "why_it_matters": "Forklarer historicitet frem for ren biologi.",
+          "stop_signal": "Når du forstår samfundsmæssige meningsstrukturer"
+        },
+        {
+          "number": 3,
+          "source_location": "Agency (s. 154-155)",
+          "task": "Opspor definitionen af 'Handlungsfähigkeit' og hvordan det knytter sig til individets position.",
+          "why_it_matters": "Det er kursets måske vigtigste definition af samfundsmæssig agens.",
+          "stop_signal": "Når forskellen på determinanter og muligheder er klar"
+        },
+        {
+          "number": 4,
+          "source_location": "Subjektets standpunkt og Grunde vs. Årsager (s. 155-158)",
+          "task": "Test knæ-spjæts eksemplet mod lønforhandlingen for at forstå grunde versus årsager.",
+          "why_it_matters": "Forankrer teorien i en konkret metodisk kritik af forskning.",
+          "stop_signal": "Når du forstår hvorfor forsøgspersonen må være medforsker"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "also a subject that acts on reasons",
+          "why": "Opsummerer grundkernen i Kritisk Psykologis opgør med traditionel psykologi.",
+          "where_to_look": "Abstract (s. 149)"
+        },
+        {
+          "target": "not determinants but possibilities",
+          "why": "Viser hvordan verden præsenterer sig for mennesket i modsætning til et mekanisk objekt.",
+          "where_to_look": "Slutningen af diskussionen om agency (s. 155)"
+        },
+        {
+          "target": "mistaking reasons for empirical",
+          "why": "Holzkamps dom over det traditionelle adfærdseksperiment.",
+          "where_to_look": "Sektionen om if-then connections (s. 156)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Den detaljerede marxistiske terminologi (fx Hegels logik og Das Kapital).",
+        "De lange navne-lister over de forskellige tyske universitetsfløje.",
+        "A.N. Leont'evs specifikke evolutionsstadier (irritability, sensibility osv.)."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede gennemgang som din primære læsevej. Hver sektion tackler et konkret delproblem fra teksten.",
+      "coverage_note": "Fokuserer på Tolmans udlægning af Holzkamps 'reasons vs causes' og begrebet agency. Detaljerede evolutionshistoriske lister er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Side 150-152",
+          "heading": "Oprøret mod den 'neutrale' psykologi",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvilke interesser tjente mainstream-psykologien egentlig i 1960'erne?",
+          "explanation_paragraphs": [
+            "I 1960'erne voksede kritikken mod mainstream-psykologien. Den etablerede videnskab påstod at være objektiv og politisk neutral. Men Holzkamp og andre kritiske røster påpegede, at videnskabelig viden aldrig findes i et vakuum; den er altid formet af samfundsmæssige interesser.",
+            "Behaviorismen var enormt effektiv for dem, der ønskede at styre andres adfærd, for eksempel på fabrikker eller i militæret. Dette kaldes *teknisk relevans*. Kritisk Psykologi vil derimod skabe viden, der kan hjælpe det enkelte menneske med at gennemskue sine betingelser og forbedre sit eget liv. Dette kaldte Holzkamp for *emancipatorisk relevans*."
+          ],
+          "key_points": [
+            "Psykologisk viden er aldrig fuldstændig neutral.",
+            "Mainstream-psykologi har ofte 'teknisk relevans' til at kontrollere andre.",
+            "Kritisk Psykologi tilstræber 'emancipatorisk relevans' for at frigøre mennesket."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "serve the interests of individuals",
+              "why_it_matters": "Definerer selve formålet med Kritisk Psykologi i modsætning til kontrol.",
+              "source_location": "Side 151"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 152-154",
+          "heading": "Værktøj og samfundsmæssige meningsstrukturer",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan ændrede menneskets udvikling vores forhold til omverdenen?",
+          "explanation_paragraphs": [
+            "For at undgå behaviorismens maskinelle syn på mennesket måtte Holzkamp vise subjektets udvikling historisk. Da vores forfædre begyndte at fremstille værktøj til *fremtidig* brug i stedet for kun at reagere her og nu, skabte det evnen til at tænke på afstand af situationen.",
+            "Det medførte, at det menneskelige liv i samfundet begyndte at dominere biologien. Evolutionen blev erstattet af historie. I dag forholder mennesket sig ikke til en ren naturtilstand, men møder verden igennem *societal meaning structures*. Ting fremkalder ikke bare en refleks; de bærer på samfundets traditioner, sprog og betydninger."
+          ],
+          "key_points": [
+            "Værktøjsfremstilling krævede, at man kunne repræsentere fremtiden mentalt.",
+            "Biologisk evolution blev overhalet af menneskets sociale og historiske organisering.",
+            "Vi oplever alle objekter gennem et filter af samfundsmæssig mening."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "predominantly mediated by societal meaning structures",
+              "why_it_matters": "Fastslår at vi aldrig møder verden direkte, men altid gennem samfundet.",
+              "source_location": "Side 154"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 154-155",
+          "heading": "Agency og Handleevne",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvis vi ikke er determinerede robotter, hvad består vores handleevne så af?",
+          "explanation_paragraphs": [
+            "Fordi verden præsenterer sig for os gennem meningsstrukturer, tilbyder den os muligheder for handling i stedet for blinde mekaniske reaktioner. Individets evne til at udnytte disse samfundsmæssige muligheder kaldes *Handlungsfähigkeit* (agency).",
+            "Dette er ikke det samme som ubegrænset fri vilje. Din handleevne er dybt afhængig af din historiske og samfundsmæssige position. En person i et velstående samfund har helt andre muligheder for at dække sine behov end en, der lever i fattigdom. Vores agency er betinget, men det eksisterer."
+          ],
+          "key_points": [
+            "Agency (Handlungsfähigkeit) er magten til at udnytte samfundets muligheder.",
+            "Verden består af 'muligheder', ikke lukkede 'determinanter'.",
+            "Handleevne formes direkte af personens magt og objektive position i samfundet."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "Side 155",
+            "passage": "To the human subject the world presents not determinants but possibilities. The subject is free to relate to the world.",
+            "why_it_matters": "Dette citat opsummerer præcist, hvorfor traditionel determinisme falder til jorden i Kritisk Psykologi."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Side 155-157",
+          "heading": "Årsager vs. Grunde i videnskaben",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvorfor kan traditionelle if-then eksperimenter ikke forklare menneskelige valg?",
+          "explanation_paragraphs": [
+            "Kritisk Psykologi skelner skarpt mellem årsager (causes) og grunde (reasons). Slår en læge på dit knæ, spjætter det. Det er en biologisk årsag. Det giver ikke mening at spørge: 'Var det fornuftigt af dit knæ at spjætte?'",
+            "Men hvis et eksperiment viser, at forsøgspersoner oftest vælger løsningen med størst økonomisk belønning, beskriver det ikke en naturlov. Det beskriver, at de handler ud fra *gode grunde*. Holzkamp påviser, at mainstream socialpsykologi overser dette og fejlagtigt behandler fornuftige valg som om de var blinde if-then årsager."
+          ],
+          "key_points": [
+            "Årsager beskriver fysiske determinanter (som et knæspjæt).",
+            "Grunde beskriver menneskets vurdering af muligheder (som at søge en belønning).",
+            "Eksperimenter der forveksler disse to ting, er pseudo-empiriske."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mistaking reasons for empirical",
+              "why_it_matters": "Pegent på kernesvigtet i meget eksperimentel psykologi ifølge Holzkamp.",
+              "source_location": "Side 156"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Side 157-158",
+          "heading": "Subjektvidenskabens metode",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan forsker man reelt fra subjektets standpunkt?",
+          "explanation_paragraphs": [
+            "Hvis subjektet forholder sig fornuftigt til verden, kan forskeren ikke behandle det som en dum genstand i et laboratorium. Forskeren må anerkende subjektets eget perspektiv.",
+            "Derfor skal deltagere i et kritisk-psykologisk projekt betragtes som medforskere (co-researchers). Undersøgelsen bør tage udgangspunkt i et problem, som subjektet rent faktisk oplever i sit liv, og målet er at udvide individets evne til at mestre sin egen tilværelse."
+          ],
+          "key_points": [
+            "Forsøgspersoner er subjekter, ikke objekter.",
+            "Deltagerne skal inddrages som ligeværdige medforskere.",
+            "Forskningen skal tjene subjektets mulighed for at mestre eget liv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "must be treated as co-researchers",
+              "why_it_matters": "Det radikale metodiske krav for at bedrive reel subjektvidenskab.",
+              "source_location": "Side 158"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvilke interesser tjente mainstream-psykologien egentlig i 1960'erne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ændrede menneskets udvikling vores forhold til omverdenen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis vi ikke er determinerede robotter, hvad består vores handleevne så af?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En klar definition i dine egne ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan traditionelle if-then eksperimenter ikke forklare menneskelige valg?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forsker man reelt fra subjektets standpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvorfor kan det menneskelige subjekt ikke reduceres til objektive årsags-virknings-forhold, og hvordan skaber vi i stedet en videnskab fra subjektets eget standpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld denne side fra hukommelsen først. Brug kun Abridged Reader til at rette op, hvis du sidder fast.",
+      "overview": [
+        "Tolman præsenterer Holzkamps Kritiske Psykologi som et opgør med traditionel videnskabs forsøg på at kontrollere og objektivere mennesker.",
+        "Vores psyke er historisk udviklet, og vi møder i dag verden gennem komplekse samfundsmæssige meningsstrukturer frem for ren biologi.",
+        "Derfor argumenterer teorien for, at mennesket handler ud fra fornuftige grunde inden for samfundets muligheder, i stedet for at reagere blidt på mekaniske årsager."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I stedet for at lede efter mekaniske årsager peger Holzkamp på, at subjektet handler ud fra gode __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 2,
+          "sentence": "Evnen til at udnytte de muligheder, som ens samfundsmæssige position tillader, kaldes for __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et navn eller begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Verden præsenterer ikke lukkede determinanter for det menneskelige subjekt, men derimod __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvor dyr forholder sig direkte til naturen, forholder mennesker sig til verden via samfundsmæssige __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 sammensat ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Mainstream psykologi, der ønsker at kontrollere andres adfærd, opererer primært med en __________ relevans.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "En ægte videnskab fra subjektets standpunkt kræver ifølge Holzkamp, at deltagerne behandles som __________ i forskningen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord i flertal"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to adskilte kasser. Navngiv den ene 'Årsag (Cause)' og den anden 'Grund (Reason)'. Skriv 'Mekanisk if-then reaktion' under den ene, og 'Vurdering af muligheder' under den anden. Tilføj til sidst en stjerne ved den kasse, som Kritisk Psykologi fokuserer på.",
+          "required_elements": [
+            "To navngivne kasser",
+            "to beskrivelser",
+            "en stjerne-markering"
+          ],
+          "blank_space_hint": "Brug cirka 1/4 side til opgaven."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en cirkel i midten, der hedder 'Subjektet'. Tegn en meget større cirkel udenom, der hedder 'Samfundets meningsstrukturer'. Forbind dem med en kraftig pil udad. På pilen skriver du det afgørende ord for subjektets handlingskapacitet (Agency).",
+          "required_elements": [
+            "Indre",
+            "ydre cirkel",
+            "en forbindende pil",
+            "agency-begrebet anført"
+          ],
+          "blank_space_hint": "Brug cirka 1/4 side til tegningen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at omsætte teksten til stærke mundtlige eksamenspointer. Undgå at læse op; øv dig i at udtale pointerne.",
+      "use_this_text_for": [
+        "At forklare mennesket som aktør frem for mekanisk objekt.",
+        "At anvende kursets 4 orienteringspunkter, særligt Historicitet og Determination.",
+        "At levere en metodisk kritik af klassiske socialpsykologiske eksperimenter.",
+        "At koble individets psykologi uløseligt sammen med samfundsmæssige rammer og magt."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Agency vs. Determinisme",
+          "connection": "Kritisk psykologi finder agency, men placerer det udadvendt i samfundet frem for indadvendt som hos humanisterne."
+        },
+        {
+          "course_theme": "Metodologisk kritik (fx Trækpsykologi)",
+          "connection": "Holzkamp kritiserer den objektiverende if-then logik, som trækpsykologi og behaviorisme deler."
+        },
+        {
+          "course_theme": "Kritisk Personalisme (Stern)",
+          "connection": "Stern og Holzkamp ønsker begge at se 'hele personen', men Holzkamp tilføjer den marxistiske samfundsanalyse."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Behaviorisme",
+          "how_to_compare": "Sammenlign behaviorismens søgen efter 'teknisk relevans' og årsager med Kritisk Psykologis krav om 'emancipatorisk relevans' og gode grunde."
+        },
+        {
+          "compare_with": "Humanistisk Psykologi",
+          "how_to_compare": "Begge fremhæver menneskelig handlefrihed, men humanismen fokuserer på indre selvrealisering, mens Holzkamp kræver deltagelse i at ændre samfundsstrukturerne."
+        },
+        {
+          "compare_with": "Poststrukturalisme (Foucault)",
+          "how_to_compare": "Brug Holzkamps 'meningsstrukturer' som forløber for diskurser; Foucault fjerner dog det stabile, fornuftige 'subjekt' som Holzkamp forsvarer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Holzkamp afviser ikke biologien, men peger på, at overgangen til historie har gjort mennesket radikalt anderledes.",
+          "caution": "Gør ham ikke til en rendyrket tabula-rasa socialkonstruktivist."
+        },
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Reason vs. Cause testen (at sætte 'det er fornuftigt at...' foran), når du skal pille et simpelt behavioristisk eksperiment fra hinanden.",
+          "caution": "Påstå ikke at han hader al empiri; han hader kun den *pseudo-empiri*, der forveksler grunde med naturlove."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Handlungsfähigkeit med biologiske drifter, for at vise at agenturet ligger i relationen til mulighederne.",
+          "caution": "Glem ikke at nævne 'position' – handleevne afhænger direkte af hvem man er i samfundet."
+        },
+        {
+          "prompt_type": "Bevis",
+          "use_in_answer": "Subjektvidenskabens reelle brud med traditionen ved at nævne kravet om at gøre forsøgspersonen til medforsker.",
+          "caution": "Hold det adskilt fra at man bare kan 'spørge folk, hvordan de har det'."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Kritisk Psykologi blot er argumentet for, at kvalitativ forskning er bedre end kvantitativ.",
+          "better_reading": "Det handler om den logiske forskel på grunde og årsager. Et spørgeskema, der behandler svar som determinerede reflekser, er lige så problematisk."
+        },
+        {
+          "trap": "At begrebet 'Agency' betyder uindskrænket fri vilje, hvor vi alle kan gøre, hvad vi vil.",
+          "better_reading": "Agency er betinget af vores samfundsmæssige position. Vi vælger blandt de muligheder, som magt og struktur tillader."
+        },
+        {
+          "trap": "At Holzkamp afskriver eksistensen af adfærdspsykologi og reflekser.",
+          "better_reading": "Han anerkender biologiske årsager (som et knæspjæt), men afviser, at avanceret social adfærd (som at forhandle løn) skal reduceres til samme mekanik."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Holzkamp og Tolman: Hvorfor fejler det traditionelle årsags-virknings eksperiment, når det anvendes på bevidste menneskelige handlinger?",
+      "mini_exam_answer_plan_slots": [
+        "Definer forskellen mellem biologiske årsager og 'gode grunde'.",
+        "Indfør begrebet om samfundsmæssige meningsstrukturer og muligheder.",
+        "Brug 'knæspjæt vs belønning'-eksemplet fra teksten.",
+        "Forklar Handlungsfähigkeit: handlinger er rationelle valg inden for en ramme, ikke reflekser.",
+        "Konkluder på nødvendigheden af et emancipatorisk subjekt-standpunkt i metoden."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l2-tolman-2009-455915e0",
+      "lecture_key": "W08L2",
+      "source_title": "Tolman (2009)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning og fokusere på de centrale problemer i teksten.",
+      "teaser_paragraphs": [
+        "Forestil dig, at en læge slår let på din knæskal med en gummihammer. Dit underben spjætter øjeblikkeligt. Det er en ren fysisk reaktion – en årsag og en virkning. Men hvad sker der, hvis du beder din chef om en lønforhøjelse? Er det også bare en mekanisk reaktion fremkaldt af stimuli?",
+        "Traditionel psykologi har i over hundrede år forsøgt at finde universelle 'årsager' til menneskelig adfærd. Den har ledt efter if-then sammenhænge og bygget modeller, som om mennesker var komplicerede maskiner eller blot en avanceret dyreart.",
+        "Den tyske Kritiske Psykologi voksede ud af 1960'ernes studenteroprør med en radikal påstand: Mennesket er ikke kun et objekt, der bliver påvirket udefra, men *also a subject that acts on reasons*.",
+        "Vi handler ud fra 'gode grunde' i en historisk og samfundsmæssig kontekst. Vi forholder os til verdens muligheder, ikke dens determinanter.",
+        "Det ændrer hele spillet. Hvis vi navigerer efter grunde i stedet for årsager, er det traditionelle psykologiske eksperiment måske dybest set ubrugeligt til at forstå ægte menneskelig handleevne."
+      ],
+      "main_problem": "Hvorfor kan det menneskelige subjekt ikke reduceres til objektive årsags-virknings-forhold, og hvordan skaber vi i stedet en videnskab fra subjektets eget standpunkt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad var problemet med den etablerede psykologis 'politiske neutralitet' i 1960'erne?",
+          "why_it_matters": "Det forklarer det ideologiske brud, der skabte behovet for en emancipatorisk psykologi.",
+          "answer_form": "1-2 korte sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan ændrer 'samfundsmæssige meningsstrukturer' vores møde med verden i forhold til dyr?",
+          "why_it_matters": "Det er nøglen til at forstå springet fra evolution til menneskets historie.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvad betyder begrebet Handlungsfähigkeit (agency)?",
+          "why_it_matters": "Det er kernebegrebet for menneskets evne til at navigere i sine betingelser.",
+          "answer_form": "En klar definition i dine egne ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor ødelægger menneskets brug af 'grunde' det traditionelle if-then eksperiment?",
+          "why_it_matters": "Det leverer det metodiske drabsstød til meget mainstream socialpsykologi.",
+          "answer_form": "1-2 korte sætninger"
+        }
+      ],
+      "why_this_text_matters": "Teksten er fundamentet for kursets forståelse af Kritisk Psykologi. Den demonstrerer en epokegørende anvendelse af de 4 orienteringspunkter, især hvordan agens (agency) flyttes fra indre karaktertræk til samfundsmæssige handlingsrum.",
+      "overview": [
+        "Den historiske og politiske baggrund for Kritiske Psykologi",
+        "Udviklingen af menneskelig handleevne gennem samfund og værktøj",
+        "Opgøret med den naturvidenskabelige årsags-model i psykologien"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion om 1960'er oprøret (s. 150-152)",
+          "task": "Find ud af, hvordan viden kan deles op i teknisk og emancipatorisk relevans.",
+          "why_it_matters": "Sætter den politiske scene for Holzkamps kritik.",
+          "stop_signal": "Når du kan forklare emancipatorisk relevans"
+        },
+        {
+          "number": 2,
+          "source_location": "Reconstruction & Værktøj (s. 152-154)",
+          "task": "Læs om hvordan fremstilling af værktøj skabte en mental afstand, der adskiller os fra dyr.",
+          "why_it_matters": "Forklarer historicitet frem for ren biologi.",
+          "stop_signal": "Når du forstår samfundsmæssige meningsstrukturer"
+        },
+        {
+          "number": 3,
+          "source_location": "Agency (s. 154-155)",
+          "task": "Opspor definitionen af 'Handlungsfähigkeit' og hvordan det knytter sig til individets position.",
+          "why_it_matters": "Det er kursets måske vigtigste definition af samfundsmæssig agens.",
+          "stop_signal": "Når forskellen på determinanter og muligheder er klar"
+        },
+        {
+          "number": 4,
+          "source_location": "Subjektets standpunkt og Grunde vs. Årsager (s. 155-158)",
+          "task": "Test knæ-spjæts eksemplet mod lønforhandlingen for at forstå grunde versus årsager.",
+          "why_it_matters": "Forankrer teorien i en konkret metodisk kritik af forskning.",
+          "stop_signal": "Når du forstår hvorfor forsøgspersonen må være medforsker"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "also a subject that acts on reasons",
+          "why": "Opsummerer grundkernen i Kritisk Psykologis opgør med traditionel psykologi.",
+          "where_to_look": "Abstract (s. 149)"
+        },
+        {
+          "target": "not determinants but possibilities",
+          "why": "Viser hvordan verden præsenterer sig for mennesket i modsætning til et mekanisk objekt.",
+          "where_to_look": "Slutningen af diskussionen om agency (s. 155)"
+        },
+        {
+          "target": "mistaking reasons for empirical",
+          "why": "Holzkamps dom over det traditionelle adfærdseksperiment.",
+          "where_to_look": "Sektionen om if-then connections (s. 156)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Den detaljerede marxistiske terminologi (fx Hegels logik og Das Kapital).",
+        "De lange navne-lister over de forskellige tyske universitetsfløje.",
+        "A.N. Leont'evs specifikke evolutionsstadier (irritability, sensibility osv.)."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede gennemgang som din primære læsevej. Hver sektion tackler et konkret delproblem fra teksten.",
+      "coverage_note": "Fokuserer på Tolmans udlægning af Holzkamps 'reasons vs causes' og begrebet agency. Detaljerede evolutionshistoriske lister er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Side 150-152",
+          "heading": "Oprøret mod den 'neutrale' psykologi",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvilke interesser tjente mainstream-psykologien egentlig i 1960'erne?",
+          "explanation_paragraphs": [
+            "I 1960'erne voksede kritikken mod mainstream-psykologien. Den etablerede videnskab påstod at være objektiv og politisk neutral. Men Holzkamp og andre kritiske røster påpegede, at videnskabelig viden aldrig findes i et vakuum; den er altid formet af samfundsmæssige interesser.",
+            "Behaviorismen var enormt effektiv for dem, der ønskede at styre andres adfærd, for eksempel på fabrikker eller i militæret. Dette kaldes *teknisk relevans*. Kritisk Psykologi vil derimod skabe viden, der kan hjælpe det enkelte menneske med at gennemskue sine betingelser og forbedre sit eget liv. Dette kaldte Holzkamp for *emancipatorisk relevans*."
+          ],
+          "key_points": [
+            "Psykologisk viden er aldrig fuldstændig neutral.",
+            "Mainstream-psykologi har ofte 'teknisk relevans' til at kontrollere andre.",
+            "Kritisk Psykologi tilstræber 'emancipatorisk relevans' for at frigøre mennesket."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "serve the interests of individuals",
+              "why_it_matters": "Definerer selve formålet med Kritisk Psykologi i modsætning til kontrol.",
+              "source_location": "Side 151"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 152-154",
+          "heading": "Værktøj og samfundsmæssige meningsstrukturer",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan ændrede menneskets udvikling vores forhold til omverdenen?",
+          "explanation_paragraphs": [
+            "For at undgå behaviorismens maskinelle syn på mennesket måtte Holzkamp vise subjektets udvikling historisk. Da vores forfædre begyndte at fremstille værktøj til *fremtidig* brug i stedet for kun at reagere her og nu, skabte det evnen til at tænke på afstand af situationen.",
+            "Det medførte, at det menneskelige liv i samfundet begyndte at dominere biologien. Evolutionen blev erstattet af historie. I dag forholder mennesket sig ikke til en ren naturtilstand, men møder verden igennem *societal meaning structures*. Ting fremkalder ikke bare en refleks; de bærer på samfundets traditioner, sprog og betydninger."
+          ],
+          "key_points": [
+            "Værktøjsfremstilling krævede, at man kunne repræsentere fremtiden mentalt.",
+            "Biologisk evolution blev overhalet af menneskets sociale og historiske organisering.",
+            "Vi oplever alle objekter gennem et filter af samfundsmæssig mening."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "predominantly mediated by societal meaning structures",
+              "why_it_matters": "Fastslår at vi aldrig møder verden direkte, men altid gennem samfundet.",
+              "source_location": "Side 154"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 154-155",
+          "heading": "Agency og Handleevne",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvis vi ikke er determinerede robotter, hvad består vores handleevne så af?",
+          "explanation_paragraphs": [
+            "Fordi verden præsenterer sig for os gennem meningsstrukturer, tilbyder den os muligheder for handling i stedet for blinde mekaniske reaktioner. Individets evne til at udnytte disse samfundsmæssige muligheder kaldes *Handlungsfähigkeit* (agency).",
+            "Dette er ikke det samme som ubegrænset fri vilje. Din handleevne er dybt afhængig af din historiske og samfundsmæssige position. En person i et velstående samfund har helt andre muligheder for at dække sine behov end en, der lever i fattigdom. Vores agency er betinget, men det eksisterer."
+          ],
+          "key_points": [
+            "Agency (Handlungsfähigkeit) er magten til at udnytte samfundets muligheder.",
+            "Verden består af 'muligheder', ikke lukkede 'determinanter'.",
+            "Handleevne formes direkte af personens magt og objektive position i samfundet."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "Side 155",
+            "passage": "To the human subject the world presents not determinants but possibilities. The subject is free to relate to the world.",
+            "why_it_matters": "Dette citat opsummerer præcist, hvorfor traditionel determinisme falder til jorden i Kritisk Psykologi."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Side 155-157",
+          "heading": "Årsager vs. Grunde i videnskaben",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvorfor kan traditionelle if-then eksperimenter ikke forklare menneskelige valg?",
+          "explanation_paragraphs": [
+            "Kritisk Psykologi skelner skarpt mellem årsager (causes) og grunde (reasons). Slår en læge på dit knæ, spjætter det. Det er en biologisk årsag. Det giver ikke mening at spørge: 'Var det fornuftigt af dit knæ at spjætte?'",
+            "Men hvis et eksperiment viser, at forsøgspersoner oftest vælger løsningen med størst økonomisk belønning, beskriver det ikke en naturlov. Det beskriver, at de handler ud fra *gode grunde*. Holzkamp påviser, at mainstream socialpsykologi overser dette og fejlagtigt behandler fornuftige valg som om de var blinde if-then årsager."
+          ],
+          "key_points": [
+            "Årsager beskriver fysiske determinanter (som et knæspjæt).",
+            "Grunde beskriver menneskets vurdering af muligheder (som at søge en belønning).",
+            "Eksperimenter der forveksler disse to ting, er pseudo-empiriske."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mistaking reasons for empirical",
+              "why_it_matters": "Pegent på kernesvigtet i meget eksperimentel psykologi ifølge Holzkamp.",
+              "source_location": "Side 156"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Side 157-158",
+          "heading": "Subjektvidenskabens metode",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan forsker man reelt fra subjektets standpunkt?",
+          "explanation_paragraphs": [
+            "Hvis subjektet forholder sig fornuftigt til verden, kan forskeren ikke behandle det som en dum genstand i et laboratorium. Forskeren må anerkende subjektets eget perspektiv.",
+            "Derfor skal deltagere i et kritisk-psykologisk projekt betragtes som medforskere (co-researchers). Undersøgelsen bør tage udgangspunkt i et problem, som subjektet rent faktisk oplever i sit liv, og målet er at udvide individets evne til at mestre sin egen tilværelse."
+          ],
+          "key_points": [
+            "Forsøgspersoner er subjekter, ikke objekter.",
+            "Deltagerne skal inddrages som ligeværdige medforskere.",
+            "Forskningen skal tjene subjektets mulighed for at mestre eget liv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "must be treated as co-researchers",
+              "why_it_matters": "Det radikale metodiske krav for at bedrive reel subjektvidenskab.",
+              "source_location": "Side 158"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvilke interesser tjente mainstream-psykologien egentlig i 1960'erne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ændrede menneskets udvikling vores forhold til omverdenen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis vi ikke er determinerede robotter, hvad består vores handleevne så af?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En klar definition i dine egne ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan traditionelle if-then eksperimenter ikke forklare menneskelige valg?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forsker man reelt fra subjektets standpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1-2 korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvorfor kan det menneskelige subjekt ikke reduceres til objektive årsags-virknings-forhold, og hvordan skaber vi i stedet en videnskab fra subjektets eget standpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld denne side fra hukommelsen først. Brug kun Abridged Reader til at rette op, hvis du sidder fast.",
+      "overview": [
+        "Tolman præsenterer Holzkamps Kritiske Psykologi som et opgør med traditionel videnskabs forsøg på at kontrollere og objektivere mennesker.",
+        "Vores psyke er historisk udviklet, og vi møder i dag verden gennem komplekse samfundsmæssige meningsstrukturer frem for ren biologi.",
+        "Derfor argumenterer teorien for, at mennesket handler ud fra fornuftige grunde inden for samfundets muligheder, i stedet for at reagere blidt på mekaniske årsager."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I stedet for at lede efter mekaniske årsager peger Holzkamp på, at subjektet handler ud fra gode __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 2,
+          "sentence": "Evnen til at udnytte de muligheder, som ens samfundsmæssige position tillader, kaldes for __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et navn eller begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Verden præsenterer ikke lukkede determinanter for det menneskelige subjekt, men derimod __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvor dyr forholder sig direkte til naturen, forholder mennesker sig til verden via samfundsmæssige __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 sammensat ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Mainstream psykologi, der ønsker at kontrollere andres adfærd, opererer primært med en __________ relevans.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "En ægte videnskab fra subjektets standpunkt kræver ifølge Holzkamp, at deltagerne behandles som __________ i forskningen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord i flertal"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to adskilte kasser. Navngiv den ene 'Årsag (Cause)' og den anden 'Grund (Reason)'. Skriv 'Mekanisk if-then reaktion' under den ene, og 'Vurdering af muligheder' under den anden. Tilføj til sidst en stjerne ved den kasse, som Kritisk Psykologi fokuserer på.",
+          "required_elements": [
+            "To navngivne kasser",
+            "to beskrivelser",
+            "en stjerne-markering"
+          ],
+          "blank_space_hint": "Brug cirka 1/4 side til opgaven."
+        },
+        {
+          "number": 2,
+          "task": "Tegn en cirkel i midten, der hedder 'Subjektet'. Tegn en meget større cirkel udenom, der hedder 'Samfundets meningsstrukturer'. Forbind dem med en kraftig pil udad. På pilen skriver du det afgørende ord for subjektets handlingskapacitet (Agency).",
+          "required_elements": [
+            "Indre",
+            "ydre cirkel",
+            "en forbindende pil",
+            "agency-begrebet anført"
+          ],
+          "blank_space_hint": "Brug cirka 1/4 side til tegningen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at omsætte teksten til stærke mundtlige eksamenspointer. Undgå at læse op; øv dig i at udtale pointerne.",
+      "use_this_text_for": [
+        "At forklare mennesket som aktør frem for mekanisk objekt.",
+        "At anvende kursets 4 orienteringspunkter, særligt Historicitet og Determination.",
+        "At levere en metodisk kritik af klassiske socialpsykologiske eksperimenter.",
+        "At koble individets psykologi uløseligt sammen med samfundsmæssige rammer og magt."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Agency vs. Determinisme",
+          "connection": "Kritisk psykologi finder agency, men placerer det udadvendt i samfundet frem for indadvendt som hos humanisterne."
+        },
+        {
+          "course_theme": "Metodologisk kritik (fx Trækpsykologi)",
+          "connection": "Holzkamp kritiserer den objektiverende if-then logik, som trækpsykologi og behaviorisme deler."
+        },
+        {
+          "course_theme": "Kritisk Personalisme (Stern)",
+          "connection": "Stern og Holzkamp ønsker begge at se 'hele personen', men Holzkamp tilføjer den marxistiske samfundsanalyse."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Behaviorisme",
+          "how_to_compare": "Sammenlign behaviorismens søgen efter 'teknisk relevans' og årsager med Kritisk Psykologis krav om 'emancipatorisk relevans' og gode grunde."
+        },
+        {
+          "compare_with": "Humanistisk Psykologi",
+          "how_to_compare": "Begge fremhæver menneskelig handlefrihed, men humanismen fokuserer på indre selvrealisering, mens Holzkamp kræver deltagelse i at ændre samfundsstrukturerne."
+        },
+        {
+          "compare_with": "Poststrukturalisme (Foucault)",
+          "how_to_compare": "Brug Holzkamps 'meningsstrukturer' som forløber for diskurser; Foucault fjerner dog det stabile, fornuftige 'subjekt' som Holzkamp forsvarer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Holzkamp afviser ikke biologien, men peger på, at overgangen til historie har gjort mennesket radikalt anderledes.",
+          "caution": "Gør ham ikke til en rendyrket tabula-rasa socialkonstruktivist."
+        },
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Reason vs. Cause testen (at sætte 'det er fornuftigt at...' foran), når du skal pille et simpelt behavioristisk eksperiment fra hinanden.",
+          "caution": "Påstå ikke at han hader al empiri; han hader kun den *pseudo-empiri*, der forveksler grunde med naturlove."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Handlungsfähigkeit med biologiske drifter, for at vise at agenturet ligger i relationen til mulighederne.",
+          "caution": "Glem ikke at nævne 'position' – handleevne afhænger direkte af hvem man er i samfundet."
+        },
+        {
+          "prompt_type": "Bevis",
+          "use_in_answer": "Subjektvidenskabens reelle brud med traditionen ved at nævne kravet om at gøre forsøgspersonen til medforsker.",
+          "caution": "Hold det adskilt fra at man bare kan 'spørge folk, hvordan de har det'."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Kritisk Psykologi blot er argumentet for, at kvalitativ forskning er bedre end kvantitativ.",
+          "better_reading": "Det handler om den logiske forskel på grunde og årsager. Et spørgeskema, der behandler svar som determinerede reflekser, er lige så problematisk."
+        },
+        {
+          "trap": "At begrebet 'Agency' betyder uindskrænket fri vilje, hvor vi alle kan gøre, hvad vi vil.",
+          "better_reading": "Agency er betinget af vores samfundsmæssige position. Vi vælger blandt de muligheder, som magt og struktur tillader."
+        },
+        {
+          "trap": "At Holzkamp afskriver eksistensen af adfærdspsykologi og reflekser.",
+          "better_reading": "Han anerkender biologiske årsager (som et knæspjæt), men afviser, at avanceret social adfærd (som at forhandle løn) skal reduceres til samme mekanik."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Holzkamp og Tolman: Hvorfor fejler det traditionelle årsags-virknings eksperiment, når det anvendes på bevidste menneskelige handlinger?",
+      "mini_exam_answer_plan_slots": [
+        "Definer forskellen mellem biologiske årsager og 'gode grunde'.",
+        "Indfør begrebet om samfundsmæssige meningsstrukturer og muligheder.",
+        "Brug 'knæspjæt vs belønning'-eksemplet fra teksten.",
+        "Forklar Handlungsfähigkeit: handlinger er rationelle valg inden for en ramme, ikke reflekser.",
+        "Konkluder på nødvendigheden af et emancipatorisk subjekt-standpunkt i metoden."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

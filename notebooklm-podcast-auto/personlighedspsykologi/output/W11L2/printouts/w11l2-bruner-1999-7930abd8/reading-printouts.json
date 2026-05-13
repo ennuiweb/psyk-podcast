@@ -1,0 +1,1174 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:57:42Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+    "source_files_signature": "a3155a0b383acb48a0e57da3f6457fc0c1161f5c242bfc5b0695811ae7fdc88a",
+    "source_card": "02bf11e7592c26813e6338dc4e40b211a7fb9c8bb32d357e7b5d66ffda36df1f",
+    "revised_lecture_substrate": "84cc978f5038b3317d204d7fed807edb85970a0c3a2144b3f45c5de9374e5fa0",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w11l2-bruner-1999-7930abd8",
+    "lecture_key": "W11L2",
+    "title": "Bruner (1999)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 31,
+    "estimated_token_count": 20150,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf"
+    ],
+    "reading_title": "Entry into Meaning",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W11L2"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W11L2 Bruner (1999).pdf",
+    "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 Bruner (1999).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "83c3d957bef12459b7dac83bcd286e784722fd4133bd399b166745615dc10bc6",
+      "size_bytes": 2270304,
+      "page_count": 31,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 20150,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 31,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-bruner-1999-7930abd8",
+      "lecture_key": "W11L2",
+      "source_title": "Bruner (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemer.",
+      "teaser_paragraphs": [
+        "Et lille barn på to år leger gemmeleg. Det kan dårligt tale i hele sætninger, men det ved præcis, hvordan det skal lede den voksne på vildspor væk fra gemmestedet. Hvordan kan det lade sig gøre?",
+        "Noam Chomsky påstod engang, at mennesker lærer sprog, fordi vi har en indbygget, nærmest matematisk 'grammatik-maskine' i hjernen, som udvikler sig uafhængigt af mening og social funktion.",
+        "Bruner ser på det omvendt. Vi lærer ikke sprog for at kunne bøje verber korrekt. Vi lærer sprog, fordi vi har et desperat, biologisk behov for at forstå vores sociale verden og forsvare vores egne handlinger over for andre.",
+        "Vores hjerner har en iboende *readiness for meaning*. Og den form, denne mening tager, er narrativ. Vi fortæller historier. Ikke bare som neutral underholdning, men som et retorisk våben i hverdagens små krige.",
+        "Men en historie opstår aldrig af det normale. Vi fortæller ikke historier om, at vi spiste havregryn til morgenmad præcis som vi plejer. Narrativer udløses kun af brud på det forventede.",
+        "Bruners tekst viser, hvordan biologi og kultur smelter sammen i vores trang til at fortælle historier. At få sin vilje betyder meget ofte *getting the right story*."
+      ],
+      "main_problem": "Hvordan driver vores biologiske og sociale behov for at fortælle historier selve udviklingen af menneskeligt sprog og meningsskabelse?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan adskiller Bruners 'meningsparathed' sig fra Chomskys 'grammatik-maskine'?",
+          "why_it_matters": "Det flytter sprogtilegnelse fra ren syntaks til social funktion.",
+          "answer_form": "En kort kontrast mellem form og funktion"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er det vigtigt, at barnets sociale forståelse starter som *praksis* før *logos*?",
+          "why_it_matters": "Beviser at vi forstår intentioner og bedrag, før vi har sprog til at udtale det.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke fire byggeklodser kræves for at konstruere et narrativ?",
+          "why_it_matters": "Giver en operationel definition af, hvad en historie rent teknisk er.",
+          "answer_form": "Fire konkrete begreber"
+        },
+        {
+          "number": 4,
+          "question": "Hvad udløser vores behov for overhovedet at skabe et narrativ?",
+          "why_it_matters": "Forklarer mikromekanismen bag kultur: at vi skal håndtere det uventede.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan bruger børn historier som retorisk forsvar i familiekonflikter?",
+          "why_it_matters": "Viser narrativets overlevelsesfunktion i hverdagen.",
+          "answer_form": "En kort forklaring af begrundelser vs. referater"
+        }
+      ],
+      "why_this_text_matters": "Bruner lægger fundamentet for narrativ psykologi ved at bevise, at narrativer ikke bare er en eftertanke, men selve måden vi biologisk er kodet til at organisere vores virkelighed på.",
+      "overview": [
+        "Opgøret med Chomskys ide om en ren syntaktisk sprogtilegnelse.",
+        "Beviserne for at børn handler og snyder narrativt før de kan tale.",
+        "Narrativets funktion som konfliktløser og kulturel fredsbevarer."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I-II (s. 67-75)",
+          "task": "Find forskellen på Chomsky og Bruner, og læs om gemmelegen.",
+          "why_it_matters": "Etablerer fundamentet for praksis før sprog.",
+          "stop_signal": "når afsnittet om Chandlers eksperiment slutter"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 75-80)",
+          "task": "Isoler de fire krav til en narrativ struktur.",
+          "why_it_matters": "Giver dig de tekniske værktøjer til at definere en historie.",
+          "stop_signal": "når Bruner skifter spor for at socialisere barnet"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 81-84)",
+          "task": "Undersøg Lucariellos fødselsdags-eksperiment.",
+          "why_it_matters": "Viser at afvigelser fra normen trigger historier.",
+          "stop_signal": "når afsnittet om Baltimore-børn starter"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 84-87)",
+          "task": "Aflæs hvordan narrativer bruges som retorik i familiedramaer.",
+          "why_it_matters": "Viser at historier handler om overlevelse, ikke sandhed.",
+          "stop_signal": "når historien om Emily i sengen begynder"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion VII (s. 95-97)",
+          "task": "Grib konklusionen om narrativer som kulturel fredsbevarelse.",
+          "why_it_matters": "Knytter barnets udvikling til det store samfundsbillede.",
+          "stop_signal": "ved tekstens udgang"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "the human push to organize experience narratively",
+          "why": "Opsummerer drivkraften bag sproglæring.",
+          "where_to_look": "Sektion III (s. 79)"
+        },
+        {
+          "target": "four crucial grammatical constituents",
+          "why": "Startskuddet til Bruners definition af narrativet.",
+          "where_to_look": "Sektion III (s. 77)"
+        },
+        {
+          "target": "Getting what you want very often means getting the right story",
+          "why": "Essensen af historiers retoriske kraft.",
+          "where_to_look": "Sektion V (s. 86)"
+        },
+        {
+          "target": "framing the idiosyncratic in a 'lifelike' fashion",
+          "why": "Narrativets evne til at afværge åben konflikt.",
+          "where_to_look": "Sektion I (s. 67)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Peirces skelnen mellem ikon, indeks og symbol",
+        "Detaljerede sproglige diskussioner af kasusgrammatik",
+        "De lange udskrifter af Emilys monologer i sengen"
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse arbejdsarkene. Hver sektion fokuserer på ét afgørende problem fra teksten.",
+      "coverage_note": "Fokuserer på den grundlæggende teori om narrativets funktion og form, med færre lingvistiske teknikaliteter.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 68-72",
+          "heading": "Opgøret med grammatik-maskinen",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad driver egentlig barnets udvikling af sprog?",
+          "explanation_paragraphs": [
+            "For en generation siden hævdede Chomsky, at mennesker har en medfødt mekanisme, der udelukkende er fokuseret på syntaks og grammatik. Den virker uafhængigt af mening. Bruner afviser denne tanke om, at sprog blot folder sig ud af sig selv som en robot.",
+            "I stedet argumenterer Bruner for, at mennesket har en selektiv indbygget *readiness for meaning* (en parathed til mening). Vi lærer primært grammatik og syntaks instrumentelt, fordi vi har brug for det til at løse praktiske, sociale og kommunikative opgaver.",
+            "Sprogets form læres fordi sproget har en funktion. Vi leder efter mening og sammenhæng i den sociale verden, og sproget er det værktøj, vi griber ud efter for at få fat i den mening."
+          ],
+          "key_points": [
+            "Chomsky: Sprogudvikling er ren syntaks uden hensyn til mening.",
+            "Bruner: Vi har en biologisk parathed til at finde social mening.",
+            "Sprog læres instrumentelt som et værktøj, ikke som et abstrakt system."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "learned instrumentally, as instruments for carrying out certain priorly operative functions",
+              "why_it_matters": "Viser at grammatik altid tjener et højere, meningsskabende formål.",
+              "source_location": "S. 72"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 73-75",
+          "heading": "Forståelse før sprog (Praksis før Logos)",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "explanation_paragraphs": [
+            "For at bevise at 'mening' kommer før formelt 'sprog', henviser Bruner til et eksperiment med gemmeleg af Chandler. Forsøget viste, at selv børn på to år bevidst vil lede voksne på vildspor ved at skabe falske fodspor væk fra en skjult genstand.",
+            "Dette beviser, at børn har en praktisk forståelse af falske overbevisninger ('theory of mind') længe før de kan udtale sætninger om det. Forståelsen af andres intentioner eksisterer i *praksis* (i handling), før den omformes til *logos* (sprog).",
+            "Dette understøtter ideen om, at vores forudsætninger for at navigere i et narrativt, socialt landskab er indbyggede og blot venter på at få sproget tilkoblet."
+          ],
+          "key_points": [
+            "Børn manipulerer andres viden bevidst før de behersker sproget fuldt ud.",
+            "Forståelse af intentioner starter som handling (praksis).",
+            "Senere sættes ord på disse allerede etablerede handlingsmønstre."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "well in place as a feature of praxis before the child is",
+              "why_it_matters": "Kernen i argumentet om at sproget blot klæder vores biologiske parathed på.",
+              "source_location": "S. 74"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 76-80",
+          "heading": "Narrativets fire byggeklodser",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad består en formel fortælling af?",
+          "explanation_paragraphs": [
+            "Hvis det menneskelige sprog er formet af vores behov for at fortælle historier, hvad kræver en historie så for at virke? Bruner lister fire afgørende elementer, der altid er til stede i narrativ struktur.",
+            "For det første kræves *agentivitet*: Handlinger skal styres af agenter mod et mål. For det andet kræves en *sekvens*: Begivenheder skal opstilles i en lineær, logisk tidsfølge.",
+            "For det tredje kræves en følsomhed for det *kanoniske* (det normale) og brud på dette. Endelig kræves der et *perspektiv*: Narrativet kan ikke være stemmeløst, det må have en fortællers synsvinkel."
+          ],
+          "key_points": [
+            "1. Agentivitet (handling mod mål).",
+            "2. Sekvens (rækkefølge og linearitet).",
+            "3. Følsomhed for brud på det normale (kanonisk vs. nonkanonisk).",
+            "4. Narratørens perspektiv (en stemme)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the human push to organize experience narratively",
+              "why_it_matters": "Det er selve det narrative behov, der driver tilegnelsen af disse fire elementer.",
+              "source_location": "S. 79"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 81-83",
+          "heading": "Bruddet på det normale (Lucariellos eksperiment)",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvornår opstår behovet for at fortælle en historie?",
+          "explanation_paragraphs": [
+            "Vi fortæller ikke historier, når alt går som det plejer. I et eksperiment af Lucariello fik børnehavebørn fortalt en historie om en standard, almindelig børnefødselsdag (det kanoniske), og en anden om en fødselsdag hvor pigen hældte vand på lysene i stedet for at puste dem ud (det nonkanoniske).",
+            "Den afvigende historie frembragte ti gange så mange narrative opfindelser fra børnene. De forsøgte desperat at finde på en grund til hendes underlige opførsel.",
+            "Dette beviser Bruners påstand: Narrativer udløses af afvigelser. Vi bruger historier til at bygge bro mellem det uventede og den etablerede kulturelle norm. Det normale kræver ingen forklaring; det gør afvigelsen."
+          ],
+          "key_points": [
+            "Det 'kanoniske' er kulturens forventning til hvordan verden ser ud.",
+            "Narrativer opstår primært når disse forventninger brydes.",
+            "Formålet er at gøre afvigelsen meningsfuld."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the anticanonical stories produced a spate of narrative invention",
+              "why_it_matters": "Empirisk bevis på at afvigelser er narrativets sande brændstof.",
+              "source_location": "S. 82"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 84-86",
+          "heading": "Historien som retorisk våben i familiens drama",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Bruger børn bare historier til at gengive sandheden?",
+          "explanation_paragraphs": [
+            "Når børn fortæller om begivenheder, de selv har været en del af (især i familien), er fortællingerne sjældent blot neutrale referater ('expository'). De har derimod et retorisk formål.",
+            "Barnet lærer hurtigt, at hvis dets egne ønsker støder sammen med forældrenes eller søskendes, er handling ikke nok. Det gælder om at sætte sine egne handlinger i et formildende lys og retfærdiggøre sig selv gennem fortællingen.",
+            "Fortællinger bliver redskaber til at forhandle, manipulere og forsvare sin position i husstanden uden at skabe fuldtonet krig. At beherske kulturen betyder at vide, hvordan man strukturerer sin historie korrekt."
+          ],
+          "key_points": [
+            "Narrativer tjener et partisk, retorisk mål, ikke bare et objektivt.",
+            "De bruges som et skjold mod straf eller som våben for at få sin vilje.",
+            "Børn lærer at koble deres afvigende adfærd til formildende omstændigheder."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 86",
+            "passage": "Getting what you want very often means getting the right story. As John Austin told us many years ago... a justification rests on a story of mitigating circumstances.",
+            "why_it_matters": "Dette citat opsummerer perfekt, at historier er funktionelle og handlingsorienterede våben, ikke neutrale opslagsværker over sandheden."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 6,
+          "source_location": "S. 95-97",
+          "heading": "Historier som kulturel fredsbevarelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvilken overordnet funktion har fortællinger for os som art?",
+          "explanation_paragraphs": [
+            "Bruner afrunder sin argumentation ved at se på narrativernes rolle i det brede samfund. Mennesker har ofte divergerende interesser, men vi undgår for det meste konstant fysisk konflikt.",
+            "Dette skyldes vores narrative evner. Vi bruger fortællinger til at redegøre for de omstændigheder, der ledte til en konflikt, og selvom fortællingen ikke nødvendigvis udløser tilgivelse, gør den afvigelsen *begribelig*.",
+            "At leve i en kultur kræver ikke total enighed, men det kræver, at vi kan knytte os til hinanden via forbindende fortællinger. Uden denne indbyggede evne ville menneskets sociale liv bryde fuldstændig sammen."
+          ],
+          "key_points": [
+            "Fortællinger neutraliserer direkte fysiske konflikter.",
+            "At forklare noget gennem historier fjerner ikke uenigheden, men gør den udholdelig.",
+            "En levedygtig kultur er holdt sammen af disse forklarende fortællinger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "narrativizing makes the happening comprehensible against the background of ordinariness",
+              "why_it_matters": "Konkluderer at målet med mening ikke er sandhed, men at gøre virkeligheden håndterbar.",
+              "source_location": "S. 96"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad driver egentlig barnets udvikling af sprog?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast mellem form og funktion",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvad består en formel fortælling af?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Fire konkrete begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvornår opstår behovet for at fortælle en historie?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bruger børn bare historier til at gengive sandheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En kort forklaring af begrundelser vs. referater",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken overordnet funktion har fortællinger for os som art?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En kort forklaring af begrundelser vs. referater",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan driver vores biologiske og sociale behov for at fortælle historier selve udviklingen af menneskeligt sprog og meningsskabelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først dette ark fra hukommelsen. Brug kun Abridged Reader til at reparere de huller, du ikke kunne huske.",
+      "overview": [
+        "Mennesket lærer ikke sprog bare for at mestre regler, men fordi vi har et biologisk behov for mening.",
+        "Vi forstår snyd og intentioner i praksis længe før vi har ord til at forklare dem.",
+        "Vores primære drivkraft for at fortælle historier er at gøre brud på det normale til noget, vi kan begribe og leve med."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Chomsky mente sprogudvikling udelukkende var bundet i en intern mekanisme for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Bruner påstår i stedet, at vi lærer grammatik for at tilfredsstille en indbygget readiness for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Chandlers gemmelegs-eksperiment viser, at barnet behersker manipulation og forståelse af falske intentioner som __________, før det kan udtale det som logos.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Et narrativ kræver fire ting: perspektiv, sekvens, agentivitet og følsomhed for det __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Børn finder kun på forklarende historier, når de præsenteres for en begivenhed, der er en afvigelse fra det __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når børn er indblandet i familiekonflikter, bruger de narrativet __________, for at fremstille sig selv i et bedre lys.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        },
+        {
+          "number": 7,
+          "sentence": "Historier skaber sjældent total enighed i en konflikt, men de fungerer som et værktøj til social __________, så samfundet ikke bryder sammen.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "To ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kort rækkefølge-pil, der viser hvordan sprogudvikling (grammatik) er betinget af et bagvedliggende behov ifølge Bruner. Placer 'Behov for narrativ/mening' og 'Grammatiske regler' i korrekt rækkefølge.",
+          "required_elements": [
+            "To bokse",
+            "en pil",
+            "der viser årsag-virkning"
+          ],
+          "blank_space_hint": "Plads til en kort sekvens."
+        },
+        {
+          "number": 2,
+          "task": "Lav et 2x2 kryds for fortælle-situationer: Hvad sker der ifølge Bruner når en situation er 'Kanonisk' vs. 'Nonkanonisk'.",
+          "required_elements": [
+            "To felter: Ét der viser fravær af historier",
+            "ét der viser 'spate of narrative invention'"
+          ],
+          "blank_space_hint": "Plads til to modsætninger."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at koble Bruners meningsparathed til andre tekster før eksamen. Øv dig i at sige svarene højt.",
+      "use_this_text_for": [
+        "At forklare hvorfor narrativer (Niveau 3 hos McAdams) ikke bare er kulturelt påklistrede, men biologisk forankrede.",
+        "At diskutere hvordan kultur internaliseres (sprog læres gennem funktion, ikke bare abstraktion).",
+        "At vise forskellen mellem et essentialistisk og et konstruktivistisk/funktionelt syn på menneskets drivkraft.",
+        "At eksemplificere hvordan konflikter afværges gennem meningsskabelse i stedet for vold.",
+        "At nuancere debatten om rationalitet ved at vise, at 'retfærdiggørelse' trumfer objektiv sandhed."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Narrativ Identitet (McAdams)",
+          "connection": "Bruner giver det evolutionære og udviklingspsykologiske bevis for, *hvorfor* vi overhovedet danner den narrative identitet, McAdams taler om."
+        },
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Trækpsykologi fokuserer på de indre konstante variabler; Bruner peger på meningsskabelsen i *relation* til afvigelser fra normen."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt (Raggatt/W10)",
+          "connection": "Raggatts polypsykiske selv fungerer, fordi vi har de narrative redskaber, Bruner beskriver, til at håndtere og forhandle interne modsætninger uden at gå i stykker."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Chomskys syntaktiske sprogteori",
+          "how_to_compare": "Brug Bruner til at kritisere ideen om mennesker som indkapslede regel-maskiner. Vis at grammatik kun giver mening som redskab for pragmatik."
+        },
+        {
+          "compare_with": "Humanistisk psykologi",
+          "how_to_compare": "Humanismen ser meningsskabelse som noget, der vokser indefra (selvaktualisering). Bruner ser meningsskabelse som et socialt værktøj til at navigere kulturelle konflikter og normer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksamen spørger om 'sprog og kultur'",
+          "use_in_answer": "Brug 'readiness for meaning' for at vise, at biologi og kultur ikke er modsætninger, men at vores biologi er designet til at absorbere kultur.",
+          "caution": "Undgå at lyde som om Bruner totalt afviser biologi; han re-definerer blot *hvad* der er biologisk indbygget (mening vs. ren syntaks)."
+        },
+        {
+          "prompt_type": "Hvis eksamen beder dig analysere et individs historiefortælling",
+          "use_in_answer": "Brug Bruners princip om 'det nonkanoniske'. Påpeg i casen, hvilke 'brud' personen forsøger at reparere eller retfærdiggøre gennem sin fortælling.",
+          "caution": "Husk at historien ifølge Bruner har et retorisk (forsvarende) formål, ikke et objektivt."
+        },
+        {
+          "prompt_type": "definer",
+          "use_in_answer": "Brug teksten til at definere dens centrale begreb eller position præcist.",
+          "caution": "Hold definitionen knyttet til teksten, ikke til en løs hverdagsforståelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at Bruner er ren socialkonstruktivist og afviser alt medfødt.",
+          "better_reading": "Han tror stærkt på det medfødte, men han argumenterer for medfødt *meningsparathed* frem for medfødt uafhængig grammatik."
+        },
+        {
+          "trap": "At tro fortællinger opstår, fordi virkeligheden er harmonisk og struktureret.",
+          "better_reading": "Fortællinger tvinges frem af det modsatte: fejl, normbrud og konflikter."
+        }
+      ],
+      "mini_exam_prompt_question": "Sig højt: 'Hvordan kan Bruners koncept om parathed til mening forklare den måde, mennesket bruger narrativer på til at løse hverdagens konflikter?'",
+      "mini_exam_answer_plan_slots": [
+        "Kontrasten mellem form (Chomsky) og funktion (Bruner).",
+        "Praksis før sprog (børn snyder og handler før de taler).",
+        "Narrativet som retorisk forsvar ('mitigating circumstances').",
+        "Kulturens sammenhængskraft afhænger af afværgelsen af konflikt."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-bruner-1999-7930abd8",
+      "lecture_key": "W11L2",
+      "source_title": "Bruner (1999)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemer.",
+      "teaser_paragraphs": [
+        "Et lille barn på to år leger gemmeleg. Det kan dårligt tale i hele sætninger, men det ved præcis, hvordan det skal lede den voksne på vildspor væk fra gemmestedet. Hvordan kan det lade sig gøre?",
+        "Noam Chomsky påstod engang, at mennesker lærer sprog, fordi vi har en indbygget, nærmest matematisk 'grammatik-maskine' i hjernen, som udvikler sig uafhængigt af mening og social funktion.",
+        "Bruner ser på det omvendt. Vi lærer ikke sprog for at kunne bøje verber korrekt. Vi lærer sprog, fordi vi har et desperat, biologisk behov for at forstå vores sociale verden og forsvare vores egne handlinger over for andre.",
+        "Vores hjerner har en iboende *readiness for meaning*. Og den form, denne mening tager, er narrativ. Vi fortæller historier. Ikke bare som neutral underholdning, men som et retorisk våben i hverdagens små krige.",
+        "Men en historie opstår aldrig af det normale. Vi fortæller ikke historier om, at vi spiste havregryn til morgenmad præcis som vi plejer. Narrativer udløses kun af brud på det forventede.",
+        "Bruners tekst viser, hvordan biologi og kultur smelter sammen i vores trang til at fortælle historier. At få sin vilje betyder meget ofte *getting the right story*."
+      ],
+      "main_problem": "Hvordan driver vores biologiske og sociale behov for at fortælle historier selve udviklingen af menneskeligt sprog og meningsskabelse?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan adskiller Bruners 'meningsparathed' sig fra Chomskys 'grammatik-maskine'?",
+          "why_it_matters": "Det flytter sprogtilegnelse fra ren syntaks til social funktion.",
+          "answer_form": "En kort kontrast mellem form og funktion"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er det vigtigt, at barnets sociale forståelse starter som *praksis* før *logos*?",
+          "why_it_matters": "Beviser at vi forstår intentioner og bedrag, før vi har sprog til at udtale det.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke fire byggeklodser kræves for at konstruere et narrativ?",
+          "why_it_matters": "Giver en operationel definition af, hvad en historie rent teknisk er.",
+          "answer_form": "Fire konkrete begreber"
+        },
+        {
+          "number": 4,
+          "question": "Hvad udløser vores behov for overhovedet at skabe et narrativ?",
+          "why_it_matters": "Forklarer mikromekanismen bag kultur: at vi skal håndtere det uventede.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan bruger børn historier som retorisk forsvar i familiekonflikter?",
+          "why_it_matters": "Viser narrativets overlevelsesfunktion i hverdagen.",
+          "answer_form": "En kort forklaring af begrundelser vs. referater"
+        }
+      ],
+      "why_this_text_matters": "Bruner lægger fundamentet for narrativ psykologi ved at bevise, at narrativer ikke bare er en eftertanke, men selve måden vi biologisk er kodet til at organisere vores virkelighed på.",
+      "overview": [
+        "Opgøret med Chomskys ide om en ren syntaktisk sprogtilegnelse.",
+        "Beviserne for at børn handler og snyder narrativt før de kan tale.",
+        "Narrativets funktion som konfliktløser og kulturel fredsbevarer."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I-II (s. 67-75)",
+          "task": "Find forskellen på Chomsky og Bruner, og læs om gemmelegen.",
+          "why_it_matters": "Etablerer fundamentet for praksis før sprog.",
+          "stop_signal": "når afsnittet om Chandlers eksperiment slutter"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 75-80)",
+          "task": "Isoler de fire krav til en narrativ struktur.",
+          "why_it_matters": "Giver dig de tekniske værktøjer til at definere en historie.",
+          "stop_signal": "når Bruner skifter spor for at socialisere barnet"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 81-84)",
+          "task": "Undersøg Lucariellos fødselsdags-eksperiment.",
+          "why_it_matters": "Viser at afvigelser fra normen trigger historier.",
+          "stop_signal": "når afsnittet om Baltimore-børn starter"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 84-87)",
+          "task": "Aflæs hvordan narrativer bruges som retorik i familiedramaer.",
+          "why_it_matters": "Viser at historier handler om overlevelse, ikke sandhed.",
+          "stop_signal": "når historien om Emily i sengen begynder"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion VII (s. 95-97)",
+          "task": "Grib konklusionen om narrativer som kulturel fredsbevarelse.",
+          "why_it_matters": "Knytter barnets udvikling til det store samfundsbillede.",
+          "stop_signal": "ved tekstens udgang"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "the human push to organize experience narratively",
+          "why": "Opsummerer drivkraften bag sproglæring.",
+          "where_to_look": "Sektion III (s. 79)"
+        },
+        {
+          "target": "four crucial grammatical constituents",
+          "why": "Startskuddet til Bruners definition af narrativet.",
+          "where_to_look": "Sektion III (s. 77)"
+        },
+        {
+          "target": "Getting what you want very often means getting the right story",
+          "why": "Essensen af historiers retoriske kraft.",
+          "where_to_look": "Sektion V (s. 86)"
+        },
+        {
+          "target": "framing the idiosyncratic in a 'lifelike' fashion",
+          "why": "Narrativets evne til at afværge åben konflikt.",
+          "where_to_look": "Sektion I (s. 67)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Peirces skelnen mellem ikon, indeks og symbol",
+        "Detaljerede sproglige diskussioner af kasusgrammatik",
+        "De lange udskrifter af Emilys monologer i sengen"
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse arbejdsarkene. Hver sektion fokuserer på ét afgørende problem fra teksten.",
+      "coverage_note": "Fokuserer på den grundlæggende teori om narrativets funktion og form, med færre lingvistiske teknikaliteter.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 68-72",
+          "heading": "Opgøret med grammatik-maskinen",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad driver egentlig barnets udvikling af sprog?",
+          "explanation_paragraphs": [
+            "For en generation siden hævdede Chomsky, at mennesker har en medfødt mekanisme, der udelukkende er fokuseret på syntaks og grammatik. Den virker uafhængigt af mening. Bruner afviser denne tanke om, at sprog blot folder sig ud af sig selv som en robot.",
+            "I stedet argumenterer Bruner for, at mennesket har en selektiv indbygget *readiness for meaning* (en parathed til mening). Vi lærer primært grammatik og syntaks instrumentelt, fordi vi har brug for det til at løse praktiske, sociale og kommunikative opgaver.",
+            "Sprogets form læres fordi sproget har en funktion. Vi leder efter mening og sammenhæng i den sociale verden, og sproget er det værktøj, vi griber ud efter for at få fat i den mening."
+          ],
+          "key_points": [
+            "Chomsky: Sprogudvikling er ren syntaks uden hensyn til mening.",
+            "Bruner: Vi har en biologisk parathed til at finde social mening.",
+            "Sprog læres instrumentelt som et værktøj, ikke som et abstrakt system."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "learned instrumentally, as instruments for carrying out certain priorly operative functions",
+              "why_it_matters": "Viser at grammatik altid tjener et højere, meningsskabende formål.",
+              "source_location": "S. 72"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 73-75",
+          "heading": "Forståelse før sprog (Praksis før Logos)",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "explanation_paragraphs": [
+            "For at bevise at 'mening' kommer før formelt 'sprog', henviser Bruner til et eksperiment med gemmeleg af Chandler. Forsøget viste, at selv børn på to år bevidst vil lede voksne på vildspor ved at skabe falske fodspor væk fra en skjult genstand.",
+            "Dette beviser, at børn har en praktisk forståelse af falske overbevisninger ('theory of mind') længe før de kan udtale sætninger om det. Forståelsen af andres intentioner eksisterer i *praksis* (i handling), før den omformes til *logos* (sprog).",
+            "Dette understøtter ideen om, at vores forudsætninger for at navigere i et narrativt, socialt landskab er indbyggede og blot venter på at få sproget tilkoblet."
+          ],
+          "key_points": [
+            "Børn manipulerer andres viden bevidst før de behersker sproget fuldt ud.",
+            "Forståelse af intentioner starter som handling (praksis).",
+            "Senere sættes ord på disse allerede etablerede handlingsmønstre."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "well in place as a feature of praxis before the child is",
+              "why_it_matters": "Kernen i argumentet om at sproget blot klæder vores biologiske parathed på.",
+              "source_location": "S. 74"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 76-80",
+          "heading": "Narrativets fire byggeklodser",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad består en formel fortælling af?",
+          "explanation_paragraphs": [
+            "Hvis det menneskelige sprog er formet af vores behov for at fortælle historier, hvad kræver en historie så for at virke? Bruner lister fire afgørende elementer, der altid er til stede i narrativ struktur.",
+            "For det første kræves *agentivitet*: Handlinger skal styres af agenter mod et mål. For det andet kræves en *sekvens*: Begivenheder skal opstilles i en lineær, logisk tidsfølge.",
+            "For det tredje kræves en følsomhed for det *kanoniske* (det normale) og brud på dette. Endelig kræves der et *perspektiv*: Narrativet kan ikke være stemmeløst, det må have en fortællers synsvinkel."
+          ],
+          "key_points": [
+            "1. Agentivitet (handling mod mål).",
+            "2. Sekvens (rækkefølge og linearitet).",
+            "3. Følsomhed for brud på det normale (kanonisk vs. nonkanonisk).",
+            "4. Narratørens perspektiv (en stemme)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the human push to organize experience narratively",
+              "why_it_matters": "Det er selve det narrative behov, der driver tilegnelsen af disse fire elementer.",
+              "source_location": "S. 79"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 81-83",
+          "heading": "Bruddet på det normale (Lucariellos eksperiment)",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvornår opstår behovet for at fortælle en historie?",
+          "explanation_paragraphs": [
+            "Vi fortæller ikke historier, når alt går som det plejer. I et eksperiment af Lucariello fik børnehavebørn fortalt en historie om en standard, almindelig børnefødselsdag (det kanoniske), og en anden om en fødselsdag hvor pigen hældte vand på lysene i stedet for at puste dem ud (det nonkanoniske).",
+            "Den afvigende historie frembragte ti gange så mange narrative opfindelser fra børnene. De forsøgte desperat at finde på en grund til hendes underlige opførsel.",
+            "Dette beviser Bruners påstand: Narrativer udløses af afvigelser. Vi bruger historier til at bygge bro mellem det uventede og den etablerede kulturelle norm. Det normale kræver ingen forklaring; det gør afvigelsen."
+          ],
+          "key_points": [
+            "Det 'kanoniske' er kulturens forventning til hvordan verden ser ud.",
+            "Narrativer opstår primært når disse forventninger brydes.",
+            "Formålet er at gøre afvigelsen meningsfuld."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "the anticanonical stories produced a spate of narrative invention",
+              "why_it_matters": "Empirisk bevis på at afvigelser er narrativets sande brændstof.",
+              "source_location": "S. 82"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 84-86",
+          "heading": "Historien som retorisk våben i familiens drama",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Bruger børn bare historier til at gengive sandheden?",
+          "explanation_paragraphs": [
+            "Når børn fortæller om begivenheder, de selv har været en del af (især i familien), er fortællingerne sjældent blot neutrale referater ('expository'). De har derimod et retorisk formål.",
+            "Barnet lærer hurtigt, at hvis dets egne ønsker støder sammen med forældrenes eller søskendes, er handling ikke nok. Det gælder om at sætte sine egne handlinger i et formildende lys og retfærdiggøre sig selv gennem fortællingen.",
+            "Fortællinger bliver redskaber til at forhandle, manipulere og forsvare sin position i husstanden uden at skabe fuldtonet krig. At beherske kulturen betyder at vide, hvordan man strukturerer sin historie korrekt."
+          ],
+          "key_points": [
+            "Narrativer tjener et partisk, retorisk mål, ikke bare et objektivt.",
+            "De bruges som et skjold mod straf eller som våben for at få sin vilje.",
+            "Børn lærer at koble deres afvigende adfærd til formildende omstændigheder."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 86",
+            "passage": "Getting what you want very often means getting the right story. As John Austin told us many years ago... a justification rests on a story of mitigating circumstances.",
+            "why_it_matters": "Dette citat opsummerer perfekt, at historier er funktionelle og handlingsorienterede våben, ikke neutrale opslagsværker over sandheden."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 6,
+          "source_location": "S. 95-97",
+          "heading": "Historier som kulturel fredsbevarelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvilken overordnet funktion har fortællinger for os som art?",
+          "explanation_paragraphs": [
+            "Bruner afrunder sin argumentation ved at se på narrativernes rolle i det brede samfund. Mennesker har ofte divergerende interesser, men vi undgår for det meste konstant fysisk konflikt.",
+            "Dette skyldes vores narrative evner. Vi bruger fortællinger til at redegøre for de omstændigheder, der ledte til en konflikt, og selvom fortællingen ikke nødvendigvis udløser tilgivelse, gør den afvigelsen *begribelig*.",
+            "At leve i en kultur kræver ikke total enighed, men det kræver, at vi kan knytte os til hinanden via forbindende fortællinger. Uden denne indbyggede evne ville menneskets sociale liv bryde fuldstændig sammen."
+          ],
+          "key_points": [
+            "Fortællinger neutraliserer direkte fysiske konflikter.",
+            "At forklare noget gennem historier fjerner ikke uenigheden, men gør den udholdelig.",
+            "En levedygtig kultur er holdt sammen af disse forklarende fortællinger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "narrativizing makes the happening comprehensible against the background of ordinariness",
+              "why_it_matters": "Konkluderer at målet med mening ikke er sandhed, men at gøre virkeligheden håndterbar.",
+              "source_location": "S. 96"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad driver egentlig barnets udvikling af sprog?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast mellem form og funktion",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvad består en formel fortælling af?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Fire konkrete begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvornår opstår behovet for at fortælle en historie?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bruger børn bare historier til at gengive sandheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En kort forklaring af begrundelser vs. referater",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken overordnet funktion har fortællinger for os som art?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En kort forklaring af begrundelser vs. referater",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan driver vores biologiske og sociale behov for at fortælle historier selve udviklingen af menneskeligt sprog og meningsskabelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først dette ark fra hukommelsen. Brug kun Abridged Reader til at reparere de huller, du ikke kunne huske.",
+      "overview": [
+        "Mennesket lærer ikke sprog bare for at mestre regler, men fordi vi har et biologisk behov for mening.",
+        "Vi forstår snyd og intentioner i praksis længe før vi har ord til at forklare dem.",
+        "Vores primære drivkraft for at fortælle historier er at gøre brud på det normale til noget, vi kan begribe og leve med."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Chomsky mente sprogudvikling udelukkende var bundet i en intern mekanisme for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Bruner påstår i stedet, at vi lærer grammatik for at tilfredsstille en indbygget readiness for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Chandlers gemmelegs-eksperiment viser, at barnet behersker manipulation og forståelse af falske intentioner som __________, før det kan udtale det som logos.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Et narrativ kræver fire ting: perspektiv, sekvens, agentivitet og følsomhed for det __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Børn finder kun på forklarende historier, når de præsenteres for en begivenhed, der er en afvigelse fra det __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når børn er indblandet i familiekonflikter, bruger de narrativet __________, for at fremstille sig selv i et bedre lys.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        },
+        {
+          "number": 7,
+          "sentence": "Historier skaber sjældent total enighed i en konflikt, men de fungerer som et værktøj til social __________, så samfundet ikke bryder sammen.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "To ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en kort rækkefølge-pil, der viser hvordan sprogudvikling (grammatik) er betinget af et bagvedliggende behov ifølge Bruner. Placer 'Behov for narrativ/mening' og 'Grammatiske regler' i korrekt rækkefølge.",
+          "required_elements": [
+            "To bokse",
+            "en pil",
+            "der viser årsag-virkning"
+          ],
+          "blank_space_hint": "Plads til en kort sekvens."
+        },
+        {
+          "number": 2,
+          "task": "Lav et 2x2 kryds for fortælle-situationer: Hvad sker der ifølge Bruner når en situation er 'Kanonisk' vs. 'Nonkanonisk'.",
+          "required_elements": [
+            "To felter: Ét der viser fravær af historier",
+            "ét der viser 'spate of narrative invention'"
+          ],
+          "blank_space_hint": "Plads til to modsætninger."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at koble Bruners meningsparathed til andre tekster før eksamen. Øv dig i at sige svarene højt.",
+      "use_this_text_for": [
+        "At forklare hvorfor narrativer (Niveau 3 hos McAdams) ikke bare er kulturelt påklistrede, men biologisk forankrede.",
+        "At diskutere hvordan kultur internaliseres (sprog læres gennem funktion, ikke bare abstraktion).",
+        "At vise forskellen mellem et essentialistisk og et konstruktivistisk/funktionelt syn på menneskets drivkraft.",
+        "At eksemplificere hvordan konflikter afværges gennem meningsskabelse i stedet for vold.",
+        "At nuancere debatten om rationalitet ved at vise, at 'retfærdiggørelse' trumfer objektiv sandhed."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Narrativ Identitet (McAdams)",
+          "connection": "Bruner giver det evolutionære og udviklingspsykologiske bevis for, *hvorfor* vi overhovedet danner den narrative identitet, McAdams taler om."
+        },
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Trækpsykologi fokuserer på de indre konstante variabler; Bruner peger på meningsskabelsen i *relation* til afvigelser fra normen."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt (Raggatt/W10)",
+          "connection": "Raggatts polypsykiske selv fungerer, fordi vi har de narrative redskaber, Bruner beskriver, til at håndtere og forhandle interne modsætninger uden at gå i stykker."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Chomskys syntaktiske sprogteori",
+          "how_to_compare": "Brug Bruner til at kritisere ideen om mennesker som indkapslede regel-maskiner. Vis at grammatik kun giver mening som redskab for pragmatik."
+        },
+        {
+          "compare_with": "Humanistisk psykologi",
+          "how_to_compare": "Humanismen ser meningsskabelse som noget, der vokser indefra (selvaktualisering). Bruner ser meningsskabelse som et socialt værktøj til at navigere kulturelle konflikter og normer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksamen spørger om 'sprog og kultur'",
+          "use_in_answer": "Brug 'readiness for meaning' for at vise, at biologi og kultur ikke er modsætninger, men at vores biologi er designet til at absorbere kultur.",
+          "caution": "Undgå at lyde som om Bruner totalt afviser biologi; han re-definerer blot *hvad* der er biologisk indbygget (mening vs. ren syntaks)."
+        },
+        {
+          "prompt_type": "Hvis eksamen beder dig analysere et individs historiefortælling",
+          "use_in_answer": "Brug Bruners princip om 'det nonkanoniske'. Påpeg i casen, hvilke 'brud' personen forsøger at reparere eller retfærdiggøre gennem sin fortælling.",
+          "caution": "Husk at historien ifølge Bruner har et retorisk (forsvarende) formål, ikke et objektivt."
+        },
+        {
+          "prompt_type": "definer",
+          "use_in_answer": "Brug teksten til at definere dens centrale begreb eller position præcist.",
+          "caution": "Hold definitionen knyttet til teksten, ikke til en løs hverdagsforståelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at Bruner er ren socialkonstruktivist og afviser alt medfødt.",
+          "better_reading": "Han tror stærkt på det medfødte, men han argumenterer for medfødt *meningsparathed* frem for medfødt uafhængig grammatik."
+        },
+        {
+          "trap": "At tro fortællinger opstår, fordi virkeligheden er harmonisk og struktureret.",
+          "better_reading": "Fortællinger tvinges frem af det modsatte: fejl, normbrud og konflikter."
+        }
+      ],
+      "mini_exam_prompt_question": "Sig højt: 'Hvordan kan Bruners koncept om parathed til mening forklare den måde, mennesket bruger narrativer på til at løse hverdagens konflikter?'",
+      "mini_exam_answer_plan_slots": [
+        "Kontrasten mellem form (Chomsky) og funktion (Bruner).",
+        "Praksis før sprog (børn snyder og handler før de taler).",
+        "Narrativet som retorisk forsvar ('mitigating circumstances').",
+        "Kulturens sammenhængskraft afhænger af afværgelsen af konflikt."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

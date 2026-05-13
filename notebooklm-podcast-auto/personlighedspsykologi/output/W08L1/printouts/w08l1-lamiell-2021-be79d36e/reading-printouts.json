@@ -1,0 +1,978 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:37:34Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
+    "source_files_signature": "f4482582e6a78bedd2efed91919e99bef0c1b49d5b4a2cfb5a74dbdd6f8b1c43",
+    "source_card": "df59f6e38e08aed4577a353857b65432ddfc58c06552ed64d6557f81438a4c7d",
+    "revised_lecture_substrate": "f8f138f815c7df602ca366e41752d32bcecc5e9568d375c8b53dc31416b4c6b4",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w08l1-lamiell-2021-be79d36e",
+    "lecture_key": "W08L1",
+    "title": "Lamiell (2021)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf"
+    ],
+    "reading_title": "William Stern and Personalistic Thinking: Making Acquaintance",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W08L1"
+    ],
+    "sequence_index": 1,
+    "source_filename": "Lamiell, J.T. (2021).pdf",
+    "subject_relative_path": "Readings/W8L1 Critical personalism/Lamiell, J.T. (2021).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "d527e8c6aaea162903596836abe9c1c93419976840a3aa849c1b3bd4cca1c20c",
+      "size_bytes": 135233,
+      "page_count": 22,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 14300,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 22,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l1-lamiell-2021-be79d36e",
+      "lecture_key": "W08L1",
+      "source_title": "Lamiell (2021)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de centrale problemer i teksten.",
+      "teaser_paragraphs": [
+        "Forestil dig en videnskabsmand, der sidder ved sit syge barns seng. Hvis han betragter verden rent mekanistisk, er barnet intet andet end \"atom + atom + atom\" og en række biologiske processer. Kan en sådan formel forklare forælderens fortvivlelse eller barnets iboende værdi? William Stern mente bestemt nej.",
+        "I begyndelsen af det 20. århundrede forsøgte psykologien desperat at opnå status som naturvidenskab ved at reducere mennesker til målbare variabler og mekaniske elementer. Stern så denne tendens som en katastrofal fejl. Han insisterede på, at vi ikke er isolerede \"ting\", men derimod hele personer.",
+        "Men hvordan studerer man en hel person videnskabeligt uden at forfalde til vag mystik? Sterns modsvar var teorien om Kritisk Personalisme. Han hævdede, at opdelingen i krop og sind er et analytisk trick. Den primære virkelighed er den *hele person*, der aktivt handler i verden ud fra sine egne mål.",
+        "Denne tekst er afgørende, fordi den giver dig de teoretiske våben til at pille kursets tidlige træk-modeller fra hinanden. Stern viser os, at en personlighedsegenskab aldrig bare er en fast indre essens. I stedet formes vores træk gennem *konvergens* – et konstant, levende sammenstød mellem vores indre potentialer og verdens ydre krav.",
+        "Din mission i denne tekst er at kortlægge Sterns opgør. Du skal forstå præcis hvordan han adskiller personer fra ting, hvordan indre og ydre verdener smelter sammen i adfærd, og hvorfor det er både videnskabeligt og moralsk problematisk at behandle et menneske som en ren dimensionel profil af variabler."
+      ],
+      "main_problem": "Hvordan erstatter Sterns kritiske personalisme det mekanistiske og variabel-baserede menneskesyn med en holistisk model af personen?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den fundamentale forskel på en person og en ting ifølge Stern?",
+          "why_it_matters": "Det er grundlaget for at afvise den naturvidenskabelige reduktionisme i psykologien.",
+          "answer_form": "Korte sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan løser begrebet 'psykofysisk neutralitet' problemet med at splitte mennesket op i krop og sind?",
+          "why_it_matters": "Det forklarer, hvordan vi kan undgå både dualisme og biologisk determinisme.",
+          "answer_form": "Kort forklaring af helhedens primat"
+        },
+        {
+          "number": 3,
+          "question": "Hvad betyder 'konvergens', og hvordan forklarer det udviklingen af egenskaber?",
+          "why_it_matters": "Det er Sterns dynamiske alternativ til faste personlighedstræk.",
+          "answer_form": "To faktorer og resultatet af deres møde"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan undgår personalismen at blive til ren egoistisk individualisme?",
+          "why_it_matters": "Det sikrer, at teorien også kan forklare menneskets forhold til samfundets etiske krav.",
+          "answer_form": "Et begreb"
+        }
+      ],
+      "why_this_text_matters": "Den danner den metodologiske bro væk fra trækpsykologiens reificering og frem mod et mere kritisk, agentisk og kontekstuelt syn på subjektet.",
+      "overview": [
+        "Sterns baggrund og opgør med tidens mekanistiske naturvidenskab.",
+        "Grundbegreberne i Kritisk Personalisme: helhed, konvergens og introception.",
+        "Det moralske og videnskabelige problem i at reducere mennesker til målbare enheder."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 1-6",
+          "task": "Kortlæg Sterns skarpe skelnen mellem personer og ting.",
+          "why_it_matters": "Dette etablerer personbegrebet og hvorfor mennesker har iboende værdi.",
+          "stop_signal": "når du når afsnittet The Thesis of Psychophysical Neutrality"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 7-10",
+          "task": "Forstå psykofysisk neutralitet og hvorfor helheden altid kommer før delene.",
+          "why_it_matters": "Det løser det evige problem med krop versus sind.",
+          "stop_signal": "når du når afsnittet Goal Systems"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 11-14",
+          "task": "Find mekanismen 'konvergens' og se hvordan det forklarer børns løgn.",
+          "why_it_matters": "Her bliver Sterns teori brugt på et konkret udviklingspsykologisk fænomen.",
+          "stop_signal": "når du når afsnittet Values and Valuation"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 15-18",
+          "task": "Undersøg forskellen på personalisme og individualisme.",
+          "why_it_matters": "Det redder teorien fra at være ren ego-psykologi og inddrager samfundet.",
+          "stop_signal": "når du når afsnittet A Closing Observation"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "atom + atom + atom",
+          "why": "Viser absurditeten i at forklare menneskelige følelser mekanisk.",
+          "where_to_look": "s. 5"
+        },
+        {
+          "target": "convergence of inner and outer factors",
+          "why": "Hjørnestenen i Sterns udviklingsforståelse.",
+          "where_to_look": "s. 14"
+        },
+        {
+          "target": "Ich werte, ... also bin ich Wert",
+          "why": "Opsummerer kernen i menneskets iboende værdi og handlekraft.",
+          "where_to_look": "s. 15"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De præcise historiske detaljer om Sterns forflyttelser og akademiske rivaliseringer.",
+        "De dybe filosofiske forskelle mellem Ebbinghaus, Dilthey og Wundt – fokuser kun på Sterns eget standpunkt.",
+        "Biografiske fodnoter og lange tyske bogtitler."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære læsevej til at løse opgaverne. De indeholder den centrale argumentation.",
+      "coverage_note": "Disse sektioner dækker Sterns adskillelse af personer og ting, psykofysisk neutralitet, og konvergensmekanismen.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 5-6",
+          "heading": "Personer versus Ting",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor kan mennesket ikke reduceres til en samling af biologiske eller kognitive mekanismer?",
+          "explanation_paragraphs": [
+            "Stern reagerede skarpt imod en fremvoksende naturvidenskabelig psykologi, der betragtede mennesket mekanistisk som et sammensurium af atomer, energi og løsrevne tanker. Hvis vi blot er energi, der flyder ind og ud, hvordan kan vi så forklare sorg eller kærlighed?",
+            "Løsningen blev at indføre en fundamental ontologisk skelnen mellem personer og ting. En ting er blot en samling af dele. Den fungerer i overensstemmelse med mekaniske love, men den har ingen egen iboende drivkraft eller værdi. En person er derimod en unik, målstyret helhed. For en person kommer helheden altid før dens dele (som Stern kaldte 'momenter').",
+            "Det betyder, at en psykologi, der blot måler adskilte variabler og profiler uden at se den samlende, målstyrede person bag, begår en grundlæggende fejl. Det er både videnskabeligt upræcist og moralsk problematisk at behandle personer som ting."
+          ],
+          "key_points": [
+            "Ting er underlagt blinde årsagssammenhænge og består blot af mekaniske dele.",
+            "Personer er selvaktiverede, målstyrede og udgør en helhed, der er større end dens momenter.",
+            "Det er et overgreb på subjektet at reducere det til et 'impersonelt' aggregate af variabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "inherently valuable unity",
+              "why_it_matters": "Definerer selve kerneforskellen: personen er ikke et objekt, men en helhed med værdi i sig selv.",
+              "source_location": "s. 6"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 7-10",
+          "heading": "Psykofysisk Neutralitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan undgår vi dualismen mellem sjæl og krop uden at blive rene biologer?",
+          "explanation_paragraphs": [
+            "I psykologien falder man ofte i to grøfter: Enten ser man krop og sind som helt adskilte ting (naiv dualisme), eller også reducerer man alt mentalt til blot at være fysik (mekanisme). Stern introducerede begrebet psykofysisk neutralitet for at løse dette.",
+            "Tanken er, at den primære virkelighed i verden er *den hele person*. Forskellen mellem hvad der er fysisk, og hvad der er psykologisk, er afledt og sekundær. Når et menneske udfører en handling – fx taler – involverer det fysiske stemmelæber og psykologisk hukommelse, men handlingen udspringer fra den hele, neutrale person.",
+            "For at forklare menneskets målsøgende handlinger overtog Stern Aristoteles' begreb 'enteleki'. Dette beskriver personens iboende, formålsrettede kausalitet. Det er altid personen, der samler og orkestrerer sine handlinger, ikke delene der styrer personen."
+          ],
+          "key_points": [
+            "Den hele person er ontologisk før opdelingen i krop og sind.",
+            "Fysiske og psykologiske elementer er blot analytiske facetter af den samme enhed.",
+            "Enteleki betegner den målstyrede drivkraft i personens handlinger."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 7",
+              "passage": "Keine Gestalt ohne Gestalter!",
+              "why_it_matters": "Dette understreger Sterns pointe over for Gestaltpsykologien: Der findes ingen perceptionshelheder uden en hel person, der aktivt danner dem."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 11-12, 15-18",
+          "heading": "Introception og Forholdet til Samfundet",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvis personen er en unik helhed, bliver teorien så ikke bare ekstremt egoistisk?",
+          "explanation_paragraphs": [
+            "Man kunne fristes til at tro, at Sterns fokus på den unikke person førte direkte til en radikal individualisme. Men Stern advarede kraftigt herimod. En person, der kun forfølger sine egne isolerede mål (autoteliske mål), ville være tom.",
+            "Mennesker eksisterer i et samfund, der stiller krav og har sine egne værdier (heteroteliske mål). Gennem en aktiv proces, som Stern kalder 'introception', optager personen disse ydre normer og gør dem til sine egne. ",
+            "Dette betyder, at personen kan indordne sig under samfundets overpersonlige krav uden at miste sig selv eller blive reduceret til et blottet værktøj. Personalisme kræver, at vi forstår individets unikhed i konstant forhandling med sociale og etiske forpligtelser."
+          ],
+          "key_points": [
+            "Personalisme og ensidig individualisme er modsætninger.",
+            "Introception er den proces, hvor personen tilegner sig ydre, overpersonlige værdier.",
+            "Personlig udvikling forudsætter et møde med samfundets krav."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "s. 12-14",
+          "heading": "Konvergens og Udvikling af Træk",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor kommer specifikke personlighedstræk fra, hvis de ikke er medfødte og faste?",
+          "explanation_paragraphs": [
+            "Hvis personen ikke bare er en samling fastlåste elementer, hvordan forklarer vi så at folk udvikler faste vaner og træk? Stern svarede med begrebet *konvergens*. Udvikling sker, når indre dispositioner møder ydre miljøbetingelser.",
+            "Stern anså ikke dispositioner som determinerende træk, der dikterer vores adfærd, men som uforløste potentialer. Disse potentialer kan vækkes, formes eller hæmmes af de strukturer (affordances), miljøet tilbyder.",
+            "Et klassisk eksempel er udviklingen af at lyve hos børn. Stern afviste, at løgn er en medfødt 'egenskab'. Men barnet har et indre potentiale for at forsvare sig mod ubehag. Hvis dette barn vokser op i et strengt straffende ydre miljø, vil disse to faktorer konvergere, og resultatet bliver, at barnet begynder at lyve som vane."
+          ],
+          "key_points": [
+            "Træk er ikke faste biologiske essenser, men resultatet af løbende konvergens.",
+            "Et adfærdsmønster kræver både et indre potentiale og en ydre omstændighed for at opstå.",
+            "Dette skaber en dynamisk forståelse af personligheden i kontekst frem for statiske variabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "convergence of inner and outer factors",
+              "why_it_matters": "Formlen der erstatter ideen om faste, isolerede personlighedstræk.",
+              "source_location": "s. 14"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan mennesket ikke reduceres til en samling af biologiske eller kognitive mekanismer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi dualismen mellem sjæl og krop uden at blive rene biologer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort forklaring af helhedens primat",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis personen er en unik helhed, bliver teorien så ikke bare ekstremt egoistisk?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvor kommer specifikke personlighedstræk fra, hvis de ikke er medfødte og faste?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To faktorer og resultatet af deres møde",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan erstatter Sterns kritiske personalisme det mekanistiske og variabel-baserede menneskesyn med en holistisk model af personen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at udfylde disse felter ud fra din hukommelse. Når du sidder fast, kan du genåbne Abridged Reader for at reparere din viden.",
+      "overview": [
+        "Sterns kritiske personalisme forsvarer mennesket som en unik, formålsrettet helhed.",
+        "Gennem begreber som psykofysisk neutralitet og konvergens afvises mekanistiske forklaringer.",
+        "Teorien danner bro mellem individets udvikling og samfundets etiske krav."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I modsætning til en ting, som er en samling af dele uden iboende værdi, er en person en selvaktiveret og __________ helhed.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Sterns princip for, at den hele person er den primære virkelighed, og at opdelingen i krop og sind blot er sekundære 'momenter', kaldes psykofysisk __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den dynamiske proces, hvorved personlighedstræk formes over tid som et sammenspil mellem anlæg og miljø, hedder __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Stern afviste ren individualisme og hævdede, at personen aktivt må tilegne sig overpersonlige samfundsmål gennem mekanismen __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Udtrykket 'Keine Gestalt ohne __________' betyder, at det altid er personen, der aktivt skaber og samler sine psykologiske og fysiske handlinger.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "I Sterns eksempel opstår vanen med at lyve ikke ud fra et medfødt træk, men fordi barnets behov for forsvar møder et hårdt, straffende ydre __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn Konvergens-modellen for udvikling af et personlighedstræk.",
+          "required_elements": [
+            "Indre dispositioner (potentiale",
+            "Ydre miljø (ydre faktorer",
+            "Pilen der illustrerer selve konvergensen",
+            "Resultatet (det synlige træk eller adfærd"
+          ],
+          "blank_space_hint": "Brug en tragt- eller pilestruktur til at illustrere hvordan to forskellige elementer tvinges sammen til et nyt fælles resultat."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at overføre Sterns metateori direkte til dine mundtlige og skriftlige eksamenssvar.",
+      "use_this_text_for": [
+        "At kritisere trækpsykologiens og Big Fives brug af adskilte variabler.",
+        "At demonstrere kursets dialektik mellem indre Essens og ydre Kontekst.",
+        "At forklare hvordan personlighedstræk er dynamiske resultater af konvergens.",
+        "At argumentere for subjektet som en helhed frem for løsrevne kognitive eller biologiske elementer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologiens reificering (W02L1)",
+          "connection": "Stern angriber direkte illusionen om, at en profil af adskilte dimensioner udgør personen."
+        },
+        {
+          "course_theme": "Meta-teoretiske orienteringspunkter (W12L1)",
+          "connection": "Konvergensmekanismen sætter ord på mødet mellem personens 'essens' og omgivelsernes 'kontekst'."
+        },
+        {
+          "course_theme": "Kritisk psykologi (Senere uger)",
+          "connection": "Personens overtagelse af samfundets mål via introception fungerer som forløber for ideen om agency i samfundet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five modellen",
+          "how_to_compare": "Sammenlign statiske, målbare træk med Sterns dynamiske konvergens: Stern ser egenskaber som udfaldet af et møde i stedet for en permanent indre kerne."
+        },
+        {
+          "compare_with": "Biologisk determinisme / Dualisme",
+          "how_to_compare": "Vis forskellen mellem et split-system af krop vs. sjæl og Sterns fastholdelse af den psykofysisk neutrale, hele person."
+        },
+        {
+          "compare_with": "Radikal socialkonstruktionisme",
+          "how_to_compare": "Brug Sterns ide om den 'gestaltende person' til at vise, at selvom konteksten er afgørende, forsvinder den handlende person aldrig."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskutér personlighedens stabilitet",
+          "use_in_answer": "Brug konvergens: Argumenter for, at stabilitet kun opstår, når både indre anlæg og ydre miljøkrav holdes stabile over tid.",
+          "caution": "Undgå at lyde som om miljøet deterministisk former barnet; personen er stadig med-aktør."
+        },
+        {
+          "prompt_type": "Kritik af personlighedstests",
+          "use_in_answer": "Slå fast, at tests ofte måler 'ting' – et aggregat af løsrevne scorer. Henvis til Sterns pointe om at dette ignorerer personens teleologi (formålsrettethed).",
+          "caution": "Påstå ikke, at Stern hadede al kvantitativ forskning; han ville blot forhindre, at den overskyggede helheden."
+        },
+        {
+          "prompt_type": "Forklar subjektiv handlekraft (Agency)",
+          "use_in_answer": "Træk begrebet 'introception' ind. Vis hvordan subjektet bevarer sit 'selv' selv under presset fra ydre sociale krav.",
+          "caution": "Gør ikke personalisme lig med isoleret, egoistisk individualisme."
+        },
+        {
+          "prompt_type": "Analysér forholdet mellem individ og samfund",
+          "use_in_answer": "Brug introception og supra-personlige mål til at vise, at mennesket har et aktivt etisk tilhørsforhold til verden omkring sig.",
+          "caution": "Gør ikke samfundet til blot en passiv kulisse; kravene er en reel del af personlighedens ramme."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At forveksle personalisme med snæver individualisme.",
+          "better_reading": "Personalisme kræver, at personen aktivt interagerer med og optager samfundets krav via overpersonlige mål."
+        },
+        {
+          "trap": "At læse Sterns 'dispositioner' som faste deterministiske egenskaber.",
+          "better_reading": "Dispositioner er blot bløde potentialer, der kun aktiveres, hvis de møder de rette ydre rammer."
+        },
+        {
+          "trap": "At antage at Stern ignorerede den fysiske krop i sin teori.",
+          "better_reading": "Kroppen anerkendes, men den er kun et afledt 'moment' styret af den primære, neutrale person."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Sterns koncept om konvergens, kritiser den antagelse at Big Five træk er faste, uforanderlige dele af menneskets biologi.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort Sterns skelnen mellem personer og ting for at etablere hans helhedssyn.",
+        "Introducér konvergens som selve mekanismen bag adfærd (indre potentiale + ydre faktorer).",
+        "Giv eksemplet med barnets løgn: Vis, at løgnen ikke bor i barnet, men opstår i mødet med strenge straffe.",
+        "Konkludér: Hvorfor dette gør det epistemologisk problematisk at opstille statiske profiler, som Big Five gør."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w08l1-lamiell-2021-be79d36e",
+      "lecture_key": "W08L1",
+      "source_title": "Lamiell (2021)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de centrale problemer i teksten.",
+      "teaser_paragraphs": [
+        "Forestil dig en videnskabsmand, der sidder ved sit syge barns seng. Hvis han betragter verden rent mekanistisk, er barnet intet andet end \"atom + atom + atom\" og en række biologiske processer. Kan en sådan formel forklare forælderens fortvivlelse eller barnets iboende værdi? William Stern mente bestemt nej.",
+        "I begyndelsen af det 20. århundrede forsøgte psykologien desperat at opnå status som naturvidenskab ved at reducere mennesker til målbare variabler og mekaniske elementer. Stern så denne tendens som en katastrofal fejl. Han insisterede på, at vi ikke er isolerede \"ting\", men derimod hele personer.",
+        "Men hvordan studerer man en hel person videnskabeligt uden at forfalde til vag mystik? Sterns modsvar var teorien om Kritisk Personalisme. Han hævdede, at opdelingen i krop og sind er et analytisk trick. Den primære virkelighed er den *hele person*, der aktivt handler i verden ud fra sine egne mål.",
+        "Denne tekst er afgørende, fordi den giver dig de teoretiske våben til at pille kursets tidlige træk-modeller fra hinanden. Stern viser os, at en personlighedsegenskab aldrig bare er en fast indre essens. I stedet formes vores træk gennem *konvergens* – et konstant, levende sammenstød mellem vores indre potentialer og verdens ydre krav.",
+        "Din mission i denne tekst er at kortlægge Sterns opgør. Du skal forstå præcis hvordan han adskiller personer fra ting, hvordan indre og ydre verdener smelter sammen i adfærd, og hvorfor det er både videnskabeligt og moralsk problematisk at behandle et menneske som en ren dimensionel profil af variabler."
+      ],
+      "main_problem": "Hvordan erstatter Sterns kritiske personalisme det mekanistiske og variabel-baserede menneskesyn med en holistisk model af personen?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den fundamentale forskel på en person og en ting ifølge Stern?",
+          "why_it_matters": "Det er grundlaget for at afvise den naturvidenskabelige reduktionisme i psykologien.",
+          "answer_form": "Korte sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan løser begrebet 'psykofysisk neutralitet' problemet med at splitte mennesket op i krop og sind?",
+          "why_it_matters": "Det forklarer, hvordan vi kan undgå både dualisme og biologisk determinisme.",
+          "answer_form": "Kort forklaring af helhedens primat"
+        },
+        {
+          "number": 3,
+          "question": "Hvad betyder 'konvergens', og hvordan forklarer det udviklingen af egenskaber?",
+          "why_it_matters": "Det er Sterns dynamiske alternativ til faste personlighedstræk.",
+          "answer_form": "To faktorer og resultatet af deres møde"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan undgår personalismen at blive til ren egoistisk individualisme?",
+          "why_it_matters": "Det sikrer, at teorien også kan forklare menneskets forhold til samfundets etiske krav.",
+          "answer_form": "Et begreb"
+        }
+      ],
+      "why_this_text_matters": "Den danner den metodologiske bro væk fra trækpsykologiens reificering og frem mod et mere kritisk, agentisk og kontekstuelt syn på subjektet.",
+      "overview": [
+        "Sterns baggrund og opgør med tidens mekanistiske naturvidenskab.",
+        "Grundbegreberne i Kritisk Personalisme: helhed, konvergens og introception.",
+        "Det moralske og videnskabelige problem i at reducere mennesker til målbare enheder."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 1-6",
+          "task": "Kortlæg Sterns skarpe skelnen mellem personer og ting.",
+          "why_it_matters": "Dette etablerer personbegrebet og hvorfor mennesker har iboende værdi.",
+          "stop_signal": "når du når afsnittet The Thesis of Psychophysical Neutrality"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 7-10",
+          "task": "Forstå psykofysisk neutralitet og hvorfor helheden altid kommer før delene.",
+          "why_it_matters": "Det løser det evige problem med krop versus sind.",
+          "stop_signal": "når du når afsnittet Goal Systems"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 11-14",
+          "task": "Find mekanismen 'konvergens' og se hvordan det forklarer børns løgn.",
+          "why_it_matters": "Her bliver Sterns teori brugt på et konkret udviklingspsykologisk fænomen.",
+          "stop_signal": "når du når afsnittet Values and Valuation"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 15-18",
+          "task": "Undersøg forskellen på personalisme og individualisme.",
+          "why_it_matters": "Det redder teorien fra at være ren ego-psykologi og inddrager samfundet.",
+          "stop_signal": "når du når afsnittet A Closing Observation"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "atom + atom + atom",
+          "why": "Viser absurditeten i at forklare menneskelige følelser mekanisk.",
+          "where_to_look": "s. 5"
+        },
+        {
+          "target": "convergence of inner and outer factors",
+          "why": "Hjørnestenen i Sterns udviklingsforståelse.",
+          "where_to_look": "s. 14"
+        },
+        {
+          "target": "Ich werte, ... also bin ich Wert",
+          "why": "Opsummerer kernen i menneskets iboende værdi og handlekraft.",
+          "where_to_look": "s. 15"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De præcise historiske detaljer om Sterns forflyttelser og akademiske rivaliseringer.",
+        "De dybe filosofiske forskelle mellem Ebbinghaus, Dilthey og Wundt – fokuser kun på Sterns eget standpunkt.",
+        "Biografiske fodnoter og lange tyske bogtitler."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære læsevej til at løse opgaverne. De indeholder den centrale argumentation.",
+      "coverage_note": "Disse sektioner dækker Sterns adskillelse af personer og ting, psykofysisk neutralitet, og konvergensmekanismen.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 5-6",
+          "heading": "Personer versus Ting",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor kan mennesket ikke reduceres til en samling af biologiske eller kognitive mekanismer?",
+          "explanation_paragraphs": [
+            "Stern reagerede skarpt imod en fremvoksende naturvidenskabelig psykologi, der betragtede mennesket mekanistisk som et sammensurium af atomer, energi og løsrevne tanker. Hvis vi blot er energi, der flyder ind og ud, hvordan kan vi så forklare sorg eller kærlighed?",
+            "Løsningen blev at indføre en fundamental ontologisk skelnen mellem personer og ting. En ting er blot en samling af dele. Den fungerer i overensstemmelse med mekaniske love, men den har ingen egen iboende drivkraft eller værdi. En person er derimod en unik, målstyret helhed. For en person kommer helheden altid før dens dele (som Stern kaldte 'momenter').",
+            "Det betyder, at en psykologi, der blot måler adskilte variabler og profiler uden at se den samlende, målstyrede person bag, begår en grundlæggende fejl. Det er både videnskabeligt upræcist og moralsk problematisk at behandle personer som ting."
+          ],
+          "key_points": [
+            "Ting er underlagt blinde årsagssammenhænge og består blot af mekaniske dele.",
+            "Personer er selvaktiverede, målstyrede og udgør en helhed, der er større end dens momenter.",
+            "Det er et overgreb på subjektet at reducere det til et 'impersonelt' aggregate af variabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "inherently valuable unity",
+              "why_it_matters": "Definerer selve kerneforskellen: personen er ikke et objekt, men en helhed med værdi i sig selv.",
+              "source_location": "s. 6"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 7-10",
+          "heading": "Psykofysisk Neutralitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan undgår vi dualismen mellem sjæl og krop uden at blive rene biologer?",
+          "explanation_paragraphs": [
+            "I psykologien falder man ofte i to grøfter: Enten ser man krop og sind som helt adskilte ting (naiv dualisme), eller også reducerer man alt mentalt til blot at være fysik (mekanisme). Stern introducerede begrebet psykofysisk neutralitet for at løse dette.",
+            "Tanken er, at den primære virkelighed i verden er *den hele person*. Forskellen mellem hvad der er fysisk, og hvad der er psykologisk, er afledt og sekundær. Når et menneske udfører en handling – fx taler – involverer det fysiske stemmelæber og psykologisk hukommelse, men handlingen udspringer fra den hele, neutrale person.",
+            "For at forklare menneskets målsøgende handlinger overtog Stern Aristoteles' begreb 'enteleki'. Dette beskriver personens iboende, formålsrettede kausalitet. Det er altid personen, der samler og orkestrerer sine handlinger, ikke delene der styrer personen."
+          ],
+          "key_points": [
+            "Den hele person er ontologisk før opdelingen i krop og sind.",
+            "Fysiske og psykologiske elementer er blot analytiske facetter af den samme enhed.",
+            "Enteleki betegner den målstyrede drivkraft i personens handlinger."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 7",
+              "passage": "Keine Gestalt ohne Gestalter!",
+              "why_it_matters": "Dette understreger Sterns pointe over for Gestaltpsykologien: Der findes ingen perceptionshelheder uden en hel person, der aktivt danner dem."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 11-12, 15-18",
+          "heading": "Introception og Forholdet til Samfundet",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvis personen er en unik helhed, bliver teorien så ikke bare ekstremt egoistisk?",
+          "explanation_paragraphs": [
+            "Man kunne fristes til at tro, at Sterns fokus på den unikke person førte direkte til en radikal individualisme. Men Stern advarede kraftigt herimod. En person, der kun forfølger sine egne isolerede mål (autoteliske mål), ville være tom.",
+            "Mennesker eksisterer i et samfund, der stiller krav og har sine egne værdier (heteroteliske mål). Gennem en aktiv proces, som Stern kalder 'introception', optager personen disse ydre normer og gør dem til sine egne. ",
+            "Dette betyder, at personen kan indordne sig under samfundets overpersonlige krav uden at miste sig selv eller blive reduceret til et blottet værktøj. Personalisme kræver, at vi forstår individets unikhed i konstant forhandling med sociale og etiske forpligtelser."
+          ],
+          "key_points": [
+            "Personalisme og ensidig individualisme er modsætninger.",
+            "Introception er den proces, hvor personen tilegner sig ydre, overpersonlige værdier.",
+            "Personlig udvikling forudsætter et møde med samfundets krav."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "s. 12-14",
+          "heading": "Konvergens og Udvikling af Træk",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor kommer specifikke personlighedstræk fra, hvis de ikke er medfødte og faste?",
+          "explanation_paragraphs": [
+            "Hvis personen ikke bare er en samling fastlåste elementer, hvordan forklarer vi så at folk udvikler faste vaner og træk? Stern svarede med begrebet *konvergens*. Udvikling sker, når indre dispositioner møder ydre miljøbetingelser.",
+            "Stern anså ikke dispositioner som determinerende træk, der dikterer vores adfærd, men som uforløste potentialer. Disse potentialer kan vækkes, formes eller hæmmes af de strukturer (affordances), miljøet tilbyder.",
+            "Et klassisk eksempel er udviklingen af at lyve hos børn. Stern afviste, at løgn er en medfødt 'egenskab'. Men barnet har et indre potentiale for at forsvare sig mod ubehag. Hvis dette barn vokser op i et strengt straffende ydre miljø, vil disse to faktorer konvergere, og resultatet bliver, at barnet begynder at lyve som vane."
+          ],
+          "key_points": [
+            "Træk er ikke faste biologiske essenser, men resultatet af løbende konvergens.",
+            "Et adfærdsmønster kræver både et indre potentiale og en ydre omstændighed for at opstå.",
+            "Dette skaber en dynamisk forståelse af personligheden i kontekst frem for statiske variabler."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "convergence of inner and outer factors",
+              "why_it_matters": "Formlen der erstatter ideen om faste, isolerede personlighedstræk.",
+              "source_location": "s. 14"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan mennesket ikke reduceres til en samling af biologiske eller kognitive mekanismer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Korte sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi dualismen mellem sjæl og krop uden at blive rene biologer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort forklaring af helhedens primat",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvis personen er en unik helhed, bliver teorien så ikke bare ekstremt egoistisk?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvor kommer specifikke personlighedstræk fra, hvis de ikke er medfødte og faste?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To faktorer og resultatet af deres møde",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan erstatter Sterns kritiske personalisme det mekanistiske og variabel-baserede menneskesyn med en holistisk model af personen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at udfylde disse felter ud fra din hukommelse. Når du sidder fast, kan du genåbne Abridged Reader for at reparere din viden.",
+      "overview": [
+        "Sterns kritiske personalisme forsvarer mennesket som en unik, formålsrettet helhed.",
+        "Gennem begreber som psykofysisk neutralitet og konvergens afvises mekanistiske forklaringer.",
+        "Teorien danner bro mellem individets udvikling og samfundets etiske krav."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I modsætning til en ting, som er en samling af dele uden iboende værdi, er en person en selvaktiveret og __________ helhed.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Sterns princip for, at den hele person er den primære virkelighed, og at opdelingen i krop og sind blot er sekundære 'momenter', kaldes psykofysisk __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den dynamiske proces, hvorved personlighedstræk formes over tid som et sammenspil mellem anlæg og miljø, hedder __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Stern afviste ren individualisme og hævdede, at personen aktivt må tilegne sig overpersonlige samfundsmål gennem mekanismen __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Udtrykket 'Keine Gestalt ohne __________' betyder, at det altid er personen, der aktivt skaber og samler sine psykologiske og fysiske handlinger.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "I Sterns eksempel opstår vanen med at lyve ikke ud fra et medfødt træk, men fordi barnets behov for forsvar møder et hårdt, straffende ydre __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn Konvergens-modellen for udvikling af et personlighedstræk.",
+          "required_elements": [
+            "Indre dispositioner (potentiale",
+            "Ydre miljø (ydre faktorer",
+            "Pilen der illustrerer selve konvergensen",
+            "Resultatet (det synlige træk eller adfærd"
+          ],
+          "blank_space_hint": "Brug en tragt- eller pilestruktur til at illustrere hvordan to forskellige elementer tvinges sammen til et nyt fælles resultat."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at overføre Sterns metateori direkte til dine mundtlige og skriftlige eksamenssvar.",
+      "use_this_text_for": [
+        "At kritisere trækpsykologiens og Big Fives brug af adskilte variabler.",
+        "At demonstrere kursets dialektik mellem indre Essens og ydre Kontekst.",
+        "At forklare hvordan personlighedstræk er dynamiske resultater af konvergens.",
+        "At argumentere for subjektet som en helhed frem for løsrevne kognitive eller biologiske elementer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologiens reificering (W02L1)",
+          "connection": "Stern angriber direkte illusionen om, at en profil af adskilte dimensioner udgør personen."
+        },
+        {
+          "course_theme": "Meta-teoretiske orienteringspunkter (W12L1)",
+          "connection": "Konvergensmekanismen sætter ord på mødet mellem personens 'essens' og omgivelsernes 'kontekst'."
+        },
+        {
+          "course_theme": "Kritisk psykologi (Senere uger)",
+          "connection": "Personens overtagelse af samfundets mål via introception fungerer som forløber for ideen om agency i samfundet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five modellen",
+          "how_to_compare": "Sammenlign statiske, målbare træk med Sterns dynamiske konvergens: Stern ser egenskaber som udfaldet af et møde i stedet for en permanent indre kerne."
+        },
+        {
+          "compare_with": "Biologisk determinisme / Dualisme",
+          "how_to_compare": "Vis forskellen mellem et split-system af krop vs. sjæl og Sterns fastholdelse af den psykofysisk neutrale, hele person."
+        },
+        {
+          "compare_with": "Radikal socialkonstruktionisme",
+          "how_to_compare": "Brug Sterns ide om den 'gestaltende person' til at vise, at selvom konteksten er afgørende, forsvinder den handlende person aldrig."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskutér personlighedens stabilitet",
+          "use_in_answer": "Brug konvergens: Argumenter for, at stabilitet kun opstår, når både indre anlæg og ydre miljøkrav holdes stabile over tid.",
+          "caution": "Undgå at lyde som om miljøet deterministisk former barnet; personen er stadig med-aktør."
+        },
+        {
+          "prompt_type": "Kritik af personlighedstests",
+          "use_in_answer": "Slå fast, at tests ofte måler 'ting' – et aggregat af løsrevne scorer. Henvis til Sterns pointe om at dette ignorerer personens teleologi (formålsrettethed).",
+          "caution": "Påstå ikke, at Stern hadede al kvantitativ forskning; han ville blot forhindre, at den overskyggede helheden."
+        },
+        {
+          "prompt_type": "Forklar subjektiv handlekraft (Agency)",
+          "use_in_answer": "Træk begrebet 'introception' ind. Vis hvordan subjektet bevarer sit 'selv' selv under presset fra ydre sociale krav.",
+          "caution": "Gør ikke personalisme lig med isoleret, egoistisk individualisme."
+        },
+        {
+          "prompt_type": "Analysér forholdet mellem individ og samfund",
+          "use_in_answer": "Brug introception og supra-personlige mål til at vise, at mennesket har et aktivt etisk tilhørsforhold til verden omkring sig.",
+          "caution": "Gør ikke samfundet til blot en passiv kulisse; kravene er en reel del af personlighedens ramme."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At forveksle personalisme med snæver individualisme.",
+          "better_reading": "Personalisme kræver, at personen aktivt interagerer med og optager samfundets krav via overpersonlige mål."
+        },
+        {
+          "trap": "At læse Sterns 'dispositioner' som faste deterministiske egenskaber.",
+          "better_reading": "Dispositioner er blot bløde potentialer, der kun aktiveres, hvis de møder de rette ydre rammer."
+        },
+        {
+          "trap": "At antage at Stern ignorerede den fysiske krop i sin teori.",
+          "better_reading": "Kroppen anerkendes, men den er kun et afledt 'moment' styret af den primære, neutrale person."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Sterns koncept om konvergens, kritiser den antagelse at Big Five træk er faste, uforanderlige dele af menneskets biologi.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort Sterns skelnen mellem personer og ting for at etablere hans helhedssyn.",
+        "Introducér konvergens som selve mekanismen bag adfærd (indre potentiale + ydre faktorer).",
+        "Giv eksemplet med barnets løgn: Vis, at løgnen ikke bor i barnet, men opstår i mødet med strenge straffe.",
+        "Konkludér: Hvorfor dette gør det epistemologisk problematisk at opstille statiske profiler, som Big Five gør."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

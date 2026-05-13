@@ -1,0 +1,1018 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:52:46Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
+    "source_files_signature": "a349d403a1a9521b17916983b650f1fe7a3ac7571fccddbf99a26186c00004b6",
+    "source_card": "3dd7506ce3bdc4e34e36e1f0383489f10e3c4da5791911ac842a1d3ed0afda54",
+    "revised_lecture_substrate": "031ac60325b0294e3bfe7e4ac407bc776693b62bbb276625fc259ef4fb72a0e1",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w09l1-holzkamp-2013-c3068d8a",
+    "lecture_key": "W09L1",
+    "title": "Holzkamp (2013)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf"
+    ],
+    "reading_title": "What Could a Psychology from the Standpoint of the Subject Be?",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W09L1"
+    ],
+    "sequence_index": 3,
+    "source_filename": "W9L1 Holzkamp (2013).pdf",
+    "subject_relative_path": "Readings/W9L1 Kritisk psykologi/W9L1 Holzkamp (2013).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "ed086575129d854fb05cd9b7a7da1d5a48db7ccc674f88f2fdaff871149a9ebd",
+      "size_bytes": 1430661,
+      "page_count": 14,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 9100,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 14,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-holzkamp-2013-c3068d8a",
+      "lecture_key": "W09L1",
+      "source_title": "Holzkamp (2013)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug guiden til at finde tekstens hovedproblem, før du læser videre.",
+      "teaser_paragraphs": [
+        "Psykologien har et problem. I over hundrede år har den forsøgt at måle mennesker som objekter i et laboratorium, på jagt efter usynlige love, der mekanisk styrer vores adfærd fra ydersiden.",
+        "Holzkamp mener, at dette projekt hviler på en fundamental misforståelse. Når vi undersøger mennesker fra et objektivt 'tredjepersons-standpunkt', reducerer vi dem til maskiner, der blot reagerer blindt på miljøets påvirkninger.",
+        "Men mennesker reagerer ikke blindt. Vi handler af grunde, der giver mening for os ud fra vores konkrete livsbetingelser. For at forstå dette, må psykologien skifte spor fra en traditionel *conditioning discourse* til en *reason discourse*.",
+        "Dette er ikke bare en kosmetisk metodejustering. Det er et krav om at omstyrte hele det videnskabelige fundament. Hvis forskeren og forsøgspersonen grundlæggende er subjekter i den samme verden, kan den ene ikke længere betragte den anden som et passivt objekt.",
+        "Teksten lægger grundstenen for Kritisk Psykologi. Den viser, hvordan vi går fra at lede efter årsager inde i individet, til at undersøge de sociale betingelser, som subjektet aktivt forholder sig til."
+      ],
+      "main_problem": "Hvordan kan psykologien bygge en stringent videnskab på subjektets eget standpunkt, i stedet for at betragte mennesket som et reagerende objekt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er forskellen på 'conditioning discourse' og 'reason discourse'?",
+          "why_it_matters": "Det etablerer det helt centrale skift fra variabelpsykologi til subjektvidenskab.",
+          "answer_form": "Kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor påstår Holzkamp, at traditionelle psykologiske eksperimenter sjældent opdager noget nyt?",
+          "why_it_matters": "Det afmonterer troen på, at laboratorieforsøg er den eneste sande videnskab.",
+          "answer_form": "En begrundelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle får forsøgspersonen, når forskeren ikke længere kan studere dem udefra?",
+          "why_it_matters": "Det ændrer selve magtforholdet og metoden i psykologisk forskning.",
+          "answer_form": "1 begreb"
+        },
+        {
+          "number": 4,
+          "question": "Hvad vil det sige at 'overskride umiddelbarheden' i en konflikt?",
+          "why_it_matters": "Dette er målet med Kritisk Psykologi: at hjælpe mennesker med at udvide deres handleevne i praksis.",
+          "answer_form": "En kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det teoretiske rammeværk for kursets fokus på 'Kontekst' og 'Handleevne', og markerer overgangen fra trækpsykologi til sociale praksisser.",
+      "overview": [
+        "Kritikken af variabelpsykologiens årsag-virkning logik.",
+        "Introduktionen af begrundelsesdiskursen og subjektets standpunkt.",
+        "Forskningens nye mål om at udvide subjektets handleevne i hverdagen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I og II (s. 46-48)",
+          "task": "Find definitionen på de to diskurser (reason vs. conditioning).",
+          "why_it_matters": "Det er tekstens grundlæggende skelnen.",
+          "stop_signal": "Når du forstår forskellen på første- og tredjepersonsstandpunktet"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 48-52)",
+          "task": "Forstå hvorfor if-then hypoteser ofte bare er logiske fornuftsmønstre.",
+          "why_it_matters": "Dette er Holzkamps skarpeste våben mod mainstream psykologi.",
+          "stop_signal": "Når Smedslunds 'psycho-logic' er nævnt"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 52-55)",
+          "task": "Aflæs hvordan forskerens og subjektets standpunkt smelter sammen.",
+          "why_it_matters": "Det forklarer det nye metodeideal.",
+          "stop_signal": "Når du har fundet begrebet co-researcher"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 55-59)",
+          "task": "Fang hvordan vi overvinder selvbegrænsninger ved at overskride umiddelbarheden.",
+          "why_it_matters": "Det viser teoriens praktiske anvendelse.",
+          "stop_signal": "Når teksten slutter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "reasons are always 'first-person'",
+          "why": "Fastslår at grunde ikke kan observeres udefra.",
+          "where_to_look": "Sektion II (s. 47)"
+        },
+        {
+          "target": "other subjects can only be co-researchers",
+          "why": "Konsekvensen for den empiriske metode.",
+          "where_to_look": "Sektion IV (s. 53)"
+        },
+        {
+          "target": "transcending immediacy",
+          "why": "Målet for den praktiske udvikling af handleevne.",
+          "where_to_look": "Sektion V (s. 57)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske diskussioner om Smedslund og Brandtstädter.",
+        "De præcise sproglige beviser for, hvorfor belønningsforsøg er tautologiske.",
+        "Detaljerne i de tyske Røde Kors cases til sidst i teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 47",
+          "excerpt": "Although societal conditions/meanings are objectively given, they only become decisive for my actions to the degree that they become premises for the reasons of my actions.",
+          "open_question": "Hvis samfundet ikke kan tvinge os direkte, hvordan påvirker det os så?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion II (s. 47)",
+          "excerpt": "reasons are always 'first-person'",
+          "open_question": "Hvorfor påstår Holzkamp, at traditionelle psykologiske eksperimenter sjældent opdager noget nyt?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse tekstens kerneproblemer. Du kan bruge dem direkte i de næste opgaver.",
+      "coverage_note": "Fokuserer på de epistemologiske skift og de centrale begreber, mens lange metode-beviser er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion I & II (s. 46-48)",
+          "heading": "Opgøret med Betingelsesdiskursen",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor dur den klassiske variabelpsykologi ikke til at forstå mennesker?",
+          "explanation_paragraphs": [
+            "Mainstream psykologi arbejder ud fra en 'conditioning discourse' (betingelsesdiskurs). Den betragter mennesker som objekter, der bliver direkte bestemt af deres omstændigheder. Man observerer fra et eksternt tredjepersons-standpunkt og leder efter love: Hvis X sker, gør personen Y.",
+            "Holzkamp argumenterer for, at samfundets strukturer ikke dikterer vores handlinger direkte. De fungerer i stedet som *muligheder* for handling. Mennesket forholder sig bevidst til sine betingelser.",
+            "Derfor må psykologien skifte til en 'reason discourse' (begrundelsesdiskurs). Vi handler ud fra grunde, og disse grunde er fundamentalt 'førstepersons'. De kan kun forstås fra subjektets eget standpunkt."
+          ],
+          "key_points": [
+            "Conditioning discourse = mennesket som reagerende objekt (tredjeperson).",
+            "Reason discourse = mennesket som handlende subjekt (førsteperson).",
+            "Samfundet bestemmer ikke handlinger direkte, men udgør præmisser for vores grunde."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "reasons are always 'first-person'",
+              "why_it_matters": "Understreger, at grunde kræver et internt standpunkt.",
+              "source_location": "s. 47"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 48",
+              "passage": "The reason discourse distinguishes the subject science approach from the conditioning discourse in traditional variable psychology, which is not based on the subject standpoint as a first-person standpoint but on the external 'third-person standpoint'.",
+              "why_it_matters": "Dette er kernedistinktionen i hele den kritiske psykologi."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 48-52)",
+          "heading": "Fornuftsmønstre vs. Empiriske Hypoteser",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor er mange psykologiske eksperimenter en illusion?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi elsker at opstille hypoteser om adfærd (f.eks. 'hvis man belønnes, gentages adfærden') og teste dem empirisk i laboratorier.",
+            "Holzkamp påpeger, at dette ofte er en illusion. Mange af disse 'hypoteser' er slet ikke empiriske opdagelser om verden, men indlysende fornuftsmønstre ('reason patterns').",
+            "Hvis en person har en god grund til at gøre noget under givne omstændigheder, er det blot logisk, at de gør det. At teste om folk vil have den største gevinst i et spil er som at teste om ungkarle er ugifte. Det tester logik, ikke empiri."
+          ],
+          "key_points": [
+            "Mainstream psykologi tror, den tester årsagssammenhænge.",
+            "I virkeligheden tester den ofte blot definitioner af, hvad der er fornuftigt ('reason patterns').",
+            "Dette underminerer gyldigheden af det klassiske laboratorieeksperiment."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "assumptions about empirical relations are in fact 'reason patterns'",
+              "why_it_matters": "Afslører fejlslutningen i eksperimentel variabelpsykologi.",
+              "source_location": "s. 50"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 52-55)",
+          "heading": "Forsøgspersonen som Medforsker",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvilken rolle får mennesket, når vi studerer det fra subjektstandpunktet?",
+          "explanation_paragraphs": [
+            "Hvis videnskaben skal baseres på begrundelsesdiskursen, står vi med et metodisk problem. Forskeren kan ikke længere stå udenfor og kigge ind i hovedet på en passiv 'forsøgsperson'.",
+            "Forskerens videnskabelige standpunkt må smelte sammen med subjektets standpunkt. Da de begge er subjekter, der forsøger at forstå verden, forsvinder opdelingen i forsker og objekt.",
+            "Den anden person kan nu kun betragtes som en 'medforsker' (co-researcher). Objektet for forskningen er ikke længere personen selv, men den verden og de betingelser, de i fællesskab oplever."
+          ],
+          "key_points": [
+            "Subjektstandpunktet gælder som et strengt videnskabeligt standpunkt.",
+            "Forsker/objekt-opdelingen ophæves.",
+            "Andre mennesker bliver medforskere, ikke objekter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "other subjects can only be co-researchers",
+              "why_it_matters": "Opsummerer den nye metodologiske relation.",
+              "source_location": "s. 53"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 55-59)",
+          "heading": "At Overskride Umiddelbarheden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad er målet med forskningen, og hvordan hjælper det subjektet i praksis?",
+          "explanation_paragraphs": [
+            "Kritisk psykologi skal bevise sit værd ved at skabe ægte udvikling i subjektets daglige livsførelse. Det handler om at overvinde selvbegrænsninger og udvide handleevnen.",
+            "I en fastlåst situation forsøger man ofte at kontrollere andre direkte (umiddelbart), fordi man ikke forstår deres velbegrundede årsager til at stritte imod. Dette fører til gensidig blokering.",
+            "Udviklingen sker gennem 'overskridelse af umiddelbarhed' (transcending immediacy). Her stopper man forsøget på direkte kontrol og gennemskuer i stedet de samfundsmæssige betingelser, der gør, at begge parter har gode grunde til deres adfærd. Dermed kan konflikten løses på et højere niveau."
+          ],
+          "key_points": [
+            "Sandhedskriteriet for forskningen er, om den forbedrer subjektets livspraksis.",
+            "Direkte pres mod andres handlinger fører til selvbegrænsning.",
+            "Overskridelse af umiddelbarhed frigør handleevnen ved at ændre betingelserne i stedet for menneskene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "transcending immediacy",
+              "why_it_matters": "Det begreb, der markerer springet fra fastlåst konflikt til udvidet handleevne.",
+              "source_location": "s. 57"
+            }
+          ],
+          "source_passages": []
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor dur den klassiske variabelpsykologi ikke til at forstå mennesker?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er mange psykologiske eksperimenter en illusion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En begrundelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv orienteringspunktet, som sektionen peger på: Hvilken rolle får mennesket, når vi studerer det fra subjektstandpunktet?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med forskningen, og hvordan hjælper det subjektet i praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien bygge en stringent videnskab på subjektets eget standpunkt, i stedet for at betragte mennesket som et reagerende objekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde dette ark fra hukommelsen. Brug kun læseteksten som nødbremse.",
+      "overview": [
+        "Teksten gør op med variabelpsykologiens blinde betingelsesdiskurs.",
+        "Den etablerer begrundelsesdiskursen og gør medforskning til metoden.",
+        "Målet er at fjerne selvbegrænsning gennem overskridelse af umiddelbarhed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når psykologien forsøger at studere mennesker fra et eksternt tredjepersons-standpunkt, kalder Holzkamp det for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "2 engelske ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Samfundet styrer os ikke direkte som mekaniske årsager, men fungerer i stedet som __________ for vores grunde.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Traditionelle hypoteser om belønning er ofte ikke empiriske love, men blotte __________ der afspejler indlysende logik.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Fordi videnskabens standpunkt smelter sammen med subjektets, kan andre mennesker ikke længere kaldes forsøgsobjekter, men må være __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Direkte forsøg på at kontrollere andres handlinger fører til modstand og __________, fordi man ignorerer de andres velbegrundede perspektiv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at løse konflikten må vi opnå en overskridelse af __________, hvor vi forstår de samfundsmæssige rammer bag de andres handlinger.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et diagram over de to forskningsparadigmer over for hinanden.",
+          "required_elements": [
+            "Betingelsesdiskursen (Ydre årsag -> Blind virkning",
+            "Begrundelsesdiskursen (Ydre betingelser -> Subjekt -> Begrundet handling"
+          ],
+          "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at bygge dit ordforråd til den mundtlige eksamen. Sig svarene højt.",
+      "use_this_text_for": [
+        "At definere kursusparameteret 'Handleevne' (Agency).",
+        "At kritisere psykologiens forsøg på at finde objektive, naturvidenskabelige love for adfærd.",
+        "At forklare overgangen fra biologisk/indre determination til mennesket som aktiv medskaber af betingelser.",
+        "At forstå 'Daglig livsførelse' som det nye psykologiske analyseobjekt."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Uge 2)",
+          "connection": "Kritisk psykologi dekonstruerer ideen om, at indre 'træk' fungerer som ydre, uafhængige årsager, der styrer os."
+        },
+        {
+          "course_theme": "Humanistisk Psykologi (Uge 7)",
+          "connection": "Begge fokuserer på handleevne (agency), men Holzkamp flytter kilden fra en indre kerne til en relation med ydre samfundsbetingelser."
+        },
+        {
+          "course_theme": "Orienteringerne: Handleevne vs. Struktur (Uge 12)",
+          "connection": "Dette er hovedteksten til at argumentere for, at struktur ikke udsletter handleevne, men udgør præmisserne for den."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five trækmodellen",
+          "how_to_compare": "Kontrastér trækmodellens 'tredjepersons-standpunkt' og reificerede årsager med Holzkamps 'førstepersons-standpunkt' og begrundede handlinger."
+        },
+        {
+          "compare_with": "Behaviorismen (Betingning)",
+          "how_to_compare": "Brug Holzkamps kritik af 'reason patterns' til at afsløre, at betingningsforsøg ofte blot tester tautologisk fornuft i stedet for egentlige naturlove."
+        },
+        {
+          "compare_with": "Poststrukturalisme (Foucault)",
+          "how_to_compare": "Sammenlign hvordan Kritisk Psykologi vil *frigøre* subjektet til udvidet handleevne, mens Foucault vil analysere, hvordan selve ideen om subjektet bliver produceret af magt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug Holzkamp til at afvise",
+          "use_in_answer": "Afvis at et psykologisk eksperiment beviser en naturlov, blot fordi if-then hypotesen virker.",
+          "caution": "Husk at bruge begrebet 'reason patterns' for at få den fulde faglige tyngde."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Samfundet determinerer mig ikke, det sætter betingelserne, som jeg forholder mig til.",
+          "caution": "Gør det klart, at handlinger stadig er velfunderede, ikke bare tilfældige."
+        },
+        {
+          "prompt_type": "Forsvar metoden",
+          "use_in_answer": "Subjektstandpunktet er ikke bare løs navlepilleri; det er det eneste gyldige videnskabelige udgangspunkt, fordi årsager til handling ikke kan observeres udefra.",
+          "caution": "Undgå at lyde som om psykologi bare er 'alles egen sandhed'."
+        },
+        {
+          "prompt_type": "Sammenlign objektet",
+          "use_in_answer": "Forklar hvordan en forsøgsperson skifter status fra passiv genstand (objekt) til fælles deltager (co-researcher).",
+          "caution": "Brug det til at vise forskellen i epistemologi mellem kursusdel 1 og 3."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro 'subjektstandpunktet' betyder rent subjektivisme, hvor enhver opfattelse er lige videnskabeligt gyldig.",
+          "better_reading": "Standpunktet kræver stadig, at vi analyserer, hvordan de individuelle grunde objektivt formidles af konkrete samfundsstrukturer."
+        },
+        {
+          "trap": "At forveksle 'grunde' med dårlige efterrationaliseringer.",
+          "better_reading": "I denne teori er 'grunde' reelle, objektivt forankrede præmisser i subjektets daglige livsførelse."
+        },
+        {
+          "trap": "At tro Holzkamp vil afskaffe al empirisk forskning.",
+          "better_reading": "Han vil omdefinere den til en samarbejdsproces, der muliggør reel udvikling i subjektets livspraksis."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for forskellen mellem betingelsesdiskurs og begrundelsesdiskurs, og forklar hvilke konsekvenser begrundelsesdiskursen har for den psykologiske forskningsmetode.",
+      "mini_exam_answer_plan_slots": [
+        "1. Definer betingelsesdiskursen (3. person, ydre variabler, if-then logik).",
+        "2. Definer begrundelsesdiskursen (1. person, samfundet som præmisser, grunde).",
+        "3. Forklar illusionen i empiriske hypoteser (reason patterns).",
+        "4. Demonstrér den metodiske konsekvens (forsøgsperson bliver co-researcher).",
+        "5. Konkludér med formålet (overskridelse af umiddelbarhed / udvidet handleevne)."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w09l1-holzkamp-2013-c3068d8a",
+      "lecture_key": "W09L1",
+      "source_title": "Holzkamp (2013)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug guiden til at finde tekstens hovedproblem, før du læser videre.",
+      "teaser_paragraphs": [
+        "Psykologien har et problem. I over hundrede år har den forsøgt at måle mennesker som objekter i et laboratorium, på jagt efter usynlige love, der mekanisk styrer vores adfærd fra ydersiden.",
+        "Holzkamp mener, at dette projekt hviler på en fundamental misforståelse. Når vi undersøger mennesker fra et objektivt 'tredjepersons-standpunkt', reducerer vi dem til maskiner, der blot reagerer blindt på miljøets påvirkninger.",
+        "Men mennesker reagerer ikke blindt. Vi handler af grunde, der giver mening for os ud fra vores konkrete livsbetingelser. For at forstå dette, må psykologien skifte spor fra en traditionel *conditioning discourse* til en *reason discourse*.",
+        "Dette er ikke bare en kosmetisk metodejustering. Det er et krav om at omstyrte hele det videnskabelige fundament. Hvis forskeren og forsøgspersonen grundlæggende er subjekter i den samme verden, kan den ene ikke længere betragte den anden som et passivt objekt.",
+        "Teksten lægger grundstenen for Kritisk Psykologi. Den viser, hvordan vi går fra at lede efter årsager inde i individet, til at undersøge de sociale betingelser, som subjektet aktivt forholder sig til."
+      ],
+      "main_problem": "Hvordan kan psykologien bygge en stringent videnskab på subjektets eget standpunkt, i stedet for at betragte mennesket som et reagerende objekt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er forskellen på 'conditioning discourse' og 'reason discourse'?",
+          "why_it_matters": "Det etablerer det helt centrale skift fra variabelpsykologi til subjektvidenskab.",
+          "answer_form": "Kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor påstår Holzkamp, at traditionelle psykologiske eksperimenter sjældent opdager noget nyt?",
+          "why_it_matters": "Det afmonterer troen på, at laboratorieforsøg er den eneste sande videnskab.",
+          "answer_form": "En begrundelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle får forsøgspersonen, når forskeren ikke længere kan studere dem udefra?",
+          "why_it_matters": "Det ændrer selve magtforholdet og metoden i psykologisk forskning.",
+          "answer_form": "1 begreb"
+        },
+        {
+          "number": 4,
+          "question": "Hvad vil det sige at 'overskride umiddelbarheden' i en konflikt?",
+          "why_it_matters": "Dette er målet med Kritisk Psykologi: at hjælpe mennesker med at udvide deres handleevne i praksis.",
+          "answer_form": "En kort forklaring"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det teoretiske rammeværk for kursets fokus på 'Kontekst' og 'Handleevne', og markerer overgangen fra trækpsykologi til sociale praksisser.",
+      "overview": [
+        "Kritikken af variabelpsykologiens årsag-virkning logik.",
+        "Introduktionen af begrundelsesdiskursen og subjektets standpunkt.",
+        "Forskningens nye mål om at udvide subjektets handleevne i hverdagen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I og II (s. 46-48)",
+          "task": "Find definitionen på de to diskurser (reason vs. conditioning).",
+          "why_it_matters": "Det er tekstens grundlæggende skelnen.",
+          "stop_signal": "Når du forstår forskellen på første- og tredjepersonsstandpunktet"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 48-52)",
+          "task": "Forstå hvorfor if-then hypoteser ofte bare er logiske fornuftsmønstre.",
+          "why_it_matters": "Dette er Holzkamps skarpeste våben mod mainstream psykologi.",
+          "stop_signal": "Når Smedslunds 'psycho-logic' er nævnt"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 52-55)",
+          "task": "Aflæs hvordan forskerens og subjektets standpunkt smelter sammen.",
+          "why_it_matters": "Det forklarer det nye metodeideal.",
+          "stop_signal": "Når du har fundet begrebet co-researcher"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 55-59)",
+          "task": "Fang hvordan vi overvinder selvbegrænsninger ved at overskride umiddelbarheden.",
+          "why_it_matters": "Det viser teoriens praktiske anvendelse.",
+          "stop_signal": "Når teksten slutter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "reasons are always 'first-person'",
+          "why": "Fastslår at grunde ikke kan observeres udefra.",
+          "where_to_look": "Sektion II (s. 47)"
+        },
+        {
+          "target": "other subjects can only be co-researchers",
+          "why": "Konsekvensen for den empiriske metode.",
+          "where_to_look": "Sektion IV (s. 53)"
+        },
+        {
+          "target": "transcending immediacy",
+          "why": "Målet for den praktiske udvikling af handleevne.",
+          "where_to_look": "Sektion V (s. 57)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske diskussioner om Smedslund og Brandtstädter.",
+        "De præcise sproglige beviser for, hvorfor belønningsforsøg er tautologiske.",
+        "Detaljerne i de tyske Røde Kors cases til sidst i teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 47",
+          "excerpt": "Although societal conditions/meanings are objectively given, they only become decisive for my actions to the degree that they become premises for the reasons of my actions.",
+          "open_question": "Hvis samfundet ikke kan tvinge os direkte, hvordan påvirker det os så?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion II (s. 47)",
+          "excerpt": "reasons are always 'first-person'",
+          "open_question": "Hvorfor påstår Holzkamp, at traditionelle psykologiske eksperimenter sjældent opdager noget nyt?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse tekstens kerneproblemer. Du kan bruge dem direkte i de næste opgaver.",
+      "coverage_note": "Fokuserer på de epistemologiske skift og de centrale begreber, mens lange metode-beviser er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion I & II (s. 46-48)",
+          "heading": "Opgøret med Betingelsesdiskursen",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor dur den klassiske variabelpsykologi ikke til at forstå mennesker?",
+          "explanation_paragraphs": [
+            "Mainstream psykologi arbejder ud fra en 'conditioning discourse' (betingelsesdiskurs). Den betragter mennesker som objekter, der bliver direkte bestemt af deres omstændigheder. Man observerer fra et eksternt tredjepersons-standpunkt og leder efter love: Hvis X sker, gør personen Y.",
+            "Holzkamp argumenterer for, at samfundets strukturer ikke dikterer vores handlinger direkte. De fungerer i stedet som *muligheder* for handling. Mennesket forholder sig bevidst til sine betingelser.",
+            "Derfor må psykologien skifte til en 'reason discourse' (begrundelsesdiskurs). Vi handler ud fra grunde, og disse grunde er fundamentalt 'førstepersons'. De kan kun forstås fra subjektets eget standpunkt."
+          ],
+          "key_points": [
+            "Conditioning discourse = mennesket som reagerende objekt (tredjeperson).",
+            "Reason discourse = mennesket som handlende subjekt (førsteperson).",
+            "Samfundet bestemmer ikke handlinger direkte, men udgør præmisser for vores grunde."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "reasons are always 'first-person'",
+              "why_it_matters": "Understreger, at grunde kræver et internt standpunkt.",
+              "source_location": "s. 47"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 48",
+              "passage": "The reason discourse distinguishes the subject science approach from the conditioning discourse in traditional variable psychology, which is not based on the subject standpoint as a first-person standpoint but on the external 'third-person standpoint'.",
+              "why_it_matters": "Dette er kernedistinktionen i hele den kritiske psykologi."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion III (s. 48-52)",
+          "heading": "Fornuftsmønstre vs. Empiriske Hypoteser",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor er mange psykologiske eksperimenter en illusion?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi elsker at opstille hypoteser om adfærd (f.eks. 'hvis man belønnes, gentages adfærden') og teste dem empirisk i laboratorier.",
+            "Holzkamp påpeger, at dette ofte er en illusion. Mange af disse 'hypoteser' er slet ikke empiriske opdagelser om verden, men indlysende fornuftsmønstre ('reason patterns').",
+            "Hvis en person har en god grund til at gøre noget under givne omstændigheder, er det blot logisk, at de gør det. At teste om folk vil have den største gevinst i et spil er som at teste om ungkarle er ugifte. Det tester logik, ikke empiri."
+          ],
+          "key_points": [
+            "Mainstream psykologi tror, den tester årsagssammenhænge.",
+            "I virkeligheden tester den ofte blot definitioner af, hvad der er fornuftigt ('reason patterns').",
+            "Dette underminerer gyldigheden af det klassiske laboratorieeksperiment."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "assumptions about empirical relations are in fact 'reason patterns'",
+              "why_it_matters": "Afslører fejlslutningen i eksperimentel variabelpsykologi.",
+              "source_location": "s. 50"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion IV (s. 52-55)",
+          "heading": "Forsøgspersonen som Medforsker",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvilken rolle får mennesket, når vi studerer det fra subjektstandpunktet?",
+          "explanation_paragraphs": [
+            "Hvis videnskaben skal baseres på begrundelsesdiskursen, står vi med et metodisk problem. Forskeren kan ikke længere stå udenfor og kigge ind i hovedet på en passiv 'forsøgsperson'.",
+            "Forskerens videnskabelige standpunkt må smelte sammen med subjektets standpunkt. Da de begge er subjekter, der forsøger at forstå verden, forsvinder opdelingen i forsker og objekt.",
+            "Den anden person kan nu kun betragtes som en 'medforsker' (co-researcher). Objektet for forskningen er ikke længere personen selv, men den verden og de betingelser, de i fællesskab oplever."
+          ],
+          "key_points": [
+            "Subjektstandpunktet gælder som et strengt videnskabeligt standpunkt.",
+            "Forsker/objekt-opdelingen ophæves.",
+            "Andre mennesker bliver medforskere, ikke objekter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "other subjects can only be co-researchers",
+              "why_it_matters": "Opsummerer den nye metodologiske relation.",
+              "source_location": "s. 53"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion V (s. 55-59)",
+          "heading": "At Overskride Umiddelbarheden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad er målet med forskningen, og hvordan hjælper det subjektet i praksis?",
+          "explanation_paragraphs": [
+            "Kritisk psykologi skal bevise sit værd ved at skabe ægte udvikling i subjektets daglige livsførelse. Det handler om at overvinde selvbegrænsninger og udvide handleevnen.",
+            "I en fastlåst situation forsøger man ofte at kontrollere andre direkte (umiddelbart), fordi man ikke forstår deres velbegrundede årsager til at stritte imod. Dette fører til gensidig blokering.",
+            "Udviklingen sker gennem 'overskridelse af umiddelbarhed' (transcending immediacy). Her stopper man forsøget på direkte kontrol og gennemskuer i stedet de samfundsmæssige betingelser, der gør, at begge parter har gode grunde til deres adfærd. Dermed kan konflikten løses på et højere niveau."
+          ],
+          "key_points": [
+            "Sandhedskriteriet for forskningen er, om den forbedrer subjektets livspraksis.",
+            "Direkte pres mod andres handlinger fører til selvbegrænsning.",
+            "Overskridelse af umiddelbarhed frigør handleevnen ved at ændre betingelserne i stedet for menneskene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "transcending immediacy",
+              "why_it_matters": "Det begreb, der markerer springet fra fastlåst konflikt til udvidet handleevne.",
+              "source_location": "s. 57"
+            }
+          ],
+          "source_passages": []
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor dur den klassiske variabelpsykologi ikke til at forstå mennesker?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er mange psykologiske eksperimenter en illusion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En begrundelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv orienteringspunktet, som sektionen peger på: Hvilken rolle får mennesket, når vi studerer det fra subjektstandpunktet?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med forskningen, og hvordan hjælper det subjektet i praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykologien bygge en stringent videnskab på subjektets eget standpunkt, i stedet for at betragte mennesket som et reagerende objekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde dette ark fra hukommelsen. Brug kun læseteksten som nødbremse.",
+      "overview": [
+        "Teksten gør op med variabelpsykologiens blinde betingelsesdiskurs.",
+        "Den etablerer begrundelsesdiskursen og gør medforskning til metoden.",
+        "Målet er at fjerne selvbegrænsning gennem overskridelse af umiddelbarhed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når psykologien forsøger at studere mennesker fra et eksternt tredjepersons-standpunkt, kalder Holzkamp det for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "2 engelske ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Samfundet styrer os ikke direkte som mekaniske årsager, men fungerer i stedet som __________ for vores grunde.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Traditionelle hypoteser om belønning er ofte ikke empiriske love, men blotte __________ der afspejler indlysende logik.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Fordi videnskabens standpunkt smelter sammen med subjektets, kan andre mennesker ikke længere kaldes forsøgsobjekter, men må være __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Direkte forsøg på at kontrollere andres handlinger fører til modstand og __________, fordi man ignorerer de andres velbegrundede perspektiv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at løse konflikten må vi opnå en overskridelse af __________, hvor vi forstår de samfundsmæssige rammer bag de andres handlinger.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et diagram over de to forskningsparadigmer over for hinanden.",
+          "required_elements": [
+            "Betingelsesdiskursen (Ydre årsag -> Blind virkning",
+            "Begrundelsesdiskursen (Ydre betingelser -> Subjekt -> Begrundet handling"
+          ],
+          "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at bygge dit ordforråd til den mundtlige eksamen. Sig svarene højt.",
+      "use_this_text_for": [
+        "At definere kursusparameteret 'Handleevne' (Agency).",
+        "At kritisere psykologiens forsøg på at finde objektive, naturvidenskabelige love for adfærd.",
+        "At forklare overgangen fra biologisk/indre determination til mennesket som aktiv medskaber af betingelser.",
+        "At forstå 'Daglig livsførelse' som det nye psykologiske analyseobjekt."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Uge 2)",
+          "connection": "Kritisk psykologi dekonstruerer ideen om, at indre 'træk' fungerer som ydre, uafhængige årsager, der styrer os."
+        },
+        {
+          "course_theme": "Humanistisk Psykologi (Uge 7)",
+          "connection": "Begge fokuserer på handleevne (agency), men Holzkamp flytter kilden fra en indre kerne til en relation med ydre samfundsbetingelser."
+        },
+        {
+          "course_theme": "Orienteringerne: Handleevne vs. Struktur (Uge 12)",
+          "connection": "Dette er hovedteksten til at argumentere for, at struktur ikke udsletter handleevne, men udgør præmisserne for den."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five trækmodellen",
+          "how_to_compare": "Kontrastér trækmodellens 'tredjepersons-standpunkt' og reificerede årsager med Holzkamps 'førstepersons-standpunkt' og begrundede handlinger."
+        },
+        {
+          "compare_with": "Behaviorismen (Betingning)",
+          "how_to_compare": "Brug Holzkamps kritik af 'reason patterns' til at afsløre, at betingningsforsøg ofte blot tester tautologisk fornuft i stedet for egentlige naturlove."
+        },
+        {
+          "compare_with": "Poststrukturalisme (Foucault)",
+          "how_to_compare": "Sammenlign hvordan Kritisk Psykologi vil *frigøre* subjektet til udvidet handleevne, mens Foucault vil analysere, hvordan selve ideen om subjektet bliver produceret af magt."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug Holzkamp til at afvise",
+          "use_in_answer": "Afvis at et psykologisk eksperiment beviser en naturlov, blot fordi if-then hypotesen virker.",
+          "caution": "Husk at bruge begrebet 'reason patterns' for at få den fulde faglige tyngde."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Samfundet determinerer mig ikke, det sætter betingelserne, som jeg forholder mig til.",
+          "caution": "Gør det klart, at handlinger stadig er velfunderede, ikke bare tilfældige."
+        },
+        {
+          "prompt_type": "Forsvar metoden",
+          "use_in_answer": "Subjektstandpunktet er ikke bare løs navlepilleri; det er det eneste gyldige videnskabelige udgangspunkt, fordi årsager til handling ikke kan observeres udefra.",
+          "caution": "Undgå at lyde som om psykologi bare er 'alles egen sandhed'."
+        },
+        {
+          "prompt_type": "Sammenlign objektet",
+          "use_in_answer": "Forklar hvordan en forsøgsperson skifter status fra passiv genstand (objekt) til fælles deltager (co-researcher).",
+          "caution": "Brug det til at vise forskellen i epistemologi mellem kursusdel 1 og 3."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro 'subjektstandpunktet' betyder rent subjektivisme, hvor enhver opfattelse er lige videnskabeligt gyldig.",
+          "better_reading": "Standpunktet kræver stadig, at vi analyserer, hvordan de individuelle grunde objektivt formidles af konkrete samfundsstrukturer."
+        },
+        {
+          "trap": "At forveksle 'grunde' med dårlige efterrationaliseringer.",
+          "better_reading": "I denne teori er 'grunde' reelle, objektivt forankrede præmisser i subjektets daglige livsførelse."
+        },
+        {
+          "trap": "At tro Holzkamp vil afskaffe al empirisk forskning.",
+          "better_reading": "Han vil omdefinere den til en samarbejdsproces, der muliggør reel udvikling i subjektets livspraksis."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for forskellen mellem betingelsesdiskurs og begrundelsesdiskurs, og forklar hvilke konsekvenser begrundelsesdiskursen har for den psykologiske forskningsmetode.",
+      "mini_exam_answer_plan_slots": [
+        "1. Definer betingelsesdiskursen (3. person, ydre variabler, if-then logik).",
+        "2. Definer begrundelsesdiskursen (1. person, samfundet som præmisser, grunde).",
+        "3. Forklar illusionen i empiriske hypoteser (reason patterns).",
+        "4. Demonstrér den metodiske konsekvens (forsøgsperson bliver co-researcher).",
+        "5. Konkludér med formålet (overskridelse af umiddelbarhed / udvidet handleevne)."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

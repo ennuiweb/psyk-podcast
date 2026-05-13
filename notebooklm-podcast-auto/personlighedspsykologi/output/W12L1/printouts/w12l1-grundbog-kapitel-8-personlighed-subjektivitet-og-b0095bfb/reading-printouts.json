@@ -1,0 +1,1266 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T11:09:37Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
+    "source_files_signature": "28b5689a818d5af10670b12dc8f9c6ee35a58e4739231603c1787dcc3f435f6e",
+    "source_card": "1dad90e2e32cc0e53d10d003ffbad42ba7eb1f71f27faf225e6704b07cda702f",
+    "revised_lecture_substrate": "27ff9cf80e19926fd58d04905d08e1c2aef11540b3f986f4fa239ad966476984",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+    "lecture_key": "W12L1",
+    "title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 44,
+    "estimated_token_count": 28600,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf"
+    ],
+    "reading_title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W12L1"
+    ],
+    "sequence_index": 2,
+    "source_filename": "W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "subject_relative_path": "Readings/W12L1 Sammenligning af teorier og subjektets historie og eksamen/W12L1 Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet.pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "da",
+    "priority_signals": {
+      "is_grundbog": true,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "abceb24b3226692fed23a0ec95354007a9108a5bbffce53e98a0be9e57ef17bc",
+      "size_bytes": 7246738,
+      "page_count": 44,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 28600,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 44,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "lecture_key": "W12L1",
+      "source_title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden. Guiden opstiller de primære problemer, du skal finde svar på i teksten, og giver dig en rute med tydelige stop undervejs.",
+      "teaser_paragraphs": [
+        "Når vi tænker på vores forfædre fra middelalderen, forestiller vi os ofte moderne mennesker i sjovt tøj. Vi antager, at de havde de samme følelser, det samme indre liv og den samme evne til refleksion som os, men at de blot levede under mere primitive forhold. Denne grundbogstekst smider den antagelse på porten.",
+        "I stedet præsenteres vi for en radikal påstand: Den menneskelige personlighed har ikke en fast, biologisk kerne. Selve vores evne til at føle skam, vores indre selvkontrol og vores opfattelse af romantisk kærlighed er historiske opfindelser. Før i tiden fandtes der simpelthen ikke et subjekt defineret som et menneske med en selvbevidsthed.",
+        "Du skal læse om, hvordan en ændring i samfundets ydre strukturer – som at vi begyndte at bruge bestik i stedet for at spise med fingrene – langsomt blev forvandlet til indre psykologisk tvang. Det er her, Norbert Elias' teori om civilisationsprocessen bliver afgørende for at forstå, hvordan ydre magt bliver til intern pinlighed.",
+        "Teksten sporer også, hvordan opdelingen af samfundet i sfærer skabte den moderne kernefamilie. Pludselig blev barndommen opfundet som en særlig fase, der krævede en isoleret intimsfære. Det ændrede betingelserne for personlighedsdannelsen for altid.",
+        "Det ultimative problem, teksten rejser, rammer psykologien selv. For hvis personligheden er et historisk produkt, hvad er psykologiens rolle så? Konklusionen er brutal: Videnskaben er med til at skabe det samme genstandsområde, den påstår at måle. Dette kapitel er dit vigtigste våben til at bringe 'historicitet' i spil til eksamen."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 256",
+          "excerpt": "I denne optik fandtes der i den tidlige middelalder ikke et subjekt defineret som et menneske med en selvbevidsthed.",
+          "open_question": "Hvordan fungerede et samfund overhovedet, hvis individet ikke reflekterede over sin egen bevidsthed?"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 260",
+          "excerpt": "Disciplinering bliver et kernebegreb, og den opfattes som regulering af den vilde natur, som barnet repræsenterer.",
+          "open_question": "Hvorfor opstod behovet for pludselig at opdrage og tæmme barnets natur?"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 292",
+          "excerpt": "Så er personlighedspsykologien ikke blot en beskrivelse ... den er med til at skabe det samme genstandsområde, som den udforsker.",
+          "open_question": "Hvis psykologien skaber den personlighed, den undersøger, findes der så overhovedet 'objektive' psykologiske træk?"
+        }
+      ],
+      "main_problem": "At bevise at den menneskelige psyke ikke er en universel konstant, men et plastisk produkt af historiske og samfundsmæssige forandringer.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan skaber historiske epoker nye psykologiske funktioner i mennesket?",
+          "why_it_matters": "Det afliver ideen om, at vores nuværende psyke er ren biologi nedarvet fra savannen.",
+          "answer_form": "En forklaring på historicitets-princippet"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor skulle barndommen 'opfindes', og hvad ændrede det?",
+          "why_it_matters": "Det viser, at selv vores mest fundamentale pædagogiske kategorier er samfundsmæssigt konstruerede.",
+          "answer_form": "Kontrasten mellem middelalderens og modernitetens natursyn"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forvandles ydre regler for etikette til indre følelser af skam?",
+          "why_it_matters": "Dette udgør mekanismen (civilisationsprocessen) for internalisering af magt.",
+          "answer_form": "Elias' sociogenese"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "why_it_matters": "Det forklarer kernefamiliens unikke rolle som personlighedsdannende trykkoger.",
+          "answer_form": "Kortlægning af intimsfærens funktion"
+        },
+        {
+          "number": 5,
+          "question": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "why_it_matters": "Det fremtvinger en kritisk refleksion over psykologiens egen eksistensberettigelse.",
+          "answer_form": "Argumentet"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det teoretiske klimaks for kursets diskussion af subjektets historicitet. Den tvinger os til at se samtlige tidligere teorier gennem et historisk filter.",
+      "overview": [
+        "Argumentet for at personligheden er et historisk produkt (historicitet).",
+        "Gennemgangen af Norbert Elias' civilisationsproces og familiens udskillelse i intimsfæren.",
+        "Den kritiske pointe om psykologiens performative rolle i at forme det menneske, den måler."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 252-257",
+          "task": "Fokusér på argumentet imod den universelle menneskenatur.",
+          "why_it_matters": "Lægger grundlaget for historicitetsbegrebet.",
+          "stop_signal": "Når du forstår, hvorfor refleksivitet ikke altid har eksisteret"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 258-262",
+          "task": "Kortlæg overgangen fra at se barnet som lille voksen til at se det som et pædagogisk projekt.",
+          "why_it_matters": "Barndommen er fundamentet for al moderne udviklingspsykologi.",
+          "stop_signal": "Når begrebet 'disciplinering' af barnet er etableret"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 263-269",
+          "task": "Afgør hvordan kernefamilien opstod under industrialiseringen.",
+          "why_it_matters": "Det forklarer det strukturelle skift i familiens funktion.",
+          "stop_signal": "Når kernefamiliens rolle som overvågningsinstans er på plads"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 272-279",
+          "task": "Find mekanismen i Norbert Elias' civilisationsproces.",
+          "why_it_matters": "Det viser, hvordan ydre magt bliver til indre psykologi.",
+          "stop_signal": "Når du kan forklare, hvordan etikette skabte pinlighed"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 284-286",
+          "task": "Læs om de tre samfundsmæssige sfærer.",
+          "why_it_matters": "Det er her de store samfundsstrukturer kobles direkte til individets intimitet.",
+          "stop_signal": "Når du forstår udspaltningen af intimsfæren"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 292-293",
+          "task": "Opfang Foucaults og tekstens endelige dom over videnskabens rolle.",
+          "why_it_matters": "Det er kronen på værket i din eksamensargumentation.",
+          "stop_signal": "Når du indser psykologiens medansvar for subjektet"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "ikke et subjekt defineret som et menneske med en selvbevidsthed",
+          "why": "Konstateringen af at selv vores inderste kerne engang ikke eksisterede.",
+          "where_to_look": "S. 256"
+        },
+        {
+          "target": "barnet ved fødslen repræsenterede et stykke uforarbejdet natur",
+          "why": "Fang middelalderens helt anderledes blik på børns vilkår.",
+          "where_to_look": "S. 258-259"
+        },
+        {
+          "target": "Pinlighedstærsklen rykkes frem i løbet af en meget lang periode",
+          "why": "Beskriver netop den psykologiske internalisering i praksis.",
+          "where_to_look": "S. 275"
+        },
+        {
+          "target": "videnskab er en normativ praksis",
+          "why": "Afslører psykologiens skjulte dagsorden som kulturskaber.",
+          "where_to_look": "S. 292"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede demografiske data om ægteskabsalder i forskellige århundreder.",
+        "Den udtømmende liste af puritanske versus adelige motiver for at indgå ægteskab.",
+        "De lange filosofiske afstikkere til Habermas, medmindre du kan knytte dem direkte til intimsfæren."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsningssti. Læs sektionerne i rækkefølge for at bygge tekstens hovedargumenter uden at fare vild i de historiske detaljer. Hold guiden åben, når du går videre til opgaveløsning.",
+      "coverage_note": "Fokuserer på de teoretiske gennembrud omkring historicitet, civilisationsprocessen og psykologiens rolle, men udelader den tunge historiske demografi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 252-257",
+          "heading": "Et opgør med den universelle menneskenatur",
+          "solves_subproblem": "Hvordan historiske epoker skaber nye psykologiske funktioner i mennesket.",
+          "local_problem": "At indse, at vores indre liv er et produkt af historien, ikke kun biologien?",
+          "explanation_paragraphs": [
+            "Vi er tilbøjelige til at opfatte tidligere tiders mennesker som psykologisk identiske med os selv. Vi tror, de blot var underlagt strengere vilkår. Men teksten argumenterer for, at subjektets praksis og levevilkår radikalt ændrer selve personlighedens opbygning.",
+            "Historicitet handler om, at psykiske funktioner som refleksivitet, kognitionsformer og emotioner udvikles forskelligt gennem historien. Menneskets natur er altså ikke en statisk størrelse, der blot afdækkes af videnskaben."
+          ],
+          "key_points": [
+            "Personligheden er historisk foranderlig (historicitet).",
+            "Selv evnen til refleksivitet og oplevelsen af romantisk kærlighed er frembragt af specifikke epoker.",
+            "Middelaldermennesket havde ikke et moderne, indrestyret subjektliv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "ikke et subjekt defineret som et menneske med en selvbevidsthed",
+              "why_it_matters": "Marker hvor sent i historien den moderne selvforståelse reelt opstod.",
+              "source_location": "S. 256"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 258-262",
+          "heading": "Opfindelsen af barndommen",
+          "solves_subproblem": "Hvorfor barndommen skulle 'opfindes', og hvad det ændrede.",
+          "local_problem": "At forstå hvorfor fraværet af barndommen i middelalderen bremsede en moderne personlighedsdannelse?",
+          "explanation_paragraphs": [
+            "I store dele af middelalderen eksisterede barndommen slet ikke som et begreb eller en særlig beskyttet virkelighed. Børn, der overlevede de første år, blev anset for at være små voksne eller blot et stykke natur, der hurtigst muligt skulle indgå i arbejdslivet.",
+            "Først fra 1500-tallet begynder man at betragte barnet som moralsk svagt eller som et tomt blad (tabula rasa), der kræver disciplin og målrettet opdragelse. Denne nye overvågning af barnet sætter varige spor i, hvordan den voksne personlighed senere formes."
+          ],
+          "key_points": [
+            "Barndommen er en historisk og social opfindelse.",
+            "Skiftet fra 'lille voksen' til pædagogisk projekt muliggjorde moderne psykologisk udvikling.",
+            "Disciplinering af barnets natur blev det nye overordnede mål."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "barnet ved fødslen repræsenterede et stykke uforarbejdet natur",
+              "why_it_matters": "Viser det tidligere natursyn, før barnet blev et struktureret pædagogisk projekt.",
+              "source_location": "S. 258-259"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 272-279",
+          "heading": "Norbert Elias og civilisationsprocessen",
+          "solves_subproblem": "Hvordan ydre regler for etikette forvandles til indre følelser af skam.",
+          "local_problem": "At spore mekanismen, der flytter kontrollen fra truslen om vold til psykologisk selvtvang?",
+          "explanation_paragraphs": [
+            "For at forklare sammenhængen mellem samfundets udvikling (sociogenese) og psykens udvikling (psykogenese) bruger Norbert Elias etikettebøger. I den ridderlige periode var adfærden styret af ydre vold og direkte magt.",
+            "Efterhånden som magten centraliseres, kræves der en ny form for adfærd. Regler for at spise med bestik og undgå kropsvæsker blev indført. Det, der startede som ydre regler for at vise respekt for overklassen, blev langsomt internaliseret.",
+            "Resultatet er et civiliseret subjekt, hvor pinlighedstærsklen er rykket massivt. Den ydre tvang er blevet til selvtvang. Det intensive lystliv er erstattet af en finmasket indre kontrol og nye former for angst."
+          ],
+          "key_points": [
+            "Elias bruger etikettebøger til at kortlægge historisk psykologi.",
+            "Civilisationsprocessen omformer ydre straf til indre pinlighed.",
+            "Selvkontrol er ikke medfødt, men et resultat af hundredvis af års tvang."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 275",
+            "passage": "Pinlighedstærsklen rykkes frem i løbet af en meget lang periode... Nye affekter opstår: generthed, skam, afsky overfor bestemte substanser.",
+            "why_it_matters": "Viser præcis hvordan strukturel magt kondenseres og bliver til nye psykologiske følelser."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 284-286",
+          "heading": "Samfundsmæssige sfærer og intimsfærens isolation",
+          "solves_subproblem": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "local_problem": "At gennemskue hvordan industrialiseringen afskar vores følelsesliv fra det offentlige rum?",
+          "explanation_paragraphs": [
+            "Før industrialiseringen var hjemmet og arbejdspladsen ét og samme sted. Med etableringen af kapitalismen opdeles samfundet i tre sfærer: produktionssfæren, cirkulationssfæren og intimsfæren.",
+            "Intimsfæren (kernefamilien) bliver det eneste sted, hvor følelser, kærlighed og barndom har legitim plads. Det mekaniske og rationelle styres over i produktionssfæren.",
+            "Denne udspaltning af intimsfæren betød, at opdragelsen og dannelsen af personligheden blev et intenst, privat projekt. Det førte til en endnu højere grad af psykologisk selvovervågning og disciplinering inden for hjemmets fire vægge."
+          ],
+          "key_points": [
+            "Samfundet spaltes i produktion, cirkulation og intimitet.",
+            "Følelseslivet blev forvist eksklusivt til intimsfæren.",
+            "Den isolerede kernefamilie bliver en intens ramme for personlighedsdannelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "udspaltningen af intimsfæren forløber parallelt med en række andre spaltninger",
+              "why_it_matters": "Forbinder den fysiske opdeling af verden direkte med en psykologisk opsplitning i det moderne menneske.",
+              "source_location": "S. 279"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 287-289",
+          "heading": "Fra traditionsstyring til indrestyring",
+          "solves_subproblem": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "local_problem": "At afgøre hvorfra de forskellige historiske epoker henter deres moralske kompas?",
+          "explanation_paragraphs": [
+            "Sociologen David Riesman beskriver et historisk skift i menneskets styringsprincipper. Middelalderens menneske var traditionsstyret og fulgte kirkens og slægtens ubrydelige regler uden intern refleksion.",
+            "Det moderne menneske blev i stedet indrestyret. Som et resultat af civilisationsprocessen fik vi indopereret et 'psykologisk gyroskop' under opdragelsen i intimsfæren. Vi overvågede os selv indefra.",
+            "I det senmoderne samfund er vi ifølge Riesman ved at blive gruppestyrede. Når de faste normer smuldrer, søger vi i stedet konstant anerkendelse fra jævnaldrende og medier, hvilket kræver en hypersensitiv refleksion."
+          ],
+          "key_points": [
+            "Middelalderen: Traditionsstyret (ydre autoritet).",
+            "Moderniteten: Indrestyret (indre overvågning).",
+            "Senmoderniteten: Gruppestyret (konstant tilpasning)."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 6,
+          "source_location": "S. 292-293",
+          "heading": "Psykologiens medansvar: Vi skaber det, vi udforsker",
+          "solves_subproblem": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "local_problem": "At bevise, at psykologien er en aktiv aktør i personlighedsdannelsen, ikke kun en passiv observatør?",
+          "explanation_paragraphs": [
+            "Medicinere, pædagoger og psykologer har historisk sat rammerne for, hvordan vi definerer normalitet og opdrager vores børn. De har ikke bare beskrevet de eksisterende kendsgerninger.",
+            "Ved at udstikke bestemte normative diskurser er videnskaberne direkte årsag til, at børn opdrages på nye måder. Psykologien har derfor skabt det subjekt, den nu påstår at måle objektivt.",
+            "Dette betyder, at videnskab er en normativ praksis. Når psykologiske teorier undersøger personligheden, bærer de et tungt medansvar, fordi deres fund ofte fungerer som ideologiske retningslinjer for, hvordan vi forventes at være mennesker."
+          ],
+          "key_points": [
+            "Psykologien skaber sine egne genstande.",
+            "Diskurser producerer personlighed, de aflæser den ikke bare.",
+            "Al videnskab indeholder normativ ideologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "med til at skabe det samme genstandsområde, som den udforsker",
+              "why_it_matters": "Fanger tekstens afgørende poststrukturelle og kritiske pointe.",
+              "source_location": "S. 292"
+            },
+            {
+              "phrase": "Videnskaben er en normativ praksis",
+              "why_it_matters": "Fastslår definitivt at den neutrale, objektive beskrivelse er en illusion.",
+              "source_location": "S. 292"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Hvordan historiske epoker skaber nye psykologiske funktioner i mennesket.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At indse, at vores indre liv er et produkt af historien, ikke kun biologien?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Hvorfor barndommen skulle 'opfindes', og hvad det ændrede.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvorfor fraværet af barndommen i middelalderen bremsede en moderne personlighedsdannelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Hvordan ydre regler for etikette forvandles til indre følelser af skam.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At spore mekanismen, der flytter kontrollen fra truslen om vold til psykologisk selvtvang?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At gennemskue hvordan industrialiseringen afskar vores følelsesliv fra det offentlige rum?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At afgøre hvorfra de forskellige historiske epoker henter deres moralske kompas?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At bevise, at psykologien er en aktiv aktør i personlighedsdannelsen, ikke kun en passiv observatør?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at forklare tekstens hovedbevægelse kort: Hvordan hjælper teksten med at bevise at den menneskelige psyke ikke er en universel konstant, men et plastisk produkt af historiske og samfundsmæssige forandringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arket fra hukommelsen først. Brug det til at låse tekstens nøglebegreber fast. Slå kun op i abridged reader bagefter, hvis du er i tvivl.",
+      "overview": [
+        "Teksten afviser, at menneskets psykologi er en uforanderlig biologisk størrelse.",
+        "Den viser, hvordan samfundets udvikling historisk har frembragt funktioner som refleksivitet, skam og romantisk kærlighed.",
+        "Konklusionen er, at psykologien selv er med til at forme den personlighed, den hævder blot at undersøge."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Princippet om, at psyken udvikler sig gennem historiske epoker frem for at være statisk biologi, kaldes __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I middelalderen blev børn primært betragtet som en slags små voksne eller blot som et stykke uforarbejdet __________, der skulle ind i arbejdslivet.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Ifølge Norbert Elias fører civilisationsprocessen til, at ydre adfærdsregulering bliver internaliseret som psykologisk __________ i det moderne menneske.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Elias bruger primært historiske __________ til at spore, hvordan grænsen for pinlighed og skam har rykket sig massivt over århundrederne.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "Under industrialiseringen blev familien og det følelsesmæssige liv isoleret i en særlig samfundsmæssig sfære, der betegnes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 6,
+          "sentence": "Sociologen David Riesman betegner det moderne menneske med et indre overvågende moralsk kompas som __________, i modsætning til det senmoderne gruppestyrede menneske.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 7,
+          "sentence": "Teksten konkluderer kritisk, at psykologien som videnskab er med til at __________ den selvsamme personlighed, som den forsøger at beskrive objektivt.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 udsagnsord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn 'Civilisationsprocessen' ifølge Norbert Elias. Vis med en horisontal pil, hvordan påvirkningen bevæger sig fra de tidlige samfunds ydre fysiske magt over i menneskets psyke.",
+          "required_elements": [
+            "Ydre magt/etikette",
+            "Pil for internalisering",
+            "Indre skam/selvtvang"
+          ],
+          "blank_space_hint": "Brug en proces-pil til at vise forvandlingen."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér opdelingen i de tre 'Samfundsmæssige sfærer' under industrialiseringen. Markér tydeligt, hvilken af de tre sfærer der overtog det eksklusive ansvar for følelseslivet og opdragelsen, da kernefamilien blev isoleret.",
+          "required_elements": [
+            "Produktionssfæren",
+            "Cirkulationssfæren",
+            "Intimsfæren",
+            "Følelser/opdragelse placeret korrekt i intimsfæren"
+          ],
+          "blank_space_hint": "Tegn tre forbundne felter og fordel funktionerne."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som din afsluttende kamptræning. Her omsætter du historicitets-problemet til mundtlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At bevise, at menneskets personlighed er plastisk og foranderlig over tid.",
+        "At forklare civilisationsprocessen og overgangen fra ydre disciplin til indre skam.",
+        "At demonstrere anvendelsen af pensums overordnede orienteringspunkt 'historicitet'.",
+        "At vise, hvordan opdelingen af samfundet i sfærer har skabt rammerne for den moderne kernefamilie.",
+        "At føre et poststrukturalistisk argument for, at videnskaben (psykologien) producerer de subjekter, den studerer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Traits)",
+          "connection": "Historicitet er det ultimative modargument til trækpsykologiens antagelse om, at personlighedstræk er ahistoriske naturstørrelser."
+        },
+        {
+          "course_theme": "Subjektivering (Foucault & Hacking)",
+          "connection": "Elias' internalisering af normer giver den historiske mekanisme for, hvordan disciplinerende magt rent faktisk sætter sig i kødet på os."
+        },
+        {
+          "course_theme": "Psykoanalyse",
+          "connection": "Civilisationsprocessen forklarer historisk set, hvorfor vi overhovedet har udviklet et stærkt 'overjeg' og et behov for at fortrænge lyst i det moderne samfund."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter",
+          "connection": "Teksten operationaliserer 'historicitet' og gør det til et obligatorisk sammenligningsværktøj, som du skal bruge tværgående til eksamen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Femfaktor-modellen (Big Five)",
+          "how_to_compare": "Stil McCrae & Costas antagelse om et medfødt biologisk anker over for Elias' påstand om sociogenese og radikal foranderlighed over århundreder."
+        },
+        {
+          "compare_with": "Evolutionspsykologi",
+          "how_to_compare": "Mens evolutionspsykologien forklarer adfærd som stagnation fra savannen, forklarer historiciteten adfærd ud fra de seneste hundredårers kulturelle brud."
+        },
+        {
+          "compare_with": "Kritisk psykologi",
+          "how_to_compare": "Begge betoner samfundets magt over individet, men hvor kritisk psykologi har fokus på bevidst handleevne (agency), viser historiciteten, hvordan samfundet indgraveres ubevidst bag om ryggen på os."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Elias' teori om civilisationsprocessen som dit primære bevis for fænomenet sociogenese.",
+          "caution": "Undgå at bruge for meget taletid på sjove anekdoter om middelalderens bordskik; hold fokus på den psykologiske effekt og dannelsen af skam."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Middelalderens ydre styring direkte med det moderne menneskes finmaskede indre styring.",
+          "caution": "Husk at gøre det klart, at indre styring (selvtvang) paradoksalt nok ofte er mere altomfattende end ydre fysisk tvang var."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "At videnskaben ifølge Foucault og tekstens afrunding er en 'normativ praksis', der skaber sine egne genstande.",
+          "caution": "Du skal kunne forklare mekanismen (fx via nye opdragelsesidealer), frem for kun at smide abstrakt poststrukturalisme ind i rummet."
+        },
+        {
+          "prompt_type": "Inddrag",
+          "use_in_answer": "Opdelingen i produktionssfære, cirkulationssfære og intimsfære.",
+          "caution": "Brug sfærerne snævert til at forklare familiens isolerede trykkoger-rolle for psykologien, ikke som en lektion i politisk økonomi."
+        },
+        {
+          "prompt_type": "Forsvar",
+          "use_in_answer": "Påstanden om at selve barndommen og den romantiske kærlighed blot er midlertidige historiske konstruktioner.",
+          "caution": "Understreg kraftigt, at selvom de er historisk konstruerede, opleves de stadig som fuldstændig ægte og bindende for det enkelte senmoderne subjekt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At reducere historien til en påstand om, at middelaldermennesker bare undertrykte de samme moderne følelser, som vi har i dag.",
+          "better_reading": "Forstå radikaliteten: Følelsesstrukturen (som fx romantisk kærlighed) og refleksiviteten eksisterede slet ikke i sin moderne form dengang."
+        },
+        {
+          "trap": "At tro, at 'civilisationsprocessen' betyder moralsk fremgang og objektiv lykke for menneskeheden.",
+          "better_reading": "Civilisationskritikken fremhæver, at processen måske nok mindskede vold, men resulterede i øget tvang, angst, skam og neuroser indad."
+        },
+        {
+          "trap": "At behandle teksten rent som et stykke sociologisk samfundshistorie.",
+          "better_reading": "Gør den til en personlighedspsykologisk tekst: Den forklarer, hvordan selve personligheden – dit psyko-maskineri – dannes (sociogenese)."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udfordrer begrebet 'historicitet' ideen om en universel menneskenatur, og hvordan forklarer civilisationsprocessen overgangen fra ydre til indre styring af subjektet?",
+      "mini_exam_answer_plan_slots": [
+        "Definér historicitet som et hårdt opgør med biologisk fastlåste personlighedstræk.",
+        "Introducér Norbert Elias og skiftet fra ydre ridderlig vold til psykologisk selvtvang (skam).",
+        "Brug 'opfindelsen af barndommen' og oprettelsen af intimsfæren som konkrete eksempler på denne sociogenese.",
+        "Kontrastér tekstens dynamiske syn med Femfaktor-modellens antagelse om ahistorisk biologi.",
+        "Konkludér med tekstens knivskarpe selvkritik: Psykologien er en normativ praksis, der selv er med til at producere de subjekter, den undersøger."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+      "lecture_key": "W12L1",
+      "source_title": "Grundbog kapitel 08 - Personlighed, subjektivitet og historicitet"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden. Guiden opstiller de primære problemer, du skal finde svar på i teksten, og giver dig en rute med tydelige stop undervejs.",
+      "teaser_paragraphs": [
+        "Når vi tænker på vores forfædre fra middelalderen, forestiller vi os ofte moderne mennesker i sjovt tøj. Vi antager, at de havde de samme følelser, det samme indre liv og den samme evne til refleksion som os, men at de blot levede under mere primitive forhold. Denne grundbogstekst smider den antagelse på porten.",
+        "I stedet præsenteres vi for en radikal påstand: Den menneskelige personlighed har ikke en fast, biologisk kerne. Selve vores evne til at føle skam, vores indre selvkontrol og vores opfattelse af romantisk kærlighed er historiske opfindelser. Før i tiden fandtes der simpelthen ikke et subjekt defineret som et menneske med en selvbevidsthed.",
+        "Du skal læse om, hvordan en ændring i samfundets ydre strukturer – som at vi begyndte at bruge bestik i stedet for at spise med fingrene – langsomt blev forvandlet til indre psykologisk tvang. Det er her, Norbert Elias' teori om civilisationsprocessen bliver afgørende for at forstå, hvordan ydre magt bliver til intern pinlighed.",
+        "Teksten sporer også, hvordan opdelingen af samfundet i sfærer skabte den moderne kernefamilie. Pludselig blev barndommen opfundet som en særlig fase, der krævede en isoleret intimsfære. Det ændrede betingelserne for personlighedsdannelsen for altid.",
+        "Det ultimative problem, teksten rejser, rammer psykologien selv. For hvis personligheden er et historisk produkt, hvad er psykologiens rolle så? Konklusionen er brutal: Videnskaben er med til at skabe det samme genstandsområde, den påstår at måle. Dette kapitel er dit vigtigste våben til at bringe 'historicitet' i spil til eksamen."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "S. 256",
+          "excerpt": "I denne optik fandtes der i den tidlige middelalder ikke et subjekt defineret som et menneske med en selvbevidsthed.",
+          "open_question": "Hvordan fungerede et samfund overhovedet, hvis individet ikke reflekterede over sin egen bevidsthed?"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 260",
+          "excerpt": "Disciplinering bliver et kernebegreb, og den opfattes som regulering af den vilde natur, som barnet repræsenterer.",
+          "open_question": "Hvorfor opstod behovet for pludselig at opdrage og tæmme barnets natur?"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 292",
+          "excerpt": "Så er personlighedspsykologien ikke blot en beskrivelse ... den er med til at skabe det samme genstandsområde, som den udforsker.",
+          "open_question": "Hvis psykologien skaber den personlighed, den undersøger, findes der så overhovedet 'objektive' psykologiske træk?"
+        }
+      ],
+      "main_problem": "At bevise at den menneskelige psyke ikke er en universel konstant, men et plastisk produkt af historiske og samfundsmæssige forandringer.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan skaber historiske epoker nye psykologiske funktioner i mennesket?",
+          "why_it_matters": "Det afliver ideen om, at vores nuværende psyke er ren biologi nedarvet fra savannen.",
+          "answer_form": "En forklaring på historicitets-princippet"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor skulle barndommen 'opfindes', og hvad ændrede det?",
+          "why_it_matters": "Det viser, at selv vores mest fundamentale pædagogiske kategorier er samfundsmæssigt konstruerede.",
+          "answer_form": "Kontrasten mellem middelalderens og modernitetens natursyn"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forvandles ydre regler for etikette til indre følelser af skam?",
+          "why_it_matters": "Dette udgør mekanismen (civilisationsprocessen) for internalisering af magt.",
+          "answer_form": "Elias' sociogenese"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "why_it_matters": "Det forklarer kernefamiliens unikke rolle som personlighedsdannende trykkoger.",
+          "answer_form": "Kortlægning af intimsfærens funktion"
+        },
+        {
+          "number": 5,
+          "question": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "why_it_matters": "Det fremtvinger en kritisk refleksion over psykologiens egen eksistensberettigelse.",
+          "answer_form": "Argumentet"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det teoretiske klimaks for kursets diskussion af subjektets historicitet. Den tvinger os til at se samtlige tidligere teorier gennem et historisk filter.",
+      "overview": [
+        "Argumentet for at personligheden er et historisk produkt (historicitet).",
+        "Gennemgangen af Norbert Elias' civilisationsproces og familiens udskillelse i intimsfæren.",
+        "Den kritiske pointe om psykologiens performative rolle i at forme det menneske, den måler."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 252-257",
+          "task": "Fokusér på argumentet imod den universelle menneskenatur.",
+          "why_it_matters": "Lægger grundlaget for historicitetsbegrebet.",
+          "stop_signal": "Når du forstår, hvorfor refleksivitet ikke altid har eksisteret"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 258-262",
+          "task": "Kortlæg overgangen fra at se barnet som lille voksen til at se det som et pædagogisk projekt.",
+          "why_it_matters": "Barndommen er fundamentet for al moderne udviklingspsykologi.",
+          "stop_signal": "Når begrebet 'disciplinering' af barnet er etableret"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 263-269",
+          "task": "Afgør hvordan kernefamilien opstod under industrialiseringen.",
+          "why_it_matters": "Det forklarer det strukturelle skift i familiens funktion.",
+          "stop_signal": "Når kernefamiliens rolle som overvågningsinstans er på plads"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 272-279",
+          "task": "Find mekanismen i Norbert Elias' civilisationsproces.",
+          "why_it_matters": "Det viser, hvordan ydre magt bliver til indre psykologi.",
+          "stop_signal": "Når du kan forklare, hvordan etikette skabte pinlighed"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 284-286",
+          "task": "Læs om de tre samfundsmæssige sfærer.",
+          "why_it_matters": "Det er her de store samfundsstrukturer kobles direkte til individets intimitet.",
+          "stop_signal": "Når du forstår udspaltningen af intimsfæren"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 292-293",
+          "task": "Opfang Foucaults og tekstens endelige dom over videnskabens rolle.",
+          "why_it_matters": "Det er kronen på værket i din eksamensargumentation.",
+          "stop_signal": "Når du indser psykologiens medansvar for subjektet"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "ikke et subjekt defineret som et menneske med en selvbevidsthed",
+          "why": "Konstateringen af at selv vores inderste kerne engang ikke eksisterede.",
+          "where_to_look": "S. 256"
+        },
+        {
+          "target": "barnet ved fødslen repræsenterede et stykke uforarbejdet natur",
+          "why": "Fang middelalderens helt anderledes blik på børns vilkår.",
+          "where_to_look": "S. 258-259"
+        },
+        {
+          "target": "Pinlighedstærsklen rykkes frem i løbet af en meget lang periode",
+          "why": "Beskriver netop den psykologiske internalisering i praksis.",
+          "where_to_look": "S. 275"
+        },
+        {
+          "target": "videnskab er en normativ praksis",
+          "why": "Afslører psykologiens skjulte dagsorden som kulturskaber.",
+          "where_to_look": "S. 292"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Detaljerede demografiske data om ægteskabsalder i forskellige århundreder.",
+        "Den udtømmende liste af puritanske versus adelige motiver for at indgå ægteskab.",
+        "De lange filosofiske afstikkere til Habermas, medmindre du kan knytte dem direkte til intimsfæren."
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsningssti. Læs sektionerne i rækkefølge for at bygge tekstens hovedargumenter uden at fare vild i de historiske detaljer. Hold guiden åben, når du går videre til opgaveløsning.",
+      "coverage_note": "Fokuserer på de teoretiske gennembrud omkring historicitet, civilisationsprocessen og psykologiens rolle, men udelader den tunge historiske demografi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 252-257",
+          "heading": "Et opgør med den universelle menneskenatur",
+          "solves_subproblem": "Hvordan historiske epoker skaber nye psykologiske funktioner i mennesket.",
+          "local_problem": "At indse, at vores indre liv er et produkt af historien, ikke kun biologien?",
+          "explanation_paragraphs": [
+            "Vi er tilbøjelige til at opfatte tidligere tiders mennesker som psykologisk identiske med os selv. Vi tror, de blot var underlagt strengere vilkår. Men teksten argumenterer for, at subjektets praksis og levevilkår radikalt ændrer selve personlighedens opbygning.",
+            "Historicitet handler om, at psykiske funktioner som refleksivitet, kognitionsformer og emotioner udvikles forskelligt gennem historien. Menneskets natur er altså ikke en statisk størrelse, der blot afdækkes af videnskaben."
+          ],
+          "key_points": [
+            "Personligheden er historisk foranderlig (historicitet).",
+            "Selv evnen til refleksivitet og oplevelsen af romantisk kærlighed er frembragt af specifikke epoker.",
+            "Middelaldermennesket havde ikke et moderne, indrestyret subjektliv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "ikke et subjekt defineret som et menneske med en selvbevidsthed",
+              "why_it_matters": "Marker hvor sent i historien den moderne selvforståelse reelt opstod.",
+              "source_location": "S. 256"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 258-262",
+          "heading": "Opfindelsen af barndommen",
+          "solves_subproblem": "Hvorfor barndommen skulle 'opfindes', og hvad det ændrede.",
+          "local_problem": "At forstå hvorfor fraværet af barndommen i middelalderen bremsede en moderne personlighedsdannelse?",
+          "explanation_paragraphs": [
+            "I store dele af middelalderen eksisterede barndommen slet ikke som et begreb eller en særlig beskyttet virkelighed. Børn, der overlevede de første år, blev anset for at være små voksne eller blot et stykke natur, der hurtigst muligt skulle indgå i arbejdslivet.",
+            "Først fra 1500-tallet begynder man at betragte barnet som moralsk svagt eller som et tomt blad (tabula rasa), der kræver disciplin og målrettet opdragelse. Denne nye overvågning af barnet sætter varige spor i, hvordan den voksne personlighed senere formes."
+          ],
+          "key_points": [
+            "Barndommen er en historisk og social opfindelse.",
+            "Skiftet fra 'lille voksen' til pædagogisk projekt muliggjorde moderne psykologisk udvikling.",
+            "Disciplinering af barnets natur blev det nye overordnede mål."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "barnet ved fødslen repræsenterede et stykke uforarbejdet natur",
+              "why_it_matters": "Viser det tidligere natursyn, før barnet blev et struktureret pædagogisk projekt.",
+              "source_location": "S. 258-259"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 272-279",
+          "heading": "Norbert Elias og civilisationsprocessen",
+          "solves_subproblem": "Hvordan ydre regler for etikette forvandles til indre følelser af skam.",
+          "local_problem": "At spore mekanismen, der flytter kontrollen fra truslen om vold til psykologisk selvtvang?",
+          "explanation_paragraphs": [
+            "For at forklare sammenhængen mellem samfundets udvikling (sociogenese) og psykens udvikling (psykogenese) bruger Norbert Elias etikettebøger. I den ridderlige periode var adfærden styret af ydre vold og direkte magt.",
+            "Efterhånden som magten centraliseres, kræves der en ny form for adfærd. Regler for at spise med bestik og undgå kropsvæsker blev indført. Det, der startede som ydre regler for at vise respekt for overklassen, blev langsomt internaliseret.",
+            "Resultatet er et civiliseret subjekt, hvor pinlighedstærsklen er rykket massivt. Den ydre tvang er blevet til selvtvang. Det intensive lystliv er erstattet af en finmasket indre kontrol og nye former for angst."
+          ],
+          "key_points": [
+            "Elias bruger etikettebøger til at kortlægge historisk psykologi.",
+            "Civilisationsprocessen omformer ydre straf til indre pinlighed.",
+            "Selvkontrol er ikke medfødt, men et resultat af hundredvis af års tvang."
+          ],
+          "quote_anchors": [],
+          "source_passages": {
+            "source_location": "S. 275",
+            "passage": "Pinlighedstærsklen rykkes frem i løbet af en meget lang periode... Nye affekter opstår: generthed, skam, afsky overfor bestemte substanser.",
+            "why_it_matters": "Viser præcis hvordan strukturel magt kondenseres og bliver til nye psykologiske følelser."
+          },
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 284-286",
+          "heading": "Samfundsmæssige sfærer og intimsfærens isolation",
+          "solves_subproblem": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "local_problem": "At gennemskue hvordan industrialiseringen afskar vores følelsesliv fra det offentlige rum?",
+          "explanation_paragraphs": [
+            "Før industrialiseringen var hjemmet og arbejdspladsen ét og samme sted. Med etableringen af kapitalismen opdeles samfundet i tre sfærer: produktionssfæren, cirkulationssfæren og intimsfæren.",
+            "Intimsfæren (kernefamilien) bliver det eneste sted, hvor følelser, kærlighed og barndom har legitim plads. Det mekaniske og rationelle styres over i produktionssfæren.",
+            "Denne udspaltning af intimsfæren betød, at opdragelsen og dannelsen af personligheden blev et intenst, privat projekt. Det førte til en endnu højere grad af psykologisk selvovervågning og disciplinering inden for hjemmets fire vægge."
+          ],
+          "key_points": [
+            "Samfundet spaltes i produktion, cirkulation og intimitet.",
+            "Følelseslivet blev forvist eksklusivt til intimsfæren.",
+            "Den isolerede kernefamilie bliver en intens ramme for personlighedsdannelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "udspaltningen af intimsfæren forløber parallelt med en række andre spaltninger",
+              "why_it_matters": "Forbinder den fysiske opdeling af verden direkte med en psykologisk opsplitning i det moderne menneske.",
+              "source_location": "S. 279"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 287-289",
+          "heading": "Fra traditionsstyring til indrestyring",
+          "solves_subproblem": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "local_problem": "At afgøre hvorfra de forskellige historiske epoker henter deres moralske kompas?",
+          "explanation_paragraphs": [
+            "Sociologen David Riesman beskriver et historisk skift i menneskets styringsprincipper. Middelalderens menneske var traditionsstyret og fulgte kirkens og slægtens ubrydelige regler uden intern refleksion.",
+            "Det moderne menneske blev i stedet indrestyret. Som et resultat af civilisationsprocessen fik vi indopereret et 'psykologisk gyroskop' under opdragelsen i intimsfæren. Vi overvågede os selv indefra.",
+            "I det senmoderne samfund er vi ifølge Riesman ved at blive gruppestyrede. Når de faste normer smuldrer, søger vi i stedet konstant anerkendelse fra jævnaldrende og medier, hvilket kræver en hypersensitiv refleksion."
+          ],
+          "key_points": [
+            "Middelalderen: Traditionsstyret (ydre autoritet).",
+            "Moderniteten: Indrestyret (indre overvågning).",
+            "Senmoderniteten: Gruppestyret (konstant tilpasning)."
+          ],
+          "quote_anchors": [],
+          "source_passages": null,
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 6,
+          "source_location": "S. 292-293",
+          "heading": "Psykologiens medansvar: Vi skaber det, vi udforsker",
+          "solves_subproblem": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "local_problem": "At bevise, at psykologien er en aktiv aktør i personlighedsdannelsen, ikke kun en passiv observatør?",
+          "explanation_paragraphs": [
+            "Medicinere, pædagoger og psykologer har historisk sat rammerne for, hvordan vi definerer normalitet og opdrager vores børn. De har ikke bare beskrevet de eksisterende kendsgerninger.",
+            "Ved at udstikke bestemte normative diskurser er videnskaberne direkte årsag til, at børn opdrages på nye måder. Psykologien har derfor skabt det subjekt, den nu påstår at måle objektivt.",
+            "Dette betyder, at videnskab er en normativ praksis. Når psykologiske teorier undersøger personligheden, bærer de et tungt medansvar, fordi deres fund ofte fungerer som ideologiske retningslinjer for, hvordan vi forventes at være mennesker."
+          ],
+          "key_points": [
+            "Psykologien skaber sine egne genstande.",
+            "Diskurser producerer personlighed, de aflæser den ikke bare.",
+            "Al videnskab indeholder normativ ideologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "med til at skabe det samme genstandsområde, som den udforsker",
+              "why_it_matters": "Fanger tekstens afgørende poststrukturelle og kritiske pointe.",
+              "source_location": "S. 292"
+            },
+            {
+              "phrase": "Videnskaben er en normativ praksis",
+              "why_it_matters": "Fastslår definitivt at den neutrale, objektive beskrivelse er en illusion.",
+              "source_location": "S. 292"
+            }
+          ],
+          "source_passages": null,
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Hvordan historiske epoker skaber nye psykologiske funktioner i mennesket.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At indse, at vores indre liv er et produkt af historien, ikke kun biologien?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Hvorfor barndommen skulle 'opfindes', og hvad det ændrede.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvorfor fraværet af barndommen i middelalderen bremsede en moderne personlighedsdannelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Hvordan ydre regler for etikette forvandles til indre følelser af skam.",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At spore mekanismen, der flytter kontrollen fra truslen om vold til psykologisk selvtvang?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At gennemskue hvordan industrialiseringen afskar vores følelsesliv fra det offentlige rum?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hvordan isolerede opdelingen i samfundsmæssige sfærer det moderne følelsesliv?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At afgøre hvorfra de forskellige historiske epoker henter deres moralske kompas?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hvilket medansvar har psykologien for at producere det moderne subjekt?",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: At bevise, at psykologien er en aktiv aktør i personlighedsdannelsen, ikke kun en passiv observatør?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at forklare tekstens hovedbevægelse kort: Hvordan hjælper teksten med at bevise at den menneskelige psyke ikke er en universel konstant, men et plastisk produkt af historiske og samfundsmæssige forandringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arket fra hukommelsen først. Brug det til at låse tekstens nøglebegreber fast. Slå kun op i abridged reader bagefter, hvis du er i tvivl.",
+      "overview": [
+        "Teksten afviser, at menneskets psykologi er en uforanderlig biologisk størrelse.",
+        "Den viser, hvordan samfundets udvikling historisk har frembragt funktioner som refleksivitet, skam og romantisk kærlighed.",
+        "Konklusionen er, at psykologien selv er med til at forme den personlighed, den hævder blot at undersøge."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Princippet om, at psyken udvikler sig gennem historiske epoker frem for at være statisk biologi, kaldes __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I middelalderen blev børn primært betragtet som en slags små voksne eller blot som et stykke uforarbejdet __________, der skulle ind i arbejdslivet.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Ifølge Norbert Elias fører civilisationsprocessen til, at ydre adfærdsregulering bliver internaliseret som psykologisk __________ i det moderne menneske.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Elias bruger primært historiske __________ til at spore, hvordan grænsen for pinlighed og skam har rykket sig massivt over århundrederne.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "Under industrialiseringen blev familien og det følelsesmæssige liv isoleret i en særlig samfundsmæssig sfære, der betegnes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 6,
+          "sentence": "Sociologen David Riesman betegner det moderne menneske med et indre overvågende moralsk kompas som __________, i modsætning til det senmoderne gruppestyrede menneske.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 7,
+          "sentence": "Teksten konkluderer kritisk, at psykologien som videnskab er med til at __________ den selvsamme personlighed, som den forsøger at beskrive objektivt.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 udsagnsord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn 'Civilisationsprocessen' ifølge Norbert Elias. Vis med en horisontal pil, hvordan påvirkningen bevæger sig fra de tidlige samfunds ydre fysiske magt over i menneskets psyke.",
+          "required_elements": [
+            "Ydre magt/etikette",
+            "Pil for internalisering",
+            "Indre skam/selvtvang"
+          ],
+          "blank_space_hint": "Brug en proces-pil til at vise forvandlingen."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér opdelingen i de tre 'Samfundsmæssige sfærer' under industrialiseringen. Markér tydeligt, hvilken af de tre sfærer der overtog det eksklusive ansvar for følelseslivet og opdragelsen, da kernefamilien blev isoleret.",
+          "required_elements": [
+            "Produktionssfæren",
+            "Cirkulationssfæren",
+            "Intimsfæren",
+            "Følelser/opdragelse placeret korrekt i intimsfæren"
+          ],
+          "blank_space_hint": "Tegn tre forbundne felter og fordel funktionerne."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som din afsluttende kamptræning. Her omsætter du historicitets-problemet til mundtlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At bevise, at menneskets personlighed er plastisk og foranderlig over tid.",
+        "At forklare civilisationsprocessen og overgangen fra ydre disciplin til indre skam.",
+        "At demonstrere anvendelsen af pensums overordnede orienteringspunkt 'historicitet'.",
+        "At vise, hvordan opdelingen af samfundet i sfærer har skabt rammerne for den moderne kernefamilie.",
+        "At føre et poststrukturalistisk argument for, at videnskaben (psykologien) producerer de subjekter, den studerer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (Traits)",
+          "connection": "Historicitet er det ultimative modargument til trækpsykologiens antagelse om, at personlighedstræk er ahistoriske naturstørrelser."
+        },
+        {
+          "course_theme": "Subjektivering (Foucault & Hacking)",
+          "connection": "Elias' internalisering af normer giver den historiske mekanisme for, hvordan disciplinerende magt rent faktisk sætter sig i kødet på os."
+        },
+        {
+          "course_theme": "Psykoanalyse",
+          "connection": "Civilisationsprocessen forklarer historisk set, hvorfor vi overhovedet har udviklet et stærkt 'overjeg' og et behov for at fortrænge lyst i det moderne samfund."
+        },
+        {
+          "course_theme": "De 4 orienteringspunkter",
+          "connection": "Teksten operationaliserer 'historicitet' og gør det til et obligatorisk sammenligningsværktøj, som du skal bruge tværgående til eksamen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Femfaktor-modellen (Big Five)",
+          "how_to_compare": "Stil McCrae & Costas antagelse om et medfødt biologisk anker over for Elias' påstand om sociogenese og radikal foranderlighed over århundreder."
+        },
+        {
+          "compare_with": "Evolutionspsykologi",
+          "how_to_compare": "Mens evolutionspsykologien forklarer adfærd som stagnation fra savannen, forklarer historiciteten adfærd ud fra de seneste hundredårers kulturelle brud."
+        },
+        {
+          "compare_with": "Kritisk psykologi",
+          "how_to_compare": "Begge betoner samfundets magt over individet, men hvor kritisk psykologi har fokus på bevidst handleevne (agency), viser historiciteten, hvordan samfundet indgraveres ubevidst bag om ryggen på os."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Elias' teori om civilisationsprocessen som dit primære bevis for fænomenet sociogenese.",
+          "caution": "Undgå at bruge for meget taletid på sjove anekdoter om middelalderens bordskik; hold fokus på den psykologiske effekt og dannelsen af skam."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Middelalderens ydre styring direkte med det moderne menneskes finmaskede indre styring.",
+          "caution": "Husk at gøre det klart, at indre styring (selvtvang) paradoksalt nok ofte er mere altomfattende end ydre fysisk tvang var."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "At videnskaben ifølge Foucault og tekstens afrunding er en 'normativ praksis', der skaber sine egne genstande.",
+          "caution": "Du skal kunne forklare mekanismen (fx via nye opdragelsesidealer), frem for kun at smide abstrakt poststrukturalisme ind i rummet."
+        },
+        {
+          "prompt_type": "Inddrag",
+          "use_in_answer": "Opdelingen i produktionssfære, cirkulationssfære og intimsfære.",
+          "caution": "Brug sfærerne snævert til at forklare familiens isolerede trykkoger-rolle for psykologien, ikke som en lektion i politisk økonomi."
+        },
+        {
+          "prompt_type": "Forsvar",
+          "use_in_answer": "Påstanden om at selve barndommen og den romantiske kærlighed blot er midlertidige historiske konstruktioner.",
+          "caution": "Understreg kraftigt, at selvom de er historisk konstruerede, opleves de stadig som fuldstændig ægte og bindende for det enkelte senmoderne subjekt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At reducere historien til en påstand om, at middelaldermennesker bare undertrykte de samme moderne følelser, som vi har i dag.",
+          "better_reading": "Forstå radikaliteten: Følelsesstrukturen (som fx romantisk kærlighed) og refleksiviteten eksisterede slet ikke i sin moderne form dengang."
+        },
+        {
+          "trap": "At tro, at 'civilisationsprocessen' betyder moralsk fremgang og objektiv lykke for menneskeheden.",
+          "better_reading": "Civilisationskritikken fremhæver, at processen måske nok mindskede vold, men resulterede i øget tvang, angst, skam og neuroser indad."
+        },
+        {
+          "trap": "At behandle teksten rent som et stykke sociologisk samfundshistorie.",
+          "better_reading": "Gør den til en personlighedspsykologisk tekst: Den forklarer, hvordan selve personligheden – dit psyko-maskineri – dannes (sociogenese)."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udfordrer begrebet 'historicitet' ideen om en universel menneskenatur, og hvordan forklarer civilisationsprocessen overgangen fra ydre til indre styring af subjektet?",
+      "mini_exam_answer_plan_slots": [
+        "Definér historicitet som et hårdt opgør med biologisk fastlåste personlighedstræk.",
+        "Introducér Norbert Elias og skiftet fra ydre ridderlig vold til psykologisk selvtvang (skam).",
+        "Brug 'opfindelsen af barndommen' og oprettelsen af intimsfæren som konkrete eksempler på denne sociogenese.",
+        "Kontrastér tekstens dynamiske syn med Femfaktor-modellens antagelse om ahistorisk biologi.",
+        "Konkludér med tekstens knivskarpe selvkritik: Psykologien er en normativ praksis, der selv er med til at producere de subjekter, den undersøger."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

@@ -1,11 +1,29 @@
 # Problem-Driven Printouts
 
-This document describes an alternative learner-facing printout mode for
+This document describes the canonical learner-facing printout mode for
 `personlighedspsykologi`.
 
-It is not yet the canonical replacement for the existing scaffold contract in
-`printout-system.md`. Treat it as an explicit design variant to implement
-and test.
+The problem-driven mode is no longer only an alternative experiment. It is the
+canonical pedagogical direction for the printout system and is implemented in
+the main schema-v3 engine:
+
+```text
+notebooklm_queue/personlighedspsykologi_printouts.py
+```
+
+The `printout_review` workspace is now the candidate/QA lane for the same
+engine. The older three-sheet scaffold structure remains legacy compatibility
+context only.
+
+All candidate printouts used to test this variant must be fresh from-source
+generations. Existing baseline printouts may be used for comparison, but never
+as seed material for a review candidate.
+
+Current canonical render preference:
+
+- keep completion markers/check boxes off by default
+- keep `exam_bridge` opt-in; the default candidate bundle should stop at
+  `consolidation_sheet` unless the run is explicitly testing transfer load
 
 ## Intended Learner Fit
 
@@ -89,11 +107,16 @@ Weak framing:
 The abridged reader should not only explain the text. It should walk the
 learner through a chain of local problems.
 
+It should also be self-contained enough that the learner can continue into the
+active-reading and consolidation sheets without opening the original text.
+
+Each section should clearly show which delproblem it is helping to solve.
+
 Each section should preferably contain:
 
 - one local question or tension
 - one compact explanation that resolves it
-- one source touchpoint
+- one short original passage only when exact wording matters
 - one short closure check
 
 Good section goal:
@@ -104,33 +127,39 @@ Weak section goal:
 
 - "Here is a general explanation of this subsection."
 
-### `active_reading` as Evidence Hunt
+### `active_reading` as Guided Solve Sheet
 
-This section should feel like a detective worksheet, not a broad quiz.
+This section should feel like a solve sheet based on the abridged reader, not a
+detective worksheet in the source PDF and not a second recall test.
 
 Prioritize:
 
+- open-book work with the abridged reader
+- short term-finding
 - binary or narrow decisions
-- source hunts
-- proof tasks
-- trap detection
+- short paragraph answers where the learner needs to state the move clearly
+- progress through the listed delproblemer
 
 Good task shapes:
 
-- find the sentence that proves the claim
+- find the term that settles the issue
 - choose between model A and model B
-- identify the example that forces the distinction
-- catch the author's target of criticism
+- state the author's target of criticism in one short line
+- write 3-4 sætninger that explain the decisive move in plain language
 
 Weak task shapes:
 
 - discuss the text broadly
-- summarize several pages from memory
+- open the PDF just to complete the worksheet
+- make the whole sheet into closed-book recall
 
 ### `consolidation_sheet` as Model Builder
 
 This sheet should make the learner reconstruct the mechanism with minimal
 working-memory load.
+
+It should be the main recall artifact and should be doable after reading only
+the abridged reader.
 
 Useful forms:
 
@@ -220,15 +249,17 @@ Use:
 
 - "Verdict: which model survives the regression problem?"
 
-## Pilot Evaluation
+## Evaluation
 
-This mode should be tested on real learners rather than accepted as theory.
+This mode is the canonical direction, but it should still be evaluated on real
+learner use rather than treated as finished just because the docs and engine
+agree.
 
 Useful comparisons:
 
-- problem-driven scaffold vs current scaffold
+- problem-driven v3 output vs legacy/outdated three-sheet scaffold output
 - search-heavy vs model-heavy vs challenge-heavy tasks
-- short podcast plus scaffold vs scaffold alone
+- short podcast plus printout vs printout alone
 
 Useful observations:
 
@@ -241,4 +272,4 @@ Useful observations:
 
 - repo-level design principles: [learning-material-design.md](/Users/oskar/repo/podcasts/docs/learning-material-design.md)
 - output-layer boundary and evaluation map: [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning-material-outputs.md)
-- current canonical scaffold contract: [printout-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/printout-system.md)
+- current canonical printout contract: [printout-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/printout-system.md)

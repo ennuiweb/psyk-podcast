@@ -20,8 +20,8 @@ if str(SCRIPT_DIR) not in sys.path:
 
 IMPORT_BOOTSTRAP_ERROR: BaseException | None = None
 try:
-    import printout_engine
     from notebooklm_queue import openai_preprocessing
+    from notebooklm_queue import personlighedspsykologi_printouts as printout_engine
     from notebooklm_queue import personlighedspsykologi_recursive as recursive
     from notebooklm_queue.gemini_preprocessing import (
         GeminiPreprocessingError,
@@ -81,6 +81,12 @@ def _make_provider_json_generator(*, provider: str, model: str):
 
         return _openai_json_generator, openai_preprocessing.generation_config_metadata()
     return None, printout_engine.printout_generation_config_metadata()
+
+
+def _provider_generation_config_metadata(provider: str) -> dict[str, Any]:
+    if provider == "openai":
+        return openai_preprocessing.generation_config_metadata()
+    return printout_engine.printout_generation_config_metadata()
 
 
 def _preferred_python_path() -> Path:
@@ -244,6 +250,11 @@ def _mark_candidate_pending(candidate: dict[str, Any], *, source_id: str) -> Non
     candidate["finished_at"] = ""
     candidate["duration_seconds"] = None
     candidate["source_id"] = source_id
+    candidate["attempt_count"] = 0
+    candidate["transient_error_count"] = 0
+    candidate["last_transient_error"] = ""
+    candidate["last_error_kind"] = ""
+    candidate["last_error_summary"] = ""
 
 
 def _parse_args() -> argparse.Namespace:
@@ -430,10 +441,14 @@ def main() -> int:
     _log_progress(
         f"[generate_candidates] starting run for {len(entries)} source(s) using {Path(sys.executable).name} ({provider}:{model})"
     )
-    provider_json_generator, provider_generation_config_metadata = _make_provider_json_generator(
-        provider=provider,
-        model=model,
-    )
+    if live_generation:
+        provider_json_generator, provider_generation_config_metadata = _make_provider_json_generator(
+            provider=provider,
+            model=model,
+        )
+    else:
+        provider_json_generator = None
+        provider_generation_config_metadata = _provider_generation_config_metadata(provider)
     for entry in entries:
         source_id = str(entry.get("source_id") or "").strip()
         candidate = entry.setdefault("candidate", {})
@@ -486,7 +501,7 @@ def main() -> int:
                 variant_metadata={
                     "mode": "evaluation_sandbox",
                     "variant_key": DEFAULT_VARIANT_KEY,
-                    "render_completion_markers": True,
+                    "render_completion_markers": False,
                     "render_exam_bridge": bool(args.include_exam_bridge),
                     "variant_prompt_path": _relative_to(REPO_ROOT, variant_prompt_path),
                     "design_doc": DEFAULT_DESIGN_DOC,
@@ -494,6 +509,7 @@ def main() -> int:
                 },
                 generation_provider=provider,
                 generation_config_metadata_override=provider_generation_config_metadata,
+                output_layout=printout_engine.OUTPUT_LAYOUT_REVIEW,
             )
             candidate["status"] = str(result.get("status") or "written")
             candidate["output_dir"] = _relative_to(run_dir, Path(result["output_dir"]))
@@ -506,6 +522,12 @@ def main() -> int:
                 _relative_to(run_dir, Path(path))
                 for path in result.get("pdf_paths", [])
             ]
+            generation_stats = result.get("generation_stats") if isinstance(result.get("generation_stats"), dict) else {}
+            candidate["attempt_count"] = int(generation_stats.get("attempt_count") or 0)
+            candidate["transient_error_count"] = int(generation_stats.get("transient_error_count") or 0)
+            candidate["last_transient_error"] = str(generation_stats.get("last_transient_error") or "")
+            candidate["last_error_kind"] = ""
+            candidate["last_error_summary"] = ""
             candidate["error"] = ""
             candidate["finished_at"] = utc_now_iso()
             candidate["duration_seconds"] = round(time.monotonic() - started_at, 2)
@@ -515,6 +537,23 @@ def main() -> int:
             _log_progress(
                 f"[generate_candidates] [{index}/{len(entries)}] {source_id}: {candidate['status']} in {candidate['duration_seconds']}s"
             )
+        except printout_engine.GenerationFailure as exc:
+            generation_stats = exc.generation_stats
+            candidate["status"] = "error"
+            candidate["error"] = recursive.format_error(exc)
+            candidate["attempt_count"] = int(generation_stats.get("attempt_count") or 0)
+            candidate["transient_error_count"] = int(generation_stats.get("transient_error_count") or 0)
+            candidate["last_transient_error"] = str(generation_stats.get("last_transient_error") or "")
+            candidate["last_error_kind"] = str(generation_stats.get("last_error_kind") or "")
+            candidate["last_error_summary"] = str(generation_stats.get("last_error_summary") or "")
+            candidate["finished_at"] = utc_now_iso()
+            candidate["duration_seconds"] = round(time.monotonic() - started_at, 2)
+            errors.append({"source_id": source_id, "error": candidate["error"]})
+            _refresh_summary(manifest)
+            _write_json(manifest_path, manifest)
+            _log_progress(f"[generate_candidates] [{index}/{len(entries)}] {source_id}: error - {candidate['error']}")
+            if fail_fast:
+                break
         except Exception as exc:
             candidate["status"] = "error"
             candidate["error"] = recursive.format_error(exc)

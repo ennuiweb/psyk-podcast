@@ -1,0 +1,1062 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T11:01:24Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
+    "source_files_signature": "6c3f67c8614d4f370a1a8a83609d5ed3a867ec6bff317b1fa95f00607048df80",
+    "source_card": "66ea1ecb345daa23ea91536841cd8f82af1ee037b409cfc7ad69147603a21a05",
+    "revised_lecture_substrate": "84cc978f5038b3317d204d7fed807edb85970a0c3a2144b3f45c5de9374e5fa0",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+    "lecture_key": "W11L2",
+    "title": "McAdams & Pals (2006)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 14,
+    "estimated_token_count": 9100,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf"
+    ],
+    "reading_title": "A New Big Five: Fundamental Principles for an Integrative Science of Personality",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W11L2"
+    ],
+    "sequence_index": 3,
+    "source_filename": "W11L2 McAdams & Pals (2006).pdf",
+    "subject_relative_path": "Readings/W11L2 Narrativitet, kultur og mening/W11L2 McAdams & Pals (2006).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": true
+    },
+    "file": {
+      "sha256": "c523e0c40d0be6b77095bb3d83f351e4cab8ee51e420ac2279ea7713373ba361",
+      "size_bytes": 589778,
+      "page_count": 14,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 9100,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 14,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+      "lecture_key": "W11L2",
+      "source_title": "McAdams & Pals (2006)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug disse spørgsmål til at finde tekstens underliggende problem, før du læser.",
+      "teaser_paragraphs": [
+        "Kluckhohn og Murray skrev engang, at enhver person på én gang er *like all other persons*, *like some other persons*, og *like no other person*. Men hvordan kan en enkelt videnskab rumme alle tre niveauer af menneskeligheden uden at knække midt over?",
+        "Trækteori giver et skarpt, men overfladisk billede af vores ligheder. Narrative teorier dykker dybt i vores unikke historier, men glemmer ofte den biologiske forankring. I årtier har feltet været opsplittet i små, lukkede teorilejre, der ikke talte sammen.",
+        "McAdams og Pals forsøger at samle stumperne. De præsenterer en teoretisk model bestående af fem principper, der bygger bro fra menneskeartens evolutionære vilkår til de snørklede historier, vi konstruerer om os selv.",
+        "Missionen er ikke at udviske modsætningerne, men at lade dem fungere i forskellige lag af psyken. Den helt store prøvesten i teksten bliver at isolere, hvor i personligheden kulturen reelt slår igennem: Er det i vores basale temperament, eller er det i det øjeblik, vi forsøger at skabe narrativ identitet?"
+      ],
+      "main_problem": "Hvordan kan vi bygge en integreret ramme for personlighedspsykologien, der forener vores medfødte biologiske træk med vores evne til at skabe unik narrativ mening i en given kultur?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad udgør det universelle fundament for vores psykologiske ligheder som art?",
+          "why_it_matters": "Løser problemet om, hvor personligheden overhovedet starter, før vi begynder at tale om individuelle forskelle.",
+          "answer_form": "Kort beskrivelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er et dispositionelt træk og en karakteristisk tilpasning ikke det samme?",
+          "why_it_matters": "Gør det muligt at adskille vores brede adfærdsstil fra vores mere strategiske reaktioner på specifikke livssituationer.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken unik funktion udfører den integrerede livsfortælling for det moderne menneske?",
+          "why_it_matters": "Afslører mekanismen for, hvordan vi binder fortid, nutid og fremtid sammen til en sammenhængende identitet.",
+          "answer_form": "Et formål"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan rammer kulturen de forskellige lag i personligheden forskelligt?",
+          "why_it_matters": "Afklarer debatten om 'natur vs. kultur' ved at vise, at kulturen ikke har samme magt overalt i psyken.",
+          "answer_form": "Et tretrinsmønster"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets syntesetekst. Den leverer den direkte struktur, du skal bruge til at bygge bro mellem de reduktionistiske trækmodeller fra starten af faget og de narrative konstruktivister i slutningen.",
+      "overview": [
+        "Diagnosen af personlighedspsykologiens splittelse.",
+        "Kortlægningen af personlighedens tre adskilte udviklingslag.",
+        "Integrationen af biologiens universelle grunddesign og kulturens fortællinger."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 204-205",
+          "task": "Find forfatternes hovedkritik af eksisterende personlighedsteori.",
+          "why_it_matters": "Etablerer behovet for et nyt metateoretisk framework.",
+          "stop_signal": "når du har set argumentet for 'the whole person'"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-209",
+          "task": "Lokalisér grænsen mellem Principle 2 (træk) og Principle 3 (tilpasninger).",
+          "why_it_matters": "Dette er kerneopgøret med den rene trækteori.",
+          "stop_signal": "når du kan definere, hvad der mangler i træk"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 209-210",
+          "task": "Aflæs hvorfor livshistorien introduceres i Principle 4.",
+          "why_it_matters": "Beviser at træk og tilpasninger ikke kan stå alene, hvis man vil kende en person.",
+          "stop_signal": "når formålet med identitet er klarlagt"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 211-212",
+          "task": "Kortlæg de tre forskellige måder, kulturen påvirker os i Principle 5.",
+          "why_it_matters": "Løser kursets store spændingsfelt omkring kulturel indflydelse.",
+          "stop_signal": "efter du har læst Table 1"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "an individual’s unique variation on the general evolutionary design",
+          "why": "Grundlæggende tese om, at variation bygger på et universelt artsdesign.",
+          "where_to_look": "Begyndelsen af teksten, abstrakt og Principle 1"
+        },
+        {
+          "target": "Traits sketch a behavioral outline",
+          "why": "Den mest præcise metafor for niveau 1's begrænsning.",
+          "where_to_look": "Table 1"
+        },
+        {
+          "target": "Self and culture come to terms with each other through narrative",
+          "why": "Opsummerer den egentlige funktion af Principle 4 og 5 i samspil.",
+          "where_to_look": "Slutningen af diskussionen om kultur"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange navne-lister over historiske psykologer på side 205 og 208.",
+        "Specifikke neurobiologiske spekulationer omkring BAS og BIS-systemer i hjernen.",
+        "Kliniske behandlingsråd mod slutningen; fokuser udelukkende på the framework."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse problemerne træk for træk. Du skal have denne tekst åben under Active Reading.",
+      "coverage_note": "Fokuserer på de 5 grundprincipper, deres indbyrdes adskillelse og kulturens rolle.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Principle 1 (S. 205-206)",
+          "heading": "Det evolutionære grunddesign",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "explanation_paragraphs": [
+            "For at bygge en integreret model af mennesket, må vi ifølge McAdams og Pals starte med at se på det, der binder os sammen som art. Før vi måler individuelle afvigelser, må vi anerkende, at enhver person bærer et generelt evolutionært design udviklet for menneskets natur.",
+            "Dette design dikterer, at mennesket overlever og formerer sig gennem social gruppeadfærd. Vi er derfor forprogrammeret til særligt to fundamentale sociale overlevelseskrav: at fungere gnidningsfrit i gruppen ('getting along') og at markere os i hierarkiet ('getting ahead'). Enhver variation i personligheden udspiller sig mod denne baggrund af evolutionære nødvendigheder."
+          ],
+          "key_points": [
+            "Personligheden starter som en individuel variation af menneskets medfødte design.",
+            "Vores fælles grundbetingelser er skabt til social overlevelse.",
+            "Fokus på social accept og status i det evolutionære miljø danner rammen om psykologien."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "variations on a general evolutionary design",
+              "why_it_matters": "Definerer selve kernen i Principle 1.",
+              "source_location": "S. 205"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Principle 2 (S. 207-208)",
+          "heading": "Dispositionelle træk er kun en skitse",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor rækker trækteori ikke til at kende en person?",
+          "explanation_paragraphs": [
+            "Det andet princip dækker de brede, dispositionelle træk – for eksempel dem, vi kender fra The Big Five (som udadvendthed eller neuroticisme). Disse træk er de mest stabile, målbare og genetisk forankrede forskelle mellem mennesker.",
+            "Men trækkene opererer overfladisk. Forfatterne kalder dem for en simpel adfærdsskitse eller en signatur. De forudsiger brede tendenser på tværs af mange situationer, men de giver kun svar på den slags spørgsmål, vi vil have besvaret, når vi står over for en vildtfremmed: Kan jeg stole på personen? Er de venlige? Trækbeskrivelser fortæller os intet om indre motivation eller specifik kontekst."
+          ],
+          "key_points": [
+            "Træk er stabile, dekontekstualiserede dimensioner af vores adfærd.",
+            "De udgør en slags 'psychology of the stranger'.",
+            "Træk skaber det rå omrids af et menneske, men udfylder ingen detaljer."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "a recognizable signature that a person tends to express",
+              "why_it_matters": "Præciserer trækkenes stabile, men uspecifikke natur.",
+              "source_location": "S. 207"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 207",
+              "passage": "At their best, dispositional traits speak to the overall style of a person’s adjustment to and engagement of the social world—how a person does things, how a person typically thinks, how he or she usually feels about things in general.",
+              "why_it_matters": "Understreger formålet med trækkene; de giver os 'stilen', men ikke 'indholdet'."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Principle 3 (S. 208-209)",
+          "heading": "Karakteristiske tilpasninger i kontekst",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "explanation_paragraphs": [
+            "For at dække de huller trækteorien efterlader, indfører det tredje princip karakteristiske tilpasninger. Dette lag består af vores mål, værdier, mestringsstrategier, og sociale roller. Hvor træk er brede og uafhængige af situationen, er tilpasninger knyttet stramt til specifikke tidspunkter, miljøer og livsfaser.",
+            "En person kan for eksempel have trækket udadvendthed permanent i rygsækken, men det er de karakteristiske tilpasninger, der afgør, om denne energi rettes mod at lede en virksomhed eller mod politisk aktivisme. Tilpasningerne farver trækskitsen og viser, hvad en person rent faktisk 'gør' i specifikke miljøer."
+          ],
+          "key_points": [
+            "Tilpasninger dækker domænespecifikke mål og overbevisninger.",
+            "De skifter ofte drastisk gennem livet afhængig af de sociale krav.",
+            "Mens træk er vores 'having', er tilpasningerne vores 'doing'."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fill in some of the details",
+              "why_it_matters": "Viser hvordan Principle 3 bygger oven på Principle 2.",
+              "source_location": "S. 209"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Principle 4 (S. 209-210)",
+          "heading": "Narrativ identitet og eksistentiel mening",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "explanation_paragraphs": [
+            "Hverken stabile træk eller omskiftelige mål fortæller os for alvor, *hvem* en person er inderst inde. Til dette introducerer forfatterne det fjerde princip: den integrerede livsfortælling. I den moderne verden finder et menneske identitet ved kontinuerligt at fortælle en meningsfuld historie om sig selv.",
+            "Vi skaber en indre fortælling, der tager episoder fra fortiden og syr dem sammen med drømme for fremtiden. Denne fortælling løser vores eksistentielle problem; den giver livet enhed, retning og formål. Kun på dette fjerde niveau kommer den uforfalskede individualitet frem."
+          ],
+          "key_points": [
+            "Identitet eksisterer i moderne tid primært som en fortløbende historie.",
+            "Fortællingens primære opgave er at integrere fortid, nutid og fremtid.",
+            "Dette lag er afgørende, fordi formålet og meningen med den enkeltes liv kun bor her."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "keep a particular narrative going",
+              "why_it_matters": "Giddens' kernecitering for, hvad identitet er i moderniteten.",
+              "source_location": "S. 209"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Principle 5 (S. 211-212)",
+          "heading": "Kulturens gradvise slagkraft",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "explanation_paragraphs": [
+            "Det femte princip afslører, at kultur ikke fungerer som en udefrakommende malerrulle, der dækker hele psyken. I stedet påvirker den de tre personlighedslag helt forskelligt.",
+            "Først og fremmest er dens effekt på de dispositionelle træk beskeden; her bestemmer kulturen kun 'display rules' - dvs. hvordan vi viser, at vi f.eks. er nervøse. På næste niveau, de karakteristiske tilpasninger, stiger kulturens effekt tydeligt; den dikterer tidspunktet og indholdet for vores strategiske livsmål. Men dens største, dybeste indvirkning ligger i den narrative identitet. Kulturen udgør den direkte menu af plots, billeder og karaktertyper, vi bygger vores personlige historie ud fra."
+          ],
+          "key_points": [
+            "Kultur rammer de tre lag af variation asymmetrisk.",
+            "Træk = meget lille strukturel påvirkning fra kultur.",
+            "Tilpasninger = middel-stærk påvirkning af indhold.",
+            "Livsfortællinger = enorm påvirkning, da kulturen udgør historiens byggesten."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "a menu of themes, images, and plots",
+              "why_it_matters": "Dette udgør kernemekanismen bag, hvordan kultur leverer rammen for meningsdannelse.",
+              "source_location": "S. 211"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort beskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor rækker trækteori ikke til at kende en person?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et formål",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et tretrinsmønster",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi bygge en integreret ramme for personlighedspsykologien, der forener vores medfødte biologiske træk med vores evne til at skabe unik narrativ mening i en given kultur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter ud fra hukommelsen først for at lade modellens struktur låse sig fast. Tjek kun svarene i Abridged Reader, hvis du kører fast.",
+      "overview": [
+        "McAdams og Pals etablerer The New Big Five som fem distinkte principper for forståelse af det hele menneske.",
+        "Modellen spænder ud fra en underliggende evolutionær basisstruktur til det øverste fortolkende meningslag.",
+        "Kulturens evne til at forme personligheden dokumenteres som stigende, jo højere op mod det narrative lag man bevæger sig."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Det første princip postulerer, at enhver menneskelig adfærd i bund og grund er en variation af artens overordnede __________ design.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 adjektiv"
+        },
+        {
+          "number": 2,
+          "sentence": "De brede adfærdstræk, der er mest genetisk og strukturelt faste, kaldes i modellen de __________ træk.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 fagterm"
+        },
+        {
+          "number": 3,
+          "sentence": "Specifikke, målbare reaktionsmønstre, der er tæt bundet op på alder, miljø og roller kaldes karakteristiske __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 4,
+          "sentence": "For at forstå en persons virkelige eksistentielle orientering, må vi analysere deres indre, integrerede __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 sammensat ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den ydre kultur påvirker de lavere dispositionelle træk overfladisk ved at tilbyde regler for deres __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 6,
+          "sentence": "Derimod præger kulturen den narrative identitet direkte og voldsomt ved at fungere som en __________ af mulige temaer og plots.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 metaforisk ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Konstruér et simpelt lagkagediagram bestående af tre lag, der viser modellens tre grader af individuel variation. Placér niveauet med mindst kulturel indflydelse nederst, og niveauet med mest kulturel indflydelse øverst.",
+          "required_elements": [
+            "Dispositionelle træk nederst",
+            "Karakteristiske tilpasninger i midten",
+            "Integreret livsfortælling øverst"
+          ],
+          "blank_space_hint": "Brug en lodret kasse opdelt i tre feltzoner"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark forbereder dig til the boss fight. Brug disse stikord og fælder, når teksten skal sættes i spil mod kursets øvrige positioner til eksamen.",
+      "use_this_text_for": [
+        "At samle faget på tværs ved at integrere biologi, miljø-tilpasning og postmoderne fortælling i én pakke.",
+        "At forklare konkret, hvorfor og hvordan dispositionel 'trait'-forskning altid vil forblive overfladisk alene.",
+        "At besvare diskussioner om kulturens effekt ved at bevise, at effekten er asymmetrisk afhængig af personlighedslaget.",
+        "At operationalisere kursets tværgående orienteringspunkter (især historicitet og kontekst) direkte på identitetsniveauet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "The Decentered Subject (Raggatt)",
+          "connection": "Raggatt foreslår et splintret 'Polypsychic Self', som står i stærk kontrast til McAdams' tro på the 'Integrative Life Story'."
+        },
+        {
+          "course_theme": "Trait Psychology (Tidlig del af kurset)",
+          "connection": "Forfatterne giver de tidlige trækforskere ret i, at træk eksisterer, men degraderer dem skarpt til blot at udgøre kurvens første skitse."
+        },
+        {
+          "course_theme": "Humanisme og Fænomenologi",
+          "connection": "Hvor Rogers og Maslow søgte menneskets indre essens for at finde mening, argumenterer McAdams for, at mening lånes fra ydre kulturelle narrativer."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Raggatts Personality Web",
+          "how_to_compare": "Undersøg om fortællingen skaber sammenhæng og heling (McAdams) eller blot tolererer modsatrettede indre stemmer (Raggatt)."
+        },
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Fokusér på at McAdams bruger The Big Five som fundament, mens Costa & McCrae reducerer *hele* personligheden til fundamentet."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Kig på hvordan Foucault ser sprog som fuld determinering af subjektet, mens McAdams ser os appropriere historier aktivt fra kulturmenuen."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Brug de tre adskilte lag (Level 1, 2, 3) som en struktureringsmekanisme i enhver bred eksamensspørgsmål, der beder dig om at 'redegøre for personlighed'.",
+          "caution": "Glem ikke at tilknytte det overordnede evolutionære design og kulturen som indrammende yderpunkter."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Sammenlign The New Big Five-modellens eksistentielle mål med en rent reduktionistisk hjernesystems-model.",
+          "caution": "Hold tungen lige i munden: Modellen er ikke anti-biologisk, men forsøger et systemisk kompromis."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Sig højt til eksaminator, at du forstår sondringen mellem 'The Big Five' (trækkene) og 'The New Big Five' (forfatternes ramme med 5 principper).",
+          "caution": "Brug aldrig de to betegnelser synonymt."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "Undgå at kaste al 'kultur' i én kurv under analysen.",
+          "caution": "Specificér altid eksakt hvilket af lagene du analyserer kulturens effekt på (oftest de to øverste)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse Principle 5 sådan, at træk slet ikke er påvirket af miljø.",
+          "better_reading": "Træk er påvirket let i forhold til deres styrke og genetiske baseline, men stærkt formet af, hvordan de tillades *udtrykt*."
+        },
+        {
+          "trap": "At forveksle karakteristiske tilpasninger (Principle 3) med narrativ identitet (Principle 4).",
+          "better_reading": "Tilpasninger er pragmatiske 'doing'-mekanismer i hverdagen; narrativer binder tid og identitet eksistentielt sammen."
+        },
+        {
+          "trap": "At The New Big Five og Big Five er to sider af samme sag.",
+          "better_reading": "The Big Five refererer kun til Principle 2. The New Big Five er en ny metateori bestående af fem grundantagelser."
+        }
+      ],
+      "mini_exam_prompt_question": "Med inddragelse af McAdams & Pals (2006): Diskutér, hvorfor et solidt kendskab til dispositionelle træk er utilstrækkeligt til at kende the whole person, og analysér, hvilken differentieret magt kulturen har i personlighedsdannelsen.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort 'The New Big Five's 5 principper for at vise overblikket",
+        "Kritisk devaluering af træk (Principle 2) som værende overfladiske 'skitser'",
+        "Vis lagdelingen ved at inddrage tilpasninger (Principle 3) og historier (Principle 4)",
+        "Løs problemet om kulturens magt ved asymmetrisk anvendelse fra Principle 5"
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l2-mcadams-and-pals-2006-b9675688",
+      "lecture_key": "W11L2",
+      "source_title": "McAdams & Pals (2006)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug disse spørgsmål til at finde tekstens underliggende problem, før du læser.",
+      "teaser_paragraphs": [
+        "Kluckhohn og Murray skrev engang, at enhver person på én gang er *like all other persons*, *like some other persons*, og *like no other person*. Men hvordan kan en enkelt videnskab rumme alle tre niveauer af menneskeligheden uden at knække midt over?",
+        "Trækteori giver et skarpt, men overfladisk billede af vores ligheder. Narrative teorier dykker dybt i vores unikke historier, men glemmer ofte den biologiske forankring. I årtier har feltet været opsplittet i små, lukkede teorilejre, der ikke talte sammen.",
+        "McAdams og Pals forsøger at samle stumperne. De præsenterer en teoretisk model bestående af fem principper, der bygger bro fra menneskeartens evolutionære vilkår til de snørklede historier, vi konstruerer om os selv.",
+        "Missionen er ikke at udviske modsætningerne, men at lade dem fungere i forskellige lag af psyken. Den helt store prøvesten i teksten bliver at isolere, hvor i personligheden kulturen reelt slår igennem: Er det i vores basale temperament, eller er det i det øjeblik, vi forsøger at skabe narrativ identitet?"
+      ],
+      "main_problem": "Hvordan kan vi bygge en integreret ramme for personlighedspsykologien, der forener vores medfødte biologiske træk med vores evne til at skabe unik narrativ mening i en given kultur?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad udgør det universelle fundament for vores psykologiske ligheder som art?",
+          "why_it_matters": "Løser problemet om, hvor personligheden overhovedet starter, før vi begynder at tale om individuelle forskelle.",
+          "answer_form": "Kort beskrivelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er et dispositionelt træk og en karakteristisk tilpasning ikke det samme?",
+          "why_it_matters": "Gør det muligt at adskille vores brede adfærdsstil fra vores mere strategiske reaktioner på specifikke livssituationer.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken unik funktion udfører den integrerede livsfortælling for det moderne menneske?",
+          "why_it_matters": "Afslører mekanismen for, hvordan vi binder fortid, nutid og fremtid sammen til en sammenhængende identitet.",
+          "answer_form": "Et formål"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan rammer kulturen de forskellige lag i personligheden forskelligt?",
+          "why_it_matters": "Afklarer debatten om 'natur vs. kultur' ved at vise, at kulturen ikke har samme magt overalt i psyken.",
+          "answer_form": "Et tretrinsmønster"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets syntesetekst. Den leverer den direkte struktur, du skal bruge til at bygge bro mellem de reduktionistiske trækmodeller fra starten af faget og de narrative konstruktivister i slutningen.",
+      "overview": [
+        "Diagnosen af personlighedspsykologiens splittelse.",
+        "Kortlægningen af personlighedens tre adskilte udviklingslag.",
+        "Integrationen af biologiens universelle grunddesign og kulturens fortællinger."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 204-205",
+          "task": "Find forfatternes hovedkritik af eksisterende personlighedsteori.",
+          "why_it_matters": "Etablerer behovet for et nyt metateoretisk framework.",
+          "stop_signal": "når du har set argumentet for 'the whole person'"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 207-209",
+          "task": "Lokalisér grænsen mellem Principle 2 (træk) og Principle 3 (tilpasninger).",
+          "why_it_matters": "Dette er kerneopgøret med den rene trækteori.",
+          "stop_signal": "når du kan definere, hvad der mangler i træk"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 209-210",
+          "task": "Aflæs hvorfor livshistorien introduceres i Principle 4.",
+          "why_it_matters": "Beviser at træk og tilpasninger ikke kan stå alene, hvis man vil kende en person.",
+          "stop_signal": "når formålet med identitet er klarlagt"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 211-212",
+          "task": "Kortlæg de tre forskellige måder, kulturen påvirker os i Principle 5.",
+          "why_it_matters": "Løser kursets store spændingsfelt omkring kulturel indflydelse.",
+          "stop_signal": "efter du har læst Table 1"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "an individual’s unique variation on the general evolutionary design",
+          "why": "Grundlæggende tese om, at variation bygger på et universelt artsdesign.",
+          "where_to_look": "Begyndelsen af teksten, abstrakt og Principle 1"
+        },
+        {
+          "target": "Traits sketch a behavioral outline",
+          "why": "Den mest præcise metafor for niveau 1's begrænsning.",
+          "where_to_look": "Table 1"
+        },
+        {
+          "target": "Self and culture come to terms with each other through narrative",
+          "why": "Opsummerer den egentlige funktion af Principle 4 og 5 i samspil.",
+          "where_to_look": "Slutningen af diskussionen om kultur"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange navne-lister over historiske psykologer på side 205 og 208.",
+        "Specifikke neurobiologiske spekulationer omkring BAS og BIS-systemer i hjernen.",
+        "Kliniske behandlingsråd mod slutningen; fokuser udelukkende på the framework."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse problemerne træk for træk. Du skal have denne tekst åben under Active Reading.",
+      "coverage_note": "Fokuserer på de 5 grundprincipper, deres indbyrdes adskillelse og kulturens rolle.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Principle 1 (S. 205-206)",
+          "heading": "Det evolutionære grunddesign",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "explanation_paragraphs": [
+            "For at bygge en integreret model af mennesket, må vi ifølge McAdams og Pals starte med at se på det, der binder os sammen som art. Før vi måler individuelle afvigelser, må vi anerkende, at enhver person bærer et generelt evolutionært design udviklet for menneskets natur.",
+            "Dette design dikterer, at mennesket overlever og formerer sig gennem social gruppeadfærd. Vi er derfor forprogrammeret til særligt to fundamentale sociale overlevelseskrav: at fungere gnidningsfrit i gruppen ('getting along') og at markere os i hierarkiet ('getting ahead'). Enhver variation i personligheden udspiller sig mod denne baggrund af evolutionære nødvendigheder."
+          ],
+          "key_points": [
+            "Personligheden starter som en individuel variation af menneskets medfødte design.",
+            "Vores fælles grundbetingelser er skabt til social overlevelse.",
+            "Fokus på social accept og status i det evolutionære miljø danner rammen om psykologien."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "variations on a general evolutionary design",
+              "why_it_matters": "Definerer selve kernen i Principle 1.",
+              "source_location": "S. 205"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Principle 2 (S. 207-208)",
+          "heading": "Dispositionelle træk er kun en skitse",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor rækker trækteori ikke til at kende en person?",
+          "explanation_paragraphs": [
+            "Det andet princip dækker de brede, dispositionelle træk – for eksempel dem, vi kender fra The Big Five (som udadvendthed eller neuroticisme). Disse træk er de mest stabile, målbare og genetisk forankrede forskelle mellem mennesker.",
+            "Men trækkene opererer overfladisk. Forfatterne kalder dem for en simpel adfærdsskitse eller en signatur. De forudsiger brede tendenser på tværs af mange situationer, men de giver kun svar på den slags spørgsmål, vi vil have besvaret, når vi står over for en vildtfremmed: Kan jeg stole på personen? Er de venlige? Trækbeskrivelser fortæller os intet om indre motivation eller specifik kontekst."
+          ],
+          "key_points": [
+            "Træk er stabile, dekontekstualiserede dimensioner af vores adfærd.",
+            "De udgør en slags 'psychology of the stranger'.",
+            "Træk skaber det rå omrids af et menneske, men udfylder ingen detaljer."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "a recognizable signature that a person tends to express",
+              "why_it_matters": "Præciserer trækkenes stabile, men uspecifikke natur.",
+              "source_location": "S. 207"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 207",
+              "passage": "At their best, dispositional traits speak to the overall style of a person’s adjustment to and engagement of the social world—how a person does things, how a person typically thinks, how he or she usually feels about things in general.",
+              "why_it_matters": "Understreger formålet med trækkene; de giver os 'stilen', men ikke 'indholdet'."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Principle 3 (S. 208-209)",
+          "heading": "Karakteristiske tilpasninger i kontekst",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "explanation_paragraphs": [
+            "For at dække de huller trækteorien efterlader, indfører det tredje princip karakteristiske tilpasninger. Dette lag består af vores mål, værdier, mestringsstrategier, og sociale roller. Hvor træk er brede og uafhængige af situationen, er tilpasninger knyttet stramt til specifikke tidspunkter, miljøer og livsfaser.",
+            "En person kan for eksempel have trækket udadvendthed permanent i rygsækken, men det er de karakteristiske tilpasninger, der afgør, om denne energi rettes mod at lede en virksomhed eller mod politisk aktivisme. Tilpasningerne farver trækskitsen og viser, hvad en person rent faktisk 'gør' i specifikke miljøer."
+          ],
+          "key_points": [
+            "Tilpasninger dækker domænespecifikke mål og overbevisninger.",
+            "De skifter ofte drastisk gennem livet afhængig af de sociale krav.",
+            "Mens træk er vores 'having', er tilpasningerne vores 'doing'."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fill in some of the details",
+              "why_it_matters": "Viser hvordan Principle 3 bygger oven på Principle 2.",
+              "source_location": "S. 209"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Principle 4 (S. 209-210)",
+          "heading": "Narrativ identitet og eksistentiel mening",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "explanation_paragraphs": [
+            "Hverken stabile træk eller omskiftelige mål fortæller os for alvor, *hvem* en person er inderst inde. Til dette introducerer forfatterne det fjerde princip: den integrerede livsfortælling. I den moderne verden finder et menneske identitet ved kontinuerligt at fortælle en meningsfuld historie om sig selv.",
+            "Vi skaber en indre fortælling, der tager episoder fra fortiden og syr dem sammen med drømme for fremtiden. Denne fortælling løser vores eksistentielle problem; den giver livet enhed, retning og formål. Kun på dette fjerde niveau kommer den uforfalskede individualitet frem."
+          ],
+          "key_points": [
+            "Identitet eksisterer i moderne tid primært som en fortløbende historie.",
+            "Fortællingens primære opgave er at integrere fortid, nutid og fremtid.",
+            "Dette lag er afgørende, fordi formålet og meningen med den enkeltes liv kun bor her."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "keep a particular narrative going",
+              "why_it_matters": "Giddens' kernecitering for, hvad identitet er i moderniteten.",
+              "source_location": "S. 209"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Principle 5 (S. 211-212)",
+          "heading": "Kulturens gradvise slagkraft",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "explanation_paragraphs": [
+            "Det femte princip afslører, at kultur ikke fungerer som en udefrakommende malerrulle, der dækker hele psyken. I stedet påvirker den de tre personlighedslag helt forskelligt.",
+            "Først og fremmest er dens effekt på de dispositionelle træk beskeden; her bestemmer kulturen kun 'display rules' - dvs. hvordan vi viser, at vi f.eks. er nervøse. På næste niveau, de karakteristiske tilpasninger, stiger kulturens effekt tydeligt; den dikterer tidspunktet og indholdet for vores strategiske livsmål. Men dens største, dybeste indvirkning ligger i den narrative identitet. Kulturen udgør den direkte menu af plots, billeder og karaktertyper, vi bygger vores personlige historie ud fra."
+          ],
+          "key_points": [
+            "Kultur rammer de tre lag af variation asymmetrisk.",
+            "Træk = meget lille strukturel påvirkning fra kultur.",
+            "Tilpasninger = middel-stærk påvirkning af indhold.",
+            "Livsfortællinger = enorm påvirkning, da kulturen udgør historiens byggesten."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "a menu of themes, images, and plots",
+              "why_it_matters": "Dette udgør kernemekanismen bag, hvordan kultur leverer rammen for meningsdannelse.",
+              "source_location": "S. 211"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort beskrivelse",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor rækker trækteori ikke til at kende en person?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et formål",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et tretrinsmønster",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi bygge en integreret ramme for personlighedspsykologien, der forener vores medfødte biologiske træk med vores evne til at skabe unik narrativ mening i en given kultur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter ud fra hukommelsen først for at lade modellens struktur låse sig fast. Tjek kun svarene i Abridged Reader, hvis du kører fast.",
+      "overview": [
+        "McAdams og Pals etablerer The New Big Five som fem distinkte principper for forståelse af det hele menneske.",
+        "Modellen spænder ud fra en underliggende evolutionær basisstruktur til det øverste fortolkende meningslag.",
+        "Kulturens evne til at forme personligheden dokumenteres som stigende, jo højere op mod det narrative lag man bevæger sig."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Det første princip postulerer, at enhver menneskelig adfærd i bund og grund er en variation af artens overordnede __________ design.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 adjektiv"
+        },
+        {
+          "number": 2,
+          "sentence": "De brede adfærdstræk, der er mest genetisk og strukturelt faste, kaldes i modellen de __________ træk.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 fagterm"
+        },
+        {
+          "number": 3,
+          "sentence": "Specifikke, målbare reaktionsmønstre, der er tæt bundet op på alder, miljø og roller kaldes karakteristiske __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 4,
+          "sentence": "For at forstå en persons virkelige eksistentielle orientering, må vi analysere deres indre, integrerede __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 sammensat ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den ydre kultur påvirker de lavere dispositionelle træk overfladisk ved at tilbyde regler for deres __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 6,
+          "sentence": "Derimod præger kulturen den narrative identitet direkte og voldsomt ved at fungere som en __________ af mulige temaer og plots.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 metaforisk ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Konstruér et simpelt lagkagediagram bestående af tre lag, der viser modellens tre grader af individuel variation. Placér niveauet med mindst kulturel indflydelse nederst, og niveauet med mest kulturel indflydelse øverst.",
+          "required_elements": [
+            "Dispositionelle træk nederst",
+            "Karakteristiske tilpasninger i midten",
+            "Integreret livsfortælling øverst"
+          ],
+          "blank_space_hint": "Brug en lodret kasse opdelt i tre feltzoner"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark forbereder dig til the boss fight. Brug disse stikord og fælder, når teksten skal sættes i spil mod kursets øvrige positioner til eksamen.",
+      "use_this_text_for": [
+        "At samle faget på tværs ved at integrere biologi, miljø-tilpasning og postmoderne fortælling i én pakke.",
+        "At forklare konkret, hvorfor og hvordan dispositionel 'trait'-forskning altid vil forblive overfladisk alene.",
+        "At besvare diskussioner om kulturens effekt ved at bevise, at effekten er asymmetrisk afhængig af personlighedslaget.",
+        "At operationalisere kursets tværgående orienteringspunkter (især historicitet og kontekst) direkte på identitetsniveauet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "The Decentered Subject (Raggatt)",
+          "connection": "Raggatt foreslår et splintret 'Polypsychic Self', som står i stærk kontrast til McAdams' tro på the 'Integrative Life Story'."
+        },
+        {
+          "course_theme": "Trait Psychology (Tidlig del af kurset)",
+          "connection": "Forfatterne giver de tidlige trækforskere ret i, at træk eksisterer, men degraderer dem skarpt til blot at udgøre kurvens første skitse."
+        },
+        {
+          "course_theme": "Humanisme og Fænomenologi",
+          "connection": "Hvor Rogers og Maslow søgte menneskets indre essens for at finde mening, argumenterer McAdams for, at mening lånes fra ydre kulturelle narrativer."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Raggatts Personality Web",
+          "how_to_compare": "Undersøg om fortællingen skaber sammenhæng og heling (McAdams) eller blot tolererer modsatrettede indre stemmer (Raggatt)."
+        },
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Fokusér på at McAdams bruger The Big Five som fundament, mens Costa & McCrae reducerer *hele* personligheden til fundamentet."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Kig på hvordan Foucault ser sprog som fuld determinering af subjektet, mens McAdams ser os appropriere historier aktivt fra kulturmenuen."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Brug de tre adskilte lag (Level 1, 2, 3) som en struktureringsmekanisme i enhver bred eksamensspørgsmål, der beder dig om at 'redegøre for personlighed'.",
+          "caution": "Glem ikke at tilknytte det overordnede evolutionære design og kulturen som indrammende yderpunkter."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Sammenlign The New Big Five-modellens eksistentielle mål med en rent reduktionistisk hjernesystems-model.",
+          "caution": "Hold tungen lige i munden: Modellen er ikke anti-biologisk, men forsøger et systemisk kompromis."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Sig højt til eksaminator, at du forstår sondringen mellem 'The Big Five' (trækkene) og 'The New Big Five' (forfatternes ramme med 5 principper).",
+          "caution": "Brug aldrig de to betegnelser synonymt."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "Undgå at kaste al 'kultur' i én kurv under analysen.",
+          "caution": "Specificér altid eksakt hvilket af lagene du analyserer kulturens effekt på (oftest de to øverste)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse Principle 5 sådan, at træk slet ikke er påvirket af miljø.",
+          "better_reading": "Træk er påvirket let i forhold til deres styrke og genetiske baseline, men stærkt formet af, hvordan de tillades *udtrykt*."
+        },
+        {
+          "trap": "At forveksle karakteristiske tilpasninger (Principle 3) med narrativ identitet (Principle 4).",
+          "better_reading": "Tilpasninger er pragmatiske 'doing'-mekanismer i hverdagen; narrativer binder tid og identitet eksistentielt sammen."
+        },
+        {
+          "trap": "At The New Big Five og Big Five er to sider af samme sag.",
+          "better_reading": "The Big Five refererer kun til Principle 2. The New Big Five er en ny metateori bestående af fem grundantagelser."
+        }
+      ],
+      "mini_exam_prompt_question": "Med inddragelse af McAdams & Pals (2006): Diskutér, hvorfor et solidt kendskab til dispositionelle træk er utilstrækkeligt til at kende the whole person, og analysér, hvilken differentieret magt kulturen har i personlighedsdannelsen.",
+      "mini_exam_answer_plan_slots": [
+        "Definér kort 'The New Big Five's 5 principper for at vise overblikket",
+        "Kritisk devaluering af træk (Principle 2) som værende overfladiske 'skitser'",
+        "Vis lagdelingen ved at inddrage tilpasninger (Principle 3) og historier (Principle 4)",
+        "Løs problemet om kulturens magt ved asymmetrisk anvendelse fra Principle 5"
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

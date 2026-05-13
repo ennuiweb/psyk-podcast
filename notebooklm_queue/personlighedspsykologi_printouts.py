@@ -3386,80 +3386,91 @@ def build_printout_for_source(
         raise PrintoutError(f"matching existing printout JSON not found for rerender: {json_path}")
     if existing_json_path is not None and not force:
         existing_artifact = read_json(existing_json_path)
-        expected_pdf_stems = _expected_pdf_stems_for_artifact(existing_artifact)
-        existing_pdf_paths = _existing_pdf_paths_for_artifact(out_dir, existing_artifact, stems=expected_pdf_stems)
-        has_expected_pdfs = len(existing_pdf_paths) == len(expected_pdf_stems)
-        should_auto_rerender_legacy = existing_json_path.resolve() != json_path.resolve() and not has_expected_pdfs
-        should_auto_rerender_incomplete = render_pdf and not has_expected_pdfs
-        if _is_seeded_review_artifact(existing_artifact):
-            raise PrintoutError(
-                f"existing review candidate is seeded and invalid for reuse: {source_id}. "
-                "Generate a fresh from-scratch candidate with --force."
+        existing_schema_version = _artifact_schema_version(existing_artifact)
+        if output_layout == OUTPUT_LAYOUT_CANONICAL and existing_schema_version < SCHEMA_VERSION:
+            if rerender_existing:
+                raise PrintoutError(
+                    f"existing printout is legacy schema v{existing_schema_version} and cannot be "
+                    f"rerendered into canonical schema v{SCHEMA_VERSION} without generation: {existing_json_path}"
+                )
+            existing_json_path = None
+        else:
+            expected_pdf_stems = _expected_pdf_stems_for_artifact(existing_artifact)
+            existing_pdf_paths = _existing_pdf_paths_for_artifact(out_dir, existing_artifact, stems=expected_pdf_stems)
+            has_expected_pdfs = len(existing_pdf_paths) == len(expected_pdf_stems)
+            should_auto_rerender_legacy = (
+                existing_json_path.resolve() != json_path.resolve()
+                and (output_layout == OUTPUT_LAYOUT_CANONICAL or not has_expected_pdfs)
             )
-        if rerender_existing or should_auto_rerender_legacy or should_auto_rerender_incomplete:
-            artifact = existing_artifact
-            artifact_source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
-            artifact_source["reading_title"] = _reading_title_from_source(artifact_source)
-            artifact["source"] = artifact_source
-            existing_source_card = read_json(card_path) if card_path.exists() else {}
-            length_budget = build_printout_length_budget(
-                source=artifact.get("source") if isinstance(artifact.get("source"), dict) else source,
-                source_card=existing_source_card if isinstance(existing_source_card, dict) else None,
-            )
-            if variant_metadata:
-                existing_variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
-                artifact["variant"] = {**existing_variant, **dict(variant_metadata)}
-            artifact_variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
-            artifact_variant.setdefault("mode", _default_variant_mode_for_output_layout(output_layout))
-            artifact["variant"] = artifact_variant
-            if _artifact_schema_version(artifact) >= SCHEMA_VERSION:
-                artifact["schema_version"] = SCHEMA_VERSION
-                normalized = validate_printout_payload(
-                    normalize_scaffold_payload(
-                        artifact.get("printouts") or artifact.get("scaffolds", {}),
-                        legacy_compat=True,
+            should_auto_rerender_incomplete = render_pdf and not has_expected_pdfs
+            if _is_seeded_review_artifact(existing_artifact):
+                raise PrintoutError(
+                    f"existing review candidate is seeded and invalid for reuse: {source_id}. "
+                    "Generate a fresh from-scratch candidate with --force."
+                )
+            if rerender_existing or should_auto_rerender_legacy or should_auto_rerender_incomplete:
+                artifact = existing_artifact
+                artifact_source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+                artifact_source["reading_title"] = _reading_title_from_source(artifact_source)
+                artifact["source"] = artifact_source
+                existing_source_card = read_json(card_path) if card_path.exists() else {}
+                length_budget = build_printout_length_budget(
+                    source=artifact.get("source") if isinstance(artifact.get("source"), dict) else source,
+                    source_card=existing_source_card if isinstance(existing_source_card, dict) else None,
+                )
+                if variant_metadata:
+                    existing_variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
+                    artifact["variant"] = {**existing_variant, **dict(variant_metadata)}
+                artifact_variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
+                artifact_variant.setdefault("mode", _default_variant_mode_for_output_layout(output_layout))
+                artifact["variant"] = artifact_variant
+                if existing_schema_version >= SCHEMA_VERSION:
+                    artifact["schema_version"] = SCHEMA_VERSION
+                    normalized = validate_printout_payload(
+                        normalize_scaffold_payload(
+                            artifact.get("printouts") or artifact.get("scaffolds", {}),
+                            legacy_compat=True,
+                            length_budget=length_budget,
+                        ),
                         length_budget=length_budget,
-                    ),
-                    length_budget=length_budget,
-                    validate_exam_bridge=_exam_bridge_render_enabled(artifact),
+                        validate_exam_bridge=_exam_bridge_render_enabled(artifact),
+                    )
+                    artifact["length_budget"] = length_budget
+                    artifact["printouts"] = normalized
+                    artifact["scaffolds"] = normalized
+                else:
+                    artifact["schema_version"] = LEGACY_SCHEMA_VERSION
+                    artifact["scaffolds"] = validate_v2_scaffold_payload(
+                        normalize_v2_scaffold_payload(artifact.get("scaffolds", {}))
+                    )
+                rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
+                write_json(json_path, artifact)
+                legacy_json_in_output = _legacy_json_path_in_output_dir(out_dir)
+                if legacy_json_in_output.exists() and legacy_json_in_output.resolve() != json_path.resolve():
+                    legacy_json_in_output.unlink()
+                _cleanup_legacy_review_dirs(
+                    output_root=output_root,
+                    legacy_dirs=[
+                        path
+                        for path in [legacy_printout_dir, legacy_scaffolding_dir]
+                        if path.resolve() != out_dir.resolve()
+                    ],
                 )
-                artifact["length_budget"] = length_budget
-                artifact["printouts"] = normalized
-                artifact["scaffolds"] = normalized
-            else:
-                artifact["schema_version"] = LEGACY_SCHEMA_VERSION
-                artifact["scaffolds"] = validate_v2_scaffold_payload(
-                    normalize_v2_scaffold_payload(artifact.get("scaffolds", {}))
-                )
-            rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
-            write_json(json_path, artifact)
-            legacy_json_in_output = _legacy_json_path_in_output_dir(out_dir)
-            if legacy_json_in_output.exists() and legacy_json_in_output.resolve() != json_path.resolve():
-                legacy_json_in_output.unlink()
-            _cleanup_legacy_review_dirs(
-                output_root=output_root,
-                legacy_dirs=[
-                    path
-                    for path in [legacy_printout_dir, legacy_scaffolding_dir]
-                    if path.resolve() != out_dir.resolve()
-                ],
-            )
+                return {
+                    "source_id": source_id,
+                    "status": "rerendered_existing",
+                    "output_dir": str(out_dir),
+                    "json_path": str(json_path),
+                    "markdown_paths": rendered["markdown_paths"],
+                    "pdf_paths": rendered["pdf_paths"],
+                }
             return {
                 "source_id": source_id,
-                "status": "rerendered_existing",
+                "status": "skipped_existing",
                 "output_dir": str(out_dir),
-                "json_path": str(json_path),
-                "markdown_paths": rendered["markdown_paths"],
-                "pdf_paths": rendered["pdf_paths"],
+                "json_path": str(existing_json_path),
+                "pdf_paths": existing_pdf_paths,
             }
-        return {
-            "source_id": source_id,
-            "status": "skipped_existing",
-            "output_dir": str(out_dir),
-            "json_path": str(existing_json_path),
-            "pdf_paths": existing_pdf_paths,
-        }
-
     source_card = read_json(card_path)
     lecture_key = str(source.get("lecture_key") or source_card.get("source", {}).get("lecture_key") or "").strip()
     source_card_source = source_card.get("source") if isinstance(source_card.get("source"), dict) else {}
@@ -3731,7 +3742,7 @@ def _remove_output_json_files(output_dir: Path) -> None:
 def _remove_stale_v3_output_files(output_dir: Path, artifact: dict[str, Any], *, expected_stems: set[str]) -> None:
     if not output_dir.exists():
         return
-    known_stems = set(V3_RENDER_STEMS) | set(V3_LEGACY_RENDER_STEMS)
+    known_stems = set(V3_RENDER_STEMS) | set(V3_LEGACY_RENDER_STEMS) | set(V2_RENDER_STEMS)
     stale_stems = known_stems - expected_stems
     for path in _artifact_pdf_paths_for_stems(output_dir, artifact, stale_stems):
         if path.exists() and path.is_file():
@@ -3864,7 +3875,7 @@ def render_v3_printout_files(*, artifact: dict[str, Any], output_dir: Path, rend
     markdown_paths: list[str] = []
     pdf_paths: list[str] = []
     expected_stems = {stem for stem, _ in markdown_items}
-    known_pdf_stems = expected_stems | set(V3_RENDER_STEMS) | set(V3_LEGACY_RENDER_STEMS)
+    known_pdf_stems = expected_stems | set(V3_RENDER_STEMS) | set(V3_LEGACY_RENDER_STEMS) | set(V2_RENDER_STEMS)
     if render_pdf:
         preflight_render_toolchain()
         _remove_output_markdown_files(output_dir)

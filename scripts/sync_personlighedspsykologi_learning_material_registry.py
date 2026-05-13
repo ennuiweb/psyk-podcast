@@ -980,6 +980,25 @@ def merge_revision_history(previous: dict[str, Any], entry: dict[str, Any]) -> N
 
 def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     merged = dict(existing)
+    canonical_printout_source_ids = {
+        str(entry.get("source_id") or "")
+        for entry in discovered.values()
+        if entry.get("family") == "printout"
+        and "/printouts/" in str((entry.get("artifact_paths") or {}).get("json") or "")
+        and str(entry.get("source_id") or "")
+    }
+    if canonical_printout_source_ids:
+        for material_id, entry in list(merged.items()):
+            artifact_paths = entry.get("artifact_paths") if isinstance(entry.get("artifact_paths"), dict) else {}
+            if (
+                entry.get("family") == "printout"
+                and str(entry.get("source_id") or "") in canonical_printout_source_ids
+                and (
+                    str(material_id).startswith("printout:reading_scaffolds:")
+                    or "/scaffolding/" in str(artifact_paths.get("json") or "")
+                )
+            ):
+                del merged[material_id]
     for material_id, entry in discovered.items():
         previous = merged.get(material_id)
         if previous and previous.get("attempts") and entry.get("attempts"):

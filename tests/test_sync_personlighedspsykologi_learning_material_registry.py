@@ -75,6 +75,19 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
                     "source_config_hash": "oldhash",
                     "public_relative_path": "/q/48042f6f.html",
                 },
+                {
+                    "material_id": "printout:reading_scaffolds:w01l1-lewis-1999",
+                    "family": "printout",
+                    "material_type": "reading_scaffolds",
+                    "status": "generated_local",
+                    "source_id": "w01l1-lewis-1999",
+                    "artifact_paths": {
+                        "json": (
+                            "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/scaffolding/"
+                            "w01l1-lewis-1999/reading-scaffolds.json"
+                        )
+                    },
+                },
             ]
         },
     )
@@ -332,6 +345,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
 
     materials = {item["material_id"]: item for item in payload["materials"]}
     assert "manual:preserved" in materials
+    assert "printout:reading_scaffolds:w01l1-lewis-1999" not in materials
     printouts = [item for item in payload["materials"] if item.get("family") == "printout"]
     podcasts = [item for item in payload["materials"] if item.get("family") == "podcast"]
     quizzes = [item for item in payload["materials"] if item.get("family") == "quiz"]

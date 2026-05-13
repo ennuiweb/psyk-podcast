@@ -347,6 +347,104 @@ def test_canonical_output_layout_writes_stable_main_files(tmp_path, monkeypatch)
     assert not any("--source-1--" in path.name for path in output_dir.glob("*.pdf"))
 
 
+def test_canonical_output_ignores_legacy_schema_and_generates_v3(tmp_path, monkeypatch):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+    legacy_dir = output_root / "W01L1" / "scaffolding" / "source-1"
+    _write_json(
+        legacy_dir / printout_engine.LEGACY_PRINTOUT_JSON_NAME,
+        {
+            "schema_version": printout_engine.LEGACY_SCHEMA_VERSION,
+            "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
+            "scaffolds": {
+                "abridged_guide": {
+                    "title": "Forberedende oversigt",
+                    "overview": ["a", "b", "c"],
+                    "structure_and_main_arguments": ["a", "b", "c"],
+                    "key_quote_targets": [{"target": "x", "why": "y"}],
+                },
+                "unit_test_suite": {
+                    "title": "Unit Test Suite",
+                    "instructions": "Find svarene.",
+                    "questions": [{"number": index, "question": f"Spørgsmål {index}?"} for index in range(1, 16)],
+                },
+                "cloze_scaffold": {
+                    "title": "Printout-opgaver",
+                    "overview": ["a", "b", "c"],
+                    "fill_in_sentences": [{"number": index, "sentence": f"Begreb {index} er __________."} for index in range(1, 6)],
+                    "diagram_tasks": [{"number": 1, "task": "Tegn modellen.", "blank_space_hint": "Tre noder."}],
+                },
+            },
+        },
+    )
+    legacy_dir.mkdir(parents=True, exist_ok=True)
+    for stem in printout_engine.V2_RENDER_STEMS:
+        (legacy_dir / f"{stem}.pdf").write_bytes(b"%PDF-1.4 legacy")
+
+    generated = []
+
+    def fake_json_generator(**kwargs):
+        generated.append(kwargs)
+        return _valid_scaffold_response()
+
+    def fake_markdown_to_pdf(markdown_path: Path, pdf_path: Path):
+        pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        pdf_path.write_bytes(b"%PDF-1.4 v3")
+
+    monkeypatch.setattr(printout_engine, "markdown_to_pdf", fake_markdown_to_pdf)
+
+    result = printout_engine.build_printout_for_source(
+        repo_root=repo_root,
+        subject_root=subject_root,
+        source=source,
+        source_card_dir=source_card_dir,
+        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+        output_root=output_root,
+        json_generator=fake_json_generator,
+        render_pdf=True,
+    )
+
+    output_dir = Path(result["output_dir"])
+    assert result["status"] == "written"
+    assert generated
+    assert Path(result["json_path"]) == output_dir / "reading-printouts.json"
+    assert json.loads(Path(result["json_path"]).read_text(encoding="utf-8"))["schema_version"] == printout_engine.SCHEMA_VERSION
+    assert sorted(path.name for path in output_dir.glob("*.pdf")) == [
+        "00-cover.pdf",
+        "01-reading-guide.pdf",
+        "02-active-reading.pdf",
+        "03-abridged-version.pdf",
+        "04-consolidation-sheet.pdf",
+    ]
+
+
+def test_canonical_rerender_existing_rejects_legacy_schema_without_generation(tmp_path):
+    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+    legacy_dir = output_root / "W01L1" / "scaffolding" / "source-1"
+    _write_json(
+        legacy_dir / printout_engine.LEGACY_PRINTOUT_JSON_NAME,
+        {
+            "schema_version": printout_engine.LEGACY_SCHEMA_VERSION,
+            "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
+            "scaffolds": {},
+        },
+    )
+
+    with pytest.raises(printout_engine.PrintoutError, match="legacy schema"):
+        printout_engine.build_printout_for_source(
+            repo_root=repo_root,
+            subject_root=subject_root,
+            source=source,
+            source_card_dir=source_card_dir,
+            revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+            course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+            output_root=output_root,
+            json_generator=lambda **kwargs: (_ for _ in ()).throw(AssertionError("generation must not run")),
+            render_pdf=False,
+            rerender_existing=True,
+        )
+
+
 def test_review_pdf_filename_includes_provider_model_and_source_id():
     artifact = {
         "generator": {"provider": "openai", "model": "gpt-5.5"},

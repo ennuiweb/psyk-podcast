@@ -1,0 +1,1113 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:32:53Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "5e11d6e9dbd0d635d6589c4ce15b09f6d7474a89d88181de4fa8fc7b92af8ae3",
+    "source_files_signature": "3b7c6d7e61b5ca3f18b5c7198abe7189a89a24bd454a237fc84cdf9af31a287f",
+    "source_card": "f14ea4fc4e7eedfda393a55922233b52a4facfa49fd956e8e16d82c999fa9ad4",
+    "revised_lecture_substrate": "f7ab14f84c99ca933d46229368525b1877b47044962876c8882ec6763bdffd46",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w04l1-freud-1973-1933-98cd9920",
+    "lecture_key": "W04L1",
+    "title": "Freud (1973/1933)",
+    "reading_title": "Freud (1973/1933)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 11,
+    "estimated_token_count": 7150,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Freud (1973-1933) DA.pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 11,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l1-freud-1973-1933-98cd9920",
+      "lecture_key": "W04L1",
+      "source_title": "Freud (1973/1933)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemer.",
+      "teaser_paragraphs": [
+        "Du kender sikkert følelsen af dårlig samvittighed, eller impulsen til at gøre noget fuldstændig irrationelt, som du bagefter ikke kan forklare. Hvor kommer den splittelse fra?",
+        "Før Freud antog videnskaben, at mennesket var et overvejende rationelt og samlet væsen. I denne tekst bryder Freud endegyldigt den illusion. Han viser os, at vi ikke er herrer i eget hus, men i stedet er styret af stærke indre konflikter.",
+        "Freud flækker psyken op og præsenterer sin berømte strukturelle model. Han beder os se på Det'et, som han kalder for *en kedel fuld af sydende affekter*, og undersøge, hvordan det primitive kaos tæmmes af samfundets krav.",
+        "Dette er kursets første store erkendelsesmæssige brud. Teksten introducerer 'det decentrerede subjekt' – en idé der smadrer den stabile personlighedstest og sætter scenen for de senere poststrukturelle og kritiske teorier i kurset."
+      ],
+      "main_problem": "Hvordan flækker Freud den menneskelige psyke i stridende instanser for at forklare vores indre konflikter og ubevidste handlinger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor straffer Over-jeg'et os, og hvor stammer dets autoritet oprindeligt fra?",
+          "why_it_matters": "Det forklarer, hvordan ydre samfundsnormer bliver til indre, psykologisk tvang.",
+          "answer_form": "En kort mekanisme"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er Det'ets (Id'ets) natur og herskende princip?",
+          "why_it_matters": "Dette udgør den biologiske og driftsmæssige drivkraft, som resten af psyken må forsøge at håndtere.",
+          "answer_form": "Et kort afsnit"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er 'det ubevidste' ikke længere kun begrænset til Det'et?",
+          "why_it_matters": "Det er Freuds store rettelse af sin egen teori; det beviser, at forsvarsmekanismer og moral også opererer i det skjulte.",
+          "answer_form": "Et konkret eksempel fra terapien"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forsøger Jeg'et at mægle mellem sine tre 'strenge herrer'?",
+          "why_it_matters": "Dette illustrerer Jeg'ets udsatte position og årsagen til psykisk angst og symptomdannelse.",
+          "answer_form": "En liste på tre modstridende krav"
+        }
+      ],
+      "why_this_text_matters": "Teksten markerer overgangen fra trækpsykologiens overflade til dybdepsykologiens meningsfortolkning.",
+      "overview": [
+        "Teksten kortlægger Jeg'ets splittelse og dannelsen af Over-jeg'et.",
+        "Den beskriver Det'ets kaos og driftsmæssige natur.",
+        "Den redefinerer det ubevidste som en egenskab ved flere af psykens instanser."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 50-54",
+          "task": "Find beviset på, at psyken ikke er en samlet enhed, men en krystal, der kan splintres.",
+          "why_it_matters": "Sætter præmissen for den strukturelle model.",
+          "stop_signal": "Når Freud introducerer Over-jeg'ets overtagelse af forældreinstansen"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 54-57",
+          "task": "Kortlæg hvordan identifikationen med forældrene skaber en intern overvåger.",
+          "why_it_matters": "Forklarer moralens og skyldfølelsens oprindelse.",
+          "stop_signal": "Når afsnittet om mindreværdskomplekset afsluttes"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 58-62",
+          "task": "Afkod ændringen i Freuds syn på det ubevidste under terapeutisk modstand.",
+          "why_it_matters": "Udvider det ubevidste til også at omfatte Jeg'et.",
+          "stop_signal": "Når han afslutter diskussionen af ordet 'ubevidst' i dynamisk forstand"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 62-66",
+          "task": "Sammenlign Det'ets kaos med Jeg'ets mæglerrolle mellem tre strenge herrer.",
+          "why_it_matters": "Samler modellen og definerer psykoanalysens mål.",
+          "stop_signal": "Ved artiklens afslutning efter Freuds æggemodel-tegning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "en kedel fuld af sydende affekter",
+          "why": "Freuds mest rammende billede på Det'ets rene drift.",
+          "where_to_look": "s. 63"
+        },
+        {
+          "target": "De tre strenge herrer er omverdenen, over-jeg'et og Id'et",
+          "why": "Beskriver præcist det konstante pres på Jeg'et.",
+          "where_to_look": "s. 65"
+        },
+        {
+          "target": "Hvor der var Id, skal der vorde Jeg",
+          "why": "Opsummerer selve formålet med psykoanalytisk behandling.",
+          "where_to_look": "s. 66"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Lange referencer til okkultisme og drømmetydning fra de forrige forelæsninger.",
+        "De tekniske detaljer omkring afviklingen af Oedipus-komplekset for henholdsvis drenge og piger."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse tekstens centrale problemer. Brug dem som dit arbejdsdokument til de næste ark.",
+      "coverage_note": "Dette udtræk fokuserer stramt på Freuds strukturelle personlighedsmodel, instansernes dynamik og redefinitionen af det ubevidste.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 50-54",
+          "heading": "Den splittede psyke og dårlig samvittighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "explanation_paragraphs": [
+            "Freud starter med at observere et hverdagsfænomen: den dårlige samvittighed. Når en person føler skyld, er det fordi én del af personen iagttager, dømmer og straffer en anden del. Hvis psyken var en helhed, ville dette ikke kunne lade sig gøre.",
+            "Han sammenligner psyken med en krystal. Når en krystal falder til jorden og splintres, brækker den ikke tilfældigt, men langs forudbestemte revner, som var usynlige, før krystallen gik i stykker. På samme måde viser patologi og indre konflikter os de skjulte brudlinjer i en normal psyke.",
+            "Denne selviagttagende instans, som udøver moralsk censur over resten af individet, kalder Freud for Over-jeg'et (Superego)."
+          ],
+          "key_points": [
+            "Selviagttagelse kræver en spaltning af psyken i mindst to instanser.",
+            "Psykopatologi fungerer som et forstørrelsesglas, der viser normalpsykologiens usynlige struktur.",
+            "Over-jeg'et adskiller sig fra det øvrige Jeg gennem sin straffende funktion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "som en krystal på jorden",
+              "why_it_matters": "En central metafor for, hvordan kriser afslører personlighedens grundlæggende struktur.",
+              "source_location": "s. 51"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 51",
+              "passage": "Når vi smider en krystal på jorden, går den i stykker, men ikke vilkårligt; den deler sig efter sine spaltninger i stykker, hvis afgrænsning, omend usynlig, dog var forudbestemt ved krystallens struktur.",
+              "why_it_matters": "Viser hvordan Freud bruger psykiske lidelser til at afdække normalpsykologiens anatomi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 54-57",
+          "heading": "Over-jeg'ets dannelse som arv",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan opstår Over-jeg'et i barnet?",
+          "explanation_paragraphs": [
+            "Over-jeg'et er ikke medfødt. Små børn har ingen indre moral og styres udelukkende af lyst og ydre trusler fra forældrene. Den afgørende forvandling sker, når den ydre autoritet bliver rykket ind i barnet selv.",
+            "Denne proces kaldes identificering. Barnet assimilerer forældrenes krav og værdier for at løse den krise, der opstår, når det må opgive sine primitive drifter over for dem (Oedipus-komplekset).",
+            "Dermed er Over-jeg'et arvingen til Oedipus-komplekset. Det repræsenterer fortiden og traditionen, og det er gennem denne instans, at samfundets normer videregives fra generation til generation."
+          ],
+          "key_points": [
+            "Identificering er mekanismen bag moralens opståen.",
+            "Over-jeg'et erstatter forældrenes ydre straf med indre skyldfølelse.",
+            "Dette knytter den psykologiske udvikling direkte til samfundets kulturelle overlevering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "arving til Oedipus-komplekset",
+              "why_it_matters": "Forklarer præcist, hvor den moralske instans stammer fra i Freuds teori.",
+              "source_location": "s. 55"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 58-62",
+          "heading": "Det ubevidstes nye geografi",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "explanation_paragraphs": [
+            "Tidligere i psykoanalysen blev det ubevidste set som ét bestemt rum fyldt med fortrængte drifter. Men under behandling af patienter opdagede Freud et problem: Patienterne ydede modstand mod behandlingen uden selv at vide det.",
+            "Denne modstand måtte komme fra Jeg'et, som beskytter psyken. Hvis Jeg'et iværksætter et forsvar, og patienten er ubevidst om det, betyder det, at vigtige dele af Jeg'et også er ubevidste.",
+            "Derfor kan man ikke længere sætte lighedstegn mellem 'Det'et' og 'det ubevidste'. Ubevidsthed er ikke et sted, men en kvalitet. Både dele af Jeg'et og Over-jeg'et fungerer i mørke."
+          ],
+          "key_points": [
+            "Modstand i terapien sker ofte ubevidst.",
+            "Forsvarsmekanismer udgår fra Jeg'et, men opererer under bevidsthedens radar.",
+            "Ubevidst er en tilstand (en kvalitet), ikke kun et synonym for drifter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "modstanden er dette over-jeg's værk",
+              "why_it_matters": "Beviset på at højere instanser også opererer i det skjulte.",
+              "source_location": "s. 59"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 62-63",
+          "heading": "Det'et: Gryden med sydende drifter",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvad er Det'ets inderste natur?",
+          "explanation_paragraphs": [
+            "Det'et (Id'et) er den ældste og mest primitive del af psyken. Det kender ikke til logik, moral eller tid. Det fungerer som rent kaos, drevet frem af biologisk energi og drifter.",
+            "Det'et opererer udelukkende efter lystprincippet. Dets eneste formål er at opnå øjeblikkelig behovstilfredsstillelse og udlade spænding. Hvis to drifter er i konflikt i Det'et, ophæver de ikke hinanden, de eksisterer bare side om side i mørket.",
+            "Der er ingen overvejelser om konsekvenser, virkelighed eller samfundskrav i denne instans."
+          ],
+          "key_points": [
+            "Det'et er rent kaos og energi.",
+            "Det opererer uden for tid, rum og logik.",
+            "Lystprincippet hersker totalt."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 63",
+              "passage": "Vi nærmer os Id'et med sammenligninger, kalder det et kaos, en kedel fuld af sydende affekter. (...) Det'et kender ingen vurderinger, intet godt og ondt, ingen moral.",
+              "why_it_matters": "Den mest centrale og citerede definition af Id'ets væsen."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "s. 64-66",
+          "heading": "Jeg'et under de tre strenge herrer",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "explanation_paragraphs": [
+            "Jeg'et (Ego) er den del af Det'et, som er blevet modificeret gennem kontakt med den ydre virkelighed. Det styres af realitetsprincippet og forsøger at tilpasse Det'ets blinde krav til en verden fyldt med farer.",
+            "Freud sammenligner Jeg'et med en rytter, der forsøger at tøjle en langt stærkere hest (Det'et). Men Jeg'et har en ekstremt svær opgave, for det skal konstant gøre tre urimelige herskere tilpas.",
+            "Disse tre strenge herrer er: omverdenen (virkeligheden), Over-jeg'et (den straffende moral) og Det'et (den utålmodige lyst). Når Jeg'et fejler i denne mægling, opstår der angst og psykiske symptomer."
+          ],
+          "key_points": [
+            "Jeg'et udvikles for at beskytte organismen mod virkeligheden.",
+            "Det fungerer ud fra realitetsprincippet.",
+            "Symptomer opstår, når presset fra de tre herrer bliver for stort."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "rytterens forhold til hesten",
+              "why_it_matters": "Viser illusionen om fuld kontrol versus de reelle underliggende kræfter.",
+              "source_location": "s. 65"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 65",
+              "passage": "Det stakkels jeg har det endnu vanskeligere: det tjener tre strenge herrer og bestræber sig for at bringe deres krav og fordringer i harmoni med hverandre. (...) De tre strenge herrer er omverdenen, over-jeg'et og Id'et.",
+              "why_it_matters": "Opsummerer kernedynamikken i hele personlighedsmodellen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 66",
+          "heading": "Psykoanalysens projekt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad er målet med at afdække denne splittede struktur?",
+          "explanation_paragraphs": [
+            "Når modellen af den menneskelige psyke er så konfliktfyldt og domineret af ubevidste kræfter, bliver formålet med psykoanalysen meget konkret.",
+            "Terapien handler ikke om at udslette drifterne – det er umuligt. Den handler derimod om at styrke Jeg'et. Man forsøger at gøre Jeg'et mere uafhængigt af Over-jeg'ets rigide straf og at udvidedets organisation, så det kan tilegne sig dele af Det'et.",
+            "At gøre det ubevidste bevidst er en slags kulturarbejde, hvor fornuft langsomt vinder land tilbage fra kaos."
+          ],
+          "key_points": [
+            "Terapien sigter mod at styrke Jeg'et.",
+            "Over-jeg'et skal gøres mindre straffende.",
+            "Ubevidste drifter skal bringes ind under Jeg'ets kontrol."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 66",
+              "passage": "Dens hensigt er jo at forstærke jeg'et, at gøre det mere uafhængigt af over-jeg'et (...) Hvor der var Id, skal der vorde Jeg.",
+              "why_it_matters": "Freuds mest berømte deklaration af det terapeutiske ideal."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan opstår Over-jeg'et i barnet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et konkret eksempel fra terapien",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er Det'ets inderste natur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et kort afsnit",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En liste på tre modstridende krav",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med at afdække denne splittede struktur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En liste på tre modstridende krav",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at fastlåse modellen. Slå kun op i Abridged Reader bagefter for at reparere fejl.",
+      "overview": [
+        "Freud udvikler en strukturel model for at forklare indre konflikter og moral.",
+        "Modellen består af de stridende instanser Det'et, Jeg'et og Over-jeg'et.",
+        "Analysens mål er at styrke Jeg'et, så det kan navigere mellem virkelighedens og drifternes krav."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når krystallen splintres ifølge forudbestemte linjer, bruger Freud det til at vise, at menneskets psyke fra starten er __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Over-jeg'et dannes ikke ud af ingenting, men opstår som den logiske arving til __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Freud opdagede, at patienter ubevidst ydede modstand, hvilket betød at også store dele af __________ fungerer i det ubevidste.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den ældste og dybeste del af psyken styres udelukkende efter __________, uden sans for tid eller konsekvenser.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Jeg'et presses udefra af omverdenen, nedefra af Det'et, og oppefra af __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Det psykoanalytiske ideal opsummeres i udsagnet: 'Hvor der var Id, skal der vorde __________'.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Byg Freuds konfliktmodel ved at skitsere forholdet mellem de tre instanser og bevidsthedens grænse.",
+          "required_elements": [
+            "Det'et (placeret helt i mørke",
+            "Over-jeg'et (med rødder i det ubevidste",
+            "Jeg'et (som mægler på grænsen",
+            "En stiplet linje, der markerer overfladen mellem bevidst og ubevidst"
+          ],
+          "blank_space_hint": "Brug boksen herunder til at optegne mekanismen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at trække teksten ind i mundtlige eksamenssvar. Fokuser på overgangen fra objektive træk til det ubevidste subjekt.",
+      "use_this_text_for": [
+        "At forklare det psykoanalytiske menneskesyn og instansmodellen.",
+        "At diskutere 'Det decentrerede subjekt' (vi er ikke herrer i eget hus).",
+        "At vise kontrasten til biologisk og rationelt funderede personlighedsmodeller.",
+        "At argumentere for, at indre determination (drifter) og historicitet (arv fra forældre) styrer adfærden."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Trækpsykologien ser mennesket som målbare overfladevariable. Freud ser mennesket som et dybt, usynligt system af skjulte konflikter."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt (W10)",
+          "connection": "Freuds spaltning af Jeg'et er den direkte forudsætning for poststrukturalismens idé om, at en samlet identitet er en illusion."
+        },
+        {
+          "course_theme": "Determinisme vs. Agency (W12)",
+          "connection": "Mennesket fremstår deterministisk styret af drifter og Over-jeg, men psykoanalysens projekt er netop at skabe lidt mere handlefrihed (Agency) til Jeg'et."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern (Kritisk personalisme)",
+          "how_to_compare": "Stern insisterer på 'den hele person', mens Freud fundamentalt hævder, at personen er spaltet i fragmenter."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (Mørck/Holzkamp)",
+          "how_to_compare": "Freud placerer konflikten *inde* i hovedet mellem biologi og forældrekrav. Kritisk psykologi rykker konflikten ud i samfundets strukturer."
+        },
+        {
+          "compare_with": "McAdams (Narrativ psykologi)",
+          "how_to_compare": "McAdams bygger et integrerende narrativ for at skabe mening. For Freud er den integrerede fortælling ofte blot en rationalisering, der dækker over Id'ets kaos."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver spurgt om fri vilje...",
+          "use_in_answer": "Brug rytter-metaforen for at vise, at Jeg'et oftest blot styrer driften derhen, hvor driften selv ville hen.",
+          "caution": "Undgå at fremstille Freud som totalt fatalistisk – målet er at styrke Jeg'et."
+        },
+        {
+          "prompt_type": "Hvis du skal anvende orienteringspunkterne...",
+          "use_in_answer": "Slå ned på 'Historicitet' og forklar, hvordan tidligere tiders normer lever videre som psykisk realitet i Over-jeg'et.",
+          "caution": "Undgå mekaniske overfladebeskrivelser af punkterne; bind dem direkte til teorien."
+        },
+        {
+          "prompt_type": "Hvis du diskuterer personlighedens kerne...",
+          "use_in_answer": "Argumenter for at kernen hos Freud er dynamisk (konstant strid), ikke statisk (et fast træk).",
+          "caution": "Undgå at tale om Id, Ego og Superego som steder i hjernen – de er abstrakte funktioner."
+        },
+        {
+          "prompt_type": "Når snakken falder på 'det ubevidste'...",
+          "use_in_answer": "Ret straks misforståelsen af, at kun Det'et er ubevidst. Bevis, at Jeg'ets forsvarsmekanismer også er skjulte.",
+          "caution": "Kald ikke Jeg'et for 'den bevidste del'. Sig i stedet den 'realitetsorienterede del'."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Id, Ego og Superego er fysiske områder i hjernen.",
+          "better_reading": "Forsvar dem som teoretiske, abstrakte koncepter (heuristikker) der beskriver psykiske funktioner, ikke anatomi."
+        },
+        {
+          "trap": "At Over-jeg'et kun er en negativ skurk.",
+          "better_reading": "Fremhæv at Over-jeg'et også indeholder jeg-idealet og evnen til moralsk refleksion, hvilket gør social sameksistens mulig."
+        },
+        {
+          "trap": "At Jeg'et er 100% rationelt og vågent.",
+          "better_reading": "Påpeg at Jeg'et primært udgøres af ubevidste forsvarsmekanismer, der snyder os for at beskytte os."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Freuds instansmodel til at forklare, hvorfor trækpsykologiens (f.eks. Big Five) fokus på selvrapporteret adfærd er utilstrækkeligt for at forstå personligheden.",
+      "mini_exam_answer_plan_slots": [
+        "Definer først forskellen på overflade (træk) og dybde (psykoanalyse).",
+        "Brug 'de tre strenge herrer' til at vise, hvorfor adfærd oftest er et kompromis, ikke et rent udtryk for personen.",
+        "Forklar med Freuds redefinition af det ubevidste, hvorfor selvrapportering slår fejl (forsvaret opererer skjult).",
+        "Konkluder med det decentrerede subjekt: Et spørgeskema antager et rationelt Jeg, som Freud afviser findes."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l1-freud-1973-1933-98cd9920",
+      "lecture_key": "W04L1",
+      "source_title": "Freud (1973/1933)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemer.",
+      "teaser_paragraphs": [
+        "Du kender sikkert følelsen af dårlig samvittighed, eller impulsen til at gøre noget fuldstændig irrationelt, som du bagefter ikke kan forklare. Hvor kommer den splittelse fra?",
+        "Før Freud antog videnskaben, at mennesket var et overvejende rationelt og samlet væsen. I denne tekst bryder Freud endegyldigt den illusion. Han viser os, at vi ikke er herrer i eget hus, men i stedet er styret af stærke indre konflikter.",
+        "Freud flækker psyken op og præsenterer sin berømte strukturelle model. Han beder os se på Det'et, som han kalder for *en kedel fuld af sydende affekter*, og undersøge, hvordan det primitive kaos tæmmes af samfundets krav.",
+        "Dette er kursets første store erkendelsesmæssige brud. Teksten introducerer 'det decentrerede subjekt' – en idé der smadrer den stabile personlighedstest og sætter scenen for de senere poststrukturelle og kritiske teorier i kurset."
+      ],
+      "main_problem": "Hvordan flækker Freud den menneskelige psyke i stridende instanser for at forklare vores indre konflikter og ubevidste handlinger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor straffer Over-jeg'et os, og hvor stammer dets autoritet oprindeligt fra?",
+          "why_it_matters": "Det forklarer, hvordan ydre samfundsnormer bliver til indre, psykologisk tvang.",
+          "answer_form": "En kort mekanisme"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er Det'ets (Id'ets) natur og herskende princip?",
+          "why_it_matters": "Dette udgør den biologiske og driftsmæssige drivkraft, som resten af psyken må forsøge at håndtere.",
+          "answer_form": "Et kort afsnit"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er 'det ubevidste' ikke længere kun begrænset til Det'et?",
+          "why_it_matters": "Det er Freuds store rettelse af sin egen teori; det beviser, at forsvarsmekanismer og moral også opererer i det skjulte.",
+          "answer_form": "Et konkret eksempel fra terapien"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forsøger Jeg'et at mægle mellem sine tre 'strenge herrer'?",
+          "why_it_matters": "Dette illustrerer Jeg'ets udsatte position og årsagen til psykisk angst og symptomdannelse.",
+          "answer_form": "En liste på tre modstridende krav"
+        }
+      ],
+      "why_this_text_matters": "Teksten markerer overgangen fra trækpsykologiens overflade til dybdepsykologiens meningsfortolkning.",
+      "overview": [
+        "Teksten kortlægger Jeg'ets splittelse og dannelsen af Over-jeg'et.",
+        "Den beskriver Det'ets kaos og driftsmæssige natur.",
+        "Den redefinerer det ubevidste som en egenskab ved flere af psykens instanser."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 50-54",
+          "task": "Find beviset på, at psyken ikke er en samlet enhed, men en krystal, der kan splintres.",
+          "why_it_matters": "Sætter præmissen for den strukturelle model.",
+          "stop_signal": "Når Freud introducerer Over-jeg'ets overtagelse af forældreinstansen"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 54-57",
+          "task": "Kortlæg hvordan identifikationen med forældrene skaber en intern overvåger.",
+          "why_it_matters": "Forklarer moralens og skyldfølelsens oprindelse.",
+          "stop_signal": "Når afsnittet om mindreværdskomplekset afsluttes"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 58-62",
+          "task": "Afkod ændringen i Freuds syn på det ubevidste under terapeutisk modstand.",
+          "why_it_matters": "Udvider det ubevidste til også at omfatte Jeg'et.",
+          "stop_signal": "Når han afslutter diskussionen af ordet 'ubevidst' i dynamisk forstand"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 62-66",
+          "task": "Sammenlign Det'ets kaos med Jeg'ets mæglerrolle mellem tre strenge herrer.",
+          "why_it_matters": "Samler modellen og definerer psykoanalysens mål.",
+          "stop_signal": "Ved artiklens afslutning efter Freuds æggemodel-tegning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "en kedel fuld af sydende affekter",
+          "why": "Freuds mest rammende billede på Det'ets rene drift.",
+          "where_to_look": "s. 63"
+        },
+        {
+          "target": "De tre strenge herrer er omverdenen, over-jeg'et og Id'et",
+          "why": "Beskriver præcist det konstante pres på Jeg'et.",
+          "where_to_look": "s. 65"
+        },
+        {
+          "target": "Hvor der var Id, skal der vorde Jeg",
+          "why": "Opsummerer selve formålet med psykoanalytisk behandling.",
+          "where_to_look": "s. 66"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Lange referencer til okkultisme og drømmetydning fra de forrige forelæsninger.",
+        "De tekniske detaljer omkring afviklingen af Oedipus-komplekset for henholdsvis drenge og piger."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse tekstens centrale problemer. Brug dem som dit arbejdsdokument til de næste ark.",
+      "coverage_note": "Dette udtræk fokuserer stramt på Freuds strukturelle personlighedsmodel, instansernes dynamik og redefinitionen af det ubevidste.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 50-54",
+          "heading": "Den splittede psyke og dårlig samvittighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "explanation_paragraphs": [
+            "Freud starter med at observere et hverdagsfænomen: den dårlige samvittighed. Når en person føler skyld, er det fordi én del af personen iagttager, dømmer og straffer en anden del. Hvis psyken var en helhed, ville dette ikke kunne lade sig gøre.",
+            "Han sammenligner psyken med en krystal. Når en krystal falder til jorden og splintres, brækker den ikke tilfældigt, men langs forudbestemte revner, som var usynlige, før krystallen gik i stykker. På samme måde viser patologi og indre konflikter os de skjulte brudlinjer i en normal psyke.",
+            "Denne selviagttagende instans, som udøver moralsk censur over resten af individet, kalder Freud for Over-jeg'et (Superego)."
+          ],
+          "key_points": [
+            "Selviagttagelse kræver en spaltning af psyken i mindst to instanser.",
+            "Psykopatologi fungerer som et forstørrelsesglas, der viser normalpsykologiens usynlige struktur.",
+            "Over-jeg'et adskiller sig fra det øvrige Jeg gennem sin straffende funktion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "som en krystal på jorden",
+              "why_it_matters": "En central metafor for, hvordan kriser afslører personlighedens grundlæggende struktur.",
+              "source_location": "s. 51"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 51",
+              "passage": "Når vi smider en krystal på jorden, går den i stykker, men ikke vilkårligt; den deler sig efter sine spaltninger i stykker, hvis afgrænsning, omend usynlig, dog var forudbestemt ved krystallens struktur.",
+              "why_it_matters": "Viser hvordan Freud bruger psykiske lidelser til at afdække normalpsykologiens anatomi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 54-57",
+          "heading": "Over-jeg'ets dannelse som arv",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan opstår Over-jeg'et i barnet?",
+          "explanation_paragraphs": [
+            "Over-jeg'et er ikke medfødt. Små børn har ingen indre moral og styres udelukkende af lyst og ydre trusler fra forældrene. Den afgørende forvandling sker, når den ydre autoritet bliver rykket ind i barnet selv.",
+            "Denne proces kaldes identificering. Barnet assimilerer forældrenes krav og værdier for at løse den krise, der opstår, når det må opgive sine primitive drifter over for dem (Oedipus-komplekset).",
+            "Dermed er Over-jeg'et arvingen til Oedipus-komplekset. Det repræsenterer fortiden og traditionen, og det er gennem denne instans, at samfundets normer videregives fra generation til generation."
+          ],
+          "key_points": [
+            "Identificering er mekanismen bag moralens opståen.",
+            "Over-jeg'et erstatter forældrenes ydre straf med indre skyldfølelse.",
+            "Dette knytter den psykologiske udvikling direkte til samfundets kulturelle overlevering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "arving til Oedipus-komplekset",
+              "why_it_matters": "Forklarer præcist, hvor den moralske instans stammer fra i Freuds teori.",
+              "source_location": "s. 55"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 58-62",
+          "heading": "Det ubevidstes nye geografi",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "explanation_paragraphs": [
+            "Tidligere i psykoanalysen blev det ubevidste set som ét bestemt rum fyldt med fortrængte drifter. Men under behandling af patienter opdagede Freud et problem: Patienterne ydede modstand mod behandlingen uden selv at vide det.",
+            "Denne modstand måtte komme fra Jeg'et, som beskytter psyken. Hvis Jeg'et iværksætter et forsvar, og patienten er ubevidst om det, betyder det, at vigtige dele af Jeg'et også er ubevidste.",
+            "Derfor kan man ikke længere sætte lighedstegn mellem 'Det'et' og 'det ubevidste'. Ubevidsthed er ikke et sted, men en kvalitet. Både dele af Jeg'et og Over-jeg'et fungerer i mørke."
+          ],
+          "key_points": [
+            "Modstand i terapien sker ofte ubevidst.",
+            "Forsvarsmekanismer udgår fra Jeg'et, men opererer under bevidsthedens radar.",
+            "Ubevidst er en tilstand (en kvalitet), ikke kun et synonym for drifter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "modstanden er dette over-jeg's værk",
+              "why_it_matters": "Beviset på at højere instanser også opererer i det skjulte.",
+              "source_location": "s. 59"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 62-63",
+          "heading": "Det'et: Gryden med sydende drifter",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvad er Det'ets inderste natur?",
+          "explanation_paragraphs": [
+            "Det'et (Id'et) er den ældste og mest primitive del af psyken. Det kender ikke til logik, moral eller tid. Det fungerer som rent kaos, drevet frem af biologisk energi og drifter.",
+            "Det'et opererer udelukkende efter lystprincippet. Dets eneste formål er at opnå øjeblikkelig behovstilfredsstillelse og udlade spænding. Hvis to drifter er i konflikt i Det'et, ophæver de ikke hinanden, de eksisterer bare side om side i mørket.",
+            "Der er ingen overvejelser om konsekvenser, virkelighed eller samfundskrav i denne instans."
+          ],
+          "key_points": [
+            "Det'et er rent kaos og energi.",
+            "Det opererer uden for tid, rum og logik.",
+            "Lystprincippet hersker totalt."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 63",
+              "passage": "Vi nærmer os Id'et med sammenligninger, kalder det et kaos, en kedel fuld af sydende affekter. (...) Det'et kender ingen vurderinger, intet godt og ondt, ingen moral.",
+              "why_it_matters": "Den mest centrale og citerede definition af Id'ets væsen."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "s. 64-66",
+          "heading": "Jeg'et under de tre strenge herrer",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "explanation_paragraphs": [
+            "Jeg'et (Ego) er den del af Det'et, som er blevet modificeret gennem kontakt med den ydre virkelighed. Det styres af realitetsprincippet og forsøger at tilpasse Det'ets blinde krav til en verden fyldt med farer.",
+            "Freud sammenligner Jeg'et med en rytter, der forsøger at tøjle en langt stærkere hest (Det'et). Men Jeg'et har en ekstremt svær opgave, for det skal konstant gøre tre urimelige herskere tilpas.",
+            "Disse tre strenge herrer er: omverdenen (virkeligheden), Over-jeg'et (den straffende moral) og Det'et (den utålmodige lyst). Når Jeg'et fejler i denne mægling, opstår der angst og psykiske symptomer."
+          ],
+          "key_points": [
+            "Jeg'et udvikles for at beskytte organismen mod virkeligheden.",
+            "Det fungerer ud fra realitetsprincippet.",
+            "Symptomer opstår, når presset fra de tre herrer bliver for stort."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "rytterens forhold til hesten",
+              "why_it_matters": "Viser illusionen om fuld kontrol versus de reelle underliggende kræfter.",
+              "source_location": "s. 65"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 65",
+              "passage": "Det stakkels jeg har det endnu vanskeligere: det tjener tre strenge herrer og bestræber sig for at bringe deres krav og fordringer i harmoni med hverandre. (...) De tre strenge herrer er omverdenen, over-jeg'et og Id'et.",
+              "why_it_matters": "Opsummerer kernedynamikken i hele personlighedsmodellen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 66",
+          "heading": "Psykoanalysens projekt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad er målet med at afdække denne splittede struktur?",
+          "explanation_paragraphs": [
+            "Når modellen af den menneskelige psyke er så konfliktfyldt og domineret af ubevidste kræfter, bliver formålet med psykoanalysen meget konkret.",
+            "Terapien handler ikke om at udslette drifterne – det er umuligt. Den handler derimod om at styrke Jeg'et. Man forsøger at gøre Jeg'et mere uafhængigt af Over-jeg'ets rigide straf og at udvidedets organisation, så det kan tilegne sig dele af Det'et.",
+            "At gøre det ubevidste bevidst er en slags kulturarbejde, hvor fornuft langsomt vinder land tilbage fra kaos."
+          ],
+          "key_points": [
+            "Terapien sigter mod at styrke Jeg'et.",
+            "Over-jeg'et skal gøres mindre straffende.",
+            "Ubevidste drifter skal bringes ind under Jeg'ets kontrol."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 66",
+              "passage": "Dens hensigt er jo at forstærke jeg'et, at gøre det mere uafhængigt af over-jeg'et (...) Hvor der var Id, skal der vorde Jeg.",
+              "why_it_matters": "Freuds mest berømte deklaration af det terapeutiske ideal."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan opstår Over-jeg'et i barnet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et konkret eksempel fra terapien",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er Det'ets inderste natur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Et kort afsnit",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En liste på tre modstridende krav",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med at afdække denne splittede struktur?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En liste på tre modstridende krav",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at fastlåse modellen. Slå kun op i Abridged Reader bagefter for at reparere fejl.",
+      "overview": [
+        "Freud udvikler en strukturel model for at forklare indre konflikter og moral.",
+        "Modellen består af de stridende instanser Det'et, Jeg'et og Over-jeg'et.",
+        "Analysens mål er at styrke Jeg'et, så det kan navigere mellem virkelighedens og drifternes krav."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når krystallen splintres ifølge forudbestemte linjer, bruger Freud det til at vise, at menneskets psyke fra starten er __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Over-jeg'et dannes ikke ud af ingenting, men opstår som den logiske arving til __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Freud opdagede, at patienter ubevidst ydede modstand, hvilket betød at også store dele af __________ fungerer i det ubevidste.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den ældste og dybeste del af psyken styres udelukkende efter __________, uden sans for tid eller konsekvenser.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Jeg'et presses udefra af omverdenen, nedefra af Det'et, og oppefra af __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Det psykoanalytiske ideal opsummeres i udsagnet: 'Hvor der var Id, skal der vorde __________'.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Byg Freuds konfliktmodel ved at skitsere forholdet mellem de tre instanser og bevidsthedens grænse.",
+          "required_elements": [
+            "Det'et (placeret helt i mørke",
+            "Over-jeg'et (med rødder i det ubevidste",
+            "Jeg'et (som mægler på grænsen",
+            "En stiplet linje, der markerer overfladen mellem bevidst og ubevidst"
+          ],
+          "blank_space_hint": "Brug boksen herunder til at optegne mekanismen."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at trække teksten ind i mundtlige eksamenssvar. Fokuser på overgangen fra objektive træk til det ubevidste subjekt.",
+      "use_this_text_for": [
+        "At forklare det psykoanalytiske menneskesyn og instansmodellen.",
+        "At diskutere 'Det decentrerede subjekt' (vi er ikke herrer i eget hus).",
+        "At vise kontrasten til biologisk og rationelt funderede personlighedsmodeller.",
+        "At argumentere for, at indre determination (drifter) og historicitet (arv fra forældre) styrer adfærden."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Trækpsykologien ser mennesket som målbare overfladevariable. Freud ser mennesket som et dybt, usynligt system af skjulte konflikter."
+        },
+        {
+          "course_theme": "Det decentrerede subjekt (W10)",
+          "connection": "Freuds spaltning af Jeg'et er den direkte forudsætning for poststrukturalismens idé om, at en samlet identitet er en illusion."
+        },
+        {
+          "course_theme": "Determinisme vs. Agency (W12)",
+          "connection": "Mennesket fremstår deterministisk styret af drifter og Over-jeg, men psykoanalysens projekt er netop at skabe lidt mere handlefrihed (Agency) til Jeg'et."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern (Kritisk personalisme)",
+          "how_to_compare": "Stern insisterer på 'den hele person', mens Freud fundamentalt hævder, at personen er spaltet i fragmenter."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (Mørck/Holzkamp)",
+          "how_to_compare": "Freud placerer konflikten *inde* i hovedet mellem biologi og forældrekrav. Kritisk psykologi rykker konflikten ud i samfundets strukturer."
+        },
+        {
+          "compare_with": "McAdams (Narrativ psykologi)",
+          "how_to_compare": "McAdams bygger et integrerende narrativ for at skabe mening. For Freud er den integrerede fortælling ofte blot en rationalisering, der dækker over Id'ets kaos."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver spurgt om fri vilje...",
+          "use_in_answer": "Brug rytter-metaforen for at vise, at Jeg'et oftest blot styrer driften derhen, hvor driften selv ville hen.",
+          "caution": "Undgå at fremstille Freud som totalt fatalistisk – målet er at styrke Jeg'et."
+        },
+        {
+          "prompt_type": "Hvis du skal anvende orienteringspunkterne...",
+          "use_in_answer": "Slå ned på 'Historicitet' og forklar, hvordan tidligere tiders normer lever videre som psykisk realitet i Over-jeg'et.",
+          "caution": "Undgå mekaniske overfladebeskrivelser af punkterne; bind dem direkte til teorien."
+        },
+        {
+          "prompt_type": "Hvis du diskuterer personlighedens kerne...",
+          "use_in_answer": "Argumenter for at kernen hos Freud er dynamisk (konstant strid), ikke statisk (et fast træk).",
+          "caution": "Undgå at tale om Id, Ego og Superego som steder i hjernen – de er abstrakte funktioner."
+        },
+        {
+          "prompt_type": "Når snakken falder på 'det ubevidste'...",
+          "use_in_answer": "Ret straks misforståelsen af, at kun Det'et er ubevidst. Bevis, at Jeg'ets forsvarsmekanismer også er skjulte.",
+          "caution": "Kald ikke Jeg'et for 'den bevidste del'. Sig i stedet den 'realitetsorienterede del'."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Id, Ego og Superego er fysiske områder i hjernen.",
+          "better_reading": "Forsvar dem som teoretiske, abstrakte koncepter (heuristikker) der beskriver psykiske funktioner, ikke anatomi."
+        },
+        {
+          "trap": "At Over-jeg'et kun er en negativ skurk.",
+          "better_reading": "Fremhæv at Over-jeg'et også indeholder jeg-idealet og evnen til moralsk refleksion, hvilket gør social sameksistens mulig."
+        },
+        {
+          "trap": "At Jeg'et er 100% rationelt og vågent.",
+          "better_reading": "Påpeg at Jeg'et primært udgøres af ubevidste forsvarsmekanismer, der snyder os for at beskytte os."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Freuds instansmodel til at forklare, hvorfor trækpsykologiens (f.eks. Big Five) fokus på selvrapporteret adfærd er utilstrækkeligt for at forstå personligheden.",
+      "mini_exam_answer_plan_slots": [
+        "Definer først forskellen på overflade (træk) og dybde (psykoanalyse).",
+        "Brug 'de tre strenge herrer' til at vise, hvorfor adfærd oftest er et kompromis, ikke et rent udtryk for personen.",
+        "Forklar med Freuds redefinition af det ubevidste, hvorfor selvrapportering slår fejl (forsvaret opererer skjult).",
+        "Konkluder med det decentrerede subjekt: Et spørgeskema antager et rationelt Jeg, som Freud afviser findes."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

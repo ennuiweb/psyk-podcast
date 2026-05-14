@@ -20,12 +20,12 @@ if str(REPO_ROOT) not in sys.path:
 from notebooklm_queue import personlighedspsykologi_printouts as printouts  # noqa: E402
 
 
-REQUIRED_PDF_NAMES = {
-    "00-cover.pdf",
-    "01-reading-guide.pdf",
-    "02-active-reading.pdf",
-    "03-abridged-version.pdf",
-    "04-consolidation-sheet.pdf",
+REQUIRED_PDF_STEMS = {
+    "00-cover",
+    "01-reading-guide",
+    "02-active-reading",
+    "03-abridged-version",
+    "04-consolidation-sheet",
 }
 LEGACY_PDF_NAMES = {
     "01-abridged-guide.pdf",
@@ -47,13 +47,17 @@ def _rel(path: Path, root: Path) -> str:
 
 def _validate_bundle(json_path: Path, repo_root: Path) -> list[str]:
     errors: list[str] = []
-    bundle_dir = json_path.parent
+    output_root = json_path.parents[2]
     artifact = _load_json(json_path)
     rel_json = _rel(json_path, repo_root)
     variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
     generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
     printout_payload = artifact.get("printouts") if isinstance(artifact.get("printouts"), dict) else {}
-    pdf_names = {path.name for path in bundle_dir.glob("*.pdf")}
+    expected_pdf_paths = {
+        stem: output_root / printouts.canonical_pdf_filename(artifact, stem)
+        for stem in REQUIRED_PDF_STEMS
+    }
+    pdf_names = {path.name for path in expected_pdf_paths.values() if path.exists()}
 
     if artifact.get("schema_version") != printouts.SCHEMA_VERSION:
         errors.append(f"{rel_json}: schema_version is not {printouts.SCHEMA_VERSION}")
@@ -74,20 +78,27 @@ def _validate_bundle(json_path: Path, repo_root: Path) -> list[str]:
     if missing_keys:
         errors.append(f"{rel_json}: missing printout keys {sorted(missing_keys)}")
 
-    missing_pdfs = REQUIRED_PDF_NAMES - pdf_names
+    missing_pdfs = {
+        path.name
+        for path in expected_pdf_paths.values()
+        if not path.exists()
+    }
     if missing_pdfs:
-        errors.append(f"{_rel(bundle_dir, repo_root)}: missing PDFs {sorted(missing_pdfs)}")
+        errors.append(f"{_rel(output_root, repo_root)}: missing PDFs {sorted(missing_pdfs)}")
     legacy_pdfs = LEGACY_PDF_NAMES & pdf_names
     if legacy_pdfs:
-        errors.append(f"{_rel(bundle_dir, repo_root)}: legacy PDFs still present {sorted(legacy_pdfs)}")
-    prefixed_pdfs = sorted(name for name in pdf_names if "--" in name)
-    if prefixed_pdfs:
-        errors.append(f"{_rel(bundle_dir, repo_root)}: review-style provider-prefixed PDFs present {prefixed_pdfs}")
+        errors.append(f"{_rel(output_root, repo_root)}: legacy PDFs still present {sorted(legacy_pdfs)}")
     return errors
 
 
 def _validate_legacy_only_dirs(output_root: Path, repo_root: Path) -> list[str]:
     errors: list[str] = []
+    for legacy_dir in sorted(output_root.glob("*/scaffolding")):
+        if legacy_dir.is_dir():
+            errors.append(f"{_rel(legacy_dir, repo_root)}: legacy scaffolding directory still present")
+    for nested_printout_dir in sorted(output_root.glob("*/printouts")):
+        if nested_printout_dir.is_dir():
+            errors.append(f"{_rel(nested_printout_dir, repo_root)}: nested printouts directory still present")
     for source_dir in sorted(output_root.glob("*/printouts/*")):
         if not source_dir.is_dir():
             continue
@@ -182,12 +193,14 @@ def _validate_registry(repo_root: Path, canonical_json_paths: list[Path]) -> lis
             for entry in source_entries
             if isinstance(entry, dict)
         ]
-        if not any(
-            "/printouts/" in artifact_path and artifact_path.endswith(printouts.CANONICAL_PRINTOUT_JSON_NAME)
-            for artifact_path in artifact_paths
-        ):
+        canonical_segment = f"/{printouts.CANONICAL_PRINTOUT_JSON_DIRNAME}/"
+        if not any(canonical_segment in artifact_path and artifact_path.endswith(printouts.CANONICAL_PRINTOUT_JSON_NAME) for artifact_path in artifact_paths):
             errors.append(f"{source_id}: registry does not include canonical printouts artifact: {artifact_paths}")
-        stale_paths = sorted(artifact_path for artifact_path in artifact_paths if "/scaffolding/" in artifact_path)
+        stale_paths = sorted(
+            artifact_path
+            for artifact_path in artifact_paths
+            if "/scaffolding/" in artifact_path or "/printouts/" in artifact_path
+        )
         if stale_paths:
             errors.append(f"{source_id}: registry still includes legacy printout artifacts: {stale_paths}")
     return errors
@@ -198,7 +211,12 @@ def _validate_pdf_text(canonical_json_paths: list[Path], repo_root: Path) -> lis
         return ["pdftotext is not available; cannot scan PDFs for checkbox markers"]
     errors: list[str] = []
     for json_path in canonical_json_paths:
-        for pdf_path in sorted(json_path.parent.glob("*.pdf")):
+        artifact = _load_json(json_path)
+        output_root = json_path.parents[2]
+        stems = printouts._expected_pdf_stems_for_artifact(artifact)
+        for pdf_path in printouts._artifact_pdf_paths_for_stems(output_root, artifact, stems):
+            if not pdf_path.exists():
+                continue
             completed = subprocess.run(
                 ["pdftotext", str(pdf_path), "-"],
                 check=False,
@@ -276,9 +294,12 @@ def _render_markdown_by_name(artifact: dict[str, Any], output_dir: Path) -> dict
     return {Path(path).name: Path(path).read_text(encoding="utf-8") for path in rendered["markdown_paths"]}
 
 
-def _pdf_texts_by_name(output_dir: Path) -> dict[str, str]:
+def _pdf_texts_by_name(output_dir: Path, artifact: dict[str, Any]) -> dict[str, str]:
     texts: dict[str, str] = {}
-    for pdf_path in sorted(output_dir.glob("*.pdf")):
+    stems = printouts._expected_pdf_stems_for_artifact(artifact)
+    for pdf_path in printouts._artifact_pdf_paths_for_stems(output_dir, artifact, stems):
+        if not pdf_path.exists():
+            continue
         completed = subprocess.run(["pdftotext", str(pdf_path), "-"], text=True, capture_output=True, check=False)
         if completed.returncode != 0:
             raise printouts.PrintoutError(f"pdftotext failed for {pdf_path}: {completed.stderr.strip()}")
@@ -286,11 +307,14 @@ def _pdf_texts_by_name(output_dir: Path) -> dict[str, str]:
     return texts
 
 
-def _pdf_page_counts_by_name(output_dir: Path) -> dict[str, str]:
+def _pdf_page_counts_by_name(output_dir: Path, artifact: dict[str, Any]) -> dict[str, str]:
     if not shutil.which("pdfinfo"):
         return {}
     counts: dict[str, str] = {}
-    for pdf_path in sorted(output_dir.glob("*.pdf")):
+    stems = printouts._expected_pdf_stems_for_artifact(artifact)
+    for pdf_path in printouts._artifact_pdf_paths_for_stems(output_dir, artifact, stems):
+        if not pdf_path.exists():
+            continue
         completed = subprocess.run(["pdfinfo", str(pdf_path)], text=True, capture_output=True, check=False)
         if completed.returncode != 0:
             raise printouts.PrintoutError(f"pdfinfo failed for {pdf_path}: {completed.stderr.strip()}")
@@ -317,12 +341,12 @@ def _validate_review_parity(
     with tempfile.TemporaryDirectory(prefix="printout-parity-") as temp_dir_str:
         temp_root = Path(temp_dir_str)
         for source_id, review_json_path in review_jsons.items():
-            main_matches = sorted(output_root.glob(f"*/printouts/{source_id}/{printouts.CANONICAL_PRINTOUT_JSON_NAME}"))
-            if not main_matches:
+            main_json_path = output_root / printouts.CANONICAL_PRINTOUT_JSON_DIRNAME / source_id / printouts.CANONICAL_PRINTOUT_JSON_NAME
+            if not main_json_path.exists():
                 errors.append(f"{source_id}: review artifact has no canonical main JSON")
                 continue
             review_artifact = _load_json(review_json_path)
-            main_artifact = _load_json(main_matches[0])
+            main_artifact = _load_json(main_json_path)
             review_canonical = _canonicalized_for_parity(review_artifact, main_artifact)
             main_canonical = _canonicalized_for_parity(main_artifact, main_artifact)
             if review_canonical["printouts"] != main_canonical["printouts"]:
@@ -338,11 +362,10 @@ def _validate_review_parity(
             compared += 1
             if render_pdf:
                 printouts.render_printout_files(artifact=review_canonical, output_dir=review_dir, render_pdf=True)
-                main_pdf_dir = main_matches[0].parent
-                if _pdf_texts_by_name(review_dir) != _pdf_texts_by_name(main_pdf_dir):
+                if _pdf_texts_by_name(review_dir, review_canonical) != _pdf_texts_by_name(output_root, main_artifact):
                     errors.append(f"{source_id}: rendered cached-review PDF text differs from current main PDFs")
                     continue
-                if _pdf_page_counts_by_name(review_dir) != _pdf_page_counts_by_name(main_pdf_dir):
+                if _pdf_page_counts_by_name(review_dir, review_canonical) != _pdf_page_counts_by_name(output_root, main_artifact):
                     errors.append(f"{source_id}: rendered cached-review PDF page counts differ from current main PDFs")
                     continue
                 pdf_compared += 1
@@ -376,7 +399,11 @@ def main() -> int:
 
     repo_root = args.repo_root.resolve()
     output_root = args.output_root.resolve()
-    canonical_json_paths = sorted(output_root.glob(f"*/printouts/*/{printouts.CANONICAL_PRINTOUT_JSON_NAME}"))
+    canonical_json_paths = sorted(
+        output_root.glob(
+            f"{printouts.CANONICAL_PRINTOUT_JSON_DIRNAME}/*/{printouts.CANONICAL_PRINTOUT_JSON_NAME}"
+        )
+    )
     errors: list[str] = []
     warnings: list[str] = []
 

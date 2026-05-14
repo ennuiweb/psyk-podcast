@@ -98,14 +98,14 @@ candidate generation, prompt iteration, and PDF inspection.
 
 Main-code artifact root:
 
-- `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/reading-printouts.json`
+- `notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/<source_id>/reading-printouts.json`
 
 Current canonical render targets:
 
-- `00-cover.pdf`
-- `01-reading-guide.pdf`
-- `02-active-reading.pdf`
-- `03-abridged-version.pdf`
+- `output/<lecture>--<source_id>--00-cover.pdf`
+- `output/<lecture>--<source_id>--01-reading-guide.pdf`
+- `output/<lecture>--<source_id>--02-active-reading.pdf`
+- `output/<lecture>--<source_id>--03-abridged-version.pdf`
 - `04-consolidation-sheet.pdf`
 - `05-exam-bridge.pdf` only when explicitly enabled
 

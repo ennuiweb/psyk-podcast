@@ -50,9 +50,13 @@ artifacts are not valid canonical outputs.
 The main output path and the candidate review path have separate output
 contracts.
 
-Main outputs are source-scoped under:
+Main PDFs are flat under:
 
-`notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
+`notebooklm-podcast-auto/personlighedspsykologi/output/`
+
+Main JSON artifacts are source-scoped under:
+
+`notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/<source_id>/reading-printouts.json`
 
 Candidate PDFs remain flat in this workspace's `review/` directory.
 

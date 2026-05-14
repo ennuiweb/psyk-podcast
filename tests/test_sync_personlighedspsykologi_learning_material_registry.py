@@ -92,7 +92,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         },
     )
 
-    printout_path = output_root / "W01L1" / "printouts" / "w01l1-lewis-1999" / "reading-printouts.json"
+    printout_path = output_root / "printout-json" / "w01l1-lewis-1999" / "reading-printouts.json"
     _write_json(
         printout_path,
         {
@@ -114,7 +114,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
             "provenance": {"course_synthesis_sha256": "course-hash"},
         },
     )
-    (printout_path.parent / "00-reading-guide.md").write_text("guide\n", encoding="utf-8")
+    (output_root / "W01L1--w01l1-lewis-1999--01-reading-guide.pdf").write_bytes(b"guide")
     legacy_duplicate_path = output_root / "W01L1" / "scaffolding" / "w01l1-lewis-1999" / "reading-scaffolds.json"
     _write_json(
         legacy_duplicate_path,
@@ -137,9 +137,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
         },
     )
     (legacy_duplicate_path.parent / "01-abridged-guide.pdf").write_bytes(b"legacy")
-    other_printout_path = (
-        output_root / "W02L1" / "printouts" / "w02l1-zettler-2020" / "reading-printouts.json"
-    )
+    other_printout_path = output_root / "printout-json" / "w02l1-zettler-2020" / "reading-printouts.json"
     _write_json(
         other_printout_path,
         {
@@ -161,7 +159,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
             "provenance": {"course_synthesis_sha256": "course-hash"},
         },
     )
-    (other_printout_path.parent / "00-reading-guide.md").write_text("other guide\n", encoding="utf-8")
+    (output_root / "W02L1--w02l1-zettler-2020--01-reading-guide.pdf").write_bytes(b"other guide")
 
     success_name = "W01L1 - Lewis (1999) [EN] {type=audio lang=en format=deep-dive length=long hash=bbbb2222}.mp3"
     inventory_only_name = (
@@ -360,7 +358,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert printout["setup_version"] == "printout-v2"
     assert printout["generator"]["prompt_version"] == "reading-printouts-v3"
     assert printout["artifact_paths"]["json"] == (
-        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/printouts/"
+        "notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/"
         "w01l1-lewis-1999/reading-printouts.json"
     )
     expected_printout_fingerprint = module.sha256_json(
@@ -378,7 +376,7 @@ def test_build_registry_merges_printouts_and_podcast_attempts(tmp_path: Path) ->
     assert printout["config_hash"] == expected_printout_fingerprint[:16]
     assert printout["course_understanding_fingerprint"] == module.sha256_json({"course_synthesis_sha256": "course-hash"})
     assert printout["artifact_paths"]["rendered"] == [
-        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/printouts/w01l1-lewis-1999/00-reading-guide.md"
+        "notebooklm-podcast-auto/personlighedspsykologi/output/W01L1--w01l1-lewis-1999--01-reading-guide.pdf"
     ]
     other_printout = next(item for item in printouts if item["source_id"] == "w02l1-zettler-2020")
     assert "setup_version" not in other_printout

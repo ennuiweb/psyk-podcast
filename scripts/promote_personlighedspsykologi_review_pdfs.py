@@ -158,20 +158,31 @@ def main() -> int:
                 output_layout=printouts.OUTPUT_LAYOUT_CANONICAL,
             )
             copied_paths: list[str] = []
-            json_path = out_dir / printouts.CANONICAL_PRINTOUT_JSON_NAME
+            json_path = printouts.artifact_json_path_for_output_dir(
+                output_root,
+                source,
+                out_dir,
+                output_layout=printouts.OUTPUT_LAYOUT_CANONICAL,
+            )
             if not args.dry_run:
                 out_dir.mkdir(parents=True, exist_ok=True)
+                review_json = review_jsons.get(source_id)
+                canonical_artifact = (
+                    _canonicalize_artifact(_read_json(review_json), source)
+                    if review_json is not None
+                    else {"source": source}
+                )
                 for stem in SHEET_STEMS:
-                    target = out_dir / f"{stem}.pdf"
+                    target = out_dir / printouts.canonical_pdf_filename(canonical_artifact, stem)
                     shutil.copy2(stems[stem], target)
                     copied_paths.append(_relative(target))
                 if args.copy_json:
-                    review_json = review_jsons.get(source_id)
                     if review_json is None:
                         raise printouts.PrintoutError(f"review JSON not found for source: {source_id}")
-                    _write_json(json_path, _canonicalize_artifact(_read_json(review_json), source))
+                    _write_json(json_path, canonical_artifact)
             else:
-                copied_paths = [_relative(out_dir / f"{stem}.pdf") for stem in SHEET_STEMS]
+                source_artifact = {"source": source}
+                copied_paths = [_relative(out_dir / printouts.canonical_pdf_filename(source_artifact, stem)) for stem in SHEET_STEMS]
             results.append(
                 {
                     "source_id": source_id,

@@ -1,0 +1,1255 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:43:39Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "8d003ed1c674ba7ecbe693d1b4263428a7598e2dd574bbb6ab1cecde88f57186",
+    "source_files_signature": "99f482bda9296fbdef6971be3c0b2bdf975c3699bcd74cdec7faad74ed72dfb7",
+    "source_card": "3e3556379c4f33385931ef13597826606248250ea99a3b87a18188093a00d78e",
+    "revised_lecture_substrate": "4df5332020ebf5bad3c61c0d8341c3e245990ea24bd0c49026bcd599bd627fb5",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w04l2-laplanche-1970-968862d5",
+    "lecture_key": "W04L2",
+    "title": "Laplanche (1970)",
+    "reading_title": "Laplanche (1970)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 26,
+    "estimated_token_count": 16900,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 26,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l2-laplanche-1970-968862d5",
+      "lecture_key": "W04L2",
+      "source_title": "Laplanche (1970)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne tekst til at spore et centralt problem i pensum, inden du læser videre.",
+      "teaser_paragraphs": [
+        "Vi er vant til at tænke på menneskets seksualitet som en grundlæggende, biologisk naturkraft. Det er en populær opfattelse, at det er et overlevelsesinstinkt på linje med sult, styret af fysiologisk modning. Men ifølge Laplanche er dette en radikal misforståelse af psykoanalysen.",
+        "Laplanche hævder, at human seksualitet tværtimod er defineret ved sin afvigelse fra den rene biologi. En drift (*Trieb*) er ikke det samme som et instinkt (*Instinkt*). Mens instinktet løser et konkret, nedarvet overlevelsesbehov, opererer driften på et andet niveau. Den låner mekanikken, men forvrænger formålet.",
+        "Hvordan sker den forvrængning? Teksten introducerer begrebet 'propping' (læne-princippet). Den menneskelige seksualitet opstår ikke ud af ingenting; den læner sig først op ad en vital overlevelsesfunktion, som f.eks. amning, før den løsriver sig for at jage sin egen nydelse.",
+        "Denne løsrivelse har voldsomme konsekvenser for vores forståelse af det menneskelige begær. Fordi driften mister sit oprindelige, konkrete mål (mælken), må den erstatte det med et fantasmatisk symbol (brystet). Som teksten formulerer det: \"The finding of an object is in fact a re-finding of it.\"",
+        "Din opgave under læsningen er at kortlægge denne præcise adskillelse mellem biologi og psykologi. Hvis du forstår, hvordan driften forskyder instinktet og skaber et lukket, auto-erotisk kredsløb, har du nøglen til at afvise trait-teoriens biologiske essentialisme til eksamen."
+      ],
+      "main_problem": "Hvordan bryder psykoanalysen med den biologiske essentialisme ved at vise, at den menneskelige drift er en afvigelse fra dyriske instinkter?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan defineres forskellen på et Instinkt og en Trieb?",
+          "why_it_matters": "Det er grundlaget for at adskille biologi fra psykoanalytisk motivation.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvad dækker begrebet 'propping' over i overgangen fra instinkt til drift?",
+          "why_it_matters": "Mekanismen viser, at seksualiteten snylter på overlevelsesfunktioner.",
+          "answer_form": "En trinvis mekanisme"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er driftens objekt aldrig det samme som instinktets objekt?",
+          "why_it_matters": "Det forklarer det menneskelige begærs iboende utilfredsstillelse.",
+          "answer_form": "En forklaring"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor er det auto-erotiske stadie et udtryk for et tab?",
+          "why_it_matters": "Det retter op på misforståelsen om, at vi fødes i en objektløs tilstand.",
+          "answer_form": "En logisk afledning"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor beskrives den menneskelige drift som en strukturel 'perversion'?",
+          "why_it_matters": "Det fjerner moral fra begrebet og gør det til en strukturel nødvendighed.",
+          "answer_form": "En begrundelse"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det absolutte teoretiske bevis for, at psykoanalysen ikke reducerer mennesket til biologi, hvilket baner vejen for forståelsen af det 'decentrerede subjekt'.",
+      "overview": [
+        "Teksten adskiller biologisk overlevelse fra psykologisk drift.",
+        "Den kortlægger, hvordan seksualitet opstår ved at læne sig op ad spisefunktionen.",
+        "Den beviser, at vores basale begærsobjekter altid er fantasmatiske substitutter."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 8-11",
+          "task": "Find adskillelsen mellem Instinkt og Trieb.",
+          "why_it_matters": "Etablerer tekstens primære teoretiske modsætningsforhold.",
+          "stop_signal": "Når de fire elementer af en drift introduceres"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 11-14",
+          "task": "Kortlæg driftens fire faktorer (impetus, aim, object, source).",
+          "why_it_matters": "Giver dig de analytiske kategorier til senere at måle forskydningen.",
+          "stop_signal": "Når teksten skifter til at kritisere den 'populære' seksualitetsopfattelse"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 16-18",
+          "task": "Aflæs mekanikken for 'propping' med amning som eksempel.",
+          "why_it_matters": "Dette er hjertekulen i dannelsen af en drift ud af biologi.",
+          "stop_signal": "Når begrebet auto-erotism introduceres"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 18-20",
+          "task": "Identificer hvorfor auto-erotik skyldes et tab af objektet.",
+          "why_it_matters": "Aflive myten om den objektløse starttilstand.",
+          "stop_signal": "Når forskellen på ingestion og inkorporation nævnes"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 20-22",
+          "task": "Spor forskydningen af kilden og målet.",
+          "why_it_matters": "Viser hvordan kroppen re-kodes fra biologi til psykologi.",
+          "stop_signal": "Når perversion begynder at blive diskuteret som et generelt princip"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 23-24",
+          "task": "Forstå Laplanches strukturelle brug af ordet perversion.",
+          "why_it_matters": "Samler hele tekstens påstand om afvigelse fra naturen.",
+          "stop_signal": "Ved kapitlets afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "model of every drive",
+          "why": "Viser seksualitetens særstatus i psykoanalytisk teori.",
+          "where_to_look": "Begyndelsen af teksten."
+        },
+        {
+          "target": "props itself upon",
+          "why": "Den engelske oversættelse af den centrale anlehnung/étayage mekanisme.",
+          "where_to_look": "Sektionen om manifestationer af infantil seksualitet."
+        },
+        {
+          "target": "finding of an object is in fact a re-finding",
+          "why": "Freuds berømte formulering, der beviser objektforskydningen.",
+          "where_to_look": "Sektionen om overgangen til auto-erotik."
+        },
+        {
+          "target": "metaphorizes its aim",
+          "why": "Sammenfatter mekanismen, der forvandler instinkt til drift.",
+          "where_to_look": "Tekstens endelige konklusion."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange redegørelser for de forskellige udgaver og rettelser af Freuds 'Three Essays'.",
+        "Terminologiske debatter om den præcise engelske og franske oversættelseshistorik.",
+        "Analogierne til dyrepsykologi og Lorenz' etologi, som blot bruges som et kontrast-eksempel."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 18",
+          "excerpt": "To begin with, sexual activity attaches itself to [props itself upon] functions serving the purpose of self-preservation and does not become independent of them until later.",
+          "open_question": "Hvis seksualiteten først støtter sig på en overlevelsesfunktion, hvad er det så der får den til at løsrive sig og blive sit eget, selvstændige system?"
+        },
+        {
+          "number": "2",
+          "source_location": "Begyndelsen af teksten.",
+          "excerpt": "model of every drive",
+          "open_question": "Hvad dækker begrebet 'propping' over i overgangen fra instinkt til drift?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om manifestationer af infantil seksualitet.",
+          "excerpt": "props itself upon",
+          "open_question": "Hvorfor er driftens objekt aldrig det samme som instinktets objekt?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette kompendium som din primære læsevej. Sektionerne følger kildens argument.",
+      "coverage_note": "Fokuserer på adskillelsen af Instinkt og Trieb samt læne-princippet i tekstens hoveddel.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 8-11",
+          "heading": "Den Falske Biologiske Model",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Adskil den biologiske opfattelse af instinkt fra den psykoanalytiske drift?",
+          "explanation_paragraphs": [
+            "Laplanche starter med at afvise den 'populære' opfattelse af, at menneskets seksualitet fungerer som et rent biologisk overlevelsesinstinkt på linje med sult. Problemet opstår især i oversættelser, hvor de to tyske ord Instinkt og Trieb ofte forveksles.",
+            "Et Instinkt er et nedarvet, forudbestemt adfærdsmønster, der er tilpasset for at opnå et bestemt biologisk resultat i verden. Det sikrer artens overlevelse.",
+            "En Trieb (drift) låner indledningsvist fire elementer fra instinktet – kilde, drivkraft, objekt og mål – men fungerer radikalt anderledes. Driften afviger fundamentalt fra ethvert biologisk fastlagt mønster. Det er afgørende ikke at reducere den menneskelige psyke til dyrisk biologi."
+          ],
+          "key_points": [
+            "Instinkt (Instinkt) = forudbestemt biologisk adfærd.",
+            "Drift (Trieb) = psykologisk proces uden forudbestemt naturgivet harmoni.",
+            "Psykoanalysens epistemologiske brud består i at frigøre driften fra biologisk essentialisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "preformed behavioral pattern",
+              "why_it_matters": "Definerer præcist hvad instinktet er i kontrast til driften.",
+              "source_location": "Side 10"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 16-18",
+          "heading": "Læne-princippet (Propping)",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Afkod hvordan driften rent faktisk dannes ud fra et instinkt?",
+          "explanation_paragraphs": [
+            "Hvis driften ikke er medfødt som instinktet, hvordan opstår den så? Laplanche introducerer begrebet 'propping' (på fransk étayage, på tysk Anlehnung). Det betyder at støtte sig til eller læne sig op ad noget.",
+            "Driften opstår ikke ud af det blå. Den låner sit udgangspunkt i en vital, biologisk overlevelsesfunktion. Hovedeksemplet er spædbarnets amning. Selve madningen styres af instinktet: målet er mælk, kilden er fordøjelsessystemet, resultatet er mæthed.",
+            "Men under madningen stimuleres læberne af varmen og mælken. Der opstår en ny, marginal nydelse, der er afkoblet fra selve ernæringen. Driften har først 'lænet' sig på overlevelsesfunktionen, men den tager gradvist autonomi og løsriver sig fra den."
+          ],
+          "key_points": [
+            "Seksualitet opstår som et biprodukt ved vitale biologiske funktioner.",
+            "Propping (étayage) er mekanismen, hvor driften læner sig på instinktet.",
+            "Nydelsen ved at sutte løsriver sig fra behovet for at spise."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "props itself upon",
+              "why_it_matters": "Beviser den sekventielle dannelse af seksualiteten.",
+              "source_location": "Side 18"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 18",
+              "passage": "To begin with, sexual activity attaches itself to [props itself upon] functions serving the purpose of self-preservation and does not become independent of them until later.",
+              "why_it_matters": "Dette citat opsummerer selve afkoblingen af psyken fra den rene biologiske krop."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 18-20",
+          "heading": "Forskydningen af Objektet",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Bestem forskellen mellem det biologiske behovs objekt og driftens objekt?",
+          "explanation_paragraphs": [
+            "Når driften løsriver sig fra funktionen, ændres dens objekt uundgåeligt. Det objekt, som oprindeligt slukkede det biologiske instinkt (sulten), var et virkeligt objekt: den varme mælk.",
+            "Men når barnet senere sutter på tommelfingeren for ren nydelse, er målet ikke længere mad. Mælken er væk. Driftens objekt er i stedet blevet forskudt. Den er rettet mod det fantasmatiske bryst som symbol, snarere end det virkelige biologiske produkt.",
+            "Det betyder, at menneskets søgen efter et objekt aldrig kan tilfredsstilles fuldt ud, for det objekt, vi søger gennem vores begær, er altid et forskudt substitut for noget tabt."
+          ],
+          "key_points": [
+            "Instinktets objekt var reelt og funktionelt (mælk).",
+            "Driftens objekt er forskudt og fantasmatisk (brystet).",
+            "Begær drives af umuligheden af at genfinde den præcise, oprindelige biologiske mæthed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "re-finding of it",
+              "why_it_matters": "Bekræfter at objektet aldrig mødes for første gang i et vakuum; det søges som en genfindelse.",
+              "source_location": "Side 19"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 18-20",
+          "heading": "Det Auto-erotiske Tab",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Korriger den biologiske misforståelse af det auto-erotiske stadie som startpunkt?",
+          "explanation_paragraphs": [
+            "En udbredt misforståelse antager, at mennesket starter sit liv i en totalt 'objektløs', indadvendt auto-erotisk tilstand, og derefter lærer at åbne sig for omverdenen.",
+            "Laplanche korrigerer dette radikalt: Spædbarnet har faktisk et objekt fra allerførste færd – moderens bryst i den biologiske amme-funktion. Auto-erotik er ikke starttilstanden, men stadie nummer to.",
+            "Auto-erotikken opstår præcis der, hvor det virkelige eksterne objekt (mælken/brystet i biologisk forstand) tabes. Driften vender sig indad (f.eks. til ens egen læbe), fordi den eksterne funktions-partner er mistet. Auto-erotik markerer dermed bearbejdelsen af et tab."
+          ],
+          "key_points": [
+            "Auto-erotik er ikke en oprindelig tilstand af total indesluttethed.",
+            "Det er et sekundært stadie, der følger tabet af instinktets oprindelige objekt.",
+            "Driften rettes mod den egne krop, fordi det funktionelle objekt er mistet."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 20-22",
+          "heading": "Kilden og Målets Forskydning",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Forstå hvordan selve kroppen omskrives under driftens fremkomst?",
+          "explanation_paragraphs": [
+            "Ikke kun objektet forskydes – det gør målet og kilden også. Instinktets biologiske 'mål' var fødeindtagelse (ingestion). Når dette bliver til en drift, ændres målet til en fantasmatisk forestilling om indlemmelse (inkorporation).",
+            "Den biologiske kilde var hele fordøjelsessystemet, som mærkede sulten. Men driften isolerer sin kilde til specifikke erogene zoner (som læberne).",
+            "Disse zoner er typisk kroppens overgange (sfinktere), og de udgør ikke bare biologisk overflade. De er knudepunkter for forældrenes pleje og omsorg, og derfor bærer de forældrenes egne fantasier direkte ind i barnets psyke."
+          ],
+          "key_points": [
+            "Biologisk ingestion (indtagelse) bliver psykologisk inkorporation (indlemmelse).",
+            "Kilden reduceres fra et generelt organ til en erogen zone.",
+            "Erogene zoner fokuserer og importerer andres (moderens) fantasier."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "focalize parental fantasies",
+              "why_it_matters": "Viser at driften bærer aftrykket af en anden persons subjektivitet udefra.",
+              "source_location": "Side 24"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 23-24",
+          "heading": "Driften som Perversion",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Sammenfat hvorfor menneskets begær i sit væsen er naturstridigt?",
+          "explanation_paragraphs": [
+            "Laplanche trækker trådene sammen og definerer, hvad psykoanalysen egentlig mener med 'perversion'. I klassisk psykiatri er perversion en moralsk syg afvigelse fra et 'sundt' reproduktivt instinkt.",
+            "Men Laplanche viser, at selve den menneskelige drift i udgangspunktet er en afvigelse (*clinamen*) fra naturen. Den infantile seksualitet ødelægger biologiske normer. Den har intet 'naturligt' formål om overlevelse eller reproduktion.",
+            "Seksualiteten – og dermed den psykologiske drift – er i sig selv en bevægelse, der afbøjer instinktet, skifter dets formål ud med en metafor og forskyder dets objekt. Den menneskelige psykologi er en perversion af biologien."
+          ],
+          "key_points": [
+            "Psykoanalytisk perversion er ikke en sygdom, men driftens essens.",
+            "Menneskelig seksualitet fjerner sig pr. definition fra det biologisk rationelle.",
+            "Hele vores psykologiske driftstruktur er et resultat af at afvige instinktet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "metaphorizes its aim",
+              "why_it_matters": "Samler den mekanisme, der gør driften til en psykologisk forestilling frem for biologi.",
+              "source_location": "Side 23"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 23",
+              "passage": "Now sexuality, in its entirety, in the human infant, lies in a movement which deflects the instinct, metaphorizes its aim, displaces and internalizes its object, and concentrates its source on what is ultimately a minimal zone, the erotogenic zone.",
+              "why_it_matters": "Dette er facitlisten på hele forskydningen fra biologisk instinkt til psykologisk drift."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Adskil den biologiske opfattelse af instinkt fra den psykoanalytiske drift?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afkod hvordan driften rent faktisk dannes ud fra et instinkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En trinvis mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bestem forskellen mellem det biologiske behovs objekt og driftens objekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Korriger den biologiske misforståelse af det auto-erotiske stadie som startpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En logisk afledning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå hvordan selve kroppen omskrives under driftens fremkomst?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En trinvis mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Sammenfat hvorfor menneskets begær i sit væsen er naturstridigt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En begrundelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan bryder psykoanalysen med den biologiske essentialisme ved at vise, at den menneskelige drift er en afvigelse fra dyriske instinkter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Test din hukommelse. Udfyld arket uden at se i kompendiet først. Ret bagefter de svar, der ikke sad fast.",
+      "overview": [
+        "Teksten dekonstruerer antagelsen om, at den menneskelige psyke er styret af faste biologiske overlevelsesmekanismer.",
+        "Den opstiller mekanismen 'propping', der viser hvordan seksuel drift opstår ved først at læne sig på, og derpå løsrive sig fra, et biologisk behov.",
+        "Resultatet er, at driftens objekt altid er et fantasmatisk substitut, hvilket bryder fundamentalt med en essentiel natur."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Et biologisk og forudbestemt adfærdsmønster, rettet mod overlevelse, benævnes præcist et __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Menneskets psykologiske motivation, som afviger fra biologien, kaldes for en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den proces, hvor driften til at starte med støtter sig på en vital funktion som f.eks. amning, kaldes __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Før løsrivelsen er instinktets biologiske, reelle objekt for sult ganske simpelt __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Efter løsrivelsen er driftens objekt forskudt til et fantasmatisk symbol, nemlig __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Det indadvendte auto-erotiske stadie opstår ikke som begyndelsen, men markerer et sekundært __________ af det oprindelige objekt.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Fordi driften systematisk afbøjer naturens norm, omtaler teksten menneskets seksualitet som en strukturel __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et to-sidet skema over forskydningen fra madning til oral seksualitet.",
+          "required_elements": [
+            "Venstre kolonne for Instinkt (madning), højre kolonne for Drift (seksualitet",
+            "Række for Objekt (reelt vs fantasmatisk",
+            "Række for Mål (ingestion vs inkorporation"
+          ],
+          "blank_space_hint": "Afsæt plads til en simpel krydstabel med to kolonner og to rækker."
+        },
+        {
+          "number": 2,
+          "task": "Skitse den auto-erotiske sekvens.",
+          "required_elements": [
+            "Trin 1: Funktionen eksisterer (inkluder det eksterne reelle objekt",
+            "Trin 2: Tabet af funktionen markeres",
+            "Trin 3: Driften vender indad (auto-erotik"
+          ],
+          "blank_space_hint": "Brug en tidslinje med tre stationer adskilt af pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine talepunkter til at inddrage Laplanche i en bredere eksamensbesvarelse.",
+      "use_this_text_for": [
+        "At levere det teoretiske bevis for psykoanalysens afvisning af biologisk determinisme.",
+        "At forklare forskellen på et biologisk behov og et menneskeligt begær.",
+        "At demonstrere, hvorfor mennesket aldrig kan opnå endelig psykologisk mættelse (forskydning af objektet).",
+        "At vise mekanismen bag det 'decentrerede subjekt'.",
+        "At understøtte argumentet om, at psykologi må studere strukturer frem for medfødte træk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemological break (Fra natur til struktur)",
+          "connection": "Denne tekst er vendepunktet i pensum, der afviser trait-psykologiens naturgivne målbarhed."
+        },
+        {
+          "course_theme": "The Decentered Subject",
+          "connection": "Fordi driften i sin essens afviger fra biologien og 'låner' andres fantasier, er subjektet ikke styret af fornuft indefra."
+        },
+        {
+          "course_theme": "Agency vs Determination",
+          "connection": "Indre determination skifter fra gener (traits) til ubevidste, forskudte drifter."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trait Theory (Trækteori)",
+          "how_to_compare": "Kontrastér trait-målingens antagelse af biologiens dominans med Laplanches bevis for, at psyken 'perverterer' biologi."
+        },
+        {
+          "compare_with": "Biosocial Approach",
+          "how_to_compare": "Sammenlign overlevelsesfokusset i biosocial adfærd med driftens fundamentalt dysfunktionelle, fantasmatiske mål."
+        },
+        {
+          "compare_with": "Lacan's Mirror Stage",
+          "how_to_compare": "Begge bygger på, at mennesket dannes om et strukturelt fravær eller tab."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når eksaminator spørger ind til Freud og overlevelse...",
+          "use_in_answer": "Brug mekanismen 'propping' (étayage) til at bevise, at seksualitet ganske vist starer med amning, men løsriver sig fra funktionen.",
+          "caution": "Kald aldrig Freuds driftssystem for et overlevelsesinstinkt."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskellen på dyr og menneske...",
+          "use_in_answer": "Opsæt skellet mellem 'Instinkt' (fastlagt natur) og 'Trieb' (forvrænget begær).",
+          "caution": "Vær påpasselig med oversættelser; fastslå at mange tekstbøger uheldigt oversætter Trieb til instinkt."
+        },
+        {
+          "prompt_type": "Når du evaluerer driftens tilfredsstillelse...",
+          "use_in_answer": "Demonstrér at objektet altid er et fantasmatisk substitut (bryst i stedet for mælk).",
+          "caution": "Hævd aldrig at drift kan slukkes definitivt som et fysiologisk behov."
+        },
+        {
+          "prompt_type": "Når du bedes definere 'perversion'...",
+          "use_in_answer": "Sig højt, at hos Laplanche er det den iboende struktur, der afbøjer instinktet, ikke en psykiatrisk afvigelse.",
+          "caution": "Brug ikke ordet som en normativ moralsk dom."
+        },
+        {
+          "prompt_type": "Når du diskuterer auto-erotik...",
+          "use_in_answer": "Beton, at det er et tab af det vitale eksterne objekt, der tvinger barnet til at vende sig mod sig selv.",
+          "caution": "Gå ikke i den fælde at tro, at spædbarnet fødes uden nogen kontakt med objekter."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kalde psykoanalysen en dybt biologisk funderet psykologi.",
+          "better_reading": "Forstå psykoanalysen som bruddet med biologi (Instinkt vs Trieb)."
+        },
+        {
+          "trap": "At tro at det auto-erotiske stadie er barnets tidligste fase før det opdager verden.",
+          "better_reading": "Husk at auto-erotik er fase 2; en reaktion på at tabe det oprindelige funktionelle objekt i amningen."
+        },
+        {
+          "trap": "At læse 'perversion' som at psykoanalysen dømmer patientens moral.",
+          "better_reading": "Se 'perversion' som Laplanches neutrale, strukturelle beskrivelse af driftens afbøjning fra ren overlevelsesfunktion."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign trait-psykologiens syn på medfødte egenskaber med Laplanches psykoanalytiske beskrivelse af, hvordan den menneskelige drift ('Trieb') adskiller sig fra et biologisk instinkt.",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort traits som målbare, iboende biologiske variabler.",
+        "Opstil Laplanches skarpe skelnen mellem Instinkt (natur) og Trieb (psykologi).",
+        "Brug 'propping' til at demonstrere driften som en løsrivelse og forskydning af det biologiske behov.",
+        "Konkluder, at dette skaber grundlaget for det decentrerede subjekt, som aldrig kan mættes ad rent rationelle biologiske veje."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l2-laplanche-1970-968862d5",
+      "lecture_key": "W04L2",
+      "source_title": "Laplanche (1970)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne tekst til at spore et centralt problem i pensum, inden du læser videre.",
+      "teaser_paragraphs": [
+        "Vi er vant til at tænke på menneskets seksualitet som en grundlæggende, biologisk naturkraft. Det er en populær opfattelse, at det er et overlevelsesinstinkt på linje med sult, styret af fysiologisk modning. Men ifølge Laplanche er dette en radikal misforståelse af psykoanalysen.",
+        "Laplanche hævder, at human seksualitet tværtimod er defineret ved sin afvigelse fra den rene biologi. En drift (*Trieb*) er ikke det samme som et instinkt (*Instinkt*). Mens instinktet løser et konkret, nedarvet overlevelsesbehov, opererer driften på et andet niveau. Den låner mekanikken, men forvrænger formålet.",
+        "Hvordan sker den forvrængning? Teksten introducerer begrebet 'propping' (læne-princippet). Den menneskelige seksualitet opstår ikke ud af ingenting; den læner sig først op ad en vital overlevelsesfunktion, som f.eks. amning, før den løsriver sig for at jage sin egen nydelse.",
+        "Denne løsrivelse har voldsomme konsekvenser for vores forståelse af det menneskelige begær. Fordi driften mister sit oprindelige, konkrete mål (mælken), må den erstatte det med et fantasmatisk symbol (brystet). Som teksten formulerer det: \"The finding of an object is in fact a re-finding of it.\"",
+        "Din opgave under læsningen er at kortlægge denne præcise adskillelse mellem biologi og psykologi. Hvis du forstår, hvordan driften forskyder instinktet og skaber et lukket, auto-erotisk kredsløb, har du nøglen til at afvise trait-teoriens biologiske essentialisme til eksamen."
+      ],
+      "main_problem": "Hvordan bryder psykoanalysen med den biologiske essentialisme ved at vise, at den menneskelige drift er en afvigelse fra dyriske instinkter?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan defineres forskellen på et Instinkt og en Trieb?",
+          "why_it_matters": "Det er grundlaget for at adskille biologi fra psykoanalytisk motivation.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvad dækker begrebet 'propping' over i overgangen fra instinkt til drift?",
+          "why_it_matters": "Mekanismen viser, at seksualiteten snylter på overlevelsesfunktioner.",
+          "answer_form": "En trinvis mekanisme"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er driftens objekt aldrig det samme som instinktets objekt?",
+          "why_it_matters": "Det forklarer det menneskelige begærs iboende utilfredsstillelse.",
+          "answer_form": "En forklaring"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor er det auto-erotiske stadie et udtryk for et tab?",
+          "why_it_matters": "Det retter op på misforståelsen om, at vi fødes i en objektløs tilstand.",
+          "answer_form": "En logisk afledning"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor beskrives den menneskelige drift som en strukturel 'perversion'?",
+          "why_it_matters": "Det fjerner moral fra begrebet og gør det til en strukturel nødvendighed.",
+          "answer_form": "En begrundelse"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det absolutte teoretiske bevis for, at psykoanalysen ikke reducerer mennesket til biologi, hvilket baner vejen for forståelsen af det 'decentrerede subjekt'.",
+      "overview": [
+        "Teksten adskiller biologisk overlevelse fra psykologisk drift.",
+        "Den kortlægger, hvordan seksualitet opstår ved at læne sig op ad spisefunktionen.",
+        "Den beviser, at vores basale begærsobjekter altid er fantasmatiske substitutter."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 8-11",
+          "task": "Find adskillelsen mellem Instinkt og Trieb.",
+          "why_it_matters": "Etablerer tekstens primære teoretiske modsætningsforhold.",
+          "stop_signal": "Når de fire elementer af en drift introduceres"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 11-14",
+          "task": "Kortlæg driftens fire faktorer (impetus, aim, object, source).",
+          "why_it_matters": "Giver dig de analytiske kategorier til senere at måle forskydningen.",
+          "stop_signal": "Når teksten skifter til at kritisere den 'populære' seksualitetsopfattelse"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 16-18",
+          "task": "Aflæs mekanikken for 'propping' med amning som eksempel.",
+          "why_it_matters": "Dette er hjertekulen i dannelsen af en drift ud af biologi.",
+          "stop_signal": "Når begrebet auto-erotism introduceres"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 18-20",
+          "task": "Identificer hvorfor auto-erotik skyldes et tab af objektet.",
+          "why_it_matters": "Aflive myten om den objektløse starttilstand.",
+          "stop_signal": "Når forskellen på ingestion og inkorporation nævnes"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 20-22",
+          "task": "Spor forskydningen af kilden og målet.",
+          "why_it_matters": "Viser hvordan kroppen re-kodes fra biologi til psykologi.",
+          "stop_signal": "Når perversion begynder at blive diskuteret som et generelt princip"
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 23-24",
+          "task": "Forstå Laplanches strukturelle brug af ordet perversion.",
+          "why_it_matters": "Samler hele tekstens påstand om afvigelse fra naturen.",
+          "stop_signal": "Ved kapitlets afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "model of every drive",
+          "why": "Viser seksualitetens særstatus i psykoanalytisk teori.",
+          "where_to_look": "Begyndelsen af teksten."
+        },
+        {
+          "target": "props itself upon",
+          "why": "Den engelske oversættelse af den centrale anlehnung/étayage mekanisme.",
+          "where_to_look": "Sektionen om manifestationer af infantil seksualitet."
+        },
+        {
+          "target": "finding of an object is in fact a re-finding",
+          "why": "Freuds berømte formulering, der beviser objektforskydningen.",
+          "where_to_look": "Sektionen om overgangen til auto-erotik."
+        },
+        {
+          "target": "metaphorizes its aim",
+          "why": "Sammenfatter mekanismen, der forvandler instinkt til drift.",
+          "where_to_look": "Tekstens endelige konklusion."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange redegørelser for de forskellige udgaver og rettelser af Freuds 'Three Essays'.",
+        "Terminologiske debatter om den præcise engelske og franske oversættelseshistorik.",
+        "Analogierne til dyrepsykologi og Lorenz' etologi, som blot bruges som et kontrast-eksempel."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Side 18",
+          "excerpt": "To begin with, sexual activity attaches itself to [props itself upon] functions serving the purpose of self-preservation and does not become independent of them until later.",
+          "open_question": "Hvis seksualiteten først støtter sig på en overlevelsesfunktion, hvad er det så der får den til at løsrive sig og blive sit eget, selvstændige system?"
+        },
+        {
+          "number": "2",
+          "source_location": "Begyndelsen af teksten.",
+          "excerpt": "model of every drive",
+          "open_question": "Hvad dækker begrebet 'propping' over i overgangen fra instinkt til drift?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om manifestationer af infantil seksualitet.",
+          "excerpt": "props itself upon",
+          "open_question": "Hvorfor er driftens objekt aldrig det samme som instinktets objekt?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette kompendium som din primære læsevej. Sektionerne følger kildens argument.",
+      "coverage_note": "Fokuserer på adskillelsen af Instinkt og Trieb samt læne-princippet i tekstens hoveddel.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 8-11",
+          "heading": "Den Falske Biologiske Model",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Adskil den biologiske opfattelse af instinkt fra den psykoanalytiske drift?",
+          "explanation_paragraphs": [
+            "Laplanche starter med at afvise den 'populære' opfattelse af, at menneskets seksualitet fungerer som et rent biologisk overlevelsesinstinkt på linje med sult. Problemet opstår især i oversættelser, hvor de to tyske ord Instinkt og Trieb ofte forveksles.",
+            "Et Instinkt er et nedarvet, forudbestemt adfærdsmønster, der er tilpasset for at opnå et bestemt biologisk resultat i verden. Det sikrer artens overlevelse.",
+            "En Trieb (drift) låner indledningsvist fire elementer fra instinktet – kilde, drivkraft, objekt og mål – men fungerer radikalt anderledes. Driften afviger fundamentalt fra ethvert biologisk fastlagt mønster. Det er afgørende ikke at reducere den menneskelige psyke til dyrisk biologi."
+          ],
+          "key_points": [
+            "Instinkt (Instinkt) = forudbestemt biologisk adfærd.",
+            "Drift (Trieb) = psykologisk proces uden forudbestemt naturgivet harmoni.",
+            "Psykoanalysens epistemologiske brud består i at frigøre driften fra biologisk essentialisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "preformed behavioral pattern",
+              "why_it_matters": "Definerer præcist hvad instinktet er i kontrast til driften.",
+              "source_location": "Side 10"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 16-18",
+          "heading": "Læne-princippet (Propping)",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Afkod hvordan driften rent faktisk dannes ud fra et instinkt?",
+          "explanation_paragraphs": [
+            "Hvis driften ikke er medfødt som instinktet, hvordan opstår den så? Laplanche introducerer begrebet 'propping' (på fransk étayage, på tysk Anlehnung). Det betyder at støtte sig til eller læne sig op ad noget.",
+            "Driften opstår ikke ud af det blå. Den låner sit udgangspunkt i en vital, biologisk overlevelsesfunktion. Hovedeksemplet er spædbarnets amning. Selve madningen styres af instinktet: målet er mælk, kilden er fordøjelsessystemet, resultatet er mæthed.",
+            "Men under madningen stimuleres læberne af varmen og mælken. Der opstår en ny, marginal nydelse, der er afkoblet fra selve ernæringen. Driften har først 'lænet' sig på overlevelsesfunktionen, men den tager gradvist autonomi og løsriver sig fra den."
+          ],
+          "key_points": [
+            "Seksualitet opstår som et biprodukt ved vitale biologiske funktioner.",
+            "Propping (étayage) er mekanismen, hvor driften læner sig på instinktet.",
+            "Nydelsen ved at sutte løsriver sig fra behovet for at spise."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "props itself upon",
+              "why_it_matters": "Beviser den sekventielle dannelse af seksualiteten.",
+              "source_location": "Side 18"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 18",
+              "passage": "To begin with, sexual activity attaches itself to [props itself upon] functions serving the purpose of self-preservation and does not become independent of them until later.",
+              "why_it_matters": "Dette citat opsummerer selve afkoblingen af psyken fra den rene biologiske krop."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 18-20",
+          "heading": "Forskydningen af Objektet",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Bestem forskellen mellem det biologiske behovs objekt og driftens objekt?",
+          "explanation_paragraphs": [
+            "Når driften løsriver sig fra funktionen, ændres dens objekt uundgåeligt. Det objekt, som oprindeligt slukkede det biologiske instinkt (sulten), var et virkeligt objekt: den varme mælk.",
+            "Men når barnet senere sutter på tommelfingeren for ren nydelse, er målet ikke længere mad. Mælken er væk. Driftens objekt er i stedet blevet forskudt. Den er rettet mod det fantasmatiske bryst som symbol, snarere end det virkelige biologiske produkt.",
+            "Det betyder, at menneskets søgen efter et objekt aldrig kan tilfredsstilles fuldt ud, for det objekt, vi søger gennem vores begær, er altid et forskudt substitut for noget tabt."
+          ],
+          "key_points": [
+            "Instinktets objekt var reelt og funktionelt (mælk).",
+            "Driftens objekt er forskudt og fantasmatisk (brystet).",
+            "Begær drives af umuligheden af at genfinde den præcise, oprindelige biologiske mæthed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "re-finding of it",
+              "why_it_matters": "Bekræfter at objektet aldrig mødes for første gang i et vakuum; det søges som en genfindelse.",
+              "source_location": "Side 19"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 18-20",
+          "heading": "Det Auto-erotiske Tab",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Korriger den biologiske misforståelse af det auto-erotiske stadie som startpunkt?",
+          "explanation_paragraphs": [
+            "En udbredt misforståelse antager, at mennesket starter sit liv i en totalt 'objektløs', indadvendt auto-erotisk tilstand, og derefter lærer at åbne sig for omverdenen.",
+            "Laplanche korrigerer dette radikalt: Spædbarnet har faktisk et objekt fra allerførste færd – moderens bryst i den biologiske amme-funktion. Auto-erotik er ikke starttilstanden, men stadie nummer to.",
+            "Auto-erotikken opstår præcis der, hvor det virkelige eksterne objekt (mælken/brystet i biologisk forstand) tabes. Driften vender sig indad (f.eks. til ens egen læbe), fordi den eksterne funktions-partner er mistet. Auto-erotik markerer dermed bearbejdelsen af et tab."
+          ],
+          "key_points": [
+            "Auto-erotik er ikke en oprindelig tilstand af total indesluttethed.",
+            "Det er et sekundært stadie, der følger tabet af instinktets oprindelige objekt.",
+            "Driften rettes mod den egne krop, fordi det funktionelle objekt er mistet."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 20-22",
+          "heading": "Kilden og Målets Forskydning",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Forstå hvordan selve kroppen omskrives under driftens fremkomst?",
+          "explanation_paragraphs": [
+            "Ikke kun objektet forskydes – det gør målet og kilden også. Instinktets biologiske 'mål' var fødeindtagelse (ingestion). Når dette bliver til en drift, ændres målet til en fantasmatisk forestilling om indlemmelse (inkorporation).",
+            "Den biologiske kilde var hele fordøjelsessystemet, som mærkede sulten. Men driften isolerer sin kilde til specifikke erogene zoner (som læberne).",
+            "Disse zoner er typisk kroppens overgange (sfinktere), og de udgør ikke bare biologisk overflade. De er knudepunkter for forældrenes pleje og omsorg, og derfor bærer de forældrenes egne fantasier direkte ind i barnets psyke."
+          ],
+          "key_points": [
+            "Biologisk ingestion (indtagelse) bliver psykologisk inkorporation (indlemmelse).",
+            "Kilden reduceres fra et generelt organ til en erogen zone.",
+            "Erogene zoner fokuserer og importerer andres (moderens) fantasier."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "focalize parental fantasies",
+              "why_it_matters": "Viser at driften bærer aftrykket af en anden persons subjektivitet udefra.",
+              "source_location": "Side 24"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Siderne 23-24",
+          "heading": "Driften som Perversion",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Sammenfat hvorfor menneskets begær i sit væsen er naturstridigt?",
+          "explanation_paragraphs": [
+            "Laplanche trækker trådene sammen og definerer, hvad psykoanalysen egentlig mener med 'perversion'. I klassisk psykiatri er perversion en moralsk syg afvigelse fra et 'sundt' reproduktivt instinkt.",
+            "Men Laplanche viser, at selve den menneskelige drift i udgangspunktet er en afvigelse (*clinamen*) fra naturen. Den infantile seksualitet ødelægger biologiske normer. Den har intet 'naturligt' formål om overlevelse eller reproduktion.",
+            "Seksualiteten – og dermed den psykologiske drift – er i sig selv en bevægelse, der afbøjer instinktet, skifter dets formål ud med en metafor og forskyder dets objekt. Den menneskelige psykologi er en perversion af biologien."
+          ],
+          "key_points": [
+            "Psykoanalytisk perversion er ikke en sygdom, men driftens essens.",
+            "Menneskelig seksualitet fjerner sig pr. definition fra det biologisk rationelle.",
+            "Hele vores psykologiske driftstruktur er et resultat af at afvige instinktet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "metaphorizes its aim",
+              "why_it_matters": "Samler den mekanisme, der gør driften til en psykologisk forestilling frem for biologi.",
+              "source_location": "Side 23"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 23",
+              "passage": "Now sexuality, in its entirety, in the human infant, lies in a movement which deflects the instinct, metaphorizes its aim, displaces and internalizes its object, and concentrates its source on what is ultimately a minimal zone, the erotogenic zone.",
+              "why_it_matters": "Dette er facitlisten på hele forskydningen fra biologisk instinkt til psykologisk drift."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Adskil den biologiske opfattelse af instinkt fra den psykoanalytiske drift?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afkod hvordan driften rent faktisk dannes ud fra et instinkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En trinvis mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bestem forskellen mellem det biologiske behovs objekt og driftens objekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Korriger den biologiske misforståelse af det auto-erotiske stadie som startpunkt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En logisk afledning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå hvordan selve kroppen omskrives under driftens fremkomst?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En trinvis mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Sammenfat hvorfor menneskets begær i sit væsen er naturstridigt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En begrundelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan bryder psykoanalysen med den biologiske essentialisme ved at vise, at den menneskelige drift er en afvigelse fra dyriske instinkter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Test din hukommelse. Udfyld arket uden at se i kompendiet først. Ret bagefter de svar, der ikke sad fast.",
+      "overview": [
+        "Teksten dekonstruerer antagelsen om, at den menneskelige psyke er styret af faste biologiske overlevelsesmekanismer.",
+        "Den opstiller mekanismen 'propping', der viser hvordan seksuel drift opstår ved først at læne sig på, og derpå løsrive sig fra, et biologisk behov.",
+        "Resultatet er, at driftens objekt altid er et fantasmatisk substitut, hvilket bryder fundamentalt med en essentiel natur."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Et biologisk og forudbestemt adfærdsmønster, rettet mod overlevelse, benævnes præcist et __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Menneskets psykologiske motivation, som afviger fra biologien, kaldes for en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den proces, hvor driften til at starte med støtter sig på en vital funktion som f.eks. amning, kaldes __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Før løsrivelsen er instinktets biologiske, reelle objekt for sult ganske simpelt __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Efter løsrivelsen er driftens objekt forskudt til et fantasmatisk symbol, nemlig __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Det indadvendte auto-erotiske stadie opstår ikke som begyndelsen, men markerer et sekundært __________ af det oprindelige objekt.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Fordi driften systematisk afbøjer naturens norm, omtaler teksten menneskets seksualitet som en strukturel __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn et to-sidet skema over forskydningen fra madning til oral seksualitet.",
+          "required_elements": [
+            "Venstre kolonne for Instinkt (madning), højre kolonne for Drift (seksualitet",
+            "Række for Objekt (reelt vs fantasmatisk",
+            "Række for Mål (ingestion vs inkorporation"
+          ],
+          "blank_space_hint": "Afsæt plads til en simpel krydstabel med to kolonner og to rækker."
+        },
+        {
+          "number": 2,
+          "task": "Skitse den auto-erotiske sekvens.",
+          "required_elements": [
+            "Trin 1: Funktionen eksisterer (inkluder det eksterne reelle objekt",
+            "Trin 2: Tabet af funktionen markeres",
+            "Trin 3: Driften vender indad (auto-erotik"
+          ],
+          "blank_space_hint": "Brug en tidslinje med tre stationer adskilt af pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine talepunkter til at inddrage Laplanche i en bredere eksamensbesvarelse.",
+      "use_this_text_for": [
+        "At levere det teoretiske bevis for psykoanalysens afvisning af biologisk determinisme.",
+        "At forklare forskellen på et biologisk behov og et menneskeligt begær.",
+        "At demonstrere, hvorfor mennesket aldrig kan opnå endelig psykologisk mættelse (forskydning af objektet).",
+        "At vise mekanismen bag det 'decentrerede subjekt'.",
+        "At understøtte argumentet om, at psykologi må studere strukturer frem for medfødte træk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemological break (Fra natur til struktur)",
+          "connection": "Denne tekst er vendepunktet i pensum, der afviser trait-psykologiens naturgivne målbarhed."
+        },
+        {
+          "course_theme": "The Decentered Subject",
+          "connection": "Fordi driften i sin essens afviger fra biologien og 'låner' andres fantasier, er subjektet ikke styret af fornuft indefra."
+        },
+        {
+          "course_theme": "Agency vs Determination",
+          "connection": "Indre determination skifter fra gener (traits) til ubevidste, forskudte drifter."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trait Theory (Trækteori)",
+          "how_to_compare": "Kontrastér trait-målingens antagelse af biologiens dominans med Laplanches bevis for, at psyken 'perverterer' biologi."
+        },
+        {
+          "compare_with": "Biosocial Approach",
+          "how_to_compare": "Sammenlign overlevelsesfokusset i biosocial adfærd med driftens fundamentalt dysfunktionelle, fantasmatiske mål."
+        },
+        {
+          "compare_with": "Lacan's Mirror Stage",
+          "how_to_compare": "Begge bygger på, at mennesket dannes om et strukturelt fravær eller tab."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når eksaminator spørger ind til Freud og overlevelse...",
+          "use_in_answer": "Brug mekanismen 'propping' (étayage) til at bevise, at seksualitet ganske vist starer med amning, men løsriver sig fra funktionen.",
+          "caution": "Kald aldrig Freuds driftssystem for et overlevelsesinstinkt."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskellen på dyr og menneske...",
+          "use_in_answer": "Opsæt skellet mellem 'Instinkt' (fastlagt natur) og 'Trieb' (forvrænget begær).",
+          "caution": "Vær påpasselig med oversættelser; fastslå at mange tekstbøger uheldigt oversætter Trieb til instinkt."
+        },
+        {
+          "prompt_type": "Når du evaluerer driftens tilfredsstillelse...",
+          "use_in_answer": "Demonstrér at objektet altid er et fantasmatisk substitut (bryst i stedet for mælk).",
+          "caution": "Hævd aldrig at drift kan slukkes definitivt som et fysiologisk behov."
+        },
+        {
+          "prompt_type": "Når du bedes definere 'perversion'...",
+          "use_in_answer": "Sig højt, at hos Laplanche er det den iboende struktur, der afbøjer instinktet, ikke en psykiatrisk afvigelse.",
+          "caution": "Brug ikke ordet som en normativ moralsk dom."
+        },
+        {
+          "prompt_type": "Når du diskuterer auto-erotik...",
+          "use_in_answer": "Beton, at det er et tab af det vitale eksterne objekt, der tvinger barnet til at vende sig mod sig selv.",
+          "caution": "Gå ikke i den fælde at tro, at spædbarnet fødes uden nogen kontakt med objekter."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At kalde psykoanalysen en dybt biologisk funderet psykologi.",
+          "better_reading": "Forstå psykoanalysen som bruddet med biologi (Instinkt vs Trieb)."
+        },
+        {
+          "trap": "At tro at det auto-erotiske stadie er barnets tidligste fase før det opdager verden.",
+          "better_reading": "Husk at auto-erotik er fase 2; en reaktion på at tabe det oprindelige funktionelle objekt i amningen."
+        },
+        {
+          "trap": "At læse 'perversion' som at psykoanalysen dømmer patientens moral.",
+          "better_reading": "Se 'perversion' som Laplanches neutrale, strukturelle beskrivelse af driftens afbøjning fra ren overlevelsesfunktion."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign trait-psykologiens syn på medfødte egenskaber med Laplanches psykoanalytiske beskrivelse af, hvordan den menneskelige drift ('Trieb') adskiller sig fra et biologisk instinkt.",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort traits som målbare, iboende biologiske variabler.",
+        "Opstil Laplanches skarpe skelnen mellem Instinkt (natur) og Trieb (psykologi).",
+        "Brug 'propping' til at demonstrere driften som en løsrivelse og forskydning af det biologiske behov.",
+        "Konkluder, at dette skaber grundlaget for det decentrerede subjekt, som aldrig kan mættes ad rent rationelle biologiske veje."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

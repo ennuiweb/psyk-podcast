@@ -1,0 +1,815 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:39:47Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "f7ef9366c8fc184b9e24b68537f6480484154db41812c99caf12094d78ddd3cc",
+    "source_files_signature": "d2842a1c3e8fae01c8117b200fff6ec883c336c05cb0e29d4606b201877fa15a",
+    "source_card": "aac245856433a3a74e5d246cd0503826551175fe088a504917eec89f536f5467",
+    "revised_lecture_substrate": "4df5332020ebf5bad3c61c0d8341c3e245990ea24bd0c49026bcd599bd627fb5",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w04l2-lacan-1966-2d720f56",
+    "lecture_key": "W04L2",
+    "title": "Lacan (1966)",
+    "reading_title": "Lacan (1966)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L2 Psykoanalytisk personlighedsstruktur/W4L2 Lacan (1966).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 7,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l2-lacan-1966-2d720f56",
+      "lecture_key": "W04L2",
+      "source_title": "Lacan (1966)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at fange tekstens problem, og brug derefter ruten som din læseplan.",
+      "teaser_paragraphs": [
+        "Forestil dig et barn på blot seks måneder, der holdes op foran et spejl. Hvor en ung chimpanse hurtigt gennemskuer refleksionen, mister interessen og går videre, reagerer menneskebarnet med en intens, nærmest jublende fascination. Barnet kan endnu ikke gå og mangler fuldstændig motorisk kontrol over sine egne lemmer, men i spejlet ser det et formfuldendt mirage af en færdig, samlet form.",
+        "Dette er den dramatiske scene, der danner kernen i Lacans berømte tekst om spejlstadiet. For Lacan er spejlbilledet ikke blot en kognitiv milepæl, hvor barnet genkender sig selv. Det er en livsnødvendig redningsplanke. Mennesket fødes fundamentalt for tidligt rent biologisk, og det er fanget i en ubehagelig, ufærdig krop. Spejlet tilbyder en magisk illusion af kontrol, som barnet instinktivt kaster sig over for at undslippe kaosset.",
+        "Men her opstår det egentlige problem i teksten: Hvis vores primære oplevelse af at være et samlet 'jeg' i virkeligheden stammer fra et ydre, fiktivt billede, hvad betyder det så for vores personlighed? For Lacan betyder det, at jeget dybest set er en fiktion. Det er ikke et rationelt center, der styrer slagets gang, men derimod et panser bygget på en fatal miskendelse af vores sande, ufærdige natur.",
+        "Denne tekst fremtvinger et skelsættende brud i dit studie af personlighedspsykologien. Her dekonstrueres selve idéen om den selvkørende, autonome person. Du skal nu læse for at fange beviserne for, hvorfor vi slet ikke er herrer i vores eget hus, og hvorfor identitet ofte fungerer som et defensivt skjold."
+      ],
+      "main_problem": "Hvordan dannes jeget gennem et ydre spejlbillede, og hvorfor beviser dette, at identiteten er en forsvarsmekanisme frem for et rationelt kontrolcenter?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller menneskebarnets reaktion på spejlet fra dyrets, og hvad skaber denne reaktion?",
+          "why_it_matters": "Det markerer overgangen fra ren biologi til psykologisk identifikation.",
+          "answer_form": "En forklaring af identifikationsprocessen"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken biologisk realitet tvinger spædbarnet til at klamre sig til en ydre helhed?",
+          "why_it_matters": "Det forklarer, hvorfor vi overhovedet har brug for at danne et defensivt jeg.",
+          "answer_form": "En kort beskrivelse af kroppens tilstand"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan udfordrer spejlstadiet den klassiske idé om jeget som en fornuftig, indre kerne?",
+          "why_it_matters": "Dette udgør Lacans radikale kritik af den traditionelle psykologi.",
+          "answer_form": "Et centralt begreb"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets mest radikale dekonstruktion af det stabile selv og danner fundamentet for den psykoanalytiske forståelse af subjektet.",
+      "overview": [
+        "Jeget opstår ikke indefra, men dannes udefra gennem identifikation med et spejlbillede.",
+        "Menneskets biologiske ufærdighed driver behovet for at finde falsk tryghed i en ydre form.",
+        "Resultatet er, at jegets primære funktion er at opretholde en illusion af kontrol."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 1-2",
+          "task": "Afgør forskellen på abens og barnets adfærd foran spejlet.",
+          "why_it_matters": "Her etableres identifikationen som jegets fundament.",
+          "stop_signal": "når Lacan introducerer begrebet Ideal-I"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 3-4",
+          "task": "Find den biologiske årsag til menneskets manglende indre sammenhæng.",
+          "why_it_matters": "Det forklarer drivkraften bag spejlstadiets magt.",
+          "stop_signal": "når du når beskrivelsen af The fragmented body"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 5-7",
+          "task": "Fang argumentet mod jeget som perception-consciousness system.",
+          "why_it_matters": "Dette er hovedangrebet på eksistentialistisk og klassisk psykologi.",
+          "stop_signal": "når du når tekstens afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "transformation that takes place in the subject when he assumes an image",
+          "why": "Definerer selve kernen i spejlstadiet.",
+          "where_to_look": "s. 2"
+        },
+        {
+          "target": "fact of a real specific prematurity of birth in man",
+          "why": "Afslører den biologiske sårbarhed, der skaber behovet for jeget.",
+          "where_to_look": "s. 4"
+        },
+        {
+          "target": "function of méconnaissance that characterizes the ego",
+          "why": "Opsummerer, hvorfor jeget er en illusion og ikke en sandhed.",
+          "where_to_look": "s. 6"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange biologiske ekskurser om duer og græshopper – de fungerer udelukkende som understøttende analogier.",
+        "Komplekse psykoanalytiske termer som libido og imago, hvis de forstyrrer læsningen af hovedargumentet.",
+        "Den korte reference til Ødipuskomplekset til allersidst; hold fokus på spejlstadiet."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at forstå tekstens kernebevægelser. Dette er din faglige base.",
+      "coverage_note": "Dækker hovedpointerne fra Lacans foredrag om spejlstadiet og dannelsen af jeget (s. 1-7).",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 1-2",
+          "heading": "Aben, barnet og spejlet",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "explanation_paragraphs": [
+            "Når en chimpanse placeres foran et spejl, opdager den hurtigt, at billedet er tomt, og den mister derefter fuldstændig interessen. Menneskebarnet derimod reagerer fra omkring seks måneders alderen med jubel og intens fascination. Barnet leger aktivt med relationen mellem sine egne utilstrækkelige bevægelser og spejlbilledets bevægelser.",
+            "Lacan insisterer på, at dette ikke blot er et tegn på højere intelligens. Det er en fundamental identifikation. Barnet tager simpelthen billedet på sig. Denne proces udgør spejlstadiet og danner det oprindelige 'Ideal-Jeg'. Identifikationen med spejlbilledet skaber grundlaget for personligheden, længe før barnet påvirkes af sprog og samfund."
+          ],
+          "key_points": [
+            "Dyret gennemskuer spejlet som en illusion, mens mennesket lader sig opsluge af den.",
+            "Spejlstadiet er en aktiv identifikation, hvor subjektet forvandles ved at overtage et ydre billede.",
+            "Dette ydre billede bliver til et Ideal-Jeg, som personen sidenhen konstant vil stræbe efter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "transformation that takes place",
+              "why_it_matters": "Bekræfter at spejlstadiet er en strukturel ændring af subjektet.",
+              "source_location": "s. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 2-4",
+          "heading": "Den ufærdige krop og den falske helhed",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "explanation_paragraphs": [
+            "Mennesket fødes med en radikal biologisk ufærdighed, hvilket Lacan kalder en 'specifik for tidlig fødsel'. Det betyder, at spædbarnet i de første mange levemåneder mangler motorisk kontrol og er fuldstændig forsvarsløst. Oplevelsen af denne utilstrækkelighed kaldes for den 'fragmenterede krop', hvor lemmerne føles uafhængige og ukoordinerede.",
+            "Når dette usammenhængende barn ser sig selv i spejlet, mødes det af en samlet, stærk figur (en Gestalt). Spejlbilledet foregriber en kropslig modenhed, som barnet slet ikke har endnu. Billedet fungerer derfor som et 'ortopædisk' panser, der dækker over den indre mangel. Fordi denne forløsende helhed udelukkende findes udenfor barnet selv, bliver vores identitet grundlæggende bygget på et fremmedgørende fundament."
+          ],
+          "key_points": [
+            "Den biologiske realitet for spædbarnet er kaos og ukoordineret motorik (den fragmenterede krop).",
+            "Spejlbilledet tilbyder en stærk, men illusorisk visuel helhed.",
+            "Jeget fødes i spændingsfeltet mellem barnets indre kaos og spejlets ydre perfektion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "real specific prematurity of birth",
+              "why_it_matters": "Peger på den biologiske mangel, der driver dannelsen af jeget.",
+              "source_location": "s. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 5-7",
+          "heading": "Jeget som et defensivt bedrag",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi og eksistentialistisk filosofi har ofte betragtet jeget som et sundt centrum for fornuft, opfattelse og bevidsthed – et rationelt redskab til at navigere frit i virkeligheden. Lacans radikale modtræk er at demonstrere, at jeget er den præcise modsætning: Det er en forsvarsstruktur designet til at benægte virkeligheden.",
+            "Fordi jeget er født ud af frygten for den fragmenterede krop og bygget over et eksternt spejlbillede, er dets helt primære funktion at miskende sandheden. Jeget opretholder stædigt en fiktion om, at vi er uafhængige, frie individer med fuld kontrol. Psykoanalysens opgave er derfor ikke at styrke dette falske jeg, men at gennemskue illusionen."
+          ],
+          "key_points": [
+            "Jeget er ikke et rationelt center for informationsbehandling, men en dyb forsvarsmekanisme.",
+            "Jegets hovedopgave er at fastholde en illusion om suverænitet og skjule sårbarheden.",
+            "Dette afmonterer fuldstændig tanken om det frie, uafhængige individ."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 6",
+              "passage": "Our experience shows that we should start instead from the function of méconnaissance that characterizes the ego in all its structures (...)",
+              "why_it_matters": "Her fremsætter Lacan sit afgørende brud med ego-psykologien ved at definere jeget som en vedvarende miskendelse."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En forklaring af identifikationsprocessen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort beskrivelse af kroppens tilstand",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et centralt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan dannes jeget gennem et ydre spejlbillede, og hvorfor beviser dette, at identiteten er en forsvarsmekanisme frem for et rationelt kontrolcenter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld denne side fra hukommelsen for at fastlåse modellen. Tjek først med Abridged Reader bagefter.",
+      "overview": [
+        "Lacans spejlstadium forklarer, hvordan identiteten dannes udefra og ind.",
+        "Jeget opstår som et falsk skjold mod oplevelsen af en biologisk ufærdig krop.",
+        "Derfor er jeget aldrig en sand kerne, men derimod en konstant forsvarsmekanisme."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Hvor chimpansen hurtigt opgiver spejlet, gennemgår menneskebarnet en permanent __________, idet det tager billedet på sig.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Mennesket fødes med ufærdig motorik, hvilket skaber den angstfyldte oplevelse af en __________ krop.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "For at redde sig fra dette kaos, foregriber barnet en ydre og perfekt __________ via sit spejlbillede.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Identiteten er dermed baseret på en fremmedgørende fiktion, fordi den bygger på et __________ billede i stedet for en indre kerne.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "I modsætning til den klassiske opfattelse af et rationelt selv, er jegets helt primære funktion __________, da det skjuler sandheden om vores mangler.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn dynamikken, der skaber jeget i spejlstadiet.",
+          "required_elements": [
+            "Barnets indre ufærdige tilstand",
+            "selve spejlet",
+            "den falske",
+            "ydre helhed"
+          ],
+          "blank_space_hint": "Placer barnets kaos i den ene side, tegn spejlingen i midten, og marker hvordan identifikationen flyder tilbage fra den fiktive form."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug denne side til at oversætte din læsning til konkrete eksamensargumenter. Test dig selv mundtligt.",
+      "use_this_text_for": [
+        "At bevise, at subjektet er decentraliseret og ikke styres af en bevidst, rationel fornuft.",
+        "At forklare, hvordan personlig identitet kan betragtes som et panser eller en forsvarsmekanisme.",
+        "At skabe en radikal kontrast til de tidlige teorier om medfødte og biologiske personlighedstræk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Fænomenologi og Humanistisk Psykologi (W06/W07)",
+          "connection": "Brug Lacan som det ultimative modargument mod idéen om 'det autentiske selv'. Hvor humanismen ser en ægte kerne, der skal foldes ud, ser Lacan kun et fremmedgørende skjold."
+        },
+        {
+          "course_theme": "Køn og Identitet (W10)",
+          "connection": "Lacans teori om, hvordan vi instinktivt og ubevidst identificerer os med ydre billeder, bruges senere til at forklare den ubevidste og ufrivillige dannelse af kønsidentitet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori og biosociale modeller (W01/W02)",
+          "how_to_compare": "Vis, at selvom Lacan anerkender biologiens rolle (vores for tidlige fødsel), mener han, at personligheden er et bedrag for at skjule denne biologi, frem for en direkte refleksion af den."
+        },
+        {
+          "compare_with": "Eksistentialisme (W07)",
+          "how_to_compare": "Sammenlign deres syn på frihed. Eksistentialisterne anser jeget for at være i stand til at træffe autentiske valg i angst; Lacan mener jeget er paralyseret af miskendelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis opgaven beder dig diskutere biologiens rolle i personlighedsdannelse",
+          "use_in_answer": "Inddrag 'den fragmenterede krop' for at vise en teori, hvor biologien skaber en grundlæggende ufærdighed, som psyken forsøger at flygte fra.",
+          "caution": "Pas på med at reducere spejlstadiet til udelukkende at være en hjernemæssig udviklingsfase."
+        },
+        {
+          "prompt_type": "Hvis opgaven berører menneskets autonomi og frie vilje",
+          "use_in_answer": "Anvend begrebet 'méconnaissance' til at bevise, at den oplevede selvkontrol er en psykologisk illusion.",
+          "caution": "Undgå systematisk at tale om 'et stærkt og sundt jeg' som et ideal inden for denne psykoanalytiske ramme."
+        },
+        {
+          "prompt_type": "Når du bruger de fire orienteringspunkter til opsamling",
+          "use_in_answer": "Placer Lacans ego-opfattelse ekstremt lavt på 'agency' (fri vilje), da identiteten er fuldstændig betinget af den ydre form.",
+          "caution": "Forveksl ikke denne mangel på fri vilje hos Lacan med genetisk determinisme."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse spejlstadiet fuldstændig bogstaveligt, som om det udelukkende kræver et rigtigt fysisk spejl og kun gælder spædbørn.",
+          "better_reading": "Forstå det primært som en grundlæggende struktur for, hvordan identiteten altid skal hente sin form i refleksioner fra omgivelserne."
+        },
+        {
+          "trap": "At sætte lighedstegn mellem Lacans 'Jeg' (ego) og en positiv, adaptiv overlevelsesstrategi.",
+          "better_reading": "Husk hele tiden ordet alienating (fremmedgørende) – jeget er et panser, der adskiller os fra virkeligheden."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Lacans syn på jeget med den humanistiske psykologis koncept om et 'autentisk selv'. Hvordan forstår de to retninger identitetens oprindelse fundamentalt forskelligt?",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort Lacans opfattelse af jeget som en defensiv fiktion, skabt i spejlstadiet.",
+        "Oprids den humanistiske modpol: Antagelsen om en ægte, iboende kerne.",
+        "Træk kontrasten op: Det fremmedgørende skjold (Lacan) over for det indre potentiale (Humanisme).",
+        "Konkluder på konsekvenserne for menneskets mulighed for sand, rationel selverkendelse."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l2-lacan-1966-2d720f56",
+      "lecture_key": "W04L2",
+      "source_title": "Lacan (1966)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at fange tekstens problem, og brug derefter ruten som din læseplan.",
+      "teaser_paragraphs": [
+        "Forestil dig et barn på blot seks måneder, der holdes op foran et spejl. Hvor en ung chimpanse hurtigt gennemskuer refleksionen, mister interessen og går videre, reagerer menneskebarnet med en intens, nærmest jublende fascination. Barnet kan endnu ikke gå og mangler fuldstændig motorisk kontrol over sine egne lemmer, men i spejlet ser det et formfuldendt mirage af en færdig, samlet form.",
+        "Dette er den dramatiske scene, der danner kernen i Lacans berømte tekst om spejlstadiet. For Lacan er spejlbilledet ikke blot en kognitiv milepæl, hvor barnet genkender sig selv. Det er en livsnødvendig redningsplanke. Mennesket fødes fundamentalt for tidligt rent biologisk, og det er fanget i en ubehagelig, ufærdig krop. Spejlet tilbyder en magisk illusion af kontrol, som barnet instinktivt kaster sig over for at undslippe kaosset.",
+        "Men her opstår det egentlige problem i teksten: Hvis vores primære oplevelse af at være et samlet 'jeg' i virkeligheden stammer fra et ydre, fiktivt billede, hvad betyder det så for vores personlighed? For Lacan betyder det, at jeget dybest set er en fiktion. Det er ikke et rationelt center, der styrer slagets gang, men derimod et panser bygget på en fatal miskendelse af vores sande, ufærdige natur.",
+        "Denne tekst fremtvinger et skelsættende brud i dit studie af personlighedspsykologien. Her dekonstrueres selve idéen om den selvkørende, autonome person. Du skal nu læse for at fange beviserne for, hvorfor vi slet ikke er herrer i vores eget hus, og hvorfor identitet ofte fungerer som et defensivt skjold."
+      ],
+      "main_problem": "Hvordan dannes jeget gennem et ydre spejlbillede, og hvorfor beviser dette, at identiteten er en forsvarsmekanisme frem for et rationelt kontrolcenter?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad adskiller menneskebarnets reaktion på spejlet fra dyrets, og hvad skaber denne reaktion?",
+          "why_it_matters": "Det markerer overgangen fra ren biologi til psykologisk identifikation.",
+          "answer_form": "En forklaring af identifikationsprocessen"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken biologisk realitet tvinger spædbarnet til at klamre sig til en ydre helhed?",
+          "why_it_matters": "Det forklarer, hvorfor vi overhovedet har brug for at danne et defensivt jeg.",
+          "answer_form": "En kort beskrivelse af kroppens tilstand"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan udfordrer spejlstadiet den klassiske idé om jeget som en fornuftig, indre kerne?",
+          "why_it_matters": "Dette udgør Lacans radikale kritik af den traditionelle psykologi.",
+          "answer_form": "Et centralt begreb"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets mest radikale dekonstruktion af det stabile selv og danner fundamentet for den psykoanalytiske forståelse af subjektet.",
+      "overview": [
+        "Jeget opstår ikke indefra, men dannes udefra gennem identifikation med et spejlbillede.",
+        "Menneskets biologiske ufærdighed driver behovet for at finde falsk tryghed i en ydre form.",
+        "Resultatet er, at jegets primære funktion er at opretholde en illusion af kontrol."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 1-2",
+          "task": "Afgør forskellen på abens og barnets adfærd foran spejlet.",
+          "why_it_matters": "Her etableres identifikationen som jegets fundament.",
+          "stop_signal": "når Lacan introducerer begrebet Ideal-I"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 3-4",
+          "task": "Find den biologiske årsag til menneskets manglende indre sammenhæng.",
+          "why_it_matters": "Det forklarer drivkraften bag spejlstadiets magt.",
+          "stop_signal": "når du når beskrivelsen af The fragmented body"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 5-7",
+          "task": "Fang argumentet mod jeget som perception-consciousness system.",
+          "why_it_matters": "Dette er hovedangrebet på eksistentialistisk og klassisk psykologi.",
+          "stop_signal": "når du når tekstens afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "transformation that takes place in the subject when he assumes an image",
+          "why": "Definerer selve kernen i spejlstadiet.",
+          "where_to_look": "s. 2"
+        },
+        {
+          "target": "fact of a real specific prematurity of birth in man",
+          "why": "Afslører den biologiske sårbarhed, der skaber behovet for jeget.",
+          "where_to_look": "s. 4"
+        },
+        {
+          "target": "function of méconnaissance that characterizes the ego",
+          "why": "Opsummerer, hvorfor jeget er en illusion og ikke en sandhed.",
+          "where_to_look": "s. 6"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange biologiske ekskurser om duer og græshopper – de fungerer udelukkende som understøttende analogier.",
+        "Komplekse psykoanalytiske termer som libido og imago, hvis de forstyrrer læsningen af hovedargumentet.",
+        "Den korte reference til Ødipuskomplekset til allersidst; hold fokus på spejlstadiet."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at forstå tekstens kernebevægelser. Dette er din faglige base.",
+      "coverage_note": "Dækker hovedpointerne fra Lacans foredrag om spejlstadiet og dannelsen af jeget (s. 1-7).",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 1-2",
+          "heading": "Aben, barnet og spejlet",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "explanation_paragraphs": [
+            "Når en chimpanse placeres foran et spejl, opdager den hurtigt, at billedet er tomt, og den mister derefter fuldstændig interessen. Menneskebarnet derimod reagerer fra omkring seks måneders alderen med jubel og intens fascination. Barnet leger aktivt med relationen mellem sine egne utilstrækkelige bevægelser og spejlbilledets bevægelser.",
+            "Lacan insisterer på, at dette ikke blot er et tegn på højere intelligens. Det er en fundamental identifikation. Barnet tager simpelthen billedet på sig. Denne proces udgør spejlstadiet og danner det oprindelige 'Ideal-Jeg'. Identifikationen med spejlbilledet skaber grundlaget for personligheden, længe før barnet påvirkes af sprog og samfund."
+          ],
+          "key_points": [
+            "Dyret gennemskuer spejlet som en illusion, mens mennesket lader sig opsluge af den.",
+            "Spejlstadiet er en aktiv identifikation, hvor subjektet forvandles ved at overtage et ydre billede.",
+            "Dette ydre billede bliver til et Ideal-Jeg, som personen sidenhen konstant vil stræbe efter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "transformation that takes place",
+              "why_it_matters": "Bekræfter at spejlstadiet er en strukturel ændring af subjektet.",
+              "source_location": "s. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 2-4",
+          "heading": "Den ufærdige krop og den falske helhed",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "explanation_paragraphs": [
+            "Mennesket fødes med en radikal biologisk ufærdighed, hvilket Lacan kalder en 'specifik for tidlig fødsel'. Det betyder, at spædbarnet i de første mange levemåneder mangler motorisk kontrol og er fuldstændig forsvarsløst. Oplevelsen af denne utilstrækkelighed kaldes for den 'fragmenterede krop', hvor lemmerne føles uafhængige og ukoordinerede.",
+            "Når dette usammenhængende barn ser sig selv i spejlet, mødes det af en samlet, stærk figur (en Gestalt). Spejlbilledet foregriber en kropslig modenhed, som barnet slet ikke har endnu. Billedet fungerer derfor som et 'ortopædisk' panser, der dækker over den indre mangel. Fordi denne forløsende helhed udelukkende findes udenfor barnet selv, bliver vores identitet grundlæggende bygget på et fremmedgørende fundament."
+          ],
+          "key_points": [
+            "Den biologiske realitet for spædbarnet er kaos og ukoordineret motorik (den fragmenterede krop).",
+            "Spejlbilledet tilbyder en stærk, men illusorisk visuel helhed.",
+            "Jeget fødes i spændingsfeltet mellem barnets indre kaos og spejlets ydre perfektion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "real specific prematurity of birth",
+              "why_it_matters": "Peger på den biologiske mangel, der driver dannelsen af jeget.",
+              "source_location": "s. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 5-7",
+          "heading": "Jeget som et defensivt bedrag",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "explanation_paragraphs": [
+            "Traditionel psykologi og eksistentialistisk filosofi har ofte betragtet jeget som et sundt centrum for fornuft, opfattelse og bevidsthed – et rationelt redskab til at navigere frit i virkeligheden. Lacans radikale modtræk er at demonstrere, at jeget er den præcise modsætning: Det er en forsvarsstruktur designet til at benægte virkeligheden.",
+            "Fordi jeget er født ud af frygten for den fragmenterede krop og bygget over et eksternt spejlbillede, er dets helt primære funktion at miskende sandheden. Jeget opretholder stædigt en fiktion om, at vi er uafhængige, frie individer med fuld kontrol. Psykoanalysens opgave er derfor ikke at styrke dette falske jeg, men at gennemskue illusionen."
+          ],
+          "key_points": [
+            "Jeget er ikke et rationelt center for informationsbehandling, men en dyb forsvarsmekanisme.",
+            "Jegets hovedopgave er at fastholde en illusion om suverænitet og skjule sårbarheden.",
+            "Dette afmonterer fuldstændig tanken om det frie, uafhængige individ."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 6",
+              "passage": "Our experience shows that we should start instead from the function of méconnaissance that characterizes the ego in all its structures (...)",
+              "why_it_matters": "Her fremsætter Lacan sit afgørende brud med ego-psykologien ved at definere jeget som en vedvarende miskendelse."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En forklaring af identifikationsprocessen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort beskrivelse af kroppens tilstand",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et centralt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan dannes jeget gennem et ydre spejlbillede, og hvorfor beviser dette, at identiteten er en forsvarsmekanisme frem for et rationelt kontrolcenter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld denne side fra hukommelsen for at fastlåse modellen. Tjek først med Abridged Reader bagefter.",
+      "overview": [
+        "Lacans spejlstadium forklarer, hvordan identiteten dannes udefra og ind.",
+        "Jeget opstår som et falsk skjold mod oplevelsen af en biologisk ufærdig krop.",
+        "Derfor er jeget aldrig en sand kerne, men derimod en konstant forsvarsmekanisme."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Hvor chimpansen hurtigt opgiver spejlet, gennemgår menneskebarnet en permanent __________, idet det tager billedet på sig.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Mennesket fødes med ufærdig motorik, hvilket skaber den angstfyldte oplevelse af en __________ krop.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "For at redde sig fra dette kaos, foregriber barnet en ydre og perfekt __________ via sit spejlbillede.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Identiteten er dermed baseret på en fremmedgørende fiktion, fordi den bygger på et __________ billede i stedet for en indre kerne.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "I modsætning til den klassiske opfattelse af et rationelt selv, er jegets helt primære funktion __________, da det skjuler sandheden om vores mangler.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn dynamikken, der skaber jeget i spejlstadiet.",
+          "required_elements": [
+            "Barnets indre ufærdige tilstand",
+            "selve spejlet",
+            "den falske",
+            "ydre helhed"
+          ],
+          "blank_space_hint": "Placer barnets kaos i den ene side, tegn spejlingen i midten, og marker hvordan identifikationen flyder tilbage fra den fiktive form."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug denne side til at oversætte din læsning til konkrete eksamensargumenter. Test dig selv mundtligt.",
+      "use_this_text_for": [
+        "At bevise, at subjektet er decentraliseret og ikke styres af en bevidst, rationel fornuft.",
+        "At forklare, hvordan personlig identitet kan betragtes som et panser eller en forsvarsmekanisme.",
+        "At skabe en radikal kontrast til de tidlige teorier om medfødte og biologiske personlighedstræk."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Fænomenologi og Humanistisk Psykologi (W06/W07)",
+          "connection": "Brug Lacan som det ultimative modargument mod idéen om 'det autentiske selv'. Hvor humanismen ser en ægte kerne, der skal foldes ud, ser Lacan kun et fremmedgørende skjold."
+        },
+        {
+          "course_theme": "Køn og Identitet (W10)",
+          "connection": "Lacans teori om, hvordan vi instinktivt og ubevidst identificerer os med ydre billeder, bruges senere til at forklare den ubevidste og ufrivillige dannelse af kønsidentitet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori og biosociale modeller (W01/W02)",
+          "how_to_compare": "Vis, at selvom Lacan anerkender biologiens rolle (vores for tidlige fødsel), mener han, at personligheden er et bedrag for at skjule denne biologi, frem for en direkte refleksion af den."
+        },
+        {
+          "compare_with": "Eksistentialisme (W07)",
+          "how_to_compare": "Sammenlign deres syn på frihed. Eksistentialisterne anser jeget for at være i stand til at træffe autentiske valg i angst; Lacan mener jeget er paralyseret af miskendelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis opgaven beder dig diskutere biologiens rolle i personlighedsdannelse",
+          "use_in_answer": "Inddrag 'den fragmenterede krop' for at vise en teori, hvor biologien skaber en grundlæggende ufærdighed, som psyken forsøger at flygte fra.",
+          "caution": "Pas på med at reducere spejlstadiet til udelukkende at være en hjernemæssig udviklingsfase."
+        },
+        {
+          "prompt_type": "Hvis opgaven berører menneskets autonomi og frie vilje",
+          "use_in_answer": "Anvend begrebet 'méconnaissance' til at bevise, at den oplevede selvkontrol er en psykologisk illusion.",
+          "caution": "Undgå systematisk at tale om 'et stærkt og sundt jeg' som et ideal inden for denne psykoanalytiske ramme."
+        },
+        {
+          "prompt_type": "Når du bruger de fire orienteringspunkter til opsamling",
+          "use_in_answer": "Placer Lacans ego-opfattelse ekstremt lavt på 'agency' (fri vilje), da identiteten er fuldstændig betinget af den ydre form.",
+          "caution": "Forveksl ikke denne mangel på fri vilje hos Lacan med genetisk determinisme."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At læse spejlstadiet fuldstændig bogstaveligt, som om det udelukkende kræver et rigtigt fysisk spejl og kun gælder spædbørn.",
+          "better_reading": "Forstå det primært som en grundlæggende struktur for, hvordan identiteten altid skal hente sin form i refleksioner fra omgivelserne."
+        },
+        {
+          "trap": "At sætte lighedstegn mellem Lacans 'Jeg' (ego) og en positiv, adaptiv overlevelsesstrategi.",
+          "better_reading": "Husk hele tiden ordet alienating (fremmedgørende) – jeget er et panser, der adskiller os fra virkeligheden."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign Lacans syn på jeget med den humanistiske psykologis koncept om et 'autentisk selv'. Hvordan forstår de to retninger identitetens oprindelse fundamentalt forskelligt?",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort Lacans opfattelse af jeget som en defensiv fiktion, skabt i spejlstadiet.",
+        "Oprids den humanistiske modpol: Antagelsen om en ægte, iboende kerne.",
+        "Træk kontrasten op: Det fremmedgørende skjold (Lacan) over for det indre potentiale (Humanisme).",
+        "Konkluder på konsekvenserne for menneskets mulighed for sand, rationel selverkendelse."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

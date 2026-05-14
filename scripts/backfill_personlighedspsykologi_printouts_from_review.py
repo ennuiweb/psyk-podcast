@@ -180,7 +180,12 @@ def main() -> int:
                 source,
                 output_layout=printouts.OUTPUT_LAYOUT_CANONICAL,
             )
-            json_path = out_dir / printouts.CANONICAL_PRINTOUT_JSON_NAME
+            json_path = printouts.artifact_json_path_for_output_dir(
+                output_root,
+                source,
+                out_dir,
+                output_layout=printouts.OUTPUT_LAYOUT_CANONICAL,
+            )
             if args.dry_run:
                 results.append(
                     {

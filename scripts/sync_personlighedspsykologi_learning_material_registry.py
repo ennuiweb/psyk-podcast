@@ -24,6 +24,7 @@ from notebooklm_queue.personlighedspsykologi_prompt_versions import (  # noqa: E
     SETUP_VERSION_ENV,
     resolve_setup_versions,
 )
+from notebooklm_queue import personlighedspsykologi_printouts as printout_engine  # noqa: E402
 from regeneration_identity import canonical_source_name, parse_config_tags  # noqa: E402
 
 
@@ -831,6 +832,19 @@ def collect_slide_entries(*, show_root: Path, repo_root: Path) -> dict[str, dict
 
 
 def rendered_printout_paths(printout_json: Path, repo_root: Path) -> list[str]:
+    payload = maybe_load_json(printout_json)
+    if isinstance(payload, dict):
+        source = payload.get("source") if isinstance(payload.get("source"), dict) else {}
+        source_id = str(source.get("source_id") or printout_json.parent.name)
+        if printout_json.parent.parent.name == printout_engine.CANONICAL_PRINTOUT_JSON_DIRNAME:
+            output_root = printout_json.parents[2]
+            artifact = {"source": {"source_id": source_id, "lecture_key": source.get("lecture_key")}}
+            stems = printout_engine._expected_pdf_stems_for_artifact(payload)
+            return [
+                relpath(output_root / printout_engine.canonical_pdf_filename(artifact, stem), repo_root)
+                for stem in sorted(stems)
+                if (output_root / printout_engine.canonical_pdf_filename(artifact, stem)).exists()
+            ]
     rendered: list[str] = []
     for child in sorted(printout_json.parent.iterdir()):
         if child == printout_json:
@@ -870,7 +884,11 @@ def collect_printout_entries(
         return entries
     active_lecture_key = normalize_lecture_key(active_lecture_key)
     seen_paths: set[Path] = set()
-    for pattern in ("*/printouts/*/reading-printouts.json", "*/scaffolding/*/reading-scaffolds.json"):
+    for pattern in (
+        f"{printout_engine.CANONICAL_PRINTOUT_JSON_DIRNAME}/*/{printout_engine.CANONICAL_PRINTOUT_JSON_NAME}",
+        "*/printouts/*/reading-printouts.json",
+        "*/scaffolding/*/reading-scaffolds.json",
+    ):
         for printout_path in sorted(output_root.glob(pattern)):
             if printout_path in seen_paths:
                 continue
@@ -895,12 +913,14 @@ def collect_printout_entries(
             source_id = str(source.get("source_id") or printout_path.parent.name)
             material_id = f"printout:reading_printouts:{source_id}"
             existing = entries.get(material_id)
-            if (
-                existing is not None
-                and "/printouts/" in str(existing.get("artifact_paths", {}).get("json") or "")
-                and "/scaffolding/" in relpath(printout_path, repo_root)
-            ):
-                continue
+            current_json_path = relpath(printout_path, repo_root)
+            existing_json_path = str(existing.get("artifact_paths", {}).get("json") or "") if existing else ""
+            canonical_json_segment = f"/{printout_engine.CANONICAL_PRINTOUT_JSON_DIRNAME}/"
+            if existing is not None:
+                if canonical_json_segment in existing_json_path and canonical_json_segment not in current_json_path:
+                    continue
+                if "/printouts/" in existing_json_path and "/scaffolding/" in current_json_path:
+                    continue
             entry = {
                 "material_id": material_id,
                 "family": "printout",
@@ -924,7 +944,7 @@ def collect_printout_entries(
                 "course_understanding": course_understanding,
                 "course_understanding_fingerprint": course_understanding_fingerprint,
                 "artifact_paths": {
-                    "json": relpath(printout_path, repo_root),
+                    "json": current_json_path,
                     "rendered": rendered_printout_paths(printout_path, repo_root),
                 },
             }
@@ -984,7 +1004,11 @@ def merge_entries(existing: dict[str, dict[str, Any]], discovered: dict[str, dic
         str(entry.get("source_id") or "")
         for entry in discovered.values()
         if entry.get("family") == "printout"
-        and "/printouts/" in str((entry.get("artifact_paths") or {}).get("json") or "")
+        and (
+            f"/{printout_engine.CANONICAL_PRINTOUT_JSON_DIRNAME}/"
+            in str((entry.get("artifact_paths") or {}).get("json") or "")
+            or "/printouts/" in str((entry.get("artifact_paths") or {}).get("json") or "")
+        )
         and str(entry.get("source_id") or "")
     }
     if canonical_printout_source_ids:

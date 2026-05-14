@@ -1,0 +1,1233 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:37:19Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "60b0db759d6715f8798b483648b8e150e9dc75d9c7b02fd09a95871f24c2545f",
+    "source_files_signature": "19432ff0aae2d904426fa2b0e19eeacf741e8cbe67b0ac06d0ee77e73f3fb701",
+    "source_card": "3910b0e2117c7168f1ba7c659ff19cfef9fc9cbf4fda6cdb6ebf9ef7cd922357",
+    "revised_lecture_substrate": "f7ab14f84c99ca933d46229368525b1877b47044962876c8882ec6763bdffd46",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+    "lecture_key": "W04L1",
+    "title": "Gammelgaard (2007)",
+    "reading_title": "Gammelgaard (2007)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 30,
+    "estimated_token_count": 19500,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W4L1 Psykoanalysens personlighedsbegreb/W4L1 Gammelgaard (2007).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 30,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+      "lecture_key": "W04L1",
+      "source_title": "Gammelgaard (2007)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne korte introduktion for at se tekstens konkrete brudflader. Hav de uløste problemer i baghovedet, når du læser videre.",
+      "teaser_paragraphs": [
+        "I 1890'ernes Wien formulerede Freud en teori, der for altid ændrede psykologien. Han opgav troen på det fuldt bevidste og rationelle menneske og opdagede, at vores sjæleliv er præget af dybe, ubevidste konflikter. Psykoanalysen blev født som en radikal modpol til den tids etablerede sandheder, og den skabte ideen om et anspændt, decentreret subjekt.",
+        "Forestil dig den 12-årige Emma, der flygter i rædsel fra en tøjbutik, blot fordi to ekspedienter griner. Hendes frygt virker fuldstændig afkoblet fra nutiden. Freud opdager, at angsten peger tilbage på en hændelse fra hun var 8 år, hvor en købmand begik et overgreb på hende. Fordi hun ikke forstod det dengang, blev hun ikke bange i gerningsøjeblikket.",
+        "Dette fænomen bryder med vores normale, lineære tidsforståelse. En begivenhed kan ramme os *med tilbagevirkende kraft*. Psyken er altså ikke et passivt arkiv, der bare gemmer objektive data; den er et historisk rum, hvor tidligere indtryk får tildelt helt ny og voldsom betydning i lyset af senere livsfaser.",
+        "Kernen i dette psykiske maskinrum er driften. For Freud er driften ikke blot et biologisk instinkt, der skal sikre overlevelse, men defineres udtrykkeligt som et *grænsebegreb mellem det sjælelige og det legemlige*. Den er en konstant indre kilde til pirring, der tvinger psyken på arbejde.",
+        "Med tiden indså Freud dog, at hans simple opdeling af sindet ikke strakte til, da patienter begyndte at yde ubevidst modstand i terapien. Han var nødt til at indføre strukturmodellen for at fange det indre slagsmål mellem forsvarsmekanismer og skjulte impulser.",
+        "Eftertiden har dog ikke ladet Freuds værk stå uberørt. Nyere objektrelationsteoretikere og empiriske spædbørnsforskere var utilfredse med Freuds ensidige fokus på drifter og voksnes rekonstruerede minder. Denne tekst dokumenterer det enorme skift fra Freuds lukkede driftsunivers til nyere teoriers fokus på det relationelle og observerede spædbarn."
+      ],
+      "main_problem": "Hvordan flytter psykoanalysen sig fra at se personligheden som drevet af indre biologisk-psykologiske drifter til at se den som formet af tidlige relationer og observationer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad kendetegner driften som et grænsebegreb, og hvordan adskiller den sig fra et instinkt?",
+          "why_it_matters": "Det forhindrer os i at reducere Freuds teori til ren evolutionsbiologi.",
+          "answer_form": "En forklaring af de to begrebers funktion"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan løsriver spædbarnets lyst sig fra ren overlevelse?",
+          "why_it_matters": "Det viser oprindelsen af psykologisk begær uafhængigt af kroppens umiddelbare næringsbehov.",
+          "answer_form": "En beskrivelse af en specifik handling  før og efter mæthed"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan udstiller historien om Emma psykoanalysens usamtidige tidsforståelse?",
+          "why_it_matters": "Dette rykker fundamentalt ved årsag-virknings-forhold i trækpsykologien, da traumer skabes retroaktivt.",
+          "answer_form": "Identifikation af forsinkelsesmekanismen"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor tvang patienternes opførsel i terapien Freud til at opfinde strukturmodellen?",
+          "why_it_matters": "Det forklarer at forsvarsmekanismer ikke er rationelle beslutninger, men ubevidste reflekser.",
+          "answer_form": "Begrundelse baseret på klinisk modstand"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan adskiller det 'rekonstruerede barn' sig fra det 'observerede barn'?",
+          "why_it_matters": "Det markerer det største metodiske skift i nyere psykoanalytisk videnskab.",
+          "answer_form": "Kontrast mellem retrospektiv tyldning og direkte forskning"
+        },
+        {
+          "number": 6,
+          "question": "Hvilket problem løser Winnicotts 'overgangsobjekt' for spædbarnet?",
+          "why_it_matters": "Det viser objektrelationsteoriens fokus på vores grundlæggende behov for kontakt til den ydre verden.",
+          "answer_form": "Beskrivelse af objektets brobyggende funktion"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets største brud: Den forklarer skiftet fra objektiv, målbar overfladeadfærd til det 'decentrerede subjekt', hvor mennesket er dybt styret af historik, konflikt og skjult determination.",
+      "overview": [
+        "Forskellen på biologiske instinkter og psykologiske drifter.",
+        "Tidsforskydningen i traumer og psykisk historik (Nachträglichkeit).",
+        "Skiftet fra indre driftsteori til eksterne objektrelationer og spædbørnsforskning."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 154-156",
+          "task": "Sæt dig ind i det videnskabelige nybrud og opgøret med rationalismen i 1890'ernes Wien.",
+          "why_it_matters": "Det rammesætter hvor radikal tanken om et ubevidst sjæleliv var.",
+          "stop_signal": "når afsnittet 'Psykoanalysens driftsbegreb' starter"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 156-160",
+          "task": "Find Freuds definition på drift og følg eksemplet med barnets suttebevægelser.",
+          "why_it_matters": "Du skal kunne adskille seksualdriften fra et normalt overlevelsesinstinkt til eksamen.",
+          "stop_signal": "ved overskriften 'Narcissisme'"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 165-167",
+          "task": "Læs historien om Emma grundigt for at forstå begrebet Nachträglichkeit.",
+          "why_it_matters": "Dette er kursets stærkeste eksempel på, at vores historicitet ikke er lineær.",
+          "stop_signal": "når teksten skifter til at tale om Ulvemanden"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 170-171",
+          "task": "Sammenlign Freuds og Daniel Sterns metoder for at forstå barndommen.",
+          "why_it_matters": "Det viser hvordan psykoanalysen senere har indoptaget empirisk forskning.",
+          "stop_signal": "ved overskriften 'Overgangsobjektet og det potentielle rum'"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 173-175",
+          "task": "Undersøg hvad Winnicott mener med et overgangsobjekt.",
+          "why_it_matters": "Det er centralt for objektrelationsteorien og barnets udvikling af et selv.",
+          "stop_signal": "ved overskriften 'Det ubevidste'"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 175-178",
+          "task": "Afdæk årsagen til, at Freud forlod den tidlige topografiske model til fordel for strukturmodellen.",
+          "why_it_matters": "Det forklarer hvorfor forsvarsmekanismer kan operere helt skjult for os selv.",
+          "stop_signal": "når afsnittet om den kognitive psykologis indtog starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "et grænsebegreb mellem det sjælelige",
+          "why": "Freuds egen definition af driften, som adskiller den fra ren fysiologi.",
+          "where_to_look": "s. 157"
+        },
+        {
+          "target": "med tilbagevirkende kraft",
+          "why": "Den danske oversættelse af Nachträglichkeit.",
+          "where_to_look": "s. 165"
+        },
+        {
+          "target": "tilnærmelser til sandheden",
+          "why": "Beskriver usikkerheden ved at rekonstruere fortiden gennem voksne patienter.",
+          "where_to_look": "s. 170"
+        },
+        {
+          "target": "mellemliggende eller tredje område",
+          "why": "Winnicotts placering af overgangsobjektet.",
+          "where_to_look": "s. 175"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De interne stridigheder mellem de franske skoler (Lacan, Laplanche, Green).",
+        "De præcise tekniske betegnelser for dødsdriften hos Klein og Bion.",
+        "De internationale psykoanalytiske foreningers dannelseshistorie."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse bearbejdede sektioner til at løse problemerne i Active Reading. Hver sektion er bygget til at forklare og lukke en central spænding i teksten.",
+      "coverage_note": "Fokuserer på overgangen fra klassisk driftsteori og ikke-lineær tidsopfattelse til moderne empiri og objektrelationsteori.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 156-158",
+          "heading": "Driften som grænsebegreb",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Freud har brug for at forklare en stædig indre drivkraft, der ikke lader sig reducere til ren biologi og overlevelse?",
+          "explanation_paragraphs": [
+            "For at forstå menneskets adfærd måtte Freud definere en drivkraft, der stak dybere end simpel fornuft. Han fandt svaret i driften. Det er vigtigt at forstå, at et instinkt er et fast, biologisk nedarvet adfærdsmønster, der skal sikre overlevelse (som f.eks. at spise for at stille sult).",
+            "En drift, derimod, fungerer anderledes. Freud betegnede den bevidst som et grænsebegreb. Den har sit udspring som en kropslig pirring, men udmønter sig som et psykologisk krav om arbejde. Driften presser på indefra og tvinger sindet til at forsøge at håndtere eller aflade spændingen."
+          ],
+          "key_points": [
+            "Instinkter er fællesbiologiske overlevelsesreflekser.",
+            "Drifter opstår i kroppen, men eksisterer som psykiske repræsentationer af et pres.",
+            "Det er driften, der animerer det menneskelige sjæleliv ifølge Freud."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "grænsebegreb mellem det sjælelige og det legemlige",
+              "why_it_matters": "Viser hvordan driften bygger bro over den klassiske kløft mellem krop og sind.",
+              "source_location": "s. 157"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 158-160",
+          "heading": "Lystens frigørelse og Anlehnung",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Teorien mangler at vise, hvordan en selvstændig psykologisk lystsøgen overhovedet kan starte i et spædbarn?",
+          "explanation_paragraphs": [
+            "Freud brugte spædbarnets suttebevægelse som et klassisk eksempel på, hvordan driften fødes. Når det nyfødte barn sutter ved brystet, sker det primært for at få mad; handlingen læner sig op ad overlevelsesinstinktet. Freud kaldte denne støttefunktion for 'Anlehnung' (tilknytning).",
+            "Men ret hurtigt begynder barnet at sutte på sin egen tommelfinger. Maden er væk, overlevelseskravet er dækket, men selve rytmen og handlingen gentages. Her er suttebevægelsen blevet autoterapeutisk og lystfyldt i sig selv.",
+            "I det øjeblik har seksualdriften (forstået som bred kropslig nydelse) løsrevet sig fra instinktet og er blevet en uafhængig kraft."
+          ],
+          "key_points": [
+            "Driften starter med at låne energi og form fra et overlevelsesinstinkt (Anlehnung).",
+            "Når barnet sutter uden at være sulten, bevises lystens løsrivelse.",
+            "Freuds seksualbegreb handler her om basal kropslig nydelse, ikke voksen reproduktion."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 160",
+              "passage": "Kroppen er med andre ord generelt i stand til at frembringe seksuel lystfølelse ved tilstrækkelig intens stimulering.",
+              "why_it_matters": "Understreger at lysten hurtigt gør sig uafhængig af næringsbehovet og bliver kroppens eget projekt."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 165-167",
+          "heading": "Tid og traumer: Nachträglichkeit",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Patienters fobier og traumer i nutiden lader ofte til at udløses af harmløse hændelser, hvilket udfordrer en normal kronologisk tidsforståelse?",
+          "explanation_paragraphs": [
+            "Et af psykoanalysens største bidrag er en radikal omvæltning af vores tidsforståelse. Vi antager normalt, at et traume opstår umiddelbart under en voldsom hændelse. Men Freud opdagede, at psyken arbejder usamtidigt.",
+            "I historien om den 12-årige Emma udløste et par grinende butiksekspedienter en alvorlig fobi. Freud gravede sig tilbage til en erindring fra hun var 8 år, hvor hun blev befølt af en købmand. Fordi hun dengang var et barn uden forudsætninger for at forstå det seksuelle overgreb, blev hun ikke traumatiseret i situationen.",
+            "Først i puberteten, da hun selv fik en kropslig og seksuel modenhed, blev erindringen farlig. Den gamle hændelse fik først her tildelt sin traumatiske betydning. Freud kaldte denne forsinkede, baglæns effekt for 'Nachträglichkeit'."
+          ],
+          "key_points": [
+            "Psykisk udvikling er ikke udelukkende lineær; den er præget af diakroni og spring.",
+            "En erindring kan ligge passivt gemt, indtil en ny modenhedfase aktiverer dens farlighed.",
+            "Betydning tildeles ofte retroaktivt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "med tilbagevirkende kraft",
+              "why_it_matters": "Det er det afgørende begreb for at forstå historiens konstruktion i psykoanalysen.",
+              "source_location": "s. 165"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 176-178",
+          "heading": "Fra topografisk til strukturmodel",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Det er et klinisk problem, at patienter stritter imod terapeutens hjælp uden selv at vide det?",
+          "explanation_paragraphs": [
+            "Oprindeligt arbejdede Freud ud fra den topografiske model, som groft sagt inddelte sindet i et bevidst, før-bevidst og ubevidst lag. Målet var simpelthen at trække ubevidste minder frem i det bevidste lys. Men Freud løb ind i muren: Patienterne mobiliserede hårdnakket modstand i terapien.",
+            "Det afgørende bevis var, at patienterne slet ikke anede, at de gjorde modstand. Det betød, at de kræfter, der forsvarede sindet, også måtte være ubevidste. Modellen slog fejl.",
+            "Omkring 1920 indførte han derfor strukturmodellen med tre dynamiske instanser: jeget, det'et og over-jeget. Modellen illustrerer sindet som en slagmark, hvor det'et presser på med drifter, mens jeget automatisk og ubevidst iværksætter forsvarsmekanismer for at afbøde presset."
+          ],
+          "key_points": [
+            "Den tidlige model kunne ikke forklare at selve forsvaret var utilgængeligt for bevidstheden.",
+            "Strukturmodellen fokuserer på konflikt mellem aktive instanser frem for passive rum.",
+            "Mennesket er dermed styret af processer, der arbejder helt uden for fornuftens rækkevidde."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "s. 170-171",
+          "heading": "Det rekonstruerede vs. det observerede barn",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Det er metodisk usikkert at basere hele barndommens psykologi på de historier, ulykkelige voksne fortæller i en terapisofa?",
+          "explanation_paragraphs": [
+            "Psykoanalysens viden var fra starten retrospektiv. Freud lyttede til den voksnes frie indfald og byggede ad den vej en model af 'det rekonstruerede barn'. Denne metode fremhævede de indre drifter, overgreb og konflikter, fordi det var dét materiale, der var trængt op i neurosen.",
+            "Efterhånden som psykologien blev mere empirisk, begyndte forskere som Daniel Stern at studere virkelige spædbørn. De skabte billedet af 'det observerede barn'. Denne direkte adfærdsobservation viste et spædbarn, der fra de tidligste dage var aktivt, kompetent og enormt optaget af interaktion.",
+            "Resultatet var et stort teoretisk skift, hvor det lukkede, driftsstyrede barn i højere grad blev erstattet af en anerkendelse af barnets tidlige og sunde relationelle evner."
+          ],
+          "key_points": [
+            "Det rekonstruerede barn bygges ud fra minder og psykopatologi hos voksne.",
+            "Det observerede barn kortlægges gennem empirisk video- og adfærdsforskning.",
+            "Sterns forskning trak psykoanalysen i en mere relationsorienteret og videnskabeligt verificerbar retning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tilnærmelser til sandheden",
+              "why_it_matters": "Viser at den terapeutiske rekonstruktion altid vil have en grad af fiktion i sig.",
+              "source_location": "s. 170"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 173-175",
+          "heading": "Objektrelationer og overgangsobjektet",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Den strenge driftsteori mangler blik for, at barnet ikke bare udlever en indre lyst, men aktivt søger at knytte sig til verden omkring det?",
+          "explanation_paragraphs": [
+            "Nyere objektrelationsteoretikere argumenterede for, at Freud havde undervurderet omgivelserne. De fremførte, at vi er fundamentalt afhængige af faktiske relationer for overhovedet at skabe et jeg. Donald Winnicott er berømt for at have beskrevet denne bevægelse mod verden.",
+            "Winnicott introducerede begrebet 'overgangsobjekt', der dækker over barnets sutteklud eller bamse. Objektet fungerer som et beskyttende tredje rum, der ligger præcis midt imellem barnets indre almægtige fantasiverden og den ydre, uafhængige virkelighed.",
+            "Overgangsobjektet er barnets første spæde erfaring med noget, der ikke er barnet selv. Det hjælper barnet med at tolerere fraværet af moderen, fordi barnet kan trøste sig selv i dette mellemrum."
+          ],
+          "key_points": [
+            "Objektrelationsteorien gør relationen til målet i sig selv, frem for blot et redskab til at aflade drifter.",
+            "Bamsen er ikke bare legetøj; det er et vitalt psykologisk anker mod virkeligheden.",
+            "Gennem overgangsobjektet øver barnet sig i gradvist at acceptere virkelighedens krav."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mellemliggende eller tredje område",
+              "why_it_matters": "Beskriver det potentielle rum hvor leg og trøst muliggøres.",
+              "source_location": "s. 175"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Freud har brug for at forklare en stædig indre drivkraft, der ikke lader sig reducere til ren biologi og overlevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En forklaring af de to begrebers funktion",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Teorien mangler at vise, hvordan en selvstændig psykologisk lystsøgen overhovedet kan starte i et spædbarn?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En beskrivelse af en specifik handling  før og efter mæthed",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Patienters fobier og traumer i nutiden lader ofte til at udløses af harmløse hændelser, hvilket udfordrer en normal kronologisk tidsforståelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Identifikation af forsinkelsesmekanismen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Det er et klinisk problem, at patienter stritter imod terapeutens hjælp uden selv at vide det?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Begrundelse baseret på klinisk modstand",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Det er metodisk usikkert at basere hele barndommens psykologi på de historier, ulykkelige voksne fortæller i en terapisofa?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Kontrast mellem retrospektiv tyldning og direkte forskning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Den strenge driftsteori mangler blik for, at barnet ikke bare udlever en indre lyst, men aktivt søger at knytte sig til verden omkring det?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Beskrivelse af objektets brobyggende funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan flytter psykoanalysen sig fra at se personligheden som drevet af indre biologisk-psykologiske drifter til at se den som formet af tidlige relationer og observationer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at teste, om begreberne har sat sig fast. Det er vigtigt, at du forsøger uden hjælpemidler først, før du slår op i Abridged Reader for at reparere eventuelle huller.",
+      "overview": [
+        "Freuds driftsteori opererer i spændingsfeltet mellem kropslig oprindelse og psykologisk krav.",
+        "Psykoanalysen forklarer udvikling og traumer ud fra en forsinket og tilbageskuende tidsopfattelse.",
+        "Den nyere udvikling flyttede fokus fra lukkede indre systemer ud mod de nødvendige eksterne relationer."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Et rent biologisk overlevelsesmønster kaldes et instinkt, mens en psykisk repræsentation af et konstant indre pres kaldes en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når spædbarnets lyst i begyndelsen bygger oven på overlevelsesinstinktet (at spise), kaldes denne afhængighed med et tysk begreb for __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 tysk ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Mekanismen, hvor en tidlig begivenhed først bliver traumatisk senere i livet under nye omstændigheder, betegnes som __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 tysk ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For at rumme det ubevidste forsvar ændrede Freud sin topografiske model til den mere dynamiske __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Hvor Freud udledte barndommen fra voksne patienters udsagn, skabte Stern og spædbørnsforskningen begrebet om det __________ barn.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Ifølge objektrelationsteorien er vi dybt afhængige af omsorgspersoner, der i deres teori ofte benævnes som __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "En bamse, der skaber et sikkert tredje område mellem indre fantasi og den strenge ydre virkelighed, kaldes hos Winnicott for et __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 fagbegreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel tidslinje for 12-årige Emmas fobi. Vis hvordan betydning skabes baglæns i tiden.",
+          "required_elements": [
+            "Oprindelig hændelse (8 år",
+            "fobisk udbrud (12 år",
+            "en pil der peger retroaktivt tilbage for at vise Nachträglichkeit"
+          ],
+          "blank_space_hint": "Brug cirka 5-6 linjers højde, så der er plads til både kasser og den tilbagevendende pil."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér forskellen mellem den topografiske model og strukturmodellen for at vise det teoretiske brud.",
+          "required_elements": [
+            "Model 1 med de tre lag",
+            "Model 2 med de tre dynamiske instanser i intern konflikt"
+          ],
+          "blank_space_hint": "Lav to adskilte bokse eller tegninger side om side."
+        },
+        {
+          "number": 3,
+          "task": "Tegn et forløb der illustrerer 'Anlehnung' og løsrivelsen af lyst hos spædbarnet.",
+          "required_elements": [
+            "Trin 1: Sult",
+            "Næring",
+            "Trin 2: Overgangen",
+            "Trin 3: Sutte for selvstændig kropslig nydelse"
+          ],
+          "blank_space_hint": "Brug pile mellem tre små kasser."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at koble teorien til eksamensspørgsmål. Gør dig klar til at argumentere for psykoanalysens særlige epistemologi i stedet for blot at opremse historien.",
+      "use_this_text_for": [
+        "At forklare 'det decentrerede subjekt', hvor fornuften ikke har fuld kontrol.",
+        "At demonstrere kursets stærkeste form for ubevidst indre determination.",
+        "At diskutere værdien af klinisk rekonstruktion overfor objektiv empirisk forskning.",
+        "At vise hvordan psykisk historicitet ikke behøver være lineær, men kan fungere med tilbagevirkende kraft.",
+        "At give et afgørende modspil til personlighedstests, der udelukkende måler på bevidste overfladehandlinger."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trait Psychology (Uge 2)",
+          "connection": "Trækpsykologien stoler på den bevidste selvrepræsentation. Psykoanalysen afviser denne bevidsthed som et overfladefænomen dækket af forsvarsmekanismer."
+        },
+        {
+          "course_theme": "Orienteringspunkterne (Uge 12)",
+          "connection": "Freud leverer det klassiske eksempel på radikal indre determinerethed (vi er styret af konflikter og drifter, vi ikke kontrollerer) og historicitet."
+        },
+        {
+          "course_theme": "Køn og Poststrukturalisme",
+          "connection": "Ideen om et spaltet, decentreret subjekt er selve fundamentet for, at nyere kritiske teorier overhovedet kan dekonstruere den faste kerneidentitet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "McCrae & Costa (Big Five)",
+          "how_to_compare": "Sammenlign epistemologien: Hvad man gør krydset af i et skema, versus hvad man projicerer ubevidst i en terapisession."
+        },
+        {
+          "compare_with": "Humanistisk psykologi (Rogers/Maslow)",
+          "how_to_compare": "Modstil Freuds iboende pessimistiske modstands- og konfliktmodel med humanismens optimistiske tro på iboende fri selverkendelse."
+        },
+        {
+          "compare_with": "Daniel Stern (Observeret forskning)",
+          "how_to_compare": "Brug selve Gammelgaard-teksten til at kontrastere Freuds fokus på indre lystdrift med Sterns fokus på social interaktion hos spædbørn."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at definere driften",
+          "use_in_answer": "Afvis at det blot er et instinkt. Redegør stramt for det som et 'psykologisk grænsebegreb' der trykker indefra.",
+          "caution": "Brug ikke ordet seksualitet som om det udelukkende handler om voksen forplantning; tal om bred kropslig nydelse."
+        },
+        {
+          "prompt_type": "Når samtalen falder på fortidens betydning",
+          "use_in_answer": "Træk Emma-casen frem og brug begrebet Nachträglichkeit til at vise at tid er formbar.",
+          "caution": "Fremstil ikke barndommen som en stiv årsag-virknings række uden plads til senere genfortolkning."
+        },
+        {
+          "prompt_type": "Hvis du skal kritisere klassisk psykoanalyse",
+          "use_in_answer": "Brug Stern og objektrelationsteoretikerne til at pege på manglen på primær socialitet hos Freud.",
+          "caution": "Sørg for at understrege, at nyere psykoanalyse faktisk inkorporerer relationer (f.eks. Winnicotts overgangsobjekt)."
+        },
+        {
+          "prompt_type": "Når strukturmodellen nævnes",
+          "use_in_answer": "Forklar at modellen udspringer af et klinisk fund: at forsvarsmekanismerne selv fungerer ubevidst for patienten.",
+          "caution": "Tegn ikke jeget, det'et og over-jeget som små faste steder i hjernen, men fasthold dem som stridende funktioner."
+        },
+        {
+          "prompt_type": "Når du bruger de 4 orienteringspunkter",
+          "use_in_answer": "Placer Freud tungt på 'determination' og 'historicitet'.",
+          "caution": "Glem ikke at tilføje, at determinationen er intern (drifter) frem for ekstern samfundsmæssig."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sætte lighedstegn mellem drift og overlevelsesinstinkt.",
+          "better_reading": "Husk Anlehnung: driften låner først energi fra instinktet for derefter at løsrive sig fuldstændig."
+        },
+        {
+          "trap": "At behandle det ubevidste som en rodet skuffe af gamle minder.",
+          "better_reading": "Det er en yderst aktiv og struktureret proces, der med stor kraft kæmper for at holde forbudte impulser nede."
+        },
+        {
+          "trap": "At tidslinjen for traumer altid fungerer fra A til B.",
+          "better_reading": "En harmløs hændelse kan forblive stum i årevis, indtil en sen udløser gør den farlig og aktiv (med tilbagevirkende kraft)."
+        },
+        {
+          "trap": "At psykoanalyse som videnskab sluttede med Freud.",
+          "better_reading": "Vis eksaminator at du forstår udviklingen mod relationer og empirisk spædbørnsforskning."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign trækpsykologiens og psykoanalysens epistemologiske syn på personlighedens grundlæggende natur.",
+      "mini_exam_answer_plan_slots": [
+        "Afsæt: Trækpsykologiens antagelse om overfladevariabler (bevidste, stabile og målbare træk).",
+        "Bruddet: Psykoanalysens afvisning af overfladen til fordel for dybde, konflikt og ubevidst modstand.",
+        "Mekanismen: Hvordan det'ets drifter og jegets skjulte forsvarsmekanismer umuliggør et gennemsigtigt selv.",
+        "Metoden: Kontrasten mellem psykometrisk spørgeskema og fortolkningen af et symptom eller neurose."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w04l1-gammelgaard-2007-bcbdbec2",
+      "lecture_key": "W04L1",
+      "source_title": "Gammelgaard (2007)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne korte introduktion for at se tekstens konkrete brudflader. Hav de uløste problemer i baghovedet, når du læser videre.",
+      "teaser_paragraphs": [
+        "I 1890'ernes Wien formulerede Freud en teori, der for altid ændrede psykologien. Han opgav troen på det fuldt bevidste og rationelle menneske og opdagede, at vores sjæleliv er præget af dybe, ubevidste konflikter. Psykoanalysen blev født som en radikal modpol til den tids etablerede sandheder, og den skabte ideen om et anspændt, decentreret subjekt.",
+        "Forestil dig den 12-årige Emma, der flygter i rædsel fra en tøjbutik, blot fordi to ekspedienter griner. Hendes frygt virker fuldstændig afkoblet fra nutiden. Freud opdager, at angsten peger tilbage på en hændelse fra hun var 8 år, hvor en købmand begik et overgreb på hende. Fordi hun ikke forstod det dengang, blev hun ikke bange i gerningsøjeblikket.",
+        "Dette fænomen bryder med vores normale, lineære tidsforståelse. En begivenhed kan ramme os *med tilbagevirkende kraft*. Psyken er altså ikke et passivt arkiv, der bare gemmer objektive data; den er et historisk rum, hvor tidligere indtryk får tildelt helt ny og voldsom betydning i lyset af senere livsfaser.",
+        "Kernen i dette psykiske maskinrum er driften. For Freud er driften ikke blot et biologisk instinkt, der skal sikre overlevelse, men defineres udtrykkeligt som et *grænsebegreb mellem det sjælelige og det legemlige*. Den er en konstant indre kilde til pirring, der tvinger psyken på arbejde.",
+        "Med tiden indså Freud dog, at hans simple opdeling af sindet ikke strakte til, da patienter begyndte at yde ubevidst modstand i terapien. Han var nødt til at indføre strukturmodellen for at fange det indre slagsmål mellem forsvarsmekanismer og skjulte impulser.",
+        "Eftertiden har dog ikke ladet Freuds værk stå uberørt. Nyere objektrelationsteoretikere og empiriske spædbørnsforskere var utilfredse med Freuds ensidige fokus på drifter og voksnes rekonstruerede minder. Denne tekst dokumenterer det enorme skift fra Freuds lukkede driftsunivers til nyere teoriers fokus på det relationelle og observerede spædbarn."
+      ],
+      "main_problem": "Hvordan flytter psykoanalysen sig fra at se personligheden som drevet af indre biologisk-psykologiske drifter til at se den som formet af tidlige relationer og observationer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad kendetegner driften som et grænsebegreb, og hvordan adskiller den sig fra et instinkt?",
+          "why_it_matters": "Det forhindrer os i at reducere Freuds teori til ren evolutionsbiologi.",
+          "answer_form": "En forklaring af de to begrebers funktion"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan løsriver spædbarnets lyst sig fra ren overlevelse?",
+          "why_it_matters": "Det viser oprindelsen af psykologisk begær uafhængigt af kroppens umiddelbare næringsbehov.",
+          "answer_form": "En beskrivelse af en specifik handling  før og efter mæthed"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan udstiller historien om Emma psykoanalysens usamtidige tidsforståelse?",
+          "why_it_matters": "Dette rykker fundamentalt ved årsag-virknings-forhold i trækpsykologien, da traumer skabes retroaktivt.",
+          "answer_form": "Identifikation af forsinkelsesmekanismen"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor tvang patienternes opførsel i terapien Freud til at opfinde strukturmodellen?",
+          "why_it_matters": "Det forklarer at forsvarsmekanismer ikke er rationelle beslutninger, men ubevidste reflekser.",
+          "answer_form": "Begrundelse baseret på klinisk modstand"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan adskiller det 'rekonstruerede barn' sig fra det 'observerede barn'?",
+          "why_it_matters": "Det markerer det største metodiske skift i nyere psykoanalytisk videnskab.",
+          "answer_form": "Kontrast mellem retrospektiv tyldning og direkte forskning"
+        },
+        {
+          "number": 6,
+          "question": "Hvilket problem løser Winnicotts 'overgangsobjekt' for spædbarnet?",
+          "why_it_matters": "Det viser objektrelationsteoriens fokus på vores grundlæggende behov for kontakt til den ydre verden.",
+          "answer_form": "Beskrivelse af objektets brobyggende funktion"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør kursets største brud: Den forklarer skiftet fra objektiv, målbar overfladeadfærd til det 'decentrerede subjekt', hvor mennesket er dybt styret af historik, konflikt og skjult determination.",
+      "overview": [
+        "Forskellen på biologiske instinkter og psykologiske drifter.",
+        "Tidsforskydningen i traumer og psykisk historik (Nachträglichkeit).",
+        "Skiftet fra indre driftsteori til eksterne objektrelationer og spædbørnsforskning."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 154-156",
+          "task": "Sæt dig ind i det videnskabelige nybrud og opgøret med rationalismen i 1890'ernes Wien.",
+          "why_it_matters": "Det rammesætter hvor radikal tanken om et ubevidst sjæleliv var.",
+          "stop_signal": "når afsnittet 'Psykoanalysens driftsbegreb' starter"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 156-160",
+          "task": "Find Freuds definition på drift og følg eksemplet med barnets suttebevægelser.",
+          "why_it_matters": "Du skal kunne adskille seksualdriften fra et normalt overlevelsesinstinkt til eksamen.",
+          "stop_signal": "ved overskriften 'Narcissisme'"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 165-167",
+          "task": "Læs historien om Emma grundigt for at forstå begrebet Nachträglichkeit.",
+          "why_it_matters": "Dette er kursets stærkeste eksempel på, at vores historicitet ikke er lineær.",
+          "stop_signal": "når teksten skifter til at tale om Ulvemanden"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 170-171",
+          "task": "Sammenlign Freuds og Daniel Sterns metoder for at forstå barndommen.",
+          "why_it_matters": "Det viser hvordan psykoanalysen senere har indoptaget empirisk forskning.",
+          "stop_signal": "ved overskriften 'Overgangsobjektet og det potentielle rum'"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 173-175",
+          "task": "Undersøg hvad Winnicott mener med et overgangsobjekt.",
+          "why_it_matters": "Det er centralt for objektrelationsteorien og barnets udvikling af et selv.",
+          "stop_signal": "ved overskriften 'Det ubevidste'"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 175-178",
+          "task": "Afdæk årsagen til, at Freud forlod den tidlige topografiske model til fordel for strukturmodellen.",
+          "why_it_matters": "Det forklarer hvorfor forsvarsmekanismer kan operere helt skjult for os selv.",
+          "stop_signal": "når afsnittet om den kognitive psykologis indtog starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "et grænsebegreb mellem det sjælelige",
+          "why": "Freuds egen definition af driften, som adskiller den fra ren fysiologi.",
+          "where_to_look": "s. 157"
+        },
+        {
+          "target": "med tilbagevirkende kraft",
+          "why": "Den danske oversættelse af Nachträglichkeit.",
+          "where_to_look": "s. 165"
+        },
+        {
+          "target": "tilnærmelser til sandheden",
+          "why": "Beskriver usikkerheden ved at rekonstruere fortiden gennem voksne patienter.",
+          "where_to_look": "s. 170"
+        },
+        {
+          "target": "mellemliggende eller tredje område",
+          "why": "Winnicotts placering af overgangsobjektet.",
+          "where_to_look": "s. 175"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De interne stridigheder mellem de franske skoler (Lacan, Laplanche, Green).",
+        "De præcise tekniske betegnelser for dødsdriften hos Klein og Bion.",
+        "De internationale psykoanalytiske foreningers dannelseshistorie."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse bearbejdede sektioner til at løse problemerne i Active Reading. Hver sektion er bygget til at forklare og lukke en central spænding i teksten.",
+      "coverage_note": "Fokuserer på overgangen fra klassisk driftsteori og ikke-lineær tidsopfattelse til moderne empiri og objektrelationsteori.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 156-158",
+          "heading": "Driften som grænsebegreb",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Freud har brug for at forklare en stædig indre drivkraft, der ikke lader sig reducere til ren biologi og overlevelse?",
+          "explanation_paragraphs": [
+            "For at forstå menneskets adfærd måtte Freud definere en drivkraft, der stak dybere end simpel fornuft. Han fandt svaret i driften. Det er vigtigt at forstå, at et instinkt er et fast, biologisk nedarvet adfærdsmønster, der skal sikre overlevelse (som f.eks. at spise for at stille sult).",
+            "En drift, derimod, fungerer anderledes. Freud betegnede den bevidst som et grænsebegreb. Den har sit udspring som en kropslig pirring, men udmønter sig som et psykologisk krav om arbejde. Driften presser på indefra og tvinger sindet til at forsøge at håndtere eller aflade spændingen."
+          ],
+          "key_points": [
+            "Instinkter er fællesbiologiske overlevelsesreflekser.",
+            "Drifter opstår i kroppen, men eksisterer som psykiske repræsentationer af et pres.",
+            "Det er driften, der animerer det menneskelige sjæleliv ifølge Freud."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "grænsebegreb mellem det sjælelige og det legemlige",
+              "why_it_matters": "Viser hvordan driften bygger bro over den klassiske kløft mellem krop og sind.",
+              "source_location": "s. 157"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 158-160",
+          "heading": "Lystens frigørelse og Anlehnung",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Teorien mangler at vise, hvordan en selvstændig psykologisk lystsøgen overhovedet kan starte i et spædbarn?",
+          "explanation_paragraphs": [
+            "Freud brugte spædbarnets suttebevægelse som et klassisk eksempel på, hvordan driften fødes. Når det nyfødte barn sutter ved brystet, sker det primært for at få mad; handlingen læner sig op ad overlevelsesinstinktet. Freud kaldte denne støttefunktion for 'Anlehnung' (tilknytning).",
+            "Men ret hurtigt begynder barnet at sutte på sin egen tommelfinger. Maden er væk, overlevelseskravet er dækket, men selve rytmen og handlingen gentages. Her er suttebevægelsen blevet autoterapeutisk og lystfyldt i sig selv.",
+            "I det øjeblik har seksualdriften (forstået som bred kropslig nydelse) løsrevet sig fra instinktet og er blevet en uafhængig kraft."
+          ],
+          "key_points": [
+            "Driften starter med at låne energi og form fra et overlevelsesinstinkt (Anlehnung).",
+            "Når barnet sutter uden at være sulten, bevises lystens løsrivelse.",
+            "Freuds seksualbegreb handler her om basal kropslig nydelse, ikke voksen reproduktion."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 160",
+              "passage": "Kroppen er med andre ord generelt i stand til at frembringe seksuel lystfølelse ved tilstrækkelig intens stimulering.",
+              "why_it_matters": "Understreger at lysten hurtigt gør sig uafhængig af næringsbehovet og bliver kroppens eget projekt."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 3,
+          "source_location": "s. 165-167",
+          "heading": "Tid og traumer: Nachträglichkeit",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Patienters fobier og traumer i nutiden lader ofte til at udløses af harmløse hændelser, hvilket udfordrer en normal kronologisk tidsforståelse?",
+          "explanation_paragraphs": [
+            "Et af psykoanalysens største bidrag er en radikal omvæltning af vores tidsforståelse. Vi antager normalt, at et traume opstår umiddelbart under en voldsom hændelse. Men Freud opdagede, at psyken arbejder usamtidigt.",
+            "I historien om den 12-årige Emma udløste et par grinende butiksekspedienter en alvorlig fobi. Freud gravede sig tilbage til en erindring fra hun var 8 år, hvor hun blev befølt af en købmand. Fordi hun dengang var et barn uden forudsætninger for at forstå det seksuelle overgreb, blev hun ikke traumatiseret i situationen.",
+            "Først i puberteten, da hun selv fik en kropslig og seksuel modenhed, blev erindringen farlig. Den gamle hændelse fik først her tildelt sin traumatiske betydning. Freud kaldte denne forsinkede, baglæns effekt for 'Nachträglichkeit'."
+          ],
+          "key_points": [
+            "Psykisk udvikling er ikke udelukkende lineær; den er præget af diakroni og spring.",
+            "En erindring kan ligge passivt gemt, indtil en ny modenhedfase aktiverer dens farlighed.",
+            "Betydning tildeles ofte retroaktivt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "med tilbagevirkende kraft",
+              "why_it_matters": "Det er det afgørende begreb for at forstå historiens konstruktion i psykoanalysen.",
+              "source_location": "s. 165"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 176-178",
+          "heading": "Fra topografisk til strukturmodel",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Det er et klinisk problem, at patienter stritter imod terapeutens hjælp uden selv at vide det?",
+          "explanation_paragraphs": [
+            "Oprindeligt arbejdede Freud ud fra den topografiske model, som groft sagt inddelte sindet i et bevidst, før-bevidst og ubevidst lag. Målet var simpelthen at trække ubevidste minder frem i det bevidste lys. Men Freud løb ind i muren: Patienterne mobiliserede hårdnakket modstand i terapien.",
+            "Det afgørende bevis var, at patienterne slet ikke anede, at de gjorde modstand. Det betød, at de kræfter, der forsvarede sindet, også måtte være ubevidste. Modellen slog fejl.",
+            "Omkring 1920 indførte han derfor strukturmodellen med tre dynamiske instanser: jeget, det'et og over-jeget. Modellen illustrerer sindet som en slagmark, hvor det'et presser på med drifter, mens jeget automatisk og ubevidst iværksætter forsvarsmekanismer for at afbøde presset."
+          ],
+          "key_points": [
+            "Den tidlige model kunne ikke forklare at selve forsvaret var utilgængeligt for bevidstheden.",
+            "Strukturmodellen fokuserer på konflikt mellem aktive instanser frem for passive rum.",
+            "Mennesket er dermed styret af processer, der arbejder helt uden for fornuftens rækkevidde."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "s. 170-171",
+          "heading": "Det rekonstruerede vs. det observerede barn",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Det er metodisk usikkert at basere hele barndommens psykologi på de historier, ulykkelige voksne fortæller i en terapisofa?",
+          "explanation_paragraphs": [
+            "Psykoanalysens viden var fra starten retrospektiv. Freud lyttede til den voksnes frie indfald og byggede ad den vej en model af 'det rekonstruerede barn'. Denne metode fremhævede de indre drifter, overgreb og konflikter, fordi det var dét materiale, der var trængt op i neurosen.",
+            "Efterhånden som psykologien blev mere empirisk, begyndte forskere som Daniel Stern at studere virkelige spædbørn. De skabte billedet af 'det observerede barn'. Denne direkte adfærdsobservation viste et spædbarn, der fra de tidligste dage var aktivt, kompetent og enormt optaget af interaktion.",
+            "Resultatet var et stort teoretisk skift, hvor det lukkede, driftsstyrede barn i højere grad blev erstattet af en anerkendelse af barnets tidlige og sunde relationelle evner."
+          ],
+          "key_points": [
+            "Det rekonstruerede barn bygges ud fra minder og psykopatologi hos voksne.",
+            "Det observerede barn kortlægges gennem empirisk video- og adfærdsforskning.",
+            "Sterns forskning trak psykoanalysen i en mere relationsorienteret og videnskabeligt verificerbar retning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tilnærmelser til sandheden",
+              "why_it_matters": "Viser at den terapeutiske rekonstruktion altid vil have en grad af fiktion i sig.",
+              "source_location": "s. 170"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 173-175",
+          "heading": "Objektrelationer og overgangsobjektet",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Den strenge driftsteori mangler blik for, at barnet ikke bare udlever en indre lyst, men aktivt søger at knytte sig til verden omkring det?",
+          "explanation_paragraphs": [
+            "Nyere objektrelationsteoretikere argumenterede for, at Freud havde undervurderet omgivelserne. De fremførte, at vi er fundamentalt afhængige af faktiske relationer for overhovedet at skabe et jeg. Donald Winnicott er berømt for at have beskrevet denne bevægelse mod verden.",
+            "Winnicott introducerede begrebet 'overgangsobjekt', der dækker over barnets sutteklud eller bamse. Objektet fungerer som et beskyttende tredje rum, der ligger præcis midt imellem barnets indre almægtige fantasiverden og den ydre, uafhængige virkelighed.",
+            "Overgangsobjektet er barnets første spæde erfaring med noget, der ikke er barnet selv. Det hjælper barnet med at tolerere fraværet af moderen, fordi barnet kan trøste sig selv i dette mellemrum."
+          ],
+          "key_points": [
+            "Objektrelationsteorien gør relationen til målet i sig selv, frem for blot et redskab til at aflade drifter.",
+            "Bamsen er ikke bare legetøj; det er et vitalt psykologisk anker mod virkeligheden.",
+            "Gennem overgangsobjektet øver barnet sig i gradvist at acceptere virkelighedens krav."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mellemliggende eller tredje område",
+              "why_it_matters": "Beskriver det potentielle rum hvor leg og trøst muliggøres.",
+              "source_location": "s. 175"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Freud har brug for at forklare en stædig indre drivkraft, der ikke lader sig reducere til ren biologi og overlevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En forklaring af de to begrebers funktion",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Teorien mangler at vise, hvordan en selvstændig psykologisk lystsøgen overhovedet kan starte i et spædbarn?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En beskrivelse af en specifik handling  før og efter mæthed",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Patienters fobier og traumer i nutiden lader ofte til at udløses af harmløse hændelser, hvilket udfordrer en normal kronologisk tidsforståelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Identifikation af forsinkelsesmekanismen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Det er et klinisk problem, at patienter stritter imod terapeutens hjælp uden selv at vide det?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Begrundelse baseret på klinisk modstand",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Det er metodisk usikkert at basere hele barndommens psykologi på de historier, ulykkelige voksne fortæller i en terapisofa?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Kontrast mellem retrospektiv tyldning og direkte forskning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Den strenge driftsteori mangler blik for, at barnet ikke bare udlever en indre lyst, men aktivt søger at knytte sig til verden omkring det?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Beskrivelse af objektets brobyggende funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan flytter psykoanalysen sig fra at se personligheden som drevet af indre biologisk-psykologiske drifter til at se den som formet af tidlige relationer og observationer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at teste, om begreberne har sat sig fast. Det er vigtigt, at du forsøger uden hjælpemidler først, før du slår op i Abridged Reader for at reparere eventuelle huller.",
+      "overview": [
+        "Freuds driftsteori opererer i spændingsfeltet mellem kropslig oprindelse og psykologisk krav.",
+        "Psykoanalysen forklarer udvikling og traumer ud fra en forsinket og tilbageskuende tidsopfattelse.",
+        "Den nyere udvikling flyttede fokus fra lukkede indre systemer ud mod de nødvendige eksterne relationer."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Et rent biologisk overlevelsesmønster kaldes et instinkt, mens en psykisk repræsentation af et konstant indre pres kaldes en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når spædbarnets lyst i begyndelsen bygger oven på overlevelsesinstinktet (at spise), kaldes denne afhængighed med et tysk begreb for __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 tysk ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Mekanismen, hvor en tidlig begivenhed først bliver traumatisk senere i livet under nye omstændigheder, betegnes som __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 tysk ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For at rumme det ubevidste forsvar ændrede Freud sin topografiske model til den mere dynamiske __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Hvor Freud udledte barndommen fra voksne patienters udsagn, skabte Stern og spædbørnsforskningen begrebet om det __________ barn.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Ifølge objektrelationsteorien er vi dybt afhængige af omsorgspersoner, der i deres teori ofte benævnes som __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "En bamse, der skaber et sikkert tredje område mellem indre fantasi og den strenge ydre virkelighed, kaldes hos Winnicott for et __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 fagbegreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel tidslinje for 12-årige Emmas fobi. Vis hvordan betydning skabes baglæns i tiden.",
+          "required_elements": [
+            "Oprindelig hændelse (8 år",
+            "fobisk udbrud (12 år",
+            "en pil der peger retroaktivt tilbage for at vise Nachträglichkeit"
+          ],
+          "blank_space_hint": "Brug cirka 5-6 linjers højde, så der er plads til både kasser og den tilbagevendende pil."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér forskellen mellem den topografiske model og strukturmodellen for at vise det teoretiske brud.",
+          "required_elements": [
+            "Model 1 med de tre lag",
+            "Model 2 med de tre dynamiske instanser i intern konflikt"
+          ],
+          "blank_space_hint": "Lav to adskilte bokse eller tegninger side om side."
+        },
+        {
+          "number": 3,
+          "task": "Tegn et forløb der illustrerer 'Anlehnung' og løsrivelsen af lyst hos spædbarnet.",
+          "required_elements": [
+            "Trin 1: Sult",
+            "Næring",
+            "Trin 2: Overgangen",
+            "Trin 3: Sutte for selvstændig kropslig nydelse"
+          ],
+          "blank_space_hint": "Brug pile mellem tre små kasser."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at koble teorien til eksamensspørgsmål. Gør dig klar til at argumentere for psykoanalysens særlige epistemologi i stedet for blot at opremse historien.",
+      "use_this_text_for": [
+        "At forklare 'det decentrerede subjekt', hvor fornuften ikke har fuld kontrol.",
+        "At demonstrere kursets stærkeste form for ubevidst indre determination.",
+        "At diskutere værdien af klinisk rekonstruktion overfor objektiv empirisk forskning.",
+        "At vise hvordan psykisk historicitet ikke behøver være lineær, men kan fungere med tilbagevirkende kraft.",
+        "At give et afgørende modspil til personlighedstests, der udelukkende måler på bevidste overfladehandlinger."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trait Psychology (Uge 2)",
+          "connection": "Trækpsykologien stoler på den bevidste selvrepræsentation. Psykoanalysen afviser denne bevidsthed som et overfladefænomen dækket af forsvarsmekanismer."
+        },
+        {
+          "course_theme": "Orienteringspunkterne (Uge 12)",
+          "connection": "Freud leverer det klassiske eksempel på radikal indre determinerethed (vi er styret af konflikter og drifter, vi ikke kontrollerer) og historicitet."
+        },
+        {
+          "course_theme": "Køn og Poststrukturalisme",
+          "connection": "Ideen om et spaltet, decentreret subjekt er selve fundamentet for, at nyere kritiske teorier overhovedet kan dekonstruere den faste kerneidentitet."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "McCrae & Costa (Big Five)",
+          "how_to_compare": "Sammenlign epistemologien: Hvad man gør krydset af i et skema, versus hvad man projicerer ubevidst i en terapisession."
+        },
+        {
+          "compare_with": "Humanistisk psykologi (Rogers/Maslow)",
+          "how_to_compare": "Modstil Freuds iboende pessimistiske modstands- og konfliktmodel med humanismens optimistiske tro på iboende fri selverkendelse."
+        },
+        {
+          "compare_with": "Daniel Stern (Observeret forskning)",
+          "how_to_compare": "Brug selve Gammelgaard-teksten til at kontrastere Freuds fokus på indre lystdrift med Sterns fokus på social interaktion hos spædbørn."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at definere driften",
+          "use_in_answer": "Afvis at det blot er et instinkt. Redegør stramt for det som et 'psykologisk grænsebegreb' der trykker indefra.",
+          "caution": "Brug ikke ordet seksualitet som om det udelukkende handler om voksen forplantning; tal om bred kropslig nydelse."
+        },
+        {
+          "prompt_type": "Når samtalen falder på fortidens betydning",
+          "use_in_answer": "Træk Emma-casen frem og brug begrebet Nachträglichkeit til at vise at tid er formbar.",
+          "caution": "Fremstil ikke barndommen som en stiv årsag-virknings række uden plads til senere genfortolkning."
+        },
+        {
+          "prompt_type": "Hvis du skal kritisere klassisk psykoanalyse",
+          "use_in_answer": "Brug Stern og objektrelationsteoretikerne til at pege på manglen på primær socialitet hos Freud.",
+          "caution": "Sørg for at understrege, at nyere psykoanalyse faktisk inkorporerer relationer (f.eks. Winnicotts overgangsobjekt)."
+        },
+        {
+          "prompt_type": "Når strukturmodellen nævnes",
+          "use_in_answer": "Forklar at modellen udspringer af et klinisk fund: at forsvarsmekanismerne selv fungerer ubevidst for patienten.",
+          "caution": "Tegn ikke jeget, det'et og over-jeget som små faste steder i hjernen, men fasthold dem som stridende funktioner."
+        },
+        {
+          "prompt_type": "Når du bruger de 4 orienteringspunkter",
+          "use_in_answer": "Placer Freud tungt på 'determination' og 'historicitet'.",
+          "caution": "Glem ikke at tilføje, at determinationen er intern (drifter) frem for ekstern samfundsmæssig."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sætte lighedstegn mellem drift og overlevelsesinstinkt.",
+          "better_reading": "Husk Anlehnung: driften låner først energi fra instinktet for derefter at løsrive sig fuldstændig."
+        },
+        {
+          "trap": "At behandle det ubevidste som en rodet skuffe af gamle minder.",
+          "better_reading": "Det er en yderst aktiv og struktureret proces, der med stor kraft kæmper for at holde forbudte impulser nede."
+        },
+        {
+          "trap": "At tidslinjen for traumer altid fungerer fra A til B.",
+          "better_reading": "En harmløs hændelse kan forblive stum i årevis, indtil en sen udløser gør den farlig og aktiv (med tilbagevirkende kraft)."
+        },
+        {
+          "trap": "At psykoanalyse som videnskab sluttede med Freud.",
+          "better_reading": "Vis eksaminator at du forstår udviklingen mod relationer og empirisk spædbørnsforskning."
+        }
+      ],
+      "mini_exam_prompt_question": "Sammenlign trækpsykologiens og psykoanalysens epistemologiske syn på personlighedens grundlæggende natur.",
+      "mini_exam_answer_plan_slots": [
+        "Afsæt: Trækpsykologiens antagelse om overfladevariabler (bevidste, stabile og målbare træk).",
+        "Bruddet: Psykoanalysens afvisning af overfladen til fordel for dybde, konflikt og ubevidst modstand.",
+        "Mekanismen: Hvordan det'ets drifter og jegets skjulte forsvarsmekanismer umuliggør et gennemsigtigt selv.",
+        "Metoden: Kontrasten mellem psykometrisk spørgeskema og fortolkningen af et symptom eller neurose."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

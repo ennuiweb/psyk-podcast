@@ -1,0 +1,1046 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-11T10:32:57Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    }
+  },
+  "provenance": {
+    "source_file": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
+    "source_files_signature": "ccb4b8b21c67259f8b4c6c1974dda9fa35a330864d261e402004b059ebf5ee10",
+    "source_card": "ab2d7f2cba258b56fe405d8c5deb34cb029b4715f2357f66e1668757676ba891",
+    "revised_lecture_substrate": "792e73297dc516efe1ad371d4de999bec80bae632e2c70895d98bb44c151229b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w07l2-evans-1975-8e8a9d79",
+    "lecture_key": "W07L2",
+    "title": "Evans (1975)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 18,
+    "estimated_token_count": 11700,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf"
+    ],
+    "reading_title": "Carl Rogers: The Man and His Ideas",
+    "source_kind": "reading",
+    "lecture_keys": [
+      "W07L2"
+    ],
+    "sequence_index": 1,
+    "source_filename": "W7L2 Evans (1975).pdf",
+    "subject_relative_path": "Readings/W7L2 Humanistisk psykologi/W7L2 Evans (1975).pdf",
+    "source_exists": true,
+    "missing_reason": null,
+    "language_guess": "unknown",
+    "priority_signals": {
+      "is_grundbog": false,
+      "has_manual_summary": true,
+      "has_prompt_analysis_sidecar": false,
+      "lecture_has_week_analysis_sidecar": false
+    },
+    "file": {
+      "sha256": "4da84f6b1eec6c3fb3fda27c712611223712eb796964d4e8bccb9b87cbeb1501",
+      "size_bytes": 2746087,
+      "page_count": 18,
+      "text_char_count": 0,
+      "estimated_word_count": 0,
+      "estimated_token_count": 11700,
+      "text_extraction_status": "metadata_only_no_local_text_extraction"
+    },
+    "prompt_analysis_sidecars": []
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 18,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-evans-1975-8e8a9d79",
+      "lecture_key": "W07L2",
+      "source_title": "Evans (1975)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug dette som et kort til at åbne teksten. Opdel læsningen i små bidder, og løs problemerne undervejs.",
+      "teaser_paragraphs": [
+        "Psykoanalysen fortæller os, at vi styres af skjulte konflikter og utilgængelige drifter. Adfærdspsykologien reducerer os til maskiner, der blot reagerer på stimuli for at mindske spænding og opnå ligevægt. Men hvad nu, hvis begge traditioner grundlæggende misforstår vores natur?",
+        "I dette interview kaster Carl Rogers et radikalt anderledes blik på mennesket. Han afviser, at vi blot søger ind mod et passivt nulpunkt. I stedet fastslår han, at ethvert individ har en indbygget, fremadrettet drivkraft mod at vedligeholde og forbedre sig selv. Vi er designet til vækst.",
+        "Han afviser også Freuds deterministiske, underjordiske kælder. For Rogers er bevidsthed snarere et glidende spektrum. Trusler mod vores selvbillede bliver ikke spærret inde af et ubevidst monster, de holdes blot ude af *skarpt fokus* i baggrunden af vores opmærksomhed.",
+        "Dette skaber et nyt, presserende problem for den humanistiske psykologi. Hvis vi af natur altid stræber efter at vokse og realisere os selv, hvorfor oplever vi så overhovedet psykologisk smerte og irrationel adfærd? Svaret ligger i den kløft, der kan opstå mellem det, vi reelt oplever i vores krop, og det stive billede, vi stædigt klamrer os til."
+      ],
+      "main_problem": "Hvordan opstår psykologisk mistrivsel, hvis organismens sande natur er drevet af vækst snarere end spændingsreduktion?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?",
+          "why_it_matters": "Det markerer overgangen fra en mangeldrevet psykologi til en vækstdrevet psykologi.",
+          "answer_form": "Et specifikt begreb"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?",
+          "why_it_matters": "Det flytter agensen og ansvaret for fortolkning tilbage til den enkeltes egen opmærksomhed.",
+          "answer_form": "En visuel metafor"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?",
+          "why_it_matters": "Dette udgør Rogers' kernemekanisme for, hvordan vores naturlige vækst kan blokeres indefra.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvilke betingelser skal terapeuten levere for at genstarte klientens stagnerede vækst?",
+          "why_it_matters": "Det beviser, at humanistisk terapi ikke blot er passiv lytten, men kræver et meget specifikt og aktivt relationsklima.",
+          "answer_form": "En liste over tre hierarkiske krav til terapeuten"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det absolutte centrum for ideen om et autentisk, vækstorienteret subjekt. Den giver dig de mekanismer, du skal bruge for at forsvare individets agens overfor strukturelle og deterministiske teorier.",
+      "overview": [
+        "Et interview, hvor Carl Rogers forsvarer den humanistiske psykologis grundantagelser mod kritik.",
+        "Et opgør med både psykoanalysens konfliktsyn og behaviorismens mekaniske menneskesyn.",
+        "En indføring i klientcentreret terapi, inkongruens og betingelserne for det autentiske selv."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 3-4",
+          "task": "Find Rogers' direkte alternativ til den 'homeostatiske model' for motivation.",
+          "why_it_matters": "Det etablerer den fundamentale forskel mellem humanisme og ældre kliniske teorier.",
+          "stop_signal": "Når du forstår organismens iboende tendens til forbedring"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 6-7",
+          "task": "Afgør, hvordan Rogers omdefinerer det truende materiale, Freud normalt ville kalde 'ubevidst'.",
+          "why_it_matters": "Det fjerner determinismen bag ubevidste drifter og erstatter den med et forsvar af selvbilledet.",
+          "stop_signal": "Når du kan forklare forskellen på figur og baggrund i bevidstheden"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 16-19",
+          "task": "Kortlæg mekanismen bag psykologisk mistrivsel.",
+          "why_it_matters": "Det giver det nødvendige kliniske bevis for, hvorfor vi ikke bare udvikler os optimalt hele tiden.",
+          "stop_signal": "Når du har fundet definitionen på inkongruens"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 28-29",
+          "task": "Identificér de tre betingelser, Rogers stiller for terapeutisk forandring.",
+          "why_it_matters": "Det konkretiserer, hvordan man i praksis genskaber høj agens.",
+          "stop_signal": "Når du kender den vigtigste af de tre betingelser"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "tendency to maintain itself, to enhance itself",
+          "why": "Kernen i den aktualiserende tendens.",
+          "where_to_look": "S. 4"
+        },
+        {
+          "target": "incongruence results when the individual's experience is quite discrepant",
+          "why": "Den præcise definition på psykologisk mistrivsel.",
+          "where_to_look": "S. 19"
+        },
+        {
+          "target": "First, and most important, is therapist congruence",
+          "why": "Etablerer det afgørende hierarki for de terapeutiske betingelser.",
+          "where_to_look": "S. 29"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske debatter om specifikke behavioristiske læringsteoretikere (Hull, Skinner) på side 10-12.",
+        "Den detaljerede kronologiske redegørelse for Rogers' tidlige karriere og bogudgivelser på side 13-15.",
+        "De metodiske diskussioner om Q-sort-teknikken på side 18."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 4",
+          "excerpt": "tendency to maintain itself, to enhance itself",
+          "open_question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 19",
+          "excerpt": "incongruence results when the individual's experience is quite discrepant",
+          "open_question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 29",
+          "excerpt": "First, and most important, is therapist congruence",
+          "open_question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse læseguiden. Læs hver sektion for at fange det næste træk i Rogers' argumentation.",
+      "coverage_note": "Fokuserer på interviewets præsentation af selvet, inkongruens og terapeutiske betingelser i modsætning til ældre systemer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 3-4",
+          "heading": "Motivation: Fra underskud til vækst",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "explanation_paragraphs": [
+            "Tidligere psykologiske teorier i både psykoanalysen og behaviorismen antog overvejende, at organismer primært drives af et behov for at reducere spænding. Målet for adfærd blev anset for at være homeostase: at finde tilbage til en rolig neutral tilstand, hvor intet mangler.",
+            "Rogers afviser blankt denne mangel-drevne model for menneskelig natur. Han hævder, at enhver organisme har en dyb, iboende tendens til at bevæge sig fremad. Vi er ikke designet til at stå stille.",
+            "Vores grundlæggende motivation er i stedet at udvide os, forbedre os og realisere vores fulde potentiale. Denne vedvarende søgen mod udvikling overtrumfer behovet for blot at reducere spændinger."
+          ],
+          "key_points": [
+            "Organismer forsøger ikke blot at afhjælpe mangler for at opnå ligevægt.",
+            "Den primære, universelle drivkraft er altid rettet mod forbedring og selv-vedligeholdelse.",
+            "Dette kaldes i teorien for den aktualiserende tendens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tendency to maintain itself, to enhance itself",
+              "why_it_matters": "Fastslår organismens fundamentalt aktive, fremadrettede natur i kontrast til ældre teorier.",
+              "source_location": "S. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 6-7",
+          "heading": "Et opgør med Freuds ubevidste",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "explanation_paragraphs": [
+            "Freuds model postulerede, at vores handlinger ofte var styret af usynlige drifter i et mørkt, afgrænset 'ubevidst'. Dette gjorde mennesket til et offer for kræfter uden for dets egen bevidste rækkevidde.",
+            "Rogers bryder bevidstheden op og undgår determinismen. Han foreslår i stedet, at vores opmærksomhed fungerer som et glidende spektrum frem for skarpt opdelte rum.",
+            "Nogle oplevelser står klart frem i forgrunden som en figur. Når en oplevelse er for truende overfor vores syn på os selv, skubber vi den ikke ned i et deterministisk mørke; vi forhindrer den blot i at træde i skarpt fokus og holder den sløret i baggrunden."
+          ],
+          "key_points": [
+            "Afviser fuldstændig ideen om ubevidste drifter som en mekanisk determinerende kraft.",
+            "Bevidsthed forstås som et dynamisk kontinuum fra skarp figur til utydelig baggrund.",
+            "Irrationel adfærd opstår, når vi aktivt holder truende information ude af skarpt fokus."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "continuum from material that is sharply in focus to the individual",
+              "why_it_matters": "Viser hvordan uønsket materiale bevares i systemet uden at kræve et decideret freudiansk 'ubevidst'.",
+              "source_location": "S. 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 16-19",
+          "heading": "Selvet og inkongruens",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "explanation_paragraphs": [
+            "Selvet er ikke blot vores krop; det er den organiserede måde, hvorpå vi forstår og forestiller os, hvem vi er. Ideelt set opdateres dette selvbillede flydende i takt med vores organiske erfaringer.",
+            "Problemet opstår, når vi bygger et rigidt selvbillede, der er afhængigt af specifikke ydre krav. Hvis organismen mærker følelser, som selvbilledet ikke tillader, opfattes disse faktiske følelser som en massiv trussel.",
+            "Når vi afviser vores egne ægte oplevelser for at forsvare et fastlåst billede af os selv, blokeres vores væksttendens."
+          ],
+          "key_points": [
+            "Et sundt selvbillede ændrer og udvider sig med ny erfaring.",
+            "Forsvarsmekanismer opstår for at afværge sandfærdige erfaringer, der truer selvbilledet.",
+            "Kløften mellem billede og kropslig virkelighed er roden til al psykopatologi i Rogers' system."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 19",
+              "passage": "Incongruence results when the individual's experience is quite discrepant from the way he has organized himself... The discrepancy between the picture he has of himself and what he is actually experiencing is called incongruence.",
+              "why_it_matters": "Dette er selve hjørnestenen i Rogers' kliniske forståelse og angiver præcis, hvad der skal nedbrydes i terapien."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 28-29",
+          "heading": "Terapiens tre betingelser",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "explanation_paragraphs": [
+            "For at klienten tør undersøge de truende oplevelser og mindske sin inkongruens, skal der etableres et yderst sikkert og specifikt relationelt miljø. Det kræver, at terapeuten er meget mere end en blank skærm.",
+            "Rogers fremhæver tre ufravigelige betingelser, som terapeuten aktivt skal levere. Den første og mest afgørende er, at terapeuten selv træder i karakter som et ægte menneske uden faglig facade.",
+            "Dernæst kræves ubetinget positiv accept af klienten som et uafhængigt menneske med egne rettigheder. Til sidst skal terapeuten udvise ægte empatisk forståelse for den måde, verden tager sig ud for klienten."
+          ],
+          "key_points": [
+            "Terapeutisk forandring hviler udelukkende på kvaliteten af den etablerede relation.",
+            "Terapeuten skal turde være personligt transparent og ægte (kongruent).",
+            "Accept og empati fjerner truslen mod klientens selvbillede og tillader justering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "First, and most important, is therapist congruence or genuineness",
+              "why_it_matters": "Understreger, at passiv lytning ikke rækker; terapeutens egen transparens bærer den største vægt.",
+              "source_location": "S. 29"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Et specifikt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En visuel metafor",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En liste over tre hierarkiske krav til terapeuten",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan opstår psykologisk mistrivsel, hvis organismens sande natur er drevet af vækst snarere end spændingsreduktion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at udfylde arket fra hukommelsen. Brug kun Abridged Reader til at reparere og dobbelttjekke til sidst.",
+      "overview": [
+        "Teksten markerer et radikalt brud med tidligere teoriers syn på motivation.",
+        "Den introducerer inkongruens som den primære årsag til psykisk lidelse.",
+        "Den etablerer tre faste betingelser for at genoprette klientens vækst og agens."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Rogers afviser blankt den homeostatiske model og fastholder i stedet, at organismen altid er drevet af en aktualiserende tendens til at __________ sig selv.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I stedet for et utilgængeligt 'ubevidst' beskriver Rogers bevidsthed som et spektrum, hvor vi holder truende oplevelser sløret i opmærksomhedens __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den fundamentale årsag til psykologisk mistrivsel kaldes __________, som betegner kløften mellem selvbillede og faktisk oplevelse.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For stædigt at forsvare et rigidt __________ mod uønskede erfaringer, iværksætter individet et forsvar, der blokerer for naturlig vækst.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For at skabe et sikkert miljø, hvor klienten igen tør mærke sine reelle erfaringer, må terapeuten først og fremmest selv fremstå med radikal ægthed og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Udover terapeutens egen transparens og empati, kræver forandring også, at terapeuten tilbyder klienten en ubetinget positiv __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Kortlæg mekanismen bag psykologisk mistrivsel ifølge Rogers.",
+          "required_elements": [
+            "Det organiserede selvbillede",
+            "Den faktiske organiske oplevelse",
+            "Markering af det rum, der udgør truslen/inkongruensen"
+          ],
+          "blank_space_hint": "Tegn to adskilte eller delvist overlappende former, og vis den spænding, der opstår i misforholdet."
+        },
+        {
+          "number": 2,
+          "task": "Opstil kravene til effektiv terapi i det hierarki, teksten angiver.",
+          "required_elements": [
+            "Terapeutens egen ægthed: 1. prioritet",
+            "Ubetinget accept af klienten",
+            "Dyb empatisk forståelse"
+          ],
+          "blank_space_hint": "Lav en prioriteret og trinvis liste over de relationsbetingelser, der skal være til stede."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at sikre, at du kan inddrage teksten i en mundtlig eller skriftlig eksamen uden at famle efter pointen.",
+      "use_this_text_for": [
+        "At demonstrere et radikalt skift i psykologiens menneskesyn fra mangel-drevet (deficiet) til vækst-drevet.",
+        "At illustrere et teoretisk rum med højt niveau af individuel agens, hvor subjektet aktivt stræber mod forbedring.",
+        "At forklare den humanistiske kernemekanisme for psykisk mistrivsel gennem begrebet inkongruens.",
+        "At definere ideen om det 'autentiske indre selv', som senere kursustekster (poststrukturalismen) vil kritisere og dekonstruere."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Psykoanalyse (Tidligere uger)",
+          "connection": "Rogers udgør et direkte modsvar til Freud. Han afviser det deterministiske ubevidste og erstatter iboende konflikt med en klippefast tro på organismens positive vækst."
+        },
+        {
+          "course_theme": "Kritisk Psykologi (Senere uger)",
+          "connection": "Begge retninger insisterer på menneskets agens overfor mekaniske modeller. Men hvor Rogers placerer løsningen inde i det individuelle selv, flytter kritisk psykologi løsningen ud i fællesskabet."
+        },
+        {
+          "course_theme": "Poststrukturalisme (Senere uger)",
+          "connection": "Rogers bygger ideen om et indre, essentielt selv, som kan frigøres via inkongruens-nedbrydning. Dette er præcis det menneskesyn, Foucault senere vil kalde en illusion."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Freuds konflikt- og drivkraftsmodel",
+          "how_to_compare": "Sammenlign Freuds fokus på spændingsreduktion og driftstilfredsstillelse med Rogers' insisteren på fremadrettet aktualisering."
+        },
+        {
+          "compare_with": "Behaviorismens mekaniske subjekt (Skinner)",
+          "how_to_compare": "Kontrastér ideen om adfærd styret strengt af ydre stimuli med Rogers' fænomenologiske fokus på individets indre meningsskabelse."
+        },
+        {
+          "compare_with": "Holzkamps kritiske handleevne",
+          "how_to_compare": "Bevis at begge søger frihed, men at Rogers' agens peger indad mod individuel autenticitet, mens Holzkamp peger udad mod samfundets betingelser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Brug begrebet 'inkongruens' analytisk til at forklare, hvorfor høj teoretisk agens ikke altid udmønter sig i praktisk trivsel.",
+          "caution": "Undgå at lade det lyde som en ubevidst konflikt i freudiansk forstand; inkongruens handler specifikt om selvbilledets stivhed."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Sammenlign Rogers' opfattelse af forsvarsmekanismer med psykoanalysens.",
+          "caution": "Gør ikke Rogers naiv. Han anerkender forsvaret fuldt ud, men han flytter funktionens mål fra driftshåndtering til selvbillede-beskyttelse."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Slå fast, at humanismen repræsenterer selve zenit for ideen om en ægte 'indre kerne' i løbet af kurset.",
+          "caution": "Husk at anvende eksamenspunktet 'essens vs. kontekst' præcist her som analytisk redskab."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "At reducere klientcentreret terapi til 'bare at lytte til klienten og nikke'.",
+          "caution": "Det er en yderst aktiv metode, og terapeutens egen eksplicitte 'kongruens' er det tungeste værktøj."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at Rogers fuldstændig afviser eksistensen af processer uden for bevidstheden.",
+          "better_reading": "Han anerkender fænomenerne, men omformulerer dem fra 'et determinerende ubevidst' til dynamiske opmærksomhedsskift mellem figur og baggrund."
+        },
+        {
+          "trap": "At antage, at 'nondirektiv terapi' betyder passivitet fra terapeutens side.",
+          "better_reading": "Terapeuten arbejder intenst på at fremtvinge det specifikke relationelle klima, der efterlader ansvaret for vækst tilbage hos klienten."
+        },
+        {
+          "trap": "At blande Rogers' inkongruens sammen med generel 'kognitiv dissonans'.",
+          "better_reading": "Inkongruens handler om den dybe, afgørende kløft mellem den ægte, kropslige organisme og det rigide, kognitive selvbillede."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udgør Rogers' vækstorienterede selv et teoretisk opgør med psykoanalysens deterministiske syn på menneskelig agens og udvikling?",
+      "mini_exam_answer_plan_slots": [
+        "Definér først psykoanalysens homeostatiske menneskesyn overfor Rogers' aktualiserende tendens.",
+        "Brug begrebet inkongruens til at bevise, at mistrivsel skyldes selvbilledets kollaps over for kendsgerninger, ikke drifter.",
+        "Forklar, hvordan bevidsthedens figur/baggrund-mekanisme redder subjektets evne til selv at justere fokus.",
+        "Afslut med at vise, hvordan terapiens tre betingelser overdrager ansvaret og handleevnen tilbage til klientens autentiske natur."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l2-evans-1975-8e8a9d79",
+      "lecture_key": "W07L2",
+      "source_title": "Evans (1975)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug dette som et kort til at åbne teksten. Opdel læsningen i små bidder, og løs problemerne undervejs.",
+      "teaser_paragraphs": [
+        "Psykoanalysen fortæller os, at vi styres af skjulte konflikter og utilgængelige drifter. Adfærdspsykologien reducerer os til maskiner, der blot reagerer på stimuli for at mindske spænding og opnå ligevægt. Men hvad nu, hvis begge traditioner grundlæggende misforstår vores natur?",
+        "I dette interview kaster Carl Rogers et radikalt anderledes blik på mennesket. Han afviser, at vi blot søger ind mod et passivt nulpunkt. I stedet fastslår han, at ethvert individ har en indbygget, fremadrettet drivkraft mod at vedligeholde og forbedre sig selv. Vi er designet til vækst.",
+        "Han afviser også Freuds deterministiske, underjordiske kælder. For Rogers er bevidsthed snarere et glidende spektrum. Trusler mod vores selvbillede bliver ikke spærret inde af et ubevidst monster, de holdes blot ude af *skarpt fokus* i baggrunden af vores opmærksomhed.",
+        "Dette skaber et nyt, presserende problem for den humanistiske psykologi. Hvis vi af natur altid stræber efter at vokse og realisere os selv, hvorfor oplever vi så overhovedet psykologisk smerte og irrationel adfærd? Svaret ligger i den kløft, der kan opstå mellem det, vi reelt oplever i vores krop, og det stive billede, vi stædigt klamrer os til."
+      ],
+      "main_problem": "Hvordan opstår psykologisk mistrivsel, hvis organismens sande natur er drevet af vækst snarere end spændingsreduktion?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?",
+          "why_it_matters": "Det markerer overgangen fra en mangeldrevet psykologi til en vækstdrevet psykologi.",
+          "answer_form": "Et specifikt begreb"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?",
+          "why_it_matters": "Det flytter agensen og ansvaret for fortolkning tilbage til den enkeltes egen opmærksomhed.",
+          "answer_form": "En visuel metafor"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?",
+          "why_it_matters": "Dette udgør Rogers' kernemekanisme for, hvordan vores naturlige vækst kan blokeres indefra.",
+          "answer_form": "1-2 ord"
+        },
+        {
+          "number": 4,
+          "question": "Hvilke betingelser skal terapeuten levere for at genstarte klientens stagnerede vækst?",
+          "why_it_matters": "Det beviser, at humanistisk terapi ikke blot er passiv lytten, men kræver et meget specifikt og aktivt relationsklima.",
+          "answer_form": "En liste over tre hierarkiske krav til terapeuten"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det absolutte centrum for ideen om et autentisk, vækstorienteret subjekt. Den giver dig de mekanismer, du skal bruge for at forsvare individets agens overfor strukturelle og deterministiske teorier.",
+      "overview": [
+        "Et interview, hvor Carl Rogers forsvarer den humanistiske psykologis grundantagelser mod kritik.",
+        "Et opgør med både psykoanalysens konfliktsyn og behaviorismens mekaniske menneskesyn.",
+        "En indføring i klientcentreret terapi, inkongruens og betingelserne for det autentiske selv."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 3-4",
+          "task": "Find Rogers' direkte alternativ til den 'homeostatiske model' for motivation.",
+          "why_it_matters": "Det etablerer den fundamentale forskel mellem humanisme og ældre kliniske teorier.",
+          "stop_signal": "Når du forstår organismens iboende tendens til forbedring"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 6-7",
+          "task": "Afgør, hvordan Rogers omdefinerer det truende materiale, Freud normalt ville kalde 'ubevidst'.",
+          "why_it_matters": "Det fjerner determinismen bag ubevidste drifter og erstatter den med et forsvar af selvbilledet.",
+          "stop_signal": "Når du kan forklare forskellen på figur og baggrund i bevidstheden"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 16-19",
+          "task": "Kortlæg mekanismen bag psykologisk mistrivsel.",
+          "why_it_matters": "Det giver det nødvendige kliniske bevis for, hvorfor vi ikke bare udvikler os optimalt hele tiden.",
+          "stop_signal": "Når du har fundet definitionen på inkongruens"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 28-29",
+          "task": "Identificér de tre betingelser, Rogers stiller for terapeutisk forandring.",
+          "why_it_matters": "Det konkretiserer, hvordan man i praksis genskaber høj agens.",
+          "stop_signal": "Når du kender den vigtigste af de tre betingelser"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "tendency to maintain itself, to enhance itself",
+          "why": "Kernen i den aktualiserende tendens.",
+          "where_to_look": "S. 4"
+        },
+        {
+          "target": "incongruence results when the individual's experience is quite discrepant",
+          "why": "Den præcise definition på psykologisk mistrivsel.",
+          "where_to_look": "S. 19"
+        },
+        {
+          "target": "First, and most important, is therapist congruence",
+          "why": "Etablerer det afgørende hierarki for de terapeutiske betingelser.",
+          "where_to_look": "S. 29"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske debatter om specifikke behavioristiske læringsteoretikere (Hull, Skinner) på side 10-12.",
+        "Den detaljerede kronologiske redegørelse for Rogers' tidlige karriere og bogudgivelser på side 13-15.",
+        "De metodiske diskussioner om Q-sort-teknikken på side 18."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 4",
+          "excerpt": "tendency to maintain itself, to enhance itself",
+          "open_question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 19",
+          "excerpt": "incongruence results when the individual's experience is quite discrepant",
+          "open_question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 29",
+          "excerpt": "First, and most important, is therapist congruence",
+          "open_question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse læseguiden. Læs hver sektion for at fange det næste træk i Rogers' argumentation.",
+      "coverage_note": "Fokuserer på interviewets præsentation af selvet, inkongruens og terapeutiske betingelser i modsætning til ældre systemer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 3-4",
+          "heading": "Motivation: Fra underskud til vækst",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "explanation_paragraphs": [
+            "Tidligere psykologiske teorier i både psykoanalysen og behaviorismen antog overvejende, at organismer primært drives af et behov for at reducere spænding. Målet for adfærd blev anset for at være homeostase: at finde tilbage til en rolig neutral tilstand, hvor intet mangler.",
+            "Rogers afviser blankt denne mangel-drevne model for menneskelig natur. Han hævder, at enhver organisme har en dyb, iboende tendens til at bevæge sig fremad. Vi er ikke designet til at stå stille.",
+            "Vores grundlæggende motivation er i stedet at udvide os, forbedre os og realisere vores fulde potentiale. Denne vedvarende søgen mod udvikling overtrumfer behovet for blot at reducere spændinger."
+          ],
+          "key_points": [
+            "Organismer forsøger ikke blot at afhjælpe mangler for at opnå ligevægt.",
+            "Den primære, universelle drivkraft er altid rettet mod forbedring og selv-vedligeholdelse.",
+            "Dette kaldes i teorien for den aktualiserende tendens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tendency to maintain itself, to enhance itself",
+              "why_it_matters": "Fastslår organismens fundamentalt aktive, fremadrettede natur i kontrast til ældre teorier.",
+              "source_location": "S. 4"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 6-7",
+          "heading": "Et opgør med Freuds ubevidste",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "explanation_paragraphs": [
+            "Freuds model postulerede, at vores handlinger ofte var styret af usynlige drifter i et mørkt, afgrænset 'ubevidst'. Dette gjorde mennesket til et offer for kræfter uden for dets egen bevidste rækkevidde.",
+            "Rogers bryder bevidstheden op og undgår determinismen. Han foreslår i stedet, at vores opmærksomhed fungerer som et glidende spektrum frem for skarpt opdelte rum.",
+            "Nogle oplevelser står klart frem i forgrunden som en figur. Når en oplevelse er for truende overfor vores syn på os selv, skubber vi den ikke ned i et deterministisk mørke; vi forhindrer den blot i at træde i skarpt fokus og holder den sløret i baggrunden."
+          ],
+          "key_points": [
+            "Afviser fuldstændig ideen om ubevidste drifter som en mekanisk determinerende kraft.",
+            "Bevidsthed forstås som et dynamisk kontinuum fra skarp figur til utydelig baggrund.",
+            "Irrationel adfærd opstår, når vi aktivt holder truende information ude af skarpt fokus."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "continuum from material that is sharply in focus to the individual",
+              "why_it_matters": "Viser hvordan uønsket materiale bevares i systemet uden at kræve et decideret freudiansk 'ubevidst'.",
+              "source_location": "S. 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 16-19",
+          "heading": "Selvet og inkongruens",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "explanation_paragraphs": [
+            "Selvet er ikke blot vores krop; det er den organiserede måde, hvorpå vi forstår og forestiller os, hvem vi er. Ideelt set opdateres dette selvbillede flydende i takt med vores organiske erfaringer.",
+            "Problemet opstår, når vi bygger et rigidt selvbillede, der er afhængigt af specifikke ydre krav. Hvis organismen mærker følelser, som selvbilledet ikke tillader, opfattes disse faktiske følelser som en massiv trussel.",
+            "Når vi afviser vores egne ægte oplevelser for at forsvare et fastlåst billede af os selv, blokeres vores væksttendens."
+          ],
+          "key_points": [
+            "Et sundt selvbillede ændrer og udvider sig med ny erfaring.",
+            "Forsvarsmekanismer opstår for at afværge sandfærdige erfaringer, der truer selvbilledet.",
+            "Kløften mellem billede og kropslig virkelighed er roden til al psykopatologi i Rogers' system."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 19",
+              "passage": "Incongruence results when the individual's experience is quite discrepant from the way he has organized himself... The discrepancy between the picture he has of himself and what he is actually experiencing is called incongruence.",
+              "why_it_matters": "Dette er selve hjørnestenen i Rogers' kliniske forståelse og angiver præcis, hvad der skal nedbrydes i terapien."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "S. 28-29",
+          "heading": "Terapiens tre betingelser",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "explanation_paragraphs": [
+            "For at klienten tør undersøge de truende oplevelser og mindske sin inkongruens, skal der etableres et yderst sikkert og specifikt relationelt miljø. Det kræver, at terapeuten er meget mere end en blank skærm.",
+            "Rogers fremhæver tre ufravigelige betingelser, som terapeuten aktivt skal levere. Den første og mest afgørende er, at terapeuten selv træder i karakter som et ægte menneske uden faglig facade.",
+            "Dernæst kræves ubetinget positiv accept af klienten som et uafhængigt menneske med egne rettigheder. Til sidst skal terapeuten udvise ægte empatisk forståelse for den måde, verden tager sig ud for klienten."
+          ],
+          "key_points": [
+            "Terapeutisk forandring hviler udelukkende på kvaliteten af den etablerede relation.",
+            "Terapeuten skal turde være personligt transparent og ægte (kongruent).",
+            "Accept og empati fjerner truslen mod klientens selvbillede og tillader justering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "First, and most important, is therapist congruence or genuineness",
+              "why_it_matters": "Understreger, at passiv lytning ikke rækker; terapeutens egen transparens bærer den største vægt.",
+              "source_location": "S. 29"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Et specifikt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En visuel metafor",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En liste over tre hierarkiske krav til terapeuten",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan opstår psykologisk mistrivsel, hvis organismens sande natur er drevet af vækst snarere end spændingsreduktion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at udfylde arket fra hukommelsen. Brug kun Abridged Reader til at reparere og dobbelttjekke til sidst.",
+      "overview": [
+        "Teksten markerer et radikalt brud med tidligere teoriers syn på motivation.",
+        "Den introducerer inkongruens som den primære årsag til psykisk lidelse.",
+        "Den etablerer tre faste betingelser for at genoprette klientens vækst og agens."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Rogers afviser blankt den homeostatiske model og fastholder i stedet, at organismen altid er drevet af en aktualiserende tendens til at __________ sig selv.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I stedet for et utilgængeligt 'ubevidst' beskriver Rogers bevidsthed som et spektrum, hvor vi holder truende oplevelser sløret i opmærksomhedens __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den fundamentale årsag til psykologisk mistrivsel kaldes __________, som betegner kløften mellem selvbillede og faktisk oplevelse.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For stædigt at forsvare et rigidt __________ mod uønskede erfaringer, iværksætter individet et forsvar, der blokerer for naturlig vækst.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For at skabe et sikkert miljø, hvor klienten igen tør mærke sine reelle erfaringer, må terapeuten først og fremmest selv fremstå med radikal ægthed og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Udover terapeutens egen transparens og empati, kræver forandring også, at terapeuten tilbyder klienten en ubetinget positiv __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Kortlæg mekanismen bag psykologisk mistrivsel ifølge Rogers.",
+          "required_elements": [
+            "Det organiserede selvbillede",
+            "Den faktiske organiske oplevelse",
+            "Markering af det rum, der udgør truslen/inkongruensen"
+          ],
+          "blank_space_hint": "Tegn to adskilte eller delvist overlappende former, og vis den spænding, der opstår i misforholdet."
+        },
+        {
+          "number": 2,
+          "task": "Opstil kravene til effektiv terapi i det hierarki, teksten angiver.",
+          "required_elements": [
+            "Terapeutens egen ægthed: 1. prioritet",
+            "Ubetinget accept af klienten",
+            "Dyb empatisk forståelse"
+          ],
+          "blank_space_hint": "Lav en prioriteret og trinvis liste over de relationsbetingelser, der skal være til stede."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at sikre, at du kan inddrage teksten i en mundtlig eller skriftlig eksamen uden at famle efter pointen.",
+      "use_this_text_for": [
+        "At demonstrere et radikalt skift i psykologiens menneskesyn fra mangel-drevet (deficiet) til vækst-drevet.",
+        "At illustrere et teoretisk rum med højt niveau af individuel agens, hvor subjektet aktivt stræber mod forbedring.",
+        "At forklare den humanistiske kernemekanisme for psykisk mistrivsel gennem begrebet inkongruens.",
+        "At definere ideen om det 'autentiske indre selv', som senere kursustekster (poststrukturalismen) vil kritisere og dekonstruere."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Psykoanalyse (Tidligere uger)",
+          "connection": "Rogers udgør et direkte modsvar til Freud. Han afviser det deterministiske ubevidste og erstatter iboende konflikt med en klippefast tro på organismens positive vækst."
+        },
+        {
+          "course_theme": "Kritisk Psykologi (Senere uger)",
+          "connection": "Begge retninger insisterer på menneskets agens overfor mekaniske modeller. Men hvor Rogers placerer løsningen inde i det individuelle selv, flytter kritisk psykologi løsningen ud i fællesskabet."
+        },
+        {
+          "course_theme": "Poststrukturalisme (Senere uger)",
+          "connection": "Rogers bygger ideen om et indre, essentielt selv, som kan frigøres via inkongruens-nedbrydning. Dette er præcis det menneskesyn, Foucault senere vil kalde en illusion."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Freuds konflikt- og drivkraftsmodel",
+          "how_to_compare": "Sammenlign Freuds fokus på spændingsreduktion og driftstilfredsstillelse med Rogers' insisteren på fremadrettet aktualisering."
+        },
+        {
+          "compare_with": "Behaviorismens mekaniske subjekt (Skinner)",
+          "how_to_compare": "Kontrastér ideen om adfærd styret strengt af ydre stimuli med Rogers' fænomenologiske fokus på individets indre meningsskabelse."
+        },
+        {
+          "compare_with": "Holzkamps kritiske handleevne",
+          "how_to_compare": "Bevis at begge søger frihed, men at Rogers' agens peger indad mod individuel autenticitet, mens Holzkamp peger udad mod samfundets betingelser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "Brug begrebet 'inkongruens' analytisk til at forklare, hvorfor høj teoretisk agens ikke altid udmønter sig i praktisk trivsel.",
+          "caution": "Undgå at lade det lyde som en ubevidst konflikt i freudiansk forstand; inkongruens handler specifikt om selvbilledets stivhed."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Sammenlign Rogers' opfattelse af forsvarsmekanismer med psykoanalysens.",
+          "caution": "Gør ikke Rogers naiv. Han anerkender forsvaret fuldt ud, men han flytter funktionens mål fra driftshåndtering til selvbillede-beskyttelse."
+        },
+        {
+          "prompt_type": "Sig højt",
+          "use_in_answer": "Slå fast, at humanismen repræsenterer selve zenit for ideen om en ægte 'indre kerne' i løbet af kurset.",
+          "caution": "Husk at anvende eksamenspunktet 'essens vs. kontekst' præcist her som analytisk redskab."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "At reducere klientcentreret terapi til 'bare at lytte til klienten og nikke'.",
+          "caution": "Det er en yderst aktiv metode, og terapeutens egen eksplicitte 'kongruens' er det tungeste værktøj."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at Rogers fuldstændig afviser eksistensen af processer uden for bevidstheden.",
+          "better_reading": "Han anerkender fænomenerne, men omformulerer dem fra 'et determinerende ubevidst' til dynamiske opmærksomhedsskift mellem figur og baggrund."
+        },
+        {
+          "trap": "At antage, at 'nondirektiv terapi' betyder passivitet fra terapeutens side.",
+          "better_reading": "Terapeuten arbejder intenst på at fremtvinge det specifikke relationelle klima, der efterlader ansvaret for vækst tilbage hos klienten."
+        },
+        {
+          "trap": "At blande Rogers' inkongruens sammen med generel 'kognitiv dissonans'.",
+          "better_reading": "Inkongruens handler om den dybe, afgørende kløft mellem den ægte, kropslige organisme og det rigide, kognitive selvbillede."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan udgør Rogers' vækstorienterede selv et teoretisk opgør med psykoanalysens deterministiske syn på menneskelig agens og udvikling?",
+      "mini_exam_answer_plan_slots": [
+        "Definér først psykoanalysens homeostatiske menneskesyn overfor Rogers' aktualiserende tendens.",
+        "Brug begrebet inkongruens til at bevise, at mistrivsel skyldes selvbilledets kollaps over for kendsgerninger, ikke drifter.",
+        "Forklar, hvordan bevidsthedens figur/baggrund-mekanisme redder subjektets evne til selv at justere fokus.",
+        "Afslut med at vise, hvordan terapiens tre betingelser overdrager ansvaret og handleevnen tilbage til klientens autentiske natur."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w07l2-evans-1975-8e8a9d79/reading-scaffolds.json",
+    "backfilled_at": "2026-05-14T12:30:24Z"
+  }
+}

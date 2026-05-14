@@ -332,7 +332,7 @@ notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/<revie
 The target main-code JSON path after integration is:
 
 ```text
-notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/reading-printouts.json
+notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/<source_id>/reading-printouts.json
 ```
 
 The JSON artifact is the source of truth for later visual work. Markdown and
@@ -352,8 +352,9 @@ Current artifact contract:
 - `printouts.exam_bridge`: transfer sheet for course and exam use
 
 For compatibility, live JSON artifacts may still include a mirrored
-`scaffolds` object and legacy alias files under `.../scaffolding/...` while
-the repo finishes migrating readers and generated history.
+`scaffolds` object. The current main output contract no longer writes
+`scaffolding/` directories; review/evaluation internals still use
+`.scaffolding/` under the review workspace only.
 
 The canonical source for the current printout prompt version and the human
 setup label is `shows/personlighedspsykologi-en/prompt_versions.json`.
@@ -407,7 +408,7 @@ Count summary:
 Artifact root:
 
 ```text
-notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/
+notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/<source_id>/reading-printouts.json
 ```
 
 Generation status is determined by the presence of
@@ -489,8 +490,8 @@ List completed week 1-3 printout JSON artifacts:
 
 ```bash
 find notebooklm-podcast-auto/personlighedspsykologi/output \
-  -path '*/printouts/*/reading-printouts.json' \
-  | rg '/W0[1-3]L[12]/' \
+  -path '*/printout-json/*/reading-printouts.json' \
+  | rg '/w0[1-3]l[12]-' \
   | sort
 ```
 
@@ -498,8 +499,8 @@ Count completed week 1-3 artifacts:
 
 ```bash
 find notebooklm-podcast-auto/personlighedspsykologi/output \
-  -path '*/printouts/*/reading-printouts.json' \
-  | rg '/W0[1-3]L[12]/' \
+  -path '*/printout-json/*/reading-printouts.json' \
+  | rg '/w0[1-3]l[12]-' \
   | wc -l
 ```
 

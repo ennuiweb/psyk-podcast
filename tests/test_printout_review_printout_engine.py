@@ -302,9 +302,7 @@ def test_output_dir_for_source_uses_canonical_main_tree_by_default():
     output_root = Path("/tmp/output-root")
     source = {"source_id": "source-1", "lecture_key": "W01L1"}
 
-    assert printout_engine.output_dir_for_source(output_root, source) == (
-        output_root / "W01L1" / "printouts" / "source-1"
-    )
+    assert printout_engine.output_dir_for_source(output_root, source) == output_root
 
 
 def test_canonical_output_layout_writes_stable_main_files(tmp_path, monkeypatch):
@@ -335,16 +333,16 @@ def test_canonical_output_layout_writes_stable_main_files(tmp_path, monkeypatch)
     )
 
     output_dir = Path(result["output_dir"])
-    assert output_dir == output_root / "W01L1" / "printouts" / "source-1"
-    assert Path(result["json_path"]) == output_dir / "reading-printouts.json"
+    assert output_dir == output_root
+    assert Path(result["json_path"]) == output_root / "printout-json" / "source-1" / "reading-printouts.json"
     assert sorted(path.name for path in output_dir.glob("*.pdf")) == [
-        "00-cover.pdf",
-        "01-reading-guide.pdf",
-        "02-active-reading.pdf",
-        "03-abridged-version.pdf",
-        "04-consolidation-sheet.pdf",
+        "W01L1--source-1--00-cover.pdf",
+        "W01L1--source-1--01-reading-guide.pdf",
+        "W01L1--source-1--02-active-reading.pdf",
+        "W01L1--source-1--03-abridged-version.pdf",
+        "W01L1--source-1--04-consolidation-sheet.pdf",
     ]
-    assert not any("--source-1--" in path.name for path in output_dir.glob("*.pdf"))
+    assert all("--source-1--" in path.name for path in output_dir.glob("*.pdf"))
 
 
 def test_canonical_output_ignores_legacy_schema_and_generates_v3(tmp_path, monkeypatch):
@@ -407,14 +405,14 @@ def test_canonical_output_ignores_legacy_schema_and_generates_v3(tmp_path, monke
     output_dir = Path(result["output_dir"])
     assert result["status"] == "written"
     assert generated
-    assert Path(result["json_path"]) == output_dir / "reading-printouts.json"
+    assert Path(result["json_path"]) == output_root / "printout-json" / "source-1" / "reading-printouts.json"
     assert json.loads(Path(result["json_path"]).read_text(encoding="utf-8"))["schema_version"] == printout_engine.SCHEMA_VERSION
     assert sorted(path.name for path in output_dir.glob("*.pdf")) == [
-        "00-cover.pdf",
-        "01-reading-guide.pdf",
-        "02-active-reading.pdf",
-        "03-abridged-version.pdf",
-        "04-consolidation-sheet.pdf",
+        "W01L1--source-1--00-cover.pdf",
+        "W01L1--source-1--01-reading-guide.pdf",
+        "W01L1--source-1--02-active-reading.pdf",
+        "W01L1--source-1--03-abridged-version.pdf",
+        "W01L1--source-1--04-consolidation-sheet.pdf",
     ]
 
 

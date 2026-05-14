@@ -52,6 +52,7 @@ PROBLEM_DRIVEN_WORKSPACE = "notebooklm-podcast-auto/personlighedspsykologi/evalu
 SCHEMA_VERSION = 3
 LEGACY_SCHEMA_VERSION = 2
 CANONICAL_PRINTOUT_DIRNAME = "printouts"
+CANONICAL_PRINTOUT_JSON_DIRNAME = "printout-json"
 LEGACY_PRINTOUT_DIRNAME = "scaffolding"
 CANONICAL_PRINTOUT_JSON_NAME = "reading-printouts.json"
 LEGACY_PRINTOUT_JSON_NAME = "reading-scaffolds.json"
@@ -395,7 +396,7 @@ def printout_source_root(
     output_layout: str = OUTPUT_LAYOUT_CANONICAL,
 ) -> Path:
     if _normalize_output_layout(output_layout) == OUTPUT_LAYOUT_CANONICAL:
-        return canonical_baseline_output_dir_for_source(output_root, source)
+        return output_root
     return output_root
 
 
@@ -497,9 +498,10 @@ def artifact_json_path_for_output_dir(
     model: str | None = None,
     output_layout: str = OUTPUT_LAYOUT_CANONICAL,
 ) -> Path:
-    if _normalize_output_layout(output_layout) == OUTPUT_LAYOUT_CANONICAL:
-        return output_dir / CANONICAL_PRINTOUT_JSON_NAME
     _, source_id = _source_path_parts(source)
+    if _normalize_output_layout(output_layout) == OUTPUT_LAYOUT_CANONICAL:
+        del provider, model
+        return output_root / CANONICAL_PRINTOUT_JSON_DIRNAME / _filename_slug(source_id) / CANONICAL_PRINTOUT_JSON_NAME
     return artifact_json_path_for_source_id(
         output_root,
         source_id=source_id,
@@ -532,6 +534,9 @@ def _find_existing_artifact_json(
     )
     if preferred.exists():
         return preferred
+    old_nested_canonical = canonical_baseline_output_dir_for_source(output_root, source) / CANONICAL_PRINTOUT_JSON_NAME
+    if old_nested_canonical.exists():
+        return old_nested_canonical
     legacy_preferred = artifact_json_path_for_source_id(output_root, source_id=source_id)
     if legacy_preferred.exists():
         return legacy_preferred
@@ -600,8 +605,18 @@ def _promote_legacy_printouts_if_present(
     legacy_printout_dir: Path,
     legacy_scaffolding_dir: Path,
 ) -> None:
-    canonical_json_path = canonical_out_dir / CANONICAL_PRINTOUT_JSON_NAME
-    if canonical_json_path.exists() or any(canonical_out_dir.glob("*.pdf")):
+    source_id = legacy_printout_dir.name
+    if canonical_out_dir.name != source_id:
+        return
+    lecture_key = legacy_printout_dir.parent.parent.name if legacy_printout_dir.parent.name == CANONICAL_PRINTOUT_DIRNAME else "UNKNOWN"
+    canonical_json_path = (
+        canonical_out_dir
+        / CANONICAL_PRINTOUT_JSON_DIRNAME
+        / _filename_slug(source_id)
+        / CANONICAL_PRINTOUT_JSON_NAME
+    )
+    source_pdf_prefix = f"{_filename_slug(lecture_key)}--{_filename_slug(source_id)}--"
+    if canonical_json_path.exists() or any(canonical_out_dir.glob(f"{source_pdf_prefix}*.pdf")):
         return
     for legacy_dir in (legacy_printout_dir, legacy_scaffolding_dir):
         if legacy_dir.exists() and any(legacy_dir.glob("*.pdf")):
@@ -3711,6 +3726,17 @@ def _review_pdf_filename(artifact: dict[str, Any], stem: str) -> str:
     return f"{_review_pdf_prefix(artifact)}--{stem}.pdf"
 
 
+def _canonical_pdf_prefix(artifact: dict[str, Any]) -> str:
+    source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+    lecture_key = str(source.get("lecture_key") or "UNKNOWN").strip().upper() or "UNKNOWN"
+    source_id = _artifact_source_id(artifact, fallback_output_dir=Path("source"))
+    return f"{_filename_slug(lecture_key)}--{_filename_slug(source_id)}"
+
+
+def canonical_pdf_filename(artifact: dict[str, Any], stem: str) -> str:
+    return f"{_canonical_pdf_prefix(artifact)}--{stem}.pdf"
+
+
 def _artifact_output_layout(artifact: dict[str, Any]) -> str:
     variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
     if str(variant.get("mode") or "").strip() == "evaluation_sandbox":
@@ -3721,7 +3747,7 @@ def _artifact_output_layout(artifact: dict[str, Any]) -> str:
 def _output_pdf_filename(artifact: dict[str, Any], stem: str) -> str:
     if _artifact_output_layout(artifact) == OUTPUT_LAYOUT_REVIEW:
         return _review_pdf_filename(artifact, stem)
-    return f"{stem}.pdf"
+    return canonical_pdf_filename(artifact, stem)
 
 
 def _output_pdf_path(output_dir: Path, artifact: dict[str, Any], stem: str) -> Path:
@@ -3772,6 +3798,8 @@ def _artifact_source_id(artifact: dict[str, Any], *, fallback_output_dir: Path) 
 
 def _internal_markdown_dir_for_artifact(output_dir: Path, artifact: dict[str, Any]) -> Path:
     source_id = _artifact_source_id(artifact, fallback_output_dir=output_dir)
+    if _artifact_output_layout(artifact) == OUTPUT_LAYOUT_CANONICAL:
+        return output_dir / CANONICAL_PRINTOUT_JSON_DIRNAME / _filename_slug(source_id) / "rendered_markdown"
     generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
     provider = str(generator.get("provider") or "").strip()
     model = str(generator.get("model") or "").strip()
@@ -3787,6 +3815,8 @@ def _internal_markdown_dir_for_artifact(output_dir: Path, artifact: dict[str, An
 
 def _internal_pdf_staging_parent_for_artifact(output_dir: Path, artifact: dict[str, Any]) -> Path:
     source_id = _artifact_source_id(artifact, fallback_output_dir=output_dir)
+    if _artifact_output_layout(artifact) == OUTPUT_LAYOUT_CANONICAL:
+        return output_dir / CANONICAL_PRINTOUT_JSON_DIRNAME / _filename_slug(source_id) / PDF_STAGING_DIRNAME
     generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
     provider = str(generator.get("provider") or "").strip()
     model = str(generator.get("model") or "").strip()

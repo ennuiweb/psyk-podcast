@@ -343,9 +343,11 @@ Printable reading printouts:
 - It generates the schema-v3, problem-driven printout bundle: `00-cover`,
   `01-reading-guide`, `02-active-reading`, `03-abridged-version`,
   `04-consolidation-sheet`, and optional `05-exam-bridge`.
-- Main outputs live under
-  `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
-  with stable sheet filenames such as `00-cover.pdf`.
+- Main PDFs live directly under
+  `notebooklm-podcast-auto/personlighedspsykologi/output/` with source-scoped
+  filenames such as `W07L2--w07l2-evans-1975-8e8a9d79--00-cover.pdf`.
+  Main JSON artifacts live separately under
+  `notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/<source_id>/reading-printouts.json`.
 - Candidate/review PDFs still land flat in
   `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/`
   and are distinguished only by filename.

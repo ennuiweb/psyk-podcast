@@ -4305,7 +4305,7 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
         if index == last_index and diagram_count == 1:
             _append_fill_to_page_response_area(lines, minimum_cm=space_cm)
         else:
-            inline_space_cm = min(space_cm, 3.0 if diagram_count >= 2 else _spacing_cm("diagram_inline_space_ceiling"))
+            inline_space_cm = 6.0 if diagram_count >= 2 else min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
             lines.append(_vspace_cm(inline_space_cm))
         lines.append("")
     _append_completion_footer(lines, artifact, ["blanks udfyldt", "diagrammer lavet", "svar tjekket"])

@@ -1254,7 +1254,7 @@ def test_consolidation_uses_fill_for_last_diagram_page():
     assert two_diagram_markdown.index(r"\endgroup") < two_diagram_markdown.index(r"\newpage") < two_diagram_markdown.index("**Tegn**")
     assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
     assert "\n- a" in two_diagram_markdown
-    assert printout_engine._vspace_cm(3.0) in two_diagram_markdown
+    assert printout_engine._vspace_cm(6.0) in two_diagram_markdown
 
 
 def test_printout_length_budget_varies_with_source_length_and_complexity():

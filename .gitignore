@@ -41,6 +41,9 @@ apps-script/.clasp.json
 **/outputs/**/*.jpeg
 **/output/**/*.webp
 **/outputs/**/*.webp
+
+# Generated printout PDFs are reproducible from their JSON artifacts.
+notebooklm-podcast-auto/personlighedspsykologi/output/*.pdf
 sources
 
 githooks/*.log

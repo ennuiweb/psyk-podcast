@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -571,7 +572,7 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
     assert "`afsnit 1`" in abridged_markdown
     assert "*bevidsthed om noget* | `afsnit 1`" not in abridged_markdown
     assert "**Kort sagt:**" in abridged_markdown
-    assert "> “Bevidsthed er altid rettet mod noget, og den kan ikke forstås som en lukket beholder.”" in abridged_markdown
+    assert "> *“Bevidsthed er altid rettet mod noget, og den kan ikke forstås som en lukket beholder.”*" in abridged_markdown
     assert "> `afsnit 1`" in abridged_markdown
     assert "**1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
     assert "[ ]" not in active_markdown
@@ -725,7 +726,7 @@ def test_completion_markers_can_be_disabled(tmp_path):
 def test_source_passage_renderer_marks_fragments_without_context():
     block = printout_engine._render_source_passage_block("inherently valuable unity", "Side 6")
 
-    assert block == "> “(...) inherently valuable unity (...)”\n>\n> `s. 6`"
+    assert block == "> *“(...) inherently valuable unity (...)”*\n>\n> `s. 6`"
 
 
 def test_exam_bridge_is_optional_at_render_time_and_removed_when_disabled(tmp_path):
@@ -1174,6 +1175,39 @@ def test_pdf_wrapper_adds_margin_metadata():
     )
 
 
+def test_pdf_wrapper_uses_standard_line_spread_for_consolidation_sheet():
+    markdown = (
+        "# Consolidation Sheet\n\n"
+        "**Kilde:** Grundbog kapitel 01 - Introduktion til personlighedspsykologi\n\n"
+        "**Forelæsning:** W01L1\n\n"
+        "Kort tekst."
+    )
+
+    wrapped = printout_engine._pdf_wrapped_markdown(markdown, total_pages=2)
+
+    assert rf"\AtBeginDocument{{\linespread{{{printout_engine.PDF_BODY_LINE_SPREAD}}}\selectfont}}" in wrapped
+    assert printout_engine.PDF_CONSOLIDATION_FILL_BODY_LINE_SPREAD not in wrapped
+
+
+def test_consolidation_applies_double_line_spread_only_to_fill_section():
+    artifact = {
+        "source": {"title": "Phenomenology source", "lecture_key": "W01L1"},
+        "variant": {"render_completion_markers": True},
+    }
+    payload = _valid_scaffold_response()
+
+    markdown = printout_engine.render_consolidation_markdown(
+        artifact,
+        payload["consolidation_sheet"],
+    )
+
+    fill_spread = rf"\begingroup\linespread{{{printout_engine.PDF_CONSOLIDATION_FILL_BODY_LINE_SPREAD}}}\selectfont"
+    assert fill_spread in markdown
+    assert r"\endgroup" in markdown
+    assert markdown.index(fill_spread) < markdown.index(r"\endgroup") < markdown.index("**Tegn**")
+    assert printout_engine.PDF_CONSOLIDATION_FILL_BODY_LINE_SPREAD not in markdown.split("**Tegn**", 1)[1]
+
+
 def test_consolidation_uses_fill_for_last_diagram_page():
     artifact = {
         "source": {"title": "Phenomenology source", "lecture_key": "W01L1"},
@@ -1318,7 +1352,7 @@ def test_active_reading_moves_large_final_synthesis_to_new_page():
     markdown = printout_engine.render_active_reading_markdown(artifact, payload["active_reading"])
     assert "\\newpage" not in markdown
     assert "\\vspace*{\\fill}" not in markdown
-    assert r"\printoutneedspace{14\baselineskip}" in markdown
+    assert r"\printoutneedspace{13\baselineskip}" in markdown
     assert markdown.count("\\noindent\\rule{\\linewidth}{0.4pt}") >= 12
 
 
@@ -1603,9 +1637,117 @@ def test_render_active_reading_markdown_keeps_steps_together_without_forced_fina
 
     markdown = printout_engine.render_active_reading_markdown(artifact, payload["active_reading"])
 
-    assert r"\printoutneedspace{8\baselineskip}" in markdown
+    assert r"\printoutneedspace{11\baselineskip}" in markdown
     assert r"\newpage" not in markdown
     assert "\\vspace*{\\fill}" not in markdown
+
+
+def test_render_active_reading_term_step_reserves_space_for_prompt_and_lines():
+    artifact = {
+        "source": {"title": "Freud source", "lecture_key": "W05L2"},
+        "variant": {"render_completion_markers": True},
+    }
+    payload = {
+        "solve_steps": [
+            {
+                "number": "4",
+                "subproblem_ref": "Delproblem 4",
+                "prompt": "Skriv det korte svar på spørgsmålet: Hvilken konsekvens fik forførelsesteoriens fald for forståelsen af subjektet?",
+                "task_type": "term",
+                "abridged_reader_location": "Abridged reader sektion 4",
+                "answer_shape": "1-3 ord",
+                "blank_lines": 1,
+                "done_signal": "Stop når du har skrevet det korte svar.",
+            }
+        ]
+    }
+
+    markdown = printout_engine.render_active_reading_markdown(artifact, payload)
+
+    assert r"\printoutneedspace{6\baselineskip}" in markdown
+
+
+def test_render_consolidation_markdown_stacks_long_fill_in_blank_away_from_right_margin():
+    artifact = {
+        "source": {"title": "Freud source", "lecture_key": "W05L2"},
+        "variant": {"render_completion_markers": True},
+    }
+    consolidation = {
+        "overview": [],
+        "fill_in_sentences": [
+            {
+                "number": "1",
+                "sentence": (
+                    "Freuds motivationspsykologi bygger på en __________ synsvinkel, "
+                    "hvor indre energikvantiteter udøver et konstant tryk."
+                ),
+            }
+        ],
+        "diagram_tasks": [],
+    }
+
+    markdown = printout_engine.render_consolidation_markdown(artifact, consolidation)
+
+    assert "**1.** Freuds motivationspsykologi bygger på en" in markdown
+    assert re.search(
+        r"\n\n\\noindent\\underline\{\\hspace\{0\.\d+\\linewidth\}\}\n\nsynsvinkel, hvor indre energikvantiteter udøver et konstant tryk\.",
+        markdown,
+    )
+    assert "på en ________________________________ synsvinkel" not in markdown
+
+
+def test_render_consolidation_markdown_keeps_punctuation_attached_to_stacked_blank():
+    artifact = {
+        "source": {"title": "Mitchell source", "lecture_key": "W10L1"},
+        "variant": {"render_completion_markers": True},
+    }
+    consolidation = {
+        "overview": [],
+        "fill_in_sentences": [
+            {
+                "number": "2",
+                "sentence": (
+                    "Ifølge Mitchell holdes den ubevidste kønsforskel på plads af den universelle "
+                    "__________, som udspringer af forbuddet mod incest og drab."
+                ),
+            }
+        ],
+        "diagram_tasks": [],
+    }
+
+    markdown = printout_engine.render_consolidation_markdown(artifact, consolidation)
+
+    assert re.search(
+        r"den universelle _{30,}, som udspringer af forbuddet mod incest og drab\.",
+        markdown,
+    )
+    assert r"\noindent\underline" not in markdown
+    assert "\n\n,\n\n" not in markdown
+
+
+def test_render_consolidation_markdown_keeps_terminal_punctuation_inline_when_blank_ends_sentence():
+    artifact = {
+        "source": {"title": "Mitchell source", "lecture_key": "W10L1"},
+        "variant": {"render_completion_markers": True},
+    }
+    consolidation = {
+        "overview": [],
+        "fill_in_sentences": [
+            {
+                "number": "1",
+                "sentence": (
+                    "Mitchell skelner mellem det socialt foranderlige ‘gender’ og den mere ufravigelige, "
+                    "strukturelle __________."
+                ),
+            }
+        ],
+        "diagram_tasks": [],
+    }
+
+    markdown = printout_engine.render_consolidation_markdown(artifact, consolidation)
+
+    assert re.search(r"strukturelle _{30,}\.", markdown)
+    assert r"\noindent\underline" not in markdown
 
 
 def test_build_printout_commits_json_only_after_render_success(tmp_path, monkeypatch):

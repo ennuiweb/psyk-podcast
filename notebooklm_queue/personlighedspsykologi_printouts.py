@@ -174,6 +174,7 @@ DIAGRAM_SPACE_PROFILES_CM = {
 RESPONSE_LINE_MULTIPLIER_NUMERATOR = 3
 RESPONSE_LINE_MULTIPLIER_DENOMINATOR = 2
 PDF_BODY_LINE_SPREAD = "1.07"
+PDF_CONSOLIDATION_FILL_BODY_LINE_SPREAD = "2.14"
 
 JsonGenerator = Callable[..., dict[str, Any]]
 UserPromptBuilder = Callable[..., str]
@@ -1967,12 +1968,21 @@ def _paragraph_blank_lines(answer_shape: str, *, is_synthesis: bool = False) -> 
     return 3
 
 
+def _scaled_response_line_count(blank_lines: int) -> int:
+    return max(
+        1,
+        (blank_lines * RESPONSE_LINE_MULTIPLIER_NUMERATOR + RESPONSE_LINE_MULTIPLIER_DENOMINATOR - 1)
+        // RESPONSE_LINE_MULTIPLIER_DENOMINATOR,
+    )
+
+
 def _active_step_needspace_baselines(task_type: str, blank_lines: int) -> int:
+    rendered_blank_lines = _scaled_response_line_count(blank_lines)
     if task_type == "term":
-        return 4
+        return rendered_blank_lines + 4
     if task_type == "decision":
-        return max(6, blank_lines * 2 + 1)
-    return max(8, blank_lines * 2 + 4)
+        return rendered_blank_lines + 4
+    return rendered_blank_lines + 5
 
 
 def _rebalance_active_solve_steps(guide: dict[str, Any], reader: dict[str, Any]) -> list[dict[str, Any]]:
@@ -2663,11 +2673,7 @@ def _append_response_space(
     del indent
     if blank_lines <= 0:
         return
-    blank_lines = max(
-        1,
-        (blank_lines * RESPONSE_LINE_MULTIPLIER_NUMERATOR + RESPONSE_LINE_MULTIPLIER_DENOMINATOR - 1)
-        // RESPONSE_LINE_MULTIPLIER_DENOMINATOR,
-    )
+    blank_lines = _scaled_response_line_count(blank_lines)
     compact_answer = _answer_shape_is_short(answer_shape) or _answer_shape_prefers_compact_paragraph(answer_shape)
     if final_block:
         line_gap_key = "response_line_gap_extended"
@@ -2693,11 +2699,7 @@ def _append_fill_page_ruled_space(lines: list[str], *, line_count: int = 6) -> N
     if line_count <= 0:
         return
     lines.append("")
-    line_count = max(
-        1,
-        (line_count * RESPONSE_LINE_MULTIPLIER_NUMERATOR + RESPONSE_LINE_MULTIPLIER_DENOMINATOR - 1)
-        // RESPONSE_LINE_MULTIPLIER_DENOMINATOR,
-    )
+    line_count = _scaled_response_line_count(line_count)
     for index in range(line_count):
         lines.append(r"\noindent\rule{\linewidth}{0.4pt}")
         if index < line_count - 1:
@@ -2706,6 +2708,40 @@ def _append_fill_page_ruled_space(lines: list[str], *, line_count: int = 6) -> N
 
 def _lengthen_consolidation_blanks(text: str) -> str:
     return re.sub(r"_{5,}", lambda match: "_" * max(len(match.group(0)) * 3, 30), text)
+
+
+def _consolidation_blank_rule(blank: str, *, trailing_text: str = "") -> str:
+    width_ratio = min(0.78, max(0.34, len(blank) / 60))
+    return rf"\noindent\underline{{\hspace{{{width_ratio:.2f}\linewidth}}}}{trailing_text}"
+
+
+def _render_consolidation_fill_in_sentence(number: str, sentence: str) -> list[str]:
+    match = re.search(r"_{5,}", sentence)
+    if not match:
+        return [f"{_md_bold(number + '.')} {sentence}", ""]
+
+    prefix = sentence[: match.start()].rstrip()
+    blank = _lengthen_consolidation_blanks(match.group(0))
+    suffix = sentence[match.end() :].lstrip()
+    trailing_punctuation = ""
+    if suffix[:1] in ",.;:!?":
+        trailing_punctuation = suffix[:1]
+        suffix = suffix[1:].lstrip()
+    should_stack_blank = bool(
+        prefix
+        and suffix
+        and not trailing_punctuation
+        and (len(sentence) >= 82 or len(prefix) >= 34 or len(suffix) >= 24)
+    )
+    if not should_stack_blank:
+        expanded_sentence = sentence[: match.start()] + blank + sentence[match.end() :]
+        return [f"{_md_bold(number + '.')} {expanded_sentence}", ""]
+
+    lines = [f"{_md_bold(number + '.')} {prefix}", "", _consolidation_blank_rule(blank)]
+    if suffix:
+        lines.extend(["", suffix])
+    lines.append("")
+    return lines
 
 
 def _fixed_v3_title(section_key: str) -> str:
@@ -2764,7 +2800,7 @@ def _render_source_passage_block(text: Any, location: Any) -> str:
         return _md_mono(normalized_location)
     if not quote_text:
         return ""
-    lines = [f"> {quote_text}"]
+    lines = [f"> {_md_italic(quote_text)}"]
     if normalized_location:
         lines.extend([">", f"> {_md_mono(normalized_location)}"])
     return "\n".join(lines)
@@ -4180,11 +4216,11 @@ def render_active_reading_markdown(artifact: dict[str, Any], active: dict[str, A
         task_type = str(item.get("task_type") or "").strip()
         answer_shape = str(item.get("answer_shape") or "").strip()
         blank_lines = int(item.get("blank_lines") or 1)
+        if task_type == "decision":
+            blank_lines = max(blank_lines, 3)
         lines.extend(["", fr"\printoutneedspace{{{_active_step_needspace_baselines(task_type, blank_lines)}\baselineskip}}", ""])
         label = f"{prefix}**{number}.**" if prefix else f"**{number}.**"
         lines.append(f"{label} {_style_task_prompt(prompt)}")
-        if task_type == "decision":
-            blank_lines = max(blank_lines, 3)
         if index == last_index and task_type == "short_paragraph":
             final_lines = max(blank_lines, 4)
             _append_fill_page_ruled_space(lines, line_count=final_lines)
@@ -4218,14 +4254,24 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
     for sentence in overview:
         lines.append(f"- {sentence}")
     fill_in_items = _as_dicts(consolidation.get("fill_in_sentences"))
+    fill_group_open = False
     if fill_in_items:
-        lines.extend(["", _md_bold("Udfyld"), ""])
+        lines.extend(
+            [
+                "",
+                _md_bold("Udfyld"),
+                "",
+                rf"\begingroup\linespread{{{PDF_CONSOLIDATION_FILL_BODY_LINE_SPREAD}}}\selectfont",
+                "",
+            ]
+        )
+        fill_group_open = True
     for index, item in enumerate(fill_in_items, start=1):
         number = _number_label(item, index)
         sentence = str(item.get("sentence") or "").strip()
-        sentence = _lengthen_consolidation_blanks(sentence)
-        lines.append(f"{_md_bold(number + '.')} {sentence}")
-        lines.append("")
+        lines.extend(_render_consolidation_fill_in_sentence(number, sentence))
+    if fill_group_open:
+        lines.extend([r"\endgroup", ""])
     diagram_items = _as_dicts(consolidation.get("diagram_tasks"))
     if diagram_items:
         _append_spacing_gap(lines, "guide_paragraph_gap")

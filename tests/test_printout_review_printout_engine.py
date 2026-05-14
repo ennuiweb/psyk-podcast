@@ -1248,9 +1248,11 @@ def test_consolidation_uses_fill_for_last_diagram_page():
     assert "\\hrule" not in two_diagram_markdown
     assert "---" not in two_diagram_markdown
     assert two_diagram_markdown.count("**Tegn**") == 2
+    assert two_diagram_markdown.count("\\newpage") == 2
+    assert two_diagram_markdown.count("\\vspace*{\\fill}") == 2
+    assert two_diagram_markdown.index(r"\endgroup") < two_diagram_markdown.index(r"\newpage") < two_diagram_markdown.index("**Tegn**")
     assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
     assert "\n- a" in two_diagram_markdown
-    assert printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_inline_space_ceiling")) in two_diagram_markdown
     assert (
         printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_dedicated_page_floor"))
         in two_diagram_markdown
@@ -1718,10 +1720,9 @@ def test_render_consolidation_markdown_keeps_punctuation_attached_to_stacked_bla
     markdown = printout_engine.render_consolidation_markdown(artifact, consolidation)
 
     assert re.search(
-        r"den universelle _{30,}, som udspringer af forbuddet mod incest og drab\.",
+        r"\\noindent\\underline\{\\hspace\{0\.32\\linewidth\}\}, som udspringer af forbuddet mod incest og drab\.",
         markdown,
     )
-    assert r"\noindent\underline" not in markdown
     assert "\n\n,\n\n" not in markdown
 
 

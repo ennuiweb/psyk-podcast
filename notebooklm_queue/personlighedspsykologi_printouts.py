@@ -2710,8 +2710,9 @@ def _lengthen_consolidation_blanks(text: str) -> str:
     return re.sub(r"_{5,}", lambda match: "_" * max(len(match.group(0)) * 3, 30), text)
 
 
-def _consolidation_blank_rule(blank: str, *, trailing_text: str = "") -> str:
-    width_ratio = min(0.78, max(0.34, len(blank) / 60))
+def _consolidation_blank_rule(blank: str, *, trailing_text: str = "", width_ratio: float | None = None) -> str:
+    if width_ratio is None:
+        width_ratio = min(0.78, max(0.34, len(blank) / 60))
     return rf"\noindent\underline{{\hspace{{{width_ratio:.2f}\linewidth}}}}{trailing_text}"
 
 
@@ -2730,12 +2731,20 @@ def _render_consolidation_fill_in_sentence(number: str, sentence: str) -> list[s
     should_stack_blank = bool(
         prefix
         and suffix
-        and not trailing_punctuation
         and (len(sentence) >= 82 or len(prefix) >= 34 or len(suffix) >= 24)
     )
     if not should_stack_blank:
         expanded_sentence = sentence[: match.start()] + blank + sentence[match.end() :]
         return [f"{_md_bold(number + '.')} {expanded_sentence}", ""]
+
+    if trailing_punctuation:
+        trailing_text = f"{trailing_punctuation} {suffix}".rstrip()
+        return [
+            f"{_md_bold(number + '.')} {prefix}",
+            "",
+            _consolidation_blank_rule(blank, trailing_text=trailing_text, width_ratio=0.32),
+            "",
+        ]
 
     lines = [f"{_md_bold(number + '.')} {prefix}", "", _consolidation_blank_rule(blank)]
     if suffix:
@@ -4273,15 +4282,17 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
     if fill_group_open:
         lines.extend([r"\endgroup", ""])
     diagram_items = _as_dicts(consolidation.get("diagram_tasks"))
+    diagram_count = len(diagram_items)
     if diagram_items:
         _append_spacing_gap(lines, "guide_paragraph_gap")
+        if fill_in_items and diagram_count >= 2:
+            lines.extend(["", r"\newpage", ""])
         lines.extend([_md_bold("Tegn"), ""])
-    diagram_count = len(diagram_items)
     last_index = len(diagram_items)
     for index, item in enumerate(diagram_items, start=1):
         number = _number_label(item, index)
-        dedicated_last_page = diagram_count >= 2 and index == last_index
-        if dedicated_last_page:
+        dedicated_page = diagram_count >= 2
+        if dedicated_page and index > 1:
             lines.extend(["", r"\newpage", "", _md_bold("Tegn"), ""])
         lines.append(f"{_md_bold('Diagram ' + number + '.')} {str(item.get('task') or '').strip()}")
         elements = _as_strings(item.get("required_elements"))
@@ -4294,7 +4305,7 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
         lines.append("")
         if index == last_index and diagram_count == 1:
             _append_fill_to_page_response_area(lines, minimum_cm=space_cm)
-        elif dedicated_last_page:
+        elif dedicated_page:
             _append_fill_to_page_response_area(
                 lines,
                 minimum_cm=max(space_cm, _spacing_cm("diagram_dedicated_page_floor")),

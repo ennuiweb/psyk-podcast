@@ -1244,19 +1244,17 @@ def test_consolidation_uses_fill_for_last_diagram_page():
         payload["consolidation_sheet"],
     )
     assert "\\newpage" in two_diagram_markdown
-    assert "\\vspace*{\\fill}" in two_diagram_markdown
+    assert "\\vspace*{\\fill}" not in two_diagram_markdown
     assert "\\hrule" not in two_diagram_markdown
     assert "---" not in two_diagram_markdown
-    assert two_diagram_markdown.count("**Tegn**") == 2
-    assert two_diagram_markdown.count("\\newpage") == 2
-    assert two_diagram_markdown.count("\\vspace*{\\fill}") == 2
+    assert two_diagram_markdown.count("**Tegn**") == 1
+    assert two_diagram_markdown.count("\\newpage") == 1
+    assert two_diagram_markdown.count("\\vspace*{\\fill}") == 0
+    assert two_diagram_markdown.count(r"\printoutneedspace{10\baselineskip}") == 2
     assert two_diagram_markdown.index(r"\endgroup") < two_diagram_markdown.index(r"\newpage") < two_diagram_markdown.index("**Tegn**")
     assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
     assert "\n- a" in two_diagram_markdown
-    assert (
-        printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_dedicated_page_floor"))
-        in two_diagram_markdown
-    )
+    assert printout_engine._vspace_cm(3.0) in two_diagram_markdown
 
 
 def test_printout_length_budget_varies_with_source_length_and_complexity():

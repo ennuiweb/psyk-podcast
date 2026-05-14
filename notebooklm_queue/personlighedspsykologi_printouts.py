@@ -4291,9 +4291,8 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
     last_index = len(diagram_items)
     for index, item in enumerate(diagram_items, start=1):
         number = _number_label(item, index)
-        dedicated_page = diagram_count >= 2
-        if dedicated_page and index > 1:
-            lines.extend(["", r"\newpage", "", _md_bold("Tegn"), ""])
+        if diagram_count >= 2:
+            lines.extend(["", r"\printoutneedspace{10\baselineskip}", ""])
         lines.append(f"{_md_bold('Diagram ' + number + '.')} {str(item.get('task') or '').strip()}")
         elements = _as_strings(item.get("required_elements"))
         if elements:
@@ -4305,13 +4304,8 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
         lines.append("")
         if index == last_index and diagram_count == 1:
             _append_fill_to_page_response_area(lines, minimum_cm=space_cm)
-        elif dedicated_page:
-            _append_fill_to_page_response_area(
-                lines,
-                minimum_cm=max(space_cm, _spacing_cm("diagram_dedicated_page_floor")),
-            )
         else:
-            inline_space_cm = min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
+            inline_space_cm = min(space_cm, 3.0 if diagram_count >= 2 else _spacing_cm("diagram_inline_space_ceiling"))
             lines.append(_vspace_cm(inline_space_cm))
         lines.append("")
     _append_completion_footer(lines, artifact, ["blanks udfyldt", "diagrammer lavet", "svar tjekket"])

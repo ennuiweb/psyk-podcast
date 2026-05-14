@@ -18,6 +18,7 @@ This layer currently includes four output families:
 - printouts / reading scaffolds
 - quizzes
 - slides
+- study plans / exam planning sheets
 
 This layer does not include:
 
@@ -86,32 +87,65 @@ an automatically generated Course Understanding artifact.
 
 ### Printouts
 
-Canonical printout artifact root:
+Canonical current printout system:
+
+- main engine: `notebooklm_queue/personlighedspsykologi_printouts.py`
+- review workspace: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
+
+The main engine is the canonical PDF-producing implementation for current
+printout generation. The review workspace imports that engine and is used for
+candidate generation, prompt iteration, and PDF inspection.
+
+Main-code artifact root:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/reading-printouts.json`
 
-Derived render targets:
+Current canonical render targets:
 
-- `01-*.md`
-- `01-*.pdf`
-- `02-*.md`
-- `02-*.pdf`
-- `03-*.md`
-- `03-*.pdf`
+- `00-cover.pdf`
+- `01-reading-guide.pdf`
+- `02-active-reading.pdf`
+- `03-abridged-version.pdf`
+- `04-consolidation-sheet.pdf`
+- `05-exam-bridge.pdf` only when explicitly enabled
+
+Internal JSON and Markdown remain hidden under the review run's `.scaffolding`
+tree. User-facing candidate folders should contain PDFs only.
 
 Canonical printout contract:
 
 - `shows/personlighedspsykologi-en/docs/printout-system.md`
-- alternative test mode: `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
-- evaluation workspace: `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
+- canonical problem-driven mode: `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
+- canonical current implementation: `notebooklm_queue/personlighedspsykologi_printouts.py`
 
 Important current-state note:
 
-- the scaffold contract now targets schema v3
+- the printout contract now targets schema v3
+- main-code generation and review generation now share the same schema-v3
+  problem-driven prompt overlay through `personlighedspsykologi_printouts.py`
 - legacy schema v1/v2 scaffold artifacts may still exist in local output trees
 - quality review should either evaluate an artifact against its declared schema
   version or regenerate a fresh v3 artifact before comparing it to the current
   contract
+- integration health is checked with
+  `uv run python scripts/validate_personlighedspsykologi_printout_integration.py --registry-check --review-parity --review-pdf-parity --pdf-text --min-canonical-bundles 20`
+
+### Study Plans
+
+Canonical oral-exam study plan for the 2026-06-03
+`personlighedspsykologi` exam:
+
+- `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026.md`
+
+Final printable one-page A4 checklist:
+
+- `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.pdf`
+- source: `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.tex`
+
+This sheet is a physical review checklist, not a generated printout bundle. It
+has no hardcoded day dates; the learner writes dates by hand per lecture
+section. Its checkbox hierarchy is: small boxes for the four printouts per
+reading, medium boxes for whole readings, and large boxes for whole lectures.
 
 ### Regeneration Ledger
 
@@ -255,8 +289,8 @@ Slide-specific criteria:
 Some learners benefit much more from outputs that feel like a sequence of
 solvable problems than from outputs that mainly ask for passive intake.
 
-For that reason, `personlighedspsykologi` now also documents an explicit
-problem-first alternative for printouts:
+For that reason, `personlighedspsykologi` now uses a canonical problem-first
+printout mode:
 
 - `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
 
@@ -295,21 +329,21 @@ Canonical artifacts for one run:
 
 ### Printouts
 
-Current sidecar evaluation workspace:
+Canonical current printout workspace:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
 
 Current review baseline:
 
 1. review `reading-printouts.json` first
-2. verify it matches the intended scaffold schema for that artifact version
+2. verify it matches the intended printout schema for that artifact version
 3. inspect Markdown/PDF renders only as derived usability checks
 4. judge the printout against `printout-system.md`
 
 Current gap:
 
 - podcasts already have run manifests, judge prompts, and summary outputs
-- printouts now have a sidecar run workspace for problem-driven candidates
+- printouts now have a canonical current run workspace for problem-driven PDFs
 - printouts still do not yet have a full baseline-vs-candidate judge harness
 
 ## Practical Rule

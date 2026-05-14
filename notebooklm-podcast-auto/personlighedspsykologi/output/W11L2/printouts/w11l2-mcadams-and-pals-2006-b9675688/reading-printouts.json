@@ -253,7 +253,26 @@
         "Specifikke neurobiologiske spekulationer omkring BAS og BIS-systemer i hjernen.",
         "Kliniske behandlingsråd mod slutningen; fokuser udelukkende på the framework."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af teksten, abstrakt og Principle 1",
+          "excerpt": "an individual’s unique variation on the general evolutionary design",
+          "open_question": "Hvad udgør det universelle fundament for vores psykologiske ligheder som art?"
+        },
+        {
+          "number": "2",
+          "source_location": "Table 1",
+          "excerpt": "Traits sketch a behavioral outline",
+          "open_question": "Hvorfor er et dispositionelt træk og en karakteristisk tilpasning ikke det samme?"
+        },
+        {
+          "number": "3",
+          "source_location": "Slutningen af diskussionen om kultur",
+          "excerpt": "Self and culture come to terms with each other through narrative",
+          "open_question": "Hvilken unik funktion udfører den integrerede livsfortælling for det moderne menneske?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -702,7 +721,26 @@
         "Specifikke neurobiologiske spekulationer omkring BAS og BIS-systemer i hjernen.",
         "Kliniske behandlingsråd mod slutningen; fokuser udelukkende på the framework."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af teksten, abstrakt og Principle 1",
+          "excerpt": "an individual’s unique variation on the general evolutionary design",
+          "open_question": "Hvad udgør det universelle fundament for vores psykologiske ligheder som art?"
+        },
+        {
+          "number": "2",
+          "source_location": "Table 1",
+          "excerpt": "Traits sketch a behavioral outline",
+          "open_question": "Hvorfor er et dispositionelt træk og en karakteristisk tilpasning ikke det samme?"
+        },
+        {
+          "number": "3",
+          "source_location": "Slutningen af diskussionen om kultur",
+          "excerpt": "Self and culture come to terms with each other through narrative",
+          "open_question": "Hvilken unik funktion udfører den integrerede livsfortælling for det moderne menneske?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1057,6 +1095,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-mcadams-and-pals-2006-b9675688/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:04:15Z"
   }
 }

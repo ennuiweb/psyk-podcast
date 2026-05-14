@@ -449,9 +449,9 @@
           "number": 1,
           "task": "Tegn en grafisk model, der illustrerer Sterns princip for Introception i praksis mellem diktator og masse.",
           "required_elements": [
-            "En figur eller boks for individets indre ('Autotelisk'",
-            "En figur eller boks for omverdenens ydre krav/mål ('Heterotelisk'",
-            "En pil, der viser retningen af den introceptive optagelse (hvordan ydre bliver til indre"
+            "En figur eller boks for individets indre: 'Autotelisk'",
+            "En figur eller boks for omverdenens ydre krav/mål: 'Heterotelisk'",
+            "En pil, der viser retningen af den introceptive optagelse: hvordan ydre bliver til indre"
           ],
           "blank_space_hint": "Brug en stor cirkel der omslutter en mindre for at vise integration, eller to forbundne felter med tydelige retningspile."
         }
@@ -818,9 +818,9 @@
           "number": 1,
           "task": "Tegn en grafisk model, der illustrerer Sterns princip for Introception i praksis mellem diktator og masse.",
           "required_elements": [
-            "En figur eller boks for individets indre ('Autotelisk'",
-            "En figur eller boks for omverdenens ydre krav/mål ('Heterotelisk'",
-            "En pil, der viser retningen af den introceptive optagelse (hvordan ydre bliver til indre"
+            "En figur eller boks for individets indre: 'Autotelisk'",
+            "En figur eller boks for omverdenens ydre krav/mål: 'Heterotelisk'",
+            "En pil, der viser retningen af den introceptive optagelse: hvordan ydre bliver til indre"
           ],
           "blank_space_hint": "Brug en stor cirkel der omslutter en mindre for at vise integration, eller to forbundne felter med tydelige retningspile."
         }
@@ -897,6 +897,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w08l1-laux-et-al-2010-cfff840c/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:01:42Z"
   }
 }

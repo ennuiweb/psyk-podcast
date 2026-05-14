@@ -349,6 +349,14 @@ Printable reading printouts:
 - Candidate/review PDFs still land flat in
   `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/`
   and are distinguished only by filename.
+- The main generator and review generator share the same problem-driven prompt
+  overlay through `personlighedspsykologi_printouts.py`; the review script is no
+  longer the only owner of the accepted prompt behavior.
+- Before treating the integration as healthy, run:
+  `uv run python scripts/validate_personlighedspsykologi_printout_integration.py --registry-check --review-parity --review-pdf-parity --pdf-text --min-canonical-bundles 20`.
+  This is renderer-only for cached review artifacts and validates schema,
+  registry preference, checkbox removal, Markdown parity, and PDF text/page-count
+  parity against main outputs.
 - The legacy three-sheet implementation is preserved in
   `notebooklm_queue/personlighedspsykologi_printouts_legacy.py` for
   compatibility context only.

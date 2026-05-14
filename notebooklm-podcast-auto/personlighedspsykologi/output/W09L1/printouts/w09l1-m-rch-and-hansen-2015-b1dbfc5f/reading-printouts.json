@@ -280,7 +280,32 @@
         "De præcise juridiske rammer for Datatilsynet.",
         "Baggrundsdetaljerne om Peters specifikke bande, da disse bevidst er udeladt."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 3.2 (Doublebind-hypotesen)",
+          "excerpt": "Der er ingen fremtid for mig i jeres verden",
+          "open_question": "Hvad kendetegner Peters to vigtigste anliggender i hans nye daglige livsførelse?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 5.1",
+          "excerpt": "Sp(l)itting on the street log",
+          "open_question": "Hvorfor skaber politiets exit-program psykotiske doublebind-situationer frem for hjælp?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 4.1",
+          "excerpt": "Den etiske fordring var uudtalt for os begge",
+          "open_question": "Hvordan fungerer den gamle identitet ('Jack') som en konstant indre modspiller til den nye identitet ('Peter')?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion 5.3",
+          "excerpt": "at jeg bidrager med noget",
+          "open_question": "Hvad er den faglige og etiske pointe med at bedrive 'subjekt-subjekt-forskning' frem for at fastholde en objektiv distance?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -570,9 +595,9 @@
           "number": 1,
           "task": "Opstil en simpel kontrast-model af Peters to identitetspositioner ('Jack' vs. 'Peter'). Notér den typiske reaktionsmåde over for konflikt under hver.",
           "required_elements": [
-            "Identitet 1 (voldelig",
+            "Identitet 1: voldelig",
             "dominans",
-            "Identitet 2 (tilbagetrækning",
+            "Identitet 2: tilbagetrækning",
             "sårbarhed"
           ],
           "blank_space_hint": "Tegn to spalter med hver deres overskrift."
@@ -800,7 +825,32 @@
         "De præcise juridiske rammer for Datatilsynet.",
         "Baggrundsdetaljerne om Peters specifikke bande, da disse bevidst er udeladt."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 3.2 (Doublebind-hypotesen)",
+          "excerpt": "Der er ingen fremtid for mig i jeres verden",
+          "open_question": "Hvad kendetegner Peters to vigtigste anliggender i hans nye daglige livsførelse?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 5.1",
+          "excerpt": "Sp(l)itting on the street log",
+          "open_question": "Hvorfor skaber politiets exit-program psykotiske doublebind-situationer frem for hjælp?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 4.1",
+          "excerpt": "Den etiske fordring var uudtalt for os begge",
+          "open_question": "Hvordan fungerer den gamle identitet ('Jack') som en konstant indre modspiller til den nye identitet ('Peter')?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion 5.3",
+          "excerpt": "at jeg bidrager med noget",
+          "open_question": "Hvad er den faglige og etiske pointe med at bedrive 'subjekt-subjekt-forskning' frem for at fastholde en objektiv distance?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1090,9 +1140,9 @@
           "number": 1,
           "task": "Opstil en simpel kontrast-model af Peters to identitetspositioner ('Jack' vs. 'Peter'). Notér den typiske reaktionsmåde over for konflikt under hver.",
           "required_elements": [
-            "Identitet 1 (voldelig",
+            "Identitet 1: voldelig",
             "dominans",
-            "Identitet 2 (tilbagetrækning",
+            "Identitet 2: tilbagetrækning",
             "sårbarhed"
           ],
           "blank_space_hint": "Tegn to spalter med hver deres overskrift."
@@ -1199,6 +1249,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w09l1-m-rch-and-hansen-2015-b1dbfc5f/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:03:24Z"
   }
 }

@@ -253,7 +253,26 @@
         "Den detaljerede kronologiske redegørelse for Rogers' tidlige karriere og bogudgivelser på side 13-15.",
         "De metodiske diskussioner om Q-sort-teknikken på side 18."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 4",
+          "excerpt": "tendency to maintain itself, to enhance itself",
+          "open_question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 19",
+          "excerpt": "incongruence results when the individual's experience is quite discrepant",
+          "open_question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 29",
+          "excerpt": "First, and most important, is therapist congruence",
+          "open_question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -483,7 +502,7 @@
           "number": 2,
           "task": "Opstil kravene til effektiv terapi i det hierarki, teksten angiver.",
           "required_elements": [
-            "Terapeutens egen ægthed (1. prioritet",
+            "Terapeutens egen ægthed: 1. prioritet",
             "Ubetinget accept af klienten",
             "Dyb empatisk forståelse"
           ],
@@ -674,7 +693,26 @@
         "Den detaljerede kronologiske redegørelse for Rogers' tidlige karriere og bogudgivelser på side 13-15.",
         "De metodiske diskussioner om Q-sort-teknikken på side 18."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 4",
+          "excerpt": "tendency to maintain itself, to enhance itself",
+          "open_question": "Hvad driver organismen fremad, hvis den ikke blot søger hvile og spændingsreduktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 19",
+          "excerpt": "incongruence results when the individual's experience is quite discrepant",
+          "open_question": "Hvordan forklarer Rogers irrationel adfærd uden at bruge Freuds deterministiske ubevidste?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 29",
+          "excerpt": "First, and most important, is therapist congruence",
+          "open_question": "Hvordan opstår psykisk smerte ud fra vores eget selvbillede?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -904,7 +942,7 @@
           "number": 2,
           "task": "Opstil kravene til effektiv terapi i det hierarki, teksten angiver.",
           "required_elements": [
-            "Terapeutens egen ægthed (1. prioritet",
+            "Terapeutens egen ægthed: 1. prioritet",
             "Ubetinget accept af klienten",
             "Dyb empatisk forståelse"
           ],
@@ -1001,6 +1039,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w07l2-evans-1975-8e8a9d79/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:00:35Z"
   }
 }

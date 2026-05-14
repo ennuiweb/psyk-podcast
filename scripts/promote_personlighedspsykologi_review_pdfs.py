@@ -80,6 +80,8 @@ def _discover_review_jsons(review_root: Path) -> dict[str, Path]:
     for json_path in [
         *review_root.glob(".scaffolding/artifacts/*/*/reading-scaffolds.json"),
         *review_root.glob(".scaffolding/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/artifacts/*/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/*/reading-scaffolds.json"),
     ]:
         try:
             artifact = _read_json(json_path)
@@ -106,10 +108,11 @@ def _canonicalize_artifact(artifact: dict[str, Any], source: dict[str, Any]) -> 
     existing_variant = normalized.get("variant") if isinstance(normalized.get("variant"), dict) else {}
     normalized["variant"] = {
         **existing_variant,
-        "mode": "canonical_main",
-        "variant_key": str(existing_variant.get("variant_key") or "problem_driven_v1"),
-        "render_completion_markers": False,
-        "render_exam_bridge": False,
+        **printouts.problem_driven_variant_metadata(
+            mode="canonical_main",
+            render_completion_markers=False,
+            render_exam_bridge=False,
+        ),
     }
     return normalized
 

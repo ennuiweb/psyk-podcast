@@ -254,7 +254,26 @@
         "De lange navne-lister over de forskellige tyske universitetsfløje.",
         "A.N. Leont'evs specifikke evolutionsstadier (irritability, sensibility osv.)."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Abstract (s. 149)",
+          "excerpt": "also a subject that acts on reasons",
+          "open_question": "Hvad var problemet med den etablerede psykologis 'politiske neutralitet' i 1960'erne?"
+        },
+        {
+          "number": "2",
+          "source_location": "Slutningen af diskussionen om agency (s. 155)",
+          "excerpt": "not determinants but possibilities",
+          "open_question": "Hvordan ændrer 'samfundsmæssige meningsstrukturer' vores møde med verden i forhold til dyr?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om if-then connections (s. 156)",
+          "excerpt": "mistaking reasons for empirical",
+          "open_question": "Hvad betyder begrebet Handlungsfähigkeit (agency)?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -707,7 +726,26 @@
         "De lange navne-lister over de forskellige tyske universitetsfløje.",
         "A.N. Leont'evs specifikke evolutionsstadier (irritability, sensibility osv.)."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Abstract (s. 149)",
+          "excerpt": "also a subject that acts on reasons",
+          "open_question": "Hvad var problemet med den etablerede psykologis 'politiske neutralitet' i 1960'erne?"
+        },
+        {
+          "number": "2",
+          "source_location": "Slutningen af diskussionen om agency (s. 155)",
+          "excerpt": "not determinants but possibilities",
+          "open_question": "Hvordan ændrer 'samfundsmæssige meningsstrukturer' vores møde med verden i forhold til dyr?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om if-then connections (s. 156)",
+          "excerpt": "mistaking reasons for empirical",
+          "open_question": "Hvad betyder begrebet Handlungsfähigkeit (agency)?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1065,6 +1103,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w08l2-tolman-2009-455915e0/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:02:16Z"
   }
 }

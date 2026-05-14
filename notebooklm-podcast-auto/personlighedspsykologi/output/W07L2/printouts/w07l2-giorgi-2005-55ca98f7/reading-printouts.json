@@ -260,7 +260,26 @@
         "Specifikke referencer til divisionernes internhistorik i APA i 1960'erne.",
         "Rollo Mays præcise og komplekse ontologiske udlægninger af 'being'."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 206",
+          "excerpt": "the encapsulated person",
+          "open_question": "Hvad var humanismens oprindelige protest, og hvad lykkedes den rent faktisk med?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 208",
+          "excerpt": "very good with humans",
+          "open_question": "Hvorfor er den humanistiske psykologi forblevet en marginaliseret bevægelse i den akademiske verden?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 208",
+          "excerpt": "trouble with changing science",
+          "open_question": "Hvorfor er det naturvidenskabelige paradigme fundamentalt uegnet til at studere mennesker?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -677,7 +696,26 @@
         "Specifikke referencer til divisionernes internhistorik i APA i 1960'erne.",
         "Rollo Mays præcise og komplekse ontologiske udlægninger af 'being'."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 206",
+          "excerpt": "the encapsulated person",
+          "open_question": "Hvad var humanismens oprindelige protest, og hvad lykkedes den rent faktisk med?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 208",
+          "excerpt": "very good with humans",
+          "open_question": "Hvorfor er den humanistiske psykologi forblevet en marginaliseret bevægelse i den akademiske verden?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 208",
+          "excerpt": "trouble with changing science",
+          "open_question": "Hvorfor er det naturvidenskabelige paradigme fundamentalt uegnet til at studere mennesker?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -993,6 +1031,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w07l2-giorgi-2005-55ca98f7/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:00:52Z"
   }
 }

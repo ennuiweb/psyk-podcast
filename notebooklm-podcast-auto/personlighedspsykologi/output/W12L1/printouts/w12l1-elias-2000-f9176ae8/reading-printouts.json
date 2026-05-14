@@ -254,7 +254,26 @@
         "De lange uoversatte citater på gammeldags fransk eller engelsk.",
         "Detaljerne om præcist hvilke kødtyper nordtyske hoffolk spiste."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Afsnittet om gaflen",
+          "excerpt": "embodiment of a specific standard of emotions",
+          "open_question": "Hvorfor begyndte overklassen at gemme udskæringen af hele dyr væk fra spisebordet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Afsnittet om kødspisning",
+          "excerpt": "advance in the threshold of repugnance",
+          "open_question": "Hvad er den egentlige (ikke-rationelle) årsag til, at vi i dag bruger kniv og gaffel?"
+        },
+        {
+          "number": "3",
+          "source_location": "Slutningen af gaffel-afsnittet",
+          "excerpt": "reproduced more or less smoothly within him",
+          "open_question": "Hvordan forvandles ydre social tvang til indre selvkontrol i historiens løb?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -512,7 +531,7 @@
           "required_elements": [
             "Ydre social tvang",
             "Væmmelsestærsklens forskydning",
-            "Indre automatisk selvkontrol (overjeg"
+            "Indre automatisk selvkontrol: overjeg"
           ],
           "blank_space_hint": "Brug en bred, lineær kasse-struktur der viser en historisk tidslinje ind mod individets hjerne."
         }
@@ -703,7 +722,26 @@
         "De lange uoversatte citater på gammeldags fransk eller engelsk.",
         "Detaljerne om præcist hvilke kødtyper nordtyske hoffolk spiste."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Afsnittet om gaflen",
+          "excerpt": "embodiment of a specific standard of emotions",
+          "open_question": "Hvorfor begyndte overklassen at gemme udskæringen af hele dyr væk fra spisebordet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Afsnittet om kødspisning",
+          "excerpt": "advance in the threshold of repugnance",
+          "open_question": "Hvad er den egentlige (ikke-rationelle) årsag til, at vi i dag bruger kniv og gaffel?"
+        },
+        {
+          "number": "3",
+          "source_location": "Slutningen af gaffel-afsnittet",
+          "excerpt": "reproduced more or less smoothly within him",
+          "open_question": "Hvordan forvandles ydre social tvang til indre selvkontrol i historiens løb?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -961,7 +999,7 @@
           "required_elements": [
             "Ydre social tvang",
             "Væmmelsestærsklens forskydning",
-            "Indre automatisk selvkontrol (overjeg"
+            "Indre automatisk selvkontrol: overjeg"
           ],
           "blank_space_hint": "Brug en bred, lineær kasse-struktur der viser en historisk tidslinje ind mod individets hjerne."
         }
@@ -1057,6 +1095,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w12l1-elias-2000-f9176ae8/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:04:49Z"
   }
 }

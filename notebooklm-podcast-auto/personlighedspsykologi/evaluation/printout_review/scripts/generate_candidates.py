@@ -39,9 +39,9 @@ except BaseException as exc:  # pragma: no cover - exercised via real CLI bootst
     preflight_gemini_json_generation = None  # type: ignore[assignment]
     utc_now_iso = None  # type: ignore[assignment]
 
-DEFAULT_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md"
-DEFAULT_PROMPT_VERSION = "personlighedspsykologi-reading-printouts-problem-driven-v1"
-DEFAULT_VARIANT_KEY = "problem_driven_v1"
+DEFAULT_DESIGN_DOC = printout_engine.PROBLEM_DRIVEN_DESIGN_DOC if printout_engine else ""
+DEFAULT_PROMPT_VERSION = printout_engine.PROBLEM_DRIVEN_PROMPT_VERSION if printout_engine else ""
+DEFAULT_VARIANT_KEY = printout_engine.PROBLEM_DRIVEN_VARIANT_KEY if printout_engine else ""
 SUPPORTED_PROVIDERS = ("gemini", "openai")
 
 
@@ -138,14 +138,7 @@ def _ensure_safe_output_root(candidate_output_root: Path, canonical_output_root:
 
 
 def _variant_system_instruction() -> str:
-    return "\n".join(
-        [
-            printout_engine.printout_system_instruction(),
-            "This run is an experimental prompt overlay.",
-            "Keep the schema-v3 shape and validation contract unchanged.",
-            "Let the user-prompt variant instructions change the pedagogical feel, not the artifact structure.",
-        ]
-    )
+    return printout_engine.problem_driven_system_instruction()
 
 
 def _variant_user_prompt(
@@ -158,21 +151,14 @@ def _variant_user_prompt(
     course_context: dict[str, Any] | None,
     length_budget: dict[str, Any] | None = None,
 ) -> str:
-    base_prompt = printout_engine.printout_user_prompt(
+    return printout_engine.problem_driven_user_prompt(
+        variant_prompt_text=variant_prompt_text,
+        variant_key=variant_key,
         source=source,
         source_card=source_card,
         lecture_context=lecture_context,
         course_context=course_context,
         length_budget=length_budget,
-    )
-    return "\n\n".join(
-        [
-            "This is an experimental printout-review run.",
-            f"Variant key: {variant_key}",
-            "Apply the following variant instructions while keeping the same JSON contract and required keys.",
-            variant_prompt_text.strip(),
-            base_prompt,
-        ]
     )
 
 
@@ -499,13 +485,12 @@ def main() -> int:
                 system_instruction=_variant_system_instruction(),
                 user_prompt_builder=user_prompt_builder,
                 variant_metadata={
-                    "mode": "evaluation_sandbox",
-                    "variant_key": DEFAULT_VARIANT_KEY,
-                    "render_completion_markers": False,
-                    "render_exam_bridge": bool(args.include_exam_bridge),
+                    **printout_engine.problem_driven_variant_metadata(
+                        mode="evaluation_sandbox",
+                        render_completion_markers=False,
+                        render_exam_bridge=bool(args.include_exam_bridge),
+                    ),
                     "variant_prompt_path": _relative_to(REPO_ROOT, variant_prompt_path),
-                    "design_doc": DEFAULT_DESIGN_DOC,
-                    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
                 },
                 generation_provider=provider,
                 generation_config_metadata_override=provider_generation_config_metadata,

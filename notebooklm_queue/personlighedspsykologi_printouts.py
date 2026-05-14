@@ -42,6 +42,13 @@ DEFAULT_COURSE_SYNTHESIS_PATH = recursive.DEFAULT_COURSE_SYNTHESIS_PATH
 DEFAULT_SUBJECT_ROOT = recursive.DEFAULT_SUBJECT_ROOT
 DEFAULT_OUTPUT_ROOT = Path("notebooklm-podcast-auto/personlighedspsykologi/output")
 PROMPT_VERSION = "personlighedspsykologi-reading-printouts-v3"
+PROBLEM_DRIVEN_PROMPT_VERSION = "personlighedspsykologi-reading-printouts-problem-driven-v1"
+PROBLEM_DRIVEN_VARIANT_KEY = "problem_driven_v1"
+PROBLEM_DRIVEN_VARIANT_PROMPT_PATH = Path(
+    "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md"
+)
+PROBLEM_DRIVEN_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md"
+PROBLEM_DRIVEN_WORKSPACE = "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
 SCHEMA_VERSION = 3
 LEGACY_SCHEMA_VERSION = 2
 CANONICAL_PRINTOUT_DIRNAME = "printouts"
@@ -1489,6 +1496,92 @@ def printout_user_prompt(
         "Here is the source/context payload:\n\n"
         f"{json.dumps(payload, indent=2, ensure_ascii=False)}"
     )
+
+
+def problem_driven_system_instruction() -> str:
+    return "\n".join(
+        [
+            printout_system_instruction(),
+            "This run is an experimental prompt overlay.",
+            "Keep the schema-v3 shape and validation contract unchanged.",
+            "Let the user-prompt variant instructions change the pedagogical feel, not the artifact structure.",
+        ]
+    )
+
+
+def problem_driven_user_prompt(
+    *,
+    variant_prompt_text: str,
+    source: dict[str, Any],
+    source_card: dict[str, Any],
+    lecture_context: dict[str, Any] | None,
+    course_context: dict[str, Any] | None,
+    length_budget: dict[str, Any] | None = None,
+    variant_key: str = PROBLEM_DRIVEN_VARIANT_KEY,
+) -> str:
+    base_prompt = printout_user_prompt(
+        source=source,
+        source_card=source_card,
+        lecture_context=lecture_context,
+        course_context=course_context,
+        length_budget=length_budget,
+    )
+    return "\n\n".join(
+        [
+            "This is an experimental printout-review run.",
+            f"Variant key: {variant_key}",
+            "Apply the following variant instructions while keeping the same JSON contract and required keys.",
+            variant_prompt_text.strip(),
+            base_prompt,
+        ]
+    )
+
+
+def problem_driven_user_prompt_builder(
+    *,
+    variant_prompt_text: str,
+    variant_key: str = PROBLEM_DRIVEN_VARIANT_KEY,
+) -> UserPromptBuilder:
+    def builder(
+        *,
+        source: dict[str, Any],
+        source_card: dict[str, Any],
+        lecture_context: dict[str, Any] | None,
+        course_context: dict[str, Any] | None,
+        length_budget: dict[str, Any] | None = None,
+    ) -> str:
+        return problem_driven_user_prompt(
+            variant_prompt_text=variant_prompt_text,
+            variant_key=variant_key,
+            source=source,
+            source_card=source_card,
+            lecture_context=lecture_context,
+            course_context=course_context,
+            length_budget=length_budget,
+        )
+
+    return builder
+
+
+def read_problem_driven_variant_prompt(repo_root: Path) -> str:
+    return (repo_root / PROBLEM_DRIVEN_VARIANT_PROMPT_PATH).read_text(encoding="utf-8")
+
+
+def problem_driven_variant_metadata(
+    *,
+    mode: str,
+    render_completion_markers: bool,
+    render_exam_bridge: bool,
+) -> dict[str, Any]:
+    return {
+        "mode": mode,
+        "variant_key": PROBLEM_DRIVEN_VARIANT_KEY,
+        "render_completion_markers": bool(render_completion_markers),
+        "render_exam_bridge": bool(render_exam_bridge),
+        "variant_prompt_path": str(PROBLEM_DRIVEN_VARIANT_PROMPT_PATH),
+        "design_doc": PROBLEM_DRIVEN_DESIGN_DOC,
+        "workspace": PROBLEM_DRIVEN_WORKSPACE,
+    }
 
 
 def _coerce_list(value: Any) -> list[Any]:

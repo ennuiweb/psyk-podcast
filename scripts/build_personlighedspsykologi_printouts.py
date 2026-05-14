@@ -168,6 +168,7 @@ def main() -> int:
     else:
         provider_json_generator = None
         generation_config_metadata = _provider_generation_config_metadata(provider)
+    variant_prompt_text = printouts.read_problem_driven_variant_prompt(REPO_ROOT)
 
     result = printouts.build_printouts(
         repo_root=REPO_ROOT,
@@ -190,12 +191,14 @@ def main() -> int:
         rerender_existing=args.rerender_existing,
         dry_run=args.dry_run,
         continue_on_error=args.continue_on_error,
-        variant_metadata={
-            "mode": "canonical_main",
-            "variant_key": "problem_driven_v1",
-            "render_completion_markers": False,
-            "render_exam_bridge": bool(args.include_exam_bridge),
-        },
+        prompt_version=printouts.PROBLEM_DRIVEN_PROMPT_VERSION,
+        system_instruction=printouts.problem_driven_system_instruction(),
+        user_prompt_builder=printouts.problem_driven_user_prompt_builder(variant_prompt_text=variant_prompt_text),
+        variant_metadata=printouts.problem_driven_variant_metadata(
+            mode="canonical_main",
+            render_completion_markers=False,
+            render_exam_bridge=bool(args.include_exam_bridge),
+        ),
         generation_provider=provider,
         generation_config_metadata_override=generation_config_metadata,
         output_layout=printouts.OUTPUT_LAYOUT_CANONICAL,

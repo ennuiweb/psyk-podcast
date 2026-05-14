@@ -13,6 +13,12 @@ The canonical schema-v3 engine now lives in:
 The review scripts import that main engine instead of owning a separate product
 implementation.
 
+The accepted problem-driven prompt overlay also lives in the main engine. Both
+`scripts/build_personlighedspsykologi_printouts.py` and this workspace's
+`scripts/generate_candidates.py` call the same `problem_driven_*` helpers, so
+main and review generation cannot silently drift through separate prompt
+builders.
+
 ## Current Use
 
 The canonical printout track is:
@@ -317,6 +323,22 @@ This is the candidate review path for the canonical engine.
   reader alone
 - judge learner fit first, not only schema validity
 
+Before signing off on main/review integration, run the repository-level gate:
+
+```bash
+uv run python scripts/validate_personlighedspsykologi_printout_integration.py \
+  --registry-check \
+  --review-parity \
+  --review-pdf-parity \
+  --pdf-text \
+  --min-canonical-bundles 20
+```
+
+This gate is renderer-only for cached review artifacts. It checks schema-v3
+canonical metadata, registry preference for `printouts/`, checkbox removal, JSON
+normalization parity, Markdown parity, and PDF text/page-count parity against the
+current main output.
+
 ## Status
 
 This workspace currently supports:
@@ -325,6 +347,8 @@ This workspace currently supports:
 - generating canonical problem-driven printout PDFs
 - recording exact prompt captures per source
 - promoting accepted candidate PDFs into main output when rerendering is not needed
+- renderer-only parity validation between cached review JSON artifacts and main
+  PDFs
 
 It does not yet include an automated judge script. For now, review is manual or
 ad hoc.

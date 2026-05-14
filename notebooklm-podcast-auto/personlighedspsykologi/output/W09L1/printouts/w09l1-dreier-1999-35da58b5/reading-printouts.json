@@ -239,7 +239,26 @@
         "Filosofiske sidebemærkninger om Wittgenstein og sprogspil.",
         "Den bagvedliggende kliniske historik, som teksten kun berører perifert."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 5",
+          "excerpt": "always already involved in social practice",
+          "open_question": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 6",
+          "excerpt": "partial personal aspect of a social practice",
+          "open_question": "Hvad indebærer det, at individets position i en praksis altid er 'delvis og partikulær'?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 7",
+          "excerpt": "not homogenous. It consists of diverse, located contextual practices",
+          "open_question": "Hvordan underminerer begrebet 'social praksis' forestillingen om samfundet som en ensartet beholder?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -577,7 +596,26 @@
         "Filosofiske sidebemærkninger om Wittgenstein og sprogspil.",
         "Den bagvedliggende kliniske historik, som teksten kun berører perifert."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 5",
+          "excerpt": "always already involved in social practice",
+          "open_question": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 6",
+          "excerpt": "partial personal aspect of a social practice",
+          "open_question": "Hvad indebærer det, at individets position i en praksis altid er 'delvis og partikulær'?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 7",
+          "excerpt": "not homogenous. It consists of diverse, located contextual practices",
+          "open_question": "Hvordan underminerer begrebet 'social praksis' forestillingen om samfundet som en ensartet beholder?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -835,6 +873,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w09l1-dreier-1999-35da58b5/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:02:33Z"
   }
 }

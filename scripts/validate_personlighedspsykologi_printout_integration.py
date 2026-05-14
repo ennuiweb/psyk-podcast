@@ -8,6 +8,7 @@ import json
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -50,6 +51,7 @@ def _validate_bundle(json_path: Path, repo_root: Path) -> list[str]:
     artifact = _load_json(json_path)
     rel_json = _rel(json_path, repo_root)
     variant = artifact.get("variant") if isinstance(artifact.get("variant"), dict) else {}
+    generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
     printout_payload = artifact.get("printouts") if isinstance(artifact.get("printouts"), dict) else {}
     pdf_names = {path.name for path in bundle_dir.glob("*.pdf")}
 
@@ -61,6 +63,12 @@ def _validate_bundle(json_path: Path, repo_root: Path) -> list[str]:
         errors.append(f"{rel_json}: variant.mode is not canonical_main")
     if variant.get("render_completion_markers") is not False:
         errors.append(f"{rel_json}: render_completion_markers is not false")
+    if generator.get("prompt_version") != printouts.PROBLEM_DRIVEN_PROMPT_VERSION:
+        errors.append(f"{rel_json}: prompt_version is not {printouts.PROBLEM_DRIVEN_PROMPT_VERSION}")
+    if variant.get("variant_key") != printouts.PROBLEM_DRIVEN_VARIANT_KEY:
+        errors.append(f"{rel_json}: variant_key is not {printouts.PROBLEM_DRIVEN_VARIANT_KEY}")
+    if variant.get("variant_prompt_path") != str(printouts.PROBLEM_DRIVEN_VARIANT_PROMPT_PATH):
+        errors.append(f"{rel_json}: variant_prompt_path is not the canonical problem-driven prompt")
 
     missing_keys = (set(printouts.V3_FIXED_TITLES) - {"cover"}) - set(printout_payload)
     if missing_keys:
@@ -205,6 +213,146 @@ def _validate_pdf_text(canonical_json_paths: list[Path], repo_root: Path) -> lis
     return errors
 
 
+def _review_json_source_id(path: Path, artifact: dict[str, Any]) -> str:
+    source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+    metadata = artifact.get("metadata") if isinstance(artifact.get("metadata"), dict) else {}
+    return str(source.get("source_id") or metadata.get("source_id") or path.parent.name).strip()
+
+
+def _discover_review_jsons(review_root: Path) -> dict[str, Path]:
+    candidates = [
+        *review_root.glob(".scaffolding/artifacts/*/*/reading-scaffolds.json"),
+        *review_root.glob(".scaffolding/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/artifacts/*/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/*/reading-scaffolds.json"),
+    ]
+    latest: dict[str, tuple[float, Path]] = {}
+    for path in candidates:
+        try:
+            artifact = _load_json(path)
+        except Exception:
+            continue
+        source_id = _review_json_source_id(path, artifact)
+        if not source_id:
+            continue
+        mtime = path.stat().st_mtime
+        current = latest.get(source_id)
+        if current is None or mtime > current[0]:
+            latest[source_id] = (mtime, path)
+    return {source_id: path for source_id, (_, path) in sorted(latest.items())}
+
+
+def _canonicalized_for_parity(artifact: dict[str, Any], main_artifact: dict[str, Any]) -> dict[str, Any]:
+    normalized = json.loads(json.dumps(artifact))
+    main_source = main_artifact.get("source") if isinstance(main_artifact.get("source"), dict) else {}
+    source = normalized.get("source") if isinstance(normalized.get("source"), dict) else {}
+    normalized["source"] = {**source, **main_source}
+    length_budget = main_artifact.get("length_budget")
+    if not isinstance(length_budget, dict):
+        length_budget = normalized.get("length_budget") if isinstance(normalized.get("length_budget"), dict) else {}
+    if not isinstance(length_budget, dict) or not length_budget:
+        length_budget = printouts.build_printout_length_budget(source=normalized["source"])
+    payload = normalized.get("printouts") or normalized.get("scaffolds") or {}
+    printout_payload = printouts.validate_printout_payload(
+        printouts.normalize_scaffold_payload(payload, legacy_compat=True, length_budget=length_budget),
+        length_budget=length_budget,
+        validate_exam_bridge=False,
+    )
+    normalized["schema_version"] = printouts.SCHEMA_VERSION
+    normalized["artifact_type"] = "reading_printouts"
+    normalized["length_budget"] = length_budget
+    normalized["printouts"] = printout_payload
+    normalized["scaffolds"] = printout_payload
+    normalized["variant"] = printouts.problem_driven_variant_metadata(
+        mode="canonical_main",
+        render_completion_markers=False,
+        render_exam_bridge=False,
+    )
+    return normalized
+
+
+def _render_markdown_by_name(artifact: dict[str, Any], output_dir: Path) -> dict[str, str]:
+    rendered = printouts.render_printout_files(artifact=artifact, output_dir=output_dir, render_pdf=False)
+    return {Path(path).name: Path(path).read_text(encoding="utf-8") for path in rendered["markdown_paths"]}
+
+
+def _pdf_texts_by_name(output_dir: Path) -> dict[str, str]:
+    texts: dict[str, str] = {}
+    for pdf_path in sorted(output_dir.glob("*.pdf")):
+        completed = subprocess.run(["pdftotext", str(pdf_path), "-"], text=True, capture_output=True, check=False)
+        if completed.returncode != 0:
+            raise printouts.PrintoutError(f"pdftotext failed for {pdf_path}: {completed.stderr.strip()}")
+        texts[pdf_path.name] = completed.stdout
+    return texts
+
+
+def _pdf_page_counts_by_name(output_dir: Path) -> dict[str, str]:
+    if not shutil.which("pdfinfo"):
+        return {}
+    counts: dict[str, str] = {}
+    for pdf_path in sorted(output_dir.glob("*.pdf")):
+        completed = subprocess.run(["pdfinfo", str(pdf_path)], text=True, capture_output=True, check=False)
+        if completed.returncode != 0:
+            raise printouts.PrintoutError(f"pdfinfo failed for {pdf_path}: {completed.stderr.strip()}")
+        for line in completed.stdout.splitlines():
+            if line.startswith("Pages:"):
+                counts[pdf_path.name] = line.split(":", 1)[1].strip()
+                break
+    return counts
+
+
+def _validate_review_parity(
+    *,
+    review_root: Path,
+    output_root: Path,
+    repo_root: Path,
+    render_pdf: bool,
+) -> tuple[list[str], dict[str, Any]]:
+    errors: list[str] = []
+    review_jsons = _discover_review_jsons(review_root)
+    compared = 0
+    pdf_compared = 0
+    if render_pdf and not shutil.which("pdftotext"):
+        return ["pdftotext is not available; cannot compare rendered review/main PDFs"], {}
+    with tempfile.TemporaryDirectory(prefix="printout-parity-") as temp_dir_str:
+        temp_root = Path(temp_dir_str)
+        for source_id, review_json_path in review_jsons.items():
+            main_matches = sorted(output_root.glob(f"*/printouts/{source_id}/{printouts.CANONICAL_PRINTOUT_JSON_NAME}"))
+            if not main_matches:
+                errors.append(f"{source_id}: review artifact has no canonical main JSON")
+                continue
+            review_artifact = _load_json(review_json_path)
+            main_artifact = _load_json(main_matches[0])
+            review_canonical = _canonicalized_for_parity(review_artifact, main_artifact)
+            main_canonical = _canonicalized_for_parity(main_artifact, main_artifact)
+            if review_canonical["printouts"] != main_canonical["printouts"]:
+                errors.append(f"{source_id}: normalized review JSON printouts differ from main JSON")
+                continue
+            review_dir = temp_root / source_id / "review"
+            main_dir = temp_root / source_id / "main"
+            review_markdown = _render_markdown_by_name(review_canonical, review_dir)
+            main_markdown = _render_markdown_by_name(main_canonical, main_dir)
+            if review_markdown != main_markdown:
+                errors.append(f"{source_id}: renderer markdown differs between cached review JSON and main JSON")
+                continue
+            compared += 1
+            if render_pdf:
+                printouts.render_printout_files(artifact=review_canonical, output_dir=review_dir, render_pdf=True)
+                main_pdf_dir = main_matches[0].parent
+                if _pdf_texts_by_name(review_dir) != _pdf_texts_by_name(main_pdf_dir):
+                    errors.append(f"{source_id}: rendered cached-review PDF text differs from current main PDFs")
+                    continue
+                if _pdf_page_counts_by_name(review_dir) != _pdf_page_counts_by_name(main_pdf_dir):
+                    errors.append(f"{source_id}: rendered cached-review PDF page counts differ from current main PDFs")
+                    continue
+                pdf_compared += 1
+    return errors, {
+        "review_artifact_count": len(review_jsons),
+        "review_markdown_parity_count": compared,
+        "review_pdf_parity_count": pdf_compared,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
@@ -216,6 +364,13 @@ def main() -> int:
     parser.add_argument("--log", type=Path, action="append", default=[])
     parser.add_argument("--registry-check", action="store_true")
     parser.add_argument("--pdf-text", action="store_true")
+    parser.add_argument(
+        "--review-root",
+        type=Path,
+        default=REPO_ROOT / "notebooklm-podcast-auto" / "personlighedspsykologi" / "evaluation" / "printout_review" / "review",
+    )
+    parser.add_argument("--review-parity", action="store_true", help="Compare cached review JSON with canonical main JSON.")
+    parser.add_argument("--review-pdf-parity", action="store_true", help="Also render and compare PDF text/page counts.")
     parser.add_argument("--min-canonical-bundles", type=int, default=1)
     args = parser.parse_args()
 
@@ -238,6 +393,15 @@ def main() -> int:
         errors.extend(_validate_registry(repo_root, canonical_json_paths))
     if args.pdf_text:
         errors.extend(_validate_pdf_text(canonical_json_paths, repo_root))
+    parity_summary: dict[str, Any] = {}
+    if args.review_parity or args.review_pdf_parity:
+        parity_errors, parity_summary = _validate_review_parity(
+            review_root=args.review_root.resolve(),
+            output_root=output_root,
+            repo_root=repo_root,
+            render_pdf=bool(args.review_pdf_parity),
+        )
+        errors.extend(parity_errors)
     for log_path in args.log:
         errors.extend(_validate_log(log_path.resolve(), repo_root))
 
@@ -254,6 +418,7 @@ def main() -> int:
         "warning_count": len(warnings),
         "errors": errors,
         "warnings": warnings,
+        **parity_summary,
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 1 if errors else 0

@@ -489,8 +489,8 @@
           "number": 1,
           "task": "Tegn et diagram over de to forskningsparadigmer over for hinanden.",
           "required_elements": [
-            "Betingelsesdiskursen (Ydre årsag -> Blind virkning",
-            "Begrundelsesdiskursen (Ydre betingelser -> Subjekt -> Begrundet handling"
+            "Betingelsesdiskursen: Ydre årsag -> Blind virkning",
+            "Begrundelsesdiskursen: Ydre betingelser -> Subjekt -> Begrundet handling"
           ],
           "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
         }
@@ -916,8 +916,8 @@
           "number": 1,
           "task": "Tegn et diagram over de to forskningsparadigmer over for hinanden.",
           "required_elements": [
-            "Betingelsesdiskursen (Ydre årsag -> Blind virkning",
-            "Begrundelsesdiskursen (Ydre betingelser -> Subjekt -> Begrundet handling"
+            "Betingelsesdiskursen: Ydre årsag -> Blind virkning",
+            "Begrundelsesdiskursen: Ydre betingelser -> Subjekt -> Begrundet handling"
           ],
           "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
         }
@@ -1013,6 +1013,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w09l1-holzkamp-2013-c3068d8a/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:03:07Z"
   }
 }

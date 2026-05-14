@@ -66,6 +66,8 @@ def _discover_review_jsons(review_root: Path) -> dict[str, Path]:
     candidates = [
         *review_root.glob(".scaffolding/artifacts/*/*/reading-scaffolds.json"),
         *review_root.glob(".scaffolding/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/artifacts/*/*/reading-scaffolds.json"),
+        *review_root.glob("*/.scaffolding/*/reading-scaffolds.json"),
     ]
     latest: dict[str, tuple[float, Path]] = {}
     for path in candidates:
@@ -119,10 +121,11 @@ def _canonical_artifact(
     existing_variant = normalized.get("variant") if isinstance(normalized.get("variant"), dict) else {}
     normalized["variant"] = {
         **existing_variant,
-        "mode": "canonical_main",
-        "variant_key": str(existing_variant.get("variant_key") or "problem_driven_v1"),
-        "render_completion_markers": False,
-        "render_exam_bridge": bool(include_exam_bridge),
+        **printouts.problem_driven_variant_metadata(
+            mode="canonical_main",
+            render_completion_markers=False,
+            render_exam_bridge=bool(include_exam_bridge),
+        ),
         "backfilled_from_review_json": _relative(artifact_path),
         "backfilled_at": utc_now_iso(),
     }

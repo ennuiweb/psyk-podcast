@@ -254,7 +254,26 @@
         "De dybe filosofiske forskelle mellem Ebbinghaus, Dilthey og Wundt – fokuser kun på Sterns eget standpunkt.",
         "Biografiske fodnoter og lange tyske bogtitler."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 5",
+          "excerpt": "atom + atom + atom",
+          "open_question": "Hvad er den fundamentale forskel på en person og en ting ifølge Stern?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 14",
+          "excerpt": "convergence of inner and outer factors",
+          "open_question": "Hvordan løser begrebet 'psykofysisk neutralitet' problemet med at splitte mennesket op i krop og sind?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 15",
+          "excerpt": "Ich werte, ... also bin ich Wert",
+          "open_question": "Hvad betyder 'konvergens', og hvordan forklarer det udviklingen af egenskaber?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -468,10 +487,10 @@
           "number": 1,
           "task": "Tegn Konvergens-modellen for udvikling af et personlighedstræk.",
           "required_elements": [
-            "Indre dispositioner (potentiale",
-            "Ydre miljø (ydre faktorer",
+            "Indre dispositioner: potentiale",
+            "Ydre miljø: ydre faktorer",
             "Pilen der illustrerer selve konvergensen",
-            "Resultatet (det synlige træk eller adfærd"
+            "Resultatet: det synlige træk eller adfærd"
           ],
           "blank_space_hint": "Brug en tragt- eller pilestruktur til at illustrere hvordan to forskellige elementer tvinges sammen til et nyt fælles resultat."
         }
@@ -661,7 +680,26 @@
         "De dybe filosofiske forskelle mellem Ebbinghaus, Dilthey og Wundt – fokuser kun på Sterns eget standpunkt.",
         "Biografiske fodnoter og lange tyske bogtitler."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 5",
+          "excerpt": "atom + atom + atom",
+          "open_question": "Hvad er den fundamentale forskel på en person og en ting ifølge Stern?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 14",
+          "excerpt": "convergence of inner and outer factors",
+          "open_question": "Hvordan løser begrebet 'psykofysisk neutralitet' problemet med at splitte mennesket op i krop og sind?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 15",
+          "excerpt": "Ich werte, ... also bin ich Wert",
+          "open_question": "Hvad betyder 'konvergens', og hvordan forklarer det udviklingen af egenskaber?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -875,10 +913,10 @@
           "number": 1,
           "task": "Tegn Konvergens-modellen for udvikling af et personlighedstræk.",
           "required_elements": [
-            "Indre dispositioner (potentiale",
-            "Ydre miljø (ydre faktorer",
+            "Indre dispositioner: potentiale",
+            "Ydre miljø: ydre faktorer",
             "Pilen der illustrerer selve konvergensen",
-            "Resultatet (det synlige træk eller adfærd"
+            "Resultatet: det synlige træk eller adfærd"
           ],
           "blank_space_hint": "Brug en tragt- eller pilestruktur til at illustrere hvordan to forskellige elementer tvinges sammen til et nyt fælles resultat."
         }
@@ -973,6 +1011,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w08l1-lamiell-2021-be79d36e/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:01:25Z"
   }
 }

@@ -253,7 +253,26 @@
         "Den komplette taksonomi i Tabel 1 over alle 24 typer tilknytninger",
         "Litteraturhistoriske referencer til Bakhtin og Ricoeur"
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektionen om Everyday polypsychism",
+          "excerpt": "we lead a Jekyll and Hyde existence",
+          "open_question": "Hvad adskiller polypsykisme fra den klassiske forestilling om egoet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om Narrative voice",
+          "excerpt": "A voice is a thematic complex",
+          "open_question": "Hvordan definerer Raggatt en 'narrativ stemme'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af 'Lost Boy'-stemmen",
+          "excerpt": "My sister was my mother",
+          "open_question": "Hvilken rolle spiller symbolske tilknytninger i metoden Personality Web?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -667,7 +686,26 @@
         "Den komplette taksonomi i Tabel 1 over alle 24 typer tilknytninger",
         "Litteraturhistoriske referencer til Bakhtin og Ricoeur"
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektionen om Everyday polypsychism",
+          "excerpt": "we lead a Jekyll and Hyde existence",
+          "open_question": "Hvad adskiller polypsykisme fra den klassiske forestilling om egoet?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om Narrative voice",
+          "excerpt": "A voice is a thematic complex",
+          "open_question": "Hvordan definerer Raggatt en 'narrativ stemme'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af 'Lost Boy'-stemmen",
+          "excerpt": "My sister was my mother",
+          "open_question": "Hvilken rolle spiller symbolske tilknytninger i metoden Personality Web?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -987,6 +1025,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-raggatt-2002-d15129af/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:04:32Z"
   }
 }

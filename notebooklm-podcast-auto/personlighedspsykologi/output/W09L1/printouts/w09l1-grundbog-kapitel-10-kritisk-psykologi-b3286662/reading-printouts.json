@@ -615,9 +615,9 @@
           "number": 1,
           "task": "Tegn en lagdelt model over Dreiers tre analysekategorier for en situation. Tegn dem som tre cirkler eller niveauer der går fra det overordnede objektive til det snævert subjektive.",
           "required_elements": [
-            "Lokalitet (det fysiske sted",
-            "Position (den sociale rolle",
-            "Standpunkt (den subjektive forståelse"
+            "Lokalitet: det fysiske sted",
+            "Position: den sociale rolle",
+            "Standpunkt: den subjektive forståelse"
           ],
           "blank_space_hint": "Lav tre bokse oven på hinanden, hvor den nederste/inderste er den mest subjektive psykologiske kerne."
         },
@@ -626,8 +626,8 @@
           "task": "Visualiser Holzkamps idé om 'daglig livsførelse' ved at tegne en person der navigerer gennem hverdagen.",
           "required_elements": [
             "Personen placeret i centrum",
-            "Mindst tre forskellige sociale praksisser i kanten (fx arbejde, hjem, fritid",
-            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration (livsførelsen"
+            "Mindst tre forskellige sociale praksisser i kanten: fx arbejde, hjem, fritid",
+            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration: livsførelsen"
           ],
           "blank_space_hint": "Brug midten til selve subjektet, og lad linjerne udgøre det samlende 'netværk' der binder hverdagen sammen."
         }
@@ -1184,9 +1184,9 @@
           "number": 1,
           "task": "Tegn en lagdelt model over Dreiers tre analysekategorier for en situation. Tegn dem som tre cirkler eller niveauer der går fra det overordnede objektive til det snævert subjektive.",
           "required_elements": [
-            "Lokalitet (det fysiske sted",
-            "Position (den sociale rolle",
-            "Standpunkt (den subjektive forståelse"
+            "Lokalitet: det fysiske sted",
+            "Position: den sociale rolle",
+            "Standpunkt: den subjektive forståelse"
           ],
           "blank_space_hint": "Lav tre bokse oven på hinanden, hvor den nederste/inderste er den mest subjektive psykologiske kerne."
         },
@@ -1195,8 +1195,8 @@
           "task": "Visualiser Holzkamps idé om 'daglig livsførelse' ved at tegne en person der navigerer gennem hverdagen.",
           "required_elements": [
             "Personen placeret i centrum",
-            "Mindst tre forskellige sociale praksisser i kanten (fx arbejde, hjem, fritid",
-            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration (livsførelsen"
+            "Mindst tre forskellige sociale praksisser i kanten: fx arbejde, hjem, fritid",
+            "Pile eller forbindelseslinjer, der repræsenterer den rutinemæssige integration: livsførelsen"
           ],
           "blank_space_hint": "Brug midten til selve subjektet, og lad linjerne udgøre det samlende 'netværk' der binder hverdagen sammen."
         }
@@ -1297,6 +1297,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:02:50Z"
   }
 }

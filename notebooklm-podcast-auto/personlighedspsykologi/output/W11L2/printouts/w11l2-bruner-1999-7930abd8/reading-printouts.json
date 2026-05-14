@@ -273,7 +273,32 @@
         "Detaljerede sproglige diskussioner af kasusgrammatik",
         "De lange udskrifter af Emilys monologer i sengen"
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion III (s. 79)",
+          "excerpt": "the human push to organize experience narratively",
+          "open_question": "Hvordan adskiller Bruners 'meningsparathed' sig fra Chomskys 'grammatik-maskine'?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion III (s. 77)",
+          "excerpt": "four crucial grammatical constituents",
+          "open_question": "Hvorfor er det vigtigt, at barnets sociale forståelse starter som *praksis* før *logos*?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion V (s. 86)",
+          "excerpt": "Getting what you want very often means getting the right story",
+          "open_question": "Hvilke fire byggeklodser kræves for at konstruere et narrativ?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion I (s. 67)",
+          "excerpt": "framing the idiosyncratic in a 'lifelike' fashion",
+          "open_question": "Hvad udløser vores behov for overhovedet at skabe et narrativ?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -778,7 +803,32 @@
         "Detaljerede sproglige diskussioner af kasusgrammatik",
         "De lange udskrifter af Emilys monologer i sengen"
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion III (s. 79)",
+          "excerpt": "the human push to organize experience narratively",
+          "open_question": "Hvordan adskiller Bruners 'meningsparathed' sig fra Chomskys 'grammatik-maskine'?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion III (s. 77)",
+          "excerpt": "four crucial grammatical constituents",
+          "open_question": "Hvorfor er det vigtigt, at barnets sociale forståelse starter som *praksis* før *logos*?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion V (s. 86)",
+          "excerpt": "Getting what you want very often means getting the right story",
+          "open_question": "Hvilke fire byggeklodser kræves for at konstruere et narrativ?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion I (s. 67)",
+          "excerpt": "framing the idiosyncratic in a 'lifelike' fashion",
+          "open_question": "Hvad udløser vores behov for overhovedet at skabe et narrativ?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1169,6 +1219,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-bruner-1999-7930abd8/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:03:41Z"
   }
 }

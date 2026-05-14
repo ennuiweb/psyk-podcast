@@ -285,7 +285,32 @@
         "Maslows metodiske forbehold i starten; læs videre for at få selve teorien.",
         "Referencer til meget specifikke tidligere filosoffer, som kun bruges som fyldstof."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 1",
+          "excerpt": "deficits in the organism, empty holes",
+          "open_question": "Hvad adskiller fundamentalt mangelmotivation fra vækstmotivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 2",
+          "excerpt": "appetite for growth is whetted rather than allayed",
+          "open_question": "Hvorfor mener Maslow, at teorien om spændingsreduktion er forkert, når man betragter sunde mennesker?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 5",
+          "excerpt": "Safety?---------------< PERSON >---------------? Growth",
+          "open_question": "Hvordan ændrer dækkede mangelbehov personens afhængighed af andre?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion 6",
+          "excerpt": "fear of knowledge of oneself",
+          "open_question": "Hvad kendetegner B-kærlighed, og hvorfor mener Maslow at ikke-kærlighed gør blind?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -820,7 +845,32 @@
         "Maslows metodiske forbehold i starten; læs videre for at få selve teorien.",
         "Referencer til meget specifikke tidligere filosoffer, som kun bruges som fyldstof."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 1",
+          "excerpt": "deficits in the organism, empty holes",
+          "open_question": "Hvad adskiller fundamentalt mangelmotivation fra vækstmotivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 2",
+          "excerpt": "appetite for growth is whetted rather than allayed",
+          "open_question": "Hvorfor mener Maslow, at teorien om spændingsreduktion er forkert, når man betragter sunde mennesker?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 5",
+          "excerpt": "Safety?---------------< PERSON >---------------? Growth",
+          "open_question": "Hvordan ændrer dækkede mangelbehov personens afhængighed af andre?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektion 6",
+          "excerpt": "fear of knowledge of oneself",
+          "open_question": "Hvad kendetegner B-kærlighed, og hvorfor mener Maslow at ikke-kærlighed gør blind?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1229,6 +1279,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w07l2-maslow-1968-7ea53e34/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:01:09Z"
   }
 }

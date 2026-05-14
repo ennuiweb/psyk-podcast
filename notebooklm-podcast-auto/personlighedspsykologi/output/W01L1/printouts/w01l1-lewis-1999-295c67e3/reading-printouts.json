@@ -1298,6 +1298,8 @@
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
     "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
-    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
+    "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/2026-05-w01l1-openai-gpt-5_5-problem-driven-prompts/.scaffolding/w01l1-lewis-1999-295c67e3/reading-scaffolds.json",
+    "backfilled_at": "2026-05-13T22:00:18Z"
   }
 }

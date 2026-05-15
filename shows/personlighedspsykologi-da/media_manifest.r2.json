@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-da",
-  "generated_at": "2026-05-14T06:40:38+00:00",
+  "generated_at": "2026-05-15T06:15:44+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-da/W01L1/W01L1 - Alle kilder (undtagen slides) [DA] {type=audio lang=da format=deep-dive length=long sources=2 hash=b78b9f13}.mp3",
@@ -229,6 +229,21 @@
       "published_at": "2026-05-11T18:38:18+00:00",
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W04L2/%5BShort%5D%20W04L2%20-%20Laplanche%2C%20J.%20%281970%29.%20Liv%20og%20d%C3%B8d%20i%20psykoanalysen%20%28pp.%2018%E2%80%9038%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3D199c6f21%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-da/W08L1/[Short] W08L1 - Laux et al. (2010) [DA] {type=audio lang=da format=deep-dive length=short hash=fb0257f7}.mp3",
+      "source_name": "[Short] W08L1 - Laux et al. (2010) [DA] {type=audio lang=da format=deep-dive length=short hash=fb0257f7}.mp3",
+      "source_path": "W08L1/[Short] W08L1 - Laux et al. (2010) [DA] {type=audio lang=da format=deep-dive length=short hash=fb0257f7}.mp3",
+      "path_parts": [
+        "W08L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11356197,
+      "sha256": "ec5474642443a11535149486626a1fc72ea4f96656131775d8615305a0722ae7",
+      "artifact_type": "audio",
+      "published_at": "2026-05-15T06:15:42+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-da/W08L1/%5BShort%5D%20W08L1%20-%20Laux%20et%20al.%20%282010%29%20%5BDA%5D%20%7Btype%3Daudio%20lang%3Dda%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dfb0257f7%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-da/W11L2/W11L2 - Bruner (1999) [DA] {type=audio lang=da format=deep-dive length=long hash=17b70652}.mp3",

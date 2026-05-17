@@ -36,6 +36,10 @@ TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
     "rpc create_artifact failed",
     "rpc create_notebook failed",
     "null result data (possible server error",
+    "502 bad gateway",
+    "bad gateway",
+    "http 502",
+    "server error 502",
     "sources not ready after waiting",
 )
 

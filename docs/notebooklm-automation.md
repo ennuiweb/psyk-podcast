@@ -106,8 +106,8 @@ Queue-core note:
 - storage root defaults to `/var/lib/podcasts/notebooklm-queue` and can be overridden with `NOTEBOOKLM_QUEUE_STORAGE_ROOT` or `--storage-root`
 - supported discovery adapters currently cover `bioneuro`, `personlighedspsykologi-en`, and `personlighedspsykologi-da`
 - `run-dry` resolves the exact generate/download commands for the next queued lecture without touching NotebookLM or publication state
-- `run-once` claims or resumes a queue record, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful queue records either to `awaiting_publish` for newly downloaded artifacts or back to `waiting_for_artifact` when no unpublished outputs were added in that poll cycle
-- hosted generation wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
+- `run-once` claims or resumes a queue record, executes the real generate/download wrappers, persists a run manifest under the queue storage root, and moves successful queue records either to `awaiting_publish` for newly downloaded artifacts or back to `waiting_for_artifact` when no unpublished outputs were added in that poll cycle. Before a resumed download, it quarantines stale `*.request.json` logs that are older than `NOTEBOOKLM_QUEUE_STALE_REQUEST_SECONDS`, reference profiles no longer present in the active profiles file, or point at missing storage-state files, then immediately requeues generation for missing artifacts instead of polling the stale NotebookLM artifact forever.
+- hosted generation and download wrappers now honor `NOTEBOOKLM_PROFILES_FILE` and `NOTEBOOKLM_PROFILE_PRIORITY`, so Hetzner can rotate across a host-local bundle of NotebookLM storage states instead of depending on workstation profile paths committed in the repo
 - `scripts/sync_notebooklm_profiles_to_hetzner.py` is the canonical helper for copying the local NotebookLM profile bundle to Hetzner and rebuilding `/etc/podcasts/notebooklm-queue/profiles.host.json`
 - queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so the hosted `serve-show` worker can wait through cooldowns and continue draining partial lecture runs instead of leaving them stranded as generic retryable failures; invalid retry schedules now fail closed instead of degrading into a hot poll loop
 - queue execution now applies progressive queue-level retry backoff for repeated NotebookLM cooldown, rate-limit, and transient RPC failures, so long-running show backlogs stop hammering the same lectures every flat `15` minutes forever
@@ -169,7 +169,7 @@ Important operational note:
 
 ```bash
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
-NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard
+NOTEBOOKLM_PROFILE_PRIORITY=default,djspindoctor,nopeeeh,oskarvedel
 ```
 
 - To be notified when NotebookLM auth goes stale, configure at least one queue alert delivery path in the same env file. Supported paths are:
@@ -184,6 +184,7 @@ NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vede
   - `NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS`
   - `NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS`
   - `NOTEBOOKLM_QUEUE_ALERT_GITHUB_TIMEOUT_SECONDS`
+  - `NOTEBOOKLM_QUEUE_STALE_REQUEST_SECONDS` (defaults to `21600`, i.e. six hours)
 
 - For shadow evaluation runs under tight NotebookLM capacity, prefer one lecture and one content family at a time before scaling back up to full backlog draining. The queue now supports automatic retry scheduling for rate-limit failures, but smaller shadow batches still make debugging and quality comparison materially easier.
 - The Hetzner runtime contract for the queue now lives in [notebooklm-queue-operations.md](notebooklm-queue-operations.md).

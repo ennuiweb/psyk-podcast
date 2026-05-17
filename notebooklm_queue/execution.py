@@ -39,6 +39,10 @@ DEFAULT_ARTIFACT_WAIT_TIMEOUT_SECONDS = int(
 DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60"
 )
+DEFAULT_STALE_REQUEST_SECONDS = int(
+    os.environ.get("NOTEBOOKLM_QUEUE_STALE_REQUEST_SECONDS") or str(6 * 60 * 60)
+)
+PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,6 +54,7 @@ class ExecutionOptions:
     phase_timeout_seconds: int = DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS
     artifact_wait_timeout_seconds: int = DEFAULT_ARTIFACT_WAIT_TIMEOUT_SECONDS
     artifact_poll_interval_seconds: int = DEFAULT_ARTIFACT_POLL_INTERVAL_SECONDS
+    stale_request_seconds: int = DEFAULT_STALE_REQUEST_SECONDS
 
 
 def _int_env(name: str, default: int) -> int:
@@ -291,6 +296,178 @@ def _collect_output_progress(
     }
 
 
+def _load_current_profiles_from_env() -> dict[str, str]:
+    raw_path = str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip()
+    if not raw_path:
+        return {}
+    profiles_path = Path(raw_path).expanduser()
+    try:
+        raw = json.loads(profiles_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+    if isinstance(raw, dict) and isinstance(raw.get("profiles"), dict):
+        raw = raw["profiles"]
+    if not isinstance(raw, dict):
+        return {}
+
+    profiles: dict[str, str] = {}
+    for name, value in raw.items():
+        if not isinstance(name, str) or value is None:
+            continue
+        storage_path = Path(str(value)).expanduser()
+        if not storage_path.is_absolute():
+            storage_path = (profiles_path.parent / storage_path).resolve()
+        else:
+            storage_path = storage_path.resolve()
+        profiles[name] = str(storage_path)
+    return profiles
+
+
+def _request_log_timestamp(path: Path, payload: dict[str, Any]) -> datetime | None:
+    for key in ("created_at", "requested_at", "updated_at"):
+        parsed = parse_utcish_iso(str(payload.get(key) or "").strip())
+        if parsed is not None:
+            return parsed
+    try:
+        return datetime.fromtimestamp(path.stat().st_mtime, tz=UTC)
+    except OSError:
+        return None
+
+
+def _load_request_log(path: Path) -> dict[str, Any]:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _unique_path(path: Path) -> Path:
+    if not path.exists():
+        return path
+    stem = path.stem
+    suffix = path.suffix
+    for index in range(1, 1000):
+        candidate = path.with_name(f"{stem}.{index}{suffix}")
+        if not candidate.exists():
+            return candidate
+    raise RuntimeError(f"Unable to find unique quarantine path for {path}")
+
+
+def _abandoned_request_path(path: Path, abandoned_at: str) -> Path:
+    if path.name.endswith(".request.json"):
+        base = path.name[: -len(".request.json")]
+        return _unique_path(path.with_name(f"{base}.request.abandoned.{abandoned_at}.json"))
+    if path.name.endswith(".request.error.json"):
+        base = path.name[: -len(".request.error.json")]
+        return _unique_path(path.with_name(f"{base}.request.error.abandoned.{abandoned_at}.json"))
+    return _unique_path(path.with_name(f"{path.stem}.abandoned.{abandoned_at}{path.suffix}"))
+
+
+def _quarantine_request_log(
+    *,
+    repo_root: Path,
+    request_log: Path,
+    payload: dict[str, Any],
+    reasons: list[str],
+    abandoned_at: str,
+) -> dict[str, Any] | None:
+    payload = dict(payload)
+    payload["abandoned_at"] = utc_now_iso()
+    payload["abandoned_by"] = "notebooklm_queue"
+    payload["abandon_reason"] = "; ".join(reasons)
+    try:
+        request_log.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        abandoned_request = _abandoned_request_path(request_log, abandoned_at)
+        request_log.replace(abandoned_request)
+    except OSError:
+        return None
+
+    moved_error_log: str | None = None
+    base = request_log.name[: -len(".request.json")]
+    error_log = request_log.with_name(f"{base}.request.error.json")
+    if error_log.exists():
+        try:
+            abandoned_error = _abandoned_request_path(error_log, abandoned_at)
+            error_log.replace(abandoned_error)
+            moved_error_log = _relative_to_repo(repo_root, abandoned_error)
+        except OSError:
+            moved_error_log = _relative_to_repo(repo_root, error_log)
+
+    return {
+        "old_path": _relative_to_repo(repo_root, request_log),
+        "new_path": _relative_to_repo(repo_root, abandoned_request),
+        "error_log_path": moved_error_log,
+        "reasons": list(reasons),
+    }
+
+
+def _stale_request_reasons(
+    *,
+    request_log: Path,
+    payload: dict[str, Any],
+    now: datetime,
+    stale_seconds: int,
+    current_profiles: dict[str, str],
+) -> list[str]:
+    reasons: list[str] = []
+    created_at = _request_log_timestamp(request_log, payload)
+    if created_at is not None and (now - created_at).total_seconds() > stale_seconds:
+        reasons.append(f"older_than_{stale_seconds}s")
+
+    auth = payload.get("auth") if isinstance(payload.get("auth"), dict) else {}
+    profile = str(auth.get("profile") or "").strip()
+    if profile and current_profiles and profile not in current_profiles:
+        reasons.append(f"profile_not_configured:{profile}")
+
+    storage_path = str(auth.get("storage_path") or "").strip()
+    if storage_path and not Path(storage_path).expanduser().exists():
+        reasons.append(f"storage_missing:{storage_path}")
+    return reasons
+
+
+def _quarantine_stale_request_logs(
+    *,
+    adapter: Any,
+    repo_root: Path,
+    lecture_key: str,
+    content_types: tuple[str, ...],
+    stale_seconds: int,
+) -> list[dict[str, Any]]:
+    if stale_seconds <= 0:
+        return []
+    now = datetime.now(tz=UTC)
+    abandoned_at = now.strftime("%Y%m%dT%H%M%SZ")
+    current_profiles = _load_current_profiles_from_env()
+    quarantined: list[dict[str, Any]] = []
+    lecture_dirs = _find_lecture_dirs(output_root=adapter.output_root_path(repo_root), lecture_key=lecture_key)
+    for lecture_dir in lecture_dirs:
+        for request_log in sorted(lecture_dir.glob("*.request.json"), key=lambda path: path.name):
+            payload = _load_request_log(request_log)
+            artifact_type = str(payload.get("artifact_type") or "audio")
+            if artifact_type not in content_types:
+                continue
+            reasons = _stale_request_reasons(
+                request_log=request_log,
+                payload=payload,
+                now=now,
+                stale_seconds=stale_seconds,
+                current_profiles=current_profiles,
+            )
+            if not reasons:
+                continue
+            moved = _quarantine_request_log(
+                repo_root=repo_root,
+                request_log=request_log,
+                payload=payload,
+                reasons=reasons,
+                abandoned_at=abandoned_at,
+            )
+            if moved is not None:
+                quarantined.append(moved)
+    return quarantined
+
+
 def _sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -529,6 +706,42 @@ def execute_job(
             STATE_GENERATED,
             STATE_DOWNLOADING,
         }:
+            quarantined_requests = _quarantine_stale_request_logs(
+                adapter=adapter,
+                repo_root=options.repo_root,
+                lecture_key=lecture_key,
+                content_types=content_types,
+                stale_seconds=options.stale_request_seconds,
+            )
+            if quarantined_requests:
+                latest_progress = _collect_output_progress(
+                    adapter=adapter,
+                    repo_root=options.repo_root,
+                    lecture_key=lecture_key,
+                    content_types=content_types,
+                )
+                latest_progress["abandoned_request_count"] = len(quarantined_requests)
+                latest_progress["abandoned_request_logs"] = quarantined_requests
+                job = store.transition_job(
+                    show_slug=show_slug,
+                    job_id=str(job["job_id"]),
+                    state=STATE_RETRY_SCHEDULED,
+                    actor=options.actor,
+                    note="Quarantined stale NotebookLM request logs; requeueing generation for missing artifacts.",
+                    retry_at=utc_now_iso(),
+                    details={"run_id": run_id, "progress": latest_progress},
+                )
+                manifest["status"] = "waiting"
+                manifest["completed_at"] = utc_now_iso()
+                manifest["final_state"] = str(job.get("state") or "")
+                return _finalize_execution_manifest(
+                    store=store,
+                    job=job,
+                    show_slug=show_slug,
+                    manifest=manifest,
+                    run_id=run_id,
+                    progress=latest_progress,
+                )
             if str(job.get("state") or "") != STATE_DOWNLOADING:
                 job = store.transition_job(
                     show_slug=show_slug,

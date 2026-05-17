@@ -756,6 +756,82 @@ def test_execute_job_resumes_from_waiting_state_and_skips_generate(tmp_path: Pat
     assert [phase["name"] for phase in manifest["phases"]] == ["download"]
 
 
+def test_execute_job_quarantines_stale_request_logs_before_download(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    request_log = _request_log_path(repo_root)
+    output_file = _audio_output_path(repo_root)
+    request_log.parent.mkdir(parents=True, exist_ok=True)
+    request_log.write_text(
+        json.dumps(
+            {
+                "created_at": "2000-01-01T00:00:00+00:00",
+                "notebook_id": "nb-1",
+                "artifact_id": "art-1",
+                "output_path": str(output_file),
+                "artifact_type": "audio",
+                "auth": {
+                    "profile": "removed-profile",
+                    "storage_path": str(tmp_path / "missing-storage.json"),
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    error_log = request_log.with_name("episode.request.error.json")
+    error_log.write_text("previous failure", encoding="utf-8")
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(json.dumps({"profiles": {"default": "default-storage.json"}}), encoding="utf-8")
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "raise SystemExit('generate should not run')\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "raise SystemExit('download should not run')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        state=STATE_WAITING_FOR_ARTIFACT,
+        retry_at="2000-01-01T00:00:00+00:00",
+        note="Prepared stale request recovery test",
+    )
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root, stale_request_seconds=1),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
+    assert not request_log.exists()
+    assert not error_log.exists()
+    abandoned = list(request_log.parent.glob("episode.request.abandoned.*.json"))
+    abandoned_error = list(request_log.parent.glob("episode.request.error.abandoned.*.json"))
+    assert len(abandoned) == 1
+    assert len(abandoned_error) == 1
+    abandoned_payload = json.loads(abandoned[0].read_text(encoding="utf-8"))
+    assert "older_than_1s" in abandoned_payload["abandon_reason"]
+    assert "profile_not_configured:removed-profile" in abandoned_payload["abandon_reason"]
+    progress = updated["artifacts"]["execution"]["last_progress"]
+    assert progress["pending_request_count"] == 0
+    assert progress["abandoned_request_count"] == 1
+    assert progress["abandoned_request_logs"][0]["old_path"].endswith("episode.request.json")
+    manifest_path = store.root / str(updated["artifacts"]["execution"]["latest_run_manifest"])
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["phases"] == []
+    assert manifest["final_state"] == STATE_RETRY_SCHEDULED
+
+
 def test_execute_job_claims_next_queued_job_when_job_id_is_omitted(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
     request_log = _request_log_path(repo_root)

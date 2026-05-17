@@ -11,6 +11,8 @@ from pathlib import Path
 
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
+PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
+PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 
 
 def default_output_root() -> str:
@@ -182,9 +184,21 @@ def default_profiles_paths(repo_root: Path) -> list[Path]:
     ]
 
 
+def explicit_profiles_configured(profiles_file: str | None) -> bool:
+    return bool(
+        str(profiles_file or "").strip()
+        or str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip()
+    )
+
+
 def resolve_profiles_path(repo_root: Path, profiles_file: str | None) -> Path | None:
-    if profiles_file:
-        path = Path(profiles_file).expanduser()
+    effective_profiles_file = (
+        str(profiles_file or "").strip()
+        or str(os.environ.get(PROFILES_FILE_ENV_VAR) or "").strip()
+        or None
+    )
+    if effective_profiles_file:
+        path = Path(effective_profiles_file).expanduser()
         if not path.exists():
             raise SystemExit(f"Profiles file not found: {path}")
         return path
@@ -226,6 +240,35 @@ def load_profiles(path: Path) -> dict[str, str]:
     if not profiles:
         raise SystemExit("Profiles file did not contain any valid profile entries.")
     return profiles
+
+
+def parse_profile_priority(value: str | None) -> list[str]:
+    if not value:
+        return []
+    items: list[str] = []
+    for raw in value.split(","):
+        item = raw.strip()
+        if item and item not in items:
+            items.append(item)
+    return items
+
+
+def ordered_profile_items(
+    profiles: dict[str, str],
+    profile_priority: str | None,
+) -> list[tuple[str, str]]:
+    priority = parse_profile_priority(profile_priority)
+    items: list[tuple[str, str]] = []
+    used: set[str] = set()
+    for name in priority:
+        if name in profiles:
+            items.append((name, profiles[name]))
+            used.add(name)
+    for name, path in profiles.items():
+        if name in used:
+            continue
+        items.append((name, path))
+    return items
 
 
 def resolve_storage_path(
@@ -298,17 +341,19 @@ def collect_storage_candidates(
     storage: str | None,
     profile: str | None,
     profiles_file: str | None,
+    profile_priority: str | None,
     log_auth: dict | None,
 ) -> list[tuple[str | None, str]]:
     candidates: list[tuple[str | None, str]] = []
     seen: set[str | None] = set()
 
     def add(path: str | None, source: str) -> None:
-        if path in seen:
+        key = str(Path(path).expanduser().resolve()) if path else None
+        if key in seen:
             return
         if path and not Path(path).expanduser().exists():
             return
-        seen.add(path)
+        seen.add(key)
         candidates.append((path, source))
 
     if storage or profile:
@@ -321,6 +366,15 @@ def collect_storage_candidates(
         )
         add(path, source)
 
+    profiles_items: list[tuple[str, str]] = []
+    has_explicit_profiles = explicit_profiles_configured(profiles_file)
+    if not storage and not profile and has_explicit_profiles:
+        profiles_path = resolve_profiles_path(repo_root, profiles_file)
+        if profiles_path:
+            profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
+        for name, path in profiles_items:
+            add(path, f"profiles:{name}")
+
     if log_auth:
         path, source = resolve_storage_path(
             repo_root,
@@ -331,9 +385,11 @@ def collect_storage_candidates(
         )
         add(path, source)
 
-    profiles_path = resolve_profiles_path(repo_root, profiles_file)
-    if profiles_path:
-        for name, path in load_profiles(profiles_path).items():
+    if not storage and not profile and not has_explicit_profiles:
+        profiles_path = resolve_profiles_path(repo_root, profiles_file)
+        if profiles_path:
+            profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
+        for name, path in profiles_items:
             add(path, f"profiles:{name}")
 
     fallback_path = default_storage_path()
@@ -581,8 +637,16 @@ def main() -> int:
         help="Profile name from profiles.json (overrides per-log auth).",
     )
     parser.add_argument(
+        "--profile-priority",
+        default=str(os.environ.get(PROFILE_PRIORITY_ENV_VAR) or "").strip() or None,
+        help="Comma-separated profile names to try before the rest of the profiles file.",
+    )
+    parser.add_argument(
         "--profiles-file",
-        help="Path to profiles.json (used with --profile).",
+        help=(
+            "Path to profiles.json. Defaults to $NOTEBOOKLM_PROFILES_FILE "
+            "before local fallback profiles."
+        ),
     )
     parser.add_argument(
         "--timeout",
@@ -723,6 +787,7 @@ def main() -> int:
                 storage=args.storage,
                 profile=args.profile,
                 profiles_file=args.profiles_file,
+                profile_priority=args.profile_priority,
                 log_auth=log_auth,
             )
             if not candidates:

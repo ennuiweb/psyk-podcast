@@ -154,6 +154,17 @@ class ShowAdapter:
         if self.strict_download_output_root:
             command.append("--disable-default-extra-roots")
         command.extend(self.download_extra_args)
+        if self.include_profile_env_args:
+            _append_env_arg(
+                command,
+                option="--profile-priority",
+                env_name="NOTEBOOKLM_PROFILE_PRIORITY",
+            )
+            _append_env_arg(
+                command,
+                option="--profiles-file",
+                env_name="NOTEBOOKLM_PROFILES_FILE",
+            )
         notebooklm_bin = repo_root / ".venv" / "bin" / "notebooklm"
         if notebooklm_bin.exists():
             command.extend(["--notebooklm", str(notebooklm_bin)])

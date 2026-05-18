@@ -239,7 +239,26 @@
         "Habermas' og Lorenzers specifikke formuleringer af hermeneutisk videnskabsteori.",
         "Den ontologiske diskussion om Heidegger og Gadamers opfattelse af fænomenologi."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 2 (s. 188)",
+          "excerpt": "undslipper den klassiske forestilling",
+          "open_question": "Find forskellen på ekstern determination (romantikken/biologien) og systemintern determination (Freud)?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 2 (s. 190)",
+          "excerpt": "Det ubevidste er imidlertid ikke blot processer",
+          "open_question": "Bevis hvorfor det ubevidste ikke kan indeholde 'følelser'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 5 (s. 199)",
+          "excerpt": "identisk med psykologisk død",
+          "open_question": "Beslut hvordan det førbevidste adskiller sig fra det topisk ubevidste?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -497,8 +516,8 @@
           "number": 1,
           "task": "Tegn en skematisk kontrast mellem romantikkens 'Natur' og Freuds topiske model. Vis hvordan bestemmelseskraften bevæger sig indad.",
           "required_elements": [
-            "Pil fra en ekstern kilde til mennesket (Romantikken",
-            "En lukket boks (Psyken) med pile mellem Bevidsthed og Ubevidst (Freud",
+            "Pil fra en ekstern kilde til mennesket: Romantikken",
+            "En lukket boks: Psyken med pile mellem Bevidsthed og Ubevidst: Freud",
             "Mærkat: 'Systemintern determination'"
           ],
           "blank_space_hint": "Brug cirka en halv side til at adskille de to modeller tydeligt."
@@ -690,7 +709,26 @@
         "Habermas' og Lorenzers specifikke formuleringer af hermeneutisk videnskabsteori.",
         "Den ontologiske diskussion om Heidegger og Gadamers opfattelse af fænomenologi."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektion 2 (s. 188)",
+          "excerpt": "undslipper den klassiske forestilling",
+          "open_question": "Find forskellen på ekstern determination (romantikken/biologien) og systemintern determination (Freud)?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektion 2 (s. 190)",
+          "excerpt": "Det ubevidste er imidlertid ikke blot processer",
+          "open_question": "Bevis hvorfor det ubevidste ikke kan indeholde 'følelser'?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 5 (s. 199)",
+          "excerpt": "identisk med psykologisk død",
+          "open_question": "Beslut hvordan det førbevidste adskiller sig fra det topisk ubevidste?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -948,8 +986,8 @@
           "number": 1,
           "task": "Tegn en skematisk kontrast mellem romantikkens 'Natur' og Freuds topiske model. Vis hvordan bestemmelseskraften bevæger sig indad.",
           "required_elements": [
-            "Pil fra en ekstern kilde til mennesket (Romantikken",
-            "En lukket boks (Psyken) med pile mellem Bevidsthed og Ubevidst (Freud",
+            "Pil fra en ekstern kilde til mennesket: Romantikken",
+            "En lukket boks: Psyken med pile mellem Bevidsthed og Ubevidst: Freud",
             "Mærkat: 'Systemintern determination'"
           ],
           "blank_space_hint": "Brug cirka en halv side til at adskille de to modeller tydeligt."
@@ -1039,7 +1077,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

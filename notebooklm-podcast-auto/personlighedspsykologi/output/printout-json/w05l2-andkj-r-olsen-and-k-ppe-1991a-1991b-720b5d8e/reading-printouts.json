@@ -233,7 +233,26 @@
         "Freuds tidlige udvekslinger og komplicerede vennetermer med Wilhelm Fliess.",
         "Det præcise årstal for hver eneste lille ændring i Freuds tænkning."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af den økonomiske synsvinkel.",
+          "excerpt": "indre pirringer",
+          "open_question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Gennemgangen af driftens objekt og mål.",
+          "excerpt": "forskydes til andre områder",
+          "open_question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?"
+        },
+        {
+          "number": "3",
+          "source_location": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien.",
+          "excerpt": "ubevidst struktur af ønskefantasier",
+          "open_question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -651,7 +670,26 @@
         "Freuds tidlige udvekslinger og komplicerede vennetermer med Wilhelm Fliess.",
         "Det præcise årstal for hver eneste lille ændring i Freuds tænkning."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af den økonomiske synsvinkel.",
+          "excerpt": "indre pirringer",
+          "open_question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Gennemgangen af driftens objekt og mål.",
+          "excerpt": "forskydes til andre områder",
+          "open_question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?"
+        },
+        {
+          "number": "3",
+          "source_location": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien.",
+          "excerpt": "ubevidst struktur af ønskefantasier",
+          "open_question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -973,7 +1011,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

@@ -264,7 +264,32 @@
         "Teologiske debatter fra 1800-tallet omkring Jesu historicitet.",
         "Litterære plotdetaljer omkring gemte papirer i skrivepulte."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 96",
+          "excerpt": "at eks-istere betyder at træde ud",
+          "open_question": "Find den præcise forskel på dyrets ubekymrede eksistens og menneskets problematiske byrde?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 106",
+          "excerpt": "Eksistens adskiller [...] Tænken og Væren",
+          "open_question": "Afgør hvorfor naturvidenskabens objektive metoder ødelægger eksistensen i forsøget på at fange den?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 108",
+          "excerpt": "Mennesket er et Forhold, der forholder sig",
+          "open_question": "Afslør Kierkegaards sande motiv for at bruge pseudonymer og forvirring som psykologisk angreb?"
+        },
+        {
+          "number": "4",
+          "source_location": "s. 109",
+          "excerpt": "Det er fantasien, der befordrer denne åbenhed",
+          "open_question": "Forsvar påstanden om, at for meget abstrakt tænkning kan sabotere selve det at eksistere?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -617,9 +642,9 @@
           "required_elements": [
             "Jeget",
             "Forholdet i centrum",
-            "Pol 1 (Det nødvendige",
+            "Pol 1: Det nødvendige",
             "endelige",
-            "Pol 2 (Det mulige",
+            "Pol 2: Det mulige",
             "uendelige"
           ],
           "blank_space_hint": "Brug midten af siden til akser."
@@ -628,9 +653,9 @@
           "number": 2,
           "task": "Illustrer adskillelsen mellem metoder. Vis forskellen på at betragte sandheden køligt udefra og den subjektive kamp indefra.",
           "required_elements": [
-            "Objektiviteten (mikroskop",
+            "Objektiviteten: mikroskop",
             "Tænken",
-            "Subjektiviteten (handling",
+            "Subjektiviteten: handling",
             "Væren",
             "En afgrund eller mur imellem de to positioner"
           ],
@@ -859,7 +884,32 @@
         "Teologiske debatter fra 1800-tallet omkring Jesu historicitet.",
         "Litterære plotdetaljer omkring gemte papirer i skrivepulte."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 96",
+          "excerpt": "at eks-istere betyder at træde ud",
+          "open_question": "Find den præcise forskel på dyrets ubekymrede eksistens og menneskets problematiske byrde?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 106",
+          "excerpt": "Eksistens adskiller [...] Tænken og Væren",
+          "open_question": "Afgør hvorfor naturvidenskabens objektive metoder ødelægger eksistensen i forsøget på at fange den?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 108",
+          "excerpt": "Mennesket er et Forhold, der forholder sig",
+          "open_question": "Afslør Kierkegaards sande motiv for at bruge pseudonymer og forvirring som psykologisk angreb?"
+        },
+        {
+          "number": "4",
+          "source_location": "s. 109",
+          "excerpt": "Det er fantasien, der befordrer denne åbenhed",
+          "open_question": "Forsvar påstanden om, at for meget abstrakt tænkning kan sabotere selve det at eksistere?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1212,9 +1262,9 @@
           "required_elements": [
             "Jeget",
             "Forholdet i centrum",
-            "Pol 1 (Det nødvendige",
+            "Pol 1: Det nødvendige",
             "endelige",
-            "Pol 2 (Det mulige",
+            "Pol 2: Det mulige",
             "uendelige"
           ],
           "blank_space_hint": "Brug midten af siden til akser."
@@ -1223,9 +1273,9 @@
           "number": 2,
           "task": "Illustrer adskillelsen mellem metoder. Vis forskellen på at betragte sandheden køligt udefra og den subjektive kamp indefra.",
           "required_elements": [
-            "Objektiviteten (mikroskop",
+            "Objektiviteten: mikroskop",
             "Tænken",
-            "Subjektiviteten (handling",
+            "Subjektiviteten: handling",
             "Væren",
             "En afgrund eller mur imellem de to positioner"
           ],
@@ -1327,7 +1377,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

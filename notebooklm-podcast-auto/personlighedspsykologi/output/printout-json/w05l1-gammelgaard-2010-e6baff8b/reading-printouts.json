@@ -245,7 +245,26 @@
         "De meget specifikke biografiske detaljer om patienten med diktafonen, så længe du forstår princippet i casen.",
         "Franske psykoanalytikeres interne debatter om hermeneutik i starten af kapitlet."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 548",
+          "excerpt": "Psykoanalysen har sin egen empiri",
+          "open_question": "Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 559",
+          "excerpt": "skaber af sin egen indre virkelighed",
+          "open_question": "Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 566",
+          "excerpt": "sammenhængende fortælling, der er konsistent",
+          "open_question": "Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -531,7 +550,7 @@
           "number": 1,
           "task": "Tegn en firkantet model eller en liste, der viser Ricoeurs fire kriterier for afgrænsning af psykoanalytisk empiri.",
           "required_elements": [
-            "Det første kriterium om mediets form (sprog",
+            "Det første kriterium om mediets form: sprog",
             "Det andet kriterium om formålet med udsagnet",
             "Det tredje kriterium om hvilken virkelighed der tæller",
             "Det fjerde kriterium om formen resultatet præsenteres i"
@@ -737,7 +756,26 @@
         "De meget specifikke biografiske detaljer om patienten med diktafonen, så længe du forstår princippet i casen.",
         "Franske psykoanalytikeres interne debatter om hermeneutik i starten af kapitlet."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 548",
+          "excerpt": "Psykoanalysen har sin egen empiri",
+          "open_question": "Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 559",
+          "excerpt": "skaber af sin egen indre virkelighed",
+          "open_question": "Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 566",
+          "excerpt": "sammenhængende fortælling, der er konsistent",
+          "open_question": "Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1023,7 +1061,7 @@
           "number": 1,
           "task": "Tegn en firkantet model eller en liste, der viser Ricoeurs fire kriterier for afgrænsning af psykoanalytisk empiri.",
           "required_elements": [
-            "Det første kriterium om mediets form (sprog",
+            "Det første kriterium om mediets form: sprog",
             "Det andet kriterium om formålet med udsagnet",
             "Det tredje kriterium om hvilken virkelighed der tæller",
             "Det fjerde kriterium om formen resultatet præsenteres i"
@@ -1121,7 +1159,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

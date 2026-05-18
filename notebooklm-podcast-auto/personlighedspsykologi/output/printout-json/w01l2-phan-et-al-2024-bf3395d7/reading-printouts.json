@@ -1,0 +1,1027 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:19:14Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "81b4f727d52df1225fa3f3fa544865dec1657aab390a2aba8571f4ba7b24690b",
+    "source_files_signature": "4b21dad874dd6fd24c522b0a60cb73e43c5507f42b1e68bc9bd2050a0e4a2da1",
+    "source_card": "fc422aaacb4301b4672ea740a21a7995762c84660887de9a81ade4c4823ba121",
+    "revised_lecture_substrate": "394dd67b060cb71fcc5f77b4fdadc57371b50c3b057f653cfcb9cab7e735a15f",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+    "lecture_key": "W01L2",
+    "title": "Phan et al. (2024)",
+    "reading_title": "Phan et al. (2024)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Phan et al. (2024).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 21,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+      "lecture_key": "W01L2",
+      "source_title": "Phan et al. (2024)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at se, hvilket problem teksten løser. Læs teaser-teksten for at forstå spændingen, og hold øje med subproblemerne, mens du læser genvejs-teksten (Abridged Reader).",
+      "teaser_paragraphs": [
+        "Psykologien har et grundlæggende problem indbygget i selve sit metodiske fundament. Vi vil utrolig gerne forstå og hjælpe det enkelte unikke menneske, men stort set hele vores forskningsmaskine er bygget til at udregne gennemsnitlige adfærdsmønstre for store grupper. Vi ender med at vurdere den specifikke patient ud fra, hvad den \"typiske\" gennemsnitsperson gør.",
+        "I årtier har forskere og teoretikere forsøgt at løse denne massive spænding ved at dele verden stramt op i to lejre: den nomotetiske lejr (der leder efter almengyldige naturlove) og den idiografiske lejr (der studerer det unikke individ i dybden). Men som Phan et al. køligt demonstrerer, er denne traditionelle skelnen brudt fuldstændig sammen. Forskere har brugt begreberne i flæng, og vi har nu en metodisk rodekasse, der forplumrer, hvad vi egentlig kan bevise med vores tests.",
+        "Den allerstørste konsekvens af denne rodekasse er det fænomen, forfatterne kalder den ergodiske fejlslutning. Det er den udbredte og farlige antagelse, at *population-based parameters* helt problemfrit kan oversættes til *the psychological functioning of individuals*. Men menneskelige sind er ikke stabile, udskiftelige enheder i et lukket system.",
+        "For at skabe et nyt fundament foreslår Phan et al. et helt nyt landkort til os. Frem for at spørge, om en test er nomotetisk eller idiografisk, tvinger de os til præcist at definere vores *Focal Entity* og vores *Generalization type*. Dette er ikke en tør formeløvelse. Det er et systematisk forsøg på endelig at bygge et metodeapparat, der kan rumme det enkelte virkelige menneske."
+      ],
+      "main_problem": "Hvordan kan vi præcist afkode, hvad en given psykologisk forskningsmetode reelt tillader os at konkludere om henholdsvis individer og gennemsnitlige populationer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er den traditionelle skelnen mellem nomotetisk og idiografisk brudt sammen i moderne forskning?",
+          "why_it_matters": "Fordi begrebsforvirring fører til forkerte konklusioner om, hvad et forskningsdesign rent faktisk beviser.",
+          "answer_form": "Kort mekanistisk forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er forskellen på 'Focal Entity' og 'Generalization type'?",
+          "why_it_matters": "Det er de to nye analytiske byggeklodser, der erstatter den gamle model.",
+          "answer_form": "Kort kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan ser Phan et al.'s nye 2x3 matrix ud i praksis?",
+          "why_it_matters": "Det er selve det værktøj, du skal bruge til eksamen for at analysere andre metoders gyldighed.",
+          "answer_form": "Tegnet model med seks celler"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den ergodiske fejlslutning, og hvorfor rammer den næsten al mainstream psykologi?",
+          "why_it_matters": "Det er den mest kritiske fælde at forstå, før du stoler på et populationsbaseret testresultat overført til en patient.",
+          "answer_form": "Årsagssammenhæng"
+        },
+        {
+          "number": 5,
+          "question": "Hvad er formålet med forfatternes 25 'polytomies'?",
+          "why_it_matters": "Det viser kravet om total overensstemmelse fra forskningsspørgsmål til endelig konklusion.",
+          "answer_form": "Funktionsbeskrivelse"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst er den metodiske bagdør ind til at forstå kursets kernekritik. Den leverer det knivskarpe bevis for, hvorfor vi ikke bevidstløst kan regne gennemsnit ud fra en flok og trække konklusionerne ned over hovedet på en individuel patient.",
+      "overview": [
+        "Nedbrydning af det nomotetiske og idiografiske paradigme.",
+        "Konstruktionen af en ny 2x3 matrix for inferens og generalisering.",
+        "Afsløringen af den ergodiske fejlslutning i moderne trækpsykologi."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "The nomothetic-idiographic distinction",
+          "task": "Afdæk præcis hvordan historiske teoretikere som Allport var med til at sløre grænserne for begreberne.",
+          "why_it_matters": "For at forstå løsningen skal du først kende skaden.",
+          "stop_signal": "når du når overskriften Disentangling the conceptual meanings"
+        },
+        {
+          "number": 2,
+          "source_location": "Disentangling the conceptual meanings",
+          "task": "Find definitionerne på de to nye primære dimensioner: Fokus-enhed og generaliseringstype.",
+          "why_it_matters": "Disse er forfatternes alternativ til det ødelagte begrebspar.",
+          "stop_signal": "når du rammer matricen i Table 2"
+        },
+        {
+          "number": 3,
+          "source_location": "The population-to-individual problem",
+          "task": "Isolér den matematiske og metodiske definition på the ergodic fallacy.",
+          "why_it_matters": "Det er kursets måske vigtigste våben mod ukritiske spørgeskemaresultater.",
+          "stop_signal": "når de går videre til Cross-population generalizations"
+        },
+        {
+          "number": 4,
+          "source_location": "A more fine-grained systematization",
+          "task": "Forstå grundtanken bag at bruge polytomies som en tjekliste for epistemologisk klarhed.",
+          "why_it_matters": "Det peger fremad mod, hvordan vi designer valid forskning fremover.",
+          "stop_signal": "når du når til sektionen Discussion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "insufficient for categorizing research approaches",
+          "why": "Den hårde dom over det nuværende sprogbrug i forskningsdesign.",
+          "where_to_look": "Abstract"
+        },
+        {
+          "target": "falls prey to the ergodic fallacy",
+          "why": "Konsekvensen af at overtræde grænsen mellem individ og gruppe.",
+          "where_to_look": "The population-to-individual problem"
+        },
+        {
+          "target": "bringing back the person into personality science",
+          "why": "Forfatternes egen udmelding af deres bagvedliggende politisk-teoretiske mål.",
+          "where_to_look": "Discussion"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "At mestre Windelbands originale tyske filosofiske intention bag begreberne ned til mindste detalje.",
+        "Den fulde tabel (Table 3) med samtlige 25 polytomies – du skal blot forstå princippet i at have en tjekliste.",
+        "Komplekse statistiske modelleringskoncepter som GIMME-algoritmer."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse problemerne opstillet i Reading Guide. Teksten erstatter store dele af kildetekstens omveje med direkte svar på, hvordan matrixen fungerer.",
+      "coverage_note": "Sammendraget dækker tekstens kritik af den klassiske nomotetisk/idiografisk splittelse, introducerer 2x3 matricen og udpensler mekanikken i den ergodiske fejlslutning.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "The nomothetic-idiographic distinction",
+          "heading": "Et teoretisk morads",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At lokalisere, hvorfor to af psykologiens mest brugte begreber faktisk slører mere, end de opklarer?",
+          "explanation_paragraphs": [
+            "Historisk set har psykologien delt sit forskningslandskab stramt op. Den nomotetiske lejr fokuserer på at finde generelle, universelle naturlove, mens den idiografiske lejr insisterer på at studere det enestående, komplekse individ i dybden.",
+            "Men Phan et al. dokumenterer, at disse velmente kasser er rodet fatalt sammen. Berømte teoretikere som Gordon Allport begyndte nemlig at bruge ordet 'nomotetisk' som synonym for metoder, der sammenligner grupper af mennesker med hinanden (between-person aggregering). Tilsvarende blev 'idiografisk' reduceret til at betyde forskning, der blot kigger på en enkelt person over tid (within-person).",
+            "Konsekvensen af denne sprogforvirring er massiv. Forskere blander nu helt systematisk spørgsmålet om, *hvem* de observerer, sammen med spørgsmålet om, *hvilken slags lovmæssighed* de prøver at bevise. Det maskerer svaghederne i moderne mainstreampsykologi, når vi lader som om et testgennemsnit fundet i en gruppe er en nomotetisk 'naturlov' for alle individer."
+          ],
+          "key_points": [
+            "Oprindelig nomotetisk = jagten på universelle naturlove.",
+            "Oprindelig idiografisk = in-depth studie af den unikke enhed.",
+            "Sammenblanding har skabt en illusion om, at gruppedata er universelle naturlove."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 2,
+          "source_location": "Disentangling the conceptual meanings",
+          "heading": "De to nye byggeklodser: Enhed og Generalisering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At etablere et præcist begrebsapparat, der adskiller observationsmål fra slutningsmål?",
+          "explanation_paragraphs": [
+            "For at bygge et sundere metodisk fundament introducerer forfatterne to nye, adskilte dimensioner. Den første dimension er Focal Entity (fokus-enhed): Undersøger din forskning primært en bestemt person, eller handler dine målinger om en population som en aggregeret helhed?",
+            "Den anden dimension er typen af Generalization (generalisering). Hvis vi vil lave en lovmæssighed, kan vi gøre det på to måder. Vi kan lave en *enheds-specifik generalisering*, hvor vi finder mønstre internt i én specifik enhed – fx faste mønstre for én persons humør hen over ugen, eller mønstre for én specifik demografisk gruppe. Alternativt kan vi stræbe efter en *tvær-enheds generalisering* (cross-entity), hvor vi jager en lov, der gælder strengt og konsekvent for samtlige undersøgte enheder fra person til person."
+          ],
+          "key_points": [
+            "Fokus-enhed afgør om vi undersøger 'Person' eller 'Population'.",
+            "Enheds-specifik generalisering undersøger lovmæssigheder indeni den valgte enhed.",
+            "Tvær-enheds generalisering kræver, at loven virker på tværs af alle enheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "concerning the level of aggregation",
+              "why_it_matters": "Viser at fokus-enheden dikterer, hvordan vi må slå vores data sammen.",
+              "source_location": "Focal entities..."
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Not two but six: Broad approaches",
+          "heading": "Det nye kort: 2x3 Matricen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At kortlægge forskningstilgange systematisk ud fra de to nye dimensioner?",
+          "explanation_paragraphs": [
+            "Ved systematisk at krydse de to fokus-enheder (Person vs. Population) med de tre generaliseringsmål (Ingen vs. Enheds-specifik vs. Tvær-enheds) opstiller forfatterne en matrix med præcis seks forskningstilgange. Dette kortlægger feltet uden forvirrende klichéer.",
+            "Den konventionelle mainstreampsykologi – det (Neo-)Galtonianske paradigme – lander i feltet for 'Population-specific generalizations'. Her regner man på gennemsnit og varians for hele gruppen, men man frembringer ingen regler, der garanteret rammer den enkelte.",
+            "I et helt andet felt finder vi den klassiske Wundtianske tilgang placeret under 'Cross-person generalizations'. Her analyseres hvert individ minutiøst for sig (N=1), og først når en regel virker separat på alle personer, gøres den til en tværgående psykologisk lov."
+          ],
+          "key_points": [
+            "Matricen erstatter nomotetisk/idiografisk med 6 analytiske muligheder.",
+            "Mainstream-psykologi sidder fast i populationsspecifik generalisering.",
+            "Det er muligt at lede efter faste generaliseringer inden for rammerne af én enkelt person over tid."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "The population-to-individual problem and the ergodic fallacy",
+          "heading": "Den ergodiske fælde",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At afsløre, hvorfor det er farligt og ofte ugyldigt at overføre populationsgennemsnit til et specifikt individ i terapi eller vurdering?",
+          "explanation_paragraphs": [
+            "Det største og farligste problem i den empiriske psykologi opstår, når en kliniker eller forsker tager et statistisk grupperesultat og forudsiger handlinger eller træk hos ét bestemt individ ud fra det gennemsnit. Dette overgreb kaldes den ergodiske fejlslutning.",
+            "Årsagen er ren matematik. For at et system tillader os at trække populationsgennemsnit præcist ned over individer, skal systemet være 'ergodisk'. Det kræver at to benhårde krav er opfyldt: Populationen skal være homogen (alle individer skal reagere strukturelt ens), og den skal være stationær (mekanismerne må ikke ændre sig over tid).",
+            "Da menneskets bevidsthed og adfærd åbenlyst bryder begge disse regler konstant, er det ugyldigt at antage, at en given gennemsnitsdansker og et specifikt individ fungerer på samme måde. Mainstream trækpsykologi mangler metodisk autoritet til at tale om det enkelte menneske."
+          ],
+          "key_points": [
+            "Den ergodiske fejlslutning opstår, når gruppesnit tvinges ned over individer.",
+            "Ergodicitet kræver fuldstændig homogenitet og stationaritet.",
+            "Mennesker er ikke ergodiske, hvilket krakelerer fundamentet under mange standardtests som klinisk individuelt værktøj."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "The population-to-individual problem",
+              "passage": "Any study that uses analytical strategies based on population-based parameters and interprets the findings as concerning the psychological functioning of individuals falls prey to the ergodic fallacy.",
+              "why_it_matters": "Dette er Phan et al.'s skarpeste og mest afgørende formulering. Brug den som et metodisk våben, når du møder artikler, der lover indsigt i individet via gruppetal."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "A more fine-grained systematization",
+          "heading": "Polytomies som kvalitetskontrol",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At sikre metodisk stringens helt nede i de designmæssige detaljer?",
+          "explanation_paragraphs": [
+            "For at undgå at falde i de etablerede fælder, især den ergodiske fejlslutning, er det ikke nok bare at kende til matricens eksistens. Phan et al. lancerer derfor et rammeværk bestående af 25 'polytomies'.",
+            "Disse polytomies er kategoriske beslutningsvalg, der tvinger forskeren til eksplicit at vælge designparametre i hele forskningsprocessen: Fra forskningsspørgsmål, til data-input, til metode og til inferens-output. Målet er at skabe streng logisk overensstemmelse.",
+            "Hvis en forsker påstår at studere en dynamisk proces inde i et menneske, tvinger dette tjekliste-system os til at afsløre det, hvis de reelt kun benytter tværsnitsdata fra 1000 forskellige mennesker. Polytomierne forhindrer den udbredte metode-sløseri og sikrer, at konklusionen hviler på den korrekte 'Focal Entity'."
+          ],
+          "key_points": [
+            "25 polytomies fungerer som en ufravigelig metodisk tjekliste.",
+            "De kræver logisk alignement mellem intention, data og output.",
+            "Beskytter mod den blinde anvendelse af standardiserede gruppetests på forkerte spørgsmål."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er den traditionelle skelnen mellem nomotetisk og idiografisk brudt sammen i moderne forskning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort mekanistisk forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er forskellen på 'Focal Entity' og 'Generalization type'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ser Phan et al.'s nye 2x3 matrix ud i praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tegnet model med seks celler",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den ergodiske fejlslutning, og hvorfor rammer den næsten al mainstream psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Årsagssammenhæng",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er formålet med forfatternes 25 'polytomies'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Funktionsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi præcist afkode, hvad en given psykologisk forskningsmetode reelt tillader os at konkludere om henholdsvis individer og gennemsnitlige populationer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at løse denne del fra hukommelsen for at lade logikken falde på plads i hovedet. Slå først op i Abridged Reader bagefter, hvis du er i tvivl eller har brug for at reparere en sætning.",
+      "overview": [
+        "Teksten dekonstruerer den slørede traditionelle adskillelse mellem jagten på naturlove og jagten på det unikke individ.",
+        "Den introducerer et strammere framework med en 2x3 matrix for inferens baseret på fokus-enhed og generalisering.",
+        "Den leverer et metodisk grundlag for at kritisere populationsbaserede gennemsnit gennem opgøret med den ergodiske fejlslutning."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den oprindelige videnskabelige skelnen mellem discipliner, der søger generelle love, og discipliner, der studerer partikulære enheder i dybden, kaldes for __________ og idiografisk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Phan et al. indfører et nyt begreb for, præcis *hvem* vores data i sidste ende udtaler sig om. Dette kaldet de en 'Focal __________'.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Hvis vi udelukkende vil lave en lovmæssighed om ét specifik menneskes svingninger over tid, opererer vi med en __________ generalisering.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det farlige kvantitative greb, hvor man antager at et populationsgennemsnit tillader os at forudsige den psykologiske funktion hos ét bestemt individ, kaldes the __________ fallacy.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For matematisk at kunne trække gruppedata direkte ned over individer, skal populationen ikke kun være stationær, men også ekstremt __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Mange psykologiske spørgeskemaer, der samler træk for grupper, tilhører det mainstream-paradigme som forfatterne kalder den (Neo-)__________ tilgang.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navn"
+        },
+        {
+          "number": 7,
+          "sentence": "Tjeklisten, der tvinger forskeren til at skabe logisk alignement mellem intention, data og konklusion for at undgå fejlagtig overførsel, kaldes de 25 __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn forfatternes nye videnskabelige landkort, som erstatter nomotetisk/idiografisk. Opstil en tabel eller et rudemetværk med 2 rækker og 3 kolonner. Skriv de to typer 'Focal Entity' på Y-aksen og de tre typer 'Generalization' på X-aksen.",
+          "required_elements": [
+            "En 2x3 matrix",
+            "de korrekte akse-navne",
+            "placering af feltet for 'Population-specific generalizations'"
+          ],
+          "blank_space_hint": "Tegn tabellen stort nok til at du kan sætte et kryds i det felt, der domineres af mainstream kvantitativ psykologi."
+        },
+        {
+          "number": 2,
+          "task": "Rekonstruér mekanismen i 'Den ergodiske fejlslutning'. Tegn en illustration, der viser, hvor forsøget på inferens knækker over.",
+          "required_elements": [
+            "En stor sky der repræsenterer populationsgennemsnittet",
+            "en pil der peger direkte ned mod en specifik person",
+            "et stærkt forbudsskilt eller kryds over pilen med stikordene om homogenitet",
+            "stationaritet knyttet til"
+          ],
+          "blank_space_hint": "Brug pladsen til at vise retningen på den logiske fejl: Fra population og ulovligt ned til individ."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine skudklare argumenter og advarsler til den mundtlige eksamen, når I diskuterer validiteten af en metode eller et testbatteri.",
+      "use_this_text_for": [
+        "At levere en stærk, formel kritik af at bruge standardiserede træk-tests til klinisk vurdering af specifikke enkeltindivider.",
+        "At definere 'Den ergodiske fejlslutning' som et argument imod at generalisere gennemsnit til specifik psykologisk handlen.",
+        "At afdække misforholdet mellem en metodes epistemologiske byggeklodser (Focal Entity) og dens faktiske konklusioner.",
+        "At vise censor at du kan skille debatten ad i dens komponenter uden blindt at bruge farvede ord som 'nomotetisk' og 'idiografisk'."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Lamiells Kritisk Personalisme",
+          "connection": "Phan et al. giver dig de iskolde matematiske og metodiske argumenter (ergodic fallacy), som Lamiell udbygger filosofisk i sit opgør med 'psychodemography'."
+        },
+        {
+          "course_theme": "Looping Effects og Hacking",
+          "connection": "Hvis den ergodiske fejlslutning tvinger forkerte gennemsnitskategorier ned over hovedet på en person, kan dette ulovlige mærkat sætte utilsigtede looping effects i gang hos testpersonen."
+        },
+        {
+          "course_theme": "Essens vs. Kontekst",
+          "connection": "Trækpsykologien forudsætter ofte universel essens via populationsmålinger. 2x3 matricen tillader en undersøgelse af essens internt i det specifikke individ uden at påtvinge en befolkningskontekst."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Allports originale drøm",
+          "how_to_compare": "Vis forskellen mellem Allports slørede idiografiske metode og den skarpe 'person-specific generalization' model, der nu formaliserer individets lovmæssigheder."
+        },
+        {
+          "compare_with": "Galton vs. Wundt",
+          "how_to_compare": "Sæt Neo-Galtonianske between-person modeller (the average man) klart over for Wundtianske cross-person lovmæssigheder (findes mønsteret konsistent i person 1, person 2, person 3...)."
+        },
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Demonstrer the ergodic fallacy ved at pege på, at Big Five primært fanger 'population-specific' varians, men anvendes i HR og psykiatri, som om det var 'person-specific'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når teksten udleder faste sandheder om individet fra et normativt spørgeskema",
+          "use_in_answer": "Sig højt: 'Lige her er det helt oplagt at bringe den ergodiske fejlslutning på banen. Forskerne hævder at sige noget om individets psykologi, men mennesket er ikke stationært nok til den udledning.'",
+          "caution": "Husk at dokumentere overfor eksaminator, at du forstår ergodicitets-kravene."
+        },
+        {
+          "prompt_type": "Når debatten rammer om 'både/og' er godt i metoder",
+          "use_in_answer": "Brug matricen. Vis, at vi ikke skal blande idiografisk og nomotetisk, men i stedet overveje at kombinere *person-specific* viden med *cross-person* viden.",
+          "caution": "Vær specifik. Tal om Focal Entities i stedet for bare 'kvalitativ kombineret med kvantitativ'."
+        },
+        {
+          "prompt_type": "Når censor spørger 'Er denne metode så objektivt dårlig?'",
+          "use_in_answer": "Settle spørgsmålet roligt ved at sige: 'Nej, (Neo-)Galtonianske populationsdesigns er fremragende til at forstå populationen. Fejlen opstår først, når inferensen bryder rammen og sigter mod individet.'",
+          "caution": "Afvis ikke al populationsforskning. Det virker useriøst. Adskil formål og konklusion."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At idiografisk eller individfokuseret forskning betyder, at man overhovedet ikke prøver at finde generaliserbare lovmæssigheder.",
+          "better_reading": "At studere N=1 kan rumme *person-specific generalizations*, hvor man f.eks. fastlægger solide psykologiske love for, præcis hvordan *denne* patients psykologi fungerer i pressede situationer over tid."
+        },
+        {
+          "trap": "At menneskepsyken blot er en anelse ude af trit med ergodicitets-kravene.",
+          "better_reading": "At det slet ikke er tæt på. Mennesker udskifter viden, ændrer sig og opfører sig voldsomt forskelligt. De to matematiske krav opfyldes stort set aldrig af levende subjekter."
+        },
+        {
+          "trap": "At bruge termerne nomotetisk og idiografisk ukritisk videre i sin eksamensbesvarelse.",
+          "better_reading": "Start med at definere, hvorfor du enten dropper begreberne helt på baggrund af Phan et al., eller kun anvender dem historisk afgrænset."
+        }
+      ],
+      "mini_exam_prompt_question": "Vurdér gyldigheden af, at en arbejdsgiver ukritisk benytter populationsbaserede personlighedstests til at forudsige fremtidig krise-adfærd for en specifik jobansøger. Beskyt dit argument med inddragelse af den ergodiske fejlslutning.",
+      "mini_exam_answer_plan_slots": [
+        "Sortér testens fundament ind i feltet 'Population-specific generalization' fra 2x3 matricen.",
+        "Læg kort kravene til ergodicitet frem (homogenitet og stationaritet).",
+        "Kombinér de to pointer til et 'dræbende hug': Modsat vand i et rør er mennesker dynamiske, ergo svigter fundamentet under konklusionen ned på ansøgeren.",
+        "Afslut elegant med at trække på en alternativ, 'person-specific' overvejelse som HR kunne gøre brug af i stedet."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l2-phan-et-al-2024-bf3395d7",
+      "lecture_key": "W01L2",
+      "source_title": "Phan et al. (2024)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at se, hvilket problem teksten løser. Læs teaser-teksten for at forstå spændingen, og hold øje med subproblemerne, mens du læser genvejs-teksten (Abridged Reader).",
+      "teaser_paragraphs": [
+        "Psykologien har et grundlæggende problem indbygget i selve sit metodiske fundament. Vi vil utrolig gerne forstå og hjælpe det enkelte unikke menneske, men stort set hele vores forskningsmaskine er bygget til at udregne gennemsnitlige adfærdsmønstre for store grupper. Vi ender med at vurdere den specifikke patient ud fra, hvad den \"typiske\" gennemsnitsperson gør.",
+        "I årtier har forskere og teoretikere forsøgt at løse denne massive spænding ved at dele verden stramt op i to lejre: den nomotetiske lejr (der leder efter almengyldige naturlove) og den idiografiske lejr (der studerer det unikke individ i dybden). Men som Phan et al. køligt demonstrerer, er denne traditionelle skelnen brudt fuldstændig sammen. Forskere har brugt begreberne i flæng, og vi har nu en metodisk rodekasse, der forplumrer, hvad vi egentlig kan bevise med vores tests.",
+        "Den allerstørste konsekvens af denne rodekasse er det fænomen, forfatterne kalder den ergodiske fejlslutning. Det er den udbredte og farlige antagelse, at *population-based parameters* helt problemfrit kan oversættes til *the psychological functioning of individuals*. Men menneskelige sind er ikke stabile, udskiftelige enheder i et lukket system.",
+        "For at skabe et nyt fundament foreslår Phan et al. et helt nyt landkort til os. Frem for at spørge, om en test er nomotetisk eller idiografisk, tvinger de os til præcist at definere vores *Focal Entity* og vores *Generalization type*. Dette er ikke en tør formeløvelse. Det er et systematisk forsøg på endelig at bygge et metodeapparat, der kan rumme det enkelte virkelige menneske."
+      ],
+      "main_problem": "Hvordan kan vi præcist afkode, hvad en given psykologisk forskningsmetode reelt tillader os at konkludere om henholdsvis individer og gennemsnitlige populationer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor er den traditionelle skelnen mellem nomotetisk og idiografisk brudt sammen i moderne forskning?",
+          "why_it_matters": "Fordi begrebsforvirring fører til forkerte konklusioner om, hvad et forskningsdesign rent faktisk beviser.",
+          "answer_form": "Kort mekanistisk forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvad er forskellen på 'Focal Entity' og 'Generalization type'?",
+          "why_it_matters": "Det er de to nye analytiske byggeklodser, der erstatter den gamle model.",
+          "answer_form": "Kort kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan ser Phan et al.'s nye 2x3 matrix ud i praksis?",
+          "why_it_matters": "Det er selve det værktøj, du skal bruge til eksamen for at analysere andre metoders gyldighed.",
+          "answer_form": "Tegnet model med seks celler"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den ergodiske fejlslutning, og hvorfor rammer den næsten al mainstream psykologi?",
+          "why_it_matters": "Det er den mest kritiske fælde at forstå, før du stoler på et populationsbaseret testresultat overført til en patient.",
+          "answer_form": "Årsagssammenhæng"
+        },
+        {
+          "number": 5,
+          "question": "Hvad er formålet med forfatternes 25 'polytomies'?",
+          "why_it_matters": "Det viser kravet om total overensstemmelse fra forskningsspørgsmål til endelig konklusion.",
+          "answer_form": "Funktionsbeskrivelse"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst er den metodiske bagdør ind til at forstå kursets kernekritik. Den leverer det knivskarpe bevis for, hvorfor vi ikke bevidstløst kan regne gennemsnit ud fra en flok og trække konklusionerne ned over hovedet på en individuel patient.",
+      "overview": [
+        "Nedbrydning af det nomotetiske og idiografiske paradigme.",
+        "Konstruktionen af en ny 2x3 matrix for inferens og generalisering.",
+        "Afsløringen af den ergodiske fejlslutning i moderne trækpsykologi."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "The nomothetic-idiographic distinction",
+          "task": "Afdæk præcis hvordan historiske teoretikere som Allport var med til at sløre grænserne for begreberne.",
+          "why_it_matters": "For at forstå løsningen skal du først kende skaden.",
+          "stop_signal": "når du når overskriften Disentangling the conceptual meanings"
+        },
+        {
+          "number": 2,
+          "source_location": "Disentangling the conceptual meanings",
+          "task": "Find definitionerne på de to nye primære dimensioner: Fokus-enhed og generaliseringstype.",
+          "why_it_matters": "Disse er forfatternes alternativ til det ødelagte begrebspar.",
+          "stop_signal": "når du rammer matricen i Table 2"
+        },
+        {
+          "number": 3,
+          "source_location": "The population-to-individual problem",
+          "task": "Isolér den matematiske og metodiske definition på the ergodic fallacy.",
+          "why_it_matters": "Det er kursets måske vigtigste våben mod ukritiske spørgeskemaresultater.",
+          "stop_signal": "når de går videre til Cross-population generalizations"
+        },
+        {
+          "number": 4,
+          "source_location": "A more fine-grained systematization",
+          "task": "Forstå grundtanken bag at bruge polytomies som en tjekliste for epistemologisk klarhed.",
+          "why_it_matters": "Det peger fremad mod, hvordan vi designer valid forskning fremover.",
+          "stop_signal": "når du når til sektionen Discussion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "insufficient for categorizing research approaches",
+          "why": "Den hårde dom over det nuværende sprogbrug i forskningsdesign.",
+          "where_to_look": "Abstract"
+        },
+        {
+          "target": "falls prey to the ergodic fallacy",
+          "why": "Konsekvensen af at overtræde grænsen mellem individ og gruppe.",
+          "where_to_look": "The population-to-individual problem"
+        },
+        {
+          "target": "bringing back the person into personality science",
+          "why": "Forfatternes egen udmelding af deres bagvedliggende politisk-teoretiske mål.",
+          "where_to_look": "Discussion"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "At mestre Windelbands originale tyske filosofiske intention bag begreberne ned til mindste detalje.",
+        "Den fulde tabel (Table 3) med samtlige 25 polytomies – du skal blot forstå princippet i at have en tjekliste.",
+        "Komplekse statistiske modelleringskoncepter som GIMME-algoritmer."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner for at løse problemerne opstillet i Reading Guide. Teksten erstatter store dele af kildetekstens omveje med direkte svar på, hvordan matrixen fungerer.",
+      "coverage_note": "Sammendraget dækker tekstens kritik af den klassiske nomotetisk/idiografisk splittelse, introducerer 2x3 matricen og udpensler mekanikken i den ergodiske fejlslutning.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "The nomothetic-idiographic distinction",
+          "heading": "Et teoretisk morads",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At lokalisere, hvorfor to af psykologiens mest brugte begreber faktisk slører mere, end de opklarer?",
+          "explanation_paragraphs": [
+            "Historisk set har psykologien delt sit forskningslandskab stramt op. Den nomotetiske lejr fokuserer på at finde generelle, universelle naturlove, mens den idiografiske lejr insisterer på at studere det enestående, komplekse individ i dybden.",
+            "Men Phan et al. dokumenterer, at disse velmente kasser er rodet fatalt sammen. Berømte teoretikere som Gordon Allport begyndte nemlig at bruge ordet 'nomotetisk' som synonym for metoder, der sammenligner grupper af mennesker med hinanden (between-person aggregering). Tilsvarende blev 'idiografisk' reduceret til at betyde forskning, der blot kigger på en enkelt person over tid (within-person).",
+            "Konsekvensen af denne sprogforvirring er massiv. Forskere blander nu helt systematisk spørgsmålet om, *hvem* de observerer, sammen med spørgsmålet om, *hvilken slags lovmæssighed* de prøver at bevise. Det maskerer svaghederne i moderne mainstreampsykologi, når vi lader som om et testgennemsnit fundet i en gruppe er en nomotetisk 'naturlov' for alle individer."
+          ],
+          "key_points": [
+            "Oprindelig nomotetisk = jagten på universelle naturlove.",
+            "Oprindelig idiografisk = in-depth studie af den unikke enhed.",
+            "Sammenblanding har skabt en illusion om, at gruppedata er universelle naturlove."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 2,
+          "source_location": "Disentangling the conceptual meanings",
+          "heading": "De to nye byggeklodser: Enhed og Generalisering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At etablere et præcist begrebsapparat, der adskiller observationsmål fra slutningsmål?",
+          "explanation_paragraphs": [
+            "For at bygge et sundere metodisk fundament introducerer forfatterne to nye, adskilte dimensioner. Den første dimension er Focal Entity (fokus-enhed): Undersøger din forskning primært en bestemt person, eller handler dine målinger om en population som en aggregeret helhed?",
+            "Den anden dimension er typen af Generalization (generalisering). Hvis vi vil lave en lovmæssighed, kan vi gøre det på to måder. Vi kan lave en *enheds-specifik generalisering*, hvor vi finder mønstre internt i én specifik enhed – fx faste mønstre for én persons humør hen over ugen, eller mønstre for én specifik demografisk gruppe. Alternativt kan vi stræbe efter en *tvær-enheds generalisering* (cross-entity), hvor vi jager en lov, der gælder strengt og konsekvent for samtlige undersøgte enheder fra person til person."
+          ],
+          "key_points": [
+            "Fokus-enhed afgør om vi undersøger 'Person' eller 'Population'.",
+            "Enheds-specifik generalisering undersøger lovmæssigheder indeni den valgte enhed.",
+            "Tvær-enheds generalisering kræver, at loven virker på tværs af alle enheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "concerning the level of aggregation",
+              "why_it_matters": "Viser at fokus-enheden dikterer, hvordan vi må slå vores data sammen.",
+              "source_location": "Focal entities..."
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Not two but six: Broad approaches",
+          "heading": "Det nye kort: 2x3 Matricen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At kortlægge forskningstilgange systematisk ud fra de to nye dimensioner?",
+          "explanation_paragraphs": [
+            "Ved systematisk at krydse de to fokus-enheder (Person vs. Population) med de tre generaliseringsmål (Ingen vs. Enheds-specifik vs. Tvær-enheds) opstiller forfatterne en matrix med præcis seks forskningstilgange. Dette kortlægger feltet uden forvirrende klichéer.",
+            "Den konventionelle mainstreampsykologi – det (Neo-)Galtonianske paradigme – lander i feltet for 'Population-specific generalizations'. Her regner man på gennemsnit og varians for hele gruppen, men man frembringer ingen regler, der garanteret rammer den enkelte.",
+            "I et helt andet felt finder vi den klassiske Wundtianske tilgang placeret under 'Cross-person generalizations'. Her analyseres hvert individ minutiøst for sig (N=1), og først når en regel virker separat på alle personer, gøres den til en tværgående psykologisk lov."
+          ],
+          "key_points": [
+            "Matricen erstatter nomotetisk/idiografisk med 6 analytiske muligheder.",
+            "Mainstream-psykologi sidder fast i populationsspecifik generalisering.",
+            "Det er muligt at lede efter faste generaliseringer inden for rammerne af én enkelt person over tid."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "The population-to-individual problem and the ergodic fallacy",
+          "heading": "Den ergodiske fælde",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At afsløre, hvorfor det er farligt og ofte ugyldigt at overføre populationsgennemsnit til et specifikt individ i terapi eller vurdering?",
+          "explanation_paragraphs": [
+            "Det største og farligste problem i den empiriske psykologi opstår, når en kliniker eller forsker tager et statistisk grupperesultat og forudsiger handlinger eller træk hos ét bestemt individ ud fra det gennemsnit. Dette overgreb kaldes den ergodiske fejlslutning.",
+            "Årsagen er ren matematik. For at et system tillader os at trække populationsgennemsnit præcist ned over individer, skal systemet være 'ergodisk'. Det kræver at to benhårde krav er opfyldt: Populationen skal være homogen (alle individer skal reagere strukturelt ens), og den skal være stationær (mekanismerne må ikke ændre sig over tid).",
+            "Da menneskets bevidsthed og adfærd åbenlyst bryder begge disse regler konstant, er det ugyldigt at antage, at en given gennemsnitsdansker og et specifikt individ fungerer på samme måde. Mainstream trækpsykologi mangler metodisk autoritet til at tale om det enkelte menneske."
+          ],
+          "key_points": [
+            "Den ergodiske fejlslutning opstår, når gruppesnit tvinges ned over individer.",
+            "Ergodicitet kræver fuldstændig homogenitet og stationaritet.",
+            "Mennesker er ikke ergodiske, hvilket krakelerer fundamentet under mange standardtests som klinisk individuelt værktøj."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "The population-to-individual problem",
+              "passage": "Any study that uses analytical strategies based on population-based parameters and interprets the findings as concerning the psychological functioning of individuals falls prey to the ergodic fallacy.",
+              "why_it_matters": "Dette er Phan et al.'s skarpeste og mest afgørende formulering. Brug den som et metodisk våben, når du møder artikler, der lover indsigt i individet via gruppetal."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "A more fine-grained systematization",
+          "heading": "Polytomies som kvalitetskontrol",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At sikre metodisk stringens helt nede i de designmæssige detaljer?",
+          "explanation_paragraphs": [
+            "For at undgå at falde i de etablerede fælder, især den ergodiske fejlslutning, er det ikke nok bare at kende til matricens eksistens. Phan et al. lancerer derfor et rammeværk bestående af 25 'polytomies'.",
+            "Disse polytomies er kategoriske beslutningsvalg, der tvinger forskeren til eksplicit at vælge designparametre i hele forskningsprocessen: Fra forskningsspørgsmål, til data-input, til metode og til inferens-output. Målet er at skabe streng logisk overensstemmelse.",
+            "Hvis en forsker påstår at studere en dynamisk proces inde i et menneske, tvinger dette tjekliste-system os til at afsløre det, hvis de reelt kun benytter tværsnitsdata fra 1000 forskellige mennesker. Polytomierne forhindrer den udbredte metode-sløseri og sikrer, at konklusionen hviler på den korrekte 'Focal Entity'."
+          ],
+          "key_points": [
+            "25 polytomies fungerer som en ufravigelig metodisk tjekliste.",
+            "De kræver logisk alignement mellem intention, data og output.",
+            "Beskytter mod den blinde anvendelse af standardiserede gruppetests på forkerte spørgsmål."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er den traditionelle skelnen mellem nomotetisk og idiografisk brudt sammen i moderne forskning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort mekanistisk forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er forskellen på 'Focal Entity' og 'Generalization type'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan ser Phan et al.'s nye 2x3 matrix ud i praksis?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tegnet model med seks celler",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den ergodiske fejlslutning, og hvorfor rammer den næsten al mainstream psykologi?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Årsagssammenhæng",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er formålet med forfatternes 25 'polytomies'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Funktionsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi præcist afkode, hvad en given psykologisk forskningsmetode reelt tillader os at konkludere om henholdsvis individer og gennemsnitlige populationer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv først at løse denne del fra hukommelsen for at lade logikken falde på plads i hovedet. Slå først op i Abridged Reader bagefter, hvis du er i tvivl eller har brug for at reparere en sætning.",
+      "overview": [
+        "Teksten dekonstruerer den slørede traditionelle adskillelse mellem jagten på naturlove og jagten på det unikke individ.",
+        "Den introducerer et strammere framework med en 2x3 matrix for inferens baseret på fokus-enhed og generalisering.",
+        "Den leverer et metodisk grundlag for at kritisere populationsbaserede gennemsnit gennem opgøret med den ergodiske fejlslutning."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Den oprindelige videnskabelige skelnen mellem discipliner, der søger generelle love, og discipliner, der studerer partikulære enheder i dybden, kaldes for __________ og idiografisk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Phan et al. indfører et nyt begreb for, præcis *hvem* vores data i sidste ende udtaler sig om. Dette kaldet de en 'Focal __________'.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Hvis vi udelukkende vil lave en lovmæssighed om ét specifik menneskes svingninger over tid, opererer vi med en __________ generalisering.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det farlige kvantitative greb, hvor man antager at et populationsgennemsnit tillader os at forudsige den psykologiske funktion hos ét bestemt individ, kaldes the __________ fallacy.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For matematisk at kunne trække gruppedata direkte ned over individer, skal populationen ikke kun være stationær, men også ekstremt __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Mange psykologiske spørgeskemaer, der samler træk for grupper, tilhører det mainstream-paradigme som forfatterne kalder den (Neo-)__________ tilgang.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 navn"
+        },
+        {
+          "number": 7,
+          "sentence": "Tjeklisten, der tvinger forskeren til at skabe logisk alignement mellem intention, data og konklusion for at undgå fejlagtig overførsel, kaldes de 25 __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn forfatternes nye videnskabelige landkort, som erstatter nomotetisk/idiografisk. Opstil en tabel eller et rudemetværk med 2 rækker og 3 kolonner. Skriv de to typer 'Focal Entity' på Y-aksen og de tre typer 'Generalization' på X-aksen.",
+          "required_elements": [
+            "En 2x3 matrix",
+            "de korrekte akse-navne",
+            "placering af feltet for 'Population-specific generalizations'"
+          ],
+          "blank_space_hint": "Tegn tabellen stort nok til at du kan sætte et kryds i det felt, der domineres af mainstream kvantitativ psykologi."
+        },
+        {
+          "number": 2,
+          "task": "Rekonstruér mekanismen i 'Den ergodiske fejlslutning'. Tegn en illustration, der viser, hvor forsøget på inferens knækker over.",
+          "required_elements": [
+            "En stor sky der repræsenterer populationsgennemsnittet",
+            "en pil der peger direkte ned mod en specifik person",
+            "et stærkt forbudsskilt eller kryds over pilen med stikordene om homogenitet",
+            "stationaritet knyttet til"
+          ],
+          "blank_space_hint": "Brug pladsen til at vise retningen på den logiske fejl: Fra population og ulovligt ned til individ."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som dine skudklare argumenter og advarsler til den mundtlige eksamen, når I diskuterer validiteten af en metode eller et testbatteri.",
+      "use_this_text_for": [
+        "At levere en stærk, formel kritik af at bruge standardiserede træk-tests til klinisk vurdering af specifikke enkeltindivider.",
+        "At definere 'Den ergodiske fejlslutning' som et argument imod at generalisere gennemsnit til specifik psykologisk handlen.",
+        "At afdække misforholdet mellem en metodes epistemologiske byggeklodser (Focal Entity) og dens faktiske konklusioner.",
+        "At vise censor at du kan skille debatten ad i dens komponenter uden blindt at bruge farvede ord som 'nomotetisk' og 'idiografisk'."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Lamiells Kritisk Personalisme",
+          "connection": "Phan et al. giver dig de iskolde matematiske og metodiske argumenter (ergodic fallacy), som Lamiell udbygger filosofisk i sit opgør med 'psychodemography'."
+        },
+        {
+          "course_theme": "Looping Effects og Hacking",
+          "connection": "Hvis den ergodiske fejlslutning tvinger forkerte gennemsnitskategorier ned over hovedet på en person, kan dette ulovlige mærkat sætte utilsigtede looping effects i gang hos testpersonen."
+        },
+        {
+          "course_theme": "Essens vs. Kontekst",
+          "connection": "Trækpsykologien forudsætter ofte universel essens via populationsmålinger. 2x3 matricen tillader en undersøgelse af essens internt i det specifikke individ uden at påtvinge en befolkningskontekst."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Allports originale drøm",
+          "how_to_compare": "Vis forskellen mellem Allports slørede idiografiske metode og den skarpe 'person-specific generalization' model, der nu formaliserer individets lovmæssigheder."
+        },
+        {
+          "compare_with": "Galton vs. Wundt",
+          "how_to_compare": "Sæt Neo-Galtonianske between-person modeller (the average man) klart over for Wundtianske cross-person lovmæssigheder (findes mønsteret konsistent i person 1, person 2, person 3...)."
+        },
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Demonstrer the ergodic fallacy ved at pege på, at Big Five primært fanger 'population-specific' varians, men anvendes i HR og psykiatri, som om det var 'person-specific'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når teksten udleder faste sandheder om individet fra et normativt spørgeskema",
+          "use_in_answer": "Sig højt: 'Lige her er det helt oplagt at bringe den ergodiske fejlslutning på banen. Forskerne hævder at sige noget om individets psykologi, men mennesket er ikke stationært nok til den udledning.'",
+          "caution": "Husk at dokumentere overfor eksaminator, at du forstår ergodicitets-kravene."
+        },
+        {
+          "prompt_type": "Når debatten rammer om 'både/og' er godt i metoder",
+          "use_in_answer": "Brug matricen. Vis, at vi ikke skal blande idiografisk og nomotetisk, men i stedet overveje at kombinere *person-specific* viden med *cross-person* viden.",
+          "caution": "Vær specifik. Tal om Focal Entities i stedet for bare 'kvalitativ kombineret med kvantitativ'."
+        },
+        {
+          "prompt_type": "Når censor spørger 'Er denne metode så objektivt dårlig?'",
+          "use_in_answer": "Settle spørgsmålet roligt ved at sige: 'Nej, (Neo-)Galtonianske populationsdesigns er fremragende til at forstå populationen. Fejlen opstår først, når inferensen bryder rammen og sigter mod individet.'",
+          "caution": "Afvis ikke al populationsforskning. Det virker useriøst. Adskil formål og konklusion."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At idiografisk eller individfokuseret forskning betyder, at man overhovedet ikke prøver at finde generaliserbare lovmæssigheder.",
+          "better_reading": "At studere N=1 kan rumme *person-specific generalizations*, hvor man f.eks. fastlægger solide psykologiske love for, præcis hvordan *denne* patients psykologi fungerer i pressede situationer over tid."
+        },
+        {
+          "trap": "At menneskepsyken blot er en anelse ude af trit med ergodicitets-kravene.",
+          "better_reading": "At det slet ikke er tæt på. Mennesker udskifter viden, ændrer sig og opfører sig voldsomt forskelligt. De to matematiske krav opfyldes stort set aldrig af levende subjekter."
+        },
+        {
+          "trap": "At bruge termerne nomotetisk og idiografisk ukritisk videre i sin eksamensbesvarelse.",
+          "better_reading": "Start med at definere, hvorfor du enten dropper begreberne helt på baggrund af Phan et al., eller kun anvender dem historisk afgrænset."
+        }
+      ],
+      "mini_exam_prompt_question": "Vurdér gyldigheden af, at en arbejdsgiver ukritisk benytter populationsbaserede personlighedstests til at forudsige fremtidig krise-adfærd for en specifik jobansøger. Beskyt dit argument med inddragelse af den ergodiske fejlslutning.",
+      "mini_exam_answer_plan_slots": [
+        "Sortér testens fundament ind i feltet 'Population-specific generalization' fra 2x3 matricen.",
+        "Læg kort kravene til ergodicitet frem (homogenitet og stationaritet).",
+        "Kombinér de to pointer til et 'dræbende hug': Modsat vand i et rør er mennesker dynamiske, ergo svigter fundamentet under konklusionen ned på ansøgeren.",
+        "Afslut elegant med at trække på en alternativ, 'person-specific' overvejelse som HR kunne gøre brug af i stedet."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

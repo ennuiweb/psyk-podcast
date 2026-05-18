@@ -258,7 +258,32 @@
         "De dybe teoretiske referencer til Lacan, Darwin og specifikke kvantefysiske debatter om Barad.",
         "Metodediskussionerne om, hvordan man læser sit empiriske materiale 'sreflekterende' og normkritisk."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Siderne 383-384",
+          "excerpt": "Boks 3. Klamme Wahid",
+          "open_question": "Hvad sætter postpsykologien i stedet for det klassiske personlighedsbegreb?"
+        },
+        {
+          "number": "2",
+          "source_location": "Siderne 383-384",
+          "excerpt": "dobbeltbevægelsen ligger agens",
+          "open_question": "Bevis at subjektivering er en paradoksal dobbeltbevægelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Siderne 394-396",
+          "excerpt": "komfortteknologier som medproducent",
+          "open_question": "Afgør hvordan diskursive praksisser skaber 'typer' af mennesker?"
+        },
+        {
+          "number": "4",
+          "source_location": "Siderne 399-400",
+          "excerpt": "kuglepude til en af mine elever",
+          "open_question": "Fang forskellen på et 'subjekt' og et 'abjekt' via Wahid-eksemplet?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -763,7 +788,32 @@
         "De dybe teoretiske referencer til Lacan, Darwin og specifikke kvantefysiske debatter om Barad.",
         "Metodediskussionerne om, hvordan man læser sit empiriske materiale 'sreflekterende' og normkritisk."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Siderne 383-384",
+          "excerpt": "Boks 3. Klamme Wahid",
+          "open_question": "Hvad sætter postpsykologien i stedet for det klassiske personlighedsbegreb?"
+        },
+        {
+          "number": "2",
+          "source_location": "Siderne 383-384",
+          "excerpt": "dobbeltbevægelsen ligger agens",
+          "open_question": "Bevis at subjektivering er en paradoksal dobbeltbevægelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Siderne 394-396",
+          "excerpt": "komfortteknologier som medproducent",
+          "open_question": "Afgør hvordan diskursive praksisser skaber 'typer' af mennesker?"
+        },
+        {
+          "number": "4",
+          "source_location": "Siderne 399-400",
+          "excerpt": "kuglepude til en af mine elever",
+          "open_question": "Fang forskellen på et 'subjekt' og et 'abjekt' via Wahid-eksemplet?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1147,7 +1197,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

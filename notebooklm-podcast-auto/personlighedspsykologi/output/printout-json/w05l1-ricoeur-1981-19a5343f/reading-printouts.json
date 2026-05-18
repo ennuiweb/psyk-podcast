@@ -251,7 +251,32 @@
         "Freuds metapsykologiske spekulationer om dødsdriften.",
         "Den detaljerede sprogfilosofiske diskussion af Wittgenstein og Austin."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Under det tredje kriterium for fakta (s. 215).",
+          "excerpt": "what a subject makes of his fantasies",
+          "open_question": "Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?"
+        },
+        {
+          "number": "2",
+          "source_location": "I diskussionen om behandlingens natur (s. 219).",
+          "excerpt": "struggle against resistances",
+          "open_question": "Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?"
+        },
+        {
+          "number": "3",
+          "source_location": "Under kritikken af sprogfilosofien (s. 224).",
+          "excerpt": "motives which are causes",
+          "open_question": "Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?"
+        },
+        {
+          "number": "4",
+          "source_location": "I konklusionen omkring verificering (s. 233).",
+          "excerpt": "synergy of partial and heterogeneous criteria",
+          "open_question": "Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -538,8 +563,8 @@
           "number": 1,
           "task": "Tegn en skematisk vægtvægt, der viser de to sider af psykoanalysen ifølge Ricoeur.",
           "required_elements": [
-            "'Mening' (psyken som tekst",
-            "'Kraft' (kampen mod modstand",
+            "'Mening': psyken som tekst",
+            "'Kraft': kampen mod modstand",
             "En markering der viser, at en komplet teori kræver begge"
           ],
           "blank_space_hint": "Brug pladsen til en grov tegning af en vægt eller en bro"
@@ -765,7 +790,32 @@
         "Freuds metapsykologiske spekulationer om dødsdriften.",
         "Den detaljerede sprogfilosofiske diskussion af Wittgenstein og Austin."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Under det tredje kriterium for fakta (s. 215).",
+          "excerpt": "what a subject makes of his fantasies",
+          "open_question": "Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?"
+        },
+        {
+          "number": "2",
+          "source_location": "I diskussionen om behandlingens natur (s. 219).",
+          "excerpt": "struggle against resistances",
+          "open_question": "Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?"
+        },
+        {
+          "number": "3",
+          "source_location": "Under kritikken af sprogfilosofien (s. 224).",
+          "excerpt": "motives which are causes",
+          "open_question": "Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?"
+        },
+        {
+          "number": "4",
+          "source_location": "I konklusionen omkring verificering (s. 233).",
+          "excerpt": "synergy of partial and heterogeneous criteria",
+          "open_question": "Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1052,8 +1102,8 @@
           "number": 1,
           "task": "Tegn en skematisk vægtvægt, der viser de to sider af psykoanalysen ifølge Ricoeur.",
           "required_elements": [
-            "'Mening' (psyken som tekst",
-            "'Kraft' (kampen mod modstand",
+            "'Mening': psyken som tekst",
+            "'Kraft': kampen mod modstand",
             "En markering der viser, at en komplet teori kræver begge"
           ],
           "blank_space_hint": "Brug pladsen til en grov tegning af en vægt eller en bro"
@@ -1165,7 +1215,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

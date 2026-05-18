@@ -264,7 +264,32 @@
         "Den detaljerede adskillelse af underkategorier inden for Adult Attachment Interview skemaerne.",
         "Lacan og Žižeks indviklede popkulturelle eksempler, hvis hovedpointen om begæret glipper."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Blandt de første sider under kernetemaerne.",
+          "excerpt": "indre psykisk repræsentation",
+          "open_question": "Hvad udgør psykoanalysens særlige definitionsgrundlag, herunder begreberne objekt og drift?"
+        },
+        {
+          "number": "2",
+          "source_location": "Omkring præsentationen af de franske indsigter.",
+          "excerpt": "det ubevidste kommer udefra",
+          "open_question": "Hvordan forklarer Fonagys britiske skole opbygningen af barnets virkelighedsopfattelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Under Laplanches franske teoriudvikling.",
+          "excerpt": "gådefulde meddelelser",
+          "open_question": "Hvorfor hævder den franske skole insisterende, at det ubevidste udelukkende konstitueres af den anden?"
+        },
+        {
+          "number": "4",
+          "source_location": "Hvor freudomarxismen udfolder sig dybest.",
+          "excerpt": "konstituerende interaktionsform",
+          "open_question": "Hvordan forstyrrer Laplanches begreb om Nachträglichkeit vores forståelse af lineær tid?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -575,7 +600,7 @@
           "required_elements": [
             "To parallelle tidlige modi",
             "det cirka 4. leveår",
-            "slutproduktet (evnen til at håndtere affekt"
+            "slutproduktet: evnen til at håndtere affekt"
           ],
           "blank_space_hint": "Tegn det som et netværk, hvor to lukkede stier smelter sammen midtpå."
         },
@@ -814,7 +839,32 @@
         "Den detaljerede adskillelse af underkategorier inden for Adult Attachment Interview skemaerne.",
         "Lacan og Žižeks indviklede popkulturelle eksempler, hvis hovedpointen om begæret glipper."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Blandt de første sider under kernetemaerne.",
+          "excerpt": "indre psykisk repræsentation",
+          "open_question": "Hvad udgør psykoanalysens særlige definitionsgrundlag, herunder begreberne objekt og drift?"
+        },
+        {
+          "number": "2",
+          "source_location": "Omkring præsentationen af de franske indsigter.",
+          "excerpt": "det ubevidste kommer udefra",
+          "open_question": "Hvordan forklarer Fonagys britiske skole opbygningen af barnets virkelighedsopfattelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Under Laplanches franske teoriudvikling.",
+          "excerpt": "gådefulde meddelelser",
+          "open_question": "Hvorfor hævder den franske skole insisterende, at det ubevidste udelukkende konstitueres af den anden?"
+        },
+        {
+          "number": "4",
+          "source_location": "Hvor freudomarxismen udfolder sig dybest.",
+          "excerpt": "konstituerende interaktionsform",
+          "open_question": "Hvordan forstyrrer Laplanches begreb om Nachträglichkeit vores forståelse af lineær tid?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -1125,7 +1175,7 @@
           "required_elements": [
             "To parallelle tidlige modi",
             "det cirka 4. leveår",
-            "slutproduktet (evnen til at håndtere affekt"
+            "slutproduktet: evnen til at håndtere affekt"
           ],
           "blank_space_hint": "Tegn det som et netværk, hvor to lukkede stier smelter sammen midtpå."
         },
@@ -1237,7 +1287,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

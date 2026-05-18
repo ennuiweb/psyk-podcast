@@ -1,0 +1,823 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:23:09Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "e52d17587857f94a66c55b9e119614afe2022f615b7583ea7e36de0d620dbdc2",
+    "source_files_signature": "e853241701197f62d599e7b2fd34483a670b89b5c688c01c39671bcf2c102de3",
+    "source_card": "124bb5c8c39614a457bbff48fb8815f0e83475107e5e76431b5605105a2bc7a9",
+    "revised_lecture_substrate": "40dcdd729c8f40f9ccdc6edd7d9cf4d3b54026bcfda9ee206784d039286d3b0b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+    "lecture_key": "W02L1",
+    "title": "Columbus & Strandsbjerg (2025)",
+    "reading_title": "Columbus & Strandsbjerg (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Columbus & Strandsbjerg (2025).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 7,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "lecture_key": "W02L1",
+      "source_title": "Columbus & Strandsbjerg (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemstillinger.",
+      "teaser_paragraphs": [
+        "Forestil dig, at vi tracked din adfærd hvert vågne minut i en uge. Nogle gange ville du optræde udadvendt, andre gange indadvendt. Ville gennemsnittet af disse tilstande ('states') passe præcist med det resultat, du får i en klassisk personlighedstest ('traits')?",
+        "Columbus og Strandsbjerg dykker ned i præcis denne kløft. De undersøger, hvordan moderne forskning fanger vores kortvarige, situationsbestemte adfærd og forsøger at koble den til de langsigtede personlighedstræk, vi normalt opfatter som stabile. Deres analyse viser, at *average personality states correlated only imperfectly with trait scores*.",
+        "Dette skaber et alvorligt forklaringsproblem for de klassiske teorier. Hvis vores daglige handlinger ikke lader sig lægge pænt sammen til en stabil personlighedskerne, og hvis vores reaktioner styres kraftigt af if-then mønstre i specifikke situationer, hvad er et personlighedstræk så egentlig?",
+        "Teksten tvinger dig til at afgøre, om vi overhovedet kan forstå 'hele personen' ud fra matematiske gennemsnit af øjeblikkelige tilstande."
+      ],
+      "main_problem": "Hvordan hænger vores kortvarige personlighedstilstande (states) sammen med langsigtede personlighedstræk (traits), og hvorfor udfordrer empirisk data de dominerende teorier om denne sammenhæng?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den definitoriske forskel på 'states' og 'traits' i teksten?",
+          "why_it_matters": "Det er grundlaget for at forstå al variation i menneskelig adfærd i kurset.",
+          "answer_form": "Kort definition"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forsøger Whole Trait Theory (WTT) at løse kløften mellem state og trait?",
+          "why_it_matters": "WTT er den klassiske matematiske løsning, der antager at træk blot er summen af tilstande.",
+          "answer_form": "Konceptuel forklaring"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor skaber 'situation-state contingencies' problemer for den etablerede trait-teori?",
+          "why_it_matters": "Det viser, at vores adfærd er radikalt afhængig af konteksten, hvilket af-essentialiserer traits.",
+          "answer_form": "1-2 sætninger"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst etablerer det variabel-centrerede fundament for personlighedspsykologi. Den viser os, hvordan psykologien matematisk forsøger at fange flygtig adfærd, hvilket sætter scenen for kursets senere kritikker af, om man overhovedet kan kvantificere personen på denne måde.",
+      "overview": [
+        "Forskellen på kortvarige states og langsigtede traits.",
+        "Klassiske teoriers forsøg på at forene dem (f.eks. WTT og TESSERA).",
+        "Empiriske data der viser, at gennemsnitlige states og situationsmønstre afviger fra forventningerne."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Box 1 (Overview of theories)",
+          "task": "Afgør hvordan WTT forsøger at koble states til traits.",
+          "why_it_matters": "Dette definerer den dominerende baseline-forståelse i feltet.",
+          "stop_signal": "Når du kan forklare 'density distributions'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen 'Linking states and traits'",
+          "task": "Find beviset for, at gennemsnitlige states ikke er det samme som traits.",
+          "why_it_matters": "Det er her de empiriske huller i teorien afsløres.",
+          "stop_signal": "Når du har fundet argumentet om 'incremental validity'"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen 'Situation-state contingencies'",
+          "task": "Identificer hvordan specifikke situationer overstyrer generelle traits.",
+          "why_it_matters": "Dette peger direkte frem mod kursets fokus på 'Context' over 'Essence'.",
+          "stop_signal": "Når du forstår hvorfor if-then mønstre udfordrer WTT"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "correlated only imperfectly with trait scores",
+          "why": "Det centrale brud med WTT's matematiske forventning.",
+          "where_to_look": "Sektionen 'Linking states and traits'"
+        },
+        {
+          "target": "distributions of personality states over time",
+          "why": "Kernen i hvordan WTT forsøger at koble state til trait.",
+          "where_to_look": "Box 1"
+        },
+        {
+          "target": "do not correspond to stable individual differences",
+          "why": "Understreger hvorfor reaktioner på specifikke situationer ikke matcher traits.",
+          "where_to_look": "Sektionen 'Situation-state contingencies'"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke statistiske værdier (som r = 0.42 - 0.56).",
+        "Tekniske detaljer i Experience Sampling Methods (ESM).",
+        "Udtømmende memorering af alle teorier i Box 1 - fokuser på WTT og forskellen til de andre."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne tekst som din primære, fokuserede gennemgang af kildens argumenter.",
+      "coverage_note": "Dækker kerneforskellen på state og trait samt de metodiske problemer med at koble dem sammen via empirisk data.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Box 1 og indledningen",
+          "heading": "Fra flygtige tilstande til faste træk",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At definere byggestenene og teorien, der forsøger at forbinde dem?",
+          "explanation_paragraphs": [
+            "I personlighedspsykologi skelner man skarpt mellem 'states' (kortvarige manifestationer af adfærd og følelser) og 'traits' (langsigtede, stabile træk). Forskere forsøger intenst at forstå, hvordan disse flygtige øjeblikke akkumulerer og bliver til det, vi kalder en persons stabile karakter.",
+            "En af de mest dominerende modeller for at forklare denne kobling er Whole Trait Theory (WTT). Teorien forsøger at løse problemet ved hjælp af matematik og statistik. Den påstår, at et personlighedstræk fundamentalt set blot er tæthedsfordelingen af en persons mange kortvarige states over tid."
+          ],
+          "key_points": [
+            "States er kortvarige, situationsbestemte handlinger.",
+            "Traits er langsigtede og opfattes ofte som en kerne.",
+            "Whole Trait Theory (WTT) reducerer traits til at være summen af en persons states."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "distributions of personality states over time",
+              "why_it_matters": "Det er den centrale mekanisme i WTT.",
+              "source_location": "Box 1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Box 1",
+              "passage": "Descriptively, the theory posits that personality traits correspond to distributions of personality states over time.",
+              "why_it_matters": "Det er definitionen på WTT's forsøg på at lukke gabet mellem handling her og nu, og generel personlighed."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen 'Linking states and traits'",
+          "heading": "Gennemsnittet der fejlede",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At identificere bruddet mellem teoretisk forventning og empirisk virkelighed?",
+          "explanation_paragraphs": [
+            "Ifølge Whole Trait Theory burde matematikken være simpel: Hvis man måler en persons 'states' tilstrækkeligt mange gange, burde gennemsnittet af disse states matche personens score på en klassisk trait-test (som Big Five).",
+            "Nye empiriske studier, der anvender intensiv dataopsamling via smartphones (experience sampling), viser dog et afgørende problem. Det viser sig, at folks gennemsnitlige states kun korrelerer uperfekt med deres generelle trait-scores. Gennemsnittet af dine daglige handlinger fanger altså ikke hele din overordnede 'personlighed', hvilket sår tvivl om WTT's primære præmis."
+          ],
+          "key_points": [
+            "Empirisk data viser et uperfekt match mellem state-gennemsnit og trait-scores.",
+            "Gennemsnitlige states bidrager ikke med mere præcis viden (incremental validity) end klassiske spørgeskemaer alene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "average personality states correlated only imperfectly",
+              "why_it_matters": "Beviset for at matematikken i WTT ikke fungerer fejlfrit i virkeligheden.",
+              "source_location": "Linking states and traits"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen 'Situation-state contingencies'",
+          "heading": "Når situationen dikterer adfærden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At forstå hvordan specifikke situationer komplicerer ideen om stabile traits?",
+          "explanation_paragraphs": [
+            "For at komplicere billedet yderligere kigger forskere på 'situation-state contingencies'. Det er faste if-then mønstre hos individer: Hvis de er til en fest, så bliver de udadvendte; hvis de er på arbejde, så bliver de indadvendte.",
+            "Studier viser stærke individuelle forskelle i disse mønstre. Vi har faste måder at reagere på bestemte miljøer. Problemet for teorien er, at disse individuelle situationsmønstre *ikke* stemmer systematisk overens med folks overordnede selvrapporterede traits. Vores adfærd er knyttet til specifikke kontekster i en grad, der ikke lader sig koge ned til brede personlighedskategorier."
+          ],
+          "key_points": [
+            "If-then mønstre bestemmer ofte vores adfærd i en given kontekst.",
+            "Disse situationsbestemte mønstre passer dårligt overens med generelle personlighedstræk.",
+            "Konteksten spiller en afgørende rolle for at aktivere en specifik state."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "do not correspond to stable individual differences",
+              "why_it_matters": "Undergraver ideen om, at alle vores handlinger direkte afspejler en stabil kerne.",
+              "source_location": "Situation-state contingencies"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den definitoriske forskel på 'states' og 'traits' i teksten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forsøger Whole Trait Theory (WTT) at løse kløften mellem state og trait?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Konceptuel forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor skaber 'situation-state contingencies' problemer for den etablerede trait-teori?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan hænger vores kortvarige personlighedstilstande (states) sammen med langsigtede personlighedstræk (traits), og hvorfor udfordrer empirisk data de dominerende teorier om denne sammenhæng?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen først. Ret kun dine svar med den forkortede tekst bagefter.",
+      "overview": [
+        "Denne tekst skelner fundamentalt mellem kortvarige states og stabile traits.",
+        "Whole Trait Theory forsøger at definere traits matematisk som fordelingen af disse states.",
+        "Empiriske data viser, at stærke situationsmønstre bryder med forventningen om en ren korrelation."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "En kortvarig manifestation af adfærd og følelser i en given situation kaldes en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Teorien der beskriver personlighedstræk som blot en tæthedsfordeling af adfærd over tid kaldes __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Akronym, 3 bogstaver"
+        },
+        {
+          "number": 3,
+          "sentence": "Det største empiriske problem er, at __________ states kun korrelerer uperfekt med klassiske trait-scores.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "If-then mønstre, hvor en bestemt kontekst udløser en bestemt tilstand, kaldes situation-state __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Studier viser stærke individuelle forskelle i situationsmønstre, men disse stemmer ikke overens med de brede __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord, flertal"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Skitsér forskellen på 'states' og 'traits' ud fra WTT's logik.",
+          "required_elements": [
+            "En tidsakse",
+            "en række uafhængige punkter der repræsenterer kortvarige states",
+            "en samlet boks eller fordelingskurve der indrammer dem alle som ét samlet trait"
+          ],
+          "blank_space_hint": "Brug kassen herunder til at tegne de to niveauer af personlighed."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at flette tekstens empiriske fund aktivt ind i dine eksamenssvar.",
+      "use_this_text_for": [
+        "At bevise, at vi ikke har den samme 'personlighed' i enhver situation.",
+        "At forklare forskellen på den handling vi kan observere (state) og den variabel vi forsøger at beregne (trait).",
+        "At etablere en klassisk, variabel-centreret forståelse, som du senere kan kritisere med Stern."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W08L1 Critical Personalism",
+          "connection": "Brug Columbus & Strandsbjerg som det præcise eksempel på den matematiske reificering af 'traits', som Stern angriber."
+        },
+        {
+          "course_theme": "W11L1 Post-psychological subjectivation",
+          "connection": "Sammenlign situationens kraft i denne tekst med Hackings 'looping effect', hvor kategoriseringen af personen skaber adfærden."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern",
+          "how_to_compare": "WTT reducerer personen til summen af specifikke states; Stern argumenterer for at helheden (Realobjekt) går tabt, når vi kun kigger på matematiske fordelinger."
+        },
+        {
+          "compare_with": "Essence vs. Context",
+          "how_to_compare": "Brug 'situation-state contingencies' til at trække debatten væk fra 'Essence' polen og over mod 'Context' polen."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du skal forsvare vigtigheden af kontekst:",
+          "use_in_answer": "Brug begrebet 'situation-state contingencies' for at bevise, at if-then mønstre er mere definerende for adfærd end statiske kerner.",
+          "caution": "Gør det ikke til ren behaviorisme. Det handler stadig om *personligheds*-tilstande indeni i situationen."
+        },
+        {
+          "prompt_type": "Når du diskuterer klassisk trait-teori:",
+          "use_in_answer": "Nævn, at ifølge ny data er Whole Trait Theory problematisk, fordi gennemsnittet af vores adfærd i praksis ikke giver os vores præcise 'trait'.",
+          "caution": "Glem ikke at redegøre kort for hvad WTT faktisk forsøger at gøre, før du afviser den."
+        },
+        {
+          "prompt_type": "definer",
+          "use_in_answer": "Brug teksten til at definere dens centrale begreb eller position præcist.",
+          "caution": "Hold definitionen knyttet til teksten, ikke til en løs hverdagsforståelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sætte lighedstegn mellem et enkelt 'state' og et 'trait'.",
+          "better_reading": "States er flygtige og kontekstafhængige; traits er (i teorien) faste aggregater af disse states."
+        },
+        {
+          "trap": "At antage, at en situation altid trigger den samme state hos alle.",
+          "better_reading": "If-then contingencies er dybt individuelle – det, der gør én udadvendt, gør en anden indadvendt."
+        }
+      ],
+      "mini_exam_prompt_question": "Forklar distinktionen mellem 'states' og 'traits', og redegør for hvorfor nyere empiriske data om situation-state contingencies udfordrer Whole Trait Theory.",
+      "mini_exam_answer_plan_slots": [
+        "Definition: States som kortvarig adfærd vs. Traits som stabile konstruktioner.",
+        "Teori: Hvordan WTT forsøger at koble dem matematisk (tæthedsfordeling).",
+        "Empiri: Problemet med den uperfekte korrelation mellem gennemsnitlige states og trait-scores.",
+        "Kontekst: Hvordan if-then mønstre viser, at adfærd er specifik for situationen og ikke lader sig fange perfekt i generelle spørgeskemaer."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l1-columbus-and-strandsbjerg-2025-2962b765",
+      "lecture_key": "W02L1",
+      "source_title": "Columbus & Strandsbjerg (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemstillinger.",
+      "teaser_paragraphs": [
+        "Forestil dig, at vi tracked din adfærd hvert vågne minut i en uge. Nogle gange ville du optræde udadvendt, andre gange indadvendt. Ville gennemsnittet af disse tilstande ('states') passe præcist med det resultat, du får i en klassisk personlighedstest ('traits')?",
+        "Columbus og Strandsbjerg dykker ned i præcis denne kløft. De undersøger, hvordan moderne forskning fanger vores kortvarige, situationsbestemte adfærd og forsøger at koble den til de langsigtede personlighedstræk, vi normalt opfatter som stabile. Deres analyse viser, at *average personality states correlated only imperfectly with trait scores*.",
+        "Dette skaber et alvorligt forklaringsproblem for de klassiske teorier. Hvis vores daglige handlinger ikke lader sig lægge pænt sammen til en stabil personlighedskerne, og hvis vores reaktioner styres kraftigt af if-then mønstre i specifikke situationer, hvad er et personlighedstræk så egentlig?",
+        "Teksten tvinger dig til at afgøre, om vi overhovedet kan forstå 'hele personen' ud fra matematiske gennemsnit af øjeblikkelige tilstande."
+      ],
+      "main_problem": "Hvordan hænger vores kortvarige personlighedstilstande (states) sammen med langsigtede personlighedstræk (traits), og hvorfor udfordrer empirisk data de dominerende teorier om denne sammenhæng?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den definitoriske forskel på 'states' og 'traits' i teksten?",
+          "why_it_matters": "Det er grundlaget for at forstå al variation i menneskelig adfærd i kurset.",
+          "answer_form": "Kort definition"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forsøger Whole Trait Theory (WTT) at løse kløften mellem state og trait?",
+          "why_it_matters": "WTT er den klassiske matematiske løsning, der antager at træk blot er summen af tilstande.",
+          "answer_form": "Konceptuel forklaring"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor skaber 'situation-state contingencies' problemer for den etablerede trait-teori?",
+          "why_it_matters": "Det viser, at vores adfærd er radikalt afhængig af konteksten, hvilket af-essentialiserer traits.",
+          "answer_form": "1-2 sætninger"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst etablerer det variabel-centrerede fundament for personlighedspsykologi. Den viser os, hvordan psykologien matematisk forsøger at fange flygtig adfærd, hvilket sætter scenen for kursets senere kritikker af, om man overhovedet kan kvantificere personen på denne måde.",
+      "overview": [
+        "Forskellen på kortvarige states og langsigtede traits.",
+        "Klassiske teoriers forsøg på at forene dem (f.eks. WTT og TESSERA).",
+        "Empiriske data der viser, at gennemsnitlige states og situationsmønstre afviger fra forventningerne."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Box 1 (Overview of theories)",
+          "task": "Afgør hvordan WTT forsøger at koble states til traits.",
+          "why_it_matters": "Dette definerer den dominerende baseline-forståelse i feltet.",
+          "stop_signal": "Når du kan forklare 'density distributions'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen 'Linking states and traits'",
+          "task": "Find beviset for, at gennemsnitlige states ikke er det samme som traits.",
+          "why_it_matters": "Det er her de empiriske huller i teorien afsløres.",
+          "stop_signal": "Når du har fundet argumentet om 'incremental validity'"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen 'Situation-state contingencies'",
+          "task": "Identificer hvordan specifikke situationer overstyrer generelle traits.",
+          "why_it_matters": "Dette peger direkte frem mod kursets fokus på 'Context' over 'Essence'.",
+          "stop_signal": "Når du forstår hvorfor if-then mønstre udfordrer WTT"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "correlated only imperfectly with trait scores",
+          "why": "Det centrale brud med WTT's matematiske forventning.",
+          "where_to_look": "Sektionen 'Linking states and traits'"
+        },
+        {
+          "target": "distributions of personality states over time",
+          "why": "Kernen i hvordan WTT forsøger at koble state til trait.",
+          "where_to_look": "Box 1"
+        },
+        {
+          "target": "do not correspond to stable individual differences",
+          "why": "Understreger hvorfor reaktioner på specifikke situationer ikke matcher traits.",
+          "where_to_look": "Sektionen 'Situation-state contingencies'"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke statistiske værdier (som r = 0.42 - 0.56).",
+        "Tekniske detaljer i Experience Sampling Methods (ESM).",
+        "Udtømmende memorering af alle teorier i Box 1 - fokuser på WTT og forskellen til de andre."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne tekst som din primære, fokuserede gennemgang af kildens argumenter.",
+      "coverage_note": "Dækker kerneforskellen på state og trait samt de metodiske problemer med at koble dem sammen via empirisk data.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Box 1 og indledningen",
+          "heading": "Fra flygtige tilstande til faste træk",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At definere byggestenene og teorien, der forsøger at forbinde dem?",
+          "explanation_paragraphs": [
+            "I personlighedspsykologi skelner man skarpt mellem 'states' (kortvarige manifestationer af adfærd og følelser) og 'traits' (langsigtede, stabile træk). Forskere forsøger intenst at forstå, hvordan disse flygtige øjeblikke akkumulerer og bliver til det, vi kalder en persons stabile karakter.",
+            "En af de mest dominerende modeller for at forklare denne kobling er Whole Trait Theory (WTT). Teorien forsøger at løse problemet ved hjælp af matematik og statistik. Den påstår, at et personlighedstræk fundamentalt set blot er tæthedsfordelingen af en persons mange kortvarige states over tid."
+          ],
+          "key_points": [
+            "States er kortvarige, situationsbestemte handlinger.",
+            "Traits er langsigtede og opfattes ofte som en kerne.",
+            "Whole Trait Theory (WTT) reducerer traits til at være summen af en persons states."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "distributions of personality states over time",
+              "why_it_matters": "Det er den centrale mekanisme i WTT.",
+              "source_location": "Box 1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Box 1",
+              "passage": "Descriptively, the theory posits that personality traits correspond to distributions of personality states over time.",
+              "why_it_matters": "Det er definitionen på WTT's forsøg på at lukke gabet mellem handling her og nu, og generel personlighed."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen 'Linking states and traits'",
+          "heading": "Gennemsnittet der fejlede",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At identificere bruddet mellem teoretisk forventning og empirisk virkelighed?",
+          "explanation_paragraphs": [
+            "Ifølge Whole Trait Theory burde matematikken være simpel: Hvis man måler en persons 'states' tilstrækkeligt mange gange, burde gennemsnittet af disse states matche personens score på en klassisk trait-test (som Big Five).",
+            "Nye empiriske studier, der anvender intensiv dataopsamling via smartphones (experience sampling), viser dog et afgørende problem. Det viser sig, at folks gennemsnitlige states kun korrelerer uperfekt med deres generelle trait-scores. Gennemsnittet af dine daglige handlinger fanger altså ikke hele din overordnede 'personlighed', hvilket sår tvivl om WTT's primære præmis."
+          ],
+          "key_points": [
+            "Empirisk data viser et uperfekt match mellem state-gennemsnit og trait-scores.",
+            "Gennemsnitlige states bidrager ikke med mere præcis viden (incremental validity) end klassiske spørgeskemaer alene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "average personality states correlated only imperfectly",
+              "why_it_matters": "Beviset for at matematikken i WTT ikke fungerer fejlfrit i virkeligheden.",
+              "source_location": "Linking states and traits"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen 'Situation-state contingencies'",
+          "heading": "Når situationen dikterer adfærden",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At forstå hvordan specifikke situationer komplicerer ideen om stabile traits?",
+          "explanation_paragraphs": [
+            "For at komplicere billedet yderligere kigger forskere på 'situation-state contingencies'. Det er faste if-then mønstre hos individer: Hvis de er til en fest, så bliver de udadvendte; hvis de er på arbejde, så bliver de indadvendte.",
+            "Studier viser stærke individuelle forskelle i disse mønstre. Vi har faste måder at reagere på bestemte miljøer. Problemet for teorien er, at disse individuelle situationsmønstre *ikke* stemmer systematisk overens med folks overordnede selvrapporterede traits. Vores adfærd er knyttet til specifikke kontekster i en grad, der ikke lader sig koge ned til brede personlighedskategorier."
+          ],
+          "key_points": [
+            "If-then mønstre bestemmer ofte vores adfærd i en given kontekst.",
+            "Disse situationsbestemte mønstre passer dårligt overens med generelle personlighedstræk.",
+            "Konteksten spiller en afgørende rolle for at aktivere en specifik state."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "do not correspond to stable individual differences",
+              "why_it_matters": "Undergraver ideen om, at alle vores handlinger direkte afspejler en stabil kerne.",
+              "source_location": "Situation-state contingencies"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er den definitoriske forskel på 'states' og 'traits' i teksten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forsøger Whole Trait Theory (WTT) at løse kløften mellem state og trait?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Konceptuel forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor skaber 'situation-state contingencies' problemer for den etablerede trait-teori?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan hænger vores kortvarige personlighedstilstande (states) sammen med langsigtede personlighedstræk (traits), og hvorfor udfordrer empirisk data de dominerende teorier om denne sammenhæng?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen først. Ret kun dine svar med den forkortede tekst bagefter.",
+      "overview": [
+        "Denne tekst skelner fundamentalt mellem kortvarige states og stabile traits.",
+        "Whole Trait Theory forsøger at definere traits matematisk som fordelingen af disse states.",
+        "Empiriske data viser, at stærke situationsmønstre bryder med forventningen om en ren korrelation."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "En kortvarig manifestation af adfærd og følelser i en given situation kaldes en __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Teorien der beskriver personlighedstræk som blot en tæthedsfordeling af adfærd over tid kaldes __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Akronym, 3 bogstaver"
+        },
+        {
+          "number": 3,
+          "sentence": "Det største empiriske problem er, at __________ states kun korrelerer uperfekt med klassiske trait-scores.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "If-then mønstre, hvor en bestemt kontekst udløser en bestemt tilstand, kaldes situation-state __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Studier viser stærke individuelle forskelle i situationsmønstre, men disse stemmer ikke overens med de brede __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord, flertal"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Skitsér forskellen på 'states' og 'traits' ud fra WTT's logik.",
+          "required_elements": [
+            "En tidsakse",
+            "en række uafhængige punkter der repræsenterer kortvarige states",
+            "en samlet boks eller fordelingskurve der indrammer dem alle som ét samlet trait"
+          ],
+          "blank_space_hint": "Brug kassen herunder til at tegne de to niveauer af personlighed."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at flette tekstens empiriske fund aktivt ind i dine eksamenssvar.",
+      "use_this_text_for": [
+        "At bevise, at vi ikke har den samme 'personlighed' i enhver situation.",
+        "At forklare forskellen på den handling vi kan observere (state) og den variabel vi forsøger at beregne (trait).",
+        "At etablere en klassisk, variabel-centreret forståelse, som du senere kan kritisere med Stern."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W08L1 Critical Personalism",
+          "connection": "Brug Columbus & Strandsbjerg som det præcise eksempel på den matematiske reificering af 'traits', som Stern angriber."
+        },
+        {
+          "course_theme": "W11L1 Post-psychological subjectivation",
+          "connection": "Sammenlign situationens kraft i denne tekst med Hackings 'looping effect', hvor kategoriseringen af personen skaber adfærden."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern",
+          "how_to_compare": "WTT reducerer personen til summen af specifikke states; Stern argumenterer for at helheden (Realobjekt) går tabt, når vi kun kigger på matematiske fordelinger."
+        },
+        {
+          "compare_with": "Essence vs. Context",
+          "how_to_compare": "Brug 'situation-state contingencies' til at trække debatten væk fra 'Essence' polen og over mod 'Context' polen."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du skal forsvare vigtigheden af kontekst:",
+          "use_in_answer": "Brug begrebet 'situation-state contingencies' for at bevise, at if-then mønstre er mere definerende for adfærd end statiske kerner.",
+          "caution": "Gør det ikke til ren behaviorisme. Det handler stadig om *personligheds*-tilstande indeni i situationen."
+        },
+        {
+          "prompt_type": "Når du diskuterer klassisk trait-teori:",
+          "use_in_answer": "Nævn, at ifølge ny data er Whole Trait Theory problematisk, fordi gennemsnittet af vores adfærd i praksis ikke giver os vores præcise 'trait'.",
+          "caution": "Glem ikke at redegøre kort for hvad WTT faktisk forsøger at gøre, før du afviser den."
+        },
+        {
+          "prompt_type": "definer",
+          "use_in_answer": "Brug teksten til at definere dens centrale begreb eller position præcist.",
+          "caution": "Hold definitionen knyttet til teksten, ikke til en løs hverdagsforståelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sætte lighedstegn mellem et enkelt 'state' og et 'trait'.",
+          "better_reading": "States er flygtige og kontekstafhængige; traits er (i teorien) faste aggregater af disse states."
+        },
+        {
+          "trap": "At antage, at en situation altid trigger den samme state hos alle.",
+          "better_reading": "If-then contingencies er dybt individuelle – det, der gør én udadvendt, gør en anden indadvendt."
+        }
+      ],
+      "mini_exam_prompt_question": "Forklar distinktionen mellem 'states' og 'traits', og redegør for hvorfor nyere empiriske data om situation-state contingencies udfordrer Whole Trait Theory.",
+      "mini_exam_answer_plan_slots": [
+        "Definition: States som kortvarig adfærd vs. Traits som stabile konstruktioner.",
+        "Teori: Hvordan WTT forsøger at koble dem matematisk (tæthedsfordeling).",
+        "Empiri: Problemet med den uperfekte korrelation mellem gennemsnitlige states og trait-scores.",
+        "Kontekst: Hvordan if-then mønstre viser, at adfærd er specifik for situationen og ikke lader sig fange perfekt i generelle spørgeskemaer."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

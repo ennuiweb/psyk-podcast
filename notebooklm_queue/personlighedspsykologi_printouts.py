@@ -4097,6 +4097,28 @@ def _source_id_from_source(source: dict[str, Any]) -> str:
     return str(source.get("source_id") or "").strip()
 
 
+def _clean_source_title_part(value: Any) -> str:
+    if isinstance(value, list):
+        return ", ".join(
+            part
+            for part in (_clean_source_title_part(item) for item in value)
+            if part
+        )
+    return re.sub(r"\s+", " ", str(value or "").strip())
+
+
+def _source_citation_label_from_source(source: dict[str, Any]) -> str:
+    for key in ("apa_label", "citation_label", "author_year"):
+        label = _clean_source_title_part(source.get(key))
+        if label:
+            return label
+    author = _clean_source_title_part(source.get("author") or source.get("authors"))
+    year = _clean_source_title_part(source.get("year") or source.get("publication_year"))
+    if author and year:
+        return f"{author} ({year})"
+    return _clean_source_title_part(source.get("title"))
+
+
 def _reading_title_from_source(source: dict[str, Any]) -> str:
     source_id = _source_id_from_source(source)
     explicit_title = (
@@ -4108,9 +4130,27 @@ def _reading_title_from_source(source: dict[str, Any]) -> str:
     return str(explicit_title or source.get("title") or "Ukendt kilde").strip()
 
 
+def _normalized_source_title_part(value: str) -> str:
+    return re.sub(r"\s+", " ", str(value or "").strip()).casefold().rstrip(" .:-")
+
+
+def _source_display_title_from_source(source: dict[str, Any]) -> str:
+    reading_title = _clean_source_title_part(_reading_title_from_source(source))
+    citation_label = _source_citation_label_from_source(source)
+    if not citation_label:
+        return reading_title
+    normalized_reading_title = _normalized_source_title_part(reading_title)
+    normalized_citation_label = _normalized_source_title_part(citation_label)
+    if not normalized_reading_title or normalized_reading_title == normalized_citation_label:
+        return citation_label
+    if normalized_reading_title.startswith(normalized_citation_label):
+        return reading_title
+    return f"{citation_label}: {reading_title}"
+
+
 def _source_heading(artifact: dict[str, Any]) -> str:
     source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
-    title = _reading_title_from_source(source)
+    title = _source_display_title_from_source(source)
     lecture_key = str(source.get("lecture_key") or "").strip()
     return f"**Kilde:** {title}\n\n**Forelæsning:** {lecture_key}"
 
@@ -4141,7 +4181,7 @@ def _compendium_cover_items(artifact: dict[str, Any]) -> list[str]:
 
 def render_compendium_cover_markdown(artifact: dict[str, Any]) -> str:
     source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
-    source_title = _reading_title_from_source(source)
+    source_title = _source_display_title_from_source(source)
     lecture_key = str(source.get("lecture_key") or "").strip()
     lecture_label = _format_margin_lecture_key(lecture_key)
     contents = _compendium_cover_items(artifact)

@@ -1,20 +1,20 @@
 # Printout Review Codebase Guide
-This guide is for coding LLMs working on the `printout_review` candidate lane.
-It focuses on the code and docs needed to understand, modify, debug, and extend the experimental printout workflow for `personlighedspsykologi`.
+This guide is for coding LLMs working on the canonical current `printout_review` printout system.
+It focuses on the code and docs needed to understand, modify, debug, and extend the schema-v3 PDF-producing printout workflow for `personlighedspsykologi`.
 The guide is intentionally dense.
-Read it before editing the printout candidate system.
+Read it before editing the printout review system.
 
 ## 1. What this repo fundamentally does
 The top-level repo is the `Freudd Learning System` content and delivery codebase.
 It is not only a podcast repo.
 It owns podcast publication, NotebookLM-driven content generation, semantic preprocessing, and a student-facing portal.
-The printout candidate lane is one subsystem inside that larger engine.
+The printout review system is one subsystem inside that larger engine.
 Its job is to turn dense course readings into printable study artifacts that improve initiation, comprehension, attention maintenance, recall, and oral-exam transfer.
 The printouts are not a replacement for the source text.
 They are an output adaptation layer on top of a larger source-understanding pipeline.
 
-## 2. The printout candidate in one sentence
-The candidate lane generates fresh-from-source experimental printout bundles from upstream semantic artifacts, normalizes them into a stable schema, renders them as Markdown, and optionally renders them as PDFs for inspection.
+## 2. The printout system in one sentence
+The printout review system generates fresh-from-source canonical problem-driven printout bundles from upstream semantic artifacts, normalizes them into a stable schema, renders them as Markdown, and renders PDFs for inspection.
 
 ## 3. The architectural stack you should hold in your head
 Think of the system as layered:
@@ -22,18 +22,18 @@ Think of the system as layered:
 2. The recursive source-intelligence pipeline builds semantic artifacts from those readings.
 3. The printout review lane selects one reading plus compact lecture/course context.
 4. A provider backend generates structured JSON candidate content.
-5. The experimental engine normalizes and validates that content.
+5. The review engine normalizes and validates that content.
 6. The engine renders Markdown and optionally PDF.
 7. A run manifest records every candidate generation attempt.
 The printout lane therefore depends on both upstream semantics and local render logic.
 
-## 4. Why this candidate lane exists
-The production printout path is older and structurally simpler.
-The candidate lane exists so the team can test learner-fit changes without destabilizing the canonical output tree.
+## 4. Why this system lives outside main code for now
+The old main-code printout path is older, structurally simpler, and now outdated.
+The review system exists outside the main output tree because the newer learner-fit changes, schema, validation, and PDF rendering have not yet been integrated into main code.
 This separation is deliberate.
-It is not accidental duplication.
+It is not accidental duplication, and it should not be resolved by reviving the old three-sheet builder.
 The cost is maintenance overhead.
-The benefit is that pedagogy and layout can evolve without turning production into a moving target.
+The benefit is that the canonical printout behavior can be stabilized before the integration work moves it into the main path.
 
 ## 5. The business goal of the printouts
 The system is optimized for difficult academic readings where ADHD-style friction is a real constraint.
@@ -72,13 +72,13 @@ Shared generation and orchestration machinery.
 `notebooklm_queue/personlighedspsykologi_recursive.py`
 Upstream semantic preprocessing for the course.
 `notebooklm_queue/personlighedspsykologi_printouts.py`
-Older production printout generator; useful for contrast.
+Older legacy printout generator; useful for contrast only.
 `notebooklm_queue/gemini_preprocessing.py`
 Gemini JSON-generation backend.
 `notebooklm_queue/openai_preprocessing.py`
 OpenAI JSON-generation backend.
 `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
-Experimental printout review workspace.
+Canonical current PDF-producing printout workspace.
 `tests/`
 The behavior lock that keeps this lane from silently regressing.
 
@@ -93,10 +93,11 @@ Important files:
 - `sample_manifest.template.json`
 - `scripts/bootstrap_run.py`
 - `scripts/generate_candidates.py`
+- `scripts/run_parallel_candidates.py`
 - `scripts/printout_engine.py`
 - `scripts/scaffold_engine.py`
 - `runs/`
-Everything important for the candidate lane starts here.
+Everything important for the current canonical printout system starts here.
 
 ## 10. The local AGENTS rule you should remember
 The local `AGENTS.md` defines the working rule `JSON -> Markdown -> PDF`.
@@ -106,7 +107,7 @@ Use PDFs only when the change can affect layout, spacing, typography, answer-spa
 This saves time and avoids overfitting to the PDF surface when the real bug is in the underlying content structure.
 
 ## 11. The current printout bundle order
-The candidate lane now exports in this order:
+The printout review system now exports in this order:
 1. `00-cover`
 2. `01-reading-guide`
 3. `02-active-reading`
@@ -120,11 +121,12 @@ That is a real product constraint.
 User-facing artifacts live directly under:
 `review/`
 Internal artifacts live under:
-`review/.scaffolding/<source_id>/`
+`review/.scaffolding/artifacts/<provider>-<model>/<source_id>/`
 The user-facing folder is flat and should contain exported printouts only.
 The internal folder contains:
 - `reading-scaffolds.json`
 - internal rendered Markdown when `--no-pdf` is used
+- temporary PDF staging during PDF renders
 Do not mix these layers.
 That separation was added to avoid stale and misleading artifacts.
 PDF filenames now carry provider, model, source id, and printout stem so
@@ -135,9 +137,12 @@ multiple LLMs can coexist in one flat folder.
 printout_review/
 ├── review/
 │   ├── .scaffolding/
-│   │   └── <source_id>/
-│   │       ├── reading-scaffolds.json
-│   │       └── rendered_markdown/
+│   │   └── artifacts/
+│   │       └── openai-gpt-5_5/
+│   │           └── <source_id>/
+│   │               ├── reading-scaffolds.json
+│   │               ├── rendered_markdown/
+│   │               └── staging/
 │   ├── openai-gpt-5_5--<source_id>--00-cover.pdf
 │   ├── openai-gpt-5_5--<source_id>--01-reading-guide.pdf
 │   ├── openai-gpt-5_5--<source_id>--02-active-reading.pdf
@@ -146,6 +151,8 @@ printout_review/
 └── runs/<run-name>/
     ├── manifest.json
     ├── notes/
+    ├── parallel-run.json
+    ├── parallel/
     └── prompts/
 ```
 This is the disk contract you should preserve unless you are intentionally redesigning output policy.
@@ -163,21 +170,22 @@ The key roles are:
 Every sheet should have one primary job.
 That role separation is core to the product.
 
-## 15. Production lane versus candidate lane
-Candidate lane:
+## 15. Canonical review system versus legacy main-code builder
+Canonical current printout system:
 - path: `.../evaluation/printout_review/`
 - engine: `scripts/printout_engine.py`
 - schema: current review schema v3
-- rule: fresh-from-source candidates only
-Production lane:
+- rule: fresh-from-source generation only
+Legacy/outdated main-code builder:
 - center of gravity: `notebooklm_queue/personlighedspsykologi_printouts.py`
 - output root: `notebooklm-podcast-auto/personlighedspsykologi/output/...`
 - older prompt contract and older artifact structure
 Do not casually mix the two.
-Use production artifacts as comparison references, never as seed material for candidate generation.
+Use legacy artifacts as comparison references, never as seed material for canonical generation.
+Main-code integration of the review engine is still pending.
 
-## 16. The broader upstream pipeline the candidate consumes
-The candidate lane is downstream of the `Course Understanding Pipeline`.
+## 16. The broader upstream pipeline the printout system consumes
+The printout review system is downstream of the `Course Understanding Pipeline`.
 For `personlighedspsykologi`, the key upstream file is:
 `notebooklm_queue/personlighedspsykologi_recursive.py`
 That file builds:
@@ -186,7 +194,7 @@ That file builds:
 - course synthesis
 - revised lecture substrates
 - podcast substrates
-The candidate lane mainly consumes source cards, revised lecture substrates, and course synthesis.
+The printout review system mainly consumes source cards, revised lecture substrates, and course synthesis.
 That means printouts are not pure reading-local summaries.
 They depend on lecture-level and course-level framing too.
 
@@ -201,7 +209,7 @@ The printout engine only sees a compact projection of those artifacts.
 If the upstream signal is wrong, the printout can be formally valid but pedagogically weak.
 When output quality seems mysteriously off, inspect upstream artifacts before blaming the renderer.
 
-## 18. Key upstream constants the review lane imports directly
+## 18. Key upstream constants the printout system imports directly
 Source:
 `notebooklm_queue/personlighedspsykologi_recursive.py`
 Important constants:
@@ -212,8 +220,8 @@ DEFAULT_SOURCE_CARD_DIR = DEFAULT_RECURSIVE_DIR / "source_cards"
 DEFAULT_REVISED_LECTURE_SUBSTRATE_DIR = DEFAULT_RECURSIVE_DIR / "revised_lecture_substrates"
 DEFAULT_COURSE_SYNTHESIS_PATH = DEFAULT_RECURSIVE_DIR / "course_synthesis.json"
 ```
-The candidate lane imports these path defaults rather than redefining them.
-If upstream defaults move, the review lane must be updated too.
+The printout review system imports these path defaults rather than redefining them.
+If upstream defaults move, the printout review system must be updated too.
 
 ## 19. The local review run lifecycle
 A normal fresh run is:
@@ -319,7 +327,56 @@ The engine stays provider-agnostic where it matters.
 Provider-specific instability remains in the backend files.
 This is the right current split.
 
-## 28. Gemini backend purpose
+## 28. Parallel generation runner
+Source:
+`notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/run_parallel_candidates.py`
+Purpose:
+Run many single-source `generate_candidates.py` workers safely.
+It is deliberately a thin orchestration layer, not a second generator.
+It writes:
+- `runs/<run-name>/parallel-run.json`
+- `runs/<run-name>/parallel/<source_id>/manifest.json`
+Supported operator verbs:
+- `start`
+- `resume`
+- `status`
+- `verify`
+- `cancel`
+Important behavior:
+- `resume` recomputes truth from manifests and files.
+- `resume` rejects semantic option changes; only operational fields such as
+  worker count should change on resume.
+- `cancel` records a durable cancellation request, signals the parent runner,
+  and then terminates process groups recorded in that run state.
+- the scheduler submits only up to the active worker limit and stops submitting
+  new sources after cancellation is requested.
+- workers always call `generate_candidates.py`.
+- public PDF completeness is verified from expected provider/model/source filenames.
+Do not add a background daemon or watcher here.
+This runner should stay boring and explicit.
+
+## 29. Public PDF atomicity
+The renderer writes PDFs into hidden staging under:
+`review/.scaffolding/artifacts/<provider>-<model>/<source_id>/staging/`
+Only after the expected bundle renders and validates does it replace the public
+`review/*.pdf` files.
+This prevents interrupted renders from making a new source look half-complete.
+If a render fails, public PDFs from the previous successful run should remain
+untouched.
+JSON is committed after rendering succeeds. An existing JSON file with missing
+expected public PDFs must trigger rerender or repair, not `skipped_existing`.
+
+## 30. Retry metadata
+Fresh generation artifacts and candidate manifests can record:
+- `attempt_count`
+- `transient_error_count`
+- `last_transient_error`
+This is diagnostic metadata for provider instability and future cost analysis.
+It is not a billing integration.
+Manual billing snapshots still belong in run-local notes such as
+`cost-notes.md`.
+
+## 31. Gemini backend purpose
 Source:
 `notebooklm_queue/gemini_preprocessing.py`
 This file provides structured JSON generation helpers for Gemini.
@@ -481,7 +538,7 @@ This is also where upstream schema drift often first shows up in practice.
 ## 40. Dynamic length budgeting
 Function:
 `build_printout_length_budget(...)`
-The candidate lane does not use a flat worksheet size.
+The printout review system does not use a flat worksheet size.
 The budget uses:
 - length-band signals
 - source page count
@@ -745,7 +802,7 @@ Top-level functions:
 - `render_printout_files(...)`
 - `render_v2_printout_files(...)`
 - `render_v3_printout_files(...)`
-The candidate lane primarily uses v3.
+The printout review system primarily uses v3.
 V2 remains for compatibility with old artifacts and tests.
 Do not delete v2 support casually unless you also migrate or retire every artifact and test that still depends on it.
 
@@ -1011,7 +1068,7 @@ A robust fix would:
 This should be addressed before expanding heavy OpenAI use.
 
 ## 89. Likely future failure: semantic drift upstream
-If source-card or course-synthesis structures change upstream, the candidate lane may still import and run while producing worse prompts.
+If source-card or course-synthesis structures change upstream, the printout review system may still import and run while producing worse prompts.
 This is not an import failure.
 It is semantic drift.
 Whenever upstream recursive schemas change, review:
@@ -1142,7 +1199,7 @@ For render work:
 Docs and workflow guidance should also be updated if the change affects how future agents should work.
 
 ## 100. Final recommendations
-Treat the candidate lane as a content-engine adapter, not a standalone mini app.
+Treat the printout review system as a content-engine adapter, not a standalone mini app.
 Respect the role split between printout types.
 Keep user-facing output flat and internal artifacts hidden.
 Prefer code-owned worksheet mechanics where the structure is mechanical.

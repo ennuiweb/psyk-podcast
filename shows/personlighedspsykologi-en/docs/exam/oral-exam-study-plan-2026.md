@@ -1,229 +1,218 @@
-# Personlighedspsykologi Oral Exam Study Plan
+# Personlighedspsykologi Mundtlig Eksamenslæseplan
 
-Created: 2026-05-06
-Exam: 2026-06-03
-Preparation window: 28 study days before exam day
+Oprettet: 2026-05-06
+Revideret: 2026-05-12
+Eksamen: 2026-06-03
+Udgangspunkt: I dag er mandag 2026-05-11. Alle forelæsningsuger skal være gennemgået senest fredag 2026-05-22. Et andet fag skal samtidig have 30% af den samlede læsetid.
 
-## Aim
+Printbar A4-plan:
 
-By 2026-05-31, every lecture block should be reduced to an oral-ready theory
-sheet. 2026-06-01 and 2026-06-02 are for mock exams, repair, and compression,
-not for first-time learning.
+- `oral-exam-study-plan-2026-onepage.pdf` er den færdige printversion.
+- `oral-exam-study-plan-2026-onepage.tex` er den kanoniske kilde til PDF'en.
+- Behold kun disse to onepage-filer på disk; timestampede designkopier og LaTeX `.aux`/`.log`-filer er kun midlertidigt arbejdsstøj.
+- Arket er ét stående A4-ark uden faste datoer. Datoer skrives manuelt på de enkelte lecture-sektioner.
+- Afkrydsningsniveauer: små bokse = de fire printouts pr. reading, mellemstor boks = reading færdig, stor boks = lecture færdig.
+- Den printbare plan er en fysisk gennemgangsliste over readings og printouts; denne Markdown-plan er den bredere studie- og reparationsplan.
 
-The exam target is not "remember all readings equally." The target is to speak
-clearly about personality theories, compare them through the course's four
-orientation points, and defend choices of concepts, method, and critique.
-The exam is oral and continues into a longer open discussion after the initial
-answer, so preparation should emphasize comparison, qualification, and the
-ability to extend an argument under follow-up questions.
+## Mål
 
-Core orientation points to use throughout:
+Målet er ikke at kunne gengive alle tekster lige detaljeret. Målet er at kunne tale klart om personlighedspsykologiske teorier, sammenligne dem gennem kursets faste orienteringspunkter og kunne forsvare valg af begreber, metode og kritik i en mundtlig eksamenssituation.
 
-- Essence vs. context
-- Agency
+Første hårde milepæl:
+
+- Senest 2026-05-22 skal alle forelæsningsuger W01-W12 være gennemgået mindst én gang.
+- Hver uge skal have et mundtligt brugbart overblik, ikke nødvendigvis perfekt tekstbeherskelse.
+- Hver uge skal kobles til mindst to andre teoritraditioner.
+
+Anden milepæl:
+
+- 2026-05-23 til 2026-06-02 bruges til reparation, sammenligning, mundtlige prøver og komprimering.
+- Der skal ikke ligge førstegangslæring af hele forelæsningsuger efter 2026-05-22.
+
+## Tidsregel
+
+Planen må ikke antage, at hele læsedagen er til personlighedspsykologi.
+
+Brug 70/30-reglen:
+
+- 70% af læsetiden går til personlighedspsykologi.
+- 30% af læsetiden går til det andet fag.
+
+Praktisk dagsstruktur:
+
+- Første blok: personlighedspsykologi, ny gennemgang.
+- Anden blok: personlighedspsykologi, komprimering og mundtlig genkaldelse.
+- Tredje blok: andet fag.
+
+Hvis dagen er kort, må personlighedspsykologi-blokkene skæres ned, men det andet fag må ikke forsvinde. Det er en fast del af planen, ikke en bonus.
+
+## Faste Orienteringspunkter
+
+Brug disse fire punkter på alle teorier:
+
+- Essens vs. kontekst
+- Agens
 - Determination
-- Historicity
+- Historicitet
 
-## Daily Method
+En teori er først eksamensklar, når du kan sige:
 
-Use the same loop for each lecture or theory block:
+- Hvad er modellen af personen?
+- Hvad tæller som viden, evidens eller metode?
+- Hvor ligger handlekraften?
+- Hvad bestemmer personlighed, subjektivitet eller udvikling?
+- Hvordan forstår teorien kontekst og historie?
+- Hvad gør teorien synligt?
+- Hvad skjuler eller underbetoner teorien?
+- Hvilke to andre teorier bør den sammenlignes med?
 
-1. Orient: read the weekly overview, lecture title, source list, and slides.
-2. Absorb: listen to the "Alle kilder" podcast or the most important source
-   podcasts before going into individual details.
-3. Compress: make one theory sheet with the headings below.
-4. Retrieve: close the material and explain the theory out loud for 5-8 minutes.
-5. Compare: add at least two contrasts to earlier or later theories.
-6. Test: use Freudd quizzes, preferably medium first and hard when the block is
-   stable.
+## Daglig Arbejdsmetode
 
-Each theory sheet should answer:
+Brug samme korte løkke for hver forelæsningsuge:
 
-- What is the model of the person?
-- What counts as evidence or method?
-- Where is agency located?
-- What determines personality or subjectivity?
-- How does the theory handle context and history?
-- How does it understand development, pathology, or change?
-- What is the strongest critique of the theory?
-- Which two theories should it be compared with at the exam?
+1. Orienter dig i ugeoversigt, forelæsningstitel, kildeoversigt og slides.
+2. Brug "Alle kilder" podcasten eller de vigtigste udskrifter som første overblik.
+3. Lav et ugeark på én side.
+4. Luk materialet og forklar ugens teori højt i 5-8 minutter.
+5. Skriv to sammenligninger til tidligere eller senere teorier.
+6. Marker ét svagt punkt, der skal repareres efter 2026-05-22.
 
-## Minimum Viable Day
+Ugearket skal være mundtligt, ikke flot. Brug korte formuleringer, pile, kontraster og eksempler. Det skal gøre det muligt at tale.
 
-If time or energy is low, still do this:
+## Minimumsdag
 
-- 20 minutes: overview or podcast.
-- 25 minutes: one-page theory sheet.
-- 10 minutes: speak the theory out loud.
-- 5 minutes: write one comparison.
+Hvis energi eller tid er lav, skal dagen stadig have dette:
 
-Never skip the oral output. Speaking is the exam form, so speaking is the study
-unit.
+- 30 minutter: ugeoverblik, podcast eller udskrift.
+- 30 minutter: ét groft ugeark.
+- 10 minutter: forklar teorien højt.
+- 10 minutter: skriv to sammenligninger.
+- 30% af dagens samlede læsetid: andet fag.
 
-## Calendar
+Spring ikke den mundtlige del over. Eksamensformen er tale, så tale er selve træningen.
 
-### Week 1: 2026-05-06 to 2026-05-10
+## Gennemgangsfase: 2026-05-11 til 2026-05-22
 
-Purpose: build the map, then secure the trait, assessment, biosocial, and
-pathology foundations.
+Formålet med denne fase er at komme hele kurset igennem. Det er en dækningsfase, ikke en perfektioneringsfase.
 
-| Date | Focus | Output |
+| Dato | Personlighedspsykologi, 70% af læsetiden | Output samme dag | Andet fag, 30% |
+| --- | --- | --- | --- |
+| 2026-05-11 | W01: introduktion, nøglebegreber, personlighedsvurdering | Kort kursuskort + ugeark for W01 | Fast andet-fag blok |
+| 2026-05-12 | W02: træk, tilstande, stabilitet, forandring, person-situation | Ugeark med træk/tilstand/person-situation kontrast | Fast andet-fag blok |
+| 2026-05-13 | W03: kultur, evolution, genetik, personlighedsfunktion og patologi | Ugeark om biologiske, kulturelle og diagnostiske modeller | Fast andet-fag blok |
+| 2026-05-14 | W04: psykoanalysens personlighedsbegreb og personlighedsstruktur | Ugeark om drift, konflikt, det ubevidste, Lacan/Laplanche | Fast andet-fag blok |
+| 2026-05-15 | W05: psykoanalysens empiri, metode og konstituering | Ugeark om fortolkning, klinisk evidens, Dora og nyere psykoanalyse | Fast andet-fag blok |
+| 2026-05-16 | W06: fænomenologi og eksistentiel psykologi I | Ugeark om oplevelse, livsverden, angst, frihed og væren-i-verden | Fast andet-fag blok |
+| 2026-05-17 | W07: eksistentiel psykologi II og humanistisk psykologi | Ugeark om relation, autenticitet, vækst og terapi | Fast andet-fag blok |
+| 2026-05-18 | W08: kritisk personalisme og kritisk psykologi | Ugeark om personkritik, reifikation, subjektivitet og handlemuligheder | Fast andet-fag blok |
+| 2026-05-19 | W09: kritisk psykologi, praksis og daglig livsførelse | Ugeark om struktur, praksis, deltagelse og livsførelse | Fast andet-fag blok |
+| 2026-05-20 | W10: køn, socialkonstruktionisme og poststrukturalisme | Ugeark om køn, magt, diskurs, etik og subjektivering | Fast andet-fag blok |
+| 2026-05-21 | W11: poststrukturalisme, diskursiv psykologi, feministisk teori og narrativitet | Ugeark om Gergen, Hacking, narrativ identitet, kultur og mening | Fast andet-fag blok |
+| 2026-05-22 | W12: sammenligning af teorier, subjektets historie og eksamen | Samlet kursusmatrix + liste over fem svage punkter | Fast andet-fag blok |
+
+Kontrolpunkt 2026-05-22:
+
+- Alle W01-W12 er gennemgået.
+- Der findes mindst ét groft ark pr. kursusuge.
+- Der findes en samlet kursusmatrix med de fire orienteringspunkter.
+- Der findes en liste over de fem mest presserende huller.
+- Det andet fag er ikke blevet skubbet ud af planen.
+
+## Reparations- og Eksamensfase: 2026-05-23 til 2026-06-02
+
+Når alle uger er gennemgået, skifter arbejdet fra dækning til mundtlig styrke.
+
+| Dato | Fokus i personlighedspsykologi | Output | Andet fag |
+| --- | --- | --- | --- |
+| 2026-05-23 | Reparer de to svageste uger fra W01-W06 | Forbedrede ugeark + 1 mundtlig forklaring | 30% |
+| 2026-05-24 | Reparer de to svageste uger fra W07-W12 | Forbedrede ugeark + 1 mundtlig forklaring | 30% |
+| 2026-05-25 | Psykoanalyse, fænomenologi, eksistens og humanisme | Sammenligningsark på tværs af indre konflikt, oplevelse, frihed og vækst | 30% |
+| 2026-05-26 | Kritisk, sociokulturel, poststrukturalistisk og narrativ psykologi | Sammenligningsark om struktur, praksis, diskurs, magt og fortælling | 30% |
+| 2026-05-27 | Hele kurset gennem de fire orienteringspunkter | Matrix: essens/kontekst, agens, determination, historicitet | 30% |
+| 2026-05-28 | Prøve 1: tidlig/midt-kursus teori | 15 minutters mundtligt svar + reparationsliste | 30% |
+| 2026-05-29 | Prøve 2: sen-kursus teori | 15 minutters mundtligt svar + reparationsliste | 30% |
+| 2026-05-30 | Prøve 3: sammenlignende spørgsmål | 20 minutters sammenlignende svar | 30% |
+| 2026-05-31 | Reparation af de fem svageste punkter | Fem korte reparationsnoter | 30% |
+| 2026-06-01 | To fulde mundtlige prøver | En tidlig teori og en sen teori med opfølgende spørgsmål | 30% |
+| 2026-06-02 | Komprimering og ro | Kun ark, matrix, W12 og let mundtlig opvarmning | 30% |
+
+Eksamen 2026-06-03:
+
+- 20 minutters opvarmning.
+- Gentag de fire orienteringspunkter.
+- Sig én tidlig teori, én sen teori og én stærk kritik højt.
+- Læs ikke nyt tungt stof.
+
+## Kursusbuer
+
+Brug disse buer som kursets mentale indholdsfortegnelse:
+
+| Bue | Forelæsninger | Eksamensfunktion |
 | --- | --- | --- |
-| 2026-05-06 | W12L1 overview + exam frame | Master map of the four orientation points and the five course arcs |
-| 2026-05-07 | W01L1 and W01L2 | Sheets for intro concepts and personality assessment |
-| 2026-05-08 | W02L1 and W02L2 | Sheet contrasting traits, states, stability, change, and person-situation interplay |
-| 2026-05-09 | W03L1 | Sheet for culture, evolution, genetics, and personality |
-| 2026-05-10 | W03L2 + weekly recall | Sheet for personality functioning/pathology and a 10-minute oral mini-mock |
+| Grundlag, træk og biosociale baser | W01-W03 | Baseline for målbare individuelle forskelle, stabilitet/forandring, biologi, kultur og miljø |
+| Patologi og psykoanalyse | W03-W05 | Skift til klinisk funktion, ubevidst konflikt, fortolkning og det decentrerede subjekt |
+| Erfaring, eksistens og vækst | W06-W07 | Førstepersonserfaring, mening, frihed, relation og vækst |
+| Kritiske, sociokulturelle og narrative vendinger | W08-W11 | Kritik af det isolerede individ gennem handling, praksis, køn, diskurs, magt og narrativitet |
+| Syntese og metateori | W12 | Sammenligning gennem orienteringspunkter, historie og subjektets dannelse |
 
-Checkpoint:
+## Højtydende Sammenligningsakser
 
-- Explain why trait and assessment psychology is the baseline later traditions
-  react to.
-- Compare trait/state models with person-situation interplay.
-- Say how biological, evolutionary, cultural, and diagnostic approaches differ
-  in their model of the person.
+Vend tilbage til disse i næsten alle mundtlige svar:
 
-### Week 2: 2026-05-11 to 2026-05-17
+- Træk vs. tilstand.
+- Person vs. variabelprofil.
+- Indre essens vs. subjektivering.
+- Individuelt problem vs. strukturel betingelse.
+- Vækst vs. mangel.
+- Naturvidenskabelig måling vs. klinisk/hermeneutisk fortolkning.
+- Frihed/agens vs. social, historisk, biologisk eller diskursiv determination.
+- Erfaring/livsverden vs. adfærd, træk eller diagnose.
 
-Purpose: make psychoanalysis orally usable instead of just dense.
+## Forelæsningscheckliste
 
-| Date | Focus | Output |
-| --- | --- | --- |
-| 2026-05-11 | W04L1 | Sheet for Freud, drift, conflict, and the psychoanalytic personality concept |
-| 2026-05-12 | W04L2 | Sheet for Lacan, Laplanche, structure, language, and the decentered subject |
-| 2026-05-13 | W05L1 | Sheet for psychoanalytic empiri, Dora, interpretation, and Ricoeur |
-| 2026-05-14 | W05L2 | Sheet for psychoanalytic constitution and newer psychoanalytic theories |
-| 2026-05-15 | Psychoanalysis synthesis | One comparison grid: psychoanalysis vs. trait, assessment, pathology, phenomenology |
-| 2026-05-16 | Mock 1 | 15-minute oral answer on psychoanalysis with follow-up questions |
-| 2026-05-17 | Catch-up and light review | Repair missing sheets; quiz the weakest psychoanalysis source |
+- [ ] W01 - Introduktion og personlighedsvurdering
+- [ ] W02 - Træk, tilstande, person-situation, stabilitet og forandring
+- [ ] W03 - Kultur, evolution, genetik, personlighedsfunktion og patologi
+- [ ] W04 - Psykoanalysens personlighedsbegreb og struktur
+- [ ] W05 - Psykoanalysens empiri, metode og konstituering
+- [ ] W06 - Fænomenologi og eksistentiel psykologi I
+- [ ] W07 - Eksistentiel psykologi II og humanistisk psykologi
+- [ ] W08 - Kritisk personalisme og kritisk psykologi
+- [ ] W09 - Kritisk psykologi, praksis og daglig livsførelse
+- [ ] W10 - Køn, socialkonstruktionisme og poststrukturalisme
+- [ ] W11 - Poststrukturalisme, diskursiv psykologi, feministisk teori og narrativitet
+- [ ] W12 - Sammenligning af teorier, subjektets historie og eksamen
 
-Checkpoint:
+## Når Du Er Bagud
 
-- Explain what psychoanalysis means by conflict, structure, the unconscious,
-  interpretation, and constitution.
-- Compare natural-scientific evidence with hermeneutic/clinical evidence.
-- Avoid treating Freud, Lacan, and newer psychoanalysis as one flat theory.
+Hvis planen skrider, skal du ikke forsøge at redde alt på samme niveau.
 
-### Week 3: 2026-05-18 to 2026-05-24
+Beskyt dette:
 
-Purpose: move from inner structure to lived experience, existence, humanism,
-critical personalism, and critical psychology.
+- Dækning af alle W01-W12 senest 2026-05-22.
+- De fire orienteringspunkter.
+- Ét ark pr. kursusbue.
+- Mindst tre mundtlige prøvebesvarelser.
+- Sammenligningsmatrixen.
+- 30% læsetid til det andet fag.
 
-| Date | Focus | Output |
-| --- | --- | --- |
-| 2026-05-18 | W06L1 | Sheet for phenomenology, lived experience, lifeworld, and first-person method |
-| 2026-05-19 | W06L2 | Sheet for existential psychology I: Boss, May, anxiety, freedom, and being-in-the-world |
-| 2026-05-20 | W07L1 | Sheet for existential psychology II and therapeutic/dialogical practice |
-| 2026-05-21 | W07L2 | Sheet for humanistic psychology, growth, authenticity, and relation |
-| 2026-05-22 | W08L1 | Sheet for critical personalism and critique of reified trait profiles |
-| 2026-05-23 | W08L2 | Sheet for critical psychology, structure, subjectivity, and action possibilities |
-| 2026-05-24 | W09L1 + Mock 2 | Sheet for practice theory/conduct of everyday life and 15-minute mock |
+Skær først her:
 
-Checkpoint:
+- Fuld dybdelæsning af enkelte artikler.
+- Perfekte noter.
+- Flotte ark.
+- Gentagelser af stof, du allerede kan forklare mundtligt.
 
-- Compare phenomenology, existentialism, and humanism without merging them.
-- Explain the turn from the measured individual to the person as situated actor.
-- Use agency vs. structure as the bridge from existential psychology to critical
-  psychology.
+Mundtlig sammenligning er vigtigere end tavs, udtømmende læsning.
 
-### Week 4: 2026-05-25 to 2026-05-31
+## Kildeankre
 
-Purpose: finish the sociocultural/narrative turn and convert the whole course
-into comparison-ready oral material.
-
-| Date | Focus | Output |
-| --- | --- | --- |
-| 2026-05-25 | W10L1 | Sheet for gender as psychosocial process and historical identity work |
-| 2026-05-26 | W10L2 | Sheet for social constructionism, poststructuralism, Foucault, Davies, ethics, and power |
-| 2026-05-27 | W11L1 | Sheet for poststructuralism, discursive psychology, feminist theory, Gergen, Hacking |
-| 2026-05-28 | W11L2 | Sheet for narrative psychology, culture, meaning, identity, and life story |
-| 2026-05-29 | W12L1 | Full synthesis sheet: subject history, Elias, and the four orientation points |
-| 2026-05-30 | Full comparison day | Comparison matrix across all theory traditions + Mock 3 |
-| 2026-05-31 | Repair day | Fix the five weakest sheets and record a final 20-minute mock answer |
-
-Checkpoint:
-
-- Explain subjectivation, discourse, power, gender, narrative identity, and
-  historicity without losing the personality-psychology frame.
-- Compare inner-essence theories with subjectivation theories.
-- Be able to answer: "What does this theory make visible, and what does it hide?"
-
-### Final Runway: 2026-06-01 to 2026-06-03
-
-| Date | Focus | Output |
-| --- | --- | --- |
-| 2026-06-01 | Two full mock orals | One strong answer from early course, one from late course; repair only what breaks |
-| 2026-06-02 | Compression and rest | Read only sheets, comparison matrix, and W12L1; no new deep reading |
-| 2026-06-03 | Exam day | 20-minute warm-up: orientation points, one early theory, one late theory, one critique |
-
-## Course Arcs
-
-Use these arcs as the mental table of contents:
-
-| Arc | Lectures | Exam function |
-| --- | --- | --- |
-| Foundations, traits, and biosocial bases | W01L1-W03L1 | Baseline of measurable individual differences, stability/change, biology, culture, and environment |
-| Pathology and psychoanalysis | W03L2-W05L2 | Shift into clinical functioning, unconscious conflict, interpretation, and the decentered subject |
-| Experience, existence, and growth | W06L1-W07L2 | First-person experience, meaning, freedom, relation, and growth |
-| Critical, sociocultural, and narrative turns | W08L1-W11L2 | Deconstruct the isolated individual through action, practice, gender, discourse, power, and narrative |
-| Synthesis and meta-theory | W12L1 | Compare all theories through orientation points, history, and subject formation |
-
-## High-Yield Comparison Axes
-
-Keep returning to these, especially during mock answers:
-
-- Trait vs. state.
-- Person vs. variable profile.
-- Inner essence vs. subjectivation.
-- Individual problem vs. structural condition.
-- Growth vs. deficit.
-- Natural-scientific measurement vs. clinical/hermeneutic interpretation.
-- Freedom/agency vs. social, historical, biological, or discursive
-  determination.
-
-## Lecture Checklist
-
-- [ ] W01L1 - Introforelæsning og nøglebegreber
-- [ ] W01L2 - Personality assessment
-- [ ] W02L1 - Traits, states, and dimensions
-- [ ] W02L2 - Person-situation interplay, stability, and change
-- [ ] W03L1 - Culture, evolution, genetics, and personality
-- [ ] W03L2 - Personlighedsfunktion og forstyrrelse
-- [ ] W04L1 - Psykoanalysens personlighedsbegreb
-- [ ] W04L2 - Psykoanalytisk personlighedsstruktur
-- [ ] W05L1 - Empiri og metode i psykoanalysen
-- [ ] W05L2 - Psykoanalysens konstituering
-- [ ] W06L1 - Fænomenologi
-- [ ] W06L2 - Eksistentiel personlighedspsykologi I
-- [ ] W07L1 - Eksistentiel personlighedspsykologi II
-- [ ] W07L2 - Humanistisk psykologi
-- [ ] W08L1 - Critical personalism
-- [ ] W08L2 - Critical psychology
-- [ ] W09L1 - Kritisk psykologi
-- [ ] W10L1 - Køn
-- [ ] W10L2 - Socialkonstruktionisme og poststrukturalisme
-- [ ] W11L1 - Poststrukturalisme, diskursiv psykologi, feministisk teori
-- [ ] W11L2 - Narrativitet, kultur og mening
-- [ ] W12L1 - Sammenligning af teorier, subjektets historie, og eksamen
-
-## When Behind
-
-Protect these at all costs:
-
-- W12L1 synthesis.
-- The four orientation points.
-- One theory sheet per major tradition.
-- At least three spoken mocks.
-- A comparison matrix across all traditions.
-
-Cut from individual article depth before cutting comparison practice. The oral
-exam rewards organized comparative speech more than silent, exhaustive reading.
-
-## Source Anchors
-
-Useful repo anchors:
+Nyttige repoankre:
 
 - `shows/personlighedspsykologi-en/docs/core/overblik.md` for the lecture plan.
+- `shows/personlighedspsykologi-en/source_catalog.json` for source overview.
+- `shows/personlighedspsykologi-en/docs/data/reading-file-key.md` for reading
+  names and file keys.
 - `shows/personlighedspsykologi-en/content_manifest.json` for lecture readings,
   summaries, podcasts, quizzes, and slides.
 - `shows/personlighedspsykologi-en/source_intelligence/course_synthesis.json`

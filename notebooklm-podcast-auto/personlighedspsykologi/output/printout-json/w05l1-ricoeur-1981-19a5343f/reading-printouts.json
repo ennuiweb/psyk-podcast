@@ -1,0 +1,1171 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:49:25Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "d2e833ee2c86908d204669247e30d866fc34b2b1437ceee6b77a119540e73127",
+    "source_files_signature": "c5f1307e14c81a346481eec4f1baa8b05471f8e33b6ec35ed9413486350cd719",
+    "source_card": "6a2194f8652a2f007c0b0b522d9bcc52b1d07ec503b2d72da4040bb5f11db729",
+    "revised_lecture_substrate": "a1e79263d7604625f409ef7afbbe8f8423c78ba30e0cc98ae8bb6aa1e064473a",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w05l1-ricoeur-1981-19a5343f",
+    "lecture_key": "W05L1",
+    "title": "Ricoeur (1981)",
+    "reading_title": "Ricoeur (1981)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 27,
+    "estimated_token_count": 17550,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Ricoeur (1981).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 27,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l1-ricoeur-1981-19a5343f",
+      "lecture_key": "W05L1",
+      "source_title": "Ricoeur (1981)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de vigtigste problemer i teksten.",
+      "teaser_paragraphs": [
+        "Psykoanalysen har altid påstået at være en videnskab, men den kæmper med et afgørende problem: Hvordan beviser man noget, man ikke kan se? Allerede i 1895 kaldte kritikere Freuds drømmetydning for \"et fint eventyr\". Problemet er, at psykoanalysens data ikke er fysisk observerbar adfærd, som naturvidenskaben kræver.",
+        "Hvis man leder efter fysiske beviser i psykoanalysen, leder man det forkerte sted. Men hvis alt bare er fortolkning og historiefortælling, hvordan undgår vi så, at det hele bliver rent gætteriværk, hvor analytikeren bare bekræfter sine egne ideer?",
+        "Paul Ricoeur tager fat om nældens rod. Han forsøger ikke at presse psykoanalysen ned i fysikkens kasser. I stedet kortlægger han, hvad en psykoanalytisk kendsgerning *faktisk* er. Han introducerer begrebet *psykisk virkelighed*, hvor det afgørende ikke er, hvad der historisk skete, men hvad subjektet gør med sine fantasier.",
+        "Ricoeur peger på en fundamental spænding i klinikken. Psykoanalysen er ikke bare ren sproglig tekstanalyse (hermeneutik); den er *\"essentially a struggle against resistances\"*. Den skal integrere læsningen af mening med manipulationen af reelle, psykologiske kræfter.",
+        "For at løse bevisproblemet må vi ifølge Ricoeur forstå, at ubevidste motiver i praksis fungerer som kausale årsager, der fremtvinger ulogisk adfærd. Beviset ligger ikke i én gylden test, men i en kumulativ *\"synergy of partial and heterogeneous criteria\"*. Din opgave er at fange denne mekanisme."
+      ],
+      "main_problem": "Hvordan kan psykoanalysen bevise sine teoretiske påstande, når dens kendsgerninger ikke kan observeres udefra som i naturvidenskaben?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?",
+          "why_it_matters": "Giver psykoanalysen sit eget eksistensgrundlag uafhængigt af behaviorisme og neurobiologi.",
+          "answer_form": "En liste med 4 principper"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?",
+          "why_it_matters": "Forhindrer at teorien reduceres til kun at være litterær analyse eller kun at være biologi.",
+          "answer_form": "En kort forklaring af forholdet mellem fortolkning og modstand"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?",
+          "why_it_matters": "Det er centralt for at forstå, hvordan det ubevidste overhovedet kan styre adfærd.",
+          "answer_form": "Et kort argument"
+        },
+        {
+          "number": 4,
+          "question": "Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?",
+          "why_it_matters": "Skifter målet fra eksakt videnskab til subjektets evne til selvindsigt og fortælling.",
+          "answer_form": "En afklaring af forskellen på 'saying-true' og 'being-true'"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan undgår teorien at være en ond, selvbekræftende cirkel?",
+          "why_it_matters": "Løser det overordnede problem om verification og bevisførelse i freudiansk teori.",
+          "answer_form": "En rekonstruktion af Ricoeurs fire parametre"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets centrale tekst for at forstå det epistemologiske skift fra at måle objektive træk (naturvidenskab) til at fortolke meningsfulde, men skjulte mekanismer (hermeneutik).",
+      "overview": [
+        "Et opgør med naturvidenskabens krav til empiriske beviser.",
+        "En kortlægning af fire kriterier for, hvad en psykoanalytisk kendsgerning er.",
+        "En model for, hvordan bevisførelse fungerer som et sammenspil af forskellige parametre."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I (s. 209-216)",
+          "task": "Find de fire kriterier for, hvad der tæller som fakta i psykoanalysen.",
+          "why_it_matters": "Dette etablerer hele grundlaget for psykoanalysens data.",
+          "stop_signal": "Når du når til afsnittet 'II. Investigatory procedure...'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion II (s. 216-221)",
+          "task": "Afkod spændingen mellem at fortolke en drøm og at kæmpe mod en modstand.",
+          "why_it_matters": "Viser hvorfor Freud brugte fysiske metaforer (som energi og fortrængning) i en teori om mening.",
+          "stop_signal": "Når Habermas og Lorenzer introduceres"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion II (s. 223-226)",
+          "task": "Opspor argumentet for, at ubevidste motiver opererer som årsager.",
+          "why_it_matters": "Dette er Ricoeurs stærkeste forsvar for psykoanalysens særlige kausalitet.",
+          "stop_signal": "Når afsnit III begynder"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion III (s. 226-230)",
+          "task": "Bestem hvilken slags sandhed ('saying-true') psykoanalysen producerer.",
+          "why_it_matters": "Forklarer selve målet med behandlingen.",
+          "stop_signal": "Når diskussionen drejer over på narrativ intelligibilitet"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion III (s. 230-235)",
+          "task": "Kortlæg den endelige 'synergi' af fire beviskriterier.",
+          "why_it_matters": "Dette er tekstens endelige svar på, hvordan teorien verificeres.",
+          "stop_signal": "Ved tekstens afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "what a subject makes of his fantasies",
+          "why": "Definerer kernen i begrebet psykisk virkelighed.",
+          "where_to_look": "Under det tredje kriterium for fakta (s. 215)."
+        },
+        {
+          "target": "struggle against resistances",
+          "why": "Understreger, at psykoanalysen arbejder med virkelige, psykologiske kræfter, ikke bare tekstanalyse.",
+          "where_to_look": "I diskussionen om behandlingens natur (s. 219)."
+        },
+        {
+          "target": "motives which are causes",
+          "why": "Viser hvordan psykoanalysen nedbryder den normale filosofiske grænse mellem vilje og naturlov.",
+          "where_to_look": "Under kritikken af sprogfilosofien (s. 224)."
+        },
+        {
+          "target": "synergy of partial and heterogeneous criteria",
+          "why": "Dette er Ricoeurs endelige løsning på problemet om bevisførelse.",
+          "where_to_look": "I konklusionen omkring verificering (s. 233)."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De tekniske detaljer i Habermas' og Lorenzers kommunikationsteori.",
+        "Freuds metapsykologiske spekulationer om dødsdriften.",
+        "Den detaljerede sprogfilosofiske diskussion af Wittgenstein og Austin."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsevej. Læs afsnittene systematisk. Teksten er forkortet og fokuseret på at løse de centrale problemer i kilden.",
+      "coverage_note": "Fokuserer på Ricoeurs forsvar for psykoanalysens epistemologi, de fire kriterier for fakta, og bevisførelsens synergi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 209-216",
+          "heading": "De fire kriterier for psykoanalytiske fakta",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At fastslå hvad der overhovedet kan tælles som empirisk data i en videnskab om det ubevidste?",
+          "explanation_paragraphs": [
+            "Psykoanalysen kan ikke bruge naturvidenskabens definition på data, som typisk er observerbar adfærd i tid og rum. For at bevise sine påstande må psykoanalysen ifølge Ricoeur først definere sine egne typer af kendsgerninger. Han opstiller fire udvælgelseskriterier, som udgør psykoanalysens felt.",
+            "For det første er data begrænset til det, der kan *siges*. Det er en talekur; drømme og drifter eksisterer her kun som meningsfulde ytringer. For det andet er data defineret ved at være *rettet mod en anden* person. Dette sker primært gennem overføring i klinikken, hvor begær bliver rettet mod analytikeren.",
+            "Det tredje og vigtigste kriterium er *psykisk virkelighed*. Psykoanalysen er i bund og grund ligeglad med, om et barndomstraume historisk og materielt fandt sted, så længe subjektets fantasier omkring det har en reel, strukturerende effekt. Det fjerde kriterium er *narrativitet*: Fakta i psykoanalysen er de brudstykker, der kan indgå i, eller blokerer for, en sammenhængende livshistorie."
+          ],
+          "key_points": [
+            "Psykoanalysens data er ikke adfærd, men sproglige 'rapporter'.",
+            "Den psykiske virkelighed (fantasiernes effekt) er vigtigere end den materielle (historiske) virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "what a subject makes of his fantasies",
+              "why_it_matters": "Sammenfatter præcis, hvad analysen undersøger i modsætning til objektiv historik.",
+              "source_location": "S. 215"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 215",
+              "passage": "(...) what is relevant for the analyst is not observable facts or observable reactions to environmental variables, but the meaning which the same events (...) assume for a subject. I shall venture to say, in summation, that what is psychoanalytically relevant is what a subject makes of his fantasies.",
+              "why_it_matters": "Dette udgør Ricoeurs klareste definition af psykoanalysens unikke undersøgelsesobjekt."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 216-221",
+          "heading": "At forene mening og kraft",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At forklare hvorfor psykoanalyse ikke bare er litterær tekstanalyse, men kræver en dynamisk teori om energi?",
+          "explanation_paragraphs": [
+            "Ricoeur stiller spørgsmålet: Hvordan hænger fortolkning af mening sammen med håndtering af modstand? Freud brugte mange mærkelige metaforer. Nogle var tekstuelle (oversættelse, symbolisering), og andre var fysiske (økonomi, energi, fortrængning). ",
+            "Ricoeur argumenterer for, at teorien er tvunget til at rumme begge dele på grund af den kliniske virkelighed. Analysen forsøger at tyde en skjult mening (psyken som tekst), men støder undervejs på en blind modstand, som nægter at lade sig oversætte. Denne modstand fungerer som en reel, næsten fysisk kraft i patienten.",
+            "Psykoanalysen er derfor et forsøg på at skabe en metapsykologi, der kan favne både 'hermeneutik' (forståelsen af meningssammenhænge) og 'energetik' (studiet af konflikterende psykologiske kræfter)."
+          ],
+          "key_points": [
+            "Behandlingen er ikke kun intellektuel forståelse, men en kamp mod reel modstand.",
+            "Teorien må kombinere tekst-metaforen (mening) med kraft-metaforen (energi)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "struggle against resistances",
+              "why_it_matters": "Beviser hvorfor ren sproglig fortolkning ikke er nok til at helbrede.",
+              "source_location": "S. 219"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 219",
+              "passage": "Psychoanalysis is essentially a struggle against resistances. And it is this notion of resistance that prevents us from identifying the investigatory procedure with a simple interpretation, with an entirely intellectual understanding of the meaning of symptoms.",
+              "why_it_matters": "Viser grænsen for ren intellektuel indsigt i klinikken."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 223-226",
+          "heading": "Motiver som årsager",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At bevise at det ubevidste faktisk tvinger subjektet til handling uden om dets frie vilje?",
+          "explanation_paragraphs": [
+            "Normalt skelner filosoffer skarpt mellem 'årsager' (naturlove, f.eks. at varme får is til at smelte) og 'motiver' (personlige grunde til at handle, f.eks. jalousi). I normal handling vælger man ud fra sit motiv.",
+            "Men Ricoeur observerer, at i psykoanalysen bryder denne grænse sammen. Fordi det ubevidste er fremmedgjort fra bevidstheden, fungerer skjulte motiver bogstaveligt talt som årsager. De tvinger neurotiske symptomer frem med samme kausale nødvendighed som en naturlov.",
+            "Derfor må psykoanalysen bruge mekaniske og årsagsforklarende (kausale) modeller for overhovedet at kunne forstå patientens irrationelle handlinger."
+          ],
+          "key_points": [
+            "Grænsen mellem motiv og årsag udviskes i det ubevidste.",
+            "Fremmedgørelse gør, at menneskets psyke til tider fungerer som en ufri ting."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "motives which are causes",
+              "why_it_matters": "Indkapsler sammenbruddet af bevidst vilje under neuroser.",
+              "source_location": "S. 224"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 224",
+              "passage": "What is remarkable about psychoanalytic explanation is that it brings into view motives which are causes and which require an explanation of their autonomous functioning.",
+              "why_it_matters": "Kernen i Ricoeurs kausale argumentation for det ubevidstes funktion."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 226-230",
+          "heading": "At sige sandt og genkende sig selv",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At fastslå hvilken form for 'sandhed' en psykoanalytisk påstand egentlig repræsenterer?",
+          "explanation_paragraphs": [
+            "Hvis data i psykoanalysen er anderledes, må formålet med bevisførelsen også være det. Ricoeur hævder, at teorien ikke leder efter en empirisk, objektiv sandhed ('being-true') som i fysikken. Den leder efter en narrativ og etisk sandhed ('saying-true').",
+            "Det sammenlignes med den græske tragedie: Sandheden opnås, når hovedpersonen (som Ødipus) overvinder sin selvmisforståelse og endelig genkender sig selv i historien.",
+            "En vellykket analyse slutter, når patienten formår at konstruere en sammenhængende livsfortælling ud fra sine tidligere uforståelige symptomer. Sandheden måles altså på evnen til narrativ intelligibilitet."
+          ],
+          "key_points": [
+            "Målet er genkendelse frem for matematisk eksakthed.",
+            "Den ultimative sandhedspåstand hviler på den narrative sammenhæng (casehistorien)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "saying-true rather than a being-true",
+              "why_it_matters": "Marker forskellen mellem fortolkende genkendelse og naturvidenskabelig konstatering.",
+              "source_location": "S. 227"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 227",
+              "passage": "(...) if analytic experience is desire coming to discourse, the sort of truth that best answers to it is that of a saying-true rather than a being-true. This saying-true is negatively intended in the characterisation of the mechanisms of distortion as disguise, falsification, illusion (...)",
+              "why_it_matters": "Placerer psykoanalysen solidt i en menings- og sandhedssøgende tradition frem for en rent mekanisk."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 230-235",
+          "heading": "Synergien af beviskriterier",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At gendrive anklagen om, at analytikeren bare foreslår en fortolkning, som patienten ukritisk accepterer?",
+          "explanation_paragraphs": [
+            "Kritikere anklager ofte psykoanalysen for at være en ond cirkel, hvor alt der modsiger teorien, bare bortforklares som 'modstand'. Ricoeur anerkender faren, men afviser, at cirklen er ond.",
+            "Han hævder, at verificering foregår via fire uafhængige, men konvergerende kriterier. For at beviset er gyldigt, skal forklaringen: 1) passe ind i Freuds overordnede teori, 2) overholde universelle regler for fortolkning, 3) have en reel terapeutisk effekt for patienten, og 4) munde ud i en forståelig, sammenhængende narrativ casehistorie.",
+            "Beviset i psykoanalysen eksisterer altså ikke som ét isoleret eksperiment, men opstår af 'synergien' mellem disse forskellige metodiske greb."
+          ],
+          "key_points": [
+            "Psykoanalysens verificering er ikke ét bevis, men en konvergens af flere kriterier.",
+            "God fortolkning alene er ikke nok, hvis der ikke også opstår terapeutisk forbedring og narrativ sammenhæng."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "synergy of partial and heterogeneous criteria",
+              "why_it_matters": "Den præcise formulering af Ricoeurs løsning på bevisproblemet.",
+              "source_location": "S. 233"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 233",
+              "passage": "I shall say, therefore, that the validation apt to confirm the truth claim belonging to the domain of psychoanalytic facts is an extremely complex process which is based on the synergy of partial and heterogeneous criteria.",
+              "why_it_matters": "Konkluderer hele essayet og fastslår kompleksiteten af validitet i psykologien."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En liste med 4 principper",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort forklaring af forholdet mellem fortolkning og modstand",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et kort argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En afklaring af forskellen på 'saying-true' og 'being-true'",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår teorien at være en ond, selvbekræftende cirkel?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En rekonstruktion af Ricoeurs fire parametre",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykoanalysen bevise sine teoretiske påstande, når dens kendsgerninger ikke kan observeres udefra som i naturvidenskaben?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Arbejd ud fra hukommelsen først for at fastlåse dit kendskab til Ricoeurs model. Slå først op i Abridged Reader, når du sidder fast.",
+      "overview": [
+        "Psykoanalysen kan ikke måles med naturvidenskabens metoder og kræver sin egen bevisførelse.",
+        "Ricoeur opstiller fire specifikke kriterier for, hvad en psykoanalytisk kendsgerning egentlig er.",
+        "Han viser derefter, hvordan teorien bekræftes gennem et sammenspil af fortolkning, terapeutisk kraft og fortælling."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I psykoanalysen er drømme og symptomer ikke fysisk observerbar adfærd, men fænomener der primært eksisterer ved at blive __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et udsagnsord i datid/kort tillægsform"
+        },
+        {
+          "number": 2,
+          "sentence": "Det er irrelevant om et traume skete historisk præcis som husket; det afgørende er subjektets __________ virkelighed.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et tillægsord"
+        },
+        {
+          "number": 3,
+          "sentence": "Fordi psykoanalysen er en kamp mod __________, er det ikke tilstrækkeligt kun at betragte psyken som en tekst.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 4,
+          "sentence": "I bevidst tilstand er jalousi et motiv, men når det er ubevidst og fortrængt, opererer det som en kausal __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "I stedet for eksakthed måler psykoanalysen sin succes på, om patienten opnår narrativ og etisk __________ af sig selv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 6,
+          "sentence": "Målet for behandlingen ('saying-true') er i sidste ende at skabe en sammenhængende narrativ __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 7,
+          "sentence": "Ricoeur afviser, at psykoanalysen er en ond cirkel, og kalder i stedet bevisførelsen for en __________ af fire uafhængige kriterier.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "et navneord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk vægtvægt, der viser de to sider af psykoanalysen ifølge Ricoeur.",
+          "required_elements": [
+            "'Mening' (psyken som tekst",
+            "'Kraft' (kampen mod modstand",
+            "En markering der viser, at en komplet teori kræver begge"
+          ],
+          "blank_space_hint": "Brug pladsen til en grov tegning af en vægt eller en bro"
+        },
+        {
+          "number": 2,
+          "task": "Opbyg et matrix med de fire kriterier for Ricoeurs 'synergi' af bevisførelse.",
+          "required_elements": [
+            "1. Teoretisk konformitet",
+            "2. Fortolkningsregler",
+            "3. Terapeutisk effekt",
+            "4. Narrativ intelligibilitet"
+          ],
+          "blank_space_hint": "En punktopstilling eller en cirkel med fire brikker"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Træk hovedlinjerne op til eksamen. Øv dig i at bruge Ricoeurs argumenter offensivt i dine analyser.",
+      "use_this_text_for": [
+        "At forsvare psykoanalysens videnskabelige integritet mod kritik fra naturvidenskabeligt orienterede teorier.",
+        "At forklare forskellen på 'årsagsforklaringer' (kausalitet) og 'meningsforståelse' (hermeneutik).",
+        "At redegøre for begrebet 'psykisk virkelighed' over for objektiv sandhed.",
+        "At bygge bro fra psykoanalysen til narrativ psykologi.",
+        "At demonstrere forståelse for, hvordan det decentrerede subjekt opererer uden fuld viljeskontrol."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologiske skift",
+          "connection": "Marker overgangen fra at måle stabile, biologiske træk (W01/W02) til at undersøge fortolkede, dynamiske kendsgerninger i sproget."
+        },
+        {
+          "course_theme": "Agency vs. Determinering",
+          "connection": "Vis hvordan ubevidste motiver agerer som determinerende årsager, som subjektet midlertidigt har mistet sin 'agency' over for."
+        },
+        {
+          "course_theme": "Narrativ Identitet",
+          "connection": "Brug Ricoeurs krav om 'narrativ intelligibilitet' som forløber for McAdams' narrative identitet (W11L2)."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (Trait Psychology)",
+          "how_to_compare": "Trækteori opererer med observerbar adfærd som fakta. Ricoeur fastslår, at psykoanalysens fakta udelukkende findes i sproget, overføringen og fantasien."
+        },
+        {
+          "compare_with": "Humanistisk Psykologi",
+          "how_to_compare": "Begge vægter subjektets oplevelse, men psykoanalysen inddrager en 'økonomisk' konfliktmodel (modstand/kraft), hvor humanismen fokuserer på ren aktualisering."
+        },
+        {
+          "compare_with": "Behaviorisme",
+          "how_to_compare": "Behaviorismen afviser ikke-observerbare indre motiver. Ricoeur hævder, at netop de usynlige motiver udgør de reelle årsager i neuroser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Kritik af psykoanalysen som uvidenskabelig",
+          "use_in_answer": "Ricoeurs koncept om 'synergien af kriterier' for at vise, at bevisførelsen blot er kumulativ, ikke fraværende.",
+          "caution": "Påstå ikke at Ricoeur gør psykoanalysen til fysik; han forsvarer den som sin *egen* type videnskab."
+        },
+        {
+          "prompt_type": "Spørgsmål om determinisme i Freud",
+          "use_in_answer": "Brug 'motiver som årsager' for at illustrere, hvordan neurosen overskriver fri vilje med en mekanisk tvang.",
+          "caution": "Husk at målet ('saying-true') netop er at genetablere muligheden for narrativ agens gennem helbredelse."
+        },
+        {
+          "prompt_type": "Diskussion af virkelighedsopfattelser",
+          "use_in_answer": "Adskil 'materiel virkelighed' klart fra 'psykisk virkelighed', hvor sidstnævnte er det afgørende for klinikken.",
+          "caution": "Gør det ikke til ren relativisme; fantasierne har en meget reel, strukturel virkning."
+        },
+        {
+          "prompt_type": "Begrebet 'modstand'",
+          "use_in_answer": "Vis hvorfor psykoanalysen *ikke* bare er historiefortælling; de energetiske lag (modstanden) er reelle kræfter, der skal overvindes.",
+          "caution": "Undgå at glemme tekst-elementet. Det er netop kombinationen af tekst (mening) og kraft (modstand), der virker."
+        },
+        {
+          "prompt_type": "Freuds udvikling af teorien",
+          "use_in_answer": "Brug Ricoeurs pointe om, at Freud ofte selv faldt i den grøft at ville ligne en naturvidenskab.",
+          "caution": "Dette er en metateoretisk tekst. Dvæl ikke ved konkrete case-detaljer som 'Ulvemanden', medmindre de støtter epistemologien."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro psykoanalysen primært fungerer som en afsløring af den sande, objektive fortid.",
+          "better_reading": "Analysen arbejder i den psykiske virkelighed; formålet er at rekonstruere en narrativt forståelig fremtid, ikke spille retsmediciner i fortiden."
+        },
+        {
+          "trap": "At læse psykoanalysen som ren tekstanalyse uden konflikter.",
+          "better_reading": "Ricoeur understreger skarpt, at modstand og energetiske kræfter er fuldstændig afgørende at bevare i teorien."
+        },
+        {
+          "trap": "At den 'onde cirkel' i teorien gør, at den ikke lader sig bevise.",
+          "better_reading": "Den påståede cirkel undslippes ved hjælp af synergien: de fire beviskriterier validerer hinanden gensidigt."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for, hvordan psykoanalysen ifølge Ricoeur (1981) kan bevise sine påstande, når den ikke benytter observerbar fysisk data. Diskuter herunder hvorfor teorien både må inddrage mening (tekst) og kraft (energi).",
+      "mini_exam_answer_plan_slots": [
+        "1. Definér psykoanalysens data: De fire kriterier (sproglig, rettet mod anden, psykisk virkelighed, narrativ).",
+        "2. Forklar nødvendigheden af den todelte teori: Hvorfor fortolkning (mening) uundgåeligt støder ind i modstand (kraft/energi).",
+        "3. Redegør for det kausale argument: Hvordan et ubevidst 'motiv' skifter status og fungerer som en mekanisk 'årsag'.",
+        "4. Konkludér på bevisproblemet: Forklar sandhedsbegrebet ('saying-true') og synergien mellem de fire valideringskriterier."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l1-ricoeur-1981-19a5343f",
+      "lecture_key": "W05L1",
+      "source_title": "Ricoeur (1981)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de vigtigste problemer i teksten.",
+      "teaser_paragraphs": [
+        "Psykoanalysen har altid påstået at være en videnskab, men den kæmper med et afgørende problem: Hvordan beviser man noget, man ikke kan se? Allerede i 1895 kaldte kritikere Freuds drømmetydning for \"et fint eventyr\". Problemet er, at psykoanalysens data ikke er fysisk observerbar adfærd, som naturvidenskaben kræver.",
+        "Hvis man leder efter fysiske beviser i psykoanalysen, leder man det forkerte sted. Men hvis alt bare er fortolkning og historiefortælling, hvordan undgår vi så, at det hele bliver rent gætteriværk, hvor analytikeren bare bekræfter sine egne ideer?",
+        "Paul Ricoeur tager fat om nældens rod. Han forsøger ikke at presse psykoanalysen ned i fysikkens kasser. I stedet kortlægger han, hvad en psykoanalytisk kendsgerning *faktisk* er. Han introducerer begrebet *psykisk virkelighed*, hvor det afgørende ikke er, hvad der historisk skete, men hvad subjektet gør med sine fantasier.",
+        "Ricoeur peger på en fundamental spænding i klinikken. Psykoanalysen er ikke bare ren sproglig tekstanalyse (hermeneutik); den er *\"essentially a struggle against resistances\"*. Den skal integrere læsningen af mening med manipulationen af reelle, psykologiske kræfter.",
+        "For at løse bevisproblemet må vi ifølge Ricoeur forstå, at ubevidste motiver i praksis fungerer som kausale årsager, der fremtvinger ulogisk adfærd. Beviset ligger ikke i én gylden test, men i en kumulativ *\"synergy of partial and heterogeneous criteria\"*. Din opgave er at fange denne mekanisme."
+      ],
+      "main_problem": "Hvordan kan psykoanalysen bevise sine teoretiske påstande, når dens kendsgerninger ikke kan observeres udefra som i naturvidenskaben?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?",
+          "why_it_matters": "Giver psykoanalysen sit eget eksistensgrundlag uafhængigt af behaviorisme og neurobiologi.",
+          "answer_form": "En liste med 4 principper"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?",
+          "why_it_matters": "Forhindrer at teorien reduceres til kun at være litterær analyse eller kun at være biologi.",
+          "answer_form": "En kort forklaring af forholdet mellem fortolkning og modstand"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?",
+          "why_it_matters": "Det er centralt for at forstå, hvordan det ubevidste overhovedet kan styre adfærd.",
+          "answer_form": "Et kort argument"
+        },
+        {
+          "number": 4,
+          "question": "Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?",
+          "why_it_matters": "Skifter målet fra eksakt videnskab til subjektets evne til selvindsigt og fortælling.",
+          "answer_form": "En afklaring af forskellen på 'saying-true' og 'being-true'"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan undgår teorien at være en ond, selvbekræftende cirkel?",
+          "why_it_matters": "Løser det overordnede problem om verification og bevisførelse i freudiansk teori.",
+          "answer_form": "En rekonstruktion af Ricoeurs fire parametre"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets centrale tekst for at forstå det epistemologiske skift fra at måle objektive træk (naturvidenskab) til at fortolke meningsfulde, men skjulte mekanismer (hermeneutik).",
+      "overview": [
+        "Et opgør med naturvidenskabens krav til empiriske beviser.",
+        "En kortlægning af fire kriterier for, hvad en psykoanalytisk kendsgerning er.",
+        "En model for, hvordan bevisførelse fungerer som et sammenspil af forskellige parametre."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion I (s. 209-216)",
+          "task": "Find de fire kriterier for, hvad der tæller som fakta i psykoanalysen.",
+          "why_it_matters": "Dette etablerer hele grundlaget for psykoanalysens data.",
+          "stop_signal": "Når du når til afsnittet 'II. Investigatory procedure...'"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion II (s. 216-221)",
+          "task": "Afkod spændingen mellem at fortolke en drøm og at kæmpe mod en modstand.",
+          "why_it_matters": "Viser hvorfor Freud brugte fysiske metaforer (som energi og fortrængning) i en teori om mening.",
+          "stop_signal": "Når Habermas og Lorenzer introduceres"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion II (s. 223-226)",
+          "task": "Opspor argumentet for, at ubevidste motiver opererer som årsager.",
+          "why_it_matters": "Dette er Ricoeurs stærkeste forsvar for psykoanalysens særlige kausalitet.",
+          "stop_signal": "Når afsnit III begynder"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion III (s. 226-230)",
+          "task": "Bestem hvilken slags sandhed ('saying-true') psykoanalysen producerer.",
+          "why_it_matters": "Forklarer selve målet med behandlingen.",
+          "stop_signal": "Når diskussionen drejer over på narrativ intelligibilitet"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion III (s. 230-235)",
+          "task": "Kortlæg den endelige 'synergi' af fire beviskriterier.",
+          "why_it_matters": "Dette er tekstens endelige svar på, hvordan teorien verificeres.",
+          "stop_signal": "Ved tekstens afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "what a subject makes of his fantasies",
+          "why": "Definerer kernen i begrebet psykisk virkelighed.",
+          "where_to_look": "Under det tredje kriterium for fakta (s. 215)."
+        },
+        {
+          "target": "struggle against resistances",
+          "why": "Understreger, at psykoanalysen arbejder med virkelige, psykologiske kræfter, ikke bare tekstanalyse.",
+          "where_to_look": "I diskussionen om behandlingens natur (s. 219)."
+        },
+        {
+          "target": "motives which are causes",
+          "why": "Viser hvordan psykoanalysen nedbryder den normale filosofiske grænse mellem vilje og naturlov.",
+          "where_to_look": "Under kritikken af sprogfilosofien (s. 224)."
+        },
+        {
+          "target": "synergy of partial and heterogeneous criteria",
+          "why": "Dette er Ricoeurs endelige løsning på problemet om bevisførelse.",
+          "where_to_look": "I konklusionen omkring verificering (s. 233)."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De tekniske detaljer i Habermas' og Lorenzers kommunikationsteori.",
+        "Freuds metapsykologiske spekulationer om dødsdriften.",
+        "Den detaljerede sprogfilosofiske diskussion af Wittgenstein og Austin."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsevej. Læs afsnittene systematisk. Teksten er forkortet og fokuseret på at løse de centrale problemer i kilden.",
+      "coverage_note": "Fokuserer på Ricoeurs forsvar for psykoanalysens epistemologi, de fire kriterier for fakta, og bevisførelsens synergi.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 209-216",
+          "heading": "De fire kriterier for psykoanalytiske fakta",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At fastslå hvad der overhovedet kan tælles som empirisk data i en videnskab om det ubevidste?",
+          "explanation_paragraphs": [
+            "Psykoanalysen kan ikke bruge naturvidenskabens definition på data, som typisk er observerbar adfærd i tid og rum. For at bevise sine påstande må psykoanalysen ifølge Ricoeur først definere sine egne typer af kendsgerninger. Han opstiller fire udvælgelseskriterier, som udgør psykoanalysens felt.",
+            "For det første er data begrænset til det, der kan *siges*. Det er en talekur; drømme og drifter eksisterer her kun som meningsfulde ytringer. For det andet er data defineret ved at være *rettet mod en anden* person. Dette sker primært gennem overføring i klinikken, hvor begær bliver rettet mod analytikeren.",
+            "Det tredje og vigtigste kriterium er *psykisk virkelighed*. Psykoanalysen er i bund og grund ligeglad med, om et barndomstraume historisk og materielt fandt sted, så længe subjektets fantasier omkring det har en reel, strukturerende effekt. Det fjerde kriterium er *narrativitet*: Fakta i psykoanalysen er de brudstykker, der kan indgå i, eller blokerer for, en sammenhængende livshistorie."
+          ],
+          "key_points": [
+            "Psykoanalysens data er ikke adfærd, men sproglige 'rapporter'.",
+            "Den psykiske virkelighed (fantasiernes effekt) er vigtigere end den materielle (historiske) virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "what a subject makes of his fantasies",
+              "why_it_matters": "Sammenfatter præcis, hvad analysen undersøger i modsætning til objektiv historik.",
+              "source_location": "S. 215"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 215",
+              "passage": "(...) what is relevant for the analyst is not observable facts or observable reactions to environmental variables, but the meaning which the same events (...) assume for a subject. I shall venture to say, in summation, that what is psychoanalytically relevant is what a subject makes of his fantasies.",
+              "why_it_matters": "Dette udgør Ricoeurs klareste definition af psykoanalysens unikke undersøgelsesobjekt."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 216-221",
+          "heading": "At forene mening og kraft",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At forklare hvorfor psykoanalyse ikke bare er litterær tekstanalyse, men kræver en dynamisk teori om energi?",
+          "explanation_paragraphs": [
+            "Ricoeur stiller spørgsmålet: Hvordan hænger fortolkning af mening sammen med håndtering af modstand? Freud brugte mange mærkelige metaforer. Nogle var tekstuelle (oversættelse, symbolisering), og andre var fysiske (økonomi, energi, fortrængning). ",
+            "Ricoeur argumenterer for, at teorien er tvunget til at rumme begge dele på grund af den kliniske virkelighed. Analysen forsøger at tyde en skjult mening (psyken som tekst), men støder undervejs på en blind modstand, som nægter at lade sig oversætte. Denne modstand fungerer som en reel, næsten fysisk kraft i patienten.",
+            "Psykoanalysen er derfor et forsøg på at skabe en metapsykologi, der kan favne både 'hermeneutik' (forståelsen af meningssammenhænge) og 'energetik' (studiet af konflikterende psykologiske kræfter)."
+          ],
+          "key_points": [
+            "Behandlingen er ikke kun intellektuel forståelse, men en kamp mod reel modstand.",
+            "Teorien må kombinere tekst-metaforen (mening) med kraft-metaforen (energi)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "struggle against resistances",
+              "why_it_matters": "Beviser hvorfor ren sproglig fortolkning ikke er nok til at helbrede.",
+              "source_location": "S. 219"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 219",
+              "passage": "Psychoanalysis is essentially a struggle against resistances. And it is this notion of resistance that prevents us from identifying the investigatory procedure with a simple interpretation, with an entirely intellectual understanding of the meaning of symptoms.",
+              "why_it_matters": "Viser grænsen for ren intellektuel indsigt i klinikken."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 223-226",
+          "heading": "Motiver som årsager",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At bevise at det ubevidste faktisk tvinger subjektet til handling uden om dets frie vilje?",
+          "explanation_paragraphs": [
+            "Normalt skelner filosoffer skarpt mellem 'årsager' (naturlove, f.eks. at varme får is til at smelte) og 'motiver' (personlige grunde til at handle, f.eks. jalousi). I normal handling vælger man ud fra sit motiv.",
+            "Men Ricoeur observerer, at i psykoanalysen bryder denne grænse sammen. Fordi det ubevidste er fremmedgjort fra bevidstheden, fungerer skjulte motiver bogstaveligt talt som årsager. De tvinger neurotiske symptomer frem med samme kausale nødvendighed som en naturlov.",
+            "Derfor må psykoanalysen bruge mekaniske og årsagsforklarende (kausale) modeller for overhovedet at kunne forstå patientens irrationelle handlinger."
+          ],
+          "key_points": [
+            "Grænsen mellem motiv og årsag udviskes i det ubevidste.",
+            "Fremmedgørelse gør, at menneskets psyke til tider fungerer som en ufri ting."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "motives which are causes",
+              "why_it_matters": "Indkapsler sammenbruddet af bevidst vilje under neuroser.",
+              "source_location": "S. 224"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 224",
+              "passage": "What is remarkable about psychoanalytic explanation is that it brings into view motives which are causes and which require an explanation of their autonomous functioning.",
+              "why_it_matters": "Kernen i Ricoeurs kausale argumentation for det ubevidstes funktion."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 226-230",
+          "heading": "At sige sandt og genkende sig selv",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At fastslå hvilken form for 'sandhed' en psykoanalytisk påstand egentlig repræsenterer?",
+          "explanation_paragraphs": [
+            "Hvis data i psykoanalysen er anderledes, må formålet med bevisførelsen også være det. Ricoeur hævder, at teorien ikke leder efter en empirisk, objektiv sandhed ('being-true') som i fysikken. Den leder efter en narrativ og etisk sandhed ('saying-true').",
+            "Det sammenlignes med den græske tragedie: Sandheden opnås, når hovedpersonen (som Ødipus) overvinder sin selvmisforståelse og endelig genkender sig selv i historien.",
+            "En vellykket analyse slutter, når patienten formår at konstruere en sammenhængende livsfortælling ud fra sine tidligere uforståelige symptomer. Sandheden måles altså på evnen til narrativ intelligibilitet."
+          ],
+          "key_points": [
+            "Målet er genkendelse frem for matematisk eksakthed.",
+            "Den ultimative sandhedspåstand hviler på den narrative sammenhæng (casehistorien)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "saying-true rather than a being-true",
+              "why_it_matters": "Marker forskellen mellem fortolkende genkendelse og naturvidenskabelig konstatering.",
+              "source_location": "S. 227"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 227",
+              "passage": "(...) if analytic experience is desire coming to discourse, the sort of truth that best answers to it is that of a saying-true rather than a being-true. This saying-true is negatively intended in the characterisation of the mechanisms of distortion as disguise, falsification, illusion (...)",
+              "why_it_matters": "Placerer psykoanalysen solidt i en menings- og sandhedssøgende tradition frem for en rent mekanisk."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 230-235",
+          "heading": "Synergien af beviskriterier",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At gendrive anklagen om, at analytikeren bare foreslår en fortolkning, som patienten ukritisk accepterer?",
+          "explanation_paragraphs": [
+            "Kritikere anklager ofte psykoanalysen for at være en ond cirkel, hvor alt der modsiger teorien, bare bortforklares som 'modstand'. Ricoeur anerkender faren, men afviser, at cirklen er ond.",
+            "Han hævder, at verificering foregår via fire uafhængige, men konvergerende kriterier. For at beviset er gyldigt, skal forklaringen: 1) passe ind i Freuds overordnede teori, 2) overholde universelle regler for fortolkning, 3) have en reel terapeutisk effekt for patienten, og 4) munde ud i en forståelig, sammenhængende narrativ casehistorie.",
+            "Beviset i psykoanalysen eksisterer altså ikke som ét isoleret eksperiment, men opstår af 'synergien' mellem disse forskellige metodiske greb."
+          ],
+          "key_points": [
+            "Psykoanalysens verificering er ikke ét bevis, men en konvergens af flere kriterier.",
+            "God fortolkning alene er ikke nok, hvis der ikke også opstår terapeutisk forbedring og narrativ sammenhæng."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "synergy of partial and heterogeneous criteria",
+              "why_it_matters": "Den præcise formulering af Ricoeurs løsning på bevisproblemet.",
+              "source_location": "S. 233"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 233",
+              "passage": "I shall say, therefore, that the validation apt to confirm the truth claim belonging to the domain of psychoanalytic facts is an extremely complex process which is based on the synergy of partial and heterogeneous criteria.",
+              "why_it_matters": "Konkluderer hele essayet og fastslår kompleksiteten af validitet i psykologien."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvilke fire kriterier afgør, om noget er en gyldig psykoanalytisk kendsgerning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En liste med 4 principper",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor er psykoanalysen afhængig af både 'mening' (tekst) og 'kraft' (energi)?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort forklaring af forholdet mellem fortolkning og modstand",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan nedbryder psykoanalysen grænsen mellem 'motiv' (grund) og 'årsag' (naturlov)?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et kort argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken form for 'sandhed' sigter den analytiske proces egentlig mod?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En afklaring af forskellen på 'saying-true' og 'being-true'",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår teorien at være en ond, selvbekræftende cirkel?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En rekonstruktion af Ricoeurs fire parametre",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykoanalysen bevise sine teoretiske påstande, når dens kendsgerninger ikke kan observeres udefra som i naturvidenskaben?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Arbejd ud fra hukommelsen først for at fastlåse dit kendskab til Ricoeurs model. Slå først op i Abridged Reader, når du sidder fast.",
+      "overview": [
+        "Psykoanalysen kan ikke måles med naturvidenskabens metoder og kræver sin egen bevisførelse.",
+        "Ricoeur opstiller fire specifikke kriterier for, hvad en psykoanalytisk kendsgerning egentlig er.",
+        "Han viser derefter, hvordan teorien bekræftes gennem et sammenspil af fortolkning, terapeutisk kraft og fortælling."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I psykoanalysen er drømme og symptomer ikke fysisk observerbar adfærd, men fænomener der primært eksisterer ved at blive __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et udsagnsord i datid/kort tillægsform"
+        },
+        {
+          "number": 2,
+          "sentence": "Det er irrelevant om et traume skete historisk præcis som husket; det afgørende er subjektets __________ virkelighed.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "et tillægsord"
+        },
+        {
+          "number": 3,
+          "sentence": "Fordi psykoanalysen er en kamp mod __________, er det ikke tilstrækkeligt kun at betragte psyken som en tekst.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 4,
+          "sentence": "I bevidst tilstand er jalousi et motiv, men når det er ubevidst og fortrængt, opererer det som en kausal __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "I stedet for eksakthed måler psykoanalysen sin succes på, om patienten opnår narrativ og etisk __________ af sig selv.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 6,
+          "sentence": "Målet for behandlingen ('saying-true') er i sidste ende at skabe en sammenhængende narrativ __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "et navneord"
+        },
+        {
+          "number": 7,
+          "sentence": "Ricoeur afviser, at psykoanalysen er en ond cirkel, og kalder i stedet bevisførelsen for en __________ af fire uafhængige kriterier.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "et navneord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk vægtvægt, der viser de to sider af psykoanalysen ifølge Ricoeur.",
+          "required_elements": [
+            "'Mening' (psyken som tekst",
+            "'Kraft' (kampen mod modstand",
+            "En markering der viser, at en komplet teori kræver begge"
+          ],
+          "blank_space_hint": "Brug pladsen til en grov tegning af en vægt eller en bro"
+        },
+        {
+          "number": 2,
+          "task": "Opbyg et matrix med de fire kriterier for Ricoeurs 'synergi' af bevisførelse.",
+          "required_elements": [
+            "1. Teoretisk konformitet",
+            "2. Fortolkningsregler",
+            "3. Terapeutisk effekt",
+            "4. Narrativ intelligibilitet"
+          ],
+          "blank_space_hint": "En punktopstilling eller en cirkel med fire brikker"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Træk hovedlinjerne op til eksamen. Øv dig i at bruge Ricoeurs argumenter offensivt i dine analyser.",
+      "use_this_text_for": [
+        "At forsvare psykoanalysens videnskabelige integritet mod kritik fra naturvidenskabeligt orienterede teorier.",
+        "At forklare forskellen på 'årsagsforklaringer' (kausalitet) og 'meningsforståelse' (hermeneutik).",
+        "At redegøre for begrebet 'psykisk virkelighed' over for objektiv sandhed.",
+        "At bygge bro fra psykoanalysen til narrativ psykologi.",
+        "At demonstrere forståelse for, hvordan det decentrerede subjekt opererer uden fuld viljeskontrol."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologiske skift",
+          "connection": "Marker overgangen fra at måle stabile, biologiske træk (W01/W02) til at undersøge fortolkede, dynamiske kendsgerninger i sproget."
+        },
+        {
+          "course_theme": "Agency vs. Determinering",
+          "connection": "Vis hvordan ubevidste motiver agerer som determinerende årsager, som subjektet midlertidigt har mistet sin 'agency' over for."
+        },
+        {
+          "course_theme": "Narrativ Identitet",
+          "connection": "Brug Ricoeurs krav om 'narrativ intelligibilitet' som forløber for McAdams' narrative identitet (W11L2)."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (Trait Psychology)",
+          "how_to_compare": "Trækteori opererer med observerbar adfærd som fakta. Ricoeur fastslår, at psykoanalysens fakta udelukkende findes i sproget, overføringen og fantasien."
+        },
+        {
+          "compare_with": "Humanistisk Psykologi",
+          "how_to_compare": "Begge vægter subjektets oplevelse, men psykoanalysen inddrager en 'økonomisk' konfliktmodel (modstand/kraft), hvor humanismen fokuserer på ren aktualisering."
+        },
+        {
+          "compare_with": "Behaviorisme",
+          "how_to_compare": "Behaviorismen afviser ikke-observerbare indre motiver. Ricoeur hævder, at netop de usynlige motiver udgør de reelle årsager i neuroser."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Kritik af psykoanalysen som uvidenskabelig",
+          "use_in_answer": "Ricoeurs koncept om 'synergien af kriterier' for at vise, at bevisførelsen blot er kumulativ, ikke fraværende.",
+          "caution": "Påstå ikke at Ricoeur gør psykoanalysen til fysik; han forsvarer den som sin *egen* type videnskab."
+        },
+        {
+          "prompt_type": "Spørgsmål om determinisme i Freud",
+          "use_in_answer": "Brug 'motiver som årsager' for at illustrere, hvordan neurosen overskriver fri vilje med en mekanisk tvang.",
+          "caution": "Husk at målet ('saying-true') netop er at genetablere muligheden for narrativ agens gennem helbredelse."
+        },
+        {
+          "prompt_type": "Diskussion af virkelighedsopfattelser",
+          "use_in_answer": "Adskil 'materiel virkelighed' klart fra 'psykisk virkelighed', hvor sidstnævnte er det afgørende for klinikken.",
+          "caution": "Gør det ikke til ren relativisme; fantasierne har en meget reel, strukturel virkning."
+        },
+        {
+          "prompt_type": "Begrebet 'modstand'",
+          "use_in_answer": "Vis hvorfor psykoanalysen *ikke* bare er historiefortælling; de energetiske lag (modstanden) er reelle kræfter, der skal overvindes.",
+          "caution": "Undgå at glemme tekst-elementet. Det er netop kombinationen af tekst (mening) og kraft (modstand), der virker."
+        },
+        {
+          "prompt_type": "Freuds udvikling af teorien",
+          "use_in_answer": "Brug Ricoeurs pointe om, at Freud ofte selv faldt i den grøft at ville ligne en naturvidenskab.",
+          "caution": "Dette er en metateoretisk tekst. Dvæl ikke ved konkrete case-detaljer som 'Ulvemanden', medmindre de støtter epistemologien."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro psykoanalysen primært fungerer som en afsløring af den sande, objektive fortid.",
+          "better_reading": "Analysen arbejder i den psykiske virkelighed; formålet er at rekonstruere en narrativt forståelig fremtid, ikke spille retsmediciner i fortiden."
+        },
+        {
+          "trap": "At læse psykoanalysen som ren tekstanalyse uden konflikter.",
+          "better_reading": "Ricoeur understreger skarpt, at modstand og energetiske kræfter er fuldstændig afgørende at bevare i teorien."
+        },
+        {
+          "trap": "At den 'onde cirkel' i teorien gør, at den ikke lader sig bevise.",
+          "better_reading": "Den påståede cirkel undslippes ved hjælp af synergien: de fire beviskriterier validerer hinanden gensidigt."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for, hvordan psykoanalysen ifølge Ricoeur (1981) kan bevise sine påstande, når den ikke benytter observerbar fysisk data. Diskuter herunder hvorfor teorien både må inddrage mening (tekst) og kraft (energi).",
+      "mini_exam_answer_plan_slots": [
+        "1. Definér psykoanalysens data: De fire kriterier (sproglig, rettet mod anden, psykisk virkelighed, narrativ).",
+        "2. Forklar nødvendigheden af den todelte teori: Hvorfor fortolkning (mening) uundgåeligt støder ind i modstand (kraft/energi).",
+        "3. Redegør for det kausale argument: Hvordan et ubevidst 'motiv' skifter status og fungerer som en mekanisk 'årsag'.",
+        "4. Konkludér på bevisproblemet: Forklar sandhedsbegrebet ('saying-true') og synergien mellem de fire valideringskriterier."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

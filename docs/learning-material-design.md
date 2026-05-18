@@ -10,7 +10,7 @@ Use it for:
 - reward-loop design principles for attention-limited learners
 - a shared language for problem-first learning material design
 
-This document is intentionally broader than any one show-specific scaffold
+This document is intentionally broader than any one show-specific printout
 contract. It does not define source-of-truth paths or publication mechanics.
 
 ## Core Distinction

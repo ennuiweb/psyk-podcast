@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "exam_context": {
+    "topic": "narrativ psykologi",
+    "already_covered_lecture_keys": [
+      "W11L2"
+    ],
+    "available_reading_days": 12,
+    "goal": "Prioriter ikke-narrative tekster efter hvor meget de styrker mundtlig sammenligning med narrativ psykologi."
+  },
+  "score_weights": {
+    "weight_band_bonus": {
+      "anchor": 30,
+      "major": 18,
+      "supporting": 8,
+      "contextual": 2,
+      "missing": 0
+    },
+    "theory_bonus": {
+      "narrative_psychology": 48,
+      "comparative_theory_analysis": 36,
+      "sociocultural_poststructural_approaches": 36,
+      "critical_psychology": 30,
+      "critical_personalism": 24,
+      "phenomenological_psychology": 22,
+      "humanistic_psychology": 20,
+      "dynamic_personality_development": 16,
+      "trait_and_assessment_psychology": 12,
+      "psychoanalytic_personality_theory": 10,
+      "biosocial_personality_perspectives": 8
+    },
+    "term_bonus": {
+      "narrativity": 50,
+      "subjectivation": 45,
+      "social_constructionism": 40,
+      "critical_psychology": 30,
+      "meaning_making": 28,
+      "culture_and_personality": 22,
+      "stability_and_change": 22,
+      "critical_personalism": 22,
+      "first_person_perspective": 20,
+      "person_situation_interplay": 18,
+      "personality_traits": 12,
+      "personality_states": 12,
+      "personality_assessment": 8
+    },
+    "lecture_role_bonus": {
+      "W12L1": 42,
+      "W10L2": 42,
+      "W11L1": 40,
+      "W09L1": 34,
+      "W08L2": 32,
+      "W08L1": 28,
+      "W07L2": 22,
+      "W06L1": 18,
+      "W10L1": 16,
+      "W01L1": 16,
+      "W02L1": 12,
+      "W02L2": 12,
+      "W03L1": 10
+    },
+    "distinction_bonus": {
+      "essence_vs_subjectivation": 50,
+      "individual_problem_vs_structural_condition": 38,
+      "person_vs_variable_profile": 34,
+      "trait_vs_state": 26,
+      "inner_depth_vs_lived_experience": 22,
+      "growth_vs_deficit": 18
+    },
+    "lecture_distinction_context_multiplier": 4,
+    "course_priority_bonus": 14,
+    "sideways_relation_bonus": 8,
+    "lecture_context_keyword_bonus": {
+      "narrative psychology": 20,
+      "subjectivation": 16,
+      "historicity": 14,
+      "orientation points": 12,
+      "agency": 10,
+      "discourse": 10,
+      "deconstruction": 10,
+      "meaning": 8,
+      "socially produced": 8,
+      "critical": 6
+    },
+    "lecture_context_bonus_cap": 52,
+    "length_cost": {
+      "long": 18,
+      "medium": 8,
+      "short": 2,
+      "unknown": 6
+    }
+  },
+  "bucket_rules": {
+    "start_here_academic_threshold": 364,
+    "read_after_academic_threshold": 230,
+    "overview_academic_threshold": 170,
+    "baseline_lecture_keys": [
+      "W01L1",
+      "W02L1",
+      "W02L2",
+      "W03L1",
+      "W03L2"
+    ],
+    "limits": {
+      "start_here": 8,
+      "read_after": 10,
+      "expand_if_time": 8,
+      "contrast_baseline": 6,
+      "bridge_overview": 8,
+      "already_covered": 6
+    },
+    "max_per_lecture": {
+      "read_after": 3,
+      "expand_if_time": 3,
+      "contrast_baseline": 2
+    }
+  },
+  "outputs": {
+    "plan_json": "shows/personlighedspsykologi-en/exam_priority_plan.narrative.json",
+    "markdown": "shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative.md",
+    "onepage_tex": "shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative-onepage.tex",
+    "onepage_pdf": "shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative-onepage.pdf"
+  }
+}

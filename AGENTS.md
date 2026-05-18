@@ -18,6 +18,7 @@
 - Podcast repo changes:
   - queue-owned publication/runtime changes: commit + push, deploy the relevant host/runtime, and run the required queue or service smoke checks
   - `legacy_workflow` show changes, shared feed/workflow changes, or explicit cross-show validation changes: also run `gh workflow run generate-feed.yml --ref main`
+- Queue status reports must use the terminology in `docs/notebooklm-queue-operations.md`: do not use `active` as a casual synonym for current queue records, and do not use `job` for a week/lecture-scoped queue record. In user-facing language, a `job` means one output item such as a single episode, quiz, infographic, printout, slide deck, or other generated artifact. Translate CLI/internal `job_count`/`job_id`/`JobIdentity` as `queue record`, `lecture record`, or `queue record id` unless quoting raw fields.
 - `freudd_portal` model/schema changes: always run `makemigrations` + `migrate`.
 
 ## Local Context Map

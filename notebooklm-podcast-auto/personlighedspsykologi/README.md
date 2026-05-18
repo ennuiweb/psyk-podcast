@@ -276,21 +276,24 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_r
 ./notebooklm-podcast-auto/.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py --week W1L1 --content-types audio,report --profile default
 ```
 
-- Generate printable reading printouts from the Gemini Source Intelligence layer:
+- Generate canonical printable reading printouts:
 
 ```bash
-./.venv/bin/python scripts/build_personlighedspsykologi_printouts.py --lectures W06L1
-./.venv/bin/python scripts/build_personlighedspsykologi_printouts.py --source-id w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2
+./.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/bootstrap_run.py \
+  --run-name 2026-05-problem-driven-pilot \
+  --lectures W06L1
+./.venv/bin/python notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/generate_candidates.py \
+  --manifest notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/runs/2026-05-problem-driven-pilot/manifest.json
 ```
 
-- This path uploads the actual source PDF to Gemini 3.1 Pro and uses source
-  cards/course context only as prioritization context; it must not locally
-  extract, OCR, summarize, or understand reading PDFs.
-- Each selected reading writes one JSON artifact plus three printable outputs
-  under `output/<lecture>/printouts/<source_id>/`: `01-abridged-guide`,
-  `02-unit-test-suite`, and `03-cloze-scaffold` as Markdown and PDF.
-- Default selection is readings only. Use `--source-family lecture_slide` or
-  `--all-families` only when intentionally generating scaffolds for slide decks.
+- The current canonical printout system lives under
+  `evaluation/printout_review/` and produces the schema-v3 problem-driven PDF
+  bundle: `00-cover`, `01-reading-guide`, `02-active-reading`,
+  `03-abridged-version`, `04-consolidation-sheet`, and optional
+  `05-exam-bridge`.
+- The old `scripts/build_personlighedspsykologi_printouts.py` path is
+  legacy/outdated and still reflects the previous three-sheet scaffold model.
+  Main-code integration of the new printout-review engine is still pending.
 
 - Legacy quiz HTML->JSON extraction is no longer part of the default local flow in this branch.
 - Git hook behavior: quiz extraction is disabled by default. Enable with `QUIZ_JSON_EXTRACT_ON_PUSH=1` if the extractor script exists in your checkout.

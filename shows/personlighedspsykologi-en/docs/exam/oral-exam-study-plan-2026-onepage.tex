@@ -1,0 +1,183 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,portrait,left=9mm,right=9mm,top=13mm,bottom=13mm,headheight=9pt,headsep=4mm,footskip=7mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\setmainfont{lmroman12-regular.otf}[
+  BoldFont = lmroman12-bold.otf,
+  ItalicFont = lmroman10-italic.otf
+]
+\setmonofont{lmmono10-regular.otf}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\definecolor{textgray}{HTML}{111111}
+\definecolor{softgray}{HTML}{444444}
+
+\newcommand{\metafont}{\fontsize{6.25}{6.95}\selectfont\ttfamily}
+\fancyhf{}
+\fancyhead[L]{\metafont side 1/1}
+\fancyhead[C]{\metafont personlighedspsykologi | oplæsningsplan}
+\fancyhead[R]{\metafont side 1/1}
+\fancyfoot[L]{\metafont side 1/1}
+\fancyfoot[C]{\metafont hver reading | hvert printout | samlet kursusoverblik}
+\fancyfoot[R]{\metafont side 1/1}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\dayfont}{\fontsize{7.0}{7.75}\selectfont}
+\newcommand{\readingfont}{\fontsize{6.22}{6.98}\selectfont}
+\newcommand{\checkfont}{\fontsize{5.22}{5.90}\selectfont\ttfamily\color{softgray}}
+\newcommand{\tickbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{3.55pt}\rule{3.55pt}{0pt}}\endgroup}
+\newcommand{\bigbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{4.75pt}\rule{4.75pt}{0pt}}\endgroup}
+\newcommand{\readingbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{5.7pt}\rule{5.7pt}{0pt}}\endgroup}
+\newcommand{\lecturebox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{7.1pt}\rule{7.1pt}{0pt}}\endgroup}
+\newcommand{\datefield}{\rule{13mm}{0.35pt}}
+\newcommand{\track}{1~\tickbox\hspace{3.35mm}2~\bigbox\hspace{3.35mm}3~\tickbox\hspace{3.35mm}4~\tickbox}
+
+\newcommand{\dayblock}[1]{%
+  \vspace{1.18mm}
+  \rule{\linewidth}{0.68pt}\par
+  \vspace{0.36mm}
+  {\dayfont\texttt{dato:}\hspace{0.6mm}\datefield\hfill\texttt{#1}\hspace{1.0mm}\lecturebox}\par
+  \vspace{0.92mm}
+}
+\newcommand{\dayend}{\vspace{1.22mm}}
+
+\newcommand{\readingitem}[1]{%
+  \noindent\begin{minipage}{\linewidth}
+    \hbox to \linewidth{%
+      {\readingfont #1}%
+      \hspace{0.9mm}%
+      \leaders\hbox{\rule[1.15pt]{0.9mm}{0.22pt}}\hfill%
+      \hspace{1.0mm}%
+      \raisebox{-0.9pt}{\makebox[6.2mm][r]{\readingbox}}%
+    }\par
+    \vspace{0.34mm}
+    \hspace{0.65mm}{\checkfont\track}
+  \end{minipage}\par
+  \vspace{1.25mm}
+}
+
+\begin{document}
+\color{textgray}
+
+\vspace*{-0.25mm}
+\begin{center}
+{\fontsize{8.2}{9}\selectfont\ttfamily personlighedspsykologi}\\[1.05mm]
+{\fontsize{20}{21}\selectfont\bfseries OPLÆSNINGSPLAN}\\[2.05mm]
+\rule{0.56\linewidth}{0.45pt}\\[1.75mm]
+{\fontsize{7.35}{8.1}\selectfont
+\textbf{1.} Reading Guide \quad
+\textbf{2.} Active Reading \quad
+\textbf{3.} Abridged Version \quad
+\textbf{4.} Consolidation Sheet
+}
+\end{center}
+
+\vspace{3.05mm}
+\noindent
+\begin{minipage}[t]{0.315\linewidth}
+\dayblock{W01L1-2}
+\readingitem{Grundbog kapitel 01 - Introduktion}
+\readingitem{Lewis (1999)}
+\readingitem{Mayer \& Bryan (2024)}
+\readingitem{Koutsoumpis (2025)}
+\readingitem{Phan et al. (2024)}
+\dayend
+
+\dayblock{W02L1-2}
+\readingitem{Zettler et al. (2020)}
+\readingitem{Columbus \& Strandsbjerg (2025)}
+\readingitem{Bleidorn et al. (2022)}
+\readingitem{Li \& Wilt (2025)}
+\dayend
+
+\dayblock{W03L1-2}
+\readingitem{Kandler \& Instinske (2025)}
+\readingitem{Lu, Benet-Martínez \& Wang (2023)}
+\readingitem{Volk \& Puchalski (2025)}
+\readingitem{Zettler et al. (2025)}
+\readingitem{Bach \& Simonsen (2023)}
+\readingitem{Sharp \& Wall (2021)}
+\dayend
+
+\dayblock{W04L1-2}
+\readingitem{Freud (1973/1933)}
+\readingitem{Gammelgaard (2007)}
+\readingitem{Lacan (1966)}
+\readingitem{Laplanche (1970)}
+\dayend
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.315\linewidth}
+\dayblock{W05L1-2}
+\readingitem{Freud (1984/1905)}
+\readingitem{Gammelgaard (2010)}
+\readingitem{Ricoeur (1981)}
+\readingitem{Andkjær Olsen \& Køppe (1991a+b)}
+\readingitem{Køppe (1992)}
+\readingitem{Grundbog kapitel 07 - Nyere psykoanalyse}
+\dayend
+
+\dayblock{W06L1-2}
+\readingitem{Spinelli (2005)}
+\readingitem{Moeskær Hansen \& Roald (2022)}
+\readingitem{Grundbog kapitel 04 - Fænomenologi}
+\readingitem{Boss (1963)}
+\readingitem{May (1966)}
+\dayend
+
+\dayblock{W07L1-2}
+\readingitem{Cooper (2003)}
+\readingitem{Jacobsen (2021)}
+\readingitem{Evans (1975)}
+\readingitem{Giorgi (2005)}
+\readingitem{Maslow (1968)}
+\dayend
+
+\dayblock{W08L1-2}
+\readingitem{Lamiell (2021)}
+\readingitem{Laux et al. (2010)}
+\readingitem{Holzkamp (1982)}
+\readingitem{Tolman (2009)}
+\dayend
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.315\linewidth}
+\dayblock{W09L1}
+\readingitem{Mørch \& Hansen (2015)}
+\readingitem{Dreier (1999)}
+\readingitem{Holzkamp (2013)}
+\readingitem{Grundbog kapitel 10 - Kritisk psykologi}
+\dayend
+
+\dayblock{W10L1-2}
+\readingitem{Bjerrum Nielsen \& Rudberg (2006)}
+\readingitem{Mitchell (2015)}
+\readingitem{Davies (1990)}
+\readingitem{Foucault (1997)}
+\dayend
+
+\dayblock{W11L1-2}
+\readingitem{Gergen (1999)}
+\readingitem{Hacking (2007)}
+\readingitem{Grundbog kapitel 11 - Subjektivering}
+\readingitem{Raggatt (2002)}
+\readingitem{Bruner (1999)}
+\readingitem{McAdams \& Pals (2006)}
+\readingitem{Grundbog kapitel 09 - Narrative teorier}
+\dayend
+
+\dayblock{W12L1}
+\readingitem{Elias (2000)}
+\readingitem{Grundbog kapitel 08 - Historicitet}
+\readingitem{Grundbog kapitel 14 - Perspektiver}
+\dayend
+\end{minipage}
+
+\vfill
+
+\end{document}

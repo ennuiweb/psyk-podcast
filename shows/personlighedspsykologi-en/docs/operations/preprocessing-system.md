@@ -98,17 +98,19 @@ Output substrate pass:
 - for dette task er podcast substrates i scope
 - setup af alle andre outputfamilier er ikke core scope endnu
 
-Foerste konkrete ikke-podcast consumer efter dette er nu printable reading
-scaffolds:
+Foerste konkrete ikke-podcast consumer efter dette er nu det canonical
+printout-review system:
 
-- `scripts/build_personlighedspsykologi_printouts.py`
-- output: `notebooklm-podcast-auto/personlighedspsykologi/output/<lecture>/printouts/<source_id>/`
-- artifacts: `reading-printouts.json` plus tre PDF/Markdown-filer:
-  `01-abridged-guide`, `02-unit-test-suite`, `03-cloze-scaffold`
-- denne vej sender altid den faktiske source PDF til Gemini 3.1 Pro via Files
-  API; lokal kode maa kun vaelge, hashe, cache og rendere output
+- `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/`
+- current canonical artifacts: schema-v3 problem-driven PDF bundle
+  (`00-cover`, `01-reading-guide`, `02-active-reading`,
+  `03-abridged-version`, `04-consolidation-sheet`, optional
+  `05-exam-bridge`)
+- den gamle `scripts/build_personlighedspsykologi_printouts.py` vej er legacy
+  og bruger stadig den outdated tre-arks scaffold model
+- main-code integration af printout-review engine mangler stadig
 - source cards, revised lecture substrates og course synthesis bruges som
-  prioriteringssubstrat, ikke som erstatning for at Gemini laeser selve
+  prioriteringssubstrat, ikke som erstatning for at modellen laeser selve
   kilden
 
 ## Batch- og raekkefoelgeregler
@@ -255,6 +257,35 @@ Den nye policy-fil er vigtig, fordi dette subsystem skal vaere tunet til netop
 - forelaesningsslides behandles som framing- og emphasis-evidence
 - seminarslides behandles som application-/diskussionsevidence
 - exerciseslides behandles som clarification-/training-evidence
+
+Det skal laeses helt bogstaveligt: slides er ikke bare en samlet kategori i
+`Source Intelligence Layer`.
+
+- `lecture_slide` bruges til at rekonstruere lecture sequence, framing og hvad
+  underviseren ser ud til at prioritere
+- `seminar_slide` bruges til at rekonstruere application, clarification,
+  discussion points og sandsynlige misunderstandings
+- `exercise_slide` bruges til at rekonstruere hvad der oves, afproeves,
+  stress-testes eller konkret tydeliggoeres
+
+Det har konkrete downstream-konsekvenser:
+
+- `source_catalog.json` tagger slides med baade `source_family` og
+  `evidence_origin`, saa de ikke blandes sammen
+- `lecture_bundles/W##L#.json` holder `lecture_slides`, `seminar_slides` og
+  `exercise_slides` adskilt i teaching context og source counts
+- single-slide prompt selection maa gerne vaegte disse forskelligt:
+  `lecture_framed` for forelaesningsslides, `seminar_applied` for
+  seminarslides og `exercise_clarified` for exerciseslides
+- slide-specifikke podcast substrates maa derfor have egne `per_slide`
+  entries, mens `Alle kilder (undtagen slides)` forbliver en readings-first
+  weekly substrate og ikke en slide-outputform
+
+Vigtig graense:
+
+- forelaesningsslides maa gerne styre sequence og emphasis, men de skal ikke
+  automatisk behandles som den primaere kilde til substantive theory claims,
+  hvis laesningerne baerer den egentlige argumentation
 
 Kanonisk rebuild-kommando:
 

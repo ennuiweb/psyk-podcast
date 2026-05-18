@@ -223,6 +223,56 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
 ```
 
+## Queue reporting terminology
+
+Use these terms in operator reports. Do not use `active` as a casual synonym
+for current queue records, and do not use `job` for a week/lecture-scoped queue
+record.
+
+- Output job: one user-visible generated output item, such as a single podcast
+  episode/audio file, quiz, infographic, printout, slide deck, or similar
+  artifact. When Oskar asks about jobs, answer at this output-item level unless
+  he explicitly asks for implementation records.
+- Queue record or lecture record: a persisted queue state-machine record. The
+  current implementation is often lecture-scoped, so one queue record can
+  produce or publish many output jobs.
+- Historical implementation naming: the CLI/JSON/code still expose
+  `job_count`, `job_id`, `--job-id`, and `JobIdentity`. In prose, translate
+  those to `queue record count`, `queue record id`, or `lecture record` unless
+  quoting a raw command, flag, field, or class name.
+- Persisted records: the raw `job_count` and `state_counts` returned by `report`.
+  This includes terminal history such as `completed` and `dead_letter`.
+- Terminal history: queue records in `completed`, `dead_letter`, `cancelled`,
+  `failed_terminal`, or `rejected_manual_review`. The worker ignores these as
+  backlog, even though they remain visible in `list` and `report`.
+- Non-terminal backlog: all queue records not in terminal history. This is the
+  work that can still affect `serve-show` drain behavior.
+- Ready backlog: queue records in ready states such as `queued`,
+  `approved_for_publish`, or retry queue records whose retry window has arrived.
+- Timed backlog: `retry_scheduled` and `waiting_for_artifact` queue records. The
+  worker may sleep until the next retry or artifact poll window.
+- Operator-blocked backlog: explicit blocked states such as
+  `blocked_auth_stale`, `blocked_manual_prereq`, `blocked_config_error`, or
+  `awaiting_review`.
+- Failed-retryable backlog: `failed_retryable` queue records. Treat these
+  separately from explicit blocked states because `serve-show` exits nonzero
+  for manual intervention.
+- Current-hash cohort: queue records whose `config_hash` matches the current
+  show config. A completed queue record in the current-hash cohort is terminal
+  history, not non-terminal backlog. A dead-lettered stale-hash queue record is also terminal
+  history, not non-terminal backlog.
+- Reserve `active` for `systemd` unit state (`active`, `running`, `waiting`) or
+  define it explicitly in the same sentence. Prefer `non-terminal backlog` when
+  describing queue work that has not stopped.
+
+When answering coverage questions, report at least:
+
+- persisted records by state
+- non-terminal backlog by state
+- current-hash cohort coverage
+- output jobs needed, generated, and published
+- stale-hash or dead-letter counts separately
+
 For shadow evaluation under rate pressure, prefer a single lecture batch before widening the scope. That keeps failures attributable and lets the queue's retry scheduling work on a small surface area first.
 
 ## Logs and health checks
@@ -300,5 +350,5 @@ If the worker process died mid-stage, retrying `drain-show` is usually enough no
 
 - The timer is intentionally conservative: every 30 minutes with persistence and jitter.
 - `drain-show` prioritizes later publication stages before starting new generation work, so unfinished publish backlog is cleared before the queue creates more output.
-- The service is designed to be rerun safely. Within one service invocation it now performs repeated drain cycles, sleeps until the earliest `retry_scheduled` window when quota is the only blocker, and exits only when the non-terminal backlog is cleared or the remaining queue records need manual intervention.
+- The service is designed to be rerun safely. Within one service invocation it now performs repeated drain cycles, sleeps until the earliest timed retry or artifact poll window when appropriate, and exits only when the non-terminal backlog is cleared or the remaining queue records need manual intervention.
 - Discovery skips lecture keys that already exist in the configured `episode_inventory.json` by default, so installing the service on a fresh queue store does not automatically regenerate the entire historical live catalog.

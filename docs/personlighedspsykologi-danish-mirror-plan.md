@@ -29,7 +29,7 @@ separate Danish Freudd subject contract.
   substrate without duplicating subject-owned inputs unnecessarily.
 - Publish a clean Danish RSS feed without leaking `[DA]` tags into public
   titles or descriptions.
-- Prevent English and Danish queue jobs from sharing output roots or publish
+- Prevent English and Danish queue records from sharing output roots or publish
   state implicitly.
 - Replace remaining English-only queue assumptions with show-config-driven
   behavior where Danish rollout safety depends on it.
@@ -110,7 +110,8 @@ public feed outputs and queue runtime state.
 - Verified hosted runtime state:
   - `/opt/podcasts` is on commit `75a78e46c5132391c647af3006c9b8153e475355`
   - `podcasts-notebooklm-queue@personlighedspsykologi-da.timer` is active
-  - the Danish queue report shows `22` jobs discovered and enqueued
+  - the Danish queue report shows `22` lecture-scoped queue records discovered
+    and enqueued
   - the live service is running the expected Danish
     `generate_week.py` and `generate_podcast.py` commands against
     `notebooklm-podcast-auto/personlighedspsykologi-da/output`
@@ -118,8 +119,8 @@ public feed outputs and queue runtime state.
     root correctly
 - Discovered and fixed an existing queue runtime weakness during smoke testing:
   shared NotebookLM profile exhaustion and source-ingestion stalls could leave
-  older jobs in `failed_retryable`, which then caused `serve-show` to stop on a
-  mixed blocked+timed backlog.
+  older queue records in `failed_retryable`, which then caused `serve-show` to
+  stop on a mixed blocked+timed backlog.
 - Added a queue-level self-heal path so stale retryable failures are converted
   back into `retry_scheduled` automatically, and added explicit retry
   classification for `Sources not ready after waiting`.

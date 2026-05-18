@@ -33,7 +33,8 @@ The following queue milestones are implemented on `main`:
 
 - durable queue storage outside git
 - show-scoped locking
-- deterministic lecture-scoped job identity
+- deterministic lecture-scoped queue-record identity, implemented internally as
+  `JobIdentity` / `job_id`
 - adapter-based discovery for:
   - `bioneuro`
   - `personlighedspsykologi-en`
@@ -54,11 +55,11 @@ The following queue milestones are implemented on `main`:
   - show-scoped generated-file commit
   - rebase against `origin/main` with allowlisted conflict recovery
   - push to `main`
-  - persisted repo commit SHA in queue job artifacts
+  - persisted repo commit SHA in queue-record artifacts
 - downstream completion for supported shows:
   - waits for expected push-triggered workflows such as `deploy-freudd-portal.yml`
-  - records downstream run ids and URLs in queue job artifacts
-  - marks jobs `completed` only after downstream success or no-op completion
+  - records downstream run ids and URLs in queue-record artifacts
+  - marks queue records `completed` only after downstream success or no-op completion
 - `personlighedspsykologi-en` queue hardening now also covers:
   - strict manual-summary coverage validation before feed generation
   - queue-owned `sync_regeneration_registry.py` execution as part of repo metadata rebuild
@@ -77,7 +78,7 @@ The following queue milestones are implemented on `main`:
 
 ## Current state-machine boundary
 
-Successful jobs can now advance through:
+Successful queue records can now advance through:
 
 - `awaiting_publish`
 - `approved_for_publish`
@@ -100,7 +101,7 @@ That means the queue currently owns:
 The queue runtime now also has a concrete Hetzner packaging layer:
 
 - `drain-show` provides the single-cycle primitive and `serve-show` now provides the quota-aware remote worker entrypoint
-- `serve-show` now keeps draining while timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if explicit blocked jobs are also present; it exits cleanly with `blocked_backlog_remaining` only when explicit blocked backlog is all that remains, exits cleanly with `service_timeout_reached` when the remaining wait window would overrun the configured worker budget, and still fails closed on invalid retry timestamps or generic `failed_retryable` backlog instead of hot-looping
+- `serve-show` now keeps draining while timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if explicit blocked queue records are also present; it exits cleanly with `blocked_backlog_remaining` only when explicit blocked backlog is all that remains, exits cleanly with `service_timeout_reached` when the remaining wait window would overrun the configured worker budget, and still fails closed on invalid retry timestamps or generic `failed_retryable` backlog instead of hot-looping
 - templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
 - the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 
@@ -153,6 +154,11 @@ Current active show ownership is now mixed:
 - `personlighedspsykologi-en`: live, R2-backed, queue-owned
   - queue metadata hardening is in place for manual summaries, regeneration registry sync, and slide-brief blocking
   - the Hetzner queue runtime is now installed and verified; the first `systemd` drain completed successfully as a no-op because discovery correctly skipped already-published lecture keys
+- `personlighedspsykologi-da`: live, R2-backed, queue-owned
+  - Danish mirror generation is now live on the Hetzner queue with its own
+    output root and prompt localization layer
+  - the queue is still backfilling this show, so the public feed remains only
+    partially populated during the current drain campaign
 - `social-psychology`: live, R2-backed, legacy workflow; feed regeneration now reads the checked-in R2 manifest directly
 
 Operational boundary:
@@ -160,6 +166,46 @@ Operational boundary:
 - all active audio-publishing shows are now live on `storage.provider = "r2"`
 - Drive source ingest is now retired for the active publication surface
 - `berlingske` remains outside that statement because it is paused and not part of the active publication surface
+
+## Queue rollout checkpoint
+
+Terminology reminder for status reports: distinguish persisted queue records
+from non-terminal backlog, and reserve `job` for one output item such as an
+episode, quiz, infographic, printout, slide deck, or similar artifact.
+`completed` and `dead_letter` queue records are terminal history, not
+non-terminal backlog, and current-hash coverage is a separate question from
+whether a queue record still needs processing. The canonical wording lives in
+[notebooklm-queue-operations.md](notebooklm-queue-operations.md#queue-reporting-terminology).
+
+As of 2026-05-11, the live Hetzner queue runtime is on commit `9490d7c` and
+is draining with the validated host profile pool below:
+
+- `freudagsbaren`
+- `oskarvedel`
+- `tjekdepotadmin`
+- `nopeeeh`
+- `vedeloskar`
+- `stanhawkservices`
+- `baduljen`
+- `oskarhoegsgaard`
+
+Operator notes:
+
+- `default` was intentionally removed from the live host bundle after it still
+  failed a real host-side `notebooklm ... list --json` auth check.
+- `djspindoctor` and `psykku` remain outside the active pool and are not
+  required for current queue drain.
+- The current queue state no longer shows `blocked_auth_stale` in the EN/DA
+  summaries; the remaining backlog is normal timed drain.
+
+Current checkpoint after the profile remediation and service restart:
+
+- `personlighedspsykologi-en`: `12 completed`, `1 downloading`,
+  `7 retry_scheduled`, `2 waiting_for_artifact`
+- `personlighedspsykologi-da`: `2 completed`, `1 downloading`,
+  `40 retry_scheduled`, `1 waiting_for_artifact`
+- both services report `Result=success` and `ExecMainStatus=0` while
+  `serve-show` is running drain cycles
 
 ## Immediate missing steps before full autonomous ownership
 

@@ -1,0 +1,1298 @@
+diff --git a/notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py b/notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py
+index 74f88ea..814d689 100644
+--- a/notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py
++++ b/notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py
+@@ -50,6 +50,7 @@ CANONICAL_PRINTOUT_JSON_NAME = "reading-printouts.json"
+ LEGACY_PRINTOUT_JSON_NAME = "reading-scaffolds.json"
+ INTERNAL_REVIEW_ARTIFACT_DIRNAME = ".scaffolding"
+ REVIEW_OUTPUT_DIRNAME = "review"
++PDF_STAGING_DIRNAME = "staging"
+ RENDER_COMPLETION_MARKERS_KEY = "render_completion_markers"
+ RENDER_EXAM_BRIDGE_KEY = "render_exam_bridge"
+ V3_FIXED_TITLES = {
+@@ -80,6 +81,23 @@ V2_RENDER_STEMS = (
+     "02-unit-test-suite",
+     "03-cloze-scaffold",
+ )
++READING_TITLE_OVERRIDES = {
++    "w01l1-lewis-1999-295c67e3": "Issues in the Study of Personality Development",
++    "w07l2-evans-1975-8e8a9d79": "Carl Rogers: The Man and His Ideas",
++    "w07l2-giorgi-2005-55ca98f7": "Remaining Challenges for Humanistic Psychology",
++    "w07l2-maslow-1968-7ea53e34": "Deficiency Motivation and Growth Motivation",
++    "w08l1-lamiell-2021-be79d36e": "William Stern and Personalistic Thinking: Making Acquaintance",
++    "w08l1-laux-et-al-2010-cfff840c": "Personalistic Concepts in Action: The Case of Adolf Hitler",
++    "w08l2-holzkamp-1982-845aafd2": "Daglig livsførelse som subjektvidenskabeligt grundkoncept",
++    "w08l2-tolman-2009-455915e0": "Holzkamp's Critical Psychology as a Science from the Standpoint of the Human Subject",
++    "w09l1-dreier-1999-35da58b5": "Personal Trajectories of Participation across Contexts of Social Practice",
++    "w09l1-holzkamp-2013-c3068d8a": "What Could a Psychology from the Standpoint of the Subject Be?",
++    "w09l1-m-rch-and-hansen-2015-b1dbfc5f": "Fra rocker til akademiker",
++    "w11l2-bruner-1999-7930abd8": "Entry into Meaning",
++    "w11l2-mcadams-and-pals-2006-b9675688": "A New Big Five: Fundamental Principles for an Integrative Science of Personality",
++    "w11l2-raggatt-2002-d15129af": "A Plurality of Selves? An Illustration of Polypsychism in a Recovered Addict",
++    "w12l1-elias-2000-f9176ae8": "Sociogenetic and Psychogenetic Investigations",
++}
+ PDF_RENDER_ENGINES = (
+     "xelatex",
+     "lualatex",
+@@ -125,6 +143,7 @@ TRANSIENT_GENERATION_ERROR_PATTERNS = (
+     "503",
+     "504",
+ )
++
+ SPACING_RHYTHM_CM = 0.28
+ SPACING_CONTRACT_CM = {
+     "guide_paragraph_gap": SPACING_RHYTHM_CM,
+@@ -134,6 +153,7 @@ SPACING_CONTRACT_CM = {
+     "response_line_gap_extended": 0.42,
+     "completion_block_gap": SPACING_RHYTHM_CM,
+     "completion_item_gap": 0.16,
++    "diagram_inline_space_ceiling": 1.60,
+     "diagram_dedicated_page_floor": 7.60,
+ }
+ DIAGRAM_SPACE_PROFILES_CM = {
+@@ -141,6 +161,9 @@ DIAGRAM_SPACE_PROFILES_CM = {
+     "network": (4.80, 4.30, 3.60),
+     "default": (4.80, 4.20, 3.40),
+ }
++RESPONSE_LINE_MULTIPLIER_NUMERATOR = 3
++RESPONSE_LINE_MULTIPLIER_DENOMINATOR = 2
++PDF_BODY_LINE_SPREAD = "1.07"
+ 
+ JsonGenerator = Callable[..., dict[str, Any]]
+ UserPromptBuilder = Callable[..., str]
+@@ -150,6 +173,14 @@ class PrintoutError(RuntimeError):
+     """Raised when a printable printout cannot be generated or rendered."""
+ 
+ 
++class GenerationFailure(PrintoutError):
++    """Generation failed after any provider retry handling, with sanitized stats."""
++
++    def __init__(self, message: str, *, generation_stats: dict[str, Any] | None = None) -> None:
++        super().__init__(message)
++        self.generation_stats = dict(generation_stats or {})
++
++
+ def read_json(path: Path) -> Any:
+     return json.loads(path.read_text(encoding="utf-8"))
+ 
+@@ -247,6 +278,7 @@ def _pdf_wrapped_markdown(markdown_text: str, *, total_pages: int | None = None)
+                 r"\setlength{\headheight}{16pt}",
+                 r"\setlength{\headsep}{10pt}",
+                 r"\setlength{\footskip}{18pt}",
++                rf"\AtBeginDocument{{\linespread{{{PDF_BODY_LINE_SPREAD}}}\selectfont}}",
+                 r"\newlength{\printoutneedspacelen}",
+                 r"\newlength{\printoutremainingpage}",
+                 r"\newcommand{\printoutneedspace}[1]{%",
+@@ -386,25 +418,92 @@ def legacy_output_dir_for_source(output_root: Path, source: dict[str, Any]) -> P
+     return canonical_baseline_legacy_output_dir_for_source(output_root, source)
+ 
+ 
++def _artifact_provider_model_slug(provider: str, model: str) -> str:
++    return f"{_filename_slug(provider)}-{_filename_slug(model)}"
++
++
++def artifact_dir_for_source_id(
++    output_root: Path,
++    *,
++    source_id: str,
++    provider: str | None = None,
++    model: str | None = None,
++) -> Path:
++    if provider and model:
++        return (
++            output_root
++            / INTERNAL_REVIEW_ARTIFACT_DIRNAME
++            / "artifacts"
++            / _artifact_provider_model_slug(provider, model)
++            / _filename_slug(source_id)
++        )
++    return output_root / INTERNAL_REVIEW_ARTIFACT_DIRNAME / source_id
++
++
++def artifact_json_path_for_source_id(
++    output_root: Path,
++    *,
++    source_id: str,
++    provider: str | None = None,
++    model: str | None = None,
++) -> Path:
++    return artifact_dir_for_source_id(
++        output_root,
++        source_id=source_id,
++        provider=provider,
++        model=model,
++    ) / LEGACY_PRINTOUT_JSON_NAME
++
++
+ def artifact_dir_for_output_dir(output_root: Path, source: dict[str, Any], output_dir: Path) -> Path:
+     del output_dir
+     _, source_id = _source_path_parts(source)
+     return output_root / INTERNAL_REVIEW_ARTIFACT_DIRNAME / source_id
+ 
+ 
+-def artifact_json_path_for_output_dir(output_root: Path, source: dict[str, Any], output_dir: Path) -> Path:
+-    return artifact_dir_for_output_dir(output_root, source, output_dir) / LEGACY_PRINTOUT_JSON_NAME
++def artifact_json_path_for_output_dir(
++    output_root: Path,
++    source: dict[str, Any],
++    output_dir: Path,
++    *,
++    provider: str | None = None,
++    model: str | None = None,
++) -> Path:
++    del output_dir
++    _, source_id = _source_path_parts(source)
++    return artifact_json_path_for_source_id(
++        output_root,
++        source_id=source_id,
++        provider=provider,
++        model=model,
++    )
+ 
+ 
+ def _legacy_json_path_in_output_dir(output_dir: Path) -> Path:
+     return output_dir / CANONICAL_PRINTOUT_JSON_NAME
+ 
+ 
+-def _find_existing_artifact_json(output_root: Path, source: dict[str, Any], output_dir: Path) -> Path | None:
++def _find_existing_artifact_json(
++    output_root: Path,
++    source: dict[str, Any],
++    output_dir: Path,
++    *,
++    provider: str | None = None,
++    model: str | None = None,
++) -> Path | None:
+     _, source_id = _source_path_parts(source)
+-    preferred = artifact_json_path_for_output_dir(output_root, source, output_dir)
++    preferred = artifact_json_path_for_output_dir(
++        output_root,
++        source,
++        output_dir,
++        provider=provider,
++        model=model,
++    )
+     if preferred.exists():
+         return preferred
++    legacy_preferred = artifact_json_path_for_source_id(output_root, source_id=source_id)
++    if legacy_preferred.exists():
++        return legacy_preferred
+     old_canonical = _legacy_json_path_in_output_dir(output_dir)
+     if old_canonical.exists():
+         return old_canonical
+@@ -1178,8 +1277,8 @@ def scaffold_prompt_contract(length_budget: dict[str, Any] | None = None) -> dic
+             "section_cardinality": {
+                 "explanation_paragraphs": "2-5 strings; each paragraph max 95 words",
+                 "key_points": "1-5 strings",
+-                "quote_anchors": "0-3 objects; each phrase must be max 12 words and max 140 characters",
+-                "source_passages": "0-1 objects; each passage must stay short enough to be a single decisive paragraph",
++                "quote_anchors": "0-3 internal search-anchor objects; each phrase must be max 12 words and max 140 characters",
++                "source_passages": "0-1 visible quote objects; prefer complete sentence-level excerpts, usually 20-70 words; mark omitted beginnings or endings with (...)",
+             },
+             "quote_anchor_keys": ["phrase", "why_it_matters", "source_location"],
+             "source_passage_keys": ["source_location", "passage", "why_it_matters"],
+@@ -1247,7 +1346,7 @@ def scaffold_prompt_contract(length_budget: dict[str, Any] | None = None) -> dic
+             "active_reading should use fewer, larger solve steps rather than a long fact-quiz.",
+             "consolidation_sheet must not depend on source figures, page numbers, or opening the original PDF.",
+             "exam_bridge should read like oral-exam cues, not like a long advice handout.",
+-            "Use only short quote anchors by default; add a short original passage inside abridged_reader only when exact wording clearly earns its place.",
++            "Use quote_anchors only as internal search anchors; visible quoted wording inside abridged_reader belongs in source_passages, and should carry enough sentence context to stand alone.",
+         ],
+     }
+ 
+@@ -1268,7 +1367,7 @@ def printout_system_instruction() -> str:
+             "The student has ADD and needs offline, short, dopamine-friendly tasks while reading.",
+             "The abridged reader is a legitimate minimum viable reading path, not a failure mode.",
+             "The abridged reader must be self-contained enough that the student can do active_reading and consolidation_sheet without opening the original source.",
+-            "If exact wording matters, place one short original passage directly inside the abridged reader section instead of sending the student back to the PDF.",
++            "If exact wording matters, place one sentence-level original passage directly inside the abridged reader section instead of sending the student back to the PDF.",
+             "The output must be a coherent printout kit, not one overloaded everything sheet.",
+             "Do not invent creative document titles; use the canonical English artifact titles from the contract.",
+             "Make every task operational: it should tell the student what to do, where to look, and when to stop.",
+@@ -1280,9 +1379,9 @@ def printout_system_instruction() -> str:
+             "answer_shape must describe only the answer format, e.g. '1 ord', '2 ord', 'et navn', or 'en kort sætning'. Do not add semantic hints.",
+             "A done_signal should say when to stop, for example 'når du har skrevet gruppen', not what the group is.",
+             "Do not make broad essay prompts, vague blanks, or questions that can be answered without reading the source.",
+-            "Respect copyright: use short quote anchors by default. Only include a short paragraph-length source passage when exact wording matters and the rest of the section cannot stay self-contained without it.",
++            "Respect copyright: use quote_anchors only as short search phrases. Visible quoted wording belongs in source_passages; prefer complete sentence-level excerpts and mark omitted beginnings or endings with (...).",
+             "Quote anchors and quote targets must be max 12 words and max 140 characters.",
+-            "Abridged-reader prose should mostly be rewritten explanation, with short original anchors and only occasional short source passages.",
++            "Abridged-reader prose should mostly be rewritten explanation, with occasional sentence-level source passages only when exact wording improves the explanation.",
+             "Do not put worksheet blanks, mini-quizzes, or checkboxes inside abridged_reader.",
+             "active_reading is a guided-solve sheet with abridged_reader open; consolidation_sheet is the memory-first recall sheet after that.",
+             "Their location hints must point back into abridged_reader sections.",
+@@ -1326,7 +1425,7 @@ def printout_user_prompt(
+                 "Preserve the source's argument movement in source order.",
+                 "Each section should name the local problem it solves and which reading-guide subproblem it advances.",
+                 "Use short paragraphs, section headings, page/source anchors, and bullets where helpful.",
+-                "Mostly rewrite and explain; include short quote anchors by default and at most one short original source passage in a section when exact wording matters.",
++                "Mostly rewrite and explain; include at most one visible source_passage in a section when exact wording matters. quote_anchors are search metadata, not standalone visible citations.",
+                 "Every section must include source_location, explanation_paragraphs, key_points, quote_anchors or no_quote_anchor_needed, source_passages, solves_subproblem, and local_problem.",
+                 "Do not include blanks, checkboxes, mini-tests, or other fill-out tasks inside abridged_reader.",
+                 "The reader must be self-contained enough that the student can do active_reading, consolidation_sheet, and exam_bridge without opening the full source.",
+@@ -2430,6 +2529,11 @@ def _append_response_space(
+     del indent
+     if blank_lines <= 0:
+         return
++    blank_lines = max(
++        1,
++        (blank_lines * RESPONSE_LINE_MULTIPLIER_NUMERATOR + RESPONSE_LINE_MULTIPLIER_DENOMINATOR - 1)
++        // RESPONSE_LINE_MULTIPLIER_DENOMINATOR,
++    )
+     compact_answer = _answer_shape_is_short(answer_shape) or _answer_shape_prefers_compact_paragraph(answer_shape)
+     if final_block:
+         line_gap_key = "response_line_gap_extended"
+@@ -2445,24 +2549,29 @@ def _append_response_space(
+ 
+ 
+ def _append_fill_to_page_response_area(lines: list[str], *, minimum_cm: float = 0.0) -> None:
+-    lines.append("\\hrule")
+-    lines.append("")
+     if minimum_cm > 0:
+         lines.append(_vspace_cm(minimum_cm))
+         lines.append("")
+     lines.append("\\vspace*{\\fill}")
+-    lines.append("")
+-    lines.append("\\hrule")
+ 
+ 
+ def _append_fill_page_ruled_space(lines: list[str], *, line_count: int = 6) -> None:
+     if line_count <= 0:
+         return
+     lines.append("")
++    line_count = max(
++        1,
++        (line_count * RESPONSE_LINE_MULTIPLIER_NUMERATOR + RESPONSE_LINE_MULTIPLIER_DENOMINATOR - 1)
++        // RESPONSE_LINE_MULTIPLIER_DENOMINATOR,
++    )
+     for index in range(line_count):
+         lines.append(r"\noindent\rule{\linewidth}{0.4pt}")
+         if index < line_count - 1:
+-            lines.extend(["", r"\vspace*{\fill}", ""])
++            _append_spacing_gap(lines, "response_line_gap_standard")
++
++
++def _lengthen_consolidation_blanks(text: str) -> str:
++    return re.sub(r"_{5,}", lambda match: "_" * max(len(match.group(0)) * 3, 30), text)
+ 
+ 
+ def _fixed_v3_title(section_key: str) -> str:
+@@ -2493,16 +2602,38 @@ def _normalized_source_location(text: Any) -> str:
+     return value
+ 
+ 
+-def _render_anchor_line(text: Any, location: Any) -> str:
+-    phrase = str(text or "").strip()
++def _quote_anchor_fragment(text: Any) -> str:
++    phrase = re.sub(r"\s+", " ", str(text or "").strip()).strip(" .,;:")
++    if not phrase:
++        return ""
++    return f"“(...) {phrase} (...)”"
++
++
++def _source_passage_quote_text(text: Any) -> str:
++    passage = re.sub(r"\s+", " ", str(text or "").strip()).strip()
++    if not passage:
++        return ""
++    passage = passage.strip("\"'“”‘’")
++    starts_mid_sentence = bool(re.match(r"^[a-zæøå]", passage))
++    ends_mid_sentence = not bool(re.search(r"[.!?]([\"'”’)\]]*)$", passage))
++    if starts_mid_sentence and not passage.startswith("(...)"):
++        passage = f"(...) {passage}"
++    if ends_mid_sentence and not passage.endswith("(...)"):
++        passage = passage.rstrip(" .") + " (...)"
++    return f"“{passage}”"
++
++
++def _render_source_passage_block(text: Any, location: Any) -> str:
++    quote_text = _source_passage_quote_text(text)
+     normalized_location = _normalized_source_location(location)
+-    if phrase and normalized_location:
+-        return f"{_md_italic(phrase)} | {_md_mono(normalized_location)}"
+-    if phrase:
+-        return _md_italic(phrase)
+-    if normalized_location:
++    if not quote_text and normalized_location:
+         return _md_mono(normalized_location)
+-    return ""
++    if not quote_text:
++        return ""
++    lines = [f"> {quote_text}"]
++    if normalized_location:
++        lines.extend([">", f"> {_md_mono(normalized_location)}"])
++    return "\n".join(lines)
+ 
+ 
+ def _style_reading_guide_paragraph(paragraph: str, index: int) -> str:
+@@ -2558,22 +2689,12 @@ def _exam_bridge_render_enabled(artifact: dict[str, Any]) -> bool:
+ 
+ 
+ def _check_prefix(artifact: dict[str, Any]) -> str:
+-    return f"{COMPLETION_MARKER_TEXT} " if _completion_markers_enabled(artifact) else ""
++    del artifact
++    return ""
+ 
+ 
+ def _append_completion_footer(lines: list[str], artifact: dict[str, Any], labels: list[str]) -> None:
+-    if not _completion_markers_enabled(artifact):
+-        return
+-    clean_labels = [str(label).strip() for label in labels if str(label).strip()]
+-    if not clean_labels:
+-        return
+-    _append_spacing_gap(lines, "completion_block_gap")
+-    for index, label in enumerate(clean_labels, start=1):
+-        lines.append(f"{COMPLETION_MARKER_TEXT} {label}")
+-        if index < len(clean_labels):
+-            _append_spacing_gap(lines, "completion_item_gap")
+-        else:
+-            lines.append("")
++    del lines, artifact, labels
+ 
+ 
+ def validate_v2_scaffold_payload(payload: dict[str, Any]) -> dict[str, Any]:
+@@ -3092,8 +3213,13 @@ def call_json_generator(
+     source_paths: list[Path],
+     max_output_tokens: int,
+     response_json_schema: dict[str, Any] | None,
++    generation_stats: dict[str, Any] | None = None,
+ ) -> dict[str, Any]:
+     if json_generator is not None:
++        if generation_stats is not None:
++            generation_stats["attempt_count"] = 1
++            generation_stats.setdefault("transient_error_count", 0)
++            generation_stats.setdefault("last_transient_error", "")
+         return json_generator(
+             system_instruction=system_instruction,
+             user_prompt=user_prompt,
+@@ -3103,7 +3229,13 @@ def call_json_generator(
+         )
+     active_backend = backend or make_gemini_backend(model=model)
+     last_exc: Exception | None = None
++    if generation_stats is not None:
++        generation_stats["attempt_count"] = 0
++        generation_stats["transient_error_count"] = 0
++        generation_stats["last_transient_error"] = ""
+     for attempt, delay_seconds in enumerate((0, *TRANSIENT_GENERATION_RETRY_DELAYS_SECONDS), start=1):
++        if generation_stats is not None:
++            generation_stats["attempt_count"] = attempt
+         if delay_seconds:
+             print(
+                 f"[printout_engine] retrying transient Gemini generation failure in {delay_seconds}s (attempt {attempt})",
+@@ -3124,6 +3256,9 @@ def call_json_generator(
+             last_exc = exc
+             if not _is_retryable_generation_error(exc) or attempt >= len(TRANSIENT_GENERATION_RETRY_DELAYS_SECONDS) + 1:
+                 raise
++            if generation_stats is not None:
++                generation_stats["transient_error_count"] = int(generation_stats.get("transient_error_count") or 0) + 1
++                generation_stats["last_transient_error"] = str(exc)
+             print(
+                 f"[printout_engine] transient Gemini generation failure on attempt {attempt}: {exc}",
+                 file=sys.stderr,
+@@ -3135,6 +3270,13 @@ def call_json_generator(
+     raise PrintoutError("call_json_generator exited without a result")
+ 
+ 
++def _sanitized_generation_error(exc: Exception) -> str:
++    text = re.sub(r"\s+", " ", str(exc or "").strip())
++    text = re.sub(r"AIza[0-9A-Za-z_-]{20,}", "[redacted-google-api-key]", text)
++    text = re.sub(r"sk-[0-9A-Za-z_-]{20,}", "[redacted-openai-api-key]", text)
++    return text[:500]
++
++
+ def build_printout_for_source(
+     *,
+     repo_root: Path,
+@@ -3179,21 +3321,50 @@ def build_printout_for_source(
+         legacy_printout_dir=legacy_printout_dir,
+         legacy_scaffolding_dir=legacy_scaffolding_dir,
+     )
+-    json_path = artifact_json_path_for_output_dir(output_root, source, out_dir)
+-    existing_json_path = _find_existing_artifact_json(output_root, source, out_dir)
++    json_path = artifact_json_path_for_output_dir(
++        output_root,
++        source,
++        out_dir,
++        provider=generation_provider,
++        model=model,
++    )
++    existing_json_path = _find_existing_artifact_json(
++        output_root,
++        source,
++        out_dir,
++        provider=generation_provider,
++        model=model,
++    )
+     if rerender_existing and not force and existing_json_path is None:
+         raise PrintoutError(f"existing printout JSON not found for rerender: {json_path}")
++    if existing_json_path is not None and not force:
++        candidate_existing_artifact = read_json(existing_json_path)
++        if _is_seeded_review_artifact(candidate_existing_artifact):
++            raise PrintoutError(
++                f"existing review candidate is seeded and invalid for reuse: {source_id}. "
++                "Generate a fresh from-scratch candidate with --force."
++            )
++        if not _artifact_generator_matches(candidate_existing_artifact, provider=generation_provider, model=model):
++            existing_json_path = None
++    if rerender_existing and not force and existing_json_path is None:
++        raise PrintoutError(f"matching existing printout JSON not found for rerender: {json_path}")
+     if existing_json_path is not None and not force:
+         existing_artifact = read_json(existing_json_path)
+-        existing_pdf_paths = _existing_pdf_paths_for_artifact(out_dir, existing_artifact)
+-        should_auto_rerender_legacy = existing_json_path.resolve() != json_path.resolve() and not existing_pdf_paths
++        expected_pdf_stems = _expected_pdf_stems_for_artifact(existing_artifact)
++        existing_pdf_paths = _existing_pdf_paths_for_artifact(out_dir, existing_artifact, stems=expected_pdf_stems)
++        has_expected_pdfs = len(existing_pdf_paths) == len(expected_pdf_stems)
++        should_auto_rerender_legacy = existing_json_path.resolve() != json_path.resolve() and not has_expected_pdfs
++        should_auto_rerender_incomplete = render_pdf and not has_expected_pdfs
+         if _is_seeded_review_artifact(existing_artifact):
+             raise PrintoutError(
+                 f"existing review candidate is seeded and invalid for reuse: {source_id}. "
+                 "Generate a fresh from-scratch candidate with --force."
+             )
+-        if rerender_existing or should_auto_rerender_legacy:
++        if rerender_existing or should_auto_rerender_legacy or should_auto_rerender_incomplete:
+             artifact = existing_artifact
++            artifact_source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
++            artifact_source["reading_title"] = _reading_title_from_source(artifact_source)
++            artifact["source"] = artifact_source
+             existing_source_card = read_json(card_path) if card_path.exists() else {}
+             length_budget = build_printout_length_budget(
+                 source=artifact.get("source") if isinstance(artifact.get("source"), dict) else source,
+@@ -3221,11 +3392,11 @@ def build_printout_for_source(
+                 artifact["scaffolds"] = validate_v2_scaffold_payload(
+                     normalize_v2_scaffold_payload(artifact.get("scaffolds", {}))
+                 )
++            rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
+             write_json(json_path, artifact)
+             legacy_json_in_output = _legacy_json_path_in_output_dir(out_dir)
+             if legacy_json_in_output.exists():
+                 legacy_json_in_output.unlink()
+-            rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
+             _cleanup_legacy_review_dirs(
+                 output_root=output_root,
+                 legacy_dirs=[legacy_printout_dir, legacy_scaffolding_dir],
+@@ -3248,23 +3419,36 @@ def build_printout_for_source(
+ 
+     source_card = read_json(card_path)
+     lecture_key = str(source.get("lecture_key") or source_card.get("source", {}).get("lecture_key") or "").strip()
++    source_card_source = source_card.get("source") if isinstance(source_card.get("source"), dict) else {}
++    reading_title = _reading_title_from_source({**source_card_source, **source})
+     length_budget = build_printout_length_budget(source=source, source_card=source_card)
+-    response = call_json_generator(
+-        backend=backend,
+-        json_generator=json_generator,
+-        model=model,
+-        system_instruction=system_instruction or printout_system_instruction(),
+-        user_prompt=(user_prompt_builder or printout_user_prompt)(
+-            source=source,
+-            source_card=source_card,
+-            lecture_context=_compact_lecture_context(revised_lecture_substrate_dir, lecture_key),
+-            course_context=_compact_course_context(course_synthesis_path),
+-            length_budget=length_budget,
+-        ),
+-        source_paths=source_paths,
+-        max_output_tokens=32768,
+-        response_json_schema=None,
+-    )
++    generation_stats: dict[str, Any] = {}
++    try:
++        response = call_json_generator(
++            backend=backend,
++            json_generator=json_generator,
++            model=model,
++            system_instruction=system_instruction or printout_system_instruction(),
++            user_prompt=(user_prompt_builder or printout_user_prompt)(
++                source=source,
++                source_card=source_card,
++                lecture_context=_compact_lecture_context(revised_lecture_substrate_dir, lecture_key),
++                course_context=_compact_course_context(course_synthesis_path),
++                length_budget=length_budget,
++            ),
++            source_paths=source_paths,
++            max_output_tokens=32768,
++            response_json_schema=None,
++            generation_stats=generation_stats,
++        )
++    except Exception as exc:
++        generation_stats["last_error_kind"] = type(exc).__name__
++        generation_stats["last_error_summary"] = _sanitized_generation_error(exc)
++        raise GenerationFailure(
++            f"generation failed after {int(generation_stats.get('attempt_count') or 0)} attempt(s): "
++            f"{generation_stats['last_error_summary']}",
++            generation_stats=generation_stats,
++        ) from exc
+     validate_exam_bridge = bool((variant_metadata or {}).get(RENDER_EXAM_BRIDGE_KEY, False))
+     printouts = validate_printout_payload(
+         normalize_scaffold_payload(response, length_budget=length_budget),
+@@ -3281,6 +3465,7 @@ def build_printout_for_source(
+             "model": model,
+             "prompt_version": prompt_version,
+             "generation_config": generation_config_metadata_override or printout_generation_config_metadata(),
++            "run": generation_stats,
+         },
+         "provenance": {
+             "source_file": recursive.sha256_file(source_paths[0])
+@@ -3295,6 +3480,7 @@ def build_printout_for_source(
+             "source_id": source_id,
+             "lecture_key": lecture_key,
+             "title": str(source.get("title") or ""),
++            "reading_title": reading_title,
+             "source_family": str(source.get("source_family") or ""),
+             "evidence_origin": str(source.get("evidence_origin") or ""),
+             "length_band": str(source.get("length_band") or source_card.get("source", {}).get("length_band") or ""),
+@@ -3311,11 +3497,11 @@ def build_printout_for_source(
+     }
+     if variant_metadata:
+         artifact["variant"] = dict(variant_metadata)
++    rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
+     write_json(json_path, artifact)
+     legacy_json_in_output = _legacy_json_path_in_output_dir(out_dir)
+     if legacy_json_in_output.exists():
+         legacy_json_in_output.unlink()
+-    rendered = render_printout_files(artifact=artifact, output_dir=out_dir, render_pdf=render_pdf)
+     _cleanup_legacy_review_dirs(
+         output_root=output_root,
+         legacy_dirs=[legacy_printout_dir, legacy_scaffolding_dir],
+@@ -3327,6 +3513,7 @@ def build_printout_for_source(
+         "json_path": str(json_path),
+         "markdown_paths": rendered["markdown_paths"],
+         "pdf_paths": rendered["pdf_paths"],
++        "generation_stats": generation_stats,
+     }
+ 
+ 
+@@ -3355,6 +3542,15 @@ def _generator_model_slug(artifact: dict[str, Any]) -> str:
+     return _filename_slug(generator.get("model") or "unknown-model")
+ 
+ 
++def _artifact_generator_matches(artifact: dict[str, Any], *, provider: str, model: str) -> bool:
++    generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
++    artifact_provider = str(generator.get("provider") or "").strip()
++    artifact_model = str(generator.get("model") or "").strip()
++    if not artifact_provider and not artifact_model:
++        return True
++    return _filename_slug(artifact_provider) == _filename_slug(provider) and _filename_slug(artifact_model) == _filename_slug(model)
++
++
+ def _review_pdf_prefix(artifact: dict[str, Any]) -> str:
+     source_id = _artifact_source_id(artifact, fallback_output_dir=Path("source"))
+     return f"{_generator_provider_slug(artifact)}-{_generator_model_slug(artifact)}--{_filename_slug(source_id)}"
+@@ -3372,6 +3568,14 @@ def _artifact_pdf_paths_for_stems(output_dir: Path, artifact: dict[str, Any], st
+     return [_review_pdf_path(output_dir, artifact, stem) for stem in sorted(stems)]
+ 
+ 
++def _expected_pdf_stems_for_artifact(artifact: dict[str, Any]) -> set[str]:
++    if _artifact_schema_version(artifact) < SCHEMA_VERSION:
++        return set(V2_RENDER_STEMS)
++    if _exam_bridge_render_enabled(artifact):
++        return set(V3_RENDER_STEMS)
++    return {stem for stem in V3_RENDER_STEMS if stem != "05-exam-bridge"}
++
++
+ def _existing_pdf_paths_for_artifact(
+     output_dir: Path,
+     artifact: dict[str, Any],
+@@ -3400,9 +3604,41 @@ def _artifact_source_id(artifact: dict[str, Any], *, fallback_output_dir: Path)
+ 
+ def _internal_markdown_dir_for_artifact(output_dir: Path, artifact: dict[str, Any]) -> Path:
+     source_id = _artifact_source_id(artifact, fallback_output_dir=output_dir)
++    generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
++    provider = str(generator.get("provider") or "").strip()
++    model = str(generator.get("model") or "").strip()
++    if provider and model:
++        return artifact_dir_for_source_id(
++            output_dir,
++            source_id=source_id,
++            provider=provider,
++            model=model,
++        ) / "rendered_markdown"
+     return output_dir / INTERNAL_REVIEW_ARTIFACT_DIRNAME / source_id / "rendered_markdown"
+ 
+ 
++def _internal_pdf_staging_parent_for_artifact(output_dir: Path, artifact: dict[str, Any]) -> Path:
++    source_id = _artifact_source_id(artifact, fallback_output_dir=output_dir)
++    generator = artifact.get("generator") if isinstance(artifact.get("generator"), dict) else {}
++    provider = str(generator.get("provider") or "").strip()
++    model = str(generator.get("model") or "").strip()
++    if provider and model:
++        return artifact_dir_for_source_id(
++            output_dir,
++            source_id=source_id,
++            provider=provider,
++            model=model,
++        ) / PDF_STAGING_DIRNAME
++    return output_dir / INTERNAL_REVIEW_ARTIFACT_DIRNAME / source_id / PDF_STAGING_DIRNAME
++
++
++def _remove_empty_dir(path: Path) -> None:
++    try:
++        path.rmdir()
++    except OSError:
++        return
++
++
+ def _remove_output_pdf_files(output_dir: Path, artifact: dict[str, Any], *, stems: set[str] | None = None) -> None:
+     if not output_dir.exists():
+         return
+@@ -3456,6 +3692,41 @@ def _artifact_schema_version(artifact: dict[str, Any]) -> int:
+         return 0
+ 
+ 
++def _validate_staged_pdf(path: Path) -> None:
++    if not path.exists() or not path.is_file():
++        raise PrintoutError(f"staged PDF was not created: {path}")
++    if path.stat().st_size <= 0:
++        raise PrintoutError(f"staged PDF is empty: {path}")
++
++
++def _commit_staged_pdf_bundle(
++    *,
++    output_dir: Path,
++    artifact: dict[str, Any],
++    staged_pdf_paths: dict[str, Path],
++    expected_stems: set[str],
++    known_pdf_stems: set[str],
++) -> list[str]:
++    missing_stems = sorted(expected_stems - set(staged_pdf_paths))
++    if missing_stems:
++        raise PrintoutError("rendered PDF bundle is incomplete: missing " + ", ".join(missing_stems))
++    for stem in sorted(expected_stems):
++        _validate_staged_pdf(staged_pdf_paths[stem])
++
++    output_dir.mkdir(parents=True, exist_ok=True)
++    pdf_paths: list[str] = []
++    for stem in sorted(expected_stems):
++        target_path = _review_pdf_path(output_dir, artifact, stem)
++        staged_pdf_paths[stem].replace(target_path)
++        pdf_paths.append(str(target_path))
++
++    stale_stems = known_pdf_stems - expected_stems
++    for path in _artifact_pdf_paths_for_stems(output_dir, artifact, stale_stems):
++        if path.exists() and path.is_file():
++            path.unlink()
++    return pdf_paths
++
++
+ def render_printout_files(*, artifact: dict[str, Any], output_dir: Path, render_pdf: bool = True) -> dict[str, list[str]]:
+     if _artifact_schema_version(artifact) < SCHEMA_VERSION:
+         return render_v2_printout_files(artifact=artifact, output_dir=output_dir, render_pdf=render_pdf)
+@@ -3478,14 +3749,27 @@ def render_v2_printout_files(*, artifact: dict[str, Any], output_dir: Path, rend
+         preflight_render_toolchain()
+         _remove_output_markdown_files(output_dir)
+         _remove_output_json_files(output_dir)
+-        with tempfile.TemporaryDirectory(prefix="printout-md-") as temp_dir_str:
+-            temp_dir = Path(temp_dir_str)
+-            for stem, markdown in markdown_items:
+-                markdown_path = temp_dir / f"{stem}.md"
+-                write_text(markdown_path, markdown)
+-                pdf_path = _review_pdf_path(output_dir, artifact, stem)
+-                markdown_to_pdf(markdown_path, pdf_path)
+-                pdf_paths.append(str(pdf_path))
++        staging_parent = _internal_pdf_staging_parent_for_artifact(output_dir, artifact)
++        staging_parent.mkdir(parents=True, exist_ok=True)
++        try:
++            with tempfile.TemporaryDirectory(prefix="pdf-bundle-", dir=staging_parent) as temp_dir_str:
++                temp_dir = Path(temp_dir_str)
++                staged_pdf_paths: dict[str, Path] = {}
++                for stem, markdown in markdown_items:
++                    markdown_path = temp_dir / f"{stem}.md"
++                    write_text(markdown_path, markdown)
++                    pdf_path = temp_dir / _review_pdf_filename(artifact, stem)
++                    markdown_to_pdf(markdown_path, pdf_path)
++                    staged_pdf_paths[stem] = pdf_path
++                pdf_paths = _commit_staged_pdf_bundle(
++                    output_dir=output_dir,
++                    artifact=artifact,
++                    staged_pdf_paths=staged_pdf_paths,
++                    expected_stems={stem for stem, _ in markdown_items},
++                    known_pdf_stems=known_pdf_stems,
++                )
++        finally:
++            _remove_empty_dir(staging_parent)
+     else:
+         _remove_output_markdown_files(output_dir)
+         _remove_output_json_files(output_dir)
+@@ -3517,20 +3801,33 @@ def render_v3_printout_files(*, artifact: dict[str, Any], output_dir: Path, rend
+     pdf_paths: list[str] = []
+     expected_stems = {stem for stem, _ in markdown_items}
+     known_pdf_stems = expected_stems | set(V3_RENDER_STEMS) | set(V3_LEGACY_RENDER_STEMS)
+-    _remove_stale_v3_output_files(output_dir, artifact, expected_stems=expected_stems)
+     if render_pdf:
+         preflight_render_toolchain()
+         _remove_output_markdown_files(output_dir)
+         _remove_output_json_files(output_dir)
+-        with tempfile.TemporaryDirectory(prefix="printout-md-") as temp_dir_str:
+-            temp_dir = Path(temp_dir_str)
+-            for stem, markdown in markdown_items:
+-                markdown_path = temp_dir / f"{stem}.md"
+-                write_text(markdown_path, markdown)
+-                pdf_path = _review_pdf_path(output_dir, artifact, stem)
+-                markdown_to_pdf(markdown_path, pdf_path)
+-                pdf_paths.append(str(pdf_path))
++        staging_parent = _internal_pdf_staging_parent_for_artifact(output_dir, artifact)
++        staging_parent.mkdir(parents=True, exist_ok=True)
++        try:
++            with tempfile.TemporaryDirectory(prefix="pdf-bundle-", dir=staging_parent) as temp_dir_str:
++                temp_dir = Path(temp_dir_str)
++                staged_pdf_paths: dict[str, Path] = {}
++                for stem, markdown in markdown_items:
++                    markdown_path = temp_dir / f"{stem}.md"
++                    write_text(markdown_path, markdown)
++                    pdf_path = temp_dir / _review_pdf_filename(artifact, stem)
++                    markdown_to_pdf(markdown_path, pdf_path)
++                    staged_pdf_paths[stem] = pdf_path
++                pdf_paths = _commit_staged_pdf_bundle(
++                    output_dir=output_dir,
++                    artifact=artifact,
++                    staged_pdf_paths=staged_pdf_paths,
++                    expected_stems=expected_stems,
++                    known_pdf_stems=known_pdf_stems,
++                )
++        finally:
++            _remove_empty_dir(staging_parent)
+     else:
++        _remove_stale_v3_output_files(output_dir, artifact, expected_stems=expected_stems)
+         _remove_output_markdown_files(output_dir)
+         _remove_output_json_files(output_dir)
+         _remove_output_pdf_files(output_dir, artifact, stems=known_pdf_stems)
+@@ -3553,9 +3850,24 @@ def render_v3_printout_files_old_removed_marker() -> None:
+     return None
+ 
+ 
++def _source_id_from_source(source: dict[str, Any]) -> str:
++    return str(source.get("source_id") or "").strip()
++
++
++def _reading_title_from_source(source: dict[str, Any]) -> str:
++    source_id = _source_id_from_source(source)
++    explicit_title = (
++        source.get("reading_title")
++        or source.get("document_title")
++        or source.get("full_title")
++        or READING_TITLE_OVERRIDES.get(source_id)
++    )
++    return str(explicit_title or source.get("title") or "Ukendt kilde").strip()
++
++
+ def _source_heading(artifact: dict[str, Any]) -> str:
+     source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+-    title = str(source.get("title") or "Ukendt kilde").strip()
++    title = _reading_title_from_source(source)
+     lecture_key = str(source.get("lecture_key") or "").strip()
+     return f"**Kilde:** {title}\n\n**Forelæsning:** {lecture_key}"
+ 
+@@ -3586,7 +3898,7 @@ def _compendium_cover_items(artifact: dict[str, Any]) -> list[str]:
+ 
+ def render_compendium_cover_markdown(artifact: dict[str, Any]) -> str:
+     source = artifact.get("source") if isinstance(artifact.get("source"), dict) else {}
+-    source_title = str(source.get("title") or "Ukendt kilde").strip()
++    source_title = _reading_title_from_source(source)
+     lecture_key = str(source.get("lecture_key") or "").strip()
+     lecture_label = _format_margin_lecture_key(lecture_key)
+     contents = _compendium_cover_items(artifact)
+@@ -3600,8 +3912,8 @@ def render_compendium_cover_markdown(artifact: dict[str, Any]) -> str:
+         "",
+         r"\begin{center}",
+         r"{\small\texttt{personlighedspsykologi}}\\[0.55cm]",
+-        rf"{{\Huge\textbf{{{_latex_escape_inline(_fixed_v3_title('cover'))}}}}}\\[0.45cm]",
+-        rf"{{\Large\textbf{{{_latex_escape_inline(source_title)}}}}}\\[0.28cm]",
++        rf"{{\Large\textbf{{{_latex_escape_inline(_fixed_v3_title('cover'))}}}}}\\[0.32cm]",
++        rf"\parbox{{0.88\linewidth}}{{\centering\Huge\textbf{{{_latex_escape_inline(source_title)}}}}}\\[0.42cm]",
+         rf"{{\normalsize\texttt{{{_latex_escape_inline(lecture_label)}}}}}\\[1.00cm]",
+         r"\rule{0.52\linewidth}{0.6pt}\\[0.70cm]",
+     ]
+@@ -3644,20 +3956,17 @@ def render_abridged_reader_markdown(artifact: dict[str, Any], reader: dict[str,
+             lines.extend([paragraph, ""])
+         key_points = _as_strings(section.get("key_points"))
+         if key_points:
++            lines.extend([_md_bold("Kort sagt:"), ""])
+             for item in key_points:
+                 lines.append(f"- {item}")
+             lines.append("")
+-        quote_anchors = _as_dicts(section.get("quote_anchors"))
+-        if quote_anchors:
+-            for anchor in quote_anchors:
+-                anchor_line = _render_anchor_line(anchor.get("phrase"), anchor.get("source_location"))
+-                if anchor_line:
+-                    lines.extend([anchor_line, ""])
++        # quote_anchors are search metadata. Showing them as standalone quotes
++        # makes short fragments look like contextless source citations.
+         source_passages = _as_dicts(section.get("source_passages"))
+         for passage in source_passages:
+-            passage_line = _render_anchor_line(passage.get("passage"), passage.get("source_location"))
+-            if passage_line:
+-                lines.extend([passage_line, ""])
++            passage_block = _render_source_passage_block(passage.get("passage"), passage.get("source_location"))
++            if passage_block:
++                lines.extend([passage_block, ""])
+     _append_completion_footer(lines, artifact, ["hele teksten læst"])
+     return "\n".join(lines)
+ 
+@@ -3705,26 +4014,35 @@ def _diagram_space_cm(hint: str, diagram_count: int) -> float:
+ 
+ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[str, Any]) -> str:
+     lines = [f"# {_fixed_v3_title('consolidation_sheet')}", "", _source_heading(artifact), ""]
+-    for sentence in _as_strings(consolidation.get("overview")):
++    overview = _as_strings(consolidation.get("overview"))
++    if overview:
++        lines.extend([_md_bold("Overblik"), ""])
++    for sentence in overview:
+         lines.append(f"- {sentence}")
+-    lines.append("")
+-    for index, item in enumerate(_as_dicts(consolidation.get("fill_in_sentences")), start=1):
++    fill_in_items = _as_dicts(consolidation.get("fill_in_sentences"))
++    if fill_in_items:
++        lines.extend(["", _md_bold("Udfyld"), ""])
++    for index, item in enumerate(fill_in_items, start=1):
+         number = _number_label(item, index)
+         sentence = str(item.get("sentence") or "").strip()
+-        lines.append(f"{number}. {sentence}")
++        sentence = _lengthen_consolidation_blanks(sentence)
++        lines.append(f"{_md_bold(number + '.')} {sentence}")
+         lines.append("")
+-    lines.extend(["---", ""])
+     diagram_items = _as_dicts(consolidation.get("diagram_tasks"))
++    if diagram_items:
++        _append_spacing_gap(lines, "guide_paragraph_gap")
++        lines.extend([_md_bold("Tegn"), ""])
+     diagram_count = len(diagram_items)
+     last_index = len(diagram_items)
+     for index, item in enumerate(diagram_items, start=1):
+         number = _number_label(item, index)
+         dedicated_last_page = diagram_count >= 2 and index == last_index
+         if dedicated_last_page:
+-            lines.extend(["", r"\newpage", ""])
+-        lines.append(f"{number}. {str(item.get('task') or '').strip()}")
++            lines.extend(["", r"\newpage", "", _md_bold("Tegn"), ""])
++        lines.append(f"{_md_bold('Diagram ' + number + '.')} {str(item.get('task') or '').strip()}")
+         elements = _as_strings(item.get("required_elements"))
+         if elements:
++            lines.append("")
+             for element in elements:
+                 lines.append(f"- {element}")
+         hint = str(item.get("blank_space_hint") or "").strip()
+@@ -3738,7 +4056,8 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
+                 minimum_cm=max(space_cm, _spacing_cm("diagram_dedicated_page_floor")),
+             )
+         else:
+-            lines.extend([_vspace_cm(space_cm), "", "\\hrule"])
++            inline_space_cm = min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
++            lines.append(_vspace_cm(inline_space_cm))
+         lines.append("")
+     _append_completion_footer(lines, artifact, ["blanks udfyldt", "diagrammer lavet", "svar tjekket"])
+     return "\n".join(lines)
+@@ -3804,12 +4123,17 @@ def render_abridged_markdown(artifact: dict[str, Any], guide: dict[str, Any]) ->
+         lines.append(f"   - Hvorfor: {why_it_matters}")
+         lines.append(f"   - Stop når: {stop_after}")
+         lines.append("")
+-    lines.extend(["", "## Nøglecitater at finde", ""])
++    lines.extend(["", "## Nøgleformuleringer at finde", ""])
+     for item in _as_dicts(guide.get("key_quote_targets")):
+         target = str(item.get("target") or "").strip()
+         why = str(item.get("why") or "").strip()
+         where_to_look = str(item.get("where_to_look") or "").strip()
+-        lines.append(f"- **{target}**: {why}")
++        fragment = _quote_anchor_fragment(target)
++        if not fragment:
++            continue
++        lines.append(f"- **Find formuleringen:** {fragment}")
++        if why:
++            lines.append(f"  - Hvorfor: {why}")
+         if where_to_look:
+             lines.append(f"  - Led efter: {where_to_look}")
+     stuck_items = _as_strings(guide.get("do_not_get_stuck_on"))
+@@ -3832,7 +4156,7 @@ def render_unit_test_markdown(artifact: dict[str, Any], suite: dict[str, Any]) -
+         where_to_look = str(item.get("where_to_look") or "").strip()
+         answer_shape = str(item.get("answer_shape") or "kort svar").strip()
+         done_signal = str(item.get("done_signal") or "").strip()
+-        lines.append(f"{number}. [ ] {question}")
++        lines.append(f"{number}. {question}")
+         if where_to_look:
+             lines.append(f"   - Led efter: {where_to_look}")
+         lines.append(f"   - Svar ({answer_shape}): ______________________________")
+@@ -3877,8 +4201,6 @@ def render_cloze_markdown(artifact: dict[str, Any], cloze: dict[str, Any]) -> st
+         lines.append("")
+         lines.append(_vspace_cm(space_cm))
+         lines.append("")
+-        lines.append("\\hrule")
+-        lines.append("")
+     return "\n".join(lines)
+ 
+ 
+diff --git a/tests/test_printout_review_printout_engine.py b/tests/test_printout_review_printout_engine.py
+index 75dde76..e191019 100644
+--- a/tests/test_printout_review_printout_engine.py
++++ b/tests/test_printout_review_printout_engine.py
+@@ -311,6 +311,39 @@ def test_review_pdf_filename_includes_provider_model_and_source_id():
+     )
+ 
+ 
++def test_renderers_prefer_reading_title_over_citation_label():
++    artifact = {
++        "source": {
++            "source_id": "w01l1-lewis-1999-295c67e3",
++            "title": "Lewis (1999)",
++            "reading_title": "Issues in the Study of Personality Development",
++            "lecture_key": "W01L1",
++        },
++        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
++    }
++
++    cover_markdown = printout_engine.render_compendium_cover_markdown(artifact)
++    guide_markdown = printout_engine.render_reading_guide_markdown(
++        artifact,
++        {"teaser_paragraphs": ["En kort teaser om personlighedsudvikling."]},
++    )
++
++    assert "Issues in the Study of Personality Development" in cover_markdown
++    assert "Issues in the Study of Personality Development" in guide_markdown
++    assert "Lewis (1999)" not in cover_markdown
++    assert "**Kilde:** Lewis (1999)" not in guide_markdown
++    assert "<!-- printout-source: Issues in the Study of Personality Development -->" in cover_markdown
++
++
++def test_known_review_source_ids_have_reading_title_overrides():
++    assert (
++        printout_engine._reading_title_from_source(
++            {"source_id": "w09l1-dreier-1999-35da58b5", "title": "Dreier (1999)"}
++        )
++        == "Personal Trajectories of Participation across Contexts of Social Practice"
++    )
++
++
+ def test_printout_engine_accepts_prompt_overrides(tmp_path):
+     repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
+     calls = []
+@@ -348,10 +381,17 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
+     artifact = json.loads(Path(result["json_path"]).read_text(encoding="utf-8"))
+     assert artifact["generator"]["provider"] == "gemini"
+     assert artifact["generator"]["prompt_version"] == "problem-driven-v1"
++    assert artifact["source"]["reading_title"] == "Phenomenology source"
+     assert artifact["variant"]["variant_key"] == "problem_driven_v1"
+     assert artifact["variant"]["render_completion_markers"] is True
+     assert result["output_dir"].endswith("/output")
+-    assert result["json_path"].endswith("/output/.scaffolding/source-1/reading-scaffolds.json")
++    expected_json_path = printout_engine.artifact_json_path_for_source_id(
++        output_root,
++        source_id="source-1",
++        provider="gemini",
++        model=printout_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL,
++    )
++    assert Path(result["json_path"]) == expected_json_path
+     assert artifact["printouts"]["reading_guide"]["title"] == "Reading Guide"
+     assert artifact["printouts"]["abridged_reader"]["title"] == "Abridged Version"
+     assert artifact["printouts"]["active_reading"]["title"] == "Active Reading"
+@@ -359,7 +399,8 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
+     assert artifact["printouts"]["exam_bridge"]["title"] == "Exam Bridge"
+     assert artifact["variant"]["render_exam_bridge"] is False
+     assert len(result["markdown_paths"]) == 5
+-    assert all("/.scaffolding/source-1/rendered_markdown/" in path for path in result["markdown_paths"])
++    assert all("/.scaffolding/artifacts/gemini-" in path for path in result["markdown_paths"])
++    assert all("/source-1/rendered_markdown/" in path for path in result["markdown_paths"])
+     output_dir = Path(result["output_dir"])
+     assert not any(path.suffix == ".md" for path in output_dir.glob("*"))
+     cover_markdown = Path(result["markdown_paths"][0]).read_text(encoding="utf-8")
+@@ -372,22 +413,30 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
+     assert "Active Reading" in cover_markdown
+     assert "Abridged Version" in cover_markdown
+     assert "Consolidation Sheet" in cover_markdown
++    assert r"\fbox" not in cover_markdown
+     assert guide_markdown.startswith("# Reading Guide")
+     assert abridged_markdown.startswith("# Abridged Version")
+     assert active_markdown.startswith("# Active Reading")
+     assert consolidation_markdown.startswith("# Consolidation Sheet")
+     assert "**Problemet.**" not in guide_markdown
+-    assert "[ ] læst" in guide_markdown
++    assert "[ ]" not in guide_markdown
+     assert printout_engine._vspace_key("guide_paragraph_gap") in guide_markdown
+-    assert "## [ ] 1. Argumenttrin 1" in abridged_markdown
++    assert "## 1. Argumenttrin 1" in abridged_markdown
+     assert "`afsnit 1`" in abridged_markdown
+-    assert "*bevidsthed om noget* | `afsnit 1`" in abridged_markdown
+-    assert "[ ] **1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
+-    assert "[ ] blanks udfyldt" in consolidation_markdown
+-    assert "\\vspace*{\\fill}" in active_markdown
++    assert "*bevidsthed om noget* | `afsnit 1`" not in abridged_markdown
++    assert "**Kort sagt:**" in abridged_markdown
++    assert "> “Bevidsthed er altid rettet mod noget, og den kan ikke forstås som en lukket beholder.”" in abridged_markdown
++    assert "> `afsnit 1`" in abridged_markdown
++    assert "**1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
++    assert "[ ]" not in active_markdown
++    assert "[ ]" not in consolidation_markdown
++    assert "**Overblik**" in consolidation_markdown
++    assert "**Udfyld**" in consolidation_markdown
++    assert "**Tegn**" in consolidation_markdown
++    assert "**Diagram 1.**" in consolidation_markdown
++    assert "______________________________" in consolidation_markdown
++    assert "\\vspace*{\\fill}" not in active_markdown
+     assert printout_engine._vspace_key("active_step_gap") in active_markdown
+-    assert printout_engine._vspace_key("completion_block_gap") in guide_markdown
+-    assert printout_engine._vspace_key("completion_block_gap") in consolidation_markdown
+     assert "Der er ikke enighed om, hvad personligheden er" in guide_markdown
+     assert ">" not in guide_markdown
+     assert "---" not in guide_markdown
+@@ -517,6 +566,7 @@ def test_completion_markers_can_be_disabled(tmp_path):
+     consolidation_markdown = Path(result["markdown_paths"][4]).read_text(encoding="utf-8")
+ 
+     assert "[ ]" not in cover_markdown
++    assert r"\fbox" not in cover_markdown
+     assert "[ ]" not in guide_markdown
+     assert "## [ ]" not in abridged_markdown
+     assert "[ ] **1.**" not in active_markdown
+@@ -524,6 +574,12 @@ def test_completion_markers_can_be_disabled(tmp_path):
+     assert len(result["markdown_paths"]) == 5
+ 
+ 
++def test_source_passage_renderer_marks_fragments_without_context():
++    block = printout_engine._render_source_passage_block("inherently valuable unity", "Side 6")
++
++    assert block == "> “(...) inherently valuable unity (...)”\n>\n> `s. 6`"
++
++
+ def test_exam_bridge_is_optional_at_render_time_and_removed_when_disabled(tmp_path):
+     artifact = {
+         "schema_version": printout_engine.SCHEMA_VERSION,
+@@ -650,6 +706,48 @@ def test_pdf_render_keeps_printout_output_pdf_only_and_moves_json_internal(tmp_p
+     assert Path(result["json_path"]).exists()
+ 
+ 
++def test_pdf_render_failure_keeps_existing_public_bundle_untouched(tmp_path, monkeypatch):
++    artifact = {
++        "schema_version": printout_engine.SCHEMA_VERSION,
++        "source": {"source_id": "source-1", "title": "Phenomenology source", "lecture_key": "W01L1"},
++        "generator": {"provider": "gemini", "model": "gemini-3.1-pro-preview"},
++        "variant": {"render_completion_markers": True, "render_exam_bridge": False},
++        "printouts": _valid_scaffold_response(),
++    }
++    output_dir = tmp_path / "review"
++    output_dir.mkdir(parents=True, exist_ok=True)
++    expected_stems = (
++        "00-cover",
++        "01-reading-guide",
++        "02-active-reading",
++        "03-abridged-version",
++        "04-consolidation-sheet",
++    )
++    for stem in expected_stems:
++        (output_dir / printout_engine._review_pdf_filename(artifact, stem)).write_bytes(f"old {stem}".encode())
++
++    monkeypatch.setattr(printout_engine, "preflight_render_toolchain", lambda: {})
++
++    def fake_markdown_to_pdf(markdown_path: Path, pdf_path: Path):
++        pdf_path.write_bytes(f"new {markdown_path.stem}".encode())
++        if markdown_path.stem == "03-abridged-version":
++            raise printout_engine.PrintoutError("render exploded")
++
++    monkeypatch.setattr(printout_engine, "markdown_to_pdf", fake_markdown_to_pdf)
++
++    with pytest.raises(printout_engine.PrintoutError, match="render exploded"):
++        printout_engine.render_v3_printout_files(
++            artifact=artifact,
++            output_dir=output_dir,
++            render_pdf=True,
++        )
++
++    for stem in expected_stems:
++        path = output_dir / printout_engine._review_pdf_filename(artifact, stem)
++        assert path.read_bytes() == f"old {stem}".encode()
++    assert not (output_dir / printout_engine.INTERNAL_REVIEW_ARTIFACT_DIRNAME / "source-1" / printout_engine.PDF_STAGING_DIRNAME).exists()
++
++
+ def test_preflight_render_toolchain_requires_known_binaries(monkeypatch):
+     binary_map = {
+         "pandoc": "/usr/local/bin/pandoc",
+@@ -801,13 +899,15 @@ def test_build_printout_auto_rerenders_legacy_run_artifact_into_shared_review_ro
+         revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
+         course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
+         output_root=review_root,
++        generation_provider="openai",
++        model="gpt-5.5",
+         render_pdf=True,
+     )
+ 
+     assert result["status"] == "rerendered_existing"
+     assert result["output_dir"].endswith("/review")
+     assert Path(result["json_path"]).exists()
+-    assert Path(result["json_path"]).parent == review_root / ".scaffolding" / "source-1"
++    assert Path(result["json_path"]).parent == review_root / ".scaffolding" / "artifacts" / "openai-gpt-5_5" / "source-1"
+     assert sorted(path.name for path in review_root.glob("*.pdf")) == [
+         "openai-gpt-5_5--source-1--00-cover.pdf",
+         "openai-gpt-5_5--source-1--01-reading-guide.pdf",
+@@ -909,6 +1009,7 @@ def test_pdf_wrapper_adds_margin_metadata():
+     wrapped = printout_engine._pdf_wrapped_markdown(markdown, total_pages=7)
+     assert wrapped.startswith("---\nheader-includes:")
+     assert r"\usepackage{fancyhdr}" in wrapped
++    assert rf"\AtBeginDocument{{\linespread{{{printout_engine.PDF_BODY_LINE_SPREAD}}}\selectfont}}" in wrapped
+     assert r"\newcommand{\printoutneedspace}[1]{%" in wrapped
+     assert r"\renewcommand{\section}{\printoutneedspace{6\baselineskip}\@ifstar{\printoutoldsection*}{\printoutoldsection}}" in wrapped
+     assert r"\fancyhead[L]{\printoutmarginpage}" in wrapped
+@@ -932,6 +1033,10 @@ def test_consolidation_uses_fill_for_last_diagram_page():
+         payload["consolidation_sheet"],
+     )
+     assert "\\vspace*{\\fill}" in single_diagram_markdown
++    assert "\\hrule" not in single_diagram_markdown
++    assert "---" not in single_diagram_markdown
++    assert "**Tegn**" in single_diagram_markdown
++    assert "**Diagram 1.**" in single_diagram_markdown
+ 
+     payload["consolidation_sheet"]["diagram_tasks"] = [
+         {
+@@ -953,6 +1058,12 @@ def test_consolidation_uses_fill_for_last_diagram_page():
+     )
+     assert "\\newpage" in two_diagram_markdown
+     assert "\\vspace*{\\fill}" in two_diagram_markdown
++    assert "\\hrule" not in two_diagram_markdown
++    assert "---" not in two_diagram_markdown
++    assert two_diagram_markdown.count("**Tegn**") == 2
++    assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
++    assert "\n- a" in two_diagram_markdown
++    assert printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_inline_space_ceiling")) in two_diagram_markdown
+     assert (
+         printout_engine._vspace_cm(printout_engine._spacing_cm("diagram_dedicated_page_floor"))
+         in two_diagram_markdown
+@@ -1053,8 +1164,9 @@ def test_active_reading_moves_large_final_synthesis_to_new_page():
+     ]
+     markdown = printout_engine.render_active_reading_markdown(artifact, payload["active_reading"])
+     assert "\\newpage" not in markdown
++    assert "\\vspace*{\\fill}" not in markdown
+     assert r"\printoutneedspace{14\baselineskip}" in markdown
+-    assert markdown.count("\\noindent\\rule{\\linewidth}{0.4pt}") >= 8
++    assert markdown.count("\\noindent\\rule{\\linewidth}{0.4pt}") >= 12
+ 
+ 
+ def test_normalize_scaffold_payload_repairs_source_reference_in_active_reading():
+@@ -1340,4 +1452,133 @@ def test_render_active_reading_markdown_keeps_steps_together_without_forced_fina
+ 
+     assert r"\printoutneedspace{8\baselineskip}" in markdown
+     assert r"\newpage" not in markdown
+-    assert "\\vspace*{\\fill}" in markdown
++    assert "\\vspace*{\\fill}" not in markdown
++
++
++def test_build_printout_commits_json_only_after_render_success(tmp_path, monkeypatch):
++    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
++
++    def fake_json_generator(**kwargs):
++        return _valid_scaffold_response()
++
++    def fail_render(**kwargs):
++        raise printout_engine.PrintoutError("render failed")
++
++    monkeypatch.setattr(printout_engine, "render_printout_files", fail_render)
++
++    with pytest.raises(printout_engine.PrintoutError, match="render failed"):
++        printout_engine.build_printout_for_source(
++            repo_root=repo_root,
++            subject_root=subject_root,
++            source=source,
++            source_card_dir=source_card_dir,
++            revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
++            course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
++            output_root=output_root,
++            json_generator=fake_json_generator,
++            render_pdf=True,
++        )
++
++    expected_json_path = printout_engine.artifact_json_path_for_source_id(
++        output_root,
++        source_id="source-1",
++        provider="gemini",
++        model=printout_engine.DEFAULT_GEMINI_PREPROCESSING_MODEL,
++    )
++    assert not expected_json_path.exists()
++
++
++def test_build_printout_rerenders_existing_json_when_expected_pdfs_are_missing(tmp_path, monkeypatch):
++    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
++
++    def fake_json_generator(**kwargs):
++        return _valid_scaffold_response()
++
++    first = printout_engine.build_printout_for_source(
++        repo_root=repo_root,
++        subject_root=subject_root,
++        source=source,
++        source_card_dir=source_card_dir,
++        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
++        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
++        output_root=output_root,
++        json_generator=fake_json_generator,
++        render_pdf=False,
++    )
++    assert Path(first["json_path"]).exists()
++
++    generation_calls = []
++    render_calls = []
++
++    def fail_if_generation_is_called(**kwargs):
++        generation_calls.append(kwargs)
++        raise AssertionError("generation should not be called for existing JSON rerender")
++
++    def fake_render_printout_files(*, artifact, output_dir, render_pdf=True):
++        render_calls.append(render_pdf)
++        pdf_paths = []
++        for stem in sorted(printout_engine._expected_pdf_stems_for_artifact(artifact)):
++            pdf_path = output_dir / printout_engine._review_pdf_filename(artifact, stem)
++            pdf_path.parent.mkdir(parents=True, exist_ok=True)
++            pdf_path.write_bytes(b"%PDF-1.4 fake")
++            pdf_paths.append(str(pdf_path))
++        return {"markdown_paths": [], "pdf_paths": pdf_paths}
++
++    monkeypatch.setattr(printout_engine, "render_printout_files", fake_render_printout_files)
++
++    second = printout_engine.build_printout_for_source(
++        repo_root=repo_root,
++        subject_root=subject_root,
++        source=source,
++        source_card_dir=source_card_dir,
++        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
++        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
++        output_root=output_root,
++        json_generator=fail_if_generation_is_called,
++        render_pdf=True,
++    )
++
++    assert second["status"] == "rerendered_existing"
++    assert not generation_calls
++    assert render_calls == [True]
++    assert len(second["pdf_paths"]) == 5
++
++
++def test_provider_model_scoped_artifacts_can_coexist_for_same_source(tmp_path):
++    repo_root, subject_root, output_root, source_card_dir, source = _source_fixture(tmp_path)
++
++    def fake_json_generator(**kwargs):
++        return _valid_scaffold_response()
++
++    gemini = printout_engine.build_printout_for_source(
++        repo_root=repo_root,
++        subject_root=subject_root,
++        source=source,
++        source_card_dir=source_card_dir,
++        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
++        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
++        output_root=output_root,
++        json_generator=fake_json_generator,
++        render_pdf=False,
++        generation_provider="gemini",
++        model="gemini-3.1-pro-preview",
++    )
++    openai = printout_engine.build_printout_for_source(
++        repo_root=repo_root,
++        subject_root=subject_root,
++        source=source,
++        source_card_dir=source_card_dir,
++        revised_lecture_substrate_dir=repo_root / "source_intelligence" / "revised_lecture_substrates",
++        course_synthesis_path=repo_root / "source_intelligence" / "course_synthesis.json",
++        output_root=output_root,
++        json_generator=fake_json_generator,
++        render_pdf=False,
++        generation_provider="openai",
++        model="gpt-5.5",
++    )
++
++    assert Path(gemini["json_path"]).exists()
++    assert Path(openai["json_path"]).exists()
++    assert gemini["json_path"] != openai["json_path"]
++    assert ".scaffolding/artifacts/gemini-gemini-3_1-pro-preview/source-1/" in gemini["json_path"]
++    assert ".scaffolding/artifacts/openai-gpt-5_5/source-1/" in openai["json_path"]

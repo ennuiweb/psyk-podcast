@@ -1,0 +1,1127 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:46:47Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "1fd41e1c79c282e65ae808ab07a600bf192822285090c7a380c3db0d43ba6fca",
+    "source_files_signature": "a86a1a923a1a60e25051e3c82dfdec5fbac8843a6eba327c74b9a8d15f830ad3",
+    "source_card": "e77a75adc412b92065134b01e633bc122f2131c959d6a8941b39f3b4d824924e",
+    "revised_lecture_substrate": "a1e79263d7604625f409ef7afbbe8f8423c78ba30e0cc98ae8bb6aa1e064473a",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+    "lecture_key": "W05L1",
+    "title": "Gammelgaard (2010)",
+    "reading_title": "Gammelgaard (2010)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 12,
+    "estimated_token_count": 7800,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L1 Empiri og metode i psykoanalysen/W5L1 Gammelgaard (2010).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 12,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+      "lecture_key": "W05L1",
+      "source_title": "Gammelgaard (2010)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemstillinger. Læs teaseren for at forstå konteksten, og brug subproblemerne som dine fokuspunkter undervejs.",
+      "teaser_paragraphs": [
+        "En patient ringer til sin analytiker under juleferien for at aflyse en tid. Han frygter, at han ved et uheld har berørt sin diktafon med urin, og at maskinen nu er 'besmittet'. Hvordan studerer man videnskabeligt den form for indre, tilsyneladende irrationel virkelighed? Gammelgaard stiller os over for et af psykologiens største grundproblemer: Kan vi overhovedet stole på data, der kun findes i det decentrerede subjekts ubevidste fantasier?",
+        "Den klassiske naturvidenskab kræver objektive, målbare kendsgerninger. Men i psykoanalysen er klinikken det eneste laboratorium, og her har faget det særkende, at videnskabelig analyse og *behandling til en vis grad falder sammen*. Analytikeren kan ikke veje eller måle patientens tvangstanker. Man kan kun lytte til brudfladerne i det, der bliver sagt.",
+        "Gammelgaard introducerer Paul Ricoeurs fire kriterier for at afgrænse, hvad der overhovedet tæller som 'data' i psykoanalysen. Det er et systematisk opgør med ideen om, at kun ydre adfærd er virkeligt. Teksten demonstrerer, at analytikeren arbejder metodisk med en helt særlig empiri, der ikke handler om materielle fakta, men om ubevidst mening og intention.",
+        "Læsningen kræver, at du slipper forestillingen om testpsykologiens faste, målbare variabler. Du skal i stedet fange, hvordan begreber som *psykisk virkelighed* og *intentionalitet* skaber et helt nyt epistemologisk fundament for, hvordan vi opnår viden om personligheden."
+      ],
+      "main_problem": "Hvordan kan psykoanalysen forsvare sig selv som en gyldig videnskab, når dens primære data består af subjektive fortællinger og ubevidste fantasier frem for objektive, målbare kendsgerninger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?",
+          "why_it_matters": "Det fastslår præmissen for, at psykologien kan rumme flere forskellige videnskabsteoretiske tilgange.",
+          "answer_form": "En kort redegørelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?",
+          "why_it_matters": "Det udelukker ren adfærdsobservation og tvinger fokus over på sprogets betydning.",
+          "answer_form": "Et specifikt afgrænsningskriterium"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?",
+          "why_it_matters": "Det forklarer, hvordan klinikken fungerer som et form for kunstigt laboratorium, hvor fortiden udspiller sig i nutiden.",
+          "answer_form": "En forklaring af en klinisk mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan adskiller den 'psykiske realitet' sig fra faktiske materielle begivenheder?",
+          "why_it_matters": "Det er centralt for at forstå, at falske erindringer stadig har fuld videnskabelig og klinisk relevans i psykoanalysen.",
+          "answer_form": "En begrebslig kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan kan psykoanalysen validere sine tolkninger uden brug af objektive kontrolforsøg?",
+          "why_it_matters": "Det fuldender forsvaret af psykoanalysen som videnskab ved at tilbyde et alternativt sandhedskriterium.",
+          "answer_form": "En logisk slutning"
+        }
+      ],
+      "why_this_text_matters": "Gammelgaard leverer overgangen fra trækteoriens objektive målinger til psykoanalysens fokus på mening og fortolkning. Teksten udstyrer dig med de nødvendige argumenter for at forsvare kvalitative kliniske data til eksamen.",
+      "overview": [
+        "Et epistemologisk forsvar for, at psykoanalysen er en gyldig videnskab, selvom den ikke bruger naturvidenskabelige metoder.",
+        "Anvendelsen af Paul Ricoeurs fire kriterier for at definere psykoanalysens specifikke empiri.",
+        "Gennemgangen af en klinisk case (diktafonen) som konkret bevisførelse for de teoretiske koncepter."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 546-550",
+          "task": "Find grundproblemet med at anvende eksakt videnskab på klinisk arbejde.",
+          "why_it_matters": "Det sætter rammen for, hvorfor et nyt sæt kriterier er nødvendigt.",
+          "stop_signal": "Når Ricoeurs fire kriterier nævnes første gang"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 550-552",
+          "task": "Afdæk, hvordan 'tale-kuren' afgrænser data.",
+          "why_it_matters": "Det fastslår det første af de fire grundkriterier.",
+          "stop_signal": "Når teksten skifter til afsnittet 'Intentionalitet'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 552-558",
+          "task": "Forstå, hvordan henvendelsen og overføringen fungerer som psykoanalysens erkendelsesmiddel.",
+          "why_it_matters": "Her forklares dynamikken i selve det analytiske rum.",
+          "stop_signal": "Når overskriften 'Psykisk realitet' optræder"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 558-562",
+          "task": "Lær forskellen på ydre materiel virkelighed og indre psykisk realitet.",
+          "why_it_matters": "Det er det vigtigste begreb i teksten til at forklare ubevidste fantasier.",
+          "stop_signal": "Når overskriften 'Den fortalte historie' optræder"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 562-566",
+          "task": "Find ud af, hvordan psykoanalysen validerer, at en tolkning er sand.",
+          "why_it_matters": "Det lukker forsvaret af metodens videnskabelige status.",
+          "stop_signal": "Ved kapitlets afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Psykoanalysen har sin egen empiri",
+          "why": "Konstaterer direkte, at feltet ikke blot afviser empiri, men omdefinerer det.",
+          "where_to_look": "S. 548"
+        },
+        {
+          "target": "skaber af sin egen indre virkelighed",
+          "why": "Fanger essensen af psykisk realitet frem for historisk sandhed.",
+          "where_to_look": "S. 559"
+        },
+        {
+          "target": "sammenhængende fortælling, der er konsistent",
+          "why": "Definerer sandhedskriteriet i psykoanalysen.",
+          "where_to_look": "S. 566"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange indledende redegørelser for Karl Popper og Grünbaums kritik af Freud.",
+        "De meget specifikke biografiske detaljer om patienten med diktafonen, så længe du forstår princippet i casen.",
+        "Franske psykoanalytikeres interne debatter om hermeneutik i starten af kapitlet."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse afsnit som din primære tekstgennemgang. Hvert afsnit løser et specifikt problem fra læseguiden. Du kan bruge udelukkende dette materiale til at løse de efterfølgende opgaver.",
+      "coverage_note": "Fokuserer på Gammelgaards redegørelse for Ricoeurs fire kriterier og forsvaret af psykoanalysen som videnskab.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 546-550",
+          "heading": "Bruddet med den eksakte videnskab",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At forklare hvorfor klassiske objektive forskningsmetoder fejler i mødet med det ubevidste?",
+          "explanation_paragraphs": [
+            "De humane videnskaber har traditionelt været under pres fra de eksakte naturvidenskaber for at levere faste, observerbare kendsgerninger. Klassisk psykologi søger objektive data, der kan testes af enhver under de samme betingelser. Men Gammelgaard påpeger, at dette krav er ødelæggende for psykoanalysen.",
+            "I psykoanalysen undersøger man det ubevidste og det decentrerede subjekt. Det ubevidste er per definition ikke en genstand, der bare kan vejes eller observeres passivt fra sidelinjen. Den helt store forskel er, at i psykoanalysen er det kliniske møde samtidig selve forskningslaboratoriet.",
+            "Når analytikeren lytter til patienten, kan man ikke adskille ren iagttagelse fra teoretisk tolkning. Derfor må psykoanalysen have sin helt egen definition af, hvad 'empiri' er. For at indkredse denne empiri benytter Gammelgaard fire kriterier fra filosoffen Paul Ricoeur."
+          ],
+          "key_points": [
+            "Klassisk videnskab kræver fuldstændig adskillelse mellem observation og teori.",
+            "I psykoanalysen er behandling og forskning én og samme proces.",
+            "Psykoanalysen afviser ikke empiri, men definerer den fundamentalt anderledes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forskning og behandling til en vis grad falder sammen",
+              "why_it_matters": "Det er hovedargumentet for, at psykoanalysens data-indsamling er unik.",
+              "source_location": "S. 548"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 548",
+              "passage": "Psykoanalysen har sin egen empiri, hvad angår såvel behandling som forskning, og den har som sagt det særkende, at behandling og forskning til en vis grad falder sammen.",
+              "why_it_matters": "Fastslår præmissen for hele tekstens eksistensberettigelse."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 550-552",
+          "heading": "Det første kriterium: Tale-kuren",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At afgrænse præcis hvilke data analytikeren har adgang til i klinikken?",
+          "explanation_paragraphs": [
+            "Det første af Ricoeurs kriterier handler om grænsen for, hvad der overhovedet kan betragtes som materiale i analysen. Psykoanalysen har fra starten haft karakter af en 'tale-kur'.",
+            "Dette betyder, at psykoanalysens empiri strengt taget er begrænset til det, som analysanden kan sige i ord. Gammelgaard påpeger, at konkret adfærd – som at en patient skælver, udebliver fra en aftale eller vasker hænder tvangsmæssigt – ikke i sig selv tæller som kliniske kendsgerninger i analytisk forstand.",
+            "Adfærd bliver først til psykoanalytisk data, når den sættes ind i en talende kontekst, hvor patienten reflekterer over sine handlinger. Det er i sprogets brudflader, tøven og associationer, at analytikeren kan begynde at spore de ubevidste konflikter."
+          ],
+          "key_points": [
+            "Ren fysisk adfærd eller fysiologiske reaktioner er ikke direkte psykoanalytisk empiri.",
+            "Data opstår udelukkende gennem patientens tale i det analytiske rum.",
+            "Begrænsningen til sproget skaber et specifikt fokus på meningsdannelse frem for mekanik."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "noget, der kan siges i ord",
+              "why_it_matters": "Det sætter den ultimative grænse for analysens domæne.",
+              "source_location": "S. 550"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 550",
+              "passage": "Vi gør ikke psykoanalysen mere videnskabelig ved at henvise til konkrete udvekslinger, der foregår som objektive kendsgerninger, vi kan gøre til udgangspunkt for vores videnskabelige teoretiseringer.",
+              "why_it_matters": "Afviser ideen om, at et skjult kamera i klinikken ville gøre metoden mere sand."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 552-558",
+          "heading": "Det andet kriterium: Intentionalitet og overføring",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At forstå at patientens ord aldrig er neutrale fakta, men udtrykker et skjult formål rettet mod en modtager?",
+          "explanation_paragraphs": [
+            "Ricoeurs andet kriterium omhandler 'henvendelsen' eller intentionaliteten. I den analytiske situation er det, patienten siger, ikke bare fremlæggelse af information. Det er sagt med et formål, og det er altid henvendt til en specifik anden person – analytikeren.",
+            "Dette fører frem til psykoanalysens vigtigste værktøj: overføringen. Overføring sker, når patientens ubevidste, gamle konfliktmønstre ubevidst rettes mod analytikeren her og nu. Patienten agerer sin fortid ud i nutiden.",
+            "Overføringen er ikke blot en teknisk detalje; det er et epistemologisk erkendelsesmiddel. Gammelgaard beskriver det som en form for 'kunstig sygdom' eller et laboratorium. I stedet for at gætte på patientens barndom, kan analytikeren observere neurosen udspille sig direkte i rummet gennem patientens henvendelse."
+          ],
+          "key_points": [
+            "Tale er aldrig neutral; den rummer et ubevidst formål (intentionalitet).",
+            "Overføring fungerer som et kunstigt laboratorium for det ubevidste i klinikken.",
+            "Analytikeren observerer ikke fortiden, men hvordan fortiden gentages i nutiden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tale inddrog intentionaliteten",
+              "why_it_matters": "Viser at data er relationel, ikke isoleret information.",
+              "source_location": "S. 558"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 558",
+              "passage": "Overføring er ikke blot et stykke analytisk teknik, men et erkendelsesmæssigt kriterium for de slutninger, vi drager.",
+              "why_it_matters": "Gør overføring til et videnskabsteoretisk bevisværktøj, ikke kun terapi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 558-562",
+          "heading": "Det tredje kriterium: Psykisk realitet",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At afgøre om en falsk barndomserindring stadig kan tælle som gyldig videnskabelig empiri?",
+          "explanation_paragraphs": [
+            "Det tredje kriterium adskiller afgørende psykoanalysen fra historieforskning. Det handler om den 'psykiske realitet'. Gammelgaard påpeger, at analytikeren arbejder med patientens indre virkelighed, som oftest står i modsætning til den materielle, ydre virkelighed.",
+            "Når en patient, ligesom i Gammelgaards case, frygter, at en diktafon er blevet 'besmittet' med urin og vil gøre ham syg, er dette ikke materielt sandt. Men tvangstanken er udtryk for en psykisk realitet, der er aldeles virkelig i sine konsekvenser for patienten.",
+            "For analytikeren er det underordnet, om en ubevidst fantasi (fx at være blevet straffet af sin far i barndommen) objektivt set har fundet sted. Det afgørende empiriske fundament er fantasien selv, og hvordan den virker som en styrende kraft i patientens nutidige liv."
+          ],
+          "key_points": [
+            "Psykisk realitet er patientens ubevidste fantasier og indre oplevelse.",
+            "Materiel historisk sandhed er ofte underordnet for analysens gyldighed.",
+            "Mennesket er til en vis grad skaber af sin egen indre virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "skaber af sin egen indre virkelighed",
+              "why_it_matters": "Bekræfter at subjektivitet i sig selv er objektivt data i denne ramme.",
+              "source_location": "S. 559"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 559",
+              "passage": "Begrebet psykisk realitet, som har sin begrundelse i kliniske iagttagelser, strider ikke blot mod almindelig sund fornuft, men demonstrerer, at mennesket er skaber af sin egen indre virkelighed til en vis grad.",
+              "why_it_matters": "Definerer det centrale brud med hverdagstænkningens krav om materielle fakta."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 562-566",
+          "heading": "Det fjerde kriterium: Den fortalte historie og sandhed",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At finde en valideringsmetode, der ikke kræver kontrolgrupper eller laboratorieforsøg?",
+          "explanation_paragraphs": [
+            "Det fjerde og sidste kriterium er den fortalte historie, narrativet. Analysandens symptomer udgør ofte uforståelige, afbrudte brudstykker af mening. Analytikerens job er at hjælpe patienten med at binde disse stumper sammen til en sammenhængende historie.",
+            "Men hvordan beviser man, at analytikerens fortolkning af denne historie er sand, når man ikke kan teste den i et eksperimentelt setup? Gammelgaard henviser til to ting: For det første narrativ sammenhæng – at tolkningen er konsistent og inddrager symptomets kompleksitet logisk.",
+            "For det andet trækker teksten på Freuds 'tally-argument'. En tolkning valideres endeligt af dens kurative effekt. Hvis en fortolkning 'stemmer overens' med det virkelige (tallies with reality), vil den ophæve modstanden og producere en ægte terapeutisk forandring. Sandhedsbegrebet er dermed relationelt og bundet til effekten i klinikken."
+          ],
+          "key_points": [
+            "Data skal kunne samles til en narrativ historie for at give mening.",
+            "Sandhed bevises gennem fortællingens interne, logiske sammenhængskraft.",
+            "Freuds tally-argument: Terapeutisk effekt beviser tolkningens gyldighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "sammenhængende fortælling, der er konsistent",
+              "why_it_matters": "Det beskriver den narrative validitet, der erstatter statistisk validitet.",
+              "source_location": "S. 566"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 566",
+              "passage": "Med overbevisning henvises ikke blot til et retorisk greb, men til en særlig form for forklaring, der består i at skabe en sammenhængende fortælling, der er konsistent og modsigelsesfri.",
+              "why_it_matters": "Viser hvordan psykoanalysen forsvarer sig mod påstanden om, at det bare er fri fantasi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort redegørelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et specifikt afgrænsningskriterium",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En forklaring af en klinisk mekanisme",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan adskiller den 'psykiske realitet' sig fra faktiske materielle begivenheder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En begrebslig kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan psykoanalysen validere sine tolkninger uden brug af objektive kontrolforsøg?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En logisk slutning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykoanalysen forsvare sig selv som en gyldig videnskab, når dens primære data består af subjektive fortællinger og ubevidste fantasier frem for objektive, målbare kendsgerninger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk teksten væk. Løs disse opgaver fra hukommelsen for at lade modellens struktur låse sig fast. Tjek først Abridged Reader bagefter for at reparere eventuelle huller.",
+      "overview": [
+        "Teksten leverer et videnskabsteoretisk forsvar for psykoanalysen som en selvstændig, gyldig videnskab.",
+        "Gammelgaard bruger filosoffen Paul Ricoeurs fire kriterier til præcist at definere og afgrænse psykoanalysens særlige empirigrundlag.",
+        "Kerneargumentet er, at validitet i psykoanalysen ikke findes gennem objektiv måling, men gennem narrativ sammenhæng og overføring."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Psykoanalysen kan ikke vurdere sine data ud fra eksakt naturvidenskab, fordi forskning og __________ er uløseligt sammenfaldende i det kliniske rum.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 2,
+          "sentence": "Det første af Ricoeurs fire kriterier fastslår, at psykoanalysens data er strengt begrænset til __________, hvilket udelukker ren adfærd uden for analysen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et udtryk"
+        },
+        {
+          "number": 3,
+          "sentence": "Det andet kriterium hævder, at patientens udsagn altid har en skjult modtager eller et formål, hvilket kaldes for patientens __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Analytikeren observerer ikke fortiden direkte, men ser fortidens konflikter genudspillet live i klinikken gennem mekanismen __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Selvom en ubevidst barndomsfantasi ikke fandt sted materielt, betragtes den stadig som fuldt ud gyldig empiri under begrebet __________ realitet.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "Freuds argument for, at en tolkning er videnskabeligt gyldig, kaldes for __________, og bygger på, at tolkningen har en kurativ effekt.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Navnet på et specifikt argument"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en firkantet model eller en liste, der viser Ricoeurs fire kriterier for afgrænsning af psykoanalytisk empiri.",
+          "required_elements": [
+            "Det første kriterium om mediets form (sprog",
+            "Det andet kriterium om formålet med udsagnet",
+            "Det tredje kriterium om hvilken virkelighed der tæller",
+            "Det fjerde kriterium om formen resultatet præsenteres i"
+          ],
+          "blank_space_hint": "Brug en lodret liste eller fire kasser der peger frem mod sandhed."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at oversætte tekstens begreber til mundtlige eksamenspointer. Fokuser på, hvordan teksten kan fungere som et epistemologisk forsvar, når du præsenterer kliniske teorier.",
+      "use_this_text_for": [
+        "At diskutere psykologiens videnskabsteori og grænserne for positivismen.",
+        "At forsvare validiteten af kliniske og kvalitative data.",
+        "At forklare hvorfor ubevidste fantasier har lige så stor magt som historiske facts.",
+        "At vise hvordan forskning og behandling kan være én og samme proces."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W01/W02)",
+          "connection": "Gammelgaard står i direkte epistemologisk kontrast til Costa & McCraes krav om adskillelse af observatør og objekt."
+        },
+        {
+          "course_theme": "Narrativ psykologi (W11)",
+          "connection": "Ricoeurs fjerde kriterium (den fortalte historie) er forløberen for senere teorier om, at identitet skabes gennem narrativer frem for stabile træk."
+        },
+        {
+          "course_theme": "Køn og identitet / Mitchell (W10)",
+          "connection": "Forståelsen af det ubevidste og 'psykisk realitet' er central for at forstå, hvorfor køn kan opleves tvingende indre, uanset biologisk virkelighed."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign deres krav om objektiv måling og synlig adfærd med Gammelgaards krav om intentionalitet og psykisk realitet."
+        },
+        {
+          "compare_with": "William Stern (Personalismen)",
+          "how_to_compare": "Begge kritiserer den naturvidenskabelige reduktionisme, men hvor Stern samler personen i et bevidst 'Mål', insisterer psykoanalysen på et 'decentreret', spaltet subjekt."
+        },
+        {
+          "compare_with": "Hacking (Looping effects)",
+          "how_to_compare": "Begge teoretikere accepterer, at sproget former objektet. I psykoanalysen er overføring et felt, hvor det ubevidste italesættes og derved forandres i en dynamisk loop."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når censor spørger til psykoanalysens manglende beviser",
+          "use_in_answer": "Brug Ricoeurs fire kriterier til proaktivt at omdefinere præmissen for, hvad 'beviser' og 'empiri' overhovedet er i et klinisk felt.",
+          "caution": "Undgå at lyde defensiv; anerkend at psykoanalysen dumper på naturvidenskabens præmisser, men bestående på sine egne."
+        },
+        {
+          "prompt_type": "Hvis du skal redegøre for begrebet om det 'decentrerede subjekt'",
+          "use_in_answer": "Brug begrebet 'psykisk realitet' til at vise, at subjektet er styret af indre fantasier, som jeget ikke nødvendigvis har bevidst kontrol over eller historisk adgang til.",
+          "caution": "Pas på ikke at forveksle psykisk realitet med reel psykose – det gælder også for normale neurotiske strukturer."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskningsmetode generelt",
+          "use_in_answer": "Sammenlign laboratoriet med overføringen: Sig højt, at overføringen fungerer som psykoanalysens 'kunstige sygdom', hvor data fremkaldes under kontrollerede analytiske rammer.",
+          "caution": "Husk at nævne, at det kræver fortolkning (hermeneutik) og ikke kun passiv observation."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at vurdere gyldigheden af en case-analyse",
+          "use_in_answer": "Træk på Freuds 'tally-argument' og forklar, at gyldighed her måles på fortællingens interne konsistens og den kurative effekt for analysanden.",
+          "caution": "Adskil tydeligt narrativ sandhed fra historisk, materiel sandhed."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at psykoanalysen fuldstændig afviser empirisk videnskab og bare bygger på fri filosofi.",
+          "better_reading": "Psykoanalysen afviser ikke empiri, men insisterer på at have *sin egen* stringente definition af empiri (Ricoeurs 4 kriterier)."
+        },
+        {
+          "trap": "At forveksle 'psykisk realitet' med faktiske traumatiske hændelser i barndommen.",
+          "better_reading": "Psykisk realitet refererer primært til de ubevidste fantasier og den måde subjektet har *oplevet* og formet historien på, uanset om det skete fysisk eller ej."
+        },
+        {
+          "trap": "At tænke på 'tale-kuren' som at patienten bare skal snakke frit for at få luft (katarsis).",
+          "better_reading": "Tale-kuren er et strengt afgrænsningskriterium for data. Adfærd der ikke kan formuleres i ord, er endnu ikke tilgængeligt som analytisk kendsgerning."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Gammelgaards (2010) forsvar for psykoanalysens empiriske fundament og diskuter, hvordan begrebet 'psykisk realitet' udfordrer den klassiske trækpsykologis videnskabsideal.",
+      "mini_exam_answer_plan_slots": [
+        "Definer det epistemologiske problem: Sammenfaldet af forskning og behandling.",
+        "List Ricoeurs 4 kriterier hurtigt: Tale, intentionalitet, psykisk realitet, fortælling.",
+        "Dyk ned i psykisk realitet: Brug diktafon-casen til at vise forskellen på materiel og indre sandhed.",
+        "Kontrastér med trækpsykologi (Costa & McCrae): Fra observation af stabil ydre adfærd til tolkning af sprogets ubevidste modstand.",
+        "Afslut med validering: Freuds tally-argument (effekt og narrativ konsistens)."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l1-gammelgaard-2010-e6baff8b",
+      "lecture_key": "W05L1",
+      "source_title": "Gammelgaard (2010)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod tekstens centrale problemstillinger. Læs teaseren for at forstå konteksten, og brug subproblemerne som dine fokuspunkter undervejs.",
+      "teaser_paragraphs": [
+        "En patient ringer til sin analytiker under juleferien for at aflyse en tid. Han frygter, at han ved et uheld har berørt sin diktafon med urin, og at maskinen nu er 'besmittet'. Hvordan studerer man videnskabeligt den form for indre, tilsyneladende irrationel virkelighed? Gammelgaard stiller os over for et af psykologiens største grundproblemer: Kan vi overhovedet stole på data, der kun findes i det decentrerede subjekts ubevidste fantasier?",
+        "Den klassiske naturvidenskab kræver objektive, målbare kendsgerninger. Men i psykoanalysen er klinikken det eneste laboratorium, og her har faget det særkende, at videnskabelig analyse og *behandling til en vis grad falder sammen*. Analytikeren kan ikke veje eller måle patientens tvangstanker. Man kan kun lytte til brudfladerne i det, der bliver sagt.",
+        "Gammelgaard introducerer Paul Ricoeurs fire kriterier for at afgrænse, hvad der overhovedet tæller som 'data' i psykoanalysen. Det er et systematisk opgør med ideen om, at kun ydre adfærd er virkeligt. Teksten demonstrerer, at analytikeren arbejder metodisk med en helt særlig empiri, der ikke handler om materielle fakta, men om ubevidst mening og intention.",
+        "Læsningen kræver, at du slipper forestillingen om testpsykologiens faste, målbare variabler. Du skal i stedet fange, hvordan begreber som *psykisk virkelighed* og *intentionalitet* skaber et helt nyt epistemologisk fundament for, hvordan vi opnår viden om personligheden."
+      ],
+      "main_problem": "Hvordan kan psykoanalysen forsvare sig selv som en gyldig videnskab, når dens primære data består af subjektive fortællinger og ubevidste fantasier frem for objektive, målbare kendsgerninger?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?",
+          "why_it_matters": "Det fastslår præmissen for, at psykologien kan rumme flere forskellige videnskabsteoretiske tilgange.",
+          "answer_form": "En kort redegørelse"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?",
+          "why_it_matters": "Det udelukker ren adfærdsobservation og tvinger fokus over på sprogets betydning.",
+          "answer_form": "Et specifikt afgrænsningskriterium"
+        },
+        {
+          "number": 3,
+          "question": "Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?",
+          "why_it_matters": "Det forklarer, hvordan klinikken fungerer som et form for kunstigt laboratorium, hvor fortiden udspiller sig i nutiden.",
+          "answer_form": "En forklaring af en klinisk mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan adskiller den 'psykiske realitet' sig fra faktiske materielle begivenheder?",
+          "why_it_matters": "Det er centralt for at forstå, at falske erindringer stadig har fuld videnskabelig og klinisk relevans i psykoanalysen.",
+          "answer_form": "En begrebslig kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan kan psykoanalysen validere sine tolkninger uden brug af objektive kontrolforsøg?",
+          "why_it_matters": "Det fuldender forsvaret af psykoanalysen som videnskab ved at tilbyde et alternativt sandhedskriterium.",
+          "answer_form": "En logisk slutning"
+        }
+      ],
+      "why_this_text_matters": "Gammelgaard leverer overgangen fra trækteoriens objektive målinger til psykoanalysens fokus på mening og fortolkning. Teksten udstyrer dig med de nødvendige argumenter for at forsvare kvalitative kliniske data til eksamen.",
+      "overview": [
+        "Et epistemologisk forsvar for, at psykoanalysen er en gyldig videnskab, selvom den ikke bruger naturvidenskabelige metoder.",
+        "Anvendelsen af Paul Ricoeurs fire kriterier for at definere psykoanalysens specifikke empiri.",
+        "Gennemgangen af en klinisk case (diktafonen) som konkret bevisførelse for de teoretiske koncepter."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 546-550",
+          "task": "Find grundproblemet med at anvende eksakt videnskab på klinisk arbejde.",
+          "why_it_matters": "Det sætter rammen for, hvorfor et nyt sæt kriterier er nødvendigt.",
+          "stop_signal": "Når Ricoeurs fire kriterier nævnes første gang"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 550-552",
+          "task": "Afdæk, hvordan 'tale-kuren' afgrænser data.",
+          "why_it_matters": "Det fastslår det første af de fire grundkriterier.",
+          "stop_signal": "Når teksten skifter til afsnittet 'Intentionalitet'"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 552-558",
+          "task": "Forstå, hvordan henvendelsen og overføringen fungerer som psykoanalysens erkendelsesmiddel.",
+          "why_it_matters": "Her forklares dynamikken i selve det analytiske rum.",
+          "stop_signal": "Når overskriften 'Psykisk realitet' optræder"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 558-562",
+          "task": "Lær forskellen på ydre materiel virkelighed og indre psykisk realitet.",
+          "why_it_matters": "Det er det vigtigste begreb i teksten til at forklare ubevidste fantasier.",
+          "stop_signal": "Når overskriften 'Den fortalte historie' optræder"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 562-566",
+          "task": "Find ud af, hvordan psykoanalysen validerer, at en tolkning er sand.",
+          "why_it_matters": "Det lukker forsvaret af metodens videnskabelige status.",
+          "stop_signal": "Ved kapitlets afslutning"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Psykoanalysen har sin egen empiri",
+          "why": "Konstaterer direkte, at feltet ikke blot afviser empiri, men omdefinerer det.",
+          "where_to_look": "S. 548"
+        },
+        {
+          "target": "skaber af sin egen indre virkelighed",
+          "why": "Fanger essensen af psykisk realitet frem for historisk sandhed.",
+          "where_to_look": "S. 559"
+        },
+        {
+          "target": "sammenhængende fortælling, der er konsistent",
+          "why": "Definerer sandhedskriteriet i psykoanalysen.",
+          "where_to_look": "S. 566"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange indledende redegørelser for Karl Popper og Grünbaums kritik af Freud.",
+        "De meget specifikke biografiske detaljer om patienten med diktafonen, så længe du forstår princippet i casen.",
+        "Franske psykoanalytikeres interne debatter om hermeneutik i starten af kapitlet."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse afsnit som din primære tekstgennemgang. Hvert afsnit løser et specifikt problem fra læseguiden. Du kan bruge udelukkende dette materiale til at løse de efterfølgende opgaver.",
+      "coverage_note": "Fokuserer på Gammelgaards redegørelse for Ricoeurs fire kriterier og forsvaret af psykoanalysen som videnskab.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 546-550",
+          "heading": "Bruddet med den eksakte videnskab",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At forklare hvorfor klassiske objektive forskningsmetoder fejler i mødet med det ubevidste?",
+          "explanation_paragraphs": [
+            "De humane videnskaber har traditionelt været under pres fra de eksakte naturvidenskaber for at levere faste, observerbare kendsgerninger. Klassisk psykologi søger objektive data, der kan testes af enhver under de samme betingelser. Men Gammelgaard påpeger, at dette krav er ødelæggende for psykoanalysen.",
+            "I psykoanalysen undersøger man det ubevidste og det decentrerede subjekt. Det ubevidste er per definition ikke en genstand, der bare kan vejes eller observeres passivt fra sidelinjen. Den helt store forskel er, at i psykoanalysen er det kliniske møde samtidig selve forskningslaboratoriet.",
+            "Når analytikeren lytter til patienten, kan man ikke adskille ren iagttagelse fra teoretisk tolkning. Derfor må psykoanalysen have sin helt egen definition af, hvad 'empiri' er. For at indkredse denne empiri benytter Gammelgaard fire kriterier fra filosoffen Paul Ricoeur."
+          ],
+          "key_points": [
+            "Klassisk videnskab kræver fuldstændig adskillelse mellem observation og teori.",
+            "I psykoanalysen er behandling og forskning én og samme proces.",
+            "Psykoanalysen afviser ikke empiri, men definerer den fundamentalt anderledes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "forskning og behandling til en vis grad falder sammen",
+              "why_it_matters": "Det er hovedargumentet for, at psykoanalysens data-indsamling er unik.",
+              "source_location": "S. 548"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 548",
+              "passage": "Psykoanalysen har sin egen empiri, hvad angår såvel behandling som forskning, og den har som sagt det særkende, at behandling og forskning til en vis grad falder sammen.",
+              "why_it_matters": "Fastslår præmissen for hele tekstens eksistensberettigelse."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 550-552",
+          "heading": "Det første kriterium: Tale-kuren",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At afgrænse præcis hvilke data analytikeren har adgang til i klinikken?",
+          "explanation_paragraphs": [
+            "Det første af Ricoeurs kriterier handler om grænsen for, hvad der overhovedet kan betragtes som materiale i analysen. Psykoanalysen har fra starten haft karakter af en 'tale-kur'.",
+            "Dette betyder, at psykoanalysens empiri strengt taget er begrænset til det, som analysanden kan sige i ord. Gammelgaard påpeger, at konkret adfærd – som at en patient skælver, udebliver fra en aftale eller vasker hænder tvangsmæssigt – ikke i sig selv tæller som kliniske kendsgerninger i analytisk forstand.",
+            "Adfærd bliver først til psykoanalytisk data, når den sættes ind i en talende kontekst, hvor patienten reflekterer over sine handlinger. Det er i sprogets brudflader, tøven og associationer, at analytikeren kan begynde at spore de ubevidste konflikter."
+          ],
+          "key_points": [
+            "Ren fysisk adfærd eller fysiologiske reaktioner er ikke direkte psykoanalytisk empiri.",
+            "Data opstår udelukkende gennem patientens tale i det analytiske rum.",
+            "Begrænsningen til sproget skaber et specifikt fokus på meningsdannelse frem for mekanik."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "noget, der kan siges i ord",
+              "why_it_matters": "Det sætter den ultimative grænse for analysens domæne.",
+              "source_location": "S. 550"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 550",
+              "passage": "Vi gør ikke psykoanalysen mere videnskabelig ved at henvise til konkrete udvekslinger, der foregår som objektive kendsgerninger, vi kan gøre til udgangspunkt for vores videnskabelige teoretiseringer.",
+              "why_it_matters": "Afviser ideen om, at et skjult kamera i klinikken ville gøre metoden mere sand."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 552-558",
+          "heading": "Det andet kriterium: Intentionalitet og overføring",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At forstå at patientens ord aldrig er neutrale fakta, men udtrykker et skjult formål rettet mod en modtager?",
+          "explanation_paragraphs": [
+            "Ricoeurs andet kriterium omhandler 'henvendelsen' eller intentionaliteten. I den analytiske situation er det, patienten siger, ikke bare fremlæggelse af information. Det er sagt med et formål, og det er altid henvendt til en specifik anden person – analytikeren.",
+            "Dette fører frem til psykoanalysens vigtigste værktøj: overføringen. Overføring sker, når patientens ubevidste, gamle konfliktmønstre ubevidst rettes mod analytikeren her og nu. Patienten agerer sin fortid ud i nutiden.",
+            "Overføringen er ikke blot en teknisk detalje; det er et epistemologisk erkendelsesmiddel. Gammelgaard beskriver det som en form for 'kunstig sygdom' eller et laboratorium. I stedet for at gætte på patientens barndom, kan analytikeren observere neurosen udspille sig direkte i rummet gennem patientens henvendelse."
+          ],
+          "key_points": [
+            "Tale er aldrig neutral; den rummer et ubevidst formål (intentionalitet).",
+            "Overføring fungerer som et kunstigt laboratorium for det ubevidste i klinikken.",
+            "Analytikeren observerer ikke fortiden, men hvordan fortiden gentages i nutiden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tale inddrog intentionaliteten",
+              "why_it_matters": "Viser at data er relationel, ikke isoleret information.",
+              "source_location": "S. 558"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 558",
+              "passage": "Overføring er ikke blot et stykke analytisk teknik, men et erkendelsesmæssigt kriterium for de slutninger, vi drager.",
+              "why_it_matters": "Gør overføring til et videnskabsteoretisk bevisværktøj, ikke kun terapi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 558-562",
+          "heading": "Det tredje kriterium: Psykisk realitet",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At afgøre om en falsk barndomserindring stadig kan tælle som gyldig videnskabelig empiri?",
+          "explanation_paragraphs": [
+            "Det tredje kriterium adskiller afgørende psykoanalysen fra historieforskning. Det handler om den 'psykiske realitet'. Gammelgaard påpeger, at analytikeren arbejder med patientens indre virkelighed, som oftest står i modsætning til den materielle, ydre virkelighed.",
+            "Når en patient, ligesom i Gammelgaards case, frygter, at en diktafon er blevet 'besmittet' med urin og vil gøre ham syg, er dette ikke materielt sandt. Men tvangstanken er udtryk for en psykisk realitet, der er aldeles virkelig i sine konsekvenser for patienten.",
+            "For analytikeren er det underordnet, om en ubevidst fantasi (fx at være blevet straffet af sin far i barndommen) objektivt set har fundet sted. Det afgørende empiriske fundament er fantasien selv, og hvordan den virker som en styrende kraft i patientens nutidige liv."
+          ],
+          "key_points": [
+            "Psykisk realitet er patientens ubevidste fantasier og indre oplevelse.",
+            "Materiel historisk sandhed er ofte underordnet for analysens gyldighed.",
+            "Mennesket er til en vis grad skaber af sin egen indre virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "skaber af sin egen indre virkelighed",
+              "why_it_matters": "Bekræfter at subjektivitet i sig selv er objektivt data i denne ramme.",
+              "source_location": "S. 559"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 559",
+              "passage": "Begrebet psykisk realitet, som har sin begrundelse i kliniske iagttagelser, strider ikke blot mod almindelig sund fornuft, men demonstrerer, at mennesket er skaber af sin egen indre virkelighed til en vis grad.",
+              "why_it_matters": "Definerer det centrale brud med hverdagstænkningens krav om materielle fakta."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 562-566",
+          "heading": "Det fjerde kriterium: Den fortalte historie og sandhed",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At finde en valideringsmetode, der ikke kræver kontrolgrupper eller laboratorieforsøg?",
+          "explanation_paragraphs": [
+            "Det fjerde og sidste kriterium er den fortalte historie, narrativet. Analysandens symptomer udgør ofte uforståelige, afbrudte brudstykker af mening. Analytikerens job er at hjælpe patienten med at binde disse stumper sammen til en sammenhængende historie.",
+            "Men hvordan beviser man, at analytikerens fortolkning af denne historie er sand, når man ikke kan teste den i et eksperimentelt setup? Gammelgaard henviser til to ting: For det første narrativ sammenhæng – at tolkningen er konsistent og inddrager symptomets kompleksitet logisk.",
+            "For det andet trækker teksten på Freuds 'tally-argument'. En tolkning valideres endeligt af dens kurative effekt. Hvis en fortolkning 'stemmer overens' med det virkelige (tallies with reality), vil den ophæve modstanden og producere en ægte terapeutisk forandring. Sandhedsbegrebet er dermed relationelt og bundet til effekten i klinikken."
+          ],
+          "key_points": [
+            "Data skal kunne samles til en narrativ historie for at give mening.",
+            "Sandhed bevises gennem fortællingens interne, logiske sammenhængskraft.",
+            "Freuds tally-argument: Terapeutisk effekt beviser tolkningens gyldighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "sammenhængende fortælling, der er konsistent",
+              "why_it_matters": "Det beskriver den narrative validitet, der erstatter statistisk validitet.",
+              "source_location": "S. 566"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 566",
+              "passage": "Med overbevisning henvises ikke blot til et retorisk greb, men til en særlig form for forklaring, der består i at skabe en sammenhængende fortælling, der er konsistent og modsigelsesfri.",
+              "why_it_matters": "Viser hvordan psykoanalysen forsvarer sig mod påstanden om, at det bare er fri fantasi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor kan psykoanalysen ikke bedømmes ud fra de eksakte naturvidenskabers definition af empiri?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort redegørelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan afgrænser princippet om 'tale-kuren', præcis hvilke data analytikeren har at arbejde med?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et specifikt afgrænsningskriterium",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken rolle spiller 'intentionalitet' og 'overføring' for at gøre det ubevidste observerbart i klinikken?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En forklaring af en klinisk mekanisme",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan adskiller den 'psykiske realitet' sig fra faktiske materielle begivenheder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En begrebslig kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan psykoanalysen validere sine tolkninger uden brug af objektive kontrolforsøg?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En logisk slutning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan psykoanalysen forsvare sig selv som en gyldig videnskab, når dens primære data består af subjektive fortællinger og ubevidste fantasier frem for objektive, målbare kendsgerninger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk teksten væk. Løs disse opgaver fra hukommelsen for at lade modellens struktur låse sig fast. Tjek først Abridged Reader bagefter for at reparere eventuelle huller.",
+      "overview": [
+        "Teksten leverer et videnskabsteoretisk forsvar for psykoanalysen som en selvstændig, gyldig videnskab.",
+        "Gammelgaard bruger filosoffen Paul Ricoeurs fire kriterier til præcist at definere og afgrænse psykoanalysens særlige empirigrundlag.",
+        "Kerneargumentet er, at validitet i psykoanalysen ikke findes gennem objektiv måling, men gennem narrativ sammenhæng og overføring."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Psykoanalysen kan ikke vurdere sine data ud fra eksakt naturvidenskab, fordi forskning og __________ er uløseligt sammenfaldende i det kliniske rum.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 2,
+          "sentence": "Det første af Ricoeurs fire kriterier fastslår, at psykoanalysens data er strengt begrænset til __________, hvilket udelukker ren adfærd uden for analysen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et udtryk"
+        },
+        {
+          "number": 3,
+          "sentence": "Det andet kriterium hævder, at patientens udsagn altid har en skjult modtager eller et formål, hvilket kaldes for patientens __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Analytikeren observerer ikke fortiden direkte, men ser fortidens konflikter genudspillet live i klinikken gennem mekanismen __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 fagbegreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Selvom en ubevidst barndomsfantasi ikke fandt sted materielt, betragtes den stadig som fuldt ud gyldig empiri under begrebet __________ realitet.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "Freuds argument for, at en tolkning er videnskabeligt gyldig, kaldes for __________, og bygger på, at tolkningen har en kurativ effekt.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Navnet på et specifikt argument"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en firkantet model eller en liste, der viser Ricoeurs fire kriterier for afgrænsning af psykoanalytisk empiri.",
+          "required_elements": [
+            "Det første kriterium om mediets form (sprog",
+            "Det andet kriterium om formålet med udsagnet",
+            "Det tredje kriterium om hvilken virkelighed der tæller",
+            "Det fjerde kriterium om formen resultatet præsenteres i"
+          ],
+          "blank_space_hint": "Brug en lodret liste eller fire kasser der peger frem mod sandhed."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at oversætte tekstens begreber til mundtlige eksamenspointer. Fokuser på, hvordan teksten kan fungere som et epistemologisk forsvar, når du præsenterer kliniske teorier.",
+      "use_this_text_for": [
+        "At diskutere psykologiens videnskabsteori og grænserne for positivismen.",
+        "At forsvare validiteten af kliniske og kvalitative data.",
+        "At forklare hvorfor ubevidste fantasier har lige så stor magt som historiske facts.",
+        "At vise hvordan forskning og behandling kan være én og samme proces."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W01/W02)",
+          "connection": "Gammelgaard står i direkte epistemologisk kontrast til Costa & McCraes krav om adskillelse af observatør og objekt."
+        },
+        {
+          "course_theme": "Narrativ psykologi (W11)",
+          "connection": "Ricoeurs fjerde kriterium (den fortalte historie) er forløberen for senere teorier om, at identitet skabes gennem narrativer frem for stabile træk."
+        },
+        {
+          "course_theme": "Køn og identitet / Mitchell (W10)",
+          "connection": "Forståelsen af det ubevidste og 'psykisk realitet' er central for at forstå, hvorfor køn kan opleves tvingende indre, uanset biologisk virkelighed."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign deres krav om objektiv måling og synlig adfærd med Gammelgaards krav om intentionalitet og psykisk realitet."
+        },
+        {
+          "compare_with": "William Stern (Personalismen)",
+          "how_to_compare": "Begge kritiserer den naturvidenskabelige reduktionisme, men hvor Stern samler personen i et bevidst 'Mål', insisterer psykoanalysen på et 'decentreret', spaltet subjekt."
+        },
+        {
+          "compare_with": "Hacking (Looping effects)",
+          "how_to_compare": "Begge teoretikere accepterer, at sproget former objektet. I psykoanalysen er overføring et felt, hvor det ubevidste italesættes og derved forandres i en dynamisk loop."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når censor spørger til psykoanalysens manglende beviser",
+          "use_in_answer": "Brug Ricoeurs fire kriterier til proaktivt at omdefinere præmissen for, hvad 'beviser' og 'empiri' overhovedet er i et klinisk felt.",
+          "caution": "Undgå at lyde defensiv; anerkend at psykoanalysen dumper på naturvidenskabens præmisser, men bestående på sine egne."
+        },
+        {
+          "prompt_type": "Hvis du skal redegøre for begrebet om det 'decentrerede subjekt'",
+          "use_in_answer": "Brug begrebet 'psykisk realitet' til at vise, at subjektet er styret af indre fantasier, som jeget ikke nødvendigvis har bevidst kontrol over eller historisk adgang til.",
+          "caution": "Pas på ikke at forveksle psykisk realitet med reel psykose – det gælder også for normale neurotiske strukturer."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskningsmetode generelt",
+          "use_in_answer": "Sammenlign laboratoriet med overføringen: Sig højt, at overføringen fungerer som psykoanalysens 'kunstige sygdom', hvor data fremkaldes under kontrollerede analytiske rammer.",
+          "caution": "Husk at nævne, at det kræver fortolkning (hermeneutik) og ikke kun passiv observation."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at vurdere gyldigheden af en case-analyse",
+          "use_in_answer": "Træk på Freuds 'tally-argument' og forklar, at gyldighed her måles på fortællingens interne konsistens og den kurative effekt for analysanden.",
+          "caution": "Adskil tydeligt narrativ sandhed fra historisk, materiel sandhed."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro, at psykoanalysen fuldstændig afviser empirisk videnskab og bare bygger på fri filosofi.",
+          "better_reading": "Psykoanalysen afviser ikke empiri, men insisterer på at have *sin egen* stringente definition af empiri (Ricoeurs 4 kriterier)."
+        },
+        {
+          "trap": "At forveksle 'psykisk realitet' med faktiske traumatiske hændelser i barndommen.",
+          "better_reading": "Psykisk realitet refererer primært til de ubevidste fantasier og den måde subjektet har *oplevet* og formet historien på, uanset om det skete fysisk eller ej."
+        },
+        {
+          "trap": "At tænke på 'tale-kuren' som at patienten bare skal snakke frit for at få luft (katarsis).",
+          "better_reading": "Tale-kuren er et strengt afgrænsningskriterium for data. Adfærd der ikke kan formuleres i ord, er endnu ikke tilgængeligt som analytisk kendsgerning."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Gammelgaards (2010) forsvar for psykoanalysens empiriske fundament og diskuter, hvordan begrebet 'psykisk realitet' udfordrer den klassiske trækpsykologis videnskabsideal.",
+      "mini_exam_answer_plan_slots": [
+        "Definer det epistemologiske problem: Sammenfaldet af forskning og behandling.",
+        "List Ricoeurs 4 kriterier hurtigt: Tale, intentionalitet, psykisk realitet, fortælling.",
+        "Dyk ned i psykisk realitet: Brug diktafon-casen til at vise forskellen på materiel og indre sandhed.",
+        "Kontrastér med trækpsykologi (Costa & McCrae): Fra observation af stabil ydre adfærd til tolkning af sprogets ubevidste modstand.",
+        "Afslut med validering: Freuds tally-argument (effekt og narrativ konsistens)."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

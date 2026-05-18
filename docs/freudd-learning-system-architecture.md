@@ -233,7 +233,7 @@ The `Freudd Generation Queue` is the clearest example of high maturity.
 
 What is strong:
 
-- explicit job/state ownership
+- explicit queue-record/state ownership
 - durable queue storage outside git
 - show-scoped locking
 - real generation/download execution

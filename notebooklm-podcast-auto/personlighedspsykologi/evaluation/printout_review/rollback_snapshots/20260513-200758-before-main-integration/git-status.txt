@@ -1,0 +1,78 @@
+ M .aimemory/memory.md
+ M AGENTS.md
+ M docs/README.md
+ M docs/freudd-learning-system-architecture.md
+ M docs/learning-material-design.md
+ M docs/notebooklm-automation.md
+ M docs/notebooklm-queue-auth-stale-backlog-fix.md
+ M docs/notebooklm-queue-current-state.md
+ M docs/notebooklm-queue-operations.md
+ M docs/notebooklm-queue-r2-migration.md
+ M docs/personlighedspsykologi-danish-mirror-plan.md
+ M notebooklm-podcast-auto/personlighedspsykologi/README.md
+ M notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/CODEBASE-GUIDE.md
+ M notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md
+ M notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md
+ M notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/generate_candidates.py
+ M notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/printout_engine.py
+ M notebooklm-podcast-auto/profiles/default_storage_state.json
+ M notebooklm-podcast-auto/profiles/nopeeeh_storage_state.json
+ M notebooklm-podcast-auto/profiles/oskarvedel_storage_state.json
+ M notebooklm-podcast-auto/profiles/tjekdepotadmin_storage_state.json
+ M notebooklm_queue/alerts.py
+ M notebooklm_queue/cli.py
+ M notebooklm_queue/discovery.py
+ M notebooklm_queue/execution.py
+ M notebooklm_queue/failure_modes.py
+ M notebooklm_queue/orchestrator.py
+ M requirements.txt
+ M shows/personlighedspsykologi-en/docs/README.md
+ M shows/personlighedspsykologi-en/docs/learning-material-outputs.md
+ M shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026.md
+ M shows/personlighedspsykologi-en/docs/preprocessing-system.md
+ M shows/personlighedspsykologi-en/docs/printout-system.md
+ M shows/personlighedspsykologi-en/docs/problem-driven-printouts.md
+ M shows/personlighedspsykologi-en/learning_material_regeneration_registry.json
+ M tests/notebooklm_queue/test_cli.py
+ M tests/notebooklm_queue/test_discovery.py
+ M tests/notebooklm_queue/test_execution.py
+ M tests/notebooklm_queue/test_orchestrator.py
+ M tests/test_printout_review_printout_engine.py
+?? .recovery/
+?? CODEBASE-GUIDES.md
+?? apps-script/CODEBASE-GUIDE.md
+?? codex-last-100-prompts.md
+?? freudd_portal/CODEBASE-GUIDE.md
+?? notebooklm-podcast-auto/CODEBASE-GUIDE.md
+?? notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/manual-to-do.md
+?? notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/
+?? notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/rollback_snapshots/
+?? notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/scripts/run_parallel_candidates.py
+?? notebooklm-podcast-auto/personlighedspsykologi/output/Archive.zip
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W01L1/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W01L2/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W02L1/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W02L2/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W03L1/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W03L2/
+?? notebooklm-podcast-auto/personlighedspsykologi/output/W11L1/
+?? notebooklm_queue/CODEBASE-GUIDE.md
+?? notebooklm_queue/openai_preprocessing.py
+?? podcast-tools/CODEBASE-GUIDE.md
+?? scripts/build_personlighedspsykologi_exam_priority_plan.py
+?? scripts/export_codex_prompts.py
+?? shows/CODEBASE-GUIDE.md
+?? shows/personlighedspsykologi-en/docs/course-understanding-review.md
+?? shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative-onepage.pdf
+?? shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative-onepage.tex
+?? shows/personlighedspsykologi-en/docs/oral-exam-printout-priority-narrative.md
+?? shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.pdf
+?? shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.tex
+?? shows/personlighedspsykologi-en/docs/output-generator-codebase-guide.md
+?? shows/personlighedspsykologi-en/exam_priority_config.narrative.json
+?? shows/personlighedspsykologi-en/exam_priority_plan.narrative.json
+?? spotify_transcripts/CODEBASE-GUIDE.md
+?? tests/test_build_personlighedspsykologi_exam_priority_plan.py
+?? tests/test_openai_preprocessing.py
+?? tests/test_printout_review_generate_candidates.py
+?? tests/test_printout_review_run_parallel_candidates.py

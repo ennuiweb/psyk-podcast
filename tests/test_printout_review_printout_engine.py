@@ -456,7 +456,7 @@ def test_review_pdf_filename_includes_provider_model_and_source_id():
     )
 
 
-def test_renderers_prefer_reading_title_over_citation_label():
+def test_renderers_use_citation_label_before_reading_title():
     artifact = {
         "source": {
             "source_id": "w01l1-lewis-1999-295c67e3",
@@ -473,11 +473,36 @@ def test_renderers_prefer_reading_title_over_citation_label():
         {"teaser_paragraphs": ["En kort teaser om personlighedsudvikling."]},
     )
 
-    assert "Issues in the Study of Personality Development" in cover_markdown
-    assert "Issues in the Study of Personality Development" in guide_markdown
-    assert "Lewis (1999)" not in cover_markdown
-    assert "**Kilde:** Lewis (1999)" not in guide_markdown
-    assert "<!-- printout-source: Issues in the Study of Personality Development -->" in cover_markdown
+    expected_source_title = "Lewis (1999): Issues in the Study of Personality Development"
+    assert expected_source_title in cover_markdown
+    assert expected_source_title in guide_markdown
+    assert f"**Kilde:** {expected_source_title}" in guide_markdown
+    assert f"<!-- printout-source: {expected_source_title} -->" in cover_markdown
+
+
+def test_source_display_title_does_not_duplicate_single_title_sources():
+    source = {
+        "source_id": "w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647",
+        "title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+        "reading_title": "Grundbog kapitel 01 - Introduktion til personlighedspsykologi",
+    }
+
+    assert (
+        printout_engine._source_display_title_from_source(source)
+        == "Grundbog kapitel 01 - Introduktion til personlighedspsykologi"
+    )
+
+
+def test_source_display_title_can_build_apa_label_from_author_and_year():
+    source = {
+        "author": "Lewis",
+        "year": "1999",
+        "title": "Issues in the Study of Personality Development",
+    }
+
+    assert printout_engine._source_display_title_from_source(source) == (
+        "Lewis (1999): Issues in the Study of Personality Development"
+    )
 
 
 def test_known_review_source_ids_have_reading_title_overrides():

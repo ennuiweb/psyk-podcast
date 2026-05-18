@@ -22,7 +22,7 @@ The real defect was not just upstream NotebookLM auth:
   recorded the worker as failed instead of letting timed backlog continue
 
 That meant one bad lecture could stall unrelated `retry_scheduled` and
-`waiting_for_artifact` jobs for the same show.
+`waiting_for_artifact` queue records for the same show.
 
 ## Fix Design
 
@@ -33,10 +33,10 @@ The durable fix is to make failure handling explicit and shared:
    `blocked_auth_stale`.
 3. Keep timed retries (`retry_scheduled`) separate from operator-owned
    blockers.
-4. Let `serve-show` continue draining timed backlog even when blocked jobs are
-   present.
-5. Exit cleanly with `blocked_backlog_remaining` only when blocked jobs are the
-   sole remaining work.
+4. Let `serve-show` continue draining timed backlog even when blocked queue
+   records are present.
+5. Exit cleanly with `blocked_backlog_remaining` only when blocked queue records
+   are the sole remaining work.
 6. Keep unknown `failed_retryable` backlog loud and nonzero instead of treating
    it as an expected degraded state.
 
@@ -51,7 +51,7 @@ The durable fix is to make failure handling explicit and shared:
   `notebooklm_queue/constants.py`.
 - Updated `notebooklm_queue/execution.py` so:
   - new auth-stale failures finalize to `blocked_auth_stale`
-  - legacy `failed_retryable` auth jobs are repaired into
+  - legacy `failed_retryable` auth queue records are repaired into
     `blocked_auth_stale`
   - timed retry classes still become `retry_scheduled`
 - Updated `notebooklm_queue/alerts.py` to use the same shared classifier as
@@ -79,8 +79,9 @@ The durable fix is to make failure handling explicit and shared:
 
 Expected behavior after this fix:
 
-- If NotebookLM quota, cooldown, or transient RPC issues occur, the job moves
-  to `retry_scheduled` and the worker keeps waiting/draining automatically.
+- If NotebookLM quota, cooldown, or transient RPC issues occur, the affected
+  queue record moves to `retry_scheduled` and the worker keeps
+  waiting/draining automatically.
 - If NotebookLM auth is stale, the affected lecture moves to
   `blocked_auth_stale`.
 - While any timed backlog still exists, `serve-show` keeps draining it.
@@ -98,6 +99,42 @@ Required operator action for `blocked_auth_stale`:
 2. Re-sync the profile bundle if the host uses the workstation-managed bundle.
 3. Requeue or retry the blocked lecture after auth is healthy again.
 
+## Follow-up Operator Remediation
+
+Operator remediation completed later on 2026-05-11 for the live
+`personlighedspsykologi-en` and `personlighedspsykologi-da` workers:
+
+- Reauthed the local NotebookLM profiles needed for queue rotation:
+  `freudagsbaren`, `oskarvedel`, `nopeeeh`, `stanhawkservices`,
+  `baduljen`, and `oskarhoegsgaard`.
+- Confirmed `tjekdepotadmin` and `vedeloskar` were already healthy.
+- Re-synced the validated workstation-managed bundle to Hetzner and updated
+  both queue env files to prefer that restored pool.
+- Excluded `default` from the live host bundle after a real
+  `notebooklm ... list --json` check on Hetzner still returned auth-expired,
+  even though it had passed an earlier local auth check.
+
+Validated live host profile pool after remediation:
+
+- `freudagsbaren`
+- `oskarvedel`
+- `tjekdepotadmin`
+- `nopeeeh`
+- `vedeloskar`
+- `stanhawkservices`
+- `baduljen`
+- `oskarhoegsgaard`
+
+Result:
+
+- Hetzner validation passed for all `8/8` active profiles using real
+  `list --json` calls against the deployed host storage files.
+- `W12L1` no longer remained in `blocked_auth_stale` after the restored pool
+  was deployed.
+- The remaining work after this point returned to normal timed backlog drain
+  (`retry_scheduled`, `waiting_for_artifact`, `downloading`) rather than
+  auth-blocked queue stall.
+
 ## Validation
 
 Local verification completed on 2026-05-11:
@@ -108,9 +145,18 @@ Local verification completed on 2026-05-11:
 Coverage added/updated for:
 
 - auth-stale execution finalization
-- repair of legacy `failed_retryable` auth jobs
+- repair of legacy `failed_retryable` auth queue records
 - mixed blocked + timed backlog behavior in `serve-show`
 - CLI success semantics for `blocked_backlog_remaining` and
   `service_timeout_reached`
 - bounded `serve-show` loop behavior when the next retry window would overrun
   the configured service budget
+
+Live operational verification completed later on 2026-05-11:
+
+- Hetzner runtime stayed on commit `9490d7c` with both queue services
+  reporting `Result=success` and `ExecMainStatus=0`.
+- The restored profile pool was validated directly on the host before the
+  services were restarted.
+- Queue summaries after remediation showed ongoing drain with no
+  `blocked_auth_stale` queue records in the current EN/DA summaries.

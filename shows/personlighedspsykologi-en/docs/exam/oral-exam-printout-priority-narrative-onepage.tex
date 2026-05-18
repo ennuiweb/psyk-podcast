@@ -1,0 +1,142 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,portrait,left=9mm,right=9mm,top=10mm,bottom=11mm,headheight=9pt,headsep=3mm,footskip=6mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\setmainfont{lmroman12-regular.otf}[
+  BoldFont = lmroman12-bold.otf,
+  ItalicFont = lmroman10-italic.otf
+]
+\setmonofont{lmmono10-regular.otf}
+\pagestyle{fancy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=1em
+
+\definecolor{textgray}{HTML}{111111}
+\definecolor{softgray}{HTML}{444444}
+\definecolor{midgray}{HTML}{777777}
+
+\newcommand{\metafont}{\fontsize{6.25}{6.95}\selectfont\ttfamily}
+\fancyhf{}
+\fancyhead[L]{\metafont side 1/1}
+\fancyhead[C]{\metafont personlighedspsykologi | prioriteret printoutlæsning}
+\fancyhead[R]{\metafont side 1/1}
+\fancyfoot[L]{\metafont ingen faste datoer}
+\fancyfoot[C]{\metafont akademisk rank A}
+\fancyfoot[R]{\metafont side 1/1}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\blockfont}{\fontsize{6.55}{7.10}\selectfont}
+\newcommand{\readingfont}{\fontsize{5.85}{6.42}\selectfont}
+\newcommand{\smallfont}{\fontsize{5.55}{6.12}\selectfont}
+\newcommand{\checkfont}{\fontsize{5.0}{5.65}\selectfont\ttfamily\color{softgray}}
+\newcommand{\tickbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{3.55pt}\rule{3.55pt}{0pt}}\endgroup}
+\newcommand{\bigbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{4.75pt}\rule{4.75pt}{0pt}}\endgroup}
+\newcommand{\readingbox}{\begingroup\setlength{\fboxsep}{0pt}\fbox{\rule{0pt}{5.7pt}\rule{5.7pt}{0pt}}\endgroup}
+\newcommand{\track}{1~\tickbox\hspace{2.25mm}2~\bigbox\hspace{2.25mm}3~\tickbox\hspace{2.25mm}4~\tickbox}
+
+\newcommand{\block}[1]{%
+  \vspace{0.82mm}
+  \rule{\linewidth}{0.68pt}\par
+  \vspace{0.32mm}
+  {\blockfont\ttfamily #1}\par
+  \vspace{0.58mm}
+}
+
+\newcommand{\readingitem}[2]{%
+  \noindent\begin{minipage}{\linewidth}
+    {\readingfont\raggedright #1\par}
+    \vspace{0.12mm}
+    {\checkfont #2\hfill\raisebox{-0.85pt}{\readingbox}\par}
+    \vspace{0.10mm}
+    {\checkfont \track\par}
+  \end{minipage}\par
+  \vspace{0.55mm}
+}
+
+\newcommand{\plainitem}[1]{%
+  \noindent{\readingfont\raggedright #1\par}
+  \vspace{0.44mm}
+}
+
+\begin{document}
+\color{textgray}
+
+\vspace*{-1.4mm}
+\begin{center}
+{\fontsize{7.6}{8.3}\selectfont\ttfamily personlighedspsykologi}\\[0.55mm]
+{\fontsize{15.7}{16.4}\selectfont\bfseries PRIORITERET PRINTOUTPLAN}\\[0.85mm]
+{\fontsize{6.55}{7.2}\selectfont narrativ psykologi er læst | vælg hvilke tekster der er vigtige hvornår}\\[0.9mm]
+\rule{0.56\linewidth}{0.45pt}\\[0.9mm]
+{\fontsize{6.35}{7.0}\selectfont
+\textbf{A} = akademisk rank \quad
+\textbf{1-4} = guide, abridged, active, consolidation
+}
+\end{center}
+
+\vspace{0.9mm}
+\noindent
+\begin{minipage}[t]{0.315\linewidth}
+\block{START HER}
+\readingitem{W10L2 Foucault (1997)}{A4}
+\readingitem{W11L1 Grundbog kapitel 11 - Postpsykologisk subje...}{A5}
+\readingitem{W09L1 Grundbog kapitel 10 - Kritisk psykologi}{A6}
+\readingitem{W08L2 Holzkamp (1982)}{A7}
+\readingitem{W12L1 Grundbog kapitel 08 - Personlighed, subjekt...}{A8}
+\readingitem{W09L1 Holzkamp (2013)}{A9}
+\readingitem{W12L1 Elias (2000)}{A12}
+
+\block{LÆS DEREFTER}
+\readingitem{W08L2 Tolman (2009)}{A14}
+\readingitem{W08L1 Lamiell (2021)}{A15}
+\readingitem{W07L2 Giorgi (2005)}{A17}
+\readingitem{W06L1 Moeskær Hansen \& Roald (2022)}{A18}
+\readingitem{W06L1 Spinelli (2005)}{A19}
+\readingitem{W08L1 Laux et al (2010)}{A22}
+\readingitem{W07L2 Evans (1975)}{A23}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.315\linewidth}
+\block{UDBYG | agens, praksis, mening}
+\readingitem{W05L2 Grundbog kapitel 07 - Nyere psykoanalytiske...}{A39}
+\readingitem{W07L1 Jacobsen (2021)}{A41}
+\readingitem{W04L1 Gammelgaard (2007)}{A42}
+\readingitem{W05L1 Ricoeur (1981)}{A44}
+
+\block{BRO-OVERBLIK | selektivt}
+\plainitem{W04L2 Lacan (1966)}
+\plainitem{W04L1 Freud (1973/1933)}
+\plainitem{W01L2 Phan et al. (2024)}
+\plainitem{W05L2 Andkjær Olsen \& Køppe (1991a + 1991b)}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.315\linewidth}
+\block{KONTRASTBASELINE | brug mindre tid}
+\readingitem{W02L2 Bleidorn et al. (2022)}{A10}
+\readingitem{W01L1 Grundbog kapitel 01 - Introduktion til pers...}{A11}
+\readingitem{W02L1 Columbus \& Strandsbjerg (2025)}{A20}
+\readingitem{W02L2 Li \& Wilt (2025)}{A21}
+\readingitem{W03L1 Lu, Benet-Martínez \& Wang (2023)}{A34}
+\readingitem{W02L1 Zettler et al. (2020)}{A36}
+
+\block{12 LÆSEDAGE | uden datoer}
+\plainitem{\textbf{1-3:} start her.}
+\plainitem{\textbf{4-6:} læs derefter.}
+\plainitem{\textbf{7-8:} udbyg hvis der er tid.}
+\plainitem{\textbf{9:} baseline: træk, stabilitet, assessment.}
+\plainitem{\textbf{10:} bro- og overblikstekster.}
+\plainitem{\textbf{11:} mundtlig syntese på tværs.}
+\plainitem{\textbf{12:} prøvefremlæggelse med narrativt centrum.}
+\end{minipage}
+
+\vfill
+\begin{center}
+{\smallfont\color{midgray}
+Planen bygger på kildevægtning, concept graph, course synthesis og revised lecture substrates.
+}
+\end{center}
+
+\end{document}

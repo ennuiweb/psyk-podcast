@@ -97,7 +97,7 @@ These are non-negotiable.
 1. One canonical writer per migrated show.
 2. Episode identity must remain stable across migration.
 3. Queue state lives outside git and survives process restarts.
-4. Publish decisions are derived from a single job snapshot, not from mixed-time reads across multiple systems.
+4. Publish decisions are derived from a single queue-record snapshot, not from mixed-time reads across multiple systems.
 5. Feed, quiz, Spotify map, and manifest outputs for one publish run must all derive from the same validated artifact set.
 6. Validation failure blocks publish.
 7. Manual blockers must be represented explicitly in state.
@@ -122,7 +122,7 @@ Each class of state must have a single owner.
 
 | State | Canonical owner | Notes |
 |---|---|---|
-| Queue/job lifecycle | Hetzner queue store | Outside git, atomic JSON writes, per-show locks |
+| Queue-record lifecycle | Hetzner queue store | Outside git, atomic JSON writes, per-show locks |
 | Raw generated audio before publish | Hetzner workspace | Ephemeral or retained per retention policy |
 | Published audio objects | R2 | Stable keys for migrated shows |
 | Podcast metadata and feed artifacts | Git repo | Commit only validated generated files |
@@ -143,11 +143,12 @@ The ownership state must be explicit in show config or an equivalent central reg
 
 ## Queue Model
 
-### Job Identity
+### Queue Record Identity
 
-Jobs are lecture-scoped, not file-scoped.
+Queue records are lecture-scoped implementation records, not output jobs or
+file-scoped items.
 
-Canonical job identity:
+Canonical queue-record identity, called `JobIdentity` in the current code:
 
 - `show_slug`
 - `subject_slug`
@@ -164,7 +165,8 @@ Queue state should live outside git, for example:
 
 - `/var/lib/podcasts/notebooklm-queue/`
 
-Recommended layout:
+Recommended layout. The path names below keep the historical `jobs`/`job-id`
+implementation spelling; prose should still call them queue records.
 
 - `jobs/<show>/<job-id>.json`
 - `indexes/<show>.json`
@@ -182,7 +184,7 @@ Implementation rules:
 
 ### Queue State Machine
 
-Each job should move through explicit states.
+Each queue record should move through explicit states.
 
 Discovery and eligibility:
 
@@ -238,7 +240,7 @@ Object storage, git, and remote quiz sync do not support one global atomic trans
 ### Publish Order
 
 1. Acquire the show lock.
-2. Load the exact job snapshot to publish.
+2. Load the exact queue-record snapshot to publish.
 3. Validate local generated artifacts before any external side effects.
 4. Upload audio objects to final deterministic R2 keys.
 5. Verify object existence, size, checksum when available, and public URL construction.
@@ -252,7 +254,7 @@ Object storage, git, and remote quiz sync do not support one global atomic trans
 8. Commit and push only allowlisted generated files.
 9. Sync quiz JSON to the droplet.
 10. Trigger downstream reconcile or deploy behavior as required.
-11. Mark the job completed and persist a run manifest with every produced artifact reference.
+11. Mark the queue record completed and persist a run manifest with every produced artifact reference.
 
 ### Why Upload Happens Before Git Push
 
@@ -384,7 +386,7 @@ Required queue states:
 - `approved_for_publish`
 - `rejected_manual_review`
 
-Each blocked job must point to the exact missing prerequisite, not only a generic blocked label.
+Each blocked queue record must point to the exact missing prerequisite, not only a generic blocked label.
 
 ## Observability And Operations
 
@@ -398,7 +400,7 @@ Each blocked job must point to the exact missing prerequisite, not only a generi
 ### Required Operational Outputs
 
 - per-run structured log
-- per-job run manifest
+- per-queue-record run manifest
 - queue summary command suitable for SSH use
 - dead-letter listing
 - recent-failure summary
@@ -412,7 +414,7 @@ At minimum, alert on:
 - publish validation failure
 - git push failure after retries
 - quiz sync failure
-- dead-letter job creation
+- dead-letter queue-record creation
 
 ## Recovery And Rollback
 
@@ -537,7 +539,7 @@ Deliverables:
 - `notebooklm_queue/` package
 - queue store with atomic writes
 - per-show lock handling
-- job discovery and report commands
+- queue-record discovery and report commands
 - dry-run execution path
 
 Exit criteria:
@@ -549,9 +551,9 @@ Exit criteria:
 Current implementation status, 2026-04-29:
 
 - queue-core foundation has been implemented in `notebooklm_queue/` and `scripts/notebooklm_queue.py`
-- current coverage includes deterministic job identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, publish-bundle preparation, durable run/publish manifests, and focused unit tests
+- current coverage includes deterministic queue-record identity, atomic JSON storage, show/global indexes, lock handling, state transitions, claim/retry/reconcile operations, adapter-based discovery, dry-run execution planning, real generate/download execution, publish-bundle preparation, durable run/publish manifests, and focused unit tests
 - current discovery adapters cover `bioneuro` and `personlighedspsykologi-en`
-- successful execution now advances to `awaiting_publish`, `prepare-publish` can validate local generated artifacts and move a job to `approved_for_publish`, `upload-r2` can upload approved media artifacts to deterministic R2 object keys and move a job to `objects_uploaded`, and `rebuild-metadata` can now regenerate repo-side RSS/inventory plus show-specific sidecars before moving the job to `committing_repo_artifacts`; commit/push, downstream sync, and Hetzner service deployment still remain pending
+- successful execution now advances to `awaiting_publish`, `prepare-publish` can validate local generated artifacts and move a queue record to `approved_for_publish`, `upload-r2` can upload approved media artifacts to deterministic R2 object keys and move a queue record to `objects_uploaded`, and `rebuild-metadata` can now regenerate repo-side RSS/inventory plus show-specific sidecars before moving the queue record to `committing_repo_artifacts`; commit/push, downstream sync, and Hetzner service deployment still remain pending
 
 ### Phase 2 - Publication Subsystem
 
@@ -638,10 +640,10 @@ Status legend:
 | ID | Status | Item | Notes |
 |---|---|---|---|
 | A1 | done | Create `notebooklm_queue` module skeleton | Implemented as the queue-core foundation package. |
-| A2 | done | Implement queue store with atomic JSON writes | Built with show/global indexes and durable job payloads. |
+| A2 | done | Implement queue store with atomic JSON writes | Built with show/global indexes and durable queue-record payloads. |
 | A3 | done | Add per-show lock handling | Implemented via advisory file locks. |
-| A4 | done | Define lecture-scoped job identity | Implemented with deterministic `show + subject + lecture + content_types + config_hash + campaign` hashing. |
-| A5 | done | Implement explicit job state machine | State vocabulary and transition history are in the queue core. |
+| A4 | done | Define lecture-scoped queue-record identity | Implemented with deterministic `show + subject + lecture + content_types + config_hash + campaign` hashing. |
+| A5 | done | Implement explicit queue-record state machine | State vocabulary and transition history are in the queue core. |
 | A6 | done | Add queue report and inspect CLI | `enqueue`, `list`, `inspect`, `report`, `transition`, `claim-next`, `retry-ready`, and `reconcile` are implemented. |
 | A7 | done | Add adapter-based discovery and dry-run plan commands | `discover` and `run-dry` are implemented for supported NotebookLM subjects. |
 
@@ -673,7 +675,7 @@ Status legend:
 | D3 | done | Integrate Spotify map sync | `rebuild-metadata` now refreshes Spotify maps for supported shows before repo publication. |
 | D4 | done | Integrate content manifest rebuild | `rebuild-metadata` now rebuilds Freudd content manifests for supported shows before repo publication. |
 | D5 | done | Define generated-file commit allowlist | `push-repo` now stages and commits only the active show's generated artifacts and fails closed on unexpected tracked repo dirtiness. |
-| D6 | done | Observe expected downstream deploy workflows | `sync-downstream` now waits for expected push-triggered workflows such as `deploy-freudd-portal.yml` and marks jobs `completed` only after success. |
+| D6 | done | Observe expected downstream deploy workflows | `sync-downstream` now waits for expected push-triggered workflows such as `deploy-freudd-portal.yml` and marks queue records `completed` only after success. |
 
 ### Workstream E - Cutover And Ownership
 

@@ -26,8 +26,9 @@ Canonical repo entrypoints outside this folder:
 - [freudd_portal/README.md](../freudd_portal/README.md) - full Freudd product and runtime contract.
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
 - [shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
+- [shows/personlighedspsykologi-en/docs/exam/oral-exam-study-plan-2026.md](../shows/personlighedspsykologi-en/docs/exam/oral-exam-study-plan-2026.md) - Danish oral-exam study plan plus the canonical one-page printable A4 checklist.
 - [shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md](../shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md) - alternative problem-first printout mode for reward-driven learners.
-- [notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md](../notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md) - sidecar review workspace for problem-driven printout candidates.
+- [notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md](../notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md) - current canonical PDF-producing printout workspace; main-code integration is still pending.
 
 Cross-doc principle:
 

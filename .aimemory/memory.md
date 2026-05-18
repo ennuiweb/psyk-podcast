@@ -1,5 +1,14 @@
 # Podcasts Memory
 
+## Generation Policy
+
+- When Oskar asks to "generer podcasts" or similar for personlighedspsykologi-en, always follow the A/B rollout plan in `shows/personlighedspsykologi-en/regeneration_registry.json` (campaign: `prompt-rollout-2026-04`).
+- The goal is to regenerate all 120 in-scope episodes with the new prompt system and promote them to `active_variant: B`, replacing the baseline (A) variants.
+- Registry is the source of truth for what has been regenerated, what is pending, and what is active.
+- Always sync the registry after inventory-affecting generation: `sync_regeneration_registry.py`.
+- Full rollout sequence: generate → download → upload to Drive → sync registry → rebuild feed → rebuild content_manifest → deploy if needed.
+- Canonical operations runbook: `shows/personlighedspsykologi-en/docs/podcast-flow-operations.md`.
+
 ## Snapshot
 
 - Feed model note, 2026-04-19: the shared feed pipeline now supports both `storage.provider=drive` and `storage.provider=r2`. Feed generation uses `podcast-tools/storage_backends.py`, preserves GUID continuity from `episode_inventory.json`, and can read Cloudflare R2 either from a manifest or direct bucket listing.

@@ -14,11 +14,11 @@ NotebookLM generation mechanics live in
 | Manual episode overrides | `shows/personlighedspsykologi-en/episode_metadata.json` |
 | Reading summaries | `shows/personlighedspsykologi-en/reading_summaries.json` |
 | Weekly overview summaries | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` |
-| Reading key mapping | `shows/personlighedspsykologi-en/docs/reading-file-key.md` |
+| Reading key mapping | `shows/personlighedspsykologi-en/docs/data/reading-file-key.md` |
 | Slide mapping | `shows/personlighedspsykologi-en/slides_catalog.json` |
-| Learning-material output scope and evaluation | `shows/personlighedspsykologi-en/docs/learning-material-outputs.md` |
-| Artifact ownership | `shows/personlighedspsykologi-en/docs/podcast-flow-artifacts.md` |
-| Operational runbook | `shows/personlighedspsykologi-en/docs/podcast-flow-operations.md` |
+| Learning-material output scope and evaluation | `shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md` |
+| Artifact ownership | `shows/personlighedspsykologi-en/docs/operations/podcast-flow-artifacts.md` |
+| Operational runbook | `shows/personlighedspsykologi-en/docs/operations/podcast-flow-operations.md` |
 
 ## Storage And Publication
 
@@ -50,7 +50,7 @@ NotebookLM generation mechanics live in
 ## Reading And Summary Maintenance
 
 - The canonical reading-key source of truth is
-  `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+  `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`.
 - The OneDrive `.ai/reading-file-key.md` copy is an exported mirror for
   non-repo workflows and should not be edited during normal operation.
 - Important readings are marked by filenames starting with `W##L# X` and are

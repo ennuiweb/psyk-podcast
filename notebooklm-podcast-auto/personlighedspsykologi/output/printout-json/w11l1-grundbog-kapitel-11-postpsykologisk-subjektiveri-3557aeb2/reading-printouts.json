@@ -1,0 +1,1153 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T16:54:56Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "10d935e615f3907f87768d59dd501416dd7bfeb97f4f24b3561f6bec8fee4eb1",
+    "source_files_signature": "6a35239db0ae3f9977ffed485578694723f8aeba21da2a26cc7b0cf657f3d950",
+    "source_card": "2e643eb110bd557903e89969f78b3dd5d55ebaacc49832102b95d376d9035948",
+    "revised_lecture_substrate": "9c167356fac4228a6b1295f59cf658a786d6ada2f7e831aa760b7374830fcc8b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+    "lecture_key": "W11L1",
+    "title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+    "reading_title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 45,
+    "estimated_token_count": 29250,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W11L1 Poststrukturalisme, diskursiv psykologi og feministisk teori/W11L1 Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori.pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 45,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "lecture_key": "W11L1",
+      "source_title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug dette ark til at styre din læsning. Følg læseruten og løs de specifikke problemer undervejs.",
+      "teaser_paragraphs": [
+        "Vi står over for et grundlæggende problem. Gennem kursets første uger har vi jagtet 'personligheden' som en indre, stabil kerne, der er årsag til vores adfærd. Men hvad nu, hvis denne kerne er en fiktion?",
+        "Dette kapitel introducerer postpsykologien, som fuldstændig afmonterer ideen om det selvberoende menneske. Din opgave er at finde ud af, hvorfor de aflyser personligheden, og hvad de sætter i stedet.",
+        "Tekstens primære påstand er, at personlighed ikke er noget vi er, men noget vi gør. Det er en performativ effekt af det sprog vi bruger, de rum vi befinder os i, og de sociale forventninger vi møder.",
+        "Din mission under læsningen er at opspore beviserne for denne dekonstruktion. Du skal fange mekanismerne bag 'subjektivering' – den paradoksale proces, hvor vi opnår handlekraft ved at underkaste os andres normer og sprogbrug.",
+        "Senere skal du udvide bevisførelsen fra udelukkende at handle om sprog til også at omfatte fysiske genstande. Du skal afgøre, hvordan møbler som Freuds sofa eller en simpel kuglepude aktivt griber ind og former os.",
+        "Brug teksten til at opbygge et stærkt modargument mod trækpsykologien. Kan du bevise, at personlighed er et historisk og kontekstuelt produkt frem for en medfødt essens?"
+      ],
+      "main_problem": "Afgør om personlighed er en indre, stabil årsag til adfærd, eller om det er en performativ effekt af samfundets diskurser og materielle miljøer.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad sætter postpsykologien i stedet for det klassiske personlighedsbegreb?",
+          "why_it_matters": "Det etablerer det epistemologiske brud med de tidligere ugers teorier.",
+          "answer_form": "et begreb og en kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Bevis at subjektivering er en paradoksal dobbeltbevægelse?",
+          "why_it_matters": "Subjektivering er kernen i tekstens forståelse af agens.",
+          "answer_form": "et sæt af to modsatrettede processer"
+        },
+        {
+          "number": 3,
+          "question": "Afgør hvordan diskursive praksisser skaber 'typer' af mennesker?",
+          "why_it_matters": "Det forklarer, hvordan sociale kategorier omsættes til oplevet identitet.",
+          "answer_form": "en konkret mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Fang forskellen på et 'subjekt' og et 'abjekt' via Wahid-eksemplet?",
+          "why_it_matters": "Det viser de sociale omkostninger og magtdynamikker i identitetsdannelsen.",
+          "answer_form": "en kort kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Opspor beviser for, at materielle ting og affektive stemninger co-producerer subjektivitet?",
+          "why_it_matters": "Det udvider analysen fra udelukkende at handle om sprog til at gælde det levede, fysiske miljø.",
+          "answer_form": "to konkrete eksempler fra teksten"
+        },
+        {
+          "number": 6,
+          "question": "Opstil tekstens tre afsluttende kontraster mellem klassisk og postpsykologisk teori?",
+          "why_it_matters": "Det samler kapitelts pointer i et format, der er direkte overførbart til eksamenssammenligninger.",
+          "answer_form": "tre par af modsætninger"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det absolut stærkeste teoretiske fundament for kursets orienteringspunkter om 'historicitet' og 'kontekst'. Den er uundværlig for at kunne dekonstruere tidlige fænomenologiske og trækbaserede modeller til eksamen.",
+      "overview": [
+        "Teksten dekonstruerer det klassiske begreb om en stabil personlighed.",
+        "Den forklarer, hvordan identitet opstår gennem diskursive praksisser og subjektivering.",
+        "Den introducerer materialitet og affekt som aktive medproducenter af det menneskelige subjekt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 374-382",
+          "task": "Find aflysningen af den indre kerne og find ud af, hvad begrebet subjektivitet dækker over.",
+          "why_it_matters": "Det lægger fundamentet for at forstå tekstens anti-essentialistiske projekt.",
+          "stop_signal": "når du når overskriften 'Subjektivering, magt og abjektgørelse'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 383-384",
+          "task": "Løs paradokset om subjektivering og fang eksemplet med den klamme Wahid.",
+          "why_it_matters": "Her finder du tekstens centrale forklaring på, hvordan samfundets normer bliver til vores oplevelse af agens.",
+          "stop_signal": "når du når overskriften 'Diskurs og diskursive praksisser'"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 385-388",
+          "task": "Find beviset for, at sociokulturelle kategorier ikke er noget man 'er', men noget man 'gør'.",
+          "why_it_matters": "Det viser diskursens formende magt over hverdagens handlemuligheder.",
+          "stop_signal": "når forfatterne beder dig opsummere og indskyde en kontrast til posttænkningen"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 392-401",
+          "task": "Spol frem til post-00'erne. Find eksemplerne med sofaen og kuglepuden for at bevise, at ting har agens.",
+          "why_it_matters": "Dette skiller tekstens 'nye' materialisme fra ældre, udelukkende sprogbaserede socialkonstruktionismer.",
+          "stop_signal": "når du når overskriften 'Genbesøg, lån og genbrug'"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 407-410",
+          "task": "Opbyg tekstens endelige model ved at finde de tre kontraster under afrundingen.",
+          "why_it_matters": "Dette afsnit forærer dig strukturen til at sammenligne teksten med resten af pensum.",
+          "stop_signal": "når du når overskriften 'Opfindelse af personlighed'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Boks 3. Klamme Wahid",
+          "why": "Konkretiserer abjektgørelse.",
+          "where_to_look": "Siderne 383-384"
+        },
+        {
+          "target": "dobbeltbevægelsen ligger agens",
+          "why": "Definerer subjektiveringens vigtigste paradoks.",
+          "where_to_look": "Siderne 383-384"
+        },
+        {
+          "target": "komfortteknologier som medproducent",
+          "why": "Beviser at ting har aktiv magt over selvet.",
+          "where_to_look": "Siderne 394-396"
+        },
+        {
+          "target": "kuglepude til en af mine elever",
+          "why": "Viser hvordan materielle genstande styrer kroppens urolige stemninger.",
+          "where_to_look": "Siderne 399-400"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange historiske og genealogiske redegørelser for psykologiens rødder i starten af kapitlet.",
+        "De dybe teoretiske referencer til Lacan, Darwin og specifikke kvantefysiske debatter om Barad.",
+        "Metodediskussionerne om, hvordan man læser sit empiriske materiale 'sreflekterende' og normkritisk."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er en fokuseret gennemgang af kapitlets løsninger. Brug denne tekst til at opbygge dit forsvar for postpsykologien.",
+      "coverage_note": "Afsnittene om tekstens forskningsmetodiske forankring, dens videnskabshistoriske referencer til Darwin og neurovidenskab samt oversigterne over specifikke analysestrategier er udeladt for at fokusere rent på den subjektiveringspsykologiske model.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 374-382",
+          "heading": "Aflysningen af den indre kerne",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Find ud af, hvad postpsykologien sætter i stedet for den stabile personlighed?",
+          "explanation_paragraphs": [
+            "Postpsykologien afviser blankt ideen om, at individet har en fast og afgrænset kerne, der styrer vores adfærd indefra. I stedet for at lede efter en stabil, iboende 'personlighed', skifter de fokus til at undersøge 'subjektivitet'.",
+            "Subjektivitet anskues som en tilstand, der løbende produceres og omformes af sociale, historiske og lokale relationer. Selve det at vi i moderne tid oplever os selv som hele, sammenhængende personer betragtes som en kulturel illusion – en specifik konstruktion, som vestlige samfund opretholder.",
+            "Analysens opgave er ikke at fjerne mennesket, men at undersøge de underliggende processer, der overhovedet gør det muligt og plausibelt for os at forstå os selv og andre ud fra personlighedstyper."
+          ],
+          "key_points": [
+            "Personlighedsbegrebet udskiftes med begrebet subjektivitet.",
+            "Subjektivitet er ikke en essens, men en ongoing performativ tilblivelsesproces.",
+            "Ideen om det 'sammenhængende menneske' behandles som en fiktion med politiske konsekvenser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aflyser ideen om, at individet",
+              "why_it_matters": "Det markerer forfatternes klare brud med den klassiske humanismes kerneantagelse.",
+              "source_location": "Side 382"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 382",
+              "passage": "Subjektivitet er i det perspektiv ikke noget, man har eller er: Man aflyser altså ideen om, at individet har en fast og afgrænset kerne. Subjektivitet er noget, der gøres.",
+              "why_it_matters": "Citater leverer det mest direkte bevis på, at identitet ændres fra at være et substantiv (væren) til et verbum (gøren)."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 383-384",
+          "heading": "Dobbeltbevægelsen i subjektivering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Løs paradokset: Hvordan kan det at underkaste sig skabe handlekraft?",
+          "explanation_paragraphs": [
+            "At blive et 'subjekt' – processen subjektivering – er præget af et grundlæggende paradoks. Det kræver, at individet underkaster sig samfundets specifikke livsbetingelser, normer og forventninger. Men det er præcis ved at acceptere og indoptage disse rammer, at man opnår mestring og agens.",
+            "Når du overtager samfundets fiktion om, at du er et bestemt slags selvberoende individ, begynder omgivelserne at genkende og anerkende dig som sådan. På den måde hænger underkastelse uløseligt sammen med handleevne.",
+            "Nogle gange udelukkes mennesker fra de accepterede normer for genkendelighed. Denne udelukkelse kaldes 'abjektgørelse'. En skoleelev som Wahid, der af andre stemples som 'klam', frarøves sin sociale eksistensberettigelse og gøres til et abjekt – et ikke-subjekt, der slet ikke anses for at være et legitimt menneske i konteksten."
+          ],
+          "key_points": [
+            "Subjektivering er en dobbeltbevægelse mellem at blive underkastet og opnå mestring.",
+            "Agens opstår ikke ved at stille sig uden for normerne, men ved at indoptage dem med succes.",
+            "Abjektgørelse er den hårde, ekskluderende proces, hvor nogen fraskrives menneskelig legitimitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "dobbeltbevægelsen ligger agens",
+              "why_it_matters": "Dette opsummerer paradokset præcist.",
+              "source_location": "Side 383"
+            },
+            {
+              "phrase": "noget/nogen gøres til abjekt",
+              "why_it_matters": "Definerer den absolutte eksklusionsmekanisme i sociale systemer.",
+              "source_location": "Side 384"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 383",
+              "passage": "Subjektivering handler om en paradoksal sammenhæng mellem underkastelse og handleevne - i dobbeltbevægelsen ligger agens: Ved at indoptage fiktionen om, at du er et selvberoende individ (...) vil omgivelserne (muligvis) genkende dig som netop sådan et individ.",
+              "why_it_matters": "Det leverer den stærkeste teoretiske forklaring på agens i hele kapitlet."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 385-388",
+          "heading": "Diskursens formende magt",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Fang mekanismen: Hvordan skaber samfundets måder at tale på vores indre liv?",
+          "explanation_paragraphs": [
+            "Vores virkelighed styres af diskurser, som opstiller spillereglerne for, hvad vi overhovedet har mulighed for at se, tænke, sige og gøre. Diskurser kommer til udtryk gennem 'diskursive praksisser' – altså hverdagens konkrete sociale handlinger og sprogbrug.",
+            "I disse praksisser tilbydes vi en række 'subjektpositioner', som er foruddefinerede roller eller skabeloner. Det kan være positioner som 'dygtig elev', 'ADHD-barn' eller 'mandlig leder'. Nogle positioner er trygge og behagelige, mens andre kan opleves ulidelige og snævre.",
+            "Teksten peger især på det 'performative' aspekt af disse praksisser. Sociokulturelle kategorier som køn og race er ikke biologiske baggrundsvariable; de er effekter af noget, vi 'gør' om og om igen gennem vores kropslige ageren og talemåder. Vi skaber illusionen om essens gennem konstant repetition."
+          ],
+          "key_points": [
+            "Diskursive praksisser fastsætter betingelserne for handling og tænkning.",
+            "Diskurser tilbyder os specifikke subjektpositioner, som vi kan indtage eller tvinges ind i.",
+            "Identitetskategorier gøres virkelige gennem handlemæssig gentagelse (performativitet)."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 392-401",
+          "heading": "Når ting og følelser overtager styringen",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Bevis at fysiske objekter også har en slags psykologisk magt?",
+          "explanation_paragraphs": [
+            "Siden 00'erne har postpsykologien flyttet fokus væk fra udelukkende at kigge på sprog. Nu inkluderes 'materialitet' (tingene omkring os) og 'affektivitet' (stemninger, intensiteter, ladninger). Denne udvikling viser, at menneskelige subjektiviteter også formes af det non-humane.",
+            "Fysiske omgivelser agerer som direkte medproducenter af vores selver. Det gælder for eksempel den briks, Freud benyttede, som fungerede som en 'komfortteknologi', der fremkaldte en specifik form for patientadfærd og passiv reflektion.",
+            "Et andet klart bevis er brugen af møblet 'kuglepuden' i skolen. Puden suger barnets fysiske uro til sig og neutraliserer elevens uønskede affekt. Her er det altså et stykke interiør – et konkret møbel – der absorberer forhindringer og 'gør' barnet klar til at træde ind i en anerkendt elevposition."
+          ],
+          "key_points": [
+            "Postpsykologi fokuserer i dag også på materialitet og fysiske stemninger, ikke kun diskurs.",
+            "Fysiske objekter betragtes som aktører, der direkte omformer kroppe og adfærd.",
+            "Eksemplerne med Freuds sofa og skolens kuglepude beviser de dødsensfaste tings agens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "komfortteknologier som medproducent",
+              "why_it_matters": "Udtrykket sammenfatter tingenes evne til at forme det menneskelige sind.",
+              "source_location": "Side 395"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 399",
+              "passage": "Altså, jeg kunne godt bruge sådan en kuglepude til en af mine elever. [...] det er overordentligt svært for hende, for der er bare knald på, men så nu er det jo så sagt gentagne gange over hele året 'rolig nu med kroppen, ikk'",
+              "why_it_matters": "Citatet forankrer den abstrakte materialitetsteori i en fuldstændig håndgribelig klasseværelsessituation."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 407-410",
+          "heading": "Tre problematiseringer af personlighed",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Løs kontrasten: Opstil forskellen mellem det klassiske og det nye syn på selvet?",
+          "explanation_paragraphs": [
+            "For at afrunde kapitlet opstilles tre skarpe kontraster, som systematiserer forskellen på den klassiske personlighedstænkning og den postpsykologiske subjektiveringsforståelse.",
+            "1. Kausalitet overfor Performativitet: I moderne psykologi er personligheden den indre årsag, der dikterer adfærden. I postpsykologi er personlighed omvendt en performativ effekt – et produkt af de forventninger, man møder og tilpasser sig.",
+            "2. Entydighed overfor Multiplicitet: Klassisk set antages det voksne menneske at være sammenhængende og entydigt i sin kerne. Postpsykologien ser selvet som fragmenteret og opdelt i multiple subjekter, der aktiveres afhængig af de tilgængelige diskursive praksisser.",
+            "3. Centreret overfor Distribueret: Frem for at placere personligheden solidt isoleret inde i hovedet på det enkelte menneske, opfattes den som flydende og distribueret – den udspiller sig ude i relationerne, imellem miljøets objekter og kroppene."
+          ],
+          "key_points": [
+            "Performativ effekt afviser indre kausal årsag.",
+            "Kontekstafhængig multiplicitet afviser livslang entydighed.",
+            "Distribueret tilblivelse i netværket afviser den centrerede, indre kerne."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Find ud af, hvad postpsykologien sætter i stedet for den stabile personlighed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "et begreb og en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Løs paradokset: Hvordan kan det at underkaste sig skabe handlekraft?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "et sæt af to modsatrettede processer",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang mekanismen: Hvordan skaber samfundets måder at tale på vores indre liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "en konkret mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at fysiske objekter også har en slags psykologisk magt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "to konkrete eksempler fra teksten",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Løs kontrasten: Opstil forskellen mellem det klassiske og det nye syn på selvet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "tre par af modsætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Afgør om personlighed er en indre, stabil årsag til adfærd, eller om det er en performativ effekt af samfundets diskurser og materielle miljøer.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen først. Genbesøg derefter læsearket for at rette og reparere de huller, du opdager i din model.",
+      "overview": [
+        "Mennesket har ikke en forudbestemt indre essens, men bliver løbende til.",
+        "Vores handlekraft opstår paradoksalt nok, idet vi lader os forme af diskurser.",
+        "Identitet opbygges i samspil med både det talte sprog og materielle genstande."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Postpsykologien foretrækker at undersøge processuel _________ i stedet for at lede efter en stabil personlighed.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Paradokset i subjektivering er, at man kun opnår handlekraft og anerkendelse, hvis man først _________ sig de samfundsmæssige betingelser.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 udsagnsord i nutid"
+        },
+        {
+          "number": 3,
+          "sentence": "Når et individ nægtes kulturel genkendelighed og smides ud af de meningsfulde kategorier, udsættes det for _________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det sæt af sproglige rammer, der dikterer hvilke roller vi har til rådighed at indtage, betegnes som diskursive _________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Køn betragtes ikke som et biologisk faktum, men som et _________ fænomen, der frembringes gennem gentagne handlinger.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "At en simpel genstand som en _________ kan pacificere en skoleelev, demonstrerer materialitetens aktive rolle.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 7,
+          "sentence": "Klassisk psykologi mener at personligheden skaber adfærd; postpsykologien mener derimod, at adfærd og forventninger _________ personligheden.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 udsagnsord i nutid"
+        },
+        {
+          "number": 8,
+          "sentence": "I stedet for at opfatte selvet som én solid enhed, ser postpsykologien os som udgjort af _________ selver.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn paradokset for subjektivering. Vis, hvordan de to modstridende bevægelser er afhængige af hinanden for at producere et gyldigt individ.",
+          "required_elements": [
+            "Samfundets krav",
+            "Underkastelse",
+            "Mestring/Agens",
+            "Pile der viser, at den ene forudsætter den anden"
+          ],
+          "blank_space_hint": "Brug en cirkel- eller loop-struktur til at vise afhængigheden."
+        },
+        {
+          "number": 2,
+          "task": "Konstruer en sammenligningstabel over de tre store teoretiske forskelle på den gamle og den nye model.",
+          "required_elements": [
+            "Kolonnen: Klassisk model",
+            "Kolonnen: Postpsykologisk model",
+            "De tre rækker: Årsag/effekt, Kernens tilstand, og Lokalisering"
+          ],
+          "blank_space_hint": "Tegn et gitter med 2 kolonner og 3 rækker."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark forbereder dig på at trække tekstens mekanismer med ind i eksamenssituationen som solide beviser.",
+      "use_this_text_for": [
+        "At levere en massiv epistemologisk kritik af trækpsykologiens naturalisering af adfærd.",
+        "At dekonstruere eksamenscases ved at vise, at afvigeren ikke bærer fejlen indeni, men at miljøet abjektgør vedkommende.",
+        "At anvende kursets analytiske orienteringspunkt 'kontekst' i sin stærkeste, mest radikale forstand.",
+        "At dokumentere, at fysiske rum og møblement påvirker dannelsen af psyken (new materialism).",
+        "At forklare agens ikke som en indre viljeskraft, men som en effekt af at have accepteret diskursive rammer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk dekonstruktion",
+          "connection": "Kobl kapitlets fokus på 'kategoriers performativitet' sammen med Hacking's looping effect fra kursets første uge. Begge beviser, at målingen/benævnelsen af selvet skaber selvet."
+        },
+        {
+          "course_theme": "Struktur vs. Agens",
+          "connection": "Kontrastér subjektivering (Foucault/Butler) med eksistentiel eller humanistisk fri vilje. Hvor Rogers søger selvaktualisering indeni, finder postpsykologien agens i underkastelsen udefra."
+        },
+        {
+          "course_theme": "Diskurs og mening",
+          "connection": "Brug teksten som teoretisk springbræt ind i narrativ psykologi: Diskurserne her leverer netop det sprog, vi bruger til at bygge vores fortællinger med."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kritisk Psykologi (Mørck / Dreier)",
+          "how_to_compare": "Begge dekonstruerer det isolerede individ. Men kritisk psykologi redder et ideal om 'deltagelse og forandring', hvorimod postpsykologien lader agensen være fanget i subjektiveringens blinde underkastelses-loop."
+        },
+        {
+          "compare_with": "Kritisk Personalisme (Stern)",
+          "how_to_compare": "Sammenlign tekstens 'distribuerede subjekt' med Sterns 'hele person'. Stern frygter fragmenteringen, mens postpsykologien normaliserer at have 'multiple selver'."
+        },
+        {
+          "compare_with": "Trækpsykologi (Costa & McCrae)",
+          "how_to_compare": "Den absolutte modsætning: Indre kausal essens (træk) overfor performativ, kontekstuel tilblivelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksaminator beder dig kritisere Big Five:",
+          "use_in_answer": "Sæt tekstens performativitetsbegreb ind for at vise, at Big Five måler effekter af samfundets institutionelle krav, ikke indre biologi.",
+          "caution": "Husk ikke bare at afvise Big Five som 'dumt', men analyser det som en 'psykologisk opfindelse' med magteffekter."
+        },
+        {
+          "prompt_type": "Hvis diskussionen falder på diagnoser eller marginalisering:",
+          "use_in_answer": "Brug begrebet 'abjektgørelse' for at vise de voldsomme sociale omkostninger ved at falde uden for de accepterede subjektpositioner.",
+          "caution": "Gør ikke den ekskluderede til et ureflekteret offer; inddrag hvordan genkendelighed altid forhandles."
+        },
+        {
+          "prompt_type": "Når du bliver bedt om at demonstrere analytisk dybde:",
+          "use_in_answer": "Træk materialiteten ind – nævn Freuds sofa eller skolens kuglepude for at demonstrere, at du kender til den materielle vending, ikke kun den sproglige.",
+          "caution": "Lad ikke tingene få eneret; materialitet arbejder altid sammen med diskurs og affekt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At hævde at postpsykologien mener personlighed er helt tilfældig eller bare et frit valg.",
+          "better_reading": "Påpeg at diskurser sætter benhårde, strukturelle grænser for, hvem vi kan blive, og at de er utroligt svære at slippe ud af."
+        },
+        {
+          "trap": "At glemme den positive del af subjektivering og udelukkende behandle det som magtovergreb.",
+          "better_reading": "Fasthold paradokset: Det er gennem den stramme underkastelse, at man overhovedet vinder sin handlekraft i konteksten."
+        },
+        {
+          "trap": "At overse materialitetens rolle og tro postpsykologi i dag udelukkende handler om, hvordan vi snakker om ting.",
+          "better_reading": "Understreg at den 'nye materialisme' kræver, at møbler, biologi og rum tages alvorligt som medproducenter af selvet."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for subjektiveringsbegrebet, og bevis med inddragelse af postpsykologiske perspektiver, hvordan miljøet 'producerer' bestemte typer af elevpersonligheder.",
+      "mini_exam_answer_plan_slots": [
+        "Definér opgøret med den indre kerne: Fra kausal personlighed til processuel subjektivitet.",
+        "Forklar mekanismen i subjektivering: Paradokset mellem at underkaste sig for at opnå agens.",
+        "Gennemgå diskursens formende magt og skabelsen af acceptable subjektpositioner.",
+        "Inkorporér materialitet og affekt (fremlæg beviset via historien om kuglepuden).",
+        "Konkludér ved at bruge de tre problematiseringer til at vise, at det centrerede subjekt nu er distribueret."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+      "lecture_key": "W11L1",
+      "source_title": "Grundbog kapitel 11 - Postpsykologisk subjektiveringsteori"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug dette ark til at styre din læsning. Følg læseruten og løs de specifikke problemer undervejs.",
+      "teaser_paragraphs": [
+        "Vi står over for et grundlæggende problem. Gennem kursets første uger har vi jagtet 'personligheden' som en indre, stabil kerne, der er årsag til vores adfærd. Men hvad nu, hvis denne kerne er en fiktion?",
+        "Dette kapitel introducerer postpsykologien, som fuldstændig afmonterer ideen om det selvberoende menneske. Din opgave er at finde ud af, hvorfor de aflyser personligheden, og hvad de sætter i stedet.",
+        "Tekstens primære påstand er, at personlighed ikke er noget vi er, men noget vi gør. Det er en performativ effekt af det sprog vi bruger, de rum vi befinder os i, og de sociale forventninger vi møder.",
+        "Din mission under læsningen er at opspore beviserne for denne dekonstruktion. Du skal fange mekanismerne bag 'subjektivering' – den paradoksale proces, hvor vi opnår handlekraft ved at underkaste os andres normer og sprogbrug.",
+        "Senere skal du udvide bevisførelsen fra udelukkende at handle om sprog til også at omfatte fysiske genstande. Du skal afgøre, hvordan møbler som Freuds sofa eller en simpel kuglepude aktivt griber ind og former os.",
+        "Brug teksten til at opbygge et stærkt modargument mod trækpsykologien. Kan du bevise, at personlighed er et historisk og kontekstuelt produkt frem for en medfødt essens?"
+      ],
+      "main_problem": "Afgør om personlighed er en indre, stabil årsag til adfærd, eller om det er en performativ effekt af samfundets diskurser og materielle miljøer.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad sætter postpsykologien i stedet for det klassiske personlighedsbegreb?",
+          "why_it_matters": "Det etablerer det epistemologiske brud med de tidligere ugers teorier.",
+          "answer_form": "et begreb og en kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Bevis at subjektivering er en paradoksal dobbeltbevægelse?",
+          "why_it_matters": "Subjektivering er kernen i tekstens forståelse af agens.",
+          "answer_form": "et sæt af to modsatrettede processer"
+        },
+        {
+          "number": 3,
+          "question": "Afgør hvordan diskursive praksisser skaber 'typer' af mennesker?",
+          "why_it_matters": "Det forklarer, hvordan sociale kategorier omsættes til oplevet identitet.",
+          "answer_form": "en konkret mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Fang forskellen på et 'subjekt' og et 'abjekt' via Wahid-eksemplet?",
+          "why_it_matters": "Det viser de sociale omkostninger og magtdynamikker i identitetsdannelsen.",
+          "answer_form": "en kort kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Opspor beviser for, at materielle ting og affektive stemninger co-producerer subjektivitet?",
+          "why_it_matters": "Det udvider analysen fra udelukkende at handle om sprog til at gælde det levede, fysiske miljø.",
+          "answer_form": "to konkrete eksempler fra teksten"
+        },
+        {
+          "number": 6,
+          "question": "Opstil tekstens tre afsluttende kontraster mellem klassisk og postpsykologisk teori?",
+          "why_it_matters": "Det samler kapitelts pointer i et format, der er direkte overførbart til eksamenssammenligninger.",
+          "answer_form": "tre par af modsætninger"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det absolut stærkeste teoretiske fundament for kursets orienteringspunkter om 'historicitet' og 'kontekst'. Den er uundværlig for at kunne dekonstruere tidlige fænomenologiske og trækbaserede modeller til eksamen.",
+      "overview": [
+        "Teksten dekonstruerer det klassiske begreb om en stabil personlighed.",
+        "Den forklarer, hvordan identitet opstår gennem diskursive praksisser og subjektivering.",
+        "Den introducerer materialitet og affekt som aktive medproducenter af det menneskelige subjekt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Siderne 374-382",
+          "task": "Find aflysningen af den indre kerne og find ud af, hvad begrebet subjektivitet dækker over.",
+          "why_it_matters": "Det lægger fundamentet for at forstå tekstens anti-essentialistiske projekt.",
+          "stop_signal": "når du når overskriften 'Subjektivering, magt og abjektgørelse'"
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 383-384",
+          "task": "Løs paradokset om subjektivering og fang eksemplet med den klamme Wahid.",
+          "why_it_matters": "Her finder du tekstens centrale forklaring på, hvordan samfundets normer bliver til vores oplevelse af agens.",
+          "stop_signal": "når du når overskriften 'Diskurs og diskursive praksisser'"
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 385-388",
+          "task": "Find beviset for, at sociokulturelle kategorier ikke er noget man 'er', men noget man 'gør'.",
+          "why_it_matters": "Det viser diskursens formende magt over hverdagens handlemuligheder.",
+          "stop_signal": "når forfatterne beder dig opsummere og indskyde en kontrast til posttænkningen"
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 392-401",
+          "task": "Spol frem til post-00'erne. Find eksemplerne med sofaen og kuglepuden for at bevise, at ting har agens.",
+          "why_it_matters": "Dette skiller tekstens 'nye' materialisme fra ældre, udelukkende sprogbaserede socialkonstruktionismer.",
+          "stop_signal": "når du når overskriften 'Genbesøg, lån og genbrug'"
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 407-410",
+          "task": "Opbyg tekstens endelige model ved at finde de tre kontraster under afrundingen.",
+          "why_it_matters": "Dette afsnit forærer dig strukturen til at sammenligne teksten med resten af pensum.",
+          "stop_signal": "når du når overskriften 'Opfindelse af personlighed'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Boks 3. Klamme Wahid",
+          "why": "Konkretiserer abjektgørelse.",
+          "where_to_look": "Siderne 383-384"
+        },
+        {
+          "target": "dobbeltbevægelsen ligger agens",
+          "why": "Definerer subjektiveringens vigtigste paradoks.",
+          "where_to_look": "Siderne 383-384"
+        },
+        {
+          "target": "komfortteknologier som medproducent",
+          "why": "Beviser at ting har aktiv magt over selvet.",
+          "where_to_look": "Siderne 394-396"
+        },
+        {
+          "target": "kuglepude til en af mine elever",
+          "why": "Viser hvordan materielle genstande styrer kroppens urolige stemninger.",
+          "where_to_look": "Siderne 399-400"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange historiske og genealogiske redegørelser for psykologiens rødder i starten af kapitlet.",
+        "De dybe teoretiske referencer til Lacan, Darwin og specifikke kvantefysiske debatter om Barad.",
+        "Metodediskussionerne om, hvordan man læser sit empiriske materiale 'sreflekterende' og normkritisk."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er en fokuseret gennemgang af kapitlets løsninger. Brug denne tekst til at opbygge dit forsvar for postpsykologien.",
+      "coverage_note": "Afsnittene om tekstens forskningsmetodiske forankring, dens videnskabshistoriske referencer til Darwin og neurovidenskab samt oversigterne over specifikke analysestrategier er udeladt for at fokusere rent på den subjektiveringspsykologiske model.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Siderne 374-382",
+          "heading": "Aflysningen af den indre kerne",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Find ud af, hvad postpsykologien sætter i stedet for den stabile personlighed?",
+          "explanation_paragraphs": [
+            "Postpsykologien afviser blankt ideen om, at individet har en fast og afgrænset kerne, der styrer vores adfærd indefra. I stedet for at lede efter en stabil, iboende 'personlighed', skifter de fokus til at undersøge 'subjektivitet'.",
+            "Subjektivitet anskues som en tilstand, der løbende produceres og omformes af sociale, historiske og lokale relationer. Selve det at vi i moderne tid oplever os selv som hele, sammenhængende personer betragtes som en kulturel illusion – en specifik konstruktion, som vestlige samfund opretholder.",
+            "Analysens opgave er ikke at fjerne mennesket, men at undersøge de underliggende processer, der overhovedet gør det muligt og plausibelt for os at forstå os selv og andre ud fra personlighedstyper."
+          ],
+          "key_points": [
+            "Personlighedsbegrebet udskiftes med begrebet subjektivitet.",
+            "Subjektivitet er ikke en essens, men en ongoing performativ tilblivelsesproces.",
+            "Ideen om det 'sammenhængende menneske' behandles som en fiktion med politiske konsekvenser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aflyser ideen om, at individet",
+              "why_it_matters": "Det markerer forfatternes klare brud med den klassiske humanismes kerneantagelse.",
+              "source_location": "Side 382"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 382",
+              "passage": "Subjektivitet er i det perspektiv ikke noget, man har eller er: Man aflyser altså ideen om, at individet har en fast og afgrænset kerne. Subjektivitet er noget, der gøres.",
+              "why_it_matters": "Citater leverer det mest direkte bevis på, at identitet ændres fra at være et substantiv (væren) til et verbum (gøren)."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Siderne 383-384",
+          "heading": "Dobbeltbevægelsen i subjektivering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Løs paradokset: Hvordan kan det at underkaste sig skabe handlekraft?",
+          "explanation_paragraphs": [
+            "At blive et 'subjekt' – processen subjektivering – er præget af et grundlæggende paradoks. Det kræver, at individet underkaster sig samfundets specifikke livsbetingelser, normer og forventninger. Men det er præcis ved at acceptere og indoptage disse rammer, at man opnår mestring og agens.",
+            "Når du overtager samfundets fiktion om, at du er et bestemt slags selvberoende individ, begynder omgivelserne at genkende og anerkende dig som sådan. På den måde hænger underkastelse uløseligt sammen med handleevne.",
+            "Nogle gange udelukkes mennesker fra de accepterede normer for genkendelighed. Denne udelukkelse kaldes 'abjektgørelse'. En skoleelev som Wahid, der af andre stemples som 'klam', frarøves sin sociale eksistensberettigelse og gøres til et abjekt – et ikke-subjekt, der slet ikke anses for at være et legitimt menneske i konteksten."
+          ],
+          "key_points": [
+            "Subjektivering er en dobbeltbevægelse mellem at blive underkastet og opnå mestring.",
+            "Agens opstår ikke ved at stille sig uden for normerne, men ved at indoptage dem med succes.",
+            "Abjektgørelse er den hårde, ekskluderende proces, hvor nogen fraskrives menneskelig legitimitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "dobbeltbevægelsen ligger agens",
+              "why_it_matters": "Dette opsummerer paradokset præcist.",
+              "source_location": "Side 383"
+            },
+            {
+              "phrase": "noget/nogen gøres til abjekt",
+              "why_it_matters": "Definerer den absolutte eksklusionsmekanisme i sociale systemer.",
+              "source_location": "Side 384"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 383",
+              "passage": "Subjektivering handler om en paradoksal sammenhæng mellem underkastelse og handleevne - i dobbeltbevægelsen ligger agens: Ved at indoptage fiktionen om, at du er et selvberoende individ (...) vil omgivelserne (muligvis) genkende dig som netop sådan et individ.",
+              "why_it_matters": "Det leverer den stærkeste teoretiske forklaring på agens i hele kapitlet."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Siderne 385-388",
+          "heading": "Diskursens formende magt",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Fang mekanismen: Hvordan skaber samfundets måder at tale på vores indre liv?",
+          "explanation_paragraphs": [
+            "Vores virkelighed styres af diskurser, som opstiller spillereglerne for, hvad vi overhovedet har mulighed for at se, tænke, sige og gøre. Diskurser kommer til udtryk gennem 'diskursive praksisser' – altså hverdagens konkrete sociale handlinger og sprogbrug.",
+            "I disse praksisser tilbydes vi en række 'subjektpositioner', som er foruddefinerede roller eller skabeloner. Det kan være positioner som 'dygtig elev', 'ADHD-barn' eller 'mandlig leder'. Nogle positioner er trygge og behagelige, mens andre kan opleves ulidelige og snævre.",
+            "Teksten peger især på det 'performative' aspekt af disse praksisser. Sociokulturelle kategorier som køn og race er ikke biologiske baggrundsvariable; de er effekter af noget, vi 'gør' om og om igen gennem vores kropslige ageren og talemåder. Vi skaber illusionen om essens gennem konstant repetition."
+          ],
+          "key_points": [
+            "Diskursive praksisser fastsætter betingelserne for handling og tænkning.",
+            "Diskurser tilbyder os specifikke subjektpositioner, som vi kan indtage eller tvinges ind i.",
+            "Identitetskategorier gøres virkelige gennem handlemæssig gentagelse (performativitet)."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "Siderne 392-401",
+          "heading": "Når ting og følelser overtager styringen",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Bevis at fysiske objekter også har en slags psykologisk magt?",
+          "explanation_paragraphs": [
+            "Siden 00'erne har postpsykologien flyttet fokus væk fra udelukkende at kigge på sprog. Nu inkluderes 'materialitet' (tingene omkring os) og 'affektivitet' (stemninger, intensiteter, ladninger). Denne udvikling viser, at menneskelige subjektiviteter også formes af det non-humane.",
+            "Fysiske omgivelser agerer som direkte medproducenter af vores selver. Det gælder for eksempel den briks, Freud benyttede, som fungerede som en 'komfortteknologi', der fremkaldte en specifik form for patientadfærd og passiv reflektion.",
+            "Et andet klart bevis er brugen af møblet 'kuglepuden' i skolen. Puden suger barnets fysiske uro til sig og neutraliserer elevens uønskede affekt. Her er det altså et stykke interiør – et konkret møbel – der absorberer forhindringer og 'gør' barnet klar til at træde ind i en anerkendt elevposition."
+          ],
+          "key_points": [
+            "Postpsykologi fokuserer i dag også på materialitet og fysiske stemninger, ikke kun diskurs.",
+            "Fysiske objekter betragtes som aktører, der direkte omformer kroppe og adfærd.",
+            "Eksemplerne med Freuds sofa og skolens kuglepude beviser de dødsensfaste tings agens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "komfortteknologier som medproducent",
+              "why_it_matters": "Udtrykket sammenfatter tingenes evne til at forme det menneskelige sind.",
+              "source_location": "Side 395"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 399",
+              "passage": "Altså, jeg kunne godt bruge sådan en kuglepude til en af mine elever. [...] det er overordentligt svært for hende, for der er bare knald på, men så nu er det jo så sagt gentagne gange over hele året 'rolig nu med kroppen, ikk'",
+              "why_it_matters": "Citatet forankrer den abstrakte materialitetsteori i en fuldstændig håndgribelig klasseværelsessituation."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Siderne 407-410",
+          "heading": "Tre problematiseringer af personlighed",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Løs kontrasten: Opstil forskellen mellem det klassiske og det nye syn på selvet?",
+          "explanation_paragraphs": [
+            "For at afrunde kapitlet opstilles tre skarpe kontraster, som systematiserer forskellen på den klassiske personlighedstænkning og den postpsykologiske subjektiveringsforståelse.",
+            "1. Kausalitet overfor Performativitet: I moderne psykologi er personligheden den indre årsag, der dikterer adfærden. I postpsykologi er personlighed omvendt en performativ effekt – et produkt af de forventninger, man møder og tilpasser sig.",
+            "2. Entydighed overfor Multiplicitet: Klassisk set antages det voksne menneske at være sammenhængende og entydigt i sin kerne. Postpsykologien ser selvet som fragmenteret og opdelt i multiple subjekter, der aktiveres afhængig af de tilgængelige diskursive praksisser.",
+            "3. Centreret overfor Distribueret: Frem for at placere personligheden solidt isoleret inde i hovedet på det enkelte menneske, opfattes den som flydende og distribueret – den udspiller sig ude i relationerne, imellem miljøets objekter og kroppene."
+          ],
+          "key_points": [
+            "Performativ effekt afviser indre kausal årsag.",
+            "Kontekstafhængig multiplicitet afviser livslang entydighed.",
+            "Distribueret tilblivelse i netværket afviser den centrerede, indre kerne."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Find ud af, hvad postpsykologien sætter i stedet for den stabile personlighed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "et begreb og en kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Løs paradokset: Hvordan kan det at underkaste sig skabe handlekraft?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "et sæt af to modsatrettede processer",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang mekanismen: Hvordan skaber samfundets måder at tale på vores indre liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "en konkret mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at fysiske objekter også har en slags psykologisk magt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "to konkrete eksempler fra teksten",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Løs kontrasten: Opstil forskellen mellem det klassiske og det nye syn på selvet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "tre par af modsætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Afgør om personlighed er en indre, stabil årsag til adfærd, eller om det er en performativ effekt af samfundets diskurser og materielle miljøer.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen først. Genbesøg derefter læsearket for at rette og reparere de huller, du opdager i din model.",
+      "overview": [
+        "Mennesket har ikke en forudbestemt indre essens, men bliver løbende til.",
+        "Vores handlekraft opstår paradoksalt nok, idet vi lader os forme af diskurser.",
+        "Identitet opbygges i samspil med både det talte sprog og materielle genstande."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Postpsykologien foretrækker at undersøge processuel _________ i stedet for at lede efter en stabil personlighed.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Paradokset i subjektivering er, at man kun opnår handlekraft og anerkendelse, hvis man først _________ sig de samfundsmæssige betingelser.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 udsagnsord i nutid"
+        },
+        {
+          "number": 3,
+          "sentence": "Når et individ nægtes kulturel genkendelighed og smides ud af de meningsfulde kategorier, udsættes det for _________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det sæt af sproglige rammer, der dikterer hvilke roller vi har til rådighed at indtage, betegnes som diskursive _________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord i flertal"
+        },
+        {
+          "number": 5,
+          "sentence": "Køn betragtes ikke som et biologisk faktum, men som et _________ fænomen, der frembringes gennem gentagne handlinger.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        },
+        {
+          "number": 6,
+          "sentence": "At en simpel genstand som en _________ kan pacificere en skoleelev, demonstrerer materialitetens aktive rolle.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 navneord"
+        },
+        {
+          "number": 7,
+          "sentence": "Klassisk psykologi mener at personligheden skaber adfærd; postpsykologien mener derimod, at adfærd og forventninger _________ personligheden.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 udsagnsord i nutid"
+        },
+        {
+          "number": 8,
+          "sentence": "I stedet for at opfatte selvet som én solid enhed, ser postpsykologien os som udgjort af _________ selver.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 tillægsord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn paradokset for subjektivering. Vis, hvordan de to modstridende bevægelser er afhængige af hinanden for at producere et gyldigt individ.",
+          "required_elements": [
+            "Samfundets krav",
+            "Underkastelse",
+            "Mestring/Agens",
+            "Pile der viser, at den ene forudsætter den anden"
+          ],
+          "blank_space_hint": "Brug en cirkel- eller loop-struktur til at vise afhængigheden."
+        },
+        {
+          "number": 2,
+          "task": "Konstruer en sammenligningstabel over de tre store teoretiske forskelle på den gamle og den nye model.",
+          "required_elements": [
+            "Kolonnen: Klassisk model",
+            "Kolonnen: Postpsykologisk model",
+            "De tre rækker: Årsag/effekt, Kernens tilstand, og Lokalisering"
+          ],
+          "blank_space_hint": "Tegn et gitter med 2 kolonner og 3 rækker."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark forbereder dig på at trække tekstens mekanismer med ind i eksamenssituationen som solide beviser.",
+      "use_this_text_for": [
+        "At levere en massiv epistemologisk kritik af trækpsykologiens naturalisering af adfærd.",
+        "At dekonstruere eksamenscases ved at vise, at afvigeren ikke bærer fejlen indeni, men at miljøet abjektgør vedkommende.",
+        "At anvende kursets analytiske orienteringspunkt 'kontekst' i sin stærkeste, mest radikale forstand.",
+        "At dokumentere, at fysiske rum og møblement påvirker dannelsen af psyken (new materialism).",
+        "At forklare agens ikke som en indre viljeskraft, men som en effekt af at have accepteret diskursive rammer."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk dekonstruktion",
+          "connection": "Kobl kapitlets fokus på 'kategoriers performativitet' sammen med Hacking's looping effect fra kursets første uge. Begge beviser, at målingen/benævnelsen af selvet skaber selvet."
+        },
+        {
+          "course_theme": "Struktur vs. Agens",
+          "connection": "Kontrastér subjektivering (Foucault/Butler) med eksistentiel eller humanistisk fri vilje. Hvor Rogers søger selvaktualisering indeni, finder postpsykologien agens i underkastelsen udefra."
+        },
+        {
+          "course_theme": "Diskurs og mening",
+          "connection": "Brug teksten som teoretisk springbræt ind i narrativ psykologi: Diskurserne her leverer netop det sprog, vi bruger til at bygge vores fortællinger med."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kritisk Psykologi (Mørck / Dreier)",
+          "how_to_compare": "Begge dekonstruerer det isolerede individ. Men kritisk psykologi redder et ideal om 'deltagelse og forandring', hvorimod postpsykologien lader agensen være fanget i subjektiveringens blinde underkastelses-loop."
+        },
+        {
+          "compare_with": "Kritisk Personalisme (Stern)",
+          "how_to_compare": "Sammenlign tekstens 'distribuerede subjekt' med Sterns 'hele person'. Stern frygter fragmenteringen, mens postpsykologien normaliserer at have 'multiple selver'."
+        },
+        {
+          "compare_with": "Trækpsykologi (Costa & McCrae)",
+          "how_to_compare": "Den absolutte modsætning: Indre kausal essens (træk) overfor performativ, kontekstuel tilblivelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksaminator beder dig kritisere Big Five:",
+          "use_in_answer": "Sæt tekstens performativitetsbegreb ind for at vise, at Big Five måler effekter af samfundets institutionelle krav, ikke indre biologi.",
+          "caution": "Husk ikke bare at afvise Big Five som 'dumt', men analyser det som en 'psykologisk opfindelse' med magteffekter."
+        },
+        {
+          "prompt_type": "Hvis diskussionen falder på diagnoser eller marginalisering:",
+          "use_in_answer": "Brug begrebet 'abjektgørelse' for at vise de voldsomme sociale omkostninger ved at falde uden for de accepterede subjektpositioner.",
+          "caution": "Gør ikke den ekskluderede til et ureflekteret offer; inddrag hvordan genkendelighed altid forhandles."
+        },
+        {
+          "prompt_type": "Når du bliver bedt om at demonstrere analytisk dybde:",
+          "use_in_answer": "Træk materialiteten ind – nævn Freuds sofa eller skolens kuglepude for at demonstrere, at du kender til den materielle vending, ikke kun den sproglige.",
+          "caution": "Lad ikke tingene få eneret; materialitet arbejder altid sammen med diskurs og affekt."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At hævde at postpsykologien mener personlighed er helt tilfældig eller bare et frit valg.",
+          "better_reading": "Påpeg at diskurser sætter benhårde, strukturelle grænser for, hvem vi kan blive, og at de er utroligt svære at slippe ud af."
+        },
+        {
+          "trap": "At glemme den positive del af subjektivering og udelukkende behandle det som magtovergreb.",
+          "better_reading": "Fasthold paradokset: Det er gennem den stramme underkastelse, at man overhovedet vinder sin handlekraft i konteksten."
+        },
+        {
+          "trap": "At overse materialitetens rolle og tro postpsykologi i dag udelukkende handler om, hvordan vi snakker om ting.",
+          "better_reading": "Understreg at den 'nye materialisme' kræver, at møbler, biologi og rum tages alvorligt som medproducenter af selvet."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for subjektiveringsbegrebet, og bevis med inddragelse af postpsykologiske perspektiver, hvordan miljøet 'producerer' bestemte typer af elevpersonligheder.",
+      "mini_exam_answer_plan_slots": [
+        "Definér opgøret med den indre kerne: Fra kausal personlighed til processuel subjektivitet.",
+        "Forklar mekanismen i subjektivering: Paradokset mellem at underkaste sig for at opnå agens.",
+        "Gennemgå diskursens formende magt og skabelsen af acceptable subjektpositioner.",
+        "Inkorporér materialitet og affekt (fremlæg beviset via historien om kuglepuden).",
+        "Konkludér ved at bruge de tre problematiseringer til at vise, at det centrerede subjekt nu er distribueret."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

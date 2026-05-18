@@ -25,8 +25,8 @@ Canonical repo entrypoints outside this folder:
 - [AGENTS.md](../AGENTS.md) - repo-local operating rules.
 - [freudd_portal/README.md](../freudd_portal/README.md) - full Freudd product and runtime contract.
 - [freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical Freudd deploy and smoke runbook.
-- [shows/personlighedspsykologi-en/docs/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
-- [shows/personlighedspsykologi-en/docs/problem-driven-printouts.md](../shows/personlighedspsykologi-en/docs/problem-driven-printouts.md) - alternative problem-first printout mode for reward-driven learners.
+- [shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md](../shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md) - canonical boundary, quality contract, and evaluation map for learner-facing podcasts and printouts.
+- [shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md](../shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md) - alternative problem-first printout mode for reward-driven learners.
 - [notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md](../notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md) - sidecar review workspace for problem-driven printout candidates.
 
 Cross-doc principle:

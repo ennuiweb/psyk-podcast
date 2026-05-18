@@ -27,7 +27,7 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Grundbog/Kapitler/` | Grundbogskapitler og kildemateriale til læsninger/lydbog. |
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsningsrækken/0_Pensum og forelæsningsplan/` | Forelæsningsplan og pensumgrundlag. |
 | `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Seminarhold/Slides/` | Lokale slide-kilder. |
-| `shows/personlighedspsykologi-en/docs/reading-file-key.md` | Canonical læsenøgle: lecture -> reading title -> præcist filnavn. Alle repo-, queue- og CI-flows skal læse denne path. |
+| `shows/personlighedspsykologi-en/docs/data/reading-file-key.md` | Canonical læsenøgle: lecture -> reading title -> præcist filnavn. Alle repo-, queue- og CI-flows skal læse denne path. |
 | `shows/personlighedspsykologi-en/config.github.json` | Canonical show-config. |
 | `shows/personlighedspsykologi-en/auto_spec.json` | Forelæsningsstruktur og auto-matching for episoder. |
 | `shows/personlighedspsykologi-en/episode_metadata.json` | Manuelle episode-overrides. |
@@ -38,7 +38,7 @@ Disse artefakter er de eneste, der bør redigeres direkte som canonical inputs:
 | `shows/personlighedspsykologi-en/weekly_overview_summaries.json` | Manuel cache for `ALLE KILDER`/lecture-level episoder. |
 | `shows/personlighedspsykologi-en/reading_download_exclusions.json` | Udelukkelser for tekst-/downloadadgang. |
 | `shows/personlighedspsykologi-en/slides_catalog.json` | Manuel mapping af slides til forelæsning, kategori og lokal sti. |
-| `shows/personlighedspsykologi-en/docs/overblik.md` | Canonical important-text doc for feed/metadata. |
+| `shows/personlighedspsykologi-en/docs/core/overblik.md` | Canonical important-text doc for feed/metadata. |
 | `notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json` | Prompt-, sprog-, længde-, brief-, slide- og quiz-konfiguration for NotebookLM-generation. |
 | `freudd_portal/subjects.json` | Freudd subject registry med stier til RSS, inventory, manifest, quiz links, Spotify map og slides catalog. |
 
@@ -53,7 +53,7 @@ Repo-mirrors og eksport-targets er afledte kopier. De må ikke redigeres som sou
 | `scripts/sync_personlighedspsykologi_reading_file_key.py` | Auditerer mirror-drift og eksporterer canonical repo-læsenøgle til OneDrive/andre mirror-targets. `--mode import` findes kun til eksplicit recovery. |
 
 Vigtig detalje: GitHub Actions læser repo-filer, ikke OneDrive-stier direkte. For
-reading-key er den aktive path `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+reading-key er den aktive path `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`.
 
 ## Generated Tracked Outputs
 
@@ -128,7 +128,7 @@ modpartslængde ikke findes.
 ## Guardrails
 
 - Redigér canonical config i `config.github.json`, ikke i `config.local.json`.
-- Redigér kun den canonical repo-læsenøgle i `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+- Redigér kun den canonical repo-læsenøgle i `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`.
 - Behandl OneDrive `.ai/reading-file-key.md` som eksporteret mirror, ikke som vedligeholdt input.
 - Kør `python3 scripts/check_personlighedspsykologi_artifact_invariants.py`, når du ændrer config-, mirror- eller docs-strukturen.
 - Hvis en lokal output path er en macOS Alias-fil, skal den ikke committes eller

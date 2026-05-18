@@ -83,7 +83,7 @@ RSS-titlen ændres, skal feed workflow køres, og Spotify kan stadig være forsi
 Tjek normalt i denne rækkefølge:
 
 1. Findes kilden i OneDrive `Readings/` eller slides-mappen?
-2. Findes korrekt mapping i den canonical `shows/personlighedspsykologi-en/docs/reading-file-key.md` eller `slides_catalog.json`?
+2. Findes korrekt mapping i den canonical `shows/personlighedspsykologi-en/docs/data/reading-file-key.md` eller `slides_catalog.json`?
 3. Er NotebookLM-output genereret og downloadet lokalt?
 4. Er audio/quiz uploadet eller spejlet til den valgte storage-backend/droplet?
 5. Finder `generate-feed.yml` filen i den valgte storage-backend?
@@ -113,7 +113,7 @@ blockers.
 ## Safe Change Rules
 
 - Redigér kun canonical config (`config.github.json`). `config.local.json` er en kompatibilitetskopi og skal forblive identisk.
-- Redigér kun den canonical repo-læsenøgle `shows/personlighedspsykologi-en/docs/reading-file-key.md`.
+- Redigér kun den canonical repo-læsenøgle `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`.
 - Behandl OneDrive `.ai/reading-file-key.md` som eksport-target. Hvis den skal bruges til recovery, skal det ske eksplicit via `scripts/sync_personlighedspsykologi_reading_file_key.py --mode import`.
 - Brug `python3 scripts/check_personlighedspsykologi_artifact_invariants.py` før commit, når du ændrer docs, config eller mirror-struktur.
 - Fjern ikke kompatibilitetsfiler eller gamle path-referencer uden først at opdatere scripts, docs og hooks.

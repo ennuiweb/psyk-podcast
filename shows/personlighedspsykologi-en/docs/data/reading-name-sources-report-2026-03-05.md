@@ -29,8 +29,8 @@ Rules:
 - Existing parsers ignore them and still only parse bullet lines.
 
 ## Files Updated
-- `shows/personlighedspsykologi-en/docs/reading-file-key.md`
-- historical secondary mirror path removed; canonical repo mirror is `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`
+- historical secondary mirror path removed; canonical repo mirror is `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`
 
 ## Compatibility Verification
 Checked after update:

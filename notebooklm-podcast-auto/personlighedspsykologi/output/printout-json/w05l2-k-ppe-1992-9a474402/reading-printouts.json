@@ -1,0 +1,1045 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T16:57:10Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "4c1c5b74021d98149be94e8ccd81997ce7aebcec1a9ad7cca44cc98f4896664d",
+    "source_files_signature": "b02fd1d4eaff0f582d2811b51e1aafe7b2bc8e47c4a71469aad2f42b80679239",
+    "source_card": "ea6ee3a46601f25ef988b81d59115779a21aa248278f5677c547f62e1bd7a244",
+    "revised_lecture_substrate": "45d2b67d2db74adffa32cfcae345fca2a23c0a2b63e02e3ed49ab717973da181",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w05l2-k-ppe-1992-9a474402",
+    "lecture_key": "W05L2",
+    "title": "Køppe (1992)",
+    "reading_title": "Køppe (1992)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 16,
+    "estimated_token_count": 10400,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Køppe (1992).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 16,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-k-ppe-1992-9a474402",
+      "lecture_key": "W05L2",
+      "source_title": "Køppe (1992)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Den opsætter de centrale problemer, du skal løse i teksten.",
+      "teaser_paragraphs": [
+        "Trækpsykologien gav os en gennemsigtig og målbar overflade. Men hvad sker der, når vi anerkender, at selve kernen i det menneskelige subjekt er ukendt for os selv? Freuds psykoanalyse introducerer det decentrerede subjekt, hvor bevidstheden kun er toppen af isbjerget.",
+        "Mange misforstår dette og tror, at psykoanalysen reducerer os til biologiske maskiner, styret af uundgåelige drifter, eller at vi har en 'lille følende person' boende inde i hovedet, som i skjul styrer vores handlinger. Begge dele er grundlæggende forkerte.",
+        "Køppe (1992) stiller en afgørende filosofisk diagnose af psykoanalysen. Hvis det ubevidste blot var biologi, var vi determinerede udefra. Men Freud opfinder en helt ny eksistensform: Det psykisk ubevidste. Dette skaber en 'systemintern determination', hvor psyken determinerer sig selv.",
+        "Din mission i denne tekst er at fange forskellen på ekstern og intern determination. Du skal bevise, hvorfor det ubevidste ikke rummer følelser, adskille det fra almindelig hukommelse, og endelig afgøre, hvorfor en computer ikke kan udvikle en psyke, før den bliver i stand til at rumme permanente, uløselige konflikter."
+      ],
+      "main_problem": "Afgør hvordan Freuds koncept om 'systemintern determination' redder det menneskelige subjekt fra at være en rent biologisk maskine.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Find forskellen på ekstern determination (romantikken/biologien) og systemintern determination (Freud)?",
+          "why_it_matters": "Det afgør, om mennesket har agens til at ændre sig gennem terapi, eller om vi er slaver af vores natur.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Bevis hvorfor det ubevidste ikke kan indeholde 'følelser'?",
+          "why_it_matters": "Det forhindrer dig i at falde i fælden med at personificere det ubevidste som en bevidsthed nummer to.",
+          "answer_form": "Et metapsykologisk begreb"
+        },
+        {
+          "number": 3,
+          "question": "Beslut hvordan det førbevidste adskiller sig fra det topisk ubevidste?",
+          "why_it_matters": "Undgår sammenblanding af hverdagsbegrebet 'hukommelse' med Freuds dynamiske konfliktmodel.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Fang den primære grund til, at en computer pt. ikke kan have en sand menneskelig psyke?",
+          "why_it_matters": "Afslører selve kernen i, hvad der ifølge psykoanalysen gør os menneskelige: uafsluttede konflikter.",
+          "answer_form": "1-2 nøgleord"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det epistemologiske fundament for det decentrerede subjekt. Det er forudsætningen for at forstå alle senere kritiske og poststrukturalistiske teorier i kurset.",
+      "overview": [
+        "Teksten kortlægger tre historiske definitioner af det ubevidste.",
+        "Den forsvarer Freuds metapsykologi mod anklager om biologisk reduktionisme.",
+        "Den slår fast, at permanente psykiske konflikter er artsdefinerende for mennesket."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Indledning (s. 184-185)",
+          "task": "Find de tre grundlæggende definitioner af det ubevidste.",
+          "why_it_matters": "Sætter spillepladen op for hele diskussionen.",
+          "stop_signal": "Når du har læst de tre nummererede punkter"
+        },
+        {
+          "number": 2,
+          "source_location": "Det ubevidste før og hos Freud (s. 186-188)",
+          "task": "Kortlæg skiftet fra ekstern determination til systemintern determination.",
+          "why_it_matters": "Dette er tekstens allervigtigste teoretiske pointe.",
+          "stop_signal": "Når du når til advarslen mod at personificere instanserne"
+        },
+        {
+          "number": 3,
+          "source_location": "Affekter og strukturer (s. 189-191)",
+          "task": "Fang argumentet om, hvorfor følelser kun findes i bevidstheden, og læs om Rottemanden.",
+          "why_it_matters": "Aflæser den typiske romantiske misforståelse af Freud.",
+          "stop_signal": "Når sektionen om Rottemanden afsluttes"
+        },
+        {
+          "number": 4,
+          "source_location": "Det hermeneutiske ubevidste (s. 192-194)",
+          "task": "Skim Køppes forsvar mod Habermas og Lorenzer.",
+          "why_it_matters": "Viser hvordan videnskabsteoretisk kritik ofte overser Freuds pointe.",
+          "stop_signal": "Når diskussionen skifter til fænomenologi"
+        },
+        {
+          "number": 5,
+          "source_location": "Computeren og døden (s. 197-199)",
+          "task": "Beslut hvad en kunstig bevidsthed mangler for at ligne den menneskelige.",
+          "why_it_matters": "Definerer konfliktens absolutte nødvendighed for liv.",
+          "stop_signal": "Når teksten konkluderer med psykologisk død"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "undslipper den klassiske forestilling",
+          "why": "Nøglen til at forstå Freuds brud med biologien.",
+          "where_to_look": "Sektion 2 (s. 188)"
+        },
+        {
+          "target": "Det ubevidste er imidlertid ikke blot processer",
+          "why": "Beviser at det ubevidste aktivt former vores perception af virkeligheden.",
+          "where_to_look": "Sektion 2 (s. 190)"
+        },
+        {
+          "target": "identisk med psykologisk død",
+          "why": "Slår fast at konfliktfrihed ikke er et mål i psykoanalysen.",
+          "where_to_look": "Sektion 5 (s. 199)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De detaljerede referencer til tyske romantiske naturfilosoffer (Schelling, Carus).",
+        "Habermas' og Lorenzers specifikke formuleringer af hermeneutisk videnskabsteori.",
+        "Den ontologiske diskussion om Heidegger og Gadamers opfattelse af fænomenologi."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse afsnit til at løse problemerne. De indeholder den nødvendige logik til at forstå modellens mekanismer.",
+      "coverage_note": "Fokuserer skarpt på Freuds epistemologiske placering, determinationstyper og bevidsthedens struktur, og udelader historiske afstikkere.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Indledning (s. 184-187)",
+          "heading": "Mission 1: De tre definitioner og den eksterne trussel",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Beslut hvor 'det ubevidste' overhovedet befinder sig henne i verden?",
+          "explanation_paragraphs": [
+            "Lige siden psykoanalysens start har kritikere ment, at et 'psykisk ubevidst' er en selvmodsigelse. For at rydde op, skitserer Køppe tre historiske måder at placere det ubevidste på.",
+            "Først neurofysiologisk: Det ubevidste er bare de biologiske hjerneprocesser, der kører i baggrunden. For det andet Freuds model: Det ubevidste er en aktiv, dynamisk del af selve psyken. For det tredje den romantiske/sociologiske: Det ubevidste er 'Naturen' eller 'Samfundet', der eksisterer uafhængigt af individet.",
+            "Før Freud dominerede romantikerne. De så det ubevidste som en overvældende ydre Natur-kraft, der determinerede subjektet. Hvis det ubevidste er en ydre kraft (biologi eller natur), er vi ofre for klassisk ekstern determination. Vi er slaver af faktorer uden for psykens rækkevidde."
+          ],
+          "key_points": [
+            "Neurofysiologisk ubevidst = Biologi.",
+            "Topisk ubevidst = En del af psyken (Freud).",
+            "Subjekt-transcenderende = Natur/Samfund.",
+            "Romantikken skabte ekstern determination, hvor naturen styrer mennesket."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 187",
+              "passage": "Psykoanalysen har decentreret det menneskelige subjekt (...) dels fordi bevidstheden ikke længere kan siges at være det afgørende centrum i psyken, dels fordi der sådan set slet ikke er noget centrum.",
+              "why_it_matters": "Opgøret med idéen om, at et rationelt, bevidst 'jeg' er kernen i mennesket."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 2,
+          "source_location": "s. 187-188",
+          "heading": "Mission 2: Beviset for systemintern determination",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Bevis at Freuds subjekt ikke er en viljeløs biologisk maskine?",
+          "explanation_paragraphs": [
+            "Når Freud kritiseres for at gøre os til slaver af ubevidste drifter, skyldes det en rest af romantikkens syn. Man tror, drifterne er biologiske, ydre kræfter. Men Freud gør en genial epistemologisk manøvre: Han gør det ubevidste til en psykisk størrelse.",
+            "Når det determinerende (det ubevidste) og det determinerede (jeget/bevidstheden) befinder sig inden for det samme system (psyken), skabes 'systemintern determination'. Psyken determinerer sig selv. Dette er fundamentalt anderledes end at være styret af DNA.",
+            "Fordi determinationen er intern, kan den ændres. Gennem selvrefleksion (f.eks. i terapi) kan subjektet flytte og justere determinationen. Den er ikke skæbne; den er til forhandling."
+          ],
+          "key_points": [
+            "Systemintern determination betyder, at dele af psyken påvirker andre dele af psyken.",
+            "Tillader agens: Fordi det sker internt, kan selvrefleksion justere det.",
+            "Redder psykoanalysen fra biologisk og sociologisk reduktionisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "undslipper den klassiske forestilling",
+              "why_it_matters": "Viser at Freud brød med datidens faste opfattelse af årsag og virkning.",
+              "source_location": "s. 188"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 188-189",
+          "heading": "Mission 3: Hukommelsen og det følelsesløse ubevidste",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Fang fælden om det indre 'følelsesliv' og adskil hukommelse fra det ubevidste?",
+          "explanation_paragraphs": [
+            "To store misforståelser forurener forståelsen af Freuds modeller. Den første er sammenblandingen af hukommelse og det ubevidste. Freud kalder almindelig hukommelse for 'det førbevidste'. Det er information, der let kan hentes frem. Det 'topisk ubevidste' er derimod fortrængt og holdes aktivt nede.",
+            "Den anden misforståelse er, at det ubevidste er et skatkammer af voldsomme følelser. Men følelser er en 'oplevelseskategori' – at føle kræver en bevidsthed at føle i. Udstyrer vi det ubevidste med følelser, gør vi det til et uafhængigt 'lille menneske' (personificering) inde i psyken.",
+            "I stedet bruger Freud metapsykologiske, neutrale begreber som 'affektpotentialitet' og 'psykisk kvantitet'. Det ubevidste rummer potentialet for affekt, en form for tryk, men oplever ingenting selv."
+          ],
+          "key_points": [
+            "Det førbevidste = almindelig, tilgængelig hukommelse.",
+            "Det topisk ubevidste = dynamisk fortrængt materiale.",
+            "Det ubevidste har ingen bevidsthed og kan derfor ikke 'føle'.",
+            "Det indeholder kun affektpotentialiteter."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 189",
+              "passage": "Følelser og affekter er en oplevelsesmodalitet og man antyder herved, at det ubevidste har mulighed for at opleve. Men det ubevidste har ikke en evne til at opleve - det har kun bevidstheden.",
+              "why_it_matters": "Punkterer den typiske poppsykologiske opfattelse af ubevidste følelser."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "s. 190-192",
+          "heading": "Mission 4: Rottemanden og strukturen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beslut hvordan et ubevidst uden indre intentioner alligevel kan styre vores liv?",
+          "explanation_paragraphs": [
+            "Det ubevidste er ikke et passivt lager; det er en aktiv strukturering af individets livshistorie. Materialet for denne strukturering er fortrængte forestillinger.",
+            "Køppe nævner Freuds sygehistorie 'Rottemanden'. En fuldstændig banal handling, som at flytte en sten på gaden, bliver ladet med intens betydning af det ubevidste. Det ubevidste forsøger konstant at gennemtvinge sin udgave af livshistorien i personens bevidste perception.",
+            "Det ubevidste defineres i et gensidigt modpolforhold til selvrefleksionen. Uden evnen til selvrefleksion ville det ubevidstes strukturering fungere som en blind, ødelæggende naturkraft. Fordi de to definerer hinanden, opstår et dynamisk system, der kan justeres."
+          ],
+          "key_points": [
+            "Det ubevidste påtvinger perceptionsmateriale en bestemt ubevidst struktur.",
+            "Rottemandens tvangshandlinger er udtryk for ubevidst strukturering af en banal virkelighed.",
+            "Selvrefleksion og det ubevidste forudsætter hinanden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Det ubevidste er imidlertid ikke blot processer",
+              "why_it_matters": "Viser det ubevidstes aktive, formende karakter.",
+              "source_location": "s. 190"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "s. 197-199",
+          "heading": "Mission 5: Boss fight - Computeren og den livgivende konflikt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Afgør hvorfor selv den mest avancerede computer ikke har en menneskelig psyke?",
+          "explanation_paragraphs": [
+            "Mange tror, man kan bygge en kunstig bevidsthed ved at lade en computer gennemgå en indlæringsfase på 12-15 år, så den får en 'livshistorie'. Køppe afviser dette som overfladisk.",
+            "En ægte menneskelig livshistorie og psyke bygger fundamentalt set på eksistensen af det ubevidste. Og det ubevidstes kerne er dynamiske konflikter. Tekniske systemer er i dag designet til at udligne modsætninger og opnå ligevægt.",
+            "I menneskets psyke er det stik modsat. Psyken er permanent struktureret på uundgåelige konflikter. Hvis man udlignede disse konflikter og skabte total harmoni, ville struktureringen stoppe. En sådan nivellering er ikke oplysning, men identisk med psykologisk død."
+          ],
+          "key_points": [
+            "Menneskets psyke opretholdes af uløselige, dynamiske konflikter.",
+            "Tekniske systemer søger konfliktløsning og ligevægt.",
+            "Total harmoni = systemets ophør (psykologisk død)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "identisk med psykologisk død",
+              "why_it_matters": "Det ultimative argument mod at se den friktionsløse tilstand som et mål.",
+              "source_location": "s. 199"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvor 'det ubevidste' overhovedet befinder sig henne i verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at Freuds subjekt ikke er en viljeløs biologisk maskine?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Fang fælden om det indre 'følelsesliv' og adskil hukommelse fra det ubevidste?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et metapsykologisk begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvordan et ubevidst uden indre intentioner alligevel kan styre vores liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Afgør hvorfor selv den mest avancerede computer ikke har en menneskelig psyke?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1-2 nøgleord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Afgør hvordan Freuds koncept om 'systemintern determination' redder det menneskelige subjekt fra at være en rent biologisk maskine.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld felterne fra hukommelsen for at genopbygge modellens afgørende mekanismer. Tjek først Reader bagefter.",
+      "overview": [
+        "Freud erstatter ekstern biologisk og romantisk determination med systemintern determination.",
+        "Det ubevidste rummer ikke bevidste følelser, men affektpotentialiteter.",
+        "Menneskets psyke adskiller sig fra tekniske systemer ved at overleve i kraft af uafsluttede konflikter."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Før Freud betragtede romantikerne ofte det ubevidste som en overvældende, kosmisk kraft, hvilket resulterede i klassisk __________ determination.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Freud redder subjektets evne til forandring ved at lade dele af psyken påvirke andre dele af psyken, hvilket kaldes __________ determination.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Man må ikke forveksle det fortrængte, dynamiske materiale med almindelig hukommelse; hukommelsen kaldes for det __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det ubevidste kan ikke 'føle', da dette kræver bevidsthed; det indeholder i stedet kun metapsykologisk __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "I tilfældet med Rottemanden ser vi, at det ubevidste ikke blot er et passivt arkiv, men aktivt skaber en __________ af hverdagens perceptioner.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "At skabe et konfliktfrit teknisk system i balance ville for den menneskelige psyke være identisk med psykologisk __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk kontrast mellem romantikkens 'Natur' og Freuds topiske model. Vis hvordan bestemmelseskraften bevæger sig indad.",
+          "required_elements": [
+            "Pil fra en ekstern kilde til mennesket (Romantikken",
+            "En lukket boks (Psyken) med pile mellem Bevidsthed og Ubevidst (Freud",
+            "Mærkat: 'Systemintern determination'"
+          ],
+          "blank_space_hint": "Brug cirka en halv side til at adskille de to modeller tydeligt."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Nu skal du bevise, at du kan anvende modellen. Dette er de konkrete træk, du skal bruge til eksamen for at bygge bro fra psykoanalyse til resten af kurset.",
+      "use_this_text_for": [
+        "At forklare overgangen fra den målbare overflade (W02L1) til dybdepsykologien.",
+        "At forsvare Freud mod anklager om at fratage mennesket sin frie vilje.",
+        "At forberede det decentrerede subjekt, der bliver afgørende for poststrukturalismen.",
+        "At diskutere 'determination' som en af de fire faste orienteringspunkter."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Det decentrerede subjekt (Poststrukturalisme prep)",
+          "connection": "Freud decentrerer subjektet ved at fjerne bevidstheden fra centrum. Dette baner vejen for Lacan, Foucault og kønsforskning, der helt dekonstruerer selvet."
+        },
+        {
+          "course_theme": "De fire orienteringspunkter (Determination/Agens)",
+          "connection": "Køppe giver dig det perfekte sprog til at analysere Freuds determinationsbegreb: Det er systeminternt og dermed åbent for terapi."
+        },
+        {
+          "course_theme": "Trækpsykologiens utilstrækkelighed",
+          "connection": "Trækpsykologien forudsætter et transparent subjekt, hvor adfærd = træk. Psykoanalysen viser, at overfladeadfærden struktureres af skjulte, usynlige konflikter."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækpsykologi (W02L1)",
+          "how_to_compare": "Sammenlign overfladedeterminisme vs. dybdedeterminisme. Træk er målbare variabler; Freuds ubevidste er usynlige strukturerende affektpotentialiteter."
+        },
+        {
+          "compare_with": "Evolutionspsykologi/Adfærdsbiologi",
+          "how_to_compare": "Brug 'systemintern determination' til at vise forskellen. Biologien siger dna/natur determinerer (eksternt). Freud siger, at psyken determinerer psyken."
+        },
+        {
+          "compare_with": "Kritisk Psykologi",
+          "how_to_compare": "Kritisk psykologi søger agens ude i samfundsmæssig deltagelse. Freuds form for agens sikres via den selvrefleksion, der kan justere de indre konflikter."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksamen beder dig redegøre for Freuds syn på fri vilje",
+          "use_in_answer": "Træk Køppe (1992) ind og brug termen 'systemintern determination'. Det viser, at du kender den metapsykologiske mekanisme bag terapien.",
+          "caution": "Undgå at lyde som om, terapi kan 'fjerne' det ubevidste; man kan kun 'justere' determinationen."
+        },
+        {
+          "prompt_type": "Hvis eksamen spørger til den historiske placering af teorien",
+          "use_in_answer": "Beskriv hvordan Freud brød med naturfilosofferne ved at trække det ubevidste ind i selve psyken.",
+          "caution": "Gør ikke Freud til en ren romantiker; han var i lige så høj grad naturvidenskabsmand."
+        },
+        {
+          "prompt_type": "Hvis du skal forsvare psykoanalysens relevans",
+          "use_in_answer": "Påpeg at computeres manglende evne til psykologisk liv netop skyldes manglen på dynamiske konflikter.",
+          "caution": "Forstyr ikke analysen med trivielle debatter om nutidens AI; hold det til Køppes konflikt-argument."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sige at id'et 'ønsker' eller 'føler' vrede.",
+          "better_reading": "Id'et/det ubevidste rummer kun kvantiteter og affektpotentialitet. Bevidstheden mærker følelsen."
+        },
+        {
+          "trap": "At kalde Freuds model for biologisk determinisme.",
+          "better_reading": "Han opererer netop med intrapsykisk (systemintern) determination for at skabe et rum til selvet."
+        },
+        {
+          "trap": "At blande det topisk ubevidste sammen med det førbevidste.",
+          "better_reading": "Førbevidst = neutral hukommelse. Topisk ubevidst = fortrængt, konfliktfyldt materiale."
+        }
+      ],
+      "mini_exam_prompt_question": "Diskuter Køppes begreb om 'systemintern determination' og vurdér dets betydning for subjektets frihed sammenlignet med klassisk ekstern biologisk determination.",
+      "mini_exam_answer_plan_slots": [
+        "Kort definition af klassisk ekstern determination (hvordan biologi gør mennesket styret udefra).",
+        "Køppes definition af 'systemintern determination' (psyken determinerer psyken).",
+        "Hvorfor denne sondring afviser kritikernes anklage om, at psykoanalyse er lig med biologisk maskinisme.",
+        "Hvordan selvrefleksion i terapien præcis tillader en 'justering' af denne determination."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-k-ppe-1992-9a474402",
+      "lecture_key": "W05L2",
+      "source_title": "Køppe (1992)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Den opsætter de centrale problemer, du skal løse i teksten.",
+      "teaser_paragraphs": [
+        "Trækpsykologien gav os en gennemsigtig og målbar overflade. Men hvad sker der, når vi anerkender, at selve kernen i det menneskelige subjekt er ukendt for os selv? Freuds psykoanalyse introducerer det decentrerede subjekt, hvor bevidstheden kun er toppen af isbjerget.",
+        "Mange misforstår dette og tror, at psykoanalysen reducerer os til biologiske maskiner, styret af uundgåelige drifter, eller at vi har en 'lille følende person' boende inde i hovedet, som i skjul styrer vores handlinger. Begge dele er grundlæggende forkerte.",
+        "Køppe (1992) stiller en afgørende filosofisk diagnose af psykoanalysen. Hvis det ubevidste blot var biologi, var vi determinerede udefra. Men Freud opfinder en helt ny eksistensform: Det psykisk ubevidste. Dette skaber en 'systemintern determination', hvor psyken determinerer sig selv.",
+        "Din mission i denne tekst er at fange forskellen på ekstern og intern determination. Du skal bevise, hvorfor det ubevidste ikke rummer følelser, adskille det fra almindelig hukommelse, og endelig afgøre, hvorfor en computer ikke kan udvikle en psyke, før den bliver i stand til at rumme permanente, uløselige konflikter."
+      ],
+      "main_problem": "Afgør hvordan Freuds koncept om 'systemintern determination' redder det menneskelige subjekt fra at være en rent biologisk maskine.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Find forskellen på ekstern determination (romantikken/biologien) og systemintern determination (Freud)?",
+          "why_it_matters": "Det afgør, om mennesket har agens til at ændre sig gennem terapi, eller om vi er slaver af vores natur.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Bevis hvorfor det ubevidste ikke kan indeholde 'følelser'?",
+          "why_it_matters": "Det forhindrer dig i at falde i fælden med at personificere det ubevidste som en bevidsthed nummer to.",
+          "answer_form": "Et metapsykologisk begreb"
+        },
+        {
+          "number": 3,
+          "question": "Beslut hvordan det førbevidste adskiller sig fra det topisk ubevidste?",
+          "why_it_matters": "Undgår sammenblanding af hverdagsbegrebet 'hukommelse' med Freuds dynamiske konfliktmodel.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Fang den primære grund til, at en computer pt. ikke kan have en sand menneskelig psyke?",
+          "why_it_matters": "Afslører selve kernen i, hvad der ifølge psykoanalysen gør os menneskelige: uafsluttede konflikter.",
+          "answer_form": "1-2 nøgleord"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst leverer det epistemologiske fundament for det decentrerede subjekt. Det er forudsætningen for at forstå alle senere kritiske og poststrukturalistiske teorier i kurset.",
+      "overview": [
+        "Teksten kortlægger tre historiske definitioner af det ubevidste.",
+        "Den forsvarer Freuds metapsykologi mod anklager om biologisk reduktionisme.",
+        "Den slår fast, at permanente psykiske konflikter er artsdefinerende for mennesket."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Indledning (s. 184-185)",
+          "task": "Find de tre grundlæggende definitioner af det ubevidste.",
+          "why_it_matters": "Sætter spillepladen op for hele diskussionen.",
+          "stop_signal": "Når du har læst de tre nummererede punkter"
+        },
+        {
+          "number": 2,
+          "source_location": "Det ubevidste før og hos Freud (s. 186-188)",
+          "task": "Kortlæg skiftet fra ekstern determination til systemintern determination.",
+          "why_it_matters": "Dette er tekstens allervigtigste teoretiske pointe.",
+          "stop_signal": "Når du når til advarslen mod at personificere instanserne"
+        },
+        {
+          "number": 3,
+          "source_location": "Affekter og strukturer (s. 189-191)",
+          "task": "Fang argumentet om, hvorfor følelser kun findes i bevidstheden, og læs om Rottemanden.",
+          "why_it_matters": "Aflæser den typiske romantiske misforståelse af Freud.",
+          "stop_signal": "Når sektionen om Rottemanden afsluttes"
+        },
+        {
+          "number": 4,
+          "source_location": "Det hermeneutiske ubevidste (s. 192-194)",
+          "task": "Skim Køppes forsvar mod Habermas og Lorenzer.",
+          "why_it_matters": "Viser hvordan videnskabsteoretisk kritik ofte overser Freuds pointe.",
+          "stop_signal": "Når diskussionen skifter til fænomenologi"
+        },
+        {
+          "number": 5,
+          "source_location": "Computeren og døden (s. 197-199)",
+          "task": "Beslut hvad en kunstig bevidsthed mangler for at ligne den menneskelige.",
+          "why_it_matters": "Definerer konfliktens absolutte nødvendighed for liv.",
+          "stop_signal": "Når teksten konkluderer med psykologisk død"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "undslipper den klassiske forestilling",
+          "why": "Nøglen til at forstå Freuds brud med biologien.",
+          "where_to_look": "Sektion 2 (s. 188)"
+        },
+        {
+          "target": "Det ubevidste er imidlertid ikke blot processer",
+          "why": "Beviser at det ubevidste aktivt former vores perception af virkeligheden.",
+          "where_to_look": "Sektion 2 (s. 190)"
+        },
+        {
+          "target": "identisk med psykologisk død",
+          "why": "Slår fast at konfliktfrihed ikke er et mål i psykoanalysen.",
+          "where_to_look": "Sektion 5 (s. 199)"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De detaljerede referencer til tyske romantiske naturfilosoffer (Schelling, Carus).",
+        "Habermas' og Lorenzers specifikke formuleringer af hermeneutisk videnskabsteori.",
+        "Den ontologiske diskussion om Heidegger og Gadamers opfattelse af fænomenologi."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse afsnit til at løse problemerne. De indeholder den nødvendige logik til at forstå modellens mekanismer.",
+      "coverage_note": "Fokuserer skarpt på Freuds epistemologiske placering, determinationstyper og bevidsthedens struktur, og udelader historiske afstikkere.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Indledning (s. 184-187)",
+          "heading": "Mission 1: De tre definitioner og den eksterne trussel",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Beslut hvor 'det ubevidste' overhovedet befinder sig henne i verden?",
+          "explanation_paragraphs": [
+            "Lige siden psykoanalysens start har kritikere ment, at et 'psykisk ubevidst' er en selvmodsigelse. For at rydde op, skitserer Køppe tre historiske måder at placere det ubevidste på.",
+            "Først neurofysiologisk: Det ubevidste er bare de biologiske hjerneprocesser, der kører i baggrunden. For det andet Freuds model: Det ubevidste er en aktiv, dynamisk del af selve psyken. For det tredje den romantiske/sociologiske: Det ubevidste er 'Naturen' eller 'Samfundet', der eksisterer uafhængigt af individet.",
+            "Før Freud dominerede romantikerne. De så det ubevidste som en overvældende ydre Natur-kraft, der determinerede subjektet. Hvis det ubevidste er en ydre kraft (biologi eller natur), er vi ofre for klassisk ekstern determination. Vi er slaver af faktorer uden for psykens rækkevidde."
+          ],
+          "key_points": [
+            "Neurofysiologisk ubevidst = Biologi.",
+            "Topisk ubevidst = En del af psyken (Freud).",
+            "Subjekt-transcenderende = Natur/Samfund.",
+            "Romantikken skabte ekstern determination, hvor naturen styrer mennesket."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 187",
+              "passage": "Psykoanalysen har decentreret det menneskelige subjekt (...) dels fordi bevidstheden ikke længere kan siges at være det afgørende centrum i psyken, dels fordi der sådan set slet ikke er noget centrum.",
+              "why_it_matters": "Opgøret med idéen om, at et rationelt, bevidst 'jeg' er kernen i mennesket."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 2,
+          "source_location": "s. 187-188",
+          "heading": "Mission 2: Beviset for systemintern determination",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Bevis at Freuds subjekt ikke er en viljeløs biologisk maskine?",
+          "explanation_paragraphs": [
+            "Når Freud kritiseres for at gøre os til slaver af ubevidste drifter, skyldes det en rest af romantikkens syn. Man tror, drifterne er biologiske, ydre kræfter. Men Freud gør en genial epistemologisk manøvre: Han gør det ubevidste til en psykisk størrelse.",
+            "Når det determinerende (det ubevidste) og det determinerede (jeget/bevidstheden) befinder sig inden for det samme system (psyken), skabes 'systemintern determination'. Psyken determinerer sig selv. Dette er fundamentalt anderledes end at være styret af DNA.",
+            "Fordi determinationen er intern, kan den ændres. Gennem selvrefleksion (f.eks. i terapi) kan subjektet flytte og justere determinationen. Den er ikke skæbne; den er til forhandling."
+          ],
+          "key_points": [
+            "Systemintern determination betyder, at dele af psyken påvirker andre dele af psyken.",
+            "Tillader agens: Fordi det sker internt, kan selvrefleksion justere det.",
+            "Redder psykoanalysen fra biologisk og sociologisk reduktionisme."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "undslipper den klassiske forestilling",
+              "why_it_matters": "Viser at Freud brød med datidens faste opfattelse af årsag og virkning.",
+              "source_location": "s. 188"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 188-189",
+          "heading": "Mission 3: Hukommelsen og det følelsesløse ubevidste",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Fang fælden om det indre 'følelsesliv' og adskil hukommelse fra det ubevidste?",
+          "explanation_paragraphs": [
+            "To store misforståelser forurener forståelsen af Freuds modeller. Den første er sammenblandingen af hukommelse og det ubevidste. Freud kalder almindelig hukommelse for 'det førbevidste'. Det er information, der let kan hentes frem. Det 'topisk ubevidste' er derimod fortrængt og holdes aktivt nede.",
+            "Den anden misforståelse er, at det ubevidste er et skatkammer af voldsomme følelser. Men følelser er en 'oplevelseskategori' – at føle kræver en bevidsthed at føle i. Udstyrer vi det ubevidste med følelser, gør vi det til et uafhængigt 'lille menneske' (personificering) inde i psyken.",
+            "I stedet bruger Freud metapsykologiske, neutrale begreber som 'affektpotentialitet' og 'psykisk kvantitet'. Det ubevidste rummer potentialet for affekt, en form for tryk, men oplever ingenting selv."
+          ],
+          "key_points": [
+            "Det førbevidste = almindelig, tilgængelig hukommelse.",
+            "Det topisk ubevidste = dynamisk fortrængt materiale.",
+            "Det ubevidste har ingen bevidsthed og kan derfor ikke 'føle'.",
+            "Det indeholder kun affektpotentialiteter."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 189",
+              "passage": "Følelser og affekter er en oplevelsesmodalitet og man antyder herved, at det ubevidste har mulighed for at opleve. Men det ubevidste har ikke en evne til at opleve - det har kun bevidstheden.",
+              "why_it_matters": "Punkterer den typiske poppsykologiske opfattelse af ubevidste følelser."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "s. 190-192",
+          "heading": "Mission 4: Rottemanden og strukturen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beslut hvordan et ubevidst uden indre intentioner alligevel kan styre vores liv?",
+          "explanation_paragraphs": [
+            "Det ubevidste er ikke et passivt lager; det er en aktiv strukturering af individets livshistorie. Materialet for denne strukturering er fortrængte forestillinger.",
+            "Køppe nævner Freuds sygehistorie 'Rottemanden'. En fuldstændig banal handling, som at flytte en sten på gaden, bliver ladet med intens betydning af det ubevidste. Det ubevidste forsøger konstant at gennemtvinge sin udgave af livshistorien i personens bevidste perception.",
+            "Det ubevidste defineres i et gensidigt modpolforhold til selvrefleksionen. Uden evnen til selvrefleksion ville det ubevidstes strukturering fungere som en blind, ødelæggende naturkraft. Fordi de to definerer hinanden, opstår et dynamisk system, der kan justeres."
+          ],
+          "key_points": [
+            "Det ubevidste påtvinger perceptionsmateriale en bestemt ubevidst struktur.",
+            "Rottemandens tvangshandlinger er udtryk for ubevidst strukturering af en banal virkelighed.",
+            "Selvrefleksion og det ubevidste forudsætter hinanden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Det ubevidste er imidlertid ikke blot processer",
+              "why_it_matters": "Viser det ubevidstes aktive, formende karakter.",
+              "source_location": "s. 190"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "s. 197-199",
+          "heading": "Mission 5: Boss fight - Computeren og den livgivende konflikt",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Afgør hvorfor selv den mest avancerede computer ikke har en menneskelig psyke?",
+          "explanation_paragraphs": [
+            "Mange tror, man kan bygge en kunstig bevidsthed ved at lade en computer gennemgå en indlæringsfase på 12-15 år, så den får en 'livshistorie'. Køppe afviser dette som overfladisk.",
+            "En ægte menneskelig livshistorie og psyke bygger fundamentalt set på eksistensen af det ubevidste. Og det ubevidstes kerne er dynamiske konflikter. Tekniske systemer er i dag designet til at udligne modsætninger og opnå ligevægt.",
+            "I menneskets psyke er det stik modsat. Psyken er permanent struktureret på uundgåelige konflikter. Hvis man udlignede disse konflikter og skabte total harmoni, ville struktureringen stoppe. En sådan nivellering er ikke oplysning, men identisk med psykologisk død."
+          ],
+          "key_points": [
+            "Menneskets psyke opretholdes af uløselige, dynamiske konflikter.",
+            "Tekniske systemer søger konfliktløsning og ligevægt.",
+            "Total harmoni = systemets ophør (psykologisk død)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "identisk med psykologisk død",
+              "why_it_matters": "Det ultimative argument mod at se den friktionsløse tilstand som et mål.",
+              "source_location": "s. 199"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvor 'det ubevidste' overhovedet befinder sig henne i verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at Freuds subjekt ikke er en viljeløs biologisk maskine?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Fang fælden om det indre 'følelsesliv' og adskil hukommelse fra det ubevidste?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et metapsykologisk begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvordan et ubevidst uden indre intentioner alligevel kan styre vores liv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Afgør hvorfor selv den mest avancerede computer ikke har en menneskelig psyke?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1-2 nøgleord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Afgør hvordan Freuds koncept om 'systemintern determination' redder det menneskelige subjekt fra at være en rent biologisk maskine.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld felterne fra hukommelsen for at genopbygge modellens afgørende mekanismer. Tjek først Reader bagefter.",
+      "overview": [
+        "Freud erstatter ekstern biologisk og romantisk determination med systemintern determination.",
+        "Det ubevidste rummer ikke bevidste følelser, men affektpotentialiteter.",
+        "Menneskets psyke adskiller sig fra tekniske systemer ved at overleve i kraft af uafsluttede konflikter."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Før Freud betragtede romantikerne ofte det ubevidste som en overvældende, kosmisk kraft, hvilket resulterede i klassisk __________ determination.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Freud redder subjektets evne til forandring ved at lade dele af psyken påvirke andre dele af psyken, hvilket kaldes __________ determination.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Man må ikke forveksle det fortrængte, dynamiske materiale med almindelig hukommelse; hukommelsen kaldes for det __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Det ubevidste kan ikke 'føle', da dette kræver bevidsthed; det indeholder i stedet kun metapsykologisk __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "I tilfældet med Rottemanden ser vi, at det ubevidste ikke blot er et passivt arkiv, men aktivt skaber en __________ af hverdagens perceptioner.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "At skabe et konfliktfrit teknisk system i balance ville for den menneskelige psyke være identisk med psykologisk __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en skematisk kontrast mellem romantikkens 'Natur' og Freuds topiske model. Vis hvordan bestemmelseskraften bevæger sig indad.",
+          "required_elements": [
+            "Pil fra en ekstern kilde til mennesket (Romantikken",
+            "En lukket boks (Psyken) med pile mellem Bevidsthed og Ubevidst (Freud",
+            "Mærkat: 'Systemintern determination'"
+          ],
+          "blank_space_hint": "Brug cirka en halv side til at adskille de to modeller tydeligt."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Nu skal du bevise, at du kan anvende modellen. Dette er de konkrete træk, du skal bruge til eksamen for at bygge bro fra psykoanalyse til resten af kurset.",
+      "use_this_text_for": [
+        "At forklare overgangen fra den målbare overflade (W02L1) til dybdepsykologien.",
+        "At forsvare Freud mod anklager om at fratage mennesket sin frie vilje.",
+        "At forberede det decentrerede subjekt, der bliver afgørende for poststrukturalismen.",
+        "At diskutere 'determination' som en af de fire faste orienteringspunkter."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Det decentrerede subjekt (Poststrukturalisme prep)",
+          "connection": "Freud decentrerer subjektet ved at fjerne bevidstheden fra centrum. Dette baner vejen for Lacan, Foucault og kønsforskning, der helt dekonstruerer selvet."
+        },
+        {
+          "course_theme": "De fire orienteringspunkter (Determination/Agens)",
+          "connection": "Køppe giver dig det perfekte sprog til at analysere Freuds determinationsbegreb: Det er systeminternt og dermed åbent for terapi."
+        },
+        {
+          "course_theme": "Trækpsykologiens utilstrækkelighed",
+          "connection": "Trækpsykologien forudsætter et transparent subjekt, hvor adfærd = træk. Psykoanalysen viser, at overfladeadfærden struktureres af skjulte, usynlige konflikter."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækpsykologi (W02L1)",
+          "how_to_compare": "Sammenlign overfladedeterminisme vs. dybdedeterminisme. Træk er målbare variabler; Freuds ubevidste er usynlige strukturerende affektpotentialiteter."
+        },
+        {
+          "compare_with": "Evolutionspsykologi/Adfærdsbiologi",
+          "how_to_compare": "Brug 'systemintern determination' til at vise forskellen. Biologien siger dna/natur determinerer (eksternt). Freud siger, at psyken determinerer psyken."
+        },
+        {
+          "compare_with": "Kritisk Psykologi",
+          "how_to_compare": "Kritisk psykologi søger agens ude i samfundsmæssig deltagelse. Freuds form for agens sikres via den selvrefleksion, der kan justere de indre konflikter."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis eksamen beder dig redegøre for Freuds syn på fri vilje",
+          "use_in_answer": "Træk Køppe (1992) ind og brug termen 'systemintern determination'. Det viser, at du kender den metapsykologiske mekanisme bag terapien.",
+          "caution": "Undgå at lyde som om, terapi kan 'fjerne' det ubevidste; man kan kun 'justere' determinationen."
+        },
+        {
+          "prompt_type": "Hvis eksamen spørger til den historiske placering af teorien",
+          "use_in_answer": "Beskriv hvordan Freud brød med naturfilosofferne ved at trække det ubevidste ind i selve psyken.",
+          "caution": "Gør ikke Freud til en ren romantiker; han var i lige så høj grad naturvidenskabsmand."
+        },
+        {
+          "prompt_type": "Hvis du skal forsvare psykoanalysens relevans",
+          "use_in_answer": "Påpeg at computeres manglende evne til psykologisk liv netop skyldes manglen på dynamiske konflikter.",
+          "caution": "Forstyr ikke analysen med trivielle debatter om nutidens AI; hold det til Køppes konflikt-argument."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At sige at id'et 'ønsker' eller 'føler' vrede.",
+          "better_reading": "Id'et/det ubevidste rummer kun kvantiteter og affektpotentialitet. Bevidstheden mærker følelsen."
+        },
+        {
+          "trap": "At kalde Freuds model for biologisk determinisme.",
+          "better_reading": "Han opererer netop med intrapsykisk (systemintern) determination for at skabe et rum til selvet."
+        },
+        {
+          "trap": "At blande det topisk ubevidste sammen med det førbevidste.",
+          "better_reading": "Førbevidst = neutral hukommelse. Topisk ubevidst = fortrængt, konfliktfyldt materiale."
+        }
+      ],
+      "mini_exam_prompt_question": "Diskuter Køppes begreb om 'systemintern determination' og vurdér dets betydning for subjektets frihed sammenlignet med klassisk ekstern biologisk determination.",
+      "mini_exam_answer_plan_slots": [
+        "Kort definition af klassisk ekstern determination (hvordan biologi gør mennesket styret udefra).",
+        "Køppes definition af 'systemintern determination' (psyken determinerer psyken).",
+        "Hvorfor denne sondring afviser kritikernes anklage om, at psykoanalyse er lig med biologisk maskinisme.",
+        "Hvordan selvrefleksion i terapien præcis tillader en 'justering' af denne determination."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

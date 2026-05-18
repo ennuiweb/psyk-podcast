@@ -47,8 +47,8 @@ Canonical published podcast surfaces:
 Canonical generation-side docs:
 
 - `notebooklm-podcast-auto/personlighedspsykologi/docs/plan.md`
-- `shows/personlighedspsykologi-en/docs/podcast-flow-artifacts.md`
-- `shows/personlighedspsykologi-en/docs/podcast-flow-operations.md`
+- `shows/personlighedspsykologi-en/docs/operations/podcast-flow-artifacts.md`
+- `shows/personlighedspsykologi-en/docs/operations/podcast-flow-operations.md`
 
 Canonical local generation root:
 
@@ -114,8 +114,8 @@ tree. User-facing candidate folders should contain PDFs only.
 
 Canonical printout contract:
 
-- `shows/personlighedspsykologi-en/docs/printout-system.md`
-- canonical problem-driven mode: `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
+- `shows/personlighedspsykologi-en/docs/learning/printout-system.md`
+- canonical problem-driven mode: `shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md`
 - canonical current implementation: `notebooklm_queue/personlighedspsykologi_printouts.py`
 
 Important current-state note:
@@ -135,17 +135,16 @@ Important current-state note:
 Canonical oral-exam study plan for the 2026-06-03
 `personlighedspsykologi` exam:
 
-- `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026.md`
+- `shows/personlighedspsykologi-en/docs/exam/oral-exam-study-plan-2026.md`
 
 Final printable one-page A4 checklist:
 
-- `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.pdf`
-- source: `shows/personlighedspsykologi-en/docs/oral-exam-study-plan-2026-onepage.tex`
+- `shows/personlighedspsykologi-en/docs/exam/oral-exam-printout-priority-narrative-onepage.pdf`
+- source: `shows/personlighedspsykologi-en/docs/exam/oral-exam-printout-priority-narrative.md`
 
-This sheet is a physical review checklist, not a generated printout bundle. It
-has no hardcoded day dates; the learner writes dates by hand per lecture
-section. Its checkbox hierarchy is: small boxes for the four printouts per
-reading, medium boxes for whole readings, and large boxes for whole lectures.
+This sheet is a relative printout-reading priority plan, not a generated
+printout bundle. It keeps academic priority separate from printout-generation
+status and uses relative study days instead of fixed calendar dates.
 
 ### Regeneration Ledger
 
@@ -292,7 +291,7 @@ solvable problems than from outputs that mainly ask for passive intake.
 For that reason, `personlighedspsykologi` now uses a canonical problem-first
 printout mode:
 
-- `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
+- `shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md`
 
 That mode is intended for learners who engage more reliably when the material
 gives them:

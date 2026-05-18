@@ -1,0 +1,1333 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T16:52:17Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "90a2b43b747d6e55fabef79920ae3b0b03591d5143315908c768e98a4e3aff0b",
+    "source_files_signature": "197528f9384659dd739634c7bc24f47921105ff5fe1c77a1110ddef870d82c32",
+    "source_card": "2b27579553d5bae84a3edb5c9a716df5a7c3ec9c2e9a74b98028923fb5e3c8db",
+    "revised_lecture_substrate": "2c86d2e2e009b18c2c781f4cf3c17d0ec6221153556d027f679490ef6a7f1255",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w07l1-jacobsen-2021-26129bff",
+    "lecture_key": "W07L1",
+    "title": "Jacobsen (2021)",
+    "reading_title": "Jacobsen (2021)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 25,
+    "estimated_token_count": 16250,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W7L1 Eksistentiel personlighedspsykologi II (Bjerregaard-Nielsen)/W7L1 Jacobsen (2021).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 25,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l1-jacobsen-2021-26129bff",
+      "lecture_key": "W07L1",
+      "source_title": "Jacobsen (2021)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug disse spørgsmål til at navigere i teksten.",
+      "teaser_paragraphs": [
+        "Trækpsykologien har indtil nu lært dig at betragte personligheden som en samling stabile, målbare variabler. Essenser, der ligger inde i mennesket og venter på at blive testet.",
+        "Jacobsen og Kierkegaard smider en regulær bombe under denne antagelse: Du er ikke en ting, du er et problem. Mennesket er ifølge eksistentialismen tvunget til aktivt at forholde sig til sit eget liv, mens dyret bare lever uden besvær.",
+        "Dette skaber et voldsomt videnskabeligt dilemma: Hvordan kan vi studere noget, der ikke ligger stille, men konstant er i bevægelse og bliver til?",
+        "Kierkegaards løsning er provokerende indirekte. Han angriber din position som passiv iagttager og tvinger dig ud af komfortzonen gennem pseudonymer og sproglige fælder.",
+        "Læser du passivt, farer du vild. Din opgave i denne tekst er aktivt at jage beviserne for, hvordan menneskets selvforhold fungerer, og forsvare hvorfor objektiv naturvidenskab kommer til kort."
+      ],
+      "main_problem": "Find beviset for, at personligheden ikke er en fastslået kerne, men et konstant, aktivt selvforhold udspændt mellem dikotomier.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Find den præcise forskel på dyrets ubekymrede eksistens og menneskets problematiske byrde?",
+          "why_it_matters": "Lægger fundamentet for at forstå, hvorfor eksistens er en opgave, ikke en automatik.",
+          "answer_form": "En klar adskillelse"
+        },
+        {
+          "number": 2,
+          "question": "Afgør hvorfor naturvidenskabens objektive metoder ødelægger eksistensen i forsøget på at fange den?",
+          "why_it_matters": "Giver dig skyts til at angribe trækpsykologiens reificering af subjektet.",
+          "answer_form": "Et metodisk argument"
+        },
+        {
+          "number": 3,
+          "question": "Afslør Kierkegaards sande motiv for at bruge pseudonymer og forvirring som psykologisk angreb?",
+          "why_it_matters": "Forklarer tekstuddragets bevidst vanskelige form.",
+          "answer_form": "En pædagogisk mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Forsvar påstanden om, at for meget abstrakt tænkning kan sabotere selve det at eksistere?",
+          "why_it_matters": "Adskiller den intellektuelle forståelse af livet fra det levede liv.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Kortlæg selvforholdets anatomi og find de to afgørende yderpoler, vi navigerer imellem?",
+          "why_it_matters": "Dette er Kierkegaards hovedmodel af mennesket, som du skal bruge til eksamen.",
+          "answer_form": "En teoretisk struktur"
+        },
+        {
+          "number": 6,
+          "question": "Fang fantasiens præcise rolle, og afgør hvad det kræver at stå alene med sine valg?",
+          "why_it_matters": "Kobler teoretisk struktur til menneskelig handlekraft og radikalt ansvar (Agency).",
+          "answer_form": "En konkret funktion"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst er kursets absolutte vendepunkt væk fra essentialisme. Den udstyrer dig med argumenterne for radikalt agency og 'becoming'.",
+      "overview": [
+        "Eksistens adskiller sig fundamentalt fra blot at leve ved at kræve et konstant, aktivt forhold til sig selv.",
+        "Objektiv viden og naturvidenskabelig metode fejler her, fordi de fastfryser mennesket og dræber den bevægelse, der udgør sandheden.",
+        "Personligheden er aldrig færdig, men navigerer radikalt frit mellem fastlåste nødvendigheder og uendelige muligheder via fantasien."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 95-96",
+          "task": "Find beviset for svalens ligetil natur kontra menneskets tvang til refleksion.",
+          "why_it_matters": "Opstiller den grundlæggende ontologiske præmis.",
+          "stop_signal": "når begrebet 'at træde ud' er forklaret"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 96-98",
+          "task": "Grib naturvidenskaben i en fejlslutning. Opspor, hvad der forsvinder under mikroskopet.",
+          "why_it_matters": "Diskvalificerer tidligere ugers objektive paradigmer.",
+          "stop_signal": "når eksemplet med Golgata afsluttes"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 98-102",
+          "task": "Knæk koden bag den indirekte meddelelse og forfatterens bedrag.",
+          "why_it_matters": "Sikrer, at du ikke læser teksten som en bizar roman, men som et eksperiment.",
+          "stop_signal": "når det psykologiske formål med sløringen står klart"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 104-107",
+          "task": "Fang kløften mellem tanke og virkelighed.",
+          "why_it_matters": "Viser faren ved at observere livet uden at leve det.",
+          "stop_signal": "når cykeleksemplet er landet"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 108",
+          "task": "Lås dikotomierne fast og tegn selvforholdets struktur.",
+          "why_it_matters": "Giver dig de præcise termer for 'Agency vs Structure' inden i subjektet.",
+          "stop_signal": "efter opremsningen af evighed, mulighed og uendelighed"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 109-117",
+          "task": "Bestem fantasiens jobbeskrivelse og indfang konsekvensen af ekstrem frihed.",
+          "why_it_matters": "Placerer individet ansigt til ansigt med sit eget handlingsansvar.",
+          "stop_signal": "når du rammer udsagnet om favne og vand"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "at eks-istere betyder at træde ud",
+          "why": "Den etymologiske kerne, der adskiller passivt liv fra aktiv stillingtagen.",
+          "where_to_look": "s. 96"
+        },
+        {
+          "target": "Eksistens adskiller [...] Tænken og Væren",
+          "why": "Hovedargumentet mod intellektualisering af den levede virkelighed.",
+          "where_to_look": "s. 106"
+        },
+        {
+          "target": "Mennesket er et Forhold, der forholder sig",
+          "why": "Den ultimative definition af personlighed i eksistentialismen.",
+          "where_to_look": "s. 108"
+        },
+        {
+          "target": "Det er fantasien, der befordrer denne åbenhed",
+          "why": "Værktøjet, der tillader mennesket at springe ud af sin fakticitet.",
+          "where_to_look": "s. 109"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange resuméer af fiktive karakterer som Victor Eremita og Frater Taciturnus.",
+        "Teologiske debatter fra 1800-tallet omkring Jesu historicitet.",
+        "Litterære plotdetaljer omkring gemte papirer i skrivepulte."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse problemerne. Slå op i kilden, hvis du vil dybere ned i et specifikt spor.",
+      "coverage_note": "Fokuserer på den ontologiske model af selvet og kritikken af objektiv viden, og udelader de tungeste litterære omveje.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 95-96",
+          "heading": "Svalen og Menneskets Byrde",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Fastslå beviset for, hvorfor menneskets eksistens uundgåeligt er problematisk?",
+          "explanation_paragraphs": [
+            "I naturen eksisterer dyr fuldstændig umiddelbart og ligetil. En svale stiller ikke spørgsmålstegn ved, hvordan den skal være en svale. Den lever blot sit biologiske program ud. Men for mennesket forholder det sig anderledes problematisk.",
+            "Vi er ganske vist levende væsner, men vi er kastet ud i en opgave: Vi er tvunget til at forholde os til, *hvordan* vi eksisterer. Vores væren er ikke givet på forhånd.",
+            "Dette betyder, at vi som mennesker hele tiden må tage stilling. Vi træder et skridt ud af den blotte overlevelse og kigger på vores eget liv. Eksistens er ikke noget, man bare har; det er noget, man gør og forholder sig til."
+          ],
+          "key_points": [
+            "Dyr er deres natur; mennesker skal tage aktivt stilling til deres eksistens.",
+            "At eksistere betyder fundamentalt at 'træde ud' og forholde sig til sig selv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at eksistere bliver på den måde problematisk",
+              "why_it_matters": "Markeret afvigelse fra det rent biologiske 'ligetil' liv.",
+              "source_location": "s. 95"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 96-98",
+          "heading": "Videnskabens Blinde Vinkel",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Afgør hvorfor klassisk naturvidenskab ikke kan måle eksistensen?",
+          "explanation_paragraphs": [
+            "Traditionel videnskab studerer det 'foreliggende'. Det vil sige objekter, historiske kendsgerninger eller kemiske stoffer, som ligger stille nok til at lade sig observere udefra.",
+            "Men menneskets eksistens er en ufærdig proces i konstant tilblivelse. Hvis vi forsøger at fryse den fast for at veje og måle den, mister vi selve dens bevægelse og vitalitet.",
+            "Når videnskaben gør eksistensen til genstand for kold, objektiv metode, reducerer den et handlende subjekt til en ting. Den fanger måske det ydre, men misser fuldstændig det indre engagement."
+          ],
+          "key_points": [
+            "Eksistensen udspiller sig altid i et flygtigt øjeblik.",
+            "Forsøget på at observere objektivt dræber fænomenets sande karakter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Eksistensen er altid øjeblikkelig, er altid ny",
+              "why_it_matters": "Beviser hvorfor måling af faste personlighedstræk fejler over for levet liv.",
+              "source_location": "s. 96"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 96",
+              "passage": "Eksistensen kan derfor ikke samles op som noget foreliggende og lægges under mikroskopet til nærmere studium.",
+              "why_it_matters": "Den primære afvisning af trækpsykologiens epistemologi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 98-102",
+          "heading": "Den Psykologiske Fælde",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Identificer formålet med Kierkegaards indirekte metode?",
+          "explanation_paragraphs": [
+            "Kierkegaard skriver notorisk indviklet. Han bruger pseudonymer (falske navne) og pakker tekster ind i hinanden som kinesiske æsker. Dette er et bevidst, psykologisk våben.",
+            "Metoden kaldes indirekte meddelelse. Målet er at angribe den passivitet, læsere normalt indtager, når de modtager objektiv viden. Hvis han bare skrev konklusionerne direkte, ville vi memorere dem og lade livet gå videre upåvirket.",
+            "Ved at forvirre og sløre tvinger han ansvaret tilbage på dig. Du må selv regne den ud, involvere dig subjektivt og eksperimentere med betydningen i dit eget liv."
+          ],
+          "key_points": [
+            "Forvirring bruges som en pædagogisk chok-taktik.",
+            "Subjektiv indlevelse kræver, at den lette vej til objektivt svar blokeres."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at tvinge perspektivet over på læserens side",
+              "why_it_matters": "Viser intentionen med de litterære fælder.",
+              "source_location": "s. 99"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 104-107",
+          "heading": "Kløften Mellem Tænken og Væren",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Bevis hvordan refleksion kan sabotere handling?",
+          "explanation_paragraphs": [
+            "Kierkegaard opstiller en fundamental kløft mellem at tænke abstrakt over livet og at leve det aktivt i øjeblikket.",
+            "At tænke kræver afstand, mens eksistens kræver deltagelse. Hvis du analyserer dit cykelridt for intenst, mens du sidder på sadlen, falder du. Tænkningen truer med at standse livets bevægelse.",
+            "Vi kan ikke tænke os frem til vores eget eksistentielle ståsted; vi må træde ind i det og bære vægten af vores egen fremtræden, ligesom en politiker fanget i et skarpt spørgsmål uden forberedt svar."
+          ],
+          "key_points": [
+            "Abstrakt tænkning skaber flugtveje fra handling.",
+            "At vælge sit liv kræver, at man bryder med den rene refleksion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bragt til standsning. Så ligesom vi bedst forstår os på at cykle",
+              "why_it_matters": "En konkret metafor for, at overanalyse dræber handling.",
+              "source_location": "s. 105"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 106",
+              "passage": "Eksistens adskiller [...] Tænken og Væren.",
+              "why_it_matters": "Essensen af det ontologiske dilemma."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "s. 108",
+          "heading": "Selvets Anatomi: Det Konstante Forhold",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Kortlæg modellen af mennesket som udspændt mellem yderpoler?",
+          "explanation_paragraphs": [
+            "Hvad er et personligt 'selv'? Det er ikke en substans, du bærer rundt på som en genstand i en rygsæk. Mennesket defineres snarest som et dynamisk stykke arbejde: 'Et forhold, der forholder sig til sig selv'.",
+            "Dette selv er altid spændt ud mellem ekstreme yderpoler, også kendt som dikotomier. På den ene side er vi forankret i det nødvendige og det endelige – vores krop, tid, kultur og biologi.",
+            "På den anden side bærer vi kimene til det uendelige og mulige. Vi kan overskride vores faktiske betingelser og vælge en anden retning. Personligheden bliver til i selve opgaven med at balancere disse krav."
+          ],
+          "key_points": [
+            "Mennesket er en aktiv proces, ikke en passiv essens.",
+            "Spændingsfeltet ligger mellem nødvendighed (begrænsning) og mulighed (frihed)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "dikotomier som det timelige og det evige",
+              "why_it_matters": "Nøglebegreber til at forstå de strukturerelle poler i eksistensmodellen.",
+              "source_location": "s. 108"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 108",
+              "passage": "Mennesket (eller mere bogstavnært, menneskets selv) er 'et Forhold, der forholder sig til sig selv'.",
+              "why_it_matters": "Citatet udgør rygraden i den eksistentielle personlighedsdefinition."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 109-110",
+          "heading": "Fantasiens Rolle som Motor",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Bestem fantasiens præcise funktion for overhovedet at kunne bryde ud?",
+          "explanation_paragraphs": [
+            "For at vi kan overskride den stramme biologi og baggrund, kræves der et mentalt værktøj. Det værktøj er fantasien.",
+            "Fantasien er ikke bare børneleg; det er evnen til psykologisk at forlade den faktiske situation og forestille sig en anden virkelighed. Den river os ud af sløvheden og gør det muligt at overveje nye veje.",
+            "Uden fantasi låser vi fast i dødvande og nødvendighed. Fantasien aktiverer lidenskaben og viljen. Den er forudsætningen for menneskets handlekraft og evne til overhovedet at forestille sig et 'jeg kunne'."
+          ],
+          "key_points": [
+            "Fantasi skaber adgangen til mulighedsrummet.",
+            "Uden fantasi mister vi vores evne til personligt engagement."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Mennesket er ikke som dyret bundet",
+              "why_it_matters": "Fastslår frihedens grundvilkår.",
+              "source_location": "s. 109"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 7,
+          "source_location": "s. 115-117",
+          "heading": "At Stå på 70.000 Favne Vand",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Fang konsekvensen af at stå helt uden objektive sikkerhedsnet?",
+          "explanation_paragraphs": [
+            "Når vi indser mulighedens magt, opdager vi, at ydre rettesnore (forældre, samfund, videnskab) ikke kan træffe livets store valg for os. Målestokken flytter ind i individet.",
+            "Kierkegaard sammenligner dette radikale ansvar med at svømme på '70.000 favne vand'. Du befinder dig på en dybde, hvor ingen andres støttehjul kan bunde.",
+            "For at være et sandt selv må du overtage valget om din egen tilblivelse uden nogen form for garantier og med frygten som konstant ledsager. Subjektet træder i karakter ved at vedkende sig ansvaret for sit eget forhold."
+          ],
+          "key_points": [
+            "Når mulighederne overvælder, bliver man svimmel.",
+            "Menneskelig modning indebærer at fjerne ydre autoriteter som undskyldning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "skuer det ned i det afgrundsdybe",
+              "why_it_matters": "Indfanger den eksistentielle angst og svimmelhed ved det åbne valg.",
+              "source_location": "s. 116"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fastslå beviset for, hvorfor menneskets eksistens uundgåeligt er problematisk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En klar adskillelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor klassisk naturvidenskab ikke kan måle eksistensen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et metodisk argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Identificer formålet med Kierkegaards indirekte metode?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En pædagogisk mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis hvordan refleksion kan sabotere handling?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Kortlæg modellen af mennesket som udspændt mellem yderpoler?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En teoretisk struktur",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bestem fantasiens præcise funktion for overhovedet at kunne bryde ud?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En konkret funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang konsekvensen af at stå helt uden objektive sikkerhedsnet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 7",
+          "answer_shape": "En konkret funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "8",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Find beviset for, at personligheden ikke er en fastslået kerne, men et konstant, aktivt selvforhold udspændt mellem dikotomier.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-7",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader ned. Byg nu modellen af selvet udelukkende fra hukommelsen. Vend først tilbage for at reparere, når du er strandet.",
+      "overview": [
+        "Eksistensialismen forkaster fuldstændig ideen om en statisk, forudsigelig personlighedskerne.",
+        "I stedet defineres subjektet som en aktiv proces og et forhold, der konstant balancerer sin nødvendighed og sine åbne muligheder.",
+        "Denne balanceakt tvinger dig til at tage radikalt personligt ansvar og overskride lysten til intellektuel distance."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Modsat menneskets tvungne selvforhold lever svalen blot en umiddelbar og __________ eksistens.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 2,
+          "sentence": "Eksistens lader sig ikke undersøge i et mikroskop, fordi objektiviteten kvæler den levende __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et navneord"
+        },
+        {
+          "number": 3,
+          "sentence": "Kierkegaard benytter bevidst forvirring i form af __________ meddelelse for at blokere passiv læsning.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvis du bruger alt for megen energi på objektiv refleksion, risikerer du at Tænken udkonkurrerer levet __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "Det eksistentielle dogme slår fast, at mennesket grundlæggende er et __________, der forholder sig til sig selv.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et substantiv"
+        },
+        {
+          "number": 6,
+          "sentence": "Udvikling sker i krydsfeltet mellem yderpolerne: På den ene side det nødvendige, på den anden side det __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 7,
+          "sentence": "For overhovedet at aktivere handlekraft og rive sig løs fra det faktiske udgangspunkt kræves __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "En menneskelig evne"
+        },
+        {
+          "number": 8,
+          "sentence": "Ansvarets fulde tyngde rammer, når man mister ydre holdepunkter og må træde vande på 70.000 __________ vand.",
+          "where_to_look": "Sektion 7",
+          "answer_shape": "Et ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn selvforholdets arkitektur. Vis mennesket som et centralt omdrejningspunkt, der tvinges til at balancere mellem de to radikale modpoler (dikotomier).",
+          "required_elements": [
+            "Jeget",
+            "Forholdet i centrum",
+            "Pol 1 (Det nødvendige",
+            "endelige",
+            "Pol 2 (Det mulige",
+            "uendelige"
+          ],
+          "blank_space_hint": "Brug midten af siden til akser."
+        },
+        {
+          "number": 2,
+          "task": "Illustrer adskillelsen mellem metoder. Vis forskellen på at betragte sandheden køligt udefra og den subjektive kamp indefra.",
+          "required_elements": [
+            "Objektiviteten (mikroskop",
+            "Tænken",
+            "Subjektiviteten (handling",
+            "Væren",
+            "En afgrund eller mur imellem de to positioner"
+          ],
+          "blank_space_hint": "Lav en venstre og en højre blok."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre beviserne skarpeladte. Eksistentialismen er dit ultimative våben mod alt, der vil gøre mennesket til en statisk genstand.",
+      "use_this_text_for": [
+        "At rette et dræbende angreb mod trækpsykologiens reificering af selvet.",
+        "At forklare menneskets radikale og kompromisløse handlefrihed (Agency).",
+        "At trække grænsen op for, hvad klassisk naturvidenskab overhovedet kan sige om et subjekt.",
+        "At bevise, at en personlighed altid er et igangværende projekt, ikke en udskrevet opskrift.",
+        "At koble psykologi til begreber om ansvar og lidenskab i livets afgørende valg."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W02L1 Trækpsykologi (Essentialisme)",
+          "connection": "Trækpsykologien fryser os fast som mønstre, vi kan måles på. Brug Kierkegaard til at vise, at denne fastfrysning ødelægger selve genstandsfeltet: den levede tilblivelse."
+        },
+        {
+          "course_theme": "W12L1 Agency vs. Determination",
+          "connection": "Placer selvforholdet ultimativt ovre på 'Agency'. Selvom vi begrænses af fakticitet, skaber evnen til altid at kunne forholde sig et evigt flugtrum og et absolut frihedsansvar."
+        },
+        {
+          "course_theme": "Epistemologisk udvikling",
+          "connection": "Udnyt teksten som bevis på overgangen fra 3. persons objektivitet (det foreliggende) til nødvendigheden af et 1. persons subjektivt greb."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five Modellen (Costa & McCrae)",
+          "how_to_compare": "Sammenlign stabilitet. For Costa er du dine testscorer. For Kierkegaard er din sandhed udelukkende, hvordan du aktivt vælger at forholde dig til de betingelser."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (Holzkamp/Dreier)",
+          "how_to_compare": "Begge kæmper for menneskelig handleevne. Men mens kritisk psykologi mener at samfundet er skurken, finder Kierkegaard at begrænsningen ligger i den indre, ontologiske angst for valget."
+        },
+        {
+          "compare_with": "Behaviorismen (Skinner)",
+          "how_to_compare": "Skinner overfører dyrs læring ligetil til mennesket. Brug Jacobsen/Kierkegaard til at banke en knaldhård kile ned mellem svalen og menneskets unikke selvforhold."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du bliver spurgt, om personlighed kan måles objektivt.",
+          "use_in_answer": "Angrib præmissen. Hent Kierkegaards skelnen mellem Tænken og Væren ind. Mikroskopet slår bevægelsen ihjel.",
+          "caution": "Påstå ikke at naturvidenskab er irrelevant - sig blot, at den er inkompetent over for det subjektivt levede øjeblik."
+        },
+        {
+          "prompt_type": "Når du skal definere, hvad et 'jeg' overhovedet er.",
+          "use_in_answer": "Smid trumfen: 'Et forhold, der forholder sig til sig selv'. Redegør for spændingsfeltet mellem de faktiske vilkår og fantasiens muligheder.",
+          "caution": "Husk hele sætningen; glemmer du 'der forholder sig til sig selv', lyder det som en defekt ligning."
+        },
+        {
+          "prompt_type": "Når debatten handler om, hvor frie vi egentlig er.",
+          "use_in_answer": "Vis hvordan mennesket aldrig blot 'er' en konsekvens af sin baggrund. Fantasien åbner altid sprækken for handling på de 70.000 favne.",
+          "caution": "Fritag ikke mennesket fra dets biologi - det hører hjemme i nøvendighedens pol. Vi er bundet af tid, men frie i forlængelsen."
+        },
+        {
+          "prompt_type": "Når eksaminator spørger til formidling i psykologien.",
+          "use_in_answer": "Forklar metoden bag indirekte meddelelse. Argumenter for, at visse sandheder kun kan tilegnes ved at tvinge perspektivet over på læserens skuldre.",
+          "caution": "Gør ikke Kierkegaard til en drillepind; fasthold, at det er et systematisk, pædagogisk træk."
+        },
+        {
+          "prompt_type": "Som en stærk konkluderende metabetragtning.",
+          "use_in_answer": "Konkluder skarpt, at eksistentialismen i kurset fungerer som vagthund mod determinismen. Den fastholder evigt, at 'hvordan' vi er, trumfer 'hvad' vi er.",
+          "caution": "Dette rykker os tæt på humanisme - vær forberedt på at kunne adskille de to (fx ved Kierkegaards fokus på fortvivlelse over for Maslows optimisme)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Kierkegaards 'eksperimenter' refererer til at han lavede rigtige dataindsamlinger med forsøgspersoner i København.",
+          "better_reading": "Han designede litterære tankeeksperimenter, der skulle chokere læseren ind i radikal selvrefleksion."
+        },
+        {
+          "trap": "At ordet 'eksistere' i denne tekst bare betyder 'at være i live'.",
+          "better_reading": "Biologisk liv er givet, men 'eksistens' er en opgave; det kræver aktivt at træde ud og forholde sig til livet."
+        },
+        {
+          "trap": "At 'fantasien' kun fungerer som virkelighedsflugt eller dagdrømmeri.",
+          "better_reading": "Fantasien hyldes stik modsat som den nødvendige eksistentielle motor, der tvinger virkeligheden åben for valg."
+        }
+      ],
+      "mini_exam_prompt_question": "Trækpsykologien bygger på en antagelse om stabile, foreliggende genstande. Brug Kierkegaards definition af 'selvforholdet' til at demontere dette statiske menneskesyn systematisk.",
+      "mini_exam_answer_plan_slots": [
+        "1. Opbyg angrebet epistemologisk: Afvis mikroskopet som et redskab, der destruerer den eksistentielle bevægelse.",
+        "2. Slå spliden fast: Træk grænsen mellem svalens problemfrie 'væren' og menneskets tvungne refleksion.",
+        "3. Indfør våbnet: Analyser 'forholdet der forholder sig' som et spændingsfelt bundet af fakticitet og befriet af fantasi.",
+        "4. Fæld dommen: Gennemtrumf, at et fænomen i evig tilblivelse umuligt kan krystalliseres til en testscore."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w07l1-jacobsen-2021-26129bff",
+      "lecture_key": "W07L1",
+      "source_title": "Jacobsen (2021)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug disse spørgsmål til at navigere i teksten.",
+      "teaser_paragraphs": [
+        "Trækpsykologien har indtil nu lært dig at betragte personligheden som en samling stabile, målbare variabler. Essenser, der ligger inde i mennesket og venter på at blive testet.",
+        "Jacobsen og Kierkegaard smider en regulær bombe under denne antagelse: Du er ikke en ting, du er et problem. Mennesket er ifølge eksistentialismen tvunget til aktivt at forholde sig til sit eget liv, mens dyret bare lever uden besvær.",
+        "Dette skaber et voldsomt videnskabeligt dilemma: Hvordan kan vi studere noget, der ikke ligger stille, men konstant er i bevægelse og bliver til?",
+        "Kierkegaards løsning er provokerende indirekte. Han angriber din position som passiv iagttager og tvinger dig ud af komfortzonen gennem pseudonymer og sproglige fælder.",
+        "Læser du passivt, farer du vild. Din opgave i denne tekst er aktivt at jage beviserne for, hvordan menneskets selvforhold fungerer, og forsvare hvorfor objektiv naturvidenskab kommer til kort."
+      ],
+      "main_problem": "Find beviset for, at personligheden ikke er en fastslået kerne, men et konstant, aktivt selvforhold udspændt mellem dikotomier.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Find den præcise forskel på dyrets ubekymrede eksistens og menneskets problematiske byrde?",
+          "why_it_matters": "Lægger fundamentet for at forstå, hvorfor eksistens er en opgave, ikke en automatik.",
+          "answer_form": "En klar adskillelse"
+        },
+        {
+          "number": 2,
+          "question": "Afgør hvorfor naturvidenskabens objektive metoder ødelægger eksistensen i forsøget på at fange den?",
+          "why_it_matters": "Giver dig skyts til at angribe trækpsykologiens reificering af subjektet.",
+          "answer_form": "Et metodisk argument"
+        },
+        {
+          "number": 3,
+          "question": "Afslør Kierkegaards sande motiv for at bruge pseudonymer og forvirring som psykologisk angreb?",
+          "why_it_matters": "Forklarer tekstuddragets bevidst vanskelige form.",
+          "answer_form": "En pædagogisk mekanisme"
+        },
+        {
+          "number": 4,
+          "question": "Forsvar påstanden om, at for meget abstrakt tænkning kan sabotere selve det at eksistere?",
+          "why_it_matters": "Adskiller den intellektuelle forståelse af livet fra det levede liv.",
+          "answer_form": "En kontrast"
+        },
+        {
+          "number": 5,
+          "question": "Kortlæg selvforholdets anatomi og find de to afgørende yderpoler, vi navigerer imellem?",
+          "why_it_matters": "Dette er Kierkegaards hovedmodel af mennesket, som du skal bruge til eksamen.",
+          "answer_form": "En teoretisk struktur"
+        },
+        {
+          "number": 6,
+          "question": "Fang fantasiens præcise rolle, og afgør hvad det kræver at stå alene med sine valg?",
+          "why_it_matters": "Kobler teoretisk struktur til menneskelig handlekraft og radikalt ansvar (Agency).",
+          "answer_form": "En konkret funktion"
+        }
+      ],
+      "why_this_text_matters": "Denne tekst er kursets absolutte vendepunkt væk fra essentialisme. Den udstyrer dig med argumenterne for radikalt agency og 'becoming'.",
+      "overview": [
+        "Eksistens adskiller sig fundamentalt fra blot at leve ved at kræve et konstant, aktivt forhold til sig selv.",
+        "Objektiv viden og naturvidenskabelig metode fejler her, fordi de fastfryser mennesket og dræber den bevægelse, der udgør sandheden.",
+        "Personligheden er aldrig færdig, men navigerer radikalt frit mellem fastlåste nødvendigheder og uendelige muligheder via fantasien."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 95-96",
+          "task": "Find beviset for svalens ligetil natur kontra menneskets tvang til refleksion.",
+          "why_it_matters": "Opstiller den grundlæggende ontologiske præmis.",
+          "stop_signal": "når begrebet 'at træde ud' er forklaret"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 96-98",
+          "task": "Grib naturvidenskaben i en fejlslutning. Opspor, hvad der forsvinder under mikroskopet.",
+          "why_it_matters": "Diskvalificerer tidligere ugers objektive paradigmer.",
+          "stop_signal": "når eksemplet med Golgata afsluttes"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 98-102",
+          "task": "Knæk koden bag den indirekte meddelelse og forfatterens bedrag.",
+          "why_it_matters": "Sikrer, at du ikke læser teksten som en bizar roman, men som et eksperiment.",
+          "stop_signal": "når det psykologiske formål med sløringen står klart"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 104-107",
+          "task": "Fang kløften mellem tanke og virkelighed.",
+          "why_it_matters": "Viser faren ved at observere livet uden at leve det.",
+          "stop_signal": "når cykeleksemplet er landet"
+        },
+        {
+          "number": 5,
+          "source_location": "s. 108",
+          "task": "Lås dikotomierne fast og tegn selvforholdets struktur.",
+          "why_it_matters": "Giver dig de præcise termer for 'Agency vs Structure' inden i subjektet.",
+          "stop_signal": "efter opremsningen af evighed, mulighed og uendelighed"
+        },
+        {
+          "number": 6,
+          "source_location": "s. 109-117",
+          "task": "Bestem fantasiens jobbeskrivelse og indfang konsekvensen af ekstrem frihed.",
+          "why_it_matters": "Placerer individet ansigt til ansigt med sit eget handlingsansvar.",
+          "stop_signal": "når du rammer udsagnet om favne og vand"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "at eks-istere betyder at træde ud",
+          "why": "Den etymologiske kerne, der adskiller passivt liv fra aktiv stillingtagen.",
+          "where_to_look": "s. 96"
+        },
+        {
+          "target": "Eksistens adskiller [...] Tænken og Væren",
+          "why": "Hovedargumentet mod intellektualisering af den levede virkelighed.",
+          "where_to_look": "s. 106"
+        },
+        {
+          "target": "Mennesket er et Forhold, der forholder sig",
+          "why": "Den ultimative definition af personlighed i eksistentialismen.",
+          "where_to_look": "s. 108"
+        },
+        {
+          "target": "Det er fantasien, der befordrer denne åbenhed",
+          "why": "Værktøjet, der tillader mennesket at springe ud af sin fakticitet.",
+          "where_to_look": "s. 109"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange resuméer af fiktive karakterer som Victor Eremita og Frater Taciturnus.",
+        "Teologiske debatter fra 1800-tallet omkring Jesu historicitet.",
+        "Litterære plotdetaljer omkring gemte papirer i skrivepulte."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner til at løse problemerne. Slå op i kilden, hvis du vil dybere ned i et specifikt spor.",
+      "coverage_note": "Fokuserer på den ontologiske model af selvet og kritikken af objektiv viden, og udelader de tungeste litterære omveje.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 95-96",
+          "heading": "Svalen og Menneskets Byrde",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Fastslå beviset for, hvorfor menneskets eksistens uundgåeligt er problematisk?",
+          "explanation_paragraphs": [
+            "I naturen eksisterer dyr fuldstændig umiddelbart og ligetil. En svale stiller ikke spørgsmålstegn ved, hvordan den skal være en svale. Den lever blot sit biologiske program ud. Men for mennesket forholder det sig anderledes problematisk.",
+            "Vi er ganske vist levende væsner, men vi er kastet ud i en opgave: Vi er tvunget til at forholde os til, *hvordan* vi eksisterer. Vores væren er ikke givet på forhånd.",
+            "Dette betyder, at vi som mennesker hele tiden må tage stilling. Vi træder et skridt ud af den blotte overlevelse og kigger på vores eget liv. Eksistens er ikke noget, man bare har; det er noget, man gør og forholder sig til."
+          ],
+          "key_points": [
+            "Dyr er deres natur; mennesker skal tage aktivt stilling til deres eksistens.",
+            "At eksistere betyder fundamentalt at 'træde ud' og forholde sig til sig selv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at eksistere bliver på den måde problematisk",
+              "why_it_matters": "Markeret afvigelse fra det rent biologiske 'ligetil' liv.",
+              "source_location": "s. 95"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 96-98",
+          "heading": "Videnskabens Blinde Vinkel",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Afgør hvorfor klassisk naturvidenskab ikke kan måle eksistensen?",
+          "explanation_paragraphs": [
+            "Traditionel videnskab studerer det 'foreliggende'. Det vil sige objekter, historiske kendsgerninger eller kemiske stoffer, som ligger stille nok til at lade sig observere udefra.",
+            "Men menneskets eksistens er en ufærdig proces i konstant tilblivelse. Hvis vi forsøger at fryse den fast for at veje og måle den, mister vi selve dens bevægelse og vitalitet.",
+            "Når videnskaben gør eksistensen til genstand for kold, objektiv metode, reducerer den et handlende subjekt til en ting. Den fanger måske det ydre, men misser fuldstændig det indre engagement."
+          ],
+          "key_points": [
+            "Eksistensen udspiller sig altid i et flygtigt øjeblik.",
+            "Forsøget på at observere objektivt dræber fænomenets sande karakter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Eksistensen er altid øjeblikkelig, er altid ny",
+              "why_it_matters": "Beviser hvorfor måling af faste personlighedstræk fejler over for levet liv.",
+              "source_location": "s. 96"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 96",
+              "passage": "Eksistensen kan derfor ikke samles op som noget foreliggende og lægges under mikroskopet til nærmere studium.",
+              "why_it_matters": "Den primære afvisning af trækpsykologiens epistemologi."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 98-102",
+          "heading": "Den Psykologiske Fælde",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Identificer formålet med Kierkegaards indirekte metode?",
+          "explanation_paragraphs": [
+            "Kierkegaard skriver notorisk indviklet. Han bruger pseudonymer (falske navne) og pakker tekster ind i hinanden som kinesiske æsker. Dette er et bevidst, psykologisk våben.",
+            "Metoden kaldes indirekte meddelelse. Målet er at angribe den passivitet, læsere normalt indtager, når de modtager objektiv viden. Hvis han bare skrev konklusionerne direkte, ville vi memorere dem og lade livet gå videre upåvirket.",
+            "Ved at forvirre og sløre tvinger han ansvaret tilbage på dig. Du må selv regne den ud, involvere dig subjektivt og eksperimentere med betydningen i dit eget liv."
+          ],
+          "key_points": [
+            "Forvirring bruges som en pædagogisk chok-taktik.",
+            "Subjektiv indlevelse kræver, at den lette vej til objektivt svar blokeres."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "at tvinge perspektivet over på læserens side",
+              "why_it_matters": "Viser intentionen med de litterære fælder.",
+              "source_location": "s. 99"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 104-107",
+          "heading": "Kløften Mellem Tænken og Væren",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Bevis hvordan refleksion kan sabotere handling?",
+          "explanation_paragraphs": [
+            "Kierkegaard opstiller en fundamental kløft mellem at tænke abstrakt over livet og at leve det aktivt i øjeblikket.",
+            "At tænke kræver afstand, mens eksistens kræver deltagelse. Hvis du analyserer dit cykelridt for intenst, mens du sidder på sadlen, falder du. Tænkningen truer med at standse livets bevægelse.",
+            "Vi kan ikke tænke os frem til vores eget eksistentielle ståsted; vi må træde ind i det og bære vægten af vores egen fremtræden, ligesom en politiker fanget i et skarpt spørgsmål uden forberedt svar."
+          ],
+          "key_points": [
+            "Abstrakt tænkning skaber flugtveje fra handling.",
+            "At vælge sit liv kræver, at man bryder med den rene refleksion."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bragt til standsning. Så ligesom vi bedst forstår os på at cykle",
+              "why_it_matters": "En konkret metafor for, at overanalyse dræber handling.",
+              "source_location": "s. 105"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 106",
+              "passage": "Eksistens adskiller [...] Tænken og Væren.",
+              "why_it_matters": "Essensen af det ontologiske dilemma."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "s. 108",
+          "heading": "Selvets Anatomi: Det Konstante Forhold",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Kortlæg modellen af mennesket som udspændt mellem yderpoler?",
+          "explanation_paragraphs": [
+            "Hvad er et personligt 'selv'? Det er ikke en substans, du bærer rundt på som en genstand i en rygsæk. Mennesket defineres snarest som et dynamisk stykke arbejde: 'Et forhold, der forholder sig til sig selv'.",
+            "Dette selv er altid spændt ud mellem ekstreme yderpoler, også kendt som dikotomier. På den ene side er vi forankret i det nødvendige og det endelige – vores krop, tid, kultur og biologi.",
+            "På den anden side bærer vi kimene til det uendelige og mulige. Vi kan overskride vores faktiske betingelser og vælge en anden retning. Personligheden bliver til i selve opgaven med at balancere disse krav."
+          ],
+          "key_points": [
+            "Mennesket er en aktiv proces, ikke en passiv essens.",
+            "Spændingsfeltet ligger mellem nødvendighed (begrænsning) og mulighed (frihed)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "dikotomier som det timelige og det evige",
+              "why_it_matters": "Nøglebegreber til at forstå de strukturerelle poler i eksistensmodellen.",
+              "source_location": "s. 108"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 108",
+              "passage": "Mennesket (eller mere bogstavnært, menneskets selv) er 'et Forhold, der forholder sig til sig selv'.",
+              "why_it_matters": "Citatet udgør rygraden i den eksistentielle personlighedsdefinition."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "s. 109-110",
+          "heading": "Fantasiens Rolle som Motor",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Bestem fantasiens præcise funktion for overhovedet at kunne bryde ud?",
+          "explanation_paragraphs": [
+            "For at vi kan overskride den stramme biologi og baggrund, kræves der et mentalt værktøj. Det værktøj er fantasien.",
+            "Fantasien er ikke bare børneleg; det er evnen til psykologisk at forlade den faktiske situation og forestille sig en anden virkelighed. Den river os ud af sløvheden og gør det muligt at overveje nye veje.",
+            "Uden fantasi låser vi fast i dødvande og nødvendighed. Fantasien aktiverer lidenskaben og viljen. Den er forudsætningen for menneskets handlekraft og evne til overhovedet at forestille sig et 'jeg kunne'."
+          ],
+          "key_points": [
+            "Fantasi skaber adgangen til mulighedsrummet.",
+            "Uden fantasi mister vi vores evne til personligt engagement."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Mennesket er ikke som dyret bundet",
+              "why_it_matters": "Fastslår frihedens grundvilkår.",
+              "source_location": "s. 109"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 7,
+          "source_location": "s. 115-117",
+          "heading": "At Stå på 70.000 Favne Vand",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Fang konsekvensen af at stå helt uden objektive sikkerhedsnet?",
+          "explanation_paragraphs": [
+            "Når vi indser mulighedens magt, opdager vi, at ydre rettesnore (forældre, samfund, videnskab) ikke kan træffe livets store valg for os. Målestokken flytter ind i individet.",
+            "Kierkegaard sammenligner dette radikale ansvar med at svømme på '70.000 favne vand'. Du befinder dig på en dybde, hvor ingen andres støttehjul kan bunde.",
+            "For at være et sandt selv må du overtage valget om din egen tilblivelse uden nogen form for garantier og med frygten som konstant ledsager. Subjektet træder i karakter ved at vedkende sig ansvaret for sit eget forhold."
+          ],
+          "key_points": [
+            "Når mulighederne overvælder, bliver man svimmel.",
+            "Menneskelig modning indebærer at fjerne ydre autoriteter som undskyldning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "skuer det ned i det afgrundsdybe",
+              "why_it_matters": "Indfanger den eksistentielle angst og svimmelhed ved det åbne valg.",
+              "source_location": "s. 116"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fastslå beviset for, hvorfor menneskets eksistens uundgåeligt er problematisk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En klar adskillelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor klassisk naturvidenskab ikke kan måle eksistensen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et metodisk argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Identificer formålet med Kierkegaards indirekte metode?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En pædagogisk mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis hvordan refleksion kan sabotere handling?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Kortlæg modellen af mennesket som udspændt mellem yderpoler?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En teoretisk struktur",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bestem fantasiens præcise funktion for overhovedet at kunne bryde ud?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "En konkret funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang konsekvensen af at stå helt uden objektive sikkerhedsnet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 7",
+          "answer_shape": "En konkret funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "8",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Find beviset for, at personligheden ikke er en fastslået kerne, men et konstant, aktivt selvforhold udspændt mellem dikotomier.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-7",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader ned. Byg nu modellen af selvet udelukkende fra hukommelsen. Vend først tilbage for at reparere, når du er strandet.",
+      "overview": [
+        "Eksistensialismen forkaster fuldstændig ideen om en statisk, forudsigelig personlighedskerne.",
+        "I stedet defineres subjektet som en aktiv proces og et forhold, der konstant balancerer sin nødvendighed og sine åbne muligheder.",
+        "Denne balanceakt tvinger dig til at tage radikalt personligt ansvar og overskride lysten til intellektuel distance."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Modsat menneskets tvungne selvforhold lever svalen blot en umiddelbar og __________ eksistens.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 2,
+          "sentence": "Eksistens lader sig ikke undersøge i et mikroskop, fordi objektiviteten kvæler den levende __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et navneord"
+        },
+        {
+          "number": 3,
+          "sentence": "Kierkegaard benytter bevidst forvirring i form af __________ meddelelse for at blokere passiv læsning.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvis du bruger alt for megen energi på objektiv refleksion, risikerer du at Tænken udkonkurrerer levet __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et navneord"
+        },
+        {
+          "number": 5,
+          "sentence": "Det eksistentielle dogme slår fast, at mennesket grundlæggende er et __________, der forholder sig til sig selv.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et substantiv"
+        },
+        {
+          "number": 6,
+          "sentence": "Udvikling sker i krydsfeltet mellem yderpolerne: På den ene side det nødvendige, på den anden side det __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et tillægsord"
+        },
+        {
+          "number": 7,
+          "sentence": "For overhovedet at aktivere handlekraft og rive sig løs fra det faktiske udgangspunkt kræves __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "En menneskelig evne"
+        },
+        {
+          "number": 8,
+          "sentence": "Ansvarets fulde tyngde rammer, når man mister ydre holdepunkter og må træde vande på 70.000 __________ vand.",
+          "where_to_look": "Sektion 7",
+          "answer_shape": "Et ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn selvforholdets arkitektur. Vis mennesket som et centralt omdrejningspunkt, der tvinges til at balancere mellem de to radikale modpoler (dikotomier).",
+          "required_elements": [
+            "Jeget",
+            "Forholdet i centrum",
+            "Pol 1 (Det nødvendige",
+            "endelige",
+            "Pol 2 (Det mulige",
+            "uendelige"
+          ],
+          "blank_space_hint": "Brug midten af siden til akser."
+        },
+        {
+          "number": 2,
+          "task": "Illustrer adskillelsen mellem metoder. Vis forskellen på at betragte sandheden køligt udefra og den subjektive kamp indefra.",
+          "required_elements": [
+            "Objektiviteten (mikroskop",
+            "Tænken",
+            "Subjektiviteten (handling",
+            "Væren",
+            "En afgrund eller mur imellem de to positioner"
+          ],
+          "blank_space_hint": "Lav en venstre og en højre blok."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre beviserne skarpeladte. Eksistentialismen er dit ultimative våben mod alt, der vil gøre mennesket til en statisk genstand.",
+      "use_this_text_for": [
+        "At rette et dræbende angreb mod trækpsykologiens reificering af selvet.",
+        "At forklare menneskets radikale og kompromisløse handlefrihed (Agency).",
+        "At trække grænsen op for, hvad klassisk naturvidenskab overhovedet kan sige om et subjekt.",
+        "At bevise, at en personlighed altid er et igangværende projekt, ikke en udskrevet opskrift.",
+        "At koble psykologi til begreber om ansvar og lidenskab i livets afgørende valg."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W02L1 Trækpsykologi (Essentialisme)",
+          "connection": "Trækpsykologien fryser os fast som mønstre, vi kan måles på. Brug Kierkegaard til at vise, at denne fastfrysning ødelægger selve genstandsfeltet: den levede tilblivelse."
+        },
+        {
+          "course_theme": "W12L1 Agency vs. Determination",
+          "connection": "Placer selvforholdet ultimativt ovre på 'Agency'. Selvom vi begrænses af fakticitet, skaber evnen til altid at kunne forholde sig et evigt flugtrum og et absolut frihedsansvar."
+        },
+        {
+          "course_theme": "Epistemologisk udvikling",
+          "connection": "Udnyt teksten som bevis på overgangen fra 3. persons objektivitet (det foreliggende) til nødvendigheden af et 1. persons subjektivt greb."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five Modellen (Costa & McCrae)",
+          "how_to_compare": "Sammenlign stabilitet. For Costa er du dine testscorer. For Kierkegaard er din sandhed udelukkende, hvordan du aktivt vælger at forholde dig til de betingelser."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (Holzkamp/Dreier)",
+          "how_to_compare": "Begge kæmper for menneskelig handleevne. Men mens kritisk psykologi mener at samfundet er skurken, finder Kierkegaard at begrænsningen ligger i den indre, ontologiske angst for valget."
+        },
+        {
+          "compare_with": "Behaviorismen (Skinner)",
+          "how_to_compare": "Skinner overfører dyrs læring ligetil til mennesket. Brug Jacobsen/Kierkegaard til at banke en knaldhård kile ned mellem svalen og menneskets unikke selvforhold."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du bliver spurgt, om personlighed kan måles objektivt.",
+          "use_in_answer": "Angrib præmissen. Hent Kierkegaards skelnen mellem Tænken og Væren ind. Mikroskopet slår bevægelsen ihjel.",
+          "caution": "Påstå ikke at naturvidenskab er irrelevant - sig blot, at den er inkompetent over for det subjektivt levede øjeblik."
+        },
+        {
+          "prompt_type": "Når du skal definere, hvad et 'jeg' overhovedet er.",
+          "use_in_answer": "Smid trumfen: 'Et forhold, der forholder sig til sig selv'. Redegør for spændingsfeltet mellem de faktiske vilkår og fantasiens muligheder.",
+          "caution": "Husk hele sætningen; glemmer du 'der forholder sig til sig selv', lyder det som en defekt ligning."
+        },
+        {
+          "prompt_type": "Når debatten handler om, hvor frie vi egentlig er.",
+          "use_in_answer": "Vis hvordan mennesket aldrig blot 'er' en konsekvens af sin baggrund. Fantasien åbner altid sprækken for handling på de 70.000 favne.",
+          "caution": "Fritag ikke mennesket fra dets biologi - det hører hjemme i nøvendighedens pol. Vi er bundet af tid, men frie i forlængelsen."
+        },
+        {
+          "prompt_type": "Når eksaminator spørger til formidling i psykologien.",
+          "use_in_answer": "Forklar metoden bag indirekte meddelelse. Argumenter for, at visse sandheder kun kan tilegnes ved at tvinge perspektivet over på læserens skuldre.",
+          "caution": "Gør ikke Kierkegaard til en drillepind; fasthold, at det er et systematisk, pædagogisk træk."
+        },
+        {
+          "prompt_type": "Som en stærk konkluderende metabetragtning.",
+          "use_in_answer": "Konkluder skarpt, at eksistentialismen i kurset fungerer som vagthund mod determinismen. Den fastholder evigt, at 'hvordan' vi er, trumfer 'hvad' vi er.",
+          "caution": "Dette rykker os tæt på humanisme - vær forberedt på at kunne adskille de to (fx ved Kierkegaards fokus på fortvivlelse over for Maslows optimisme)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Kierkegaards 'eksperimenter' refererer til at han lavede rigtige dataindsamlinger med forsøgspersoner i København.",
+          "better_reading": "Han designede litterære tankeeksperimenter, der skulle chokere læseren ind i radikal selvrefleksion."
+        },
+        {
+          "trap": "At ordet 'eksistere' i denne tekst bare betyder 'at være i live'.",
+          "better_reading": "Biologisk liv er givet, men 'eksistens' er en opgave; det kræver aktivt at træde ud og forholde sig til livet."
+        },
+        {
+          "trap": "At 'fantasien' kun fungerer som virkelighedsflugt eller dagdrømmeri.",
+          "better_reading": "Fantasien hyldes stik modsat som den nødvendige eksistentielle motor, der tvinger virkeligheden åben for valg."
+        }
+      ],
+      "mini_exam_prompt_question": "Trækpsykologien bygger på en antagelse om stabile, foreliggende genstande. Brug Kierkegaards definition af 'selvforholdet' til at demontere dette statiske menneskesyn systematisk.",
+      "mini_exam_answer_plan_slots": [
+        "1. Opbyg angrebet epistemologisk: Afvis mikroskopet som et redskab, der destruerer den eksistentielle bevægelse.",
+        "2. Slå spliden fast: Træk grænsen mellem svalens problemfrie 'væren' og menneskets tvungne refleksion.",
+        "3. Indfør våbnet: Analyser 'forholdet der forholder sig' som et spændingsfelt bundet af fakticitet og befriet af fantasi.",
+        "4. Fæld dommen: Gennemtrumf, at et fænomen i evig tilblivelse umuligt kan krystalliseres til en testscore."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

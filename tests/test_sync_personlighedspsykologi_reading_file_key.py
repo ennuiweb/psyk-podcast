@@ -174,12 +174,13 @@ def test_normalize_exercise_titles_uses_repo_owned_default_path():
         "normalize_personlighedspsykologi_exercise_titles_test_default_path",
     )
 
-    assert mod.DEFAULT_KEY_PATH == "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+    assert mod.DEFAULT_KEY_PATH == "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
     expected = (
         Path(__file__).resolve().parents[1]
         / "shows"
         / "personlighedspsykologi-en"
         / "docs"
+        / "data"
         / "reading-file-key.md"
     ).resolve()
     assert mod._resolve_key_path(mod.DEFAULT_KEY_PATH) == expected

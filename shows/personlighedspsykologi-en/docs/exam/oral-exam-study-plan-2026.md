@@ -223,7 +223,7 @@ exam rewards organized comparative speech more than silent, exhaustive reading.
 
 Useful repo anchors:
 
-- `shows/personlighedspsykologi-en/docs/overblik.md` for the lecture plan.
+- `shows/personlighedspsykologi-en/docs/core/overblik.md` for the lecture plan.
 - `shows/personlighedspsykologi-en/content_manifest.json` for lecture readings,
   summaries, podcasts, quizzes, and slides.
 - `shows/personlighedspsykologi-en/source_intelligence/course_synthesis.json`

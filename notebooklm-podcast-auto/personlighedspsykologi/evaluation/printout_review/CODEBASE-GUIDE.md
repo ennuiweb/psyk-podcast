@@ -46,8 +46,8 @@ If a change improves schema purity but makes the worksheets less usable, it is a
 Read these in this order:
 1. `TECHNICAL.md`
 2. `docs/notebooklm-automation.md`
-3. `shows/personlighedspsykologi-en/docs/printout-system.md`
-4. `shows/personlighedspsykologi-en/docs/problem-driven-printouts.md`
+3. `shows/personlighedspsykologi-en/docs/learning/printout-system.md`
+4. `shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md`
 5. `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/README.md`
 6. This file
 The first two explain the repo and the content engine.
@@ -152,7 +152,7 @@ This is the disk contract you should preserve unless you are intentionally redes
 
 ## 14. The main pedagogical contract
 The canonical course-specific design contract lives in:
-`shows/personlighedspsykologi-en/docs/printout-system.md`
+`shows/personlighedspsykologi-en/docs/learning/printout-system.md`
 Treat it as binding.
 The key roles are:
 - `reading_guide`: appetizer and initiation aid

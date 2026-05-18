@@ -1,0 +1,1059 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T13:46:13Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "830827494bb6a8771ba7ae9ed676351acf7753099d3e461c7a12824094b02c25",
+    "source_files_signature": "6ead26f2392664c04d99a8789b189f640449f78aa785f59aaf8bbbdcc1d49909",
+    "source_card": "8d81af04dadb4ac76cf424759a3cd0abfad7f219b0543f5b74405821bbb9c4de",
+    "revised_lecture_substrate": "f56c1bd43617b95905b6e7c73ce2bb3108daa542abb6cd363c76d74783344946",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w10l2-foucault-1997-92cd121d",
+    "lecture_key": "W10L2",
+    "title": "Foucault (1997)",
+    "reading_title": "Foucault (1997)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 21,
+    "estimated_token_count": 13650,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L2 Sociokulturelle teorier - socialkonstruktionisme og poststrukturalisme/W10L2 Foucault, M. (1997). s. 281-301 .pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 21,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l2-foucault-1997-92cd121d",
+      "lecture_key": "W10L2",
+      "source_title": "Foucault (1997)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne guide for at spore dig ind på de centrale problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "I personlighedspsykologien opererer vi ofte ud fra den antagelse, at der findes et indre, ægte 'jeg', som samfundet enten undertrykker eller støtter. Men Foucault starter et helt andet sted: 'Jeg har altid været lidt mistænksom over for begrebet frigørelse.' Hvorfor er en af det 20. århundredes største kritiske tænkere mistænksom over for at sætte mennesker fri?",
+        "Foucault udfordrer selve grundlaget for personlighed. Hvis der ikke findes nogen stabil, medfødt natur i bunden af mennesket, hvad er det så, vi forsøger at frigøre? For ham er subjektet ikke en indre kerne, men derimod *en form*, som historisk skabes gennem bestemte institutioner og praksisser. Vi formes af det, han kalder sandhedsspil.",
+        "Det skaber et alvorligt teoretisk problem for vores forestilling om fri vilje. Hvis vores psykologi udelukkende er formet af magt og diskurser, er vi så reduceret til passive brikker i et uundgåeligt spil? Foucaults svar er overraskende: Magt er overalt, netop fordi friheden er overalt. Uden frihed kan man slet ikke udøve magt.",
+        "Løsningen for Foucault skal findes i antikken. Det, der kan sikre en etisk livsførelse og forhindre magtmisbrug, er ikke at fjerne alle samfundets regler, men derimod en aktiv 'omsorg for sig selv'. Dette er ikke moderne wellness, men en intens, etisk kampdommer over ens egne drifter."
+      ],
+      "main_problem": "Hvordan kan vi forstå menneskets handlekraft og etik, hvis personligheden ikke er en medfødt substans, men er radikalt formet af historiske diskurser og magt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor afviser Foucault, at fraværet af undertrykkelse automatisk fører til det gode samfund?",
+          "why_it_matters": "Gør op med den udbredte antagelse om et autentisk indre, der blot afventer befrielse.",
+          "answer_form": "Kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller antik 'omsorg for sig selv' sig fra almindelig egoisme?",
+          "why_it_matters": "Viser hvordan selvkontrol hænger sammen med fraværet af magtmisbrug.",
+          "answer_form": "Kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvad mener Foucault med, at subjektet er en form og ikke en substans?",
+          "why_it_matters": "Det er det afgørende poststrukturalistiske alternativ til trækpsykologi.",
+          "answer_form": "Definition"
+        },
+        {
+          "number": 4,
+          "question": "Hvad adskiller magtrelationer fra dominanstilstande?",
+          "why_it_matters": "Redder menneskets handlekraft fra fuldstændig determinisme.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor er frihed en nødvendig forudsætning for udøvelsen af magt?",
+          "why_it_matters": "Aflæser den hyppige misforståelse af, at 'magt er overalt' betyder 'alt er undertrykkelse'.",
+          "answer_form": "Kort argumentation"
+        }
+      ],
+      "why_this_text_matters": "Dette er nøgleteksten til at forstå kursuspunktet 'historicitet' og poststrukturalismens opgør med en reificeret personlighedskerne.",
+      "overview": [
+        "Mennesket har ikke en sand, skjult kerne, der skal frigøres.",
+        "Personlighed ('subjektet') er historiske former produceret gennem sandhedsspil og magt.",
+        "Fokus skiftes til aktiv etik og omsorg for sig selv som værn mod dominans."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 281-284",
+          "task": "Kortlæg problemet med 'frigørelseshypotesen'.",
+          "why_it_matters": "Definerer opgøret med den ubevidste, skjulte menneskenatur.",
+          "stop_signal": "når diskussionen bevæger sig ind på den etiske forvaltning af seksualitet"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 284-289",
+          "task": "Undersøg mekanikken i 'omsorgen for sig selv'.",
+          "why_it_matters": "Viser, hvor agency og etik placeres, når essensen er væk.",
+          "stop_signal": "når han skifter emne for at tale om forholdet mellem subjekt og sandhed"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 290-291",
+          "task": "Find hans præcise definition af 'subjektet'.",
+          "why_it_matters": "Er kernen i hele den socialkonstruktionistiske teoriramme.",
+          "stop_signal": "når analysen skifter til magt og modstand"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 291-294",
+          "task": "Beslut hvor grænsen går mellem magt og dominans.",
+          "why_it_matters": "Beskytter mod den fatalistiske læsning af teorien.",
+          "stop_signal": "når dominanstilstande er endeligt defineret over for mobile magtrelationer"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "suspicious of the notion of liberation",
+          "why": "Markerer bruddet med psykologiens klassiske forestilling om et undertrykt indre.",
+          "where_to_look": "s. 282"
+        },
+        {
+          "target": "The subject is not a substance. It is a form",
+          "why": "Selve definitionen på den poststrukturalistiske personlighedsforståelse.",
+          "where_to_look": "s. 290"
+        },
+        {
+          "target": "if there are relations of power... there is freedom everywhere",
+          "why": "Vigtigt bevis på, at Foucault ser magt som et spil mellem frie aktører.",
+          "where_to_look": "s. 292"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange navne-tunge diskussioner om græske filosoffer og kristen teologi.",
+        "Detaljerne i kritikken af Reich og Freuds specifikke seksualitetsmodeller.",
+        "Afslutningens udflugter til Habermas og kommunikationsteori."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 282",
+          "excerpt": "suspicious of the notion of liberation",
+          "open_question": "Hvorfor afviser Foucault, at fraværet af undertrykkelse automatisk fører til det gode samfund?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 290",
+          "excerpt": "The subject is not a substance. It is a form",
+          "open_question": "Hvordan adskiller antik 'omsorg for sig selv' sig fra almindelig egoisme?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 292",
+          "excerpt": "if there are relations of power... there is freedom everywhere",
+          "open_question": "Hvad mener Foucault med, at subjektet er en form og ikke en substans?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner som en sammenhængende tekst. Den rummer alt, du har brug for til næste opgaveark.",
+      "coverage_note": "Fokuserer udelukkende på Foucaults opgør med den indre essens, magt-frihed-dynamikken og etableringen af selvet gennem sandhedsspil.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 281-284",
+          "heading": "Hvorfor frigørelse ikke er nok",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad mangler der, når vi bare fjerner samfundets undertrykkende forbud?",
+          "explanation_paragraphs": [
+            "Foucault kritiserer direkte det, der i psykologien ofte forstås som at befri sit 'sande jeg'. Han mener, at forestillingen om frigørelse er farlig, fordi den underforstår, at der findes en fast, oprindelig menneskenatur inde bagved, der bare er blevet spærret inde af samfundets rammer.",
+            "At frigøre sig fra en kolonisator eller fra snævre kønsnormer kan være en nødvendig start. Men problemet er, at ren frigørelse kun fjerner en blokering. Det giver ikke svar på, hvordan man bagefter skal leve etisk og skabe holdbare relationer.",
+            "Man kan frigøre et begær eller en gruppe, men selve forvaltningen af friheden kræver det, han kalder 'frihedspraksisser'. Frigørelse alene skaber ikke det gode samfund; det åbner kun brættet for det egentlige etiske arbejde."
+          ],
+          "key_points": [
+            "Ideen om frigørelse bygger forkert på troen på en skjult natur.",
+            "Politisk befrielse er afgørende, men kun første skridt.",
+            "Frihedspraksisser er det arbejde, der definerer det gode liv bagefter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "suspicious of the notion of liberation",
+              "why_it_matters": "Det er her, opgøret med den indre, ægte kerne sker.",
+              "source_location": "s. 282"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 282",
+              "passage": "I have always been somewhat suspicious of the notion of liberation, because if it is not treated with precautions and within certain limits, one runs the risk of falling back on the idea that there exists a human nature or base, that, as a consequence of certain historical, economic, and social processes, has been concealed, alienated, or imprisoned.",
+              "why_it_matters": "Citatet viser klokkeklart hans afstandtagen fra teorier (fx visse typer humanistisk psykologi), der tror, at mennesket har en foruddefineret, positiv essens."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 284-289",
+          "heading": "Omsorgen for sig selv som etisk værn",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan forhindrer man magtmisbrug uden at ty til universelle regler?",
+          "explanation_paragraphs": [
+            "I antikken fandtes et vigtigt koncept kaldet 'omsorgen for sig selv'. I dag lyder det som navlebeskuende egoisme, men Foucault pointerer, at det betød det præcis modsatte.",
+            "At drage omsorg for sig selv indebar en intens, etisk selvdisciplin. Man øvede sig på at kende og mestre sine egne drifter, sin vrede og sin frygt for at dø. Målet var ikke at føle sig godt tilpas indeni, men at opnå en beherskelse, der gjorde én i stand til ikke at tyranniserere andre.",
+            "Den hersker eller leder, der ikke har kontrol over sig selv, bliver slave af sine egne appetitter. Og slaven af egne appetitter vil uundgåeligt ende med at misbruge magten over andre i samfundet. Etikken ligger altså i selvets styring."
+          ],
+          "key_points": [
+            "Selvomsorg er ikke narcissisme, men selvkontrol og disciplin.",
+            "Den, der ikke mestrer sig selv, bliver slave af egne lyster.",
+            "Indre selvkontrol er fundamentet for at regere andre retfærdigt og uden undertrykkelse."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "s. 290-291",
+          "heading": "Subjektet er en skiftende form",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad er menneskets personlighed, hvis det ikke er en biologisk substans?",
+          "explanation_paragraphs": [
+            "Foucault afviser radikalt fænomenologiens og trækpsykologiens forsøg på at skrive en endelig 'teori om subjektet'. Han insisterer på, at vi ikke har en stabil kerne. Subjektet er i stedet en form, der konstant forandrer sig afhængigt af sammenhængen.",
+            "Du er én bestemt subjektform, når du stemmer ved et valg, og en helt anden form, når du agerer i en seksuel relation. Disse former opstår ikke indefra, men pålægges os udefra gennem det, han kalder 'sandhedsspil'.",
+            "For eksempel blev diagnosen for 'galskab' historisk etableret gennem institutionelle procedurer som lægevidenskab og psykiatri. Det tvang de berørte til at forstå sig selv ud fra en specifik sygdomskategori. At vi bliver en 'gal', en 'forbryder' eller en 'frisk' er således noget, der aktivt produceres i en historisk kontekst."
+          ],
+          "key_points": [
+            "Subjektet har ingen konstant indre biologi eller sjæl.",
+            "Jeget tager form efter, hvilket netværk det opererer i.",
+            "Sandhedsspil er institutionelle regler for, hvem og hvad der kan betragtes som fx normalt eller unormalt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "The subject is not a substance. It is a form",
+              "why_it_matters": "Her kondenseres hele forskellen på trækpsykologi og poststrukturalisme.",
+              "source_location": "s. 290"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 290",
+              "passage": "It is not a substance. It is a form, and this form is not primarily or always identical to itself. You do not have the same type of relationship to yourself when you constitute yourself as a political subject... and when you are seeking to fulfill your desires.",
+              "why_it_matters": "Giver den præcise forklaring på 'kontekst' orientation pointet set gennem diskursens og poststrukturalismens briller."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 291-294",
+          "heading": "Magt forudsætter frihed",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvis systemet bestemmer alt, findes der så overhovedet frihed?",
+          "explanation_paragraphs": [
+            "En klassisk misforståelse af Foucault er, at magt er lig med total kontrol, og at vi derfor aldrig er frie. Foucault korrigerer dette skarpt ved at sondre mellem 'magtrelationer' og 'dominanstilstande'.",
+            "Magtrelationer er bevægelige, ustabile spil, hvor frie individer forsøger at styre hinandens adfærd. For at et sådant spil kan eksistere, SKAL der være mulighed for modstand og frihed på begge sider. Hvis en magtrelation fryses helt fast, så den ene part ingen muligheder har for at modsætte sig, er der ikke længere tale om en magtrelation.",
+            "Når mulighederne udtømmes, overgår spillet til at være en dominanstilstand. Så længe der udøves magt, betyder det altså strukturelt, at der er frihed og modstandsrum til stede."
+          ],
+          "key_points": [
+            "Magt er ikke kun undertrykkelse; det er forsøg på at styre andres frie adfærd.",
+            "En sand magtrelation forudsætter, at modstand er mulig.",
+            "Når alt er låst uhjælpeligt fast, kaldes det en dominanstilstand."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "if there are relations of power",
+              "why_it_matters": "Punkterer ideen om magten som almægtigt, ondt system.",
+              "source_location": "s. 292"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad mangler der, når vi bare fjerner samfundets undertrykkende forbud?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forhindrer man magtmisbrug uden at ty til universelle regler?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er menneskets personlighed, hvis det ikke er en biologisk substans?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis systemet bestemmer alt, findes der så overhovedet frihed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi forstå menneskets handlekraft og etik, hvis personligheden ikke er en medfødt substans, men er radikalt formet af historiske diskurser og magt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først arket fra hukommelsen for at lade pointerne sætte sig. Ret derefter dine svar ved at slå op i Abridged Reader.",
+      "overview": [
+        "Foucaults tekst gør op med psykologiens idé om en skjult, medfødt menneskenatur, der skal befris.",
+        "I stedet defineres personligheden som en foranderlig form skabt gennem historiske sandhedsspil og strategiske magtrelationer.",
+        "For at undgå dominans og fastholde sin handlekraft peger teorien på nødvendigheden af aktivt at udøve 'omsorg for sig selv'."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I stedet for blot at stræbe efter frigørelse af en indre kerne, argumenterer Foucault for, at vi har brug for aktive __________ for at styre vores liv etisk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et specifikt flerordsbegreb"
+        },
+        {
+          "number": 2,
+          "sentence": "I antikken var målet med at kultivere sig selv ikke narcissisme, men at beherske egne drifter for derigennem at forhindre __________ over for andre.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Et hovedpunkt i poststrukturalismen er, at subjektet betragtes som en foranderlig form frem for en fast og medfødt __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den skiftende måde vi forstår os selv på etableres historisk gennem forskellige __________, hvor institutioner fastlægger, hvad der gælder for sandt og falsk.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et specifikt teoretisk begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "En fundamental forskel i hans teori er skellet mellem de mere bevægelige magtrelationer og de fuldstændig fastlåste __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at en social interaktion overhovedet kan betegnes som et spil om magt, forudsætter det, at der findes __________ hos begge parter.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Man kan frigøre et folk gennem en revolution, men selve det at lede dette samfund kræver efterfølgende en etisk mestring af sin egen __________.",
+          "where_to_look": "Sektion 1 & 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en grafisk model, der skarpt opdeler social interaktion i 'Magtrelationer' og 'Dominanstilstande'.",
+          "required_elements": [
+            "Pile der viser, om påvirkningen er reversibel eller fuldstændig blokeret",
+            "Markering af, hvor der er plads til frihed og modstand"
+          ],
+          "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
+        },
+        {
+          "number": 2,
+          "task": "Konstruer den kausale logik bag 'Omsorg for sig selv'. Tegn tre kasser: Hvad starter man med at kontrollere indadtil? Hvad undgår man herved at blive slave af? Og hvilken ydre politisk konsekvens forhindrer denne selvkontrol?",
+          "required_elements": [
+            "Egne appetitter og drifter i bunden",
+            "Forhindringen af slaveri af en selv",
+            "Forhindringen af tyrannisk adfærd over for andre i toppen"
+          ],
+          "blank_space_hint": "Tegn som en pyramide eller trappe nedefra og op"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som stikordsopslag, når du trækker tråde mellem Foucault og resten af kurset til den mundtlige eksamen.",
+      "use_this_text_for": [
+        "At fremvise et stærkt argument for, hvorfor personlighedstræk betragtes som diskursivt frembragte snarere end medfødte naturkræfter.",
+        "At placere personlighedspsykologien ekstremt på 'Historicitet' og 'Kontekst' orienteringspunkterne.",
+        "At afvise klinikkens idé om 'det indre, sande barn' eller den ubevidste kerne, der kalder på at blive sluppet fri.",
+        "At forklare, hvordan man trods social konstruktion kan bevare menneskelig handlekraft gennem etisk selvformning."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Foucaults brud. Mens Big Five anser træk som objektive størrelser, betragter Foucault det fænomenologiske 'selv' som en forbigående historisk form skabt af sandhedsspil."
+        },
+        {
+          "course_theme": "Hackings Looping Effects (W01)",
+          "connection": "Foucaults 'sandhedsspil' (fx i psykiatrien) fungerer som den større makro-teori, der forklarer, hvorfor Hackings klassifikationer former interagerende mennesketyper."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Både Freud og Foucault afviser det gennemsigtige og autonome jeg, men Freud placerer determineringskraften i det indre ubevidste, hvorimod Foucault placerer den i den ydre struktur af magt og sprog."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Humanistisk Psykologi (fx Rogers/Maslow)",
+          "how_to_compare": "Spil dem ud mod hinanden på frigørelse. Rogers mener, ægte mental sundhed opnås ved at lade organismens indre aktualiseringstendens flyde frit. Foucault mistænkeliggør denne frigørelse og hævder, at en antagelse om en indre sund essens i sig selv er et sandhedsspil."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (fx Mørck/Dreier)",
+          "how_to_compare": "Sammenlign deres syn på handlekraft. Begge vil redde individet fra undertrykkende strukturer. Men hvor den kritiske psykologi fokuserer på deltagelse i sociale praksisser for at ændre systemet, fokuserer Foucault på det mere indre etiske forsvar ('omsorgen for sig selv') og manøvrering inden for magtspillene."
+        },
+        {
+          "compare_with": "Personalisme (Stern)",
+          "how_to_compare": "Stern anskuer personen som en helhed, en grundlæggende samlende instans. Foucault fragmenterer selvet og gør det til en funktion af skiftende positioner og magtrelationer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Bedømmes på synet af det ubevidste vs. historisk konstruktion",
+          "use_in_answer": "Brug citatet 'The subject is not a substance. It is a form' som spydspids mod enhver teori, der opererer med dybdepsykologi.",
+          "caution": "Gør ikke Foucault til en kognitivist. Hans fokus er ikke, hvordan vi tænker, men de vilkår, tænkningen er betinget af udefra."
+        },
+        {
+          "prompt_type": "Diskussion om determinisme og handlekraft i socialkonstruktionisme",
+          "use_in_answer": "Skeln prompte mellem 'dominanstilstande' og 'magtrelationer'. Det beviser, at teorien de facto efterlader plads til modstand.",
+          "caution": "Sig aldrig i en eksamenssituation, at magten undertrykker individets kerne i Foucaults optik – selve kernen er jo skabt af magt."
+        },
+        {
+          "prompt_type": "Perspektivering via orienteringspunktet Historicitet",
+          "use_in_answer": "Redegør for, at psykiatriske og psykologiske diagnoser er 'sandhedsspil', og formen på patienten skifter epoke for epoke.",
+          "caution": "Undgå at lyde som en videnskabsbenægter; påpeg at dette ikke gør lidelserne fiktive, men gør deres klassifikation historisk."
+        },
+        {
+          "prompt_type": "Spørgsmål om etikkens placering uden en rettesnor",
+          "use_in_answer": "Introducer 'omsorg for sig selv' som det eneste bolværk mod slaveri af egne impulser og diktatorisk adfærd.",
+          "caution": "Sørg for ikke at forveksle omsorg for sig selv med spa-ophold og moderne selvrealisering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage, at magt for Foucault altid er en dårlig, ensrettet undertrykkelse.",
+          "better_reading": "Bevis at magt er strategiske spil indlejret i frihed; kun dominans er skadelig fastlåsning."
+        },
+        {
+          "trap": "At læse Foucault, som om han opfordrer til total frigørelse fra regler.",
+          "better_reading": "Han pointerer direkte, at frigørelse ofte skal suppleres med etiske frihedspraksisser for ikke blot at føre til anarki og nyt magtmisbrug."
+        },
+        {
+          "trap": "At hævde, Foucault siger subjektet slet ikke eksisterer.",
+          "better_reading": "Subjektet eksisterer i høj grad, men eksisterer som en skiftende 'form', ikke som en underliggende 'substans'."
+        }
+      ],
+      "mini_exam_prompt_question": "Kontraster poststrukturalismens syn på psykologisk modstandskraft med humanistisk psykologi, under inddragelse af begrebet 'frigørelse'.",
+      "mini_exam_answer_plan_slots": [
+        "Definer humanismens indre aktualisering og dens stræben efter at frigøre den sande natur.",
+        "Afvis humanismen via Foucault: Der er ingen 'sund natur' i bunden at frigøre; frigørelsesbegrebet er en fælde.",
+        "Introducer Foucaults alternativ: Mennesket er en 'form' konfigureret gennem sandhedsspil.",
+        "Giv løsningen for handlekraft: At yde modstand gennem etisk 'omsorg for sig selv' frem for ren normopløsning.",
+        "Konkluder ved at demonstrere, at magt og frihed opererer sammen, hvilket holder dynamikken i gang."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l2-foucault-1997-92cd121d",
+      "lecture_key": "W10L2",
+      "source_title": "Foucault (1997)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne guide for at spore dig ind på de centrale problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "I personlighedspsykologien opererer vi ofte ud fra den antagelse, at der findes et indre, ægte 'jeg', som samfundet enten undertrykker eller støtter. Men Foucault starter et helt andet sted: 'Jeg har altid været lidt mistænksom over for begrebet frigørelse.' Hvorfor er en af det 20. århundredes største kritiske tænkere mistænksom over for at sætte mennesker fri?",
+        "Foucault udfordrer selve grundlaget for personlighed. Hvis der ikke findes nogen stabil, medfødt natur i bunden af mennesket, hvad er det så, vi forsøger at frigøre? For ham er subjektet ikke en indre kerne, men derimod *en form*, som historisk skabes gennem bestemte institutioner og praksisser. Vi formes af det, han kalder sandhedsspil.",
+        "Det skaber et alvorligt teoretisk problem for vores forestilling om fri vilje. Hvis vores psykologi udelukkende er formet af magt og diskurser, er vi så reduceret til passive brikker i et uundgåeligt spil? Foucaults svar er overraskende: Magt er overalt, netop fordi friheden er overalt. Uden frihed kan man slet ikke udøve magt.",
+        "Løsningen for Foucault skal findes i antikken. Det, der kan sikre en etisk livsførelse og forhindre magtmisbrug, er ikke at fjerne alle samfundets regler, men derimod en aktiv 'omsorg for sig selv'. Dette er ikke moderne wellness, men en intens, etisk kampdommer over ens egne drifter."
+      ],
+      "main_problem": "Hvordan kan vi forstå menneskets handlekraft og etik, hvis personligheden ikke er en medfødt substans, men er radikalt formet af historiske diskurser og magt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor afviser Foucault, at fraværet af undertrykkelse automatisk fører til det gode samfund?",
+          "why_it_matters": "Gør op med den udbredte antagelse om et autentisk indre, der blot afventer befrielse.",
+          "answer_form": "Kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller antik 'omsorg for sig selv' sig fra almindelig egoisme?",
+          "why_it_matters": "Viser hvordan selvkontrol hænger sammen med fraværet af magtmisbrug.",
+          "answer_form": "Kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvad mener Foucault med, at subjektet er en form og ikke en substans?",
+          "why_it_matters": "Det er det afgørende poststrukturalistiske alternativ til trækpsykologi.",
+          "answer_form": "Definition"
+        },
+        {
+          "number": 4,
+          "question": "Hvad adskiller magtrelationer fra dominanstilstande?",
+          "why_it_matters": "Redder menneskets handlekraft fra fuldstændig determinisme.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor er frihed en nødvendig forudsætning for udøvelsen af magt?",
+          "why_it_matters": "Aflæser den hyppige misforståelse af, at 'magt er overalt' betyder 'alt er undertrykkelse'.",
+          "answer_form": "Kort argumentation"
+        }
+      ],
+      "why_this_text_matters": "Dette er nøgleteksten til at forstå kursuspunktet 'historicitet' og poststrukturalismens opgør med en reificeret personlighedskerne.",
+      "overview": [
+        "Mennesket har ikke en sand, skjult kerne, der skal frigøres.",
+        "Personlighed ('subjektet') er historiske former produceret gennem sandhedsspil og magt.",
+        "Fokus skiftes til aktiv etik og omsorg for sig selv som værn mod dominans."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "s. 281-284",
+          "task": "Kortlæg problemet med 'frigørelseshypotesen'.",
+          "why_it_matters": "Definerer opgøret med den ubevidste, skjulte menneskenatur.",
+          "stop_signal": "når diskussionen bevæger sig ind på den etiske forvaltning af seksualitet"
+        },
+        {
+          "number": 2,
+          "source_location": "s. 284-289",
+          "task": "Undersøg mekanikken i 'omsorgen for sig selv'.",
+          "why_it_matters": "Viser, hvor agency og etik placeres, når essensen er væk.",
+          "stop_signal": "når han skifter emne for at tale om forholdet mellem subjekt og sandhed"
+        },
+        {
+          "number": 3,
+          "source_location": "s. 290-291",
+          "task": "Find hans præcise definition af 'subjektet'.",
+          "why_it_matters": "Er kernen i hele den socialkonstruktionistiske teoriramme.",
+          "stop_signal": "når analysen skifter til magt og modstand"
+        },
+        {
+          "number": 4,
+          "source_location": "s. 291-294",
+          "task": "Beslut hvor grænsen går mellem magt og dominans.",
+          "why_it_matters": "Beskytter mod den fatalistiske læsning af teorien.",
+          "stop_signal": "når dominanstilstande er endeligt defineret over for mobile magtrelationer"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "suspicious of the notion of liberation",
+          "why": "Markerer bruddet med psykologiens klassiske forestilling om et undertrykt indre.",
+          "where_to_look": "s. 282"
+        },
+        {
+          "target": "The subject is not a substance. It is a form",
+          "why": "Selve definitionen på den poststrukturalistiske personlighedsforståelse.",
+          "where_to_look": "s. 290"
+        },
+        {
+          "target": "if there are relations of power... there is freedom everywhere",
+          "why": "Vigtigt bevis på, at Foucault ser magt som et spil mellem frie aktører.",
+          "where_to_look": "s. 292"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange navne-tunge diskussioner om græske filosoffer og kristen teologi.",
+        "Detaljerne i kritikken af Reich og Freuds specifikke seksualitetsmodeller.",
+        "Afslutningens udflugter til Habermas og kommunikationsteori."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 282",
+          "excerpt": "suspicious of the notion of liberation",
+          "open_question": "Hvorfor afviser Foucault, at fraværet af undertrykkelse automatisk fører til det gode samfund?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 290",
+          "excerpt": "The subject is not a substance. It is a form",
+          "open_question": "Hvordan adskiller antik 'omsorg for sig selv' sig fra almindelig egoisme?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 292",
+          "excerpt": "if there are relations of power... there is freedom everywhere",
+          "open_question": "Hvad mener Foucault med, at subjektet er en form og ikke en substans?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse sektioner som en sammenhængende tekst. Den rummer alt, du har brug for til næste opgaveark.",
+      "coverage_note": "Fokuserer udelukkende på Foucaults opgør med den indre essens, magt-frihed-dynamikken og etableringen af selvet gennem sandhedsspil.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "s. 281-284",
+          "heading": "Hvorfor frigørelse ikke er nok",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvad mangler der, når vi bare fjerner samfundets undertrykkende forbud?",
+          "explanation_paragraphs": [
+            "Foucault kritiserer direkte det, der i psykologien ofte forstås som at befri sit 'sande jeg'. Han mener, at forestillingen om frigørelse er farlig, fordi den underforstår, at der findes en fast, oprindelig menneskenatur inde bagved, der bare er blevet spærret inde af samfundets rammer.",
+            "At frigøre sig fra en kolonisator eller fra snævre kønsnormer kan være en nødvendig start. Men problemet er, at ren frigørelse kun fjerner en blokering. Det giver ikke svar på, hvordan man bagefter skal leve etisk og skabe holdbare relationer.",
+            "Man kan frigøre et begær eller en gruppe, men selve forvaltningen af friheden kræver det, han kalder 'frihedspraksisser'. Frigørelse alene skaber ikke det gode samfund; det åbner kun brættet for det egentlige etiske arbejde."
+          ],
+          "key_points": [
+            "Ideen om frigørelse bygger forkert på troen på en skjult natur.",
+            "Politisk befrielse er afgørende, men kun første skridt.",
+            "Frihedspraksisser er det arbejde, der definerer det gode liv bagefter."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "suspicious of the notion of liberation",
+              "why_it_matters": "Det er her, opgøret med den indre, ægte kerne sker.",
+              "source_location": "s. 282"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 282",
+              "passage": "I have always been somewhat suspicious of the notion of liberation, because if it is not treated with precautions and within certain limits, one runs the risk of falling back on the idea that there exists a human nature or base, that, as a consequence of certain historical, economic, and social processes, has been concealed, alienated, or imprisoned.",
+              "why_it_matters": "Citatet viser klokkeklart hans afstandtagen fra teorier (fx visse typer humanistisk psykologi), der tror, at mennesket har en foruddefineret, positiv essens."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 284-289",
+          "heading": "Omsorgen for sig selv som etisk værn",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan forhindrer man magtmisbrug uden at ty til universelle regler?",
+          "explanation_paragraphs": [
+            "I antikken fandtes et vigtigt koncept kaldet 'omsorgen for sig selv'. I dag lyder det som navlebeskuende egoisme, men Foucault pointerer, at det betød det præcis modsatte.",
+            "At drage omsorg for sig selv indebar en intens, etisk selvdisciplin. Man øvede sig på at kende og mestre sine egne drifter, sin vrede og sin frygt for at dø. Målet var ikke at føle sig godt tilpas indeni, men at opnå en beherskelse, der gjorde én i stand til ikke at tyranniserere andre.",
+            "Den hersker eller leder, der ikke har kontrol over sig selv, bliver slave af sine egne appetitter. Og slaven af egne appetitter vil uundgåeligt ende med at misbruge magten over andre i samfundet. Etikken ligger altså i selvets styring."
+          ],
+          "key_points": [
+            "Selvomsorg er ikke narcissisme, men selvkontrol og disciplin.",
+            "Den, der ikke mestrer sig selv, bliver slave af egne lyster.",
+            "Indre selvkontrol er fundamentet for at regere andre retfærdigt og uden undertrykkelse."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "s. 290-291",
+          "heading": "Subjektet er en skiftende form",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvad er menneskets personlighed, hvis det ikke er en biologisk substans?",
+          "explanation_paragraphs": [
+            "Foucault afviser radikalt fænomenologiens og trækpsykologiens forsøg på at skrive en endelig 'teori om subjektet'. Han insisterer på, at vi ikke har en stabil kerne. Subjektet er i stedet en form, der konstant forandrer sig afhængigt af sammenhængen.",
+            "Du er én bestemt subjektform, når du stemmer ved et valg, og en helt anden form, når du agerer i en seksuel relation. Disse former opstår ikke indefra, men pålægges os udefra gennem det, han kalder 'sandhedsspil'.",
+            "For eksempel blev diagnosen for 'galskab' historisk etableret gennem institutionelle procedurer som lægevidenskab og psykiatri. Det tvang de berørte til at forstå sig selv ud fra en specifik sygdomskategori. At vi bliver en 'gal', en 'forbryder' eller en 'frisk' er således noget, der aktivt produceres i en historisk kontekst."
+          ],
+          "key_points": [
+            "Subjektet har ingen konstant indre biologi eller sjæl.",
+            "Jeget tager form efter, hvilket netværk det opererer i.",
+            "Sandhedsspil er institutionelle regler for, hvem og hvad der kan betragtes som fx normalt eller unormalt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "The subject is not a substance. It is a form",
+              "why_it_matters": "Her kondenseres hele forskellen på trækpsykologi og poststrukturalisme.",
+              "source_location": "s. 290"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 290",
+              "passage": "It is not a substance. It is a form, and this form is not primarily or always identical to itself. You do not have the same type of relationship to yourself when you constitute yourself as a political subject... and when you are seeking to fulfill your desires.",
+              "why_it_matters": "Giver den præcise forklaring på 'kontekst' orientation pointet set gennem diskursens og poststrukturalismens briller."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 291-294",
+          "heading": "Magt forudsætter frihed",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvis systemet bestemmer alt, findes der så overhovedet frihed?",
+          "explanation_paragraphs": [
+            "En klassisk misforståelse af Foucault er, at magt er lig med total kontrol, og at vi derfor aldrig er frie. Foucault korrigerer dette skarpt ved at sondre mellem 'magtrelationer' og 'dominanstilstande'.",
+            "Magtrelationer er bevægelige, ustabile spil, hvor frie individer forsøger at styre hinandens adfærd. For at et sådant spil kan eksistere, SKAL der være mulighed for modstand og frihed på begge sider. Hvis en magtrelation fryses helt fast, så den ene part ingen muligheder har for at modsætte sig, er der ikke længere tale om en magtrelation.",
+            "Når mulighederne udtømmes, overgår spillet til at være en dominanstilstand. Så længe der udøves magt, betyder det altså strukturelt, at der er frihed og modstandsrum til stede."
+          ],
+          "key_points": [
+            "Magt er ikke kun undertrykkelse; det er forsøg på at styre andres frie adfærd.",
+            "En sand magtrelation forudsætter, at modstand er mulig.",
+            "Når alt er låst uhjælpeligt fast, kaldes det en dominanstilstand."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "if there are relations of power",
+              "why_it_matters": "Punkterer ideen om magten som almægtigt, ondt system.",
+              "source_location": "s. 292"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad mangler der, når vi bare fjerner samfundets undertrykkende forbud?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "Kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forhindrer man magtmisbrug uden at ty til universelle regler?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kontrast",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er menneskets personlighed, hvis det ikke er en biologisk substans?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis systemet bestemmer alt, findes der så overhovedet frihed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi forstå menneskets handlekraft og etik, hvis personligheden ikke er en medfødt substans, men er radikalt formet af historiske diskurser og magt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld først arket fra hukommelsen for at lade pointerne sætte sig. Ret derefter dine svar ved at slå op i Abridged Reader.",
+      "overview": [
+        "Foucaults tekst gør op med psykologiens idé om en skjult, medfødt menneskenatur, der skal befris.",
+        "I stedet defineres personligheden som en foranderlig form skabt gennem historiske sandhedsspil og strategiske magtrelationer.",
+        "For at undgå dominans og fastholde sin handlekraft peger teorien på nødvendigheden af aktivt at udøve 'omsorg for sig selv'."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I stedet for blot at stræbe efter frigørelse af en indre kerne, argumenterer Foucault for, at vi har brug for aktive __________ for at styre vores liv etisk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et specifikt flerordsbegreb"
+        },
+        {
+          "number": 2,
+          "sentence": "I antikken var målet med at kultivere sig selv ikke narcissisme, men at beherske egne drifter for derigennem at forhindre __________ over for andre.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Et hovedpunkt i poststrukturalismen er, at subjektet betragtes som en foranderlig form frem for en fast og medfødt __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Den skiftende måde vi forstår os selv på etableres historisk gennem forskellige __________, hvor institutioner fastlægger, hvad der gælder for sandt og falsk.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et specifikt teoretisk begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "En fundamental forskel i hans teori er skellet mellem de mere bevægelige magtrelationer og de fuldstændig fastlåste __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "For at en social interaktion overhovedet kan betegnes som et spil om magt, forudsætter det, at der findes __________ hos begge parter.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Man kan frigøre et folk gennem en revolution, men selve det at lede dette samfund kræver efterfølgende en etisk mestring af sin egen __________.",
+          "where_to_look": "Sektion 1 & 2",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en grafisk model, der skarpt opdeler social interaktion i 'Magtrelationer' og 'Dominanstilstande'.",
+          "required_elements": [
+            "Pile der viser, om påvirkningen er reversibel eller fuldstændig blokeret",
+            "Markering af, hvor der er plads til frihed og modstand"
+          ],
+          "blank_space_hint": "Brug en lodret streg til at adskille de to modeller"
+        },
+        {
+          "number": 2,
+          "task": "Konstruer den kausale logik bag 'Omsorg for sig selv'. Tegn tre kasser: Hvad starter man med at kontrollere indadtil? Hvad undgår man herved at blive slave af? Og hvilken ydre politisk konsekvens forhindrer denne selvkontrol?",
+          "required_elements": [
+            "Egne appetitter og drifter i bunden",
+            "Forhindringen af slaveri af en selv",
+            "Forhindringen af tyrannisk adfærd over for andre i toppen"
+          ],
+          "blank_space_hint": "Tegn som en pyramide eller trappe nedefra og op"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark som stikordsopslag, når du trækker tråde mellem Foucault og resten af kurset til den mundtlige eksamen.",
+      "use_this_text_for": [
+        "At fremvise et stærkt argument for, hvorfor personlighedstræk betragtes som diskursivt frembragte snarere end medfødte naturkræfter.",
+        "At placere personlighedspsykologien ekstremt på 'Historicitet' og 'Kontekst' orienteringspunkterne.",
+        "At afvise klinikkens idé om 'det indre, sande barn' eller den ubevidste kerne, der kalder på at blive sluppet fri.",
+        "At forklare, hvordan man trods social konstruktion kan bevare menneskelig handlekraft gennem etisk selvformning."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02)",
+          "connection": "Foucaults brud. Mens Big Five anser træk som objektive størrelser, betragter Foucault det fænomenologiske 'selv' som en forbigående historisk form skabt af sandhedsspil."
+        },
+        {
+          "course_theme": "Hackings Looping Effects (W01)",
+          "connection": "Foucaults 'sandhedsspil' (fx i psykiatrien) fungerer som den større makro-teori, der forklarer, hvorfor Hackings klassifikationer former interagerende mennesketyper."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Både Freud og Foucault afviser det gennemsigtige og autonome jeg, men Freud placerer determineringskraften i det indre ubevidste, hvorimod Foucault placerer den i den ydre struktur af magt og sprog."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Humanistisk Psykologi (fx Rogers/Maslow)",
+          "how_to_compare": "Spil dem ud mod hinanden på frigørelse. Rogers mener, ægte mental sundhed opnås ved at lade organismens indre aktualiseringstendens flyde frit. Foucault mistænkeliggør denne frigørelse og hævder, at en antagelse om en indre sund essens i sig selv er et sandhedsspil."
+        },
+        {
+          "compare_with": "Kritisk Psykologi (fx Mørck/Dreier)",
+          "how_to_compare": "Sammenlign deres syn på handlekraft. Begge vil redde individet fra undertrykkende strukturer. Men hvor den kritiske psykologi fokuserer på deltagelse i sociale praksisser for at ændre systemet, fokuserer Foucault på det mere indre etiske forsvar ('omsorgen for sig selv') og manøvrering inden for magtspillene."
+        },
+        {
+          "compare_with": "Personalisme (Stern)",
+          "how_to_compare": "Stern anskuer personen som en helhed, en grundlæggende samlende instans. Foucault fragmenterer selvet og gør det til en funktion af skiftende positioner og magtrelationer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Bedømmes på synet af det ubevidste vs. historisk konstruktion",
+          "use_in_answer": "Brug citatet 'The subject is not a substance. It is a form' som spydspids mod enhver teori, der opererer med dybdepsykologi.",
+          "caution": "Gør ikke Foucault til en kognitivist. Hans fokus er ikke, hvordan vi tænker, men de vilkår, tænkningen er betinget af udefra."
+        },
+        {
+          "prompt_type": "Diskussion om determinisme og handlekraft i socialkonstruktionisme",
+          "use_in_answer": "Skeln prompte mellem 'dominanstilstande' og 'magtrelationer'. Det beviser, at teorien de facto efterlader plads til modstand.",
+          "caution": "Sig aldrig i en eksamenssituation, at magten undertrykker individets kerne i Foucaults optik – selve kernen er jo skabt af magt."
+        },
+        {
+          "prompt_type": "Perspektivering via orienteringspunktet Historicitet",
+          "use_in_answer": "Redegør for, at psykiatriske og psykologiske diagnoser er 'sandhedsspil', og formen på patienten skifter epoke for epoke.",
+          "caution": "Undgå at lyde som en videnskabsbenægter; påpeg at dette ikke gør lidelserne fiktive, men gør deres klassifikation historisk."
+        },
+        {
+          "prompt_type": "Spørgsmål om etikkens placering uden en rettesnor",
+          "use_in_answer": "Introducer 'omsorg for sig selv' som det eneste bolværk mod slaveri af egne impulser og diktatorisk adfærd.",
+          "caution": "Sørg for ikke at forveksle omsorg for sig selv med spa-ophold og moderne selvrealisering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage, at magt for Foucault altid er en dårlig, ensrettet undertrykkelse.",
+          "better_reading": "Bevis at magt er strategiske spil indlejret i frihed; kun dominans er skadelig fastlåsning."
+        },
+        {
+          "trap": "At læse Foucault, som om han opfordrer til total frigørelse fra regler.",
+          "better_reading": "Han pointerer direkte, at frigørelse ofte skal suppleres med etiske frihedspraksisser for ikke blot at føre til anarki og nyt magtmisbrug."
+        },
+        {
+          "trap": "At hævde, Foucault siger subjektet slet ikke eksisterer.",
+          "better_reading": "Subjektet eksisterer i høj grad, men eksisterer som en skiftende 'form', ikke som en underliggende 'substans'."
+        }
+      ],
+      "mini_exam_prompt_question": "Kontraster poststrukturalismens syn på psykologisk modstandskraft med humanistisk psykologi, under inddragelse af begrebet 'frigørelse'.",
+      "mini_exam_answer_plan_slots": [
+        "Definer humanismens indre aktualisering og dens stræben efter at frigøre den sande natur.",
+        "Afvis humanismen via Foucault: Der er ingen 'sund natur' i bunden at frigøre; frigørelsesbegrebet er en fælde.",
+        "Introducer Foucaults alternativ: Mennesket er en 'form' konfigureret gennem sandhedsspil.",
+        "Giv løsningen for handlekraft: At yde modstand gennem etisk 'omsorg for sig selv' frem for ren normopløsning.",
+        "Konkluder ved at demonstrere, at magt og frihed opererer sammen, hvilket holder dynamikken i gang."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

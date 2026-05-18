@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 
-DEFAULT_KEY_PATH = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+DEFAULT_KEY_PATH = "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
 
 EXERCISE_LINE_RE = re.compile(
     r"^(?P<prefix>\s*-\s+)Exercise text(?P<mid>\s*→\s*)(?P<source>.+?)\s*$",

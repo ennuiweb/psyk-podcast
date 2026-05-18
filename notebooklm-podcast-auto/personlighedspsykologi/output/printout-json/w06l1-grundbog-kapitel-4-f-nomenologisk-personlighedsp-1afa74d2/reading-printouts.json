@@ -1,0 +1,1381 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T16:49:20Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "9fb14a0d901571850fcd7780042ce56bddd350cd3d5e74155fa707b067d2eee2",
+    "source_files_signature": "9956fc33adeb9e130aa759e7475f4c891db8756a6bc69f08718f05039dad04c6",
+    "source_card": "e61c728cb1e80739d36efdd9c948348e39017dabf705a5f8efc1d641de783e8d",
+    "revised_lecture_substrate": "25f7659f24c6b027b7749bb461fc7f256f936abe3ff1e5d6d202cbb5228be41c",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+    "lecture_key": "W06L1",
+    "title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+    "reading_title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 42,
+    "estimated_token_count": 27300,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi.pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 42,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "lecture_key": "W06L1",
+      "source_title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne mission brief til at lokalisere de centrale problemer i teksten, før du læser. Følg ruten for at fange løsningerne trin for trin.",
+      "teaser_paragraphs": [
+        "Indtil nu har vi i kurset behandlet personligheden som noget, der primært kan måles udefra.",
+        "Vi har vurderet mennesker ud fra stabile træk-variabler og forsøgt at kortlægge usynlige biologiske eller psykodynamiske drifter.",
+        "Men denne objektive tilgang skaber et massivt problem: Den overser fuldstændig den levede, umiddelbare oplevelse af at være et menneske.",
+        "Fænomenologien påstår tværtimod, at hvis vi gør mennesket til et dødt objekt for at observere det, så ødelægger og forvrænger vi selve bevidstheden i forsøget.",
+        "Din opgave i denne tekst er at finde ud af, hvordan vi kan studere personligheden systematisk indefra, strengt forankret i et førstepersonsperspektiv.",
+        "Du skal afgøre, om vores eksakte videnskabelige modeller i virkeligheden er en bleg skygge af den daglige, konkrete erfaring af verden."
+      ],
+      "main_problem": "Find beviset for, at personligheden ikke er en samling statiske egenskaber, men en dynamisk, meningsskabende relation mellem subjekt og verden.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Afgør, hvorfor introspektion fejler, når vi forsøger at studere vores egen spontane oplevelse?",
+          "why_it_matters": "Det beviser fænomenologiens grundpointe om bevidsthedens skrøbelighed over for observation.",
+          "answer_form": "1 kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Fang mekanismen bag figur-grund-fænomenet for at bevise, at perception er en aktiv proces?",
+          "why_it_matters": "Det afviser ideen om, at vi blot er passive modtagere af ydre stimuli.",
+          "answer_form": "2 kontrasterende begreber"
+        },
+        {
+          "number": 3,
+          "question": "Beslut om Husserls 'livsverden' udgør et fysisk sted eller en før-videnskabelig erfaringsmåde?",
+          "why_it_matters": "Det etablerer hierarkiet mellem dagligdags erfaring og videnskabelig abstraktion.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Find beviset for, at bevidstheden altid rækker ud af sig selv (intentionalitet)?",
+          "why_it_matters": "Det løser spændingen mellem 'essens' og 'kontekst' i kursets metateori.",
+          "answer_form": "1 specifikt begreb"
+        },
+        {
+          "number": 5,
+          "question": "Sæt Merleau-Pontys kropssubjekt op imod ideen om det rent tænkende, isolerede menneske?",
+          "why_it_matters": "Det forankrer vores meningsskabelse i biologi uden at reducere os til maskiner.",
+          "answer_form": "1 teoretisk pointe"
+        },
+        {
+          "number": 6,
+          "question": "Find ud af, hvornår 'jeget' rent faktisk eksisterer i bevidstheden ifølge Sartre?",
+          "why_it_matters": "Det udfordrer ideen om en stabil, indre personlighedskerne.",
+          "answer_form": "1 skelnen"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det fundamentale epistemologiske skift i faget fra et objektivt 3. persons perspektiv til et subjektivt 1. persons perspektiv, hvilket er afgørende for eksamen.",
+      "overview": [
+        "Teksten kritiserer forsøget på at måle personligheden som fysiske objekter.",
+        "Den introducerer intentionalitet som broen mellem menneske og omverden.",
+        "Den demonstrerer, hvordan københavnerskolen og klassiske filosoffer gør erfaringen til genstandsfelt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sider 90-93",
+          "task": "Find dilemmaet i at observere bevidstheden mens den virker.",
+          "why_it_matters": "Det sætter hele det metodiske problem op.",
+          "stop_signal": "Når du når til Boks 1 om Københavnerskolen"
+        },
+        {
+          "number": 2,
+          "source_location": "Sider 93-99",
+          "task": "Fang beviset for perceptionens aktive natur hos Rubin.",
+          "why_it_matters": "Viser hvordan fænomenologi blev til eksperimentel videnskab i Danmark.",
+          "stop_signal": "Når afsnittet 'Følelseslivets fænomenologi' starter"
+        },
+        {
+          "number": 3,
+          "source_location": "Sider 106-107",
+          "task": "Beslut hvad forholdet er mellem videnskab og livsverden.",
+          "why_it_matters": "Placerer videnskaben som sekundær i forhold til levet erfaring.",
+          "stop_signal": "Når litteratureksemplet introduceres"
+        },
+        {
+          "number": 4,
+          "source_location": "Sider 112-113",
+          "task": "Find mekanismen 'intentionalitet' hos Brentano og Husserl.",
+          "why_it_matters": "Dette er det absolut vigtigste begreb for at bestå kursets metateoretiske analyse af denne retning.",
+          "stop_signal": "Når Merleau-Ponty nævnes under afsnittet om kropssubjektet"
+        },
+        {
+          "number": 5,
+          "source_location": "Sider 114-115",
+          "task": "Forsvar kropssubjektets rolle i meningsdannelsen.",
+          "why_it_matters": "Kobler krop og psyke uløseligt sammen.",
+          "stop_signal": "Når afsnittet 'Bevidsthedsidentitet' begynder"
+        },
+        {
+          "number": 6,
+          "source_location": "Sider 116-118",
+          "task": "Fang Sartres bevis for, at jeget forsvinder i den rene oplevelse.",
+          "why_it_matters": "Afmonterer ideen om personligheden som en fast indre kerne.",
+          "stop_signal": "Når afsnittet om Fænomenologisk metode starter"
+        },
+        {
+          "number": 7,
+          "source_location": "Sider 119-121",
+          "task": "Udled de præcise trin i Epoché.",
+          "why_it_matters": "Giver dig metoden til rent faktisk at udføre fænomenologisk analyse.",
+          "stop_signal": "Når Boks 3 starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "før-videnskabelig erfaringsverden",
+          "why": "Definerer Husserls centrale begreb om livsverdenen.",
+          "where_to_look": "Sider 106-107"
+        },
+        {
+          "target": "at være rettet mod et objekt",
+          "why": "Den afgørende mekanisme i intentionalitet.",
+          "where_to_look": "Sider 112-113"
+        },
+        {
+          "target": "det præ-refleksive kropssubjekt",
+          "why": "Kernen i Merleau-Pontys teori om før-kognitiv erfaring.",
+          "where_to_look": "Sider 114-115"
+        },
+        {
+          "target": "intet Jeg på det ureflekterede plan",
+          "why": "Sartres radikale påstand om den spontane oplevelse.",
+          "where_to_look": "Sider 116-118"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange litterære citater fra Chuang Tsi og James Joyce.",
+        "Navnene på alle de studerende fra Københavnerskolen, fokuser primært på Edgar Rubin og Franz From.",
+        "Forskellen mellem Würzburgskolen, Wienerskolen og Grazskolen."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sider 106-107",
+          "excerpt": "før-videnskabelig erfaringsverden",
+          "open_question": "Afgør, hvorfor introspektion fejler, når vi forsøger at studere vores egen spontane oplevelse?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sider 112-113",
+          "excerpt": "at være rettet mod et objekt",
+          "open_question": "Fang mekanismen bag figur-grund-fænomenet for at bevise, at perception er en aktiv proces?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sider 114-115",
+          "excerpt": "det præ-refleksive kropssubjekt",
+          "open_question": "Beslut om Husserls 'livsverden' udgør et fysisk sted eller en før-videnskabelig erfaringsmåde?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sider 116-118",
+          "excerpt": "intet Jeg på det ureflekterede plan",
+          "open_question": "Find beviset for, at bevidstheden altid rækker ud af sig selv (intentionalitet)?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette koncentrat til at løse problemerne opstillet i læseguiden. Løs de tilhørende active_reading opgaver undervejs.",
+      "coverage_note": "Fokuserer på de metodiske grundproblemer, intentionalitet, livsverdenen, kropssubjektet og Københavnerskolens eksperimenter.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 90-93",
+          "heading": "Dilemmaet ved at observere bevidsthed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvorfor traditionel videnskabelig observation ødelægger den direkte oplevelse?",
+          "explanation_paragraphs": [
+            "Når du læser en bog og er fuldstændig opslugt af teksten, eksisterer der i det øjeblik intet skel mellem din indre verden og den ydre bog. Denne tilstand, hvor man er i et med handlingen, kaldes den umiddelbare eller rene oplevelse.",
+            "Hvis du pludselig beslutter dig for at rette opmærksomheden mod dig selv og observere, *hvordan* du læser, forsvinder den oprindelige oplevelse i samme sekund. Bevidstheden kan ikke både være spontant handlende og samtidig observere sig selv som et objekt udefra.",
+            "Dette skaber et massivt metodisk problem for psykologien. Hvis vi udelukkende benytter naturvidenskabelige metoder og forsøger at studere bevidstheden udefra, ændrer og forvansker vi selve det fænomen, vi forsøger at undersøge."
+          ],
+          "key_points": [
+            "I den rene oplevelse skelnes der ikke mellem indre og ydre.",
+            "Observation udefra ødelægger den spontane bevidsthedsstrøm.",
+            "Fænomenologi studerer mennesket fra 1. persons perspektivet for at bevare oplevelsens natur."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "intet skel mellem det indre og det ydre",
+              "why_it_matters": "Kernen i den umiddelbare oplevelse.",
+              "source_location": "S. 90"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 91",
+              "passage": "Alt hvad jeg ved om verden, også min videnskabelige viden, har jeg fået gennem mine egne indtryk eller gennem erfaringer med verden, uden hvilke videnskabens symboler intet ville sige mig.",
+              "why_it_matters": "Merleau-Ponty fastslår at al videnskab bygger på personlig erfaring."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 93-99",
+          "heading": "Københavnerskolen og perceptionens aktive natur",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Fang mekanismen der beviser, at vi ikke blot er passive kameraer, men aktive medskabere af virkeligheden?",
+          "explanation_paragraphs": [
+            "Mens megen tidlig fænomenologi var filosofisk, etablerede Edgar Rubin og den danske Københavnerskole fænomenologien som en eksperimentel praksis. De ønskede at undersøge, hvordan bevidstheden rent faktisk arbejder i praksis.",
+            "Rubins berømte figur-grund-eksperiment med vase/ansigt-tegningen beviste, at perception ikke bare er en fotografisk registrering af lys og skygge. Det er en aktiv psykisk proces, hvor bevidstheden organiserer sanseindtryk for at skabe mening.",
+            "Når vi ser et grønt felt på en sort baggrund som 'figur', tillægger vi det en fast form og mening, mens den sorte farve reduceres til en formløs baggrund. Dette beviser, at oplevelsen afhænger af vores bevidstheds organisering af verden."
+          ],
+          "key_points": [
+            "Københavnerskolen forbandt fænomenologi med eksperimentel metode.",
+            "Figur-grund fænomenet beviser at perception er aktiv meningsskabelse.",
+            "En figur træder frem med mening, mens grunden opleves som formløs baggrund."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aktiv psykisk proces",
+              "why_it_matters": "Afviser ideen om passiv sansning.",
+              "source_location": "S. 99"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 106-107",
+          "heading": "Husserl og Livsverdenen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beslut om den videnskabelige abstraktion er mere sand end den konkrete hverdagserfaring?",
+          "explanation_paragraphs": [
+            "Husserl kritiserer videnskaben for at have mistet forbindelsen til det menneskelige liv. Videnskaben stræber efter at gøre alting eksakt, målbart og objektivt, men glemmer ifølge Husserl, at dette kun er en abstraktion.",
+            "Under enhver videnskabelig model ligger 'livsverdenen'. Dette er den før-videnskabelige, konkrete og sanselige erfaringsverden, som vi helt naturligt færdes i til hverdag. Den er ikke præcis og eksakt, men derimod mangfoldig, vag og formbar.",
+            "Husserls pointe er ikke, at videnskaben tager fejl, men at den bygger på en abstraktion. Hvis vi vil forstå mennesket, må vi vende tilbage til livsverdenen, fordi al videnskabelig teori ultimativt forudsætter den umiddelbare erfaring for overhovedet at give mening."
+          ],
+          "key_points": [
+            "Livsverdenen er den konkrete, før-videnskabelige erfaringsverden.",
+            "Videnskab er en kvantitativ abstraktion af livsverdenen.",
+            "Fænomenologien insisterer på at tage udgangspunkt i livsverdenens mangfoldighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "før-videnskabelig erfaringsverden",
+              "why_it_matters": "Definerer selve livsverdenen.",
+              "source_location": "S. 106"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 112-113",
+          "heading": "Intentionalitet - Broen til verden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Find den præcise mekanisme, der forbinder subjektet med verden?",
+          "explanation_paragraphs": [
+            "Franz Brentano og senere Edmund Husserl peger på 'intentionalitet' som det, der fuldstændig adskiller psykiske fænomener fra fysiske genstande. Intentionalitet betyder, at bevidstheden altid er rettet mod et objekt. ",
+            "Man kan ikke bare tænke – man tænker *på noget*. Man føler vrede *over noget*. Denne rettethed ud af sig selv betyder, at bevidstheden ikke er en lukket beholder med indre tilstande, men en konstant relationel proces.",
+            "For fænomenologien betyder dette, at vi ikke kan studere personligheden isoleret fra konteksten. Personen konstitueres altid i sin intentionelle relation til den verden, den befinder sig i."
+          ],
+          "key_points": [
+            "Psykiske fænomener er karakteriseret ved at have en intention (rettethed).",
+            "Bevidstheden er ikke en ting, men en levende proces rettet mod objekter.",
+            "Intentionalitet ophæver den skarpe grænse mellem individ og miljø."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "rettet mod et objekt",
+              "why_it_matters": "Kerne-definitionen på intentionalitet.",
+              "source_location": "S. 112"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 113",
+              "passage": "Bevidstheden er således ikke at sammenligne med en beholder, der indeholder alle bevidsthedsfænomener, men består derimod af en relation mellem den, der oplever, og det oplevede.",
+              "why_it_matters": "Aflæser træk-teoriens ide om en indre beholder af egenskaber til fordel for en relationel dynamik."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 114-115",
+          "heading": "Det præ-refleksive kropssubjekt",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forsvar påstanden om, at vores meningsskabelse sidder i kroppen, før vi overhovedet tænker?",
+          "explanation_paragraphs": [
+            "Maurice Merleau-Ponty tager intentionaliteten et skridt videre og forankrer den i biologien uden at reducere mennesket til maskine. Han indfører begrebet 'det præ-refleksive kropssubjekt'.",
+            "Ifølge ham griber vi ikke verden gennem intellektuel analyse først. Vores primære og mest fundamentale møde med verden går gennem kroppen. Før vi tænker over en genstand, har vores krop allerede forholdt sig til den dynamisk og affektivt.",
+            "Kroppen er vores 'ankerkæde' i verden. Dette betyder for personlighedspsykologien, at vores personlighed og måde at give verden mening på altid udspringer af, og er farvet af, vores kropslige erfaring og positionering i verden."
+          ],
+          "key_points": [
+            "Kropssubjektet ligger forud for al sproglig og intellektuel refleksion.",
+            "Perception er farvet af vores biologi og sansehistorie.",
+            "Materialiteten er et vilkår, men kropssubjektet er dynamisk og aktivt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "kroppen og kroppens perception",
+              "why_it_matters": "Viser at kroppen er startpunktet for al erfaring.",
+              "source_location": "S. 115"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "S. 116-118",
+          "heading": "Sartre og det forsvundne 'Jeg'",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Fang beviset for, at dit 'Jeg' slet ikke er konstant til stede?",
+          "explanation_paragraphs": [
+            "Jean-Paul Sartre laver en radikal fænomenologisk analyse af selve 'Jeget'. Når du er fuldt ud engageret i en aktivitet – fx løber efter en sporvogn eller læser dybt i en tekst – er dit 'Jeg' ifølge Sartre fuldstændig forsvundet fra oplevelsen.",
+            "Der er kun selve handlingen og genstandens tiltrukkethed i den 'ureflekterede' tilstand. Det er først det øjeblik, du snubler, eller bevidstheden reflekterer over sig selv, at 'Jeget' dukker op som noget, du forholder dig til.",
+            "Dette betyder, at 'Jeget' ikke er en konstant indre kerne, der styrer showet bag kulisserne. Jeget produceres kun som genstand for opmærksomheden, når vi træder et skridt tilbage fra den umiddelbare strøm af oplevelser."
+          ],
+          "key_points": [
+            "Jeget eksisterer ikke i den rene, umiddelbare oplevelse.",
+            "Jeget dukker først op, når bevidstheden reflekterer over sine handlinger.",
+            "Dette afviser stærkt trækpsykologiens ide om en konstant indre personlighedskerne."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "intet Jeg på det ureflekterede plan",
+              "why_it_matters": "Sartres hovedpåstand.",
+              "source_location": "S. 117"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 117",
+              "passage": "Der er intet Jeg på det ureflekterede plan. Når jeg løber efter en sporvogn, når jeg ser på klokken, når jeg fordybet betragter et portræt, er der intet Jeg.",
+              "why_it_matters": "Demonstrerer jegets forsvinden i spontan handlen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 7,
+          "source_location": "S. 119-121",
+          "heading": "Den fænomenologiske metode og Epoché",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Udled den præcise metodiske bevægelse der giver adgang til ren oplevelse?",
+          "explanation_paragraphs": [
+            "For at studere bevidstheden objektivt som et 1. persons fænomen indfører Husserl metoden kaldet 'Epoché' eller indklamring.",
+            "Epoché betyder, at man metodisk sætter sin naturlige, videnskabelige forudindtagethed på pause. Man undlader at tage stilling til, om en genstand objektivt eksisterer ude i virkeligheden, og fokuserer udelukkende på, *hvordan* den træder frem for personen.",
+            "Dette efterfølges af 'eidetisk variation', hvor forskeren via fantasien varierer fænomenet for at finde dets inderste væsen eller konstante kerne, som ikke kan fjernes uden at fænomenet ophører med at være sig selv."
+          ],
+          "key_points": [
+            "Epoché sætter domme om den objektive virkelighed ud af kraft.",
+            "Formålet er at tilbageføre oplevelsen til dens rene fremtrædelsesform.",
+            "Eidetisk variation skræller det tilfældige væk for at finde den sande essens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "suspensionen af den naturlige indstilling",
+              "why_it_matters": "Den konkrete anvisning for Epoché.",
+              "source_location": "S. 120"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor traditionel videnskabelig observation ødelægger den direkte oplevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1 kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang mekanismen der beviser, at vi ikke blot er passive kameraer, men aktive medskabere af virkeligheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2 kontrasterende begreber",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut om den videnskabelige abstraktion er mere sand end den konkrete hverdagserfaring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Find den præcise mekanisme, der forbinder subjektet med verden?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1 specifikt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forsvar påstanden om, at vores meningsskabelse sidder i kroppen, før vi overhovedet tænker?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1 teoretisk pointe",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang beviset for, at dit 'Jeg' slet ikke er konstant til stede?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1 skelnen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Udled den præcise metodiske bevægelse der giver adgang til ren oplevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 7",
+          "answer_shape": "1 skelnen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "8",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Find beviset for, at personligheden ikke er en samling statiske egenskaber, men en dynamisk, meningsskabende relation mellem subjekt og verden.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-7",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk den abridged reader og gendan modellens sammenhænge fra hukommelsen. Løs de manglende led for at låse teorien fast.",
+      "overview": [
+        "Fænomenologi afviser at vi kan forstå bevidstheden ved udelukkende at iagttage den udefra som et objekt.",
+        "Den foreslår intentionalitet som mekanismen, der forbinder menneskets indre direkte med den ydre omverden.",
+        "Derfor insisterer traditionen på at studere meningsskabelse ud fra subjektets førstepersonsperspektiv og kropslige væren."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Hvis man udelukkende forsøger at betragte sin bevidsthed udefra, ødelægger man adgangen til den rene, __________ oplevelse.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Edgar Rubin demonstrerede, at perception ikke er et passivt kamera, men et aktivt forsøg på at organisere stimuli til en meningsfuld __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Husserl mener at naturvidenskabens objektivitet ultimativt er en abstraktion, der bygger på den før-videnskabelige og sanselige __________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Bevidstheden adskiller sig fundamentalt fra fysiske fænomener via sin __________, altså at den altid rækker ud mod et objekt.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For at fastholde at mening ikke kun er intellektuel, argumenterer Merleau-Ponty for at vi forholder os affektivt og motorisk til verden via det præ-refleksive __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Sartre beviser at det stabile indre __________ forsvinder, når man er opslugt af en handling som fx at løbe efter en sporvogn.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Det metodiske skridt i analysen, hvor man suspenderer domme om virkelighedens eksistens for at studere fremtrædelsen rent, kaldes __________.",
+          "where_to_look": "Abridged reader sektion 7.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn modellen for Intentionalitet ifølge Brentano/Husserl.",
+          "required_elements": [
+            "Subjektet",
+            "Den ydre verden/objektet",
+            "Pilene der repræsenterer 'rettethed'"
+          ],
+          "blank_space_hint": "Tegn mekanismen mellem et 'jeg' og et 'objekt' der gør bevidstheden anderledes end en lukket beholder."
+        },
+        {
+          "number": 2,
+          "task": "Konstruer forskellen på de to bevidsthedstilstande hos Sartre.",
+          "required_elements": [
+            "Spontan/ureflekteret handling: uden Jeg",
+            "Refleksiv bevidsthed: hvor Jeget opstår som objekt"
+          ],
+          "blank_space_hint": "Brug to kasser til at vise om opmærksomheden er rettet mod udad mod handlingen, eller indad mod observatøren."
+        },
+        {
+          "number": 3,
+          "task": "Tegn det hierarkiske forhold mellem Videnskab og Livsverden ifølge Husserl.",
+          "required_elements": [
+            "Det abstrakte fundament: Videnskab",
+            "Den konkrete, sanselige base: Livsverden",
+            "En pil der viser, hvem der bygger på hvem"
+          ],
+          "blank_space_hint": "Lav et fundament/bygning diagram for at vise, hvad der ligger til grund for menneskets viden."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Du skal nu bevise, at du kan anvende modellen til at løse analytiske opgaver i faget. Brug fænomenologien til at udfordre kursets andre positioner.",
+      "use_this_text_for": [
+        "At forklare det metodiske skift fra 3. persons til 1. persons perspektiv.",
+        "At diskutere om personligheden er indre, stabile essenser (træk) eller kontekstuel meningsskabelse.",
+        "At kritisere behaviorismens passivisering af subjektet ved at inddrage Københavnerskolen og figur-grund.",
+        "At anvende orienteringspunktet Essens/Kontekst i din meta-teoretiske syntese via begrebet intentionalitet.",
+        "At argumentere for kroppens og biologiens betydning uden at ende i ren neurofysiologisk determinisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækteori (W02L1)",
+          "connection": "Fænomenologien de-reificerer traits. Intentionalitet gør det umuligt at studere en person uden dens verden, hvilket afviser ideen om indre uafhængige personlighedsvariabler."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Mens Freud fokuserer på usynlige ubevidste kræfter, gen-centrerer fænomenologien subjektet omkring den bevidste, oplevede intention."
+        },
+        {
+          "course_theme": "Metateori / Orienteringspunkter (W12L1)",
+          "connection": "Intentionalitet er det perfekte redskab til at diskutere essens vs kontekst på, da den binder de to domæner uadskilleligt sammen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Spørg om et 'træk' ligger inde i et isoleret Jeg, eller om Jeget kun dukker op og existerer, når vi bevidst interagerer intentionelt med verden."
+        },
+        {
+          "compare_with": "Biologisk determinisme",
+          "how_to_compare": "Brug Merleau-Pontys præ-refleksive kropssubjekt til at vise, at biologien godt kan skabe psykologisk grundlag uden at fjerne aktiv meningsskabelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du trækker en tekst om personligheds-tests (fx NEO-PI-R):",
+          "use_in_answer": "Angrib testens påstand om objektivitet. Brug Husserl til at bevise, at selve målingen er en abstraktion, der har mistet forbindelsen til den oprindelige 'livsverden'.",
+          "caution": "Husk ikke blot at afvise tests totalt; forklar *hvorfor* fænomenologen mener dataen er begrænset (fordi den mister det førstepersonspespektiv, testpersonen oplever verden fra)."
+        },
+        {
+          "prompt_type": "Hvis opgaven beder dig definere 'Essens' fra orienteringspunkterne:",
+          "use_in_answer": "Brug Eidetisk Variation (Epoché). Vis at fænomenologien metodisk *søger* en konstant essens i fænomenet, men finder den i meningen fremfor i biologien.",
+          "caution": "Forveksl ikke fænomenologisk essens (kernebetydning i oplevelsen) med biologisk essens (DNA)."
+        },
+        {
+          "prompt_type": "Hvis diskussionen handler om selvet/Jeget eksisterer som en fast kerne:",
+          "use_in_answer": "Inddrag Sartres eksempel med sporvognen. Vis hvordan det stabile Jeg forsvinder i den rene oplevelse, og derfor ikke er den primære motor for adfærd.",
+          "caution": "Sørg for at præcisere forskellen på den refleksive og præ-refleksive tilstand ifølge Sartre."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at intentionalitet handler om bevidste intentioner, fx 'jeg vil gerne vaske op i dag'.",
+          "better_reading": "Intentionalitet refererer strengt til at bevidstheden fundamentalt set er *rettet mod noget andet end sig selv* (subjekt-objekt relation)."
+        },
+        {
+          "trap": "At forveksle fænomenologi med bare at 'føle efter indeni' eller ren ukritisk introspektion.",
+          "better_reading": "Fænomenologien kritiserer netop ukritisk introspektion. De kræver strenge reduktioner (Epoché) for at af-teoretisere observationen."
+        },
+        {
+          "trap": "At tro at 'livsverden' refererer til det biologiske miljø omkring individet.",
+          "better_reading": "Livsverden er en subjektiv *erfaringsmåde* - det ufokusere, mangfoldige, levede rum før videnskaben ordner det i excel-ark."
+        }
+      ],
+      "mini_exam_prompt_question": "Settle the dispute: How does the concept of intentionality actively dismantle the idea of personality as a collection of measurable internal variables?",
+      "mini_exam_answer_plan_slots": [
+        "Definition af intentionalitet hos Brentano og Husserl (rettetheden mod objektet)",
+        "Det metodiske opgør: Træk-teori observerer individet udefra som objekt (3. person)",
+        "Konsekvensen af Merleau-Pontys kropssubjekt for forståelsen af adfærd fremfor statiske variabler",
+        "Konklusion: Hvordan meningsskabelse umuliggør et isoleret, internt 'Jeg' (inkludér Sartre)"
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+      "lecture_key": "W06L1",
+      "source_title": "Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne mission brief til at lokalisere de centrale problemer i teksten, før du læser. Følg ruten for at fange løsningerne trin for trin.",
+      "teaser_paragraphs": [
+        "Indtil nu har vi i kurset behandlet personligheden som noget, der primært kan måles udefra.",
+        "Vi har vurderet mennesker ud fra stabile træk-variabler og forsøgt at kortlægge usynlige biologiske eller psykodynamiske drifter.",
+        "Men denne objektive tilgang skaber et massivt problem: Den overser fuldstændig den levede, umiddelbare oplevelse af at være et menneske.",
+        "Fænomenologien påstår tværtimod, at hvis vi gør mennesket til et dødt objekt for at observere det, så ødelægger og forvrænger vi selve bevidstheden i forsøget.",
+        "Din opgave i denne tekst er at finde ud af, hvordan vi kan studere personligheden systematisk indefra, strengt forankret i et førstepersonsperspektiv.",
+        "Du skal afgøre, om vores eksakte videnskabelige modeller i virkeligheden er en bleg skygge af den daglige, konkrete erfaring af verden."
+      ],
+      "main_problem": "Find beviset for, at personligheden ikke er en samling statiske egenskaber, men en dynamisk, meningsskabende relation mellem subjekt og verden.",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Afgør, hvorfor introspektion fejler, når vi forsøger at studere vores egen spontane oplevelse?",
+          "why_it_matters": "Det beviser fænomenologiens grundpointe om bevidsthedens skrøbelighed over for observation.",
+          "answer_form": "1 kort forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Fang mekanismen bag figur-grund-fænomenet for at bevise, at perception er en aktiv proces?",
+          "why_it_matters": "Det afviser ideen om, at vi blot er passive modtagere af ydre stimuli.",
+          "answer_form": "2 kontrasterende begreber"
+        },
+        {
+          "number": 3,
+          "question": "Beslut om Husserls 'livsverden' udgør et fysisk sted eller en før-videnskabelig erfaringsmåde?",
+          "why_it_matters": "Det etablerer hierarkiet mellem dagligdags erfaring og videnskabelig abstraktion.",
+          "answer_form": "1 kort sætning"
+        },
+        {
+          "number": 4,
+          "question": "Find beviset for, at bevidstheden altid rækker ud af sig selv (intentionalitet)?",
+          "why_it_matters": "Det løser spændingen mellem 'essens' og 'kontekst' i kursets metateori.",
+          "answer_form": "1 specifikt begreb"
+        },
+        {
+          "number": 5,
+          "question": "Sæt Merleau-Pontys kropssubjekt op imod ideen om det rent tænkende, isolerede menneske?",
+          "why_it_matters": "Det forankrer vores meningsskabelse i biologi uden at reducere os til maskiner.",
+          "answer_form": "1 teoretisk pointe"
+        },
+        {
+          "number": 6,
+          "question": "Find ud af, hvornår 'jeget' rent faktisk eksisterer i bevidstheden ifølge Sartre?",
+          "why_it_matters": "Det udfordrer ideen om en stabil, indre personlighedskerne.",
+          "answer_form": "1 skelnen"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det fundamentale epistemologiske skift i faget fra et objektivt 3. persons perspektiv til et subjektivt 1. persons perspektiv, hvilket er afgørende for eksamen.",
+      "overview": [
+        "Teksten kritiserer forsøget på at måle personligheden som fysiske objekter.",
+        "Den introducerer intentionalitet som broen mellem menneske og omverden.",
+        "Den demonstrerer, hvordan københavnerskolen og klassiske filosoffer gør erfaringen til genstandsfelt."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sider 90-93",
+          "task": "Find dilemmaet i at observere bevidstheden mens den virker.",
+          "why_it_matters": "Det sætter hele det metodiske problem op.",
+          "stop_signal": "Når du når til Boks 1 om Københavnerskolen"
+        },
+        {
+          "number": 2,
+          "source_location": "Sider 93-99",
+          "task": "Fang beviset for perceptionens aktive natur hos Rubin.",
+          "why_it_matters": "Viser hvordan fænomenologi blev til eksperimentel videnskab i Danmark.",
+          "stop_signal": "Når afsnittet 'Følelseslivets fænomenologi' starter"
+        },
+        {
+          "number": 3,
+          "source_location": "Sider 106-107",
+          "task": "Beslut hvad forholdet er mellem videnskab og livsverden.",
+          "why_it_matters": "Placerer videnskaben som sekundær i forhold til levet erfaring.",
+          "stop_signal": "Når litteratureksemplet introduceres"
+        },
+        {
+          "number": 4,
+          "source_location": "Sider 112-113",
+          "task": "Find mekanismen 'intentionalitet' hos Brentano og Husserl.",
+          "why_it_matters": "Dette er det absolut vigtigste begreb for at bestå kursets metateoretiske analyse af denne retning.",
+          "stop_signal": "Når Merleau-Ponty nævnes under afsnittet om kropssubjektet"
+        },
+        {
+          "number": 5,
+          "source_location": "Sider 114-115",
+          "task": "Forsvar kropssubjektets rolle i meningsdannelsen.",
+          "why_it_matters": "Kobler krop og psyke uløseligt sammen.",
+          "stop_signal": "Når afsnittet 'Bevidsthedsidentitet' begynder"
+        },
+        {
+          "number": 6,
+          "source_location": "Sider 116-118",
+          "task": "Fang Sartres bevis for, at jeget forsvinder i den rene oplevelse.",
+          "why_it_matters": "Afmonterer ideen om personligheden som en fast indre kerne.",
+          "stop_signal": "Når afsnittet om Fænomenologisk metode starter"
+        },
+        {
+          "number": 7,
+          "source_location": "Sider 119-121",
+          "task": "Udled de præcise trin i Epoché.",
+          "why_it_matters": "Giver dig metoden til rent faktisk at udføre fænomenologisk analyse.",
+          "stop_signal": "Når Boks 3 starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "før-videnskabelig erfaringsverden",
+          "why": "Definerer Husserls centrale begreb om livsverdenen.",
+          "where_to_look": "Sider 106-107"
+        },
+        {
+          "target": "at være rettet mod et objekt",
+          "why": "Den afgørende mekanisme i intentionalitet.",
+          "where_to_look": "Sider 112-113"
+        },
+        {
+          "target": "det præ-refleksive kropssubjekt",
+          "why": "Kernen i Merleau-Pontys teori om før-kognitiv erfaring.",
+          "where_to_look": "Sider 114-115"
+        },
+        {
+          "target": "intet Jeg på det ureflekterede plan",
+          "why": "Sartres radikale påstand om den spontane oplevelse.",
+          "where_to_look": "Sider 116-118"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange litterære citater fra Chuang Tsi og James Joyce.",
+        "Navnene på alle de studerende fra Københavnerskolen, fokuser primært på Edgar Rubin og Franz From.",
+        "Forskellen mellem Würzburgskolen, Wienerskolen og Grazskolen."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sider 106-107",
+          "excerpt": "før-videnskabelig erfaringsverden",
+          "open_question": "Afgør, hvorfor introspektion fejler, når vi forsøger at studere vores egen spontane oplevelse?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sider 112-113",
+          "excerpt": "at være rettet mod et objekt",
+          "open_question": "Fang mekanismen bag figur-grund-fænomenet for at bevise, at perception er en aktiv proces?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sider 114-115",
+          "excerpt": "det præ-refleksive kropssubjekt",
+          "open_question": "Beslut om Husserls 'livsverden' udgør et fysisk sted eller en før-videnskabelig erfaringsmåde?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sider 116-118",
+          "excerpt": "intet Jeg på det ureflekterede plan",
+          "open_question": "Find beviset for, at bevidstheden altid rækker ud af sig selv (intentionalitet)?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug dette koncentrat til at løse problemerne opstillet i læseguiden. Løs de tilhørende active_reading opgaver undervejs.",
+      "coverage_note": "Fokuserer på de metodiske grundproblemer, intentionalitet, livsverdenen, kropssubjektet og Københavnerskolens eksperimenter.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 90-93",
+          "heading": "Dilemmaet ved at observere bevidsthed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvorfor traditionel videnskabelig observation ødelægger den direkte oplevelse?",
+          "explanation_paragraphs": [
+            "Når du læser en bog og er fuldstændig opslugt af teksten, eksisterer der i det øjeblik intet skel mellem din indre verden og den ydre bog. Denne tilstand, hvor man er i et med handlingen, kaldes den umiddelbare eller rene oplevelse.",
+            "Hvis du pludselig beslutter dig for at rette opmærksomheden mod dig selv og observere, *hvordan* du læser, forsvinder den oprindelige oplevelse i samme sekund. Bevidstheden kan ikke både være spontant handlende og samtidig observere sig selv som et objekt udefra.",
+            "Dette skaber et massivt metodisk problem for psykologien. Hvis vi udelukkende benytter naturvidenskabelige metoder og forsøger at studere bevidstheden udefra, ændrer og forvansker vi selve det fænomen, vi forsøger at undersøge."
+          ],
+          "key_points": [
+            "I den rene oplevelse skelnes der ikke mellem indre og ydre.",
+            "Observation udefra ødelægger den spontane bevidsthedsstrøm.",
+            "Fænomenologi studerer mennesket fra 1. persons perspektivet for at bevare oplevelsens natur."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "intet skel mellem det indre og det ydre",
+              "why_it_matters": "Kernen i den umiddelbare oplevelse.",
+              "source_location": "S. 90"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 91",
+              "passage": "Alt hvad jeg ved om verden, også min videnskabelige viden, har jeg fået gennem mine egne indtryk eller gennem erfaringer med verden, uden hvilke videnskabens symboler intet ville sige mig.",
+              "why_it_matters": "Merleau-Ponty fastslår at al videnskab bygger på personlig erfaring."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 93-99",
+          "heading": "Københavnerskolen og perceptionens aktive natur",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Fang mekanismen der beviser, at vi ikke blot er passive kameraer, men aktive medskabere af virkeligheden?",
+          "explanation_paragraphs": [
+            "Mens megen tidlig fænomenologi var filosofisk, etablerede Edgar Rubin og den danske Københavnerskole fænomenologien som en eksperimentel praksis. De ønskede at undersøge, hvordan bevidstheden rent faktisk arbejder i praksis.",
+            "Rubins berømte figur-grund-eksperiment med vase/ansigt-tegningen beviste, at perception ikke bare er en fotografisk registrering af lys og skygge. Det er en aktiv psykisk proces, hvor bevidstheden organiserer sanseindtryk for at skabe mening.",
+            "Når vi ser et grønt felt på en sort baggrund som 'figur', tillægger vi det en fast form og mening, mens den sorte farve reduceres til en formløs baggrund. Dette beviser, at oplevelsen afhænger af vores bevidstheds organisering af verden."
+          ],
+          "key_points": [
+            "Københavnerskolen forbandt fænomenologi med eksperimentel metode.",
+            "Figur-grund fænomenet beviser at perception er aktiv meningsskabelse.",
+            "En figur træder frem med mening, mens grunden opleves som formløs baggrund."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "aktiv psykisk proces",
+              "why_it_matters": "Afviser ideen om passiv sansning.",
+              "source_location": "S. 99"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 106-107",
+          "heading": "Husserl og Livsverdenen",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Beslut om den videnskabelige abstraktion er mere sand end den konkrete hverdagserfaring?",
+          "explanation_paragraphs": [
+            "Husserl kritiserer videnskaben for at have mistet forbindelsen til det menneskelige liv. Videnskaben stræber efter at gøre alting eksakt, målbart og objektivt, men glemmer ifølge Husserl, at dette kun er en abstraktion.",
+            "Under enhver videnskabelig model ligger 'livsverdenen'. Dette er den før-videnskabelige, konkrete og sanselige erfaringsverden, som vi helt naturligt færdes i til hverdag. Den er ikke præcis og eksakt, men derimod mangfoldig, vag og formbar.",
+            "Husserls pointe er ikke, at videnskaben tager fejl, men at den bygger på en abstraktion. Hvis vi vil forstå mennesket, må vi vende tilbage til livsverdenen, fordi al videnskabelig teori ultimativt forudsætter den umiddelbare erfaring for overhovedet at give mening."
+          ],
+          "key_points": [
+            "Livsverdenen er den konkrete, før-videnskabelige erfaringsverden.",
+            "Videnskab er en kvantitativ abstraktion af livsverdenen.",
+            "Fænomenologien insisterer på at tage udgangspunkt i livsverdenens mangfoldighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "før-videnskabelig erfaringsverden",
+              "why_it_matters": "Definerer selve livsverdenen.",
+              "source_location": "S. 106"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 112-113",
+          "heading": "Intentionalitet - Broen til verden",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Find den præcise mekanisme, der forbinder subjektet med verden?",
+          "explanation_paragraphs": [
+            "Franz Brentano og senere Edmund Husserl peger på 'intentionalitet' som det, der fuldstændig adskiller psykiske fænomener fra fysiske genstande. Intentionalitet betyder, at bevidstheden altid er rettet mod et objekt. ",
+            "Man kan ikke bare tænke – man tænker *på noget*. Man føler vrede *over noget*. Denne rettethed ud af sig selv betyder, at bevidstheden ikke er en lukket beholder med indre tilstande, men en konstant relationel proces.",
+            "For fænomenologien betyder dette, at vi ikke kan studere personligheden isoleret fra konteksten. Personen konstitueres altid i sin intentionelle relation til den verden, den befinder sig i."
+          ],
+          "key_points": [
+            "Psykiske fænomener er karakteriseret ved at have en intention (rettethed).",
+            "Bevidstheden er ikke en ting, men en levende proces rettet mod objekter.",
+            "Intentionalitet ophæver den skarpe grænse mellem individ og miljø."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "rettet mod et objekt",
+              "why_it_matters": "Kerne-definitionen på intentionalitet.",
+              "source_location": "S. 112"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 113",
+              "passage": "Bevidstheden er således ikke at sammenligne med en beholder, der indeholder alle bevidsthedsfænomener, men består derimod af en relation mellem den, der oplever, og det oplevede.",
+              "why_it_matters": "Aflæser træk-teoriens ide om en indre beholder af egenskaber til fordel for en relationel dynamik."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "S. 114-115",
+          "heading": "Det præ-refleksive kropssubjekt",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Forsvar påstanden om, at vores meningsskabelse sidder i kroppen, før vi overhovedet tænker?",
+          "explanation_paragraphs": [
+            "Maurice Merleau-Ponty tager intentionaliteten et skridt videre og forankrer den i biologien uden at reducere mennesket til maskine. Han indfører begrebet 'det præ-refleksive kropssubjekt'.",
+            "Ifølge ham griber vi ikke verden gennem intellektuel analyse først. Vores primære og mest fundamentale møde med verden går gennem kroppen. Før vi tænker over en genstand, har vores krop allerede forholdt sig til den dynamisk og affektivt.",
+            "Kroppen er vores 'ankerkæde' i verden. Dette betyder for personlighedspsykologien, at vores personlighed og måde at give verden mening på altid udspringer af, og er farvet af, vores kropslige erfaring og positionering i verden."
+          ],
+          "key_points": [
+            "Kropssubjektet ligger forud for al sproglig og intellektuel refleksion.",
+            "Perception er farvet af vores biologi og sansehistorie.",
+            "Materialiteten er et vilkår, men kropssubjektet er dynamisk og aktivt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "kroppen og kroppens perception",
+              "why_it_matters": "Viser at kroppen er startpunktet for al erfaring.",
+              "source_location": "S. 115"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "S. 116-118",
+          "heading": "Sartre og det forsvundne 'Jeg'",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Fang beviset for, at dit 'Jeg' slet ikke er konstant til stede?",
+          "explanation_paragraphs": [
+            "Jean-Paul Sartre laver en radikal fænomenologisk analyse af selve 'Jeget'. Når du er fuldt ud engageret i en aktivitet – fx løber efter en sporvogn eller læser dybt i en tekst – er dit 'Jeg' ifølge Sartre fuldstændig forsvundet fra oplevelsen.",
+            "Der er kun selve handlingen og genstandens tiltrukkethed i den 'ureflekterede' tilstand. Det er først det øjeblik, du snubler, eller bevidstheden reflekterer over sig selv, at 'Jeget' dukker op som noget, du forholder dig til.",
+            "Dette betyder, at 'Jeget' ikke er en konstant indre kerne, der styrer showet bag kulisserne. Jeget produceres kun som genstand for opmærksomheden, når vi træder et skridt tilbage fra den umiddelbare strøm af oplevelser."
+          ],
+          "key_points": [
+            "Jeget eksisterer ikke i den rene, umiddelbare oplevelse.",
+            "Jeget dukker først op, når bevidstheden reflekterer over sine handlinger.",
+            "Dette afviser stærkt trækpsykologiens ide om en konstant indre personlighedskerne."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "intet Jeg på det ureflekterede plan",
+              "why_it_matters": "Sartres hovedpåstand.",
+              "source_location": "S. 117"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 117",
+              "passage": "Der er intet Jeg på det ureflekterede plan. Når jeg løber efter en sporvogn, når jeg ser på klokken, når jeg fordybet betragter et portræt, er der intet Jeg.",
+              "why_it_matters": "Demonstrerer jegets forsvinden i spontan handlen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 7,
+          "source_location": "S. 119-121",
+          "heading": "Den fænomenologiske metode og Epoché",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Udled den præcise metodiske bevægelse der giver adgang til ren oplevelse?",
+          "explanation_paragraphs": [
+            "For at studere bevidstheden objektivt som et 1. persons fænomen indfører Husserl metoden kaldet 'Epoché' eller indklamring.",
+            "Epoché betyder, at man metodisk sætter sin naturlige, videnskabelige forudindtagethed på pause. Man undlader at tage stilling til, om en genstand objektivt eksisterer ude i virkeligheden, og fokuserer udelukkende på, *hvordan* den træder frem for personen.",
+            "Dette efterfølges af 'eidetisk variation', hvor forskeren via fantasien varierer fænomenet for at finde dets inderste væsen eller konstante kerne, som ikke kan fjernes uden at fænomenet ophører med at være sig selv."
+          ],
+          "key_points": [
+            "Epoché sætter domme om den objektive virkelighed ud af kraft.",
+            "Formålet er at tilbageføre oplevelsen til dens rene fremtrædelsesform.",
+            "Eidetisk variation skræller det tilfældige væk for at finde den sande essens."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "suspensionen af den naturlige indstilling",
+              "why_it_matters": "Den konkrete anvisning for Epoché.",
+              "source_location": "S. 120"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor traditionel videnskabelig observation ødelægger den direkte oplevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1 kort forklaring",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang mekanismen der beviser, at vi ikke blot er passive kameraer, men aktive medskabere af virkeligheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2 kontrasterende begreber",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut om den videnskabelige abstraktion er mere sand end den konkrete hverdagserfaring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 kort sætning",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv det korte svar på spørgsmålet: Find den præcise mekanisme, der forbinder subjektet med verden?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1 specifikt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forsvar påstanden om, at vores meningsskabelse sidder i kroppen, før vi overhovedet tænker?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "1 teoretisk pointe",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fang beviset for, at dit 'Jeg' slet ikke er konstant til stede?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1 skelnen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Udled den præcise metodiske bevægelse der giver adgang til ren oplevelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 7",
+          "answer_shape": "1 skelnen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "8",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at samle tekstens hovedbevægelse kort: Find beviset for, at personligheden ikke er en samling statiske egenskaber, men en dynamisk, meningsskabende relation mellem subjekt og verden.",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-7",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk den abridged reader og gendan modellens sammenhænge fra hukommelsen. Løs de manglende led for at låse teorien fast.",
+      "overview": [
+        "Fænomenologi afviser at vi kan forstå bevidstheden ved udelukkende at iagttage den udefra som et objekt.",
+        "Den foreslår intentionalitet som mekanismen, der forbinder menneskets indre direkte med den ydre omverden.",
+        "Derfor insisterer traditionen på at studere meningsskabelse ud fra subjektets førstepersonsperspektiv og kropslige væren."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Hvis man udelukkende forsøger at betragte sin bevidsthed udefra, ødelægger man adgangen til den rene, __________ oplevelse.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Edgar Rubin demonstrerede, at perception ikke er et passivt kamera, men et aktivt forsøg på at organisere stimuli til en meningsfuld __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Husserl mener at naturvidenskabens objektivitet ultimativt er en abstraktion, der bygger på den før-videnskabelige og sanselige __________.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Bevidstheden adskiller sig fundamentalt fra fysiske fænomener via sin __________, altså at den altid rækker ud mod et objekt.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "For at fastholde at mening ikke kun er intellektuel, argumenterer Merleau-Ponty for at vi forholder os affektivt og motorisk til verden via det præ-refleksive __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Sartre beviser at det stabile indre __________ forsvinder, når man er opslugt af en handling som fx at løbe efter en sporvogn.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Det metodiske skridt i analysen, hvor man suspenderer domme om virkelighedens eksistens for at studere fremtrædelsen rent, kaldes __________.",
+          "where_to_look": "Abridged reader sektion 7.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn modellen for Intentionalitet ifølge Brentano/Husserl.",
+          "required_elements": [
+            "Subjektet",
+            "Den ydre verden/objektet",
+            "Pilene der repræsenterer 'rettethed'"
+          ],
+          "blank_space_hint": "Tegn mekanismen mellem et 'jeg' og et 'objekt' der gør bevidstheden anderledes end en lukket beholder."
+        },
+        {
+          "number": 2,
+          "task": "Konstruer forskellen på de to bevidsthedstilstande hos Sartre.",
+          "required_elements": [
+            "Spontan/ureflekteret handling: uden Jeg",
+            "Refleksiv bevidsthed: hvor Jeget opstår som objekt"
+          ],
+          "blank_space_hint": "Brug to kasser til at vise om opmærksomheden er rettet mod udad mod handlingen, eller indad mod observatøren."
+        },
+        {
+          "number": 3,
+          "task": "Tegn det hierarkiske forhold mellem Videnskab og Livsverden ifølge Husserl.",
+          "required_elements": [
+            "Det abstrakte fundament: Videnskab",
+            "Den konkrete, sanselige base: Livsverden",
+            "En pil der viser, hvem der bygger på hvem"
+          ],
+          "blank_space_hint": "Lav et fundament/bygning diagram for at vise, hvad der ligger til grund for menneskets viden."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Du skal nu bevise, at du kan anvende modellen til at løse analytiske opgaver i faget. Brug fænomenologien til at udfordre kursets andre positioner.",
+      "use_this_text_for": [
+        "At forklare det metodiske skift fra 3. persons til 1. persons perspektiv.",
+        "At diskutere om personligheden er indre, stabile essenser (træk) eller kontekstuel meningsskabelse.",
+        "At kritisere behaviorismens passivisering af subjektet ved at inddrage Københavnerskolen og figur-grund.",
+        "At anvende orienteringspunktet Essens/Kontekst i din meta-teoretiske syntese via begrebet intentionalitet.",
+        "At argumentere for kroppens og biologiens betydning uden at ende i ren neurofysiologisk determinisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækteori (W02L1)",
+          "connection": "Fænomenologien de-reificerer traits. Intentionalitet gør det umuligt at studere en person uden dens verden, hvilket afviser ideen om indre uafhængige personlighedsvariabler."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Mens Freud fokuserer på usynlige ubevidste kræfter, gen-centrerer fænomenologien subjektet omkring den bevidste, oplevede intention."
+        },
+        {
+          "course_theme": "Metateori / Orienteringspunkter (W12L1)",
+          "connection": "Intentionalitet er det perfekte redskab til at diskutere essens vs kontekst på, da den binder de to domæner uadskilleligt sammen."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Big Five (Costa & McCrae)",
+          "how_to_compare": "Spørg om et 'træk' ligger inde i et isoleret Jeg, eller om Jeget kun dukker op og existerer, når vi bevidst interagerer intentionelt med verden."
+        },
+        {
+          "compare_with": "Biologisk determinisme",
+          "how_to_compare": "Brug Merleau-Pontys præ-refleksive kropssubjekt til at vise, at biologien godt kan skabe psykologisk grundlag uden at fjerne aktiv meningsskabelse."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du trækker en tekst om personligheds-tests (fx NEO-PI-R):",
+          "use_in_answer": "Angrib testens påstand om objektivitet. Brug Husserl til at bevise, at selve målingen er en abstraktion, der har mistet forbindelsen til den oprindelige 'livsverden'.",
+          "caution": "Husk ikke blot at afvise tests totalt; forklar *hvorfor* fænomenologen mener dataen er begrænset (fordi den mister det førstepersonspespektiv, testpersonen oplever verden fra)."
+        },
+        {
+          "prompt_type": "Hvis opgaven beder dig definere 'Essens' fra orienteringspunkterne:",
+          "use_in_answer": "Brug Eidetisk Variation (Epoché). Vis at fænomenologien metodisk *søger* en konstant essens i fænomenet, men finder den i meningen fremfor i biologien.",
+          "caution": "Forveksl ikke fænomenologisk essens (kernebetydning i oplevelsen) med biologisk essens (DNA)."
+        },
+        {
+          "prompt_type": "Hvis diskussionen handler om selvet/Jeget eksisterer som en fast kerne:",
+          "use_in_answer": "Inddrag Sartres eksempel med sporvognen. Vis hvordan det stabile Jeg forsvinder i den rene oplevelse, og derfor ikke er den primære motor for adfærd.",
+          "caution": "Sørg for at præcisere forskellen på den refleksive og præ-refleksive tilstand ifølge Sartre."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at intentionalitet handler om bevidste intentioner, fx 'jeg vil gerne vaske op i dag'.",
+          "better_reading": "Intentionalitet refererer strengt til at bevidstheden fundamentalt set er *rettet mod noget andet end sig selv* (subjekt-objekt relation)."
+        },
+        {
+          "trap": "At forveksle fænomenologi med bare at 'føle efter indeni' eller ren ukritisk introspektion.",
+          "better_reading": "Fænomenologien kritiserer netop ukritisk introspektion. De kræver strenge reduktioner (Epoché) for at af-teoretisere observationen."
+        },
+        {
+          "trap": "At tro at 'livsverden' refererer til det biologiske miljø omkring individet.",
+          "better_reading": "Livsverden er en subjektiv *erfaringsmåde* - det ufokusere, mangfoldige, levede rum før videnskaben ordner det i excel-ark."
+        }
+      ],
+      "mini_exam_prompt_question": "Settle the dispute: How does the concept of intentionality actively dismantle the idea of personality as a collection of measurable internal variables?",
+      "mini_exam_answer_plan_slots": [
+        "Definition af intentionalitet hos Brentano og Husserl (rettetheden mod objektet)",
+        "Det metodiske opgør: Træk-teori observerer individet udefra som objekt (3. person)",
+        "Konsekvensen af Merleau-Pontys kropssubjekt for forståelsen af adfærd fremfor statiske variabler",
+        "Konklusion: Hvordan meningsskabelse umuliggør et isoleret, internt 'Jeg' (inkludér Sartre)"
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

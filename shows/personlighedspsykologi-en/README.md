@@ -117,7 +117,7 @@ Bilingual episode-link note:
 - `sync-spotify-map.yml` rebuilds bilingual feed links after Spotify-map syncs, so this feed updates automatically as new Danish counterparts and Spotify URLs appear.
 
 Reading key sync note:
-- Canonical source of truth file: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Canonical source of truth file: `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`
 - Exported OneDrive mirror target: `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/.ai/reading-file-key.md`
 - Sync commands:
   - Dry-run audit: `python3 scripts/sync_personlighedspsykologi_reading_file_key.py`
@@ -132,7 +132,7 @@ Reading key sync note:
 Slides mapping note (manual only):
 - Slide mapping til `W##L#` + underkategori skal udføres manuelt.
 - Automatisk mapping med script er ikke tilladt.
-- Fag-runbook: `shows/personlighedspsykologi-en/docs/slides-sync.md`
+- Fag-runbook: `shows/personlighedspsykologi-en/docs/operations/slides-sync.md`
 - Global policy: `freudd_portal/docs/slides-mapping-policy.md`
 - Catalog: `shows/personlighedspsykologi-en/slides_catalog.json`
 - Upload target: `/var/www/slides/personlighedspsykologi`

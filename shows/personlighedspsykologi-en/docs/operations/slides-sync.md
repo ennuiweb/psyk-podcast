@@ -14,7 +14,7 @@ Slides skal mappes manuelt. Mapping må ikke auto-udledes af scripts, filnavne, 
   `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Semesterplan for øvelseshold - opdateret d. 03.02.pdf`
 - Planlægnings-PDF (forelæsning + seminar):  
   `/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Forelæsnings- og seminarholdsplan 2026.pdf`
-- Freudd lecture-key reference: `shows/personlighedspsykologi-en/docs/reading-file-key.md`
+- Freudd lecture-key reference: `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`
 
 ## Underkategorier
 

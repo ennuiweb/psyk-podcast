@@ -21,7 +21,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
 DEFAULT_SLIDES_CATALOG_PATH = "shows/personlighedspsykologi-en/slides_catalog.json"
 DEFAULT_REMOTE_ROOT = "/var/www/slides/personlighedspsykologi"
 DEFAULT_HOST = "64.226.79.109"

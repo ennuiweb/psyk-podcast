@@ -7,7 +7,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-DEFAULT_CANONICAL_PATH = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+DEFAULT_CANONICAL_PATH = "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
 DEFAULT_PRIMARY_TARGET = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter \U0001F4BE/psykologi/Personlighedspsykologi/.ai/reading-file-key.md"

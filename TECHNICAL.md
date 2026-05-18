@@ -73,7 +73,7 @@ Current direction:
   Pro should do most semantic interpretation; NotebookLM prompts should consume
   only compact selected substrate.
 - The concrete code plan for testing readiness is tracked in
-  `shows/personlighedspsykologi-en/docs/preprocessing-system.md` and summarized
+  `shows/personlighedspsykologi-en/docs/operations/preprocessing-system.md` and summarized
   in `docs/notebooklm-automation.md`.
 
 Operational note:

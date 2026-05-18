@@ -48,7 +48,7 @@ Hvis `lecture_keys` bruges:
 
 ## Fag-specifik mapping
 
-- Personlighedspsykologi: `shows/personlighedspsykologi-en/docs/slides-sync.md`
+- Personlighedspsykologi: `shows/personlighedspsykologi-en/docs/operations/slides-sync.md`
 - Bioneuro: `shows/bioneuro/docs/slides-mapping.md`
 
 ## Portal path-resolution

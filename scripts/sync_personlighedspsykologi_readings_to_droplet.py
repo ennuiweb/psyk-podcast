@@ -16,7 +16,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
 DEFAULT_SOURCE_ROOT = (
     "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/"
     "Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings"

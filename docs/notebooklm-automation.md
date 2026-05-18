@@ -254,7 +254,7 @@ Preprocessing maturity note:
 - `personlighedspsykologi` now also has a first deterministic file-level preprocessing artifact at `shows/personlighedspsykologi-en/source_catalog.json`.
 - This catalog is intentionally richer than `content_manifest.json`: it tracks source hashes, page counts, text-length estimates, language heuristics, simple source-priority signals, and prompt-sidecar presence for raw readings/slides.
 - `personlighedspsykologi` now also has an explicit course-tuned preprocessing policy at `shows/personlighedspsykologi-en/source_intelligence_policy.json`, which controls how `grundbog`, lecture slides, seminar slides, and exercise slides should count inside the `Source Intelligence Layer`.
-- The explicit semantics of that slide split now live in `shows/personlighedspsykologi-en/docs/preprocessing-system.md`: lecture slides are framing/emphasis sources, seminar slides are application/discussion sources, and exercise slides are clarification/training sources with separate downstream prompt/substrate behavior.
+- The explicit semantics of that slide split now live in `shows/personlighedspsykologi-en/docs/operations/preprocessing-system.md`: lecture slides are framing/emphasis sources, seminar slides are application/discussion sources, and exercise slides are clarification/training sources with separate downstream prompt/substrate behavior.
 - The catalog is currently built locally from the raw source tree and committed to the repo; GitHub Actions cannot rebuild it yet because the workflow does not have the OneDrive-backed source files.
 - `personlighedspsykologi` now also has a deterministic `lecture_bundles/`
   layer built from `source_catalog.json`, `content_manifest.json`, and any

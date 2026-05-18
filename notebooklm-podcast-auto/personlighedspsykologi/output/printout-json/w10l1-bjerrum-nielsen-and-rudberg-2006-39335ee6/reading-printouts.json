@@ -1,0 +1,1167 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T13:38:40Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "d7cb28e4a7c241be9b0fb347ad5c61f42e8a302c7579aa73e6a41c5cad3d6d28",
+    "source_files_signature": "20c3af3fe975cf22bde8c9f92677e140c10d699667f450f1f8ddc46d6382bc31",
+    "source_card": "50f1ec3a9ca958b4368dc482aacf0184fe5e9b6caafd6840744c37516061c0af",
+    "revised_lecture_substrate": "04c3c1b2a3c2dcc9d287b28ee8177dd6fd0d2dd197689ff9515d20449012da68",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+    "lecture_key": "W10L1",
+    "title": "Bjerrum Nielsen & Rudberg (2006)",
+    "reading_title": "Bjerrum Nielsen & Rudberg (2006)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 43,
+    "estimated_token_count": 27950,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Bjerrum Nielsen & Rudberg (2006).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 43,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "lecture_key": "W10L1",
+      "source_title": "Bjerrum Nielsen & Rudberg (2006)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at se, hvilke problemer teksten forsøger at løse, før du går i gang med selve læsningen.",
+      "teaser_paragraphs": [
+        "Forestil dig tre generationer af kvinder i samme familie. Den ældste generation, bedstemødrene, så husarbejde som en livsnødvendig og stolt kompetence. Deres døtre, mellemgnerationen, gjorde oprør mod tidens husmor-idealer og oplevede det som en undertrykkende pligt. Den yngste generation kan derimod pludselig finde på at bage og sylte som en form for æstetisk afkobling. Hvorfor skifter den nøjagtig samme fysiske handling psykologisk mening så drastisk fra generation til generation?",
+        "Teksten fra Bjerrum Nielsen og Rudberg undersøger præcis dette fænomen ved at se på, hvordan historiske forskydninger i samfundets arbejdsdeling former vores dybeste identitet. Forfatterne introducerer en afgørende skelnen mellem samfundets ydre rammer og det indre psykologiske selvbillede. De konkluderer, at *både ytre og indre kjønn endrer seg, men ikke alltid i samme takt*.",
+        "Dette rejser et stort og grundlæggende psykologisk problem. Selvom vi på et politisk og strukturelt plan bevæger os mod ligestilling, hænger vores indre, ubevidste identifikationsmønstre ofte fast i fortiden. Det er her, det moderne ligestillingsprojekt støder frontalt ind i psykoanalysens pointer om, at subjektets identifikation sjældent er rationel eller bevidst.",
+        "Gennem interviews med de tre generationer opdager forskerne et mønster: Døtrene har uanset generation en tendens til at idealisere deres fædre som spændende repræsentanter for verden udenfor. Mødrene bliver derimod oftere set på med ambivalens eller direkte kritik. Dette afslører, at der findes dybe patriarkalske strukturer i selve den psykologiske udviklingsproces.",
+        "For at gribe om dette trækker teksten på psykoanalytikeren Jessica Benjamin og hendes begreber om at relatere til forældre som *like subjects* og *love objects*. Analysen peger på, at *hat eller kjærlighet og opplevelsen av å være lik eller forskjellig* kan krydses på uventede måder. Spørgsmålet er i sidste ende, hvordan vi som subjekter overhovedet dannes, når de ydre samfundsvilkår skifter hurtigere, end vores indre psyke kan følge med."
+      ],
+      "main_problem": "Hvordan påvirker samfundets historiske ændringer i kønsroller vores dybe psykologiske identifikation, og hvorfor halter psyken ofte asynkront bagefter de ydre strukturer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på ydre og indre køn?",
+          "why_it_matters": "Det forklarer, hvorfor politisk ligestilling ikke automatisk løser alle psykologiske konflikter omkring identitet.",
+          "answer_form": "En kort skelnen mellem samfundsstruktur og psykologi"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken generation oplevede den mest rigide kønsopdeling og stærkeste husmorisering?",
+          "why_it_matters": "Det udfordrer antagelsen om, at tingene bare var værre, jo længere man går tilbage i tiden.",
+          "answer_form": "Navnet på en af de tre generationer"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forandrer den psykologiske betydning af husarbejde sig over de tre generationer?",
+          "why_it_matters": "Det er tekstens primære bevis for princippet om historicitet.",
+          "answer_form": "Tre forskellige ord,"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forklarer Jessica Benjamin kompleksiteten i forældreidentifikation?",
+          "why_it_matters": "Det afkobler psykologisk identifikation fra strenge biologiske kasseinddelinger.",
+          "answer_form": "Kort forklaring af to psykoanalytiske begreber"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken forskel er der på døtrenes syn på deres fædre versus deres mødre?",
+          "why_it_matters": "Det afslører, hvordan magt og autonomi struktureres ubevidst i familien.",
+          "answer_form": "Et modsætningspar"
+        }
+      ],
+      "why_this_text_matters": "Teksten er kursets mest konkrete empiriske illustration af 'historicitet'. Den demonstrerer, hvordan skiftende makrostrukturer i samfundet omsættes til dybtliggende ubevidst psykologi og former subjektiviteten.",
+      "overview": [
+        "Empirisk undersøgelse af tre generationer af norske kvinder.",
+        "Kortlægning af skiftet i husarbejdets betydning og kønsroller.",
+        "Psykoanalytisk analyse af identifikation og ambivalens i forældre-barn-relationen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 117-124",
+          "task": "Læs afsnittet om Viltre jenter.",
+          "why_it_matters": "Her etableres empirien om barndom og leg.",
+          "stop_signal": "når du når afsnittet Kjønnede kompetanser"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 124-133",
+          "task": "Læs om husarbejdets historiske forvandling.",
+          "why_it_matters": "Det er her de vigtigste pointer om historicitet udfoldes.",
+          "stop_signal": "ved overskriften Mor, far og datter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 133-139",
+          "task": "Læs den teoretiske analyse af forældreidentifikation.",
+          "why_it_matters": "Her introduceres Benjamins psykoanalytiske rammeværk.",
+          "stop_signal": "ved Strenge mødre og snille fedre"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 139-145",
+          "task": "Undersøg de ældste generationers mønstre.",
+          "why_it_matters": "Viser kontrasten mellem svake mødre og trygge fedre.",
+          "stop_signal": "ved Effektive mødre og varme fedre"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 145-149",
+          "task": "Læs om den yngste generations relationer.",
+          "why_it_matters": "Afrunder empirien og viser idealiseringens overlevelse.",
+          "stop_signal": "ved tekstens afslutning før noterne"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Både ytre og indre kjønn endrer seg",
+          "why": "Kernepointen om at strukturer og psyke ikke bevæger sig synkront.",
+          "where_to_look": "I starten af kapitlet."
+        },
+        {
+          "target": "støv på hjernen",
+          "why": "Det nedsættende udtryk mellemgnerationen brugte om mødrenes husmorrolle.",
+          "where_to_look": "Under afsnittet om husarbejde."
+        },
+        {
+          "target": "koples på kryss og tvers",
+          "why": "Opsummerer den komplekse psykoanalytiske identifikation.",
+          "where_to_look": "Hvor Jessica Benjamin introduceres."
+        },
+        {
+          "target": "Det er ikke partnerens kjønn som",
+          "why": "Bryder med klassisk driftsteori og kønsessensialisme.",
+          "where_to_look": "I afsnittet om indre og ydre forældre."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke demografiske detaljer og by/land-skel for hver enkelt informant.",
+        "At teksten er på norsk; læs videre, meningen fremgår hurtigt af konteksten.",
+        "De detaljerede referencer til svenske parallelstudier af f.eks. Bengtsson."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "I starten af kapitlet.",
+          "excerpt": "Både ytre og indre kjønn endrer seg",
+          "open_question": "Hvad er den afgørende forskel på ydre og indre køn?"
+        },
+        {
+          "number": "2",
+          "source_location": "Under afsnittet om husarbejde.",
+          "excerpt": "støv på hjernen",
+          "open_question": "Hvilken generation oplevede den mest rigide kønsopdeling og stærkeste husmorisering?"
+        },
+        {
+          "number": "3",
+          "source_location": "Hvor Jessica Benjamin introduceres.",
+          "excerpt": "koples på kryss og tvers",
+          "open_question": "Hvordan forandrer den psykologiske betydning af husarbejde sig over de tre generationer?"
+        },
+        {
+          "number": "4",
+          "source_location": "I afsnittet om indre og ydre forældre.",
+          "excerpt": "Det er ikke partnerens kjønn som",
+          "open_question": "Hvordan forklarer Jessica Benjamin kompleksiteten i forældreidentifikation?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede gennemgang som dit primære læsespor. Hver sektion løser et specifikt delproblem.",
+      "coverage_note": "Dækker kerneargumenterne om asynkroniteten mellem ydre og indre køn, historicitet i husarbejdet, og den psykoanalytiske identifikation med forældre.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 117-118",
+          "heading": "Ydre og indre køn i utakt",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor fører politisk og strukturel ligestilling ikke automatisk til indre psykologisk ro og afklaring?",
+          "explanation_paragraphs": [
+            "Forfatterne etablerer en skarp og vigtig skelnen mellem to niveauer. Det ydre køn betegner samfundets kulturelle normer, institutioner og den formelle arbejdsdeling mellem mænd og kvinder. Det indre køn dækker over de psykologiske processer for personlig identifikation, ubevidste mønstre og følelsesmæssig tilknytning.",
+            "Når samfundet historisk har bevæget sig i retning mod større ligestilling, opdager forskerne, at kvindernes psykologiske tilpasning ikke følger med i helt samme tempo. Den formelle og politiske frigørelse sletter ikke bare de gamle mønstre i psyken natten over. Denne forsinkelse skaber en strukturel asynkronitet, hvor man kan tænke moderne, men føle og identificere sig traditionelt."
+          ],
+          "key_points": [
+            "Ydre køn handler om samfundsstrukturer og arbejdsdeling.",
+            "Indre køn handler om psykologisk identifikation og følelser.",
+            "De to dimensioner ændrer sig ikke med samme hastighed, hvilket skaber psykologisk ambivalens."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 117",
+              "passage": "Kjønn har et av sine sterkeste uttrykk i arbeidsdelingen, men psykologiske prosesser av personlig identifikasjon, avgrensning og tilknytning gir emosjonell farge til disse kulturelle erfaringer i hver enkelt livshistorie. Når vi analyserer dette, oppdager vi at også psykologien rommer sosiale mønstre. Både ytre og indre kjønn endrer seg, men ikke alltid i samme takt.",
+              "why_it_matters": "Dette er tekstens teoretiske hovedpræmis, der forklarer kløften mellem samfund og subjekt."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 2,
+          "source_location": "S. 118-124",
+          "heading": "Mellemgnerationen og husmoriseringen",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvilken generation var i praksis underlagt den mest rigide kønsopdeling i deres opvækst?",
+          "explanation_paragraphs": [
+            "Man kunne logisk nok tro, at de ældste kvinder i studiet var mest fastlåste i snævre kønsroller som børn. Empirien viser imidlertid noget andet. Det er faktisk mellemgnerationen – mødrene til nutidens unge kvinder – der i deres barndom oplevede det stærkest kønssegregerede liv.",
+            "De voksede op i efterkrigstiden under det, forskerne kalder for 'husmoriseringen'. Her var idealet om den hjemmegående husmor stærkest. Dette massive ydre pres skabte et intenst behov hos mellemgnerationen for at gøre oprør og skabe distance til deres egne mødre, for derved at skabe plads til sig selv som moderne og udearbejdende kvinder."
+          ],
+          "key_points": [
+            "Mellemgnerationen oplevede historisk set den mest rigide kønsopdeling.",
+            "Husmoriseringen reducerede kvindens rolle til primært at omfatte hjemmet.",
+            "Dette skabte en stærk psykologisk modreaktion og et nødvendigt oprør hos mellemgnerationen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "flyttet inn i individenes psykologi",
+              "why_it_matters": "Beskriver hvordan ydre strukturer internaliseres stærkt.",
+              "source_location": "S. 119"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 124-133",
+          "heading": "Husarbejdets historiske forvandling",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan den samme fysiske handling skifte fra at give status til at være en pligt, og videre til at blive en hobby?",
+          "explanation_paragraphs": [
+            "For den ældste generation (bedstemødrene) var husarbejde ikke en undertrykkelse, men en dybt respekteret og livsnødvendig kompetence, der gav status i familien. Da samfundet ændrede sig, blev husarbejdet for mellemgnerationen omdannet til en forhadt pligt og et symbol på husmoriseringens spændetrøje.",
+            "For den yngste generation (døtrene), som er vokset op med udearbejdende mødre og tager strukturel ligestilling mere for givet, skifter meningen igen. Husarbejde, som f.eks. at bage eller sylte, er for dem delvist afkoblet fra tvang. Det genopstår i stedet som en æstetisk praksis, et frit valg eller direkte en afslappende hobby.",
+            "Dette er et klassisk eksempel på psykologisk historicitet: Handlingens mening er ikke givet af biologisk essens, men formes af den specifikke historiske kontekst, subjektet befinder sig i."
+          ],
+          "key_points": [
+            "Bedstemødre: Husarbejde = nødvendig kompetence.",
+            "Mødre: Husarbejde = undertrykkende pligt.",
+            "Døtre: Husarbejde = æstetisk valg eller hobby.",
+            "Psykologisk mening afhænger fuldstændigt af historicitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fra kompetente mødre til støv på hjernen",
+              "why_it_matters": "Viser devalueringen af ældre kvinders kompetencer.",
+              "source_location": "S. 130"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 133-135",
+          "heading": "Identifikation som 'like subjects' og 'love objects'",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan forklarer psykoanalysen det komplekse krydsfelt af kærlighed og foragt i forældre-barn-relationen?",
+          "explanation_paragraphs": [
+            "For at analysere de modsatrettede og stærke følelser i familierne trækker teksten på psykoanalytikeren Jessica Benjamin. Hun leverer en model, der bryder med klassiske rigide forestillinger om, at man kun kan identificere sig med sit eget biologiske køn.",
+            "Benjamin skelner mellem at relatere til en forælder som et 'like subject' (den man genkender sig selv i og ønsker at ligne) og som et 'love object' (den man retter sin kærlighed og sit begær imod). Hendes afgørende pointe er, at disse to dimensioner sagtens kan krydse de traditionelle kønsgrænser. En datter kan sagtens elske sin mor, men primært identificere sig med sin far som et autonomt subjekt."
+          ],
+          "key_points": [
+            "Like subjects: Dem man spejler sig i og identificerer sig med.",
+            "Love objects: Dem man elsker og begærer.",
+            "Kønnet determinerer ikke entydigt, hvordan disse to former for relation fordeles."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 134",
+              "passage": "I tradisjonell psykoanalytisk teori forstås identifikasjon og objektkjærlighet som to ulike prosesser som helst skal ende opp med en identifikasjon med forelderen av samme kjønn (...). Jessica Benjamin framholder imidlertid at hat eller kjærlighet og opplevelsen av å være lik eller forskjellig er dimensjoner som kan koples på kryss og tvers.",
+              "why_it_matters": "Det teoretiske brud med rigid klassisk driftsteori til fordel for et mere flydende identifikationsbegreb."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 135-149",
+          "heading": "Idealiserede fædre og ambivalente mødre",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvorfor tildeles fædrene systematisk en mere positiv og ukompliceret plads i døtrenes fortællinger?",
+          "explanation_paragraphs": [
+            "Forskerne finder et gennemgående og bemærkelsesværdigt mønster på tværs af de tre generationer. Døtrene beskriver konsekvent deres mødre med en høj grad af ambivalens. Mødrene fremstår ofte som dem, der sætter hverdagens strenge grænser, eller de opfattes som svage og kriseramte.",
+            "Til gengæld bliver fædrene systematisk idealiseret i interviewene. Faderen kommer til at repræsentere frihed, verden udenfor og spænding. Dette afslører en dyb psykologisk mekanisme: Selv i familier, der aktivt arbejder for ligestilling, bevarer det maskuline ofte en ubevidst fordel. Faderen står psykologisk for det autonome subjekt, som datteren ønsker at blive, mens moderen tynges af ansvaret for nære relationer."
+          ],
+          "key_points": [
+            "Mødre beskrives hyppigt med ambivalens, kritik eller som bundet af hverdagen.",
+            "Fædre idealiseres og kodes som bærere af frihed og autonomi.",
+            "Patriarkalske strukturer reproduceres ubevidst i selve identitetsdannelsen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tradisjonelle kvinnekompetansene",
+              "why_it_matters": "Viser hvad det er døtrene ofte forsøger at bryde fri fra.",
+              "source_location": "S. 132"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor fører politisk og strukturel ligestilling ikke automatisk til indre psykologisk ro og afklaring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort skelnen mellem samfundsstruktur og psykologi",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken generation var i praksis underlagt den mest rigide kønsopdeling i deres opvækst?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Navnet på en af de tre generationer",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan den samme fysiske handling skifte fra at give status til at være en pligt, og videre til at blive en hobby?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tre forskellige ord,",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer psykoanalysen det komplekse krydsfelt af kærlighed og foragt i forældre-barn-relationen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Kort forklaring af to psykoanalytiske begreber",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor tildeles fædrene systematisk en mere positiv og ukompliceret plads i døtrenes fortællinger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et modsætningspar",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan påvirker samfundets historiske ændringer i kønsroller vores dybe psykologiske identifikation, og hvorfor halter psyken ofte asynkront bagefter de ydre strukturer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld så meget du kan fra hukommelsen for at låse modellen fast. Tjek og reparer derefter med teksten.",
+      "overview": [
+        "Teksten viser et empirisk studie af tre kvindegenerationer i Norge.",
+        "Den kortlægger, hvordan husarbejdets betydning radikalt skifter gennem tiden.",
+        "Den anvender psykoanalyse til at forklare asynkroniteten mellem bevidste idealer og ubevidst identifikation."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Samfundets strukturelle rammer og institutionelle arbejdsdeling kaldes i teksten for det __________ køn.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Den personlige, psykologiske identifikation med at være kønnet betegnes som det __________ køn.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det er paradoxalt nok __________ der oplevede den stærkeste kønsopdeling og tvang under opvæksten.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For den ældste generation var husarbejde ikke undertrykkelse, men en stolt __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den yngste generation kan derimod godt lide at bage og sylte, fordi det for dem er blevet til en __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Jessica Benjamin adskiller de objekter, vi begærer, fra de subjekter vi spejler os i, som hun kalder __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "I alle tre generationer bliver faderen oftest psykologisk __________ af døtrene som et symbol på frihed.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en tidslinje over husarbejdets historiske betydning.",
+          "required_elements": [
+            "Ældste generation",
+            "mellemgnerationen",
+            "yngste generation",
+            "det centrale stikord for husarbejdets status hos hver"
+          ],
+          "blank_space_hint": "Tegn en pil på tværs og markér tre stop."
+        },
+        {
+          "number": 2,
+          "task": "Opbyg et simpelt kontrast-skema for døtrenes syn på forældrene.",
+          "required_elements": [
+            "Kolonne til Moder-rollen",
+            "kolonne til Fader-rollen",
+            "hvem der bærer ambivalensen",
+            "hvem der repræsenterer verden udenfor"
+          ],
+          "blank_space_hint": "Brug en boks med to kolonner og to rækker."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at forberede dine mundtlige og skriftlige eksamensargumenter. Træn dem højt.",
+      "use_this_text_for": [
+        "At demonstrere konceptet historicitet i praksis med konkret empiri.",
+        "At skelne systematisk mellem ydre strukturer og indre ubevidst identifikation.",
+        "At koble abstrakt psykoanalytisk teori (Benjamin) til sociologisk kvantitativ og kvalitativ data.",
+        "At bevise, hvordan den eksakt samme fysiske handling (husarbejde) skifter radikalt betydning over tid.",
+        "At problematisere og nedbryde en simpel, biologisk essentielt baseret forståelse af køn."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Historicitet (W12L1)",
+          "connection": "Bjerrum Nielsen & Rudberg viser empirisk, hvordan skiftende samfundsstrukturer producerer nye, tidsbundne former for subjektivitet og identifikation."
+        },
+        {
+          "course_theme": "Psykoanalyse og det decentrerede subjekt (W04L2)",
+          "connection": "Teksten genbruger psykoanalysen for at forklare, hvorfor kønnsidentitet rummer dybe ubevidste ambivalenser, der modarbejder bevidste, rationelle holdninger."
+        },
+        {
+          "course_theme": "Kritisk psykologi og Determination (W08-W09)",
+          "connection": "Viser hvordan individets handlekraft (agency) struktureres af den ydre samfundsmæssige arbejdsdeling frem for en iboende, isoleret personlighedskerne."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (Trait models)",
+          "how_to_compare": "Trækteori ser køn som en statisk, biologisk forankret variabel. Dette studie ser køn som en dynamisk, historisk og psykosocial proces."
+        },
+        {
+          "compare_with": "Juliet Mitchell",
+          "how_to_compare": "Begge bruger psykoanalysen for at forklare patriarkatets stædige overlevelse internt i psyken, selv når de ydre politiske vilkår forbedres."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Sammenlign hvordan de strukturelle vilkår ('husmoriseringen') internaliseres og tvinger individer til specifikke identitetsprojekter."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Gør rede for historicitet i personlighedspsykologien.",
+          "use_in_answer": "Brug de tre generationers skiftende syn på husarbejde til at bevise, at handlinger ikke har essentiel mening, men får mening i en tidskontekst.",
+          "caution": "Undgå at lade analysen blive ren sociologi – fasthold at det handler om den *psykologiske* konsekvens."
+        },
+        {
+          "prompt_type": "Diskutér psykoanalysens relevans i dag.",
+          "use_in_answer": "Argumentér for at Jessica Benjamins relationelle og flydende begreber ('like subjects') kan fange kompleksiteten i moderne kønsidentitet.",
+          "caution": "Gør ikke teksten til en lang freudiansk driftsteori; bliv fokuseret på identifikation."
+        },
+        {
+          "prompt_type": "Redegør for dialektikken mellem determinering og agency.",
+          "use_in_answer": "Vis hvordan mellemgnerationen var determineret af den ydre 'husmorisering', men udviste agency i deres direkte oprør imod den.",
+          "caution": "Undlad at fremstille oprøret som friktionsløst; husk ambivalensen over for mødrene."
+        },
+        {
+          "prompt_type": "Analyser identitetsdannelse i familien.",
+          "use_in_answer": "Brug kontrasten mellem den ideelle far (autonomi) og den svage mor (hverdag) som eksempel på ubevidst patriarkalsk identifikation.",
+          "caution": "Pas på med at generalisere mønsteret til en ufravigelig biologisk lov."
+        },
+        {
+          "prompt_type": "Beskriv konceptet 'det decentrerede subjekt'.",
+          "use_in_answer": "Forklar asynkroniteten mellem bevidst ligestillingspolitik og vores ubevidste idealisering af mandlige figurer.",
+          "caution": "Gør det ikke til en individuel 'fejl' i kvinderne, men fremstil det som et fælles strukturelt vilkår."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at det er bedstemødrene, der oplevede den mest rigide og undertrykkende kønsopdeling.",
+          "better_reading": "Fasthold, at det var mellemgnerationen, der voksede op under efterkrigstidens intense ideologiske 'husmorisering'."
+        },
+        {
+          "trap": "At tro at det indre køn blot tilpasser sig det ydre køn problemfrit, når samfundet ændres.",
+          "better_reading": "Betegn det konsekvent som en asynkron proces, der er fyldt med psykologisk forsinkelse og ambivalens."
+        },
+        {
+          "trap": "At se den yngste generations fornyede interesse for bagning som et naivt tilbagefald til traditionelle kønsroller.",
+          "better_reading": "Forklar at aktiviteten er blevet radikalt re-significeret fra en undertrykkende pligt til et personligt æstetisk valg."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan kan man anvende begreberne 'indre og ydre køn' til at demonstrere princippet om historicitet i personlighedspsykologien?",
+      "mini_exam_answer_plan_slots": [
+        "Definér først kort forskellen på ydre køn (samfundsstruktur) og indre køn (psykologisk identifikation).",
+        "Giv eksemplet med husarbejdets skiftende betydning over tre generationer som primært bevis for historicitet.",
+        "Brug mellemgnerationens oprør mod mødrenes husmorisering til at vise spændingen mellem determinering og agency.",
+        "Konkludér ved at koble idealiseringen af fædrene til psykoanalysens blik på det asynkrone og decentrerede subjekt."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+      "lecture_key": "W10L1",
+      "source_title": "Bjerrum Nielsen & Rudberg (2006)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne introduktion for at se, hvilke problemer teksten forsøger at løse, før du går i gang med selve læsningen.",
+      "teaser_paragraphs": [
+        "Forestil dig tre generationer af kvinder i samme familie. Den ældste generation, bedstemødrene, så husarbejde som en livsnødvendig og stolt kompetence. Deres døtre, mellemgnerationen, gjorde oprør mod tidens husmor-idealer og oplevede det som en undertrykkende pligt. Den yngste generation kan derimod pludselig finde på at bage og sylte som en form for æstetisk afkobling. Hvorfor skifter den nøjagtig samme fysiske handling psykologisk mening så drastisk fra generation til generation?",
+        "Teksten fra Bjerrum Nielsen og Rudberg undersøger præcis dette fænomen ved at se på, hvordan historiske forskydninger i samfundets arbejdsdeling former vores dybeste identitet. Forfatterne introducerer en afgørende skelnen mellem samfundets ydre rammer og det indre psykologiske selvbillede. De konkluderer, at *både ytre og indre kjønn endrer seg, men ikke alltid i samme takt*.",
+        "Dette rejser et stort og grundlæggende psykologisk problem. Selvom vi på et politisk og strukturelt plan bevæger os mod ligestilling, hænger vores indre, ubevidste identifikationsmønstre ofte fast i fortiden. Det er her, det moderne ligestillingsprojekt støder frontalt ind i psykoanalysens pointer om, at subjektets identifikation sjældent er rationel eller bevidst.",
+        "Gennem interviews med de tre generationer opdager forskerne et mønster: Døtrene har uanset generation en tendens til at idealisere deres fædre som spændende repræsentanter for verden udenfor. Mødrene bliver derimod oftere set på med ambivalens eller direkte kritik. Dette afslører, at der findes dybe patriarkalske strukturer i selve den psykologiske udviklingsproces.",
+        "For at gribe om dette trækker teksten på psykoanalytikeren Jessica Benjamin og hendes begreber om at relatere til forældre som *like subjects* og *love objects*. Analysen peger på, at *hat eller kjærlighet og opplevelsen av å være lik eller forskjellig* kan krydses på uventede måder. Spørgsmålet er i sidste ende, hvordan vi som subjekter overhovedet dannes, når de ydre samfundsvilkår skifter hurtigere, end vores indre psyke kan følge med."
+      ],
+      "main_problem": "Hvordan påvirker samfundets historiske ændringer i kønsroller vores dybe psykologiske identifikation, og hvorfor halter psyken ofte asynkront bagefter de ydre strukturer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på ydre og indre køn?",
+          "why_it_matters": "Det forklarer, hvorfor politisk ligestilling ikke automatisk løser alle psykologiske konflikter omkring identitet.",
+          "answer_form": "En kort skelnen mellem samfundsstruktur og psykologi"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken generation oplevede den mest rigide kønsopdeling og stærkeste husmorisering?",
+          "why_it_matters": "Det udfordrer antagelsen om, at tingene bare var værre, jo længere man går tilbage i tiden.",
+          "answer_form": "Navnet på en af de tre generationer"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan forandrer den psykologiske betydning af husarbejde sig over de tre generationer?",
+          "why_it_matters": "Det er tekstens primære bevis for princippet om historicitet.",
+          "answer_form": "Tre forskellige ord,"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forklarer Jessica Benjamin kompleksiteten i forældreidentifikation?",
+          "why_it_matters": "Det afkobler psykologisk identifikation fra strenge biologiske kasseinddelinger.",
+          "answer_form": "Kort forklaring af to psykoanalytiske begreber"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken forskel er der på døtrenes syn på deres fædre versus deres mødre?",
+          "why_it_matters": "Det afslører, hvordan magt og autonomi struktureres ubevidst i familien.",
+          "answer_form": "Et modsætningspar"
+        }
+      ],
+      "why_this_text_matters": "Teksten er kursets mest konkrete empiriske illustration af 'historicitet'. Den demonstrerer, hvordan skiftende makrostrukturer i samfundet omsættes til dybtliggende ubevidst psykologi og former subjektiviteten.",
+      "overview": [
+        "Empirisk undersøgelse af tre generationer af norske kvinder.",
+        "Kortlægning af skiftet i husarbejdets betydning og kønsroller.",
+        "Psykoanalytisk analyse af identifikation og ambivalens i forældre-barn-relationen."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "S. 117-124",
+          "task": "Læs afsnittet om Viltre jenter.",
+          "why_it_matters": "Her etableres empirien om barndom og leg.",
+          "stop_signal": "når du når afsnittet Kjønnede kompetanser"
+        },
+        {
+          "number": 2,
+          "source_location": "S. 124-133",
+          "task": "Læs om husarbejdets historiske forvandling.",
+          "why_it_matters": "Det er her de vigtigste pointer om historicitet udfoldes.",
+          "stop_signal": "ved overskriften Mor, far og datter"
+        },
+        {
+          "number": 3,
+          "source_location": "S. 133-139",
+          "task": "Læs den teoretiske analyse af forældreidentifikation.",
+          "why_it_matters": "Her introduceres Benjamins psykoanalytiske rammeværk.",
+          "stop_signal": "ved Strenge mødre og snille fedre"
+        },
+        {
+          "number": 4,
+          "source_location": "S. 139-145",
+          "task": "Undersøg de ældste generationers mønstre.",
+          "why_it_matters": "Viser kontrasten mellem svake mødre og trygge fedre.",
+          "stop_signal": "ved Effektive mødre og varme fedre"
+        },
+        {
+          "number": 5,
+          "source_location": "S. 145-149",
+          "task": "Læs om den yngste generations relationer.",
+          "why_it_matters": "Afrunder empirien og viser idealiseringens overlevelse.",
+          "stop_signal": "ved tekstens afslutning før noterne"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "Både ytre og indre kjønn endrer seg",
+          "why": "Kernepointen om at strukturer og psyke ikke bevæger sig synkront.",
+          "where_to_look": "I starten af kapitlet."
+        },
+        {
+          "target": "støv på hjernen",
+          "why": "Det nedsættende udtryk mellemgnerationen brugte om mødrenes husmorrolle.",
+          "where_to_look": "Under afsnittet om husarbejde."
+        },
+        {
+          "target": "koples på kryss og tvers",
+          "why": "Opsummerer den komplekse psykoanalytiske identifikation.",
+          "where_to_look": "Hvor Jessica Benjamin introduceres."
+        },
+        {
+          "target": "Det er ikke partnerens kjønn som",
+          "why": "Bryder med klassisk driftsteori og kønsessensialisme.",
+          "where_to_look": "I afsnittet om indre og ydre forældre."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke demografiske detaljer og by/land-skel for hver enkelt informant.",
+        "At teksten er på norsk; læs videre, meningen fremgår hurtigt af konteksten.",
+        "De detaljerede referencer til svenske parallelstudier af f.eks. Bengtsson."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "I starten af kapitlet.",
+          "excerpt": "Både ytre og indre kjønn endrer seg",
+          "open_question": "Hvad er den afgørende forskel på ydre og indre køn?"
+        },
+        {
+          "number": "2",
+          "source_location": "Under afsnittet om husarbejde.",
+          "excerpt": "støv på hjernen",
+          "open_question": "Hvilken generation oplevede den mest rigide kønsopdeling og stærkeste husmorisering?"
+        },
+        {
+          "number": "3",
+          "source_location": "Hvor Jessica Benjamin introduceres.",
+          "excerpt": "koples på kryss og tvers",
+          "open_question": "Hvordan forandrer den psykologiske betydning af husarbejde sig over de tre generationer?"
+        },
+        {
+          "number": "4",
+          "source_location": "I afsnittet om indre og ydre forældre.",
+          "excerpt": "Det er ikke partnerens kjønn som",
+          "open_question": "Hvordan forklarer Jessica Benjamin kompleksiteten i forældreidentifikation?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne forkortede gennemgang som dit primære læsespor. Hver sektion løser et specifikt delproblem.",
+      "coverage_note": "Dækker kerneargumenterne om asynkroniteten mellem ydre og indre køn, historicitet i husarbejdet, og den psykoanalytiske identifikation med forældre.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 117-118",
+          "heading": "Ydre og indre køn i utakt",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvorfor fører politisk og strukturel ligestilling ikke automatisk til indre psykologisk ro og afklaring?",
+          "explanation_paragraphs": [
+            "Forfatterne etablerer en skarp og vigtig skelnen mellem to niveauer. Det ydre køn betegner samfundets kulturelle normer, institutioner og den formelle arbejdsdeling mellem mænd og kvinder. Det indre køn dækker over de psykologiske processer for personlig identifikation, ubevidste mønstre og følelsesmæssig tilknytning.",
+            "Når samfundet historisk har bevæget sig i retning mod større ligestilling, opdager forskerne, at kvindernes psykologiske tilpasning ikke følger med i helt samme tempo. Den formelle og politiske frigørelse sletter ikke bare de gamle mønstre i psyken natten over. Denne forsinkelse skaber en strukturel asynkronitet, hvor man kan tænke moderne, men føle og identificere sig traditionelt."
+          ],
+          "key_points": [
+            "Ydre køn handler om samfundsstrukturer og arbejdsdeling.",
+            "Indre køn handler om psykologisk identifikation og følelser.",
+            "De to dimensioner ændrer sig ikke med samme hastighed, hvilket skaber psykologisk ambivalens."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 117",
+              "passage": "Kjønn har et av sine sterkeste uttrykk i arbeidsdelingen, men psykologiske prosesser av personlig identifikasjon, avgrensning og tilknytning gir emosjonell farge til disse kulturelle erfaringer i hver enkelt livshistorie. Når vi analyserer dette, oppdager vi at også psykologien rommer sosiale mønstre. Både ytre og indre kjønn endrer seg, men ikke alltid i samme takt.",
+              "why_it_matters": "Dette er tekstens teoretiske hovedpræmis, der forklarer kløften mellem samfund og subjekt."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 2,
+          "source_location": "S. 118-124",
+          "heading": "Mellemgnerationen og husmoriseringen",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvilken generation var i praksis underlagt den mest rigide kønsopdeling i deres opvækst?",
+          "explanation_paragraphs": [
+            "Man kunne logisk nok tro, at de ældste kvinder i studiet var mest fastlåste i snævre kønsroller som børn. Empirien viser imidlertid noget andet. Det er faktisk mellemgnerationen – mødrene til nutidens unge kvinder – der i deres barndom oplevede det stærkest kønssegregerede liv.",
+            "De voksede op i efterkrigstiden under det, forskerne kalder for 'husmoriseringen'. Her var idealet om den hjemmegående husmor stærkest. Dette massive ydre pres skabte et intenst behov hos mellemgnerationen for at gøre oprør og skabe distance til deres egne mødre, for derved at skabe plads til sig selv som moderne og udearbejdende kvinder."
+          ],
+          "key_points": [
+            "Mellemgnerationen oplevede historisk set den mest rigide kønsopdeling.",
+            "Husmoriseringen reducerede kvindens rolle til primært at omfatte hjemmet.",
+            "Dette skabte en stærk psykologisk modreaktion og et nødvendigt oprør hos mellemgnerationen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "flyttet inn i individenes psykologi",
+              "why_it_matters": "Beskriver hvordan ydre strukturer internaliseres stærkt.",
+              "source_location": "S. 119"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 124-133",
+          "heading": "Husarbejdets historiske forvandling",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan kan den samme fysiske handling skifte fra at give status til at være en pligt, og videre til at blive en hobby?",
+          "explanation_paragraphs": [
+            "For den ældste generation (bedstemødrene) var husarbejde ikke en undertrykkelse, men en dybt respekteret og livsnødvendig kompetence, der gav status i familien. Da samfundet ændrede sig, blev husarbejdet for mellemgnerationen omdannet til en forhadt pligt og et symbol på husmoriseringens spændetrøje.",
+            "For den yngste generation (døtrene), som er vokset op med udearbejdende mødre og tager strukturel ligestilling mere for givet, skifter meningen igen. Husarbejde, som f.eks. at bage eller sylte, er for dem delvist afkoblet fra tvang. Det genopstår i stedet som en æstetisk praksis, et frit valg eller direkte en afslappende hobby.",
+            "Dette er et klassisk eksempel på psykologisk historicitet: Handlingens mening er ikke givet af biologisk essens, men formes af den specifikke historiske kontekst, subjektet befinder sig i."
+          ],
+          "key_points": [
+            "Bedstemødre: Husarbejde = nødvendig kompetence.",
+            "Mødre: Husarbejde = undertrykkende pligt.",
+            "Døtre: Husarbejde = æstetisk valg eller hobby.",
+            "Psykologisk mening afhænger fuldstændigt af historicitet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "fra kompetente mødre til støv på hjernen",
+              "why_it_matters": "Viser devalueringen af ældre kvinders kompetencer.",
+              "source_location": "S. 130"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 133-135",
+          "heading": "Identifikation som 'like subjects' og 'love objects'",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan forklarer psykoanalysen det komplekse krydsfelt af kærlighed og foragt i forældre-barn-relationen?",
+          "explanation_paragraphs": [
+            "For at analysere de modsatrettede og stærke følelser i familierne trækker teksten på psykoanalytikeren Jessica Benjamin. Hun leverer en model, der bryder med klassiske rigide forestillinger om, at man kun kan identificere sig med sit eget biologiske køn.",
+            "Benjamin skelner mellem at relatere til en forælder som et 'like subject' (den man genkender sig selv i og ønsker at ligne) og som et 'love object' (den man retter sin kærlighed og sit begær imod). Hendes afgørende pointe er, at disse to dimensioner sagtens kan krydse de traditionelle kønsgrænser. En datter kan sagtens elske sin mor, men primært identificere sig med sin far som et autonomt subjekt."
+          ],
+          "key_points": [
+            "Like subjects: Dem man spejler sig i og identificerer sig med.",
+            "Love objects: Dem man elsker og begærer.",
+            "Kønnet determinerer ikke entydigt, hvordan disse to former for relation fordeles."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "S. 134",
+              "passage": "I tradisjonell psykoanalytisk teori forstås identifikasjon og objektkjærlighet som to ulike prosesser som helst skal ende opp med en identifikasjon med forelderen av samme kjønn (...). Jessica Benjamin framholder imidlertid at hat eller kjærlighet og opplevelsen av å være lik eller forskjellig er dimensjoner som kan koples på kryss og tvers.",
+              "why_it_matters": "Det teoretiske brud med rigid klassisk driftsteori til fordel for et mere flydende identifikationsbegreb."
+            }
+          ],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 5,
+          "source_location": "S. 135-149",
+          "heading": "Idealiserede fædre og ambivalente mødre",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvorfor tildeles fædrene systematisk en mere positiv og ukompliceret plads i døtrenes fortællinger?",
+          "explanation_paragraphs": [
+            "Forskerne finder et gennemgående og bemærkelsesværdigt mønster på tværs af de tre generationer. Døtrene beskriver konsekvent deres mødre med en høj grad af ambivalens. Mødrene fremstår ofte som dem, der sætter hverdagens strenge grænser, eller de opfattes som svage og kriseramte.",
+            "Til gengæld bliver fædrene systematisk idealiseret i interviewene. Faderen kommer til at repræsentere frihed, verden udenfor og spænding. Dette afslører en dyb psykologisk mekanisme: Selv i familier, der aktivt arbejder for ligestilling, bevarer det maskuline ofte en ubevidst fordel. Faderen står psykologisk for det autonome subjekt, som datteren ønsker at blive, mens moderen tynges af ansvaret for nære relationer."
+          ],
+          "key_points": [
+            "Mødre beskrives hyppigt med ambivalens, kritik eller som bundet af hverdagen.",
+            "Fædre idealiseres og kodes som bærere af frihed og autonomi.",
+            "Patriarkalske strukturer reproduceres ubevidst i selve identitetsdannelsen."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "tradisjonelle kvinnekompetansene",
+              "why_it_matters": "Viser hvad det er døtrene ofte forsøger at bryde fri fra.",
+              "source_location": "S. 132"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor fører politisk og strukturel ligestilling ikke automatisk til indre psykologisk ro og afklaring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort skelnen mellem samfundsstruktur og psykologi",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken generation var i praksis underlagt den mest rigide kønsopdeling i deres opvækst?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Navnet på en af de tre generationer",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan den samme fysiske handling skifte fra at give status til at være en pligt, og videre til at blive en hobby?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tre forskellige ord,",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer psykoanalysen det komplekse krydsfelt af kærlighed og foragt i forældre-barn-relationen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Kort forklaring af to psykoanalytiske begreber",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor tildeles fædrene systematisk en mere positiv og ukompliceret plads i døtrenes fortællinger?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et modsætningspar",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan påvirker samfundets historiske ændringer i kønsroller vores dybe psykologiske identifikation, og hvorfor halter psyken ofte asynkront bagefter de ydre strukturer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld så meget du kan fra hukommelsen for at låse modellen fast. Tjek og reparer derefter med teksten.",
+      "overview": [
+        "Teksten viser et empirisk studie af tre kvindegenerationer i Norge.",
+        "Den kortlægger, hvordan husarbejdets betydning radikalt skifter gennem tiden.",
+        "Den anvender psykoanalyse til at forklare asynkroniteten mellem bevidste idealer og ubevidst identifikation."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Samfundets strukturelle rammer og institutionelle arbejdsdeling kaldes i teksten for det __________ køn.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Den personlige, psykologiske identifikation med at være kønnet betegnes som det __________ køn.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det er paradoxalt nok __________ der oplevede den stærkeste kønsopdeling og tvang under opvæksten.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "For den ældste generation var husarbejde ikke undertrykkelse, men en stolt __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Den yngste generation kan derimod godt lide at bage og sylte, fordi det for dem er blevet til en __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Jessica Benjamin adskiller de objekter, vi begærer, fra de subjekter vi spejler os i, som hun kalder __________.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "I alle tre generationer bliver faderen oftest psykologisk __________ af døtrene som et symbol på frihed.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en tidslinje over husarbejdets historiske betydning.",
+          "required_elements": [
+            "Ældste generation",
+            "mellemgnerationen",
+            "yngste generation",
+            "det centrale stikord for husarbejdets status hos hver"
+          ],
+          "blank_space_hint": "Tegn en pil på tværs og markér tre stop."
+        },
+        {
+          "number": 2,
+          "task": "Opbyg et simpelt kontrast-skema for døtrenes syn på forældrene.",
+          "required_elements": [
+            "Kolonne til Moder-rollen",
+            "kolonne til Fader-rollen",
+            "hvem der bærer ambivalensen",
+            "hvem der repræsenterer verden udenfor"
+          ],
+          "blank_space_hint": "Brug en boks med to kolonner og to rækker."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at forberede dine mundtlige og skriftlige eksamensargumenter. Træn dem højt.",
+      "use_this_text_for": [
+        "At demonstrere konceptet historicitet i praksis med konkret empiri.",
+        "At skelne systematisk mellem ydre strukturer og indre ubevidst identifikation.",
+        "At koble abstrakt psykoanalytisk teori (Benjamin) til sociologisk kvantitativ og kvalitativ data.",
+        "At bevise, hvordan den eksakt samme fysiske handling (husarbejde) skifter radikalt betydning over tid.",
+        "At problematisere og nedbryde en simpel, biologisk essentielt baseret forståelse af køn."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Historicitet (W12L1)",
+          "connection": "Bjerrum Nielsen & Rudberg viser empirisk, hvordan skiftende samfundsstrukturer producerer nye, tidsbundne former for subjektivitet og identifikation."
+        },
+        {
+          "course_theme": "Psykoanalyse og det decentrerede subjekt (W04L2)",
+          "connection": "Teksten genbruger psykoanalysen for at forklare, hvorfor kønnsidentitet rummer dybe ubevidste ambivalenser, der modarbejder bevidste, rationelle holdninger."
+        },
+        {
+          "course_theme": "Kritisk psykologi og Determination (W08-W09)",
+          "connection": "Viser hvordan individets handlekraft (agency) struktureres af den ydre samfundsmæssige arbejdsdeling frem for en iboende, isoleret personlighedskerne."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (Trait models)",
+          "how_to_compare": "Trækteori ser køn som en statisk, biologisk forankret variabel. Dette studie ser køn som en dynamisk, historisk og psykosocial proces."
+        },
+        {
+          "compare_with": "Juliet Mitchell",
+          "how_to_compare": "Begge bruger psykoanalysen for at forklare patriarkatets stædige overlevelse internt i psyken, selv når de ydre politiske vilkår forbedres."
+        },
+        {
+          "compare_with": "Foucault og diskurs",
+          "how_to_compare": "Sammenlign hvordan de strukturelle vilkår ('husmoriseringen') internaliseres og tvinger individer til specifikke identitetsprojekter."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Gør rede for historicitet i personlighedspsykologien.",
+          "use_in_answer": "Brug de tre generationers skiftende syn på husarbejde til at bevise, at handlinger ikke har essentiel mening, men får mening i en tidskontekst.",
+          "caution": "Undgå at lade analysen blive ren sociologi – fasthold at det handler om den *psykologiske* konsekvens."
+        },
+        {
+          "prompt_type": "Diskutér psykoanalysens relevans i dag.",
+          "use_in_answer": "Argumentér for at Jessica Benjamins relationelle og flydende begreber ('like subjects') kan fange kompleksiteten i moderne kønsidentitet.",
+          "caution": "Gør ikke teksten til en lang freudiansk driftsteori; bliv fokuseret på identifikation."
+        },
+        {
+          "prompt_type": "Redegør for dialektikken mellem determinering og agency.",
+          "use_in_answer": "Vis hvordan mellemgnerationen var determineret af den ydre 'husmorisering', men udviste agency i deres direkte oprør imod den.",
+          "caution": "Undlad at fremstille oprøret som friktionsløst; husk ambivalensen over for mødrene."
+        },
+        {
+          "prompt_type": "Analyser identitetsdannelse i familien.",
+          "use_in_answer": "Brug kontrasten mellem den ideelle far (autonomi) og den svage mor (hverdag) som eksempel på ubevidst patriarkalsk identifikation.",
+          "caution": "Pas på med at generalisere mønsteret til en ufravigelig biologisk lov."
+        },
+        {
+          "prompt_type": "Beskriv konceptet 'det decentrerede subjekt'.",
+          "use_in_answer": "Forklar asynkroniteten mellem bevidst ligestillingspolitik og vores ubevidste idealisering af mandlige figurer.",
+          "caution": "Gør det ikke til en individuel 'fejl' i kvinderne, men fremstil det som et fælles strukturelt vilkår."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at det er bedstemødrene, der oplevede den mest rigide og undertrykkende kønsopdeling.",
+          "better_reading": "Fasthold, at det var mellemgnerationen, der voksede op under efterkrigstidens intense ideologiske 'husmorisering'."
+        },
+        {
+          "trap": "At tro at det indre køn blot tilpasser sig det ydre køn problemfrit, når samfundet ændres.",
+          "better_reading": "Betegn det konsekvent som en asynkron proces, der er fyldt med psykologisk forsinkelse og ambivalens."
+        },
+        {
+          "trap": "At se den yngste generations fornyede interesse for bagning som et naivt tilbagefald til traditionelle kønsroller.",
+          "better_reading": "Forklar at aktiviteten er blevet radikalt re-significeret fra en undertrykkende pligt til et personligt æstetisk valg."
+        }
+      ],
+      "mini_exam_prompt_question": "Hvordan kan man anvende begreberne 'indre og ydre køn' til at demonstrere princippet om historicitet i personlighedspsykologien?",
+      "mini_exam_answer_plan_slots": [
+        "Definér først kort forskellen på ydre køn (samfundsstruktur) og indre køn (psykologisk identifikation).",
+        "Giv eksemplet med husarbejdets skiftende betydning over tre generationer som primært bevis for historicitet.",
+        "Brug mellemgnerationens oprør mod mødrenes husmorisering til at vise spændingen mellem determinering og agency.",
+        "Konkludér ved at koble idealiseringen af fædrene til psykoanalysens blik på det asynkrone og decentrerede subjekt."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

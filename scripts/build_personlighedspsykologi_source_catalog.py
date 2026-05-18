@@ -46,7 +46,7 @@ DEFAULT_SUBJECT_ROOT = (
 DEFAULT_OUTPUT = "shows/personlighedspsykologi-en/source_catalog.json"
 DEFAULT_CONTENT_MANIFEST = "shows/personlighedspsykologi-en/content_manifest.json"
 DEFAULT_SLIDES_CATALOG = "shows/personlighedspsykologi-en/slides_catalog.json"
-DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/reading-file-key.md"
+DEFAULT_READING_KEY = "shows/personlighedspsykologi-en/docs/data/reading-file-key.md"
 DEFAULT_PROMPT_CONFIG = "notebooklm-podcast-auto/personlighedspsykologi/prompt_config.json"
 DEFAULT_POLICY_PATH = "shows/personlighedspsykologi-en/source_intelligence_policy.json"
 

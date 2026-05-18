@@ -161,7 +161,7 @@ Preprocessing bestaar i dag af tre forskellige lag:
 1. Deterministisk kursus- og lecture-kontekst
    - `shows/personlighedspsykologi-en/content_manifest.json`
    - `shows/personlighedspsykologi-en/slides_catalog.json`
-   - `shows/personlighedspsykologi-en/docs/overblik.md`
+   - `shows/personlighedspsykologi-en/docs/core/overblik.md`
    - `notebooklm_queue/course_context.py`
 2. Manuelle summary-caches
    - `shows/personlighedspsykologi-en/reading_summaries.json`

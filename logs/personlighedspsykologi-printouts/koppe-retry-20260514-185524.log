@@ -1,0 +1,30 @@
+{
+  "status": "ok",
+  "source_count": 1,
+  "written_count": 1,
+  "rerendered_count": 0,
+  "skipped_count": 0,
+  "error_count": 0,
+  "results": [
+    {
+      "source_id": "w05l2-k-ppe-1992-9a474402",
+      "status": "written",
+      "output_dir": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output",
+      "json_path": "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/printout-json/w05l2-k-ppe-1992-9a474402/reading-printouts.json",
+      "markdown_paths": [],
+      "pdf_paths": [
+        "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W05L2--w05l2-k-ppe-1992-9a474402--00-cover.pdf",
+        "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W05L2--w05l2-k-ppe-1992-9a474402--01-reading-guide.pdf",
+        "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W05L2--w05l2-k-ppe-1992-9a474402--02-active-reading.pdf",
+        "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W05L2--w05l2-k-ppe-1992-9a474402--03-abridged-version.pdf",
+        "/Users/oskar/repo/podcasts/notebooklm-podcast-auto/personlighedspsykologi/output/W05L2--w05l2-k-ppe-1992-9a474402--04-consolidation-sheet.pdf"
+      ],
+      "generation_stats": {
+        "attempt_count": 1,
+        "transient_error_count": 0,
+        "last_transient_error": ""
+      }
+    }
+  ],
+  "errors": []
+}

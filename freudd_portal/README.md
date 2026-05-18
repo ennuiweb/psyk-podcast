@@ -263,7 +263,7 @@ Operational behavior:
 - `FREUDD_PORTAL_SESSION_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - `FREUDD_PORTAL_CSRF_COOKIE_SECURE` (default: `0`; set `1` in production HTTPS)
 - `FREUDD_SUBJECTS_JSON_PATH` (default: `freudd_portal/subjects.json`)
-- `FREUDD_READING_KEY_PATH` (default: `shows/personlighedspsykologi-en/docs/reading-file-key.md`)
+- `FREUDD_READING_KEY_PATH` (default: `shows/personlighedspsykologi-en/docs/data/reading-file-key.md`)
 - `FREUDD_READING_MASTER_KEY_PATH` (deprecated alias for `FREUDD_READING_KEY_PATH`)
 - `FREUDD_READING_MASTER_KEY_FALLBACK_PATH` (deprecated compatibility alias; normal runtime no longer uses fallback ownership)
 - `FREUDD_SUBJECT_FEED_RSS_PATH` (default: `shows/personlighedspsykologi-en/feeds/rss.xml`)

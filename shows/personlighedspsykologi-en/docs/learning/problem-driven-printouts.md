@@ -271,5 +271,5 @@ Useful observations:
 ## Relation To Other Docs
 
 - repo-level design principles: [learning-material-design.md](/Users/oskar/repo/podcasts/docs/learning-material-design.md)
-- output-layer boundary and evaluation map: [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning-material-outputs.md)
-- current canonical printout contract: [printout-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/printout-system.md)
+- output-layer boundary and evaluation map: [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md)
+- current canonical printout contract: [printout-system.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning/printout-system.md)

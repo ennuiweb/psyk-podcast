@@ -13,9 +13,9 @@ FREUDD_SUBJECTS = Path("freudd_portal/subjects.json")
 
 CANONICAL_CONFIG = SHOW_DIR / "config.github.json"
 COMPAT_CONFIG = SHOW_DIR / "config.local.json"
-PRIMARY_READING_KEY = SHOW_DIR / "docs" / "reading-file-key.md"
+PRIMARY_READING_KEY = SHOW_DIR / "docs" / "data" / "reading-file-key.md"
 LEGACY_READING_KEY = NOTEBOOKLM_DIR / "docs" / "reading-file-key.md"
-PRIMARY_OVERBLIK = SHOW_DIR / "docs" / "overblik.md"
+PRIMARY_OVERBLIK = SHOW_DIR / "docs" / "core" / "overblik.md"
 LEGACY_OVERBLIK = NOTEBOOKLM_DIR / "docs" / "overblik.md"
 SOURCE_CATALOG = SHOW_DIR / "source_catalog.json"
 LECTURE_BUNDLES_DIR = SHOW_DIR / "lecture_bundles"
@@ -60,10 +60,10 @@ PERSONLIGHEDS_SUBJECT_PATH_TO_ARTIFACT = {
 REFERENCE_FILES = [
     SHOW_DIR / "README.md",
     SHOW_DIR / "docs" / "README.md",
-    SHOW_DIR / "docs" / "plan.md",
-    SHOW_DIR / "docs" / "podcast-flow-artifacts.md",
-    SHOW_DIR / "docs" / "podcast-flow-operations.md",
-    SHOW_DIR / "docs" / "reading-name-sources-report-2026-03-05.md",
+    SHOW_DIR / "docs" / "core" / "plan.md",
+    SHOW_DIR / "docs" / "operations" / "podcast-flow-artifacts.md",
+    SHOW_DIR / "docs" / "operations" / "podcast-flow-operations.md",
+    SHOW_DIR / "docs" / "data" / "reading-name-sources-report-2026-03-05.md",
     NOTEBOOKLM_DIR / "README.md",
     NOTEBOOKLM_DIR / "docs" / "quiz-difficulty-overview-plan.md",
     "TECHNICAL.md",

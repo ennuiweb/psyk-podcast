@@ -157,5 +157,5 @@ Useful practical metrics:
 ## Related Docs
 
 - [notebooklm-automation.md](/Users/oskar/repo/podcasts/docs/notebooklm-automation.md)
-- [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning-material-outputs.md)
-- [problem-driven-printouts.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/problem-driven-printouts.md)
+- [learning-material-outputs.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning/learning-material-outputs.md)
+- [problem-driven-printouts.md](/Users/oskar/repo/podcasts/shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md)

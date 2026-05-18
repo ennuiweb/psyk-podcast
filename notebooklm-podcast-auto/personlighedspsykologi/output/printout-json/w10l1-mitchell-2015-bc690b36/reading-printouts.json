@@ -1,0 +1,1241 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T13:42:25Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "acf5588bb7af5895484f214de36de8b3ff75ed57948ea71a24bb06f76195ce8b",
+    "source_files_signature": "97abca378499ea9959f66abe861f70da308cf036e6e7c12e76ab4e770bb3c279",
+    "source_card": "a04d3beb356dabc9030003f4c9843a7926f00b2f9eec44c68ae8cc18ac073ccd",
+    "revised_lecture_substrate": "04c3c1b2a3c2dcc9d287b28ee8177dd6fd0d2dd197689ff9515d20449012da68",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w10l1-mitchell-2015-bc690b36",
+    "lecture_key": "W10L1",
+    "title": "Mitchell (2015)",
+    "reading_title": "Mitchell (2015)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 33,
+    "estimated_token_count": 21450,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W10L1 Køn/W10L1 Mitchell (2015).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 33,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l1-mitchell-2015-bc690b36",
+      "lecture_key": "W10L1",
+      "source_title": "Mitchell (2015)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne tekst som en optakt til kildeteksten. Den opstiller de problemer, du skal lede efter svar på.",
+      "teaser_paragraphs": [
+        "Hvorfor fortsætter de patriarkalske magtstrukturer med at eksistere indeni os, selvom samfundet gennemgår enorme politiske og økonomiske ligestillingsfremskridt? Mitchell bemærker tørt, at feminismen ser ud til at \"rowing against a current that is ultimately the strongest\". Det er dette psykologiske tilbageslag – inertien – som debatten i teksten forsøger at knække.",
+        "Du træder direkte ind i en intellektuel boksekamp mellem to af de største feministiske teoretikere: Juliet Mitchell og Judith Butler. De er enige om, at vi har et ubevidst sind. De er voldsomt uenige om, *hvad* dette ubevidste sind indeholder, og hvordan det overføres fra forældre til børn.",
+        "Mitchell mener, at problemet bunder i nedarvede, ubevidste love. Hun argumenterer for, at samfundets absolutte forbud mod incest og drab skaber en ufravigelig, ubevidst kløft mellem kønnene. Det er denne *Lov*, der tvinger os ind i en rigid kønsstruktur, uanset hvor flydende vi ønsker at være.",
+        "Butler angriber dette fundament. Hun nægter at acceptere, at psykologien opererer under en fasttømret universel lov. Med støtte i den franske teoretiker Jean Laplanche fremfører Butler, at barnet i stedet udsættes for \"irresistible and confusing messages relayed more or less unconsciously\" af de voksne.",
+        "Striden mellem Mitchell og Butler er ikke bare akademisk flueknepperi. Den definerer, hvordan vi som psykologer forstår grænsen mellem samfundsstruktur og subjektivitet: Arver vi uforanderlige regler, eller arver vi bare de voksnes rod?"
+      ],
+      "main_problem": "Hvordan overføres kønsstrukturer og patriarkalsk magt psykologisk fra generation til generation på trods af samfundsmæssige forandringer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på begreberne 'gender difference' og 'gender' i Mitchells teori?",
+          "why_it_matters": "Det forhindrer dig i at forveksle Mitchells fundamentale strukturelle adskillelse af kønnene med moderne performativitetsteori.",
+          "answer_form": "En kort kontrast mellem en ubevidst grænse og en social praksis"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken rolle spiller 'Loven' (forbuddet mod incest og drab) i overlevelsen af kvindeundertrykkelse?",
+          "why_it_matters": "Loven er Mitchells primære forklaringsmekanisme for patriarkatets psykologiske inerti.",
+          "answer_form": "En forklaring af en årsagskæde"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor kritiserer Butler idéen om, at en ubevidst Lov kan overføres fejlfrit?",
+          "why_it_matters": "Det er kernen i poststrukturalismens opgør med universelle forklaringer.",
+          "answer_form": "En sætning"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan fungerer Laplanches idé om 'enigmatic signifiers', som Butler anvender?",
+          "why_it_matters": "Det er Butlers direkte alternativ til Freuds iboende drifter.",
+          "answer_form": "En beskrivelse af udefrakommende prægning"
+        },
+        {
+          "number": 5,
+          "question": "Hvad er den grundlæggende forskel på Mitchells og Butlers politiske ambitioner?",
+          "why_it_matters": "Deres uenighed om teoretiske begreber udspringer af, at de forsøger at løse to forskellige samfundsproblemer.",
+          "answer_form": "To præcise, adskilte målsætninger"
+        }
+      ],
+      "why_this_text_matters": "Teksten demonstrerer, hvordan psykoanalytiske grundbegreber (drifter, identifikation, det ubevidste) kan bruges til at analysere makrosociologiske problemer som køn og magt.",
+      "overview": [
+        "Teksten er Juliet Mitchells direkte modsvar på Judith Butlers læsning af hendes klassiske bog 'Psychoanalysis and Feminism'.",
+        "Mitchell forsvarer en freudiansk position, hvor et universelt incestforbud skaber en ubevidst kløft mellem kønnene, som fastholder patriarkatet.",
+        "Butler udfordrer dette med Jean Laplanches begreber for at vise, at barnet ikke overvinder en universel lov, men præges af voksnes forvirrende begær."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektionen \"Gender difference?\"",
+          "task": "Find Mitchells skelnen mellem hendes politiske mål og Butlers politiske mål, samt hendes definition af 'gender difference'.",
+          "why_it_matters": "Det fastlægger præmissen for hele deres teoretiske uenighed.",
+          "stop_signal": "Når hun begynder at diskutere slægtskab"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen \"Transmission between generations\"",
+          "task": "Forstå begrebet inerti, og hvordan Loven overleveres på tværs af generationer.",
+          "why_it_matters": "Inertien forklarer patriarkatets overlevelse trods ydre fremskridt.",
+          "stop_signal": "Ved Butlers citerede modsvar"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen \"The Law\"",
+          "task": "Aflæs Butlers kritik af en uforanderlig Lov og introduktionen af 'enigmatic signifiers'.",
+          "why_it_matters": "Her opstilles det afgørende modargument til Mitchell.",
+          "stop_signal": "Ved Mitchells replik"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektionen \"Drive and desire\"",
+          "task": "Kontrastér Freuds indefrakommende drift med Laplanches idé om budskaber fra den voksne verden.",
+          "why_it_matters": "Debatten om magt bunder i sidste ende i en debat om motivation og drift.",
+          "stop_signal": "Ved Rose-casen om midaldrende mænd"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektionen \"The political mission\"",
+          "task": "Fang den samlede konklusion på, hvorfor de er politisk uenige om midlerne til frigørelse.",
+          "why_it_matters": "Det opsummerer, hvorfor den teoretiske forskel gør en praktisk forskel.",
+          "stop_signal": "Når Jacqueline Roses kommentar starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "biological fact of being a woman and psychic femininity never fully coincide",
+          "why": "Det er Mitchells rygdækning mod anklager om biologisk essentialisme.",
+          "where_to_look": "I de indledende afsnit"
+        },
+        {
+          "target": "desire to design a world free from the appalling discrimination",
+          "why": "Det opsummerer de to teoretikeres forskellige målsætninger.",
+          "where_to_look": "Sektionen 'Gender difference?'"
+        },
+        {
+          "target": "this characteristic of distinction that is universal in human societies",
+          "why": "Det er Mitchells definition af den ubevidste struktur.",
+          "where_to_look": "Sektionen 'Gender difference?'"
+        },
+        {
+          "target": "irresistible and confusing messages relayed more or less unconsciously",
+          "why": "Dette definerer Laplanches alternativ til den universelle Lov.",
+          "where_to_look": "Sektionen 'Drive and desire'"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Specifikke detaljer om antropologen Gayle Rubins tidlige feltarbejde.",
+        "De lange kliniske udredninger af Robert Stollers transkønnede patienter.",
+        "Jacqueline Roses lange opsamlende metakommentar i slutningen af teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "I de indledende afsnit",
+          "excerpt": "biological fact of being a woman and psychic femininity never fully coincide",
+          "open_question": "Hvad er den afgørende forskel på begreberne 'gender difference' og 'gender' i Mitchells teori?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen 'Gender difference?'",
+          "excerpt": "desire to design a world free from the appalling discrimination",
+          "open_question": "Hvilken rolle spiller 'Loven' (forbuddet mod incest og drab) i overlevelsen af kvindeundertrykkelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen 'Gender difference?'",
+          "excerpt": "this characteristic of distinction that is universal in human societies",
+          "open_question": "Hvorfor kritiserer Butler idéen om, at en ubevidst Lov kan overføres fejlfrit?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektionen 'Drive and desire'",
+          "excerpt": "irresistible and confusing messages relayed more or less unconsciously",
+          "open_question": "Hvordan fungerer Laplanches idé om 'enigmatic signifiers', som Butler anvender?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne tekst som din primære læsning. Den koncentrerer Mitchells argumenter og Butlers modargumenter i en fremadskridende logik.",
+      "coverage_note": "Fokuserer på den kerneteoretiske strid om lov, overførsel og drifter. Antropologiske sidebemærkninger er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Gender difference?",
+          "heading": "Forskel i mål: Kvindeundertrykkelse vs. Heteronormativitet",
+          "solves_subproblem": "Subproblem 5",
+          "local_problem": "Afgør hvorfor Mitchell og Butler taler forbi hinanden, før de overhovedet begynder at diskutere psykoanalyse?",
+          "explanation_paragraphs": [
+            "Mitchell påpeger hurtigt, at roden til hendes uenighed med Judith Butler er politisk: De forsøger at løse to helt forskellige samfundsproblemer. Mitchells eget arbejde har altid haft som mål at udrydde den grundlæggende, strukturelle undertrykkelse af kvinder. Hun er optaget af at forstå det patriarkat, der bliver ved med at opstå i nye former.",
+            "Butler, derimod, er fokuseret på kampen mod heteronormativitet og den diskrimination, der rammer homoseksuelle og minoriteter. Fordi de har forskellige objekter for deres forskning, benytter de psykoanalytiske begreber forskelligt, hvilket skaber en voldsom gensidig misforståelse."
+          ],
+          "key_points": [
+            "Mitchell vil afskaffe kvindeundertrykkelse.",
+            "Butler vil afskaffe det heteroseksuelle hegemoni og forsvare mangfoldige kønsudtryk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "desire to design a world free from the appalling discrimination",
+              "why_it_matters": "Her formulerer Mitchell knivskarpt deres delte ambitioner, men divergente mål.",
+              "source_location": "Gender difference?"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Gender difference?",
+              "passage": "Butler is driven by the desire to design a world free from the appalling discrimination against homosexuality and I by the desire to imagine one in which the oppression of women is no longer inherent in human organization.",
+              "why_it_matters": "Citatet er den afgørende nøgle til at forstå, at deres teoretiske slagsmål udspringer af forskellige politiske agendaer."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Gender difference?",
+          "heading": "Skelnen mellem 'Gender' og 'Gender Difference'",
+          "solves_subproblem": "Subproblem 1",
+          "local_problem": "Forstå Mitchells definition af kønsforskellen, og hvorfor den ikke må forveksles med performativt 'gender'?",
+          "explanation_paragraphs": [
+            "Mitchell advarer mod at forveksle hendes brug af begrebet 'gender difference' (kønsforskel) med nyere teorier om 'gender' som noget socialt konstrueret eller performativt. Hun fastholder blankt, at biologi og den psykologiske kvindelighed aldrig stemmer helt overens, så hun er ikke biologisk essentialist.",
+            "I stedet betyder 'gender difference' for Mitchell en universel, strukturel grænsedragning mellem mænd og kvinder. Denne grænse eksisterer som en ubevidst ramme for slægtskab, dikteret af universelle forbud. Selve indholdet (hvad det vil sige at være mand eller kvinde) varierer enormt på tværs af kulturer, men selve adskillelsen – grænsen – er invariant."
+          ],
+          "key_points": [
+            "Gender (køn) er foranderlige, sociale relationer.",
+            "Gender difference (kønsforskel) er en universel struktur uden indbygget indhold.",
+            "Psykisk femininitet kan ikke reduceres til biologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "distinction that is universal in human societies",
+              "why_it_matters": "Understreger forskellens ufravigelige, strukturelle natur.",
+              "source_location": "Gender difference?"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Transmission between generations",
+          "heading": "Loven og den ubevidste modstrøm",
+          "solves_subproblem": "Subproblem 2",
+          "local_problem": "Identificér mekanismen, der overfører patriarkatet fra generation til generation på trods af historisk fremgang?",
+          "explanation_paragraphs": [
+            "Hvorfor ændrer samfundet sig ikke radikalt, selvom love skrives om og ligestilling fremmes? Mitchell kalder dette fænomen for inerti – en farlig modstrøm, der fastholder kvindens underordnede position. Forklaringen ligger i 'Loven' (The Law).",
+            "Loven er samfundets grundlæggende, ubevidste forbud, specielt forbuddet mod incest og drab. Når det lille biseksuelle barn møder dette forbud, tvinges det til ubevidst at indtage en position på den ene eller den anden side af kønsforskellen. Loven fungerer altså som et konservativt bolværk, der videregiver de gamle magtstrukturer i det ubevidste, fuldstændig upåvirket af moderne politiske idealer."
+          ],
+          "key_points": [
+            "Patriarkatet overlever gennem en psykologisk 'modstrøm' eller inerti.",
+            "Loven refererer til forbuddet mod incest og drab.",
+            "Barnet må organisere sine drifter omkring Loven, hvilket skaber en hård kønsforskel."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "feminism seems to be rowing against a current",
+              "why_it_matters": "Billedet fanger modstanden fra de ubevidste patriarkalske strukturer.",
+              "source_location": "Transmission between generations"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "The Law",
+          "heading": "Butlers opgør med 'Loven'",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "Forstå Butlers argument for, at vi ikke overleverer et fejlfrit regelsæt til næste generation?",
+          "explanation_paragraphs": [
+            "Butler anerkender, at historien overføres til det ubevidste, men hun nægter at acceptere Mitchells tese om en universel, fasttømret Lov. Ifølge Butler er der ikke noget intakt regelsæt, der sendes tydeligt videre fra forælder til barn.",
+            "Butler ser i stedet overførslen som en rodet proces fuld af oversættelser, forvridninger og forskydninger. Hvis Loven hele tiden forvrænges undervejs, kan den umuligt være den uomgængelige, universelle årsag til patriarkatet, som Mitchell hævder."
+          ],
+          "key_points": [
+            "Butler afviser, at en intakt Lov overføres ubevidst.",
+            "Overførsel består for Butler af gentagne forskydninger og mangelfulde oversættelser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "no set of laws reproduce itself in this young child's unconscious",
+              "why_it_matters": "Det er Butlers klare afvisning af strukturalismen.",
+              "source_location": "The Law"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Drive and desire",
+          "heading": "Laplanche og gådefulde betegnere (Enigmatic signifiers)",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Afkod Laplanches begreb, som Butler bruger til at erstatte den freudianske drivkraft?",
+          "explanation_paragraphs": [
+            "I stedet for Mitchells klassiske psykologiske forklaringsmodel bruger Butler teoretikeren Jean Laplanche. Ifølge Laplanche fødes barnet ikke med faste, biologiske drifter eller et iboende behov for en Lov. Barnet er i stedet modtager af de voksnes ubevidste budskaber.",
+            "Disse budskaber kaldes 'enigmatic signifiers' – gådefulde indtryk, som den voksne ubevidst sender, og som barnet, i al sin magtesløshed, forsøger at oversætte og inkorporere. Barnets drifter og seksualitet opstår altså som et forsøg på at navigere i de voksnes uforståelige begær."
+          ],
+          "key_points": [
+            "Enigmatic signifiers er ubevidste aftryk sendt fra voksne til barnet.",
+            "De former barnets seksualitet udefra, snarere end indefra.",
+            "Dette fjerner fundamentet for en invariant lov."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "irresistible and confusing messages relayed more or less unconsciously",
+              "why_it_matters": "Opsummerer kernen i Laplanches tilgang til prægning.",
+              "source_location": "Drive and desire"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Drive and desire",
+              "passage": "Rather, what is bequeathed is a vigorous, enigmatic and stimulating impression, made from an adult world whose libido communications are irresistible and illegible to the very young child.",
+              "why_it_matters": "Viser hvordan Laplanche erstatter 'arven af en universel lov' med 'arven af forvirrede affekter'."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Drive and desire",
+          "heading": "Mitchells forsvar for driften som indre pres",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Beslut hvem der har det stærkeste argument for at forklare modstanden mod social forandring?",
+          "explanation_paragraphs": [
+            "Mitchell er dybt skeptisk over for Butlers brug af Laplanche. Mitchell fastholder, at Freuds drifter må forstås som et *internt pres*, en ineffabel psykologisk kraft, der kræver tilfredsstillelse og skaber konflikt med omverdenens forbud.",
+            "Hvis vi accepterer Butlers Laplanche-inspirerede ide om, at drifter blot er plantet i os af andre, mister vi, ifølge Mitchell, selve begrebet om psykologisk konflikt mellem lyst og forbud. Og uden den ubevidste konflikt har vi pludselig meget svært ved at forklare, hvorfor undertrykkelsen bliver ved med at opstå med en så urokkelig kraft på trods af historiens gang."
+          ],
+          "key_points": [
+            "Mitchell ser drifter som noget indre, der driver os.",
+            "Butler/Laplanche ser drifter som noget fremmed, der implanteres af andre.",
+            "For Mitchell forsvinder dybden af undertrykkelsens mekanik, hvis vi fjerner den indre psykologiske konflikt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "impulses push; they don't communicate anything",
+              "why_it_matters": "Mitchells klareste modstilling til idéen om 'budskaber'.",
+              "source_location": "Drive and desire"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor Mitchell og Butler taler forbi hinanden, før de overhovedet begynder at diskutere psykoanalyse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå Mitchells definition af kønsforskellen, og hvorfor den ikke må forveksles med performativt 'gender'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Identificér mekanismen, der overfører patriarkatet fra generation til generation på trods af historisk fremgang?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå Butlers argument for, at vi ikke overleverer et fejlfrit regelsæt til næste generation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afkod Laplanches begreb, som Butler bruger til at erstatte den freudianske drivkraft?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvem der har det stærkeste argument for at forklare modstanden mod social forandring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan overføres kønsstrukturer og patriarkalsk magt psykologisk fra generation til generation på trods af samfundsmæssige forandringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde dette ark fra hukommelsen. Tjek bagefter i Abridged Reader for at lukke hullerne. Formålet er at fastlåse teoretikernes positioner.",
+      "overview": [
+        "Teksten præsenterer en tung teoretisk debat om kønsforskellens ubevidste forankring.",
+        "Mitchell forsvarer en freudiansk position, hvor et universelt incestforbud opretholder patriarkatets strukturer på tværs af generationer.",
+        "Butler udfordrer dette med Laplanches teori om, at barnet formes af voksnes gådefulde, ubevidste budskaber snarere end af en fast lov."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Mitchell skelner mellem det socialt foranderlige 'gender' og den mere ufravigelige, strukturelle __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Ifølge Mitchell holdes den ubevidste kønsforskel på plads af den universelle __________, som udspringer af forbuddet mod incest og drab.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den egentlige årsag til, at de misforstår hinanden er, at Mitchell vil bekæmpe undertrykkelse af kvinder, mens Butler vil afskaffe det heteroseksuelle __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Fordi patriarkatet reproduceres gennem det ubevidste, kalder Mitchell den stærke psykologiske modstand mod ligestilling for en __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Butler nægter at acceptere, at vi overleverer et uforanderligt regelsæt fra generation til generation; overførslen er i stedet fyldt med fejl og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "I stedet for universelle forbud udsættes barnet ifølge Butler og Laplanche for gådefulde __________, udsendt af voksenverdenen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Mitchell forsvarer Freuds syn på driften som noget indre, mens Butler og Laplanche mener, driften implanteres __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en årsagskæde (flowchart), der viser Mitchells argument for patriarkatets psykologiske overlevelse.",
+          "required_elements": [
+            "Loven: Forbud mod incest",
+            "Ubevidst inerti / modstrøm",
+            "Den universelle kløft mellem kønnene"
+          ],
+          "blank_space_hint": "Brug bokse og pile til at vise rækkefølgen."
+        },
+        {
+          "number": 2,
+          "task": "Opstil en lille kontrast-tabel, der sammenligner Mitchell og Butler.",
+          "required_elements": [
+            "Deres primære politiske mål",
+            "Mekanismen bag overførsel mellem generationer",
+            "Oprindelsen af psykologiske drifter"
+          ],
+          "blank_space_hint": "Tegn tre rækker med de to teoretikere øverst."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at teste, om du kan aktivere Mitchells og Butlers logikker uden at støtte dig til papiret.",
+      "use_this_text_for": [
+        "At analysere patriarkatets psykologiske vedholdenhed på trods af historisk ligestilling.",
+        "At vise kontrasten mellem freudiansk determinisme og poststrukturalistisk foranderlighed.",
+        "At forklare hvorfor identifikation med køn kan være dybt modstridende.",
+        "At demonstrere hvordan psykoanalytiske termer ('det ubevidste', 'drifter') bruges forskelligt i makrosociologisk teori.",
+        "At give et nuanceret bud på spændingen mellem strukturelle rammer og individets agens."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Decentrering af subjektet (Psykoanalyse)",
+          "connection": "Mitchell demonstrerer, at kønsidentitet ikke er noget vi blot vælger bevidst; det er et dybt og uforanderligt ubevidst aftryk sat af universelle forbud."
+        },
+        {
+          "course_theme": "Historicitet vs. Struktur",
+          "connection": "Debatten tester grænsen for historisk forandring. Mitchell hævder, at en ubevidst lov danner en 'inerti', der undslipper ydre historiske skift, mens Butler ser alt som flydende historie."
+        },
+        {
+          "course_theme": "Agens vs. Struktur",
+          "connection": "Mitchell tilbyder minimal agens på det ubevidste plan, fordi 'Loven' strukturerer subjektet. Butler leder efter agens i de sprækker og 'fejl', der opstår under ubevidst overførsel."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Foucault og Kritisk Psykologi (Subjektivering)",
+          "how_to_compare": "Sammenlign hvor magten sætter sig fast. Foucault ser subjektet produceret udefra af sprog og institutioner, mens Mitchell insisterer på en indre, psykologisk dybde, hvor patriarkatet slår rod."
+        },
+        {
+          "compare_with": "Trækteori og biologiske modeller",
+          "how_to_compare": "Trækteori reificerer kønsforskelle som statistiske eller medfødte faktum. Mitchell afviser at fænomenet er ren biologi, men hun fastholder alligevel at kønnet styres af en statisk, ubevidst ramme."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Redegør for Mitchells syn på køn.",
+          "use_in_answer": "Brug skelnen mellem det variable, sociale 'gender' og den invariante struktur 'gender difference'.",
+          "caution": "Undgå at beskrive hende som biologisk essentialist. Hun taler om en psykologisk struktur, ikke gener."
+        },
+        {
+          "prompt_type": "Diskuter hvorfor kønsligestilling er vanskelig at opnå.",
+          "use_in_answer": "Beskriv inertien, der opstår, fordi Loven tvinger barnet til at organisere sig biseksuelt over en skarp kløft.",
+          "caution": "Gør ikke processen til bevidst socialisering. Den virker udelukkende stærkt, fordi den foregår ubevidst."
+        },
+        {
+          "prompt_type": "Sammenlign psykoanalytiske tilgange til motivation.",
+          "use_in_answer": "Kontrastér Freuds drifter (som Mitchell ser som et internt pres, der skaber konflikt) med Laplanches gådefulde betegnere.",
+          "caution": "Sørg for klart at markere, at Laplanche bruges af Butler som ammunition mod Mitchells model."
+        },
+        {
+          "prompt_type": "Anvend orienteringspunkterne (Historicitet og Determinisme).",
+          "use_in_answer": "Brug teksten til at vise en form for over-determinering gennem strukturel, patriarkalsk psykoanalyse, stillet over for forsøget på at frigøre subjektet gennem historisk flydende overførsler.",
+          "caution": "Husk at definere de to udvalgte orienteringspunkter, før du klemmer teksten ned i dem."
+        },
+        {
+          "prompt_type": "Analysér en klinisk/sociologisk case om køn.",
+          "use_in_answer": "Vurdér om casens udfordringer primært kan forklares med et sammenstød med 'Loven', eller om den ligner 'enigmatic signifiers'.",
+          "caution": "Bliv i de tunge analytiske termer frem for hverdagspsykologiske forklaringer."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro Mitchell mener mænd og kvinder er genetisk disponeret til at handle forskelligt.",
+          "better_reading": "Hendes kønskløft dikteres af samfundets incestforbud, ikke af DNA."
+        },
+        {
+          "trap": "At behandle Butler og Mitchell som allierede i samme projekt.",
+          "better_reading": "Deres uenighed om psykoanalysens natur udspringer direkte af, at Butler bekæmper heteronormativitet, mens Mitchell vil redde kvinder."
+        },
+        {
+          "trap": "At Butler fuldstændig afviser begrebet det ubevidste.",
+          "better_reading": "Butler anerkender fuldt ud det ubevidste; hun afviser blot, at det transmitterer uforanderlige, intakte 'Love'."
+        }
+      ],
+      "mini_exam_prompt_question": "Sig højt, med brug af begreber fra teksten, hvorfor Butler og Mitchell ikke kan enes om overførsel.",
+      "mini_exam_answer_plan_slots": [
+        "Angiv Mitchells opfattelse af Loven",
+        "Angiv Butlers Laplanche-alternativ",
+        "Knyt Mitchells position til hendes politiske mål",
+        "Knyt Butlers position til manglende universel determinisme"
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w10l1-mitchell-2015-bc690b36",
+      "lecture_key": "W10L1",
+      "source_title": "Mitchell (2015)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne tekst som en optakt til kildeteksten. Den opstiller de problemer, du skal lede efter svar på.",
+      "teaser_paragraphs": [
+        "Hvorfor fortsætter de patriarkalske magtstrukturer med at eksistere indeni os, selvom samfundet gennemgår enorme politiske og økonomiske ligestillingsfremskridt? Mitchell bemærker tørt, at feminismen ser ud til at \"rowing against a current that is ultimately the strongest\". Det er dette psykologiske tilbageslag – inertien – som debatten i teksten forsøger at knække.",
+        "Du træder direkte ind i en intellektuel boksekamp mellem to af de største feministiske teoretikere: Juliet Mitchell og Judith Butler. De er enige om, at vi har et ubevidst sind. De er voldsomt uenige om, *hvad* dette ubevidste sind indeholder, og hvordan det overføres fra forældre til børn.",
+        "Mitchell mener, at problemet bunder i nedarvede, ubevidste love. Hun argumenterer for, at samfundets absolutte forbud mod incest og drab skaber en ufravigelig, ubevidst kløft mellem kønnene. Det er denne *Lov*, der tvinger os ind i en rigid kønsstruktur, uanset hvor flydende vi ønsker at være.",
+        "Butler angriber dette fundament. Hun nægter at acceptere, at psykologien opererer under en fasttømret universel lov. Med støtte i den franske teoretiker Jean Laplanche fremfører Butler, at barnet i stedet udsættes for \"irresistible and confusing messages relayed more or less unconsciously\" af de voksne.",
+        "Striden mellem Mitchell og Butler er ikke bare akademisk flueknepperi. Den definerer, hvordan vi som psykologer forstår grænsen mellem samfundsstruktur og subjektivitet: Arver vi uforanderlige regler, eller arver vi bare de voksnes rod?"
+      ],
+      "main_problem": "Hvordan overføres kønsstrukturer og patriarkalsk magt psykologisk fra generation til generation på trods af samfundsmæssige forandringer?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på begreberne 'gender difference' og 'gender' i Mitchells teori?",
+          "why_it_matters": "Det forhindrer dig i at forveksle Mitchells fundamentale strukturelle adskillelse af kønnene med moderne performativitetsteori.",
+          "answer_form": "En kort kontrast mellem en ubevidst grænse og en social praksis"
+        },
+        {
+          "number": 2,
+          "question": "Hvilken rolle spiller 'Loven' (forbuddet mod incest og drab) i overlevelsen af kvindeundertrykkelse?",
+          "why_it_matters": "Loven er Mitchells primære forklaringsmekanisme for patriarkatets psykologiske inerti.",
+          "answer_form": "En forklaring af en årsagskæde"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor kritiserer Butler idéen om, at en ubevidst Lov kan overføres fejlfrit?",
+          "why_it_matters": "Det er kernen i poststrukturalismens opgør med universelle forklaringer.",
+          "answer_form": "En sætning"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan fungerer Laplanches idé om 'enigmatic signifiers', som Butler anvender?",
+          "why_it_matters": "Det er Butlers direkte alternativ til Freuds iboende drifter.",
+          "answer_form": "En beskrivelse af udefrakommende prægning"
+        },
+        {
+          "number": 5,
+          "question": "Hvad er den grundlæggende forskel på Mitchells og Butlers politiske ambitioner?",
+          "why_it_matters": "Deres uenighed om teoretiske begreber udspringer af, at de forsøger at løse to forskellige samfundsproblemer.",
+          "answer_form": "To præcise, adskilte målsætninger"
+        }
+      ],
+      "why_this_text_matters": "Teksten demonstrerer, hvordan psykoanalytiske grundbegreber (drifter, identifikation, det ubevidste) kan bruges til at analysere makrosociologiske problemer som køn og magt.",
+      "overview": [
+        "Teksten er Juliet Mitchells direkte modsvar på Judith Butlers læsning af hendes klassiske bog 'Psychoanalysis and Feminism'.",
+        "Mitchell forsvarer en freudiansk position, hvor et universelt incestforbud skaber en ubevidst kløft mellem kønnene, som fastholder patriarkatet.",
+        "Butler udfordrer dette med Jean Laplanches begreber for at vise, at barnet ikke overvinder en universel lov, men præges af voksnes forvirrende begær."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektionen \"Gender difference?\"",
+          "task": "Find Mitchells skelnen mellem hendes politiske mål og Butlers politiske mål, samt hendes definition af 'gender difference'.",
+          "why_it_matters": "Det fastlægger præmissen for hele deres teoretiske uenighed.",
+          "stop_signal": "Når hun begynder at diskutere slægtskab"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektionen \"Transmission between generations\"",
+          "task": "Forstå begrebet inerti, og hvordan Loven overleveres på tværs af generationer.",
+          "why_it_matters": "Inertien forklarer patriarkatets overlevelse trods ydre fremskridt.",
+          "stop_signal": "Ved Butlers citerede modsvar"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektionen \"The Law\"",
+          "task": "Aflæs Butlers kritik af en uforanderlig Lov og introduktionen af 'enigmatic signifiers'.",
+          "why_it_matters": "Her opstilles det afgørende modargument til Mitchell.",
+          "stop_signal": "Ved Mitchells replik"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektionen \"Drive and desire\"",
+          "task": "Kontrastér Freuds indefrakommende drift med Laplanches idé om budskaber fra den voksne verden.",
+          "why_it_matters": "Debatten om magt bunder i sidste ende i en debat om motivation og drift.",
+          "stop_signal": "Ved Rose-casen om midaldrende mænd"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektionen \"The political mission\"",
+          "task": "Fang den samlede konklusion på, hvorfor de er politisk uenige om midlerne til frigørelse.",
+          "why_it_matters": "Det opsummerer, hvorfor den teoretiske forskel gør en praktisk forskel.",
+          "stop_signal": "Når Jacqueline Roses kommentar starter"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "biological fact of being a woman and psychic femininity never fully coincide",
+          "why": "Det er Mitchells rygdækning mod anklager om biologisk essentialisme.",
+          "where_to_look": "I de indledende afsnit"
+        },
+        {
+          "target": "desire to design a world free from the appalling discrimination",
+          "why": "Det opsummerer de to teoretikeres forskellige målsætninger.",
+          "where_to_look": "Sektionen 'Gender difference?'"
+        },
+        {
+          "target": "this characteristic of distinction that is universal in human societies",
+          "why": "Det er Mitchells definition af den ubevidste struktur.",
+          "where_to_look": "Sektionen 'Gender difference?'"
+        },
+        {
+          "target": "irresistible and confusing messages relayed more or less unconsciously",
+          "why": "Dette definerer Laplanches alternativ til den universelle Lov.",
+          "where_to_look": "Sektionen 'Drive and desire'"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Specifikke detaljer om antropologen Gayle Rubins tidlige feltarbejde.",
+        "De lange kliniske udredninger af Robert Stollers transkønnede patienter.",
+        "Jacqueline Roses lange opsamlende metakommentar i slutningen af teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "I de indledende afsnit",
+          "excerpt": "biological fact of being a woman and psychic femininity never fully coincide",
+          "open_question": "Hvad er den afgørende forskel på begreberne 'gender difference' og 'gender' i Mitchells teori?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen 'Gender difference?'",
+          "excerpt": "desire to design a world free from the appalling discrimination",
+          "open_question": "Hvilken rolle spiller 'Loven' (forbuddet mod incest og drab) i overlevelsen af kvindeundertrykkelse?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen 'Gender difference?'",
+          "excerpt": "this characteristic of distinction that is universal in human societies",
+          "open_question": "Hvorfor kritiserer Butler idéen om, at en ubevidst Lov kan overføres fejlfrit?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektionen 'Drive and desire'",
+          "excerpt": "irresistible and confusing messages relayed more or less unconsciously",
+          "open_question": "Hvordan fungerer Laplanches idé om 'enigmatic signifiers', som Butler anvender?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs denne tekst som din primære læsning. Den koncentrerer Mitchells argumenter og Butlers modargumenter i en fremadskridende logik.",
+      "coverage_note": "Fokuserer på den kerneteoretiske strid om lov, overførsel og drifter. Antropologiske sidebemærkninger er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Gender difference?",
+          "heading": "Forskel i mål: Kvindeundertrykkelse vs. Heteronormativitet",
+          "solves_subproblem": "Subproblem 5",
+          "local_problem": "Afgør hvorfor Mitchell og Butler taler forbi hinanden, før de overhovedet begynder at diskutere psykoanalyse?",
+          "explanation_paragraphs": [
+            "Mitchell påpeger hurtigt, at roden til hendes uenighed med Judith Butler er politisk: De forsøger at løse to helt forskellige samfundsproblemer. Mitchells eget arbejde har altid haft som mål at udrydde den grundlæggende, strukturelle undertrykkelse af kvinder. Hun er optaget af at forstå det patriarkat, der bliver ved med at opstå i nye former.",
+            "Butler, derimod, er fokuseret på kampen mod heteronormativitet og den diskrimination, der rammer homoseksuelle og minoriteter. Fordi de har forskellige objekter for deres forskning, benytter de psykoanalytiske begreber forskelligt, hvilket skaber en voldsom gensidig misforståelse."
+          ],
+          "key_points": [
+            "Mitchell vil afskaffe kvindeundertrykkelse.",
+            "Butler vil afskaffe det heteroseksuelle hegemoni og forsvare mangfoldige kønsudtryk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "desire to design a world free from the appalling discrimination",
+              "why_it_matters": "Her formulerer Mitchell knivskarpt deres delte ambitioner, men divergente mål.",
+              "source_location": "Gender difference?"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Gender difference?",
+              "passage": "Butler is driven by the desire to design a world free from the appalling discrimination against homosexuality and I by the desire to imagine one in which the oppression of women is no longer inherent in human organization.",
+              "why_it_matters": "Citatet er den afgørende nøgle til at forstå, at deres teoretiske slagsmål udspringer af forskellige politiske agendaer."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Gender difference?",
+          "heading": "Skelnen mellem 'Gender' og 'Gender Difference'",
+          "solves_subproblem": "Subproblem 1",
+          "local_problem": "Forstå Mitchells definition af kønsforskellen, og hvorfor den ikke må forveksles med performativt 'gender'?",
+          "explanation_paragraphs": [
+            "Mitchell advarer mod at forveksle hendes brug af begrebet 'gender difference' (kønsforskel) med nyere teorier om 'gender' som noget socialt konstrueret eller performativt. Hun fastholder blankt, at biologi og den psykologiske kvindelighed aldrig stemmer helt overens, så hun er ikke biologisk essentialist.",
+            "I stedet betyder 'gender difference' for Mitchell en universel, strukturel grænsedragning mellem mænd og kvinder. Denne grænse eksisterer som en ubevidst ramme for slægtskab, dikteret af universelle forbud. Selve indholdet (hvad det vil sige at være mand eller kvinde) varierer enormt på tværs af kulturer, men selve adskillelsen – grænsen – er invariant."
+          ],
+          "key_points": [
+            "Gender (køn) er foranderlige, sociale relationer.",
+            "Gender difference (kønsforskel) er en universel struktur uden indbygget indhold.",
+            "Psykisk femininitet kan ikke reduceres til biologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "distinction that is universal in human societies",
+              "why_it_matters": "Understreger forskellens ufravigelige, strukturelle natur.",
+              "source_location": "Gender difference?"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Transmission between generations",
+          "heading": "Loven og den ubevidste modstrøm",
+          "solves_subproblem": "Subproblem 2",
+          "local_problem": "Identificér mekanismen, der overfører patriarkatet fra generation til generation på trods af historisk fremgang?",
+          "explanation_paragraphs": [
+            "Hvorfor ændrer samfundet sig ikke radikalt, selvom love skrives om og ligestilling fremmes? Mitchell kalder dette fænomen for inerti – en farlig modstrøm, der fastholder kvindens underordnede position. Forklaringen ligger i 'Loven' (The Law).",
+            "Loven er samfundets grundlæggende, ubevidste forbud, specielt forbuddet mod incest og drab. Når det lille biseksuelle barn møder dette forbud, tvinges det til ubevidst at indtage en position på den ene eller den anden side af kønsforskellen. Loven fungerer altså som et konservativt bolværk, der videregiver de gamle magtstrukturer i det ubevidste, fuldstændig upåvirket af moderne politiske idealer."
+          ],
+          "key_points": [
+            "Patriarkatet overlever gennem en psykologisk 'modstrøm' eller inerti.",
+            "Loven refererer til forbuddet mod incest og drab.",
+            "Barnet må organisere sine drifter omkring Loven, hvilket skaber en hård kønsforskel."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "feminism seems to be rowing against a current",
+              "why_it_matters": "Billedet fanger modstanden fra de ubevidste patriarkalske strukturer.",
+              "source_location": "Transmission between generations"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "The Law",
+          "heading": "Butlers opgør med 'Loven'",
+          "solves_subproblem": "Subproblem 3",
+          "local_problem": "Forstå Butlers argument for, at vi ikke overleverer et fejlfrit regelsæt til næste generation?",
+          "explanation_paragraphs": [
+            "Butler anerkender, at historien overføres til det ubevidste, men hun nægter at acceptere Mitchells tese om en universel, fasttømret Lov. Ifølge Butler er der ikke noget intakt regelsæt, der sendes tydeligt videre fra forælder til barn.",
+            "Butler ser i stedet overførslen som en rodet proces fuld af oversættelser, forvridninger og forskydninger. Hvis Loven hele tiden forvrænges undervejs, kan den umuligt være den uomgængelige, universelle årsag til patriarkatet, som Mitchell hævder."
+          ],
+          "key_points": [
+            "Butler afviser, at en intakt Lov overføres ubevidst.",
+            "Overførsel består for Butler af gentagne forskydninger og mangelfulde oversættelser."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "no set of laws reproduce itself in this young child's unconscious",
+              "why_it_matters": "Det er Butlers klare afvisning af strukturalismen.",
+              "source_location": "The Law"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Drive and desire",
+          "heading": "Laplanche og gådefulde betegnere (Enigmatic signifiers)",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Afkod Laplanches begreb, som Butler bruger til at erstatte den freudianske drivkraft?",
+          "explanation_paragraphs": [
+            "I stedet for Mitchells klassiske psykologiske forklaringsmodel bruger Butler teoretikeren Jean Laplanche. Ifølge Laplanche fødes barnet ikke med faste, biologiske drifter eller et iboende behov for en Lov. Barnet er i stedet modtager af de voksnes ubevidste budskaber.",
+            "Disse budskaber kaldes 'enigmatic signifiers' – gådefulde indtryk, som den voksne ubevidst sender, og som barnet, i al sin magtesløshed, forsøger at oversætte og inkorporere. Barnets drifter og seksualitet opstår altså som et forsøg på at navigere i de voksnes uforståelige begær."
+          ],
+          "key_points": [
+            "Enigmatic signifiers er ubevidste aftryk sendt fra voksne til barnet.",
+            "De former barnets seksualitet udefra, snarere end indefra.",
+            "Dette fjerner fundamentet for en invariant lov."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "irresistible and confusing messages relayed more or less unconsciously",
+              "why_it_matters": "Opsummerer kernen i Laplanches tilgang til prægning.",
+              "source_location": "Drive and desire"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Drive and desire",
+              "passage": "Rather, what is bequeathed is a vigorous, enigmatic and stimulating impression, made from an adult world whose libido communications are irresistible and illegible to the very young child.",
+              "why_it_matters": "Viser hvordan Laplanche erstatter 'arven af en universel lov' med 'arven af forvirrede affekter'."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Drive and desire",
+          "heading": "Mitchells forsvar for driften som indre pres",
+          "solves_subproblem": "Subproblem 4",
+          "local_problem": "Beslut hvem der har det stærkeste argument for at forklare modstanden mod social forandring?",
+          "explanation_paragraphs": [
+            "Mitchell er dybt skeptisk over for Butlers brug af Laplanche. Mitchell fastholder, at Freuds drifter må forstås som et *internt pres*, en ineffabel psykologisk kraft, der kræver tilfredsstillelse og skaber konflikt med omverdenens forbud.",
+            "Hvis vi accepterer Butlers Laplanche-inspirerede ide om, at drifter blot er plantet i os af andre, mister vi, ifølge Mitchell, selve begrebet om psykologisk konflikt mellem lyst og forbud. Og uden den ubevidste konflikt har vi pludselig meget svært ved at forklare, hvorfor undertrykkelsen bliver ved med at opstå med en så urokkelig kraft på trods af historiens gang."
+          ],
+          "key_points": [
+            "Mitchell ser drifter som noget indre, der driver os.",
+            "Butler/Laplanche ser drifter som noget fremmed, der implanteres af andre.",
+            "For Mitchell forsvinder dybden af undertrykkelsens mekanik, hvis vi fjerner den indre psykologiske konflikt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "impulses push; they don't communicate anything",
+              "why_it_matters": "Mitchells klareste modstilling til idéen om 'budskaber'.",
+              "source_location": "Drive and desire"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Subproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor Mitchell og Butler taler forbi hinanden, før de overhovedet begynder at diskutere psykoanalyse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Subproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå Mitchells definition af kønsforskellen, og hvorfor den ikke må forveksles med performativt 'gender'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Subproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Identificér mekanismen, der overfører patriarkatet fra generation til generation på trods af historisk fremgang?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Subproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forstå Butlers argument for, at vi ikke overleverer et fejlfrit regelsæt til næste generation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afkod Laplanches begreb, som Butler bruger til at erstatte den freudianske drivkraft?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Subproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Beslut hvem der har det stærkeste argument for at forklare modstanden mod social forandring?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "2-4 sætninger",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan overføres kønsstrukturer og patriarkalsk magt psykologisk fra generation til generation på trods af samfundsmæssige forandringer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde dette ark fra hukommelsen. Tjek bagefter i Abridged Reader for at lukke hullerne. Formålet er at fastlåse teoretikernes positioner.",
+      "overview": [
+        "Teksten præsenterer en tung teoretisk debat om kønsforskellens ubevidste forankring.",
+        "Mitchell forsvarer en freudiansk position, hvor et universelt incestforbud opretholder patriarkatets strukturer på tværs af generationer.",
+        "Butler udfordrer dette med Laplanches teori om, at barnet formes af voksnes gådefulde, ubevidste budskaber snarere end af en fast lov."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Mitchell skelner mellem det socialt foranderlige 'gender' og den mere ufravigelige, strukturelle __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Ifølge Mitchell holdes den ubevidste kønsforskel på plads af den universelle __________, som udspringer af forbuddet mod incest og drab.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Den egentlige årsag til, at de misforstår hinanden er, at Mitchell vil bekæmpe undertrykkelse af kvinder, mens Butler vil afskaffe det heteroseksuelle __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "Fordi patriarkatet reproduceres gennem det ubevidste, kalder Mitchell den stærke psykologiske modstand mod ligestilling for en __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Butler nægter at acceptere, at vi overleverer et uforanderligt regelsæt fra generation til generation; overførslen er i stedet fyldt med fejl og __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "I stedet for universelle forbud udsættes barnet ifølge Butler og Laplanche for gådefulde __________, udsendt af voksenverdenen.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1-2 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Mitchell forsvarer Freuds syn på driften som noget indre, mens Butler og Laplanche mener, driften implanteres __________.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en årsagskæde (flowchart), der viser Mitchells argument for patriarkatets psykologiske overlevelse.",
+          "required_elements": [
+            "Loven: Forbud mod incest",
+            "Ubevidst inerti / modstrøm",
+            "Den universelle kløft mellem kønnene"
+          ],
+          "blank_space_hint": "Brug bokse og pile til at vise rækkefølgen."
+        },
+        {
+          "number": 2,
+          "task": "Opstil en lille kontrast-tabel, der sammenligner Mitchell og Butler.",
+          "required_elements": [
+            "Deres primære politiske mål",
+            "Mekanismen bag overførsel mellem generationer",
+            "Oprindelsen af psykologiske drifter"
+          ],
+          "blank_space_hint": "Tegn tre rækker med de to teoretikere øverst."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at teste, om du kan aktivere Mitchells og Butlers logikker uden at støtte dig til papiret.",
+      "use_this_text_for": [
+        "At analysere patriarkatets psykologiske vedholdenhed på trods af historisk ligestilling.",
+        "At vise kontrasten mellem freudiansk determinisme og poststrukturalistisk foranderlighed.",
+        "At forklare hvorfor identifikation med køn kan være dybt modstridende.",
+        "At demonstrere hvordan psykoanalytiske termer ('det ubevidste', 'drifter') bruges forskelligt i makrosociologisk teori.",
+        "At give et nuanceret bud på spændingen mellem strukturelle rammer og individets agens."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Decentrering af subjektet (Psykoanalyse)",
+          "connection": "Mitchell demonstrerer, at kønsidentitet ikke er noget vi blot vælger bevidst; det er et dybt og uforanderligt ubevidst aftryk sat af universelle forbud."
+        },
+        {
+          "course_theme": "Historicitet vs. Struktur",
+          "connection": "Debatten tester grænsen for historisk forandring. Mitchell hævder, at en ubevidst lov danner en 'inerti', der undslipper ydre historiske skift, mens Butler ser alt som flydende historie."
+        },
+        {
+          "course_theme": "Agens vs. Struktur",
+          "connection": "Mitchell tilbyder minimal agens på det ubevidste plan, fordi 'Loven' strukturerer subjektet. Butler leder efter agens i de sprækker og 'fejl', der opstår under ubevidst overførsel."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Foucault og Kritisk Psykologi (Subjektivering)",
+          "how_to_compare": "Sammenlign hvor magten sætter sig fast. Foucault ser subjektet produceret udefra af sprog og institutioner, mens Mitchell insisterer på en indre, psykologisk dybde, hvor patriarkatet slår rod."
+        },
+        {
+          "compare_with": "Trækteori og biologiske modeller",
+          "how_to_compare": "Trækteori reificerer kønsforskelle som statistiske eller medfødte faktum. Mitchell afviser at fænomenet er ren biologi, men hun fastholder alligevel at kønnet styres af en statisk, ubevidst ramme."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Redegør for Mitchells syn på køn.",
+          "use_in_answer": "Brug skelnen mellem det variable, sociale 'gender' og den invariante struktur 'gender difference'.",
+          "caution": "Undgå at beskrive hende som biologisk essentialist. Hun taler om en psykologisk struktur, ikke gener."
+        },
+        {
+          "prompt_type": "Diskuter hvorfor kønsligestilling er vanskelig at opnå.",
+          "use_in_answer": "Beskriv inertien, der opstår, fordi Loven tvinger barnet til at organisere sig biseksuelt over en skarp kløft.",
+          "caution": "Gør ikke processen til bevidst socialisering. Den virker udelukkende stærkt, fordi den foregår ubevidst."
+        },
+        {
+          "prompt_type": "Sammenlign psykoanalytiske tilgange til motivation.",
+          "use_in_answer": "Kontrastér Freuds drifter (som Mitchell ser som et internt pres, der skaber konflikt) med Laplanches gådefulde betegnere.",
+          "caution": "Sørg for klart at markere, at Laplanche bruges af Butler som ammunition mod Mitchells model."
+        },
+        {
+          "prompt_type": "Anvend orienteringspunkterne (Historicitet og Determinisme).",
+          "use_in_answer": "Brug teksten til at vise en form for over-determinering gennem strukturel, patriarkalsk psykoanalyse, stillet over for forsøget på at frigøre subjektet gennem historisk flydende overførsler.",
+          "caution": "Husk at definere de to udvalgte orienteringspunkter, før du klemmer teksten ned i dem."
+        },
+        {
+          "prompt_type": "Analysér en klinisk/sociologisk case om køn.",
+          "use_in_answer": "Vurdér om casens udfordringer primært kan forklares med et sammenstød med 'Loven', eller om den ligner 'enigmatic signifiers'.",
+          "caution": "Bliv i de tunge analytiske termer frem for hverdagspsykologiske forklaringer."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro Mitchell mener mænd og kvinder er genetisk disponeret til at handle forskelligt.",
+          "better_reading": "Hendes kønskløft dikteres af samfundets incestforbud, ikke af DNA."
+        },
+        {
+          "trap": "At behandle Butler og Mitchell som allierede i samme projekt.",
+          "better_reading": "Deres uenighed om psykoanalysens natur udspringer direkte af, at Butler bekæmper heteronormativitet, mens Mitchell vil redde kvinder."
+        },
+        {
+          "trap": "At Butler fuldstændig afviser begrebet det ubevidste.",
+          "better_reading": "Butler anerkender fuldt ud det ubevidste; hun afviser blot, at det transmitterer uforanderlige, intakte 'Love'."
+        }
+      ],
+      "mini_exam_prompt_question": "Sig højt, med brug af begreber fra teksten, hvorfor Butler og Mitchell ikke kan enes om overførsel.",
+      "mini_exam_answer_plan_slots": [
+        "Angiv Mitchells opfattelse af Loven",
+        "Angiv Butlers Laplanche-alternativ",
+        "Knyt Mitchells position til hendes politiske mål",
+        "Knyt Butlers position til manglende universel determinisme"
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

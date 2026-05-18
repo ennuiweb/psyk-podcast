@@ -47,7 +47,7 @@ PROBLEM_DRIVEN_VARIANT_KEY = "problem_driven_v1"
 PROBLEM_DRIVEN_VARIANT_PROMPT_PATH = Path(
     "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md"
 )
-PROBLEM_DRIVEN_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md"
+PROBLEM_DRIVEN_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md"
 PROBLEM_DRIVEN_WORKSPACE = "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
 SCHEMA_VERSION = 3
 LEGACY_SCHEMA_VERSION = 2
@@ -4305,7 +4305,7 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
         if index == last_index and diagram_count == 1:
             _append_fill_to_page_response_area(lines, minimum_cm=space_cm)
         else:
-            inline_space_cm = 6.0 if diagram_count >= 2 else min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
+            inline_space_cm = 10.0 if diagram_count >= 2 else min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
             lines.append(_vspace_cm(inline_space_cm))
         lines.append("")
     _append_completion_footer(lines, artifact, ["blanks udfyldt", "diagrammer lavet", "svar tjekket"])

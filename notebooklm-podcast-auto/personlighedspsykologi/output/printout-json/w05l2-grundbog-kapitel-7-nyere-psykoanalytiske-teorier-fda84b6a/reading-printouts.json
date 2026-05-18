@@ -1,0 +1,1243 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:57:50Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "1cf0f063a5a052eddb7cd7217326f174838a488b8671e91ab00efc69bc0fe70e",
+    "source_files_signature": "f065ca8576b8cf508d0e7f562007b3611c9043ae22da4765bd2b15c5b3569688",
+    "source_card": "c93f26146f95f3d9b523650c7f62b84e950910a80c936b9ce9741cd405626761",
+    "revised_lecture_substrate": "45d2b67d2db74adffa32cfcae345fca2a23c0a2b63e02e3ed49ab717973da181",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+    "lecture_key": "W05L2",
+    "title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+    "reading_title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier",
+    "source_family": "reading",
+    "evidence_origin": "textbook_framing",
+    "length_band": "long",
+    "page_count": 49,
+    "estimated_token_count": 31850,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/Grundbog kapitel 07 - Nyere psykoanalytiske teorier.pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 49,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "lecture_key": "W05L2",
+      "source_title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs dette som optakt for at forstå den konflikt og de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Mange forbinder psykoanalysen med Freuds klassiske briks og barndommens afdækkede traumer. Men i dette kursus markerer læsningen et radikalt epistemologisk brud med alt det, vi hidtil har antaget om personligheden og evnen til at måle den udefra.",
+        "Hvor trækteorier forestiller sig et menneske, der kan afkodes som en gennemsigtig størrelse, introducerer den nyere psykoanalyse en voldsom, skjult indre dynamik. Den bygger på den fundamentale erkendelse af, at vores bevidste fornuft på ingen måde er herre i eget hus.",
+        "Alligevel er den moderne psykoanalyse overhovedet ikke én samlet og enig teori. Efter Freuds indledende opdagelser er feltet splintret i vidt forskellige retninger afhængigt af de historiske og geografiske rammer. Det centrale spørgsmål bliver pludselig: Er vores utilgængelige psyke primært bygget af kognitiv tilpasning, af de dominerende samfundsstrukturer, eller af forstyrrende og uforståelige budskaber fra vores forældre?",
+        "For at afgøre det, navigerer vi i tre dominerende spor: Et britisk spor der fokuserer på vores langsomt opbyggede evne til mentalisering, et fransk spor der ser det ubevidste skabt gennem den andens gådefulde indgriben, og et tysk spor præget af socialkritik og marxistisk tænkning.",
+        "Udfordringen for dig er at overvåge, hvordan disse tre meget uenige skoler til sidst bliver tvunget til at samle sig om den afgørende påstand om det decentrerede subjekt. Et begreb, der kommer til at afgøre resten af kursets diskussioner om magt, diskurs og samfund."
+      ],
+      "main_problem": "Hvordan kan tre vidt forskellige psykoanalytiske retninger dele den radikale påstand om, at menneskets bevidsthed ikke styrer sin egen adfærd?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad udgør psykoanalysens særlige definitionsgrundlag, herunder begreberne objekt og drift?",
+          "why_it_matters": "Nødvendigt for at forstå forskellen på biologi og den interne psykiske realitet.",
+          "answer_form": "To korte definitioner"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer Fonagys britiske skole opbygningen af barnets virkelighedsopfattelse?",
+          "why_it_matters": "Forklarer evnen til affektregulering som en forudsætning for stabil overlevelse.",
+          "answer_form": "En udviklingsbeskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor hævder den franske skole insisterende, at det ubevidste udelukkende konstitueres af den anden?",
+          "why_it_matters": "Fjerner det ubevidste fra at være en mørk, medfødt biologisk pool.",
+          "answer_form": "Et interaktionelt årsagssammenhæng"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forstyrrer Laplanches begreb om Nachträglichkeit vores forståelse af lineær tid?",
+          "why_it_matters": "Nedbryder ideen om en uforanderlig fortid og introducerer cirkulær historicitet.",
+          "answer_form": "En tidslig mekanisme"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan forsøger den tyske skole at koble samfundets magt direkte i kroppens handlinger?",
+          "why_it_matters": "Viser hvordan normer sætter sig i kødet længe før bevidst sprog kan bruges.",
+          "answer_form": "En biologisk-sociologisk funktion"
+        },
+        {
+          "number": 6,
+          "question": "Hvorfor er den fælles enighed om decentrering tekstens vigtigste pointer i forhold til kurset?",
+          "why_it_matters": "Det er selve broen over til de kritiske og poststrukturalistiske teorier senere.",
+          "answer_form": "Et kort argument"
+        }
+      ],
+      "why_this_text_matters": "Denne grundbogstekst markerer kursets skarpe epistemologiske sving væk fra den målbare overflade, og ind i en teori styret af skjult, indre determination.",
+      "overview": [
+        "En systematisk kortlægning af psykoanalysens splittede udvikling over det britiske, franske og tyske spor.",
+        "En fastlæggelse af den fundamentale forskel mellem ren biologi og indre psykisk realitet.",
+        "En placering af det decentrerede subjekt som det uomgængelige vilkår for al videre dybdegående teori."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Afsnittet om kernetemaer i psykoanalysen (ca. s. 206)",
+          "task": "Afgør hvordan begreberne biologiske behov og psykiske drifter adskiller sig markant fra hinanden.",
+          "why_it_matters": "Dette etablerer en hel gren af indre psykisk dynamik, der nægter at adlyde ren overlevelse.",
+          "stop_signal": "når diskussionen af subjektet er landet"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet om mentalisering og affektregulering (ca. s. 211)",
+          "task": "Identificer de to afgørende modi, Equivalent og Pretend, som barnet opholder sig i inden fuld kognition indtræffer.",
+          "why_it_matters": "Det engelske forsøg på at løse mysteriet om, hvordan vi lærer at kende forskel på fri fantasi og hård virkelighed.",
+          "stop_signal": "når tilknytningstyperne nævnes"
+        },
+        {
+          "number": 3,
+          "source_location": "Afsnittet om psykoanalysen i Frankrig (ca. s. 216)",
+          "task": "Find Lacans og den franske retnings argument for, at alt ubevidst i sin essens skabes udefra.",
+          "why_it_matters": "En svimlende tanke der flytter fokus fra hjernen og ud i de menneskelige relationer.",
+          "stop_signal": "ved overgangen til Laplanche"
+        },
+        {
+          "number": 4,
+          "source_location": "Afsnittet om det intersubjektive felt (ca. s. 219)",
+          "task": "Afdæk hvordan asymmetrien i den voksnes gådefulde påvirkning driver psyken og danner tidsforskudte traumer.",
+          "why_it_matters": "Her lander de sværeste og mest potente pointer om den uforståelige voksne, der forstyrrer sit barn.",
+          "stop_signal": "ved indgangen til tyske forhold"
+        },
+        {
+          "number": 5,
+          "source_location": "Afsnittet om interaktionsformer (ca. s. 230)",
+          "task": "Gennemskue hvordan Alfred Lorenzers ubevidste skabeloner forener marxisme med biologi og tidligt mor-barn samspil.",
+          "why_it_matters": "Leverer en kropsliggjort samfundskritik.",
+          "stop_signal": "før redegørelsen for Žižek"
+        },
+        {
+          "number": 6,
+          "source_location": "Afsnittet om den psykoanalytiske subjektopfattelse (ca. s. 233)",
+          "task": "Forbind det opsamlede billede til kursets to stærkeste værktøjer: intern determination og tidslig historicitet.",
+          "why_it_matters": "Direkte ammunition til kursets eksamen og tværgående analyse.",
+          "stop_signal": "når kapitlet runder definitivt af"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "indre psykisk repræsentation",
+          "why": "Definerer den rette forståelse af det psykoanalytiske objektbegreb.",
+          "where_to_look": "Blandt de første sider under kernetemaerne."
+        },
+        {
+          "target": "det ubevidste kommer udefra",
+          "why": "Den franske skoles hovedargument mod biologiens eneret på jeget.",
+          "where_to_look": "Omkring præsentationen af de franske indsigter."
+        },
+        {
+          "target": "gådefulde meddelelser",
+          "why": "Udpeger den forstyrrende asymmetri, der skaber barnets indre virkelighed.",
+          "where_to_look": "Under Laplanches franske teoriudvikling."
+        },
+        {
+          "target": "konstituerende interaktionsform",
+          "why": "Lorenzers bindeled mellem ubevidste bevægelser og samfundets love.",
+          "where_to_look": "Hvor freudomarxismen udfolder sig dybest."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange, slaviske lister over udviste og emigrerede analytikere, der nævnes i det historiske tillæg.",
+        "Den detaljerede adskillelse af underkategorier inden for Adult Attachment Interview skemaerne.",
+        "Lacan og Žižeks indviklede popkulturelle eksempler, hvis hovedpointen om begæret glipper."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner for at hente tekstens kernebegreber uden at drukne i biografiske parenteser.",
+      "coverage_note": "Fokuserer selektivt på objektbegrebet, de tre teoretiske retninger, og decentrering som epistemologisk betingelse for kurset.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Grundbog s. 206-208",
+          "heading": "Grundstenene: Objekt, Drift og Decentrering",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvad psykoanalysen i det hele taget bygger på, når den fjerner sit fokus fra ydre adfærd og kigger indad?",
+          "explanation_paragraphs": [
+            "I den klassiske som vel som i den nye psykoanalyse er et objekt næsten aldrig en konkret, materiel fysisk ting ude i verden. Det er derimod en kompliceret, konstrueret indre psykisk repræsentation af et andet menneske, som vores drift kan rettes imod. Den menneskelige egenart bygges primært af disse indre relationer.",
+            "Teorien trækker desuden en skarp grænse mellem dyriske, fysiologiske overlevelsesbehov, og menneskets psykiske drifter. Drifterne søger en gentagelse af tidlige lystbetonede og behagelige tilstande, og i kraft af at de er uendeligt fleksible, forankrer de vores adfærd i en stærk intern virkelighed frem for en ydre respons.",
+            "På trods af enorm splittelse i senere år fastholder alle dominerende retninger ét eneste, altgørende dogme: Subjektet er decentreret. Vores handlende jeg har ikke kontrollen, og vores frie fornuft kender kun en brøkdel af årsagerne til vores egen adfærd."
+          ],
+          "key_points": [
+            "Et psykoanalytisk objekt er primært en indre tankemæssig repræsentation af et vigtigt andet menneske.",
+            "Drifter handler om lystens og fantasiens formbarhed, uafhængigt af kroppens hunger efter overlevelse.",
+            "En decentreret bevidsthed er ikke centrum for personligheden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "indre psykisk repræsentation",
+              "why_it_matters": "Nedbryder misforståelsen af at et 'objekt' henviser til materie.",
+              "source_location": "s. 206"
+            },
+            {
+              "phrase": "bevidstheden ikke er centrum i psyken",
+              "why_it_matters": "Formulerer grundkravet til al moderne psykoanalytisk videnskab.",
+              "source_location": "s. 208"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Grundbog s. 211-212",
+          "heading": "Den britiske skole: Mentalisering og Modi",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Forklar hvordan hjernen langsomt udvikler en skelneevne mellem ren fantasi og det virkelige omgivende rum?",
+          "explanation_paragraphs": [
+            "Den britiske teoretiske retning, centreret stærkt om Peter Fonagy og kognition, opstiller evnen til mentalisering som et evolutionært skjold. Mentaliseringsevnen tillader et barn bevidst at forstå, at andre har helt uafhængige følelser og motiver, og forhindrer systemet i et ødelæggende selvsving.",
+            "Som spæd gennemleves to afgørende modi, før den rigtige regulering indtræffer. I den første, navngivet 'Equivalent Mode', flyder barnets indre fantasiverden og ydre realiteter fuldstændigt i ét; alt tænkt opleves som sandt.",
+            "Den anden modus, 'Pretend Mode', åbner muligheden for at lege med grænserne, men i legen fratages fantasien sine konsekvenser i det ydre rum. Først i løbet af fireårsalderen forenes disse spor og afføder den færdige mentalisering."
+          ],
+          "key_points": [
+            "Mentalisering gør det muligt at spejle, forudse og tøjle svære affektive storme.",
+            "Equivalent Mode gør trusler i fantasien rædselsvækkende ægte for systemet.",
+            "Pretend Mode giver et ufarligt frikvarter, men fungerer isoleret fra omgivelserne."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "Grundbog s. 216-218",
+          "heading": "Den franske skole: Den anden og det ubevidste",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Bevis at individets allermest intime, mørke afkroge slet ikke findes inde i kroppen fra fødslen?",
+          "explanation_paragraphs": [
+            "Imens den britiske fløj var naturvidenskabeligt orienteret, fokuserede franskmændene benhårdt på at læse Freud ud fra en rent symbolsk, fortolkende vinkel. I centrum af denne læsning står påstanden om at subjektet anbringes i et evigt spil over for menneskelige ord og regler.",
+            "Lacans helt radikale manøvre var at insistere på, at det ubevidste lag absolut ingen iboende biologisk eksistens har i barnets hjerne fra fødslen. Det ubevidste skabes tværtimod af omverdenen.",
+            "Det psykoanalytiske subjekt defineres på denne måde ud fra, og fuldstændig anbragt i hænderne på, en udvendig autoritet – kaldet 'den anden'. Al personlig udvikling drives uundgåeligt kun fremad, når barnet konfronteres med denne fremmede andens krav."
+          ],
+          "key_points": [
+            "Det ubevidste kan betragtes som en konstruktion indlejret og bestemt af andre mennesker.",
+            "Individet formes grundlæggende via symbolsk sprog, frem for at udfolde et præprogrammeret væsen.",
+            "Frankrig leverer derved det mest udadrettede, ekstreme argument for et subjekt fastspændt i intersubjektive felt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "det ubevidste kommer udefra",
+              "why_it_matters": "Opgør med ideen om en skjult brønd af genetiske dyriske impulser gemt i kødet.",
+              "source_location": "s. 217"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Grundbog s. 219-224",
+          "heading": "Laplanche: Forførelse og Nachträglichkeit",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Udred mekanismen, der muliggør at en erindring kan gøres pludselig traumatisk mange år efter selve handlingen fandt sted?",
+          "explanation_paragraphs": [
+            "Jean Laplanche betoner, at den asymmetriske og skæve relation mellem den erfarne voksne og det ubefæstede barn er afgørende. Den voksne overøser barnet med instinktive, kærlige henvendelser, men indkapslet i disse henvendelser ligger der ubevidste, mørke intentioner og begær, som den voksne ofte selv er ubekendt med.",
+            "Disse skjulte mønstre træffer barnet som 'gådefulde meddelelser'. Barnet tvinges derved desperat ind i et arbejde, hvor det forsøger at afkode, fordøje og oversætte hensigterne for at overleve relationelt. Restprodukterne af det ufærdige overssættelsesarbejde danner selve grundstenene i barnets ubevidste apparat.",
+            "Dette knyttes til fænomenet Nachträglichkeit, det at noget har en udskudt eftervirkning. Et ufarligt kys eller indtryk under opvæksten kan ligge inaktivt for så at eksplodere tilbage i bevidstheden under puberteten. Her har bevidstheden omsider erhvervet en viden, der gør indtrykket seksuelt og truende, og udviklingen bryder derfor brat sit rationelle kronologiske ur."
+          ],
+          "key_points": [
+            "Mødets skæve magtfordeling tvinger det lille barn til uafbrudt fortolkningsarbejde.",
+            "Barnet internaliserer uundgåeligt fragmenter af de voksnes eget ubevidste rod.",
+            "Tid virker forstyrret og skruet baglæns i den psykoanalytiske eftervirkning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "gådefulde meddelelser",
+              "why_it_matters": "Præciserer selve årsagen til barnets nødvendige og forvirrende oversættelsesopgave.",
+              "source_location": "s. 222"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 222",
+              "passage": "Barnet mærker, at den voksnes henvendelse er rettet mod barnet, men forstår ikke, hvorfor eller hvad den betyder.",
+              "why_it_matters": "Viser hvordan trygheden ved forælderen er uadskilleligt knyttet til faren for at blive infiltreret med uoversættelige og gådefulde koder."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Grundbog s. 228-231",
+          "heading": "Den tyske skole: Samfund og Interaktionsformer",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Fastholdelsen af, hvordan rigide politiske love pludselig kan overstyre vores ubevidste instinkter?",
+          "explanation_paragraphs": [
+            "Mens franskmændene gravede i den snævre relation og sproget, kastede det tyske freudomarxistiske miljø omkring Frankfurterskolen sig over magten. De spurgte, hvordan i alverden vi overhovedet kom til at ønske undertrykkelsen, og fandt svaret ved at krydse Marx' politiske analyse med Freuds afkodning af sindet.",
+            "Især Alfred Lorenzer fandt et brugbart krydsfelt, og udviklede ideen om 'interaktionsformer'. Dette var ikke kun bevidste sociale normer, men rå, tidlige kropslige og neurologiske registreringer af, hvordan mor og barn agerede med hinanden før sprogets ankomst.",
+            "Her trængte samfundets barske ideologiske forventninger – og i yderste konsekvens den kolde borgerlige fornuft – fuldstændigt ned og gennemsyrede barnets kropsdrifter. Følelseslivet kan dermed aldrig påberåbes uskyld, men er struktureret af kulturen fra dag ét."
+          ],
+          "key_points": [
+            "Den marxistiske drejning gør analytikeren i stand til at spore lovgivningen direkte ind på soveværelset.",
+            "Interaktionsformer er de første ubevidste spor af tilladte handlingsmønstre.",
+            "Sproget fungerer kun som overbygning på en allerede stærkt samfundsmæssiggjort biologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "konstituerende interaktionsform",
+              "why_it_matters": "Afslører selve den dybe rute, normer bevæger sig for at indtage organismen.",
+              "source_location": "s. 207"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Grundbog s. 233-237",
+          "heading": "Decentrering og Orienteringspunkterne",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Vurder hvordan psykoanalysens epistemologiske tyngdepunkt passer ind i kursets metateoretiske overbygning?",
+          "explanation_paragraphs": [
+            "Psykoanalysen er mere end teori, den udgør en markant omvæltning i brugen af orienteringspunkterne. I forhold til determination vender den konsekvent blikket indad – hvor adfærdspsykologi leder efter udefrakommende miljøbelønninger, afslører psykoanalysen et voldsomt, ukontrollabelt system af intern energiudladning og kompromisser mellem uforsonlige drifter.",
+            "Med hensyn til historicitet bryder den totalt med illusionen om et kronologisk trappetrin. Livets vej fremstår ikke længere som forbi, blot fordi barnet bliver voksent, idet Nachträglichkeit kontinuerligt arbejder baglæns og omskriver traumernes betydning med tilbagevirkende kraft.",
+            "Alt dette falder tilbage på kerneargumentet om decentrering. Accepten af, at vores motiver i udgangspunktet befinder sig begravet, splintret eller direkte overtaget af ydre strukturer, danner broen over til Foucault. Det er det første store brud med det autonome og gennemsigtige egenskabs-menneske."
+          ],
+          "key_points": [
+            "Intern determination er her domineret af indre konflikter, ikke fri kognitiv planlægning.",
+            "Historicitet foregår forhandlende, spiralformet og bagudrettet.",
+            "Decentreringen lægger uforvarende skinnerne til en decideret kritisk, sociokulturel personlighedsforståelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "cirkulær eller nærmere spiralformet bevægelse",
+              "why_it_matters": "En præcis metafor for psykoanalysens brudte tilgang til tid og personlig fortid.",
+              "source_location": "s. 236"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvad psykoanalysen i det hele taget bygger på, når den fjerner sit fokus fra ydre adfærd og kigger indad?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "To korte definitioner",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvordan hjernen langsomt udvikler en skelneevne mellem ren fantasi og det virkelige omgivende rum?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En udviklingsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at individets allermest intime, mørke afkroge slet ikke findes inde i kroppen fra fødslen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et interaktionelt årsagssammenhæng",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Udred mekanismen, der muliggør at en erindring kan gøres pludselig traumatisk mange år efter selve handlingen fandt sted?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En tidslig mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fastholdelsen af, hvordan rigide politiske love pludselig kan overstyre vores ubevidste instinkter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En biologisk-sociologisk funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Vurder hvordan psykoanalysens epistemologiske tyngdepunkt passer ind i kursets metateoretiske overbygning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Et kort argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan tre vidt forskellige psykoanalytiske retninger dele den radikale påstand om, at menneskets bevidsthed ikke styrer sin egen adfærd?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter udelukkende ud fra din hukommelse efter du har læst. Træk først Abridged Reader frem til reparation, når du går i stå.",
+      "overview": [
+        "Psykoanalysen markerer et brud med den udvendige adfærdspsykologi ved at understrege en intern, ofte afskærmet og ulogisk psykisk realitet.",
+        "På trods af enorm teoretisk opsplitning mellem britisk kognition og fransk sprog, samles alle om antagelsen af det decentrerede jeg.",
+        "Teksten leverer det mest radikale bud på system-intern determination og ikke-lineær tidslig historicitet forud for eksamen."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Inden for de psykoanalytiske grundsten udgør drifter den lystbærende fleksibilitet, mens et __________ henviser til en indre tankemæssig gengivelse af et andet menneske.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Ifølge Fonagy er integrationen af barnets legende modus og virkelighedstro modus betingelsen for fuldt udviklet __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Modsat en tryg, udadrettet fantasi opleves enhver skygge i mørket decideret faretruende som virkelighed i den frygtsomme __________ Mode.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "I den rent franske udlægning har det ubevidste overhovedet ingen oprindelse inde i biologien, men stammer direkte i formen fra den __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Når Laplanche beskriver den omsorgsfulde påvirkning, anser han den voksnes uafklarede begærsudbrud mod barnet for at være rent ud __________ meddelelser.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Den skæbnesvangre logik, der lader en inaktiv oplevelse detonere som traume flere år senere via pubertetens genlæsning, kaldes __________.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 langt fagterm"
+        },
+        {
+          "number": 7,
+          "sentence": "Den tyske skole brugte konceptet om tavse, fastlagte __________ til at fastspænde individets lyst til de knusende autoritære marxistiske samfundslove.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 8,
+          "sentence": "Den altomfattende epistemologiske betingelse, der forener dem alle i forberedelsen på kursusdel 4, er fraværet af kontrol i det __________ subjekt.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en rute, der viser den britiske model for virkelighedssansens etablering.",
+          "required_elements": [
+            "To parallelle tidlige modi",
+            "det cirka 4. leveår",
+            "slutproduktet (evnen til at håndtere affekt"
+          ],
+          "blank_space_hint": "Tegn det som et netværk, hvor to lukkede stier smelter sammen midtpå."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér retningen af tid og betydning i Laplanches franske tidsforståelse.",
+          "required_elements": [
+            "Den indledende uforståede kodning",
+            "dvalen",
+            "den bagudrettede tilbagespoling i puberteten",
+            "det færdige brændte minde"
+          ],
+          "blank_space_hint": "Brug en spiral eller en række pile der drejer skarpt baglæns over en optegnet barndom."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Benyt dette overblik som stikordskort, når du skal argumentere flydende og hurtigt for de centrale brud, psykoanalysen medbringer til eksamensbordet.",
+      "use_this_text_for": [
+        "At levere beviset på det endelige epistemologiske fald af den overfladiske egenskabspsykologi.",
+        "At forklare forskellen på mekanisk, instinktiv dyre-biologi og fleksible, ustabile lyst-drifter.",
+        "At føre determination helt væk fra Banduras simple belønninger, og slå fast hvordan et system kan angribe sig selv indefra.",
+        "At kaste Nachträglichkeit frem som en decideret kompleks forståelse af punktet 'historicitet', der modsiger trin-for-trin tænkning.",
+        "At klargøre jorden rent konkluderende for Foucault, fordi en diskurs først giver mening, når jeget er sat ud af spillet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W02L1 Trækpsykologi (Costa & McCrae)",
+          "connection": "Kontrastér selverkendelsens uigennemtrængelige barriere hos Freud over for det ubekymrede udfyldte skema over ærligt overleverede personlighedstræk."
+        },
+        {
+          "course_theme": "W12L1 Orienteringspunkterne",
+          "connection": "Træk straks teorien hen over to punkter: Ekstrem intern spændings-determination og dynamisk cirkel-historicitet."
+        },
+        {
+          "course_theme": "W10L1 Poststrukturalisme",
+          "connection": "Peg direkte på ankomsten af den decentrerede bevidsthed. Uden den lukkede dør ind til ren vilje, kunne kritikken af subjektiveringsmagt ikke rodfæstes."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Behavioristisk indlæringsteori",
+          "how_to_compare": "Gør forskellen på årsager knivskarp: Betingning afventer stimuli i rummet, psykoanalyse ædes op indefra af konfliktende mentale kompromisser."
+        },
+        {
+          "compare_with": "Evolutionspsykologiens drift",
+          "how_to_compare": "Forsvar afstanden ved at klargøre, hvordan evolution vil artens trygge overlevelse, mens den franske dybdepsykologi tillader uforståeligt selvdestruktivt begær i objektrelationerne."
+        },
+        {
+          "compare_with": "Kritisk psykologi (Klaus Holzkamp)",
+          "how_to_compare": "Dyrk spændet i håndteringen af samfundet. Holzkamp forventer bevidst handlende modstand. Lorenzer sporer roden som ubevidst programmeret før vi overhovedet kunne tale."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når emnet tvinger dig over på personlighedens grundlag",
+          "use_in_answer": "Smæk decentrering i bordet som første kort. Fasthold bevidstheden som det svage filter på isbjerget.",
+          "caution": "Undgå enhver implicit sætning, der tillægger individet overblik, rationel evne eller 'fri fornuft'."
+        },
+        {
+          "prompt_type": "Når du diskuterer de helt tidlige år af barndommen",
+          "use_in_answer": "Dyrk Laplanches franske gådefulde indtrængen, for at fjerne ansvaret fra genetikken over på relationens asymmetri.",
+          "caution": "Gør ikke processen til en hyggelig overlevering, men hold tonen skarp på presset fra den voksnes afvigelse."
+        },
+        {
+          "prompt_type": "Når du afhøres i de brede orienteringspunkter",
+          "use_in_answer": "Brug Nachträglichkeit som det sublime angreb på fastfrossen kausal tid, og vis tidsmaskinen i traumet.",
+          "caution": "Tegner du tiden, så tegn den med tilbagevirkende spiraler, ikke en lige streg der ender ud i aldersmodenhed."
+        },
+        {
+          "prompt_type": "Når faren opstår for at udvande ordet 'objekt'",
+          "use_in_answer": "Vær utrolig kold over for dagligdagssproget. Slå det fast som et indre fænomen: en konstrueret, følelsesladet mental genstand.",
+          "caution": "Fjern alle fysiske skabeloner fra sproget; lad være at lede censor mod tanken om tingsliggørelse i rummet."
+        },
+        {
+          "prompt_type": "Når du trækker tråde mellem forskellige skoler",
+          "use_in_answer": "Spil aktivt på spændingen mellem Englands kognitive tilpasning, Frankrigs symboltunge ubevidste struktur og Tysklands revolutionære normkritik.",
+          "caution": "Forsøg under ingen omstændigheder at forsvare psykoanalyse som en rolig, enig blok ejet suverænt af Freuds spøgelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At drifter, ligesom instinkter, primært er et internt biologisk design skabt til at forlænge slægtens overlevelse.",
+          "better_reading": "Grib ind og placer drifter i uendelig formbar tilstand, der blinder jager efter lystens udladning alene."
+        },
+        {
+          "trap": "At det ubevidste fungerer som en medfødt kælder, hjernen ejer og forvalter i isolation fra fødslen.",
+          "better_reading": "Beskyt Frankrigs indsigter og indrøm, at kælderen blev gravet og indrettet af de andre forældrefigurernes magtgreb i interaktionen."
+        },
+        {
+          "trap": "At skolerne kun kan beskæftige sig lukkede lidelser hos den enkelte i en dyr sofa, revet væk fra gaden og samfundet.",
+          "better_reading": "Påvis hvordan den tyske fløj benyttede kropsnære interaktionsformer til præcist at lade overvågning og undertrykkelse gro fast i folkesjælen."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør resolut for de moderne retningers subjektopfattelse ved at lade 'decentrering' kaste skygge over trækpsykologien, og anfør et pragteksemplar på, hvordan ubevidst determination udspiller sig i mødet med barnet.",
+      "mini_exam_answer_plan_slots": [
+        "Placer resolut det decentrerede jeg for at ødelægge enhver tro på Costa & McCraes gennemsigtige, åbne og retskafne individ.",
+        "Gennemhul hurtigt dagligdagens falske forståelse af objektbegrebet over for driftens lystprægede realitet.",
+        "Vælg Laplanche som dit pragteksempel: Lad uforståede forældreindsprøjtninger bygge selve drivkraften op fra ingenting.",
+        "Læg udmærkelsen fast med Nachträglichkeit; stik hul i den rene, fremadrettede, kronologiske tidsforståelse.",
+        "Bind til slut fraværet af herredømmet i eget hus tæt over til den absolutte forudsætning for Foucaults magtkritiske overtagelse."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+      "lecture_key": "W05L2",
+      "source_title": "Grundbog kapitel 07 - Nyere psykoanalytiske teorier"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs dette som optakt for at forstå den konflikt og de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Mange forbinder psykoanalysen med Freuds klassiske briks og barndommens afdækkede traumer. Men i dette kursus markerer læsningen et radikalt epistemologisk brud med alt det, vi hidtil har antaget om personligheden og evnen til at måle den udefra.",
+        "Hvor trækteorier forestiller sig et menneske, der kan afkodes som en gennemsigtig størrelse, introducerer den nyere psykoanalyse en voldsom, skjult indre dynamik. Den bygger på den fundamentale erkendelse af, at vores bevidste fornuft på ingen måde er herre i eget hus.",
+        "Alligevel er den moderne psykoanalyse overhovedet ikke én samlet og enig teori. Efter Freuds indledende opdagelser er feltet splintret i vidt forskellige retninger afhængigt af de historiske og geografiske rammer. Det centrale spørgsmål bliver pludselig: Er vores utilgængelige psyke primært bygget af kognitiv tilpasning, af de dominerende samfundsstrukturer, eller af forstyrrende og uforståelige budskaber fra vores forældre?",
+        "For at afgøre det, navigerer vi i tre dominerende spor: Et britisk spor der fokuserer på vores langsomt opbyggede evne til mentalisering, et fransk spor der ser det ubevidste skabt gennem den andens gådefulde indgriben, og et tysk spor præget af socialkritik og marxistisk tænkning.",
+        "Udfordringen for dig er at overvåge, hvordan disse tre meget uenige skoler til sidst bliver tvunget til at samle sig om den afgørende påstand om det decentrerede subjekt. Et begreb, der kommer til at afgøre resten af kursets diskussioner om magt, diskurs og samfund."
+      ],
+      "main_problem": "Hvordan kan tre vidt forskellige psykoanalytiske retninger dele den radikale påstand om, at menneskets bevidsthed ikke styrer sin egen adfærd?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad udgør psykoanalysens særlige definitionsgrundlag, herunder begreberne objekt og drift?",
+          "why_it_matters": "Nødvendigt for at forstå forskellen på biologi og den interne psykiske realitet.",
+          "answer_form": "To korte definitioner"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan forklarer Fonagys britiske skole opbygningen af barnets virkelighedsopfattelse?",
+          "why_it_matters": "Forklarer evnen til affektregulering som en forudsætning for stabil overlevelse.",
+          "answer_form": "En udviklingsbeskrivelse"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor hævder den franske skole insisterende, at det ubevidste udelukkende konstitueres af den anden?",
+          "why_it_matters": "Fjerner det ubevidste fra at være en mørk, medfødt biologisk pool.",
+          "answer_form": "Et interaktionelt årsagssammenhæng"
+        },
+        {
+          "number": 4,
+          "question": "Hvordan forstyrrer Laplanches begreb om Nachträglichkeit vores forståelse af lineær tid?",
+          "why_it_matters": "Nedbryder ideen om en uforanderlig fortid og introducerer cirkulær historicitet.",
+          "answer_form": "En tidslig mekanisme"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan forsøger den tyske skole at koble samfundets magt direkte i kroppens handlinger?",
+          "why_it_matters": "Viser hvordan normer sætter sig i kødet længe før bevidst sprog kan bruges.",
+          "answer_form": "En biologisk-sociologisk funktion"
+        },
+        {
+          "number": 6,
+          "question": "Hvorfor er den fælles enighed om decentrering tekstens vigtigste pointer i forhold til kurset?",
+          "why_it_matters": "Det er selve broen over til de kritiske og poststrukturalistiske teorier senere.",
+          "answer_form": "Et kort argument"
+        }
+      ],
+      "why_this_text_matters": "Denne grundbogstekst markerer kursets skarpe epistemologiske sving væk fra den målbare overflade, og ind i en teori styret af skjult, indre determination.",
+      "overview": [
+        "En systematisk kortlægning af psykoanalysens splittede udvikling over det britiske, franske og tyske spor.",
+        "En fastlæggelse af den fundamentale forskel mellem ren biologi og indre psykisk realitet.",
+        "En placering af det decentrerede subjekt som det uomgængelige vilkår for al videre dybdegående teori."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Afsnittet om kernetemaer i psykoanalysen (ca. s. 206)",
+          "task": "Afgør hvordan begreberne biologiske behov og psykiske drifter adskiller sig markant fra hinanden.",
+          "why_it_matters": "Dette etablerer en hel gren af indre psykisk dynamik, der nægter at adlyde ren overlevelse.",
+          "stop_signal": "når diskussionen af subjektet er landet"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet om mentalisering og affektregulering (ca. s. 211)",
+          "task": "Identificer de to afgørende modi, Equivalent og Pretend, som barnet opholder sig i inden fuld kognition indtræffer.",
+          "why_it_matters": "Det engelske forsøg på at løse mysteriet om, hvordan vi lærer at kende forskel på fri fantasi og hård virkelighed.",
+          "stop_signal": "når tilknytningstyperne nævnes"
+        },
+        {
+          "number": 3,
+          "source_location": "Afsnittet om psykoanalysen i Frankrig (ca. s. 216)",
+          "task": "Find Lacans og den franske retnings argument for, at alt ubevidst i sin essens skabes udefra.",
+          "why_it_matters": "En svimlende tanke der flytter fokus fra hjernen og ud i de menneskelige relationer.",
+          "stop_signal": "ved overgangen til Laplanche"
+        },
+        {
+          "number": 4,
+          "source_location": "Afsnittet om det intersubjektive felt (ca. s. 219)",
+          "task": "Afdæk hvordan asymmetrien i den voksnes gådefulde påvirkning driver psyken og danner tidsforskudte traumer.",
+          "why_it_matters": "Her lander de sværeste og mest potente pointer om den uforståelige voksne, der forstyrrer sit barn.",
+          "stop_signal": "ved indgangen til tyske forhold"
+        },
+        {
+          "number": 5,
+          "source_location": "Afsnittet om interaktionsformer (ca. s. 230)",
+          "task": "Gennemskue hvordan Alfred Lorenzers ubevidste skabeloner forener marxisme med biologi og tidligt mor-barn samspil.",
+          "why_it_matters": "Leverer en kropsliggjort samfundskritik.",
+          "stop_signal": "før redegørelsen for Žižek"
+        },
+        {
+          "number": 6,
+          "source_location": "Afsnittet om den psykoanalytiske subjektopfattelse (ca. s. 233)",
+          "task": "Forbind det opsamlede billede til kursets to stærkeste værktøjer: intern determination og tidslig historicitet.",
+          "why_it_matters": "Direkte ammunition til kursets eksamen og tværgående analyse.",
+          "stop_signal": "når kapitlet runder definitivt af"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "indre psykisk repræsentation",
+          "why": "Definerer den rette forståelse af det psykoanalytiske objektbegreb.",
+          "where_to_look": "Blandt de første sider under kernetemaerne."
+        },
+        {
+          "target": "det ubevidste kommer udefra",
+          "why": "Den franske skoles hovedargument mod biologiens eneret på jeget.",
+          "where_to_look": "Omkring præsentationen af de franske indsigter."
+        },
+        {
+          "target": "gådefulde meddelelser",
+          "why": "Udpeger den forstyrrende asymmetri, der skaber barnets indre virkelighed.",
+          "where_to_look": "Under Laplanches franske teoriudvikling."
+        },
+        {
+          "target": "konstituerende interaktionsform",
+          "why": "Lorenzers bindeled mellem ubevidste bevægelser og samfundets love.",
+          "where_to_look": "Hvor freudomarxismen udfolder sig dybest."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange, slaviske lister over udviste og emigrerede analytikere, der nævnes i det historiske tillæg.",
+        "Den detaljerede adskillelse af underkategorier inden for Adult Attachment Interview skemaerne.",
+        "Lacan og Žižeks indviklede popkulturelle eksempler, hvis hovedpointen om begæret glipper."
+      ],
+      "opening_passages": []
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner for at hente tekstens kernebegreber uden at drukne i biografiske parenteser.",
+      "coverage_note": "Fokuserer selektivt på objektbegrebet, de tre teoretiske retninger, og decentrering som epistemologisk betingelse for kurset.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Grundbog s. 206-208",
+          "heading": "Grundstenene: Objekt, Drift og Decentrering",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Afgør hvad psykoanalysen i det hele taget bygger på, når den fjerner sit fokus fra ydre adfærd og kigger indad?",
+          "explanation_paragraphs": [
+            "I den klassiske som vel som i den nye psykoanalyse er et objekt næsten aldrig en konkret, materiel fysisk ting ude i verden. Det er derimod en kompliceret, konstrueret indre psykisk repræsentation af et andet menneske, som vores drift kan rettes imod. Den menneskelige egenart bygges primært af disse indre relationer.",
+            "Teorien trækker desuden en skarp grænse mellem dyriske, fysiologiske overlevelsesbehov, og menneskets psykiske drifter. Drifterne søger en gentagelse af tidlige lystbetonede og behagelige tilstande, og i kraft af at de er uendeligt fleksible, forankrer de vores adfærd i en stærk intern virkelighed frem for en ydre respons.",
+            "På trods af enorm splittelse i senere år fastholder alle dominerende retninger ét eneste, altgørende dogme: Subjektet er decentreret. Vores handlende jeg har ikke kontrollen, og vores frie fornuft kender kun en brøkdel af årsagerne til vores egen adfærd."
+          ],
+          "key_points": [
+            "Et psykoanalytisk objekt er primært en indre tankemæssig repræsentation af et vigtigt andet menneske.",
+            "Drifter handler om lystens og fantasiens formbarhed, uafhængigt af kroppens hunger efter overlevelse.",
+            "En decentreret bevidsthed er ikke centrum for personligheden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "indre psykisk repræsentation",
+              "why_it_matters": "Nedbryder misforståelsen af at et 'objekt' henviser til materie.",
+              "source_location": "s. 206"
+            },
+            {
+              "phrase": "bevidstheden ikke er centrum i psyken",
+              "why_it_matters": "Formulerer grundkravet til al moderne psykoanalytisk videnskab.",
+              "source_location": "s. 208"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Grundbog s. 211-212",
+          "heading": "Den britiske skole: Mentalisering og Modi",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Forklar hvordan hjernen langsomt udvikler en skelneevne mellem ren fantasi og det virkelige omgivende rum?",
+          "explanation_paragraphs": [
+            "Den britiske teoretiske retning, centreret stærkt om Peter Fonagy og kognition, opstiller evnen til mentalisering som et evolutionært skjold. Mentaliseringsevnen tillader et barn bevidst at forstå, at andre har helt uafhængige følelser og motiver, og forhindrer systemet i et ødelæggende selvsving.",
+            "Som spæd gennemleves to afgørende modi, før den rigtige regulering indtræffer. I den første, navngivet 'Equivalent Mode', flyder barnets indre fantasiverden og ydre realiteter fuldstændigt i ét; alt tænkt opleves som sandt.",
+            "Den anden modus, 'Pretend Mode', åbner muligheden for at lege med grænserne, men i legen fratages fantasien sine konsekvenser i det ydre rum. Først i løbet af fireårsalderen forenes disse spor og afføder den færdige mentalisering."
+          ],
+          "key_points": [
+            "Mentalisering gør det muligt at spejle, forudse og tøjle svære affektive storme.",
+            "Equivalent Mode gør trusler i fantasien rædselsvækkende ægte for systemet.",
+            "Pretend Mode giver et ufarligt frikvarter, men fungerer isoleret fra omgivelserne."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "Grundbog s. 216-218",
+          "heading": "Den franske skole: Den anden og det ubevidste",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Bevis at individets allermest intime, mørke afkroge slet ikke findes inde i kroppen fra fødslen?",
+          "explanation_paragraphs": [
+            "Imens den britiske fløj var naturvidenskabeligt orienteret, fokuserede franskmændene benhårdt på at læse Freud ud fra en rent symbolsk, fortolkende vinkel. I centrum af denne læsning står påstanden om at subjektet anbringes i et evigt spil over for menneskelige ord og regler.",
+            "Lacans helt radikale manøvre var at insistere på, at det ubevidste lag absolut ingen iboende biologisk eksistens har i barnets hjerne fra fødslen. Det ubevidste skabes tværtimod af omverdenen.",
+            "Det psykoanalytiske subjekt defineres på denne måde ud fra, og fuldstændig anbragt i hænderne på, en udvendig autoritet – kaldet 'den anden'. Al personlig udvikling drives uundgåeligt kun fremad, når barnet konfronteres med denne fremmede andens krav."
+          ],
+          "key_points": [
+            "Det ubevidste kan betragtes som en konstruktion indlejret og bestemt af andre mennesker.",
+            "Individet formes grundlæggende via symbolsk sprog, frem for at udfolde et præprogrammeret væsen.",
+            "Frankrig leverer derved det mest udadrettede, ekstreme argument for et subjekt fastspændt i intersubjektive felt."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "det ubevidste kommer udefra",
+              "why_it_matters": "Opgør med ideen om en skjult brønd af genetiske dyriske impulser gemt i kødet.",
+              "source_location": "s. 217"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "Grundbog s. 219-224",
+          "heading": "Laplanche: Forførelse og Nachträglichkeit",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Udred mekanismen, der muliggør at en erindring kan gøres pludselig traumatisk mange år efter selve handlingen fandt sted?",
+          "explanation_paragraphs": [
+            "Jean Laplanche betoner, at den asymmetriske og skæve relation mellem den erfarne voksne og det ubefæstede barn er afgørende. Den voksne overøser barnet med instinktive, kærlige henvendelser, men indkapslet i disse henvendelser ligger der ubevidste, mørke intentioner og begær, som den voksne ofte selv er ubekendt med.",
+            "Disse skjulte mønstre træffer barnet som 'gådefulde meddelelser'. Barnet tvinges derved desperat ind i et arbejde, hvor det forsøger at afkode, fordøje og oversætte hensigterne for at overleve relationelt. Restprodukterne af det ufærdige overssættelsesarbejde danner selve grundstenene i barnets ubevidste apparat.",
+            "Dette knyttes til fænomenet Nachträglichkeit, det at noget har en udskudt eftervirkning. Et ufarligt kys eller indtryk under opvæksten kan ligge inaktivt for så at eksplodere tilbage i bevidstheden under puberteten. Her har bevidstheden omsider erhvervet en viden, der gør indtrykket seksuelt og truende, og udviklingen bryder derfor brat sit rationelle kronologiske ur."
+          ],
+          "key_points": [
+            "Mødets skæve magtfordeling tvinger det lille barn til uafbrudt fortolkningsarbejde.",
+            "Barnet internaliserer uundgåeligt fragmenter af de voksnes eget ubevidste rod.",
+            "Tid virker forstyrret og skruet baglæns i den psykoanalytiske eftervirkning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "gådefulde meddelelser",
+              "why_it_matters": "Præciserer selve årsagen til barnets nødvendige og forvirrende oversættelsesopgave.",
+              "source_location": "s. 222"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 222",
+              "passage": "Barnet mærker, at den voksnes henvendelse er rettet mod barnet, men forstår ikke, hvorfor eller hvad den betyder.",
+              "why_it_matters": "Viser hvordan trygheden ved forælderen er uadskilleligt knyttet til faren for at blive infiltreret med uoversættelige og gådefulde koder."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Grundbog s. 228-231",
+          "heading": "Den tyske skole: Samfund og Interaktionsformer",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Fastholdelsen af, hvordan rigide politiske love pludselig kan overstyre vores ubevidste instinkter?",
+          "explanation_paragraphs": [
+            "Mens franskmændene gravede i den snævre relation og sproget, kastede det tyske freudomarxistiske miljø omkring Frankfurterskolen sig over magten. De spurgte, hvordan i alverden vi overhovedet kom til at ønske undertrykkelsen, og fandt svaret ved at krydse Marx' politiske analyse med Freuds afkodning af sindet.",
+            "Især Alfred Lorenzer fandt et brugbart krydsfelt, og udviklede ideen om 'interaktionsformer'. Dette var ikke kun bevidste sociale normer, men rå, tidlige kropslige og neurologiske registreringer af, hvordan mor og barn agerede med hinanden før sprogets ankomst.",
+            "Her trængte samfundets barske ideologiske forventninger – og i yderste konsekvens den kolde borgerlige fornuft – fuldstændigt ned og gennemsyrede barnets kropsdrifter. Følelseslivet kan dermed aldrig påberåbes uskyld, men er struktureret af kulturen fra dag ét."
+          ],
+          "key_points": [
+            "Den marxistiske drejning gør analytikeren i stand til at spore lovgivningen direkte ind på soveværelset.",
+            "Interaktionsformer er de første ubevidste spor af tilladte handlingsmønstre.",
+            "Sproget fungerer kun som overbygning på en allerede stærkt samfundsmæssiggjort biologi."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "konstituerende interaktionsform",
+              "why_it_matters": "Afslører selve den dybe rute, normer bevæger sig for at indtage organismen.",
+              "source_location": "s. 207"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 6,
+          "source_location": "Grundbog s. 233-237",
+          "heading": "Decentrering og Orienteringspunkterne",
+          "solves_subproblem": "Delproblem 6",
+          "local_problem": "Vurder hvordan psykoanalysens epistemologiske tyngdepunkt passer ind i kursets metateoretiske overbygning?",
+          "explanation_paragraphs": [
+            "Psykoanalysen er mere end teori, den udgør en markant omvæltning i brugen af orienteringspunkterne. I forhold til determination vender den konsekvent blikket indad – hvor adfærdspsykologi leder efter udefrakommende miljøbelønninger, afslører psykoanalysen et voldsomt, ukontrollabelt system af intern energiudladning og kompromisser mellem uforsonlige drifter.",
+            "Med hensyn til historicitet bryder den totalt med illusionen om et kronologisk trappetrin. Livets vej fremstår ikke længere som forbi, blot fordi barnet bliver voksent, idet Nachträglichkeit kontinuerligt arbejder baglæns og omskriver traumernes betydning med tilbagevirkende kraft.",
+            "Alt dette falder tilbage på kerneargumentet om decentrering. Accepten af, at vores motiver i udgangspunktet befinder sig begravet, splintret eller direkte overtaget af ydre strukturer, danner broen over til Foucault. Det er det første store brud med det autonome og gennemsigtige egenskabs-menneske."
+          ],
+          "key_points": [
+            "Intern determination er her domineret af indre konflikter, ikke fri kognitiv planlægning.",
+            "Historicitet foregår forhandlende, spiralformet og bagudrettet.",
+            "Decentreringen lægger uforvarende skinnerne til en decideret kritisk, sociokulturel personlighedsforståelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "cirkulær eller nærmere spiralformet bevægelse",
+              "why_it_matters": "En præcis metafor for psykoanalysens brudte tilgang til tid og personlig fortid.",
+              "source_location": "s. 236"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvad psykoanalysen i det hele taget bygger på, når den fjerner sit fokus fra ydre adfærd og kigger indad?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "To korte definitioner",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvordan hjernen langsomt udvikler en skelneevne mellem ren fantasi og det virkelige omgivende rum?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En udviklingsbeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Bevis at individets allermest intime, mørke afkroge slet ikke findes inde i kroppen fra fødslen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et interaktionelt årsagssammenhæng",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Udred mekanismen, der muliggør at en erindring kan gøres pludselig traumatisk mange år efter selve handlingen fandt sted?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En tidslig mekanisme",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Fastholdelsen af, hvordan rigide politiske love pludselig kan overstyre vores ubevidste instinkter?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En biologisk-sociologisk funktion",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 6",
+          "prompt": "Skriv et kort, sammenhængende svar på dette: Vurder hvordan psykoanalysens epistemologiske tyngdepunkt passer ind i kursets metateoretiske overbygning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "Et kort argument",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan tre vidt forskellige psykoanalytiske retninger dele den radikale påstand om, at menneskets bevidsthed ikke styrer sin egen adfærd?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld arkets felter udelukkende ud fra din hukommelse efter du har læst. Træk først Abridged Reader frem til reparation, når du går i stå.",
+      "overview": [
+        "Psykoanalysen markerer et brud med den udvendige adfærdspsykologi ved at understrege en intern, ofte afskærmet og ulogisk psykisk realitet.",
+        "På trods af enorm teoretisk opsplitning mellem britisk kognition og fransk sprog, samles alle om antagelsen af det decentrerede jeg.",
+        "Teksten leverer det mest radikale bud på system-intern determination og ikke-lineær tidslig historicitet forud for eksamen."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Inden for de psykoanalytiske grundsten udgør drifter den lystbærende fleksibilitet, mens et __________ henviser til en indre tankemæssig gengivelse af et andet menneske.",
+          "where_to_look": "Abridged reader sektion 1.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Ifølge Fonagy er integrationen af barnets legende modus og virkelighedstro modus betingelsen for fuldt udviklet __________.",
+          "where_to_look": "Abridged reader sektion 2.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Modsat en tryg, udadrettet fantasi opleves enhver skygge i mørket decideret faretruende som virkelighed i den frygtsomme __________ Mode.",
+          "where_to_look": "Abridged reader sektion 3.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "I den rent franske udlægning har det ubevidste overhovedet ingen oprindelse inde i biologien, men stammer direkte i formen fra den __________.",
+          "where_to_look": "Abridged reader sektion 4.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Når Laplanche beskriver den omsorgsfulde påvirkning, anser han den voksnes uafklarede begærsudbrud mod barnet for at være rent ud __________ meddelelser.",
+          "where_to_look": "Abridged reader sektion 5.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Den skæbnesvangre logik, der lader en inaktiv oplevelse detonere som traume flere år senere via pubertetens genlæsning, kaldes __________.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 langt fagterm"
+        },
+        {
+          "number": 7,
+          "sentence": "Den tyske skole brugte konceptet om tavse, fastlagte __________ til at fastspænde individets lyst til de knusende autoritære marxistiske samfundslove.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 8,
+          "sentence": "Den altomfattende epistemologiske betingelse, der forener dem alle i forberedelsen på kursusdel 4, er fraværet af kontrol i det __________ subjekt.",
+          "where_to_look": "Abridged reader sektion 6.",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en rute, der viser den britiske model for virkelighedssansens etablering.",
+          "required_elements": [
+            "To parallelle tidlige modi",
+            "det cirka 4. leveår",
+            "slutproduktet (evnen til at håndtere affekt"
+          ],
+          "blank_space_hint": "Tegn det som et netværk, hvor to lukkede stier smelter sammen midtpå."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér retningen af tid og betydning i Laplanches franske tidsforståelse.",
+          "required_elements": [
+            "Den indledende uforståede kodning",
+            "dvalen",
+            "den bagudrettede tilbagespoling i puberteten",
+            "det færdige brændte minde"
+          ],
+          "blank_space_hint": "Brug en spiral eller en række pile der drejer skarpt baglæns over en optegnet barndom."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Benyt dette overblik som stikordskort, når du skal argumentere flydende og hurtigt for de centrale brud, psykoanalysen medbringer til eksamensbordet.",
+      "use_this_text_for": [
+        "At levere beviset på det endelige epistemologiske fald af den overfladiske egenskabspsykologi.",
+        "At forklare forskellen på mekanisk, instinktiv dyre-biologi og fleksible, ustabile lyst-drifter.",
+        "At føre determination helt væk fra Banduras simple belønninger, og slå fast hvordan et system kan angribe sig selv indefra.",
+        "At kaste Nachträglichkeit frem som en decideret kompleks forståelse af punktet 'historicitet', der modsiger trin-for-trin tænkning.",
+        "At klargøre jorden rent konkluderende for Foucault, fordi en diskurs først giver mening, når jeget er sat ud af spillet."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W02L1 Trækpsykologi (Costa & McCrae)",
+          "connection": "Kontrastér selverkendelsens uigennemtrængelige barriere hos Freud over for det ubekymrede udfyldte skema over ærligt overleverede personlighedstræk."
+        },
+        {
+          "course_theme": "W12L1 Orienteringspunkterne",
+          "connection": "Træk straks teorien hen over to punkter: Ekstrem intern spændings-determination og dynamisk cirkel-historicitet."
+        },
+        {
+          "course_theme": "W10L1 Poststrukturalisme",
+          "connection": "Peg direkte på ankomsten af den decentrerede bevidsthed. Uden den lukkede dør ind til ren vilje, kunne kritikken af subjektiveringsmagt ikke rodfæstes."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Behavioristisk indlæringsteori",
+          "how_to_compare": "Gør forskellen på årsager knivskarp: Betingning afventer stimuli i rummet, psykoanalyse ædes op indefra af konfliktende mentale kompromisser."
+        },
+        {
+          "compare_with": "Evolutionspsykologiens drift",
+          "how_to_compare": "Forsvar afstanden ved at klargøre, hvordan evolution vil artens trygge overlevelse, mens den franske dybdepsykologi tillader uforståeligt selvdestruktivt begær i objektrelationerne."
+        },
+        {
+          "compare_with": "Kritisk psykologi (Klaus Holzkamp)",
+          "how_to_compare": "Dyrk spændet i håndteringen af samfundet. Holzkamp forventer bevidst handlende modstand. Lorenzer sporer roden som ubevidst programmeret før vi overhovedet kunne tale."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når emnet tvinger dig over på personlighedens grundlag",
+          "use_in_answer": "Smæk decentrering i bordet som første kort. Fasthold bevidstheden som det svage filter på isbjerget.",
+          "caution": "Undgå enhver implicit sætning, der tillægger individet overblik, rationel evne eller 'fri fornuft'."
+        },
+        {
+          "prompt_type": "Når du diskuterer de helt tidlige år af barndommen",
+          "use_in_answer": "Dyrk Laplanches franske gådefulde indtrængen, for at fjerne ansvaret fra genetikken over på relationens asymmetri.",
+          "caution": "Gør ikke processen til en hyggelig overlevering, men hold tonen skarp på presset fra den voksnes afvigelse."
+        },
+        {
+          "prompt_type": "Når du afhøres i de brede orienteringspunkter",
+          "use_in_answer": "Brug Nachträglichkeit som det sublime angreb på fastfrossen kausal tid, og vis tidsmaskinen i traumet.",
+          "caution": "Tegner du tiden, så tegn den med tilbagevirkende spiraler, ikke en lige streg der ender ud i aldersmodenhed."
+        },
+        {
+          "prompt_type": "Når faren opstår for at udvande ordet 'objekt'",
+          "use_in_answer": "Vær utrolig kold over for dagligdagssproget. Slå det fast som et indre fænomen: en konstrueret, følelsesladet mental genstand.",
+          "caution": "Fjern alle fysiske skabeloner fra sproget; lad være at lede censor mod tanken om tingsliggørelse i rummet."
+        },
+        {
+          "prompt_type": "Når du trækker tråde mellem forskellige skoler",
+          "use_in_answer": "Spil aktivt på spændingen mellem Englands kognitive tilpasning, Frankrigs symboltunge ubevidste struktur og Tysklands revolutionære normkritik.",
+          "caution": "Forsøg under ingen omstændigheder at forsvare psykoanalyse som en rolig, enig blok ejet suverænt af Freuds spøgelse."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At drifter, ligesom instinkter, primært er et internt biologisk design skabt til at forlænge slægtens overlevelse.",
+          "better_reading": "Grib ind og placer drifter i uendelig formbar tilstand, der blinder jager efter lystens udladning alene."
+        },
+        {
+          "trap": "At det ubevidste fungerer som en medfødt kælder, hjernen ejer og forvalter i isolation fra fødslen.",
+          "better_reading": "Beskyt Frankrigs indsigter og indrøm, at kælderen blev gravet og indrettet af de andre forældrefigurernes magtgreb i interaktionen."
+        },
+        {
+          "trap": "At skolerne kun kan beskæftige sig lukkede lidelser hos den enkelte i en dyr sofa, revet væk fra gaden og samfundet.",
+          "better_reading": "Påvis hvordan den tyske fløj benyttede kropsnære interaktionsformer til præcist at lade overvågning og undertrykkelse gro fast i folkesjælen."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør resolut for de moderne retningers subjektopfattelse ved at lade 'decentrering' kaste skygge over trækpsykologien, og anfør et pragteksemplar på, hvordan ubevidst determination udspiller sig i mødet med barnet.",
+      "mini_exam_answer_plan_slots": [
+        "Placer resolut det decentrerede jeg for at ødelægge enhver tro på Costa & McCraes gennemsigtige, åbne og retskafne individ.",
+        "Gennemhul hurtigt dagligdagens falske forståelse af objektbegrebet over for driftens lystprægede realitet.",
+        "Vælg Laplanche som dit pragteksempel: Lad uforståede forældreindsprøjtninger bygge selve drivkraften op fra ingenting.",
+        "Læg udmærkelsen fast med Nachträglichkeit; stik hul i den rene, fremadrettede, kronologiske tidsforståelse.",
+        "Bind til slut fraværet af herredømmet i eget hus tæt over til den absolutte forudsætning for Foucaults magtkritiske overtagelse."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

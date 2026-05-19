@@ -310,7 +310,7 @@ Acceptance checks:
 
 #### Flashcard Practice Controls
 
-Status: Open
+Status: Completed 2026-05-19
 
 Affected screen:
 
@@ -318,9 +318,21 @@ Affected screen:
 
 Problem:
 
-The disabled "Forrige" control reads as a thin native/system button. Rating
-controls have the right labels, but their hierarchy and spacing do not yet feel
+The disabled "Forrige" control read as a thin native/system button. Rating
+controls had the right labels, but their hierarchy and spacing did not yet feel
 as polished as the rest of the paper-studio UI.
+
+Implemented:
+
+- the action area now uses deliberate paper-studio button styling instead of
+  browser-default disabled controls
+- `Vis svar` is the primary reveal action, and the official answer stays hidden
+  until that action is used
+- `Skriv svar` is an explicit toggle for the self-check text area
+- rating buttons use equal, predictable touch targets with difficulty-specific
+  visual treatment
+- learners can scope practice to all cards or one topic category before applying
+  `Alle`/`Ubesvarede`/`Besvarede`
 
 Recommended direction:
 
@@ -405,7 +417,7 @@ Acceptance checks:
 4. Flatten subject detail content sections and reduce nested borders.
 5. Refactor settings subject management and public scoreboard participation.
 6. Improve scoreboard empty/mobile states.
-7. Polish auth signup field order and flashcard controls.
+7. Polish auth signup field order.
 8. Clean up CSS tokens and local hardcoded component colors.
 
 ## Verification Checklist
@@ -428,3 +440,4 @@ this file should stay a current map, not a full changelog.
 | Date | Status | Entry |
 |---|---|---|
 | 2026-05-19 | Baseline | Combined frontend and interface-design audits into this tracker. |
+| 2026-05-19 | Completed | Flashcard controls now have intentional answer reveal, optional typed-answer toggle, topic scoping, and polished rating controls. |

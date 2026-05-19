@@ -1,6 +1,6 @@
 # Bioneuro Anki Flashcards Integration Plan
 
-Status: implemented and verified locally; rollout uses the standard Freudd deploy runbook
+Status: implemented, deployed, and production-smoke checked
 Created: 2026-05-19
 
 ## Progress Log

@@ -134,6 +134,7 @@ Operational note:
   - `/accounts/login` -> `200`
   - `/settings` -> `302`
   - `/progress` -> `301`
+  - `/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` -> `200`
 
 ## Maintenance rule
 

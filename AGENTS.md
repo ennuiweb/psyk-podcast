@@ -38,7 +38,7 @@
 - When top-level repo structure changes, update `TECHNICAL.md`, `docs/README.md`, and this context map if routing changes.
 - If this repo identity, role, absolute path, or global registry mapping changes, update `~/.agents/AGENTS.md` and this file in the same task.
 
-Freudd remote deploy runbook, verified 2026-05-07:
+Freudd remote deploy runbook, verified 2026-05-19:
 
 - Deploy must run over SSH from local machine (local has no `systemctl` and no `/opt/podcasts`).
 - SSH target: `digitalocean-ennui-droplet-01` (`root@64.226.79.109`, key `~/.ssh/digitalocean_ed25519`).
@@ -53,6 +53,6 @@ Fallback if `git pull --ff-only` fails due to dirty server repository state (onl
 
 Post-deploy smoke check:
 - If the smoke check runs immediately after restart, first wait for `http://127.0.0.1:8001/accounts/login` to return `200`; `systemctl is-active` can report `active` before Gunicorn is actually listening.
-- `ssh digitalocean-ennui-droplet-01 'echo \"gunicorn_login $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8001/accounts/login)\"; echo \"gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8001/settings)\"; echo \"public_login $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://64.226.79.109/accounts/login)\"; echo \"public_settings $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://64.226.79.109/settings)\"'`
-- Expected: `login=200`, `settings=302` (anonymous redirect to login). `/progress` is a legacy redirect to `/settings` and should return `301`.
+- `ssh digitalocean-ennui-droplet-01 'echo \"gunicorn_login $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8001/accounts/login)\"; echo \"gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8001/settings)\"; echo \"public_login $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://64.226.79.109/accounts/login)\"; echo \"public_settings $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://64.226.79.109/settings)\"; echo \"public_flashcards $(curl --max-time 5 -s -o /dev/null -w \"%{http_code}\" http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)\"'`
+- Expected: `login=200`, `settings=302` (anonymous redirect to login), and `public_flashcards=200`. `/progress` is a legacy redirect to `/settings` and should return `301`.
 - Detailed runbook: `freudd_portal/docs/deploy-and-smoke.md`.

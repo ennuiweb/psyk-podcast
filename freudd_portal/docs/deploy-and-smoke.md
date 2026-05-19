@@ -46,13 +46,14 @@ ssh digitalocean-ennui-droplet-01 '
   echo "gunicorn_settings $(probe_code http://127.0.0.1:8001/settings)"
   echo "public_login $(probe_code http://64.226.79.109/accounts/login)"
   echo "public_settings $(probe_code http://64.226.79.109/settings)"
+  echo "public_flashcards $(probe_code http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)"
 '
 ```
 
 Use the canonical routes for the final assertions:
 
 ```bash
-ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"'
+ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"; echo "public_flashcards $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)"'
 ```
 
 Expected:
@@ -60,6 +61,8 @@ Expected:
 - `accounts/login` returns `200`.
 - `settings` returns `302` for anonymous users and redirects to
   `/accounts/login?next=/settings`.
+- `subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` returns `200`
+  and loads the anonymous flashcard preview route.
 - `progress` is a legacy route and returns `301` to `/settings`; do not use it
   as the primary smoke assertion.
 

@@ -40,6 +40,7 @@ Current anonymous smoke expectation:
 - `/accounts/login` -> `200`
 - `/settings` -> `302`
 - `/progress` -> `301`
+- `/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` -> `200`
 
 Repo policy for portal changes:
 
@@ -58,6 +59,17 @@ Repo policy for portal changes:
   `shows/bioneuro/flashcards/decks.json`
 
 Those generated files are refreshed by the feed and subject automation workflows, not manually inside the Django app.
+
+## Flashcard Practice Contract
+
+Flashcard practice is separate from scored Freudd quizzes. The Bioneuro Anki deck
+is exposed through `/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi`
+and the `/api/flashcards/<subject_slug>/<deck_slug>` API family. Logged-in users
+persist self-ratings in `FlashcardReview` and written self-check answers in
+`FlashcardUserAnswer`; anonymous preview users can practise cards but do not
+persist ratings or written answers. The practice UI supports all cards or one
+derived topic category, then `Alle`/`Ubesvarede`/`Besvarede` filters inside that
+scope.
 
 Migration note:
 

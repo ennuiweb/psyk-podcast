@@ -270,6 +270,11 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, "Ikke vurderet endnu")
         self.assertContains(page, "Skriv svar")
         self.assertContains(page, "Mit svar")
+        self.assertContains(page, 'id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden"')
+        self.assertContains(page, 'id="flashcard-answer" class="flashcard-answer is-hidden"')
+        self.assertContains(page, "Vis svar")
+        self.assertContains(page, 'answerNode.classList.toggle("is-hidden", !showingAnswer);')
+        self.assertContains(page, ".flashcard-shell .is-hidden")
         self.assertContains(page, "const previewMode = false;")
 
         api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))

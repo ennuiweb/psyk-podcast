@@ -13,7 +13,9 @@ Personal study habits for tekster/podcasts remain private to each learner on sub
 
 Flashcard practice is available as a separate self-rated study mode for subjects
 that have card decks, starting with Bioneuro. These cards help learners rehearse
-open-recall facts without changing quiz scores, public rankings, or quiz history.
+open-recall facts without changing quiz scores, public rankings, or quiz
+history. Learners may type a temporary self-check answer before revealing the
+official card answer; that typed draft is not saved as progress.
 
 scoreboard runs on semesters and automatically resets every half year (UTC). Ranking is based on a score that weighs correct answers highest and adds a speed bonus for faster quiz completion.
 

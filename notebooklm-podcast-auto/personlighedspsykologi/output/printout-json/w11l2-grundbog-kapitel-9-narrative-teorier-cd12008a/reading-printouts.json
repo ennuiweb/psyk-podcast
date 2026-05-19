@@ -442,17 +442,17 @@
         {
           "number": "1",
           "subproblem_ref": "Subproblem 1 og 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
-          "task_type": "short_paragraph",
+          "prompt": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?",
+          "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
-          "answer_shape": "2-4 sætninger",
-          "blank_lines": 3,
-          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+          "answer_shape": "1-3 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
         },
         {
           "number": "2",
           "subproblem_ref": "Subproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At fastslå forskellen på determinisme og kulturel disponering?",
+          "prompt": "Hvad er forskellen på, at kulturen 'disponerer' frem for at den 'determinerer' vores handlinger?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-4 sætninger",
@@ -462,7 +462,7 @@
         {
           "number": "3",
           "subproblem_ref": "Subproblem 3",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "prompt": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-4 sætninger",
@@ -472,7 +472,7 @@
         {
           "number": "4",
           "subproblem_ref": "Subproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At håndtere interne modsætninger og skiftende roller hos individet?",
+          "prompt": "Hvorfor og hvordan kan selvet fungere som 'dialogisk' eller som en flerhed af stemmer?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "2-4 sætninger",
@@ -482,7 +482,7 @@
         {
           "number": "5",
           "subproblem_ref": "Subproblem 6",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "prompt": "Hvad er princippet i 'eksternalisering', og hvordan bruges det i praksis?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "2-4 sætninger",
@@ -969,17 +969,17 @@
         {
           "number": "1",
           "subproblem_ref": "Subproblem 1 og 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At forstå hvordan 'den sproglige vending' flytter personligheden fra biologi til mening?",
-          "task_type": "short_paragraph",
+          "prompt": "Hvilken konsekvens har 'den sproglige vending' for opfattelsen af sprogets funktion?",
+          "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
-          "answer_shape": "2-4 sætninger",
-          "blank_lines": 3,
-          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+          "answer_shape": "1-3 ord",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
         },
         {
           "number": "2",
           "subproblem_ref": "Subproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At fastslå forskellen på determinisme og kulturel disponering?",
+          "prompt": "Hvad er forskellen på, at kulturen 'disponerer' frem for at den 'determinerer' vores handlinger?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-4 sætninger",
@@ -989,7 +989,7 @@
         {
           "number": "3",
           "subproblem_ref": "Subproblem 3",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At forklare, hvordan vi opretholder en følelse af stabilitet i et flydende selv?",
+          "prompt": "Hvordan bruger vi et narrativt 'plot' til at sikre stabilitet og sammenhæng i os selv?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-4 sætninger",
@@ -999,7 +999,7 @@
         {
           "number": "4",
           "subproblem_ref": "Subproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At håndtere interne modsætninger og skiftende roller hos individet?",
+          "prompt": "Hvorfor og hvordan kan selvet fungere som 'dialogisk' eller som en flerhed af stemmer?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "2-4 sætninger",
@@ -1009,7 +1009,7 @@
         {
           "number": "5",
           "subproblem_ref": "Subproblem 6",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: At fjerne den paralyserende skyldfølelse, når et problem reduceres til et internt personlighedstræk?",
+          "prompt": "Hvad er princippet i 'eksternalisering', og hvordan bruges det i praksis?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "2-4 sætninger",
@@ -1214,7 +1214,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:03:58Z"

@@ -522,17 +522,17 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
-          "task_type": "short_paragraph",
+          "prompt": "Hvilken grundspænding åbner persona-begrebet mellem indre og ydre?",
+          "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "en kort sætning",
-          "blank_lines": 3,
-          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
         },
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "prompt": "Hvilke fire hovedtraditioner tegner kapitlets landskab?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "4 navne",
@@ -542,7 +542,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "prompt": "Hvordan flytter sociokulturelle teorier personligheden ud i relationer, praksis og sprog?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2 korte sætninger",
@@ -552,7 +552,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "prompt": "Hvordan bruges de fire orienteringspunkter til at sammenligne teorier?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "4 korte forklaringer",
@@ -562,7 +562,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "prompt": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "en kort forklaring",
@@ -572,7 +572,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "prompt": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "en kort forklaring",
@@ -1132,17 +1132,17 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
-          "task_type": "short_paragraph",
+          "prompt": "Hvilken grundspænding åbner persona-begrebet mellem indre og ydre?",
+          "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "en kort sætning",
-          "blank_lines": 3,
-          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
         },
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Skeln mellem teorier, der leder efter personligheden i konflikter, oplevelse eller målbare egenskaber?",
+          "prompt": "Hvilke fire hovedtraditioner tegner kapitlets landskab?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "4 navne",
@@ -1152,7 +1152,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Afgør hvordan relationer, dagligliv, samfund og sprog kan blive personlighedens byggested?",
+          "prompt": "Hvordan flytter sociokulturelle teorier personligheden ud i relationer, praksis og sprog?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2 korte sætninger",
@@ -1162,7 +1162,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Byg det sammenligningsværktøj, der gør et rodet teorilandskab håndterbart?",
+          "prompt": "Hvordan bruges de fire orienteringspunkter til at sammenligne teorier?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "4 korte forklaringer",
@@ -1172,7 +1172,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Forklar hvorfor man ikke kan vælge undersøgelsesmetode uden samtidig at antage noget om, hvad personlighed er?",
+          "prompt": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "en kort forklaring",
@@ -1182,7 +1182,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Placer del 1 som næste skridt: personligheden gøres målbar, men også kritiserbar?",
+          "prompt": "Hvorfor hænger metodevalg sammen med teoriens forståelse af personlighed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "en kort forklaring",
@@ -1375,7 +1375,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/2026-05-w01l1-openai-gpt-5_5-problem-driven-prompts/.scaffolding/w01l1-grundbog-kapitel-1-introduktion-til-personlighed-1e727647/reading-scaffolds.json",
     "backfilled_at": "2026-05-14T12:29:48Z"

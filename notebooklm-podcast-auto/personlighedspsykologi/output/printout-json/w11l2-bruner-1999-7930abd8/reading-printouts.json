@@ -469,7 +469,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad driver egentlig barnets udvikling af sprog?",
+          "prompt": "Hvad driver egentlig barnets udvikling af sprog?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En kort kontrast mellem form og funktion",
@@ -479,7 +479,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "prompt": "Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
           "task_type": "decision",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "Ja/Nej + 1 sætning",
@@ -489,7 +489,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvad består en formel fortælling af?",
+          "prompt": "Hvad består en formel fortælling af?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Fire konkrete begreber",
@@ -499,7 +499,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvornår opstår behovet for at fortælle en historie?",
+          "prompt": "Hvornår opstår behovet for at fortælle en historie?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "1-2 ord",
@@ -509,7 +509,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Bruger børn bare historier til at gengive sandheden?",
+          "prompt": "Bruger børn bare historier til at gengive sandheden?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En kort forklaring af begrundelser vs. referater",
@@ -519,7 +519,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken overordnet funktion har fortællinger for os som art?",
+          "prompt": "Hvilken overordnet funktion har fortællinger for os som art?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "En kort forklaring af begrundelser vs. referater",
@@ -999,7 +999,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad driver egentlig barnets udvikling af sprog?",
+          "prompt": "Hvad driver egentlig barnets udvikling af sprog?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En kort kontrast mellem form og funktion",
@@ -1009,7 +1009,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Afgør spørgsmålet ud fra sektionen og begrund kort: Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
+          "prompt": "Kan vi forstå andre menneskers intentioner før vi overhovedet kan tale?",
           "task_type": "decision",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "Ja/Nej + 1 sætning",
@@ -1019,7 +1019,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvad består en formel fortælling af?",
+          "prompt": "Hvad består en formel fortælling af?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Fire konkrete begreber",
@@ -1029,7 +1029,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvornår opstår behovet for at fortælle en historie?",
+          "prompt": "Hvornår opstår behovet for at fortælle en historie?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "1-2 ord",
@@ -1039,7 +1039,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Bruger børn bare historier til at gengive sandheden?",
+          "prompt": "Bruger børn bare historier til at gengive sandheden?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En kort forklaring af begrundelser vs. referater",
@@ -1049,7 +1049,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 5",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvilken overordnet funktion har fortællinger for os som art?",
+          "prompt": "Hvilken overordnet funktion har fortællinger for os som art?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "En kort forklaring af begrundelser vs. referater",
@@ -1218,7 +1218,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-bruner-1999-7930abd8/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:03:41Z"

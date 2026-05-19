@@ -1575,6 +1575,64 @@ def test_normalize_scaffold_payload_uses_subproblem_questions_when_local_problem
     assert normalized["active_reading"]["solve_steps"][0]["blank_lines"] == 2
 
 
+def test_normalize_scaffold_payload_prefers_guide_questions_for_fragment_local_problems():
+    payload = _valid_scaffold_response()
+    guide_questions = [
+        "Hvilken grundspænding åbner persona-begrebet mellem indre og ydre?",
+        "Hvordan defineres forskellen på et instinkt og en drift?",
+        "Hvad er de fire faste temaer, der kan bruges til at sammenligne alle teorier?",
+    ]
+    local_problems = [
+        "Afgør hvorfor personlighed ikke straks kan defineres som enten et indre selv eller en ydre rolle?",
+        "Adskil den biologiske opfattelse af instinkt fra den psykoanalytiske drift?",
+        "Identificer præcis, hvilke begreber du skal bruge til eksamen?",
+    ]
+    for index, (guide_question, local_problem) in enumerate(zip(guide_questions, local_problems)):
+        payload["reading_guide"]["subproblems"][index]["question"] = guide_question
+        payload["reading_guide"]["subproblems"][index]["answer_form"] = "1-2 sætninger"
+        payload["abridged_reader"]["sections"][index]["local_problem"] = local_problem
+    payload["active_reading"] = {"title": "Ligegyldigt", "instructions": "Ligegyldigt", "solve_steps": []}
+
+    normalized = printout_engine.normalize_scaffold_payload(payload)
+    prompts = [item["prompt"] for item in normalized["active_reading"]["solve_steps"][:3]]
+
+    assert prompts == guide_questions
+    assert not any(prompt.startswith(("Afgør hvorfor ", "Adskil ", "Identificer ")) for prompt in prompts)
+
+
+def test_normalize_scaffold_payload_prefers_guide_questions_for_fuzzy_subproblem_refs():
+    payload = _valid_scaffold_response()
+    payload["reading_guide"]["subproblems"][0]["question"] = (
+        "Hvordan adskiller den narrative tilgang sig fra tanken om personlighed som statiske, indre træk?"
+    )
+    payload["reading_guide"]["subproblems"][1]["question"] = (
+        "Hvilken konsekvens har den sproglige vending for opfattelsen af sprogets funktion?"
+    )
+    payload["reading_guide"]["subproblems"][2]["question"] = (
+        "Hvordan skaber historiske epoker nye psykologiske funktioner i mennesket?"
+    )
+    payload["abridged_reader"]["sections"][0]["solves_subproblem"] = "Subproblem 1 og 2"
+    payload["abridged_reader"]["sections"][0]["local_problem"] = (
+        "At forstå hvordan den sproglige vending flytter personligheden fra biologi til mening?"
+    )
+    payload["abridged_reader"]["sections"][1]["solves_subproblem"] = (
+        "Hvordan historiske epoker skaber nye psykologiske funktioner i mennesket."
+    )
+    payload["abridged_reader"]["sections"][1]["local_problem"] = (
+        "At indse, at vores indre liv er et produkt af historien, ikke kun biologien?"
+    )
+    payload["active_reading"] = {"title": "Ligegyldigt", "instructions": "Ligegyldigt", "solve_steps": []}
+
+    normalized = printout_engine.normalize_scaffold_payload(payload)
+
+    assert normalized["active_reading"]["solve_steps"][0]["prompt"] == (
+        "Hvilken konsekvens har den sproglige vending for opfattelsen af sprogets funktion?"
+    )
+    assert normalized["active_reading"]["solve_steps"][1]["prompt"] == (
+        "Hvordan skaber historiske epoker nye psykologiske funktioner i mennesket?"
+    )
+
+
 def test_normalize_scaffold_payload_treats_brief_explanations_as_compact_paragraphs():
     payload = _valid_scaffold_response()
     payload["reading_guide"]["subproblems"][2]["answer_form"] = "En kort begrebsforklaring"

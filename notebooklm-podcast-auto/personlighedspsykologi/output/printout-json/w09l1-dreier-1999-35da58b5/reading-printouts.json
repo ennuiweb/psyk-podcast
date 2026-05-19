@@ -354,7 +354,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "prompt": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort liste",
@@ -364,7 +364,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "prompt": "Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "Kort beskrivelse",
@@ -374,7 +374,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "prompt": "Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "En klar kontrast",
@@ -711,7 +711,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Psykologien mangler et begreb, der ubrydeligt forankrer personen til konkrete, virkelige steder frem for abstraktioner?",
+          "prompt": "Hvorfor er begrebet 'deltagelse' analytisk stærkere end begreber som 'handling' eller 'dialog'?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort liste",
@@ -721,7 +721,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
+          "prompt": "Hvis personen udelukkende formes af konteksten, hvordan kan handleevne og forandring så eksistere?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "Kort beskrivelse",
@@ -731,7 +731,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
+          "prompt": "Hvordan undgår vi sociologiske klichéer om 'samfundets påvirkning', når vi analyserer social praksis?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "En klar kontrast",
@@ -872,7 +872,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w09l1-dreier-1999-35da58b5/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:02:33Z"

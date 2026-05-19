@@ -1874,6 +1874,101 @@ def _subproblem_question_map(guide: dict[str, Any]) -> dict[str, str]:
     return mapping
 
 
+def _subproblem_question_items(guide: dict[str, Any]) -> list[tuple[str, str]]:
+    items: list[tuple[str, str]] = []
+    for index, item in enumerate(_coerce_list(guide.get("subproblems")), start=1):
+        if not isinstance(item, dict):
+            continue
+        key = _canonical_subproblem_ref(item.get("number"), fallback=index).casefold()
+        question = _normalize_question_text(item.get("question"))
+        if question:
+            items.append((key, question))
+    return items
+
+
+def _guide_question_for_active_step(
+    ref: str,
+    *,
+    local_problem: str,
+    fallback_index: int,
+    question_map: dict[str, str],
+    question_items: list[tuple[str, str]],
+) -> str:
+    exact = question_map.get(ref.casefold(), "")
+    if exact:
+        return exact
+
+    numbered_matches: list[tuple[str, str]] = []
+    for number in re.findall(r"\d+", ref):
+        candidate = question_map.get(f"delproblem {number}")
+        if candidate:
+            numbered_matches.append((f"delproblem {number}", candidate))
+    if len(numbered_matches) == 1:
+        return numbered_matches[0][1]
+    if len(numbered_matches) > 1:
+        return _best_matching_guide_question(f"{ref} {local_problem}", numbered_matches)
+
+    fuzzy = _best_matching_guide_question(f"{ref} {local_problem}", question_items)
+    if fuzzy:
+        return fuzzy
+
+    fallback_offset = fallback_index - 1
+    if 0 <= fallback_offset < len(question_items):
+        return question_items[fallback_offset][1]
+    return ""
+
+
+def _best_matching_guide_question(text: str, candidates: list[tuple[str, str]]) -> str:
+    haystack = _semantic_tokens(text)
+    if not haystack:
+        return ""
+    best_question = ""
+    best_score = 0
+    for _key, question in candidates:
+        tokens = _semantic_tokens(question)
+        score = len(haystack & tokens)
+        if score > best_score:
+            best_score = score
+            best_question = question
+    return best_question if best_score >= 2 else ""
+
+
+def _semantic_tokens(text: str) -> set[str]:
+    stop_words = {
+        "af",
+        "at",
+        "de",
+        "den",
+        "det",
+        "der",
+        "en",
+        "er",
+        "et",
+        "for",
+        "fra",
+        "har",
+        "hvad",
+        "hvordan",
+        "hvilke",
+        "hvilken",
+        "hvilket",
+        "hvorfor",
+        "i",
+        "kan",
+        "med",
+        "og",
+        "om",
+        "pa",
+        "på",
+        "sig",
+        "som",
+        "til",
+        "vi",
+    }
+    words = re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", text.casefold())
+    return {word for word in words if len(word) > 2 and word not in stop_words}
+
+
 def _canonical_subproblem_ref(value: Any, *, fallback: int) -> str:
     text = str(value or "").strip()
     if not text:
@@ -1932,16 +2027,28 @@ def _looks_like_question_stem(text: str) -> bool:
     lowered = text.casefold().strip()
     return lowered.startswith(
         (
+            "begyndte ",
+            "bliver ",
+            "blev ",
+            "bruger ",
             "hvordan ",
             "hvorfor ",
+            "hvor ",
             "hvad ",
+            "hvem ",
+            "hvornår ",
             "hvilken ",
             "hvilket ",
             "hvilke ",
+            "hvis ",
+            "findes ",
+            "har ",
             "kan ",
             "skal ",
             "bør ",
             "er ",
+            "var ",
+            "vil ",
             "på hvilken måde ",
         )
     )
@@ -1949,7 +2056,7 @@ def _looks_like_question_stem(text: str) -> bool:
 
 def _looks_like_direct_question(text: str) -> bool:
     value = str(text or "").strip()
-    return bool(value and (value.endswith("?") or _looks_like_question_stem(value)))
+    return bool(value and _looks_like_question_stem(value))
 
 
 def _synthesis_prompt_for_main_problem(main_problem: str) -> str:
@@ -1997,12 +2104,19 @@ def _rebalance_active_solve_steps(guide: dict[str, Any], reader: dict[str, Any])
     steps: list[dict[str, Any]] = []
     answer_forms = _subproblem_answer_form_map(guide)
     subproblem_questions = _subproblem_question_map(guide)
+    subproblem_question_items = _subproblem_question_items(guide)
     sections = [item for item in _coerce_list(reader.get("sections")) if isinstance(item, dict)]
     for index, section in enumerate(sections, start=1):
         ref = _canonical_subproblem_ref(section.get("solves_subproblem"), fallback=index)
         question = _normalize_question_text(section.get("local_problem") or f"Hvad løser sektion {index}")
-        guide_question = subproblem_questions.get(ref.casefold(), "")
-        if question.casefold().startswith("at ") and guide_question:
+        guide_question = _guide_question_for_active_step(
+            ref,
+            local_problem=question,
+            fallback_index=index,
+            question_map=subproblem_questions,
+            question_items=subproblem_question_items,
+        )
+        if guide_question and not _looks_like_direct_question(question) and _looks_like_direct_question(guide_question):
             question = guide_question
         answer_shape = answer_forms.get(ref.casefold(), "")
         short_answer_hint = bool(answer_shape and _answer_shape_is_short(answer_shape))

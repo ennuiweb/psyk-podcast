@@ -75,9 +75,13 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   quizzes. Imported decks carry deterministic topic categories derived from card
   text; the subject page previews those topics with card counts. The practice
   page can filter cards by `Alle`, `Ubesvarede`, and `Besvarede`, using
-  `FlashcardReview` rows as the answered state for logged-in users. Anonymous
-  learners can open the practice page and card API in preview mode; their
-  in-page answers are not persisted and the page shows a progress warning.
+  `FlashcardReview` rows as the answered state for logged-in users. The card
+  flow shows the front first, offers an optional `Skriv svar` self-check field
+  whose draft is local browser state only, then reveals the sanitized answer and
+  `Igen`/`Svaert`/`Godt`/`Let` self-rating controls. Anonymous learners can open
+  the practice page and card API in preview mode; their self-answer drafts and
+  preview ratings are not persisted, and the page shows a quiet inline progress
+  warning instead of a prominent callout box.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
 - Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.

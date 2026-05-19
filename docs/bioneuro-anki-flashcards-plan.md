@@ -32,6 +32,12 @@ Created: 2026-05-19
 - 2026-05-19: Opened the anki-kort practice page and read API for anonymous
   preview use. Anonymous learners can work through cards in browser state, with
   a bottom-page warning that progress is not saved unless they log in.
+- 2026-05-19: Refined the anki-kort practice UI: metadata is consolidated,
+  `Ikke vurderet endnu`/`Vurderet: ...` replaces the old card-state wording,
+  learners can optionally open a local `Skriv svar` self-check field before
+  revealing the official answer, rating controls are visually separated by
+  semantic difficulty, and the anonymous preview warning is quiet inline text
+  rather than a prominent info box.
 
 ## Goal
 
@@ -76,11 +82,17 @@ On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
 1. choose `Alle`, `Ubesvarede`, or `Besvarede`
-2. show card front plus `Ubesvaret` or `Besvaret` state
-3. learner clicks `Vis svar`
-4. show sanitized answer/explanation
-5. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
-6. update the answered state and advance within the active filter
+2. show card front plus `Ikke vurderet endnu` or `Vurderet: <rating>` state
+3. learner optionally opens `Skriv svar` and writes a local self-check draft
+4. learner clicks `Vis svar`
+5. show sanitized answer/explanation
+6. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
+7. update the answered state and advance within the active filter
+
+The `Skriv svar` field is deliberately in-browser state only. It is not posted
+to the flashcard review API, does not affect `FlashcardReview`, and should not
+be treated as submitted answer history. Persisted progress is the self-rating
+only, and only for authenticated users.
 
 The experience should feel native to Freudd and visually related to the quiz
 view, but the language should clearly say card practice, not quiz.
@@ -225,6 +237,9 @@ Route behavior:
 - Malformed deck artifact: 500 with a logged server error, not partial UI.
 - Anonymous read access is allowed for the practice page and card payload in
   preview mode. In-page preview ratings are not persisted.
+- The optional `Skriv svar` draft is never persisted for authenticated or
+  anonymous users; it exists only to support immediate open-recall self-checking
+  before `Vis svar`.
 - Review POST requires authentication for persisted progress.
 
 Template:

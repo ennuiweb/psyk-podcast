@@ -466,28 +466,25 @@
   }
 
   .flashcard-preview-note {
-    max-width: 68ch;
-    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
-    border-radius: var(--radius-sub);
-    background: color-mix(in srgb, var(--info-bg) 74%, var(--surface));
-    color: var(--text-subtle-2);
-    display: grid;
-    gap: var(--space-1);
-    padding: var(--space-3);
+    max-width: 72ch;
+    color: var(--muted);
+    font-size: 0.92rem;
+    padding-top: calc(var(--space-1) * -1);
   }
 
   .flashcard-preview-note p {
     margin: 0;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
   .flashcard-preview-note strong {
-    color: var(--ink);
+    color: var(--text-subtle-2);
   }
 
   .flashcard-preview-note a {
-    color: var(--info-ink-strong);
+    color: var(--text-subtle-2);
     font-weight: 800;
+    text-decoration-color: color-mix(in srgb, var(--border-strong) 82%, transparent);
   }
 
   @media (max-width: 640px) {
@@ -636,8 +633,8 @@
 
   {% if flashcard_preview_mode %}
   <aside class="flashcard-preview-note" aria-label="Preview uden gemt progress">
-    <p><strong>Preview uden login.</strong> Du kan øve kortene her, men dine svar og din progress gemmes ikke.</p>
-    <p><a href="{{ login_url }}">Log ind</a> for at gemme dine besvarede kort.</p>
+    <p><strong>Preview uden login.</strong> Du kan øve kortene her, men dine svar og din progress gemmes ikke.
+      <a href="{{ login_url }}">Log ind</a> for at gemme dine besvarede kort.</p>
   </aside>
   {% endif %}
 </div>

@@ -3,20 +3,20 @@
 {% block content %}
 <style>
   .flashcard-shell {
-    max-width: 920px;
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    gap: var(--space-4);
+    gap: clamp(var(--space-4), 2.4vw, var(--space-6));
     padding: clamp(var(--space-4), 2.4vw, var(--space-6));
   }
 
   .flashcard-head {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
     flex-wrap: wrap;
-    padding-bottom: var(--space-3);
+    padding-bottom: var(--space-4);
     border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
   }
 
@@ -31,65 +31,75 @@
     width: fit-content;
     min-height: 24px;
     border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
-    border-radius: var(--radius-sm);
-    background: var(--info-bg);
-    color: var(--info-ink);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--info-bg) 82%, var(--surface));
+    color: var(--info-ink-strong);
     display: inline-flex;
     align-items: center;
-    padding: 0 var(--space-2);
+    padding: 0 var(--space-3);
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 800;
   }
 
   .flashcard-title {
     margin: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+    line-height: 1.12;
+    font-weight: 700;
+  }
+
+  .flashcard-back-link {
+    min-height: 38px;
+    gap: var(--space-1);
+    border-radius: var(--radius-pill);
+    background: transparent;
     color: var(--text-subtle-2);
-    font-family: var(--font-body);
-    font-size: clamp(0.96rem, 1.3vw, 1.22rem);
-    line-height: 1.3;
-    font-weight: 600;
+    font-size: 0.94rem;
+    font-weight: 700;
+  }
+
+  .flashcard-back-link .material-symbols-outlined,
+  .flashcard-show-answer .material-symbols-outlined {
+    font-size: 1.12rem;
+    line-height: 1;
   }
 
   .flashcard-stage {
-    border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
-    border-radius: var(--radius-md);
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, var(--surface-elevated)), var(--surface)),
-      var(--surface);
-    padding: clamp(var(--space-4), 3vw, var(--space-6));
+    display: grid;
+    gap: clamp(var(--space-4), 2.4vw, var(--space-6));
+    padding-top: var(--space-1);
     min-width: 0;
   }
 
   .flashcard-flow-head {
     display: grid;
     gap: var(--space-2);
-    margin-bottom: clamp(var(--space-4), 3vw, var(--space-6));
   }
 
   .flashcard-study-nav {
-    max-width: 68ch;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: var(--space-3);
+    display: flex;
     align-items: center;
-    margin-bottom: var(--space-4);
-    padding: var(--space-2);
-    border: 1px solid color-mix(in srgb, var(--border) 76%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface-soft) 72%, var(--surface));
+    justify-content: flex-start;
+    margin: 0;
   }
 
   .flashcard-filter-tabs {
-    display: flex;
-    gap: var(--space-1);
+    display: inline-flex;
+    gap: 3px;
     flex-wrap: wrap;
+    padding: 4px;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface-soft) 70%, var(--surface));
   }
 
   .flashcard-filter-button {
-    min-height: 38px;
+    min-height: 34px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
@@ -98,8 +108,11 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
+    font-size: 0.92rem;
     font-weight: 800;
+    white-space: nowrap;
     cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
   }
 
   .flashcard-filter-button:hover,
@@ -112,61 +125,63 @@
     border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
     background: var(--surface);
     color: var(--info-ink-strong);
-    box-shadow: 0 1px 0 color-mix(in srgb, var(--border) 42%, transparent);
+    box-shadow: 0 1px 3px color-mix(in srgb, var(--border) 42%, transparent);
   }
 
   .flashcard-filter-count {
-    min-width: 1.7em;
-    min-height: 1.7em;
+    min-width: 1.8em;
+    min-height: 1.8em;
     border-radius: var(--radius-pill);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: color-mix(in srgb, var(--border) 54%, transparent);
+    background: color-mix(in srgb, var(--border) 48%, transparent);
     color: var(--text-subtle);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     padding: 0 var(--space-1);
   }
 
   .flashcard-flow-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3);
+    justify-content: flex-start;
+    gap: var(--space-2);
     flex-wrap: wrap;
+  }
+
+  .flashcard-meta-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--border-strong) 78%, transparent);
   }
 
   .flashcard-counter,
   .flashcard-reviewed {
     margin: 0;
-    min-height: 32px;
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     color: var(--text-subtle-2);
-    text-transform: uppercase;
   }
 
   .flashcard-reviewed {
-    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
-    border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface-soft) 74%, var(--surface));
-    padding: 0 var(--space-3);
-    text-transform: none;
+    color: var(--muted);
   }
 
   .flashcard-card-state {
     margin: 0;
-    min-height: 32px;
+    min-height: 28px;
     border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
     border-radius: var(--radius-pill);
     background: var(--surface);
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
-    padding: 0 var(--space-3);
+    padding: 0 var(--space-2);
+    font-size: 0.82rem;
     font-weight: 800;
   }
 
@@ -184,7 +199,7 @@
 
   .flashcard-progress {
     width: 100%;
-    height: 7px;
+    height: 8px;
     border: 0;
     border-radius: var(--radius-pill);
     background: var(--progress-track-bg);
@@ -205,78 +220,159 @@
   }
 
   .flashcard-front {
-    max-width: 68ch;
-    margin: 0 0 clamp(var(--space-4), 2.4vw, var(--space-5));
+    max-width: 30ch;
+    margin: 0;
     color: var(--ink);
-    font-family: var(--font-body);
-    font-size: clamp(1.42rem, 2vw, 1.82rem);
-    line-height: 1.28;
+    font-family: var(--font-display);
+    font-size: clamp(1.62rem, 4.1vw, 2.65rem);
+    line-height: 1.08;
     font-weight: 700;
     overflow-wrap: anywhere;
   }
 
   .flashcard-answer {
-    max-width: 68ch;
-    border: 1px solid var(--border);
+    max-width: 72ch;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
     border-radius: var(--radius-md);
-    background: var(--info-bg);
-    color: var(--text-subtle);
-    padding: var(--space-4);
-    margin-bottom: var(--space-4);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--info-bg) 82%, var(--surface)), color-mix(in srgb, var(--info-bg) 58%, var(--surface))),
+      var(--info-bg);
+    color: var(--text-subtle-2);
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
     line-height: 1.55;
     overflow-wrap: anywhere;
   }
 
-  .flashcard-answer div,
-  .flashcard-answer p {
+  .flashcard-answer-label {
+    margin: 0;
+    color: var(--info-ink-strong);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .flashcard-answer-body {
+    font-size: clamp(1rem, 1.2vw, 1.08rem);
+  }
+
+  .flashcard-answer-body div,
+  .flashcard-answer-body p {
     margin: 0 0 var(--space-3);
   }
 
-  .flashcard-answer div:last-child,
-  .flashcard-answer p:last-child {
+  .flashcard-answer-body div:last-child,
+  .flashcard-answer-body p:last-child {
     margin-bottom: 0;
   }
 
   .flashcard-actions {
-    max-width: 68ch;
-    display: flex;
+    max-width: 72ch;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-3);
-    flex-wrap: wrap;
-    padding-top: var(--space-3);
+    padding-top: var(--space-4);
     border-top: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
   }
 
+  .flashcard-show-answer {
+    justify-self: end;
+    gap: var(--space-1);
+  }
+
+  .flashcard-secondary {
+    min-height: 40px;
+    border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-subtle-2);
+    padding: 0 var(--space-3);
+    font-size: 0.94rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+
+  .flashcard-secondary:hover:not(:disabled),
+  .flashcard-secondary:focus-visible:not(:disabled) {
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 52%, transparent);
+    color: var(--accent-strong);
+  }
+
+  .flashcard-secondary:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+
   .flashcard-rating-actions {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(74px, auto));
     align-items: center;
     justify-content: flex-end;
+    justify-self: end;
     gap: var(--space-2);
-    flex-wrap: wrap;
   }
 
   .flashcard-rating {
+    --rating-border: color-mix(in srgb, var(--border-strong) 84%, transparent);
+    --rating-bg: var(--surface);
+    --rating-ink: var(--text-subtle-2);
+    --rating-bg-hover: var(--accent-soft);
     min-height: 44px;
-    border: 1px solid color-mix(in srgb, var(--border-strong) 84%, transparent);
+    min-width: 74px;
+    border: 1px solid var(--rating-border);
     border-radius: var(--radius-pill);
-    background: var(--surface);
-    color: var(--text-subtle-2);
+    background: var(--rating-bg);
+    color: var(--rating-ink);
     padding: 0 var(--space-3);
     font-weight: 700;
     cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
   }
 
   .flashcard-rating:hover {
-    border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
-    background: var(--accent-soft);
-    color: var(--info-ink-strong);
+    background: var(--rating-bg-hover);
+    transform: translateY(-1px);
+  }
+
+  .flashcard-rating[data-rating="again"] {
+    --rating-border: color-mix(in srgb, var(--danger) 42%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--danger-bg-soft) 70%, var(--surface));
+    --rating-ink: var(--danger-ink, var(--danger));
+    --rating-bg-hover: var(--danger-bg-soft);
+  }
+
+  .flashcard-rating[data-rating="hard"] {
+    --rating-border: color-mix(in srgb, var(--warn-border) 74%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--warn-bg-soft) 82%, var(--surface));
+    --rating-ink: var(--warn-ink-soft);
+    --rating-bg-hover: var(--warn-bg);
+  }
+
+  .flashcard-rating[data-rating="good"] {
+    --rating-border: color-mix(in srgb, var(--success) 36%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--success-bg) 76%, var(--surface));
+    --rating-ink: var(--success);
+    --rating-bg-hover: var(--success-bg-strong);
+  }
+
+  .flashcard-rating[data-rating="easy"] {
+    --rating-border: color-mix(in srgb, var(--accent) 38%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--info-bg) 78%, var(--surface));
+    --rating-ink: var(--info-ink-strong);
+    --rating-bg-hover: var(--info-bg-strong);
   }
 
   .flashcard-status {
     margin: 0;
     color: var(--muted);
-    min-height: 1.4rem;
+    min-height: 0;
+    font-size: 0.92rem;
   }
 
   .flashcard-alert {
@@ -327,17 +423,18 @@
     }
 
     .flashcard-stage {
-      padding: var(--space-4);
+      padding-top: 0;
     }
 
     .flashcard-study-nav {
-      grid-template-columns: 1fr;
       align-items: stretch;
     }
 
     .flashcard-filter-tabs {
       display: grid;
       grid-template-columns: 1fr;
+      width: 100%;
+      border-radius: var(--radius-md);
     }
 
     .flashcard-filter-button {
@@ -345,21 +442,38 @@
       width: 100%;
     }
 
-    .flashcard-front {
-      font-size: clamp(1.26rem, 6vw, 1.54rem);
-      line-height: 1.32;
+    .flashcard-flow-row {
+      row-gap: var(--space-1);
     }
 
-    .flashcard-actions,
-    .flashcard-rating-actions {
+    .flashcard-meta-dot-state {
+      display: none;
+    }
+
+    .flashcard-front {
+      max-width: 100%;
+      font-size: clamp(1.42rem, 8vw, 2rem);
+      line-height: 1.12;
+    }
+
+    .flashcard-actions {
       display: grid;
       grid-template-columns: 1fr;
       align-items: stretch;
       width: 100%;
     }
 
+    .flashcard-rating-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-self: stretch;
+    }
+
+    .flashcard-show-answer {
+      justify-self: stretch;
+    }
+
     .flashcard-actions .btn-primary,
-    .flashcard-actions .ghost-button,
+    .flashcard-secondary,
     .flashcard-rating {
       width: 100%;
     }
@@ -373,7 +487,10 @@
       <p class="flashcard-module">anki-kort</p>
       <h1 class="flashcard-title">{{ deck.title }}</h1>
     </div>
-    <a class="ghost-link back-link" href="{{ back_url }}">Tilbage</a>
+    <a class="ghost-link flashcard-back-link" href="{{ back_url }}">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      Tilbage
+    </a>
   </header>
 
   <div id="flashcard-error" class="flashcard-alert is-hidden"></div>
@@ -396,19 +513,27 @@
     <div class="flashcard-flow-head">
       <div class="flashcard-flow-row">
         <p id="flashcard-counter" class="flashcard-counter"></p>
-        <p id="flashcard-card-state" class="flashcard-card-state"></p>
+        <span class="flashcard-meta-dot" aria-hidden="true"></span>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
+        <span class="flashcard-meta-dot flashcard-meta-dot-state" aria-hidden="true"></span>
+        <p id="flashcard-card-state" class="flashcard-card-state"></p>
       </div>
       <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i anki-kort">
         0%
       </progress>
     </div>
     <h2 id="flashcard-front" class="flashcard-front"></h2>
-    <div id="flashcard-answer" class="flashcard-answer is-hidden"></div>
+    <div id="flashcard-answer" class="flashcard-answer is-hidden">
+      <p class="flashcard-answer-label">Svar</p>
+      <div id="flashcard-answer-body" class="flashcard-answer-body"></div>
+    </div>
     <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
     <div class="flashcard-actions">
-      <button id="flashcard-previous" class="ghost-button" type="button">Forrige</button>
-      <button id="flashcard-show-answer" class="btn-primary" type="button">Vis svar</button>
+      <button id="flashcard-previous" class="flashcard-secondary" type="button">Forrige</button>
+      <button id="flashcard-show-answer" class="btn-primary flashcard-show-answer" type="button">
+        <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+        Vis svar
+      </button>
       <div id="flashcard-rating-actions" class="flashcard-rating-actions is-hidden">
         <button class="flashcard-rating" type="button" data-rating="again">Igen</button>
         <button class="flashcard-rating" type="button" data-rating="hard">Svært</button>
@@ -443,6 +568,7 @@
     const progressNode = document.getElementById("flashcard-progress");
     const frontNode = document.getElementById("flashcard-front");
     const answerNode = document.getElementById("flashcard-answer");
+    const answerBodyNode = document.getElementById("flashcard-answer-body");
     const statusNode = document.getElementById("flashcard-status");
     const previousNode = document.getElementById("flashcard-previous");
     const showAnswerNode = document.getElementById("flashcard-show-answer");
@@ -546,14 +672,17 @@
       const cards = visibleCards();
       const totalCounts = counts();
       if (isComplete) {
-        counterNode.textContent = `${cards.length} / ${cards.length}`;
-        reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
+        counterNode.textContent = "Visning gennemgået";
+        reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
         progressNode.value = 100;
+        progressNode.setAttribute("aria-label", "Progress: visning gennemgået");
         frontNode.textContent = `Alle ${filterLabel()} i denne visning er gennemgået.`;
-        cardStateNode.textContent = "";
-        cardStateNode.classList.remove("is-answered", "is-unanswered");
+        cardStateNode.textContent = "Gennemgået";
+        cardStateNode.classList.add("is-answered");
+        cardStateNode.classList.remove("is-unanswered");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
+        showAnswerNode.disabled = true;
         ratingActionsNode.classList.add("is-hidden");
         previousNode.disabled = cards.length <= 0 || saving;
         statusNode.textContent = "";
@@ -562,37 +691,41 @@
 
       const card = currentCard();
       if (!card) {
-        counterNode.textContent = "0 / 0";
-        reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
+        counterNode.textContent = "0 kort";
+        reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
         progressNode.value = 0;
+        progressNode.setAttribute("aria-label", "Progress: ingen kort i visningen");
         frontNode.textContent = `Ingen ${filterLabel()} fundet.`;
-        cardStateNode.textContent = "";
-        cardStateNode.classList.remove("is-answered", "is-unanswered");
+        cardStateNode.textContent = "Tom visning";
+        cardStateNode.classList.remove("is-answered");
+        cardStateNode.classList.add("is-unanswered");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
         showAnswerNode.disabled = true;
         ratingActionsNode.classList.add("is-hidden");
         previousNode.disabled = true;
+        statusNode.textContent = "";
         return;
       }
 
       const total = cards.length;
       const position = currentIndex + 1;
-      counterNode.textContent = `${position} / ${total}`;
-      reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
+      counterNode.textContent = `Kort ${position} af ${total}`;
+      reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
       progressNode.value = Math.round((position / Math.max(1, total)) * 100);
+      progressNode.setAttribute("aria-label", `Progress: kort ${position} af ${total}`);
       frontNode.textContent = card.front_text || "";
-      answerNode.innerHTML = card.back_html || "";
+      answerBodyNode.innerHTML = card.back_html || "";
       answerNode.classList.toggle("is-hidden", !showingAnswer);
       showAnswerNode.classList.toggle("is-hidden", showingAnswer);
       showAnswerNode.disabled = saving;
       ratingActionsNode.classList.toggle("is-hidden", !showingAnswer);
       previousNode.disabled = currentIndex <= 0 || saving;
       const answered = isAnswered(card);
-      cardStateNode.textContent = answered ? `Besvaret · ${ratingLabel(card.review.rating)}` : "Ubesvaret";
+      cardStateNode.textContent = answered ? `Vurderet: ${ratingLabel(card.review.rating)}` : "Ikke vurderet endnu";
       cardStateNode.classList.toggle("is-answered", answered);
       cardStateNode.classList.toggle("is-unanswered", !answered);
-      statusNode.textContent = answered ? `Sidst markeret: ${ratingLabel(card.review.rating)}` : "";
+      statusNode.textContent = "";
     }
 
     function ratingLabel(rating) {

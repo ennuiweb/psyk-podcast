@@ -159,13 +159,13 @@
 
   .flashcard-deck-strip {
     display: grid;
-    gap: 12px;
+    gap: 10px;
     border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
     border-radius: var(--radius-md);
     background:
       linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--surface-soft)), var(--surface)),
       var(--surface);
-    padding: clamp(14px, 1.5vw, 20px);
+    padding: clamp(18px, 1.8vw, 24px);
   }
 
   .flashcard-deck-strip-head {
@@ -178,10 +178,11 @@
 
   .flashcard-deck-strip-title {
     margin: 0;
-    font-family: var(--subject-font-ui);
-    font-size: clamp(0.92rem, 1vw, 1rem);
-    font-weight: 700;
-    color: var(--text-strong);
+    color: var(--info-ink-strong);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
     text-transform: lowercase;
   }
 
@@ -197,43 +198,72 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 14px;
-    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
-    border-radius: var(--radius-sub);
-    background: color-mix(in srgb, var(--surface-soft) 52%, var(--surface));
-    padding: 12px;
+    gap: 12px;
   }
 
   .flashcard-deck-copy {
     min-width: 0;
     display: grid;
-    gap: 4px;
+    gap: 10px;
+  }
+
+  .flashcard-deck-copy-head {
+    display: grid;
+    gap: 5px;
   }
 
   .flashcard-deck-title {
     margin: 0;
     color: var(--ink);
+    font-family: var(--subject-font-editorial);
+    font-size: clamp(1.32rem, 2vw, 1.8rem);
     font-weight: 700;
-    line-height: 1.25;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
   }
 
   .flashcard-deck-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+    font-weight: 650;
     line-height: 1.35;
+  }
+
+  .flashcard-deck-progress {
+    width: min(100%, 560px);
+    height: 9px;
+    appearance: none;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--border) 54%, transparent);
+    overflow: hidden;
+  }
+
+  .flashcard-deck-progress::-webkit-progress-bar {
+    background: color-mix(in srgb, var(--border) 54%, transparent);
+    border-radius: var(--radius-pill);
+  }
+
+  .flashcard-deck-progress::-webkit-progress-value {
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 72%, var(--success)));
+    border-radius: var(--radius-pill);
+  }
+
+  .flashcard-deck-progress::-moz-progress-bar {
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 72%, var(--success)));
+    border-radius: var(--radius-pill);
   }
 
   .flashcard-deck-topic-list {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
+    gap: 7px;
   }
 
   .flashcard-deck-topic {
-    min-height: 28px;
+    min-height: 34px;
     border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
     border-radius: var(--radius-pill);
     background: color-mix(in srgb, var(--surface) 78%, var(--surface-soft));
@@ -241,8 +271,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 0 10px;
-    font-size: 0.78rem;
+    padding: 0 12px;
+    font-size: 0.84rem;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
@@ -1852,7 +1882,7 @@
     }
 
     .flashcard-deck-strip {
-      padding: 10px;
+      padding: 12px;
       border-radius: 16px;
     }
 
@@ -2128,16 +2158,19 @@
       {% for deck in flashcard_decks %}
       <li class="flashcard-deck-row">
         <div class="flashcard-deck-copy">
-          <p class="flashcard-deck-title">
-            {{ deck.card_count }} kort fordelt på {{ deck.category_count }} emner
-          </p>
-          {% if deck.review_summary %}
-          <p class="flashcard-deck-meta">
-            {{ deck.review_summary.reviewed_count }}/{{ deck.card_count }} kort besvaret
-          </p>
-          {% else %}
-          <p class="flashcard-deck-meta">{{ deck.card_count }} kort</p>
-          {% endif %}
+          <div class="flashcard-deck-copy-head">
+            <p class="flashcard-deck-title">Øv efter emne</p>
+            <p class="flashcard-deck-meta">
+              {{ deck.card_count }} kort · {{ deck.category_count }} emner{% if deck.review_summary %} · {{ deck.review_summary.reviewed_count }} besvaret{% endif %}
+            </p>
+            {% if deck.review_summary %}
+            <progress class="flashcard-deck-progress" value="{{ deck.review_summary.reviewed_count }}"
+              max="{{ deck.card_count }}"
+              aria-label="{{ deck.review_summary.reviewed_count }} af {{ deck.card_count }} anki-kort besvaret">
+              {{ deck.review_summary.reviewed_count }}/{{ deck.card_count }}
+            </progress>
+            {% endif %}
+          </div>
           {% if deck.categories %}
           <div class="flashcard-deck-topic-list" aria-label="Emner i {{ deck.title }}">
             <a class="flashcard-deck-topic" href="{{ deck.practice_url }}" aria-label="Øv alle kort">

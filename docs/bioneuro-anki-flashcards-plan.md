@@ -23,6 +23,9 @@ Created: 2026-05-19
   `manage.py check` passed, Python compile checks passed, generated flashcard
   artifact re-imported byte-for-byte, `git diff --check` passed, and 214
   relevant Freudd tests passed across flashcards, portal, and content services.
+- 2026-05-19: Added non-scheduler navigation features for anki-kort: `Alle`,
+  `Ubesvarede`, and `Besvarede` filters, live filter counts, current-card
+  answered state, and subject-page progress phrased as `kort besvaret`.
 
 ## Goal
 
@@ -66,11 +69,12 @@ quiz-driven lecture completion.
 On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
-1. show card front
-2. learner clicks `Vis svar`
-3. show sanitized answer/explanation
-4. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
-5. advance to the next card
+1. choose `Alle`, `Ubesvarede`, or `Besvarede`
+2. show card front plus `Ubesvaret` or `Besvaret` state
+3. learner clicks `Vis svar`
+4. show sanitized answer/explanation
+5. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
+6. update the answered state and advance within the active filter
 
 The experience should feel native to Freudd and visually related to the quiz
 view, but the language should clearly say card practice, not quiz.

@@ -2111,8 +2111,7 @@
           <p class="flashcard-deck-title">{{ deck.title }}</p>
           {% if deck.review_summary %}
           <p class="flashcard-deck-meta">
-            {{ deck.review_summary.reviewed_count }}/{{ deck.card_count }} kort øvet
-            {% if deck.review_summary.due_count %} · {{ deck.review_summary.due_count }} klar igen{% endif %}
+            {{ deck.review_summary.reviewed_count }}/{{ deck.card_count }} kort besvaret
           </p>
           {% else %}
           <p class="flashcard-deck-meta">{{ deck.card_count }} kort</p>

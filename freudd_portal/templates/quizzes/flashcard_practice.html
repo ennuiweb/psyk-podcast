@@ -69,6 +69,66 @@
     margin-bottom: clamp(var(--space-4), 3vw, var(--space-6));
   }
 
+  .flashcard-study-nav {
+    max-width: 68ch;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding: var(--space-2);
+    border: 1px solid color-mix(in srgb, var(--border) 76%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface-soft) 72%, var(--surface));
+  }
+
+  .flashcard-filter-tabs {
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+  }
+
+  .flashcard-filter-button {
+    min-height: 38px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-subtle-2);
+    padding: 0 var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .flashcard-filter-button:hover,
+  .flashcard-filter-button:focus-visible {
+    border-color: color-mix(in srgb, var(--border-strong) 66%, transparent);
+    background: var(--surface);
+  }
+
+  .flashcard-filter-button.is-active {
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    background: var(--surface);
+    color: var(--info-ink-strong);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--border) 42%, transparent);
+  }
+
+  .flashcard-filter-count {
+    min-width: 1.7em;
+    min-height: 1.7em;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--border) 54%, transparent);
+    color: var(--text-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0 var(--space-1);
+  }
+
   .flashcard-flow-row {
     display: flex;
     align-items: center;
@@ -95,6 +155,31 @@
     background: color-mix(in srgb, var(--surface-soft) 74%, var(--surface));
     padding: 0 var(--space-3);
     text-transform: none;
+  }
+
+  .flashcard-card-state {
+    margin: 0;
+    min-height: 32px;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--text-subtle-2);
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--space-3);
+    font-weight: 800;
+  }
+
+  .flashcard-card-state.is-answered {
+    border-color: color-mix(in srgb, var(--success) 38%, var(--border));
+    background: color-mix(in srgb, var(--success-bg, var(--info-bg)) 62%, var(--surface));
+    color: var(--success, var(--info-ink-strong));
+  }
+
+  .flashcard-card-state.is-unanswered {
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+    background: var(--info-bg);
+    color: var(--info-ink-strong);
   }
 
   .flashcard-progress {
@@ -220,6 +305,21 @@
       padding: var(--space-4);
     }
 
+    .flashcard-study-nav {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+
+    .flashcard-filter-tabs {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .flashcard-filter-button {
+      justify-content: space-between;
+      width: 100%;
+    }
+
     .flashcard-front {
       font-size: clamp(1.26rem, 6vw, 1.54rem);
       line-height: 1.32;
@@ -255,9 +355,23 @@
   <div id="flashcard-loading" class="flashcard-loading">Indlæser kort…</div>
 
   <section id="flashcard-stage" class="flashcard-stage is-hidden">
+    <nav class="flashcard-study-nav" aria-label="Navigation i anki-kort">
+      <div class="flashcard-filter-tabs" aria-label="Filtrer kort">
+        <button class="flashcard-filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+          Alle <span id="flashcard-count-all" class="flashcard-filter-count">0</span>
+        </button>
+        <button class="flashcard-filter-button" type="button" data-filter="unanswered" aria-pressed="false">
+          Ubesvarede <span id="flashcard-count-unanswered" class="flashcard-filter-count">0</span>
+        </button>
+        <button class="flashcard-filter-button" type="button" data-filter="answered" aria-pressed="false">
+          Besvarede <span id="flashcard-count-answered" class="flashcard-filter-count">0</span>
+        </button>
+      </div>
+    </nav>
     <div class="flashcard-flow-head">
       <div class="flashcard-flow-row">
         <p id="flashcard-counter" class="flashcard-counter"></p>
+        <p id="flashcard-card-state" class="flashcard-card-state"></p>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
       </div>
       <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i anki-kort">
@@ -291,6 +405,7 @@
     const errorNode = document.getElementById("flashcard-error");
     const stageNode = document.getElementById("flashcard-stage");
     const counterNode = document.getElementById("flashcard-counter");
+    const cardStateNode = document.getElementById("flashcard-card-state");
     const reviewedNode = document.getElementById("flashcard-reviewed");
     const progressNode = document.getElementById("flashcard-progress");
     const frontNode = document.getElementById("flashcard-front");
@@ -299,9 +414,13 @@
     const previousNode = document.getElementById("flashcard-previous");
     const showAnswerNode = document.getElementById("flashcard-show-answer");
     const ratingActionsNode = document.getElementById("flashcard-rating-actions");
+    const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+    const countAllNode = document.getElementById("flashcard-count-all");
+    const countUnansweredNode = document.getElementById("flashcard-count-unanswered");
+    const countAnsweredNode = document.getElementById("flashcard-count-answered");
 
-    let cards = [];
-    let reviewSummary = null;
+    let allCards = [];
+    let currentFilter = "all";
     let currentIndex = 0;
     let showingAnswer = false;
     let saving = false;
@@ -329,25 +448,77 @@
     }
 
     function currentCard() {
+      const cards = visibleCards();
       if (!cards.length || currentIndex < 0 || currentIndex >= cards.length) {
         return null;
       }
       return cards[currentIndex];
     }
 
-    function reviewedCount() {
-      if (reviewSummary && Number.isInteger(reviewSummary.reviewed_count)) {
-        return reviewSummary.reviewed_count;
+    function isAnswered(card) {
+      return Boolean(card && card.review && card.review.rating);
+    }
+
+    function counts() {
+      const answered = allCards.filter(isAnswered).length;
+      return {
+        all: allCards.length,
+        answered,
+        unanswered: Math.max(0, allCards.length - answered),
+      };
+    }
+
+    function visibleCards() {
+      if (currentFilter === "answered") {
+        return allCards.filter(isAnswered);
       }
-      return cards.filter((card) => card.review).length;
+      if (currentFilter === "unanswered") {
+        return allCards.filter((card) => !isAnswered(card));
+      }
+      return allCards;
+    }
+
+    function filterLabel() {
+      if (currentFilter === "answered") {
+        return "besvarede";
+      }
+      if (currentFilter === "unanswered") {
+        return "ubesvarede";
+      }
+      return "kort";
+    }
+
+    function updateFilterButtons() {
+      const totals = counts();
+      countAllNode.textContent = String(totals.all);
+      countUnansweredNode.textContent = String(totals.unanswered);
+      countAnsweredNode.textContent = String(totals.answered);
+      for (const button of filterButtons) {
+        const isActive = button.dataset.filter === currentFilter;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      }
+    }
+
+    function setFilter(nextFilter) {
+      currentFilter = nextFilter;
+      currentIndex = 0;
+      showingAnswer = false;
+      isComplete = false;
+      render();
     }
 
     function render() {
+      updateFilterButtons();
+      const cards = visibleCards();
+      const totalCounts = counts();
       if (isComplete) {
         counterNode.textContent = `${cards.length} / ${cards.length}`;
-        reviewedNode.textContent = `${reviewedCount()} øvet`;
+        reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
         progressNode.value = 100;
-        frontNode.textContent = "Alle kort i sættet er gennemgået.";
+        frontNode.textContent = `Alle ${filterLabel()} i denne visning er gennemgået.`;
+        cardStateNode.textContent = "";
+        cardStateNode.classList.remove("is-answered", "is-unanswered");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
         ratingActionsNode.classList.add("is-hidden");
@@ -359,27 +530,36 @@
       const card = currentCard();
       if (!card) {
         counterNode.textContent = "0 / 0";
-        reviewedNode.textContent = "0 øvet";
+        reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
         progressNode.value = 0;
-        frontNode.textContent = "Ingen kort fundet.";
+        frontNode.textContent = `Ingen ${filterLabel()} fundet.`;
+        cardStateNode.textContent = "";
+        cardStateNode.classList.remove("is-answered", "is-unanswered");
         answerNode.classList.add("is-hidden");
+        showAnswerNode.classList.add("is-hidden");
         showAnswerNode.disabled = true;
         ratingActionsNode.classList.add("is-hidden");
+        previousNode.disabled = true;
         return;
       }
 
       const total = cards.length;
       const position = currentIndex + 1;
       counterNode.textContent = `${position} / ${total}`;
-      reviewedNode.textContent = `${reviewedCount()} øvet`;
-      progressNode.value = Math.round((currentIndex / Math.max(1, total)) * 100);
+      reviewedNode.textContent = `${totalCounts.answered}/${totalCounts.all} besvaret`;
+      progressNode.value = Math.round((position / Math.max(1, total)) * 100);
       frontNode.textContent = card.front_text || "";
       answerNode.innerHTML = card.back_html || "";
       answerNode.classList.toggle("is-hidden", !showingAnswer);
       showAnswerNode.classList.toggle("is-hidden", showingAnswer);
+      showAnswerNode.disabled = saving;
       ratingActionsNode.classList.toggle("is-hidden", !showingAnswer);
       previousNode.disabled = currentIndex <= 0 || saving;
-      statusNode.textContent = card.review?.rating ? `Sidst markeret: ${ratingLabel(card.review.rating)}` : "";
+      const answered = isAnswered(card);
+      cardStateNode.textContent = answered ? `Besvaret · ${ratingLabel(card.review.rating)}` : "Ubesvaret";
+      cardStateNode.classList.toggle("is-answered", answered);
+      cardStateNode.classList.toggle("is-unanswered", !answered);
+      statusNode.textContent = answered ? `Sidst markeret: ${ratingLabel(card.review.rating)}` : "";
     }
 
     function ratingLabel(rating) {
@@ -398,7 +578,21 @@
       return "";
     }
 
-    function advance() {
+    function advance(reviewedCardId = "") {
+      const cards = visibleCards();
+      if (!cards.length) {
+        currentIndex = 0;
+        showingAnswer = false;
+        isComplete = false;
+        render();
+        return;
+      }
+      if (reviewedCardId && !cards.some((card) => card.card_id === reviewedCardId)) {
+        currentIndex = Math.min(currentIndex, cards.length - 1);
+        showingAnswer = false;
+        render();
+        return;
+      }
       if (currentIndex < cards.length - 1) {
         currentIndex += 1;
         showingAnswer = false;
@@ -415,8 +609,7 @@
         throw new Error("Kortene kunne ikke indlæses.");
       }
       const payload = await response.json();
-      cards = Array.isArray(payload.cards) ? payload.cards : [];
-      reviewSummary = payload.review_summary || null;
+      allCards = Array.isArray(payload.cards) ? payload.cards : [];
       loadingNode.classList.add("is-hidden");
       stageNode.classList.remove("is-hidden");
       render();
@@ -449,8 +642,7 @@
           last_reviewed_at: payload.last_reviewed_at,
           next_review_at: payload.next_review_at,
         };
-        reviewSummary = payload.review_summary || reviewSummary;
-        advance();
+        advance(card.card_id);
       } catch (error) {
         showError(error instanceof Error ? error.message : "Din markering kunne ikke gemmes.");
       } finally {
@@ -473,6 +665,13 @@
       showingAnswer = false;
       render();
     });
+
+    for (const button of filterButtons) {
+      button.addEventListener("click", () => {
+        const nextFilter = button.dataset.filter || "all";
+        setFilter(nextFilter);
+      });
+    }
 
     ratingActionsNode.addEventListener("click", (event) => {
       const target = event.target;

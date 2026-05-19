@@ -2217,8 +2217,7 @@ def quiz_content_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
 def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
-    if not request.user.is_authenticated:
-        return redirect(_auth_url_with_next("login", request.get_full_path()))
+    user_is_authenticated = bool(request.user.is_authenticated)
 
     try:
         entry = get_flashcard_deck_entry(subject.slug, deck_slug)
@@ -2247,6 +2246,8 @@ def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: 
                 "flashcard-review",
                 kwargs={"subject_slug": subject.slug, "deck_slug": deck.deck_slug},
             ),
+            "flashcard_preview_mode": not user_is_authenticated,
+            "login_url": _auth_url_with_next("login", request.get_full_path()),
             "back_url": reverse("subject-detail", kwargs={"subject_slug": subject.slug}),
         },
     )
@@ -2254,8 +2255,6 @@ def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: 
 
 @require_GET
 def flashcard_content_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
-    if not request.user.is_authenticated:
-        return JsonResponse({"error": "authentication_required"}, status=403)
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
     try:
@@ -2268,7 +2267,8 @@ def flashcard_content_view(request: HttpRequest, subject_slug: str, deck_slug: s
             extra={"subject_slug": subject.slug, "deck_slug": deck_slug},
         )
         return JsonResponse({"error": "deck_unavailable"}, status=500)
-    return JsonResponse(flashcard_deck_api_payload(deck=deck, user=request.user))
+    user = request.user if request.user.is_authenticated else None
+    return JsonResponse(flashcard_deck_api_payload(deck=deck, user=user))
 
 
 @require_POST

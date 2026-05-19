@@ -245,10 +245,18 @@ class FlashcardPortalTests(TestCase):
         with self.assertRaises(FlashcardValidationError):
             list_flashcard_deck_entries("bioneuro")
 
-    def test_flashcard_practice_requires_login(self) -> None:
-        response = self.client.get(reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
-        self.assertEqual(response.status_code, 302)
-        self.assertIn("/accounts/login", response["Location"])
+    def test_flashcard_practice_and_api_allow_anonymous_preview(self) -> None:
+        page = self.client.get(reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        self.assertEqual(page.status_code, 200)
+        self.assertContains(page, "Preview uden login")
+        self.assertContains(page, "dine svar og din progress gemmes ikke")
+        self.assertContains(page, "const previewMode = true;")
+
+        api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        self.assertEqual(api.status_code, 200)
+        payload = api.json()
+        self.assertIsNone(payload["review_summary"])
+        self.assertIsNone(payload["cards"][0]["review"])
 
     def test_flashcard_practice_and_api_render_for_logged_in_user(self) -> None:
         self.client.force_login(self._user())
@@ -260,6 +268,7 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, "Ubesvarede")
         self.assertContains(page, "Besvarede")
         self.assertContains(page, "Ubesvaret")
+        self.assertContains(page, "const previewMode = false;")
 
         api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
         self.assertEqual(api.status_code, 200)

@@ -29,6 +29,9 @@ Created: 2026-05-19
 - 2026-05-19: Added deterministic topic derivation for the imported Anki cards
   and replaced the broad deck title on the subject page with a compact category
   preview and category card counts.
+- 2026-05-19: Opened the anki-kort practice page and read API for anonymous
+  preview use. Anonymous learners can work through cards in browser state, with
+  a bottom-page warning that progress is not saved unless they log in.
 
 ## Goal
 
@@ -220,7 +223,8 @@ Route behavior:
 - Unknown subject: 404.
 - Unknown or disabled deck: 404.
 - Malformed deck artifact: 500 with a logged server error, not partial UI.
-- Anonymous read access should match the intended subject preview policy.
+- Anonymous read access is allowed for the practice page and card payload in
+  preview mode. In-page preview ratings are not persisted.
 - Review POST requires authentication for persisted progress.
 
 Template:

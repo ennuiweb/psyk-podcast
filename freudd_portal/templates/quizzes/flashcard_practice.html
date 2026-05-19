@@ -295,6 +295,31 @@
     background: var(--surface-soft);
   }
 
+  .flashcard-preview-note {
+    max-width: 68ch;
+    border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+    border-radius: var(--radius-sub);
+    background: color-mix(in srgb, var(--info-bg) 74%, var(--surface));
+    color: var(--text-subtle-2);
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-3);
+  }
+
+  .flashcard-preview-note p {
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  .flashcard-preview-note strong {
+    color: var(--ink);
+  }
+
+  .flashcard-preview-note a {
+    color: var(--info-ink-strong);
+    font-weight: 800;
+  }
+
   @media (max-width: 640px) {
     .flashcard-shell {
       padding: var(--space-3);
@@ -392,6 +417,13 @@
       </div>
     </div>
   </section>
+
+  {% if flashcard_preview_mode %}
+  <aside class="flashcard-preview-note" aria-label="Preview uden gemt progress">
+    <p><strong>Preview uden login.</strong> Du kan øve kortene her, men dine svar og din progress gemmes ikke.</p>
+    <p><a href="{{ login_url }}">Log ind</a> for at gemme dine besvarede kort.</p>
+  </aside>
+  {% endif %}
 </div>
 
 <script>
@@ -400,6 +432,7 @@
 
     const contentUrl = "{{ flashcard_content_url|escapejs }}";
     const reviewUrl = "{{ flashcard_review_url|escapejs }}";
+    const previewMode = {{ flashcard_preview_mode|yesno:"true,false" }};
 
     const loadingNode = document.getElementById("flashcard-loading");
     const errorNode = document.getElementById("flashcard-error");
@@ -623,6 +656,18 @@
       saving = true;
       hideError();
       try {
+        if (previewMode) {
+          const previousCount = card.review && card.review.review_count ? Number(card.review.review_count) : 0;
+          card.review = {
+            rating,
+            review_count: previousCount + 1,
+            last_reviewed_at: null,
+            next_review_at: null,
+            preview: true,
+          };
+          advance(card.card_id);
+          return;
+        }
         const response = await fetch(reviewUrl, {
           method: "POST",
           credentials: "same-origin",

@@ -3,19 +3,20 @@
 {% block content %}
 <style>
   .flashcard-shell {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 980px;
+    margin: clamp(var(--space-4), 4vh, var(--space-6)) auto;
     display: grid;
-    gap: clamp(var(--space-4), 2.4vw, var(--space-6));
-    padding: clamp(var(--space-4), 2.4vw, var(--space-6));
+    gap: clamp(var(--space-4), 2vw, var(--space-5));
+    padding: clamp(var(--space-4), 3vw, 34px);
+    overflow: clip;
   }
 
   .flashcard-head {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
     justify-content: space-between;
     gap: var(--space-4);
-    flex-wrap: wrap;
     padding-bottom: var(--space-4);
     border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
   }
@@ -48,9 +49,10 @@
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+    font-size: clamp(1.36rem, 2.2vw, 1.92rem);
     line-height: 1.12;
     font-weight: 700;
+    overflow-wrap: anywhere;
   }
 
   .flashcard-back-link {
@@ -71,7 +73,7 @@
 
   .flashcard-stage {
     display: grid;
-    gap: clamp(var(--space-4), 2.4vw, var(--space-6));
+    gap: clamp(var(--space-4), 2vw, var(--space-5));
     padding-top: var(--space-1);
     min-width: 0;
   }
@@ -82,19 +84,28 @@
   }
 
   .flashcard-study-nav {
-    display: grid;
-    align-items: start;
-    justify-content: flex-start;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: var(--space-2);
+    flex-wrap: wrap;
     margin: 0;
+    padding: var(--space-2);
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    border-radius: calc(var(--radius-xl) + 4px);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--surface-soft) 68%, transparent)),
+      var(--surface-soft);
   }
 
   .flashcard-scope-control {
-    max-width: 72ch;
+    flex: 1 1 330px;
     display: grid;
-    grid-template-columns: auto minmax(220px, 360px);
+    grid-template-columns: auto minmax(220px, 1fr);
     align-items: center;
     gap: var(--space-2);
+    min-width: min(100%, 320px);
   }
 
   .flashcard-scope-label {
@@ -108,11 +119,11 @@
   }
 
   .flashcard-category-select {
-    min-height: 40px;
+    min-height: 42px;
     width: 100%;
-    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border-strong) 66%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface-soft) 64%, var(--surface));
+    background: color-mix(in srgb, var(--surface) 82%, var(--surface-soft));
     color: var(--text-subtle-2);
     padding: 0 var(--space-3);
     font: inherit;
@@ -124,13 +135,13 @@
     gap: 3px;
     flex-wrap: wrap;
     padding: 4px;
-    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 56%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface-soft) 70%, var(--surface));
+    background: color-mix(in srgb, var(--surface) 42%, transparent);
   }
 
   .flashcard-filter-button {
-    min-height: 34px;
+    min-height: 36px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
@@ -139,7 +150,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 800;
     white-space: nowrap;
     cursor: pointer;
@@ -160,8 +171,8 @@
   }
 
   .flashcard-filter-count {
-    min-width: 1.8em;
-    min-height: 1.8em;
+    min-width: 1.75em;
+    min-height: 1.75em;
     border-radius: var(--radius-pill);
     display: inline-flex;
     align-items: center;
@@ -174,18 +185,15 @@
   }
 
   .flashcard-flow-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(72px, auto) minmax(0, 1fr) minmax(90px, auto);
     align-items: center;
-    justify-content: flex-start;
+    justify-content: stretch;
     gap: var(--space-2);
-    flex-wrap: wrap;
   }
 
   .flashcard-meta-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--border-strong) 78%, transparent);
+    display: none;
   }
 
   .flashcard-counter,
@@ -194,12 +202,21 @@
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.76rem;
+    font-size: 0.78rem;
+    font-weight: 800;
     color: var(--text-subtle-2);
   }
 
+  .flashcard-counter {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .flashcard-reviewed {
+    grid-column: 3;
+    grid-row: 1;
     color: var(--muted);
+    justify-self: end;
   }
 
   .flashcard-card-state {
@@ -211,9 +228,13 @@
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
     padding: 0 var(--space-2);
     font-size: 0.82rem;
     font-weight: 800;
+    text-align: center;
   }
 
   .flashcard-card-state.is-answered {
@@ -230,7 +251,7 @@
 
   .flashcard-progress {
     width: 100%;
-    height: 8px;
+    height: 7px;
     border: 0;
     border-radius: var(--radius-pill);
     background: var(--progress-track-bg);
@@ -251,20 +272,22 @@
   }
 
   .flashcard-front {
-    max-width: 30ch;
+    max-width: 28ch;
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.62rem, 4.1vw, 2.65rem);
-    line-height: 1.08;
+    font-size: clamp(1.7rem, 3.35vw, 2.36rem);
+    line-height: 1.12;
     font-weight: 700;
     overflow-wrap: anywhere;
+    text-wrap: balance;
   }
 
   .flashcard-recall {
     max-width: 72ch;
     display: grid;
     gap: var(--space-2);
+    margin-top: calc(var(--space-2) * -1);
   }
 
   .flashcard-answer-toggle {
@@ -272,7 +295,7 @@
     min-height: 40px;
     border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
     border-radius: var(--radius-pill);
-    background: transparent;
+    background: color-mix(in srgb, var(--surface) 62%, transparent);
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
@@ -298,9 +321,9 @@
   }
 
   .flashcard-user-answer {
-    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface-soft) 64%, var(--surface));
+    background: color-mix(in srgb, var(--surface) 70%, var(--surface-soft));
     display: grid;
     gap: var(--space-2);
     padding: var(--space-3);
@@ -319,7 +342,7 @@
 
   .flashcard-user-answer textarea {
     width: 100%;
-    min-height: 112px;
+    min-height: 104px;
     border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
     border-radius: var(--radius-sub);
     background: color-mix(in srgb, var(--surface-soft) 72%, var(--bg-soft));
@@ -337,10 +360,11 @@
 
   .flashcard-answer {
     max-width: 72ch;
-    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+    border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+    border-left: 4px solid color-mix(in srgb, var(--accent) 70%, var(--border));
     border-radius: var(--radius-md);
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--info-bg) 82%, var(--surface)), color-mix(in srgb, var(--info-bg) 58%, var(--surface))),
+      linear-gradient(180deg, color-mix(in srgb, var(--info-bg) 58%, var(--surface)), color-mix(in srgb, var(--info-bg) 42%, var(--surface))),
       var(--info-bg);
     color: var(--text-subtle-2);
     display: grid;
@@ -375,11 +399,12 @@
   }
 
   .flashcard-actions {
-    max-width: 72ch;
+    max-width: 100%;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: var(--space-3);
+    margin-top: var(--space-1);
     padding-top: var(--space-4);
     border-top: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
   }
@@ -387,6 +412,8 @@
   .flashcard-show-answer {
     justify-self: end;
     gap: var(--space-1);
+    min-width: 150px;
+    min-height: 48px;
   }
 
   .flashcard-secondary {
@@ -416,7 +443,7 @@
 
   .flashcard-rating-actions {
     display: grid;
-    grid-template-columns: repeat(4, minmax(74px, auto));
+    grid-template-columns: repeat(4, minmax(78px, auto));
     align-items: center;
     justify-content: flex-end;
     justify-self: end;
@@ -478,6 +505,11 @@
     color: var(--muted);
     min-height: 0;
     font-size: 0.92rem;
+    max-width: 72ch;
+  }
+
+  .flashcard-status:empty {
+    display: none;
   }
 
   .flashcard-alert {
@@ -520,8 +552,17 @@
 
   @media (max-width: 640px) {
     .flashcard-shell {
+      margin: var(--space-3) auto;
       padding: var(--space-3);
       gap: var(--space-4);
+    }
+
+    .flashcard-head {
+      grid-template-columns: 1fr;
+    }
+
+    .flashcard-back-link {
+      justify-self: start;
     }
 
     .flashcard-stage {
@@ -530,6 +571,7 @@
 
     .flashcard-study-nav {
       align-items: stretch;
+      border-radius: var(--radius-lg);
     }
 
     .flashcard-scope-control {
@@ -541,25 +583,30 @@
       display: grid;
       grid-template-columns: 1fr;
       width: 100%;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
     }
 
     .flashcard-filter-button {
       justify-content: space-between;
       width: 100%;
+      padding: 0 var(--space-2);
+      font-size: 0.88rem;
     }
 
     .flashcard-flow-row {
-      row-gap: var(--space-1);
+      grid-template-columns: 1fr auto;
+      row-gap: var(--space-2);
     }
 
-    .flashcard-meta-dot-state {
-      display: none;
+    .flashcard-card-state {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      justify-self: start;
     }
 
     .flashcard-front {
       max-width: 100%;
-      font-size: clamp(1.42rem, 8vw, 2rem);
+      font-size: clamp(1.42rem, 7vw, 2rem);
       line-height: 1.12;
     }
 
@@ -1057,7 +1104,7 @@
       const totalCounts = counts();
       if (isComplete) {
         counterNode.textContent = "Visning gennemgået";
-        reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
+        reviewedNode.textContent = `${totalCounts.answered} besvaret`;
         progressNode.value = 100;
         progressNode.setAttribute("aria-label", "Progress: visning gennemgået");
         frontNode.textContent = `Alle ${filterLabel()} i denne visning er gennemgået.`;
@@ -1077,7 +1124,7 @@
       const card = currentCard();
       if (!card) {
         counterNode.textContent = "0 kort";
-        reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
+        reviewedNode.textContent = `${totalCounts.answered} besvaret`;
         progressNode.value = 0;
         progressNode.setAttribute("aria-label", "Progress: ingen kort i visningen");
         frontNode.textContent = `Ingen ${filterLabel()} fundet.`;
@@ -1096,8 +1143,8 @@
 
       const total = cards.length;
       const position = currentIndex + 1;
-      counterNode.textContent = `Kort ${position} af ${total}`;
-      reviewedNode.textContent = `${totalCounts.answered} af ${totalCounts.all} besvaret`;
+      counterNode.textContent = `${position} / ${total}`;
+      reviewedNode.textContent = `${totalCounts.answered} besvaret`;
       progressNode.value = Math.round((position / Math.max(1, total)) * 100);
       progressNode.setAttribute("aria-label", `Progress: kort ${position} af ${total}`);
       frontNode.textContent = card.front_text || "";

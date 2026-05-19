@@ -43,7 +43,7 @@ Created: 2026-05-19
   logged-in users' `Skriv svar` text is saved separately from
   `FlashcardReview`, while anonymous preview answers remain browser-only.
 - 2026-05-19: Made subject-page topic chips direct entry points into scoped
-  practice via `?category=<category_slug>`, with `Øv alle` kept as the
+  practice via `?category=<category_slug>`, with `Alle` kept as the matching
   all-cards entry point.
 
 ## Goal

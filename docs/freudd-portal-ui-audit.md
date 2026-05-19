@@ -332,7 +332,7 @@ Implemented:
 - rating buttons use equal, predictable touch targets with difficulty-specific
   visual treatment
 - subject-page topic chips open practice directly in that category, while
-  `Øv alle` remains the all-cards entry point
+  `Alle` remains the all-cards entry point in the same chip style
 - learners can still change the practice scope before applying
   `Alle`/`Ubesvarede`/`Besvarede`
 

@@ -409,7 +409,8 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(response, "Grundbegreber")
         self.assertContains(response, "Neuroner og synapser")
         self.assertContains(response, "0/2 kort besvaret")
-        self.assertContains(response, "Øv alle")
+        self.assertContains(response, "Alle")
+        self.assertContains(response, 'aria-label="Øv alle kort"')
         self.assertContains(response, "?category=grundbegreber")
         self.assertContains(response, "?category=neuroner-og-synapser")
         self.assertContains(

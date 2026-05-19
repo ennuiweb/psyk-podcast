@@ -195,7 +195,7 @@
 
   .flashcard-deck-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
     gap: 14px;
     border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
@@ -267,27 +267,6 @@
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 800;
-  }
-
-  .flashcard-deck-action {
-    min-height: 42px;
-    border-radius: var(--radius-pill);
-    border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--border));
-    background: var(--accent-soft);
-    color: var(--info-ink-strong);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .flashcard-deck-action:hover {
-    border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
-    background: var(--info-bg-strong);
-    color: var(--info-ink-strong);
   }
 
   .subject-path {
@@ -1883,10 +1862,6 @@
       gap: 10px;
     }
 
-    .flashcard-deck-action {
-      width: 100%;
-    }
-
     .subject-path-layout {
       grid-template-columns: 54px minmax(0, 1fr);
       gap: 4px;
@@ -2165,6 +2140,10 @@
           {% endif %}
           {% if deck.categories %}
           <div class="flashcard-deck-topic-list" aria-label="Emner i {{ deck.title }}">
+            <a class="flashcard-deck-topic" href="{{ deck.practice_url }}" aria-label="Øv alle kort">
+              Alle
+              <span class="flashcard-deck-topic-count">{{ deck.card_count }}</span>
+            </a>
             {% for category in deck.categories %}
             <a class="flashcard-deck-topic" href="{{ deck.practice_url }}?category={{ category.slug|urlencode }}"
               aria-label="Øv {{ category.title }}">
@@ -2175,7 +2154,6 @@
           </div>
           {% endif %}
         </div>
-        <a class="flashcard-deck-action" href="{{ deck.practice_url }}">Øv alle</a>
       </li>
       {% endfor %}
     </ul>

@@ -268,6 +268,8 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, "Ubesvarede")
         self.assertContains(page, "Besvarede")
         self.assertContains(page, "Ikke vurderet endnu")
+        self.assertContains(page, "Skriv svar")
+        self.assertContains(page, "Mit svar")
         self.assertContains(page, "const previewMode = false;")
 
         api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))

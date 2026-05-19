@@ -230,6 +230,80 @@
     overflow-wrap: anywhere;
   }
 
+  .flashcard-recall {
+    max-width: 72ch;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .flashcard-answer-toggle {
+    width: fit-content;
+    min-height: 40px;
+    border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-subtle-2);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0 var(--space-3);
+    font-size: 0.94rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+
+  .flashcard-answer-toggle:hover,
+  .flashcard-answer-toggle:focus-visible,
+  .flashcard-answer-toggle.is-open {
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 56%, transparent);
+    color: var(--accent-strong);
+  }
+
+  .flashcard-answer-toggle .material-symbols-outlined {
+    font-size: 1.08rem;
+    line-height: 1;
+  }
+
+  .flashcard-user-answer {
+    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface-soft) 64%, var(--surface));
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    scroll-margin-top: 96px;
+  }
+
+  .flashcard-user-answer-label {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .flashcard-user-answer textarea {
+    width: 100%;
+    min-height: 112px;
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    border-radius: var(--radius-sub);
+    background: color-mix(in srgb, var(--surface-soft) 72%, var(--bg-soft));
+    color: var(--ink);
+    padding: var(--space-3);
+    font: inherit;
+    line-height: 1.5;
+    resize: vertical;
+    scroll-margin-top: 112px;
+  }
+
+  .flashcard-user-answer textarea::placeholder {
+    color: var(--placeholder-ink);
+  }
+
   .flashcard-answer {
     max-width: 72ch;
     border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
@@ -456,6 +530,11 @@
       line-height: 1.12;
     }
 
+    .flashcard-answer-toggle {
+      width: 100%;
+      justify-content: center;
+    }
+
     .flashcard-actions {
       display: grid;
       grid-template-columns: 1fr;
@@ -523,6 +602,18 @@
       </progress>
     </div>
     <h2 id="flashcard-front" class="flashcard-front"></h2>
+    <div id="flashcard-recall" class="flashcard-recall">
+      <button id="flashcard-answer-toggle" class="flashcard-answer-toggle" type="button" aria-expanded="false"
+        aria-controls="flashcard-user-answer-panel">
+        <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
+        <span id="flashcard-answer-toggle-label">Skriv svar</span>
+      </button>
+      <div id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden">
+        <label class="flashcard-user-answer-label" for="flashcard-user-answer">Mit svar</label>
+        <textarea id="flashcard-user-answer" autocomplete="off" spellcheck="true"
+          placeholder="Skriv dit svar her"></textarea>
+      </div>
+    </div>
     <div id="flashcard-answer" class="flashcard-answer is-hidden">
       <p class="flashcard-answer-label">Svar</p>
       <div id="flashcard-answer-body" class="flashcard-answer-body"></div>
@@ -567,6 +658,11 @@
     const reviewedNode = document.getElementById("flashcard-reviewed");
     const progressNode = document.getElementById("flashcard-progress");
     const frontNode = document.getElementById("flashcard-front");
+    const recallNode = document.getElementById("flashcard-recall");
+    const answerToggleNode = document.getElementById("flashcard-answer-toggle");
+    const answerToggleLabelNode = document.getElementById("flashcard-answer-toggle-label");
+    const userAnswerPanelNode = document.getElementById("flashcard-user-answer-panel");
+    const userAnswerNode = document.getElementById("flashcard-user-answer");
     const answerNode = document.getElementById("flashcard-answer");
     const answerBodyNode = document.getElementById("flashcard-answer-body");
     const statusNode = document.getElementById("flashcard-status");
@@ -582,8 +678,10 @@
     let currentFilter = "all";
     let currentIndex = 0;
     let showingAnswer = false;
+    let showingUserAnswerField = false;
     let saving = false;
     let isComplete = false;
+    const userAnswerDrafts = new Map();
 
     function getCsrfToken() {
       const cookies = document.cookie ? document.cookie.split(";") : [];
@@ -616,6 +714,10 @@
 
     function isAnswered(card) {
       return Boolean(card && card.review && card.review.rating);
+    }
+
+    function cardDraftKey(card) {
+      return card && card.card_id ? String(card.card_id) : "";
     }
 
     function counts() {
@@ -667,6 +769,30 @@
       render();
     }
 
+    function renderUserAnswerField(card) {
+      const draftKey = cardDraftKey(card);
+      answerToggleNode.classList.toggle("is-open", showingUserAnswerField);
+      answerToggleNode.setAttribute("aria-expanded", showingUserAnswerField ? "true" : "false");
+      answerToggleLabelNode.textContent = showingUserAnswerField ? "Skjul svarfelt" : "Skriv svar";
+      userAnswerPanelNode.classList.toggle("is-hidden", !showingUserAnswerField);
+      userAnswerNode.disabled = saving;
+      userAnswerNode.value = draftKey ? userAnswerDrafts.get(draftKey) || "" : "";
+    }
+
+    function keepUserAnswerBelowHeader() {
+      const adjust = () => {
+        const headerNode = document.querySelector(".site-header");
+        const headerBottom = headerNode ? headerNode.getBoundingClientRect().bottom : 0;
+        const panelTop = userAnswerPanelNode.getBoundingClientRect().top;
+        const overlap = headerBottom + 12 - panelTop;
+        if (overlap > 0) {
+          window.scrollBy(0, -overlap);
+        }
+      };
+      window.requestAnimationFrame(adjust);
+      window.setTimeout(adjust, 80);
+    }
+
     function render() {
       updateFilterButtons();
       const cards = visibleCards();
@@ -680,6 +806,7 @@
         cardStateNode.textContent = "Gennemgået";
         cardStateNode.classList.add("is-answered");
         cardStateNode.classList.remove("is-unanswered");
+        recallNode.classList.add("is-hidden");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
         showAnswerNode.disabled = true;
@@ -699,6 +826,7 @@
         cardStateNode.textContent = "Tom visning";
         cardStateNode.classList.remove("is-answered");
         cardStateNode.classList.add("is-unanswered");
+        recallNode.classList.add("is-hidden");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
         showAnswerNode.disabled = true;
@@ -715,6 +843,8 @@
       progressNode.value = Math.round((position / Math.max(1, total)) * 100);
       progressNode.setAttribute("aria-label", `Progress: kort ${position} af ${total}`);
       frontNode.textContent = card.front_text || "";
+      recallNode.classList.remove("is-hidden");
+      renderUserAnswerField(card);
       answerBodyNode.innerHTML = card.back_html || "";
       answerNode.classList.toggle("is-hidden", !showingAnswer);
       showAnswerNode.classList.toggle("is-hidden", showingAnswer);
@@ -833,6 +963,34 @@
       showingAnswer = true;
       render();
     });
+
+    answerToggleNode.addEventListener("click", () => {
+      showingUserAnswerField = !showingUserAnswerField;
+      render();
+      if (showingUserAnswerField) {
+        try {
+          userAnswerNode.focus({ preventScroll: true });
+        } catch (error) {
+          userAnswerNode.focus();
+        }
+      }
+    });
+
+    userAnswerNode.addEventListener("input", () => {
+      const draftKey = cardDraftKey(currentCard());
+      if (draftKey) {
+        userAnswerDrafts.set(draftKey, userAnswerNode.value);
+      }
+      keepUserAnswerBelowHeader();
+    });
+
+    userAnswerNode.addEventListener("focus", keepUserAnswerBelowHeader);
+
+    window.addEventListener("scroll", () => {
+      if (showingUserAnswerField && document.activeElement === userAnswerNode) {
+        keepUserAnswerBelowHeader();
+      }
+    }, { passive: true });
 
     previousNode.addEventListener("click", () => {
       if (currentIndex <= 0) {

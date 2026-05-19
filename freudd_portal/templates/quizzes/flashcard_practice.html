@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+{% block title %}korttræning · {{ deck.title }}{% endblock %}
+{% block content %}
+<style>
+  .flashcard-shell {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-4);
+    padding: clamp(var(--space-4), 2.4vw, var(--space-6));
+  }
+
+  .flashcard-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  }
+
+  .flashcard-headline {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 68ch;
+  }
+
+  .flashcard-module {
+    margin: 0;
+    width: fit-content;
+    min-height: 24px;
+    border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+    border-radius: var(--radius-sm);
+    background: var(--info-bg);
+    color: var(--info-ink);
+    display: inline-flex;
+    align-items: center;
+    padding: 0 var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .flashcard-title {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-family: var(--font-body);
+    font-size: clamp(0.96rem, 1.3vw, 1.22rem);
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .flashcard-stage {
+    border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
+    border-radius: var(--radius-md);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 94%, var(--surface-elevated)), var(--surface)),
+      var(--surface);
+    padding: clamp(var(--space-4), 3vw, var(--space-6));
+    min-width: 0;
+  }
+
+  .flashcard-flow-head {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: clamp(var(--space-4), 3vw, var(--space-6));
+  }
+
+  .flashcard-flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .flashcard-counter,
+  .flashcard-reviewed {
+    margin: 0;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-subtle-2);
+    text-transform: uppercase;
+  }
+
+  .flashcard-reviewed {
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface-soft) 74%, var(--surface));
+    padding: 0 var(--space-3);
+    text-transform: none;
+  }
+
+  .flashcard-progress {
+    width: 100%;
+    height: 7px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--progress-track-bg);
+    overflow: hidden;
+    appearance: none;
+  }
+
+  .flashcard-progress::-webkit-progress-bar {
+    background: var(--progress-track-bg);
+  }
+
+  .flashcard-progress::-webkit-progress-value {
+    background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
+  }
+
+  .flashcard-progress::-moz-progress-bar {
+    background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
+  }
+
+  .flashcard-front {
+    max-width: 68ch;
+    margin: 0 0 clamp(var(--space-4), 2.4vw, var(--space-5));
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: clamp(1.42rem, 2vw, 1.82rem);
+    line-height: 1.28;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .flashcard-answer {
+    max-width: 68ch;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--info-bg);
+    color: var(--text-subtle);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .flashcard-answer div,
+  .flashcard-answer p {
+    margin: 0 0 var(--space-3);
+  }
+
+  .flashcard-answer div:last-child,
+  .flashcard-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .flashcard-actions {
+    max-width: 68ch;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    padding-top: var(--space-3);
+    border-top: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+  }
+
+  .flashcard-rating-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .flashcard-rating {
+    min-height: 44px;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 84%, transparent);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    color: var(--text-subtle-2);
+    padding: 0 var(--space-3);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .flashcard-rating:hover {
+    border-color: color-mix(in srgb, var(--accent) 48%, var(--border));
+    background: var(--accent-soft);
+    color: var(--info-ink-strong);
+  }
+
+  .flashcard-status {
+    margin: 0;
+    color: var(--muted);
+    min-height: 1.4rem;
+  }
+
+  .flashcard-alert {
+    border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+    border-radius: var(--radius-sub);
+    padding: var(--space-3);
+    background: var(--danger-bg-soft);
+    color: var(--danger);
+  }
+
+  .flashcard-loading {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sub);
+    padding: var(--space-3);
+    color: var(--muted);
+    background: var(--surface-soft);
+  }
+
+  @media (max-width: 640px) {
+    .flashcard-shell {
+      padding: var(--space-3);
+      gap: var(--space-4);
+    }
+
+    .flashcard-stage {
+      padding: var(--space-4);
+    }
+
+    .flashcard-front {
+      font-size: clamp(1.26rem, 6vw, 1.54rem);
+      line-height: 1.32;
+    }
+
+    .flashcard-actions,
+    .flashcard-rating-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .flashcard-actions .btn-primary,
+    .flashcard-actions .ghost-button,
+    .flashcard-rating {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="card flashcard-shell">
+  <form class="inline-form is-hidden">{% csrf_token %}</form>
+  <header class="flashcard-head">
+    <div class="flashcard-headline">
+      <p class="flashcard-module">korttræning</p>
+      <h1 class="flashcard-title">{{ deck.title }}</h1>
+    </div>
+    <a class="ghost-link back-link" href="{{ back_url }}">Tilbage</a>
+  </header>
+
+  <div id="flashcard-error" class="flashcard-alert is-hidden"></div>
+  <div id="flashcard-loading" class="flashcard-loading">Indlæser kort…</div>
+
+  <section id="flashcard-stage" class="flashcard-stage is-hidden">
+    <div class="flashcard-flow-head">
+      <div class="flashcard-flow-row">
+        <p id="flashcard-counter" class="flashcard-counter"></p>
+        <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
+      </div>
+      <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i korttræning">
+        0%
+      </progress>
+    </div>
+    <h2 id="flashcard-front" class="flashcard-front"></h2>
+    <div id="flashcard-answer" class="flashcard-answer is-hidden"></div>
+    <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
+    <div class="flashcard-actions">
+      <button id="flashcard-previous" class="ghost-button" type="button">Forrige</button>
+      <button id="flashcard-show-answer" class="btn-primary" type="button">Vis svar</button>
+      <div id="flashcard-rating-actions" class="flashcard-rating-actions is-hidden">
+        <button class="flashcard-rating" type="button" data-rating="again">Igen</button>
+        <button class="flashcard-rating" type="button" data-rating="hard">Svært</button>
+        <button class="flashcard-rating" type="button" data-rating="good">Godt</button>
+        <button class="flashcard-rating" type="button" data-rating="easy">Let</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    const contentUrl = "{{ flashcard_content_url|escapejs }}";
+    const reviewUrl = "{{ flashcard_review_url|escapejs }}";
+
+    const loadingNode = document.getElementById("flashcard-loading");
+    const errorNode = document.getElementById("flashcard-error");
+    const stageNode = document.getElementById("flashcard-stage");
+    const counterNode = document.getElementById("flashcard-counter");
+    const reviewedNode = document.getElementById("flashcard-reviewed");
+    const progressNode = document.getElementById("flashcard-progress");
+    const frontNode = document.getElementById("flashcard-front");
+    const answerNode = document.getElementById("flashcard-answer");
+    const statusNode = document.getElementById("flashcard-status");
+    const previousNode = document.getElementById("flashcard-previous");
+    const showAnswerNode = document.getElementById("flashcard-show-answer");
+    const ratingActionsNode = document.getElementById("flashcard-rating-actions");
+
+    let cards = [];
+    let reviewSummary = null;
+    let currentIndex = 0;
+    let showingAnswer = false;
+    let saving = false;
+    let isComplete = false;
+
+    function getCsrfToken() {
+      const cookies = document.cookie ? document.cookie.split(";") : [];
+      for (const cookie of cookies) {
+        const entry = cookie.trim();
+        if (entry.startsWith("csrftoken=")) {
+          return decodeURIComponent(entry.slice("csrftoken=".length));
+        }
+      }
+      return "";
+    }
+
+    function showError(message) {
+      errorNode.textContent = message;
+      errorNode.classList.remove("is-hidden");
+    }
+
+    function hideError() {
+      errorNode.textContent = "";
+      errorNode.classList.add("is-hidden");
+    }
+
+    function currentCard() {
+      if (!cards.length || currentIndex < 0 || currentIndex >= cards.length) {
+        return null;
+      }
+      return cards[currentIndex];
+    }
+
+    function reviewedCount() {
+      if (reviewSummary && Number.isInteger(reviewSummary.reviewed_count)) {
+        return reviewSummary.reviewed_count;
+      }
+      return cards.filter((card) => card.review).length;
+    }
+
+    function render() {
+      if (isComplete) {
+        counterNode.textContent = `${cards.length} / ${cards.length}`;
+        reviewedNode.textContent = `${reviewedCount()} øvet`;
+        progressNode.value = 100;
+        frontNode.textContent = "Alle kort i sættet er gennemgået.";
+        answerNode.classList.add("is-hidden");
+        showAnswerNode.classList.add("is-hidden");
+        ratingActionsNode.classList.add("is-hidden");
+        previousNode.disabled = cards.length <= 0 || saving;
+        statusNode.textContent = "";
+        return;
+      }
+
+      const card = currentCard();
+      if (!card) {
+        counterNode.textContent = "0 / 0";
+        reviewedNode.textContent = "0 øvet";
+        progressNode.value = 0;
+        frontNode.textContent = "Ingen kort fundet.";
+        answerNode.classList.add("is-hidden");
+        showAnswerNode.disabled = true;
+        ratingActionsNode.classList.add("is-hidden");
+        return;
+      }
+
+      const total = cards.length;
+      const position = currentIndex + 1;
+      counterNode.textContent = `${position} / ${total}`;
+      reviewedNode.textContent = `${reviewedCount()} øvet`;
+      progressNode.value = Math.round((currentIndex / Math.max(1, total)) * 100);
+      frontNode.textContent = card.front_text || "";
+      answerNode.innerHTML = card.back_html || "";
+      answerNode.classList.toggle("is-hidden", !showingAnswer);
+      showAnswerNode.classList.toggle("is-hidden", showingAnswer);
+      ratingActionsNode.classList.toggle("is-hidden", !showingAnswer);
+      previousNode.disabled = currentIndex <= 0 || saving;
+      statusNode.textContent = card.review?.rating ? `Sidst markeret: ${ratingLabel(card.review.rating)}` : "";
+    }
+
+    function ratingLabel(rating) {
+      if (rating === "again") {
+        return "Igen";
+      }
+      if (rating === "hard") {
+        return "Svært";
+      }
+      if (rating === "good") {
+        return "Godt";
+      }
+      if (rating === "easy") {
+        return "Let";
+      }
+      return "";
+    }
+
+    function advance() {
+      if (currentIndex < cards.length - 1) {
+        currentIndex += 1;
+        showingAnswer = false;
+        render();
+        return;
+      }
+      isComplete = true;
+      render();
+    }
+
+    async function loadDeck() {
+      const response = await fetch(contentUrl, { credentials: "same-origin" });
+      if (!response.ok) {
+        throw new Error("Kortene kunne ikke indlæses.");
+      }
+      const payload = await response.json();
+      cards = Array.isArray(payload.cards) ? payload.cards : [];
+      reviewSummary = payload.review_summary || null;
+      loadingNode.classList.add("is-hidden");
+      stageNode.classList.remove("is-hidden");
+      render();
+    }
+
+    async function saveReview(rating) {
+      const card = currentCard();
+      if (!card || saving) {
+        return;
+      }
+      saving = true;
+      hideError();
+      try {
+        const response = await fetch(reviewUrl, {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCsrfToken(),
+          },
+          body: JSON.stringify({ card_id: card.card_id, rating }),
+        });
+        if (!response.ok) {
+          throw new Error("Din markering kunne ikke gemmes.");
+        }
+        const payload = await response.json();
+        card.review = {
+          rating: payload.rating,
+          review_count: payload.review_count,
+          last_reviewed_at: payload.last_reviewed_at,
+          next_review_at: payload.next_review_at,
+        };
+        reviewSummary = payload.review_summary || reviewSummary;
+        advance();
+      } catch (error) {
+        showError(error instanceof Error ? error.message : "Din markering kunne ikke gemmes.");
+      } finally {
+        saving = false;
+        render();
+      }
+    }
+
+    showAnswerNode.addEventListener("click", () => {
+      showingAnswer = true;
+      render();
+    });
+
+    previousNode.addEventListener("click", () => {
+      if (currentIndex <= 0) {
+        return;
+      }
+      isComplete = false;
+      currentIndex -= 1;
+      showingAnswer = false;
+      render();
+    });
+
+    ratingActionsNode.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+      const rating = target.dataset.rating;
+      if (!rating) {
+        return;
+      }
+      saveReview(rating);
+    });
+
+    loadDeck().catch((error) => {
+      loadingNode.classList.add("is-hidden");
+      showError(error instanceof Error ? error.message : "Kortene kunne ikke indlæses.");
+    });
+  })();
+</script>
+{% endblock %}

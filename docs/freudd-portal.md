@@ -53,6 +53,8 @@ Repo policy for portal changes:
 - `shows/personlighedspsykologi-en/spotify_map.json`
 - `shows/personlighedspsykologi-en/reading_download_exclusions.json`
 - matching subject artifacts for `bioneuro`
+- optional subject flashcard registries and artifacts such as
+  `shows/bioneuro/flashcards/decks.json`
 
 Those generated files are refreshed by the feed and subject automation workflows, not manually inside the Django app.
 

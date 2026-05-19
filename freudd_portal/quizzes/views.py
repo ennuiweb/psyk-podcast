@@ -44,6 +44,16 @@ from .activity_notifications import (
 )
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
+from .flashcard_services import (
+    FlashcardDeckNotFound,
+    FlashcardValidationError,
+    deck_summary_payload,
+    flashcard_deck_api_payload,
+    get_flashcard_deck_entry,
+    list_flashcard_deck_summaries,
+    load_flashcard_deck,
+    upsert_flashcard_review,
+)
 from .gamification_services import (
     get_gamification_snapshot,
     get_subject_learning_path_snapshot,
@@ -96,6 +106,7 @@ from .tracking_services import (
 )
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
+MAX_FLASHCARD_REVIEW_BYTES = 50_000
 QUIZ_DISPLAY_POINTS_MAX = 150
 QUIZ_POINTS_MAX_PER_QUESTION = 120
 QUIZ_SLOT_STATE_LABELS_DA = {
@@ -2202,6 +2213,111 @@ def quiz_content_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
     return JsonResponse(payload)
 
 
+@require_GET
+def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    if not request.user.is_authenticated:
+        return redirect(_auth_url_with_next("login", request.get_full_path()))
+
+    try:
+        entry = get_flashcard_deck_entry(subject.slug, deck_slug)
+        deck = load_flashcard_deck(subject.slug, deck_slug)
+    except FlashcardDeckNotFound as exc:
+        raise Http404("Kortsaet ikke fundet") from exc
+    except FlashcardValidationError:
+        logger.exception(
+            "Failed to load flashcard deck",
+            extra={"subject_slug": subject.slug, "deck_slug": deck_slug},
+        )
+        return HttpResponse("Kortsaettet kunne ikke indlaeses lige nu.", status=500)
+
+    return render(
+        request,
+        "quizzes/flashcard_practice.html",
+        {
+            "subject": subject,
+            "deck": deck_summary_payload(entry=entry, user=request.user),
+            "card_count": deck.card_count,
+            "flashcard_content_url": reverse(
+                "flashcard-content",
+                kwargs={"subject_slug": subject.slug, "deck_slug": deck.deck_slug},
+            ),
+            "flashcard_review_url": reverse(
+                "flashcard-review",
+                kwargs={"subject_slug": subject.slug, "deck_slug": deck.deck_slug},
+            ),
+            "back_url": reverse("subject-detail", kwargs={"subject_slug": subject.slug}),
+        },
+    )
+
+
+@require_GET
+def flashcard_content_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "authentication_required"}, status=403)
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    try:
+        deck = load_flashcard_deck(subject.slug, deck_slug)
+    except FlashcardDeckNotFound as exc:
+        raise Http404("Kortsaet ikke fundet") from exc
+    except FlashcardValidationError:
+        logger.exception(
+            "Failed to load flashcard deck API payload",
+            extra={"subject_slug": subject.slug, "deck_slug": deck_slug},
+        )
+        return JsonResponse({"error": "deck_unavailable"}, status=500)
+    return JsonResponse(flashcard_deck_api_payload(deck=deck, user=request.user))
+
+
+@require_POST
+def flashcard_review_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "authentication_required"}, status=403)
+    if len(request.body) > MAX_FLASHCARD_REVIEW_BYTES:
+        return HttpResponseBadRequest("Review-payload er for stor.")
+    try:
+        payload = json.loads(request.body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return HttpResponseBadRequest("Ugyldig JSON-body.")
+    if not isinstance(payload, dict):
+        return HttpResponseBadRequest("Review-payload skal vaere et JSON-objekt.")
+
+    card_id = str(payload.get("card_id") or "").strip()
+    rating = str(payload.get("rating") or "").strip().lower()
+    if rating not in {"again", "hard", "good", "easy"}:
+        return HttpResponseBadRequest("Ugyldig kort-rating.")
+
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    try:
+        review = upsert_flashcard_review(
+            user=request.user,
+            subject_slug=subject.slug,
+            deck_slug=deck_slug,
+            card_id=card_id,
+            rating=rating,
+        )
+        deck = load_flashcard_deck(subject.slug, deck_slug)
+    except FlashcardDeckNotFound as exc:
+        raise Http404("Kortsaet ikke fundet") from exc
+    except FlashcardValidationError as exc:
+        return HttpResponseBadRequest(str(exc))
+
+    summary = flashcard_deck_api_payload(deck=deck, user=request.user).get("review_summary")
+    return JsonResponse(
+        {
+            "card_id": review.card_id,
+            "rating": review.rating,
+            "review_count": review.review_count,
+            "last_reviewed_at": review.last_reviewed_at.isoformat() if review.last_reviewed_at else None,
+            "next_review_at": review.next_review_at.isoformat() if review.next_review_at else None,
+            "review_summary": summary,
+        }
+    )
+
+
 @login_required
 @require_http_methods(["GET", "POST"])
 def quiz_state_view(request: HttpRequest, quiz_id: str) -> HttpResponse:
@@ -3170,6 +3286,25 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             user=request.user,
         )
 
+    try:
+        flashcard_decks = list_flashcard_deck_summaries(
+            subject.slug,
+            user=request.user if user_is_authenticated else None,
+        )
+    except FlashcardValidationError:
+        logger.exception(
+            "Failed to load flashcard deck summaries",
+            extra={"subject_slug": subject.slug},
+        )
+        flashcard_decks = []
+    for deck in flashcard_decks:
+        deck_slug = str(deck.get("deck_slug") or "").strip()
+        if deck_slug:
+            deck["practice_url"] = reverse(
+                "flashcard-practice",
+                kwargs={"subject_slug": subject.slug, "deck_slug": deck_slug},
+            )
+
     return render(
         request,
         "quizzes/subject_detail.html",
@@ -3186,6 +3321,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 preview_locked_lecture_key=requested_lecture_key,
             ),
             "active_lecture": active_lecture,
+            "flashcard_decks": flashcard_decks,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
         },

@@ -9,6 +9,16 @@ urlpatterns = [
     re_path(r"^q/(?P<quiz_id>[0-9a-f]{8})\.html$", views.quiz_wrapper_view, name="quiz-wrapper"),
     re_path(r"^q/raw/(?P<quiz_id>[0-9a-f]{8})\.html$", views.quiz_raw_view, name="quiz-raw"),
     re_path(r"^api/quiz-content/(?P<quiz_id>[0-9a-f]{8})$", views.quiz_content_view, name="quiz-content"),
+    re_path(
+        r"^api/flashcards/(?P<subject_slug>[a-z0-9-]+)/(?P<deck_slug>[a-z0-9-]+)$",
+        views.flashcard_content_view,
+        name="flashcard-content",
+    ),
+    re_path(
+        r"^api/flashcards/(?P<subject_slug>[a-z0-9-]+)/(?P<deck_slug>[a-z0-9-]+)/review$",
+        views.flashcard_review_view,
+        name="flashcard-review",
+    ),
     re_path(r"^api/gamification/me$", views.gamification_me_view, name="gamification-me"),
     re_path(r"^api/quiz-state/(?P<quiz_id>[0-9a-f]{8})$", views.quiz_state_view, name="quiz-state"),
     re_path(
@@ -23,6 +33,11 @@ urlpatterns = [
         name="leaderboard-subject",
     ),
     re_path(r"^subjects/(?P<subject_slug>[a-z0-9-]+)$", views.subject_detail_view, name="subject-detail"),
+    re_path(
+        r"^subjects/(?P<subject_slug>[a-z0-9-]+)/cards/(?P<deck_slug>[a-z0-9-]+)$",
+        views.flashcard_practice_view,
+        name="flashcard-practice",
+    ),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/enroll$",
         views.subject_enroll_view,

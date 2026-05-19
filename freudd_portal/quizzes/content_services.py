@@ -12,6 +12,8 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree
 
+from django.conf import settings
+
 from .subject_services import parse_master_readings, resolve_subject_paths
 
 logger = logging.getLogger(__name__)
@@ -257,11 +259,53 @@ def _lecture_title_from_heading(lecture_key: str, heading: str) -> str:
     return value.lstrip("-").strip() or lecture_key
 
 
-def _reading_source_result(subject_slug: str) -> tuple[Any, Path | None]:
-    subject_paths = resolve_subject_paths(subject_slug)
+def _reading_source_result(subject_slug: str, *, subject_paths: Any | None = None) -> tuple[Any, Path | None]:
+    subject_paths = subject_paths or resolve_subject_paths(subject_slug)
     reading_key_path = subject_paths.reading_key_path
     parse_result = parse_master_readings(reading_key_path)
     return parse_result, reading_key_path if reading_key_path.exists() else None
+
+
+def _configured_fallback_reading_key_path() -> Path | None:
+    configured = str(getattr(settings, "FREUDD_READING_MASTER_KEY_FALLBACK_PATH", "") or "").strip()
+    if not configured:
+        return None
+    return Path(configured).expanduser()
+
+
+def _load_fallback_content_manifest(subject_slug: str, manifest: SubjectContentManifest) -> SubjectContentManifest | None:
+    source_meta = manifest.get("source_meta") if isinstance(manifest.get("source_meta"), dict) else {}
+    if not str(source_meta.get("reading_error") or "").strip():
+        return None
+
+    subject_paths = resolve_subject_paths(subject_slug)
+    primary_path = subject_paths.reading_key_path
+    if primary_path.exists():
+        return None
+
+    fallback_path = _configured_fallback_reading_key_path()
+    if fallback_path is None or not fallback_path.exists():
+        return None
+    try:
+        if fallback_path.resolve() == primary_path.resolve():
+            return None
+    except OSError:
+        return None
+
+    fallback_manifest = build_subject_content_manifest(
+        subject_slug,
+        subject_paths_override={"reading_key_path": fallback_path},
+    )
+    fallback_source_meta = (
+        fallback_manifest.get("source_meta") if isinstance(fallback_manifest.get("source_meta"), dict) else {}
+    )
+    if str(fallback_source_meta.get("reading_error") or "").strip():
+        return None
+    fallback_source_meta["reading_fallback_used"] = True
+    fallback_source_meta["reading_primary_path"] = _stable_manifest_path_value(primary_path)
+    fallback_source_meta["reading_fallback_path"] = _stable_manifest_path_value(fallback_path)
+    fallback_manifest["source_meta"] = fallback_source_meta
+    return fallback_manifest
 
 
 def _stable_manifest_path_value(path: Path | None) -> str | None:
@@ -1353,7 +1397,7 @@ def build_subject_content_manifest(
     subject_paths = resolve_subject_paths(slug)
     if subject_paths_override:
         subject_paths = _apply_subject_path_overrides(subject_paths=subject_paths, overrides=subject_paths_override)
-    parse_result, _reading_source_path = _reading_source_result(slug)
+    parse_result, _reading_source_path = _reading_source_result(slug, subject_paths=subject_paths)
     manifest_warnings: list[str] = []
     slide_catalog_entries = _load_slide_catalog_entries(slug)
 
@@ -1546,6 +1590,7 @@ def _apply_subject_path_overrides(
     overrides: dict[str, str | Path],
 ):
     allowed_keys = {
+        "reading_key_path",
         "quiz_links_path",
         "feed_rss_path",
         "episode_inventory_path",
@@ -1703,6 +1748,9 @@ def load_subject_content_manifest(subject_slug: str) -> SubjectContentManifest:
                     )
 
     manifest = build_subject_content_manifest(slug)
+    fallback_manifest = _load_fallback_content_manifest(slug, manifest)
+    if fallback_manifest is not None:
+        manifest = fallback_manifest
     return _set_manifest_cache(
         path=None,
         mtime_ns=None,

@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import (
+    FlashcardReview,
     QuizProgress,
     SubjectEnrollment,
     UserInterfacePreference,
@@ -32,6 +33,23 @@ class SubjectEnrollmentAdmin(admin.ModelAdmin):
     list_display = ("id", "user", "subject_slug", "enrolled_at", "updated_at")
     search_fields = ("user__username", "user__email", "subject_slug")
     list_filter = ("subject_slug", "enrolled_at")
+
+
+@admin.register(FlashcardReview)
+class FlashcardReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "user",
+        "subject_slug",
+        "deck_slug",
+        "card_id",
+        "rating",
+        "review_count",
+        "last_reviewed_at",
+        "next_review_at",
+    )
+    search_fields = ("user__username", "user__email", "subject_slug", "deck_slug", "card_id")
+    list_filter = ("subject_slug", "deck_slug", "rating", "last_reviewed_at")
 
 
 @admin.register(UserInterfacePreference)

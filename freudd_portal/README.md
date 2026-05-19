@@ -28,6 +28,10 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Quiz files directory must be readable by `www-data`; sync uploads now avoid owner/group preservation and enforce root dir mode `755`.
 - Public static quiz files still exist at `/quizzes/personlighedspsykologi/<id>.html` (Caddy static route).
 - Score key: per `(user, quiz_id)`.
+- Flashcard practice is a separate learning mode from quizzes. It uses subject-local
+  `shows/<subject>/flashcards/decks.json` registries and generated deck JSON
+  artifacts, persists self-rated progress in `FlashcardReview`, and does not
+  affect quiz history, XP, cooldowns, or scoreboard totals.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects; on `/leaderboard/<subject_slug>` these subject chips stay deselected.
@@ -66,6 +70,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `Slides` viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
 - Slide mapping er manuel-only for alle fag; automatisk mapping med script er ikke tilladt (`freudd_portal/docs/slides-mapping-policy.md`).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
+- Flashcard decks are surfaced as `korttræning`, outside `Quiz for alle kilder`,
+  because they are self-rated open-recall cards rather than scored multiple-choice
+  quizzes.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
 - Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
@@ -103,11 +110,14 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /api/quiz-content/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
+- `GET /api/flashcards/<subject_slug>/<deck_slug>`
+- `POST /api/flashcards/<subject_slug>/<deck_slug>/review`
 - `GET /api/gamification/me`
 - `GET /settings` (`GET /progress` redirects permanently with query string preserved)
 - `GET /leaderboard/<subject_slug>`
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
+- `GET /subjects/<subject_slug>/cards/<deck_slug>`
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/chatgpt/<reading_key>` (server-side tracked ChatGPT launch for PDF tekster; redirects to ChatGPT)
@@ -125,6 +135,8 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 
 ## Data model
 - `QuizProgress` (existing): per-user quiz completion/score state.
+- `FlashcardReview`: per-user self-rated flashcard state keyed by
+  `(user, subject_slug, deck_slug, card_id)`.
 - `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
 - `UserGamificationProfile`: per-user XP/streak/level aggregates.
 - `UserUnitProgress`: per-user learning path unit status (`active`, `completed`).

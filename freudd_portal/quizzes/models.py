@@ -53,6 +53,41 @@ class QuizProgress(models.Model):
         return f"{self.user_id}:{self.quiz_id}:{self.status}"
 
 
+class FlashcardReview(models.Model):
+    class Rating(models.TextChoices):
+        AGAIN = "again", "Igen"
+        HARD = "hard", "Svært"
+        GOOD = "good", "Godt"
+        EASY = "easy", "Let"
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    deck_slug = models.CharField(max_length=96)
+    card_id = models.CharField(max_length=96)
+    rating = models.CharField(max_length=16, choices=Rating.choices)
+    review_count = models.PositiveIntegerField(default=0)
+    last_reviewed_at = models.DateTimeField(blank=True, null=True)
+    next_review_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "deck_slug", "card_id"],
+                name="uq_user_flashcard_review",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug", "deck_slug"], name="flash_rev_user_deck_idx"),
+            models.Index(fields=["user", "next_review_at"], name="flash_rev_user_due_idx"),
+            models.Index(fields=["subject_slug", "deck_slug", "card_id"], name="flash_rev_card_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.deck_slug}:{self.card_id}:{self.rating}"
+
+
 class SubjectEnrollment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subject_slug = models.CharField(max_length=64)

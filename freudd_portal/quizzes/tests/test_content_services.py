@@ -1259,6 +1259,20 @@ class SubjectContentManifestTests(TestCase):
         self.assertEqual(manifest["lectures"], [])
         self.assertEqual(manifest["source_meta"]["reading_error"], "Tekst-nøglen kunne ikke indlæses.")
 
+    def test_load_manifest_uses_runtime_fallback_when_primary_reading_key_missing(self) -> None:
+        self.primary_reading_file.unlink()
+        clear_subject_service_caches()
+        clear_content_service_caches()
+
+        manifest = load_subject_content_manifest("personlighedspsykologi")
+        self.assertEqual(len(manifest["lectures"]), 2)
+        source_meta = manifest["source_meta"]
+        self.assertIsNone(source_meta["reading_error"])
+        self.assertTrue(source_meta["reading_fallback_used"])
+        self.assertEqual(Path(source_meta["reading_key_path"]).resolve(), self.fallback_reading_file.resolve())
+        self.assertEqual(Path(source_meta["reading_primary_path"]).resolve(), self.primary_reading_file.resolve())
+        self.assertEqual(Path(source_meta["reading_fallback_path"]).resolve(), self.fallback_reading_file.resolve())
+
     def test_build_manifest_reports_error_when_both_reading_sources_missing(self) -> None:
         self.primary_reading_file.unlink()
         self.fallback_reading_file.unlink()

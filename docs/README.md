@@ -11,6 +11,7 @@ Use these files:
 - [freudd-learning-system-architecture.md](freudd-learning-system-architecture.md) - canonical system-wide architecture and maturity assessment for the full Freudd Learning System.
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, bilingual episode links, GitHub Actions, Apps Script triggers, and feed hosting.
 - [bioneuro-anki-flashcards-plan.md](bioneuro-anki-flashcards-plan.md) - implementation plan for adding Bioneuro Anki cards to Freudd as separate flashcard practice.
+- [freudd-portal-ui-audit.md](freudd-portal-ui-audit.md) - combined Freudd Portal UI audit and tracker for fixed versus remaining interface work.
 - [learning-material-design.md](learning-material-design.md) - repo-level design principles for learner-facing study materials, including problem-first reward-loop design.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
 - [personlighedspsykologi-danish-mirror-plan.md](personlighedspsykologi-danish-mirror-plan.md) - tracked rollout plan and progress log for the queue-owned Danish `personlighedspsykologi` mirror, including bilingual RSS links.

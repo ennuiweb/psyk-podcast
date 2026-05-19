@@ -19,6 +19,7 @@ Primary entrypoints:
 - [../freudd_portal/docs/deploy-and-smoke.md](../freudd_portal/docs/deploy-and-smoke.md) - canonical deploy and smoke runbook.
 - [../freudd_portal/docs/non-technical-overview.md](../freudd_portal/docs/non-technical-overview.md) - product-level overview.
 - [../freudd_portal/docs/design-guidelines.md](../freudd_portal/docs/design-guidelines.md) - UI and interaction guidance.
+- [freudd-portal-ui-audit.md](freudd-portal-ui-audit.md) - combined UI audit and tracker for fixed versus remaining portal interface work.
 
 ## Repo-level integration notes
 

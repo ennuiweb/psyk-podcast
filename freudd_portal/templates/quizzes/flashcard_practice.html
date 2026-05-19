@@ -3,18 +3,19 @@
 {% block content %}
 <style>
   .flashcard-shell {
-    max-width: 940px;
+    --flashcard-study-width: 820px;
+    max-width: 980px;
     margin: clamp(var(--space-3), 3vh, var(--space-5)) auto;
     display: grid;
-    gap: clamp(var(--space-3), 1.8vw, var(--space-5));
-    padding: clamp(var(--space-4), 2.6vw, 30px);
+    gap: clamp(var(--space-4), 2.2vw, var(--space-6));
+    padding: clamp(var(--space-4), 3vw, 34px);
     overflow: clip;
   }
 
   .flashcard-head {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
     padding-bottom: var(--space-3);
@@ -23,7 +24,7 @@
 
   .flashcard-headline {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-1);
     max-width: 68ch;
   }
 
@@ -47,11 +48,11 @@
 
   .flashcard-title {
     margin: 0;
-    color: var(--ink);
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 2vw, 1.78rem);
-    line-height: 1.12;
-    font-weight: 700;
+    color: var(--text-subtle-2);
+    font-family: var(--font-body);
+    font-size: clamp(1.02rem, 1.45vw, 1.24rem);
+    line-height: 1.2;
+    font-weight: 800;
     overflow-wrap: anywhere;
   }
 
@@ -73,34 +74,31 @@
 
   .flashcard-stage {
     display: grid;
-    gap: clamp(var(--space-3), 1.5vw, var(--space-4));
-    padding-top: var(--space-1);
+    gap: clamp(var(--space-4), 2.2vw, var(--space-6));
+    padding-top: 0;
     min-width: 0;
   }
 
   .flashcard-flow-head {
     display: grid;
+    justify-self: center;
+    width: min(100%, var(--flashcard-study-width));
     gap: var(--space-2);
   }
 
   .flashcard-study-nav {
-    max-width: 100%;
-    display: flex;
+    justify-self: center;
+    width: min(100%, var(--flashcard-study-width));
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 6px;
-    border: 1px solid color-mix(in srgb, var(--border) 58%, transparent);
-    border-radius: var(--radius-lg);
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 74%, transparent), color-mix(in srgb, var(--surface-soft) 54%, transparent)),
-      var(--surface-soft);
+    gap: var(--space-3);
+    margin-top: calc(var(--space-2) * -1);
+    padding-top: var(--space-4);
+    border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
   }
 
   .flashcard-scope-control {
-    flex: 1 1 330px;
     display: grid;
     grid-template-columns: auto minmax(220px, 1fr);
     align-items: center;
@@ -119,14 +117,15 @@
   }
 
   .flashcard-category-select {
-    min-height: 38px;
+    min-height: 34px;
     width: 100%;
-    border: 1px solid color-mix(in srgb, var(--border-strong) 66%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 82%, var(--surface-soft));
+    background: color-mix(in srgb, var(--surface) 68%, transparent);
     color: var(--text-subtle-2);
-    padding: 0 34px 0 var(--space-3);
+    padding: 0 32px 0 var(--space-3);
     font: inherit;
+    font-size: 0.88rem;
     font-weight: 800;
   }
 
@@ -134,23 +133,23 @@
     display: inline-flex;
     gap: 3px;
     flex-wrap: wrap;
-    padding: 4px;
-    border: 1px solid color-mix(in srgb, var(--border) 56%, transparent);
+    padding: 3px;
+    border: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 42%, transparent);
+    background: color-mix(in srgb, var(--surface) 36%, transparent);
   }
 
   .flashcard-filter-button {
-    min-height: 32px;
+    min-height: 30px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
     color: var(--text-subtle-2);
-    padding: 0 10px;
+    padding: 0 9px;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     font-weight: 800;
     white-space: nowrap;
     cursor: pointer;
@@ -186,14 +185,10 @@
 
   .flashcard-flow-row {
     display: grid;
-    grid-template-columns: minmax(72px, auto) minmax(0, 1fr) minmax(90px, auto);
+    grid-template-columns: minmax(62px, auto) minmax(0, 1fr) auto minmax(86px, auto);
     align-items: center;
     justify-content: stretch;
-    gap: var(--space-3);
-  }
-
-  .flashcard-meta-dot {
-    display: none;
+    gap: var(--space-2);
   }
 
   .flashcard-counter,
@@ -202,7 +197,7 @@
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 800;
     color: var(--text-subtle-2);
   }
@@ -213,7 +208,7 @@
   }
 
   .flashcard-reviewed {
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 1;
     color: var(--muted);
     justify-self: end;
@@ -226,17 +221,20 @@
 
   .flashcard-card-state {
     margin: 0;
-    min-height: 28px;
+    grid-column: 3;
+    grid-row: 1;
+    min-height: 26px;
     border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
     border-radius: var(--radius-pill);
     background: var(--surface);
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
-    padding: 0 var(--space-2);
-    font-size: 0.82rem;
+    padding: 0 10px;
+    font-size: 0.76rem;
     font-weight: 800;
     text-align: center;
+    white-space: nowrap;
   }
 
   .flashcard-card-state.is-answered {
@@ -274,22 +272,17 @@
   }
 
   .flashcard-study-card {
-    max-width: 72ch;
+    justify-self: center;
+    width: min(100%, var(--flashcard-study-width));
     display: grid;
-    gap: var(--space-3);
-    border: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
-    border-radius: var(--radius-lg);
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface) 76%, var(--surface-soft))),
-      var(--surface);
-    padding: clamp(var(--space-4), 2vw, var(--space-5));
-    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 90%, transparent);
+    gap: clamp(var(--space-3), 1.8vw, var(--space-5));
+    padding: clamp(var(--space-3), 2.2vw, var(--space-5)) 0 0;
   }
 
   .flashcard-card-kicker-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: var(--space-2);
     flex-wrap: wrap;
   }
@@ -306,12 +299,12 @@
   }
 
   .flashcard-front {
-    max-width: 24ch;
+    max-width: 18ch;
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.52rem, 2.85vw, 2.08rem);
-    line-height: 1.16;
+    font-size: clamp(2rem, 5vw, 3.9rem);
+    line-height: 1.04;
     font-weight: 700;
     overflow-wrap: anywhere;
     text-wrap: balance;
@@ -320,6 +313,7 @@
   .flashcard-recall {
     display: grid;
     gap: var(--space-2);
+    max-width: 720px;
   }
 
   .flashcard-answer-toggle {
@@ -360,6 +354,7 @@
     gap: var(--space-2);
     padding: var(--space-3);
     scroll-margin-top: 96px;
+    max-width: 720px;
   }
 
   .flashcard-user-answer-label {
@@ -403,6 +398,7 @@
     padding: var(--space-4) var(--space-5);
     line-height: 1.55;
     overflow-wrap: anywhere;
+    max-width: 720px;
   }
 
   .flashcard-answer-label {
@@ -434,16 +430,16 @@
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: var(--space-3);
-    margin-top: var(--space-1);
-    padding-top: var(--space-3);
-    border-top: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
+    margin-top: var(--space-2);
+    padding-top: var(--space-5);
+    border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
   }
 
   .flashcard-show-answer {
     justify-self: end;
     gap: var(--space-1);
-    min-width: 150px;
-    min-height: 48px;
+    min-width: min(100%, 180px);
+    min-height: 54px;
   }
 
   .flashcard-secondary {
@@ -596,11 +592,13 @@
 
     .flashcard-stage {
       padding-top: 0;
+      gap: var(--space-5);
     }
 
     .flashcard-study-nav {
+      grid-template-columns: 1fr;
       align-items: stretch;
-      border-radius: var(--radius-lg);
+      gap: var(--space-3);
     }
 
     .flashcard-scope-control {
@@ -624,8 +622,7 @@
 
     .flashcard-study-card {
       max-width: 100%;
-      padding: var(--space-4);
-      border-radius: var(--radius-md);
+      padding-top: var(--space-2);
     }
 
     .flashcard-flow-row {
@@ -638,10 +635,23 @@
       grid-row: 2;
     }
 
+    .flashcard-card-state {
+      grid-column: 2 / 4;
+      grid-row: 1;
+      justify-self: end;
+      max-width: 100%;
+    }
+
+    .flashcard-reviewed {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      justify-self: end;
+    }
+
     .flashcard-front {
       max-width: 100%;
-      font-size: clamp(1.32rem, 6.3vw, 1.82rem);
-      line-height: 1.16;
+      font-size: clamp(2rem, 10.5vw, 3.25rem);
+      line-height: 1.04;
     }
 
     .flashcard-answer-toggle {
@@ -694,40 +704,19 @@
   <div id="flashcard-loading" class="flashcard-loading">Indlæser flashcards…</div>
 
   <section id="flashcard-stage" class="flashcard-stage is-hidden">
-    <nav class="flashcard-study-nav" aria-label="Navigation i flashcards">
-      <div class="flashcard-scope-control">
-        <label class="flashcard-scope-label" for="flashcard-category-filter">Emne</label>
-        <select id="flashcard-category-filter" class="flashcard-category-select" aria-label="Vælg emne">
-          <option value="all">Alle emner</option>
-        </select>
-      </div>
-      <div class="flashcard-filter-tabs" aria-label="Filtrer kort">
-        <button class="flashcard-filter-button is-active" type="button" data-filter="all" aria-pressed="true">
-          Alle <span id="flashcard-count-all" class="flashcard-filter-count">0</span>
-        </button>
-        <button class="flashcard-filter-button" type="button" data-filter="unanswered" aria-pressed="false">
-          Ubesvarede <span id="flashcard-count-unanswered" class="flashcard-filter-count">0</span>
-        </button>
-        <button class="flashcard-filter-button" type="button" data-filter="answered" aria-pressed="false">
-          Besvarede <span id="flashcard-count-answered" class="flashcard-filter-count">0</span>
-        </button>
-      </div>
-    </nav>
     <div class="flashcard-flow-head">
       <div class="flashcard-flow-row">
         <p id="flashcard-counter" class="flashcard-counter"></p>
-        <span class="flashcard-meta-dot" aria-hidden="true"></span>
         <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i flashcards">
           0%
         </progress>
+        <p id="flashcard-card-state" class="flashcard-card-state"></p>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
-        <span class="flashcard-meta-dot flashcard-meta-dot-state" aria-hidden="true"></span>
       </div>
     </div>
     <section class="flashcard-study-card" aria-label="Aktuelt flashcard">
       <div class="flashcard-card-kicker-row">
         <p class="flashcard-card-label">Spørgsmål</p>
-        <p id="flashcard-card-state" class="flashcard-card-state"></p>
       </div>
       <h2 id="flashcard-front" class="flashcard-front"></h2>
       <div id="flashcard-recall" class="flashcard-recall">
@@ -761,6 +750,25 @@
         </div>
       </div>
     </section>
+    <nav class="flashcard-study-nav" aria-label="Navigation i flashcards">
+      <div class="flashcard-scope-control">
+        <label class="flashcard-scope-label" for="flashcard-category-filter">Emne</label>
+        <select id="flashcard-category-filter" class="flashcard-category-select" aria-label="Vælg emne">
+          <option value="all">Alle emner</option>
+        </select>
+      </div>
+      <div class="flashcard-filter-tabs" aria-label="Filtrer kort">
+        <button class="flashcard-filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+          Alle <span id="flashcard-count-all" class="flashcard-filter-count">0</span>
+        </button>
+        <button class="flashcard-filter-button" type="button" data-filter="unanswered" aria-pressed="false">
+          Ubesvarede <span id="flashcard-count-unanswered" class="flashcard-filter-count">0</span>
+        </button>
+        <button class="flashcard-filter-button" type="button" data-filter="answered" aria-pressed="false">
+          Besvarede <span id="flashcard-count-answered" class="flashcard-filter-count">0</span>
+        </button>
+      </div>
+    </nav>
   </section>
 
   {% if flashcard_preview_mode %}

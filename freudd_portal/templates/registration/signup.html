@@ -2,57 +2,70 @@
 {% load socialaccount %}
 {% block title %}opret konto · freudd{% endblock %}
 {% block content %}
-<div class="card auth-shell">
+<section class="card auth-shell" aria-labelledby="auth-title">
   {% if insecure_http %}
   <div class="insecure-banner">
     Oprettelse af konto over HTTP er usikkert. Prioritér HTTPS før bred udrulning.
   </div>
   {% endif %}
 
-  <h1 class="auth-title">opret konto</h1>
-  <p class="muted auth-subtitle">Opret konto for at få personlig progression i dine fag.</p>
+  <div class="auth-heading">
+    <span class="auth-mark material-symbols-outlined" aria-hidden="true">edit_note</span>
+    <div>
+      <p class="auth-kicker">freudd</p>
+      <h1 class="auth-title" id="auth-title">opret konto</h1>
+    </div>
+  </div>
+  <p class="muted auth-subtitle">Gem din progression, og fortsæt hvor du slap næste gang.</p>
 
-  <form method="post" class="form-stack">
+  <form method="post" class="form-stack auth-form">
     {% csrf_token %}
     {% if next_value %}
     <input type="hidden" name="next" value="{{ next_value }}" />
     {% endif %}
     {{ form.non_field_errors }}
-    <p>
+    <p class="auth-field">
       <label for="id_username">Brugernavn (valgfri)</label>
       {{ form.username }}
       {{ form.username.errors }}
     </p>
-    <p>
+    <p class="auth-field">
       <label for="id_email">E-mail</label>
       {{ form.email }}
       {{ form.email.errors }}
     </p>
-    <p>
+    <p class="auth-field">
       <label for="id_password1">Adgangskode</label>
       {{ form.password1 }}
       {{ form.password1.errors }}
     </p>
-    <p>
+    <p class="auth-field">
       <label for="id_password2">Bekræft adgangskode</label>
       {{ form.password2 }}
       {{ form.password2.errors }}
     </p>
-    <button class="btn-primary" type="submit">Opret konto</button>
+    <button class="btn-primary auth-submit" type="submit">
+      <span>Opret konto</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+    </button>
   </form>
 
   {% if google_auth_enabled %}
-  <form method="post" action="{% provider_login_url 'google' next=next_value %}" class="form-stack">
+  <div class="auth-divider" aria-hidden="true"><span>eller</span></div>
+  <form method="post" action="{% provider_login_url 'google' next=next_value %}" class="form-stack auth-provider-form">
     {% csrf_token %}
     {% if next_value %}
     <input type="hidden" name="next" value="{{ next_value }}" />
     {% endif %}
-    <button class="nav-action" type="submit">Fortsæt med Google</button>
+    <button class="nav-action auth-google-button" type="submit">
+      <span class="auth-google-mark" aria-hidden="true">G</span>
+      <span>Fortsæt med Google</span>
+    </button>
   </form>
   {% endif %}
 
   <p class="muted auth-footer">
     Har du allerede en konto? <a href="{% url 'login' %}">Log ind</a>.
   </p>
-</div>
+</section>
 {% endblock %}

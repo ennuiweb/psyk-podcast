@@ -2231,17 +2231,17 @@
   </header>
 
   {% if flashcard_decks %}
-  <section class="flashcard-deck-strip" aria-label="anki-kort">
+  <section class="flashcard-deck-strip" aria-label="flashcards">
     <div class="flashcard-deck-strip-head">
       <div>
         <p class="flashcard-deck-kicker">
           <span class="material-symbols-outlined" aria-hidden="true">style</span>
           øvemodul
         </p>
-        <h2 class="flashcard-deck-strip-title">anki-kort</h2>
+        <h2 class="flashcard-deck-strip-title">flashcards</h2>
       </div>
       {% with deck=flashcard_decks.0 %}
-      <div class="flashcard-deck-stat-grid" aria-label="Status for anki-kort">
+      <div class="flashcard-deck-stat-grid" aria-label="Status for flashcards">
         <div class="flashcard-deck-stat">
           <span class="flashcard-deck-stat-value">{{ deck.card_count }}</span>
           <span class="flashcard-deck-stat-label">kort</span>

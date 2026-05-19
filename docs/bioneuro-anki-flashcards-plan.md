@@ -1,4 +1,4 @@
-# Bioneuro Anki Flashcards Integration Plan
+# Bioneuro Flashcards Integration Plan
 
 Status: implemented, deployed, and production-smoke checked
 Created: 2026-05-19
@@ -6,8 +6,8 @@ Created: 2026-05-19
 ## Progress Log
 
 - 2026-05-19: Implementation started. Initial scope remains a separate
-  `flashcards` feature, with Bioneuro Anki cards as the first deck and no quiz
-  progress/scoreboard integration.
+  `flashcards` feature, with Bioneuro imported cards as the first deck and no
+  quiz progress/scoreboard integration.
 - 2026-05-19: Added the deterministic Anki importer and generated the Bioneuro
   flashcard artifact from `collection.anki21b`. The generated deck has 661
   unique cards, no empty fronts/backs, and repeat imports compare byte-for-byte.
@@ -23,16 +23,16 @@ Created: 2026-05-19
   `manage.py check` passed, Python compile checks passed, generated flashcard
   artifact re-imported byte-for-byte, `git diff --check` passed, and 214
   relevant Freudd tests passed across flashcards, portal, and content services.
-- 2026-05-19: Added non-scheduler navigation features for anki-kort: `Alle`,
+- 2026-05-19: Added non-scheduler navigation features for flashcards: `Alle`,
   `Ubesvarede`, and `Besvarede` filters, live filter counts, current-card
   answered state, and subject-page progress phrased as `kort besvaret`.
 - 2026-05-19: Added deterministic topic derivation for the imported Anki cards
   and replaced the broad deck title on the subject page with a compact category
   preview and category card counts.
-- 2026-05-19: Opened the anki-kort practice page and read API for anonymous
+- 2026-05-19: Opened the flashcards practice page and read API for anonymous
   preview use. Anonymous learners can work through cards in browser state, with
   a bottom-page warning that progress is not saved unless they log in.
-- 2026-05-19: Refined the anki-kort practice UI: metadata is consolidated,
+- 2026-05-19: Refined the flashcards practice UI: metadata is consolidated,
   `Ikke vurderet endnu`/`Vurderet: ...` replaces the old card-state wording,
   learners can optionally open a local `Skriv svar` self-check field before
   revealing the official answer, rating controls are visually separated by
@@ -48,8 +48,9 @@ Created: 2026-05-19
 
 ## Goal
 
-Integrate the Bioneuro Anki deck into Freudd as learner-facing card practice
-while preserving the meaning and invariants of the existing Freudd quiz system.
+Integrate the Bioneuro imported flashcard deck into Freudd as learner-facing
+card practice while preserving the meaning and invariants of the existing Freudd
+quiz system.
 
 Initial source deck:
 
@@ -85,7 +86,7 @@ quiz-driven lecture completion.
 
 ## Target User Experience
 
-On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
+On `/subjects/bioneuro`, the learner sees a compact `flashcards` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
 1. choose `Alle`, `Ubesvarede`, or `Besvarede`
@@ -198,7 +199,7 @@ Suggested shape:
     {
       "deck_slug": "biologisk-psykologi-og-neuropsykologi",
       "title": "Biologisk psykologi og neuropsykologi",
-      "description": "Imported Anki cards for Bioneuro.",
+      "description": "Imported flashcards for Bioneuro.",
       "artifact_path": "shows/bioneuro/flashcards/biologisk-psykologi-og-neuropsykologi.json",
       "card_count": 661,
       "enabled": true
@@ -331,7 +332,7 @@ should allow a later scheduler to be introduced behind the same API.
 
 ## Phase 8: Subject Page Integration
 
-Add a separate `anki-kort` section or compact module to the Bioneuro subject
+Add a separate `flashcards` section or compact module to the Bioneuro subject
 page.
 
 Show:
@@ -339,7 +340,7 @@ Show:
 - derived topic categories and card counts
 - card count
 - user's reviewed count and confidence summary when logged in
-- CTA: `Oev kort`
+- CTA: `Alle`
 
 Do not place the deck inside `Quiz for alle kilder`. The learner should not
 confuse self-rated cards with scored quizzes.

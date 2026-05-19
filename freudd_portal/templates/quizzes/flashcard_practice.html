@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block title %}anki-kort · {{ deck.title }}{% endblock %}
+{% block title %}flashcards · {{ deck.title }}{% endblock %}
 {% block content %}
 <style>
   .flashcard-shell {
-    max-width: 980px;
-    margin: clamp(var(--space-4), 4vh, var(--space-6)) auto;
+    max-width: 940px;
+    margin: clamp(var(--space-3), 3vh, var(--space-5)) auto;
     display: grid;
-    gap: clamp(var(--space-4), 2vw, var(--space-5));
-    padding: clamp(var(--space-4), 3vw, 34px);
+    gap: clamp(var(--space-3), 1.8vw, var(--space-5));
+    padding: clamp(var(--space-4), 2.6vw, 30px);
     overflow: clip;
   }
 
@@ -17,7 +17,7 @@
     align-items: start;
     justify-content: space-between;
     gap: var(--space-4);
-    padding-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
     border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
   }
 
@@ -30,7 +30,7 @@
   .flashcard-module {
     margin: 0;
     width: fit-content;
-    min-height: 24px;
+    min-height: 26px;
     border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
     border-radius: var(--radius-pill);
     background: color-mix(in srgb, var(--info-bg) 82%, var(--surface));
@@ -49,7 +49,7 @@
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.36rem, 2.2vw, 1.92rem);
+    font-size: clamp(1.3rem, 2vw, 1.78rem);
     line-height: 1.12;
     font-weight: 700;
     overflow-wrap: anywhere;
@@ -73,7 +73,7 @@
 
   .flashcard-stage {
     display: grid;
-    gap: clamp(var(--space-4), 2vw, var(--space-5));
+    gap: clamp(var(--space-3), 1.5vw, var(--space-4));
     padding-top: var(--space-1);
     min-width: 0;
   }
@@ -91,11 +91,11 @@
     gap: var(--space-2);
     flex-wrap: wrap;
     margin: 0;
-    padding: var(--space-2);
-    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-    border-radius: calc(var(--radius-xl) + 4px);
+    padding: 6px;
+    border: 1px solid color-mix(in srgb, var(--border) 58%, transparent);
+    border-radius: var(--radius-lg);
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--surface-soft) 68%, transparent)),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 74%, transparent), color-mix(in srgb, var(--surface-soft) 54%, transparent)),
       var(--surface-soft);
   }
 
@@ -112,20 +112,20 @@
     margin: 0;
     color: var(--text-subtle-2);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
   .flashcard-category-select {
-    min-height: 42px;
+    min-height: 38px;
     width: 100%;
     border: 1px solid color-mix(in srgb, var(--border-strong) 66%, transparent);
     border-radius: var(--radius-pill);
     background: color-mix(in srgb, var(--surface) 82%, var(--surface-soft));
     color: var(--text-subtle-2);
-    padding: 0 var(--space-3);
+    padding: 0 34px 0 var(--space-3);
     font: inherit;
     font-weight: 800;
   }
@@ -141,16 +141,16 @@
   }
 
   .flashcard-filter-button {
-    min-height: 36px;
+    min-height: 32px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
     color: var(--text-subtle-2);
-    padding: 0 var(--space-3);
+    padding: 0 10px;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     font-weight: 800;
     white-space: nowrap;
     cursor: pointer;
@@ -171,8 +171,8 @@
   }
 
   .flashcard-filter-count {
-    min-width: 1.75em;
-    min-height: 1.75em;
+    min-width: 1.65em;
+    min-height: 1.65em;
     border-radius: var(--radius-pill);
     display: inline-flex;
     align-items: center;
@@ -189,7 +189,7 @@
     grid-template-columns: minmax(72px, auto) minmax(0, 1fr) minmax(90px, auto);
     align-items: center;
     justify-content: stretch;
-    gap: var(--space-2);
+    gap: var(--space-3);
   }
 
   .flashcard-meta-dot {
@@ -219,6 +219,11 @@
     justify-self: end;
   }
 
+  .flashcard-flow-row .flashcard-progress {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .flashcard-card-state {
     margin: 0;
     min-height: 28px;
@@ -228,9 +233,6 @@
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: center;
     padding: 0 var(--space-2);
     font-size: 0.82rem;
     font-weight: 800;
@@ -271,31 +273,61 @@
     background: linear-gradient(90deg, var(--progress-accent-start), var(--progress-accent-end));
   }
 
+  .flashcard-study-card {
+    max-width: 72ch;
+    display: grid;
+    gap: var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface) 76%, var(--surface-soft))),
+      var(--surface);
+    padding: clamp(var(--space-4), 2vw, var(--space-5));
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--surface) 90%, transparent);
+  }
+
+  .flashcard-card-kicker-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .flashcard-card-label {
+    margin: 0;
+    color: var(--text-subtle-2);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
   .flashcard-front {
-    max-width: 28ch;
+    max-width: 24ch;
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 3.35vw, 2.36rem);
-    line-height: 1.12;
+    font-size: clamp(1.52rem, 2.85vw, 2.08rem);
+    line-height: 1.16;
     font-weight: 700;
     overflow-wrap: anywhere;
     text-wrap: balance;
   }
 
   .flashcard-recall {
-    max-width: 72ch;
     display: grid;
     gap: var(--space-2);
-    margin-top: calc(var(--space-2) * -1);
   }
 
   .flashcard-answer-toggle {
     width: fit-content;
-    min-height: 40px;
+    min-height: 38px;
     border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 62%, transparent);
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
@@ -323,7 +355,7 @@
   .flashcard-user-answer {
     border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface) 70%, var(--surface-soft));
+    background: color-mix(in srgb, var(--surface-soft) 42%, var(--surface));
     display: grid;
     gap: var(--space-2);
     padding: var(--space-3);
@@ -359,7 +391,6 @@
   }
 
   .flashcard-answer {
-    max-width: 72ch;
     border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
     border-left: 4px solid color-mix(in srgb, var(--accent) 70%, var(--border));
     border-radius: var(--radius-md);
@@ -399,14 +430,13 @@
   }
 
   .flashcard-actions {
-    max-width: 100%;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: var(--space-3);
     margin-top: var(--space-1);
-    padding-top: var(--space-4);
-    border-top: 1px solid color-mix(in srgb, var(--border) 68%, transparent);
+    padding-top: var(--space-3);
+    border-top: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
   }
 
   .flashcard-show-answer {
@@ -529,7 +559,6 @@
   }
 
   .flashcard-preview-note {
-    max-width: 72ch;
     color: var(--muted);
     font-size: 0.92rem;
     padding-top: calc(var(--space-1) * -1);
@@ -593,21 +622,26 @@
       font-size: 0.88rem;
     }
 
+    .flashcard-study-card {
+      max-width: 100%;
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+    }
+
     .flashcard-flow-row {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(62px, auto) minmax(0, 1fr) minmax(74px, auto);
       row-gap: var(--space-2);
     }
 
-    .flashcard-card-state {
+    .flashcard-flow-row .flashcard-progress {
       grid-column: 1 / -1;
       grid-row: 2;
-      justify-self: start;
     }
 
     .flashcard-front {
       max-width: 100%;
-      font-size: clamp(1.42rem, 7vw, 2rem);
-      line-height: 1.12;
+      font-size: clamp(1.32rem, 6.3vw, 1.82rem);
+      line-height: 1.16;
     }
 
     .flashcard-answer-toggle {
@@ -647,7 +681,7 @@
   <form class="inline-form is-hidden">{% csrf_token %}</form>
   <header class="flashcard-head">
     <div class="flashcard-headline">
-      <p class="flashcard-module">anki-kort</p>
+      <p class="flashcard-module">flashcards</p>
       <h1 class="flashcard-title">{{ deck.title }}</h1>
     </div>
     <a class="ghost-link flashcard-back-link" href="{{ back_url }}">
@@ -657,10 +691,10 @@
   </header>
 
   <div id="flashcard-error" class="flashcard-alert is-hidden"></div>
-  <div id="flashcard-loading" class="flashcard-loading">Indlæser kort…</div>
+  <div id="flashcard-loading" class="flashcard-loading">Indlæser flashcards…</div>
 
   <section id="flashcard-stage" class="flashcard-stage is-hidden">
-    <nav class="flashcard-study-nav" aria-label="Navigation i anki-kort">
+    <nav class="flashcard-study-nav" aria-label="Navigation i flashcards">
       <div class="flashcard-scope-control">
         <label class="flashcard-scope-label" for="flashcard-category-filter">Emne</label>
         <select id="flashcard-category-filter" class="flashcard-category-select" aria-label="Vælg emne">
@@ -683,45 +717,50 @@
       <div class="flashcard-flow-row">
         <p id="flashcard-counter" class="flashcard-counter"></p>
         <span class="flashcard-meta-dot" aria-hidden="true"></span>
+        <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i flashcards">
+          0%
+        </progress>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
         <span class="flashcard-meta-dot flashcard-meta-dot-state" aria-hidden="true"></span>
+      </div>
+    </div>
+    <section class="flashcard-study-card" aria-label="Aktuelt flashcard">
+      <div class="flashcard-card-kicker-row">
+        <p class="flashcard-card-label">Spørgsmål</p>
         <p id="flashcard-card-state" class="flashcard-card-state"></p>
       </div>
-      <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i anki-kort">
-        0%
-      </progress>
-    </div>
-    <h2 id="flashcard-front" class="flashcard-front"></h2>
-    <div id="flashcard-recall" class="flashcard-recall">
-      <button id="flashcard-answer-toggle" class="flashcard-answer-toggle" type="button" aria-expanded="false"
-        aria-controls="flashcard-user-answer-panel">
-        <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
-        <span id="flashcard-answer-toggle-label">Skriv svar</span>
-      </button>
-      <div id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden">
-        <label class="flashcard-user-answer-label" for="flashcard-user-answer">Mit svar</label>
-        <textarea id="flashcard-user-answer" autocomplete="off" spellcheck="true"
-          placeholder="Skriv dit svar her"></textarea>
+      <h2 id="flashcard-front" class="flashcard-front"></h2>
+      <div id="flashcard-recall" class="flashcard-recall">
+        <button id="flashcard-answer-toggle" class="flashcard-answer-toggle" type="button" aria-expanded="false"
+          aria-controls="flashcard-user-answer-panel">
+          <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
+          <span id="flashcard-answer-toggle-label">Skriv svar</span>
+        </button>
+        <div id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden">
+          <label class="flashcard-user-answer-label" for="flashcard-user-answer">Mit svar</label>
+          <textarea id="flashcard-user-answer" autocomplete="off" spellcheck="true"
+            placeholder="Skriv dit svar her"></textarea>
+        </div>
       </div>
-    </div>
-    <div id="flashcard-answer" class="flashcard-answer is-hidden">
-      <p class="flashcard-answer-label">Svar</p>
-      <div id="flashcard-answer-body" class="flashcard-answer-body"></div>
-    </div>
-    <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
-    <div class="flashcard-actions">
-      <button id="flashcard-previous" class="flashcard-secondary" type="button">Forrige</button>
-      <button id="flashcard-show-answer" class="btn-primary flashcard-show-answer" type="button">
-        <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
-        Vis svar
-      </button>
-      <div id="flashcard-rating-actions" class="flashcard-rating-actions is-hidden">
-        <button class="flashcard-rating" type="button" data-rating="again">Igen</button>
-        <button class="flashcard-rating" type="button" data-rating="hard">Svært</button>
-        <button class="flashcard-rating" type="button" data-rating="good">Godt</button>
-        <button class="flashcard-rating" type="button" data-rating="easy">Let</button>
+      <div id="flashcard-answer" class="flashcard-answer is-hidden">
+        <p class="flashcard-answer-label">Svar</p>
+        <div id="flashcard-answer-body" class="flashcard-answer-body"></div>
       </div>
-    </div>
+      <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
+      <div class="flashcard-actions">
+        <button id="flashcard-previous" class="flashcard-secondary" type="button">Forrige</button>
+        <button id="flashcard-show-answer" class="btn-primary flashcard-show-answer" type="button">
+          <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+          Vis svar
+        </button>
+        <div id="flashcard-rating-actions" class="flashcard-rating-actions is-hidden">
+          <button class="flashcard-rating" type="button" data-rating="again">Igen</button>
+          <button class="flashcard-rating" type="button" data-rating="hard">Svært</button>
+          <button class="flashcard-rating" type="button" data-rating="good">Godt</button>
+          <button class="flashcard-rating" type="button" data-rating="easy">Let</button>
+        </div>
+      </div>
+    </section>
   </section>
 
   {% if flashcard_preview_mode %}

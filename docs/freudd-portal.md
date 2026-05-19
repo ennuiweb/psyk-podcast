@@ -62,10 +62,11 @@ Those generated files are refreshed by the feed and subject automation workflows
 
 ## Flashcard Practice Contract
 
-Flashcard practice is separate from scored Freudd quizzes. The Bioneuro Anki deck
-is exposed through `/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi`
-and the `/api/flashcards/<subject_slug>/<deck_slug>` API family. Logged-in users
-persist self-ratings in `FlashcardReview` and written self-check answers in
+Flashcard practice is separate from scored Freudd quizzes. The Bioneuro flashcard
+deck is imported from Anki source data and exposed through
+`/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` and the
+`/api/flashcards/<subject_slug>/<deck_slug>` API family. Logged-in users persist
+self-ratings in `FlashcardReview` and written self-check answers in
 `FlashcardUserAnswer`; anonymous preview users can practise cards but do not
 persist ratings or written answers. The practice UI supports all cards or one
 derived topic category, then `Alle`/`Ubesvarede`/`Besvarede` filters inside that

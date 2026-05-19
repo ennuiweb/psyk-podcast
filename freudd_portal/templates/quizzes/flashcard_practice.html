@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}korttræning · {{ deck.title }}{% endblock %}
+{% block title %}anki-kort · {{ deck.title }}{% endblock %}
 {% block content %}
 <style>
   .flashcard-shell {
@@ -245,7 +245,7 @@
   <form class="inline-form is-hidden">{% csrf_token %}</form>
   <header class="flashcard-head">
     <div class="flashcard-headline">
-      <p class="flashcard-module">korttræning</p>
+      <p class="flashcard-module">anki-kort</p>
       <h1 class="flashcard-title">{{ deck.title }}</h1>
     </div>
     <a class="ghost-link back-link" href="{{ back_url }}">Tilbage</a>
@@ -260,7 +260,7 @@
         <p id="flashcard-counter" class="flashcard-counter"></p>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
       </div>
-      <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i korttræning">
+      <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i anki-kort">
         0%
       </progress>
     </div>

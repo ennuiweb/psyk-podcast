@@ -63,7 +63,7 @@ quiz-driven lecture completion.
 
 ## Target User Experience
 
-On `/subjects/bioneuro`, the learner sees a compact `Korttraening` entry point
+On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
 1. show card front
@@ -275,7 +275,7 @@ should allow a later scheduler to be introduced behind the same API.
 
 ## Phase 8: Subject Page Integration
 
-Add a separate `Korttraening` section or compact module to the Bioneuro subject
+Add a separate `anki-kort` section or compact module to the Bioneuro subject
 page.
 
 Show:

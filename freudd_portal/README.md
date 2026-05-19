@@ -70,7 +70,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `Slides` viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
 - Slide mapping er manuel-only for alle fag; automatisk mapping med script er ikke tilladt (`freudd_portal/docs/slides-mapping-policy.md`).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
-- Flashcard decks are surfaced as `korttræning`, outside `Quiz for alle kilder`,
+- Flashcard decks are surfaced as `anki-kort`, outside `Quiz for alle kilder`,
   because they are self-rated open-recall cards rather than scored multiple-choice
   quizzes.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.

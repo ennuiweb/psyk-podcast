@@ -245,7 +245,7 @@ class FlashcardPortalTests(TestCase):
 
         page = self.client.get(reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
         self.assertEqual(page.status_code, 200)
-        self.assertContains(page, "korttræning")
+        self.assertContains(page, "anki-kort")
         self.assertContains(page, "Test Deck")
 
         api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
@@ -292,6 +292,6 @@ class FlashcardPortalTests(TestCase):
             response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "bioneuro"}))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "korttræning")
+        self.assertContains(response, "anki-kort")
         self.assertContains(response, "Test Deck")
         self.assertContains(response, reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))

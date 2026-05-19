@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import (
     FlashcardReview,
+    FlashcardUserAnswer,
     QuizProgress,
     SubjectEnrollment,
     UserInterfacePreference,
@@ -50,6 +51,13 @@ class FlashcardReviewAdmin(admin.ModelAdmin):
     )
     search_fields = ("user__username", "user__email", "subject_slug", "deck_slug", "card_id")
     list_filter = ("subject_slug", "deck_slug", "rating", "last_reviewed_at")
+
+
+@admin.register(FlashcardUserAnswer)
+class FlashcardUserAnswerAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "subject_slug", "deck_slug", "card_id", "updated_at")
+    search_fields = ("user__username", "user__email", "subject_slug", "deck_slug", "card_id", "answer_text")
+    list_filter = ("subject_slug", "deck_slug", "updated_at")
 
 
 @admin.register(UserInterfacePreference)

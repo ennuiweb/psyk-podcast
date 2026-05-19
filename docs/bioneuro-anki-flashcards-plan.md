@@ -38,6 +38,10 @@ Created: 2026-05-19
   revealing the official answer, rating controls are visually separated by
   semantic difficulty, and the anonymous preview warning is quiet inline text
   rather than a prominent info box.
+- 2026-05-19: Added topic-scope practice and persisted written self-check
+  answers. Learners can practise all cards or a single derived topic category;
+  logged-in users' `Skriv svar` text is saved separately from
+  `FlashcardReview`, while anonymous preview answers remain browser-only.
 
 ## Goal
 
@@ -82,17 +86,18 @@ On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
 1. choose `Alle`, `Ubesvarede`, or `Besvarede`
-2. show card front plus `Ikke vurderet endnu` or `Vurderet: <rating>` state
-3. learner optionally opens `Skriv svar` and writes a local self-check draft
-4. learner clicks `Vis svar`
-5. show sanitized answer/explanation
-6. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
-7. update the answered state and advance within the active filter
+2. optionally scope the session to all cards or one derived topic category
+3. show card front plus `Ikke vurderet endnu` or `Vurderet: <rating>` state
+4. learner optionally opens `Skriv svar` and writes a self-check answer
+5. learner clicks `Vis svar`
+6. show sanitized answer/explanation
+7. learner self-rates: `Igen`, `Svaert`, `Godt`, `Let`
+8. update the answered state and advance within the active scope/filter
 
-The `Skriv svar` field is deliberately in-browser state only. It is not posted
-to the flashcard review API, does not affect `FlashcardReview`, and should not
-be treated as submitted answer history. Persisted progress is the self-rating
-only, and only for authenticated users.
+For authenticated users, the `Skriv svar` field is persisted as private
+open-recall history in `FlashcardUserAnswer`. It is separate from
+`FlashcardReview`, does not affect quiz progress, and can be cleared by saving an
+empty answer. Anonymous preview users keep written answers only in browser state.
 
 The experience should feel native to Freudd and visually related to the quiz
 view, but the language should clearly say card practice, not quiz.
@@ -228,6 +233,7 @@ Add dedicated routes:
 
 - `GET /subjects/<subject_slug>/cards/<deck_slug>`
 - `GET /api/flashcards/<subject_slug>/<deck_slug>`
+- `POST /api/flashcards/<subject_slug>/<deck_slug>/answer`
 - `POST /api/flashcards/<subject_slug>/<deck_slug>/review`
 
 Route behavior:
@@ -237,9 +243,11 @@ Route behavior:
 - Malformed deck artifact: 500 with a logged server error, not partial UI.
 - Anonymous read access is allowed for the practice page and card payload in
   preview mode. In-page preview ratings are not persisted.
-- The optional `Skriv svar` draft is never persisted for authenticated or
-  anonymous users; it exists only to support immediate open-recall self-checking
-  before `Vis svar`.
+- The optional `Skriv svar` answer is persisted only for authenticated users via
+  the answer API. Anonymous preview drafts stay in browser state.
+- Review POST accepts `answer_text` as a convenience so a rating click can flush
+  the current written answer and rating together, but the written answer remains
+  separate from `FlashcardReview`.
 - Review POST requires authentication for persisted progress.
 
 Template:
@@ -253,9 +261,10 @@ or submit quiz state APIs.
 
 Add separate persisted card progress.
 
-Proposed model:
+Models:
 
 - `FlashcardReview`
+- `FlashcardUserAnswer`
 
 Fields:
 
@@ -279,6 +288,20 @@ Indexes:
 - `(user, subject_slug, deck_slug)`
 - `(user, next_review_at)`
 - `(subject_slug, deck_slug, card_id)`
+
+`FlashcardUserAnswer` fields:
+
+- `user`
+- `subject_slug`
+- `deck_slug`
+- `card_id`
+- `answer_text`
+- `created_at`
+- `updated_at`
+
+`FlashcardUserAnswer` uses the same unique key as `FlashcardReview`:
+`(user, subject_slug, deck_slug, card_id)`. Saving an empty answer deletes the
+row, and answer rows do not count as reviewed cards.
 
 MVP review semantics:
 
@@ -344,9 +367,14 @@ Service tests:
 View/API tests:
 
 - practice page renders with deck metadata
+- practice page exposes the topic-scope selector
 - flashcard API returns cards without unsafe HTML
+- answer POST requires authentication
+- answer POST creates, updates, clears `FlashcardUserAnswer`, and does not mark
+  the card reviewed
 - review POST requires authentication
 - review POST creates then updates `FlashcardReview`
+- review POST can flush a written answer without coupling it to quiz progress
 - invalid rating is rejected
 - subject page shows the Bioneuro deck link
 
@@ -397,6 +425,7 @@ Smoke checks:
 - `/settings` redirects or renders as expected
 - `/subjects/bioneuro` renders
 - `/subjects/bioneuro/cards/<deck_slug>` renders
+- authenticated answer POST persists one written answer without marking a review
 - authenticated review POST persists one review
 - quiz route `/q/<known-bioneuro-quiz-id>.html` still works
 
@@ -447,6 +476,8 @@ The feature is ready when:
 - All 661 imported cards can be practiced in Freudd.
 - No card content renders unsafe HTML.
 - Logged-in users can store self-rated progress.
+- Logged-in users can store and clear written self-check answers.
+- Learners can practise all cards or a single topic category.
 - Flashcard progress is separate from quiz progress.
 - Quiz history, quiz completion, XP, cooldowns, and scoreboard remain unchanged.
 - The implementation is documented, tested, deployed, and smoke checked.

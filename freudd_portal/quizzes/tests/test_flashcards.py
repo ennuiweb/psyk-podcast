@@ -19,7 +19,7 @@ from quizzes.flashcard_services import (
     list_flashcard_deck_entries,
     load_flashcard_deck,
 )
-from quizzes.models import FlashcardReview, QuizProgress
+from quizzes.models import FlashcardReview, FlashcardUserAnswer, QuizProgress
 from quizzes.subject_services import clear_subject_service_caches
 
 
@@ -246,22 +246,38 @@ class FlashcardPortalTests(TestCase):
             list_flashcard_deck_entries("bioneuro")
 
     def test_flashcard_practice_and_api_allow_anonymous_preview(self) -> None:
-        page = self.client.get(reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        page = self.client.get(
+            reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+        )
         self.assertEqual(page.status_code, 200)
         self.assertContains(page, "Preview uden login")
         self.assertContains(page, "dine svar og din progress gemmes ikke")
         self.assertContains(page, "const previewMode = true;")
 
-        api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        api = self.client.get(
+            reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+        )
         self.assertEqual(api.status_code, 200)
         payload = api.json()
         self.assertIsNone(payload["review_summary"])
         self.assertIsNone(payload["cards"][0]["review"])
+        self.assertEqual(payload["cards"][0]["user_answer"], "")
+        self.assertIsNone(payload["cards"][0]["user_answer_updated_at"])
+
+        answer_post = self.client.post(
+            reverse("flashcard-answer", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}),
+            data=json.dumps({"card_id": "anki-1", "answer_text": "anonymous draft"}),
+            content_type="application/json",
+        )
+        self.assertEqual(answer_post.status_code, 403)
+        self.assertEqual(FlashcardUserAnswer.objects.count(), 0)
 
     def test_flashcard_practice_and_api_render_for_logged_in_user(self) -> None:
         self.client.force_login(self._user())
 
-        page = self.client.get(reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        page = self.client.get(
+            reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+        )
         self.assertEqual(page.status_code, 200)
         self.assertContains(page, "anki-kort")
         self.assertContains(page, "Test Deck")
@@ -270,6 +286,9 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, "Ikke vurderet endnu")
         self.assertContains(page, "Skriv svar")
         self.assertContains(page, "Mit svar")
+        self.assertContains(page, 'id="flashcard-category-filter"')
+        self.assertContains(page, "Alle emner")
+        self.assertContains(page, "const answerUrl =")
         self.assertContains(page, 'id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden"')
         self.assertContains(page, 'id="flashcard-answer" class="flashcard-answer is-hidden"')
         self.assertContains(page, "Vis svar")
@@ -277,7 +296,9 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, ".flashcard-shell .is-hidden")
         self.assertContains(page, "const previewMode = false;")
 
-        api = self.client.get(reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        api = self.client.get(
+            reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+        )
         self.assertEqual(api.status_code, 200)
         payload = api.json()
         self.assertEqual(payload["card_count"], 2)
@@ -285,6 +306,51 @@ class FlashcardPortalTests(TestCase):
         self.assertEqual(payload["cards"][0]["front_text"], "Front 1")
         self.assertEqual(payload["cards"][0]["back_html"], "<div>Back 1</div>")
         self.assertEqual(payload["cards"][0]["category_title"], "Grundbegreber")
+        self.assertEqual(payload["cards"][0]["user_answer"], "")
+        self.assertIsNone(payload["cards"][0]["user_answer_updated_at"])
+
+    def test_flashcard_answer_post_persists_without_marking_reviewed(self) -> None:
+        user = self._user()
+        self.client.force_login(user)
+        url = reverse("flashcard-answer", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+
+        response = self.client.post(
+            url,
+            data=json.dumps({"card_id": "anki-1", "answer_text": "  Neurons and glia\r\n"}),
+            content_type="application/json",
+        )
+        self.assertEqual(response.status_code, 200)
+        body = response.json()
+        self.assertEqual(body["card_id"], "anki-1")
+        self.assertEqual(body["user_answer"], "Neurons and glia")
+        self.assertIsNotNone(body["user_answer_updated_at"])
+
+        answer = FlashcardUserAnswer.objects.get(
+            user=user,
+            subject_slug="bioneuro",
+            deck_slug="test-deck",
+            card_id="anki-1",
+        )
+        self.assertEqual(answer.answer_text, "Neurons and glia")
+        self.assertEqual(FlashcardReview.objects.count(), 0)
+
+        api = self.client.get(
+            reverse("flashcard-content", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"})
+        )
+        self.assertEqual(api.status_code, 200)
+        payload = api.json()
+        self.assertEqual(payload["review_summary"]["reviewed_count"], 0)
+        self.assertEqual(payload["cards"][0]["user_answer"], "Neurons and glia")
+
+        cleared = self.client.post(
+            url,
+            data=json.dumps({"card_id": "anki-1", "answer_text": "   "}),
+            content_type="application/json",
+        )
+        self.assertEqual(cleared.status_code, 200)
+        self.assertEqual(cleared.json()["user_answer"], "")
+        self.assertIsNone(cleared.json()["user_answer_updated_at"])
+        self.assertEqual(FlashcardUserAnswer.objects.count(), 0)
 
     def test_flashcard_review_post_upserts_without_quiz_progress(self) -> None:
         user = self._user()
@@ -293,11 +359,12 @@ class FlashcardPortalTests(TestCase):
 
         first = self.client.post(
             url,
-            data=json.dumps({"card_id": "anki-1", "rating": "good"}),
+            data=json.dumps({"card_id": "anki-1", "rating": "good", "answer_text": "My recall"}),
             content_type="application/json",
         )
         self.assertEqual(first.status_code, 200)
         self.assertEqual(first.json()["review_count"], 1)
+        self.assertEqual(first.json()["user_answer"], "My recall")
 
         second = self.client.post(
             url,
@@ -307,10 +374,23 @@ class FlashcardPortalTests(TestCase):
         self.assertEqual(second.status_code, 200)
         self.assertEqual(second.json()["review_count"], 2)
         self.assertEqual(second.json()["rating"], "again")
+        self.assertNotIn("user_answer", second.json())
 
-        review = FlashcardReview.objects.get(user=user, subject_slug="bioneuro", deck_slug="test-deck", card_id="anki-1")
+        review = FlashcardReview.objects.get(
+            user=user,
+            subject_slug="bioneuro",
+            deck_slug="test-deck",
+            card_id="anki-1",
+        )
         self.assertEqual(review.rating, "again")
         self.assertEqual(review.review_count, 2)
+        answer = FlashcardUserAnswer.objects.get(
+            user=user,
+            subject_slug="bioneuro",
+            deck_slug="test-deck",
+            card_id="anki-1",
+        )
+        self.assertEqual(answer.answer_text, "My recall")
         self.assertEqual(QuizProgress.objects.count(), 0)
 
     def test_subject_detail_shows_flashcard_entry_point(self) -> None:
@@ -328,4 +408,7 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(response, "Grundbegreber")
         self.assertContains(response, "Neuroner og synapser")
         self.assertContains(response, "0/2 kort besvaret")
-        self.assertContains(response, reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))
+        self.assertContains(
+            response,
+            reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}),
+        )

@@ -30,8 +30,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Score key: per `(user, quiz_id)`.
 - Flashcard practice is a separate learning mode from quizzes. It uses subject-local
   `shows/<subject>/flashcards/decks.json` registries and generated deck JSON
-  artifacts, persists self-rated progress in `FlashcardReview`, and does not
-  affect quiz history, XP, cooldowns, or scoreboard totals.
+  artifacts, persists self-rated progress in `FlashcardReview` and written
+  self-check answers in `FlashcardUserAnswer`, and does not affect quiz history,
+  XP, cooldowns, or scoreboard totals.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects; on `/leaderboard/<subject_slug>` these subject chips stay deselected.
@@ -74,14 +75,15 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   because they are self-rated open-recall cards rather than scored multiple-choice
   quizzes. Imported decks carry deterministic topic categories derived from card
   text; the subject page previews those topics with card counts. The practice
-  page can filter cards by `Alle`, `Ubesvarede`, and `Besvarede`, using
-  `FlashcardReview` rows as the answered state for logged-in users. The card
-  flow shows the front first, offers an optional `Skriv svar` self-check field
-  whose draft is local browser state only, then reveals the sanitized answer and
-  `Igen`/`Svaert`/`Godt`/`Let` self-rating controls. Anonymous learners can open
-  the practice page and card API in preview mode; their self-answer drafts and
-  preview ratings are not persisted, and the page shows a quiet inline progress
-  warning instead of a prominent callout box.
+  page can be scoped to all cards or a single topic category, then filtered by
+  `Alle`, `Ubesvarede`, and `Besvarede`, using `FlashcardReview` rows as the
+  answered state for logged-in users. The card flow shows the front first, offers
+  an optional `Skriv svar` self-check field, then reveals the sanitized answer and
+  `Igen`/`Svaert`/`Godt`/`Let` self-rating controls. Written self-check answers
+  are saved for logged-in users only and stay separate from the rating/progress
+  state. Anonymous learners can open the practice page and card API in preview
+  mode; their self-answer drafts and preview ratings are not persisted, and the
+  page shows a quiet inline progress warning instead of a prominent callout box.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
 - Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
@@ -120,6 +122,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET/POST /api/quiz-state/<quiz_id>`
 - `GET/POST /api/quiz-state/<quiz_id>/raw`
 - `GET /api/flashcards/<subject_slug>/<deck_slug>`
+- `POST /api/flashcards/<subject_slug>/<deck_slug>/answer`
 - `POST /api/flashcards/<subject_slug>/<deck_slug>/review`
 - `GET /api/gamification/me`
 - `GET /settings` (`GET /progress` redirects permanently with query string preserved)
@@ -145,6 +148,8 @@ Leaderboard alias UX rule: if a user already has an alias, it is shown locked by
 ## Data model
 - `QuizProgress` (existing): per-user quiz completion/score state.
 - `FlashcardReview`: per-user self-rated flashcard state keyed by
+  `(user, subject_slug, deck_slug, card_id)`.
+- `FlashcardUserAnswer`: per-user written flashcard self-check answer keyed by
   `(user, subject_slug, deck_slug, card_id)`.
 - `SubjectEnrollment`: per-user subject enrollment keyed by `(user, subject_slug)`.
 - `UserGamificationProfile`: per-user XP/streak/level aggregates.

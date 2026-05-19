@@ -53,6 +53,7 @@ from .flashcard_services import (
     list_flashcard_deck_summaries,
     load_flashcard_deck,
     upsert_flashcard_review,
+    upsert_flashcard_user_answer,
 )
 from .gamification_services import (
     get_gamification_snapshot,
@@ -107,6 +108,7 @@ from .tracking_services import (
 logger = logging.getLogger(__name__)
 MAX_STATE_BYTES = 5_000_000
 MAX_FLASHCARD_REVIEW_BYTES = 50_000
+MAX_FLASHCARD_ANSWER_BYTES = 50_000
 QUIZ_DISPLAY_POINTS_MAX = 150
 QUIZ_POINTS_MAX_PER_QUESTION = 120
 QUIZ_SLOT_STATE_LABELS_DA = {
@@ -2246,6 +2248,10 @@ def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: 
                 "flashcard-review",
                 kwargs={"subject_slug": subject.slug, "deck_slug": deck.deck_slug},
             ),
+            "flashcard_answer_url": reverse(
+                "flashcard-answer",
+                kwargs={"subject_slug": subject.slug, "deck_slug": deck.deck_slug},
+            ),
             "flashcard_preview_mode": not user_is_authenticated,
             "login_url": _auth_url_with_next("login", request.get_full_path()),
             "back_url": reverse("subject-detail", kwargs={"subject_slug": subject.slug}),
@@ -2272,6 +2278,48 @@ def flashcard_content_view(request: HttpRequest, subject_slug: str, deck_slug: s
 
 
 @require_POST
+def flashcard_answer_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "authentication_required"}, status=403)
+    if len(request.body) > MAX_FLASHCARD_ANSWER_BYTES:
+        return HttpResponseBadRequest("Svar-payload er for stor.")
+    try:
+        payload = json.loads(request.body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        return HttpResponseBadRequest("Ugyldig JSON-body.")
+    if not isinstance(payload, dict):
+        return HttpResponseBadRequest("Svar-payload skal vaere et JSON-objekt.")
+
+    card_id = str(payload.get("card_id") or "").strip()
+    answer_text = payload.get("answer_text", "")
+
+    catalog = load_subject_catalog()
+    subject = _subject_or_404(catalog, subject_slug)
+    try:
+        answer = upsert_flashcard_user_answer(
+            user=request.user,
+            subject_slug=subject.slug,
+            deck_slug=deck_slug,
+            card_id=card_id,
+            answer_text=answer_text,
+        )
+    except FlashcardDeckNotFound as exc:
+        raise Http404("Kortsaet ikke fundet") from exc
+    except FlashcardValidationError as exc:
+        return HttpResponseBadRequest(str(exc))
+
+    return JsonResponse(
+        {
+            "card_id": card_id,
+            "user_answer": answer.answer_text if answer is not None else "",
+            "user_answer_updated_at": (
+                answer.updated_at.isoformat() if answer is not None and answer.updated_at else None
+            ),
+        }
+    )
+
+
+@require_POST
 def flashcard_review_view(request: HttpRequest, subject_slug: str, deck_slug: str) -> HttpResponse:
     if not request.user.is_authenticated:
         return JsonResponse({"error": "authentication_required"}, status=403)
@@ -2291,14 +2339,25 @@ def flashcard_review_view(request: HttpRequest, subject_slug: str, deck_slug: st
 
     catalog = load_subject_catalog()
     subject = _subject_or_404(catalog, subject_slug)
+    answer_present = "answer_text" in payload or "user_answer" in payload
+    answer = None
     try:
-        review = upsert_flashcard_review(
-            user=request.user,
-            subject_slug=subject.slug,
-            deck_slug=deck_slug,
-            card_id=card_id,
-            rating=rating,
-        )
+        with transaction.atomic():
+            if answer_present:
+                answer = upsert_flashcard_user_answer(
+                    user=request.user,
+                    subject_slug=subject.slug,
+                    deck_slug=deck_slug,
+                    card_id=card_id,
+                    answer_text=payload.get("answer_text", payload.get("user_answer", "")),
+                )
+            review = upsert_flashcard_review(
+                user=request.user,
+                subject_slug=subject.slug,
+                deck_slug=deck_slug,
+                card_id=card_id,
+                rating=rating,
+            )
         deck = load_flashcard_deck(subject.slug, deck_slug)
     except FlashcardDeckNotFound as exc:
         raise Http404("Kortsaet ikke fundet") from exc
@@ -2306,16 +2365,24 @@ def flashcard_review_view(request: HttpRequest, subject_slug: str, deck_slug: st
         return HttpResponseBadRequest(str(exc))
 
     summary = flashcard_deck_api_payload(deck=deck, user=request.user).get("review_summary")
-    return JsonResponse(
-        {
-            "card_id": review.card_id,
-            "rating": review.rating,
-            "review_count": review.review_count,
-            "last_reviewed_at": review.last_reviewed_at.isoformat() if review.last_reviewed_at else None,
-            "next_review_at": review.next_review_at.isoformat() if review.next_review_at else None,
-            "review_summary": summary,
-        }
-    )
+    response_payload = {
+        "card_id": review.card_id,
+        "rating": review.rating,
+        "review_count": review.review_count,
+        "last_reviewed_at": review.last_reviewed_at.isoformat() if review.last_reviewed_at else None,
+        "next_review_at": review.next_review_at.isoformat() if review.next_review_at else None,
+        "review_summary": summary,
+    }
+    if answer_present:
+        response_payload.update(
+            {
+                "user_answer": answer.answer_text if answer is not None else "",
+                "user_answer_updated_at": (
+                    answer.updated_at.isoformat() if answer is not None and answer.updated_at else None
+                ),
+            }
+        )
+    return JsonResponse(response_payload)
 
 
 @login_required

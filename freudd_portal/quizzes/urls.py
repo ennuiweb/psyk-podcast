@@ -19,6 +19,11 @@ urlpatterns = [
         views.flashcard_review_view,
         name="flashcard-review",
     ),
+    re_path(
+        r"^api/flashcards/(?P<subject_slug>[a-z0-9-]+)/(?P<deck_slug>[a-z0-9-]+)/answer$",
+        views.flashcard_answer_view,
+        name="flashcard-answer",
+    ),
     re_path(r"^api/gamification/me$", views.gamification_me_view, name="gamification-me"),
     re_path(r"^api/quiz-state/(?P<quiz_id>[0-9a-f]{8})$", views.quiz_state_view, name="quiz-state"),
     re_path(

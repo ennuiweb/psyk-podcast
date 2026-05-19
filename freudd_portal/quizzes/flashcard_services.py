@@ -13,7 +13,7 @@ from typing import Any
 from django.conf import settings
 from django.utils import timezone
 
-from .models import FlashcardReview
+from .models import FlashcardReview, FlashcardUserAnswer
 from .subject_services import resolve_subject_paths
 
 logger = logging.getLogger(__name__)
@@ -41,6 +41,7 @@ RATING_SORT_ORDER = {
     FlashcardReview.Rating.GOOD: 2,
     FlashcardReview.Rating.EASY: 3,
 }
+MAX_FLASHCARD_USER_ANSWER_CHARS = 10_000
 
 
 class FlashcardServiceError(RuntimeError):
@@ -330,6 +331,33 @@ def _reviews_for_deck(*, user, subject_slug: str, deck_slug: str) -> dict[str, F
     return {row.card_id: row for row in rows}
 
 
+def _answers_for_deck(*, user, subject_slug: str, deck_slug: str) -> dict[str, FlashcardUserAnswer]:
+    if user is None or not getattr(user, "is_authenticated", False):
+        return {}
+    rows = FlashcardUserAnswer.objects.filter(
+        user=user,
+        subject_slug=subject_slug,
+        deck_slug=deck_slug,
+    )
+    return {row.card_id: row for row in rows}
+
+
+def _validated_deck_and_card(subject_slug: str, deck_slug: str, card_id: str) -> tuple[FlashcardDeck, str]:
+    deck = load_flashcard_deck(subject_slug, deck_slug)
+    normalized_card_id = str(card_id or "").strip()
+    known_card_ids = {str(card.get("card_id") or "") for card in deck.cards}
+    if normalized_card_id not in known_card_ids:
+        raise FlashcardValidationError("Unknown flashcard card_id.")
+    return deck, normalized_card_id
+
+
+def normalize_flashcard_user_answer_text(value: object) -> str:
+    text = str(value or "").replace("\r\n", "\n").replace("\r", "\n").strip()
+    if len(text) > MAX_FLASHCARD_USER_ANSWER_CHARS:
+        raise FlashcardValidationError("Flashcard answer is too long.")
+    return text
+
+
 def review_summary_for_deck(*, user, subject_slug: str, deck_slug: str, card_count: int) -> dict[str, object]:
     reviews = _reviews_for_deck(user=user, subject_slug=subject_slug, deck_slug=deck_slug)
     ratings = {rating: 0 for rating in FLASHCARD_RATINGS}
@@ -392,8 +420,21 @@ def _card_review_payload(review: FlashcardReview | None) -> dict[str, object] | 
     }
 
 
+def _card_answer_payload(answer: FlashcardUserAnswer | None) -> dict[str, object]:
+    if answer is None:
+        return {
+            "user_answer": "",
+            "user_answer_updated_at": None,
+        }
+    return {
+        "user_answer": answer.answer_text,
+        "user_answer_updated_at": answer.updated_at.isoformat() if answer.updated_at else None,
+    }
+
+
 def deck_cards_payload(*, deck: FlashcardDeck, user=None) -> list[dict[str, object]]:
     reviews = _reviews_for_deck(user=user, subject_slug=deck.subject_slug, deck_slug=deck.deck_slug)
+    answers = _answers_for_deck(user=user, subject_slug=deck.subject_slug, deck_slug=deck.deck_slug)
 
     def sort_key(card: dict[str, object]) -> tuple[int, int, str, str]:
         card_id = str(card.get("card_id") or "")
@@ -416,6 +457,7 @@ def deck_cards_payload(*, deck: FlashcardDeck, user=None) -> list[dict[str, obje
                 "category_slug": str(card.get("category_slug") or DEFAULT_CATEGORY["slug"]),
                 "category_title": str(card.get("category_title") or DEFAULT_CATEGORY["title"]),
                 "review": _card_review_payload(reviews.get(card_id)),
+                **_card_answer_payload(answers.get(card_id)),
             }
         )
     return payload
@@ -453,17 +495,14 @@ def next_review_at_for_rating(rating: str):
 def upsert_flashcard_review(*, user, subject_slug: str, deck_slug: str, card_id: str, rating: str) -> FlashcardReview:
     if rating not in FLASHCARD_RATINGS:
         raise FlashcardValidationError("Invalid flashcard rating.")
-    deck = load_flashcard_deck(subject_slug, deck_slug)
-    known_card_ids = {str(card.get("card_id") or "") for card in deck.cards}
-    if card_id not in known_card_ids:
-        raise FlashcardValidationError("Unknown flashcard card_id.")
+    deck, normalized_card_id = _validated_deck_and_card(subject_slug, deck_slug, card_id)
 
     now = timezone.now()
     review, created = FlashcardReview.objects.get_or_create(
         user=user,
         subject_slug=deck.subject_slug,
         deck_slug=deck.deck_slug,
-        card_id=card_id,
+        card_id=normalized_card_id,
         defaults={
             "rating": rating,
             "review_count": 0,
@@ -485,3 +524,32 @@ def upsert_flashcard_review(*, user, subject_slug: str, deck_slug: str, card_id:
         else None
     )
     return review
+
+
+def upsert_flashcard_user_answer(
+    *,
+    user,
+    subject_slug: str,
+    deck_slug: str,
+    card_id: str,
+    answer_text: object,
+) -> FlashcardUserAnswer | None:
+    deck, normalized_card_id = _validated_deck_and_card(subject_slug, deck_slug, card_id)
+    normalized_answer = normalize_flashcard_user_answer_text(answer_text)
+    lookup = {
+        "user": user,
+        "subject_slug": deck.subject_slug,
+        "deck_slug": deck.deck_slug,
+        "card_id": normalized_card_id,
+    }
+    if not normalized_answer:
+        FlashcardUserAnswer.objects.filter(**lookup).delete()
+        return None
+    answer, created = FlashcardUserAnswer.objects.get_or_create(
+        **lookup,
+        defaults={"answer_text": normalized_answer},
+    )
+    if not created and answer.answer_text != normalized_answer:
+        answer.answer_text = normalized_answer
+        answer.save(update_fields=["answer_text", "updated_at"])
+    return answer

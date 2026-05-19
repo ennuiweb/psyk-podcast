@@ -88,6 +88,31 @@ class FlashcardReview(models.Model):
         return f"{self.user_id}:{self.subject_slug}:{self.deck_slug}:{self.card_id}:{self.rating}"
 
 
+class FlashcardUserAnswer(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    subject_slug = models.CharField(max_length=64)
+    deck_slug = models.CharField(max_length=96)
+    card_id = models.CharField(max_length=96)
+    answer_text = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "subject_slug", "deck_slug", "card_id"],
+                name="uq_user_flashcard_answer",
+            ),
+        ]
+        indexes = [
+            models.Index(fields=["user", "subject_slug", "deck_slug"], name="flash_ans_user_deck_idx"),
+            models.Index(fields=["subject_slug", "deck_slug", "card_id"], name="flash_ans_card_idx"),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.user_id}:{self.subject_slug}:{self.deck_slug}:{self.card_id}"
+
+
 class SubjectEnrollment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subject_slug = models.CharField(max_length=64)

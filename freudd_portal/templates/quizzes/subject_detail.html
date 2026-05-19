@@ -224,6 +224,37 @@
     line-height: 1.35;
   }
 
+  .flashcard-deck-topic-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .flashcard-deck-topic {
+    min-height: 28px;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface) 78%, var(--surface-soft));
+    color: var(--text-subtle-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .flashcard-deck-topic-count {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
   .flashcard-deck-action {
     min-height: 42px;
     border-radius: var(--radius-pill);
@@ -2108,13 +2139,30 @@
       {% for deck in flashcard_decks %}
       <li class="flashcard-deck-row">
         <div class="flashcard-deck-copy">
-          <p class="flashcard-deck-title">{{ deck.title }}</p>
+          <p class="flashcard-deck-title">
+            {{ deck.card_count }} kort fordelt på {{ deck.category_count }} emner
+          </p>
           {% if deck.review_summary %}
           <p class="flashcard-deck-meta">
             {{ deck.review_summary.reviewed_count }}/{{ deck.card_count }} kort besvaret
           </p>
           {% else %}
           <p class="flashcard-deck-meta">{{ deck.card_count }} kort</p>
+          {% endif %}
+          {% if deck.category_preview %}
+          <div class="flashcard-deck-topic-list" aria-label="Emner i {{ deck.title }}">
+            {% for category in deck.category_preview %}
+            <span class="flashcard-deck-topic">
+              {{ category.title }}
+              <span class="flashcard-deck-topic-count">{{ category.card_count }}</span>
+            </span>
+            {% endfor %}
+            {% if deck.extra_category_count %}
+            <span class="flashcard-deck-topic">
+              +{{ deck.extra_category_count }} emner
+            </span>
+            {% endif %}
+          </div>
           {% endif %}
         </div>
         <a class="flashcard-deck-action" href="{{ deck.practice_url }}">Øv kort</a>

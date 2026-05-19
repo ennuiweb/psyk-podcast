@@ -21,6 +21,8 @@ logger = logging.getLogger(__name__)
 SUBJECT_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 DECK_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 CARD_ID_RE = re.compile(r"^[A-Za-z0-9_-]{3,96}$")
+CATEGORY_SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+DEFAULT_CATEGORY = {"slug": "ukategoriseret", "title": "Ukategoriseret"}
 FLASHCARD_RATINGS = {
     FlashcardReview.Rating.AGAIN,
     FlashcardReview.Rating.HARD,
@@ -75,6 +77,7 @@ class FlashcardDeck:
     source_sha256: str
     generated_at: str
     card_count: int
+    categories: tuple[dict[str, object], ...]
     cards: tuple[dict[str, object], ...]
 
 
@@ -212,14 +215,57 @@ def _normalize_card(raw_card: Any) -> dict[str, object] | None:
         return None
     tags = raw_card.get("tags")
     tag_values = [str(tag).strip() for tag in tags if str(tag).strip()] if isinstance(tags, list) else []
+    category_slug = str(raw_card.get("category_slug") or "").strip().lower()
+    category_title = str(raw_card.get("category_title") or "").strip()
+    if not CATEGORY_SLUG_RE.fullmatch(category_slug):
+        category_slug = str(DEFAULT_CATEGORY["slug"])
+    if not category_title:
+        category_title = str(DEFAULT_CATEGORY["title"])
     return {
         "card_id": card_id,
         "front_text": front_text,
         "back_html": back_html,
         "back_text": back_text,
         "tags": tag_values,
+        "category_slug": category_slug,
+        "category_title": category_title,
         "content_sha256": str(raw_card.get("content_sha256") or "").strip(),
     }
+
+
+def _category_summaries_from_cards(cards: tuple[dict[str, object], ...]) -> tuple[dict[str, object], ...]:
+    counts: dict[tuple[str, str], int] = {}
+    for card in cards:
+        slug = str(card.get("category_slug") or DEFAULT_CATEGORY["slug"])
+        title = str(card.get("category_title") or DEFAULT_CATEGORY["title"])
+        key = (slug, title)
+        counts[key] = counts.get(key, 0) + 1
+    return tuple(
+        {"slug": slug, "title": title, "card_count": count}
+        for (slug, title), count in sorted(
+            counts.items(),
+            key=lambda item: (-item[1], item[0][1].casefold(), item[0][0]),
+        )
+    )
+
+
+def _normalize_categories(raw_categories: Any, cards: tuple[dict[str, object], ...]) -> tuple[dict[str, object], ...]:
+    if not isinstance(raw_categories, list):
+        return _category_summaries_from_cards(cards)
+
+    categories: list[dict[str, object]] = []
+    seen: set[str] = set()
+    for raw_category in raw_categories:
+        if not isinstance(raw_category, dict):
+            continue
+        slug = str(raw_category.get("slug") or "").strip().lower()
+        title = str(raw_category.get("title") or "").strip()
+        card_count = int(raw_category.get("card_count") or 0)
+        if not CATEGORY_SLUG_RE.fullmatch(slug) or not title or card_count <= 0 or slug in seen:
+            continue
+        categories.append({"slug": slug, "title": title, "card_count": card_count})
+        seen.add(slug)
+    return tuple(categories) if categories else _category_summaries_from_cards(cards)
 
 
 def load_flashcard_deck(subject_slug: str, deck_slug: str) -> FlashcardDeck:
@@ -255,6 +301,7 @@ def load_flashcard_deck(subject_slug: str, deck_slug: str) -> FlashcardDeck:
     declared_count = int(payload.get("card_count") or 0)
     if declared_count != len(cards):
         raise FlashcardValidationError("Flashcard artifact card_count does not match usable cards.")
+    categories = _normalize_categories(payload.get("categories"), cards)
 
     deck = FlashcardDeck(
         subject_slug=entry.subject_slug,
@@ -265,6 +312,7 @@ def load_flashcard_deck(subject_slug: str, deck_slug: str) -> FlashcardDeck:
         source_sha256=str(payload.get("source_sha256") or "").strip(),
         generated_at=str(payload.get("generated_at") or "").strip(),
         card_count=len(cards),
+        categories=categories,
         cards=cards,
     )
     _DECK_CACHE[cache_key] = deck
@@ -303,27 +351,32 @@ def review_summary_for_deck(*, user, subject_slug: str, deck_slug: str, card_cou
     }
 
 
-def deck_summary_payload(*, entry: FlashcardDeckEntry, user=None) -> dict[str, object]:
+def deck_summary_payload(*, entry: FlashcardDeckEntry, deck: FlashcardDeck | None = None, user=None) -> dict[str, object]:
+    categories = list(deck.categories) if deck is not None else []
     payload: dict[str, object] = {
         "subject_slug": entry.subject_slug,
         "deck_slug": entry.deck_slug,
-        "title": entry.title,
+        "title": deck.title if deck is not None else entry.title,
         "description": entry.description,
-        "card_count": entry.card_count,
+        "card_count": deck.card_count if deck is not None else entry.card_count,
+        "categories": categories,
+        "category_count": len(categories),
+        "category_preview": categories[:6],
+        "extra_category_count": max(0, len(categories) - 6),
     }
     if user is not None and getattr(user, "is_authenticated", False):
         payload["review_summary"] = review_summary_for_deck(
             user=user,
             subject_slug=entry.subject_slug,
             deck_slug=entry.deck_slug,
-            card_count=entry.card_count,
+            card_count=deck.card_count if deck is not None else entry.card_count,
         )
     return payload
 
 
 def list_flashcard_deck_summaries(subject_slug: str, *, user=None) -> list[dict[str, object]]:
     return [
-        deck_summary_payload(entry=entry, user=user)
+        deck_summary_payload(entry=entry, deck=load_flashcard_deck(entry.subject_slug, entry.deck_slug), user=user)
         for entry in list_flashcard_deck_entries(subject_slug)
     ]
 
@@ -360,6 +413,8 @@ def deck_cards_payload(*, deck: FlashcardDeck, user=None) -> list[dict[str, obje
                 "front_text": str(card.get("front_text") or ""),
                 "back_html": str(card.get("back_html") or ""),
                 "tags": card.get("tags") if isinstance(card.get("tags"), list) else [],
+                "category_slug": str(card.get("category_slug") or DEFAULT_CATEGORY["slug"]),
+                "category_title": str(card.get("category_title") or DEFAULT_CATEGORY["title"]),
                 "review": _card_review_payload(reviews.get(card_id)),
             }
         )
@@ -375,6 +430,7 @@ def flashcard_deck_api_payload(*, deck: FlashcardDeck, user=None) -> dict[str, o
         "source_file": deck.source_file,
         "generated_at": deck.generated_at,
         "card_count": deck.card_count,
+        "categories": list(deck.categories),
         "review_summary": review_summary_for_deck(
             user=user,
             subject_slug=deck.subject_slug,

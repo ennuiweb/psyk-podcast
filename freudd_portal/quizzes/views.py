@@ -2237,7 +2237,7 @@ def flashcard_practice_view(request: HttpRequest, subject_slug: str, deck_slug: 
         "quizzes/flashcard_practice.html",
         {
             "subject": subject,
-            "deck": deck_summary_payload(entry=entry, user=request.user),
+            "deck": deck_summary_payload(entry=entry, deck=deck, user=request.user),
             "card_count": deck.card_count,
             "flashcard_content_url": reverse(
                 "flashcard-content",

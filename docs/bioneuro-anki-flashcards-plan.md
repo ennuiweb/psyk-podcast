@@ -26,6 +26,9 @@ Created: 2026-05-19
 - 2026-05-19: Added non-scheduler navigation features for anki-kort: `Alle`,
   `Ubesvarede`, and `Besvarede` filters, live filter counts, current-card
   answered state, and subject-page progress phrased as `kort besvaret`.
+- 2026-05-19: Added deterministic topic derivation for the imported Anki cards
+  and replaced the broad deck title on the subject page with a compact category
+  preview and category card counts.
 
 ## Goal
 
@@ -103,6 +106,7 @@ Artifact root fields:
 - `source_sha256`
 - `generated_at`
 - `card_count`
+- `categories`
 - `cards`
 
 Card fields:
@@ -115,6 +119,8 @@ Card fields:
 - `source_card_id`
 - `source_ord`
 - `tags`
+- `category_slug`
+- `category_title`
 
 Card id rule:
 
@@ -284,7 +290,7 @@ page.
 
 Show:
 
-- deck title
+- derived topic categories and card counts
 - card count
 - user's reviewed count and confidence summary when logged in
 - CTA: `Oev kort`

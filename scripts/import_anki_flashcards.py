@@ -135,7 +135,366 @@ class ImportedCard:
     source_card_id: str
     source_ord: int
     tags: list[str]
+    category_slug: str
+    category_title: str
     content_sha256: str
+
+
+@dataclass(frozen=True)
+class CategoryRule:
+    slug: str
+    title: str
+    terms: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class CardCategory:
+    slug: str
+    title: str
+
+
+CATEGORY_FALLBACK = CardCategory(slug="grundbegreber", title="Grundbegreber")
+CATEGORY_RULES: tuple[CategoryRule, ...] = (
+    CategoryRule(
+        slug="metoder-og-forskning",
+        title="Metoder og forskning",
+        terms=(
+            "research",
+            "approach",
+            "approaches",
+            "somatic intervention",
+            "behavioral intervention",
+            "correlation",
+            "experiment",
+            "experimental",
+            "method",
+            "methods",
+            "technique",
+            "techniques",
+            "reductionism",
+            "model",
+            "models",
+            "stimulation",
+            "recording",
+            "imaging",
+            "optogenetic",
+            "optogenetics",
+            "halorhodopsin",
+            "channelrhodopsin",
+            "researcher",
+            "researchers",
+            "evidence",
+        ),
+    ),
+    CategoryRule(
+        slug="klinik-og-forstyrrelser",
+        title="Klinik og forstyrrelser",
+        terms=(
+            "schizophrenia",
+            "depression",
+            "anxiety",
+            "disorder",
+            "disorders",
+            "disease",
+            "diseases",
+            "damage",
+            "lesion",
+            "lesions",
+            "patient",
+            "patients",
+            "symptom",
+            "symptoms",
+            "aphasia",
+            "amusia",
+            "parkinson",
+            "huntington",
+            "alzheimer",
+            "autism",
+            "adhd",
+            "dsm-5",
+            "substance use disorder",
+        ),
+    ),
+    CategoryRule(
+        slug="neuroner-og-synapser",
+        title="Neuroner og synapser",
+        terms=(
+            "neuron",
+            "neurons",
+            "glia",
+            "glial",
+            "axon",
+            "axons",
+            "dendrite",
+            "dendrites",
+            "myelin",
+            "membrane",
+            "ion",
+            "ions",
+            "channel",
+            "channels",
+            "action potential",
+            "resting potential",
+            "synapse",
+            "synapses",
+            "synaptic",
+            "presynaptic",
+            "postsynaptic",
+            "neurotransmitter",
+            "neurotransmitters",
+            "receptor",
+            "receptors",
+            "epsp",
+            "ipsp",
+            "vesicle",
+            "vesicles",
+            "transport",
+        ),
+    ),
+    CategoryRule(
+        slug="neurokemi-og-rusmidler",
+        title="Neurokemi og rusmidler",
+        terms=(
+            "drug",
+            "drugs",
+            "substance",
+            "addiction",
+            "tolerance",
+            "withdrawal",
+            "alcohol",
+            "opioid",
+            "opioids",
+            "cocaine",
+            "amphetamine",
+            "nicotine",
+            "cannabis",
+            "thc",
+            "lsd",
+            "agonist",
+            "antagonist",
+            "dopamine",
+            "serotonin",
+            "acetylcholine",
+            "gaba",
+            "glutamate",
+            "peptide",
+            "peptides",
+            "endorphin",
+            "neurochemistry",
+        ),
+    ),
+    CategoryRule(
+        slug="hormoner-og-homeostase",
+        title="Hormoner og homeostase",
+        terms=(
+            "hormone",
+            "hormones",
+            "endocrine",
+            "pituitary",
+            "testosterone",
+            "estrogen",
+            "oestrogen",
+            "androgen",
+            "steroid",
+            "cortisol",
+            "stress",
+            "thyroid",
+            "adrenal",
+            "gland",
+            "glands",
+            "homeostasis",
+            "homeostatic",
+            "temperature",
+            "hunger",
+            "thirst",
+            "hypothalamus",
+            "bloodstream",
+            "releasing hormone",
+        ),
+    ),
+    CategoryRule(
+        slug="sanser-og-perception",
+        title="Sanser og perception",
+        terms=(
+            "sensory",
+            "sensation",
+            "perception",
+            "retina",
+            "vision",
+            "visual",
+            "photoreceptor",
+            "photoreceptors",
+            "rod",
+            "rods",
+            "cone",
+            "cones",
+            "optic",
+            "auditory",
+            "hearing",
+            "cochlea",
+            "sound",
+            "somatosensory",
+            "touch",
+            "pain",
+            "nociceptor",
+            "nociceptors",
+            "olfactory",
+            "smell",
+            "taste",
+            "skin",
+            "receptive field",
+        ),
+    ),
+    CategoryRule(
+        slug="motorik-og-autonom-regulering",
+        title="Motorik og autonom regulering",
+        terms=(
+            "motor",
+            "movement",
+            "muscle",
+            "muscles",
+            "reflex",
+            "spinal reflex",
+            "autonomic",
+            "sympathetic",
+            "parasympathetic",
+            "basal ganglia",
+            "cerebellum",
+            "neural control",
+            "visceral",
+            "fight-or-flight",
+            "rest-and-digest",
+        ),
+    ),
+    CategoryRule(
+        slug="hukommelse-og-kognition",
+        title="Hukommelse og kognition",
+        terms=(
+            "memory",
+            "memories",
+            "learning",
+            "declarative",
+            "nondeclarative",
+            "hippocampus",
+            "amnesia",
+            "language",
+            "aphasia",
+            "broca",
+            "wernicke",
+            "lateralization",
+            "cognitive",
+            "cognition",
+            "attention",
+            "sleep",
+            "circadian",
+            "scn",
+            "suprachiasmatic",
+            "dream",
+            "rem",
+        ),
+    ),
+    CategoryRule(
+        slug="emotion-og-motivation",
+        title="Emotion og motivation",
+        terms=(
+            "emotion",
+            "emotions",
+            "emotional",
+            "fear",
+            "amygdala",
+            "motivation",
+            "motivational",
+            "reward",
+            "pleasure",
+            "appetite",
+            "aggression",
+            "stress response",
+            "sexual behavior",
+            "maternal",
+            "attachment",
+        ),
+    ),
+    CategoryRule(
+        slug="udvikling-og-plasticitet",
+        title="Udvikling og plasticitet",
+        terms=(
+            "development",
+            "developing",
+            "neural tube",
+            "embryonic",
+            "embryo",
+            "neurogenesis",
+            "migration",
+            "differentiation",
+            "synaptogenesis",
+            "cell death",
+            "apoptosis",
+            "growth cone",
+            "sensitive period",
+            "plasticity",
+            "neuroplasticity",
+            "rearrangement",
+            "pruning",
+            "regeneration",
+            "stem cell",
+            "stem cells",
+        ),
+    ),
+    CategoryRule(
+        slug="nervesystemets-opbygning",
+        title="Nervesystemets opbygning",
+        terms=(
+            "central nervous system",
+            "peripheral nervous system",
+            "cns",
+            "pns",
+            "brain region",
+            "spinal cord",
+            "brainstem",
+            "cerebellum",
+            "cerebral",
+            "cortex",
+            "thalamus",
+            "hypothalamus",
+            "hippocampus",
+            "amygdala",
+            "basal ganglia",
+            "lobe",
+            "lobes",
+            "forebrain",
+            "midbrain",
+            "hindbrain",
+            "autonomic nervous system",
+            "sympathetic",
+            "parasympathetic",
+            "reticular",
+            "limbic",
+        ),
+    ),
+    CategoryRule(
+        slug="evolution-og-adfaerd",
+        title="Evolution og adfærd",
+        terms=(
+            "evolution",
+            "evolutionary",
+            "species",
+            "selection",
+            "natural selection",
+            "sexual selection",
+            "adaptation",
+            "adaptive",
+            "gene",
+            "genes",
+            "genetic",
+            "genetics",
+            "heritability",
+            "reproductive",
+            "behavioral neuroscience",
+            "social",
+            "mating",
+        ),
+    ),
+)
 
 
 def sanitize_html(raw_value: str) -> str:
@@ -155,6 +514,25 @@ def html_to_text(raw_value: str) -> str:
 def normalized_text_hash(*values: str) -> str:
     normalized = "\n".join(WHITESPACE_RE.sub(" ", value or "").strip() for value in values)
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def term_score(text: str, term: str) -> int:
+    pattern = rf"(?<![a-z0-9]){re.escape(term.lower())}(?![a-z0-9])"
+    if not re.search(pattern, text):
+        return 0
+    return 2 if " " in term or "-" in term else 1
+
+
+def derive_category(front_text: str, back_text: str) -> CardCategory:
+    text = f"{front_text} {back_text}".lower()
+    best_category = CATEGORY_FALLBACK
+    best_score = 0
+    for rule in CATEGORY_RULES:
+        score = sum(term_score(text, term) for term in rule.terms)
+        if score > best_score:
+            best_score = score
+            best_category = CardCategory(slug=rule.slug, title=rule.title)
+    return best_category
 
 
 def source_sha256(path: Path) -> str:
@@ -250,6 +628,7 @@ def load_cards_from_database(database_path: Path) -> list[ImportedCard]:
         source_card_id = str(row["source_card_id"])
         source_note_id = str(row["source_note_id"])
         content_hash = normalized_text_hash(front_text, back_text)
+        category = derive_category(front_text, back_text)
         imported.append(
             ImportedCard(
                 card_id=f"anki-{source_card_id}",
@@ -260,6 +639,8 @@ def load_cards_from_database(database_path: Path) -> list[ImportedCard]:
                 source_card_id=source_card_id,
                 source_ord=int(row["source_ord"] or 0),
                 tags=[tag for tag in str(row["tags"] or "").split() if tag],
+                category_slug=category.slug,
+                category_title=category.title,
                 content_sha256=content_hash,
             )
         )
@@ -278,6 +659,17 @@ def build_artifact(
     cards: list[ImportedCard],
     collection_member: str,
 ) -> dict[str, Any]:
+    category_counts: dict[tuple[str, str], int] = {}
+    for card in cards:
+        key = (card.category_slug, card.category_title)
+        category_counts[key] = category_counts.get(key, 0) + 1
+    categories = [
+        {"slug": slug, "title": title, "card_count": count}
+        for (slug, title), count in sorted(
+            category_counts.items(),
+            key=lambda item: (-item[1], item[0][1].casefold(), item[0][0]),
+        )
+    ]
     return {
         "version": 1,
         "artifact_type": "freudd_flashcards",
@@ -289,6 +681,7 @@ def build_artifact(
         "source_collection": collection_member,
         "generated_at": zip_generated_at(package_path),
         "card_count": len(cards),
+        "categories": categories,
         "cards": [
             {
                 "card_id": card.card_id,
@@ -299,6 +692,8 @@ def build_artifact(
                 "source_card_id": card.source_card_id,
                 "source_ord": card.source_ord,
                 "tags": card.tags,
+                "category_slug": card.category_slug,
+                "category_title": card.category_title,
                 "content_sha256": card.content_sha256,
             }
             for card in cards

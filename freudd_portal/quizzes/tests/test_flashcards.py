@@ -90,6 +90,8 @@ class AnkiFlashcardImporterTests(SimpleTestCase):
             self.assertEqual(payload["card_count"], 661)
             self.assertEqual(len(payload["cards"]), 661)
             self.assertEqual(len({card["card_id"] for card in payload["cards"]}), 661)
+            self.assertEqual(sum(category["card_count"] for category in payload["categories"]), 661)
+            self.assertTrue(all(card["category_slug"] for card in payload["cards"]))
             self.assertEqual(first.read_text(encoding="utf-8"), second.read_text(encoding="utf-8"))
 
 
@@ -172,6 +174,10 @@ class FlashcardPortalTests(TestCase):
                     "source_sha256": "abc",
                     "generated_at": "2026-05-19T00:00:00Z",
                     "card_count": 2,
+                    "categories": [
+                        {"slug": "grundbegreber", "title": "Grundbegreber", "card_count": 1},
+                        {"slug": "neuroner-og-synapser", "title": "Neuroner og synapser", "card_count": 1},
+                    ],
                     "cards": [
                         {
                             "card_id": "anki-1",
@@ -179,6 +185,8 @@ class FlashcardPortalTests(TestCase):
                             "back_html_sanitized": "<div>Back 1</div>",
                             "back_text": "Back 1",
                             "tags": [],
+                            "category_slug": "grundbegreber",
+                            "category_title": "Grundbegreber",
                             "content_sha256": "one",
                         },
                         {
@@ -187,6 +195,8 @@ class FlashcardPortalTests(TestCase):
                             "back_html_sanitized": "<strong>Back 2</strong>",
                             "back_text": "Back 2",
                             "tags": ["w01"],
+                            "category_slug": "neuroner-og-synapser",
+                            "category_title": "Neuroner og synapser",
                             "content_sha256": "two",
                         },
                     ],
@@ -255,8 +265,10 @@ class FlashcardPortalTests(TestCase):
         self.assertEqual(api.status_code, 200)
         payload = api.json()
         self.assertEqual(payload["card_count"], 2)
+        self.assertEqual(payload["categories"][0]["title"], "Grundbegreber")
         self.assertEqual(payload["cards"][0]["front_text"], "Front 1")
         self.assertEqual(payload["cards"][0]["back_html"], "<div>Back 1</div>")
+        self.assertEqual(payload["cards"][0]["category_title"], "Grundbegreber")
 
     def test_flashcard_review_post_upserts_without_quiz_progress(self) -> None:
         user = self._user()
@@ -296,6 +308,8 @@ class FlashcardPortalTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "anki-kort")
-        self.assertContains(response, "Test Deck")
+        self.assertContains(response, "2 kort fordelt på 2 emner")
+        self.assertContains(response, "Grundbegreber")
+        self.assertContains(response, "Neuroner og synapser")
         self.assertContains(response, "0/2 kort besvaret")
         self.assertContains(response, reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}))

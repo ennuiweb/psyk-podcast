@@ -159,30 +159,107 @@
 
   .flashcard-deck-strip {
     display: grid;
-    gap: 12px;
-    border: 1px solid color-mix(in srgb, var(--border) 86%, transparent);
-    border-radius: var(--radius-md);
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+    border-radius: var(--radius-lg);
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--surface-soft)), var(--surface)),
+      linear-gradient(135deg, color-mix(in srgb, var(--info-bg) 54%, transparent), transparent 38%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, var(--surface-soft)), var(--surface)),
       var(--surface);
-    padding: clamp(14px, 1.5vw, 20px);
+    padding: clamp(16px, 1.7vw, 24px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--border-strong) 18%, transparent);
+  }
+
+  .flashcard-deck-strip::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 48%, var(--border)));
+    opacity: 0.9;
+  }
+
+  .flashcard-deck-strip>* {
+    position: relative;
   }
 
   .flashcard-deck-strip-head {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .flashcard-deck-kicker {
+    margin: 0 0 5px;
+    width: fit-content;
+    min-height: 24px;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--info-bg) 72%, var(--surface));
+    color: var(--info-ink-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .flashcard-deck-kicker .material-symbols-outlined {
+    font-size: 0.98rem;
+    line-height: 1;
   }
 
   .flashcard-deck-strip-title {
     margin: 0;
-    font-family: var(--subject-font-ui);
-    font-size: clamp(0.92rem, 1vw, 1rem);
+    font-family: var(--subject-font-editorial);
+    font-size: clamp(1.25rem, 2vw, 1.72rem);
     font-weight: 700;
-    color: var(--text-strong);
-    text-transform: lowercase;
+    line-height: 1.05;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .flashcard-deck-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 6px;
+    justify-content: end;
+  }
+
+  .flashcard-deck-stat {
+    min-width: 82px;
+    min-height: 44px;
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    border-radius: var(--radius-sub);
+    background: color-mix(in srgb, var(--surface) 78%, var(--surface-soft));
+    display: grid;
+    align-content: center;
+    gap: 1px;
+    padding: 6px 10px;
+  }
+
+  .flashcard-deck-stat-value {
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .flashcard-deck-stat-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.15;
   }
 
   .flashcard-deck-list {
@@ -197,30 +274,33 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 14px;
-    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
-    border-radius: var(--radius-sub);
-    background: color-mix(in srgb, var(--surface-soft) 52%, var(--surface));
-    padding: 12px;
+    gap: 12px;
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 66%, var(--surface-soft));
+    padding: clamp(12px, 1.4vw, 16px);
   }
 
   .flashcard-deck-copy {
     min-width: 0;
     display: grid;
-    gap: 4px;
+    gap: 8px;
   }
 
   .flashcard-deck-title {
     margin: 0;
     color: var(--ink);
-    font-weight: 700;
+    font-family: var(--subject-font-ui);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    font-weight: 800;
     line-height: 1.25;
   }
 
   .flashcard-deck-meta {
     margin: 0;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 600;
     line-height: 1.35;
   }
 
@@ -228,22 +308,24 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
+    gap: 7px;
+    margin-top: 2px;
+    padding-top: 10px;
+    border-top: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
   }
 
   .flashcard-deck-topic {
-    min-height: 28px;
-    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    min-height: 32px;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 62%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 78%, var(--surface-soft));
+    background: color-mix(in srgb, var(--surface) 86%, var(--surface-soft));
     color: var(--text-subtle-2);
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 0 10px;
-    font-size: 0.78rem;
-    font-weight: 700;
+    gap: 8px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+    font-weight: 800;
     line-height: 1;
     white-space: nowrap;
     text-decoration: none;
@@ -252,6 +334,12 @@
       background 160ms ease,
       color 160ms ease,
       transform 160ms ease;
+  }
+
+  .flashcard-deck-topic--all {
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+    background: color-mix(in srgb, var(--info-bg) 68%, var(--surface));
+    color: var(--info-ink-strong);
   }
 
   a.flashcard-deck-topic:hover,
@@ -263,10 +351,18 @@
   }
 
   .flashcard-deck-topic-count {
-    color: var(--muted);
+    min-width: 1.8em;
+    min-height: 1.8em;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--border) 45%, transparent);
+    color: var(--text-subtle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 800;
+    padding: 0 6px;
   }
 
   .subject-path {
@@ -1852,8 +1948,23 @@
     }
 
     .flashcard-deck-strip {
-      padding: 10px;
+      padding: 14px;
       border-radius: 16px;
+    }
+
+    .flashcard-deck-strip-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .flashcard-deck-stat-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      justify-content: stretch;
+      width: 100%;
+    }
+
+    .flashcard-deck-stat {
+      min-width: 0;
     }
 
     .flashcard-deck-row {
@@ -2122,7 +2233,31 @@
   {% if flashcard_decks %}
   <section class="flashcard-deck-strip" aria-label="anki-kort">
     <div class="flashcard-deck-strip-head">
-      <h2 class="flashcard-deck-strip-title">anki-kort</h2>
+      <div>
+        <p class="flashcard-deck-kicker">
+          <span class="material-symbols-outlined" aria-hidden="true">style</span>
+          øvemodul
+        </p>
+        <h2 class="flashcard-deck-strip-title">anki-kort</h2>
+      </div>
+      {% with deck=flashcard_decks.0 %}
+      <div class="flashcard-deck-stat-grid" aria-label="Status for anki-kort">
+        <div class="flashcard-deck-stat">
+          <span class="flashcard-deck-stat-value">{{ deck.card_count }}</span>
+          <span class="flashcard-deck-stat-label">kort</span>
+        </div>
+        <div class="flashcard-deck-stat">
+          <span class="flashcard-deck-stat-value">{{ deck.category_count }}</span>
+          <span class="flashcard-deck-stat-label">emner</span>
+        </div>
+        <div class="flashcard-deck-stat">
+          <span class="flashcard-deck-stat-value">
+            {% if deck.review_summary %}{{ deck.review_summary.reviewed_count }}{% else %}0{% endif %}
+          </span>
+          <span class="flashcard-deck-stat-label">besvaret</span>
+        </div>
+      </div>
+      {% endwith %}
     </div>
     <ul class="flashcard-deck-list">
       {% for deck in flashcard_decks %}
@@ -2140,7 +2275,8 @@
           {% endif %}
           {% if deck.categories %}
           <div class="flashcard-deck-topic-list" aria-label="Emner i {{ deck.title }}">
-            <a class="flashcard-deck-topic" href="{{ deck.practice_url }}" aria-label="Øv alle kort">
+            <a class="flashcard-deck-topic flashcard-deck-topic--all" href="{{ deck.practice_url }}"
+              aria-label="Øv alle kort">
               Alle
               <span class="flashcard-deck-topic-count">{{ deck.card_count }}</span>
             </a>

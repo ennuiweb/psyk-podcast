@@ -14,6 +14,7 @@
 ## Repo-local Rules
 
 - Always deploy after implementing changes; implementation is not complete until the required deploy step has succeeded.
+- Finished work should land on `main`: when a task is complete, commit the intended changes on `main` or merge/rebase the completed branch back to `main`, then push `main`, unless Oskar explicitly asks for a different branch workflow.
 - `freudd_portal` changes: deploy to `freudd-portal` as the final step.
 - Podcast repo changes:
   - queue-owned publication/runtime changes: commit + push, deploy the relevant host/runtime, and run the required queue or service smoke checks

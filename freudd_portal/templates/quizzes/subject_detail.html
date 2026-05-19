@@ -159,26 +159,26 @@
 
   .flashcard-deck-strip {
     display: grid;
-    gap: 14px;
+    gap: 16px;
     position: relative;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
-    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+    border-radius: var(--radius-md);
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--info-bg) 54%, transparent), transparent 38%),
-      linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, var(--surface-soft)), var(--surface)),
+      linear-gradient(90deg, color-mix(in srgb, var(--info-bg) 58%, transparent), transparent 44%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--surface-soft)), var(--surface)),
       var(--surface);
-    padding: clamp(16px, 1.7vw, 24px);
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--border-strong) 18%, transparent);
+    padding: clamp(16px, 1.8vw, 22px) clamp(16px, 2vw, 26px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--border-strong) 12%, transparent);
   }
 
   .flashcard-deck-strip::before {
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
-    width: 5px;
-    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 48%, var(--border)));
-    opacity: 0.9;
+    width: 4px;
+    background: var(--accent);
+    opacity: 0.82;
   }
 
   .flashcard-deck-strip>* {
@@ -187,10 +187,10 @@
 
   .flashcard-deck-strip-head {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
     justify-content: space-between;
-    gap: 14px;
+    gap: 10px;
   }
 
   .flashcard-deck-kicker {
@@ -229,35 +229,36 @@
   }
 
   .flashcard-deck-stat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 6px;
-    justify-content: end;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    justify-content: flex-start;
   }
 
   .flashcard-deck-stat {
-    min-width: 82px;
-    min-height: 44px;
-    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-    border-radius: var(--radius-sub);
-    background: color-mix(in srgb, var(--surface) 78%, var(--surface-soft));
-    display: grid;
-    align-content: center;
-    gap: 1px;
-    padding: 6px 10px;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    padding: 0;
   }
 
   .flashcard-deck-stat-value {
     color: var(--ink);
     font-family: var(--font-mono);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 800;
     line-height: 1;
   }
 
   .flashcard-deck-stat-label {
     color: var(--muted);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 700;
     line-height: 1.15;
   }
@@ -267,31 +268,31 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 10px;
+    gap: 0;
   }
 
   .flashcard-deck-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 12px;
-    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface) 66%, var(--surface-soft));
-    padding: clamp(12px, 1.4vw, 16px);
+    gap: 10px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
   }
 
   .flashcard-deck-copy {
     min-width: 0;
     display: grid;
-    gap: 8px;
+    gap: 7px;
   }
 
   .flashcard-deck-title {
     margin: 0;
     color: var(--ink);
     font-family: var(--subject-font-ui);
-    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    font-size: clamp(0.98rem, 1.15vw, 1.08rem);
     font-weight: 800;
     line-height: 1.25;
   }
@@ -309,9 +310,9 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 7px;
-    margin-top: 2px;
-    padding-top: 10px;
-    border-top: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
+    margin-top: 6px;
+    padding-top: 0;
+    border-top: 0;
   }
 
   .flashcard-deck-topic {
@@ -452,6 +453,50 @@
 
   .subject-path-layout.is-rail-hidden .lecture-rail {
     display: none;
+  }
+
+  .lecture-switcher {
+    display: none;
+  }
+
+  .lecture-switcher-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .lecture-switcher-link {
+    min-height: 44px;
+    min-width: 76px;
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
+    background: color-mix(in srgb, var(--surface) 88%, var(--surface-soft));
+    color: var(--text-subtle-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-3);
+    font-family: var(--subject-font-ui);
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .lecture-switcher-item.is-active .lecture-switcher-link {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 80%, var(--surface));
+    color: var(--accent-strong);
+  }
+
+  .lecture-switcher-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
   }
 
   .lecture-rail {
@@ -744,12 +789,13 @@
   }
 
   .lecture-section {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--subject-space-block);
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: 0;
+    padding: var(--subject-space-block) 0 0;
     display: grid;
     gap: var(--subject-space-tight);
-    background: color-mix(in srgb, var(--surface) 88%, var(--surface-soft));
+    background: transparent;
   }
 
   .lecture-section-head {
@@ -925,9 +971,9 @@
   }
 
   .slide-group {
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
     border-radius: var(--radius-sub);
-    background: var(--surface);
+    background: color-mix(in srgb, var(--surface) 72%, var(--surface-soft));
     padding: var(--space-3);
     display: grid;
     gap: var(--space-2);
@@ -1014,9 +1060,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sub);
-    background: var(--surface);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
 
   .podcast-row {
@@ -1349,9 +1395,9 @@
   }
 
   .reading-card {
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
     border-radius: var(--radius-sub);
-    background: var(--surface);
+    background: color-mix(in srgb, var(--surface) 82%, var(--surface-soft));
     padding: clamp(24px, 2vw, 32px);
     display: grid;
     gap: clamp(16px, 1.4vw, 24px);
@@ -1689,78 +1735,18 @@
     }
 
     .subject-path-layout {
-      grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--space-3);
     }
 
-    .lecture-rail {
-      padding-top: 10px;
-    }
-
-    .lecture-rail-list {
-      gap: 0;
-    }
-
-    .lecture-rail-item {
-      min-height: 72px;
-      grid-template-columns: 20px minmax(0, 1fr);
-      column-gap: 8px;
-      justify-content: start;
-    }
-
-    .lecture-rail-item::after {
-      top: 16px;
-      left: 10px;
-      bottom: 0;
-      width: 2px;
-      background: color-mix(in srgb, var(--border-strong) 80%, #d8cab2);
-    }
-
-    .lecture-rail-item:last-child::after {
-      display: block;
-      bottom: -34px;
-      opacity: 0.8;
-    }
-
-    .lecture-rail-copy {
+    .lecture-rail,
+    .lecture-rail-copy,
+    .lecture-rail-mobile-copy {
       display: none;
     }
 
-    .lecture-rail-mobile-copy {
+    .lecture-switcher {
       display: block;
-      align-self: start;
-      max-width: 44px;
-      font-size: clamp(0.54rem, 1.2vw, 0.66rem);
-    }
-
-    .lecture-rail-mobile-copy:hover,
-    .lecture-rail-mobile-copy:focus-visible {
-      color: #7f8ea2;
-    }
-
-    .lecture-rail-mobile-copy:focus-visible {
-      outline: 2px solid color-mix(in srgb, var(--accent) 34%, transparent);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    .lecture-rail-link {
-      box-shadow: none;
-      width: 14px;
-      height: 14px;
-      border-color: color-mix(in srgb, var(--border-strong) 92%, #c5b494);
-      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
-    }
-
-    .lecture-rail-item.is-past .lecture-rail-link,
-    .lecture-rail-item.is-completed .lecture-rail-link {
-      border-color: var(--accent);
-      background: color-mix(in srgb, var(--surface) 96%, #fff9ef);
-    }
-
-    .lecture-rail-item.is-active .lecture-rail-link {
-      border-color: var(--accent);
-      background: var(--accent);
     }
 
     .active-lecture-card {
@@ -1827,9 +1813,6 @@
     }
 
     .lecture-section {
-      border-radius: 28px;
-      border-color: #e2e5ed;
-      background: #fdfdff;
       padding: clamp(14px, 2vw, 22px);
     }
 
@@ -1958,13 +1941,8 @@
     }
 
     .flashcard-deck-stat-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       justify-content: stretch;
       width: 100%;
-    }
-
-    .flashcard-deck-stat {
-      min-width: 0;
     }
 
     .flashcard-deck-row {
@@ -1974,32 +1952,8 @@
     }
 
     .subject-path-layout {
-      grid-template-columns: 54px minmax(0, 1fr);
-      gap: 4px;
-    }
-
-    .lecture-rail-item {
-      min-height: 44px;
-      grid-template-columns: 14px minmax(0, 1fr);
-      column-gap: 5px;
-    }
-
-    .lecture-rail-item::after {
-      left: 7px;
-      top: 14px;
-      width: 2px;
-    }
-
-    .lecture-rail-link {
-      width: 14px;
-      height: 14px;
-      font-size: 0;
-      line-height: 1;
-    }
-
-    .lecture-rail-mobile-copy {
-      max-width: 35px;
-      font-size: 0.53rem;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
     }
 
     .active-lecture-card {
@@ -2014,7 +1968,6 @@
 
     .lecture-section {
       padding: 10px;
-      border-radius: 16px;
       gap: 8px;
     }
 
@@ -2113,33 +2066,6 @@
     body.page-subject-detail .page-shell {
       padding:
         8px max(6px, env(safe-area-inset-left)) calc(84px + env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-right));
-    }
-
-    .subject-path-layout {
-      grid-template-columns: 48px minmax(0, 1fr);
-      gap: 1px;
-    }
-
-    .lecture-rail-item {
-      min-height: 40px;
-      grid-template-columns: 12px minmax(0, 1fr);
-      column-gap: 4px;
-    }
-
-    .lecture-rail-item::after {
-      left: 6px;
-      top: 12px;
-      width: 2px;
-    }
-
-    .lecture-rail-link {
-      width: 12px;
-      height: 12px;
-    }
-
-    .lecture-rail-mobile-copy {
-      max-width: 30px;
-      font-size: 0.5rem;
     }
 
     .active-lecture-card {
@@ -2312,6 +2238,19 @@
         <span class="subject-path-toggle-label" data-subject-rail-toggle-label>Skjul tidslinje</span>
       </button>
     </div>
+    <nav class="lecture-switcher" aria-label="Vælg forelæsning">
+      <ol class="lecture-switcher-list">
+        {% for rail in lecture_rail_items %}
+        <li class="lecture-switcher-item {% if rail.is_active %}is-active{% endif %}">
+          <a class="lecture-switcher-link" href="{{ rail.lecture_url }}"
+            {% if rail.requires_login %}data-login-required="true" data-login-url="{{ rail.login_url }}"{% endif %}
+            aria-current="{% if rail.is_active %}step{% else %}false{% endif %}">
+            {{ rail.mobile_rail_label|default:rail.lecture_display_label|default:rail.index }}
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </nav>
 
     <div class="subject-path-layout" data-subject-path-layout>
       <aside class="lecture-rail" id="subject-lecture-rail" data-subject-lecture-rail aria-label="Forelæsningsforløb">

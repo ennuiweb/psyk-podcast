@@ -42,6 +42,9 @@ Created: 2026-05-19
   answers. Learners can practise all cards or a single derived topic category;
   logged-in users' `Skriv svar` text is saved separately from
   `FlashcardReview`, while anonymous preview answers remain browser-only.
+- 2026-05-19: Made subject-page topic chips direct entry points into scoped
+  practice via `?category=<category_slug>`, with `Øv alle` kept as the
+  all-cards entry point.
 
 ## Goal
 
@@ -86,7 +89,8 @@ On `/subjects/bioneuro`, the learner sees a compact `anki-kort` entry point
 for the imported deck. Opening it starts a focused practice flow:
 
 1. choose `Alle`, `Ubesvarede`, or `Besvarede`
-2. optionally scope the session to all cards or one derived topic category
+2. optionally open all cards or start directly from a subject-page topic chip
+   scoped to one derived topic category
 3. show card front plus `Ikke vurderet endnu` or `Vurderet: <rating>` state
 4. learner optionally opens `Skriv svar` and writes a self-check answer
 5. learner clicks `Vis svar`

@@ -74,11 +74,12 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Flashcard decks are surfaced as `anki-kort`, outside `Quiz for alle kilder`,
   because they are self-rated open-recall cards rather than scored multiple-choice
   quizzes. Imported decks carry deterministic topic categories derived from card
-  text; the subject page previews those topics with card counts. The practice
-  page can be scoped to all cards or a single topic category, then filtered by
-  `Alle`, `Ubesvarede`, and `Besvarede`, using `FlashcardReview` rows as the
-  answered state for logged-in users. The card flow shows the front first, offers
-  an optional `Skriv svar` self-check field, then reveals the sanitized answer and
+  text; the subject page shows those topics with card counts, and each topic
+  chip opens practice scoped to that category. The practice page can be scoped to
+  all cards or a single topic category, then filtered by `Alle`, `Ubesvarede`,
+  and `Besvarede`, using `FlashcardReview` rows as the answered state for
+  logged-in users. The card flow shows the front first, offers an optional
+  `Skriv svar` self-check field, then reveals the sanitized answer and
   `Igen`/`Svaert`/`Godt`/`Let` self-rating controls. Written self-check answers
   are saved for logged-in users only and stay separate from the rating/progress
   state. Anonymous learners can open the practice page and card API in preview

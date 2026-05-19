@@ -246,6 +246,20 @@
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
+    text-decoration: none;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  a.flashcard-deck-topic:hover,
+  a.flashcard-deck-topic:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 54%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
+    color: var(--info-ink-strong);
+    transform: translateY(-1px);
   }
 
   .flashcard-deck-topic-count {
@@ -2149,23 +2163,19 @@
           {% else %}
           <p class="flashcard-deck-meta">{{ deck.card_count }} kort</p>
           {% endif %}
-          {% if deck.category_preview %}
+          {% if deck.categories %}
           <div class="flashcard-deck-topic-list" aria-label="Emner i {{ deck.title }}">
-            {% for category in deck.category_preview %}
-            <span class="flashcard-deck-topic">
+            {% for category in deck.categories %}
+            <a class="flashcard-deck-topic" href="{{ deck.practice_url }}?category={{ category.slug|urlencode }}"
+              aria-label="Øv {{ category.title }}">
               {{ category.title }}
               <span class="flashcard-deck-topic-count">{{ category.card_count }}</span>
-            </span>
+            </a>
             {% endfor %}
-            {% if deck.extra_category_count %}
-            <span class="flashcard-deck-topic">
-              +{{ deck.extra_category_count }} emner
-            </span>
-            {% endif %}
           </div>
           {% endif %}
         </div>
-        <a class="flashcard-deck-action" href="{{ deck.practice_url }}">Øv kort</a>
+        <a class="flashcard-deck-action" href="{{ deck.practice_url }}">Øv alle</a>
       </li>
       {% endfor %}
     </ul>

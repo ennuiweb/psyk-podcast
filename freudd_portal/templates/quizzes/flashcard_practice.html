@@ -693,6 +693,7 @@
     const reviewUrl = "{{ flashcard_review_url|escapejs }}";
     const answerUrl = "{{ flashcard_answer_url|escapejs }}";
     const previewMode = {{ flashcard_preview_mode|yesno:"true,false" }};
+    const initialCategorySlug = new URLSearchParams(window.location.search).get("category") || "all";
 
     const loadingNode = document.getElementById("flashcard-loading");
     const errorNode = document.getElementById("flashcard-error");
@@ -912,11 +913,32 @@
       categorySelectNode.disabled = categories.length <= 0;
     }
 
+    function applyInitialCategory() {
+      const requestedCategory = String(initialCategorySlug || "").trim();
+      const categoryExists = categories.some((category) => category.slug === requestedCategory);
+      if (requestedCategory && requestedCategory !== "all" && categoryExists) {
+        currentCategory = requestedCategory;
+        return;
+      }
+      currentCategory = "all";
+    }
+
+    function syncCategoryUrl() {
+      const url = new URL(window.location.href);
+      if (currentCategory === "all") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", currentCategory);
+      }
+      window.history.replaceState(null, "", url);
+    }
+
     function setCategory(nextCategory) {
       currentCategory = nextCategory || "all";
       currentIndex = 0;
       showingAnswer = false;
       isComplete = false;
+      syncCategoryUrl();
       render();
     }
 
@@ -1143,6 +1165,7 @@
       const payload = await response.json();
       allCards = Array.isArray(payload.cards) ? payload.cards : [];
       categories = normalizeCategories(payload.categories);
+      applyInitialCategory();
       populateCategorySelect();
       loadingNode.classList.add("is-hidden");
       stageNode.classList.remove("is-hidden");

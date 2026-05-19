@@ -69,7 +69,8 @@ persist self-ratings in `FlashcardReview` and written self-check answers in
 `FlashcardUserAnswer`; anonymous preview users can practise cards but do not
 persist ratings or written answers. The practice UI supports all cards or one
 derived topic category, then `Alle`/`Ubesvarede`/`Besvarede` filters inside that
-scope.
+scope. Subject-page topic chips link directly into the same practice page with a
+`?category=<category_slug>` deep link.
 
 Migration note:
 

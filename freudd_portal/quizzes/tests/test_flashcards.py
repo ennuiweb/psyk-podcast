@@ -289,6 +289,7 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, 'id="flashcard-category-filter"')
         self.assertContains(page, "Alle emner")
         self.assertContains(page, "const answerUrl =")
+        self.assertContains(page, "const initialCategorySlug =")
         self.assertContains(page, 'id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden"')
         self.assertContains(page, 'id="flashcard-answer" class="flashcard-answer is-hidden"')
         self.assertContains(page, "Vis svar")
@@ -408,6 +409,9 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(response, "Grundbegreber")
         self.assertContains(response, "Neuroner og synapser")
         self.assertContains(response, "0/2 kort besvaret")
+        self.assertContains(response, "Øv alle")
+        self.assertContains(response, "?category=grundbegreber")
+        self.assertContains(response, "?category=neuroner-og-synapser")
         self.assertContains(
             response,
             reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}),

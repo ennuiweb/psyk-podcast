@@ -331,7 +331,9 @@ Implemented:
 - `Skriv svar` is an explicit toggle for the self-check text area
 - rating buttons use equal, predictable touch targets with difficulty-specific
   visual treatment
-- learners can scope practice to all cards or one topic category before applying
+- subject-page topic chips open practice directly in that category, while
+  `Øv alle` remains the all-cards entry point
+- learners can still change the practice scope before applying
   `Alle`/`Ubesvarede`/`Besvarede`
 
 Recommended direction:
@@ -440,4 +442,4 @@ this file should stay a current map, not a full changelog.
 | Date | Status | Entry |
 |---|---|---|
 | 2026-05-19 | Baseline | Combined frontend and interface-design audits into this tracker. |
-| 2026-05-19 | Completed | Flashcard controls now have intentional answer reveal, optional typed-answer toggle, topic scoping, and polished rating controls. |
+| 2026-05-19 | Completed | Flashcard controls now have intentional answer reveal, optional typed-answer toggle, subject-page topic entry points, in-view topic scoping, and polished rating controls. |

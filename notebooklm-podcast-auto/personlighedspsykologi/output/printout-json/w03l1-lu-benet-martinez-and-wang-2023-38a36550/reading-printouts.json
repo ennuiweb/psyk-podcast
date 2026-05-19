@@ -1,0 +1,1163 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T13:37:11Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "83c1d6fd3ff8c20fe0c1aef984f5ae166ecd877b5169f44a7341f5a945163080",
+    "source_files_signature": "29d0f098f4420a73ffbd9fc2f2ec74567d19c8d0057fcab2946a8b1eeb0ede46",
+    "source_card": "ed1a369d4f93a39197e885b9091357a43516ebfab767c34bb01a681525369c28",
+    "revised_lecture_substrate": "451f4526eb33e5089c24447eb6068b0f961af1ebaedd38ceb42a933ee21b2103",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+    "lecture_key": "W03L1",
+    "title": "Lu, Benet-Martínez & Wang (2023)",
+    "reading_title": "Lu, Benet-Martínez & Wang (2023)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 28,
+    "estimated_token_count": 18200,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W3L1 Culture, evolution, genetics, and personality/W3L1 Lu, Benet-Martínez & Wang (2023).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 28,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "lecture_key": "W03L1",
+      "source_title": "Lu, Benet-Martínez & Wang (2023)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "Forestil dig et \"arrangeret ægteskab\" mellem to gigantiske forskningsfelter. Psykologer har længe studeret kultur og personlighed hver for sig, men de to discipliner taler historisk set forbløffende lidt sammen.",
+        "Det skaber et fundamentalt forklaringsproblem i videnskaben. Hvordan kan vi nogensinde forstå de systematiske forskelle i menneskers *individual meaning systems*, hvis vi flår dem ud af det *collective meaning system*, de er indlejret i?",
+        "Lu og kolleger tvinger felterne til bordet ved at indføre en uventet tredjepart: socioøkologien. Teksten flytter fokus fra løse antagelser til *objective variables measured with scientific units* såsom infektionstryk, temperatur og befolkningstæthed.",
+        "Pludselig er kultur ikke bare et svævende og indre fænomen. Det er kollektivets overlevelsesstrategi mod konkrete fysiske trusler, en strategi, der med tiden former, hvilke træk der er mest tilpasningsdygtige.",
+        "Mysteriet i teksten spidser for alvor til, når forfatterne kobler dette til genetik. Hvis klimaet dikterer kulturen, og kulturen *moderates genetic influences* i individet, giver det så overhovedet længere mening at tale om biologi som en skæbne?",
+        "Din opgave i denne læsning er at kortlægge præcis, hvordan det omgivende miljø griber mekanisk ind i kødet, og hvordan teorien dekonstruerer forestillingen om en fastfrosset genetisk essens."
+      ],
+      "main_problem": "Hvordan arbejder genetik, kultur og objektive fysiske miljøer (socioøkologi) sammen om at producere og konstant ændre menneskets personlighedstræk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?",
+          "why_it_matters": "Gør det muligt at forstå miljøet som to separate systemer, der opererer med forskellig hastighed.",
+          "answer_form": "1-2 sætninger,"
+        },
+        {
+          "number": 2,
+          "question": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?",
+          "why_it_matters": "Det er selve kernefænomenet: at intet er statisk, men fanget i en uendelig feedback-sløjfe.",
+          "answer_form": "Kort beskrivelse af mekanismens to retninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?",
+          "why_it_matters": "Det er tekstens mest konkrete eksempel på, at miljøet skaber evolutionært pres på personligheden.",
+          "answer_form": "En kort årsagsforklaring"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor afviser teksten debatten om 'arv versus miljø'?",
+          "why_it_matters": "Det baner vejen for interaktionisme, hvilket er kursens store faglige overgang.",
+          "answer_form": "Formlen"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken biologisk disciplin bruger teksten til at hævde, at kultur kan ændre selve genetikken?",
+          "why_it_matters": "Det udgør det endelige opgør med biologisk determinisme i kurset.",
+          "answer_form": "Et specifikt fagligt begreb"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets mest avancerede naturvidenskabelige tekst. Den udgør det altafgørende brohoved mellem den klassiske, biologiske trækpsykologi og det næste store teoriskift i faget: den kritiske og sociokulturelle psykologi. Hvis du forstår, at selv biologien i dag betragtes som kontekstafhængig og interaktiv, har du nøglen til at analysere 'Determination' og 'Essence vs. Context' i alt, hvad der følger.",
+      "overview": [
+        "Teksten fremlægger en integreret socioøkologisk-genetisk model for kultur og personlighed.",
+        "Kultur, biologi og fysiske trusler påvirker løbende og uundgåeligt hinanden i kausale loops.",
+        "Epigenetik præsenteres som mekanismen, der lader makromiljøet omprogrammere individets genetiske maskinrum."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (Introduktion og definitioner)",
+          "task": "Sæt rammen og definer de fire hjørnesten: kultur, socioøkologi, personlighed og genetik.",
+          "why_it_matters": "For at forstå modellen må vokabulariet være krystalklart.",
+          "stop_signal": "Når du forstår forskellen på subjektiv kultur og objektiv økologi"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3-4 (Framework og Mutual Constitution)",
+          "task": "Læs hvordan kultur former individer, og individer i flok skaber kultur.",
+          "why_it_matters": "Det bryder med idéen om én-vejs årsagssammenhænge.",
+          "stop_signal": "Når du har fanget betydningen af det endeløse loop"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 5 (Socioecology)",
+          "task": "Find beviset for, at temperatur og sygdom tvinger befolkninger til bestemte kulturelle strategier.",
+          "why_it_matters": "Viser hvordan træk er overlevelsesmekanismer frem for bare iboende stilarter.",
+          "stop_signal": "Når logikken for smittetrykkets påvirkning er tydelig"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 6-7 (Genes og interaktion)",
+          "task": "Kortlæg argumentet for, hvorfor 'Nature x Nurture' erstatter det gamle 'versus'.",
+          "why_it_matters": "Centralt for hele kursets opgør med statiske essenser.",
+          "stop_signal": "Når du kan forklare, at miljøet modererer geners udtryk"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 8 (Epigenetics)",
+          "task": "Forstå forfatternes mest radikale forslag: at miljøet omkoder DNA-aflæsningen permanent.",
+          "why_it_matters": "Det binder alting endeligt og uopløseligt sammen.",
+          "stop_signal": "Når du når til Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "measured with scientific units",
+          "why": "Definerer grænsen for den stringente socioøkologi.",
+          "where_to_look": "Afsnit om definitioner."
+        },
+        {
+          "target": "probabilistic and plural rather than deterministic",
+          "why": "Beskriver nøjagtigt kulturens kraft; den fastlåser ikke, men den skubber til sandsynligheder.",
+          "where_to_look": "Sektionen om Mutual Constitution."
+        },
+        {
+          "target": "numerous genes of minuscule effect",
+          "why": "Afliver myten om, at der findes ét gen for ét personlighedstræk.",
+          "where_to_look": "Sektionen om geners indflydelse."
+        },
+        {
+          "target": "gene related is immutable",
+          "why": "Det er præcis den falske antagelse, forfatterne vil rive ned med epigenetikken.",
+          "where_to_look": "Sektionen om genudtryk og epigenetik."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Listerne af specifikke gener (f.eks. DRD4 eller HTR2A); fang princippet frem for forkortelserne.",
+        "Statistisk detaljegrad i populationsstudierne og beregning af co-varians.",
+        "De mange specifikke underteorier for kulturudvikling (fx frontier settlement theory) – brug dem kun som eksempler."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Afsnit om definitioner.",
+          "excerpt": "measured with scientific units",
+          "open_question": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om Mutual Constitution.",
+          "excerpt": "probabilistic and plural rather than deterministic",
+          "open_question": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om geners indflydelse.",
+          "excerpt": "numerous genes of minuscule effect",
+          "open_question": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektionen om genudtryk og epigenetik.",
+          "excerpt": "gene related is immutable",
+          "open_question": "Hvorfor afviser teksten debatten om 'arv versus miljø'?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er en forkortet gennemgang af kildetekstens hovedargumenter.",
+      "coverage_note": "Fungerer som din offline basecamp. Løs Active Reading og Consolidation ud fra denne tekst.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 2",
+          "heading": "Den objektive rod: Hvad er socioøkologi?",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At adskille menneskets indre værdier fra de uundgåelige fysiske naturlove udenfor?",
+          "explanation_paragraphs": [
+            "For at bygge deres store model er forfatterne nødt til at rense brættet og adskille ting, vi normalt blander sammen. De trækker en hård streg mellem 'kultur' og 'socioøkologi'.",
+            "Kultur defineres her som systemer af fælles symboler, overbevisninger og normer. Det er i sin kerne subjektivt. Socioøkologi refererer derimod til samfundets objektive socioøkonomiske og økologiske omstændigheder. Socioøkologi er alt det, der kan eksistere uden at et menneske fortolker det.",
+            "Ved at isolere de målbare vilkår – som for eksempel klima, sygdomstryk og økonomisk udviklingsgrad – fra selve kulturen, gør forfatterne det muligt at undersøge, om det fysiske miljø i virkeligheden udgør rodårsagen til de værdier, en befolkning ender med at udvikle."
+          ],
+          "key_points": [
+            "Kultur er subjektive, delte systemer af mening.",
+            "Socioøkologi dækker over objektive vilkår (klima, trusler, ressourcer).",
+            "Socioøkologi kan måles eksakt med videnskabelige enheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "measured with scientific units",
+              "why_it_matters": "Understreger kravet om objektivitet i socioøkologisk forskning.",
+              "source_location": "Sektion 2.2"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2.2",
+              "passage": "Socioecological variables are objective variables measured with scientific units (...) By contrast, cultural variables are subjective.",
+              "why_it_matters": "Sætter den fundamentale skillelinje op mellem objektivitet og subjektivitet i modellen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 4",
+          "heading": "Den evige rundkørsel: Gensidig konstituering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At fastslå, hvorfor kultur hverken kan reduceres til biologi eller omvendt?",
+          "explanation_paragraphs": [
+            "Lu og kolleger fastholder, at personlighed og kultur befinder sig i en konstant cyklus. Modellen kaldes \"Mutual Constitution\". Kulturen leverer den specifikke form og kontekst, et individs følelser og kognition støbes i.",
+            "Men påvirkningen er ikke en diktatorisk ensrettet proces. Kulturen farver individet gennem sandsynligheder, ikke tvang. Forskellige mennesker inkorporerer kulturelle normer med enorm variation afhængigt af deres biologiske temperament.",
+            "Når mange mennesker med bestemte personlighedstræk klumper sig sammen og agerer, farver deres samlede sum på sigt det fælles kulturelle klima. Det er en transaktion: Kulturen former individet, og kollektivet af individer ændrer langsomt kulturen."
+          ],
+          "key_points": [
+            "Kultur og personlighed skaber hinanden i et endeløst loop.",
+            "Kulturel indflydelse hæver sandsynligheden for bestemte træk; den er ikke deterministisk.",
+            "Aggregerede personlighedsprofiler påvirker de systemer, samfundet opbygger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "probabilistic and plural rather than deterministic",
+              "why_it_matters": "Fastholder et handlerum for individet uafhængigt af den kulturelle formning.",
+              "source_location": "Sektion 4.1"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 5",
+          "heading": "Sygdom og kulde: Miljøets diktat",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At bevise, hvordan brutale fysiske vilkår direkte former befolkningers adfærdsmønstre?",
+          "explanation_paragraphs": [
+            "Modellen indsætter nu socioøkologien som en dybereliggende årsag. Forestil dig et samfund i et område med ekstremt højt smittetryk fra parasitter og vira (pathogen prevalence).",
+            "For at gruppen skal overleve dette objektive miljøkrav, tvinges de adfærdsmæssigt mod kollektivisme (streng konformitet og loyalitet), fordi eksperimenter og brud på rutiner risikerer at sprede sygdom. På individniveau betyder det en reduktion i 'openness' og 'extraversion', da hyppig kontakt med fremmede er livsfarlig.",
+            "Når et lavt smittetryk i stedet gør det ufarligt at omgås mange forskellige grupper, kan evolutionen tillade, at befolkningen fremelsker individualisme og høj grad af udadvendthed."
+          ],
+          "key_points": [
+            "Socioøkologiske realiteter gennemtvinger adfærdsmæssige overlevelsesstrategier.",
+            "Højt smittetryk fordrer lukkethed og konformitet (kollektivisme).",
+            "Klima og sygdom er en bagvedliggende 'tredje variabel', der forklarer meget af variationen i træk."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion 5.1.1",
+              "passage": "When pathogen prevalence is low and nonthreatening, individualism may be adaptive because its behavioral manifestations (e.g., need for uniqueness) can facilitate desirable outcomes such as innovations.",
+              "why_it_matters": "Illustrerer klart, hvordan adfærdstræk direkte følger miljøets krav til overlevelse og innovation."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 7",
+          "heading": "At knuse arv-mod-miljø-myten",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At aflive idéen om, at et gen nødvendigvis udløser den samme personlighed i alle miljøer?",
+          "explanation_paragraphs": [
+            "Når genetikkens indflydelse på personlighed undersøges, begår man ofte den fejl at sætte 'natur' og 'opvækst' op imod hinanden i et nulsumsspil. Forfatterne argumenterer i stedet for ægte interaktionisme: Nature × Nurture.",
+            "Det betyder ganske enkelt, at et gen kan udgøre en tilbøjelighed (en receptor-sensitivitet), men styrken eller selve retningen af denne tilbøjelighed afhænger 100 procent af det kulturelle og socioøkologiske rum, genet befinder sig i.",
+            "To personer med nøjagtig samme genetiske arkitektur kan udvikle vidt forskellige personlighedstræk, fordi det specifikke makromiljø bestemmer, om, hvordan og hvornår et gen oversættes til en adfærd."
+          ],
+          "key_points": [
+            "Arv og miljø skal ikke opvejes; de fungerer kun som hinandens multiplikatorer (G × E).",
+            "Kultur modererer effekten af den genetiske sårbarhed.",
+            "Gener dikterer ikke bestemte fænotyper alene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "being in the same environment may predict different outcomes",
+              "why_it_matters": "Sammenfatter den dobbeltsidede interaktionisme på tværs af gener og kultur.",
+              "source_location": "Sektion 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 8",
+          "heading": "Epigenetik: Når kulturen ændrer dit DNA-aflæs",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At fastslå tekstens mest radikale påstand om den omvendte kausalitet?",
+          "explanation_paragraphs": [
+            "Modellens allersidste trin dekonstruerer enhver idé om en fastlåst biologisk essens. De inddrager epigenetikken: studiet af, hvordan ydre omstændigheder kan tænde eller slukke for aflæsningen af vores DNA, uden at selve DNA-sekvensen ændres.",
+            "Forfatterne argumenterer for, at langvarig eksponering for særlige kulturelle eller socioøkologiske vilkår (for eksempel stærkt pres for overlevelse eller traumer) systematisk kan modificere, hvilke gener der slås til og fra.",
+            "Det mest bemærkelsesværdige er, at de foreslår personligheden som bindeleddet. Det gigantiske kulturtryk ændrer individets vaner og psykologi, og disse langvarige personlighedsmønstre forplanter sig helt ned i cellerne, hvor de omskriver genernes funktionalitet."
+          ],
+          "key_points": [
+            "Epigenetik muliggør biokemiske ændringer styret udefra.",
+            "Miljøændringer omkoder, hvordan de eksisterende gener udtrykkes.",
+            "DNA-sekvensen er fast, men gen-udtrykket er ekstremt formbart i konteksten."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "depart from the common assumption that anything that is gene related is",
+              "why_it_matters": "Fastholder historicitet og kontekstualisering helt ned på genniveau.",
+              "source_location": "Sektion 8"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 sætninger,",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort beskrivelse af mekanismens to retninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort årsagsforklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvorfor afviser teksten debatten om 'arv versus miljø'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Formlen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvilken biologisk disciplin bruger teksten til at hævde, at kultur kan ændre selve genetikken?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et specifikt fagligt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan arbejder genetik, kultur og objektive fysiske miljøer (socioøkologi) sammen om at producere og konstant ændre menneskets personlighedstræk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv nu at genkalde modellens begreber fra hukommelsen. Læg Abridged Reader væk, mens du udfylder de manglende felter. Reparer først med arket bagefter, hvis du sidder fast.",
+      "overview": [
+        "Socioøkologi leverer de brutale naturvidenskabelige rammer, der tvinger en gruppe til en overlevelsesstrategi.",
+        "Kultur og personlighed låser sig fast i hinanden gennem et endeløst transaktionelt kredsløb.",
+        "Vores biologi er ikke en fast og uigenkaldelig skæbne, fordi miljøet regulerer, hvordan genet læses."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når teksten analyserer påvirkningen fra objektive målbare miljøer som klima, kalder forfatterne dette for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Kultur skubber til individets personlighed gennem chancer frem for jernhård tvang, og kaldes derfor for __________ i stedet for deterministisk.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Et højt smittetryk fordrer en lukket samfundsstruktur, og skaber en befolkning med meget høj __________ for at undgå ukendt smitte.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Forfatterne tager afstand fra nulsums-tanken i arv 'versus' miljø, og argumenterer konsekvent for biologi og kontekst i en samlet __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord, mekanismen"
+        },
+        {
+          "number": 5,
+          "sentence": "Den gensidige skabelse af individernes psyke og samfundets normer kaldes i modellen for Mutual __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Teorien om, at langvarigt kulturtryk kan deaktivere eller aktivere visse gener uden at røre DNA'et, kaldes __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "For at bevise, at træk ikke opstår ud af det blå, insisterer teksten på, at socioøkologiens rolle i modellen i virkeligheden fungerer som den dybere __________.",
+          "where_to_look": "Sektion 1 og 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den centrale 'Mutual Constitution' loopmekanisme ud fra hukommelsen.",
+          "required_elements": [
+            "Boksen 'Kultur'",
+            "Boksen 'Personlighed'",
+            "To tydelige retningspile for at illustrere transaktionsloopet"
+          ],
+          "blank_space_hint": "Tegn en cirkulær feedback-struktur her"
+        },
+        {
+          "number": 2,
+          "task": "Sammensæt flowet i tekstens teori om biologisk ændring, der bryder med uforanderligheden.",
+          "required_elements": [
+            "Den brede påvirkning: Kultur/Miljø",
+            "Formidleren: Personligheden, der tager form over tid",
+            "Slutresultatet nede i de biologiske celler: Genudtrykket"
+          ],
+          "blank_space_hint": "Opbyg tre kasser med tidslinje-pile (->) fra ydre påvirkning til celle-niveau"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Sådan omdanner du den socioøkologisk-genetiske model til stærke beviser og pointer, du kan trække indflettet til den mundtlige eller skriftlige eksamen.",
+      "use_this_text_for": [
+        "At forklare mekanismen i kursets orienteringspunkt om 'Determination'.",
+        "At levere empirisk bevis på, at 'Essence vs. Context' ikke blot er filosoffens drøm; selv genetikere insisterer på kontekstualisering.",
+        "At demonstrere, hvorfor en ren 'arv-mod-miljø' diskussion er et 90'er-levn inden for psykologien.",
+        "At opbygge et logisk kausalitetsargument for de beskrivende klassiske Big Five-dimensioner (hvorfor findes udadvendthed overhovedet evolutionært?).",
+        "At skitsere en brobygningsteori, før du dykker dybere ned i socialkonstruktionisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W12L1: Orienteringspunkterne",
+          "connection": "Perfekt case til dimensionerne 'Determination' og 'Context'. Den gør det faste flydende."
+        },
+        {
+          "course_theme": "W02L1: Trækpsykologi (Traits)",
+          "connection": "Leverer en reel forklarende model for, hvorfor træk eksisterer med forskellig styrke afhængigt af verdensdelen, i stedet for blot at være en statisk score i et skema."
+        },
+        {
+          "course_theme": "W10-W11: Sociokulturelle rammer",
+          "connection": "Fungerer som den sidste naturvidenskabelige forpost. Hvor de kritiske grene ser personlighed formet af sprog og institutioner, fastslår Lu et al., at træk også fremtvinges biologisk gennem klima og smitte."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Klassisk Essensiel Biologi",
+          "how_to_compare": "I modsætning til forældet gen-determinisme viser Lu et al., at det kun giver mening at betragte en genetisk markør ud fra, at den modereres af kultur (genudtryk/epigenetik)."
+        },
+        {
+          "compare_with": "Diskursiv og Poststrukturel Psykologi",
+          "how_to_compare": "Begge retninger peger på, at vi former miljøet, og miljøet former os. Men poststrukturalister bruger sprog; Lu et al. kræver hårde 'socioøkologiske videnskabelige enheder' som temperaturmålinger."
+        },
+        {
+          "compare_with": "Rene Trækmodeller (Costa & McCrae)",
+          "how_to_compare": "Lu udvider horisonten enormt. Hvor ren trait-teori primært interesserer sig for de fem spande og deres stabilitet, leder Lu efter rodårsagen ude i det fysiske landskab."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskussion om personlighed som fast kerne",
+          "use_in_answer": "Brug Lu et al. epigenetikken som trumfkort for at vise, at ikke engang den biologiske bundlinje er fritaget fra konstant ændring.",
+          "caution": "Husk at teksten betragter genernes basisstruktur som reel nok; det er aflæsningen der ændres, ikke selve genomet."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at vurdere metodens styrke",
+          "use_in_answer": "Fremhæv opdelingen mellem kultur (subjektivt) og socioøkologi (objektivt).",
+          "caution": "Vær skarp på ikke at blande dem sammen. Sygdomstryk er socioøkologi; reaktionen med at kræve høj familieloyalitet er kulturen."
+        },
+        {
+          "prompt_type": "Når du diskuterer arvelighed af træk",
+          "use_in_answer": "Slå hurtigt over i formlen 'Nature x Nurture'. Argumenter for at man ikke længere leder efter 'hvor meget' gener fylder, men 'hvordan' de interagerer.",
+          "caution": "Sig aldrig at '50% af personligheden er bestemt af arv hos en person'. Det er en teoretisk fælde."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Mutual Constitution bare betyder 'alting hænger sammen'.",
+          "better_reading": "Det er en endeløs *kausalcyklus*: Miljøet lægger specifikke evolutionære begrænsninger, det avler træk, den menneskemængde skaber ny kultur, osv."
+        },
+        {
+          "trap": "At forfatterne afviser arvelighed totalt.",
+          "better_reading": "Tværtimod accepterer de genetikken til fulde. De flytter bare tyngden til, at arvemasse altid modereres af et miljø, før den aktiveres som adfærd."
+        },
+        {
+          "trap": "At epigenetik ændrer selve DNA-strengen og nedarves øjeblikkeligt.",
+          "better_reading": "Epigenetik ændrer, hvordan genet *udtrykkes* (aflæses af systemet), ikke dets basale DNA-kode."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Lu, Benet-Martínez og Wang (2023) til kort at afvise påstanden om, at personlighedstræk blot er fastfrosne, uforanderlige biologiske pakker installeret fra fødslen.",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort, hvorfor forfatterne flytter vægten fra natur/opvækst til interaktionisme (Nature x Nurture).",
+        "Introducer konceptet om Mutual Constitution for at bevise flydende forandring over tid.",
+        "Brug sygdomstryk som den tunge 'socioøkologiske' trussel, der former individers introversion mod deres vilje.",
+        "Afslut stærkt med begrebet 'epigenetik', der hamrer den faglige pointe hjem: Miljøet overtrumfer biologiens illusion af forudbestemmelse."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+      "lecture_key": "W03L1",
+      "source_title": "Lu, Benet-Martínez & Wang (2023)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "Forestil dig et \"arrangeret ægteskab\" mellem to gigantiske forskningsfelter. Psykologer har længe studeret kultur og personlighed hver for sig, men de to discipliner taler historisk set forbløffende lidt sammen.",
+        "Det skaber et fundamentalt forklaringsproblem i videnskaben. Hvordan kan vi nogensinde forstå de systematiske forskelle i menneskers *individual meaning systems*, hvis vi flår dem ud af det *collective meaning system*, de er indlejret i?",
+        "Lu og kolleger tvinger felterne til bordet ved at indføre en uventet tredjepart: socioøkologien. Teksten flytter fokus fra løse antagelser til *objective variables measured with scientific units* såsom infektionstryk, temperatur og befolkningstæthed.",
+        "Pludselig er kultur ikke bare et svævende og indre fænomen. Det er kollektivets overlevelsesstrategi mod konkrete fysiske trusler, en strategi, der med tiden former, hvilke træk der er mest tilpasningsdygtige.",
+        "Mysteriet i teksten spidser for alvor til, når forfatterne kobler dette til genetik. Hvis klimaet dikterer kulturen, og kulturen *moderates genetic influences* i individet, giver det så overhovedet længere mening at tale om biologi som en skæbne?",
+        "Din opgave i denne læsning er at kortlægge præcis, hvordan det omgivende miljø griber mekanisk ind i kødet, og hvordan teorien dekonstruerer forestillingen om en fastfrosset genetisk essens."
+      ],
+      "main_problem": "Hvordan arbejder genetik, kultur og objektive fysiske miljøer (socioøkologi) sammen om at producere og konstant ændre menneskets personlighedstræk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?",
+          "why_it_matters": "Gør det muligt at forstå miljøet som to separate systemer, der opererer med forskellig hastighed.",
+          "answer_form": "1-2 sætninger,"
+        },
+        {
+          "number": 2,
+          "question": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?",
+          "why_it_matters": "Det er selve kernefænomenet: at intet er statisk, men fanget i en uendelig feedback-sløjfe.",
+          "answer_form": "Kort beskrivelse af mekanismens to retninger"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?",
+          "why_it_matters": "Det er tekstens mest konkrete eksempel på, at miljøet skaber evolutionært pres på personligheden.",
+          "answer_form": "En kort årsagsforklaring"
+        },
+        {
+          "number": 4,
+          "question": "Hvorfor afviser teksten debatten om 'arv versus miljø'?",
+          "why_it_matters": "Det baner vejen for interaktionisme, hvilket er kursens store faglige overgang.",
+          "answer_form": "Formlen"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken biologisk disciplin bruger teksten til at hævde, at kultur kan ændre selve genetikken?",
+          "why_it_matters": "Det udgør det endelige opgør med biologisk determinisme i kurset.",
+          "answer_form": "Et specifikt fagligt begreb"
+        }
+      ],
+      "why_this_text_matters": "Dette er kursets mest avancerede naturvidenskabelige tekst. Den udgør det altafgørende brohoved mellem den klassiske, biologiske trækpsykologi og det næste store teoriskift i faget: den kritiske og sociokulturelle psykologi. Hvis du forstår, at selv biologien i dag betragtes som kontekstafhængig og interaktiv, har du nøglen til at analysere 'Determination' og 'Essence vs. Context' i alt, hvad der følger.",
+      "overview": [
+        "Teksten fremlægger en integreret socioøkologisk-genetisk model for kultur og personlighed.",
+        "Kultur, biologi og fysiske trusler påvirker løbende og uundgåeligt hinanden i kausale loops.",
+        "Epigenetik præsenteres som mekanismen, der lader makromiljøet omprogrammere individets genetiske maskinrum."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (Introduktion og definitioner)",
+          "task": "Sæt rammen og definer de fire hjørnesten: kultur, socioøkologi, personlighed og genetik.",
+          "why_it_matters": "For at forstå modellen må vokabulariet være krystalklart.",
+          "stop_signal": "Når du forstår forskellen på subjektiv kultur og objektiv økologi"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3-4 (Framework og Mutual Constitution)",
+          "task": "Læs hvordan kultur former individer, og individer i flok skaber kultur.",
+          "why_it_matters": "Det bryder med idéen om én-vejs årsagssammenhænge.",
+          "stop_signal": "Når du har fanget betydningen af det endeløse loop"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 5 (Socioecology)",
+          "task": "Find beviset for, at temperatur og sygdom tvinger befolkninger til bestemte kulturelle strategier.",
+          "why_it_matters": "Viser hvordan træk er overlevelsesmekanismer frem for bare iboende stilarter.",
+          "stop_signal": "Når logikken for smittetrykkets påvirkning er tydelig"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 6-7 (Genes og interaktion)",
+          "task": "Kortlæg argumentet for, hvorfor 'Nature x Nurture' erstatter det gamle 'versus'.",
+          "why_it_matters": "Centralt for hele kursets opgør med statiske essenser.",
+          "stop_signal": "Når du kan forklare, at miljøet modererer geners udtryk"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 8 (Epigenetics)",
+          "task": "Forstå forfatternes mest radikale forslag: at miljøet omkoder DNA-aflæsningen permanent.",
+          "why_it_matters": "Det binder alting endeligt og uopløseligt sammen.",
+          "stop_signal": "Når du når til Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "measured with scientific units",
+          "why": "Definerer grænsen for den stringente socioøkologi.",
+          "where_to_look": "Afsnit om definitioner."
+        },
+        {
+          "target": "probabilistic and plural rather than deterministic",
+          "why": "Beskriver nøjagtigt kulturens kraft; den fastlåser ikke, men den skubber til sandsynligheder.",
+          "where_to_look": "Sektionen om Mutual Constitution."
+        },
+        {
+          "target": "numerous genes of minuscule effect",
+          "why": "Afliver myten om, at der findes ét gen for ét personlighedstræk.",
+          "where_to_look": "Sektionen om geners indflydelse."
+        },
+        {
+          "target": "gene related is immutable",
+          "why": "Det er præcis den falske antagelse, forfatterne vil rive ned med epigenetikken.",
+          "where_to_look": "Sektionen om genudtryk og epigenetik."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Listerne af specifikke gener (f.eks. DRD4 eller HTR2A); fang princippet frem for forkortelserne.",
+        "Statistisk detaljegrad i populationsstudierne og beregning af co-varians.",
+        "De mange specifikke underteorier for kulturudvikling (fx frontier settlement theory) – brug dem kun som eksempler."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Afsnit om definitioner.",
+          "excerpt": "measured with scientific units",
+          "open_question": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om Mutual Constitution.",
+          "excerpt": "probabilistic and plural rather than deterministic",
+          "open_question": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektionen om geners indflydelse.",
+          "excerpt": "numerous genes of minuscule effect",
+          "open_question": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?"
+        },
+        {
+          "number": "4",
+          "source_location": "Sektionen om genudtryk og epigenetik.",
+          "excerpt": "gene related is immutable",
+          "open_question": "Hvorfor afviser teksten debatten om 'arv versus miljø'?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er en forkortet gennemgang af kildetekstens hovedargumenter.",
+      "coverage_note": "Fungerer som din offline basecamp. Løs Active Reading og Consolidation ud fra denne tekst.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 2",
+          "heading": "Den objektive rod: Hvad er socioøkologi?",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At adskille menneskets indre værdier fra de uundgåelige fysiske naturlove udenfor?",
+          "explanation_paragraphs": [
+            "For at bygge deres store model er forfatterne nødt til at rense brættet og adskille ting, vi normalt blander sammen. De trækker en hård streg mellem 'kultur' og 'socioøkologi'.",
+            "Kultur defineres her som systemer af fælles symboler, overbevisninger og normer. Det er i sin kerne subjektivt. Socioøkologi refererer derimod til samfundets objektive socioøkonomiske og økologiske omstændigheder. Socioøkologi er alt det, der kan eksistere uden at et menneske fortolker det.",
+            "Ved at isolere de målbare vilkår – som for eksempel klima, sygdomstryk og økonomisk udviklingsgrad – fra selve kulturen, gør forfatterne det muligt at undersøge, om det fysiske miljø i virkeligheden udgør rodårsagen til de værdier, en befolkning ender med at udvikle."
+          ],
+          "key_points": [
+            "Kultur er subjektive, delte systemer af mening.",
+            "Socioøkologi dækker over objektive vilkår (klima, trusler, ressourcer).",
+            "Socioøkologi kan måles eksakt med videnskabelige enheder."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "measured with scientific units",
+              "why_it_matters": "Understreger kravet om objektivitet i socioøkologisk forskning.",
+              "source_location": "Sektion 2.2"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2.2",
+              "passage": "Socioecological variables are objective variables measured with scientific units (...) By contrast, cultural variables are subjective.",
+              "why_it_matters": "Sætter den fundamentale skillelinje op mellem objektivitet og subjektivitet i modellen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 4",
+          "heading": "Den evige rundkørsel: Gensidig konstituering",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At fastslå, hvorfor kultur hverken kan reduceres til biologi eller omvendt?",
+          "explanation_paragraphs": [
+            "Lu og kolleger fastholder, at personlighed og kultur befinder sig i en konstant cyklus. Modellen kaldes \"Mutual Constitution\". Kulturen leverer den specifikke form og kontekst, et individs følelser og kognition støbes i.",
+            "Men påvirkningen er ikke en diktatorisk ensrettet proces. Kulturen farver individet gennem sandsynligheder, ikke tvang. Forskellige mennesker inkorporerer kulturelle normer med enorm variation afhængigt af deres biologiske temperament.",
+            "Når mange mennesker med bestemte personlighedstræk klumper sig sammen og agerer, farver deres samlede sum på sigt det fælles kulturelle klima. Det er en transaktion: Kulturen former individet, og kollektivet af individer ændrer langsomt kulturen."
+          ],
+          "key_points": [
+            "Kultur og personlighed skaber hinanden i et endeløst loop.",
+            "Kulturel indflydelse hæver sandsynligheden for bestemte træk; den er ikke deterministisk.",
+            "Aggregerede personlighedsprofiler påvirker de systemer, samfundet opbygger."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "probabilistic and plural rather than deterministic",
+              "why_it_matters": "Fastholder et handlerum for individet uafhængigt af den kulturelle formning.",
+              "source_location": "Sektion 4.1"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 5",
+          "heading": "Sygdom og kulde: Miljøets diktat",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At bevise, hvordan brutale fysiske vilkår direkte former befolkningers adfærdsmønstre?",
+          "explanation_paragraphs": [
+            "Modellen indsætter nu socioøkologien som en dybereliggende årsag. Forestil dig et samfund i et område med ekstremt højt smittetryk fra parasitter og vira (pathogen prevalence).",
+            "For at gruppen skal overleve dette objektive miljøkrav, tvinges de adfærdsmæssigt mod kollektivisme (streng konformitet og loyalitet), fordi eksperimenter og brud på rutiner risikerer at sprede sygdom. På individniveau betyder det en reduktion i 'openness' og 'extraversion', da hyppig kontakt med fremmede er livsfarlig.",
+            "Når et lavt smittetryk i stedet gør det ufarligt at omgås mange forskellige grupper, kan evolutionen tillade, at befolkningen fremelsker individualisme og høj grad af udadvendthed."
+          ],
+          "key_points": [
+            "Socioøkologiske realiteter gennemtvinger adfærdsmæssige overlevelsesstrategier.",
+            "Højt smittetryk fordrer lukkethed og konformitet (kollektivisme).",
+            "Klima og sygdom er en bagvedliggende 'tredje variabel', der forklarer meget af variationen i træk."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion 5.1.1",
+              "passage": "When pathogen prevalence is low and nonthreatening, individualism may be adaptive because its behavioral manifestations (e.g., need for uniqueness) can facilitate desirable outcomes such as innovations.",
+              "why_it_matters": "Illustrerer klart, hvordan adfærdstræk direkte følger miljøets krav til overlevelse og innovation."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 7",
+          "heading": "At knuse arv-mod-miljø-myten",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At aflive idéen om, at et gen nødvendigvis udløser den samme personlighed i alle miljøer?",
+          "explanation_paragraphs": [
+            "Når genetikkens indflydelse på personlighed undersøges, begår man ofte den fejl at sætte 'natur' og 'opvækst' op imod hinanden i et nulsumsspil. Forfatterne argumenterer i stedet for ægte interaktionisme: Nature × Nurture.",
+            "Det betyder ganske enkelt, at et gen kan udgøre en tilbøjelighed (en receptor-sensitivitet), men styrken eller selve retningen af denne tilbøjelighed afhænger 100 procent af det kulturelle og socioøkologiske rum, genet befinder sig i.",
+            "To personer med nøjagtig samme genetiske arkitektur kan udvikle vidt forskellige personlighedstræk, fordi det specifikke makromiljø bestemmer, om, hvordan og hvornår et gen oversættes til en adfærd."
+          ],
+          "key_points": [
+            "Arv og miljø skal ikke opvejes; de fungerer kun som hinandens multiplikatorer (G × E).",
+            "Kultur modererer effekten af den genetiske sårbarhed.",
+            "Gener dikterer ikke bestemte fænotyper alene."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "being in the same environment may predict different outcomes",
+              "why_it_matters": "Sammenfatter den dobbeltsidede interaktionisme på tværs af gener og kultur.",
+              "source_location": "Sektion 7"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 8",
+          "heading": "Epigenetik: Når kulturen ændrer dit DNA-aflæs",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "At fastslå tekstens mest radikale påstand om den omvendte kausalitet?",
+          "explanation_paragraphs": [
+            "Modellens allersidste trin dekonstruerer enhver idé om en fastlåst biologisk essens. De inddrager epigenetikken: studiet af, hvordan ydre omstændigheder kan tænde eller slukke for aflæsningen af vores DNA, uden at selve DNA-sekvensen ændres.",
+            "Forfatterne argumenterer for, at langvarig eksponering for særlige kulturelle eller socioøkologiske vilkår (for eksempel stærkt pres for overlevelse eller traumer) systematisk kan modificere, hvilke gener der slås til og fra.",
+            "Det mest bemærkelsesværdige er, at de foreslår personligheden som bindeleddet. Det gigantiske kulturtryk ændrer individets vaner og psykologi, og disse langvarige personlighedsmønstre forplanter sig helt ned i cellerne, hvor de omskriver genernes funktionalitet."
+          ],
+          "key_points": [
+            "Epigenetik muliggør biokemiske ændringer styret udefra.",
+            "Miljøændringer omkoder, hvordan de eksisterende gener udtrykkes.",
+            "DNA-sekvensen er fast, men gen-udtrykket er ekstremt formbart i konteksten."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "depart from the common assumption that anything that is gene related is",
+              "why_it_matters": "Fastholder historicitet og kontekstualisering helt ned på genniveau.",
+              "source_location": "Sektion 8"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvor går grænsen i teksten mellem det, de kalder 'socioøkologi', og det, de kalder 'kultur'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 sætninger,",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvad dækker begrebet 'Mutual Constitution' over i relationen mellem kultur og personlighed?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Kort beskrivelse af mekanismens to retninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan kan en fysisk faktor som høj risiko for sygdom (pathogen prevalence) påvirke introversion?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kort årsagsforklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvorfor afviser teksten debatten om 'arv versus miljø'?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Formlen",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvilken biologisk disciplin bruger teksten til at hævde, at kultur kan ændre selve genetikken?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et specifikt fagligt begreb",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan arbejder genetik, kultur og objektive fysiske miljøer (socioøkologi) sammen om at producere og konstant ændre menneskets personlighedstræk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv nu at genkalde modellens begreber fra hukommelsen. Læg Abridged Reader væk, mens du udfylder de manglende felter. Reparer først med arket bagefter, hvis du sidder fast.",
+      "overview": [
+        "Socioøkologi leverer de brutale naturvidenskabelige rammer, der tvinger en gruppe til en overlevelsesstrategi.",
+        "Kultur og personlighed låser sig fast i hinanden gennem et endeløst transaktionelt kredsløb.",
+        "Vores biologi er ikke en fast og uigenkaldelig skæbne, fordi miljøet regulerer, hvordan genet læses."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Når teksten analyserer påvirkningen fra objektive målbare miljøer som klima, kalder forfatterne dette for __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Kultur skubber til individets personlighed gennem chancer frem for jernhård tvang, og kaldes derfor for __________ i stedet for deterministisk.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 3,
+          "sentence": "Et højt smittetryk fordrer en lukket samfundsstruktur, og skaber en befolkning med meget høj __________ for at undgå ukendt smitte.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Forfatterne tager afstand fra nulsums-tanken i arv 'versus' miljø, og argumenterer konsekvent for biologi og kontekst i en samlet __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord, mekanismen"
+        },
+        {
+          "number": 5,
+          "sentence": "Den gensidige skabelse af individernes psyke og samfundets normer kaldes i modellen for Mutual __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Teorien om, at langvarigt kulturtryk kan deaktivere eller aktivere visse gener uden at røre DNA'et, kaldes __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "For at bevise, at træk ikke opstår ud af det blå, insisterer teksten på, at socioøkologiens rolle i modellen i virkeligheden fungerer som den dybere __________.",
+          "where_to_look": "Sektion 1 og 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den centrale 'Mutual Constitution' loopmekanisme ud fra hukommelsen.",
+          "required_elements": [
+            "Boksen 'Kultur'",
+            "Boksen 'Personlighed'",
+            "To tydelige retningspile for at illustrere transaktionsloopet"
+          ],
+          "blank_space_hint": "Tegn en cirkulær feedback-struktur her"
+        },
+        {
+          "number": 2,
+          "task": "Sammensæt flowet i tekstens teori om biologisk ændring, der bryder med uforanderligheden.",
+          "required_elements": [
+            "Den brede påvirkning: Kultur/Miljø",
+            "Formidleren: Personligheden, der tager form over tid",
+            "Slutresultatet nede i de biologiske celler: Genudtrykket"
+          ],
+          "blank_space_hint": "Opbyg tre kasser med tidslinje-pile (->) fra ydre påvirkning til celle-niveau"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Sådan omdanner du den socioøkologisk-genetiske model til stærke beviser og pointer, du kan trække indflettet til den mundtlige eller skriftlige eksamen.",
+      "use_this_text_for": [
+        "At forklare mekanismen i kursets orienteringspunkt om 'Determination'.",
+        "At levere empirisk bevis på, at 'Essence vs. Context' ikke blot er filosoffens drøm; selv genetikere insisterer på kontekstualisering.",
+        "At demonstrere, hvorfor en ren 'arv-mod-miljø' diskussion er et 90'er-levn inden for psykologien.",
+        "At opbygge et logisk kausalitetsargument for de beskrivende klassiske Big Five-dimensioner (hvorfor findes udadvendthed overhovedet evolutionært?).",
+        "At skitsere en brobygningsteori, før du dykker dybere ned i socialkonstruktionisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "W12L1: Orienteringspunkterne",
+          "connection": "Perfekt case til dimensionerne 'Determination' og 'Context'. Den gør det faste flydende."
+        },
+        {
+          "course_theme": "W02L1: Trækpsykologi (Traits)",
+          "connection": "Leverer en reel forklarende model for, hvorfor træk eksisterer med forskellig styrke afhængigt af verdensdelen, i stedet for blot at være en statisk score i et skema."
+        },
+        {
+          "course_theme": "W10-W11: Sociokulturelle rammer",
+          "connection": "Fungerer som den sidste naturvidenskabelige forpost. Hvor de kritiske grene ser personlighed formet af sprog og institutioner, fastslår Lu et al., at træk også fremtvinges biologisk gennem klima og smitte."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Klassisk Essensiel Biologi",
+          "how_to_compare": "I modsætning til forældet gen-determinisme viser Lu et al., at det kun giver mening at betragte en genetisk markør ud fra, at den modereres af kultur (genudtryk/epigenetik)."
+        },
+        {
+          "compare_with": "Diskursiv og Poststrukturel Psykologi",
+          "how_to_compare": "Begge retninger peger på, at vi former miljøet, og miljøet former os. Men poststrukturalister bruger sprog; Lu et al. kræver hårde 'socioøkologiske videnskabelige enheder' som temperaturmålinger."
+        },
+        {
+          "compare_with": "Rene Trækmodeller (Costa & McCrae)",
+          "how_to_compare": "Lu udvider horisonten enormt. Hvor ren trait-teori primært interesserer sig for de fem spande og deres stabilitet, leder Lu efter rodårsagen ude i det fysiske landskab."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskussion om personlighed som fast kerne",
+          "use_in_answer": "Brug Lu et al. epigenetikken som trumfkort for at vise, at ikke engang den biologiske bundlinje er fritaget fra konstant ændring.",
+          "caution": "Husk at teksten betragter genernes basisstruktur som reel nok; det er aflæsningen der ændres, ikke selve genomet."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at vurdere metodens styrke",
+          "use_in_answer": "Fremhæv opdelingen mellem kultur (subjektivt) og socioøkologi (objektivt).",
+          "caution": "Vær skarp på ikke at blande dem sammen. Sygdomstryk er socioøkologi; reaktionen med at kræve høj familieloyalitet er kulturen."
+        },
+        {
+          "prompt_type": "Når du diskuterer arvelighed af træk",
+          "use_in_answer": "Slå hurtigt over i formlen 'Nature x Nurture'. Argumenter for at man ikke længere leder efter 'hvor meget' gener fylder, men 'hvordan' de interagerer.",
+          "caution": "Sig aldrig at '50% af personligheden er bestemt af arv hos en person'. Det er en teoretisk fælde."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Mutual Constitution bare betyder 'alting hænger sammen'.",
+          "better_reading": "Det er en endeløs *kausalcyklus*: Miljøet lægger specifikke evolutionære begrænsninger, det avler træk, den menneskemængde skaber ny kultur, osv."
+        },
+        {
+          "trap": "At forfatterne afviser arvelighed totalt.",
+          "better_reading": "Tværtimod accepterer de genetikken til fulde. De flytter bare tyngden til, at arvemasse altid modereres af et miljø, før den aktiveres som adfærd."
+        },
+        {
+          "trap": "At epigenetik ændrer selve DNA-strengen og nedarves øjeblikkeligt.",
+          "better_reading": "Epigenetik ændrer, hvordan genet *udtrykkes* (aflæses af systemet), ikke dets basale DNA-kode."
+        }
+      ],
+      "mini_exam_prompt_question": "Brug Lu, Benet-Martínez og Wang (2023) til kort at afvise påstanden om, at personlighedstræk blot er fastfrosne, uforanderlige biologiske pakker installeret fra fødslen.",
+      "mini_exam_answer_plan_slots": [
+        "Definer kort, hvorfor forfatterne flytter vægten fra natur/opvækst til interaktionisme (Nature x Nurture).",
+        "Introducer konceptet om Mutual Constitution for at bevise flydende forandring over tid.",
+        "Brug sygdomstryk som den tunge 'socioøkologiske' trussel, der former individers introversion mod deres vilje.",
+        "Afslut stærkt med begrebet 'epigenetik', der hamrer den faglige pointe hjem: Miljøet overtrumfer biologiens illusion af forudbestemmelse."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

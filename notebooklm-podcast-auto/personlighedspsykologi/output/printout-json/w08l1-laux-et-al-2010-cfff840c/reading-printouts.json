@@ -359,7 +359,7 @@
         {
           "number": "1",
           "subproblem_ref": "Subproblem 1 & 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "prompt": "Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "2-4 sætninger",
@@ -369,7 +369,7 @@
         {
           "number": "2",
           "subproblem_ref": "Subproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "prompt": "Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-4 sætninger",
@@ -379,7 +379,7 @@
         {
           "number": "3",
           "subproblem_ref": "Subproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "prompt": "Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-4 sætninger",
@@ -728,7 +728,7 @@
         {
           "number": "1",
           "subproblem_ref": "Subproblem 1 & 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
+          "prompt": "Hvordan gøres Sterns idealistiske teori anvendelig på destruktivitet, og hvordan forklarer den interaktionen mellem diktator og historie?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "2-4 sætninger",
@@ -738,7 +738,7 @@
         {
           "number": "2",
           "subproblem_ref": "Subproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
+          "prompt": "Hvordan kan ydre, ideologiske mål overføres, så massen føler dem som deres egne?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-4 sætninger",
@@ -748,7 +748,7 @@
         {
           "number": "3",
           "subproblem_ref": "Subproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
+          "prompt": "Hvordan hænger en person med fundamentale modsatrettede træk sammen som ét selv?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-4 sætninger",
@@ -896,7 +896,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w08l1-laux-et-al-2010-cfff840c/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:01:42Z"

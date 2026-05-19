@@ -392,7 +392,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "prompt": "Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Et specifikt begreb",
@@ -402,7 +402,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "prompt": "Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En visuel metafor",
@@ -412,7 +412,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "prompt": "Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "1-2 ord",
@@ -422,7 +422,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "prompt": "Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "En liste over tre hierarkiske krav til terapeuten",
@@ -832,7 +832,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
+          "prompt": "Hvorfor søger vi ikke bare en passiv tilstand af hvile?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Et specifikt begreb",
@@ -842,7 +842,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
+          "prompt": "Hvordan forklarer vi irrationel adfærd uden deterministiske ubevidste kræfter?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En visuel metafor",
@@ -852,7 +852,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
+          "prompt": "Hvordan kan vi opleve psykisk smerte, når vi af natur er drevet mod vækst?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "1-2 ord",
@@ -862,7 +862,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
+          "prompt": "Hvordan kan terapeuten få klienten til at opgive forsvaret og genoptage væksten?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "En liste over tre hierarkiske krav til terapeuten",
@@ -1038,7 +1038,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w07l2-evans-1975-8e8a9d79/reading-scaffolds.json",
     "backfilled_at": "2026-05-14T12:30:24Z"

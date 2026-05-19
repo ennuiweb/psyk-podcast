@@ -1,0 +1,935 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:27:44Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "11a9443b0cf996e5bf44e274d04963a25a00a2750e5e4c169113b3f3d67bc750",
+    "source_files_signature": "493e3aeda476c07fdc2637eb58f62a4b124a44be6445cb303d4cf445df92f69f",
+    "source_card": "7d822dbf3d46503d02ab9e47ff26dbb7e7183c9e987fd02e3eaac9545c910db9",
+    "revised_lecture_substrate": "bab6a3e4705c93d15d2bd951274e05d2b9596cd67fcf80307849e513e11f6844",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+    "lecture_key": "W02L2",
+    "title": "Li & Wilt (2025)",
+    "reading_title": "Li & Wilt (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 7,
+    "estimated_token_count": 4550,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Li & Wilt (2025).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 7,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+      "lecture_key": "W02L2",
+      "source_title": "Li & Wilt (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Den sætter scenen for teksten, udpeger de vigtigste problemer og viser, hvilke passager du kan læse let henover.",
+      "teaser_paragraphs": [
+        "Er du den samme person i et eksamenslokale som til en fest? Psykologien har i over hundrede år diskuteret, om vores adfærd primært styres af stabile indre træk eller af den ydre situation. Ofte føles det som om, at konteksten tager fuldstændig over, og som Milgram formulerede det: \"Often, it is not so much the kind of person a man is as the kind of situation in which he finds himself...\"",
+        "I lang tid låste denne debat psykologien fast i to lejre. Men Li & Wilt (2025) viser, at vi må droppe tanken om et passivt individ, der blot bliver udsat for et miljø. De fremhæver tværtimod, at \"situation selection is itself an expression of personality\". Du er ikke et tilfældigt offer for dine omgivelser; dine træk styrer aktivt, hvilke miljøer du overhovedet træder ind i.",
+        "Teksten præsenterer en cyklisk model for, hvordan træk og kontekst konstant regulerer hinanden. Den forklarer, hvordan \"stærke situationer\" kan ensrette vores adfærd drastisk, mens specifikke \"affordances\" i miljøet fungerer som magneter, der lokker præcis dine skjulte dispositioner frem i lyset.",
+        "Dette er fundamentet for at forstå kursets orienteringspunkt omkring Essens versus Kontekst. Hvis vi ikke forstår mekanismerne i det konkrete person-situations-samspil, bliver det umuligt at navigere i de langt mere radikale teorier om social konstruktionisme og magt, som kurset senere vil præsentere."
+      ],
+      "main_problem": "Hvordan samspiller stabile personlighedstræk og dynamiske situationer i en kontinuerlig, cyklisk proces, der former adfærd?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor betragtes udvælgelsen af situationer som en form for personlighedsudtryk i sig selv?",
+          "why_it_matters": "Gør op med ideen om, at mennesker blot er passive modtagere af de miljøer, de befinder sig i.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller 'situational strength' og 'situational affordances' sig i deres måde at styre adfærd på?",
+          "why_it_matters": "Det er de to primære mekanismer, der afgør, om et træk kan komme til syne i et givent rum.",
+          "answer_form": "Kort sammenligning"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan fungerer den feedback-sløjfe, der opstår, efter en person har udvist en bestemt adfærd?",
+          "why_it_matters": "Viser, hvorfor træk forbliver stabile over tid gennem forstærkning fra miljøet.",
+          "answer_form": "Mekanismebeskrivelse"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det empiriske mainstream-fundament for kursets skift fra ren biologi/essens mod kontekst. Den etablerer de grundlæggende interaktionistiske begreber, som senere kritiske teorier vil bygge videre på eller dekonstruere.",
+      "overview": [
+        "Opgøret med den klassiske enten-eller debat mellem person og situation.",
+        "De fire faser i den cykliske STOA-model for adfærdsudtryk.",
+        "Mekanismerne i situationsoplevelsen, særligt strength og affordances."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Introduktionen (s. 1)",
+          "task": "Find Lewins formel og den grundlæggende problemstilling.",
+          "why_it_matters": "Lægger fundamentet for interaktionismen.",
+          "stop_signal": "ved overskriften 'The upsurge of research...'"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet 'Situation selection' (s. 2)",
+          "task": "Fang argumentet for, hvorfor valget af miljø er en aktiv proces.",
+          "why_it_matters": "Løser subproblem 1 og etablerer aktørskab.",
+          "stop_signal": "ved overskriften 'Situation experience'"
+        },
+        {
+          "number": 3,
+          "source_location": "Afsnittene om 'Experience' og 'Behavioral state expression' (s. 2-4)",
+          "task": "Aflæs forskellen på strength, affordances og trait activation.",
+          "why_it_matters": "Rummer kernemekanismerne for psykologisk kontekst.",
+          "stop_signal": "ved overskriften 'Emerging substantive directions'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "B = f(P, S)",
+          "why": "Lewins grundformel, der redefinerede debatten.",
+          "where_to_look": "S. 1, introduktionen"
+        },
+        {
+          "target": "selection is itself an expression of personality",
+          "why": "Kernen i argumentet om individet som aktiv skaber af kontekst.",
+          "where_to_look": "S. 2, Situation selection"
+        },
+        {
+          "target": "reduce behavioral variability",
+          "why": "Konsekvensen af stærke situationer på menneskelig adfærd.",
+          "where_to_look": "S. 3, Situation experience"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke statistiske effektstørrelser og brøker (f.eks. r = 0.09-0.11) i Tabel 1.",
+        "De teknologiske detaljer om virtual reality og machine learning sidst i teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 1, introduktionen",
+          "excerpt": "B = f(P, S)",
+          "open_question": "Hvorfor betragtes udvælgelsen af situationer som en form for personlighedsudtryk i sig selv?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 2, Situation selection",
+          "excerpt": "selection is itself an expression of personality",
+          "open_question": "Hvordan adskiller 'situational strength' og 'situational affordances' sig i deres måde at styre adfærd på?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 3, Situation experience",
+          "excerpt": "reduce behavioral variability",
+          "open_question": "Hvordan fungerer den feedback-sløjfe, der opstår, efter en person har udvist en bestemt adfærd?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsevej. Læs sektionerne for at få styr på modellens mekanismer, og brug dem derefter åbne, når du løser Active Reading-arket.",
+      "coverage_note": "Fokuserer udelukkende på den teoretiske STOA-model og dens faser. Udelader historisk bibliometri og afsnit om nye teknologiske målemetoder.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 1",
+          "heading": "Fra arv til interaktionisme",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan ændrede Lewins formel synet på det passive individ?",
+          "explanation_paragraphs": [
+            "Historisk har psykologien været præget af en skarp opdeling. Trækteoretikere mente, at adfærd er stabil uanset kontekst, mens situationister argumenterede for, at mennesket primært styres af de ydre omstændigheder. Dette skabte et falsk modsætningsforhold.",
+            "Lewins formel, *B = f(P, S)*, løste denne konflikt ved at fastslå, at adfærd altid er en funktion af interaktionen mellem Personen og Situationen. Li & Wilt bygger videre på dette interaktionistiske perspektiv ved at betone, at vi ikke blot modtager påvirkninger passivt fra vores omgivelser.",
+            "Vi er handlende aktører, der kontinuerligt udtrykker og regulerer vores indre dispositioner gennem måden, vi engagerer os i verden på. Dette sker i en cyklisk proces, hvor individ og miljø konstant påvirker hinanden."
+          ],
+          "key_points": [
+            "Adfærd formes af interaktionen mellem person og situation.",
+            "Individer er ikke passive modtagere af deres miljø."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "active, situated agents",
+              "why_it_matters": "Markerer det fundamentale brud med det passive menneskesyn.",
+              "source_location": "S. 1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 1",
+              "passage": "That is, individuals are not passive recipients of contexts but rather active, situated agents whose dispositions are continuously expressed and regulated through their engagement with the world.",
+              "why_it_matters": "Dette citat opsummerer forfatternes grundlæggende menneskesyn i interaktionismen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 2",
+          "heading": "Situation Selection som personlighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan præger vores indre træk de miljøer, vi i første omgang havner i?",
+          "explanation_paragraphs": [
+            "Den første fase i forfatternes cykliske model er 'situation selection'. Personlighedsudtryk starter nemlig længe før, vi faktisk handler. Vi opsøger aktivt de miljøer, der matcher vores indre dispositioner, og undgår dem, der føles forkerte.",
+            "Ekstroverte personer vil typisk opsøge miljøer med høj stimulation og social interaktion, mens stærkt samvittighedsfulde individer vil foretrække strukturerede, målorienterede rum. Selvom nogle situationer opstår tilfældigt, er vores overordnede valg af miljø sjældent tilfældigt.",
+            "Når vi proaktivt udvælger vores miljøer, skaber vi rum, der tillader os at forstærke vores dominerende træk. Valget af situation er altså ikke bare en forløber for adfærd, men er et selvstændigt og stærkt udtryk for selve personligheden."
+          ],
+          "key_points": [
+            "Vi vælger aktivt situationer, der tillader os at udtrykke vores træk.",
+            "At vælge en situation er i sig selv en personlighedshandling."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "selection is itself an expression",
+              "why_it_matters": "Gør op med tanken om, at valget af kontekst kun er optakt til adfærd.",
+              "source_location": "S. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 3-4",
+          "heading": "Styrke og Affordances i oplevelsen",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor begrænser nogle rum vores personlighed, mens andre fremhæver den?",
+          "explanation_paragraphs": [
+            "Når vi træder ind i en situation, påvirkes vores adfærd især af to mekanismer. Den første er 'situational strength' (situationel styrke). Stærke situationer er præget af høje konsekvenser, stramme regler og klare normer. De mindsker markant den individuelle adfærdsvariation, fordi alle presses til at agere ens for at undgå straf eller social udstødelse.",
+            "Den anden mekanisme er 'situational affordances'. Dette er specifikke muligheder indlejret i miljøet, som inviterer til særlig adfærd. For eksempel vil en situation, der giver mulighed for personlig vinding uden opsyn (affordance of exploitation), lokke uærlig adfærd frem hos personer med lav Honesty-Humility.",
+            "Sammen afgør disse to faktorer, hvordan situationen opleves, og om de ydre rammer tillader eller direkte blokerer for, at et træk kan komme til udtryk."
+          ],
+          "key_points": [
+            "Stærke situationer begrænser individuel variation.",
+            "Affordances inviterer specifikt til adfærd, der resonerer med bestemte træk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "reduce behavioral variability",
+              "why_it_matters": "Præciserer den konkrete effekt, stærke regler har på adfærd.",
+              "source_location": "S. 3"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 3-4",
+          "heading": "Aktivering og den cykliske feedback",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan bliver et træk til konkret adfærd, og hvad er konsekvensen?",
+          "explanation_paragraphs": [
+            "Ifølge 'trait activation theory' forbliver et træk latent, indtil miljøet præsenterer relevante cues. Først når situationen rent faktisk kalder på det, omsættes trækket til observerbar adfærd (behavioral state expression).",
+            "Når adfærden er udført, aktiveres en konsekvens (outcome activation). Vi oplever succes, fiasko, anerkendelse eller afvisning i miljøet. Disse resultater forsvinder ikke bare; de fodrer direkte tilbage i systemet og former, hvordan vi i fremtiden vil vælge og opleve situationer.",
+            "Hvis struktureret arbejde belønnes, vil vi opsøge endnu mere struktur fremover. Dette skaber en selvforstærkende cyklus, der forklarer, hvorfor personlighed ofte fremstår stabil over tid på trods af konstant kontekstuel forandring."
+          ],
+          "key_points": [
+            "Træk kræver situationelle cues for at blive aktiveret.",
+            "Adfærdsresultater påvirker fremtidige situationsvalg i en kontinuerlig cyklus."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "traits are expressed when",
+              "why_it_matters": "Understreger, at træk kræver en katalysator i miljøet.",
+              "source_location": "S. 3"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan ændrede Lewins formel synet på det passive individ?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan præger vores indre træk de miljøer, vi i første omgang havner i?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor begrænser nogle rum vores personlighed, mens andre fremhæver den?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Kort sammenligning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan bliver et træk til konkret adfærd, og hvad er konsekvensen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Mekanismebeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan samspiller stabile personlighedstræk og dynamiske situationer i en kontinuerlig, cyklisk proces, der former adfærd?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at sikre, at kernemekanismerne sidder fast. Brug først dit Abridged Reader-ark til sidst for at rette eventuelle fejl.",
+      "overview": [
+        "Teksten redefinerer forholdet mellem person og situation som en dynamisk og interaktiv proces.",
+        "Mennesker er ikke passive modtagere, men udvælger og former aktivt deres miljøer.",
+        "Trækudtryk fungerer i en cyklus, hvor situationer begrænser adfærd eller tilbyder specifikke affordances."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Lewins formel viser, at adfærd opstår i interaktionen mellem personen og __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når vi bevidst eller ubevidst opsøger miljøer, der matcher vores indre dispositioner, kaldes det situation __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Miljøer med klare regler og stramme konsekvenser, som mindsker forskellene i menneskers adfærd, kaldes __________ situationer.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "De muligheder indlejret i et miljø, der specifikt inviterer til en bestemt trækbetinget adfærd, betegnes som situational __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Ifølge teorien om trait __________ kommer et latent træk først til syne, når miljøet præsenterer relevante cues.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Optegn den cykliske STOA-model for personlighedsudtryk og forbind faserne i den rigtige rækkefølge.",
+          "required_elements": [
+            "Situation selection",
+            "Situation experience",
+            "Behavioral state expression",
+            "Outcome activation",
+            "Pile der viser, hvordan outcome leder tilbage til fremtidig selection"
+          ],
+          "blank_space_hint": "Brug et par linjer herunder til at tegne de fire bokse og forbinde dem med pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at omsætte tekstens mekanismer til mundtlige eller skriftlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At definere, hvad 'Kontekst' betyder i den indledende del af kurset (orienteringspunktet Essens vs. Kontekst).",
+        "At bevise, at interaktionisme gør op med tanken om et rent passivt menneske.",
+        "At forklare mekanismen bag, hvorfor personlighedstræk ofte fremstår stabile."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essens vs. Kontekst",
+          "connection": "Teksten udgør det primære psykologiske bindeled mellem faste biologiske træk (essens) og omgivelsernes dynamiske pres (kontekst)."
+        },
+        {
+          "course_theme": "Kritisk psykologi (W08-W09)",
+          "connection": "Mens Li & Wilt betragter miljø og affordances som fysiske eller nære sociale rammer, vil den kritiske psykologi senere udvide dette til at handle om samfundsstrukturer og magt."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Klassisk trækteori (fx Costa & McCrae)",
+          "how_to_compare": "Fremhæv, hvordan klassisk trækteori fokuserer på tværgående stabilitet, mens denne interaktionistiske model insisterer på, at adfærd ændrer sig, hvis affordances eller 'strength' ændres."
+        },
+        {
+          "compare_with": "Kritisk psykologi",
+          "how_to_compare": "Sammenlign opfattelsen af kontekst: Her er kontekst ofte konkrete 'cues' eller laboratorielignende spil; i kritisk psykologi er det den bredere 'dagliglivets førelse'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskussion om aktørskab og fri vilje",
+          "use_in_answer": "Brug begrebet 'Situation selection' til at forsvare, at trækmodeller ikke frarøver individet sin agens.",
+          "caution": "Husk, at vores 'valg' af miljø ifølge modellen stadig er kraftigt drevet af vores eksisterende træk."
+        },
+        {
+          "prompt_type": "Spørgsmål om manglende personlighedsforskelle",
+          "use_in_answer": "Sig højt, at 'situational strength' midlertidigt kan fjerne variation i adfærd, fordi alle underkaster sig normen.",
+          "caution": "Konkludér ikke, at trækket forsvinder; det overtrumfes blot lokalt af stærke regler."
+        },
+        {
+          "prompt_type": "Metodisk kritik af måling",
+          "use_in_answer": "Adskil den objektive 'situational contact' fra den subjektive 'situational construal' – hvordan rummet er, vs. hvordan det tolkes.",
+          "caution": "Brug det kun, hvis eksamensspørgsmålet direkte inviterer til at diskutere målemetoder."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage, at person-situations-debatten endte med, at omgivelserne bestemmer alt.",
+          "better_reading": "Debatten endte i interaktionisme (B=f(P,S)), hvor individet netop aktivt udvælger og skaber omgivelserne."
+        },
+        {
+          "trap": "At tro, at 'stærke situationer' beviser, at personlighedstræk er en illusion.",
+          "better_reading": "Det beviser blot, at ydre konsekvenser i bestemte miljøer er så stramme, at de midlertidigt kan holde personligheden nede."
+        }
+      ],
+      "mini_exam_prompt_question": "Analyser ved hjælp af Li & Wilt (2025), hvordan interaktionen mellem træk og situation former adfærd. Inddrag begreberne 'situational strength' og 'affordances' i din besvarelse.",
+      "mini_exam_answer_plan_slots": [
+        "Brug Lewins formel (B = f(P, S)) som fundament for interaktionisme.",
+        "Etabler individet som aktivt gennem konceptet 'Situation selection'.",
+        "Sæt 'situational strength' (begrænser adfærd) over for 'affordances' (lokker adfærd frem).",
+        "Afrund med den cykliske feedback: outcome activation, der forstærker fremtidige valg."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l2-li-and-wilt-2025-92f596ad",
+      "lecture_key": "W02L2",
+      "source_title": "Li & Wilt (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Den sætter scenen for teksten, udpeger de vigtigste problemer og viser, hvilke passager du kan læse let henover.",
+      "teaser_paragraphs": [
+        "Er du den samme person i et eksamenslokale som til en fest? Psykologien har i over hundrede år diskuteret, om vores adfærd primært styres af stabile indre træk eller af den ydre situation. Ofte føles det som om, at konteksten tager fuldstændig over, og som Milgram formulerede det: \"Often, it is not so much the kind of person a man is as the kind of situation in which he finds himself...\"",
+        "I lang tid låste denne debat psykologien fast i to lejre. Men Li & Wilt (2025) viser, at vi må droppe tanken om et passivt individ, der blot bliver udsat for et miljø. De fremhæver tværtimod, at \"situation selection is itself an expression of personality\". Du er ikke et tilfældigt offer for dine omgivelser; dine træk styrer aktivt, hvilke miljøer du overhovedet træder ind i.",
+        "Teksten præsenterer en cyklisk model for, hvordan træk og kontekst konstant regulerer hinanden. Den forklarer, hvordan \"stærke situationer\" kan ensrette vores adfærd drastisk, mens specifikke \"affordances\" i miljøet fungerer som magneter, der lokker præcis dine skjulte dispositioner frem i lyset.",
+        "Dette er fundamentet for at forstå kursets orienteringspunkt omkring Essens versus Kontekst. Hvis vi ikke forstår mekanismerne i det konkrete person-situations-samspil, bliver det umuligt at navigere i de langt mere radikale teorier om social konstruktionisme og magt, som kurset senere vil præsentere."
+      ],
+      "main_problem": "Hvordan samspiller stabile personlighedstræk og dynamiske situationer i en kontinuerlig, cyklisk proces, der former adfærd?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor betragtes udvælgelsen af situationer som en form for personlighedsudtryk i sig selv?",
+          "why_it_matters": "Gør op med ideen om, at mennesker blot er passive modtagere af de miljøer, de befinder sig i.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan adskiller 'situational strength' og 'situational affordances' sig i deres måde at styre adfærd på?",
+          "why_it_matters": "Det er de to primære mekanismer, der afgør, om et træk kan komme til syne i et givent rum.",
+          "answer_form": "Kort sammenligning"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan fungerer den feedback-sløjfe, der opstår, efter en person har udvist en bestemt adfærd?",
+          "why_it_matters": "Viser, hvorfor træk forbliver stabile over tid gennem forstærkning fra miljøet.",
+          "answer_form": "Mekanismebeskrivelse"
+        }
+      ],
+      "why_this_text_matters": "Teksten udgør det empiriske mainstream-fundament for kursets skift fra ren biologi/essens mod kontekst. Den etablerer de grundlæggende interaktionistiske begreber, som senere kritiske teorier vil bygge videre på eller dekonstruere.",
+      "overview": [
+        "Opgøret med den klassiske enten-eller debat mellem person og situation.",
+        "De fire faser i den cykliske STOA-model for adfærdsudtryk.",
+        "Mekanismerne i situationsoplevelsen, særligt strength og affordances."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Introduktionen (s. 1)",
+          "task": "Find Lewins formel og den grundlæggende problemstilling.",
+          "why_it_matters": "Lægger fundamentet for interaktionismen.",
+          "stop_signal": "ved overskriften 'The upsurge of research...'"
+        },
+        {
+          "number": 2,
+          "source_location": "Afsnittet 'Situation selection' (s. 2)",
+          "task": "Fang argumentet for, hvorfor valget af miljø er en aktiv proces.",
+          "why_it_matters": "Løser subproblem 1 og etablerer aktørskab.",
+          "stop_signal": "ved overskriften 'Situation experience'"
+        },
+        {
+          "number": 3,
+          "source_location": "Afsnittene om 'Experience' og 'Behavioral state expression' (s. 2-4)",
+          "task": "Aflæs forskellen på strength, affordances og trait activation.",
+          "why_it_matters": "Rummer kernemekanismerne for psykologisk kontekst.",
+          "stop_signal": "ved overskriften 'Emerging substantive directions'"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "B = f(P, S)",
+          "why": "Lewins grundformel, der redefinerede debatten.",
+          "where_to_look": "S. 1, introduktionen"
+        },
+        {
+          "target": "selection is itself an expression of personality",
+          "why": "Kernen i argumentet om individet som aktiv skaber af kontekst.",
+          "where_to_look": "S. 2, Situation selection"
+        },
+        {
+          "target": "reduce behavioral variability",
+          "why": "Konsekvensen af stærke situationer på menneskelig adfærd.",
+          "where_to_look": "S. 3, Situation experience"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De specifikke statistiske effektstørrelser og brøker (f.eks. r = 0.09-0.11) i Tabel 1.",
+        "De teknologiske detaljer om virtual reality og machine learning sidst i teksten."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "S. 1, introduktionen",
+          "excerpt": "B = f(P, S)",
+          "open_question": "Hvorfor betragtes udvælgelsen af situationer som en form for personlighedsudtryk i sig selv?"
+        },
+        {
+          "number": "2",
+          "source_location": "S. 2, Situation selection",
+          "excerpt": "selection is itself an expression of personality",
+          "open_question": "Hvordan adskiller 'situational strength' og 'situational affordances' sig i deres måde at styre adfærd på?"
+        },
+        {
+          "number": "3",
+          "source_location": "S. 3, Situation experience",
+          "excerpt": "reduce behavioral variability",
+          "open_question": "Hvordan fungerer den feedback-sløjfe, der opstår, efter en person har udvist en bestemt adfærd?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Dette er din primære læsevej. Læs sektionerne for at få styr på modellens mekanismer, og brug dem derefter åbne, når du løser Active Reading-arket.",
+      "coverage_note": "Fokuserer udelukkende på den teoretiske STOA-model og dens faser. Udelader historisk bibliometri og afsnit om nye teknologiske målemetoder.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "S. 1",
+          "heading": "Fra arv til interaktionisme",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan ændrede Lewins formel synet på det passive individ?",
+          "explanation_paragraphs": [
+            "Historisk har psykologien været præget af en skarp opdeling. Trækteoretikere mente, at adfærd er stabil uanset kontekst, mens situationister argumenterede for, at mennesket primært styres af de ydre omstændigheder. Dette skabte et falsk modsætningsforhold.",
+            "Lewins formel, *B = f(P, S)*, løste denne konflikt ved at fastslå, at adfærd altid er en funktion af interaktionen mellem Personen og Situationen. Li & Wilt bygger videre på dette interaktionistiske perspektiv ved at betone, at vi ikke blot modtager påvirkninger passivt fra vores omgivelser.",
+            "Vi er handlende aktører, der kontinuerligt udtrykker og regulerer vores indre dispositioner gennem måden, vi engagerer os i verden på. Dette sker i en cyklisk proces, hvor individ og miljø konstant påvirker hinanden."
+          ],
+          "key_points": [
+            "Adfærd formes af interaktionen mellem person og situation.",
+            "Individer er ikke passive modtagere af deres miljø."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "active, situated agents",
+              "why_it_matters": "Markerer det fundamentale brud med det passive menneskesyn.",
+              "source_location": "S. 1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 1",
+              "passage": "That is, individuals are not passive recipients of contexts but rather active, situated agents whose dispositions are continuously expressed and regulated through their engagement with the world.",
+              "why_it_matters": "Dette citat opsummerer forfatternes grundlæggende menneskesyn i interaktionismen."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "S. 2",
+          "heading": "Situation Selection som personlighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan præger vores indre træk de miljøer, vi i første omgang havner i?",
+          "explanation_paragraphs": [
+            "Den første fase i forfatternes cykliske model er 'situation selection'. Personlighedsudtryk starter nemlig længe før, vi faktisk handler. Vi opsøger aktivt de miljøer, der matcher vores indre dispositioner, og undgår dem, der føles forkerte.",
+            "Ekstroverte personer vil typisk opsøge miljøer med høj stimulation og social interaktion, mens stærkt samvittighedsfulde individer vil foretrække strukturerede, målorienterede rum. Selvom nogle situationer opstår tilfældigt, er vores overordnede valg af miljø sjældent tilfældigt.",
+            "Når vi proaktivt udvælger vores miljøer, skaber vi rum, der tillader os at forstærke vores dominerende træk. Valget af situation er altså ikke bare en forløber for adfærd, men er et selvstændigt og stærkt udtryk for selve personligheden."
+          ],
+          "key_points": [
+            "Vi vælger aktivt situationer, der tillader os at udtrykke vores træk.",
+            "At vælge en situation er i sig selv en personlighedshandling."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "selection is itself an expression",
+              "why_it_matters": "Gør op med tanken om, at valget af kontekst kun er optakt til adfærd.",
+              "source_location": "S. 2"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "S. 3-4",
+          "heading": "Styrke og Affordances i oplevelsen",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor begrænser nogle rum vores personlighed, mens andre fremhæver den?",
+          "explanation_paragraphs": [
+            "Når vi træder ind i en situation, påvirkes vores adfærd især af to mekanismer. Den første er 'situational strength' (situationel styrke). Stærke situationer er præget af høje konsekvenser, stramme regler og klare normer. De mindsker markant den individuelle adfærdsvariation, fordi alle presses til at agere ens for at undgå straf eller social udstødelse.",
+            "Den anden mekanisme er 'situational affordances'. Dette er specifikke muligheder indlejret i miljøet, som inviterer til særlig adfærd. For eksempel vil en situation, der giver mulighed for personlig vinding uden opsyn (affordance of exploitation), lokke uærlig adfærd frem hos personer med lav Honesty-Humility.",
+            "Sammen afgør disse to faktorer, hvordan situationen opleves, og om de ydre rammer tillader eller direkte blokerer for, at et træk kan komme til udtryk."
+          ],
+          "key_points": [
+            "Stærke situationer begrænser individuel variation.",
+            "Affordances inviterer specifikt til adfærd, der resonerer med bestemte træk."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "reduce behavioral variability",
+              "why_it_matters": "Præciserer den konkrete effekt, stærke regler har på adfærd.",
+              "source_location": "S. 3"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "S. 3-4",
+          "heading": "Aktivering og den cykliske feedback",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan bliver et træk til konkret adfærd, og hvad er konsekvensen?",
+          "explanation_paragraphs": [
+            "Ifølge 'trait activation theory' forbliver et træk latent, indtil miljøet præsenterer relevante cues. Først når situationen rent faktisk kalder på det, omsættes trækket til observerbar adfærd (behavioral state expression).",
+            "Når adfærden er udført, aktiveres en konsekvens (outcome activation). Vi oplever succes, fiasko, anerkendelse eller afvisning i miljøet. Disse resultater forsvinder ikke bare; de fodrer direkte tilbage i systemet og former, hvordan vi i fremtiden vil vælge og opleve situationer.",
+            "Hvis struktureret arbejde belønnes, vil vi opsøge endnu mere struktur fremover. Dette skaber en selvforstærkende cyklus, der forklarer, hvorfor personlighed ofte fremstår stabil over tid på trods af konstant kontekstuel forandring."
+          ],
+          "key_points": [
+            "Træk kræver situationelle cues for at blive aktiveret.",
+            "Adfærdsresultater påvirker fremtidige situationsvalg i en kontinuerlig cyklus."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "traits are expressed when",
+              "why_it_matters": "Understreger, at træk kræver en katalysator i miljøet.",
+              "source_location": "S. 3"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan ændrede Lewins formel synet på det passive individ?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan præger vores indre træk de miljøer, vi i første omgang havner i?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor begrænser nogle rum vores personlighed, mens andre fremhæver den?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Kort sammenligning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan bliver et træk til konkret adfærd, og hvad er konsekvensen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "Mekanismebeskrivelse",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan samspiller stabile personlighedstræk og dynamiske situationer i en kontinuerlig, cyklisk proces, der former adfærd?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark fra hukommelsen for at sikre, at kernemekanismerne sidder fast. Brug først dit Abridged Reader-ark til sidst for at rette eventuelle fejl.",
+      "overview": [
+        "Teksten redefinerer forholdet mellem person og situation som en dynamisk og interaktiv proces.",
+        "Mennesker er ikke passive modtagere, men udvælger og former aktivt deres miljøer.",
+        "Trækudtryk fungerer i en cyklus, hvor situationer begrænser adfærd eller tilbyder specifikke affordances."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Lewins formel viser, at adfærd opstår i interaktionen mellem personen og __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Når vi bevidst eller ubevidst opsøger miljøer, der matcher vores indre dispositioner, kaldes det situation __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Miljøer med klare regler og stramme konsekvenser, som mindsker forskellene i menneskers adfærd, kaldes __________ situationer.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 4,
+          "sentence": "De muligheder indlejret i et miljø, der specifikt inviterer til en bestemt trækbetinget adfærd, betegnes som situational __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Ifølge teorien om trait __________ kommer et latent træk først til syne, når miljøet præsenterer relevante cues.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Optegn den cykliske STOA-model for personlighedsudtryk og forbind faserne i den rigtige rækkefølge.",
+          "required_elements": [
+            "Situation selection",
+            "Situation experience",
+            "Behavioral state expression",
+            "Outcome activation",
+            "Pile der viser, hvordan outcome leder tilbage til fremtidig selection"
+          ],
+          "blank_space_hint": "Brug et par linjer herunder til at tegne de fire bokse og forbinde dem med pile."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til hurtigt at omsætte tekstens mekanismer til mundtlige eller skriftlige eksamensargumenter.",
+      "use_this_text_for": [
+        "At definere, hvad 'Kontekst' betyder i den indledende del af kurset (orienteringspunktet Essens vs. Kontekst).",
+        "At bevise, at interaktionisme gør op med tanken om et rent passivt menneske.",
+        "At forklare mekanismen bag, hvorfor personlighedstræk ofte fremstår stabile."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essens vs. Kontekst",
+          "connection": "Teksten udgør det primære psykologiske bindeled mellem faste biologiske træk (essens) og omgivelsernes dynamiske pres (kontekst)."
+        },
+        {
+          "course_theme": "Kritisk psykologi (W08-W09)",
+          "connection": "Mens Li & Wilt betragter miljø og affordances som fysiske eller nære sociale rammer, vil den kritiske psykologi senere udvide dette til at handle om samfundsstrukturer og magt."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Klassisk trækteori (fx Costa & McCrae)",
+          "how_to_compare": "Fremhæv, hvordan klassisk trækteori fokuserer på tværgående stabilitet, mens denne interaktionistiske model insisterer på, at adfærd ændrer sig, hvis affordances eller 'strength' ændres."
+        },
+        {
+          "compare_with": "Kritisk psykologi",
+          "how_to_compare": "Sammenlign opfattelsen af kontekst: Her er kontekst ofte konkrete 'cues' eller laboratorielignende spil; i kritisk psykologi er det den bredere 'dagliglivets førelse'."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Diskussion om aktørskab og fri vilje",
+          "use_in_answer": "Brug begrebet 'Situation selection' til at forsvare, at trækmodeller ikke frarøver individet sin agens.",
+          "caution": "Husk, at vores 'valg' af miljø ifølge modellen stadig er kraftigt drevet af vores eksisterende træk."
+        },
+        {
+          "prompt_type": "Spørgsmål om manglende personlighedsforskelle",
+          "use_in_answer": "Sig højt, at 'situational strength' midlertidigt kan fjerne variation i adfærd, fordi alle underkaster sig normen.",
+          "caution": "Konkludér ikke, at trækket forsvinder; det overtrumfes blot lokalt af stærke regler."
+        },
+        {
+          "prompt_type": "Metodisk kritik af måling",
+          "use_in_answer": "Adskil den objektive 'situational contact' fra den subjektive 'situational construal' – hvordan rummet er, vs. hvordan det tolkes.",
+          "caution": "Brug det kun, hvis eksamensspørgsmålet direkte inviterer til at diskutere målemetoder."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage, at person-situations-debatten endte med, at omgivelserne bestemmer alt.",
+          "better_reading": "Debatten endte i interaktionisme (B=f(P,S)), hvor individet netop aktivt udvælger og skaber omgivelserne."
+        },
+        {
+          "trap": "At tro, at 'stærke situationer' beviser, at personlighedstræk er en illusion.",
+          "better_reading": "Det beviser blot, at ydre konsekvenser i bestemte miljøer er så stramme, at de midlertidigt kan holde personligheden nede."
+        }
+      ],
+      "mini_exam_prompt_question": "Analyser ved hjælp af Li & Wilt (2025), hvordan interaktionen mellem træk og situation former adfærd. Inddrag begreberne 'situational strength' og 'affordances' i din besvarelse.",
+      "mini_exam_answer_plan_slots": [
+        "Brug Lewins formel (B = f(P, S)) som fundament for interaktionisme.",
+        "Etabler individet som aktivt gennem konceptet 'Situation selection'.",
+        "Sæt 'situational strength' (begrænser adfærd) over for 'affordances' (lokker adfærd frem).",
+        "Afrund med den cykliske feedback: outcome activation, der forstærker fremtidige valg."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

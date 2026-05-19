@@ -47,7 +47,7 @@ PROBLEM_DRIVEN_VARIANT_KEY = "problem_driven_v1"
 PROBLEM_DRIVEN_VARIANT_PROMPT_PATH = Path(
     "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md"
 )
-PROBLEM_DRIVEN_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md"
+PROBLEM_DRIVEN_DESIGN_DOC = "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md"
 PROBLEM_DRIVEN_WORKSPACE = "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
 SCHEMA_VERSION = 3
 LEGACY_SCHEMA_VERSION = 2
@@ -1893,36 +1893,39 @@ def _section_location_label(section: dict[str, Any]) -> str:
 
 
 def _term_prompt_for_question(question: str) -> str:
+    if _looks_like_direct_question(question):
+        return question
     lowered = question.casefold()
     if "lejr" in lowered:
         return f"Skriv lejrnavnet, som sektionen peger på: {question}"
     if "punkt" in lowered:
         return f"Skriv orienteringspunktet, som sektionen peger på: {question}"
     if lowered.startswith(("hvad er ", "hvad er det ", "hvad betyder ", "hvilket begreb", "hvilken term")):
-        return f"Skriv begrebet, som besvarer spørgsmålet: {question}"
+        return f"Find begrebet i sektionen: {question}"
     if "begreb" in lowered:
-        return f"Skriv begrebet, som besvarer spørgsmålet: {question}"
+        return f"Find begrebet i sektionen: {question}"
     if "begivenhed" in lowered:
         return f"Skriv den konkrete begivenhed, som sektionen fremhæver: {question}"
     if "tidsramme" in lowered:
         return f"Skriv den tidsramme, som sektionen ender med: {question}"
     if lowered.startswith("hvem "):
-        return f"Skriv navnet, som besvarer spørgsmålet: {question}"
-    return f"Skriv det korte svar på spørgsmålet: {question}"
+        return f"Find navnet i sektionen: {question}"
+    return f"Find det korte svar i sektionen: {question}"
 
 
 def _decision_prompt_for_question(question: str) -> str:
     lowered = question.casefold()
     if " eller " in lowered:
         return f"Vælg side i spændingen og begrund kort: {question}"
-    return f"Afgør spørgsmålet ud fra sektionen og begrund kort: {question}"
+    if _looks_like_direct_question(question):
+        return question
+    return f"Afgør ud fra sektionen og begrund kort: {question}"
 
 
 def _paragraph_prompt_for_question(question: str) -> str:
-    lowered = question.casefold()
-    if lowered.startswith(("hvordan ", "hvorfor ", "hvor er ", "på hvilken måde ")):
-        return f"Forklar kort, hvordan sektionen besvarer dette: {question}"
-    return f"Skriv et kort, sammenhængende svar på dette: {question}"
+    if _looks_like_direct_question(question):
+        return question
+    return f"Forklar kort ud fra sektionen: {question}"
 
 
 def _looks_like_question_stem(text: str) -> bool:
@@ -1942,6 +1945,11 @@ def _looks_like_question_stem(text: str) -> bool:
             "på hvilken måde ",
         )
     )
+
+
+def _looks_like_direct_question(text: str) -> bool:
+    value = str(text or "").strip()
+    return bool(value and (value.endswith("?") or _looks_like_question_stem(value)))
 
 
 def _synthesis_prompt_for_main_problem(main_problem: str) -> str:
@@ -4345,7 +4353,7 @@ def render_consolidation_markdown(artifact: dict[str, Any], consolidation: dict[
         if index == last_index and diagram_count == 1:
             _append_fill_to_page_response_area(lines, minimum_cm=space_cm)
         else:
-            inline_space_cm = 6.0 if diagram_count >= 2 else min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
+            inline_space_cm = 10.0 if diagram_count >= 2 else min(space_cm, _spacing_cm("diagram_inline_space_ceiling"))
             lines.append(_vspace_cm(inline_space_cm))
         lines.append("")
     _append_completion_footer(lines, artifact, ["blanks udfyldt", "diagrammer lavet", "svar tjekket"])

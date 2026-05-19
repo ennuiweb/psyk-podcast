@@ -599,7 +599,7 @@ def test_printout_engine_accepts_prompt_overrides(tmp_path):
     assert "**Kort sagt:**" in abridged_markdown
     assert "> *“Bevidsthed er altid rettet mod noget, og den kan ikke forstås som en lukket beholder.”*" in abridged_markdown
     assert "> `afsnit 1`" in abridged_markdown
-    assert "**1.** **Skriv** begrebet, som besvarer spørgsmålet:" in active_markdown
+    assert "**1.** Hvad er det afgørende ved intentionalitet?" in active_markdown
     assert "[ ]" not in active_markdown
     assert "[ ]" not in consolidation_markdown
     assert "**Overblik**" in consolidation_markdown
@@ -1279,7 +1279,7 @@ def test_consolidation_uses_fill_for_last_diagram_page():
     assert two_diagram_markdown.index(r"\endgroup") < two_diagram_markdown.index(r"\newpage") < two_diagram_markdown.index("**Tegn**")
     assert "**Diagram 2.** Tegn anden model." in two_diagram_markdown
     assert "\n- a" in two_diagram_markdown
-    assert printout_engine._vspace_cm(6.0) in two_diagram_markdown
+    assert printout_engine._vspace_cm(10.0) in two_diagram_markdown
 
 
 def test_printout_length_budget_varies_with_source_length_and_complexity():
@@ -1541,7 +1541,7 @@ def test_normalize_scaffold_payload_rebalances_broad_active_steps():
 
     normalized = printout_engine.normalize_scaffold_payload(payload)
 
-    assert normalized["active_reading"]["solve_steps"][0]["prompt"].startswith(("Skriv", "Vælg", "Forklar", "Afgør"))
+    assert normalized["active_reading"]["solve_steps"][0]["prompt"] == "Hvad er det afgørende ved intentionalitet?"
     assert "Diskuter" not in normalized["active_reading"]["solve_steps"][0]["prompt"]
     printout_engine.validate_printout_payload(normalized)
 
@@ -1600,7 +1600,51 @@ def test_normalize_scaffold_payload_keeps_plural_mechanism_questions_as_paragrap
     step = normalized["active_reading"]["solve_steps"][1]
     assert step["task_type"] == "short_paragraph"
     assert step["blank_lines"] == 3
-    assert step["prompt"].startswith("Skriv et kort, sammenhængende svar på dette:")
+    assert step["prompt"] == "Hvilke antagelser gør teorien om udvikling?"
+
+
+def test_normalize_scaffold_payload_prints_question_shaped_active_prompts_directly():
+    payload = _valid_scaffold_response()
+    questions = [
+        "Hvorfor er der så mange stærke tabuer omkring, hvordan vi bruger en kniv, selv når den ikke er farlig?",
+        "Hvordan sætter samfundets historie sig permanent fast inde i det enkelte menneskes psykologi?",
+        "Hvis systemet bestemmer alt, findes der så overhovedet frihed?",
+    ]
+    answer_forms = ["2-3 nøgleord", "En kort årsagskæde", "En kort konklusion"]
+    for index, question in enumerate(questions):
+        payload["reading_guide"]["subproblems"][index]["question"] = question
+        payload["reading_guide"]["subproblems"][index]["answer_form"] = answer_forms[index]
+        payload["abridged_reader"]["sections"][index]["local_problem"] = question
+    payload["active_reading"] = {"title": "Ligegyldigt", "instructions": "Ligegyldigt", "solve_steps": []}
+
+    normalized = printout_engine.normalize_scaffold_payload(payload)
+    prompts = [item["prompt"] for item in normalized["active_reading"]["solve_steps"][:3]]
+
+    assert prompts == questions
+    forbidden_prefixes = (
+        "Skriv det korte svar på spørgsmålet:",
+        "Skriv begrebet, som besvarer spørgsmålet:",
+        "Skriv navnet, som besvarer spørgsmålet:",
+        "Forklar kort, hvordan sektionen besvarer dette:",
+        "Skriv et kort, sammenhængende svar på dette:",
+        "Afgør spørgsmålet ud fra sektionen og begrund kort:",
+    )
+    assert not any(prompt.startswith(forbidden_prefixes) for prompt in prompts)
+
+
+def test_normalize_scaffold_payload_preserves_useful_decision_action_prompt():
+    payload = _valid_scaffold_response()
+    question = "Er bevidsthed en indre beholder eller en rettet relation?"
+    payload["reading_guide"]["subproblems"][0]["question"] = question
+    payload["reading_guide"]["subproblems"][0]["answer_form"] = "Ja/Nej + 1 sætning"
+    payload["abridged_reader"]["sections"][0]["local_problem"] = question
+    payload["active_reading"] = {"title": "Ligegyldigt", "instructions": "Ligegyldigt", "solve_steps": []}
+
+    normalized = printout_engine.normalize_scaffold_payload(payload)
+    step = normalized["active_reading"]["solve_steps"][0]
+
+    assert step["task_type"] == "decision"
+    assert step["prompt"] == f"Vælg side i spændingen og begrund kort: {question}"
 
 
 def test_normalize_scaffold_payload_rephrases_infinitive_main_problem_for_synthesis():

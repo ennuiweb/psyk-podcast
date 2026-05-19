@@ -1,0 +1,1175 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:25:45Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "6ceb9df2a7b6cae0b4f249f62f89d8c5edd80f69b2ebbaa1353f97cf78c6ea1a",
+    "source_files_signature": "2fe7aec79efd45bf1f57b921498574d641a395206f7c721f9a647e3596c45cfc",
+    "source_card": "8a6b40aca8dc64c0a0694a53ce4cea47f5945fcb31e06be312f026cf4144424c",
+    "revised_lecture_substrate": "bab6a3e4705c93d15d2bd951274e05d2b9596cd67fcf80307849e513e11f6844",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+    "lecture_key": "W02L2",
+    "title": "Bleidorn et al. (2022)",
+    "reading_title": "Bleidorn et al. (2022)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 32,
+    "estimated_token_count": 20800,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L2 Person-situation interplay - stability and change of individual differences/W2L2 Bleidorn et al. (2022).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 32,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "lecture_key": "W02L2",
+      "source_title": "Bleidorn et al. (2022)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kildeteksten. Den opstiller kerneproblemet og lister de præcise delproblemer, du skal kunne løse undervejs.",
+      "teaser_paragraphs": [
+        "Forestil dig, at du møder en ven fra studiet igen om 30 år. Vil du genkende deres personlighed, eller har tiden fundamentalt omskrevet den, de er? Denne tekst angriber det klassiske spørgsmål om, hvorvidt vi er fastlåst af en indre essens eller formes permanent af tiden.",
+        "I årtier har personlighedspsykologien lænet sig op ad 'the cumulative continuity principle'. Den dominerende antagelse var simpel: Jo ældre vi bliver, desto mere ubøjelig og stabil bliver vores personlighed. Aldring blev set som en lineær fastlåsningsproces.",
+        "Bleidorn et al. (2022) trækker i bremsen. Ved hjælp af et massivt datasæt på tværs af hundreder af studier tester de præcis, hvornår i livet forandringer egentlig finder sted. Her skelner de knivskarpt mellem din relative placering over for andre (rank-order stability) og befolkningsgruppens gennemsnitlige stigning i et træk (mean-level change).",
+        "Gennem deres data afdækker de en afgørende overraskelse. Der er faktisk *little evidence for increasing rank-order stabilities after Age 25*. Den livslange forstening er en myte. Personligheden krystalliserer tidligt, men fastlåsningen stagnerer brat.",
+        "Samtidig ændrer vi os markant på gennemsnitsniveau. Næsten alle gennemgår en udvikling drevet af *the maturity principle*, hvor vi over tid bliver mere samvittighedsfulde og følelsesmæssigt stabile. Selv i alderdommen, hvor helbredet svigter, fortsætter vores modningsproces i et fascinerende *paradox of aging*.",
+        "Denne læsning giver dig det moderne empiriske baseline for personlighedsudvikling. Når kurset senere bevæger sig ind i kritisk psykologi og socialkonstruktionisme, er det præcis dette normative billede af biologisk 'modning', der vil blive angrebet."
+      ],
+      "main_problem": "Hvor permanent er personligheden egentlig over et livsforløb, og hvornår låses vores træk fast ifølge den nyeste meta-analytiske empiri?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på rank-order stability og mean-level change?",
+          "why_it_matters": "Uden denne skelnen vil man forveksle individuel fastlåsning med generel aldersmodning.",
+          "answer_form": "En præcis definition af begge begreber"
+        },
+        {
+          "number": 2,
+          "question": "Hvornår i livet stagnerer stigningen i vores rank-order stabilitet?",
+          "why_it_matters": "Det afkræfter antagelsen om, at vi bliver mere og mere rigide gennem hele voksenlivet.",
+          "answer_form": "Et specifikt alderstal"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke specifikke træk stiger i gennemsnit som følge af The Maturity Principle?",
+          "why_it_matters": "Det definerer den normative, fremadskridende psykologiske udvikling i voksenlivet.",
+          "answer_form": "Tre specifikke engelske træk-navne"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den absolutte bundgrænse for stabilitet, selv når der går mange årtier mellem målingerne?",
+          "why_it_matters": "Det beviser, at en kerne af personlighed bevares, og at tid aldrig sletter alt fuldstændigt.",
+          "answer_form": "En specifik statistisk asymtote"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan udvikler Emotional Stability sig unikt i senalderdommen sammenlignet med de andre træk?",
+          "why_it_matters": "Det fanger et centralt paradoks vedrørende trivsel og aldring, som ofte ignoreres i forfaldsfortællinger.",
+          "answer_form": "En beskrivelse af en modgående tendens i et bestemt træk"
+        }
+      ],
+      "why_this_text_matters": "Forståelsen af Essence vs. Context i personlighedspsykologien afhænger af, at vi kender det moderne empiriske udgangspunkt for biologisk forankret modning og tidsmæssig påvirkning.",
+      "overview": [
+        "En state-of-the-art meta-analyse, der tegner det mest præcise kort over personlighedens forandring over hele livsbuen.",
+        "Reviderer The Cumulative Continuity Principle ved at påvise et brat plateau for personlighedens fastlåsning i ungdommen.",
+        "Bekræfter The Maturity Principle som den fremherskende drivkraft bag vores gennemsnitlige udvikling frem mod midtlivet."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektionerne 'How Rank-Order Stable...' og 'How Do Personality Trait Levels Change...'",
+          "task": "Afgør forskellen på rank-order og mean-level koncepterne.",
+          "why_it_matters": "Det er metodiske grundsten for resten af teksten.",
+          "stop_signal": "Når forskellen på d og r giver mening"
+        },
+        {
+          "number": 2,
+          "source_location": "Diskussionsafsnittet startende med 'The Role of Age and Time...'",
+          "task": "Find det præcise alderstal, hvor rank-order stabiliteten plateau'er.",
+          "why_it_matters": "Dette fund er den centrale opdatering af tidligere viden.",
+          "stop_signal": "Når plateau-alderen er identificeret og noteret"
+        },
+        {
+          "number": 3,
+          "source_location": "Fortsat i diskussionsafsnittet under the maturity principle",
+          "task": "Identificer hvilke tre træk, der driver den generelle psykologiske modning.",
+          "why_it_matters": "Dette danner baseline for kursussporet om normativ udvikling.",
+          "stop_signal": "Når de tre modenheds-træk er fundet"
+        },
+        {
+          "number": 4,
+          "source_location": "Underafsnittet om 'exponential models' og tidsintervaller",
+          "task": "Aflæs asymtoten, hvor stabiliteten rammer bunden.",
+          "why_it_matters": "Det er beviset for en uforanderlig essens-kerne i personligheden.",
+          "stop_signal": "Når tallet for bundniveauet er fundet"
+        },
+        {
+          "number": 5,
+          "source_location": "Diskussionsafsnittets konklusioner om senalderdom",
+          "task": "Find undtagelsen til den generelle tendens til forfald sent i livet.",
+          "why_it_matters": "Det understreger kompleksiteten i, hvordan alder og kontekst spiller sammen.",
+          "stop_signal": "Når du kan forklare the paradox of aging gennem det ene afvigende træk"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "little evidence for increasing rank-order stabilities after Age 25",
+          "why": "Afkræfter myten om lineær fastlåsning af personligheden livet ud.",
+          "where_to_look": "Begyndelsen af teksten, omkring abstract/intro."
+        },
+        {
+          "target": "mean-level change reflects the degree to which trait levels decrease or increase",
+          "why": "Kernen i den konceptuelle forskel fra den relative rank-order placering.",
+          "where_to_look": "Sektionen om How Do Personality Trait Levels Change."
+        },
+        {
+          "target": "decreases in stability appear to attenuate over longer time lags",
+          "why": "Definerer selve bundniveauet for personlighedsforandring; vi ændres aldrig totalt.",
+          "where_to_look": "Gennemgangen af the role of time for rank-order stability."
+        },
+        {
+          "target": "Emotional Stability continues undergoes significant mean-level increases",
+          "why": "Fremhæver den vigtigste afvigelse fra det generelle tab af niveau i alderdommen.",
+          "where_to_look": "Diskussionen af late adulthood."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De dybe matematiske detaljer i spline-modeller og beregningen af Cohen's d.",
+        "De komplekse statistiske grafer med konfidensintervaller for hvert enkelt snævert underfacet.",
+        "Moderator-analyserne vedrørende publiceringsår eller metodiske fejlmarginer."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af teksten, omkring abstract/intro.",
+          "excerpt": "little evidence for increasing rank-order stabilities after Age 25",
+          "open_question": "Hvad er den afgørende forskel på rank-order stability og mean-level change?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om How Do Personality Trait Levels Change.",
+          "excerpt": "mean-level change reflects the degree to which trait levels decrease or increase",
+          "open_question": "Hvornår i livet stagnerer stigningen i vores rank-order stabilitet?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af the role of time for rank-order stability.",
+          "excerpt": "decreases in stability appear to attenuate over longer time lags",
+          "open_question": "Hvilke specifikke træk stiger i gennemsnit som følge af The Maturity Principle?"
+        },
+        {
+          "number": "4",
+          "source_location": "Diskussionen af late adulthood.",
+          "excerpt": "Emotional Stability continues undergoes significant mean-level increases",
+          "open_question": "Hvad er den absolutte bundgrænse for stabilitet, selv når der går mange årtier mellem målingerne?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede læsevej til at navigere direkte i tekstens argumentative knudepunkter. Løs de tilhørende problemstillinger, efterhånden som du rammer dem.",
+      "coverage_note": "Fokuserer udelukkende på hovedargumenterne bag rank-order stabilitet, The Maturity Principle og de tidsmæssige grænser for personlighedsforandring.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Side 589-590: How Rank-Order Stable / How Do Personality Trait Levels Change",
+          "heading": "At måle stabilitet: De to dominerende metrikker",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan en befolkning som helhed ændre sig (modnes), mens den enkelte bevarer sin grundlæggende personlighedstype?",
+          "explanation_paragraphs": [
+            "For at forstå personlighedsudvikling, skelner empirisk forskning strengt mellem to forskellige metrikker. Den første er rank-order stability. Denne parameter måler udelukkende din placering relativt til andre i en gruppe. Hvis du var den mest ekstroverte person i din klasse som 15-årig, og du stadig er det som 45-årig, har du høj rank-order stabilitet.",
+            "Den anden metrik er mean-level change. Dette begreb måler absolutte stigninger eller fald i befolkningens samlede gennemsnit. Hvis hele din gymnasieklasse bliver væsentligt mere samvittighedsfulde over ti år, er der sket et stort mean-level change, uanset at jeres indbyrdes hakkeorden måske er bevaret."
+          ],
+          "key_points": [
+            "Rank-order stability handler om relativ placering ('plads i køen').",
+            "Mean-level change handler om absolutte stigninger og fald i populationen over tid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mean-level change reflects the degree to which trait levels decrease or increase",
+              "why_it_matters": "Præciserer sondringen mellem absolut og relativ udvikling.",
+              "source_location": "Under The Mean-Level Change of Traits"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 590",
+              "passage": "Whereas rank-order stability indicates the degree to which people experience more or less change relative to one another, mean-level change reflects the degree to which trait levels decrease or increase on average in a population.",
+              "why_it_matters": "Denne formulering udgør den direkte teoretiske definition, som resten af datasættet hviler på."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 589 og 603: The Role of Age and Time",
+          "heading": "Opgøret med Cumulative Continuity: Plateauet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Bliver vi blot mere og mere stædige og rigidt fastlåste i vores personlighed i takt med alderen?",
+          "explanation_paragraphs": [
+            "En af de mest klassiske antagelser inden for udviklingspsykologi kaldes 'The Cumulative Continuity Principle'. Ifølge denne teori skulle personligheden binde sig mere og mere fast, desto ældre vi bliver, og rank-order stabiliteten skulle fortsætte med at stige lineært gennem voksenlivet.",
+            "Bleidorn et al. tester denne antagelse med deres enorme nye datasæt og finder det modsatte i de ældre aldersgrupper. Selvom rank-order stabiliteten skyder kraftigt i vejret gennem barndommen og ungdommen, rammer stigningen et plateau omkring 25-års alderen. Herefter er der praktisk talt ingen yderligere fastlåsning."
+          ],
+          "key_points": [
+            "Rank-order stabiliteten topper markant tidligere end tidligere troet.",
+            "Efter cirka 25-års alderen stabiliseres vores evne til at bevare vores relative placering uden yderligere markant forstening."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "little evidence for increasing rank-order stabilities after Age 25",
+              "why_it_matters": "Det er hovedfundet, der gennembryder et årtier gammelt dogme i feltet.",
+              "source_location": "Abstract og diskussionssektion"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 591 og 603-604: Mean-Level Trajectories",
+          "heading": "The Maturity Principle: Normativ udvikling",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Giver voksenlivets erfaringer et ensartet og forudsigeligt aftryk på os alle?",
+          "explanation_paragraphs": [
+            "Selvom vores relative placering (rank-order) er sat omkring midttyverne, stopper vi ikke med at udvikle os i absolutte tal. Tværtimod udsættes de fleste i denne periode for voksenlivets krav: arbejdsliv, faste forhold og socialt ansvar.",
+            "Dette driver det, der kaldes 'The Maturity Principle'. Det er en observerbar empirisk naturlov for, hvordan mennesker gennemsnitligt modnes. Denne normativt positive modning er primært drevet af store stigninger i tre træk: Conscientiousness, Agreeableness og Emotional Stability. Ændringerne sker hurtigst lige omkring overgangen til voksenlivet."
+          ],
+          "key_points": [
+            "The Maturity Principle dikterer retningen for voksenlivets mean-level udvikling.",
+            "Vi bliver generelt mere samvittighedsfulde, imødekommende og emotionelt stabile."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "Side 602 og 606: The Role of Time",
+          "heading": "Tidens erosion rammer et uigennemtrængeligt bundniveau",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Udhules vores personlighed fuldstændig, hvis der går årtier, eller eksisterer der en uforanderlig essens?",
+          "explanation_paragraphs": [
+            "Når forskere måler test-retest stabilitet over lange intervaller – for eksempel 30 eller 50 år – forventes det, at korrelationerne falder. Mennesker oplever livsbegivenheder, og man vil naturligt fjerne sig fra sin ungdoms personlighedsprofil.",
+            "Analyserne afslører dog en overraskende tidsmæssig grænse. Mens korrelationen falder støt de første mange år mellem målinger, bremser faldet voldsomt og flader ud i en vandret linje. Denne udviskning rammer et asymtotisk bundniveau omkring r = .20. Det tyder stærkt på eksistensen af en vedvarende kernepersonlighed, der aldrig fuldstændig omskrives af omstændighederne."
+          ],
+          "key_points": [
+            "Rank-order stabiliteten falder over tid, men faldet er ikke lineært mod nul.",
+            "Efter årtiers forløb lander stabiliteten på en statistisk bund (r ≈ .20), som indikerer en blivende, essentiel kerne."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "decreases in stability appear to attenuate over longer time lags",
+              "why_it_matters": "Beviser argumentet om en varig personlighedskerne mod en ren 'blank slate' model.",
+              "source_location": "Role of Time under rank-order stability"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Side 605-606: Late Adulthood og Paradox of Aging",
+          "heading": "Alderdommens undtagelse og det stabile indre",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad hænder der i senalderdommen, når livets afvikling og svigtende helbred indtræffer?",
+          "explanation_paragraphs": [
+            "Mod slutningen af livet støder mange på tab af kognitive ressourcer, netværk og social status. Dette pres får gennemsnittet på de fleste adaptive træk, herunder Conscientiousness og Extraversion, til at begynde at falde. 'The Maturity Principle' vendes med andre ord delvist om.",
+            "Der er dog én bemærkelsesværdig og afgørende undtagelse i data. Trækket Emotional Stability nægter at falde. Dette træk fortsætter paradoksalt nok med at opleve markante stigninger dybt ind i alderdommen. Dette fænomen støtter den såkaldte 'paradox of aging' hypotese: Ældre prioriterer mål med følelsesmæssig mening og opnår derigennem en ro, som bevarer eller styrker deres emotionelle balance."
+          ],
+          "key_points": [
+            "Flere personlighedstræk oplever et 'fald' tilbage fra deres højeste niveau under senalderdommen.",
+            "Emotional Stability stiger på trods af helbredstab som det eneste træk frem mod livets slutning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Emotional Stability continues undergoes significant mean-level increases",
+              "why_it_matters": "Illustrerer det særlige mønster ved aldring, der peger på mere end rent biologisk forfald.",
+              "source_location": "Sektionen The Role of Age and Time"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 606",
+              "passage": "Unlike the other traits, Emotional Stability continues undergoes significant mean-level increases up until old age. This finding adds to the broad evidence for a phenomenon sometimes referred to as the “paradox of aging”.",
+              "why_it_matters": "En præcis observation, der nuancerer debatten om uundgåeligt psykologisk forfald."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan kan en befolkning som helhed ændre sig (modnes), mens den enkelte bevarer sin grundlæggende personlighedstype?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En præcis definition af begge begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Bliver vi blot mere og mere stædige og rigidt fastlåste i vores personlighed i takt med alderen?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et specifikt alderstal",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Giver voksenlivets erfaringer et ensartet og forudsigeligt aftryk på os alle?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tre specifikke engelske træk-navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Udhules vores personlighed fuldstændig, hvis der går årtier, eller eksisterer der en uforanderlig essens?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En specifik statistisk asymtote",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvad hænder der i senalderdommen, når livets afvikling og svigtende helbred indtræffer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En beskrivelse af en modgående tendens i et bestemt træk",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvor permanent er personligheden egentlig over et livsforløb, og hvornår låses vores træk fast ifølge den nyeste meta-analytiske empiri?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at sikre, at mekanismerne sidder fast. Tjek og ret kun svarene fra Abridged Reader til allersidst.",
+      "overview": [
+        "Bleidorn et al. (2022) opdaterer markant vores empiriske baseline for livslang personlighedsudvikling.",
+        "Rank-order stabilitet topper overraskende tidligt, hvilket udfordrer forventningen om livslang forstening.",
+        "Den generelle modningsproces fortsætter dog ufortrødent på tværs af bestemte grundtræk."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Det begreb der udelukkende beskriver bevarelsen af den relative placering i en gruppe over tid, kaldes __________ stability.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et engelsk begreb med bindestreg"
+        },
+        {
+          "number": 2,
+          "sentence": "Den markante opdagelse i datasættet var, at evnen til at bevare sin relative rangering stabiliserer sig og rammer et plateau omkring __________ års alderen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et tal"
+        },
+        {
+          "number": 3,
+          "sentence": "Den normativt positive udvikling af personligheden gennem voksenlivet går under navnet The __________ Principle.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et engelsk begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Selvom der går mange årtier mellem personlighedsmålinger, rammer stabilitetsfaldet aldrig nul, men udhules asymtotisk mod bundniveauet r = __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et decimaltal"
+        },
+        {
+          "number": 5,
+          "sentence": "I modsætning til for eksempel Extraversion og Conscientiousness, som falder i alderdommen, oplever trækket __________ Stability en vedholdende stigning helt mod slutningen af livet.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et engelsk træk-navn"
+        },
+        {
+          "number": 6,
+          "sentence": "Når trækkenes absolutte gennemsnitsniveau i populationen går op eller ned, taler forskerne om mean-level __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et enkelt engelsk ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Ideen om 'paradox of aging' dækker over ældres tendens til at bevare høj trivsel til trods for det kognitive og fysiske __________ i livets afslutning.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et dansk substantiv"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to enkle, kontrasterende grafer, der viser henholdsvis den modbeviste, lineære antagelse og Bleidorns faktiske fund omkring stabilitet over tid.",
+          "required_elements": [
+            "En alder-akse: x",
+            "en stabilitet-akse: y",
+            "en lineær 'Cumulative Continuity' linje",
+            "en 'Bleidorn' plateau-kurve med et knæk ved de 25 år"
+          ],
+          "blank_space_hint": "Tegn de to udviklingskurver over for hinanden"
+        },
+        {
+          "number": 2,
+          "task": "Byg en årsags-skitse (boks-til-boks) der mekanisk viser hvordan voksenlivets udvikling udspiller sig jævnfør The Maturity Principle.",
+          "required_elements": [
+            "En startboks: 'Tidligt voksenliv'",
+            "The Maturity Principle som den drivende mekanisme i midten",
+            "pile der udpeger de tre specifikke Big Five-træk der gennemsnitligt opjusteres i den afsluttende boks"
+          ],
+          "blank_space_hint": "Brug tre forbundne kasser til forløbet"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark omsætter de specifikke empiriske fund til mundtlige eksamensargumenter. Øv dig i at sige overgangene højt.",
+      "use_this_text_for": [
+        "At bygge en stenhård empirisk bund under 'Essence vs. Context' diskussionen.",
+        "At demonstrere analytisk overskud ved at skelne stringent mellem individets placering (rank) og populationsgennemsnittet (mean).",
+        "At vise, at personligheden reagerer normativt på alder uden at miste sin essentielle kerne.",
+        "At pille the Cumulative Continuity Principle fra hinanden og trække grænsen skarpt ved voksenlivets begyndelse.",
+        "At fungere som 'det klassiske, naturvidenskabelige blik' på personlighed, før senere lektioner dekonstruerer det med kritisk teori."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essence vs. Context (Meta-perspektiv)",
+          "connection": "Rank-order stabilitetens kerne (r=.20 bundniveauet) forsvarer 'Essence', mens The Maturity Principle indikerer at livsfasen ('Context') generelt tvinger forandringer frem."
+        },
+        {
+          "course_theme": "Critical Psychology (W08L1/W09L1)",
+          "connection": "The Maturity Principle anskues her som 'biologisk modenhed', men senere vil Holzkamp/Dreier argumentere for, at disse stigninger i stabilitet blot er borgerens tilpasning til samfundets krav."
+        },
+        {
+          "course_theme": "The Looping Effect (W11L1)",
+          "connection": "Bleidorn et al. anser personligheden som en naturgenstand, de blot 'måler' passivt. Hacking ville modargumentere, at målinger og aldersidealer i sig selv skaber moving targets, vi prøver at leve op til."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kritisk Personalisme (Stern i W08)",
+          "how_to_compare": "Sammenlign Bleidorns massedata-kvantificering af adskilte Big Five-dimensioner med Sterns stædige krav om at se mennesket som et udeleligt psykofysisk hele (Unitas Multiplex)."
+        },
+        {
+          "compare_with": "Narrativ psykologi (W11L2)",
+          "how_to_compare": "Kontrastér ideen om statiske tids-intervaller hos Bleidorn med ideen om identitet som en livslang, flydende historiefortælling."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme",
+          "how_to_compare": "Spørg om ældre 'naturligt' bliver mere emotionelt stabile, eller om Vestens sproglige diskurser og aldersroller opstiller passive forventninger, som de blot adopterer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du starter med at fremlægge dynamisk personlighed",
+          "use_in_answer": "Definér hurtigt den fundamentale skelnen: 'For at forstå om vi forandres, må vi stringent skille rank-order placering fra gennemsnitlige niveauforskydninger...'",
+          "caution": "Bland dem for guds skyld ikke sammen i det efterfølgende argument."
+        },
+        {
+          "prompt_type": "Når begrebet The Cumulative Continuity Principle bringes op",
+          "use_in_answer": "Brug 25-års plateauet kritisk: 'Tidligere troede vi fejlagtigt på livslang forstening. Bleidorn dokumenterer et skarpt plateau midt i tyverne...'",
+          "caution": "Gør det klart, at plateauet gælder rank-order, mens mean-level jo ufortrødent udvikler sig."
+        },
+        {
+          "prompt_type": "Når du skal balancere biologi mod kontekst (kritisk vinkel)",
+          "use_in_answer": "Angrib forsigtigt den naturlige The Maturity Principle: 'Data er overvældende, men vi bør overveje, hvor stor en del af modningen der er et universelt biologisk pres fremfor vestlige forventninger til arbejdsmarkedet...'",
+          "caution": "Benægt aldrig selve datasættet. Erkend empirien, før du analyserer årsagen."
+        },
+        {
+          "prompt_type": "Når debatten hælder for meget mod tabula rasa (at vi kan blive hvem som helst)",
+          "use_in_answer": "Sig klart, at personligheden har en asymtotisk kerne: 'Selv når der slukkes og tændes for miljøet over årtier, rammer udviskningen aldrig bund. Der hviler en r=.20 essentia-kerne nede under det hele...'",
+          "caution": "Beskriv det ikke som en hård deterministisk skæbne, men en minimal, stabil platform."
+        },
+        {
+          "prompt_type": "Når eksaminator beder om overblikket fremad i kurset",
+          "use_in_answer": "Træk straks tråden til The Looping Effect (Hacking): 'Bleidorn er vores solide base for realistisk epistemologi. Uden dette klassiske naturvidenskabelige anker, giver det ingen mening at læse Hacking senere, fordi...'",
+          "caution": "Hold dekonstruktionen kort. Lad dette være spydspidsen, og slå ned."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at høj rank-order stabilitet betyder manglende udvikling.",
+          "better_reading": "Rank-order fastholder udelukkende din relative plads i feltet; alle i feltet kan sagtens bevæge sig fremad (modnes) samtidig."
+        },
+        {
+          "trap": "At stigningen i personlighedens fastlåsthed (stabilitet) vokser lineært hele livet.",
+          "better_reading": "Rank-order stabilitet flader ud og parkerer på et plateau efter de 25 år."
+        },
+        {
+          "trap": "At antage at senalderdommen indebærer et totalt dyk i alle Big Five træk.",
+          "better_reading": "Emotional Stability afviger fra forfaldet og fortsætter sin opstigning i The Paradox of Aging."
+        },
+        {
+          "trap": "At forudsætte at et interval på et halvt århundrede nødvendigvis udvisker en personlighed fuldstændigt.",
+          "better_reading": "Data beviser at korrelationsfaldet aftager og lander på et fast bundniveau (asymtote på r=.20)."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør kort for forskellen på 'rank-order stability' og 'mean-level change' med udgangspunkt i Bleidorn et al. (2022). Diskutér herefter, hvordan ideen om 'The Maturity Principle' placerer sig i den overordnede kursusspænding mellem Essence og Context.",
+      "mini_exam_answer_plan_slots": [
+        "Definition: Benhård adskillelse af individuel placering og befolkningsgennemsnit.",
+        "Fund 1: Det overraskende 25-års plateau i rank-order vs. myten om livslang forstening.",
+        "Fund 2: The Maturity Principle. Nævn de 3 specifikke træk, der modnes ufortrødent.",
+        "Essence-sporet: Den ubrydelige r=.20 asymtotiske kerne trodser årtiers erosion.",
+        "Context-sporet: Måske er selve modningen ikke natur, men stærke samfundsforventninger til individet."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l2-bleidorn-et-al-2022-25c2d2de",
+      "lecture_key": "W02L2",
+      "source_title": "Bleidorn et al. (2022)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kildeteksten. Den opstiller kerneproblemet og lister de præcise delproblemer, du skal kunne løse undervejs.",
+      "teaser_paragraphs": [
+        "Forestil dig, at du møder en ven fra studiet igen om 30 år. Vil du genkende deres personlighed, eller har tiden fundamentalt omskrevet den, de er? Denne tekst angriber det klassiske spørgsmål om, hvorvidt vi er fastlåst af en indre essens eller formes permanent af tiden.",
+        "I årtier har personlighedspsykologien lænet sig op ad 'the cumulative continuity principle'. Den dominerende antagelse var simpel: Jo ældre vi bliver, desto mere ubøjelig og stabil bliver vores personlighed. Aldring blev set som en lineær fastlåsningsproces.",
+        "Bleidorn et al. (2022) trækker i bremsen. Ved hjælp af et massivt datasæt på tværs af hundreder af studier tester de præcis, hvornår i livet forandringer egentlig finder sted. Her skelner de knivskarpt mellem din relative placering over for andre (rank-order stability) og befolkningsgruppens gennemsnitlige stigning i et træk (mean-level change).",
+        "Gennem deres data afdækker de en afgørende overraskelse. Der er faktisk *little evidence for increasing rank-order stabilities after Age 25*. Den livslange forstening er en myte. Personligheden krystalliserer tidligt, men fastlåsningen stagnerer brat.",
+        "Samtidig ændrer vi os markant på gennemsnitsniveau. Næsten alle gennemgår en udvikling drevet af *the maturity principle*, hvor vi over tid bliver mere samvittighedsfulde og følelsesmæssigt stabile. Selv i alderdommen, hvor helbredet svigter, fortsætter vores modningsproces i et fascinerende *paradox of aging*.",
+        "Denne læsning giver dig det moderne empiriske baseline for personlighedsudvikling. Når kurset senere bevæger sig ind i kritisk psykologi og socialkonstruktionisme, er det præcis dette normative billede af biologisk 'modning', der vil blive angrebet."
+      ],
+      "main_problem": "Hvor permanent er personligheden egentlig over et livsforløb, og hvornår låses vores træk fast ifølge den nyeste meta-analytiske empiri?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er den afgørende forskel på rank-order stability og mean-level change?",
+          "why_it_matters": "Uden denne skelnen vil man forveksle individuel fastlåsning med generel aldersmodning.",
+          "answer_form": "En præcis definition af begge begreber"
+        },
+        {
+          "number": 2,
+          "question": "Hvornår i livet stagnerer stigningen i vores rank-order stabilitet?",
+          "why_it_matters": "Det afkræfter antagelsen om, at vi bliver mere og mere rigide gennem hele voksenlivet.",
+          "answer_form": "Et specifikt alderstal"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke specifikke træk stiger i gennemsnit som følge af The Maturity Principle?",
+          "why_it_matters": "Det definerer den normative, fremadskridende psykologiske udvikling i voksenlivet.",
+          "answer_form": "Tre specifikke engelske træk-navne"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er den absolutte bundgrænse for stabilitet, selv når der går mange årtier mellem målingerne?",
+          "why_it_matters": "Det beviser, at en kerne af personlighed bevares, og at tid aldrig sletter alt fuldstændigt.",
+          "answer_form": "En specifik statistisk asymtote"
+        },
+        {
+          "number": 5,
+          "question": "Hvordan udvikler Emotional Stability sig unikt i senalderdommen sammenlignet med de andre træk?",
+          "why_it_matters": "Det fanger et centralt paradoks vedrørende trivsel og aldring, som ofte ignoreres i forfaldsfortællinger.",
+          "answer_form": "En beskrivelse af en modgående tendens i et bestemt træk"
+        }
+      ],
+      "why_this_text_matters": "Forståelsen af Essence vs. Context i personlighedspsykologien afhænger af, at vi kender det moderne empiriske udgangspunkt for biologisk forankret modning og tidsmæssig påvirkning.",
+      "overview": [
+        "En state-of-the-art meta-analyse, der tegner det mest præcise kort over personlighedens forandring over hele livsbuen.",
+        "Reviderer The Cumulative Continuity Principle ved at påvise et brat plateau for personlighedens fastlåsning i ungdommen.",
+        "Bekræfter The Maturity Principle som den fremherskende drivkraft bag vores gennemsnitlige udvikling frem mod midtlivet."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektionerne 'How Rank-Order Stable...' og 'How Do Personality Trait Levels Change...'",
+          "task": "Afgør forskellen på rank-order og mean-level koncepterne.",
+          "why_it_matters": "Det er metodiske grundsten for resten af teksten.",
+          "stop_signal": "Når forskellen på d og r giver mening"
+        },
+        {
+          "number": 2,
+          "source_location": "Diskussionsafsnittet startende med 'The Role of Age and Time...'",
+          "task": "Find det præcise alderstal, hvor rank-order stabiliteten plateau'er.",
+          "why_it_matters": "Dette fund er den centrale opdatering af tidligere viden.",
+          "stop_signal": "Når plateau-alderen er identificeret og noteret"
+        },
+        {
+          "number": 3,
+          "source_location": "Fortsat i diskussionsafsnittet under the maturity principle",
+          "task": "Identificer hvilke tre træk, der driver den generelle psykologiske modning.",
+          "why_it_matters": "Dette danner baseline for kursussporet om normativ udvikling.",
+          "stop_signal": "Når de tre modenheds-træk er fundet"
+        },
+        {
+          "number": 4,
+          "source_location": "Underafsnittet om 'exponential models' og tidsintervaller",
+          "task": "Aflæs asymtoten, hvor stabiliteten rammer bunden.",
+          "why_it_matters": "Det er beviset for en uforanderlig essens-kerne i personligheden.",
+          "stop_signal": "Når tallet for bundniveauet er fundet"
+        },
+        {
+          "number": 5,
+          "source_location": "Diskussionsafsnittets konklusioner om senalderdom",
+          "task": "Find undtagelsen til den generelle tendens til forfald sent i livet.",
+          "why_it_matters": "Det understreger kompleksiteten i, hvordan alder og kontekst spiller sammen.",
+          "stop_signal": "Når du kan forklare the paradox of aging gennem det ene afvigende træk"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "little evidence for increasing rank-order stabilities after Age 25",
+          "why": "Afkræfter myten om lineær fastlåsning af personligheden livet ud.",
+          "where_to_look": "Begyndelsen af teksten, omkring abstract/intro."
+        },
+        {
+          "target": "mean-level change reflects the degree to which trait levels decrease or increase",
+          "why": "Kernen i den konceptuelle forskel fra den relative rank-order placering.",
+          "where_to_look": "Sektionen om How Do Personality Trait Levels Change."
+        },
+        {
+          "target": "decreases in stability appear to attenuate over longer time lags",
+          "why": "Definerer selve bundniveauet for personlighedsforandring; vi ændres aldrig totalt.",
+          "where_to_look": "Gennemgangen af the role of time for rank-order stability."
+        },
+        {
+          "target": "Emotional Stability continues undergoes significant mean-level increases",
+          "why": "Fremhæver den vigtigste afvigelse fra det generelle tab af niveau i alderdommen.",
+          "where_to_look": "Diskussionen af late adulthood."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De dybe matematiske detaljer i spline-modeller og beregningen af Cohen's d.",
+        "De komplekse statistiske grafer med konfidensintervaller for hvert enkelt snævert underfacet.",
+        "Moderator-analyserne vedrørende publiceringsår eller metodiske fejlmarginer."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af teksten, omkring abstract/intro.",
+          "excerpt": "little evidence for increasing rank-order stabilities after Age 25",
+          "open_question": "Hvad er den afgørende forskel på rank-order stability og mean-level change?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen om How Do Personality Trait Levels Change.",
+          "excerpt": "mean-level change reflects the degree to which trait levels decrease or increase",
+          "open_question": "Hvornår i livet stagnerer stigningen i vores rank-order stabilitet?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af the role of time for rank-order stability.",
+          "excerpt": "decreases in stability appear to attenuate over longer time lags",
+          "open_question": "Hvilke specifikke træk stiger i gennemsnit som følge af The Maturity Principle?"
+        },
+        {
+          "number": "4",
+          "source_location": "Diskussionen af late adulthood.",
+          "excerpt": "Emotional Stability continues undergoes significant mean-level increases",
+          "open_question": "Hvad er den absolutte bundgrænse for stabilitet, selv når der går mange årtier mellem målingerne?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede læsevej til at navigere direkte i tekstens argumentative knudepunkter. Løs de tilhørende problemstillinger, efterhånden som du rammer dem.",
+      "coverage_note": "Fokuserer udelukkende på hovedargumenterne bag rank-order stabilitet, The Maturity Principle og de tidsmæssige grænser for personlighedsforandring.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Side 589-590: How Rank-Order Stable / How Do Personality Trait Levels Change",
+          "heading": "At måle stabilitet: De to dominerende metrikker",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan kan en befolkning som helhed ændre sig (modnes), mens den enkelte bevarer sin grundlæggende personlighedstype?",
+          "explanation_paragraphs": [
+            "For at forstå personlighedsudvikling, skelner empirisk forskning strengt mellem to forskellige metrikker. Den første er rank-order stability. Denne parameter måler udelukkende din placering relativt til andre i en gruppe. Hvis du var den mest ekstroverte person i din klasse som 15-årig, og du stadig er det som 45-årig, har du høj rank-order stabilitet.",
+            "Den anden metrik er mean-level change. Dette begreb måler absolutte stigninger eller fald i befolkningens samlede gennemsnit. Hvis hele din gymnasieklasse bliver væsentligt mere samvittighedsfulde over ti år, er der sket et stort mean-level change, uanset at jeres indbyrdes hakkeorden måske er bevaret."
+          ],
+          "key_points": [
+            "Rank-order stability handler om relativ placering ('plads i køen').",
+            "Mean-level change handler om absolutte stigninger og fald i populationen over tid."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "mean-level change reflects the degree to which trait levels decrease or increase",
+              "why_it_matters": "Præciserer sondringen mellem absolut og relativ udvikling.",
+              "source_location": "Under The Mean-Level Change of Traits"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 590",
+              "passage": "Whereas rank-order stability indicates the degree to which people experience more or less change relative to one another, mean-level change reflects the degree to which trait levels decrease or increase on average in a population.",
+              "why_it_matters": "Denne formulering udgør den direkte teoretiske definition, som resten af datasættet hviler på."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Side 589 og 603: The Role of Age and Time",
+          "heading": "Opgøret med Cumulative Continuity: Plateauet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Bliver vi blot mere og mere stædige og rigidt fastlåste i vores personlighed i takt med alderen?",
+          "explanation_paragraphs": [
+            "En af de mest klassiske antagelser inden for udviklingspsykologi kaldes 'The Cumulative Continuity Principle'. Ifølge denne teori skulle personligheden binde sig mere og mere fast, desto ældre vi bliver, og rank-order stabiliteten skulle fortsætte med at stige lineært gennem voksenlivet.",
+            "Bleidorn et al. tester denne antagelse med deres enorme nye datasæt og finder det modsatte i de ældre aldersgrupper. Selvom rank-order stabiliteten skyder kraftigt i vejret gennem barndommen og ungdommen, rammer stigningen et plateau omkring 25-års alderen. Herefter er der praktisk talt ingen yderligere fastlåsning."
+          ],
+          "key_points": [
+            "Rank-order stabiliteten topper markant tidligere end tidligere troet.",
+            "Efter cirka 25-års alderen stabiliseres vores evne til at bevare vores relative placering uden yderligere markant forstening."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "little evidence for increasing rank-order stabilities after Age 25",
+              "why_it_matters": "Det er hovedfundet, der gennembryder et årtier gammelt dogme i feltet.",
+              "source_location": "Abstract og diskussionssektion"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Side 591 og 603-604: Mean-Level Trajectories",
+          "heading": "The Maturity Principle: Normativ udvikling",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Giver voksenlivets erfaringer et ensartet og forudsigeligt aftryk på os alle?",
+          "explanation_paragraphs": [
+            "Selvom vores relative placering (rank-order) er sat omkring midttyverne, stopper vi ikke med at udvikle os i absolutte tal. Tværtimod udsættes de fleste i denne periode for voksenlivets krav: arbejdsliv, faste forhold og socialt ansvar.",
+            "Dette driver det, der kaldes 'The Maturity Principle'. Det er en observerbar empirisk naturlov for, hvordan mennesker gennemsnitligt modnes. Denne normativt positive modning er primært drevet af store stigninger i tre træk: Conscientiousness, Agreeableness og Emotional Stability. Ændringerne sker hurtigst lige omkring overgangen til voksenlivet."
+          ],
+          "key_points": [
+            "The Maturity Principle dikterer retningen for voksenlivets mean-level udvikling.",
+            "Vi bliver generelt mere samvittighedsfulde, imødekommende og emotionelt stabile."
+          ],
+          "quote_anchors": [],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 4,
+          "source_location": "Side 602 og 606: The Role of Time",
+          "heading": "Tidens erosion rammer et uigennemtrængeligt bundniveau",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Udhules vores personlighed fuldstændig, hvis der går årtier, eller eksisterer der en uforanderlig essens?",
+          "explanation_paragraphs": [
+            "Når forskere måler test-retest stabilitet over lange intervaller – for eksempel 30 eller 50 år – forventes det, at korrelationerne falder. Mennesker oplever livsbegivenheder, og man vil naturligt fjerne sig fra sin ungdoms personlighedsprofil.",
+            "Analyserne afslører dog en overraskende tidsmæssig grænse. Mens korrelationen falder støt de første mange år mellem målinger, bremser faldet voldsomt og flader ud i en vandret linje. Denne udviskning rammer et asymtotisk bundniveau omkring r = .20. Det tyder stærkt på eksistensen af en vedvarende kernepersonlighed, der aldrig fuldstændig omskrives af omstændighederne."
+          ],
+          "key_points": [
+            "Rank-order stabiliteten falder over tid, men faldet er ikke lineært mod nul.",
+            "Efter årtiers forløb lander stabiliteten på en statistisk bund (r ≈ .20), som indikerer en blivende, essentiel kerne."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "decreases in stability appear to attenuate over longer time lags",
+              "why_it_matters": "Beviser argumentet om en varig personlighedskerne mod en ren 'blank slate' model.",
+              "source_location": "Role of Time under rank-order stability"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Side 605-606: Late Adulthood og Paradox of Aging",
+          "heading": "Alderdommens undtagelse og det stabile indre",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad hænder der i senalderdommen, når livets afvikling og svigtende helbred indtræffer?",
+          "explanation_paragraphs": [
+            "Mod slutningen af livet støder mange på tab af kognitive ressourcer, netværk og social status. Dette pres får gennemsnittet på de fleste adaptive træk, herunder Conscientiousness og Extraversion, til at begynde at falde. 'The Maturity Principle' vendes med andre ord delvist om.",
+            "Der er dog én bemærkelsesværdig og afgørende undtagelse i data. Trækket Emotional Stability nægter at falde. Dette træk fortsætter paradoksalt nok med at opleve markante stigninger dybt ind i alderdommen. Dette fænomen støtter den såkaldte 'paradox of aging' hypotese: Ældre prioriterer mål med følelsesmæssig mening og opnår derigennem en ro, som bevarer eller styrker deres emotionelle balance."
+          ],
+          "key_points": [
+            "Flere personlighedstræk oplever et 'fald' tilbage fra deres højeste niveau under senalderdommen.",
+            "Emotional Stability stiger på trods af helbredstab som det eneste træk frem mod livets slutning."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "Emotional Stability continues undergoes significant mean-level increases",
+              "why_it_matters": "Illustrerer det særlige mønster ved aldring, der peger på mere end rent biologisk forfald.",
+              "source_location": "Sektionen The Role of Age and Time"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Side 606",
+              "passage": "Unlike the other traits, Emotional Stability continues undergoes significant mean-level increases up until old age. This finding adds to the broad evidence for a phenomenon sometimes referred to as the “paradox of aging”.",
+              "why_it_matters": "En præcis observation, der nuancerer debatten om uundgåeligt psykologisk forfald."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan kan en befolkning som helhed ændre sig (modnes), mens den enkelte bevarer sin grundlæggende personlighedstype?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En præcis definition af begge begreber",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Bliver vi blot mere og mere stædige og rigidt fastlåste i vores personlighed i takt med alderen?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "Et specifikt alderstal",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Giver voksenlivets erfaringer et ensartet og forudsigeligt aftryk på os alle?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Tre specifikke engelske træk-navne",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Udhules vores personlighed fuldstændig, hvis der går årtier, eller eksisterer der en uforanderlig essens?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En specifik statistisk asymtote",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvad hænder der i senalderdommen, når livets afvikling og svigtende helbred indtræffer?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En beskrivelse af en modgående tendens i et bestemt træk",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvor permanent er personligheden egentlig over et livsforløb, og hvornår låses vores træk fast ifølge den nyeste meta-analytiske empiri?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at sikre, at mekanismerne sidder fast. Tjek og ret kun svarene fra Abridged Reader til allersidst.",
+      "overview": [
+        "Bleidorn et al. (2022) opdaterer markant vores empiriske baseline for livslang personlighedsudvikling.",
+        "Rank-order stabilitet topper overraskende tidligt, hvilket udfordrer forventningen om livslang forstening.",
+        "Den generelle modningsproces fortsætter dog ufortrødent på tværs af bestemte grundtræk."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Det begreb der udelukkende beskriver bevarelsen af den relative placering i en gruppe over tid, kaldes __________ stability.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et engelsk begreb med bindestreg"
+        },
+        {
+          "number": 2,
+          "sentence": "Den markante opdagelse i datasættet var, at evnen til at bevare sin relative rangering stabiliserer sig og rammer et plateau omkring __________ års alderen.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et tal"
+        },
+        {
+          "number": 3,
+          "sentence": "Den normativt positive udvikling af personligheden gennem voksenlivet går under navnet The __________ Principle.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et engelsk begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Selvom der går mange årtier mellem personlighedsmålinger, rammer stabilitetsfaldet aldrig nul, men udhules asymtotisk mod bundniveauet r = __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et decimaltal"
+        },
+        {
+          "number": 5,
+          "sentence": "I modsætning til for eksempel Extraversion og Conscientiousness, som falder i alderdommen, oplever trækket __________ Stability en vedholdende stigning helt mod slutningen af livet.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et engelsk træk-navn"
+        },
+        {
+          "number": 6,
+          "sentence": "Når trækkenes absolutte gennemsnitsniveau i populationen går op eller ned, taler forskerne om mean-level __________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et enkelt engelsk ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Ideen om 'paradox of aging' dækker over ældres tendens til at bevare høj trivsel til trods for det kognitive og fysiske __________ i livets afslutning.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et dansk substantiv"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to enkle, kontrasterende grafer, der viser henholdsvis den modbeviste, lineære antagelse og Bleidorns faktiske fund omkring stabilitet over tid.",
+          "required_elements": [
+            "En alder-akse: x",
+            "en stabilitet-akse: y",
+            "en lineær 'Cumulative Continuity' linje",
+            "en 'Bleidorn' plateau-kurve med et knæk ved de 25 år"
+          ],
+          "blank_space_hint": "Tegn de to udviklingskurver over for hinanden"
+        },
+        {
+          "number": 2,
+          "task": "Byg en årsags-skitse (boks-til-boks) der mekanisk viser hvordan voksenlivets udvikling udspiller sig jævnfør The Maturity Principle.",
+          "required_elements": [
+            "En startboks: 'Tidligt voksenliv'",
+            "The Maturity Principle som den drivende mekanisme i midten",
+            "pile der udpeger de tre specifikke Big Five-træk der gennemsnitligt opjusteres i den afsluttende boks"
+          ],
+          "blank_space_hint": "Brug tre forbundne kasser til forløbet"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Dette ark omsætter de specifikke empiriske fund til mundtlige eksamensargumenter. Øv dig i at sige overgangene højt.",
+      "use_this_text_for": [
+        "At bygge en stenhård empirisk bund under 'Essence vs. Context' diskussionen.",
+        "At demonstrere analytisk overskud ved at skelne stringent mellem individets placering (rank) og populationsgennemsnittet (mean).",
+        "At vise, at personligheden reagerer normativt på alder uden at miste sin essentielle kerne.",
+        "At pille the Cumulative Continuity Principle fra hinanden og trække grænsen skarpt ved voksenlivets begyndelse.",
+        "At fungere som 'det klassiske, naturvidenskabelige blik' på personlighed, før senere lektioner dekonstruerer det med kritisk teori."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Essence vs. Context (Meta-perspektiv)",
+          "connection": "Rank-order stabilitetens kerne (r=.20 bundniveauet) forsvarer 'Essence', mens The Maturity Principle indikerer at livsfasen ('Context') generelt tvinger forandringer frem."
+        },
+        {
+          "course_theme": "Critical Psychology (W08L1/W09L1)",
+          "connection": "The Maturity Principle anskues her som 'biologisk modenhed', men senere vil Holzkamp/Dreier argumentere for, at disse stigninger i stabilitet blot er borgerens tilpasning til samfundets krav."
+        },
+        {
+          "course_theme": "The Looping Effect (W11L1)",
+          "connection": "Bleidorn et al. anser personligheden som en naturgenstand, de blot 'måler' passivt. Hacking ville modargumentere, at målinger og aldersidealer i sig selv skaber moving targets, vi prøver at leve op til."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Kritisk Personalisme (Stern i W08)",
+          "how_to_compare": "Sammenlign Bleidorns massedata-kvantificering af adskilte Big Five-dimensioner med Sterns stædige krav om at se mennesket som et udeleligt psykofysisk hele (Unitas Multiplex)."
+        },
+        {
+          "compare_with": "Narrativ psykologi (W11L2)",
+          "how_to_compare": "Kontrastér ideen om statiske tids-intervaller hos Bleidorn med ideen om identitet som en livslang, flydende historiefortælling."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme",
+          "how_to_compare": "Spørg om ældre 'naturligt' bliver mere emotionelt stabile, eller om Vestens sproglige diskurser og aldersroller opstiller passive forventninger, som de blot adopterer."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Når du starter med at fremlægge dynamisk personlighed",
+          "use_in_answer": "Definér hurtigt den fundamentale skelnen: 'For at forstå om vi forandres, må vi stringent skille rank-order placering fra gennemsnitlige niveauforskydninger...'",
+          "caution": "Bland dem for guds skyld ikke sammen i det efterfølgende argument."
+        },
+        {
+          "prompt_type": "Når begrebet The Cumulative Continuity Principle bringes op",
+          "use_in_answer": "Brug 25-års plateauet kritisk: 'Tidligere troede vi fejlagtigt på livslang forstening. Bleidorn dokumenterer et skarpt plateau midt i tyverne...'",
+          "caution": "Gør det klart, at plateauet gælder rank-order, mens mean-level jo ufortrødent udvikler sig."
+        },
+        {
+          "prompt_type": "Når du skal balancere biologi mod kontekst (kritisk vinkel)",
+          "use_in_answer": "Angrib forsigtigt den naturlige The Maturity Principle: 'Data er overvældende, men vi bør overveje, hvor stor en del af modningen der er et universelt biologisk pres fremfor vestlige forventninger til arbejdsmarkedet...'",
+          "caution": "Benægt aldrig selve datasættet. Erkend empirien, før du analyserer årsagen."
+        },
+        {
+          "prompt_type": "Når debatten hælder for meget mod tabula rasa (at vi kan blive hvem som helst)",
+          "use_in_answer": "Sig klart, at personligheden har en asymtotisk kerne: 'Selv når der slukkes og tændes for miljøet over årtier, rammer udviskningen aldrig bund. Der hviler en r=.20 essentia-kerne nede under det hele...'",
+          "caution": "Beskriv det ikke som en hård deterministisk skæbne, men en minimal, stabil platform."
+        },
+        {
+          "prompt_type": "Når eksaminator beder om overblikket fremad i kurset",
+          "use_in_answer": "Træk straks tråden til The Looping Effect (Hacking): 'Bleidorn er vores solide base for realistisk epistemologi. Uden dette klassiske naturvidenskabelige anker, giver det ingen mening at læse Hacking senere, fordi...'",
+          "caution": "Hold dekonstruktionen kort. Lad dette være spydspidsen, og slå ned."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at høj rank-order stabilitet betyder manglende udvikling.",
+          "better_reading": "Rank-order fastholder udelukkende din relative plads i feltet; alle i feltet kan sagtens bevæge sig fremad (modnes) samtidig."
+        },
+        {
+          "trap": "At stigningen i personlighedens fastlåsthed (stabilitet) vokser lineært hele livet.",
+          "better_reading": "Rank-order stabilitet flader ud og parkerer på et plateau efter de 25 år."
+        },
+        {
+          "trap": "At antage at senalderdommen indebærer et totalt dyk i alle Big Five træk.",
+          "better_reading": "Emotional Stability afviger fra forfaldet og fortsætter sin opstigning i The Paradox of Aging."
+        },
+        {
+          "trap": "At forudsætte at et interval på et halvt århundrede nødvendigvis udvisker en personlighed fuldstændigt.",
+          "better_reading": "Data beviser at korrelationsfaldet aftager og lander på et fast bundniveau (asymtote på r=.20)."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør kort for forskellen på 'rank-order stability' og 'mean-level change' med udgangspunkt i Bleidorn et al. (2022). Diskutér herefter, hvordan ideen om 'The Maturity Principle' placerer sig i den overordnede kursusspænding mellem Essence og Context.",
+      "mini_exam_answer_plan_slots": [
+        "Definition: Benhård adskillelse af individuel placering og befolkningsgennemsnit.",
+        "Fund 1: Det overraskende 25-års plateau i rank-order vs. myten om livslang forstening.",
+        "Fund 2: The Maturity Principle. Nævn de 3 specifikke træk, der modnes ufortrødent.",
+        "Essence-sporet: Den ubrydelige r=.20 asymtotiske kerne trodser årtiers erosion.",
+        "Context-sporet: Måske er selve modningen ikke natur, men stærke samfundsforventninger til individet."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

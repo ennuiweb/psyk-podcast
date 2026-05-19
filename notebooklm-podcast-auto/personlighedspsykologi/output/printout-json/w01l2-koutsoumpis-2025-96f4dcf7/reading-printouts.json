@@ -1,0 +1,893 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:16:48Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "3cb75347be08cdbd3718a9201023a5c086fb755d02420410255e2bd17a06fd06",
+    "source_files_signature": "c58682051f369c8ed4fea0160cd475cb9330a09507ebfe202bf2df71e72f3cda",
+    "source_card": "7342b4cad3be12abc5172f87be193df56b1bd8ad6bab8e7b167ef3b87b085ff5",
+    "revised_lecture_substrate": "394dd67b060cb71fcc5f77b4fdadc57371b50c3b057f653cfcb9cab7e735a15f",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+    "lecture_key": "W01L2",
+    "title": "Koutsoumpis (2025)",
+    "reading_title": "Koutsoumpis (2025)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "short",
+    "page_count": 8,
+    "estimated_token_count": 5200,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W1L2 Personality assessment/W1L2 Koutsoumpis (2025).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "short",
+    "signals": {
+      "length_band": "short",
+      "page_count": 8,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 3,
+        "max": 4
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 3
+      },
+      "subproblems": {
+        "min": 3,
+        "max": 4
+      },
+      "reading_route": {
+        "min": 3,
+        "max": 4
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 3
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 4,
+        "max": 5
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 5,
+        "max": 6
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 3,
+        "max": 4
+      },
+      "course_connections": {
+        "min": 2,
+        "max": 3
+      },
+      "comparison_targets": {
+        "min": 2,
+        "max": 3
+      },
+      "exam_moves": {
+        "min": 3,
+        "max": 4
+      },
+      "misunderstanding_traps": {
+        "min": 2,
+        "max": 3
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 3,
+        "max": 4
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+      "lecture_key": "W01L2",
+      "source_title": "Koutsoumpis (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne korte introduktion for at se tekstens kernekonflikt. Hold de tre underproblemer i baghovedet som din mission, mens du læser teksten igennem.",
+      "teaser_paragraphs": [
+        "Traditionelt har personlighedspsykologien bedt dig udfylde et spørgeskema for at afsløre, hvem du er. Dine svar blev opfattet som den sande kerne, der derefter kunne bruges til at forudsige din fremtidige adfærd. Men hvad nu hvis vi vender årsagskæden på hovedet?",
+        "Moderne maskinlæring (ML-PA) ændrer spillets regler fuldstændig. Her antager man i stedet, at *behavior becomes the independent variable*. Algoritmen analyserer din stemmeføring, dine ansigtsudtryk eller dine Facebook-likes, og bruger derefter denne adfærd til at gætte dine personlighedstræk.",
+        "Det skaber et alvorligt metodisk problem for feltet. Algoritmerne viser sig nemlig at ramme markant tættere på, når de skal forudsige *andres* vurdering af dig, end når de skal forudsige din *egen* vurdering. Måler vi så stadig 'personlighed' som en indre sandhed, eller måler vi blot et ydre rygte?",
+        "Teksten tvinger os samtidig til at se kritisk på måleværktøjets objektivitet. Hvis historiske menneskelige data rummer fordomme, risikerer maskinlæringen blot at automatisere dem. Der opstår en hård afvejning: jo mere vi forsøger at fjerne skævheder i systemet, jo dårligere præsterer algoritmen ofte generelt."
+      ],
+      "main_problem": "Hvordan forandrer maskinlæring selve definitionen af personlighed fra at være en indre årsag til at blive et ydre, forudsagt resultat?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan vendes rollen for afhængige og uafhængige variabler om i maskinlæringsbaseret måling?",
+          "why_it_matters": "Det illustrerer det fundamentale epistemologiske skift i måden, psykologien udvinder data om individet.",
+          "answer_form": "En kort kontrast mellem to modeller"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er algoritmerne mere præcise til at forudsige observatørers vurdering end personens egen selvrapportering?",
+          "why_it_matters": "Det introducerer en kritisk skillelinje mellem indre essens (hvad jeg tænker) og observerbar kontekst (hvad andre ser).",
+          "answer_form": "1-2 kausale mekanismer"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke to distinkte kilder til algoritmisk bias præsenterer teksten?",
+          "why_it_matters": "Det afliver myten om neutral objektivitet og viser, hvor fejlene bliver indkodet.",
+          "answer_form": "To kategorier"
+        }
+      ],
+      "why_this_text_matters": "Teksten etablerer den moderne 'objektive' bundlinje for personlighedsmåling. Den er afgørende, fordi dens meget blinde vinkler omkring data og bias udgør det præcise afsæt for kursets senere kritiske og poststrukturalistiske dekonstruktioner af subjektet.",
+      "overview": [
+        "Teksten gennemgår hvordan maskinlæring skifter afhængige og uafhængige variabler i psykologisk måling.",
+        "Den påviser en højere præcision over for eksterne observatørers vurderinger frem for individets egenrapportering.",
+        "Den kortlægger afvejningen mellem at bevare en algoritmes forudsigelseskraft og at udbedre dens indbyggede fordomme."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Introduction (s. 1)",
+          "task": "Find beskrivelsen af, hvordan variabler bytter plads.",
+          "why_it_matters": "Det er tekstens tekniske og metodiske hovedpræmis.",
+          "stop_signal": "når du når til sektionen Validity på side 2"
+        },
+        {
+          "number": 2,
+          "source_location": "Construct validity (s. 2)",
+          "task": "Identificér forklaringen på forskellen mellem self-reports og observer reports via SOKA-modellen.",
+          "why_it_matters": "Det understøtter kursets skel mellem ydre rygte og indre identitet.",
+          "stop_signal": "når afsnittet om Nomological network starter"
+        },
+        {
+          "number": 3,
+          "source_location": "Algorithmic bias (s. 6)",
+          "task": "Skil de to typer af bias fra hinanden.",
+          "why_it_matters": "Viser hvordan sociokulturelle antagelser bliver bygget ind i måleværktøjet.",
+          "stop_signal": "ved overskriften Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "behavior becomes the independent variable and personality traits the dependent variables",
+          "why": "Definerer det direkte metodiske skift.",
+          "where_to_look": "Introduction"
+        },
+        {
+          "target": "larger for observer compared to self-reported personality traits",
+          "why": "Hovedkonklusionen om algoritmens evne til at fange det ydre frem for det indre.",
+          "where_to_look": "Construct validity"
+        },
+        {
+          "target": "attractive job applicants receiving higher job interview scores",
+          "why": "Et meget konkret eksempel på, hvordan menneskelige bias overføres til data.",
+          "where_to_look": "Algorithmic bias"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske lister af korrelationskoefficienter (Pearson r) i tabellerne.",
+        "Navnene på de specifikke naturlige sprogmodeller (f.eks. BERT vs. binary unigrams)."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Introduction",
+          "excerpt": "behavior becomes the independent variable and personality traits the dependent variables",
+          "open_question": "Hvordan vendes rollen for afhængige og uafhængige variabler om i maskinlæringsbaseret måling?"
+        },
+        {
+          "number": "2",
+          "source_location": "Construct validity",
+          "excerpt": "larger for observer compared to self-reported personality traits",
+          "open_question": "Hvorfor er algoritmerne mere præcise til at forudsige observatørers vurdering end personens egen selvrapportering?"
+        },
+        {
+          "number": "3",
+          "source_location": "Algorithmic bias",
+          "excerpt": "attractive job applicants receiving higher job interview scores",
+          "open_question": "Hvilke to distinkte kilder til algoritmisk bias præsenterer teksten?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse opgaverne på de næste ark. Sektionerne dækker de centrale metodiske og epistemologiske træk i teksten.",
+      "coverage_note": "Fokuserer på paradigmeskiftet i måling, asymmetrien i datakilderne og mekanismerne for bias, mens rent statistiske udregninger er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Introduction (s. 1)",
+          "heading": "Det metodiske paradigmeskift",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan bytter algoritmer om på, hvad der er årsag og virkning i forskningsdesignet?",
+          "explanation_paragraphs": [
+            "Traditionel personlighedsforskning bruger træk som udgangspunktet. Her er spørgeskemasvar (personlighed) den uafhængige variabel, der bruges til at forudsige fremtidige udfald som fx jobpræstation, som bliver den afhængige variabel.",
+            "Maskinlæringsbaseret vurdering (ML-PA) bytter direkte rundt på dette. Her opsamler forskerne først digitale fodspor, ansigtsudtryk eller tekst. Denne konkrete adfærd gøres nu til den uafhængige variabel (input). Modellen trænes så til at gætte personens personlighedstræk, som hermed bliver den afhængige variabel (output).",
+            "Dette skift betyder, at testen ikke længere forsøger at kortlægge det hele menneske. Den kan kun fange den del af personligheden, der manifesterer sig i det specifikke sæt af observerbar adfærd, som algoritmen har fået adgang til."
+          ],
+          "key_points": [
+            "Traditionelt mønster: Personlighed (uafhængig) forudsiger Adfærd (afhængig).",
+            "ML-PA mønster: Adfærd (uafhængig) forudsiger Personlighed (afhængig).",
+            "Måleværktøjet begrænses til kun at opsnappe den varians, der er fysisk observerbar."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "behavior becomes the independent variable",
+              "why_it_matters": "Markeringspunkt for vendepunktet i dataflowet.",
+              "source_location": "Introduction"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Introduction",
+              "passage": "(...) in personality research, personality traits serve as the independent variables (...) Instead, in machine learning-based personality assessment (...) behavior becomes the independent variable and personality traits the dependent variables.",
+              "why_it_matters": "Det formelle bevis for den vendte logik, som er tekstens vigtigste metodiske pointe."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Construct validity (s. 2)",
+          "heading": "Sandheden om selvet vs. andre",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor har modellen lettere ved at forudsige hvad andre mener om dig, end hvad du mener om dig selv?",
+          "explanation_paragraphs": [
+            "Resultaterne viser, at ML-PA er markant mere præcis, når den skal forudsige observatørers vurderinger (andre mennesker) sammenlignet med individets egne selvrapporter. For at forklare dette trækker forfatteren på SOKA-modellen (Self-Other Knowledge Asymmetry).",
+            "Modellen forklarer, at eksterne observatører baserer deres bedømmelse på synlig, evaluerende adfærd, såsom stemmeføring eller ansigtsudtryk. Fordi maskinlæringen udelukkende fodres med netop disse ydre observerbare datapunkter, overlapper algoritmens grundlag næsten perfekt med observatørens.",
+            "Personen selv har derimod adgang til indre tanker, følelser og motiver, som hverken en fremmed observatør eller en algoritme kan se. Derfor vil algoritmens resultat altid ligne 'rygtet' mere end 'identiteten'."
+          ],
+          "key_points": [
+            "Algoritmer forudsiger observer reports mere præcist end self-reports.",
+            "Årsagen findes i SOKA-modellen: Både observatører og maskiner er begrænset til ydre, synlige træk.",
+            "Den indre, oplevede kontekst mangler i ML-PA datamaterialet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "larger for observer compared to self-reported",
+              "why_it_matters": "Angiver ubalancen i algoritmens præcision.",
+              "source_location": "Construct validity"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Construct validity",
+              "passage": "A conceptual interpretation of the asymmetry is provided by the self-other knowledge asymmetry (SOKA) model, according to which observers have more access to evaluative traits and visible behaviors, such as someone’s facial expressions, voice, or spoken text.",
+              "why_it_matters": "Forbinder direkte modellens observationer med psykologisk teori."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Algorithmic bias (s. 6)",
+          "heading": "Kodificeret fordom",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor i maskinens design opstår de diskriminerende fejl?",
+          "explanation_paragraphs": [
+            "Algoritmisk bias præsenteres som en væsentlig trussel mod gyldigheden af objektive målinger. Teksten identificerer to distinkte kilder til denne bias: Ground truth bias og Modeling bias.",
+            "Ground truth bias opstår, når det historiske menneskelige datagrundlag, algoritmen trænes på, allerede er skævt. Hvis mennesker f.eks. ubevidst har givet mere attraktive ansøgere højere jobscorer, vil maskinen lære, at udseende er et validt parameter.",
+            "Modeling bias opstår i selve det matematiske system eller design, for eksempel hvis data er splittet skævt op, så modellen trænes mere på én bestemt befolkningsgruppe frem for en anden. Et uløst problem er imidlertid balancen: Når forskere aktivt fjerner disse biaskilder, falder modellens overordnede præcisionsevne oftest."
+          ],
+          "key_points": [
+            "Ground truth bias stammer fra de oprindelige, subjektive menneskelige data.",
+            "Modeling bias stammer fra algoritmens tekniske træningsproces.",
+            "Der findes en stærk trade-off mellem at udbedre bias og at opretholde algoritmens forudsigelseskraft."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bias in ground truth scores",
+              "why_it_matters": "Angiver menneskets rolle i maskinfejlen.",
+              "source_location": "Algorithmic bias"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Algorithmic bias",
+              "passage": "(...) bias in ground truth scores (e.g., more attractive job applicants receiving higher job interview scores), and (b) bias in the modeling process (e.g., non-representative data split in cross-validation).",
+              "why_it_matters": "Opdeler præcist de to kategorier, som den studerende skal kunne mestre."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan bytter algoritmer om på, hvad der er årsag og virkning i forskningsdesignet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast mellem to modeller",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor har modellen lettere ved at forudsige hvad andre mener om dig, end hvad du mener om dig selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 kausale mekanismer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvor i maskinens design opstår de diskriminerende fejl?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "To kategorier",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan forandrer maskinlæring selve definitionen af personlighed fra at være en indre årsag til at blive et ydre, forudsagt resultat?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld dette ark primært fra hukommelsen for at fastlåse de strukturelle mekanismer, du lige har læst. Tjek derefter med teksten.",
+      "overview": [
+        "Teksten markerer et paradigmeskift, hvor indsamlet adfærd bruges direkte til at beregne personlighedstræk.",
+        "Algoritmerne rammer observerbare, ydre vurderinger meget mere præcist end personens eget indre liv.",
+        "Værktøjernes effektivitet udfordres af uundgåelig bias, enten arvet fra fortidens uretfærdigheder eller fra kodningens matematiske snit."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I traditionel psykologisk vurdering antages personlighedstræk at være den __________ variabel, der forårsager en handling.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I ML-PA-paradigmet benyttes menneskelig __________ i stedet direkte som den uafhængige variabel (input).",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Ifølge SOKA-modellen præsterer algoritmer bedst, når de skal forudsige resultater fra __________, fordi begge kun har adgang til det ydre.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvis fejlen stammer fra, at de gamle menneskelige vurderinger i træningsættet var præget af racisme, kaldes det __________ bias.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Når udviklere ændrer i koden for at begrænse maskinens bias, resulterer det ofte i en lavere overordnet __________ for algoritmen.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to simple pile-diagrammer for at vise det metodiske skift i årsagsretning.",
+          "required_elements": [
+            "Boks: Personlighed: Personality",
+            "Boks: Adfærd: Behavior",
+            "Pil: Retning for traditionel forskning",
+            "Pil: Retning for maskinlæring: ML-PA"
+          ],
+          "blank_space_hint": "Brug en række til Traditionel og en række under til ML-PA."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at gøre tekstens argumenter mundtligt eksamensklare. Øv dig i at aktivere dem på kort tid.",
+      "use_this_text_for": [
+        "At definere den moderne empiriske 'mainstream'-metode som kontrast til dekonstruktion.",
+        "At diskutere epistemologiske antagelser om, at måleredskabet definerer, hvad personlighed må være.",
+        "At illustrere spændingen mellem essens (indre identitet) og kontekst (rygte/observerbarhed)."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk dekonstruktion (Hacking)",
+          "connection": "Koutsoumpis tager 'ground truth' for givet og vil rette bias teknisk; Hacking (senere i kurset) vil sige, at testen skaber selve den personlighedskategori, den forsøger at måle (looping effect)."
+        },
+        {
+          "course_theme": "Befolkning vs Individ (Ergodic Fallacy / Lamiell)",
+          "connection": "ML-PA er det ultimative eksempel på at anvende enorme populationstrends (Big Data) til at påstå noget sandt om en specifik persons træk, hvilket Critical Personalism afviser som en fejlslutning."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (McCrae & Costa)",
+          "how_to_compare": "Begge reducerer personen til dimensioner, men Trækteori starter indefra (selvrapporteret grundsubstans), hvor ML-PA starter udefra (overfladeadfærd)."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme",
+          "how_to_compare": "Koutsoumpis ser adfærd som et symptom på et underliggende træk; konstruktionismen vil sige, at den adfærd *er* den sociale konstruktion under udførelse, ikke en skygge af en essens."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "SOKA-modellen aktivt for at forklare, hvorfor 'objektiv' maskinlæring kun kan indfange personlighed som et ydre socialt fænomen (reputation), ikke som indre identitet.",
+          "caution": "Husk, at algoritmen ikke gætter din 'sande' personlighed – den gætter, hvad en anden person ville krydse af i et skema om dig."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Den klassiske årsagskæde med ML-PA's datadrevne logik for at demonstrere stærk metodeforståelse.",
+          "caution": "Undgå at blande 'Ground truth bias' og 'Modeling bias' sammen; vis at du kender forskel på defekte data og defekte modeller."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "At fremlægge maskinlæring som ufejlbarlig psykologisk indføling; insister på, at maskinen begrænses til at modellere allerede eksisterende (og fejlbarlige) menneskelige opfattelser.",
+          "caution": "Sig aldrig at algoritmen fanger hele personligheden – træk frem at variansen er lavere for selvrapportering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage at maskinlæring fuldstændig kan erstatte spørgeskemaer, fordi de 'måler bedre'.",
+          "better_reading": "Maskinlæring fanger kun en proportion af variansen – specifikt den synlige, udadvendte del af adfærden."
+        },
+        {
+          "trap": "At tro algoritmisk bias kun handler om dårlig kodning fra programmørens side.",
+          "better_reading": "Ground truth bias betyder, at algoritmen bliver skæv, netop når den lærer de historiske menneskelige fordomme i dataene 'korrekt'."
+        }
+      ],
+      "mini_exam_prompt_question": "Med afsæt i Koutsoumpis' gennemgang af maskinlæring (ML-PA), hvordan påvirker selve måleværktøjets natur, hvad vi forstår som 'personlighed', og hvilke fejl fejler algoritmen ind i?",
+      "mini_exam_answer_plan_slots": [
+        "Kort definition af det vendte kausale paradigme (adfærd -> personlighed).",
+        "Præsentation af asymmetrien (SOKA): Maskinen måler bedst 'rygte', ikke identitet.",
+        "Introduktion af de to biastyper: Hvordan algoritmen indkoder menneskelige fordomme (ground truth).",
+        "Perspektivering: Forbinder afvejningen mellem præcision og retfærdighed til kursets generelle kritik af 'objektive' mål."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w01l2-koutsoumpis-2025-96f4dcf7",
+      "lecture_key": "W01L2",
+      "source_title": "Koutsoumpis (2025)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Læs denne korte introduktion for at se tekstens kernekonflikt. Hold de tre underproblemer i baghovedet som din mission, mens du læser teksten igennem.",
+      "teaser_paragraphs": [
+        "Traditionelt har personlighedspsykologien bedt dig udfylde et spørgeskema for at afsløre, hvem du er. Dine svar blev opfattet som den sande kerne, der derefter kunne bruges til at forudsige din fremtidige adfærd. Men hvad nu hvis vi vender årsagskæden på hovedet?",
+        "Moderne maskinlæring (ML-PA) ændrer spillets regler fuldstændig. Her antager man i stedet, at *behavior becomes the independent variable*. Algoritmen analyserer din stemmeføring, dine ansigtsudtryk eller dine Facebook-likes, og bruger derefter denne adfærd til at gætte dine personlighedstræk.",
+        "Det skaber et alvorligt metodisk problem for feltet. Algoritmerne viser sig nemlig at ramme markant tættere på, når de skal forudsige *andres* vurdering af dig, end når de skal forudsige din *egen* vurdering. Måler vi så stadig 'personlighed' som en indre sandhed, eller måler vi blot et ydre rygte?",
+        "Teksten tvinger os samtidig til at se kritisk på måleværktøjets objektivitet. Hvis historiske menneskelige data rummer fordomme, risikerer maskinlæringen blot at automatisere dem. Der opstår en hård afvejning: jo mere vi forsøger at fjerne skævheder i systemet, jo dårligere præsterer algoritmen ofte generelt."
+      ],
+      "main_problem": "Hvordan forandrer maskinlæring selve definitionen af personlighed fra at være en indre årsag til at blive et ydre, forudsagt resultat?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan vendes rollen for afhængige og uafhængige variabler om i maskinlæringsbaseret måling?",
+          "why_it_matters": "Det illustrerer det fundamentale epistemologiske skift i måden, psykologien udvinder data om individet.",
+          "answer_form": "En kort kontrast mellem to modeller"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor er algoritmerne mere præcise til at forudsige observatørers vurdering end personens egen selvrapportering?",
+          "why_it_matters": "Det introducerer en kritisk skillelinje mellem indre essens (hvad jeg tænker) og observerbar kontekst (hvad andre ser).",
+          "answer_form": "1-2 kausale mekanismer"
+        },
+        {
+          "number": 3,
+          "question": "Hvilke to distinkte kilder til algoritmisk bias præsenterer teksten?",
+          "why_it_matters": "Det afliver myten om neutral objektivitet og viser, hvor fejlene bliver indkodet.",
+          "answer_form": "To kategorier"
+        }
+      ],
+      "why_this_text_matters": "Teksten etablerer den moderne 'objektive' bundlinje for personlighedsmåling. Den er afgørende, fordi dens meget blinde vinkler omkring data og bias udgør det præcise afsæt for kursets senere kritiske og poststrukturalistiske dekonstruktioner af subjektet.",
+      "overview": [
+        "Teksten gennemgår hvordan maskinlæring skifter afhængige og uafhængige variabler i psykologisk måling.",
+        "Den påviser en højere præcision over for eksterne observatørers vurderinger frem for individets egenrapportering.",
+        "Den kortlægger afvejningen mellem at bevare en algoritmes forudsigelseskraft og at udbedre dens indbyggede fordomme."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Introduction (s. 1)",
+          "task": "Find beskrivelsen af, hvordan variabler bytter plads.",
+          "why_it_matters": "Det er tekstens tekniske og metodiske hovedpræmis.",
+          "stop_signal": "når du når til sektionen Validity på side 2"
+        },
+        {
+          "number": 2,
+          "source_location": "Construct validity (s. 2)",
+          "task": "Identificér forklaringen på forskellen mellem self-reports og observer reports via SOKA-modellen.",
+          "why_it_matters": "Det understøtter kursets skel mellem ydre rygte og indre identitet.",
+          "stop_signal": "når afsnittet om Nomological network starter"
+        },
+        {
+          "number": 3,
+          "source_location": "Algorithmic bias (s. 6)",
+          "task": "Skil de to typer af bias fra hinanden.",
+          "why_it_matters": "Viser hvordan sociokulturelle antagelser bliver bygget ind i måleværktøjet.",
+          "stop_signal": "ved overskriften Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "behavior becomes the independent variable and personality traits the dependent variables",
+          "why": "Definerer det direkte metodiske skift.",
+          "where_to_look": "Introduction"
+        },
+        {
+          "target": "larger for observer compared to self-reported personality traits",
+          "why": "Hovedkonklusionen om algoritmens evne til at fange det ydre frem for det indre.",
+          "where_to_look": "Construct validity"
+        },
+        {
+          "target": "attractive job applicants receiving higher job interview scores",
+          "why": "Et meget konkret eksempel på, hvordan menneskelige bias overføres til data.",
+          "where_to_look": "Algorithmic bias"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tekniske lister af korrelationskoefficienter (Pearson r) i tabellerne.",
+        "Navnene på de specifikke naturlige sprogmodeller (f.eks. BERT vs. binary unigrams)."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Introduction",
+          "excerpt": "behavior becomes the independent variable and personality traits the dependent variables",
+          "open_question": "Hvordan vendes rollen for afhængige og uafhængige variabler om i maskinlæringsbaseret måling?"
+        },
+        {
+          "number": "2",
+          "source_location": "Construct validity",
+          "excerpt": "larger for observer compared to self-reported personality traits",
+          "open_question": "Hvorfor er algoritmerne mere præcise til at forudsige observatørers vurdering end personens egen selvrapportering?"
+        },
+        {
+          "number": "3",
+          "source_location": "Algorithmic bias",
+          "excerpt": "attractive job applicants receiving higher job interview scores",
+          "open_question": "Hvilke to distinkte kilder til algoritmisk bias præsenterer teksten?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug disse sektioner som din primære tekstbase til at løse opgaverne på de næste ark. Sektionerne dækker de centrale metodiske og epistemologiske træk i teksten.",
+      "coverage_note": "Fokuserer på paradigmeskiftet i måling, asymmetrien i datakilderne og mekanismerne for bias, mens rent statistiske udregninger er udeladt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Introduction (s. 1)",
+          "heading": "Det metodiske paradigmeskift",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan bytter algoritmer om på, hvad der er årsag og virkning i forskningsdesignet?",
+          "explanation_paragraphs": [
+            "Traditionel personlighedsforskning bruger træk som udgangspunktet. Her er spørgeskemasvar (personlighed) den uafhængige variabel, der bruges til at forudsige fremtidige udfald som fx jobpræstation, som bliver den afhængige variabel.",
+            "Maskinlæringsbaseret vurdering (ML-PA) bytter direkte rundt på dette. Her opsamler forskerne først digitale fodspor, ansigtsudtryk eller tekst. Denne konkrete adfærd gøres nu til den uafhængige variabel (input). Modellen trænes så til at gætte personens personlighedstræk, som hermed bliver den afhængige variabel (output).",
+            "Dette skift betyder, at testen ikke længere forsøger at kortlægge det hele menneske. Den kan kun fange den del af personligheden, der manifesterer sig i det specifikke sæt af observerbar adfærd, som algoritmen har fået adgang til."
+          ],
+          "key_points": [
+            "Traditionelt mønster: Personlighed (uafhængig) forudsiger Adfærd (afhængig).",
+            "ML-PA mønster: Adfærd (uafhængig) forudsiger Personlighed (afhængig).",
+            "Måleværktøjet begrænses til kun at opsnappe den varians, der er fysisk observerbar."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "behavior becomes the independent variable",
+              "why_it_matters": "Markeringspunkt for vendepunktet i dataflowet.",
+              "source_location": "Introduction"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Introduction",
+              "passage": "(...) in personality research, personality traits serve as the independent variables (...) Instead, in machine learning-based personality assessment (...) behavior becomes the independent variable and personality traits the dependent variables.",
+              "why_it_matters": "Det formelle bevis for den vendte logik, som er tekstens vigtigste metodiske pointe."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Construct validity (s. 2)",
+          "heading": "Sandheden om selvet vs. andre",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvorfor har modellen lettere ved at forudsige hvad andre mener om dig, end hvad du mener om dig selv?",
+          "explanation_paragraphs": [
+            "Resultaterne viser, at ML-PA er markant mere præcis, når den skal forudsige observatørers vurderinger (andre mennesker) sammenlignet med individets egne selvrapporter. For at forklare dette trækker forfatteren på SOKA-modellen (Self-Other Knowledge Asymmetry).",
+            "Modellen forklarer, at eksterne observatører baserer deres bedømmelse på synlig, evaluerende adfærd, såsom stemmeføring eller ansigtsudtryk. Fordi maskinlæringen udelukkende fodres med netop disse ydre observerbare datapunkter, overlapper algoritmens grundlag næsten perfekt med observatørens.",
+            "Personen selv har derimod adgang til indre tanker, følelser og motiver, som hverken en fremmed observatør eller en algoritme kan se. Derfor vil algoritmens resultat altid ligne 'rygtet' mere end 'identiteten'."
+          ],
+          "key_points": [
+            "Algoritmer forudsiger observer reports mere præcist end self-reports.",
+            "Årsagen findes i SOKA-modellen: Både observatører og maskiner er begrænset til ydre, synlige træk.",
+            "Den indre, oplevede kontekst mangler i ML-PA datamaterialet."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "larger for observer compared to self-reported",
+              "why_it_matters": "Angiver ubalancen i algoritmens præcision.",
+              "source_location": "Construct validity"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Construct validity",
+              "passage": "A conceptual interpretation of the asymmetry is provided by the self-other knowledge asymmetry (SOKA) model, according to which observers have more access to evaluative traits and visible behaviors, such as someone’s facial expressions, voice, or spoken text.",
+              "why_it_matters": "Forbinder direkte modellens observationer med psykologisk teori."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Algorithmic bias (s. 6)",
+          "heading": "Kodificeret fordom",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvor i maskinens design opstår de diskriminerende fejl?",
+          "explanation_paragraphs": [
+            "Algoritmisk bias præsenteres som en væsentlig trussel mod gyldigheden af objektive målinger. Teksten identificerer to distinkte kilder til denne bias: Ground truth bias og Modeling bias.",
+            "Ground truth bias opstår, når det historiske menneskelige datagrundlag, algoritmen trænes på, allerede er skævt. Hvis mennesker f.eks. ubevidst har givet mere attraktive ansøgere højere jobscorer, vil maskinen lære, at udseende er et validt parameter.",
+            "Modeling bias opstår i selve det matematiske system eller design, for eksempel hvis data er splittet skævt op, så modellen trænes mere på én bestemt befolkningsgruppe frem for en anden. Et uløst problem er imidlertid balancen: Når forskere aktivt fjerner disse biaskilder, falder modellens overordnede præcisionsevne oftest."
+          ],
+          "key_points": [
+            "Ground truth bias stammer fra de oprindelige, subjektive menneskelige data.",
+            "Modeling bias stammer fra algoritmens tekniske træningsproces.",
+            "Der findes en stærk trade-off mellem at udbedre bias og at opretholde algoritmens forudsigelseskraft."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "bias in ground truth scores",
+              "why_it_matters": "Angiver menneskets rolle i maskinfejlen.",
+              "source_location": "Algorithmic bias"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Algorithmic bias",
+              "passage": "(...) bias in ground truth scores (e.g., more attractive job applicants receiving higher job interview scores), and (b) bias in the modeling process (e.g., non-representative data split in cross-validation).",
+              "why_it_matters": "Opdeler præcist de to kategorier, som den studerende skal kunne mestre."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan bytter algoritmer om på, hvad der er årsag og virkning i forskningsdesignet?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast mellem to modeller",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor har modellen lettere ved at forudsige hvad andre mener om dig, end hvad du mener om dig selv?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1-2 kausale mekanismer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvor i maskinens design opstår de diskriminerende fejl?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "To kategorier",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan forandrer maskinlæring selve definitionen af personlighed fra at være en indre årsag til at blive et ydre, forudsagt resultat?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-3",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Luk Abridged Reader. Udfyld dette ark primært fra hukommelsen for at fastlåse de strukturelle mekanismer, du lige har læst. Tjek derefter med teksten.",
+      "overview": [
+        "Teksten markerer et paradigmeskift, hvor indsamlet adfærd bruges direkte til at beregne personlighedstræk.",
+        "Algoritmerne rammer observerbare, ydre vurderinger meget mere præcist end personens eget indre liv.",
+        "Værktøjernes effektivitet udfordres af uundgåelig bias, enten arvet fra fortidens uretfærdigheder eller fra kodningens matematiske snit."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "I traditionel psykologisk vurdering antages personlighedstræk at være den __________ variabel, der forårsager en handling.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "I ML-PA-paradigmet benyttes menneskelig __________ i stedet direkte som den uafhængige variabel (input).",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Ifølge SOKA-modellen præsterer algoritmer bedst, når de skal forudsige resultater fra __________, fordi begge kun har adgang til det ydre.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 4,
+          "sentence": "Hvis fejlen stammer fra, at de gamle menneskelige vurderinger i træningsættet var præget af racisme, kaldes det __________ bias.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "2 ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Når udviklere ændrer i koden for at begrænse maskinens bias, resulterer det ofte i en lavere overordnet __________ for algoritmen.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn to simple pile-diagrammer for at vise det metodiske skift i årsagsretning.",
+          "required_elements": [
+            "Boks: Personlighed: Personality",
+            "Boks: Adfærd: Behavior",
+            "Pil: Retning for traditionel forskning",
+            "Pil: Retning for maskinlæring: ML-PA"
+          ],
+          "blank_space_hint": "Brug en række til Traditionel og en række under til ML-PA."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord til at gøre tekstens argumenter mundtligt eksamensklare. Øv dig i at aktivere dem på kort tid.",
+      "use_this_text_for": [
+        "At definere den moderne empiriske 'mainstream'-metode som kontrast til dekonstruktion.",
+        "At diskutere epistemologiske antagelser om, at måleredskabet definerer, hvad personlighed må være.",
+        "At illustrere spændingen mellem essens (indre identitet) og kontekst (rygte/observerbarhed)."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk dekonstruktion (Hacking)",
+          "connection": "Koutsoumpis tager 'ground truth' for givet og vil rette bias teknisk; Hacking (senere i kurset) vil sige, at testen skaber selve den personlighedskategori, den forsøger at måle (looping effect)."
+        },
+        {
+          "course_theme": "Befolkning vs Individ (Ergodic Fallacy / Lamiell)",
+          "connection": "ML-PA er det ultimative eksempel på at anvende enorme populationstrends (Big Data) til at påstå noget sandt om en specifik persons træk, hvilket Critical Personalism afviser som en fejlslutning."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Trækteori (McCrae & Costa)",
+          "how_to_compare": "Begge reducerer personen til dimensioner, men Trækteori starter indefra (selvrapporteret grundsubstans), hvor ML-PA starter udefra (overfladeadfærd)."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme",
+          "how_to_compare": "Koutsoumpis ser adfærd som et symptom på et underliggende træk; konstruktionismen vil sige, at den adfærd *er* den sociale konstruktion under udførelse, ikke en skygge af en essens."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Brug",
+          "use_in_answer": "SOKA-modellen aktivt for at forklare, hvorfor 'objektiv' maskinlæring kun kan indfange personlighed som et ydre socialt fænomen (reputation), ikke som indre identitet.",
+          "caution": "Husk, at algoritmen ikke gætter din 'sande' personlighed – den gætter, hvad en anden person ville krydse af i et skema om dig."
+        },
+        {
+          "prompt_type": "Sammenlign",
+          "use_in_answer": "Den klassiske årsagskæde med ML-PA's datadrevne logik for at demonstrere stærk metodeforståelse.",
+          "caution": "Undgå at blande 'Ground truth bias' og 'Modeling bias' sammen; vis at du kender forskel på defekte data og defekte modeller."
+        },
+        {
+          "prompt_type": "Undgå",
+          "use_in_answer": "At fremlægge maskinlæring som ufejlbarlig psykologisk indføling; insister på, at maskinen begrænses til at modellere allerede eksisterende (og fejlbarlige) menneskelige opfattelser.",
+          "caution": "Sig aldrig at algoritmen fanger hele personligheden – træk frem at variansen er lavere for selvrapportering."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At antage at maskinlæring fuldstændig kan erstatte spørgeskemaer, fordi de 'måler bedre'.",
+          "better_reading": "Maskinlæring fanger kun en proportion af variansen – specifikt den synlige, udadvendte del af adfærden."
+        },
+        {
+          "trap": "At tro algoritmisk bias kun handler om dårlig kodning fra programmørens side.",
+          "better_reading": "Ground truth bias betyder, at algoritmen bliver skæv, netop når den lærer de historiske menneskelige fordomme i dataene 'korrekt'."
+        }
+      ],
+      "mini_exam_prompt_question": "Med afsæt i Koutsoumpis' gennemgang af maskinlæring (ML-PA), hvordan påvirker selve måleværktøjets natur, hvad vi forstår som 'personlighed', og hvilke fejl fejler algoritmen ind i?",
+      "mini_exam_answer_plan_slots": [
+        "Kort definition af det vendte kausale paradigme (adfærd -> personlighed).",
+        "Præsentation af asymmetrien (SOKA): Maskinen måler bedst 'rygte', ikke identitet.",
+        "Introduktion af de to biastyper: Hvordan algoritmen indkoder menneskelige fordomme (ground truth).",
+        "Perspektivering: Forbinder afvejningen mellem præcision og retfærdighed til kursets generelle kritik af 'objektive' mål."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

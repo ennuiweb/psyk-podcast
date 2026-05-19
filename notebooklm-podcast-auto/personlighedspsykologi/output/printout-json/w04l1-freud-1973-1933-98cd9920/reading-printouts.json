@@ -231,7 +231,26 @@
         "Lange referencer til okkultisme og drømmetydning fra de forrige forelæsninger.",
         "De tekniske detaljer omkring afviklingen af Oedipus-komplekset for henholdsvis drenge og piger."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 63",
+          "excerpt": "en kedel fuld af sydende affekter",
+          "open_question": "Hvorfor straffer Over-jeg'et os, og hvor stammer dets autoritet oprindeligt fra?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 65",
+          "excerpt": "De tre strenge herrer er omverdenen, over-jeg'et og Id'et",
+          "open_question": "Hvad er Det'ets (Id'ets) natur og herskende princip?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 66",
+          "excerpt": "Hvor der var Id, skal der vorde Jeg",
+          "open_question": "Hvorfor er 'det ubevidste' ikke længere kun begrænset til Det'et?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -415,7 +434,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "prompt": "Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En kort mekanisme",
@@ -425,7 +444,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan opstår Over-jeg'et i barnet?",
+          "prompt": "Hvordan opstår Over-jeg'et i barnet?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kort mekanisme",
@@ -435,7 +454,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "prompt": "Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Et konkret eksempel fra terapien",
@@ -445,7 +464,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er Det'ets inderste natur?",
+          "prompt": "Hvad er Det'ets inderste natur?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "Et kort afsnit",
@@ -455,7 +474,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "prompt": "Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En liste på tre modstridende krav",
@@ -465,7 +484,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med at afdække denne splittede struktur?",
+          "prompt": "Hvad er målet med at afdække denne splittede struktur?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "En liste på tre modstridende krav",
@@ -525,9 +544,9 @@
           "number": 1,
           "task": "Byg Freuds konfliktmodel ved at skitsere forholdet mellem de tre instanser og bevidsthedens grænse.",
           "required_elements": [
-            "Det'et (placeret helt i mørke",
-            "Over-jeg'et (med rødder i det ubevidste",
-            "Jeg'et (som mægler på grænsen",
+            "Det'et: placeret helt i mørke",
+            "Over-jeg'et: med rødder i det ubevidste",
+            "Jeg'et: som mægler på grænsen",
             "En stiplet linje, der markerer overfladen mellem bevidst og ubevidst"
           ],
           "blank_space_hint": "Brug boksen herunder til at optegne mekanismen."
@@ -716,7 +735,26 @@
         "Lange referencer til okkultisme og drømmetydning fra de forrige forelæsninger.",
         "De tekniske detaljer omkring afviklingen af Oedipus-komplekset for henholdsvis drenge og piger."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 63",
+          "excerpt": "en kedel fuld af sydende affekter",
+          "open_question": "Hvorfor straffer Over-jeg'et os, og hvor stammer dets autoritet oprindeligt fra?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 65",
+          "excerpt": "De tre strenge herrer er omverdenen, over-jeg'et og Id'et",
+          "open_question": "Hvad er Det'ets (Id'ets) natur og herskende princip?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 66",
+          "excerpt": "Hvor der var Id, skal der vorde Jeg",
+          "open_question": "Hvorfor er 'det ubevidste' ikke længere kun begrænset til Det'et?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -900,7 +938,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
+          "prompt": "Hvordan kan vi bevise, at mennesket ikke er en udelelig rationel helhed?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En kort mekanisme",
@@ -910,7 +948,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan opstår Over-jeg'et i barnet?",
+          "prompt": "Hvordan opstår Over-jeg'et i barnet?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kort mekanisme",
@@ -920,7 +958,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
+          "prompt": "Hvorfor må Freud redefinere, hvad 'det ubevidste' er?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Et konkret eksempel fra terapien",
@@ -930,7 +968,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er Det'ets inderste natur?",
+          "prompt": "Hvad er Det'ets inderste natur?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "Et kort afsnit",
@@ -940,7 +978,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
+          "prompt": "Hvordan overlever Jeg'et at være klemt mellem drifter og moral?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En liste på tre modstridende krav",
@@ -950,7 +988,7 @@
         {
           "number": "6",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad er målet med at afdække denne splittede struktur?",
+          "prompt": "Hvad er målet med at afdække denne splittede struktur?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 6",
           "answer_shape": "En liste på tre modstridende krav",
@@ -1010,9 +1048,9 @@
           "number": 1,
           "task": "Byg Freuds konfliktmodel ved at skitsere forholdet mellem de tre instanser og bevidsthedens grænse.",
           "required_elements": [
-            "Det'et (placeret helt i mørke",
-            "Over-jeg'et (med rødder i det ubevidste",
-            "Jeg'et (som mægler på grænsen",
+            "Det'et: placeret helt i mørke",
+            "Over-jeg'et: med rødder i det ubevidste",
+            "Jeg'et: som mægler på grænsen",
             "En stiplet linje, der markerer overfladen mellem bevidst og ubevidst"
           ],
           "blank_space_hint": "Brug boksen herunder til at optegne mekanismen."
@@ -1107,7 +1145,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

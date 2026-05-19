@@ -1,0 +1,1017 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T12:51:45Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "7b9ceba2da934a67b2b2460c51ae84001dbb0947c01e10228dd64e8bfb7298cc",
+    "source_files_signature": "2c6a091ce02d722200ebe5a73a8d0491198d248fc102b27c557fe36f506f7cf9",
+    "source_card": "aad8db052fb67c07ccef7cda6a9fcff305955653e66714d163fd4f5f3e930284",
+    "revised_lecture_substrate": "45d2b67d2db74adffa32cfcae345fca2a23c0a2b63e02e3ed49ab717973da181",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+    "lecture_key": "W05L2",
+    "title": "Andkjær Olsen & Køppe (1991a + 1991b)",
+    "reading_title": "Andkjær Olsen & Køppe (1991a + 1991b)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "medium",
+    "page_count": 22,
+    "estimated_token_count": 14300,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W5L2 Psykoanalysens konstituering/W5L2 Andkjær Olsen & Køppe (1991a og b).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "medium",
+    "signals": {
+      "length_band": "medium",
+      "page_count": 22,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 4,
+        "max": 5
+      },
+      "opening_passages": {
+        "min": 2,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 4,
+        "max": 5
+      },
+      "reading_route": {
+        "min": 4,
+        "max": 5
+      },
+      "key_quote_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 2,
+        "max": 4
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 4,
+        "max": 6
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 5,
+        "max": 6
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 6,
+        "max": 7
+      },
+      "diagram_tasks": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 4,
+        "max": 5
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 4
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 4
+      },
+      "exam_moves": {
+        "min": 4,
+        "max": 5
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 4
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "lecture_key": "W05L2",
+      "source_title": "Andkjær Olsen & Køppe (1991a + 1991b)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "I 1890'ernes Wien stod lægerne over for et mysterium. De modtog patienter med voldsomme lammelser, kramper og uforklarlig blindhed, men uden at patienterne fejlede noget fysisk overhovedet.",
+        "Freud indså hurtigt, at datidens etablerede neurofysiologi ikke kunne forklare disse symptomer. Han blev tvunget til at opfinde en helt ny og dybere model for psyken. Her forestillede han sig et psykisk apparat, der var under et konstant, rullende pres fra *indre pirringer*, som ubønhørligt tvinger systemet til at arbejde.",
+        "Men det afgørende gennembrud for psykoanalysen kom faktisk som følge af en enorm teoretisk fejltagelse. Freud troede i starten fuldt og fast på, at alle neuroserne udsprang af virkelige, seksuelle overgreb i barndommen.",
+        "Da de mange beretninger begyndte at falde fra hinanden for ham, indså han noget endnu mere radikalt. Erindringerne var ikke falske, men de var ikke funderet i den ydre verden; de var derimod *en ubevidst struktur af ønskefantasier*.",
+        "Med dette skift ændrede psykoanalysen for altid psykologiens bane. Fokus flyttede fra, hvordan ydre miljøer former et transparent individ, til hvordan et skjult, decentreret subjekt dirigeres af system-intern determination."
+      ],
+      "main_problem": "Hvordan forlod Freud den målbare biologi for at opdage den skjulte indre psykiske virkelighed og det decentrerede subjekt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?",
+          "why_it_matters": "Det etablerer begrebet om system-intern determination, som er centralt for teorien.",
+          "answer_form": "4 forbundne mekanismer"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?",
+          "why_it_matters": "Det demonstrerer det vitale spændingsfelt mellem menneskets utilpassede drift og samfundets realitetskrav.",
+          "answer_form": "1 kort kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?",
+          "why_it_matters": "Det markerer opdagelsen af det aktive, patologiske forsvar.",
+          "answer_form": "1 specifik adfærd"
+        },
+        {
+          "number": 4,
+          "question": "Hvilken konsekvens fik forførelsesteoriens fald for forståelsen af subjektet?",
+          "why_it_matters": "Det er her, psykologien for alvor rykker ind i det decentrerede subjekt og infantil seksualitet.",
+          "answer_form": "1 teoretisk erkendelse"
+        }
+      ],
+      "why_this_text_matters": "Teksten leverer det uomgængelige historiske fundament for hele det epistemologiske ryk ind i det decentrerede subjekt, som er forudsætningen for at forstå kritisk og poststrukturel psykologi senere i kurset.",
+      "overview": [
+        "Udviklingen af driften som psykologisk kernemotor.",
+        "Opdagelsen af forsvarsmekanismen bag symptomer.",
+        "Skiftet fra ydre overgreb til indre Ødipus-kompleks."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion om Den Økonomiske Synsvinkel",
+          "task": "Kortlæg driftens fire elementer som en trykmaskine.",
+          "why_it_matters": "Skaber basen for at forstå alt psykisk pres.",
+          "stop_signal": "når driftens elementer er defineret"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion om Den Dynamiske Synsvinkel",
+          "task": "Adskil primære lystprocesser fra sekundære realitetsprocesser.",
+          "why_it_matters": "Det forklarer kernen i neurotiske konflikter.",
+          "stop_signal": "når du forstår udskydelse af lystopnåelse"
+        },
+        {
+          "number": 3,
+          "source_location": "Fase 1 og 2 (Hypnoidteori til Forsvar)",
+          "task": "Opspor fejlen i Breuers hypotese.",
+          "why_it_matters": "Det viser nødvendigheden af aktiv modstand og fortrængning.",
+          "stop_signal": "når affekt og forestilling splittes"
+        },
+        {
+          "number": 4,
+          "source_location": "Fase 4 (Ødipus-komplekset)",
+          "task": "Fang skiftet væk fra faktiske traumer.",
+          "why_it_matters": "Det cementerer det afgørende begreb om indre psykisk virkelighed.",
+          "stop_signal": "når ønskefantasier overtager for traumet"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "indre pirringer",
+          "why": "Definerer selve kernen i driftsteorien.",
+          "where_to_look": "Begyndelsen af den økonomiske synsvinkel."
+        },
+        {
+          "target": "forskydes til andre områder",
+          "why": "Forklarer hvordan driften tilpasser sig når det oprindelige objekt svigter.",
+          "where_to_look": "Gennemgangen af driftens objekt og mål."
+        },
+        {
+          "target": "ubevidst struktur af ønskefantasier",
+          "why": "Udtrykker den totale omvæltning af det psykoanalytiske traume-begreb.",
+          "where_to_look": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange neurofysiologiske debatter med Meynert og Jackson.",
+        "Freuds tidlige udvekslinger og komplicerede vennetermer med Wilhelm Fliess.",
+        "Det præcise årstal for hver eneste lille ændring i Freuds tænkning."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af den økonomiske synsvinkel.",
+          "excerpt": "indre pirringer",
+          "open_question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Gennemgangen af driftens objekt og mål.",
+          "excerpt": "forskydes til andre områder",
+          "open_question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?"
+        },
+        {
+          "number": "3",
+          "source_location": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien.",
+          "excerpt": "ubevidst struktur af ønskefantasier",
+          "open_question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse fokuserede sektioner for at fange kildens centrale problemstillinger og teoretiske løsninger.",
+      "coverage_note": "Fokuserer udelukkende på Freuds økonomiske og dynamiske synsvinkel samt overgangen til det indre subjekt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Den Økonomiske Synsvinkel",
+          "heading": "Dampmaskinen og det indre pres",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At forklare hvor den psykiske energi kommer fra, uden at bruge bevidste, ydre hændelser som eneste kilde?",
+          "explanation_paragraphs": [
+            "For at bygge en psykologi uafhængig af ren hjernefysiologi, lånte Freud fra fysikkens termodynamik. Han forestillede sig et system under konstant indre pres, præcis som en lukket dampmaskine.",
+            "Dette tryk opstår ikke af noget i den ydre verden, men fra kroppens egne 'indre pirringer'. Fordi systemet konstant bliver tilført energi indefra, er det tvunget til at arbejde for at genoprette balancen.",
+            "Dette er kernen i Freuds driftsteori. En drift har fire vitale dele: en biologisk kilde, et mål om at fjerne spændingen, et objekt der bruges til at nå målet, og en trang der repræsenterer kraften i arbejdet."
+          ],
+          "key_points": [
+            "Psyken er motiveret af et økonomisk pres for at aflede spænding.",
+            "Drift er en psykisk repræsentation af en fysiologisk pirring.",
+            "Objektet er den mest fleksible del af driften og kan udskiftes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "indre pirringer, der sætter",
+              "why_it_matters": "Pointerer at trykket er system-internt og uundgåeligt.",
+              "source_location": "Sektion 2, indledningen."
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2, om driftens mål",
+              "passage": "Ifølge den almene definition af drift er driftens mål at ophæve den pirringstilstand, der er driftens kilde. Herved siger man også, at driften bliver tilfredsstillet og skaber en lystfornemmelse.",
+              "why_it_matters": "Det slår fast, at spændingsreduktion altid er det underliggende motiv for driften."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Den Dynamiske Synsvinkel",
+          "heading": "Lyst vs. Realitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At forklare hvorfor drifterne ikke bare får frit løb, og hvordan indre konflikter opstår?",
+          "explanation_paragraphs": [
+            "Fordi drifterne konstant producerer ny spænding, opstår der konflikter om, hvordan den energi skal udløses. Freud deler de psykiske processer op i to vidt forskellige maskinrum.",
+            "Primærprocesserne er ubevidste og rå. De følger lystprincippet blindt og søger øjeblikkelig udløsning ad den letteste vej, helt uden at tage hensyn til virkelighedens forhindringer eller langsigtede konsekvenser.",
+            "Heroverfor står sekundærprocesserne. De repræsenterer det fornuftige, realitetsorienterede lag i psyken. Deres opgave er at tåle aktuel ulyst og udskyde tilfredsstillelsen, indtil de kan finde et sikkert og hensigtsmæssigt objekt i den virkelige verden."
+          ],
+          "key_points": [
+            "Primærprocesser vil have øjeblikkelig lyst.",
+            "Sekundærprocesser tåler ulyst for at sikre overlevelse.",
+            "Neuroser opstår, når der går knuder i balancen mellem disse to."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "søger hurtig udløsning ad",
+              "why_it_matters": "Bekræfter primærprocessens uforsigtige natur.",
+              "source_location": "Afsnittet om psykiske kvantiteters niveau."
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "Forsvarsteori og Bevidsthedsspaltning",
+          "heading": "Det aktive forsvar",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At afgøre, om psykiske traumer bare sker med patienten, eller om psyken selv spiller en aktiv rolle i spaltningen?",
+          "explanation_paragraphs": [
+            "Freuds læremester Breuer mente, at patienter udviklede traumer, fordi overgrebet skete, mens de befandt sig i en passiv, drømmeagtig tilstand (hypnoidtilstanden). Freud erfarede i sin egen praksis, at dette var forkert.",
+            "Traumet skabte en spaltning i bevidstheden, fordi oplevelsen var så aktivt pinlig og uholdbar for individet, at psyken iværksatte et direkte forsvar mod mindet.",
+            "I stedet for at lade erindringen ødelægge selvet, skilte psyken selve energien (affekten) fra forestillingen. Affekten blev derefter forskudt ud i kroppens muskler som lammelser eller hosteanfald."
+          ],
+          "key_points": [
+            "Hysteri skyldes ikke passivitet, men aktiv fortrængning.",
+            "Affekten forsvinder ikke; den konverteres til fysiske symptomer.",
+            "Forsvaret adskiller bevidst en ubærlig forestilling fra dens psykiske energi."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2, om anden fase",
+              "passage": "Freud havde hermed erstattet Breuers ætiologiske model: hypnoidtilstand/traume/spaltning med sin egen: traume/forsvar/spaltning. (...) Freud beskrev her forsvaret økonomisk som en mekanisme, hvor affekten bliver adskilt fra forestillingen.",
+              "why_it_matters": "Det er selve det mekaniske brud, der definerer psykoanalysens egenartethed frem for Breuers model."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Forførelsesteorien opgives",
+          "heading": "Fra ydre traume til indre virkelighed",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At håndtere at næsten alle Freuds patienter pludselig påstod at have været udsat for seksuelle overgreb af deres forældre?",
+          "explanation_paragraphs": [
+            "Oprindeligt hvilede hele Freuds neurosemodel på, at patienterne faktisk havde været udsat for reelle fysiske overgreb i barndommen. Det blev kaldt forførelsesteorien.",
+            "Men historierne var for udbredte og usandsynlige. Freud ledte efter en løsning og opdagede, at hans egne metoder havde afdækket patienternes dybeste, ubevidste og infantile fantasier.",
+            "Opgivelsen af de reelle overgreb blev ikke psykoanalysens undergang, men dens største gennembrud. Det banede vejen for Ødipuskomplekset og beviste, at det indre, fantasidrevne subjekt er fuldt ud lige så afgørende for neurosen som virkelige ydre traumer."
+          ],
+          "key_points": [
+            "Forførelsesteorien krævede en reel ydre årsag.",
+            "De afdækkede traumer var i høj grad infantil seksualitet klædt ud som faktiske minder.",
+            "Det decentrerede subjekt etableres for alvor her: psyken er sin egen virkelighed."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion om Ødipuskomplekset",
+              "passage": "(...) på forførelsesteoriens ruiner rejste der sig dog snart en almen neuroseteori. Pointen heri var, at neurosedannelsen ikke udgik fra reelle traumatiske erindringer, der var blevet fortrængt, men fra ubevidste ønskefantasier.",
+              "why_it_matters": "Dette citat indkapsler selve hjørnestenen i skiftet mod subjektets indre psykiske virkelighed."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "4 forbundne mekanismer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1 kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 specifik adfærd",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvilken konsekvens fik forførelsesteoriens fald for forståelsen af subjektet?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1 teoretisk erkendelse",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan forlod Freud den målbare biologi for at opdage den skjulte indre psykiske virkelighed og det decentrerede subjekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at fastlåse de teoretiske skift. Slå kun op i Abridged Reader, hvis du går fast.",
+      "overview": [
+        "Teksten kortlægger Freuds model af et psykisk damp-system styret af spænding.",
+        "Den viser, hvordan forsvarsmekanismer iværksættes aktivt for at splitte forestilling og energi.",
+        "Den kulminerer i erkendelsen af, at det er indre strukturer frem for ydre overgreb, der skaber neurosens bund."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Freuds motivationspsykologi bygger på en ________ synsvinkel, hvor indre energikvantiteter udøver et konstant tryk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Et af driftens fire elementer, der definerer selve adfærden for at fjerne spændingen, kaldes for driftens ________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "De ubevidste og rå psykiske processer, der blindt drives af lystprincippet, er ________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Breuer antog fejlagtigt, at neurosen opstod, mens patienten befandt sig i en passiv, drømmende ________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Freud brød med sin mentor ved at slå fast, at neurosen stammer fra et aktivt ________ mod en ubærlig forestilling.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Efter afvisningen af forførelsesteorien forstod Freud, at neurosens ophav ofte var ubevidste ________ frem for reelle overgreb.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 begreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn Freuds spaltningsmodel. Illustrer mekanismen, der adskiller den uacceptable erindring fra den følelsesmæssige spænding.",
+          "required_elements": [
+            "Forestillingen der undertrykkes",
+            "Det aktive forsvar",
+            "Affekten der konverteres til et fysisk symptom"
+          ],
+          "blank_space_hint": "Brug en lodret kasse til forsvar og pile, der viser splittelsen"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at overføre kildens problemer til konkrete argumenter i mundtligt forsvar eller eksamenssvar.",
+      "use_this_text_for": [
+        "At forklare overgangen fra fysiologisk til psykologisk determination.",
+        "At definere fremkomsten af det decentrerede subjekt i psykologien.",
+        "At demonstrere system-intern determination i kontrast til miljøpsykologi.",
+        "At diskutere opfindelsen af begrebet 'indre psykisk virkelighed'."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Poststrukturalisme og magt",
+          "connection": "Freuds decentrerede subjekt er den uomgængelige forudsætning for diskursteoriernes kritik af det rationelle og frie selv."
+        },
+        {
+          "course_theme": "Trækpsykologiens modsætning",
+          "connection": "Trækpsykologien arbejder med det gennemsigtige, målbare overfladesubjekt. Psykoanalysen påstår omvendt, at subjektet er mørklagt og fyldt med uerkendte konflikter."
+        },
+        {
+          "course_theme": "Orientation Points: Determination",
+          "connection": "Eksemplificerer hvordan et psykologisk system kan være fuldstændig drevet af system-interne kræfter snarere end ren miljøpåvirkning."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Breuers Hypnoidteori",
+          "how_to_compare": "Sammenlign Breuers insisteren på passivitet under traumet med Freuds nyskabelse: at subjektet aktivt iværksætter forsvaret og spalter sig selv."
+        },
+        {
+          "compare_with": "Behavioristisk motivation",
+          "how_to_compare": "Sæt dampmaskine-modellens system-interne, uendelige tryk over for adfærdspsykologiens afhængighed af ydre stimuli og incitamenter."
+        },
+        {
+          "compare_with": "Trækpsykologi",
+          "how_to_compare": "Kig på, hvordan overfladespørgeskemaer forudsætter et selv-gennemsigtigt subjekt, mens Freuds spaltning umuliggør selv-transparens."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definition",
+          "use_in_answer": "Brug dampmaskine-metaforen til lynhurtigt at forklare 'den økonomiske synsvinkel' som et internt tryk-system.",
+          "caution": "Husk at understrege, at trykket er konstant og indefrakommende."
+        },
+        {
+          "prompt_type": "Mekanisme",
+          "use_in_answer": "Opsæt altid primærprocessen og sekundærprocessen som et fjendtligt kompromis mellem momentan lyst og overlevelse.",
+          "caution": "Gør ikke sekundærprocesserne til rene engle; de fungerer kun som en nødløsning for at udskyde og beskytte."
+        },
+        {
+          "prompt_type": "Videnskabsteoretisk skift",
+          "use_in_answer": "Forsvar bruddet med forførelsesteorien som selve psykoanalysens epistemologiske fødsel - skabelsen af det indre rum.",
+          "caution": "Sig ikke at Freud benægtede virkelige overgreb fuldstændigt, kun at han fandt dem utilstrækkelige som universel årsagsforklaring."
+        },
+        {
+          "prompt_type": "Kausalitet",
+          "use_in_answer": "Nævn 'forsvaret', når du skal forklare hysteriske symptomer for at bevise aktiv konflikt frem for passiv sygdom.",
+          "caution": "Undgå at tale om spaltning uden at nævne separationen af affekt og forestilling."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Freud udelukkende brugte dødsdriften til at forklare neuroser tidligt i sit virke.",
+          "better_reading": "Dødsdriften (Thanatos) hører til Freuds senere metapsykologi. Begyndelsen er lyst kontra realitet."
+        },
+        {
+          "trap": "At forveksle driftens mål med driftens objekt.",
+          "better_reading": "Målet er altid konstant: at fjerne spændingen. Objektet er udskifteligt (det du bruger for at fjerne spændingen)."
+        },
+        {
+          "trap": "At Freud opfandt forsvarsmekanismer for at bortforklare patienters rigtige traumer.",
+          "better_reading": "Han ændrede ætiologien, fordi hypnoidteorien klinisk slog fejl; han fandt at indre ønsker skabte strukturel spaltning."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Freuds udvikling af den dynamiske og økonomiske synsvinkel, og forklar konsekvenserne af at han opgav forførelsesteorien.",
+      "mini_exam_answer_plan_slots": [
+        "Definer den økonomiske model (dampmaskinen) og driftens indre tryk.",
+        "Kontraster primære lystprocesser med sekundære realitetsprocesser.",
+        "Demonstrer bruddet med Breuer (fra passiv til aktiv spaltning).",
+        "Bevis skiftet fra forførelsesteori til indre psykisk virkelighed og ønskefantasier."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+      "lecture_key": "W05L2",
+      "source_title": "Andkjær Olsen & Køppe (1991a + 1991b)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning af kilden.",
+      "teaser_paragraphs": [
+        "I 1890'ernes Wien stod lægerne over for et mysterium. De modtog patienter med voldsomme lammelser, kramper og uforklarlig blindhed, men uden at patienterne fejlede noget fysisk overhovedet.",
+        "Freud indså hurtigt, at datidens etablerede neurofysiologi ikke kunne forklare disse symptomer. Han blev tvunget til at opfinde en helt ny og dybere model for psyken. Her forestillede han sig et psykisk apparat, der var under et konstant, rullende pres fra *indre pirringer*, som ubønhørligt tvinger systemet til at arbejde.",
+        "Men det afgørende gennembrud for psykoanalysen kom faktisk som følge af en enorm teoretisk fejltagelse. Freud troede i starten fuldt og fast på, at alle neuroserne udsprang af virkelige, seksuelle overgreb i barndommen.",
+        "Da de mange beretninger begyndte at falde fra hinanden for ham, indså han noget endnu mere radikalt. Erindringerne var ikke falske, men de var ikke funderet i den ydre verden; de var derimod *en ubevidst struktur af ønskefantasier*.",
+        "Med dette skift ændrede psykoanalysen for altid psykologiens bane. Fokus flyttede fra, hvordan ydre miljøer former et transparent individ, til hvordan et skjult, decentreret subjekt dirigeres af system-intern determination."
+      ],
+      "main_problem": "Hvordan forlod Freud den målbare biologi for at opdage den skjulte indre psykiske virkelighed og det decentrerede subjekt?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?",
+          "why_it_matters": "Det etablerer begrebet om system-intern determination, som er centralt for teorien.",
+          "answer_form": "4 forbundne mekanismer"
+        },
+        {
+          "number": 2,
+          "question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?",
+          "why_it_matters": "Det demonstrerer det vitale spændingsfelt mellem menneskets utilpassede drift og samfundets realitetskrav.",
+          "answer_form": "1 kort kontrast"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?",
+          "why_it_matters": "Det markerer opdagelsen af det aktive, patologiske forsvar.",
+          "answer_form": "1 specifik adfærd"
+        },
+        {
+          "number": 4,
+          "question": "Hvilken konsekvens fik forførelsesteoriens fald for forståelsen af subjektet?",
+          "why_it_matters": "Det er her, psykologien for alvor rykker ind i det decentrerede subjekt og infantil seksualitet.",
+          "answer_form": "1 teoretisk erkendelse"
+        }
+      ],
+      "why_this_text_matters": "Teksten leverer det uomgængelige historiske fundament for hele det epistemologiske ryk ind i det decentrerede subjekt, som er forudsætningen for at forstå kritisk og poststrukturel psykologi senere i kurset.",
+      "overview": [
+        "Udviklingen af driften som psykologisk kernemotor.",
+        "Opdagelsen af forsvarsmekanismen bag symptomer.",
+        "Skiftet fra ydre overgreb til indre Ødipus-kompleks."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion om Den Økonomiske Synsvinkel",
+          "task": "Kortlæg driftens fire elementer som en trykmaskine.",
+          "why_it_matters": "Skaber basen for at forstå alt psykisk pres.",
+          "stop_signal": "når driftens elementer er defineret"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion om Den Dynamiske Synsvinkel",
+          "task": "Adskil primære lystprocesser fra sekundære realitetsprocesser.",
+          "why_it_matters": "Det forklarer kernen i neurotiske konflikter.",
+          "stop_signal": "når du forstår udskydelse af lystopnåelse"
+        },
+        {
+          "number": 3,
+          "source_location": "Fase 1 og 2 (Hypnoidteori til Forsvar)",
+          "task": "Opspor fejlen i Breuers hypotese.",
+          "why_it_matters": "Det viser nødvendigheden af aktiv modstand og fortrængning.",
+          "stop_signal": "når affekt og forestilling splittes"
+        },
+        {
+          "number": 4,
+          "source_location": "Fase 4 (Ødipus-komplekset)",
+          "task": "Fang skiftet væk fra faktiske traumer.",
+          "why_it_matters": "Det cementerer det afgørende begreb om indre psykisk virkelighed.",
+          "stop_signal": "når ønskefantasier overtager for traumet"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "indre pirringer",
+          "why": "Definerer selve kernen i driftsteorien.",
+          "where_to_look": "Begyndelsen af den økonomiske synsvinkel."
+        },
+        {
+          "target": "forskydes til andre områder",
+          "why": "Forklarer hvordan driften tilpasser sig når det oprindelige objekt svigter.",
+          "where_to_look": "Gennemgangen af driftens objekt og mål."
+        },
+        {
+          "target": "ubevidst struktur af ønskefantasier",
+          "why": "Udtrykker den totale omvæltning af det psykoanalytiske traume-begreb.",
+          "where_to_look": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien."
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange neurofysiologiske debatter med Meynert og Jackson.",
+        "Freuds tidlige udvekslinger og komplicerede vennetermer med Wilhelm Fliess.",
+        "Det præcise årstal for hver eneste lille ændring i Freuds tænkning."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Begyndelsen af den økonomiske synsvinkel.",
+          "excerpt": "indre pirringer",
+          "open_question": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?"
+        },
+        {
+          "number": "2",
+          "source_location": "Gennemgangen af driftens objekt og mål.",
+          "excerpt": "forskydes til andre områder",
+          "open_question": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?"
+        },
+        {
+          "number": "3",
+          "source_location": "Tekstens endelige konklusion på opgivelsen af forførelsesteorien.",
+          "excerpt": "ubevidst struktur af ønskefantasier",
+          "open_question": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Læs disse fokuserede sektioner for at fange kildens centrale problemstillinger og teoretiske løsninger.",
+      "coverage_note": "Fokuserer udelukkende på Freuds økonomiske og dynamiske synsvinkel samt overgangen til det indre subjekt.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Den Økonomiske Synsvinkel",
+          "heading": "Dampmaskinen og det indre pres",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "At forklare hvor den psykiske energi kommer fra, uden at bruge bevidste, ydre hændelser som eneste kilde?",
+          "explanation_paragraphs": [
+            "For at bygge en psykologi uafhængig af ren hjernefysiologi, lånte Freud fra fysikkens termodynamik. Han forestillede sig et system under konstant indre pres, præcis som en lukket dampmaskine.",
+            "Dette tryk opstår ikke af noget i den ydre verden, men fra kroppens egne 'indre pirringer'. Fordi systemet konstant bliver tilført energi indefra, er det tvunget til at arbejde for at genoprette balancen.",
+            "Dette er kernen i Freuds driftsteori. En drift har fire vitale dele: en biologisk kilde, et mål om at fjerne spændingen, et objekt der bruges til at nå målet, og en trang der repræsenterer kraften i arbejdet."
+          ],
+          "key_points": [
+            "Psyken er motiveret af et økonomisk pres for at aflede spænding.",
+            "Drift er en psykisk repræsentation af en fysiologisk pirring.",
+            "Objektet er den mest fleksible del af driften og kan udskiftes."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "indre pirringer, der sætter",
+              "why_it_matters": "Pointerer at trykket er system-internt og uundgåeligt.",
+              "source_location": "Sektion 2, indledningen."
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2, om driftens mål",
+              "passage": "Ifølge den almene definition af drift er driftens mål at ophæve den pirringstilstand, der er driftens kilde. Herved siger man også, at driften bliver tilfredsstillet og skaber en lystfornemmelse.",
+              "why_it_matters": "Det slår fast, at spændingsreduktion altid er det underliggende motiv for driften."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Den Dynamiske Synsvinkel",
+          "heading": "Lyst vs. Realitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "At forklare hvorfor drifterne ikke bare får frit løb, og hvordan indre konflikter opstår?",
+          "explanation_paragraphs": [
+            "Fordi drifterne konstant producerer ny spænding, opstår der konflikter om, hvordan den energi skal udløses. Freud deler de psykiske processer op i to vidt forskellige maskinrum.",
+            "Primærprocesserne er ubevidste og rå. De følger lystprincippet blindt og søger øjeblikkelig udløsning ad den letteste vej, helt uden at tage hensyn til virkelighedens forhindringer eller langsigtede konsekvenser.",
+            "Heroverfor står sekundærprocesserne. De repræsenterer det fornuftige, realitetsorienterede lag i psyken. Deres opgave er at tåle aktuel ulyst og udskyde tilfredsstillelsen, indtil de kan finde et sikkert og hensigtsmæssigt objekt i den virkelige verden."
+          ],
+          "key_points": [
+            "Primærprocesser vil have øjeblikkelig lyst.",
+            "Sekundærprocesser tåler ulyst for at sikre overlevelse.",
+            "Neuroser opstår, når der går knuder i balancen mellem disse to."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "søger hurtig udløsning ad",
+              "why_it_matters": "Bekræfter primærprocessens uforsigtige natur.",
+              "source_location": "Afsnittet om psykiske kvantiteters niveau."
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": true
+        },
+        {
+          "number": 3,
+          "source_location": "Forsvarsteori og Bevidsthedsspaltning",
+          "heading": "Det aktive forsvar",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "At afgøre, om psykiske traumer bare sker med patienten, eller om psyken selv spiller en aktiv rolle i spaltningen?",
+          "explanation_paragraphs": [
+            "Freuds læremester Breuer mente, at patienter udviklede traumer, fordi overgrebet skete, mens de befandt sig i en passiv, drømmeagtig tilstand (hypnoidtilstanden). Freud erfarede i sin egen praksis, at dette var forkert.",
+            "Traumet skabte en spaltning i bevidstheden, fordi oplevelsen var så aktivt pinlig og uholdbar for individet, at psyken iværksatte et direkte forsvar mod mindet.",
+            "I stedet for at lade erindringen ødelægge selvet, skilte psyken selve energien (affekten) fra forestillingen. Affekten blev derefter forskudt ud i kroppens muskler som lammelser eller hosteanfald."
+          ],
+          "key_points": [
+            "Hysteri skyldes ikke passivitet, men aktiv fortrængning.",
+            "Affekten forsvinder ikke; den konverteres til fysiske symptomer.",
+            "Forsvaret adskiller bevidst en ubærlig forestilling fra dens psykiske energi."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2, om anden fase",
+              "passage": "Freud havde hermed erstattet Breuers ætiologiske model: hypnoidtilstand/traume/spaltning med sin egen: traume/forsvar/spaltning. (...) Freud beskrev her forsvaret økonomisk som en mekanisme, hvor affekten bliver adskilt fra forestillingen.",
+              "why_it_matters": "Det er selve det mekaniske brud, der definerer psykoanalysens egenartethed frem for Breuers model."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 4,
+          "source_location": "Forførelsesteorien opgives",
+          "heading": "Fra ydre traume til indre virkelighed",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "At håndtere at næsten alle Freuds patienter pludselig påstod at have været udsat for seksuelle overgreb af deres forældre?",
+          "explanation_paragraphs": [
+            "Oprindeligt hvilede hele Freuds neurosemodel på, at patienterne faktisk havde været udsat for reelle fysiske overgreb i barndommen. Det blev kaldt forførelsesteorien.",
+            "Men historierne var for udbredte og usandsynlige. Freud ledte efter en løsning og opdagede, at hans egne metoder havde afdækket patienternes dybeste, ubevidste og infantile fantasier.",
+            "Opgivelsen af de reelle overgreb blev ikke psykoanalysens undergang, men dens største gennembrud. Det banede vejen for Ødipuskomplekset og beviste, at det indre, fantasidrevne subjekt er fuldt ud lige så afgørende for neurosen som virkelige ydre traumer."
+          ],
+          "key_points": [
+            "Forførelsesteorien krævede en reel ydre årsag.",
+            "De afdækkede traumer var i høj grad infantil seksualitet klædt ud som faktiske minder.",
+            "Det decentrerede subjekt etableres for alvor her: psyken er sin egen virkelighed."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "Sektion om Ødipuskomplekset",
+              "passage": "(...) på forførelsesteoriens ruiner rejste der sig dog snart en almen neuroseteori. Pointen heri var, at neurosedannelsen ikke udgik fra reelle traumatiske erindringer, der var blevet fortrængt, men fra ubevidste ønskefantasier.",
+              "why_it_matters": "Dette citat indkapsler selve hjørnestenen i skiftet mod subjektets indre psykiske virkelighed."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan forklarer dampmaskine-modellen psykens grundlæggende motivation?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "4 forbundne mekanismer",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvorfor kan primærprocesserne ikke styre adfærden alene i et fungerende voksent individ?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "1 kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor opgav Freud Breuers teori om passive traumetilstande?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "1 specifik adfærd",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvilken konsekvens fik forførelsesteoriens fald for forståelsen af subjektet?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "1 teoretisk erkendelse",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan forlod Freud den målbare biologi for at opdage den skjulte indre psykiske virkelighed og det decentrerede subjekt?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-4",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Udfyld dette ark primært fra hukommelsen for at fastlåse de teoretiske skift. Slå kun op i Abridged Reader, hvis du går fast.",
+      "overview": [
+        "Teksten kortlægger Freuds model af et psykisk damp-system styret af spænding.",
+        "Den viser, hvordan forsvarsmekanismer iværksættes aktivt for at splitte forestilling og energi.",
+        "Den kulminerer i erkendelsen af, at det er indre strukturer frem for ydre overgreb, der skaber neurosens bund."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Freuds motivationspsykologi bygger på en ________ synsvinkel, hvor indre energikvantiteter udøver et konstant tryk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Et af driftens fire elementer, der definerer selve adfærden for at fjerne spændingen, kaldes for driftens ________.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "De ubevidste og rå psykiske processer, der blindt drives af lystprincippet, er ________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Breuer antog fejlagtigt, at neurosen opstod, mens patienten befandt sig i en passiv, drømmende ________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Freud brød med sin mentor ved at slå fast, at neurosen stammer fra et aktivt ________ mod en ubærlig forestilling.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Efter afvisningen af forførelsesteorien forstod Freud, at neurosens ophav ofte var ubevidste ________ frem for reelle overgreb.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 begreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn Freuds spaltningsmodel. Illustrer mekanismen, der adskiller den uacceptable erindring fra den følelsesmæssige spænding.",
+          "required_elements": [
+            "Forestillingen der undertrykkes",
+            "Det aktive forsvar",
+            "Affekten der konverteres til et fysisk symptom"
+          ],
+          "blank_space_hint": "Brug en lodret kasse til forsvar og pile, der viser splittelsen"
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse cues til at overføre kildens problemer til konkrete argumenter i mundtligt forsvar eller eksamenssvar.",
+      "use_this_text_for": [
+        "At forklare overgangen fra fysiologisk til psykologisk determination.",
+        "At definere fremkomsten af det decentrerede subjekt i psykologien.",
+        "At demonstrere system-intern determination i kontrast til miljøpsykologi.",
+        "At diskutere opfindelsen af begrebet 'indre psykisk virkelighed'."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Poststrukturalisme og magt",
+          "connection": "Freuds decentrerede subjekt er den uomgængelige forudsætning for diskursteoriernes kritik af det rationelle og frie selv."
+        },
+        {
+          "course_theme": "Trækpsykologiens modsætning",
+          "connection": "Trækpsykologien arbejder med det gennemsigtige, målbare overfladesubjekt. Psykoanalysen påstår omvendt, at subjektet er mørklagt og fyldt med uerkendte konflikter."
+        },
+        {
+          "course_theme": "Orientation Points: Determination",
+          "connection": "Eksemplificerer hvordan et psykologisk system kan være fuldstændig drevet af system-interne kræfter snarere end ren miljøpåvirkning."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Breuers Hypnoidteori",
+          "how_to_compare": "Sammenlign Breuers insisteren på passivitet under traumet med Freuds nyskabelse: at subjektet aktivt iværksætter forsvaret og spalter sig selv."
+        },
+        {
+          "compare_with": "Behavioristisk motivation",
+          "how_to_compare": "Sæt dampmaskine-modellens system-interne, uendelige tryk over for adfærdspsykologiens afhængighed af ydre stimuli og incitamenter."
+        },
+        {
+          "compare_with": "Trækpsykologi",
+          "how_to_compare": "Kig på, hvordan overfladespørgeskemaer forudsætter et selv-gennemsigtigt subjekt, mens Freuds spaltning umuliggør selv-transparens."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Definition",
+          "use_in_answer": "Brug dampmaskine-metaforen til lynhurtigt at forklare 'den økonomiske synsvinkel' som et internt tryk-system.",
+          "caution": "Husk at understrege, at trykket er konstant og indefrakommende."
+        },
+        {
+          "prompt_type": "Mekanisme",
+          "use_in_answer": "Opsæt altid primærprocessen og sekundærprocessen som et fjendtligt kompromis mellem momentan lyst og overlevelse.",
+          "caution": "Gør ikke sekundærprocesserne til rene engle; de fungerer kun som en nødløsning for at udskyde og beskytte."
+        },
+        {
+          "prompt_type": "Videnskabsteoretisk skift",
+          "use_in_answer": "Forsvar bruddet med forførelsesteorien som selve psykoanalysens epistemologiske fødsel - skabelsen af det indre rum.",
+          "caution": "Sig ikke at Freud benægtede virkelige overgreb fuldstændigt, kun at han fandt dem utilstrækkelige som universel årsagsforklaring."
+        },
+        {
+          "prompt_type": "Kausalitet",
+          "use_in_answer": "Nævn 'forsvaret', når du skal forklare hysteriske symptomer for at bevise aktiv konflikt frem for passiv sygdom.",
+          "caution": "Undgå at tale om spaltning uden at nævne separationen af affekt og forestilling."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At Freud udelukkende brugte dødsdriften til at forklare neuroser tidligt i sit virke.",
+          "better_reading": "Dødsdriften (Thanatos) hører til Freuds senere metapsykologi. Begyndelsen er lyst kontra realitet."
+        },
+        {
+          "trap": "At forveksle driftens mål med driftens objekt.",
+          "better_reading": "Målet er altid konstant: at fjerne spændingen. Objektet er udskifteligt (det du bruger for at fjerne spændingen)."
+        },
+        {
+          "trap": "At Freud opfandt forsvarsmekanismer for at bortforklare patienters rigtige traumer.",
+          "better_reading": "Han ændrede ætiologien, fordi hypnoidteorien klinisk slog fejl; han fandt at indre ønsker skabte strukturel spaltning."
+        }
+      ],
+      "mini_exam_prompt_question": "Redegør for Freuds udvikling af den dynamiske og økonomiske synsvinkel, og forklar konsekvenserne af at han opgav forførelsesteorien.",
+      "mini_exam_answer_plan_slots": [
+        "Definer den økonomiske model (dampmaskinen) og driftens indre tryk.",
+        "Kontraster primære lystprocesser med sekundære realitetsprocesser.",
+        "Demonstrer bruddet med Breuer (fra passiv til aktiv spaltning).",
+        "Bevis skiftet fra forførelsesteori til indre psykisk virkelighed og ønskefantasier."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

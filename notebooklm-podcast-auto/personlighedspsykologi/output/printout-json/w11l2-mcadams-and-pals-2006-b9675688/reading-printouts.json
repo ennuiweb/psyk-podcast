@@ -420,7 +420,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "prompt": "Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort beskrivelse",
@@ -430,7 +430,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor rækker trækteori ikke til at kende en person?",
+          "prompt": "Hvorfor rækker trækteori ikke til at kende en person?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kontrast",
@@ -440,7 +440,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "prompt": "Hvordan håndterer vi hverdagens strategiske udfordringer?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "En kontrast",
@@ -450,7 +450,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "prompt": "Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "Et formål",
@@ -460,7 +460,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "prompt": "Har samfundet og kulturen magt til at ændre vores basale psykologi?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "Et tretrinsmønster",
@@ -888,7 +888,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
+          "prompt": "Hvad udgør basen for psykologisk lighed før vi ser på forskelle?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort beskrivelse",
@@ -898,7 +898,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor rækker trækteori ikke til at kende en person?",
+          "prompt": "Hvorfor rækker trækteori ikke til at kende en person?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kontrast",
@@ -908,7 +908,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan håndterer vi hverdagens strategiske udfordringer?",
+          "prompt": "Hvordan håndterer vi hverdagens strategiske udfordringer?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "En kontrast",
@@ -918,7 +918,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
+          "prompt": "Hvordan binder vi overhovedet psyken sammen til et 'jeg'?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "Et formål",
@@ -928,7 +928,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Har samfundet og kulturen magt til at ændre vores basale psykologi?",
+          "prompt": "Har samfundet og kulturen magt til at ændre vores basale psykologi?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "Et tretrinsmønster",
@@ -1094,7 +1094,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w11l2-mcadams-and-pals-2006-b9675688/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:04:15Z"

@@ -419,7 +419,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor stoppede overklassen med at udskære hele, fjerklædte dyr direkte på spisebordet?",
+          "prompt": "Hvorfor stoppede overklassen med at udskære hele, fjerklædte dyr direkte på spisebordet?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort beskrivelse af en følelse",
@@ -429,7 +429,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor er der så mange stærke tabuer omkring, hvordan vi bruger en kniv, selv når den ikke er farlig?",
+          "prompt": "Hvorfor er der så mange stærke tabuer omkring, hvordan vi bruger en kniv, selv når den ikke er farlig?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-3 nøgleord",
@@ -439,7 +439,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Begyndte vi at bruge gaffel i stedet for fingrene, fordi vi opdagede bakterier og hygiejne?",
+          "prompt": "Begyndte vi at bruge gaffel i stedet for fingrene, fordi vi opdagede bakterier og hygiejne?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-3 nøgleord",
@@ -449,7 +449,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan sætter samfundets historie sig permanent fast inde i det enkelte menneskes psykologi?",
+          "prompt": "Hvordan sætter samfundets historie sig permanent fast inde i det enkelte menneskes psykologi?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "En kort årsagskæde",
@@ -459,7 +459,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Har vi altid haft brug for privatliv og tøj på kroppen, når vi sover?",
+          "prompt": "Har vi altid haft brug for privatliv og tøj på kroppen, når vi sover?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En kort konklusion",
@@ -887,7 +887,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor stoppede overklassen med at udskære hele, fjerklædte dyr direkte på spisebordet?",
+          "prompt": "Hvorfor stoppede overklassen med at udskære hele, fjerklædte dyr direkte på spisebordet?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "Kort beskrivelse af en følelse",
@@ -897,7 +897,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Hvorfor er der så mange stærke tabuer omkring, hvordan vi bruger en kniv, selv når den ikke er farlig?",
+          "prompt": "Hvorfor er der så mange stærke tabuer omkring, hvordan vi bruger en kniv, selv når den ikke er farlig?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "2-3 nøgleord",
@@ -907,7 +907,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Skriv det korte svar på spørgsmålet: Begyndte vi at bruge gaffel i stedet for fingrene, fordi vi opdagede bakterier og hygiejne?",
+          "prompt": "Begyndte vi at bruge gaffel i stedet for fingrene, fordi vi opdagede bakterier og hygiejne?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "2-3 nøgleord",
@@ -917,7 +917,7 @@
         {
           "number": "4",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvordan sætter samfundets historie sig permanent fast inde i det enkelte menneskes psykologi?",
+          "prompt": "Hvordan sætter samfundets historie sig permanent fast inde i det enkelte menneskes psykologi?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 4",
           "answer_shape": "En kort årsagskæde",
@@ -927,7 +927,7 @@
         {
           "number": "5",
           "subproblem_ref": "Delproblem 4",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Har vi altid haft brug for privatliv og tøj på kroppen, når vi sover?",
+          "prompt": "Har vi altid haft brug for privatliv og tøj på kroppen, når vi sover?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 5",
           "answer_shape": "En kort konklusion",
@@ -1094,7 +1094,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/",
     "backfilled_from_review_json": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/review/.scaffolding/w12l1-elias-2000-f9176ae8/reading-scaffolds.json",
     "backfilled_at": "2026-05-13T22:04:49Z"

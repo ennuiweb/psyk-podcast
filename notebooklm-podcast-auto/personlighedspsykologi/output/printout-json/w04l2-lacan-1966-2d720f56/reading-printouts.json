@@ -219,7 +219,26 @@
         "Komplekse psykoanalytiske termer som libido og imago, hvis de forstyrrer læsningen af hovedargumentet.",
         "Den korte reference til Ødipuskomplekset til allersidst; hold fokus på spejlstadiet."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 2",
+          "excerpt": "transformation that takes place in the subject when he assumes an image",
+          "open_question": "Hvad adskiller menneskebarnets reaktion på spejlet fra dyrets, og hvad skaber denne reaktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 4",
+          "excerpt": "fact of a real specific prematurity of birth in man",
+          "open_question": "Hvilken biologisk realitet tvinger spædbarnet til at klamre sig til en ydre helhed?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 6",
+          "excerpt": "function of méconnaissance that characterizes the ego",
+          "open_question": "Hvordan udfordrer spejlstadiet den klassiske idé om jeget som en fornuftig, indre kerne?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -310,7 +329,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "prompt": "Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En forklaring af identifikationsprocessen",
@@ -320,7 +339,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "prompt": "Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kort beskrivelse af kroppens tilstand",
@@ -330,7 +349,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "prompt": "Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Et centralt begreb",
@@ -555,7 +574,26 @@
         "Komplekse psykoanalytiske termer som libido og imago, hvis de forstyrrer læsningen af hovedargumentet.",
         "Den korte reference til Ødipuskomplekset til allersidst; hold fokus på spejlstadiet."
       ],
-      "opening_passages": []
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "s. 2",
+          "excerpt": "transformation that takes place in the subject when he assumes an image",
+          "open_question": "Hvad adskiller menneskebarnets reaktion på spejlet fra dyrets, og hvad skaber denne reaktion?"
+        },
+        {
+          "number": "2",
+          "source_location": "s. 4",
+          "excerpt": "fact of a real specific prematurity of birth in man",
+          "open_question": "Hvilken biologisk realitet tvinger spædbarnet til at klamre sig til en ydre helhed?"
+        },
+        {
+          "number": "3",
+          "source_location": "s. 6",
+          "excerpt": "function of méconnaissance that characterizes the ego",
+          "open_question": "Hvordan udfordrer spejlstadiet den klassiske idé om jeget som en fornuftig, indre kerne?"
+        }
+      ]
     },
     "abridged_reader": {
       "title": "Abridged Version",
@@ -646,7 +684,7 @@
         {
           "number": "1",
           "subproblem_ref": "Delproblem 1",
-          "prompt": "Skriv et kort, sammenhængende svar på dette: Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
+          "prompt": "Hvad foretager barnet sig foran spejlet, som skaber en permanent psykisk forandring?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 1",
           "answer_shape": "En forklaring af identifikationsprocessen",
@@ -656,7 +694,7 @@
         {
           "number": "2",
           "subproblem_ref": "Delproblem 2",
-          "prompt": "Forklar kort, hvordan sektionen besvarer dette: Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
+          "prompt": "Hvorfor har barnet overhovedet behov for at klamre sig til en refleksion?",
           "task_type": "short_paragraph",
           "abridged_reader_location": "Abridged reader sektion 2",
           "answer_shape": "En kort beskrivelse af kroppens tilstand",
@@ -666,7 +704,7 @@
         {
           "number": "3",
           "subproblem_ref": "Delproblem 3",
-          "prompt": "Skriv begrebet, som besvarer spørgsmålet: Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
+          "prompt": "Hvad betyder det for vores opfattelse af et 'sundt' jeg, at det er skabt som et ydre skjold?",
           "task_type": "term",
           "abridged_reader_location": "Abridged reader sektion 3",
           "answer_shape": "Et centralt begreb",
@@ -809,7 +847,7 @@
     "render_completion_markers": false,
     "render_exam_bridge": false,
     "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
-    "design_doc": "shows/personlighedspsykologi-en/docs/problem-driven-printouts.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
     "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
   }
 }

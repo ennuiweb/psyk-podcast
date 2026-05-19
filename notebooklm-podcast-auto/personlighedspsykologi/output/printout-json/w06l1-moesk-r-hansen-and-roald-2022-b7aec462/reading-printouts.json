@@ -1,0 +1,1199 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T13:02:56Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "c490397f81c6a46a1ffc55e5df3169304e72babd96e6b9b4504492cb897034e9",
+    "source_files_signature": "518d72835b5f57640514c5a3a17397b58c013260413ad97b9ea501644d1dcfc4",
+    "source_card": "b98dea42e9d5976bf02d47d87065a9478e393808f3b3a7729e2962fdb34fd300",
+    "revised_lecture_substrate": "25f7659f24c6b027b7749bb461fc7f256f936abe3ff1e5d6d202cbb5228be41c",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+    "lecture_key": "W06L1",
+    "title": "Moeskær Hansen & Roald (2022)",
+    "reading_title": "Moeskær Hansen & Roald (2022)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 26,
+    "estimated_token_count": 16900,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Moeskær Hansen & Roald (2022).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 26,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+      "lecture_key": "W06L1",
+      "source_title": "Moeskær Hansen & Roald (2022)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Guiden sætter scenen og opstiller de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Trækpsykologien forsøger at måle personligheden udefra som et sæt af stabile variabler. Psykoanalysen graver efter ubevidste drifter bag vores ryg. Men hvad sker der, når vi undersøger menneskets bevidste, levede oplevelse indefra?",
+        "Denne tekst markerer et afgørende skift i kurset. Vi forlader det objektive tredjepersonsperspektiv og træder ind i fænomenologien, hvor meningsskabelse i førsteperson er det centrale.",
+        "Forfatterne undersøger et helt specifikt fænomen: æstetisk empati. Hvad sker der egentlig psykologisk, når vi rammes af et kunstværk? Historisk har man troet, at vi blot projicerede vores egne følelser over på det døde lærred.",
+        "Men Hansen og Roald argumenterer imod denne rene projektion. De viser, at vi i stedet møder en \"foreign subjective sense\" – en radikal andenhed, der trænger ind og stemmer vores eget følelsesliv.",
+        "For at bevise dette bruger de Giorgis deskriptive fænomenologiske metode. Gennem interviews om intense kunstoplevelser isolerer de de fem kernebestanddele, der udgør selve essensen af æstetisk empati.",
+        "Læsningen er din chance for at se fænomenologi i praksis. Den viser, hvordan subjekt og verden ikke er adskilte kasser, men skaber hinanden i ét konkret meningsfuldt møde."
+      ],
+      "main_problem": "Hvordan kan en fænomenologisk analyse af intense kunstoplevelser bevise, at personligheden grundlæggende er en meningsskabende relation til verden, frem for et lukket rum af statiske træk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er forskellen på 'basic empathy' og 'sympathetic empathy' i Theodor Lipps' historiske model?",
+          "why_it_matters": "Lipps' to-lags model danner bagtæppet for at forstå, hvornår en normal perception overgår til en dyb æstetisk og psykologisk forbundethed.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan undersøger Giorgis fænomenologiske metode psykologiske koncepter rent empirisk?",
+          "why_it_matters": "Metoden er et konkret modsvar til trækpsykologiens spørgeskemaer; den fastholder oplevelsen i førsteperson.",
+          "answer_form": "En række metodiske trin"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er æstetisk empati ikke bare projektion af egne følelser?",
+          "why_it_matters": "Dette er tekstens stærkeste opgør med solipsismen. Værket med-konstituerer oplevelsen via et møde med noget fundamentalt andet.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 4,
+          "question": "Hvad dækker begrebet 'interiorisation' over i mødet med værket?",
+          "why_it_matters": "Det forklarer den mekanisme, hvormed noget ydre får kropslig og affektiv eksistens i betragteren.",
+          "answer_form": "En kort definition"
+        },
+        {
+          "number": 5,
+          "question": "Hvilke fem strukturmomenter udgør ifølge analysen æstetisk empati?",
+          "why_it_matters": "Disse fem punkter er selve resultatet af den deskriptive analyse og beviser fænomenologiens evne til at systematisere levet liv.",
+          "answer_form": "En liste med 5 overskrifter"
+        }
+      ],
+      "why_this_text_matters": "Teksten demonstrerer overgangen fra objektivistiske modeller (træk/biologi) til humanvidenskabelige og eksistentielle modeller. Den er dit primære bevis for, hvordan orienteringspunktet 'intentionalitet' (essens/kontekst) fungerer som forskningsmetode.",
+      "overview": [
+        "Et historisk rids af Theodor Lipps' empati-æstetik.",
+        "Anvendelsen af Giorgis deskriptive fænomenologiske metode på to interviews.",
+        "Præsentationen af en general struktur for æstetisk empati i fem dele."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (s. 26-32)",
+          "task": "Find Lipps' definition af de to lag af empati.",
+          "why_it_matters": "Etablerer grundproblemet: hvordan overgår vi fra at opfatte en genstand til at føle med den.",
+          "stop_signal": "Når sektionen om Lipps er slut"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3 (s. 33-35)",
+          "task": "Aflæs hvordan metoden bevæger sig fra råt interview til essentiel struktur.",
+          "why_it_matters": "Viser hvordan fænomenologi undgår at være ren spekulation.",
+          "stop_signal": "Inden Resultater"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4.1 (s. 35-38)",
+          "task": "Skim de to konkrete casestudier af Martin og Sebastian.",
+          "why_it_matters": "Giver kød og blod til den abstrakte teori, der følger efter.",
+          "stop_signal": "Ved start af Sektion 4.2"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.2 (s. 39-41)",
+          "task": "Nærlæs de fem konstituenter af General Structural Description.",
+          "why_it_matters": "Dette er kernesvaret i artiklen og dit bevis for æstetisk empati.",
+          "stop_signal": "Ved Discussion"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5 (s. 41-44)",
+          "task": "Forstå forfatternes opgør med 'projektion'.",
+          "why_it_matters": "Opgøret med projektion peger direkte ind i kursets diskussion af meningsskabelse og kontekst.",
+          "stop_signal": "Når konklusionen begynder"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "features a sense of otherness",
+          "why": "Viser at empatien er rettet mod noget fremmed, ikke kun et spejl.",
+          "where_to_look": "Sektion 4.2.1"
+        },
+        {
+          "target": "an act through which the expressive features",
+          "why": "Definerer selve 'interiorisation'-mekanismen.",
+          "where_to_look": "Sektion 4.2.3"
+        },
+        {
+          "target": "resists the reduction of aesthetic empathy",
+          "why": "Markeret modsvar mod teorier der reducerer det til projektion.",
+          "where_to_look": "Sektion 5 (Discussion)"
+        },
+        {
+          "target": "progressing from basic empathy to sympathetic",
+          "why": "Opsummerer Lipps' historiske to-lags model.",
+          "where_to_look": "Sektion 2.1"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange litteraturgennemgange af romantisk filosofi før Lipps.",
+        "Husserls tidlige epistemologiske og metafysiske debatter i fodnoterne.",
+        "Forskellen på empati i film, litteratur og musik i indledningen."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1 (Introduction)",
+          "excerpt": "Despite the proclaimed significance of empathy for the understanding of affective-aesthetic encounters, systematic attempts at describing the appearance of aesthetic empathy are lacking...",
+          "open_question": "Hvorfor er selve beskrivelsen af oplevelsen så vigtig i en fænomenologisk ramme?"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 5 (Discussion)",
+          "excerpt": "Qualifying as co-constitution, our description resists the reduction of aesthetic empathy to a matter of projection...",
+          "open_question": "Hvad ændrer det ved vores forståelse af personligheden, hvis vi med-skaber verden frem for bare at projicere på den?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 4.2.1",
+          "excerpt": "features a sense of otherness",
+          "open_question": "Hvorfor er æstetisk empati ikke bare projektion af egne følelser?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Denne læsetekst kondenserer de centrale argumenter i kronologisk rækkefølge. Brug den som din primære tekst til at løse de næste opgaver.",
+      "coverage_note": "Teksten dækker det historiske grundlag i Lipps' teori, anvendelsen af fænomenologisk metode samt resultatet af undersøgelsen af æstetisk empati.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 2.1",
+          "heading": "Lipps og de to lag af empati",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan definerede tidlig psykologi overgangen fra ren perception til æstetisk nydelse?",
+          "explanation_paragraphs": [
+            "For at forstå den moderne fænomenologiske tilgang til kunst, trækker forfatterne på Theodor Lipps' klassiske model fra 1900-tallet. Lipps opdelte æstetisk empati i to strukturelle lag.",
+            "Det første lag kaldes 'basic empathy' (eller generel apperceptiv empati). Det er her, betragteren spontant oplever, at objektet udstråler en form for aktivitet. Det er fundamentet, der tillader os overhovedet at se genstanden som noget levende eller insisterende.",
+            "Det andet lag kaldes 'sympathetic empathy' (æstetisk sympati). Her går betragteren fra blot at observere aktiviteten til reelt at med-opleve (co-experience) den. Dette skaber en livsbekræftende følelse af harmoni og resonans. Ifølge Lipps er det kun i dette andet lag, at den egentlige æstetiske nydelse og sympati opstår."
+          ],
+          "key_points": [
+            "Lipps' teori består af et grundlæggende lag (basic empathy) og et fuldendt lag (sympathetic empathy).",
+            "Basic empathy registrerer aktivitet i objektet.",
+            "Sympathetic empathy er den æstetiske kulmination, hvor aktiviteten med-opleves."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "progressing from basic empathy",
+              "why_it_matters": "Viser direkte rækkefølgen i Lipps' struktur.",
+              "source_location": "Sektion 2.1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2.1",
+              "passage": "To be able to fully appreciate what Lipps means (...) one must first recognise that aesthetic empathy, strictly considered, is a two-layered structure consisting of a founding level and a founded a level.",
+              "why_it_matters": "Etablerer Lipps' hierarki, som resten af artiklen nuancerer empirisk."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3",
+          "heading": "Den fænomenologiske metode i praksis",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan undgår vi, at psykologien bare opfinder teoretiske koncepter uden hold i virkeligheden?",
+          "explanation_paragraphs": [
+            "Forfatterne anvender Giorgis deskriptive fænomenologiske metode. I stedet for at teste en forudindtaget hypotese, starter forskerne med konkrete førstepersonsberetninger fra informanter om intense kunstoplevelser.",
+            "Metoden kræver en fænomenologisk reduktion (epoché), hvor forskeren sætter sine fordomme i parentes. Interviewene nedbrydes i 'meningsenheder' (meaning units).",
+            "Ved hjælp af 'fri imaginær variation' undersøger forskeren derefter hver enkelt enhed for at skille de tilfældige elementer fra de essentielle. Målet er at finde den ufravigelige, generaliserbare struktur i oplevelsen af æstetisk empati, uden at forlade den levede erfaring."
+          ],
+          "key_points": [
+            "Fænomenologi i psykologien starter altid i den levede oplevelse, ikke i abstrakt teori.",
+            "Giorgis metode bruger meningsenheder og imaginær variation til at finde oplevelsens essens.",
+            "Metoden tillader en empirisk undersøgelse af førstepersonsperspektivet."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4.2.1",
+          "heading": "At møde en fremmed subjektivitet",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad er det første trin i strukturen for æstetisk empati?",
+          "explanation_paragraphs": [
+            "Forfatternes resultater viser, at æstetisk empati ikke betyder, at vi taber os selv fuldstændig, eller at vi kigger på et dødt objekt. Den første af de fem konstituenter i deres generelle struktur er 'Experience of a Foreign Subjective Sense'.",
+            "Når informanterne beskriver deres mest intense kunstoplevelser, oplever de ikke bare maleriets farver; de oplever en affektiv manifestation af et subjektivt nærvær, som tydeligt kommer udefra.",
+            "Dette er fundamentalt anderledes end en narcissistisk projektion. Betragteren mærker, at følelsen i maleriet tilhører en 'fremmed' virkelighed eller bevidsthed, som inviterer betragteren ind."
+          ],
+          "key_points": [
+            "Første moment: Oplevelsen af et fremmed subjektivt nærvær.",
+            "Empatien retter sig mod noget, der anerkendes som 'andet' end én selv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "originating outside the spectator",
+              "why_it_matters": "Cementerer at oplevelsen starter fra objektet/værket.",
+              "source_location": "Sektion 4.2.1"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.2.2 & 4.2.3",
+          "heading": "At indoptage værket (Interiorisation)",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan overføres værkets krav til betragterens egen krop og følelser?",
+          "explanation_paragraphs": [
+            "Næste skridt i strukturen er 'Reliving and Affective Adherence' og dernæst 'Interiorisation'. Betragteren overgiver sig frivilligt til maleriets affektive krav uden at føle sig tvunget. Dette er affektiv vedhæftning.",
+            "I kraft af 'interiorisation' får maleriets ydre træk en kropslig, følt eksistens inden i betragteren. Værket ophører med at være en flad repræsentation; det optages og bliver en levet, kropslig sensuel tilstedeværelse.",
+            "Det er her, kunstnerens udtryk bliver aktiveret inde i beskueren, hvilket giver følelserne en ny grad af klarhed."
+          ],
+          "key_points": [
+            "Affective Adherence: En frivillig overgivelse til værkets affektive krav.",
+            "Interiorisation: Handlingen hvor værket får kropslig bolig i betragteren.",
+            "Resultatet er at ydre form bliver til indre, levet nærvær."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "an affective and bodily felt existence",
+              "why_it_matters": "Den præcise virkning af interiorisation.",
+              "source_location": "Sektion 4.2.3"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 4.2.3",
+              "passage": "Interiorisation is an act through which the expressive features of the painting obtain an affective and bodily felt existence. (...) This is experienced as an inwards movement in which the painting is absorbed or incorporated.",
+              "why_it_matters": "Denne passage giver den mest præcise definition af begrebet, som bruges aktivt til at knytte objekt og subjekt sammen."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 4.2.4 & 4.2.5",
+          "heading": "Glæden ved deling og Affektiv Forståelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan fuldendes den æstetiske empati uden at subjekt og objekt flyder fuldstændigt sammen?",
+          "explanation_paragraphs": [
+            "De to sidste momenter i strukturen er 'Pleasure in Sharing' og 'Affective Understanding'. Når betragteren lader værket udtrykke sin mening, opstår en glæde ved at dele en følelse med værket.",
+            "Vigtigt er det, at grænsen mellem betragter og værk forbliver intakt. Oplevelsen fører ikke til et komplet, uadskilleligt sammensmeltning. Dette dobbelt-perspektiv skaber en anerkendende glæde.",
+            "Endelig sker der en affektiv forståelse: betragteren forstår en ny dimension af meningsskabelse. Denne forståelse er ikke en intellektuel analyse af malerens skjulte motiv, men en kropsligt følt indsigt i en måde at være i verden på. Indsigten tilhører både værket og betragteren selv."
+          ],
+          "key_points": [
+            "Pleasure in Sharing: Glæden ved med-skabelse, mens grænsen mellem selv og værk opretholdes.",
+            "Affective Understanding: En affektiv, kropsligindsigt i en væremåde i verden.",
+            "Oplevelsen åbner for ny mening, der er fælles for værket og betragteren."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5",
+          "heading": "Opgøret med Projektion",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor kan æstetisk empati ikke reduceres til, at vi bare ser os selv i kunsten?",
+          "explanation_paragraphs": [
+            "I diskussionen samler forfatterne trådene. Den samlede fem-leddede struktur viser, at æstetisk empati er en form for 'co-constitution' (med-konstituering). Værket og betragteren skaber i fællesskab oplevelsen.",
+            "Hvis empati udelukkende var projektion, ville vi kun møde et ekko af vores egne forudgående følelser. Fænomenologien beviser det modsatte: Værket har sit eget specifikke udgangspunkt, en andenhed (otherness), der trænger ind og påvirker os.",
+            "Dette understøtter kursets bredere pointe: Personlighed og mening er ikke gemt som en statisk kerne indeni os, men opstår og formes i vores intentionalitet – vores aktive og åbne rettethed mod verden."
+          ],
+          "key_points": [
+            "Æstetisk empati er med-konstituering, ikke blot projektion.",
+            "Vi møder en 'andenhed', der påvirker os og åbner nye affektive lag.",
+            "Beviser meningsskabelse som en dynamisk relation mellem selv og verden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "resists the reduction of aesthetic empathy",
+              "why_it_matters": "Kerneargumentet mod projektionsteorier.",
+              "source_location": "Sektion 5"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 5",
+              "passage": "Qualifying as co-constitution, our description resists the reduction of aesthetic empathy to a matter of projection (...) One comes to experience through aesthetic empathy not an echo of one’s voice in the object, but the reverberating rhythm in the ‘resonance chamber’ of one’s bodily affective being...",
+              "why_it_matters": "Samler tekstens afgørende pointe i forhold til kursets overordnede tema om subjekt-verden relationen."
+            }
+          ]
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan definerede tidlig psykologi overgangen fra ren perception til æstetisk nydelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvordan undgår vi, at psykologien bare opfinder teoretiske koncepter uden hold i virkeligheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En række metodiske trin",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvad er det første trin i strukturen for æstetisk empati?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En liste med 5 overskrifter",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvordan overføres værkets krav til betragterens egen krop og følelser?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvordan fuldendes den æstetiske empati uden at subjekt og objekt flyder fuldstændigt sammen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En liste med 5 overskrifter",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor kan æstetisk empati ikke reduceres til, at vi bare ser os selv i kunsten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan en fænomenologisk analyse af intense kunstoplevelser bevise, at personligheden grundlæggende er en meningsskabende relation til verden, frem for et lukket rum af statiske træk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Læg teksten væk. Løs disse opgaver fra hukommelsen for at fastlåse din forståelse. Tjek bagefter i din Abridged Reader, og ret de felter du var usikker på.",
+      "overview": [
+        "Teksten kortlægger den psykologiske proces i intense kunstoplevelser.",
+        "Den bruger deskriptiv fænomenologi til at isolere de fem kernekomponenter i æstetisk empati.",
+        "Den konkluderer, at oplevelsen bygger på en med-konstituering mellem betragteren og værkets andenhed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge Theodor Lipps er '__________ empathy' det grundlæggende lag, hvor vi blot oplever, at objektet udstråler en form for aktivitet.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Det andet fuldendte lag i Lipps' hierarki, hvor der opstår en reel med-oplevelse og æstetisk nydelse, kaldes '__________ empathy'.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Giorgis fænomenologiske metode tager udgangspunkt i kvalitative __________ med informanter frem for forudindtagede hypoteser.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 substantiv i flertal"
+        },
+        {
+          "number": 4,
+          "sentence": "Det første strukturelle moment i empatien er oplevelsen af et fremmed subjektivt nærvær, som tydeligt har sin oprindelse __________ for betragteren selv.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 retningsangivende ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Processen hvor værkets ydre udtryk får kropslig og følt eksistens inden i betragteren kaldes __________, ifølge resultaterne.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 engelsk begreb"
+        },
+        {
+          "number": 6,
+          "sentence": "Selvom der opstår en glæde ved at dele følelsen (Pleasure in Sharing), bliver subjekt og objekt ikke totalt sammensmeltet; en tydelig __________ bevares.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 7,
+          "sentence": "Forfatterne gør op med teorien om ren __________, fordi æstetisk empati kræver et møde med en reel 'andenhed' i form af værkets udtryk.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 psykologisk begreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel to-trins trappe, der viser Lipps' teori om empati. Sæt den grundlæggende perception på nederste trin og den æstetiske kulmination på øverste trin.",
+          "required_elements": [
+            "Basic empathy",
+            "Sympathetic empathy"
+          ],
+          "blank_space_hint": "Brug en lille kasse til hvert trin med en pil opad."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér forskellen på 'projektion' og 'med-konstituering' (co-constitution) via pile mellem et menneske og et maleri.",
+          "required_elements": [
+            "Envejs-pil for projektion",
+            "To-vejs dynamisk udveksling for co-constitution",
+            "'Otherness'"
+          ],
+          "blank_space_hint": "Tegn to små scenarier ved siden af hinanden for tydeligt at adskille solipsisme fra reel interaktion."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre teksten eksamensklar. Fænomenologi lægger op til mundtligt forsvar af *hvordan* vi erkender personligheden. Øv dig i at bruge tekstens begreber højt.",
+      "use_this_text_for": [
+        "At demonstrere fænomenologisk metode (Giorgis analyse) i kontrast til spørgeskemaer.",
+        "At definere orienteringspunktet 'intentionalitet' – hvordan subjektet retter sig mod verden.",
+        "At forklare 'meningsskabelse' som et aktivt kropsligt og affektivt møde frem for kognitiv informationsbearbejdning.",
+        "At afvise at oplevelser blot er radikal subjektiv projektion (solipsisme).",
+        "At illustrere forskellen på førstepersons- og tredjepersonsperspektiver i personlighedspsykologien."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02L1)",
+          "connection": "Trækpsykologien reificerer egenskaber som statiske ting indeni personen; denne tekst viser, at psykologiske fænomener (som sympati) opstår dynamisk i relationen mellem selv og verden."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Hvor Freud finder driften bag bevidstheden, insisterer denne tekst på at blive i den bevidste, levede erfaring og tage dens manifestationer (fx interiorisation) seriøst som sande data."
+        },
+        {
+          "course_theme": "Metateori (W12L1)",
+          "connection": "Essens/kontekst-punktet: Teksten beviser 'co-constitution', at den æstetiske essens ikke bare bor lukket inde i subjektet, men aktiveres af mødet med en ydre kontekst (værkets andenhed)."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign epistemologien: Hvor Big Five ser 'openness to experience' som et statisk træk målt med et tal, giver denne tekst en detaljeret mekanistisk forklaring på, *hvordan* en åben, æstetisk oplevelse faktisk udspiller sig over fem momenter."
+        },
+        {
+          "compare_with": "Sterns Personalisme",
+          "how_to_compare": "Begge retninger ønsker at de-reificere objektive kasser og se det hele menneske. Brug denne teksts fokus på 'bodily felt existence' som et supplement til Stern."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Fænomenologi vs. naturvidenskabelig psykologi",
+          "use_in_answer": "Brug artiklens beskrivelse af 'co-constitution' til at vise, at subjekt og objekt ikke er vandtætte adskilte kasser.",
+          "caution": "Undgå at lyde som om fænomenologi er uvidenskabelig navlepilleri; nævn eksplicit Giorgis systematiske deskriptive metode."
+        },
+        {
+          "prompt_type": "Meningsskabelse i personligheden",
+          "use_in_answer": "Brug begrebet 'Interiorisation' til konkret at demonstrere, hvordan mennesket optager ydre mening og gør den til indre levet virkelighed.",
+          "caution": "Husk at understrege, at grænsen mellem selv og anden opretholdes – der er ikke tale om grænseløs sammensmeltning."
+        },
+        {
+          "prompt_type": "Gennemgang af de 4 orienteringspunkter",
+          "use_in_answer": "Sig højt, at fænomenologien løser 'Essens vs Kontekst'-dialektikken ved at introducere *intentionaliteten*.",
+          "caution": "Brug ikke kun abstrakte filosofiske gloser; forankr dem lynhurtigt i et af tekstens casestudier (fx oplevelsen af Caravaggio-maleriet)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At fænomenologi betyder, at virkeligheden udelukkende er opfundet inde i mit hoved (radikal solipsisme).",
+          "better_reading": "Subjektet møder altid en verden (otherness). Æstetisk empati kræver et reelt møde med noget 'fremmed', ikke blot et spejl."
+        },
+        {
+          "trap": "At empati i denne tekst kun handler om kognitiv perspektiv-tagning.",
+          "better_reading": "Det er dybt funderet i en *affektiv* og *kropslig* (bodily felt) vedhæftning til værket."
+        },
+        {
+          "trap": "At 'Basic Empathy' hos Lipps er den dybeste form.",
+          "better_reading": "Omvendt: Basic empathy er fundamentet (registrering af aktivitet), mens 'Sympathetic empathy' er selve fuldendelsen."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Hansen & Roald (2022), hvordan adskiller fænomenologiens syn på 'meningsskabelse' i førsteperson sig fra en trækpsykologisk forståelse af mennesket?",
+      "mini_exam_answer_plan_slots": [
+        "1. Definition af førstepersonsperspektivet (Giorgis metode).",
+        "2. Kontrasten: Træk som indre kerne vs. Fænomenologisk 'co-constitution'.",
+        "3. Eksemplet: Hvordan 'Interiorisation' fungerer mekanisk i mødet med værket.",
+        "4. Afvisningen af ren projektion: Nødvendigheden af at møde 'otherness'."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+      "lecture_key": "W06L1",
+      "source_title": "Moeskær Hansen & Roald (2022)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning. Guiden sætter scenen og opstiller de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Trækpsykologien forsøger at måle personligheden udefra som et sæt af stabile variabler. Psykoanalysen graver efter ubevidste drifter bag vores ryg. Men hvad sker der, når vi undersøger menneskets bevidste, levede oplevelse indefra?",
+        "Denne tekst markerer et afgørende skift i kurset. Vi forlader det objektive tredjepersonsperspektiv og træder ind i fænomenologien, hvor meningsskabelse i førsteperson er det centrale.",
+        "Forfatterne undersøger et helt specifikt fænomen: æstetisk empati. Hvad sker der egentlig psykologisk, når vi rammes af et kunstværk? Historisk har man troet, at vi blot projicerede vores egne følelser over på det døde lærred.",
+        "Men Hansen og Roald argumenterer imod denne rene projektion. De viser, at vi i stedet møder en \"foreign subjective sense\" – en radikal andenhed, der trænger ind og stemmer vores eget følelsesliv.",
+        "For at bevise dette bruger de Giorgis deskriptive fænomenologiske metode. Gennem interviews om intense kunstoplevelser isolerer de de fem kernebestanddele, der udgør selve essensen af æstetisk empati.",
+        "Læsningen er din chance for at se fænomenologi i praksis. Den viser, hvordan subjekt og verden ikke er adskilte kasser, men skaber hinanden i ét konkret meningsfuldt møde."
+      ],
+      "main_problem": "Hvordan kan en fænomenologisk analyse af intense kunstoplevelser bevise, at personligheden grundlæggende er en meningsskabende relation til verden, frem for et lukket rum af statiske træk?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad er forskellen på 'basic empathy' og 'sympathetic empathy' i Theodor Lipps' historiske model?",
+          "why_it_matters": "Lipps' to-lags model danner bagtæppet for at forstå, hvornår en normal perception overgår til en dyb æstetisk og psykologisk forbundethed.",
+          "answer_form": "En kort kontrast"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan undersøger Giorgis fænomenologiske metode psykologiske koncepter rent empirisk?",
+          "why_it_matters": "Metoden er et konkret modsvar til trækpsykologiens spørgeskemaer; den fastholder oplevelsen i førsteperson.",
+          "answer_form": "En række metodiske trin"
+        },
+        {
+          "number": 3,
+          "question": "Hvorfor er æstetisk empati ikke bare projektion af egne følelser?",
+          "why_it_matters": "Dette er tekstens stærkeste opgør med solipsismen. Værket med-konstituerer oplevelsen via et møde med noget fundamentalt andet.",
+          "answer_form": "1-2 sætninger"
+        },
+        {
+          "number": 4,
+          "question": "Hvad dækker begrebet 'interiorisation' over i mødet med værket?",
+          "why_it_matters": "Det forklarer den mekanisme, hvormed noget ydre får kropslig og affektiv eksistens i betragteren.",
+          "answer_form": "En kort definition"
+        },
+        {
+          "number": 5,
+          "question": "Hvilke fem strukturmomenter udgør ifølge analysen æstetisk empati?",
+          "why_it_matters": "Disse fem punkter er selve resultatet af den deskriptive analyse og beviser fænomenologiens evne til at systematisere levet liv.",
+          "answer_form": "En liste med 5 overskrifter"
+        }
+      ],
+      "why_this_text_matters": "Teksten demonstrerer overgangen fra objektivistiske modeller (træk/biologi) til humanvidenskabelige og eksistentielle modeller. Den er dit primære bevis for, hvordan orienteringspunktet 'intentionalitet' (essens/kontekst) fungerer som forskningsmetode.",
+      "overview": [
+        "Et historisk rids af Theodor Lipps' empati-æstetik.",
+        "Anvendelsen af Giorgis deskriptive fænomenologiske metode på to interviews.",
+        "Præsentationen af en general struktur for æstetisk empati i fem dele."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1-2 (s. 26-32)",
+          "task": "Find Lipps' definition af de to lag af empati.",
+          "why_it_matters": "Etablerer grundproblemet: hvordan overgår vi fra at opfatte en genstand til at føle med den.",
+          "stop_signal": "Når sektionen om Lipps er slut"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3 (s. 33-35)",
+          "task": "Aflæs hvordan metoden bevæger sig fra råt interview til essentiel struktur.",
+          "why_it_matters": "Viser hvordan fænomenologi undgår at være ren spekulation.",
+          "stop_signal": "Inden Resultater"
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4.1 (s. 35-38)",
+          "task": "Skim de to konkrete casestudier af Martin og Sebastian.",
+          "why_it_matters": "Giver kød og blod til den abstrakte teori, der følger efter.",
+          "stop_signal": "Ved start af Sektion 4.2"
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.2 (s. 39-41)",
+          "task": "Nærlæs de fem konstituenter af General Structural Description.",
+          "why_it_matters": "Dette er kernesvaret i artiklen og dit bevis for æstetisk empati.",
+          "stop_signal": "Ved Discussion"
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 5 (s. 41-44)",
+          "task": "Forstå forfatternes opgør med 'projektion'.",
+          "why_it_matters": "Opgøret med projektion peger direkte ind i kursets diskussion af meningsskabelse og kontekst.",
+          "stop_signal": "Når konklusionen begynder"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "features a sense of otherness",
+          "why": "Viser at empatien er rettet mod noget fremmed, ikke kun et spejl.",
+          "where_to_look": "Sektion 4.2.1"
+        },
+        {
+          "target": "an act through which the expressive features",
+          "why": "Definerer selve 'interiorisation'-mekanismen.",
+          "where_to_look": "Sektion 4.2.3"
+        },
+        {
+          "target": "resists the reduction of aesthetic empathy",
+          "why": "Markeret modsvar mod teorier der reducerer det til projektion.",
+          "where_to_look": "Sektion 5 (Discussion)"
+        },
+        {
+          "target": "progressing from basic empathy to sympathetic",
+          "why": "Opsummerer Lipps' historiske to-lags model.",
+          "where_to_look": "Sektion 2.1"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange litteraturgennemgange af romantisk filosofi før Lipps.",
+        "Husserls tidlige epistemologiske og metafysiske debatter i fodnoterne.",
+        "Forskellen på empati i film, litteratur og musik i indledningen."
+      ],
+      "opening_passages": [
+        {
+          "number": 1,
+          "source_location": "Sektion 1 (Introduction)",
+          "excerpt": "Despite the proclaimed significance of empathy for the understanding of affective-aesthetic encounters, systematic attempts at describing the appearance of aesthetic empathy are lacking...",
+          "open_question": "Hvorfor er selve beskrivelsen af oplevelsen så vigtig i en fænomenologisk ramme?"
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 5 (Discussion)",
+          "excerpt": "Qualifying as co-constitution, our description resists the reduction of aesthetic empathy to a matter of projection...",
+          "open_question": "Hvad ændrer det ved vores forståelse af personligheden, hvis vi med-skaber verden frem for bare at projicere på den?"
+        },
+        {
+          "number": "3",
+          "source_location": "Sektion 4.2.1",
+          "excerpt": "features a sense of otherness",
+          "open_question": "Hvorfor er æstetisk empati ikke bare projektion af egne følelser?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Denne læsetekst kondenserer de centrale argumenter i kronologisk rækkefølge. Brug den som din primære tekst til at løse de næste opgaver.",
+      "coverage_note": "Teksten dækker det historiske grundlag i Lipps' teori, anvendelsen af fænomenologisk metode samt resultatet af undersøgelsen af æstetisk empati.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Sektion 2.1",
+          "heading": "Lipps og de to lag af empati",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan definerede tidlig psykologi overgangen fra ren perception til æstetisk nydelse?",
+          "explanation_paragraphs": [
+            "For at forstå den moderne fænomenologiske tilgang til kunst, trækker forfatterne på Theodor Lipps' klassiske model fra 1900-tallet. Lipps opdelte æstetisk empati i to strukturelle lag.",
+            "Det første lag kaldes 'basic empathy' (eller generel apperceptiv empati). Det er her, betragteren spontant oplever, at objektet udstråler en form for aktivitet. Det er fundamentet, der tillader os overhovedet at se genstanden som noget levende eller insisterende.",
+            "Det andet lag kaldes 'sympathetic empathy' (æstetisk sympati). Her går betragteren fra blot at observere aktiviteten til reelt at med-opleve (co-experience) den. Dette skaber en livsbekræftende følelse af harmoni og resonans. Ifølge Lipps er det kun i dette andet lag, at den egentlige æstetiske nydelse og sympati opstår."
+          ],
+          "key_points": [
+            "Lipps' teori består af et grundlæggende lag (basic empathy) og et fuldendt lag (sympathetic empathy).",
+            "Basic empathy registrerer aktivitet i objektet.",
+            "Sympathetic empathy er den æstetiske kulmination, hvor aktiviteten med-opleves."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "progressing from basic empathy",
+              "why_it_matters": "Viser direkte rækkefølgen i Lipps' struktur.",
+              "source_location": "Sektion 2.1"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 2.1",
+              "passage": "To be able to fully appreciate what Lipps means (...) one must first recognise that aesthetic empathy, strictly considered, is a two-layered structure consisting of a founding level and a founded a level.",
+              "why_it_matters": "Etablerer Lipps' hierarki, som resten af artiklen nuancerer empirisk."
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "source_location": "Sektion 3",
+          "heading": "Den fænomenologiske metode i praksis",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan undgår vi, at psykologien bare opfinder teoretiske koncepter uden hold i virkeligheden?",
+          "explanation_paragraphs": [
+            "Forfatterne anvender Giorgis deskriptive fænomenologiske metode. I stedet for at teste en forudindtaget hypotese, starter forskerne med konkrete førstepersonsberetninger fra informanter om intense kunstoplevelser.",
+            "Metoden kræver en fænomenologisk reduktion (epoché), hvor forskeren sætter sine fordomme i parentes. Interviewene nedbrydes i 'meningsenheder' (meaning units).",
+            "Ved hjælp af 'fri imaginær variation' undersøger forskeren derefter hver enkelt enhed for at skille de tilfældige elementer fra de essentielle. Målet er at finde den ufravigelige, generaliserbare struktur i oplevelsen af æstetisk empati, uden at forlade den levede erfaring."
+          ],
+          "key_points": [
+            "Fænomenologi i psykologien starter altid i den levede oplevelse, ikke i abstrakt teori.",
+            "Giorgis metode bruger meningsenheder og imaginær variation til at finde oplevelsens essens.",
+            "Metoden tillader en empirisk undersøgelse af førstepersonsperspektivet."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 3,
+          "source_location": "Sektion 4.2.1",
+          "heading": "At møde en fremmed subjektivitet",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvad er det første trin i strukturen for æstetisk empati?",
+          "explanation_paragraphs": [
+            "Forfatternes resultater viser, at æstetisk empati ikke betyder, at vi taber os selv fuldstændig, eller at vi kigger på et dødt objekt. Den første af de fem konstituenter i deres generelle struktur er 'Experience of a Foreign Subjective Sense'.",
+            "Når informanterne beskriver deres mest intense kunstoplevelser, oplever de ikke bare maleriets farver; de oplever en affektiv manifestation af et subjektivt nærvær, som tydeligt kommer udefra.",
+            "Dette er fundamentalt anderledes end en narcissistisk projektion. Betragteren mærker, at følelsen i maleriet tilhører en 'fremmed' virkelighed eller bevidsthed, som inviterer betragteren ind."
+          ],
+          "key_points": [
+            "Første moment: Oplevelsen af et fremmed subjektivt nærvær.",
+            "Empatien retter sig mod noget, der anerkendes som 'andet' end én selv."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "originating outside the spectator",
+              "why_it_matters": "Cementerer at oplevelsen starter fra objektet/værket.",
+              "source_location": "Sektion 4.2.1"
+            }
+          ],
+          "source_passages": []
+        },
+        {
+          "number": 4,
+          "source_location": "Sektion 4.2.2 & 4.2.3",
+          "heading": "At indoptage værket (Interiorisation)",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan overføres værkets krav til betragterens egen krop og følelser?",
+          "explanation_paragraphs": [
+            "Næste skridt i strukturen er 'Reliving and Affective Adherence' og dernæst 'Interiorisation'. Betragteren overgiver sig frivilligt til maleriets affektive krav uden at føle sig tvunget. Dette er affektiv vedhæftning.",
+            "I kraft af 'interiorisation' får maleriets ydre træk en kropslig, følt eksistens inden i betragteren. Værket ophører med at være en flad repræsentation; det optages og bliver en levet, kropslig sensuel tilstedeværelse.",
+            "Det er her, kunstnerens udtryk bliver aktiveret inde i beskueren, hvilket giver følelserne en ny grad af klarhed."
+          ],
+          "key_points": [
+            "Affective Adherence: En frivillig overgivelse til værkets affektive krav.",
+            "Interiorisation: Handlingen hvor værket får kropslig bolig i betragteren.",
+            "Resultatet er at ydre form bliver til indre, levet nærvær."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "an affective and bodily felt existence",
+              "why_it_matters": "Den præcise virkning af interiorisation.",
+              "source_location": "Sektion 4.2.3"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 4.2.3",
+              "passage": "Interiorisation is an act through which the expressive features of the painting obtain an affective and bodily felt existence. (...) This is experienced as an inwards movement in which the painting is absorbed or incorporated.",
+              "why_it_matters": "Denne passage giver den mest præcise definition af begrebet, som bruges aktivt til at knytte objekt og subjekt sammen."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "source_location": "Sektion 4.2.4 & 4.2.5",
+          "heading": "Glæden ved deling og Affektiv Forståelse",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan fuldendes den æstetiske empati uden at subjekt og objekt flyder fuldstændigt sammen?",
+          "explanation_paragraphs": [
+            "De to sidste momenter i strukturen er 'Pleasure in Sharing' og 'Affective Understanding'. Når betragteren lader værket udtrykke sin mening, opstår en glæde ved at dele en følelse med værket.",
+            "Vigtigt er det, at grænsen mellem betragter og værk forbliver intakt. Oplevelsen fører ikke til et komplet, uadskilleligt sammensmeltning. Dette dobbelt-perspektiv skaber en anerkendende glæde.",
+            "Endelig sker der en affektiv forståelse: betragteren forstår en ny dimension af meningsskabelse. Denne forståelse er ikke en intellektuel analyse af malerens skjulte motiv, men en kropsligt følt indsigt i en måde at være i verden på. Indsigten tilhører både værket og betragteren selv."
+          ],
+          "key_points": [
+            "Pleasure in Sharing: Glæden ved med-skabelse, mens grænsen mellem selv og værk opretholdes.",
+            "Affective Understanding: En affektiv, kropsligindsigt i en væremåde i verden.",
+            "Oplevelsen åbner for ny mening, der er fælles for værket og betragteren."
+          ],
+          "no_quote_anchor_needed": true,
+          "source_passages": []
+        },
+        {
+          "number": 6,
+          "source_location": "Sektion 5",
+          "heading": "Opgøret med Projektion",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor kan æstetisk empati ikke reduceres til, at vi bare ser os selv i kunsten?",
+          "explanation_paragraphs": [
+            "I diskussionen samler forfatterne trådene. Den samlede fem-leddede struktur viser, at æstetisk empati er en form for 'co-constitution' (med-konstituering). Værket og betragteren skaber i fællesskab oplevelsen.",
+            "Hvis empati udelukkende var projektion, ville vi kun møde et ekko af vores egne forudgående følelser. Fænomenologien beviser det modsatte: Værket har sit eget specifikke udgangspunkt, en andenhed (otherness), der trænger ind og påvirker os.",
+            "Dette understøtter kursets bredere pointe: Personlighed og mening er ikke gemt som en statisk kerne indeni os, men opstår og formes i vores intentionalitet – vores aktive og åbne rettethed mod verden."
+          ],
+          "key_points": [
+            "Æstetisk empati er med-konstituering, ikke blot projektion.",
+            "Vi møder en 'andenhed', der påvirker os og åbner nye affektive lag.",
+            "Beviser meningsskabelse som en dynamisk relation mellem selv og verden."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "resists the reduction of aesthetic empathy",
+              "why_it_matters": "Kerneargumentet mod projektionsteorier.",
+              "source_location": "Sektion 5"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "Sektion 5",
+              "passage": "Qualifying as co-constitution, our description resists the reduction of aesthetic empathy to a matter of projection (...) One comes to experience through aesthetic empathy not an echo of one’s voice in the object, but the reverberating rhythm in the ‘resonance chamber’ of one’s bodily affective being...",
+              "why_it_matters": "Samler tekstens afgørende pointe i forhold til kursets overordnede tema om subjekt-verden relationen."
+            }
+          ]
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan definerede tidlig psykologi overgangen fra ren perception til æstetisk nydelse?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort kontrast",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvordan undgår vi, at psykologien bare opfinder teoretiske koncepter uden hold i virkeligheden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En række metodiske trin",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvad er det første trin i strukturen for æstetisk empati?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En liste med 5 overskrifter",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvordan overføres værkets krav til betragterens egen krop og følelser?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvordan fuldendes den æstetiske empati uden at subjekt og objekt flyder fuldstændigt sammen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "En liste med 5 overskrifter",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor kan æstetisk empati ikke reduceres til, at vi bare ser os selv i kunsten?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 6",
+          "answer_shape": "1-2 sætninger",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "7",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan en fænomenologisk analyse af intense kunstoplevelser bevise, at personligheden grundlæggende er en meningsskabende relation til verden, frem for et lukket rum af statiske træk?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-6",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Læg teksten væk. Løs disse opgaver fra hukommelsen for at fastlåse din forståelse. Tjek bagefter i din Abridged Reader, og ret de felter du var usikker på.",
+      "overview": [
+        "Teksten kortlægger den psykologiske proces i intense kunstoplevelser.",
+        "Den bruger deskriptiv fænomenologi til at isolere de fem kernekomponenter i æstetisk empati.",
+        "Den konkluderer, at oplevelsen bygger på en med-konstituering mellem betragteren og værkets andenhed."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge Theodor Lipps er '__________ empathy' det grundlæggende lag, hvor vi blot oplever, at objektet udstråler en form for aktivitet.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Det andet fuldendte lag i Lipps' hierarki, hvor der opstår en reel med-oplevelse og æstetisk nydelse, kaldes '__________ empathy'.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Giorgis fænomenologiske metode tager udgangspunkt i kvalitative __________ med informanter frem for forudindtagede hypoteser.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 substantiv i flertal"
+        },
+        {
+          "number": 4,
+          "sentence": "Det første strukturelle moment i empatien er oplevelsen af et fremmed subjektivt nærvær, som tydeligt har sin oprindelse __________ for betragteren selv.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 retningsangivende ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Processen hvor værkets ydre udtryk får kropslig og følt eksistens inden i betragteren kaldes __________, ifølge resultaterne.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 engelsk begreb"
+        },
+        {
+          "number": 6,
+          "sentence": "Selvom der opstår en glæde ved at dele følelsen (Pleasure in Sharing), bliver subjekt og objekt ikke totalt sammensmeltet; en tydelig __________ bevares.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 substantiv"
+        },
+        {
+          "number": 7,
+          "sentence": "Forfatterne gør op med teorien om ren __________, fordi æstetisk empati kræver et møde med en reel 'andenhed' i form af værkets udtryk.",
+          "where_to_look": "Sektion 6",
+          "answer_shape": "1 psykologisk begreb"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn en simpel to-trins trappe, der viser Lipps' teori om empati. Sæt den grundlæggende perception på nederste trin og den æstetiske kulmination på øverste trin.",
+          "required_elements": [
+            "Basic empathy",
+            "Sympathetic empathy"
+          ],
+          "blank_space_hint": "Brug en lille kasse til hvert trin med en pil opad."
+        },
+        {
+          "number": 2,
+          "task": "Skitsér forskellen på 'projektion' og 'med-konstituering' (co-constitution) via pile mellem et menneske og et maleri.",
+          "required_elements": [
+            "Envejs-pil for projektion",
+            "To-vejs dynamisk udveksling for co-constitution",
+            "'Otherness'"
+          ],
+          "blank_space_hint": "Tegn to små scenarier ved siden af hinanden for tydeligt at adskille solipsisme fra reel interaktion."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre teksten eksamensklar. Fænomenologi lægger op til mundtligt forsvar af *hvordan* vi erkender personligheden. Øv dig i at bruge tekstens begreber højt.",
+      "use_this_text_for": [
+        "At demonstrere fænomenologisk metode (Giorgis analyse) i kontrast til spørgeskemaer.",
+        "At definere orienteringspunktet 'intentionalitet' – hvordan subjektet retter sig mod verden.",
+        "At forklare 'meningsskabelse' som et aktivt kropsligt og affektivt møde frem for kognitiv informationsbearbejdning.",
+        "At afvise at oplevelser blot er radikal subjektiv projektion (solipsisme).",
+        "At illustrere forskellen på førstepersons- og tredjepersonsperspektiver i personlighedspsykologien."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Trækpsykologi (W02L1)",
+          "connection": "Trækpsykologien reificerer egenskaber som statiske ting indeni personen; denne tekst viser, at psykologiske fænomener (som sympati) opstår dynamisk i relationen mellem selv og verden."
+        },
+        {
+          "course_theme": "Psykoanalyse (W04)",
+          "connection": "Hvor Freud finder driften bag bevidstheden, insisterer denne tekst på at blive i den bevidste, levede erfaring og tage dens manifestationer (fx interiorisation) seriøst som sande data."
+        },
+        {
+          "course_theme": "Metateori (W12L1)",
+          "connection": "Essens/kontekst-punktet: Teksten beviser 'co-constitution', at den æstetiske essens ikke bare bor lukket inde i subjektet, men aktiveres af mødet med en ydre kontekst (værkets andenhed)."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Costa & McCrae (Big Five)",
+          "how_to_compare": "Sammenlign epistemologien: Hvor Big Five ser 'openness to experience' som et statisk træk målt med et tal, giver denne tekst en detaljeret mekanistisk forklaring på, *hvordan* en åben, æstetisk oplevelse faktisk udspiller sig over fem momenter."
+        },
+        {
+          "compare_with": "Sterns Personalisme",
+          "how_to_compare": "Begge retninger ønsker at de-reificere objektive kasser og se det hele menneske. Brug denne teksts fokus på 'bodily felt existence' som et supplement til Stern."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Fænomenologi vs. naturvidenskabelig psykologi",
+          "use_in_answer": "Brug artiklens beskrivelse af 'co-constitution' til at vise, at subjekt og objekt ikke er vandtætte adskilte kasser.",
+          "caution": "Undgå at lyde som om fænomenologi er uvidenskabelig navlepilleri; nævn eksplicit Giorgis systematiske deskriptive metode."
+        },
+        {
+          "prompt_type": "Meningsskabelse i personligheden",
+          "use_in_answer": "Brug begrebet 'Interiorisation' til konkret at demonstrere, hvordan mennesket optager ydre mening og gør den til indre levet virkelighed.",
+          "caution": "Husk at understrege, at grænsen mellem selv og anden opretholdes – der er ikke tale om grænseløs sammensmeltning."
+        },
+        {
+          "prompt_type": "Gennemgang af de 4 orienteringspunkter",
+          "use_in_answer": "Sig højt, at fænomenologien løser 'Essens vs Kontekst'-dialektikken ved at introducere *intentionaliteten*.",
+          "caution": "Brug ikke kun abstrakte filosofiske gloser; forankr dem lynhurtigt i et af tekstens casestudier (fx oplevelsen af Caravaggio-maleriet)."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At fænomenologi betyder, at virkeligheden udelukkende er opfundet inde i mit hoved (radikal solipsisme).",
+          "better_reading": "Subjektet møder altid en verden (otherness). Æstetisk empati kræver et reelt møde med noget 'fremmed', ikke blot et spejl."
+        },
+        {
+          "trap": "At empati i denne tekst kun handler om kognitiv perspektiv-tagning.",
+          "better_reading": "Det er dybt funderet i en *affektiv* og *kropslig* (bodily felt) vedhæftning til værket."
+        },
+        {
+          "trap": "At 'Basic Empathy' hos Lipps er den dybeste form.",
+          "better_reading": "Omvendt: Basic empathy er fundamentet (registrering af aktivitet), mens 'Sympathetic empathy' er selve fuldendelsen."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Hansen & Roald (2022), hvordan adskiller fænomenologiens syn på 'meningsskabelse' i førsteperson sig fra en trækpsykologisk forståelse af mennesket?",
+      "mini_exam_answer_plan_slots": [
+        "1. Definition af førstepersonsperspektivet (Giorgis metode).",
+        "2. Kontrasten: Træk som indre kerne vs. Fænomenologisk 'co-constitution'.",
+        "3. Eksemplet: Hvordan 'Interiorisation' fungerer mekanisk i mødet med værket.",
+        "4. Afvisningen af ren projektion: Nødvendigheden af at møde 'otherness'."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

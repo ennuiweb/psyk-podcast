@@ -1,0 +1,1225 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-14T13:00:46Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "e23116af10e9d41eba0997b54e170dad68f1153977135159d8180f79ccbeb77c",
+    "source_files_signature": "f962c7a6628350339bb8680d46a345ada519f0c3108d7a407b07526a26d4912b",
+    "source_card": "43596301622dc5f7199abc42acd2374ab854817609c42f367f6da01ed7b6bbbb",
+    "revised_lecture_substrate": "25f7659f24c6b027b7749bb461fc7f256f936abe3ff1e5d6d202cbb5228be41c",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w06l1-spinelli-2005-b2f76e93",
+    "lecture_key": "W06L1",
+    "title": "Spinelli (2005)",
+    "reading_title": "Spinelli (2005)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 30,
+    "estimated_token_count": 19500,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W6L1 Fænomenologi/W6L1 Spinelli (2005).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 30,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-spinelli-2005-b2f76e93",
+      "lecture_key": "W06L1",
+      "source_title": "Spinelli (2005)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning.",
+      "teaser_paragraphs": [
+        "Forestil dig, at du møder en ven til en fest. Hun bryder pludselig ud i voldsomme bevægelser, hendes ansigt vrænges, og hun begynder at græde. Din umiddelbare reaktion vil sandsynligvis være at styrte hen og trøste hende, fordi du lynhurtigt har tolket situationen som udtryk for sorg.",
+        "Men tænk nu, hvis hun i virkeligheden bare græd af grin over en fantastisk vittighed? Fænomenologien bruger præcis denne type hverdagsfejl til at vise os, hvor upræcis vores automatiske tolkning af verden ofte er.",
+        "Kerneproblemet i Spinellis tekst er, at vi mennesker aldrig har direkte adgang til den objektive virkelighed. Den fysiske verden findes, men vores sind oversætter konstant de ukendte stimuli til meningsfulde fænomener. Det, du oplever, er altså ikke verden, men din tolkning af den.",
+        "For overhovedet at begribe menneskets psyke, er vi derfor nødt til at forstå begrebet intentionalitet. Vores bevidsthed er altid bevidsthed om noget, og subjektet og verden skaber konstant hinanden i et evigt samspil.",
+        "Dette er ikke blot en filosofisk øvelse. Det er selve nøglen til at forstå, hvordan vi undgår at projicere vores egne blinde vinkler over på andre, og det kræver en specifik metode. Læser du teksten rigtigt, vil du desuden indse, at det \"jeg\", du tror styrer dine handlinger, oftest kun eksisterer som en efterrationalisering."
+      ],
+      "main_problem": "Hvordan kan vi undersøge menneskets psyke videnskabeligt, når al virkelighed er en subjektiv fortolkning?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor afviser fænomenologien, at vi kan kende den 'sande' objektive virkelighed?",
+          "why_it_matters": "Det lægger fundamentet for at skifte fokus fra objektive træk til oplevet mening.",
+          "answer_form": "En kort teoretisk forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan fungerer 'intentionalitet' som bindeled mellem sind og verden?",
+          "why_it_matters": "Det er det vigtigste begreb i teksten og løser op for dualismen.",
+          "answer_form": "En enkelt kerne-definition"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan skaber noema og noesis vidt forskellige oplevelser af den samme begivenhed?",
+          "why_it_matters": "Det forklarer fænomenologisk, hvorfor folk reagerer forskelligt.",
+          "answer_form": "En kontrast mellem to koncepter"
+        },
+        {
+          "number": 4,
+          "question": "Hvad går de tre trin i den fænomenologiske metode ud på?",
+          "why_it_matters": "Det er det metodiske værktøj, du skal kunne anvende til eksamen.",
+          "answer_form": "En liste med tre operationelle regler"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor konkluderer teksten, at 'jeget' oftest forsvinder under intens handling?",
+          "why_it_matters": "Det ændrer vores syn på agens og personlighed fundamentalt.",
+          "answer_form": "Et kausalt argument"
+        }
+      ],
+      "why_this_text_matters": "Teksten markerer overgangen fra objektive teorier (som trækpsykologi) til et radikalt 1. persons-perspektiv.",
+      "overview": [
+        "Virkeligheden som fænomen frem for objektiv sandhed",
+        "Intentionalitet og bevidsthedens to poler (noema/noesis)",
+        "Den fænomenologiske metodes tre praksisregler"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "The Phenomenological View of Reality",
+          "task": "Afgør hvorfor bogen foran dig kun er en 'bog' i kraft af dit meningssystem.",
+          "why_it_matters": "Viser hvordan ting eksisterer via mening.",
+          "stop_signal": "Når du forstår raw matter konceptet"
+        },
+        {
+          "number": 2,
+          "source_location": "Intentionality",
+          "task": "Find Husserls oversættelse af hvordan bevidstheden fungerer.",
+          "why_it_matters": "Det er fænomenologiens grundregel.",
+          "stop_signal": "Når begrebet er defineret"
+        },
+        {
+          "number": 3,
+          "source_location": "Noema and Noesis",
+          "task": "Brug eksemplet med det politiske møde til at skelne de to poler.",
+          "why_it_matters": "Viser mekanismen i individuelle tolkninger.",
+          "stop_signal": "Når du kan forklare tilhørernes reaktion"
+        },
+        {
+          "number": 4,
+          "source_location": "The Phenomenological Method",
+          "task": "Find og forstå Step A, B og C.",
+          "why_it_matters": "Giver dig de metodiske redskaber.",
+          "stop_signal": "Når du har læst horizontalization"
+        },
+        {
+          "number": 5,
+          "source_location": "Straightforward versus Reflective Experience",
+          "task": "Søg efter paradokset omkring hvornår vi er mest 'i live'.",
+          "why_it_matters": "Afmonterer det konstante rationelle jeg.",
+          "stop_signal": "Når du fanger forskellen på de to tilstande"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "describe, don't explain",
+          "why": "Opsummerer kernen i regel to.",
+          "where_to_look": "Step B"
+        },
+        {
+          "target": "consciousness of some thing",
+          "why": "Selve definitionen på intentionalitet.",
+          "where_to_look": "Intentionality"
+        },
+        {
+          "target": "unknown and unknowable to us",
+          "why": "Konsekvensen af fænomenologiens virkelighedssyn.",
+          "where_to_look": "The interpreted world"
+        },
+        {
+          "target": "the existence of the 'not I'",
+          "why": "Viser at subjektet kræver verden for at eksistere.",
+          "where_to_look": "The Relationship between Self and Others"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Historiske detaljer om Kant og Brentano",
+        "Filosofiske spidsfindigheder om forskellen på eksistentiel og transcendental fænomenologi",
+        "Lange diskussioner af fysikkens utilstrækkelighed"
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Step B",
+          "excerpt": "describe, don't explain",
+          "open_question": "Hvorfor afviser fænomenologien, at vi kan kende den 'sande' objektive virkelighed?"
+        },
+        {
+          "number": "2",
+          "source_location": "Intentionality",
+          "excerpt": "consciousness of some thing",
+          "open_question": "Hvordan fungerer 'intentionalitet' som bindeled mellem sind og verden?"
+        },
+        {
+          "number": "3",
+          "source_location": "The interpreted world",
+          "excerpt": "unknown and unknowable to us",
+          "open_question": "Hvordan skaber noema og noesis vidt forskellige oplevelser af den samme begivenhed?"
+        },
+        {
+          "number": "4",
+          "source_location": "The Relationship between Self and Others",
+          "excerpt": "the existence of the 'not I'",
+          "open_question": "Hvad går de tre trin i den fænomenologiske metode ud på?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne tekst til at løse de specifikke opgaver.",
+      "coverage_note": "Fokuserer på de metodiske og konceptuelle kerner i fænomenologien.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "The interpreted world",
+          "heading": "Den Tolkede Virkelighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Har vi direkte adgang til den objektive verden?",
+          "explanation_paragraphs": [
+            "Vi antager i hverdagen, at de objekter, vi omgiver os med, eksisterer uafhængigt af os, og at vi har direkte adgang til dem. Fænomenologien udfordrer denne antagelse og påpeger, at den sande, objektive virkelighed altid vil være ukendt for os.",
+            "Det, vi oplever, er altid et fænomen. Vi møder ufiltreret 'råt materiale' fra den fysiske verden, men vores sanseapparat og sind oversætter det øjeblikkeligt til meningsfulde objekter. Virkeligheden for os opstår i samspillet mellem det fysiske materiale og vores medfødte evne til at skabe mening.",
+            "Derfor giver det ikke mening for fænomenologer at tale om fuldstændig 'korrekte' eller 'forkerte' oplevelser. Selvom den sygeplejerske, der giver medicin, ikke har til hensigt at dræbe, er patientens panikoplevelse hans virkelighed. Alle konklusioner er relative tolkninger."
+          ],
+          "key_points": [
+            "Vi oplever fænomener, ikke objektive ting i sig selv.",
+            "Den sande fysiske virkelighed er uerkendelig for os.",
+            "Oplevelsen skabes i samspillet mellem ydre stimuli og vores meningsskabelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "unknown and unknowable to us",
+              "why_it_matters": "Opsummerer fænomenologiens syn på objektiv virkelighed.",
+              "source_location": "S. 6"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 6",
+              "passage": "Stated simply, this conclusion argues that true reality is, and will forever remain, both unknown and unknowable to us.",
+              "why_it_matters": "Dette er den fundamentale påstand, der ændrer psykologiens genstandsfelt fra at måle træk til at studere oplevet mening."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Intentionality",
+          "heading": "Intentionalitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan etablerer bevidstheden kontakt til verden?",
+          "explanation_paragraphs": [
+            "Begrebet intentionalitet er fænomenologiens absolutte hjerte. Den grundlæggende regel er, at al bevidsthed altid er bevidsthed om noget. Sindet strækker sig simpelthen ud mod verden for at gribe den og oversætte den.",
+            "Man kan ikke bare være bange eller forvirret; man er bange for noget. Selv hvis dette 'noget' er indbildt eller abstrakt, er vores bevidsthed rettet mod et objekt. Gennem intentionaliteten skabes verden som vi kender den.",
+            "Dette betyder også, at begreber som 'subjekt' og 'objekt' ikke giver mening isoleret set. De skaber gensidigt hinanden (de co-konstituerer hinanden). Mennesket kan ikke forstås løsrevet fra den verden, det retter sig imod."
+          ],
+          "key_points": [
+            "Al bevidsthed er altid bevidsthed om noget.",
+            "Intentionalitet er oversættelsen af ukendte stimuli til et oplevet objekt.",
+            "Subjekt og objekt er uadskillelige."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "consciousness is always consciousness of some thing",
+              "why_it_matters": "Grunddefinitionen af begrebet.",
+              "source_location": "S. 15"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 15",
+              "passage": "Husserl adapted Brentano’s idea by arguing that, for human beings, consciousness is always consciousness of some thing in that the most basic interpretative act of human consciousness is to experience the world in terms of objects...",
+              "why_it_matters": "Viser hvordan mennesket automatisk objektgør verden for at skabe mening."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Noema and Noesis",
+          "heading": "Noema og Noesis",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor resulterer den samme begivenhed i forskellige reaktioner?",
+          "explanation_paragraphs": [
+            "Husserl delte den intentionelle akt op i to poler for at forklare individuelle forskelle. Den første pol er noema – det er retningen for vores opmærksomhed, selve hvad'et vi oplever. Hvis vi hører en politisk tale, er indholdet af talen noemaet.",
+            "Den anden pol er noesis – det er hvordan'et, selve måden vi oplever det på. Noesis rummer vores personlige forventninger, vores kognitive bias og vores følelsesmæssige tilstand.",
+            "To personer kan kigge på det samme objekt (delt noema), men fordi de har vidt forskellig noesis, vil deres samlede oplevelse være unik. Det er derfor, menneskelige oplevelser kun i begrænset omfang kan deles."
+          ],
+          "key_points": [
+            "Noema er indholdet (hvad'et).",
+            "Noesis er den personlige oplevelsesmåde (hvordan'et).",
+            "De to poler optræder altid sammen i enhver oplevelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "noema... refers to the directional element",
+              "why_it_matters": "Kort definition af objektet.",
+              "source_location": "S. 16"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "The Phenomenological Method",
+          "heading": "Den Fænomenologiske Metode",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan vi undersøge psyken uden at forurene data med fordomme?",
+          "explanation_paragraphs": [
+            "For at undersøge menneskelige oplevelser renest muligt, har fænomenologer tre metodiske fokuspunkter. Det første trin er epoché (parentessætning). Her skal forskeren aktivt forsøge at lægge sine forventninger, teoretiske antagelser og fordomme til side for at møde fænomenet åbent.",
+            "Det andet trin er beskrivelsesreglen. Kernen her er mottoet 'beskriv, lad være med at forklare'. Man skal blive ved den konkrete oplevelse og ikke straks hoppe til en sygdomsmodel eller en teoretisk forklaring. Hypokonderen fejler netop her, fordi han straks forklarer hosten i stedet for at beskrive den.",
+            "Det tredje trin er horisontalisering (eller udligningsreglen). I starten af en analyse skal man behandle alle detaljer som værende lige vigtige. Man må ikke på forhånd lave et hierarki af betydning, der udelukker bestemte elementer fra puslespillet."
+          ],
+          "key_points": [
+            "Epoché betyder at parkere fordomme.",
+            "Beskriv frem for at forklare umiddelbart.",
+            "Behandl alle indtryk med lige stor vægt (horisontalisering)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "describe, don't explain",
+              "why_it_matters": "Kernen i regel nummer to.",
+              "source_location": "S. 20"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Straightforward versus Reflective Experience",
+          "heading": "Hvor Bliver Jeget Af?",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Er jeget virkelig en konstant afsender af vores handlinger?",
+          "explanation_paragraphs": [
+            "Fænomenologien skelner skarpt mellem to former for oplevelse. Den ligefremme oplevelse (straightforward) er selve aktiviteten, mens den sker. Den er tidløs, opslugende og kan ikke beskrives med ord i selve øjeblikket.",
+            "Paradoksalt nok forsvinder oplevelsen af et selvstændigt 'jeg' næsten helt i de mest intense øjeblikke, f.eks. under hårdt fysisk arbejde eller sex. Man er bare aktiviteten.",
+            "Først når oplevelsen er overstået, træder vi ind i den refleksive oplevelse. Her tager vi afstand fra hændelsen, og det er først i denne tidsbundne efterrationalisering, at vi konstruerer og genindsætter 'jeget' som den, der handlede. Jeget er altså primært et produkt af vores efterrefleksion."
+          ],
+          "key_points": [
+            "Ligefrem oplevelse er handlingen i nuet, uden ord.",
+            "Under intens aktivitet forsvinder jeget ofte helt.",
+            "Jeget opstår og dominerer i den refleksive efterrationalisering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "self-consciousness is the basic structure of reflective experience",
+              "why_it_matters": "Placerer jeget i refleksionen, ikke handlingen.",
+              "source_location": "S. 28"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 28",
+              "passage": "Husserl argued that self-consciousness is the basic structure of reflective experience.",
+              "why_it_matters": "Det dekonstruerer ideen om, at et essentielt, uafhængigt 'jeg' altid er den afgørende motor i vores handlinger."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Har vi direkte adgang til den objektive verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort teoretisk forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvordan etablerer bevidstheden kontakt til verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En enkelt kerne-definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor resulterer den samme begivenhed i forskellige reaktioner?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kontrast mellem to koncepter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvordan kan vi undersøge psyken uden at forurene data med fordomme?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En liste med tre operationelle regler",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Er jeget virkelig en konstant afsender af vores handlinger?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi undersøge menneskets psyke videnskabeligt, når al virkelighed er en subjektiv fortolkning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde disse fra hukommelsen først for at låse modellen fast. Tjek derefter med Abridged Reader.",
+      "overview": [
+        "Virkeligheden er et tolket fænomen",
+        "Bevidstheden er intentionel og altid rettet mod et objekt",
+        "Jeget opstår ofte først som refleksion"
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge fænomenologien har vi aldrig direkte adgang til objektive ting, men oplever i stedet altid en uundgåelig __________ af verden.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et substantiv"
+        },
+        {
+          "number": 2,
+          "sentence": "Fænomenologiens grundregel kaldes __________, hvilket betyder, at al bevidsthed er rettet mod noget.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det element af en oplevelse, der beskriver selve indholdet eller 'hvadet', kaldes for __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Måden vi oplever det på, som indeholder vores personlige bias og forventninger, kaldes __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Metodetrinnet, hvor vi forsøger at sætte vores fordomme i parentes, kaldes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Reglen om ikke at forklare fænomener for tidligt udtrykkes gennem mottoet: __________ lad være med at forklare.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et verbum i bydemåde"
+        },
+        {
+          "number": 7,
+          "sentence": "Under intens fysisk aktivitet befinder vi os i det, teksten kalder __________ oplevelse, hvor jeget forsvinder.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        },
+        {
+          "number": 8,
+          "sentence": "Jeget fremtræder klarest bagefter i den __________ oplevelse.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den intentionelle akt og vis, hvordan subjekt og objekt co-konstituerer hinanden.",
+          "required_elements": [
+            "En figur for bevidstheden",
+            "en figur for objektet: noema",
+            "pile der viser oversættelsen: noesis"
+          ],
+          "blank_space_hint": "Brug en hel side på at bygge mekanismen i midten."
+        },
+        {
+          "number": 2,
+          "task": "Lav et rutediagram over den fænomenologiske metodes tre trin og deres faldgruber.",
+          "required_elements": [
+            "De tre reglers navne",
+            "hvad der sker",
+            "hvis de fejler"
+          ],
+          "blank_space_hint": "Tegn et hierarki af de tre kasser fra venstre mod højre."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord mundtligt. Bevis at du kan bruge modellen aktivt i en eksamenssituation.",
+      "use_this_text_for": [
+        "At definere menneskets psyke som meningsskabende",
+        "At introducere et 1. persons-perspektiv",
+        "At forklare den fænomenologiske metode (Epoché, beskrivelse, horisontalisering)",
+        "At de-reificere træk og essens i personligheden",
+        "At diskutere 'jeget' som en omskiftelig konstruktion"
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk Skift",
+          "connection": "Marker overgangen fra naturvidenskabelig måling (træk) til hermeneutisk oplevelsesforståelse."
+        },
+        {
+          "course_theme": "Essens/Kontekst",
+          "connection": "Intentionalitet er det ultimative eksempel på, at menneskets 'essens' kun skabes i interaktion med 'kontekst'."
+        },
+        {
+          "course_theme": "Trækpsykologiens de-reificering",
+          "connection": "Fænomenologien kritiserer trækpsykologi for at gøre oplevede forsvarsmekanismer til indre fysiske træk."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Psykoanalyse (W04)",
+          "how_to_compare": "Sammenlign bevidsthedens rolle: Fænomenologien centrerer den bevidste mening, psykoanalysen fokuserer på de ubevidste drifter."
+        },
+        {
+          "compare_with": "Trækpsykologi (W02)",
+          "how_to_compare": "Vis forskellen mellem 3. persons objektiv måling og 1. persons levet erfaring."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme (Senere uger)",
+          "how_to_compare": "Begge mener virkeligheden er konstrueret, men fænomenologien forankrer den i den enkelte krop og intentionalitet frem for diskurs."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver spurgt om metodisk reduktion",
+          "use_in_answer": "Brug epoché og beskrivelsesreglen til at vise, at forskeren bevidst skal parkere teorier.",
+          "caution": "Påstå ikke at parentessætningen kan gøres 100 procent perfekt."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at forklare agens",
+          "use_in_answer": "Argumentér for at 'jeget' er en refleksiv konstruktion snarere end et faststående center.",
+          "caution": "Gør ikke jeget til noget der slet ikke findes, det findes tydeligt i efterrationaliseringen."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at koble til orienteringspunkterne",
+          "use_in_answer": "Sig højt at intentionalitet beviser, at subjekt og objekt co-konstituerer hinanden.",
+          "caution": "Husk at bruge både noema og noesis i din argumentation."
+        },
+        {
+          "prompt_type": "Hvis du skal forsvare fænomenologiens videnskabelighed",
+          "use_in_answer": "Vis at metoden skaber kontrolleret fordomsfrihed, hvilket er stringent empirisk arbejde.",
+          "caution": "Kald det ikke for naturvidenskabelig objektivitet."
+        },
+        {
+          "prompt_type": "Hvis du bliver spurgt om relationen til virkeligheden",
+          "use_in_answer": "Forsvar påstanden om at alt er fænomener udledt af raw matter stimuli.",
+          "caution": "Sørg for ikke at lade det lyde som solipsisme; den fysiske verden findes stadig som stimuli."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At fænomenologien nægter, at der findes en objektiv fysisk verden.",
+          "better_reading": "Verden eksisterer fysisk (raw matter), men vi har kun adgang til dens fænomenerelaterede tolkninger."
+        },
+        {
+          "trap": "At forskeren kan opnå fuld og perfekt epoché (bracketing).",
+          "better_reading": "Det er en intention og en idealtilstand; forskeren ved, at fuldstændig nulstilling er umulig."
+        },
+        {
+          "trap": "At noema og noesis kan opleves separat.",
+          "better_reading": "De er altid uadskillelige poler i den samme oplevelse."
+        },
+        {
+          "trap": "At jeget er den bevidste kaptajn i alle intensitetsøjeblikke.",
+          "better_reading": "Jeget forsvinder ofte i den ligefremme oplevelse og opstår først igen under refleksionen."
+        }
+      ],
+      "mini_exam_prompt_question": "Med afsæt i Spinellis tekst, forklar hvordan fænomenologien forstår forholdet mellem virkelighed og oplevelse, og hvordan den fænomenologiske metode forsøger at studere dette uden at falde i dualismens fælde.",
+      "mini_exam_answer_plan_slots": [
+        "Præsentér forskellen på objektiv virkelighed (unknowable) og fænomener.",
+        "Definér intentionalitet som broen (inklusive noema/noesis).",
+        "Gennemgå metodens tre trin som et bolværk mod fejltolkninger.",
+        "Afslut med at vise, hvordan 'jeget' selv er en efterkonstrueret tolkning."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w06l1-spinelli-2005-b2f76e93",
+      "lecture_key": "W06L1",
+      "source_title": "Spinelli (2005)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning.",
+      "teaser_paragraphs": [
+        "Forestil dig, at du møder en ven til en fest. Hun bryder pludselig ud i voldsomme bevægelser, hendes ansigt vrænges, og hun begynder at græde. Din umiddelbare reaktion vil sandsynligvis være at styrte hen og trøste hende, fordi du lynhurtigt har tolket situationen som udtryk for sorg.",
+        "Men tænk nu, hvis hun i virkeligheden bare græd af grin over en fantastisk vittighed? Fænomenologien bruger præcis denne type hverdagsfejl til at vise os, hvor upræcis vores automatiske tolkning af verden ofte er.",
+        "Kerneproblemet i Spinellis tekst er, at vi mennesker aldrig har direkte adgang til den objektive virkelighed. Den fysiske verden findes, men vores sind oversætter konstant de ukendte stimuli til meningsfulde fænomener. Det, du oplever, er altså ikke verden, men din tolkning af den.",
+        "For overhovedet at begribe menneskets psyke, er vi derfor nødt til at forstå begrebet intentionalitet. Vores bevidsthed er altid bevidsthed om noget, og subjektet og verden skaber konstant hinanden i et evigt samspil.",
+        "Dette er ikke blot en filosofisk øvelse. Det er selve nøglen til at forstå, hvordan vi undgår at projicere vores egne blinde vinkler over på andre, og det kræver en specifik metode. Læser du teksten rigtigt, vil du desuden indse, at det \"jeg\", du tror styrer dine handlinger, oftest kun eksisterer som en efterrationalisering."
+      ],
+      "main_problem": "Hvordan kan vi undersøge menneskets psyke videnskabeligt, når al virkelighed er en subjektiv fortolkning?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvorfor afviser fænomenologien, at vi kan kende den 'sande' objektive virkelighed?",
+          "why_it_matters": "Det lægger fundamentet for at skifte fokus fra objektive træk til oplevet mening.",
+          "answer_form": "En kort teoretisk forklaring"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan fungerer 'intentionalitet' som bindeled mellem sind og verden?",
+          "why_it_matters": "Det er det vigtigste begreb i teksten og løser op for dualismen.",
+          "answer_form": "En enkelt kerne-definition"
+        },
+        {
+          "number": 3,
+          "question": "Hvordan skaber noema og noesis vidt forskellige oplevelser af den samme begivenhed?",
+          "why_it_matters": "Det forklarer fænomenologisk, hvorfor folk reagerer forskelligt.",
+          "answer_form": "En kontrast mellem to koncepter"
+        },
+        {
+          "number": 4,
+          "question": "Hvad går de tre trin i den fænomenologiske metode ud på?",
+          "why_it_matters": "Det er det metodiske værktøj, du skal kunne anvende til eksamen.",
+          "answer_form": "En liste med tre operationelle regler"
+        },
+        {
+          "number": 5,
+          "question": "Hvorfor konkluderer teksten, at 'jeget' oftest forsvinder under intens handling?",
+          "why_it_matters": "Det ændrer vores syn på agens og personlighed fundamentalt.",
+          "answer_form": "Et kausalt argument"
+        }
+      ],
+      "why_this_text_matters": "Teksten markerer overgangen fra objektive teorier (som trækpsykologi) til et radikalt 1. persons-perspektiv.",
+      "overview": [
+        "Virkeligheden som fænomen frem for objektiv sandhed",
+        "Intentionalitet og bevidsthedens to poler (noema/noesis)",
+        "Den fænomenologiske metodes tre praksisregler"
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "The Phenomenological View of Reality",
+          "task": "Afgør hvorfor bogen foran dig kun er en 'bog' i kraft af dit meningssystem.",
+          "why_it_matters": "Viser hvordan ting eksisterer via mening.",
+          "stop_signal": "Når du forstår raw matter konceptet"
+        },
+        {
+          "number": 2,
+          "source_location": "Intentionality",
+          "task": "Find Husserls oversættelse af hvordan bevidstheden fungerer.",
+          "why_it_matters": "Det er fænomenologiens grundregel.",
+          "stop_signal": "Når begrebet er defineret"
+        },
+        {
+          "number": 3,
+          "source_location": "Noema and Noesis",
+          "task": "Brug eksemplet med det politiske møde til at skelne de to poler.",
+          "why_it_matters": "Viser mekanismen i individuelle tolkninger.",
+          "stop_signal": "Når du kan forklare tilhørernes reaktion"
+        },
+        {
+          "number": 4,
+          "source_location": "The Phenomenological Method",
+          "task": "Find og forstå Step A, B og C.",
+          "why_it_matters": "Giver dig de metodiske redskaber.",
+          "stop_signal": "Når du har læst horizontalization"
+        },
+        {
+          "number": 5,
+          "source_location": "Straightforward versus Reflective Experience",
+          "task": "Søg efter paradokset omkring hvornår vi er mest 'i live'.",
+          "why_it_matters": "Afmonterer det konstante rationelle jeg.",
+          "stop_signal": "Når du fanger forskellen på de to tilstande"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "describe, don't explain",
+          "why": "Opsummerer kernen i regel to.",
+          "where_to_look": "Step B"
+        },
+        {
+          "target": "consciousness of some thing",
+          "why": "Selve definitionen på intentionalitet.",
+          "where_to_look": "Intentionality"
+        },
+        {
+          "target": "unknown and unknowable to us",
+          "why": "Konsekvensen af fænomenologiens virkelighedssyn.",
+          "where_to_look": "The interpreted world"
+        },
+        {
+          "target": "the existence of the 'not I'",
+          "why": "Viser at subjektet kræver verden for at eksistere.",
+          "where_to_look": "The Relationship between Self and Others"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "Historiske detaljer om Kant og Brentano",
+        "Filosofiske spidsfindigheder om forskellen på eksistentiel og transcendental fænomenologi",
+        "Lange diskussioner af fysikkens utilstrækkelighed"
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Step B",
+          "excerpt": "describe, don't explain",
+          "open_question": "Hvorfor afviser fænomenologien, at vi kan kende den 'sande' objektive virkelighed?"
+        },
+        {
+          "number": "2",
+          "source_location": "Intentionality",
+          "excerpt": "consciousness of some thing",
+          "open_question": "Hvordan fungerer 'intentionalitet' som bindeled mellem sind og verden?"
+        },
+        {
+          "number": "3",
+          "source_location": "The interpreted world",
+          "excerpt": "unknown and unknowable to us",
+          "open_question": "Hvordan skaber noema og noesis vidt forskellige oplevelser af den samme begivenhed?"
+        },
+        {
+          "number": "4",
+          "source_location": "The Relationship between Self and Others",
+          "excerpt": "the existence of the 'not I'",
+          "open_question": "Hvad går de tre trin i den fænomenologiske metode ud på?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne tekst til at løse de specifikke opgaver.",
+      "coverage_note": "Fokuserer på de metodiske og konceptuelle kerner i fænomenologien.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "The interpreted world",
+          "heading": "Den Tolkede Virkelighed",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Har vi direkte adgang til den objektive verden?",
+          "explanation_paragraphs": [
+            "Vi antager i hverdagen, at de objekter, vi omgiver os med, eksisterer uafhængigt af os, og at vi har direkte adgang til dem. Fænomenologien udfordrer denne antagelse og påpeger, at den sande, objektive virkelighed altid vil være ukendt for os.",
+            "Det, vi oplever, er altid et fænomen. Vi møder ufiltreret 'råt materiale' fra den fysiske verden, men vores sanseapparat og sind oversætter det øjeblikkeligt til meningsfulde objekter. Virkeligheden for os opstår i samspillet mellem det fysiske materiale og vores medfødte evne til at skabe mening.",
+            "Derfor giver det ikke mening for fænomenologer at tale om fuldstændig 'korrekte' eller 'forkerte' oplevelser. Selvom den sygeplejerske, der giver medicin, ikke har til hensigt at dræbe, er patientens panikoplevelse hans virkelighed. Alle konklusioner er relative tolkninger."
+          ],
+          "key_points": [
+            "Vi oplever fænomener, ikke objektive ting i sig selv.",
+            "Den sande fysiske virkelighed er uerkendelig for os.",
+            "Oplevelsen skabes i samspillet mellem ydre stimuli og vores meningsskabelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "unknown and unknowable to us",
+              "why_it_matters": "Opsummerer fænomenologiens syn på objektiv virkelighed.",
+              "source_location": "S. 6"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 6",
+              "passage": "Stated simply, this conclusion argues that true reality is, and will forever remain, both unknown and unknowable to us.",
+              "why_it_matters": "Dette er den fundamentale påstand, der ændrer psykologiens genstandsfelt fra at måle træk til at studere oplevet mening."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "Intentionality",
+          "heading": "Intentionalitet",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvordan etablerer bevidstheden kontakt til verden?",
+          "explanation_paragraphs": [
+            "Begrebet intentionalitet er fænomenologiens absolutte hjerte. Den grundlæggende regel er, at al bevidsthed altid er bevidsthed om noget. Sindet strækker sig simpelthen ud mod verden for at gribe den og oversætte den.",
+            "Man kan ikke bare være bange eller forvirret; man er bange for noget. Selv hvis dette 'noget' er indbildt eller abstrakt, er vores bevidsthed rettet mod et objekt. Gennem intentionaliteten skabes verden som vi kender den.",
+            "Dette betyder også, at begreber som 'subjekt' og 'objekt' ikke giver mening isoleret set. De skaber gensidigt hinanden (de co-konstituerer hinanden). Mennesket kan ikke forstås løsrevet fra den verden, det retter sig imod."
+          ],
+          "key_points": [
+            "Al bevidsthed er altid bevidsthed om noget.",
+            "Intentionalitet er oversættelsen af ukendte stimuli til et oplevet objekt.",
+            "Subjekt og objekt er uadskillelige."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "consciousness is always consciousness of some thing",
+              "why_it_matters": "Grunddefinitionen af begrebet.",
+              "source_location": "S. 15"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 15",
+              "passage": "Husserl adapted Brentano’s idea by arguing that, for human beings, consciousness is always consciousness of some thing in that the most basic interpretative act of human consciousness is to experience the world in terms of objects...",
+              "why_it_matters": "Viser hvordan mennesket automatisk objektgør verden for at skabe mening."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "Noema and Noesis",
+          "heading": "Noema og Noesis",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvorfor resulterer den samme begivenhed i forskellige reaktioner?",
+          "explanation_paragraphs": [
+            "Husserl delte den intentionelle akt op i to poler for at forklare individuelle forskelle. Den første pol er noema – det er retningen for vores opmærksomhed, selve hvad'et vi oplever. Hvis vi hører en politisk tale, er indholdet af talen noemaet.",
+            "Den anden pol er noesis – det er hvordan'et, selve måden vi oplever det på. Noesis rummer vores personlige forventninger, vores kognitive bias og vores følelsesmæssige tilstand.",
+            "To personer kan kigge på det samme objekt (delt noema), men fordi de har vidt forskellig noesis, vil deres samlede oplevelse være unik. Det er derfor, menneskelige oplevelser kun i begrænset omfang kan deles."
+          ],
+          "key_points": [
+            "Noema er indholdet (hvad'et).",
+            "Noesis er den personlige oplevelsesmåde (hvordan'et).",
+            "De to poler optræder altid sammen i enhver oplevelse."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "noema... refers to the directional element",
+              "why_it_matters": "Kort definition af objektet.",
+              "source_location": "S. 16"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "The Phenomenological Method",
+          "heading": "Den Fænomenologiske Metode",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvordan kan vi undersøge psyken uden at forurene data med fordomme?",
+          "explanation_paragraphs": [
+            "For at undersøge menneskelige oplevelser renest muligt, har fænomenologer tre metodiske fokuspunkter. Det første trin er epoché (parentessætning). Her skal forskeren aktivt forsøge at lægge sine forventninger, teoretiske antagelser og fordomme til side for at møde fænomenet åbent.",
+            "Det andet trin er beskrivelsesreglen. Kernen her er mottoet 'beskriv, lad være med at forklare'. Man skal blive ved den konkrete oplevelse og ikke straks hoppe til en sygdomsmodel eller en teoretisk forklaring. Hypokonderen fejler netop her, fordi han straks forklarer hosten i stedet for at beskrive den.",
+            "Det tredje trin er horisontalisering (eller udligningsreglen). I starten af en analyse skal man behandle alle detaljer som værende lige vigtige. Man må ikke på forhånd lave et hierarki af betydning, der udelukker bestemte elementer fra puslespillet."
+          ],
+          "key_points": [
+            "Epoché betyder at parkere fordomme.",
+            "Beskriv frem for at forklare umiddelbart.",
+            "Behandl alle indtryk med lige stor vægt (horisontalisering)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "describe, don't explain",
+              "why_it_matters": "Kernen i regel nummer to.",
+              "source_location": "S. 20"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 5,
+          "source_location": "Straightforward versus Reflective Experience",
+          "heading": "Hvor Bliver Jeget Af?",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Er jeget virkelig en konstant afsender af vores handlinger?",
+          "explanation_paragraphs": [
+            "Fænomenologien skelner skarpt mellem to former for oplevelse. Den ligefremme oplevelse (straightforward) er selve aktiviteten, mens den sker. Den er tidløs, opslugende og kan ikke beskrives med ord i selve øjeblikket.",
+            "Paradoksalt nok forsvinder oplevelsen af et selvstændigt 'jeg' næsten helt i de mest intense øjeblikke, f.eks. under hårdt fysisk arbejde eller sex. Man er bare aktiviteten.",
+            "Først når oplevelsen er overstået, træder vi ind i den refleksive oplevelse. Her tager vi afstand fra hændelsen, og det er først i denne tidsbundne efterrationalisering, at vi konstruerer og genindsætter 'jeget' som den, der handlede. Jeget er altså primært et produkt af vores efterrefleksion."
+          ],
+          "key_points": [
+            "Ligefrem oplevelse er handlingen i nuet, uden ord.",
+            "Under intens aktivitet forsvinder jeget ofte helt.",
+            "Jeget opstår og dominerer i den refleksive efterrationalisering."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "self-consciousness is the basic structure of reflective experience",
+              "why_it_matters": "Placerer jeget i refleksionen, ikke handlingen.",
+              "source_location": "S. 28"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "S. 28",
+              "passage": "Husserl argued that self-consciousness is the basic structure of reflective experience.",
+              "why_it_matters": "Det dekonstruerer ideen om, at et essentielt, uafhængigt 'jeg' altid er den afgørende motor i vores handlinger."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Har vi direkte adgang til den objektive verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort teoretisk forklaring",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvordan etablerer bevidstheden kontakt til verden?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En enkelt kerne-definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvorfor resulterer den samme begivenhed i forskellige reaktioner?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "En kontrast mellem to koncepter",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvordan kan vi undersøge psyken uden at forurene data med fordomme?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "En liste med tre operationelle regler",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Er jeget virkelig en konstant afsender af vores handlinger?",
+          "task_type": "decision",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Ja/Nej + 1 sætning",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har valgt og skrevet en kort begrundelse"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Hvordan kan vi undersøge menneskets psyke videnskabeligt, når al virkelighed er en subjektiv fortolkning?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Prøv at udfylde disse fra hukommelsen først for at låse modellen fast. Tjek derefter med Abridged Reader.",
+      "overview": [
+        "Virkeligheden er et tolket fænomen",
+        "Bevidstheden er intentionel og altid rettet mod et objekt",
+        "Jeget opstår ofte først som refleksion"
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Ifølge fænomenologien har vi aldrig direkte adgang til objektive ting, men oplever i stedet altid en uundgåelig __________ af verden.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "Et substantiv"
+        },
+        {
+          "number": 2,
+          "sentence": "Fænomenologiens grundregel kaldes __________, hvilket betyder, at al bevidsthed er rettet mod noget.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 3,
+          "sentence": "Det element af en oplevelse, der beskriver selve indholdet eller 'hvadet', kaldes for __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 4,
+          "sentence": "Måden vi oplever det på, som indeholder vores personlige bias og forventninger, kaldes __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "Et begreb"
+        },
+        {
+          "number": 5,
+          "sentence": "Metodetrinnet, hvor vi forsøger at sætte vores fordomme i parentes, kaldes __________.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Reglen om ikke at forklare fænomener for tidligt udtrykkes gennem mottoet: __________ lad være med at forklare.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "Et verbum i bydemåde"
+        },
+        {
+          "number": 7,
+          "sentence": "Under intens fysisk aktivitet befinder vi os i det, teksten kalder __________ oplevelse, hvor jeget forsvinder.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        },
+        {
+          "number": 8,
+          "sentence": "Jeget fremtræder klarest bagefter i den __________ oplevelse.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "Et adjektiv"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den intentionelle akt og vis, hvordan subjekt og objekt co-konstituerer hinanden.",
+          "required_elements": [
+            "En figur for bevidstheden",
+            "en figur for objektet: noema",
+            "pile der viser oversættelsen: noesis"
+          ],
+          "blank_space_hint": "Brug en hel side på at bygge mekanismen i midten."
+        },
+        {
+          "number": 2,
+          "task": "Lav et rutediagram over den fænomenologiske metodes tre trin og deres faldgruber.",
+          "required_elements": [
+            "De tre reglers navne",
+            "hvad der sker",
+            "hvis de fejler"
+          ],
+          "blank_space_hint": "Tegn et hierarki af de tre kasser fra venstre mod højre."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug disse stikord mundtligt. Bevis at du kan bruge modellen aktivt i en eksamenssituation.",
+      "use_this_text_for": [
+        "At definere menneskets psyke som meningsskabende",
+        "At introducere et 1. persons-perspektiv",
+        "At forklare den fænomenologiske metode (Epoché, beskrivelse, horisontalisering)",
+        "At de-reificere træk og essens i personligheden",
+        "At diskutere 'jeget' som en omskiftelig konstruktion"
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Epistemologisk Skift",
+          "connection": "Marker overgangen fra naturvidenskabelig måling (træk) til hermeneutisk oplevelsesforståelse."
+        },
+        {
+          "course_theme": "Essens/Kontekst",
+          "connection": "Intentionalitet er det ultimative eksempel på, at menneskets 'essens' kun skabes i interaktion med 'kontekst'."
+        },
+        {
+          "course_theme": "Trækpsykologiens de-reificering",
+          "connection": "Fænomenologien kritiserer trækpsykologi for at gøre oplevede forsvarsmekanismer til indre fysiske træk."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "Psykoanalyse (W04)",
+          "how_to_compare": "Sammenlign bevidsthedens rolle: Fænomenologien centrerer den bevidste mening, psykoanalysen fokuserer på de ubevidste drifter."
+        },
+        {
+          "compare_with": "Trækpsykologi (W02)",
+          "how_to_compare": "Vis forskellen mellem 3. persons objektiv måling og 1. persons levet erfaring."
+        },
+        {
+          "compare_with": "Socialkonstruktionisme (Senere uger)",
+          "how_to_compare": "Begge mener virkeligheden er konstrueret, men fænomenologien forankrer den i den enkelte krop og intentionalitet frem for diskurs."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver spurgt om metodisk reduktion",
+          "use_in_answer": "Brug epoché og beskrivelsesreglen til at vise, at forskeren bevidst skal parkere teorier.",
+          "caution": "Påstå ikke at parentessætningen kan gøres 100 procent perfekt."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at forklare agens",
+          "use_in_answer": "Argumentér for at 'jeget' er en refleksiv konstruktion snarere end et faststående center.",
+          "caution": "Gør ikke jeget til noget der slet ikke findes, det findes tydeligt i efterrationaliseringen."
+        },
+        {
+          "prompt_type": "Hvis du bliver bedt om at koble til orienteringspunkterne",
+          "use_in_answer": "Sig højt at intentionalitet beviser, at subjekt og objekt co-konstituerer hinanden.",
+          "caution": "Husk at bruge både noema og noesis i din argumentation."
+        },
+        {
+          "prompt_type": "Hvis du skal forsvare fænomenologiens videnskabelighed",
+          "use_in_answer": "Vis at metoden skaber kontrolleret fordomsfrihed, hvilket er stringent empirisk arbejde.",
+          "caution": "Kald det ikke for naturvidenskabelig objektivitet."
+        },
+        {
+          "prompt_type": "Hvis du bliver spurgt om relationen til virkeligheden",
+          "use_in_answer": "Forsvar påstanden om at alt er fænomener udledt af raw matter stimuli.",
+          "caution": "Sørg for ikke at lade det lyde som solipsisme; den fysiske verden findes stadig som stimuli."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At fænomenologien nægter, at der findes en objektiv fysisk verden.",
+          "better_reading": "Verden eksisterer fysisk (raw matter), men vi har kun adgang til dens fænomenerelaterede tolkninger."
+        },
+        {
+          "trap": "At forskeren kan opnå fuld og perfekt epoché (bracketing).",
+          "better_reading": "Det er en intention og en idealtilstand; forskeren ved, at fuldstændig nulstilling er umulig."
+        },
+        {
+          "trap": "At noema og noesis kan opleves separat.",
+          "better_reading": "De er altid uadskillelige poler i den samme oplevelse."
+        },
+        {
+          "trap": "At jeget er den bevidste kaptajn i alle intensitetsøjeblikke.",
+          "better_reading": "Jeget forsvinder ofte i den ligefremme oplevelse og opstår først igen under refleksionen."
+        }
+      ],
+      "mini_exam_prompt_question": "Med afsæt i Spinellis tekst, forklar hvordan fænomenologien forstår forholdet mellem virkelighed og oplevelse, og hvordan den fænomenologiske metode forsøger at studere dette uden at falde i dualismens fælde.",
+      "mini_exam_answer_plan_slots": [
+        "Præsentér forskellen på objektiv virkelighed (unknowable) og fænomener.",
+        "Definér intentionalitet som broen (inklusive noema/noesis).",
+        "Gennemgå metodens tre trin som et bolværk mod fejltolkninger.",
+        "Afslut med at vise, hvordan 'jeget' selv er en efterkonstrueret tolkning."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

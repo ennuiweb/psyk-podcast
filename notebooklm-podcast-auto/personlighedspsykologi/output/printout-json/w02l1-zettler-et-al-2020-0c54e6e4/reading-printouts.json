@@ -1,0 +1,1213 @@
+{
+  "schema_version": 3,
+  "artifact_type": "reading_printouts",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-18T10:21:33Z",
+  "generator": {
+    "provider": "gemini",
+    "model": "gemini-3.1-pro-preview",
+    "prompt_version": "personlighedspsykologi-reading-printouts-problem-driven-v1",
+    "generation_config": {
+      "version": "gemini-preprocessing-generation-config-v1",
+      "thinking_level": "high",
+      "thinking_budget": null,
+      "include_thoughts": false,
+      "temperature": "model_default",
+      "response_mime_type": "application/json",
+      "response_json_schema": null,
+      "json_contract": "prompt_contract_v3_with_local_validation"
+    },
+    "run": {
+      "attempt_count": 1,
+      "transient_error_count": 0,
+      "last_transient_error": ""
+    }
+  },
+  "provenance": {
+    "source_file": "c71d1db5abffabd95c09c24609fa0247f9329858c039793696b69b1701495f87",
+    "source_files_signature": "88a3e2499a0f53d511fb94295c6e72fccb68add2b7db9aba276d4fb6234df31b",
+    "source_card": "f39feee4b78c10507d58295089bbab57262cda21b7c2714ac649cbf312ccb008",
+    "revised_lecture_substrate": "40dcdd729c8f40f9ccdc6edd7d9cf4d3b54026bcfda9ee206784d039286d3b0b",
+    "course_synthesis": "b875962b0cfaa26940da41bc7ddbf7cf1f26d55f01d353372d4e7b32da2b86ce"
+  },
+  "source": {
+    "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+    "lecture_key": "W02L1",
+    "title": "Zettler et al. (2020)",
+    "reading_title": "Zettler et al. (2020)",
+    "source_family": "reading",
+    "evidence_origin": "reading_grounded",
+    "length_band": "long",
+    "page_count": 38,
+    "estimated_token_count": 24700,
+    "source_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf",
+    "source_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf"
+    ],
+    "repo_display_path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf",
+    "repo_display_paths": [
+      "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/Personlighedspsykologi/Readings/W2L1 Personality traits, personality states, and personality dimensions/W2L1 Zettler et al. (2020).pdf"
+    ]
+  },
+  "length_budget": {
+    "profile": "long",
+    "signals": {
+      "length_band": "long",
+      "page_count": 38,
+      "complexity_tier": 1
+    },
+    "reading_guide": {
+      "teaser_paragraphs": {
+        "min": 5,
+        "max": 6
+      },
+      "opening_passages": {
+        "min": 3,
+        "max": 4
+      },
+      "subproblems": {
+        "min": 5,
+        "max": 6
+      },
+      "reading_route": {
+        "min": 5,
+        "max": 7
+      },
+      "key_quote_targets": {
+        "min": 4,
+        "max": 4
+      },
+      "do_not_get_stuck_on": {
+        "min": 3,
+        "max": 5
+      }
+    },
+    "abridged_reader": {
+      "sections": {
+        "min": 5,
+        "max": 8
+      }
+    },
+    "active_reading": {
+      "solve_steps": {
+        "min": 6,
+        "max": 8
+      }
+    },
+    "consolidation_sheet": {
+      "fill_in_sentences": {
+        "min": 7,
+        "max": 8
+      },
+      "diagram_tasks": {
+        "min": 2,
+        "max": 3
+      }
+    },
+    "exam_bridge": {
+      "use_this_text_for": {
+        "min": 5,
+        "max": 6
+      },
+      "course_connections": {
+        "min": 3,
+        "max": 5
+      },
+      "comparison_targets": {
+        "min": 3,
+        "max": 5
+      },
+      "exam_moves": {
+        "min": 5,
+        "max": 6
+      },
+      "misunderstanding_traps": {
+        "min": 3,
+        "max": 5
+      },
+      "mini_exam_answer_plan_slots": {
+        "min": 4,
+        "max": 5
+      }
+    }
+  },
+  "printouts": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+      "lecture_key": "W02L1",
+      "source_title": "Zettler et al. (2020)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Hvordan ved vi, at et personlighedstræk er et ægte psykologisk fænomen og ikke bare et ord, forskere har fundet på? Zettler og hans kolleger angriber dette ved at kræve bevis for, at specifikke træk konsekvent forudsiger specifik virkelighedsnær adfærd.",
+        "Forfatterne ønsker at teste modellens gyldighed for at *illuminate the nomological net* af HEXACO-modellen. Det betyder helt konkret, at et begrebs sandhedsværdi måles på dets evne til at flette sig sammen med andre målbare konsekvenser i verden.",
+        "Den store og kontroversielle forskel på HEXACO og den klassiske Big Five-model er den sjette faktor. Honesty-Humility handler ikke bare om at være rar, men defineres operationelt som en *tendency to be fair and genuine* over for andre.",
+        "Problemet opstår, når statistikken skal bevise teorien: Hvis alle personlighedstræk overlapper og forudsiger lidt af hvert, falder den teoretiske model fra hinanden. Hvert træk skal ideelt set kortlægges unikt til præcis ét specifikt adfærdsdomæne, for eksempel situationer der byder på en *opportunity to gain personal benefits*.",
+        "For at lukke diskussionen tester Zettler dette netværk på over 112.000 testpersoner via en enorm meta-analyse. Passede kortlægningen?",
+        "Din opgave er at fange logikken i, hvordan træk gøres til målbare, stabile variabler, da netop dette reducerede menneskesyn (Erkendelsesobjekt) er hovedskydeskiven for Sterns og Hackings senere kritik i kurset."
+      ],
+      "main_problem": "Kan det statistisk bevises, at HEXACO-modellens seks træk hver især unikt forudsiger ét specifikt og teoretisk forventet adfærdsdomæne?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad betyder 'nomologisk netværk' i denne sammenhæng?",
+          "why_it_matters": "Det er metodens kerne. Træk findes ikke fysisk, så de må bevises via deres relationer til virkeligheden.",
+          "answer_form": "En kort definition"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan retfærdiggør forfatterne, at HEXACO-modellen er bedre end Big Five?",
+          "why_it_matters": "Det forklarer nødvendigheden af Honesty-Humility faktoren.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvilket Udfaldsdomæne (fra STOA-modellen) tilhører Honesty-Humility?",
+          "why_it_matters": "Det er tekstens vigtigste direkte kortlægning.",
+          "answer_form": "Et domænenavn"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på primære og sekundære relationer?",
+          "why_it_matters": "Det beviser, at trækket har 'unik varians' og ikke bare smelter sammen med de andre træk.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken bias introducerer brugen af selvrapporteringsdata ifølge forfatterne?",
+          "why_it_matters": "Det peger på metodens blinde vinkler.",
+          "answer_form": "Et metodisk problem"
+        }
+      ],
+      "why_this_text_matters": "Zettler et al. udgør det variable-centrerede baseline for kurset. Det viser, hvordan psykometrien reducerer personen til målbare essenser (Erkendelsesobjekt), som resten af semesteret vil problematisere.",
+      "overview": [
+        "Teksten definerer HEXACO-modellens fundament.",
+        "Den bruger en meta-analyse til at kortlægge træk mod STOA-udfaldsdomæner.",
+        "Målet er at bevise at modellens teoretiske struktur stemmer overens med virkeligheden."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Abstract og Introduktion (s. 723-724)",
+          "task": "Find forfatternes definition af et nomologisk netværk.",
+          "why_it_matters": "Sætter rammen for hvordan man validerer hypotetiske konstrukter.",
+          "stop_signal": "Når du når 'The HEXACO Model of Personality'"
+        },
+        {
+          "number": 2,
+          "source_location": "The HEXACO Model of Personality (s. 724-726)",
+          "task": "Find det primære argument for, at Big Five mangler noget essentielt.",
+          "why_it_matters": "Forankrer årsagen til tekstens eksistens.",
+          "stop_signal": "Når du når 'Mapping the HEXACO Dimensions'"
+        },
+        {
+          "number": 3,
+          "source_location": "Mapping the HEXACO Dimensions (s. 726-730)",
+          "task": "Aflæs hvordan de seks STOA domæner fordeles på de seks træk.",
+          "why_it_matters": "Dette udgør kernepåstanden, som meta-analysen skal teste.",
+          "stop_signal": "Når du når 'Method'"
+        },
+        {
+          "number": 4,
+          "source_location": "Results - Overordnet mapping (s. 734-736)",
+          "task": "Tjek om den primære relation (counterpart domain) er stærkere end de sekundære relationer.",
+          "why_it_matters": "Bekræfter trækkenes separate gyldighed.",
+          "stop_signal": "Når du når de specifikke træk-sektioner på s. 737"
+        },
+        {
+          "number": 5,
+          "source_location": "Discussion (s. 753-754)",
+          "task": "Identificér den metodiske begrænsning ved selvrapportering.",
+          "why_it_matters": "Vigtig eksamensviden om metodisk bias i psykometri.",
+          "stop_signal": "Når du når Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "comprises its interrelations with other",
+          "why": "Definerer det metodiske rammeværk.",
+          "where_to_look": "Sektionen før The HEXACO Model"
+        },
+        {
+          "target": "omission of content related to ethics",
+          "why": "Forklarer svagheden ved klassisk Big Five.",
+          "where_to_look": "Sektionen der introducerer HEXACO"
+        },
+        {
+          "target": "maps onto the outcome domain of exploitation",
+          "why": "Kernen i den sjette faktors berettigelse.",
+          "where_to_look": "Gennemgangen af STOA domæner"
+        },
+        {
+          "target": "prone to socially desirable responding",
+          "why": "Afslører tekstens indbyggede måleproblem.",
+          "where_to_look": "Styrker og svagheder i diskussionen"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tabeller med individuelle effektstørrelser (r, N, k).",
+        "De matematiske formler for disattenuerede korrelationer.",
+        "Gennemgangen af søgestrategier og P-værdier for publikationsbias i metoden."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektionen før The HEXACO Model",
+          "excerpt": "comprises its interrelations with other",
+          "open_question": "Hvad betyder 'nomologisk netværk' i denne sammenhæng?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen der introducerer HEXACO",
+          "excerpt": "omission of content related to ethics",
+          "open_question": "Hvordan retfærdiggør forfatterne, at HEXACO-modellen er bedre end Big Five?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af STOA domæner",
+          "excerpt": "maps onto the outcome domain of exploitation",
+          "open_question": "Hvilket Udfaldsdomæne (fra STOA-modellen) tilhører Honesty-Humility?"
+        },
+        {
+          "number": "4",
+          "source_location": "Styrker og svagheder i diskussionen",
+          "excerpt": "prone to socially desirable responding",
+          "open_question": "Hvad er forskellen på primære og sekundære relationer?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede fremstilling til at forstå tekstens hovedtræk. De efterfølgende opgaver kan løses udelukkende med denne tekst åben.",
+      "coverage_note": "Fokuserer på teorien bag nomologiske netværk, STOA-mapping og Honesty-Humility, og udelader meta-analysens specifikke statistiske procedurer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Introduktion (s. 724)",
+          "heading": "Det nomologiske netværk",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan beviser man eksistensen af et usynligt psykologisk begreb?",
+          "explanation_paragraphs": [
+            "I psykologien er personlighedstræk hypotetiske konstruktioner. Man kan ikke operere en person og lokalisere deres 'ekstraversion' fysisk. For at bevise, at et træk som begreb faktisk afspejler virkeligheden, bruger forskere et såkaldt nomologisk netværk.",
+            "Det nomologiske netværk er det samlede mønster af beviser for, hvordan et træk hænger sammen med andre begreber og især med observerbare adfærdsudfald. Hvis vi opfinder et træk, som vi påstår styrer hvor pligtopfyldende man er, så SKAL det teoretiske begreb statistisk forudsige virkelige adfærdsmarkører, som fx fravær på arbejdspladsen.",
+            "Zettler og co. forsøger at etablere netop dette bevis for HEXACO-modellen, for at vise, at dens opdeling af den menneskelige personlighed afspejler en objektiv sandhed."
+          ],
+          "key_points": [
+            "Træk er ikke fysiske ting, men forventninger om adfærd.",
+            "Et nomologisk net beviser et træks gyldighed gennem dets interaktioner med verden.",
+            "Konstruktvaliditet opnås, når teorien matcher den statistiske virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "comprises its interrelations with other",
+              "why_it_matters": "Kernedefinitionen af det nomologiske netværk.",
+              "source_location": "s. 724"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 724",
+              "passage": "The nomological net of a construct or its operationalization comprises its interrelations with other (more or less related) constructs and outcomes. (...) whether a construct’s nomological net corresponds to its theoretical conceptualization (...) has been considered a crucial step for establishing construct validity.",
+              "why_it_matters": "Det er metodens hellige gral; uden dette er psykologiske test kun ordleg."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 725-726",
+          "heading": "Hvorfor HEXACO i stedet for Big Five?",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvilken blind vinkel i Big Five-modellen prøver HEXACO at rette?",
+          "explanation_paragraphs": [
+            "Big Five-modellen (Neuroticisme, Ekstraversion, Åbenhed, Venlighed og Samvittighedsfuldhed) var i mange år den ubestridte konge af personlighedspsykologi. Men forskere opdagede gentagne gange en mangel: Modellen manglede at fange adfærd, der handlede om moral, bedrag, og etik.",
+            "Derfor introducerede Ashton og Lee HEXACO-modellen, som tilføjede en sjette faktor: Honesty-Humility. Dette træk måler en persons tendens til at være retfærdig og ægte, frem for at være grådig og svigefuld.",
+            "For at retfærdiggøre denne nye model over for den etablerede Big Five, skal forfatterne bevise, at Honesty-Humility forudsiger adfærd, som Big Five ikke fanger. Den skal have 'unik varians' og bevise sin værdi i virkeligheden."
+          ],
+          "key_points": [
+            "Big Five ignorerer overvejende etik og grådighed.",
+            "HEXACO tilføjer Honesty-Humility for at dække moral og gensidig kooperation.",
+            "Modellen er bygget på leksikalske studier på tværs af sprog."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "omission of content related to ethics",
+              "why_it_matters": "Årsagen til at Big Five forkastes som utilstrækkelig.",
+              "source_location": "s. 726"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 726-729",
+          "heading": "STOA og kortlægningen af domæner",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan afgør vi matematisk, at de seks HEXACO-træk faktisk eksisterer separat?",
+          "explanation_paragraphs": [
+            "Hvis Honesty-Humility (H) bare er en bizar gren af Agreeableness (A), vil de to træk forudsige præcis de samme ting. Zettler et al. bruger derfor et teoretisk rammeværk kaldet STOA (Situation, Trait, Outcome Activation) til at teste modellen.",
+            "STOA-modellen hævder, at hvert af de seks træk evolutionært er udviklet til at håndtere én specifik type problem eller 'domæne' i miljøet. Forfatterne hypotetiserer et en-til-en match (mapping) mellem hvert træk og et bestemt udfaldsdomæne.",
+            "Den mest centrale kortlægning i teksten er mellem Honesty-Humility og domænet 'Exploitation' (Udnyttelse). Et menneske med lav H vil udvise machiavellianisme og snyd for at vinde fordele (udnyttelse). Hvis HEXACO-modellen er sand, skal H statistisk fange dette domæne meget bedre end de resterende fem træk gør."
+          ],
+          "key_points": [
+            "Hvert HEXACO-træk tildeles ét specifikt STOA-domæne.",
+            "H-faktoren kortlægges til 'Exploitation' (udnyttelse).",
+            "A-faktoren (Agreeableness) kortlægges til 'Obstruction' (reaktion på modstand)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "opportunity to gain personal benefits",
+              "why_it_matters": "Definerer selve 'exploitation' domænet.",
+              "source_location": "s. 727"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 723",
+              "passage": "Specifically, honesty-humility maps onto the outcome domain of exploitation, emotionality onto insecurity, extraversion onto sociality, agreeableness versus anger onto obstruction, conscientiousness onto duty, and openness to experience onto exploration.",
+              "why_it_matters": "Dette er facitlisten for, hvordan de to teoretiske modeller krydses, og papirets primære resultat."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 730-736",
+          "heading": "Primære vs. Sekundære Relationer",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad beviser resultaterne i meta-analysen?",
+          "explanation_paragraphs": [
+            "Efter at have analyseret data fra over 112.000 deltagere adskiller forskerne resultaterne i 'primære' og 'sekundære' relationer. En primær relation er det forventede stærke bånd mellem et træk og dets teoretiske domæne (fx Extraversion og Sociality).",
+            "En sekundær relation opstår, når et træk svagt forudsiger et andet domæne (fx Extraversion og Insecurity). Sekundære relationer er forventelige, da menneskets psyke er kompleks, og variablerne har små overlap.",
+            "Resultatet beviser succes for HEXACO-modellen: For stort set alle træk var den primære relation meget stærkere end de sekundære. Honesty-Humility havde klart den stærkeste korrelation med Exploitation, hvilket forsvarer dets eksistensberettigelse som en uafhængig sjette faktor."
+          ],
+          "key_points": [
+            "Primær relation: Stærk kobling til det teoretiske måldomæne.",
+            "Sekundær relation: Svag kobling til andre (ikke-kerne) domæner.",
+            "Unik varians påvises, fordi de primære relationer forbliver uforholdsmæssigt stærke."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 730",
+              "passage": "Only if each dimension of a personality model such as the HEXACO is related to one theoretically relevant outcome domain in particular—rather than to several domains—does the mapping of dimensions onto outcome domains provide insights into the unique class of individual differences captured.",
+              "why_it_matters": "Forklarer hvorfor differential korrelation er det ultimative empiriske bevis."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "s. 753",
+          "heading": "Selvrapporteringens faldgruber",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan svækkes det nomologiske netværk af de brugte metoder?",
+          "explanation_paragraphs": [
+            "Zettler et al. bemærker selv et kritisk metodisk problem: I 95 % af de undersøgte studier var personlighedstrækkene målt via selvrapportering, og i 80 % af tilfældene var adfærdsudfaldet OGSÅ selvrapporteret.",
+            "Når både årsag og virkning måles gennem testpersonens egen vurdering (fx \"Er du et ærligt menneske?\" og \"Har du nogensinde snydt?\"), opstår der 'method variance'. Testpersonen har tendens til at svare socialt ønskværdigt (socially desirable responding).",
+            "Denne tendens til at ville fremstå konsekvent og god kan puste statistikken kunstigt op. Meta-analysen afslører, at korrelationerne faldt betragteligt, når de så på objektive data frem for selvrapporterede resultater."
+          ],
+          "key_points": [
+            "Selvrapportering er sårbar over for social ønskværdigheds-bias.",
+            "Når både træk og adfærd måles via spørgeskemaer, opstår oppustede statistiske sammenhænge.",
+            "Dette er et klassisk problem inden for træk-psykologi (Erkendelsesobjekt vs. Realobjekt)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "prone to socially desirable responding",
+              "why_it_matters": "Kerneproblemet med metodikken i størstedelen af feltet.",
+              "source_location": "s. 753"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan beviser man eksistensen af et usynligt psykologisk begreb?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvilken blind vinkel i Big Five-modellen prøver HEXACO at rette?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan afgør vi matematisk, at de seks HEXACO-træk faktisk eksisterer separat?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et domænenavn",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvad beviser resultaterne i meta-analysen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvordan svækkes det nomologiske netværk af de brugte metoder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et metodisk problem",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Kan det statistisk bevises, at HEXACO-modellens seks træk hver især unikt forudsiger ét specifikt og teoretisk forventet adfærdsdomæne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Test din hukommelse. Prøv først at udfylde arket uden hjælpemidler. Slå kun op i Abridged Reader bagefter for at rette og finpudse dine svar.",
+      "overview": [
+        "Teksten bygger fundamentet for variabel-centreret psykologi (Erkendelsesobjekt).",
+        "Gennem en enorm meta-analyse tester den HEXACO-modellens gyldighed.",
+        "Den gør det ved at bevise, at hvert af de seks træk unikt forudsiger et specifikt STOA-adfærdsdomæne."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Metoden forskerne bruger for at validere et teoretisk træk gennem dets korrelationer med fysiske adfærdsudfald kaldes et __________ netværk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Kritikken af Big Five går på, at den klassiske model mangler at dække menneskelig adfærd relateret til __________ og bedrag.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "For at lappe dette hul introducerede HEXACO-modellen den sjette faktor, kendt som __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Begreb med bindestreg"
+        },
+        {
+          "number": 4,
+          "sentence": "Ifølge Zettler et al.'s teori kortlægges Honesty-Humility direkte til STOA-domænet kaldet __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Hvis Honesty-Humility er et helt unikt træk, skal dets __________ relation til sit måldomæne være statistisk stærkere end dets korrelation med de fem andre domæner.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når et træk utilsigtet (men forventeligt) korrelerer svagt med et domæne uden for dets kerneområde, kaldes det en __________ relation.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Over 95 % af dataene stammede fra metoden __________, hvilket er tekstens største svaghed.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 8,
+          "sentence": "Problemet opstår, fordi forsøgspersoner har en bias for at afgive svar, der er socialt __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den overordnede sammenhæng (nomologisk netværk) mellem det teoretiske begreb 'Honesty-Humility' og det forventede adfærdsdomæne i virkeligheden.",
+          "required_elements": [
+            "Kasser for 'Teori (HEXACO)'",
+            "'Træk (Honesty-Humility)'",
+            "'Virkelighed",
+            "STOA Domæne'",
+            "forbundet med en pil der illustrerer prædiktion"
+          ],
+          "blank_space_hint": "Brug en lodret form: Teori øverst, træk i midten, virkeligt adfærdsdomæne i bunden."
+        },
+        {
+          "number": 2,
+          "task": "Tegn årsagen til statistisk overvurdering (Method variance).",
+          "required_elements": [
+            "En kasse for 'Træk-måling'",
+            "en kasse for 'Adfærds-måling'",
+            "en paraply",
+            "sky over dem begge med navnet på den bias der oppuster relationen"
+          ],
+          "blank_space_hint": "To kasser ved siden af hinanden med en fælles bias-sky tegnet ovenover."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre meta-analysen klar til mundtlig eller skriftlig brug, specielt i kontrast til kursets senere og mere kritiske teorier.",
+      "use_this_text_for": [
+        "At definere, hvad træk-psykologi rent metodisk er.",
+        "At forklare konceptet 'konstruktvaliditet' og det nomologiske netværk.",
+        "At give et konkret eksempel på Erkendelsesobjekt (personen reduceret til variabler).",
+        "At opstille den naturvidenskabelige baseline (baseline for Essens i orienteringspunkterne).",
+        "At levere kontrast til Sterns kritiske personalisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Erkendelsesobjekt vs. Realobjekt",
+          "connection": "HEXACO gør mennesket til et abstrakt Erkendelsesobjekt. Modellen måler gennemsnit og korrelationer, men kigger ikke på det enkelte, levede liv (Realobjekt)."
+        },
+        {
+          "course_theme": "Looping Effects (Hacking)",
+          "connection": "Trækpsykologien her antager, at træk er stabile og opdagelige. Hacking vil hævde, at klassifikationerne i sig selv forandrer personerne."
+        },
+        {
+          "course_theme": "Metodologisk Reduktion",
+          "connection": "Zettler et al. reducerer menneskelig kompleksitet til seks faktorer for at muliggøre statistik. En nødvendighed, men en voldsom forsimpling."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern (Kritisk Personalisme)",
+          "how_to_compare": "Stern kritiserer direkte den variable-centrerede tilgang, som Zettler bruger. Stern mener, at man taber 'helheden', når man skærer personen op i adskilte dimensioner."
+        },
+        {
+          "compare_with": "Kritisk Psykologi",
+          "how_to_compare": "HEXACO gør adfærd (som udnyttelse) til et indre træk. Kritisk Psykologi vil sige, at adfærd er dikteret af samfundsstrukturer og betingelser, ikke af indre essens."
+        },
+        {
+          "compare_with": "De Fire Orienteringspunkter",
+          "how_to_compare": "Brug teksten som et ekstremt eksempel på 'Essens' og delvist 'Determination' – personen ER sine træk, og trækkene forudsiger adfærden."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at beskrive personlighedspsykologiens mainstreammetode:",
+          "use_in_answer": "Brug Zettlers nomologiske netværk for at vise, hvordan feltet kræver at teoretiske konstrukter forudsiger fysisk adfærd.",
+          "caution": "Husk at nævne begrænsningen: metodens ekstreme afhængighed af selvrapporteringsdata."
+        },
+        {
+          "prompt_type": "Hvis opgaven kræver brug af kursets fire orienteringspunkter:",
+          "use_in_answer": "Brug HEXACO som det klokkeklare eksempel på 'Essens'. Trækket beskrives som relativt stabilt over tid og definerer personens tendenser.",
+          "caution": "Vær forsigtig med 'Agency'. Trækpsykologi åbner ikke meget for fri vilje."
+        },
+        {
+          "prompt_type": "Hvis du trækker en tekst om socialkonstruktionisme eller poststrukturalisme:",
+          "use_in_answer": "Start med at definere HEXACO som den 'objektive' baseline, som den udtrukne tekst forsøger at dekonstruere.",
+          "caution": "Undgå at afvise Zettler som 'bare forkert'. Anerkend at metoden er uhyre effektiv inden for sine egne snævre rammer."
+        },
+        {
+          "prompt_type": "Hvis du skal diskutere forskellen på traits og states:",
+          "use_in_answer": "Brug Zettler til at definere traits (træk) som brede gennemsnit på tværs af mange domæner.",
+          "caution": "Trækpsykologi ignorerer ikke situationen totalt; STOA-modellen tager netop højde for *hvilke* situationer (domæner) der udløser trækket."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskningsmetodik i psykologien:",
+          "use_in_answer": "Nævn 'socially desirable responding' som en systematisk bias i kvantitativ personlighedsforskning.",
+          "caution": "Kald det ikke inkompetence; anerkend at det er en ufravigelig begrænsning ved storskala meta-analyser."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at HEXACO dimensioner KUN forudsiger deres primære domæne.",
+          "better_reading": "Anerkend sekundære relationer. Menneskelig psykologi er rodet, og træk har små forventede overlap med andre domæner."
+        },
+        {
+          "trap": "At sige at Zettler beviser, at træk eksisterer i hjernen.",
+          "better_reading": "Zettler beviser udelukkende konstruktvaliditet: At der er matematisk overensstemmelse mellem teoriens påstande og mønstre i menneskers selvrapporterede adfærd."
+        },
+        {
+          "trap": "At afvise Zettler på grund af manglende kontekst uden at definere Erkendelsesobjekt.",
+          "better_reading": "Brug de korrekte begreber: Zettler designer bevidst et Erkendelsesobjekt. Det er et metodisk valg for at kunne regne på data, ikke en påstand om at han forstår hele personen (Realobjektet)."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Zettler et al. (2020), gør rede for begrebet 'konstruktvaliditet' og forklar, hvordan dette træk-fokus kan kritiseres ved hjælp af Sterns personalisme.",
+      "mini_exam_answer_plan_slots": [
+        "Definér konstruktvaliditet (det nomologiske netværk, kravet om forudsigelse af adfærd).",
+        "Giv eksemplet fra teksten: Honesty-Humility og dets unikke forudsigelse af Exploitation.",
+        "Introducér Sterns kritik: Skiftet fra variabler/Erkendelsesobjekt tilbage til hele personen/Realobjektet.",
+        "Afslut med kursets orienteringspunkter: Hvordan Essens og Reduktionisme står overfor Kontekst og Helhed."
+      ]
+    }
+  },
+  "scaffolds": {
+    "metadata": {
+      "language": "da",
+      "source_id": "w02l1-zettler-et-al-2020-0c54e6e4",
+      "lecture_key": "W02L1",
+      "source_title": "Zettler et al. (2020)"
+    },
+    "reading_guide": {
+      "title": "Reading Guide",
+      "how_to_use": "Brug denne guide til at målrette din læsning mod de problemer, teksten forsøger at løse.",
+      "teaser_paragraphs": [
+        "Hvordan ved vi, at et personlighedstræk er et ægte psykologisk fænomen og ikke bare et ord, forskere har fundet på? Zettler og hans kolleger angriber dette ved at kræve bevis for, at specifikke træk konsekvent forudsiger specifik virkelighedsnær adfærd.",
+        "Forfatterne ønsker at teste modellens gyldighed for at *illuminate the nomological net* af HEXACO-modellen. Det betyder helt konkret, at et begrebs sandhedsværdi måles på dets evne til at flette sig sammen med andre målbare konsekvenser i verden.",
+        "Den store og kontroversielle forskel på HEXACO og den klassiske Big Five-model er den sjette faktor. Honesty-Humility handler ikke bare om at være rar, men defineres operationelt som en *tendency to be fair and genuine* over for andre.",
+        "Problemet opstår, når statistikken skal bevise teorien: Hvis alle personlighedstræk overlapper og forudsiger lidt af hvert, falder den teoretiske model fra hinanden. Hvert træk skal ideelt set kortlægges unikt til præcis ét specifikt adfærdsdomæne, for eksempel situationer der byder på en *opportunity to gain personal benefits*.",
+        "For at lukke diskussionen tester Zettler dette netværk på over 112.000 testpersoner via en enorm meta-analyse. Passede kortlægningen?",
+        "Din opgave er at fange logikken i, hvordan træk gøres til målbare, stabile variabler, da netop dette reducerede menneskesyn (Erkendelsesobjekt) er hovedskydeskiven for Sterns og Hackings senere kritik i kurset."
+      ],
+      "main_problem": "Kan det statistisk bevises, at HEXACO-modellens seks træk hver især unikt forudsiger ét specifikt og teoretisk forventet adfærdsdomæne?",
+      "subproblems": [
+        {
+          "number": 1,
+          "question": "Hvad betyder 'nomologisk netværk' i denne sammenhæng?",
+          "why_it_matters": "Det er metodens kerne. Træk findes ikke fysisk, så de må bevises via deres relationer til virkeligheden.",
+          "answer_form": "En kort definition"
+        },
+        {
+          "number": 2,
+          "question": "Hvordan retfærdiggør forfatterne, at HEXACO-modellen er bedre end Big Five?",
+          "why_it_matters": "Det forklarer nødvendigheden af Honesty-Humility faktoren.",
+          "answer_form": "En kort sætning"
+        },
+        {
+          "number": 3,
+          "question": "Hvilket Udfaldsdomæne (fra STOA-modellen) tilhører Honesty-Humility?",
+          "why_it_matters": "Det er tekstens vigtigste direkte kortlægning.",
+          "answer_form": "Et domænenavn"
+        },
+        {
+          "number": 4,
+          "question": "Hvad er forskellen på primære og sekundære relationer?",
+          "why_it_matters": "Det beviser, at trækket har 'unik varians' og ikke bare smelter sammen med de andre træk.",
+          "answer_form": "To korte beskrivelser"
+        },
+        {
+          "number": 5,
+          "question": "Hvilken bias introducerer brugen af selvrapporteringsdata ifølge forfatterne?",
+          "why_it_matters": "Det peger på metodens blinde vinkler.",
+          "answer_form": "Et metodisk problem"
+        }
+      ],
+      "why_this_text_matters": "Zettler et al. udgør det variable-centrerede baseline for kurset. Det viser, hvordan psykometrien reducerer personen til målbare essenser (Erkendelsesobjekt), som resten af semesteret vil problematisere.",
+      "overview": [
+        "Teksten definerer HEXACO-modellens fundament.",
+        "Den bruger en meta-analyse til at kortlægge træk mod STOA-udfaldsdomæner.",
+        "Målet er at bevise at modellens teoretiske struktur stemmer overens med virkeligheden."
+      ],
+      "reading_route": [
+        {
+          "number": 1,
+          "source_location": "Abstract og Introduktion (s. 723-724)",
+          "task": "Find forfatternes definition af et nomologisk netværk.",
+          "why_it_matters": "Sætter rammen for hvordan man validerer hypotetiske konstrukter.",
+          "stop_signal": "Når du når 'The HEXACO Model of Personality'"
+        },
+        {
+          "number": 2,
+          "source_location": "The HEXACO Model of Personality (s. 724-726)",
+          "task": "Find det primære argument for, at Big Five mangler noget essentielt.",
+          "why_it_matters": "Forankrer årsagen til tekstens eksistens.",
+          "stop_signal": "Når du når 'Mapping the HEXACO Dimensions'"
+        },
+        {
+          "number": 3,
+          "source_location": "Mapping the HEXACO Dimensions (s. 726-730)",
+          "task": "Aflæs hvordan de seks STOA domæner fordeles på de seks træk.",
+          "why_it_matters": "Dette udgør kernepåstanden, som meta-analysen skal teste.",
+          "stop_signal": "Når du når 'Method'"
+        },
+        {
+          "number": 4,
+          "source_location": "Results - Overordnet mapping (s. 734-736)",
+          "task": "Tjek om den primære relation (counterpart domain) er stærkere end de sekundære relationer.",
+          "why_it_matters": "Bekræfter trækkenes separate gyldighed.",
+          "stop_signal": "Når du når de specifikke træk-sektioner på s. 737"
+        },
+        {
+          "number": 5,
+          "source_location": "Discussion (s. 753-754)",
+          "task": "Identificér den metodiske begrænsning ved selvrapportering.",
+          "why_it_matters": "Vigtig eksamensviden om metodisk bias i psykometri.",
+          "stop_signal": "Når du når Conclusion"
+        }
+      ],
+      "key_quote_targets": [
+        {
+          "target": "comprises its interrelations with other",
+          "why": "Definerer det metodiske rammeværk.",
+          "where_to_look": "Sektionen før The HEXACO Model"
+        },
+        {
+          "target": "omission of content related to ethics",
+          "why": "Forklarer svagheden ved klassisk Big Five.",
+          "where_to_look": "Sektionen der introducerer HEXACO"
+        },
+        {
+          "target": "maps onto the outcome domain of exploitation",
+          "why": "Kernen i den sjette faktors berettigelse.",
+          "where_to_look": "Gennemgangen af STOA domæner"
+        },
+        {
+          "target": "prone to socially desirable responding",
+          "why": "Afslører tekstens indbyggede måleproblem.",
+          "where_to_look": "Styrker og svagheder i diskussionen"
+        }
+      ],
+      "do_not_get_stuck_on": [
+        "De lange tabeller med individuelle effektstørrelser (r, N, k).",
+        "De matematiske formler for disattenuerede korrelationer.",
+        "Gennemgangen af søgestrategier og P-værdier for publikationsbias i metoden."
+      ],
+      "opening_passages": [
+        {
+          "number": "1",
+          "source_location": "Sektionen før The HEXACO Model",
+          "excerpt": "comprises its interrelations with other",
+          "open_question": "Hvad betyder 'nomologisk netværk' i denne sammenhæng?"
+        },
+        {
+          "number": "2",
+          "source_location": "Sektionen der introducerer HEXACO",
+          "excerpt": "omission of content related to ethics",
+          "open_question": "Hvordan retfærdiggør forfatterne, at HEXACO-modellen er bedre end Big Five?"
+        },
+        {
+          "number": "3",
+          "source_location": "Gennemgangen af STOA domæner",
+          "excerpt": "maps onto the outcome domain of exploitation",
+          "open_question": "Hvilket Udfaldsdomæne (fra STOA-modellen) tilhører Honesty-Humility?"
+        },
+        {
+          "number": "4",
+          "source_location": "Styrker og svagheder i diskussionen",
+          "excerpt": "prone to socially desirable responding",
+          "open_question": "Hvad er forskellen på primære og sekundære relationer?"
+        }
+      ]
+    },
+    "abridged_reader": {
+      "title": "Abridged Version",
+      "how_to_use": "Brug denne forkortede fremstilling til at forstå tekstens hovedtræk. De efterfølgende opgaver kan løses udelukkende med denne tekst åben.",
+      "coverage_note": "Fokuserer på teorien bag nomologiske netværk, STOA-mapping og Honesty-Humility, og udelader meta-analysens specifikke statistiske procedurer.",
+      "sections": [
+        {
+          "number": 1,
+          "source_location": "Introduktion (s. 724)",
+          "heading": "Det nomologiske netværk",
+          "solves_subproblem": "Delproblem 1",
+          "local_problem": "Hvordan beviser man eksistensen af et usynligt psykologisk begreb?",
+          "explanation_paragraphs": [
+            "I psykologien er personlighedstræk hypotetiske konstruktioner. Man kan ikke operere en person og lokalisere deres 'ekstraversion' fysisk. For at bevise, at et træk som begreb faktisk afspejler virkeligheden, bruger forskere et såkaldt nomologisk netværk.",
+            "Det nomologiske netværk er det samlede mønster af beviser for, hvordan et træk hænger sammen med andre begreber og især med observerbare adfærdsudfald. Hvis vi opfinder et træk, som vi påstår styrer hvor pligtopfyldende man er, så SKAL det teoretiske begreb statistisk forudsige virkelige adfærdsmarkører, som fx fravær på arbejdspladsen.",
+            "Zettler og co. forsøger at etablere netop dette bevis for HEXACO-modellen, for at vise, at dens opdeling af den menneskelige personlighed afspejler en objektiv sandhed."
+          ],
+          "key_points": [
+            "Træk er ikke fysiske ting, men forventninger om adfærd.",
+            "Et nomologisk net beviser et træks gyldighed gennem dets interaktioner med verden.",
+            "Konstruktvaliditet opnås, når teorien matcher den statistiske virkelighed."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "comprises its interrelations with other",
+              "why_it_matters": "Kernedefinitionen af det nomologiske netværk.",
+              "source_location": "s. 724"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 724",
+              "passage": "The nomological net of a construct or its operationalization comprises its interrelations with other (more or less related) constructs and outcomes. (...) whether a construct’s nomological net corresponds to its theoretical conceptualization (...) has been considered a crucial step for establishing construct validity.",
+              "why_it_matters": "Det er metodens hellige gral; uden dette er psykologiske test kun ordleg."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 2,
+          "source_location": "s. 725-726",
+          "heading": "Hvorfor HEXACO i stedet for Big Five?",
+          "solves_subproblem": "Delproblem 2",
+          "local_problem": "Hvilken blind vinkel i Big Five-modellen prøver HEXACO at rette?",
+          "explanation_paragraphs": [
+            "Big Five-modellen (Neuroticisme, Ekstraversion, Åbenhed, Venlighed og Samvittighedsfuldhed) var i mange år den ubestridte konge af personlighedspsykologi. Men forskere opdagede gentagne gange en mangel: Modellen manglede at fange adfærd, der handlede om moral, bedrag, og etik.",
+            "Derfor introducerede Ashton og Lee HEXACO-modellen, som tilføjede en sjette faktor: Honesty-Humility. Dette træk måler en persons tendens til at være retfærdig og ægte, frem for at være grådig og svigefuld.",
+            "For at retfærdiggøre denne nye model over for den etablerede Big Five, skal forfatterne bevise, at Honesty-Humility forudsiger adfærd, som Big Five ikke fanger. Den skal have 'unik varians' og bevise sin værdi i virkeligheden."
+          ],
+          "key_points": [
+            "Big Five ignorerer overvejende etik og grådighed.",
+            "HEXACO tilføjer Honesty-Humility for at dække moral og gensidig kooperation.",
+            "Modellen er bygget på leksikalske studier på tværs af sprog."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "omission of content related to ethics",
+              "why_it_matters": "Årsagen til at Big Five forkastes som utilstrækkelig.",
+              "source_location": "s. 726"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 3,
+          "source_location": "s. 726-729",
+          "heading": "STOA og kortlægningen af domæner",
+          "solves_subproblem": "Delproblem 3",
+          "local_problem": "Hvordan afgør vi matematisk, at de seks HEXACO-træk faktisk eksisterer separat?",
+          "explanation_paragraphs": [
+            "Hvis Honesty-Humility (H) bare er en bizar gren af Agreeableness (A), vil de to træk forudsige præcis de samme ting. Zettler et al. bruger derfor et teoretisk rammeværk kaldet STOA (Situation, Trait, Outcome Activation) til at teste modellen.",
+            "STOA-modellen hævder, at hvert af de seks træk evolutionært er udviklet til at håndtere én specifik type problem eller 'domæne' i miljøet. Forfatterne hypotetiserer et en-til-en match (mapping) mellem hvert træk og et bestemt udfaldsdomæne.",
+            "Den mest centrale kortlægning i teksten er mellem Honesty-Humility og domænet 'Exploitation' (Udnyttelse). Et menneske med lav H vil udvise machiavellianisme og snyd for at vinde fordele (udnyttelse). Hvis HEXACO-modellen er sand, skal H statistisk fange dette domæne meget bedre end de resterende fem træk gør."
+          ],
+          "key_points": [
+            "Hvert HEXACO-træk tildeles ét specifikt STOA-domæne.",
+            "H-faktoren kortlægges til 'Exploitation' (udnyttelse).",
+            "A-faktoren (Agreeableness) kortlægges til 'Obstruction' (reaktion på modstand)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "opportunity to gain personal benefits",
+              "why_it_matters": "Definerer selve 'exploitation' domænet.",
+              "source_location": "s. 727"
+            }
+          ],
+          "source_passages": [
+            {
+              "source_location": "s. 723",
+              "passage": "Specifically, honesty-humility maps onto the outcome domain of exploitation, emotionality onto insecurity, extraversion onto sociality, agreeableness versus anger onto obstruction, conscientiousness onto duty, and openness to experience onto exploration.",
+              "why_it_matters": "Dette er facitlisten for, hvordan de to teoretiske modeller krydses, og papirets primære resultat."
+            }
+          ],
+          "no_quote_anchor_needed": false
+        },
+        {
+          "number": 4,
+          "source_location": "s. 730-736",
+          "heading": "Primære vs. Sekundære Relationer",
+          "solves_subproblem": "Delproblem 4",
+          "local_problem": "Hvad beviser resultaterne i meta-analysen?",
+          "explanation_paragraphs": [
+            "Efter at have analyseret data fra over 112.000 deltagere adskiller forskerne resultaterne i 'primære' og 'sekundære' relationer. En primær relation er det forventede stærke bånd mellem et træk og dets teoretiske domæne (fx Extraversion og Sociality).",
+            "En sekundær relation opstår, når et træk svagt forudsiger et andet domæne (fx Extraversion og Insecurity). Sekundære relationer er forventelige, da menneskets psyke er kompleks, og variablerne har små overlap.",
+            "Resultatet beviser succes for HEXACO-modellen: For stort set alle træk var den primære relation meget stærkere end de sekundære. Honesty-Humility havde klart den stærkeste korrelation med Exploitation, hvilket forsvarer dets eksistensberettigelse som en uafhængig sjette faktor."
+          ],
+          "key_points": [
+            "Primær relation: Stærk kobling til det teoretiske måldomæne.",
+            "Sekundær relation: Svag kobling til andre (ikke-kerne) domæner.",
+            "Unik varians påvises, fordi de primære relationer forbliver uforholdsmæssigt stærke."
+          ],
+          "quote_anchors": [],
+          "source_passages": [
+            {
+              "source_location": "s. 730",
+              "passage": "Only if each dimension of a personality model such as the HEXACO is related to one theoretically relevant outcome domain in particular—rather than to several domains—does the mapping of dimensions onto outcome domains provide insights into the unique class of individual differences captured.",
+              "why_it_matters": "Forklarer hvorfor differential korrelation er det ultimative empiriske bevis."
+            }
+          ],
+          "no_quote_anchor_needed": "Sektionen bæres af forklaringen frem for en kort citerbar formulering."
+        },
+        {
+          "number": 5,
+          "source_location": "s. 753",
+          "heading": "Selvrapporteringens faldgruber",
+          "solves_subproblem": "Delproblem 5",
+          "local_problem": "Hvordan svækkes det nomologiske netværk af de brugte metoder?",
+          "explanation_paragraphs": [
+            "Zettler et al. bemærker selv et kritisk metodisk problem: I 95 % af de undersøgte studier var personlighedstrækkene målt via selvrapportering, og i 80 % af tilfældene var adfærdsudfaldet OGSÅ selvrapporteret.",
+            "Når både årsag og virkning måles gennem testpersonens egen vurdering (fx \"Er du et ærligt menneske?\" og \"Har du nogensinde snydt?\"), opstår der 'method variance'. Testpersonen har tendens til at svare socialt ønskværdigt (socially desirable responding).",
+            "Denne tendens til at ville fremstå konsekvent og god kan puste statistikken kunstigt op. Meta-analysen afslører, at korrelationerne faldt betragteligt, når de så på objektive data frem for selvrapporterede resultater."
+          ],
+          "key_points": [
+            "Selvrapportering er sårbar over for social ønskværdigheds-bias.",
+            "Når både træk og adfærd måles via spørgeskemaer, opstår oppustede statistiske sammenhænge.",
+            "Dette er et klassisk problem inden for træk-psykologi (Erkendelsesobjekt vs. Realobjekt)."
+          ],
+          "quote_anchors": [
+            {
+              "phrase": "prone to socially desirable responding",
+              "why_it_matters": "Kerneproblemet med metodikken i størstedelen af feltet.",
+              "source_location": "s. 753"
+            }
+          ],
+          "source_passages": [],
+          "no_quote_anchor_needed": false
+        }
+      ]
+    },
+    "active_reading": {
+      "title": "Active Reading",
+      "instructions": "Hold abridged reader åben. Løs delproblemerne et trin ad gangen, og skriv kun det, der er nødvendigt for at få svaret på plads.",
+      "solve_steps": [
+        {
+          "number": "1",
+          "subproblem_ref": "Delproblem 1",
+          "prompt": "Hvordan beviser man eksistensen af et usynligt psykologisk begreb?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1",
+          "answer_shape": "En kort definition",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "2",
+          "subproblem_ref": "Delproblem 2",
+          "prompt": "Hvilken blind vinkel i Big Five-modellen prøver HEXACO at rette?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 2",
+          "answer_shape": "En kort sætning",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "3",
+          "subproblem_ref": "Delproblem 3",
+          "prompt": "Hvordan afgør vi matematisk, at de seks HEXACO-træk faktisk eksisterer separat?",
+          "task_type": "term",
+          "abridged_reader_location": "Abridged reader sektion 3",
+          "answer_shape": "Et domænenavn",
+          "blank_lines": 1,
+          "done_signal": "Stop når du har skrevet det centrale begreb"
+        },
+        {
+          "number": "4",
+          "subproblem_ref": "Delproblem 4",
+          "prompt": "Hvad beviser resultaterne i meta-analysen?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 4",
+          "answer_shape": "To korte beskrivelser",
+          "blank_lines": 2,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "5",
+          "subproblem_ref": "Delproblem 5",
+          "prompt": "Hvordan svækkes det nomologiske netværk af de brugte metoder?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 5",
+          "answer_shape": "Et metodisk problem",
+          "blank_lines": 3,
+          "done_signal": "Stop når du har skrevet et kort, sammenhængende svar"
+        },
+        {
+          "number": "6",
+          "subproblem_ref": "Hovedproblem",
+          "prompt": "Brug dine delsvar til at besvare hovedproblemet kort: Kan det statistisk bevises, at HEXACO-modellens seks træk hver især unikt forudsiger ét specifikt og teoretisk forventet adfærdsdomæne?",
+          "task_type": "short_paragraph",
+          "abridged_reader_location": "Abridged reader sektion 1-5",
+          "answer_shape": "4-5 sætninger",
+          "blank_lines": 4,
+          "done_signal": "Stop når du har skrevet et samlet svar med tekstens vigtigste bevægelser"
+        }
+      ]
+    },
+    "consolidation_sheet": {
+      "title": "Consolidation Sheet",
+      "instructions": "Test din hukommelse. Prøv først at udfylde arket uden hjælpemidler. Slå kun op i Abridged Reader bagefter for at rette og finpudse dine svar.",
+      "overview": [
+        "Teksten bygger fundamentet for variabel-centreret psykologi (Erkendelsesobjekt).",
+        "Gennem en enorm meta-analyse tester den HEXACO-modellens gyldighed.",
+        "Den gør det ved at bevise, at hvert af de seks træk unikt forudsiger et specifikt STOA-adfærdsdomæne."
+      ],
+      "fill_in_sentences": [
+        {
+          "number": 1,
+          "sentence": "Metoden forskerne bruger for at validere et teoretisk træk gennem dets korrelationer med fysiske adfærdsudfald kaldes et __________ netværk.",
+          "where_to_look": "Sektion 1",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 2,
+          "sentence": "Kritikken af Big Five går på, at den klassiske model mangler at dække menneskelig adfærd relateret til __________ og bedrag.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 3,
+          "sentence": "For at lappe dette hul introducerede HEXACO-modellen den sjette faktor, kendt som __________.",
+          "where_to_look": "Sektion 2",
+          "answer_shape": "Begreb med bindestreg"
+        },
+        {
+          "number": 4,
+          "sentence": "Ifølge Zettler et al.'s teori kortlægges Honesty-Humility direkte til STOA-domænet kaldet __________.",
+          "where_to_look": "Sektion 3",
+          "answer_shape": "1 engelsk ord"
+        },
+        {
+          "number": 5,
+          "sentence": "Hvis Honesty-Humility er et helt unikt træk, skal dets __________ relation til sit måldomæne være statistisk stærkere end dets korrelation med de fem andre domæner.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 6,
+          "sentence": "Når et træk utilsigtet (men forventeligt) korrelerer svagt med et domæne uden for dets kerneområde, kaldes det en __________ relation.",
+          "where_to_look": "Sektion 4",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 7,
+          "sentence": "Over 95 % af dataene stammede fra metoden __________, hvilket er tekstens største svaghed.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        },
+        {
+          "number": 8,
+          "sentence": "Problemet opstår, fordi forsøgspersoner har en bias for at afgive svar, der er socialt __________.",
+          "where_to_look": "Sektion 5",
+          "answer_shape": "1 ord"
+        }
+      ],
+      "diagram_tasks": [
+        {
+          "number": 1,
+          "task": "Tegn den overordnede sammenhæng (nomologisk netværk) mellem det teoretiske begreb 'Honesty-Humility' og det forventede adfærdsdomæne i virkeligheden.",
+          "required_elements": [
+            "Kasser for 'Teori (HEXACO)'",
+            "'Træk (Honesty-Humility)'",
+            "'Virkelighed",
+            "STOA Domæne'",
+            "forbundet med en pil der illustrerer prædiktion"
+          ],
+          "blank_space_hint": "Brug en lodret form: Teori øverst, træk i midten, virkeligt adfærdsdomæne i bunden."
+        },
+        {
+          "number": 2,
+          "task": "Tegn årsagen til statistisk overvurdering (Method variance).",
+          "required_elements": [
+            "En kasse for 'Træk-måling'",
+            "en kasse for 'Adfærds-måling'",
+            "en paraply",
+            "sky over dem begge med navnet på den bias der oppuster relationen"
+          ],
+          "blank_space_hint": "To kasser ved siden af hinanden med en fælles bias-sky tegnet ovenover."
+        }
+      ]
+    },
+    "exam_bridge": {
+      "title": "Exam Bridge",
+      "instructions": "Brug dette ark til at gøre meta-analysen klar til mundtlig eller skriftlig brug, specielt i kontrast til kursets senere og mere kritiske teorier.",
+      "use_this_text_for": [
+        "At definere, hvad træk-psykologi rent metodisk er.",
+        "At forklare konceptet 'konstruktvaliditet' og det nomologiske netværk.",
+        "At give et konkret eksempel på Erkendelsesobjekt (personen reduceret til variabler).",
+        "At opstille den naturvidenskabelige baseline (baseline for Essens i orienteringspunkterne).",
+        "At levere kontrast til Sterns kritiske personalisme."
+      ],
+      "course_connections": [
+        {
+          "course_theme": "Erkendelsesobjekt vs. Realobjekt",
+          "connection": "HEXACO gør mennesket til et abstrakt Erkendelsesobjekt. Modellen måler gennemsnit og korrelationer, men kigger ikke på det enkelte, levede liv (Realobjekt)."
+        },
+        {
+          "course_theme": "Looping Effects (Hacking)",
+          "connection": "Trækpsykologien her antager, at træk er stabile og opdagelige. Hacking vil hævde, at klassifikationerne i sig selv forandrer personerne."
+        },
+        {
+          "course_theme": "Metodologisk Reduktion",
+          "connection": "Zettler et al. reducerer menneskelig kompleksitet til seks faktorer for at muliggøre statistik. En nødvendighed, men en voldsom forsimpling."
+        }
+      ],
+      "comparison_targets": [
+        {
+          "compare_with": "William Stern (Kritisk Personalisme)",
+          "how_to_compare": "Stern kritiserer direkte den variable-centrerede tilgang, som Zettler bruger. Stern mener, at man taber 'helheden', når man skærer personen op i adskilte dimensioner."
+        },
+        {
+          "compare_with": "Kritisk Psykologi",
+          "how_to_compare": "HEXACO gør adfærd (som udnyttelse) til et indre træk. Kritisk Psykologi vil sige, at adfærd er dikteret af samfundsstrukturer og betingelser, ikke af indre essens."
+        },
+        {
+          "compare_with": "De Fire Orienteringspunkter",
+          "how_to_compare": "Brug teksten som et ekstremt eksempel på 'Essens' og delvist 'Determination' – personen ER sine træk, og trækkene forudsiger adfærden."
+        }
+      ],
+      "exam_moves": [
+        {
+          "prompt_type": "Hvis du bliver bedt om at beskrive personlighedspsykologiens mainstreammetode:",
+          "use_in_answer": "Brug Zettlers nomologiske netværk for at vise, hvordan feltet kræver at teoretiske konstrukter forudsiger fysisk adfærd.",
+          "caution": "Husk at nævne begrænsningen: metodens ekstreme afhængighed af selvrapporteringsdata."
+        },
+        {
+          "prompt_type": "Hvis opgaven kræver brug af kursets fire orienteringspunkter:",
+          "use_in_answer": "Brug HEXACO som det klokkeklare eksempel på 'Essens'. Trækket beskrives som relativt stabilt over tid og definerer personens tendenser.",
+          "caution": "Vær forsigtig med 'Agency'. Trækpsykologi åbner ikke meget for fri vilje."
+        },
+        {
+          "prompt_type": "Hvis du trækker en tekst om socialkonstruktionisme eller poststrukturalisme:",
+          "use_in_answer": "Start med at definere HEXACO som den 'objektive' baseline, som den udtrukne tekst forsøger at dekonstruere.",
+          "caution": "Undgå at afvise Zettler som 'bare forkert'. Anerkend at metoden er uhyre effektiv inden for sine egne snævre rammer."
+        },
+        {
+          "prompt_type": "Hvis du skal diskutere forskellen på traits og states:",
+          "use_in_answer": "Brug Zettler til at definere traits (træk) som brede gennemsnit på tværs af mange domæner.",
+          "caution": "Trækpsykologi ignorerer ikke situationen totalt; STOA-modellen tager netop højde for *hvilke* situationer (domæner) der udløser trækket."
+        },
+        {
+          "prompt_type": "Når du diskuterer forskningsmetodik i psykologien:",
+          "use_in_answer": "Nævn 'socially desirable responding' som en systematisk bias i kvantitativ personlighedsforskning.",
+          "caution": "Kald det ikke inkompetence; anerkend at det er en ufravigelig begrænsning ved storskala meta-analyser."
+        }
+      ],
+      "misunderstanding_traps": [
+        {
+          "trap": "At tro at HEXACO dimensioner KUN forudsiger deres primære domæne.",
+          "better_reading": "Anerkend sekundære relationer. Menneskelig psykologi er rodet, og træk har små forventede overlap med andre domæner."
+        },
+        {
+          "trap": "At sige at Zettler beviser, at træk eksisterer i hjernen.",
+          "better_reading": "Zettler beviser udelukkende konstruktvaliditet: At der er matematisk overensstemmelse mellem teoriens påstande og mønstre i menneskers selvrapporterede adfærd."
+        },
+        {
+          "trap": "At afvise Zettler på grund af manglende kontekst uden at definere Erkendelsesobjekt.",
+          "better_reading": "Brug de korrekte begreber: Zettler designer bevidst et Erkendelsesobjekt. Det er et metodisk valg for at kunne regne på data, ikke en påstand om at han forstår hele personen (Realobjektet)."
+        }
+      ],
+      "mini_exam_prompt_question": "Med udgangspunkt i Zettler et al. (2020), gør rede for begrebet 'konstruktvaliditet' og forklar, hvordan dette træk-fokus kan kritiseres ved hjælp af Sterns personalisme.",
+      "mini_exam_answer_plan_slots": [
+        "Definér konstruktvaliditet (det nomologiske netværk, kravet om forudsigelse af adfærd).",
+        "Giv eksemplet fra teksten: Honesty-Humility og dets unikke forudsigelse af Exploitation.",
+        "Introducér Sterns kritik: Skiftet fra variabler/Erkendelsesobjekt tilbage til hele personen/Realobjektet.",
+        "Afslut med kursets orienteringspunkter: Hvordan Essens og Reduktionisme står overfor Kontekst og Helhed."
+      ]
+    }
+  },
+  "variant": {
+    "mode": "canonical_main",
+    "variant_key": "problem_driven_v1",
+    "render_completion_markers": false,
+    "render_exam_bridge": false,
+    "variant_prompt_path": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/prompts/problem-driven-v1.md",
+    "design_doc": "shows/personlighedspsykologi-en/docs/learning/problem-driven-printouts.md",
+    "workspace": "notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/"
+  }
+}

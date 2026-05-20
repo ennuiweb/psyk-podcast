@@ -209,7 +209,7 @@ class NewUserNotificationTests(TestCase):
         message = mail.outbox[0]
         self.assertEqual(message.subject, BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT)
         self.assertEqual(message.to, ["new-user@example.com"])
-        self.assertIn("Afmeld fremtidige mails fra freudd.dk:", message.body)
+        self.assertIn("Afmeld mails:", message.body)
         self.assertIn("https://freudd.dk/email/unsubscribe/", message.body)
 
         self.assertEqual(len(message.alternatives), 1)
@@ -218,7 +218,7 @@ class NewUserNotificationTests(TestCase):
         mime_type = getattr(html_part, "mimetype", html_part[1])
         self.assertEqual(mime_type, "text/html")
         self.assertIn('href="https://freudd.dk/email/unsubscribe/', html_body)
-        self.assertIn(">Afmeld fremtidige mails fra freudd.dk</a>", html_body)
+        self.assertIn(">Afmeld mails</a>", html_body)
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(

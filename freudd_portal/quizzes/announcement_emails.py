@@ -15,16 +15,17 @@ from .models import UserNotificationPreference
 
 
 ANNOUNCEMENT_UNSUBSCRIBE_SALT = "freudd.announcement-emails.unsubscribe"
-BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT = "Nye bioneuro-flashcards på freudd.dk"
+BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT = "Flashcards til bioneuro"
 BIONEURO_FLASHCARD_URL = "https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi"
 BIONEURO_FLASHCARD_ANNOUNCEMENT_BODY = """Hej freudd.dk-bruger
 
-Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her: https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi
+Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her:
+https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi
 
 Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på
 
 God læselyst!"""
-ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT = "Afmeld fremtidige mails fra freudd.dk"
+ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT = "Afmeld mails"
 
 
 @dataclass(frozen=True)
@@ -108,7 +109,7 @@ def bioneuro_flashcard_announcement_content(*, user: object, base_url: str) -> A
         [
             "<p>Hej freudd.dk-bruger</p>",
             (
-                "<p>Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her: "
+                "<p>Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her:<br>"
                 f'<a href="{escape(BIONEURO_FLASHCARD_URL)}">{escape(BIONEURO_FLASHCARD_URL)}</a></p>'
             ),
             "<p>Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på</p>",

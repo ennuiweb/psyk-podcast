@@ -14,6 +14,7 @@ from quizzes.announcement_emails import (
     announcement_email_recipient_users,
     make_announcement_unsubscribe_token,
     send_bioneuro_flashcard_announcement_email,
+    send_bioneuro_flashcard_announcement_test_email,
 )
 from quizzes.models import UserNotificationPreference
 
@@ -219,6 +220,19 @@ class NewUserNotificationTests(TestCase):
         self.assertEqual(mime_type, "text/html")
         self.assertIn('href="https://freudd.dk/email/unsubscribe/', html_body)
         self.assertIn(">Afmeld mails</a>", html_body)
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_bioneuro_announcement_test_email_can_target_non_user_address(self) -> None:
+        sent = send_bioneuro_flashcard_announcement_test_email(
+            recipient_email="OSKARVEDEL@PROTON.ME",
+            base_url="https://freudd.dk",
+        )
+
+        self.assertTrue(sent)
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.to, ["oskarvedel@proton.me"])
+        self.assertIn("https://freudd.dk/email/unsubscribe/test-preview-link", message.body)
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(

@@ -99,8 +99,11 @@ def announcement_unsubscribe_url(*, user: object, base_url: str) -> str:
     return urljoin(f"{str(base_url).rstrip('/')}/", announcement_unsubscribe_path(user).lstrip("/"))
 
 
-def bioneuro_flashcard_announcement_content(*, user: object, base_url: str) -> AnnouncementEmailContent:
-    unsubscribe_url = announcement_unsubscribe_url(user=user, base_url=base_url)
+def test_announcement_unsubscribe_url(*, base_url: str) -> str:
+    return urljoin(f"{str(base_url).rstrip('/')}/", "email/unsubscribe/test-preview-link")
+
+
+def bioneuro_flashcard_announcement_content_for_unsubscribe_url(*, unsubscribe_url: str) -> AnnouncementEmailContent:
     plain_body = (
         f"{BIONEURO_FLASHCARD_ANNOUNCEMENT_BODY}\n\n"
         f"{ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT}:\n{unsubscribe_url}"
@@ -129,6 +132,28 @@ def bioneuro_flashcard_announcement_content(*, user: object, base_url: str) -> A
     )
 
 
+def bioneuro_flashcard_announcement_content(*, user: object, base_url: str) -> AnnouncementEmailContent:
+    return bioneuro_flashcard_announcement_content_for_unsubscribe_url(
+        unsubscribe_url=announcement_unsubscribe_url(user=user, base_url=base_url)
+    )
+
+
+def _send_announcement_content(
+    *,
+    content: AnnouncementEmailContent,
+    recipient_email: str,
+    fail_silently: bool,
+) -> bool:
+    message = EmailMultiAlternatives(
+        subject=content.subject,
+        body=content.plain_body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[recipient_email],
+    )
+    message.attach_alternative(content.html_body, "text/html")
+    return bool(message.send(fail_silently=fail_silently))
+
+
 def send_bioneuro_flashcard_announcement_email(
     *,
     user: object,
@@ -143,14 +168,30 @@ def send_bioneuro_flashcard_announcement_email(
         return False
 
     content = bioneuro_flashcard_announcement_content(user=user, base_url=base_url)
-    message = EmailMultiAlternatives(
-        subject=content.subject,
-        body=content.plain_body,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[recipient_email],
+    return _send_announcement_content(
+        content=content,
+        recipient_email=recipient_email,
+        fail_silently=fail_silently,
     )
-    message.attach_alternative(content.html_body, "text/html")
-    return bool(message.send(fail_silently=fail_silently))
+
+
+def send_bioneuro_flashcard_announcement_test_email(
+    *,
+    recipient_email: str,
+    base_url: str,
+    fail_silently: bool = False,
+) -> bool:
+    normalized_email = normalize_email(recipient_email)
+    if not normalized_email:
+        return False
+    content = bioneuro_flashcard_announcement_content_for_unsubscribe_url(
+        unsubscribe_url=test_announcement_unsubscribe_url(base_url=base_url)
+    )
+    return _send_announcement_content(
+        content=content,
+        recipient_email=normalized_email,
+        fail_silently=fail_silently,
+    )
 
 
 def unsubscribe_announcement_token(token: str) -> AnnouncementUnsubscribeResult:

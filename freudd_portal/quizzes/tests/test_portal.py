@@ -1379,14 +1379,14 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Ingen offentlige deltagere endnu.")
         self.assertNotContains(response, "Se fuld scoreboard")
 
-    def test_progress_page_moves_enrollment_controls_to_bottom_module(self) -> None:
+    def test_progress_page_keeps_enrollment_controls_in_subject_cards(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         SubjectEnrollment.objects.create(user=user, subject_slug="personlighedspsykologi")
 
         response = self.client.get(reverse("progress"))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "tilmeld og afmeld fag")
+        self.assertNotContains(response, "tilmeld og afmeld fag")
 
         body = response.content.decode("utf-8")
         mine_fag_start = body.find("<h2 class=\"section-title\">mine fag</h2>")
@@ -1394,14 +1394,12 @@ class QuizPortalTests(TestCase):
         leaderboard_start = body.find("<h2 class=\"section-title\">offentlig scoreboard</h2>")
         self.assertGreaterEqual(leaderboard_start, 0)
         mine_fag_markup = body[mine_fag_start:leaderboard_start]
-        self.assertNotIn(">Afmeld</button>", mine_fag_markup)
-        self.assertNotIn(">Tilmeld</button>", mine_fag_markup)
+        self.assertIn(">Afmeld</button>", mine_fag_markup)
+        self.assertIn("subject-actions is-split", mine_fag_markup)
 
         history_start = body.find("<h2 class=\"section-title\">quizhistorik</h2>")
-        enroll_start = body.find("<h2 class=\"section-title\">tilmeld og afmeld fag</h2>")
         self.assertGreaterEqual(history_start, 0)
-        self.assertGreaterEqual(enroll_start, 0)
-        self.assertGreater(enroll_start, history_start)
+        self.assertGreater(history_start, leaderboard_start)
 
     def test_progress_page_locks_existing_quizcup_alias_by_default(self) -> None:
         user = self._create_user()

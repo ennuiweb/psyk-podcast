@@ -123,6 +123,10 @@
     align-items: center;
   }
 
+  .subject-actions.is-split {
+    justify-content: space-between;
+  }
+
   .subject-actions form {
     margin: 0;
   }
@@ -173,7 +177,7 @@
   .leaderboard-profile-form {
     margin: 0;
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
     max-width: 28rem;
   }
 
@@ -186,27 +190,6 @@
     margin: 0;
     color: var(--muted);
     font-size: 0.82rem;
-  }
-
-  .leaderboard-profile-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    align-items: center;
-  }
-
-  .leaderboard-profile-controls label {
-    margin-bottom: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 0.95rem;
-  }
-
-  .leaderboard-profile-controls input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin: 0;
   }
 
   .leaderboard-profile-form input[type="text"] {
@@ -225,6 +208,79 @@
     margin: 0;
     color: var(--muted);
     font-size: 0.88rem;
+  }
+
+  .leaderboard-toggle-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-3);
+    align-items: center;
+    min-height: 58px;
+    border: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 82%, var(--surface-soft));
+    padding: var(--space-3);
+    cursor: pointer;
+  }
+
+  .leaderboard-toggle-row input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .leaderboard-toggle-copy {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .leaderboard-toggle-title {
+    color: var(--ink);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .leaderboard-toggle-help {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .leaderboard-toggle-switch {
+    width: 50px;
+    height: 30px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--surface-strong);
+    padding: 3px;
+    transition: background 140ms ease, border-color 140ms ease;
+  }
+
+  .leaderboard-toggle-switch::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    box-shadow: 0 1px 4px color-mix(in srgb, var(--ink) 16%, transparent);
+    transition: transform 140ms ease;
+  }
+
+  .leaderboard-toggle-row:has(input:checked) {
+    border-color: color-mix(in srgb, var(--accent) 36%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 58%, var(--surface));
+  }
+
+  .leaderboard-toggle-row:has(input:checked) .leaderboard-toggle-switch {
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--border));
+    background: var(--accent);
+  }
+
+  .leaderboard-toggle-row:has(input:checked) .leaderboard-toggle-switch::before {
+    transform: translateX(20px);
   }
 
   .quiz-history-shell {
@@ -650,7 +706,8 @@
     color: var(--muted);
   }
 
-  .dashboard-shell :is(select, button, a):focus-visible {
+  .dashboard-shell :is(select, button, a):focus-visible,
+  .leaderboard-toggle-row:has(input:focus-visible) {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-ring);
   }
@@ -692,8 +749,7 @@
       padding: var(--space-3);
     }
 
-    .subject-actions,
-    .leaderboard-profile-controls {
+    .subject-actions {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       align-items: stretch;
@@ -706,10 +762,6 @@
     .subject-open-link,
     .subject-toggle-button {
       width: 100%;
-    }
-
-    .leaderboard-profile-controls label {
-      justify-content: flex-start;
     }
 
     .quiz-history-shell {
@@ -746,7 +798,7 @@
   <section class="card dashboard-section">
     <div class="section-head">
       <h2 class="section-title">mine fag</h2>
-      <p class="section-subtitle">Åbn fag og se status.</p>
+      <p class="section-subtitle">Åbn fag, se status, og vælg hvilke fag du følger.</p>
     </div>
     {% if subjects_error %}
     <p class="muted">{{ subjects_error }}</p>
@@ -770,8 +822,21 @@
             {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
           </span>
         </div>
-        <div class="subject-actions">
+        <div class="subject-actions is-split">
           <a class="subject-open-link" href="{{ subject.detail_url }}">Åbn fag</a>
+          {% if subject.is_enrolled %}
+          <form method="post" action="{{ subject.unenroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Afmeld</button>
+          </form>
+          {% else %}
+          <form method="post" action="{{ subject.enroll_url }}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{% url 'progress' %}" />
+            <button class="subject-toggle-button" type="submit">Tilmeld</button>
+          </form>
+          {% endif %}
         </div>
       </article>
       {% endfor %}
@@ -806,13 +871,15 @@
       <a class="subject-toggle-button" href="{% url 'progress' %}#scoreboard-indstillinger">Annuller alias-ændring</a>
       {% endif %}
       {% endif %}
-      <div class="leaderboard-profile-controls">
-        <label>
+      <label class="leaderboard-toggle-row">
+        <span class="leaderboard-toggle-copy">
+          <span class="leaderboard-toggle-title">Deltag offentligt</span>
+          <span class="leaderboard-toggle-help">Vis kun alias, placering og gennemførte quizzer på scoreboardet.</span>
+        </span>
+        <span class="leaderboard-toggle-switch" aria-hidden="true"></span>
           <input type="checkbox" name="is_public" value="1" {% if leaderboard_profile.is_public %}checked{% endif %} />
-          Deltag offentligt
-        </label>
-        <button class="subject-toggle-button" type="submit">Gem scoreboard-indstillinger</button>
-      </div>
+      </label>
+      <button class="subject-toggle-button" type="submit">Gem scoreboard-indstillinger</button>
     </form>
 
   </section>
@@ -966,46 +1033,6 @@
   </section>
   {% endif %}
 
-  <section class="card dashboard-section">
-    <div class="section-head">
-      <h2 class="section-title">tilmeld og afmeld fag</h2>
-      <p class="section-subtitle">Administrer hvilke fag du følger.</p>
-    </div>
-    {% if subject_cards %}
-    <div class="subject-grid">
-      {% for subject in subject_cards %}
-      <article class="subject-card">
-        <div>
-          <div class="subject-headline">
-            <h3>{{ subject.title }}</h3>
-          </div>
-          <p class="muted subject-description">{{ subject.description }}</p>
-        </div>
-        <div class="subject-actions">
-          <span class="subject-status-pill {% if subject.is_enrolled %}is-enrolled{% endif %}">
-            {% if subject.is_enrolled %}Tilmeldt{% else %}Ikke tilmeldt{% endif %}
-          </span>
-          {% if subject.is_enrolled %}
-          <form method="post" action="{{ subject.unenroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="subject-toggle-button" type="submit">Afmeld</button>
-          </form>
-          {% else %}
-          <form method="post" action="{{ subject.enroll_url }}">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{% url 'progress' %}" />
-            <button class="subject-toggle-button" type="submit">Tilmeld</button>
-          </form>
-          {% endif %}
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p class="muted">Ingen fag er tilgængelige endnu.</p>
-    {% endif %}
-  </section>
 </div>
 <script>
   (() => {

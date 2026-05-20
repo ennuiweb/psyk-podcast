@@ -196,6 +196,7 @@ python3 notebooklm-podcast-auto/personlighedspsykologi/scripts/sync_episode_ab_r
 ```
 
 - Find stable slide keys in `shows/personlighedspsykologi-en/slides_catalog.json`.
+- Normal lecture runs plan and generate all configured short-form artifacts before `Alle kilder` and full per-source artifacts, so queue-owned audio backlogs spend NotebookLM capacity on short episodes first.
 - To regenerate only one slide podcast, use `--only-slide <slide_key>`. This skips `Alle kilder`, readings, and short-form outputs for that run:
 
 ```bash

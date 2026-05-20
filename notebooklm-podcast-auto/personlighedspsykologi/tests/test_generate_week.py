@@ -1311,6 +1311,36 @@ class GenerateWeekTests(unittest.TestCase):
             ["audio", "infographic"],
         )
 
+    def test_prioritize_short_planned_lines_moves_short_blocks_first(self):
+        mod = _load_module()
+
+        lines = [
+            "META WOULD GENERATE: /tmp/W01.md",
+            "WEEKLY AUDIO (en): /tmp/weekly.mp3",
+            "PROMPT weekly.mp3:",
+            "    weekly prompt",
+            "READING AUDIO (en): /tmp/full.mp3",
+            "SHORT AUDIO (en): /tmp/short.mp3",
+            "PROMPT short.mp3:",
+            "    short prompt",
+            "SLIDE AUDIO (en): /tmp/slide.mp3",
+        ]
+
+        self.assertEqual(
+            mod.prioritize_short_planned_lines(lines),
+            [
+                "META WOULD GENERATE: /tmp/W01.md",
+                "SHORT AUDIO (en): /tmp/short.mp3",
+                "PROMPT short.mp3:",
+                "    short prompt",
+                "WEEKLY AUDIO (en): /tmp/weekly.mp3",
+                "PROMPT weekly.mp3:",
+                "    weekly prompt",
+                "READING AUDIO (en): /tmp/full.mp3",
+                "SLIDE AUDIO (en): /tmp/slide.mp3",
+            ],
+        )
+
     def test_cleanup_disallowed_brief_quiz_outputs_removes_short_quiz_artifacts(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

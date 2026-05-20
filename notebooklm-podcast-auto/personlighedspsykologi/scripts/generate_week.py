@@ -111,6 +111,7 @@ BRIEF_APPLY_TO_VALUES = {
     "readings_and_lecture_slides",
 }
 BRIEF_SUPPORTED_CONTENT_TYPES = {"audio", "infographic", "report"}
+GENERATION_PLAN_LINE_PREFIXES = ("WEEKLY ", "READING ", "SLIDE ", "SHORT ")
 SHORT_PREFIX_GLOBS = ("[[]Short[]]*", "[[]Brief[]]*")
 AUDIO_FORMAT_VALUES = prompting.AUDIO_FORMAT_VALUES
 AUDIO_LENGTH_VALUES = prompting.AUDIO_LENGTH_VALUES
@@ -1532,6 +1533,44 @@ def build_prompt_debug_lines(label: str, prompt: str) -> list[str]:
     return lines
 
 
+def prioritize_short_planned_lines(planned_lines: list[str]) -> list[str]:
+    leading_lines: list[str] = []
+    short_blocks: list[list[str]] = []
+    other_blocks: list[list[str]] = []
+    current_block: list[str] = []
+    current_is_short = False
+
+    def flush_current_block() -> None:
+        nonlocal current_block, current_is_short
+        if not current_block:
+            return
+        if current_is_short:
+            short_blocks.append(current_block)
+        else:
+            other_blocks.append(current_block)
+        current_block = []
+        current_is_short = False
+
+    for line in planned_lines:
+        if line.startswith(GENERATION_PLAN_LINE_PREFIXES):
+            flush_current_block()
+            current_block = [line]
+            current_is_short = line.startswith("SHORT ")
+            continue
+        if current_block:
+            current_block.append(line)
+        else:
+            leading_lines.append(line)
+
+    flush_current_block()
+    ordered_lines = list(leading_lines)
+    for block in short_blocks:
+        ordered_lines.extend(block)
+    for block in other_blocks:
+        ordered_lines.extend(block)
+    return ordered_lines
+
+
 def build_audio_prompt(
     *,
     prompt_type: str,
@@ -2907,6 +2946,7 @@ def main() -> int:
     content_types = parse_content_types(args.content_types)
     brief_types = brief_content_types(content_types)
     only_slide_keys = parse_slide_key_filter(args.only_slide)
+    prioritize_short_outputs = bool(brief_types) and not only_slide_keys
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
     per_cfg = config.get("per_reading", {})
@@ -3647,9 +3687,246 @@ def main() -> int:
 
             if args.dry_run:
                 print(f"## {week_label}")
-                for line in planned_lines:
+                for line in prioritize_short_planned_lines(planned_lines):
                     print(line)
                 continue
+
+            if prioritize_short_outputs:
+                # The queue works at lecture granularity, so short artifacts must run
+                # as their own first pass before the long weekly/per-source artifacts.
+                for source_item in generation_sources:
+                    if (
+                        not review_filter_includes_short_source(review_filter, source_item)
+                        or not should_generate_brief_for_source(source_item, brief_cfg=brief_cfg)
+                    ):
+                        continue
+                    source = source_item.path
+                    base_name = source_item.base_name
+                    title_prefix = brief_cfg.get("title_prefix", "[Short]")
+                    brief_base = f"{title_prefix} {week_label} - {base_name}"
+                    for content_type in brief_types:
+                        brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
+                        for variant in language_variants:
+                            variant_localization, variant_sections = localized_prompt_context_for_variant(
+                                repo_root=repo_root,
+                                prompt_config_path=prompt_config,
+                                variant=variant,
+                                prompt_localization_cfg=prompt_localization_cfg,
+                                localization_cache=localization_cache,
+                                localized_sections_cache=localized_sections_cache,
+                                base_sections=base_localized_sections,
+                            )
+                            variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
+                            variant_exam_focus = variant_sections["exam_focus"]
+                            variant_study_context = variant_sections["study_context"]
+                            variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
+                            variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
+                            variant_meta_prompting = variant_sections["meta_prompting"]
+                            variant_course_context_cfg = variant_sections["course_context"]
+                            variant_brief_cfg = variant_sections["short"]
+                            variant_short_report_cfg = variant_sections["short_report"]
+                            variant_brief_infographic_cfg = variant_sections["short_infographic"]
+                            variant_quiz_cfg = variant_sections["quiz"]
+                            for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
+                                if content_type == "audio":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=variant_course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                        localization=variant_localization,
+                                    )
+                                    instructions = build_audio_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=variant_audio_prompt_strategy,
+                                        exam_focus=variant_exam_focus,
+                                        study_context=variant_study_context,
+                                        prompt_framework=variant_audio_prompt_framework,
+                                        meta_prompting=variant_meta_prompting,
+                                        course_title=course_title,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
+                                        meta_note_overrides=auto_meta_note_overrides,
+                                        custom_prompt=variant_brief_cfg.get("prompt", ""),
+                                        audio_format=variant_brief_cfg.get("format", "deep-dive"),
+                                        audio_length=variant_brief_cfg.get("length", "long"),
+                                        source_item=source_item,
+                                        localization=variant_localization,
+                                    )
+                                    audio_format = variant_brief_cfg.get("format", "deep-dive")
+                                    audio_length = variant_brief_cfg.get("length", "long")
+                                    infographic_orientation = None
+                                    infographic_detail = None
+                                    quiz_quantity_arg = None
+                                    quiz_difficulty_arg = None
+                                    quiz_format_arg = None
+                                    report_format_arg = None
+                                elif content_type == "infographic":
+                                    instructions = ensure_prompt(
+                                        "short_infographic", variant_brief_infographic_cfg.get("prompt", "")
+                                    )
+                                    audio_format = None
+                                    audio_length = None
+                                    infographic_orientation = variant_brief_infographic_cfg.get("orientation")
+                                    infographic_detail = variant_brief_infographic_cfg.get("detail")
+                                    quiz_quantity_arg = None
+                                    quiz_difficulty_arg = None
+                                    quiz_format_arg = None
+                                    report_format_arg = None
+                                elif content_type == "report":
+                                    brief_course_context_note = build_course_context_note(
+                                        course_context_bundle=course_context_bundle,
+                                        course_context_cfg=variant_course_context_cfg,
+                                        lecture_key=week_label,
+                                        prompt_type="short",
+                                        source_item=source_item,
+                                        localization=variant_localization,
+                                    )
+                                    instructions = build_report_prompt(
+                                        prompt_type="short",
+                                        prompt_strategy=variant_report_prompt_strategy,
+                                        course_context_note=brief_course_context_note,
+                                        course_context_heading=variant_course_context_cfg.get("heading"),
+                                        study_context=variant_study_context,
+                                        meta_prompting=variant_meta_prompting,
+                                        meta_note_overrides=auto_meta_note_overrides,
+                                        custom_prompt=variant_short_report_cfg.get("prompt", ""),
+                                        source_item=source_item,
+                                        localization=variant_localization,
+                                    )
+                                    audio_format = None
+                                    audio_length = None
+                                    infographic_orientation = None
+                                    infographic_detail = None
+                                    quiz_quantity_arg = None
+                                    quiz_difficulty_arg = None
+                                    quiz_format_arg = None
+                                    report_format_arg = normalize_report_format(
+                                        variant_short_report_cfg.get("format")
+                                    )
+                                else:
+                                    instructions = ensure_prompt(
+                                        "quiz",
+                                        variant_quiz_cfg.get("prompt", ""),
+                                    )
+                                    audio_format = None
+                                    audio_length = None
+                                    infographic_orientation = None
+                                    infographic_detail = None
+                                    quiz_quantity_arg = quiz_quantity
+                                    quiz_difficulty_arg = quiz_difficulty_value
+                                    quiz_format_arg = quiz_format
+                                    report_format_arg = None
+                                brief_tag = (
+                                    build_output_cfg_tag_token(
+                                        content_type=content_type,
+                                        language=variant["code"],
+                                        instructions=instructions,
+                                        audio_format=audio_format,
+                                        audio_length=audio_length,
+                                        infographic_orientation=infographic_orientation,
+                                        infographic_detail=infographic_detail,
+                                        quiz_quantity=quiz_quantity_arg,
+                                        quiz_difficulty=quiz_difficulty_arg,
+                                        quiz_format=quiz_format_arg,
+                                        report_format=report_format_arg,
+                                        source_count=None,
+                                        hash_len=args.config_tag_len,
+                                    )
+                                    if args.config_tagging
+                                    else None
+                                )
+                                brief_candidate = apply_config_tag(
+                                    apply_path_suffix(brief_output, variant["suffix"]),
+                                    brief_tag,
+                                )
+                                output_path = ensure_unique_output_path(
+                                    brief_candidate,
+                                    auth_label,
+                                )
+                                if not review_filter_includes_output(
+                                    review_filter,
+                                    "short",
+                                    output_path,
+                                ):
+                                    continue
+                                skip, reason = should_skip_generation(output_path, args.skip_existing)
+                                if skip:
+                                    if args.print_skips:
+                                        print(f"Skipping generation ({reason}): {output_path}")
+                                    continue
+                                if args.print_resolved_prompts and content_type == "audio":
+                                    for line in build_prompt_debug_lines(output_path.name, instructions):
+                                        print(line)
+                                exclude_profiles = (
+                                    active_cooldowns(profile_cooldowns)
+                                    if rotation_enabled and args.profile_cooldown > 0
+                                    else []
+                                )
+                                if exclude_profiles and exclude_profiles != last_excluded:
+                                    print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
+                                    last_excluded = exclude_profiles
+                                try:
+                                    run_generate(
+                                        Path(sys.executable),
+                                        generator_script,
+                                        sources_file=None,
+                                        source_path=source,
+                                        notebook_title=apply_suffix(
+                                            f"{course_title} {week_label} [Short] {base_name}",
+                                            variant["title_suffix"],
+                                        ),
+                                        instructions=instructions,
+                                        artifact_type=content_type,
+                                        audio_format=audio_format,
+                                        audio_length=audio_length,
+                                        infographic_orientation=infographic_orientation,
+                                        infographic_detail=infographic_detail,
+                                        quiz_quantity=quiz_quantity_arg,
+                                        quiz_difficulty=quiz_difficulty_arg,
+                                        quiz_format=quiz_format_arg,
+                                        report_format=report_format_arg,
+                                        language=variant["code"],
+                                        output_path=output_path,
+                                        wait=args.wait,
+                                        skip_existing=args.skip_existing,
+                                        source_timeout=args.source_timeout,
+                                        generation_timeout=args.generation_timeout,
+                                        generator_timeout=args.generator_timeout,
+                                        artifact_retries=args.artifact_retries,
+                                        artifact_retry_backoff=args.artifact_retry_backoff,
+                                        storage=args.storage,
+                                        profile=profile_for_run,
+                                        preferred_profile=preferred_profile,
+                                        profile_priority=profile_priority,
+                                        profiles_file=profiles_file_for_run,
+                                        exclude_profiles=exclude_profiles or None,
+                                        rotate_on_rate_limit=args.rotate_on_rate_limit,
+                                        ensure_sources_ready=args.ensure_sources_ready,
+                                        append_profile_to_notebook_title=args.append_profile_to_notebook_title,
+                                        reuse_notebook=True,
+                                    )
+                                except Exception as exc:
+                                    failures.append(f"{output_path}: {exc}")
+                                    continue
+                                else:
+                                    if rotation_enabled:
+                                        preferred_profile = update_preferred_profile(
+                                            output_path, preferred_profile
+                                        )
+                                finally:
+                                    if rotation_enabled and args.profile_cooldown > 0:
+                                        update_profile_cooldowns(
+                                            output_path,
+                                            profile_cooldowns,
+                                            args.profile_cooldown,
+                                            AUTH_COOLDOWN_SECONDS,
+                                        )
+                                    maybe_sleep(args.sleep_between)
+                                request_logs.append(
+                                    output_path.with_suffix(output_path.suffix + ".request.json")
+                                )
 
             if generate_weekly_overview:
                 for content_type in content_types:
@@ -4110,237 +4387,6 @@ def main() -> int:
                                     )
                                 maybe_sleep(args.sleep_between)
                             request_logs.append(output_path.with_suffix(output_path.suffix + ".request.json"))
-
-                if (
-                    not only_slide_keys
-                    and review_filter_includes_short_source(review_filter, source_item)
-                    and should_generate_brief_for_source(source_item, brief_cfg=brief_cfg)
-                ):
-                    title_prefix = brief_cfg.get("title_prefix", "[Short]")
-                    brief_base = f"{title_prefix} {week_label} - {base_name}"
-                    for content_type in brief_types:
-                        brief_output = week_output_dir / f"{brief_base}{output_extension(content_type, quiz_format=quiz_format)}"
-                        for variant in language_variants:
-                            variant_localization, variant_sections = localized_prompt_context_for_variant(
-                                repo_root=repo_root,
-                                prompt_config_path=prompt_config,
-                                variant=variant,
-                                prompt_localization_cfg=prompt_localization_cfg,
-                                localization_cache=localization_cache,
-                                localized_sections_cache=localized_sections_cache,
-                                base_sections=base_localized_sections,
-                            )
-                            variant_audio_prompt_strategy = variant_sections["audio_prompt_strategy"]
-                            variant_exam_focus = variant_sections["exam_focus"]
-                            variant_study_context = variant_sections["study_context"]
-                            variant_audio_prompt_framework = variant_sections["audio_prompt_framework"]
-                            variant_report_prompt_strategy = variant_sections["report_prompt_strategy"]
-                            variant_meta_prompting = variant_sections["meta_prompting"]
-                            variant_course_context_cfg = variant_sections["course_context"]
-                            variant_brief_cfg = variant_sections["short"]
-                            variant_short_report_cfg = variant_sections["short_report"]
-                            variant_brief_infographic_cfg = variant_sections["short_infographic"]
-                            variant_quiz_cfg = variant_sections["quiz"]
-                            for quiz_difficulty_value in quiz_difficulty_values(content_type, quiz_difficulty):
-                                if content_type == "audio":
-                                    brief_course_context_note = build_course_context_note(
-                                        course_context_bundle=course_context_bundle,
-                                        course_context_cfg=variant_course_context_cfg,
-                                        lecture_key=week_label,
-                                        prompt_type="short",
-                                        source_item=source_item,
-                                        localization=variant_localization,
-                                    )
-                                    instructions = build_audio_prompt(
-                                        prompt_type="short",
-                                        prompt_strategy=variant_audio_prompt_strategy,
-                                        exam_focus=variant_exam_focus,
-                                        study_context=variant_study_context,
-                                        prompt_framework=variant_audio_prompt_framework,
-                                        meta_prompting=variant_meta_prompting,
-                                        course_title=course_title,
-                                        course_context_note=brief_course_context_note,
-                                        course_context_heading=variant_course_context_cfg.get("heading"),
-                                        meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=variant_brief_cfg.get("prompt", ""),
-                                        audio_format=variant_brief_cfg.get("format", "deep-dive"),
-                                        audio_length=variant_brief_cfg.get("length", "long"),
-                                        source_item=source_item,
-                                        localization=variant_localization,
-                                    )
-                                    audio_format = variant_brief_cfg.get("format", "deep-dive")
-                                    audio_length = variant_brief_cfg.get("length", "long")
-                                    infographic_orientation = None
-                                    infographic_detail = None
-                                    quiz_quantity_arg = None
-                                    quiz_difficulty_arg = None
-                                    quiz_format_arg = None
-                                    report_format_arg = None
-                                elif content_type == "infographic":
-                                    instructions = ensure_prompt(
-                                        "short_infographic", variant_brief_infographic_cfg.get("prompt", "")
-                                    )
-                                    audio_format = None
-                                    audio_length = None
-                                    infographic_orientation = variant_brief_infographic_cfg.get("orientation")
-                                    infographic_detail = variant_brief_infographic_cfg.get("detail")
-                                    quiz_quantity_arg = None
-                                    quiz_difficulty_arg = None
-                                    quiz_format_arg = None
-                                    report_format_arg = None
-                                elif content_type == "report":
-                                    brief_course_context_note = build_course_context_note(
-                                        course_context_bundle=course_context_bundle,
-                                        course_context_cfg=variant_course_context_cfg,
-                                        lecture_key=week_label,
-                                        prompt_type="short",
-                                        source_item=source_item,
-                                        localization=variant_localization,
-                                    )
-                                    instructions = build_report_prompt(
-                                        prompt_type="short",
-                                        prompt_strategy=variant_report_prompt_strategy,
-                                        course_context_note=brief_course_context_note,
-                                        course_context_heading=variant_course_context_cfg.get("heading"),
-                                        study_context=variant_study_context,
-                                        meta_prompting=variant_meta_prompting,
-                                        meta_note_overrides=auto_meta_note_overrides,
-                                        custom_prompt=variant_short_report_cfg.get("prompt", ""),
-                                        source_item=source_item,
-                                        localization=variant_localization,
-                                    )
-                                    audio_format = None
-                                    audio_length = None
-                                    infographic_orientation = None
-                                    infographic_detail = None
-                                    quiz_quantity_arg = None
-                                    quiz_difficulty_arg = None
-                                    quiz_format_arg = None
-                                    report_format_arg = normalize_report_format(
-                                        variant_short_report_cfg.get("format")
-                                    )
-                                else:
-                                    instructions = ensure_prompt(
-                                        "quiz",
-                                        variant_quiz_cfg.get("prompt", ""),
-                                    )
-                                    audio_format = None
-                                    audio_length = None
-                                    infographic_orientation = None
-                                    infographic_detail = None
-                                    quiz_quantity_arg = quiz_quantity
-                                    quiz_difficulty_arg = quiz_difficulty_value
-                                    quiz_format_arg = quiz_format
-                                    report_format_arg = None
-                                brief_tag = (
-                                    build_output_cfg_tag_token(
-                                        content_type=content_type,
-                                        language=variant["code"],
-                                        instructions=instructions,
-                                        audio_format=audio_format,
-                                        audio_length=audio_length,
-                                        infographic_orientation=infographic_orientation,
-                                        infographic_detail=infographic_detail,
-                                        quiz_quantity=quiz_quantity_arg,
-                                        quiz_difficulty=quiz_difficulty_arg,
-                                        quiz_format=quiz_format_arg,
-                                        report_format=report_format_arg,
-                                        source_count=None,
-                                        hash_len=args.config_tag_len,
-                                    )
-                                    if args.config_tagging
-                                    else None
-                                )
-                                brief_candidate = apply_config_tag(
-                                    apply_path_suffix(brief_output, variant["suffix"]),
-                                    brief_tag,
-                                )
-                                output_path = ensure_unique_output_path(
-                                    brief_candidate,
-                                    auth_label,
-                                )
-                                if not review_filter_includes_output(
-                                    review_filter,
-                                    "short",
-                                    output_path,
-                                ):
-                                    continue
-                                skip, reason = should_skip_generation(output_path, args.skip_existing)
-                                if skip:
-                                    if args.print_skips:
-                                        print(f"Skipping generation ({reason}): {output_path}")
-                                    continue
-                                if args.print_resolved_prompts and content_type == "audio":
-                                    for line in build_prompt_debug_lines(output_path.name, instructions):
-                                        print(line)
-                                exclude_profiles = (
-                                    active_cooldowns(profile_cooldowns)
-                                    if rotation_enabled and args.profile_cooldown > 0
-                                    else []
-                                )
-                                if exclude_profiles and exclude_profiles != last_excluded:
-                                    print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
-                                    last_excluded = exclude_profiles
-                                try:
-                                    run_generate(
-                                        Path(sys.executable),
-                                        generator_script,
-                                        sources_file=None,
-                                        source_path=source,
-                                        notebook_title=apply_suffix(
-                                            f"{course_title} {week_label} [Short] {base_name}",
-                                            variant["title_suffix"],
-                                        ),
-                                        instructions=instructions,
-                                        artifact_type=content_type,
-                                        audio_format=audio_format,
-                                        audio_length=audio_length,
-                                        infographic_orientation=infographic_orientation,
-                                        infographic_detail=infographic_detail,
-                                        quiz_quantity=quiz_quantity_arg,
-                                        quiz_difficulty=quiz_difficulty_arg,
-                                        quiz_format=quiz_format_arg,
-                                        report_format=report_format_arg,
-                                        language=variant["code"],
-                                        output_path=output_path,
-                                        wait=args.wait,
-                                        skip_existing=args.skip_existing,
-                                        source_timeout=args.source_timeout,
-                                        generation_timeout=args.generation_timeout,
-                                        generator_timeout=args.generator_timeout,
-                                        artifact_retries=args.artifact_retries,
-                                        artifact_retry_backoff=args.artifact_retry_backoff,
-                                        storage=args.storage,
-                                        profile=profile_for_run,
-                                        preferred_profile=preferred_profile,
-                                        profile_priority=profile_priority,
-                                        profiles_file=profiles_file_for_run,
-                                        exclude_profiles=exclude_profiles or None,
-                                        rotate_on_rate_limit=args.rotate_on_rate_limit,
-                                        ensure_sources_ready=args.ensure_sources_ready,
-                                        append_profile_to_notebook_title=args.append_profile_to_notebook_title,
-                                        reuse_notebook=True,
-                                    )
-                                except Exception as exc:
-                                    failures.append(f"{output_path}: {exc}")
-                                    continue
-                                else:
-                                    if rotation_enabled:
-                                        preferred_profile = update_preferred_profile(
-                                            output_path, preferred_profile
-                                        )
-                                finally:
-                                    if rotation_enabled and args.profile_cooldown > 0:
-                                        update_profile_cooldowns(
-                                            output_path,
-                                            profile_cooldowns,
-                                            args.profile_cooldown,
-                                            AUTH_COOLDOWN_SECONDS,
-                                        )
-                                    maybe_sleep(args.sleep_between)
-                                request_logs.append(
-                                    output_path.with_suffix(output_path.suffix + ".request.json")
-                                )
 
     if only_slide_keys:
         missing_slide_keys = sorted(only_slide_keys - matched_only_slide_keys)

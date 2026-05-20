@@ -232,7 +232,7 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
 ```
 
-Refresh existing scheduled retry windows after changing retry policy:
+Refresh existing scheduled retry windows after changing retry policy. This also moves already re-queued retry backlog back into `retry_scheduled` when the previous failure history is classifiable:
 
 ```bash
 cd /opt/podcasts
@@ -299,7 +299,7 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py retry-ready --show-slug bioneuro
 ```
 
-4. If retry policy changed while jobs were already `retry_scheduled`, extend active retry windows without claiming work:
+4. If retry policy changed while jobs were already `retry_scheduled` or already re-queued from an older retry window, extend active retry windows without claiming work:
 
 ```bash
 cd /opt/podcasts

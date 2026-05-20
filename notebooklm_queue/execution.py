@@ -262,46 +262,64 @@ def refresh_retry_schedules(
     actor: str = "system",
 ) -> list[dict[str, Any]]:
     refreshed: list[dict[str, Any]] = []
-    for entry in store.list_jobs(show_slug=show_slug, state=STATE_RETRY_SCHEDULED):
-        error_text = _retryable_error_text_for_job(entry)
-        failure_mode = classify_failure_mode(error_text)
-        if failure_mode is None or not failure_mode.timed_retry:
-            continue
-        retry_at = _derived_retry_at(
-            explicit_retry_at=None,
-            error_text=error_text,
-            attempt_count=max(int(entry.get("attempt_count") or 0), 1),
-            failure_mode_code=failure_mode.code,
-        )
-        if retry_at is None:
-            continue
-        existing_retry_at = parse_utcish_iso(str(entry.get("next_retry_at") or "").strip())
-        refreshed_retry_at = parse_utcish_iso(retry_at)
-        if existing_retry_at and refreshed_retry_at and existing_retry_at >= refreshed_retry_at:
-            continue
-        retry_delay_seconds = _retry_delay_seconds(
-            attempt_count=max(int(entry.get("attempt_count") or 0), 1),
-            error_text=error_text,
-        )
-        details: dict[str, Any] = {
-            "failure_mode": failure_mode.code,
-            "refreshed_retry_schedule": True,
-        }
-        if retry_delay_seconds is not None:
-            details["retry_delay_seconds"] = retry_delay_seconds
-        refreshed.append(
-            store.transition_job(
+    for current_state in (STATE_RETRY_SCHEDULED, STATE_QUEUED):
+        for entry in store.list_jobs(show_slug=show_slug, state=current_state):
+            job = store.load_job(show_slug=show_slug, job_id=str(entry["job_id"]))
+            error_text = _retryable_error_text_for_job(job)
+            failure_mode = classify_failure_mode(error_text)
+            if failure_mode is None or not failure_mode.timed_retry:
+                continue
+            retry_at = _derived_retry_at(
+                explicit_retry_at=None,
+                error_text=error_text,
+                attempt_count=max(int(job.get("attempt_count") or 0), 1),
+                failure_mode_code=failure_mode.code,
+            )
+            if retry_at is None:
+                continue
+            existing_retry_at = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
+            refreshed_retry_at = parse_utcish_iso(retry_at)
+            if (
+                current_state == STATE_RETRY_SCHEDULED
+                and existing_retry_at
+                and refreshed_retry_at
+                and existing_retry_at >= refreshed_retry_at
+            ):
+                continue
+            retry_delay_seconds = _retry_delay_seconds(
+                attempt_count=max(int(job.get("attempt_count") or 0), 1),
+                error_text=error_text,
+            )
+            details: dict[str, Any] = {
+                "failure_mode": failure_mode.code,
+                "previous_state": current_state,
+                "refreshed_retry_schedule": True,
+            }
+            if retry_delay_seconds is not None:
+                details["retry_delay_seconds"] = retry_delay_seconds
+            updated = store.transition_job(
                 show_slug=show_slug,
-                job_id=str(entry["job_id"]),
+                job_id=str(job["job_id"]),
                 state=STATE_RETRY_SCHEDULED,
                 actor=actor,
                 note="Refreshed scheduled retry using current failure-mode retry policy.",
                 error=error_text,
                 retry_at=retry_at,
-                expected_states={STATE_RETRY_SCHEDULED},
+                expected_states={current_state},
                 details=details,
             )
-        )
+            refreshed.append(
+                {
+                    "job_id": str(updated["job_id"]),
+                    "show_slug": show_slug,
+                    "lecture_key": str(updated.get("lecture_key") or ""),
+                    "previous_state": current_state,
+                    "state": STATE_RETRY_SCHEDULED,
+                    "failure_mode": failure_mode.code,
+                    "retry_delay_seconds": retry_delay_seconds,
+                    "next_retry_at": retry_at,
+                }
+            )
     return refreshed
 
 

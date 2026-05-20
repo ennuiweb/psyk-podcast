@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime, timedelta
 import json
 import stat
 import sys
@@ -19,7 +19,12 @@ from notebooklm_queue.constants import (
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
 )
-from notebooklm_queue.execution import ExecutionOptions, _retry_delay_seconds, execute_job
+from notebooklm_queue.execution import (
+    ExecutionOptions,
+    _retry_delay_seconds,
+    execute_job,
+    refresh_retry_schedules,
+)
 from notebooklm_queue.failure_modes import FAILURE_MODE_AUTH_STALE, classify_failure_mode
 from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.store import QueueStore
@@ -383,6 +388,38 @@ def test_execute_job_progressively_backs_off_repeated_retryable_failures(
     assert len(delays) == len(expected)
     for actual, target in zip(delays, expected, strict=True):
         assert target - 1 <= actual <= target
+
+
+def test_refresh_retry_schedules_reschedules_requeued_retry_backlog(tmp_path: Path) -> None:
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+    job_id = str(job["job_id"])
+    due_at = (datetime.now(tz=UTC) - timedelta(seconds=1)).replace(microsecond=0).isoformat()
+    store.transition_job(
+        show_slug="bioneuro",
+        job_id=job_id,
+        state=STATE_RETRY_SCHEDULED,
+        note="Generate command failed.",
+        error="No usable profiles found after filtering missing/cooldown entries.",
+        retry_at=due_at,
+        expected_states={STATE_QUEUED},
+        increment_attempt=True,
+    )
+    store.retry_ready_jobs(show_slug="bioneuro")
+
+    refreshed = refresh_retry_schedules(
+        store=store,
+        show_slug="bioneuro",
+        actor="test",
+    )
+
+    assert refreshed
+    assert refreshed[0]["previous_state"] == STATE_QUEUED
+    assert refreshed[0]["state"] == STATE_RETRY_SCHEDULED
+    assert refreshed[0]["failure_mode"] == "profile_cooldown"
+    updated = store.load_job(show_slug="bioneuro", job_id=job_id)
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
 
 
 def test_execute_job_caps_retry_backoff_for_repeated_failures(

@@ -25,6 +25,7 @@ BIONEURO_FLASHCARD_URL = "https://freudd.dk/subjects/bioneuro/cards/biologisk-ps
 BIONEURO_FLASHCARD_ANNOUNCEMENT_BODY = """Hej freudd.dk-bruger
 
 Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her:
+
 https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi
 
 Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på
@@ -116,9 +117,11 @@ def bioneuro_flashcard_announcement_content_for_unsubscribe_url(*, unsubscribe_u
     html_body = "\n".join(
         [
             "<p>Hej freudd.dk-bruger</p>",
+            "<p>Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her:</p>",
             (
-                "<p>Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her:<br>"
-                f'<a href="{escape(BIONEURO_FLASHCARD_URL)}">{escape(BIONEURO_FLASHCARD_URL)}</a></p>'
+                "<p>"
+                f'<a href="{escape(BIONEURO_FLASHCARD_URL)}">{escape(BIONEURO_FLASHCARD_URL)}</a>'
+                "</p>"
             ),
             "<p>Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på</p>",
             "<p>God læselyst!</p>",

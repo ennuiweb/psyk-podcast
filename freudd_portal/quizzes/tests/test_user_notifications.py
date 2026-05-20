@@ -210,6 +210,7 @@ class NewUserNotificationTests(TestCase):
         message = mail.outbox[0]
         self.assertEqual(message.subject, BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT)
         self.assertEqual(message.to, ["new-user@example.com"])
+        self.assertIn("op her:\n\nhttps://freudd.dk/subjects/bioneuro/cards/", message.body)
         self.assertIn("Afmeld mails:", message.body)
         self.assertIn("https://freudd.dk/email/unsubscribe/", message.body)
 
@@ -218,6 +219,7 @@ class NewUserNotificationTests(TestCase):
         html_body = getattr(html_part, "content", html_part[0])
         mime_type = getattr(html_part, "mimetype", html_part[1])
         self.assertEqual(mime_type, "text/html")
+        self.assertIn("op her:</p>\n<p><a href=", html_body)
         self.assertIn('href="https://freudd.dk/email/unsubscribe/', html_body)
         self.assertIn(">Afmeld mails</a>", html_body)
 
@@ -265,6 +267,8 @@ class NewUserNotificationTests(TestCase):
         self.assertEqual(kwargs["json"]["from"], "noreply@test.freudd.dk")
         self.assertEqual(kwargs["json"]["to"], ["new-user@example.com"])
         self.assertEqual(kwargs["json"]["subject"], BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT)
+        self.assertIn("op her:\n\nhttps://freudd.dk/subjects/bioneuro/cards/", kwargs["json"]["text"])
+        self.assertIn("op her:</p>\n<p><a href=", kwargs["json"]["html"])
         self.assertIn("https://freudd.dk/email/unsubscribe/", kwargs["json"]["text"])
         self.assertIn('href="https://freudd.dk/email/unsubscribe/', kwargs["json"]["html"])
         self.assertEqual(kwargs["timeout"], 5)

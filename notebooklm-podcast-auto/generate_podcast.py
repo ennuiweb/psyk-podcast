@@ -20,6 +20,7 @@ if NOTEBOOKLM_SRC.is_dir() and str(NOTEBOOKLM_SRC) not in sys.path:
 PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
 PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 FAIL_IF_ALL_PROFILES_EXCLUDED_ENV_VAR = "NOTEBOOKLM_FAIL_IF_ALL_PROFILES_EXCLUDED"
+PROFILE_RATE_LIMIT_COOLDOWN_ENV_VAR = "NOTEBOOKLM_PROFILE_RATE_LIMIT_COOLDOWN_SECONDS"
 
 from notebooklm import NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path
@@ -40,6 +41,18 @@ RATE_LIMIT_TOKENS = (
     "resource_exhausted",
     "too many requests",
 )
+
+
+def _int_env(name: str, default: int) -> int:
+    raw = str(os.environ.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
 AUTH_TOKENS = (
     "authentication expired",
     "auth expired",
@@ -49,7 +62,7 @@ AUTH_TOKENS = (
     "run 'notebooklm login'",
     "redirected to",
 )
-RATE_LIMIT_COOLDOWN_SECONDS = 300
+RATE_LIMIT_COOLDOWN_SECONDS = _int_env(PROFILE_RATE_LIMIT_COOLDOWN_ENV_VAR, 3600)
 AUTH_COOLDOWN_SECONDS = 3600
 PROFILE_ERROR_COOLDOWN_SECONDS = 3600
 NOTEBOOK_CAPACITY_TOKENS = (

@@ -25,6 +25,22 @@ def _load_module():
 
 
 class GeneratePodcastTests(unittest.TestCase):
+    def test_rate_limit_profile_cooldown_defaults_to_one_hour(self):
+        with patch.dict(os.environ, {}, clear=True):
+            mod = _load_module()
+
+        self.assertEqual(mod.RATE_LIMIT_COOLDOWN_SECONDS, 3600)
+
+    def test_rate_limit_profile_cooldown_is_env_configurable(self):
+        with patch.dict(
+            os.environ,
+            {"NOTEBOOKLM_PROFILE_RATE_LIMIT_COOLDOWN_SECONDS": "7200"},
+            clear=True,
+        ):
+            mod = _load_module()
+
+        self.assertEqual(mod.RATE_LIMIT_COOLDOWN_SECONDS, 7200)
+
     def test_report_request_payload_includes_report_format(self):
         mod = _load_module()
         args = SimpleNamespace(

@@ -57,6 +57,7 @@ NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS=3600
 NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS=3600
 NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER=2
 NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_MAX_SECONDS=21600
+NOTEBOOKLM_PROFILE_RATE_LIMIT_COOLDOWN_SECONDS=3600
 NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
 NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
 NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
@@ -127,7 +128,7 @@ Notes:
 - Generic `failed_retryable` backlog still exits nonzero for manual intervention. Only explicit operator-owned blocked states such as `blocked_auth_stale` produce the clean degraded `blocked_backlog_remaining` stop reason.
 - NotebookLM source-ingestion stalls now also map to `retry_scheduled`: if generation ends with `Sources not ready after waiting`, the queue schedules a retry instead of leaving the lecture in a blocking failed state.
 - `drain-show` now performs a repair sweep for stale `failed_retryable` queue records whose stored error text matches a retryable pattern. That lets older backlog created before classifier changes recover into timed retries automatically instead of forcing manual intervention.
-- Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Transient NotebookLM failures still default to `15m` base, `1.5x` multiplier, capped at `60m`; rate-limit and profile-cooldown failures now default to `60m` base, `2x` multiplier, capped at `6h`.
+- Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Transient NotebookLM failures still default to `15m` base, `1.5x` multiplier, capped at `60m`; rate-limit and profile-cooldown failures now default to `60m` base, `2x` multiplier, capped at `6h`. The per-profile NotebookLM cooldown written by the generator also defaults to `60m`, so other queued jobs respect the shared account pool instead of retrying after the old five-minute local cooldown.
 - Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move queue records between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
 - Queue-owned metadata rebuild is now bundle-aware: audio-only publish bundles do not block on quiz sync or quiz-asset validation, but quiz bundles still fail closed if refreshed `quiz_links.json` or `content_manifest` quiz assets are missing.
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.

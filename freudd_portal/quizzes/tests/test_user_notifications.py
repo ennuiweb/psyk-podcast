@@ -10,8 +10,10 @@ from django.test import TestCase, override_settings
 
 from quizzes.activity_notifications import notify_new_user_created
 from quizzes.announcement_emails import (
+    BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT,
     announcement_email_recipient_users,
     make_announcement_unsubscribe_token,
+    send_bioneuro_flashcard_announcement_email,
 )
 from quizzes.models import UserNotificationPreference
 
@@ -191,6 +193,32 @@ class NewUserNotificationTests(TestCase):
         recipients = list(announcement_email_recipient_users())
 
         self.assertEqual(recipients, [first])
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_bioneuro_announcement_email_uses_clickable_html_unsubscribe_link(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        sent = send_bioneuro_flashcard_announcement_email(user=user, base_url="https://freudd.dk")
+
+        self.assertTrue(sent)
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.subject, BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT)
+        self.assertEqual(message.to, ["new-user@example.com"])
+        self.assertIn("Afmeld fremtidige mails fra freudd.dk:", message.body)
+        self.assertIn("https://freudd.dk/email/unsubscribe/", message.body)
+
+        self.assertEqual(len(message.alternatives), 1)
+        html_part = message.alternatives[0]
+        html_body = getattr(html_part, "content", html_part[0])
+        mime_type = getattr(html_part, "mimetype", html_part[1])
+        self.assertEqual(mime_type, "text/html")
+        self.assertIn('href="https://freudd.dk/email/unsubscribe/', html_body)
+        self.assertIn(">Afmeld fremtidige mails fra freudd.dk</a>", html_body)
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(

@@ -13,7 +13,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Rollout compatibility: old `QUIZ_PORTAL_*` env names are still accepted temporarily.
 - Freudd notifications use one recipient channel via `FREUDD_NEW_USER_NOTIFY_EMAIL`; when set, signup and activity alerts share the same destination and transport path.
 - Activity notifications: optional server-side email alerts can be enabled for signup, quiz completion, subject enrollment, reading/podcast marks, and `Send til ChatGPT` launches; reading-open notifications are intentionally disabled by default.
-- User-facing announcement emails must include a per-user unsubscribe link from `quizzes.announcement_emails`; `UserNotificationPreference.announcement_emails_enabled` controls future recipient eligibility without disabling internal activity notifications.
+- User-facing announcement emails must include a per-user unsubscribe link from `quizzes.announcement_emails`; `UserNotificationPreference.announcement_emails_enabled` controls future recipient eligibility without disabling internal activity notifications. The bioneuro flashcard announcement is sent as a multipart plain-text + HTML email via `send_bioneuro_flashcard_announcement --send`, with a clickable unsubscribe text link in the HTML part.
 - Locale stack is active (`LocaleMiddleware` + `LOCALE_PATHS`) but currently constrained to Danish in `LANGUAGES`.
 - Quiz access: `/q/<id>.html` is public and renders a JSON-driven quiz UI (NotebookLM-like flow).
 - Raw quiz HTML: served publicly via `/q/raw/<id>.html`.

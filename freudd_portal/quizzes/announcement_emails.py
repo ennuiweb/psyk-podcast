@@ -3,15 +3,28 @@ from __future__ import annotations
 from dataclasses import dataclass
 from urllib.parse import urljoin
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core import signing
+from django.core.mail import EmailMultiAlternatives
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.html import escape
 
 from .models import UserNotificationPreference
 
 
 ANNOUNCEMENT_UNSUBSCRIBE_SALT = "freudd.announcement-emails.unsubscribe"
+BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT = "Nye bioneuro-flashcards på freudd.dk"
+BIONEURO_FLASHCARD_URL = "https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi"
+BIONEURO_FLASHCARD_ANNOUNCEMENT_BODY = """Hej freudd.dk-bruger
+
+Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her: https://freudd.dk/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi
+
+Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på
+
+God læselyst!"""
+ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT = "Afmeld fremtidige mails fra freudd.dk"
 
 
 @dataclass(frozen=True)
@@ -19,6 +32,14 @@ class AnnouncementUnsubscribeResult:
     ok: bool
     already_unsubscribed: bool = False
     user_id: int | None = None
+
+
+@dataclass(frozen=True)
+class AnnouncementEmailContent:
+    subject: str
+    plain_body: str
+    html_body: str
+    unsubscribe_url: str
 
 
 def normalize_email(value: object) -> str:
@@ -75,6 +96,60 @@ def announcement_unsubscribe_path(user: object) -> str:
 
 def announcement_unsubscribe_url(*, user: object, base_url: str) -> str:
     return urljoin(f"{str(base_url).rstrip('/')}/", announcement_unsubscribe_path(user).lstrip("/"))
+
+
+def bioneuro_flashcard_announcement_content(*, user: object, base_url: str) -> AnnouncementEmailContent:
+    unsubscribe_url = announcement_unsubscribe_url(user=user, base_url=base_url)
+    plain_body = (
+        f"{BIONEURO_FLASHCARD_ANNOUNCEMENT_BODY}\n\n"
+        f"{ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT}:\n{unsubscribe_url}"
+    )
+    html_body = "\n".join(
+        [
+            "<p>Hej freudd.dk-bruger</p>",
+            (
+                "<p>Hurtig servicemeddelelse: Der er lagt over 600 flashcards op til bioneuro op her: "
+                f'<a href="{escape(BIONEURO_FLASHCARD_URL)}">{escape(BIONEURO_FLASHCARD_URL)}</a></p>'
+            ),
+            "<p>Man kan øve alle kort på én gang eller vælge et specifikt emne at fokusere på</p>",
+            "<p>God læselyst!</p>",
+            (
+                "<p>"
+                f'<a href="{escape(unsubscribe_url)}">{escape(ANNOUNCEMENT_UNSUBSCRIBE_LINK_TEXT)}</a>'
+                "</p>"
+            ),
+        ]
+    )
+    return AnnouncementEmailContent(
+        subject=BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT,
+        plain_body=plain_body,
+        html_body=html_body,
+        unsubscribe_url=unsubscribe_url,
+    )
+
+
+def send_bioneuro_flashcard_announcement_email(
+    *,
+    user: object,
+    base_url: str,
+    fail_silently: bool = False,
+) -> bool:
+    if not announcement_emails_enabled(user):
+        return False
+
+    recipient_email = normalize_email(getattr(user, "email", ""))
+    if not recipient_email:
+        return False
+
+    content = bioneuro_flashcard_announcement_content(user=user, base_url=base_url)
+    message = EmailMultiAlternatives(
+        subject=content.subject,
+        body=content.plain_body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[recipient_email],
+    )
+    message.attach_alternative(content.html_body, "text/html")
+    return bool(message.send(fail_silently=fail_silently))
 
 
 def unsubscribe_announcement_token(token: str) -> AnnouncementUnsubscribeResult:

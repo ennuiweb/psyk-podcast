@@ -10,6 +10,9 @@
     gap: clamp(var(--space-4), 2.2vw, var(--space-6));
     padding: clamp(var(--space-4), 3vw, 34px);
     overflow: clip;
+    border-color: color-mix(in srgb, var(--border) 66%, transparent);
+    background: color-mix(in srgb, var(--surface) 76%, transparent);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--muted) 8%, transparent);
   }
 
   .flashcard-head {
@@ -74,7 +77,7 @@
 
   .flashcard-stage {
     display: grid;
-    gap: clamp(var(--space-4), 2.2vw, var(--space-6));
+    gap: clamp(var(--space-3), 1.5vw, var(--space-5));
     padding-top: 0;
     min-width: 0;
   }
@@ -93,9 +96,9 @@
     grid-template-columns: minmax(240px, 1fr) auto;
     align-items: center;
     gap: var(--space-3);
-    margin-top: calc(var(--space-2) * -1);
-    padding-top: var(--space-4);
-    border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    margin-top: calc(var(--space-1) * -1);
+    padding-top: var(--space-3);
+    border-top: 1px solid color-mix(in srgb, var(--border) 54%, transparent);
   }
 
   .flashcard-scope-control {
@@ -119,9 +122,9 @@
   .flashcard-category-select {
     min-height: 34px;
     width: 100%;
-    border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 68%, transparent);
+    background: color-mix(in srgb, var(--surface) 38%, transparent);
     color: var(--text-subtle-2);
     padding: 0 32px 0 var(--space-3);
     font: inherit;
@@ -134,22 +137,22 @@
     gap: 3px;
     flex-wrap: wrap;
     padding: 3px;
-    border: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 48%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 36%, transparent);
+    background: transparent;
   }
 
   .flashcard-filter-button {
-    min-height: 30px;
+    min-height: 28px;
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
     color: var(--text-subtle-2);
-    padding: 0 9px;
+    padding: 0 8px;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 800;
     white-space: nowrap;
     cursor: pointer;
@@ -163,23 +166,22 @@
   }
 
   .flashcard-filter-button.is-active {
-    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-    background: var(--surface);
-    color: var(--info-ink-strong);
-    box-shadow: 0 1px 3px color-mix(in srgb, var(--border) 42%, transparent);
+    border-color: color-mix(in srgb, var(--border-strong) 62%, transparent);
+    background: color-mix(in srgb, var(--surface) 58%, transparent);
+    color: var(--text-subtle-2);
   }
 
   .flashcard-filter-count {
-    min-width: 1.65em;
-    min-height: 1.65em;
+    min-width: 1.5em;
+    min-height: 1.5em;
     border-radius: var(--radius-pill);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: color-mix(in srgb, var(--border) 48%, transparent);
+    background: color-mix(in srgb, var(--border) 34%, transparent);
     color: var(--text-subtle);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.66rem;
     padding: 0 var(--space-1);
   }
 
@@ -223,30 +225,26 @@
     margin: 0;
     grid-column: 3;
     grid-row: 1;
-    min-height: 26px;
-    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
-    border-radius: var(--radius-pill);
-    background: var(--surface);
-    color: var(--text-subtle-2);
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--muted);
     display: inline-flex;
     align-items: center;
-    padding: 0 10px;
-    font-size: 0.76rem;
+    padding: 0;
+    font-size: 0.72rem;
     font-weight: 800;
     text-align: center;
     white-space: nowrap;
   }
 
   .flashcard-card-state.is-answered {
-    border-color: color-mix(in srgb, var(--success) 38%, var(--border));
-    background: color-mix(in srgb, var(--success-bg, var(--info-bg)) 62%, var(--surface));
-    color: var(--success, var(--info-ink-strong));
+    color: color-mix(in srgb, var(--success) 82%, var(--muted));
   }
 
   .flashcard-card-state.is-unanswered {
-    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
-    background: var(--info-bg);
-    color: var(--info-ink-strong);
+    color: var(--muted);
   }
 
   .flashcard-progress {
@@ -275,8 +273,8 @@
     justify-self: center;
     width: min(100%, var(--flashcard-study-width));
     display: grid;
-    gap: clamp(var(--space-3), 1.8vw, var(--space-5));
-    padding: clamp(var(--space-3), 2.2vw, var(--space-5)) 0 0;
+    gap: clamp(var(--space-2), 1.2vw, var(--space-4));
+    padding: 0;
   }
 
   .flashcard-card-kicker-row {
@@ -289,9 +287,9 @@
 
   .flashcard-card-label {
     margin: 0;
-    color: var(--text-subtle-2);
+    color: color-mix(in srgb, var(--muted) 82%, transparent);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     line-height: 1;
@@ -303,9 +301,9 @@
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.9rem);
-    line-height: 1.04;
-    font-weight: 700;
+    font-size: clamp(1.82rem, 4.35vw, 3.38rem);
+    line-height: 1.06;
+    font-weight: 600;
     overflow-wrap: anywhere;
     text-wrap: balance;
   }
@@ -318,16 +316,16 @@
 
   .flashcard-answer-toggle {
     width: fit-content;
-    min-height: 38px;
-    border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    min-height: 32px;
+    border: 1px solid transparent;
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 82%, transparent);
-    color: var(--text-subtle-2);
+    background: transparent;
+    color: var(--muted);
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
-    padding: 0 var(--space-3);
-    font-size: 0.94rem;
+    padding: 0 var(--space-2);
+    font-size: 0.86rem;
     font-weight: 800;
     cursor: pointer;
     transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
@@ -336,13 +334,13 @@
   .flashcard-answer-toggle:hover,
   .flashcard-answer-toggle:focus-visible,
   .flashcard-answer-toggle.is-open {
-    border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
-    background: color-mix(in srgb, var(--accent-soft) 56%, transparent);
+    border-color: color-mix(in srgb, var(--border) 72%, transparent);
+    background: color-mix(in srgb, var(--surface) 52%, transparent);
     color: var(--accent-strong);
   }
 
   .flashcard-answer-toggle .material-symbols-outlined {
-    font-size: 1.08rem;
+    font-size: 1rem;
     line-height: 1;
   }
 
@@ -430,16 +428,16 @@
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
     gap: var(--space-3);
-    margin-top: var(--space-2);
-    padding-top: var(--space-5);
-    border-top: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    margin-top: 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid color-mix(in srgb, var(--border) 58%, transparent);
   }
 
   .flashcard-show-answer {
     justify-self: end;
     gap: var(--space-1);
     min-width: min(100%, 180px);
-    min-height: 54px;
+    min-height: 50px;
   }
 
   .flashcard-secondary {
@@ -596,7 +594,7 @@
 
     .flashcard-stage {
       padding-top: 0;
-      gap: var(--space-5);
+      gap: var(--space-4);
     }
 
     .flashcard-study-nav {
@@ -664,8 +662,9 @@
     }
 
     .flashcard-answer-toggle {
-      width: 100%;
-      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      justify-content: flex-start;
     }
 
     .flashcard-actions {

@@ -291,12 +291,18 @@ class QueueStore:
     def summarize_jobs(self, *, show_slug: str | None = None) -> dict[str, Any]:
         jobs = self.list_jobs(show_slug=show_slug)
         counter = Counter()
+        terminal_count = 0
         for job in jobs:
-            counter[str(job.get("state") or "unknown")] += 1
+            state = str(job.get("state") or "unknown")
+            counter[state] += 1
+            if state in TERMINAL_STATES:
+                terminal_count += 1
         return {
             "root": str(self.root),
             "show_slug": show_slug,
             "job_count": len(jobs),
+            "active_job_count": len(jobs) - terminal_count,
+            "terminal_job_count": terminal_count,
             "state_counts": dict(sorted(counter.items())),
         }
 

@@ -24,12 +24,20 @@ from .constants import (
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
 )
-from .failure_modes import FAILURE_MODE_AUTH_STALE, classify_failure_mode
+from .failure_modes import (
+    FAILURE_MODE_AUTH_STALE,
+    FAILURE_MODE_PROFILE_COOLDOWN,
+    FAILURE_MODE_RATE_LIMIT,
+    classify_failure_mode,
+)
 from .processes import run_phase_command
 from .store import QueueStore, parse_utcish_iso, utc_now_iso
-DEFAULT_RATE_LIMIT_RETRY_SECONDS = 900
+DEFAULT_TRANSIENT_RETRY_SECONDS = 900
+DEFAULT_TRANSIENT_RETRY_BACKOFF_MAX_SECONDS = 3600
+DEFAULT_RATE_LIMIT_RETRY_SECONDS = 3600
+DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER = 2.0
+DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MAX_SECONDS = 6 * 60 * 60
 DEFAULT_RETRY_BACKOFF_MULTIPLIER = 1.5
-DEFAULT_RETRY_BACKOFF_MAX_SECONDS = 3600
 DEFAULT_EXECUTION_PHASE_TIMEOUT_SECONDS = int(
     os.environ.get("NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS") or "7200"
 )
@@ -57,39 +65,104 @@ class ExecutionOptions:
     stale_request_seconds: int = DEFAULT_STALE_REQUEST_SECONDS
 
 
-def _int_env(name: str, default: int) -> int:
-    raw = str(os.environ.get(name) or "").strip()
-    if not raw:
-        return default
-    try:
-        return int(raw)
-    except ValueError:
-        return default
+def _first_int_env(names: tuple[str, ...], default: int) -> int:
+    for name in names:
+        raw = str(os.environ.get(name) or "").strip()
+        if not raw:
+            continue
+        try:
+            return int(raw)
+        except ValueError:
+            continue
+    return default
 
 
-def _float_env(name: str, default: float) -> float:
-    raw = str(os.environ.get(name) or "").strip()
-    if not raw:
-        return default
-    try:
-        return float(raw)
-    except ValueError:
-        return default
+def _first_float_env(names: tuple[str, ...], default: float) -> float:
+    for name in names:
+        raw = str(os.environ.get(name) or "").strip()
+        if not raw:
+            continue
+        try:
+            return float(raw)
+        except ValueError:
+            continue
+    return default
+
+
+def _retry_policy_values(failure_mode_code: str) -> tuple[int, float, int]:
+    if failure_mode_code == FAILURE_MODE_PROFILE_COOLDOWN.code:
+        base_seconds = _first_int_env(
+            (
+                "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_SECONDS",
+                "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS",
+            ),
+            DEFAULT_RATE_LIMIT_RETRY_SECONDS,
+        )
+        multiplier = _first_float_env(
+            (
+                "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_BACKOFF_MULTIPLIER",
+                "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER",
+                "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER",
+            ),
+            DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER,
+        )
+        max_seconds = _first_int_env(
+            (
+                "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_MAX_SECONDS",
+                "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_MAX_SECONDS",
+            ),
+            DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MAX_SECONDS,
+        )
+    elif failure_mode_code == FAILURE_MODE_RATE_LIMIT.code:
+        base_seconds = _first_int_env(
+            ("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS",),
+            DEFAULT_RATE_LIMIT_RETRY_SECONDS,
+        )
+        multiplier = _first_float_env(
+            (
+                "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER",
+                "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER",
+            ),
+            DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER,
+        )
+        max_seconds = _first_int_env(
+            ("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_MAX_SECONDS",),
+            DEFAULT_RATE_LIMIT_RETRY_BACKOFF_MAX_SECONDS,
+        )
+    else:
+        base_seconds = _first_int_env(
+            (
+                "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_SECONDS",
+                "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS",
+            ),
+            DEFAULT_TRANSIENT_RETRY_SECONDS,
+        )
+        multiplier = _first_float_env(
+            (
+                "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_BACKOFF_MULTIPLIER",
+                "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER",
+            ),
+            DEFAULT_RETRY_BACKOFF_MULTIPLIER,
+        )
+        max_seconds = _first_int_env(
+            (
+                "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_MAX_SECONDS",
+                "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS",
+            ),
+            DEFAULT_TRANSIENT_RETRY_BACKOFF_MAX_SECONDS,
+        )
+    base_seconds = max(base_seconds, 1)
+    multiplier = max(multiplier, 1.0)
+    max_seconds = max(max_seconds, base_seconds)
+    return base_seconds, multiplier, max_seconds
+
 
 def _retry_delay_seconds(*, attempt_count: int, error_text: str | None) -> int | None:
     failure_mode = classify_failure_mode(error_text)
     if failure_mode is None or not failure_mode.timed_retry:
         return None
 
-    base_seconds = max(_int_env("NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS", DEFAULT_RATE_LIMIT_RETRY_SECONDS), 1)
-    multiplier = max(
-        _float_env("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER", DEFAULT_RETRY_BACKOFF_MULTIPLIER),
-        1.0,
-    )
-    max_seconds = max(
-        _int_env("NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS", DEFAULT_RETRY_BACKOFF_MAX_SECONDS),
-        base_seconds,
-    )
+    base_seconds, multiplier, max_seconds = _retry_policy_values(failure_mode.code)
     exponent = max(int(attempt_count) - 1, 0)
     delay_seconds = ceil(base_seconds * (multiplier**exponent))
     return min(max(delay_seconds, base_seconds), max_seconds)
@@ -180,6 +253,56 @@ def repair_retryable_failures(
             )
         )
     return repaired
+
+
+def refresh_retry_schedules(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    actor: str = "system",
+) -> list[dict[str, Any]]:
+    refreshed: list[dict[str, Any]] = []
+    for entry in store.list_jobs(show_slug=show_slug, state=STATE_RETRY_SCHEDULED):
+        error_text = _retryable_error_text_for_job(entry)
+        failure_mode = classify_failure_mode(error_text)
+        if failure_mode is None or not failure_mode.timed_retry:
+            continue
+        retry_at = _derived_retry_at(
+            explicit_retry_at=None,
+            error_text=error_text,
+            attempt_count=max(int(entry.get("attempt_count") or 0), 1),
+            failure_mode_code=failure_mode.code,
+        )
+        if retry_at is None:
+            continue
+        existing_retry_at = parse_utcish_iso(str(entry.get("next_retry_at") or "").strip())
+        refreshed_retry_at = parse_utcish_iso(retry_at)
+        if existing_retry_at and refreshed_retry_at and existing_retry_at >= refreshed_retry_at:
+            continue
+        retry_delay_seconds = _retry_delay_seconds(
+            attempt_count=max(int(entry.get("attempt_count") or 0), 1),
+            error_text=error_text,
+        )
+        details: dict[str, Any] = {
+            "failure_mode": failure_mode.code,
+            "refreshed_retry_schedule": True,
+        }
+        if retry_delay_seconds is not None:
+            details["retry_delay_seconds"] = retry_delay_seconds
+        refreshed.append(
+            store.transition_job(
+                show_slug=show_slug,
+                job_id=str(entry["job_id"]),
+                state=STATE_RETRY_SCHEDULED,
+                actor=actor,
+                note="Refreshed scheduled retry using current failure-mode retry policy.",
+                error=error_text,
+                retry_at=retry_at,
+                expected_states={STATE_RETRY_SCHEDULED},
+                details=details,
+            )
+        )
+    return refreshed
 
 
 def _phase_primary_error_text(phase: dict[str, Any], fallback: str) -> str:
@@ -942,10 +1065,17 @@ def _finalize_failure(
 ) -> dict[str, Any]:
     failed_phase = manifest["phases"][-1]
     error_text = _phase_primary_error_text(failed_phase, note)
-    failure_mode = classify_failure_mode(_phase_retry_detection_text(failed_phase, note))
+    retry_detection_text = _phase_retry_detection_text(failed_phase, note)
+    failure_mode = classify_failure_mode(retry_detection_text)
+    retry_delay_seconds = None
+    if not options.retry_at:
+        retry_delay_seconds = _retry_delay_seconds(
+            attempt_count=max(int(job.get("attempt_count") or 0), 1),
+            error_text=retry_detection_text,
+        )
     retry_at = _derived_retry_at(
         explicit_retry_at=options.retry_at,
-        error_text=_phase_retry_detection_text(failed_phase, note),
+        error_text=retry_detection_text,
         attempt_count=max(int(job.get("attempt_count") or 0), 1),
         failure_mode_code=failure_mode.code if failure_mode is not None else None,
     )
@@ -958,6 +1088,12 @@ def _finalize_failure(
     manifest["completed_at"] = utc_now_iso()
     manifest["final_state"] = effective_failed_state
     manifest["last_error"] = error_text
+    if failure_mode is not None:
+        manifest["failure_mode"] = failure_mode.code
+    if retry_at:
+        manifest["next_retry_at"] = retry_at
+    if retry_delay_seconds is not None:
+        manifest["retry_delay_seconds"] = retry_delay_seconds
     manifest_path = store.save_run_manifest(
         show_slug=show_slug,
         job_id=str(job["job_id"]),
@@ -987,6 +1123,12 @@ def _finalize_failure(
             "last_failure_at": manifest["completed_at"],
         }
     )
+    if failure_mode is not None:
+        execution["last_failure_mode"] = failure_mode.code
+    if retry_at:
+        execution["next_retry_at"] = retry_at
+    if retry_delay_seconds is not None:
+        execution["retry_delay_seconds"] = retry_delay_seconds
     alert_payload = emit_failure_alert(
         store=store,
         show_slug=show_slug,

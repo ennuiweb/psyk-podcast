@@ -370,6 +370,40 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual([meta["profile"] for _, meta in candidates], ["freudagsbaren", "baduljen"])
         self.assertNotIn("auto-selecting", stdout.getvalue())
 
+    def test_strict_exclude_profiles_fails_when_every_profile_is_excluded(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_root = Path(tmpdir)
+            profiles_path = tmp_root / "profiles.json"
+            first_storage = tmp_root / "default.json"
+            second_storage = tmp_root / "oskarvedel.json"
+            first_storage.write_text("{}", encoding="utf-8")
+            second_storage.write_text("{}", encoding="utf-8")
+            profiles_path.write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "default": str(first_storage),
+                            "oskarvedel": str(second_storage),
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            args = SimpleNamespace(
+                storage=None,
+                profile=None,
+                rotate_on_rate_limit=True,
+                profiles_file=str(profiles_path),
+                profile_priority="default,oskarvedel",
+                preferred_profile=None,
+                exclude_profiles="default,oskarvedel",
+                fail_if_all_profiles_excluded=True,
+            )
+
+            with self.assertRaisesRegex(ValueError, "No usable profiles found"):
+                mod._build_auth_candidates(args)
+
     def test_resolve_notebook_keeps_original_error_when_no_owned_notebooks_exist(self):
         mod = _load_module()
 

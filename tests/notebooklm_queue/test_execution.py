@@ -19,7 +19,7 @@ from notebooklm_queue.constants import (
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
 )
-from notebooklm_queue.execution import ExecutionOptions, execute_job
+from notebooklm_queue.execution import ExecutionOptions, _retry_delay_seconds, execute_job
 from notebooklm_queue.failure_modes import FAILURE_MODE_AUTH_STALE, classify_failure_mode
 from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.store import QueueStore
@@ -60,6 +60,34 @@ def _make_repo_root(tmp_path: Path) -> Path:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("{}", encoding="utf-8")
     return repo_root
+
+
+def test_retry_policy_uses_longer_defaults_for_rate_limit_than_transient(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    for name in (
+        "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS",
+        "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER",
+        "NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_MAX_SECONDS",
+        "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_SECONDS",
+        "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_BACKOFF_MULTIPLIER",
+        "NOTEBOOKLM_QUEUE_PROFILE_COOLDOWN_RETRY_MAX_SECONDS",
+        "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_SECONDS",
+        "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_BACKOFF_MULTIPLIER",
+        "NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_MAX_SECONDS",
+        "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER",
+        "NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS",
+    ):
+        monkeypatch.delenv(name, raising=False)
+
+    assert _retry_delay_seconds(attempt_count=1, error_text="API rate limit exceeded") == 3600
+    assert (
+        _retry_delay_seconds(
+            attempt_count=1,
+            error_text="RPC CREATE_ARTIFACT failed after 0.362s",
+        )
+        == 900
+    )
 
 
 def _week_output_dir(repo_root: Path, lecture_key: str = "W1L1") -> Path:

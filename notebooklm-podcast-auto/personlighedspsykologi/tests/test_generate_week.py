@@ -1548,6 +1548,69 @@ class GenerateWeekTests(unittest.TestCase):
                     reuse_notebook=False,
                 )
 
+    def test_run_generate_passes_strict_profile_exclusion_flag(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_path = Path(tmpdir) / "episode.mp3"
+            captured_cmd = None
+
+            def fake_run(cmd, **_kwargs):
+                nonlocal captured_cmd
+                captured_cmd = cmd
+                return mock.Mock(returncode=0)
+
+            with mock.patch.object(mod.subprocess, "run", side_effect=fake_run):
+                mod.run_generate(
+                    Path("/usr/bin/python3"),
+                    Path("/tmp/generate_podcast.py"),
+                    sources_file=None,
+                    source_path=Path("/tmp/source.pdf"),
+                    notebook_title="Notebook",
+                    instructions="Prompt",
+                    artifact_type="audio",
+                    audio_format="deep-dive",
+                    audio_length="long",
+                    infographic_orientation=None,
+                    infographic_detail=None,
+                    language="en",
+                    quiz_quantity=None,
+                    quiz_difficulty=None,
+                    quiz_format=None,
+                    output_path=output_path,
+                    wait=False,
+                    skip_existing=True,
+                    source_timeout=None,
+                    generation_timeout=None,
+                    generator_timeout=1,
+                    artifact_retries=1,
+                    artifact_retry_backoff=5.0,
+                    storage=None,
+                    profile=None,
+                    preferred_profile=None,
+                    profile_priority="default,oskarvedel",
+                    profiles_file="/tmp/profiles.json",
+                    exclude_profiles=["default", "oskarvedel"],
+                    rotate_on_rate_limit=True,
+                    ensure_sources_ready=True,
+                    append_profile_to_notebook_title=True,
+                    reuse_notebook=False,
+                    fail_if_all_profiles_excluded=True,
+                )
+
+        self.assertIsNotNone(captured_cmd)
+        self.assertIn("--fail-if-all-profiles-excluded", captured_cmd)
+
+    def test_generation_exclude_profiles_raises_when_rotation_pool_is_exhausted(self):
+        mod = _load_module()
+        cooldowns = {"default": 2000.0, "oskarvedel": 2000.0}
+
+        with mock.patch.object(mod.time, "time", return_value=1000.0):
+            with self.assertRaisesRegex(mod.ProfileCooldownExhausted, "No usable profiles found"):
+                mod.generation_exclude_profiles_or_raise(
+                    profile_pool=["default", "oskarvedel"],
+                    cooldowns=cooldowns,
+                )
+
     def test_migrate_legacy_weekly_overview_outputs_renames_files(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

@@ -2191,6 +2191,20 @@ def active_cooldowns(cooldowns: dict[str, float]) -> list[str]:
     return sorted([profile for profile, until in cooldowns.items() if until > now])
 
 
+class ProfileCooldownExhausted(RuntimeError):
+    """Raised when every configured rotation profile is cooling in this run."""
+
+
+def profile_cooldown_exhausted_message(*, profile_pool: list[str], excluded_profiles: list[str]) -> str:
+    profiles = ", ".join(profile_pool) if profile_pool else "none"
+    cooling = ", ".join(excluded_profiles) if excluded_profiles else "none"
+    return (
+        "No usable profiles found after filtering missing/cooldown entries: "
+        "all configured profiles are excluded/cooling. "
+        f"Profiles: {profiles}. Cooling/excluded: {cooling}."
+    )
+
+
 def maybe_sleep(seconds: float | None) -> None:
     if seconds and seconds > 0:
         time.sleep(seconds)
@@ -2335,6 +2349,54 @@ def load_profiles(path: Path) -> dict[str, str]:
     return profiles
 
 
+def parse_profile_priority_names(value: str | None) -> list[str]:
+    names: list[str] = []
+    for raw in str(value or "").split(","):
+        name = raw.strip()
+        if name and name not in names:
+            names.append(name)
+    return names
+
+
+def resolve_rotation_profile_pool(
+    *,
+    profiles_file: str | None,
+    profile_priority: str | None,
+) -> list[str]:
+    if not profiles_file:
+        return []
+    profiles_path = Path(profiles_file).expanduser()
+    if not profiles_path.exists():
+        return []
+    profiles = load_profiles(profiles_path)
+    existing_profiles = {
+        name for name, storage_path in profiles.items() if Path(storage_path).expanduser().exists()
+    }
+    priority_names = [
+        name for name in parse_profile_priority_names(profile_priority) if name in existing_profiles
+    ]
+    remaining_names = [
+        name for name in profiles.keys() if name in existing_profiles and name not in priority_names
+    ]
+    return priority_names + remaining_names
+
+
+def generation_exclude_profiles_or_raise(
+    *,
+    profile_pool: list[str],
+    cooldowns: dict[str, float],
+) -> list[str]:
+    excluded_profiles = active_cooldowns(cooldowns)
+    if profile_pool and set(profile_pool).issubset(set(excluded_profiles)):
+        raise ProfileCooldownExhausted(
+            profile_cooldown_exhausted_message(
+                profile_pool=profile_pool,
+                excluded_profiles=excluded_profiles,
+            )
+        )
+    return excluded_profiles
+
+
 def auto_profile_from_profiles(
     repo_root: Path, args: argparse.Namespace
 ) -> tuple[str | None, Path | None]:
@@ -2403,6 +2465,13 @@ def request_log_has_artifact(output_path: Path) -> bool:
     if not payload:
         return False
     return bool(str(payload.get("artifact_id") or "").strip())
+
+
+def finish_with_failures(failures: list[str]) -> int:
+    print("\nFailures:")
+    for item in failures:
+        print(f"- {item}")
+    return 2
 
 
 def legacy_weekly_overview_aliases(output_path: Path) -> list[Path]:
@@ -2600,6 +2669,7 @@ def run_generate(
     append_profile_to_notebook_title: bool,
     reuse_notebook: bool,
     source_paths: list[Path] | None = None,
+    fail_if_all_profiles_excluded: bool = False,
 ) -> None:
     cmd = [
         str(python),
@@ -2668,6 +2738,8 @@ def run_generate(
         cmd.extend(["--profiles-file", profiles_file])
     if exclude_profiles:
         cmd.extend(["--exclude-profiles", ",".join(exclude_profiles)])
+    if fail_if_all_profiles_excluded:
+        cmd.append("--fail-if-all-profiles-excluded")
     if not rotate_on_rate_limit:
         cmd.append("--no-rotate-on-rate-limit")
     if not ensure_sources_ready:
@@ -3029,6 +3101,14 @@ def main() -> int:
     last_excluded: list[str] = []
     preferred_profile: str | None = None
     profile_priority = args.profile_priority or str(os.environ.get(PROFILE_PRIORITY_ENV_VAR) or "").strip() or None
+    rotation_profile_pool = (
+        resolve_rotation_profile_pool(
+            profiles_file=profiles_file_for_run,
+            profile_priority=profile_priority,
+        )
+        if rotation_enabled and args.profile_cooldown > 0
+        else []
+    )
     total_sources_read = 0
     total_missing_outputs = 0
     matched_only_slide_keys: set[str] = set()
@@ -3859,11 +3939,18 @@ def main() -> int:
                                 if args.print_resolved_prompts and content_type == "audio":
                                     for line in build_prompt_debug_lines(output_path.name, instructions):
                                         print(line)
-                                exclude_profiles = (
-                                    active_cooldowns(profile_cooldowns)
-                                    if rotation_enabled and args.profile_cooldown > 0
-                                    else []
-                                )
+                                try:
+                                    exclude_profiles = (
+                                        generation_exclude_profiles_or_raise(
+                                            profile_pool=rotation_profile_pool,
+                                            cooldowns=profile_cooldowns,
+                                        )
+                                        if rotation_enabled and args.profile_cooldown > 0
+                                        else []
+                                    )
+                                except ProfileCooldownExhausted as exc:
+                                    failures.append(f"{output_path}: {exc}")
+                                    return finish_with_failures(failures)
                                 if exclude_profiles and exclude_profiles != last_excluded:
                                     print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
                                     last_excluded = exclude_profiles
@@ -3906,6 +3993,7 @@ def main() -> int:
                                         ensure_sources_ready=args.ensure_sources_ready,
                                         append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                                         reuse_notebook=True,
+                                        fail_if_all_profiles_excluded=rotation_enabled,
                                     )
                                 except Exception as exc:
                                     failures.append(f"{output_path}: {exc}")
@@ -4086,11 +4174,18 @@ def main() -> int:
                             if args.print_resolved_prompts and content_type == "audio":
                                 for line in build_prompt_debug_lines(output_path.name, instructions):
                                     print(line)
-                            exclude_profiles = (
-                                active_cooldowns(profile_cooldowns)
-                                if rotation_enabled and args.profile_cooldown > 0
-                                else []
-                            )
+                            try:
+                                exclude_profiles = (
+                                    generation_exclude_profiles_or_raise(
+                                        profile_pool=rotation_profile_pool,
+                                        cooldowns=profile_cooldowns,
+                                    )
+                                    if rotation_enabled and args.profile_cooldown > 0
+                                    else []
+                                )
+                            except ProfileCooldownExhausted as exc:
+                                failures.append(f"{output_path}: {exc}")
+                                return finish_with_failures(failures)
                             if exclude_profiles and exclude_profiles != last_excluded:
                                 print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
                                 last_excluded = exclude_profiles
@@ -4134,6 +4229,7 @@ def main() -> int:
                                     ensure_sources_ready=args.ensure_sources_ready,
                                     append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                                     reuse_notebook=False,
+                                    fail_if_all_profiles_excluded=rotation_enabled,
                                 )
                             except Exception as exc:
                                 failures.append(f"{output_path}: {exc}")
@@ -4321,11 +4417,18 @@ def main() -> int:
                             if args.print_resolved_prompts and content_type == "audio":
                                 for line in build_prompt_debug_lines(output_path.name, instructions):
                                     print(line)
-                            exclude_profiles = (
-                                active_cooldowns(profile_cooldowns)
-                                if rotation_enabled and args.profile_cooldown > 0
-                                else []
-                            )
+                            try:
+                                exclude_profiles = (
+                                    generation_exclude_profiles_or_raise(
+                                        profile_pool=rotation_profile_pool,
+                                        cooldowns=profile_cooldowns,
+                                    )
+                                    if rotation_enabled and args.profile_cooldown > 0
+                                    else []
+                                )
+                            except ProfileCooldownExhausted as exc:
+                                failures.append(f"{output_path}: {exc}")
+                                return finish_with_failures(failures)
                             if exclude_profiles and exclude_profiles != last_excluded:
                                 print(f"Cooling profiles this run: {', '.join(exclude_profiles)}")
                                 last_excluded = exclude_profiles
@@ -4368,6 +4471,7 @@ def main() -> int:
                                     ensure_sources_ready=args.ensure_sources_ready,
                                     append_profile_to_notebook_title=args.append_profile_to_notebook_title,
                                     reuse_notebook=True,
+                                    fail_if_all_profiles_excluded=rotation_enabled,
                                 )
                             except Exception as exc:
                                 failures.append(f"{output_path}: {exc}")
@@ -4435,10 +4539,7 @@ def main() -> int:
         )
 
     if failures:
-        print("\nFailures:")
-        for item in failures:
-            print(f"- {item}")
-        return 2
+        return finish_with_failures(failures)
 
     return 0
 

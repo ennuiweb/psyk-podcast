@@ -28,6 +28,7 @@ RATE_LIMIT_ERROR_TOKENS = (
 
 PROFILE_COOLDOWN_ERROR_TOKENS = (
     "no usable profiles found after filtering missing/cooldown entries",
+    "all configured profiles are excluded/cooling",
     "is on cooldown",
 )
 

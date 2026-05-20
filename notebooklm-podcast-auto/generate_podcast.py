@@ -19,6 +19,7 @@ if NOTEBOOKLM_SRC.is_dir() and str(NOTEBOOKLM_SRC) not in sys.path:
 
 PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
 PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
+FAIL_IF_ALL_PROFILES_EXCLUDED_ENV_VAR = "NOTEBOOKLM_FAIL_IF_ALL_PROFILES_EXCLUDED"
 
 from notebooklm import NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path
@@ -470,6 +471,17 @@ def _parse_profile_list(value: str | None) -> set[str]:
     return {item.strip() for item in value.split(",") if item.strip()}
 
 
+def _strict_all_profiles_excluded(args: argparse.Namespace) -> bool:
+    if bool(getattr(args, "fail_if_all_profiles_excluded", False)):
+        return True
+    return str(os.environ.get(FAIL_IF_ALL_PROFILES_EXCLUDED_ENV_VAR) or "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def _default_auth_candidates() -> list[tuple[str | None, dict]]:
     if os.environ.get("NOTEBOOKLM_AUTH_JSON"):
         return [
@@ -573,6 +585,11 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
             if preferred in exclude_profiles:
                 preferred = None
         else:
+            if _strict_all_profiles_excluded(args):
+                raise ValueError(
+                    "No usable profiles found after filtering missing/cooldown entries: "
+                    "all configured profiles are excluded/cooling."
+                )
             print("Warning: all profiles excluded; ignoring --exclude-profiles.")
 
     now = time.time()
@@ -1727,6 +1744,14 @@ def main() -> int:
     parser.add_argument(
         "--exclude-profiles",
         help="Comma-separated profile names to skip when rotating.",
+    )
+    parser.add_argument(
+        "--fail-if-all-profiles-excluded",
+        action="store_true",
+        help=(
+            "Fail instead of ignoring --exclude-profiles when the exclusion list "
+            "covers every configured profile. Intended for queue automation."
+        ),
     )
     parser.add_argument(
         "--no-rotate-on-rate-limit",

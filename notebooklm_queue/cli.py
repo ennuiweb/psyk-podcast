@@ -10,7 +10,7 @@ from typing import Any
 from .constants import DEFAULT_STORAGE_ROOT, STATE_GENERATING, STATE_QUEUED
 from .downstream import DownstreamOptions, sync_downstream_publication
 from .discovery import discover_show_jobs, enqueue_discovered_jobs
-from .execution import ExecutionOptions, execute_job
+from .execution import ExecutionOptions, execute_job, refresh_retry_schedules
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
 from .orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
@@ -89,6 +89,13 @@ def build_parser() -> argparse.ArgumentParser:
     retry = subparsers.add_parser("retry-ready", help="Re-queue retry-scheduled jobs whose retry window has arrived.")
     retry.add_argument("--show-slug")
     retry.add_argument("--limit", type=int)
+
+    refresh_retries = subparsers.add_parser(
+        "refresh-retry-schedules",
+        help="Extend active retry-scheduled jobs using the current failure-mode retry policy.",
+    )
+    refresh_retries.add_argument("--show-slug", required=True)
+    refresh_retries.add_argument("--actor", default="operator")
 
     reconcile = subparsers.add_parser("reconcile", help="Rebuild queue indexes from job files.")
     reconcile.add_argument("--show-slug")
@@ -275,6 +282,16 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "retry-ready":
         _print_json(store.retry_ready_jobs(show_slug=args.show_slug, limit=args.limit))
+        return 0
+
+    if args.command == "refresh-retry-schedules":
+        _print_json(
+            refresh_retry_schedules(
+                store=store,
+                show_slug=args.show_slug,
+                actor=args.actor,
+            )
+        )
         return 0
 
     if args.command == "reconcile":

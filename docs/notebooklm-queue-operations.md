@@ -51,9 +51,12 @@ NOTEBOOKLM_QUEUE_DOWNSTREAM_POLL_SECONDS=10
 NOTEBOOKLM_QUEUE_EXECUTION_PHASE_TIMEOUT_SECONDS=7200
 NOTEBOOKLM_QUEUE_ARTIFACT_WAIT_TIMEOUT_SECONDS=60
 NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS=60
-NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS=900
+NOTEBOOKLM_QUEUE_TRANSIENT_RETRY_SECONDS=900
 NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MULTIPLIER=1.5
 NOTEBOOKLM_QUEUE_RETRY_BACKOFF_MAX_SECONDS=3600
+NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_SECONDS=3600
+NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_BACKOFF_MULTIPLIER=2
+NOTEBOOKLM_QUEUE_RATE_LIMIT_RETRY_MAX_SECONDS=21600
 NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
 NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
 NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
@@ -115,6 +118,7 @@ Notes:
 - NotebookLM execution is guarded by a global queue lock named `__global__-notebooklm-capacity`, so two show workers cannot concurrently claim generation work against the same profile pool.
 - Hosted queue workers should use `NOTEBOOKLM_QUEUE_MAX_STAGE_RUNS=1` unless there is a deliberate maintenance reason to drain multiple stages in one service invocation. This keeps timer-triggered work bounded and lets profile capacity recover between passes.
 - Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
+- Queue-owned Personlighedspsykologi generation uses strict profile exclusion: once every configured rotation profile is cooling inside a lecture run, `generate_week.py` stops before the next NotebookLM call and `generate_podcast.py` treats an all-profile `--exclude-profiles` set as a hard automation error.
 - Queue discovery now dead-letters stale non-terminal queue records for the same
   show, subject, lecture, and content types when the current config hash
   supersedes them. This also covers stale records whose lectures are already
@@ -123,7 +127,7 @@ Notes:
 - Generic `failed_retryable` backlog still exits nonzero for manual intervention. Only explicit operator-owned blocked states such as `blocked_auth_stale` produce the clean degraded `blocked_backlog_remaining` stop reason.
 - NotebookLM source-ingestion stalls now also map to `retry_scheduled`: if generation ends with `Sources not ready after waiting`, the queue schedules a retry instead of leaving the lecture in a blocking failed state.
 - `drain-show` now performs a repair sweep for stale `failed_retryable` queue records whose stored error text matches a retryable pattern. That lets older backlog created before classifier changes recover into timed retries automatically instead of forcing manual intervention.
-- Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Default progression is `15m` base, `1.5x` multiplier, capped at `60m`.
+- Queue-level retry windows now back off progressively for repeated NotebookLM cooldown, rate-limit, and transient RPC failures instead of reusing a flat retry delay forever. Transient NotebookLM failures still default to `15m` base, `1.5x` multiplier, capped at `60m`; rate-limit and profile-cooldown failures now default to `60m` base, `2x` multiplier, capped at `6h`.
 - Queue-owned generate phases no longer run NotebookLM with `--wait`. They stop after durable `.request.json` logs exist, then bounded download polls move queue records between `downloading`, `waiting_for_artifact`, and `awaiting_publish`.
 - Queue-owned metadata rebuild is now bundle-aware: audio-only publish bundles do not block on quiz sync or quiz-asset validation, but quiz bundles still fail closed if refreshed `quiz_links.json` or `content_manifest` quiz assets are missing.
 - For `personlighedspsykologi-en`, audio-only bundles still bypass the manual-summary and slide-brief portal gates, but they now rebuild `content_manifest.json` too, so queue-owned audio publishes can flow into Freudd without waiting for a later quiz or infographic bundle.
@@ -227,6 +231,13 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
 ```
 
+Refresh existing scheduled retry windows after changing retry policy:
+
+```bash
+cd /opt/podcasts
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-retry-schedules --show-slug bioneuro
+```
+
 Inspect profile capacity without claiming queue jobs:
 
 ```bash
@@ -287,13 +298,20 @@ cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py retry-ready --show-slug bioneuro
 ```
 
-4. Replay one full cycle after fixing env or auth:
+4. If retry policy changed while jobs were already `retry_scheduled`, extend active retry windows without claiming work:
+
+```bash
+cd /opt/podcasts
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-retry-schedules --show-slug bioneuro
+```
+
+5. Replay one full cycle after fixing env or auth:
 
 ```bash
 sudo systemctl start podcasts-notebooklm-queue@bioneuro.service
 ```
 
-5. For a specific stage recovery, use the stage entrypoints directly:
+6. For a specific stage recovery, use the stage entrypoints directly:
 
 ```bash
 cd /opt/podcasts

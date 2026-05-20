@@ -153,6 +153,38 @@ def test_main_profile_status_reports_capacity_without_failing(tmp_path: Path, mo
     assert printed == [{"configured": True, "has_capacity": False, "reason": "no_usable_profiles"}]
 
 
+def test_main_refresh_retry_schedules_dispatches(tmp_path: Path, monkeypatch) -> None:
+    calls: list[dict] = []
+    printed: list[list[dict]] = []
+
+    def fake_refresh_retry_schedules(**kwargs):
+        calls.append(kwargs)
+        return [{"job_id": "job-1", "state": "retry_scheduled"}]
+
+    monkeypatch.setattr(
+        "notebooklm_queue.cli.refresh_retry_schedules",
+        fake_refresh_retry_schedules,
+    )
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: printed.append(payload))
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "refresh-retry-schedules",
+            "--show-slug",
+            "personlighedspsykologi-en",
+            "--actor",
+            "test",
+        ]
+    )
+
+    assert result == 0
+    assert calls[0]["show_slug"] == "personlighedspsykologi-en"
+    assert calls[0]["actor"] == "test"
+    assert printed == [[{"job_id": "job-1", "state": "retry_scheduled"}]]
+
+
 def test_main_serve_show_keeps_manual_intervention_nonzero(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setattr(
         "notebooklm_queue.cli.serve_show_queue",

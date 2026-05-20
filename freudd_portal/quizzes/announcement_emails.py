@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import logging
+import os
 from dataclasses import dataclass
 from urllib.parse import urljoin
 
+import requests
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core import signing
@@ -13,6 +16,8 @@ from django.utils.html import escape
 
 from .models import UserNotificationPreference
 
+
+logger = logging.getLogger(__name__)
 
 ANNOUNCEMENT_UNSUBSCRIBE_SALT = "freudd.announcement-emails.unsubscribe"
 BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT = "Flashcards til bioneuro"
@@ -144,6 +149,9 @@ def _send_announcement_content(
     recipient_email: str,
     fail_silently: bool,
 ) -> bool:
+    if os.environ.get("FREUDD_RESEND_API_KEY", "").strip():
+        return _send_announcement_content_via_resend(content=content, recipient_email=recipient_email)
+
     message = EmailMultiAlternatives(
         subject=content.subject,
         body=content.plain_body,
@@ -152,6 +160,37 @@ def _send_announcement_content(
     )
     message.attach_alternative(content.html_body, "text/html")
     return bool(message.send(fail_silently=fail_silently))
+
+
+def _send_announcement_content_via_resend(*, content: AnnouncementEmailContent, recipient_email: str) -> bool:
+    resend_api_key = os.environ.get("FREUDD_RESEND_API_KEY", "").strip()
+    resend_api_url = os.environ.get("FREUDD_RESEND_API_URL", "https://api.resend.com/emails").strip()
+    try:
+        resend_timeout_seconds = int(os.environ.get("FREUDD_RESEND_TIMEOUT_SECONDS", "10"))
+    except ValueError:
+        resend_timeout_seconds = 10
+
+    try:
+        response = requests.post(
+            resend_api_url,
+            headers={
+                "Authorization": f"Bearer {resend_api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "from": settings.DEFAULT_FROM_EMAIL,
+                "to": [recipient_email],
+                "subject": content.subject,
+                "text": content.plain_body,
+                "html": content.html_body,
+            },
+            timeout=resend_timeout_seconds,
+        )
+        response.raise_for_status()
+        return True
+    except requests.RequestException:
+        logger.exception("Resend delivery failed for Freudd announcement email.")
+        return False
 
 
 def send_bioneuro_flashcard_announcement_email(

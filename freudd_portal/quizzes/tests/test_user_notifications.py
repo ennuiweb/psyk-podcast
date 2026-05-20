@@ -234,6 +234,42 @@ class NewUserNotificationTests(TestCase):
         self.assertEqual(message.to, ["oskarvedel@proton.me"])
         self.assertIn("https://freudd.dk/email/unsubscribe/test-preview-link", message.body)
 
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    @patch.dict(
+        "os.environ",
+        {
+            "FREUDD_RESEND_API_KEY": "re_test_key",
+            "FREUDD_RESEND_API_URL": "https://api.resend.com/emails",
+            "FREUDD_RESEND_TIMEOUT_SECONDS": "5",
+        },
+        clear=False,
+    )
+    @patch("quizzes.announcement_emails.requests.post")
+    def test_bioneuro_announcement_email_uses_resend_api_with_html(self, post_mock: Mock) -> None:
+        response = Mock()
+        response.raise_for_status.return_value = None
+        post_mock.return_value = response
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        sent = send_bioneuro_flashcard_announcement_email(user=user, base_url="https://freudd.dk")
+
+        self.assertTrue(sent)
+        post_mock.assert_called_once()
+        args, kwargs = post_mock.call_args
+        self.assertEqual(args[0], "https://api.resend.com/emails")
+        self.assertEqual(kwargs["headers"]["Authorization"], "Bearer re_test_key")
+        self.assertEqual(kwargs["json"]["from"], "noreply@test.freudd.dk")
+        self.assertEqual(kwargs["json"]["to"], ["new-user@example.com"])
+        self.assertEqual(kwargs["json"]["subject"], BIONEURO_FLASHCARD_ANNOUNCEMENT_SUBJECT)
+        self.assertIn("https://freudd.dk/email/unsubscribe/", kwargs["json"]["text"])
+        self.assertIn('href="https://freudd.dk/email/unsubscribe/', kwargs["json"]["html"])
+        self.assertEqual(kwargs["timeout"], 5)
+        self.assertEqual(len(mail.outbox), 0)
+
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(
         "os.environ",

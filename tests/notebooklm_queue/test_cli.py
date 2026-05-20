@@ -104,6 +104,35 @@ def test_main_serve_show_treats_profile_capacity_wait_as_success(tmp_path: Path,
     assert result == 0
 
 
+def test_main_serve_show_fails_manual_profile_capacity_wait(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.setattr(
+        "notebooklm_queue.cli.serve_show_queue",
+        lambda **kwargs: {
+            "show_slug": "personlighedspsykologi-en",
+            "stop_reason": "profile_capacity_wait",
+            "wait_plan": {
+                "reason": "no_usable_profiles",
+                "manual_intervention_required": True,
+            },
+        },
+    )
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: None)
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "serve-show",
+            "--show-slug",
+            "personlighedspsykologi-en",
+            "--repo-root",
+            str(tmp_path / "repo"),
+        ]
+    )
+
+    assert result == 1
+
+
 def test_main_profile_status_reports_capacity_without_failing(tmp_path: Path, monkeypatch) -> None:
     printed: list[dict] = []
     monkeypatch.setattr(

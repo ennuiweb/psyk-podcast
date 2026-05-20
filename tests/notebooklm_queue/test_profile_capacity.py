@@ -126,3 +126,41 @@ def test_inspect_profile_capacity_reports_next_available_when_all_profiles_coole
     assert capacity["manual_intervention_required"] is False
     assert capacity["wait_seconds"] == 90
     assert capacity["next_available_at"] == "2026-05-20T12:01:30+00:00"
+
+
+def test_inspect_profile_capacity_reports_auth_stale_before_auth_cooldown(
+    tmp_path: Path,
+) -> None:
+    now = datetime(2026, 5, 20, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    last_used = now.timestamp() - 60
+    os.utime(storage, (last_used - 30, last_used - 30))
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(json.dumps({"profiles": {"default": str(storage)}}), encoding="utf-8")
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "cooldown_until": (now + timedelta(hours=1)).timestamp(),
+                        "last_error": "auth",
+                        "last_used": last_used,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    capacity = inspect_profile_capacity(
+        profiles_file=profiles_file,
+        profile_state_file=state_file,
+        now=now,
+    )
+
+    assert capacity["has_capacity"] is False
+    assert capacity["manual_intervention_required"] is True
+    assert capacity["next_available_at"] is None
+    assert capacity["profiles"][0]["status"] == "auth_stale"

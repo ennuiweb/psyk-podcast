@@ -462,12 +462,11 @@ def main(argv: list[str] | None = None) -> int:
             ),
         )
         _print_json(payload)
-        return (
-            0
-            if payload.get("stop_reason")
-            in {"idle", "blocked_backlog_remaining", "service_timeout_reached", "profile_capacity_wait"}
-            else 1
-        )
+        stop_reason = str(payload.get("stop_reason") or "")
+        if stop_reason == "profile_capacity_wait":
+            wait_plan = payload.get("wait_plan") if isinstance(payload.get("wait_plan"), dict) else {}
+            return 1 if wait_plan.get("manual_intervention_required") else 0
+        return 0 if stop_reason in {"idle", "blocked_backlog_remaining", "service_timeout_reached"} else 1
 
     parser.error(f"Unhandled command: {args.command}")
     return 2

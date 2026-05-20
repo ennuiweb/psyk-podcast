@@ -241,16 +241,20 @@ def _profile_record(
     reason = "available"
     cooldown_remaining = 0
 
+    auth_storage_stale = last_error == "auth" and last_used > 0 and (
+        storage_mtime is None or storage_mtime <= last_used
+    )
+
     if not storage_exists:
         status = "missing_storage"
         reason = "storage_file_missing"
+    elif auth_storage_stale:
+        status = "auth_stale"
+        reason = "storage_not_refreshed_after_auth_failure"
     elif cooldown_until > now_ts:
         status = "cooldown"
         reason = f"{last_error or 'profile'}_cooldown"
         cooldown_remaining = max(int(cooldown_until - now_ts), 1)
-    elif last_error == "auth" and last_used > 0 and (storage_mtime is None or storage_mtime <= last_used):
-        status = "auth_stale"
-        reason = "storage_not_refreshed_after_auth_failure"
 
     return {
         "name": name,

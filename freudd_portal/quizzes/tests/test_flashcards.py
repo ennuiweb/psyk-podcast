@@ -251,7 +251,7 @@ class FlashcardPortalTests(TestCase):
         )
         self.assertEqual(page.status_code, 200)
         self.assertContains(page, "Preview uden login")
-        self.assertContains(page, "dine svar og din progress gemmes ikke")
+        self.assertContains(page, "Svar og progress gemmes ikke her")
         self.assertContains(page, "const previewMode = true;")
 
         api = self.client.get(

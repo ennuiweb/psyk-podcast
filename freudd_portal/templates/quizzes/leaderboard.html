@@ -176,7 +176,48 @@
 
   .cup-empty {
     margin: 0;
+    display: grid;
+    gap: var(--space-3);
     color: var(--muted);
+    padding: clamp(18px, 2.6vw, 28px);
+  }
+
+  .cup-empty-title {
+    margin: 0;
+    color: var(--text-strong);
+    font-family: var(--font-display);
+    font-size: clamp(1.22rem, 2.2vw, 1.65rem);
+    line-height: 1.1;
+  }
+
+  .cup-empty-copy {
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  .cup-empty-action {
+    width: fit-content;
+    min-height: var(--control-min-height);
+    border-radius: var(--radius-pill);
+    border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 72%, var(--surface));
+    color: var(--accent-strong);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-4);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .cup-empty-action:hover {
+    border-color: color-mix(in srgb, var(--accent) 56%, var(--border));
+    background: color-mix(in srgb, var(--accent-soft) 90%, var(--surface));
+    color: var(--accent);
+  }
+
+  .cup-mobile-list {
+    display: none;
   }
 
   .cup-table-shell {
@@ -343,6 +384,71 @@
       order: 3;
     }
 
+    .cup-table-wrap {
+      display: none;
+    }
+
+    .cup-mobile-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cup-mobile-entry {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: var(--space-2);
+      align-items: center;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cup-mobile-entry:last-child {
+      border-bottom: 0;
+    }
+
+    .cup-mobile-rank {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      color: var(--text-subtle-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .cup-mobile-copy {
+      min-width: 0;
+      display: grid;
+      gap: 2px;
+    }
+
+    .cup-mobile-alias {
+      overflow-wrap: anywhere;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .cup-mobile-meta {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cup-mobile-points {
+      color: var(--accent-strong);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
   }
 </style>
 
@@ -393,7 +499,11 @@
     {% endfor %}
   </section>
   {% else %}
-  <p class="card cup-empty">Ingen offentlige deltagere i det aktive semester endnu.</p>
+  <section class="card cup-empty" aria-label="Ingen scoreboard-deltagere">
+    <h2 class="cup-empty-title">ingen offentlige placeringer endnu</h2>
+    <p class="cup-empty-copy">Tag en quiz i {{ subject.title }} for at begynde at samle point. Du kan vælge alias og offentlig deltagelse under indstillinger.</p>
+    <a class="cup-empty-action" href="{% url 'subject-detail' subject_slug=subject.slug %}">Gå til faget</a>
+  </section>
   {% endif %}
 
   <section class="card cup-table-shell" aria-labelledby="cup-top-50-title">
@@ -426,8 +536,20 @@
         </tbody>
       </table>
     </div>
+    <ol class="cup-mobile-list" aria-label="Top 50 mobilvisning">
+      {% for entry in table_entries %}
+      <li class="cup-mobile-entry {% if forloop.counter > table_preview_limit %}is-extra{% endif %}" {% if forloop.counter > table_preview_limit %}hidden{% endif %}>
+        <span class="cup-mobile-rank">{{ entry.rank }}</span>
+        <span class="cup-mobile-copy">
+          <span class="cup-mobile-alias">{{ entry.alias }}</span>
+          <span class="cup-mobile-meta">{{ entry.correct_answers }} korrekte svar · {{ entry.quiz_count }} quizzer</span>
+        </span>
+        <span class="cup-mobile-points">{{ entry.score_points_label }}</span>
+      </li>
+      {% endfor %}
+    </ol>
     {% else %}
-    <p class="cup-table-empty">Ingen yderligere placeringer endnu.</p>
+    <p class="cup-table-empty">Når der er offentlige resultater, vises de her med placering, point og antal quizzer.</p>
     {% endif %}
 
     {% if table_entries|length > table_preview_limit %}
@@ -449,7 +571,7 @@
       return;
     }
 
-    const extraRows = Array.from(document.querySelectorAll(".cup-table tbody tr.is-extra"));
+    const extraRows = Array.from(document.querySelectorAll(".cup-table tbody tr.is-extra, .cup-mobile-list .is-extra"));
     if (extraRows.length === 0) {
       return;
     }

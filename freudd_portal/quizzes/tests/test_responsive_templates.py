@@ -17,10 +17,12 @@ class ResponsiveTemplateRulesTests(SimpleTestCase):
         template_path = Path(settings.BASE_DIR) / "templates" / relative_path
         return template_path.read_text(encoding="utf-8")
 
-    def test_subject_detail_uses_compact_app_shell_on_tablet_mobile(self) -> None:
+    def test_subject_detail_uses_lecture_switcher_on_tablet_mobile(self) -> None:
         body = self._template_text("quizzes/subject_detail.html")
         self.assertIn("@media (max-width: 1180px)", body)
-        self.assertIn("grid-template-columns: minmax(62px, 84px) minmax(0, 1fr);", body)
+        self.assertIn(".lecture-switcher", body)
+        self.assertIn("grid-template-columns: minmax(0, 1fr);", body)
+        self.assertIn(".lecture-rail,\n    .lecture-rail-copy,\n    .lecture-rail-mobile-copy", body)
         self.assertIn(".subject-mobile-topbar", body)
         self.assertNotIn("display: none !important;", body)
 

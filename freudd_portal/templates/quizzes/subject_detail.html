@@ -11,9 +11,31 @@
     --subject-space-block: clamp(14px, 1.4vw, 20px);
     --subject-space-tight: clamp(10px, 0.9vw, 14px);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--subject-space-section);
     font-family: var(--subject-font-ui);
     min-width: 0;
+  }
+
+  .subject-layout>*,
+  .subject-path,
+  .subject-path>*,
+  .subject-path-layout,
+  .lecture-switcher,
+  .lecture-switcher-list,
+  .active-lecture-card,
+  .active-lecture-head,
+  .active-lecture-meta,
+  .active-lecture-sections,
+  .lecture-section,
+  .subject-head-copy,
+  .flashcard-deck-strip,
+  .flashcard-deck-list,
+  .flashcard-deck-row,
+  .flashcard-deck-copy,
+  .flashcard-deck-topic-list {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .subject-mobile-topbar {
@@ -316,7 +338,7 @@
   }
 
   .flashcard-deck-topic {
-    min-height: 32px;
+    min-height: 36px;
     border: 1px solid color-mix(in srgb, var(--border-strong) 62%, transparent);
     border-radius: var(--radius-pill);
     background: color-mix(in srgb, var(--surface) 86%, var(--surface-soft));
@@ -368,6 +390,7 @@
 
   .subject-path {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--subject-space-block);
   }
 
@@ -677,6 +700,7 @@
     background: var(--surface);
     padding: var(--subject-space-block);
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--subject-space-block);
     box-shadow: var(--shadow-container);
     min-height: 0;
@@ -685,6 +709,7 @@
 
   .active-lecture-head {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -1949,6 +1974,17 @@
       grid-template-columns: 1fr;
       align-items: stretch;
       gap: 10px;
+    }
+
+    .flashcard-deck-topic-list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .flashcard-deck-topic {
+      flex: 0 0 auto;
     }
 
     .subject-path-layout {

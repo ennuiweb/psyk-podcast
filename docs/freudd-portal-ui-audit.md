@@ -87,6 +87,12 @@ points in this direction, but it is too heavy and too cramped on mobile.
 | Done | Login subtitle | Removed "Fortsæt din læringssti, og gem dine quizscore undervejs." |
 | Done | Auth in-card brand label | Removed the small in-card `freudd` label above the auth heading. |
 | Done | Auth in-card logo/icon | Removed the icon/logo from login and signup auth cards. |
+| Done | Signup field order | Signup now starts with required e-mail before optional username. |
+| Done | Mobile subject navigation | Subject pages use a compact lecture switcher on tablet/mobile instead of the cramped rail. |
+| Done | Subject page width guard | Subject page grids and scroll strips now stay within the `390px` viewport. |
+| Done | Settings subject management | Enrollment controls now live in the existing `mine fag` cards; the duplicate subject-management section was removed. |
+| Done | Public scoreboard toggle | The settings checkbox is now a larger explanatory toggle row. |
+| Done | Scoreboard empty/mobile states | Empty scoreboards now point users back to the subject, and mobile scoreboards use compact list rows. |
 | Verified | Live smoke | After the auth-card changes, production returned expected route statuses and no auth icon markup was present. |
 
 ### Live Audit Baseline
@@ -105,7 +111,7 @@ Observed on the 2026-05-19 screenshot pass:
 
 #### Mobile Bottom Navigation Over Focus Modes
 
-Status: Open
+Status: Deferred by product decision
 
 Affected screens:
 
@@ -124,8 +130,8 @@ question or reviewing a card.
 
 Recommended direction:
 
-- hide or collapse mobile bottom navigation on quiz and flashcard focus pages
-- if navigation remains, make it lower, quieter, and less card-like
+- keep the footer and mobile navigation in place for now
+- reduce page heights/density in a later pass so fixed navigation competes less
 - add explicit bottom scroll padding for pages that keep the tabbar
 - keep focus controls inside the study surface, not behind the global nav
 
@@ -137,7 +143,7 @@ Acceptance checks:
 
 #### Mobile Subject Page Structure
 
-Status: Open
+Status: Done 2026-05-19
 
 Affected screens:
 
@@ -152,8 +158,7 @@ dots, small labels, and deeply nested content cards.
 
 Recommended direction:
 
-- replace the always-visible rail on mobile with a lecture picker or compact
-  horizontal lecture switcher
+- keep the compact horizontal lecture switcher on mobile/tablet
 - keep the active lecture title and progress in the main flow
 - make lecture navigation targets at least `44px` tall/wide
 - preserve the timeline as a desktop/tablet signature, not as a cramped mobile
@@ -169,7 +174,7 @@ Acceptance checks:
 
 #### Reduce Nested Cards And Border Noise
 
-Status: Open
+Status: Partially completed 2026-05-19
 
 Affected screens:
 
@@ -185,6 +190,7 @@ learner's next action should be obvious.
 
 Recommended direction:
 
+- keep subject-detail sections flattened into one primary lecture surface
 - use one outer study surface where needed, then unframed internal sections
 - reserve cards for repeated source items, modals, and genuinely bounded tools
 - use section headings, rule lines, and spacing before adding another border
@@ -202,7 +208,7 @@ Acceptance checks:
 
 #### Footer Cleanup
 
-Status: Open
+Status: Closed - keep footer
 
 Affected screens:
 
@@ -214,20 +220,19 @@ The black footer with `shh 🤫` reads like a development/easter-egg remnant.
 It breaks the paper-studio system and visually dominates the end of otherwise
 quiet pages.
 
-Recommended direction:
+Decision:
 
-- remove the footer entirely, or
-- replace it with a very quiet paper-tone footer with real product/navigation
-  content
+The footer should stay. Future UI work should address page height and density
+without removing it.
 
 Acceptance checks:
 
-- desktop pages do not end in a heavy black band
-- footer, if present, supports the product instead of acting as a visual joke
+- footer remains present
+- future page-height work does not rely on removing the footer
 
 #### Settings Information Architecture
 
-Status: Open
+Status: Done 2026-05-19
 
 Affected screen:
 
@@ -241,8 +246,8 @@ interface.
 
 Recommended direction:
 
-- merge subject status and enrollment actions into one subject-management area
-- make "Deltag offentligt" a clear toggle row with explanatory helper text
+- keep subject status and enrollment actions in one subject-management area
+- keep "Deltag offentligt" as a clear toggle row with explanatory helper text
 - treat scoreboard alias as a small profile/privacy form, not just another card
 
 Acceptance checks:
@@ -253,7 +258,7 @@ Acceptance checks:
 
 #### Scoreboard Empty And Mobile States
 
-Status: Open
+Status: Done 2026-05-19
 
 Affected screens:
 
@@ -268,9 +273,8 @@ and will age poorly as labels or values grow.
 
 Recommended direction:
 
-- add a task-oriented empty state: "Tag en quiz for at komme på listen"
-- link directly to the relevant subject/quiz entry point
-- on mobile, consider rank cards or a compact row layout instead of a table
+- keep the task-oriented empty state and subject CTA
+- keep the compact mobile row layout instead of the table
 
 Acceptance checks:
 
@@ -281,7 +285,7 @@ Acceptance checks:
 
 #### Auth Card Refinement
 
-Status: Open
+Status: Partially completed 2026-05-19
 
 Affected screens:
 
@@ -299,8 +303,9 @@ Recommended direction:
 
 - either remove the colored top rule or make it part of a broader progress /
   study-material motif
-- make e-mail the first signup field
-- move optional username later or hide it behind a secondary affordance
+- keep e-mail as the first signup field
+- keep optional username after e-mail, or later hide it behind a secondary
+  affordance
 - keep auth surfaces calmer than app surfaces
 
 Acceptance checks:
@@ -411,16 +416,15 @@ Acceptance checks:
 
 ## Suggested Implementation Order
 
-1. Remove or restyle the global footer.
-2. Add focus-mode behavior for quiz and flashcard pages so mobile navigation
-   does not compete with active study tasks.
-3. Redesign mobile subject navigation from a full vertical rail to a compact
-   lecture picker.
-4. Flatten subject detail content sections and reduce nested borders.
-5. Refactor settings subject management and public scoreboard participation.
-6. Improve scoreboard empty/mobile states.
-7. Polish auth signup field order.
-8. Clean up CSS tokens and local hardcoded component colors.
+1. Shrink vertical page heights/density in the approved areas while keeping
+   the footer and mobile navigation.
+2. Continue flattening nested surfaces where the first pass did not cover the
+   full page.
+3. Decide whether the auth colored top rule should become a meaningful motif
+   or be removed.
+4. Clean up CSS tokens and local hardcoded component colors.
+5. Refine typography hierarchy across repeated resource items and dense
+   learning surfaces.
 
 ## Verification Checklist
 
@@ -443,3 +447,4 @@ this file should stay a current map, not a full changelog.
 |---|---|---|
 | 2026-05-19 | Baseline | Combined frontend and interface-design audits into this tracker. |
 | 2026-05-19 | Completed | Flashcard controls now have intentional answer reveal, optional typed-answer toggle, subject-page topic entry points, in-view topic scoping, and polished rating controls. |
+| 2026-05-19 | Implemented on branch | Approved first-pass fixes: mobile subject lecture switcher, subject-page width guards, settings subject-management merge, public scoreboard toggle row, scoreboard empty/mobile states, and signup e-mail-first order. Footer and mobile navigation were intentionally kept. |

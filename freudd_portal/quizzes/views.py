@@ -42,6 +42,7 @@ from .activity_notifications import (
     notify_reading_sent_to_chatgpt,
     notify_subject_enrolled,
 )
+from .announcement_emails import unsubscribe_announcement_token
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
 from .flashcard_services import (
@@ -1026,6 +1027,25 @@ def _is_reading_download_blocked_for_user(
 
 def _auth_url_with_next(route_name: str, next_path: str) -> str:
     return f"{reverse(route_name)}?{urlencode({'next': next_path})}"
+
+
+@require_safe
+def announcement_email_unsubscribe_view(request: HttpRequest, token: str) -> HttpResponse:
+    result = unsubscribe_announcement_token(token)
+    if not result.ok:
+        return render(
+            request,
+            "quizzes/email_unsubscribe.html",
+            {"unsubscribe_status": "invalid"},
+            status=400,
+        )
+    return render(
+        request,
+        "quizzes/email_unsubscribe.html",
+        {
+            "unsubscribe_status": "already_unsubscribed" if result.already_unsubscribed else "unsubscribed",
+        },
+    )
 
 
 def _rate_limit_exceeded(

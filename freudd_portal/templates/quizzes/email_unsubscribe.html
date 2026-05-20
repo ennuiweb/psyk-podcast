@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Afmeld mails · freudd{% endblock %}
+{% block content %}
+<style>
+  .unsubscribe-card {
+    max-width: 640px;
+    margin: clamp(var(--space-5), 8vh, 72px) auto;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .unsubscribe-card h1,
+  .unsubscribe-card p {
+    margin: 0;
+  }
+
+  .unsubscribe-card h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .unsubscribe-card p {
+    color: var(--text-subtle-2);
+    line-height: 1.6;
+  }
+</style>
+
+<section class="card unsubscribe-card" aria-label="Afmeld Freudd-mails">
+  {% if unsubscribe_status == "invalid" %}
+  <h1>Linket virker ikke</h1>
+  <p>Afmeldingslinket er ugyldigt. Skriv til os, hvis du stadig vil afmeldes fremtidige mails.</p>
+  {% elif unsubscribe_status == "already_unsubscribed" %}
+  <h1>Du er allerede afmeldt</h1>
+  <p>Du modtager ikke fremtidige fællesmails fra Freudd. Du kan stadig bruge portalen som normalt.</p>
+  {% else %}
+  <h1>Du er afmeldt</h1>
+  <p>Du modtager ikke fremtidige fællesmails fra Freudd. Du kan stadig bruge portalen som normalt.</p>
+  {% endif %}
+</section>
+{% endblock %}

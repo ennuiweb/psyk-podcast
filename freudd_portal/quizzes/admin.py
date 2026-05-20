@@ -69,9 +69,16 @@ class UserInterfacePreferenceAdmin(admin.ModelAdmin):
 
 @admin.register(UserNotificationPreference)
 class UserNotificationPreferenceAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "activity_notifications_enabled", "updated_at")
+    list_display = (
+        "id",
+        "user",
+        "activity_notifications_enabled",
+        "announcement_emails_enabled",
+        "announcement_unsubscribed_at",
+        "updated_at",
+    )
     search_fields = ("user__username", "user__email")
-    list_filter = ("activity_notifications_enabled", "updated_at")
+    list_filter = ("activity_notifications_enabled", "announcement_emails_enabled", "updated_at")
 
 
 @admin.register(UserReadingMark)

@@ -5,9 +5,14 @@ from unittest.mock import Mock, patch
 import requests
 from django.contrib.auth.models import User
 from django.core import mail
+from django.urls import reverse
 from django.test import TestCase, override_settings
 
 from quizzes.activity_notifications import notify_new_user_created
+from quizzes.announcement_emails import (
+    announcement_email_recipient_users,
+    make_announcement_unsubscribe_token,
+)
 from quizzes.models import UserNotificationPreference
 
 
@@ -26,6 +31,8 @@ class NewUserNotificationTests(TestCase):
 
         preference = UserNotificationPreference.objects.get(user=user)
         self.assertTrue(preference.activity_notifications_enabled)
+        self.assertTrue(preference.announcement_emails_enabled)
+        self.assertIsNone(preference.announcement_unsubscribed_at)
 
     @override_settings(
         FREUDD_ACTIVITY_NOTIFY_EMAILS=["legacy-alerts@tjekdepot.dk"],
@@ -111,6 +118,79 @@ class NewUserNotificationTests(TestCase):
 
         self.assertFalse(sent)
         self.assertEqual(len(mail.outbox), 0)
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_announcement_unsubscribe_link_disables_only_announcement_emails(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+        token = make_announcement_unsubscribe_token(user)
+
+        response = self.client.get(reverse("announcement-email-unsubscribe", kwargs={"token": token}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Du er afmeldt")
+        preference = UserNotificationPreference.objects.get(user=user)
+        self.assertTrue(preference.activity_notifications_enabled)
+        self.assertFalse(preference.announcement_emails_enabled)
+        self.assertIsNotNone(preference.announcement_unsubscribed_at)
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_announcement_unsubscribe_link_is_idempotent(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+        token = make_announcement_unsubscribe_token(user)
+        self.client.get(reverse("announcement-email-unsubscribe", kwargs={"token": token}))
+
+        response = self.client.get(reverse("announcement-email-unsubscribe", kwargs={"token": token}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Du er allerede afmeldt")
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_invalid_announcement_unsubscribe_link_does_not_update_preferences(self) -> None:
+        user = User.objects.create_user(
+            username="new-user",
+            email="new-user@example.com",
+            password="Secret123!!",
+        )
+
+        response = self.client.get(reverse("announcement-email-unsubscribe", kwargs={"token": "not-a-token"}))
+
+        self.assertEqual(response.status_code, 400)
+        self.assertContains(response, "Linket virker ikke", status_code=400)
+        preference = UserNotificationPreference.objects.get(user=user)
+        self.assertTrue(preference.announcement_emails_enabled)
+        self.assertIsNone(preference.announcement_unsubscribed_at)
+
+    @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="")
+    def test_announcement_recipient_users_skip_unsubscribed_and_duplicate_emails(self) -> None:
+        first = User.objects.create_user(
+            username="first",
+            email="shared@example.com",
+            password="Secret123!!",
+        )
+        User.objects.create_user(
+            username="duplicate",
+            email="shared@example.com",
+            password="Secret123!!",
+        )
+        unsubscribed = User.objects.create_user(
+            username="unsubscribed",
+            email="unsubscribed@example.com",
+            password="Secret123!!",
+        )
+        User.objects.create_user(username="missing-email", email="", password="Secret123!!")
+        UserNotificationPreference.objects.filter(user=unsubscribed).update(announcement_emails_enabled=False)
+
+        recipients = list(announcement_email_recipient_users())
+
+        self.assertEqual(recipients, [first])
 
     @override_settings(FREUDD_NEW_USER_NOTIFY_EMAIL="admin@tjekdepot.dk")
     @patch.dict(

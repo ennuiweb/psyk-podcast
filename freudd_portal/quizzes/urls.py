@@ -37,6 +37,11 @@ urlpatterns = [
         views.leaderboard_subject_view,
         name="leaderboard-subject",
     ),
+    re_path(
+        r"^email/unsubscribe/(?P<token>[^/]+)$",
+        views.announcement_email_unsubscribe_view,
+        name="announcement-email-unsubscribe",
+    ),
     re_path(r"^subjects/(?P<subject_slug>[a-z0-9-]+)$", views.subject_detail_view, name="subject-detail"),
     re_path(
         r"^subjects/(?P<subject_slug>[a-z0-9-]+)/cards/(?P<deck_slug>[a-z0-9-]+)$",

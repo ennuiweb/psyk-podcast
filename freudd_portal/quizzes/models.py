@@ -163,11 +163,14 @@ class UserInterfacePreference(models.Model):
 class UserNotificationPreference(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     activity_notifications_enabled = models.BooleanField(default=True)
+    announcement_emails_enabled = models.BooleanField(default=True)
+    announcement_unsubscribed_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        state = "on" if self.activity_notifications_enabled else "off"
-        return f"{self.user_id}:activity:{state}"
+        activity_state = "on" if self.activity_notifications_enabled else "off"
+        announcement_state = "on" if self.announcement_emails_enabled else "off"
+        return f"{self.user_id}:activity:{activity_state}:announcements:{announcement_state}"
 
 
 class UserGamificationProfile(models.Model):

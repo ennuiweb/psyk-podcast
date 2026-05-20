@@ -99,7 +99,7 @@ Queue-core note:
 - Queue-owned feed rebuilds must preserve existing public episode chronology. Regeneration swaps the active variant but must not rewrite an episode's existing `published_at` / `pubDate`.
 - current scope now also includes allowlisted repo publication: `push-repo` claims queue records in `committing_repo_artifacts`, fails closed on tracked repo dirtiness outside the generated-file allowlist, keeps queue-generated artifacts on allowlisted rebase conflicts, pushes with bounded retries, and advances successful queue records to `repo_pushed`
 - current scope now also includes downstream completion: `sync-downstream` claims queue records in `repo_pushed`, waits for expected push-triggered downstream workflows such as `deploy-freudd-portal.yml`, and advances successful queue records to `completed`
-- current scope now also includes service-oriented draining: `drain-show` remains the single-cycle primitive, while `serve-show` is the Hetzner entrypoint that keeps invoking drain cycles, waits through timed backlog (`retry_scheduled` and `waiting_for_artifact`) when appropriate, stops for manual intervention on unresolved `failed_retryable` backlog, and continues automatically when NotebookLM profile quota becomes available again
+- current scope now also includes service-oriented draining: `drain-show` remains the single-cycle primitive, while `serve-show` is the Hetzner entrypoint that keeps invoking drain cycles, waits through timed backlog (`retry_scheduled` and `waiting_for_artifact`) when appropriate, stops for manual intervention on unresolved `failed_retryable` backlog, and exits cleanly with `profile_capacity_wait` when all active NotebookLM profiles are cooled, missing, stale, or already in use by another queue worker
 - queue discovery now skips lecture keys that already exist in the configured `episode_inventory.json` by default, so a fresh queue store does not automatically regenerate a show's full published back-catalog; operators can still override this with `discover --include-published` when intentionally backfilling or forcing regeneration
 - current scope now also includes pilot-safe config binding: `discover`, `prepare-publish`, `upload-r2`, `rebuild-metadata`, and `push-repo` accept `--show-config`, and publish manifests now pin the selected config path so later stages cannot silently drift back to the live `config.github.json`
 - pilot-safe artifact routing now also covers Freudd sidecars: queue metadata rebuild and repo publication derive `quiz_links.json`, `spotify_map.json`, `content_manifest.json`, RSS, inventory, and R2 media-manifest paths from the selected show config instead of hardcoded live show paths
@@ -111,6 +111,7 @@ Queue-core note:
 - `scripts/sync_notebooklm_profiles_to_hetzner.py` is the canonical helper for copying the local NotebookLM profile bundle to Hetzner and rebuilding `/etc/podcasts/notebooklm-queue/profiles.host.json`
 - queue execution now upgrades rate-limit failures with a retry window into `retry_scheduled`, so the hosted `serve-show` worker can wait through cooldowns and continue draining partial lecture runs instead of leaving them stranded as generic retryable failures; invalid retry schedules now fail closed instead of degrading into a hot poll loop
 - queue execution now applies progressive queue-level retry backoff for repeated NotebookLM cooldown, rate-limit, and transient RPC failures, so long-running show backlogs stop hammering the same lectures every flat `15` minutes forever
+- queue execution now checks active NotebookLM profile capacity before claiming generation work, reports it through `profile-status`, and uses a global NotebookLM execution lock so concurrent show timers cannot burn the shared profile pool in parallel
 - queue execution now emits durable alert events under the queue storage root for stale-auth failures and repeated rate-limit exhaustion, with optional webhook/email/command delivery configured by env
 - shared queue indexes and alert dedupe state are now protected by global queue locks rather than only per-show locks, so concurrent show drains do not clobber `indexes/jobs.json` or `alerts/state.json`
 - queue-owned stage services now auto-resume interrupted in-progress queue records for execution, bundle preparation, R2 upload, metadata rebuild, and downstream validation instead of requiring an explicit `--job-id` queue-record-id rescue path after a crash
@@ -144,6 +145,7 @@ Queue CLI examples:
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue sync-downstream --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue drain-show --repo-root . --show-slug bioneuro
 ./.venv/bin/python scripts/notebooklm_queue.py --storage-root /tmp/notebooklm-queue serve-show --repo-root . --show-slug bioneuro
+./.venv/bin/python scripts/notebooklm_queue.py profile-status
 ```
 
 Pilot-safe example:

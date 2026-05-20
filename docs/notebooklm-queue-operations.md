@@ -58,7 +58,8 @@ NOTEBOOKLM_QUEUE_METADATA_PHASE_TIMEOUT_SECONDS=1800
 NOTEBOOKLM_QUEUE_GIT_TIMEOUT_SECONDS=300
 NOTEBOOKLM_QUEUE_GH_TIMEOUT_SECONDS=60
 NOTEBOOKLM_QUEUE_ALERT_GITHUB_TIMEOUT_SECONDS=30
-NOTEBOOKLM_QUEUE_MAX_STAGE_RUNS=50
+NOTEBOOKLM_QUEUE_MAX_STAGE_RUNS=1
+NOTEBOOKLM_QUEUE_PROFILE_LOCK_WAIT_SECONDS=60
 NOTEBOOKLM_QUEUE_REMOTE=origin
 NOTEBOOKLM_QUEUE_BRANCH=main
 GH_TOKEN=...
@@ -108,8 +109,10 @@ Notes:
 - `GH_TOKEN` is only needed if the server-side `gh` CLI is not already authenticated in the service user's home.
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
-- `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and continues automatically when NotebookLM or profile quota becomes available again.
+- `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and exits cleanly with `profile_capacity_wait` when the active NotebookLM profile pool has no immediately usable account.
 - The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
+- NotebookLM execution is guarded by a global queue lock named `__global__-notebooklm-capacity`, so two show workers cannot concurrently claim generation work against the same profile pool.
+- Hosted queue workers should use `NOTEBOOKLM_QUEUE_MAX_STAGE_RUNS=1` unless there is a deliberate maintenance reason to drain multiple stages in one service invocation. This keeps timer-triggered work bounded and lets profile capacity recover between passes.
 - Full-profile cooldown exhaustion now also maps to `retry_scheduled`, so a lecture that temporarily runs out of usable NotebookLM profiles is retried automatically instead of sticking in `failed_retryable`.
 - Queue discovery now dead-letters stale non-terminal queue records for the same
   show, subject, lecture, and content types when the current config hash
@@ -221,6 +224,13 @@ Inspect queue state:
 cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py report --show-slug bioneuro
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
+```
+
+Inspect profile capacity without claiming queue jobs:
+
+```bash
+cd /opt/podcasts
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py profile-status
 ```
 
 For shadow evaluation under rate pressure, prefer a single lecture batch before widening the scope. That keeps failures attributable and lets the queue's retry scheduling work on a small surface area first.

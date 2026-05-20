@@ -11,7 +11,11 @@ from typing import Any, Callable
 
 from .constants import (
     BLOCKED_STATES,
+    STATE_DOWNLOADING,
     STATE_FAILED_RETRYABLE,
+    STATE_GENERATED,
+    STATE_GENERATING,
+    STATE_QUEUED,
     STATE_RETRY_SCHEDULED,
     STATE_WAITING_FOR_ARTIFACT,
     TERMINAL_STATES,
@@ -20,13 +24,17 @@ from .discovery import enqueue_discovered_jobs
 from .downstream import DownstreamOptions, sync_downstream_publication
 from .execution import ExecutionOptions, execute_job, repair_retryable_failures
 from .metadata import MetadataOptions, rebuild_repo_metadata
+from .profile_capacity import inspect_profile_capacity, summarize_profile_capacity
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .show_config import serialize_show_config_path
-from .store import QueueStore, parse_utcish_iso
+from .store import QueueLockError, QueueStore, parse_utcish_iso
 
 RECENT_CYCLE_HISTORY_LIMIT = 10
 DEFAULT_WAITING_SLEEP_SECONDS = int(os.environ.get("NOTEBOOKLM_QUEUE_ARTIFACT_POLL_INTERVAL_SECONDS") or "60")
+PROFILE_CAPACITY_WAIT_STATE = "profile_capacity_wait"
+PROFILE_CAPACITY_LOCK_SCOPE = "notebooklm-capacity"
+PROFILE_CAPACITY_LOCK_WAIT_SECONDS = int(os.environ.get("NOTEBOOKLM_QUEUE_PROFILE_LOCK_WAIT_SECONDS") or "60")
 
 
 @dataclass(frozen=True, slots=True)
@@ -142,13 +150,11 @@ def drain_show_queue(
         ),
         (
             "run_once",
-            lambda: execute_job(
+            lambda: _execute_job_when_profile_capacity_available(
                 store=store,
                 show_slug=show_slug,
-                options=ExecutionOptions(
-                    repo_root=repo_root,
-                    actor=options.actor,
-                ),
+                repo_root=repo_root,
+                actor=options.actor,
             ),
         ),
     )
@@ -156,6 +162,7 @@ def drain_show_queue(
     stage_results: list[dict[str, Any]] = []
     iterations = 0
     max_stage_runs = max(int(options.max_stage_runs), 1)
+    profile_capacity_wait: dict[str, Any] | None = None
 
     while iterations < max_stage_runs:
         progressed = False
@@ -172,10 +179,15 @@ def drain_show_queue(
                     "result": result,
                 }
             )
+            if str(result.get("final_state") or "") == PROFILE_CAPACITY_WAIT_STATE:
+                profile_capacity_wait = result
+                break
+        if profile_capacity_wait is not None:
+            break
         if not progressed:
             break
 
-    stopped_due_to_cap = iterations >= max_stage_runs
+    stopped_due_to_cap = iterations >= max_stage_runs and profile_capacity_wait is None
     return {
         "show_slug": show_slug,
         "show_config_path": (
@@ -189,6 +201,8 @@ def drain_show_queue(
         },
         "stage_run_count": iterations,
         "stopped_due_to_max_stage_runs": stopped_due_to_cap,
+        "stopped_due_to_profile_capacity": profile_capacity_wait is not None,
+        "profile_capacity_wait": profile_capacity_wait,
         "stage_results": stage_results,
         "queue_summary": store.summarize_jobs(show_slug=show_slug),
     }
@@ -213,6 +227,18 @@ def serve_show_queue(
         cycle_results.append(cycle)
         if len(cycle_results) > RECENT_CYCLE_HISTORY_LIMIT:
             cycle_results = cycle_results[-RECENT_CYCLE_HISTORY_LIMIT:]
+        if cycle.get("stopped_due_to_profile_capacity"):
+            return {
+                "show_slug": show_slug,
+                "cycle_count": cycle_count,
+                "total_sleep_seconds": total_sleep_seconds,
+                "stop_reason": PROFILE_CAPACITY_WAIT_STATE,
+                "wait_plan": cycle.get("profile_capacity_wait") or {},
+                "last_cycle": cycle_results[-1],
+                "recent_cycles": cycle_results,
+                "recent_cycle_limit": RECENT_CYCLE_HISTORY_LIMIT,
+                "queue_summary": store.summarize_jobs(show_slug=show_slug),
+            }
         if cycle.get("stopped_due_to_max_stage_runs"):
             if deadline is not None and time.monotonic() >= deadline:
                 return {
@@ -282,6 +308,77 @@ def serve_show_queue(
         sleep_seconds = max(int(wait_plan.get("sleep_seconds") or 0), 1)
         time.sleep(sleep_seconds)
         total_sleep_seconds += sleep_seconds
+
+
+def _execute_job_when_profile_capacity_available(
+    *,
+    store: QueueStore,
+    show_slug: str,
+    repo_root: Path,
+    actor: str,
+) -> dict[str, Any]:
+    if not _has_ready_execution_work(store=store, show_slug=show_slug):
+        raise FileNotFoundError(f"No runnable job found for show: {show_slug}")
+
+    capacity = inspect_profile_capacity()
+    if not capacity.get("has_capacity"):
+        return _profile_capacity_wait_result(reason="no_usable_profiles", capacity=capacity)
+
+    try:
+        with store.acquire_global_lock(PROFILE_CAPACITY_LOCK_SCOPE, blocking=False):
+            capacity = inspect_profile_capacity()
+            if not capacity.get("has_capacity"):
+                return _profile_capacity_wait_result(reason="no_usable_profiles", capacity=capacity)
+            return execute_job(
+                store=store,
+                show_slug=show_slug,
+                options=ExecutionOptions(
+                    repo_root=repo_root,
+                    actor=actor,
+                ),
+            )
+    except QueueLockError:
+        return _profile_capacity_wait_result(
+            reason="notebooklm_execution_lock_held",
+            capacity={
+                **capacity,
+                "wait_seconds": PROFILE_CAPACITY_LOCK_WAIT_SECONDS,
+                "reason": "notebooklm_execution_lock_held",
+            },
+        )
+
+
+def _profile_capacity_wait_result(*, reason: str, capacity: dict[str, Any]) -> dict[str, Any]:
+    wait_seconds = capacity.get("wait_seconds")
+    if wait_seconds is None:
+        wait_seconds = PROFILE_CAPACITY_LOCK_WAIT_SECONDS
+    return {
+        "final_state": PROFILE_CAPACITY_WAIT_STATE,
+        "reason": reason,
+        "sleep_seconds": max(int(wait_seconds), 1),
+        "next_available_at": capacity.get("next_available_at"),
+        "manual_intervention_required": bool(capacity.get("manual_intervention_required")),
+        "capacity": summarize_profile_capacity(capacity),
+    }
+
+
+def _has_ready_execution_work(*, store: QueueStore, show_slug: str) -> bool:
+    now = _utc_now()
+    for job in store.list_jobs(show_slug=show_slug):
+        state = str(job.get("state") or "").strip()
+        if state in {STATE_QUEUED, STATE_RETRY_SCHEDULED}:
+            next_retry_at = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
+            if next_retry_at is not None and next_retry_at > now:
+                continue
+            return True
+        if state == STATE_WAITING_FOR_ARTIFACT:
+            next_retry_at = parse_utcish_iso(str(job.get("next_retry_at") or "").strip())
+            if next_retry_at is not None and next_retry_at > now:
+                continue
+            return True
+        if state in {STATE_DOWNLOADING, STATE_GENERATED, STATE_GENERATING}:
+            return True
+    return False
 
 
 def _plan_next_action(*, store: QueueStore, show_slug: str) -> dict[str, Any]:

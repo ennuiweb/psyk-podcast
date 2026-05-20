@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
+import json
 from pathlib import Path
 
 from notebooklm_queue.constants import (
@@ -12,7 +13,56 @@ from notebooklm_queue.constants import (
 )
 from notebooklm_queue.models import JobIdentity
 from notebooklm_queue.orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
-from notebooklm_queue.store import QueueStore
+from notebooklm_queue.store import QueueLockError, QueueStore
+
+
+def _write_profile_capacity_fixture(tmp_path: Path, *, cooled: bool) -> tuple[Path, Path]:
+    storage_file = tmp_path / "default-storage.json"
+    storage_file.write_text("{}", encoding="utf-8")
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(
+        json.dumps({"profiles": {"default": str(storage_file)}}),
+        encoding="utf-8",
+    )
+    state_file = tmp_path / "profile_state.json"
+    cooldown_until = (datetime.now(tz=UTC) + timedelta(hours=1)).timestamp() if cooled else 0
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_error": "rate_limit" if cooled else None,
+                        "cooldown_until": cooldown_until,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    return profiles_file, state_file
+
+
+def _patch_non_execution_stages_idle(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.sync_downstream_publication",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("sync")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.publish_repo_artifacts",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("push")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.rebuild_repo_metadata",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("metadata")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.upload_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("upload")),
+    )
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.prepare_publish_bundle",
+        lambda **kwargs: (_ for _ in ()).throw(FileNotFoundError("prepare")),
+    )
 
 
 def test_drain_show_queue_runs_stages_until_idle(tmp_path: Path, monkeypatch) -> None:
@@ -57,6 +107,7 @@ def test_drain_show_queue_runs_stages_until_idle(tmp_path: Path, monkeypatch) ->
     monkeypatch.setattr("notebooklm_queue.orchestrator.upload_publish_bundle", _stage("upload_r2"))
     monkeypatch.setattr("notebooklm_queue.orchestrator.prepare_publish_bundle", _stage("prepare_publish"))
     monkeypatch.setattr("notebooklm_queue.orchestrator.execute_job", _stage("run_once"))
+    monkeypatch.setattr("notebooklm_queue.orchestrator._has_ready_execution_work", lambda **kwargs: True)
 
     result = drain_show_queue(
         store=store,
@@ -177,6 +228,189 @@ def test_drain_show_queue_stops_when_max_stage_runs_is_hit(tmp_path: Path, monke
 
     assert result["stage_run_count"] == 2
     assert result["stopped_due_to_max_stage_runs"] is True
+
+
+def test_drain_show_queue_waits_for_profile_capacity_without_claiming_job(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="personlighedspsykologi-en",
+            subject_slug="personlighedspsykologi",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    profiles_file, state_file = _write_profile_capacity_fixture(
+        tmp_path,
+        cooled=True,
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(state_file))
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.enqueue_discovered_jobs",
+        lambda **kwargs: {"discovered": [], "enqueued": []},
+    )
+    monkeypatch.setattr(store, "retry_ready_jobs", lambda show_slug: [])
+    _patch_non_execution_stages_idle(monkeypatch)
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.execute_job",
+        lambda **kwargs: (_ for _ in ()).throw(AssertionError("execute_job should not be called")),
+    )
+
+    result = drain_show_queue(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        options=DrainShowOptions(repo_root=repo_root),
+    )
+
+    updated = store.load_job(show_slug="personlighedspsykologi-en", job_id=str(job["job_id"]))
+    assert updated["state"] == "queued"
+    assert result["stopped_due_to_profile_capacity"] is True
+    assert result["stopped_due_to_max_stage_runs"] is False
+    assert result["stage_results"][0]["stage"] == "run_once"
+    assert result["stage_results"][0]["result"]["final_state"] == "profile_capacity_wait"
+    assert result["stage_results"][0]["result"]["reason"] == "no_usable_profiles"
+
+
+def test_drain_show_queue_waits_when_global_notebooklm_lock_is_held(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    store.upsert_job(
+        JobIdentity(
+            show_slug="personlighedspsykologi-en",
+            subject_slug="personlighedspsykologi",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    profiles_file, state_file = _write_profile_capacity_fixture(
+        tmp_path,
+        cooled=False,
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(state_file))
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.enqueue_discovered_jobs",
+        lambda **kwargs: {"discovered": [], "enqueued": []},
+    )
+    monkeypatch.setattr(store, "retry_ready_jobs", lambda show_slug: [])
+    _patch_non_execution_stages_idle(monkeypatch)
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.execute_job",
+        lambda **kwargs: (_ for _ in ()).throw(AssertionError("execute_job should not be called")),
+    )
+
+    def fake_global_lock(scope: str = "global", *, blocking: bool = False):
+        raise QueueLockError(f"Lock is already held for {scope}")
+
+    monkeypatch.setattr(store, "acquire_global_lock", fake_global_lock)
+
+    result = drain_show_queue(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        options=DrainShowOptions(repo_root=repo_root),
+    )
+
+    stage_result = result["stage_results"][0]["result"]
+    assert result["stopped_due_to_profile_capacity"] is True
+    assert stage_result["final_state"] == "profile_capacity_wait"
+    assert stage_result["reason"] == "notebooklm_execution_lock_held"
+
+
+def test_drain_show_queue_executes_when_profile_capacity_is_available(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(
+        JobIdentity(
+            show_slug="personlighedspsykologi-en",
+            subject_slug="personlighedspsykologi",
+            lecture_key="W1L1",
+            content_types=("audio",),
+            config_hash="cfg-1",
+        )
+    )
+    profiles_file, state_file = _write_profile_capacity_fixture(
+        tmp_path,
+        cooled=False,
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(state_file))
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.enqueue_discovered_jobs",
+        lambda **kwargs: {"discovered": [], "enqueued": []},
+    )
+    monkeypatch.setattr(store, "retry_ready_jobs", lambda show_slug: [])
+    _patch_non_execution_stages_idle(monkeypatch)
+    calls: list[str] = []
+
+    def fake_execute_job(**kwargs):
+        calls.append(kwargs["show_slug"])
+        store.transition_job(
+            show_slug=kwargs["show_slug"],
+            job_id=str(job["job_id"]),
+            state=STATE_COMPLETED,
+            expected_states={"queued"},
+        )
+        return {"final_state": STATE_COMPLETED}
+
+    monkeypatch.setattr("notebooklm_queue.orchestrator.execute_job", fake_execute_job)
+
+    result = drain_show_queue(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        options=DrainShowOptions(repo_root=repo_root),
+    )
+
+    assert calls == ["personlighedspsykologi-en"]
+    assert result["stopped_due_to_profile_capacity"] is False
+    assert result["stage_run_count"] == 1
+    assert result["stage_results"][0]["result"]["final_state"] == STATE_COMPLETED
+
+
+def test_serve_show_queue_treats_profile_capacity_wait_as_clean_stop(
+    tmp_path: Path, monkeypatch
+) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    store = QueueStore(tmp_path / "queue-root")
+    wait_result = {
+        "final_state": "profile_capacity_wait",
+        "reason": "no_usable_profiles",
+        "sleep_seconds": 300,
+        "capacity": {"has_capacity": False},
+    }
+    monkeypatch.setattr(
+        "notebooklm_queue.orchestrator.drain_show_queue",
+        lambda **kwargs: {
+            "show_slug": kwargs["show_slug"],
+            "stopped_due_to_max_stage_runs": False,
+            "stopped_due_to_profile_capacity": True,
+            "profile_capacity_wait": wait_result,
+            "stage_run_count": 1,
+            "queue_summary": store.summarize_jobs(show_slug=kwargs["show_slug"]),
+        },
+    )
+
+    result = serve_show_queue(
+        store=store,
+        show_slug="personlighedspsykologi-en",
+        options=ServeShowOptions(drain=DrainShowOptions(repo_root=repo_root)),
+    )
+
+    assert result["stop_reason"] == "profile_capacity_wait"
+    assert result["wait_plan"] == wait_result
 
 
 def test_drain_show_queue_repairs_retryable_failures_before_planning_progress(

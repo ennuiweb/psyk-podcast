@@ -14,6 +14,7 @@ from .execution import ExecutionOptions, execute_job
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
 from .orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
+from .profile_capacity import inspect_profile_capacity
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .runner import build_dry_run_plan
@@ -94,6 +95,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     lock = subparsers.add_parser("lock-check", help="Acquire and release a show lock.")
     lock.add_argument("--show-slug", required=True)
+
+    profile_status = subparsers.add_parser(
+        "profile-status",
+        help="Inspect active NotebookLM profile capacity without claiming queue jobs.",
+    )
+    profile_status.add_argument("--profiles-file", type=Path)
+    profile_status.add_argument("--profile-priority")
+    profile_status.add_argument("--profile-state-file", type=Path)
 
     discover = subparsers.add_parser("discover", help="Discover lecture-scoped jobs for one supported show.")
     discover.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -283,6 +292,15 @@ def main(argv: list[str] | None = None) -> int:
         _print_json(payload)
         return 0
 
+    if args.command == "profile-status":
+        payload = inspect_profile_capacity(
+            profiles_file=Path(args.profiles_file).resolve() if args.profiles_file else None,
+            profile_priority=args.profile_priority,
+            profile_state_file=Path(args.profile_state_file).resolve() if args.profile_state_file else None,
+        )
+        _print_json(payload)
+        return 0
+
     if args.command == "discover":
         repo_root = Path(args.repo_root).resolve()
         content_types = tuple(args.content_types) if args.content_types else None
@@ -444,7 +462,12 @@ def main(argv: list[str] | None = None) -> int:
             ),
         )
         _print_json(payload)
-        return 0 if payload.get("stop_reason") in {"idle", "blocked_backlog_remaining", "service_timeout_reached"} else 1
+        return (
+            0
+            if payload.get("stop_reason")
+            in {"idle", "blocked_backlog_remaining", "service_timeout_reached", "profile_capacity_wait"}
+            else 1
+        )
 
     parser.error(f"Unhandled command: {args.command}")
     return 2

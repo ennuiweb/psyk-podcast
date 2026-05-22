@@ -386,6 +386,68 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual([meta["profile"] for _, meta in candidates], ["freudagsbaren", "baduljen"])
         self.assertNotIn("auto-selecting", stdout.getvalue())
 
+    def test_build_auth_candidates_skips_auth_stale_profiles(self):
+        mod = _load_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_root = Path(tmpdir)
+            profiles_path = tmp_root / "profiles.json"
+            stale_storage = tmp_root / "stale.json"
+            fresh_storage = tmp_root / "fresh.json"
+            stale_storage.write_text("{}", encoding="utf-8")
+            fresh_storage.write_text("{}", encoding="utf-8")
+            os.utime(stale_storage, (1000, 1000))
+            os.utime(fresh_storage, (3000, 3000))
+            profiles_path.write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "stale": str(stale_storage),
+                            "fresh": str(fresh_storage),
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            notebooklm_home = tmp_root / "notebooklm-home"
+            notebooklm_home.mkdir()
+            (notebooklm_home / "profile_state.json").write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "stale": {
+                                "last_error": "auth",
+                                "last_used": 2000,
+                                "cooldown_until": 0,
+                            },
+                            "fresh": {
+                                "last_error": None,
+                                "last_used": 1500,
+                                "cooldown_until": 0,
+                            },
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            args = SimpleNamespace(
+                storage=None,
+                profile=None,
+                rotate_on_rate_limit=True,
+                profiles_file=str(profiles_path),
+                profile_priority="stale,fresh",
+                preferred_profile=None,
+                exclude_profiles=None,
+            )
+
+            with (
+                patch.dict(os.environ, {"NOTEBOOKLM_HOME": str(notebooklm_home)}, clear=False),
+                patch("sys.stdout", new_callable=io.StringIO) as stdout,
+            ):
+                candidates = mod._build_auth_candidates(args)
+
+        self.assertEqual([meta["profile"] for _, meta in candidates], ["fresh"])
+        self.assertIn("Skipping profiles with stale auth: stale", stdout.getvalue())
+
     def test_strict_exclude_profiles_fails_when_every_profile_is_excluded(self):
         mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:

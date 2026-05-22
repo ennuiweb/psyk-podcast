@@ -433,6 +433,20 @@ def _profile_last_used(state: dict, profile: str) -> float:
         return 0.0
 
 
+def _profile_auth_is_stale(state: dict, profile: str, storage_path: str) -> bool:
+    entry = _profile_state_entry(state, profile)
+    if str(entry.get("last_error") or "").strip() != "auth":
+        return False
+    last_used = _profile_last_used(state, profile)
+    if last_used <= 0:
+        return False
+    try:
+        storage_mtime = Path(storage_path).expanduser().stat().st_mtime
+    except OSError:
+        return True
+    return storage_mtime <= last_used
+
+
 def _record_profile_result(
     state: dict,
     profile: str,
@@ -620,8 +634,26 @@ def _build_auth_candidates(args: argparse.Namespace) -> list[tuple[str | None, d
         if args.profile and args.profile in cooldown_profiles:
             raise ValueError(f"Profile '{args.profile}' is on cooldown.")
 
+    stale_auth_profiles = [
+        name for name, path in profiles.items() if _profile_auth_is_stale(profile_state, name, path)
+    ]
+    if stale_auth_profiles:
+        print(
+            "Skipping profiles with stale auth: "
+            f"{', '.join(sorted(stale_auth_profiles))}"
+        )
+        profiles = {name: path for name, path in profiles.items() if name not in stale_auth_profiles}
+        if args.profile and args.profile in stale_auth_profiles:
+            raise ValueError(f"Profile '{args.profile}' has stale auth; re-authenticate it before use.")
+
     if not profiles:
-        raise ValueError("No usable profiles found after filtering missing/cooldown entries.")
+        raise ValueError(
+            "No usable profiles found after filtering missing/cooldown entries: "
+            "all configured profiles are missing, cooling, excluded, or auth-stale."
+        )
+
+    if preferred in stale_auth_profiles:
+        preferred = None
 
     if rotate_allowed:
         ordered: list[str] = []

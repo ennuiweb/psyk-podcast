@@ -130,6 +130,14 @@ Hosted verification completed on 2026-05-23:
 - latest hosted profile-refresh outcome: `g2a_geminiaiadvanced_kimngan12795` refreshed successfully; the ten older profiles failed validation with Google sign-in redirects and still require real reauth
 - timer enabled; next scheduled profile-refresh runs will keep currently valid and newly reauthed profiles warm, while preserving rate-limit cooldowns
 
+## Profile Reauth Checkpoints
+
+Use this section to compare how long browser storage-state auth survives after the keepalive/probe hardening.
+
+- 2026-05-23T19:20:19Z: `oskarhoegsgaard` was reauthed locally and passed local `notebooklm list --json`; the uploaded file checksum matched the Hetzner copy, but hosted `refresh-profiles --force` at 2026-05-23T19:23:17Z still failed with a Google sign-in redirect, so the hosted queue kept this profile `auth_stale`.
+- 2026-05-23T19:22:58Z: `tjekdepotadmin` was reauthed locally and passed local `notebooklm list --json`; after explicit safe sync to Hetzner, hosted `refresh-profiles --force` at 2026-05-23T19:23:17Z passed keepalive plus `notebooklm list --json` probe and repaired the profile to `usable`.
+- 2026-05-23T19:23:20Z hosted capacity after the reauth attempt: `usable=3` (`default`, `stanhawkservices`, `tjekdepotadmin`), `cooldown=3`, `auth_stale=3`.
+
 Required repo workflows completed successfully for the latest queue commits:
 
 - `a5b2748` -> Actions run `25183786210`

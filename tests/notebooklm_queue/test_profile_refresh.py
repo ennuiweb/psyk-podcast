@@ -151,6 +151,7 @@ def test_refresh_profiles_can_reclaim_after_auth_recovery(tmp_path: Path, monkey
     assert options.max_deletions == 9
     assert options.dry_run is True
     assert options.use_lock is False
+    assert options.actor == "operator:auth-recovery"
 
 
 def test_refresh_profiles_can_reclaim_after_cooldown_recovery(tmp_path: Path, monkeypatch) -> None:
@@ -209,6 +210,58 @@ def test_refresh_profiles_can_reclaim_after_cooldown_recovery(tmp_path: Path, mo
     assert options.profiles == ("limited",)
     assert options.actor == "operator:profile-recovery"
     assert options.use_lock is False
+
+
+def test_refresh_profiles_auth_recovery_flag_does_not_reclaim_cooldown_recovery(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "limited.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = _write_profiles_file(tmp_path, {"limited": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "limited": {
+                        "last_error": "rate_limit",
+                        "cooldown_until": (now - timedelta(minutes=1)).timestamp(),
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    reclaim_calls = []
+
+    def fake_reclaim_notebooks(*, store, options, **_kwargs):
+        reclaim_calls.append((store, options))
+        return {"status": "ok", "summary": {"dry_run": 1}, "profiles": []}
+
+    monkeypatch.setattr(
+        "notebooklm_queue.notebook_reclaim.reclaim_notebooks",
+        fake_reclaim_notebooks,
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            force=True,
+            use_lock=False,
+            reclaim_on_auth_recovery=True,
+        ),
+        refresher=_successful_refresher,
+        now=now,
+    )
+
+    assert result["status"] == "ok"
+    assert result["profiles"][0]["recovered_from_cooldown"] is True
+    assert "reclaim_reports" not in result
+    assert reclaim_calls == []
 
 
 def test_refresh_profiles_preserves_rate_limit_cooldown(tmp_path: Path) -> None:

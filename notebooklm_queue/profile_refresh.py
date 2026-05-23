@@ -177,7 +177,11 @@ def _refresh_profiles_unlocked(
 
     reclaim_reports = []
     if options.reclaim_on_recovery or options.reclaim_on_auth_recovery:
-        for profile in _profiles_recovered_for_reclaim(profile_results):
+        actor_suffix = "profile-recovery" if options.reclaim_on_recovery else "auth-recovery"
+        for profile in _profiles_recovered_for_reclaim(
+            profile_results,
+            include_cooldown=bool(options.reclaim_on_recovery),
+        ):
             reclaim_reports.append(
                 _reclaim_recovered_profile(
                     store=store,
@@ -185,6 +189,7 @@ def _refresh_profiles_unlocked(
                     profiles_file=profiles_file,
                     profile_state_file=state_file,
                     profile=profile,
+                    actor_suffix=actor_suffix,
                 )
             )
 
@@ -285,13 +290,17 @@ def _refresh_one_profile(
     }
 
 
-def _profiles_recovered_for_reclaim(profile_results: list[dict[str, Any]]) -> list[str]:
+def _profiles_recovered_for_reclaim(
+    profile_results: list[dict[str, Any]],
+    *,
+    include_cooldown: bool,
+) -> list[str]:
     profiles: list[str] = []
     for item in profile_results:
         if item.get("status") != "refreshed":
             continue
         recovered_from_auth = item.get("recovered_from_error") == "auth"
-        recovered_from_cooldown = bool(item.get("recovered_from_cooldown"))
+        recovered_from_cooldown = include_cooldown and bool(item.get("recovered_from_cooldown"))
         if recovered_from_auth or recovered_from_cooldown:
             profiles.append(str(item["name"]))
     return profiles
@@ -304,6 +313,7 @@ def _reclaim_recovered_profile(
     profiles_file: Path,
     profile_state_file: Path,
     profile: str,
+    actor_suffix: str,
 ) -> dict[str, Any]:
     from .notebook_reclaim import NotebookReclaimOptions, reclaim_notebooks
 
@@ -317,7 +327,7 @@ def _reclaim_recovered_profile(
             target_free_slots=int(options.reclaim_target_free_slots),
             max_deletions=int(options.reclaim_max_deletions),
             dry_run=bool(options.reclaim_dry_run),
-            actor=f"{options.actor}:profile-recovery",
+            actor=f"{options.actor}:{actor_suffix}",
             use_lock=False,
         ),
     )

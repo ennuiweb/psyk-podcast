@@ -29,8 +29,15 @@ if [[ "${NOTEBOOKLM_PROFILE_REFRESH_FORCE:-0}" == "1" ]]; then
   cmd+=(--force)
 fi
 
-if [[ "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_RECOVERY:-0}" == "1" || "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_AUTH_RECOVERY:-0}" == "1" ]]; then
+if [[ "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_RECOVERY:-0}" == "1" ]]; then
   cmd+=(--reclaim-on-recovery)
+  cmd+=(--reclaim-target-free-slots "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_TARGET_FREE_SLOTS:-25}")
+  cmd+=(--reclaim-max-deletions "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_MAX_DELETIONS:-25}")
+  if [[ "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_APPLY:-0}" == "1" ]]; then
+    cmd+=(--reclaim-apply)
+  fi
+elif [[ "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_AUTH_RECOVERY:-0}" == "1" ]]; then
+  cmd+=(--reclaim-on-auth-recovery)
   cmd+=(--reclaim-target-free-slots "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_TARGET_FREE_SLOTS:-25}")
   cmd+=(--reclaim-max-deletions "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_MAX_DELETIONS:-25}")
   if [[ "${NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_APPLY:-0}" == "1" ]]; then

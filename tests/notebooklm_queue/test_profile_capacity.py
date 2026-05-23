@@ -164,3 +164,40 @@ def test_inspect_profile_capacity_reports_auth_stale_before_auth_cooldown(
     assert capacity["manual_intervention_required"] is True
     assert capacity["next_available_at"] is None
     assert capacity["profiles"][0]["status"] == "auth_stale"
+
+
+def test_failed_auth_refresh_keeps_profile_stale_even_after_storage_sync(tmp_path: Path) -> None:
+    now = datetime(2026, 5, 20, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    last_used = now.timestamp() - 600
+    os.utime(storage, (now.timestamp(), now.timestamp()))
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(json.dumps({"profiles": {"default": str(storage)}}), encoding="utf-8")
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_error": "auth",
+                        "last_refresh_error_type": "auth",
+                        "last_refresh_status": "failed",
+                        "last_used": last_used,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    capacity = inspect_profile_capacity(
+        profiles_file=profiles_file,
+        profile_state_file=state_file,
+        now=now,
+    )
+
+    assert capacity["has_capacity"] is False
+    assert capacity["manual_intervention_required"] is True
+    assert capacity["profiles"][0]["status"] == "auth_stale"
+    assert capacity["profiles"][0]["reason"] == "last_refresh_failed_auth"

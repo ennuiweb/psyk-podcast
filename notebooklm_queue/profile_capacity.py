@@ -236,12 +236,15 @@ def _profile_record(
     last_used = _coerce_float(state_entry.get("last_used"), 0.0)
     last_refreshed = _coerce_float(state_entry.get("last_refreshed"), 0.0)
     last_error = str(state_entry.get("last_error") or "").strip()
+    last_refresh_status = str(state_entry.get("last_refresh_status") or "").strip()
+    last_refresh_error_type = str(state_entry.get("last_refresh_error_type") or "").strip()
     storage_exists = storage_path.exists()
     storage_mtime = _storage_mtime(storage_path) if storage_exists else None
     status = "usable"
     reason = "available"
     cooldown_remaining = 0
 
+    auth_refresh_failed = last_refresh_status == "failed" and last_refresh_error_type == "auth"
     auth_storage_stale = last_error == "auth" and last_used > 0 and (
         storage_mtime is None or storage_mtime <= last_used
     )
@@ -249,6 +252,9 @@ def _profile_record(
     if not storage_exists:
         status = "missing_storage"
         reason = "storage_file_missing"
+    elif auth_refresh_failed:
+        status = "auth_stale"
+        reason = "last_refresh_failed_auth"
     elif auth_storage_stale:
         status = "auth_stale"
         reason = "storage_not_refreshed_after_auth_failure"

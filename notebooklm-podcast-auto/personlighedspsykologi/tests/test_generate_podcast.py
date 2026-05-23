@@ -10,7 +10,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from notebooklm import RPCError
+from notebooklm import NotebookLimitError, RPCError
 from notebooklm.rpc.types import RPCMethod, ReportFormat
 
 
@@ -81,6 +81,15 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertTrue(mod._should_rotate_profile(exc))
         self.assertEqual(mod._classify_error(exc), "profile_error")
 
+    def test_classifies_notebook_limit_error_as_profile_error(self):
+        mod = _load_module()
+        exc = NotebookLimitError(499, limit=500)
+
+        self.assertTrue(mod._is_notebook_capacity_error(exc))
+        self.assertTrue(mod._should_reclaim_oldest_notebook(exc))
+        self.assertTrue(mod._should_rotate_profile(exc))
+        self.assertEqual(mod._classify_error(exc), "profile_error")
+
     def test_classifies_create_artifact_missing_result_as_profile_error(self):
         mod = _load_module()
         exc = RPCError(
@@ -104,6 +113,33 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual(
             mod._error_details(exc),
             {
+                "rpc_method_id": RPCMethod.CREATE_NOTEBOOK.value,
+                "rpc_code": 3,
+                "rpc_found_ids": [RPCMethod.CREATE_NOTEBOOK.value],
+            },
+        )
+
+    def test_error_details_include_notebook_limit_metadata(self):
+        mod = _load_module()
+        original = RPCError(
+            "RPC CCqFvf returned null result with status code 3",
+            method_id=RPCMethod.CREATE_NOTEBOOK.value,
+            rpc_code=3,
+            found_ids=[RPCMethod.CREATE_NOTEBOOK.value],
+        )
+        exc = NotebookLimitError(
+            499,
+            limit=500,
+            known_limits=(500,),
+            original_error=original,
+        )
+
+        self.assertEqual(
+            mod._error_details(exc),
+            {
+                "notebook_limit_current_count": 499,
+                "notebook_limit": 500,
+                "notebook_known_limits": [500],
                 "rpc_method_id": RPCMethod.CREATE_NOTEBOOK.value,
                 "rpc_code": 3,
                 "rpc_found_ids": [RPCMethod.CREATE_NOTEBOOK.value],
@@ -153,6 +189,48 @@ class GeneratePodcastTests(unittest.TestCase):
                         "No result found for RPC ID: CCqFvf",
                         method_id=RPCMethod.CREATE_NOTEBOOK.value,
                     )
+                return SimpleNamespace(id="nb-created", title=title)
+
+            async def delete(self, notebook_id):
+                self.deleted_ids.append(notebook_id)
+                return True
+
+        client = SimpleNamespace(notebooks=FakeNotebooks())
+
+        notebook = asyncio.run(mod._resolve_notebook(client, "Target", reuse=False))
+
+        self.assertEqual(notebook.id, "nb-created")
+        self.assertEqual(client.notebooks.deleted_ids, ["nb-oldest"])
+        self.assertEqual(client.notebooks.create_calls, 2)
+
+    def test_resolve_notebook_deletes_oldest_owned_notebook_on_notebook_limit_error(self):
+        mod = _load_module()
+
+        class FakeNotebooks:
+            def __init__(self):
+                self.create_calls = 0
+                self.deleted_ids = []
+
+            async def list(self):
+                return [
+                    SimpleNamespace(
+                        id="nb-newer",
+                        title="Newer",
+                        created_at=datetime(2026, 2, 1),
+                        is_owner=True,
+                    ),
+                    SimpleNamespace(
+                        id="nb-oldest",
+                        title="Oldest",
+                        created_at=datetime(2026, 1, 1),
+                        is_owner=True,
+                    ),
+                ]
+
+            async def create(self, title):
+                self.create_calls += 1
+                if self.create_calls == 1:
+                    raise NotebookLimitError(499, limit=500)
                 return SimpleNamespace(id="nb-created", title=title)
 
             async def delete(self, notebook_id):

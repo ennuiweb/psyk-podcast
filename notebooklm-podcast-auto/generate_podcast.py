@@ -22,7 +22,7 @@ PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 FAIL_IF_ALL_PROFILES_EXCLUDED_ENV_VAR = "NOTEBOOKLM_FAIL_IF_ALL_PROFILES_EXCLUDED"
 PROFILE_RATE_LIMIT_COOLDOWN_ENV_VAR = "NOTEBOOKLM_PROFILE_RATE_LIMIT_COOLDOWN_SECONDS"
 
-from notebooklm import NotebookLMClient, RPCError
+from notebooklm import NotebookLimitError, NotebookLMClient, RPCError
 from notebooklm.paths import get_storage_path
 from notebooklm.rpc.types import (
     AudioFormat,
@@ -336,6 +336,8 @@ def _is_profile_rotation_error(exc: Exception) -> bool:
 
 
 def _is_notebook_capacity_error(exc: Exception) -> bool:
+    if isinstance(exc, NotebookLimitError):
+        return True
     if not isinstance(exc, RPCError):
         return False
     if exc.method_id != RPCMethod.CREATE_NOTEBOOK.value:
@@ -352,6 +354,7 @@ def _should_rotate_profile(exc: Exception) -> bool:
     return (
         _is_rate_limit_error(exc)
         or _is_auth_error(exc)
+        or _is_notebook_capacity_error(exc)
         or _is_profile_rotation_error(exc)
     )
 
@@ -475,13 +478,27 @@ def _classify_error(exc: Exception) -> str:
         return "rate_limit"
     if _is_auth_error(exc):
         return "auth"
-    if _is_profile_rotation_error(exc):
+    if _is_notebook_capacity_error(exc) or _is_profile_rotation_error(exc):
         return "profile_error"
     return "other"
 
 
 def _error_details(exc: Exception) -> dict[str, object]:
     details: dict[str, object] = {}
+    if isinstance(exc, NotebookLimitError):
+        details["notebook_limit_current_count"] = exc.current_count
+        if exc.limit is not None:
+            details["notebook_limit"] = exc.limit
+        if exc.known_limits:
+            details["notebook_known_limits"] = list(exc.known_limits)
+        if isinstance(exc.original_error, RPCError):
+            original = exc.original_error
+            if original.method_id is not None:
+                details["rpc_method_id"] = original.method_id
+            if original.rpc_code is not None:
+                details["rpc_code"] = original.rpc_code
+            if original.found_ids:
+                details["rpc_found_ids"] = original.found_ids
     if isinstance(exc, RPCError):
         if exc.method_id is not None:
             details["rpc_method_id"] = exc.method_id

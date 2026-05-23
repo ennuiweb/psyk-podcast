@@ -285,6 +285,37 @@ def test_execute_job_auto_schedules_retry_for_transient_notebooklm_generation_fa
     assert "RPC CREATE_NOTEBOOK failed" in updated["last_error"]
 
 
+def test_execute_job_auto_schedules_retry_for_notebook_limit_failure(tmp_path: Path) -> None:
+    repo_root = _make_repo_root(tmp_path)
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/generate_week.py",
+        "print("
+        "'Generation failed: Cannot create notebook: account appears to be at or very near "
+        "the NotebookLM notebook limit (499/500 owned notebooks reported).'"
+        ")\n"
+        "raise SystemExit(2)\n",
+    )
+    _write_phase_script(
+        repo_root / "notebooklm-podcast-auto/bioneuro/scripts/download_week.py",
+        "print('should not run')\n",
+    )
+    store = QueueStore(tmp_path / "queue-root")
+    job = store.upsert_job(_identity())
+
+    result = execute_job(
+        store=store,
+        show_slug="bioneuro",
+        job_id=str(job["job_id"]),
+        options=ExecutionOptions(repo_root=repo_root),
+    )
+
+    assert result["final_state"] == STATE_RETRY_SCHEDULED
+    updated = store.load_job(show_slug="bioneuro", job_id=str(job["job_id"]))
+    assert updated["state"] == STATE_RETRY_SCHEDULED
+    assert updated["next_retry_at"]
+    assert "Cannot create notebook" in updated["last_error"]
+
+
 def test_execute_job_auto_schedules_retry_when_sources_are_not_ready(tmp_path: Path) -> None:
     repo_root = _make_repo_root(tmp_path)
     _write_phase_script(

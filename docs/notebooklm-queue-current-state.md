@@ -21,6 +21,7 @@ The following queue milestones are implemented on `main`:
 - `0d51f31` - real generate/download execution
 - `2ce0606` - publish-bundle preparation
 - `2092b46` - NotebookLM notebook-capacity recovery by deleting the oldest owned notebook and retrying once
+- `2026-05-23` - notebook-capacity recovery was updated to recognize `notebooklm-py`'s newer `NotebookLimitError` wrapper as well as the legacy raw `CREATE_NOTEBOOK` `RPCError`; queue retry classification also recognizes notebook-limit text without relying on stderr RPC noise
 - `a5b2748` - R2 object upload for approved queue bundles
 - `ad01a4f` - repo metadata rebuild from uploaded objects
 - `532ac58` - queue-owned quiz sync plus allowlisted repo publication

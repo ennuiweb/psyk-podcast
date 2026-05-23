@@ -33,7 +33,10 @@ PROFILE_COOLDOWN_ERROR_TOKENS = (
 )
 
 TRANSIENT_NOTEBOOKLM_ERROR_TOKENS = (
+    "cannot create notebook: account appears to be at or very near",
     "generator timed out before writing a usable request log",
+    "notebook limit",
+    "notebook quota",
     "rpc create_artifact failed",
     "rpc create_notebook failed",
     "null result data (possible server error",

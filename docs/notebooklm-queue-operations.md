@@ -76,13 +76,16 @@ NotebookLM profile rotation on Hetzner:
 
 ```bash
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
-NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,baduljen,oskarhoegsgaard
+NOTEBOOKLM_PROFILE_PRIORITY=freudagsbaren,oskarvedel,tjekdepotadmin,nopeeeh,vedeloskar,stanhawkservices,oskarhoegsgaard
 ```
 
 `personlighedspsykologi-en` and `personlighedspsykologi-da` forward these
 environment values into their queue-owned generate commands as
 `--profiles-file` and `--profile-priority`. `bioneuro` does not forward them
 because its current generator wrapper does not accept those flags.
+Do not reintroduce `baduljen` or `djspindoctor` to the committed profile map,
+hosted profile bundle, or priority lists; those accounts are intentionally
+retired from queue rotation.
 
 Queue alerting for stale auth and repeated rate-limit exhaustion:
 
@@ -196,7 +199,7 @@ Profile refresh env:
 ```bash
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
 NOTEBOOKLM_PROFILE_STATE_FILE=/root/.notebooklm/profile_state.json
-NOTEBOOKLM_PROFILE_PRIORITY=default,djspindoctor,nopeeeh,oskarvedel,baduljen,freudagsbaren,oskarhoegsgaard,stanhawkservices,tjekdepotadmin,vedeloskar,g2a_geminiaiadvanced_kimngan12795
+NOTEBOOKLM_PROFILE_PRIORITY=default,nopeeeh,oskarvedel,freudagsbaren,oskarhoegsgaard,stanhawkservices,tjekdepotadmin,vedeloskar,g2a_geminiaiadvanced_kimngan12795
 NOTEBOOKLM_PROFILE_REFRESH_MIN_AGE_SECONDS=900
 ```
 

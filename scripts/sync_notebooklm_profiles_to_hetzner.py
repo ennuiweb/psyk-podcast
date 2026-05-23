@@ -59,7 +59,11 @@ def parse_args() -> argparse.Namespace:
         "--profile",
         action="append",
         default=[],
-        help="Specific profile name to sync. Repeat or pass a comma-separated list.",
+        help=(
+            "Specific profile storage file to upload. Repeat or pass a comma-separated list. "
+            "The remote profiles bundle still contains every profile in the source file, so a "
+            "single-profile reauth cannot shrink queue capacity."
+        ),
     )
     parser.add_argument(
         "--dry-run",
@@ -120,6 +124,11 @@ def remote_filename(name: str) -> str:
     return f"{slug}.json"
 
 
+def build_remote_bundle(profile_names: list[str], remote_dir: str) -> dict[str, str]:
+    base = remote_dir.rstrip("/")
+    return {name: f"{base}/{remote_filename(name)}" for name in profile_names}
+
+
 def run(cmd: list[str], *, dry_run: bool) -> None:
     print("+", " ".join(cmd))
     if dry_run:
@@ -136,6 +145,7 @@ def main() -> int:
     profiles_path = Path(args.profiles_file).expanduser().resolve()
     profiles = load_profiles(profiles_path)
     names = selected_profile_names(profiles, args.profile)
+    bundle_names = sorted(profiles)
 
     missing = [name for name in names if not profiles[name].exists()]
     if missing:
@@ -144,13 +154,12 @@ def main() -> int:
             + ", ".join(f"{name} -> {profiles[name]}" for name in missing)
         )
 
-    bundle: dict[str, str] = {}
+    bundle = build_remote_bundle(bundle_names, args.remote_dir)
     with tempfile.TemporaryDirectory(prefix="notebooklm-profiles-") as tmp_dir_raw:
         tmp_dir = Path(tmp_dir_raw)
         for name in names:
             target_name = remote_filename(name)
             shutil.copy2(profiles[name], tmp_dir / target_name)
-            bundle[name] = f"{args.remote_dir.rstrip('/')}/{target_name}"
         bundle_path = tmp_dir / "profiles.host.json"
         bundle_path.write_text(
             json.dumps({"profiles": bundle}, indent=2, sort_keys=True) + "\n",
@@ -160,6 +169,7 @@ def main() -> int:
         print(f"Source profiles file: {profiles_path}")
         for name in names:
             print(f"- {name}: {profiles[name]} -> {bundle[name]}")
+        print(f"- active bundle profiles: {', '.join(bundle_names)}")
         print(f"- bundle: {args.remote_profiles_file}")
 
         run(

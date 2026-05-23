@@ -273,3 +273,57 @@ def test_active_cooldown_takes_precedence_over_expired_validation(
     assert capacity["manual_intervention_required"] is False
     assert capacity["profiles"][0]["status"] == "cooldown"
     assert capacity["wait_seconds"] == 2700
+
+
+def test_cooldown_plus_auth_stale_waits_for_cooldown_without_manual_failure(
+    tmp_path: Path,
+) -> None:
+    now = datetime(2026, 5, 20, 12, tzinfo=UTC)
+    cooled_storage = tmp_path / "cooled.json"
+    stale_storage = tmp_path / "stale.json"
+    cooled_storage.write_text("{}", encoding="utf-8")
+    stale_storage.write_text("{}", encoding="utf-8")
+    last_used = now.timestamp() - 60
+    os.utime(stale_storage, (last_used - 30, last_used - 30))
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "cooled": str(cooled_storage),
+                    "stale": str(stale_storage),
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "cooled": {
+                        "last_error": "rate_limit",
+                        "cooldown_until": (now + timedelta(minutes=20)).timestamp(),
+                    },
+                    "stale": {
+                        "last_error": "auth",
+                        "last_used": last_used,
+                    },
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    capacity = inspect_profile_capacity(
+        profiles_file=profiles_file,
+        profile_state_file=state_file,
+        now=now,
+    )
+
+    assert capacity["has_capacity"] is False
+    assert capacity["manual_intervention_required"] is False
+    assert capacity["next_available_at"] == "2026-05-20T12:20:00+00:00"
+    assert capacity["wait_seconds"] == 1200
+    assert capacity["status_counts"] == {"auth_stale": 1, "cooldown": 1}

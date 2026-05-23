@@ -107,7 +107,11 @@ def inspect_profile_capacity(
 
     has_capacity = bool(usable_profiles)
     next_available_ts = min(cooldown_untils) if cooldown_untils else None
-    manual_required = not has_capacity and _requires_manual_intervention(status_counts)
+    manual_required = (
+        not has_capacity
+        and next_available_ts is None
+        and _requires_manual_intervention(status_counts)
+    )
     next_available_at = (
         datetime.fromtimestamp(next_available_ts, tz=UTC).replace(microsecond=0).isoformat()
         if next_available_ts is not None

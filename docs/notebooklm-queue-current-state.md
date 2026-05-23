@@ -117,6 +117,16 @@ Local verification completed:
 - full `tests/notebooklm_queue` suite passed after the latest repo-publish hardening and downstream sync work
 - full `tests/notebooklm_queue` suite passed after the profile-refresh implementation (`133 passed`)
 
+Hosted verification completed on 2026-05-23:
+
+- `/opt/podcasts` fast-forwarded to the profile-refresh implementation on `main`
+- `podcasts-notebooklm-profile-refresh.service` and `.timer` installed and daemon-reloaded
+- `/etc/podcasts/notebooklm-queue/profile-refresh.env` installed for the shared hosted profile set
+- manual `refresh-profiles --force` run produced a durable report under `/var/lib/podcasts/notebooklm-queue/profile-refresh/`
+- systemd service smoke completed successfully and wrote a second report
+- latest hosted profile-refresh outcome: `g2a_geminiaiadvanced_kimngan12795` refreshed successfully; the ten older profiles failed validation with Google sign-in redirects and still require real reauth
+- timer enabled; next scheduled profile-refresh runs will keep currently valid and newly reauthed profiles warm, while preserving rate-limit cooldowns
+
 Required repo workflows completed successfully for the latest queue commits:
 
 - `a5b2748` -> Actions run `25183786210`

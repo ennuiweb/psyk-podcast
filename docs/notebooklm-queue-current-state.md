@@ -138,6 +138,15 @@ Use this section to compare how long browser storage-state auth survives after t
 - 2026-05-23T19:22:58Z: `tjekdepotadmin` was reauthed locally and passed local `notebooklm list --json`; after explicit safe sync to Hetzner, hosted `refresh-profiles --force` at 2026-05-23T19:23:17Z passed keepalive plus `notebooklm list --json` probe and repaired the profile to `usable`.
 - 2026-05-23T19:23:20Z hosted capacity after the reauth attempt: `usable=3` (`default`, `stanhawkservices`, `tjekdepotadmin`), `cooldown=3`, `auth_stale=3`.
 
+## Dead Letter Checkpoint
+
+As of 2026-05-23, the visible `personlighedspsykologi-da` dead-letter backlog is superseded queue history, not active work to resume blindly:
+
+- 43 total `dead_letter` records.
+- 22 records are for obsolete Danish config hash `55f02f15a2c7b8a6`, superseded by queue hash `87f3a51dce5b5cf4`.
+- 21 records were stale previous-config Danish queue records retired after the current config cohort `e75314af2745ddb6` was enqueued.
+- Decision: do not reschedule these records as-is, and do not disable the dead-letter feature. A future cleanup can split this into a clearer `superseded` or `cancelled_superseded` terminal state, leaving `dead_letter` for genuine failures.
+
 Required repo workflows completed successfully for the latest queue commits:
 
 - `a5b2748` -> Actions run `25183786210`

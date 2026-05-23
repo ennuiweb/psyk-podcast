@@ -135,6 +135,11 @@ Notes:
   show, subject, lecture, and content types when the current config hash
   supersedes them. This also covers stale records whose lectures are already
   published and therefore skipped by normal discovery.
+- Current operator policy: do not bulk-reschedule `dead_letter` records without
+  inspecting the reason. Superseded config cohorts should stay terminal; only
+  genuine failed jobs should be considered for targeted requeue. Keep the
+  dead-letter feature enabled because it prevents stale queue records from
+  running after config changes.
 - NotebookLM auth expiry now maps to `blocked_auth_stale`, which is treated as an operator-owned blocker instead of a timed retry. The queue keeps draining unrelated `retry_scheduled` and `waiting_for_artifact` queue records for the same show and only exits with `blocked_backlog_remaining` when blocked auth is all that remains.
 - Generic `failed_retryable` backlog still exits nonzero for manual intervention. Only explicit operator-owned blocked states such as `blocked_auth_stale` produce the clean degraded `blocked_backlog_remaining` stop reason.
 - NotebookLM source-ingestion stalls now also map to `retry_scheduled`: if generation ends with `Sources not ready after waiting`, the queue schedules a retry instead of leaving the lecture in a blocking failed state.
@@ -151,6 +156,14 @@ Notes:
 - Keep `NOTEBOOKLM_PROFILE_PRIORITY` ordered so accounts that can still create notebooks and artifacts are tried first. The generator now rotates on transient NotebookLM create/list/get RPC failures as well as explicit auth/rate-limit faults, but a good priority order still reduces churn during partial account outages.
 - Queue-managed subprocesses now fail closed on timeout instead of waiting forever. Tune the timeout env vars above if a show has legitimately longer-running phases.
 - The templated `systemd` service now disables `TimeoutStartSec` so long queue backlogs are not cut off mid-run. The queue loop itself is responsible for exiting on its own wall-clock budget instead of relying on systemd to kill it.
+
+## Queue state notes
+
+- `queued` means a job is eligible to be claimed as soon as profile capacity is available.
+- `retry_scheduled` means the job is waiting for a timestamped retry window, usually profile cooldown, rate limit, or transient NotebookLM failure recovery.
+- `waiting_for_artifact` means NotebookLM generation has been requested and the queue is polling for the generated file.
+- `blocked_auth_stale` means an operator must reauth or replace the profile before that job can continue.
+- `dead_letter` means the queue has intentionally stopped retrying the job. In this repo it currently includes both genuinely failed terminal jobs and superseded config/hash jobs; check the `note`, `error`, and config hash before deciding whether anything should be requeued.
 
 ## Install on Hetzner
 

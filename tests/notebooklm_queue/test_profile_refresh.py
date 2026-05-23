@@ -217,6 +217,9 @@ def test_refresh_profiles_can_reclaim_after_cooldown_recovery(tmp_path: Path, mo
     assert result["profiles"][0]["recovered_from_error"] == "rate_limit"
     assert result["profiles"][0]["recovered_from_cooldown"] is True
     assert result["reclaim_reports"][0]["summary"] == {"dry_run": 1}
+    state = json.loads(state_file.read_text(encoding="utf-8"))
+    assert state["profiles"]["limited"]["last_error"] is None
+    assert state["profiles"]["limited"]["cooldown_until"] == 0
     assert len(reclaim_calls) == 1
     _, options = reclaim_calls[0]
     assert options.profiles == ("limited",)

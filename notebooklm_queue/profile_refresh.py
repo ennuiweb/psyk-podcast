@@ -459,7 +459,9 @@ def _record_probe_success(entry: dict[str, Any], *, now_ts: float) -> None:
     entry["last_probe_error"] = None
     entry["last_probe_error_type"] = None
     entry["probe_success_count"] = int(entry.get("probe_success_count") or 0) + 1
-    if str(entry.get("last_error") or "").strip() == "auth":
+    last_error = str(entry.get("last_error") or "").strip()
+    cooldown_until = _coerce_float(entry.get("cooldown_until"), 0.0)
+    if last_error == "auth" or (cooldown_until > 0 and cooldown_until <= now_ts):
         entry["last_error"] = None
         entry["cooldown_until"] = 0
 

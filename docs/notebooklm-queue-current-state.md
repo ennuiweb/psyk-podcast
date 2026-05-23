@@ -22,7 +22,7 @@ The following queue milestones are implemented on `main`:
 - `2ce0606` - publish-bundle preparation
 - `2092b46` - NotebookLM notebook-capacity recovery by deleting the oldest owned notebook and retrying once
 - `cf75a59` - NotebookLM notebook-capacity recovery recognizes `notebooklm-py`'s newer `NotebookLimitError` wrapper as well as the legacy raw `CREATE_NOTEBOOK` `RPCError`; queue retry classification also recognizes notebook-limit text without relying on stderr RPC noise. Hosted smoke on 2026-05-23 verified W12L1 recovered from a `499/500` notebook-limit failure by deleting the oldest safe owned `default` notebook, retrying once, creating the target notebook, and moving the queue job to `waiting_for_artifact`.
-- `2026-05-23` - bounded notebook reclaim is available as a queue-owned maintenance primitive with dry-run-first manual CLI, persisted reports, and optional auth/cooldown recovery integration for `refresh-profiles`
+- `42548ae` - bounded notebook reclaim is available as a queue-owned maintenance primitive with dry-run-first manual CLI, persisted reports, and optional auth/cooldown recovery integration for `refresh-profiles`. Hosted smoke on 2026-05-23 verified dry-run and apply paths; `default` reclaimed 24 safe old notebooks total and `g2a_geminiaiadvanced_kimngan12795` reclaimed 25, leaving both auth-fresh profiles with 25 free notebook slots. The Hetzner profile-refresh env now enables `NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_RECOVERY=1` with apply mode and a 25-slot target/max for future recoveries.
 - `a5b2748` - R2 object upload for approved queue bundles
 - `ad01a4f` - repo metadata rebuild from uploaded objects
 - `532ac58` - queue-owned quiz sync plus allowlisted repo publication

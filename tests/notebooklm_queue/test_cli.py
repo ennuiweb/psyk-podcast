@@ -192,6 +192,76 @@ def test_main_refresh_profiles_dispatches(tmp_path: Path, monkeypatch) -> None:
     assert printed == [{"status": "ok", "summary": {"refreshed": 1}}]
 
 
+def test_main_refresh_profiles_dispatches_reclaim_options(tmp_path: Path, monkeypatch) -> None:
+    calls: list[dict] = []
+
+    def fake_refresh_profiles(**kwargs):
+        calls.append(kwargs)
+        return {"status": "ok", "summary": {"refreshed": 1}}
+
+    monkeypatch.setattr("notebooklm_queue.cli.refresh_profiles", fake_refresh_profiles)
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: None)
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "refresh-profiles",
+            "--reclaim-on-recovery",
+            "--reclaim-target-free-slots",
+            "17",
+            "--reclaim-max-deletions",
+            "9",
+            "--reclaim-apply",
+        ]
+    )
+
+    assert result == 0
+    options = calls[0]["options"]
+    assert options.reclaim_on_recovery is True
+    assert options.reclaim_target_free_slots == 17
+    assert options.reclaim_max_deletions == 9
+    assert options.reclaim_dry_run is False
+
+
+def test_main_reclaim_notebooks_dispatches_dry_run_by_default(tmp_path: Path, monkeypatch) -> None:
+    calls: list[dict] = []
+    printed: list[dict] = []
+
+    def fake_reclaim_notebooks(**kwargs):
+        calls.append(kwargs)
+        return {"status": "ok", "summary": {"dry_run": 1}}
+
+    monkeypatch.setattr("notebooklm_queue.cli.reclaim_notebooks", fake_reclaim_notebooks)
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: printed.append(payload))
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "reclaim-notebooks",
+            "--profiles-file",
+            str(tmp_path / "profiles.host.json"),
+            "--profile",
+            "default",
+            "--target-free-slots",
+            "25",
+            "--max-deletions",
+            "11",
+            "--repo-root",
+            str(tmp_path / "repo"),
+        ]
+    )
+
+    assert result == 0
+    options = calls[0]["options"]
+    assert options.profiles == ("default",)
+    assert options.target_free_slots == 25
+    assert options.max_deletions == 11
+    assert options.dry_run is True
+    assert printed == [{"status": "ok", "summary": {"dry_run": 1}}]
+
+
 def test_main_refresh_retry_schedules_dispatches(tmp_path: Path, monkeypatch) -> None:
     calls: list[dict] = []
     printed: list[list[dict]] = []

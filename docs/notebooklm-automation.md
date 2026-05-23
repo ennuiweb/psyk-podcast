@@ -39,6 +39,7 @@ Current migration program:
 Current operational note:
 
 - Shared NotebookLM generation now tries to reclaim per-account notebook capacity on `CREATE_NOTEBOOK` failures by deleting the oldest safe owned notebook on that account and retrying once before profile rotation takes over; reclaim skips notebooks with pending artifacts or local request logs whose target output is still missing. The reclaim path handles both the legacy raw `RPCError` shape and the `NotebookLimitError` wrapper introduced by newer `notebooklm-py` versions.
+- Profile maintenance now also has a manual bounded capacity sweep: `notebooklm_queue.py reclaim-notebooks --profile <name>` reports which oldest safe owned notebooks would be deleted, and `--apply` performs the deletion. The same sweep can run after auth or cooldown recovery from `refresh-profiles` when explicitly enabled, so a recovered account can regain notebook headroom before the next queue job needs to create notebooks.
 
 ## Layout
 

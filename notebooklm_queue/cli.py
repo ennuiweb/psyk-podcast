@@ -13,6 +13,7 @@ from .discovery import discover_show_jobs, enqueue_discovered_jobs
 from .execution import ExecutionOptions, execute_job, refresh_retry_schedules
 from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
+from .notebook_reclaim import NotebookReclaimOptions, reclaim_notebooks
 from .orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
 from .profile_capacity import inspect_profile_capacity
 from .profile_refresh import ProfileRefreshOptions, refresh_profiles
@@ -125,6 +126,29 @@ def build_parser() -> argparse.ArgumentParser:
     refresh_profiles_parser.add_argument("--actor", default="operator")
     refresh_profiles_parser.add_argument("--blocking-lock", action="store_true")
     refresh_profiles_parser.add_argument("--no-lock", action="store_true")
+    refresh_profiles_parser.add_argument("--reclaim-on-recovery", action="store_true")
+    refresh_profiles_parser.add_argument("--reclaim-on-auth-recovery", action="store_true")
+    refresh_profiles_parser.add_argument("--reclaim-target-free-slots", type=int, default=25)
+    refresh_profiles_parser.add_argument("--reclaim-max-deletions", type=int, default=25)
+    refresh_profiles_parser.add_argument("--reclaim-apply", action="store_true")
+
+    reclaim = subparsers.add_parser(
+        "reclaim-notebooks",
+        help="Delete oldest safe owned NotebookLM notebooks until profile headroom exists.",
+    )
+    reclaim.add_argument("--profiles-file", type=Path)
+    reclaim.add_argument("--profile-priority")
+    reclaim.add_argument("--profile-state-file", type=Path)
+    reclaim.add_argument("--profile", action="append", dest="profiles", default=[])
+    reclaim.add_argument("--all", action="store_true", dest="all_profiles")
+    reclaim.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    reclaim.add_argument("--request-log-root", action="append", type=Path, dest="request_log_roots", default=[])
+    reclaim.add_argument("--target-free-slots", type=int, default=25)
+    reclaim.add_argument("--max-deletions", type=int, default=25)
+    reclaim.add_argument("--apply", action="store_true")
+    reclaim.add_argument("--actor", default="operator")
+    reclaim.add_argument("--blocking-lock", action="store_true")
+    reclaim.add_argument("--no-lock", action="store_true")
 
     discover = subparsers.add_parser("discover", help="Discover lecture-scoped jobs for one supported show.")
     discover.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -345,6 +369,38 @@ def main(argv: list[str] | None = None) -> int:
                 profiles=tuple(args.profiles or ()),
                 min_refresh_age_seconds=int(args.min_refresh_age_seconds),
                 force=bool(args.force),
+                actor=args.actor,
+                use_lock=not bool(args.no_lock),
+                blocking_lock=bool(args.blocking_lock),
+                reclaim_on_auth_recovery=bool(args.reclaim_on_auth_recovery),
+                reclaim_on_recovery=bool(args.reclaim_on_recovery),
+                reclaim_target_free_slots=int(args.reclaim_target_free_slots),
+                reclaim_max_deletions=int(args.reclaim_max_deletions),
+                reclaim_dry_run=not bool(args.reclaim_apply),
+            ),
+        )
+        _print_json(payload)
+        return 0 if payload.get("status") not in {"failed", "profiles_unavailable"} else 1
+
+    if args.command == "reclaim-notebooks":
+        if not args.all_profiles and not args.profiles:
+            parser.error("reclaim-notebooks requires --profile or --all")
+        if args.all_profiles and args.profiles:
+            parser.error("reclaim-notebooks accepts either --profile or --all, not both")
+        payload = reclaim_notebooks(
+            store=store,
+            options=NotebookReclaimOptions(
+                profiles_file=Path(args.profiles_file).resolve() if args.profiles_file else None,
+                profile_priority=args.profile_priority,
+                profile_state_file=Path(args.profile_state_file).resolve()
+                if args.profile_state_file
+                else None,
+                profiles=tuple(() if args.all_profiles else (args.profiles or ())),
+                repo_root=Path(args.repo_root).resolve(),
+                request_log_roots=tuple(Path(path) for path in args.request_log_roots),
+                target_free_slots=int(args.target_free_slots),
+                max_deletions=int(args.max_deletions),
+                dry_run=not bool(args.apply),
                 actor=args.actor,
                 use_lock=not bool(args.no_lock),
                 blocking_lock=bool(args.blocking_lock),

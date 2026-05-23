@@ -92,6 +92,125 @@ def test_refresh_profiles_repairs_auth_stale_profile_state(tmp_path: Path) -> No
     assert after["profiles"][0]["status"] == "usable"
 
 
+def test_refresh_profiles_can_reclaim_after_auth_recovery(tmp_path: Path, monkeypatch) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = _write_profiles_file(tmp_path, {"default": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_used": (now - timedelta(minutes=10)).timestamp(),
+                        "last_error": "auth",
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    reclaim_calls = []
+
+    def fake_reclaim_notebooks(*, store, options, **_kwargs):
+        reclaim_calls.append((store, options))
+        return {
+            "status": "ok",
+            "summary": {"dry_run": 1},
+            "profiles": [{"name": "default", "status": "dry_run"}],
+        }
+
+    monkeypatch.setattr(
+        "notebooklm_queue.notebook_reclaim.reclaim_notebooks",
+        fake_reclaim_notebooks,
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            force=True,
+            use_lock=False,
+            reclaim_on_auth_recovery=True,
+            reclaim_target_free_slots=17,
+            reclaim_max_deletions=9,
+        ),
+        refresher=_successful_refresher,
+        now=now,
+    )
+
+    assert result["status"] == "ok"
+    assert result["profiles"][0]["recovered_from_error"] == "auth"
+    assert result["reclaim_reports"][0]["summary"] == {"dry_run": 1}
+    assert len(reclaim_calls) == 1
+    _, options = reclaim_calls[0]
+    assert options.profiles == ("default",)
+    assert options.target_free_slots == 17
+    assert options.max_deletions == 9
+    assert options.dry_run is True
+    assert options.use_lock is False
+
+
+def test_refresh_profiles_can_reclaim_after_cooldown_recovery(tmp_path: Path, monkeypatch) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "limited.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = _write_profiles_file(tmp_path, {"limited": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "limited": {
+                        "last_error": "rate_limit",
+                        "cooldown_until": (now - timedelta(minutes=1)).timestamp(),
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    reclaim_calls = []
+
+    def fake_reclaim_notebooks(*, store, options, **_kwargs):
+        reclaim_calls.append((store, options))
+        return {
+            "status": "ok",
+            "summary": {"dry_run": 1},
+            "profiles": [{"name": "limited", "status": "dry_run"}],
+        }
+
+    monkeypatch.setattr(
+        "notebooklm_queue.notebook_reclaim.reclaim_notebooks",
+        fake_reclaim_notebooks,
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            force=True,
+            use_lock=False,
+            reclaim_on_recovery=True,
+        ),
+        refresher=_successful_refresher,
+        now=now,
+    )
+
+    assert result["status"] == "ok"
+    assert result["profiles"][0]["recovered_from_error"] == "rate_limit"
+    assert result["profiles"][0]["recovered_from_cooldown"] is True
+    assert result["reclaim_reports"][0]["summary"] == {"dry_run": 1}
+    assert len(reclaim_calls) == 1
+    _, options = reclaim_calls[0]
+    assert options.profiles == ("limited",)
+    assert options.actor == "operator:profile-recovery"
+    assert options.use_lock is False
+
+
 def test_refresh_profiles_preserves_rate_limit_cooldown(tmp_path: Path) -> None:
     now = datetime(2026, 5, 23, 12, tzinfo=UTC)
     storage = tmp_path / "limited.json"

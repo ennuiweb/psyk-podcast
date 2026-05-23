@@ -118,6 +118,7 @@ Notes:
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and exits cleanly with `profile_capacity_wait` when the active NotebookLM profile pool has no immediately usable account.
 - `refresh-profiles` is the queue-owned profile freshness primitive. It validates each configured profile storage file through the `notebooklm-py` token/cookie refresh path, persists refresh metadata into `profile_state.json`, writes a report under `<storage-root>/profile-refresh/`, clears `last_error=auth` only after a successful validation, and preserves rate-limit cooldowns so an auth-fresh but quota-limited account is not treated as generation-ready too early.
+- `reclaim-notebooks` is the bounded profile capacity cleanup primitive. It lists owned NotebookLM notebooks for selected profiles and deletes only the oldest safe candidates until the configured free-slot target is met; it skips shared notebooks, notebooks with pending artifacts, and notebooks referenced by local request logs whose target output is still missing. Manual CLI runs default to dry-run and require `--apply` to delete. `refresh-profiles` can optionally trigger the same reclaim after auth or cooldown recovery through `--reclaim-on-recovery`; the older `--reclaim-on-auth-recovery` flag is kept as a compatibility alias.
 - The hosted profile-refresh timer shares the same global `notebooklm-capacity` lock as generation, so a refresh run and a queue generation run cannot mutate the same NotebookLM storage/profile-state files concurrently.
 - `profile_capacity_wait` exits success only for timed/automatic waits such as rate-limit cooldowns or another show holding the global NotebookLM lock. If every active profile needs operator action, such as stale auth or missing storage files, `serve-show` exits nonzero so systemd and monitoring can surface the intervention.
 - The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
@@ -278,6 +279,24 @@ set -a
 set +a
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-profiles --profile default --force --actor operator
 ```
+
+Dry-run bounded notebook reclaim for a single profile before deleting anything:
+
+```bash
+cd /opt/podcasts
+set -a
+. /etc/podcasts/notebooklm-queue/profile-refresh.env
+set +a
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py reclaim-notebooks --profile default --target-free-slots 25 --max-deletions 25 --actor operator
+```
+
+Apply the same bounded reclaim after reviewing the dry-run report under `/var/lib/podcasts/notebooklm-queue/notebook-reclaim/`:
+
+```bash
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py reclaim-notebooks --profile default --target-free-slots 25 --max-deletions 25 --apply --actor operator
+```
+
+To reclaim automatically when `refresh-profiles` repairs auth-stale storage or validates a profile whose cooldown has expired, set `NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_RECOVERY=1`; keep `NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_APPLY=0` for dry-run reports, or set it to `1` only after dry-runs have shown safe candidates. `NOTEBOOKLM_PROFILE_REFRESH_RECLAIM_ON_AUTH_RECOVERY=1` remains accepted for old deployments, but new configuration should use the broader recovery flag.
 
 Refresh existing scheduled retry windows after changing retry policy. This also moves already re-queued retry backlog back into `retry_scheduled` when the previous failure history is classifiable:
 

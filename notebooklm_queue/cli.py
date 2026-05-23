@@ -15,6 +15,7 @@ from .metadata import MetadataOptions, rebuild_repo_metadata
 from .models import JobIdentity
 from .orchestrator import DrainShowOptions, ServeShowOptions, drain_show_queue, serve_show_queue
 from .profile_capacity import inspect_profile_capacity
+from .profile_refresh import ProfileRefreshOptions, refresh_profiles
 from .publish import PublishOptions, UploadOptions, prepare_publish_bundle, upload_publish_bundle
 from .repo_publish import RepoPublishOptions, publish_repo_artifacts
 from .runner import build_dry_run_plan
@@ -110,6 +111,20 @@ def build_parser() -> argparse.ArgumentParser:
     profile_status.add_argument("--profiles-file", type=Path)
     profile_status.add_argument("--profile-priority")
     profile_status.add_argument("--profile-state-file", type=Path)
+
+    refresh_profiles_parser = subparsers.add_parser(
+        "refresh-profiles",
+        help="Refresh NotebookLM profile storage and repair queue profile state.",
+    )
+    refresh_profiles_parser.add_argument("--profiles-file", type=Path)
+    refresh_profiles_parser.add_argument("--profile-priority")
+    refresh_profiles_parser.add_argument("--profile-state-file", type=Path)
+    refresh_profiles_parser.add_argument("--profile", action="append", dest="profiles", default=[])
+    refresh_profiles_parser.add_argument("--min-refresh-age-seconds", type=int, default=900)
+    refresh_profiles_parser.add_argument("--force", action="store_true")
+    refresh_profiles_parser.add_argument("--actor", default="operator")
+    refresh_profiles_parser.add_argument("--blocking-lock", action="store_true")
+    refresh_profiles_parser.add_argument("--no-lock", action="store_true")
 
     discover = subparsers.add_parser("discover", help="Discover lecture-scoped jobs for one supported show.")
     discover.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -317,6 +332,26 @@ def main(argv: list[str] | None = None) -> int:
         )
         _print_json(payload)
         return 0
+
+    if args.command == "refresh-profiles":
+        payload = refresh_profiles(
+            store=store,
+            options=ProfileRefreshOptions(
+                profiles_file=Path(args.profiles_file).resolve() if args.profiles_file else None,
+                profile_priority=args.profile_priority,
+                profile_state_file=Path(args.profile_state_file).resolve()
+                if args.profile_state_file
+                else None,
+                profiles=tuple(args.profiles or ()),
+                min_refresh_age_seconds=int(args.min_refresh_age_seconds),
+                force=bool(args.force),
+                actor=args.actor,
+                use_lock=not bool(args.no_lock),
+                blocking_lock=bool(args.blocking_lock),
+            ),
+        )
+        _print_json(payload)
+        return 0 if payload.get("status") not in {"failed", "profiles_unavailable"} else 1
 
     if args.command == "discover":
         repo_root = Path(args.repo_root).resolve()

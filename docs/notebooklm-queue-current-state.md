@@ -1,6 +1,6 @@
 # NotebookLM Queue Current State
 
-Last updated: 2026-05-11
+Last updated: 2026-05-23
 
 This document is the current-state checkpoint for the Hetzner-owned NotebookLM queue + R2 migration program. It is intentionally separate from the canonical migration plan in [notebooklm-queue-r2-migration.md](notebooklm-queue-r2-migration.md).
 
@@ -102,7 +102,9 @@ The queue runtime now also has a concrete Hetzner packaging layer:
 - `drain-show` provides the single-cycle primitive and `serve-show` now provides the quota-aware remote worker entrypoint
 - `serve-show` now keeps draining while timed backlog (`retry_scheduled` or `waiting_for_artifact`) still exists, even if explicit blocked jobs are also present; it exits cleanly with `blocked_backlog_remaining` only when explicit blocked backlog is all that remains, exits cleanly with `service_timeout_reached` when the remaining wait window would overrun the configured worker budget, and still fails closed on invalid retry timestamps or generic `failed_retryable` backlog instead of hot-looping
 - queue-owned NotebookLM execution now checks profile capacity before claiming generation jobs and uses a global `notebooklm-capacity` queue lock so concurrent show timers cannot generate against the same profile pool in parallel
+- profile freshness is now a queue-owned maintenance concern: `refresh-profiles` validates configured profile storage through `notebooklm-py`, repairs `auth_stale` profile-state markers only after successful validation, preserves active rate-limit cooldowns, writes reports under `<storage-root>/profile-refresh/`, and uses the same global `notebooklm-capacity` lock as generation
 - templated `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
+- profile-refresh `systemd` service and timer artifacts now exist under `notebooklm_queue/deploy/systemd/`
 - the Hetzner runtime/env/install runbook now exists in [notebooklm-queue-operations.md](notebooklm-queue-operations.md)
 
 ## Verified in this session
@@ -113,6 +115,7 @@ Local verification completed:
 - queue publish tests passed after R2 upload implementation
 - queue metadata tests passed after repo rebuild implementation
 - full `tests/notebooklm_queue` suite passed after the latest repo-publish hardening and downstream sync work
+- full `tests/notebooklm_queue` suite passed after the profile-refresh implementation (`133 passed`)
 
 Required repo workflows completed successfully for the latest queue commits:
 

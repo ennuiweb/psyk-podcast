@@ -234,6 +234,7 @@ def _profile_record(
 ) -> dict[str, Any]:
     cooldown_until = _coerce_float(state_entry.get("cooldown_until"), 0.0)
     last_used = _coerce_float(state_entry.get("last_used"), 0.0)
+    last_refreshed = _coerce_float(state_entry.get("last_refreshed"), 0.0)
     last_error = str(state_entry.get("last_error") or "").strip()
     storage_exists = storage_path.exists()
     storage_mtime = _storage_mtime(storage_path) if storage_exists else None
@@ -264,6 +265,10 @@ def _profile_record(
         "storage_exists": storage_exists,
         "storage_mtime_epoch": storage_mtime,
         "last_used_epoch": last_used if last_used else None,
+        "last_refreshed_epoch": last_refreshed if last_refreshed else None,
+        "last_refresh_status": state_entry.get("last_refresh_status"),
+        "last_refresh_error_type": state_entry.get("last_refresh_error_type"),
+        "last_refresh_error": state_entry.get("last_refresh_error"),
         "last_error": last_error or None,
         "success_count": int(_coerce_float(state_entry.get("success_count"), 0.0)),
         "failure_count": int(_coerce_float(state_entry.get("failure_count"), 0.0)),

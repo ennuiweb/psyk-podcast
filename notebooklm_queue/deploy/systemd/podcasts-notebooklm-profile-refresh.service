@@ -1,0 +1,16 @@
+[Unit]
+Description=Refresh NotebookLM queue profile storage
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/podcasts
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/podcasts/notebooklm-queue/profile-refresh.env
+ExecStartPre=/usr/bin/install -d -m 0755 -o root -g root /var/lib/podcasts/notebooklm-queue
+ExecStart=/opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-profile-refresh.sh
+TimeoutStartSec=300
+Nice=10

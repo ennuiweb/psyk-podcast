@@ -12,8 +12,11 @@ Current live scope:
 Repository deploy artifacts:
 
 - `notebooklm_queue/deploy/bin/notebooklm-queue-drain-show.sh`
+- `notebooklm_queue/deploy/bin/notebooklm-profile-refresh.sh`
 - `notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.service`
 - `notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.timer`
+- `notebooklm_queue/deploy/systemd/podcasts-notebooklm-profile-refresh.service`
+- `notebooklm_queue/deploy/systemd/podcasts-notebooklm-profile-refresh.timer`
 
 ## Runtime contract
 
@@ -114,6 +117,8 @@ Notes:
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and exits cleanly with `profile_capacity_wait` when the active NotebookLM profile pool has no immediately usable account.
+- `refresh-profiles` is the queue-owned profile freshness primitive. It validates each configured profile storage file through the `notebooklm-py` token/cookie refresh path, persists refresh metadata into `profile_state.json`, writes a report under `<storage-root>/profile-refresh/`, clears `last_error=auth` only after a successful validation, and preserves rate-limit cooldowns so an auth-fresh but quota-limited account is not treated as generation-ready too early.
+- The hosted profile-refresh timer shares the same global `notebooklm-capacity` lock as generation, so a refresh run and a queue generation run cannot mutate the same NotebookLM storage/profile-state files concurrently.
 - `profile_capacity_wait` exits success only for timed/automatic waits such as rate-limit cooldowns or another show holding the global NotebookLM lock. If every active profile needs operator action, such as stale auth or missing storage files, `serve-show` exits nonzero so systemd and monitoring can surface the intervention.
 - The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
 - NotebookLM execution is guarded by a global queue lock named `__global__-notebooklm-capacity`, so two show workers cannot concurrently claim generation work against the same profile pool.
@@ -158,6 +163,9 @@ git pull --ff-only origin main
 sudo install -d -m 0755 /etc/podcasts/notebooklm-queue
 sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.service /etc/systemd/system/podcasts-notebooklm-queue@.service
 sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-queue@.timer /etc/systemd/system/podcasts-notebooklm-queue@.timer
+sudo install -m 0755 /opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-profile-refresh.sh /opt/podcasts/notebooklm_queue/deploy/bin/notebooklm-profile-refresh.sh
+sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-profile-refresh.service /etc/systemd/system/podcasts-notebooklm-profile-refresh.service
+sudo install -m 0644 /opt/podcasts/notebooklm_queue/deploy/systemd/podcasts-notebooklm-profile-refresh.timer /etc/systemd/system/podcasts-notebooklm-profile-refresh.timer
 ```
 
 3. Write the env file for the live show:
@@ -180,6 +188,24 @@ Current deployed examples:
 - `/etc/podcasts/notebooklm-queue/bioneuro.env`
 - `/etc/podcasts/notebooklm-queue/personlighedspsykologi-en.env`
 - `/etc/podcasts/notebooklm-queue/personlighedspsykologi-da.env`
+- `/etc/podcasts/notebooklm-queue/profile-refresh.env`
+
+Profile refresh env:
+
+```bash
+NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
+NOTEBOOKLM_PROFILE_STATE_FILE=/root/.notebooklm/profile_state.json
+NOTEBOOKLM_PROFILE_PRIORITY=default,djspindoctor,nopeeeh,oskarvedel,baduljen,freudagsbaren,oskarhoegsgaard,stanhawkservices,tjekdepotadmin,vedeloskar,g2a_geminiaiadvanced_kimngan12795
+NOTEBOOKLM_PROFILE_REFRESH_MIN_AGE_SECONDS=900
+```
+
+Enable the profile-refresh timer after a manual `refresh-profiles` run has produced the expected state transitions:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now podcasts-notebooklm-profile-refresh.timer
+sudo systemctl list-timers | rg 'podcasts-notebooklm-profile-refresh'
+```
 
 ## Sync NotebookLM profiles from the workstation
 
@@ -230,6 +256,27 @@ Inspect queue state:
 cd /opt/podcasts
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py report --show-slug bioneuro
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py list --show-slug bioneuro
+```
+
+Refresh and inspect NotebookLM profile capacity:
+
+```bash
+cd /opt/podcasts
+set -a
+. /etc/podcasts/notebooklm-queue/profile-refresh.env
+set +a
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-profiles
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py profile-status
+```
+
+Manual targeted repair for a single profile:
+
+```bash
+cd /opt/podcasts
+set -a
+. /etc/podcasts/notebooklm-queue/profile-refresh.env
+set +a
+/opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-profiles --profile default --force --actor operator
 ```
 
 Refresh existing scheduled retry windows after changing retry policy. This also moves already re-queued retry backlog back into `retry_scheduled` when the previous failure history is classifiable:

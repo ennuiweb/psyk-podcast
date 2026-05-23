@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic NotebookLM queue profile refresh
+
+[Timer]
+OnCalendar=*:0/20
+Persistent=true
+RandomizedDelaySec=180
+Unit=podcasts-notebooklm-profile-refresh.service
+
+[Install]
+WantedBy=timers.target

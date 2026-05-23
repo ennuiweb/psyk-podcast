@@ -153,6 +153,45 @@ def test_main_profile_status_reports_capacity_without_failing(tmp_path: Path, mo
     assert printed == [{"configured": True, "has_capacity": False, "reason": "no_usable_profiles"}]
 
 
+def test_main_refresh_profiles_dispatches(tmp_path: Path, monkeypatch) -> None:
+    calls: list[dict] = []
+    printed: list[dict] = []
+
+    def fake_refresh_profiles(**kwargs):
+        calls.append(kwargs)
+        return {"status": "ok", "summary": {"refreshed": 1}}
+
+    monkeypatch.setattr("notebooklm_queue.cli.refresh_profiles", fake_refresh_profiles)
+    monkeypatch.setattr("notebooklm_queue.cli._print_json", lambda payload: printed.append(payload))
+
+    result = main(
+        [
+            "--storage-root",
+            str(tmp_path / "queue-root"),
+            "refresh-profiles",
+            "--profiles-file",
+            str(tmp_path / "profiles.host.json"),
+            "--profile-priority",
+            "default,work",
+            "--profile-state-file",
+            str(tmp_path / "profile_state.json"),
+            "--profile",
+            "default",
+            "--force",
+            "--actor",
+            "test",
+        ]
+    )
+
+    assert result == 0
+    options = calls[0]["options"]
+    assert options.profile_priority == "default,work"
+    assert options.profiles == ("default",)
+    assert options.force is True
+    assert options.actor == "test"
+    assert printed == [{"status": "ok", "summary": {"refreshed": 1}}]
+
+
 def test_main_refresh_retry_schedules_dispatches(tmp_path: Path, monkeypatch) -> None:
     calls: list[dict] = []
     printed: list[list[dict]] = []

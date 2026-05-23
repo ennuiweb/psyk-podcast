@@ -13,6 +13,10 @@ from pathlib import Path
 import sys
 from typing import Iterable
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 NOTEBOOKLM_SRC = Path(__file__).resolve().parent / "notebooklm-py" / "src"
 if NOTEBOOKLM_SRC.is_dir() and str(NOTEBOOKLM_SRC) not in sys.path:
     sys.path.insert(0, str(NOTEBOOKLM_SRC))
@@ -22,9 +26,9 @@ PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 FAIL_IF_ALL_PROFILES_EXCLUDED_ENV_VAR = "NOTEBOOKLM_FAIL_IF_ALL_PROFILES_EXCLUDED"
 PROFILE_RATE_LIMIT_COOLDOWN_ENV_VAR = "NOTEBOOKLM_PROFILE_RATE_LIMIT_COOLDOWN_SECONDS"
 
-from notebooklm import NotebookLimitError, NotebookLMClient, RPCError
-from notebooklm.paths import get_storage_path
-from notebooklm.rpc.types import (
+from notebooklm import NotebookLimitError, NotebookLMClient, RPCError  # noqa: E402
+from notebooklm.paths import get_storage_path  # noqa: E402
+from notebooklm.rpc.types import (  # noqa: E402
     AudioFormat,
     AudioLength,
     InfographicDetail,
@@ -33,6 +37,11 @@ from notebooklm.rpc.types import (
     QuizQuantity,
     ReportFormat,
     RPCMethod,
+)
+from notebooklm.types import Source  # noqa: E402
+from notebooklm_queue.notebook_reclaim_safety import (  # noqa: E402
+    notebook_sort_key,
+    reclaim_blocker_for_notebook,
 )
 
 RATE_LIMIT_TOKENS = (
@@ -930,13 +939,12 @@ async def _delete_oldest_owned_notebook(client: NotebookLMClient):
     if not owned:
         return None
 
-    def sort_key(nb):
-        created_at = getattr(nb, "created_at", None)
-        normalized = created_at if isinstance(created_at, datetime) else datetime.max
-        return (normalized, nb.title or "", nb.id or "")
-
-    for candidate in sorted(owned, key=sort_key):
-        reclaim_blocker = await _reclaim_blocker_for_notebook(client, candidate.id)
+    for candidate in sorted(owned, key=notebook_sort_key):
+        reclaim_blocker = await reclaim_blocker_for_notebook(
+            client=client,
+            notebook_id=candidate.id,
+            request_log_roots=(Path.cwd(),),
+        )
         if reclaim_blocker:
             print(
                 f"Skipping notebook reclaim for {candidate.title} ({candidate.id}): "
@@ -946,70 +954,6 @@ async def _delete_oldest_owned_notebook(client: NotebookLMClient):
         await client.notebooks.delete(candidate.id)
         return candidate
     return None
-
-
-async def _reclaim_blocker_for_notebook(client: NotebookLMClient, notebook_id: str) -> str | None:
-    artifacts_api = getattr(client, "artifacts", None)
-    if artifacts_api is None:
-        undownloaded_logs = _find_undownloaded_request_logs(Path.cwd(), notebook_id)
-        if undownloaded_logs:
-            sample = ", ".join(str(path) for path in undownloaded_logs[:3])
-            return f"local request logs still point to missing outputs: {sample}"
-        return None
-
-    try:
-        artifacts = await artifacts_api.list(notebook_id)
-    except Exception as exc:
-        return f"could not inspect artifacts safely ({exc})"
-
-    pending_artifacts = [
-        artifact
-        for artifact in artifacts
-        if getattr(artifact, "is_processing", False) or getattr(artifact, "is_pending", False)
-    ]
-    if pending_artifacts:
-        labels = ", ".join(
-            f"{artifact.title or artifact.id} [{artifact.status_str}]"
-            for artifact in pending_artifacts[:3]
-        )
-        return f"pending artifacts still exist: {labels}"
-
-    undownloaded_logs = _find_undownloaded_request_logs(Path.cwd(), notebook_id)
-    if undownloaded_logs:
-        sample = ", ".join(str(path) for path in undownloaded_logs[:3])
-        return f"local request logs still point to missing outputs: {sample}"
-
-    return None
-
-
-def _find_undownloaded_request_logs(search_root: Path, notebook_id: str) -> list[str]:
-    matches: list[str] = []
-    for log_path in search_root.rglob("*.request.json"):
-        try:
-            payload = json.loads(log_path.read_text(encoding="utf-8"))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-            continue
-        if not isinstance(payload, dict):
-            continue
-        if str(payload.get("notebook_id") or "").strip() != notebook_id:
-            continue
-        output_value = str(payload.get("output_path") or "").strip()
-        if not output_value:
-            matches.append(str(log_path))
-            continue
-        output_path = Path(output_value).expanduser()
-        if not output_path.is_absolute():
-            output_path = (search_root / output_path).resolve()
-        if not output_path.exists():
-            matches.append(str(log_path))
-            continue
-        try:
-            if output_path.is_file() and output_path.stat().st_size > 0:
-                continue
-        except OSError:
-            pass
-        matches.append(str(log_path))
-    return matches
 
 
 def _source_key(source: dict) -> tuple[str, str] | None:

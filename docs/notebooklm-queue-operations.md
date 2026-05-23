@@ -120,9 +120,11 @@ Notes:
 - The wrapper reads `NOTEBOOKLM_QUEUE_SHOW_CONFIG` only when you intentionally want a non-live config override.
 - Alert events are always persisted under `<storage-root>/alerts/` even when no external delivery path is configured.
 - `drain-show` remains the single-cycle primitive. The hosted wrapper now runs `serve-show`, which repeatedly calls `drain-show`, waits through `retry_scheduled` cooldowns and `waiting_for_artifact` poll windows, and exits cleanly with `profile_capacity_wait` when the active NotebookLM profile pool has no immediately usable account.
-- `refresh-profiles` is the queue-owned profile freshness primitive. It validates each configured profile storage file through the `notebooklm-py` token/cookie refresh path, persists refresh metadata into `profile_state.json`, writes a report under `<storage-root>/profile-refresh/`, clears `last_error=auth` only after a successful validation, and preserves rate-limit cooldowns so an auth-fresh but quota-limited account is not treated as generation-ready too early.
+- `refresh-profiles` is the queue-owned profile freshness primitive. It runs the `notebooklm-py` token/cookie keepalive path, then probes the same storage file with a real `notebooklm list --json` call before clearing `last_error=auth`. A keepalive success without a successful probe is still treated as auth-stale.
 - `reclaim-notebooks` is the bounded profile capacity cleanup primitive. It lists owned NotebookLM notebooks for selected profiles and deletes only the oldest safe candidates until the configured free-slot target is met; it skips shared notebooks, notebooks with pending artifacts, and notebooks referenced by local request logs whose target output is still missing. Manual CLI runs default to dry-run and require `--apply` to delete. `refresh-profiles` can optionally trigger the same reclaim after auth or cooldown recovery through `--reclaim-on-recovery`; the older `--reclaim-on-auth-recovery` flag remains available for auth-only recovery.
 - The hosted profile-refresh timer shares the same global `notebooklm-capacity` lock as generation, so a refresh run and a queue generation run cannot mutate the same NotebookLM storage/profile-state files concurrently.
+- The hosted profile-refresh timer runs shortly after boot and then every 12 minutes with a small randomized delay. It skips unrecovered auth-stale profiles until their storage file changes or an operator passes `--force`, so stale accounts do not get hammered while valid accounts stay warm.
+- `NOTEBOOKLM_PROFILE_MAX_VALIDATION_AGE_SECONDS` makes the queue stop before generation when the latest successful profile probe is too old. This is an automatic wait state, not a manual auth failure; the refresh timer is expected to validate the profile and reopen capacity.
 - `profile_capacity_wait` exits success only for timed/automatic waits such as rate-limit cooldowns or another show holding the global NotebookLM lock. If every active profile needs operator action, such as stale auth or missing storage files, `serve-show` exits nonzero so systemd and monitoring can surface the intervention.
 - The `serve-show` wall-clock budget is controlled by `NOTEBOOKLM_QUEUE_DOWNSTREAM_TIMEOUT_SECONDS` in the hosted wrapper path today. That value now limits the overall service loop as well as downstream polling, so a timer-triggered worker cannot stay in `activating` forever while only sleeping between retries.
 - NotebookLM execution is guarded by a global queue lock named `__global__-notebooklm-capacity`, so two show workers cannot concurrently claim generation work against the same profile pool.
@@ -200,7 +202,11 @@ Profile refresh env:
 NOTEBOOKLM_PROFILES_FILE=/etc/podcasts/notebooklm-queue/profiles.host.json
 NOTEBOOKLM_PROFILE_STATE_FILE=/root/.notebooklm/profile_state.json
 NOTEBOOKLM_PROFILE_PRIORITY=default,nopeeeh,oskarvedel,freudagsbaren,oskarhoegsgaard,stanhawkservices,tjekdepotadmin,vedeloskar,g2a_geminiaiadvanced_kimngan12795
-NOTEBOOKLM_PROFILE_REFRESH_MIN_AGE_SECONDS=900
+NOTEBOOKLM_PROFILE_REFRESH_MIN_AGE_SECONDS=600
+NOTEBOOKLM_PROFILE_MAX_VALIDATION_AGE_SECONDS=1800
+NOTEBOOKLM_PROFILE_REFRESH_PROBE=1
+NOTEBOOKLM_PROFILE_REFRESH_PROBE_TIMEOUT_SECONDS=60
+NOTEBOOKLM_PROFILE_REFRESH_NOTEBOOKLM_BIN=/opt/podcasts/.venv/bin/notebooklm
 ```
 
 Enable the profile-refresh timer after a manual `refresh-profiles` run has produced the expected state transitions:
@@ -222,21 +228,26 @@ cd /Users/oskar/repo/podcasts
 ./scripts/sync_notebooklm_profiles_to_hetzner.py
 ```
 
-This uploads the selected storage-state files to:
+By default this is bundle-only: it rewrites `/etc/podcasts/notebooklm-queue/profiles.host.json` from the committed local profile list without overwriting remote storage-state files. Use that default after changing which profiles are active or retired.
+
+Storage-state uploads are explicit:
+
+```bash
+./scripts/sync_notebooklm_profiles_to_hetzner.py --profile default --profile oskarvedel
+./scripts/sync_notebooklm_profiles_to_hetzner.py --upload-all
+```
+
+Selected uploads copy storage-state files to:
 
 - `/etc/podcasts/notebooklm-queue/profiles/`
 - `/etc/podcasts/notebooklm-queue/profiles.host.json`
 
-Default behavior syncs every profile from `notebooklm-podcast-auto/profiles.json`. To limit the bundle:
+The install step preserves timestamped backups under `/etc/podcasts/notebooklm-queue/profiles/.backups/` before overwriting storage files. It also refuses to overwrite a newer remote storage file unless `--force-overwrite-newer` is passed; use that only when the selected local browser login is known to be fresher than the hosted copy.
+
+After uploading a reauth, validate with the refresh/probe primitive instead of `notebooklm status`:
 
 ```bash
-./scripts/sync_notebooklm_profiles_to_hetzner.py --profile default --profile oskarvedel --profile tjekdepotadmin
-```
-
-Sanity-check the host bundle:
-
-```bash
-ssh hetzner-ennui-vps-01-root 'bash -lc '\''for f in /etc/podcasts/notebooklm-queue/profiles/*.json; do echo "== $(basename "$f" .json) =="; PYTHONPATH=/opt/podcasts/notebooklm-podcast-auto/notebooklm-py/src /opt/podcasts/.venv/bin/python -m notebooklm --storage "$f" status | sed -n "1,2p"; echo; done'\'''
+ssh hetzner-ennui-vps-01-root 'bash -lc '\''cd /opt/podcasts; set -a; . /etc/podcasts/notebooklm-queue/profile-refresh.env; set +a; /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-profiles --profile default --force --actor operator-reauth && /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py profile-status'\'''
 ```
 
 ## Manual commands
@@ -282,6 +293,8 @@ set -a
 set +a
 /opt/podcasts/.venv/bin/python /opt/podcasts/scripts/notebooklm_queue.py refresh-profiles --profile default --force --actor operator
 ```
+
+Use `--no-probe` only for debugging the token/cookie keepalive path. Normal operations should keep probing enabled so a profile is not marked usable until NotebookLM accepts it.
 
 Dry-run bounded notebook reclaim for a single profile before deleting anything:
 

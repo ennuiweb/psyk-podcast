@@ -201,3 +201,75 @@ def test_failed_auth_refresh_keeps_profile_stale_even_after_storage_sync(tmp_pat
     assert capacity["manual_intervention_required"] is True
     assert capacity["profiles"][0]["status"] == "auth_stale"
     assert capacity["profiles"][0]["reason"] == "last_refresh_failed_auth"
+
+
+def test_expired_validation_waits_for_refresh_without_manual_intervention(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    now = datetime(2026, 5, 20, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(json.dumps({"profiles": {"default": str(storage)}}), encoding="utf-8")
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_probe_success": (now - timedelta(hours=2)).timestamp(),
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_MAX_VALIDATION_AGE_SECONDS", "1800")
+
+    capacity = inspect_profile_capacity(
+        profiles_file=profiles_file,
+        profile_state_file=state_file,
+        now=now,
+    )
+
+    assert capacity["has_capacity"] is False
+    assert capacity["manual_intervention_required"] is False
+    assert capacity["profiles"][0]["status"] == "refresh_required"
+
+
+def test_active_cooldown_takes_precedence_over_expired_validation(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    now = datetime(2026, 5, 20, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(json.dumps({"profiles": {"default": str(storage)}}), encoding="utf-8")
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_error": "rate_limit",
+                        "cooldown_until": (now + timedelta(minutes=45)).timestamp(),
+                        "last_probe_success": (now - timedelta(hours=2)).timestamp(),
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_MAX_VALIDATION_AGE_SECONDS", "1800")
+
+    capacity = inspect_profile_capacity(
+        profiles_file=profiles_file,
+        profile_state_file=state_file,
+        now=now,
+    )
+
+    assert capacity["manual_intervention_required"] is False
+    assert capacity["profiles"][0]["status"] == "cooldown"
+    assert capacity["wait_seconds"] == 2700

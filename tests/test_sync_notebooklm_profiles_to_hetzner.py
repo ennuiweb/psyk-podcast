@@ -27,3 +27,24 @@ def test_single_profile_sync_bundle_keeps_every_configured_profile() -> None:
         "freudagsbaren": "/etc/podcasts/notebooklm-queue/profiles/freudagsbaren.json",
         "nopeeeh": "/etc/podcasts/notebooklm-queue/profiles/nopeeeh.json",
     }
+
+
+def test_bundle_only_sync_uploads_no_storage_by_default() -> None:
+    profiles = {
+        "default": Path("/tmp/default.json"),
+        "nopeeeh": Path("/tmp/nopeeeh.json"),
+    }
+
+    assert sync_profiles.selected_profile_names(profiles, []) == []
+
+
+def test_upload_all_selects_every_configured_profile() -> None:
+    profiles = {
+        "default": Path("/tmp/default.json"),
+        "nopeeeh": Path("/tmp/nopeeeh.json"),
+    }
+
+    assert sync_profiles.selected_profile_names(profiles, [], upload_all=True) == [
+        "default",
+        "nopeeeh",
+    ]

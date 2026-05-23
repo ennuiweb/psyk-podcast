@@ -66,6 +66,23 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument(
+        "--upload-all",
+        action="store_true",
+        help=(
+            "Upload every configured profile storage file. Without --profile or --upload-all, "
+            "the script only rebuilds the remote profiles bundle and leaves remote auth state "
+            "files untouched."
+        ),
+    )
+    parser.add_argument(
+        "--force-overwrite-newer",
+        action="store_true",
+        help=(
+            "Allow a selected local storage file to overwrite a newer remote file. By default "
+            "the install step refuses that overwrite to protect fresh host-side auth state."
+        ),
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print the resolved sync plan without copying files.",
@@ -98,9 +115,16 @@ def load_profiles(path: Path) -> dict[str, Path]:
     return profiles
 
 
-def selected_profile_names(available: dict[str, Path], requested: list[str]) -> list[str]:
-    if not requested:
+def selected_profile_names(
+    available: dict[str, Path],
+    requested: list[str],
+    *,
+    upload_all: bool = False,
+) -> list[str]:
+    if upload_all:
         return sorted(available)
+    if not requested:
+        return []
     names: list[str] = []
     seen: set[str] = set()
     for entry in requested:
@@ -144,7 +168,7 @@ def main() -> int:
     args = parse_args()
     profiles_path = Path(args.profiles_file).expanduser().resolve()
     profiles = load_profiles(profiles_path)
-    names = selected_profile_names(profiles, args.profile)
+    names = selected_profile_names(profiles, args.profile, upload_all=bool(args.upload_all))
     bundle_names = sorted(profiles)
 
     missing = [name for name in names if not profiles[name].exists()]
@@ -167,8 +191,12 @@ def main() -> int:
         )
 
         print(f"Source profiles file: {profiles_path}")
-        for name in names:
-            print(f"- {name}: {profiles[name]} -> {bundle[name]}")
+        if names:
+            print("- storage uploads:")
+            for name in names:
+                print(f"  - {name}: {profiles[name]} -> {bundle[name]}")
+        else:
+            print("- storage uploads: none (bundle-only)")
         print(f"- active bundle profiles: {', '.join(bundle_names)}")
         print(f"- bundle: {args.remote_profiles_file}")
 
@@ -182,18 +210,31 @@ def main() -> int:
         run(
             [
                 "scp",
-                "-r",
+                "-rp",
                 f"{tmp_dir}/.",
                 f"{args.host}:{args.remote_staging_dir}/",
             ],
             dry_run=args.dry_run,
         )
+        force_overwrite_newer = "1" if args.force_overwrite_newer else "0"
         install_script = f"""
 set -euo pipefail
+force_overwrite_newer={shlex.quote(force_overwrite_newer)}
 install -d -m 700 {args.remote_dir}
+backup_dir={args.remote_dir}/.backups/$(date -u +%Y%m%dT%H%M%SZ)
 find {args.remote_staging_dir} -maxdepth 1 -type f -name '*.json' ! -name 'profiles.host.json' -print0 | \\
   while IFS= read -r -d '' file; do
-    install -m 600 "$file" {args.remote_dir}/"$(basename "$file")"
+    target={args.remote_dir}/"$(basename "$file")"
+    if [ -e "$target" ] && [ "$target" -nt "$file" ] && [ "$force_overwrite_newer" != "1" ]; then
+      echo "Refusing to overwrite newer remote profile storage: $target" >&2
+      echo "Pass --force-overwrite-newer only when the selected local file is known to be fresher." >&2
+      exit 2
+    fi
+    if [ -e "$target" ]; then
+      install -d -m 700 "$backup_dir"
+      cp -p "$target" "$backup_dir/$(basename "$target")"
+    fi
+    install -m 600 "$file" "$target"
   done
 install -m 600 {args.remote_staging_dir}/profiles.host.json {args.remote_profiles_file}
 rm -rf {args.remote_staging_dir}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 from pathlib import Path
 
 
@@ -39,6 +40,7 @@ def test_collect_storage_candidates_prefers_explicit_current_profiles_over_reque
         encoding="utf-8",
     )
     monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(tmp_path / "profile_state.json"))
 
     candidates = download_week.collect_storage_candidates(
         tmp_path,
@@ -58,3 +60,54 @@ def test_collect_storage_candidates_prefers_explicit_current_profiles_over_reque
         (str(fallback_storage.resolve()), "profiles:fallback"),
         (str(old_storage), "log:storage"),
     ]
+
+
+def test_collect_storage_candidates_skips_auth_stale_profile_state(
+    tmp_path: Path, monkeypatch
+) -> None:
+    stale_storage = tmp_path / "stale.json"
+    fresh_storage = tmp_path / "fresh.json"
+    stale_storage.write_text("{}", encoding="utf-8")
+    fresh_storage.write_text("{}", encoding="utf-8")
+    last_used = 1_800_000_000
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "stale": str(stale_storage),
+                    "fresh": str(fresh_storage),
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "stale": {
+                        "last_error": "auth",
+                        "last_used": last_used,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(state_file))
+    os_mtime = last_used - 60
+    os.utime(stale_storage, (os_mtime, os_mtime))
+
+    candidates = download_week.collect_storage_candidates(
+        tmp_path,
+        storage=None,
+        profile=None,
+        profiles_file=None,
+        profile_priority="stale,fresh",
+        log_auth=None,
+    )
+
+    assert candidates == [(str(fresh_storage.resolve()), "profiles:fresh")]

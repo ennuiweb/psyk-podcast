@@ -23,6 +23,14 @@ async def _successful_refresher(_name: str, storage_path: Path) -> None:
     storage_path.write_text(storage_path.read_text(encoding="utf-8") + "\n", encoding="utf-8")
 
 
+async def _successful_prober(_name: str, _storage_path: Path) -> None:
+    return None
+
+
+async def _auth_failure_prober(_name: str, _storage_path: Path) -> None:
+    raise ValueError("Authentication expired or invalid. Run 'notebooklm login'.")
+
+
 async def _auth_failure_refresher(_name: str, _storage_path: Path) -> None:
     raise ValueError("Authentication expired or invalid. Run 'notebooklm login'.")
 
@@ -70,6 +78,7 @@ def test_refresh_profiles_repairs_auth_stale_profile_state(tmp_path: Path) -> No
             use_lock=False,
         ),
         refresher=_successful_refresher,
+        prober=_successful_prober,
         now=now,
     )
 
@@ -83,6 +92,7 @@ def test_refresh_profiles_repairs_auth_stale_profile_state(tmp_path: Path) -> No
     assert entry["last_error"] is None
     assert entry["cooldown_until"] == 0
     assert entry["last_refresh_status"] == "success"
+    assert entry["last_probe_status"] == "success"
 
     after = inspect_profile_capacity(
         profiles_file=profiles_file,
@@ -138,6 +148,7 @@ def test_refresh_profiles_can_reclaim_after_auth_recovery(tmp_path: Path, monkey
             reclaim_max_deletions=9,
         ),
         refresher=_successful_refresher,
+        prober=_successful_prober,
         now=now,
     )
 
@@ -198,6 +209,7 @@ def test_refresh_profiles_can_reclaim_after_cooldown_recovery(tmp_path: Path, mo
             reclaim_on_recovery=True,
         ),
         refresher=_successful_refresher,
+        prober=_successful_prober,
         now=now,
     )
 
@@ -255,6 +267,7 @@ def test_refresh_profiles_auth_recovery_flag_does_not_reclaim_cooldown_recovery(
             reclaim_on_auth_recovery=True,
         ),
         refresher=_successful_refresher,
+        prober=_successful_prober,
         now=now,
     )
 
@@ -294,6 +307,7 @@ def test_refresh_profiles_preserves_rate_limit_cooldown(tmp_path: Path) -> None:
             use_lock=False,
         ),
         refresher=_successful_refresher,
+        prober=_successful_prober,
         now=now,
     )
 
@@ -302,6 +316,124 @@ def test_refresh_profiles_preserves_rate_limit_cooldown(tmp_path: Path) -> None:
     entry = state["profiles"]["limited"]
     assert entry["last_error"] == "rate_limit"
     assert entry["cooldown_until"] == cooldown_until
+
+
+def test_refresh_profiles_keeps_auth_stale_when_probe_fails(tmp_path: Path) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    profiles_file = _write_profiles_file(tmp_path, {"default": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps({"profiles": {"default": {"last_error": "auth"}}}),
+        encoding="utf-8",
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            force=True,
+            use_lock=False,
+        ),
+        refresher=_successful_refresher,
+        prober=_auth_failure_prober,
+        now=now,
+    )
+
+    assert result["status"] == "failed"
+    assert result["profiles"][0]["phase"] == "probe"
+    assert result["profiles"][0]["error_type"] == "auth"
+    state = json.loads(state_file.read_text(encoding="utf-8"))
+    entry = state["profiles"]["default"]
+    assert entry["last_refresh_status"] == "success"
+    assert entry["last_probe_status"] == "failed"
+    assert entry["last_error"] == "auth"
+
+
+def test_refresh_profiles_skips_unrecovered_auth_stale_without_force(tmp_path: Path) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    auth_failed_at = (now - timedelta(minutes=10)).timestamp()
+    os.utime(storage, (auth_failed_at - 60, auth_failed_at - 60))
+    profiles_file = _write_profiles_file(tmp_path, {"default": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_error": "auth",
+                        "last_probe_status": "failed",
+                        "last_probe_error_type": "auth",
+                        "last_probe_attempt": auth_failed_at,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            use_lock=False,
+        ),
+        refresher=_successful_refresher,
+        prober=_successful_prober,
+        now=now,
+    )
+
+    assert result["status"] == "ok"
+    assert result["summary"] == {"skipped_auth_stale": 1}
+    state = json.loads(state_file.read_text(encoding="utf-8"))
+    assert state["profiles"]["default"]["last_probe_status"] == "failed"
+
+
+def test_refresh_profiles_retries_auth_stale_after_storage_is_updated(tmp_path: Path) -> None:
+    now = datetime(2026, 5, 23, 12, tzinfo=UTC)
+    storage = tmp_path / "default.json"
+    storage.write_text("{}", encoding="utf-8")
+    auth_failed_at = (now - timedelta(minutes=10)).timestamp()
+    os.utime(storage, (now.timestamp(), now.timestamp()))
+    profiles_file = _write_profiles_file(tmp_path, {"default": storage})
+    state_file = tmp_path / "profile_state.json"
+    state_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "default": {
+                        "last_error": "auth",
+                        "last_refresh_status": "failed",
+                        "last_refresh_error_type": "auth",
+                        "last_refresh_attempt": auth_failed_at,
+                    }
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = refresh_profiles(
+        store=QueueStore(tmp_path / "queue"),
+        options=ProfileRefreshOptions(
+            profiles_file=profiles_file,
+            profile_state_file=state_file,
+            use_lock=False,
+        ),
+        refresher=_successful_refresher,
+        prober=_successful_prober,
+        now=now,
+    )
+
+    assert result["summary"] == {"refreshed": 1}
+    state = json.loads(state_file.read_text(encoding="utf-8"))
+    assert state["profiles"]["default"]["last_error"] is None
+    assert state["profiles"]["default"]["last_probe_status"] == "success"
 
 
 def test_refresh_profiles_marks_auth_failure_stale(tmp_path: Path) -> None:

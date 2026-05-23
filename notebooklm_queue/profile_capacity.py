@@ -8,6 +8,8 @@ import os
 from pathlib import Path
 from typing import Any
 
+from .profile_state import classify_profile_state, max_validation_age_from_env
+
 PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
 PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
 PROFILE_STATE_FILE_ENV_VAR = "NOTEBOOKLM_PROFILE_STATE_FILE"
@@ -105,7 +107,7 @@ def inspect_profile_capacity(
 
     has_capacity = bool(usable_profiles)
     next_available_ts = min(cooldown_untils) if cooldown_untils else None
-    manual_required = not has_capacity and next_available_ts is None
+    manual_required = not has_capacity and _requires_manual_intervention(status_counts)
     next_available_at = (
         datetime.fromtimestamp(next_available_ts, tz=UTC).replace(microsecond=0).isoformat()
         if next_available_ts is not None
@@ -236,37 +238,19 @@ def _profile_record(
     last_used = _coerce_float(state_entry.get("last_used"), 0.0)
     last_refreshed = _coerce_float(state_entry.get("last_refreshed"), 0.0)
     last_error = str(state_entry.get("last_error") or "").strip()
-    last_refresh_status = str(state_entry.get("last_refresh_status") or "").strip()
-    last_refresh_error_type = str(state_entry.get("last_refresh_error_type") or "").strip()
     storage_exists = storage_path.exists()
     storage_mtime = _storage_mtime(storage_path) if storage_exists else None
-    status = "usable"
-    reason = "available"
-    cooldown_remaining = 0
-
-    auth_refresh_failed = last_refresh_status == "failed" and last_refresh_error_type == "auth"
-    auth_storage_stale = last_error == "auth" and last_used > 0 and (
-        storage_mtime is None or storage_mtime <= last_used
+    classified = classify_profile_state(
+        state_entry=state_entry,
+        storage_path=storage_path,
+        now_ts=now_ts,
+        max_validation_age_seconds=max_validation_age_from_env(),
     )
-
-    if not storage_exists:
-        status = "missing_storage"
-        reason = "storage_file_missing"
-    elif auth_refresh_failed:
-        status = "auth_stale"
-        reason = "last_refresh_failed_auth"
-    elif auth_storage_stale:
-        status = "auth_stale"
-        reason = "storage_not_refreshed_after_auth_failure"
-    elif cooldown_until > now_ts:
-        status = "cooldown"
-        reason = f"{last_error or 'profile'}_cooldown"
-        cooldown_remaining = max(int(cooldown_until - now_ts), 1)
 
     return {
         "name": name,
-        "status": status,
-        "reason": reason,
+        "status": classified.status,
+        "reason": classified.reason,
         "storage_path": str(storage_path),
         "storage_exists": storage_exists,
         "storage_mtime_epoch": storage_mtime,
@@ -275,6 +259,10 @@ def _profile_record(
         "last_refresh_status": state_entry.get("last_refresh_status"),
         "last_refresh_error_type": state_entry.get("last_refresh_error_type"),
         "last_refresh_error": state_entry.get("last_refresh_error"),
+        "last_probe_success_epoch": state_entry.get("last_probe_success"),
+        "last_probe_status": state_entry.get("last_probe_status"),
+        "last_probe_error_type": state_entry.get("last_probe_error_type"),
+        "last_probe_error": state_entry.get("last_probe_error"),
         "last_error": last_error or None,
         "success_count": int(_coerce_float(state_entry.get("success_count"), 0.0)),
         "failure_count": int(_coerce_float(state_entry.get("failure_count"), 0.0)),
@@ -284,7 +272,7 @@ def _profile_record(
             if cooldown_until
             else None
         ),
-        "cooldown_remaining_seconds": cooldown_remaining,
+        "cooldown_remaining_seconds": classified.cooldown_remaining_seconds,
     }
 
 
@@ -308,6 +296,12 @@ def _parse_profile_priority(raw: str | None) -> list[str]:
         if name and name not in names:
             names.append(name)
     return names
+
+
+def _requires_manual_intervention(status_counts: dict[str, int]) -> bool:
+    automatic_statuses = {"cooldown", "refresh_required"}
+    active_blockers = {status for status, count in status_counts.items() if count > 0}
+    return not active_blockers.issubset(automatic_statuses)
 
 
 def _coerce_float(value: Any, default: float) -> float:

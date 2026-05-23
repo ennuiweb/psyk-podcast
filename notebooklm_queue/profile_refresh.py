@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 import os
 from pathlib import Path
+import subprocess
+import sys
 from typing import Any
 
 from .orchestrator import PROFILE_CAPACITY_LOCK_SCOPE
@@ -20,9 +22,11 @@ from .profile_capacity import (
     _resolve_profile_state_file,
     _resolve_profiles_file,
 )
+from .profile_state import profile_auth_is_unrecovered
 from .store import QueueLockError, QueueStore, _write_json_atomic
 
 RefreshCallable = Callable[[str, Path], Awaitable[None]]
+ProbeCallable = Callable[[str, Path], Awaitable[None]]
 
 AUTH_ERROR_SIGNALS = (
     "authentication expired",
@@ -50,6 +54,8 @@ class ProfileRefreshOptions:
     reclaim_target_free_slots: int = 25
     reclaim_max_deletions: int = 25
     reclaim_dry_run: bool = True
+    probe_after_refresh: bool = True
+    probe_timeout_seconds: int = 60
 
 
 def refresh_profiles(
@@ -57,6 +63,7 @@ def refresh_profiles(
     store: QueueStore,
     options: ProfileRefreshOptions | None = None,
     refresher: RefreshCallable | None = None,
+    prober: ProbeCallable | None = None,
     now: datetime | None = None,
 ) -> dict[str, Any]:
     """Refresh configured NotebookLM profile storage and repair profile state."""
@@ -72,6 +79,7 @@ def refresh_profiles(
                     store=store,
                     options=opts,
                     refresher=refresher or _default_refresh_profile,
+                    prober=prober or _default_probe_profile,
                     now=now,
                 )
         except QueueLockError as exc:
@@ -93,6 +101,7 @@ def refresh_profiles(
         store=store,
         options=opts,
         refresher=refresher or _default_refresh_profile,
+        prober=prober or _default_probe_profile,
         now=now,
     )
 
@@ -102,6 +111,7 @@ def _refresh_profiles_unlocked(
     store: QueueStore,
     options: ProfileRefreshOptions,
     refresher: RefreshCallable,
+    prober: ProbeCallable,
     now: datetime | None,
 ) -> dict[str, Any]:
     current = _now(now)
@@ -165,9 +175,12 @@ def _refresh_profiles_unlocked(
             storage_path=storage_path,
             state=state,
             refresher=refresher,
+            prober=prober,
             now_ts=now_ts,
             min_refresh_age_seconds=max(int(options.min_refresh_age_seconds), 0),
             force=bool(options.force),
+            probe_after_refresh=bool(options.probe_after_refresh),
+            probe_timeout_seconds=max(int(options.probe_timeout_seconds), 1),
         )
         profile_results.append(profile_result)
 
@@ -211,9 +224,12 @@ def _refresh_one_profile(
     storage_path: Path,
     state: dict[str, Any],
     refresher: RefreshCallable,
+    prober: ProbeCallable,
     now_ts: float,
     min_refresh_age_seconds: int,
     force: bool,
+    probe_after_refresh: bool,
+    probe_timeout_seconds: int,
 ) -> dict[str, Any]:
     entry = _profile_state_entry(state, name)
     storage_exists = storage_path.exists()
@@ -235,6 +251,17 @@ def _refresh_one_profile(
             "status": "failed",
             "error_type": "missing_storage",
             "error": f"storage file missing: {storage_path}",
+        }
+
+    if not force and profile_auth_is_unrecovered(
+        state_entry=entry,
+        storage_path=storage_path,
+    ):
+        return {
+            **base,
+            "status": "skipped_auth_stale",
+            "reason": "storage_not_updated_after_auth_failure",
+            "storage_mtime_epoch": _storage_mtime(storage_path),
         }
 
     last_refreshed = _coerce_float(entry.get("last_refreshed"), 0.0)
@@ -274,12 +301,49 @@ def _refresh_one_profile(
         }
 
     after_mtime = _storage_mtime(storage_path)
-    _record_refresh_success(entry, now_ts=now_ts)
+    _record_keepalive_success(entry, now_ts=now_ts)
+    probe_payload: dict[str, Any] = {}
+    if probe_after_refresh:
+        try:
+            if prober is _default_probe_profile:
+                _run_async(
+                    _default_probe_profile(
+                        name,
+                        storage_path,
+                        timeout_seconds=probe_timeout_seconds,
+                    )
+                )
+            else:
+                _run_async(prober(name, storage_path))
+        except Exception as exc:  # noqa: BLE001 - operator report needs the exact failure.
+            error_type = _classify_refresh_error(exc)
+            _record_probe_failure(
+                entry,
+                now_ts=now_ts,
+                error_type=error_type,
+                error=str(exc),
+                mark_auth_error=error_type == "auth",
+            )
+            return {
+                **base,
+                "status": "failed",
+                "phase": "probe",
+                "error_type": error_type,
+                "error": str(exc),
+                "storage_mtime_before_epoch": before_mtime,
+                "storage_mtime_after_epoch": after_mtime,
+            }
+        _record_probe_success(entry, now_ts=now_ts)
+        probe_payload["probe_status"] = "success"
+    else:
+        _record_refresh_success(entry, now_ts=now_ts)
+        probe_payload["probe_status"] = "skipped"
     return {
         **base,
         "status": "refreshed",
         "storage_mtime_before_epoch": before_mtime,
         "storage_mtime_after_epoch": after_mtime,
+        **probe_payload,
         "recovered_from_error": previous_error,
         "previous_cooldown_until_epoch": previous_cooldown_until if previous_cooldown_until else None,
         "recovered_from_cooldown": (
@@ -344,6 +408,31 @@ async def _default_refresh_profile(_name: str, storage_path: Path) -> None:
             os.environ["NOTEBOOKLM_AUTH_JSON"] = previous_auth_json
 
 
+async def _default_probe_profile(
+    _name: str,
+    storage_path: Path,
+    *,
+    timeout_seconds: int | None = None,
+) -> None:
+    notebooklm_bin = str(os.environ.get("NOTEBOOKLM_PROFILE_REFRESH_NOTEBOOKLM_BIN") or "").strip()
+    if not notebooklm_bin:
+        notebooklm_bin = str(Path(sys.executable).with_name("notebooklm"))
+    timeout = timeout_seconds
+    if timeout is None:
+        timeout = _int_env("NOTEBOOKLM_PROFILE_REFRESH_PROBE_TIMEOUT_SECONDS", 60)
+    cmd = [notebooklm_bin, "--storage", str(storage_path), "list", "--json"]
+    result = subprocess.run(
+        cmd,
+        text=True,
+        capture_output=True,
+        timeout=max(timeout, 1),
+        check=False,
+    )
+    if result.returncode != 0:
+        output = ((result.stdout or "") + (result.stderr or "")).strip()
+        raise RuntimeError(output or f"profile probe failed with exit code {result.returncode}")
+
+
 def _record_refresh_success(entry: dict[str, Any], *, now_ts: float) -> None:
     entry["last_refreshed"] = now_ts
     entry["last_refresh_status"] = "success"
@@ -353,6 +442,44 @@ def _record_refresh_success(entry: dict[str, Any], *, now_ts: float) -> None:
     if str(entry.get("last_error") or "").strip() == "auth":
         entry["last_error"] = None
         entry["cooldown_until"] = 0
+
+
+def _record_keepalive_success(entry: dict[str, Any], *, now_ts: float) -> None:
+    entry["last_refreshed"] = now_ts
+    entry["last_refresh_status"] = "success"
+    entry["last_refresh_error"] = None
+    entry["refresh_success_count"] = int(entry.get("refresh_success_count") or 0) + 1
+    entry["last_refresh_error_type"] = None
+
+
+def _record_probe_success(entry: dict[str, Any], *, now_ts: float) -> None:
+    entry["last_probe_attempt"] = now_ts
+    entry["last_probe_success"] = now_ts
+    entry["last_probe_status"] = "success"
+    entry["last_probe_error"] = None
+    entry["last_probe_error_type"] = None
+    entry["probe_success_count"] = int(entry.get("probe_success_count") or 0) + 1
+    if str(entry.get("last_error") or "").strip() == "auth":
+        entry["last_error"] = None
+        entry["cooldown_until"] = 0
+
+
+def _record_probe_failure(
+    entry: dict[str, Any],
+    *,
+    now_ts: float,
+    error_type: str,
+    error: str,
+    mark_auth_error: bool,
+) -> None:
+    entry["last_probe_attempt"] = now_ts
+    entry["last_probe_status"] = "failed"
+    entry["last_probe_error_type"] = error_type
+    entry["last_probe_error"] = error
+    entry["probe_failure_count"] = int(entry.get("probe_failure_count") or 0) + 1
+    if mark_auth_error:
+        entry["last_error"] = "auth"
+        entry["last_used"] = max(_coerce_float(entry.get("last_used"), 0.0), now_ts)
 
 
 def _record_refresh_failure(
@@ -446,3 +573,13 @@ def _run_async(awaitable: Awaitable[None]) -> None:
         asyncio.run(awaitable)
         return
     raise RuntimeError("refresh_profiles cannot run inside an active event loop")
+
+
+def _int_env(name: str, default: int) -> int:
+    raw = str(os.environ.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default

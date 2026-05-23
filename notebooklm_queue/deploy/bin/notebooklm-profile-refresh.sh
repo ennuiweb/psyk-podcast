@@ -6,6 +6,7 @@ python_bin="${NOTEBOOKLM_QUEUE_PYTHON_BIN:-$repo_root/.venv/bin/python}"
 cli_script="${NOTEBOOKLM_QUEUE_CLI_SCRIPT:-$repo_root/scripts/notebooklm_queue.py}"
 storage_root="${NOTEBOOKLM_QUEUE_STORAGE_ROOT:-/var/lib/podcasts/notebooklm-queue}"
 min_age_seconds="${NOTEBOOKLM_PROFILE_REFRESH_MIN_AGE_SECONDS:-900}"
+probe_timeout_seconds="${NOTEBOOKLM_PROFILE_REFRESH_PROBE_TIMEOUT_SECONDS:-60}"
 actor="${NOTEBOOKLM_PROFILE_REFRESH_ACTOR:-systemd-profile-refresh}"
 
 export NOTEBOOKLM_PROFILES_FILE="${NOTEBOOKLM_PROFILES_FILE:-/etc/podcasts/notebooklm-queue/profiles.host.json}"
@@ -18,8 +19,13 @@ cmd=(
   --storage-root "$storage_root"
   refresh-profiles
   --min-refresh-age-seconds "$min_age_seconds"
+  --probe-timeout-seconds "$probe_timeout_seconds"
   --actor "$actor"
 )
+
+if [[ "${NOTEBOOKLM_PROFILE_REFRESH_PROBE:-1}" == "0" ]]; then
+  cmd+=(--no-probe)
+fi
 
 if [[ -n "${NOTEBOOKLM_PROFILE_PRIORITY:-}" ]]; then
   cmd+=(--profile-priority "$NOTEBOOKLM_PROFILE_PRIORITY")

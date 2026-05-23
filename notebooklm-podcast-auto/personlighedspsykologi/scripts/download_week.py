@@ -7,12 +7,20 @@ import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from notebooklm_queue.profile_state import profile_auth_is_stale  # noqa: E402
 
 DEFAULT_OUTPUT_ROOT = "notebooklm-podcast-auto/personlighedspsykologi/output"
 OUTPUT_ROOT_ENV_VAR = "PERSONLIGHEDSPSYKOLOGI_OUTPUT_ROOT"
 PROFILES_FILE_ENV_VAR = "NOTEBOOKLM_PROFILES_FILE"
 PROFILE_PRIORITY_ENV_VAR = "NOTEBOOKLM_PROFILE_PRIORITY"
+PROFILE_STATE_FILE_ENV_VAR = "NOTEBOOKLM_PROFILE_STATE_FILE"
 
 
 def default_output_root() -> str:
@@ -335,6 +343,43 @@ def default_storage_path() -> Path:
     return Path.home() / ".notebooklm" / "storage_state.json"
 
 
+def profile_state_path() -> Path:
+    state_override = str(os.environ.get(PROFILE_STATE_FILE_ENV_VAR) or "").strip()
+    if state_override:
+        return Path(state_override).expanduser()
+    home_override = os.environ.get("NOTEBOOKLM_HOME")
+    if home_override:
+        return Path(home_override).expanduser() / "profile_state.json"
+    return Path.home() / ".notebooklm" / "profile_state.json"
+
+
+def load_profile_state() -> dict:
+    path = profile_state_path()
+    if not path.exists():
+        return {"profiles": {}}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {"profiles": {}}
+    if not isinstance(payload, dict):
+        return {"profiles": {}}
+    if not isinstance(payload.get("profiles"), dict):
+        payload["profiles"] = {}
+    return payload
+
+
+def profile_storage_auth_is_stale(profile_state: dict, profile: str | None, storage_path: str | None) -> bool:
+    if not profile or not storage_path:
+        return False
+    profiles = profile_state.get("profiles") if isinstance(profile_state.get("profiles"), dict) else {}
+    entry = profiles.get(profile) if isinstance(profiles.get(profile), dict) else {}
+    return profile_auth_is_stale(
+        state_entry=entry,
+        storage_path=Path(storage_path).expanduser(),
+        now_ts=time.time(),
+    )
+
+
 def collect_storage_candidates(
     repo_root: Path,
     *,
@@ -346,12 +391,15 @@ def collect_storage_candidates(
 ) -> list[tuple[str | None, str]]:
     candidates: list[tuple[str | None, str]] = []
     seen: set[str | None] = set()
+    profile_state = load_profile_state()
 
-    def add(path: str | None, source: str) -> None:
+    def add(path: str | None, source: str, profile_name: str | None = None) -> None:
         key = str(Path(path).expanduser().resolve()) if path else None
         if key in seen:
             return
         if path and not Path(path).expanduser().exists():
+            return
+        if profile_storage_auth_is_stale(profile_state, profile_name, path):
             return
         seen.add(key)
         candidates.append((path, source))
@@ -364,7 +412,7 @@ def collect_storage_candidates(
             profiles_file=profiles_file,
             log_auth=None,
         )
-        add(path, source)
+        add(path, source, profile if source == "cli:profile" else None)
 
     profiles_items: list[tuple[str, str]] = []
     has_explicit_profiles = explicit_profiles_configured(profiles_file)
@@ -373,7 +421,7 @@ def collect_storage_candidates(
         if profiles_path:
             profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
         for name, path in profiles_items:
-            add(path, f"profiles:{name}")
+            add(path, f"profiles:{name}", name)
 
     if log_auth:
         path, source = resolve_storage_path(
@@ -383,14 +431,14 @@ def collect_storage_candidates(
             profiles_file=None,
             log_auth=log_auth,
         )
-        add(path, source)
+        add(path, source, str(log_auth.get("profile") or "") or None)
 
     if not storage and not profile and not has_explicit_profiles:
         profiles_path = resolve_profiles_path(repo_root, profiles_file)
         if profiles_path:
             profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
         for name, path in profiles_items:
-            add(path, f"profiles:{name}")
+            add(path, f"profiles:{name}", name)
 
     fallback_path = default_storage_path()
     if fallback_path.exists():

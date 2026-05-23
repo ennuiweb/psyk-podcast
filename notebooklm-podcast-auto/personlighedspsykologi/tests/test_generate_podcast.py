@@ -12,6 +12,7 @@ from unittest.mock import patch
 
 from notebooklm import NotebookLimitError, RPCError
 from notebooklm.rpc.types import RPCMethod, ReportFormat
+from notebooklm_queue.notebook_reclaim_safety import find_undownloaded_request_logs
 
 
 def _load_module():
@@ -370,7 +371,6 @@ class GeneratePodcastTests(unittest.TestCase):
         self.assertEqual(client.notebooks.deleted_ids, ["nb-next"])
 
     def test_request_log_guard_allows_deletion_when_output_exists(self):
-        mod = _load_module()
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp_root = Path(tmpdir)
             output_path = tmp_root / "done.mp3"
@@ -386,7 +386,7 @@ class GeneratePodcastTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            matches = mod._find_undownloaded_request_logs(tmp_root, "nb-safe")
+            matches = find_undownloaded_request_logs((tmp_root,), "nb-safe")
 
         self.assertEqual(matches, [])
 

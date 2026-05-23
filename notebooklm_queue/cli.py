@@ -131,6 +131,8 @@ def build_parser() -> argparse.ArgumentParser:
     refresh_profiles_parser.add_argument("--reclaim-target-free-slots", type=int, default=25)
     refresh_profiles_parser.add_argument("--reclaim-max-deletions", type=int, default=25)
     refresh_profiles_parser.add_argument("--reclaim-apply", action="store_true")
+    refresh_profiles_parser.add_argument("--no-probe", action="store_true")
+    refresh_profiles_parser.add_argument("--probe-timeout-seconds", type=int, default=60)
 
     reclaim = subparsers.add_parser(
         "reclaim-notebooks",
@@ -377,6 +379,8 @@ def main(argv: list[str] | None = None) -> int:
                 reclaim_target_free_slots=int(args.reclaim_target_free_slots),
                 reclaim_max_deletions=int(args.reclaim_max_deletions),
                 reclaim_dry_run=not bool(args.reclaim_apply),
+                probe_after_refresh=not bool(args.no_probe),
+                probe_timeout_seconds=int(args.probe_timeout_seconds),
             ),
         )
         _print_json(payload)

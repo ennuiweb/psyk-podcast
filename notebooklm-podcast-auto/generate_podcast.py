@@ -43,6 +43,7 @@ from notebooklm_queue.notebook_reclaim_safety import (  # noqa: E402
     notebook_sort_key,
     reclaim_blocker_for_notebook,
 )
+from notebooklm_queue.profile_state import profile_auth_is_stale  # noqa: E402
 
 RATE_LIMIT_TOKENS = (
     "rate limit",
@@ -447,16 +448,11 @@ def _profile_last_used(state: dict, profile: str) -> float:
 
 def _profile_auth_is_stale(state: dict, profile: str, storage_path: str) -> bool:
     entry = _profile_state_entry(state, profile)
-    if str(entry.get("last_error") or "").strip() != "auth":
-        return False
-    last_used = _profile_last_used(state, profile)
-    if last_used <= 0:
-        return False
-    try:
-        storage_mtime = Path(storage_path).expanduser().stat().st_mtime
-    except OSError:
-        return True
-    return storage_mtime <= last_used
+    return profile_auth_is_stale(
+        state_entry=entry,
+        storage_path=Path(storage_path).expanduser(),
+        now_ts=time.time(),
+    )
 
 
 def _record_profile_result(

@@ -147,6 +147,30 @@
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_source_catalog.py"
+    },
+    {
+      "artifact_id": "student_synthesis_exam_theory_matrix_seed",
+      "concept": "student_synthesis_exam_theory_matrix",
+      "path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.seed.json",
+      "role": "canonical",
+      "manual_edit_allowed": true,
+      "writer": "manual reviewed curation"
+    },
+    {
+      "artifact_id": "student_synthesis_source_notes_index",
+      "concept": "student_synthesis_source_notes",
+      "path": "shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_exam_theory_matrix.py"
+    },
+    {
+      "artifact_id": "student_synthesis_exam_theory_matrix",
+      "concept": "student_synthesis_exam_theory_matrix",
+      "path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_exam_theory_matrix.py"
     }
   ]
 }

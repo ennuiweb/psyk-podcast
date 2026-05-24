@@ -10,6 +10,7 @@ Scaffolding for the "Personlighedspsykologi" feed.
 - `artifact_ownership.json` - machine-readable ownership contract for canonical inputs, mirrors, derived artifacts, and rollout/provenance registries.
 - `regeneration_registry.json` - tracked A/B rollout state for original (`A`) vs regenerated (`B`) variants per logical episode.
 - `learning_material_regeneration_registry.json` - checked-in ledger of podcast, printout, quiz, and slide materials regenerated or surfaced under the current prompt/Course Understanding pipeline.
+- `student_synthesis/` - controlled exam-orientation artifacts generated from older high-performing student notes and validated against current course artifacts.
 - `reading_summaries.json` - cached per-reading summary + key-points blocks for episode descriptions.
 - `assets/cover-new.png` - square artwork (min. 1400x1400) referenced by the feed.
 - `docs/` - planning material and any "important text" docs.

@@ -7,6 +7,16 @@ import sys
 from pathlib import Path
 from typing import Any
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from notebooklm_queue.personlighedspsykologi_student_synthesis import (
+    StudentSynthesisValidationError,
+    validate_exam_theory_matrix,
+    validate_source_notes_index,
+)
+
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
 NOTEBOOKLM_DIR = Path("notebooklm-podcast-auto/personlighedspsykologi")
 FREUDD_SUBJECTS = Path("freudd_portal/subjects.json")
@@ -29,6 +39,10 @@ SOURCE_INTELLIGENCE_STALENESS = SHOW_DIR / "source_intelligence_staleness.json"
 SOURCE_WEIGHTING = SHOW_DIR / "source_weighting.json"
 COURSE_CONCEPT_GRAPH = SHOW_DIR / "course_concept_graph.json"
 ARTIFACT_OWNERSHIP = SHOW_DIR / "artifact_ownership.json"
+STUDENT_SYNTHESIS_DIR = SHOW_DIR / "student_synthesis"
+STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX = STUDENT_SYNTHESIS_DIR / "source_notes_index.json"
+STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.json"
+STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
 VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
 PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS = {
     "reading_key_path",
@@ -76,7 +90,7 @@ FORBIDDEN_REFERENCES = {
 
 
 def _repo_root() -> Path:
-    return Path(__file__).resolve().parents[1]
+    return REPO_ROOT
 
 
 def _load_json(path: Path) -> object:
@@ -203,6 +217,9 @@ def _failures(repo_root: Path) -> list[str]:
     source_intelligence_staleness = repo_root / SOURCE_INTELLIGENCE_STALENESS
     source_weighting = repo_root / SOURCE_WEIGHTING
     course_concept_graph = repo_root / COURSE_CONCEPT_GRAPH
+    student_synthesis_source_notes_index = repo_root / STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX
+    student_synthesis_exam_theory_matrix = repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX
+    student_synthesis_exam_theory_matrix_seed = repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED
     freudd_subjects = repo_root / FREUDD_SUBJECTS
     content_manifest_payload = _load_json(content_manifest) if content_manifest.exists() else None
     ownership_failures, owned_artifacts = _validate_artifact_ownership(repo_root)
@@ -249,6 +266,18 @@ def _failures(repo_root: Path) -> list[str]:
         failures.append(f"Missing source weighting artifact: {SOURCE_WEIGHTING}")
     if not course_concept_graph.exists():
         failures.append(f"Missing course concept graph: {COURSE_CONCEPT_GRAPH}")
+    if not student_synthesis_exam_theory_matrix_seed.exists():
+        failures.append(
+            f"Missing student synthesis exam theory matrix seed: {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED}"
+        )
+    if not student_synthesis_source_notes_index.exists():
+        failures.append(
+            f"Missing student synthesis source notes index: {STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX}"
+        )
+    if not student_synthesis_exam_theory_matrix.exists():
+        failures.append(
+            f"Missing student synthesis exam theory matrix: {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX}"
+        )
     if not freudd_subjects.exists():
         failures.append(f"Missing Freudd subject catalog: {FREUDD_SUBJECTS}")
 
@@ -505,6 +534,8 @@ def _failures(repo_root: Path) -> list[str]:
                 "course_theory_map",
                 "source_weighting",
                 "course_concept_graph",
+                "student_synthesis_source_notes_index",
+                "exam_theory_matrix",
             ]:
                 if required_key not in artifacts:
                     failures.append(
@@ -637,6 +668,33 @@ def _failures(repo_root: Path) -> list[str]:
                     )
     else:
         failures.append(f"Course concept graph payload missing or invalid in {COURSE_CONCEPT_GRAPH}")
+
+    if student_synthesis_source_notes_index.exists():
+        try:
+            validate_source_notes_index(_load_json(student_synthesis_source_notes_index))
+        except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis source notes index is invalid in {STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX}: {exc}"
+            )
+
+    if student_synthesis_exam_theory_matrix.exists():
+        known_lecture_keys: set[str] = set()
+        if "source_catalog_lectures" in locals() and isinstance(source_catalog_lectures, list):
+            known_lecture_keys = {
+                str(lecture.get("lecture_key") or "").strip()
+                for lecture in source_catalog_lectures
+                if isinstance(lecture, dict) and str(lecture.get("lecture_key") or "").strip()
+            }
+        try:
+            validate_exam_theory_matrix(
+                _load_json(student_synthesis_exam_theory_matrix),
+                known_theory_ids=theory_ids if isinstance(theory_ids, set) else None,
+                known_lecture_keys=known_lecture_keys or None,
+            )
+        except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis exam theory matrix is invalid in {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX}: {exc}"
+            )
 
     for relative_path in REFERENCE_FILES:
         path = repo_root / relative_path

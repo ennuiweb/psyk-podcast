@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "artifact_type": "student_synthesis_source_notes_index",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-24T21:01:26Z",
+  "authority": "student_exam_synthesis",
+  "notes": [
+    {
+      "note_id": "anes_tabel",
+      "label": "Anes tabel",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Anes tabel.pdf",
+      "sha256": "5b89afb403e7bea130a12e5389aabbc7e4223393861539648ab13751ec5c95ee",
+      "size_bytes": 817384,
+      "format": "pdf",
+      "extraction_method": "pdftotext -layout",
+      "extraction_status": "ok",
+      "extracted_character_count": 107028,
+      "extracted_line_count": 1561,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 95,
+        "determination": 42,
+        "agency": 49,
+        "historicity": 26,
+        "trait": 4,
+        "psychoanalysis": 40,
+        "phenomenology": 11,
+        "existential": 32,
+        "humanistic": 16,
+        "critical": 7,
+        "social_constructionism": 5,
+        "poststructuralism": 10,
+        "narrative": 82
+      }
+    },
+    {
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "label": "Tabel alle teoretiske retninger",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Tabel alle teoretiske retninger.docx",
+      "sha256": "12990084073cde8674926b8026de5108661baecb608e774e640610faee25be98",
+      "size_bytes": 3660470,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 113609,
+      "extracted_line_count": 625,
+      "embedded_media_count": 2,
+      "embedded_media_review_status": "needs_review",
+      "keyword_hits": {
+        "essence_context": 65,
+        "determination": 35,
+        "agency": 26,
+        "historicity": 35,
+        "trait": 6,
+        "psychoanalysis": 12,
+        "phenomenology": 5,
+        "existential": 16,
+        "humanistic": 4,
+        "critical": 1,
+        "social_constructionism": 0,
+        "poststructuralism": 5,
+        "narrative": 11
+      }
+    }
+  ],
+  "stats": {
+    "note_count": 2,
+    "embedded_media_count": 2
+  },
+  "warnings": [
+    "DOCX embedded images are detected but not OCR-expanded; matrix rows must remain reviewable."
+  ]
+}

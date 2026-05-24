@@ -2,6 +2,107 @@
 
 Created: 2026-05-24
 
+## Implementation Progress
+
+### 2026-05-24: Phase 1 Build Started
+
+Status: complete.
+
+Scope for this pass:
+
+- create a first-class `exam_theory_matrix.json` artifact for the student
+  synthesis layer
+- keep the original student notes outside the repo and store only provenance,
+  hashes, extraction metadata, and normalized synthesis
+- validate every theory row against current course artifacts before marking it
+  course-grounded
+- add tests for schema validation, stale/unsafe output prevention, and
+  deterministic artifact construction
+
+Current implementation decision: the first version will remain separate from
+`course_context.py`, printouts, Freudd routes, and podcast prompts. It becomes
+an auditable artifact first; downstream use comes only after the matrix itself
+is validated.
+
+### 2026-05-24: Builder Scaffold Added
+
+Status: complete.
+
+Added implementation targets:
+
+- `notebooklm_queue/personlighedspsykologi_student_synthesis.py`
+- `scripts/build_personlighedspsykologi_exam_theory_matrix.py`
+
+The builder is designed to produce two artifacts:
+
+- `student_synthesis/source_notes_index.json`
+- `student_synthesis/exam_theory_matrix.json`
+
+Safety decisions now encoded in the implementation:
+
+- original student files stay outside the repository
+- PDF/DOCX extraction is used only for metadata, keyword coverage, and
+  provenance in this first deterministic pass
+- generated rows must pass schema validation before writing
+- validated rows must retain current-course grounding pointers
+- raw extracted table text is rejected from normalized matrix fields
+
+### 2026-05-24: First Matrix Artifact Generated
+
+Status: complete.
+
+Generated artifacts:
+
+- `shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json`
+- `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
+
+Current generated state:
+
+- indexed source notes: 2
+- matrix rows: 13
+- validated rows: 13
+- DOCX embedded media detected: 2
+
+The DOCX embedded media are recorded with
+`embedded_media_review_status: needs_review`. The current matrix does not rely
+on those images as unseen evidence; they are a review flag for a later pass.
+
+### 2026-05-24: Validation And Invariants Added
+
+Status: verified.
+
+Added verification coverage:
+
+- unit tests for source-note indexing and matrix validation
+- duplicate `theory_id` rejection
+- missing orientation-point rejection
+- rejection of `validated` rows without representative course sources
+- deterministic enrichment test for concept nodes and distinctions
+- artifact-invariant checks for the generated source-note index and matrix
+
+The new files are also registered in `artifact_ownership.json`, with the seed
+marked as manual curation and the generated files marked as derived.
+
+Verification run:
+
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_student_synthesis.py tests/test_source_intelligence_schemas.py tests/test_build_personlighedspsykologi_semantic_artifacts.py tests/test_build_personlighedspsykologi_source_weighting.py`
+- `./.venv/bin/python scripts/check_personlighedspsykologi_artifact_invariants.py`
+- `./.venv/bin/python scripts/build_personlighedspsykologi_exam_theory_matrix.py --validate-only`
+- `./.venv/bin/python -m py_compile notebooklm_queue/personlighedspsykologi_student_synthesis.py scripts/build_personlighedspsykologi_exam_theory_matrix.py scripts/check_personlighedspsykologi_artifact_invariants.py`
+
+### 2026-05-24: Phase 1 Complete
+
+Status: complete.
+
+Phase 1 is finished when the goal is interpreted as building the first concrete
+student-synthesis artifact. The current result is an auditable, validated
+matrix artifact, not yet a learner-facing PDF, Freudd route, printout input, or
+podcast prompt input.
+
+The next implementation phase should use
+`student_synthesis/exam_theory_matrix.json` to generate a master comparison
+sheet or W12L1-focused theory-comparison output.
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

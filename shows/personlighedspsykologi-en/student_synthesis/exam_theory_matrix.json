@@ -1,0 +1,1604 @@
+{
+  "artifact_type": "exam_theory_matrix",
+  "schema_version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-24T21:04:55Z",
+  "authority": "student_exam_synthesis",
+  "build": {
+    "builder": "scripts/build_personlighedspsykologi_exam_theory_matrix.py",
+    "model": "deterministic-curated-student-synthesis",
+    "prompt_version": "personlighedspsykologi-student-synthesis-v1"
+  },
+  "provenance": {
+    "input_source_ids": [
+      "anes_tabel",
+      "jaque_tabel_alle_teoretiske_retninger"
+    ],
+    "source_notes_signature": "bde91e614fe4dc3e6933bcad7d43a596909c9a5927f6face48c8142ea01432f7",
+    "dependency_hashes": {
+      "builder_script": "4d8dc4cc0800aab636a872253794e2f4f9c1d30bf36ffb8278cbc4323e024bff",
+      "course_concept_graph": "d0fc9944974c00dfb8f1754fa6d8b68d3c0ead10bcfdec0c9bac926a4eed2054",
+      "course_synthesis": "6e5a165ea7a8f5e948aaeca5c0c2811aae5221f9e39739b936b9408eb497fd34",
+      "course_theory_map": "d42c5253a4c0b53457e4654a4c31bdccaac25ac226210bfe4de9654e76eaa28f",
+      "seed": "b96675e153c9b385c36eac86e4c55fc9075d6552fb9bc6c91da4a81f3790f3f8",
+      "source_catalog": "e107aca79c69afb1fe07131c3501a9d689614990f7544c77f382b583ddf599b6",
+      "source_weighting": "a0055bc25625968965a4c746f6a3c4d347ee8ae445c8cbfc17c79df5f2d81973",
+      "student_synthesis_module": "345d8e3ed6135750af2221899edb6426a93cca2ca7fb683a8f4bf1d40fa52e4e",
+      "source_notes_index": "fcb49b3e6ea9f50cb0dd547884ba06c45412d1bb099d4b8acec3e52748b492a2"
+    }
+  },
+  "orientation_points": [
+    {
+      "orientation_point_id": "essence_context",
+      "label": "Essens vs kontekst",
+      "question": "Where does the theory locate personality or subjectivity: inside the person, in context, or in their relation?"
+    },
+    {
+      "orientation_point_id": "determination",
+      "label": "Determination",
+      "question": "What does the theory treat as shaping or constraining the person?"
+    },
+    {
+      "orientation_point_id": "agency",
+      "label": "Agency",
+      "question": "Where, if anywhere, is active steering or action located?"
+    },
+    {
+      "orientation_point_id": "historicity",
+      "label": "Historicitet",
+      "question": "How do phylogenesis, ontogenesis, and sociogenesis matter?"
+    }
+  ],
+  "rows": [
+    {
+      "theory_id": "trait_and_assessment_psychology",
+      "label": "trait and assessment psychology",
+      "aliases": [
+        "trait and assessment psychology",
+        "trait psychology",
+        "assessment psychology",
+        "personality assessment"
+      ],
+      "lecture_keys": [
+        "W01L2",
+        "W02L1"
+      ],
+      "course_role": "Provides the early-course baseline that many later traditions criticise, qualify, or reinterpret.",
+      "course_summary": "This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.",
+      "student_note_labels": [
+        "Trækpsykologi"
+      ],
+      "model_of_person": "The person is treated as a measurable profile of relatively stable individual differences that can be compared across persons.",
+      "personality_or_subjectivity_model": "Personality is described through trait dimensions, distributions of behavior, and assessment categories. Newer process views keep situations and state variation visible.",
+      "method_evidence_style": "Questionnaires, observer reports, lexical work, factor analysis, Big Five/HEXACO models, situation-trait-outcome models, and longitudinal assessment.",
+      "main_thinkers": [
+        "Bleidorn",
+        "De Vries",
+        "Jayawickreme",
+        "Lu",
+        "Zettler"
+      ],
+      "central_concepts": [
+        "Big Five",
+        "HEXACO",
+        "lexical hypothesis",
+        "factor analysis",
+        "trait activation",
+        "density distribution",
+        "rank-order stability",
+        "mean-level change"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "essence-leaning with contextual activation",
+          "summary": "Traits are located primarily inside the person, but modern accounts require situations and culture to explain how traits are expressed."
+        },
+        "determination": {
+          "placement": "moderate dispositional determination",
+          "summary": "Traits dispose and predict behavior over time without fully determining single situations; biological and social-cognitive mechanisms vary by subtype."
+        },
+        "agency": {
+          "placement": "low to moderate agency",
+          "summary": "Agency is weak in static trait models and clearer in process models where goals, motivations, and interpretations guide behavior."
+        },
+        "historicity": {
+          "placement": "phylogenetic and ontogenetic emphasis with some sociogenesis",
+          "summary": "Evolutionary accounts stress species history, stability-change research stresses the life course, and culture-oriented trait work adds sociogenesis."
+        }
+      },
+      "strengths": [
+        "Gives a precise vocabulary for describing and comparing individual differences.",
+        "Supports prediction, measurement, and falsifiable research designs.",
+        "Creates a useful baseline that later theories can critique or extend."
+      ],
+      "limitations": [
+        "Can reify categories and underplay lived meaning, crisis, culture, and power.",
+        "Often explains less than it describes.",
+        "Risks treating personality as too independent of language and social practice."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "narrative_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Narrative psychology asks how persons create temporal meaning rather than only how they score on traits."
+        },
+        {
+          "target_theory_id": "dynamic_personality_development",
+          "relation": "extended_by",
+          "rationale": "Dynamic models preserve trait language while making situations, states, and time more central."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Reducing all trait theory to genetic determinism.",
+        "Forgetting that modern trait approaches include situations and change.",
+        "Treating a trait score as a complete explanation of a person."
+      ],
+      "student_synthesis_notes": "The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Broad row with Big Five, evolution, behavioral genetics, Whole Trait Theory, and the four orientation points."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Adds exam-facing language on Big Five, HEXACO, STOA, DSSA, applications, and limitations."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "trait_and_assessment_psychology"
+        ],
+        "concept_node_ids": [
+          "critical_personalism",
+          "personality_assessment",
+          "personality_dimensions",
+          "personality_states",
+          "personality_traits",
+          "trait_and_assessment_psychology"
+        ],
+        "distinction_ids": [
+          "person_vs_variable_profile",
+          "trait_vs_state"
+        ],
+        "representative_source_ids": [
+          "w01l2-mayer-and-bryan-2024-07faf915",
+          "w01l2-phan-et-al-2024-bf3395d7",
+          "w01l2-koutsoumpis-2025-96f4dcf7",
+          "w02l1-zettler-et-al-2020-0c54e6e4",
+          "w02l1-columbus-and-strandsbjerg-2025-2962b765"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "dynamic_personality_development",
+      "label": "dynamic personality development",
+      "aliases": [
+        "dynamic personality development",
+        "person-situation interplay",
+        "stability and change"
+      ],
+      "lecture_keys": [
+        "W02L2"
+      ],
+      "course_role": "Keeps the differential block open to context, development, and process.",
+      "course_summary": "This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.",
+      "student_note_labels": [
+        "Udvikling, situationer og personlighedsforandring"
+      ],
+      "model_of_person": "The person is a developing pattern of tendencies, states, goals, and situation responses rather than a fixed score.",
+      "personality_or_subjectivity_model": "Personality is modeled as stability and change across repeated person-situation transactions.",
+      "method_evidence_style": "Longitudinal studies, state-trait models, process models, and repeated assessment across time and situations.",
+      "main_thinkers": [
+        "Bleidorn",
+        "Jayawickreme",
+        "Li",
+        "Wilt"
+      ],
+      "central_concepts": [
+        "person-situation interplay",
+        "personality states",
+        "stability and change",
+        "maturity principle",
+        "whole trait theory"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "between essence and context",
+          "summary": "The person brings stable tendencies, but those tendencies are visible only through situated patterns of action."
+        },
+        "determination": {
+          "placement": "reciprocal and probabilistic",
+          "summary": "Past patterns, motives, situations, and habits constrain behavior without making development closed."
+        },
+        "agency": {
+          "placement": "moderate situated agency",
+          "summary": "Goals, interpretations, and self-regulatory patterns give the person some steering power within situations."
+        },
+        "historicity": {
+          "placement": "ontogenetic emphasis",
+          "summary": "The life course is central because personality is understood through stability, transitions, and cumulative change."
+        }
+      },
+      "strengths": [
+        "Prevents the trait block from becoming static.",
+        "Makes personality change and situation sensitivity examinable.",
+        "Connects measurement with development."
+      ],
+      "limitations": [
+        "Can still remain close to individual-difference language.",
+        "May underplay culture, discourse, and power compared with later traditions."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "extends",
+          "rationale": "It keeps trait concepts but reframes them as distributions, states, and developmental patterns."
+        },
+        {
+          "target_theory_id": "narrative_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Narrative theory explains continuity through meaning and story rather than repeated behavioral distributions."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Thinking change research rejects traits.",
+        "Forgetting that stability and change can both be true depending on the metric."
+      ],
+      "student_synthesis_notes": "This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Trait row discusses stability, mean-level change, WTT, situations, motivation, and life-course change."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "dynamic_personality_development"
+        ],
+        "concept_node_ids": [
+          "dynamic_personality_development",
+          "person_situation_interplay",
+          "personality_states",
+          "personality_traits",
+          "stability_and_change"
+        ],
+        "distinction_ids": [
+          "trait_vs_state"
+        ],
+        "representative_source_ids": [
+          "w02l2-bleidorn-et-al-2022-25c2d2de",
+          "w02l2-li-and-wilt-2025-92f596ad"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "biosocial_personality_perspectives",
+      "label": "biosocial personality perspectives",
+      "aliases": [
+        "biosocial personality perspectives",
+        "culture and personality",
+        "evolutionary",
+        "genetic"
+      ],
+      "lecture_keys": [
+        "W03L1"
+      ],
+      "course_role": "Supplies a strongly explanatory block before the course turns toward more interpretive and critical traditions.",
+      "course_summary": "This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.",
+      "student_note_labels": [
+        "Biologiske, evolutionære og kultur-genetiske forklaringer"
+      ],
+      "model_of_person": "The person is an organism whose personality develops through genetic dispositions, evolved pressures, ecology, and culture.",
+      "personality_or_subjectivity_model": "Personality is explained through adaptive variation, gene-environment interplay, culture-person feedback, and biological dispositions.",
+      "method_evidence_style": "Behavioral genetics, evolutionary argumentation, cross-cultural comparison, socioecological analysis, and empirical modeling.",
+      "main_thinkers": [
+        "De Vries",
+        "Kandler",
+        "Lu",
+        "Volk"
+      ],
+      "central_concepts": [
+        "behavioral genetics",
+        "epigenetics",
+        "balancing selection",
+        "niche specialization",
+        "frequency-dependent selection",
+        "culture and personality"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "biological essence linked to ecological context",
+          "summary": "Genetic and evolved dispositions matter, but culture and socioecology shape how dispositions become personality."
+        },
+        "determination": {
+          "placement": "biological disposition rather than simple determinism",
+          "summary": "Genes and evolutionary pressures constrain possibilities, while environments and culture influence expression."
+        },
+        "agency": {
+          "placement": "limited indirect agency",
+          "summary": "Agency is usually not the main explanatory center, though persons can shape niches and practices that feed back into development."
+        },
+        "historicity": {
+          "placement": "strong phylogenesis with sociogenesis and ontogenesis",
+          "summary": "Species history, cultural history, and individual life history all matter, but their weight differs across subtheories."
+        }
+      },
+      "strengths": [
+        "Explains why personality variation may persist across populations.",
+        "Connects biological, cultural, and ecological levels.",
+        "Complicates simplistic nature-versus-nurture answers."
+      ],
+      "limitations": [
+        "Can drift toward biological reduction if culture is treated as secondary.",
+        "May offer broad explanations that are hard to connect to lived experience."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "explains_possible_basis_for",
+          "rationale": "Biosocial perspectives ask why trait variation exists and how it is maintained."
+        },
+        {
+          "target_theory_id": "sociocultural_poststructural_approaches",
+          "relation": "contrasts_with",
+          "rationale": "Sociocultural approaches move explanatory weight from biology to discourse, norms, and power."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Treating genes as destiny.",
+        "Forgetting that several course accounts describe reciprocal gene-culture dynamics."
+      ],
+      "student_synthesis_notes": "The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Trait row includes evolution, behavioral genetics, balancing selection, and culture-gene feedback."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "biosocial_personality_perspectives"
+        ],
+        "concept_node_ids": [
+          "biosocial_personality_perspectives",
+          "culture_and_personality",
+          "evolutionary_perspective",
+          "genetic_perspective"
+        ],
+        "distinction_ids": [],
+        "representative_source_ids": [
+          "w03l1-lu-benet-martinez-and-wang-2023-38a36550",
+          "w03l1-kandler-and-instinske-2025-01535a8e",
+          "w03l1-volk-and-puchalski-2025-60aaf5d0",
+          "w03l1-zettler-et-al-2025-6ce9bdc0"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "personality_functioning_and_pathology",
+      "label": "personality functioning and pathology",
+      "aliases": [
+        "personality functioning and pathology",
+        "personality functioning",
+        "pathology"
+      ],
+      "lecture_keys": [
+        "W03L2"
+      ],
+      "course_role": "Bridges dimensional and clinical language before the psychoanalytic block.",
+      "course_summary": "This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.",
+      "student_note_labels": [
+        "Personlighedsfunktion og patologi"
+      ],
+      "model_of_person": "The person is understood through levels of self-functioning, relational functioning, coherence, and impairment.",
+      "personality_or_subjectivity_model": "Personality becomes clinically meaningful when organization, identity, self-direction, empathy, and intimacy are impaired or patterned dimensionally.",
+      "method_evidence_style": "Clinical assessment, dimensional diagnostics, personality functioning models, and comparison between categorical and dimensional systems.",
+      "main_thinkers": [
+        "Bach",
+        "Sharp",
+        "Simonsen",
+        "Wall"
+      ],
+      "central_concepts": [
+        "personality functioning",
+        "dimensional diagnosis",
+        "identity",
+        "self-direction",
+        "empathy",
+        "intimacy",
+        "pathology"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "mixed clinical organization and relational context",
+          "summary": "The theory looks at organized patterns in the person, but functioning is assessed through self-world and interpersonal relations."
+        },
+        "determination": {
+          "placement": "clinical patterning and impairment",
+          "summary": "Pathology is not a single cause but a constrained organization of self and relation."
+        },
+        "agency": {
+          "placement": "compromised but assessable agency",
+          "summary": "Agency appears through self-direction and relational capacity, and can be limited by impairment."
+        },
+        "historicity": {
+          "placement": "developmental and clinical history",
+          "summary": "The life history of personality organization matters, even when the exam focus is diagnostic structure."
+        }
+      },
+      "strengths": [
+        "Bridges trait/dimensional models and clinical personality questions.",
+        "Keeps impairment, relation, and functioning central.",
+        "Useful for comparing descriptive and clinical person models."
+      ],
+      "limitations": [
+        "Can sound technical or diagnostic if detached from theory comparison.",
+        "May underplay first-person meaning and social conditions."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "psychoanalytic_personality_theory",
+          "relation": "prepares_for",
+          "rationale": "Both examine personality organization, but psychoanalysis interprets conflict and unconscious meaning more deeply."
+        },
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Functioning models ask about impairment and organization, not just trait variation."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Treating pathology as only a categorical label.",
+        "Forgetting the difference between trait description and functioning impairment."
+      ],
+      "student_synthesis_notes": "This course row is added from current artifacts because the older tables are stronger on broad theory traditions than on the newer functioning lecture.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "course_artifact_only",
+          "summary": "No strong separate student-table row; included to keep the generated matrix aligned with the current course theory map."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "personality_functioning_and_pathology"
+        ],
+        "concept_node_ids": [
+          "personality_dimensions",
+          "personality_functioning",
+          "personality_functioning_and_pathology",
+          "personality_structure"
+        ],
+        "distinction_ids": [
+          "growth_vs_deficit"
+        ],
+        "representative_source_ids": [
+          "w03l2-sharp-and-wall-2021-cb92ecf4",
+          "w03l2-bach-and-simonsen-2023-d58362ff"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "psychoanalytic_personality_theory",
+      "label": "psychoanalytic personality theory",
+      "aliases": [
+        "psychoanalytic personality theory",
+        "psychoanalysis",
+        "psychoanalytic"
+      ],
+      "lecture_keys": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2"
+      ],
+      "course_role": "Forms the course's first large interpretive theory bloc and a major alternative to trait and biosocial models.",
+      "course_summary": "This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.",
+      "student_note_labels": [
+        "Psykoanalyse",
+        "Klassisk psykoanalyse",
+        "Fransk psykoanalyse"
+      ],
+      "model_of_person": "The person is a conflicted and decentered psychodynamic subject shaped by unconscious processes, early relations, and psychic structures.",
+      "personality_or_subjectivity_model": "Personality is layered, dynamic, and organized around conflict between psychic instances, desire, defense, language, and relation to the other.",
+      "method_evidence_style": "Clinical interpretation, case material, psychoanalytic reading, free association, dream and symptom interpretation, and conceptual reconstruction.",
+      "main_thinkers": [
+        "Freud",
+        "Lacan",
+        "Laplanche",
+        "Ricoeur",
+        "Gammelgaard"
+      ],
+      "central_concepts": [
+        "unconscious",
+        "id ego superego",
+        "repression",
+        "drive",
+        "mirror stage",
+        "the other",
+        "enigmatic message",
+        "primal seduction"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "inner conflict plus formative relational context",
+          "summary": "Classical psychoanalysis often appears essence-heavy through the unconscious, while French psychoanalysis makes the other and language more constitutive."
+        },
+        "determination": {
+          "placement": "strong psychic and developmental determination",
+          "summary": "Early experience, unconscious conflict, drive, and relation to caregivers shape personality without being transparent to the person."
+        },
+        "agency": {
+          "placement": "limited and mediated agency",
+          "summary": "The ego mediates, but the subject is not sovereign because unconscious processes and the other structure action."
+        },
+        "historicity": {
+          "placement": "strong ontogenesis with cultural-symbolic dimensions",
+          "summary": "Childhood and psychosexual development are central; later variants also emphasize language, culture, and intergenerational relation."
+        }
+      },
+      "strengths": [
+        "Explains unconscious motivation, symptom meaning, conflict, and ambivalence.",
+        "Gives rich tools for interpreting clinical material and subject formation.",
+        "Makes early relation and desire theoretically important."
+      ],
+      "limitations": [
+        "Can become overly deterministic about childhood.",
+        "Has contested empirical status and can be difficult to falsify.",
+        "Risks underplaying social practice if treated only as intrapsychic."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "phenomenological_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Phenomenology starts from lived experience, while psychoanalysis insists that decisive meaning may be unconscious."
+        },
+        {
+          "target_theory_id": "sociocultural_poststructural_approaches",
+          "relation": "partly_overlaps_with",
+          "rationale": "Both decenter the autonomous subject, but they locate decentering in different mechanisms."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Reducing psychoanalysis to childhood determinism.",
+        "Collapsing Freud, Lacan, and Laplanche into one identical account.",
+        "Forgetting that French psychoanalysis moves the subject toward language and the other."
+      ],
+      "student_synthesis_notes": "The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Detailed psychoanalysis section with Freud, Lacan, Laplanche, personality structure, method, and orientation points."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "psychoanalytic_personality_theory"
+        ],
+        "concept_node_ids": [
+          "personality_functioning",
+          "personality_structure",
+          "psychoanalysis",
+          "psychoanalytic_personality_theory"
+        ],
+        "distinction_ids": [
+          "growth_vs_deficit",
+          "inner_depth_vs_lived_experience"
+        ],
+        "representative_source_ids": [
+          "w04l1-gammelgaard-2007-bcbdbec2",
+          "w04l1-freud-1973-1933-98cd9920",
+          "w04l2-laplanche-1970-968862d5",
+          "w04l2-lacan-1966-2d720f56",
+          "w05l1-freud-s-1984-1905-brudstykke-af-en-hysteri-analy-df466bb5",
+          "w05l1-ricoeur-1981-19a5343f",
+          "w05l1-gammelgaard-2010-e6baff8b",
+          "w05l2-grundbog-kapitel-7-nyere-psykoanalytiske-teorier-fda84b6a",
+          "w05l2-andkj-r-olsen-and-k-ppe-1991a-1991b-720b5d8e",
+          "w05l2-k-ppe-1992-9a474402"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded",
+          "textbook_framing"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "phenomenological_psychology",
+      "label": "phenomenological psychology",
+      "aliases": [
+        "phenomenological psychology",
+        "phenomenology",
+        "phenomenological"
+      ],
+      "lecture_keys": [
+        "W06L1"
+      ],
+      "course_role": "Starts the course's turn toward first-person and experience-near approaches.",
+      "course_summary": "This cluster treats personality through lived experience, embodiment, and the person's situated relation to world and meaning.",
+      "student_note_labels": [
+        "Fænomenologisk psykologi"
+      ],
+      "model_of_person": "The person is an embodied, experiencing subject whose world is given through lived meaning rather than detached variables.",
+      "personality_or_subjectivity_model": "Personality is approached through first-person experience, intentionality, embodiment, and situated relation to the world.",
+      "method_evidence_style": "Phenomenological description, first-person analysis, careful attention to experience-near meaning, and critique of reductionism.",
+      "main_thinkers": [
+        "Husserl",
+        "Merleau-Ponty",
+        "Spinelli",
+        "Moeskær Hansen",
+        "Roald"
+      ],
+      "central_concepts": [
+        "lived experience",
+        "intentionality",
+        "embodiment",
+        "lifeworld",
+        "first-person perspective",
+        "being-in-the-world"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "relation between person and world",
+          "summary": "Phenomenology avoids a simple inside/outside split because experience is always experience of a world."
+        },
+        "determination": {
+          "placement": "low mechanistic determination",
+          "summary": "The theory focuses less on causal determination and more on structures of meaning, perception, and situated experience."
+        },
+        "agency": {
+          "placement": "experience-near agency",
+          "summary": "Agency is found in how the person attends, interprets, and orients within lived experience."
+        },
+        "historicity": {
+          "placement": "lifeworld and biographical historicity",
+          "summary": "History matters through the sedimented lifeworld and the person's embodied way of inhabiting situations."
+        }
+      },
+      "strengths": [
+        "Protects the first-person perspective from reduction to variables.",
+        "Useful for explaining meaning, embodiment, and lived world.",
+        "Creates a bridge to existential and humanistic traditions."
+      ],
+      "limitations": [
+        "Can be less precise about causal explanation and prediction.",
+        "May be difficult to operationalize in conventional empirical terms."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Phenomenology asks what experience is like before reducing the person to measured dimensions."
+        },
+        {
+          "target_theory_id": "existential_psychology",
+          "relation": "prepares_for",
+          "rationale": "Existential psychology builds on experience-near inquiry but foregrounds freedom, finitude, and choice."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Treating phenomenology as simply introspection.",
+        "Forgetting that context is not added later but built into lived experience."
+      ],
+      "student_synthesis_notes": "The student material uses phenomenology as the pivot away from variable psychology toward experience, meaning, and person-world relation.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Separate phenomenology row with orientation points and contrast to more reductive models."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Supports the first-person and lived-world framing used for exam comparison."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "phenomenological_psychology"
+        ],
+        "concept_node_ids": [
+          "existential_personality_psychology",
+          "first_person_perspective",
+          "meaning_making",
+          "phenomenological_psychology",
+          "phenomenology"
+        ],
+        "distinction_ids": [
+          "inner_depth_vs_lived_experience"
+        ],
+        "representative_source_ids": [
+          "w06l1-grundbog-kapitel-4-f-nomenologisk-personlighedsp-1afa74d2",
+          "w06l1-moesk-r-hansen-and-roald-2022-b7aec462",
+          "w06l1-spinelli-2005-b2f76e93"
+        ],
+        "representative_evidence_origins": [
+          "textbook_framing",
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "existential_psychology",
+      "label": "existential psychology",
+      "aliases": [
+        "existential psychology",
+        "existential",
+        "eksistentiel"
+      ],
+      "lecture_keys": [
+        "W06L2",
+        "W07L1"
+      ],
+      "course_role": "Deepens the post-phenomenological block by foregrounding existential conditions of personhood.",
+      "course_summary": "This cluster frames personality through freedom, relation, anxiety, finitude, and the person's stance toward existence.",
+      "student_note_labels": [
+        "Eksistentiel psykologi"
+      ],
+      "model_of_person": "The person is a being who must relate to existence, freedom, death, anxiety, relation, and meaning.",
+      "personality_or_subjectivity_model": "Personhood is not a fixed essence but an ongoing stance toward existential conditions and possibilities.",
+      "method_evidence_style": "Existential therapy, phenomenological inquiry, philosophical interpretation, and clinical reflection on authenticity and meaning.",
+      "main_thinkers": [
+        "Kierkegaard",
+        "Nietzsche",
+        "Heidegger",
+        "Sartre",
+        "Buber",
+        "Boss",
+        "May",
+        "Yalom",
+        "Cooper"
+      ],
+      "central_concepts": [
+        "freedom",
+        "choice",
+        "anxiety",
+        "authenticity",
+        "meaning",
+        "being-toward-death",
+        "thrownness",
+        "I-Thou"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "existence before essence, situated in the world",
+          "summary": "The person is not given as a fixed substance; the person becomes through ways of existing within concrete conditions."
+        },
+        "determination": {
+          "placement": "low determination with unavoidable constraints",
+          "summary": "The person is fundamentally free, but thrownness, death, body, relation, and world set limits."
+        },
+        "agency": {
+          "placement": "high agency",
+          "summary": "Choice, stance, responsibility, and meaning-making are central even when circumstances cannot be chosen."
+        },
+        "historicity": {
+          "placement": "biographical and existential historicity",
+          "summary": "The person's life unfolds as a history of choices and relations to existential givens."
+        }
+      },
+      "strengths": [
+        "Gives strong language for freedom, responsibility, anxiety, meaning, and authenticity.",
+        "Works well as an anti-reductionist contrast to trait and biological theories.",
+        "Supports clinically recognizable questions about how to live."
+      ],
+      "limitations": [
+        "Can become individualistic and place heavy responsibility on the person.",
+        "May underplay social structure, culture, and material conditions.",
+        "Can be abstract when concrete therapeutic guidance is needed."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "humanistic_psychology",
+          "relation": "overlaps_with",
+          "rationale": "Both value growth and the person, but existential psychology is more centered on anxiety, finitude, and choice."
+        },
+        {
+          "target_theory_id": "critical_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Critical psychology relocates many constraints from existential givens to social practice and historical conditions."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Equating existential freedom with unlimited freedom.",
+        "Forgetting that existential psychology also includes relation and thrownness.",
+        "Treating authenticity as an obvious or culturally neutral ideal."
+      ],
+      "student_synthesis_notes": "The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Separate existential row with faghistoric context, thinkers, method, and orientation points."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Adds exam-language about freedom, authenticity, anti-reductionism, and limitations."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "existential_psychology"
+        ],
+        "concept_node_ids": [
+          "existential_personality_psychology",
+          "existential_psychology",
+          "humanistic_psychology",
+          "phenomenology"
+        ],
+        "distinction_ids": [
+          "growth_vs_deficit",
+          "inner_depth_vs_lived_experience"
+        ],
+        "representative_source_ids": [
+          "w06l2-may-1966-d8406a09",
+          "w06l2-boss-1963-1feb5a5f",
+          "w07l1-cooper-2003-ee3c34b7",
+          "w07l1-jacobsen-2021-26129bff"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "humanistic_psychology",
+      "label": "humanistic psychology",
+      "aliases": [
+        "humanistic psychology",
+        "humanistisk psykologi"
+      ],
+      "lecture_keys": [
+        "W07L2"
+      ],
+      "course_role": "Provides the course's clearest growth-oriented alternative to reductive person models.",
+      "course_summary": "This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.",
+      "student_note_labels": [
+        "Humanistisk psykologi"
+      ],
+      "model_of_person": "The person is a meaning-seeking and growth-oriented being whose development depends on relation, recognition, and conditions for self-realization.",
+      "personality_or_subjectivity_model": "Personality is understood through self-concept, needs, authenticity, growth, and congruence rather than pathology or measurement alone.",
+      "method_evidence_style": "Client-centered therapy, qualitative and clinical reflection, needs theory, and attention to subjective experience.",
+      "main_thinkers": [
+        "Rogers",
+        "Maslow",
+        "May",
+        "Buber"
+      ],
+      "central_concepts": [
+        "self-actualization",
+        "congruence",
+        "unconditional positive regard",
+        "needs",
+        "growth",
+        "authentic relation"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "growth essence supported or blocked by context",
+          "summary": "The person has a growth tendency, but whether it unfolds depends strongly on relational and social conditions."
+        },
+        "determination": {
+          "placement": "needs and relational conditions",
+          "summary": "Development is shaped by needs, recognition, and conditions of worth more than by strict causal determinism."
+        },
+        "agency": {
+          "placement": "high supported agency",
+          "summary": "The person is active and growth-seeking, but agency is helped or hindered by relational conditions."
+        },
+        "historicity": {
+          "placement": "ontogenetic development",
+          "summary": "Life-course development matters through self-concept, relation, and possibilities for growth."
+        }
+      },
+      "strengths": [
+        "Gives a hopeful and clinically usable model of growth.",
+        "Keeps subjective experience, relation, and resources visible.",
+        "Works well as a contrast to reductionist or deficit-heavy theories."
+      ],
+      "limitations": [
+        "Can sound overly optimistic or individualistic.",
+        "May underplay power, structural constraint, and severe impairment."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "existential_psychology",
+          "relation": "overlaps_with",
+          "rationale": "Both emphasize personhood and authenticity, but humanistic psychology is more growth and therapy oriented."
+        },
+        {
+          "target_theory_id": "critical_psychology",
+          "relation": "challenged_by",
+          "rationale": "Critical psychology asks whether growth language hides social conditions and collective conflicts."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Assuming humanistic psychology ignores suffering.",
+        "Treating self-actualization as purely private self-optimization."
+      ],
+      "student_synthesis_notes": "The student notes place humanistic psychology near existential and phenomenological material but make growth and therapeutic relation the exam hook.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Humanistic row with growth, self-realization, method, possibilities, and limitations."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Supports comparison with existential psychology and clinical growth language."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "humanistic_psychology"
+        ],
+        "concept_node_ids": [
+          "existential_personality_psychology",
+          "first_person_perspective",
+          "humanistic_psychology",
+          "meaning_making"
+        ],
+        "distinction_ids": [
+          "growth_vs_deficit",
+          "inner_depth_vs_lived_experience"
+        ],
+        "representative_source_ids": [
+          "w07l2-maslow-1968-7ea53e34",
+          "w07l2-evans-1975-8e8a9d79",
+          "w07l2-giorgi-2005-55ca98f7"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "critical_personalism",
+      "label": "critical personalism",
+      "aliases": [
+        "critical personalism"
+      ],
+      "lecture_keys": [
+        "W08L1"
+      ],
+      "course_role": "Acts as an internal critique of mainstream individual-difference psychology.",
+      "course_summary": "This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.",
+      "student_note_labels": [
+        "Kritisk personalisme"
+      ],
+      "model_of_person": "The person is a concrete whole who cannot be exhausted by variables, scores, or detached trait abstractions.",
+      "personality_or_subjectivity_model": "Personality must be interpreted at the person level, with caution against reifying measured constructs as the person themselves.",
+      "method_evidence_style": "Conceptual critique, person-level interpretation, methodological reflection, and critique of variable-centered psychology.",
+      "main_thinkers": [
+        "Køppe",
+        "Karpatschof"
+      ],
+      "central_concepts": [
+        "whole person",
+        "person-level explanation",
+        "reification",
+        "variable critique",
+        "person-situation interplay"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "person as whole in context",
+          "summary": "The theory resists reducing the person either to inner traits or external variables."
+        },
+        "determination": {
+          "placement": "multi-level caution",
+          "summary": "It warns against treating measured variables as determining the person without interpretation."
+        },
+        "agency": {
+          "placement": "person-centered agency",
+          "summary": "Agency belongs to persons as meaningful wholes, not to isolated variables."
+        },
+        "historicity": {
+          "placement": "biographical and conceptual historicity",
+          "summary": "The person has a history, and the concepts used to describe the person also have theoretical histories."
+        }
+      },
+      "strengths": [
+        "Gives a strong critique of reified trait and variable language.",
+        "Keeps the whole person visible in theory comparison.",
+        "Prepares the move toward critical psychology."
+      ],
+      "limitations": [
+        "Can be more methodological and conceptual than directly generative as a full personality theory.",
+        "May be harder to convert into simple exam-table categories."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "critiques",
+          "rationale": "Critical personalism asks what is lost when persons are translated into variables."
+        },
+        {
+          "target_theory_id": "critical_psychology",
+          "relation": "prepares_for",
+          "rationale": "Both resist individualizing reduction, but critical psychology develops the social-practice account further."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Treating critical personalism as merely anti-measurement.",
+        "Forgetting that the critique is about the status of person concepts, not only methods."
+      ],
+      "student_synthesis_notes": "This row is partly course-artifact grounded because the older student tables emphasize broad traditions more than this specific internal critique.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "course_artifact_only",
+          "summary": "Included to keep the student synthesis aligned with the current lecture and theory map."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "critical_personalism"
+        ],
+        "concept_node_ids": [
+          "critical_personalism"
+        ],
+        "distinction_ids": [
+          "person_vs_variable_profile"
+        ],
+        "representative_source_ids": [
+          "w08l1-lamiell-2021-be79d36e",
+          "w08l1-laux-et-al-2010-cfff840c"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "critical_psychology",
+      "label": "critical psychology",
+      "aliases": [
+        "critical psychology",
+        "kritisk psykologi"
+      ],
+      "lecture_keys": [
+        "W08L2",
+        "W09L1"
+      ],
+      "course_role": "Forms the course's most explicit critique of individualising psychology.",
+      "course_summary": "This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.",
+      "student_note_labels": [
+        "Kritisk psykologi"
+      ],
+      "model_of_person": "The person is a participant in social practice whose subjectivity and action possibilities are shaped by historically developed conditions.",
+      "personality_or_subjectivity_model": "Personality becomes subjectivity: a practical relation between the person, everyday life, participation, conflicts, and social arrangements.",
+      "method_evidence_style": "Practice research, social critique, participatory inquiry, analysis of everyday life, and historical-material reflection.",
+      "main_thinkers": [
+        "Dreier",
+        "Holzkamp",
+        "Højholt",
+        "Schraube"
+      ],
+      "central_concepts": [
+        "subjectivity",
+        "participation",
+        "action possibilities",
+        "conditions",
+        "everyday life",
+        "social practice",
+        "expansive agency"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "strong contextual and social-practice model",
+          "summary": "The person is not explained as an inner essence but through participation in concrete social practices."
+        },
+        "determination": {
+          "placement": "socially conditioned but not socially closed",
+          "summary": "Conditions shape possibilities, but persons act within, reproduce, and sometimes transform those conditions."
+        },
+        "agency": {
+          "placement": "situated and collective agency",
+          "summary": "Agency is located in participation, conduct of everyday life, and changing action possibilities, often with others."
+        },
+        "historicity": {
+          "placement": "strong sociogenesis",
+          "summary": "Social and historical conditions are central to understanding subjectivity and difficulty."
+        }
+      },
+      "strengths": [
+        "Strongly critiques individualizing and decontextualized personality explanations.",
+        "Connects personal difficulty with social conditions and practice.",
+        "Gives rich language for agency without pretending context is irrelevant."
+      ],
+      "limitations": [
+        "Can underplay biological or intrapsychic dimensions.",
+        "May be harder to operationalize in compact assessment terms.",
+        "Can become broad if not anchored in concrete practices."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "critiques",
+          "rationale": "Critical psychology objects to explaining persons primarily through decontextualized individual differences."
+        },
+        {
+          "target_theory_id": "sociocultural_poststructural_approaches",
+          "relation": "overlaps_with",
+          "rationale": "Both explain subjectivity socially, but critical psychology emphasizes practice and conditions more than discourse alone."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Assuming social conditions fully erase agency.",
+        "Reducing critical psychology to political opinion rather than a theory of subjectivity and practice."
+      ],
+      "student_synthesis_notes": "The student tables make critical psychology a key late-course correction to individual-centered theories.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Critical psychology row with strong contextual placement, agency through social practice, and sociogenetic historicity."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Supports the contrast with trait, existential, and humanistic accounts."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "critical_psychology"
+        ],
+        "concept_node_ids": [
+          "critical_personalism",
+          "critical_psychology",
+          "person_situation_interplay",
+          "subjectivation"
+        ],
+        "distinction_ids": [
+          "essence_vs_subjectivation",
+          "individual_problem_vs_structural_condition",
+          "person_vs_variable_profile"
+        ],
+        "representative_source_ids": [
+          "w08l2-holzkamp-1982-845aafd2",
+          "w08l2-tolman-2009-455915e0",
+          "w09l1-grundbog-kapitel-10-kritisk-psykologi-b3286662",
+          "w09l1-m-rch-and-hansen-2015-b1dbfc5f",
+          "w09l1-holzkamp-2013-c3068d8a",
+          "w09l1-dreier-1999-35da58b5"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded",
+          "textbook_framing"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "sociocultural_poststructural_approaches",
+      "label": "sociocultural and poststructural approaches",
+      "aliases": [
+        "sociocultural and poststructural approaches",
+        "social constructionism",
+        "poststructuralism",
+        "discursive psychology",
+        "feminist theory"
+      ],
+      "lecture_keys": [
+        "W10L1",
+        "W10L2",
+        "W11L1"
+      ],
+      "course_role": "Carries the strongest late-course challenge to inner-essence models of personality.",
+      "course_summary": "This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.",
+      "student_note_labels": [
+        "Socialkonstruktionisme",
+        "Poststrukturalisme",
+        "Diskursiv og feministisk psykologi"
+      ],
+      "model_of_person": "The person is a socially, historically, and discursively produced subject rather than a stable inner essence.",
+      "personality_or_subjectivity_model": "Subjectivity is formed through language, categories, power relations, norms, gendered practices, and available subject positions.",
+      "method_evidence_style": "Discourse analysis, social constructionist critique, genealogy, feminist analysis, and analysis of categorization and subjectivation.",
+      "main_thinkers": [
+        "Davies",
+        "Foucault",
+        "Gergen",
+        "Hacking",
+        "Mitchell",
+        "Bjerrum Nielsen",
+        "Rudberg"
+      ],
+      "central_concepts": [
+        "social constructionism",
+        "poststructuralism",
+        "discourse",
+        "power",
+        "subjectivation",
+        "gender",
+        "positioning",
+        "feminist theory"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "strong context and anti-essentialism",
+          "summary": "The theory challenges inner-essence models and treats person categories as historically and socially produced."
+        },
+        "determination": {
+          "placement": "discursive and normative conditioning",
+          "summary": "Language, categories, power, and norms shape what persons can be, say, and recognize as themselves."
+        },
+        "agency": {
+          "placement": "decentered but possible through positioning and critique",
+          "summary": "Agency is not sovereign self-choice; it appears in how subjects take up, resist, or rework available positions."
+        },
+        "historicity": {
+          "placement": "strong sociogenesis and genealogy",
+          "summary": "The history of categories, norms, gender, and knowledge practices is central to personality and subjectivity."
+        }
+      },
+      "strengths": [
+        "Powerfully critiques naturalized personality categories.",
+        "Shows how language, gender, and power make kinds of persons available.",
+        "Excellent for comparing with trait, humanistic, and psychoanalytic models of the subject."
+      ],
+      "limitations": [
+        "Can make personal continuity and embodied suffering harder to explain.",
+        "Risks sounding as if everything is only language if social practice and materiality are not kept visible.",
+        "Agency can become difficult to locate."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "critical_psychology",
+          "relation": "overlaps_with",
+          "rationale": "Both socialise subjectivity, but critical psychology emphasizes practice and action possibilities while poststructural work emphasizes discourse and power."
+        },
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "critiques",
+          "rationale": "It asks how the categories used to measure personality are historically produced."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Collapsing social constructionism and poststructuralism into the same theory.",
+        "Thinking anti-essentialism means persons have no reality or suffering.",
+        "Forgetting the role of power in poststructuralism."
+      ],
+      "student_synthesis_notes": "The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Separate rows for social constructionism and poststructuralism with orientation-point placement."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "cross_note_agreement",
+          "summary": "Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "sociocultural_poststructural_approaches"
+        ],
+        "concept_node_ids": [
+          "critical_psychology",
+          "discursive_psychology",
+          "feminist_theory",
+          "gender",
+          "poststructuralism",
+          "social_constructionism",
+          "sociocultural_poststructural_approaches",
+          "subjectivation"
+        ],
+        "distinction_ids": [
+          "essence_vs_subjectivation",
+          "individual_problem_vs_structural_condition",
+          "person_vs_variable_profile"
+        ],
+        "representative_source_ids": [
+          "w10l1-bjerrum-nielsen-and-rudberg-2006-39335ee6",
+          "w10l1-mitchell-2015-bc690b36",
+          "w10l2-davies-1990-65185910",
+          "w10l2-foucault-1997-92cd121d",
+          "w10l2-lecture-19-gang-sociokulturelle-teorier-ca9255c8",
+          "w11l1-grundbog-kapitel-11-postpsykologisk-subjektiveri-3557aeb2",
+          "w11l1-gergen-1999-73c2217e",
+          "w11l1-hacking-2007-10236bf4"
+        ],
+        "representative_evidence_origins": [
+          "reading_grounded",
+          "lecture_framed",
+          "textbook_framing"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "narrative_psychology",
+      "label": "narrative psychology",
+      "aliases": [
+        "narrative psychology",
+        "narrativity"
+      ],
+      "lecture_keys": [
+        "W11L2"
+      ],
+      "course_role": "Provides the clearest late-course alternative to trait and mechanism-oriented models.",
+      "course_summary": "This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.",
+      "student_note_labels": [
+        "Narrativ teori",
+        "Narrativ psykologi"
+      ],
+      "model_of_person": "The person is a storyteller and culturally situated interpreter whose identity is organized through narrative meaning over time.",
+      "personality_or_subjectivity_model": "Personality is understood as narrative identity: a changing but relatively coherent life story shaped by culture, memory, and audience.",
+      "method_evidence_style": "Narrative analysis, life-story interviews, interpretation of self-narratives, and attention to cultural story forms.",
+      "main_thinkers": [
+        "McAdams",
+        "Pals",
+        "Raggatt",
+        "Bruner"
+      ],
+      "central_concepts": [
+        "narrative identity",
+        "life story",
+        "meaning-making",
+        "temporality",
+        "self-narrative",
+        "cultural narrative",
+        "stability and change"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "contextual meaning with personal continuity",
+          "summary": "The person is not a fixed essence, but identity gains continuity through culturally shaped stories."
+        },
+        "determination": {
+          "placement": "cultural and autobiographical shaping",
+          "summary": "Available narratives, remembered events, and cultural templates shape identity without fully fixing it."
+        },
+        "agency": {
+          "placement": "narrative agency",
+          "summary": "Agency appears in telling, revising, and positioning oneself within stories, even when not all story material is chosen."
+        },
+        "historicity": {
+          "placement": "strong ontogenesis with sociogenesis",
+          "summary": "Life history is central, and cultural history supplies the forms through which a life can be told."
+        }
+      },
+      "strengths": [
+        "Explains continuity and change through meaning rather than trait stability alone.",
+        "Excellent for oral exam comparison because it bridges individual life and culture.",
+        "Makes temporality and identity directly visible."
+      ],
+      "limitations": [
+        "May underplay non-narrative, biological, and unconscious dimensions.",
+        "Can overemphasize coherence when lives are fragmented or conflictual.",
+        "Depends on interpretive methods that may be less predictive."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "contrasts_with",
+          "rationale": "Trait theory describes stable dimensions; narrative psychology explains how a person makes a life meaningful across time."
+        },
+        {
+          "target_theory_id": "sociocultural_poststructural_approaches",
+          "relation": "overlaps_with",
+          "rationale": "Both use language and culture, but narrative psychology is more focused on identity continuity and life story."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Thinking narratives are merely fictional decoration.",
+        "Forgetting that narrative identity is culturally shaped, not purely private.",
+        "Treating narrative theory as the same as poststructural discourse theory."
+      ],
+      "student_synthesis_notes": "The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "primary_student_note",
+          "summary": "Detailed narrative section with orientation points and a longer differences-and-similarities discussion."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "secondary_student_note",
+          "summary": "Supports compact exam comparison between narrative, social constructionist, and trait approaches."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "narrative_psychology"
+        ],
+        "concept_node_ids": [
+          "culture_and_personality",
+          "meaning_making",
+          "narrative_psychology",
+          "narrativity",
+          "personality_traits",
+          "stability_and_change"
+        ],
+        "distinction_ids": [
+          "essence_vs_subjectivation",
+          "trait_vs_state"
+        ],
+        "representative_source_ids": [
+          "w11l2-grundbog-kapitel-9-narrative-teorier-cd12008a",
+          "w11l2-bruner-1999-7930abd8",
+          "w11l2-mcadams-and-pals-2006-b9675688",
+          "w11l2-raggatt-2002-d15129af"
+        ],
+        "representative_evidence_origins": [
+          "textbook_framing",
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    },
+    {
+      "theory_id": "comparative_theory_analysis",
+      "label": "comparative theory analysis",
+      "aliases": [
+        "comparative theory analysis",
+        "theory comparison",
+        "sammenligning af teorier"
+      ],
+      "lecture_keys": [
+        "W12L1"
+      ],
+      "course_role": "Makes theory choice itself into an explicit object of learning at the end of the course.",
+      "course_summary": "This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.",
+      "student_note_labels": [
+        "Forskelle og ligheder",
+        "Tværgående eksamenssammenligning"
+      ],
+      "model_of_person": "The person is treated as an object of theoretical comparison: each tradition illuminates some aspects and hides others.",
+      "personality_or_subjectivity_model": "Personality is not one settled object; it shifts between trait, structure, lived experience, existence, growth, practice, discourse, and narrative.",
+      "method_evidence_style": "Comparative theory analysis using orientation points, source grounding, strengths and limitations, and explicit exam-relevant contrasts.",
+      "main_thinkers": [
+        "Course synthesis"
+      ],
+      "central_concepts": [
+        "essence versus context",
+        "determination",
+        "agency",
+        "historicity",
+        "theory comparison",
+        "exam synthesis"
+      ],
+      "orientation_points": {
+        "essence_context": {
+          "placement": "axis for comparing all traditions",
+          "summary": "The axis helps distinguish inner-trait and unconscious models from relational, practice-based, discursive, and narrative models."
+        },
+        "determination": {
+          "placement": "axis for causal and conditioning assumptions",
+          "summary": "The axis separates biological, psychic, social, discursive, and existential accounts of what shapes the person."
+        },
+        "agency": {
+          "placement": "axis for locating action",
+          "summary": "The axis clarifies whether agency is in the ego, choice, growth, participation, discourse, narrative revision, or largely absent."
+        },
+        "historicity": {
+          "placement": "axis for time scale",
+          "summary": "The axis compares phylogenetic, ontogenetic, and sociogenetic explanations across the course."
+        }
+      },
+      "strengths": [
+        "Turns the student tables into a reusable exam rubric.",
+        "Prevents isolated theory summaries by forcing comparison.",
+        "Supports oral answers that name affordances and limitations."
+      ],
+      "limitations": [
+        "Can flatten theories if used as a checklist instead of a comparison aid.",
+        "Needs current course grounding before being used as learning material."
+      ],
+      "comparison_targets": [
+        {
+          "target_theory_id": "trait_and_assessment_psychology",
+          "relation": "maps",
+          "rationale": "Trait theory is the baseline for many later contrasts."
+        },
+        {
+          "target_theory_id": "sociocultural_poststructural_approaches",
+          "relation": "maps",
+          "rationale": "Sociocultural and poststructural approaches mark the strongest anti-essentialist end of the matrix."
+        }
+      ],
+      "likely_misunderstandings": [
+        "Using the matrix as a replacement for readings.",
+        "Forgetting that some rows combine subtraditions with internal disagreements.",
+        "Treating orientation axes as fixed scores rather than interpretive prompts."
+      ],
+      "student_synthesis_notes": "This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.",
+      "source_note_basis": [
+        {
+          "note_id": "anes_tabel",
+          "basis_status": "cross_note_agreement",
+          "summary": "Contains the full set of orientation points and a differences-and-similarities section."
+        },
+        {
+          "note_id": "jaque_tabel_alle_teoretiske_retninger",
+          "basis_status": "cross_note_agreement",
+          "summary": "Uses the same orientation-point framework in a compact seminar exam-preparation table."
+        }
+      ],
+      "source_grounding": {
+        "course_theory_map_ids": [
+          "comparative_theory_analysis"
+        ],
+        "concept_node_ids": [
+          "comparative_theory_analysis",
+          "narrativity",
+          "stability_and_change"
+        ],
+        "distinction_ids": [
+          "essence_vs_subjectivation",
+          "trait_vs_state"
+        ],
+        "representative_source_ids": [
+          "w12l1-grundbog-kapitel-14-perspektiver-pa-personlighed-95ca3a38",
+          "w12l1-grundbog-kapitel-8-personlighed-subjektivitet-og-b0095bfb",
+          "w12l1-elias-2000-f9176ae8"
+        ],
+        "representative_evidence_origins": [
+          "textbook_framing",
+          "reading_grounded"
+        ]
+      },
+      "validation_status": "validated",
+      "warnings": []
+    }
+  ],
+  "stats": {
+    "row_count": 13,
+    "validated_row_count": 13,
+    "partially_validated_row_count": 0,
+    "needs_review_row_count": 0,
+    "student_only_exam_hint_row_count": 0
+  },
+  "warnings": [
+    "Use this layer for exam framing and comparison, not as primary course evidence."
+  ]
+}

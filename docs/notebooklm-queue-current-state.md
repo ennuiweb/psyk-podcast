@@ -147,6 +147,7 @@ As of 2026-05-23, the visible `personlighedspsykologi-da` dead-letter backlog is
 - 22 records are for obsolete Danish config hash `55f02f15a2c7b8a6`, superseded by queue hash `87f3a51dce5b5cf4`.
 - 21 records were stale previous-config Danish queue records retired after the current config cohort `e75314af2745ddb6` was enqueued.
 - Decision: do not reschedule these records as-is, and do not disable the dead-letter feature. A future cleanup can split this into a clearer `superseded` or `cancelled_superseded` terminal state, leaving `dead_letter` for genuine failures.
+- 2026-05-24 cleanup: the 43 `personlighedspsykologi-da` dead-letter records were removed from the live `jobs/` store and indexes because they polluted queue totals. Audit copies were preserved under `/var/lib/podcasts/notebooklm-queue/maintenance/dead-letter-cleanup-20260524T203407Z/` and the existing `dead-letter/` archive.
 
 Required repo workflows completed successfully for the latest queue commits:
 

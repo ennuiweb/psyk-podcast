@@ -167,6 +167,9 @@ Notes:
 - `waiting_for_artifact` means NotebookLM generation has been requested and the queue is polling for the generated file.
 - `blocked_auth_stale` means an operator must reauth or replace the profile before that job can continue.
 - `dead_letter` means the queue has intentionally stopped retrying the job. In this repo it currently includes both genuinely failed terminal jobs and superseded config/hash jobs; check the `note`, `error`, and config hash before deciding whether anything should be requeued.
+- Superseded `dead_letter` records should not remain in the live `jobs/` store
+  once inspected; archive them outside `jobs/` and reconcile indexes so queue
+  totals reflect actionable backlog.
 
 ## Install on Hetzner
 

@@ -159,6 +159,9 @@ Notes:
 
 ## Queue state notes
 
+- When Oskar asks for the state of the queue, include both: jobs worked on in
+  the past 24 hours, grouped by show, and the current NotebookLM profile report
+  with usable/cooldown/auth-stale counts.
 - `queued` means a job is eligible to be claimed as soon as profile capacity is available.
 - `retry_scheduled` means the job is waiting for a timestamped retry window, usually profile cooldown, rate limit, or transient NotebookLM failure recovery.
 - `waiting_for_artifact` means NotebookLM generation has been requested and the queue is polling for the generated file.

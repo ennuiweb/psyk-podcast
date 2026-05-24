@@ -137,6 +137,7 @@ Use this section to compare how long browser storage-state auth survives after t
 - 2026-05-23T19:20:19Z: `oskarhoegsgaard` was reauthed locally and passed local `notebooklm list --json`; the uploaded file checksum matched the Hetzner copy, but hosted `refresh-profiles --force` at 2026-05-23T19:23:17Z still failed with a Google sign-in redirect, so the hosted queue kept this profile `auth_stale`.
 - 2026-05-23T19:22:58Z: `tjekdepotadmin` was reauthed locally and passed local `notebooklm list --json`; after explicit safe sync to Hetzner, hosted `refresh-profiles --force` at 2026-05-23T19:23:17Z passed keepalive plus `notebooklm list --json` probe and repaired the profile to `usable`.
 - 2026-05-23T19:23:20Z hosted capacity after the reauth attempt: `usable=3` (`default`, `stanhawkservices`, `tjekdepotadmin`), `cooldown=3`, `auth_stale=3`.
+- 2026-05-24T07:36:11Z: `oskarhoegsgaard`, `vedeloskar`, and `g2a_geminiaiadvanced_kimngan12795` were reinitialized locally, each passed a local `notebooklm --storage <profile-file> list --json` probe, were synced explicitly to Hetzner, and passed hosted `refresh-profiles --force --actor operator-reauth` keepalive plus probe. Hosted capacity at 2026-05-24T07:36:29Z showed these three profiles `usable`; the other six configured profiles were in rate-limit cooldown, with no `auth_stale` profiles remaining.
 
 ## Dead Letter Checkpoint
 

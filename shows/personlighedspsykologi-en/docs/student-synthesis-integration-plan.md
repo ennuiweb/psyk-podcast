@@ -202,6 +202,121 @@ Verification result on 2026-05-25:
 - Printout matrix QA remains stable: 38 sources, average score 80, 25 pass,
   13 warn, 0 fail.
 
+### 2026-05-25: Freudd Flashcard Plan Finalized
+
+Status: planned.
+
+The next learner-facing implementation should be a deterministic Freudd
+flashcard deck generated from
+`student_synthesis/exam_theory_matrix.json`.
+
+Technical decision:
+
+- use the existing file-backed Freudd flashcard system
+- add `shows/personlighedspsykologi-en/flashcards/decks.json`
+- add one generated deck artifact under
+  `shows/personlighedspsykologi-en/flashcards/`
+- do not add a new database model, Freudd route, or NotebookLM-dependent
+  generation path for the first version
+
+Reasoning:
+
+- Freudd already discovers subject flashcard decks from subject-local
+  `flashcards/decks.json` registries
+- the existing flashcard service validates deck slug, subject slug, artifact
+  path, card count, category metadata, and card shape
+- anonymous preview and logged-in review/progress already work
+- the matrix is already structured, validated, and small enough for a
+  deterministic generator
+- NotebookLM would add useful phrasing variation later, but it would blur
+  provenance and reproducibility if used as the first source of truth
+
+Planned deck:
+
+- subject slug: `personlighedspsykologi`
+- deck slug: `eksamensmatrix-personlighedspsykologi`
+- title: `Eksamensmatrix: personlighedspsykologi`
+- source file: `student_synthesis/exam_theory_matrix.json`
+- category groups:
+  - `Orienteringspunkter`
+  - `Personbegreb`
+  - `Metode og evidens`
+  - `Styrker og begrænsninger`
+  - `Sammenligninger`
+  - `Eksamenstraps`
+
+Planned card families:
+
+- orientation cards: place each validated row on essence/context,
+  determination, agency, and historicity
+- model cards: ask what kind of person, personality, or subjectivity each
+  theory assumes
+- method cards: ask what evidence or method the theory trusts
+- affordance cards: ask what each theory makes visible and what it tends to
+  hide
+- comparison cards: ask the high-value contrast or extension relation recorded
+  in `comparison_targets`
+- misunderstanding cards: ask for correction of likely exam traps
+
+Card-count target:
+
+- minimum: one usable card per validated matrix row
+- preferred first version: roughly 100-140 cards
+- hard cap for v1: 160 cards
+
+The cap is intentional. The deck should support oral-exam retrieval and
+comparison, not become a second textbook.
+
+Implementation plan:
+
+1. Add a deterministic generator, preferably
+   `scripts/build_personlighedspsykologi_matrix_flashcards.py`, backed by a
+   small reusable module in `notebooklm_queue/`.
+2. Read only `student_synthesis/exam_theory_matrix.json` and reject generation
+   unless all rows are validated and warning-free.
+3. Generate stable card IDs from row ID, card family, orientation point, and
+   target row; never hash display text into the ID.
+4. Write a version-1 `freudd_flashcards` artifact with `front_text`,
+   `back_html_sanitized`, `back_text`, categories, tags, content hashes, and
+   card count.
+5. Write/update the subject-local `flashcards/decks.json` registry.
+6. Add artifact ownership entries for the registry and generated deck.
+7. Extend invariants so the deck cannot silently drift from the matrix:
+   registry path exists, deck loads through `flashcard_services.py`, card IDs
+   are unique, every validated row has coverage, category counts match, and the
+   deck does not leak raw student-note provenance.
+8. Add focused tests for deterministic generation, schema validity, stable
+   IDs, coverage thresholds, and Freudd service loading.
+9. Update `learning_material_regeneration_registry.json` only if flashcards are
+   added to the learner-facing ledger; otherwise document that Freudd
+   flashcard JSON is currently discovered by subject-local registry.
+10. Commit, push `main`, deploy `freudd-portal`, and smoke-check both the
+    subject page and
+    `/subjects/personlighedspsykologi/cards/eksamensmatrix-personlighedspsykologi`.
+
+Quality gates:
+
+- no raw PDF/DOCX extraction text in learner-facing card fields
+- no owner names, local file paths, or student-note IDs in learner-facing card
+  text
+- no card for a row with unresolved validation warnings
+- all generated cards have non-empty front, HTML answer, plain-text answer,
+  category slug/title, and deterministic content hash
+- category counts sum to card count
+- all deck artifacts can be loaded by `load_flashcard_deck`
+- anonymous route returns a preview page; logged-in users can save answers and
+  review ratings through the existing API
+- deck card IDs remain stable across wording edits unless the underlying
+  concept identity changes
+
+Maintenance rule:
+
+- later revisions should prefer appending cards or creating a v2 deck over
+  rewriting existing card IDs, because Freudd stores user review state by
+  `subject_slug`, `deck_slug`, and `card_id`
+- NotebookLM or another LLM can be used later as a phrasing assistant, but the
+  deterministic matrix generator remains the canonical writer
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

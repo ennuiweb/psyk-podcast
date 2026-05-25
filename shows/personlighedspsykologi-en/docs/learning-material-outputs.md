@@ -12,11 +12,12 @@ Use it for:
 
 ## Scope
 
-This layer currently includes four output families:
+This layer currently includes six output families:
 
 - podcasts
 - printouts / reading scaffolds
 - quizzes
+- flashcards
 - slides
 - study plans / exam planning sheets
 
@@ -72,6 +73,38 @@ Quiz entries should preserve two separate hash notions when available:
   tag
 - `source_config_hash` from the source audio/podcast filename in
   `quiz_links.json` when the quiz itself is only represented by a public link
+
+### Flashcards
+
+Canonical published flashcard surface:
+
+- subject-local `shows/<subject>/flashcards/decks.json`
+- generated deck artifacts referenced by that registry
+- Freudd route `/subjects/<subject_slug>/cards/<deck_slug>`
+
+Current implementation:
+
+- Freudd loads flashcards through `freudd_portal/quizzes/flashcard_services.py`
+- deck artifacts use `artifact_type: freudd_flashcards`
+- cards require stable `card_id`, `front_text`, `back_html_sanitized`,
+  `back_text`, category slug/title, and card count consistency
+- anonymous users can preview decks, while logged-in users can save written
+  answers and review ratings
+
+Planned `personlighedspsykologi` deck:
+
+- source:
+  `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
+- registry:
+  `shows/personlighedspsykologi-en/flashcards/decks.json`
+- deck slug: `eksamensmatrix-personlighedspsykologi`
+- purpose: oral-exam retrieval of theory comparisons, orientation points,
+  person models, method styles, strengths/limitations, and common exam traps
+
+NotebookLM is not the canonical first writer for matrix-derived flashcards.
+The first deck should be generated deterministically from the validated matrix;
+LLM/NotebookLM phrasing can be a later review aid only if stable IDs,
+provenance, and validation gates are preserved.
 
 ### Slides
 
@@ -274,6 +307,16 @@ Quiz-specific criteria:
   answers
 - the registry should retain the quiz-specific config hash when the generated
   quiz artifact is available
+
+Flashcard-specific criteria:
+
+- cards should test retrieval and comparison, not only definitions
+- matrix-derived cards should cover every validated theory row
+- card IDs should stay stable across wording edits to preserve review state
+- learner-facing text should not expose raw student notes, local file paths, or
+  student-note provenance IDs
+- category counts and deck counts must match the artifact exactly
+- deck JSON must load through the same service used by the Freudd UI
 
 Slide-specific criteria:
 

@@ -103,6 +103,51 @@ The next implementation phase should use
 `student_synthesis/exam_theory_matrix.json` to generate a master comparison
 sheet or W12L1-focused theory-comparison output.
 
+### 2026-05-25: Phase 2 QA Rubric Complete
+
+Status: complete in code and local verification; deploy pending.
+
+Scope for this pass:
+
+- use `student_synthesis/exam_theory_matrix.json` as a deterministic semantic
+  QA rubric for generated printout artifacts
+- keep normal printout generation unchanged
+- write QA reports into the existing `printout_review` evaluation workspace
+- add an explicit opt-in validation hook so matrix QA can fail CI/review checks
+  only when requested
+- test row selection, scoring, report shape, and CLI failure thresholds
+
+Design decision: the matrix is used for evaluation first, not as prompt input.
+This preserves the existing authority boundary: generated printouts remain
+source-grounded, while the matrix checks exam usefulness, comparison coverage,
+orientation-point framing, and likely-misunderstanding prevention.
+
+Implementation shape:
+
+- `notebooklm_queue/personlighedspsykologi_printout_matrix_qa.py` evaluates
+  schema-v3 reading printout JSON against relevant matrix rows.
+- `scripts/evaluate_personlighedspsykologi_printout_matrix_qa.py` writes local
+  JSON/Markdown rubric reports into
+  `notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/rubric_reports/`.
+- `scripts/validate_personlighedspsykologi_printout_integration.py --matrix-qa`
+  adds the same check as an opt-in integration gate.
+- Rubric report directories are generated QA artifacts and ignored by git except
+  for the containing `.gitkeep`.
+
+The gate is intentionally thresholded. The current canonical corpus contains
+older printouts that can score below the stricter default because they predate
+the student-synthesis matrix and do not always expose exam-bridge comparison
+signals. That is useful signal, not a migration blocker.
+
+Local verification result on 2026-05-25:
+
+- `--all-canonical --dry-run`: 38 sources, average score 80, 25 pass, 13 warn,
+  0 fail.
+- `validate_personlighedspsykologi_printout_integration.py --matrix-qa
+  --matrix-qa-fail-below 50 --min-canonical-bundles 20`: ok.
+- Generated local report bundle:
+  `rubric_reports/2026-05-canonical-matrix-qa/`.
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

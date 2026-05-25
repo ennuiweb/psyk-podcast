@@ -484,6 +484,21 @@ Known failure mode from old prompt-only examples:
 - they did not use course-level context for prioritization
 - they were too easy to skim without actually reading the source
 
+### Matrix QA Rubric
+
+The validated student-synthesis matrix can be used as a semantic QA rubric for
+schema-v3 printout JSON. This does not feed the matrix into generation and does
+not make student notes source authority. It checks whether existing printouts
+surface exam-relevant theory fit, orientation points, comparison value,
+misunderstanding traps, source-boundary discipline, and exam transfer.
+
+Rubric reports are generated review artifacts under:
+
+`notebooklm-podcast-auto/personlighedspsykologi/evaluation/printout_review/rubric_reports/<run-name>/`
+
+The report directory is ignored by git except for `.gitkeep`; regenerate it when
+reviewing current artifacts.
+
 ## Commands
 
 List completed week 1-3 printout JSON artifacts:
@@ -532,6 +547,34 @@ Continue a wider batch safely. Existing printout JSON files are skipped unless
   --no-pdf \
   --continue-on-error \
   --skip-preflight
+```
+
+Evaluate all canonical printout JSON artifacts against the matrix without
+writing reports:
+
+```bash
+./.venv/bin/python scripts/evaluate_personlighedspsykologi_printout_matrix_qa.py \
+  --all-canonical \
+  --dry-run
+```
+
+Write a local rubric-report bundle:
+
+```bash
+./.venv/bin/python scripts/evaluate_personlighedspsykologi_printout_matrix_qa.py \
+  --all-canonical \
+  --run-name 2026-05-canonical-matrix-qa
+```
+
+Run the integration validator with the opt-in matrix QA gate. Use a lower
+threshold when validating the current historical corpus; use the stricter
+default for newly refreshed exam-bridge printouts.
+
+```bash
+./.venv/bin/python scripts/validate_personlighedspsykologi_printout_integration.py \
+  --matrix-qa \
+  --matrix-qa-fail-below 50 \
+  --min-canonical-bundles 20
 ```
 
 Plan W11L1 reading printouts without API calls:

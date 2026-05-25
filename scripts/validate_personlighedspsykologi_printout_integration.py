@@ -17,6 +17,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from notebooklm_queue import personlighedspsykologi_printout_matrix_qa as matrix_qa  # noqa: E402
 from notebooklm_queue import personlighedspsykologi_printouts as printouts  # noqa: E402
 
 
@@ -376,6 +377,47 @@ def _validate_review_parity(
     }
 
 
+def _validate_matrix_qa(
+    *,
+    matrix_path: Path,
+    canonical_json_paths: list[Path],
+    repo_root: Path,
+    fail_below: int,
+) -> tuple[list[str], dict[str, Any]]:
+    if not matrix_path.exists():
+        return [f"matrix QA artifact not found: {_rel(matrix_path, repo_root)}"], {}
+    matrix = _load_json(matrix_path)
+    reports: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for json_path in canonical_json_paths:
+        try:
+            reports.append(
+                matrix_qa.evaluate_printout_artifact(
+                    artifact=_load_json(json_path),
+                    artifact_path=json_path,
+                    matrix=matrix,
+                    matrix_path=matrix_path,
+                    repo_root=repo_root,
+                )
+            )
+        except matrix_qa.MatrixQAError as exc:
+            errors.append(f"{_rel(json_path, repo_root)}: matrix QA failed to evaluate: {exc}")
+    for report in reports:
+        score = int(report.get("overall_score") or 0)
+        if score < fail_below:
+            source = report.get("source") if isinstance(report.get("source"), dict) else {}
+            errors.append(
+                f"{source.get('source_id', 'unknown')}: matrix QA score {score} below threshold {fail_below}"
+            )
+    summary = matrix_qa.build_summary_report(reports, repo_root=repo_root)
+    return errors, {
+        "matrix_qa_source_count": summary["source_count"],
+        "matrix_qa_average_score": summary["average_score"],
+        "matrix_qa_status_counts": summary["status_counts"],
+        "matrix_qa_fail_below": fail_below,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
@@ -394,6 +436,9 @@ def main() -> int:
     )
     parser.add_argument("--review-parity", action="store_true", help="Compare cached review JSON with canonical main JSON.")
     parser.add_argument("--review-pdf-parity", action="store_true", help="Also render and compare PDF text/page counts.")
+    parser.add_argument("--matrix-qa", action="store_true", help="Evaluate canonical printouts against the student-synthesis exam theory matrix.")
+    parser.add_argument("--matrix-path", type=Path, default=REPO_ROOT / matrix_qa.DEFAULT_MATRIX_PATH)
+    parser.add_argument("--matrix-qa-fail-below", type=int, default=70)
     parser.add_argument("--min-canonical-bundles", type=int, default=1)
     args = parser.parse_args()
 
@@ -429,6 +474,15 @@ def main() -> int:
             render_pdf=bool(args.review_pdf_parity),
         )
         errors.extend(parity_errors)
+    matrix_qa_summary: dict[str, Any] = {}
+    if args.matrix_qa:
+        matrix_errors, matrix_qa_summary = _validate_matrix_qa(
+            matrix_path=args.matrix_path.resolve(),
+            canonical_json_paths=canonical_json_paths,
+            repo_root=repo_root,
+            fail_below=int(args.matrix_qa_fail_below),
+        )
+        errors.extend(matrix_errors)
     for log_path in args.log:
         errors.extend(_validate_log(log_path.resolve(), repo_root))
 
@@ -446,6 +500,7 @@ def main() -> int:
         "errors": errors,
         "warnings": warnings,
         **parity_summary,
+        **matrix_qa_summary,
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 1 if errors else 0

@@ -85,6 +85,9 @@ Candidate PDFs remain flat in this workspace's `review/` directory.
 - `review/.scaffolding/artifacts/<provider>-<model>/<source_id>/`
   Hidden provider/model-scoped JSON, Markdown, and PDF staging artifacts used by
   the shared review root.
+- `rubric_reports/<run-name>/`
+  Generated matrix-QA JSON/Markdown reports for canonical or candidate printout
+  artifacts. These are local review artifacts and are ignored by git.
 
 Candidate PDFs now all land in one flat shared directory:
 
@@ -343,6 +346,26 @@ canonical metadata, registry preference for `printouts/`, checkbox removal, JSON
 normalization parity, Markdown parity, and PDF text/page-count parity against the
 current main output.
 
+For exam-readiness review, generate matrix-QA reports from the validated
+student-synthesis matrix:
+
+```bash
+./.venv/bin/python scripts/evaluate_personlighedspsykologi_printout_matrix_qa.py \
+  --all-canonical \
+  --run-name 2026-05-canonical-matrix-qa
+```
+
+To make the repository-level validator enforce the same rubric, opt in with
+`--matrix-qa`. The current historical corpus can be checked with a permissive
+threshold:
+
+```bash
+./.venv/bin/python scripts/validate_personlighedspsykologi_printout_integration.py \
+  --matrix-qa \
+  --matrix-qa-fail-below 50 \
+  --min-canonical-bundles 20
+```
+
 ## Status
 
 This workspace currently supports:
@@ -353,6 +376,8 @@ This workspace currently supports:
 - promoting accepted candidate PDFs into main output when rerendering is not needed
 - renderer-only parity validation between cached review JSON artifacts and main
   PDFs
+- matrix-based semantic QA reports for exam usefulness and source-boundary
+  discipline
 
-It does not yet include an automated judge script. For now, review is manual or
-ad hoc.
+It still does not include an LLM judge. The matrix-QA rubric is deterministic
+and should be treated as a review signal, not a replacement for human inspection.

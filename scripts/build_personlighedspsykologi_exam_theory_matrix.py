@@ -19,19 +19,24 @@ from notebooklm_queue.personlighedspsykologi_student_synthesis import (
     SUBJECT_SLUG,
     StudentSynthesisValidationError,
     build_exam_theory_matrix,
+    build_source_note_promotion_review,
     build_source_notes_index,
     dependency_hashes,
     sha256_file,
     utc_now_iso,
     validate_exam_theory_matrix,
     validate_seed,
+    validate_source_note_promotion_review,
+    validate_source_note_registry,
     validate_source_notes_index,
 )
 
 DEFAULT_SHOW_DIR = Path("shows/personlighedspsykologi-en")
 DEFAULT_STUDENT_SYNTHESIS_DIR = DEFAULT_SHOW_DIR / "student_synthesis"
+DEFAULT_SOURCE_NOTE_REGISTRY_PATH = DEFAULT_STUDENT_SYNTHESIS_DIR / "source_notes.registry.json"
 DEFAULT_SEED_PATH = DEFAULT_STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
 DEFAULT_SOURCE_NOTES_INDEX_PATH = DEFAULT_STUDENT_SYNTHESIS_DIR / "source_notes_index.json"
+DEFAULT_PROMOTION_REVIEW_PATH = DEFAULT_STUDENT_SYNTHESIS_DIR / "source_note_promotion_review.json"
 DEFAULT_OUTPUT_PATH = DEFAULT_STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.json"
 DEFAULT_SOURCE_CATALOG_PATH = DEFAULT_SHOW_DIR / "source_catalog.json"
 DEFAULT_THEORY_MAP_PATH = DEFAULT_SHOW_DIR / "course_theory_map.json"
@@ -39,20 +44,6 @@ DEFAULT_CONCEPT_GRAPH_PATH = DEFAULT_SHOW_DIR / "course_concept_graph.json"
 DEFAULT_SOURCE_WEIGHTING_PATH = DEFAULT_SHOW_DIR / "source_weighting.json"
 DEFAULT_COURSE_SYNTHESIS_PATH = DEFAULT_SHOW_DIR / "source_intelligence/course_synthesis.json"
 DEFAULT_STALENESS_PATH = DEFAULT_SHOW_DIR / "source_intelligence_staleness.json"
-
-DEFAULT_NOTE_SPECS = [
-    {
-        "note_id": "anes_tabel",
-        "label": "Anes tabel",
-        "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Anes tabel.pdf",
-    },
-    {
-        "note_id": "jaque_tabel_alle_teoretiske_retninger",
-        "label": "Tabel alle teoretiske retninger",
-        "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Tabel alle teoretiske retninger.docx",
-    },
-]
-
 
 def _load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -84,6 +75,7 @@ def _dependency_paths(args: argparse.Namespace) -> dict[str, Path]:
     return {
         "builder_script": Path(__file__),
         "student_synthesis_module": Path(synthesis_module.__file__),
+        "source_note_registry": args.source_note_registry_path,
         "seed": args.seed_path,
         "source_catalog": args.source_catalog_path,
         "course_theory_map": args.theory_map_path,
@@ -98,6 +90,7 @@ def _build_staleness_entry(
     output_path: Path,
     source_notes_index_path: Path,
     source_notes_index: dict[str, Any],
+    promotion_review_path: Path,
     dependency_hashes_payload: dict[str, str],
     repo_root: Path,
 ) -> dict[str, Any]:
@@ -107,6 +100,9 @@ def _build_staleness_entry(
         if source_notes_index_path.is_absolute()
         else str(source_notes_index_path),
         "source_note_count": len(source_notes_index.get("notes", [])),
+        "promotion_review_path": str(promotion_review_path.relative_to(repo_root))
+        if promotion_review_path.is_absolute()
+        else str(promotion_review_path),
         "dependency_hashes": dependency_hashes_payload,
     }
 
@@ -117,6 +113,8 @@ def _update_staleness(
     output_path: Path,
     source_notes_index_path: Path,
     source_notes_index: dict[str, Any],
+    promotion_review_path: Path,
+    promotion_review: dict[str, Any],
     dependency_hashes_payload: dict[str, str],
     generated_at: str,
     repo_root: Path,
@@ -137,6 +135,11 @@ def _update_staleness(
         "sha256": sha256_file(source_notes_index_path) if source_notes_index_path.exists() else "pending",
         "count": len(source_notes_index.get("notes", [])),
     }
+    artifacts["student_synthesis_source_note_promotion_review"] = {
+        "path": str(promotion_review_path),
+        "sha256": sha256_file(promotion_review_path) if promotion_review_path.exists() else "pending",
+        "count": len(promotion_review.get("entries", [])),
+    }
     artifacts["exam_theory_matrix"] = {
         "path": str(output_path),
         "sha256": sha256_file(output_path) if output_path.exists() else "pending",
@@ -152,6 +155,7 @@ def _update_staleness(
             output_path=output_path,
             source_notes_index_path=source_notes_index_path,
             source_notes_index=source_notes_index,
+            promotion_review_path=promotion_review_path,
             dependency_hashes_payload=dependency_hashes_payload,
             repo_root=repo_root,
         )
@@ -179,16 +183,24 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             known_lecture_keys=known_lectures,
         )
 
+    registry = validate_source_note_registry(_load_json(args.source_note_registry_path))
     source_notes_index = build_source_notes_index(
-        DEFAULT_NOTE_SPECS,
+        registry["notes"],
         repo_root=repo_root,
         generated_at=generated_at,
     )
     validate_source_notes_index(source_notes_index)
+    promotion_review = build_source_note_promotion_review(
+        registry=registry,
+        source_notes_index=source_notes_index,
+        generated_at=generated_at,
+    )
+    validate_source_note_promotion_review(promotion_review)
 
     if args.extract_only:
         if not args.dry_run:
             write_json_stably(args.source_notes_index_path, source_notes_index)
+            write_json_stably(args.promotion_review_path, promotion_review)
         return source_notes_index
 
     seed = validate_seed(
@@ -198,6 +210,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     )
     hashes = dependency_hashes(_dependency_paths(args))
     hashes["source_notes_index"] = sha256_file(args.source_notes_index_path) if args.source_notes_index_path.exists() else "pending"
+    hashes["source_note_promotion_review"] = (
+        sha256_file(args.promotion_review_path) if args.promotion_review_path.exists() else "pending"
+    )
 
     matrix = build_exam_theory_matrix(
         seed=seed,
@@ -215,9 +230,11 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
 
     if not args.dry_run:
         source_notes_index, _ = write_json_stably(args.source_notes_index_path, source_notes_index)
+        promotion_review, _ = write_json_stably(args.promotion_review_path, promotion_review)
         matrix, _ = write_json_stably(args.output_path, matrix)
         hashes = dependency_hashes(_dependency_paths(args))
         hashes["source_notes_index"] = sha256_file(args.source_notes_index_path)
+        hashes["source_note_promotion_review"] = sha256_file(args.promotion_review_path)
         matrix["provenance"]["dependency_hashes"] = hashes
         matrix, _ = write_json_stably(args.output_path, matrix)
         _update_staleness(
@@ -225,6 +242,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             output_path=args.output_path,
             source_notes_index_path=args.source_notes_index_path,
             source_notes_index=source_notes_index,
+            promotion_review_path=args.promotion_review_path,
+            promotion_review=promotion_review,
             dependency_hashes_payload=hashes,
             generated_at=generated_at,
             repo_root=repo_root,
@@ -235,8 +254,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path("."))
+    parser.add_argument("--source-note-registry-path", type=Path, default=DEFAULT_SOURCE_NOTE_REGISTRY_PATH)
     parser.add_argument("--seed-path", type=Path, default=DEFAULT_SEED_PATH)
     parser.add_argument("--source-notes-index-path", type=Path, default=DEFAULT_SOURCE_NOTES_INDEX_PATH)
+    parser.add_argument("--promotion-review-path", type=Path, default=DEFAULT_PROMOTION_REVIEW_PATH)
     parser.add_argument("--output-path", type=Path, default=DEFAULT_OUTPUT_PATH)
     parser.add_argument("--source-catalog-path", type=Path, default=DEFAULT_SOURCE_CATALOG_PATH)
     parser.add_argument("--theory-map-path", type=Path, default=DEFAULT_THEORY_MAP_PATH)

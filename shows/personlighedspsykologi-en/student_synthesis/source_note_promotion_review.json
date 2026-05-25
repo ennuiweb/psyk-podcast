@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "artifact_type": "student_synthesis_source_note_promotion_review",
+  "subject_slug": "personlighedspsykologi",
+  "generated_at": "2026-05-25T19:52:13Z",
+  "authority": "student_exam_synthesis",
+  "source_notes_signature": "26090a169408b9a4aa4ac6d0c7e48d466dbc9f266dae968ac8e7fafd630d1b74",
+  "stats": {
+    "entry_count": 10,
+    "promoted_to_matrix_count": 10,
+    "embedded_media_note_count": 4,
+    "matrix_policy_counts": {
+      "do_not_promote": 0,
+      "primary_basis": 1,
+      "secondary_basis": 4,
+      "selective_enrichment": 5,
+      "theory_sheet_only": 0
+    }
+  },
+  "entries": [
+    {
+      "note_id": "anes_tabel",
+      "label": "Anes tabel",
+      "owner_or_origin": "Ane",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "primary_basis",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Keep as primary broad comparison basis for the matrix."
+    },
+    {
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "label": "Tabel alle teoretiske retninger",
+      "owner_or_origin": "Jaque",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_count": 2,
+      "embedded_media_review_status": "needs_review",
+      "risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use text extraction as compact secondary support; defer image content until media review."
+    },
+    {
+      "note_id": "jaque_orienteringspunkter_narrativ",
+      "label": "Orienteringspunkter narrativ",
+      "owner_or_origin": "Jaque",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as direct support for narrative orientation points and W12 comparison synthesis."
+    },
+    {
+      "note_id": "karla_faenomenologi",
+      "label": "Fænomenologi",
+      "owner_or_origin": "Karla",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "phenomenological_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as secondary support for phenomenology, especially method and narrative comparison."
+    },
+    {
+      "note_id": "karla_fransk_psykoanalyse",
+      "label": "Fransk psykoanalyse",
+      "owner_or_origin": "Karla",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively to sharpen French psychoanalysis inside the broader psychoanalytic row; consider later subtradition split."
+    },
+    {
+      "note_id": "karla_humanistisk_psyk",
+      "label": "Humanistisk psyk",
+      "owner_or_origin": "Karla",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "humanistic_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as secondary support for humanistic theory sheets and compact matrix deltas."
+    },
+    {
+      "note_id": "karla_socialkonstruktivisme",
+      "label": "Socialkonstruktivisme",
+      "owner_or_origin": "Karla",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 2,
+      "embedded_media_review_status": "needs_review",
+      "risk_flags": [
+        "embedded_media_unreviewed",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use text extraction to sharpen social constructionism and narrative comparison; do not rely on embedded media."
+    },
+    {
+      "note_id": "karla_poststrukturalisme",
+      "label": "Poststrukturalisme",
+      "owner_or_origin": "Karla",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "embedded_media_count": 13,
+      "embedded_media_review_status": "needs_review",
+      "risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use only selective normalized deltas for poststructuralism; keep detailed cases for later theory sheets."
+    },
+    {
+      "note_id": "karla_traekteori",
+      "label": "Trækteori",
+      "owner_or_origin": "Karla",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 1,
+      "embedded_media_review_status": "needs_review",
+      "risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively for trait/dynamic/biosocial distinctions and narrative comparison; avoid reading-level detail."
+    },
+    {
+      "note_id": "karla_tysk_psykoanalyse",
+      "label": "Tysk psykoanalyse",
+      "owner_or_origin": "Karla",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "promoted_to_matrix": true,
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively to distinguish classical/German psychoanalysis from French psychoanalysis inside the broad row."
+    }
+  ],
+  "warnings": [
+    "Promotion review records note-level inclusion decisions; it must not contain raw extracted note prose.",
+    "Embedded media remain text-only until separately reviewed or OCR-expanded."
+  ]
+}

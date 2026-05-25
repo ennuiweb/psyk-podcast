@@ -44,8 +44,30 @@ NOTE_BASIS_STATUSES = {
     "cross_note_agreement",
     "course_artifact_only",
 }
+INTAKE_STATUSES = {
+    "candidate_reviewed",
+    "indexed_only",
+    "matrix_supplement",
+    "theory_sheet_only",
+    "deferred_media_review",
+    "rejected",
+}
+MATRIX_POLICIES = {
+    "primary_basis",
+    "secondary_basis",
+    "selective_enrichment",
+    "theory_sheet_only",
+    "do_not_promote",
+}
+EMBEDDED_MEDIA_POLICIES = {
+    "not_applicable",
+    "text_only_until_reviewed",
+    "review_before_media_use",
+}
 MAX_STUDENT_BASIS_CHARS = 420
 MAX_TEXT_FIELD_CHARS = 900
+LARGE_NOTE_CHARACTER_THRESHOLD = 20_000
+QUOTE_DENSE_MARKER_THRESHOLD = 24
 RAW_EXTRACTION_MARKERS = (
     "+----------------",
     "| **Retning",
@@ -143,8 +165,33 @@ def keyword_hits(text: str) -> dict[str, int]:
     }
 
 
+def _quote_marker_count(text: str) -> int:
+    return text.count(">") + text.count('"') + text.count("“") + text.count("”")
+
+
+def extraction_risk_flags(text: str, *, embedded_media_count: int) -> list[str]:
+    flags: list[str] = []
+    if embedded_media_count:
+        flags.append("embedded_media_unreviewed")
+    if len(text) > LARGE_NOTE_CHARACTER_THRESHOLD:
+        flags.append("large_note_selective_use_only")
+    if _quote_marker_count(text) >= QUOTE_DENSE_MARKER_THRESHOLD:
+        flags.append("quote_dense_do_not_copy")
+    if any(marker in text for marker in RAW_EXTRACTION_MARKERS):
+        flags.append("raw_table_extraction_markers_present")
+    return flags
+
+
+def _optional_str(value: object) -> str:
+    return str(value or "").strip()
+
+
+def _registry_expected_theory_ids(spec: Mapping[str, Any]) -> list[str]:
+    return _as_str_list(spec.get("expected_theory_ids"))
+
+
 def build_source_notes_index(
-    note_specs: Iterable[Mapping[str, str]],
+    note_specs: Iterable[Mapping[str, Any]],
     *,
     repo_root: Path,
     generated_at: str | None = None,
@@ -160,11 +207,19 @@ def build_source_notes_index(
             raise StudentSynthesisValidationError(f"Source note file is missing: {path}")
         text, extraction_method = extract_note_text(path)
         media_count = count_docx_embedded_media(path)
+        expected_theory_ids = _registry_expected_theory_ids(spec)
         notes.append(
             {
                 "note_id": note_id,
                 "label": label,
                 "path": _display_path(path, repo_root),
+                "owner_or_origin": _optional_str(spec.get("owner_or_origin")),
+                "candidate_scope": _optional_str(spec.get("candidate_scope")),
+                "intake_status": _optional_str(spec.get("intake_status")),
+                "matrix_policy": _optional_str(spec.get("matrix_policy")),
+                "expected_theory_ids": expected_theory_ids,
+                "embedded_media_policy": _optional_str(spec.get("embedded_media_policy")) or "not_applicable",
+                "operator_notes": _optional_str(spec.get("notes")),
                 "sha256": sha256_file(path),
                 "size_bytes": path.stat().st_size,
                 "format": path.suffix.lower().lstrip("."),
@@ -175,6 +230,8 @@ def build_source_notes_index(
                 "embedded_media_count": media_count,
                 "embedded_media_review_status": "needs_review" if media_count else "not_applicable",
                 "keyword_hits": keyword_hits(text),
+                "extraction_risk_flags": extraction_risk_flags(text, embedded_media_count=media_count),
+                "promotion_recommendation": _optional_str(spec.get("promotion_recommendation")),
             }
         )
     return {
@@ -193,6 +250,106 @@ def build_source_notes_index(
         ]
         if any(int(note["embedded_media_count"]) for note in notes)
         else [],
+    }
+
+
+def validate_source_note_registry(payload: object) -> dict[str, Any]:
+    registry = _require_dict(payload, "$")
+    if registry.get("artifact_type") != "student_synthesis_source_note_registry":
+        raise StudentSynthesisValidationError("$.artifact_type must be student_synthesis_source_note_registry")
+    if registry.get("version") != STUDENT_SYNTHESIS_SCHEMA_VERSION:
+        raise StudentSynthesisValidationError(f"$.version must be {STUDENT_SYNTHESIS_SCHEMA_VERSION}")
+    if registry.get("subject_slug") != SUBJECT_SLUG:
+        raise StudentSynthesisValidationError(f"$.subject_slug must be {SUBJECT_SLUG}")
+    notes = _require_list(registry.get("notes"), "$.notes")
+    if not notes:
+        raise StudentSynthesisValidationError("$.notes must not be empty")
+    seen: set[str] = set()
+    for index, note in enumerate(notes):
+        note_obj = _require_dict(note, f"$.notes[{index}]")
+        note_id = _require_nonempty_string(note_obj.get("note_id"), f"$.notes[{index}].note_id")
+        if _normalize_token(note_id) != note_id:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].note_id must be normalized snake_case")
+        if note_id in seen:
+            raise StudentSynthesisValidationError(f"Duplicate registry note_id: {note_id}")
+        seen.add(note_id)
+        _require_nonempty_string(note_obj.get("label"), f"$.notes[{index}].label")
+        _require_nonempty_string(note_obj.get("path"), f"$.notes[{index}].path")
+        intake_status = _require_nonempty_string(note_obj.get("intake_status"), f"$.notes[{index}].intake_status")
+        if intake_status not in INTAKE_STATUSES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].intake_status is invalid")
+        matrix_policy = _require_nonempty_string(note_obj.get("matrix_policy"), f"$.notes[{index}].matrix_policy")
+        if matrix_policy not in MATRIX_POLICIES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].matrix_policy is invalid")
+        media_policy = _optional_str(note_obj.get("embedded_media_policy")) or "not_applicable"
+        if media_policy not in EMBEDDED_MEDIA_POLICIES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].embedded_media_policy is invalid")
+        _require_list(note_obj.get("expected_theory_ids"), f"$.notes[{index}].expected_theory_ids")
+    return registry
+
+
+def build_source_note_promotion_review(
+    *,
+    registry: Mapping[str, Any],
+    source_notes_index: Mapping[str, Any],
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    validate_source_note_registry(registry)
+    validate_source_notes_index(source_notes_index)
+    notes_by_id = {
+        str(note.get("note_id") or ""): note
+        for note in _as_list(source_notes_index.get("notes"))
+        if isinstance(note, dict)
+    }
+    entries: list[dict[str, Any]] = []
+    for spec in _as_list(registry.get("notes")):
+        if not isinstance(spec, dict):
+            continue
+        note_id = str(spec.get("note_id") or "").strip()
+        indexed = notes_by_id.get(note_id, {})
+        media_count = int(indexed.get("embedded_media_count") or 0)
+        matrix_policy = str(spec.get("matrix_policy") or "").strip()
+        promoted = matrix_policy in {"primary_basis", "secondary_basis", "selective_enrichment"}
+        risk_flags = _as_str_list(indexed.get("extraction_risk_flags"))
+        if media_count and "embedded_media_unreviewed" not in risk_flags:
+            risk_flags.append("embedded_media_unreviewed")
+        entries.append(
+            {
+                "note_id": note_id,
+                "label": str(spec.get("label") or note_id),
+                "owner_or_origin": _optional_str(spec.get("owner_or_origin")),
+                "intake_status": _optional_str(spec.get("intake_status")),
+                "matrix_policy": matrix_policy,
+                "promoted_to_matrix": promoted,
+                "expected_theory_ids": _registry_expected_theory_ids(spec),
+                "embedded_media_count": media_count,
+                "embedded_media_review_status": indexed.get("embedded_media_review_status", "unknown"),
+                "risk_flags": sorted(set(risk_flags)),
+                "promotion_recommendation": _optional_str(spec.get("promotion_recommendation")),
+            }
+        )
+    policy_counts = {
+        policy: sum(1 for entry in entries if entry["matrix_policy"] == policy)
+        for policy in sorted(MATRIX_POLICIES)
+    }
+    return {
+        "version": STUDENT_SYNTHESIS_SCHEMA_VERSION,
+        "artifact_type": "student_synthesis_source_note_promotion_review",
+        "subject_slug": SUBJECT_SLUG,
+        "generated_at": generated_at or utc_now_iso(),
+        "authority": AUTHORITY_LABEL,
+        "source_notes_signature": note_signature(source_notes_index),
+        "stats": {
+            "entry_count": len(entries),
+            "promoted_to_matrix_count": sum(1 for entry in entries if entry["promoted_to_matrix"]),
+            "embedded_media_note_count": sum(1 for entry in entries if int(entry["embedded_media_count"]) > 0),
+            "matrix_policy_counts": policy_counts,
+        },
+        "entries": entries,
+        "warnings": [
+            "Promotion review records note-level inclusion decisions; it must not contain raw extracted note prose.",
+            "Embedded media remain text-only until separately reviewed or OCR-expanded.",
+        ],
     }
 
 
@@ -475,11 +632,42 @@ def validate_source_notes_index(payload: object) -> dict[str, Any]:
         note_obj = _require_dict(note, f"$.notes[{index}]")
         _require_nonempty_string(note_obj.get("note_id"), f"$.notes[{index}].note_id")
         _require_nonempty_string(note_obj.get("sha256"), f"$.notes[{index}].sha256")
+        if note_obj.get("intake_status") and str(note_obj.get("intake_status")) not in INTAKE_STATUSES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].intake_status is invalid")
+        if note_obj.get("matrix_policy") and str(note_obj.get("matrix_policy")) not in MATRIX_POLICIES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].matrix_policy is invalid")
+        if note_obj.get("embedded_media_policy") and str(note_obj.get("embedded_media_policy")) not in EMBEDDED_MEDIA_POLICIES:
+            raise StudentSynthesisValidationError(f"$.notes[{index}].embedded_media_policy is invalid")
         if note_obj.get("extraction_status") != "ok":
             raise StudentSynthesisValidationError(f"$.notes[{index}].extraction_status must be ok")
         if int(note_obj.get("extracted_character_count") or 0) <= 0:
             raise StudentSynthesisValidationError(f"$.notes[{index}].extracted_character_count must be positive")
     return artifact
+
+
+def validate_source_note_promotion_review(payload: object) -> dict[str, Any]:
+    review = _require_dict(payload, "$")
+    if review.get("artifact_type") != "student_synthesis_source_note_promotion_review":
+        raise StudentSynthesisValidationError("$.artifact_type must be student_synthesis_source_note_promotion_review")
+    if review.get("version") != STUDENT_SYNTHESIS_SCHEMA_VERSION:
+        raise StudentSynthesisValidationError(f"$.version must be {STUDENT_SYNTHESIS_SCHEMA_VERSION}")
+    if review.get("subject_slug") != SUBJECT_SLUG:
+        raise StudentSynthesisValidationError(f"$.subject_slug must be {SUBJECT_SLUG}")
+    _require_nonempty_string(review.get("generated_at"), "$.generated_at")
+    _require_nonempty_string(review.get("source_notes_signature"), "$.source_notes_signature")
+    entries = _require_list(review.get("entries"), "$.entries")
+    if not entries:
+        raise StudentSynthesisValidationError("$.entries must not be empty")
+    for index, entry in enumerate(entries):
+        entry_obj = _require_dict(entry, f"$.entries[{index}]")
+        _require_nonempty_string(entry_obj.get("note_id"), f"$.entries[{index}].note_id")
+        matrix_policy = _require_nonempty_string(entry_obj.get("matrix_policy"), f"$.entries[{index}].matrix_policy")
+        if matrix_policy not in MATRIX_POLICIES:
+            raise StudentSynthesisValidationError(f"$.entries[{index}].matrix_policy is invalid")
+        _require_list(entry_obj.get("expected_theory_ids"), f"$.entries[{index}].expected_theory_ids")
+        _require_list(entry_obj.get("risk_flags"), f"$.entries[{index}].risk_flags")
+        _reject_unsafe_text(entry_obj, f"$.entries[{index}]")
+    return review
 
 
 def validate_exam_theory_matrix(

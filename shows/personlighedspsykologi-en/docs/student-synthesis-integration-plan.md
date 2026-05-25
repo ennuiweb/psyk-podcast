@@ -105,7 +105,7 @@ sheet or W12L1-focused theory-comparison output.
 
 ### 2026-05-25: Phase 2 QA Rubric Complete
 
-Status: complete in code and local verification; deploy pending.
+Status: complete.
 
 Scope for this pass:
 
@@ -147,6 +147,60 @@ Local verification result on 2026-05-25:
   --matrix-qa-fail-below 50 --min-canonical-bundles 20`: ok.
 - Generated local report bundle:
   `rubric_reports/2026-05-canonical-matrix-qa/`.
+
+### 2026-05-25: Expanded Source-Note Intake Started
+
+Status: complete.
+
+Scope for this pass:
+
+- move student-note intake out of hardcoded Python defaults and into a
+  committed source-note registry
+- index the eight additional notes from Karla/Jaque with extraction metadata,
+  hashes, likely target theory rows, and media-review flags
+- generate a promotion-review artifact before changing matrix content
+- selectively promote only compact exam-useful deltas into
+  `exam_theory_matrix.seed.json`
+- keep large notes such as poststructuralism and trait theory under
+  `selective_enrichment`, not as raw matrix prose
+- rerun the matrix build, invariant checks, printout matrix QA, commit, push,
+  and deploy
+
+Design decision: indexing a note is not the same as promoting it into the
+matrix. The registry records source availability and intended use; the
+promotion review records why a note should or should not affect rows; the seed
+contains only normalized, curated, exam-facing changes.
+
+Implementation shape:
+
+- `student_synthesis/source_notes.registry.json` is now the canonical intake
+  registry for student notes.
+- `student_synthesis/source_notes_index.json` indexes 10 notes with hashes,
+  extraction methods, expected theory rows, media counts, and extraction-risk
+  flags.
+- `student_synthesis/source_note_promotion_review.json` records the note-level
+  promotion decision before the matrix output is considered.
+- `exam_theory_matrix.seed.json` now references all promoted note IDs but only
+  adds compact selective deltas to affected rows.
+
+Current generated intake summary:
+
+- indexed notes: 10
+- notes with embedded media: 4
+- embedded media files detected: 18
+- matrix policies: 1 primary basis, 4 secondary basis, 5 selective enrichment
+- matrix rows remain: 13
+- validated matrix rows remain: 13
+
+Verification result on 2026-05-25:
+
+- `py_compile` passed for the student-synthesis module, matrix builder, and
+  artifact invariant checker.
+- Targeted pytest suite passed: 19 tests.
+- `build_personlighedspsykologi_exam_theory_matrix.py --validate-only`: ok.
+- `check_personlighedspsykologi_artifact_invariants.py`: ok.
+- Printout matrix QA remains stable: 38 sources, average score 80, 25 pass,
+  13 warn, 0 fail.
 
 ## Purpose
 

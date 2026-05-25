@@ -113,10 +113,79 @@ def test_build_source_notes_index_extracts_plain_text(tmp_path):
     note = payload["notes"][0]
     assert note["sha256"]
     assert note["extraction_method"] == "plain-text"
+    assert note["expected_theory_ids"] == []
     assert note["keyword_hits"]["essence_context"] == 2
     assert note["keyword_hits"]["agency"] == 1
     assert note["keyword_hits"]["narrative"] == 1
     assert synthesis.validate_source_notes_index(payload) is payload
+
+
+def test_source_note_registry_and_promotion_review_keep_indexing_separate(tmp_path):
+    note_path = tmp_path / "note.txt"
+    note_path.write_text(
+        'Essens og kontekst. Agency og historicitet. "Quoted material" ' * 20,
+        encoding="utf-8",
+    )
+    registry = {
+        "version": synthesis.STUDENT_SYNTHESIS_SCHEMA_VERSION,
+        "artifact_type": "student_synthesis_source_note_registry",
+        "subject_slug": "personlighedspsykologi",
+        "notes": [
+            {
+                "note_id": "note_1",
+                "label": "Note 1",
+                "path": str(note_path),
+                "intake_status": "candidate_reviewed",
+                "matrix_policy": "selective_enrichment",
+                "expected_theory_ids": ["theory_a"],
+                "embedded_media_policy": "text_only_until_reviewed",
+                "promotion_recommendation": "Use selectively.",
+            }
+        ],
+    }
+
+    assert synthesis.validate_source_note_registry(registry) is registry
+    source_index = synthesis.build_source_notes_index(
+        registry["notes"],
+        repo_root=tmp_path,
+        generated_at="2026-05-25T00:00:00Z",
+    )
+    review = synthesis.build_source_note_promotion_review(
+        registry=registry,
+        source_notes_index=source_index,
+        generated_at="2026-05-25T00:00:00Z",
+    )
+
+    indexed_note = source_index["notes"][0]
+    assert indexed_note["matrix_policy"] == "selective_enrichment"
+    assert indexed_note["expected_theory_ids"] == ["theory_a"]
+    assert "quote_dense_do_not_copy" in indexed_note["extraction_risk_flags"]
+    assert review["stats"]["entry_count"] == 1
+    assert review["stats"]["promoted_to_matrix_count"] == 1
+    assert review["entries"][0]["promoted_to_matrix"] is True
+    assert synthesis.validate_source_note_promotion_review(review) is review
+
+
+def test_source_note_registry_rejects_invalid_policy(tmp_path):
+    registry = {
+        "version": synthesis.STUDENT_SYNTHESIS_SCHEMA_VERSION,
+        "artifact_type": "student_synthesis_source_note_registry",
+        "subject_slug": "personlighedspsykologi",
+        "notes": [
+            {
+                "note_id": "note_1",
+                "label": "Note 1",
+                "path": str(tmp_path / "note.txt"),
+                "intake_status": "candidate_reviewed",
+                "matrix_policy": "dump_everything",
+                "expected_theory_ids": [],
+                "embedded_media_policy": "not_applicable",
+            }
+        ],
+    }
+
+    with pytest.raises(synthesis.StudentSynthesisValidationError, match="matrix_policy"):
+        synthesis.validate_source_note_registry(registry)
 
 
 def test_validate_exam_theory_matrix_accepts_valid_payload():

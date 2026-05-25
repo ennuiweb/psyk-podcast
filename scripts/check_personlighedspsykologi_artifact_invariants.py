@@ -14,6 +14,8 @@ if str(REPO_ROOT) not in sys.path:
 from notebooklm_queue.personlighedspsykologi_student_synthesis import (
     StudentSynthesisValidationError,
     validate_exam_theory_matrix,
+    validate_source_note_promotion_review,
+    validate_source_note_registry,
     validate_source_notes_index,
 )
 
@@ -40,7 +42,9 @@ SOURCE_WEIGHTING = SHOW_DIR / "source_weighting.json"
 COURSE_CONCEPT_GRAPH = SHOW_DIR / "course_concept_graph.json"
 ARTIFACT_OWNERSHIP = SHOW_DIR / "artifact_ownership.json"
 STUDENT_SYNTHESIS_DIR = SHOW_DIR / "student_synthesis"
+STUDENT_SYNTHESIS_SOURCE_NOTE_REGISTRY = STUDENT_SYNTHESIS_DIR / "source_notes.registry.json"
 STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX = STUDENT_SYNTHESIS_DIR / "source_notes_index.json"
+STUDENT_SYNTHESIS_SOURCE_NOTE_PROMOTION_REVIEW = STUDENT_SYNTHESIS_DIR / "source_note_promotion_review.json"
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.json"
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
 VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
@@ -218,6 +222,8 @@ def _failures(repo_root: Path) -> list[str]:
     source_weighting = repo_root / SOURCE_WEIGHTING
     course_concept_graph = repo_root / COURSE_CONCEPT_GRAPH
     student_synthesis_source_notes_index = repo_root / STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX
+    student_synthesis_source_note_registry = repo_root / STUDENT_SYNTHESIS_SOURCE_NOTE_REGISTRY
+    student_synthesis_source_note_promotion_review = repo_root / STUDENT_SYNTHESIS_SOURCE_NOTE_PROMOTION_REVIEW
     student_synthesis_exam_theory_matrix = repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX
     student_synthesis_exam_theory_matrix_seed = repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED
     freudd_subjects = repo_root / FREUDD_SUBJECTS
@@ -270,9 +276,17 @@ def _failures(repo_root: Path) -> list[str]:
         failures.append(
             f"Missing student synthesis exam theory matrix seed: {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED}"
         )
+    if not student_synthesis_source_note_registry.exists():
+        failures.append(
+            f"Missing student synthesis source note registry: {STUDENT_SYNTHESIS_SOURCE_NOTE_REGISTRY}"
+        )
     if not student_synthesis_source_notes_index.exists():
         failures.append(
             f"Missing student synthesis source notes index: {STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX}"
+        )
+    if not student_synthesis_source_note_promotion_review.exists():
+        failures.append(
+            f"Missing student synthesis source note promotion review: {STUDENT_SYNTHESIS_SOURCE_NOTE_PROMOTION_REVIEW}"
         )
     if not student_synthesis_exam_theory_matrix.exists():
         failures.append(
@@ -535,6 +549,7 @@ def _failures(repo_root: Path) -> list[str]:
                 "source_weighting",
                 "course_concept_graph",
                 "student_synthesis_source_notes_index",
+                "student_synthesis_source_note_promotion_review",
                 "exam_theory_matrix",
             ]:
                 if required_key not in artifacts:
@@ -669,14 +684,75 @@ def _failures(repo_root: Path) -> list[str]:
     else:
         failures.append(f"Course concept graph payload missing or invalid in {COURSE_CONCEPT_GRAPH}")
 
+    registry_payload = None
+    source_notes_index_payload = None
+    promotion_review_payload = None
+    if student_synthesis_source_note_registry.exists():
+        try:
+            registry_payload = validate_source_note_registry(_load_json(student_synthesis_source_note_registry))
+        except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis source note registry is invalid in {STUDENT_SYNTHESIS_SOURCE_NOTE_REGISTRY}: {exc}"
+            )
+
     if student_synthesis_source_notes_index.exists():
         try:
-            validate_source_notes_index(_load_json(student_synthesis_source_notes_index))
+            source_notes_index_payload = validate_source_notes_index(_load_json(student_synthesis_source_notes_index))
         except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
             failures.append(
                 f"Student synthesis source notes index is invalid in {STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX}: {exc}"
             )
 
+    if student_synthesis_source_note_promotion_review.exists():
+        try:
+            promotion_review_payload = validate_source_note_promotion_review(
+                _load_json(student_synthesis_source_note_promotion_review)
+            )
+        except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
+            failures.append(
+                "Student synthesis source note promotion review is invalid in "
+                f"{STUDENT_SYNTHESIS_SOURCE_NOTE_PROMOTION_REVIEW}: {exc}"
+            )
+
+    if registry_payload and source_notes_index_payload:
+        registry_note_ids = {
+            str(note.get("note_id") or "")
+            for note in registry_payload.get("notes", [])
+            if isinstance(note, dict)
+        }
+        indexed_note_ids = {
+            str(note.get("note_id") or "")
+            for note in source_notes_index_payload.get("notes", [])
+            if isinstance(note, dict)
+        }
+        if registry_note_ids != indexed_note_ids:
+            failures.append(
+                "Student synthesis source notes index does not match registry note ids: "
+                f"missing={sorted(registry_note_ids - indexed_note_ids)} extra={sorted(indexed_note_ids - registry_note_ids)}"
+            )
+
+    if source_notes_index_payload and promotion_review_payload:
+        index_signature = hashlib.sha256(
+            json.dumps(
+                [
+                    {
+                        "note_id": note.get("note_id"),
+                        "sha256": note.get("sha256"),
+                        "extraction_method": note.get("extraction_method"),
+                        "embedded_media_count": note.get("embedded_media_count"),
+                    }
+                    for note in source_notes_index_payload.get("notes", [])
+                    if isinstance(note, dict)
+                ],
+                sort_keys=True,
+                ensure_ascii=False,
+                separators=(",", ":"),
+            ).encode("utf-8")
+        ).hexdigest()
+        if promotion_review_payload.get("source_notes_signature") != index_signature:
+            failures.append("Student synthesis promotion review signature does not match source notes index")
+
+    exam_theory_matrix_payload = None
     if student_synthesis_exam_theory_matrix.exists():
         known_lecture_keys: set[str] = set()
         if "source_catalog_lectures" in locals() and isinstance(source_catalog_lectures, list):
@@ -686,7 +762,7 @@ def _failures(repo_root: Path) -> list[str]:
                 if isinstance(lecture, dict) and str(lecture.get("lecture_key") or "").strip()
             }
         try:
-            validate_exam_theory_matrix(
+            exam_theory_matrix_payload = validate_exam_theory_matrix(
                 _load_json(student_synthesis_exam_theory_matrix),
                 known_theory_ids=theory_ids if isinstance(theory_ids, set) else None,
                 known_lecture_keys=known_lecture_keys or None,
@@ -694,6 +770,40 @@ def _failures(repo_root: Path) -> list[str]:
         except (StudentSynthesisValidationError, json.JSONDecodeError) as exc:
             failures.append(
                 f"Student synthesis exam theory matrix is invalid in {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX}: {exc}"
+            )
+
+    if source_notes_index_payload and exam_theory_matrix_payload:
+        indexed_note_ids = {
+            str(note.get("note_id") or "")
+            for note in source_notes_index_payload.get("notes", [])
+            if isinstance(note, dict)
+        }
+        input_source_ids = {
+            str(note_id or "")
+            for note_id in (
+                exam_theory_matrix_payload.get("provenance", {}).get("input_source_ids", [])
+                if isinstance(exam_theory_matrix_payload.get("provenance"), dict)
+                else []
+            )
+        }
+        if not input_source_ids <= indexed_note_ids:
+            failures.append(
+                "Student synthesis matrix provenance references notes missing from source index: "
+                f"{sorted(input_source_ids - indexed_note_ids)}"
+            )
+        missing_basis_note_ids: set[str] = set()
+        for row in exam_theory_matrix_payload.get("rows", []):
+            if not isinstance(row, dict):
+                continue
+            for basis in row.get("source_note_basis", []):
+                if isinstance(basis, dict):
+                    note_id = str(basis.get("note_id") or "")
+                    if note_id and note_id not in indexed_note_ids:
+                        missing_basis_note_ids.add(note_id)
+        if missing_basis_note_ids:
+            failures.append(
+                "Student synthesis matrix source_note_basis references notes missing from source index: "
+                f"{sorted(missing_basis_note_ids)}"
             )
 
     for relative_path in REFERENCE_FILES:

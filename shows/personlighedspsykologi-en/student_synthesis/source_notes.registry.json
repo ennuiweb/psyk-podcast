@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "artifact_type": "student_synthesis_source_note_registry",
+  "subject_slug": "personlighedspsykologi",
+  "authority": "student_exam_synthesis",
+  "curation_notes": [
+    "Registry records available student-synthesis notes and their intended use.",
+    "Indexing a note does not automatically promote it into the exam theory matrix.",
+    "Original notes stay outside the repository; generated artifacts store hashes, metadata, and short curation decisions only."
+  ],
+  "notes": [
+    {
+      "note_id": "anes_tabel",
+      "label": "Anes tabel",
+      "owner_or_origin": "Ane",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Anes tabel.pdf",
+      "candidate_scope": "Full-course comparison table across major theory traditions.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "primary_basis",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Keep as primary broad comparison basis for the matrix.",
+      "notes": "Strongest high-level source for the four orientation points and cross-theory exam framing."
+    },
+    {
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "label": "Tabel alle teoretiske retninger",
+      "owner_or_origin": "Jaque",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Tabel alle teoretiske retninger.docx",
+      "candidate_scope": "Compact full-course theory table.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "promotion_recommendation": "Use text extraction as compact secondary support; defer image content until media review.",
+      "notes": "Useful cross-check for table structure and comparison phrasing."
+    },
+    {
+      "note_id": "jaque_orienteringspunkter_narrativ",
+      "label": "Orienteringspunkter narrativ",
+      "owner_or_origin": "Jaque",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Orienteringspunkter narrativ.docx",
+      "candidate_scope": "Narrative psychology orientation-point table.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Promote as direct support for narrative orientation points and W12 comparison synthesis.",
+      "notes": "Compact and matrix-shaped; high signal."
+    },
+    {
+      "note_id": "karla_faenomenologi",
+      "label": "Fænomenologi",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Fænomenologi.docx",
+      "candidate_scope": "Phenomenology orientation points, method, and comparison with narrative psychology.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "phenomenological_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Promote as secondary support for phenomenology, especially method and narrative comparison.",
+      "notes": "Good compact exam-note shape."
+    },
+    {
+      "note_id": "karla_fransk_psykoanalyse",
+      "label": "Fransk psykoanalyse",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Fransk psykoanalyse.docx",
+      "candidate_scope": "French psychoanalysis orientation points, Lacan/Laplanche concepts, and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Use selectively to sharpen French psychoanalysis inside the broader psychoanalytic row; consider later subtradition split.",
+      "notes": "Adds theory-specific concepts without needing a new row yet."
+    },
+    {
+      "note_id": "karla_humanistisk_psyk",
+      "label": "Humanistisk psyk",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Humanistisk psyk.docx",
+      "candidate_scope": "Humanistic psychology orientation points and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "humanistic_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Promote as secondary support for humanistic theory sheets and compact matrix deltas.",
+      "notes": "Mostly confirms existing matrix; still useful for theory-sheet pilot."
+    },
+    {
+      "note_id": "karla_socialkonstruktivisme",
+      "label": "Socialkonstruktivisme",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Socialkonstruktivisme (hører under postpsykologierne).docx",
+      "candidate_scope": "Social constructionism, discourse, agency, sociogenesis, and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "promotion_recommendation": "Use text extraction to sharpen social constructionism and narrative comparison; do not rely on embedded media.",
+      "notes": "High value for comparison moves; media remains review-only."
+    },
+    {
+      "note_id": "karla_poststrukturalisme",
+      "label": "Poststrukturalisme",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Poststrukturalisme.docx",
+      "candidate_scope": "Poststructuralism, Foucault, subjectivation, power, cases, and orientation points.",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "promotion_recommendation": "Use only selective normalized deltas for poststructuralism; keep detailed cases for later theory sheets.",
+      "notes": "Large and media-heavy; do not let it bloat the master matrix."
+    },
+    {
+      "note_id": "karla_traekteori",
+      "label": "Trækteori",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/trækteori.docx",
+      "candidate_scope": "Trait theory, HEXACO, culture, evolution, stability/change, and comparison with narrative psychology.",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "promotion_recommendation": "Use selectively for trait/dynamic/biosocial distinctions and narrative comparison; avoid reading-level detail.",
+      "notes": "Very rich but quote/detail-heavy; best for careful enrichment and later theory sheets."
+    },
+    {
+      "note_id": "karla_tysk_psykoanalyse",
+      "label": "Tysk psykoanalyse",
+      "owner_or_origin": "Karla",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Tysk psykoanalyse.docx",
+      "candidate_scope": "Classical/Freudian psychoanalysis orientation points and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "promotion_recommendation": "Use selectively to distinguish classical/German psychoanalysis from French psychoanalysis inside the broad row.",
+      "notes": "Compact and useful for later theory sheet; matrix should stay broad."
+    }
+  ]
+}

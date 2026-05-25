@@ -4,12 +4,21 @@
   "authority": "student_exam_synthesis",
   "source_note_ids": [
     "anes_tabel",
-    "jaque_tabel_alle_teoretiske_retninger"
+    "jaque_tabel_alle_teoretiske_retninger",
+    "jaque_orienteringspunkter_narrativ",
+    "karla_faenomenologi",
+    "karla_fransk_psykoanalyse",
+    "karla_humanistisk_psyk",
+    "karla_socialkonstruktivisme",
+    "karla_poststrukturalisme",
+    "karla_traekteori",
+    "karla_tysk_psykoanalyse"
   ],
   "curation_notes": [
-    "Rows are normalized from two older high-performing student comparison tables and current course artifacts.",
+    "Rows are normalized from older high-performing student comparison tables, supplementary theory notes, and current course artifacts.",
     "The seed is paraphrased; it must not reproduce raw table passages from the source notes.",
-    "The generated matrix decides final validation status by grounding each row against current theory and concept artifacts."
+    "The generated matrix decides final validation status by grounding each row against current theory and concept artifacts.",
+    "Large or media-heavy supplementary notes are used only for selective enrichment; embedded media are not used as evidence until reviewed."
   ],
   "warnings": [
     "Use this layer for exam framing and comparison, not as primary course evidence."
@@ -38,11 +47,12 @@
         "Big Five",
         "HEXACO",
         "lexical hypothesis",
-        "factor analysis",
-        "trait activation",
-        "density distribution",
-        "rank-order stability",
-        "mean-level change"
+    "factor analysis",
+    "trait activation",
+    "density distribution",
+    "rank-order stability",
+    "mean-level change",
+    "culture-personality interplay"
       ],
       "orientation_points": {
         "essence_context": {
@@ -86,8 +96,9 @@
       ],
       "likely_misunderstandings": [
         "Reducing all trait theory to genetic determinism.",
-        "Forgetting that modern trait approaches include situations and change.",
-        "Treating a trait score as a complete explanation of a person."
+    "Forgetting that modern trait approaches include situations and change.",
+    "Treating a trait score as a complete explanation of a person.",
+    "Confusing trait prediction with an account of lived meaning or self-understanding."
       ],
       "student_synthesis_notes": "The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.",
       "source_note_basis": [
@@ -97,12 +108,17 @@
           "summary": "Broad row with Big Five, evolution, behavioral genetics, Whole Trait Theory, and the four orientation points."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "secondary_student_note",
-          "summary": "Adds exam-facing language on Big Five, HEXACO, STOA, DSSA, applications, and limitations."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds exam-facing language on Big Five, HEXACO, STOA, DSSA, applications, and limitations."
     },
+    {
+      "note_id": "karla_traekteori",
+      "basis_status": "secondary_student_note",
+      "summary": "Selective enrichment for HEXACO, culture-personality interplay, stability/change, and comparison with narrative psychology; text extraction only."
+    }
+  ]
+},
     {
       "theory_id": "dynamic_personality_development",
       "student_note_labels": [
@@ -173,12 +189,17 @@
       "student_synthesis_notes": "This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.",
       "source_note_basis": [
         {
-          "note_id": "anes_tabel",
-          "basis_status": "primary_student_note",
-          "summary": "Trait row discusses stability, mean-level change, WTT, situations, motivation, and life-course change."
-        }
-      ]
+      "note_id": "anes_tabel",
+      "basis_status": "primary_student_note",
+      "summary": "Trait row discusses stability, mean-level change, WTT, situations, motivation, and life-course change."
     },
+    {
+      "note_id": "karla_traekteori",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds source-by-source exam notes on rank-order stability, mean-level change, life events, and trait-profile continuity."
+    }
+  ]
+},
     {
       "theory_id": "biosocial_personality_perspectives",
       "student_note_labels": [
@@ -250,12 +271,17 @@
       "student_synthesis_notes": "The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.",
       "source_note_basis": [
         {
-          "note_id": "anes_tabel",
-          "basis_status": "primary_student_note",
-          "summary": "Trait row includes evolution, behavioral genetics, balancing selection, and culture-gene feedback."
-        }
-      ]
+      "note_id": "anes_tabel",
+      "basis_status": "primary_student_note",
+      "summary": "Trait row includes evolution, behavioral genetics, balancing selection, and culture-gene feedback."
     },
+    {
+      "note_id": "karla_traekteori",
+      "basis_status": "secondary_student_note",
+      "summary": "Selective support for evolutionary trait variation, gene-culture dynamics, and sociogenetic nuance in trait accounts."
+    }
+  ]
+},
     {
       "theory_id": "personality_functioning_and_pathology",
       "student_note_labels": [
@@ -420,12 +446,22 @@
           "summary": "Detailed psychoanalysis section with Freud, Lacan, Laplanche, personality structure, method, and orientation points."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "secondary_student_note",
-          "summary": "Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts."
     },
+    {
+      "note_id": "karla_fransk_psykoanalyse",
+      "basis_status": "secondary_student_note",
+      "summary": "Sharpens Lacan/Laplanche distinctions, the other, enigmatic messages, and narrative comparison; text-only extraction."
+    },
+    {
+      "note_id": "karla_tysk_psykoanalyse",
+      "basis_status": "secondary_student_note",
+      "summary": "Supports the classical/Freudian orientation-point placement and contrast with narrative psychology."
+    }
+  ]
+},
     {
       "theory_id": "phenomenological_psychology",
       "student_note_labels": [
@@ -485,12 +521,17 @@
           "relation": "contrasts_with",
           "rationale": "Phenomenology asks what experience is like before reducing the person to measured dimensions."
         },
-        {
-          "target_theory_id": "existential_psychology",
-          "relation": "prepares_for",
-          "rationale": "Existential psychology builds on experience-near inquiry but foregrounds freedom, finitude, and choice."
-        }
-      ],
+    {
+      "target_theory_id": "existential_psychology",
+      "relation": "prepares_for",
+      "rationale": "Existential psychology builds on experience-near inquiry but foregrounds freedom, finitude, and choice."
+    },
+    {
+      "target_theory_id": "narrative_psychology",
+      "relation": "overlaps_with",
+      "rationale": "Both focus on meaning, but phenomenology brackets toward lived experience while narrative psychology studies storied identity."
+    }
+  ],
       "likely_misunderstandings": [
         "Treating phenomenology as simply introspection.",
         "Forgetting that context is not added later but built into lived experience."
@@ -503,12 +544,17 @@
           "summary": "Separate phenomenology row with orientation points and contrast to more reductive models."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "secondary_student_note",
-          "summary": "Supports the first-person and lived-world framing used for exam comparison."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "secondary_student_note",
+      "summary": "Supports the first-person and lived-world framing used for exam comparison."
     },
+    {
+      "note_id": "karla_faenomenologi",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds orientation-point detail, Spinelli method cues, and direct comparison with narrative psychology."
+    }
+  ]
+},
     {
       "theory_id": "existential_psychology",
       "student_note_labels": [
@@ -620,11 +666,13 @@
       ],
       "central_concepts": [
         "self-actualization",
-        "congruence",
-        "unconditional positive regard",
-        "needs",
-        "growth",
-        "authentic relation"
+    "congruence",
+    "unconditional positive regard",
+    "needs",
+    "growth",
+    "authentic relation",
+    "valued self",
+    "perceived self"
       ],
       "orientation_points": {
         "essence_context": {
@@ -677,12 +725,17 @@
           "summary": "Humanistic row with growth, self-realization, method, possibilities, and limitations."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "secondary_student_note",
-          "summary": "Supports comparison with existential psychology and clinical growth language."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "secondary_student_note",
+      "summary": "Supports comparison with existential psychology and clinical growth language."
     },
+    {
+      "note_id": "karla_humanistisk_psyk",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds compact support for needs, congruence, valued/perceived self, and comparison with narrative psychology."
+    }
+  ]
+},
     {
       "theory_id": "critical_personalism",
       "student_note_labels": [
@@ -872,9 +925,12 @@
         "discourse",
         "power",
         "subjectivation",
-        "gender",
-        "positioning",
-        "feminist theory"
+    "gender",
+    "positioning",
+    "feminist theory",
+    "looping effect",
+    "making up people",
+    "genealogy"
       ],
       "orientation_points": {
         "essence_context": {
@@ -929,12 +985,22 @@
           "summary": "Separate rows for social constructionism and poststructuralism with orientation-point placement."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "cross_note_agreement",
-          "summary": "Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "cross_note_agreement",
+      "summary": "Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions."
     },
+    {
+      "note_id": "karla_socialkonstruktivisme",
+      "basis_status": "secondary_student_note",
+      "summary": "Selective enrichment for discourse, agency as accessible positioning, sociogenesis, and narrative comparison; media not used."
+    },
+    {
+      "note_id": "karla_poststrukturalisme",
+      "basis_status": "secondary_student_note",
+      "summary": "Selective enrichment for Foucault, subjectivation, genealogy, and power; large note and embedded media kept out of matrix prose."
+    }
+  ]
+},
     {
       "theory_id": "narrative_psychology",
       "student_note_labels": [
@@ -958,9 +1024,11 @@
         "life story",
         "meaning-making",
         "temporality",
-        "self-narrative",
-        "cultural narrative",
-        "stability and change"
+    "self-narrative",
+    "cultural narrative",
+    "stability and change",
+    "alternative stories",
+    "life history"
       ],
       "orientation_points": {
         "essence_context": {
@@ -996,12 +1064,17 @@
           "relation": "contrasts_with",
           "rationale": "Trait theory describes stable dimensions; narrative psychology explains how a person makes a life meaningful across time."
         },
-        {
-          "target_theory_id": "sociocultural_poststructural_approaches",
-          "relation": "overlaps_with",
-          "rationale": "Both use language and culture, but narrative psychology is more focused on identity continuity and life story."
-        }
-      ],
+    {
+      "target_theory_id": "sociocultural_poststructural_approaches",
+      "relation": "overlaps_with",
+      "rationale": "Both use language and culture, but narrative psychology is more focused on identity continuity and life story."
+    },
+    {
+      "target_theory_id": "psychoanalytic_personality_theory",
+      "relation": "reworks",
+      "rationale": "Narrative therapy can rework psychoanalytic concerns with hidden conflict into dialogic and interpretive self-stories."
+    }
+  ],
       "likely_misunderstandings": [
         "Thinking narratives are merely fictional decoration.",
         "Forgetting that narrative identity is culturally shaped, not purely private.",
@@ -1015,12 +1088,22 @@
           "summary": "Detailed narrative section with orientation points and a longer differences-and-similarities discussion."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "secondary_student_note",
-          "summary": "Supports compact exam comparison between narrative, social constructionist, and trait approaches."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "secondary_student_note",
+      "summary": "Supports compact exam comparison between narrative, social constructionist, and trait approaches."
     },
+    {
+      "note_id": "jaque_orienteringspunkter_narrativ",
+      "basis_status": "secondary_student_note",
+      "summary": "Direct support for narrative orientation points, especially ontogenesis/sociogenesis, cultural framing, and agency through alternative stories."
+    },
+    {
+      "note_id": "karla_traekteori",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds selective contrast between trait language and narrative meaning-making; text extraction only."
+    }
+  ]
+},
     {
       "theory_id": "comparative_theory_analysis",
       "student_note_labels": [
@@ -1096,11 +1179,26 @@
           "summary": "Contains the full set of orientation points and a differences-and-similarities section."
         },
         {
-          "note_id": "jaque_tabel_alle_teoretiske_retninger",
-          "basis_status": "cross_note_agreement",
-          "summary": "Uses the same orientation-point framework in a compact seminar exam-preparation table."
-        }
-      ]
+      "note_id": "jaque_tabel_alle_teoretiske_retninger",
+      "basis_status": "cross_note_agreement",
+      "summary": "Uses the same orientation-point framework in a compact seminar exam-preparation table."
+    },
+    {
+      "note_id": "jaque_orienteringspunkter_narrativ",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds a focused narrative orientation-point anchor for W12 comparison work."
+    },
+    {
+      "note_id": "karla_socialkonstruktivisme",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds selective social-constructionist comparison moves against narrative psychology; media not used."
+    },
+    {
+      "note_id": "karla_poststrukturalisme",
+      "basis_status": "secondary_student_note",
+      "summary": "Adds selective poststructural comparison moves around discourse, power, and subjectivation; large-note detail deferred."
     }
+  ]
+}
   ]
 }

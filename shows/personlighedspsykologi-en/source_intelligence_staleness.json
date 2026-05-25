@@ -1,7 +1,7 @@
 {
   "version": 1,
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-24T21:04:55Z",
+  "generated_at": "2026-05-25T19:52:13Z",
   "artifacts": {
     "source_weighting": {
       "path": "shows/personlighedspsykologi-en/source_weighting.json",
@@ -136,23 +136,30 @@
     },
     "student_synthesis_source_notes_index": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json",
-      "sha256": "fcb49b3e6ea9f50cb0dd547884ba06c45412d1bb099d4b8acec3e52748b492a2",
-      "count": 2
+      "sha256": "300ec9ed6e1cffa9394a1052f29e821fc5a6c14ac1271bbda906066253170b15",
+      "count": 10
     },
     "exam_theory_matrix": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
-      "sha256": "99be78bd5cb08262e925b125f0aefc0aaede34634732224a9d77501b221a6e87",
+      "sha256": "e91625e44942a7f6c527c096c4f4509414fd490b2343152b6079832eb72dfb62",
       "dependency_hashes": {
-        "builder_script": "4d8dc4cc0800aab636a872253794e2f4f9c1d30bf36ffb8278cbc4323e024bff",
+        "builder_script": "e614bef4242e929b168c6d386cdbccf07939ab14293e8cbcbd7e92cab1534e6a",
         "course_concept_graph": "d0fc9944974c00dfb8f1754fa6d8b68d3c0ead10bcfdec0c9bac926a4eed2054",
         "course_synthesis": "6e5a165ea7a8f5e948aaeca5c0c2811aae5221f9e39739b936b9408eb497fd34",
         "course_theory_map": "d42c5253a4c0b53457e4654a4c31bdccaac25ac226210bfe4de9654e76eaa28f",
-        "seed": "b96675e153c9b385c36eac86e4c55fc9075d6552fb9bc6c91da4a81f3790f3f8",
+        "seed": "47ffd3ef4942c96ddcdc91bbc75020a615f5d921c2aaa0dda988ffb9c91646b3",
         "source_catalog": "e107aca79c69afb1fe07131c3501a9d689614990f7544c77f382b583ddf599b6",
+        "source_note_registry": "9a21c8aab3b9bc50e116f412cb0dca9251be5288bcc859bfaee426c4ed25449d",
         "source_weighting": "a0055bc25625968965a4c746f6a3c4d347ee8ae445c8cbfc17c79df5f2d81973",
-        "student_synthesis_module": "345d8e3ed6135750af2221899edb6426a93cca2ca7fb683a8f4bf1d40fa52e4e",
-        "source_notes_index": "fcb49b3e6ea9f50cb0dd547884ba06c45412d1bb099d4b8acec3e52748b492a2"
+        "student_synthesis_module": "02df7e5f0b205efa9fed69042515c8a340550e40b72cf8c5c278bc0c40a61834",
+        "source_notes_index": "300ec9ed6e1cffa9394a1052f29e821fc5a6c14ac1271bbda906066253170b15",
+        "source_note_promotion_review": "a662d468f949f4eb815bf5d6673294545dc124a2decfae00aee529ffc09ba774"
       }
+    },
+    "student_synthesis_source_note_promotion_review": {
+      "path": "shows/personlighedspsykologi-en/student_synthesis/source_note_promotion_review.json",
+      "sha256": "a662d468f949f4eb815bf5d6673294545dc124a2decfae00aee529ffc09ba774",
+      "count": 10
     }
   },
   "derivations": [
@@ -263,17 +270,20 @@
     {
       "artifact_path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
       "source_note_index_path": "shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json",
-      "source_note_count": 2,
+      "source_note_count": 10,
+      "promotion_review_path": "shows/personlighedspsykologi-en/student_synthesis/source_note_promotion_review.json",
       "dependency_hashes": {
-        "builder_script": "4d8dc4cc0800aab636a872253794e2f4f9c1d30bf36ffb8278cbc4323e024bff",
+        "builder_script": "e614bef4242e929b168c6d386cdbccf07939ab14293e8cbcbd7e92cab1534e6a",
         "course_concept_graph": "d0fc9944974c00dfb8f1754fa6d8b68d3c0ead10bcfdec0c9bac926a4eed2054",
         "course_synthesis": "6e5a165ea7a8f5e948aaeca5c0c2811aae5221f9e39739b936b9408eb497fd34",
         "course_theory_map": "d42c5253a4c0b53457e4654a4c31bdccaac25ac226210bfe4de9654e76eaa28f",
-        "seed": "b96675e153c9b385c36eac86e4c55fc9075d6552fb9bc6c91da4a81f3790f3f8",
+        "seed": "47ffd3ef4942c96ddcdc91bbc75020a615f5d921c2aaa0dda988ffb9c91646b3",
         "source_catalog": "e107aca79c69afb1fe07131c3501a9d689614990f7544c77f382b583ddf599b6",
+        "source_note_registry": "9a21c8aab3b9bc50e116f412cb0dca9251be5288bcc859bfaee426c4ed25449d",
         "source_weighting": "a0055bc25625968965a4c746f6a3c4d347ee8ae445c8cbfc17c79df5f2d81973",
-        "student_synthesis_module": "345d8e3ed6135750af2221899edb6426a93cca2ca7fb683a8f4bf1d40fa52e4e",
-        "source_notes_index": "fcb49b3e6ea9f50cb0dd547884ba06c45412d1bb099d4b8acec3e52748b492a2"
+        "student_synthesis_module": "02df7e5f0b205efa9fed69042515c8a340550e40b72cf8c5c278bc0c40a61834",
+        "source_notes_index": "300ec9ed6e1cffa9394a1052f29e821fc5a6c14ac1271bbda906066253170b15",
+        "source_note_promotion_review": "a662d468f949f4eb815bf5d6673294545dc124a2decfae00aee529ffc09ba774"
       }
     }
   ]

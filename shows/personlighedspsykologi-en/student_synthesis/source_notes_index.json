@@ -2,13 +2,32 @@
   "version": 1,
   "artifact_type": "student_synthesis_source_notes_index",
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-24T21:01:26Z",
+  "generated_at": "2026-05-25T19:52:13Z",
   "authority": "student_exam_synthesis",
   "notes": [
     {
       "note_id": "anes_tabel",
       "label": "Anes tabel",
       "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Anes tabel.pdf",
+      "owner_or_origin": "Ane",
+      "candidate_scope": "Full-course comparison table across major theory traditions.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "primary_basis",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Strongest high-level source for the four orientation points and cross-theory exam framing.",
       "sha256": "5b89afb403e7bea130a12e5389aabbc7e4223393861539648ab13751ec5c95ee",
       "size_bytes": 817384,
       "format": "pdf",
@@ -32,12 +51,35 @@
         "social_constructionism": 5,
         "poststructuralism": 10,
         "narrative": 82
-      }
+      },
+      "extraction_risk_flags": [
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Keep as primary broad comparison basis for the matrix."
     },
     {
       "note_id": "jaque_tabel_alle_teoretiske_retninger",
       "label": "Tabel alle teoretiske retninger",
       "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Tabel alle teoretiske retninger.docx",
+      "owner_or_origin": "Jaque",
+      "candidate_scope": "Compact full-course theory table.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "psychoanalytic_personality_theory",
+        "phenomenological_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "operator_notes": "Useful cross-check for table structure and comparison phrasing.",
       "sha256": "12990084073cde8674926b8026de5108661baecb608e774e640610faee25be98",
       "size_bytes": 3660470,
       "format": "docx",
@@ -61,12 +103,372 @@
         "social_constructionism": 0,
         "poststructuralism": 5,
         "narrative": 11
-      }
+      },
+      "extraction_risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use text extraction as compact secondary support; defer image content until media review."
+    },
+    {
+      "note_id": "jaque_orienteringspunkter_narrativ",
+      "label": "Orienteringspunkter narrativ",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/narrativ-fra-jaque/Orienteringspunkter narrativ.docx",
+      "owner_or_origin": "Jaque",
+      "candidate_scope": "Narrative psychology orientation-point table.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "narrative_psychology",
+        "comparative_theory_analysis"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Compact and matrix-shaped; high signal.",
+      "sha256": "a37cc52bf2276c6abb409f790e00e968dff077caee39a9e1c8e72596bd215365",
+      "size_bytes": 2481936,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 5263,
+      "extracted_line_count": 59,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 3,
+        "determination": 6,
+        "agency": 2,
+        "historicity": 6,
+        "trait": 0,
+        "psychoanalysis": 0,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 8
+      },
+      "extraction_risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as direct support for narrative orientation points and W12 comparison synthesis."
+    },
+    {
+      "note_id": "karla_faenomenologi",
+      "label": "Fænomenologi",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Fænomenologi.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Phenomenology orientation points, method, and comparison with narrative psychology.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "phenomenological_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Good compact exam-note shape.",
+      "sha256": "54066bed5e1567c50752a20a2b920ca43f9ed42700f16d16f8b9c6c0b2fd14e8",
+      "size_bytes": 9924,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 6246,
+      "extracted_line_count": 103,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 7,
+        "determination": 2,
+        "agency": 2,
+        "historicity": 1,
+        "trait": 0,
+        "psychoanalysis": 0,
+        "phenomenology": 8,
+        "existential": 1,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 8
+      },
+      "extraction_risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as secondary support for phenomenology, especially method and narrative comparison."
+    },
+    {
+      "note_id": "karla_fransk_psykoanalyse",
+      "label": "Fransk psykoanalyse",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Fransk psykoanalyse.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "French psychoanalysis orientation points, Lacan/Laplanche concepts, and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Adds theory-specific concepts without needing a new row yet.",
+      "sha256": "a2cbeb4570c1b53546e4e30b389b73c50e1e17d5b59870dc2c822a035a361a32",
+      "size_bytes": 9955,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 7852,
+      "extracted_line_count": 113,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 4,
+        "determination": 3,
+        "agency": 2,
+        "historicity": 2,
+        "trait": 0,
+        "psychoanalysis": 25,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 6
+      },
+      "extraction_risk_flags": [
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively to sharpen French psychoanalysis inside the broader psychoanalytic row; consider later subtradition split."
+    },
+    {
+      "note_id": "karla_humanistisk_psyk",
+      "label": "Humanistisk psyk",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Humanistisk psyk.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Humanistic psychology orientation points and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "secondary_basis",
+      "expected_theory_ids": [
+        "humanistic_psychology",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Mostly confirms existing matrix; still useful for theory-sheet pilot.",
+      "sha256": "5693e49b58ad6b7a7dc2f0d3aad090b3e9d44b337a637975ad6963f791b2d454",
+      "size_bytes": 9842,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 9066,
+      "extracted_line_count": 86,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 2,
+        "determination": 3,
+        "agency": 2,
+        "historicity": 4,
+        "trait": 0,
+        "psychoanalysis": 0,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 9,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 3
+      },
+      "extraction_risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Promote as secondary support for humanistic theory sheets and compact matrix deltas."
+    },
+    {
+      "note_id": "karla_socialkonstruktivisme",
+      "label": "Socialkonstruktivisme",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Socialkonstruktivisme (hører under postpsykologierne).docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Social constructionism, discourse, agency, sociogenesis, and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "operator_notes": "High value for comparison moves; media remains review-only.",
+      "sha256": "a2a8942a1acc61a2d38fdb7861a154d99f2e09b6174ffe62ed653b42e9d2c8ce",
+      "size_bytes": 622157,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 14419,
+      "extracted_line_count": 110,
+      "embedded_media_count": 2,
+      "embedded_media_review_status": "needs_review",
+      "keyword_hits": {
+        "essence_context": 5,
+        "determination": 2,
+        "agency": 6,
+        "historicity": 4,
+        "trait": 0,
+        "psychoanalysis": 0,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 1,
+        "critical": 0,
+        "social_constructionism": 2,
+        "poststructuralism": 0,
+        "narrative": 9
+      },
+      "extraction_risk_flags": [
+        "embedded_media_unreviewed",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use text extraction to sharpen social constructionism and narrative comparison; do not rely on embedded media."
+    },
+    {
+      "note_id": "karla_poststrukturalisme",
+      "label": "Poststrukturalisme",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Poststrukturalisme.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Poststructuralism, Foucault, subjectivation, power, cases, and orientation points.",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "operator_notes": "Large and media-heavy; do not let it bloat the master matrix.",
+      "sha256": "4e6d3148eca36dd709bb9434637e6e30e9a3f4232cf88de08c23ab597d8354f4",
+      "size_bytes": 2401209,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 55425,
+      "extracted_line_count": 392,
+      "embedded_media_count": 13,
+      "embedded_media_review_status": "needs_review",
+      "keyword_hits": {
+        "essence_context": 18,
+        "determination": 10,
+        "agency": 7,
+        "historicity": 8,
+        "trait": 0,
+        "psychoanalysis": 0,
+        "phenomenology": 0,
+        "existential": 3,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 7,
+        "narrative": 1
+      },
+      "extraction_risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use only selective normalized deltas for poststructuralism; keep detailed cases for later theory sheets."
+    },
+    {
+      "note_id": "karla_traekteori",
+      "label": "Trækteori",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/trækteori.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Trait theory, HEXACO, culture, evolution, stability/change, and comparison with narrative psychology.",
+      "intake_status": "candidate_reviewed",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "trait_and_assessment_psychology",
+        "dynamic_personality_development",
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "text_only_until_reviewed",
+      "operator_notes": "Very rich but quote/detail-heavy; best for careful enrichment and later theory sheets.",
+      "sha256": "ada974330bb915aeceefc3589abcf38d8da6bd88ada036c481c3037ca2538b36",
+      "size_bytes": 261534,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 72066,
+      "extracted_line_count": 583,
+      "embedded_media_count": 1,
+      "embedded_media_review_status": "needs_review",
+      "keyword_hits": {
+        "essence_context": 34,
+        "determination": 16,
+        "agency": 8,
+        "historicity": 16,
+        "trait": 10,
+        "psychoanalysis": 0,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 20
+      },
+      "extraction_risk_flags": [
+        "embedded_media_unreviewed",
+        "large_note_selective_use_only",
+        "quote_dense_do_not_copy",
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively for trait/dynamic/biosocial distinctions and narrative comparison; avoid reading-level detail."
+    },
+    {
+      "note_id": "karla_tysk_psykoanalyse",
+      "label": "Tysk psykoanalyse",
+      "path": "/Users/oskar/Library/CloudStorage/OneDrive-Personal/onedrive local/Mine dokumenter 💾/psykologi/personlighedspsykologi/Noter/Noter fra Karla/Tysk psykoanalyse.docx",
+      "owner_or_origin": "Karla",
+      "candidate_scope": "Classical/Freudian psychoanalysis orientation points and narrative comparison.",
+      "intake_status": "matrix_supplement",
+      "matrix_policy": "selective_enrichment",
+      "expected_theory_ids": [
+        "psychoanalytic_personality_theory",
+        "narrative_psychology"
+      ],
+      "embedded_media_policy": "not_applicable",
+      "operator_notes": "Compact and useful for later theory sheet; matrix should stay broad.",
+      "sha256": "7d3b48dec816b1adb43f7eac0ce420df1dda4ba51315dcd1d8143644eea3425c",
+      "size_bytes": 10112,
+      "format": "docx",
+      "extraction_method": "pandoc -t markdown",
+      "extraction_status": "ok",
+      "extracted_character_count": 6271,
+      "extracted_line_count": 95,
+      "embedded_media_count": 0,
+      "embedded_media_review_status": "not_applicable",
+      "keyword_hits": {
+        "essence_context": 7,
+        "determination": 3,
+        "agency": 3,
+        "historicity": 3,
+        "trait": 0,
+        "psychoanalysis": 11,
+        "phenomenology": 0,
+        "existential": 0,
+        "humanistic": 0,
+        "critical": 0,
+        "social_constructionism": 0,
+        "poststructuralism": 0,
+        "narrative": 15
+      },
+      "extraction_risk_flags": [
+        "raw_table_extraction_markers_present"
+      ],
+      "promotion_recommendation": "Use selectively to distinguish classical/German psychoanalysis from French psychoanalysis inside the broad row."
     }
   ],
   "stats": {
-    "note_count": 2,
-    "embedded_media_count": 2
+    "note_count": 10,
+    "embedded_media_count": 18
   },
   "warnings": [
     "DOCX embedded images are detected but not OCR-expanded; matrix rows must remain reviewable."

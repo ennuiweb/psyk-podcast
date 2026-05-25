@@ -39,6 +39,17 @@ ALLOWED_HOSTS = [host.strip() for host in allowed_hosts.split(",") if host.strip
 CSRF_TRUSTED_ORIGINS = _as_csv_env("FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS")
 SESSION_COOKIE_SECURE = _as_bool_env("FREUDD_PORTAL_SESSION_COOKIE_SECURE", default="0")
 CSRF_COOKIE_SECURE = _as_bool_env("FREUDD_PORTAL_CSRF_COOKIE_SECURE", default="0")
+FREUDD_AUTH_GOOGLE_ALLOWED_ORIGINS = _as_csv_env(
+    "FREUDD_AUTH_GOOGLE_ALLOWED_ORIGINS",
+    default=(
+        "https://freudd.dk,https://www.freudd.dk,"
+        "http://127.0.0.1:8000,http://localhost:8000,http://testserver"
+    ),
+)
+FREUDD_AUTH_GOOGLE_CANONICAL_LOGIN_URL = os.environ.get(
+    "FREUDD_AUTH_GOOGLE_CANONICAL_LOGIN_URL",
+    "https://freudd.dk/accounts/login",
+).strip()
 
 if _as_bool_env("FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO", default="0"):
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -63,6 +74,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "quizzes.middleware.GoogleOAuthOriginMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "allauth.account.middleware.AccountMiddleware",

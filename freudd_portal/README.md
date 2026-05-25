@@ -285,6 +285,8 @@ Operational behavior:
 - `FREUDD_AUTH_GOOGLE_ENABLED` (default: `0`)
 - `FREUDD_GOOGLE_CLIENT_ID` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
 - `FREUDD_GOOGLE_CLIENT_SECRET` (required when `FREUDD_AUTH_GOOGLE_ENABLED=1`)
+- `FREUDD_AUTH_GOOGLE_ALLOWED_ORIGINS` (default: `https://freudd.dk,https://www.freudd.dk,http://127.0.0.1:8000,http://localhost:8000,http://testserver`; Google login is hidden/blocked outside these origins)
+- `FREUDD_AUTH_GOOGLE_CANONICAL_LOGIN_URL` (default: `https://freudd.dk/accounts/login`; disallowed Google login starts redirect here)
 - `FREUDD_PROGRESS_QUIZ_HISTORY_ENABLED` (default: `1`; set `0` to hide Quizhistorik on `/settings`)
 - `FREUDD_PORTAL_TRUST_X_FORWARDED_PROTO` (default: `0`; set `1` behind proxy TLS termination)
 - `FREUDD_PORTAL_CSRF_TRUSTED_ORIGINS` (comma-separated, for example `https://freudd.dk,https://www.freudd.dk`)
@@ -327,6 +329,12 @@ Then set:
 - `FREUDD_AUTH_GOOGLE_ENABLED=1`
 - `FREUDD_GOOGLE_CLIENT_ID=<client id>`
 - `FREUDD_GOOGLE_CLIENT_SECRET=<client secret>`
+
+Google OAuth should only be started from an origin listed in
+`FREUDD_AUTH_GOOGLE_ALLOWED_ORIGINS`. Production intentionally excludes the
+server IP, because Google rejects callbacks such as
+`http://64.226.79.109/accounts/google/login/callback/` under its secure OAuth
+validation rules.
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.

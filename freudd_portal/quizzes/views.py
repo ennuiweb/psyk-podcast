@@ -43,6 +43,7 @@ from .activity_notifications import (
     notify_subject_enrolled,
 )
 from .announcement_emails import unsubscribe_announcement_token
+from .auth_origins import google_auth_available
 from .content_services import load_subject_content_manifest
 from .forms import SignupForm
 from .flashcard_services import (
@@ -2070,7 +2071,7 @@ def signup_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         return redirect("progress")
     safe_next = _safe_next_redirect(request)
-    google_auth_enabled = bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False))
+    google_auth_enabled = google_auth_available(request)
 
     if request.method == "POST":
         blocked, retry_after = _rate_limit_exceeded(
@@ -2116,7 +2117,7 @@ def login_view(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         return redirect("progress")
     safe_next = _safe_next_redirect(request)
-    google_auth_enabled = bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False))
+    google_auth_enabled = google_auth_available(request)
 
     if request.method == "POST":
         blocked, retry_after = _rate_limit_exceeded(

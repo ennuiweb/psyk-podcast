@@ -9,7 +9,7 @@ from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone as dt_timezone
 from pathlib import Path
 from unittest.mock import patch
-from urllib.parse import urlencode
+from urllib.parse import parse_qs, urlencode, urlparse
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -475,6 +475,31 @@ class QuizPortalTests(TestCase):
             response = self.client.post("/accounts/google/login/")
             self.assertEqual(response.status_code, 302)
             self.assertTrue(response.url.startswith("https://accounts.google.com/o/oauth2/v2/auth"))
+
+    @override_settings(ALLOWED_HOSTS=["64.226.79.109"])
+    def test_google_button_hidden_on_disallowed_oauth_origin(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.get(reverse("login"), HTTP_HOST="64.226.79.109")
+            self.assertEqual(response.status_code, 200)
+            self.assertNotContains(response, "Fortsæt med Google")
+
+    @override_settings(ALLOWED_HOSTS=["64.226.79.109"])
+    def test_google_login_start_redirects_from_disallowed_oauth_origin(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.post("/accounts/google/login/", HTTP_HOST="64.226.79.109")
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(response["Location"], "https://freudd.dk/accounts/login")
+
+    @override_settings(ALLOWED_HOSTS=["freudd.dk"])
+    def test_google_login_uses_secure_redirect_uri_on_canonical_origin(self) -> None:
+        with self._google_auth_enabled():
+            response = self.client.post("/accounts/google/login/", HTTP_HOST="freudd.dk", secure=True)
+            self.assertEqual(response.status_code, 302)
+            query = parse_qs(urlparse(response["Location"]).query)
+            self.assertEqual(
+                query["redirect_uri"],
+                ["https://freudd.dk/accounts/google/login/callback/"],
+            )
 
     def test_google_login_get_renders_confirmation_when_login_on_get_disabled(self) -> None:
         with self._google_auth_enabled():

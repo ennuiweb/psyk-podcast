@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
+from .auth_origins import google_auth_available
 from .models import SubjectEnrollment
 from .design_systems import iter_design_system_payload
 from .subject_services import load_subject_catalog
@@ -68,7 +69,7 @@ def design_system_context(request):
         "active_design_system_key": resolved.key,
         "leaderboard_default_subject_slug": default_subject,
         "topmenu_enrolled_subjects": enrolled_subjects,
-        "google_auth_enabled": bool(getattr(settings, "FREUDD_AUTH_GOOGLE_ENABLED", False)),
+        "google_auth_enabled": google_auth_available(request),
         "plausible_domain": plausible_domain,
         "plausible_src": plausible_src,
         "site_user_count": site_user_count,

@@ -13,6 +13,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from notebooklm_queue.personlighedspsykologi_student_synthesis import (
     StudentSynthesisValidationError,
+    note_signature,
     validate_exam_theory_matrix,
     validate_source_note_promotion_review,
     validate_source_note_registry,
@@ -730,27 +731,67 @@ def _failures(repo_root: Path) -> list[str]:
                 "Student synthesis source notes index does not match registry note ids: "
                 f"missing={sorted(registry_note_ids - indexed_note_ids)} extra={sorted(indexed_note_ids - registry_note_ids)}"
             )
+        if isinstance(theory_ids, set):
+            for note in registry_payload.get("notes", []):
+                if not isinstance(note, dict):
+                    continue
+                note_id = str(note.get("note_id") or "").strip()
+                unknown_theory_ids = sorted(
+                    str(theory_id or "").strip()
+                    for theory_id in note.get("expected_theory_ids", [])
+                    if str(theory_id or "").strip() and str(theory_id or "").strip() not in theory_ids
+                )
+                if unknown_theory_ids:
+                    failures.append(
+                        f"Student synthesis registry note {note_id} references unknown expected theory id(s): "
+                        f"{unknown_theory_ids}"
+                    )
+                media_count = next(
+                    (
+                        int(indexed.get("embedded_media_count") or 0)
+                        for indexed in source_notes_index_payload.get("notes", [])
+                        if isinstance(indexed, dict) and indexed.get("note_id") == note_id
+                    ),
+                    0,
+                )
+                if media_count and str(note.get("embedded_media_policy") or "") == "not_applicable":
+                    failures.append(
+                        f"Student synthesis registry note {note_id} has embedded media but policy is not_applicable"
+                    )
 
     if source_notes_index_payload and promotion_review_payload:
-        index_signature = hashlib.sha256(
-            json.dumps(
-                [
-                    {
-                        "note_id": note.get("note_id"),
-                        "sha256": note.get("sha256"),
-                        "extraction_method": note.get("extraction_method"),
-                        "embedded_media_count": note.get("embedded_media_count"),
-                    }
-                    for note in source_notes_index_payload.get("notes", [])
-                    if isinstance(note, dict)
-                ],
-                sort_keys=True,
-                ensure_ascii=False,
-                separators=(",", ":"),
-            ).encode("utf-8")
-        ).hexdigest()
-        if promotion_review_payload.get("source_notes_signature") != index_signature:
+        if promotion_review_payload.get("source_notes_signature") != note_signature(source_notes_index_payload):
             failures.append("Student synthesis promotion review signature does not match source notes index")
+        indexed_note_ids = {
+            str(note.get("note_id") or "")
+            for note in source_notes_index_payload.get("notes", [])
+            if isinstance(note, dict)
+        }
+        review_note_ids = {
+            str(entry.get("note_id") or "")
+            for entry in promotion_review_payload.get("entries", [])
+            if isinstance(entry, dict)
+        }
+        if review_note_ids != indexed_note_ids:
+            failures.append(
+                "Student synthesis promotion review does not match source notes index note ids: "
+                f"missing={sorted(indexed_note_ids - review_note_ids)} extra={sorted(review_note_ids - indexed_note_ids)}"
+            )
+        if isinstance(theory_ids, set):
+            for entry in promotion_review_payload.get("entries", []):
+                if not isinstance(entry, dict):
+                    continue
+                note_id = str(entry.get("note_id") or "").strip()
+                unknown_theory_ids = sorted(
+                    str(theory_id or "").strip()
+                    for theory_id in entry.get("expected_theory_ids", [])
+                    if str(theory_id or "").strip() and str(theory_id or "").strip() not in theory_ids
+                )
+                if unknown_theory_ids:
+                    failures.append(
+                        f"Student synthesis promotion review note {note_id} references unknown expected theory id(s): "
+                        f"{unknown_theory_ids}"
+                    )
 
     exam_theory_matrix_payload = None
     if student_synthesis_exam_theory_matrix.exists():
@@ -791,19 +832,38 @@ def _failures(repo_root: Path) -> list[str]:
                 "Student synthesis matrix provenance references notes missing from source index: "
                 f"{sorted(input_source_ids - indexed_note_ids)}"
             )
+        if promotion_review_payload:
+            promoted_note_ids = {
+                str(entry.get("note_id") or "")
+                for entry in promotion_review_payload.get("entries", [])
+                if isinstance(entry, dict) and bool(entry.get("promoted_to_matrix"))
+            }
+            if input_source_ids != promoted_note_ids:
+                failures.append(
+                    "Student synthesis matrix provenance does not match promoted source notes: "
+                    f"missing={sorted(promoted_note_ids - input_source_ids)} extra={sorted(input_source_ids - promoted_note_ids)}"
+                )
         missing_basis_note_ids: set[str] = set()
+        basis_note_ids: set[str] = set()
         for row in exam_theory_matrix_payload.get("rows", []):
             if not isinstance(row, dict):
                 continue
             for basis in row.get("source_note_basis", []):
                 if isinstance(basis, dict):
                     note_id = str(basis.get("note_id") or "")
+                    if note_id:
+                        basis_note_ids.add(note_id)
                     if note_id and note_id not in indexed_note_ids:
                         missing_basis_note_ids.add(note_id)
         if missing_basis_note_ids:
             failures.append(
                 "Student synthesis matrix source_note_basis references notes missing from source index: "
                 f"{sorted(missing_basis_note_ids)}"
+            )
+        if not basis_note_ids <= input_source_ids:
+            failures.append(
+                "Student synthesis matrix source_note_basis references notes absent from matrix provenance: "
+                f"{sorted(basis_note_ids - input_source_ids)}"
             )
 
     for relative_path in REFERENCE_FILES:

@@ -111,6 +111,24 @@ The deck is generated deterministically from the validated matrix by
 phrasing can be a later review aid only if stable IDs, provenance, and
 validation gates are preserved.
 
+NotebookLM alternative-card workflow:
+
+- processed lab workspace:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/`
+- export CLI:
+  `scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py`
+- normalize CLI:
+  `scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py`
+- optional pilot runner:
+  `scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+
+The lab exports processed Markdown packs from the validated matrix and current
+Freudd deck. NotebookLM downloads are normalized into review-only candidate
+JSON/Markdown under gitignored `flashcard_lab/runs/` folders. These candidates
+must not be imported directly into Freudd; accepted alternatives should become
+a separate variants deck unless a later task explicitly merges edited cards
+into the deterministic matrix deck.
+
 ### Slides
 
 Canonical published slide surfaces:

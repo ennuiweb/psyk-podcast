@@ -371,6 +371,78 @@ Verification run:
 - `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_matrix_flashcards.py tests/test_personlighedspsykologi_student_synthesis.py`
 - `cd freudd_portal && ../.venv/bin/python manage.py test quizzes.tests.test_flashcards.PersonlighedspsykologiMatrixFlashcardArtifactTests`
 
+### 2026-05-25: NotebookLM Alternative Flashcard Lab Implemented
+
+Status: complete, including one live NotebookLM pilot run.
+
+Scope for this pass:
+
+- use NotebookLM as an alternative-card candidate generator, not as the
+  canonical Freudd deck writer
+- export processed Markdown packs from the validated matrix and current Freudd
+  deck, without uploading original student-note PDFs/DOCX files
+- split the lab into five bounded notebooks instead of one large mixed context
+- normalize downloaded NotebookLM cards into review-only candidate artifacts
+  with duplicate checks, theory mapping, category inference, unsafe-provenance
+  checks, and review-status labels
+- keep generated run outputs local and gitignored
+
+Implemented notebook plan:
+
+- `global-calibration-synthesis`
+- `measurement-development-pathology`
+- `psychoanalysis-experience-humanism`
+- `critical-sociocultural-narrative`
+- `oral-exam-comparison-workshop`
+
+Implemented files:
+
+- lab module:
+  `notebooklm_queue/personlighedspsykologi_notebooklm_flashcard_lab.py`
+- pack export CLI:
+  `scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py`
+- candidate normalizer CLI:
+  `scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py`
+- optional NotebookLM pilot runner:
+  `scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- lab workspace docs:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/README.md`
+- tests:
+  `tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py`
+
+Operational contract:
+
+- start with the `critical-sociocultural-narrative` pilot because it has the
+  richest comparison/trap payoff
+- upload only generated Markdown packs from `flashcard_lab/runs/<run-id>/packs/`
+- download NotebookLM flashcards as JSON and normalize them before review
+- do not import raw NotebookLM cards into Freudd
+- keep accepted NotebookLM alternatives in a separate variants deck unless a
+  later task explicitly edits and promotes them into the canonical matrix deck
+
+Verification run:
+
+- `./.venv/bin/python -m py_compile notebooklm_queue/personlighedspsykologi_notebooklm_flashcard_lab.py scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py tests/test_personlighedspsykologi_matrix_flashcards.py`
+- `./.venv/bin/python scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py --pilot-only --run-id local-cli-smoke`
+- `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id local-dry-run-smoke --dry-run`
+- `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id pilot-20260525-critical-sociocultural-narrative`
+- `./.venv/bin/python scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py --run-id pilot-20260525-critical-sociocultural-narrative --notebook-slug critical-sociocultural-narrative --input-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/pilot-20260525-critical-sociocultural-narrative/downloads/critical-sociocultural-narrative.flashcards.json`
+
+Live pilot result:
+
+- NotebookLM notebook ID:
+  `6ba89f27-181a-44df-97e2-15f801974bb7`
+- uploaded processed Markdown sources: 6
+- raw NotebookLM cards: 80
+- normalized candidates: 80
+- automatic status labels after local QA:
+  - `candidate`: 60
+  - `needs_review`: 19
+  - `auto_rejected`: 1
+- local run output is intentionally gitignored under
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/pilot-20260525-critical-sociocultural-narrative/`
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

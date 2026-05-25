@@ -206,8 +206,8 @@ Verification result on 2026-05-25:
 
 Status: complete.
 
-The next learner-facing implementation should be a deterministic Freudd
-flashcard deck generated from
+The learner-facing flashcard implementation is a deterministic Freudd deck
+generated from
 `student_synthesis/exam_theory_matrix.json`.
 
 Technical decision:
@@ -231,7 +231,7 @@ Reasoning:
 - NotebookLM would add useful phrasing variation later, but it would blur
   provenance and reproducibility if used as the first source of truth
 
-Planned deck:
+Implemented deck:
 
 - subject slug: `personlighedspsykologi`
 - deck slug: `eksamensmatrix-personlighedspsykologi`
@@ -245,7 +245,7 @@ Planned deck:
   - `Sammenligninger`
   - `Eksamenstraps`
 
-Planned card families:
+Implemented card families:
 
 - orientation cards: place each validated row on essence/context,
   determination, agency, and historicity
@@ -267,7 +267,7 @@ Card-count target:
 The cap is intentional. The deck should support oral-exam retrieval and
 comparison, not become a second textbook.
 
-Implementation plan:
+Implemented plan:
 
 1. Add a deterministic generator, preferably
    `scripts/build_personlighedspsykologi_matrix_flashcards.py`, backed by a
@@ -287,9 +287,8 @@ Implementation plan:
    deck does not leak raw student-note provenance.
 8. Add focused tests for deterministic generation, schema validity, stable
    IDs, coverage thresholds, and Freudd service loading.
-9. Update `learning_material_regeneration_registry.json` only if flashcards are
-   added to the learner-facing ledger; otherwise document that Freudd
-   flashcard JSON is currently discovered by subject-local registry.
+9. Leave `learning_material_regeneration_registry.json` unchanged for now and
+   document that Freudd flashcard JSON is discovered by subject-local registry.
 10. Commit, push `main`, deploy `freudd-portal`, and smoke-check both the
     subject page and
     `/subjects/personlighedspsykologi/cards/eksamensmatrix-personlighedspsykologi`.
@@ -698,7 +697,7 @@ Understanding Pipeline as a controlled optional input:
 
 ## Acceptance Criteria
 
-The first useful version is done when:
+The original first useful version criteria were:
 
 - the two files are indexed with provenance and hashes
 - a structured exam theory matrix exists
@@ -713,9 +712,31 @@ The first useful version is done when:
 The version is not done merely because the notes have been extracted. The value
 comes from validated comparison structure and learner-facing synthesis.
 
-## Recommended Next Step
+Current status:
 
-Build `exam_theory_matrix.json` as the first concrete artifact, using the two
-student files as input and validating the result against the current course
-artifacts. Then generate a W12L1-focused master comparison PDF from that
-matrix.
+- source-note indexing is complete for the initial two notes plus the eight
+  additional notes from Karla/Jaque
+- the validated 13-row matrix exists and is guarded by invariants
+- printout matrix QA exists as an opt-in evaluation gate
+- a Freudd flashcard deck exists, is deployed, and is smoke-checked live
+- W12L1 master comparison and theory-sheet outputs have not been implemented
+
+The active user priority has shifted away from printable outputs and toward
+Freudd flashcard practice. Treat the flashcard deck as the first learner-facing
+surface. Do not resume printout/master-sheet work unless Oskar asks for it or
+the flashcard review shows a concrete need for a printable companion.
+
+## Recommended Next Phase
+
+Review and polish the deployed Freudd deck as a learning product:
+
+1. Manually sample the live deck in Freudd across all six categories.
+2. Decide whether the mixed Danish shell plus English theory-row content is
+   acceptable, or whether v1.1 should localize learner-facing row labels and
+   answers into Danish.
+3. Tighten cards that feel too verbose, too easy, or too generic while keeping
+   existing card IDs stable.
+4. Add a small review-report artifact if the manual QA produces systematic
+   findings.
+5. Only after the flashcard deck feels good in use, consider a Freudd theory
+   overview/comparison surface or a W12L1 theory sheet.

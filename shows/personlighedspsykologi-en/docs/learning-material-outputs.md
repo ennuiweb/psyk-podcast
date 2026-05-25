@@ -6,7 +6,8 @@ This document defines the learner-facing output layer for
 Use it for:
 
 - the boundary between learner-facing outputs and upstream engine artifacts
-- the canonical paths for podcasts, printouts, quizzes, and slides
+- the canonical paths for podcasts, printouts, quizzes, flashcards, slides,
+  and study plans
 - the quality contract for evaluating those outputs
 - the current evaluation workflows and gaps
 
@@ -215,7 +216,8 @@ overrides on the queue process:
 
 - `PERSONLIGHEDSPSYKOLOGI_PODCAST_SETUP_VERSION`
 - `PERSONLIGHEDSPSYKOLOGI_PRINTOUT_SETUP_VERSION`
-- `PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION` as a shared default for both families
+- `PERSONLIGHEDSPSYKOLOGI_SETUP_VERSION` as a shared default for podcasts and
+  printouts
 
 If they are unset, queue-owned runs and manual syncs fall back to the checked-in
 labels in `prompt_versions.json`.
@@ -231,10 +233,15 @@ system and stores it both as `prompt_system_label` and as the podcast
 label without requiring operators to remember an env var first.
 
 The ledger records learner-facing outputs, not upstream engine internals. It
-tracks podcast, printout, quiz, and slide materials with their lecture key,
-status, generated/published timestamps where available, prompt/generator
-metadata, config hashes, request attempts, auth profile, artifact paths, and the
-current `source_intelligence/` snapshot hashes.
+currently tracks podcast, printout, quiz, and slide materials with their
+lecture key, status, generated/published timestamps where available,
+prompt/generator metadata, config hashes, request attempts, auth profile,
+artifact paths, and the current `source_intelligence/` snapshot hashes.
+
+Flashcards are currently discovered directly through subject-local
+`flashcards/decks.json` registries and are not yet represented in the learning
+material ledger. Add flashcards to the ledger only when we need cross-output
+regeneration accounting for them.
 
 For podcasts, `episode_inventory.json` and `media_manifest.r2.json` are the
 authoritative current-publication surfaces. Local NotebookLM request logs enrich
@@ -277,7 +284,7 @@ regenerated under the current pipeline.
 
 ## Quality Contract
 
-Shared criteria across both families:
+Shared criteria across learner-facing outputs:
 
 - source fidelity and accurate conceptual distinctions
 - immediate problem tension where possible
@@ -395,7 +402,7 @@ Current gap:
 
 ## Practical Rule
 
-When discussing this layer, use `learning material outputs` only for the four
+When discussing this layer, use `learning material outputs` only for the
 learner-facing families above.
 
 When checking whether a prompt or Course Understanding iteration has reached the

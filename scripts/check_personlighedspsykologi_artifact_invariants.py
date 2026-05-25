@@ -19,6 +19,12 @@ from notebooklm_queue.personlighedspsykologi_student_synthesis import (
     validate_source_note_registry,
     validate_source_notes_index,
 )
+from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
+    FLASHCARD_DECK_SLUG,
+    MatrixFlashcardBuildError,
+    source_fingerprint,
+    validate_flashcard_artifact,
+)
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
 NOTEBOOKLM_DIR = Path("notebooklm-podcast-auto/personlighedspsykologi")
@@ -48,6 +54,8 @@ STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX = STUDENT_SYNTHESIS_DIR / "source_notes_ind
 STUDENT_SYNTHESIS_SOURCE_NOTE_PROMOTION_REVIEW = STUDENT_SYNTHESIS_DIR / "source_note_promotion_review.json"
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.json"
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
+STUDENT_SYNTHESIS_FLASHCARD_REGISTRY = SHOW_DIR / "flashcards" / "decks.json"
+STUDENT_SYNTHESIS_FLASHCARD_DECK = SHOW_DIR / "flashcards" / f"{FLASHCARD_DECK_SLUG}.json"
 VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
 PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS = {
     "reading_key_path",
@@ -292,6 +300,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not student_synthesis_exam_theory_matrix.exists():
         failures.append(
             f"Missing student synthesis exam theory matrix: {STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_REGISTRY).exists():
+        failures.append(
+            f"Missing student synthesis matrix flashcard registry: {STUDENT_SYNTHESIS_FLASHCARD_REGISTRY}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_DECK).exists():
+        failures.append(
+            f"Missing student synthesis matrix flashcard deck: {STUDENT_SYNTHESIS_FLASHCARD_DECK}"
         )
     if not freudd_subjects.exists():
         failures.append(f"Missing Freudd subject catalog: {FREUDD_SUBJECTS}")
@@ -865,6 +881,68 @@ def _failures(repo_root: Path) -> list[str]:
                 "Student synthesis matrix source_note_basis references notes absent from matrix provenance: "
                 f"{sorted(basis_note_ids - input_source_ids)}"
             )
+
+    flashcard_registry = repo_root / STUDENT_SYNTHESIS_FLASHCARD_REGISTRY
+    flashcard_deck = repo_root / STUDENT_SYNTHESIS_FLASHCARD_DECK
+    if flashcard_registry.exists() and flashcard_deck.exists() and exam_theory_matrix_payload:
+        try:
+            registry_payload = _load_json(flashcard_registry)
+            deck_payload = _load_json(flashcard_deck)
+            validate_flashcard_artifact(deck_payload, matrix=exam_theory_matrix_payload)
+        except (MatrixFlashcardBuildError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis matrix flashcard deck is invalid in {STUDENT_SYNTHESIS_FLASHCARD_DECK}: {exc}"
+            )
+        else:
+            if not isinstance(registry_payload, dict) or registry_payload.get("version") != 1:
+                failures.append(
+                    f"Student synthesis matrix flashcard registry must be a version 1 object: "
+                    f"{STUDENT_SYNTHESIS_FLASHCARD_REGISTRY}"
+                )
+            if isinstance(registry_payload, dict) and registry_payload.get("subject_slug") != "personlighedspsykologi":
+                failures.append(
+                    "Student synthesis matrix flashcard registry subject_slug is not personlighedspsykologi"
+                )
+            decks = registry_payload.get("decks") if isinstance(registry_payload, dict) else None
+            if not isinstance(decks, list):
+                failures.append(
+                    f"Student synthesis matrix flashcard registry decks missing or invalid in "
+                    f"{STUDENT_SYNTHESIS_FLASHCARD_REGISTRY}"
+                )
+            else:
+                matching = [
+                    deck
+                    for deck in decks
+                    if isinstance(deck, dict) and str(deck.get("deck_slug") or "") == FLASHCARD_DECK_SLUG
+                ]
+                if len(matching) != 1:
+                    failures.append(
+                        f"Student synthesis matrix flashcard registry must contain exactly one {FLASHCARD_DECK_SLUG} deck"
+                    )
+                else:
+                    registry_entry = matching[0]
+                    expected_path = str(STUDENT_SYNTHESIS_FLASHCARD_DECK)
+                    actual_path = str(registry_entry.get("artifact_path") or "").strip()
+                    if actual_path != expected_path:
+                        failures.append(
+                            "Student synthesis matrix flashcard registry artifact_path mismatch: "
+                            f"{actual_path} != {expected_path}"
+                        )
+                    if int(registry_entry.get("card_count") or 0) != int(deck_payload.get("card_count") or 0):
+                        failures.append(
+                            "Student synthesis matrix flashcard registry card_count does not match deck artifact"
+                        )
+                    if registry_entry.get("enabled") is not True:
+                        failures.append("Student synthesis matrix flashcard registry deck must be enabled")
+            source_file = str(deck_payload.get("source_file") or "").strip()
+            if source_file != str(STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX):
+                failures.append(
+                    "Student synthesis matrix flashcard deck source_file does not point at the exam matrix: "
+                    f"{source_file}"
+                )
+            expected_source_hash = source_fingerprint(repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX)
+            if str(deck_payload.get("source_sha256") or "").strip() != expected_source_hash:
+                failures.append("Student synthesis matrix flashcard deck source hash is stale")
 
     for relative_path in REFERENCE_FILES:
         path = repo_root / relative_path

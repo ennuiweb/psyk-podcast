@@ -187,6 +187,22 @@
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_exam_theory_matrix.py"
+    },
+    {
+      "artifact_id": "student_synthesis_matrix_flashcard_registry",
+      "concept": "student_synthesis_matrix_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/decks.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py"
+    },
+    {
+      "artifact_id": "student_synthesis_matrix_flashcard_deck",
+      "concept": "student_synthesis_matrix_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py"
     }
   ]
 }

@@ -204,7 +204,7 @@ Verification result on 2026-05-25:
 
 ### 2026-05-25: Freudd Flashcard Plan Finalized
 
-Status: planned.
+Status: complete.
 
 The next learner-facing implementation should be a deterministic Freudd
 flashcard deck generated from
@@ -316,6 +316,61 @@ Maintenance rule:
   `subject_slug`, `deck_slug`, and `card_id`
 - NotebookLM or another LLM can be used later as a phrasing assistant, but the
   deterministic matrix generator remains the canonical writer
+
+Implementation progress:
+
+- 2026-05-25: started deterministic generator implementation against the
+  existing Freudd `freudd_flashcards` artifact contract.
+- 2026-05-25: generated and validated the first Freudd deck:
+  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`.
+
+Implemented files:
+
+- generator module:
+  `notebooklm_queue/personlighedspsykologi_matrix_flashcards.py`
+- CLI writer:
+  `scripts/build_personlighedspsykologi_matrix_flashcards.py`
+- Freudd registry:
+  `shows/personlighedspsykologi-en/flashcards/decks.json`
+- Freudd deck:
+  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
+- tests:
+  `tests/test_personlighedspsykologi_matrix_flashcards.py`
+  and the generated-deck service check in
+  `freudd_portal/quizzes/tests/test_flashcards.py`
+
+Generated deck state:
+
+- total cards: 152
+- categories: 6
+- `Orienteringspunkter`: 52
+- `Personbegreb`: 13
+- `Metode og evidens`: 13
+- `Styrker og begrænsninger`: 13
+- `Sammenligninger`: 28
+- `Eksamenstraps`: 33
+
+Validation now enforced:
+
+- the builder rejects matrix rows that are not `validated` or have warnings
+- card IDs are stable identity IDs derived from theory row, card family, and
+  comparison/orientation/trap identity
+- learner-facing card fields are checked for local paths, student owner names,
+  and raw student-note provenance leakage
+- artifact ownership registers both the registry and deck as derived outputs
+- `check_personlighedspsykologi_artifact_invariants.py` validates the
+  registry, source matrix hash, deck schema, card counts, category counts, and
+  row coverage
+- Freudd service loading is covered by a Django test against the actual
+  generated deck
+
+Verification run:
+
+- `./.venv/bin/python scripts/build_personlighedspsykologi_matrix_flashcards.py --validate-only`
+- `./.venv/bin/python -m py_compile notebooklm_queue/personlighedspsykologi_matrix_flashcards.py scripts/build_personlighedspsykologi_matrix_flashcards.py scripts/check_personlighedspsykologi_artifact_invariants.py`
+- `./.venv/bin/python scripts/check_personlighedspsykologi_artifact_invariants.py`
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_matrix_flashcards.py tests/test_personlighedspsykologi_student_synthesis.py`
+- `cd freudd_portal && ../.venv/bin/python manage.py test quizzes.tests.test_flashcards.PersonlighedspsykologiMatrixFlashcardArtifactTests`
 
 ## Purpose
 

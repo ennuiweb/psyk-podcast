@@ -420,3 +420,29 @@ class FlashcardPortalTests(TestCase):
             response,
             reverse("flashcard-practice", kwargs={"subject_slug": "bioneuro", "deck_slug": "test-deck"}),
         )
+
+
+class PersonlighedspsykologiMatrixFlashcardArtifactTests(SimpleTestCase):
+    def setUp(self) -> None:
+        clear_subject_service_caches()
+        clear_flashcard_service_caches()
+        self.addCleanup(clear_subject_service_caches)
+        self.addCleanup(clear_flashcard_service_caches)
+
+    def test_generated_personlighedspsykologi_matrix_deck_loads_through_service(self) -> None:
+        entries = list_flashcard_deck_entries("personlighedspsykologi")
+        matching = [
+            entry
+            for entry in entries
+            if entry.deck_slug == "eksamensmatrix-personlighedspsykologi"
+        ]
+
+        self.assertEqual(len(matching), 1)
+        deck = load_flashcard_deck("personlighedspsykologi", "eksamensmatrix-personlighedspsykologi")
+
+        self.assertEqual(deck.subject_slug, "personlighedspsykologi")
+        self.assertEqual(deck.deck_slug, "eksamensmatrix-personlighedspsykologi")
+        self.assertEqual(deck.card_count, 152)
+        self.assertEqual(len(deck.categories), 6)
+        self.assertEqual(sum(int(category["card_count"]) for category in deck.categories), 152)
+        self.assertTrue(all(card["card_id"].startswith("mx-") for card in deck.cards))

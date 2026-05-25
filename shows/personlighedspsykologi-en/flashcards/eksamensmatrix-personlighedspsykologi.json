@@ -1,0 +1,2355 @@
+{
+  "version": 1,
+  "artifact_type": "freudd_flashcards",
+  "subject_slug": "personlighedspsykologi",
+  "deck_slug": "eksamensmatrix-personlighedspsykologi",
+  "title": "Eksamensmatrix: personlighedspsykologi",
+  "source_file": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
+  "source_sha256": "5d4a5c0cee6c227d20bac95063495d57176a392d0feda7c2d64ed0d573185ecd",
+  "generated_at": "2026-05-25T20:21:07Z",
+  "generator": {
+    "name": "scripts/build_personlighedspsykologi_matrix_flashcards.py",
+    "version": "personlighedspsykologi-matrix-flashcards-v1",
+    "source_authority": "student_exam_synthesis",
+    "canonical_writer": "deterministic_matrix_generator"
+  },
+  "card_count": 152,
+  "categories": [
+    {
+      "slug": "orienteringspunkter",
+      "title": "Orienteringspunkter",
+      "card_count": 52
+    },
+    {
+      "slug": "personbegreb",
+      "title": "Personbegreb",
+      "card_count": 13
+    },
+    {
+      "slug": "metode-og-evidens",
+      "title": "Metode og evidens",
+      "card_count": 13
+    },
+    {
+      "slug": "styrker-og-begraensninger",
+      "title": "Styrker og begrænsninger",
+      "card_count": 13
+    },
+    {
+      "slug": "sammenligninger",
+      "title": "Sammenligninger",
+      "card_count": 28
+    },
+    {
+      "slug": "eksamenstraps",
+      "title": "Eksamenstraps",
+      "card_count": 33
+    }
+  ],
+  "cards": [
+    {
+      "card_id": "mx-trait-and-assessment-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer trait and assessment psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> essence-leaning with contextual activation</div><div><strong>Forklaring:</strong> Traits are located primarily inside the person, but modern accounts require situations and culture to explain how traits are expressed.</div>",
+      "back_text": "Placering: essence-leaning with contextual activation\nForklaring: Traits are located primarily inside the person, but modern accounts require situations and culture to explain how traits are expressed.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "essence_context",
+        "orientation",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "2bf84214fd553f94fc6f5f0e14bd575633427fee7fbbde311bb9f2d84a02c1bf"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-orientation-determination",
+      "front_text": "Hvor placerer trait and assessment psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> moderate dispositional determination</div><div><strong>Forklaring:</strong> Traits dispose and predict behavior over time without fully determining single situations; biological and social-cognitive mechanisms vary by subtype.</div>",
+      "back_text": "Placering: moderate dispositional determination\nForklaring: Traits dispose and predict behavior over time without fully determining single situations; biological and social-cognitive mechanisms vary by subtype.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "determination",
+        "orientation",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "f177d6ebd7e92b47dbdfe28bad0880780921c51be23b2e0e875cb4d90a3be487"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-orientation-agency",
+      "front_text": "Hvor placerer trait and assessment psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> low to moderate agency</div><div><strong>Forklaring:</strong> Agency is weak in static trait models and clearer in process models where goals, motivations, and interpretations guide behavior.</div>",
+      "back_text": "Placering: low to moderate agency\nForklaring: Agency is weak in static trait models and clearer in process models where goals, motivations, and interpretations guide behavior.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "agency",
+        "orientation",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "e07406303ce647f8e3250181e8c1a563be402f427304a91ca0801a61f0b04b10"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-orientation-historicity",
+      "front_text": "Hvor placerer trait and assessment psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> phylogenetic and ontogenetic emphasis with some sociogenesis</div><div><strong>Forklaring:</strong> Evolutionary accounts stress species history, stability-change research stresses the life course, and culture-oriented trait work adds sociogenesis.</div>",
+      "back_text": "Placering: phylogenetic and ontogenetic emphasis with some sociogenesis\nForklaring: Evolutionary accounts stress species history, stability-change research stresses the life course, and culture-oriented trait work adds sociogenesis.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "historicity",
+        "orientation",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "d14619d6692836bea400bb587215dd6e2db63e25b5e3cd1d6870592196f73cc7"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is treated as a measurable profile of relatively stable individual differences that can be compared across persons.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is described through trait dimensions, distributions of behavior, and assessment categories. Newer process views keep situations and state variation visible.</div>",
+      "back_text": "Person: The person is treated as a measurable profile of relatively stable individual differences that can be compared across persons.\nPersonlighed/subjektivitet: Personality is described through trait dimensions, distributions of behavior, and assessment categories. Newer process views keep situations and state variation visible.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "model",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "21255a44be6cc63ecb53c9a26f606594e45fade22f7e8582ade16c63cd54f6e8"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler trait and assessment psychology især på?",
+      "back_html_sanitized": "<div>Questionnaires, observer reports, lexical work, factor analysis, Big Five/HEXACO models, situation-trait-outcome models, and longitudinal assessment.</div>",
+      "back_text": "Questionnaires, observer reports, lexical work, factor analysis, Big Five/HEXACO models, situation-trait-outcome models, and longitudinal assessment.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "method",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "915d6a6e4f465f95e4cec87e16bfd50c34107d7b8594be0adbe958d27e801456"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-affordance-limit",
+      "front_text": "Hvad gør trait and assessment psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Gives a precise vocabulary for describing and comparing individual differences.</li><li>Supports prediction, measurement, and falsifiable research designs.</li><li>Creates a useful baseline that later theories can critique or extend.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can reify categories and underplay lived meaning, crisis, culture, and power.</li><li>Often explains less than it describes.</li><li>Risks treating personality as too independent of language and social practice.</li></ul></div>",
+      "back_text": "Gør synligt: Gives a precise vocabulary for describing and comparing individual differences.; Supports prediction, measurement, and falsifiable research designs.; Creates a useful baseline that later theories can critique or extend.\nRisikerer at skjule: Can reify categories and underplay lived meaning, crisis, culture, and power.; Often explains less than it describes.; Risks treating personality as too independent of language and social practice.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "affordance-limit",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "aeb20fe86bdb8adf55d452665f5ac4e77f8a86649b28a80f720ef1ac4c305f92"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-comparison-narrative-psychology-1",
+      "front_text": "Hvordan kan trait and assessment psychology sammenlignes med narrative psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Narrative psychology asks how persons create temporal meaning rather than only how they score on traits.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Narrative psychology asks how persons create temporal meaning rather than only how they score on traits.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "comparison",
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "4c64fa8aabec9290e580791ddf799e9d50ecb980535c2b7ea97a7cc7c4069272"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-comparison-dynamic-personality-development-2",
+      "front_text": "Hvordan kan trait and assessment psychology sammenlignes med dynamic personality development?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> extended by</div><div><strong>Eksamenstræk:</strong> Dynamic models preserve trait language while making situations, states, and time more central.</div>",
+      "back_text": "Relation: extended by\nEksamenstræk: Dynamic models preserve trait language while making situations, states, and time more central.",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "comparison",
+        "dynamic_personality_development",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "a3a145029ccb0c28db7f39326c2c69fc49fba1e331ac583522213817dcfcde3f"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-trap-1",
+      "front_text": "Eksamenstrap i trait and assessment psychology: hvorfor er dette for simpelt? Reducing all trait theory to genetic determinism.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre trait and assessment psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.</div><div><strong>Eksamensvinkel:</strong> The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>Big Five</li><li>HEXACO</li><li>lexical hypothesis</li><li>factor analysis</li><li>trait activation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre trait and assessment psychology så flad.\nHold fast i: This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.\nEksamensvinkel: The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.\nBegreber der kan nuancere svaret: Big Five; HEXACO; lexical hypothesis; factor analysis; trait activation",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "trait_and_assessment_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "bdc7f4318382e3fb7b04b34e8f0acee1d013a37a4c46e07734c2b0d0f86dc8f8"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-trap-2",
+      "front_text": "Eksamenstrap i trait and assessment psychology: hvorfor er dette for simpelt? Forgetting that modern trait approaches include situations and change.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre trait and assessment psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.</div><div><strong>Eksamensvinkel:</strong> The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>Big Five</li><li>HEXACO</li><li>lexical hypothesis</li><li>factor analysis</li><li>trait activation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre trait and assessment psychology så flad.\nHold fast i: This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.\nEksamensvinkel: The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.\nBegreber der kan nuancere svaret: Big Five; HEXACO; lexical hypothesis; factor analysis; trait activation",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "trait_and_assessment_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "16a08297a41d8360c94f31496d29da49807abf11673b1a7c3f69a874e8c6ff8a"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-trap-3",
+      "front_text": "Eksamenstrap i trait and assessment psychology: hvorfor er dette for simpelt? Treating a trait score as a complete explanation of a person.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre trait and assessment psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.</div><div><strong>Eksamensvinkel:</strong> The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>Big Five</li><li>HEXACO</li><li>lexical hypothesis</li><li>factor analysis</li><li>trait activation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre trait and assessment psychology så flad.\nHold fast i: This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.\nEksamensvinkel: The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.\nBegreber der kan nuancere svaret: Big Five; HEXACO; lexical hypothesis; factor analysis; trait activation",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "trait_and_assessment_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "8a8b1fa109f506d10703beb63da3d68a43cd95bf73024b5ae3492c61db316fd8"
+    },
+    {
+      "card_id": "mx-trait-and-assessment-psychology-trap-4",
+      "front_text": "Eksamenstrap i trait and assessment psychology: hvorfor er dette for simpelt? Confusing trait prediction with an account of lived meaning or self-understanding.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre trait and assessment psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.</div><div><strong>Eksamensvinkel:</strong> The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>Big Five</li><li>HEXACO</li><li>lexical hypothesis</li><li>factor analysis</li><li>trait activation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre trait and assessment psychology så flad.\nHold fast i: This cluster treats personality as patterned individual differences that can be assessed, compared, and modelled across persons.\nEksamensvinkel: The student tables use trait psychology as the early-course quantitative baseline and repeatedly ask how much later theories move agency, context, and history outside the individual.\nBegreber der kan nuancere svaret: Big Five; HEXACO; lexical hypothesis; factor analysis; trait activation",
+      "tags": [
+        "W01L2",
+        "W02L1",
+        "trait_and_assessment_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "22a7f43ca48eeb4c89c25f391ec824178dbf135a8c187fad4c244fd341516614"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-orientation-essence-context",
+      "front_text": "Hvor placerer dynamic personality development essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> between essence and context</div><div><strong>Forklaring:</strong> The person brings stable tendencies, but those tendencies are visible only through situated patterns of action.</div>",
+      "back_text": "Placering: between essence and context\nForklaring: The person brings stable tendencies, but those tendencies are visible only through situated patterns of action.",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "essence_context",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "c6154730a9605b228a4b24290e683e45d2ef8b64b4451c51fe7700d3af82f9d1"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-orientation-determination",
+      "front_text": "Hvor placerer dynamic personality development determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> reciprocal and probabilistic</div><div><strong>Forklaring:</strong> Past patterns, motives, situations, and habits constrain behavior without making development closed.</div>",
+      "back_text": "Placering: reciprocal and probabilistic\nForklaring: Past patterns, motives, situations, and habits constrain behavior without making development closed.",
+      "tags": [
+        "W02L2",
+        "determination",
+        "dynamic_personality_development",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "53186629a43b8a88695e9ba60e8a9e3cba5286a740d42f17dac345264997b223"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-orientation-agency",
+      "front_text": "Hvor placerer dynamic personality development agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> moderate situated agency</div><div><strong>Forklaring:</strong> Goals, interpretations, and self-regulatory patterns give the person some steering power within situations.</div>",
+      "back_text": "Placering: moderate situated agency\nForklaring: Goals, interpretations, and self-regulatory patterns give the person some steering power within situations.",
+      "tags": [
+        "W02L2",
+        "agency",
+        "dynamic_personality_development",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "bfe48877577e77cc711c70f183e4742bb8d72cbcd4f7f24186d3e5a33f5d32a2"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-orientation-historicity",
+      "front_text": "Hvor placerer dynamic personality development historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> ontogenetic emphasis</div><div><strong>Forklaring:</strong> The life course is central because personality is understood through stability, transitions, and cumulative change.</div>",
+      "back_text": "Placering: ontogenetic emphasis\nForklaring: The life course is central because personality is understood through stability, transitions, and cumulative change.",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "1c6fb9fce7d4a81e9b998bce17d390c1bc779399da349e7f8df09ba11d64fc48"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-model",
+      "front_text": "Hvilket personbegreb ligger i dynamic personality development?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a developing pattern of tendencies, states, goals, and situation responses rather than a fixed score.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is modeled as stability and change across repeated person-situation transactions.</div>",
+      "back_text": "Person: The person is a developing pattern of tendencies, states, goals, and situation responses rather than a fixed score.\nPersonlighed/subjektivitet: Personality is modeled as stability and change across repeated person-situation transactions.",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "4dc2349d7c2fdbbec6587ef91c4bdfb05b7ac4e6b00e1d46c6738739134feaf3"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-method",
+      "front_text": "Hvilken metode eller evidensform stoler dynamic personality development især på?",
+      "back_html_sanitized": "<div>Longitudinal studies, state-trait models, process models, and repeated assessment across time and situations.</div>",
+      "back_text": "Longitudinal studies, state-trait models, process models, and repeated assessment across time and situations.",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "b404001bb671b7962978b5e821d49da9d561a3004697be2e29a7b92db4857d63"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-affordance-limit",
+      "front_text": "Hvad gør dynamic personality development synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Prevents the trait block from becoming static.</li><li>Makes personality change and situation sensitivity examinable.</li><li>Connects measurement with development.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can still remain close to individual-difference language.</li><li>May underplay culture, discourse, and power compared with later traditions.</li></ul></div>",
+      "back_text": "Gør synligt: Prevents the trait block from becoming static.; Makes personality change and situation sensitivity examinable.; Connects measurement with development.\nRisikerer at skjule: Can still remain close to individual-difference language.; May underplay culture, discourse, and power compared with later traditions.",
+      "tags": [
+        "W02L2",
+        "affordance-limit",
+        "dynamic_personality_development"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "9ab057c1819b15f536617ab53e3c7af8b1ce160c2c5f7239506d8b602b7f8ceb"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan dynamic personality development sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> extends</div><div><strong>Eksamenstræk:</strong> It keeps trait concepts but reframes them as distributions, states, and developmental patterns.</div>",
+      "back_text": "Relation: extends\nEksamenstræk: It keeps trait concepts but reframes them as distributions, states, and developmental patterns.",
+      "tags": [
+        "W02L2",
+        "comparison",
+        "dynamic_personality_development",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "dde8e331e60e5f6339dfbb267763f3a58444ab8b17e1bdf889004920ee1dd9d1"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-comparison-narrative-psychology-2",
+      "front_text": "Hvordan kan dynamic personality development sammenlignes med narrative psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Narrative theory explains continuity through meaning and story rather than repeated behavioral distributions.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Narrative theory explains continuity through meaning and story rather than repeated behavioral distributions.",
+      "tags": [
+        "W02L2",
+        "comparison",
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "a3b50f71b2c6dd44107aa9c48987ed0071e4a23f7f897c44f482649eaf28b67d"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-trap-1",
+      "front_text": "Eksamenstrap i dynamic personality development: hvorfor er dette for simpelt? Thinking change research rejects traits.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre dynamic personality development så flad.</div><div><strong>Hold fast i:</strong> This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.</div><div><strong>Eksamensvinkel:</strong> This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>person-situation interplay</li><li>personality states</li><li>stability and change</li><li>maturity principle</li><li>whole trait theory</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre dynamic personality development så flad.\nHold fast i: This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.\nEksamensvinkel: This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.\nBegreber der kan nuancere svaret: person-situation interplay; personality states; stability and change; maturity principle; whole trait theory",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "8ce046e4a75d0822bc1ef931046437c0c10b69e3c224e58005aebb43d31d21ad"
+    },
+    {
+      "card_id": "mx-dynamic-personality-development-trap-2",
+      "front_text": "Eksamenstrap i dynamic personality development: hvorfor er dette for simpelt? Forgetting that stability and change can both be true depending on the metric.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre dynamic personality development så flad.</div><div><strong>Hold fast i:</strong> This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.</div><div><strong>Eksamensvinkel:</strong> This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>person-situation interplay</li><li>personality states</li><li>stability and change</li><li>maturity principle</li><li>whole trait theory</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre dynamic personality development så flad.\nHold fast i: This cluster examines how personality patterns persist and shift through repeated interaction between persons, situations, and time.\nEksamensvinkel: This row is mostly an analytic bridge from the trait entries rather than a separate student-table tradition.\nBegreber der kan nuancere svaret: person-situation interplay; personality states; stability and change; maturity principle; whole trait theory",
+      "tags": [
+        "W02L2",
+        "dynamic_personality_development",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "b5d6c1c5965d203e3a42c62afb59e94c8f64473d8db2e25523ed32c5e6e6a53f"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-orientation-essence-context",
+      "front_text": "Hvor placerer biosocial personality perspectives essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> biological essence linked to ecological context</div><div><strong>Forklaring:</strong> Genetic and evolved dispositions matter, but culture and socioecology shape how dispositions become personality.</div>",
+      "back_text": "Placering: biological essence linked to ecological context\nForklaring: Genetic and evolved dispositions matter, but culture and socioecology shape how dispositions become personality.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "essence_context",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "ac4ec40a30f178051860e104394bd459ac25e776772a7bc69ee2745ae63db612"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-orientation-determination",
+      "front_text": "Hvor placerer biosocial personality perspectives determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> biological disposition rather than simple determinism</div><div><strong>Forklaring:</strong> Genes and evolutionary pressures constrain possibilities, while environments and culture influence expression.</div>",
+      "back_text": "Placering: biological disposition rather than simple determinism\nForklaring: Genes and evolutionary pressures constrain possibilities, while environments and culture influence expression.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "determination",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "f49fd45f00c3f8b247fb6f5d753c53d2a3c14a619709d1288edaa9b2ba61aa7d"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-orientation-agency",
+      "front_text": "Hvor placerer biosocial personality perspectives agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> limited indirect agency</div><div><strong>Forklaring:</strong> Agency is usually not the main explanatory center, though persons can shape niches and practices that feed back into development.</div>",
+      "back_text": "Placering: limited indirect agency\nForklaring: Agency is usually not the main explanatory center, though persons can shape niches and practices that feed back into development.",
+      "tags": [
+        "W03L1",
+        "agency",
+        "biosocial_personality_perspectives",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "5e604d98fa9a5a2c7178bb2edbadb3113ba92bf4d7c5fe70d2d95e5d17623a71"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-orientation-historicity",
+      "front_text": "Hvor placerer biosocial personality perspectives historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong phylogenesis with sociogenesis and ontogenesis</div><div><strong>Forklaring:</strong> Species history, cultural history, and individual life history all matter, but their weight differs across subtheories.</div>",
+      "back_text": "Placering: strong phylogenesis with sociogenesis and ontogenesis\nForklaring: Species history, cultural history, and individual life history all matter, but their weight differs across subtheories.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "9d96f54d1db81837df370ce4dd769f466f7539d699fc2f8acfa09676364ef9c6"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-model",
+      "front_text": "Hvilket personbegreb ligger i biosocial personality perspectives?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is an organism whose personality develops through genetic dispositions, evolved pressures, ecology, and culture.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is explained through adaptive variation, gene-environment interplay, culture-person feedback, and biological dispositions.</div>",
+      "back_text": "Person: The person is an organism whose personality develops through genetic dispositions, evolved pressures, ecology, and culture.\nPersonlighed/subjektivitet: Personality is explained through adaptive variation, gene-environment interplay, culture-person feedback, and biological dispositions.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "d17a5ebbc8f60bc3940210ba7ff7a68bebdee890e4ebdba7a1a3e941a534e408"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-method",
+      "front_text": "Hvilken metode eller evidensform stoler biosocial personality perspectives især på?",
+      "back_html_sanitized": "<div>Behavioral genetics, evolutionary argumentation, cross-cultural comparison, socioecological analysis, and empirical modeling.</div>",
+      "back_text": "Behavioral genetics, evolutionary argumentation, cross-cultural comparison, socioecological analysis, and empirical modeling.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "56a42ad932fd33dd65fb95df35e8129bbf3c5434c0b2d2eb5aa2b280c9f61389"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-affordance-limit",
+      "front_text": "Hvad gør biosocial personality perspectives synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Explains why personality variation may persist across populations.</li><li>Connects biological, cultural, and ecological levels.</li><li>Complicates simplistic nature-versus-nurture answers.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can drift toward biological reduction if culture is treated as secondary.</li><li>May offer broad explanations that are hard to connect to lived experience.</li></ul></div>",
+      "back_text": "Gør synligt: Explains why personality variation may persist across populations.; Connects biological, cultural, and ecological levels.; Complicates simplistic nature-versus-nurture answers.\nRisikerer at skjule: Can drift toward biological reduction if culture is treated as secondary.; May offer broad explanations that are hard to connect to lived experience.",
+      "tags": [
+        "W03L1",
+        "affordance-limit",
+        "biosocial_personality_perspectives"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "30fc0d714ce0e9f196f968ed354b9b6ef8b152c0de5ddf6d7318ea26cb86e693"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan biosocial personality perspectives sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> explains possible basis for</div><div><strong>Eksamenstræk:</strong> Biosocial perspectives ask why trait variation exists and how it is maintained.</div>",
+      "back_text": "Relation: explains possible basis for\nEksamenstræk: Biosocial perspectives ask why trait variation exists and how it is maintained.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "comparison",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "4f93242696ede6977bc82572e40e26764cc52a60edb9ae4e96063d6ad5c9f201"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-comparison-sociocultural-poststructural-approaches-2",
+      "front_text": "Hvordan kan biosocial personality perspectives sammenlignes med sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Sociocultural approaches move explanatory weight from biology to discourse, norms, and power.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Sociocultural approaches move explanatory weight from biology to discourse, norms, and power.",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "comparison",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "314e16f78b7513246c90646ed5bfa53e92dd1acbc2f9a1dfadcedd5eeded0be8"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-trap-1",
+      "front_text": "Eksamenstrap i biosocial personality perspectives: hvorfor er dette for simpelt? Treating genes as destiny.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre biosocial personality perspectives så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.</div><div><strong>Eksamensvinkel:</strong> The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>behavioral genetics</li><li>epigenetics</li><li>balancing selection</li><li>niche specialization</li><li>frequency-dependent selection</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre biosocial personality perspectives så flad.\nHold fast i: This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.\nEksamensvinkel: The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.\nBegreber der kan nuancere svaret: behavioral genetics; epigenetics; balancing selection; niche specialization; frequency-dependent selection",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "67e3a3ef07106d385038eb31cc9961fa1cfb7fe8aafc1c5616dc0076e9004276"
+    },
+    {
+      "card_id": "mx-biosocial-personality-perspectives-trap-2",
+      "front_text": "Eksamenstrap i biosocial personality perspectives: hvorfor er dette for simpelt? Forgetting that several course accounts describe reciprocal gene-culture dynamics.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre biosocial personality perspectives så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.</div><div><strong>Eksamensvinkel:</strong> The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>behavioral genetics</li><li>epigenetics</li><li>balancing selection</li><li>niche specialization</li><li>frequency-dependent selection</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre biosocial personality perspectives så flad.\nHold fast i: This cluster explains personality through culture, evolution, and genetics while preserving questions about interpretation, environment, and scope.\nEksamensvinkel: The notes especially use biosocial material to make determination and historicity more nuanced inside the early-course trait block.\nBegreber der kan nuancere svaret: behavioral genetics; epigenetics; balancing selection; niche specialization; frequency-dependent selection",
+      "tags": [
+        "W03L1",
+        "biosocial_personality_perspectives",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "a5445b07137a276c7cb225134782a5de0a9f7381dbd120500a7e929515c636dc"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-orientation-essence-context",
+      "front_text": "Hvor placerer personality functioning and pathology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> mixed clinical organization and relational context</div><div><strong>Forklaring:</strong> The theory looks at organized patterns in the person, but functioning is assessed through self-world and interpersonal relations.</div>",
+      "back_text": "Placering: mixed clinical organization and relational context\nForklaring: The theory looks at organized patterns in the person, but functioning is assessed through self-world and interpersonal relations.",
+      "tags": [
+        "W03L2",
+        "essence_context",
+        "orientation",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "f346caf2d0ffc7e80c80a3c7fb60965e04f5d058e11e0de9f04f6dceea7b2e79"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-orientation-determination",
+      "front_text": "Hvor placerer personality functioning and pathology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> clinical patterning and impairment</div><div><strong>Forklaring:</strong> Pathology is not a single cause but a constrained organization of self and relation.</div>",
+      "back_text": "Placering: clinical patterning and impairment\nForklaring: Pathology is not a single cause but a constrained organization of self and relation.",
+      "tags": [
+        "W03L2",
+        "determination",
+        "orientation",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "742135b0f26bf629e0a97c87618f287739a31a1a85915dd80eb11f91de9709d3"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-orientation-agency",
+      "front_text": "Hvor placerer personality functioning and pathology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> compromised but assessable agency</div><div><strong>Forklaring:</strong> Agency appears through self-direction and relational capacity, and can be limited by impairment.</div>",
+      "back_text": "Placering: compromised but assessable agency\nForklaring: Agency appears through self-direction and relational capacity, and can be limited by impairment.",
+      "tags": [
+        "W03L2",
+        "agency",
+        "orientation",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "95f676645c6d0128c1c0c3578d302d03cc60bf4e21dfaf90d3799d9e6546bb83"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-orientation-historicity",
+      "front_text": "Hvor placerer personality functioning and pathology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> developmental and clinical history</div><div><strong>Forklaring:</strong> The life history of personality organization matters, even when the exam focus is diagnostic structure.</div>",
+      "back_text": "Placering: developmental and clinical history\nForklaring: The life history of personality organization matters, even when the exam focus is diagnostic structure.",
+      "tags": [
+        "W03L2",
+        "historicity",
+        "orientation",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "099a54f4a73801ce8accd604e6969bf85275fdf77fc550fb284705311f11365e"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-model",
+      "front_text": "Hvilket personbegreb ligger i personality functioning and pathology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is understood through levels of self-functioning, relational functioning, coherence, and impairment.</div><div><strong>Personlighed/subjektivitet:</strong> Personality becomes clinically meaningful when organization, identity, self-direction, empathy, and intimacy are impaired or patterned dimensionally.</div>",
+      "back_text": "Person: The person is understood through levels of self-functioning, relational functioning, coherence, and impairment.\nPersonlighed/subjektivitet: Personality becomes clinically meaningful when organization, identity, self-direction, empathy, and intimacy are impaired or patterned dimensionally.",
+      "tags": [
+        "W03L2",
+        "model",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "c7644ec2695f2c4526d89a5d7acddca27048dc915f4e63f4509589114d26a627"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-method",
+      "front_text": "Hvilken metode eller evidensform stoler personality functioning and pathology især på?",
+      "back_html_sanitized": "<div>Clinical assessment, dimensional diagnostics, personality functioning models, and comparison between categorical and dimensional systems.</div>",
+      "back_text": "Clinical assessment, dimensional diagnostics, personality functioning models, and comparison between categorical and dimensional systems.",
+      "tags": [
+        "W03L2",
+        "method",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "a5c4a1bfdc7bf67c0ce42884d73f313bb1272cd29fba38063cb1e777d8c92976"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-affordance-limit",
+      "front_text": "Hvad gør personality functioning and pathology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Bridges trait/dimensional models and clinical personality questions.</li><li>Keeps impairment, relation, and functioning central.</li><li>Useful for comparing descriptive and clinical person models.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can sound technical or diagnostic if detached from theory comparison.</li><li>May underplay first-person meaning and social conditions.</li></ul></div>",
+      "back_text": "Gør synligt: Bridges trait/dimensional models and clinical personality questions.; Keeps impairment, relation, and functioning central.; Useful for comparing descriptive and clinical person models.\nRisikerer at skjule: Can sound technical or diagnostic if detached from theory comparison.; May underplay first-person meaning and social conditions.",
+      "tags": [
+        "W03L2",
+        "affordance-limit",
+        "personality_functioning_and_pathology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "b20f5aec14e8c76274ff34d8315a41e0768bd84b83ddaeb67f4a1b11343fb6fd"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-comparison-psychoanalytic-personality-theory-1",
+      "front_text": "Hvordan kan personality functioning and pathology sammenlignes med psychoanalytic personality theory?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> prepares for</div><div><strong>Eksamenstræk:</strong> Both examine personality organization, but psychoanalysis interprets conflict and unconscious meaning more deeply.</div>",
+      "back_text": "Relation: prepares for\nEksamenstræk: Both examine personality organization, but psychoanalysis interprets conflict and unconscious meaning more deeply.",
+      "tags": [
+        "W03L2",
+        "comparison",
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "99df7b370ec31cd85852cdbc868c62f2fc6ffa8c641699559447b6b248432eaa"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-comparison-trait-and-assessment-psychology-2",
+      "front_text": "Hvordan kan personality functioning and pathology sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Functioning models ask about impairment and organization, not just trait variation.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Functioning models ask about impairment and organization, not just trait variation.",
+      "tags": [
+        "W03L2",
+        "comparison",
+        "personality_functioning_and_pathology",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "59b62daafd753cbebe552236a10570c96e633369f4f7166bb5db346b45555812"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-trap-1",
+      "front_text": "Eksamenstrap i personality functioning and pathology: hvorfor er dette for simpelt? Treating pathology as only a categorical label.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre personality functioning and pathology så flad.</div><div><strong>Hold fast i:</strong> This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.</div><div><strong>Eksamensvinkel:</strong> This course row is added from current artifacts because the older tables are stronger on broad theory traditions than on the newer functioning lecture.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>personality functioning</li><li>dimensional diagnosis</li><li>identity</li><li>self-direction</li><li>empathy</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre personality functioning and pathology så flad.\nHold fast i: This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.\nEksamensvinkel: This course row is added from current artifacts because the older tables are stronger on broad theory traditions than on the newer functioning lecture.\nBegreber der kan nuancere svaret: personality functioning; dimensional diagnosis; identity; self-direction; empathy",
+      "tags": [
+        "W03L2",
+        "personality_functioning_and_pathology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "ac3614978506733648a8e00057124ab4ebe8c879fd75e148aca5e8cc96d6a603"
+    },
+    {
+      "card_id": "mx-personality-functioning-and-pathology-trap-2",
+      "front_text": "Eksamenstrap i personality functioning and pathology: hvorfor er dette for simpelt? Forgetting the difference between trait description and functioning impairment.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre personality functioning and pathology så flad.</div><div><strong>Hold fast i:</strong> This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.</div><div><strong>Eksamensvinkel:</strong> This course row is added from current artifacts because the older tables are stronger on broad theory traditions than on the newer functioning lecture.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>personality functioning</li><li>dimensional diagnosis</li><li>identity</li><li>self-direction</li><li>empathy</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre personality functioning and pathology så flad.\nHold fast i: This cluster frames pathology in terms of organisation, coherence, and impairment rather than only discrete categories.\nEksamensvinkel: This course row is added from current artifacts because the older tables are stronger on broad theory traditions than on the newer functioning lecture.\nBegreber der kan nuancere svaret: personality functioning; dimensional diagnosis; identity; self-direction; empathy",
+      "tags": [
+        "W03L2",
+        "personality_functioning_and_pathology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "bbf5b53a6641dfa496b750e212c899b8e4c93da7b178a94bfdd07df177d5abec"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-orientation-essence-context",
+      "front_text": "Hvor placerer psychoanalytic personality theory essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> inner conflict plus formative relational context</div><div><strong>Forklaring:</strong> Classical psychoanalysis often appears essence-heavy through the unconscious, while French psychoanalysis makes the other and language more constitutive.</div>",
+      "back_text": "Placering: inner conflict plus formative relational context\nForklaring: Classical psychoanalysis often appears essence-heavy through the unconscious, while French psychoanalysis makes the other and language more constitutive.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "essence_context",
+        "orientation",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "15a1e84ec0b8ede08992b899b8c0343a12ca913fcf76582c6d09903dceffabe7"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-orientation-determination",
+      "front_text": "Hvor placerer psychoanalytic personality theory determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong psychic and developmental determination</div><div><strong>Forklaring:</strong> Early experience, unconscious conflict, drive, and relation to caregivers shape personality without being transparent to the person.</div>",
+      "back_text": "Placering: strong psychic and developmental determination\nForklaring: Early experience, unconscious conflict, drive, and relation to caregivers shape personality without being transparent to the person.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "determination",
+        "orientation",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "baf8df6ed2f1155a7dcb668503c304de96d39b08f08911670c19262974f9f2e2"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-orientation-agency",
+      "front_text": "Hvor placerer psychoanalytic personality theory agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> limited and mediated agency</div><div><strong>Forklaring:</strong> The ego mediates, but the subject is not sovereign because unconscious processes and the other structure action.</div>",
+      "back_text": "Placering: limited and mediated agency\nForklaring: The ego mediates, but the subject is not sovereign because unconscious processes and the other structure action.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "agency",
+        "orientation",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "5aa5211efc1e637eb0b373b1e6694115d55955bba7030e6491669dfdfb80e9f6"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-orientation-historicity",
+      "front_text": "Hvor placerer psychoanalytic personality theory historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong ontogenesis with cultural-symbolic dimensions</div><div><strong>Forklaring:</strong> Childhood and psychosexual development are central; later variants also emphasize language, culture, and intergenerational relation.</div>",
+      "back_text": "Placering: strong ontogenesis with cultural-symbolic dimensions\nForklaring: Childhood and psychosexual development are central; later variants also emphasize language, culture, and intergenerational relation.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "historicity",
+        "orientation",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "65619e47d8857dcb7afcfc21d40cdf88a5172e36b03592071ff107b8bee51e8f"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-model",
+      "front_text": "Hvilket personbegreb ligger i psychoanalytic personality theory?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a conflicted and decentered psychodynamic subject shaped by unconscious processes, early relations, and psychic structures.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is layered, dynamic, and organized around conflict between psychic instances, desire, defense, language, and relation to the other.</div>",
+      "back_text": "Person: The person is a conflicted and decentered psychodynamic subject shaped by unconscious processes, early relations, and psychic structures.\nPersonlighed/subjektivitet: Personality is layered, dynamic, and organized around conflict between psychic instances, desire, defense, language, and relation to the other.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "model",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "70d885e4611d5de2421dce0ca6afdd6a57a62dc95e009fd440f5865157b785ec"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-method",
+      "front_text": "Hvilken metode eller evidensform stoler psychoanalytic personality theory især på?",
+      "back_html_sanitized": "<div>Clinical interpretation, case material, psychoanalytic reading, free association, dream and symptom interpretation, and conceptual reconstruction.</div>",
+      "back_text": "Clinical interpretation, case material, psychoanalytic reading, free association, dream and symptom interpretation, and conceptual reconstruction.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "method",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "c0b241216995dfbb3958cdf9db7b9937ea5f15b06a8110bff81e573a2aacb094"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-affordance-limit",
+      "front_text": "Hvad gør psychoanalytic personality theory synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Explains unconscious motivation, symptom meaning, conflict, and ambivalence.</li><li>Gives rich tools for interpreting clinical material and subject formation.</li><li>Makes early relation and desire theoretically important.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can become overly deterministic about childhood.</li><li>Has contested empirical status and can be difficult to falsify.</li><li>Risks underplaying social practice if treated only as intrapsychic.</li></ul></div>",
+      "back_text": "Gør synligt: Explains unconscious motivation, symptom meaning, conflict, and ambivalence.; Gives rich tools for interpreting clinical material and subject formation.; Makes early relation and desire theoretically important.\nRisikerer at skjule: Can become overly deterministic about childhood.; Has contested empirical status and can be difficult to falsify.; Risks underplaying social practice if treated only as intrapsychic.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "affordance-limit",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "6d322506eb6a124f19ae17eb93d66d5b98806c997af447c6bdaaa16f9f3b876a"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-comparison-phenomenological-psychology-1",
+      "front_text": "Hvordan kan psychoanalytic personality theory sammenlignes med phenomenological psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Phenomenology starts from lived experience, while psychoanalysis insists that decisive meaning may be unconscious.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Phenomenology starts from lived experience, while psychoanalysis insists that decisive meaning may be unconscious.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "comparison",
+        "phenomenological_psychology",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "b62e46606ff427952fa791e7f5d05383cc611fe9a2ed1ec0287b8c3f979ac274"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-comparison-sociocultural-poststructural-approaches-2",
+      "front_text": "Hvordan kan psychoanalytic personality theory sammenlignes med sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> partly overlaps with</div><div><strong>Eksamenstræk:</strong> Both decenter the autonomous subject, but they locate decentering in different mechanisms.</div>",
+      "back_text": "Relation: partly overlaps with\nEksamenstræk: Both decenter the autonomous subject, but they locate decentering in different mechanisms.",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "comparison",
+        "psychoanalytic_personality_theory",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "24f4f99d8a141bf3460c685cfd351cbaf4df73c9db27591ec398e6d772f146e4"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-trap-1",
+      "front_text": "Eksamenstrap i psychoanalytic personality theory: hvorfor er dette for simpelt? Reducing psychoanalysis to childhood determinism.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre psychoanalytic personality theory så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.</div><div><strong>Eksamensvinkel:</strong> The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>unconscious</li><li>id ego superego</li><li>repression</li><li>drive</li><li>mirror stage</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre psychoanalytic personality theory så flad.\nHold fast i: This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.\nEksamensvinkel: The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.\nBegreber der kan nuancere svaret: unconscious; id ego superego; repression; drive; mirror stage",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "psychoanalytic_personality_theory",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "8cfb9bd0fe094e2520a0d7104bf15b0deb48f941daa417358da4bc9fad8edd1d"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-trap-2",
+      "front_text": "Eksamenstrap i psychoanalytic personality theory: hvorfor er dette for simpelt? Collapsing Freud, Lacan, and Laplanche into one identical account.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre psychoanalytic personality theory så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.</div><div><strong>Eksamensvinkel:</strong> The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>unconscious</li><li>id ego superego</li><li>repression</li><li>drive</li><li>mirror stage</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre psychoanalytic personality theory så flad.\nHold fast i: This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.\nEksamensvinkel: The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.\nBegreber der kan nuancere svaret: unconscious; id ego superego; repression; drive; mirror stage",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "psychoanalytic_personality_theory",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "3d55fdd25bc5cd031c2e45dae6590cf5f2cc434b60bd89f5eea6e4b29734523b"
+    },
+    {
+      "card_id": "mx-psychoanalytic-personality-theory-trap-3",
+      "front_text": "Eksamenstrap i psychoanalytic personality theory: hvorfor er dette for simpelt? Forgetting that French psychoanalysis moves the subject toward language and the other.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre psychoanalytic personality theory så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.</div><div><strong>Eksamensvinkel:</strong> The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>unconscious</li><li>id ego superego</li><li>repression</li><li>drive</li><li>mirror stage</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre psychoanalytic personality theory så flad.\nHold fast i: This cluster explains personality through conflict, development, unconscious meaning, and layered psychic organisation.\nEksamensvinkel: The strongest student comparison move is between German/classical and French psychoanalysis: the unconscious as drive-conflict versus the unconscious as structured through the other and language.\nBegreber der kan nuancere svaret: unconscious; id ego superego; repression; drive; mirror stage",
+      "tags": [
+        "W04L1",
+        "W04L2",
+        "W05L1",
+        "W05L2",
+        "psychoanalytic_personality_theory",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "ae16d14722f89c8a9382c5d7018295a45f0d2ab55793ebdb3216a68032a945ca"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer phenomenological psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> relation between person and world</div><div><strong>Forklaring:</strong> Phenomenology avoids a simple inside/outside split because experience is always experience of a world.</div>",
+      "back_text": "Placering: relation between person and world\nForklaring: Phenomenology avoids a simple inside/outside split because experience is always experience of a world.",
+      "tags": [
+        "W06L1",
+        "essence_context",
+        "orientation",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "2670a4c1e70a6d29f53c0bcd0adb06ae245800851a07aafac12c3783824dd222"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-orientation-determination",
+      "front_text": "Hvor placerer phenomenological psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> low mechanistic determination</div><div><strong>Forklaring:</strong> The theory focuses less on causal determination and more on structures of meaning, perception, and situated experience.</div>",
+      "back_text": "Placering: low mechanistic determination\nForklaring: The theory focuses less on causal determination and more on structures of meaning, perception, and situated experience.",
+      "tags": [
+        "W06L1",
+        "determination",
+        "orientation",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "8668d52b32661b7adca2741a2a9f9de59b35df9bb756aacc7e4528a732517bff"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-orientation-agency",
+      "front_text": "Hvor placerer phenomenological psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> experience-near agency</div><div><strong>Forklaring:</strong> Agency is found in how the person attends, interprets, and orients within lived experience.</div>",
+      "back_text": "Placering: experience-near agency\nForklaring: Agency is found in how the person attends, interprets, and orients within lived experience.",
+      "tags": [
+        "W06L1",
+        "agency",
+        "orientation",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "b3f89379a6e2c934f2ebdf067a689ad5493c105b24cd07e70452ee69a5c7d7e5"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-orientation-historicity",
+      "front_text": "Hvor placerer phenomenological psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> lifeworld and biographical historicity</div><div><strong>Forklaring:</strong> History matters through the sedimented lifeworld and the person&#x27;s embodied way of inhabiting situations.</div>",
+      "back_text": "Placering: lifeworld and biographical historicity\nForklaring: History matters through the sedimented lifeworld and the person's embodied way of inhabiting situations.",
+      "tags": [
+        "W06L1",
+        "historicity",
+        "orientation",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "0ca88718e5cc260fd4c3005ce8f04b3b58ef8833fd6e08024e12f70b58c3c5fd"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i phenomenological psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is an embodied, experiencing subject whose world is given through lived meaning rather than detached variables.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is approached through first-person experience, intentionality, embodiment, and situated relation to the world.</div>",
+      "back_text": "Person: The person is an embodied, experiencing subject whose world is given through lived meaning rather than detached variables.\nPersonlighed/subjektivitet: Personality is approached through first-person experience, intentionality, embodiment, and situated relation to the world.",
+      "tags": [
+        "W06L1",
+        "model",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "46dc7964c537db5355cfa13e2e25a835d1c516f1274b80f5fc2ff99dd1456bed"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler phenomenological psychology især på?",
+      "back_html_sanitized": "<div>Phenomenological description, first-person analysis, careful attention to experience-near meaning, and critique of reductionism.</div>",
+      "back_text": "Phenomenological description, first-person analysis, careful attention to experience-near meaning, and critique of reductionism.",
+      "tags": [
+        "W06L1",
+        "method",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "0b1291e0b669d415f61e4b2a17dc812066cdca79312cd30a92497aca14a9e2e9"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-affordance-limit",
+      "front_text": "Hvad gør phenomenological psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Protects the first-person perspective from reduction to variables.</li><li>Useful for explaining meaning, embodiment, and lived world.</li><li>Creates a bridge to existential and humanistic traditions.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can be less precise about causal explanation and prediction.</li><li>May be difficult to operationalize in conventional empirical terms.</li></ul></div>",
+      "back_text": "Gør synligt: Protects the first-person perspective from reduction to variables.; Useful for explaining meaning, embodiment, and lived world.; Creates a bridge to existential and humanistic traditions.\nRisikerer at skjule: Can be less precise about causal explanation and prediction.; May be difficult to operationalize in conventional empirical terms.",
+      "tags": [
+        "W06L1",
+        "affordance-limit",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "6155ce56cbeff7ad807662f05bb59f41e33b1811f3c93b134d6f5d0d2fcf0dca"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan phenomenological psychology sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Phenomenology asks what experience is like before reducing the person to measured dimensions.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Phenomenology asks what experience is like before reducing the person to measured dimensions.",
+      "tags": [
+        "W06L1",
+        "comparison",
+        "phenomenological_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "324a91ad7600c64a0f509ca4987603dc274c97d7871a7c4593a9b0efdcb9c196"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-comparison-existential-psychology-2",
+      "front_text": "Hvordan kan phenomenological psychology sammenlignes med existential psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> prepares for</div><div><strong>Eksamenstræk:</strong> Existential psychology builds on experience-near inquiry but foregrounds freedom, finitude, and choice.</div>",
+      "back_text": "Relation: prepares for\nEksamenstræk: Existential psychology builds on experience-near inquiry but foregrounds freedom, finitude, and choice.",
+      "tags": [
+        "W06L1",
+        "comparison",
+        "existential_psychology",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "2384b871cb1b5a6cad693601bf71a8be5c67c086eedfbaabf4a32dd3d7b1b97f"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-comparison-narrative-psychology-3",
+      "front_text": "Hvordan kan phenomenological psychology sammenlignes med narrative psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both focus on meaning, but phenomenology brackets toward lived experience while narrative psychology studies storied identity.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both focus on meaning, but phenomenology brackets toward lived experience while narrative psychology studies storied identity.",
+      "tags": [
+        "W06L1",
+        "comparison",
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "6fb34bc6c117d471b39f37b0f6663154ed45b1fb7f14ce9c82bb70823d86c8af"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-trap-1",
+      "front_text": "Eksamenstrap i phenomenological psychology: hvorfor er dette for simpelt? Treating phenomenology as simply introspection.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre phenomenological psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality through lived experience, embodiment, and the person&#x27;s situated relation to world and meaning.</div><div><strong>Eksamensvinkel:</strong> The student material uses phenomenology as the pivot away from variable psychology toward experience, meaning, and person-world relation.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>lived experience</li><li>intentionality</li><li>embodiment</li><li>lifeworld</li><li>first-person perspective</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre phenomenological psychology så flad.\nHold fast i: This cluster treats personality through lived experience, embodiment, and the person's situated relation to world and meaning.\nEksamensvinkel: The student material uses phenomenology as the pivot away from variable psychology toward experience, meaning, and person-world relation.\nBegreber der kan nuancere svaret: lived experience; intentionality; embodiment; lifeworld; first-person perspective",
+      "tags": [
+        "W06L1",
+        "phenomenological_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "7df78680f325e9bb47dff1f05d2ff8792998116679b5b9a0c218c4bcc829560e"
+    },
+    {
+      "card_id": "mx-phenomenological-psychology-trap-2",
+      "front_text": "Eksamenstrap i phenomenological psychology: hvorfor er dette for simpelt? Forgetting that context is not added later but built into lived experience.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre phenomenological psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality through lived experience, embodiment, and the person&#x27;s situated relation to world and meaning.</div><div><strong>Eksamensvinkel:</strong> The student material uses phenomenology as the pivot away from variable psychology toward experience, meaning, and person-world relation.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>lived experience</li><li>intentionality</li><li>embodiment</li><li>lifeworld</li><li>first-person perspective</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre phenomenological psychology så flad.\nHold fast i: This cluster treats personality through lived experience, embodiment, and the person's situated relation to world and meaning.\nEksamensvinkel: The student material uses phenomenology as the pivot away from variable psychology toward experience, meaning, and person-world relation.\nBegreber der kan nuancere svaret: lived experience; intentionality; embodiment; lifeworld; first-person perspective",
+      "tags": [
+        "W06L1",
+        "phenomenological_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "14fec15eedee12dd9deb4a589304c2c3a4bd36258193e02fa0f8c0b1c98bd786"
+    },
+    {
+      "card_id": "mx-existential-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer existential psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> existence before essence, situated in the world</div><div><strong>Forklaring:</strong> The person is not given as a fixed substance; the person becomes through ways of existing within concrete conditions.</div>",
+      "back_text": "Placering: existence before essence, situated in the world\nForklaring: The person is not given as a fixed substance; the person becomes through ways of existing within concrete conditions.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "essence_context",
+        "existential_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "8c763e8be89ca8ec79a2d97874120e6b5120a1b0b4516e0b0d21eb8c79e826bf"
+    },
+    {
+      "card_id": "mx-existential-psychology-orientation-determination",
+      "front_text": "Hvor placerer existential psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> low determination with unavoidable constraints</div><div><strong>Forklaring:</strong> The person is fundamentally free, but thrownness, death, body, relation, and world set limits.</div>",
+      "back_text": "Placering: low determination with unavoidable constraints\nForklaring: The person is fundamentally free, but thrownness, death, body, relation, and world set limits.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "determination",
+        "existential_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "d7709661468ba322ff02817d3e8eb8ff41dfec3326eef97d4469702f389be8f2"
+    },
+    {
+      "card_id": "mx-existential-psychology-orientation-agency",
+      "front_text": "Hvor placerer existential psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> high agency</div><div><strong>Forklaring:</strong> Choice, stance, responsibility, and meaning-making are central even when circumstances cannot be chosen.</div>",
+      "back_text": "Placering: high agency\nForklaring: Choice, stance, responsibility, and meaning-making are central even when circumstances cannot be chosen.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "agency",
+        "existential_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "c7052fe69bd10f1dbe775158be2c99bcec2e276254f95d1fa9ba5b92e943ee71"
+    },
+    {
+      "card_id": "mx-existential-psychology-orientation-historicity",
+      "front_text": "Hvor placerer existential psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> biographical and existential historicity</div><div><strong>Forklaring:</strong> The person&#x27;s life unfolds as a history of choices and relations to existential givens.</div>",
+      "back_text": "Placering: biographical and existential historicity\nForklaring: The person's life unfolds as a history of choices and relations to existential givens.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "7911424548466fec5b42566ffe6728627954ce7bc70482f4a74d25ba9acceeea"
+    },
+    {
+      "card_id": "mx-existential-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i existential psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a being who must relate to existence, freedom, death, anxiety, relation, and meaning.</div><div><strong>Personlighed/subjektivitet:</strong> Personhood is not a fixed essence but an ongoing stance toward existential conditions and possibilities.</div>",
+      "back_text": "Person: The person is a being who must relate to existence, freedom, death, anxiety, relation, and meaning.\nPersonlighed/subjektivitet: Personhood is not a fixed essence but an ongoing stance toward existential conditions and possibilities.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "3d643c6e3e7b01caaca84636c4b13a5d3a8d8f5e27e2edb9ab44e66a0c7d32eb"
+    },
+    {
+      "card_id": "mx-existential-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler existential psychology især på?",
+      "back_html_sanitized": "<div>Existential therapy, phenomenological inquiry, philosophical interpretation, and clinical reflection on authenticity and meaning.</div>",
+      "back_text": "Existential therapy, phenomenological inquiry, philosophical interpretation, and clinical reflection on authenticity and meaning.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "eeee1fab85a2296d92e6a90ec382d89bb38e1e685571b6f8c6451a0367a1d057"
+    },
+    {
+      "card_id": "mx-existential-psychology-affordance-limit",
+      "front_text": "Hvad gør existential psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Gives strong language for freedom, responsibility, anxiety, meaning, and authenticity.</li><li>Works well as an anti-reductionist contrast to trait and biological theories.</li><li>Supports clinically recognizable questions about how to live.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can become individualistic and place heavy responsibility on the person.</li><li>May underplay social structure, culture, and material conditions.</li><li>Can be abstract when concrete therapeutic guidance is needed.</li></ul></div>",
+      "back_text": "Gør synligt: Gives strong language for freedom, responsibility, anxiety, meaning, and authenticity.; Works well as an anti-reductionist contrast to trait and biological theories.; Supports clinically recognizable questions about how to live.\nRisikerer at skjule: Can become individualistic and place heavy responsibility on the person.; May underplay social structure, culture, and material conditions.; Can be abstract when concrete therapeutic guidance is needed.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "affordance-limit",
+        "existential_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "ec4f9e0c4748f82bef9bea81602f95f0db835068ea824f2e843f9cb96950fb27"
+    },
+    {
+      "card_id": "mx-existential-psychology-comparison-humanistic-psychology-1",
+      "front_text": "Hvordan kan existential psychology sammenlignes med humanistic psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both value growth and the person, but existential psychology is more centered on anxiety, finitude, and choice.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both value growth and the person, but existential psychology is more centered on anxiety, finitude, and choice.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "comparison",
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "45097899a86820034fa68441d1a9fb6e0d698f80d05b4ec76fc7a3d91dc5c90f"
+    },
+    {
+      "card_id": "mx-existential-psychology-comparison-critical-psychology-2",
+      "front_text": "Hvordan kan existential psychology sammenlignes med critical psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Critical psychology relocates many constraints from existential givens to social practice and historical conditions.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Critical psychology relocates many constraints from existential givens to social practice and historical conditions.",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "comparison",
+        "critical_psychology",
+        "existential_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "adb7ae2b023a79cdd5ff3a14c810fb42ae663e7ab70b913da2cfca0c459cc7f4"
+    },
+    {
+      "card_id": "mx-existential-psychology-trap-1",
+      "front_text": "Eksamenstrap i existential psychology: hvorfor er dette for simpelt? Equating existential freedom with unlimited freedom.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre existential psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster frames personality through freedom, relation, anxiety, finitude, and the person&#x27;s stance toward existence.</div><div><strong>Eksamensvinkel:</strong> The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>freedom</li><li>choice</li><li>anxiety</li><li>authenticity</li><li>meaning</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre existential psychology så flad.\nHold fast i: This cluster frames personality through freedom, relation, anxiety, finitude, and the person's stance toward existence.\nEksamensvinkel: The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.\nBegreber der kan nuancere svaret: freedom; choice; anxiety; authenticity; meaning",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "d8ccf0a2ad843b14d3c2b7322f2247f472bcedf40492dd4ba13574a93dd7ae66"
+    },
+    {
+      "card_id": "mx-existential-psychology-trap-2",
+      "front_text": "Eksamenstrap i existential psychology: hvorfor er dette for simpelt? Forgetting that existential psychology also includes relation and thrownness.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre existential psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster frames personality through freedom, relation, anxiety, finitude, and the person&#x27;s stance toward existence.</div><div><strong>Eksamensvinkel:</strong> The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>freedom</li><li>choice</li><li>anxiety</li><li>authenticity</li><li>meaning</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre existential psychology så flad.\nHold fast i: This cluster frames personality through freedom, relation, anxiety, finitude, and the person's stance toward existence.\nEksamensvinkel: The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.\nBegreber der kan nuancere svaret: freedom; choice; anxiety; authenticity; meaning",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "35e015d420ec3530ac88b62450af5aa37a28156a1add409b20ab03b12267232e"
+    },
+    {
+      "card_id": "mx-existential-psychology-trap-3",
+      "front_text": "Eksamenstrap i existential psychology: hvorfor er dette for simpelt? Treating authenticity as an obvious or culturally neutral ideal.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre existential psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster frames personality through freedom, relation, anxiety, finitude, and the person&#x27;s stance toward existence.</div><div><strong>Eksamensvinkel:</strong> The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>freedom</li><li>choice</li><li>anxiety</li><li>authenticity</li><li>meaning</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre existential psychology så flad.\nHold fast i: This cluster frames personality through freedom, relation, anxiety, finitude, and the person's stance toward existence.\nEksamensvinkel: The student notes make existential psychology one of the strongest agency rows, while still preserving limits through thrownness and finitude.\nBegreber der kan nuancere svaret: freedom; choice; anxiety; authenticity; meaning",
+      "tags": [
+        "W06L2",
+        "W07L1",
+        "existential_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "7069fec0a05136f0fc521e0f03cf00988da60d18f54a6a0cb05d054ae0b66769"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer humanistic psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> growth essence supported or blocked by context</div><div><strong>Forklaring:</strong> The person has a growth tendency, but whether it unfolds depends strongly on relational and social conditions.</div>",
+      "back_text": "Placering: growth essence supported or blocked by context\nForklaring: The person has a growth tendency, but whether it unfolds depends strongly on relational and social conditions.",
+      "tags": [
+        "W07L2",
+        "essence_context",
+        "humanistic_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "93783f81af4570031537522c92ecdc1a94a0c0d4d1fb0d57b84ef998b60e563f"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-orientation-determination",
+      "front_text": "Hvor placerer humanistic psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> needs and relational conditions</div><div><strong>Forklaring:</strong> Development is shaped by needs, recognition, and conditions of worth more than by strict causal determinism.</div>",
+      "back_text": "Placering: needs and relational conditions\nForklaring: Development is shaped by needs, recognition, and conditions of worth more than by strict causal determinism.",
+      "tags": [
+        "W07L2",
+        "determination",
+        "humanistic_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "8c9acfaffa8b4335c31efb7987a5e3bbfb2ed97279de8e6d2a37710b0af39c44"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-orientation-agency",
+      "front_text": "Hvor placerer humanistic psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> high supported agency</div><div><strong>Forklaring:</strong> The person is active and growth-seeking, but agency is helped or hindered by relational conditions.</div>",
+      "back_text": "Placering: high supported agency\nForklaring: The person is active and growth-seeking, but agency is helped or hindered by relational conditions.",
+      "tags": [
+        "W07L2",
+        "agency",
+        "humanistic_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "bf1d7552b855199bd64cfa6656a82e712efb9ed4fe2d6b00760c8f8a1ddda684"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-orientation-historicity",
+      "front_text": "Hvor placerer humanistic psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> ontogenetic development</div><div><strong>Forklaring:</strong> Life-course development matters through self-concept, relation, and possibilities for growth.</div>",
+      "back_text": "Placering: ontogenetic development\nForklaring: Life-course development matters through self-concept, relation, and possibilities for growth.",
+      "tags": [
+        "W07L2",
+        "historicity",
+        "humanistic_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "c3def644af1322e0dcdd13a0af39119d9b15d7d47e2a257ad59aafb2012a41c0"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i humanistic psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a meaning-seeking and growth-oriented being whose development depends on relation, recognition, and conditions for self-realization.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is understood through self-concept, needs, authenticity, growth, and congruence rather than pathology or measurement alone.</div>",
+      "back_text": "Person: The person is a meaning-seeking and growth-oriented being whose development depends on relation, recognition, and conditions for self-realization.\nPersonlighed/subjektivitet: Personality is understood through self-concept, needs, authenticity, growth, and congruence rather than pathology or measurement alone.",
+      "tags": [
+        "W07L2",
+        "humanistic_psychology",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "ae86d3968e5f5dee77eb347b41e838083af553add4adfa8b0e88a1e1642377b4"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler humanistic psychology især på?",
+      "back_html_sanitized": "<div>Client-centered therapy, qualitative and clinical reflection, needs theory, and attention to subjective experience.</div>",
+      "back_text": "Client-centered therapy, qualitative and clinical reflection, needs theory, and attention to subjective experience.",
+      "tags": [
+        "W07L2",
+        "humanistic_psychology",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "02c049418c2d69303acf1d31106b841c69e1571cfdec890036cf730c873cd66c"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-affordance-limit",
+      "front_text": "Hvad gør humanistic psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Gives a hopeful and clinically usable model of growth.</li><li>Keeps subjective experience, relation, and resources visible.</li><li>Works well as a contrast to reductionist or deficit-heavy theories.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can sound overly optimistic or individualistic.</li><li>May underplay power, structural constraint, and severe impairment.</li></ul></div>",
+      "back_text": "Gør synligt: Gives a hopeful and clinically usable model of growth.; Keeps subjective experience, relation, and resources visible.; Works well as a contrast to reductionist or deficit-heavy theories.\nRisikerer at skjule: Can sound overly optimistic or individualistic.; May underplay power, structural constraint, and severe impairment.",
+      "tags": [
+        "W07L2",
+        "affordance-limit",
+        "humanistic_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "9846ba36c69be0f08e873de7e9c064653d1748c4cd82728eb0b782d18bd4febf"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-comparison-existential-psychology-1",
+      "front_text": "Hvordan kan humanistic psychology sammenlignes med existential psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both emphasize personhood and authenticity, but humanistic psychology is more growth and therapy oriented.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both emphasize personhood and authenticity, but humanistic psychology is more growth and therapy oriented.",
+      "tags": [
+        "W07L2",
+        "comparison",
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "b450cd89bb053216a7f241dffe6be83c6271e1db060cda92b86d51c78f12a926"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-comparison-critical-psychology-2",
+      "front_text": "Hvordan kan humanistic psychology sammenlignes med critical psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> challenged by</div><div><strong>Eksamenstræk:</strong> Critical psychology asks whether growth language hides social conditions and collective conflicts.</div>",
+      "back_text": "Relation: challenged by\nEksamenstræk: Critical psychology asks whether growth language hides social conditions and collective conflicts.",
+      "tags": [
+        "W07L2",
+        "comparison",
+        "critical_psychology",
+        "humanistic_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "83c1dae7fe6c42b5f9457bde0f41fdebe79bf3f3d95adcd1779fdcbbba143591"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-trap-1",
+      "front_text": "Eksamenstrap i humanistic psychology: hvorfor er dette for simpelt? Assuming humanistic psychology ignores suffering.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre humanistic psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.</div><div><strong>Eksamensvinkel:</strong> The student notes place humanistic psychology near existential and phenomenological material but make growth and therapeutic relation the exam hook.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>self-actualization</li><li>congruence</li><li>unconditional positive regard</li><li>needs</li><li>growth</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre humanistic psychology så flad.\nHold fast i: This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.\nEksamensvinkel: The student notes place humanistic psychology near existential and phenomenological material but make growth and therapeutic relation the exam hook.\nBegreber der kan nuancere svaret: self-actualization; congruence; unconditional positive regard; needs; growth",
+      "tags": [
+        "W07L2",
+        "humanistic_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "7f0db2960cc4bf2f967a8f1e81f3c84c3f67a5edc84b277a036f72bd5a599ba4"
+    },
+    {
+      "card_id": "mx-humanistic-psychology-trap-2",
+      "front_text": "Eksamenstrap i humanistic psychology: hvorfor er dette for simpelt? Treating self-actualization as purely private self-optimization.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre humanistic psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.</div><div><strong>Eksamensvinkel:</strong> The student notes place humanistic psychology near existential and phenomenological material but make growth and therapeutic relation the exam hook.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>self-actualization</li><li>congruence</li><li>unconditional positive regard</li><li>needs</li><li>growth</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre humanistic psychology så flad.\nHold fast i: This cluster treats persons as oriented toward growth, authenticity, relation, and context-sensitive unfolding rather than deficit alone.\nEksamensvinkel: The student notes place humanistic psychology near existential and phenomenological material but make growth and therapeutic relation the exam hook.\nBegreber der kan nuancere svaret: self-actualization; congruence; unconditional positive regard; needs; growth",
+      "tags": [
+        "W07L2",
+        "humanistic_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "4b30bc6ba30a78f8fd0c5117a733cd70882429e46cd2225b8998d300ccacb4c9"
+    },
+    {
+      "card_id": "mx-critical-personalism-orientation-essence-context",
+      "front_text": "Hvor placerer critical personalism essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> person as whole in context</div><div><strong>Forklaring:</strong> The theory resists reducing the person either to inner traits or external variables.</div>",
+      "back_text": "Placering: person as whole in context\nForklaring: The theory resists reducing the person either to inner traits or external variables.",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "essence_context",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "a7e03a8b9ebf561b1749a34250238a8ee59347bd1657bcde828c24e873eed20e"
+    },
+    {
+      "card_id": "mx-critical-personalism-orientation-determination",
+      "front_text": "Hvor placerer critical personalism determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> multi-level caution</div><div><strong>Forklaring:</strong> It warns against treating measured variables as determining the person without interpretation.</div>",
+      "back_text": "Placering: multi-level caution\nForklaring: It warns against treating measured variables as determining the person without interpretation.",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "determination",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "1e74a2df53c869825e66d65bd53ed6126e380cd763c04705510df50842d684b0"
+    },
+    {
+      "card_id": "mx-critical-personalism-orientation-agency",
+      "front_text": "Hvor placerer critical personalism agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> person-centered agency</div><div><strong>Forklaring:</strong> Agency belongs to persons as meaningful wholes, not to isolated variables.</div>",
+      "back_text": "Placering: person-centered agency\nForklaring: Agency belongs to persons as meaningful wholes, not to isolated variables.",
+      "tags": [
+        "W08L1",
+        "agency",
+        "critical_personalism",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "dc7c3aed2ca891475f3fcef39fac971975bbdd360ffb7e7837d9087f5dbf634a"
+    },
+    {
+      "card_id": "mx-critical-personalism-orientation-historicity",
+      "front_text": "Hvor placerer critical personalism historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> biographical and conceptual historicity</div><div><strong>Forklaring:</strong> The person has a history, and the concepts used to describe the person also have theoretical histories.</div>",
+      "back_text": "Placering: biographical and conceptual historicity\nForklaring: The person has a history, and the concepts used to describe the person also have theoretical histories.",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "360329cf46078a6debe2dc09008605eaa8324afd9ee2441b7b1cd8b63e3ac697"
+    },
+    {
+      "card_id": "mx-critical-personalism-model",
+      "front_text": "Hvilket personbegreb ligger i critical personalism?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a concrete whole who cannot be exhausted by variables, scores, or detached trait abstractions.</div><div><strong>Personlighed/subjektivitet:</strong> Personality must be interpreted at the person level, with caution against reifying measured constructs as the person themselves.</div>",
+      "back_text": "Person: The person is a concrete whole who cannot be exhausted by variables, scores, or detached trait abstractions.\nPersonlighed/subjektivitet: Personality must be interpreted at the person level, with caution against reifying measured constructs as the person themselves.",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "bad20cf3a6413eff7ba0951d9f27e45783ef68cf12c9d054458da7ad2c6678ab"
+    },
+    {
+      "card_id": "mx-critical-personalism-method",
+      "front_text": "Hvilken metode eller evidensform stoler critical personalism især på?",
+      "back_html_sanitized": "<div>Conceptual critique, person-level interpretation, methodological reflection, and critique of variable-centered psychology.</div>",
+      "back_text": "Conceptual critique, person-level interpretation, methodological reflection, and critique of variable-centered psychology.",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "c9fb6146c3b1de3c3fd5c01b215d9ff91d1e4f481402456ada99ac949dd9ce65"
+    },
+    {
+      "card_id": "mx-critical-personalism-affordance-limit",
+      "front_text": "Hvad gør critical personalism synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Gives a strong critique of reified trait and variable language.</li><li>Keeps the whole person visible in theory comparison.</li><li>Prepares the move toward critical psychology.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can be more methodological and conceptual than directly generative as a full personality theory.</li><li>May be harder to convert into simple exam-table categories.</li></ul></div>",
+      "back_text": "Gør synligt: Gives a strong critique of reified trait and variable language.; Keeps the whole person visible in theory comparison.; Prepares the move toward critical psychology.\nRisikerer at skjule: Can be more methodological and conceptual than directly generative as a full personality theory.; May be harder to convert into simple exam-table categories.",
+      "tags": [
+        "W08L1",
+        "affordance-limit",
+        "critical_personalism"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "4e83984aca073dba4efeb60933c8df3b8f9f3ce11f06095bd78628bd4f4e728e"
+    },
+    {
+      "card_id": "mx-critical-personalism-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan critical personalism sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> critiques</div><div><strong>Eksamenstræk:</strong> Critical personalism asks what is lost when persons are translated into variables.</div>",
+      "back_text": "Relation: critiques\nEksamenstræk: Critical personalism asks what is lost when persons are translated into variables.",
+      "tags": [
+        "W08L1",
+        "comparison",
+        "critical_personalism",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "87e2f965cbaef274d9a00db6cad11923691ecf6bc8ca932f9008b11570220290"
+    },
+    {
+      "card_id": "mx-critical-personalism-comparison-critical-psychology-2",
+      "front_text": "Hvordan kan critical personalism sammenlignes med critical psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> prepares for</div><div><strong>Eksamenstræk:</strong> Both resist individualizing reduction, but critical psychology develops the social-practice account further.</div>",
+      "back_text": "Relation: prepares for\nEksamenstræk: Both resist individualizing reduction, but critical psychology develops the social-practice account further.",
+      "tags": [
+        "W08L1",
+        "comparison",
+        "critical_personalism",
+        "critical_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "8dfe74fd7cb6553acbf9c407847c14a2ee93e37d8d74e0fcdc080936e56011f4"
+    },
+    {
+      "card_id": "mx-critical-personalism-trap-1",
+      "front_text": "Eksamenstrap i critical personalism: hvorfor er dette for simpelt? Treating critical personalism as merely anti-measurement.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre critical personalism så flad.</div><div><strong>Hold fast i:</strong> This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.</div><div><strong>Eksamensvinkel:</strong> This row is partly course-artifact grounded because the older student tables emphasize broad traditions more than this specific internal critique.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>whole person</li><li>person-level explanation</li><li>reification</li><li>variable critique</li><li>person-situation interplay</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre critical personalism så flad.\nHold fast i: This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.\nEksamensvinkel: This row is partly course-artifact grounded because the older student tables emphasize broad traditions more than this specific internal critique.\nBegreber der kan nuancere svaret: whole person; person-level explanation; reification; variable critique; person-situation interplay",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "980f841b19a17b42a0c0b0e909df3c472814667c16f5eb5e42ed64addebbc523"
+    },
+    {
+      "card_id": "mx-critical-personalism-trap-2",
+      "front_text": "Eksamenstrap i critical personalism: hvorfor er dette for simpelt? Forgetting that the critique is about the status of person concepts, not only methods.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre critical personalism så flad.</div><div><strong>Hold fast i:</strong> This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.</div><div><strong>Eksamensvinkel:</strong> This row is partly course-artifact grounded because the older student tables emphasize broad traditions more than this specific internal critique.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>whole person</li><li>person-level explanation</li><li>reification</li><li>variable critique</li><li>person-situation interplay</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre critical personalism så flad.\nHold fast i: This cluster insists on person-level interpretation and conceptual caution against reified variable-based accounts of personality.\nEksamensvinkel: This row is partly course-artifact grounded because the older student tables emphasize broad traditions more than this specific internal critique.\nBegreber der kan nuancere svaret: whole person; person-level explanation; reification; variable critique; person-situation interplay",
+      "tags": [
+        "W08L1",
+        "critical_personalism",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "b955d951edaabbd185546cca805ae8b570fefd41f05752676e554448b0ba3fd3"
+    },
+    {
+      "card_id": "mx-critical-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer critical psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong contextual and social-practice model</div><div><strong>Forklaring:</strong> The person is not explained as an inner essence but through participation in concrete social practices.</div>",
+      "back_text": "Placering: strong contextual and social-practice model\nForklaring: The person is not explained as an inner essence but through participation in concrete social practices.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "essence_context",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "3791728c18a075ac200c8798ba2a69a1a5c351c4ef1a441faab81a367d2b7a18"
+    },
+    {
+      "card_id": "mx-critical-psychology-orientation-determination",
+      "front_text": "Hvor placerer critical psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> socially conditioned but not socially closed</div><div><strong>Forklaring:</strong> Conditions shape possibilities, but persons act within, reproduce, and sometimes transform those conditions.</div>",
+      "back_text": "Placering: socially conditioned but not socially closed\nForklaring: Conditions shape possibilities, but persons act within, reproduce, and sometimes transform those conditions.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "determination",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "ef65d14e806c83bc0a74f78a5ea1479db760176d1995bfd22e94c6277768fb37"
+    },
+    {
+      "card_id": "mx-critical-psychology-orientation-agency",
+      "front_text": "Hvor placerer critical psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> situated and collective agency</div><div><strong>Forklaring:</strong> Agency is located in participation, conduct of everyday life, and changing action possibilities, often with others.</div>",
+      "back_text": "Placering: situated and collective agency\nForklaring: Agency is located in participation, conduct of everyday life, and changing action possibilities, often with others.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "agency",
+        "critical_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "27e4a3f13c220cde517f11f64b1a680ac4cd83fb419788654a78ce76e1d04877"
+    },
+    {
+      "card_id": "mx-critical-psychology-orientation-historicity",
+      "front_text": "Hvor placerer critical psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong sociogenesis</div><div><strong>Forklaring:</strong> Social and historical conditions are central to understanding subjectivity and difficulty.</div>",
+      "back_text": "Placering: strong sociogenesis\nForklaring: Social and historical conditions are central to understanding subjectivity and difficulty.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "d612c5e0c9343af31ec201b54874de87455d76f7380303301e3230fe6366a208"
+    },
+    {
+      "card_id": "mx-critical-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i critical psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a participant in social practice whose subjectivity and action possibilities are shaped by historically developed conditions.</div><div><strong>Personlighed/subjektivitet:</strong> Personality becomes subjectivity: a practical relation between the person, everyday life, participation, conflicts, and social arrangements.</div>",
+      "back_text": "Person: The person is a participant in social practice whose subjectivity and action possibilities are shaped by historically developed conditions.\nPersonlighed/subjektivitet: Personality becomes subjectivity: a practical relation between the person, everyday life, participation, conflicts, and social arrangements.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "b5a03db9f163dc5e8a1421b2aa53235a4e9e0ec5b65e368a7d45a296e6e945c7"
+    },
+    {
+      "card_id": "mx-critical-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler critical psychology især på?",
+      "back_html_sanitized": "<div>Practice research, social critique, participatory inquiry, analysis of everyday life, and historical-material reflection.</div>",
+      "back_text": "Practice research, social critique, participatory inquiry, analysis of everyday life, and historical-material reflection.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "2cae7cd8e94dea54c0d5d6e61e9ed3c7e9893b767ac71a4e774f94b2c53f069d"
+    },
+    {
+      "card_id": "mx-critical-psychology-affordance-limit",
+      "front_text": "Hvad gør critical psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Strongly critiques individualizing and decontextualized personality explanations.</li><li>Connects personal difficulty with social conditions and practice.</li><li>Gives rich language for agency without pretending context is irrelevant.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can underplay biological or intrapsychic dimensions.</li><li>May be harder to operationalize in compact assessment terms.</li><li>Can become broad if not anchored in concrete practices.</li></ul></div>",
+      "back_text": "Gør synligt: Strongly critiques individualizing and decontextualized personality explanations.; Connects personal difficulty with social conditions and practice.; Gives rich language for agency without pretending context is irrelevant.\nRisikerer at skjule: Can underplay biological or intrapsychic dimensions.; May be harder to operationalize in compact assessment terms.; Can become broad if not anchored in concrete practices.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "affordance-limit",
+        "critical_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "d17910037deb0c9828e9aac29d6e521e20968f00eef8cf1848018a15530e7244"
+    },
+    {
+      "card_id": "mx-critical-psychology-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan critical psychology sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> critiques</div><div><strong>Eksamenstræk:</strong> Critical psychology objects to explaining persons primarily through decontextualized individual differences.</div>",
+      "back_text": "Relation: critiques\nEksamenstræk: Critical psychology objects to explaining persons primarily through decontextualized individual differences.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "comparison",
+        "critical_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "e0df6f3b511406324cb2d7300c5a228ea094f3e740ac7fa47ee62fc7cc2928d3"
+    },
+    {
+      "card_id": "mx-critical-psychology-comparison-sociocultural-poststructural-approaches-2",
+      "front_text": "Hvordan kan critical psychology sammenlignes med sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both explain subjectivity socially, but critical psychology emphasizes practice and conditions more than discourse alone.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both explain subjectivity socially, but critical psychology emphasizes practice and conditions more than discourse alone.",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "comparison",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "ea93081e36296b92416f3f6a409ce1bc95c7763075339287c5deda6557e2064d"
+    },
+    {
+      "card_id": "mx-critical-psychology-trap-1",
+      "front_text": "Eksamenstrap i critical psychology: hvorfor er dette for simpelt? Assuming social conditions fully erase agency.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre critical psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.</div><div><strong>Eksamensvinkel:</strong> The student tables make critical psychology a key late-course correction to individual-centered theories.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>subjectivity</li><li>participation</li><li>action possibilities</li><li>conditions</li><li>everyday life</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre critical psychology så flad.\nHold fast i: This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.\nEksamensvinkel: The student tables make critical psychology a key late-course correction to individual-centered theories.\nBegreber der kan nuancere svaret: subjectivity; participation; action possibilities; conditions; everyday life",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "455f4c3cbc32108c5cac601527c08fb04979784b276e95198d9aef19979ef892"
+    },
+    {
+      "card_id": "mx-critical-psychology-trap-2",
+      "front_text": "Eksamenstrap i critical psychology: hvorfor er dette for simpelt? Reducing critical psychology to political opinion rather than a theory of subjectivity and practice.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre critical psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.</div><div><strong>Eksamensvinkel:</strong> The student tables make critical psychology a key late-course correction to individual-centered theories.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>subjectivity</li><li>participation</li><li>action possibilities</li><li>conditions</li><li>everyday life</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre critical psychology så flad.\nHold fast i: This cluster explains subjectivity, action, and difficulty through social practice, historical conditions, and collective possibilities for change.\nEksamensvinkel: The student tables make critical psychology a key late-course correction to individual-centered theories.\nBegreber der kan nuancere svaret: subjectivity; participation; action possibilities; conditions; everyday life",
+      "tags": [
+        "W08L2",
+        "W09L1",
+        "critical_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "741fad3d765c9fec397817fe2e75ed80ad5f818efdc98bb5aa14513ed0fc6b95"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-orientation-essence-context",
+      "front_text": "Hvor placerer sociocultural and poststructural approaches essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong context and anti-essentialism</div><div><strong>Forklaring:</strong> The theory challenges inner-essence models and treats person categories as historically and socially produced.</div>",
+      "back_text": "Placering: strong context and anti-essentialism\nForklaring: The theory challenges inner-essence models and treats person categories as historically and socially produced.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "essence_context",
+        "orientation",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "3adc255ebc21ab27de47fa0fca7f85bf0e443c4c7b2edc69e4a9b752d89bf06c"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-orientation-determination",
+      "front_text": "Hvor placerer sociocultural and poststructural approaches determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> discursive and normative conditioning</div><div><strong>Forklaring:</strong> Language, categories, power, and norms shape what persons can be, say, and recognize as themselves.</div>",
+      "back_text": "Placering: discursive and normative conditioning\nForklaring: Language, categories, power, and norms shape what persons can be, say, and recognize as themselves.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "determination",
+        "orientation",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "f1f7ce3aeaa2e105f04bf0efe585d0c2d3517e53a6863954c8e5507e3eab824e"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-orientation-agency",
+      "front_text": "Hvor placerer sociocultural and poststructural approaches agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> decentered but possible through positioning and critique</div><div><strong>Forklaring:</strong> Agency is not sovereign self-choice; it appears in how subjects take up, resist, or rework available positions.</div>",
+      "back_text": "Placering: decentered but possible through positioning and critique\nForklaring: Agency is not sovereign self-choice; it appears in how subjects take up, resist, or rework available positions.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "agency",
+        "orientation",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "31941521c5ff3f7679dd50e2e67d969bd88219d4f9f35e461266740778d28fb7"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-orientation-historicity",
+      "front_text": "Hvor placerer sociocultural and poststructural approaches historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong sociogenesis and genealogy</div><div><strong>Forklaring:</strong> The history of categories, norms, gender, and knowledge practices is central to personality and subjectivity.</div>",
+      "back_text": "Placering: strong sociogenesis and genealogy\nForklaring: The history of categories, norms, gender, and knowledge practices is central to personality and subjectivity.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "historicity",
+        "orientation",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "2554ea4ceffc24e2ad578fd1ab0f24706fc7fe32884d25c2c4c84a06ea9a5aff"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-model",
+      "front_text": "Hvilket personbegreb ligger i sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a socially, historically, and discursively produced subject rather than a stable inner essence.</div><div><strong>Personlighed/subjektivitet:</strong> Subjectivity is formed through language, categories, power relations, norms, gendered practices, and available subject positions.</div>",
+      "back_text": "Person: The person is a socially, historically, and discursively produced subject rather than a stable inner essence.\nPersonlighed/subjektivitet: Subjectivity is formed through language, categories, power relations, norms, gendered practices, and available subject positions.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "model",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "9a59ca01e75c6537d7225fee1dff7e2cc943994dc7e3e1ddde2b4064b28fad65"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-method",
+      "front_text": "Hvilken metode eller evidensform stoler sociocultural and poststructural approaches især på?",
+      "back_html_sanitized": "<div>Discourse analysis, social constructionist critique, genealogy, feminist analysis, and analysis of categorization and subjectivation.</div>",
+      "back_text": "Discourse analysis, social constructionist critique, genealogy, feminist analysis, and analysis of categorization and subjectivation.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "method",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "4decf08e8e5dea175d3e1849029d4234e305a1a83ee393e4a41d87e6d27c54fe"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-affordance-limit",
+      "front_text": "Hvad gør sociocultural and poststructural approaches synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Powerfully critiques naturalized personality categories.</li><li>Shows how language, gender, and power make kinds of persons available.</li><li>Excellent for comparing with trait, humanistic, and psychoanalytic models of the subject.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can make personal continuity and embodied suffering harder to explain.</li><li>Risks sounding as if everything is only language if social practice and materiality are not kept visible.</li><li>Agency can become difficult to locate.</li></ul></div>",
+      "back_text": "Gør synligt: Powerfully critiques naturalized personality categories.; Shows how language, gender, and power make kinds of persons available.; Excellent for comparing with trait, humanistic, and psychoanalytic models of the subject.\nRisikerer at skjule: Can make personal continuity and embodied suffering harder to explain.; Risks sounding as if everything is only language if social practice and materiality are not kept visible.; Agency can become difficult to locate.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "affordance-limit",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "62db1115205a1e3930a50f82108ab73d966cd71259355239ff43a7b94257a678"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-comparison-critical-psychology-1",
+      "front_text": "Hvordan kan sociocultural and poststructural approaches sammenlignes med critical psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both socialise subjectivity, but critical psychology emphasizes practice and action possibilities while poststructural work emphasizes discourse and power.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both socialise subjectivity, but critical psychology emphasizes practice and action possibilities while poststructural work emphasizes discourse and power.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "comparison",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "82e54c1a79ab85e67458ce7575c38edac11a846566387a97397c6794c75b64fd"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-comparison-trait-and-assessment-psychology-2",
+      "front_text": "Hvordan kan sociocultural and poststructural approaches sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> critiques</div><div><strong>Eksamenstræk:</strong> It asks how the categories used to measure personality are historically produced.</div>",
+      "back_text": "Relation: critiques\nEksamenstræk: It asks how the categories used to measure personality are historically produced.",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "comparison",
+        "sociocultural_poststructural_approaches",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "b600119b68d67a44889b3f28d44e7e3357b022c531677f346204c31055638784"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-trap-1",
+      "front_text": "Eksamenstrap i sociocultural and poststructural approaches: hvorfor er dette for simpelt? Collapsing social constructionism and poststructuralism into the same theory.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre sociocultural and poststructural approaches så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.</div><div><strong>Eksamensvinkel:</strong> The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>social constructionism</li><li>poststructuralism</li><li>discourse</li><li>power</li><li>subjectivation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre sociocultural and poststructural approaches så flad.\nHold fast i: This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.\nEksamensvinkel: The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.\nBegreber der kan nuancere svaret: social constructionism; poststructuralism; discourse; power; subjectivation",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "sociocultural_poststructural_approaches",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "b28494ab5bdf6313e8487fb8343e27dee34631a5b217bc3e590507a0e9f88d64"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-trap-2",
+      "front_text": "Eksamenstrap i sociocultural and poststructural approaches: hvorfor er dette for simpelt? Thinking anti-essentialism means persons have no reality or suffering.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre sociocultural and poststructural approaches så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.</div><div><strong>Eksamensvinkel:</strong> The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>social constructionism</li><li>poststructuralism</li><li>discourse</li><li>power</li><li>subjectivation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre sociocultural and poststructural approaches så flad.\nHold fast i: This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.\nEksamensvinkel: The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.\nBegreber der kan nuancere svaret: social constructionism; poststructuralism; discourse; power; subjectivation",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "sociocultural_poststructural_approaches",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "3dcce97869947391855ebcddafc05ff19539a7fac87a6a4b249e4b678a479016"
+    },
+    {
+      "card_id": "mx-sociocultural-poststructural-approaches-trap-3",
+      "front_text": "Eksamenstrap i sociocultural and poststructural approaches: hvorfor er dette for simpelt? Forgetting the role of power in poststructuralism.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre sociocultural and poststructural approaches så flad.</div><div><strong>Hold fast i:</strong> This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.</div><div><strong>Eksamensvinkel:</strong> The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>social constructionism</li><li>poststructuralism</li><li>discourse</li><li>power</li><li>subjectivation</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre sociocultural and poststructural approaches så flad.\nHold fast i: This cluster treats personality and subjectivity as historically and relationally produced through discourse, power, norm, and social practice.\nEksamensvinkel: The second student table is especially useful here because it explicitly compares social constructionism and poststructuralism as related but not identical traditions.\nBegreber der kan nuancere svaret: social constructionism; poststructuralism; discourse; power; subjectivation",
+      "tags": [
+        "W10L1",
+        "W10L2",
+        "W11L1",
+        "sociocultural_poststructural_approaches",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "e301e216f268c7ffd88a1b6ba521c082265f03d1b0516fe70f47ef1aca4a983f"
+    },
+    {
+      "card_id": "mx-narrative-psychology-orientation-essence-context",
+      "front_text": "Hvor placerer narrative psychology essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> contextual meaning with personal continuity</div><div><strong>Forklaring:</strong> The person is not a fixed essence, but identity gains continuity through culturally shaped stories.</div>",
+      "back_text": "Placering: contextual meaning with personal continuity\nForklaring: The person is not a fixed essence, but identity gains continuity through culturally shaped stories.",
+      "tags": [
+        "W11L2",
+        "essence_context",
+        "narrative_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "e330c648b699caddd8bb53137513f30728536e223858e29d866ee57d1f76d122"
+    },
+    {
+      "card_id": "mx-narrative-psychology-orientation-determination",
+      "front_text": "Hvor placerer narrative psychology determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> cultural and autobiographical shaping</div><div><strong>Forklaring:</strong> Available narratives, remembered events, and cultural templates shape identity without fully fixing it.</div>",
+      "back_text": "Placering: cultural and autobiographical shaping\nForklaring: Available narratives, remembered events, and cultural templates shape identity without fully fixing it.",
+      "tags": [
+        "W11L2",
+        "determination",
+        "narrative_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "919534a3c891644fc46253a144340d0d35b5cb499579fb441d79584890a88033"
+    },
+    {
+      "card_id": "mx-narrative-psychology-orientation-agency",
+      "front_text": "Hvor placerer narrative psychology agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> narrative agency</div><div><strong>Forklaring:</strong> Agency appears in telling, revising, and positioning oneself within stories, even when not all story material is chosen.</div>",
+      "back_text": "Placering: narrative agency\nForklaring: Agency appears in telling, revising, and positioning oneself within stories, even when not all story material is chosen.",
+      "tags": [
+        "W11L2",
+        "agency",
+        "narrative_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "3fb5eeebaf3081d722a9d67992e74680afb15d767ff36fecfa4de332230df9b6"
+    },
+    {
+      "card_id": "mx-narrative-psychology-orientation-historicity",
+      "front_text": "Hvor placerer narrative psychology historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> strong ontogenesis with sociogenesis</div><div><strong>Forklaring:</strong> Life history is central, and cultural history supplies the forms through which a life can be told.</div>",
+      "back_text": "Placering: strong ontogenesis with sociogenesis\nForklaring: Life history is central, and cultural history supplies the forms through which a life can be told.",
+      "tags": [
+        "W11L2",
+        "historicity",
+        "narrative_psychology",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "6db8f5b2d4bb526ae1656f584838c72be2f12657dc4456ebf048829a5abd12aa"
+    },
+    {
+      "card_id": "mx-narrative-psychology-model",
+      "front_text": "Hvilket personbegreb ligger i narrative psychology?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is a storyteller and culturally situated interpreter whose identity is organized through narrative meaning over time.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is understood as narrative identity: a changing but relatively coherent life story shaped by culture, memory, and audience.</div>",
+      "back_text": "Person: The person is a storyteller and culturally situated interpreter whose identity is organized through narrative meaning over time.\nPersonlighed/subjektivitet: Personality is understood as narrative identity: a changing but relatively coherent life story shaped by culture, memory, and audience.",
+      "tags": [
+        "W11L2",
+        "model",
+        "narrative_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "94710b4e90a929aacfd82e6e34ed2bd2c9144054c57a908954fb2479adfc6d2a"
+    },
+    {
+      "card_id": "mx-narrative-psychology-method",
+      "front_text": "Hvilken metode eller evidensform stoler narrative psychology især på?",
+      "back_html_sanitized": "<div>Narrative analysis, life-story interviews, interpretation of self-narratives, and attention to cultural story forms.</div>",
+      "back_text": "Narrative analysis, life-story interviews, interpretation of self-narratives, and attention to cultural story forms.",
+      "tags": [
+        "W11L2",
+        "method",
+        "narrative_psychology"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "9be2b9f7549b50d2dc06e116d27a2f3b1bf8b38dab66bc472387f31949098cc5"
+    },
+    {
+      "card_id": "mx-narrative-psychology-affordance-limit",
+      "front_text": "Hvad gør narrative psychology synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Explains continuity and change through meaning rather than trait stability alone.</li><li>Excellent for oral exam comparison because it bridges individual life and culture.</li><li>Makes temporality and identity directly visible.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>May underplay non-narrative, biological, and unconscious dimensions.</li><li>Can overemphasize coherence when lives are fragmented or conflictual.</li><li>Depends on interpretive methods that may be less predictive.</li></ul></div>",
+      "back_text": "Gør synligt: Explains continuity and change through meaning rather than trait stability alone.; Excellent for oral exam comparison because it bridges individual life and culture.; Makes temporality and identity directly visible.\nRisikerer at skjule: May underplay non-narrative, biological, and unconscious dimensions.; Can overemphasize coherence when lives are fragmented or conflictual.; Depends on interpretive methods that may be less predictive.",
+      "tags": [
+        "W11L2",
+        "affordance-limit",
+        "narrative_psychology"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "8ecbdb0ebf8e8298d527977a3b3a6b51e9926af878bc3d4c77ba80ede70f81e2"
+    },
+    {
+      "card_id": "mx-narrative-psychology-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan narrative psychology sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> contrasts with</div><div><strong>Eksamenstræk:</strong> Trait theory describes stable dimensions; narrative psychology explains how a person makes a life meaningful across time.</div>",
+      "back_text": "Relation: contrasts with\nEksamenstræk: Trait theory describes stable dimensions; narrative psychology explains how a person makes a life meaningful across time.",
+      "tags": [
+        "W11L2",
+        "comparison",
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "0e24c74bcabe96716f48b4bbc14a082fdfa72a1d549b4d7bd8350a3b1b9efa82"
+    },
+    {
+      "card_id": "mx-narrative-psychology-comparison-sociocultural-poststructural-approaches-2",
+      "front_text": "Hvordan kan narrative psychology sammenlignes med sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> overlaps with</div><div><strong>Eksamenstræk:</strong> Both use language and culture, but narrative psychology is more focused on identity continuity and life story.</div>",
+      "back_text": "Relation: overlaps with\nEksamenstræk: Both use language and culture, but narrative psychology is more focused on identity continuity and life story.",
+      "tags": [
+        "W11L2",
+        "comparison",
+        "narrative_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "3a1b5bdceaf8bb07b814b5db78c9263f91b0b156e654e5aa431ba3fc2aeb369d"
+    },
+    {
+      "card_id": "mx-narrative-psychology-comparison-psychoanalytic-personality-theory-3",
+      "front_text": "Hvordan kan narrative psychology sammenlignes med psychoanalytic personality theory?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> reworks</div><div><strong>Eksamenstræk:</strong> Narrative therapy can rework psychoanalytic concerns with hidden conflict into dialogic and interpretive self-stories.</div>",
+      "back_text": "Relation: reworks\nEksamenstræk: Narrative therapy can rework psychoanalytic concerns with hidden conflict into dialogic and interpretive self-stories.",
+      "tags": [
+        "W11L2",
+        "comparison",
+        "narrative_psychology",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "52dedbaf5819304bcc38fb5fbfbe7d0e3e8b4046182aee305e7e18ce2e0befd8"
+    },
+    {
+      "card_id": "mx-narrative-psychology-trap-1",
+      "front_text": "Eksamenstrap i narrative psychology: hvorfor er dette for simpelt? Thinking narratives are merely fictional decoration.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre narrative psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.</div><div><strong>Eksamensvinkel:</strong> The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>narrative identity</li><li>life story</li><li>meaning-making</li><li>temporality</li><li>self-narrative</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre narrative psychology så flad.\nHold fast i: This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.\nEksamensvinkel: The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.\nBegreber der kan nuancere svaret: narrative identity; life story; meaning-making; temporality; self-narrative",
+      "tags": [
+        "W11L2",
+        "narrative_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "d2385c375433c8a12696aa2b17f8a8a2029af3aa4267b80e98918067d653631e"
+    },
+    {
+      "card_id": "mx-narrative-psychology-trap-2",
+      "front_text": "Eksamenstrap i narrative psychology: hvorfor er dette for simpelt? Forgetting that narrative identity is culturally shaped, not purely private.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre narrative psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.</div><div><strong>Eksamensvinkel:</strong> The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>narrative identity</li><li>life story</li><li>meaning-making</li><li>temporality</li><li>self-narrative</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre narrative psychology så flad.\nHold fast i: This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.\nEksamensvinkel: The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.\nBegreber der kan nuancere svaret: narrative identity; life story; meaning-making; temporality; self-narrative",
+      "tags": [
+        "W11L2",
+        "narrative_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "786e6eabc7b813290fa616f08da03c92da9c654ccc762b614f1f381f93a5ee1e"
+    },
+    {
+      "card_id": "mx-narrative-psychology-trap-3",
+      "front_text": "Eksamenstrap i narrative psychology: hvorfor er dette for simpelt? Treating narrative theory as the same as poststructural discourse theory.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre narrative psychology så flad.</div><div><strong>Hold fast i:</strong> This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.</div><div><strong>Eksamensvinkel:</strong> The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>narrative identity</li><li>life story</li><li>meaning-making</li><li>temporality</li><li>self-narrative</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre narrative psychology så flad.\nHold fast i: This cluster explains personality through story, temporality, cultural meaning, and the ongoing revision of identity.\nEksamensvinkel: The student material treats narrative theory as a late-course synthesis row that preserves history, culture, and personal meaning.\nBegreber der kan nuancere svaret: narrative identity; life story; meaning-making; temporality; self-narrative",
+      "tags": [
+        "W11L2",
+        "narrative_psychology",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "ab0429e9a52f4e02f85243683ebd502817fc99377ec707d4cf8fe6efeac60cdb"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-orientation-essence-context",
+      "front_text": "Hvor placerer comparative theory analysis essens vs kontekst?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> axis for comparing all traditions</div><div><strong>Forklaring:</strong> The axis helps distinguish inner-trait and unconscious models from relational, practice-based, discursive, and narrative models.</div>",
+      "back_text": "Placering: axis for comparing all traditions\nForklaring: The axis helps distinguish inner-trait and unconscious models from relational, practice-based, discursive, and narrative models.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "essence_context",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "238dfd0ce172b5ffa2a48c9840a21a2685adf09703c85de783ec2ccb6e07a0b3"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-orientation-determination",
+      "front_text": "Hvor placerer comparative theory analysis determination?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> axis for causal and conditioning assumptions</div><div><strong>Forklaring:</strong> The axis separates biological, psychic, social, discursive, and existential accounts of what shapes the person.</div>",
+      "back_text": "Placering: axis for causal and conditioning assumptions\nForklaring: The axis separates biological, psychic, social, discursive, and existential accounts of what shapes the person.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "determination",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "6b77595564c8e3f3c81463a4526a08d24c4bdd3087c7b748e944fa341b0504c3"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-orientation-agency",
+      "front_text": "Hvor placerer comparative theory analysis agency?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> axis for locating action</div><div><strong>Forklaring:</strong> The axis clarifies whether agency is in the ego, choice, growth, participation, discourse, narrative revision, or largely absent.</div>",
+      "back_text": "Placering: axis for locating action\nForklaring: The axis clarifies whether agency is in the ego, choice, growth, participation, discourse, narrative revision, or largely absent.",
+      "tags": [
+        "W12L1",
+        "agency",
+        "comparative_theory_analysis",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "3671fb2b53f92c53049a9518432b8fd02e6b00a5a926ed23cbab2728a030ebb6"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-orientation-historicity",
+      "front_text": "Hvor placerer comparative theory analysis historicitet?",
+      "back_html_sanitized": "<div><strong>Placering:</strong> axis for time scale</div><div><strong>Forklaring:</strong> The axis compares phylogenetic, ontogenetic, and sociogenetic explanations across the course.</div>",
+      "back_text": "Placering: axis for time scale\nForklaring: The axis compares phylogenetic, ontogenetic, and sociogenetic explanations across the course.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "historicity",
+        "orientation"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "1c63f0d0d01d40d7e203fc4c17c726092e2537d177eeba2fb0a92a0f1580ca5b"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-model",
+      "front_text": "Hvilket personbegreb ligger i comparative theory analysis?",
+      "back_html_sanitized": "<div><strong>Person:</strong> The person is treated as an object of theoretical comparison: each tradition illuminates some aspects and hides others.</div><div><strong>Personlighed/subjektivitet:</strong> Personality is not one settled object; it shifts between trait, structure, lived experience, existence, growth, practice, discourse, and narrative.</div>",
+      "back_text": "Person: The person is treated as an object of theoretical comparison: each tradition illuminates some aspects and hides others.\nPersonlighed/subjektivitet: Personality is not one settled object; it shifts between trait, structure, lived experience, existence, growth, practice, discourse, and narrative.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "model"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "c239b5003922f7eeefb6ca95acdf47b136f289449fe2049c407d7175c375ad3f"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-method",
+      "front_text": "Hvilken metode eller evidensform stoler comparative theory analysis især på?",
+      "back_html_sanitized": "<div>Comparative theory analysis using orientation points, source grounding, strengths and limitations, and explicit exam-relevant contrasts.</div>",
+      "back_text": "Comparative theory analysis using orientation points, source grounding, strengths and limitations, and explicit exam-relevant contrasts.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "method"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "b28d2733382bd3cf9b6f5c63ccbadf4d15858824c75ae21bce151915108f23e3"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-affordance-limit",
+      "front_text": "Hvad gør comparative theory analysis synligt, og hvad risikerer teorien at skjule?",
+      "back_html_sanitized": "<div><strong>Gør synligt:</strong><ul><li>Turns the student tables into a reusable exam rubric.</li><li>Prevents isolated theory summaries by forcing comparison.</li><li>Supports oral answers that name affordances and limitations.</li></ul></div><div><strong>Risikerer at skjule:</strong><ul><li>Can flatten theories if used as a checklist instead of a comparison aid.</li><li>Needs current course grounding before being used as learning material.</li></ul></div>",
+      "back_text": "Gør synligt: Turns the student tables into a reusable exam rubric.; Prevents isolated theory summaries by forcing comparison.; Supports oral answers that name affordances and limitations.\nRisikerer at skjule: Can flatten theories if used as a checklist instead of a comparison aid.; Needs current course grounding before being used as learning material.",
+      "tags": [
+        "W12L1",
+        "affordance-limit",
+        "comparative_theory_analysis"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "fa57c9574c22b1d26ea410711d19ee56992f5256634a0e87aed17447e1ef8e21"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-comparison-trait-and-assessment-psychology-1",
+      "front_text": "Hvordan kan comparative theory analysis sammenlignes med trait and assessment psychology?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> maps</div><div><strong>Eksamenstræk:</strong> Trait theory is the baseline for many later contrasts.</div>",
+      "back_text": "Relation: maps\nEksamenstræk: Trait theory is the baseline for many later contrasts.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "comparison",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "1ac7cfbabcbfd8b31edb68707bb5538d59ab71bcd8b43cb4c9733f072cb21fff"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-comparison-sociocultural-poststructural-approaches-2",
+      "front_text": "Hvordan kan comparative theory analysis sammenlignes med sociocultural and poststructural approaches?",
+      "back_html_sanitized": "<div><strong>Relation:</strong> maps</div><div><strong>Eksamenstræk:</strong> Sociocultural and poststructural approaches mark the strongest anti-essentialist end of the matrix.</div>",
+      "back_text": "Relation: maps\nEksamenstræk: Sociocultural and poststructural approaches mark the strongest anti-essentialist end of the matrix.",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "comparison",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "e66d4e36d7bbc447864ad5a36925c9ffd0f5534ce00d2dcd1966663efd840ac9"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-trap-1",
+      "front_text": "Eksamenstrap i comparative theory analysis: hvorfor er dette for simpelt? Using the matrix as a replacement for readings.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre comparative theory analysis så flad.</div><div><strong>Hold fast i:</strong> This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.</div><div><strong>Eksamensvinkel:</strong> This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>essence versus context</li><li>determination</li><li>agency</li><li>historicity</li><li>theory comparison</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre comparative theory analysis så flad.\nHold fast i: This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.\nEksamensvinkel: This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.\nBegreber der kan nuancere svaret: essence versus context; determination; agency; historicity; theory comparison",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "88be686a0d0844f4d4cd205dccb72c8bb1e0bdeda2588092ec191efd89da9298"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-trap-2",
+      "front_text": "Eksamenstrap i comparative theory analysis: hvorfor er dette for simpelt? Forgetting that some rows combine subtraditions with internal disagreements.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre comparative theory analysis så flad.</div><div><strong>Hold fast i:</strong> This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.</div><div><strong>Eksamensvinkel:</strong> This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>essence versus context</li><li>determination</li><li>agency</li><li>historicity</li><li>theory comparison</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre comparative theory analysis så flad.\nHold fast i: This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.\nEksamensvinkel: This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.\nBegreber der kan nuancere svaret: essence versus context; determination; agency; historicity; theory comparison",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "ab9efd6d2aea94ad35aaf919fddd4f315437b469379e3551dc95e1a2ca117845"
+    },
+    {
+      "card_id": "mx-comparative-theory-analysis-trap-3",
+      "front_text": "Eksamenstrap i comparative theory analysis: hvorfor er dette for simpelt? Treating orientation axes as fixed scores rather than interpretive prompts.",
+      "back_html_sanitized": "<div><strong>Korrigering:</strong> Undgå at gøre comparative theory analysis så flad.</div><div><strong>Hold fast i:</strong> This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.</div><div><strong>Eksamensvinkel:</strong> This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.</div><div><strong>Begreber der kan nuancere svaret:</strong><ul><li>essence versus context</li><li>determination</li><li>agency</li><li>historicity</li><li>theory comparison</li></ul></div>",
+      "back_text": "Korrigering: Undgå at gøre comparative theory analysis så flad.\nHold fast i: This cluster uses historical and comparative reflection to judge what each theory can and cannot explain about persons, selves, and subjectivity.\nEksamensvinkel: This row captures the core value of the older notes: exam-ready comparison across theories using stable orientation points.\nBegreber der kan nuancere svaret: essence versus context; determination; agency; historicity; theory comparison",
+      "tags": [
+        "W12L1",
+        "comparative_theory_analysis",
+        "trap"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "2b7d5cccae55875e2d7b46b16c11bd8c114a3da01d50338075494f46b2f732f5"
+    }
+  ]
+}

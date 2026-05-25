@@ -91,20 +91,24 @@ Current implementation:
 - anonymous users can preview decks, while logged-in users can save written
   answers and review ratings
 
-Planned `personlighedspsykologi` deck:
+Current `personlighedspsykologi` deck:
 
 - source:
   `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
 - registry:
   `shows/personlighedspsykologi-en/flashcards/decks.json`
 - deck slug: `eksamensmatrix-personlighedspsykologi`
+- deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
+- card count: 152
 - purpose: oral-exam retrieval of theory comparisons, orientation points,
   person models, method styles, strengths/limitations, and common exam traps
 
 NotebookLM is not the canonical first writer for matrix-derived flashcards.
-The first deck should be generated deterministically from the validated matrix;
-LLM/NotebookLM phrasing can be a later review aid only if stable IDs,
-provenance, and validation gates are preserved.
+The deck is generated deterministically from the validated matrix by
+`scripts/build_personlighedspsykologi_matrix_flashcards.py`; LLM/NotebookLM
+phrasing can be a later review aid only if stable IDs, provenance, and
+validation gates are preserved.
 
 ### Slides
 

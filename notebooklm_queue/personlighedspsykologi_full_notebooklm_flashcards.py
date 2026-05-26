@@ -28,6 +28,10 @@ from notebooklm_queue.personlighedspsykologi_gap_repair_review import (
     gap_repair_decisions_to_candidate_payload,
     load_gap_repair_promotion_decisions,
 )
+from notebooklm_queue.personlighedspsykologi_coverage_closure_flashcards import (
+    coverage_closure_to_candidate_payload,
+    load_coverage_closure_artifact,
+)
 
 FULL_NOTEBOOKLM_DECK_SLUG = "notebooklm-fuld-matrix-personlighedspsykologi"
 FULL_NOTEBOOKLM_DECK_TITLE = "NotebookLM fuld matrix: personlighedspsykologi"
@@ -235,6 +239,13 @@ def load_gap_repair_candidate_payloads(decision_paths: list[Path]) -> list[dict[
     for path in decision_paths:
         decisions = load_gap_repair_promotion_decisions(path)
         payloads.append(gap_repair_decisions_to_candidate_payload(decisions))
+    return payloads
+
+
+def load_coverage_closure_candidate_payloads(artifact_paths: list[Path]) -> list[dict[str, Any]]:
+    payloads: list[dict[str, Any]] = []
+    for path in artifact_paths:
+        payloads.append(coverage_closure_to_candidate_payload(load_coverage_closure_artifact(path)))
     return payloads
 
 

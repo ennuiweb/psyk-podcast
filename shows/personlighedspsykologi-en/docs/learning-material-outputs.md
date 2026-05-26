@@ -101,9 +101,10 @@ Current `personlighedspsykologi` Freudd deck policy:
 - only live deck slug: `notebooklm-fuld-matrix-personlighedspsykologi`
 - live deck artifact:
   `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
-- live card count: 280
+- live card count: 319
 - live purpose: newest NotebookLM cards from all matrix clusters, generated from
-  processed matrix packs without existing Freudd cards as NotebookLM sources
+  processed matrix packs without existing Freudd cards as NotebookLM sources,
+  plus reviewed gap-repair cards and deterministic coverage-closure cards
 - full matrix/source coverage audit:
   `shows/personlighedspsykologi-en/flashcards/coverage/full_matrix_coverage_report.md`
 - coverage audit CLI:
@@ -112,9 +113,13 @@ Current `personlighedspsykologi` Freudd deck policy:
   `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_notebook_plan.md`
 - targeted NotebookLM gap-repair review decisions:
   `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.md`
+- deterministic coverage-closure flashcards:
+  `shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.md`
 - targeted NotebookLM gap-repair CLIs:
   `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
   `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
+- coverage-closure CLI:
+  `scripts/build_personlighedspsykologi_coverage_closure_flashcards.py`
 - archived previous live decks:
   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`
 - archived contents: original matrix/Gemini-style deck, first NotebookLM variant
@@ -142,10 +147,14 @@ NotebookLM repair cards across the three packs: 41 normalized as `candidate`, 6
 as `needs_review`, and 10 as `auto_rejected`. Gemini reviewed the 47
 non-rejected candidates in one call and accepted 46 for promotion, with one
 `merge_with_existing` decision. The live full NotebookLM deck now includes those
-46 accepted repair cards, raising the live card count to 280. The post-promotion
-coverage audit reduced high-priority missing/weak units from 57 to 14; the
-remaining units are 2 `method_evidence_style` misses and 12 weak
-`source_note_basis` units.
+46 accepted repair cards.
+
+The final deterministic coverage-closure pass then added 39 traceable cards
+directly from the validated matrix and the coverage report: 5
+`central_concepts`, 8 `limitations`, 2 `method_evidence_style`, 12
+`source_note_basis`, and 12 `strengths`. The live full NotebookLM deck now has
+319 cards. The current coverage audit reports 367 matrix units: 209 `strong`,
+158 `partial`, 0 `missing`, 0 `weak`, and 0 high-priority missing/weak units.
 
 NotebookLM alternative-card workflow:
 

@@ -43,6 +43,11 @@ from notebooklm_queue.personlighedspsykologi_gap_repair_review import (
     GapRepairReviewError,
     validate_gap_repair_promotion_decisions,
 )
+from notebooklm_queue.personlighedspsykologi_coverage_closure_flashcards import (
+    COVERAGE_CLOSURE_ARTIFACT_TYPE,
+    CoverageClosureError,
+    validate_coverage_closure_artifact,
+)
 from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -81,6 +86,8 @@ STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON = SHOW_DIR / "flashcards" / "coverage" / 
 STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_notebook_plan.md"
 STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_review_decisions.json"
 STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_review_decisions.md"
+STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON = SHOW_DIR / "flashcards" / "coverage" / "coverage_closure_flashcards.json"
+STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD = SHOW_DIR / "flashcards" / "coverage" / "coverage_closure_flashcards.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -371,6 +378,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD).exists():
         failures.append(
             f"Missing student synthesis gap-repair review decisions Markdown: {STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON).exists():
+        failures.append(
+            f"Missing student synthesis coverage-closure flashcards JSON: {STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD).exists():
+        failures.append(
+            f"Missing student synthesis coverage-closure flashcards Markdown: {STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -1073,6 +1088,18 @@ def _failures(repo_root: Path) -> list[str]:
             md_text = coverage_md.read_text(encoding="utf-8")
             if FULL_NOTEBOOKLM_DECK_SLUG not in md_text:
                 failures.append("Flashcard coverage Markdown does not mention the live full NotebookLM deck")
+            missing_or_weak = [
+                unit
+                for row in coverage_payload.get("rows", [])
+                if isinstance(row, dict)
+                for unit in row.get("units", [])
+                if isinstance(unit, dict) and unit.get("status") in {"missing", "weak"}
+            ]
+            if missing_or_weak:
+                failures.append(
+                    "Flashcard coverage report must have zero missing/weak matrix units; found "
+                    f"{len(missing_or_weak)}"
+                )
 
     gap_repair_plan_json = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON
     gap_repair_plan_md = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD
@@ -1167,6 +1194,29 @@ def _failures(repo_root: Path) -> list[str]:
                 failures.append("Gap-repair review Markdown title is missing")
             if DEFAULT_GAP_REPAIR_RUN_ID not in md_text:
                 failures.append("Gap-repair review Markdown does not mention the current run ID")
+
+    coverage_closure_json = repo_root / STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON
+    coverage_closure_md = repo_root / STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD
+    if coverage_closure_json.exists() and coverage_closure_md.exists():
+        try:
+            coverage_closure = _load_json(coverage_closure_json)
+            validate_coverage_closure_artifact(coverage_closure)
+        except (CoverageClosureError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis coverage-closure flashcards are invalid in "
+                f"{STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON}: {exc}"
+            )
+        else:
+            if coverage_closure.get("artifact_type") != COVERAGE_CLOSURE_ARTIFACT_TYPE:
+                failures.append("Coverage-closure flashcards artifact_type is invalid")
+            stats = coverage_closure.get("stats") if isinstance(coverage_closure.get("stats"), dict) else {}
+            if int(stats.get("card_count") or 0) <= 0:
+                failures.append("Coverage-closure flashcards must include at least one card")
+            md_text = coverage_closure_md.read_text(encoding="utf-8")
+            if "Coverage Closure Flashcards" not in md_text:
+                failures.append("Coverage-closure Markdown title is missing")
+            if "coverage-closure" not in md_text:
+                failures.append("Coverage-closure Markdown does not mention the closure run")
 
     archived_variant_decks_to_validate = [
         (

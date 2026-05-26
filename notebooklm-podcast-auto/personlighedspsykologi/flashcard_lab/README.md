@@ -130,9 +130,9 @@ Cluster counts:
 | `critical-sociocultural-narrative` | 50 | 49 | 1 | 0 |
 | `oral-exam-comparison-workshop` | 40 | 26 | 11 | 3 |
 
-These outputs are candidates only. They still need a planned quality and
-coverage comparison against the original matrix deck and the existing
-NotebookLM variant decks before any promotion.
+These outputs now form the base live full NotebookLM deck, after filtering out
+`auto_rejected` cards and folding in the reviewed gap-repair and deterministic
+coverage-closure supplements described below.
 
 ## Gap-Repair Workflow
 
@@ -181,10 +181,39 @@ Review and promotion result:
 - Decisions artifact:
   `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.json`
 - result: 46 `accept`, 1 `merge_with_existing`, 0 `edit`, 0 `reject`
-- live full NotebookLM deck after promotion: 280 cards
-- coverage after promotion: high-priority missing/weak units reduced from 57 to
-  14; remaining weak/missing units are 2 `method_evidence_style` and 12
-  `source_note_basis`
+- live full NotebookLM deck after gap-repair promotion: 280 cards
+- coverage after gap-repair promotion: high-priority missing/weak units reduced
+  from 57 to 14
+
+## Deterministic Coverage Closure
+
+Oskar's current target is 100% deterministic matrix/source coverage for the
+live Freudd deck. The final closure pass uses the validated matrix and current
+coverage report directly, not another NotebookLM generation round, so every
+remaining `missing` or `weak` coverage unit receives a small traceable card.
+
+Coverage-closure result, 2026-05-26:
+
+- artifact:
+  `shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.json`
+- Markdown review view:
+  `shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.md`
+- generator:
+  `scripts/build_personlighedspsykologi_coverage_closure_flashcards.py`
+- closure cards: 39 total
+- fields closed: 5 `central_concepts`, 8 `limitations`, 2
+  `method_evidence_style`, 12 `source_note_basis`, and 12 `strengths`
+- final live full NotebookLM deck: 319 cards
+- final coverage audit: 367 matrix units, 209 `strong`, 158 `partial`, 0
+  `missing`, 0 `weak`, and 0 high-priority missing/weak units
+
+Rebuild the closure, live deck, and audit in order:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_coverage_closure_flashcards.py
+./.venv/bin/python scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py
+./.venv/bin/python scripts/audit_personlighedspsykologi_flashcard_coverage.py
+```
 
 Export the processed packs and committed plan:
 

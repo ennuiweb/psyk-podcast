@@ -1,0 +1,1089 @@
+{
+  "version": 1,
+  "artifact_type": "personlighedspsykologi_coverage_closure_flashcards",
+  "subject_slug": "personlighedspsykologi",
+  "run_id": "coverage-closure-current",
+  "generated_at": "2026-05-26T13:20:08Z",
+  "generator": {
+    "name": "scripts/build_personlighedspsykologi_coverage_closure_flashcards.py",
+    "version": "personlighedspsykologi-coverage-closure-v1",
+    "source_authority": "validated_exam_matrix_and_coverage_audit"
+  },
+  "input_fingerprints": {
+    "matrix": "5d4a5c0cee6c227d20bac95063495d57176a392d0feda7c2d64ed0d573185ecd",
+    "coverage_report": "067c2e93dcb4fb8b63ca75af183c5ca54b9d43e42621a3f34b6ba0c7aa4f7f34"
+  },
+  "stats": {
+    "card_count": 39,
+    "field_counts": {
+      "central_concepts": 5,
+      "limitations": 8,
+      "method_evidence_style": 2,
+      "source_note_basis": 12,
+      "strengths": 12
+    },
+    "priority_counts": {
+      "high": 14,
+      "normal": 25
+    },
+    "previous_status_counts": {
+      "missing": 27,
+      "weak": 12
+    }
+  },
+  "cards": [
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved biosocial personality perspectives er vigtig at kunne nævne?",
+      "back": "Begrænsning: Can drift toward biological reduction if culture is treated as secondary.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:limitations:1",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Can drift toward biological reduction if culture is treated as secondary."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved biosocial personality perspectives er vigtig at kunne nævne?",
+      "back": "Begrænsning: May offer broad explanations that are hard to connect to lived experience.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:limitations:2",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "May offer broad explanations that are hard to connect to lived experience."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken metode- og evidensstil kendetegner biosocial personality perspectives?",
+      "back": "Metode/evidens: Behavioral genetics, evolutionary argumentation, cross-cultural comparison, socioecological analysis, and empirical modeling.",
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:method_evidence_style",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:method_evidence_style",
+        "field": "method_evidence_style",
+        "priority": "high",
+        "previous_status": "missing",
+        "expected_text": "Behavioral genetics, evolutionary argumentation, cross-cultural comparison, socioecological analysis, and empirical modeling."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved biosocial personality perspectives er vigtig at kunne nævne?",
+      "back": "Styrke: Explains why personality variation may persist across populations.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:strengths:1",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Explains why personality variation may persist across populations."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved biosocial personality perspectives er vigtig at kunne nævne?",
+      "back": "Styrke: Connects biological, cultural, and ecological levels.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:strengths:2",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Connects biological, cultural, and ecological levels."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved biosocial personality perspectives er vigtig at kunne nævne?",
+      "back": "Styrke: Complicates simplistic nature-versus-nurture answers.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "biosocial_personality_perspectives:strengths:3",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Complicates simplistic nature-versus-nurture answers."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken metode- og evidensstil kendetegner comparative theory analysis?",
+      "back": "Metode/evidens: Comparative theory analysis using orientation points, source grounding, strengths and limitations, and explicit exam-relevant contrasts.",
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:method_evidence_style",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "comparative_theory_analysis:method_evidence_style",
+        "field": "method_evidence_style",
+        "priority": "high",
+        "previous_status": "missing",
+        "expected_text": "Comparative theory analysis using orientation points, source grounding, strengths and limitations, and explicit exam-relevant contrasts."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-dynamic-personality-development-limitations-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved dynamic personality development er vigtig at kunne nævne?",
+      "back": "Begrænsning: Can still remain close to individual-difference language.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "dynamic_personality_development:limitations:1",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Can still remain close to individual-difference language."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-dynamic-personality-development-limitations-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved dynamic personality development er vigtig at kunne nævne?",
+      "back": "Begrænsning: May underplay culture, discourse, and power compared with later traditions.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "dynamic_personality_development:limitations:2",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "May underplay culture, discourse, and power compared with later traditions."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved dynamic personality development er vigtig at kunne nævne?",
+      "back": "Styrke: Prevents the trait block from becoming static.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "dynamic_personality_development:strengths:1",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Prevents the trait block from becoming static."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-dynamic-personality-development-strengths-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved dynamic personality development er vigtig at kunne nævne?",
+      "back": "Styrke: Makes personality change and situation sensitivity examinable.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "dynamic_personality_development:strengths:2",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Makes personality change and situation sensitivity examinable."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-dynamic-personality-development-strengths-3",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved dynamic personality development er vigtig at kunne nævne?",
+      "back": "Styrke: Connects measurement with development.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "dynamic_personality_development:strengths:3",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Connects measurement with development."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om existential psychology?",
+      "back": "Nuance: Separate existential row with faghistoric context, thinkers, method, and orientation points.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "existential_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "existential_psychology:source_note_basis:anes_tabel",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Separate existential row with faghistoric context, thinkers, method, and orientation points."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om existential psychology?",
+      "back": "Nuance: Adds exam-language about freedom, authenticity, anti-reductionism, and limitations.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "existential_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "existential_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Adds exam-language about freedom, authenticity, anti-reductionism, and limitations."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilket centralbegreb i humanistic psychology skal du kunne genkende?",
+      "back": "Centralbegreb: needs",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "humanistic_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:central_concepts",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "humanistic_psychology:central_concepts:4",
+        "field": "central_concepts",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "needs"
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilket centralbegreb i humanistic psychology skal du kunne genkende?",
+      "back": "Centralbegreb: growth",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "humanistic_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:central_concepts",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "humanistic_psychology:central_concepts:5",
+        "field": "central_concepts",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "growth"
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om humanistic psychology?",
+      "back": "Nuance: Supports comparison with existential psychology and clinical growth language.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "humanistic_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "humanistic_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Supports comparison with existential psychology and clinical growth language."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om humanistic psychology?",
+      "back": "Nuance: Adds compact support for needs, congruence, valued/perceived self, and comparison with narrative psychology.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "humanistic_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "humanistic_psychology:source_note_basis:karla_humanistisk_psyk",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Adds compact support for needs, congruence, valued/perceived self, and comparison with narrative psychology."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om narrative psychology?",
+      "back": "Nuance: Supports compact exam comparison between narrative, social constructionist, and trait approaches.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "narrative_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "narrative_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Supports compact exam comparison between narrative, social constructionist, and trait approaches."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om narrative psychology?",
+      "back": "Nuance: Adds selective contrast between trait language and narrative meaning-making; text extraction only.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "narrative_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "narrative_psychology:source_note_basis:karla_traekteori",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Adds selective contrast between trait language and narrative meaning-making; text extraction only."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved personality functioning and pathology er vigtig at kunne nævne?",
+      "back": "Begrænsning: Can sound technical or diagnostic if detached from theory comparison.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "personality_functioning_and_pathology:limitations:1",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Can sound technical or diagnostic if detached from theory comparison."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved personality functioning and pathology er vigtig at kunne nævne?",
+      "back": "Begrænsning: May underplay first-person meaning and social conditions.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "personality_functioning_and_pathology:limitations:2",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "May underplay first-person meaning and social conditions."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved personality functioning and pathology er vigtig at kunne nævne?",
+      "back": "Styrke: Bridges trait/dimensional models and clinical personality questions.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "personality_functioning_and_pathology:strengths:1",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Bridges trait/dimensional models and clinical personality questions."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved personality functioning and pathology er vigtig at kunne nævne?",
+      "back": "Styrke: Keeps impairment, relation, and functioning central.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "personality_functioning_and_pathology:strengths:2",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Keeps impairment, relation, and functioning central."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved personality functioning and pathology er vigtig at kunne nævne?",
+      "back": "Styrke: Useful for comparing descriptive and clinical person models.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "personality_functioning_and_pathology:strengths:3",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Useful for comparing descriptive and clinical person models."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-limitations-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved phenomenological psychology er vigtig at kunne nævne?",
+      "back": "Begrænsning: Can be less precise about causal explanation and prediction.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:limitations:1",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Can be less precise about causal explanation and prediction."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken begrænsning ved phenomenological psychology er vigtig at kunne nævne?",
+      "back": "Begrænsning: May be difficult to operationalize in conventional empirical terms.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:limitations",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:limitations:2",
+        "field": "limitations",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "May be difficult to operationalize in conventional empirical terms."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om phenomenological psychology?",
+      "back": "Nuance: Separate phenomenology row with orientation points and contrast to more reductive models.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:source_note_basis:anes_tabel",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Separate phenomenology row with orientation points and contrast to more reductive models."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om phenomenological psychology?",
+      "back": "Nuance: Supports the first-person and lived-world framing used for exam comparison.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Supports the first-person and lived-world framing used for exam comparison."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-strengths-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved phenomenological psychology er vigtig at kunne nævne?",
+      "back": "Styrke: Protects the first-person perspective from reduction to variables.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:strengths:1",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Protects the first-person perspective from reduction to variables."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-strengths-2",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved phenomenological psychology er vigtig at kunne nævne?",
+      "back": "Styrke: Useful for explaining meaning, embodiment, and lived world.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:strengths:2",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Useful for explaining meaning, embodiment, and lived world."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-phenomenological-psychology-strengths-3",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken styrke ved phenomenological psychology er vigtig at kunne nævne?",
+      "back": "Styrke: Creates a bridge to existential and humanistic traditions.",
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:strengths",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "phenomenological_psychology:strengths:3",
+        "field": "strengths",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "Creates a bridge to existential and humanistic traditions."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilket centralbegreb i psychoanalytic personality theory skal du kunne genkende?",
+      "back": "Centralbegreb: unconscious",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:central_concepts",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "psychoanalytic_personality_theory:central_concepts:1",
+        "field": "central_concepts",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "unconscious"
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilket centralbegreb i psychoanalytic personality theory skal du kunne genkende?",
+      "back": "Centralbegreb: mirror stage",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:central_concepts",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "psychoanalytic_personality_theory:central_concepts:5",
+        "field": "central_concepts",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "mirror stage"
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-7",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilket centralbegreb i psychoanalytic personality theory skal du kunne genkende?",
+      "back": "Centralbegreb: enigmatic message",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:central_concepts",
+        "coverage-status:missing"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "psychoanalytic_personality_theory:central_concepts:7",
+        "field": "central_concepts",
+        "priority": "normal",
+        "previous_status": "missing",
+        "expected_text": "enigmatic message"
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om psychoanalytic personality theory?",
+      "back": "Nuance: Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "psychoanalytic_personality_theory:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om sociocultural and poststructural approaches?",
+      "back": "Nuance: Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om sociocultural and poststructural approaches?",
+      "back": "Nuance: Selective enrichment for Foucault, subjectivation, genealogy, and power; large note and embedded media kept out of matrix prose.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:karla_poststrukturalisme",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Selective enrichment for Foucault, subjectivation, genealogy, and power; large note and embedded media kept out of matrix prose."
+      }
+    },
+    {
+      "candidate_id": "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
+      "notebook_slug": "coverage-closure",
+      "source_path": "coverage_closure_flashcards",
+      "source_index": 0,
+      "front": "Hvilken eksamensnuance skal du huske om sociocultural and poststructural approaches?",
+      "back": "Nuance: Selective enrichment for discourse, agency as accessible positioning, sociogenesis, and narrative comparison; media not used.",
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "warnings": [],
+      "review_status": "candidate",
+      "tags": [
+        "deterministic-coverage-closure",
+        "coverage:source_note_basis",
+        "coverage-status:weak"
+      ],
+      "target_coverage_unit": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:karla_socialkonstruktivisme",
+        "field": "source_note_basis",
+        "priority": "high",
+        "previous_status": "weak",
+        "expected_text": "Selective enrichment for discourse, agency as accessible positioning, sociogenesis, and narrative comparison; media not used."
+      }
+    }
+  ]
+}

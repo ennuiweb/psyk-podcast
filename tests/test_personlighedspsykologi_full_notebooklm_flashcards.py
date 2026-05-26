@@ -97,3 +97,38 @@ def test_full_deck_can_include_reviewed_gap_repair_candidates():
     repair_card = next(card for card in deck["cards"] if card["card_id"] == "nlm-gap-repair-accepted")
     assert "notebooklm-gap-repair" in repair_card["tags"]
     assert deck["run_ids"] == ["full-matrix-test", "gap-repair-test"]
+
+
+def test_full_deck_can_include_coverage_closure_candidates():
+    base_payload = _payload(
+        notebook_slug="global-calibration-synthesis",
+        candidates=[_candidate("nlm-test-accepted", "candidate")],
+    )
+    closure_payload = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_notebooklm_flashcard_candidates",
+        "subject_slug": "personlighedspsykologi",
+        "run_id": "coverage-closure-current",
+        "notebook_slug": "coverage-closure",
+        "source_path": "coverage_closure_flashcards.json",
+        "stats": {"candidate_count": 1},
+        "candidates": [
+            {
+                **_candidate("nlm-coverage-closure-test", "candidate"),
+                "notebook_slug": "coverage-closure",
+                "tags": ["deterministic-coverage-closure", "coverage:strengths"],
+            }
+        ],
+    }
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=[base_payload, closure_payload],
+        source_file="runs/test/candidates + coverage_closure_flashcards.json",
+        source_sha256=full_cards.source_fingerprint([base_payload, closure_payload]),
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert deck["card_count"] == 2
+    closure_card = next(card for card in deck["cards"] if card["card_id"] == "nlm-coverage-closure-test")
+    assert "deterministic-coverage-closure" in closure_card["tags"]
+    assert deck["run_ids"] == ["coverage-closure-current", "full-matrix-test"]

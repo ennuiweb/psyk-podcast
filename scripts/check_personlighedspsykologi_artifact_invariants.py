@@ -26,10 +26,15 @@ from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
     validate_flashcard_artifact,
 )
 from notebooklm_queue.personlighedspsykologi_full_notebooklm_flashcards import FULL_NOTEBOOKLM_DECK_SLUG
+from notebooklm_queue.personlighedspsykologi_flashcard_coverage import (
+    FlashcardCoverageError,
+    validate_coverage_report,
+)
 from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards import (
     NotebookLMVariantFlashcardError,
     validate_variant_deck,
 )
+from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
 NOTEBOOKLM_DIR = Path("notebooklm-podcast-auto/personlighedspsykologi")
@@ -61,6 +66,8 @@ STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX = STUDENT_SYNTHESIS_DIR / "exam_theory_matr
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
 STUDENT_SYNTHESIS_FLASHCARD_REGISTRY = SHOW_DIR / "flashcards" / "decks.json"
 STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK = SHOW_DIR / "flashcards" / f"{FULL_NOTEBOOKLM_DECK_SLUG}.json"
+STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON = SHOW_DIR / "flashcards" / "coverage" / "full_matrix_coverage_report.json"
+STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD = SHOW_DIR / "flashcards" / "coverage" / "full_matrix_coverage_report.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -327,6 +334,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK).exists():
         failures.append(
             f"Missing student synthesis full NotebookLM flashcard deck: {STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON).exists():
+        failures.append(
+            f"Missing student synthesis flashcard coverage JSON: {STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD).exists():
+        failures.append(
+            f"Missing student synthesis flashcard coverage Markdown: {STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -994,6 +1009,41 @@ def _failures(repo_root: Path) -> list[str]:
                         )
                     if registry_entry.get("enabled") is not True:
                         failures.append("Full NotebookLM flashcard registry deck must be enabled")
+
+    coverage_json = repo_root / STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON
+    coverage_md = repo_root / STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD
+    if coverage_json.exists() and coverage_md.exists():
+        try:
+            coverage_payload = _load_json(coverage_json)
+            validate_coverage_report(coverage_payload)
+        except (FlashcardCoverageError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis flashcard coverage report is invalid in "
+                f"{STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON}: {exc}"
+            )
+        else:
+            inputs = coverage_payload.get("inputs") if isinstance(coverage_payload.get("inputs"), dict) else {}
+            expected_inputs = {
+                "matrix": STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX,
+                "deck": STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK,
+                "source_notes_index": STUDENT_SYNTHESIS_SOURCE_NOTES_INDEX,
+                "source_notes_registry": STUDENT_SYNTHESIS_SOURCE_NOTE_REGISTRY,
+            }
+            for label, relative in expected_inputs.items():
+                entry = inputs.get(label) if isinstance(inputs.get(label), dict) else {}
+                actual_path = str(entry.get("path") or "").strip()
+                expected_path = str(relative)
+                if actual_path != expected_path:
+                    failures.append(
+                        f"Flashcard coverage report input {label} path mismatch: {actual_path} != {expected_path}"
+                    )
+                    continue
+                expected_fingerprint = semantic_file_fingerprint(repo_root / relative)
+                if str(entry.get("fingerprint") or "").strip() != expected_fingerprint:
+                    failures.append(f"Flashcard coverage report input {label} fingerprint is stale")
+            md_text = coverage_md.read_text(encoding="utf-8")
+            if FULL_NOTEBOOKLM_DECK_SLUG not in md_text:
+                failures.append("Flashcard coverage Markdown does not mention the live full NotebookLM deck")
 
     archived_variant_decks_to_validate = [
         (

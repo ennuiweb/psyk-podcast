@@ -104,6 +104,10 @@ Current `personlighedspsykologi` Freudd deck policy:
 - live card count: 234
 - live purpose: newest NotebookLM cards from all matrix clusters, generated from
   processed matrix packs without existing Freudd cards as NotebookLM sources
+- full matrix/source coverage audit:
+  `shows/personlighedspsykologi-en/flashcards/coverage/full_matrix_coverage_report.md`
+- coverage audit CLI:
+  `scripts/audit_personlighedspsykologi_flashcard_coverage.py`
 - archived previous live decks:
   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`
 - archived contents: original matrix/Gemini-style deck, first NotebookLM variant
@@ -114,6 +118,11 @@ The live Freudd registry intentionally exposes only the newest full NotebookLM
 deck. The previous original/Gemini-style and pilot NotebookLM pools are retained
 for audit and recovery in the archive, but they must not be listed in
 `decks.json`.
+
+The coverage report is deterministic and source-aware. It checks the live deck
+against every matrix row, orientation point, comparison target, high-priority
+field, and `source_note_basis` summary. Its `strong`/`partial`/`weak`/`missing`
+labels are coverage heuristics, not a final content-quality verdict.
 
 NotebookLM alternative-card workflow:
 

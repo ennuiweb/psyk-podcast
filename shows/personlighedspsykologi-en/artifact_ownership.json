@@ -205,6 +205,22 @@
       "writer": "scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py"
     },
     {
+      "artifact_id": "student_synthesis_flashcard_coverage_json",
+      "concept": "student_synthesis_flashcard_coverage",
+      "path": "shows/personlighedspsykologi-en/flashcards/coverage/full_matrix_coverage_report.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/audit_personlighedspsykologi_flashcard_coverage.py"
+    },
+    {
+      "artifact_id": "student_synthesis_flashcard_coverage_markdown",
+      "concept": "student_synthesis_flashcard_coverage",
+      "path": "shows/personlighedspsykologi-en/flashcards/coverage/full_matrix_coverage_report.md",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/audit_personlighedspsykologi_flashcard_coverage.py"
+    },
+    {
       "artifact_id": "student_synthesis_archived_matrix_flashcard_deck",
       "concept": "student_synthesis_archived_flashcards",
       "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json",

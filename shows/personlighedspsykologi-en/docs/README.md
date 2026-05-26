@@ -12,6 +12,9 @@ student-synthesis/exam-orientation layer:
 Flashcard architecture and comparison-review plan for matrix/NotebookLM card
 pools: `flashcard-architecture-and-review-plan.md`.
 
+Current live flashcard matrix/source coverage audit:
+`../flashcards/coverage/full_matrix_coverage_report.md`.
+
 Implementation plan for finishing the flashcard pool comparison, Gemini review,
 and promotion decision: `flashcard-review-implementation-plan.md`.
 

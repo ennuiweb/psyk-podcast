@@ -141,6 +141,26 @@ def test_export_notebook_packs_writes_pilot_sources_and_manifest(tmp_path):
     assert all(source["sha256"] and source["bytes"] > 0 for source in notebook["sources"])
 
 
+def test_export_notebook_packs_can_write_every_cluster_without_freudd_sources(tmp_path):
+    manifest = lab.export_notebook_packs(
+        matrix=_matrix(),
+        run_id="test-run",
+        lab_root=tmp_path / "lab",
+        repo_root=tmp_path,
+        notebook_slugs=None,
+        generated_at="2026-05-25T00:00:00Z",
+    )
+
+    slugs = {notebook["slug"] for notebook in manifest["notebooks"]}
+    assert slugs == {spec.slug for spec in lab.NOTEBOOK_SPECS}
+    assert manifest["freudd_deck_policy"]["included_as_notebook_source"] is False
+    for notebook in manifest["notebooks"]:
+        pack_dir = tmp_path / notebook["pack_dir"]
+        assert (pack_dir / "00-card-authoring-brief.md").exists()
+        assert not (pack_dir / "03-current-freudd-cards.md").exists()
+        assert notebook["source_count"] == len(notebook["sources"])
+
+
 def test_export_lab_run_loads_files_and_writes_readme(tmp_path):
     matrix_path = tmp_path / "matrix.json"
     deck_path = tmp_path / "deck.json"

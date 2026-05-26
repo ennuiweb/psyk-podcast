@@ -86,8 +86,44 @@ end-to-end:
 ./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py
 ```
 
+Run all five notebook clusters end-to-end:
+
+```bash
+./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py \
+  --all-notebooks \
+  --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json
+```
+
+The all-cluster runner writes one NotebookLM notebook per cluster, downloads
+JSON/Markdown flashcards for each cluster, and normalizes each download into
+review-only candidates under `runs/<run-id>/candidates/`.
+
 Use `--dry-run` first to inspect the planned NotebookLM commands without
 creating a notebook or uploading sources.
+
+## Current Full-Course Regeneration
+
+The first all-cluster run is:
+
+- run ID: `full-matrix-20260526-notebooklm-independent`
+- source policy: no existing Freudd cards were uploaded to NotebookLM
+- total raw NotebookLM flashcards: 259
+- normalized status totals: 176 `candidate`, 58 `needs_review`, 25
+  `auto_rejected`
+
+Cluster counts:
+
+| Cluster | Raw | Candidate | Needs review | Auto rejected |
+|---|---:|---:|---:|---:|
+| `global-calibration-synthesis` | 89 | 43 | 38 | 8 |
+| `measurement-development-pathology` | 51 | 37 | 1 | 13 |
+| `psychoanalysis-experience-humanism` | 29 | 21 | 7 | 1 |
+| `critical-sociocultural-narrative` | 50 | 49 | 1 | 0 |
+| `oral-exam-comparison-workshop` | 40 | 26 | 11 | 3 |
+
+These outputs are candidates only. They still need a planned quality and
+coverage comparison against the original matrix deck and the existing
+NotebookLM variant decks before any promotion.
 
 ## Current Pilot
 

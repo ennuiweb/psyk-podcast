@@ -592,6 +592,63 @@ Run commands used:
   --deck-path shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json
 ```
 
+### 2026-05-26: Full NotebookLM Cluster Regeneration Completed
+
+Status: generated; review/comparison not yet implemented.
+
+Purpose: create a complete NotebookLM candidate pool across all matrix/notebook
+clusters using the improved independent source policy. This run is local
+review material only. It does not change the canonical matrix deck, the two
+existing NotebookLM variant decks, or any learner-facing Freudd cards.
+
+Run:
+
+- run ID: `full-matrix-20260526-notebooklm-independent`
+- source policy: processed matrix/orientation/comparison/output-contract
+  Markdown only; existing Freudd cards were not uploaded to NotebookLM
+- status file:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/full-matrix-20260526-notebooklm-independent/notebooklm_run_status.json`
+- total raw NotebookLM cards: 259
+- normalized candidates: 259
+- normalized status totals: 176 `candidate`, 58 `needs_review`, 25
+  `auto_rejected`
+
+Cluster outputs:
+
+| Cluster | Notebook ID | Raw cards | Candidate | Needs review | Auto rejected |
+|---|---|---:|---:|---:|---:|
+| `global-calibration-synthesis` | `6c47db0e-a62a-4420-8b70-bd8cf3024327` | 89 | 43 | 38 | 8 |
+| `measurement-development-pathology` | `94a1106b-ed63-4690-a7fb-cfe3a1af4993` | 51 | 37 | 1 | 13 |
+| `psychoanalysis-experience-humanism` | `8710c938-415c-4933-a683-3f64127bda8d` | 29 | 21 | 7 | 1 |
+| `critical-sociocultural-narrative` | `be02d6a9-a1bd-4ff2-b5ce-9df9dd0f630e` | 50 | 49 | 1 | 0 |
+| `oral-exam-comparison-workshop` | `6e629e73-efb4-4af7-ad82-2219e70765f0` | 40 | 26 | 11 | 3 |
+
+Implementation completed:
+
+- the NotebookLM runner can now run all configured clusters with
+  `--all-notebooks`
+- the default remains the old pilot cluster, preserving existing one-cluster
+  usage
+- `--notebook-id` is restricted to a single selected cluster, avoiding
+  accidental reuse of one NotebookLM notebook for multiple clusters
+- every completed cluster writes its own `*.status.json` plus the aggregate
+  `notebooklm_run_status.json`
+- generated downloads and candidates remain gitignored run material
+
+Verification:
+
+- `./.venv/bin/python -m py_compile scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py`
+- dry-run:
+  `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id dryrun-20260526-all-clusters --all-notebooks --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json --dry-run`
+- live run:
+  `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id full-matrix-20260526-notebooklm-independent --all-notebooks --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json`
+
+Next phase must be planned before implementation: compare the full
+NotebookLM candidate pool against the original matrix deck and the two existing
+NotebookLM decks for quality, course coverage, wording, duplicate value,
+category balance, theory balance, exam usefulness, and promotion strategy.
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

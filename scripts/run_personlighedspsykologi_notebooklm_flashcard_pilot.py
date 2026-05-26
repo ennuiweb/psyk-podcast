@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Run the NotebookLM flashcard lab pilot end to end.
+"""Run NotebookLM flashcard generation for one or more lab notebooks end to end.
 
-This script creates or uses one NotebookLM notebook, uploads the processed pilot
-pack, generates flashcards, downloads JSON/Markdown output, and normalizes the
+This script creates or uses NotebookLM notebooks, uploads processed matrix
+packs, generates flashcards, downloads JSON/Markdown output, and normalizes the
 JSON into review-only candidates. It never deletes NotebookLM notebooks,
 sources, artifacts, or Freudd cards.
 """
@@ -25,6 +25,7 @@ from notebooklm_queue.personlighedspsykologi_notebooklm_flashcard_lab import (
     DEFAULT_DECK_PATH,
     DEFAULT_LAB_ROOT,
     DEFAULT_MATRIX_PATH,
+    NOTEBOOK_SPECS,
     PILOT_NOTEBOOK_SLUG,
     FlashcardLabError,
     default_run_id,
@@ -49,7 +50,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--notebooklm-cli", type=Path, default=DEFAULT_NOTEBOOKLM_CLI)
     parser.add_argument("--profile", default=None, help="NotebookLM profile to pass with -p.")
     parser.add_argument("--storage", type=Path, default=None, help="NotebookLM storage_state.json to pass with --storage.")
-    parser.add_argument("--notebook-id", default=None, help="Existing notebook ID. If omitted, creates a pilot notebook.")
+    parser.add_argument(
+        "--notebook-slug",
+        action="append",
+        default=None,
+        choices=[spec.slug for spec in NOTEBOOK_SPECS],
+        help="Notebook slug to run. Repeat for multiple. Defaults to the pilot slug.",
+    )
+    parser.add_argument("--all-notebooks", action="store_true", help="Run every configured lab notebook.")
+    parser.add_argument(
+        "--notebook-id",
+        default=None,
+        help="Existing notebook ID. Allowed only when exactly one notebook slug is selected.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Export packs and print intended NotebookLM steps only.")
     return parser.parse_args()
 
@@ -144,6 +157,117 @@ def _source_id_from_add(payload: dict[str, Any]) -> str:
     raise FlashcardLabError("NotebookLM source add command did not return source.id")
 
 
+def _selected_notebook_slugs(args: argparse.Namespace) -> set[str] | None:
+    if args.all_notebooks and args.notebook_slug:
+        raise FlashcardLabError("Use either --all-notebooks or --notebook-slug, not both")
+    if args.all_notebooks:
+        if args.notebook_id:
+            raise FlashcardLabError("--notebook-id can only be used when one notebook slug is selected")
+        return None
+    slugs = set(args.notebook_slug or [PILOT_NOTEBOOK_SLUG])
+    if args.notebook_id and len(slugs) != 1:
+        raise FlashcardLabError("--notebook-id can only be used when one notebook slug is selected")
+    return slugs
+
+
+def _process_notebook(
+    *,
+    notebook: dict[str, Any],
+    runner: NotebookLMRunner,
+    args: argparse.Namespace,
+    repo_root: Path,
+    run_id: str,
+    run_root: Path,
+    downloads_root: Path,
+    candidates_root: Path,
+    matrix: dict[str, Any] | None,
+    deck: dict[str, Any] | None,
+) -> dict[str, Any]:
+    slug = str(notebook["slug"])
+    notebook_id = args.notebook_id
+    status: dict[str, Any] = {
+        "slug": slug,
+        "title": notebook.get("title"),
+        "purpose": notebook.get("purpose"),
+        "notebooklm_notebook_id": notebook_id,
+        "uploaded_sources": [],
+        "downloads": {},
+    }
+
+    if not notebook_id:
+        create_payload = runner.run_json("create", f"{notebook['title']} - {run_id}", "--json")
+        notebook_id = _notebook_id_from_create(create_payload) if not args.dry_run else f"<created-{slug}-notebook-id>"
+        status["notebooklm_notebook_id"] = notebook_id
+
+    source_ids: list[str] = []
+    for source in notebook["sources"]:
+        path = _resolve_repo_path(Path(str(source["path"])), repo_root)
+        add_payload = runner.run_json("source", "add", str(path), "-n", notebook_id, "--json")
+        source_id = _source_id_from_add(add_payload) if not args.dry_run else f"<{slug}-source-{len(source_ids) + 1}>"
+        source_ids.append(source_id)
+        status["uploaded_sources"].append(
+            {
+                "source_id": source_id,
+                "path": _repo_relative(path, repo_root),
+                "sha256": source.get("sha256"),
+            }
+        )
+        runner.run_json("source", "wait", source_id, "-n", notebook_id, "--json")
+
+    instructions = notebook["flashcard_generation"]["instructions"]
+    generate_args = [
+        "generate",
+        "flashcards",
+        "-n",
+        notebook_id,
+        "--quantity",
+        "more",
+        "--difficulty",
+        "hard",
+        "--wait",
+        "--json",
+    ]
+    for source_id in source_ids:
+        generate_args.extend(["--source", source_id])
+    generate_args.append(str(instructions))
+    status["generation"] = runner.run_json(*generate_args)
+
+    json_download = downloads_root / f"{slug}.flashcards.json"
+    md_download = downloads_root / f"{slug}.flashcards.md"
+    runner.run("download", "flashcards", str(json_download), "-n", notebook_id, "--format", "json")
+    runner.run("download", "flashcards", str(md_download), "-n", notebook_id, "--format", "markdown")
+    status["downloads"] = {
+        "json": _repo_relative(json_download, repo_root),
+        "markdown": _repo_relative(md_download, repo_root),
+    }
+
+    if not args.dry_run:
+        if matrix is None or deck is None:
+            raise FlashcardLabError("Matrix and deck are required for candidate normalization")
+        raw_payload = load_notebooklm_flashcard_payload(json_download)
+        candidates = normalize_notebooklm_cards(
+            notebooklm_payload=raw_payload,
+            matrix=matrix,
+            current_deck=deck,
+            run_id=run_id,
+            notebook_slug=slug,
+            source_path=_repo_relative(json_download, repo_root),
+        )
+        candidate_path = candidates_root / f"{slug}.candidates.json"
+        review_path = candidates_root / f"{slug}.review.md"
+        write_json_stably(candidate_path, candidates)
+        write_candidate_review_markdown(candidates, review_path)
+        status["candidates"] = {
+            "json": _repo_relative(candidate_path, repo_root),
+            "review_markdown": _repo_relative(review_path, repo_root),
+            "stats": candidates.get("stats"),
+        }
+
+    status["status"] = "dry_run_complete" if args.dry_run else "complete"
+    write_json_stably(run_root / f"{slug}.status.json", status)
+    return status
+
+
 def main() -> int:
     args = parse_args()
     repo_root = args.repo_root.resolve()
@@ -151,15 +275,18 @@ def main() -> int:
     run_id = args.run_id or default_run_id()
     notebooklm_cli = _resolve_repo_path(args.notebooklm_cli, repo_root)
     storage = _resolve_repo_path(args.storage, repo_root) if args.storage else None
+    try:
+        selected_slugs = _selected_notebook_slugs(args)
+    except FlashcardLabError as exc:
+        raise SystemExit(str(exc)) from exc
     manifest = export_lab_run(
         run_id=run_id,
         lab_root=lab_root,
         matrix_path=_resolve_repo_path(args.matrix_path, repo_root),
         deck_path=_resolve_repo_path(args.deck_path, repo_root),
         repo_root=repo_root,
-        notebook_slugs={PILOT_NOTEBOOK_SLUG},
+        notebook_slugs=selected_slugs,
     )
-    notebook = manifest["notebooks"][0]
     run_root = lab_root / "runs" / run_id
     downloads_root = run_root / "downloads"
     candidates_root = run_root / "candidates"
@@ -176,99 +303,54 @@ def main() -> int:
     if not notebooklm_cli.exists() and not args.dry_run:
         raise SystemExit(f"NotebookLM CLI not found: {notebooklm_cli}")
 
-    notebook_id = args.notebook_id
     status: dict[str, Any] = {
         "run_id": run_id,
-        "notebook_slug": PILOT_NOTEBOOK_SLUG,
+        "notebook_slugs": [notebook["slug"] for notebook in manifest["notebooks"]],
         "dry_run": args.dry_run,
         "notebooklm_profile": args.profile,
         "notebooklm_storage": _repo_relative(storage, repo_root) if storage else None,
-        "notebooklm_notebook_id": notebook_id,
-        "uploaded_sources": [],
-        "downloads": {},
+        "notebooks": [],
     }
+    status_path = run_root / "notebooklm_run_status.json"
 
     try:
         runner.run_json("list", "--json")
-        if not notebook_id:
-            create_payload = runner.run_json("create", f"{notebook['title']} - {run_id}", "--json")
-            notebook_id = _notebook_id_from_create(create_payload) if not args.dry_run else "<created-notebook-id>"
-            status["notebooklm_notebook_id"] = notebook_id
-
-        source_ids: list[str] = []
-        for source in notebook["sources"]:
-            path = _resolve_repo_path(Path(str(source["path"])), repo_root)
-            add_payload = runner.run_json("source", "add", str(path), "-n", notebook_id, "--json")
-            source_id = _source_id_from_add(add_payload) if not args.dry_run else f"<source-{len(source_ids) + 1}>"
-            source_ids.append(source_id)
-            status["uploaded_sources"].append(
-                {
-                    "source_id": source_id,
-                    "path": _repo_relative(path, repo_root),
-                    "sha256": source.get("sha256"),
-                }
-            )
-            runner.run_json("source", "wait", source_id, "-n", notebook_id, "--json")
-
-        instructions = notebook["flashcard_generation"]["instructions"]
-        generate_args = [
-            "generate",
-            "flashcards",
-            "-n",
-            notebook_id,
-            "--quantity",
-            "more",
-            "--difficulty",
-            "hard",
-            "--wait",
-            "--json",
-        ]
-        for source_id in source_ids:
-            generate_args.extend(["--source", source_id])
-        generate_args.append(str(instructions))
-        status["generation"] = runner.run_json(*generate_args)
-
-        json_download = downloads_root / f"{PILOT_NOTEBOOK_SLUG}.flashcards.json"
-        md_download = downloads_root / f"{PILOT_NOTEBOOK_SLUG}.flashcards.md"
-        runner.run("download", "flashcards", str(json_download), "-n", notebook_id, "--format", "json")
-        runner.run("download", "flashcards", str(md_download), "-n", notebook_id, "--format", "markdown")
-        status["downloads"] = {
-            "json": _repo_relative(json_download, repo_root),
-            "markdown": _repo_relative(md_download, repo_root),
-        }
-
+        matrix = None
+        deck = None
         if not args.dry_run:
             matrix = load_matrix(_resolve_repo_path(args.matrix_path, repo_root))
             deck = load_current_deck(_resolve_repo_path(args.deck_path, repo_root), matrix)
-            raw_payload = load_notebooklm_flashcard_payload(json_download)
-            candidates = normalize_notebooklm_cards(
-                notebooklm_payload=raw_payload,
-                matrix=matrix,
-                current_deck=deck,
+
+        for notebook in manifest["notebooks"]:
+            notebook_status = _process_notebook(
+                notebook=notebook,
+                runner=runner,
+                args=args,
+                repo_root=repo_root,
                 run_id=run_id,
-                notebook_slug=PILOT_NOTEBOOK_SLUG,
-                source_path=_repo_relative(json_download, repo_root),
+                run_root=run_root,
+                downloads_root=downloads_root,
+                candidates_root=candidates_root,
+                matrix=matrix,
+                deck=deck,
             )
-            candidate_path = candidates_root / f"{PILOT_NOTEBOOK_SLUG}.candidates.json"
-            review_path = candidates_root / f"{PILOT_NOTEBOOK_SLUG}.review.md"
-            write_json_stably(candidate_path, candidates)
-            write_candidate_review_markdown(candidates, review_path)
-            status["candidates"] = {
-                "json": _repo_relative(candidate_path, repo_root),
-                "review_markdown": _repo_relative(review_path, repo_root),
-                "stats": candidates.get("stats"),
-            }
+            status["notebooks"].append(notebook_status)
+            write_json_stably(status_path, status)
     except (subprocess.CalledProcessError, json.JSONDecodeError, ValueError, FlashcardLabError) as exc:
         status["status"] = "blocked_or_failed"
         status["error"] = str(exc)
-        write_json_stably(run_root / "pilot_status.json", status)
-        raise SystemExit(f"NotebookLM flashcard pilot failed: {exc}") from exc
+        write_json_stably(status_path, status)
+        raise SystemExit(f"NotebookLM flashcard generation failed: {exc}") from exc
 
     status["status"] = "dry_run_complete" if args.dry_run else "complete"
-    write_json_stably(run_root / "pilot_status.json", status)
-    print(f"NotebookLM pilot {status['status']} for run {run_id}")
-    if status.get("candidates"):
-        print(f"Candidates: {status['candidates']['json']}")
+    write_json_stably(status_path, status)
+    if len(status["notebooks"]) == 1:
+        write_json_stably(run_root / "pilot_status.json", status["notebooks"][0])
+    print(f"NotebookLM flashcard generation {status['status']} for run {run_id}")
+    for notebook_status in status["notebooks"]:
+        candidates = notebook_status.get("candidates")
+        if candidates:
+            print(f"Candidates ({notebook_status['slug']}): {candidates['json']}")
     return 0
 
 

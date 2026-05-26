@@ -3,9 +3,10 @@
 {% block content %}
 <style>
   .flashcard-shell {
-    --flashcard-study-width: 780px;
+    --flashcard-study-width: 940px;
     --flashcard-paper-shadow: 0 24px 54px color-mix(in srgb, #4e4026 16%, transparent);
-    max-width: 1020px;
+    width: min(calc(100vw - 32px), calc(var(--flashcard-study-width) + 32px));
+    max-width: 1100px;
     margin: clamp(var(--space-3), 3.8vh, var(--space-6)) auto;
     display: grid;
     gap: clamp(var(--space-3), 1.8vw, var(--space-5));
@@ -333,11 +334,11 @@
   }
 
   .flashcard-front {
-    max-width: 19ch;
+    max-width: 24ch;
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.76rem, 3.55vw, 2.82rem);
+    font-size: clamp(1.76rem, 3.05vw, 2.72rem);
     line-height: 1.1;
     font-weight: 600;
     overflow-wrap: anywhere;
@@ -347,7 +348,7 @@
   .flashcard-recall {
     display: grid;
     gap: var(--space-2);
-    max-width: 660px;
+    max-width: 740px;
   }
 
   .flashcard-answer-toggle {
@@ -388,7 +389,7 @@
     gap: var(--space-2);
     padding: var(--space-3);
     scroll-margin-top: 96px;
-    max-width: 660px;
+    max-width: 740px;
   }
 
   .flashcard-user-answer-label {
@@ -433,7 +434,7 @@
     padding: clamp(var(--space-4), 2vw, var(--space-5)) clamp(var(--space-5), 3vw, var(--space-6)) clamp(var(--space-4), 2vw, var(--space-5)) clamp(42px, 3.9vw, 52px);
     line-height: 1.56;
     overflow-wrap: anywhere;
-    max-width: 660px;
+    max-width: 740px;
     box-shadow:
       0 18px 38px color-mix(in srgb, var(--accent) 10%, transparent),
       0 1px 0 color-mix(in srgb, #ffffff 78%, transparent) inset;
@@ -665,6 +666,38 @@
     text-decoration-color: color-mix(in srgb, var(--accent) 54%, transparent);
   }
 
+  @media (max-width: 860px) {
+    .flashcard-shell {
+      --flashcard-study-width: 780px;
+    }
+
+    .flashcard-study-nav {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: var(--space-3);
+      border-radius: var(--radius-lg);
+    }
+
+    .flashcard-scope-control {
+      grid-template-columns: auto minmax(0, 1fr);
+      max-width: 100%;
+    }
+
+    .flashcard-filter-tabs {
+      justify-content: stretch;
+      width: 100%;
+    }
+
+    .flashcard-filter-button {
+      flex: 1 1 0;
+      justify-content: center;
+    }
+
+    .flashcard-front {
+      max-width: 21ch;
+    }
+  }
+
   @media (max-width: 640px) {
     .flashcard-shell {
       margin: var(--space-3) auto;
@@ -683,13 +716,6 @@
     .flashcard-stage {
       padding-top: 0;
       gap: var(--space-4);
-    }
-
-    .flashcard-study-nav {
-      grid-template-columns: 1fr;
-      align-items: stretch;
-      gap: var(--space-3);
-      border-radius: var(--radius-lg);
     }
 
     .flashcard-scope-control {

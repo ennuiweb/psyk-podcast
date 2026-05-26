@@ -464,3 +464,18 @@ class PersonlighedspsykologiMatrixFlashcardArtifactTests(SimpleTestCase):
         self.assertEqual(len(deck.categories), 6)
         self.assertEqual(sum(int(category["card_count"]) for category in deck.categories), 79)
         self.assertTrue(all(card["card_id"].startswith("nlmv-") for card in deck.cards))
+
+    def test_generated_personlighedspsykologi_independent_notebooklm_variant_deck_loads_through_service(self) -> None:
+        deck_slug = "notebooklm-uafhaengige-varianter-personlighedspsykologi"
+        entries = list_flashcard_deck_entries("personlighedspsykologi")
+        matching = [entry for entry in entries if entry.deck_slug == deck_slug]
+
+        self.assertEqual(len(matching), 1)
+        deck = load_flashcard_deck("personlighedspsykologi", deck_slug)
+
+        self.assertEqual(deck.subject_slug, "personlighedspsykologi")
+        self.assertEqual(deck.deck_slug, deck_slug)
+        self.assertEqual(deck.card_count, 74)
+        self.assertEqual(len(deck.categories), 6)
+        self.assertEqual(sum(int(category["card_count"]) for category in deck.categories), 74)
+        self.assertTrue(all(card["card_id"].startswith("nlmv-") for card in deck.cards))

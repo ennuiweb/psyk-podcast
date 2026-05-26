@@ -110,6 +110,13 @@ Current `personlighedspsykologi` decks:
 - NotebookLM variants deck artifact:
   `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
 - NotebookLM variants card count: 79
+- independent NotebookLM variants decisions:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json`
+- independent NotebookLM variants deck slug:
+  `notebooklm-uafhaengige-varianter-personlighedspsykologi`
+- independent NotebookLM variants deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
+- independent NotebookLM variants card count: 74
 
 NotebookLM is not the canonical first writer for matrix-derived flashcards.
 The deck is generated deterministically from the validated matrix by

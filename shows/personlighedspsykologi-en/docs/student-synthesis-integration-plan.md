@@ -528,9 +528,9 @@ Verification run:
 - `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py`
 - `./.venv/bin/python scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py --pilot-only --run-id local-no-current-freudd-smoke --print-manifest`
 
-### 2026-05-26: Independent NotebookLM Third-Deck Run Prepared
+### 2026-05-26: Independent NotebookLM Third Deck Promoted
 
-Status: blocked on NotebookLM reauthentication.
+Status: complete.
 
 Intended third deck:
 
@@ -541,35 +541,44 @@ Intended third deck:
 - first cluster:
   `critical-sociocultural-narrative`
 
-Preparation completed:
+Implementation completed:
 
 - the promotion builder now supports separate deck slugs/titles/descriptions,
   so a third deck can be promoted without overwriting
   `notebooklm-varianter-personlighedspsykologi`
 - the pilot runner accepts `--storage`, allowing it to use the repo-local
   `notebooklm-podcast-auto/profiles/*_storage_state.json` files directly
+- `nguyenanhpho19` was added to `notebooklm-podcast-auto/profiles.json` and
+  authenticated into `notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json`
 - improved source pack exported locally for run
   `independent-20260526-critical-sociocultural-narrative`
 - exported pack has 5 NotebookLM sources and confirms
   `freudd_deck_policy.included_as_notebook_source: false`
+- NotebookLM notebook ID: `6f07d6ff-2941-4fdc-ae81-ff1c6b903f07`
+- raw NotebookLM cards: 77
+- normalized status counts: 51 `candidate`, 25 `needs_review`, 1
+  `auto_rejected`
+- Gemini review: 45 `accept`, 29 `edit`, 1 `merge_with_existing`, 2 `reject`
+- promoted deck cards: 74
+- promotion decisions:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json`
+- deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
 
-Current blocker:
+Verification additions:
 
-- all probed local NotebookLM storage-state files redirected to Google sign-in
-  during `notebooklm list --json`, so no fresh NotebookLM generation/download
-  can run until at least one profile is reauthenticated
+- artifact ownership covers the independent decisions and deck artifacts
+- artifact invariants validate both NotebookLM variants decks
+- Freudd service tests load the independent deck through
+  `flashcard_services.py`
 
-Resume command after reauth:
+Run commands used:
 
 ```bash
 ./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py \
   --run-id independent-20260526-critical-sociocultural-narrative \
-  --storage notebooklm-podcast-auto/profiles/<fresh-profile>_storage_state.json
-```
+  --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json
 
-Then run Gemini review and promotion with explicit third-deck paths:
-
-```bash
 ./.venv/bin/python scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py \
   --candidates-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/candidates/critical-sociocultural-narrative.candidates.json
 

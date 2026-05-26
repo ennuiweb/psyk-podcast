@@ -65,6 +65,15 @@ STUDENT_SYNTHESIS_FLASHCARD_REGISTRY = SHOW_DIR / "flashcards" / "decks.json"
 STUDENT_SYNTHESIS_FLASHCARD_DECK = SHOW_DIR / "flashcards" / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS = SHOW_DIR / "flashcards" / "notebooklm_variant_promotion_decisions.json"
 STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK = SHOW_DIR / "flashcards" / f"{VARIANT_DECK_SLUG}.json"
+STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK_SLUG = (
+    "notebooklm-uafhaengige-varianter-personlighedspsykologi"
+)
+STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECISIONS = (
+    SHOW_DIR / "flashcards" / "notebooklm_independent_variant_promotion_decisions.json"
+)
+STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK = (
+    SHOW_DIR / "flashcards" / f"{STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK_SLUG}.json"
+)
 VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
 PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS = {
     "reading_key_path",
@@ -326,6 +335,16 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK).exists():
         failures.append(
             f"Missing student synthesis NotebookLM variant flashcard deck: {STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECISIONS).exists():
+        failures.append(
+            "Missing student synthesis independent NotebookLM variant promotion decisions: "
+            f"{STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECISIONS}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK).exists():
+        failures.append(
+            "Missing student synthesis independent NotebookLM variant flashcard deck: "
+            f"{STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK}"
         )
     if not freudd_subjects.exists():
         failures.append(f"Missing Freudd subject catalog: {FREUDD_SUBJECTS}")
@@ -962,19 +981,35 @@ def _failures(repo_root: Path) -> list[str]:
             if str(deck_payload.get("source_sha256") or "").strip() != expected_source_hash:
                 failures.append("Student synthesis matrix flashcard deck source hash is stale")
 
-    variant_decisions = repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS
-    variant_deck = repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK
-    if flashcard_registry.exists() and variant_decisions.exists() and variant_deck.exists():
+    variant_decks_to_validate = [
+        (
+            VARIANT_DECK_SLUG,
+            STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS,
+            STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK,
+            "NotebookLM variant",
+        ),
+        (
+            STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK_SLUG,
+            STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECISIONS,
+            STUDENT_SYNTHESIS_NOTEBOOKLM_INDEPENDENT_VARIANT_DECK,
+            "independent NotebookLM variant",
+        ),
+    ]
+    for expected_deck_slug, decisions_relative, deck_relative, label in variant_decks_to_validate:
+        variant_decisions = repo_root / decisions_relative
+        variant_deck = repo_root / deck_relative
+        if not (flashcard_registry.exists() and variant_decisions.exists() and variant_deck.exists()):
+            continue
         try:
             registry_payload = _load_json(flashcard_registry)
             decisions_payload = _load_json(variant_decisions)
             variant_deck_payload = _load_json(variant_deck)
-            validate_promotion_decisions(decisions_payload)
-            validate_variant_deck(variant_deck_payload)
+            validate_promotion_decisions(decisions_payload, expected_deck_slug=expected_deck_slug)
+            validate_variant_deck(variant_deck_payload, expected_deck_slug=expected_deck_slug)
         except (NotebookLMVariantFlashcardError, json.JSONDecodeError) as exc:
             failures.append(
-                "Student synthesis NotebookLM variant flashcards are invalid in "
-                f"{STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK}: {exc}"
+                f"Student synthesis {label} flashcards are invalid in "
+                f"{deck_relative}: {exc}"
             )
         else:
             decks = registry_payload.get("decks") if isinstance(registry_payload, dict) else None
@@ -987,40 +1022,40 @@ def _failures(repo_root: Path) -> list[str]:
                 matching = [
                     deck
                     for deck in decks
-                    if isinstance(deck, dict) and str(deck.get("deck_slug") or "") == VARIANT_DECK_SLUG
+                    if isinstance(deck, dict) and str(deck.get("deck_slug") or "") == expected_deck_slug
                 ]
                 if len(matching) != 1:
                     failures.append(
-                        f"Student synthesis flashcard registry must contain exactly one {VARIANT_DECK_SLUG} deck"
+                        f"Student synthesis flashcard registry must contain exactly one {expected_deck_slug} deck"
                     )
                 else:
                     registry_entry = matching[0]
-                    expected_path = str(STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK)
+                    expected_path = str(deck_relative)
                     actual_path = str(registry_entry.get("artifact_path") or "").strip()
                     if actual_path != expected_path:
                         failures.append(
-                            "NotebookLM variant flashcard registry artifact_path mismatch: "
+                            f"{label} flashcard registry artifact_path mismatch: "
                             f"{actual_path} != {expected_path}"
                         )
                     if int(registry_entry.get("card_count") or 0) != int(variant_deck_payload.get("card_count") or 0):
                         failures.append(
-                            "NotebookLM variant flashcard registry card_count does not match deck artifact"
+                            f"{label} flashcard registry card_count does not match deck artifact"
                         )
                     if registry_entry.get("enabled") is not True:
-                        failures.append("NotebookLM variant flashcard registry deck must be enabled")
+                        failures.append(f"{label} flashcard registry deck must be enabled")
             if int((decisions_payload.get("stats") or {}).get("promoted_count") or 0) != int(
                 variant_deck_payload.get("card_count") or 0
             ):
-                failures.append("NotebookLM variant promotion decisions promoted_count does not match deck card_count")
+                failures.append(f"{label} promotion decisions promoted_count does not match deck card_count")
             source_file = str(variant_deck_payload.get("source_file") or "").strip()
-            if source_file != str(STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS):
+            if source_file != str(decisions_relative):
                 failures.append(
-                    "NotebookLM variant flashcard deck source_file does not point at promotion decisions: "
+                    f"{label} flashcard deck source_file does not point at promotion decisions: "
                     f"{source_file}"
                 )
-            expected_source_hash = variant_source_fingerprint(repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS)
+            expected_source_hash = variant_source_fingerprint(repo_root / decisions_relative)
             if str(variant_deck_payload.get("source_sha256") or "").strip() != expected_source_hash:
-                failures.append("NotebookLM variant flashcard deck source hash is stale")
+                failures.append(f"{label} flashcard deck source hash is stale")
 
     for relative_path in REFERENCE_FILES:
         path = repo_root / relative_path

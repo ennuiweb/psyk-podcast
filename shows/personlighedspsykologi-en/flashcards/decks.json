@@ -17,6 +17,14 @@
       "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json",
       "card_count": 79,
       "enabled": true
+    },
+    {
+      "deck_slug": "notebooklm-uafhaengige-varianter-personlighedspsykologi",
+      "title": "NotebookLM-uafhængige varianter: personlighedspsykologi",
+      "description": "Gemini-reviewede NotebookLM-varianter genereret uden eksisterende Freudd-kort som NotebookLM-kilde.",
+      "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json",
+      "card_count": 74,
+      "enabled": true
     }
   ]
 }

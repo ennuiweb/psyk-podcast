@@ -378,7 +378,7 @@
   }
 
   .flashcard-front {
-    max-width: 24ch;
+    max-width: min(100%, 30ch);
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
@@ -392,7 +392,7 @@
   .flashcard-recall {
     display: grid;
     gap: var(--space-2);
-    max-width: 740px;
+    max-width: 100%;
   }
 
   .flashcard-answer-toggle {
@@ -433,7 +433,7 @@
     gap: var(--space-2);
     padding: var(--space-3);
     scroll-margin-top: 96px;
-    max-width: 740px;
+    max-width: 100%;
   }
 
   .flashcard-user-answer-label {
@@ -478,7 +478,8 @@
     padding: clamp(var(--space-3), 1.65vw, var(--space-4)) clamp(var(--space-5), 2.7vw, var(--space-6)) clamp(var(--space-3), 1.65vw, var(--space-4)) clamp(42px, 3.9vw, 52px);
     line-height: 1.56;
     overflow-wrap: anywhere;
-    max-width: 740px;
+    width: min(100%, 860px);
+    max-width: 100%;
     box-shadow:
       0 18px 38px color-mix(in srgb, var(--accent) 10%, transparent),
       0 1px 0 color-mix(in srgb, #ffffff 78%, transparent) inset;
@@ -516,7 +517,7 @@
   .flashcard-answer-body {
     display: grid;
     gap: var(--space-2);
-    max-width: 62ch;
+    max-width: 72ch;
     color: color-mix(in srgb, var(--text-subtle-2) 92%, var(--ink));
     font-size: clamp(0.96rem, 1.08vw, 1.04rem);
     font-weight: 460;
@@ -630,31 +631,31 @@
   }
 
   .flashcard-rating[data-rating="again"] {
-    --rating-border: color-mix(in srgb, var(--danger) 42%, var(--border));
-    --rating-bg: color-mix(in srgb, var(--danger-bg-soft) 70%, var(--surface));
-    --rating-ink: var(--danger-ink, var(--danger));
-    --rating-bg-hover: var(--danger-bg-soft);
+    --rating-border: color-mix(in srgb, var(--danger) 28%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--danger-bg-soft) 38%, var(--surface));
+    --rating-ink: color-mix(in srgb, var(--danger-ink, var(--danger)) 88%, var(--ink));
+    --rating-bg-hover: color-mix(in srgb, var(--danger-bg-soft) 58%, var(--surface));
   }
 
   .flashcard-rating[data-rating="hard"] {
-    --rating-border: color-mix(in srgb, var(--warn-border) 74%, var(--border));
-    --rating-bg: color-mix(in srgb, var(--warn-bg-soft) 82%, var(--surface));
-    --rating-ink: var(--warn-ink-soft);
-    --rating-bg-hover: var(--warn-bg);
+    --rating-border: color-mix(in srgb, var(--warn-border) 46%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--warn-bg-soft) 46%, var(--surface));
+    --rating-ink: color-mix(in srgb, var(--warn-ink-soft) 84%, var(--ink));
+    --rating-bg-hover: color-mix(in srgb, var(--warn-bg) 56%, var(--surface));
   }
 
   .flashcard-rating[data-rating="good"] {
-    --rating-border: color-mix(in srgb, var(--success) 36%, var(--border));
-    --rating-bg: color-mix(in srgb, var(--success-bg) 76%, var(--surface));
-    --rating-ink: var(--success);
-    --rating-bg-hover: var(--success-bg-strong);
+    --rating-border: color-mix(in srgb, var(--success) 26%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--success-bg) 44%, var(--surface));
+    --rating-ink: color-mix(in srgb, var(--success) 78%, var(--ink));
+    --rating-bg-hover: color-mix(in srgb, var(--success-bg-strong) 58%, var(--surface));
   }
 
   .flashcard-rating[data-rating="easy"] {
-    --rating-border: color-mix(in srgb, var(--accent) 38%, var(--border));
-    --rating-bg: color-mix(in srgb, var(--info-bg) 78%, var(--surface));
-    --rating-ink: var(--info-ink-strong);
-    --rating-bg-hover: var(--info-bg-strong);
+    --rating-border: color-mix(in srgb, var(--accent) 28%, var(--border));
+    --rating-bg: color-mix(in srgb, var(--info-bg) 50%, var(--surface));
+    --rating-ink: color-mix(in srgb, var(--info-ink-strong) 86%, var(--ink));
+    --rating-bg-hover: color-mix(in srgb, var(--info-bg-strong) 58%, var(--surface));
   }
 
   .flashcard-status {
@@ -739,6 +740,10 @@
 
     .flashcard-front {
       max-width: 21ch;
+    }
+
+    .flashcard-answer {
+      width: min(100%, 740px);
     }
   }
 

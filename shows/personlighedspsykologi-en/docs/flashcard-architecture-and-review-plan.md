@@ -283,3 +283,7 @@ The comparison/review phase is complete only when:
 
 Implement Phase 1 and Phase 2 as a local comparison/report script. The report
 should be reviewed before any Gemini call or Freudd deck promotion.
+
+Detailed implementation plan:
+
+- `shows/personlighedspsykologi-en/docs/flashcard-review-implementation-plan.md`

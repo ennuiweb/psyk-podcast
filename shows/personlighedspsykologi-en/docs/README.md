@@ -12,6 +12,9 @@ student-synthesis/exam-orientation layer:
 Flashcard architecture and comparison-review plan for matrix/NotebookLM card
 pools: `flashcard-architecture-and-review-plan.md`.
 
+Implementation plan for finishing the flashcard pool comparison, Gemini review,
+and promotion decision: `flashcard-review-implementation-plan.md`.
+
 Slides mapping runbook (manual-only policy): `slides-sync.md`.
 
 Artifact map and ownership model: `podcast-flow-artifacts.md`.

@@ -652,6 +652,7 @@ category balance, theory balance, exam usefulness, and promotion strategy.
 Active review architecture:
 
 - `shows/personlighedspsykologi-en/docs/flashcard-architecture-and-review-plan.md`
+- `shows/personlighedspsykologi-en/docs/flashcard-review-implementation-plan.md`
 - use the `theory_topic x review_family` grid from that plan before any
   further NotebookLM regeneration, Gemini review, or Freudd promotion
 

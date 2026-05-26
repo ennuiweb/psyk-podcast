@@ -649,6 +649,12 @@ NotebookLM candidate pool against the original matrix deck and the two existing
 NotebookLM decks for quality, course coverage, wording, duplicate value,
 category balance, theory balance, exam usefulness, and promotion strategy.
 
+Active review architecture:
+
+- `shows/personlighedspsykologi-en/docs/flashcard-architecture-and-review-plan.md`
+- use the `theory_topic x review_family` grid from that plan before any
+  further NotebookLM regeneration, Gemini review, or Freudd promotion
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

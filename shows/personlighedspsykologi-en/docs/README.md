@@ -9,6 +9,9 @@ Plan for using older high-performing student notes as a validated
 student-synthesis/exam-orientation layer:
 `student-synthesis-integration-plan.md`.
 
+Flashcard architecture and comparison-review plan for matrix/NotebookLM card
+pools: `flashcard-architecture-and-review-plan.md`.
+
 Slides mapping runbook (manual-only policy): `slides-sync.md`.
 
 Artifact map and ownership model: `podcast-flow-artifacts.md`.

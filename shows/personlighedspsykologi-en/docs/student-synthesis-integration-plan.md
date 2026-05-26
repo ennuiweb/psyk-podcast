@@ -528,6 +528,61 @@ Verification run:
 - `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py`
 - `./.venv/bin/python scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py --pilot-only --run-id local-no-current-freudd-smoke --print-manifest`
 
+### 2026-05-26: Independent NotebookLM Third-Deck Run Prepared
+
+Status: blocked on NotebookLM reauthentication.
+
+Intended third deck:
+
+- deck slug:
+  `notebooklm-uafhaengige-varianter-personlighedspsykologi`
+- title:
+  `NotebookLM-uafhængige varianter: personlighedspsykologi`
+- first cluster:
+  `critical-sociocultural-narrative`
+
+Preparation completed:
+
+- the promotion builder now supports separate deck slugs/titles/descriptions,
+  so a third deck can be promoted without overwriting
+  `notebooklm-varianter-personlighedspsykologi`
+- the pilot runner accepts `--storage`, allowing it to use the repo-local
+  `notebooklm-podcast-auto/profiles/*_storage_state.json` files directly
+- improved source pack exported locally for run
+  `independent-20260526-critical-sociocultural-narrative`
+- exported pack has 5 NotebookLM sources and confirms
+  `freudd_deck_policy.included_as_notebook_source: false`
+
+Current blocker:
+
+- all probed local NotebookLM storage-state files redirected to Google sign-in
+  during `notebooklm list --json`, so no fresh NotebookLM generation/download
+  can run until at least one profile is reauthenticated
+
+Resume command after reauth:
+
+```bash
+./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py \
+  --run-id independent-20260526-critical-sociocultural-narrative \
+  --storage notebooklm-podcast-auto/profiles/<fresh-profile>_storage_state.json
+```
+
+Then run Gemini review and promotion with explicit third-deck paths:
+
+```bash
+./.venv/bin/python scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py \
+  --candidates-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/candidates/critical-sociocultural-narrative.candidates.json
+
+./.venv/bin/python scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py \
+  --deck-slug notebooklm-uafhaengige-varianter-personlighedspsykologi \
+  --title "NotebookLM-uafhængige varianter: personlighedspsykologi" \
+  --description "Gemini-reviewede NotebookLM-varianter genereret uden eksisterende Freudd-kort som NotebookLM-kilde." \
+  --candidates-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/candidates/critical-sociocultural-narrative.candidates.json \
+  --gemini-review-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/gemini_review/critical-sociocultural-narrative.gemini-review.json \
+  --promotion-decisions-path shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json \
+  --deck-path shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json
+```
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

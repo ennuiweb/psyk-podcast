@@ -48,6 +48,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--deck-path", type=Path, default=DEFAULT_DECK_PATH)
     parser.add_argument("--notebooklm-cli", type=Path, default=DEFAULT_NOTEBOOKLM_CLI)
     parser.add_argument("--profile", default=None, help="NotebookLM profile to pass with -p.")
+    parser.add_argument("--storage", type=Path, default=None, help="NotebookLM storage_state.json to pass with --storage.")
     parser.add_argument("--notebook-id", default=None, help="Existing notebook ID. If omitted, creates a pilot notebook.")
     parser.add_argument("--dry-run", action="store_true", help="Export packs and print intended NotebookLM steps only.")
     return parser.parse_args()
@@ -83,14 +84,25 @@ def _parse_json_output(text: str) -> dict[str, Any]:
 
 
 class NotebookLMRunner:
-    def __init__(self, *, cli_path: Path, profile: str | None, repo_root: Path, dry_run: bool = False) -> None:
+    def __init__(
+        self,
+        *,
+        cli_path: Path,
+        profile: str | None,
+        storage: Path | None,
+        repo_root: Path,
+        dry_run: bool = False,
+    ) -> None:
         self.cli_path = cli_path
         self.profile = profile
+        self.storage = storage
         self.repo_root = repo_root
         self.dry_run = dry_run
 
     def command(self, *parts: str) -> list[str]:
         cmd = [str(self.cli_path)]
+        if self.storage:
+            cmd.extend(["--storage", str(self.storage)])
         if self.profile:
             cmd.extend(["-p", self.profile])
         cmd.extend(parts)
@@ -138,6 +150,7 @@ def main() -> int:
     lab_root = _resolve_repo_path(args.lab_root, repo_root)
     run_id = args.run_id or default_run_id()
     notebooklm_cli = _resolve_repo_path(args.notebooklm_cli, repo_root)
+    storage = _resolve_repo_path(args.storage, repo_root) if args.storage else None
     manifest = export_lab_run(
         run_id=run_id,
         lab_root=lab_root,
@@ -156,6 +169,7 @@ def main() -> int:
     runner = NotebookLMRunner(
         cli_path=notebooklm_cli,
         profile=args.profile,
+        storage=storage,
         repo_root=repo_root,
         dry_run=args.dry_run,
     )
@@ -168,6 +182,7 @@ def main() -> int:
         "notebook_slug": PILOT_NOTEBOOK_SLUG,
         "dry_run": args.dry_run,
         "notebooklm_profile": args.profile,
+        "notebooklm_storage": _repo_relative(storage, repo_root) if storage else None,
         "notebooklm_notebook_id": notebook_id,
         "uploaded_sources": [],
         "downloads": {},

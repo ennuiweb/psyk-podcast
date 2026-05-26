@@ -106,6 +106,7 @@ def build_promotion_decisions(
     *,
     candidates_payload: dict[str, Any],
     gemini_review_payload: dict[str, Any],
+    deck_slug: str = VARIANT_DECK_SLUG,
     generated_at: str | None = None,
 ) -> dict[str, Any]:
     candidates = {
@@ -169,7 +170,7 @@ def build_promotion_decisions(
         "version": 1,
         "artifact_type": PROMOTION_DECISIONS_ARTIFACT_TYPE,
         "subject_slug": SUBJECT_SLUG,
-        "deck_slug": VARIANT_DECK_SLUG,
+        "deck_slug": deck_slug,
         "generated_at": generated_at or utc_now_iso(),
         "source_run": {
             "run_id": _text(candidates_payload.get("run_id")),
@@ -190,19 +191,25 @@ def build_promotion_decisions(
         },
         "decisions": decisions,
     }
-    validate_promotion_decisions(payload)
+    validate_promotion_decisions(payload, expected_deck_slug=deck_slug)
     return payload
 
 
-def validate_promotion_decisions(payload: dict[str, Any]) -> dict[str, Any]:
+def validate_promotion_decisions(
+    payload: dict[str, Any],
+    *,
+    expected_deck_slug: str | None = VARIANT_DECK_SLUG,
+) -> dict[str, Any]:
     if payload.get("version") != 1:
         raise NotebookLMVariantFlashcardError("Promotion decisions version must be 1")
     if payload.get("artifact_type") != PROMOTION_DECISIONS_ARTIFACT_TYPE:
         raise NotebookLMVariantFlashcardError("Invalid promotion decisions artifact_type")
     if payload.get("subject_slug") != SUBJECT_SLUG:
         raise NotebookLMVariantFlashcardError(f"Promotion decisions subject_slug must be {SUBJECT_SLUG}")
-    if payload.get("deck_slug") != VARIANT_DECK_SLUG:
-        raise NotebookLMVariantFlashcardError(f"Promotion decisions deck_slug must be {VARIANT_DECK_SLUG}")
+    if expected_deck_slug is not None and payload.get("deck_slug") != expected_deck_slug:
+        raise NotebookLMVariantFlashcardError(f"Promotion decisions deck_slug must be {expected_deck_slug}")
+    if not _text(payload.get("deck_slug")):
+        raise NotebookLMVariantFlashcardError("Promotion decisions deck_slug is required")
     decisions = payload.get("decisions")
     if not isinstance(decisions, list) or not decisions:
         raise NotebookLMVariantFlashcardError("Promotion decisions must contain a non-empty decisions list")
@@ -264,9 +271,13 @@ def build_variant_deck(
     promotion_decisions: dict[str, Any],
     source_file: str,
     source_sha256: str,
+    deck_slug: str | None = None,
+    title: str | None = None,
     generated_at: str | None = None,
 ) -> dict[str, Any]:
-    validate_promotion_decisions(promotion_decisions)
+    deck_slug = deck_slug or _text(promotion_decisions.get("deck_slug")) or VARIANT_DECK_SLUG
+    title = title or VARIANT_DECK_TITLE
+    validate_promotion_decisions(promotion_decisions, expected_deck_slug=deck_slug)
     cards = [_card_from_decision(decision) for decision in promotion_decisions["decisions"] if decision.get("promote")]
     if not cards:
         raise NotebookLMVariantFlashcardError("No promoted NotebookLM variant cards")
@@ -284,8 +295,8 @@ def build_variant_deck(
         "version": FLASHCARD_VERSION,
         "artifact_type": FLASHCARD_ARTIFACT_TYPE,
         "subject_slug": SUBJECT_SLUG,
-        "deck_slug": VARIANT_DECK_SLUG,
-        "title": VARIANT_DECK_TITLE,
+        "deck_slug": deck_slug,
+        "title": title,
         "source_file": source_file,
         "source_sha256": source_sha256,
         "generated_at": generated_at or utc_now_iso(),
@@ -299,19 +310,25 @@ def build_variant_deck(
         "categories": categories,
         "cards": cards,
     }
-    validate_variant_deck(artifact)
+    validate_variant_deck(artifact, expected_deck_slug=deck_slug)
     return artifact
 
 
-def validate_variant_deck(payload: dict[str, Any]) -> dict[str, Any]:
+def validate_variant_deck(
+    payload: dict[str, Any],
+    *,
+    expected_deck_slug: str | None = VARIANT_DECK_SLUG,
+) -> dict[str, Any]:
     if payload.get("version") != FLASHCARD_VERSION:
         raise NotebookLMVariantFlashcardError("Variant deck version must be 1")
     if payload.get("artifact_type") != FLASHCARD_ARTIFACT_TYPE:
         raise NotebookLMVariantFlashcardError("Variant deck artifact_type must be freudd_flashcards")
     if payload.get("subject_slug") != SUBJECT_SLUG:
         raise NotebookLMVariantFlashcardError(f"Variant deck subject_slug must be {SUBJECT_SLUG}")
-    if payload.get("deck_slug") != VARIANT_DECK_SLUG:
-        raise NotebookLMVariantFlashcardError(f"Variant deck deck_slug must be {VARIANT_DECK_SLUG}")
+    if expected_deck_slug is not None and payload.get("deck_slug") != expected_deck_slug:
+        raise NotebookLMVariantFlashcardError(f"Variant deck deck_slug must be {expected_deck_slug}")
+    if not _text(payload.get("deck_slug")):
+        raise NotebookLMVariantFlashcardError("Variant deck deck_slug is required")
     cards = payload.get("cards")
     if not isinstance(cards, list) or not cards:
         raise NotebookLMVariantFlashcardError("Variant deck cards must be a non-empty list")

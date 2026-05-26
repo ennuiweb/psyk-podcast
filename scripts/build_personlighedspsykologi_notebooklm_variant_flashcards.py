@@ -72,25 +72,48 @@ def _load_registry(path: Path) -> dict[str, Any]:
     return payload
 
 
-def _variant_registry_entry(*, artifact_path: str, card_count: int) -> dict[str, Any]:
+def _variant_registry_entry(
+    *,
+    deck_slug: str,
+    title: str,
+    description: str,
+    artifact_path: str,
+    card_count: int,
+) -> dict[str, Any]:
     return {
-        "deck_slug": VARIANT_DECK_SLUG,
-        "title": VARIANT_DECK_TITLE,
-        "description": VARIANT_DECK_DESCRIPTION,
+        "deck_slug": deck_slug,
+        "title": title,
+        "description": description,
         "artifact_path": artifact_path,
         "card_count": int(card_count),
         "enabled": True,
     }
 
 
-def _build_registry(*, registry_path: Path, artifact_path: str, card_count: int) -> dict[str, Any]:
+def _build_registry(
+    *,
+    registry_path: Path,
+    deck_slug: str,
+    title: str,
+    description: str,
+    artifact_path: str,
+    card_count: int,
+) -> dict[str, Any]:
     current = _load_registry(registry_path)
     decks = [
         dict(deck)
         for deck in current.get("decks", [])
-        if isinstance(deck, dict) and str(deck.get("deck_slug") or "").strip() != VARIANT_DECK_SLUG
+        if isinstance(deck, dict) and str(deck.get("deck_slug") or "").strip() != deck_slug
     ]
-    decks.append(_variant_registry_entry(artifact_path=artifact_path, card_count=card_count))
+    decks.append(
+        _variant_registry_entry(
+            deck_slug=deck_slug,
+            title=title,
+            description=description,
+            artifact_path=artifact_path,
+            card_count=card_count,
+        )
+    )
     return {"version": 1, "subject_slug": SUBJECT_SLUG, "decks": decks}
 
 
@@ -99,7 +122,11 @@ def _build_promotion_payload(args: argparse.Namespace) -> dict[str, Any]:
     gemini_review_path = args.gemini_review_json
     if candidates_path.exists() and gemini_review_path.exists() and not args.from_existing_decisions:
         candidates, review = load_candidates_and_review(candidates_path, gemini_review_path)
-        return build_promotion_decisions(candidates_payload=candidates, gemini_review_payload=review)
+        return build_promotion_decisions(
+            candidates_payload=candidates,
+            gemini_review_payload=review,
+            deck_slug=args.deck_slug,
+        )
     return load_promotion_decisions(args.promotion_decisions_path)
 
 
@@ -120,13 +147,18 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         source_sha256=source_fingerprint(args.promotion_decisions_path)
         if args.promotion_decisions_path.exists()
         else "",
+        deck_slug=args.deck_slug,
+        title=args.title,
     )
     registry = _build_registry(
         registry_path=args.registry_path,
+        deck_slug=args.deck_slug,
+        title=args.title,
+        description=args.description,
         artifact_path=deck_artifact_path,
         card_count=int(deck["card_count"]),
     )
-    validate_variant_deck(deck)
+    validate_variant_deck(deck, expected_deck_slug=args.deck_slug)
 
     if not args.validate_only and not args.dry_run:
         promotion_decisions, _ = write_json_stably(args.promotion_decisions_path, promotion_decisions)
@@ -134,9 +166,14 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             promotion_decisions=promotion_decisions,
             source_file=source_file,
             source_sha256=source_fingerprint(args.promotion_decisions_path),
+            deck_slug=args.deck_slug,
+            title=args.title,
         )
         registry = _build_registry(
             registry_path=args.registry_path,
+            deck_slug=args.deck_slug,
+            title=args.title,
+            description=args.description,
             artifact_path=deck_artifact_path,
             card_count=int(deck["card_count"]),
         )
@@ -154,6 +191,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--promotion-decisions-path", type=Path, default=DEFAULT_PROMOTION_DECISIONS_PATH)
     parser.add_argument("--deck-path", type=Path, default=DEFAULT_DECK_PATH)
     parser.add_argument("--registry-path", type=Path, default=DEFAULT_REGISTRY_PATH)
+    parser.add_argument("--deck-slug", default=VARIANT_DECK_SLUG)
+    parser.add_argument("--title", default=VARIANT_DECK_TITLE)
+    parser.add_argument("--description", default=VARIANT_DECK_DESCRIPTION)
     parser.add_argument(
         "--from-existing-decisions",
         action="store_true",

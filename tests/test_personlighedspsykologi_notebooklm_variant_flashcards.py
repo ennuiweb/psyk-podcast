@@ -103,6 +103,30 @@ def test_promotion_decisions_reject_missing_gemini_review() -> None:
         )
 
 
+def test_build_variant_deck_supports_separate_deck_slug() -> None:
+    deck_slug = "notebooklm-uafhaengige-varianter-personlighedspsykologi"
+    decisions = variants.build_promotion_decisions(
+        candidates_payload=_candidates_payload(),
+        gemini_review_payload=_review_payload(),
+        deck_slug=deck_slug,
+        generated_at="2026-05-26T00:00:00Z",
+    )
+    deck = variants.build_variant_deck(
+        promotion_decisions=decisions,
+        source_file="shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json",
+        source_sha256="abc",
+        deck_slug=deck_slug,
+        title="NotebookLM-uafhængige varianter: personlighedspsykologi",
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert decisions["deck_slug"] == deck_slug
+    assert deck["deck_slug"] == deck_slug
+    assert deck["title"] == "NotebookLM-uafhængige varianter: personlighedspsykologi"
+    assert variants.validate_promotion_decisions(decisions, expected_deck_slug=deck_slug) is decisions
+    assert variants.validate_variant_deck(deck, expected_deck_slug=deck_slug) is deck
+
+
 def test_variant_deck_rejects_learner_facing_source_leaks() -> None:
     candidates = _candidates_payload()
     candidates["candidates"][0]["front"] = "Ane said this in a local note"

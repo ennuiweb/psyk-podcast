@@ -9,8 +9,11 @@ The canonical Freudd deck is generated deterministically from:
 - `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
 - `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
 
-NotebookLM should only see processed Markdown packs exported from those files.
-Do not upload the original student-note PDFs/DOCX files for this workflow.
+NotebookLM should only see processed Markdown packs exported from the matrix,
+orientation points, and comparison targets. Do not upload the original
+student-note PDFs/DOCX files or existing Freudd flashcards for this workflow.
+Existing Freudd cards are used only after generation for local duplicate checks
+and Gemini review.
 
 ## Notebook Set
 
@@ -37,6 +40,10 @@ Export processed packs:
 Upload the generated Markdown files in the selected `runs/<run-id>/packs/<slug>/`
 folder to NotebookLM, generate flashcards there, then download the flashcards as
 JSON.
+
+The exported NotebookLM source pack intentionally excludes existing Freudd
+cards. Let NotebookLM generate independently from the processed course
+structure, then dedupe against Freudd downstream.
 
 Normalize downloaded NotebookLM output:
 
@@ -108,8 +115,10 @@ Its Gemini-reviewed decisions are promoted to the committed variants deck:
 
 - Do not import NotebookLM cards directly into Freudd.
 - Treat every NotebookLM card as a candidate until reviewed.
-- Review candidates against the existing Freudd deck before promotion.
+- Do not upload existing Freudd cards to NotebookLM as source material.
+- Review candidates against the existing Freudd deck after generation and before promotion.
 - Reject cards that leak student names, local paths, or source-note provenance.
-- Reject or edit generic definition cards that do not improve the current deck.
+- Reject or edit generic definition cards that do not add exam-useful recall,
+  comparison, or trap-prevention value.
 - Keep accepted alternatives in a separate variants deck unless a later task
   explicitly merges them into the canonical matrix deck.

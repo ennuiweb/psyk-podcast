@@ -130,18 +130,20 @@ NotebookLM alternative-card workflow:
 - single-call Gemini review CLI:
   `scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py`
 
-The lab exports processed Markdown packs from the validated matrix and current
-Freudd deck. NotebookLM downloads are normalized into review-only candidate
-JSON/Markdown under gitignored `flashcard_lab/runs/` folders. These candidates
-are then reviewed against the existing Freudd deck before promotion. The Gemini
-reviewer makes one structured JSON call over all candidates in a run, including
-nearest existing-card context and relevant matrix rows, and writes advisory
-review artifacts under the ignored run folder. These candidates must not be
-imported directly into Freudd. Reviewed accepted/edited candidates are promoted
-through `scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py`
-into a separate variants deck; a compact promotion-decisions artifact is the
-committed bridge from ignored run output to learner-facing Freudd JSON. Merging
-edited NotebookLM cards into the deterministic matrix deck remains a separate,
+The lab exports processed Markdown packs from the validated matrix, orientation
+points, and comparison targets. It intentionally does not include existing
+Freudd cards as NotebookLM source material. NotebookLM downloads are normalized
+into review-only candidate JSON/Markdown under gitignored `flashcard_lab/runs/`
+folders. These candidates are then reviewed against the existing Freudd deck
+after generation and before promotion. The Gemini reviewer makes one structured
+JSON call over all candidates in a run, including nearest existing-card context
+and relevant matrix rows, and writes advisory review artifacts under the ignored
+run folder. These candidates must not be imported directly into Freudd. Reviewed
+accepted/edited candidates are promoted through
+`scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py` into a
+separate variants deck; a compact promotion-decisions artifact is the committed
+bridge from ignored run output to learner-facing Freudd JSON. Merging edited
+NotebookLM cards into the deterministic matrix deck remains a separate,
 explicit later decision.
 
 ### Slides

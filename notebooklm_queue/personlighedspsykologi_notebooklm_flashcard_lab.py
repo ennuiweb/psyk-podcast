@@ -158,7 +158,6 @@ class NotebookSpec:
     theory_ids: tuple[str, ...]
     purpose: str
     include_all_rows_digest: bool = False
-    include_all_existing_cards: bool = False
     comparison_workshop: bool = False
 
 
@@ -183,7 +182,6 @@ NOTEBOOK_SPECS: tuple[NotebookSpec, ...] = (
         ),
         purpose="Calibrate style and generate course-wide comparison cards.",
         include_all_rows_digest=True,
-        include_all_existing_cards=True,
     ),
     NotebookSpec(
         slug="measurement-development-pathology",
@@ -334,13 +332,14 @@ def render_authoring_brief(spec: NotebookSpec) -> str:
             "Hard rules:",
             "",
             "- Write learner-facing fronts and backs in Danish.",
-            "- Create alternative cards, not duplicates of the existing cards.",
+            "- Generate independently from the processed matrix material in this notebook.",
             "- Prioritize oral-exam retrieval, comparison, and misunderstanding prevention.",
             "- Do not cite or mention student note owners, local file paths, source-note IDs, or internal provenance.",
             "- Do not invent source-grounded claims beyond the matrix content in this notebook.",
             "- Prefer compact answer backs: normally 1-4 sentences or 2-4 bullets.",
             "- Avoid generic definition-only cards unless the card forces a useful distinction.",
             "- If the source material is uncertain, make the card about the uncertainty rather than hiding it.",
+            "- Do not assume you have seen the current Freudd deck; duplicate detection happens after NotebookLM generation.",
             "",
             "Useful card families:",
             "",
@@ -493,7 +492,7 @@ def render_output_contract() -> str:
             '  "category_slug": "one of the allowed categories",',
             '  "theory_ids": ["matrix_theory_id"],',
             '  "card_family": "orientation|personbegreb|method|affordance_limit|comparison|exam_trap",',
-            '  "added_value": "why this is not a duplicate of the current Freudd deck"',
+            '  "added_value": "why this helps oral-exam recall or comparison"',
             "}",
             "```",
             "",
@@ -534,7 +533,6 @@ def _source_entry(path: Path, repo_root: Path) -> dict[str, Any]:
 def export_notebook_packs(
     *,
     matrix: dict[str, Any],
-    deck: dict[str, Any],
     run_id: str,
     lab_root: Path,
     repo_root: Path,
@@ -555,7 +553,8 @@ def export_notebook_packs(
         theory_ids = set(spec.theory_ids)
         pack_dir = packs_root / spec.slug
         pack_dir.mkdir(parents=True, exist_ok=True)
-        current_cards = cards_for_theory_ids(deck, theory_ids, include_all=spec.include_all_existing_cards)
+        for stale_markdown in pack_dir.glob("*.md"):
+            stale_markdown.unlink()
         files = {
             "00-card-authoring-brief.md": render_authoring_brief(spec),
             "01-orientation-points.md": render_orientation_points(matrix),
@@ -564,16 +563,15 @@ def export_notebook_packs(
                 theory_ids,
                 include_all_digest=spec.include_all_rows_digest,
             ),
-            "03-current-freudd-cards.md": render_current_cards(current_cards),
-            "04-comparison-targets.md": render_comparisons(
+            "03-comparison-targets.md": render_comparisons(
                 matrix,
                 theory_ids,
                 include_all=spec.comparison_workshop or spec.include_all_rows_digest,
             ),
-            "05-output-contract.md": render_output_contract(),
+            "04-output-contract.md": render_output_contract(),
         }
         if spec.comparison_workshop:
-            files["06-all-theory-orientation-table.md"] = render_all_theory_orientation_table(matrix)
+            files["05-all-theory-orientation-table.md"] = render_all_theory_orientation_table(matrix)
         for filename, content in files.items():
             (pack_dir / filename).write_text(content, encoding="utf-8")
         source_entries = [_source_entry(pack_dir / filename, repo_root) for filename in sorted(files)]
@@ -591,7 +589,7 @@ def export_notebook_packs(
                 "flashcard_generation": {
                     "quantity": "more",
                     "difficulty": "hard",
-                    "instructions": "Generate Danish alternative flashcards that add value beyond the current Freudd cards. Prioritize comparison, exam traps, and oral-exam recall.",
+                    "instructions": "Generate Danish oral-exam flashcard candidates from the uploaded processed matrix material. Prioritize comparison, exam traps, and precise recall; avoid generic definition cards.",
                 },
             }
         )
@@ -607,10 +605,9 @@ def export_notebook_packs(
             "row_count": len(_as_list(matrix.get("rows"))),
             "fingerprint": semantic_fingerprint(matrix),
         },
-        "current_deck": {
-            "deck_slug": _text(deck.get("deck_slug")),
-            "card_count": int(deck.get("card_count") or 0),
-            "fingerprint": semantic_fingerprint(deck),
+        "freudd_deck_policy": {
+            "included_as_notebook_source": False,
+            "dedupe_stage": "after NotebookLM generation, during normalization and Gemini review",
         },
         "notebooks": notebooks,
     }
@@ -1329,10 +1326,8 @@ def export_lab_run(
     generated_at: str | None = None,
 ) -> dict[str, Any]:
     matrix = load_matrix(matrix_path)
-    deck = load_current_deck(deck_path, matrix)
     manifest = export_notebook_packs(
         matrix=matrix,
-        deck=deck,
         run_id=run_id,
         lab_root=lab_root,
         repo_root=repo_root,

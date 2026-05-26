@@ -119,11 +119,9 @@ def _deck(matrix):
 
 def test_export_notebook_packs_writes_pilot_sources_and_manifest(tmp_path):
     matrix = _matrix()
-    deck = _deck(matrix)
 
     manifest = lab.export_notebook_packs(
         matrix=matrix,
-        deck=deck,
         run_id="test-run",
         lab_root=tmp_path / "lab",
         repo_root=tmp_path,
@@ -135,9 +133,11 @@ def test_export_notebook_packs_writes_pilot_sources_and_manifest(tmp_path):
     pack_dir = tmp_path / notebook["pack_dir"]
     assert manifest["run_id"] == "test-run"
     assert notebook["slug"] == lab.PILOT_NOTEBOOK_SLUG
-    assert notebook["source_count"] == 6
+    assert notebook["source_count"] == 5
     assert (pack_dir / "00-card-authoring-brief.md").exists()
     assert (pack_dir / "02-matrix-slice.md").read_text(encoding="utf-8").count("## ") == 4
+    assert not (pack_dir / "03-current-freudd-cards.md").exists()
+    assert "included_as_notebook_source" in manifest["freudd_deck_policy"]
     assert all(source["sha256"] and source["bytes"] > 0 for source in notebook["sources"])
 
 

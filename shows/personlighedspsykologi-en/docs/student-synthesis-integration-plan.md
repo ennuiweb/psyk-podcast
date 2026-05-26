@@ -501,6 +501,33 @@ Verification run:
 - `./.venv/bin/python scripts/check_personlighedspsykologi_artifact_invariants.py`
 - `cd freudd_portal && ../.venv/bin/python manage.py test quizzes.tests.test_flashcards.PersonlighedspsykologiMatrixFlashcardArtifactTests`
 
+### 2026-05-26: NotebookLM Source-Pack Policy Tightened
+
+Status: complete.
+
+Decision: future NotebookLM flashcard packs should not include existing Freudd
+cards as NotebookLM source material. Current cards are still used downstream
+for local duplicate scoring and Gemini review, but NotebookLM now generates
+from processed matrix/orientation/comparison material only.
+
+Implementation changes:
+
+- remove the exported `current-freudd-cards` Markdown source from future packs
+- keep pack filenames compact: authoring brief, orientation points, matrix
+  slice, comparison targets, and output contract
+- record `freudd_deck_policy.included_as_notebook_source: false` in the lab
+  manifest
+- clean stale Markdown files from a pack directory before writing, so reused
+  run IDs cannot accidentally upload old Freudd-card sources
+- strengthen the authoring brief to ask for independent oral-exam candidates
+  and leave duplicate detection to the post-generation review stage
+
+Verification run:
+
+- `./.venv/bin/python -m py_compile notebooklm_queue/personlighedspsykologi_notebooklm_flashcard_lab.py scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py`
+- `./.venv/bin/python scripts/export_personlighedspsykologi_notebooklm_flashcard_packs.py --pilot-only --run-id local-no-current-freudd-smoke --print-manifest`
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

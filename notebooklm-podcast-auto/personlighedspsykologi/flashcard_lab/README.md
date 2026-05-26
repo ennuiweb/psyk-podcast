@@ -50,6 +50,18 @@ Normalize downloaded NotebookLM output:
 The normalizer writes local candidate JSON and review Markdown under
 `runs/<run-id>/candidates/`. Those run outputs are gitignored.
 
+Review candidates with Gemini in a single call:
+
+```bash
+./.venv/bin/python scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py \
+  --candidates-json <run>/candidates/<notebook-slug>.candidates.json
+```
+
+The Gemini reviewer builds a compact JSON bundle containing every candidate,
+its nearest existing Freudd card, relevant matrix rows, and the review rubric.
+It writes advisory review JSON/Markdown under `runs/<run-id>/gemini_review/`.
+It does not promote or modify Freudd cards.
+
 When NotebookLM auth and quota are healthy, the pilot can also be run
 end-to-end:
 
@@ -69,6 +81,8 @@ The first live pilot run is:
 - raw NotebookLM flashcards: 80
 - normalized status counts: 60 `candidate`, 19 `needs_review`, 1
   `auto_rejected`
+- Gemini review: 60 `accept`, 19 `edit`, 1 `reject` using
+  `gemini-3.1-pro-preview`
 
 The run output is local review material and remains ignored by git.
 
@@ -76,6 +90,7 @@ The run output is local review material and remains ignored by git.
 
 - Do not import NotebookLM cards directly into Freudd.
 - Treat every NotebookLM card as a candidate until reviewed.
+- Review candidates against the existing Freudd deck before promotion.
 - Reject cards that leak student names, local paths, or source-note provenance.
 - Reject or edit generic definition cards that do not improve the current deck.
 - Keep accepted alternatives in a separate variants deck unless a later task

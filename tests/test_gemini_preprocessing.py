@@ -109,6 +109,31 @@ def test_generate_json_passes_structured_output_schema_and_high_thinking():
     assert "temperature" not in call["config"]
 
 
+def test_generate_json_allows_lower_thinking_level_for_review_tasks():
+    fake_client = mock.Mock()
+    fake_client.models.generate_content.return_value = mock.Mock(text='{"analysis": {"ok": true}}')
+    fake_support = mock.Mock()
+    fake_support.GenerateContentConfig.side_effect = lambda **kwargs: kwargs
+    fake_support.ThinkingConfig.side_effect = lambda **kwargs: {"type": "thinking", **kwargs}
+    fake_support.Part.from_text.side_effect = lambda *, text: {"type": "text", "text": text}
+
+    payload = gemini.generate_json(
+        backend=gemini.GeminiPreprocessingBackend(
+            provider="gemini",
+            client=fake_client,
+            support=fake_support,
+            model="gemini-test",
+        ),
+        system_instruction="system",
+        user_prompt="user",
+        thinking_level="low",
+    )
+
+    assert payload == {"analysis": {"ok": True}}
+    call = fake_client.models.generate_content.call_args.kwargs
+    assert call["config"]["thinking_config"] == {"type": "thinking", "thinking_level": "low"}
+
+
 def test_generate_json_reports_response_diagnostics_for_truncated_json():
     fake_client = mock.Mock()
     response = mock.Mock(text="Here")

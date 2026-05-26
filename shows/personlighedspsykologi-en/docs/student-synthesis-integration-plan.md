@@ -405,6 +405,8 @@ Implemented files:
   `scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py`
 - optional NotebookLM pilot runner:
   `scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- single-call Gemini review CLI:
+  `scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py`
 - lab workspace docs:
   `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/README.md`
 - tests:
@@ -416,6 +418,8 @@ Operational contract:
   richest comparison/trap payoff
 - upload only generated Markdown packs from `flashcard_lab/runs/<run-id>/packs/`
 - download NotebookLM flashcards as JSON and normalize them before review
+- review normalized candidates against the existing Freudd deck before any
+  variants-deck promotion
 - do not import raw NotebookLM cards into Freudd
 - keep accepted NotebookLM alternatives in a separate variants deck unless a
   later task explicitly edits and promotes them into the canonical matrix deck
@@ -428,6 +432,7 @@ Verification run:
 - `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id local-dry-run-smoke --dry-run`
 - `./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py --run-id pilot-20260525-critical-sociocultural-narrative`
 - `./.venv/bin/python scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py --run-id pilot-20260525-critical-sociocultural-narrative --notebook-slug critical-sociocultural-narrative --input-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/pilot-20260525-critical-sociocultural-narrative/downloads/critical-sociocultural-narrative.flashcards.json`
+- `./.venv/bin/python scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py --candidates-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/pilot-20260525-critical-sociocultural-narrative/candidates/critical-sociocultural-narrative.candidates.json`
 
 Live pilot result:
 
@@ -440,8 +445,20 @@ Live pilot result:
   - `candidate`: 60
   - `needs_review`: 19
   - `auto_rejected`: 1
+- single-call Gemini review:
+  - model: `gemini-3.1-pro-preview`
+  - prompt: `personlighedspsykologi-gemini-flashcard-review-v1`
+  - `accept`: 60
+  - `edit`: 19
+  - `reject`: 1
 - local run output is intentionally gitignored under
   `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/pilot-20260525-critical-sociocultural-narrative/`
+
+Implementation note: the shared Gemini helper still defaults to high thinking
+for existing preprocessing pipelines. The flashcard review CLI uses low
+thinking by default because the full 80-card review bundle timed out at the
+high-thinking default while the same single-call bundle completed with
+low-thinking review generation.
 
 ## Purpose
 

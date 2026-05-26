@@ -121,13 +121,19 @@ NotebookLM alternative-card workflow:
   `scripts/normalize_personlighedspsykologi_notebooklm_flashcards.py`
 - optional pilot runner:
   `scripts/run_personlighedspsykologi_notebooklm_flashcard_pilot.py`
+- single-call Gemini review CLI:
+  `scripts/review_personlighedspsykologi_notebooklm_flashcards_with_gemini.py`
 
 The lab exports processed Markdown packs from the validated matrix and current
 Freudd deck. NotebookLM downloads are normalized into review-only candidate
 JSON/Markdown under gitignored `flashcard_lab/runs/` folders. These candidates
-must not be imported directly into Freudd; accepted alternatives should become
-a separate variants deck unless a later task explicitly merges edited cards
-into the deterministic matrix deck.
+are then reviewed against the existing Freudd deck before promotion. The Gemini
+reviewer makes one structured JSON call over all candidates in a run, including
+nearest existing-card context and relevant matrix rows, and writes advisory
+review artifacts under the ignored run folder. These candidates must not be
+imported directly into Freudd; accepted alternatives should become a separate
+variants deck unless a later task explicitly merges edited cards into the
+deterministic matrix deck.
 
 ### Slides
 

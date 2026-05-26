@@ -204,7 +204,10 @@ def test_normalize_notebooklm_cards_labels_candidate_risks(tmp_path):
     assert statuses == ["candidate", "auto_rejected", "auto_rejected", "auto_rejected"]
     assert candidates["stats"]["status_counts"] == {"auto_rejected": 3, "candidate": 1}
     assert candidates["candidates"][0]["category_slug"] == "orienteringspunkter"
+    assert candidates["candidates"][0]["manual_card_review"]["nearest_existing_card"]["card_id"]
+    assert candidates["candidates"][0]["manual_card_review"]["suggested_decision"] in {"accept", "edit"}
     assert candidates["candidates"][1]["duplicate"]["score"] >= lab.DUPLICATE_REJECT_THRESHOLD
+    assert candidates["candidates"][1]["manual_card_review"]["suggested_decision"] == "merge_with_existing"
     assert "unsafe_provenance_or_path" in candidates["candidates"][2]["warnings"]
     assert not candidates["candidates"][3]["mapped_theory_ids"]
 
@@ -231,3 +234,123 @@ def test_infer_theory_ids_handles_danish_inflected_theory_terms():
         "Som fortællinger, der organiserer identitet over tid.",
         matrix,
     ) == ["narrative_psychology"]
+
+
+def test_build_gemini_flashcard_review_bundle_and_validate_response():
+    matrix = _matrix()
+    deck = _deck(matrix)
+    candidates = lab.normalize_notebooklm_cards(
+        notebooklm_payload={
+            "cards": [
+                {
+                    "front": "Hvordan placerer kritisk psykologi agency i eksamenssvar?",
+                    "back": "Kritisk psykologi betoner handleevne som situeret i konkrete livsbetingelser.",
+                }
+            ]
+        },
+        matrix=matrix,
+        current_deck=deck,
+        run_id="test-run",
+        notebook_slug=lab.PILOT_NOTEBOOK_SLUG,
+        source_path="downloads/cards.json",
+        generated_at="2026-05-25T00:00:00Z",
+    )
+
+    bundle = lab.build_gemini_flashcard_review_bundle(
+        candidates_payload=candidates,
+        matrix=matrix,
+        current_deck=deck,
+        model="gemini-test",
+        generated_at="2026-05-25T00:00:00Z",
+    )
+    candidate_id = bundle["candidates"][0]["candidate_id"]
+    review = lab.validate_gemini_flashcard_review(
+        {
+            "review_summary": {
+                "overall_assessment": "Useful but should stay review-only.",
+                "candidate_count": 1,
+                "accept_count": 1,
+                "edit_count": 0,
+                "merge_with_existing_count": 0,
+                "reject_count": 0,
+                "main_risks": ["Potential overlap."],
+            },
+            "decisions": [
+                {
+                    "candidate_id": candidate_id,
+                    "decision": "accept",
+                    "confidence": "medium",
+                    "reason": "Adds an oral-exam cue about agency.",
+                    "added_value": "Sharper than the nearest existing card.",
+                    "nearest_existing_card_assessment": "Related but not equivalent.",
+                    "edited_front": "",
+                    "edited_back": "",
+                    "safety_flags": [],
+                }
+            ],
+        },
+        bundle=bundle,
+        model="gemini-test",
+        generated_at="2026-05-25T00:00:00Z",
+    )
+
+    assert bundle["prompt_version"] == lab.GEMINI_FLASHCARD_REVIEW_PROMPT_VERSION
+    assert bundle["matrix_rows"]
+    assert lab.gemini_flashcard_review_response_schema()["required"] == ["review_summary", "decisions"]
+    assert review["stats"]["decision_counts"] == {"accept": 1}
+    assert review["decisions"][0]["candidate_id"] == candidate_id
+
+
+def test_validate_gemini_flashcard_review_rejects_missing_or_unsafe_edits():
+    matrix = _matrix()
+    deck = _deck(matrix)
+    candidates = lab.normalize_notebooklm_cards(
+        notebooklm_payload={
+            "cards": [
+                {
+                    "front": "Hvordan placerer kritisk psykologi agency i eksamenssvar?",
+                    "back": "Kritisk psykologi betoner handleevne som situeret i konkrete livsbetingelser.",
+                }
+            ]
+        },
+        matrix=matrix,
+        current_deck=deck,
+        run_id="test-run",
+        notebook_slug=lab.PILOT_NOTEBOOK_SLUG,
+        source_path="downloads/cards.json",
+        generated_at="2026-05-25T00:00:00Z",
+    )
+    bundle = lab.build_gemini_flashcard_review_bundle(
+        candidates_payload=candidates,
+        matrix=matrix,
+        current_deck=deck,
+        model="gemini-test",
+        generated_at="2026-05-25T00:00:00Z",
+    )
+    candidate_id = bundle["candidates"][0]["candidate_id"]
+
+    try:
+        lab.validate_gemini_flashcard_review(
+            {
+                "review_summary": {"overall_assessment": "", "main_risks": []},
+                "decisions": [
+                    {
+                        "candidate_id": candidate_id,
+                        "decision": "edit",
+                        "confidence": "high",
+                        "reason": "Needs edit.",
+                        "added_value": "Better focus.",
+                        "nearest_existing_card_assessment": "Not duplicate.",
+                        "edited_front": "Hvad skrev Ane?",
+                        "edited_back": "Se /Users/oskar/noter.",
+                        "safety_flags": [],
+                    }
+                ],
+            },
+            bundle=bundle,
+            model="gemini-test",
+        )
+    except lab.FlashcardLabError as exc:
+        assert "forbidden" in str(exc)
+    else:
+        raise AssertionError("unsafe Gemini edit should fail validation")

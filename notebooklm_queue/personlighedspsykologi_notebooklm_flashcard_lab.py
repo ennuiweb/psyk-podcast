@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from notebooklm_queue.json_artifact_utils import render_json, semantic_fingerprint, write_json_stably
+from notebooklm_queue.gemini_preprocessing import DEFAULT_GEMINI_PREPROCESSING_MODEL
 from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
     CATEGORIES,
     LEARNER_TEXT_FORBIDDEN_PATTERNS,
@@ -31,11 +32,15 @@ DEFAULT_MATRIX_PATH = Path("shows/personlighedspsykologi-en/student_synthesis/ex
 DEFAULT_DECK_PATH = Path("shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json")
 DEFAULT_RUN_ID_PREFIX = "matrix-flashcards"
 PILOT_NOTEBOOK_SLUG = "critical-sociocultural-narrative"
+DEFAULT_GEMINI_FLASHCARD_REVIEW_MODEL = DEFAULT_GEMINI_PREPROCESSING_MODEL
+GEMINI_FLASHCARD_REVIEW_PROMPT_VERSION = "personlighedspsykologi-gemini-flashcard-review-v1"
+GEMINI_FLASHCARD_REVIEW_ARTIFACT_TYPE = "personlighedspsykologi_gemini_flashcard_review"
 
 MAX_FRONT_CHARS = 280
 MAX_BACK_CHARS = 1200
 DUPLICATE_REVIEW_THRESHOLD = 0.72
 DUPLICATE_REJECT_THRESHOLD = 0.9
+MANUAL_CARD_OVERLAP_REVIEW_THRESHOLD = 0.42
 
 CATEGORY_KEYWORDS = {
     "orienteringspunkter": (
@@ -626,23 +631,88 @@ def _token_set(value: str) -> set[str]:
 
 
 def duplicate_score(front: str, back: str, existing_cards: list[dict[str, Any]]) -> tuple[float, str | None]:
+    review = manual_card_review(front=front, back=back, existing_cards=existing_cards, warnings=[], theory_ids=[])
+    nearest = review.get("nearest_existing_card") if isinstance(review.get("nearest_existing_card"), dict) else {}
+    return float(review.get("duplicate_score") or 0.0), _text(nearest.get("card_id")) or None
+
+
+def _card_brief(card: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not card:
+        return None
+    return {
+        "card_id": _text(card.get("card_id")),
+        "category_slug": _text(card.get("category_slug")),
+        "category_title": _text(card.get("category_title")),
+        "tags": _as_str_list(card.get("tags")),
+        "front_text": _text(card.get("front_text")),
+        "back_text": _text(card.get("back_text")),
+    }
+
+
+def manual_card_review(
+    *,
+    front: str,
+    back: str,
+    existing_cards: list[dict[str, Any]],
+    warnings: list[str],
+    theory_ids: list[str],
+) -> dict[str, Any]:
     candidate_tokens = _token_set(front + " " + back)
     if not candidate_tokens:
-        return 0.0, None
+        return {
+            "duplicate_score": 0.0,
+            "nearest_existing_card": None,
+            "shared_terms": [],
+            "suggested_decision": "reject",
+            "rationale": "Candidate has no usable token content.",
+        }
     best_score = 0.0
-    best_id: str | None = None
+    best_card: dict[str, Any] | None = None
+    best_shared_terms: set[str] = set()
     for card in existing_cards:
         existing_text = _text(card.get("front_text")) + " " + _text(card.get("back_text"))
         existing_tokens = _token_set(existing_text)
         if not existing_tokens:
             continue
+        shared_terms = candidate_tokens & existing_tokens
         score = len(candidate_tokens & existing_tokens) / len(candidate_tokens | existing_tokens)
         if _normalize_card_text(front).casefold() == _normalize_card_text(card.get("front_text")).casefold():
             score = max(score, 0.95)
         if score > best_score:
             best_score = score
-            best_id = _text(card.get("card_id"))
-    return best_score, best_id
+            best_card = card
+            best_shared_terms = shared_terms
+
+    hard_warnings = {"unsafe_provenance_or_path", "front_too_long", "back_too_long"}
+    if hard_warnings & set(warnings):
+        decision = "reject"
+        rationale = "Reject before content review because the candidate fails a hard safety/shape gate."
+    elif not theory_ids:
+        decision = "reject"
+        rationale = "Reject or remap manually because the card is not grounded to a matrix theory row."
+    elif best_score >= DUPLICATE_REJECT_THRESHOLD:
+        decision = "merge_with_existing"
+        rationale = "Very high overlap with an existing Freudd card; only merge if the wording improves that card."
+    elif best_score >= DUPLICATE_REVIEW_THRESHOLD:
+        decision = "merge_with_existing"
+        rationale = "High overlap with an existing Freudd card; review as a possible wording improvement, not a new card."
+    elif best_score >= MANUAL_CARD_OVERLAP_REVIEW_THRESHOLD:
+        decision = "edit"
+        rationale = "Moderate overlap with an existing Freudd card; keep only if it adds a distinct oral-exam retrieval cue."
+    elif warnings:
+        decision = "edit"
+        rationale = "Potentially useful, but warnings need human cleanup before promotion."
+    else:
+        decision = "accept"
+        rationale = "Low overlap with existing Freudd cards and no automatic warnings; review for content quality before promotion."
+
+    return {
+        "duplicate_score": round(best_score, 4),
+        "nearest_existing_card": _card_brief(best_card),
+        "shared_terms": sorted(best_shared_terms)[:24],
+        "suggested_decision": decision,
+        "rationale": rationale,
+    }
 
 
 def infer_theory_ids(front: str, back: str, matrix: dict[str, Any]) -> list[str]:
@@ -738,7 +808,16 @@ def normalize_notebooklm_cards(
         seen_pairs.add(pair)
         theory_ids = infer_theory_ids(front, back, matrix)
         category_slug = infer_category(front, back)
-        dup_score, dup_card_id = duplicate_score(front, back, existing_cards)
+        manual_review = manual_card_review(
+            front=front,
+            back=back,
+            existing_cards=existing_cards,
+            warnings=warnings,
+            theory_ids=theory_ids,
+        )
+        dup_score = float(manual_review.get("duplicate_score") or 0.0)
+        nearest_card = manual_review.get("nearest_existing_card")
+        dup_card_id = _text(nearest_card.get("card_id")) if isinstance(nearest_card, dict) else None
         status = _review_status(warnings, dup_score, theory_ids)
         candidates.append(
             {
@@ -763,6 +842,7 @@ def normalize_notebooklm_cards(
                     "score": round(dup_score, 4),
                     "nearest_card_id": dup_card_id,
                 },
+                "manual_card_review": manual_review,
                 "warnings": sorted(set(warnings)),
                 "review_status": status,
             }
@@ -828,11 +908,20 @@ def write_candidate_review_markdown(candidates_payload: dict[str, Any], output_p
                 f"Duplicate: {candidate.get('duplicate')}",
                 f"Warnings: {', '.join(_as_str_list(candidate.get('warnings'))) or 'none'}",
                 "",
+                "Suggested decision: "
+                f"`{_text((candidate.get('manual_card_review') or {}).get('suggested_decision'))}`",
+                "",
+                f"Review rationale: {_text((candidate.get('manual_card_review') or {}).get('rationale'))}",
+                "",
                 f"Front: {candidate.get('front')}",
                 "",
                 f"Back: {candidate.get('back')}",
                 "",
-                "Decision: [ ] accept  [ ] edit  [ ] reject",
+                "Nearest existing Freudd card:",
+                "",
+                _format_nearest_card_for_review(candidate),
+                "",
+                "Decision: [ ] accept  [ ] edit  [ ] merge with existing  [ ] reject",
                 "",
                 "---",
                 "",
@@ -840,6 +929,367 @@ def write_candidate_review_markdown(candidates_payload: dict[str, Any], output_p
         )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(lines), encoding="utf-8")
+
+
+DECISION_VALUES = {"accept", "edit", "merge_with_existing", "reject"}
+CONFIDENCE_VALUES = {"low", "medium", "high"}
+
+
+def matrix_review_rows(matrix: dict[str, Any], theory_ids: set[str]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for row in _as_list(matrix.get("rows")):
+        if not isinstance(row, dict):
+            continue
+        theory_id = _text(row.get("theory_id"))
+        if theory_id not in theory_ids:
+            continue
+        rows.append(
+            {
+                "theory_id": theory_id,
+                "label": _text(row.get("label")),
+                "course_role": _text(row.get("course_role")),
+                "course_summary": _text(row.get("course_summary")),
+                "model_of_person": _text(row.get("model_of_person")),
+                "personality_or_subjectivity_model": _text(row.get("personality_or_subjectivity_model")),
+                "method_evidence_style": _text(row.get("method_evidence_style")),
+                "central_concepts": _as_str_list(row.get("central_concepts"))[:12],
+                "strengths": _as_str_list(row.get("strengths")),
+                "limitations": _as_str_list(row.get("limitations")),
+                "likely_misunderstandings": _as_str_list(row.get("likely_misunderstandings")),
+            }
+        )
+    return rows
+
+
+def _candidate_for_gemini(candidate: dict[str, Any]) -> dict[str, Any]:
+    manual_review = candidate.get("manual_card_review") if isinstance(candidate.get("manual_card_review"), dict) else {}
+    nearest = manual_review.get("nearest_existing_card") if isinstance(manual_review.get("nearest_existing_card"), dict) else None
+    return {
+        "candidate_id": _text(candidate.get("candidate_id")),
+        "source_index": candidate.get("source_index"),
+        "front": _text(candidate.get("front")),
+        "back": _text(candidate.get("back")),
+        "category_slug": _text(candidate.get("category_slug")),
+        "mapped_theory_ids": _as_str_list(candidate.get("mapped_theory_ids")),
+        "warnings": _as_str_list(candidate.get("warnings")),
+        "automatic_review_status": _text(candidate.get("review_status")),
+        "local_suggested_decision": _text(manual_review.get("suggested_decision")),
+        "local_review_rationale": _text(manual_review.get("rationale")),
+        "duplicate_score": float(manual_review.get("duplicate_score") or 0.0),
+        "nearest_existing_card": nearest,
+        "shared_terms": _as_str_list(manual_review.get("shared_terms")),
+    }
+
+
+def build_gemini_flashcard_review_bundle(
+    *,
+    candidates_payload: dict[str, Any],
+    matrix: dict[str, Any],
+    current_deck: dict[str, Any],
+    model: str,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    candidates = [item for item in _as_list(candidates_payload.get("candidates")) if isinstance(item, dict)]
+    if not candidates:
+        raise FlashcardLabError("Gemini review bundle needs at least one candidate")
+    candidate_ids = [_text(item.get("candidate_id")) for item in candidates]
+    if any(not candidate_id for candidate_id in candidate_ids) or len(set(candidate_ids)) != len(candidate_ids):
+        raise FlashcardLabError("Gemini review bundle candidate IDs must be non-empty and unique")
+    theory_ids = {
+        theory_id
+        for item in candidates
+        for theory_id in _as_str_list(item.get("mapped_theory_ids"))
+        if theory_id != "comparative_theory_analysis"
+    }
+    return {
+        "version": LAB_VERSION,
+        "artifact_type": "personlighedspsykologi_gemini_flashcard_review_bundle",
+        "subject_slug": SUBJECT_SLUG,
+        "run_id": _text(candidates_payload.get("run_id")),
+        "notebook_slug": _text(candidates_payload.get("notebook_slug")),
+        "generated_at": generated_at or utc_now_iso(),
+        "model": model,
+        "prompt_version": GEMINI_FLASHCARD_REVIEW_PROMPT_VERSION,
+        "input_fingerprints": {
+            "candidates": semantic_fingerprint(candidates_payload),
+            "matrix": semantic_fingerprint(matrix),
+            "current_deck": semantic_fingerprint(current_deck),
+        },
+        "review_contract": {
+            "task": "Review NotebookLM flashcard candidates against the existing Freudd deck.",
+            "decisions": sorted(DECISION_VALUES),
+            "decision_rules": [
+                "accept only if the card adds a distinct oral-exam retrieval cue beyond the existing Freudd deck",
+                "edit when the idea is useful but wording, precision, category, or evidence grounding needs cleanup",
+                "merge_with_existing when the candidate mostly improves or duplicates the nearest existing Freudd card",
+                "reject when the card is generic, unsafe, ungrounded, misleading, or redundant without wording improvement",
+                "never approve cards that mention student note owners, local file paths, internal IDs, or hidden provenance",
+            ],
+            "promotion_boundary": "This review is advisory. It must not create or modify Freudd cards directly.",
+        },
+        "matrix_rows": matrix_review_rows(matrix, theory_ids),
+        "current_deck": {
+            "deck_slug": _text(current_deck.get("deck_slug")),
+            "card_count": int(current_deck.get("card_count") or 0),
+        },
+        "candidates": [_candidate_for_gemini(candidate) for candidate in candidates],
+    }
+
+
+def gemini_flashcard_review_system_instruction() -> str:
+    return "\n".join(
+        [
+            "You are a strict Danish university psychology flashcard reviewer.",
+            "Return only valid JSON matching the requested schema.",
+            "Review NotebookLM candidate cards against the existing Freudd deck context.",
+            "Prefer rejecting or merging over accepting near-duplicates.",
+            "Do not invent course claims beyond the supplied matrix rows and candidate text.",
+            "Do not approve learner-facing text that leaks student note owners, local paths, source-note IDs, or internal provenance.",
+        ]
+    )
+
+
+def gemini_flashcard_review_user_prompt(bundle: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "Review every candidate in this JSON bundle.",
+            "",
+            "Return one decision per candidate_id. Keep edited_front and edited_back empty unless decision is edit.",
+            "Use Danish for edited_front and edited_back. Keep reasons concise but specific.",
+            "",
+            "Input bundle:",
+            "",
+            render_json(bundle),
+        ]
+    )
+
+
+def gemini_flashcard_review_response_schema() -> dict[str, Any]:
+    decision_enum = sorted(DECISION_VALUES)
+    confidence_enum = sorted(CONFIDENCE_VALUES)
+    return {
+        "type": "object",
+        "properties": {
+            "review_summary": {
+                "type": "object",
+                "properties": {
+                    "overall_assessment": {"type": "string"},
+                    "candidate_count": {"type": "integer"},
+                    "accept_count": {"type": "integer"},
+                    "edit_count": {"type": "integer"},
+                    "merge_with_existing_count": {"type": "integer"},
+                    "reject_count": {"type": "integer"},
+                    "main_risks": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": [
+                    "overall_assessment",
+                    "candidate_count",
+                    "accept_count",
+                    "edit_count",
+                    "merge_with_existing_count",
+                    "reject_count",
+                    "main_risks",
+                ],
+            },
+            "decisions": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "candidate_id": {"type": "string"},
+                        "decision": {"type": "string", "enum": decision_enum},
+                        "confidence": {"type": "string", "enum": confidence_enum},
+                        "reason": {"type": "string"},
+                        "added_value": {"type": "string"},
+                        "nearest_existing_card_assessment": {"type": "string"},
+                        "edited_front": {"type": "string"},
+                        "edited_back": {"type": "string"},
+                        "safety_flags": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": [
+                        "candidate_id",
+                        "decision",
+                        "confidence",
+                        "reason",
+                        "added_value",
+                        "nearest_existing_card_assessment",
+                        "edited_front",
+                        "edited_back",
+                        "safety_flags",
+                    ],
+                },
+            },
+        },
+        "required": ["review_summary", "decisions"],
+    }
+
+
+def validate_gemini_flashcard_review(
+    review_payload: dict[str, Any],
+    *,
+    bundle: dict[str, Any],
+    model: str,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    raw_decisions = review_payload.get("decisions")
+    if not isinstance(raw_decisions, list):
+        raise FlashcardLabError("Gemini review payload must contain decisions list")
+    candidate_ids = [_text(item.get("candidate_id")) for item in _as_list(bundle.get("candidates")) if isinstance(item, dict)]
+    expected_ids = set(candidate_ids)
+    decisions: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    status_counts: Counter[str] = Counter()
+    candidates_by_id = {
+        _text(item.get("candidate_id")): item
+        for item in _as_list(bundle.get("candidates"))
+        if isinstance(item, dict)
+    }
+    for raw in raw_decisions:
+        if not isinstance(raw, dict):
+            raise FlashcardLabError("Gemini review decisions must be objects")
+        candidate_id = _text(raw.get("candidate_id"))
+        if candidate_id not in expected_ids:
+            raise FlashcardLabError(f"Gemini review returned unknown candidate_id: {candidate_id}")
+        if candidate_id in seen:
+            raise FlashcardLabError(f"Gemini review returned duplicate candidate_id: {candidate_id}")
+        seen.add(candidate_id)
+        decision = _text(raw.get("decision"))
+        confidence = _text(raw.get("confidence"))
+        if decision not in DECISION_VALUES:
+            raise FlashcardLabError(f"Invalid Gemini review decision for {candidate_id}: {decision}")
+        if confidence not in CONFIDENCE_VALUES:
+            raise FlashcardLabError(f"Invalid Gemini review confidence for {candidate_id}: {confidence}")
+        edited_front = _normalize_card_text(raw.get("edited_front"))
+        edited_back = _normalize_card_text(raw.get("edited_back"))
+        if decision == "edit" and (not edited_front or not edited_back):
+            raise FlashcardLabError(f"Gemini edit decision must include edited text: {candidate_id}")
+        if len(edited_front) > MAX_FRONT_CHARS:
+            raise FlashcardLabError(f"Gemini edited front too long: {candidate_id}")
+        if len(edited_back) > MAX_BACK_CHARS:
+            raise FlashcardLabError(f"Gemini edited back too long: {candidate_id}")
+        safety_text = "\n".join([edited_front, edited_back, _text(raw.get("reason")), _text(raw.get("added_value"))])
+        for pattern in LEARNER_TEXT_FORBIDDEN_PATTERNS:
+            if pattern.search(safety_text):
+                raise FlashcardLabError(f"Gemini review leaks forbidden learner-facing provenance: {candidate_id}")
+        candidate = candidates_by_id[candidate_id]
+        if decision == "accept" and (
+            candidate.get("automatic_review_status") == "auto_rejected" or _as_str_list(candidate.get("warnings"))
+        ):
+            raise FlashcardLabError(f"Gemini cannot accept auto-rejected/warned candidate without edit: {candidate_id}")
+        status_counts[decision] += 1
+        decisions.append(
+            {
+                "candidate_id": candidate_id,
+                "decision": decision,
+                "confidence": confidence,
+                "reason": _text(raw.get("reason")),
+                "added_value": _text(raw.get("added_value")),
+                "nearest_existing_card_assessment": _text(raw.get("nearest_existing_card_assessment")),
+                "edited_front": edited_front,
+                "edited_back": edited_back,
+                "safety_flags": _as_str_list(raw.get("safety_flags")),
+                "local_suggested_decision": _text(candidate.get("local_suggested_decision")),
+                "automatic_review_status": _text(candidate.get("automatic_review_status")),
+            }
+        )
+    missing = expected_ids - seen
+    if missing:
+        raise FlashcardLabError("Gemini review missing candidate decisions: " + ", ".join(sorted(missing)[:10]))
+    summary = review_payload.get("review_summary") if isinstance(review_payload.get("review_summary"), dict) else {}
+    return {
+        "version": LAB_VERSION,
+        "artifact_type": GEMINI_FLASHCARD_REVIEW_ARTIFACT_TYPE,
+        "subject_slug": SUBJECT_SLUG,
+        "run_id": _text(bundle.get("run_id")),
+        "notebook_slug": _text(bundle.get("notebook_slug")),
+        "generated_at": generated_at or utc_now_iso(),
+        "model": model,
+        "prompt_version": GEMINI_FLASHCARD_REVIEW_PROMPT_VERSION,
+        "input_fingerprints": bundle.get("input_fingerprints"),
+        "stats": {
+            "candidate_count": len(candidate_ids),
+            "decision_counts": dict(sorted(status_counts.items())),
+        },
+        "review_summary": {
+            "overall_assessment": _text(summary.get("overall_assessment")),
+            "main_risks": _as_str_list(summary.get("main_risks")),
+        },
+        "decisions": decisions,
+    }
+
+
+def write_gemini_flashcard_review_markdown(review_payload: dict[str, Any], output_path: Path) -> None:
+    lines = [
+        f"# Gemini flashcard review: {review_payload.get('notebook_slug')}",
+        "",
+        f"Run: `{review_payload.get('run_id')}`",
+        f"Model: `{review_payload.get('model')}`",
+        f"Prompt: `{review_payload.get('prompt_version')}`",
+        "",
+        f"Summary: {_text((review_payload.get('review_summary') or {}).get('overall_assessment'))}",
+        "",
+        f"Decision counts: {review_payload.get('stats', {}).get('decision_counts')}",
+        "",
+    ]
+    risks = _as_str_list((review_payload.get("review_summary") or {}).get("main_risks"))
+    if risks:
+        lines.extend(["Main risks:", "", *[f"- {risk}" for risk in risks], ""])
+    for decision in _as_list(review_payload.get("decisions")):
+        if not isinstance(decision, dict):
+            continue
+        lines.extend(
+            [
+                f"## {decision.get('candidate_id')}",
+                "",
+                f"Decision: `{decision.get('decision')}`",
+                f"Confidence: `{decision.get('confidence')}`",
+                f"Automatic status: `{decision.get('automatic_review_status')}`",
+                f"Local suggestion: `{decision.get('local_suggested_decision')}`",
+                "",
+                f"Reason: {decision.get('reason')}",
+                "",
+                f"Added value: {decision.get('added_value')}",
+                "",
+                f"Nearest-card assessment: {decision.get('nearest_existing_card_assessment')}",
+                "",
+                f"Safety flags: {', '.join(_as_str_list(decision.get('safety_flags'))) or 'none'}",
+                "",
+            ]
+        )
+        if decision.get("decision") == "edit":
+            lines.extend(
+                [
+                    "Edited front:",
+                    "",
+                    _text(decision.get("edited_front")),
+                    "",
+                    "Edited back:",
+                    "",
+                    _text(decision.get("edited_back")),
+                    "",
+                ]
+            )
+        lines.extend(["---", ""])
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def _format_nearest_card_for_review(candidate: dict[str, Any]) -> str:
+    review = candidate.get("manual_card_review") if isinstance(candidate.get("manual_card_review"), dict) else {}
+    nearest = review.get("nearest_existing_card") if isinstance(review.get("nearest_existing_card"), dict) else None
+    if not nearest:
+        return "No existing Freudd card found."
+    shared = ", ".join(_as_str_list(review.get("shared_terms"))) or "none"
+    return "\n".join(
+        [
+            f"- Card ID: `{nearest.get('card_id')}`",
+            f"- Category: `{nearest.get('category_slug')}`",
+            f"- Tags: {', '.join(_as_str_list(nearest.get('tags')))}",
+            f"- Shared terms: {shared}",
+            f"- Existing front: {nearest.get('front_text')}",
+            f"- Existing back: {nearest.get('back_text')}",
+        ]
+    )
 
 
 def write_manifest_readme(run_root: Path, manifest: dict[str, Any]) -> None:

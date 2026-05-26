@@ -255,12 +255,13 @@ def build_generate_content_config(
     system_instruction: str,
     max_output_tokens: int,
     response_json_schema: dict[str, Any] | None = None,
+    thinking_level: str = DEFAULT_GEMINI_THINKING_LEVEL,
 ) -> object:
     config_kwargs: dict[str, Any] = {
         "system_instruction": system_instruction,
         "max_output_tokens": max_output_tokens,
         "response_mime_type": "application/json",
-        "thinking_config": support.ThinkingConfig(thinking_level=DEFAULT_GEMINI_THINKING_LEVEL),
+        "thinking_config": support.ThinkingConfig(thinking_level=thinking_level),
     }
     if response_json_schema is not None:
         config_kwargs["response_json_schema"] = response_json_schema
@@ -375,6 +376,7 @@ def generate_json(
     max_output_tokens: int = DEFAULT_MAX_OUTPUT_TOKENS,
     max_inline_source_chars: int = DEFAULT_MAX_INLINE_SOURCE_CHARS,
     response_json_schema: dict[str, Any] | None = None,
+    thinking_level: str = DEFAULT_GEMINI_THINKING_LEVEL,
     retry_count: int = 1,
     retry_sleep_seconds: int = GEMINI_RATE_LIMIT_RETRY_SECONDS,
 ) -> dict[str, Any]:
@@ -399,6 +401,7 @@ def generate_json(
                     system_instruction=system_instruction,
                     max_output_tokens=max_output_tokens,
                     response_json_schema=response_json_schema,
+                    thinking_level=thinking_level,
                 ),
             )
             text = extract_gemini_text(response)

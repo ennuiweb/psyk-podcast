@@ -115,6 +115,8 @@ Current `personlighedspsykologi` Freudd deck policy:
   `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.md`
 - deterministic coverage-closure flashcards:
   `shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.md`
+- answer-enrichment overlay:
+  `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.md`
 - targeted NotebookLM gap-repair CLIs:
   `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
   `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
@@ -155,6 +157,12 @@ directly from the validated matrix and the coverage report: 5
 `source_note_basis`, and 12 `strengths`. The live full NotebookLM deck now has
 319 cards. The current coverage audit reports 367 matrix units: 209 `strong`,
 158 `partial`, 0 `missing`, 0 `weak`, and 0 high-priority missing/weak units.
+
+The first answer-enrichment pass enriches those same 39 coverage-closure cards
+with short matrix/source-basis explanations. It is applied through
+`shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.json`
+as a fail-closed overlay keyed by `card_id` and `old_back_text`, so stale or
+unsafe answer edits block the full-deck build instead of silently drifting.
 
 NotebookLM alternative-card workflow:
 

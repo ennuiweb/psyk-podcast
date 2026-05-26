@@ -120,6 +120,99 @@ def test_context_prefixes_are_kept_when_removal_would_make_question_ambiguous():
     assert fronts["nlm-test-trait-deictic"].startswith("Trækpsykologi:")
 
 
+def test_full_deck_applies_validated_answer_enrichment_overlay():
+    payloads = [
+        _payload(
+            notebook_slug="coverage-closure",
+            candidates=[
+                {
+                    **_candidate("nlm-test-enriched", "candidate"),
+                    "front": "Hvilket centralbegreb skal du kende?",
+                    "back": "Centralbegreb: needs",
+                }
+            ],
+        )
+    ]
+    enrichment = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_flashcard_answer_enrichment_overrides",
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-26T00:00:00Z",
+        "scope": "test",
+        "stats": {"override_count": 1},
+        "overrides": [
+            {
+                "card_id": "nlm-test-enriched",
+                "old_back_text": "Centralbegreb: needs",
+                "new_back_text": (
+                    "Needs: I humanistisk psykologi er behov udviklingsbetingelser "
+                    "for vækst, relation og selvrealisering."
+                ),
+                "rationale": "Expand a label-only answer.",
+                "source_matrix_fields": ["test.central_concepts"],
+            }
+        ],
+    }
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=payloads,
+        source_file="runs/test/candidates + enrichment.json",
+        source_sha256=full_cards.source_fingerprint(payloads, [enrichment]),
+        answer_enrichment_payloads=[enrichment],
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    card = deck["cards"][0]
+    assert card["back_text"].startswith("Needs: I humanistisk psykologi")
+    assert "answer-enriched" in card["tags"]
+    assert deck["answer_enrichment"]["applied_count"] == 1
+
+
+def test_answer_enrichment_fails_closed_when_old_answer_is_stale():
+    payloads = [
+        _payload(
+            notebook_slug="coverage-closure",
+            candidates=[
+                {
+                    **_candidate("nlm-test-stale", "candidate"),
+                    "front": "Hvilket centralbegreb skal du kende?",
+                    "back": "Centralbegreb: needs",
+                }
+            ],
+        )
+    ]
+    enrichment = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_flashcard_answer_enrichment_overrides",
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-26T00:00:00Z",
+        "scope": "test",
+        "stats": {"override_count": 1},
+        "overrides": [
+            {
+                "card_id": "nlm-test-stale",
+                "old_back_text": "Centralbegreb: growth",
+                "new_back_text": "Growth: Humanistisk psykologi forstår vækst som relationel udvikling.",
+                "rationale": "This should fail because the old answer is stale.",
+                "source_matrix_fields": ["test.central_concepts"],
+            }
+        ],
+    }
+
+    try:
+        full_cards.build_full_notebooklm_deck(
+            candidate_payloads=payloads,
+            source_file="runs/test/candidates + enrichment.json",
+            source_sha256=full_cards.source_fingerprint(payloads, [enrichment]),
+            answer_enrichment_payloads=[enrichment],
+            generated_at="2026-05-26T00:00:00Z",
+        )
+    except full_cards.FullNotebookLMFlashcardError as exc:
+        assert "old_back_text is stale" in str(exc)
+    else:
+        raise AssertionError("Expected stale answer enrichment to fail")
+
+
 def test_build_single_deck_registry_exposes_only_full_notebooklm_deck():
     registry = full_cards.build_single_deck_registry(
         artifact_path="shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",

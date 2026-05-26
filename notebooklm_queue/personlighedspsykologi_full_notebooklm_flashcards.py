@@ -32,6 +32,10 @@ from notebooklm_queue.personlighedspsykologi_coverage_closure_flashcards import 
     coverage_closure_to_candidate_payload,
     load_coverage_closure_artifact,
 )
+from notebooklm_queue.personlighedspsykologi_answer_enrichment import (
+    apply_answer_enrichment_overlays,
+    load_answer_enrichment_payload,
+)
 
 FULL_NOTEBOOKLM_DECK_SLUG = "notebooklm-fuld-matrix-personlighedspsykologi"
 FULL_NOTEBOOKLM_DECK_TITLE = "NotebookLM fuld matrix: personlighedspsykologi"
@@ -129,18 +133,31 @@ def load_candidate_payloads(candidate_paths: list[Path]) -> list[dict[str, Any]]
     return [_load_candidate_payload(path) for path in candidate_paths]
 
 
-def source_fingerprint(candidate_payloads: list[dict[str, Any]]) -> str:
+def source_fingerprint(
+    candidate_payloads: list[dict[str, Any]],
+    answer_enrichment_payloads: list[dict[str, Any]] | None = None,
+) -> str:
     return semantic_fingerprint(
-        [
-            {
-                "run_id": _text(payload.get("run_id")),
-                "notebook_slug": _text(payload.get("notebook_slug")),
-                "source_path": _text(payload.get("source_path")),
-                "stats": payload.get("stats"),
-                "candidates": payload.get("candidates"),
-            }
-            for payload in candidate_payloads
-        ]
+        {
+            "candidate_payloads": [
+                {
+                    "run_id": _text(payload.get("run_id")),
+                    "notebook_slug": _text(payload.get("notebook_slug")),
+                    "source_path": _text(payload.get("source_path")),
+                    "stats": payload.get("stats"),
+                    "candidates": payload.get("candidates"),
+                }
+                for payload in candidate_payloads
+            ],
+            "answer_enrichment_payloads": [
+                {
+                    "artifact_type": _text(payload.get("artifact_type")),
+                    "stats": payload.get("stats"),
+                    "overrides": payload.get("overrides"),
+                }
+                for payload in (answer_enrichment_payloads or [])
+            ],
+        }
     )
 
 
@@ -194,6 +211,7 @@ def build_full_notebooklm_deck(
     candidate_payloads: list[dict[str, Any]],
     source_file: str,
     source_sha256: str,
+    answer_enrichment_payloads: list[dict[str, Any]] | None = None,
     generated_at: str | None = None,
 ) -> dict[str, Any]:
     cards: list[dict[str, Any]] = []
@@ -262,6 +280,15 @@ def build_full_notebooklm_deck(
         "cards": cards,
     }
     try:
+        apply_answer_enrichment_overlays(
+            artifact,
+            answer_enrichment_payloads or [],
+            html_answer=_html_answer,
+            content_hash=_content_hash,
+        )
+    except ValueError as exc:
+        raise FullNotebookLMFlashcardError(str(exc)) from exc
+    try:
         validate_variant_deck(artifact, expected_deck_slug=FULL_NOTEBOOKLM_DECK_SLUG)
     except NotebookLMVariantFlashcardError as exc:
         raise FullNotebookLMFlashcardError(str(exc)) from exc
@@ -281,6 +308,10 @@ def load_coverage_closure_candidate_payloads(artifact_paths: list[Path]) -> list
     for path in artifact_paths:
         payloads.append(coverage_closure_to_candidate_payload(load_coverage_closure_artifact(path)))
     return payloads
+
+
+def load_answer_enrichment_payloads(artifact_paths: list[Path]) -> list[dict[str, Any]]:
+    return [load_answer_enrichment_payload(path) for path in artifact_paths]
 
 
 def build_single_deck_registry(*, artifact_path: str, card_count: int) -> dict[str, Any]:

@@ -18,6 +18,7 @@ from notebooklm_queue.personlighedspsykologi_full_notebooklm_flashcards import (
     FullNotebookLMFlashcardError,
     build_full_notebooklm_deck,
     build_single_deck_registry,
+    load_answer_enrichment_payloads,
     load_coverage_closure_candidate_payloads,
     load_gap_repair_candidate_payloads,
     load_candidate_payloads,
@@ -25,6 +26,7 @@ from notebooklm_queue.personlighedspsykologi_full_notebooklm_flashcards import (
 )
 from notebooklm_queue.personlighedspsykologi_gap_repair_review import DEFAULT_GAP_REPAIR_REVIEW_JSON
 from notebooklm_queue.personlighedspsykologi_coverage_closure_flashcards import DEFAULT_COVERAGE_CLOSURE_JSON
+from notebooklm_queue.personlighedspsykologi_answer_enrichment import DEFAULT_ANSWER_ENRICHMENT_JSON
 
 DEFAULT_RUN_DIR = (
     Path("notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs")
@@ -83,15 +85,25 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             raw_paths = [DEFAULT_COVERAGE_CLOSURE_JSON]
         coverage_closure_paths = [_resolve_repo_path(path, repo_root) for path in raw_paths]
         candidate_payloads.extend(load_coverage_closure_candidate_payloads(coverage_closure_paths))
+    answer_enrichment_paths: list[Path] = []
+    answer_enrichment_payloads: list[dict[str, Any]] = []
+    if not args.no_answer_enrichment:
+        raw_paths = args.answer_enrichment or []
+        if not raw_paths and _resolve_repo_path(DEFAULT_ANSWER_ENRICHMENT_JSON, repo_root).exists():
+            raw_paths = [DEFAULT_ANSWER_ENRICHMENT_JSON]
+        answer_enrichment_paths = [_resolve_repo_path(path, repo_root) for path in raw_paths]
+        answer_enrichment_payloads = load_answer_enrichment_payloads(answer_enrichment_paths)
     source_parts = [_repo_relative(args.candidates_dir, repo_root)]
     source_parts.extend(_repo_relative(path, repo_root) for path in gap_repair_decision_paths)
     source_parts.extend(_repo_relative(path, repo_root) for path in coverage_closure_paths)
+    source_parts.extend(_repo_relative(path, repo_root) for path in answer_enrichment_paths)
     source_file = " + ".join(source_parts)
     deck_artifact_path = _repo_relative(args.deck_path, repo_root)
     deck = build_full_notebooklm_deck(
         candidate_payloads=candidate_payloads,
         source_file=source_file,
-        source_sha256=source_fingerprint(candidate_payloads),
+        source_sha256=source_fingerprint(candidate_payloads, answer_enrichment_payloads),
+        answer_enrichment_payloads=answer_enrichment_payloads,
     )
     registry = build_single_deck_registry(
         artifact_path=deck_artifact_path,
@@ -134,6 +146,18 @@ def parse_args() -> argparse.Namespace:
         "--no-coverage-closure",
         action="store_true",
         help="Ignore the default committed coverage-closure artifact even when present.",
+    )
+    parser.add_argument(
+        "--answer-enrichment",
+        type=Path,
+        action="append",
+        default=[],
+        help="Validated answer-enrichment overlay JSON to apply to the live full deck. Repeatable.",
+    )
+    parser.add_argument(
+        "--no-answer-enrichment",
+        action="store_true",
+        help="Ignore the default committed answer-enrichment overlay even when present.",
     )
     parser.add_argument("--expected-notebook-count", type=int, default=5)
     parser.add_argument("--dry-run", action="store_true", help="Build and validate without writing files.")

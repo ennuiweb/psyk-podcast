@@ -207,6 +207,31 @@ Coverage-closure result, 2026-05-26:
 - final coverage audit: 367 matrix units, 209 `strong`, 158 `partial`, 0
   `missing`, 0 `weak`, and 0 high-priority missing/weak units
 
+## Answer-Enrichment Overlay
+
+The first answer-enrichment pass targets the 39 deterministic coverage-closure
+cards because those were intentionally minimal and many had label-only or
+single-clause answers. The enrichment is stored as a fail-closed overlay, not as
+manual edits to the generated deck.
+
+- overlay JSON:
+  `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.json`
+- overlay Markdown:
+  `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.md`
+- validator/applicator:
+  `notebooklm_queue/personlighedspsykologi_answer_enrichment.py`
+- applied by:
+  `scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py`
+- enriched cards: 39
+- enriched answer length: 22-32 words
+- safety contract: the builder fails if `old_back_text` is stale, a target
+  card is missing, a new answer is too short/long, or learner-facing text leaks
+  local paths, student-note names, source-note IDs, or hidden provenance
+
+The live deck remains 319 cards after enrichment, and the deterministic
+coverage audit remains at 0 `missing`, 0 `weak`, and 0 high-priority
+missing/weak units.
+
 Rebuild the closure, live deck, and audit in order:
 
 ```bash

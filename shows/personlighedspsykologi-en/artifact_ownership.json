@@ -269,6 +269,22 @@
       "writer": "scripts/build_personlighedspsykologi_coverage_closure_flashcards.py"
     },
     {
+      "artifact_id": "student_synthesis_answer_enrichment_overrides_json",
+      "concept": "student_synthesis_flashcard_answer_enrichment",
+      "path": "shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.json",
+      "role": "derived",
+      "manual_edit_allowed": true,
+      "writer": "manual reviewed overlay validated by notebooklm_queue/personlighedspsykologi_answer_enrichment.py"
+    },
+    {
+      "artifact_id": "student_synthesis_answer_enrichment_overrides_markdown",
+      "concept": "student_synthesis_flashcard_answer_enrichment",
+      "path": "shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.md",
+      "role": "derived",
+      "manual_edit_allowed": true,
+      "writer": "manual reviewed overlay validated by notebooklm_queue/personlighedspsykologi_answer_enrichment.py"
+    },
+    {
       "artifact_id": "student_synthesis_archived_matrix_flashcard_deck",
       "concept": "student_synthesis_archived_flashcards",
       "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json",

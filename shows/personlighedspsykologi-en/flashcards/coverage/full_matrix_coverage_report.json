@@ -2,7 +2,7 @@
   "version": 1,
   "artifact_type": "personlighedspsykologi_flashcard_matrix_coverage",
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-26T15:10:00Z",
+  "generated_at": "2026-05-26T16:32:46Z",
   "inputs": {
     "matrix": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
@@ -10,7 +10,7 @@
     },
     "deck": {
       "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",
-      "fingerprint": "9986e205b00ed9e6a0f8c6682d448e35992838a8d7aa5e02363ef05bdda70245"
+      "fingerprint": "ff3c861546e9bde68be675208823bcb994638500263f3c37fdcec895fb85eb6f"
     },
     "source_notes_index": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json",
@@ -37,13 +37,13 @@
     "row_count": 13,
     "unit_count": 367,
     "unit_status_counts": {
-      "partial": 167,
-      "strong": 200
+      "partial": 184,
+      "strong": 183
     },
     "field_status_counts": {
       "central_concepts": {
-        "partial": 10,
-        "strong": 85
+        "partial": 11,
+        "strong": 84
       },
       "comparison_targets": {
         "partial": 28
@@ -64,8 +64,8 @@
         "strong": 4
       },
       "model_of_person": {
-        "partial": 4,
-        "strong": 9
+        "partial": 5,
+        "strong": 8
       },
       "orientation_points": {
         "partial": 35,
@@ -76,8 +76,8 @@
         "strong": 11
       },
       "source_note_basis": {
-        "partial": 8,
-        "strong": 28
+        "partial": 23,
+        "strong": 13
       },
       "strengths": {
         "partial": 23,
@@ -85,8 +85,8 @@
       }
     },
     "source_note_status_counts": {
-      "partial": 4,
-      "strong": 6
+      "partial": 7,
+      "strong": 3
     },
     "high_priority_missing_or_weak_count": 0
   },
@@ -610,8 +610,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 8,
-        "strong": 16
+        "partial": 10,
+        "strong": 14
       },
       "units": [
         {
@@ -731,10 +731,10 @@
           "confidence": "high",
           "best_overlap": 0.5714,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         },
@@ -761,12 +761,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6667,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         },
@@ -793,11 +793,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.5714,
+          "best_overlap": 0.4286,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
             "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
@@ -809,7 +809,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4,
           "card_ids": [
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
             "nlm-coverage-closure-dynamic-personality-development-strengths-2",
@@ -825,12 +825,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4444,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-3",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-3",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2"
           ]
         },
@@ -841,11 +841,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.6667,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-3",
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
             "nlm-coverage-closure-dynamic-personality-development-strengths-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-3",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2"
           ]
@@ -857,7 +857,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.5455,
           "card_ids": [
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
@@ -873,10 +873,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3333,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-limitations-2",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
+            "nlm-coverage-closure-dynamic-personality-development-limitations-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
             "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
@@ -937,14 +937,14 @@
           "field": "source_note_basis",
           "label": "dynamic personality development: source basis anes_tabel",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.2105,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1579,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         },
@@ -953,14 +953,14 @@
           "field": "source_note_basis",
           "label": "dynamic personality development: source basis karla_traekteori",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1905,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1429,
           "card_ids": [
-            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
             "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         }
@@ -991,12 +991,12 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2222,
+          "best_overlap": 0.1667,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2"
           ]
         },
@@ -1035,7 +1035,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3125,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style"
           ]
@@ -1095,11 +1095,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8333,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
+            "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2"
           ]
@@ -1175,7 +1175,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
@@ -1191,13 +1191,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3636,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3",
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1"
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2"
           ]
         },
         {
@@ -1207,12 +1207,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4444,
           "card_ids": [
-            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3",
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2"
           ]
         },
@@ -1223,7 +1223,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.7,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
@@ -1239,12 +1239,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3333,
           "card_ids": [
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
-            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3"
           ]
         },
@@ -1255,10 +1255,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3077,
           "card_ids": [
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-2",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-3"
@@ -1323,10 +1323,10 @@
           "confidence": "high",
           "best_overlap": 0.2778,
           "card_ids": [
-            "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
             "nlm-gap-repair-source-basis-e735dd293e0734d4",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
+            "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
             "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1"
           ]
         },
@@ -1339,11 +1339,11 @@
           "confidence": "high",
           "best_overlap": 0.2222,
           "card_ids": [
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
             "nlm-coverage-closure-biosocial-personality-perspectives-method-evidence-style",
-            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1",
             "nlm-gap-repair-source-basis-e735dd293e0734d4",
-            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2"
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-1",
+            "nlm-coverage-closure-biosocial-personality-perspectives-limitations-2",
+            "nlm-coverage-closure-biosocial-personality-perspectives-strengths-1"
           ]
         }
       ]
@@ -1362,8 +1362,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 7,
-        "strong": 18
+        "partial": 8,
+        "strong": 17
       },
       "units": [
         {
@@ -1375,11 +1375,11 @@
           "confidence": "high",
           "best_overlap": 0.25,
           "card_ids": [
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3"
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2"
           ]
         },
         {
@@ -1509,11 +1509,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6667,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3"
           ]
@@ -1605,11 +1605,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4,
           "card_ids": [
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2"
           ]
@@ -1621,10 +1621,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.625,
           "card_ids": [
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2"
@@ -1637,13 +1637,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
-            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
-            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1"
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
+            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
+            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2"
           ]
         },
         {
@@ -1653,7 +1653,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3333,
           "card_ids": [
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
@@ -1669,13 +1669,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3636,
           "card_ids": [
-            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3",
+            "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
             "nlm-coverage-closure-personality-functioning-and-pathology-strengths-1",
-            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2"
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-2",
+            "nlm-coverage-closure-personality-functioning-and-pathology-strengths-3"
           ]
         },
         {
@@ -1733,9 +1733,9 @@
           "field": "source_note_basis",
           "label": "personality functioning and pathology: source basis anes_tabel",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1905,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1429,
           "card_ids": [
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-1",
             "nlm-coverage-closure-personality-functioning-and-pathology-limitations-2",
@@ -1760,8 +1760,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 14,
-        "strong": 17
+        "partial": 15,
+        "strong": 16
       },
       "units": [
         {
@@ -1771,7 +1771,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2667,
+          "best_overlap": 0.2,
           "card_ids": [
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
@@ -1787,7 +1787,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.25,
+          "best_overlap": 0.1875,
           "card_ids": [
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
@@ -1803,10 +1803,10 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.1765,
+          "best_overlap": 0.2353,
           "card_ids": [
-            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
+            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-7",
             "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
             "nlm-global-calibration-synthesis-b81d42fa0358a039"
@@ -1899,7 +1899,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
@@ -2162,12 +2162,12 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2941,
+          "best_overlap": 0.3529,
           "card_ids": [
             "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
-            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-7",
+            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-oral-exam-comparison-workshop-d595c1751839b1f6"
           ]
         },
@@ -2176,14 +2176,14 @@
           "field": "source_note_basis",
           "label": "psychoanalytic personality theory: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.6818,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1364,
           "card_ids": [
-            "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-7",
+            "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
             "nlm-critical-sociocultural-narrative-301d635fa29f2786"
           ]
         },
@@ -2194,13 +2194,13 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2,
+          "best_overlap": 0.35,
           "card_ids": [
+            "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-7",
+            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5",
             "nlm-gap-repair-source-basis-e16ace6e8b0eb711",
-            "nlm-oral-exam-comparison-workshop-d595c1751839b1f6",
-            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
-            "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-5"
+            "nlm-oral-exam-comparison-workshop-d595c1751839b1f6"
           ]
         },
         {
@@ -2210,7 +2210,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2941,
+          "best_overlap": 0.2353,
           "card_ids": [
             "nlm-coverage-closure-psychoanalytic-personality-theory-source-note-basis-jaqu-f87979aa522d9aff",
             "nlm-coverage-closure-psychoanalytic-personality-theory-central-concepts-1",
@@ -2235,8 +2235,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 8,
-        "strong": 19
+        "partial": 13,
+        "strong": 14
       },
       "units": [
         {
@@ -2246,13 +2246,13 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.375,
+          "best_overlap": 0.1875,
           "card_ids": [
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
-            "nlm-coverage-closure-phenomenological-psychology-strengths-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-2"
+            "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e"
           ]
         },
         {
@@ -2260,12 +2260,12 @@
           "field": "model_of_person",
           "label": "phenomenological psychology: personbegreb",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.2941,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1176,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-global-calibration-synthesis-b25c8c3a04cd0cf6",
             "nlm-oral-exam-comparison-workshop-bc9a3c9dc0c00693",
             "nlm-psychoanalysis-experience-humanism-b7970b5eff45640e"
@@ -2278,11 +2278,11 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.3571,
+          "best_overlap": 0.2143,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-oral-exam-comparison-workshop-bc9a3c9dc0c00693",
             "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-global-calibration-synthesis-b25c8c3a04cd0cf6",
             "nlm-psychoanalysis-experience-humanism-b7970b5eff45640e"
           ]
@@ -2370,13 +2370,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
-            "nlm-coverage-closure-phenomenological-psychology-strengths-2",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel"
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
+            "nlm-coverage-closure-phenomenological-psychology-strengths-1"
           ]
         },
         {
@@ -2432,15 +2432,15 @@
           "field": "central_concepts",
           "label": "phenomenological psychology: begreb",
           "priority": "normal",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.8333,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.3333,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-strengths-1",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel"
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
+            "nlm-coverage-closure-phenomenological-psychology-strengths-1"
           ]
         },
         {
@@ -2450,13 +2450,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
-            "nlm-coverage-closure-phenomenological-psychology-strengths-2",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel"
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
+            "nlm-coverage-closure-phenomenological-psychology-strengths-1"
           ]
         },
         {
@@ -2466,12 +2466,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3,
           "card_ids": [
+            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
             "nlm-coverage-closure-phenomenological-psychology-strengths-3",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2"
           ]
         },
@@ -2482,12 +2482,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4444,
           "card_ids": [
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
+            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-3",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2"
           ]
         },
@@ -2498,12 +2498,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.375,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-strengths-3",
+            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-1",
+            "nlm-coverage-closure-phenomenological-psychology-strengths-3",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2"
           ]
         },
@@ -2514,7 +2514,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.4,
           "card_ids": [
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
@@ -2530,10 +2530,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3333,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-limitations-2",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
+            "nlm-coverage-closure-phenomenological-psychology-limitations-2",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1",
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
             "nlm-coverage-closure-phenomenological-psychology-strengths-3"
@@ -2610,13 +2610,13 @@
           "field": "source_note_basis",
           "label": "phenomenological psychology: source basis anes_tabel",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.7333,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1333,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1"
           ]
@@ -2626,15 +2626,15 @@
           "field": "source_note_basis",
           "label": "phenomenological psychology: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.6111,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1667,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
-            "nlm-coverage-closure-phenomenological-psychology-strengths-1",
-            "nlm-coverage-closure-phenomenological-psychology-strengths-2",
+            "nlm-coverage-closure-phenomenological-psychology-strengths-3",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-2"
+            "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e"
           ]
         },
         {
@@ -2642,14 +2642,14 @@
           "field": "source_note_basis",
           "label": "phenomenological psychology: source basis karla_faenomenologi",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1875,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.125,
           "card_ids": [
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
-            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
             "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-strengths-1"
           ]
         }
@@ -2669,8 +2669,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 13,
-        "strong": 16
+        "partial": 15,
+        "strong": 14
       },
       "units": [
         {
@@ -2682,8 +2682,8 @@
           "confidence": "high",
           "best_overlap": 0.1875,
           "card_ids": [
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
             "nlm-global-calibration-synthesis-1c9e13bf797279b2",
             "nlm-global-calibration-synthesis-6950b434dda466d9",
             "nlm-global-calibration-synthesis-7b419b2978952c24"
@@ -2698,8 +2698,8 @@
           "confidence": "high",
           "best_overlap": 0.2143,
           "card_ids": [
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
             "nlm-critical-sociocultural-narrative-017069a46ce9d177",
             "nlm-gap-repair-source-basis-860e8f36b2b928a8",
             "nlm-global-calibration-synthesis-90be33258338e7c5"
@@ -2805,10 +2805,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.75,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473"
           ]
         },
         {
@@ -2845,10 +2845,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.75,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473"
           ]
         },
         {
@@ -3071,9 +3071,9 @@
           "field": "source_note_basis",
           "label": "existential psychology: source basis anes_tabel",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.7143,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1429,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
@@ -3087,9 +3087,9 @@
           "field": "source_note_basis",
           "label": "existential psychology: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.6111,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1667,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
@@ -3127,9 +3127,9 @@
           "confidence": "high",
           "best_overlap": 0.1579,
           "card_ids": [
+            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
-            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-00520541a2b50de2"
           ]
@@ -3141,12 +3141,12 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.1765,
+          "best_overlap": 0.2353,
           "card_ids": [
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
+            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
-            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3157,12 +3157,12 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2941,
+          "best_overlap": 0.1765,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3245,12 +3245,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3261,12 +3261,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.75,
+          "best_overlap": 0.5,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-6037e351eaf4cb5a"
           ]
         },
@@ -3296,9 +3296,9 @@
           "best_overlap": 0.75,
           "card_ids": [
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d"
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk"
           ]
         },
         {
@@ -3311,8 +3311,8 @@
           "best_overlap": 0.75,
           "card_ids": [
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk"
           ]
         },
@@ -3323,7 +3323,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.4,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
@@ -3339,12 +3339,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3355,12 +3355,12 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3492,9 +3492,9 @@
           "best_overlap": 0.2308,
           "card_ids": [
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
+            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
-            "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-global-calibration-synthesis-018d818120453265"
           ]
         },
@@ -3505,12 +3505,12 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.5333,
+          "best_overlap": 0.2,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-critical-sociocultural-narrative-45bbd12e5acd9e9c"
           ]
         },
@@ -3521,11 +3521,11 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.7059,
+          "best_overlap": 0.2353,
           "card_ids": [
-            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-4",
             "nlm-coverage-closure-humanistic-psychology-source-note-basis-jaque-tabel-alle-2f7d91f731ffbc0d",
+            "nlm-coverage-closure-humanistic-psychology-source-note-basis-karla-humanistisk-psyk",
             "nlm-coverage-closure-humanistic-psychology-central-concepts-5",
             "nlm-gap-repair-orientation-method-9a837b35a7cd0ca9"
           ]
@@ -4279,8 +4279,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 15,
-        "strong": 19
+        "partial": 16,
+        "strong": 18
       },
       "units": [
         {
@@ -4290,7 +4290,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2778,
+          "best_overlap": 0.2222,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
@@ -4322,7 +4322,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2353,
+          "best_overlap": 0.1765,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
@@ -4415,10 +4415,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.5,
+          "best_overlap": 0.6667,
           "card_ids": [
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-global-calibration-synthesis-4f5ad57682ac0ac8",
             "nlm-global-calibration-synthesis-770d7b58395427f3"
@@ -4446,11 +4446,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
@@ -4461,7 +4461,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
@@ -4476,7 +4476,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
@@ -4507,11 +4507,11 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
@@ -4569,7 +4569,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
@@ -4731,10 +4731,10 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2,
+          "best_overlap": 0.2667,
           "card_ids": [
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-global-calibration-synthesis-4f5ad57682ac0ac8",
             "nlm-global-calibration-synthesis-770d7b58395427f3"
@@ -4745,12 +4745,12 @@
           "field": "source_note_basis",
           "label": "sociocultural and poststructural approaches: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.6667,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1429,
           "card_ids": [
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-critical-sociocultural-narrative-d214adf8a3196c74",
             "nlm-global-calibration-synthesis-487ba41f16cf2c53"
@@ -4763,7 +4763,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.7895,
+          "best_overlap": 0.2105,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
@@ -4779,11 +4779,11 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8095,
+          "best_overlap": 0.2381,
           "card_ids": [
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
-            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
+            "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-critical-sociocultural-narrative-301d635fa29f2786",
             "nlm-critical-sociocultural-narrative-4835a7872e8f89c5"
           ]
@@ -4804,8 +4804,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 14,
-        "strong": 19
+        "partial": 16,
+        "strong": 17
       },
       "units": [
         {
@@ -4815,10 +4815,10 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2,
+          "best_overlap": 0.1333,
           "card_ids": [
-            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
+            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
             "nlm-global-calibration-synthesis-0cb0e548f71b8e0e"
@@ -4833,9 +4833,9 @@
           "confidence": "high",
           "best_overlap": 0.2,
           "card_ids": [
-            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-oral-exam-comparison-workshop-4dbd6379dab6d034",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
+            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-critical-sociocultural-narrative-d911a1fd4317362d",
             "nlm-global-calibration-synthesis-b5fe369e07ed1a7f"
           ]
@@ -4973,10 +4973,10 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.8,
+          "best_overlap": 0.4,
           "card_ids": [
-            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
+            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
             "nlm-global-calibration-synthesis-9478c59241d4a868",
             "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
@@ -5263,9 +5263,9 @@
           "field": "source_note_basis",
           "label": "narrative psychology: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.6111,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1111,
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
@@ -5281,7 +5281,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.1,
+          "best_overlap": 0.15,
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
@@ -5295,12 +5295,12 @@
           "field": "source_note_basis",
           "label": "narrative psychology: source basis karla_traekteori",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.7647,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1176,
           "card_ids": [
-            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
+            "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
             "nlm-global-calibration-synthesis-9478c59241d4a868",
             "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
@@ -5322,8 +5322,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 10,
-        "strong": 19
+        "partial": 13,
+        "strong": 16
       },
       "units": [
         {
@@ -5381,7 +5381,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 1.0,
+          "best_overlap": 0.3125,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style"
           ]
@@ -5528,7 +5528,7 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6667,
+          "best_overlap": 0.5,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb"
@@ -5661,7 +5661,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.4,
+          "best_overlap": 0.2,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
@@ -5675,9 +5675,9 @@
           "field": "source_note_basis",
           "label": "comparative theory analysis: source basis jaque_tabel_alle_teoretiske_retninger",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.3,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.15,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
@@ -5693,7 +5693,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2941,
+          "best_overlap": 0.2353,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
@@ -5707,9 +5707,9 @@
           "field": "source_note_basis",
           "label": "comparative theory analysis: source basis karla_socialkonstruktivisme",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.2105,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.1579,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
@@ -5723,9 +5723,9 @@
           "field": "source_note_basis",
           "label": "comparative theory analysis: source basis karla_poststrukturalisme",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.2,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.15,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
@@ -5761,8 +5761,8 @@
       "basis_unit_count": 13,
       "status": "partial",
       "status_counts": {
-        "partial": 4,
-        "strong": 9
+        "partial": 8,
+        "strong": 5
       }
     },
     {
@@ -5800,8 +5800,8 @@
       "basis_unit_count": 9,
       "status": "partial",
       "status_counts": {
-        "partial": 2,
-        "strong": 7
+        "partial": 8,
+        "strong": 1
       }
     },
     {
@@ -5813,9 +5813,9 @@
         "phenomenological_psychology"
       ],
       "basis_unit_count": 1,
-      "status": "strong",
+      "status": "partial",
       "status_counts": {
-        "strong": 1
+        "partial": 1
       }
     },
     {
@@ -5856,9 +5856,10 @@
         "sociocultural_poststructural_approaches"
       ],
       "basis_unit_count": 2,
-      "status": "strong",
+      "status": "partial",
       "status_counts": {
-        "strong": 2
+        "partial": 1,
+        "strong": 1
       }
     },
     {
@@ -5871,9 +5872,10 @@
         "sociocultural_poststructural_approaches"
       ],
       "basis_unit_count": 2,
-      "status": "strong",
+      "status": "partial",
       "status_counts": {
-        "strong": 2
+        "partial": 1,
+        "strong": 1
       }
     },
     {
@@ -5890,8 +5892,8 @@
       "basis_unit_count": 4,
       "status": "partial",
       "status_counts": {
-        "partial": 1,
-        "strong": 3
+        "partial": 3,
+        "strong": 1
       }
     },
     {

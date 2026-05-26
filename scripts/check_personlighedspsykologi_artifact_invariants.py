@@ -48,6 +48,12 @@ from notebooklm_queue.personlighedspsykologi_coverage_closure_flashcards import 
     CoverageClosureError,
     validate_coverage_closure_artifact,
 )
+from notebooklm_queue.personlighedspsykologi_answer_enrichment import (
+    ANSWER_ENRICHMENT_ARTIFACT_TYPE,
+    ANSWER_ENRICHMENT_TAG,
+    AnswerEnrichmentError,
+    validate_answer_enrichment_payload,
+)
 from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -88,6 +94,8 @@ STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON = SHOW_DIR / "flashcards" / "coverage" 
 STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_review_decisions.md"
 STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON = SHOW_DIR / "flashcards" / "coverage" / "coverage_closure_flashcards.json"
 STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD = SHOW_DIR / "flashcards" / "coverage" / "coverage_closure_flashcards.md"
+STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON = SHOW_DIR / "flashcards" / "answer_enrichment_overrides.json"
+STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD = SHOW_DIR / "flashcards" / "answer_enrichment_overrides.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -386,6 +394,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD).exists():
         failures.append(
             f"Missing student synthesis coverage-closure flashcards Markdown: {STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON).exists():
+        failures.append(
+            f"Missing student synthesis answer-enrichment JSON: {STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD).exists():
+        failures.append(
+            f"Missing student synthesis answer-enrichment Markdown: {STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -1005,6 +1021,7 @@ def _failures(repo_root: Path) -> list[str]:
                 failures.append("Archived original matrix flashcard deck source hash is stale")
 
     full_notebooklm_deck = repo_root / STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK
+    full_deck_payload = None
     if flashcard_registry.exists() and full_notebooklm_deck.exists():
         try:
             registry_payload = _load_json(flashcard_registry)
@@ -1217,6 +1234,58 @@ def _failures(repo_root: Path) -> list[str]:
                 failures.append("Coverage-closure Markdown title is missing")
             if "coverage-closure" not in md_text:
                 failures.append("Coverage-closure Markdown does not mention the closure run")
+
+    answer_enrichment_json = repo_root / STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON
+    answer_enrichment_md = repo_root / STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD
+    if answer_enrichment_json.exists() and answer_enrichment_md.exists():
+        try:
+            answer_enrichment = _load_json(answer_enrichment_json)
+            validate_answer_enrichment_payload(answer_enrichment)
+        except (AnswerEnrichmentError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis answer-enrichment overrides are invalid in "
+                f"{STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON}: {exc}"
+            )
+        else:
+            if answer_enrichment.get("artifact_type") != ANSWER_ENRICHMENT_ARTIFACT_TYPE:
+                failures.append("Answer-enrichment artifact_type is invalid")
+            override_ids = {
+                str(override.get("card_id") or "").strip()
+                for override in answer_enrichment.get("overrides", [])
+                if isinstance(override, dict) and str(override.get("card_id") or "").strip()
+            }
+            if full_deck_payload:
+                cards_by_id = {
+                    str(card.get("card_id") or "").strip(): card
+                    for card in full_deck_payload.get("cards", [])
+                    if isinstance(card, dict) and str(card.get("card_id") or "").strip()
+                }
+                missing_cards = sorted(override_ids - set(cards_by_id))
+                if missing_cards:
+                    failures.append(
+                        "Answer-enrichment overrides reference cards missing from the live deck: "
+                        + ", ".join(missing_cards[:8])
+                    )
+                enriched_ids = {
+                    card_id
+                    for card_id, card in cards_by_id.items()
+                    if ANSWER_ENRICHMENT_TAG in (card.get("tags") or [])
+                }
+                if enriched_ids != override_ids:
+                    failures.append(
+                        "Live deck enriched-card tags do not match answer-enrichment overrides: "
+                        f"missing={sorted(override_ids - enriched_ids)} extra={sorted(enriched_ids - override_ids)}"
+                    )
+                summary = (
+                    full_deck_payload.get("answer_enrichment")
+                    if isinstance(full_deck_payload.get("answer_enrichment"), dict)
+                    else {}
+                )
+                if int(summary.get("applied_count") or 0) != len(override_ids):
+                    failures.append("Live deck answer_enrichment applied_count is stale")
+            md_text = answer_enrichment_md.read_text(encoding="utf-8")
+            if "Flashcard Answer Enrichment Overrides" not in md_text:
+                failures.append("Answer-enrichment Markdown title is missing")
 
     archived_variant_decks_to_validate = [
         (

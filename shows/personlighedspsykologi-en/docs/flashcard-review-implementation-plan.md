@@ -62,7 +62,24 @@ Outcome:
 - deterministic unknown rate was 0.0427, so Gemini was allowed
 - Gemini reviewed the bounded 80-card shortlist in one call
 - Gemini rejected all 80 shortlisted NotebookLM candidates
-- no promotion or deck mutation is recommended from this review
+- no promotion or deck mutation is recommended from this promotion-safety review
+- correction: this was not the independent quality comparison Oskar wanted
+
+Corrected quality-comparison status, 2026-05-26:
+
+- compare only the first and fourth pools:
+  `canonical_matrix_deck` and `full_notebooklm_candidate`
+- include all feasible cards from those pools: 152 + 259 = 411 cards
+- exclude duplicate metadata entirely from the quality bundle
+- judge matrix fidelity, coverage, exam usefulness, precision, wording,
+  atomicity, and learning value only
+- do not judge novelty, overlap, redundancy, or whether a card adds something
+  new
+- the corrected all-card bundle is generated locally under
+  `flashcard_lab/reports/flashcard-pool-review-20260526/quality_comparison/`
+- live Gemini all-card/per-card review is not complete yet: the single call
+  returned only 5 card observations, and observation-only batch probes were
+  unstable in this session
 
 ## Technical Fellow Critique
 
@@ -368,7 +385,7 @@ The default should be conservative:
 - promote only clear gap-filling cards
 - avoid multiple parallel NotebookLM decks if they confuse practice
 
-2026-05-26 decision:
+2026-05-26 promotion-safety decision:
 
 - do not promote any cards from the full all-cluster NotebookLM candidate pool
   yet
@@ -377,6 +394,14 @@ The default should be conservative:
   outputs for now
 - prefer improving the deterministic matrix deck and source-faithful card
   prompts before generating another candidate pool
+
+2026-05-26 corrected quality-comparison decision:
+
+- no final quality decision yet
+- the previous "reject 80" result is not a valid answer to whether the newest
+  NotebookLM cards are good as broad matrix-rehearsal cards
+- next work should rerun the corrected two-pool quality comparison and report
+  observed card coverage honestly
 
 Decision artifact:
 

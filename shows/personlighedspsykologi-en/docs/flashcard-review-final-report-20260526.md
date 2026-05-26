@@ -1,9 +1,45 @@
 # Flashcard Review Final Report 2026-05-26
 
+## Correction 2026-05-26
+
+The first Gemini review in this report was a promotion-safety review, not the
+independent quality comparison Oskar wanted. It treated novelty and deck bloat
+as central promotion concerns, so its "reject" decisions must not be read as a
+standalone judgment that the NotebookLM cards are bad learning cards.
+
+Corrected quality-comparison scope:
+
+- compare only `canonical_matrix_deck` and `full_notebooklm_candidate`
+- include all feasible cards from those two pools: 152 original matrix cards
+  and 259 newest NotebookLM candidates, 411 cards total
+- do not include duplicate metadata in the Gemini bundle
+- do not ask Gemini to judge novelty, overlap, redundancy, or whether a card
+  adds something new
+
+Corrected implementation status:
+
+- the two-pool, all-card quality bundle is generated locally at
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/flashcard-pool-review-20260526/quality_comparison/flashcard-quality-comparison.gemini-review-bundle.json`
+- validation confirms the bundle contains no `duplicate` fields or duplicate
+  language
+- a live single-call Gemini quality comparison was attempted but only produced
+  5 card observations out of 411 before hitting practical output limits
+- observation-only batch mode was implemented, but live Gemini calls for even
+  small batches were unstable/slow in this session and were stopped
+- no corrected quality verdict should be treated as complete yet
+
+Next required step:
+
+- rerun the corrected two-pool quality comparison when Gemini batch calls are
+  stable, using observation-only batches small enough to cover all 411 cards, or
+  explicitly accept a partial observed count if full coverage remains infeasible
+
 ## Scope
 
-This review compared the current Freudd personlighedspsykologi flashcard
-surface against the full all-cluster NotebookLM candidate regeneration.
+The original review compared the current Freudd personlighedspsykologi flashcard
+surface against the full all-cluster NotebookLM candidate regeneration for
+promotion safety. The corrected independent quality comparison is narrower:
+original matrix deck versus newest full NotebookLM candidates.
 
 Reviewed pools:
 

@@ -317,7 +317,7 @@ def test_gemini_pool_review_bundle_and_validation(tmp_path: Path) -> None:
                     "winner": "hybrid",
                     "confidence": "medium",
                     "coverage_score": 4,
-                    "exam_usefulness_score": 4,
+                    "exam_usefulness_score": 8,
                     "precision_score": 4,
                     "wording_score": 3,
                     "duplicate_risk_score": 2,
@@ -337,6 +337,251 @@ def test_gemini_pool_review_bundle_and_validation(tmp_path: Path) -> None:
 
     assert validated["artifact_type"] == review.GEMINI_POOL_REVIEW_ARTIFACT_TYPE
     assert validated["stats"]["decision_counts"] == {"promote_after_edit": 1}
+
+
+def test_quality_comparison_allows_matrix_rehearsal_without_duplicate_metadata(tmp_path: Path) -> None:
+    repo_root = tmp_path
+    matrix = _matrix()
+    matrix_path = repo_root / "matrix.json"
+    matrix_deck_path = repo_root / "matrix_deck.json"
+    variant_path = repo_root / "variant.json"
+    independent_path = repo_root / "independent.json"
+    lab_root = repo_root / "lab"
+
+    _write_json(matrix_path, matrix)
+    _write_json(matrix_deck_path, _matrix_deck(matrix))
+    _write_json(variant_path, _variant_deck("notebooklm-varianter-personlighedspsykologi"))
+    _write_json(independent_path, _variant_deck("notebooklm-uafhaengige-varianter-personlighedspsykologi"))
+    for slug in review.EXPECTED_NOTEBOOK_SLUGS:
+        candidates = []
+        if slug == "global-calibration-synthesis":
+            candidates.append(
+                {
+                    "candidate_id": "candidate-1",
+                    "notebook_slug": slug,
+                    "source_path": "download.json",
+                    "source_index": 1,
+                    "front": "Hvad er hovedpointen i trækpsykologi?",
+                    "back": "Trækpsykologi beskriver stabile personlighedsforskelle.",
+                    "category_slug": "personbegreb",
+                    "category_title": "Personbegreb",
+                    "mapped_theory_ids": ["trait_and_assessment_psychology"],
+                    "duplicate": {"score": 0.95, "nearest_card_id": "existing"},
+                    "manual_card_review": {},
+                    "warnings": [],
+                    "review_status": "candidate",
+                }
+            )
+        _write_json(
+            lab_root / "runs" / "full-run" / "candidates" / f"{slug}.candidates.json",
+            _candidate_payload(slug, candidates),
+        )
+
+    report = review.build_comparison_report(
+        repo_root=repo_root,
+        review_run_id="test-review",
+        matrix_path=matrix_path,
+        matrix_deck_path=matrix_deck_path,
+        variant_deck_path=variant_path,
+        independent_deck_path=independent_path,
+        lab_root=lab_root,
+        full_run_id="full-run",
+        reports_root=lab_root / "reports",
+        allow_count_drift=True,
+        allow_unignored_report_output=True,
+        generated_at="2026-05-26T00:00:00Z",
+    )
+    bundle = review.build_gemini_quality_comparison_bundle(
+        comparison_report=report,
+        model="gemini-test",
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert bundle["artifact_type"] == review.GEMINI_QUALITY_COMPARISON_BUNDLE_ARTIFACT_TYPE
+    assert "Do not evaluate novelty" in bundle["review_contract"]["critical_boundary"]
+    sample_keys = [item["card_key"] for item in bundle["sample_cards"]]
+    candidate_key = "full_notebooklm_candidate:candidate-1"
+    assert candidate_key in sample_keys
+    assert all("duplicate_metadata" not in item for item in bundle["sample_cards"])
+    assert all("duplicate_kind_counts" not in stats for stats in bundle["pool_context"]["pool_quality_stats"].values())
+    observations = []
+    for card_key in sample_keys:
+        observations.append(
+            {
+                "card_key": card_key,
+                "quality_verdict": "strong" if card_key == candidate_key else "usable",
+                "matrix_fidelity_score": 5,
+                "exam_usefulness_score": 4,
+                "precision_score": 4,
+                "wording_score": 4,
+                "atomicity_score": 5,
+                "learning_value_score": 4,
+                "reason": "Matrixnær repetition er en legitim læringsværdi.",
+                "edit_needed": False,
+                "safety_flags": [],
+            }
+        )
+
+    validated = review.validate_gemini_quality_comparison(
+        {
+            "review_summary": {
+                "overall_assessment": "Kvaliteten vurderes uafhængigt af novelty.",
+                "best_overall_pool": "canonical_matrix_deck",
+                "best_for_matrix_rehearsal": "full_notebooklm_candidate",
+                "best_for_exam_preparation": "canonical_matrix_deck",
+                "main_risks": ["Nogle kort kan stadig være upræcise."],
+                "recommended_next_action": "Brug som kvalitetsvurdering, ikke promotionbeslutning.",
+            },
+            "pool_assessments": [
+                {
+                    "source_pool": pool,
+                    "coverage_score": "4/5",
+                    "matrix_fidelity_score": {"score": 4},
+                    "exam_usefulness_score": 4,
+                    "precision_score": 4,
+                    "wording_score": 4,
+                    "atomicity_score": 4,
+                    "learning_value_score": 4,
+                    "recommended_visibility": "supplement",
+                    "strengths": ["God repetition."],
+                    "weaknesses": ["Kræver stadig redaktionel vurdering."],
+                    "best_use_case": "Alternativ træning.",
+                }
+                for pool in review.QUALITY_COMPARISON_POOLS
+            ],
+            "card_observations": observations,
+            "comparison_conclusion": {
+                "original_cards_assessment": "Stærk base.",
+                "newest_notebooklm_assessment": "Kan være nyttig som bred matrixrepetition.",
+                "variant_decks_assessment": "Bør sammenlignes som supplementer.",
+                "freudd_visibility_recommendation": "Ingen automatisk promotion.",
+            },
+        },
+        bundle=bundle,
+        model="gemini-test",
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert validated["artifact_type"] == review.GEMINI_QUALITY_COMPARISON_ARTIFACT_TYPE
+    assert validated["stats"]["quality_verdict_counts"]["strong"] == 1
+    assert validated["stats"]["missing_sample_card_count"] == 0
+
+
+def test_quality_comparison_records_partial_card_observations(tmp_path: Path) -> None:
+    repo_root = tmp_path
+    matrix = _matrix()
+    matrix_path = repo_root / "matrix.json"
+    matrix_deck_path = repo_root / "matrix_deck.json"
+    variant_path = repo_root / "variant.json"
+    independent_path = repo_root / "independent.json"
+    lab_root = repo_root / "lab"
+
+    _write_json(matrix_path, matrix)
+    _write_json(matrix_deck_path, _matrix_deck(matrix))
+    _write_json(variant_path, _variant_deck("notebooklm-varianter-personlighedspsykologi"))
+    _write_json(independent_path, _variant_deck("notebooklm-uafhaengige-varianter-personlighedspsykologi"))
+    for slug in review.EXPECTED_NOTEBOOK_SLUGS:
+        candidates = []
+        if slug == "global-calibration-synthesis":
+            candidates.append(
+                {
+                    "candidate_id": "candidate-1",
+                    "notebook_slug": slug,
+                    "source_path": "download.json",
+                    "source_index": 1,
+                    "front": "Hvad er hovedpointen i trækpsykologi?",
+                    "back": "Trækpsykologi beskriver stabile personlighedsforskelle.",
+                    "category_slug": "personbegreb",
+                    "category_title": "Personbegreb",
+                    "mapped_theory_ids": ["trait_and_assessment_psychology"],
+                    "duplicate": {"score": 0.1, "nearest_card_id": ""},
+                    "manual_card_review": {},
+                    "warnings": [],
+                    "review_status": "candidate",
+                }
+            )
+        _write_json(
+            lab_root / "runs" / "full-run" / "candidates" / f"{slug}.candidates.json",
+            _candidate_payload(slug, candidates),
+        )
+
+    report = review.build_comparison_report(
+        repo_root=repo_root,
+        review_run_id="test-review",
+        matrix_path=matrix_path,
+        matrix_deck_path=matrix_deck_path,
+        variant_deck_path=variant_path,
+        independent_deck_path=independent_path,
+        lab_root=lab_root,
+        full_run_id="full-run",
+        reports_root=lab_root / "reports",
+        allow_count_drift=True,
+        allow_unignored_report_output=True,
+        generated_at="2026-05-26T00:00:00Z",
+    )
+    bundle = review.build_gemini_quality_comparison_bundle(
+        comparison_report=report,
+        model="gemini-test",
+        generated_at="2026-05-26T00:00:00Z",
+    )
+    first_key = bundle["sample_cards"][0]["card_key"]
+    validated = review.validate_gemini_quality_comparison(
+        {
+            "review_summary": {
+                "overall_assessment": "Delvis kortobservation, men poolvurdering er til stede.",
+                "best_overall_pool": "canonical_matrix_deck",
+                "best_for_matrix_rehearsal": "full_notebooklm_candidate",
+                "best_for_exam_preparation": "canonical_matrix_deck",
+                "main_risks": ["Outputgrænse."],
+                "recommended_next_action": "Brug som delvis observation.",
+            },
+            "pool_assessments": [
+                {
+                    "source_pool": pool,
+                    "coverage_score": 4,
+                    "matrix_fidelity_score": 4,
+                    "exam_usefulness_score": 4,
+                    "precision_score": 4,
+                    "wording_score": 4,
+                    "atomicity_score": 4,
+                    "learning_value_score": 4,
+                    "recommended_visibility": "supplement",
+                    "strengths": ["God repetition."],
+                    "weaknesses": ["Delvis sample."],
+                    "best_use_case": "Kvalitetsvurdering.",
+                }
+                for pool in review.QUALITY_COMPARISON_POOLS
+            ],
+            "card_observations": [
+                {
+                    "card_key": first_key,
+                    "quality_verdict": "usable",
+                    "matrix_fidelity_score": 4,
+                    "exam_usefulness_score": 4,
+                    "precision_score": 4,
+                    "wording_score": 4,
+                    "atomicity_score": 4,
+                    "learning_value_score": 4,
+                    "reason": "Kortet er brugbart.",
+                    "edit_needed": False,
+                    "safety_flags": [],
+                }
+            ],
+            "comparison_conclusion": {
+                "original_cards_assessment": "Stærk base.",
+                "newest_notebooklm_assessment": "Delvist observeret.",
+                "variant_decks_assessment": "Ikke i scope.",
+                "freudd_visibility_recommendation": "Afvent.",
+            },
+        },
+        bundle=bundle,
+        model="gemini-test",
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert validated["stats"]["observed_sample_card_count"] == 1
+    assert validated["stats"]["missing_sample_card_count"] == len(bundle["sample_cards"]) - 1
+    assert validated["validation_warnings"] == ["partial_card_observations_due_to_model_output_limit"]
 
 
 def test_preflight_rejects_missing_full_run_candidates(tmp_path: Path) -> None:

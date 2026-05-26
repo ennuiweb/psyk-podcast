@@ -43,6 +43,11 @@ REVIEW_ARTIFACT_TYPE = "personlighedspsykologi_flashcard_pool_comparison"
 GEMINI_POOL_REVIEW_ARTIFACT_TYPE = "personlighedspsykologi_gemini_flashcard_pool_review"
 GEMINI_POOL_REVIEW_BUNDLE_ARTIFACT_TYPE = "personlighedspsykologi_gemini_flashcard_pool_review_bundle"
 GEMINI_POOL_REVIEW_PROMPT_VERSION = "personlighedspsykologi-gemini-flashcard-pool-review-v1"
+GEMINI_QUALITY_COMPARISON_ARTIFACT_TYPE = "personlighedspsykologi_gemini_flashcard_quality_comparison"
+GEMINI_QUALITY_COMPARISON_BUNDLE_ARTIFACT_TYPE = (
+    "personlighedspsykologi_gemini_flashcard_quality_comparison_bundle"
+)
+GEMINI_QUALITY_COMPARISON_PROMPT_VERSION = "personlighedspsykologi-gemini-flashcard-quality-comparison-v1"
 DEFAULT_REVIEW_RUN_ID = "flashcard-pool-review-20260526"
 FULL_NOTEBOOKLM_RUN_ID = "full-matrix-20260526-notebooklm-independent"
 
@@ -130,6 +135,13 @@ UNKNOWN_RATE_STOP_THRESHOLD = 0.20
 GEMINI_POOL_DECISION_VALUES = {"promote", "promote_after_edit", "merge_with_existing", "reject", "defer"}
 GEMINI_POOL_WINNER_VALUES = {"candidate", "existing", "hybrid", "neither"}
 GEMINI_POOL_CONFIDENCE_VALUES = {"low", "medium", "high"}
+GEMINI_QUALITY_VERDICT_VALUES = {"strong", "usable", "needs_edit", "weak"}
+GEMINI_VISIBILITY_VALUES = {"main_deck", "supplement", "archive", "raw_material", "do_not_use"}
+QUALITY_COMPARISON_POOLS = ("canonical_matrix_deck", "full_notebooklm_candidate")
+QUALITY_SAMPLE_TARGETS = {
+    "canonical_matrix_deck": 152,
+    "full_notebooklm_candidate": EXPECTED_FULL_RUN_CANDIDATE_COUNT,
+}
 
 DUPLICATE_EXACT_THRESHOLD = 0.95
 DUPLICATE_NEAR_THRESHOLD = 0.72
@@ -1111,12 +1123,22 @@ def gemini_pool_review_response_schema() -> dict[str, Any]:
 
 
 def _validate_score(value: object, *, field: str, card_key: str) -> int:
+    original_value = value
+    if not isinstance(value, (int, float)):
+        rendered = json.dumps(value, ensure_ascii=False, sort_keys=True) if isinstance(value, (dict, list)) else str(value)
+        match = re.search(r"\b([1-5])\b", rendered)
+        if match:
+            value = match.group(1)
     try:
         score = int(value)
     except (TypeError, ValueError) as exc:
-        raise FlashcardReviewError(f"Gemini pool review score must be an integer for {card_key}: {field}") from exc
+        raise FlashcardReviewError(
+            f"Gemini review score must be an integer for {card_key}: {field}; got {original_value!r}"
+        ) from exc
+    if 6 <= score <= 10:
+        score = max(1, min(5, round(score / 2)))
     if score < 1 or score > 5:
-        raise FlashcardReviewError(f"Gemini pool review score must be 1-5 for {card_key}: {field}")
+        raise FlashcardReviewError(f"Gemini review score must be 1-5 for {card_key}: {field}; got {original_value!r}")
     return score
 
 
@@ -1306,6 +1328,753 @@ def write_gemini_pool_review_markdown(review_payload: dict[str, Any], output_pat
                     "",
                 ]
             )
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+def _pool_quality_stats(cards: list[dict[str, Any]]) -> dict[str, Any]:
+    by_pool: dict[str, dict[str, Any]] = {}
+    for pool in sorted({_text(card.get("source_pool")) for card in cards if _text(card.get("source_pool"))}):
+        pool_cards = [card for card in cards if card.get("source_pool") == pool]
+        warning_counts = Counter(warning for card in pool_cards for warning in _as_str_list(card.get("warnings")))
+        front_lengths = [int(card.get("front_chars") or 0) for card in pool_cards]
+        back_lengths = [int(card.get("back_chars") or 0) for card in pool_cards]
+        by_pool[pool] = {
+            "card_count": len(pool_cards),
+            "review_status_counts": dict(sorted(Counter(_text(card.get("review_status")) for card in pool_cards).items())),
+            "theory_topic_counts": dict(sorted(Counter(_text(card.get("theory_topic")) for card in pool_cards).items())),
+            "review_family_counts": dict(sorted(Counter(_text(card.get("review_family")) for card in pool_cards).items())),
+            "warning_counts": dict(sorted(warning_counts.items())),
+            "average_front_chars": round(sum(front_lengths) / len(front_lengths), 1) if front_lengths else 0,
+            "average_back_chars": round(sum(back_lengths) / len(back_lengths), 1) if back_lengths else 0,
+            "unknown_cards": sum(
+                1
+                for card in pool_cards
+                if card.get("theory_topic") == UNKNOWN_TOPIC or card.get("review_family") == UNKNOWN_FAMILY
+            ),
+        }
+    return by_pool
+
+
+def _sample_pool_cards(cards: list[dict[str, Any]], *, pool: str, limit: int) -> list[dict[str, Any]]:
+    pool_cards = [card for card in cards if card.get("source_pool") == pool]
+    selected: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+
+    def add(card: dict[str, Any]) -> None:
+        key = _text(card.get("card_key"))
+        if key and key not in seen_keys and len(selected) < limit:
+            selected.append(card)
+            seen_keys.add(key)
+
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for card in pool_cards:
+        groups[(_text(card.get("theory_topic")), _text(card.get("review_family")))].append(card)
+    for cell in sorted(groups):
+        ranked = sorted(
+            groups[cell],
+            key=lambda card: (
+                _text(card.get("review_status")) == "auto_rejected",
+                len(_as_str_list(card.get("warnings"))),
+                int(card.get("source_index") or 0),
+                _text(card.get("card_key")),
+            ),
+        )
+        if ranked:
+            add(ranked[0])
+    for card in sorted(
+        pool_cards,
+        key=lambda card: (
+            _text(card.get("theory_topic")),
+            _text(card.get("review_family")),
+            _text(card.get("review_status")) == "auto_rejected",
+            int(card.get("source_index") or 0),
+            _text(card.get("card_key")),
+        ),
+    ):
+        add(card)
+    return selected
+
+
+def _quality_card_for_gemini(card: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "card_key": _text(card.get("card_key")),
+        "source_pool": _text(card.get("source_pool")),
+        "candidate_id": _text(card.get("candidate_id")),
+        "notebook_slug": _text(card.get("notebook_slug")),
+        "front": _text(card.get("front")),
+        "back": _text(card.get("back")),
+        "front_chars": int(card.get("front_chars") or 0),
+        "back_chars": int(card.get("back_chars") or 0),
+        "category_slug": _text(card.get("category_slug")),
+        "matrix_theory_ids": _as_str_list(card.get("matrix_theory_ids")),
+        "theory_topic": _text(card.get("theory_topic")),
+        "review_family": _text(card.get("review_family")),
+        "review_status": _text(card.get("review_status")),
+        "warnings": _as_str_list(card.get("warnings")),
+    }
+
+
+def build_gemini_quality_comparison_bundle(
+    *,
+    comparison_report: dict[str, Any],
+    model: str,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    if comparison_report.get("artifact_type") != REVIEW_ARTIFACT_TYPE:
+        raise FlashcardReviewError("Quality comparison requires a flashcard pool comparison report")
+    cards = [card for card in _as_list(comparison_report.get("cards")) if isinstance(card, dict)]
+    if not cards:
+        raise FlashcardReviewError("Quality comparison needs normalized cards in the comparison report")
+    pool_stats = _pool_quality_stats(cards)
+    missing_pools = [pool for pool in QUALITY_COMPARISON_POOLS if pool not in pool_stats]
+    if missing_pools:
+        raise FlashcardReviewError("Quality comparison missing source pools: " + ", ".join(missing_pools))
+    sample_cards: list[dict[str, Any]] = []
+    sample_counts: dict[str, int] = {}
+    for pool in QUALITY_COMPARISON_POOLS:
+        limit = QUALITY_SAMPLE_TARGETS[pool]
+        selected = _sample_pool_cards(cards, pool=pool, limit=limit)
+        sample_counts[pool] = len(selected)
+        sample_cards.extend(selected)
+    coverage = comparison_report.get("coverage") if isinstance(comparison_report.get("coverage"), dict) else {}
+    stats = comparison_report.get("stats") if isinstance(comparison_report.get("stats"), dict) else {}
+    return {
+        "version": REVIEW_VERSION,
+        "artifact_type": GEMINI_QUALITY_COMPARISON_BUNDLE_ARTIFACT_TYPE,
+        "subject_slug": SUBJECT_SLUG,
+        "review_run_id": _text(comparison_report.get("review_run_id")),
+        "generated_at": generated_at or utc_now_iso(),
+        "model": model,
+        "prompt_version": GEMINI_QUALITY_COMPARISON_PROMPT_VERSION,
+        "input_fingerprints": {
+            "comparison_report": hashlib.sha256(
+                json.dumps(comparison_report, sort_keys=True, ensure_ascii=False).encode("utf-8")
+            ).hexdigest(),
+        },
+        "review_contract": {
+            "task": "Compare flashcard pools as learning material in their own right, not as promotion candidates.",
+            "critical_boundary": (
+                "Do not evaluate novelty relative to other pools. Judge each card and pool by its own learning "
+                "quality, and allow broad matrix restatements when they are clear and accurate."
+            ),
+            "quality_dimensions": [
+                "matrix fidelity",
+                "course coverage",
+                "oral-exam usefulness",
+                "psychological precision",
+                "Danish wording clarity",
+                "atomic retrieval shape",
+                "overall learning value",
+            ],
+            "allowed_strengths": [
+                "clear broad restatement of a matrix row",
+                "simple rehearsal cue for a central theory point",
+                "standalone card that supports course coverage without needing to be novel",
+            ],
+            "penalize_only": [
+                "incorrect or unsupported claims",
+                "vague or buzzword-heavy wording",
+                "too sprawling or non-atomic cards",
+                "bad Danish or question-answer mismatch",
+                "weak oral-exam usefulness",
+                "unsafe leakage of student names, local paths, internal IDs, or hidden provenance",
+            ],
+        },
+        "pool_context": {
+            "source_counts": {
+                pool: (stats.get("source_counts") or {}).get(pool, 0)
+                for pool in QUALITY_COMPARISON_POOLS
+            }
+            if isinstance(stats.get("source_counts"), dict)
+            else {},
+            "pool_quality_stats": {pool: pool_stats[pool] for pool in QUALITY_COMPARISON_POOLS},
+            "coverage_unknown_counts": coverage.get("unknown_counts") if isinstance(coverage.get("unknown_counts"), dict) else {},
+            "missing_cells": _as_list(coverage.get("missing_cells"))[:80],
+            "overcrowded_cells": _as_list(coverage.get("overcrowded_cells"))[:80],
+            "sample_counts": sample_counts,
+        },
+        "sample_cards": [_quality_card_for_gemini(card) for card in sample_cards],
+    }
+
+
+def gemini_quality_comparison_system_instruction() -> str:
+    return "\n".join(
+        [
+            "You are a strict Danish university psychology flashcard quality reviewer.",
+            "Return only valid JSON matching the requested schema.",
+            "Evaluate flashcard pools as learning material in their own right.",
+            "Do not evaluate novelty relative to other pools; judge the supplied card text on its own learning quality.",
+            "Do not mention overlap, redundancy, duplicates, or whether a card adds something new.",
+            "Reward matrix-faithful, clear, useful rehearsal cards even when they cover already-known material.",
+            "Penalize only weak fidelity, weak precision, unclear Danish, poor card shape, unsafe text, or low exam usefulness.",
+        ]
+    )
+
+
+def gemini_quality_comparison_user_prompt(bundle: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "Compare these flashcard pools for independent learning quality.",
+            "",
+            "Important: this is not a promotion or novelty review. Do not try to infer whether a card is new relative to another pool.",
+            "Do not use or mention overlap, redundancy, duplicate status, novelty, or 'adds something new' as a criterion.",
+            "Broad restatements of the matrix are allowed when they are accurate, clear, and useful for rehearsal.",
+            "",
+            "Return one pool assessment for every source_pool and one card observation for every sampled card_key.",
+            "For the supplied sample_cards, card_observations must contain every card_key exactly once.",
+            "Do not summarize the cards and do not choose examples; review every supplied card.",
+            "Use Danish for all explanations. Keep per-card reasons extremely short so every supplied card can fit.",
+            "If output limits force prioritization, preserve the pool assessments and return as many card observations as feasible.",
+            "",
+            "Input bundle:",
+            "",
+            json.dumps(bundle, ensure_ascii=False, sort_keys=True, indent=2),
+        ]
+    )
+
+
+def gemini_quality_comparison_response_schema() -> dict[str, Any]:
+    score_property = {"type": "integer"}
+    return {
+        "type": "object",
+        "properties": {
+            "review_summary": {
+                "type": "object",
+                "properties": {
+                    "overall_assessment": {"type": "string"},
+                    "best_overall_pool": {"type": "string"},
+                    "best_for_matrix_rehearsal": {"type": "string"},
+                    "best_for_exam_preparation": {"type": "string"},
+                    "main_risks": {"type": "array", "items": {"type": "string"}},
+                    "recommended_next_action": {"type": "string"},
+                },
+                "required": [
+                    "overall_assessment",
+                    "best_overall_pool",
+                    "best_for_matrix_rehearsal",
+                    "best_for_exam_preparation",
+                    "main_risks",
+                    "recommended_next_action",
+                ],
+            },
+            "pool_assessments": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "source_pool": {"type": "string"},
+                        "coverage_score": score_property,
+                        "matrix_fidelity_score": score_property,
+                        "exam_usefulness_score": score_property,
+                        "precision_score": score_property,
+                        "wording_score": score_property,
+                        "atomicity_score": score_property,
+                        "learning_value_score": score_property,
+                        "recommended_visibility": {"type": "string", "enum": sorted(GEMINI_VISIBILITY_VALUES)},
+                        "strengths": {"type": "array", "items": {"type": "string"}},
+                        "weaknesses": {"type": "array", "items": {"type": "string"}},
+                        "best_use_case": {"type": "string"},
+                    },
+                    "required": [
+                        "source_pool",
+                        "coverage_score",
+                        "matrix_fidelity_score",
+                        "exam_usefulness_score",
+                        "precision_score",
+                        "wording_score",
+                        "atomicity_score",
+                        "learning_value_score",
+                        "recommended_visibility",
+                        "strengths",
+                        "weaknesses",
+                        "best_use_case",
+                    ],
+                },
+            },
+            "card_observations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "card_key": {"type": "string"},
+                        "quality_verdict": {"type": "string", "enum": sorted(GEMINI_QUALITY_VERDICT_VALUES)},
+                        "matrix_fidelity_score": score_property,
+                        "exam_usefulness_score": score_property,
+                        "precision_score": score_property,
+                        "wording_score": score_property,
+                        "atomicity_score": score_property,
+                        "learning_value_score": score_property,
+                        "reason": {"type": "string"},
+                        "edit_needed": {"type": "boolean"},
+                        "safety_flags": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": [
+                        "card_key",
+                        "quality_verdict",
+                        "matrix_fidelity_score",
+                        "exam_usefulness_score",
+                        "precision_score",
+                        "wording_score",
+                        "atomicity_score",
+                        "learning_value_score",
+                        "reason",
+                        "edit_needed",
+                        "safety_flags",
+                    ],
+                },
+            },
+            "comparison_conclusion": {
+                "type": "object",
+                "properties": {
+                    "original_cards_assessment": {"type": "string"},
+                    "newest_notebooklm_assessment": {"type": "string"},
+                    "variant_decks_assessment": {"type": "string"},
+                    "freudd_visibility_recommendation": {"type": "string"},
+                },
+                "required": [
+                    "original_cards_assessment",
+                    "newest_notebooklm_assessment",
+                    "variant_decks_assessment",
+                    "freudd_visibility_recommendation",
+                ],
+            },
+        },
+        "required": ["review_summary", "pool_assessments", "card_observations", "comparison_conclusion"],
+    }
+
+
+def gemini_quality_observation_system_instruction() -> str:
+    return "\n".join(
+        [
+            "You are a strict Danish university psychology flashcard quality reviewer.",
+            "Return only valid JSON matching the requested schema.",
+            "Review every supplied card_key exactly once.",
+            "Do not compare against other decks. Do not mention overlap, redundancy, duplicates, or novelty.",
+            "Judge only matrix fidelity, exam usefulness, precision, wording, atomicity, and learning value.",
+        ]
+    )
+
+
+def gemini_quality_observation_user_prompt(bundle: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "Review every flashcard in sample_cards.",
+            "Return card_observations with exactly every supplied card_key once.",
+            "Use Danish. Keep reason to at most 12 words.",
+            "Scores are integers 1-5.",
+            "",
+            "Input bundle:",
+            "",
+            json.dumps(
+                {
+                    "review_contract": bundle.get("review_contract"),
+                    "batch": bundle.get("batch"),
+                    "sample_cards": bundle.get("sample_cards"),
+                },
+                ensure_ascii=False,
+                sort_keys=True,
+                indent=2,
+            ),
+        ]
+    )
+
+
+def gemini_quality_observation_response_schema() -> dict[str, Any]:
+    score_property = {"type": "integer"}
+    return {
+        "type": "object",
+        "properties": {
+            "card_observations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "card_key": {"type": "string"},
+                        "quality_verdict": {"type": "string", "enum": sorted(GEMINI_QUALITY_VERDICT_VALUES)},
+                        "matrix_fidelity_score": score_property,
+                        "exam_usefulness_score": score_property,
+                        "precision_score": score_property,
+                        "wording_score": score_property,
+                        "atomicity_score": score_property,
+                        "learning_value_score": score_property,
+                        "reason": {"type": "string"},
+                        "edit_needed": {"type": "boolean"},
+                        "safety_flags": {"type": "array", "items": {"type": "string"}},
+                    },
+                    "required": [
+                        "card_key",
+                        "quality_verdict",
+                        "matrix_fidelity_score",
+                        "exam_usefulness_score",
+                        "precision_score",
+                        "wording_score",
+                        "atomicity_score",
+                        "learning_value_score",
+                        "reason",
+                        "edit_needed",
+                        "safety_flags",
+                    ],
+                },
+            },
+        },
+        "required": ["card_observations"],
+    }
+
+
+def validate_gemini_quality_observations(
+    review_payload: dict[str, Any],
+    *,
+    bundle: dict[str, Any],
+) -> dict[str, Any]:
+    raw_observations = review_payload.get("card_observations")
+    if not isinstance(raw_observations, list):
+        raise FlashcardReviewError("Gemini quality observations payload must contain card_observations list")
+    sample_cards = [item for item in _as_list(bundle.get("sample_cards")) if isinstance(item, dict)]
+    expected_keys = {_text(item.get("card_key")) for item in sample_cards if _text(item.get("card_key"))}
+    observations: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+    verdict_counts: Counter[str] = Counter()
+    for raw in raw_observations:
+        if not isinstance(raw, dict):
+            raise FlashcardReviewError("Gemini quality observations must be objects")
+        card_key = _text(raw.get("card_key"))
+        if card_key not in expected_keys:
+            raise FlashcardReviewError(f"Gemini quality observations returned unknown card_key: {card_key}")
+        if card_key in seen_keys:
+            raise FlashcardReviewError(f"Gemini quality observations returned duplicate card_key: {card_key}")
+        seen_keys.add(card_key)
+        verdict = _text(raw.get("quality_verdict"))
+        if verdict not in GEMINI_QUALITY_VERDICT_VALUES:
+            raise FlashcardReviewError(f"Invalid quality verdict for {card_key}: {verdict}")
+        safety_text = "\n".join([_text(raw.get("reason")), " ".join(_as_str_list(raw.get("safety_flags")))])
+        for pattern in LEARNER_TEXT_FORBIDDEN_PATTERNS:
+            if pattern.search(safety_text):
+                raise FlashcardReviewError(f"Gemini quality observations leak forbidden provenance: {card_key}")
+        verdict_counts[verdict] += 1
+        observations.append(
+            {
+                "card_key": card_key,
+                "quality_verdict": verdict,
+                "scores": {
+                    "matrix_fidelity": _validate_score(
+                        raw.get("matrix_fidelity_score"),
+                        field="matrix_fidelity_score",
+                        card_key=card_key,
+                    ),
+                    "exam_usefulness": _validate_score(
+                        raw.get("exam_usefulness_score"),
+                        field="exam_usefulness_score",
+                        card_key=card_key,
+                    ),
+                    "precision": _validate_score(raw.get("precision_score"), field="precision_score", card_key=card_key),
+                    "wording": _validate_score(raw.get("wording_score"), field="wording_score", card_key=card_key),
+                    "atomicity": _validate_score(raw.get("atomicity_score"), field="atomicity_score", card_key=card_key),
+                    "learning_value": _validate_score(
+                        raw.get("learning_value_score"),
+                        field="learning_value_score",
+                        card_key=card_key,
+                    ),
+                },
+                "reason": _text(raw.get("reason")),
+                "edit_needed": bool(raw.get("edit_needed")),
+                "safety_flags": _as_str_list(raw.get("safety_flags")),
+            }
+        )
+    missing_keys = expected_keys - seen_keys
+    if not observations:
+        raise FlashcardReviewError("Gemini quality observations returned no card observations")
+    return {
+        "card_observations": observations,
+        "stats": {
+            "sample_card_count": len(expected_keys),
+            "observed_sample_card_count": len(seen_keys),
+            "missing_sample_card_count": len(missing_keys),
+            "quality_verdict_counts": dict(sorted(verdict_counts.items())),
+        },
+        "validation_warnings": (
+            ["partial_card_observations_due_to_model_output_limit"] if missing_keys else []
+        ),
+        "missing_card_keys": sorted(missing_keys),
+    }
+
+
+def validate_gemini_quality_comparison(
+    review_payload: dict[str, Any],
+    *,
+    bundle: dict[str, Any],
+    model: str,
+    generated_at: str | None = None,
+) -> dict[str, Any]:
+    sample_cards = [item for item in _as_list(bundle.get("sample_cards")) if isinstance(item, dict)]
+    expected_pools = {
+        _text(item.get("source_pool"))
+        for item in sample_cards
+        if _text(item.get("source_pool"))
+    } or set(QUALITY_COMPARISON_POOLS)
+    raw_pools = review_payload.get("pool_assessments")
+    if not isinstance(raw_pools, list):
+        raise FlashcardReviewError("Gemini quality comparison payload must contain pool_assessments list")
+    pool_assessments: list[dict[str, Any]] = []
+    seen_pools: set[str] = set()
+    for raw in raw_pools:
+        if not isinstance(raw, dict):
+            raise FlashcardReviewError("Gemini quality comparison pool assessments must be objects")
+        pool = _text(raw.get("source_pool"))
+        if pool not in expected_pools:
+            raise FlashcardReviewError(f"Gemini quality comparison returned unknown source_pool: {pool}")
+        if pool in seen_pools:
+            raise FlashcardReviewError(f"Gemini quality comparison returned duplicate source_pool: {pool}")
+        seen_pools.add(pool)
+        visibility = _text(raw.get("recommended_visibility"))
+        if visibility not in GEMINI_VISIBILITY_VALUES:
+            raise FlashcardReviewError(f"Invalid quality comparison visibility for {pool}: {visibility}")
+        pool_assessments.append(
+            {
+                "source_pool": pool,
+                "scores": {
+                    "coverage": _validate_score(raw.get("coverage_score"), field="coverage_score", card_key=pool),
+                    "matrix_fidelity": _validate_score(
+                        raw.get("matrix_fidelity_score"),
+                        field="matrix_fidelity_score",
+                        card_key=pool,
+                    ),
+                    "exam_usefulness": _validate_score(
+                        raw.get("exam_usefulness_score"),
+                        field="exam_usefulness_score",
+                        card_key=pool,
+                    ),
+                    "precision": _validate_score(raw.get("precision_score"), field="precision_score", card_key=pool),
+                    "wording": _validate_score(raw.get("wording_score"), field="wording_score", card_key=pool),
+                    "atomicity": _validate_score(raw.get("atomicity_score"), field="atomicity_score", card_key=pool),
+                    "learning_value": _validate_score(
+                        raw.get("learning_value_score"),
+                        field="learning_value_score",
+                        card_key=pool,
+                    ),
+                },
+                "recommended_visibility": visibility,
+                "strengths": _as_str_list(raw.get("strengths")),
+                "weaknesses": _as_str_list(raw.get("weaknesses")),
+                "best_use_case": _text(raw.get("best_use_case")),
+            }
+        )
+    missing_pools = expected_pools - seen_pools
+    if missing_pools:
+        raise FlashcardReviewError("Gemini quality comparison missing pool assessments: " + ", ".join(sorted(missing_pools)))
+
+    raw_observations = review_payload.get("card_observations")
+    if not isinstance(raw_observations, list):
+        raise FlashcardReviewError("Gemini quality comparison payload must contain card_observations list")
+    expected_keys = {
+        _text(item.get("card_key"))
+        for item in sample_cards
+        if _text(item.get("card_key"))
+    }
+    observations: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+    verdict_counts: Counter[str] = Counter()
+    for raw in raw_observations:
+        if not isinstance(raw, dict):
+            raise FlashcardReviewError("Gemini quality comparison card observations must be objects")
+        card_key = _text(raw.get("card_key"))
+        if card_key not in expected_keys:
+            raise FlashcardReviewError(f"Gemini quality comparison returned unknown card_key: {card_key}")
+        if card_key in seen_keys:
+            raise FlashcardReviewError(f"Gemini quality comparison returned duplicate card_key: {card_key}")
+        seen_keys.add(card_key)
+        verdict = _text(raw.get("quality_verdict"))
+        if verdict not in GEMINI_QUALITY_VERDICT_VALUES:
+            raise FlashcardReviewError(f"Invalid quality verdict for {card_key}: {verdict}")
+        safety_text = "\n".join([_text(raw.get("reason")), " ".join(_as_str_list(raw.get("safety_flags")))])
+        for pattern in LEARNER_TEXT_FORBIDDEN_PATTERNS:
+            if pattern.search(safety_text):
+                raise FlashcardReviewError(f"Gemini quality comparison leaks forbidden provenance: {card_key}")
+        verdict_counts[verdict] += 1
+        observations.append(
+            {
+                "card_key": card_key,
+                "quality_verdict": verdict,
+                "scores": {
+                    "matrix_fidelity": _validate_score(
+                        raw.get("matrix_fidelity_score"),
+                        field="matrix_fidelity_score",
+                        card_key=card_key,
+                    ),
+                    "exam_usefulness": _validate_score(
+                        raw.get("exam_usefulness_score"),
+                        field="exam_usefulness_score",
+                        card_key=card_key,
+                    ),
+                    "precision": _validate_score(raw.get("precision_score"), field="precision_score", card_key=card_key),
+                    "wording": _validate_score(raw.get("wording_score"), field="wording_score", card_key=card_key),
+                    "atomicity": _validate_score(raw.get("atomicity_score"), field="atomicity_score", card_key=card_key),
+                    "learning_value": _validate_score(
+                        raw.get("learning_value_score"),
+                        field="learning_value_score",
+                        card_key=card_key,
+                    ),
+                },
+                "reason": _text(raw.get("reason")),
+                "edit_needed": bool(raw.get("edit_needed")),
+                "safety_flags": _as_str_list(raw.get("safety_flags")),
+            }
+        )
+    missing_keys = expected_keys - seen_keys
+    if not observations:
+        raise FlashcardReviewError("Gemini quality comparison returned no card observations")
+    summary = review_payload.get("review_summary") if isinstance(review_payload.get("review_summary"), dict) else {}
+    conclusion = (
+        review_payload.get("comparison_conclusion")
+        if isinstance(review_payload.get("comparison_conclusion"), dict)
+        else {}
+    )
+    return {
+        "version": REVIEW_VERSION,
+        "artifact_type": GEMINI_QUALITY_COMPARISON_ARTIFACT_TYPE,
+        "subject_slug": SUBJECT_SLUG,
+        "review_run_id": _text(bundle.get("review_run_id")),
+        "generated_at": generated_at or utc_now_iso(),
+        "model": model,
+        "prompt_version": GEMINI_QUALITY_COMPARISON_PROMPT_VERSION,
+        "input_fingerprints": bundle.get("input_fingerprints"),
+        "stats": {
+            "sample_card_count": len(expected_keys),
+            "observed_sample_card_count": len(seen_keys),
+            "missing_sample_card_count": len(missing_keys),
+            "pool_count": len(expected_pools),
+            "quality_verdict_counts": dict(sorted(verdict_counts.items())),
+        },
+        "validation_warnings": (
+            [
+                "partial_card_observations_due_to_model_output_limit",
+            ]
+            if missing_keys
+            else []
+        ),
+        "missing_card_keys": sorted(missing_keys),
+        "review_summary": {
+            "overall_assessment": _text(summary.get("overall_assessment")),
+            "best_overall_pool": _text(summary.get("best_overall_pool")),
+            "best_for_matrix_rehearsal": _text(summary.get("best_for_matrix_rehearsal")),
+            "best_for_exam_preparation": _text(summary.get("best_for_exam_preparation")),
+            "main_risks": _as_str_list(summary.get("main_risks")),
+            "recommended_next_action": _text(summary.get("recommended_next_action")),
+        },
+        "pool_assessments": pool_assessments,
+        "card_observations": observations,
+        "comparison_conclusion": {
+            "original_cards_assessment": _text(conclusion.get("original_cards_assessment")),
+            "newest_notebooklm_assessment": _text(conclusion.get("newest_notebooklm_assessment")),
+            "variant_decks_assessment": _text(conclusion.get("variant_decks_assessment")),
+            "freudd_visibility_recommendation": _text(conclusion.get("freudd_visibility_recommendation")),
+        },
+    }
+
+
+def write_gemini_quality_comparison_markdown(review_payload: dict[str, Any], output_path: Path) -> None:
+    summary = review_payload.get("review_summary") if isinstance(review_payload.get("review_summary"), dict) else {}
+    conclusion = (
+        review_payload.get("comparison_conclusion")
+        if isinstance(review_payload.get("comparison_conclusion"), dict)
+        else {}
+    )
+    lines = [
+        "# Gemini Flashcard Quality Comparison",
+        "",
+        f"Review run: `{review_payload.get('review_run_id')}`",
+        f"Model: `{review_payload.get('model')}`",
+        f"Prompt: `{review_payload.get('prompt_version')}`",
+        "",
+        "## Summary",
+        "",
+        f"Overall: {_text(summary.get('overall_assessment'))}",
+        "",
+        f"- Best overall pool: `{_text(summary.get('best_overall_pool'))}`",
+        f"- Best for matrix rehearsal: `{_text(summary.get('best_for_matrix_rehearsal'))}`",
+        f"- Best for exam preparation: `{_text(summary.get('best_for_exam_preparation'))}`",
+        f"- Recommended next action: {_text(summary.get('recommended_next_action'))}",
+        "",
+        f"Quality verdict counts: {review_payload.get('stats', {}).get('quality_verdict_counts')}",
+        f"Observed sampled cards: {review_payload.get('stats', {}).get('observed_sample_card_count')} / {review_payload.get('stats', {}).get('sample_card_count')}",
+        "",
+    ]
+    warnings = _as_str_list(review_payload.get("validation_warnings"))
+    if warnings:
+        lines.extend(["Validation warnings:", "", *[f"- {warning}" for warning in warnings], ""])
+    risks = _as_str_list(summary.get("main_risks"))
+    if risks:
+        lines.extend(["## Main Risks", "", *[f"- {risk}" for risk in risks], ""])
+    lines.extend(
+        [
+            "## Comparison Conclusion",
+            "",
+            f"- Original cards: {_text(conclusion.get('original_cards_assessment'))}",
+            f"- Newest NotebookLM: {_text(conclusion.get('newest_notebooklm_assessment'))}",
+            f"- Variant decks: {_text(conclusion.get('variant_decks_assessment'))}",
+            f"- Freudd visibility: {_text(conclusion.get('freudd_visibility_recommendation'))}",
+            "",
+            "## Pool Assessments",
+            "",
+        ]
+    )
+    for pool in _as_list(review_payload.get("pool_assessments")):
+        if not isinstance(pool, dict):
+            continue
+        scores = pool.get("scores") if isinstance(pool.get("scores"), dict) else {}
+        lines.extend(
+            [
+                f"### `{pool.get('source_pool')}`",
+                "",
+                (
+                    "- Scores: "
+                    f"coverage {scores.get('coverage')}, "
+                    f"fidelity {scores.get('matrix_fidelity')}, "
+                    f"exam {scores.get('exam_usefulness')}, "
+                    f"precision {scores.get('precision')}, "
+                    f"wording {scores.get('wording')}, "
+                    f"atomicity {scores.get('atomicity')}, "
+                    f"learning value {scores.get('learning_value')}"
+                ),
+                f"- Recommended visibility: `{pool.get('recommended_visibility')}`",
+                f"- Best use case: {pool.get('best_use_case')}",
+                "",
+                "Strengths:",
+                "",
+                *[f"- {item}" for item in _as_str_list(pool.get("strengths"))],
+                "",
+                "Weaknesses:",
+                "",
+                *[f"- {item}" for item in _as_str_list(pool.get("weaknesses"))],
+                "",
+            ]
+        )
+    lines.extend(["## Card Observations", ""])
+    for observation in _as_list(review_payload.get("card_observations")):
+        if not isinstance(observation, dict):
+            continue
+        scores = observation.get("scores") if isinstance(observation.get("scores"), dict) else {}
+        lines.extend(
+            [
+                f"### `{observation.get('card_key')}`",
+                "",
+                f"- Verdict: `{observation.get('quality_verdict')}`",
+                (
+                    "- Scores: "
+                    f"fidelity {scores.get('matrix_fidelity')}, "
+                    f"exam {scores.get('exam_usefulness')}, "
+                    f"precision {scores.get('precision')}, "
+                    f"wording {scores.get('wording')}, "
+                    f"atomicity {scores.get('atomicity')}, "
+                    f"learning value {scores.get('learning_value')}"
+                ),
+                f"- Edit needed: {observation.get('edit_needed')}",
+                f"- Safety flags: {', '.join(_as_str_list(observation.get('safety_flags'))) or 'none'}",
+                "",
+                f"Reason: {observation.get('reason')}",
+                "",
+            ]
+        )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 

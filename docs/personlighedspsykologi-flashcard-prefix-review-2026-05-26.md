@@ -46,7 +46,8 @@ Prefix counts in the sample:
 For learner-facing cards, remove pure card-type prefixes directly:
 `Begreb:`, `Metode:`, `Personbegreb:`, `Sammenligning:`, `Eksamenstrap:`,
 `Eksamensfælde:`, `Orienteringspunkt:`, `Orienteringspunkter:`, `Agency:`,
-`Historicitet:`, and `Begrænsning:`.
+`Historicitet:`, `Kritik:`, `Styrke:`, `Styrker og begrænsninger:`, and
+`Begrænsning:`.
 
 Do not blindly remove theory/topic prefixes such as `Biosociale perspektiver:`
 or context prefixes such as `Personlighedsfunktion:` when the remaining
@@ -64,6 +65,58 @@ Suggested implementation rule:
 - For term-prompt fronts such as `Begreb: Den leksikale hypotese`, deletion is
   semantically safe, but the nicer final polish is often to rewrite as a real
   question.
+
+## Full-Deck Follow-Up
+
+After the 100-card sample, the remaining 219 live cards were inspected by
+complete prefix inventory over all 319 cards. The full deck had 127 leading
+prefixes across 18 prefix types before cleanup.
+
+Implementation result:
+
+- 118 prefixes were removed safely by
+  `notebooklm_queue/personlighedspsykologi_full_notebooklm_flashcards.py`.
+- 9 prefixes were intentionally preserved because direct removal would make the
+  question underspecified.
+- The live deck still has 319 cards.
+- The coverage audit still reports 0 `missing`, 0 `weak`, and 0 high-priority
+  missing/weak units.
+
+Removed prefix counts:
+
+| Prefix | Removed |
+|---|---:|
+| `Sammenligning` | 31 |
+| `Begreb` | 20 |
+| `Eksamenstrap` | 19 |
+| `Eksamensfælde` | 9 |
+| `Metode` | 7 |
+| `Orienteringspunkt` | 6 |
+| `Personbegreb` | 5 |
+| `Begrænsning` | 4 |
+| `Styrke` | 4 |
+| `Agency` | 3 |
+| `Orienteringspunkter` | 3 |
+| `Trækpsykologi` | 3 |
+| `Historicitet` | 2 |
+| `Kritik` | 1 |
+| `Styrker og begrænsninger` | 1 |
+
+Preserved prefixes:
+
+| Prefix | Preserved | Reason |
+|---|---:|---|
+| `Biosociale perspektiver` | 3 | The prefix names the theory frame; direct deletion would make at least some questions ambiguous. |
+| `Personlighedsfunktion` | 3 | The prefix names the approach behind phrases like "denne tilgang" or generic "funktionsniveau". |
+| `Trækpsykologi` | 2 | Preserved only where the remaining question says "teorien" or "denne tradition". |
+| `Personlighedsfunktion og patologi` | 1 | The remaining question says "denne nyere tradition", so the prefix is the referent. |
+
+Implementation note: removing `Begreb:` exposed that the coverage audit was
+partly relying on the card-type word rather than conceptual Danish wording for
+critical psychology central concepts. The audit now has explicit Danish aliases
+for central concepts such as `subjectivity`/`subjektivitet`,
+`participation`/`deltagelse`, `conditions`/`betingelser`, and `everyday
+life`/`hverdagslivet`.
 
 ## Sample Review
 
@@ -169,4 +222,3 @@ Suggested implementation rule:
 | 98 | `nlm-coverage-closure-personality-functioning-and-pathology-strengths-2` | None | N/A | No leading prefix. |
 | 99 | `nlm-psychoanalysis-experience-humanism-b24f4696367de1c0` | None | N/A | No leading prefix. |
 | 100 | `nlm-measurement-development-pathology-97feedb8a23e68ee` | `Begreb` | Yes | Pure card-type label; the term remains in the question. |
-

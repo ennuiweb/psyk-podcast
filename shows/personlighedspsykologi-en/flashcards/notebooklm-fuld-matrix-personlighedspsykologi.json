@@ -6,7 +6,7 @@
   "title": "NotebookLM fuld matrix: personlighedspsykologi",
   "source_file": "notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/full-matrix-20260526-notebooklm-independent/candidates + shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.json + shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.json",
   "source_sha256": "f21e30fcde19de848d15726a5200aa180f89da69d94500b3bb26c290e4e0688e",
-  "generated_at": "2026-05-26T13:20:15Z",
+  "generated_at": "2026-05-26T15:08:22Z",
   "generator": {
     "name": "scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py",
     "version": "personlighedspsykologi-full-notebooklm-flashcards-v1",
@@ -83,7 +83,7 @@
   "cards": [
     {
       "card_id": "nlm-critical-sociocultural-narrative-9e69f4d7ed32ceb3",
-      "front_text": "Orienteringspunkt: Hvor placerer den kritiske personalisme personlighedens tyngdepunkt (essens vs. kontekst)?",
+      "front_text": "Hvor placerer den kritiske personalisme personlighedens tyngdepunkt (essens vs. kontekst)?",
       "back_html_sanitized": "<div>Den ser personen som en konkret helhed i kontekst og modstår at reducere individet til enten isolerede indre træk eller ydre variabler.</div>",
       "back_text": "Den ser personen som en konkret helhed i kontekst og modstår at reducere individet til enten isolerede indre træk eller ydre variabler.",
       "tags": [
@@ -95,11 +95,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "dc8281b590972dde8d866b512d6ab7c68b997e8f915773ff3f22bcabfa5ec29e"
+      "content_sha256": "0a6dfcf58b06d5bf1c9044971cf6957e7364adaddd408b8db366cba019e4a774"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-3f792d7523333f32",
-      "front_text": "Personbegreb: Hvordan forstår kritisk personalisme 'personen' i modsætning til variabel-baseret psykologi?",
+      "front_text": "Hvordan forstår kritisk personalisme 'personen' i modsætning til variabel-baseret psykologi?",
       "back_html_sanitized": "<div>Personen ses som en udtømmelig helhed, der ikke kan fanges fuldt ud gennem statistiske træk-abstraktioner eller test-scores.</div>",
       "back_text": "Personen ses som en udtømmelig helhed, der ikke kan fanges fuldt ud gennem statistiske træk-abstraktioner eller test-scores.",
       "tags": [
@@ -111,11 +111,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "570a4f3052a022ef5ad494cf9c48a2689e14e4c759bd92d3dbd5b1f199c7127d"
+      "content_sha256": "da48d5ef85ceeb95f11e2b760730ece0097c3df9bc4e10ba7ceb62e5fe512ce6"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c",
-      "front_text": "Begreb: Hvad indebærer 'reificering' inden for den kritiske personalisme?",
+      "front_text": "Hvad indebærer 'reificering' inden for den kritiske personalisme?",
       "back_html_sanitized": "<div>At man fejlagtigt behandler målte konstrukter eller variabler (f.eks. intelligenskvotient eller træk) som om de er virkelige, årsagsgivende ting inde i personen.</div>",
       "back_text": "At man fejlagtigt behandler målte konstrukter eller variabler (f.eks. intelligenskvotient eller træk) som om de er virkelige, årsagsgivende ting inde i personen.",
       "tags": [
@@ -127,11 +127,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "234909642c0a7fe75efa991d85d16ef72b58da9559708974f002da8087688670"
+      "content_sha256": "4e832894b706b162256207fb83e23e454ee6c375b5a2e9ee3a913b7ef0a03e0e"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4784e6316f09c3df",
-      "front_text": "Metode: Hvilken form for evidens vægter den kritiske personalisme højest?",
+      "front_text": "Hvilken form for evidens vægter den kritiske personalisme højest?",
       "back_html_sanitized": "<div>Begrebslig kritik, fortolkning på person-niveau og metodologisk refleksion over, hvordan vi konstruerer viden om mennesker.</div>",
       "back_text": "Begrebslig kritik, fortolkning på person-niveau og metodologisk refleksion over, hvordan vi konstruerer viden om mennesker.",
       "tags": [
@@ -143,11 +143,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "72b21e71eaccff371ee5ac25fe99d7ceb98e28b6454f1e9cdb6a99a47d4c0a59"
+      "content_sha256": "66ed2264c8cb4b2384d18ec6273975edeff48a9cf2a291ea0129b5dc8d6915b9"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-7ec1e57309c06fc7",
-      "front_text": "Styrke: Hvad er en af de primære teoretiske fordele ved kritisk personalisme?",
+      "front_text": "Hvad er en af de primære teoretiske fordele ved kritisk personalisme?",
       "back_html_sanitized": "<div>Den holder &#x27;hele personen&#x27; synlig i teorisammenligninger og kritiserer skarpt brugen af reificeret variabel-sprog.</div>",
       "back_text": "Den holder 'hele personen' synlig i teorisammenligninger og kritiserer skarpt brugen af reificeret variabel-sprog.",
       "tags": [
@@ -159,11 +159,11 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "af64c4e9bbda8b90701cc72a4401ce6cc00437453d5537711a1b75412bc2e278"
+      "content_sha256": "2f313d3cc2a468ef2a9c050a86c0c5231ceec75e41360b94124ab0c0bc5fe0fb"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4e855f824a869f2d",
-      "front_text": "Begrænsning: Hvorfor kan kritisk personalisme være svær at anvende direkte til eksamens-kategorisering?",
+      "front_text": "Hvorfor kan kritisk personalisme være svær at anvende direkte til eksamens-kategorisering?",
       "back_html_sanitized": "<div>Den er ofte mere metodologisk og begrebskritisk end en egentlig generativ teori, der forklarer personlighedens udvikling trin for trin.</div>",
       "back_text": "Den er ofte mere metodologisk og begrebskritisk end en egentlig generativ teori, der forklarer personlighedens udvikling trin for trin.",
       "tags": [
@@ -175,11 +175,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "edc8b5daa153ff1cbd733946fad371c4d879f71ea74b2588f722fc82a32df648"
+      "content_sha256": "5b87719ecc7ab3d6c7eadf33023620642dbf6f67a417dec389556a6ce87e5486"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-894d5e78b3e76f47",
-      "front_text": "Eksamenstrap: Er den kritiske personalisme blot 'anti-måling'?",
+      "front_text": "Er den kritiske personalisme blot 'anti-måling'?",
       "back_html_sanitized": "<div>Nej; kritikken handler primært om personbegrebets status og advarslen mod at forveksle statistiske modeller med det levende menneske.</div>",
       "back_text": "Nej; kritikken handler primært om personbegrebets status og advarslen mod at forveksle statistiske modeller med det levende menneske.",
       "tags": [
@@ -191,11 +191,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "05b9e9020fc6c5b0cc7254b742771c63b4efe9a3441445c8e660ae177b5c2547"
+      "content_sha256": "86f8e1b871b390d83bbdb1ab3c70c8f4b9bc491ea977654467fcae23d1322966"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4434e2f0d6459b3b",
-      "front_text": "Orienteringspunkt: Hvordan forklares subjektivitet i sociokulturelle og poststrukturelle tilgange?",
+      "front_text": "Hvordan forklares subjektivitet i sociokulturelle og poststrukturelle tilgange?",
       "back_html_sanitized": "<div>Som noget der produceres historisk og relationelt gennem diskurser, magtrelationer, normer og sociale praksisser.</div>",
       "back_text": "Som noget der produceres historisk og relationelt gennem diskurser, magtrelationer, normer og sociale praksisser.",
       "tags": [
@@ -207,11 +207,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "79decbd4c1ee397d231475120167f17ceb83394195d96672194753faf57aac7c"
+      "content_sha256": "ab3e7fb9ee90caa14ccd631f1285927ffd2b83e46fd9654b0b3ad6cafffa5edf"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-ada38ae766850dcd",
-      "front_text": "Personbegreb: Hvordan ser poststrukturalismen på det 'stabile indre selv'?",
+      "front_text": "Hvordan ser poststrukturalismen på det 'stabile indre selv'?",
       "back_html_sanitized": "<div>Den afviser ideen om en stabil indre essens og ser i stedet subjektet som discursivt og historisk produceret.</div>",
       "back_text": "Den afviser ideen om en stabil indre essens og ser i stedet subjektet som discursivt og historisk produceret.",
       "tags": [
@@ -223,11 +223,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "3e283d888bdd979fd7a89d89fdb882ba133f1c6d230dfd8157cfb1dad5221ca0"
+      "content_sha256": "748e8e0078340b4fd4afb499c6d1bc0eac0dc6fc6c8633fc99bdbc59a56a2087"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-      "front_text": "Begreb: Hvad betyder 'subjektivering' (subjectivation) i en poststrukturel kontekst?",
+      "front_text": "Hvad betyder 'subjektivering' (subjectivation) i en poststrukturel kontekst?",
       "back_html_sanitized": "<div>Processen hvorved individet formes af og indtager bestemte positioner inden for sproglige og magtmæssige rammer.</div>",
       "back_text": "Processen hvorved individet formes af og indtager bestemte positioner inden for sproglige og magtmæssige rammer.",
       "tags": [
@@ -239,11 +239,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "51dc3b9a4709a77578d6029ac3f466c2dccec2862d386f38d7495a8d1925155f"
+      "content_sha256": "a192bafbf5af2ab478413135312f5dc813b59a7bf16aa5c48f52c38c91b720c1"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-7451f07b5e3fb472",
-      "front_text": "Metode: Hvilke analyseredskaber foretrækker sociokulturelle og poststrukturelle tilgange?",
+      "front_text": "Hvilke analyseredskaber foretrækker sociokulturelle og poststrukturelle tilgange?",
       "back_html_sanitized": "<div>Diskursanalyse, genealogisk analyse, feministisk kritik og undersøgelser af, hvordan kategoriseringer skaber bestemte mennesketyper.</div>",
       "back_text": "Diskursanalyse, genealogisk analyse, feministisk kritik og undersøgelser af, hvordan kategoriseringer skaber bestemte mennesketyper.",
       "tags": [
@@ -255,11 +255,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "c9524458fde53b33daaadc9cfb919a59fa5ef872c34bc3d04ffa72a5c5a07330"
+      "content_sha256": "fdc590068e013992f0ef933ab1eb02517b675d3338532238b7e329c88ef9f3fd"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-c36ca76e31a950a3",
-      "front_text": "Agency: Hvor findes handlekraft (agency) i en poststrukturel model, hvis subjektet er 'decentreret'?",
+      "front_text": "Hvor findes handlekraft (agency) i en poststrukturel model, hvis subjektet er 'decentreret'?",
       "back_html_sanitized": "<div>Agency opstår i måden, subjekter indtager, modstår eller omformulerer de tilgængelige positioner og diskurser på.</div>",
       "back_text": "Agency opstår i måden, subjekter indtager, modstår eller omformulerer de tilgængelige positioner og diskurser på.",
       "tags": [
@@ -272,11 +272,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "dc594600ee1a770358e9fdb827d61495ca952c70e809353a50f3dafbeb97776a"
+      "content_sha256": "7188bbfea492e9ae17976d73ea862631670eb3d0ddf38ed80c0f9b0dc1c094dc"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4d14e09dd980df24",
-      "front_text": "Historicitet: Hvad er fokus for en 'genealogisk' tilgang til personlighed?",
+      "front_text": "Hvad er fokus for en 'genealogisk' tilgang til personlighed?",
       "back_html_sanitized": "<div>At undersøge de historiske rødder for de kategorier, normer og vidensformer, der i dag definerer, hvad det vil sige at være en person.</div>",
       "back_text": "At undersøge de historiske rødder for de kategorier, normer og vidensformer, der i dag definerer, hvad det vil sige at være en person.",
       "tags": [
@@ -288,11 +288,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "f9b992f32dbe86d5d6747320a64145aefd0bcb0375215b792c3e30d184a614db"
+      "content_sha256": "4a8b156381820bd4b65b81fdf684113df17b201caa76fa88b41ae88cba2e5997"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-dee464ce1a5af44e",
-      "front_text": "Styrke: Hvad gør sociokulturelle tilgange særligt gode til at analysere?",
+      "front_text": "Hvad gør sociokulturelle tilgange særligt gode til at analysere?",
       "back_html_sanitized": "<div>Hvordan sprog, køn og magt gør specifikke måder at være person på tilgængelige eller naturlige i en given tid.</div>",
       "back_text": "Hvordan sprog, køn og magt gør specifikke måder at være person på tilgængelige eller naturlige i en given tid.",
       "tags": [
@@ -304,11 +304,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "7cf26e9e55de47d5d276d585dce095dd4f404d32d01fd76b9658186bfc503536"
+      "content_sha256": "48c2a68575ea5c5ecd267bc62fadcdb7797e96474c50a7babc7af26aaf41b9e2"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-513a54d9f6496187",
-      "front_text": "Begrænsning: Hvad overses ofte i rent poststrukturelle analyser af subjektivitet?",
+      "front_text": "Hvad overses ofte i rent poststrukturelle analyser af subjektivitet?",
       "back_html_sanitized": "<div>Personlig kontinuitet over tid, kropslig materialitet og individuel lidelse kan blive sværere at forklare, hvis alt ses som diskurs.</div>",
       "back_text": "Personlig kontinuitet over tid, kropslig materialitet og individuel lidelse kan blive sværere at forklare, hvis alt ses som diskurs.",
       "tags": [
@@ -320,11 +320,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "f66a25e60444b024ca939e385ec8bf75558291222db609e418b6a070f3e2e817"
+      "content_sha256": "53926b77c2b6cf9a0d12ae1fe13e30cfaa78576a3ef7f8a9b1809b8f7b264830"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-34bd488a69cea43d",
-      "front_text": "Eksamenstrap: Betyder poststrukturalistisk 'anti-essentialisme', at personen ikke er virkelig?",
+      "front_text": "Betyder poststrukturalistisk 'anti-essentialisme', at personen ikke er virkelig?",
       "back_html_sanitized": "<div>Nej; det betyder, at personkategorier er socialt og historisk producerede, ikke at menneskelig erfaring eller lidelse er fiktiv.</div>",
       "back_text": "Nej; det betyder, at personkategorier er socialt og historisk producerede, ikke at menneskelig erfaring eller lidelse er fiktiv.",
       "tags": [
@@ -336,11 +336,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "0b871bb3daa184dc14aaebb5bd2d4af4e0be8df6b4c5affd3f92f9f50a1224d2"
+      "content_sha256": "86fa8be9029ea6466916567de9cc289ca0e28a01aacec4a5756cbae9456c033b"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-d214adf8a3196c74",
-      "front_text": "Begreb: Forklar 'looping effect' (Hacking) i relation til personlighedskategorier.",
+      "front_text": "Forklar 'looping effect' (Hacking) i relation til personlighedskategorier.",
       "back_html_sanitized": "<div>Det fænomen, at de kategorier vi bruger til at beskrive mennesker, ændrer de mennesker, som derefter reagerer på og ændrer kategorien.</div>",
       "back_text": "Det fænomen, at de kategorier vi bruger til at beskrive mennesker, ændrer de mennesker, som derefter reagerer på og ændrer kategorien.",
       "tags": [
@@ -352,11 +352,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "bf0019132100a8a824eed45f911016c0776f8cce6aabc00bf8bec859e31eefe5"
+      "content_sha256": "7fc95783b841433d28e70800b2c189650af906e143b118e41927d836da26f119"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-387d3398b78fc2f9",
-      "front_text": "Orienteringspunkt: Hvor placerer kritisk psykologi subjektivitetens kilde?",
+      "front_text": "Hvor placerer kritisk psykologi subjektivitetens kilde?",
       "back_html_sanitized": "<div>I deltagelse i sociale praksisser og historisk udviklede livsbetingelser snarere end i en isoleret indre kerne.</div>",
       "back_text": "I deltagelse i sociale praksisser og historisk udviklede livsbetingelser snarere end i en isoleret indre kerne.",
       "tags": [
@@ -368,11 +368,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "591e588127a1ca9c2e7da94b5e12ee9e26cd756c4421bb6bc8a630f4cf832e60"
+      "content_sha256": "351c2f06fcfa4ef83267631300f70f56ff025a56c26c1c19496bf67e3a84a5e4"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-404ca67b9664642c",
-      "front_text": "Personbegreb: Hvordan defineres personen i kritisk psykologi?",
+      "front_text": "Hvordan defineres personen i kritisk psykologi?",
       "back_html_sanitized": "<div>Som en deltager i social praksis, hvis handlemuligheder formes af konkrete historiske og samfundsmæssige betingelser.</div>",
       "back_text": "Som en deltager i social praksis, hvis handlemuligheder formes af konkrete historiske og samfundsmæssige betingelser.",
       "tags": [
@@ -384,11 +384,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "8caf316dd1e904200631a6596ddb36a8a4b2b7ddb757e9313c74a7c195c41326"
+      "content_sha256": "d73dc1e9ea0484fcc69f398e7052d04b801dcb9426f180870df0d0142d0dd253"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-77246e75ea0bf12e",
-      "front_text": "Begreb: Hvad forstår kritisk psykologi ved 'subjektivitet'?",
+      "front_text": "Hvad forstår kritisk psykologi ved 'subjektivitet'?",
       "back_html_sanitized": "<div>En praktisk relation mellem personen, hverdagslivets førelse, sociale konflikter og samfundsmæssige arrangementer.</div>",
       "back_text": "En praktisk relation mellem personen, hverdagslivets førelse, sociale konflikter og samfundsmæssige arrangementer.",
       "tags": [
@@ -400,11 +400,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "53a810eba41b1299dbd9b4d7c2360aee3ec78f3b13a02d2f591c8731165b0438"
+      "content_sha256": "621db04e3bb2b8fb2a2c23bffc468fe6d1c44ca30f95425c5d4d975b8c9a9a29"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-93a975f4b37d4c78",
-      "front_text": "Agency: Hvad kendetegner 'handlepotentiale' (action possibilities) i kritisk psykologi?",
+      "front_text": "Hvad kendetegner 'handlepotentiale' (action possibilities) i kritisk psykologi?",
       "back_html_sanitized": "<div>Subjektets muligheder for at handle inden for, reproducere eller transformere sine givne livsbetingelser, ofte sammen med andre.</div>",
       "back_text": "Subjektets muligheder for at handle inden for, reproducere eller transformere sine givne livsbetingelser, ofte sammen med andre.",
       "tags": [
@@ -417,11 +417,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "3c3cda2f50c5cb7acd60ceb2368401ed23aa3cf7aa690009e8968e5ebfff559e"
+      "content_sha256": "7fe594b3891a42463839a1d64c2c7a448a996438a78f92dd58fd51ac4fb33ee4"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-a972a3a6a707ecb8",
-      "front_text": "Metode: Hvilken form for forskning kendetegner kritisk psykologi?",
+      "front_text": "Hvilken form for forskning kendetegner kritisk psykologi?",
       "back_html_sanitized": "<div>Praksisforskning, kritisk analyse af hverdagslivet og historisk-materiel refleksion over subjektivitet.</div>",
       "back_text": "Praksisforskning, kritisk analyse af hverdagslivet og historisk-materiel refleksion over subjektivitet.",
       "tags": [
@@ -433,11 +433,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "44385d2df49bf9ed9884697fea8e1a819e786c2865edc37aa09fdc76aca7e255"
+      "content_sha256": "5566085027d4803d9acf3808d9712114a67cdf2d891157f353eddc66a2ad3b74"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-bf8e271ca3b588bd",
-      "front_text": "Styrke: Hvad er den største fordel ved kritisk psykologis tilgang til personlighed?",
+      "front_text": "Hvad er den største fordel ved kritisk psykologis tilgang til personlighed?",
       "back_html_sanitized": "<div>Den forbinder personlige vanskeligheder direkte med sociale betingelser og giver et rigt sprog for situeret handlekraft.</div>",
       "back_text": "Den forbinder personlige vanskeligheder direkte med sociale betingelser og giver et rigt sprog for situeret handlekraft.",
       "tags": [
@@ -449,11 +449,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "7c5d8118a246703f63427299aff14b18fe56043d5f7a126d49e4a2d66ccf96e6"
+      "content_sha256": "b7f32818daf86a36fa25efb2ebb6c319d7df2345be194bd307c9ff40afd3978f"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-ddce5ba02404a9b4",
-      "front_text": "Begrænsning: Hvilke dimensioner af menneskelivet risikerer kritisk psykologi at underprioritere?",
+      "front_text": "Hvilke dimensioner af menneskelivet risikerer kritisk psykologi at underprioritere?",
       "back_html_sanitized": "<div>Biologiske faktorer og de mere ubevidste, intrapsykiske dimensioner af personligheden.</div>",
       "back_text": "Biologiske faktorer og de mere ubevidste, intrapsykiske dimensioner af personligheden.",
       "tags": [
@@ -465,11 +465,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "bde6ee4a8e6dfd2823819913fd94eae6db93ac3e76d6260eacf175d3a44d68f0"
+      "content_sha256": "0f880bfed78263b6dbe235917e54be380ed04a738e5ed4bdb566a105a2dcb9e3"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-3ff82ff7f7cc0795",
-      "front_text": "Eksamenstrap: Udelukker sociale betingelser individuel handlekraft (agency) i kritisk psykologi?",
+      "front_text": "Udelukker sociale betingelser individuel handlekraft (agency) i kritisk psykologi?",
       "back_html_sanitized": "<div>Nej; betingelserne sætter rammen, men subjekter agerer aktivt inden for og kan ændre disse rammer gennem deltagelse.</div>",
       "back_text": "Nej; betingelserne sætter rammen, men subjekter agerer aktivt inden for og kan ændre disse rammer gennem deltagelse.",
       "tags": [
@@ -482,11 +482,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "dba5641ce241ea39238cae2a1729a33279182b3f0acb0a1197a06307928858b0"
+      "content_sha256": "9688ffdd91b7b854c324f6e0800c5590a3501b3e74f063b0c96cdfd8d6d3ff00"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-ea7365c1fd56f7ba",
-      "front_text": "Orienteringspunkt: Hvordan skaber narrativ psykologi sammenhæng i personligheden?",
+      "front_text": "Hvordan skaber narrativ psykologi sammenhæng i personligheden?",
       "back_html_sanitized": "<div>Gennem fortælling og mening; identitet ses som en livshistorie, der binder fortid, nutid og fremtid sammen.</div>",
       "back_text": "Gennem fortælling og mening; identitet ses som en livshistorie, der binder fortid, nutid og fremtid sammen.",
       "tags": [
@@ -498,11 +498,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "74268bcfb4512fb350bb1287ad4c228472aac2e8299cfd339dd7f2fc5c4d94bb"
+      "content_sha256": "3432c5d3d6f8a3f2e123ac819b41ff29a751d3e8d3f05e6e4331d98220b2064e"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-d21344de4dfff01e",
-      "front_text": "Personbegreb: Hvordan defineres 'personen' inden for narrativ psykologi?",
+      "front_text": "Hvordan defineres 'personen' inden for narrativ psykologi?",
       "back_html_sanitized": "<div>Som en historiefortæller og kulturelt situeret fortolker, hvis identitet er organiseret som et narrativ.</div>",
       "back_text": "Som en historiefortæller og kulturelt situeret fortolker, hvis identitet er organiseret som et narrativ.",
       "tags": [
@@ -514,11 +514,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "4fd4dde4e250260f3db66a4710d8f0991277dfd535c7a061c4a2612fe6b9e531"
+      "content_sha256": "ac84192d3b6a3832a92d788dd36af738d15a4dfb92d3663325ed1c1a34abbecf"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-29d64d996f6e90c7",
-      "front_text": "Agency: Hvad er 'narrativ agency'?",
+      "front_text": "Hvad er 'narrativ agency'?",
       "back_html_sanitized": "<div>Evnen til at fortælle, revidere og positionere si g selv i historier, selvom man ikke selv har valgt alt det råmateriale, livet byder på.</div>",
       "back_text": "Evnen til at fortælle, revidere og positionere si g selv i historier, selvom man ikke selv har valgt alt det råmateriale, livet byder på.",
       "tags": [
@@ -532,11 +532,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "da78c960e5611a232aba603afedd0f93c351a57f243c4600bd15a87c7a2526bf"
+      "content_sha256": "c38af3c8d4b91ec9a304d1ead46ae2da9cd567f2f9caf0c807479027105392af"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-87ed234e40a7abcf",
-      "front_text": "Historicitet: Hvorfor er ontogenese (individuel udvikling) central for narrativ psykologi?",
+      "front_text": "Hvorfor er ontogenese (individuel udvikling) central for narrativ psykologi?",
       "back_html_sanitized": "<div>Fordi personligheden forstås gennem den personlige livshistorie, som den udfolder sig over tid.</div>",
       "back_text": "Fordi personligheden forstås gennem den personlige livshistorie, som den udfolder sig over tid.",
       "tags": [
@@ -548,11 +548,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "fc5c431c704fd772dace661a6ec95d9923502fb0d4be9c8dd5f4f05f14964548"
+      "content_sha256": "1247545cc4dc1236fbe64bcd06e204fdda7c17bec2e028a8de82e6c4913ed531"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-63edf5928d93e76b",
-      "front_text": "Metode: Hvordan indsamler en narrativ psykolog typisk data?",
+      "front_text": "Hvordan indsamler en narrativ psykolog typisk data?",
       "back_html_sanitized": "<div>Gennem narrativ analyse af livshistorie-interviews og fortolkning af, hvordan individer skaber mening i deres selv-fortællinger.</div>",
       "back_text": "Gennem narrativ analyse af livshistorie-interviews og fortolkning af, hvordan individer skaber mening i deres selv-fortællinger.",
       "tags": [
@@ -564,11 +564,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "884e36a824f8f942fd838c304e9ac0226d890c5b48cb7641b9bd3f9311cb3590"
+      "content_sha256": "4abe46dc05c38930ca5640a325e77547f952599f4a415b24303a7274423a85ae"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
-      "front_text": "Styrke: Hvad er en fordel ved narrativ teori sammenlignet med træk-teori?",
+      "front_text": "Hvad er en fordel ved narrativ teori sammenlignet med træk-teori?",
       "back_html_sanitized": "<div>Den forklarer kontinuitet og forandring gennem mening frem for blot at måle statiske dimensioner.</div>",
       "back_text": "Den forklarer kontinuitet og forandring gennem mening frem for blot at måle statiske dimensioner.",
       "tags": [
@@ -580,11 +580,11 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "f5656ff468e1df0201accf3f4448bb0addc1f009638ee469b04605f82873670a"
+      "content_sha256": "588f4dd72cea680e4199ab148f378fc3e5dd2708e389b06fe1bda0c8c3c45804"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-e9134b75fda0273f",
-      "front_text": "Begrænsning: Hvad kritiseres narrativ psykologi for i forhold til livets kompleksitet?",
+      "front_text": "Hvad kritiseres narrativ psykologi for i forhold til livets kompleksitet?",
       "back_html_sanitized": "<div>Den kan overbetone sammenhæng og koherens i tilfælde, hvor menneskers liv er præget af fragmentering eller uopløselige konflikter.</div>",
       "back_text": "Den kan overbetone sammenhæng og koherens i tilfælde, hvor menneskers liv er præget af fragmentering eller uopløselige konflikter.",
       "tags": [
@@ -596,11 +596,11 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "e1bf317d6a6e4c4e0896285bfc843656620648f6ee35c2cb475e620ab7b3f5da"
+      "content_sha256": "b7ba8c2a8919dae2c1dd28d60fe7c9339fdfd9743c187d16e2c12839cca84bd6"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-11ca7d6a363b4b5c",
-      "front_text": "Eksamenstrap: Er narrativ identitet blot 'fiktion' eller 'pynt'?",
+      "front_text": "Er narrativ identitet blot 'fiktion' eller 'pynt'?",
       "back_html_sanitized": "<div>Nej; det er den fundamentale måde, mennesket organiserer sin identitet og gør sine handlinger forståelige for sig selv og andre.</div>",
       "back_text": "Nej; det er den fundamentale måde, mennesket organiserer sin identitet og gør sine handlinger forståelige for sig selv og andre.",
       "tags": [
@@ -612,11 +612,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "7326277609e548032bed208aeb43567368d79f282cccde975a87acdfb461beb4"
+      "content_sha256": "91a9711bc20c286fbf486d18b6eb93b825fb4bd3b021c0c80b152403c9240a66"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-bb14b2e6ac778b9a",
-      "front_text": "Sammenligning: Hvordan adskiller narrativ psykologi sig fra trækpsykologi ifølge matrixen?",
+      "front_text": "Hvordan adskiller narrativ psykologi sig fra trækpsykologi ifølge matrixen?",
       "back_html_sanitized": "<div>Trækpsykologi beskriver stabile dimensioner; narrativ psykologi forklarer, hvordan personen skaber mening over tid gennem en livshistorie.</div>",
       "back_text": "Trækpsykologi beskriver stabile dimensioner; narrativ psykologi forklarer, hvordan personen skaber mening over tid gennem en livshistorie.",
       "tags": [
@@ -629,11 +629,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "d303c1a8cb40c4f266018babaaefbfabcafeb4ebaf70d49da15b637bf2a5f52c"
+      "content_sha256": "c74e5d1a139eda2860675381f49079e9e803ecc3b739903e85baf41917e540c6"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4835a7872e8f89c5",
-      "front_text": "Sammenligning: Hvordan adskiller kritisk psykologi sig fra poststrukturalisme mht. subjektivitet?",
+      "front_text": "Hvordan adskiller kritisk psykologi sig fra poststrukturalisme mht. subjektivitet?",
       "back_html_sanitized": "<div>Kritisk psykologi vægter praktisk deltagelse og handlemuligheder, mens poststrukturalismen fokuserer mere på diskurs og magt.</div>",
       "back_text": "Kritisk psykologi vægter praktisk deltagelse og handlemuligheder, mens poststrukturalismen fokuserer mere på diskurs og magt.",
       "tags": [
@@ -646,11 +646,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "8751105940b3748ec3e880d99155da4a1358c0ae9f3b5e8d284474ba75dd49d5"
+      "content_sha256": "599807c02a2cee4fc0abefeba00932b267c7e7588d04e5d72a119ea6d05b0375"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-c307034512d48da5",
-      "front_text": "Sammenligning: Hvad er forholdet mellem kritisk personalisme og kritisk psykologi?",
+      "front_text": "Hvad er forholdet mellem kritisk personalisme og kritisk psykologi?",
       "back_html_sanitized": "<div>Begge modstår individualiserende reduktion, men den kritiske psykologi udvikler en mere omfattende model for social praksis.</div>",
       "back_text": "Begge modstår individualiserende reduktion, men den kritiske psykologi udvikler en mere omfattende model for social praksis.",
       "tags": [
@@ -663,11 +663,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "c912dc996812150e2832fd10692f2b56a039b03b49c9ad9b62c3e1082aa325de"
+      "content_sha256": "efed8f52a693fb7fae30fce2fc2bada03406ea44fdbb49d6cd9854aafbdd7a1b"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-45bbd12e5acd9e9c",
-      "front_text": "Sammenligning: Hvordan kritiserer kritisk psykologi den humanistiske psykologi?",
+      "front_text": "Hvordan kritiserer kritisk psykologi den humanistiske psykologi?",
       "back_html_sanitized": "<div>Den spørger, om sproget om &#x27;selvrealisering&#x27; skjuler de faktiske sociale betingelser og kollektive konflikter, individet står i.</div>",
       "back_text": "Den spørger, om sproget om 'selvrealisering' skjuler de faktiske sociale betingelser og kollektive konflikter, individet står i.",
       "tags": [
@@ -680,11 +680,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "e71ce6d48c11167b6a22bb273b935ea3a7e5ea360165c13edef011c54dc410b7"
+      "content_sha256": "00eca2d7bbb4be5ae2bc62ae6d33a7cd9d8534c198f23a75bd14f013b2ef11ac"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-e2b395a19dae0af8",
-      "front_text": "Sammenligning: Hvordan adskiller narrativ psykologi sig fra fænomenologi?",
+      "front_text": "Hvordan adskiller narrativ psykologi sig fra fænomenologi?",
       "back_html_sanitized": "<div>Begge fokuserer på mening, men fænomenologien ser på den umiddelbare levede erfaring, mens narrativ psykologi ser på den fortalte livshistorie.</div>",
       "back_text": "Begge fokuserer på mening, men fænomenologien ser på den umiddelbare levede erfaring, mens narrativ psykologi ser på den fortalte livshistorie.",
       "tags": [
@@ -697,11 +697,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "94e319e39c9541e23985325a0bcdb51b54051e7b3b78766f987708d7d1a85c02"
+      "content_sha256": "3146525e69687f1687a63d27c5fc02a1ef32588122b3100c47dbfe6b6fb7b705"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-d227b5a3243ee875",
-      "front_text": "Sammenligning: Hvordan udfordrer sociokulturelle tilgange den biosociale personlighedspsykologi?",
+      "front_text": "Hvordan udfordrer sociokulturelle tilgange den biosociale personlighedspsykologi?",
       "back_html_sanitized": "<div>De flytter forklaringsvægten fra biologiske mekanismer til historisk producerede diskurser, normer og magtstrukturer.</div>",
       "back_text": "De flytter forklaringsvægten fra biologiske mekanismer til historisk producerede diskurser, normer og magtstrukturer.",
       "tags": [
@@ -713,11 +713,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "399e20ad82e2d9b7ae4a2d559508493ad6caa0d22e8a8c901bd6e779d9b934b4"
+      "content_sha256": "327fbd618165aa78934ce18e0f43e9092f417bcd439a0012318cb332c386c430"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4fe38fef78b8a505",
-      "front_text": "Sammenligning: Hvordan adskiller kritisk psykologi sig fra eksistentiel psykologi?",
+      "front_text": "Hvordan adskiller kritisk psykologi sig fra eksistentiel psykologi?",
       "back_html_sanitized": "<div>Kritisk psykologi flytter fokus fra &#x27;eksistentielle grundvilkår&#x27; til historisk foranderlige sociale praksisser og livsbetingelser.</div>",
       "back_text": "Kritisk psykologi flytter fokus fra 'eksistentielle grundvilkår' til historisk foranderlige sociale praksisser og livsbetingelser.",
       "tags": [
@@ -730,11 +730,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "0b1e10c358d0138b9bb070c33efd868f31aaba518439f5dca5487c679712eb24"
+      "content_sha256": "efb396674f240b3ee7cf0a700c44770a8258a00f3cc8cd20a4dd51776441dee5"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-cb2faadf37a3a483",
-      "front_text": "Sammenligning: Hvordan redefinerer narrativ psykologi den psykoanalytiske interesse for skjulte konflikter?",
+      "front_text": "Hvordan redefinerer narrativ psykologi den psykoanalytiske interesse for skjulte konflikter?",
       "back_html_sanitized": "<div>Ved at forstå dem som dialogiske og fortolkningsmæssige selv-historier, der kan omskrives i en narrativ proces.</div>",
       "back_text": "Ved at forstå dem som dialogiske og fortolkningsmæssige selv-historier, der kan omskrives i en narrativ proces.",
       "tags": [
@@ -747,11 +747,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "413ad3f2584a983acbf57c484ba72d788a270d433070d880bab3ee16bce76ba7"
+      "content_sha256": "3df622992e6192de1210a6c28f3522d596f045cd37c408132521a477a44f9e74"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-301d635fa29f2786",
-      "front_text": "Sammenligning: Hvilken fællesnævner har poststrukturalisme og psykoanalyse ifølge matrixen?",
+      "front_text": "Hvilken fællesnævner har poststrukturalisme og psykoanalyse ifølge matrixen?",
       "back_html_sanitized": "<div>Begge &#x27;decenterer&#x27; det autonome subjekt, men de finder årsagen forskellige steder (hhv. i diskurs/magt vs. det ubevidste).</div>",
       "back_text": "Begge 'decenterer' det autonome subjekt, men de finder årsagen forskellige steder (hhv. i diskurs/magt vs. det ubevidste).",
       "tags": [
@@ -764,11 +764,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "f2add9dfd608d5999f6448281335240e121c442cf108c3eb7455bc7dcedc5c01"
+      "content_sha256": "684a1786c80ea78e1c04494781208d447bc902716c76da46600572c33d939338"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-3ec7d650ee4cc2fa",
-      "front_text": "Eksamenstrap: Er narrativ psykologi det samme som poststrukturel diskursteori?",
+      "front_text": "Er narrativ psykologi det samme som poststrukturel diskursteori?",
       "back_html_sanitized": "<div>Nej; selvom begge bruger sprog, er narrativ psykologi mere fokuseret på identitetskontinuitet og den sammenhængende livshistorie.</div>",
       "back_text": "Nej; selvom begge bruger sprog, er narrativ psykologi mere fokuseret på identitetskontinuitet og den sammenhængende livshistorie.",
       "tags": [
@@ -781,11 +781,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "5da33ea90f3da3bcadfe00f445dd3259057662d5d0a3f6fb225e0cef4795830d"
+      "content_sha256": "60905c64f1979dbb0fd0a8125a8dda13f72a1aef7ed144c66329dd05ef0a4fa3"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-      "front_text": "Begreb: Hvad er 'expansive agency' (ekspansivt handlepotentiale) i kritisk psykologi?",
+      "front_text": "Hvad er 'expansive agency' (ekspansivt handlepotentiale) i kritisk psykologi?",
       "back_html_sanitized": "<div>Når individet gennem kollektiv deltagelse vinder mere kontrol over de betingelser, der bestemmer deres livsførelse.</div>",
       "back_text": "Når individet gennem kollektiv deltagelse vinder mere kontrol over de betingelser, der bestemmer deres livsførelse.",
       "tags": [
@@ -798,11 +798,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "6aca18517ade5b441a690a7c3d03009051bdfb93b90a7ebf3e3cce93a01f656f"
+      "content_sha256": "d846a435b33c60d97819d79bb7883d6b090b1cf6c5aec98524ac4c5d83ddfd0c"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-cc08cecb43902c7a",
-      "front_text": "Orienteringspunkt: Hvorfor er sociogenese vigtig for sociokulturelle tilgange?",
+      "front_text": "Hvorfor er sociogenese vigtig for sociokulturelle tilgange?",
       "back_html_sanitized": "<div>Fordi personligheden ses som et produkt af samfundsmæssige processer og den historiske udvikling af kulturelle kategorier.</div>",
       "back_text": "Fordi personligheden ses som et produkt af samfundsmæssige processer og den historiske udvikling af kulturelle kategorier.",
       "tags": [
@@ -814,11 +814,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "6a03c8cb1604dfa85f28ea2f5d380c90f3e23ebed104f48d8faf17817fbc0d83"
+      "content_sha256": "592dd0afcea383425ff71e829e704ac721ed7dffeb54aaa102d98e089a8d75cc"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-6b022e82e526db79",
-      "front_text": "Sammenligning: Hvilken tilgang i matrixen repræsenterer den stærkeste 'anti-essentialisme'?",
+      "front_text": "Hvilken tilgang i matrixen repræsenterer den stærkeste 'anti-essentialisme'?",
       "back_html_sanitized": "<div>De sociokulturelle og poststrukturelle tilgange, da de ser subjektivitet som fuldstændigt relationelt og historisk produceret.</div>",
       "back_text": "De sociokulturelle og poststrukturelle tilgange, da de ser subjektivitet som fuldstændigt relationelt og historisk produceret.",
       "tags": [
@@ -830,11 +830,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "eda1b543873f9e0937598c78c80334ef1f2756cf6a854fda83c7b9a62497bec6"
+      "content_sha256": "f6b3da06dc727588051d031d016b28b22b7f53b4bbbaf367f20e677bc2ff1805"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-87fd0d7329f17199",
-      "front_text": "Eksamenstrap: Er kritisk psykologi blot og politisk holdning?",
+      "front_text": "Er kritisk psykologi blot og politisk holdning?",
       "back_html_sanitized": "<div>Nej; det er en videnskabelig teori om subjektivitet, der analyserer forholdet mellem menneskelig praksis og sociale betingelser.</div>",
       "back_text": "Nej; det er en videnskabelig teori om subjektivitet, der analyserer forholdet mellem menneskelig praksis og sociale betingelser.",
       "tags": [
@@ -846,11 +846,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "e754fec423ad1fa66b5ca468057a55c85ec937f088f2415c4ebf02de3609f58a"
+      "content_sha256": "db7e58e51e17222410d7f1f33943c5082e63df6e4ffbf775c2bfe2ec9ff31fcd"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-d911a1fd4317362d",
-      "front_text": "Personbegreb: Hvordan forstår narrativ psykologi forholdet mellem stabilitet og forandring?",
+      "front_text": "Hvordan forstår narrativ psykologi forholdet mellem stabilitet og forandring?",
       "back_html_sanitized": "<div>Stabilitet findes i historiens koherens over tid, mens forandring sker, når man skaber nye &#x27;alternative historier&#x27; om sig selv.</div>",
       "back_text": "Stabilitet findes i historiens koherens over tid, mens forandring sker, når man skaber nye 'alternative historier' om sig selv.",
       "tags": [
@@ -862,11 +862,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "998f7f87a20959c5e37f40d6703d46bfd2b9edea6ee73e28df02fc1c76fe285e"
+      "content_sha256": "edb83256e1035fb47fd592f2835a3084d811407a98b2e95263fbf4326222de16"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-017069a46ce9d177",
-      "front_text": "Metode: Hvad indebærer 'metodologisk refleksion' i kritisk personalisme?",
+      "front_text": "Hvad indebærer 'metodologisk refleksion' i kritisk personalisme?",
       "back_html_sanitized": "<div>At man kritisk overvejer, hvordan valget af målemetoder (f.eks. spørgeskemaer) påvirker og begrænser vores forståelse af personen.</div>",
       "back_text": "At man kritisk overvejer, hvordan valget af målemetoder (f.eks. spørgeskemaer) påvirker og begrænser vores forståelse af personen.",
       "tags": [
@@ -879,11 +879,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "ec043d34d867ff6bc8381448ce07582bc50d703e44d3b3b7e98004401ac924bd"
+      "content_sha256": "21a060c8b6c092d9743a9376a4d7098920dd768d5d8c2fac22070d29fc9dc71d"
     },
     {
       "card_id": "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
-      "front_text": "Begreb: Hvad er 'kulturelle fortællinger' (cultural narratives) i narrativ psykologi?",
+      "front_text": "Hvad er 'kulturelle fortællinger' (cultural narratives) i narrativ psykologi?",
       "back_html_sanitized": "<div>De fælles skabeloner og historier i en kultur, som vi trækker på, når we skal gøre vores eget liv forståeligt.</div>",
       "back_text": "De fælles skabeloner og historier i en kultur, som vi trækker på, når we skal gøre vores eget liv forståeligt.",
       "tags": [
@@ -895,7 +895,7 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "fdfe2f3c26ccea697f366ef5a95188182962c9b3b4b3efbe01246568ec60a991"
+      "content_sha256": "2f0c6ec46e921c9c9ed8845c2f392886f6a6cbd22ff2a80de4a9cc01f572ac88"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-9f99e0f81b4c08e6",
@@ -931,7 +931,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-9fd68fc0af858899",
-      "front_text": "Sammenligning: Hvordan adskiller narrativ psykologi sig fra trækpsykologi i forhold til personlighedens kontinuitet?",
+      "front_text": "Hvordan adskiller narrativ psykologi sig fra trækpsykologi i forhold til personlighedens kontinuitet?",
       "back_html_sanitized": "<div>Trækpsykologi forklarer kontinuitet gennem stabile adfærdsdispositioner, mens narrativ psykologi ser det som en skabt mening gennem livshistorien.</div>",
       "back_text": "Trækpsykologi forklarer kontinuitet gennem stabile adfærdsdispositioner, mens narrativ psykologi ser det som en skabt mening gennem livshistorien.",
       "tags": [
@@ -944,7 +944,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "2b55e068262c1b0d28c148323210a389645bc0d515ec4fd9ca2c7738dc2290ae"
+      "content_sha256": "da95c04fe054f48f31d2a09c365619d09beb4bc9deea6015191196194eed6d1a"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-bb1a8430c424f3b1",
@@ -1013,7 +1013,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-16979a443b00c6f8",
-      "front_text": "Sammenligning: Hvad er den væsentligste forskel på 'agency' i eksistentiel vs. kritisk psykologi?",
+      "front_text": "Hvad er den væsentligste forskel på 'agency' i eksistentiel vs. kritisk psykologi?",
       "back_html_sanitized": "<div>Eksistentiel psykologi fokuserer på individuelt valg og ansvar, mens kritisk psykologi ser agency som situeret i social praksis og kollektive handlemuligheder.</div>",
       "back_text": "Eksistentiel psykologi fokuserer på individuelt valg og ansvar, mens kritisk psykologi ser agency som situeret i social praksis og kollektive handlemuligheder.",
       "tags": [
@@ -1027,7 +1027,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "243d6e3cf28e90718832e0d057e51c765caa9dc0906fe25aa62d16c45f4274fb"
+      "content_sha256": "20f0c98f98faf70f37e8a3c611c064e53e08659fb8308c3375c129d98bc5f072"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-e8f0683fc8da1a45",
@@ -1047,7 +1047,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-6deda0893612a330",
-      "front_text": "Eksamensfælde: Er 'agency' i kritisk psykologi det samme som suveræn selvbestemmelse?",
+      "front_text": "Er 'agency' i kritisk psykologi det samme som suveræn selvbestemmelse?",
       "back_html_sanitized": "<div>Nej, agency er i kritisk psykologi altid situeret og begrænset af historiske og sociale betingelser, men giver mulighed for deltagelse og forandring.</div>",
       "back_text": "Nej, agency er i kritisk psykologi altid situeret og begrænset af historiske og sociale betingelser, men giver mulighed for deltagelse og forandring.",
       "tags": [
@@ -1060,11 +1060,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "80401601148c0414b404efadbf893f86e73273b9266292aca61f5599cc933879"
+      "content_sha256": "7d266396b42518790a6a090ffbed862819da064aaa18bebe5278398fa6013f83"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-907f45ba9e513c68",
-      "front_text": "Begreb: Den leksikale hypotese (lexical hypothesis)",
+      "front_text": "Den leksikale hypotese (lexical hypothesis)",
       "back_html_sanitized": "<div>Antagelsen om, at de vigtigste individuelle forskelle er kodet ind i sproget som adjektiver over tid.</div>",
       "back_text": "Antagelsen om, at de vigtigste individuelle forskelle er kodet ind i sproget som adjektiver over tid.",
       "tags": [
@@ -1076,7 +1076,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "6c01b44595455897c0c3dc2a6dac1bf0bb58358287039432f2bb788d76a9613a"
+      "content_sha256": "9a98989bbaf7ad7dc2d4969fabf78d7c941dd8fda7410a9361f7334685f30a2f"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-45b672b7eacd53ea",
@@ -1096,7 +1096,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-560be7952671a5f1",
-      "front_text": "Sammenligning: Hvordan ser fænomenologi vs. psykoanalyse på kilden til mening?",
+      "front_text": "Hvordan ser fænomenologi vs. psykoanalyse på kilden til mening?",
       "back_html_sanitized": "<div>Fænomenologien starter ved den bevidste, levede erfaring, mens psykoanalysen insisterer på, at afgørende mening ofte er ubevidst og skjult.</div>",
       "back_text": "Fænomenologien starter ved den bevidste, levede erfaring, mens psykoanalysen insisterer på, at afgørende mening ofte er ubevidst og skjult.",
       "tags": [
@@ -1109,11 +1109,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "bcc52aa34c59ecbbc9ddf7b2ce5d3dc3c60201e3ec2579174b73e4060bd4585a"
+      "content_sha256": "845a3dd1fea003bce280fabf70a54cf2889fcaa423415a6793e5672eb95b78e0"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-90be33258338e7c5",
-      "front_text": "Begreb: 'Kastethed' (thrownness) i eksistentiel psykologi",
+      "front_text": "'Kastethed' (thrownness) i eksistentiel psykologi",
       "back_html_sanitized": "<div>De livsvilkår, vi ikke selv har valgt (f.eks. krop, fødested, dødelighed), som sætter rammen for vores frihed.</div>",
       "back_text": "De livsvilkår, vi ikke selv har valgt (f.eks. krop, fødested, dødelighed), som sætter rammen for vores frihed.",
       "tags": [
@@ -1125,7 +1125,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "11e562f1b6e9d852996019a9abdf80a27d6e39276c2f5bedeecc10928d8b645d"
+      "content_sha256": "c214ae5ccf14971ba0975ced1bd33873bbf19785b4dcbf41fd66d0ac8946fea4"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-00520541a2b50de2",
@@ -1177,7 +1177,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-159264c7c9d32790",
-      "front_text": "Eksamensfælde: Betyder anti-essentialisme i socialkonstruktionisme, at lidelse ikke er virkelig?",
+      "front_text": "Betyder anti-essentialisme i socialkonstruktionisme, at lidelse ikke er virkelig?",
       "back_html_sanitized": "<div>Nej, det betyder blot, at de kategorier vi bruger til at forstå lidelse er historisk og socialt producerede, ikke at smerten er fiktiv.</div>",
       "back_text": "Nej, det betyder blot, at de kategorier vi bruger til at forstå lidelse er historisk og socialt producerede, ikke at smerten er fiktiv.",
       "tags": [
@@ -1189,7 +1189,7 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "914724f38bd66890bcdd904ddcbe52699de79cf61af7b544624dd6204a7bb639"
+      "content_sha256": "d4965cb9131e99cfb166c0a7b1cf4980396d090d904d7d9f23e91537c56ec1a9"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-92dd05327d1c6c6c",
@@ -1209,7 +1209,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-7e6e1be5e9fae563",
-      "front_text": "Begreb: 'Maturity principle' i personlighedsudvikling",
+      "front_text": "'Maturity principle' i personlighedsudvikling",
       "back_html_sanitized": "<div>Tendensen til, at folk i gennemsnit bliver mere samvittighedsfulde, venlige og følelsesmæssigt stabile med alderen.</div>",
       "back_text": "Tendensen til, at folk i gennemsnit bliver mere samvittighedsfulde, venlige og følelsesmæssigt stabile med alderen.",
       "tags": [
@@ -1221,7 +1221,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "8ff3121bb6e704e759a3f49271fee5a542753eedf7e5a10361662bde07e2af89"
+      "content_sha256": "3a6b7f03cb510989f61ff30a867816dbc0adad29bcdd0a5171d9e05edac7cc50"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-aef012c4c7170f80",
@@ -1242,7 +1242,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-e29290ac30ff8a76",
-      "front_text": "Sammenligning: Hvordan adskiller poststrukturalisme sig fra kritisk psykologi?",
+      "front_text": "Hvordan adskiller poststrukturalisme sig fra kritisk psykologi?",
       "back_html_sanitized": "<div>Begge er sociale, men poststrukturalisme vægter diskurs og magt, mens kritisk psykologi vægter konkret social praksis og deltagelse.</div>",
       "back_text": "Begge er sociale, men poststrukturalisme vægter diskurs og magt, mens kritisk psykologi vægter konkret social praksis og deltagelse.",
       "tags": [
@@ -1255,7 +1255,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "631e8ebf82e7b1a639141a04ffa6074db98665bc3488587c5a14bdcecc404369"
+      "content_sha256": "2f1420505d857a1f9ffa2491c0bd4b9a98686c0f2802eceed8e481ddfe56c3c0"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-487ba41f16cf2c53",
@@ -1308,7 +1308,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-4d87e82fa7435454",
-      "front_text": "Eksamensfælde: Er humanistisk psykologi udelukkende optimistisk og privat selv-optimering?",
+      "front_text": "Er humanistisk psykologi udelukkende optimistisk og privat selv-optimering?",
       "back_html_sanitized": "<div>Nej, den vægter også relationelle betingelser og nødvendigheden af anerkendelse for at vækst kan finde sted.</div>",
       "back_text": "Nej, den vægter også relationelle betingelser og nødvendigheden af anerkendelse for at vækst kan finde sted.",
       "tags": [
@@ -1320,7 +1320,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "c25bb3d69a586159c87d5a9e9f3acc94c618d037a0e8dda93a7437d3828f5f20"
+      "content_sha256": "abb3a87e942b4ca9fe0024520dd354e25e380baff7a6b66c3a86563c1982c6e9"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-adfe001d0f1fdc98",
@@ -1356,7 +1356,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-9e6da2520c418d61",
-      "front_text": "Sammenligning: Hvordan ser biosociale vs. sociokulturelle tilgange på køn?",
+      "front_text": "Hvordan ser biosociale vs. sociokulturelle tilgange på køn?",
       "back_html_sanitized": "<div>Biosociale ser det ofte som evolutionær adaptiv variation, mens sociokulturelle ser det som historisk producerede diskurser og praksisser.</div>",
       "back_text": "Biosociale ser det ofte som evolutionær adaptiv variation, mens sociokulturelle ser det som historisk producerede diskurser og praksisser.",
       "tags": [
@@ -1368,7 +1368,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "7209714d826674ef34a9b6fab12ec8fd887e22de57c17decca7618104e295284"
+      "content_sha256": "a9fc4deae320f48265321da7ff53569b49126e26d1b6701be2f130e84e3114c4"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-6037e351eaf4cb5a",
@@ -1405,7 +1405,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-7dade5e716f8259a",
-      "front_text": "Eksamensfælde: At antage at 'determinisme' i psykoanalysen kun handler om gener.",
+      "front_text": "At antage at 'determinisme' i psykoanalysen kun handler om gener.",
       "back_html_sanitized": "<div>Fejl; psykoanalytisk determination er psykisk og relationel, centreret om ubevidste konflikter og tidlige barndomsoplevelser.</div>",
       "back_text": "Fejl; psykoanalytisk determination er psykisk og relationel, centreret om ubevidste konflikter og tidlige barndomsoplevelser.",
       "tags": [
@@ -1419,7 +1419,7 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "f67ef74faec12b0c7c99b22e07ba20e5cbb75b6ed1fc5edb8c2c980013b543ed"
+      "content_sha256": "1d08cc0752563b7ee4e5b2ead2f500bb9ef877b3c3990d6f858b7a450f709326"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-c72a26513627cb30",
@@ -1471,7 +1471,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
-      "front_text": "Begreb: 'Person-situation interplay' i dynamisk personlighedsteori",
+      "front_text": "'Person-situation interplay' i dynamisk personlighedsteori",
       "back_html_sanitized": "<div>Hvordan stabile tendenser og specifikke situationer gensidigt påvirker hinanden over tid i udviklingen af personlighedsmønstre.</div>",
       "back_text": "Hvordan stabile tendenser og specifikke situationer gensidigt påvirker hinanden over tid i udviklingen af personlighedsmønstre.",
       "tags": [
@@ -1484,7 +1484,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "ea382ad76c507b905609208a9848e85c510537471c6bbbb4ed4c685cb3df2376"
+      "content_sha256": "4e0e041844c9057df1a0056cbad34fcb9a58867bc56d72ba56739d91b7102a0d"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-9478c59241d4a868",
@@ -1506,7 +1506,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-af26e236548ee71b",
-      "front_text": "Sammenligning: Hvordan adskiller humanistisk psykologi sig fra eksistentiel psykologi?",
+      "front_text": "Hvordan adskiller humanistisk psykologi sig fra eksistentiel psykologi?",
       "back_html_sanitized": "<div>Begge vægter autenticitet, men humanismen fokuserer på vækst og behovshierarkier, mens eksistentialismen fokuserer på angst, valg og finidhed.</div>",
       "back_text": "Begge vægter autenticitet, men humanismen fokuserer på vækst og behovshierarkier, mens eksistentialismen fokuserer på angst, valg og finidhed.",
       "tags": [
@@ -1519,7 +1519,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "4852079c4a1d8d9b31b1a34b32de90417ee0fe5b768894c5fb014a689253e188"
+      "content_sha256": "27a71847cf12e9502ed9869a9fb1abbf7f5d9d36648ee3a95fa55a5c0dd5365a"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-cd8f4b1f10c42b0f",
@@ -1539,7 +1539,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-501d2f3c5985b7ff",
-      "front_text": "Eksamensfælde: At tro at trækpsykologi udelukker personlighedsændring.",
+      "front_text": "At tro at trækpsykologi udelukker personlighedsændring.",
       "back_html_sanitized": "<div>Fejl; moderne trækforskning undersøger både &#x27;rank-order stability&#x27; og &#x27;mean-level change&#x27; gennem hele livsløbet.</div>",
       "back_text": "Fejl; moderne trækforskning undersøger både 'rank-order stability' og 'mean-level change' gennem hele livsløbet.",
       "tags": [
@@ -1551,11 +1551,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "8c9538d708cd51fa0189a7ff877f4062b080eeeb96b1baa5a6d6e96ce8301567"
+      "content_sha256": "1539b218d8d4d1382cd07d4e7ba2685cdb4d8e2fd25117cb748b3ac724e82358"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-d1acc7a47b1c120d",
-      "front_text": "Begreb: 'Kulturelle narrativer' (cultural narratives)",
+      "front_text": "'Kulturelle narrativer' (cultural narratives)",
       "back_html_sanitized": "<div>De skabeloner og fortælleformer som kulturen stiller til rådighed, og som vi bruger til at strukturere vores egne livshistorier.</div>",
       "back_text": "De skabeloner og fortælleformer som kulturen stiller til rådighed, og som vi bruger til at strukturere vores egne livshistorier.",
       "tags": [
@@ -1567,7 +1567,7 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "c3f158903370f2c673e716a99985cef4d2e6a8594bbac4df79bb5600a2ac0944"
+      "content_sha256": "a38cfc02d9aa368cb2082dd9c03c1df79c7bef61412b07470768e6954153304c"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-fe8059e8d63c33b3",
@@ -1636,7 +1636,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-35f03816ef04b4df",
-      "front_text": "Sammenligning: Hvordan tolker psykoanalyse vs. narrativ psykologi 'skjult mening'?",
+      "front_text": "Hvordan tolker psykoanalyse vs. narrativ psykologi 'skjult mening'?",
       "back_html_sanitized": "<div>Psykoanalysen søger ubevidste konflikter (repressions), mens narrativ psykologi søger alternative historier og meningsskabelse i sproget.</div>",
       "back_text": "Psykoanalysen søger ubevidste konflikter (repressions), mens narrativ psykologi søger alternative historier og meningsskabelse i sproget.",
       "tags": [
@@ -1649,7 +1649,7 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "f339ce908f57bf91b6f49fd498482d880caed3706de1e456ab97e07facb9891e"
+      "content_sha256": "d8b69ad156f9575d3970d9c9367a1de4a446f1d2df5894ea50e24b46e80c019a"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-d9a6b036f94aa1f9",
@@ -1701,7 +1701,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-1310f1e795b76afe",
-      "front_text": "Eksamensfælde: At forveksle 'socialkonstruktionisme' med 'poststrukturalisme'.",
+      "front_text": "At forveksle 'socialkonstruktionisme' med 'poststrukturalisme'.",
       "back_html_sanitized": "<div>Selvom de overlapper, fokuserer poststrukturalisme mere eksplicit på magt og de historiske betingelser for vidensproduktion (genealogi).</div>",
       "back_text": "Selvom de overlapper, fokuserer poststrukturalisme mere eksplicit på magt og de historiske betingelser for vidensproduktion (genealogi).",
       "tags": [
@@ -1713,7 +1713,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "1f4f8c8c910368aedb836a83a4aa249064a5b7ce0b31f5f841bea16d64586b9c"
+      "content_sha256": "cf440795e65935eb31108cd95e5228fa1de56156215b90f726d2d795daaa9980"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-191aad17ed399452",
@@ -1797,7 +1797,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-36a7b8cbf5749e4d",
-      "front_text": "Sammenligning: Hvordan ser trækpsykologi vs. kritisk personalisme på tests?",
+      "front_text": "Hvordan ser trækpsykologi vs. kritisk personalisme på tests?",
       "back_html_sanitized": "<div>Trækpsykologi ser dem som måleinstrumenter for indre realiteter; kritisk personalisme ser dem som nyttige værktøjer, der dog risikerer at reificere personen.</div>",
       "back_text": "Trækpsykologi ser dem som måleinstrumenter for indre realiteter; kritisk personalisme ser dem som nyttige værktøjer, der dog risikerer at reificere personen.",
       "tags": [
@@ -1810,11 +1810,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "d562ec12720df34f2a6e956af76c0506593ddae9194a8f0dc887724506b3bd04"
+      "content_sha256": "1fd95b628cd4296d140d3720c70ce6a6b80f6c829e9e2ad3af31fb55987b1bd7"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-b25c8c3a04cd0cf6",
-      "front_text": "Begreb: 'Lived experience' (levet erfaring)",
+      "front_text": "'Lived experience' (levet erfaring)",
       "back_html_sanitized": "<div>Fænomenologiens udgangspunkt: Verden som den fremtræder for subjektet i den umiddelbare erfaring.</div>",
       "back_text": "Fænomenologiens udgangspunkt: Verden som den fremtræder for subjektet i den umiddelbare erfaring.",
       "tags": [
@@ -1826,7 +1826,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "72d39791e3029ff8d11b7c00ad72f5e9b488e80bca0b5c8436a857c7f4e88629"
+      "content_sha256": "4908022f8294c280160a3a250fc6f5244a016a783e44d866c74753640dce76eb"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-32248aa0765e34a0",
@@ -1863,7 +1863,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-90b1f357939a396e",
-      "front_text": "Eksamensfælde: At tro at fænomenologi bare er 'introspektion'.",
+      "front_text": "At tro at fænomenologi bare er 'introspektion'.",
       "back_html_sanitized": "<div>Fejl; fænomenologi er en analyse af strukturen i subjekt-verden-relationen, ikke blot en privat kiggen-indad.</div>",
       "back_text": "Fejl; fænomenologi er en analyse af strukturen i subjekt-verden-relationen, ikke blot en privat kiggen-indad.",
       "tags": [
@@ -1875,7 +1875,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "95e9a4b57b7b4c7e25594a806a665e7583fed1b58b28614bab37b3a283bd2f0f"
+      "content_sha256": "2f734d491ba00886bea5e8dd2fec40d59932c0341b6a117c3e669977be8ec6e3"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-018d818120453265",
@@ -2024,7 +2024,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-569fffc57bff68ee",
-      "front_text": "Eksamensfælde: At reducere kritisk psykologi til ren politik.",
+      "front_text": "At reducere kritisk psykologi til ren politik.",
       "back_html_sanitized": "<div>Kritisk psykologi er en videnskabelig teori om subjektivitet og praksis, ikke blot en politisk holdning.</div>",
       "back_text": "Kritisk psykologi er en videnskabelig teori om subjektivitet og praksis, ikke blot en politisk holdning.",
       "tags": [
@@ -2036,7 +2036,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "347225d3991e8e952155389ddd552b7a95a1632b794fc82d154032847963b7b6"
+      "content_sha256": "cd1f49a39d43619302686241455086cd8f89404521e5738a6a7d78e79fea665e"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-0170e7ebd1d391b9",
@@ -2106,7 +2106,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-fbc3766f72f9a596",
-      "front_text": "Sammenligning: Hvordan adskiller humanistisk psykologi sig fra kritisk psykologi?",
+      "front_text": "Hvordan adskiller humanistisk psykologi sig fra kritisk psykologi?",
       "back_html_sanitized": "<div>Humanismen søger indre vækst, mens den kritiske psykologi spørger, om &#x27;vækst-sprog&#x27; skjuler sociale konflikter og kollektiv handlen.</div>",
       "back_text": "Humanismen søger indre vækst, mens den kritiske psykologi spørger, om 'vækst-sprog' skjuler sociale konflikter og kollektiv handlen.",
       "tags": [
@@ -2119,7 +2119,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "4955977edc521450a397c1ac92de9645c2002b714dfe00bb152eebdd11445601"
+      "content_sha256": "3b0d597954817b65cfffb72fc1875e480c8fede940dba3fb98370d782f44a4fa"
     },
     {
       "card_id": "nlm-global-calibration-synthesis-4f24f806cb9341a2",
@@ -2204,7 +2204,7 @@
     },
     {
       "card_id": "nlm-global-calibration-synthesis-2b293930b0d88370",
-      "front_text": "Eksamensfælde: At tro at trækpsykologi kun handler om gener.",
+      "front_text": "At tro at trækpsykologi kun handler om gener.",
       "back_html_sanitized": "<div>Moderne trækforskning ser altid på samspillet mellem arv (gener) og miljø (miljø-gen interaktioner).</div>",
       "back_text": "Moderne trækforskning ser altid på samspillet mellem arv (gener) og miljø (miljø-gen interaktioner).",
       "tags": [
@@ -2216,11 +2216,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "5aa135ca98afff6084d48fcb9e06b934f5c400d258c308d2ab662a785c06e5f5"
+      "content_sha256": "b13efd3ba5c157be004196937633b4cfc5d8476e27c13b40351bc68e2810a917"
     },
     {
       "card_id": "nlm-measurement-development-pathology-fb059f06e972e701",
-      "front_text": "Orienteringspunkter: Hvordan defineres 'historicitet' i denne kursusramme?",
+      "front_text": "Hvordan defineres 'historicitet' i denne kursusramme?",
       "back_html_sanitized": "<div>Betydningen af artshistorie (fylogenese), individuel livshistorie (ontogenese) og samfundshistorie (sociogenese) for personligheden.</div>",
       "back_text": "Betydningen af artshistorie (fylogenese), individuel livshistorie (ontogenese) og samfundshistorie (sociogenese) for personligheden.",
       "tags": [
@@ -2232,11 +2232,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "b900c75c639af84ca9516175030ec8f58b95c746fac1a822f3c981ea63babec9"
+      "content_sha256": "abc046d20c0b645ff864bfcfbc9ac865f6440fe6d47bc065e095af78ebe4f271"
     },
     {
       "card_id": "nlm-measurement-development-pathology-d7937490ccc81285",
-      "front_text": "Orienteringspunkter: Hvad refererer 'agency' til i en personlighedsteoretisk sammenhæng?",
+      "front_text": "Hvad refererer 'agency' til i en personlighedsteoretisk sammenhæng?",
       "back_html_sanitized": "<div>Hvorvidt og hvordan teorien placerer evnen til aktiv styring, intention og handling hos individet.</div>",
       "back_text": "Hvorvidt og hvordan teorien placerer evnen til aktiv styring, intention og handling hos individet.",
       "tags": [
@@ -2248,11 +2248,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "d4bc27589fdac1159462e9caf5d489f0f90603ec893382bfee8d0c3ca4be7a32"
+      "content_sha256": "6c3c67837ae9901e79247b544b9c59787e280f0c9470058ad73e60013d84ead0"
     },
     {
       "card_id": "nlm-measurement-development-pathology-f99707eaee6ee7ba",
-      "front_text": "Orienteringspunkter: Hvad undersøges under punktet 'determination'?",
+      "front_text": "Hvad undersøges under punktet 'determination'?",
       "back_html_sanitized": "<div>Hvilke faktorer teorien betragter som formende eller begrænsende for personens udfoldelsesmuligheder.</div>",
       "back_text": "Hvilke faktorer teorien betragter som formende eller begrænsende for personens udfoldelsesmuligheder.",
       "tags": [
@@ -2264,7 +2264,7 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "22434ebc955c31181a9e6d3012644e4bdf027f013b1a06450b5609366dc0bc5c"
+      "content_sha256": "40de22b602f44109c7b8f9d7c3be2b74def53da29467a23e1b2aed4b81ab5dcd"
     },
     {
       "card_id": "nlm-measurement-development-pathology-2544197c7be85096",
@@ -2285,7 +2285,7 @@
     },
     {
       "card_id": "nlm-measurement-development-pathology-6b618eb525acf154",
-      "front_text": "Begreb: Hvad forklarer 'balancing selection' (balanceret selektion)?",
+      "front_text": "Hvad forklarer 'balancing selection' (balanceret selektion)?",
       "back_html_sanitized": "<div>Hvorfor genetisk variation i personlighed bevares i en population, fordi forskellige træk er adaptive under forskellige miljøbetingelser.</div>",
       "back_text": "Hvorfor genetisk variation i personlighed bevares i en population, fordi forskellige træk er adaptive under forskellige miljøbetingelser.",
       "tags": [
@@ -2297,11 +2297,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "be4bcbff953989cc5314077592162de7627b9ffb56d0b1c81ef27ba8cb578f64"
+      "content_sha256": "7f25cb1441a5e8c86aaccd2dd4b57c009fc56e4a44ea3dade8a928f091edbdf8"
     },
     {
       "card_id": "nlm-measurement-development-pathology-fbaaa5d00f124d39",
-      "front_text": "Begreb: Hvad er 'niche specialization' (niche-specialisering)?",
+      "front_text": "Hvad er 'niche specialization' (niche-specialisering)?",
       "back_html_sanitized": "<div>Processen hvor individer opsøger eller skaber miljøer, der passer til deres genetiske dispositioner, hvilket forstærker personlighedstræk over tid.</div>",
       "back_text": "Processen hvor individer opsøger eller skaber miljøer, der passer til deres genetiske dispositioner, hvilket forstærker personlighedstræk over tid.",
       "tags": [
@@ -2314,7 +2314,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "608b87ce5494def183e23fc56998fc303e1771e39653956cfeba94fdbcc49611"
+      "content_sha256": "4b3225dcc24eec93fcabad80afba9072cace3ef1a7aaa868e488ec069b5e9ab6"
     },
     {
       "card_id": "nlm-measurement-development-pathology-d40aa78105cfaf14",
@@ -2334,7 +2334,7 @@
     },
     {
       "card_id": "nlm-measurement-development-pathology-90a9904841e0972c",
-      "front_text": "Trækpsykologi: Hvad er personbegrebet i den klassiske assessment-psykologi?",
+      "front_text": "Hvad er personbegrebet i den klassiske assessment-psykologi?",
       "back_html_sanitized": "<div>Personen forstås som en målelig profil af relativt stabile individuelle forskelle, der kan sammenlignes statistisk.</div>",
       "back_text": "Personen forstås som en målelig profil af relativt stabile individuelle forskelle, der kan sammenlignes statistisk.",
       "tags": [
@@ -2346,7 +2346,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "2a69dec5b66275510c565b57f3ed00778af25df7332f653a127c996dcb766e67"
+      "content_sha256": "626276d234e06b884c202b8f84e7c340727a55ca12306c8e6dc247b4a158e2fd"
     },
     {
       "card_id": "nlm-measurement-development-pathology-61d3c5696ed24de4",
@@ -2383,7 +2383,7 @@
     },
     {
       "card_id": "nlm-measurement-development-pathology-7e1114fb042e7c83",
-      "front_text": "Trækpsykologi: Hvilken status har 'agency' i statiske trækmodeller?",
+      "front_text": "Hvilken status har 'agency' i statiske trækmodeller?",
       "back_html_sanitized": "<div>Agency er ofte svag eller fraværende, da fokus er på stabile dispositioner frem for personens aktive mål og valg.</div>",
       "back_text": "Agency er ofte svag eller fraværende, da fokus er på stabile dispositioner frem for personens aktive mål og valg.",
       "tags": [
@@ -2397,11 +2397,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "64393fb876a874018c3152e214345d2fcc2e08fcff8b2c0247ce5a1fc1e88bb2"
+      "content_sha256": "f77435cd5bab3f70d3307e0736983acc0d532ff410618672d03c703e3ac7e99c"
     },
     {
       "card_id": "nlm-measurement-development-pathology-6bc5c513ead092bf",
-      "front_text": "Metode: Hvad er formålet med 'faktor-analyse' i trækpsykologien?",
+      "front_text": "Hvad er formålet med 'faktor-analyse' i trækpsykologien?",
       "back_html_sanitized": "<div>At reducere store mængder data (f.eks. spørgeskemasvar) til færre underliggende dimensioner eller &#x27;træk&#x27; baseret på korrelationer.</div>",
       "back_text": "At reducere store mængder data (f.eks. spørgeskemasvar) til færre underliggende dimensioner eller 'træk' baseret på korrelationer.",
       "tags": [
@@ -2413,11 +2413,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "9bb7647316d6bdd2577a2b1ad2135e67b19fde5172bf795389327f116450ab46"
+      "content_sha256": "1e494b575c5bcc3b31d2ac2a95771d9e213faad1be2aac3b735d8bd89c7e0699"
     },
     {
       "card_id": "nlm-measurement-development-pathology-88213b01c7b243be",
-      "front_text": "Begreb: Hvad dækker 'rank-order stability' over?",
+      "front_text": "Hvad dækker 'rank-order stability' over?",
       "back_html_sanitized": "<div>At individers relative placering i en gruppe (f.eks. hvem der er mest udadvendt) forbliver stabil over tid, selvom det gennemsnitlige niveau ændres.</div>",
       "back_text": "At individers relative placering i en gruppe (f.eks. hvem der er mest udadvendt) forbliver stabil over tid, selvom det gennemsnitlige niveau ændres.",
       "tags": [
@@ -2429,11 +2429,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "877d20b1d0a63463ce17161b414fe7060d42478c03a8b3ec3f4b4cd1aadfdea3"
+      "content_sha256": "5a738b478dd76bb692f898a790482721163c8081bbb74576916351605b074267"
     },
     {
       "card_id": "nlm-measurement-development-pathology-97feedb8a23e68ee",
-      "front_text": "Begreb: Hvad forklarer 'trait activation theory'?",
+      "front_text": "Hvad forklarer 'trait activation theory'?",
       "back_html_sanitized": "<div>At personlighedstræk kræver relevante situationsmæssige cues for at komme til udtryk i adfærd.</div>",
       "back_text": "At personlighedstræk kræver relevante situationsmæssige cues for at komme til udtryk i adfærd.",
       "tags": [
@@ -2445,11 +2445,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "f90ac22425236e7d0a330dd4eea583f7c1d93c60d504010a6953c6ba080f80e7"
+      "content_sha256": "092d5a1b2a51a43fea8cccb32fbcdb3995d1c21bea3f42be8d3a0b6b9a8b09fa"
     },
     {
       "card_id": "nlm-measurement-development-pathology-7c84d2a8c1b54077",
-      "front_text": "Trækpsykologi: Hvad er en central begrænsning ved udelukkende at bruge træk-scorer?",
+      "front_text": "Hvad er en central begrænsning ved udelukkende at bruge træk-scorer?",
       "back_html_sanitized": "<div>De beskriver ofte mere, end de forklarer, og risikerer at overse levet betydning, krise, kultur og magtforhold.</div>",
       "back_text": "De beskriver ofte mere, end de forklarer, og risikerer at overse levet betydning, krise, kultur og magtforhold.",
       "tags": [
@@ -2462,11 +2462,11 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "63be0a26cf6b0c5512780afe9ed6ca0f1271d62659d14c4e01eb6033a1b71cc6"
+      "content_sha256": "d138ccd8734226e956d73b8a9a90ea40a8937ced9dde006809bb89ccd7e9765f"
     },
     {
       "card_id": "nlm-measurement-development-pathology-7336142296575ef4",
-      "front_text": "Eksamenstrap: Hvorfor er en træk-score (f.eks. fra Big Five) ikke en fuldstændig forklaring på et menneske?",
+      "front_text": "Hvorfor er en træk-score (f.eks. fra Big Five) ikke en fuldstændig forklaring på et menneske?",
       "back_html_sanitized": "<div>Fordi scoren er en statistisk beskrivelse af adfærdstendenser, ikke en redegørelse for personens selvforståelse eller levede liv.</div>",
       "back_text": "Fordi scoren er en statistisk beskrivelse af adfærdstendenser, ikke en redegørelse for personens selvforståelse eller levede liv.",
       "tags": [
@@ -2478,7 +2478,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "dd59cc86a6f5ed4350c03c6807fa672a449aabd2db02d00eed704196dccf53b3"
+      "content_sha256": "929718984af144714d158fa4f9dc9b99b2f73261c29b4eb7ed1dc7634f4d0bdb"
     },
     {
       "card_id": "nlm-measurement-development-pathology-c935facd21d665c7",
@@ -2548,7 +2548,7 @@
     },
     {
       "card_id": "nlm-measurement-development-pathology-b83fa87be9f56796",
-      "front_text": "Begreb: Hvad beskriver 'the maturity principle' (modningsprincippet)?",
+      "front_text": "Hvad beskriver 'the maturity principle' (modningsprincippet)?",
       "back_html_sanitized": "<div>Den empiriske observation at de fleste mennesker bliver mere samvittighedsfulde, venlige og følelsesmæssigt stabile med alderen.</div>",
       "back_text": "Den empiriske observation at de fleste mennesker bliver mere samvittighedsfulde, venlige og følelsesmæssigt stabile med alderen.",
       "tags": [
@@ -2560,11 +2560,11 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "3c5a5eb4f5e48c8ae96b7201dc3ba5c80f8ac6fdb78e4d3b634abf51d1767923"
+      "content_sha256": "921f755a39b7c2de8940b1be6bf6ebd9e0abecbfa209243c03007e5496090769"
     },
     {
       "card_id": "nlm-measurement-development-pathology-df072e37ce88baa4",
-      "front_text": "Eksamenstrap: Er dynamisk udviklingspsykologi et opgør med trækpsykologien?",
+      "front_text": "Er dynamisk udviklingspsykologi et opgør med trækpsykologien?",
       "back_html_sanitized": "<div>Nej, den udvider trækpsykologien ved at gøre processer og situationer centrale, men bevarer ofte trækbegrebet som baseline.</div>",
       "back_text": "Nej, den udvider trækpsykologien ved at gøre processer og situationer centrale, men bevarer ofte trækbegrebet som baseline.",
       "tags": [
@@ -2576,11 +2576,11 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "94d47b9913aeace61129c062553f7946f0a6afa2584ede0f90f8e6a55726bfd3"
+      "content_sha256": "a59321967a1176c38231443ed0df6f36044dffcb2f74b763b6cd796bc76587f6"
     },
     {
       "card_id": "nlm-measurement-development-pathology-e3f1f9e5758e0e7c",
-      "front_text": "Sammenligning: Hvordan adskiller narrativ psykologi sig fra trækpsykologi?",
+      "front_text": "Hvordan adskiller narrativ psykologi sig fra trækpsykologi?",
       "back_html_sanitized": "<div>Narrativ psykologi fokuserer på, hvordan personen skaber mening over tid gennem historier, mens trækpsykologien fokuserer på målbare scorer.</div>",
       "back_text": "Narrativ psykologi fokuserer på, hvordan personen skaber mening over tid gennem historier, mens trækpsykologien fokuserer på målbare scorer.",
       "tags": [
@@ -2593,11 +2593,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "f8f1c58175219992196b09ec3240722fcd2c9474f1874ae6861e6eb8f8e0c5ab"
+      "content_sha256": "0a6067e873daed8ace83c66fadb86437ee34829c0516d65bd647d93d8b09c5d7"
     },
     {
       "card_id": "nlm-measurement-development-pathology-4107a91d9f4210b4",
-      "front_text": "Sammenligning: Hvad er forholdet mellem biosociale perspektiver og trækpsykologi?",
+      "front_text": "Hvad er forholdet mellem biosociale perspektiver og trækpsykologi?",
       "back_html_sanitized": "<div>Biosociale perspektiver forsøger at forklare det biologiske og evolutionære fundament for de trækvariationer, som trækpsykologien måler.</div>",
       "back_text": "Biosociale perspektiver forsøger at forklare det biologiske og evolutionære fundament for de trækvariationer, som trækpsykologien måler.",
       "tags": [
@@ -2609,11 +2609,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "29b05b5ad318311b22d1f12e9df8b9dd1d4bbd7dd9e57ed7c99c3b55641fd49b"
+      "content_sha256": "15dc3afbce00b52271ac97af3425b7079fcf23ff64a9f2100aa73e04b81e56b3"
     },
     {
       "card_id": "nlm-measurement-development-pathology-7ee88cb2c339c832",
-      "front_text": "Sammenligning: Hvordan kontrasterer sociokulturelle tilgange de biosociale perspektiver?",
+      "front_text": "Hvordan kontrasterer sociokulturelle tilgange de biosociale perspektiver?",
       "back_html_sanitized": "<div>Sociokulturelle tilgange flytter forklaringskraften fra biologi og evolution til diskurser, sociale normer og magtstrukturer.</div>",
       "back_text": "Sociokulturelle tilgange flytter forklaringskraften fra biologi og evolution til diskurser, sociale normer og magtstrukturer.",
       "tags": [
@@ -2625,11 +2625,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "4f0f860848c54635862baa825b8126ac393fb4ac01a0270c905d91a04b0b3d98"
+      "content_sha256": "682772e0244a531e923d47eee0cd5d987a557c1c49b2152d5c7d830dc0ce48f5"
     },
     {
       "card_id": "nlm-measurement-development-pathology-26c31a06f68eba39",
-      "front_text": "Sammenligning: Hvad forbereder 'personlighedsfunktion og patologi' os på i forhold til psykoanalysen?",
+      "front_text": "Hvad forbereder 'personlighedsfunktion og patologi' os på i forhold til psykoanalysen?",
       "back_html_sanitized": "<div>Begge undersøger personlighedens organisering, men psykoanalysen går dybere ind i tolkningen af konflikter og det ubevidste.</div>",
       "back_text": "Begge undersøger personlighedens organisering, men psykoanalysen går dybere ind i tolkningen af konflikter og det ubevidste.",
       "tags": [
@@ -2642,11 +2642,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "686a49d26fadb55ac4fce0c7a75e187910bc0836c82c33ec1be582b6266df376"
+      "content_sha256": "7a76c2c181b1dc9ed88c3fc454894fa4364171fc496aec79f9c359476e819da0"
     },
     {
       "card_id": "nlm-measurement-development-pathology-9c34c5713a895b98",
-      "front_text": "Sammenligning: Hvordan kritiserer fænomenologisk psykologi trækpsykologien?",
+      "front_text": "Hvordan kritiserer fænomenologisk psykologi trækpsykologien?",
       "back_html_sanitized": "<div>Fænomenologien spørger ind til, hvordan oplevelsen er &#x27;indefra&#x27;, før personen reduceres til målbare dimensioner udefra.</div>",
       "back_text": "Fænomenologien spørger ind til, hvordan oplevelsen er 'indefra', før personen reduceres til målbare dimensioner udefra.",
       "tags": [
@@ -2659,11 +2659,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "e02b119d41399394205ff4b679d2aeae902fd387882d6cc0caa555d424e14a02"
+      "content_sha256": "e1bc327629d49fcac5244f3ccdd978221bf1d8810abbb3673347d7745abc3587"
     },
     {
       "card_id": "nlm-measurement-development-pathology-3e18e656ae077970",
-      "front_text": "Sammenligning: Hvad er den centrale kritik fra kritisk psykologi mod træk- og assessmentpsykologi?",
+      "front_text": "Hvad er den centrale kritik fra kritisk psykologi mod træk- og assessmentpsykologi?",
       "back_html_sanitized": "<div>At den dekontekstualiserer individet og forklarer personen gennem isolerede individuelle forskelle frem for samfundsmæssige betingelser.</div>",
       "back_text": "At den dekontekstualiserer individet og forklarer personen gennem isolerede individuelle forskelle frem for samfundsmæssige betingelser.",
       "tags": [
@@ -2675,11 +2675,11 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "c7ba3cd73e15e5f393bb075ea053e4b31524bceadbf1306a69ea35eeabb02149"
+      "content_sha256": "2a6255901ad3de7cefeae125b34772567f3d20453dc87647ecdd90a41faa3f6f"
     },
     {
       "card_id": "nlm-measurement-development-pathology-b67305b819450e6a",
-      "front_text": "Styrker og begrænsninger: Hvad er en hovedstyrke ved trækpsykologien til eksamen?",
+      "front_text": "Hvad er en hovedstyrke ved trækpsykologien til eksamen?",
       "back_html_sanitized": "<div>Den giver et præcist ordforråd til at beskrive individuelle forskelle og understøtter prædiktion og videnskabelig efterprøvning.</div>",
       "back_text": "Den giver et præcist ordforråd til at beskrive individuelle forskelle og understøtter prædiktion og videnskabelig efterprøvning.",
       "tags": [
@@ -2691,11 +2691,11 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "d7f74c2f7755d8d3a83c661dc768ebf66974ceedd68914d5de269aa397363f03"
+      "content_sha256": "5929bef508eeae2378817785fc4b2d3994688c81bbee77de45d4a1403a100e61"
     },
     {
       "card_id": "nlm-measurement-development-pathology-a26c2fce7bf153c8",
-      "front_text": "Begreb: Hvad er 'whole trait theory'?",
+      "front_text": "Hvad er 'whole trait theory'?",
       "back_html_sanitized": "<div>En model der integrerer træk som både stabile gennemsnit (beskrivende) og som dynamiske processer/reaktioner på situationer (forklarende).</div>",
       "back_text": "En model der integrerer træk som både stabile gennemsnit (beskrivende) og som dynamiske processer/reaktioner på situationer (forklarende).",
       "tags": [
@@ -2707,11 +2707,11 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "d8b01b26f91805376404918e25df98f48f1cccf7a197d9053d7a112cea8e16dd"
+      "content_sha256": "d8e34d6712c38dc088b5561b8f82c56ffac1353dbfffe134a3b4a11cef6a0327"
     },
     {
       "card_id": "nlm-measurement-development-pathology-dc8de1f09a255dee",
-      "front_text": "Orienteringspunkt: Hvordan adskiller agency sig i statiske vs. dynamiske modeller?",
+      "front_text": "Hvordan adskiller agency sig i statiske vs. dynamiske modeller?",
       "back_html_sanitized": "<div>Agency er svag i statiske trækmodeller, men stærkere i procesmodeller, hvor mål, fortolkning og selvregulering styrer adfærden i situationer.</div>",
       "back_text": "Agency er svag i statiske trækmodeller, men stærkere i procesmodeller, hvor mål, fortolkning og selvregulering styrer adfærden i situationer.",
       "tags": [
@@ -2723,11 +2723,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "a33cfd8dcef5700d121194eed1f6674e5e3564a4232a03e9016da7074cbdb703"
+      "content_sha256": "269a01431b838cfb3509e68de259c2b8e8d20efa5f944a6c01ed4c4ad7436edf"
     },
     {
       "card_id": "nlm-measurement-development-pathology-670a9ddae19a6fff",
-      "front_text": "Eksamenstrap: Hvad betyder det, at trækpsykologien ofte 'beskriver mere end den forklarer'?",
+      "front_text": "Hvad betyder det, at trækpsykologien ofte 'beskriver mere end den forklarer'?",
       "back_html_sanitized": "<div>At den kan fortælle os *at* en person er samvittighedsfuld, men ikke nødvendigvis *hvorfor* eller hvilken mening det har for personen.</div>",
       "back_text": "At den kan fortælle os *at* en person er samvittighedsfuld, men ikke nødvendigvis *hvorfor* eller hvilken mening det har for personen.",
       "tags": [
@@ -2739,7 +2739,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "3beaa4e6e4814320dd3cabc7bc7b5b22b48323a5fd03c580757a6c1add1f984b"
+      "content_sha256": "e42a85d9e5e77b67091e2238fc8f18d1365ffa90482da41c5beb41775eb183e9"
     },
     {
       "card_id": "nlm-measurement-development-pathology-b271a1c41f42bd25",
@@ -2759,7 +2759,7 @@
     },
     {
       "card_id": "nlm-measurement-development-pathology-eadd1aa2331f6728",
-      "front_text": "Metode: Hvad kendetegner evidensen i 'personlighedsfunktion og patologi'?",
+      "front_text": "Hvad kendetegner evidensen i 'personlighedsfunktion og patologi'?",
       "back_html_sanitized": "<div>Kliniske vurderinger og dimensionelle diagnostiske modeller, der sammenligner organisering og funktionsniveau.</div>",
       "back_text": "Kliniske vurderinger og dimensionelle diagnostiske modeller, der sammenligner organisering og funktionsniveau.",
       "tags": [
@@ -2771,11 +2771,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "6c9ad61046cbe8ae2fa81616e165ef367be89913fc6cda9ba492150e04d92567"
+      "content_sha256": "744863410db5c832b0ffab56969d7bb315957ad54c3d149edde6435ddffe2d7b"
     },
     {
       "card_id": "nlm-measurement-development-pathology-f4e2a4f87f6f8346",
-      "front_text": "Sammenligning: Hvordan forholder 'dynamisk personlighedsudvikling' sig til 'historicitet' i forhold til biosociale teorier?",
+      "front_text": "Hvordan forholder 'dynamisk personlighedsudvikling' sig til 'historicitet' i forhold til biosociale teorier?",
       "back_html_sanitized": "<div>Dynamisk teori fokuserer på den individuelle livshistorie (ontogenese), mens biosociale teorier trækker i højere grad på artshistorien (fylogenese).</div>",
       "back_text": "Dynamisk teori fokuserer på den individuelle livshistorie (ontogenese), mens biosociale teorier trækker i højere grad på artshistorien (fylogenese).",
       "tags": [
@@ -2787,11 +2787,11 @@
       ],
       "category_slug": "orienteringspunkter",
       "category_title": "Orienteringspunkter",
-      "content_sha256": "06bb96e27b1c5073e61b71bb2cfddefa4eae455df6017b55ca5f199da35b318a"
+      "content_sha256": "28a7fb51464e1e473e9720ae4b04f08799e730ce1c84735360f6c08fc8f33b45"
     },
     {
       "card_id": "nlm-measurement-development-pathology-314f6e39dc6a87ef",
-      "front_text": "Kritik: Hvad mener kritisk personalisme, at vi mister, når vi måler personlighed som træk?",
+      "front_text": "Hvad mener kritisk personalisme, at vi mister, når vi måler personlighed som træk?",
       "back_html_sanitized": "<div>At personen reduceres til variabler, og man derved mister blikket for det unikke, hele menneske.</div>",
       "back_text": "At personen reduceres til variabler, og man derved mister blikket for det unikke, hele menneske.",
       "tags": [
@@ -2803,11 +2803,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "dc1d78f32466691b07793123cf1da6a5e981c13da0157c81693d92b10c66508b"
+      "content_sha256": "c4b4a5d293ec4ff9f5b933c76195b3dc75355f18ccff3f28194213d7add1b459"
     },
     {
       "card_id": "nlm-measurement-development-pathology-1fbd14894203fcef",
-      "front_text": "Begreb: Hvad forstås ved 'identitet' inden for rammen af personlighedsfunktion?",
+      "front_text": "Hvad forstås ved 'identitet' inden for rammen af personlighedsfunktion?",
       "back_html_sanitized": "<div>Oplevelsen af sig selv som unik, med klare grænser til andre, og stabilitet i selvfølelsen over tid.</div>",
       "back_text": "Oplevelsen af sig selv som unik, med klare grænser til andre, og stabilitet i selvfølelsen over tid.",
       "tags": [
@@ -2820,11 +2820,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "4490b9edc8f19c599725c3172469a74430ccf81ccdf5e76c74161f4a0ba5a82a"
+      "content_sha256": "f620b27faf4cee1157c742ab9982efece7d2199e6a3bb3ef053b592ddbe75780"
     },
     {
       "card_id": "nlm-measurement-development-pathology-5b1752aad85a9c57",
-      "front_text": "Begreb: Hvad indebærer 'selvstyring' (self-direction) i personlighedsfunktion?",
+      "front_text": "Hvad indebærer 'selvstyring' (self-direction) i personlighedsfunktion?",
       "back_html_sanitized": "<div>Evnen til at sætte meningsfulde mål på både kort og lang sigt og evnen til konstruktiv selvrefleksion.</div>",
       "back_text": "Evnen til at sætte meningsfulde mål på både kort og lang sigt og evnen til konstruktiv selvrefleksion.",
       "tags": [
@@ -2836,7 +2836,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "e1580e864a008d6ee88484e8b932f68eceef342e3f9222ba8b6e373414a6b2f8"
+      "content_sha256": "8e89534adf11a1ecfaa942f1804910d0d02c3c24df44b4fc3a81c166855501a2"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-b0fe4c70ef2bfe79",
@@ -2905,7 +2905,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-bd34f61b95225803",
-      "front_text": "Eksamenstrap: Er trækpsykologi lig med ren genetisk determinisme?",
+      "front_text": "Er trækpsykologi lig med ren genetisk determinisme?",
       "back_html_sanitized": "<div>Nej; moderne tilgange betoner interaktionen mellem dispositioner og miljø, samt muligheden for forandring over livsforløbet.</div>",
       "back_text": "Nej; moderne tilgange betoner interaktionen mellem dispositioner og miljø, samt muligheden for forandring over livsforløbet.",
       "tags": [
@@ -2917,7 +2917,7 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "992b36b41c1bef4fc5462466a10f8d55ff03a421aefaa95b72656f1f90423eb5"
+      "content_sha256": "e5a32076220505a93c134d19a59027c269228628cca065fb4d5a88605805ccb0"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-f5465104ac971be7",
@@ -2970,7 +2970,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-a48baf58bbe82fa1",
-      "front_text": "Sammenligning: Hvordan adskiller 'personality functioning' sig fra trækpsykologisk beskrivelse?",
+      "front_text": "Hvordan adskiller 'personality functioning' sig fra trækpsykologisk beskrivelse?",
       "back_html_sanitized": "<div>Træk beskriver variation (f.eks. udadvendthed), mens funktionsmodeller vurderer selve personlighedens struktur og relationelle kapacitet.</div>",
       "back_text": "Træk beskriver variation (f.eks. udadvendthed), mens funktionsmodeller vurderer selve personlighedens struktur og relationelle kapacitet.",
       "tags": [
@@ -2983,7 +2983,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "259961c7f320d99f179b8d7a98aaedc7768f9211f0668cfc1a84d21c530039af"
+      "content_sha256": "ac6891bc56ff17deede954185060859f6a4da7c95af02dd165219081b0704370"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-1b74aa6f28fb6f3c",
@@ -3020,7 +3020,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-d595c1751839b1f6",
-      "front_text": "Eksamenstrap: Kan man sætte lighedstegn mellem Freud, Lacan og Laplanche?",
+      "front_text": "Kan man sætte lighedstegn mellem Freud, Lacan og Laplanche?",
       "back_html_sanitized": "<div>Nej; f.eks. flytter fransk psykoanalyse fokus fra biologiske instinkter mod sproget og &#x27;den anden&#x27; som konstituerende for subjektet.</div>",
       "back_text": "Nej; f.eks. flytter fransk psykoanalyse fokus fra biologiske instinkter mod sproget og 'den anden' som konstituerende for subjektet.",
       "tags": [
@@ -3032,7 +3032,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "6c692db245828258460f7fba150f7f754a8bb7681d1a854fa7807e32986734a6"
+      "content_sha256": "e621a743807cecfc0c16d5aeef13f44e5b39338c85d57301a77cd67eae667641"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-0cc970326b3ff885",
@@ -3085,7 +3085,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-0501fd474fa65f0e",
-      "front_text": "Eksamenstrap: Er fænomenologi det samme som simpel introspektion?",
+      "front_text": "Er fænomenologi det samme som simpel introspektion?",
       "back_html_sanitized": "<div>Nej; det handler ikke kun om at kigge indad, men om at beskrive strukturen i menneskets rettethed (intentionalitet) mod verden.</div>",
       "back_text": "Nej; det handler ikke kun om at kigge indad, men om at beskrive strukturen i menneskets rettethed (intentionalitet) mod verden.",
       "tags": [
@@ -3097,7 +3097,7 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "b13dfba631655b497e09ecf45e3949e45d5042e0e8d9d0a090e7bcb7e7cfec0a"
+      "content_sha256": "2c7797df81c6147523d8449625f94d1e06cfeaff4979ba8d14bd868f13b1395c"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-6b9d4c21b52c6281",
@@ -3168,7 +3168,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-54977f574f45f6c9",
-      "front_text": "Eksamenstrap: Ignorerer humanistisk psykologi menneskelig lidelse?",
+      "front_text": "Ignorerer humanistisk psykologi menneskelig lidelse?",
       "back_html_sanitized": "<div>Nej, men den ser lidelse som et resultat af blokerede vækstmuligheder eller manglende anerkendelse (unconditional positive regard).</div>",
       "back_text": "Nej, men den ser lidelse som et resultat af blokerede vækstmuligheder eller manglende anerkendelse (unconditional positive regard).",
       "tags": [
@@ -3180,7 +3180,7 @@
       ],
       "category_slug": "styrker-og-begraensninger",
       "category_title": "Styrker og begrænsninger",
-      "content_sha256": "d213b3db3d53a991b98cb9ef19f20b1cdcdd8e5e5aa56d6b68a716a48e180b8c"
+      "content_sha256": "53c4b4eeeff10463fc77db4ca9a0c5639ca105e2ee1497b871b084c973754e7f"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
@@ -3266,7 +3266,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-7967d48bb42930ac",
-      "front_text": "Eksamenstrap: Betyder anti-essentialisme, at mennesket ikke er virkeligt eller ikke lider?",
+      "front_text": "Betyder anti-essentialisme, at mennesket ikke er virkeligt eller ikke lider?",
       "back_html_sanitized": "<div>Nej; det betyder blot, at måden vi forstår os selv og vores lidelse på er formet af historiske normer og tilgængelige subjektpositioner.</div>",
       "back_text": "Nej; det betyder blot, at måden vi forstår os selv og vores lidelse på er formet af historiske normer og tilgængelige subjektpositioner.",
       "tags": [
@@ -3278,7 +3278,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "c1b4f94e55d5cea23d351d8cda37c68cd1aa8a928afa9b7ecc7ef41caa22bd31"
+      "content_sha256": "a3cf4b778905b445948a3cd93e1f6d32ee9cdf4590e060a904064283eda40971"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-28c19010871a8ee7",
@@ -3365,7 +3365,7 @@
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-37386fa61ba1195b",
-      "front_text": "Eksamenstrap: Er narrativ identitet det samme som en diskursiv position?",
+      "front_text": "Er narrativ identitet det samme som en diskursiv position?",
       "back_html_sanitized": "<div>Ikke helt; narrativ identitet fokuserer mere på den personlige oplevelse af tidslig sammenhæng, mens diskursiv teori fokuserer på magt og kategorisering.</div>",
       "back_text": "Ikke helt; narrativ identitet fokuserer mere på den personlige oplevelse af tidslig sammenhæng, mens diskursiv teori fokuserer på magt og kategorisering.",
       "tags": [
@@ -3379,7 +3379,7 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "fe58dc413da7d12fb8b3903c9afd87effdb4ca92e0e754d9bdc3f8ec959d3f4a"
+      "content_sha256": "b9166fed2095180151ef2555d9b0295b047c370093063b391d201e2d6bcd2260"
     },
     {
       "card_id": "nlm-oral-exam-comparison-workshop-0e5f1b3a1e1042dd",
@@ -3500,7 +3500,7 @@
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-4874edc87fc3540d",
-      "front_text": "Eksamenstrap: Hvad er en typisk misforståelse af psykoanalysens syn på barndommen?",
+      "front_text": "Hvad er en typisk misforståelse af psykoanalysens syn på barndommen?",
       "back_html_sanitized": "<div>At reducere teorien til ren barndomsdeterminisme og overse, hvordan fransk psykoanalyse inddrager sprog og &#x27;den anden&#x27; som konstituerende faktorer.</div>",
       "back_text": "At reducere teorien til ren barndomsdeterminisme og overse, hvordan fransk psykoanalyse inddrager sprog og 'den anden' som konstituerende faktorer.",
       "tags": [
@@ -3512,11 +3512,11 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "5ab3b055ac94d0762230d0d0c2277cf69b9261fe89dac95b11d854c76809a3b3"
+      "content_sha256": "e771e5a49527948f48fe0cce10baca75e94bee93df5a7f985054de3c1aeb9498"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-38e4a98f86c6dafe",
-      "front_text": "Sammenligning: Hvordan adskiller det ubevidste i klassisk tysk psykoanalyse sig fra den franske tradition?",
+      "front_text": "Hvordan adskiller det ubevidste i klassisk tysk psykoanalyse sig fra den franske tradition?",
       "back_html_sanitized": "<div>Klassisk psykoanalyse fokuserer på drift-konflikter, mens fransk psykoanalyse (f.eks. Lacan) ser det ubevidste som struktureret gennem sprog og relationen til &#x27;den anden&#x27;.</div>",
       "back_text": "Klassisk psykoanalyse fokuserer på drift-konflikter, mens fransk psykoanalyse (f.eks. Lacan) ser det ubevidste som struktureret gennem sprog og relationen til 'den anden'.",
       "tags": [
@@ -3528,7 +3528,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "bc81724b990fabdfe385ba10276a2ef86215b0521ed3c380b8784df2414cd5dc"
+      "content_sha256": "1bbfc7f499e8347617b0dec5edb0b6f379498bff79e6f75694a3c0ffbd9c0737"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-c8c4170a422aeb8f",
@@ -3581,7 +3581,7 @@
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-db5467846cba23d6",
-      "front_text": "Eksamenstrap: Er fænomenologi det samme som simpel introspektion?",
+      "front_text": "Er fænomenologi det samme som simpel introspektion?",
       "back_html_sanitized": "<div>Nej; det er en systematisk undersøgelse af meningsstrukturer, kropslighed og personens situerede relation til verden, ikke blot &#x27;at mærke efter&#x27;.</div>",
       "back_text": "Nej; det er en systematisk undersøgelse af meningsstrukturer, kropslighed og personens situerede relation til verden, ikke blot 'at mærke efter'.",
       "tags": [
@@ -3593,11 +3593,11 @@
       ],
       "category_slug": "personbegreb",
       "category_title": "Personbegreb",
-      "content_sha256": "d09549d585e405b1ad31a86df55a20147e244a7c9e00dff91f871b4bd49a2042"
+      "content_sha256": "d8d59488856f9803685f8da5cf3428d990017c22d54114d5c113061a20ff7eac"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-9d3c235ae73889dc",
-      "front_text": "Sammenligning: Hvad er den primære forskel på fænomenologisk og psykoanalytisk metode?",
+      "front_text": "Hvad er den primære forskel på fænomenologisk og psykoanalytisk metode?",
       "back_html_sanitized": "<div>Fænomenologien tager udgangspunkt i den umiddelbare levede erfaring, mens psykoanalysen insisterer på, at den afgørende mening ofte er ubevidst og kræver tolkning.</div>",
       "back_text": "Fænomenologien tager udgangspunkt i den umiddelbare levede erfaring, mens psykoanalysen insisterer på, at den afgørende mening ofte er ubevidst og kræver tolkning.",
       "tags": [
@@ -3610,7 +3610,7 @@
       ],
       "category_slug": "metode-og-evidens",
       "category_title": "Metode og evidens",
-      "content_sha256": "2cc50c8943d576c3808aa8600e8efd8edcc4bd4cb41fddacba15dd20cb8f52ef"
+      "content_sha256": "4fe8eecd0af52b111d94f80deda084f2b2ef743a2f6609476fc4e9156cd9e4ca"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-576ace16a0a15ea7",
@@ -3664,7 +3664,7 @@
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f",
-      "front_text": "Eksamenstrap: Er den eksistentielle frihed ubegrænset?",
+      "front_text": "Er den eksistentielle frihed ubegrænset?",
       "back_html_sanitized": "<div>Nej; friheden er altid situeret og begrænset af eksistentielle grundvilkår som fakticitet, krop og det at være kastet ind i en verden.</div>",
       "back_text": "Nej; friheden er altid situeret og begrænset af eksistentielle grundvilkår som fakticitet, krop og det at være kastet ind i en verden.",
       "tags": [
@@ -3676,7 +3676,7 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "848512d72acd55d2490344ef4705207ea46658deb8688beac1426aeb79f1fe9b"
+      "content_sha256": "751dadff4c197439ee96dc58511ed556d3622d923e24a9523f35283294a22603"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-8cfeb0b6135a8a4e",
@@ -3697,7 +3697,7 @@
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-01e8b5492fab89ba",
-      "front_text": "Sammenligning: Hvad adskiller eksistentiel psykologi fra fænomenologisk psykologi?",
+      "front_text": "Hvad adskiller eksistentiel psykologi fra fænomenologisk psykologi?",
       "back_html_sanitized": "<div>Eksistentiel psykologi bygger på fænomenologien, men flytter fokus mod personens valg, frihed, angst og endelighed.</div>",
       "back_text": "Eksistentiel psykologi bygger på fænomenologien, men flytter fokus mod personens valg, frihed, angst og endelighed.",
       "tags": [
@@ -3710,7 +3710,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "27c7630ada417740168be8e24d572d6b5274f0e7bc1ffa6fb6e2f95a3a8c3ec9"
+      "content_sha256": "fd51a06b4c308bbe07db2414601f43aa6b82a29d53952687ada250a6b41f1411"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-a78984b0ede74f31",
@@ -3746,7 +3746,7 @@
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-55d0613b8c92f17e",
-      "front_text": "Eksamenstrap: Overser humanistisk psykologi menneskelig lidelse?",
+      "front_text": "Overser humanistisk psykologi menneskelig lidelse?",
       "back_html_sanitized": "<div>Nej, men den vælger at fokusere på vækstpotentiale, ressourcer og autenticitet som modsvar til rent deficit-orienterede (mangel-fokuserede) modeller.</div>",
       "back_text": "Nej, men den vælger at fokusere på vækstpotentiale, ressourcer og autenticitet som modsvar til rent deficit-orienterede (mangel-fokuserede) modeller.",
       "tags": [
@@ -3758,11 +3758,11 @@
       ],
       "category_slug": "eksamenstraps",
       "category_title": "Eksamenstraps",
-      "content_sha256": "6129108fb545c5990f8af15e801e13c58f13e3c9f3bce7e62a629dbc1f9f9bbd"
+      "content_sha256": "2559839df5a195e476cfa6f2d74b05f699beeca67a5d42dd59f8793f0a6e8d2b"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef",
-      "front_text": "Sammenligning: Hvad er forskellen på humanistisk og eksistentiel psykologi?",
+      "front_text": "Hvad er forskellen på humanistisk og eksistentiel psykologi?",
       "back_html_sanitized": "<div>Begge værdsætter autenticitet, men humanismen er mere vækst- og terapi-orienteret, mens eksistentiel psykologi centrerer sig om angst, valg og endelighed.</div>",
       "back_text": "Begge værdsætter autenticitet, men humanismen er mere vækst- og terapi-orienteret, mens eksistentiel psykologi centrerer sig om angst, valg og endelighed.",
       "tags": [
@@ -3775,7 +3775,7 @@
       ],
       "category_slug": "sammenligninger",
       "category_title": "Sammenligninger",
-      "content_sha256": "b6ad873589e1a4e26765ba4c43ef40f5248376573be3774bdd17212dd5f555d2"
+      "content_sha256": "6651e9fd552d6c2556f6f53034ce93583b57aff4e0114b1cf0b364c92f886dba"
     },
     {
       "card_id": "nlm-psychoanalysis-experience-humanism-047d04f955062ad3",

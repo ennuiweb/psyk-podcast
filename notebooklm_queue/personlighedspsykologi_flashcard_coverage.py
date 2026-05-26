@@ -66,6 +66,15 @@ STOPWORDS = {
     "personlighed",
     "personlighedspsykologi",
 }
+CENTRAL_CONCEPT_TOKEN_ALIASES = {
+    "action possibilities": "handlemuligheder handlepotentiale action possibilities",
+    "conditions": "betingelser livsbetingelser conditions",
+    "everyday life": "hverdagsliv hverdagslivet dagligliv everyday life",
+    "expansive agency": "ekspansivt handlepotentiale expansive agency",
+    "participation": "deltagelse deltager participation",
+    "social practice": "social praksis praksisser social practice",
+    "subjectivity": "subjektivitet subjektivitetens subjectivity",
+}
 
 
 class FlashcardCoverageError(ValueError):
@@ -159,6 +168,12 @@ def _normalize_cards(deck: dict[str, Any], matrix: dict[str, Any]) -> list[dict[
     return cards
 
 
+def _coverage_aliases(field: str, expected_text: str) -> str:
+    if field != "central_concepts":
+        return ""
+    return CENTRAL_CONCEPT_TOKEN_ALIASES.get(_text(expected_text).casefold(), "")
+
+
 def _unit(unit_id: str, field: str, label: str, expected_text: str, priority: str = "normal", target_id: str = "") -> dict[str, Any]:
     return {
         "unit_id": unit_id,
@@ -167,7 +182,7 @@ def _unit(unit_id: str, field: str, label: str, expected_text: str, priority: st
         "expected_text": expected_text,
         "priority": priority,
         "target_theory_id": target_id,
-        "expected_tokens": sorted(_tokens(label + " " + expected_text)),
+        "expected_tokens": sorted(_tokens(label + " " + expected_text + " " + _coverage_aliases(field, expected_text))),
     }
 
 

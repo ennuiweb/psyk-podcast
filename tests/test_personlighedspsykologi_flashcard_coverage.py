@@ -138,6 +138,43 @@ def test_build_coverage_report_marks_covered_and_missing_units(tmp_path):
     assert report["source_notes"][0]["status"] in {"strong", "partial"}
 
 
+def test_central_concept_coverage_uses_danish_aliases_without_type_prefix(tmp_path):
+    matrix = _matrix()
+    matrix["rows"][0]["central_concepts"] = ["subjectivity"]
+    matrix_path = tmp_path / "matrix.json"
+    deck_path = tmp_path / "deck.json"
+    notes_index_path = tmp_path / "notes-index.json"
+    notes_registry_path = tmp_path / "notes-registry.json"
+    _write_json(matrix_path, matrix)
+    _write_json(notes_index_path, _notes())
+    _write_json(notes_registry_path, _notes())
+    _write_json(
+        deck_path,
+        _deck(
+            [
+                _card(
+                    "card-subjectivity",
+                    "personbegreb",
+                    "Hvordan forstår kritisk psykologi subjektivitet?",
+                    "Subjektivitet forstås gennem deltagelse i hverdagsliv og social praksis.",
+                )
+            ]
+        ),
+    )
+
+    report = coverage.build_coverage_report(
+        repo_root=tmp_path,
+        matrix_path=matrix_path,
+        deck_path=deck_path,
+        source_notes_index_path=notes_index_path,
+        source_notes_registry_path=notes_registry_path,
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    units = {unit["unit_id"]: unit for unit in report["rows"][0]["units"]}
+    assert units["test_theory:central_concepts:1"]["status"] in {"strong", "partial"}
+
+
 def test_build_coverage_report_rejects_cards_without_theory_tags(tmp_path):
     matrix_path = tmp_path / "matrix.json"
     deck_path = tmp_path / "deck.json"

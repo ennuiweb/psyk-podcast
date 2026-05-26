@@ -1,13 +1,13 @@
 # Full Matrix Flashcard Coverage Report
 
-Generated: `2026-05-26T13:20:15Z`
+Generated: `2026-05-26T15:10:00Z`
 Deck: `notebooklm-fuld-matrix-personlighedspsykologi` (319 cards)
 
 ## Summary
 
 - Matrix rows: 13
 - Coverage units: 367
-- Unit status counts: `{'partial': 158, 'strong': 209}`
+- Unit status counts: `{'partial': 167, 'strong': 200}`
 - High-priority missing/weak units: 0
 - Source-note status counts: `{'partial': 4, 'strong': 6}`
 
@@ -20,34 +20,34 @@ Deck: `notebooklm-fuld-matrix-personlighedspsykologi` (319 cards)
 
 | Field | Strong | Partial | Weak | Missing |
 |---|---:|---:|---:|---:|
-| `central_concepts` | 86 | 9 | 0 | 0 |
-| `comparison_targets` | 1 | 27 | 0 | 0 |
+| `central_concepts` | 85 | 10 | 0 | 0 |
+| `comparison_targets` | 0 | 28 | 0 | 0 |
 | `course_summary` | 13 | 0 | 0 | 0 |
-| `likely_misunderstandings` | 8 | 25 | 0 | 0 |
+| `likely_misunderstandings` | 4 | 29 | 0 | 0 |
 | `limitations` | 13 | 19 | 0 | 0 |
-| `method_evidence_style` | 5 | 8 | 0 | 0 |
-| `model_of_person` | 10 | 3 | 0 | 0 |
+| `method_evidence_style` | 4 | 9 | 0 | 0 |
+| `model_of_person` | 9 | 4 | 0 | 0 |
 | `orientation_points` | 17 | 35 | 0 | 0 |
 | `personality_or_subjectivity_model` | 11 | 2 | 0 | 0 |
 | `source_note_basis` | 28 | 8 | 0 | 0 |
-| `strengths` | 17 | 22 | 0 | 0 |
+| `strengths` | 16 | 23 | 0 | 0 |
 
 ## Theory Rows
 
 | Theory | Status | Cards | Unit Status Counts |
 |---|---|---:|---|
-| `trait_and_assessment_psychology` | `strong` | 50 | `{'partial': 24, 'strong': 8}` |
+| `trait_and_assessment_psychology` | `strong` | 50 | `{'partial': 25, 'strong': 7}` |
 | `dynamic_personality_development` | `strong` | 15 | `{'partial': 8, 'strong': 16}` |
 | `biosocial_personality_perspectives` | `strong` | 14 | `{'partial': 8, 'strong': 17}` |
 | `personality_functioning_and_pathology` | `strong` | 26 | `{'partial': 7, 'strong': 18}` |
-| `psychoanalytic_personality_theory` | `strong` | 38 | `{'partial': 13, 'strong': 18}` |
-| `phenomenological_psychology` | `strong` | 41 | `{'partial': 7, 'strong': 20}` |
-| `existential_psychology` | `strong` | 33 | `{'partial': 11, 'strong': 18}` |
-| `humanistic_psychology` | `strong` | 28 | `{'partial': 11, 'strong': 17}` |
-| `critical_personalism` | `strong` | 20 | `{'partial': 11, 'strong': 12}` |
-| `critical_psychology` | `strong` | 41 | `{'partial': 20, 'strong': 7}` |
+| `psychoanalytic_personality_theory` | `strong` | 38 | `{'partial': 14, 'strong': 17}` |
+| `phenomenological_psychology` | `strong` | 41 | `{'partial': 8, 'strong': 19}` |
+| `existential_psychology` | `strong` | 33 | `{'partial': 13, 'strong': 16}` |
+| `humanistic_psychology` | `strong` | 28 | `{'partial': 12, 'strong': 16}` |
+| `critical_personalism` | `strong` | 20 | `{'partial': 12, 'strong': 11}` |
+| `critical_psychology` | `strong` | 41 | `{'partial': 21, 'strong': 6}` |
 | `sociocultural_poststructural_approaches` | `strong` | 47 | `{'partial': 15, 'strong': 19}` |
-| `narrative_psychology` | `strong` | 41 | `{'partial': 13, 'strong': 20}` |
+| `narrative_psychology` | `strong` | 41 | `{'partial': 14, 'strong': 19}` |
 | `comparative_theory_analysis` | `strong` | 44 | `{'partial': 10, 'strong': 19}` |
 
 ## High-Priority Missing Or Weak Units

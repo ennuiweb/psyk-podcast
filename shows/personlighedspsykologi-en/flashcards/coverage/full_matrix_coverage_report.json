@@ -2,7 +2,7 @@
   "version": 1,
   "artifact_type": "personlighedspsykologi_flashcard_matrix_coverage",
   "subject_slug": "personlighedspsykologi",
-  "generated_at": "2026-05-26T13:20:15Z",
+  "generated_at": "2026-05-26T15:10:00Z",
   "inputs": {
     "matrix": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json",
@@ -10,7 +10,7 @@
     },
     "deck": {
       "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",
-      "fingerprint": "30858e76f913fc8c63872596422040cf793cbd8c57c2a80a4cdc6e88bfb59b92"
+      "fingerprint": "9986e205b00ed9e6a0f8c6682d448e35992838a8d7aa5e02363ef05bdda70245"
     },
     "source_notes_index": {
       "path": "shows/personlighedspsykologi-en/student_synthesis/source_notes_index.json",
@@ -37,36 +37,35 @@
     "row_count": 13,
     "unit_count": 367,
     "unit_status_counts": {
-      "partial": 158,
-      "strong": 209
+      "partial": 167,
+      "strong": 200
     },
     "field_status_counts": {
       "central_concepts": {
-        "partial": 9,
-        "strong": 86
+        "partial": 10,
+        "strong": 85
       },
       "comparison_targets": {
-        "partial": 27,
-        "strong": 1
+        "partial": 28
       },
       "course_summary": {
         "strong": 13
       },
       "likely_misunderstandings": {
-        "partial": 25,
-        "strong": 8
+        "partial": 29,
+        "strong": 4
       },
       "limitations": {
         "partial": 19,
         "strong": 13
       },
       "method_evidence_style": {
-        "partial": 8,
-        "strong": 5
+        "partial": 9,
+        "strong": 4
       },
       "model_of_person": {
-        "partial": 3,
-        "strong": 10
+        "partial": 4,
+        "strong": 9
       },
       "orientation_points": {
         "partial": 35,
@@ -81,8 +80,8 @@
         "strong": 28
       },
       "strengths": {
-        "partial": 22,
-        "strong": 17
+        "partial": 23,
+        "strong": 16
       }
     },
     "source_note_status_counts": {
@@ -106,8 +105,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 24,
-        "strong": 8
+        "partial": 25,
+        "strong": 7
       },
       "units": [
         {
@@ -168,8 +167,8 @@
           "best_overlap": 0.0526,
           "card_ids": [
             "nlm-global-calibration-synthesis-bb9d79a78ceb1644",
-            "nlm-measurement-development-pathology-6bc5c513ead092bf",
-            "nlm-global-calibration-synthesis-2b293930b0d88370"
+            "nlm-global-calibration-synthesis-2b293930b0d88370",
+            "nlm-measurement-development-pathology-6bc5c513ead092bf"
           ]
         },
         {
@@ -247,9 +246,9 @@
           "card_ids": [
             "nlm-global-calibration-synthesis-69adbb54141fe7b9",
             "nlm-measurement-development-pathology-7336142296575ef4",
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
-            "nlm-global-calibration-synthesis-342e4206b0e6dbf3"
+            "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
+            "nlm-measurement-development-pathology-90a9904841e0972c"
           ]
         },
         {
@@ -261,11 +260,11 @@
           "confidence": "high",
           "best_overlap": 0.4,
           "card_ids": [
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
             "nlm-global-calibration-synthesis-69adbb54141fe7b9",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -273,15 +272,15 @@
           "field": "central_concepts",
           "label": "trait and assessment psychology: begreb",
           "priority": "normal",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.5,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.3333,
           "card_ids": [
             "nlm-global-calibration-synthesis-907f45ba9e513c68",
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-88213b01c7b243be"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -293,11 +292,10 @@
           "confidence": "medium",
           "best_overlap": 0.3333,
           "card_ids": [
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68",
-            "nlm-measurement-development-pathology-88213b01c7b243be"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -309,11 +307,10 @@
           "confidence": "high",
           "best_overlap": 0.6,
           "card_ids": [
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68",
-            "nlm-measurement-development-pathology-88213b01c7b243be"
+            "nlm-measurement-development-pathology-90a9904841e0972c"
           ]
         },
         {
@@ -326,10 +323,9 @@
           "best_overlap": 0.3333,
           "card_ids": [
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68",
-            "nlm-measurement-development-pathology-88213b01c7b243be"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -339,13 +335,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.5714,
+          "best_overlap": 0.4286,
           "card_ids": [
-            "nlm-measurement-development-pathology-88213b01c7b243be",
             "nlm-global-calibration-synthesis-501d2f3c5985b7ff",
             "nlm-global-calibration-synthesis-e4bf8a88e0e53013",
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
-            "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6"
+            "nlm-measurement-development-pathology-88213b01c7b243be",
+            "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
+            "nlm-global-calibration-synthesis-342e4206b0e6dbf3"
           ]
         },
         {
@@ -358,10 +354,10 @@
           "best_overlap": 0.4286,
           "card_ids": [
             "nlm-global-calibration-synthesis-501d2f3c5985b7ff",
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -373,11 +369,11 @@
           "confidence": "medium",
           "best_overlap": 0.2857,
           "card_ids": [
-            "nlm-measurement-development-pathology-97feedb8a23e68ee",
             "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
             "nlm-gap-repair-source-basis-e735dd293e0734d4",
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-global-calibration-synthesis-907f45ba9e513c68"
+            "nlm-measurement-development-pathology-90a9904841e0972c",
+            "nlm-measurement-development-pathology-97feedb8a23e68ee"
           ]
         },
         {
@@ -474,9 +470,9 @@
           "best_overlap": 0.2222,
           "card_ids": [
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-df072e37ce88baa4",
             "nlm-gap-repair-comparisons-traps-4d96666ea8352c91",
-            "nlm-global-calibration-synthesis-e4bf8a88e0e53013"
+            "nlm-global-calibration-synthesis-e4bf8a88e0e53013",
+            "nlm-measurement-development-pathology-df072e37ce88baa4"
           ]
         },
         {
@@ -489,9 +485,9 @@
           "best_overlap": 0.1,
           "card_ids": [
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-df072e37ce88baa4",
             "nlm-gap-repair-comparisons-traps-4d96666ea8352c91",
-            "nlm-global-calibration-synthesis-e4bf8a88e0e53013"
+            "nlm-global-calibration-synthesis-e4bf8a88e0e53013",
+            "nlm-measurement-development-pathology-df072e37ce88baa4"
           ]
         },
         {
@@ -504,9 +500,9 @@
           "best_overlap": 0.1111,
           "card_ids": [
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-df072e37ce88baa4",
             "nlm-gap-repair-comparisons-traps-4d96666ea8352c91",
-            "nlm-global-calibration-synthesis-e4bf8a88e0e53013"
+            "nlm-global-calibration-synthesis-e4bf8a88e0e53013",
+            "nlm-measurement-development-pathology-df072e37ce88baa4"
           ]
         },
         {
@@ -519,9 +515,9 @@
           "best_overlap": 0.0909,
           "card_ids": [
             "nlm-global-calibration-synthesis-342e4206b0e6dbf3",
-            "nlm-measurement-development-pathology-df072e37ce88baa4",
             "nlm-gap-repair-comparisons-traps-4d96666ea8352c91",
-            "nlm-global-calibration-synthesis-e4bf8a88e0e53013"
+            "nlm-global-calibration-synthesis-e4bf8a88e0e53013",
+            "nlm-measurement-development-pathology-df072e37ce88baa4"
           ]
         },
         {
@@ -531,7 +527,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0556,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-bb14b2e6ac778b9a",
             "nlm-measurement-development-pathology-e3f1f9e5758e0e7c",
@@ -736,10 +732,10 @@
           "best_overlap": 0.5714,
           "card_ids": [
             "nlm-coverage-closure-dynamic-personality-development-strengths-2",
-            "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-1"
+            "nlm-coverage-closure-dynamic-personality-development-strengths-1",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         },
         {
@@ -800,10 +796,10 @@
           "best_overlap": 0.5714,
           "card_ids": [
             "nlm-coverage-closure-dynamic-personality-development-strengths-1",
-            "nlm-measurement-development-pathology-a26c2fce7bf153c8",
             "nlm-coverage-closure-dynamic-personality-development-limitations-1",
             "nlm-coverage-closure-dynamic-personality-development-limitations-2",
-            "nlm-coverage-closure-dynamic-personality-development-strengths-2"
+            "nlm-coverage-closure-dynamic-personality-development-strengths-2",
+            "nlm-coverage-closure-dynamic-personality-development-strengths-3"
           ]
         },
         {
@@ -1764,8 +1760,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 13,
-        "strong": 18
+        "partial": 14,
+        "strong": 17
       },
       "units": [
         {
@@ -2098,13 +2094,13 @@
           "field": "likely_misunderstandings",
           "label": "psychoanalytic personality theory: eksamenstrap",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.125,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-psychoanalysis-experience-humanism-4874edc87fc3540d",
             "nlm-global-calibration-synthesis-92c858cd18a5fb8c",
-            "nlm-global-calibration-synthesis-f9e88cc1a0f398a8"
+            "nlm-global-calibration-synthesis-f9e88cc1a0f398a8",
+            "nlm-psychoanalysis-experience-humanism-4874edc87fc3540d"
           ]
         },
         {
@@ -2128,11 +2124,11 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0833,
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-psychoanalysis-experience-humanism-4874edc87fc3540d",
             "nlm-global-calibration-synthesis-92c858cd18a5fb8c",
-            "nlm-global-calibration-synthesis-f9e88cc1a0f398a8"
+            "nlm-global-calibration-synthesis-f9e88cc1a0f398a8",
+            "nlm-psychoanalysis-experience-humanism-4874edc87fc3540d"
           ]
         },
         {
@@ -2154,7 +2150,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0526,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-301d635fa29f2786"
           ]
@@ -2239,8 +2235,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 7,
-        "strong": 20
+        "partial": 8,
+        "strong": 19
       },
       "units": [
         {
@@ -2378,9 +2374,9 @@
           "card_ids": [
             "nlm-coverage-closure-phenomenological-psychology-source-note-basis-jaque-tabe-d2582dbb06fef94e",
             "nlm-coverage-closure-phenomenological-psychology-strengths-2",
-            "nlm-global-calibration-synthesis-b25c8c3a04cd0cf6",
             "nlm-coverage-closure-phenomenological-psychology-limitations-1",
-            "nlm-coverage-closure-phenomenological-psychology-limitations-2"
+            "nlm-coverage-closure-phenomenological-psychology-limitations-2",
+            "nlm-coverage-closure-phenomenological-psychology-source-note-basis-anes-tabel"
           ]
         },
         {
@@ -2548,14 +2544,14 @@
           "field": "likely_misunderstandings",
           "label": "phenomenological psychology: eksamenstrap",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1429,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-oral-exam-comparison-workshop-0501fd474fa65f0e",
             "nlm-global-calibration-synthesis-1422dfe5ea76b35a",
             "nlm-global-calibration-synthesis-74eb981c5bd20cf6",
-            "nlm-global-calibration-synthesis-9ba70944e1ad6c5b"
+            "nlm-global-calibration-synthesis-9ba70944e1ad6c5b",
+            "nlm-oral-exam-comparison-workshop-0501fd474fa65f0e"
           ]
         },
         {
@@ -2565,12 +2561,12 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0769,
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-oral-exam-comparison-workshop-0501fd474fa65f0e",
             "nlm-global-calibration-synthesis-1422dfe5ea76b35a",
             "nlm-global-calibration-synthesis-74eb981c5bd20cf6",
-            "nlm-global-calibration-synthesis-9ba70944e1ad6c5b"
+            "nlm-global-calibration-synthesis-9ba70944e1ad6c5b",
+            "nlm-oral-exam-comparison-workshop-0501fd474fa65f0e"
           ]
         },
         {
@@ -2580,7 +2576,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0625,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-measurement-development-pathology-9c34c5713a895b98"
           ]
@@ -2592,7 +2588,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0714,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-psychoanalysis-experience-humanism-01e8b5492fab89ba"
           ]
@@ -2604,7 +2600,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0556,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-e2b395a19dae0af8"
           ]
@@ -2673,8 +2669,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 11,
-        "strong": 18
+        "partial": 13,
+        "strong": 16
       },
       "units": [
         {
@@ -2812,8 +2808,7 @@
           "best_overlap": 0.75,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel"
           ]
         },
         {
@@ -2826,8 +2821,7 @@
           "best_overlap": 0.5,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473"
           ]
         },
         {
@@ -2841,8 +2835,7 @@
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-6950b434dda466d9",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-global-calibration-synthesis-6950b434dda466d9"
           ]
         },
         {
@@ -2855,8 +2848,7 @@
           "best_overlap": 0.75,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel"
           ]
         },
         {
@@ -2869,8 +2861,7 @@
           "best_overlap": 0.5,
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473"
           ]
         },
         {
@@ -2884,8 +2875,7 @@
           "card_ids": [
             "nlm-global-calibration-synthesis-7b419b2978952c24",
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
-            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473"
           ]
         },
         {
@@ -2899,8 +2889,8 @@
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-90be33258338e7c5",
             "nlm-global-calibration-synthesis-62463c0e2321e1cb",
+            "nlm-global-calibration-synthesis-90be33258338e7c5",
             "nlm-psychoanalysis-experience-humanism-c63ddc3aa9750c8a"
           ]
         },
@@ -2915,8 +2905,7 @@
           "card_ids": [
             "nlm-coverage-closure-existential-psychology-source-note-basis-anes-tabel",
             "nlm-coverage-closure-existential-psychology-source-note-basis-jaque-tabel-all-8c0d05de4e9cc473",
-            "nlm-global-calibration-synthesis-1c9e13bf797279b2",
-            "nlm-global-calibration-synthesis-90be33258338e7c5"
+            "nlm-global-calibration-synthesis-1c9e13bf797279b2"
           ]
         },
         {
@@ -3008,14 +2997,14 @@
           "field": "likely_misunderstandings",
           "label": "existential psychology: eksamenstrap",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1667,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f",
             "nlm-global-calibration-synthesis-1c9e13bf797279b2",
             "nlm-global-calibration-synthesis-6950b434dda466d9",
-            "nlm-global-calibration-synthesis-7b419b2978952c24"
+            "nlm-global-calibration-synthesis-7b419b2978952c24",
+            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f"
           ]
         },
         {
@@ -3028,9 +3017,9 @@
           "best_overlap": 0.125,
           "card_ids": [
             "nlm-global-calibration-synthesis-1c9e13bf797279b2",
-            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f",
             "nlm-global-calibration-synthesis-6950b434dda466d9",
-            "nlm-global-calibration-synthesis-7b419b2978952c24"
+            "nlm-global-calibration-synthesis-7b419b2978952c24",
+            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f"
           ]
         },
         {
@@ -3040,12 +3029,12 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.1111,
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f",
             "nlm-global-calibration-synthesis-1c9e13bf797279b2",
             "nlm-global-calibration-synthesis-6950b434dda466d9",
-            "nlm-global-calibration-synthesis-7b419b2978952c24"
+            "nlm-global-calibration-synthesis-7b419b2978952c24",
+            "nlm-psychoanalysis-experience-humanism-783e3295887f4b3f"
           ]
         },
         {
@@ -3055,12 +3044,12 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0667,
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-global-calibration-synthesis-af26e236548ee71b",
-            "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef",
             "nlm-gap-repair-source-basis-a08bff2446e9e8db",
-            "nlm-oral-exam-comparison-workshop-155e31f866b70674"
+            "nlm-global-calibration-synthesis-af26e236548ee71b",
+            "nlm-oral-exam-comparison-workshop-155e31f866b70674",
+            "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef"
           ]
         },
         {
@@ -3068,9 +3057,9 @@
           "field": "comparison_targets",
           "label": "existential psychology: sammenligning",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1429,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0714,
           "card_ids": [
             "nlm-global-calibration-synthesis-16979a443b00c6f8",
             "nlm-critical-sociocultural-narrative-4fe38fef78b8a505",
@@ -3125,8 +3114,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 11,
-        "strong": 17
+        "partial": 12,
+        "strong": 16
       },
       "units": [
         {
@@ -3445,9 +3434,9 @@
           "field": "likely_misunderstandings",
           "label": "humanistic psychology: eksamenstrap",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1667,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-psychoanalysis-experience-humanism-55d0613b8c92f17e"
           ]
@@ -3459,7 +3448,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.1111,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-psychoanalysis-experience-humanism-55d0613b8c92f17e"
           ]
@@ -3471,12 +3460,12 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0714,
+          "best_overlap": 0.0,
           "card_ids": [
-            "nlm-global-calibration-synthesis-af26e236548ee71b",
-            "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef",
             "nlm-gap-repair-source-basis-a08bff2446e9e8db",
-            "nlm-oral-exam-comparison-workshop-155e31f866b70674"
+            "nlm-global-calibration-synthesis-af26e236548ee71b",
+            "nlm-oral-exam-comparison-workshop-155e31f866b70674",
+            "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef"
           ]
         },
         {
@@ -3486,11 +3475,11 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0714,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-45bbd12e5acd9e9c",
-            "nlm-global-calibration-synthesis-fbc3766f72f9a596",
-            "nlm-gap-repair-source-basis-a08bff2446e9e8db"
+            "nlm-gap-repair-source-basis-a08bff2446e9e8db",
+            "nlm-global-calibration-synthesis-fbc3766f72f9a596"
           ]
         },
         {
@@ -3557,8 +3546,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 11,
-        "strong": 12
+        "partial": 12,
+        "strong": 11
       },
       "units": [
         {
@@ -3616,7 +3605,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2143,
+          "best_overlap": 0.1429,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-4784e6316f09c3df"
           ]
@@ -3678,11 +3667,11 @@
           "confidence": "high",
           "best_overlap": 0.4,
           "card_ids": [
-            "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
             "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
             "nlm-critical-sociocultural-narrative-4784e6316f09c3df",
-            "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c",
-            "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72"
+            "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72",
+            "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
+            "nlm-global-calibration-synthesis-4f24f806cb9341a2"
           ]
         },
         {
@@ -3695,10 +3684,10 @@
           "best_overlap": 0.5,
           "card_ids": [
             "nlm-global-calibration-synthesis-4f24f806cb9341a2",
-            "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
             "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
             "nlm-critical-sociocultural-narrative-4784e6316f09c3df",
-            "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c"
+            "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72",
+            "nlm-global-calibration-synthesis-4cef15c7cbf3c823"
           ]
         },
         {
@@ -3710,9 +3699,7 @@
           "confidence": "high",
           "best_overlap": 0.5,
           "card_ids": [
-            "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
-            "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c",
-            "nlm-global-calibration-synthesis-4cef15c7cbf3c823"
+            "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720"
           ]
         },
         {
@@ -3724,9 +3711,7 @@
           "confidence": "high",
           "best_overlap": 0.6,
           "card_ids": [
-            "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
-            "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c",
-            "nlm-global-calibration-synthesis-4cef15c7cbf3c823"
+            "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720"
           ]
         },
         {
@@ -3736,13 +3721,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6667,
+          "best_overlap": 0.5,
           "card_ids": [
             "nlm-global-calibration-synthesis-4cef15c7cbf3c823",
             "nlm-oral-exam-comparison-workshop-d9da7d7cd1e34720",
             "nlm-critical-sociocultural-narrative-4784e6316f09c3df",
-            "nlm-critical-sociocultural-narrative-cdd5c9e6276e5a8c",
-            "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72"
+            "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72",
+            "nlm-global-calibration-synthesis-4f24f806cb9341a2"
           ]
         },
         {
@@ -3752,7 +3737,7 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.1,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-7ec1e57309c06fc7"
           ]
@@ -3764,7 +3749,7 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.1111,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-7ec1e57309c06fc7"
           ]
@@ -3774,9 +3759,9 @@
           "field": "strengths",
           "label": "critical personalism: styrke",
           "priority": "normal",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1429,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-7ec1e57309c06fc7"
           ]
@@ -3887,8 +3872,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 20,
-        "strong": 7
+        "partial": 21,
+        "strong": 6
       },
       "units": [
         {
@@ -3912,9 +3897,9 @@
           "field": "model_of_person",
           "label": "critical psychology: personbegreb",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.125,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0625,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-404ca67b9664642c",
             "nlm-critical-sociocultural-narrative-c307034512d48da5",
@@ -3946,7 +3931,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0625,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-a972a3a6a707ecb8"
           ]
@@ -3990,7 +3975,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.1579,
+          "best_overlap": 0.1053,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-93a975f4b37d4c78",
             "nlm-gap-repair-orientation-method-65a627eba22babb4",
@@ -4022,10 +4007,13 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.25,
+          "best_overlap": 0.1667,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e"
+            "nlm-critical-sociocultural-narrative-387d3398b78fc2f9",
+            "nlm-critical-sociocultural-narrative-4835a7872e8f89c5",
+            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e",
+            "nlm-critical-sociocultural-narrative-87fd0d7329f17199",
+            "nlm-critical-sociocultural-narrative-a972a3a6a707ecb8"
           ]
         },
         {
@@ -4035,10 +4023,13 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.25,
+          "best_overlap": 0.1667,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e"
+            "nlm-critical-sociocultural-narrative-387d3398b78fc2f9",
+            "nlm-critical-sociocultural-narrative-3ff82ff7f7cc0795",
+            "nlm-critical-sociocultural-narrative-404ca67b9664642c",
+            "nlm-critical-sociocultural-narrative-4835a7872e8f89c5"
           ]
         },
         {
@@ -4048,12 +4039,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.4,
+          "best_overlap": 0.4286,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-93a975f4b37d4c78",
             "nlm-global-calibration-synthesis-4d4b5604998ed22e",
             "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e"
+            "nlm-critical-sociocultural-narrative-404ca67b9664642c",
+            "nlm-critical-sociocultural-narrative-4835a7872e8f89c5"
           ]
         },
         {
@@ -4063,10 +4055,13 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.25,
+          "best_overlap": 0.1667,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e"
+            "nlm-critical-sociocultural-narrative-387d3398b78fc2f9",
+            "nlm-critical-sociocultural-narrative-3ff82ff7f7cc0795",
+            "nlm-critical-sociocultural-narrative-404ca67b9664642c",
+            "nlm-critical-sociocultural-narrative-45bbd12e5acd9e9c"
           ]
         },
         {
@@ -4076,10 +4071,10 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.2,
+          "best_overlap": 0.125,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e"
+            "nlm-critical-sociocultural-narrative-a972a3a6a707ecb8",
+            "nlm-oral-exam-comparison-workshop-957efa3d857a9dc4"
           ]
         },
         {
@@ -4089,13 +4084,13 @@
           "priority": "normal",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.2,
+          "best_overlap": 0.2857,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16",
             "nlm-critical-sociocultural-narrative-404ca67b9664642c",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e",
             "nlm-critical-sociocultural-narrative-c307034512d48da5",
-            "nlm-global-calibration-synthesis-16979a443b00c6f8"
+            "nlm-global-calibration-synthesis-16979a443b00c6f8",
+            "nlm-global-calibration-synthesis-e29290ac30ff8a76",
+            "nlm-critical-sociocultural-narrative-387d3398b78fc2f9"
           ]
         },
         {
@@ -4105,13 +4100,13 @@
           "priority": "normal",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.6,
+          "best_overlap": 0.5714,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-15d1d03517369d16",
             "nlm-critical-sociocultural-narrative-3ff82ff7f7cc0795",
-            "nlm-critical-sociocultural-narrative-77246e75ea0bf12e",
             "nlm-critical-sociocultural-narrative-93a975f4b37d4c78",
-            "nlm-gap-repair-comparisons-traps-84df633766a3290b"
+            "nlm-gap-repair-comparisons-traps-84df633766a3290b",
+            "nlm-gap-repair-orientation-method-65a627eba22babb4"
           ]
         },
         {
@@ -4231,7 +4226,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0526,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-global-calibration-synthesis-e29290ac30ff8a76"
           ]
@@ -4249,7 +4244,7 @@
             "nlm-critical-sociocultural-narrative-15d1d03517369d16",
             "nlm-critical-sociocultural-narrative-3ff82ff7f7cc0795",
             "nlm-critical-sociocultural-narrative-404ca67b9664642c",
-            "nlm-critical-sociocultural-narrative-93a975f4b37d4c78"
+            "nlm-critical-sociocultural-narrative-c307034512d48da5"
           ]
         },
         {
@@ -4317,7 +4312,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-critical-sociocultural-narrative-4d14e09dd980df24",
-            "nlm-critical-sociocultural-narrative-ada38ae766850dcd"
+            "nlm-critical-sociocultural-narrative-dee464ce1a5af44e"
           ]
         },
         {
@@ -4345,8 +4340,8 @@
           "confidence": "medium",
           "best_overlap": 0.0714,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-7451f07b5e3fb472",
-            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8",
+            "nlm-critical-sociocultural-narrative-7451f07b5e3fb472"
           ]
         },
         {
@@ -4425,8 +4420,8 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8",
+            "nlm-global-calibration-synthesis-770d7b58395427f3"
           ]
         },
         {
@@ -4441,8 +4436,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4457,8 +4451,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4473,8 +4466,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4490,7 +4482,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4505,8 +4497,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4521,8 +4512,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4537,8 +4527,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4554,7 +4543,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-critical-sociocultural-narrative-d214adf8a3196c74",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843"
+            "nlm-global-calibration-synthesis-487ba41f16cf2c53"
           ]
         },
         {
@@ -4570,7 +4559,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
             "nlm-global-calibration-synthesis-6cb9fe0b4001272e",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4585,8 +4574,7 @@
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-17b2c493b80b8f53",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-8d8d54201f311b39",
             "nlm-coverage-closure-sociocultural-poststructural-approaches-source-note-basi-bc8fbe589469746f",
-            "nlm-critical-sociocultural-narrative-b5f928e521d2c843",
-            "nlm-critical-sociocultural-narrative-d214adf8a3196c74"
+            "nlm-global-calibration-synthesis-4f5ad57682ac0ac8"
           ]
         },
         {
@@ -4719,7 +4707,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0526,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-global-calibration-synthesis-e29290ac30ff8a76"
           ]
@@ -4816,8 +4804,8 @@
       },
       "status": "strong",
       "unit_status_counts": {
-        "partial": 13,
-        "strong": 20
+        "partial": 14,
+        "strong": 19
       },
       "units": [
         {
@@ -4849,7 +4837,7 @@
             "nlm-oral-exam-comparison-workshop-4dbd6379dab6d034",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-critical-sociocultural-narrative-d911a1fd4317362d",
-            "nlm-critical-sociocultural-narrative-d21344de4dfff01e"
+            "nlm-global-calibration-synthesis-b5fe369e07ed1a7f"
           ]
         },
         {
@@ -4873,9 +4861,9 @@
           "field": "method_evidence_style",
           "label": "narrative psychology: metode/evidens",
           "priority": "high",
-          "status": "strong",
-          "confidence": "high",
-          "best_overlap": 0.1429,
+          "status": "partial",
+          "confidence": "medium",
+          "best_overlap": 0.0714,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-63edf5928d93e76b",
             "nlm-gap-repair-source-basis-1718f5f23f6a30e8",
@@ -4937,7 +4925,7 @@
           "priority": "high",
           "status": "strong",
           "confidence": "high",
-          "best_overlap": 0.2,
+          "best_overlap": 0.15,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-87ed234e40a7abcf",
             "nlm-gap-repair-orientation-method-be83cdd86d6210c3",
@@ -4957,9 +4945,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -4973,9 +4961,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -4989,9 +4977,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -5005,9 +4993,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-0cb0e548f71b8e0e"
+            "nlm-global-calibration-synthesis-0cb0e548f71b8e0e",
+            "nlm-global-calibration-synthesis-9478c59241d4a868"
           ]
         },
         {
@@ -5021,9 +5009,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -5038,8 +5026,8 @@
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
             "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
-            "nlm-global-calibration-synthesis-d1acc7a47b1c120d",
-            "nlm-gap-repair-source-basis-38e9666fe207ed0c"
+            "nlm-gap-repair-source-basis-38e9666fe207ed0c",
+            "nlm-global-calibration-synthesis-9478c59241d4a868"
           ]
         },
         {
@@ -5053,9 +5041,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -5069,9 +5057,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-critical-sociocultural-narrative-d911a1fd4317362d",
-            "nlm-gap-repair-source-basis-38e9666fe207ed0c"
+            "nlm-gap-repair-source-basis-38e9666fe207ed0c",
+            "nlm-global-calibration-synthesis-35f03816ef04b4df"
           ]
         },
         {
@@ -5085,9 +5073,9 @@
           "card_ids": [
             "nlm-coverage-closure-narrative-psychology-source-note-basis-jaque-tabel-alle-058eb93b7d36653a",
             "nlm-coverage-closure-narrative-psychology-source-note-basis-karla-traekteori",
-            "nlm-critical-sociocultural-narrative-4e0bcc0ed3439535",
             "nlm-gap-repair-source-basis-38e9666fe207ed0c",
-            "nlm-global-calibration-synthesis-9478c59241d4a868"
+            "nlm-global-calibration-synthesis-9478c59241d4a868",
+            "nlm-global-calibration-synthesis-d9a6b036f94aa1f9"
           ]
         },
         {
@@ -5099,9 +5087,9 @@
           "confidence": "medium",
           "best_overlap": 0.0769,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
             "nlm-global-calibration-synthesis-d9a6b036f94aa1f9",
-            "nlm-critical-sociocultural-narrative-e9134b75fda0273f"
+            "nlm-critical-sociocultural-narrative-e9134b75fda0273f",
+            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810"
           ]
         },
         {
@@ -5113,9 +5101,9 @@
           "confidence": "medium",
           "best_overlap": 0.0833,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
             "nlm-global-calibration-synthesis-d9a6b036f94aa1f9",
-            "nlm-critical-sociocultural-narrative-e9134b75fda0273f"
+            "nlm-critical-sociocultural-narrative-e9134b75fda0273f",
+            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810"
           ]
         },
         {
@@ -5127,9 +5115,9 @@
           "confidence": "high",
           "best_overlap": 0.125,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
             "nlm-global-calibration-synthesis-d9a6b036f94aa1f9",
-            "nlm-critical-sociocultural-narrative-e9134b75fda0273f"
+            "nlm-critical-sociocultural-narrative-e9134b75fda0273f",
+            "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810"
           ]
         },
         {
@@ -5223,7 +5211,7 @@
           "priority": "high",
           "status": "partial",
           "confidence": "medium",
-          "best_overlap": 0.0556,
+          "best_overlap": 0.0,
           "card_ids": [
             "nlm-critical-sociocultural-narrative-bb14b2e6ac778b9a",
             "nlm-measurement-development-pathology-e3f1f9e5758e0e7c",
@@ -5439,11 +5427,11 @@
           "confidence": "medium",
           "best_overlap": 0.0909,
           "card_ids": [
-            "nlm-critical-sociocultural-narrative-93a975f4b37d4c78",
             "nlm-gap-repair-orientation-method-65a627eba22babb4",
             "nlm-gap-repair-orientation-method-8da09e01d46d302e",
             "nlm-gap-repair-source-basis-fa446ba6b0e18eba",
-            "nlm-global-calibration-synthesis-6deda0893612a330"
+            "nlm-global-calibration-synthesis-6deda0893612a330",
+            "nlm-global-calibration-synthesis-9478c59241d4a868"
           ]
         },
         {
@@ -5472,8 +5460,7 @@
           "best_overlap": 0.4286,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
-            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16"
+            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb"
           ]
         },
         {
@@ -5487,9 +5474,9 @@
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16",
             "nlm-gap-repair-orientation-method-1ff28b077e882e93",
-            "nlm-global-calibration-synthesis-3d352bd5d455156d"
+            "nlm-global-calibration-synthesis-3d352bd5d455156d",
+            "nlm-global-calibration-synthesis-7dade5e716f8259a"
           ]
         },
         {
@@ -5518,8 +5505,7 @@
           "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
-            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16"
+            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb"
           ]
         },
         {
@@ -5532,8 +5518,7 @@
           "best_overlap": 0.6,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
-            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16"
+            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb"
           ]
         },
         {
@@ -5546,8 +5531,7 @@
           "best_overlap": 0.6667,
           "card_ids": [
             "nlm-coverage-closure-comparative-theory-analysis-method-evidence-style",
-            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
-            "nlm-critical-sociocultural-narrative-15d1d03517369d16"
+            "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb"
           ]
         },
         {
@@ -5715,7 +5699,7 @@
             "nlm-oral-exam-comparison-workshop-2bce621ebc691eeb",
             "nlm-critical-sociocultural-narrative-29d64d996f6e90c7",
             "nlm-global-calibration-synthesis-9478c59241d4a868",
-            "nlm-measurement-development-pathology-d7937490ccc81285"
+            "nlm-critical-sociocultural-narrative-15d1d03517369d16"
           ]
         },
         {

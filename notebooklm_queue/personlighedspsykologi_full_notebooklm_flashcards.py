@@ -41,6 +41,27 @@ FULL_NOTEBOOKLM_DECK_DESCRIPTION = (
 FULL_NOTEBOOKLM_GENERATOR_VERSION = "personlighedspsykologi-full-notebooklm-flashcards-v1"
 INCLUDED_REVIEW_STATUSES = frozenset({"candidate", "needs_review"})
 EXCLUDED_REVIEW_STATUSES = frozenset({"auto_rejected"})
+ALWAYS_REMOVABLE_FRONT_PREFIXES = frozenset(
+    {
+        "Agency",
+        "Begreb",
+        "Begrænsning",
+        "Eksamenstrap",
+        "Eksamensfælde",
+        "Historicitet",
+        "Kritik",
+        "Metode",
+        "Orienteringspunkt",
+        "Orienteringspunkter",
+        "Personbegreb",
+        "Sammenligning",
+        "Styrke",
+        "Styrker og begrænsninger",
+    }
+)
+CONDITIONAL_REMOVABLE_FRONT_PREFIX_KEYWORDS = {
+    "Trækpsykologi": ("træk", "assessment"),
+}
 
 
 class FullNotebookLMFlashcardError(ValueError):
@@ -123,11 +144,24 @@ def source_fingerprint(candidate_payloads: list[dict[str, Any]]) -> str:
     )
 
 
+def strip_safe_front_prefix(front: str) -> str:
+    match = re.match(r"^([^:]{1,55}):\s+(.+)$", front)
+    if not match:
+        return front
+    prefix, body = match.groups()
+    if prefix in ALWAYS_REMOVABLE_FRONT_PREFIXES:
+        return body
+    keywords = CONDITIONAL_REMOVABLE_FRONT_PREFIX_KEYWORDS.get(prefix)
+    if keywords and any(keyword in body.casefold() for keyword in keywords):
+        return body
+    return front
+
+
 def _card_from_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
     candidate_id = _text(candidate.get("candidate_id"))
     if not re.fullmatch(r"[A-Za-z0-9_-]{3,96}", candidate_id):
         raise FullNotebookLMFlashcardError(f"Invalid NotebookLM candidate_id: {candidate_id}")
-    front = _text(candidate.get("front"))
+    front = strip_safe_front_prefix(_text(candidate.get("front")))
     back = _text(candidate.get("back"))
     if not front or not back:
         raise FullNotebookLMFlashcardError(f"NotebookLM candidate missing learner text: {candidate_id}")

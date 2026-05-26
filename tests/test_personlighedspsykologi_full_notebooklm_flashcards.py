@@ -52,6 +52,74 @@ def test_build_full_notebooklm_deck_filters_auto_rejected_candidates():
     assert [card["card_id"] for card in deck["cards"]] == ["nlm-test-accepted", "nlm-test-review"]
 
 
+def test_safe_front_prefixes_are_removed_from_live_deck_cards():
+    payloads = [
+        _payload(
+            notebook_slug="global-calibration-synthesis",
+            candidates=[
+                {
+                    **_candidate("nlm-test-concept", "candidate"),
+                    "front": "Begreb: Hvad er 'whole trait theory'?",
+                },
+                {
+                    **_candidate("nlm-test-comparison", "candidate"),
+                    "front": "Sammenligning: Hvordan adskiller narrativ psykologi sig fra trækpsykologi?",
+                },
+                {
+                    **_candidate("nlm-test-trait-context", "candidate"),
+                    "front": "Trækpsykologi: Hvilken status har 'agency' i statiske trækmodeller?",
+                },
+            ],
+        )
+    ]
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=payloads,
+        source_file="runs/test/candidates",
+        source_sha256=full_cards.source_fingerprint(payloads),
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    fronts = {card["card_id"]: card["front_text"] for card in deck["cards"]}
+    assert fronts["nlm-test-concept"] == "Hvad er 'whole trait theory'?"
+    assert fronts["nlm-test-comparison"] == "Hvordan adskiller narrativ psykologi sig fra trækpsykologi?"
+    assert fronts["nlm-test-trait-context"] == "Hvilken status har 'agency' i statiske trækmodeller?"
+
+
+def test_context_prefixes_are_kept_when_removal_would_make_question_ambiguous():
+    payloads = [
+        _payload(
+            notebook_slug="measurement-development-pathology",
+            candidates=[
+                {
+                    **_candidate("nlm-test-biosocial", "candidate"),
+                    "front": "Biosociale perspektiver: Nævn en teoretisk begrænsning ved denne tradition.",
+                },
+                {
+                    **_candidate("nlm-test-functioning", "candidate"),
+                    "front": "Personlighedsfunktion: Hvordan adskiller denne tilgang sig fra den klassiske trækpsykologi?",
+                },
+                {
+                    **_candidate("nlm-test-trait-deictic", "candidate"),
+                    "front": "Trækpsykologi: Hvordan forstås 'determination' i denne tradition?",
+                },
+            ],
+        )
+    ]
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=payloads,
+        source_file="runs/test/candidates",
+        source_sha256=full_cards.source_fingerprint(payloads),
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    fronts = {card["card_id"]: card["front_text"] for card in deck["cards"]}
+    assert fronts["nlm-test-biosocial"].startswith("Biosociale perspektiver:")
+    assert fronts["nlm-test-functioning"].startswith("Personlighedsfunktion:")
+    assert fronts["nlm-test-trait-deictic"].startswith("Trækpsykologi:")
+
+
 def test_build_single_deck_registry_exposes_only_full_notebooklm_deck():
     registry = full_cards.build_single_deck_registry(
         artifact_path="shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",

@@ -37,6 +37,36 @@ Active architecture:
 
 - `shows/personlighedspsykologi-en/docs/flashcard-architecture-and-review-plan.md`
 
+## Technical Fellow Critique
+
+The previous plan had the right direction, but it needed tighter operational
+contracts before implementation.
+
+Main issues:
+
+- Generated report ownership was under-specified. `flashcard_lab/runs/*` is
+  ignored today, but `flashcard_lab/reports/` is not yet guaranteed ignored.
+- The full NotebookLM candidate pool is local generated material. Any review
+  script must fail clearly if the run is missing instead of silently reviewing
+  only committed decks.
+- The classifier could create false precision if it forces ambiguous cards
+  into a topic or family. `unknown` and confidence metadata must be first-class
+  outputs.
+- A single duplicate score is not enough. The report must distinguish exact
+  duplicates, near duplicates, same-slot collisions, and useful alternative
+  wording.
+- Gemini review can become too large or too shallow if the shortlist is not
+  bounded. The plan needs an explicit shortlist budget and fallback.
+- Promotion strategy must not be a side effect of the review script. Review,
+  LLM judgment, and deck mutation need separate artifacts and separate commands.
+- The final result needs a reproducible manifest of input paths, hashes, counts,
+  tool versions, thresholds, and model names so future sessions can understand
+  what was actually reviewed.
+
+The final plan below addresses those issues by adding a preflight phase,
+explicit stop gates, report ownership rules, bounded LLM input, and promotion
+separation.
+
 ## Final Deliverables
 
 The review is finished when these deliverables exist:
@@ -51,6 +81,49 @@ The review is finished when these deliverables exist:
 
 The review may legitimately finish with "do not promote more cards yet" if the
 report shows insufficient added value.
+
+## Final Operating Principles
+
+- Treat committed decks as learner-facing artifacts and full-run NotebookLM
+  candidates as local review material.
+- Make each stage reproducible from explicit inputs and hashes.
+- Prefer explicit `unknown` over confident but wrong classification.
+- Separate diagnosis from judgment, and judgment from promotion.
+- Stop before Gemini if deterministic classification or candidate coverage is
+  not trustworthy.
+- Stop before promotion unless a decision artifact clearly supports a concrete
+  deck strategy.
+- Keep generated reports local; commit only scripts, tests, docs, and final
+  summarized decisions.
+
+## Phase 0: Preflight And Workspace Contract
+
+Before writing comparison code, establish the review workspace contract.
+
+Required checks:
+
+- verify all three committed deck files exist and validate as Freudd decks
+- verify the full-run candidate directory exists for
+  `full-matrix-20260526-notebooklm-independent`
+- verify all five expected candidate JSON files are present
+- verify candidate counts match the recorded total of 259
+- verify `flashcard_lab/reports/` is ignored, or add a local `.gitignore`
+  entry before generating reports
+- record input file SHA-256 hashes in the comparison report manifest
+- record the code version, thresholds, and review run ID
+
+Recommended review run ID:
+
+- `flashcard-pool-review-20260526`
+
+Failure behavior:
+
+- missing local candidates: fail with a clear message and instructions to
+  regenerate or restore the run
+- unexpected counts: fail unless `--allow-count-drift` is explicitly passed
+- non-ignored report path: fail unless `--allow-unignored-report-output` is
+  explicitly passed
+- invalid deck schema: fail before producing any report
 
 ## Phase 1: Deterministic Comparison Tool
 
@@ -72,9 +145,9 @@ Inputs:
 Outputs:
 
 - JSON report under:
-  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/<run-id>/flashcard-pool-comparison.json`
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/<review-run-id>/flashcard-pool-comparison.json`
 - Markdown report under:
-  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/<run-id>/flashcard-pool-comparison.md`
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/<review-run-id>/flashcard-pool-comparison.md`
 
 Report artifacts should be local/generated and gitignored unless a final
 summary is deliberately committed.
@@ -94,6 +167,11 @@ Implementation requirements:
 - compute nearest-card duplicate scores across all pools
 - mark exact/near duplicates and "same slot" collisions
 - summarize coverage by `theory_topic x review_family`
+- include `classification_confidence` and `classification_evidence` for topic
+  and family assignment
+- preserve both raw source category and normalized review family
+- keep auto-rejected NotebookLM candidates in the report, but exclude them from
+  promotion shortlist by default
 
 Quality threshold for Phase 1:
 
@@ -101,6 +179,15 @@ Quality threshold for Phase 1:
 - unknowns are explicit, not silently forced into wrong categories
 - every input card appears exactly once in the normalized report
 - report can be regenerated without changing committed learner-facing decks
+- deterministic report includes a manifest with input hashes and total counts
+- at least one fixture test covers each review family and each source pool
+
+Stop gate:
+
+- If more than 20 percent of non-auto-rejected cards classify as `unknown`, do
+  not proceed to Gemini. Improve classifier rules or taxonomy first.
+- If committed deck cards are not all classified into at least a theory topic
+  and a family, do not proceed to promotion planning.
 
 ## Phase 2: Coverage And Gap Report
 
@@ -134,6 +221,30 @@ The shortlist should be conservative. Prefer cards that:
 - have clear Danish wording
 - support oral-exam comparison, traps, or concept mechanisms
 
+Shortlist budget:
+
+- default maximum: 80 cards
+- hard maximum for one Gemini call: 120 cards
+- per-cell cap: normally 3 cards per `theory_topic x review_family`
+- per-topic cap: normally 18 cards per topic
+
+If the deterministic shortlist exceeds the default maximum, rank by:
+
+1. fills missing coverage cell
+2. low duplicate score against committed decks
+3. high exam-use family: `teori-sammenligning`, `akse-sammenligning`,
+   `eksamenstrap`, `begrebsmekanisme`, `svar-konstruktion`
+4. non-overlong front/back
+5. fewer safety or shape warnings
+
+Stop gate:
+
+- If the report shows that NotebookLM candidates mostly duplicate existing
+  coverage, stop with a "no Gemini needed" recommendation.
+- If important gaps are in committed matrix rows rather than NotebookLM
+  candidate quality, recommend deterministic matrix-deck improvements instead
+  of Gemini candidate review.
+
 ## Phase 3: User Review Checkpoint
 
 Before calling Gemini, review the deterministic report with Oskar.
@@ -147,6 +258,16 @@ Decision needed:
 
 This is a real checkpoint because Gemini input size and review framing affect
 the final card strategy.
+
+Checkpoint packet:
+
+- Markdown report path
+- total pool counts
+- unknown-classification rate
+- duplicate summary
+- shortlist size and selection rules
+- proposed Gemini prompt/bundle path, if any
+- explicit recommendation: proceed, revise, or stop
 
 ## Phase 4: Single-Call Gemini Review
 
@@ -185,6 +306,19 @@ Guardrails:
 - no local file paths in the prompt except repo-relative artifact identifiers
 - no learner-facing promotion directly from Gemini
 - reject invented claims that are not supported by matrix context
+- include "nearest committed card" for every candidate so Gemini cannot judge
+  quality without duplicate context
+- include "coverage cell" for every candidate so Gemini can judge added value
+- validate Gemini response count and IDs exactly against the bundle before
+  writing the review artifact
+
+Fallback:
+
+- If the shortlist cannot fit in one high-quality Gemini call, split into
+  topic-bounded bundles and record that the single-call preference was
+  superseded by size constraints.
+- If Gemini output fails schema validation, preserve the bundle and failed
+  response locally, but do not promote anything.
 
 ## Phase 5: Promotion Strategy Decision
 
@@ -202,6 +336,13 @@ The default should be conservative:
 - promote only clear gap-filling cards
 - avoid multiple parallel NotebookLM decks if they confuse practice
 
+Decision artifact:
+
+- write a committed Markdown decision summary before any deck mutation
+- include counts for promote, edit, merge, keep-as-reference, and reject
+- include the chosen deck strategy and rejected alternatives
+- include unresolved risks and remaining gaps
+
 ## Phase 6: Optional Promotion Implementation
 
 Only do this phase if Phase 5 recommends promotion.
@@ -217,6 +358,16 @@ Implementation requirements:
 - add or extend Freudd service tests for the affected deck
 - run artifact invariant checks and Freudd tests
 - deploy and smoke-check Freudd
+
+Promotion safety rules:
+
+- canonical matrix card IDs must remain stable unless a card's conceptual
+  identity changes
+- do not overwrite the existing NotebookLM variants decks without an explicit
+  replacement decision
+- do not publish raw Gemini wording without deterministic validation and
+  learner-facing safety checks
+- if deck visibility changes, smoke-check all visible decks after deploy
 
 ## Phase 7: Final Review Summary
 
@@ -235,6 +386,13 @@ The summary should include:
 - remaining gaps
 - recommended future regeneration, if any
 
+The final summary must also state:
+
+- whether the current NotebookLM cluster design was sufficient
+- whether future regeneration should use revised source-faithful clusters
+- whether Freudd should keep one main deck or multiple visible decks
+- what should happen to the two existing NotebookLM variant decks
+
 ## Test Plan
 
 Minimum tests:
@@ -250,7 +408,7 @@ Full local verification before commit:
 ```bash
 ./.venv/bin/python -m pytest tests/test_personlighedspsykologi_flashcard_review.py
 ./.venv/bin/python -m py_compile scripts/compare_personlighedspsykologi_flashcard_pools.py
-./.venv/bin/python scripts/compare_personlighedspsykologi_flashcard_pools.py --run-id <review-run-id>
+./.venv/bin/python scripts/compare_personlighedspsykologi_flashcard_pools.py --review-run-id <review-run-id>
 ```
 
 If promotion happens, also run:

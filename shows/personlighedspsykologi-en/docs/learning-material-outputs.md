@@ -108,6 +108,11 @@ Current `personlighedspsykologi` Freudd deck policy:
   `shows/personlighedspsykologi-en/flashcards/coverage/full_matrix_coverage_report.md`
 - coverage audit CLI:
   `scripts/audit_personlighedspsykologi_flashcard_coverage.py`
+- targeted NotebookLM gap-repair plan:
+  `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_notebook_plan.md`
+- targeted NotebookLM gap-repair CLIs:
+  `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
+  `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
 - archived previous live decks:
   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`
 - archived contents: original matrix/Gemini-style deck, first NotebookLM variant
@@ -123,6 +128,18 @@ The coverage report is deterministic and source-aware. It checks the live deck
 against every matrix row, orientation point, comparison target, high-priority
 field, and `source_note_basis` summary. Its `strong`/`partial`/`weak`/`missing`
 labels are coverage heuristics, not a final content-quality verdict.
+
+The targeted gap-repair workflow turns the report's high-priority missing/weak
+units into three processed NotebookLM packs: comparisons/traps,
+orientation/method, and source-basis nuance. The repair packs intentionally do
+not upload existing Freudd cards or raw student-note files; current Freudd cards
+are used only after generation for duplicate checks and review.
+
+Current targeted run `gap-repair-20260526-high-priority` generated 57 raw
+NotebookLM repair cards across the three packs: 41 normalized as `candidate`, 6
+as `needs_review`, and 10 as `auto_rejected`. NotebookLM IDs are recorded in the
+flashcard-lab README; the downloaded and normalized run artifacts remain local
+under the gitignored lab run folder until a separate review/promotion task.
 
 NotebookLM alternative-card workflow:
 

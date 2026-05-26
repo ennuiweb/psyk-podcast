@@ -34,6 +34,10 @@ from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards impor
     NotebookLMVariantFlashcardError,
     validate_variant_deck,
 )
+from notebooklm_queue.personlighedspsykologi_notebooklm_gap_repair import (
+    DEFAULT_GAP_REPAIR_RUN_ID,
+    GAP_REPAIR_ARTIFACT_TYPE,
+)
 from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -68,6 +72,8 @@ STUDENT_SYNTHESIS_FLASHCARD_REGISTRY = SHOW_DIR / "flashcards" / "decks.json"
 STUDENT_SYNTHESIS_FULL_NOTEBOOKLM_DECK = SHOW_DIR / "flashcards" / f"{FULL_NOTEBOOKLM_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON = SHOW_DIR / "flashcards" / "coverage" / "full_matrix_coverage_report.json"
 STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD = SHOW_DIR / "flashcards" / "coverage" / "full_matrix_coverage_report.md"
+STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_notebook_plan.json"
+STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_notebook_plan.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -342,6 +348,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD).exists():
         failures.append(
             f"Missing student synthesis flashcard coverage Markdown: {STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON).exists():
+        failures.append(
+            f"Missing student synthesis gap-repair NotebookLM plan JSON: {STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD).exists():
+        failures.append(
+            f"Missing student synthesis gap-repair NotebookLM plan Markdown: {STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -1044,6 +1058,75 @@ def _failures(repo_root: Path) -> list[str]:
             md_text = coverage_md.read_text(encoding="utf-8")
             if FULL_NOTEBOOKLM_DECK_SLUG not in md_text:
                 failures.append("Flashcard coverage Markdown does not mention the live full NotebookLM deck")
+
+    gap_repair_plan_json = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON
+    gap_repair_plan_md = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD
+    if gap_repair_plan_json.exists() and gap_repair_plan_md.exists():
+        try:
+            gap_repair_plan = _load_json(gap_repair_plan_json)
+        except json.JSONDecodeError as exc:
+            failures.append(
+                f"Student synthesis gap-repair NotebookLM plan is invalid JSON in "
+                f"{STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON}: {exc}"
+            )
+        else:
+            if not isinstance(gap_repair_plan, dict):
+                failures.append(
+                    f"Student synthesis gap-repair NotebookLM plan must be an object: "
+                    f"{STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON}"
+                )
+            else:
+                if gap_repair_plan.get("artifact_type") != GAP_REPAIR_ARTIFACT_TYPE:
+                    failures.append("Gap-repair NotebookLM plan artifact_type is invalid")
+                if gap_repair_plan.get("subject_slug") != "personlighedspsykologi":
+                    failures.append("Gap-repair NotebookLM plan subject_slug is not personlighedspsykologi")
+                if gap_repair_plan.get("run_id") != DEFAULT_GAP_REPAIR_RUN_ID:
+                    failures.append(
+                        "Gap-repair NotebookLM plan run_id does not match the current default "
+                        f"{DEFAULT_GAP_REPAIR_RUN_ID}"
+                    )
+                source_policy = (
+                    gap_repair_plan.get("source_policy")
+                    if isinstance(gap_repair_plan.get("source_policy"), dict)
+                    else {}
+                )
+                if source_policy.get("processed_sources_only") is not True:
+                    failures.append("Gap-repair NotebookLM plan must use processed sources only")
+                if source_policy.get("existing_freudd_cards_uploaded") is not False:
+                    failures.append("Gap-repair NotebookLM plan must not upload existing Freudd cards")
+                if source_policy.get("raw_student_notes_uploaded") is not False:
+                    failures.append("Gap-repair NotebookLM plan must not upload raw student-note files")
+                notebooks = gap_repair_plan.get("notebooks")
+                if not isinstance(notebooks, list) or len(notebooks) != 3:
+                    failures.append("Gap-repair NotebookLM plan must define exactly three repair notebooks")
+                else:
+                    expected_slugs = {
+                        "gap-repair-comparisons-traps",
+                        "gap-repair-orientation-method",
+                        "gap-repair-source-basis",
+                    }
+                    actual_slugs = {
+                        str(notebook.get("slug") or "").strip()
+                        for notebook in notebooks
+                        if isinstance(notebook, dict)
+                    }
+                    if actual_slugs != expected_slugs:
+                        failures.append(
+                            "Gap-repair NotebookLM plan notebook split is stale: "
+                            f"{sorted(actual_slugs)} != {sorted(expected_slugs)}"
+                        )
+                summary = (
+                    gap_repair_plan.get("gap_summary")
+                    if isinstance(gap_repair_plan.get("gap_summary"), dict)
+                    else {}
+                )
+                if int(summary.get("gap_count") or 0) <= 0:
+                    failures.append("Gap-repair NotebookLM plan must include at least one target gap")
+            gap_repair_md_text = gap_repair_plan_md.read_text(encoding="utf-8")
+            if DEFAULT_GAP_REPAIR_RUN_ID not in gap_repair_md_text:
+                failures.append("Gap-repair NotebookLM plan Markdown does not mention the current run ID")
+            if "gap-repair-comparisons-traps" not in gap_repair_md_text:
+                failures.append("Gap-repair NotebookLM plan Markdown does not mention the comparisons/traps pack")
 
     archived_variant_decks_to_validate = [
         (

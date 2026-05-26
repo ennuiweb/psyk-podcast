@@ -134,6 +134,72 @@ These outputs are candidates only. They still need a planned quality and
 coverage comparison against the original matrix deck and the existing
 NotebookLM variant decks before any promotion.
 
+## Gap-Repair Workflow
+
+The matrix/source coverage audit currently drives a targeted gap-repair pass
+for missing or weak high-priority units. This is not a replacement full-course
+deck; it is a surgical candidate-generation pass for coverage gaps in the live
+full NotebookLM deck.
+
+Current gap-repair run:
+
+- run ID: `gap-repair-20260526-high-priority`
+- plan:
+  `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_notebook_plan.md`
+- source policy: processed matrix/source-basis Markdown only; no existing
+  Freudd cards and no raw student-note PDFs/DOCX files are uploaded
+- source-pack root:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/gap-repair-20260526-high-priority/packs/`
+
+The three repair notebooks are:
+
+| Notebook | Purpose |
+|---|---|
+| `gap-repair-comparisons-traps` | comparison-target and likely-misunderstanding gaps |
+| `gap-repair-orientation-method` | orientation-point and method/evidence gaps |
+| `gap-repair-source-basis` | source-basis nuance gaps |
+
+Run result, 2026-05-26:
+
+| Notebook | NotebookLM ID | Raw | Candidate | Needs review | Auto rejected |
+|---|---|---:|---:|---:|---:|
+| `gap-repair-comparisons-traps` | `ba9adb81-c57b-4b21-8018-8de553808082` | 25 | 17 | 4 | 4 |
+| `gap-repair-orientation-method` | `de8cee83-a875-4dcf-9c21-8e642baa5a79` | 17 | 10 | 1 | 6 |
+| `gap-repair-source-basis` | `8f5a1c3c-881e-486d-9f6d-e19f7652da72` | 15 | 14 | 1 | 0 |
+
+Total: 57 raw repair cards, 41 `candidate`, 6 `needs_review`, and 10
+`auto_rejected`. A local scan of normalized candidates found no student names,
+local paths, source-note IDs, coverage-field labels, or target/gap labels in
+the card text. The run output is intentionally local and gitignored under
+`runs/gap-repair-20260526-high-priority/`.
+
+Export the processed packs and committed plan:
+
+```bash
+./.venv/bin/python scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py
+```
+
+Inspect intended NotebookLM commands without creating notebooks:
+
+```bash
+./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_gap_repair.py \
+  --dry-run \
+  --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json
+```
+
+Run the real repair generation when auth/quota are healthy:
+
+```bash
+./.venv/bin/python scripts/run_personlighedspsykologi_notebooklm_gap_repair.py \
+  --storage notebooklm-podcast-auto/profiles/nguyenanhpho19_storage_state.json
+```
+
+The runner creates one NotebookLM notebook per repair pack, downloads the
+generated JSON/Markdown cards, and normalizes them into review-only candidate
+artifacts under the ignored run folder. Review and promotion remain separate:
+gap-repair cards must be checked against the live deck and matrix before any
+Freudd import or merge.
+
 ## Current Pilot
 
 The first live pilot run is:

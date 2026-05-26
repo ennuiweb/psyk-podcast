@@ -21,6 +21,7 @@ from notebooklm_queue.gemini_preprocessing import DEFAULT_GEMINI_PREPROCESSING_M
 from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
     CATEGORIES,
     LEARNER_TEXT_FORBIDDEN_PATTERNS,
+    MatrixFlashcardBuildError,
     load_matrix,
     validate_flashcard_artifact,
 )
@@ -279,7 +280,12 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def load_current_deck(path: Path, matrix: dict[str, Any]) -> dict[str, Any]:
     payload = _load_json(path)
-    validate_flashcard_artifact(payload, matrix=matrix)
+    try:
+        validate_flashcard_artifact(payload, matrix=matrix)
+    except MatrixFlashcardBuildError:
+        from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards import validate_variant_deck
+
+        validate_variant_deck(payload, expected_deck_slug=None)
     return payload
 
 

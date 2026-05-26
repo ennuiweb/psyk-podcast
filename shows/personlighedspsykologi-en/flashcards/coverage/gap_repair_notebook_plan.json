@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "artifact_type": "personlighedspsykologi_notebooklm_gap_repair_plan",
+  "subject_slug": "personlighedspsykologi",
+  "run_id": "gap-repair-20260526-high-priority",
+  "generated_at": "2026-05-26T12:21:22Z",
+  "source_policy": {
+    "processed_sources_only": true,
+    "existing_freudd_cards_uploaded": false,
+    "raw_student_notes_uploaded": false
+  },
+  "gap_summary": {
+    "gap_count": 57,
+    "field_counts": {
+      "comparison_targets": 16,
+      "likely_misunderstandings": 9,
+      "method_evidence_style": 5,
+      "orientation_points": 12,
+      "source_note_basis": 15
+    },
+    "status_counts": {
+      "missing": 42,
+      "weak": 15
+    },
+    "theory_counts": {
+      "biosocial_personality_perspectives": 8,
+      "comparative_theory_analysis": 6,
+      "critical_personalism": 4,
+      "critical_psychology": 4,
+      "dynamic_personality_development": 6,
+      "existential_psychology": 3,
+      "humanistic_psychology": 3,
+      "narrative_psychology": 4,
+      "personality_functioning_and_pathology": 9,
+      "phenomenological_psychology": 3,
+      "psychoanalytic_personality_theory": 2,
+      "sociocultural_poststructural_approaches": 4,
+      "trait_and_assessment_psychology": 1
+    }
+  },
+  "notebooks": [
+    {
+      "slug": "gap-repair-comparisons-traps",
+      "title": "Freudd personlighedspsykologi gap repair - comparisons and exam traps",
+      "purpose": "Generate cards only for missing comparison-target and likely-misunderstanding coverage units.",
+      "fields": [
+        "comparison_targets",
+        "likely_misunderstandings"
+      ],
+      "gap_count": 25,
+      "status_counts": {
+        "missing": 25
+      },
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "critical_personalism",
+        "critical_psychology",
+        "dynamic_personality_development",
+        "narrative_psychology",
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory",
+        "sociocultural_poststructural_approaches",
+        "trait_and_assessment_psychology"
+      ],
+      "gap_unit_ids": [
+        "trait_and_assessment_psychology:comparison_targets:dynamic_personality_development",
+        "dynamic_personality_development:comparison_targets:trait_and_assessment_psychology",
+        "dynamic_personality_development:comparison_targets:narrative_psychology",
+        "biosocial_personality_perspectives:comparison_targets:trait_and_assessment_psychology",
+        "biosocial_personality_perspectives:comparison_targets:sociocultural_poststructural_approaches",
+        "personality_functioning_and_pathology:likely_misunderstandings:1",
+        "personality_functioning_and_pathology:likely_misunderstandings:2",
+        "personality_functioning_and_pathology:comparison_targets:psychoanalytic_personality_theory",
+        "personality_functioning_and_pathology:comparison_targets:trait_and_assessment_psychology",
+        "psychoanalytic_personality_theory:comparison_targets:phenomenological_psychology",
+        "critical_personalism:likely_misunderstandings:1",
+        "critical_personalism:likely_misunderstandings:2",
+        "critical_personalism:comparison_targets:trait_and_assessment_psychology",
+        "critical_personalism:comparison_targets:critical_psychology",
+        "critical_psychology:likely_misunderstandings:1",
+        "critical_psychology:likely_misunderstandings:2",
+        "critical_psychology:comparison_targets:trait_and_assessment_psychology",
+        "sociocultural_poststructural_approaches:comparison_targets:trait_and_assessment_psychology",
+        "narrative_psychology:comparison_targets:sociocultural_poststructural_approaches",
+        "narrative_psychology:comparison_targets:psychoanalytic_personality_theory",
+        "comparative_theory_analysis:likely_misunderstandings:1",
+        "comparative_theory_analysis:likely_misunderstandings:2",
+        "comparative_theory_analysis:likely_misunderstandings:3",
+        "comparative_theory_analysis:comparison_targets:trait_and_assessment_psychology",
+        "comparative_theory_analysis:comparison_targets:sociocultural_poststructural_approaches"
+      ]
+    },
+    {
+      "slug": "gap-repair-orientation-method",
+      "title": "Freudd personlighedspsykologi gap repair - orientation and method",
+      "purpose": "Generate cards only for missing orientation-axis and method/evidence coverage units.",
+      "fields": [
+        "orientation_points",
+        "method_evidence_style"
+      ],
+      "gap_count": 17,
+      "status_counts": {
+        "missing": 17
+      },
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "dynamic_personality_development",
+        "existential_psychology",
+        "humanistic_psychology",
+        "personality_functioning_and_pathology"
+      ],
+      "gap_unit_ids": [
+        "dynamic_personality_development:orientation_points:essence_context",
+        "dynamic_personality_development:orientation_points:determination",
+        "dynamic_personality_development:orientation_points:agency",
+        "dynamic_personality_development:orientation_points:historicity",
+        "biosocial_personality_perspectives:method_evidence_style",
+        "biosocial_personality_perspectives:orientation_points:essence_context",
+        "biosocial_personality_perspectives:orientation_points:determination",
+        "biosocial_personality_perspectives:orientation_points:agency",
+        "biosocial_personality_perspectives:orientation_points:historicity",
+        "personality_functioning_and_pathology:method_evidence_style",
+        "personality_functioning_and_pathology:orientation_points:essence_context",
+        "personality_functioning_and_pathology:orientation_points:determination",
+        "personality_functioning_and_pathology:orientation_points:agency",
+        "personality_functioning_and_pathology:orientation_points:historicity",
+        "existential_psychology:method_evidence_style",
+        "humanistic_psychology:method_evidence_style",
+        "comparative_theory_analysis:method_evidence_style"
+      ]
+    },
+    {
+      "slug": "gap-repair-source-basis",
+      "title": "Freudd personlighedspsykologi gap repair - source-basis repair",
+      "purpose": "Generate cards only for weak source-note-basis coverage units using matrix source-basis summaries.",
+      "fields": [
+        "source_note_basis"
+      ],
+      "gap_count": 15,
+      "status_counts": {
+        "weak": 15
+      },
+      "theory_ids": [
+        "biosocial_personality_perspectives",
+        "critical_psychology",
+        "existential_psychology",
+        "humanistic_psychology",
+        "narrative_psychology",
+        "phenomenological_psychology",
+        "psychoanalytic_personality_theory",
+        "sociocultural_poststructural_approaches"
+      ],
+      "gap_unit_ids": [
+        "biosocial_personality_perspectives:source_note_basis:karla_traekteori",
+        "psychoanalytic_personality_theory:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "phenomenological_psychology:source_note_basis:anes_tabel",
+        "phenomenological_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "phenomenological_psychology:source_note_basis:karla_faenomenologi",
+        "existential_psychology:source_note_basis:anes_tabel",
+        "existential_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "humanistic_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "humanistic_psychology:source_note_basis:karla_humanistisk_psyk",
+        "critical_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "sociocultural_poststructural_approaches:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "sociocultural_poststructural_approaches:source_note_basis:karla_socialkonstruktivisme",
+        "sociocultural_poststructural_approaches:source_note_basis:karla_poststrukturalisme",
+        "narrative_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "narrative_psychology:source_note_basis:karla_traekteori"
+      ]
+    }
+  ],
+  "input_fingerprints": {
+    "matrix": "5d4a5c0cee6c227d20bac95063495d57176a392d0feda7c2d64ed0d573185ecd",
+    "coverage_report": "43dd367d2d2da70659d16bb00baad42e2494ee17d516a5e982e7230e88e7b27a",
+    "source_notes_index": "dcbd497ddc7b46092cc4b097dd7303f503d18124cf51b3a18cb12acf0a4d9a97",
+    "source_notes_registry": "9a21c8aab3b9bc50e116f412cb0dca9251be5288bcc859bfaee426c4ed25449d"
+  }
+}

@@ -1,0 +1,1471 @@
+{
+  "version": 1,
+  "artifact_type": "personlighedspsykologi_gap_repair_promotion_decisions",
+  "subject_slug": "personlighedspsykologi",
+  "run_id": "gap-repair-20260526-high-priority",
+  "generated_at": "2026-05-26T13:03:42Z",
+  "source_fingerprints": {
+    "candidate_payloads": "d2a83e3c0acc1e02d696943f461b98359aab3cdf26bc46f3ea66b915c005b9d2",
+    "review": "cb19a1d236357be1b10e05aa21295ff0024c4b1a149efe46e9fdabf20d42073e",
+    "bundle": "3b843b536161a18ab7fbda459288755c915473b6c3cd47334e290cdbd6da4902"
+  },
+  "stats": {
+    "decision_count": 47,
+    "promoted_count": 46,
+    "rejected_count": 1,
+    "gemini_decision_counts": {
+      "accept": 46,
+      "merge_with_existing": 1
+    }
+  },
+  "decisions": [
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-c8fd48abf3cea3e8",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan udvider dynamiske modeller trækpsykologien?",
+      "back_text": "De bevarer træksproget, men gør situationer, tilstande og tid mere centrale for forståelsen af personligheden.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 1,
+      "target_gap": {
+        "unit_id": "trait_and_assessment_psychology:comparison_targets:dynamic_personality_development",
+        "field": "comparison_targets",
+        "label": "trait and assessment psychology: sammenligning",
+        "expected_text": "dynamic personality development extended by Dynamic models preserve trait language while making situations, states, and time more central.",
+        "priority": "high",
+        "target_theory_id": "dynamic_personality_development",
+        "theory_id": "trait_and_assessment_psychology"
+      },
+      "reason": "Effectively bridges trait psychology and dynamic developmental models.",
+      "added_value": "Closes comparison gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-df072e37ce88baa4",
+      "nearest_existing_card_assessment": "Different focus, safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-da7507ed50267775",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er den centrale forskel på kontinuitet i narrativ psykologi og dynamiske modeller?",
+      "back_text": "Narrativ teori forklarer kontinuitet gennem mening og livshistorie frem for gentagne adfærdsmæssige fordelinger.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "dynamic_personality_development",
+        "narrative_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 3,
+      "target_gap": {
+        "unit_id": "dynamic_personality_development:comparison_targets:narrative_psychology",
+        "field": "comparison_targets",
+        "label": "dynamic personality development: sammenligning",
+        "expected_text": "narrative psychology contrasts with Narrative theory explains continuity through meaning and story rather than repeated behavioral distributions.",
+        "priority": "high",
+        "target_theory_id": "narrative_psychology",
+        "theory_id": "dynamic_personality_development"
+      },
+      "reason": "Successfully addresses the contrast between continuity in narrative vs dynamic accounts.",
+      "added_value": "Clarifies continuity mechanisms.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
+      "nearest_existing_card_assessment": "Focuses on dynamic models, unlike the existing card.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-3d8eea54f5b70197",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilket spørgsmål tilføjer det biosociale perspektiv til den klassiske trækpsykologi?",
+      "back_text": "Det undersøger, hvorfor trækvariation overhovedet eksisterer evolutionært, og hvordan denne variation vedligeholdes i en økologisk kontekst.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 4,
+      "target_gap": {
+        "unit_id": "biosocial_personality_perspectives:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "biosocial personality perspectives: sammenligning",
+        "expected_text": "trait and assessment psychology explains possible basis for Biosocial perspectives ask why trait variation exists and how it is maintained.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "biosocial_personality_perspectives"
+      },
+      "reason": "Clearly states what biosocial perspectives add to trait psychology.",
+      "added_value": "Addresses specific comparison point.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-07f4e844f09ee976",
+      "nearest_existing_card_assessment": "No significant overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-d455a64f54edc199",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan flyttes forklaringsvægten fra et biosocialt til et sociokulturelt perspektiv?",
+      "back_text": "Forklaringsvægten flyttes fra biologi og evolution til diskurser, normer og magtforhold.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives",
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 5,
+      "target_gap": {
+        "unit_id": "biosocial_personality_perspectives:comparison_targets:sociocultural_poststructural_approaches",
+        "field": "comparison_targets",
+        "label": "biosocial personality perspectives: sammenligning",
+        "expected_text": "sociocultural poststructural approaches contrasts with Sociocultural approaches move explanatory weight from biology to discourse, norms, and power.",
+        "priority": "high",
+        "target_theory_id": "sociocultural_poststructural_approaches",
+        "theory_id": "biosocial_personality_perspectives"
+      },
+      "reason": "Good comparison between biosocial and sociocultural approaches.",
+      "added_value": "Highlights the shift in explanatory focus.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-7ee88cb2c339c832",
+      "nearest_existing_card_assessment": "Slight overlap but differently phrased.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-d3c35cc95a28119f",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er en typisk eksamensfejl vedrørende forståelsen af personlighedsforstyrrelser og patologi?",
+      "back_text": "At betragte patologi udelukkende som en kategoriel mærkat (en diagnose) frem for en vurdering af organisering og funktionsniveau.",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 6,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:likely_misunderstandings:1",
+        "field": "likely_misunderstandings",
+        "label": "personality functioning and pathology: eksamenstrap",
+        "expected_text": "Treating pathology as only a categorical label.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Effectively points out the likely misunderstanding regarding pathology as purely categorical.",
+      "added_value": "Exposes a common exam trap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-c0074838d9ff2b6f",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-4d96666ea8352c91",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken distinktion er vigtig at huske i analysen af personlighedsfunktion og patologi?",
+      "back_text": "Forskellen på en rent deskriptiv beskrivelse af personlighedstræk og en vurdering af selve funktionsnedsættelsen (impairment).",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 7,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:likely_misunderstandings:2",
+        "field": "likely_misunderstandings",
+        "label": "personality functioning and pathology: eksamenstrap",
+        "expected_text": "Forgetting the difference between trait description and functioning impairment.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Successfully addresses the distinction between trait description and functioning impairment.",
+      "added_value": "Clarifies the scope of functioning models.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-eadd1aa2331f6728",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-9248a19c3273f93c",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad adskiller psykoanalytisk teori fra modeller for personlighedsfunktion, selvom begge undersøger organisering?",
+      "back_text": "Psykoanalysen fortolker konflikter og ubevidst mening på et dybere niveau end de deskriptive funktionsmodeller.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology",
+        "psychoanalytic_personality_theory"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 8,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:comparison_targets:psychoanalytic_personality_theory",
+        "field": "comparison_targets",
+        "label": "personality functioning and pathology: sammenligning",
+        "expected_text": "psychoanalytic personality theory prepares for Both examine personality organization, but psychoanalysis interprets conflict and unconscious meaning more deeply.",
+        "priority": "high",
+        "target_theory_id": "psychoanalytic_personality_theory",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Captures the distinction between functioning models and psychoanalytic interpretation.",
+      "added_value": "Closes theoretical comparison gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-26c31a06f68eba39",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-f75dd48e3eed3ec8",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan adskiller fokus i funktionsmodeller sig fra traditionel trækpsykologi?",
+      "back_text": "Funktionsmodeller spørger til personlighedens organisering og funktionsnedsættelse snarere end blot variation i enkelte træk.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 9,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "personality functioning and pathology: sammenligning",
+        "expected_text": "trait and assessment psychology contrasts with Functioning models ask about impairment and organization, not just trait variation.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Clear, concise contrast between trait and functioning approaches.",
+      "added_value": "Strengthens matrix coverage.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-07f4e844f09ee976",
+      "nearest_existing_card_assessment": "Acceptable overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-a37b3cec0f34149b",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er den fundamentale forskel på fænomenologi og psykoanalyse i forståelsen af personlighedens mening?",
+      "back_text": "Fænomenologien tager udgangspunkt i den levede erfaring, mens psykoanalysen fastholder, at den afgørende mening kan være ubevidst.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "phenomenological_psychology",
+        "psychoanalytic_personality_theory"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 10,
+      "target_gap": {
+        "unit_id": "psychoanalytic_personality_theory:comparison_targets:phenomenological_psychology",
+        "field": "comparison_targets",
+        "label": "psychoanalytic personality theory: sammenligning",
+        "expected_text": "phenomenological psychology contrasts with Phenomenology starts from lived experience, while psychoanalysis insists that decisive meaning may be unconscious.",
+        "priority": "high",
+        "target_theory_id": "phenomenological_psychology",
+        "theory_id": "psychoanalytic_personality_theory"
+      },
+      "reason": "Solid phrasing of the lived experience vs unconscious meaning divide.",
+      "added_value": "Fills psychoanalytic vs phenomenological gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-9d3c235ae73889dc",
+      "nearest_existing_card_assessment": "Acceptable redundancy, emphasizes fundamental difference.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-e18a68b1c45b2db0",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er en udbredt misforståelse af kritisk personalisme i forhold til psykologisk måling?",
+      "back_text": "At antage, at teorien udelukkende er en modstander af kvantitativ måling og tal.",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "critical_personalism"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 11,
+      "target_gap": {
+        "unit_id": "critical_personalism:likely_misunderstandings:1",
+        "field": "likely_misunderstandings",
+        "label": "critical personalism: eksamenstrap",
+        "expected_text": "Treating critical personalism as merely anti-measurement.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "critical_personalism"
+      },
+      "reason": "Corrects a common misconception about critical personalism.",
+      "added_value": "Exposes an exam trap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-c75a19720806a290",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-7e0ce85fcb392d72",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er kernen i kritikken fra den kritiske personalisme, udover det metodiske fokus?",
+      "back_text": "Kritikken handler om selve personbegrebernes status og spørger til, hvad en person egentlig er i teorien.",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "critical_personalism"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 12,
+      "target_gap": {
+        "unit_id": "critical_personalism:likely_misunderstandings:2",
+        "field": "likely_misunderstandings",
+        "label": "critical personalism: eksamenstrap",
+        "expected_text": "Forgetting that the critique is about the status of person concepts, not only methods.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "critical_personalism"
+      },
+      "reason": "Clarifies the focus of critical personalism beyond mere method critique.",
+      "added_value": "Addresses conceptual misunderstandings.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-894d5e78b3e76f47",
+      "nearest_existing_card_assessment": "Complements existing cards.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-a56f9a4d1158cf4b",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken central kritik rejser den kritiske personalisme mod trækpsykologien?",
+      "back_text": "Den spørger kritisk til, hvad der går tabt, når det konkrete menneske oversættes til abstrakte variabler og scores.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "critical_personalism",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 13,
+      "target_gap": {
+        "unit_id": "critical_personalism:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "critical personalism: sammenligning",
+        "expected_text": "trait and assessment psychology critiques Critical personalism asks what is lost when persons are translated into variables.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "critical_personalism"
+      },
+      "reason": "Addresses critical personalism's primary critique of trait models.",
+      "added_value": "Fills comparison gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-c75a19720806a290",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-7334df03b33914ff",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad adskiller kritisk psykologi fra kritisk personalisme i deres modstand mod reduktionisme?",
+      "back_text": "Kritisk psykologi videreudvikler analysen af subjektivitet som indlejret i sociale praksisser og historiske betingelser.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "critical_personalism",
+        "critical_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 14,
+      "target_gap": {
+        "unit_id": "critical_personalism:comparison_targets:critical_psychology",
+        "field": "comparison_targets",
+        "label": "critical personalism: sammenligning",
+        "expected_text": "critical psychology prepares for Both resist individualizing reduction, but critical psychology develops the social-practice account further.",
+        "priority": "high",
+        "target_theory_id": "critical_psychology",
+        "theory_id": "critical_personalism"
+      },
+      "reason": "Effectively contrasts critical psychology with critical personalism.",
+      "added_value": "Nuances the difference between two critical traditions.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-92dd05327d1c6c6c",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-84df633766a3290b",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken fejl begår man ofte ved at tolke betydningen af sociale betingelser i kritisk psykologi?",
+      "back_text": "Man antager fejlagtigt, at de sociale betingelser helt fjerner individets handleevne (agency) eller subjektivitet.",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "critical_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 15,
+      "target_gap": {
+        "unit_id": "critical_psychology:likely_misunderstandings:1",
+        "field": "likely_misunderstandings",
+        "label": "critical psychology: eksamenstrap",
+        "expected_text": "Assuming social conditions fully erase agency.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "critical_psychology"
+      },
+      "reason": "Identifies the trap of erasing agency in critical psychology.",
+      "added_value": "Exposes an exam trap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-cb4ed7613f3f293e",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-cd487dcadf0a7d48",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er en typisk eksamensfælde i forståelsen af kritisk psykologis teoretiske fundament?",
+      "back_text": "At reducere teorien til en rent politisk holdning frem for at se den som en videnskabelig teori om subjektivitet og praksis.",
+      "category_slug": "eksamenstraps",
+      "mapped_theory_ids": [
+        "critical_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 16,
+      "target_gap": {
+        "unit_id": "critical_psychology:likely_misunderstandings:2",
+        "field": "likely_misunderstandings",
+        "label": "critical psychology: eksamenstrap",
+        "expected_text": "Reducing critical psychology to political opinion rather than a theory of subjectivity and practice.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "critical_psychology"
+      },
+      "reason": "Good trap card on reducing critical psychology to politics.",
+      "added_value": "Exposes an exam trap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-569fffc57bff68ee",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-fb614e1ab4e8766b",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er kernen i kritisk psykologis indvending mod træk- og testpsykologien?",
+      "back_text": "En modstand mod at forklare mennesker primært gennem dekontekstualiserede individuelle forskelle.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "critical_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 17,
+      "target_gap": {
+        "unit_id": "critical_psychology:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "critical psychology: sammenligning",
+        "expected_text": "trait and assessment psychology critiques Critical psychology objects to explaining persons primarily through decontextualized individual differences.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "critical_psychology"
+      },
+      "reason": "Clearly establishes the critical psychology objection to trait assessment.",
+      "added_value": "Comparison gap repair.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-3e18e656ae077970",
+      "nearest_existing_card_assessment": "Acceptable redundancy.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-55b2d7e78d63e3ca",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan udfordrer sociokulturelle og poststrukturelle tilgange trækpsykologiens kategorier?",
+      "back_text": "De undersøger, hvordan de kategorier, vi bruger til at måle personlighed med, selv er historisk og socialt producerede.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 18,
+      "target_gap": {
+        "unit_id": "sociocultural_poststructural_approaches:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "sociocultural and poststructural approaches: sammenligning",
+        "expected_text": "trait and assessment psychology critiques It asks how the categories used to measure personality are historically produced.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "sociocultural_poststructural_approaches"
+      },
+      "reason": "Fulfills the comparison gap efficiently.",
+      "added_value": "Addresses sociocultural challenge to trait psychology.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-734aba4f1970adce",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-b6d560019d887dce",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad adskiller narrativ psykologi fra sociokulturelle tilgange, når begge vægter sproget højt?",
+      "back_text": "Narrativ psykologi fokuserer mere eksplicit på personlig identitetskontinuitet og den samlede livshistorie.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "narrative_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 19,
+      "target_gap": {
+        "unit_id": "narrative_psychology:comparison_targets:sociocultural_poststructural_approaches",
+        "field": "comparison_targets",
+        "label": "narrative psychology: sammenligning",
+        "expected_text": "sociocultural poststructural approaches overlaps with Both use language and culture, but narrative psychology is more focused on identity continuity and life story.",
+        "priority": "high",
+        "target_theory_id": "sociocultural_poststructural_approaches",
+        "theory_id": "narrative_psychology"
+      },
+      "reason": "Clearly contrasts narrative and poststructural accounts of language.",
+      "added_value": "Theory differentiation.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-e2b395a19dae0af8",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-81bdec9b28d85219",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan kan narrativ terapi omforme klassiske psykoanalytiske temaer?",
+      "back_text": "Ved at bearbejde ubevidste eller skjulte konflikter til dialogiske og fortolkningsmæssige selv-fortællinger.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "narrative_psychology",
+        "psychoanalytic_personality_theory"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 20,
+      "target_gap": {
+        "unit_id": "narrative_psychology:comparison_targets:psychoanalytic_personality_theory",
+        "field": "comparison_targets",
+        "label": "narrative psychology: sammenligning",
+        "expected_text": "psychoanalytic personality theory reworks Narrative therapy can rework psychoanalytic concerns with hidden conflict into dialogic and interpretive self-stories.",
+        "priority": "high",
+        "target_theory_id": "psychoanalytic_personality_theory",
+        "theory_id": "narrative_psychology"
+      },
+      "reason": "Good retrieval cue for narrative therapy vs psychoanalysis.",
+      "added_value": "Repairs specific comparison gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-c200e1804913e43a",
+      "nearest_existing_card_assessment": "Acceptable overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-362242047822704d",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken rolle spiller trækpsykologien i kursets overordnede sammenligningsramme?",
+      "back_text": "Den fungerer som en baseline eller et udgangspunkt, som mange af de senere traditioner kontrasterer sig mod.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 24,
+      "target_gap": {
+        "unit_id": "comparative_theory_analysis:comparison_targets:trait_and_assessment_psychology",
+        "field": "comparison_targets",
+        "label": "comparative theory analysis: sammenligning",
+        "expected_text": "trait and assessment psychology maps Trait theory is the baseline for many later contrasts.",
+        "priority": "high",
+        "target_theory_id": "trait_and_assessment_psychology",
+        "theory_id": "comparative_theory_analysis"
+      },
+      "reason": "Provides essential framing for the whole course matrix.",
+      "added_value": "Meta-level matrix orientation.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-df072e37ce88baa4",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-comparisons-traps-3e1d9ea10a779d98",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvor placerer de sociokulturelle og poststrukturelle tilgange sig i kursus-matricens akser?",
+      "back_text": "De markerer det stærkeste anti-essentialistiske yderpunkt i hele sammenligningsskemaet.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-comparisons-traps",
+      "source_index": 25,
+      "target_gap": {
+        "unit_id": "comparative_theory_analysis:comparison_targets:sociocultural_poststructural_approaches",
+        "field": "comparison_targets",
+        "label": "comparative theory analysis: sammenligning",
+        "expected_text": "sociocultural poststructural approaches maps Sociocultural and poststructural approaches mark the strongest anti-essentialist end of the matrix.",
+        "priority": "high",
+        "target_theory_id": "sociocultural_poststructural_approaches",
+        "theory_id": "comparative_theory_analysis"
+      },
+      "reason": "Situates poststructuralism accurately within the course axes.",
+      "added_value": "Meta-level matrix orientation.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-0229f1ccb86283a9",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-1ff28b077e882e93",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan beskrives determinisme (determination) i teorien om dynamisk personlighedsudvikling?",
+      "back_text": "Udviklingen ses som reciprok og probabilistisk, hvor tidligere mønstre, motiver og vaner begrænser adfærden uden at gøre udviklingen til et lukket system.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "dynamic_personality_development"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 2,
+      "target_gap": {
+        "unit_id": "dynamic_personality_development:orientation_points:determination",
+        "field": "orientation_points",
+        "label": "dynamic personality development: determination",
+        "expected_text": "determination determinisme bestemt reciprocal and probabilistic Past patterns, motives, situations, and habits constrain behavior without making development closed.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "dynamic_personality_development"
+      },
+      "reason": "Addresses orientation point gap correctly.",
+      "added_value": "Closes determination gap for dynamic development.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-20c31605de0e83ee",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-65a627eba22babb4",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken rolle spiller handleevne (agency) i den dynamiske personlighedsudvikling?",
+      "back_text": "Der er tale om en moderat situeret handleevne, hvor individets mål, fortolkninger og selvreguleringsmønstre giver en vis styringskraft i forskellige situationer.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "critical_psychology",
+        "dynamic_personality_development"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 3,
+      "target_gap": {
+        "unit_id": "dynamic_personality_development:orientation_points:agency",
+        "field": "orientation_points",
+        "label": "dynamic personality development: agency",
+        "expected_text": "agency agens handleevne valg mulighed moderate situated agency Goals, interpretations, and self-regulatory patterns give the person some steering power within situations.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "dynamic_personality_development"
+      },
+      "reason": "Addresses orientation point gap on agency.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-dc8de1f09a255dee",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-0418dd8c1be9decb",
+      "promote": false,
+      "gemini_decision": "merge_with_existing",
+      "confidence": "high",
+      "front_text": "",
+      "back_text": "",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives",
+        "comparative_theory_analysis",
+        "critical_psychology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 8,
+      "target_gap": {
+        "unit_id": "biosocial_personality_perspectives:orientation_points:agency",
+        "field": "orientation_points",
+        "label": "biosocial personality perspectives: agency",
+        "expected_text": "agency agens handleevne valg mulighed limited indirect agency Agency is usually not the main explanatory center, though persons can shape niches and practices that feed back into development.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "biosocial_personality_perspectives"
+      },
+      "reason": "Near identical to existing card 'nlm-measurement-development-pathology-2544197c7be85096'. Best to merge as it's structurally the same.",
+      "added_value": "Redundant.",
+      "target_gap_assessment": "Gap is already covered by live deck.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-2544197c7be85096",
+      "nearest_existing_card_assessment": "High overlap.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "merge_with_existing"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-be83cdd86d6210c3",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan integrerer de biosociale perspektiver forskellige niveauer af historicitet?",
+      "back_text": "Forklaringerne trækker på både fylogenese (artshistorie), sociogenese (kulturhistorie) og ontogenese (individuel livshistorie).",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives",
+        "narrative_psychology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 9,
+      "target_gap": {
+        "unit_id": "biosocial_personality_perspectives:orientation_points:historicity",
+        "field": "orientation_points",
+        "label": "biosocial personality perspectives: historicity",
+        "expected_text": "historicitet historisk udvikling tid strong phylogenesis with sociogenesis and ontogenesis Species history, cultural history, and individual life history all matter, but their weight differs across subtheories.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "biosocial_personality_perspectives"
+      },
+      "reason": "Addresses historicity in biosocial perspectives clearly.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-43baf88ba1a29b8d",
+      "nearest_existing_card_assessment": "Acceptable phrasing difference.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-74f06990584ebcac",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken metodisk tilgang benyttes i studiet af personlighedens fungeren og patologi?",
+      "back_text": "Klinisk vurdering, dimensionel diagnostik, modeller for personlighedsmæssig fungeren og sammenligning af kategorielle og dimensionelle systemer.",
+      "category_slug": "metode-og-evidens",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 10,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:method_evidence_style",
+        "field": "method_evidence_style",
+        "label": "personality functioning and pathology: metode/evidens",
+        "expected_text": "Clinical assessment, dimensional diagnostics, personality functioning models, and comparison between categorical and dimensional systems.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Straightforward coverage of method and evidence style.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-00520541a2b50de2",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-a01b7b46804cfe3d",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan placerer teorien om personlighedens fungeren og patologi sig i forhold til essens og kontekst?",
+      "back_text": "Teorien undersøger organiserede mønstre i personen (klinisk organisation), men personens fungeren vurderes gennem relationer til verden og andre.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 11,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:orientation_points:essence_context",
+        "field": "orientation_points",
+        "label": "personality functioning and pathology: essence_context",
+        "expected_text": "essens kontekst essence context mixed clinical organization and relational context The theory looks at organized patterns in the person, but functioning is assessed through self-world and interpersonal relations.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Covers essence vs context for functioning theories.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-f25794b5e93aec4e",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-d9cedb2232151d50",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan forstås determinisme i relation til kliniske mønstre og patologi?",
+      "back_text": "Patologi ses ikke som én årsag, men som en begrænset organisering af selv og relationer, der skaber bestemte kliniske mønstre og funktionsnedsættelser.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 12,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:orientation_points:determination",
+        "field": "orientation_points",
+        "label": "personality functioning and pathology: determination",
+        "expected_text": "determination determinisme bestemt clinical patterning and impairment Pathology is not a single cause but a constrained organization of self and relation.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Clarifies determination within functioning and pathology models.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-20c31605de0e83ee",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-8da09e01d46d302e",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan viser handleevne (agency) sig i modeller for personlighedsmæssig fungeren?",
+      "back_text": "Handleevne viser sig gennem selvstændighed og relationel kapacitet, men den kan være kompromitteret eller begrænset af psykisk funktionsnedsættelse.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "critical_psychology",
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 13,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:orientation_points:agency",
+        "field": "orientation_points",
+        "label": "personality functioning and pathology: agency",
+        "expected_text": "agency agens handleevne valg mulighed compromised but assessable agency Agency appears through self-direction and relational capacity, and can be limited by impairment.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Properly models agency in functioning theories.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-62a8b9285b015ed6",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-bed5d70137c8eb2b",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken betydning har historicitet for forståelsen af personlighedens patologi?",
+      "back_text": "Både udviklingshistorien og den kliniske historik for personlighedens organisering er central for at forstå den aktuelle diagnostiske struktur.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "personality_functioning_and_pathology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 14,
+      "target_gap": {
+        "unit_id": "personality_functioning_and_pathology:orientation_points:historicity",
+        "field": "orientation_points",
+        "label": "personality functioning and pathology: historicity",
+        "expected_text": "historicitet historisk udvikling tid developmental and clinical history The life history of personality organization matters, even when the exam focus is diagnostic structure.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "personality_functioning_and_pathology"
+      },
+      "reason": "Deals with the clinical and developmental history orientation point.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-e8f0683fc8da1a45",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-9b3acb1105cd1278",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilke metoder og evidensformer benyttes i eksistentiel psykologi?",
+      "back_text": "Eksistentiel terapi, fænomenologisk undersøgelse, filosofisk fortolkning og klinisk refleksion over autenticitet og mening.",
+      "category_slug": "metode-og-evidens",
+      "mapped_theory_ids": [
+        "existential_psychology",
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 15,
+      "target_gap": {
+        "unit_id": "existential_psychology:method_evidence_style",
+        "field": "method_evidence_style",
+        "label": "existential psychology: metode/evidens",
+        "expected_text": "Existential therapy, phenomenological inquiry, philosophical interpretation, and clinical reflection on authenticity and meaning.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "existential_psychology"
+      },
+      "reason": "Details method and evidence base for existential psychology.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-6c6f93aeaf1ef832",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-orientation-method-9a837b35a7cd0ca9",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken metodik og evidens danner grundlag for humanistisk psykologi?",
+      "back_text": "Klientcentreret terapi, kvalitativ og klinisk refleksion, behovsteori og fokus på den subjektive oplevelse.",
+      "category_slug": "metode-og-evidens",
+      "mapped_theory_ids": [
+        "humanistic_psychology",
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-orientation-method",
+      "source_index": 16,
+      "target_gap": {
+        "unit_id": "humanistic_psychology:method_evidence_style",
+        "field": "method_evidence_style",
+        "label": "humanistic psychology: metode/evidens",
+        "expected_text": "Client-centered therapy, qualitative and clinical reflection, needs theory, and attention to subjective experience.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "humanistic_psychology"
+      },
+      "reason": "Details method and evidence base for humanistic psychology.",
+      "added_value": "Fills specific matrix cell.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-6c6f93aeaf1ef832",
+      "nearest_existing_card_assessment": "Acceptable redundancy.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-e735dd293e0734d4",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan forklarer de biosociale perspektiver vedvarende variation i personlighedstræk på tværs af populationer?",
+      "back_text": "Variation forklares gennem evolutionære mekanismer som 'balancing selection' og det komplekse samspil mellem genetiske dispositioner og kulturel feedback (gene-culture dynamics).",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "biosocial_personality_perspectives",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 1,
+      "target_gap": {
+        "unit_id": "biosocial_personality_perspectives:source_note_basis:karla_traekteori",
+        "field": "source_note_basis",
+        "label": "biosocial personality perspectives: source basis karla_traekteori",
+        "expected_text": "Selective support for evolutionary trait variation, gene-culture dynamics, and sociogenetic nuance in trait accounts.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "biosocial_personality_perspectives"
+      },
+      "reason": "Integrates source basis material safely without leaking hidden IDs.",
+      "added_value": "Expands on balancing selection and gene-culture dynamics.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-4107a91d9f4210b4",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-e16ace6e8b0eb711",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er en central forskel på klassisk freudiansk og fransk psykoanalyse (Lacan/Laplanche) i forståelsen af subjektet?",
+      "back_text": "Klassisk psykoanalyse betoner indre drifter og konflikter, mens fransk psykoanalyse ser subjektet som ankeret i sproget og konstitueret gennem relationen til 'den anden'.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "psychoanalytic_personality_theory"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 2,
+      "target_gap": {
+        "unit_id": "psychoanalytic_personality_theory:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "psychoanalytic personality theory: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Adds compact exam table entries for classical and French psychoanalysis, including limits and orientation prompts.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "psychoanalytic_personality_theory"
+      },
+      "reason": "Strong comparison of classical vs French psychoanalysis.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-38e4a98f86c6dafe",
+      "nearest_existing_card_assessment": "Acceptable wording.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-4e9620e61e292f81",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "På hvilken måde udgør fænomenologisk psykologi en modvægt til reduktionistiske personlighedsmodeller?",
+      "back_text": "Ved at insistere på at studere personligheden gennem levet erfaring og intentionalitet frem for at isolere mennesket i målbare variabler eller mekaniske processer.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 3,
+      "target_gap": {
+        "unit_id": "phenomenological_psychology:source_note_basis:anes_tabel",
+        "field": "source_note_basis",
+        "label": "phenomenological psychology: source basis anes_tabel",
+        "expected_text": "Separate phenomenology row with orientation points and contrast to more reductive models.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "phenomenological_psychology"
+      },
+      "reason": "Defines phenomenological approach securely based on source input.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-bb1a8430c424f3b1",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-5a81d59de045508a",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken betydning har 'førstepersons-perspektivet' og 'livsverden' i en fænomenologisk eksamenssammenligning?",
+      "back_text": "Begreberne rammesætter personen som et erfarent subjekt, hvis verden er givet gennem mening, hvilket udfordrer teorier, der ser personlighed som noget rent indre eller rent ydre.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 4,
+      "target_gap": {
+        "unit_id": "phenomenological_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "phenomenological psychology: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Supports the first-person and lived-world framing used for exam comparison.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "phenomenological_psychology"
+      },
+      "reason": "Solidifying phenomenological first-person terminology.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-bb1a8430c424f3b1",
+      "nearest_existing_card_assessment": "Acceptable nuance.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-1718f5f23f6a30e8",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan adskiller den fænomenologiske metode (f.eks. Spinelli) sig fra narrativ psykologi i tilgangen til mening?",
+      "back_text": "Fænomenologien søger at beskrive den umiddelbare, levede erfaring gennem 'parantesætning' (bracketing), mens narrativ psykologi fokuserer på, hvordan identitet skabes gennem historiefortælling over tid.",
+      "category_slug": "metode-og-evidens",
+      "mapped_theory_ids": [
+        "narrative_psychology",
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 5,
+      "target_gap": {
+        "unit_id": "phenomenological_psychology:source_note_basis:karla_faenomenologi",
+        "field": "source_note_basis",
+        "label": "phenomenological psychology: source basis karla_faenomenologi",
+        "expected_text": "Adds orientation-point detail, Spinelli method cues, and direct comparison with narrative psychology.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "phenomenological_psychology"
+      },
+      "reason": "Connects phenomenological bracketing explicitly with narrative identity.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-e2b395a19dae0af8",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-d493d9f839dbb0a4",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilke faghistoriske rødder og tænkere danner grundlag for den eksistentielle psykologis metode?",
+      "back_text": "Den bygger på filosofisk fænomenologi og tænkere, der fokuserer på menneskets grundvilkår, hvor metoden er rettet mod individets stillingtagen til tilværelsen frem for kausale forklaringer.",
+      "category_slug": "metode-og-evidens",
+      "mapped_theory_ids": [
+        "existential_psychology",
+        "phenomenological_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 6,
+      "target_gap": {
+        "unit_id": "existential_psychology:source_note_basis:anes_tabel",
+        "field": "source_note_basis",
+        "label": "existential psychology: source basis anes_tabel",
+        "expected_text": "Separate existential row with faghistoric context, thinkers, method, and orientation points.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "existential_psychology"
+      },
+      "reason": "Traces existential psychology to its roots safely.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-00520541a2b50de2",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-9a71f198b63da8b2",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er de centrale anti-reduktionistiske begreber i eksistentiel psykologi, og hvad er teoriens begrænsning?",
+      "back_text": "Teorien betoner frihed, autenticitet og valg; dens begrænsning er en tendens til individualisering, der kan overplacere ansvar på individet og underprioritere sociale strukturer.",
+      "category_slug": "styrker-og-begraensninger",
+      "mapped_theory_ids": [
+        "existential_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 7,
+      "target_gap": {
+        "unit_id": "existential_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "existential psychology: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Adds exam-language about freedom, authenticity, anti-reductionism, and limitations.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "existential_psychology"
+      },
+      "reason": "Summarises existential psychology's core limits efficiently.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-79ba0d0014935345",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-860e8f36b2b928a8",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er ligheden i det kliniske sprogbrug mellem humanistisk og eksistentiel psykologi?",
+      "back_text": "Begge traditioner benytter et ressourceorienteret sprog om vækst, autenticitet og personlig betydning, men humanismen er ofte mere optimistisk omkring iboende potentialer.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 8,
+      "target_gap": {
+        "unit_id": "humanistic_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "humanistic psychology: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Supports comparison with existential psychology and clinical growth language.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "humanistic_psychology"
+      },
+      "reason": "Effectively compares clinical language of humanistic and existential views.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-psychoanalysis-experience-humanism-14e6aec8541259ef",
+      "nearest_existing_card_assessment": "Acceptable redundancy.",
+      "automatic_review_status": "needs_review",
+      "local_suggested_decision": "edit"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-25df777c05d1c84c",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan forklarer humanistisk psykologi personlighedsudvikling gennem begreberne behov og kongruens?",
+      "back_text": "Udvikling ses som en stræben efter selvrealisering, hvor kongruens mellem personens oplevede selv og det 'vurderede selv' er afgørende for autentisk vækst.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "humanistic_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 9,
+      "target_gap": {
+        "unit_id": "humanistic_psychology:source_note_basis:karla_humanistisk_psyk",
+        "field": "source_note_basis",
+        "label": "humanistic psychology: source basis karla_humanistisk_psyk",
+        "expected_text": "Adds compact support for needs, congruence, valued/perceived self, and comparison with narrative psychology.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "humanistic_psychology"
+      },
+      "reason": "Clarifies needs and congruence securely.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-aef012c4c7170f80",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-a08bff2446e9e8db",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan adskiller kritisk psykologi sig fra trækpsykologiske, eksistentielle og humanistiske tilgange?",
+      "back_text": "Den kritiserer deres individualiserende fokus og flytter i stedet forklaringen til sociale praksisser, historiske betingelser og kollektive handlemuligheder.",
+      "category_slug": "sammenligninger",
+      "mapped_theory_ids": [
+        "critical_psychology",
+        "existential_psychology",
+        "humanistic_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 10,
+      "target_gap": {
+        "unit_id": "critical_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "critical psychology: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Supports the contrast with trait, existential, and humanistic accounts.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "critical_psychology"
+      },
+      "reason": "Strong contrast between critical psychology and individualistic approaches.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-4fe38fef78b8a505",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-4203bf82d0c8571f",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan kan man begrebsligt skelne mellem socialkonstruktionisme og poststrukturalisme i forhold til personlighed?",
+      "back_text": "Socialkonstruktionisme fokuserer på den sociale skabelse af kategorier, mens poststrukturalisme i højere grad inddrager magtrelationer og diskursive formationer som formende for subjektet.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 11,
+      "target_gap": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "sociocultural and poststructural approaches: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Adds compact comparative phrasing on discourse, construction, power, and the relation between the two traditions.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "sociocultural_poststructural_approaches"
+      },
+      "reason": "Provides essential difference between social constructionism and poststructuralism.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-c67547400959ebdc",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-fa446ba6b0e18eba",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan forstås 'agency' (handleevne) inden for poststrukturelle og sociokulturelle tilgange?",
+      "back_text": "Agency er ikke en medfødt egenskab, men opstår gennem 'positionering', hvor subjektet tager del i, modstår eller forhandler tilgængelige diskursive kategorier og normer.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "comparative_theory_analysis",
+        "critical_psychology",
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 12,
+      "target_gap": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:karla_socialkonstruktivisme",
+        "field": "source_note_basis",
+        "label": "sociocultural and poststructural approaches: source basis karla_socialkonstruktivisme",
+        "expected_text": "Selective enrichment for discourse, agency as accessible positioning, sociogenesis, and narrative comparison; media not used.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "sociocultural_poststructural_approaches"
+      },
+      "reason": "Tackles agency and positioning safely.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-oral-exam-comparison-workshop-0229f1ccb86283a9",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-53f1a524f36b52a6",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvilken rolle spiller Foucaults begreber om genealogi og subjektivering for forståelsen af subjektivitet?",
+      "back_text": "De belyser, hvordan historiske magtformer og videnssystemer producerer bestemte måder, hvorpå individer genkender og former sig selv som 'personligheder'.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "sociocultural_poststructural_approaches"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 13,
+      "target_gap": {
+        "unit_id": "sociocultural_poststructural_approaches:source_note_basis:karla_poststrukturalisme",
+        "field": "source_note_basis",
+        "label": "sociocultural and poststructural approaches: source basis karla_poststrukturalisme",
+        "expected_text": "Selective enrichment for Foucault, subjectivation, genealogy, and power; large note and embedded media kept out of matrix prose.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "sociocultural_poststructural_approaches"
+      },
+      "reason": "Successfully frames Foucault's relevance to the matrix.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-global-calibration-synthesis-ea6da9a992b6476b",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-5fbc591f44b081e6",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvordan kan narrativ identitet bruges som en bro mellem trækpsykologi og socialkonstruktionisme?",
+      "back_text": "Ved at forklare personlighedens kontinuitet gennem meningsfulde livshistorier (frem for statiske træk), der samtidig er formet af kulturelle skabeloner og sociale sammenhænge.",
+      "category_slug": "personbegreb",
+      "mapped_theory_ids": [
+        "narrative_psychology",
+        "sociocultural_poststructural_approaches",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 14,
+      "target_gap": {
+        "unit_id": "narrative_psychology:source_note_basis:jaque_tabel_alle_teoretiske_retninger",
+        "field": "source_note_basis",
+        "label": "narrative psychology: source basis jaque_tabel_alle_teoretiske_retninger",
+        "expected_text": "Supports compact exam comparison between narrative, social constructionist, and trait approaches.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "narrative_psychology"
+      },
+      "reason": "Explains narrative psychology as a bridging theory.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-critical-sociocultural-narrative-eb9c9ad4af46b810",
+      "nearest_existing_card_assessment": "Low overlap.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    },
+    {
+      "candidate_id": "nlm-gap-repair-source-basis-38e9666fe207ed0c",
+      "promote": true,
+      "gemini_decision": "accept",
+      "confidence": "high",
+      "front_text": "Hvad er den primære kontrast mellem trækpsykologiens sprog og den narrative psykologis fokus?",
+      "back_text": "Trækpsykologien fokuserer på måling af stabile, dekontekstualiserede dimensioner, mens narrativ psykologi fokuserer på den subjektive meningsskabelse og temporale organisering af livet.",
+      "category_slug": "orienteringspunkter",
+      "mapped_theory_ids": [
+        "narrative_psychology",
+        "trait_and_assessment_psychology"
+      ],
+      "notebook_slug": "gap-repair-source-basis",
+      "source_index": 15,
+      "target_gap": {
+        "unit_id": "narrative_psychology:source_note_basis:karla_traekteori",
+        "field": "source_note_basis",
+        "label": "narrative psychology: source basis karla_traekteori",
+        "expected_text": "Adds selective contrast between trait language and narrative meaning-making; text extraction only.",
+        "priority": "high",
+        "target_theory_id": "",
+        "theory_id": "narrative_psychology"
+      },
+      "reason": "Sharply contrasts trait and narrative focuses.",
+      "added_value": "Fills source-specific gap.",
+      "target_gap_assessment": "Repairs gap.",
+      "nearest_existing_card_id": "nlm-measurement-development-pathology-e3f1f9e5758e0e7c",
+      "nearest_existing_card_assessment": "Safe to add.",
+      "automatic_review_status": "candidate",
+      "local_suggested_decision": "accept"
+    }
+  ]
+}

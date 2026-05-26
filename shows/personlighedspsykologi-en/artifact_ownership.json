@@ -237,6 +237,22 @@
       "writer": "scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py"
     },
     {
+      "artifact_id": "student_synthesis_gap_repair_review_decisions_json",
+      "concept": "student_synthesis_flashcard_gap_repair",
+      "path": "shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/review_personlighedspsykologi_gap_repair_flashcards_with_gemini.py"
+    },
+    {
+      "artifact_id": "student_synthesis_gap_repair_review_decisions_markdown",
+      "concept": "student_synthesis_flashcard_gap_repair",
+      "path": "shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.md",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/review_personlighedspsykologi_gap_repair_flashcards_with_gemini.py"
+    },
+    {
       "artifact_id": "student_synthesis_archived_matrix_flashcard_deck",
       "concept": "student_synthesis_archived_flashcards",
       "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json",

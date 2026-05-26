@@ -173,6 +173,19 @@ local paths, source-note IDs, coverage-field labels, or target/gap labels in
 the card text. The run output is intentionally local and gitignored under
 `runs/gap-repair-20260526-high-priority/`.
 
+Review and promotion result:
+
+- Gemini reviewed the 47 non-rejected repair candidates in one call using the
+  corrected gap-repair rubric where overlap with the live deck is not, by
+  itself, a rejection reason.
+- Decisions artifact:
+  `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.json`
+- result: 46 `accept`, 1 `merge_with_existing`, 0 `edit`, 0 `reject`
+- live full NotebookLM deck after promotion: 280 cards
+- coverage after promotion: high-priority missing/weak units reduced from 57 to
+  14; remaining weak/missing units are 2 `method_evidence_style` and 12
+  `source_note_basis`
+
 Export the processed packs and committed plan:
 
 ```bash

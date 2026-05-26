@@ -101,7 +101,7 @@ Current `personlighedspsykologi` Freudd deck policy:
 - only live deck slug: `notebooklm-fuld-matrix-personlighedspsykologi`
 - live deck artifact:
   `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
-- live card count: 234
+- live card count: 280
 - live purpose: newest NotebookLM cards from all matrix clusters, generated from
   processed matrix packs without existing Freudd cards as NotebookLM sources
 - full matrix/source coverage audit:
@@ -110,6 +110,8 @@ Current `personlighedspsykologi` Freudd deck policy:
   `scripts/audit_personlighedspsykologi_flashcard_coverage.py`
 - targeted NotebookLM gap-repair plan:
   `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_notebook_plan.md`
+- targeted NotebookLM gap-repair review decisions:
+  `shows/personlighedspsykologi-en/flashcards/coverage/gap_repair_review_decisions.md`
 - targeted NotebookLM gap-repair CLIs:
   `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
   `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
@@ -137,9 +139,13 @@ are used only after generation for duplicate checks and review.
 
 Current targeted run `gap-repair-20260526-high-priority` generated 57 raw
 NotebookLM repair cards across the three packs: 41 normalized as `candidate`, 6
-as `needs_review`, and 10 as `auto_rejected`. NotebookLM IDs are recorded in the
-flashcard-lab README; the downloaded and normalized run artifacts remain local
-under the gitignored lab run folder until a separate review/promotion task.
+as `needs_review`, and 10 as `auto_rejected`. Gemini reviewed the 47
+non-rejected candidates in one call and accepted 46 for promotion, with one
+`merge_with_existing` decision. The live full NotebookLM deck now includes those
+46 accepted repair cards, raising the live card count to 280. The post-promotion
+coverage audit reduced high-priority missing/weak units from 57 to 14; the
+remaining units are 2 `method_evidence_style` misses and 12 weak
+`source_note_basis` units.
 
 NotebookLM alternative-card workflow:
 

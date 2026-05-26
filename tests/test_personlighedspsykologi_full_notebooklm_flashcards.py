@@ -62,3 +62,38 @@ def test_build_single_deck_registry_exposes_only_full_notebooklm_deck():
     assert len(registry["decks"]) == 1
     assert registry["decks"][0]["deck_slug"] == full_cards.FULL_NOTEBOOKLM_DECK_SLUG
     assert registry["decks"][0]["enabled"] is True
+
+
+def test_full_deck_can_include_reviewed_gap_repair_candidates():
+    base_payload = _payload(
+        notebook_slug="global-calibration-synthesis",
+        candidates=[_candidate("nlm-test-accepted", "candidate")],
+    )
+    repair_payload = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_notebooklm_flashcard_candidates",
+        "subject_slug": "personlighedspsykologi",
+        "run_id": "gap-repair-test",
+        "notebook_slug": "gap-repair-promoted",
+        "source_path": "gap_repair_review_decisions",
+        "stats": {"candidate_count": 1},
+        "candidates": [
+            {
+                **_candidate("nlm-gap-repair-accepted", "candidate"),
+                "notebook_slug": "gap-repair-comparisons-traps",
+                "tags": ["notebooklm-gap-repair"],
+            }
+        ],
+    }
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=[base_payload, repair_payload],
+        source_file="runs/test/candidates + gap_repair_review_decisions.json",
+        source_sha256=full_cards.source_fingerprint([base_payload, repair_payload]),
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    assert deck["card_count"] == 2
+    repair_card = next(card for card in deck["cards"] if card["card_id"] == "nlm-gap-repair-accepted")
+    assert "notebooklm-gap-repair" in repair_card["tags"]
+    assert deck["run_ids"] == ["full-matrix-test", "gap-repair-test"]

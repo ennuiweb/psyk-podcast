@@ -24,6 +24,10 @@ from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards impor
     NotebookLMVariantFlashcardError,
     validate_variant_deck,
 )
+from notebooklm_queue.personlighedspsykologi_gap_repair_review import (
+    gap_repair_decisions_to_candidate_payload,
+    load_gap_repair_promotion_decisions,
+)
 
 FULL_NOTEBOOKLM_DECK_SLUG = "notebooklm-fuld-matrix-personlighedspsykologi"
 FULL_NOTEBOOKLM_DECK_TITLE = "NotebookLM fuld matrix: personlighedspsykologi"
@@ -133,6 +137,7 @@ def _card_from_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
         f"review:{status}",
         category_slug,
         *_as_str_list(candidate.get("mapped_theory_ids")),
+        *_as_str_list(candidate.get("tags")),
     }
     return {
         "card_id": candidate_id,
@@ -223,6 +228,14 @@ def build_full_notebooklm_deck(
     except NotebookLMVariantFlashcardError as exc:
         raise FullNotebookLMFlashcardError(str(exc)) from exc
     return artifact
+
+
+def load_gap_repair_candidate_payloads(decision_paths: list[Path]) -> list[dict[str, Any]]:
+    payloads: list[dict[str, Any]] = []
+    for path in decision_paths:
+        decisions = load_gap_repair_promotion_decisions(path)
+        payloads.append(gap_repair_decisions_to_candidate_payload(decisions))
+    return payloads
 
 
 def build_single_deck_registry(*, artifact_path: str, card_count: int) -> dict[str, Any]:

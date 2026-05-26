@@ -38,6 +38,11 @@ from notebooklm_queue.personlighedspsykologi_notebooklm_gap_repair import (
     DEFAULT_GAP_REPAIR_RUN_ID,
     GAP_REPAIR_ARTIFACT_TYPE,
 )
+from notebooklm_queue.personlighedspsykologi_gap_repair_review import (
+    GAP_REPAIR_PROMOTION_DECISIONS_ARTIFACT_TYPE,
+    GapRepairReviewError,
+    validate_gap_repair_promotion_decisions,
+)
 from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -74,6 +79,8 @@ STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_JSON = SHOW_DIR / "flashcards" / "coverage"
 STUDENT_SYNTHESIS_FLASHCARD_COVERAGE_MD = SHOW_DIR / "flashcards" / "coverage" / "full_matrix_coverage_report.md"
 STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_JSON = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_notebook_plan.json"
 STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_notebook_plan.md"
+STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_review_decisions.json"
+STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD = SHOW_DIR / "flashcards" / "coverage" / "gap_repair_review_decisions.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -356,6 +363,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD).exists():
         failures.append(
             f"Missing student synthesis gap-repair NotebookLM plan Markdown: {STUDENT_SYNTHESIS_GAP_REPAIR_PLAN_MD}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON).exists():
+        failures.append(
+            f"Missing student synthesis gap-repair review decisions JSON: {STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD).exists():
+        failures.append(
+            f"Missing student synthesis gap-repair review decisions Markdown: {STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -1127,6 +1142,31 @@ def _failures(repo_root: Path) -> list[str]:
                 failures.append("Gap-repair NotebookLM plan Markdown does not mention the current run ID")
             if "gap-repair-comparisons-traps" not in gap_repair_md_text:
                 failures.append("Gap-repair NotebookLM plan Markdown does not mention the comparisons/traps pack")
+
+    gap_repair_review_json = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON
+    gap_repair_review_md = repo_root / STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_MD
+    if gap_repair_review_json.exists() and gap_repair_review_md.exists():
+        try:
+            gap_repair_review = _load_json(gap_repair_review_json)
+            validate_gap_repair_promotion_decisions(gap_repair_review)
+        except (GapRepairReviewError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis gap-repair review decisions are invalid in "
+                f"{STUDENT_SYNTHESIS_GAP_REPAIR_REVIEW_JSON}: {exc}"
+            )
+        else:
+            if gap_repair_review.get("artifact_type") != GAP_REPAIR_PROMOTION_DECISIONS_ARTIFACT_TYPE:
+                failures.append("Gap-repair review decisions artifact_type is invalid")
+            if gap_repair_review.get("run_id") != DEFAULT_GAP_REPAIR_RUN_ID:
+                failures.append("Gap-repair review decisions run_id is not the current default")
+            stats = gap_repair_review.get("stats") if isinstance(gap_repair_review.get("stats"), dict) else {}
+            if int(stats.get("promoted_count") or 0) <= 0:
+                failures.append("Gap-repair review decisions must promote at least one card")
+            md_text = gap_repair_review_md.read_text(encoding="utf-8")
+            if "Gap-Repair Flashcard Review Decisions" not in md_text:
+                failures.append("Gap-repair review Markdown title is missing")
+            if DEFAULT_GAP_REPAIR_RUN_ID not in md_text:
+                failures.append("Gap-repair review Markdown does not mention the current run ID")
 
     archived_variant_decks_to_validate = [
         (

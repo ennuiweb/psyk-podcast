@@ -18,9 +18,11 @@ from notebooklm_queue.personlighedspsykologi_full_notebooklm_flashcards import (
     FullNotebookLMFlashcardError,
     build_full_notebooklm_deck,
     build_single_deck_registry,
+    load_gap_repair_candidate_payloads,
     load_candidate_payloads,
     source_fingerprint,
 )
+from notebooklm_queue.personlighedspsykologi_gap_repair_review import DEFAULT_GAP_REPAIR_REVIEW_JSON
 
 DEFAULT_RUN_DIR = (
     Path("notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs")
@@ -30,6 +32,7 @@ DEFAULT_CANDIDATES_DIR = DEFAULT_RUN_DIR / "candidates"
 DEFAULT_FLASHCARD_DIR = Path("shows/personlighedspsykologi-en/flashcards")
 DEFAULT_DECK_PATH = DEFAULT_FLASHCARD_DIR / f"{FULL_NOTEBOOKLM_DECK_SLUG}.json"
 DEFAULT_REGISTRY_PATH = DEFAULT_FLASHCARD_DIR / "decks.json"
+DEFAULT_GAP_REPAIR_DECISIONS_PATH = DEFAULT_GAP_REPAIR_REVIEW_JSON
 
 
 def _resolve_repo_path(path: Path, repo_root: Path) -> Path:
@@ -64,7 +67,16 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         )
 
     candidate_payloads = load_candidate_payloads(candidate_paths)
-    source_file = _repo_relative(args.candidates_dir, repo_root)
+    gap_repair_decision_paths: list[Path] = []
+    if not args.no_gap_repair_decisions:
+        raw_paths = args.gap_repair_decisions or []
+        if not raw_paths and _resolve_repo_path(DEFAULT_GAP_REPAIR_DECISIONS_PATH, repo_root).exists():
+            raw_paths = [DEFAULT_GAP_REPAIR_DECISIONS_PATH]
+        gap_repair_decision_paths = [_resolve_repo_path(path, repo_root) for path in raw_paths]
+        candidate_payloads.extend(load_gap_repair_candidate_payloads(gap_repair_decision_paths))
+    source_parts = [_repo_relative(args.candidates_dir, repo_root)]
+    source_parts.extend(_repo_relative(path, repo_root) for path in gap_repair_decision_paths)
+    source_file = " + ".join(source_parts)
     deck_artifact_path = _repo_relative(args.deck_path, repo_root)
     deck = build_full_notebooklm_deck(
         candidate_payloads=candidate_payloads,
@@ -89,6 +101,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--candidates-dir", type=Path, default=DEFAULT_CANDIDATES_DIR)
     parser.add_argument("--deck-path", type=Path, default=DEFAULT_DECK_PATH)
     parser.add_argument("--registry-path", type=Path, default=DEFAULT_REGISTRY_PATH)
+    parser.add_argument(
+        "--gap-repair-decisions",
+        type=Path,
+        action="append",
+        default=[],
+        help="Reviewed gap-repair promotion decisions JSON to fold into the live full deck. Repeatable.",
+    )
+    parser.add_argument(
+        "--no-gap-repair-decisions",
+        action="store_true",
+        help="Ignore the default committed gap-repair review decisions artifact even when present.",
+    )
     parser.add_argument("--expected-notebook-count", type=int, default=5)
     parser.add_argument("--dry-run", action="store_true", help="Build and validate without writing files.")
     parser.add_argument("--validate-only", action="store_true", help="Validate generation without writing files.")

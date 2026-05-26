@@ -3,16 +3,17 @@
 {% block content %}
 <style>
   .flashcard-shell {
-    --flashcard-study-width: 820px;
-    max-width: 980px;
-    margin: clamp(var(--space-3), 3vh, var(--space-5)) auto;
+    --flashcard-study-width: 780px;
+    --flashcard-paper-shadow: 0 24px 54px color-mix(in srgb, #4e4026 16%, transparent);
+    max-width: 1020px;
+    margin: clamp(var(--space-3), 3.8vh, var(--space-6)) auto;
     display: grid;
-    gap: clamp(var(--space-4), 2.2vw, var(--space-6));
-    padding: clamp(var(--space-4), 3vw, 34px);
-    overflow: clip;
-    border-color: color-mix(in srgb, var(--border) 66%, transparent);
-    background: color-mix(in srgb, var(--surface) 76%, transparent);
-    box-shadow: 0 6px 18px color-mix(in srgb, var(--muted) 8%, transparent);
+    gap: clamp(var(--space-3), 1.8vw, var(--space-5));
+    padding: 0 clamp(var(--space-2), 2.2vw, var(--space-4));
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .flashcard-head {
@@ -21,8 +22,9 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    justify-self: center;
+    width: min(100%, calc(var(--flashcard-study-width) + 72px));
+    padding: 0 clamp(var(--space-1), 1.2vw, var(--space-3));
   }
 
   .flashcard-headline {
@@ -34,17 +36,17 @@
   .flashcard-module {
     margin: 0;
     width: fit-content;
-    min-height: 26px;
-    border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+    min-height: 24px;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--info-bg) 82%, var(--surface));
+    background: color-mix(in srgb, var(--info-bg) 70%, var(--surface));
     color: var(--info-ink-strong);
     display: inline-flex;
     align-items: center;
-    padding: 0 var(--space-3);
+    padding: 0 10px;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 800;
   }
@@ -53,19 +55,19 @@
     margin: 0;
     color: var(--text-subtle-2);
     font-family: var(--font-body);
-    font-size: clamp(1.02rem, 1.45vw, 1.24rem);
+    font-size: clamp(0.98rem, 1.26vw, 1.12rem);
     line-height: 1.2;
     font-weight: 800;
     overflow-wrap: anywhere;
   }
 
   .flashcard-back-link {
-    min-height: 38px;
+    min-height: 36px;
     gap: var(--space-1);
     border-radius: var(--radius-pill);
-    background: transparent;
+    background: color-mix(in srgb, var(--surface) 52%, transparent);
     color: var(--text-subtle-2);
-    font-size: 0.94rem;
+    font-size: 0.88rem;
     font-weight: 700;
   }
 
@@ -77,7 +79,7 @@
 
   .flashcard-stage {
     display: grid;
-    gap: clamp(var(--space-3), 1.5vw, var(--space-5));
+    gap: clamp(var(--space-3), 1.5vw, var(--space-4));
     padding-top: 0;
     min-width: 0;
   }
@@ -96,9 +98,12 @@
     grid-template-columns: minmax(240px, 1fr) auto;
     align-items: center;
     gap: var(--space-3);
-    margin-top: calc(var(--space-1) * -1);
-    padding-top: var(--space-3);
-    border-top: 1px solid color-mix(in srgb, var(--border) 54%, transparent);
+    margin-top: 0;
+    padding: var(--space-2);
+    border: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface) 48%, transparent);
+    box-shadow: 0 1px 0 color-mix(in srgb, #ffffff 72%, transparent) inset;
   }
 
   .flashcard-scope-control {
@@ -124,7 +129,7 @@
     width: 100%;
     border: 1px solid color-mix(in srgb, var(--border) 66%, transparent);
     border-radius: var(--radius-pill);
-    background: color-mix(in srgb, var(--surface) 38%, transparent);
+    background: color-mix(in srgb, var(--surface) 72%, transparent);
     color: var(--text-subtle-2);
     padding: 0 32px 0 var(--space-3);
     font: inherit;
@@ -166,8 +171,8 @@
   }
 
   .flashcard-filter-button.is-active {
-    border-color: color-mix(in srgb, var(--border-strong) 62%, transparent);
-    background: color-mix(in srgb, var(--surface) 58%, transparent);
+    border-color: color-mix(in srgb, var(--border-strong) 58%, transparent);
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
     color: var(--text-subtle-2);
   }
 
@@ -190,7 +195,13 @@
     grid-template-columns: minmax(62px, auto) minmax(0, 1fr) auto minmax(86px, auto);
     align-items: center;
     justify-content: stretch;
-    gap: var(--space-2);
+    gap: var(--space-3);
+    min-height: 46px;
+    padding: 8px 12px;
+    border: 1px solid color-mix(in srgb, var(--border) 54%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface) 38%, transparent);
+    box-shadow: 0 1px 0 color-mix(in srgb, #ffffff 72%, transparent) inset;
   }
 
   .flashcard-counter,
@@ -199,7 +210,7 @@
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 800;
     color: var(--text-subtle-2);
   }
@@ -229,7 +240,7 @@
     border: 0;
     border-radius: 0;
     background: transparent;
-    color: var(--muted);
+    color: color-mix(in srgb, var(--muted) 86%, transparent);
     display: inline-flex;
     align-items: center;
     padding: 0;
@@ -249,10 +260,16 @@
 
   .flashcard-progress {
     width: 100%;
-    height: 7px;
+    height: 8px;
     border: 0;
     border-radius: var(--radius-pill);
-    background: var(--progress-track-bg);
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0,
+        transparent calc(8.333% - 1px),
+        color-mix(in srgb, var(--border-strong) 28%, transparent) calc(8.333% - 1px),
+        color-mix(in srgb, var(--border-strong) 28%, transparent) 8.333%),
+      var(--progress-track-bg);
     overflow: hidden;
     appearance: none;
   }
@@ -273,8 +290,27 @@
     justify-self: center;
     width: min(100%, var(--flashcard-study-width));
     display: grid;
-    gap: clamp(var(--space-2), 1.2vw, var(--space-4));
-    padding: 0;
+    gap: clamp(var(--space-3), 1.35vw, var(--space-5));
+    min-height: min(570px, calc(100dvh - 240px));
+    padding: clamp(var(--space-5), 4vw, 46px);
+    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--accent) 18%, transparent) 0 3px, transparent 3px),
+      radial-gradient(700px 240px at 10% 0%, color-mix(in srgb, var(--accent-soft) 48%, transparent), transparent 58%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, transparent), color-mix(in srgb, var(--surface-alt) 92%, var(--surface)));
+    box-shadow: var(--flashcard-paper-shadow);
+    position: relative;
+    overflow: clip;
+  }
+
+  .flashcard-study-card::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid color-mix(in srgb, var(--border) 34%, transparent);
+    border-radius: calc(var(--radius-xl) - 8px);
+    pointer-events: none;
   }
 
   .flashcard-card-kicker-row {
@@ -287,9 +323,9 @@
 
   .flashcard-card-label {
     margin: 0;
-    color: color-mix(in srgb, var(--muted) 82%, transparent);
+    color: color-mix(in srgb, var(--muted) 78%, transparent);
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     line-height: 1;
@@ -297,12 +333,12 @@
   }
 
   .flashcard-front {
-    max-width: 18ch;
+    max-width: 19ch;
     margin: 0;
     color: var(--ink);
     font-family: var(--font-display);
-    font-size: clamp(1.82rem, 4.35vw, 3.38rem);
-    line-height: 1.06;
+    font-size: clamp(1.76rem, 3.55vw, 2.82rem);
+    line-height: 1.1;
     font-weight: 600;
     overflow-wrap: anywhere;
     text-wrap: balance;
@@ -311,7 +347,7 @@
   .flashcard-recall {
     display: grid;
     gap: var(--space-2);
-    max-width: 720px;
+    max-width: 660px;
   }
 
   .flashcard-answer-toggle {
@@ -320,7 +356,7 @@
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
     background: transparent;
-    color: var(--muted);
+    color: color-mix(in srgb, var(--muted) 92%, transparent);
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
@@ -346,13 +382,13 @@
 
   .flashcard-user-answer {
     border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface-soft) 42%, var(--surface));
+    border-radius: var(--radius-sub);
+    background: color-mix(in srgb, var(--surface-soft) 58%, var(--surface));
     display: grid;
     gap: var(--space-2);
     padding: var(--space-3);
     scroll-margin-top: 96px;
-    max-width: 720px;
+    max-width: 660px;
   }
 
   .flashcard-user-answer-label {
@@ -384,38 +420,73 @@
   }
 
   .flashcard-answer {
-    border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
-    border-left: 4px solid color-mix(in srgb, var(--accent) 70%, var(--border));
-    border-radius: var(--radius-md);
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border));
+    border-radius: var(--radius-lg);
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--info-bg) 58%, var(--surface)), color-mix(in srgb, var(--info-bg) 42%, var(--surface))),
+      radial-gradient(540px 180px at 0% 0%, color-mix(in srgb, var(--info-bg-strong) 62%, transparent), transparent 72%),
+      linear-gradient(180deg, color-mix(in srgb, var(--info-bg) 76%, var(--surface)), color-mix(in srgb, var(--info-bg) 46%, var(--surface))),
       var(--info-bg);
     color: var(--text-subtle-2);
     display: grid;
     gap: var(--space-2);
-    padding: var(--space-4) var(--space-5);
-    line-height: 1.55;
+    padding: clamp(var(--space-4), 2vw, var(--space-5)) clamp(var(--space-5), 3vw, var(--space-6)) clamp(var(--space-4), 2vw, var(--space-5)) clamp(42px, 3.9vw, 52px);
+    line-height: 1.56;
     overflow-wrap: anywhere;
-    max-width: 720px;
+    max-width: 660px;
+    box-shadow:
+      0 18px 38px color-mix(in srgb, var(--accent) 10%, transparent),
+      0 1px 0 color-mix(in srgb, #ffffff 78%, transparent) inset;
+  }
+
+  .flashcard-answer::before {
+    content: "";
+    position: absolute;
+    left: clamp(var(--space-4), 2vw, var(--space-5));
+    top: clamp(var(--space-4), 2vw, var(--space-5));
+    bottom: clamp(var(--space-4), 2vw, var(--space-5));
+    width: 5px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 48%, var(--info-bg)));
   }
 
   .flashcard-answer-label {
     margin: 0;
+    width: fit-content;
+    min-height: 22px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--info-ink-strong);
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   .flashcard-answer-body {
-    font-size: clamp(1rem, 1.2vw, 1.08rem);
+    display: grid;
+    gap: var(--space-3);
+    max-width: 62ch;
+    color: color-mix(in srgb, var(--text-subtle-2) 92%, var(--ink));
+    font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+    font-weight: 520;
+    line-height: 1.62;
   }
 
   .flashcard-answer-body div,
   .flashcard-answer-body p {
-    margin: 0 0 var(--space-3);
+    margin: 0;
+  }
+
+  .flashcard-answer-body div + div,
+  .flashcard-answer-body p + p {
+    padding-top: 0;
+    border-top: 0;
   }
 
   .flashcard-answer-body div:last-child,
@@ -423,13 +494,20 @@
     margin-bottom: 0;
   }
 
+  .flashcard-answer-body strong {
+    color: color-mix(in srgb, var(--ink) 84%, var(--text-subtle-2));
+    font-size: 1em;
+    font-weight: 850;
+    letter-spacing: 0;
+  }
+
   .flashcard-actions {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: minmax(120px, auto) minmax(0, 1fr);
     align-items: center;
-    gap: var(--space-3);
-    margin-top: 0;
-    padding-top: var(--space-4);
+    gap: var(--space-4);
+    margin-top: auto;
+    padding-top: var(--space-5);
     border-top: 1px solid color-mix(in srgb, var(--border) 58%, transparent);
   }
 
@@ -444,7 +522,7 @@
     min-height: 40px;
     border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
     border-radius: var(--radius-pill);
-    background: transparent;
+    background: color-mix(in srgb, var(--surface) 48%, transparent);
     color: var(--text-subtle-2);
     padding: 0 var(--space-3);
     font-size: 0.94rem;
@@ -467,11 +545,16 @@
 
   .flashcard-rating-actions {
     display: grid;
-    grid-template-columns: repeat(4, minmax(78px, auto));
+    grid-template-columns: repeat(4, minmax(94px, 1fr));
     align-items: center;
     justify-content: flex-end;
     justify-self: end;
-    gap: var(--space-2);
+    gap: 0;
+    width: min(100%, 440px);
+    overflow: clip;
+    border: 1px solid color-mix(in srgb, var(--border-strong) 54%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface) 58%, transparent);
   }
 
   .flashcard-rating {
@@ -479,16 +562,21 @@
     --rating-bg: var(--surface);
     --rating-ink: var(--text-subtle-2);
     --rating-bg-hover: var(--accent-soft);
-    min-height: 44px;
-    min-width: 74px;
-    border: 1px solid var(--rating-border);
-    border-radius: var(--radius-pill);
+    min-height: 46px;
+    min-width: 0;
+    border: 0;
+    border-left: 1px solid color-mix(in srgb, var(--border-strong) 42%, transparent);
+    border-radius: 0;
     background: var(--rating-bg);
     color: var(--rating-ink);
     padding: 0 var(--space-3);
     font-weight: 700;
     cursor: pointer;
     transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease;
+  }
+
+  .flashcard-rating:first-child {
+    border-left: 0;
   }
 
   .flashcard-rating:hover {
@@ -555,7 +643,7 @@
   .flashcard-preview-note {
     justify-self: center;
     width: min(100%, var(--flashcard-study-width));
-    margin-top: calc(var(--space-5) * -1);
+    margin-top: 0;
     color: color-mix(in srgb, var(--muted) 82%, transparent);
     font-size: 0.82rem;
     padding-top: 0;
@@ -580,7 +668,7 @@
   @media (max-width: 640px) {
     .flashcard-shell {
       margin: var(--space-3) auto;
-      padding: var(--space-3);
+      padding: 0 var(--space-2);
       gap: var(--space-4);
     }
 
@@ -601,6 +689,7 @@
       grid-template-columns: 1fr;
       align-items: stretch;
       gap: var(--space-3);
+      border-radius: var(--radius-lg);
     }
 
     .flashcard-scope-control {
@@ -624,7 +713,8 @@
 
     .flashcard-study-card {
       max-width: 100%;
-      padding-top: var(--space-2);
+      min-height: auto;
+      padding: clamp(var(--space-4), 6vw, var(--space-5));
     }
 
     .flashcard-flow-row {
@@ -652,8 +742,8 @@
 
     .flashcard-front {
       max-width: 100%;
-      font-size: clamp(2rem, 10.5vw, 3.25rem);
-      line-height: 1.04;
+      font-size: clamp(1.78rem, 8.2vw, 2.72rem);
+      line-height: 1.08;
     }
 
     .flashcard-preview-note {
@@ -667,6 +757,15 @@
       justify-content: flex-start;
     }
 
+    .flashcard-answer {
+      padding: var(--space-4) var(--space-4) var(--space-4) 40px;
+    }
+
+    .flashcard-answer-body {
+      max-width: 100%;
+      font-size: 0.95rem;
+    }
+
     .flashcard-actions {
       display: grid;
       grid-template-columns: 1fr;
@@ -677,6 +776,16 @@
     .flashcard-rating-actions {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       justify-self: stretch;
+      width: 100%;
+      border-radius: var(--radius-lg);
+    }
+
+    .flashcard-rating:nth-child(odd) {
+      border-left: 0;
+    }
+
+    .flashcard-rating:nth-child(n + 3) {
+      border-top: 1px solid color-mix(in srgb, var(--border-strong) 42%, transparent);
     }
 
     .flashcard-show-answer {

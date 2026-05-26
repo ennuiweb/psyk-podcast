@@ -29,8 +29,9 @@ from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards impor
 )
 
 DEFAULT_FLASHCARD_DIR = Path("shows/personlighedspsykologi-en/flashcards")
-DEFAULT_PROMOTION_DECISIONS_PATH = DEFAULT_FLASHCARD_DIR / "notebooklm_variant_promotion_decisions.json"
-DEFAULT_DECK_PATH = DEFAULT_FLASHCARD_DIR / f"{VARIANT_DECK_SLUG}.json"
+DEFAULT_ARCHIVE_DIR = DEFAULT_FLASHCARD_DIR / "archive" / "retired-live-decks-2026-05-26"
+DEFAULT_PROMOTION_DECISIONS_PATH = DEFAULT_ARCHIVE_DIR / "notebooklm_variant_promotion_decisions.json"
+DEFAULT_DECK_PATH = DEFAULT_ARCHIVE_DIR / f"{VARIANT_DECK_SLUG}.json"
 DEFAULT_REGISTRY_PATH = DEFAULT_FLASHCARD_DIR / "decks.json"
 DEFAULT_RUN_DIR = (
     Path("notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs")
@@ -150,14 +151,16 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         deck_slug=args.deck_slug,
         title=args.title,
     )
-    registry = _build_registry(
-        registry_path=args.registry_path,
-        deck_slug=args.deck_slug,
-        title=args.title,
-        description=args.description,
-        artifact_path=deck_artifact_path,
-        card_count=int(deck["card_count"]),
-    )
+    registry = None
+    if args.update_registry:
+        registry = _build_registry(
+            registry_path=args.registry_path,
+            deck_slug=args.deck_slug,
+            title=args.title,
+            description=args.description,
+            artifact_path=deck_artifact_path,
+            card_count=int(deck["card_count"]),
+        )
     validate_variant_deck(deck, expected_deck_slug=args.deck_slug)
 
     if not args.validate_only and not args.dry_run:
@@ -169,16 +172,17 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             deck_slug=args.deck_slug,
             title=args.title,
         )
-        registry = _build_registry(
-            registry_path=args.registry_path,
-            deck_slug=args.deck_slug,
-            title=args.title,
-            description=args.description,
-            artifact_path=deck_artifact_path,
-            card_count=int(deck["card_count"]),
-        )
         deck, _ = write_json_stably(args.deck_path, deck)
-        registry, _ = write_json_stably(args.registry_path, registry)
+        if args.update_registry:
+            registry = _build_registry(
+                registry_path=args.registry_path,
+                deck_slug=args.deck_slug,
+                title=args.title,
+                description=args.description,
+                artifact_path=deck_artifact_path,
+                card_count=int(deck["card_count"]),
+            )
+            registry, _ = write_json_stably(args.registry_path, registry)
 
     return {"promotion_decisions": promotion_decisions, "deck": deck, "registry": registry}
 
@@ -194,6 +198,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--deck-slug", default=VARIANT_DECK_SLUG)
     parser.add_argument("--title", default=VARIANT_DECK_TITLE)
     parser.add_argument("--description", default=VARIANT_DECK_DESCRIPTION)
+    parser.add_argument(
+        "--update-registry",
+        action="store_true",
+        help="Also write this archived variant deck into decks.json. This should normally stay off.",
+    )
     parser.add_argument(
         "--from-existing-decisions",
         action="store_true",

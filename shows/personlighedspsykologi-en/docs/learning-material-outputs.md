@@ -92,37 +92,28 @@ Current implementation:
 - anonymous users can preview decks, while logged-in users can save written
   answers and review ratings
 
-Current `personlighedspsykologi` decks:
+Current `personlighedspsykologi` Freudd deck policy:
 
 - canonical matrix source:
   `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
 - registry:
   `shows/personlighedspsykologi-en/flashcards/decks.json`
-- canonical deck slug: `eksamensmatrix-personlighedspsykologi`
-- canonical deck artifact:
-  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
-- canonical card count: 152
-- canonical purpose: oral-exam retrieval of theory comparisons, orientation points,
-  person models, method styles, strengths/limitations, and common exam traps
-- NotebookLM variants decisions:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
-- NotebookLM variants deck slug: `notebooklm-varianter-personlighedspsykologi`
-- NotebookLM variants deck artifact:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
-- NotebookLM variants card count: 79
-- independent NotebookLM variants decisions:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json`
-- independent NotebookLM variants deck slug:
-  `notebooklm-uafhaengige-varianter-personlighedspsykologi`
-- independent NotebookLM variants deck artifact:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
-- independent NotebookLM variants card count: 74
+- only live deck slug: `notebooklm-fuld-matrix-personlighedspsykologi`
+- live deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
+- live card count: 234
+- live purpose: newest NotebookLM cards from all matrix clusters, generated from
+  processed matrix packs without existing Freudd cards as NotebookLM sources
+- archived previous live decks:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`
+- archived contents: original matrix/Gemini-style deck, first NotebookLM variant
+  deck, independent pilot NotebookLM variant deck, and the two promotion decision
+  artifacts
 
-NotebookLM is not the canonical first writer for matrix-derived flashcards.
-The deck is generated deterministically from the validated matrix by
-`scripts/build_personlighedspsykologi_matrix_flashcards.py`; LLM/NotebookLM
-phrasing can be a later review aid only if stable IDs, provenance, and
-validation gates are preserved.
+The live Freudd registry intentionally exposes only the newest full NotebookLM
+deck. The previous original/Gemini-style and pilot NotebookLM pools are retained
+for audit and recovery in the archive, but they must not be listed in
+`decks.json`.
 
 NotebookLM alternative-card workflow:
 

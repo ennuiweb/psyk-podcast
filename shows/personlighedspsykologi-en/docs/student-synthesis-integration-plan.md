@@ -320,8 +320,8 @@ Implementation progress:
 
 - 2026-05-25: started deterministic generator implementation against the
   existing Freudd `freudd_flashcards` artifact contract.
-- 2026-05-25: generated and validated the first Freudd deck:
-  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`.
+- 2026-05-25: generated and validated the first Freudd deck, now archived at
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json`.
 
 Implemented files:
 
@@ -331,12 +331,24 @@ Implemented files:
   `scripts/build_personlighedspsykologi_matrix_flashcards.py`
 - Freudd registry:
   `shows/personlighedspsykologi-en/flashcards/decks.json`
-- Freudd deck:
-  `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
+- current live Freudd deck:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
+- archived original matrix/Gemini-style Freudd deck:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json`
 - tests:
   `tests/test_personlighedspsykologi_matrix_flashcards.py`
   and the generated-deck service check in
   `freudd_portal/quizzes/tests/test_flashcards.py`
+
+2026-05-26 live-deck update:
+
+- Freudd now exposes only `notebooklm-fuld-matrix-personlighedspsykologi`
+  for `personlighedspsykologi`.
+- The previous original matrix/Gemini-style deck and both pilot NotebookLM decks
+  are preserved in
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`.
+- The full NotebookLM deck contains 234 cards: 176 `candidate` and 58
+  `needs_review`; 25 `auto_rejected` candidates are excluded from Freudd.
 
 Generated deck state:
 
@@ -480,16 +492,19 @@ Implemented files:
   `notebooklm_queue/personlighedspsykologi_notebooklm_variant_flashcards.py`
 - promotion CLI:
   `scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py`
-- promotion decisions:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
-- variants deck:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
+- archived promotion decisions:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm_variant_promotion_decisions.json`
+- archived variants deck:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-varianter-personlighedspsykologi.json`
 
 Current deck state:
 
-- canonical matrix deck: `eksamensmatrix-personlighedspsykologi`, 152 cards
-- NotebookLM variants deck: `notebooklm-varianter-personlighedspsykologi`, 79
+- live full NotebookLM deck: `notebooklm-fuld-matrix-personlighedspsykologi`,
+  234 cards
+- archived canonical matrix deck: `eksamensmatrix-personlighedspsykologi`, 152
   cards
+- archived NotebookLM variants deck: `notebooklm-varianter-personlighedspsykologi`,
+  79 cards
 - source pilot decisions: 60 `accept`, 19 `edit`, 1 `reject`
 
 Verification run:
@@ -560,10 +575,10 @@ Implementation completed:
   `auto_rejected`
 - Gemini review: 45 `accept`, 29 `edit`, 1 `merge_with_existing`, 2 `reject`
 - promoted deck cards: 74
-- promotion decisions:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json`
-- deck artifact:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
+- archived promotion decisions:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm_independent_variant_promotion_decisions.json`
+- archived deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
 
 Verification additions:
 
@@ -588,8 +603,8 @@ Run commands used:
   --description "Gemini-reviewede NotebookLM-varianter genereret uden eksisterende Freudd-kort som NotebookLM-kilde." \
   --candidates-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/candidates/critical-sociocultural-narrative.candidates.json \
   --gemini-review-json notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/independent-20260526-critical-sociocultural-narrative/gemini_review/critical-sociocultural-narrative.gemini-review.json \
-  --promotion-decisions-path shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json \
-  --deck-path shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json
+  --promotion-decisions-path shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm_independent_variant_promotion_decisions.json \
+  --deck-path shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-uafhaengige-varianter-personlighedspsykologi.json
 ```
 
 ### 2026-05-26: Full NotebookLM Cluster Regeneration Completed

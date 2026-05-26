@@ -29,7 +29,10 @@ LAB_VERSION = 1
 SUBJECT_SLUG = "personlighedspsykologi"
 DEFAULT_LAB_ROOT = Path("notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab")
 DEFAULT_MATRIX_PATH = Path("shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json")
-DEFAULT_DECK_PATH = Path("shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json")
+DEFAULT_DECK_PATH = Path(
+    "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/"
+    "eksamensmatrix-personlighedspsykologi.json"
+)
 DEFAULT_RUN_ID_PREFIX = "matrix-flashcards"
 PILOT_NOTEBOOK_SLUG = "critical-sociocultural-narrative"
 DEFAULT_GEMINI_FLASHCARD_REVIEW_MODEL = DEFAULT_GEMINI_PREPROCESSING_MODEL

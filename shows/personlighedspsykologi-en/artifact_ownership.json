@@ -190,48 +190,56 @@
     },
     {
       "artifact_id": "student_synthesis_matrix_flashcard_registry",
-      "concept": "student_synthesis_matrix_flashcards",
+      "concept": "student_synthesis_live_flashcards",
       "path": "shows/personlighedspsykologi-en/flashcards/decks.json",
       "role": "derived",
       "manual_edit_allowed": false,
-      "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py; scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
+      "writer": "scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py"
     },
     {
-      "artifact_id": "student_synthesis_matrix_flashcard_deck",
-      "concept": "student_synthesis_matrix_flashcards",
-      "path": "shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json",
+      "artifact_id": "student_synthesis_full_notebooklm_flashcard_deck",
+      "concept": "student_synthesis_live_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py"
+    },
+    {
+      "artifact_id": "student_synthesis_archived_matrix_flashcard_deck",
+      "concept": "student_synthesis_archived_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json",
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py"
     },
     {
-      "artifact_id": "student_synthesis_notebooklm_variant_promotion_decisions",
-      "concept": "student_synthesis_notebooklm_variant_flashcards",
-      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json",
+      "artifact_id": "student_synthesis_archived_notebooklm_variant_promotion_decisions",
+      "concept": "student_synthesis_archived_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm_variant_promotion_decisions.json",
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
     },
     {
-      "artifact_id": "student_synthesis_notebooklm_variant_flashcard_deck",
-      "concept": "student_synthesis_notebooklm_variant_flashcards",
-      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json",
+      "artifact_id": "student_synthesis_archived_notebooklm_variant_flashcard_deck",
+      "concept": "student_synthesis_archived_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-varianter-personlighedspsykologi.json",
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
     },
     {
-      "artifact_id": "student_synthesis_notebooklm_independent_variant_promotion_decisions",
-      "concept": "student_synthesis_notebooklm_independent_variant_flashcards",
-      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm_independent_variant_promotion_decisions.json",
+      "artifact_id": "student_synthesis_archived_notebooklm_independent_variant_promotion_decisions",
+      "concept": "student_synthesis_archived_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm_independent_variant_promotion_decisions.json",
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
     },
     {
-      "artifact_id": "student_synthesis_notebooklm_independent_variant_flashcard_deck",
-      "concept": "student_synthesis_notebooklm_independent_variant_flashcards",
-      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json",
+      "artifact_id": "student_synthesis_archived_notebooklm_independent_variant_flashcard_deck",
+      "concept": "student_synthesis_archived_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-uafhaengige-varianter-personlighedspsykologi.json",
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"

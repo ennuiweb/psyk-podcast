@@ -1,13 +1,22 @@
 # NotebookLM Flashcard Lab
 
-This workspace is for generating alternative flashcard candidates from processed
-`personlighedspsykologi` data. It is deliberately not the canonical Freudd
-flashcard source.
+This workspace is for generating flashcard candidates from processed
+`personlighedspsykologi` data. As of 2026-05-26, the newest full all-cluster
+NotebookLM deck is the only live Freudd deck for this subject.
 
-The canonical Freudd deck is generated deterministically from:
+Current live Freudd output:
 
-- `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
-- `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
+- registry:
+  `shows/personlighedspsykologi-en/flashcards/decks.json`
+- deck:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
+- builder:
+  `scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py`
+
+Previous live decks, including the original matrix/Gemini-style deck and pilot
+NotebookLM decks, are archived in:
+
+- `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`
 
 NotebookLM should only see processed Markdown packs exported from the matrix,
 orientation points, and comparison targets. Do not upload the original
@@ -137,15 +146,9 @@ The first live pilot run is:
 - Gemini review: 60 `accept`, 19 `edit`, 1 `reject` using
   `gemini-3.1-pro-preview`
 
-The run output is local review material and remains ignored by git.
-Its Gemini-reviewed decisions are promoted to the committed variants deck:
-
-- decisions:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
-- deck:
-  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
-- deck slug: `notebooklm-varianter-personlighedspsykologi`
-- promoted cards: 79
+The historical pilot run output remains local review material. Its formerly live
+Gemini-reviewed promotion artifacts are archived under
+`shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/`.
 
 ## Review Contract
 

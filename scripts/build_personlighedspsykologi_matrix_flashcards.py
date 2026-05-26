@@ -25,7 +25,8 @@ from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
 
 DEFAULT_MATRIX_PATH = Path("shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json")
 DEFAULT_FLASHCARD_DIR = Path("shows/personlighedspsykologi-en/flashcards")
-DEFAULT_DECK_PATH = DEFAULT_FLASHCARD_DIR / f"{FLASHCARD_DECK_SLUG}.json"
+DEFAULT_ARCHIVE_DIR = DEFAULT_FLASHCARD_DIR / "archive" / "retired-live-decks-2026-05-26"
+DEFAULT_DECK_PATH = DEFAULT_ARCHIVE_DIR / f"{FLASHCARD_DECK_SLUG}.json"
 DEFAULT_REGISTRY_PATH = DEFAULT_FLASHCARD_DIR / "decks.json"
 
 
@@ -66,16 +67,19 @@ def build(args: argparse.Namespace) -> dict[str, object]:
         source_file=source_file,
         source_sha256=source_fingerprint(args.matrix_path),
     )
-    registry = build_flashcard_registry(
-        artifact_path=deck_artifact_path,
-        card_count=int(deck["card_count"]),
-        extra_decks=_preserved_registry_decks(args.registry_path),
-    )
+    registry = None
+    if args.update_registry:
+        registry = build_flashcard_registry(
+            artifact_path=deck_artifact_path,
+            card_count=int(deck["card_count"]),
+            extra_decks=_preserved_registry_decks(args.registry_path),
+        )
     validate_flashcard_artifact(deck, matrix=matrix)
 
     if not args.validate_only and not args.dry_run:
         deck, _ = write_json_stably(args.deck_path, deck)
-        registry, _ = write_json_stably(args.registry_path, registry)
+        if registry is not None:
+            registry, _ = write_json_stably(args.registry_path, registry)
 
     return {
         "deck": deck,
@@ -89,6 +93,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--matrix-path", type=Path, default=DEFAULT_MATRIX_PATH)
     parser.add_argument("--deck-path", type=Path, default=DEFAULT_DECK_PATH)
     parser.add_argument("--registry-path", type=Path, default=DEFAULT_REGISTRY_PATH)
+    parser.add_argument(
+        "--update-registry",
+        action="store_true",
+        help="Also write this archived matrix deck into decks.json. This should normally stay off.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Build and validate without writing files.")
     parser.add_argument("--validate-only", action="store_true", help="Validate generation without writing files.")
     return parser.parse_args()

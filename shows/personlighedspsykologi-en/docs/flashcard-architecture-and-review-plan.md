@@ -176,16 +176,24 @@ Decision labels:
 
 ## Comparison Inputs
 
-The review should compare four card pools:
+Historical review inputs compared four card pools:
 
-1. canonical matrix deck:
-   `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
-2. first NotebookLM variants deck:
-   `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
-3. independent NotebookLM variants deck:
-   `shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
+1. archived canonical matrix/Gemini-style deck:
+   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json`
+2. archived first NotebookLM variants deck:
+   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-varianter-personlighedspsykologi.json`
+3. archived independent NotebookLM variants deck:
+   `shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/notebooklm-uafhaengige-varianter-personlighedspsykologi.json`
 4. full all-cluster NotebookLM candidates:
    `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/runs/full-matrix-20260526-notebooklm-independent/candidates/*.candidates.json`
+
+Current live Freudd state:
+
+- only live deck:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json`
+- live card count: 234
+- source policy: include `candidate` and `needs_review` cards from the newest
+  full NotebookLM run; exclude `auto_rejected` cards
 
 Current known imbalance:
 

@@ -52,9 +52,10 @@ DEFAULT_REVIEW_RUN_ID = "flashcard-pool-review-20260526"
 FULL_NOTEBOOKLM_RUN_ID = "full-matrix-20260526-notebooklm-independent"
 
 DEFAULT_FLASHCARD_DIR = Path("shows/personlighedspsykologi-en/flashcards")
-DEFAULT_VARIANT_DECK_PATH = DEFAULT_FLASHCARD_DIR / "notebooklm-varianter-personlighedspsykologi.json"
+DEFAULT_ARCHIVED_FLASHCARD_DIR = DEFAULT_FLASHCARD_DIR / "archive" / "retired-live-decks-2026-05-26"
+DEFAULT_VARIANT_DECK_PATH = DEFAULT_ARCHIVED_FLASHCARD_DIR / "notebooklm-varianter-personlighedspsykologi.json"
 DEFAULT_INDEPENDENT_DECK_PATH = (
-    DEFAULT_FLASHCARD_DIR / "notebooklm-uafhaengige-varianter-personlighedspsykologi.json"
+    DEFAULT_ARCHIVED_FLASHCARD_DIR / "notebooklm-uafhaengige-varianter-personlighedspsykologi.json"
 )
 DEFAULT_REPORTS_ROOT = DEFAULT_LAB_ROOT / "reports"
 

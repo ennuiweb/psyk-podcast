@@ -3,27 +3,11 @@
   "subject_slug": "personlighedspsykologi",
   "decks": [
     {
-      "deck_slug": "eksamensmatrix-personlighedspsykologi",
-      "title": "Eksamensmatrix: personlighedspsykologi",
-      "description": "Matrixbaserede eksamenskort til teori, orienteringspunkter og sammenligninger.",
-      "artifact_path": "shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json",
-      "card_count": 152,
-      "enabled": true
-    },
-    {
-      "deck_slug": "notebooklm-varianter-personlighedspsykologi",
-      "title": "NotebookLM-varianter: personlighedspsykologi",
-      "description": "Gemini-reviewede NotebookLM-varianter til mundtlig eksamen.",
-      "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json",
-      "card_count": 79,
-      "enabled": true
-    },
-    {
-      "deck_slug": "notebooklm-uafhaengige-varianter-personlighedspsykologi",
-      "title": "NotebookLM-uafhængige varianter: personlighedspsykologi",
-      "description": "Gemini-reviewede NotebookLM-varianter genereret uden eksisterende Freudd-kort som NotebookLM-kilde.",
-      "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-uafhaengige-varianter-personlighedspsykologi.json",
-      "card_count": 74,
+      "deck_slug": "notebooklm-fuld-matrix-personlighedspsykologi",
+      "title": "NotebookLM fuld matrix: personlighedspsykologi",
+      "description": "Nyeste NotebookLM-kort fra alle matrixklynger, genereret uden de tidligere Freudd-kort som NotebookLM-kilde.",
+      "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",
+      "card_count": 234,
       "enabled": true
     }
   ]

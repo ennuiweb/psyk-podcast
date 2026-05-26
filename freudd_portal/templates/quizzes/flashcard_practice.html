@@ -229,34 +229,78 @@
   }
 
   .flashcard-flow-row .flashcard-progress {
-    grid-column: 2;
-    grid-row: 1;
+    width: 100%;
   }
 
   .flashcard-card-state {
     margin: 0;
     grid-column: 3;
     grid-row: 1;
-    min-height: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
+    min-height: 24px;
+    border: 1px solid color-mix(in srgb, var(--border) 62%, transparent);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--surface) 52%, transparent);
     color: color-mix(in srgb, var(--muted) 86%, transparent);
     display: inline-flex;
     align-items: center;
-    padding: 0;
-    font-size: 0.72rem;
+    padding: 0 10px;
+    font-size: 0.68rem;
     font-weight: 800;
     text-align: center;
     white-space: nowrap;
   }
 
   .flashcard-card-state.is-answered {
-    color: color-mix(in srgb, var(--success) 82%, var(--muted));
+    border-color: color-mix(in srgb, var(--success) 32%, var(--border));
+    background: color-mix(in srgb, var(--success-bg) 74%, var(--surface));
+    color: color-mix(in srgb, var(--success) 88%, var(--muted));
+  }
+
+  .flashcard-card-state.is-rating-again {
+    border-color: color-mix(in srgb, var(--danger) 34%, var(--border));
+    background: color-mix(in srgb, var(--danger-bg-soft) 78%, var(--surface));
+    color: var(--danger-ink, var(--danger));
+  }
+
+  .flashcard-card-state.is-rating-hard {
+    border-color: color-mix(in srgb, var(--warn-border) 72%, var(--border));
+    background: color-mix(in srgb, var(--warn-bg-soft) 82%, var(--surface));
+    color: var(--warn-ink-soft);
+  }
+
+  .flashcard-card-state.is-rating-easy {
+    border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+    background: color-mix(in srgb, var(--info-bg) 76%, var(--surface));
+    color: var(--info-ink-strong);
   }
 
   .flashcard-card-state.is-unanswered {
     color: var(--muted);
+  }
+
+  .flashcard-progress-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .flashcard-progress-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-pill);
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0,
+        transparent calc(10% - 1px),
+        color-mix(in srgb, var(--surface) 88%, transparent) calc(10% - 1px),
+        color-mix(in srgb, var(--surface) 88%, transparent) 10%);
+    mix-blend-mode: screen;
+    opacity: 0.46;
   }
 
   .flashcard-progress {
@@ -431,7 +475,7 @@
     color: var(--text-subtle-2);
     display: grid;
     gap: var(--space-2);
-    padding: clamp(var(--space-4), 2vw, var(--space-5)) clamp(var(--space-5), 3vw, var(--space-6)) clamp(var(--space-4), 2vw, var(--space-5)) clamp(42px, 3.9vw, 52px);
+    padding: clamp(var(--space-3), 1.65vw, var(--space-4)) clamp(var(--space-5), 2.7vw, var(--space-6)) clamp(var(--space-3), 1.65vw, var(--space-4)) clamp(42px, 3.9vw, 52px);
     line-height: 1.56;
     overflow-wrap: anywhere;
     max-width: 740px;
@@ -444,8 +488,8 @@
     content: "";
     position: absolute;
     left: clamp(var(--space-4), 2vw, var(--space-5));
-    top: clamp(var(--space-4), 2vw, var(--space-5));
-    bottom: clamp(var(--space-4), 2vw, var(--space-5));
+    top: clamp(var(--space-3), 1.65vw, var(--space-4));
+    bottom: clamp(var(--space-3), 1.65vw, var(--space-4));
     width: 5px;
     border-radius: var(--radius-pill);
     background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 48%, var(--info-bg)));
@@ -471,12 +515,12 @@
 
   .flashcard-answer-body {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-2);
     max-width: 62ch;
     color: color-mix(in srgb, var(--text-subtle-2) 92%, var(--ink));
-    font-size: clamp(0.98rem, 1.12vw, 1.08rem);
-    font-weight: 520;
-    line-height: 1.62;
+    font-size: clamp(0.96rem, 1.08vw, 1.04rem);
+    font-weight: 460;
+    line-height: 1.6;
   }
 
   .flashcard-answer-body div,
@@ -498,7 +542,7 @@
   .flashcard-answer-body strong {
     color: color-mix(in srgb, var(--ink) 84%, var(--text-subtle-2));
     font-size: 1em;
-    font-weight: 850;
+    font-weight: 800;
     letter-spacing: 0;
   }
 
@@ -749,6 +793,10 @@
     }
 
     .flashcard-flow-row .flashcard-progress {
+      width: 100%;
+    }
+
+    .flashcard-progress-wrap {
       grid-column: 1 / -1;
       grid-row: 2;
     }
@@ -784,7 +832,7 @@
     }
 
     .flashcard-answer {
-      padding: var(--space-4) var(--space-4) var(--space-4) 40px;
+      padding: var(--space-3) var(--space-4) var(--space-3) 40px;
     }
 
     .flashcard-answer-body {
@@ -850,9 +898,11 @@
     <div class="flashcard-flow-head">
       <div class="flashcard-flow-row">
         <p id="flashcard-counter" class="flashcard-counter"></p>
-        <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i flashcards">
-          0%
-        </progress>
+        <div class="flashcard-progress-wrap">
+          <progress id="flashcard-progress" class="flashcard-progress" value="0" max="100" aria-label="Progress i flashcards">
+            0%
+          </progress>
+        </div>
         <p id="flashcard-card-state" class="flashcard-card-state"></p>
         <p id="flashcard-reviewed" class="flashcard-reviewed"></p>
       </div>
@@ -880,16 +930,22 @@
       </div>
       <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
       <div class="flashcard-actions">
-        <button id="flashcard-previous" class="flashcard-secondary" type="button">Forrige</button>
-        <button id="flashcard-show-answer" class="btn-primary flashcard-show-answer" type="button">
+        <button id="flashcard-previous" class="flashcard-secondary" type="button" aria-keyshortcuts="ArrowLeft"
+          title="Forrige kort (venstre pil)">Forrige</button>
+        <button id="flashcard-show-answer" class="btn-primary flashcard-show-answer" type="button"
+          aria-keyshortcuts="Enter Space" title="Vis svar (Enter eller mellemrum)">
           <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
           Vis svar
         </button>
         <div id="flashcard-rating-actions" class="flashcard-rating-actions is-hidden">
-          <button class="flashcard-rating" type="button" data-rating="again">Igen</button>
-          <button class="flashcard-rating" type="button" data-rating="hard">Svært</button>
-          <button class="flashcard-rating" type="button" data-rating="good">Godt</button>
-          <button class="flashcard-rating" type="button" data-rating="easy">Let</button>
+          <button class="flashcard-rating" type="button" data-rating="again" aria-keyshortcuts="1"
+            aria-label="Igen: jeg kunne ikke svaret. Tast 1." title="Igen: jeg kunne ikke svaret (1)">Igen</button>
+          <button class="flashcard-rating" type="button" data-rating="hard" aria-keyshortcuts="2"
+            aria-label="Svært: jeg kunne næsten svaret. Tast 2." title="Svært: jeg kunne næsten svaret (2)">Svært</button>
+          <button class="flashcard-rating" type="button" data-rating="good" aria-keyshortcuts="3"
+            aria-label="Godt: jeg kunne svaret. Tast 3." title="Godt: jeg kunne svaret (3)">Godt</button>
+          <button class="flashcard-rating" type="button" data-rating="easy" aria-keyshortcuts="4"
+            aria-label="Let: svaret sad klart. Tast 4." title="Let: svaret sad klart (4)">Let</button>
         </div>
       </div>
     </section>
@@ -956,6 +1012,13 @@
     const countAllNode = document.getElementById("flashcard-count-all");
     const countUnansweredNode = document.getElementById("flashcard-count-unanswered");
     const countAnsweredNode = document.getElementById("flashcard-count-answered");
+    const ratingShortcutMap = {
+      "1": "again",
+      "2": "hard",
+      "3": "good",
+      "4": "easy",
+    };
+    const ratingStateClasses = ["is-rating-again", "is-rating-hard", "is-rating-easy"];
 
     let allCards = [];
     let categories = [];
@@ -1301,6 +1364,8 @@
         cardStateNode.textContent = "Gennemgået";
         cardStateNode.classList.add("is-answered");
         cardStateNode.classList.remove("is-unanswered");
+        setCardStateRatingClass("");
+        cardStateNode.removeAttribute("title");
         recallNode.classList.add("is-hidden");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
@@ -1321,6 +1386,8 @@
         cardStateNode.textContent = "Tom visning";
         cardStateNode.classList.remove("is-answered");
         cardStateNode.classList.add("is-unanswered");
+        setCardStateRatingClass("");
+        cardStateNode.removeAttribute("title");
         recallNode.classList.add("is-hidden");
         answerNode.classList.add("is-hidden");
         showAnswerNode.classList.add("is-hidden");
@@ -1347,9 +1414,17 @@
       ratingActionsNode.classList.toggle("is-hidden", !showingAnswer);
       previousNode.disabled = currentIndex <= 0 || saving;
       const answered = isAnswered(card);
-      cardStateNode.textContent = answered ? `Vurderet: ${ratingLabel(card.review.rating)}` : "Ikke vurderet endnu";
+      const currentRating = answered ? card.review.rating : "";
+      cardStateNode.textContent = answered ? `Vurderet: ${ratingLabel(currentRating)}` : "Ikke vurderet endnu";
       cardStateNode.classList.toggle("is-answered", answered);
       cardStateNode.classList.toggle("is-unanswered", !answered);
+      setCardStateRatingClass(currentRating);
+      const stateHint = answered ? ratingShortcutHint(currentRating) : "";
+      if (stateHint) {
+        cardStateNode.setAttribute("title", stateHint);
+      } else {
+        cardStateNode.removeAttribute("title");
+      }
       statusNode.textContent = "";
     }
 
@@ -1367,6 +1442,33 @@
         return "Let";
       }
       return "";
+    }
+
+    function ratingShortcutHint(rating) {
+      if (rating === "again") {
+        return "Igen - jeg kunne ikke svaret";
+      }
+      if (rating === "hard") {
+        return "Svært - jeg kunne næsten svaret";
+      }
+      if (rating === "good") {
+        return "Godt - jeg kunne svaret";
+      }
+      if (rating === "easy") {
+        return "Let - svaret sad klart";
+      }
+      return "";
+    }
+
+    function setCardStateRatingClass(rating) {
+      cardStateNode.classList.remove(...ratingStateClasses);
+      if (rating === "again") {
+        cardStateNode.classList.add("is-rating-again");
+      } else if (rating === "hard") {
+        cardStateNode.classList.add("is-rating-hard");
+      } else if (rating === "easy") {
+        cardStateNode.classList.add("is-rating-easy");
+      }
     }
 
     function advance(reviewedCardId = "") {
@@ -1536,6 +1638,40 @@
         return;
       }
       saveReview(rating);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) {
+        return;
+      }
+      const activeElement = document.activeElement;
+      const isTyping = activeElement instanceof HTMLInputElement ||
+        activeElement instanceof HTMLTextAreaElement ||
+        activeElement instanceof HTMLSelectElement ||
+        activeElement?.isContentEditable;
+      if (isTyping) {
+        return;
+      }
+      if (event.key === "ArrowLeft") {
+        if (!previousNode.disabled) {
+          event.preventDefault();
+          previousNode.click();
+        }
+        return;
+      }
+      if (!showingAnswer && (event.key === "Enter" || event.key === " ")) {
+        const card = currentCard();
+        if (card && !showAnswerNode.disabled && !showAnswerNode.classList.contains("is-hidden")) {
+          event.preventDefault();
+          showingAnswer = true;
+          render();
+        }
+        return;
+      }
+      if (showingAnswer && Object.prototype.hasOwnProperty.call(ratingShortcutMap, event.key)) {
+        event.preventDefault();
+        saveReview(ratingShortcutMap[event.key]);
+      }
     });
 
     window.addEventListener("pagehide", () => {

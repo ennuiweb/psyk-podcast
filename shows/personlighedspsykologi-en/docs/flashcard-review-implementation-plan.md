@@ -37,6 +37,33 @@ Active architecture:
 
 - `shows/personlighedspsykologi-en/docs/flashcard-architecture-and-review-plan.md`
 
+Implementation status, 2026-05-26:
+
+- Phases 0-4 are implemented.
+- Deterministic comparison script:
+  `scripts/compare_personlighedspsykologi_flashcard_pools.py`
+- Pool-level Gemini review script:
+  `scripts/review_personlighedspsykologi_flashcard_pool_with_gemini.py`
+- Supporting module:
+  `notebooklm_queue/personlighedspsykologi_flashcard_review.py`
+- Focused tests:
+  `tests/test_personlighedspsykologi_flashcard_review.py`
+- Local generated report:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/flashcard-pool-review-20260526/flashcard-pool-comparison.md`
+- Local generated Gemini review:
+  `notebooklm-podcast-auto/personlighedspsykologi/flashcard_lab/reports/flashcard-pool-review-20260526/gemini_review/flashcard-pool.gemini-review.md`
+- Committed final summary:
+  `shows/personlighedspsykologi-en/docs/flashcard-review-final-report-20260526.md`
+
+Outcome:
+
+- deterministic report normalized 564 cards across the three committed decks
+  and the 259 full-run NotebookLM candidates
+- deterministic unknown rate was 0.0427, so Gemini was allowed
+- Gemini reviewed the bounded 80-card shortlist in one call
+- Gemini rejected all 80 shortlisted NotebookLM candidates
+- no promotion or deck mutation is recommended from this review
+
 ## Technical Fellow Critique
 
 The previous plan had the right direction, but it needed tighter operational
@@ -249,6 +276,11 @@ Stop gate:
 
 Before calling Gemini, review the deterministic report with Oskar.
 
+2026-05-26 execution note: Oskar explicitly approved continuing end to end with
+the single-call Gemini review if safe. The deterministic stop gates passed, so
+the checkpoint was satisfied by the active session instruction rather than a
+separate pause.
+
 Decision needed:
 
 - run Gemini on the recommended shortlist as-is
@@ -336,6 +368,16 @@ The default should be conservative:
 - promote only clear gap-filling cards
 - avoid multiple parallel NotebookLM decks if they confuse practice
 
+2026-05-26 decision:
+
+- do not promote any cards from the full all-cluster NotebookLM candidate pool
+  yet
+- keep the canonical matrix deck as the main Freudd deck
+- keep the two existing NotebookLM variant decks as separate historical/review
+  outputs for now
+- prefer improving the deterministic matrix deck and source-faithful card
+  prompts before generating another candidate pool
+
 Decision artifact:
 
 - write a committed Markdown decision summary before any deck mutation
@@ -346,6 +388,9 @@ Decision artifact:
 ## Phase 6: Optional Promotion Implementation
 
 Only do this phase if Phase 5 recommends promotion.
+
+2026-05-26 execution note: skipped. The validated Gemini review rejected all
+shortlisted candidates, so there is no supported deck mutation in this phase.
 
 Implementation requirements:
 
@@ -444,5 +489,11 @@ decisions and reproducible scripts.
 
 ## Recommended Next Action
 
-Implement Phase 1 and Phase 2 together. Stop before Gemini with a Markdown
-report and shortlist so Oskar can inspect the review framing.
+Use the final review summary as the basis for the next product decision:
+
+- keep the current Freudd decks unchanged for now
+- decide whether the two NotebookLM variant decks should remain visible,
+  become hidden/archive decks, or be replaced later by a small curated
+  supplement
+- if more cards are still desired, revise the NotebookLM output contract toward
+  fewer, deeper, source-faithful exam cards before another regeneration

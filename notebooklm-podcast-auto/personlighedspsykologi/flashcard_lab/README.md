@@ -62,6 +62,16 @@ its nearest existing Freudd card, relevant matrix rows, and the review rubric.
 It writes advisory review JSON/Markdown under `runs/<run-id>/gemini_review/`.
 It does not promote or modify Freudd cards.
 
+Promote reviewed candidates into the separate Freudd variants deck:
+
+```bash
+./.venv/bin/python scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py
+```
+
+The promotion script writes a compact committed decisions artifact and a
+learner-facing Freudd deck under `shows/personlighedspsykologi-en/flashcards/`.
+It never commits the raw NotebookLM/Gemini run folder.
+
 When NotebookLM auth and quota are healthy, the pilot can also be run
 end-to-end:
 
@@ -85,6 +95,14 @@ The first live pilot run is:
   `gemini-3.1-pro-preview`
 
 The run output is local review material and remains ignored by git.
+Its Gemini-reviewed decisions are promoted to the committed variants deck:
+
+- decisions:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
+- deck:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
+- deck slug: `notebooklm-varianter-personlighedspsykologi`
+- promoted cards: 79
 
 ## Review Contract
 

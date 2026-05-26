@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -36,6 +37,25 @@ def _repo_relative(path: Path, repo_root: Path) -> str:
         return str(path)
 
 
+def _preserved_registry_decks(registry_path: Path) -> list[dict[str, object]]:
+    if not registry_path.exists():
+        return []
+    try:
+        payload = json.loads(registry_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise MatrixFlashcardBuildError(f"Unable to load existing flashcard registry: {registry_path}") from exc
+    decks = payload.get("decks") if isinstance(payload, dict) else None
+    if not isinstance(decks, list):
+        raise MatrixFlashcardBuildError(f"Existing flashcard registry has invalid decks list: {registry_path}")
+    preserved: list[dict[str, object]] = []
+    for deck in decks:
+        if not isinstance(deck, dict):
+            raise MatrixFlashcardBuildError(f"Existing flashcard registry contains invalid deck entry: {registry_path}")
+        if str(deck.get("deck_slug") or "").strip() != FLASHCARD_DECK_SLUG:
+            preserved.append(dict(deck))
+    return preserved
+
+
 def build(args: argparse.Namespace) -> dict[str, object]:
     repo_root = args.repo_root.resolve()
     matrix = load_matrix(args.matrix_path)
@@ -49,6 +69,7 @@ def build(args: argparse.Namespace) -> dict[str, object]:
     registry = build_flashcard_registry(
         artifact_path=deck_artifact_path,
         card_count=int(deck["card_count"]),
+        extra_decks=_preserved_registry_decks(args.registry_path),
     )
     validate_flashcard_artifact(deck, matrix=matrix)
 

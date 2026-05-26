@@ -492,20 +492,29 @@ def build_flashcard_deck(
     return artifact
 
 
-def build_flashcard_registry(*, artifact_path: str, card_count: int) -> dict[str, Any]:
+def build_flashcard_registry(
+    *,
+    artifact_path: str,
+    card_count: int,
+    extra_decks: Iterable[Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
+    canonical_entry = {
+        "deck_slug": FLASHCARD_DECK_SLUG,
+        "title": FLASHCARD_DECK_TITLE,
+        "description": "Matrixbaserede eksamenskort til teori, orienteringspunkter og sammenligninger.",
+        "artifact_path": artifact_path,
+        "card_count": int(card_count),
+        "enabled": True,
+    }
+    preserved_decks = [
+        dict(deck)
+        for deck in (extra_decks or [])
+        if _nonempty(deck.get("deck_slug")) and _nonempty(deck.get("deck_slug")) != FLASHCARD_DECK_SLUG
+    ]
     return {
         "version": 1,
         "subject_slug": SUBJECT_SLUG,
-        "decks": [
-            {
-                "deck_slug": FLASHCARD_DECK_SLUG,
-                "title": FLASHCARD_DECK_TITLE,
-                "description": "Matrixbaserede eksamenskort til teori, orienteringspunkter og sammenligninger.",
-                "artifact_path": artifact_path,
-                "card_count": int(card_count),
-                "enabled": True,
-            }
-        ],
+        "decks": [canonical_entry, *preserved_decks],
     }
 
 

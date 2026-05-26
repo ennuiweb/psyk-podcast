@@ -460,6 +460,47 @@ thinking by default because the full 80-card review bundle timed out at the
 high-thinking default while the same single-call bundle completed with
 low-thinking review generation.
 
+### 2026-05-26: NotebookLM Variants Deck Promoted
+
+Status: complete.
+
+Scope for this pass:
+
+- promote the reviewed pilot output into a separate Freudd variants deck
+- keep the canonical matrix deck unchanged
+- commit only the compact promotion decisions and learner-facing deck artifact,
+  not the ignored raw NotebookLM/Gemini run folder
+- make the shared `flashcards/decks.json` registry safe for multiple deck
+  writers so rebuilding the matrix deck preserves the variants deck
+- extend invariants and Freudd service tests so both decks keep loading
+
+Implemented files:
+
+- variant builder:
+  `notebooklm_queue/personlighedspsykologi_notebooklm_variant_flashcards.py`
+- promotion CLI:
+  `scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py`
+- promotion decisions:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
+- variants deck:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
+
+Current deck state:
+
+- canonical matrix deck: `eksamensmatrix-personlighedspsykologi`, 152 cards
+- NotebookLM variants deck: `notebooklm-varianter-personlighedspsykologi`, 79
+  cards
+- source pilot decisions: 60 `accept`, 19 `edit`, 1 `reject`
+
+Verification run:
+
+- `./.venv/bin/python -m py_compile notebooklm_queue/personlighedspsykologi_matrix_flashcards.py notebooklm_queue/personlighedspsykologi_notebooklm_variant_flashcards.py scripts/build_personlighedspsykologi_matrix_flashcards.py scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py scripts/check_personlighedspsykologi_artifact_invariants.py`
+- `./.venv/bin/python scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py --validate-only`
+- `./.venv/bin/python scripts/build_personlighedspsykologi_matrix_flashcards.py --validate-only`
+- `./.venv/bin/python -m pytest tests/test_personlighedspsykologi_matrix_flashcards.py tests/test_personlighedspsykologi_notebooklm_variant_flashcards.py tests/test_personlighedspsykologi_notebooklm_flashcard_lab.py tests/test_gemini_preprocessing.py`
+- `./.venv/bin/python scripts/check_personlighedspsykologi_artifact_invariants.py`
+- `cd freudd_portal && ../.venv/bin/python manage.py test quizzes.tests.test_flashcards.PersonlighedspsykologiMatrixFlashcardArtifactTests`
+
 ## Purpose
 
 This plan describes how to use older high-performing student notes as a

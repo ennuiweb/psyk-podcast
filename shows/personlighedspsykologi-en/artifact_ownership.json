@@ -194,7 +194,7 @@
       "path": "shows/personlighedspsykologi-en/flashcards/decks.json",
       "role": "derived",
       "manual_edit_allowed": false,
-      "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py"
+      "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py; scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
     },
     {
       "artifact_id": "student_synthesis_matrix_flashcard_deck",
@@ -203,6 +203,22 @@
       "role": "derived",
       "manual_edit_allowed": false,
       "writer": "scripts/build_personlighedspsykologi_matrix_flashcards.py"
+    },
+    {
+      "artifact_id": "student_synthesis_notebooklm_variant_promotion_decisions",
+      "concept": "student_synthesis_notebooklm_variant_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
+    },
+    {
+      "artifact_id": "student_synthesis_notebooklm_variant_flashcard_deck",
+      "concept": "student_synthesis_notebooklm_variant_flashcards",
+      "path": "shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py"
     }
   ]
 }

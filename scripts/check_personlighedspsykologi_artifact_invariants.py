@@ -22,8 +22,15 @@ from notebooklm_queue.personlighedspsykologi_student_synthesis import (
 from notebooklm_queue.personlighedspsykologi_matrix_flashcards import (
     FLASHCARD_DECK_SLUG,
     MatrixFlashcardBuildError,
-    source_fingerprint,
+    source_fingerprint as matrix_source_fingerprint,
     validate_flashcard_artifact,
+)
+from notebooklm_queue.personlighedspsykologi_notebooklm_variant_flashcards import (
+    VARIANT_DECK_SLUG,
+    NotebookLMVariantFlashcardError,
+    source_fingerprint as variant_source_fingerprint,
+    validate_promotion_decisions,
+    validate_variant_deck,
 )
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -56,6 +63,8 @@ STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX = STUDENT_SYNTHESIS_DIR / "exam_theory_matr
 STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX_SEED = STUDENT_SYNTHESIS_DIR / "exam_theory_matrix.seed.json"
 STUDENT_SYNTHESIS_FLASHCARD_REGISTRY = SHOW_DIR / "flashcards" / "decks.json"
 STUDENT_SYNTHESIS_FLASHCARD_DECK = SHOW_DIR / "flashcards" / f"{FLASHCARD_DECK_SLUG}.json"
+STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS = SHOW_DIR / "flashcards" / "notebooklm_variant_promotion_decisions.json"
+STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK = SHOW_DIR / "flashcards" / f"{VARIANT_DECK_SLUG}.json"
 VALID_OWNERSHIP_ROLES = {"canonical", "mirror", "derived", "runtime"}
 PERSONLIGHEDS_SUBJECT_REQUIRED_PATHS = {
     "reading_key_path",
@@ -308,6 +317,15 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_DECK).exists():
         failures.append(
             f"Missing student synthesis matrix flashcard deck: {STUDENT_SYNTHESIS_FLASHCARD_DECK}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS).exists():
+        failures.append(
+            "Missing student synthesis NotebookLM variant promotion decisions: "
+            f"{STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK).exists():
+        failures.append(
+            f"Missing student synthesis NotebookLM variant flashcard deck: {STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK}"
         )
     if not freudd_subjects.exists():
         failures.append(f"Missing Freudd subject catalog: {FREUDD_SUBJECTS}")
@@ -940,9 +958,69 @@ def _failures(repo_root: Path) -> list[str]:
                     "Student synthesis matrix flashcard deck source_file does not point at the exam matrix: "
                     f"{source_file}"
                 )
-            expected_source_hash = source_fingerprint(repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX)
+            expected_source_hash = matrix_source_fingerprint(repo_root / STUDENT_SYNTHESIS_EXAM_THEORY_MATRIX)
             if str(deck_payload.get("source_sha256") or "").strip() != expected_source_hash:
                 failures.append("Student synthesis matrix flashcard deck source hash is stale")
+
+    variant_decisions = repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS
+    variant_deck = repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK
+    if flashcard_registry.exists() and variant_decisions.exists() and variant_deck.exists():
+        try:
+            registry_payload = _load_json(flashcard_registry)
+            decisions_payload = _load_json(variant_decisions)
+            variant_deck_payload = _load_json(variant_deck)
+            validate_promotion_decisions(decisions_payload)
+            validate_variant_deck(variant_deck_payload)
+        except (NotebookLMVariantFlashcardError, json.JSONDecodeError) as exc:
+            failures.append(
+                "Student synthesis NotebookLM variant flashcards are invalid in "
+                f"{STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK}: {exc}"
+            )
+        else:
+            decks = registry_payload.get("decks") if isinstance(registry_payload, dict) else None
+            if not isinstance(decks, list):
+                failures.append(
+                    f"Student synthesis flashcard registry decks missing or invalid in "
+                    f"{STUDENT_SYNTHESIS_FLASHCARD_REGISTRY}"
+                )
+            else:
+                matching = [
+                    deck
+                    for deck in decks
+                    if isinstance(deck, dict) and str(deck.get("deck_slug") or "") == VARIANT_DECK_SLUG
+                ]
+                if len(matching) != 1:
+                    failures.append(
+                        f"Student synthesis flashcard registry must contain exactly one {VARIANT_DECK_SLUG} deck"
+                    )
+                else:
+                    registry_entry = matching[0]
+                    expected_path = str(STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECK)
+                    actual_path = str(registry_entry.get("artifact_path") or "").strip()
+                    if actual_path != expected_path:
+                        failures.append(
+                            "NotebookLM variant flashcard registry artifact_path mismatch: "
+                            f"{actual_path} != {expected_path}"
+                        )
+                    if int(registry_entry.get("card_count") or 0) != int(variant_deck_payload.get("card_count") or 0):
+                        failures.append(
+                            "NotebookLM variant flashcard registry card_count does not match deck artifact"
+                        )
+                    if registry_entry.get("enabled") is not True:
+                        failures.append("NotebookLM variant flashcard registry deck must be enabled")
+            if int((decisions_payload.get("stats") or {}).get("promoted_count") or 0) != int(
+                variant_deck_payload.get("card_count") or 0
+            ):
+                failures.append("NotebookLM variant promotion decisions promoted_count does not match deck card_count")
+            source_file = str(variant_deck_payload.get("source_file") or "").strip()
+            if source_file != str(STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS):
+                failures.append(
+                    "NotebookLM variant flashcard deck source_file does not point at promotion decisions: "
+                    f"{source_file}"
+                )
+            expected_source_hash = variant_source_fingerprint(repo_root / STUDENT_SYNTHESIS_NOTEBOOKLM_VARIANT_DECISIONS)
+            if str(variant_deck_payload.get("source_sha256") or "").strip() != expected_source_hash:
+                failures.append("NotebookLM variant flashcard deck source hash is stale")
 
     for relative_path in REFERENCE_FILES:
         path = repo_root / relative_path

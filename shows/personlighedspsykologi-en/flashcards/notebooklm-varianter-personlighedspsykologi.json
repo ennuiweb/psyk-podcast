@@ -1,0 +1,1344 @@
+{
+  "version": 1,
+  "artifact_type": "freudd_flashcards",
+  "subject_slug": "personlighedspsykologi",
+  "deck_slug": "notebooklm-varianter-personlighedspsykologi",
+  "title": "NotebookLM-varianter: personlighedspsykologi",
+  "source_file": "shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json",
+  "source_sha256": "fb06e1f6905bf144d6948c0f5b029dd3895ab946ebd77e8cee53ff3d3d8d0ae1",
+  "generated_at": "2026-05-26T08:12:28Z",
+  "generator": {
+    "name": "scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py",
+    "version": "personlighedspsykologi-notebooklm-variants-v1",
+    "source_authority": "gemini_reviewed_notebooklm_candidates",
+    "canonical_writer": "deterministic_variant_promotion_generator"
+  },
+  "card_count": 79,
+  "categories": [
+    {
+      "slug": "orienteringspunkter",
+      "title": "Orienteringspunkter",
+      "card_count": 10
+    },
+    {
+      "slug": "personbegreb",
+      "title": "Personbegreb",
+      "card_count": 49
+    },
+    {
+      "slug": "metode-og-evidens",
+      "title": "Metode og evidens",
+      "card_count": 2
+    },
+    {
+      "slug": "styrker-og-begraensninger",
+      "title": "Styrker og begrænsninger",
+      "card_count": 4
+    },
+    {
+      "slug": "sammenligninger",
+      "title": "Sammenligninger",
+      "card_count": 5
+    },
+    {
+      "slug": "eksamenstraps",
+      "title": "Eksamenstraps",
+      "card_count": 9
+    }
+  ],
+  "cards": [
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-a941e638b75ffd52",
+      "front_text": "Hvorfor betragtes kritisk psykologi som en 'late-course correction' i personlighedspsykologien?",
+      "back_html_sanitized": "<div>Fordi den eksplicit kritiserer individualiserende teorier ved at forklare subjektivitet gennem social praksis og historiske betingelser.</div>",
+      "back_text": "Fordi den eksplicit kritiserer individualiserende teorier ved at forklare subjektivitet gennem social praksis og historiske betingelser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-critical-psychology-trap-1",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "8baed0f85d32f7a8c8dc9a4c695d0932e0410369d79457f0588eb385e8e6a45a"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-ccef962f354c3a75",
+      "front_text": "I kritisk psykologi: Hvad er den teoretiske forskel på 'personlighed' og 'subjektivitet'?",
+      "back_html_sanitized": "<div>Teorien erstatter ofte personlighed med subjektivitet, som forstås som en praktisk relation mellem personen, hverdagslivet og deltagelse i sociale arrangementer.</div>",
+      "back_text": "Teorien erstatter ofte personlighed med subjektivitet, som forstås som en praktisk relation mellem personen, hverdagslivet og deltagelse i sociale arrangementer.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "edit",
+        "nearest:mx-existential-psychology-model",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "bfcd6932563a2aa753e1f9354da0481e6e7e8bb4c26ed4f75ac7260745a4f903"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-4aec7db2094317df",
+      "front_text": "I kritisk psykologi: Hvad er forholdet mellem sociale betingelser og individets 'agency'?",
+      "back_html_sanitized": "<div>Betingelserne former mulighedsrummet, men individet kan reproducere eller transformere disse gennem deltagelse (situated agency).</div>",
+      "back_text": "Betingelserne former mulighedsrummet, men individet kan reproducere eller transformere disse gennem deltagelse (situated agency).",
+      "tags": [
+        "accept",
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-critical-psychology-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "bb53907621e2d98bde6d9d6e0824b35e8c2024d287e4d650e58e97d9f95ecfd9"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-0ab21fe2ad914d2f",
+      "front_text": "Hvilken metodisk tilgang foretrækker kritisk psykologi frem for eksperimenter?",
+      "back_html_sanitized": "<div>Praksisforskning, hverdags-livs-analyse og historisk-materiel refleksion.</div>",
+      "back_text": "Praksisforskning, hverdags-livs-analyse og historisk-materiel refleksion.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "839d0a12615aa2055a04c0d820aa86d9945d394c3c8fad5c434adf658918ff7d"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-d8a44199e2356146",
+      "front_text": "Hvad risikerer kritisk psykologi at overse i sin vægtning af sociale betingelser?",
+      "back_html_sanitized": "<div>Biologiske faktorer eller intrapsykiske/unbevidste dimensioner af personligheden.</div>",
+      "back_text": "Biologiske faktorer eller intrapsykiske/unbevidste dimensioner af personligheden.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "7f92047eb9c583f7e4052b05f103e26d82b37eee9c12d9b9592f79da7c10a42e"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f67990724f5552dc",
+      "front_text": "Eksamenstrap: Skal kritisk psykologi forstås som en ren politisk holdning?",
+      "back_html_sanitized": "<div>Nej, det er en teoretisk ramme om subjektivitet, der analyserer forholdet mellem individ og samfundsmæssig praksis.</div>",
+      "back_text": "Nej, det er en teoretisk ramme om subjektivitet, der analyserer forholdet mellem individ og samfundsmæssig praksis.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-phenomenological-psychology-trap-1",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "f1ddd62377fdd1af8317ac2f42cf20169c47f5a477a8e82589b21e3fc22845bd"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-0eddbb316c9c3951",
+      "front_text": "Hvordan adskiller 'agency' i kritisk psykologi sig fra det humanistiske begreb om vækst?",
+      "back_html_sanitized": "<div>Kritisk psykologi ser agency som &#x27;ekspansiv&#x27; og kollektiv (ændre betingelser), fremfor blot individuel selvrealisering.</div>",
+      "back_text": "Kritisk psykologi ser agency som 'ekspansiv' og kollektiv (ændre betingelser), fremfor blot individuel selvrealisering.",
+      "tags": [
+        "accept",
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "humanistic_psychology",
+        "nearest:mx-critical-personalism-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "16c730433c8a5be0d6540bddda7081565ef4eabf6184747bce790c4deb7140d1"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-10ae3028e60afbff",
+      "front_text": "Hvad er kernen i det poststrukturalistiske personbegreb sammenlignet med trækpsykologi?",
+      "back_html_sanitized": "<div>Personen ses som et subjekt, der er historisk og diskursivt produceret (formet af magt og sprog) fremfor at have en stabil, målbar indre essens.</div>",
+      "back_text": "Personen ses som et subjekt, der er historisk og diskursivt produceret (formet af magt og sprog) fremfor at have en stabil, målbar indre essens.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "nearest:mx-critical-personalism-orientation-essence-context",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "aa8f6b50a7b095a6aeb1730268b545d85d0c951bf7e9e938f052286d0bbff895"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-44ec27f9988a9253",
+      "front_text": "Hvordan skabes subjektivitet ifølge sociokulturelle og poststrukturalistiske tilgange?",
+      "back_html_sanitized": "<div>Gennem sprog, kategorier, magtrelationer, normer og tilgængelige subjektpositioner.</div>",
+      "back_text": "Gennem sprog, kategorier, magtrelationer, normer og tilgængelige subjektpositioner.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "6c064e32b193063d64540ebda080e0a205401cb935c96ef3b8b7270fb400e6b3"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-7f8ae0d411e6510e",
+      "front_text": "Hvad undersøger en 'genealogisk' metode i personlighedspsykologien?",
+      "back_html_sanitized": "<div>Hvordan bestemte personkategorier og normer historisk er opstået og blevet gjort til &#x27;sandheder&#x27;.</div>",
+      "back_text": "Hvordan bestemte personkategorier og normer historisk er opstået og blevet gjort til 'sandheder'.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "7df5f712846128a02528e60551477fe7fa40c6cf41ae2efd7036ee9abe6992fb"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-39ef31a770ca9913",
+      "front_text": "Hvilken rolle spiller 'magt' i poststrukturalistiske modeller for personlighed?",
+      "back_html_sanitized": "<div>Magt er ikke kun undertrykkende, men producerer bestemte måder at forstå og genkende sig selv på (subjektivering).</div>",
+      "back_text": "Magt er ikke kun undertrykkende, men producerer bestemte måder at forstå og genkende sig selv på (subjektivering).",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-humanistic-psychology-model",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "22425fae8b4527b341565108ff7c332dbf47231e4975244d444c9fa8c4a73d66"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-17c570beac3468c9",
+      "front_text": "Eksamenstrap: Er socialkonstruktionisme og poststrukturalisme det samme?",
+      "back_html_sanitized": "<div>Nej; de er beslægtede, men poststrukturalisme lægger specifik vægt på magt, diskurs og decenteret subjektivitet.</div>",
+      "back_text": "Nej; de er beslægtede, men poststrukturalisme lægger specifik vægt på magt, diskurs og decenteret subjektivitet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-dynamic-personality-development-model",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "c6c5e99759390c32ed916f60e4ab2dff73ee8ba9598c665edf5675ddd618e1b6"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-ede601aea637fdc1",
+      "front_text": "Hvad er 'looping effect' (Hacking) i et sociokulturelt perspektiv på personlighedskategorier?",
+      "back_html_sanitized": "<div>Det er fænomenet, hvor menneskelige kategorier (f.eks. diagnoser eller træk) påvirker de mennesker, de beskriver, hvilket igen ændrer adfærd og dermed kategorien selv.</div>",
+      "back_text": "Det er fænomenet, hvor menneskelige kategorier (f.eks. diagnoser eller træk) påvirker de mennesker, de beskriver, hvilket igen ændrer adfærd og dermed kategorien selv.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "nearest:mx-existential-psychology-model",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "213a510db379d03d36b1f5aa536cc822117bf243d43d8b8832063a4d671cb1e7"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-87cbee3c9210e7a4",
+      "front_text": "Hvorfor kan poststrukturalistiske tilgange have svært ved at forklare personlighedens kontinuitet?",
+      "back_html_sanitized": "<div>Fordi de fokuserer på skiftende diskursive positioner, hvilket kan gøre det svært at se den kropslige eller stabile kerne.</div>",
+      "back_text": "Fordi de fokuserer på skiftende diskursive positioner, hvilket kan gøre det svært at se den kropslige eller stabile kerne.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-sociocultural-poststructural-approaches-trap-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "39b9d68b59cb64c529b3fe52b7cfaa075f7fb2b6214ee19f80d3acfc4a923174"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-38ec69e528325f7d",
+      "front_text": "Hvad kritiserer kritisk personalisme i moderne psykologi?",
+      "back_html_sanitized": "<div>Reificering, hvor abstrakte variabler og test-scores behandles som den virkelige, konkrete person.</div>",
+      "back_text": "Reificering, hvor abstrakte variabler og test-scores behandles som den virkelige, konkrete person.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-critical-personalism-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "b8d44c637efc6ebe2aee52520b78a2d7cd135e264ec7fa1cf78b36e021a44b05"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-bbceb583baa3b9b7",
+      "front_text": "Hvordan definerer kritisk personalisme 'personen'?",
+      "back_html_sanitized": "<div>Som en konkret helhed, der ikke kan reduceres til eller udtømmes af isolerede variabler eller egenskaber.</div>",
+      "back_text": "Som en konkret helhed, der ikke kan reduceres til eller udtømmes af isolerede variabler eller egenskaber.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "1c7bd26dbad711be14bcc6df52f31986ab756a22768c0e63f563793aed527c7d"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-287eb01586495efc",
+      "front_text": "Hvorfor er 'interpretation' centralt for kritisk personalisme?",
+      "back_html_sanitized": "<div>Fordi målinger aldrig taler for sig selv; de skal altid tolkes på person-niveau i en konkret kontekst.</div>",
+      "back_text": "Fordi målinger aldrig taler for sig selv; de skal altid tolkes på person-niveau i en konkret kontekst.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-critical-personalism-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "27425184185dc7c9622a111bcfb65680b04f8cbefad8caef834d5548d3958f6c"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-b1840ecfff93e0d7",
+      "front_text": "Hvordan fungerer kritisk personalisme som et forstadie til kritisk psykologi i kurset?",
+      "back_html_sanitized": "<div>Kritisk personalisme afviser variabel-reduktionisme og insisterer på den hele person, mens kritisk psykologi bygger videre herpå ved at forklare denne person gennem sociale praksisser og betingelser.</div>",
+      "back_text": "Kritisk personalisme afviser variabel-reduktionisme og insisterer på den hele person, mens kritisk psykologi bygger videre herpå ved at forklare denne person gennem sociale praksisser og betingelser.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "critical_psychology",
+        "edit",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "0dfacba971b96ba70c79c3a6fafd99ad9907e31aafc4bd7178e0611dfb881e14"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-997099e429935618",
+      "front_text": "Eksamenstrap: Er kritisk personalisme blot 'anti-måling'?",
+      "back_html_sanitized": "<div>Nej, den kritiserer den teoretiske status af personbegreberne, ikke nødvendigvis brugen af metoder i sig selv.</div>",
+      "back_text": "Nej, den kritiserer den teoretiske status af personbegreberne, ikke nødvendigvis brugen af metoder i sig selv.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-comparative-theory-analysis-comparison-sociocultural-poststructural-approaches-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "c038691372e441e901e1c7793986207f0f9ed1bb09dc9e420b665429dcc23427"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-6412acbca2fcb919",
+      "front_text": "Hvordan forstår narrativ psykologi 'narrativ identitet'?",
+      "back_html_sanitized": "<div>Som en omskiftelig men relativt sammenhængende livshistorie, der giver tilværelsen mening over tid.</div>",
+      "back_text": "Som en omskiftelig men relativt sammenhængende livshistorie, der giver tilværelsen mening over tid.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "b6b2b4eb9aa3a2a7b226fbcd3c0b2313e62385887f61e5e38150615bc7ade90e"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-fedf5d2c360bef06",
+      "front_text": "Hvilken betydning har 'kulturelle skabeloner' for narrativ psykologi?",
+      "back_html_sanitized": "<div>Kulturen leverer de former og historier, som individet bruger til at forstå og fortælle sit eget liv.</div>",
+      "back_text": "Kulturen leverer de former og historier, som individet bruger til at forstå og fortælle sit eget liv.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "0d15eb80d8904078b3838162416507c81eef7c6ad9f139ef82434da1afadf723"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f7c9d8e9d480711d",
+      "front_text": "Hvordan forstås 'agency' inden for narrativ psykologi?",
+      "back_html_sanitized": "<div>Som narrativ agency: evnen til at fortælle, revidere og positionere sig selv i historier, selvom man ikke selv har valgt alle kulturelle skabeloner eller kildemateriale.</div>",
+      "back_text": "Som narrativ agency: evnen til at fortælle, revidere og positionere sig selv i historier, selvom man ikke selv har valgt alle kulturelle skabeloner eller kildemateriale.",
+      "tags": [
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "edit",
+        "existential_psychology",
+        "narrative_psychology",
+        "nearest:mx-critical-psychology-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "d67cc4c8f6b46c8b9a1a2486fca09aca4f66bbf7412086e766cf2328b5ab9ec6"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-e22af33cb69b725c",
+      "front_text": "Hvorfor vægter narrativ psykologi 'temporalitet' (tid)?",
+      "back_html_sanitized": "<div>Fordi personlighed ses som noget, der udspiller sig over tid gennem sammenkædning af fortid, nutid og fremtid.</div>",
+      "back_text": "Fordi personlighed ses som noget, der udspiller sig over tid gennem sammenkædning af fortid, nutid og fremtid.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-narrative-psychology-model",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "dadc0131235f7ea14ba7984c3f3e7064e6fb1c963bff761cfd98f5cace28c9f1"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-03d0a41bdf392f04",
+      "front_text": "Hvad er en central metodisk kontrast mellem trækpsykologi og narrativ psykologi i kurset?",
+      "back_html_sanitized": "<div>Trækpsykologi søger oftest stabile, målbare dimensioner på tværs af personer (nomotetisk), mens narrativ psykologi fokuserer på at fortolke meningsfulde, foranderlige livshistorier (idiografisk).</div>",
+      "back_text": "Trækpsykologi søger oftest stabile, målbare dimensioner på tværs af personer (nomotetisk), mens narrativ psykologi fokuserer på at fortolke meningsfulde, foranderlige livshistorier (idiografisk).",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "narrative_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "bde01c681eaef2111e48f4743a9b1b16d5bc7d10a749595457891d6dacd2ad4e"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-667cf361e3d34244",
+      "front_text": "Eksamenstrap: Er narrativ psykologi det samme som at sige, at identitet er 'fiktion'?",
+      "back_html_sanitized": "<div>Nej, fortællinger er kulturelt forankrede og har virkelige konsekvenser for personens handlinger og selvforståelse.</div>",
+      "back_text": "Nej, fortællinger er kulturelt forankrede og har virkelige konsekvenser for personens handlinger og selvforståelse.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-phenomenological-psychology-trap-1",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "b686c9c2858d0f2730804c4a70926ce77a05de63b7317fc4aa8b9b1868de4d58"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-96a55d32fe282d8d",
+      "front_text": "Hvordan kan man sammenligne narrativ psykologi og poststrukturalisme ift. sprog?",
+      "back_html_sanitized": "<div>Begge vægter sprog, men narrativ psykologi fokuserer på identitetskontinuitet, mens poststrukturalisme fokuserer på magt og diskurs.</div>",
+      "back_text": "Begge vægter sprog, men narrativ psykologi fokuserer på identitetskontinuitet, mens poststrukturalisme fokuserer på magt og diskurs.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "645a9d075780d5d8fb409a85cf0b6658b898699b20212c0d2eed4740e976d9eb"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-5572a7abc6fa158a",
+      "front_text": "Hvordan adskiller kritisk psykologi og poststrukturalisme sig i deres forklaring af subjektet?",
+      "back_html_sanitized": "<div>Kritisk psykologi betoner social praksis og handlemuligheder; poststrukturalisme betoner diskursiv produktion og magt.</div>",
+      "back_text": "Kritisk psykologi betoner social praksis og handlemuligheder; poststrukturalisme betoner diskursiv produktion og magt.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-critical-psychology-orientation-historicity",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "6c909c85203964464bdcac72a7bcd79a71d08144cdb71a9354ef8e80179aa252"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-d176019358ec09c7",
+      "front_text": "Hvad fremhæves som en central styrke ved narrativ psykologi ifølge kursusmatricen?",
+      "back_html_sanitized": "<div>Den forklarer kontinuitet og forandring gennem mening, og bygger bro mellem det individuelle liv og kulturelle narrativer, hvilket gør den velegnet til sammenligning til mundtlig eksamen.</div>",
+      "back_text": "Den forklarer kontinuitet og forandring gennem mening, og bygger bro mellem det individuelle liv og kulturelle narrativer, hvilket gør den velegnet til sammenligning til mundtlig eksamen.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "narrative_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "9cd25261986ace0705ad52efdfa4cfa9aa6c77ab9e5bd5001ae4a2eca31bc3cf"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-66993f9cf4e59770",
+      "front_text": "Hvorfor betragtes sociokulturelle tilgange som den stærkeste 'anti-essentialistiske' position?",
+      "back_html_sanitized": "<div>Fordi de afviser enhver medfødt eller stabil kerne til fordel for historisk og relationel produktion.</div>",
+      "back_text": "Fordi de afviser enhver medfødt eller stabil kerne til fordel for historisk og relationel produktion.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-critical-personalism-trap-1",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "94c4b1fed4321ef6d2c4e4bef29a304c6964ae14026000c3d8deae9d332b1c91"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f047901fe4ba236e",
+      "front_text": "Hvordan kritiserer kritisk psykologi det humanistiske fokus på 'selvrealisering'?",
+      "back_html_sanitized": "<div>Ved at spørge, om fokus på individuel vækst skjuler sociale uligheder og kollektive konflikter.</div>",
+      "back_text": "Ved at spørge, om fokus på individuel vækst skjuler sociale uligheder og kollektive konflikter.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "humanistic_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "3ae2cd6972e41d426c1ca7a72ded349344c7a830725296e57b06029acfeee6e1"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-32074a345af50e63",
+      "front_text": "I forhold til 'historicitet': Hvad fokuserer narrativ psykologi på?",
+      "back_html_sanitized": "<div>Ontogenese (individuel livshistorie) og hvordan denne formes af kulturelle fortælleformer.</div>",
+      "back_text": "Ontogenese (individuel livshistorie) og hvordan denne formes af kulturelle fortælleformer.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-orientation-historicity",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "80195888d9ee4260b79728bf7fa12e51d817f236fe8153ea5f08d29804f05d52"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-a899c269fd0db175",
+      "front_text": "Hvilken advarsel giver kritisk personalisme angående 'variabel-psykologi'?",
+      "back_html_sanitized": "<div>At man mister &#x27;hele personen&#x27; af syne, når man kun fokuserer på isolerede korrelationer mellem træk.</div>",
+      "back_text": "At man mister 'hele personen' af syne, når man kun fokuserer på isolerede korrelationer mellem træk.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "863ab3015c296b8a0a8fe6a3374215c18f54d8cb807659f965c50c11006c8af2"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-2ca47a1198e7d63c",
+      "front_text": "Hvordan redefinerer narrativ psykologi psykoanalysens fokus på 'skjulte konflikter'?",
+      "back_html_sanitized": "<div>Ved at se dem som materiale, der kan genforhandles og gives ny mening i alternative livsfortællinger.</div>",
+      "back_text": "Ved at se dem som materiale, der kan genforhandles og gives ny mening i alternative livsfortællinger.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "psychoanalytic_personality_theory"
+      ],
+      "category_slug": "metode-og-evidens",
+      "category_title": "Metode og evidens",
+      "content_sha256": "b7be2c77f2789c7688e345cb093cc9bf28cf0e48f61e70c6e4dce9b943df2aa5"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-57c2338bc0cdf247",
+      "front_text": "Hvad er en central forskel på fænomenologi og narrativ psykologi ifølge kursusmatricen?",
+      "back_html_sanitized": "<div>Fænomenologi fokuserer primært på den umiddelbare levede erfaring og in-der-verden-væren; narrativ psykologi fokuserer på den fortalte identitet og meningsskabelse over tid.</div>",
+      "back_text": "Fænomenologi fokuserer primært på den umiddelbare levede erfaring og in-der-verden-væren; narrativ psykologi fokuserer på den fortalte identitet og meningsskabelse over tid.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "narrative_psychology",
+        "nearest:mx-trait-and-assessment-psychology-orientation-determination",
+        "notebooklm-variant",
+        "phenomenological_psychology"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "8a4ab2c15ad12d32141826f732f930fcbac3b82bd734b571c440a0d67094359b"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f6c9280dc86e2b25",
+      "front_text": "Hvilken rolle spiller 'audience' (publikum) i narrativ psykologi?",
+      "back_html_sanitized": "<div>Identitet skabes ikke i isolation, men i dialog med andre, som historien fortælles til.</div>",
+      "back_text": "Identitet skabes ikke i isolation, men i dialog med andre, som historien fortælles til.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "2319e4ed3582daf1698a31470008c8d6085e591ccceae8692e46442613e197b4"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-94c0b1c2bfeb2deb",
+      "front_text": "Hvad mener kritisk psykologi med 'handlemuligheder' (action possibilities)?",
+      "back_html_sanitized": "<div>De objektivt givne men subjektivt oplevede muligheder for handling i en bestemt social praksis.</div>",
+      "back_text": "De objektivt givne men subjektivt oplevede muligheder for handling i en bestemt social praksis.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-critical-personalism-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "b372ee4e05b6a70a3ca096953a1184d75a43e1035e33a27c30e081e99b526e00"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-9f0af59612645ac7",
+      "front_text": "Hvordan ser sociokulturelle tilgange på 'køn' i personligheden?",
+      "back_html_sanitized": "<div>Som en diskursiv og social praksis snarere end en biologisk essens eller et fast personlighedstræk.</div>",
+      "back_text": "Som en diskursiv og social praksis snarere end en biologisk essens eller et fast personlighedstræk.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-sociocultural-poststructural-approaches-method",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "99160a31d10393c8f7f0588e166dce46acd2242f101ce07fcbb9189742cc1563"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-726b4836fb0cf38b",
+      "front_text": "Hvorfor er 'conceptual critique' en vigtig metode i kritisk personalisme?",
+      "back_html_sanitized": "<div>For at sikre, at de begreber vi bruger (f.eks. &#x27;intelligence&#x27; eller &#x27;extraversion&#x27;), ikke reificeres som naturlige ting.</div>",
+      "back_text": "For at sikre, at de begreber vi bruger (f.eks. 'intelligence' eller 'extraversion'), ikke reificeres som naturlige ting.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-critical-personalism-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "30f8a76e90a25e9fc8036954e9b369f147c28e32e12558c6710fe69933fff575"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-692987d98f892694",
+      "front_text": "Hvad nævnes i matricen som en begrænsning ved narrativ psykologi ift. fragmenterede liv?",
+      "back_html_sanitized": "<div>Den kan overbetone kravet om sammenhæng (coherence), hvilket kan overskygge non-narrative dimensioner eller liv præget af brud og konflikt.</div>",
+      "back_text": "Den kan overbetone kravet om sammenhæng (coherence), hvilket kan overskygge non-narrative dimensioner eller liv præget af brud og konflikt.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "af93f0c4a8e2899fadfbbb2b8c3cd242d84d6bad4a29c31ecb66d88818136fbc"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-3a3219c7349bb246",
+      "front_text": "Hvad forener kritisk psykologi og poststrukturalisme?",
+      "back_html_sanitized": "<div>Begge socialiserer subjektiviteten og udfordrer modeller, der kun kigger &#x27;indad&#x27; i individet.</div>",
+      "back_text": "Begge socialiserer subjektiviteten og udfordrer modeller, der kun kigger 'indad' i individet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "2fbb3911ae0cc55dd6c0c3d043d02a7cf873426f068700ba97c4df9dbb416955"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-9de9129c13b68cea",
+      "front_text": "I 'essence_context' debatten: Hvor placerer kritisk psykologi sig?",
+      "back_html_sanitized": "<div>Stærkt kontekstuelt; personen forklares gennem deltagelse i konkrete sociale praksisser.</div>",
+      "back_text": "Stærkt kontekstuelt; personen forklares gennem deltagelse i konkrete sociale praksisser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-biosocial-personality-perspectives-orientation-essence-context",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "1df06dc1e46a82c905ad8f57ee91b6b184cf891b020f3dd44324a00790ec9aa5"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-c1dcf3799bf10a91",
+      "front_text": "Hvordan adskiller 'determination' sig i poststrukturalisme vs. kritisk psykologi?",
+      "back_html_sanitized": "<div>Poststrukturalisme ser subjektet formet af diskursive normer; kritisk psykologi ser det formet af materielle og sociale betingelser.</div>",
+      "back_text": "Poststrukturalisme ser subjektet formet af diskursive normer; kritisk psykologi ser det formet af materielle og sociale betingelser.",
+      "tags": [
+        "accept",
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-personality-functioning-and-pathology-orientation-determination",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "136ec34c63189756d5f78e26424c27947e88f7fc168bb901f4dbc8db52173fd0"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-471eb71df596da94",
+      "front_text": "Hvad er pointen med begrebet 'making up people' (Hacking) i et sociokulturelt perspektiv?",
+      "back_html_sanitized": "<div>At illustrere, hvordan videnskabelige kategoriseringer, magt og diskurs aktivt skaber nye måder for individer at eksistere og forstå sig selv på.</div>",
+      "back_text": "At illustrere, hvordan videnskabelige kategoriseringer, magt og diskurs aktivt skaber nye måder for individer at eksistere og forstå sig selv på.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "nearest:mx-existential-psychology-comparison-humanistic-psychology-1",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "81468f9ec12863d336ef49e7bcc4c6fbf1d7794af55fc3bd5c3b193cc1d6be97"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-293aa0d5287c6730",
+      "front_text": "Hvilken kritik rejser kritisk psykologi mod 'dekontekstualiseret' trækpsykologi?",
+      "back_html_sanitized": "<div>At den ignorerer, at personens adfærd og &#x27;træk&#x27; altid er svar på specifikke samfundsmæssige krav.</div>",
+      "back_text": "At den ignorerer, at personens adfærd og 'træk' altid er svar på specifikke samfundsmæssige krav.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "5bda0775a6e090d8aa204c3cd60419da6f27d6e03934c06c4f40fdbaa67ed5fb"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-d18a2ec4f6bf5d99",
+      "front_text": "I narrativ psykologi: Er livshistorien nogensinde 'færdig'?",
+      "back_html_sanitized": "<div>Nej, narrativ identitet er en løbende proces af revision og nyfortolkning gennem hele livet.</div>",
+      "back_text": "Nej, narrativ identitet er en løbende proces af revision og nyfortolkning gennem hele livet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-comparative-theory-analysis-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "0324ae6d7b7bae1100639ed8bd56eb95dc6b734194c8665159db72e390b72f91"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-e80e7e80f76c16b5",
+      "front_text": "Hvordan forstår kritisk personalisme 'person-situation interplay'?",
+      "back_html_sanitized": "<div>Som en dynamisk helhed, hvor situationen ikke blot er en ydre variabel, men en del af personens meningsverden.</div>",
+      "back_text": "Som en dynamisk helhed, hvor situationen ikke blot er en ydre variabel, men en del af personens meningsverden.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "dynamic_personality_development",
+        "nearest:mx-critical-personalism-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "8993db1aa8a44766251782a5a28924e6a015e38c99e9db4b286d6646df1d8f84"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-2c4b5f2b25270dde",
+      "front_text": "Hvad betyder det at 'decentrere det autonome subjekt'?",
+      "back_html_sanitized": "<div>At flytte fokus fra individets uafhængige vilje til de processer (magt eller ubevidste), der former subjektet.</div>",
+      "back_text": "At flytte fokus fra individets uafhængige vilje til de processer (magt eller ubevidste), der former subjektet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "cdb73466701cb844068caf454bfd5a0e5d7dd1d9a6b15b43af1fc34ddea8ccf7"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-80a8eb21642aef5f",
+      "front_text": "Hvorfor er 'hverdagsliv' (everyday life) centralt i kritisk psykologi?",
+      "back_html_sanitized": "<div>Fordi det er her, subjektiviteten udspiller sig gennem balancering af deltagelse i forskellige sociale praksisser.</div>",
+      "back_text": "Fordi det er her, subjektiviteten udspiller sig gennem balancering af deltagelse i forskellige sociale praksisser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-critical-psychology-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "f3e6f25453ef1d171ac7f7074b9c9da21133419f18c9c2e12d800ed50d2f854c"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-479918160c4ab292",
+      "front_text": "Hvordan kan narrativ psykologi bruges til at forklare både stabilitet og forandring?",
+      "back_html_sanitized": "<div>Stabilitet findes i historiens røde tråd; forandring findes i muligheden for at &#x27;reframme&#x27; eller skabe alternative historier.</div>",
+      "back_text": "Stabilitet findes i historiens røde tråd; forandring findes i muligheden for at 'reframme' eller skabe alternative historier.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-comparative-theory-analysis-comparison-trait-and-assessment-psychology-1",
+        "notebooklm-variant"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "9c5d206066be50a5927c1af9fca4ff305a7806bae19467641ab7fd46a63b7822"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-a4e90df67a4d46de",
+      "front_text": "Hvilket personbegreb ligger implicit i trækpsykologi ifølge kritikere?",
+      "back_html_sanitized": "<div>Et variabel-centreret begreb, hvor personen ses som en samling af målbare, stabile dimensioner.</div>",
+      "back_text": "Et variabel-centreret begreb, hvor personen ses som en samling af målbare, stabile dimensioner.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-dynamic-personality-development-model",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "f479dc8ab95f55505acd1cb5b320b0854941a86b4dfd1817d4eb227c341dbfb3"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-448a12ec4a1eee03",
+      "front_text": "I poststrukturalisme: Hvad betyder det at 'indtage en position'?",
+      "back_html_sanitized": "<div>At man identificerer sig med eller tildeles en bestemt rolle inden for en given diskurs (f.eks. &#x27;den gode studerende&#x27;).</div>",
+      "back_text": "At man identificerer sig med eller tildeles en bestemt rolle inden for en given diskurs (f.eks. 'den gode studerende').",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-comparative-theory-analysis-comparison-trait-and-assessment-psychology-1",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "fc4feb8b64d0bf78d7a57b277e1babd6b5b2af8ac5551eeb933aebde3663a4e2"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-115bc3681c0c5d66",
+      "front_text": "Hvordan kan man bruge kritisk psykologi til at forstå psykiske lidelser?",
+      "back_html_sanitized": "<div>Ved at forbinde personlig lidelse med begrænsede handlemuligheder og problematiske sociale betingelser.</div>",
+      "back_text": "Ved at forbinde personlig lidelse med begrænsede handlemuligheder og problematiske sociale betingelser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "cb889188b3e7b9b0195bdf1453263504417b84444cb89af717cf26dfbd5f09ef"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-41023ddb75b11c79",
+      "front_text": "Hvad risikerer poststrukturalismen at 'skjule' ifølge kritisk psykologi?",
+      "back_html_sanitized": "<div>Materielle realiteter og konkret social praksis, hvis alt reduceres til sprog og diskurs.</div>",
+      "back_text": "Materielle realiteter og konkret social praksis, hvis alt reduceres til sprog og diskurs.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "styrker-og-begraensninger",
+      "category_title": "Styrker og begrænsninger",
+      "content_sha256": "73e1da08d2df6997c7868ccdf822f0ff47dce1bdfd6c9d1644072ce0ed7e2b16"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-6c15f367ddf4e2ed",
+      "front_text": "Hvorfor er 'historicitet' vigtig for forståelsen af personlighedstest?",
+      "back_html_sanitized": "<div>Fordi test-kategorierne selv er historiske produkter, der afspejler en bestemt tids normsæt (sociogenese).</div>",
+      "back_text": "Fordi test-kategorierne selv er historiske produkter, der afspejler en bestemt tids normsæt (sociogenese).",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-humanistic-psychology-orientation-historicity",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "ea4f5115d3596347401a59e5ddad049193dcada041475e27a4d2e51add5c8283"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-bf085f7cd712daa0",
+      "front_text": "Hvad er kernen i 'expansive agency' inden for kritisk psykologi?",
+      "back_html_sanitized": "<div>At &#x27;agency&#x27; ikke blot er individuel, men udvides, når mennesker går sammen kollektivt om at ændre de strukturelle og sociale betingelser, der ellers begrænser deres handlemuligheder.</div>",
+      "back_text": "At 'agency' ikke blot er individuel, men udvides, når mennesker går sammen kollektivt om at ændre de strukturelle og sociale betingelser, der ellers begrænser deres handlemuligheder.",
+      "tags": [
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "edit",
+        "nearest:mx-critical-personalism-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "3b8c3e934964690a88463a77a6446db8e5505ba4b61e21f92746842335d6af04"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-4d39722290f1ef4d",
+      "front_text": "Hvad adskiller narrativ psykologi fra socialkonstruktionisme ift. 'selvet'?",
+      "back_html_sanitized": "<div>Narrativ psykologi bevarer ofte en stærkere følelse af et &#x27;selv&#x27;, der skaber kontinuitet gennem historien.</div>",
+      "back_text": "Narrativ psykologi bevarer ofte en stærkere følelse af et 'selv', der skaber kontinuitet gennem historien.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "10ab983bdc30cad4933fd7817db15778b8680c48cc1af25eae827d8404576b31"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-0be6fce56aa2e835",
+      "front_text": "Eksamenstrap: Betyder 'anti-essentialisme', at personlighed ikke er virkelig?",
+      "back_html_sanitized": "<div>Nej, det betyder blot, at den er socialt og historisk produceret snarere end biologisk fastlåst.</div>",
+      "back_text": "Nej, det betyder blot, at den er socialt og historisk produceret snarere end biologisk fastlåst.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-comparative-theory-analysis-comparison-sociocultural-poststructural-approaches-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "253edeb38d4885fa7f48fb753f3f71df800cbecbc43025d9c0b200bcb832aad5"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-ae972c7c2b489576",
+      "front_text": "Hvordan bidrager feministisk teori til poststrukturalistisk personlighedspsykologi?",
+      "back_html_sanitized": "<div>Ved at analysere hvordan kønnede diskurser og magtstrukturer producerer bestemte former for subjektivitet.</div>",
+      "back_text": "Ved at analysere hvordan kønnede diskurser og magtstrukturer producerer bestemte former for subjektivitet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-comparative-theory-analysis-comparison-trait-and-assessment-psychology-1",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "d76dca538fbaf9cbafcee833a0f607f9d903b101682ce95de877af9fb2c8a80b"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-c3608101f72f1e36",
+      "front_text": "Hvad er en central styrke (affordance) ved kritisk personalisme ifølge matricen?",
+      "back_html_sanitized": "<div>Den giver en stærk kritik af reificeret variabel-sprog og holder den &#x27;hele person&#x27; synlig i teorisammenligninger.</div>",
+      "back_text": "Den giver en stærk kritik af reificeret variabel-sprog og holder den 'hele person' synlig i teorisammenligninger.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "edit",
+        "nearest:mx-personality-functioning-and-pathology-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "bc57d03d136e1d8bdf53f25efac8809639f11634dc39bec50eed87c81f694903"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-604beb407550fe9a",
+      "front_text": "I kritisk psykologi: Hvad er forholdet mellem subjektivitet og konflikt?",
+      "back_html_sanitized": "<div>Subjektivitet formes gennem de konflikter, der opstår, når man deltager i modstridende sociale praksisser.</div>",
+      "back_text": "Subjektivitet formes gennem de konflikter, der opstår, når man deltager i modstridende sociale praksisser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-dynamic-personality-development-model",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "6582f003389673e8c5bf6bb6a4efad8ae2fb39979db48531f3915bed6ab34899"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-16c3526a103b9a56",
+      "front_text": "Hvordan kan narrativ psykologi hjælpe i en terapeutisk kontekst?",
+      "back_html_sanitized": "<div>Ved at hjælpe klienten med at finde &#x27;alternative historier&#x27;, der giver mere agency end deres nuværende &#x27;problem-mættede&#x27; fortælling.</div>",
+      "back_text": "Ved at hjælpe klienten med at finde 'alternative historier', der giver mere agency end deres nuværende 'problem-mættede' fortælling.",
+      "tags": [
+        "accept",
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-comparative-theory-analysis-comparison-sociocultural-poststructural-approaches-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "c0e8775470700859e1e9f7437112423a387f9eef464a463f48a7f0e1a989db92"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f8bef24ffd597ac2",
+      "front_text": "Hvilken rolle spiller 'memory' (hukommelse) i narrativ identitet?",
+      "back_html_sanitized": "<div>Hukommelsen er ikke et objektivt arkiv, men en aktiv proces, der udvælger begivenheder til at støtte livshistorien.</div>",
+      "back_text": "Hukommelsen er ikke et objektivt arkiv, men en aktiv proces, der udvælger begivenheder til at støtte livshistorien.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-method",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "8150e32667573e8dfd11fb1942bd033cdcf11fda52c38d32bb6c059b896838e1"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-a8d1aea2d8e60f9e",
+      "front_text": "Hvad menes der med 'person-level explanation' i kritisk personalisme?",
+      "back_html_sanitized": "<div>En forklaring, der fortolker fænomener ud fra den konkrete person som meningsfuld helhed, frem for at reducere forklaringen til udtømning i målbare variabler.</div>",
+      "back_text": "En forklaring, der fortolker fænomener ud fra den konkrete person som meningsfuld helhed, frem for at reducere forklaringen til udtømning i målbare variabler.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "edit",
+        "nearest:mx-critical-personalism-orientation-determination",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "1867d1d93325f37497141f455647953c1804525e5163a2a48b0fa2e2fa599203"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-79143a72b97ab73d",
+      "front_text": "Hvordan udfordrer poststrukturalismen ideen om det 'autentiske selv'?",
+      "back_html_sanitized": "<div>Ved at hævde, at &#x27;autenticitet&#x27; selv er en diskursiv konstruktion, der regulerer, hvordan vi bør føle og handle.</div>",
+      "back_text": "Ved at hævde, at 'autenticitet' selv er en diskursiv konstruktion, der regulerer, hvordan vi bør føle og handle.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "9479f8ac107fbad6debc4d57fc14cd5f0a40e6a4960baf3d8b8722ddfe4fa238"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-fb8bc743c71c75ed",
+      "front_text": "Hvad dækker det poststrukturalistiske begreb 'subjectivation' over?",
+      "back_html_sanitized": "<div>Det er processen, hvor individer formes til bestemte typer af subjekter (kinds of persons) gennem de sproglige diskurser og magtrelationer, der er tilgængelige for dem.</div>",
+      "back_text": "Det er processen, hvor individer formes til bestemte typer af subjekter (kinds of persons) gennem de sproglige diskurser og magtrelationer, der er tilgængelige for dem.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "nearest:mx-sociocultural-poststructural-approaches-method",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "fadaa67115123b71d9c97d3f698db140bfa48bf2bac2ac1ae9a0de5204b80452"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-5692af7dc6f17d78",
+      "front_text": "I kritisk psykologi: Hvorfor er 'hverdagslivet' ikke bare privat?",
+      "back_html_sanitized": "<div>Fordi hverdagslivets organisering er tæt forbundet med samfundsmæssige strukturer og institutioner.</div>",
+      "back_text": "Fordi hverdagslivets organisering er tæt forbundet med samfundsmæssige strukturer og institutioner.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "dd9b831d8846f034858ad905c0b34d14dfd981e86dae2e021fe792bf9635bc85"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-84a2da7e8a127c3d",
+      "front_text": "Hvordan adskiller narrativ psykologi fra poststrukturalisme ift. 'coherence' (sammenhæng)?",
+      "back_html_sanitized": "<div>Narrativ psykologi ser ofte sammenhæng som et ideal for identitet; poststrukturalisme ser det som en normativ tvang.</div>",
+      "back_text": "Narrativ psykologi ser ofte sammenhæng som et ideal for identitet; poststrukturalisme ser det som en normativ tvang.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-comparative-theory-analysis-comparison-trait-and-assessment-psychology-1",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "ad8dae02dc2898833fdb9cd19f9ddc6e00f06f8c0c41ba95ff8f74056cbc7614"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-09d9fb0e95b1935c",
+      "front_text": "Hvorfor er 'biographical historicity' vigtig i kritisk personalisme?",
+      "back_html_sanitized": "<div>Fordi personens nuværende helhed kun kan forstås gennem deres unikke tidslige forløb og livshistorie.</div>",
+      "back_text": "Fordi personens nuværende helhed kun kan forstås gennem deres unikke tidslige forløb og livshistorie.",
+      "tags": [
+        "accept",
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "narrative_psychology",
+        "nearest:mx-existential-psychology-orientation-historicity",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "08c467e34a272be6ab741dba47b71ba746d29d211d616e56722168e704700646"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-86aea35f2494e5cd",
+      "front_text": "Hvordan kan kritisk psykologi bruges til at kritisere personlighedstests i ansættelser?",
+      "back_html_sanitized": "<div>Ved at påpege, at de overser, hvordan ansøgerens adfærd vil forme sig i den specifikke sociale praksis på arbejdspladsen.</div>",
+      "back_text": "Ved at påpege, at de overser, hvordan ansøgerens adfærd vil forme sig i den specifikke sociale praksis på arbejdspladsen.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "a8d2132f9d1f798fa9cbc1b68641e2b15fb6fedb6f33ca2980d607356d1fd548"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-54ac182a88d4d94d",
+      "front_text": "Hvad dækker 'positioning' over i en sociokulturel/poststrukturalistisk tilgang?",
+      "back_html_sanitized": "<div>Det er analysen af, hvordan subjekter dynamisk tildeles, indtager eller forhandler positioner og handlemuligheder gennem diskursiv praksis.</div>",
+      "back_text": "Det er analysen af, hvordan subjekter dynamisk tildeles, indtager eller forhandler positioner og handlemuligheder gennem diskursiv praksis.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "nearest:mx-critical-personalism-orientation-essence-context",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "f1c6e18b3073451d134649af7feb4d89e9d38e4075c3c4edc38cdee7c2edd668"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f771d91b4c9c7d2b",
+      "front_text": "I narrativ psykologi: Hvad betyder det at identiteten er 'relational'?",
+      "back_html_sanitized": "<div>At vores livshistorier altid er vævet sammen med andres historier og kulturelle fortællinger.</div>",
+      "back_text": "At vores livshistorier altid er vævet sammen med andres historier og kulturelle fortællinger.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "narrative_psychology",
+        "nearest:mx-humanistic-psychology-orientation-determination",
+        "notebooklm-variant"
+      ],
+      "category_slug": "eksamenstraps",
+      "category_title": "Eksamenstraps",
+      "content_sha256": "144e836bb079414a11b925d456514e2b316e51e0fc9a2566cc2afe62ba015b1d"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-7686c2fc2cf38275",
+      "front_text": "Hvordan fungerer 'materiality' (materielle betingelser) som en modvægt til ren diskurs i kritisk psykologi?",
+      "back_html_sanitized": "<div>Kritisk psykologi fastholder, at personens handlemuligheder og vanskeligheder ikke kun er sproglige (diskurs), men forankret i fysiske, økonomiske og institutionelle samfundsstrukturer.</div>",
+      "back_text": "Kritisk psykologi fastholder, at personens handlemuligheder og vanskeligheder ikke kun er sproglige (diskurs), men forankret i fysiske, økonomiske og institutionelle samfundsstrukturer.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "edit",
+        "nearest:mx-sociocultural-poststructural-approaches-affordance-limit",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "67aeb042f46647a3b01715f937096df87947bf63db13302385bf0fcde5dc5c64"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-1f17f30e6dcdf11a",
+      "front_text": "Hvordan adskiller vægtningen af 'power' (magt) sig i de to kritiske klynger?",
+      "back_html_sanitized": "<div>Poststrukturalisme ser magt i sprog og normer; kritisk psykologi ser magt i adgang til ressourcer og indflydelse på betingelser.</div>",
+      "back_text": "Poststrukturalisme ser magt i sprog og normer; kritisk psykologi ser magt i adgang til ressourcer og indflydelse på betingelser.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-biosocial-personality-perspectives-comparison-sociocultural-poststructural-approaches-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "sammenligninger",
+      "category_title": "Sammenligninger",
+      "content_sha256": "01494d6a28ea2e9bc55ec2376a6436ad13daa70523012a14823e50685a94f237"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-def5b1bd9a22224b",
+      "front_text": "Hvilken funktion har 'alternative stories' ifølge matricens afsnit om narrativ psykologi?",
+      "back_html_sanitized": "<div>De bruges til at fremhæve oversete (ofte mere positive) begivenheder og skabe nye meningsfulde narrativer, der bryder med en stagneret eller problem-mættet livshistorie.</div>",
+      "back_text": "De bruges til at fremhæve oversete (ofte mere positive) begivenheder og skabe nye meningsfulde narrativer, der bryder med en stagneret eller problem-mættet livshistorie.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "edit",
+        "narrative_psychology",
+        "nearest:mx-narrative-psychology-trap-3",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "61d9872ce34d1b4855c8f987378e3c4c6642ffd0292b0a475234d6833e969d49"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-eeb116446048db6b",
+      "front_text": "Hvorfor er 'methodological reflection' vigtigt for kritisk personalisme?",
+      "back_html_sanitized": "<div>For at undgå at metoden (f.eks. en test) dikterer hvad vi overhovedet kan se hos personen.</div>",
+      "back_text": "For at undgå at metoden (f.eks. en test) dikterer hvad vi overhovedet kan se hos personen.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "nearest:mx-comparative-theory-analysis-trap-1",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "6ab6972676d4de0b8284cdde2dff5f7701aef052d0c9af76bb2774e875e91cb5"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-dfb2c202fd22c2eb",
+      "front_text": "Hvordan forstår sociokulturelle tilgange 'kind of persons'?",
+      "back_html_sanitized": "<div>Som historisk skabte kategorier (f.eks. &#x27;den introverte&#x27;), der bliver til virkelighed gennem social praksis og videnskab.</div>",
+      "back_text": "Som historisk skabte kategorier (f.eks. 'den introverte'), der bliver til virkelighed gennem social praksis og videnskab.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "nearest:mx-humanistic-psychology-comparison-critical-psychology-2",
+        "notebooklm-variant",
+        "sociocultural_poststructural_approaches"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "a9cd7f54ca0b40b202df24c02a6add5e244c7608b12fc5da9a46f36fc5484838"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-f61cf861abef3e9f",
+      "front_text": "Hvad er forskellen på 'situated agency' og det klassiske begreb om 'sovereign agency' i teorisammenligning?",
+      "back_html_sanitized": "<div>Sovereign agency forudsætter et fuldt autonomt subjekt med helt frie valg. Kritisk psykologi og fænomenologi opererer med &#x27;situated agency&#x27;, hvor handlingsevne altid udfolder sig inden for historiske og sociale betingelser.</div>",
+      "back_text": "Sovereign agency forudsætter et fuldt autonomt subjekt med helt frie valg. Kritisk psykologi og fænomenologi opererer med 'situated agency', hvor handlingsevne altid udfolder sig inden for historiske og sociale betingelser.",
+      "tags": [
+        "comparative_theory_analysis",
+        "critical-sociocultural-narrative",
+        "edit",
+        "existential_psychology",
+        "nearest:mx-critical-psychology-orientation-agency",
+        "notebooklm-variant"
+      ],
+      "category_slug": "orienteringspunkter",
+      "category_title": "Orienteringspunkter",
+      "content_sha256": "5e9054a0dd4453cfbf499a7faa8241a4444df61660e9c4be78a3e6a60a687e09"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-47fa9c0a985070cb",
+      "front_text": "I forhold til 'historicitet': Hvordan adskiller kritisk psykologi sig fra trækpsykologi?",
+      "back_html_sanitized": "<div>Kritisk psykologi ser personlighed som et historisk produkt; trækpsykologi ser det ofte som biologisk/universelt givet.</div>",
+      "back_text": "Kritisk psykologi ser personlighed som et historisk produkt; trækpsykologi ser det ofte som biologisk/universelt givet.",
+      "tags": [
+        "accept",
+        "critical-sociocultural-narrative",
+        "critical_psychology",
+        "nearest:mx-existential-psychology-orientation-historicity",
+        "notebooklm-variant",
+        "trait_and_assessment_psychology"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "99e9786fadd46c22bef70bc7a0a8d091c3ab0f21242848025cc8278f9d8526e4"
+    },
+    {
+      "card_id": "nlmv-nlm-critical-sociocultural-narrative-8d3923b06cf3fd8f",
+      "front_text": "Hvad nævner matricen som en begrænsning ved kritisk personalisme?",
+      "back_html_sanitized": "<div>At den ofte er mere fokuseret på metodologisk og begrebslig refleksion (kritik af variabler) end på at være direkte generativ som en komplet personlighedsteori.</div>",
+      "back_text": "At den ofte er mere fokuseret på metodologisk og begrebslig refleksion (kritik af variabler) end på at være direkte generativ som en komplet personlighedsteori.",
+      "tags": [
+        "critical-sociocultural-narrative",
+        "critical_personalism",
+        "edit",
+        "nearest:mx-comparative-theory-analysis-comparison-sociocultural-poststructural-approaches-2",
+        "notebooklm-variant"
+      ],
+      "category_slug": "personbegreb",
+      "category_title": "Personbegreb",
+      "content_sha256": "63e266b5bdeeb6c3ab2abe63222322b201d6033bf919ec02395a326eaf5135f2"
+    }
+  ]
+}

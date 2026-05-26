@@ -187,9 +187,18 @@ def test_validate_flashcard_artifact_rejects_leaked_student_provenance():
 
 
 def test_build_flashcard_registry_points_to_generated_deck():
+    extra_deck = {
+        "deck_slug": "notebooklm-varianter-personlighedspsykologi",
+        "title": "NotebookLM-varianter: personlighedspsykologi",
+        "description": "Gemini-reviewede NotebookLM-varianter til mundtlig eksamen.",
+        "artifact_path": "shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json",
+        "card_count": 79,
+        "enabled": True,
+    }
     registry = flashcards.build_flashcard_registry(
         artifact_path="shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json",
         card_count=152,
+        extra_decks=[extra_deck],
     )
 
     assert registry == {
@@ -203,6 +212,7 @@ def test_build_flashcard_registry_points_to_generated_deck():
                 "artifact_path": "shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json",
                 "card_count": 152,
                 "enabled": True,
-            }
+            },
+            extra_deck,
         ],
     }

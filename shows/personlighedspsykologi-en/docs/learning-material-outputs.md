@@ -92,18 +92,24 @@ Current implementation:
 - anonymous users can preview decks, while logged-in users can save written
   answers and review ratings
 
-Current `personlighedspsykologi` deck:
+Current `personlighedspsykologi` decks:
 
-- source:
+- canonical matrix source:
   `shows/personlighedspsykologi-en/student_synthesis/exam_theory_matrix.json`
 - registry:
   `shows/personlighedspsykologi-en/flashcards/decks.json`
-- deck slug: `eksamensmatrix-personlighedspsykologi`
-- deck artifact:
+- canonical deck slug: `eksamensmatrix-personlighedspsykologi`
+- canonical deck artifact:
   `shows/personlighedspsykologi-en/flashcards/eksamensmatrix-personlighedspsykologi.json`
-- card count: 152
-- purpose: oral-exam retrieval of theory comparisons, orientation points,
+- canonical card count: 152
+- canonical purpose: oral-exam retrieval of theory comparisons, orientation points,
   person models, method styles, strengths/limitations, and common exam traps
+- NotebookLM variants decisions:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm_variant_promotion_decisions.json`
+- NotebookLM variants deck slug: `notebooklm-varianter-personlighedspsykologi`
+- NotebookLM variants deck artifact:
+  `shows/personlighedspsykologi-en/flashcards/notebooklm-varianter-personlighedspsykologi.json`
+- NotebookLM variants card count: 79
 
 NotebookLM is not the canonical first writer for matrix-derived flashcards.
 The deck is generated deterministically from the validated matrix by
@@ -131,9 +137,12 @@ are then reviewed against the existing Freudd deck before promotion. The Gemini
 reviewer makes one structured JSON call over all candidates in a run, including
 nearest existing-card context and relevant matrix rows, and writes advisory
 review artifacts under the ignored run folder. These candidates must not be
-imported directly into Freudd; accepted alternatives should become a separate
-variants deck unless a later task explicitly merges edited cards into the
-deterministic matrix deck.
+imported directly into Freudd. Reviewed accepted/edited candidates are promoted
+through `scripts/build_personlighedspsykologi_notebooklm_variant_flashcards.py`
+into a separate variants deck; a compact promotion-decisions artifact is the
+committed bridge from ignored run output to learner-facing Freudd JSON. Merging
+edited NotebookLM cards into the deterministic matrix deck remains a separate,
+explicit later decision.
 
 ### Slides
 

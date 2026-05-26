@@ -12,6 +12,7 @@ Use these files:
 - [feed-automation.md](feed-automation.md) - podcast feed generation, show layout, bilingual episode links, GitHub Actions, Apps Script triggers, and feed hosting.
 - [bioneuro-anki-flashcards-plan.md](bioneuro-anki-flashcards-plan.md) - implementation plan and final contract for Bioneuro imported cards as separate Freudd flashcard practice.
 - [freudd-portal-ui-audit.md](freudd-portal-ui-audit.md) - combined Freudd Portal UI audit and tracker for fixed versus remaining interface work.
+- [personlighedspsykologi-flashcard-prefix-review-2026-05-26.md](personlighedspsykologi-flashcard-prefix-review-2026-05-26.md) - sampled review of learner-facing flashcard front prefixes and when they can be removed safely.
 - [learning-material-design.md](learning-material-design.md) - repo-level design principles for learner-facing study materials, including problem-first reward-loop design.
 - [notebooklm-automation.md](notebooklm-automation.md) - subject-oriented NotebookLM workflows, mirrors, and output conventions.
 - [personlighedspsykologi-danish-mirror-plan.md](personlighedspsykologi-danish-mirror-plan.md) - tracked rollout plan and progress log for the queue-owned Danish `personlighedspsykologi` mirror, including bilingual RSS links.

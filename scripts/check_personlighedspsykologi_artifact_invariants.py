@@ -105,6 +105,10 @@ STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON = SHOW_DIR / "flashcards" / "answer_enr
 STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD = SHOW_DIR / "flashcards" / "answer_enrichment_overrides.md"
 STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON = SHOW_DIR / "flashcards" / "card_background_overlays.json"
 STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD = SHOW_DIR / "flashcards" / "card_background_overlays.md"
+STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_SUBSTRATES_JSON = (
+    SHOW_DIR / "flashcards" / "card_background_substrates.json"
+)
+STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_QA_MD = SHOW_DIR / "flashcards" / "card_background_quality_report.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -1306,6 +1310,25 @@ def _failures(repo_root: Path) -> list[str]:
 
     background_json = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON
     background_md = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD
+    background_substrates_json = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_SUBSTRATES_JSON
+    background_qa_md = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_QA_MD
+    if not background_substrates_json.exists():
+        failures.append(f"Missing flashcard background substrate artifact: {STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_SUBSTRATES_JSON}")
+    else:
+        try:
+            background_substrates = _load_json(background_substrates_json)
+        except json.JSONDecodeError as exc:
+            failures.append(f"Flashcard background substrates JSON is invalid: {exc}")
+        else:
+            if background_substrates.get("artifact_type") != "personlighedspsykologi_flashcard_background_substrates":
+                failures.append("Flashcard background substrates artifact_type is invalid")
+            stats = background_substrates.get("stats") if isinstance(background_substrates.get("stats"), dict) else {}
+            if int(stats.get("substrate_count") or 0) <= 0:
+                failures.append("Flashcard background substrates are empty")
+    if not background_qa_md.exists():
+        failures.append(f"Missing flashcard background quality report: {STUDENT_SYNTHESIS_FLASHCARD_BACKGROUND_QA_MD}")
+    elif "Flashcard Background Quality Report" not in background_qa_md.read_text(encoding="utf-8"):
+        failures.append("Flashcard background quality report title is missing")
     if background_json.exists() and background_md.exists():
         try:
             background_payload = _load_json(background_json)

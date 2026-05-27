@@ -74,8 +74,10 @@ derived topic category, then `Alle`/`Ubesvarede`/`Besvarede` filters inside that
 scope. Cards may include optional `Baggrund` HTML, shown collapsed after the
 answer. Learner-facing flashcard text must not expose internal generation
 provenance such as matrix/source/substrate labels, source-note IDs, student
-notes, or local paths. Subject-page topic chips link directly into the same
-practice page with a `?category=<category_slug>` deep link.
+notes, or local paths. The public flashcard API omits internal artifact metadata
+such as `source_file` and `generated_at`; those stay in committed generation
+artifacts only. Subject-page topic chips link directly into the same practice
+page with a `?category=<category_slug>` deep link.
 
 Migration note:
 

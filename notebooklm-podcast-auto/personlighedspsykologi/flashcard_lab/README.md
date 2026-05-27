@@ -247,26 +247,43 @@ This cleanup is enforced in
 
 ## Background Overlay
 
-The first background pass adds an optional `Baggrund` layer to every live
-flashcard. It explains why the answer is useful for theory understanding or
-oral-exam comparison without naming the internal matrix, source-intelligence
-artifacts, source-note IDs, or student notes to the learner.
+The current background workflow adds an optional `Baggrund` layer to every live
+flashcard. It explains the conceptual reason behind the answer without naming
+the internal matrix, source-intelligence artifacts, source-note IDs, or student
+notes to the learner.
 
 - overlay JSON:
   `shows/personlighedspsykologi-en/flashcards/card_background_overlays.json`
 - overlay Markdown:
   `shows/personlighedspsykologi-en/flashcards/card_background_overlays.md`
+- substrate JSON:
+  `shows/personlighedspsykologi-en/flashcards/card_background_substrates.json`
+- quality report:
+  `shows/personlighedspsykologi-en/flashcards/card_background_quality_report.md`
+- Gemini review artifacts:
+  `shows/personlighedspsykologi-en/flashcards/card_background_gemini_review.json`,
+  `shows/personlighedspsykologi-en/flashcards/card_background_gemini_review.md`,
+  and `shows/personlighedspsykologi-en/flashcards/card_background_gemini_review_bundle.json`
 - validator/applicator:
   `notebooklm_queue/personlighedspsykologi_flashcard_backgrounds.py`
 - generator:
   `scripts/generate_personlighedspsykologi_flashcard_backgrounds.py`
+- Gemini reviewer:
+  `scripts/review_personlighedspsykologi_flashcard_backgrounds_with_gemini.py`
+- Gemini revision applier:
+  `scripts/apply_personlighedspsykologi_flashcard_background_gemini_revisions.py`
 - applied by:
   `scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py`
 - background cards: 319
-- background length: 38-60 words
+- background length: 10-50 words after Gemini revision
+- review result: Gemini marked all 319 generated substrate-backed drafts as
+  `revise`; 304 live backgrounds use Gemini's suggested rewrite, and 15
+  comparison cards use a deterministic comparison repair because the Gemini
+  suggestion did not explicitly name both sides.
 - safety contract: each background is keyed by `card_id`, `old_front_text`,
   and `old_back_text`; stale cards, missing cards, too-short/too-long
-  backgrounds, or hidden-provenance leakage block the build.
+  backgrounds, generic card-coaching language, unclear comparison backgrounds,
+  or hidden-provenance leakage block the build.
 
 Rebuild the closure, live deck, and audit in order:
 
@@ -274,6 +291,8 @@ Rebuild the closure, live deck, and audit in order:
 ./.venv/bin/python scripts/build_personlighedspsykologi_coverage_closure_flashcards.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py
 ./.venv/bin/python scripts/generate_personlighedspsykologi_flashcard_backgrounds.py
+./.venv/bin/python scripts/review_personlighedspsykologi_flashcard_backgrounds_with_gemini.py
+./.venv/bin/python scripts/apply_personlighedspsykologi_flashcard_background_gemini_revisions.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py
 ./.venv/bin/python scripts/audit_personlighedspsykologi_flashcard_coverage.py
 ```

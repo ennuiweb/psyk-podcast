@@ -42,9 +42,9 @@ from notebooklm_queue.personlighedspsykologi_flashcard_backgrounds import (
 )
 
 FULL_NOTEBOOKLM_DECK_SLUG = "notebooklm-fuld-matrix-personlighedspsykologi"
-FULL_NOTEBOOKLM_DECK_TITLE = "NotebookLM fuld matrix: personlighedspsykologi"
+FULL_NOTEBOOKLM_DECK_TITLE = "Personlighedspsykologi: eksamenskort"
 FULL_NOTEBOOKLM_DECK_DESCRIPTION = (
-    "Nyeste NotebookLM-kort fra alle matrixklynger, genereret uden de tidligere Freudd-kort som NotebookLM-kilde."
+    "Kort til repetition af teorier, begreber, metoder og sammenligninger i personlighedspsykologi."
 )
 FULL_NOTEBOOKLM_GENERATOR_VERSION = "personlighedspsykologi-full-notebooklm-flashcards-v1"
 INCLUDED_REVIEW_STATUSES = frozenset({"candidate", "needs_review"})

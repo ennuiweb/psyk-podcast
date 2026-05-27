@@ -233,9 +233,11 @@ def test_full_deck_applies_validated_background_overlay():
                 "old_front_text": "Hvad tester kortet nlm-test-background?",
                 "old_back_text": "Det tester, at full NotebookLM-kort kan gøres til Freudd-kort.",
                 "background_text": (
-                    "Baggrunden forklarer, hvorfor svaret passer til kortets teori. "
-                    "Den kobler kortet til teoriens personbegreb og hjælper med at bruge svaret i eksamen uden at udvide påstanden."
+                    "Trækpsykologi forstår personlighed gennem stabile træk og måling på tværs af personer. "
+                    "Derfor er træk og måling centrale begreber, når svaret kobles til teoriens personbegreb."
                 ),
+                "theory_names": ["Trækpsykologi"],
+                "concept_terms": ["træk", "måling"],
                 "support": [
                     {
                         "type": "matrix_field",
@@ -257,7 +259,7 @@ def test_full_deck_applies_validated_background_overlay():
     )
 
     card = deck["cards"][0]
-    assert card["background_text"].startswith("Baggrunden forklarer")
+    assert card["background_text"].startswith("Trækpsykologi forstår")
     assert "background" in card["tags"]
     assert deck["card_backgrounds"]["applied_count"] == 1
 
@@ -282,9 +284,11 @@ def test_background_overlay_fails_closed_when_front_is_stale():
                 "old_front_text": "Et gammelt spørgsmål?",
                 "old_back_text": "Det tester, at full NotebookLM-kort kan gøres til Freudd-kort.",
                 "background_text": (
-                    "Baggrunden forklarer, hvorfor svaret passer til kortets teori. "
-                    "Den kobler kortet til teoriens personbegreb og hjælper med at bruge svaret i eksamen uden at udvide påstanden."
+                    "Trækpsykologi forstår personlighed gennem stabile træk og måling på tværs af personer. "
+                    "Derfor er træk og måling centrale begreber, når svaret kobles til teoriens personbegreb."
                 ),
+                "theory_names": ["Trækpsykologi"],
+                "concept_terms": ["træk", "måling"],
                 "support": [
                     {
                         "type": "matrix_field",
@@ -309,6 +313,57 @@ def test_background_overlay_fails_closed_when_front_is_stale():
         assert "old_front_text is stale" in str(exc)
     else:
         raise AssertionError("Expected stale background overlay to fail")
+
+
+def test_background_overlay_rejects_generic_card_meta_language():
+    payloads = [
+        _payload(
+            notebook_slug="global-calibration-synthesis",
+            candidates=[_candidate("nlm-test-background-generic", "candidate")],
+        )
+    ]
+    backgrounds = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_flashcard_background_overlays",
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-26T00:00:00Z",
+        "scope": "test",
+        "stats": {"background_count": 1, "confidence_counts": {"high": 1}},
+        "backgrounds": [
+            {
+                "card_id": "nlm-test-background-generic",
+                "old_front_text": "Hvad tester kortet nlm-test-background-generic?",
+                "old_back_text": "Det tester, at full NotebookLM-kort kan gøres til Freudd-kort.",
+                "background_text": (
+                    "Kortet træner en generel sammenligning, hvor træk og måling nævnes uden at forklare "
+                    "den faglige mekanisme bag svaret."
+                ),
+                "theory_names": ["Trækpsykologi"],
+                "concept_terms": ["træk", "måling"],
+                "support": [
+                    {
+                        "type": "matrix_field",
+                        "theory_id": "trait_and_assessment_psychology",
+                        "field": "model_of_person",
+                    }
+                ],
+                "confidence": "high",
+            }
+        ],
+    }
+
+    try:
+        full_cards.build_full_notebooklm_deck(
+            candidate_payloads=payloads,
+            source_file="runs/test/candidates + backgrounds.json",
+            source_sha256=full_cards.source_fingerprint(payloads, background_payloads=[backgrounds]),
+            background_payloads=[backgrounds],
+            generated_at="2026-05-26T00:00:00Z",
+        )
+    except full_cards.FullNotebookLMFlashcardError as exc:
+        assert "Generic coaching background text" in str(exc)
+    else:
+        raise AssertionError("Expected generic background wording to fail")
 
 
 def test_build_single_deck_registry_exposes_only_full_notebooklm_deck():

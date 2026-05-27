@@ -90,7 +90,8 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   preview ratings are not persisted, and the page shows a quiet inline progress
   warning instead of a prominent callout box. Learner-facing card fields must not
   expose internal generation terms such as matrix/source/substrate labels,
-  source-note IDs, student notes, or local paths.
+  source-note IDs, student notes, or local paths. The public flashcard API omits
+  internal artifact metadata such as `source_file` and `generated_at`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
 - Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.

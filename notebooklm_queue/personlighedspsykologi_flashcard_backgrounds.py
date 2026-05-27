@@ -23,8 +23,68 @@ DEFAULT_FLASHCARD_BACKGROUNDS_JSON = Path(
 DEFAULT_FLASHCARD_BACKGROUNDS_MD = Path(
     "shows/personlighedspsykologi-en/flashcards/card_background_overlays.md"
 )
-MIN_BACKGROUND_WORDS = 24
-MAX_BACKGROUND_WORDS = 110
+DEFAULT_FLASHCARD_BACKGROUND_SUBSTRATES_JSON = Path(
+    "shows/personlighedspsykologi-en/flashcards/card_background_substrates.json"
+)
+DEFAULT_FLASHCARD_BACKGROUND_QA_MD = Path(
+    "shows/personlighedspsykologi-en/flashcards/card_background_quality_report.md"
+)
+MIN_BACKGROUND_WORDS = 10
+MAX_BACKGROUND_WORDS = 90
+GENERIC_BACKGROUND_PATTERNS = (
+    re.compile(r"\bBaggrunden er\b", re.IGNORECASE),
+    re.compile(r"\bKontrasten ligger\b", re.IGNORECASE),
+    re.compile(r"\bkortet træner\b", re.IGNORECASE),
+    re.compile(r"\bmundtligt svar\b", re.IGNORECASE),
+    re.compile(r"\beksamensnyttigt\b", re.IGNORECASE),
+    re.compile(r"\bikke bare to definitioner\b", re.IGNORECASE),
+    re.compile(r"\bgør .*svar.*skarp", re.IGNORECASE),
+    re.compile(r"\bbrug(e|bart).*eksamen\b", re.IGNORECASE),
+)
+COMPARISON_CUE_PATTERN = re.compile(
+    r"\b(?:"
+    r"adskiller|adskilles|begge|fælles|fællesnævner|forskel|forskelle|kontrast|"
+    r"ligner|modsætning|over for|sammenlign|sammenligner|sammenlignes|versus|vs"
+    r")\b",
+    re.IGNORECASE,
+)
+THEORY_MENTION_GROUPS = (
+    ("kritisk personalisme", ("kritisk personalisme", "personalismen", "personalisme")),
+    (
+        "trækpsykologi",
+        ("trækpsykologi", "trækpsykologien", "trækteori", "trækteorien", "testpsykologi", "træk"),
+    ),
+    (
+        "psykoanalyse",
+        ("psykoanalyse", "psykoanalysen", "psykoanalytisk", "psykoanalytiske", "psykodynamisk"),
+    ),
+    (
+        "eksistentiel psykologi",
+        (
+            "eksistentiel psykologi",
+            "eksistentiel agency",
+            "eksistentielle psykologi",
+            "eksistentielle grundvilkår",
+            "eksistentialisme",
+        ),
+    ),
+    ("fænomenologisk psykologi", ("fænomenologi", "fænomenologien", "fænomenologisk", "fænomenologiske")),
+    (
+        "humanistisk psykologi",
+        ("humanistisk psykologi", "humanismen", "humanistiske psykologi", "selvaktualisering"),
+    ),
+    ("kritisk psykologi", ("kritisk psykologi", "kritisk psykologisk", "kritiske psykologi")),
+    (
+        "socialkonstruktionisme",
+        ("socialkonstruktionisme", "socialkonstruktionismen", "sociokulturelle tilgange"),
+    ),
+    ("poststrukturalisme", ("poststrukturalisme", "poststrukturalismen", "poststrukturalistisk")),
+    ("narrativ psykologi", ("narrativ psykologi", "narrativ teori", "narrative teori", "narrative vinkling")),
+    (
+        "personlighedsfunktion og patologi",
+        ("personlighedsfunktion", "personlighedsfungeren", "patologisk fastlåshed"),
+    ),
+)
 
 
 class FlashcardBackgroundError(ValueError):
@@ -67,13 +127,43 @@ def _assert_safe_text(*, item_id: str, text: str) -> None:
         flags=re.IGNORECASE,
     ):
         raise FlashcardBackgroundError(f"Hidden provenance leaked into background text for {item_id}")
+    for pattern in GENERIC_BACKGROUND_PATTERNS:
+        if pattern.search(text):
+            raise FlashcardBackgroundError(f"Generic coaching background text for {item_id}: {pattern.pattern}")
+
+
+def _contains_term(text: str, term: str) -> bool:
+    normalized_text = text.casefold()
+    normalized_term = term.casefold().strip()
+    if not normalized_term:
+        return False
+    return normalized_term in normalized_text
+
+
+def _is_comparison_prompt(background: dict[str, Any]) -> bool:
+    prompt_text = " ".join(
+        [
+            _text(background.get("old_front_text")),
+            _text(background.get("old_back_text")),
+        ]
+    )
+    return bool(COMPARISON_CUE_PATTERN.search(prompt_text))
+
+
+def _mentioned_theory_group_count(text: str) -> int:
+    normalized_text = text.casefold()
+    count = 0
+    for _, aliases in THEORY_MENTION_GROUPS:
+        if any(alias.casefold() in normalized_text for alias in aliases):
+            count += 1
+    return count
 
 
 def _validate_support_entry(entry: object, *, card_id: str) -> dict[str, Any]:
     if not isinstance(entry, dict):
         raise FlashcardBackgroundError(f"Background support entries must be objects: {card_id}")
     support_type = _text(entry.get("type"))
-    if support_type not in {"matrix_field", "source_card", "course_synthesis", "lecture_substrate"}:
+    if support_type not in {"matrix_field", "source_card", "course_synthesis", "lecture_substrate", "concept_graph"}:
         raise FlashcardBackgroundError(f"Invalid background support type for {card_id}: {support_type}")
     if support_type == "matrix_field":
         if not _text(entry.get("theory_id")) or not _text(entry.get("field")):
@@ -84,6 +174,8 @@ def _validate_support_entry(entry: object, *, card_id: str) -> dict[str, Any]:
     if support_type == "lecture_substrate":
         if not _text(entry.get("lecture_key")) or not _as_str_list(entry.get("fields")):
             raise FlashcardBackgroundError(f"Lecture support missing lecture_key/fields for {card_id}")
+    if support_type == "concept_graph" and not _as_str_list(entry.get("distinction_ids")):
+        raise FlashcardBackgroundError(f"Concept-graph support missing distinction_ids for {card_id}")
     if support_type == "course_synthesis" and not _as_str_list(entry.get("fields")):
         raise FlashcardBackgroundError(f"Course-synthesis support missing fields for {card_id}")
     return entry
@@ -127,6 +219,16 @@ def validate_flashcard_background_payload(payload: dict[str, Any]) -> dict[str, 
             raise FlashcardBackgroundError(f"Background support missing: {card_id}")
         if not any(entry.get("type") == "matrix_field" for entry in support):
             raise FlashcardBackgroundError(f"Background must include matrix support: {card_id}")
+        theory_names = _as_str_list(background.get("theory_names"))
+        concept_terms = _as_str_list(background.get("concept_terms"))
+        if not concept_terms:
+            raise FlashcardBackgroundError(f"Background concept terms missing: {card_id}")
+        if not any(_contains_term(background_text, term) for term in concept_terms):
+            raise FlashcardBackgroundError(f"Background does not use its concept terms: {card_id}")
+        if len(theory_names) >= 2 and _is_comparison_prompt(background):
+            mentioned_theories = [name for name in theory_names if _contains_term(background_text, name)]
+            if len(mentioned_theories) < 2 and _mentioned_theory_group_count(background_text) < 2:
+                raise FlashcardBackgroundError(f"Comparison background does not name both theories: {card_id}")
         confidence = _text(background.get("confidence"))
         if confidence not in {"high", "medium", "low"}:
             raise FlashcardBackgroundError(f"Invalid background confidence for {card_id}: {confidence}")
@@ -219,6 +321,10 @@ def render_flashcard_background_markdown(payload: dict[str, Any]) -> str:
                 f"Answer: {html.escape(_text(background.get('old_back_text')))}",
                 "",
                 f"Background: {html.escape(_text(background.get('background_text')))}",
+                "",
+                f"Theories: {html.escape(', '.join(_as_str_list(background.get('theory_names'))))}",
+                "",
+                f"Concept terms: {html.escape(', '.join(_as_str_list(background.get('concept_terms'))))}",
                 "",
             ]
         )

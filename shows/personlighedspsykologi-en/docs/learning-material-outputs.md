@@ -119,6 +119,12 @@ Current `personlighedspsykologi` Freudd deck policy:
   `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.md`
 - optional background overlay:
   `shows/personlighedspsykologi-en/flashcards/card_background_overlays.md`
+- background substrate and QA artifacts:
+  `shows/personlighedspsykologi-en/flashcards/card_background_substrates.json`
+  and
+  `shows/personlighedspsykologi-en/flashcards/card_background_quality_report.md`
+- background Gemini review artifacts:
+  `shows/personlighedspsykologi-en/flashcards/card_background_gemini_review.md`
 - targeted NotebookLM gap-repair CLIs:
   `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
   `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
@@ -166,13 +172,16 @@ with short matrix/source-basis explanations. It is applied through
 as a fail-closed overlay keyed by `card_id` and `old_back_text`, so stale or
 unsafe answer edits block the full-deck build instead of silently drifting.
 
-The first background pass adds an optional `Baggrund` panel to all 319 live
-cards. The overlay is generated from processed course structure and validated
-against the live card text, but the learner-facing text must not mention hidden
-provenance such as the internal matrix, source-intelligence substrate,
-source-note IDs, student notes, or local files. The full-deck builder also
-cleans existing card fronts/backs for phrases such as `ifølge matrixen` before
-Freudd sees them.
+The background overlay adds an optional `Baggrund` panel to all 319 live cards.
+It is generated from processed course structure, reviewed in one Gemini call,
+then applied as a fail-closed overlay validated against the live card text.
+Gemini marked all 319 initial drafts as `revise`; 304 live backgrounds use the
+Gemini suggestion, while 15 comparison cards use a deterministic comparison
+repair because the suggestion did not explicitly name both sides. The
+learner-facing text must not mention hidden provenance such as the internal
+matrix, source-intelligence substrate, source-note IDs, student notes, or local
+files. The full-deck builder also cleans existing card fronts/backs for phrases
+such as `ifølge matrixen` before Freudd sees them.
 
 NotebookLM alternative-card workflow:
 

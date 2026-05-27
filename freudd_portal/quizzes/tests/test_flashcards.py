@@ -307,6 +307,8 @@ class FlashcardPortalTests(TestCase):
         )
         self.assertEqual(api.status_code, 200)
         payload = api.json()
+        self.assertNotIn("source_file", payload)
+        self.assertNotIn("generated_at", payload)
         self.assertEqual(payload["card_count"], 2)
         self.assertEqual(payload["categories"][0]["title"], "Grundbegreber")
         self.assertEqual(payload["cards"][0]["front_text"], "Front 1")

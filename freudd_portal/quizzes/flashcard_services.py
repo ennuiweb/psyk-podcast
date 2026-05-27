@@ -478,8 +478,6 @@ def flashcard_deck_api_payload(*, deck: FlashcardDeck, user=None) -> dict[str, o
         "deck_slug": deck.deck_slug,
         "title": deck.title,
         "description": deck.description,
-        "source_file": deck.source_file,
-        "generated_at": deck.generated_at,
         "card_count": deck.card_count,
         "categories": list(deck.categories),
         "review_summary": review_summary_for_deck(

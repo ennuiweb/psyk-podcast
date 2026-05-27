@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -54,6 +55,12 @@ from notebooklm_queue.personlighedspsykologi_answer_enrichment import (
     AnswerEnrichmentError,
     validate_answer_enrichment_payload,
 )
+from notebooklm_queue.personlighedspsykologi_flashcard_backgrounds import (
+    FLASHCARD_BACKGROUNDS_ARTIFACT_TYPE,
+    FLASHCARD_BACKGROUND_TAG,
+    FlashcardBackgroundError,
+    validate_flashcard_background_payload,
+)
 from notebooklm_queue.json_artifact_utils import semantic_file_fingerprint
 
 SHOW_DIR = Path("shows/personlighedspsykologi-en")
@@ -96,6 +103,8 @@ STUDENT_SYNTHESIS_COVERAGE_CLOSURE_JSON = SHOW_DIR / "flashcards" / "coverage" /
 STUDENT_SYNTHESIS_COVERAGE_CLOSURE_MD = SHOW_DIR / "flashcards" / "coverage" / "coverage_closure_flashcards.md"
 STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_JSON = SHOW_DIR / "flashcards" / "answer_enrichment_overrides.json"
 STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD = SHOW_DIR / "flashcards" / "answer_enrichment_overrides.md"
+STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON = SHOW_DIR / "flashcards" / "card_background_overlays.json"
+STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD = SHOW_DIR / "flashcards" / "card_background_overlays.md"
 STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE = SHOW_DIR / "flashcards" / "archive" / "retired-live-decks-2026-05-26"
 STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK = STUDENT_SYNTHESIS_FLASHCARD_ARCHIVE / f"{FLASHCARD_DECK_SLUG}.json"
 STUDENT_SYNTHESIS_ARCHIVED_NOTEBOOKLM_VARIANT_DECISIONS = (
@@ -402,6 +411,14 @@ def _failures(repo_root: Path) -> list[str]:
     if not (repo_root / STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD).exists():
         failures.append(
             f"Missing student synthesis answer-enrichment Markdown: {STUDENT_SYNTHESIS_ANSWER_ENRICHMENT_MD}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON).exists():
+        failures.append(
+            f"Missing student synthesis flashcard backgrounds JSON: {STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON}"
+        )
+    if not (repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD).exists():
+        failures.append(
+            f"Missing student synthesis flashcard backgrounds Markdown: {STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD}"
         )
     if not (repo_root / STUDENT_SYNTHESIS_ARCHIVED_FLASHCARD_DECK).exists():
         failures.append(
@@ -1286,6 +1303,77 @@ def _failures(repo_root: Path) -> list[str]:
             md_text = answer_enrichment_md.read_text(encoding="utf-8")
             if "Flashcard Answer Enrichment Overrides" not in md_text:
                 failures.append("Answer-enrichment Markdown title is missing")
+
+    background_json = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON
+    background_md = repo_root / STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_MD
+    if background_json.exists() and background_md.exists():
+        try:
+            background_payload = _load_json(background_json)
+            validate_flashcard_background_payload(background_payload)
+        except (FlashcardBackgroundError, json.JSONDecodeError) as exc:
+            failures.append(
+                f"Student synthesis flashcard backgrounds are invalid in "
+                f"{STUDENT_SYNTHESIS_FLASHCARD_BACKGROUNDS_JSON}: {exc}"
+            )
+        else:
+            if background_payload.get("artifact_type") != FLASHCARD_BACKGROUNDS_ARTIFACT_TYPE:
+                failures.append("Flashcard backgrounds artifact_type is invalid")
+            background_ids = {
+                str(background.get("card_id") or "").strip()
+                for background in background_payload.get("backgrounds", [])
+                if isinstance(background, dict) and str(background.get("card_id") or "").strip()
+            }
+            if full_deck_payload:
+                cards_by_id = {
+                    str(card.get("card_id") or "").strip(): card
+                    for card in full_deck_payload.get("cards", [])
+                    if isinstance(card, dict) and str(card.get("card_id") or "").strip()
+                }
+                missing_cards = sorted(background_ids - set(cards_by_id))
+                if missing_cards:
+                    failures.append(
+                        "Flashcard backgrounds reference cards missing from the live deck: "
+                        + ", ".join(missing_cards[:8])
+                    )
+                deck_background_ids = {
+                    card_id
+                    for card_id, card in cards_by_id.items()
+                    if FLASHCARD_BACKGROUND_TAG in (card.get("tags") or [])
+                }
+                if deck_background_ids != background_ids:
+                    failures.append(
+                        "Live deck background tags do not match flashcard background overlays: "
+                        f"missing={sorted(background_ids - deck_background_ids)} "
+                        f"extra={sorted(deck_background_ids - background_ids)}"
+                    )
+                summary = (
+                    full_deck_payload.get("card_backgrounds")
+                    if isinstance(full_deck_payload.get("card_backgrounds"), dict)
+                    else {}
+                )
+                if int(summary.get("applied_count") or 0) != len(background_ids):
+                    failures.append("Live deck card_backgrounds applied_count is stale")
+                forbidden_patterns = [
+                    "matrix",
+                    "kildegrundlag",
+                    "kildesubstrat",
+                    "substrat",
+                    r"\bsource\b",
+                ]
+                for card_id, card in cards_by_id.items():
+                    learner_text = "\n".join(
+                        str(card.get(field) or "")
+                        for field in ("front_text", "back_text", "background_text")
+                    ).casefold()
+                    for pattern in forbidden_patterns:
+                        if re.search(pattern, learner_text):
+                            failures.append(
+                                f"Live deck learner-facing text leaks hidden provenance {pattern!r}: {card_id}"
+                            )
+                            break
+            md_text = background_md.read_text(encoding="utf-8")
+            if "Flashcard Background Overlays" not in md_text:
+                failures.append("Flashcard backgrounds Markdown title is missing")
 
     archived_variant_decks_to_validate = [
         (

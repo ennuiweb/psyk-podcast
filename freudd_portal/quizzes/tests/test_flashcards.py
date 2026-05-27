@@ -184,6 +184,8 @@ class FlashcardPortalTests(TestCase):
                             "front_text": "Front 1",
                             "back_html_sanitized": "<div>Back 1</div>",
                             "back_text": "Back 1",
+                            "background_html_sanitized": "<div>Background 1</div>",
+                            "background_text": "Background 1",
                             "tags": [],
                             "category_slug": "grundbegreber",
                             "category_title": "Grundbegreber",
@@ -286,13 +288,16 @@ class FlashcardPortalTests(TestCase):
         self.assertContains(page, "Ikke vurderet endnu")
         self.assertContains(page, "Skriv svar")
         self.assertContains(page, "Mit svar")
+        self.assertContains(page, "Baggrund")
         self.assertContains(page, 'id="flashcard-category-filter"')
         self.assertContains(page, "Alle emner")
         self.assertContains(page, "const answerUrl =")
         self.assertContains(page, "const initialCategorySlug =")
         self.assertContains(page, 'id="flashcard-user-answer-panel" class="flashcard-user-answer is-hidden"')
         self.assertContains(page, 'id="flashcard-answer" class="flashcard-answer is-hidden"')
+        self.assertContains(page, 'id="flashcard-background" class="flashcard-background is-hidden"')
         self.assertContains(page, "Vis svar")
+        self.assertContains(page, "backgroundToggleNode.classList.toggle")
         self.assertContains(page, 'answerNode.classList.toggle("is-hidden", !showingAnswer);')
         self.assertContains(page, ".flashcard-shell .is-hidden")
         self.assertContains(page, "const previewMode = false;")
@@ -306,6 +311,8 @@ class FlashcardPortalTests(TestCase):
         self.assertEqual(payload["categories"][0]["title"], "Grundbegreber")
         self.assertEqual(payload["cards"][0]["front_text"], "Front 1")
         self.assertEqual(payload["cards"][0]["back_html"], "<div>Back 1</div>")
+        self.assertEqual(payload["cards"][0]["background_html"], "<div>Background 1</div>")
+        self.assertEqual(payload["cards"][0]["background_text"], "Background 1")
         self.assertEqual(payload["cards"][0]["category_title"], "Grundbegreber")
         self.assertEqual(payload["cards"][0]["user_answer"], "")
         self.assertIsNone(payload["cards"][0]["user_answer_updated_at"])
@@ -438,7 +445,7 @@ class PersonlighedspsykologiMatrixFlashcardArtifactTests(SimpleTestCase):
 
         self.assertEqual(deck.subject_slug, "personlighedspsykologi")
         self.assertEqual(deck.deck_slug, deck_slug)
-        self.assertEqual(deck.card_count, 234)
+        self.assertEqual(deck.card_count, 319)
         self.assertEqual(len(deck.categories), 6)
-        self.assertEqual(sum(int(category["card_count"]) for category in deck.categories), 234)
+        self.assertEqual(sum(int(category["card_count"]) for category in deck.categories), 319)
         self.assertTrue(all(card["card_id"].startswith("nlm-") for card in deck.cards))

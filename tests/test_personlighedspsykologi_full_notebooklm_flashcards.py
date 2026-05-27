@@ -213,6 +213,104 @@ def test_answer_enrichment_fails_closed_when_old_answer_is_stale():
         raise AssertionError("Expected stale answer enrichment to fail")
 
 
+def test_full_deck_applies_validated_background_overlay():
+    payloads = [
+        _payload(
+            notebook_slug="global-calibration-synthesis",
+            candidates=[_candidate("nlm-test-background", "candidate")],
+        )
+    ]
+    backgrounds = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_flashcard_background_overlays",
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-26T00:00:00Z",
+        "scope": "test",
+        "stats": {"background_count": 1, "confidence_counts": {"high": 1}},
+        "backgrounds": [
+            {
+                "card_id": "nlm-test-background",
+                "old_front_text": "Hvad tester kortet nlm-test-background?",
+                "old_back_text": "Det tester, at full NotebookLM-kort kan gøres til Freudd-kort.",
+                "background_text": (
+                    "Baggrunden forklarer, hvorfor svaret passer til kortets teori. "
+                    "Den kobler kortet til teoriens personbegreb og hjælper med at bruge svaret i eksamen uden at udvide påstanden."
+                ),
+                "support": [
+                    {
+                        "type": "matrix_field",
+                        "theory_id": "trait_and_assessment_psychology",
+                        "field": "model_of_person",
+                    }
+                ],
+                "confidence": "high",
+            }
+        ],
+    }
+
+    deck = full_cards.build_full_notebooklm_deck(
+        candidate_payloads=payloads,
+        source_file="runs/test/candidates + backgrounds.json",
+        source_sha256=full_cards.source_fingerprint(payloads, background_payloads=[backgrounds]),
+        background_payloads=[backgrounds],
+        generated_at="2026-05-26T00:00:00Z",
+    )
+
+    card = deck["cards"][0]
+    assert card["background_text"].startswith("Baggrunden forklarer")
+    assert "background" in card["tags"]
+    assert deck["card_backgrounds"]["applied_count"] == 1
+
+
+def test_background_overlay_fails_closed_when_front_is_stale():
+    payloads = [
+        _payload(
+            notebook_slug="global-calibration-synthesis",
+            candidates=[_candidate("nlm-test-background-stale", "candidate")],
+        )
+    ]
+    backgrounds = {
+        "version": 1,
+        "artifact_type": "personlighedspsykologi_flashcard_background_overlays",
+        "subject_slug": "personlighedspsykologi",
+        "generated_at": "2026-05-26T00:00:00Z",
+        "scope": "test",
+        "stats": {"background_count": 1, "confidence_counts": {"high": 1}},
+        "backgrounds": [
+            {
+                "card_id": "nlm-test-background-stale",
+                "old_front_text": "Et gammelt spørgsmål?",
+                "old_back_text": "Det tester, at full NotebookLM-kort kan gøres til Freudd-kort.",
+                "background_text": (
+                    "Baggrunden forklarer, hvorfor svaret passer til kortets teori. "
+                    "Den kobler kortet til teoriens personbegreb og hjælper med at bruge svaret i eksamen uden at udvide påstanden."
+                ),
+                "support": [
+                    {
+                        "type": "matrix_field",
+                        "theory_id": "trait_and_assessment_psychology",
+                        "field": "model_of_person",
+                    }
+                ],
+                "confidence": "high",
+            }
+        ],
+    }
+
+    try:
+        full_cards.build_full_notebooklm_deck(
+            candidate_payloads=payloads,
+            source_file="runs/test/candidates + backgrounds.json",
+            source_sha256=full_cards.source_fingerprint(payloads, background_payloads=[backgrounds]),
+            background_payloads=[backgrounds],
+            generated_at="2026-05-26T00:00:00Z",
+        )
+    except full_cards.FullNotebookLMFlashcardError as exc:
+        assert "old_front_text is stale" in str(exc)
+    else:
+        raise AssertionError("Expected stale background overlay to fail")
+
+
 def test_build_single_deck_registry_exposes_only_full_notebooklm_deck():
     registry = full_cards.build_single_deck_registry(
         artifact_path="shows/personlighedspsykologi-en/flashcards/notebooklm-fuld-matrix-personlighedspsykologi.json",

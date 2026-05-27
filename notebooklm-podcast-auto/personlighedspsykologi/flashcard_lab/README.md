@@ -232,10 +232,48 @@ The live deck remains 319 cards after enrichment, and the deterministic
 coverage audit remains at 0 `missing`, 0 `weak`, and 0 high-priority
 missing/weak units.
 
+## Learner-Facing Provenance Cleanup
+
+Freudd learners should see the course concepts, not the internal data pipeline.
+The full-deck builder therefore removes hidden provenance phrases such as
+`ifølge matrixen`, `matrixen`, `kildegrundlag`, `kildesubstrat`, `substrat`,
+and English `source` from learner-facing card fronts, answers, and background
+text. Conceptual uses of Danish words such as `kilde til evidens` or
+`ressourceorienteret` are allowed when they are part of the psychology content.
+
+This cleanup is enforced in
+`notebooklm_queue/personlighedspsykologi_full_notebooklm_flashcards.py` and by
+`scripts/check_personlighedspsykologi_artifact_invariants.py`.
+
+## Background Overlay
+
+The first background pass adds an optional `Baggrund` layer to every live
+flashcard. It explains why the answer is useful for theory understanding or
+oral-exam comparison without naming the internal matrix, source-intelligence
+artifacts, source-note IDs, or student notes to the learner.
+
+- overlay JSON:
+  `shows/personlighedspsykologi-en/flashcards/card_background_overlays.json`
+- overlay Markdown:
+  `shows/personlighedspsykologi-en/flashcards/card_background_overlays.md`
+- validator/applicator:
+  `notebooklm_queue/personlighedspsykologi_flashcard_backgrounds.py`
+- generator:
+  `scripts/generate_personlighedspsykologi_flashcard_backgrounds.py`
+- applied by:
+  `scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py`
+- background cards: 319
+- background length: 38-60 words
+- safety contract: each background is keyed by `card_id`, `old_front_text`,
+  and `old_back_text`; stale cards, missing cards, too-short/too-long
+  backgrounds, or hidden-provenance leakage block the build.
+
 Rebuild the closure, live deck, and audit in order:
 
 ```bash
 ./.venv/bin/python scripts/build_personlighedspsykologi_coverage_closure_flashcards.py
+./.venv/bin/python scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py
+./.venv/bin/python scripts/generate_personlighedspsykologi_flashcard_backgrounds.py
 ./.venv/bin/python scripts/build_personlighedspsykologi_full_notebooklm_flashcards.py
 ./.venv/bin/python scripts/audit_personlighedspsykologi_flashcard_coverage.py
 ```

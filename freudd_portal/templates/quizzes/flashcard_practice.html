@@ -547,6 +547,52 @@
     letter-spacing: 0;
   }
 
+  .flashcard-background-toggle {
+    justify-self: start;
+    width: fit-content;
+    min-height: 34px;
+    border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 86%, var(--info-bg));
+    color: color-mix(in srgb, var(--ink) 76%, var(--accent));
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    padding: 0 var(--space-3);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 760;
+    cursor: pointer;
+  }
+
+  .flashcard-background-toggle:hover,
+  .flashcard-background-toggle:focus-visible,
+  .flashcard-background-toggle.is-open {
+    border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+    background: color-mix(in srgb, var(--surface) 74%, var(--accent) 10%);
+  }
+
+  .flashcard-background-toggle .material-symbols-outlined {
+    font-size: 1.08rem;
+  }
+
+  .flashcard-background {
+    max-width: 72ch;
+    border-left: 3px solid color-mix(in srgb, var(--accent) 42%, var(--border));
+    color: color-mix(in srgb, var(--text-subtle-2) 88%, var(--ink));
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-2) 0 var(--space-1) var(--space-3);
+    font-size: 0.94rem;
+    line-height: 1.58;
+  }
+
+  .flashcard-background div,
+  .flashcard-background p {
+    margin: 0;
+  }
+
   .flashcard-actions {
     display: grid;
     grid-template-columns: minmax(120px, auto) minmax(0, 1fr);
@@ -932,6 +978,12 @@
       <div id="flashcard-answer" class="flashcard-answer is-hidden">
         <p class="flashcard-answer-label">Svar</p>
         <div id="flashcard-answer-body" class="flashcard-answer-body"></div>
+        <button id="flashcard-background-toggle" class="flashcard-background-toggle is-hidden" type="button"
+          aria-expanded="false" aria-controls="flashcard-background">
+          <span class="material-symbols-outlined" aria-hidden="true">notes</span>
+          Baggrund
+        </button>
+        <div id="flashcard-background" class="flashcard-background is-hidden"></div>
       </div>
       <p id="flashcard-status" class="flashcard-status" aria-live="polite"></p>
       <div class="flashcard-actions">
@@ -1008,6 +1060,8 @@
     const userAnswerNode = document.getElementById("flashcard-user-answer");
     const answerNode = document.getElementById("flashcard-answer");
     const answerBodyNode = document.getElementById("flashcard-answer-body");
+    const backgroundToggleNode = document.getElementById("flashcard-background-toggle");
+    const backgroundNode = document.getElementById("flashcard-background");
     const statusNode = document.getElementById("flashcard-status");
     const previousNode = document.getElementById("flashcard-previous");
     const showAnswerNode = document.getElementById("flashcard-show-answer");
@@ -1031,6 +1085,7 @@
     let currentFilter = "all";
     let currentIndex = 0;
     let showingAnswer = false;
+    let showingBackground = false;
     let showingUserAnswerField = false;
     let saving = false;
     let isComplete = false;
@@ -1242,6 +1297,7 @@
       currentCategory = nextCategory || "all";
       currentIndex = 0;
       showingAnswer = false;
+      showingBackground = false;
       isComplete = false;
       syncCategoryUrl();
       render();
@@ -1251,6 +1307,7 @@
       currentFilter = nextFilter;
       currentIndex = 0;
       showingAnswer = false;
+      showingBackground = false;
       isComplete = false;
       render();
     }
@@ -1413,6 +1470,12 @@
       recallNode.classList.remove("is-hidden");
       renderUserAnswerField(card);
       answerBodyNode.innerHTML = card.back_html || "";
+      const hasBackground = Boolean(card.background_html);
+      backgroundToggleNode.classList.toggle("is-hidden", !hasBackground);
+      backgroundToggleNode.classList.toggle("is-open", showingBackground && hasBackground);
+      backgroundToggleNode.setAttribute("aria-expanded", showingBackground && hasBackground ? "true" : "false");
+      backgroundNode.innerHTML = hasBackground ? card.background_html : "";
+      backgroundNode.classList.toggle("is-hidden", !hasBackground || !showingBackground);
       answerNode.classList.toggle("is-hidden", !showingAnswer);
       showAnswerNode.classList.toggle("is-hidden", showingAnswer);
       showAnswerNode.disabled = saving;
@@ -1494,6 +1557,7 @@
       if (currentIndex < cards.length - 1) {
         currentIndex += 1;
         showingAnswer = false;
+        showingBackground = false;
         render();
         return;
       }
@@ -1576,6 +1640,11 @@
       render();
     });
 
+    backgroundToggleNode.addEventListener("click", () => {
+      showingBackground = !showingBackground;
+      render();
+    });
+
     answerToggleNode.addEventListener("click", () => {
       showingUserAnswerField = !showingUserAnswerField;
       render();
@@ -1617,6 +1686,7 @@
       isComplete = false;
       currentIndex -= 1;
       showingAnswer = false;
+      showingBackground = false;
       render();
     });
 
@@ -1669,6 +1739,7 @@
         if (card && !showAnswerNode.disabled && !showAnswerNode.classList.contains("is-hidden")) {
           event.preventDefault();
           showingAnswer = true;
+          showingBackground = false;
           render();
         }
         return;

@@ -214,6 +214,11 @@ def _normalize_card(raw_card: Any) -> dict[str, object] | None:
     back_text = str(raw_card.get("back_text") or "").strip()
     if not front_text or not back_html or not back_text:
         return None
+    background_html = str(raw_card.get("background_html_sanitized") or "").strip()
+    background_text = str(raw_card.get("background_text") or "").strip()
+    if bool(background_html) != bool(background_text):
+        background_html = ""
+        background_text = ""
     tags = raw_card.get("tags")
     tag_values = [str(tag).strip() for tag in tags if str(tag).strip()] if isinstance(tags, list) else []
     category_slug = str(raw_card.get("category_slug") or "").strip().lower()
@@ -227,6 +232,8 @@ def _normalize_card(raw_card: Any) -> dict[str, object] | None:
         "front_text": front_text,
         "back_html": back_html,
         "back_text": back_text,
+        "background_html": background_html,
+        "background_text": background_text,
         "tags": tag_values,
         "category_slug": category_slug,
         "category_title": category_title,
@@ -453,6 +460,8 @@ def deck_cards_payload(*, deck: FlashcardDeck, user=None) -> list[dict[str, obje
                 "card_id": card_id,
                 "front_text": str(card.get("front_text") or ""),
                 "back_html": str(card.get("back_html") or ""),
+                "background_html": str(card.get("background_html") or ""),
+                "background_text": str(card.get("background_text") or ""),
                 "tags": card.get("tags") if isinstance(card.get("tags"), list) else [],
                 "category_slug": str(card.get("category_slug") or DEFAULT_CATEGORY["slug"]),
                 "category_title": str(card.get("category_title") or DEFAULT_CATEGORY["title"]),

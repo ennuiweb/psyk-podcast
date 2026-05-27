@@ -36,6 +36,10 @@ from notebooklm_queue.personlighedspsykologi_answer_enrichment import (
     apply_answer_enrichment_overlays,
     load_answer_enrichment_payload,
 )
+from notebooklm_queue.personlighedspsykologi_flashcard_backgrounds import (
+    apply_flashcard_background_overlays,
+    load_flashcard_background_payload,
+)
 
 FULL_NOTEBOOKLM_DECK_SLUG = "notebooklm-fuld-matrix-personlighedspsykologi"
 FULL_NOTEBOOKLM_DECK_TITLE = "NotebookLM fuld matrix: personlighedspsykologi"
@@ -66,6 +70,13 @@ ALWAYS_REMOVABLE_FRONT_PREFIXES = frozenset(
 CONDITIONAL_REMOVABLE_FRONT_PREFIX_KEYWORDS = {
     "Trækpsykologi": ("træk", "assessment"),
 }
+LEARNER_FACING_PROVENANCE_PATTERNS = (
+    re.compile(r"\bmatrix(?:en|ens)?\b", re.IGNORECASE),
+    re.compile(r"\bkildegrundlag(?:et)?\b", re.IGNORECASE),
+    re.compile(r"\bkildesubstrat(?:et)?\b", re.IGNORECASE),
+    re.compile(r"\bsubstrat(?:et)?\b", re.IGNORECASE),
+    re.compile(r"\bsource(?:s)?\b", re.IGNORECASE),
+)
 
 
 class FullNotebookLMFlashcardError(ValueError):
@@ -136,6 +147,7 @@ def load_candidate_payloads(candidate_paths: list[Path]) -> list[dict[str, Any]]
 def source_fingerprint(
     candidate_payloads: list[dict[str, Any]],
     answer_enrichment_payloads: list[dict[str, Any]] | None = None,
+    background_payloads: list[dict[str, Any]] | None = None,
 ) -> str:
     return semantic_fingerprint(
         {
@@ -157,6 +169,14 @@ def source_fingerprint(
                 }
                 for payload in (answer_enrichment_payloads or [])
             ],
+            "background_payloads": [
+                {
+                    "artifact_type": _text(payload.get("artifact_type")),
+                    "stats": payload.get("stats"),
+                    "backgrounds": payload.get("backgrounds"),
+                }
+                for payload in (background_payloads or [])
+            ],
         }
     )
 
@@ -174,11 +194,39 @@ def strip_safe_front_prefix(front: str) -> str:
     return front
 
 
+def clean_learner_facing_provenance(text: str) -> str:
+    replacements = [
+        (r"\s+ifølge matrixen\b", ""),
+        (r"\s+i matrixen\b", ""),
+        (r"\bmatrixens\b", "teoriens"),
+        (r"\bmatrixen\b", "teorien"),
+        (r"\bkildegrundlag(?:et)?\b", "centrale begreber"),
+        (r"\bkildesubstrat(?:et)?\b", "faglige begreber"),
+        (r"\bsubstrat(?:et)?\b", "faglige grundlag"),
+        (r"\bsource(?:s)?\b", "fagligt materiale"),
+    ]
+    cleaned = text
+    for pattern, replacement in replacements:
+        cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s+([?.!,;:])", r"\1", cleaned)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip()
+    return cleaned
+
+
+def assert_no_learner_facing_provenance(*, card_id: str, fields: dict[str, str]) -> None:
+    for field, text in fields.items():
+        for pattern in LEARNER_FACING_PROVENANCE_PATTERNS:
+            if pattern.search(text):
+                raise FullNotebookLMFlashcardError(
+                    f"Learner-facing provenance leaked in {card_id}.{field}: {pattern.pattern}"
+                )
+
+
 def _card_from_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
     candidate_id = _text(candidate.get("candidate_id"))
     if not re.fullmatch(r"[A-Za-z0-9_-]{3,96}", candidate_id):
         raise FullNotebookLMFlashcardError(f"Invalid NotebookLM candidate_id: {candidate_id}")
-    front = strip_safe_front_prefix(_text(candidate.get("front")))
+    front = clean_learner_facing_provenance(strip_safe_front_prefix(_text(candidate.get("front"))))
     back = _text(candidate.get("back"))
     if not front or not back:
         raise FullNotebookLMFlashcardError(f"NotebookLM candidate missing learner text: {candidate_id}")
@@ -206,12 +254,35 @@ def _card_from_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def clean_deck_learner_facing_provenance(deck: dict[str, Any]) -> dict[str, Any]:
+    cards = deck.get("cards")
+    if not isinstance(cards, list):
+        raise FullNotebookLMFlashcardError("Deck cards must be a list before provenance cleanup")
+    for card in cards:
+        if not isinstance(card, dict):
+            continue
+        card_id = _text(card.get("card_id"))
+        front = clean_learner_facing_provenance(_text(card.get("front_text")))
+        back = clean_learner_facing_provenance(_text(card.get("back_text")))
+        background = clean_learner_facing_provenance(_text(card.get("background_text")))
+        card["front_text"] = front
+        card["back_text"] = back
+        card["back_html_sanitized"] = _html_answer(back)
+        if background:
+            card["background_text"] = background
+            card["background_html_sanitized"] = _html_answer(background)
+        category_slug = _text(card.get("category_slug"))
+        card["content_sha256"] = _content_hash(front, back, category_slug, card_id)
+    return deck
+
+
 def build_full_notebooklm_deck(
     *,
     candidate_payloads: list[dict[str, Any]],
     source_file: str,
     source_sha256: str,
     answer_enrichment_payloads: list[dict[str, Any]] | None = None,
+    background_payloads: list[dict[str, Any]] | None = None,
     generated_at: str | None = None,
 ) -> dict[str, Any]:
     cards: list[dict[str, Any]] = []
@@ -286,12 +357,29 @@ def build_full_notebooklm_deck(
             html_answer=_html_answer,
             content_hash=_content_hash,
         )
+        clean_deck_learner_facing_provenance(artifact)
+        apply_flashcard_background_overlays(
+            artifact,
+            background_payloads or [],
+            html_background=_html_answer,
+        )
+        clean_deck_learner_facing_provenance(artifact)
     except ValueError as exc:
         raise FullNotebookLMFlashcardError(str(exc)) from exc
     try:
         validate_variant_deck(artifact, expected_deck_slug=FULL_NOTEBOOKLM_DECK_SLUG)
     except NotebookLMVariantFlashcardError as exc:
         raise FullNotebookLMFlashcardError(str(exc)) from exc
+    for card in artifact.get("cards", []):
+        if isinstance(card, dict):
+            assert_no_learner_facing_provenance(
+                card_id=_text(card.get("card_id")),
+                fields={
+                    "front_text": _text(card.get("front_text")),
+                    "back_text": _text(card.get("back_text")),
+                    "background_text": _text(card.get("background_text")),
+                },
+            )
     return artifact
 
 
@@ -312,6 +400,10 @@ def load_coverage_closure_candidate_payloads(artifact_paths: list[Path]) -> list
 
 def load_answer_enrichment_payloads(artifact_paths: list[Path]) -> list[dict[str, Any]]:
     return [load_answer_enrichment_payload(path) for path in artifact_paths]
+
+
+def load_background_payloads(artifact_paths: list[Path]) -> list[dict[str, Any]]:
+    return [load_flashcard_background_payload(path) for path in artifact_paths]
 
 
 def build_single_deck_registry(*, artifact_path: str, card_count: int) -> dict[str, Any]:

@@ -117,6 +117,8 @@ Current `personlighedspsykologi` Freudd deck policy:
   `shows/personlighedspsykologi-en/flashcards/coverage/coverage_closure_flashcards.md`
 - answer-enrichment overlay:
   `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.md`
+- optional background overlay:
+  `shows/personlighedspsykologi-en/flashcards/card_background_overlays.md`
 - targeted NotebookLM gap-repair CLIs:
   `scripts/export_personlighedspsykologi_notebooklm_gap_repair_packs.py` and
   `scripts/run_personlighedspsykologi_notebooklm_gap_repair.py`
@@ -163,6 +165,14 @@ with short matrix/source-basis explanations. It is applied through
 `shows/personlighedspsykologi-en/flashcards/answer_enrichment_overrides.json`
 as a fail-closed overlay keyed by `card_id` and `old_back_text`, so stale or
 unsafe answer edits block the full-deck build instead of silently drifting.
+
+The first background pass adds an optional `Baggrund` panel to all 319 live
+cards. The overlay is generated from processed course structure and validated
+against the live card text, but the learner-facing text must not mention hidden
+provenance such as the internal matrix, source-intelligence substrate,
+source-note IDs, student notes, or local files. The full-deck builder also
+cleans existing card fronts/backs for phrases such as `ifølge matrixen` before
+Freudd sees them.
 
 NotebookLM alternative-card workflow:
 

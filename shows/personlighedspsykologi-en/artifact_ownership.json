@@ -285,6 +285,22 @@
       "writer": "manual reviewed overlay validated by notebooklm_queue/personlighedspsykologi_answer_enrichment.py"
     },
     {
+      "artifact_id": "student_synthesis_flashcard_backgrounds_json",
+      "concept": "student_synthesis_flashcard_backgrounds",
+      "path": "shows/personlighedspsykologi-en/flashcards/card_background_overlays.json",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/generate_personlighedspsykologi_flashcard_backgrounds.py"
+    },
+    {
+      "artifact_id": "student_synthesis_flashcard_backgrounds_markdown",
+      "concept": "student_synthesis_flashcard_backgrounds",
+      "path": "shows/personlighedspsykologi-en/flashcards/card_background_overlays.md",
+      "role": "derived",
+      "manual_edit_allowed": false,
+      "writer": "scripts/generate_personlighedspsykologi_flashcard_backgrounds.py"
+    },
+    {
       "artifact_id": "student_synthesis_archived_matrix_flashcard_deck",
       "concept": "student_synthesis_archived_flashcards",
       "path": "shows/personlighedspsykologi-en/flashcards/archive/retired-live-decks-2026-05-26/eksamensmatrix-personlighedspsykologi.json",

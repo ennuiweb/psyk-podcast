@@ -47,13 +47,14 @@ ssh digitalocean-ennui-droplet-01 '
   echo "public_login $(probe_code http://64.226.79.109/accounts/login)"
   echo "public_settings $(probe_code http://64.226.79.109/settings)"
   echo "public_flashcards $(probe_code http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)"
+  echo "public_person_flashcards $(probe_code http://64.226.79.109/subjects/personlighedspsykologi/cards/notebooklm-fuld-matrix-personlighedspsykologi)"
 '
 ```
 
 Use the canonical routes for the final assertions:
 
 ```bash
-ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"; echo "public_flashcards $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)"'
+ssh digitalocean-ennui-droplet-01 'echo "gunicorn_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/accounts/login)"; echo "gunicorn_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8001/settings)"; echo "public_login $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/accounts/login)"; echo "public_settings $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/settings)"; echo "public_flashcards $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi)"; echo "public_person_flashcards $(curl --max-time 5 -s -o /dev/null -w "%{http_code}" http://64.226.79.109/subjects/personlighedspsykologi/cards/notebooklm-fuld-matrix-personlighedspsykologi)"'
 ```
 
 Expected:
@@ -63,6 +64,9 @@ Expected:
   `/accounts/login?next=/settings`.
 - `subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` returns `200`
   and loads the anonymous flashcard preview route.
+- `subjects/personlighedspsykologi/cards/notebooklm-fuld-matrix-personlighedspsykologi`
+  returns `200` when checking flashcard changes that affect the live
+  personlighedspsykologi deck or shared flashcard UI/API behavior.
 - `progress` is a legacy route and returns `301` to `/settings`; do not use it
   as the primary smoke assertion.
 

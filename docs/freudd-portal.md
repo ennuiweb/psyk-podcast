@@ -41,6 +41,7 @@ Current anonymous smoke expectation:
 - `/settings` -> `302`
 - `/progress` -> `301`
 - `/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` -> `200`
+- `/subjects/personlighedspsykologi/cards/notebooklm-fuld-matrix-personlighedspsykologi` -> `200`
 
 Repo policy for portal changes:
 
@@ -62,16 +63,19 @@ Those generated files are refreshed by the feed and subject automation workflows
 
 ## Flashcard Practice Contract
 
-Flashcard practice is separate from scored Freudd quizzes. The Bioneuro flashcard
-deck is imported from Anki source data and exposed through
-`/subjects/bioneuro/cards/biologisk-psykologi-og-neuropsykologi` and the
+Flashcard practice is separate from scored Freudd quizzes. Subject-local
+`shows/<subject>/flashcards/decks.json` registries expose generated deck JSON
+through `/subjects/<subject_slug>/cards/<deck_slug>` and the
 `/api/flashcards/<subject_slug>/<deck_slug>` API family. Logged-in users persist
 self-ratings in `FlashcardReview` and written self-check answers in
 `FlashcardUserAnswer`; anonymous preview users can practise cards but do not
 persist ratings or written answers. The practice UI supports all cards or one
 derived topic category, then `Alle`/`Ubesvarede`/`Besvarede` filters inside that
-scope. Subject-page topic chips link directly into the same practice page with a
-`?category=<category_slug>` deep link.
+scope. Cards may include optional `Baggrund` HTML, shown collapsed after the
+answer. Learner-facing flashcard text must not expose internal generation
+provenance such as matrix/source/substrate labels, source-note IDs, student
+notes, or local paths. Subject-page topic chips link directly into the same
+practice page with a `?category=<category_slug>` deep link.
 
 Migration note:
 

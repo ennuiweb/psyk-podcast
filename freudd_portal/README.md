@@ -33,7 +33,9 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   `shows/<subject>/flashcards/decks.json` registries and generated deck JSON
   artifacts, persists self-rated progress in `FlashcardReview` and written
   self-check answers in `FlashcardUserAnswer`, and does not affect quiz history,
-  XP, cooldowns, or scoreboard totals.
+  XP, cooldowns, or scoreboard totals. Cards may include optional collapsed
+  `Baggrund` content after the answer; this is learner-facing explanation, not
+  internal generation provenance.
 - Subjects are loaded from `freudd_portal/subjects.json`; first active subject is `personlighedspsykologi`.
 - Subject enrollment is per `(user, subject_slug)` in `SubjectEnrollment`.
 - Topmenu shows direct links for the authenticated user’s enrolled active subjects; on `/leaderboard/<subject_slug>` these subject chips stay deselected.
@@ -81,11 +83,14 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   and `Besvarede`, using `FlashcardReview` rows as the answered state for
   logged-in users. The card flow shows the front first, offers an optional
   `Skriv svar` self-check field, then reveals the sanitized answer and
-  `Igen`/`Svaert`/`Godt`/`Let` self-rating controls. Written self-check answers
-  are saved for logged-in users only and stay separate from the rating/progress
-  state. Anonymous learners can open the practice page and card API in preview
-  mode; their self-answer drafts and preview ratings are not persisted, and the
-  page shows a quiet inline progress warning instead of a prominent callout box.
+  optional `Baggrund` panel plus `Igen`/`Svaert`/`Godt`/`Let` self-rating
+  controls. Written self-check answers are saved for logged-in users only and
+  stay separate from the rating/progress state. Anonymous learners can open the
+  practice page and card API in preview mode; their self-answer drafts and
+  preview ratings are not persisted, and the page shows a quiet inline progress
+  warning instead of a prominent callout box. Learner-facing card fields must not
+  expose internal generation terms such as matrix/source/substrate labels,
+  source-note IDs, student notes, or local paths.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
 - Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.

@@ -72,6 +72,18 @@ NOTEBOOKLM_QUEUE_BRANCH=main
 GH_TOKEN=...
 ```
 
+Temporary prioritization mode for Personlighedspsykologi short podcasts:
+
+```bash
+NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS=1
+```
+
+When enabled, the hosted queue passes `--only-short` to the Personlighedspsykologi
+generator. The claimed lecture only requests `[Short]`/brief artifacts and
+skips weekly overview plus full per-source outputs. Use this for short-first
+catch-up campaigns; remove it before returning the same queue to normal long
+podcast generation.
+
 NotebookLM profile rotation on Hetzner:
 
 ```bash

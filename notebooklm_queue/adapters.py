@@ -125,6 +125,8 @@ class ShowAdapter:
                 option="--profiles-file",
                 env_name="NOTEBOOKLM_PROFILES_FILE",
             )
+        if _truthy_env("NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS"):
+            command.append("--only-short")
         if wait:
             command.append("--wait")
         if dry_run:
@@ -243,6 +245,11 @@ def _append_env_arg(command: list[str], *, option: str, env_name: str) -> None:
     value = str(os.environ.get(env_name) or "").strip()
     if value:
         command.extend([option, value])
+
+
+def _truthy_env(env_name: str) -> bool:
+    value = str(os.environ.get(env_name) or "").strip().lower()
+    return value in {"1", "true", "yes", "on"}
 
 
 def get_show_adapter(show_slug: str) -> ShowAdapter:

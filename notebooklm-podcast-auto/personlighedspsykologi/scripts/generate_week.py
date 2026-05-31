@@ -2809,6 +2809,11 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--only-short",
+        action="store_true",
+        help="Generate only short/brief source outputs and skip weekly plus full per-source outputs.",
+    )
+    parser.add_argument(
         "--review-manifest",
         help=(
             "Optional episode A/B review manifest. When set, generation is filtered to "
@@ -3018,6 +3023,8 @@ def main() -> int:
     content_types = parse_content_types(args.content_types)
     brief_types = brief_content_types(content_types)
     only_slide_keys = parse_slide_key_filter(args.only_slide)
+    if args.only_short and only_slide_keys:
+        raise SystemExit("--only-short cannot be combined with --only-slide.")
     prioritize_short_outputs = bool(brief_types) and not only_slide_keys
     language_variants = build_language_variants(config)
     weekly_cfg = config.get("weekly_overview", {})
@@ -3211,7 +3218,7 @@ def main() -> int:
             total_sources_read += generation_source_count
             generate_weekly_overview = (
                 False
-                if only_slide_keys
+                if only_slide_keys or args.only_short
                 else (
                     should_generate_weekly_overview(reading_source_count)
                     and review_filter_includes_weekly(review_filter, week_label)
@@ -3220,6 +3227,8 @@ def main() -> int:
             if not generate_weekly_overview:
                 if only_slide_keys:
                     print(f"{week_label}: skipping Alle kilder generation (--only-slide)")
+                elif args.only_short:
+                    print(f"{week_label}: skipping Alle kilder generation (--only-short)")
                 elif review_filter is not None:
                     print(f"{week_label}: skipping Alle kilder generation (--review-manifest)")
                 else:
@@ -3420,7 +3429,7 @@ def main() -> int:
                 source = source_item.path
                 base_name = source_item.base_name
                 per_base = f"{week_label} - {base_name}"
-                for content_type in content_types:
+                for content_type in ([] if args.only_short else content_types):
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         variant_localization, variant_sections = localized_prompt_context_for_variant(
@@ -4256,7 +4265,7 @@ def main() -> int:
                 source = source_item.path
                 base_name = source_item.base_name
                 per_base = f"{week_label} - {base_name}"
-                for content_type in content_types:
+                for content_type in ([] if args.only_short else content_types):
                     per_output = week_output_dir / f"{per_base}{output_extension(content_type, quiz_format=quiz_format)}"
                     for variant in language_variants:
                         variant_localization, variant_sections = localized_prompt_context_for_variant(

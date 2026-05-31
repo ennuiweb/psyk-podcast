@@ -190,7 +190,7 @@ Current active show ownership is now mixed:
   - queue metadata hardening is in place for manual summaries, regeneration registry sync, and slide-brief blocking
   - the Hetzner queue runtime is now installed and verified; the first `systemd` drain completed successfully as a no-op because discovery correctly skipped already-published lecture keys
   - generation resumed on Hetzner on 2026-05-31; `podcasts-notebooklm-queue@personlighedspsykologi-en.timer` is enabled again. The current operator preference is to prioritize `[Short]` podcasts before returning to the full long-output backlog.
-- `personlighedspsykologi-da`: R2-backed and queue-configured. Generation resumed on Hetzner on 2026-05-31; `podcasts-notebooklm-queue@personlighedspsykologi-da.timer` is enabled again. The current operator preference is to prioritize `[Short]` podcasts before returning to the full long-output backlog.
+- `personlighedspsykologi-da`: R2-backed and queue-configured, but generation is paused again on Hetzner as of 2026-05-31 after Oskar asked to stop the DA queue. `podcasts-notebooklm-queue@personlighedspsykologi-da.timer` is disabled and the service is inactive. Existing queue records remain in place.
 - `social-psychology`: live, R2-backed, legacy workflow; feed regeneration now reads the checked-in R2 manifest directly
 
 Operational boundary:

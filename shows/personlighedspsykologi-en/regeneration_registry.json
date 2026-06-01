@@ -2,14 +2,14 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T13:13:59Z",
+  "generated_at": "2026-06-01T13:14:28Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 162,
-    "in_scope_entries": 154,
+    "total_entries": 164,
+    "in_scope_entries": 156,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 53,
+      "short": 55,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
@@ -17,11 +17,11 @@
     },
     "rollout_state_counts": {
       "b_active": 64,
-      "original_only": 90,
+      "original_only": 92,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 98,
+      "A": 100,
       "B": 64
     }
   },
@@ -4010,7 +4010,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1Mc_xHwsqEWUQeyyhrCKrlBVLHyMF1Z_y",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/W07L1%20-%20Cooper%20%282003%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-16T10:00:00+01:00",
+          "published_at": "2026-03-16T12:00:00+01:00",
           "title": "U7F1 · Cooper (2003)",
           "audio_sha256": null
         },
@@ -4069,7 +4069,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1Mw7vKq83Ni51Y7feUjx8n6DbezUU-xlb",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/W07L1%20-%20Jacobsen%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-16T12:00:00+01:00",
+          "published_at": "2026-03-16T16:00:00+01:00",
           "title": "U7F1 · Jacobsen (2021)",
           "audio_sha256": null
         },
@@ -6626,7 +6626,7 @@
           "config_hash": "973c491c",
           "episode_key": "1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/W07L1%20-%20Slide%20lecture:%2013.%20Eksistens%20II.%202026%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-03-16T14:00:00+01:00",
+          "published_at": "2026-03-16T18:00:00+01:00",
           "title": "U7F1 · Forelæsningsslides · Eksistens II. 2026",
           "audio_sha256": null
         },
@@ -8913,6 +8913,124 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L2/%5BShort%5D%20W06L2%20-%20May%20%281966%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Db65dbd54%7D.mp3",
           "published_at": "2026-03-10T16:00:00+01:00",
           "title": "U6F2 · [Kort] · May (1966)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w07l1__cooper_2003_en",
+      "prompt_type": "short",
+      "lecture_key": "W07L1",
+      "title": "U7F1 · [Kort] · Cooper (2003)",
+      "canonical_source_name": "[Short] W07L1 - Cooper (2003) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W07L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=short hash=aab8a7a4}.mp3",
+          "canonical_source_name": "[Short] W07L1 - Cooper (2003) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "aab8a7a4"
+          },
+          "config_hash": "aab8a7a4",
+          "episode_key": "shows/personlighedspsykologi-en/W07L1/[Short] W07L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=short hash=aab8a7a4}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/%5BShort%5D%20W07L1%20-%20Cooper%20%282003%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Daab8a7a4%7D.mp3",
+          "published_at": "2026-03-16T10:00:00+01:00",
+          "title": "U7F1 · [Kort] · Cooper (2003)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w07l1__jacobsen_2021_en",
+      "prompt_type": "short",
+      "lecture_key": "W07L1",
+      "title": "U7F1 · [Kort] · Jacobsen (2021)",
+      "canonical_source_name": "[Short] W07L1 - Jacobsen (2021) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W07L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=37f42cd3}.mp3",
+          "canonical_source_name": "[Short] W07L1 - Jacobsen (2021) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "37f42cd3"
+          },
+          "config_hash": "37f42cd3",
+          "episode_key": "shows/personlighedspsykologi-en/W07L1/[Short] W07L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=37f42cd3}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/%5BShort%5D%20W07L1%20-%20Jacobsen%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D37f42cd3%7D.mp3",
+          "published_at": "2026-03-16T14:00:00+01:00",
+          "title": "U7F1 · [Kort] · Jacobsen (2021)",
           "audio_sha256": null
         },
         "B": {

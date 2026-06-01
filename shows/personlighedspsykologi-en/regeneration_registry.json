@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T13:42:57Z",
+  "generated_at": "2026-06-01T13:51:37Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 168,
@@ -10733,7 +10733,7 @@
       "logical_episode_id": "short__w12l1__elias_2000_en",
       "prompt_type": "short",
       "lecture_key": "W12L1",
-      "title": "U12F1 · [Kort] · Elias (2000)",
+      "title": "U12F1 · [Kort] · Elias (2000) ✦",
       "canonical_source_name": "[Short] W12L1 - Elias (2000) [EN].mp3",
       "inventory_present": true,
       "active_variant": "B",
@@ -10747,20 +10747,20 @@
       "variants": {
         "A": {
           "status": "published",
-          "source_name": "[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
+          "source_name": "[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=513cef0b}.mp3",
           "canonical_source_name": "[Short] W12L1 - Elias (2000) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "short",
-            "hash": "c3f67e82"
+            "hash": "513cef0b"
           },
-          "config_hash": "c3f67e82",
+          "config_hash": "513cef0b",
           "episode_key": "1jxq-lSa76Qo3KBiuP6YSjC7wz8Llbisf",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Elias%20%282000%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Elias%20%282000%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D513cef0b%7D.mp3",
           "published_at": "2026-04-27T08:00:00+02:00",
-          "title": "U12F1 · [Kort] · Elias (2000)",
+          "title": "U12F1 · [Kort] · Elias (2000) ✦",
           "audio_sha256": null
         },
         "B": {

@@ -1,0 +1,43 @@
+{
+  "language": "da",
+  "languages": [
+    {
+      "code": "da",
+      "suffix": ""
+    }
+  ],
+  "course_title": "Personlighedspsykologi",
+  "quiz": {
+    "quantity": "more",
+    "difficulty": "medium",
+    "format": "json",
+    "prompt": "Lav en normal dansk multiple-choice quiz til en bachelorstuderende i personlighedspsykologi. Quizzen skal teste begrebsforståelse, skelnen mellem nærliggende begreber, typiske misforståelser og anvendelse i kursets teorier. Spørg ikke til filnavne, metadata, forelæsningskoder eller hvor oplysningerne kommer fra. Brug aldrig formuleringer som 'ifølge matrixen', 'ifølge kilden', 'ifølge noterne', 'dette dokument' eller lignende. Skriv spørgsmål og svarmuligheder, så de kan stå alene for en bruger på Freudd."
+  },
+  "weekly_overview": {
+    "prompt": ""
+  },
+  "per_reading": {
+    "prompt": ""
+  },
+  "short": {
+    "enabled": false
+  },
+  "course_context": {
+    "enabled": false
+  },
+  "audio_prompt_strategy": {
+    "enabled": false
+  },
+  "audio_prompt_framework": {
+    "enabled": false
+  },
+  "exam_focus": {
+    "enabled": false
+  },
+  "study_context": {
+    "enabled": false
+  },
+  "meta_prompting": {
+    "enabled": false
+  }
+}

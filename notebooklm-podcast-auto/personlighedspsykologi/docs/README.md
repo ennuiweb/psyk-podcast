@@ -15,3 +15,9 @@ Canonical learner-facing output and evaluation scope lives in
 
 Canonical feed ownership and downstream artifact rules live in
 `shows/personlighedspsykologi-en/docs/`. Do not duplicate those details here.
+
+Concept quiz generation lives in
+`notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/`. It exports
+seven Danish NotebookLM source packs for the standalone Freudd
+`Begrebsquizzer` section and runs through the queue show
+`personlighedspsykologi-concept-quizzes`.

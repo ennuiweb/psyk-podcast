@@ -103,6 +103,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Global shell and quiz wrapper enforce horizontal overflow guardrails so sticky header + fixed mobile tabbar stay anchored on narrow devices.
 - Mobile `Mine fag` popup is rendered as a viewport-centered layer (via body portal) to stay centered on both axes across browsers.
 - `quiz_links.json` entries must include `subject_slug` so unit progression can be computed per subject (auto-populated by quiz-link sync scripts).
+- Personlighedspsykologi concept quizzes are standalone subject-level quizzes. Their generated JSON is committed under `freudd_portal/quiz_files/personlighedspsykologi/`, listed in `shows/personlighedspsykologi-en/concept_quizzes/concept_quiz_manifest.json`, and shown on the subject page as `Begrebsquizzer`.
 - Optional extensions (`habitica`, `anki`) are disabled by default and must be enabled per account via management command.
 - Extension sync is server-driven (`manage.py sync_extensions`) and runs only for enabled users with stored per-user credentials.
 - Credentials are encrypted at rest with Fernet via `FREUDD_CREDENTIALS_MASTER_KEY`.

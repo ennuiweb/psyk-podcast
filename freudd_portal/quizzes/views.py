@@ -1975,6 +1975,47 @@ def _quiz_count_from_assets(assets: object) -> int:
     return len(unique_quiz_ids)
 
 
+def _concept_quiz_manifest_path(subject_slug: str) -> Path:
+    slug = str(subject_slug or "").strip().lower()
+    show_dir = "personlighedspsykologi-en" if slug == "personlighedspsykologi" else slug
+    return Path(settings.BASE_DIR).resolve().parent / "shows" / show_dir / "concept_quizzes" / "concept_quiz_manifest.json"
+
+
+def _load_subject_concept_quizzes(subject_slug: str) -> list[dict[str, object]]:
+    path = _concept_quiz_manifest_path(subject_slug)
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        logger.warning("Unable to load concept quiz manifest: %s", path, exc_info=True)
+        return []
+    entries = payload.get("entries") if isinstance(payload, dict) else None
+    if not isinstance(entries, list):
+        return []
+    concept_quizzes: list[dict[str, object]] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        quiz_id = str(entry.get("quiz_id") or "").strip().lower()
+        if not QUIZ_ID_RE.match(quiz_id):
+            continue
+        quiz_url = str(entry.get("quiz_url") or "").strip() or reverse("quiz-wrapper", kwargs={"quiz_id": quiz_id})
+        question_count = _safe_non_negative_int(entry.get("question_count"))
+        if question_count <= 0:
+            question_count = quiz_question_count(quiz_id)
+        concept_quizzes.append(
+            {
+                "quiz_id": quiz_id,
+                "quiz_url": quiz_url,
+                "title": str(entry.get("title") or "Begrebsquiz").strip(),
+                "difficulty_label": str(entry.get("difficulty_label") or "Normal").strip(),
+                "question_count": question_count,
+            }
+        )
+    return concept_quizzes
+
+
 def _anonymous_subject_learning_path_snapshot(subject_slug: str) -> dict[str, object]:
     slug = str(subject_slug or "").strip().lower()
     manifest = load_subject_content_manifest(slug)
@@ -3392,6 +3433,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 "flashcard-practice",
                 kwargs={"subject_slug": subject.slug, "deck_slug": deck_slug},
             )
+    concept_quizzes = _load_subject_concept_quizzes(subject.slug)
 
     return render(
         request,
@@ -3410,6 +3452,7 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
             ),
             "active_lecture": active_lecture,
             "flashcard_decks": flashcard_decks,
+            "concept_quizzes": concept_quizzes,
             "reading_tracking_url": reverse("subject-tracking-reading", kwargs={"subject_slug": subject.slug}),
             "podcast_tracking_url": reverse("subject-tracking-podcast", kwargs={"subject_slug": subject.slug}),
         },

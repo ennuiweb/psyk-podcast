@@ -165,6 +165,7 @@ def _candidate_quiz_roots(quiz_id: str) -> list[Path]:
         roots.append(subject_root)
         # Backward-compatible fallback for deployments that use a shared quiz root.
         roots.append(default_root / subject_slug)
+        roots.append(Path(settings.BASE_DIR) / "quiz_files" / subject_slug)
     roots.extend(_all_known_quiz_roots())
     return _dedupe_paths(roots)
 

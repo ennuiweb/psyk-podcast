@@ -74,6 +74,59 @@ def test_discover_personlighedspsykologi_da_jobs_and_build_audio_only_plan(tmp_p
     assert "--disable-default-extra-roots" in plan["download_command"]
 
 
+def test_discover_personlighedspsykologi_concept_quiz_jobs_and_plan(tmp_path: Path) -> None:
+    lab = tmp_path / "notebooklm-podcast-auto" / "personlighedspsykologi" / "concept_quiz_lab"
+    scripts = tmp_path / "notebooklm-podcast-auto" / "personlighedspsykologi" / "scripts"
+    scripts.mkdir(parents=True, exist_ok=True)
+    lab.mkdir(parents=True, exist_ok=True)
+    for relative, content in (
+        ("notebooklm-podcast-auto/personlighedspsykologi/scripts/generate_week.py", "#!/usr/bin/env python3\n"),
+        ("notebooklm-podcast-auto/personlighedspsykologi/scripts/download_week.py", "#!/usr/bin/env python3\n"),
+        ("notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/config.json", "{}"),
+        ("notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/prompt_config.json", "{}"),
+    ):
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+    (tmp_path / ".venv" / "bin").mkdir(parents=True, exist_ok=True)
+    (tmp_path / ".venv" / "bin" / "python").write_text("", encoding="utf-8")
+    (lab / "auto_spec.json").write_text(
+        json.dumps(
+            {
+                "rules": [
+                    {"aliases": ["W90L1"], "topic": "Videnskabsteori"},
+                    {"aliases": ["W90L2"], "topic": "Fænomenologi"},
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    jobs = discover_show_jobs(repo_root=tmp_path, show_slug="personlighedspsykologi-concept-quizzes")
+    assert [item["identity"].lecture_key for item in jobs] == ["W90L1", "W90L2"]
+    assert jobs[0]["identity"].content_types == ("quiz",)
+
+    store = QueueStore(tmp_path / "queue-root")
+    enqueue_discovered_jobs(
+        repo_root=tmp_path,
+        store=store,
+        show_slug="personlighedspsykologi-concept-quizzes",
+        priority=1,
+    )
+    plan = build_dry_run_plan(
+        repo_root=tmp_path,
+        store=store,
+        show_slug="personlighedspsykologi-concept-quizzes",
+    )
+
+    assert plan["content_types"] == ["quiz"]
+    assert "--sources-root" in plan["generate_command"]
+    assert "notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/sources" in plan["generate_command"]
+    assert "notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/prompt_config.json" in plan["generate_command"]
+    assert "notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/output" in plan["generate_command"]
+    assert "--disable-default-extra-roots" in plan["download_command"]
+
+
 def test_discover_bioneuro_jobs_from_episode_metadata(tmp_path: Path) -> None:
     (tmp_path / "shows" / "bioneuro").mkdir(parents=True, exist_ok=True)
     (tmp_path / "notebooklm-podcast-auto" / "bioneuro").mkdir(parents=True, exist_ok=True)

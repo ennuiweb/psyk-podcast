@@ -2093,6 +2093,7 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "lecture-rail-copy-date")
         self.assertContains(response, "lecture-rail-mobile-copy")
         self.assertContains(response, "U1 · F1")
+
         self.assertContains(response, "subject-cup-link-label\">scoreboard</span>")
         self.assertContains(
             response,
@@ -2121,6 +2122,58 @@ class QuizPortalTests(TestCase):
         self.assertFalse(response.context["lecture_rail_items"][1]["is_active"])
         self.assertNotIn("lecture_date", response.context["lecture_rail_items"][0])
         self.assertNotIn("lecture_date", response.context["lecture_rail_items"][1])
+
+    def test_subject_detail_renders_concept_quizzes_when_manifest_exists(self) -> None:
+        user = self._create_user()
+        self.client.force_login(user)
+
+        with patch(
+            "quizzes.views._load_subject_concept_quizzes",
+            return_value=[
+                {
+                    "quiz_id": "1234abcd",
+                    "quiz_url": "/q/1234abcd.html",
+                    "title": "Videnskabsteori og orienteringspunkter",
+                    "difficulty_label": "Normal",
+                    "question_count": 12,
+                }
+            ],
+        ):
+            response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "begrebsquizzer")
+        self.assertContains(response, "Videnskabsteori og orienteringspunkter")
+        self.assertContains(response, "12 spørgsmål")
+        self.assertContains(response, 'href="/q/1234abcd.html"')
+
+    def test_quiz_files_can_be_loaded_from_committed_subject_fallback_root(self) -> None:
+        quiz_id = "1234abcd"
+        repo_base = Path(self.temp_dir.name) / "repo-freudd"
+        fallback_root = repo_base / "quiz_files" / "personlighedspsykologi"
+        fallback_root.mkdir(parents=True, exist_ok=True)
+        (fallback_root / f"{quiz_id}.json").write_text(
+            json.dumps({"title": "Begrebsquiz", "questions": [{"question": "Q?", "answerOptions": []}]}),
+            encoding="utf-8",
+        )
+        self._write_links_file(
+            {
+                quiz_id: {
+                    "title": "Videnskabsteori og orienteringspunkter",
+                    "difficulty": "medium",
+                }
+            }
+        )
+        quiz_services._METADATA_CACHE["signature"] = None
+        quiz_services._METADATA_CACHE["data"] = {}
+
+        with override_settings(BASE_DIR=repo_base):
+            self.assertTrue(quiz_services.quiz_exists(quiz_id))
+            payload = quiz_services.load_quiz_content(quiz_id)
+
+        self.assertIsNotNone(payload)
+        self.assertEqual(payload["title"], "Begrebsquiz")
+        self.assertEqual(len(payload["questions"]), 1)
 
     def test_subject_detail_hides_back_link_for_safe_and_unsafe_referer(self) -> None:
         user = self._create_user()

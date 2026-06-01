@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:28:12+00:00",
+  "generated_at": "2026-06-01T13:29:37+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1873,6 +1873,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L2/W08L2%20-%20Tolman%20%282009%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1RS3wycyDFIUrTb0y5dYOQ3XPJ4gE7gH2"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W08L2/[Short] W08L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=short hash=ed200192}.mp3",
+      "source_name": "[Short] W08L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=short hash=ed200192}.mp3",
+      "source_path": "W08L2/[Short] W08L2 - Holzkamp (1982) [EN] {type=audio lang=en format=deep-dive length=short hash=ed200192}.mp3",
+      "path_parts": [
+        "W08L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 6923141,
+      "sha256": "ce380d1bf495259a54da753e2411f2522e20927f53b27f9c9b833174ee57ba3d",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:29:35+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L2/%5BShort%5D%20W08L2%20-%20Holzkamp%20%281982%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Ded200192%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W08L2/[Short] W08L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=short hash=ee315ec2}.mp3",
+      "source_name": "[Short] W08L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=short hash=ee315ec2}.mp3",
+      "source_path": "W08L2/[Short] W08L2 - Tolman (2009) [EN] {type=audio lang=en format=deep-dive length=short hash=ee315ec2}.mp3",
+      "path_parts": [
+        "W08L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10090250,
+      "sha256": "56bb3eaf1aecbfef7a14bac0647373f02dfc2949923f3d572872f8289c855e66",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:29:35+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W08L2/%5BShort%5D%20W08L2%20-%20Tolman%20%282009%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dee315ec2%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W09L1 - Slide lecture: 17. Kritisk psykologi [EN] {type=audio lang=en format=deep-dive length=default hash=33c53eb1}.mp3",

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T04:38:50Z",
+  "generated_at": "2026-06-01T04:41:36Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 157,
@@ -3116,7 +3116,7 @@
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": "2026-06-01T02:09:20Z"
+        "activated_at": "2026-06-01T04:41:36Z"
       },
       "variants": {
         "A": {
@@ -3139,30 +3139,30 @@
         },
         "B": {
           "status": "published",
-          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
           "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "71ad77b0"
+            "hash": "fa9adbcf"
           },
-          "config_hash": "71ad77b0",
-          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D71ad77b0%7D.mp3",
-          "published_at": "2026-05-31T20:34:48+00:00",
+          "config_hash": "fa9adbcf",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
+          "published_at": "2026-03-02T09:47:15.831Z",
           "title": "U5F1 · Gammelgaard (2010) ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": "67c8f597b45a02d36ddb66ffda493d67d27e9517b95d3a3d21d74b8f411a3706",
+          "audio_sha256": "33b92c8fa9c7e1bf168661c953532afcce255c1bd031107613197ef3834ecb1a",
           "generated_at": null,
-          "uploaded_at": "2026-05-31T20:34:48+00:00",
-          "registered_at": "2026-06-01T02:09:20Z",
+          "uploaded_at": "2026-03-02T09:47:15.831Z",
+          "registered_at": "2026-06-01T04:41:36Z",
           "transcribed_at": null,
           "judged_at": null,
           "review_outcome": "queue_auto_activated",
-          "size_bytes": 102660070,
+          "size_bytes": 63935243,
           "drive_md5": null,
           "history": [
             {
@@ -3310,6 +3310,13 @@
               "event": "queue_auto_activated",
               "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
               "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            },
+            {
+              "at": "2026-06-01T04:41:36Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
               "campaign": "podcast-v1-regen-2026-05-07"
             }
           ]

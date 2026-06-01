@@ -2,14 +2,14 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T12:46:48Z",
+  "generated_at": "2026-06-01T12:47:56Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 157,
-    "in_scope_entries": 149,
+    "total_entries": 159,
+    "in_scope_entries": 151,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 48,
+      "short": 50,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
@@ -17,11 +17,11 @@
     },
     "rollout_state_counts": {
       "b_active": 64,
-      "original_only": 85,
+      "original_only": 87,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 93,
+      "A": 95,
       "B": 64
     }
   },
@@ -2956,7 +2956,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1_O-ON47oWkPaZB790ifDcyJibr22mgD9",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/W04L2%20-%20Lacan%20%281966%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-02-24T12:00:00+01:00",
+          "published_at": "2026-02-24T14:00:00+01:00",
           "title": "U4F2 · Lacan (1966)",
           "audio_sha256": null
         },
@@ -3015,7 +3015,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1Fbcl0T6L2BPlLH8kjU_ERsh8soYGZupP",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/W04L2%20-%20Laplanche%2C%20J.%20%281970%29.%20Liv%20og%20d%C3%B8d%20i%20psykoanalysen%20%28pp.%2018%E2%80%9038%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-02-24T14:00:00+01:00",
+          "published_at": "2026-02-24T18:00:00+01:00",
           "title": "U4F2 · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
           "audio_sha256": null
         },
@@ -3116,7 +3116,7 @@
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": "2026-06-01T11:31:17Z"
+        "activated_at": "2026-06-01T12:47:56Z"
       },
       "variants": {
         "A": {
@@ -3139,30 +3139,30 @@
         },
         "B": {
           "status": "published",
-          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+          "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
           "canonical_source_name": "W05L1 - Gammelgaard (2010) [EN].mp3",
           "config_tags": {
             "type": "audio",
             "lang": "en",
             "format": "deep-dive",
             "length": "long",
-            "hash": "fa9adbcf"
+            "hash": "71ad77b0"
           },
-          "config_hash": "fa9adbcf",
-          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
-          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-02T09:47:15.831Z",
+          "config_hash": "71ad77b0",
+          "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L1/W05L1%20-%20Gammelgaard%20%282010%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3D71ad77b0%7D.mp3",
+          "published_at": "2026-05-31T20:34:48+00:00",
           "title": "U5F1 · Gammelgaard (2010) ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": "33b92c8fa9c7e1bf168661c953532afcce255c1bd031107613197ef3834ecb1a",
+          "audio_sha256": "67c8f597b45a02d36ddb66ffda493d67d27e9517b95d3a3d21d74b8f411a3706",
           "generated_at": null,
-          "uploaded_at": "2026-03-02T09:47:15.831Z",
-          "registered_at": "2026-06-01T11:31:17Z",
+          "uploaded_at": "2026-05-31T20:34:48+00:00",
+          "registered_at": "2026-06-01T12:47:56Z",
           "transcribed_at": null,
           "judged_at": null,
           "review_outcome": "queue_auto_activated",
-          "size_bytes": 63935243,
+          "size_bytes": 102660070,
           "drive_md5": null,
           "history": [
             {
@@ -3331,6 +3331,13 @@
               "event": "queue_auto_activated",
               "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
               "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=fa9adbcf}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            },
+            {
+              "at": "2026-06-01T12:47:56Z",
+              "event": "queue_auto_activated",
+              "source_name": "W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Gammelgaard (2010) [EN] {type=audio lang=en format=deep-dive length=long hash=71ad77b0}.mp3",
               "campaign": "podcast-v1-regen-2026-05-07"
             }
           ]
@@ -6303,7 +6310,7 @@
           "config_hash": "973c491c",
           "episode_key": "1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/W04L2%20-%20Slide%20lecture:%208.%20Psykoanalytisk%20personlighedsstruktur%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-02-24T16:00:00+01:00",
+          "published_at": "2026-02-24T20:00:00+01:00",
           "title": "U4F2 · Forelæsningsslides · Psykoanalytisk personlighedsstruktur",
           "audio_sha256": null
         },
@@ -8118,6 +8125,124 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L1/%5BShort%5D%20W04L1%20-%20Gammelgaard%20%282007%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D306a6341%7D.mp3",
           "published_at": "2026-02-23T16:00:00+01:00",
           "title": "U4F1 · [Kort] · Gammelgaard (2007)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w04l2__lacan_1966_en",
+      "prompt_type": "short",
+      "lecture_key": "W04L2",
+      "title": "U4F2 · [Kort] · Lacan (1966)",
+      "canonical_source_name": "[Short] W04L2 - Lacan (1966) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=915f7277}.mp3",
+          "canonical_source_name": "[Short] W04L2 - Lacan (1966) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "915f7277"
+          },
+          "config_hash": "915f7277",
+          "episode_key": "shows/personlighedspsykologi-en/W04L2/[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=915f7277}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/%5BShort%5D%20W04L2%20-%20Lacan%20%281966%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D915f7277%7D.mp3",
+          "published_at": "2026-02-24T12:00:00+01:00",
+          "title": "U4F2 · [Kort] · Lacan (1966)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w04l2__laplanche_j_1970_liv_og_d_d_i_psykoanalysen_pp_18_38_en",
+      "prompt_type": "short",
+      "lecture_key": "W04L2",
+      "title": "U4F2 · [Kort] · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
+      "canonical_source_name": "[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=short hash=2d10519e}.mp3",
+          "canonical_source_name": "[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "2d10519e"
+          },
+          "config_hash": "2d10519e",
+          "episode_key": "shows/personlighedspsykologi-en/W04L2/[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=short hash=2d10519e}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/%5BShort%5D%20W04L2%20-%20Laplanche%2C%20J.%20%281970%29.%20Liv%20og%20d%C3%B8d%20i%20psykoanalysen%20%28pp.%2018%E2%80%9038%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D2d10519e%7D.mp3",
+          "published_at": "2026-02-24T16:00:00+01:00",
+          "title": "U4F2 · [Kort] · Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38)",
           "audio_sha256": null
         },
         "B": {

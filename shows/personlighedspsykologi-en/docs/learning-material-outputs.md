@@ -218,7 +218,7 @@ Canonical published slide surfaces:
 
 - `shows/personlighedspsykologi-en/slides_catalog.json`
 - `shows/personlighedspsykologi-en/content_manifest.json`
-- public slide paths under `/slides/personlighedspsykologi/<lecture>/<subcategory>/...`
+- slide file paths under `/slides/personlighedspsykologi/<lecture>/<subcategory>/...`
 
 Slides are manually mapped and synced learning materials. They are tracked as
 learner-facing outputs, but the registry should not treat the slide catalog as
@@ -434,8 +434,8 @@ Slide-specific criteria:
 
 - slide decks should be attached to the correct lecture and subcategory
 - seminar and exercise slides should not be mistaken for lecture slides
-- public slide paths should remain stable enough for Freudd links and study
-  workflows
+- slide file paths should remain stable enough for elevated/admin Freudd links
+  and study workflows
 - manually mapped slides should stay clearly separated from generated
   Course Understanding artifacts
 

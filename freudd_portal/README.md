@@ -142,7 +142,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
 - `GET /subjects/<subject_slug>/tekster/chatgpt/<reading_key>` (server-side tracked ChatGPT launch for PDF tekster; redirects to ChatGPT)
-- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (public adgang for `lecture`-slides; `seminar`/`exercise` kræver autentificeret elevated access eller `is_staff`/`is_superuser`)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (kræver autentificeret elevated access eller `is_staff`/`is_superuser` for alle slide-kategorier)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`
@@ -230,7 +230,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 - Used by `GET /subjects/<subject_slug>/tekster/open/<reading_key>` and subject detail link rendering.
 - `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
 - Keys must match the manifest `readings[].reading_key` values exactly.
-- Elevated access override: authenticated users in group `elevated-reading-access` (or `is_staff`/`is_superuser`) can still open excluded readings and non-public slide categories (`seminar`/`exercise`).
+- Elevated access override: authenticated users in group `elevated-reading-access` (or `is_staff`/`is_superuser`) can still open excluded readings and all slide categories (`lecture`/`seminar`/`exercise`).
 
 ```json
 {

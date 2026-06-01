@@ -2245,10 +2245,11 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Slides fra forelæsning W01L1")
-        self.assertContains(response, "Slides fra seminarhold W01L1")
-        self.assertContains(response, "Slides fra øvelseshold W01L1")
-        self.assertContains(response, "Åben slides", count=1)
+        self.assertNotContains(response, "Slides fra forelæsning W01L1")
+        self.assertNotContains(response, "Slides fra seminarhold W01L1")
+        self.assertNotContains(response, "Slides fra øvelseshold W01L1")
+        self.assertNotContains(response, "<h3 class=\"section-title\">slides</h3>", html=True)
+        self.assertNotContains(response, "Åben slides")
         self.assertNotContains(response, "Ingen slides registreret.")
 
     def test_subject_detail_uses_slide_catalog_and_open_slide_route(self) -> None:
@@ -2298,10 +2299,11 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Forelæsning intro slides")
-        self.assertContains(response, "Seminar intro slides")
-        self.assertContains(response, "Øvelseshold intro slides")
-        self.assertContains(response, "Åben slides", count=1)
+        self.assertNotContains(response, "Forelæsning intro slides")
+        self.assertNotContains(response, "Seminar intro slides")
+        self.assertNotContains(response, "Øvelseshold intro slides")
+        self.assertNotContains(response, "<h3 class=\"section-title\">slides</h3>", html=True)
+        self.assertNotContains(response, "Åben slides")
 
         lecture_open_url = reverse(
             "subject-open-slide",
@@ -2325,16 +2327,14 @@ class QuizPortalTests(TestCase):
             },
         )
 
-        self.assertContains(response, f'href="{lecture_open_url}"')
-        self.assertContains(response, f'data-reading-pdf-url="{lecture_open_url}"')
-        self.assertContains(response, 'aria-label="Send Forelæsning intro slides til ChatGPT"')
+        self.assertNotContains(response, f'href="{lecture_open_url}"')
+        self.assertNotContains(response, f'data-reading-pdf-url="{lecture_open_url}"')
+        self.assertNotContains(response, 'aria-label="Send Forelæsning intro slides til ChatGPT"')
         self.assertNotContains(response, f'href="{seminar_open_url}"')
         self.assertNotContains(response, f'href="{exercise_open_url}"')
 
         open_response = self.client.get(lecture_open_url)
-        self.assertEqual(open_response.status_code, 200)
-        self.assertEqual(open_response["Content-Type"], "application/pdf")
-
+        self.assertEqual(open_response.status_code, 404)
         blocked_seminar = self.client.get(seminar_open_url)
         self.assertEqual(blocked_seminar.status_code, 404)
         blocked_exercise = self.client.get(exercise_open_url)
@@ -2442,7 +2442,19 @@ class QuizPortalTests(TestCase):
         )
         clear_content_service_caches()
 
-        user = self._create_user()
+        normal_user = self._create_user(username="slide-assets-normal")
+        self.client.force_login(normal_user)
+        normal_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+
+        self.assertEqual(normal_response.status_code, 200)
+        self.assertNotContains(normal_response, "Forelæsning intro slides")
+        self.assertNotContains(normal_response, "Mellem quiz")
+        self.assertNotContains(normal_response, "/q/dddddddd.html")
+        self.assertNotContains(normal_response, "Forelæsningsslides - Forelæsning intro slides")
+
+        user = self._create_user(username="slide-assets-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
 
@@ -2500,7 +2512,9 @@ class QuizPortalTests(TestCase):
         )
         clear_content_service_caches()
 
-        user = self._create_user()
+        user = self._create_user(username="slide-podcast-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
@@ -2593,7 +2607,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(entries[0]["title"], "Bioneuro intro slides")
         self.assertEqual(entries[0]["source_filename"], "Bioneuro intro slides.pdf")
 
-        user = self._create_user(username="bioneuro-user")
+        user = self._create_user(username="bioneuro-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         open_url = reverse(
             "subject-open-slide",

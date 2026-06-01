@@ -173,7 +173,6 @@ SLIDE_GROUP_TITLES = {
     "seminar": "slides fra seminarhold",
     "exercise": "slides fra øvelseshold",
 }
-PUBLIC_OPEN_SLIDE_CATEGORIES = {"lecture"}
 _READING_EXCLUSION_CACHE: dict[str, object] = {
     "path": None,
     "mtime": None,
@@ -541,7 +540,7 @@ def _slide_category_key(value: object) -> str:
 
 def _is_direct_slide_open_allowed(subcategory: object, *, user: object | None = None) -> bool:
     category = _slide_category_key(subcategory)
-    return category in PUBLIC_OPEN_SLIDE_CATEGORIES or user_has_elevated_slide_access(user)
+    return bool(category and user_has_elevated_slide_access(user))
 
 
 def _slide_catalog_path(*, subject_slug: str) -> Path | None:
@@ -1438,7 +1437,11 @@ def _compact_asset_links(
     }
 
 
-def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
+def _enrich_subject_path_lectures(
+    lectures: object,
+    *,
+    include_slides: bool = True,
+) -> list[dict[str, object]]:
     if not isinstance(lectures, list):
         return []
 
@@ -1463,10 +1466,6 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
             lecture_copy["lecture_display_title"] = f"{lecture_label} · {lecture_name}"
         else:
             lecture_copy["lecture_display_title"] = lecture_label or lecture_name
-        lecture_copy["progress_percent"] = _progress_percent(
-            completed=lecture_copy.get("completed_quizzes"),
-            total=lecture_copy.get("total_quizzes"),
-        )
         has_lecture_quizzes = bool(lecture_assets.get("quizzes"))
         has_lecture_podcasts = bool(lecture_assets.get("podcasts"))
 
@@ -1479,6 +1478,11 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                 if not isinstance(reading, dict):
                     continue
                 reading_copy = dict(reading)
+                if not include_slides and _is_slide_reading(
+                    reading_title=reading_copy.get("reading_title"),
+                    source_filename=reading_copy.get("source_filename"),
+                ):
+                    continue
                 reading_copy["assets"] = _compact_asset_links(
                     reading_copy.get("assets"),
                     question_count_by_quiz_id=question_count_by_quiz_id,
@@ -1498,7 +1502,7 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
         has_slide_quizzes = False
         has_slide_podcasts = False
         slides = lecture_copy.get("slides")
-        if isinstance(slides, list):
+        if include_slides and isinstance(slides, list):
             for slide in slides:
                 if not isinstance(slide, dict):
                     continue
@@ -1514,6 +1518,22 @@ def _enrich_subject_path_lectures(lectures: object) -> list[dict[str, object]]:
                     has_slide_podcasts = True
                 slides_payload.append(slide_copy)
         lecture_copy["slides"] = slides_payload
+        if not include_slides:
+            visible_total_quizzes = _quiz_count_from_assets(lecture_assets) + sum(
+                _quiz_count_from_assets(
+                    reading.get("assets") if isinstance(reading, dict) else {}
+                )
+                for reading in reading_payload
+            )
+            lecture_copy["total_quizzes"] = visible_total_quizzes
+            lecture_copy["completed_quizzes"] = min(
+                _safe_non_negative_int(lecture_copy.get("completed_quizzes")),
+                visible_total_quizzes,
+            )
+        lecture_copy["progress_percent"] = _progress_percent(
+            completed=lecture_copy.get("completed_quizzes"),
+            total=lecture_copy.get("total_quizzes"),
+        )
         lecture_copy["has_reading_quizzes"] = has_reading_quizzes
         lecture_copy["has_reading_podcasts"] = has_reading_podcasts
         lecture_copy["has_slide_quizzes"] = has_slide_quizzes
@@ -1652,6 +1672,9 @@ def _slide_groups_for_lecture(
     subject_slug: str,
     user: object | None = None,
 ) -> list[dict[str, object]]:
+    if not user_has_elevated_slide_access(user):
+        return []
+
     groups: dict[str, dict[str, object]] = {
         "lecture": {
             "group_key": "lecture",
@@ -3304,7 +3327,11 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         source_meta = subject_path.get("source_meta") if isinstance(subject_path.get("source_meta"), dict) else {}
         readings_error = str(source_meta.get("reading_error") or "").strip() or None
 
-    lecture_payload = _enrich_subject_path_lectures(subject_path.get("lectures", []))
+    user_can_access_slides = user_has_elevated_slide_access(request.user)
+    lecture_payload = _enrich_subject_path_lectures(
+        subject_path.get("lectures", []),
+        include_slides=user_can_access_slides,
+    )
     if user_is_authenticated:
         annotate_subject_lectures_with_marks(
             user=request.user,

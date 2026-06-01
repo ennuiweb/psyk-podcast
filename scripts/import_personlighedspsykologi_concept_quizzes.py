@@ -65,6 +65,13 @@ def _stable_quiz_id(*, slug: str, difficulty: str) -> str:
     return hashlib.sha1(seed.encode("utf-8")).hexdigest()[:8]
 
 
+def _display_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.resolve().as_posix()
+
+
 def _find_quiz_file(output_root: Path, lecture_key: str) -> Path | None:
     lecture_dir = output_root / lecture_key
     candidates: list[Path] = []
@@ -158,8 +165,8 @@ def import_quizzes(*, output_root: Path, dry_run: bool = False) -> dict[str, Any
             "title": title,
             "slug": slug,
             "lecture_key": lecture_key,
-            "source_output_path": source.relative_to(REPO_ROOT).as_posix(),
-            "repo_quiz_path": destination.relative_to(REPO_ROOT).as_posix(),
+            "source_output_path": _display_path(source),
+            "repo_quiz_path": _display_path(destination),
             "question_count": _question_count(payload),
         }
         entries.append(entry)
@@ -185,8 +192,8 @@ def import_quizzes(*, output_root: Path, dry_run: bool = False) -> dict[str, Any
         _write_json(QUIZ_LINKS_PATH, quiz_links)
     return {
         "imported": len(entries),
-        "manifest_path": CONCEPT_MANIFEST_PATH.relative_to(REPO_ROOT).as_posix(),
-        "quiz_files_root": QUIZ_FILES_ROOT.relative_to(REPO_ROOT).as_posix(),
+        "manifest_path": _display_path(CONCEPT_MANIFEST_PATH),
+        "quiz_files_root": _display_path(QUIZ_FILES_ROOT),
         "quiz_ids": [entry["quiz_id"] for entry in manifest["entries"]],
         "dry_run": dry_run,
     }

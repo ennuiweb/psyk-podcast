@@ -84,3 +84,42 @@ def test_import_concept_quizzes_copies_json_and_updates_manifests(tmp_path: Path
     link = links_payload["by_name"]["Videnskabsteori og orienteringspunkter"]
     assert link["relative_path"] == f"{quiz_id}.html"
     assert link["subject_slug"] == "personlighedspsykologi"
+
+
+def test_import_concept_quizzes_accepts_external_output_root(tmp_path: Path, monkeypatch) -> None:
+    repo_root = tmp_path / "repo"
+    external_output = tmp_path / "external-output"
+    lab_manifest = repo_root / "lab" / "manifest.json"
+    quiz_files_root = repo_root / "freudd" / "quiz_files" / "personlighedspsykologi"
+    concept_manifest = repo_root / "show" / "concept_quiz_manifest.json"
+    quiz_links = repo_root / "show" / "quiz_links.json"
+    source = external_output / "W90L1" / "W90L1 - Videnskabsteori {type=quiz difficulty=medium}.json"
+    source.parent.mkdir(parents=True)
+    source.write_text(json.dumps({"quiz": [{"question": "Q?", "answer": "A"}]}), encoding="utf-8")
+    lab_manifest.parent.mkdir(parents=True)
+    lab_manifest.write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "lecture_key": "W90L1",
+                        "slug": "videnskabsteori-orienteringspunkter",
+                        "title": "Videnskabsteori og orienteringspunkter",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(importer, "REPO_ROOT", repo_root)
+    monkeypatch.setattr(importer, "LAB_MANIFEST_PATH", lab_manifest)
+    monkeypatch.setattr(importer, "QUIZ_FILES_ROOT", quiz_files_root)
+    monkeypatch.setattr(importer, "CONCEPT_MANIFEST_PATH", concept_manifest)
+    monkeypatch.setattr(importer, "QUIZ_LINKS_PATH", quiz_links)
+
+    result = importer.import_quizzes(output_root=external_output)
+
+    assert result["imported"] == 1
+    concept_payload = json.loads(concept_manifest.read_text(encoding="utf-8"))
+    assert concept_payload["entries"][0]["source_output_path"] == source.resolve().as_posix()

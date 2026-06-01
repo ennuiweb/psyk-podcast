@@ -442,6 +442,17 @@ cd /opt/podcasts
 
 If the worker process died mid-stage, retrying `drain-show` is usually enough now because resumable in-progress states are claimed automatically.
 
+For a paused manual artifact-recovery pass, prefer the explicit stage
+entrypoints above after auditing candidates. `drain-show` always runs discovery
+first, and discovery intentionally dead-letters stale non-terminal records whose
+stored config hash no longer matches the current show config. That is desirable
+for normal timer operation, but it can interrupt an operator-owned recovery of
+already-generated, current-prompt artifacts from an older queue record. In that
+case, pause the timer, verify the request logs against a fresh dry-run plan and
+published manifests, move the selected job to `awaiting_publish` only after the
+downloaded artifacts are present, then run `prepare-publish`, `upload-r2`,
+`rebuild-metadata`, `push-repo`, and `sync-downstream` with `--job-id`.
+
 ## Operational notes
 
 - The timer is intentionally conservative: every 30 minutes with persistence and jitter.

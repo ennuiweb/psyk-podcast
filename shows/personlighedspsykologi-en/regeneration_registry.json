@@ -2,14 +2,14 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T12:58:33Z",
+  "generated_at": "2026-06-01T12:59:05Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 159,
-    "in_scope_entries": 151,
+    "total_entries": 161,
+    "in_scope_entries": 153,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 50,
+      "short": 52,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
@@ -17,11 +17,11 @@
     },
     "rollout_state_counts": {
       "b_active": 64,
-      "original_only": 87,
+      "original_only": 89,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 95,
+      "A": 97,
       "B": 64
     }
   },
@@ -3652,7 +3652,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1ovHuc3DVXRE9poYbCPUxBdNxYrxRWhbG",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Grundbog%20kapitel%204%20-%20F%C3%A6nomenologisk%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-09T14:00:00+01:00",
+          "published_at": "2026-03-09T18:00:00+01:00",
           "title": "U6F1 · Grundbog 4: Fænomenologisk personlighedspsykologi",
           "audio_sha256": null
         },
@@ -3711,7 +3711,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1KGUPsUftMm-l7qdV5QmGOmCvmMc3jo5-",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Moesk%C3%A6r%20Hansen%20%26%20Roald%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-09T10:00:00+01:00",
+          "published_at": "2026-03-09T12:00:00+01:00",
           "title": "U6F1 · Moeskær Hansen & Roald (2022)",
           "audio_sha256": null
         },
@@ -3770,7 +3770,7 @@
           "config_hash": "fa9adbcf",
           "episode_key": "1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Spinelli%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
-          "published_at": "2026-03-09T12:00:00+01:00",
+          "published_at": "2026-03-09T16:00:00+01:00",
           "title": "U6F1 · Spinelli (2005)",
           "audio_sha256": null
         },
@@ -6546,7 +6546,7 @@
           "config_hash": "973c491c",
           "episode_key": "1r4zeMKZ2rovXD0wiZZ6wZgNYpJkw3rs5",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Slide%20lecture:%2011.%20F%C3%A6nomenologisk%20personlighedspsykologi2026%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
-          "published_at": "2026-03-09T16:00:00+01:00",
+          "published_at": "2026-03-09T18:00:00+01:00",
           "title": "U6F1 · Forelæsningsslides · Fænomenologisk personlighedspsykologi",
           "audio_sha256": null
         },
@@ -8625,6 +8625,124 @@
       }
     },
     {
+      "logical_episode_id": "short__w06l1__moesk_r_hansen_roald_2022_en",
+      "prompt_type": "short",
+      "lecture_key": "W06L1",
+      "title": "U6F1 · [Kort] · Moeskær Hansen & Roald (2022)",
+      "canonical_source_name": "[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",
+          "canonical_source_name": "[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "190b72f6"
+          },
+          "config_hash": "190b72f6",
+          "episode_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Moesk%C3%A6r%20Hansen%20%26%20Roald%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D190b72f6%7D.mp3",
+          "published_at": "2026-03-09T10:00:00+01:00",
+          "title": "U6F1 · [Kort] · Moeskær Hansen & Roald (2022)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w06l1__spinelli_2005_en",
+      "prompt_type": "short",
+      "lecture_key": "W06L1",
+      "title": "U6F1 · [Kort] · Spinelli (2005)",
+      "canonical_source_name": "[Short] W06L1 - Spinelli (2005) [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W06L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=c4b32856}.mp3",
+          "canonical_source_name": "[Short] W06L1 - Spinelli (2005) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "c4b32856"
+          },
+          "config_hash": "c4b32856",
+          "episode_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=c4b32856}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Spinelli%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc4b32856%7D.mp3",
+          "published_at": "2026-03-09T14:00:00+01:00",
+          "title": "U6F1 · [Kort] · Spinelli (2005)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
       "logical_episode_id": "short__w06l2__boss_1963_en",
       "prompt_type": "short",
       "lecture_key": "W06L2",
@@ -10351,7 +10469,7 @@
           "config_hash": null,
           "episode_key": "1Do9amY9idSqyH522QeEi-zjE3kV0TpL6",
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BTTS%5D%20W06L1%20-%20Grundbog%20kapitel%2004%20-%20F%C3%A6nomenologisk%20personlighedspsykologi%20%7Btype%3Dtts%20voice%3Dda-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib%20date%3D2026-02-14%7D.mp3",
-          "published_at": "2026-03-09T18:00:00+01:00",
+          "published_at": "2026-03-09T20:00:00+01:00",
           "title": "U6F1 · [Lydbog] · Grundbog 4: Fænomenologisk personlighedspsykologi",
           "audio_sha256": null
         },

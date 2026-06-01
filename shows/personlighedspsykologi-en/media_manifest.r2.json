@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:51:43+00:00",
+  "generated_at": "2026-06-01T13:51:57+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2703,6 +2703,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Elias%20%282000%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "1jxq-lSa76Qo3KBiuP6YSjC7wz8Llbisf"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W12L1/[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=0cc044b2}.mp3",
+      "source_name": "[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=0cc044b2}.mp3",
+      "source_path": "W12L1/[Short] W12L1 - Grundbog kapitel 14 - Perspektiver på personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=0cc044b2}.mp3",
+      "path_parts": [
+        "W12L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9939232,
+      "sha256": "36d3c8abbb4901704b69c1b75709540398d470128a5e89f2dc3949978e10259c",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:51:55+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Grundbog%20kapitel%2014%20-%20Perspektiver%20p%C3%A5%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0cc044b2%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W12L1/[Short] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=short hash=0463f2bf}.mp3",
+      "source_name": "[Short] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=short hash=0463f2bf}.mp3",
+      "source_path": "W12L1/[Short] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=short hash=0463f2bf}.mp3",
+      "path_parts": [
+        "W12L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9934003,
+      "sha256": "5483e69822fc3de30cb4cf6f9fe1fdfcd7ad1739ce74ce848cc9d925f048c3eb",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:51:55+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Grundbog%20kapitel%208%20-%20Personlighed%2C%20subjektivitet%20og%20historicitet%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D0463f2bf%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W12L1/[Short] W12L1 - Grundbog kapitel 8 - Personlighed, subjektivitet og historicitet [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",

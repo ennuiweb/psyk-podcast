@@ -2,14 +2,14 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T13:03:16Z",
+  "generated_at": "2026-06-01T13:03:55Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
-    "total_entries": 161,
-    "in_scope_entries": 153,
+    "total_entries": 162,
+    "in_scope_entries": 154,
     "out_of_scope_entries": 8,
     "prompt_type_counts": {
-      "short": 52,
+      "short": 53,
       "single_reading": 60,
       "single_slide": 19,
       "tts": 8,
@@ -17,11 +17,11 @@
     },
     "rollout_state_counts": {
       "b_active": 64,
-      "original_only": 89,
+      "original_only": 90,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 97,
+      "A": 98,
       "B": 64
     }
   },
@@ -8604,6 +8604,65 @@
           "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W05L2/%5BShort%5D%20W05L2%20-%20K%C3%B8ppe%20%281992%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8db09793%7D.mp3",
           "published_at": "2026-03-03T16:00:00+01:00",
           "title": "U5F2 · [Kort] · Køppe (1992)",
+          "audio_sha256": null
+        },
+        "B": {
+          "status": "not_generated",
+          "source_name": null,
+          "canonical_source_name": null,
+          "config_tags": {},
+          "config_hash": null,
+          "episode_key": null,
+          "audio_url": null,
+          "published_at": null,
+          "title": null,
+          "local_audio_path": null,
+          "staging_drive_id": null,
+          "audio_sha256": null,
+          "generated_at": null,
+          "uploaded_at": null,
+          "registered_at": null,
+          "transcribed_at": null,
+          "judged_at": null,
+          "review_outcome": null,
+          "size_bytes": null,
+          "drive_md5": null,
+          "history": []
+        }
+      }
+    },
+    {
+      "logical_episode_id": "short__w06l1__grundbog_kapitel_4_f_nomenologisk_personlighedspsykologi_en",
+      "prompt_type": "short",
+      "lecture_key": "W06L1",
+      "title": "U6F1 · [Kort] · Grundbog 4: Fænomenologisk personlighedspsykologi",
+      "canonical_source_name": "[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN].mp3",
+      "inventory_present": true,
+      "active_variant": "A",
+      "rollout": {
+        "campaign": "prompt-rollout-2026-04",
+        "in_scope": true,
+        "state": "original_only",
+        "notes": [],
+        "activated_at": null
+      },
+      "variants": {
+        "A": {
+          "status": "published",
+          "source_name": "[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=9387149c}.mp3",
+          "canonical_source_name": "[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "9387149c"
+          },
+          "config_hash": "9387149c",
+          "episode_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=9387149c}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Grundbog%20kapitel%204%20-%20F%C3%A6nomenologisk%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D9387149c%7D.mp3",
+          "published_at": "2026-03-09T18:00:00+01:00",
+          "title": "U6F1 · [Kort] · Grundbog 4: Fænomenologisk personlighedspsykologi",
           "audio_sha256": null
         },
         "B": {

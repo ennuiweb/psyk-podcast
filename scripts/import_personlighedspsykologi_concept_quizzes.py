@@ -50,6 +50,7 @@ PROVENANCE_RE = re.compile(
     r"\bprovided\s+material\b",
     re.IGNORECASE,
 )
+VISIBLE_ESCAPE_RE = re.compile(r"\\[%_{}()[\]:;!?]")
 
 
 def _load_json(path: Path) -> Any:
@@ -105,6 +106,9 @@ def _quiz_payload_validation_errors(payload: Any) -> list[str]:
     provenance_match = PROVENANCE_RE.search(combined)
     if provenance_match:
         errors.append(f"provenance/source wording leaked: {provenance_match.group(0)!r}")
+    visible_escape_match = VISIBLE_ESCAPE_RE.search(combined)
+    if visible_escape_match:
+        errors.append(f"visible escape sequence leaked: {visible_escape_match.group(0)!r}")
 
     english_markers = len(ENGLISH_MARKER_RE.findall(combined))
     danish_markers = len(DANISH_MARKER_RE.findall(combined))

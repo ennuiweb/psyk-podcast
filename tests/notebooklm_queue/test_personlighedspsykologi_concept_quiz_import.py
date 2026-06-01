@@ -258,3 +258,50 @@ def test_import_concept_quizzes_rejects_source_provenance_wording(tmp_path: Path
 
     with pytest.raises(SystemExit, match="provenance/source wording leaked"):
         importer.import_quizzes(output_root=output_root)
+
+
+def test_import_concept_quizzes_rejects_visible_escape_sequences(tmp_path: Path, monkeypatch) -> None:
+    lab_manifest = tmp_path / "lab" / "manifest.json"
+    output_root = tmp_path / "output"
+    source = output_root / "W90L1" / "escaped {type=quiz difficulty=medium}.json"
+    source.parent.mkdir(parents=True)
+    source.write_text(
+        json.dumps(
+            {
+                "questions": [
+                    {
+                        "question": "Hvad er problemet med biologisk determinisme?",
+                        "answerOptions": [
+                            {"text": "At gøre personlighed 100\\% biologisk bestemt", "isCorrect": True},
+                            {"text": "At medtænke miljø og relationer", "isCorrect": False},
+                        ],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    lab_manifest.parent.mkdir(parents=True)
+    lab_manifest.write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "lecture_key": "W90L1",
+                        "slug": "videnskabsteori-orienteringspunkter",
+                        "title": "Videnskabsteori og orienteringspunkter",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(importer, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(importer, "LAB_MANIFEST_PATH", lab_manifest)
+    monkeypatch.setattr(importer, "QUIZ_FILES_ROOT", tmp_path / "quiz-files")
+    monkeypatch.setattr(importer, "CONCEPT_MANIFEST_PATH", tmp_path / "concept_quiz_manifest.json")
+    monkeypatch.setattr(importer, "QUIZ_LINKS_PATH", tmp_path / "quiz_links.json")
+
+    with pytest.raises(SystemExit, match="visible escape sequence leaked"):
+        importer.import_quizzes(output_root=output_root)

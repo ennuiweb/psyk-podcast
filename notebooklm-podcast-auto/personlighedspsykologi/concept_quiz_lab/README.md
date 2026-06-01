@@ -10,7 +10,7 @@ The live generation path is the Hetzner NotebookLM queue show `personlighedspsyk
 
 Ready-state handoff:
 
-1. Generate or place one medium quiz JSON for each `W90L1`-`W90L7` pack under the lab `output/` tree, or pass an external output root to the import script.
+1. Generate or place one non-empty medium quiz JSON for each `W90L1`-`W90L7` pack under the lab `output/` tree, or pass an external output root to the import script. Queue filenames with `type=quiz` are preferred automatically, but simple manual `.json` filenames also work.
 2. Import into Freudd:
 
 ```bash

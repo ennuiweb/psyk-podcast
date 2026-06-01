@@ -31,11 +31,7 @@ def _write_json(path: Path, payload: Any) -> None:
 
 
 def _quiz_payload_is_valid(payload: Any) -> bool:
-    if isinstance(payload, list):
-        return True
-    if not isinstance(payload, dict):
-        return False
-    return isinstance(payload.get("questions"), list) or isinstance(payload.get("quiz"), list)
+    return _question_count(payload) > 0
 
 
 def _question_count(payload: Any) -> int:
@@ -81,16 +77,19 @@ def _find_quiz_file(output_root: Path, lecture_key: str) -> Path | None:
     valid: list[Path] = []
     for path in sorted(set(candidates), key=lambda item: item.name.casefold()):
         name = path.name.lower()
-        if ".request" in name or "manifest" in name or "type=quiz" not in name:
+        if ".request" in name or "manifest" in name:
             continue
         try:
             payload = _load_json(path)
         except (OSError, UnicodeDecodeError, json.JSONDecodeError):
             continue
-        if _quiz_payload_is_valid(payload):
+        if _quiz_payload_is_valid(payload) and _difficulty_from_name(path) == "medium":
             valid.append(path)
     if len(valid) > 1:
-        valid.sort(key=lambda item: (item.stat().st_mtime_ns, item.name.casefold()), reverse=True)
+        valid.sort(
+            key=lambda item: ("type=quiz" in item.name.lower(), item.stat().st_mtime_ns, item.name.casefold()),
+            reverse=True,
+        )
     return valid[0] if valid else None
 
 

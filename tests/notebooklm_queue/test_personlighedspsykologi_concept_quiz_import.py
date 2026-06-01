@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from scripts import import_personlighedspsykologi_concept_quizzes as importer
 
 
@@ -93,7 +95,7 @@ def test_import_concept_quizzes_accepts_external_output_root(tmp_path: Path, mon
     quiz_files_root = repo_root / "freudd" / "quiz_files" / "personlighedspsykologi"
     concept_manifest = repo_root / "show" / "concept_quiz_manifest.json"
     quiz_links = repo_root / "show" / "quiz_links.json"
-    source = external_output / "W90L1" / "W90L1 - Videnskabsteori {type=quiz difficulty=medium}.json"
+    source = external_output / "W90L1" / "manual-videnskabsteori-quiz.json"
     source.parent.mkdir(parents=True)
     source.write_text(json.dumps({"quiz": [{"question": "Q?", "answer": "A"}]}), encoding="utf-8")
     lab_manifest.parent.mkdir(parents=True)
@@ -123,3 +125,35 @@ def test_import_concept_quizzes_accepts_external_output_root(tmp_path: Path, mon
     assert result["imported"] == 1
     concept_payload = json.loads(concept_manifest.read_text(encoding="utf-8"))
     assert concept_payload["entries"][0]["source_output_path"] == source.resolve().as_posix()
+
+
+def test_import_concept_quizzes_rejects_empty_quiz_payload(tmp_path: Path, monkeypatch) -> None:
+    lab_manifest = tmp_path / "lab" / "manifest.json"
+    output_root = tmp_path / "output"
+    source = output_root / "W90L1" / "empty {type=quiz difficulty=medium}.json"
+    source.parent.mkdir(parents=True)
+    source.write_text(json.dumps({"questions": []}), encoding="utf-8")
+    lab_manifest.parent.mkdir(parents=True)
+    lab_manifest.write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "lecture_key": "W90L1",
+                        "slug": "videnskabsteori-orienteringspunkter",
+                        "title": "Videnskabsteori og orienteringspunkter",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(importer, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(importer, "LAB_MANIFEST_PATH", lab_manifest)
+    monkeypatch.setattr(importer, "QUIZ_FILES_ROOT", tmp_path / "quiz-files")
+    monkeypatch.setattr(importer, "CONCEPT_MANIFEST_PATH", tmp_path / "concept_quiz_manifest.json")
+    monkeypatch.setattr(importer, "QUIZ_LINKS_PATH", tmp_path / "quiz_links.json")
+
+    with pytest.raises(SystemExit, match="Missing generated quiz JSON"):
+        importer.import_quizzes(output_root=output_root)

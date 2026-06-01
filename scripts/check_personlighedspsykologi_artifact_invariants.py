@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import importlib.util
 import re
 import sys
 from pathlib import Path
@@ -167,6 +168,19 @@ FORBIDDEN_REFERENCES = {
     str(LEGACY_READING_KEY): "legacy NotebookLM reading-file-key mirror reference",
     str(LEGACY_OVERBLIK): "legacy NotebookLM overblik mirror reference",
 }
+
+
+def _concept_quiz_category_fit_failures(repo_root: Path) -> list[str]:
+    audit_path = repo_root / "scripts" / "audit_personlighedspsykologi_concept_quiz_categories.py"
+    if not audit_path.exists():
+        return [f"Missing concept quiz category audit script: {audit_path.relative_to(repo_root)}"]
+    spec = importlib.util.spec_from_file_location("personlighedspsykologi_concept_quiz_category_audit", audit_path)
+    if spec is None or spec.loader is None:
+        return [f"Could not load concept quiz category audit script: {audit_path.relative_to(repo_root)}"]
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    errors, _report = module.audit()
+    return [f"Concept quiz category fit: {error}" for error in errors]
 
 
 def _repo_root() -> Path:
@@ -1428,6 +1442,8 @@ def _failures(repo_root: Path) -> list[str]:
         for forbidden, description in FORBIDDEN_REFERENCES.items():
             if forbidden in content:
                 failures.append(f"{description} still present in {relative_path}")
+
+    failures.extend(_concept_quiz_category_fit_failures(repo_root))
 
     return failures
 

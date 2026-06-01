@@ -7,7 +7,6 @@ import argparse
 import hashlib
 import json
 import re
-import shutil
 from pathlib import Path
 from typing import Any
 
@@ -256,6 +255,8 @@ def import_quizzes(*, output_root: Path, dry_run: bool = False) -> dict[str, Any
             continue
         quiz_id = _stable_quiz_id(slug=slug, difficulty=difficulty)
         destination = QUIZ_FILES_ROOT / f"{quiz_id}.json"
+        if isinstance(payload, dict):
+            payload["title"] = title
         entry = {
             "quiz_id": quiz_id,
             "quiz_url": f"/q/{quiz_id}.html",
@@ -270,8 +271,7 @@ def import_quizzes(*, output_root: Path, dry_run: bool = False) -> dict[str, Any
         }
         entries.append(entry)
         if not dry_run:
-            destination.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source, destination)
+            _write_json(destination, payload)
 
     if missing:
         raise SystemExit(f"Missing generated quiz JSON for concept pack(s): {', '.join(missing)}")

@@ -17,7 +17,7 @@ Run from the local repo after changes have been committed and pushed to
 `origin/main`:
 
 ```bash
-ssh digitalocean-ennui-droplet-01 'set -euo pipefail; cd /opt/podcasts; git fetch origin main; git checkout main; git pull --ff-only origin main; /opt/podcasts/.venv/bin/pip install -r /opt/podcasts/requirements.txt; sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate; systemctl restart freudd-portal; systemctl is-active freudd-portal; systemctl status freudd-portal --no-pager -n 25'
+ssh digitalocean-ennui-droplet-01 'set -euo pipefail; cd /opt/podcasts; git fetch origin main; git checkout main; git merge --ff-only origin/main; /opt/podcasts/.venv/bin/pip install -r /opt/podcasts/requirements.txt; sudo -u www-data /opt/podcasts/.venv/bin/python /opt/podcasts/freudd_portal/manage.py migrate; systemctl restart freudd-portal; systemctl is-active freudd-portal; systemctl status freudd-portal --no-pager -n 25'
 ```
 
 ## Smoke Checks
@@ -72,8 +72,11 @@ Expected:
 
 ## Troubleshooting
 
-- If `git pull --ff-only` fails, inspect the server worktree first. Do not run a
-  destructive reset unless explicitly approved.
+- Use `git fetch` plus `git merge --ff-only origin/main` on the remote. A direct
+  `git pull --ff-only origin main` has failed on the production host with
+  `Cannot fast-forward to multiple branches`.
+- If the fast-forward merge fails, inspect the server worktree first. Do not run
+  a destructive reset unless explicitly approved.
 - If `systemctl is-active freudd-portal` returns `active` but local login is
   still `000`, the process is not ready yet; keep waiting on
   `127.0.0.1:8001/accounts/login` instead of treating that as a route failure.

@@ -6,7 +6,7 @@ Generated source packs for NotebookLM concept quizzes. Regenerate with:
 .venv/bin/python scripts/export_personlighedspsykologi_concept_quiz_packs.py
 ```
 
-The live generation path is the Hetzner NotebookLM queue show `personlighedspsykologi-concept-quizzes`; it uses medium difficulty as the single normal quiz level. The show is quiz-only and intentionally ignores `NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS` so it cannot inherit short-output settings from podcast services.
+The live generation path is the Hetzner NotebookLM queue show `personlighedspsykologi-concept-quizzes`; it uses medium difficulty as the single normal quiz level. The show is quiz-only and intentionally ignores `NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS` so it cannot inherit short-output settings from podcast services. Quiz language is controlled by the generator path; do not mutate global NotebookLM profile language to make these Danish.
 
 Import with:
 
@@ -15,3 +15,5 @@ Import with:
 ```
 
 The importer rejects empty quizzes, likely English output, and leaked source/provenance wording such as matrix/source-material references before writing Freudd quiz files.
+
+After importing and committing the Freudd quiz files, mark the corresponding queue jobs `completed` so the generation-only concept show does not keep an `awaiting_publish` backlog.

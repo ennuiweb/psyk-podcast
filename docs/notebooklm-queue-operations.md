@@ -7,7 +7,7 @@ Current live scope:
 - `bioneuro` is the first queue-owned, R2-backed live show.
 - `personlighedspsykologi-en` is now also queue-owned and R2-backed on the Hetzner runtime.
 - `personlighedspsykologi-da` now has a queue/runtime contract as a feed-first Danish mirror of the shared `personlighedspsykologi` subject surface. Its publication path is intentionally audio-only, keeps Spotify-map sync enabled for episode links, and skips Freudd portal sidecars by config.
-- `personlighedspsykologi-concept-quizzes` is a generation-only queue show for standalone Danish Freudd concept quizzes. It uses source packs under `notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/`, writes generated quiz JSON to that lab output directory, and is imported into Freudd with `scripts/import_personlighedspsykologi_concept_quizzes.py` rather than the audio/R2 publish stages. It is quiz-only, ignores `NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS`, and must pass the importer's Danish/provenance gate before any generated JSON is published to Freudd.
+- `personlighedspsykologi-concept-quizzes` is a generation-only queue show for standalone Danish Freudd concept quizzes. It uses source packs under `notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/`, writes generated quiz JSON to that lab output directory, and is imported into Freudd with `scripts/import_personlighedspsykologi_concept_quizzes.py` rather than the audio/R2 publish stages. It is quiz-only, ignores `NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS`, and must pass the importer's Danish/provenance gate before any generated JSON is published to Freudd. After a manual import/commit, transition the concept jobs from `awaiting_publish` to `completed`.
 - The queue runtime is designed as a server-managed `systemd` timer whose service drains one show through timed backlog within a bounded wall-clock budget, waits through retry windows only while budget remains, and exits cleanly so the timer can schedule the next pass.
 
 Repository deploy artifacts:
@@ -194,7 +194,7 @@ Notes:
 cd /opt/podcasts
 git fetch origin main
 git checkout main
-git pull --ff-only origin main
+git merge --ff-only origin/main
 ```
 
 2. Install the wrapper and units:

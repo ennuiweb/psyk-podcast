@@ -19,21 +19,21 @@ assert SPEC.loader is not None
 SPEC.loader.exec_module(download_week)
 
 
-def test_collect_storage_candidates_prefers_explicit_current_profiles_over_request_log(
+def test_collect_storage_candidates_prefers_request_log_owner_current_profile(
     tmp_path: Path, monkeypatch
 ) -> None:
-    current_storage = tmp_path / "current.json"
+    owner_current_storage = tmp_path / "owner-current.json"
     fallback_storage = tmp_path / "fallback.json"
-    old_storage = tmp_path / "old.json"
-    for path in (current_storage, fallback_storage, old_storage):
+    owner_old_storage = tmp_path / "owner-old.json"
+    for path in (owner_current_storage, fallback_storage, owner_old_storage):
         path.write_text("{}", encoding="utf-8")
     profiles_file = tmp_path / "profiles.host.json"
     profiles_file.write_text(
         json.dumps(
             {
                 "profiles": {
+                    "owner": str(owner_current_storage),
                     "fallback": str(fallback_storage),
-                    "current": str(current_storage),
                 }
             }
         ),
@@ -47,18 +47,18 @@ def test_collect_storage_candidates_prefers_explicit_current_profiles_over_reque
         storage=None,
         profile=None,
         profiles_file=None,
-        profile_priority="current",
+        profile_priority="fallback,owner",
         log_auth={
-            "profile": "old",
+            "profile": "owner",
             "profiles_file": str(profiles_file),
-            "storage_path": str(old_storage),
+            "storage_path": str(owner_old_storage),
         },
     )
 
     assert candidates[:3] == [
-        (str(current_storage.resolve()), "profiles:current"),
+        (str(owner_current_storage.resolve()), "log-profile:owner"),
+        (str(owner_old_storage), "log:storage"),
         (str(fallback_storage.resolve()), "profiles:fallback"),
-        (str(old_storage), "log:storage"),
     ]
 
 
@@ -111,3 +111,110 @@ def test_collect_storage_candidates_skips_auth_stale_profile_state(
     )
 
     assert candidates == [(str(fresh_storage.resolve()), "profiles:fresh")]
+
+
+def test_collect_storage_candidates_keeps_cli_profile_override_first(
+    tmp_path: Path, monkeypatch
+) -> None:
+    owner_storage = tmp_path / "owner.json"
+    cli_storage = tmp_path / "cli.json"
+    fallback_storage = tmp_path / "fallback.json"
+    for path in (owner_storage, cli_storage, fallback_storage):
+        path.write_text("{}", encoding="utf-8")
+    profiles_file = tmp_path / "profiles.host.json"
+    profiles_file.write_text(
+        json.dumps(
+            {
+                "profiles": {
+                    "owner": str(owner_storage),
+                    "cli": str(cli_storage),
+                    "fallback": str(fallback_storage),
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("NOTEBOOKLM_PROFILES_FILE", str(profiles_file))
+    monkeypatch.setenv("NOTEBOOKLM_PROFILE_STATE_FILE", str(tmp_path / "profile_state.json"))
+
+    candidates = download_week.collect_storage_candidates(
+        tmp_path,
+        storage=None,
+        profile="cli",
+        profiles_file=None,
+        profile_priority="fallback",
+        log_auth={
+            "profile": "owner",
+            "profiles_file": str(profiles_file),
+            "storage_path": str(owner_storage),
+        },
+    )
+
+    assert candidates[0] == (str(cli_storage.resolve()), "cli:profile")
+
+
+def test_fetch_artifact_status_classifies_account_routing_as_auth(monkeypatch, tmp_path: Path) -> None:
+    def fake_run_cmd(command: list[str]) -> tuple[bool, str]:
+        return (
+            False,
+            "RPC rLM1Ne returned null result with status code 7 "
+            "(Permission denied). account-routing mismatch; set authuser.",
+        )
+
+    monkeypatch.setattr(download_week, "run_cmd", fake_run_cmd)
+
+    ok, status, reason = download_week.fetch_artifact_status(
+        tmp_path / "notebooklm",
+        str(tmp_path / "default.json"),
+        "notebook-id",
+        "artifact-id",
+    )
+
+    assert ok is False
+    assert status is None
+    assert reason == "auth"
+
+
+def test_wait_and_download_rotates_on_wait_auth_failure(monkeypatch, tmp_path: Path) -> None:
+    def fake_run_cmd(command: list[str]) -> tuple[bool, str]:
+        assert command[:2] == [str(tmp_path / "notebooklm"), "--storage"]
+        return False, "Permission denied: account-routing mismatch"
+
+    monkeypatch.setattr(download_week, "run_cmd", fake_run_cmd)
+
+    ok, reason = download_week.wait_and_download(
+        tmp_path / "notebooklm",
+        "artifact-id",
+        "notebook-id",
+        "audio",
+        tmp_path / "episode.mp3",
+        60,
+        60,
+        str(tmp_path / "wrong-profile.json"),
+        None,
+    )
+
+    assert ok is False
+    assert reason == "auth"
+
+
+def test_wait_and_download_keeps_real_wait_timeout_as_wait(monkeypatch, tmp_path: Path) -> None:
+    def fake_run_cmd(command: list[str]) -> tuple[bool, str]:
+        return False, "Timeout after 60s"
+
+    monkeypatch.setattr(download_week, "run_cmd", fake_run_cmd)
+
+    ok, reason = download_week.wait_and_download(
+        tmp_path / "notebooklm",
+        "artifact-id",
+        "notebook-id",
+        "audio",
+        tmp_path / "episode.mp3",
+        60,
+        60,
+        str(tmp_path / "owner-profile.json"),
+        None,
+    )
+
+    assert ok is False
+    assert reason == "wait"

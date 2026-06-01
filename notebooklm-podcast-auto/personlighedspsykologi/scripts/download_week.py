@@ -279,6 +279,13 @@ def ordered_profile_items(
     return items
 
 
+def log_auth_profile(log_auth: dict | None) -> str | None:
+    if not log_auth:
+        return None
+    profile_name = str(log_auth.get("profile") or "").strip()
+    return profile_name or None
+
+
 def resolve_storage_path(
     repo_root: Path,
     *,
@@ -404,6 +411,11 @@ def collect_storage_candidates(
         seen.add(key)
         candidates.append((path, source))
 
+    profiles_path = resolve_profiles_path(repo_root, profiles_file)
+    current_profiles: dict[str, str] = {}
+    if profiles_path:
+        current_profiles = load_profiles(profiles_path)
+
     if storage or profile:
         path, source = resolve_storage_path(
             repo_root,
@@ -414,29 +426,23 @@ def collect_storage_candidates(
         )
         add(path, source, profile if source == "cli:profile" else None)
 
-    profiles_items: list[tuple[str, str]] = []
-    has_explicit_profiles = explicit_profiles_configured(profiles_file)
-    if not storage and not profile and has_explicit_profiles:
-        profiles_path = resolve_profiles_path(repo_root, profiles_file)
-        if profiles_path:
-            profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
-        for name, path in profiles_items:
-            add(path, f"profiles:{name}", name)
+    if not storage and not profile:
+        owner_profile = log_auth_profile(log_auth)
+        if owner_profile and owner_profile in current_profiles:
+            add(current_profiles[owner_profile], f"log-profile:{owner_profile}", owner_profile)
 
-    if log_auth:
-        path, source = resolve_storage_path(
-            repo_root,
-            storage=None,
-            profile=None,
-            profiles_file=None,
-            log_auth=log_auth,
-        )
-        add(path, source, str(log_auth.get("profile") or "") or None)
+        if log_auth:
+            path, source = resolve_storage_path(
+                repo_root,
+                storage=None,
+                profile=None,
+                profiles_file=None,
+                log_auth=log_auth,
+            )
+            add(path, source, owner_profile)
 
-    if not storage and not profile and not has_explicit_profiles:
-        profiles_path = resolve_profiles_path(repo_root, profiles_file)
-        if profiles_path:
-            profiles_items = ordered_profile_items(load_profiles(profiles_path), profile_priority)
+    if not storage and not profile and current_profiles:
+        profiles_items = ordered_profile_items(current_profiles, profile_priority)
         for name, path in profiles_items:
             add(path, f"profiles:{name}", name)
 
@@ -517,7 +523,25 @@ def format_existing_output_counts(counts: dict[str, int]) -> str:
 
 def is_auth_error(output: str) -> bool:
     lowered = output.lower()
-    return "authentication expired" in lowered or "received html instead of media file" in lowered
+    tokens = (
+        "authentication expired",
+        "auth expired",
+        "auth invalid",
+        "invalid authentication",
+        "not logged in",
+        "run 'notebooklm login'",
+        "received html instead of media file",
+        "accounts.google.com",
+        "servicelogin",
+        "accountchooser",
+        "permission denied",
+        "status code 7",
+        "rpc_code 7",
+        "rpc code 7",
+        "account-routing mismatch",
+        "authuser",
+    )
+    return any(token in lowered for token in tokens)
 
 
 def is_timeout_error(output: str) -> bool:
@@ -545,7 +569,7 @@ def fetch_artifact_status(
     storage_path: str | None,
     notebook_id: str,
     artifact_id: str,
-) -> tuple[bool, str | None]:
+) -> tuple[bool, str | None, str | None]:
     cmd = build_cli_cmd(
         notebooklm,
         storage_path,
@@ -553,13 +577,17 @@ def fetch_artifact_status(
     )
     ok, output = run_cmd(cmd)
     if not ok:
-        return False, None
+        if is_auth_error(output):
+            return False, None, "auth"
+        if is_timeout_error(output):
+            return False, None, "wait"
+        return False, None, "error"
     artifacts = parse_artifact_list(output)
     item = artifacts.get(artifact_id)
     if not item:
-        return True, None
+        return True, None, None
     status = item.get("status") or item.get("state")
-    return True, str(status) if status is not None else None
+    return True, str(status) if status is not None else None, None
 
 
 def wait_and_download(
@@ -589,6 +617,8 @@ def wait_and_download(
 
     ok, output = run_cmd(wait_cmd)
     if not ok:
+        if is_auth_error(output):
+            return False, "auth"
         return False, "wait"
 
     download_cmd = build_cli_cmd(
@@ -860,12 +890,17 @@ def main() -> int:
                     f"Waiting for {artifact_id} (notebook {notebook_id}) "
                     f"using {auth_source}..."
                 )
-                status_ok, status = fetch_artifact_status(
+                status_ok, status, status_reason = fetch_artifact_status(
                     notebooklm,
                     storage_path,
                     notebook_id,
                     artifact_id,
                 )
+                if not status_ok and status_reason == "auth":
+                    print(f"Auth failed with {auth_source} while listing artifact; trying next profile...")
+                    continue
+                if not status_ok and status_reason == "wait":
+                    print("Artifact status check timed out; proceeding to wait anyway.")
                 if status_ok and status is None:
                     print("Warning: artifact not found in list; proceeding to wait anyway.")
                 if status_ok and status is not None:
@@ -890,12 +925,14 @@ def main() -> int:
                     success = True
                     cleanup_ok = reason in {"ok", "skipped"}
                     break
+                if reason == "auth":
+                    print(f"Auth failed with {auth_source}, trying next profile...")
+                    continue
                 if reason == "wait":
                     print("Wait failed; skipping remaining auth candidates for this artifact.")
                     break
                 if reason != "auth":
                     break
-                print(f"Auth failed with {auth_source}, trying next profile...")
 
             if not success:
                 print(f"Failed to download after trying {len(candidates)} auth option(s).")

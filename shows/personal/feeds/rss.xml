@@ -6,7 +6,7 @@
     <description>Private feed for imported archive audio. Dates follow the source upload day.</description>
     <language>en</language>
     <generator>gdrive_podcast_feed.py</generator>
-    <lastBuildDate>Sun, 19 Apr 2026 21:54:39 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 12:23:10 +0000</lastBuildDate>
     <ttl>60</ttl>
     <ns0:link href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/feeds/rss.xml" rel="self" type="application/rss+xml" />
     <itunes:author>Oskar</itunes:author>
@@ -23,6 +23,26 @@
     <itunes:category text="Personal Journals">
       <itunes:category text="Self-Improvement" />
     </itunes:category>
+    <item>
+      <title>[Podcast] Week 23 · NARRATIV Can you rewrite your personality software · (Uge 23 01/06 - 07/06)</title>
+      <description>NARRATIV Can you rewrite your personality software · Semester week 23</description>
+      <guid isPermaLink="false">shows/personal/NARRATIV Can you rewrite your personality software.m4a</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Mon, 01 Jun 2026 12:23:10 +0000</pubDate>
+      <enclosure url="https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personal/NARRATIV%20Can%20you%20rewrite%20your%20personality%20software.m4a" length="39758352" type="audio/mp4" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
+    <item>
+      <title>[Podcast] Week 23 · NARRATIV Your brain is a storytelling machine · (Uge 23 01/06 - 07/06)</title>
+      <description>NARRATIV Your brain is a storytelling machine · Semester week 23</description>
+      <guid isPermaLink="false">shows/personal/NARRATIV Your brain is a storytelling machine.m4a</guid>
+      <link>https://github.com/ennuiweb/psyk-podcast</link>
+      <pubDate>Mon, 01 Jun 2026 12:22:56 +0000</pubDate>
+      <enclosure url="https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personal/NARRATIV%20Your%20brain%20is%20a%20storytelling%20machine.m4a" length="37564982" type="audio/mp4" />
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://raw.githubusercontent.com/ennuiweb/psyk-podcast/main/shows/personal/assets/cover.png?v=darkmode-smiley" />
+    </item>
     <item>
       <title>[Kort podcast] Week 16, Forelæsning 1 · Grundbog kapitel 14 - Perspektiver på personlighedspsykologi · (Uge 16 13/04 - 19/04)</title>
       <description>Kort podcast: Grundbog kapitel 14 - Perspektiver på personlighedspsykologi · Forelæsning 1 · Semester week 16</description>

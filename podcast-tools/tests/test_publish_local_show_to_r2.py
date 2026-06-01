@@ -73,6 +73,37 @@ class PublishLocalShowToR2Tests(unittest.TestCase):
         self.assertEqual(item["stable_guid"], "legacy-guid")
         self.assertEqual(item["artifact_type"], "audio")
 
+    def test_merge_manifest_items_preserves_existing_and_overrides_new_keys(self):
+        existing = {
+            "shows/personal/old.mp3": {
+                "object_key": "shows/personal/old.mp3",
+                "published_at": "2026-05-01T00:00:00+00:00",
+                "size": 1,
+            },
+            "shows/personal/new.mp3": {
+                "object_key": "shows/personal/new.mp3",
+                "published_at": "2026-05-02T00:00:00+00:00",
+                "size": 2,
+            },
+        }
+        merged = self.mod.merge_manifest_items(
+            existing,
+            [
+                {
+                    "object_key": "shows/personal/new.mp3",
+                    "published_at": "2026-06-01T00:00:00+00:00",
+                    "size": 3,
+                }
+            ],
+        )
+
+        self.assertEqual([item["object_key"] for item in merged], [
+            "shows/personal/new.mp3",
+            "shows/personal/old.mp3",
+        ])
+        self.assertEqual(merged[0]["size"], 3)
+        self.assertEqual(merged[1]["size"], 1)
+
     def test_load_guid_maps_uses_storage_identity_from_inventory(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)

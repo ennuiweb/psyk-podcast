@@ -384,6 +384,18 @@ def sort_manifest_items(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return sorted(items, key=key, reverse=True)
 
 
+def merge_manifest_items(
+    existing_manifest_index: Dict[str, Dict[str, Any]],
+    new_items: Iterable[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    merged = dict(existing_manifest_index)
+    for item in new_items:
+        object_key = str(item.get("object_key") or "").strip()
+        if object_key:
+            merged[object_key] = item
+    return sort_manifest_items(list(merged.values()))
+
+
 def is_retryable_exception(exc: BaseException) -> bool:
     if isinstance(
         exc,
@@ -587,7 +599,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         "bucket": args.bucket,
         "prefix": prefix,
         "generated_at": dt.datetime.now(dt.UTC).isoformat(),
-        "items": sort_manifest_items(manifest_items),
+        "items": merge_manifest_items(existing_manifest_index, manifest_items),
     }
     if not args.dry_run:
         validate_manifest_items(manifest_items)

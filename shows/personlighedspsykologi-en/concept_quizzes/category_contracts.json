@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "subject_slug": "personlighedspsykologi",
+  "contracts": [
+    {
+      "slug": "videnskabsteori-orienteringspunkter",
+      "title": "Videnskabsteori og orienteringspunkter",
+      "learner_promise": "Træner det sammenlignende grundsprog, der bruges til at skelne teoriernes personbegreb, videnstype, metode og forklaringsniveau.",
+      "primary_scope": [
+        "videnskabsteoretiske grundbegreber",
+        "orienteringspunkter på tværs af teorier"
+      ],
+      "allowed_cross_scope": [
+        "korte eksempler fra fænomenologi, psykoanalyse, trækpsykologi, kritisk psykologi og poststrukturalisme"
+      ],
+      "avoid_as_primary": [
+        "detaljerede spørgsmål om én enkelt teoritradition uden et orienteringspunkt"
+      ],
+      "must_cover": [
+        {"id": "ontology", "label": "ontologi", "terms": ["ontologi", "ontologisk"]},
+        {"id": "epistemology", "label": "epistemologi/episteme", "terms": ["epistemologi", "episteme"]},
+        {"id": "hermeneutics_phenomenology", "label": "hermeneutik/fænomenologi", "terms": ["hermeneutik", "fænomenologi"]},
+        {"id": "dualism_dialectic", "label": "dualisme/dialektisk", "terms": ["dualisme", "dialektisk"]},
+        {"id": "normative_relativism", "label": "normativitet/relativisme", "terms": ["normativ", "relativisme"]},
+        {"id": "essence_context", "label": "essens vs. kontekst", "terms": ["essens", "kontekst"]},
+        {"id": "determination_agency", "label": "determination og agency", "terms": ["determination", "agency", "handlemulighed"]},
+        {"id": "historicity", "label": "historicitet", "terms": ["historicitet", "historisk"]},
+        {"id": "idiographic_nomothetic", "label": "idiografisk vs. nomotetisk", "terms": ["idiografisk", "nomotetisk"]},
+        {"id": "ergodic_reification", "label": "ergodisk fejlslutning/reificering", "terms": ["ergodisk", "ergodic", "reificering"]},
+        {"id": "orientation_points", "label": "orienteringspunkter", "terms": ["orienteringspunkt", "orienteringspunkter"]}
+      ]
+    },
+    {
+      "slug": "faenomenologi-eksistens",
+      "title": "Fænomenologi og eksistens",
+      "learner_promise": "Træner levet erfaring, væren-i-verden, frihed, situerethed og fænomenologisk metode.",
+      "primary_scope": [
+        "fænomenologisk psykologi",
+        "eksistentiel psykologi"
+      ],
+      "allowed_cross_scope": [
+        "kort kontrast til trækpsykologi, psykoanalyse eller naturvidenskabelig objektgørelse"
+      ],
+      "avoid_as_primary": [
+        "rene videnskabsteoretiske definitionsspørgsmål uden fænomenologisk/eksistentiel anvendelse"
+      ],
+      "must_cover": [
+        {"id": "noema_noesis", "label": "noema/noesis", "terms": ["noema", "noesis"]},
+        {"id": "existential_anxiety", "label": "eksistentiel angst", "terms": ["eksistentiel", "angst"]},
+        {"id": "dasein", "label": "Dasein", "terms": ["Dasein", "væren-i-verden"]},
+        {"id": "thrownness", "label": "kastethed", "terms": ["kastethed"]},
+        {"id": "situated", "label": "situerethed", "terms": ["situeret", "situerede"]},
+        {"id": "epoche", "label": "epoché/bracketing", "terms": ["epoché", "bracketing", "parentesætning"]},
+        {"id": "intentionality", "label": "intentionalitet", "terms": ["intentionalitet"]},
+        {"id": "lifeworld", "label": "livsverden", "terms": ["livsverden"]},
+        {"id": "horizontalization", "label": "horisontalisering", "terms": ["horisontalisering"]},
+        {"id": "embodiment", "label": "kropssubjekt/kropslighed", "terms": ["kropssubjekt", "kropslighed"]},
+        {"id": "authenticity_finitude", "label": "autenticitet/finitude", "terms": ["autenticitet", "finitude", "dødelighed"]}
+      ]
+    },
+    {
+      "slug": "psykoanalyse-fortolkning-subjekt",
+      "title": "Psykoanalyse og fortolkning",
+      "learner_promise": "Træner psykoanalysens særlige logik: ubevidst mening, konflikt, struktur, udvikling og fortolkende evidens.",
+      "primary_scope": [
+        "psykoanalytisk personlighedsteori",
+        "fortolkning og subjektets decentrering"
+      ],
+      "allowed_cross_scope": [
+        "ontologi og hermeneutik som forklaring på psykoanalysens metode"
+      ],
+      "avoid_as_primary": [
+        "rene fænomenologi- eller videnskabsteorispørgsmål uden psykoanalytisk hovedcase"
+      ],
+      "must_cover": [
+        {"id": "unconscious", "label": "det ubevidste", "terms": ["ubevidste", "ubevidst"]},
+        {"id": "psychic_reality", "label": "psykisk realitet", "terms": ["psykisk realitet"]},
+        {"id": "transference", "label": "overføring", "terms": ["overføring", "transference"]},
+        {"id": "nachtraeglichkeit", "label": "Nachträglichkeit/retroaktivitet", "terms": ["Nachträglichkeit", "retroaktivitet"]},
+        {"id": "drive_desire_defense", "label": "drift/begær/forsvar", "terms": ["drift", "begær", "forsvar"]},
+        {"id": "structural_model", "label": "id/ego/superego", "terms": ["id", "ego", "superego", "overjeg"]},
+        {"id": "lacan", "label": "spejlstadiet/det symbolske", "terms": ["spejlstadiet", "symbolske"]},
+        {"id": "decentered_subject", "label": "decentreret subjekt", "terms": ["decentreret", "subjekt"]},
+        {"id": "hermeneutic_evidence", "label": "hermeneutisk evidens", "terms": ["hermeneutisk", "fortolkning"]}
+      ]
+    },
+    {
+      "slug": "traek-maaling-udvikling",
+      "title": "Træk, måling og personlighedsfunktion",
+      "learner_promise": "Træner trækmodeller, måling, udviklingsstabilitet og moderne dimensionel diagnostik.",
+      "primary_scope": [
+        "trækpsykologi",
+        "måling og udvikling",
+        "personlighedsfunktion"
+      ],
+      "allowed_cross_scope": [
+        "kritiske begreber om reificering, idiografisk metode og ergodisk fejlslutning"
+      ],
+      "avoid_as_primary": [
+        "rene poststrukturalistiske eller narrative spørgsmål"
+      ],
+      "must_cover": [
+        {"id": "big_five_hexaco", "label": "Big Five/HEXACO", "terms": ["Big Five", "HEXACO"]},
+        {"id": "lexical_factor", "label": "leksikal hypotese/faktoranalyse", "terms": ["leksikal", "faktoranalyse"]},
+        {"id": "rank_mean", "label": "rank-order/mean-level", "terms": ["rank-order", "mean-level"]},
+        {"id": "traits_states_activation", "label": "traits/states/trait activation", "terms": ["traits", "states", "trait activation", "træk", "tilstand"]},
+        {"id": "whole_trait", "label": "Whole Trait Theory", "terms": ["Whole Trait"]},
+        {"id": "lpf", "label": "personality functioning/LPF", "terms": ["personality functioning", "LPF"]},
+        {"id": "reification", "label": "reificering", "terms": ["reificering"]},
+        {"id": "idiographic_ergodic", "label": "idiografisk/ergodisk", "terms": ["idiografisk", "ergodisk", "ergodic"]}
+      ]
+    },
+    {
+      "slug": "humanistisk-kritisk-personalisme",
+      "title": "Humanistisk psykologi, kritisk psykologi og kritisk personalisme",
+      "learner_promise": "Træner vækst, anerkendelse, handleevne, social praksis og Sterns personbegreb.",
+      "primary_scope": [
+        "humanistisk psykologi",
+        "kritisk psykologi",
+        "kritisk personalisme"
+      ],
+      "allowed_cross_scope": [
+        "agency/locus som sammenlignende begreber"
+      ],
+      "avoid_as_primary": [
+        "filologi og congenital deficit som centrale spørgsmål uden konkret tekstkontekst"
+      ],
+      "must_cover": [
+        {"id": "self_actualization", "label": "selvaktualisering", "terms": ["selvaktualisering"]},
+        {"id": "congruence", "label": "kongruens", "terms": ["kongruens"]},
+        {"id": "unconditional_positive_regard", "label": "ubetinget positiv anerkendelse", "terms": ["ubetinget positiv anerkendelse", "betinget anerkendelse"]},
+        {"id": "growth_deficit", "label": "growth/deficit", "terms": ["growth", "deficit", "vækst"]},
+        {"id": "restrictive_expansive", "label": "restriktiv/ekspansiv agency", "terms": ["restriktiv", "ekspansiv"]},
+        {"id": "daily_conduct", "label": "daglig livsførelse", "terms": ["daglig livsførelse"]},
+        {"id": "conditions_participation", "label": "betingelser/deltagelse/social praksis", "terms": ["betingelser", "deltagelse", "social praksis"]},
+        {"id": "subject_science_reasons", "label": "subjektvidenskab/grunde", "terms": ["subjektvidenskab", "grunde"]},
+        {"id": "method_fit_coresearcher", "label": "genstandsadækvathed/medforsker", "terms": ["genstandsadækvathed", "medforsker"]},
+        {"id": "introception", "label": "introception", "terms": ["introception"]},
+        {"id": "autotelic_heterotelic", "label": "autotelic/heterotelic", "terms": ["autotelic", "heterotelic", "autotelisk", "heterotelisk"]},
+        {"id": "locus_agency", "label": "locus/handleevne", "terms": ["locus", "handleevne"]}
+      ]
+    },
+    {
+      "slug": "poststrukturalisme-socialkonstruktionisme",
+      "title": "Poststrukturalisme, socialkonstruktionisme og subjektivering",
+      "learner_promise": "Træner historiske, sproglige og magtanalytiske begreber uden at reducere dem til relativisme.",
+      "primary_scope": [
+        "poststrukturalisme",
+        "socialkonstruktionisme",
+        "subjektivering"
+      ],
+      "allowed_cross_scope": [
+        "diagnose- og personlighedseksempler til looping effect og making up people"
+      ],
+      "avoid_as_primary": [
+        "rene psykoanalytiske decentreringsspørgsmål"
+      ],
+      "must_cover": [
+        {"id": "genealogy", "label": "genealogi/Foucault", "terms": ["genealogi", "Foucault"]},
+        {"id": "nominalism", "label": "historical/dynamic nominalism", "terms": ["historical nominalism", "dynamic nominalism", "dynamisk nominalisme", "historisk nominalisme"]},
+        {"id": "dialogism", "label": "dialogism/Bakhtin", "terms": ["dialogisme", "Bakhtin"]},
+        {"id": "historical_levels", "label": "sociogenese/ontogenese/fylogenese", "terms": ["sociogenese", "ontogenese", "fylogenese"]},
+        {"id": "discourse", "label": "diskurs", "terms": ["diskurs"]},
+        {"id": "power_knowledge", "label": "magt/viden", "terms": ["magt", "viden"]},
+        {"id": "subjectivation", "label": "subjektivering", "terms": ["subjektivering"]},
+        {"id": "positioning", "label": "positionering", "terms": ["positionering"]},
+        {"id": "anti_essentialism_decentered", "label": "anti-essentialisme/decentreret subjekt", "terms": ["anti-essentialisme", "decentreret"]},
+        {"id": "looping_making_up", "label": "looping effect/making up people", "terms": ["looping effect", "making up people"]},
+        {"id": "performativity_heteroglossia", "label": "performativity/heteroglossia", "terms": ["performativitet", "performativity", "heteroglossia"]}
+      ]
+    },
+    {
+      "slug": "narrativ-blandet-eksamen",
+      "title": "Narrativ psykologi og tværgående begrebsrepetition",
+      "learner_promise": "Træner narrativ identitet, fortællingens begreber og et mindre sæt tværgående eksamensbegreber.",
+      "primary_scope": [
+        "narrativ psykologi",
+        "tværgående begrebsrepetition"
+      ],
+      "allowed_cross_scope": [
+        "ontologi, historicitet, agency og dialogisme som repetition på tværs"
+      ],
+      "avoid_as_primary": [
+        "lange rene fænomenologi- eller kritisk personalisme-spørgsmål, når de ikke kobles til narrativ repetition"
+      ],
+      "must_cover": [
+        {"id": "narrative_identity", "label": "narrativ identitet/livshistorie", "terms": ["narrativ identitet", "livshistorie"]},
+        {"id": "cultural_narratives", "label": "kulturelle narrativer", "terms": ["kulturelle narrativer"]},
+        {"id": "alternative_stories", "label": "alternative historier", "terms": ["alternative historier"]},
+        {"id": "meaning_making", "label": "meaning-making/meningsskabelse", "terms": ["meaning-making", "meningsskabelse"]},
+        {"id": "plot", "label": "plot", "terms": ["plot"]},
+        {"id": "folk_psychology", "label": "folk psychology", "terms": ["folk psychology"]},
+        {"id": "orientation_repetition", "label": "tværgående orienteringsrepetition", "terms": ["ontologi", "historicitet", "fylogenese", "dialogisme"]}
+      ]
+    }
+  ]
+}

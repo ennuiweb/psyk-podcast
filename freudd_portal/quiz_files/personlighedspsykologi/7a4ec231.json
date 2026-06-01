@@ -1,21 +1,21 @@
 {
-  "title": "Personlighedspsykologi Quiz",
+  "title": "Træk, måling og personlighedsfunktion",
   "questions": [
     {
-      "question": "Hvad er den prim\u00e6re forskel p\u00e5 HEXACO-modellen og Big Five (Five-Factor Model)?",
+      "question": "Hvad er den primære forskel på HEXACO-modellen og Big Five (Five-Factor Model)?",
       "answerOptions": [
         {
-          "text": "HEXACO tilf\u00f8jer dimensionen Honesty-Humility (\u00c6rlighed-Ydmyghed).",
+          "text": "HEXACO tilføjer dimensionen Honesty-Humility (Ærlighed-Ydmyghed).",
           "isCorrect": true,
-          "rationale": "HEXACO-modellen udvider de klassiske fem faktorer med en sjette dimension, der specifikt fanger tr\u00e6k relateret til oprigtighed og mangel p\u00e5 gr\u00e5dighed."
+          "rationale": "HEXACO-modellen udvider de klassiske fem faktorer med en sjette dimension, der specifikt fanger træk relateret til oprigtighed og mangel på grådighed."
         },
         {
           "text": "HEXACO er en rent kvalitativ model, mens Big Five er kvantitativ.",
           "isCorrect": false,
-          "rationale": "Begge modeller er taksonomiske og bygger p\u00e5 kvantitative metoder som faktoranalyse."
+          "rationale": "Begge modeller er taksonomiske og bygger på kvantitative metoder som faktoranalyse."
         },
         {
-          "text": "Big Five fokuserer kun p\u00e5 patologiske tr\u00e6k, mens HEXACO ser p\u00e5 normalomr\u00e5det.",
+          "text": "Big Five fokuserer kun på patologiske træk, mens HEXACO ser på normalområdet.",
           "isCorrect": false,
           "rationale": "Begge modeller er designet til at beskrive den generelle personlighedsstruktur i normalbefolkningen."
         },
@@ -25,33 +25,33 @@
           "rationale": "Faktisk er Emotionalitet i HEXACO en variant af Neuroticisme-dimensionen, ikke en erstatning der udelukker den."
         }
       ],
-      "hint": "Overvej hvilken specifik menneskelig egenskab, der ofte anses for at v\u00e6re den 'sjette' faktor."
+      "hint": "Overvej hvilken specifik menneskelig egenskab, der ofte anses for at være den 'sjette' faktor."
     },
     {
-      "question": "Hvis en hel \u00e5rgang studerende i gennemsnit bliver mere modne over fire \u00e5r, men bevarer deres indbyrdes placering i gruppen, hvad er s\u00e5 kendetegnet ved denne udvikling?",
+      "question": "Hvis en hel årgang studerende i gennemsnit bliver mere modne over fire år, men bevarer deres indbyrdes placering i gruppen, hvad er så kendetegnet ved denne udvikling?",
       "answerOptions": [
         {
-          "text": "H\u00f8j rank-order stability og h\u00f8j mean-level change.",
+          "text": "Høj rank-order stability og høj mean-level change.",
           "isCorrect": true,
-          "rationale": "Rank-order stability beskriver den relative placering, mens mean-level change beskriver \u00e6ndringer i gruppens gennemsnit over tid."
+          "rationale": "Rank-order stability beskriver den relative placering, mens mean-level change beskriver ændringer i gruppens gennemsnit over tid."
         },
         {
           "text": "Lav rank-order stability og lav mean-level change.",
           "isCorrect": false,
-          "rationale": "Hvis de bevarer deres indbyrdes placering, er rank-order stabiliteten h\u00f8j, ikke lav."
+          "rationale": "Hvis de bevarer deres indbyrdes placering, er rank-order stabiliteten høj, ikke lav."
         },
         {
-          "text": "H\u00f8j rank-order stability og lav mean-level change.",
+          "text": "Høj rank-order stability og lav mean-level change.",
           "isCorrect": false,
-          "rationale": "Da gruppens gennemsnit \u00e6ndrer sig (de bliver mere modne), m\u00e5 der v\u00e6re tale om en mean-level change."
+          "rationale": "Da gruppens gennemsnit ændrer sig (de bliver mere modne), må der være tale om en mean-level change."
         },
         {
-          "text": "Kun mean-level change er relevant, da rank-order stabilitet kr\u00e6ver absolut uforanderlighed.",
+          "text": "Kun mean-level change er relevant, da rank-order stabilitet kræver absolut uforanderlighed.",
           "isCorrect": false,
-          "rationale": "Rank-order stabilitet kan sagtens eksistere sidel\u00f8bende med, at alle i gruppen \u00e6ndrer sig absolut."
+          "rationale": "Rank-order stabilitet kan sagtens eksistere sideløbende med, at alle i gruppen ændrer sig absolut."
         }
       ],
-      "hint": "Skeln mellem personens placering i forhold til andre og gruppens samlede bev\u00e6gelse."
+      "hint": "Skeln mellem personens placering i forhold til andre og gruppens samlede bevægelse."
     },
     {
       "question": "Hvad postulerer den 'leksikale hypotese'?",
@@ -59,207 +59,259 @@
         {
           "text": "At vigtige personlighedsforskelle over tid er blevet indkodet i menneskets sprog.",
           "isCorrect": true,
-          "rationale": "Hypotesen antager, at de mest relevante tr\u00e6k for social interaktion vil findes som adjektiver eller beskrivelser i sproget."
+          "rationale": "Hypotesen antager, at de mest relevante træk for social interaktion vil findes som adjektiver eller beskrivelser i sproget."
         },
         {
-          "text": "At personlighed bedst kan forst\u00e5s gennem en analyse af personens egen livshistorie.",
+          "text": "At personlighed bedst kan forstås gennem en analyse af personens egen livshistorie.",
           "isCorrect": false,
-          "rationale": "Dette lyder mere som en narrativ tilgang; den leksikale hypotese ser p\u00e5 sproget som helhed, ikke den enkeltes fort\u00e6lling."
+          "rationale": "Dette lyder mere som en narrativ tilgang; den leksikale hypotese ser på sproget som helhed, ikke den enkeltes fortælling."
         },
         {
-          "text": "At personligheden er genetisk bestemt og uafh\u00e6ngig af kulturelle sprogforskelle.",
+          "text": "At personligheden er genetisk bestemt og uafhængig af kulturelle sprogforskelle.",
           "isCorrect": false,
-          "rationale": "Den leksikale hypotese tager netop udgangspunkt i kulturelt skabte sprog som kilde til viden om tr\u00e6k."
+          "rationale": "Den leksikale hypotese tager netop udgangspunkt i kulturelt skabte sprog som kilde til viden om træk."
         },
         {
-          "text": "At faktoranalyse er den eneste m\u00e5de at validere personlighedstests p\u00e5.",
+          "text": "At faktoranalyse er den eneste måde at validere personlighedstests på.",
           "isCorrect": false,
-          "rationale": "Faktoranalyse er en statistisk metode, der ofte bruges *p\u00e5* leksikale data, men det er ikke selve hypotesen."
+          "rationale": "Faktoranalyse er en statistisk metode, der ofte bruges *på* leksikale data, men det er ikke selve hypotesen."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 sammenh\u00e6ngen mellem dagligdags ordforr\u00e5d og psykologiske dimensioner."
+      "hint": "Tænk på sammenhængen mellem dagligdags ordforråd og psykologiske dimensioner."
     },
     {
       "question": "Hvad er den 'ergodiske fejlslutning' (ergodic fallacy) i personlighedspsykologi?",
       "answerOptions": [
         {
-          "text": "At antage, at statistiske m\u00f8nstre fundet p\u00e5 gruppeniveau direkte kan overf\u00f8res til det enkelte individs proces.",
+          "text": "At antage, at statistiske mønstre fundet på gruppeniveau direkte kan overføres til det enkelte individs proces.",
           "isCorrect": true,
-          "rationale": "Fejlslutningen opst\u00e5r, n\u00e5r man tror, at tv\u00e6rsnitsdata fra en population forklarer den dynamiske udvikling for en specifik person."
+          "rationale": "Fejlslutningen opstår, når man tror, at tværsnitsdata fra en population forklarer den dynamiske udvikling for en specifik person."
         },
         {
-          "text": "At tro, at et personlighedstr\u00e6k er en fysisk ting, der findes i hjernen.",
+          "text": "At tro, at et personlighedstræk er en fysisk ting, der findes i hjernen.",
           "isCorrect": false,
           "rationale": "Dette kaldes reificering, som er en anden type begrebslig fejlslutning."
         },
         {
-          "text": "At fejlagtigt konkludere, at personligheden holder op med at udvikle sig efter 30-\u00e5rs alderen.",
+          "text": "At fejlagtigt konkludere, at personligheden holder op med at udvikle sig efter 30-års alderen.",
           "isCorrect": false,
-          "rationale": "Dette er en empirisk p\u00e5stand om stabilitet, ikke en logisk eller metodisk fejlslutning om dataniveauer."
+          "rationale": "Dette er en empirisk påstand om stabilitet, ikke en logisk eller metodisk fejlslutning om dataniveauer."
         },
         {
-          "text": "At tro, at sproget er en d\u00e6kkende repr\u00e6sentation af hele personens psyke.",
+          "text": "At tro, at sproget er en dækkende repræsentation af hele personens psyke.",
           "isCorrect": false,
-          "rationale": "Dette er en kritik af den leksikale hypotese, men ikke det, man forst\u00e5r ved den ergodiske fejlslutning."
+          "rationale": "Dette er en kritik af den leksikale hypotese, men ikke det, man forstår ved den ergodiske fejlslutning."
         }
       ],
-      "hint": "Overvej forholdet mellem hvad der g\u00e6lder for 'gennemsnittet' og hvad der g\u00e6lder for 'dig'."
+      "hint": "Overvej forholdet mellem hvad der gælder for 'gennemsnittet' og hvad der gælder for 'dig'."
     },
     {
-      "question": "Hvordan forst\u00e5r 'Whole Trait Theory' personlighedstr\u00e6k?",
+      "question": "Hvordan forstår 'Whole Trait Theory' personlighedstræk?",
       "answerOptions": [
         {
-          "text": "Som b\u00e5de stabile gennemsnitlige tendenser og fordelinger af varierende tilstande (states) over tid.",
+          "text": "Som både stabile gennemsnitlige tendenser og fordelinger af varierende tilstande (states) over tid.",
           "isCorrect": true,
-          "rationale": "Teorien forener den klassiske tr\u00e6kforst\u00e5else med observationen af, at folk handler forskelligt afh\u00e6ngigt af situationen."
+          "rationale": "Teorien forener den klassiske trækforståelse med observationen af, at folk handler forskelligt afhængigt af situationen."
         },
         {
-          "text": "Som rent biologiske essenser, der er up\u00e5virkelige af sociale situationer.",
+          "text": "Som rent biologiske essenser, der er upåvirkelige af sociale situationer.",
           "isCorrect": false,
-          "rationale": "Whole Trait Theory fors\u00f8ger netop at inkludere situationel variation frem for kun at se p\u00e5 biologisk essens."
+          "rationale": "Whole Trait Theory forsøger netop at inkludere situationel variation frem for kun at se på biologisk essens."
         },
         {
-          "text": "Som udelukkende v\u00e6rende sociale konstruktioner uden nogen indre kerne.",
+          "text": "Som udelukkende værende sociale konstruktioner uden nogen indre kerne.",
           "isCorrect": false,
-          "rationale": "Teorien bevarer stadig ideen om tr\u00e6k som gennemsnitlige tendenser og er derfor ikke rent socialkonstruktionistisk."
+          "rationale": "Teorien bevarer stadig ideen om træk som gennemsnitlige tendenser og er derfor ikke rent socialkonstruktionistisk."
         },
         {
-          "text": "Som en samling af ubevidste konflikter, der manifesterer sig som adf\u00e6rdsm\u00f8nstre.",
+          "text": "Som en samling af ubevidste konflikter, der manifesterer sig som adfærdsmønstre.",
           "isCorrect": false,
-          "rationale": "Dette er en psykoanalytisk vinkling, mens Whole Trait Theory er forankret i moderne tr\u00e6k- og procespsykologi."
+          "rationale": "Dette er en psykoanalytisk vinkling, mens Whole Trait Theory er forankret i moderne træk- og procespsykologi."
         }
       ],
-      "hint": "Teorien fors\u00f8ger at bygge bro mellem 'traits' (stabile) og 'states' (foranderlige)."
+      "hint": "Teorien forsøger at bygge bro mellem 'traits' (stabile) og 'states' (foranderlige)."
     },
     {
-      "question": "Hvad er fokus, n\u00e5r man taler om 'personality functioning' (LPF) i moderne diagnostik?",
+      "question": "Hvad er fokus, når man taler om 'personality functioning' (LPF) i moderne diagnostik?",
       "answerOptions": [
         {
-          "text": "Graden af sv\u00e6kkelse i selvfunktion (identitet/selvstyring) og interpersonel funktion (empati/intimitet).",
+          "text": "Graden af svækkelse i selvfunktion (identitet/selvstyring) og interpersonel funktion (empati/intimitet).",
           "isCorrect": true,
-          "rationale": "LPF flytter fokus fra kategoriske diagnoser til en dimensional forst\u00e5else af, hvordan personligheden grundl\u00e6ggende fungerer."
+          "rationale": "LPF flytter fokus fra kategoriske diagnoser til en dimensional forståelse af, hvordan personligheden grundlæggende fungerer."
         },
         {
-          "text": "Hvorvidt en person scorer h\u00f8jt eller lavt p\u00e5 de klassiske fem faktorer i Big Five.",
+          "text": "Hvorvidt en person scorer højt eller lavt på de klassiske fem faktorer i Big Five.",
           "isCorrect": false,
-          "rationale": "Selvom tr\u00e6k er relevante, handler LPF om personlighedens organisering og funktion, ikke blot tr\u00e6k-niveauer."
+          "rationale": "Selvom træk er relevante, handler LPF om personlighedens organisering og funktion, ikke blot træk-niveauer."
         },
         {
-          "text": "Hvor hurtigt en person kan l\u00f8se komplekse kognitive opgaver under pres.",
+          "text": "Hvor hurtigt en person kan løse komplekse kognitive opgaver under pres.",
           "isCorrect": false,
-          "rationale": "Dette refererer til kognitiv form\u00e5en eller intelligens, hvilket er noget andet end personlighedsfunktion."
+          "rationale": "Dette refererer til kognitiv formåen eller intelligens, hvilket er noget andet end personlighedsfunktion."
         },
         {
-          "text": "Om personligheden er bestemt af biologiske faktorer eller opv\u00e6kstbetingelser.",
+          "text": "Om personligheden er bestemt af biologiske faktorer eller opvækstbetingelser.",
           "isCorrect": false,
-          "rationale": "LPF beskriver den aktuelle funktionelle tilstand frem for at fors\u00f8ge at forklare de bagvedliggende \u00e5rsager."
+          "rationale": "LPF beskriver den aktuelle funktionelle tilstand frem for at forsøge at forklare de bagvedliggende årsager."
         }
       ],
       "hint": "Det handler om hvordan man forholder sig til sig selv og andre, snarere end hvilken 'type' man er."
     },
     {
-      "question": "Hvad indeb\u00e6rer begrebet 'reificering' i en personlighedspsykologisk sammenh\u00e6ng?",
+      "question": "Hvad indebærer begrebet 'reificering' i en personlighedspsykologisk sammenhæng?",
       "answerOptions": [
         {
-          "text": "At behandle en abstrakt m\u00e5ling eller model (som en tr\u00e6kscore) som om den var en konkret, fysisk virkelighed.",
+          "text": "At behandle en abstrakt måling eller model (som en trækscore) som om den var en konkret, fysisk virkelighed.",
           "isCorrect": true,
-          "rationale": "Reificering betyder 'tingsligg\u00f8relse' og kritiseres ofte, n\u00e5r man glemmer, at tr\u00e6k er teoretiske konstruktioner."
+          "rationale": "Reificering betyder 'tingsliggørelse' og kritiseres ofte, når man glemmer, at træk er teoretiske konstruktioner."
         },
         {
-          "text": "At gentage et videnskabeligt fors\u00f8g for at se, om resultaterne er stabile.",
+          "text": "At gentage et videnskabeligt forsøg for at se, om resultaterne er stabile.",
           "isCorrect": false,
           "rationale": "Dette kaldes replikation, ikke reificering."
         },
         {
-          "text": "At \u00e6ndre sin personlighed gennem bevidst tr\u00e6ning af nye vaner.",
+          "text": "At ændre sin personlighed gennem bevidst træning af nye vaner.",
           "isCorrect": false,
-          "rationale": "Dette vedr\u00f8rer personlighedsudvikling eller intervention, ikke den teoretiske tingsligg\u00f8relse af begreber."
+          "rationale": "Dette vedrører personlighedsudvikling eller intervention, ikke den teoretiske tingsliggørelse af begreber."
         },
         {
-          "text": "At reducere alle menneskelige handlinger til et sp\u00f8rgsm\u00e5l om kulturel diskurs.",
+          "text": "At reducere alle menneskelige handlinger til et spørgsmål om kulturel diskurs.",
           "isCorrect": false,
           "rationale": "Dette er snarere en form for socialkonstruktionistisk reduktionisme."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 det latinske ord 'res', der betyder ting."
+      "hint": "Tænk på det latinske ord 'res', der betyder ting."
     },
     {
-      "question": "Hvilken af de f\u00f8lgende videnskabelige tilgange vil typisk betone 'kontekst' frem for 'essens'?",
+      "question": "Hvilken af de følgende videnskabelige tilgange vil typisk betone 'kontekst' frem for 'essens'?",
       "answerOptions": [
         {
           "text": "Poststrukturalisme og narrativ teori.",
           "isCorrect": true,
-          "rationale": "Disse teorier ser personlighed som noget, der opst\u00e5r i relationer, sprog og specifikke situationer frem for som indre, faste egenskaber."
+          "rationale": "Disse teorier ser personlighed som noget, der opstår i relationer, sprog og specifikke situationer frem for som indre, faste egenskaber."
         },
         {
-          "text": "Klassisk tr\u00e6kpsykologi.",
+          "text": "Klassisk trækpsykologi.",
           "isCorrect": false,
-          "rationale": "Tr\u00e6kpsykologi s\u00f8ger oftest de stabile, indre dispositioner (essens), selvom moderne versioner inddrager situationer."
+          "rationale": "Trækpsykologi søger oftest de stabile, indre dispositioner (essens), selvom moderne versioner inddrager situationer."
         },
         {
-          "text": "Adf\u00e6rdsgenetik.",
+          "text": "Adfærdsgenetik.",
           "isCorrect": false,
-          "rationale": "Adf\u00e6rdsgenetik fokuserer p\u00e5 biologiske anl\u00e6g, hvilket ofte l\u00e6gger sig t\u00e6t op ad en essens-forst\u00e5else."
+          "rationale": "Adfærdsgenetik fokuserer på biologiske anlæg, hvilket ofte lægger sig tæt op ad en essens-forståelse."
         },
         {
           "text": "Nomotetisk forskning.",
           "isCorrect": false,
-          "rationale": "Nomotetisk forskning s\u00f8ger generelle love p\u00e5 tv\u00e6rs af kontekster, hvilket ofte nedtoner den specifikke konteksts betydning."
+          "rationale": "Nomotetisk forskning søger generelle love på tværs af kontekster, hvilket ofte nedtoner den specifikke konteksts betydning."
         }
       ],
-      "hint": "Hvilke teorier er optaget af sprog, magt og historiske fort\u00e6llinger?"
+      "hint": "Hvilke teorier er optaget af sprog, magt og historiske fortællinger?"
     },
     {
       "question": "Hvad kendetegner en 'idiografisk' metode?",
       "answerOptions": [
         {
-          "text": "Et fokus p\u00e5 det enkelte individs unikke organisering og konkrete liv.",
+          "text": "Et fokus på det enkelte individs unikke organisering og konkrete liv.",
           "isCorrect": true,
-          "rationale": "Den idiografiske tilgang s\u00f8ger at forst\u00e5 det s\u00e6regne ved det enkelte menneske frem for generelle lovm\u00e6ssigheder."
+          "rationale": "Den idiografiske tilgang søger at forstå det særegne ved det enkelte menneske frem for generelle lovmæssigheder."
         },
         {
-          "text": "Brug af store datas\u00e6t for at finde gennemsnitlige m\u00f8nstre i en befolkning.",
+          "text": "Brug af store datasæt for at finde gennemsnitlige mønstre i en befolkning.",
           "isCorrect": false,
           "rationale": "Dette er beskrivelsen af en nomotetisk metode."
         },
         {
-          "text": "S\u00f8gningen efter universelle personlighedstr\u00e6k p\u00e5 tv\u00e6rs af kulturer.",
+          "text": "Søgningen efter universelle personlighedstræk på tværs af kulturer.",
           "isCorrect": false,
-          "rationale": "Universelle tr\u00e6k er et nomotetisk projekt, da det s\u00f8ger generelle love (nomos)."
+          "rationale": "Universelle træk er et nomotetisk projekt, da det søger generelle love (nomos)."
         },
         {
-          "text": "En statistisk analyse af forholdet mellem items i en sp\u00f8rgeskemaunders\u00f8gelse.",
+          "text": "En statistisk analyse af forholdet mellem items i en spørgeskemaundersøgelse.",
           "isCorrect": false,
           "rationale": "Dette er en teknisk procedure, der oftest bruges i nomotetisk forskning for at validere skalaer."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 mods\u00e6tningen mellem 'det unikke' og 'det generelle'."
+      "hint": "Tænk på modsætningen mellem 'det unikke' og 'det generelle'."
     },
     {
       "question": "Hvordan adskiller 'historicitet' i kritisk psykologi sig fra blot at tale om 'fortid'?",
       "answerOptions": [
         {
-          "text": "Det indeb\u00e6rer, at subjektet forst\u00e5s som formet gennem samfundsm\u00e6ssige praksissers historie.",
+          "text": "Det indebærer, at subjektet forstås som formet gennem samfundsmæssige praksissers historie.",
           "isCorrect": true,
-          "rationale": "Historicitet i denne tradition peger p\u00e5, at mennesket ikke er tidl\u00f8st, men udvikles i takt med historiske og materielle betingelser."
+          "rationale": "Historicitet i denne tradition peger på, at mennesket ikke er tidløst, men udvikles i takt med historiske og materielle betingelser."
         },
         {
-          "text": "Det betyder kun, at man ser p\u00e5 personens barndomstraumer.",
+          "text": "Det betyder kun, at man ser på personens barndomstraumer.",
           "isCorrect": false,
-          "rationale": "Dette er en sn\u00e6ver klinisk/psykoanalytisk forst\u00e5else af fortid, ikke den brede samfundsm\u00e6ssige historicitet."
+          "rationale": "Dette er en snæver klinisk/psykoanalytisk forståelse af fortid, ikke den brede samfundsmæssige historicitet."
         },
         {
-          "text": "Det refererer udelukkende til artens biologiske evolution\u00e6re historie.",
+          "text": "Det refererer udelukkende til artens biologiske evolutionære historie.",
           "isCorrect": false,
-          "rationale": "Dette kaldes evolution\u00e6r psykologi; historicitet i kritisk psykologi v\u00e6gter de sociokulturelle processer."
+          "rationale": "Dette kaldes evolutionær psykologi; historicitet i kritisk psykologi vægter de sociokulturelle processer."
         },
         {
-          "text": "Det betyder, at man ser bort fra fremtiden for at fokusere p\u00e5 nuet.",
+          "text": "Det betyder, at man ser bort fra fremtiden for at fokusere på nuet.",
           "isCorrect": false,
           "rationale": "Historicitet forbinder netop fortid, nutid og de handlemuligheder, der peger mod fremtiden."
         }
       ],
-      "hint": "Overvej hvordan samfundets udvikling p\u00e5virker den m\u00e5de, vi er subjekter p\u00e5."
+      "hint": "Overvej hvordan samfundets udvikling påvirker den måde, vi er subjekter på."
+    },
+    {
+      "question": "Hvordan hænger den leksikale hypotese sammen med faktoranalyse i trækpsykologien?",
+      "answerOptions": [
+        {
+          "text": "Den leksikale hypotese peger på sprogets personlighedsord, mens faktoranalyse bruges til at finde mønstre eller dimensioner i vurderingerne.",
+          "isCorrect": true,
+          "rationale": "Det kobler trækmodellernes sproglige udgangspunkt til deres statistiske metode."
+        },
+        {
+          "text": "Den leksikale hypotese afviser al statistik, mens faktoranalyse kun bruges i psykoanalyse.",
+          "isCorrect": false,
+          "rationale": "Faktoranalyse er central i trækpsykologi, og den leksikale hypotese afviser den ikke."
+        },
+        {
+          "text": "Begge begreber betyder, at personlighed kun findes som én global faktor.",
+          "isCorrect": false,
+          "rationale": "Trækmodeller søger typisk flere dimensioner."
+        },
+        {
+          "text": "Faktoranalyse beviser, at træk er fysiske ting i hjernen.",
+          "isCorrect": false,
+          "rationale": "Det ville være reificering af en statistisk struktur."
+        }
+      ],
+      "hint": "Skeln mellem hvor ordene kommer fra, og hvordan mønstrene udledes."
+    },
+    {
+      "question": "Hvad tilføjer 'trait activation' til en simpel forståelse af stabile træk?",
+      "answerOptions": [
+        {
+          "text": "At træk kommer til udtryk som states i bestemte situationer, hvor relevante cues aktiverer tendensen.",
+          "isCorrect": true,
+          "rationale": "Det gør trækpsykologien mere kontekstfølsom uden at opgive stabile dispositioner."
+        },
+        {
+          "text": "At situationer er irrelevante, hvis et træk er stabilt.",
+          "isCorrect": false,
+          "rationale": "Trait activation handler netop om situationers betydning."
+        },
+        {
+          "text": "At states og traits er helt uafhængige fænomener uden forbindelse.",
+          "isCorrect": false,
+          "rationale": "Pointen er forbindelsen mellem stabile tendenser og øjeblikkelige tilstande."
+        },
+        {
+          "text": "At personlighed kun kan forstås gennem narrativer og aldrig gennem måling.",
+          "isCorrect": false,
+          "rationale": "Det er en anden tradition, ikke trait activation."
+        }
+      ],
+      "hint": "Tænk på træk som en tendens, der viser sig forskelligt i konkrete situationer."
     }
   ]
 }

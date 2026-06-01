@@ -1,200 +1,200 @@
 {
-  "title": "Videnskabsteori Quiz",
+  "title": "Videnskabsteori og orienteringspunkter",
   "questions": [
     {
-      "question": "Hvilket sp\u00f8rgsm\u00e5l fors\u00f8ger man at besvare, n\u00e5r man unders\u00f8ger en teoris ontologi?",
+      "question": "Hvilket spørgsmål forsøger man at besvare, når man undersøger en teoris ontologi?",
       "answerOptions": [
         {
-          "text": "Hvilken slags genstand eller v\u00e6sen er personligheden?",
+          "text": "Hvilken slags genstand eller væsen er personligheden?",
           "isCorrect": true,
-          "rationale": "Ontologi handler om v\u00e6ren og grundstatus, alts\u00e5 hvad personligheden eller subjektet fundamentalt set er."
+          "rationale": "Ontologi handler om væren og grundstatus, altså hvad personligheden eller subjektet fundamentalt set er."
         },
         {
-          "text": "Hvilken m\u00e5lemetode er mest pr\u00e6cis til at indfange tr\u00e6k?",
+          "text": "Hvilken målemetode er mest præcis til at indfange træk?",
           "isCorrect": false,
-          "rationale": "Dette sp\u00f8rgsm\u00e5l vedr\u00f8rer metodologi og epistemologi frem for selve genstandens v\u00e6sen."
+          "rationale": "Dette spørgsmål vedrører metodologi og epistemologi frem for selve genstandens væsen."
         },
         {
-          "text": "Hvordan kan vi opn\u00e5 sikker viden om en persons indre liv?",
+          "text": "Hvordan kan vi opnå sikker viden om en persons indre liv?",
           "isCorrect": false,
-          "rationale": "Dette er et epistemologisk sp\u00f8rgsm\u00e5l, da det handler om muligheden for og adgangen til viden."
+          "rationale": "Dette er et epistemologisk spørgsmål, da det handler om muligheden for og adgangen til viden."
         },
         {
-          "text": "Hvilke v\u00e6rdier b\u00f8r ligge til grund for en sund personlighed?",
+          "text": "Hvilke værdier bør ligge til grund for en sund personlighed?",
           "isCorrect": false,
-          "rationale": "Dette vedr\u00f8rer det normative aspekt af teorien, alts\u00e5 idealer og vurderinger."
+          "rationale": "Dette vedrører det normative aspekt af teorien, altså idealer og vurderinger."
         }
       ],
-      "hint": "Overvej om fokus er p\u00e5 genstandens 'hvad' eller p\u00e5 vores adgang til viden."
+      "hint": "Overvej om fokus er på genstandens 'hvad' eller på vores adgang til viden."
     },
     {
-      "question": "Hvad er den 'ergodiske fejlslutning' i forbindelse med personlighedsm\u00e5ling?",
+      "question": "Hvad er den 'ergodiske fejlslutning' i forbindelse med personlighedsmåling?",
       "answerOptions": [
         {
-          "text": "At antage, at gennemsnitsm\u00f8nstre i en population direkte kan overf\u00f8res til det enkelte individs udvikling over tid.",
+          "text": "At antage, at gennemsnitsmønstre i en population direkte kan overføres til det enkelte individs udvikling over tid.",
           "isCorrect": true,
-          "rationale": "Fejlslutningen opst\u00e5r, n\u00e5r man forveksler statistiske m\u00f8nstre p\u00e5 gruppeniveau med individuelle dynamiske processer."
+          "rationale": "Fejlslutningen opstår, når man forveksler statistiske mønstre på gruppeniveau med individuelle dynamiske processer."
         },
         {
-          "text": "At tro, at en personlighedstest m\u00e5ler det samme uanset hvilken kultur, den anvendes i.",
+          "text": "At tro, at en personlighedstest måler det samme uanset hvilken kultur, den anvendes i.",
           "isCorrect": false,
           "rationale": "Dette er en diskussion om kulturel validitet eller universalisme, ikke den ergodiske fejlslutning."
         },
         {
           "text": "At behandle en abstrakt score som om det var en fysisk ting i personens hjerne.",
           "isCorrect": false,
-          "rationale": "Dette beskriver begrebet reificering, som handler om tingsligg\u00f8relse af begreber."
+          "rationale": "Dette beskriver begrebet reificering, som handler om tingsliggørelse af begreber."
         },
         {
-          "text": "At konkludere at personligheden er 100% biologisk bestemt uden at medregne milj\u00f8.",
+          "text": "At konkludere at personligheden er 100% biologisk bestemt uden at medregne miljø.",
           "isCorrect": false,
           "rationale": "Dette er en form for biologisk determinisme, som er et andet teoretisk problem."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 forholdet mellem statistiske gennemsnit og den konkrete persons unikke forl\u00f8b."
+      "hint": "Tænk på forholdet mellem statistiske gennemsnit og den konkrete persons unikke forløb."
     },
     {
-      "question": "Inden for f\u00e6nomenologien anvendes begrebet 'epoch\u00e9' (bracketing). Hvad er form\u00e5let med dette?",
+      "question": "Hvad betyder Foucaults begreb 'episteme' i en videnskabsteoretisk sammenhæng?",
       "answerOptions": [
         {
-          "text": "At tilsides\u00e6tte teoretiske forudantagelser for at beskrive den levede erfaring s\u00e5 rent som muligt.",
+          "text": "En historisk orden for, hvad der kan fremstå som viden og sandhed i en periode.",
           "isCorrect": true,
-          "rationale": "Epoch\u00e9 handler om metodisk at s\u00e6tte parentes om domme og teorier for at lade f\u00e6nomenet fremtr\u00e6de i sig selv."
+          "rationale": "Episteme handler om de historiske mulighedsbetingelser for viden, ikke bare om enkelte påstande."
         },
         {
-          "text": "At fortolke det ubevidste indhold bag personens umiddelbare fort\u00e6lling.",
+          "text": "En individuel persons samlede mængde af faktuel viden.",
           "isCorrect": false,
-          "rationale": "Dette er en hermeneutisk eller psykoanalytisk tilgang, hvor man s\u00f8ger bag om overfladen."
+          "rationale": "Det reducerer episteme til almindelig viden hos et individ."
         },
         {
-          "text": "At opstille hypoteser der kan efterpr\u00f8ves gennem statistisk faktoranalyse.",
+          "text": "En statistisk metode til at udlede personlighedstræk fra spørgeskemaer.",
           "isCorrect": false,
-          "rationale": "Dette tilh\u00f8rer en nomotetisk og positivistisk tradition, som f\u00e6nomenologien ofte kontrasteres med."
+          "rationale": "Det hører til metode/måling, ikke Foucaults videnshistoriske begreb."
         },
         {
-          "text": "At vurdere om personens oplevelse lever op til samfundets normer for normalitet.",
+          "text": "En klinisk teknik til at afdække ubevidste konflikter i terapi.",
           "isCorrect": false,
-          "rationale": "F\u00e6nomenologien er deskriptiv og s\u00f8ger at forst\u00e5 oplevelsen frem for at vurdere den normativt."
+          "rationale": "Det ligger tættere på psykoanalytisk metode end på episteme."
         }
       ],
-      "hint": "Det handler om at rydde det mentale bord for at se det, der rent faktisk er der."
+      "hint": "Tænk på hvad en periode overhovedet kan opfatte som sandt eller videnskabeligt."
     },
     {
-      "question": "Hvis en teori betragter subjektet som 'historisk og diskursivt produceret', hvilken videnskabsteoretisk position er der s\u00e5 tale om?",
+      "question": "Når man bruger aksen 'essens vs. kontekst' til at sammenligne teorier, hvad spørger man da om?",
       "answerOptions": [
         {
-          "text": "Poststrukturalisme",
+          "text": "Om personlighed forstås som en stabil indre kerne eller som noget, der formes i relation til situation, historie og praksis.",
           "isCorrect": true,
-          "rationale": "Poststrukturalismen ser subjektivitet som en effekt af sproglige ordninger (diskurser) og historiske magtforhold."
+          "rationale": "Aksen handler om teoriens locus for personlighed: indre stabilitet eller situeret kontekst."
         },
         {
-          "text": "Tr\u00e6kpsykologi",
+          "text": "Om en teori er skrevet på dansk eller engelsk.",
           "isCorrect": false,
-          "rationale": "Tr\u00e6kpsykologien ser typisk personlighed som stabile dispositioner frem for historiske produkter."
+          "rationale": "Det er en sproglig detalje, ikke et orienteringspunkt."
         },
         {
-          "text": "Klassisk humanisme",
+          "text": "Om forskeren foretrækker interviews frem for spørgeskemaer uanset teoriens personbegreb.",
           "isCorrect": false,
-          "rationale": "Humanistisk psykologi betoner ofte en indre kerne eller et selv, der skal aktualiseres, snarere end diskursiv produktion."
+          "rationale": "Metode er relevant, men essens/kontekst handler først om, hvad personlighed antages at være."
         },
         {
-          "text": "Biologisk determinisme",
+          "text": "Om personlighed altid bør forklares biologisk frem for socialt.",
           "isCorrect": false,
-          "rationale": "Denne position placerer \u00e5rsagen i biologien og ikke i de historiske eller diskursive sammenh\u00e6nge."
+          "rationale": "Det er for snævert; kontekst kan være kropslig, relationel, historisk, kulturel eller diskursiv."
         }
       ],
-      "hint": "Fokus\u00e9r p\u00e5 betydningen af sprog og magt i skabelsen af individet."
+      "hint": "Spørg hvor teorien placerer personlighedens tyngdepunkt."
     },
     {
       "question": "Hvad vil det sige, at et personbegreb er 'idiografisk'?",
       "answerOptions": [
         {
-          "text": "At det s\u00f8ger at forst\u00e5 det unikke og enkelte individ i dets konkrete kontekst.",
+          "text": "At det søger at forstå det unikke og enkelte individ i dets konkrete kontekst.",
           "isCorrect": true,
-          "rationale": "Den idiografiske tilgang fokuserer p\u00e5 det s\u00e6regne ved den enkelte person frem for generelle love."
+          "rationale": "Den idiografiske tilgang fokuserer på det særegne ved den enkelte person frem for generelle love."
         },
         {
-          "text": "At det opstiller almene lovm\u00e6ssigheder, der g\u00e6lder for alle mennesker.",
+          "text": "At det opstiller almene lovmæssigheder, der gælder for alle mennesker.",
           "isCorrect": false,
-          "rationale": "Dette beskriver en nomotetisk tilgang, som s\u00f8ger det generelle og lovm\u00e6ssige."
+          "rationale": "Dette beskriver en nomotetisk tilgang, som søger det generelle og lovmæssige."
         },
         {
-          "text": "At det udelukkende fokuserer p\u00e5 de biologiske instinkter i mennesket.",
+          "text": "At det udelukkende fokuserer på de biologiske instinkter i mennesket.",
           "isCorrect": false,
-          "rationale": "Idiografisk handler om fokus p\u00e5 det individuelle, ikke n\u00f8dvendigvis om det biologiske indhold."
+          "rationale": "Idiografisk handler om fokus på det individuelle, ikke nødvendigvis om det biologiske indhold."
         },
         {
-          "text": "At det antager, at personligheden er fuldst\u00e6ndig fastl\u00e5st fra f\u00f8dslen.",
+          "text": "At det antager, at personligheden er fuldstændig fastlåst fra fødslen.",
           "isCorrect": false,
-          "rationale": "Dette vedr\u00f8rer stabilitet eller determinisme, ikke om man studerer individet eller gruppen."
+          "rationale": "Dette vedrører stabilitet eller determinisme, ikke om man studerer individet eller gruppen."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 forskellen mellem at finde universelle regler og at forst\u00e5 det s\u00e6regne."
+      "hint": "Tænk på forskellen mellem at finde universelle regler og at forstå det særegne."
     },
     {
-      "question": "Hvad er den v\u00e6sentligste forskel p\u00e5 hermeneutik og f\u00e6nomenologi i kursets sammenh\u00e6ng?",
+      "question": "Hvad er den væsentligste forskel på hermeneutik og fænomenologi i kursets sammenhæng?",
       "answerOptions": [
         {
-          "text": "Hermeneutik fokuserer p\u00e5 fortolkning af mening og konflikt, mens f\u00e6nomenologi fokuserer p\u00e5 beskrivelse af oplevelse.",
+          "text": "Hermeneutik fokuserer på fortolkning af mening og konflikt, mens fænomenologi fokuserer på beskrivelse af oplevelse.",
           "isCorrect": true,
-          "rationale": "Hermeneutikken g\u00e5r bag om det umiddelbare for at udl\u00e6gge betydning, mens f\u00e6nomenologien s\u00f8ger at beskrive det, der fremtr\u00e6der."
+          "rationale": "Hermeneutikken går bag om det umiddelbare for at udlægge betydning, mens fænomenologien søger at beskrive det, der fremtræder."
         },
         {
-          "text": "F\u00e6nomenologi bruger kun sp\u00f8rgeskemaer, mens hermeneutik bruger interviews.",
+          "text": "Fænomenologi bruger kun spørgeskemaer, mens hermeneutik bruger interviews.",
           "isCorrect": false,
           "rationale": "Begge retninger er typisk kvalitative; forskellen ligger i den analytiske tilgang til data."
         },
         {
-          "text": "Hermeneutik er interesseret i generelle love, mens f\u00e6nomenologi er interesseret i biologi.",
+          "text": "Hermeneutik er interesseret i generelle love, mens fænomenologi er interesseret i biologi.",
           "isCorrect": false,
-          "rationale": "Ingen af disse beskrivelser passer p\u00e5 de to retninger, der begge er rettet mod mening og subjektivitet."
+          "rationale": "Ingen af disse beskrivelser passer på de to retninger, der begge er rettet mod mening og subjektivitet."
         },
         {
-          "text": "F\u00e6nomenologi er objektiv videnskab, mens hermeneutik er rent subjektiv g\u00e6tning.",
+          "text": "Fænomenologi er objektiv videnskab, mens hermeneutik er rent subjektiv gætning.",
           "isCorrect": false,
-          "rationale": "Dette er en misforst\u00e5else; begge har systematiske krav til deres videnskabelige fremgangsm\u00e5de."
+          "rationale": "Dette er en misforståelse; begge har systematiske krav til deres videnskabelige fremgangsmåde."
         }
       ],
       "hint": "Overvej om opgaven er at 'forklare dybden' eller 'beskrive overfladen'."
     },
     {
-      "question": "Hvorn\u00e5r beg\u00e5r man 'reificering' i personlighedspsykologisk praksis?",
+      "question": "Hvornår begår man 'reificering' i personlighedspsykologisk praksis?",
       "answerOptions": [
         {
-          "text": "N\u00e5r man behandler en statistisk konstruktion, som f.eks. 'Neuroticisme', som en konkret ting inde i personen.",
+          "text": "Når man behandler en statistisk konstruktion, som f.eks. 'Neuroticisme', som en konkret ting inde i personen.",
           "isCorrect": true,
-          "rationale": "Reificering er at tingsligg\u00f8re det abstrakte og glemme, at det er en model eller en m\u00e5ling, ikke virkeligheden selv."
+          "rationale": "Reificering er at tingsliggøre det abstrakte og glemme, at det er en model eller en måling, ikke virkeligheden selv."
         },
         {
-          "text": "N\u00e5r man tager h\u00f8jde for personens sociale og kulturelle baggrund.",
+          "text": "Når man tager højde for personens sociale og kulturelle baggrund.",
           "isCorrect": false,
-          "rationale": "Dette er snarere kontekstualisering og det modsatte af at tingsligg\u00f8re subjektet."
+          "rationale": "Dette er snarere kontekstualisering og det modsatte af at tingsliggøre subjektet."
         },
         {
-          "text": "N\u00e5r man kritiserer en teori for at v\u00e6re for gammeldags.",
+          "text": "Når man kritiserer en teori for at være for gammeldags.",
           "isCorrect": false,
-          "rationale": "Kritik af en teoris alder har intet med reificering af begreber at g\u00f8re."
+          "rationale": "Kritik af en teoris alder har intet med reificering af begreber at gøre."
         },
         {
-          "text": "N\u00e5r man antager, at mennesket har en fri vilje til at \u00e6ndre sig.",
+          "text": "Når man antager, at mennesket har en fri vilje til at ændre sig.",
           "isCorrect": false,
-          "rationale": "Dette vedr\u00f8rer agency og viljens frihed, ikke tingsligg\u00f8relse af teoretiske begreber."
+          "rationale": "Dette vedrører agency og viljens frihed, ikke tingsliggørelse af teoretiske begreber."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 hvad der sker, n\u00e5r en score p\u00e5 et papir bliver til en 'ting' i hjernen."
+      "hint": "Tænk på hvad der sker, når en score på et papir bliver til en 'ting' i hjernen."
     },
     {
-      "question": "Inden for kritisk psykologi forst\u00e5s forholdet mellem subjekt og samfund ofte som 'dialektisk'. Hvad betyder det?",
+      "question": "Inden for kritisk psykologi forstås forholdet mellem subjekt og samfund ofte som 'dialektisk'. Hvad betyder det?",
       "answerOptions": [
         {
-          "text": "At personen formes af samfundsm\u00e6ssige betingelser, men ogs\u00e5 selv forholder sig aktivt og skabende til dem.",
+          "text": "At personen formes af samfundsmæssige betingelser, men også selv forholder sig aktivt og skabende til dem.",
           "isCorrect": true,
-          "rationale": "Dialektik indeb\u00e6rer en gensidig p\u00e5virkning, hvor mods\u00e6tninger (individ/samfund) skaber og forandrer hinanden."
+          "rationale": "Dialektik indebærer en gensidig påvirkning, hvor modsætninger (individ/samfund) skaber og forandrer hinanden."
         },
         {
-          "text": "At individet og samfundet er to helt adskilte verdener, der aldrig m\u00f8des.",
+          "text": "At individet og samfundet er to helt adskilte verdener, der aldrig mødes.",
           "isCorrect": false,
-          "rationale": "Dette ville v\u00e6re en dualistisk forst\u00e5else, som den dialektiske tilgang netop fors\u00f8ger at undg\u00e5."
+          "rationale": "Dette ville være en dualistisk forståelse, som den dialektiske tilgang netop forsøger at undgå."
         },
         {
           "text": "At samfundet har 100% magt over individet, som blot er et passivt offer.",
@@ -202,9 +202,9 @@
           "rationale": "Dette er en mekanisk determinisme, der overser individets agency og den gensidige proces."
         },
         {
-          "text": "At man kan m\u00e5le samfundets p\u00e5virkning gennem simple \u00e5rsag-virkning sammenh\u00e6nge.",
+          "text": "At man kan måle samfundets påvirkning gennem simple årsag-virkning sammenhænge.",
           "isCorrect": false,
-          "rationale": "Dialektikken ser p\u00e5 sp\u00e6ndinger og gensidig konstitution frem for line\u00e6re \u00e5rsag-virknings-modeller."
+          "rationale": "Dialektikken ser på spændinger og gensidig konstitution frem for lineære årsag-virknings-modeller."
         }
       ],
       "hint": "Det handler om en proces, hvor to dele gensidigt betinger og forandrer hinanden."
@@ -213,24 +213,24 @@
       "question": "Hvad kendetegner en 'normativ' antagelse i en personlighedsteori?",
       "answerOptions": [
         {
-          "text": "At teorien indeholder forestillinger om, hvad der er \u00f8nskv\u00e6rdig v\u00e6kst eller en sund m\u00e5de at fungere p\u00e5.",
+          "text": "At teorien indeholder forestillinger om, hvad der er ønskværdig vækst eller en sund måde at fungere på.",
           "isCorrect": true,
-          "rationale": "Det normative handler om v\u00e6rdier og idealer for, hvordan mennesket 'b\u00f8r' v\u00e6re eller udvikle sig."
+          "rationale": "Det normative handler om værdier og idealer for, hvordan mennesket 'bør' være eller udvikle sig."
         },
         {
-          "text": "At teorien udelukkende baserer sig p\u00e5 objektive tal og kolde fakta.",
+          "text": "At teorien udelukkende baserer sig på objektive tal og kolde fakta.",
           "isCorrect": false,
-          "rationale": "Dette ville v\u00e6re et ideal om v\u00e6rdifrihed (deskriptivisme), selvom det ofte diskuteres, om det er muligt."
+          "rationale": "Dette ville være et ideal om værdifrihed (deskriptivisme), selvom det ofte diskuteres, om det er muligt."
         },
         {
-          "text": "At teorien er historisk for\u00e6ldet og ikke l\u00e6ngere bruges i praksis.",
+          "text": "At teorien er historisk forældet og ikke længere bruges i praksis.",
           "isCorrect": false,
-          "rationale": "Normativitet har at g\u00f8re med v\u00e6rdiladning, ikke med teoriens aktualitet."
+          "rationale": "Normativitet har at gøre med værdiladning, ikke med teoriens aktualitet."
         },
         {
-          "text": "At teorien kun beskriver ekstreme tilf\u00e6lde af personlighedsforstyrrelser.",
+          "text": "At teorien kun beskriver ekstreme tilfælde af personlighedsforstyrrelser.",
           "isCorrect": false,
-          "rationale": "Selvom kliniske teorier er normative, er normativitet et bredere begreb, der d\u00e6kker alle idealer om det normale/sunde."
+          "rationale": "Selvom kliniske teorier er normative, er normativitet et bredere begreb, der dækker alle idealer om det normale/sunde."
         }
       ],
       "hint": "Kig efter om teorien siger noget om, hvad der er 'godt' eller 'rigtigt' for et menneske."
@@ -239,27 +239,131 @@
       "question": "Inden for videnskabsteori skelnes der mellem epistemologi og metode. Hvad er forholdet mellem dem?",
       "answerOptions": [
         {
-          "text": "Epistemologien er det overordnede syn p\u00e5 viden, som begrunder hvorfor en bestemt metode er gyldig.",
+          "text": "Epistemologien er det overordnede syn på viden, som begrunder hvorfor en bestemt metode er gyldig.",
           "isCorrect": true,
-          "rationale": "Metoden er det konkrete v\u00e6rkt\u00f8j, men epistemologien leverer de principper, der forklarer, hvad der overhovedet kan t\u00e6lle som viden."
+          "rationale": "Metoden er det konkrete værktøj, men epistemologien leverer de principper, der forklarer, hvad der overhovedet kan tælle som viden."
         },
         {
-          "text": "Metode og epistemologi er to forskellige ord for pr\u00e6cis det samme.",
+          "text": "Metode og epistemologi er to forskellige ord for præcis det samme.",
           "isCorrect": false,
-          "rationale": "De er t\u00e6t forbundne, men epistemologien er det filosofiske fundament, mens metoden er den tekniske fremgangsm\u00e5de."
+          "rationale": "De er tæt forbundne, men epistemologien er det filosofiske fundament, mens metoden er den tekniske fremgangsmåde."
         },
         {
           "text": "Epistemologi handler om etik, mens metode handler om statistik.",
           "isCorrect": false,
-          "rationale": "Dette er en forsn\u00e6vring af begreberne; epistemologi handler om erkendelse, ikke prim\u00e6rt om etik."
+          "rationale": "Dette er en forsnævring af begreberne; epistemologi handler om erkendelse, ikke primært om etik."
         },
         {
-          "text": "Man skal altid v\u00e6lge sin metode f\u00f8r man overvejer sin epistemologi.",
+          "text": "Man skal altid vælge sin metode før man overvejer sin epistemologi.",
           "isCorrect": false,
-          "rationale": "Teoretisk set b\u00f8r epistemologien guide valget af metode, s\u00e5 de passer til teoriens personbegreb."
+          "rationale": "Teoretisk set bør epistemologien guide valget af metode, så de passer til teoriens personbegreb."
         }
       ],
-      "hint": "T\u00e6nk p\u00e5 hvad der er 'fundamentet', og hvad der er 'v\u00e6rkt\u00f8jet'."
+      "hint": "Tænk på hvad der er 'fundamentet', og hvad der er 'værktøjet'."
+    },
+    {
+      "question": "Hvad er pointen med orienteringspunktet 'determination' i personlighedspsykologi?",
+      "answerOptions": [
+        {
+          "text": "At undersøge hvilke betingelser, kræfter eller vilkår der begrænser og muliggør personens agency.",
+          "isCorrect": true,
+          "rationale": "Determination er stærkest som sammenligningsbegreb, når det kobles til handlemulighed og ikke forstås som total passivitet."
+        },
+        {
+          "text": "At afgøre om alle mennesker er fuldstændigt determinerede og uden handlemulighed.",
+          "isCorrect": false,
+          "rationale": "Det er en for grov determinisme, som mange teorier netop forsøger at nuancere."
+        },
+        {
+          "text": "At vælge den mest præcise statistiske test til enhver undersøgelse.",
+          "isCorrect": false,
+          "rationale": "Det handler om metode, ikke om hvad der bestemmer personen."
+        },
+        {
+          "text": "At beskrive hvor hurtigt en person kan svare på en quiz.",
+          "isCorrect": false,
+          "rationale": "Det har ingen teoretisk relation til determination."
+        }
+      ],
+      "hint": "Kobl altid begrænsning og handlemulighed."
+    },
+    {
+      "question": "Hvorfor er 'historicitet' mere præcist end blot at sige, at en teori handler om fortid?",
+      "answerOptions": [
+        {
+          "text": "Fordi historicitet angiver, hvilket historisk niveau der former personen: art, livshistorie, samfund, diskurs eller fortælling.",
+          "isCorrect": true,
+          "rationale": "Begrebet hjælper med at præcisere, hvilken slags historie teorien bruger som forklaring."
+        },
+        {
+          "text": "Fordi historicitet kun betyder barndomstraumer i psykoanalysen.",
+          "isCorrect": false,
+          "rationale": "Psykoanalyse er én mulighed; begrebet er bredere."
+        },
+        {
+          "text": "Fordi begrebet altid betyder biologisk evolution og aldrig social historie.",
+          "isCorrect": false,
+          "rationale": "Det kan også være sociogenese, ontogenese, diskurshistorie eller livshistorie."
+        },
+        {
+          "text": "Fordi det erstatter alle andre orienteringspunkter i kurset.",
+          "isCorrect": false,
+          "rationale": "Historicitet er ét orienteringspunkt blandt flere."
+        }
+      ],
+      "hint": "Spørg: Hvilken historie er på spil?"
+    },
+    {
+      "question": "Hvad er den vigtigste pointe i at bruge orienteringspunkter på tværs af teorier?",
+      "answerOptions": [
+        {
+          "text": "De gør det muligt systematisk at sammenligne teoriernes personbegreb, metode, agency, kontekst og historicitet.",
+          "isCorrect": true,
+          "rationale": "Orienteringspunkter er et sammenligningsværktøj, ikke en ekstra teori ved siden af teorierne."
+        },
+        {
+          "text": "De afgør på forhånd, hvilken teori der er sandest.",
+          "isCorrect": false,
+          "rationale": "De organiserer sammenligning, men afgør ikke sandhed automatisk."
+        },
+        {
+          "text": "De erstatter behovet for at kende de enkelte teorier.",
+          "isCorrect": false,
+          "rationale": "De kræver netop, at man kan anvende dem på teorierne."
+        },
+        {
+          "text": "De bruges kun til trækpsykologi og ikke til fortolkende teorier.",
+          "isCorrect": false,
+          "rationale": "De er tværgående og kan bruges på både måleorienterede og fortolkende traditioner."
+        }
+      ],
+      "hint": "Tænk på dem som et kort over forskelle mellem teorier."
+    },
+    {
+      "question": "Hvorfor er relativisme en vigtig faldgrube i arbejdet med socialkonstruktionisme og poststrukturalisme?",
+      "answerOptions": [
+        {
+          "text": "Fordi teorierne ofte misforstås som om de siger, at alt er lige sandt, selv om pointen snarere er historisk og social konstituering.",
+          "isCorrect": true,
+          "rationale": "Det præciserer forskellen mellem 'alt er relativt' og analyse af hvordan sandheder bliver mulige."
+        },
+        {
+          "text": "Fordi relativisme betyder, at alle teorier i kurset er biologiske.",
+          "isCorrect": false,
+          "rationale": "Det er en kategorifejl."
+        },
+        {
+          "text": "Fordi poststrukturalisme altid afviser, at magt og viden findes.",
+          "isCorrect": false,
+          "rationale": "Poststrukturalisme undersøger netop magt/viden."
+        },
+        {
+          "text": "Fordi socialkonstruktionisme kun handler om individuelle følelser uden kultur.",
+          "isCorrect": false,
+          "rationale": "Socialkonstruktionisme betoner sociale og kulturelle meningsdannelser."
+        }
+      ],
+      "hint": "Skeln mellem sandhed som historisk produceret og påstanden om, at alt er ligegyldigt."
     }
   ]
 }

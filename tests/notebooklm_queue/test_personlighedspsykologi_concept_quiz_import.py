@@ -74,7 +74,8 @@ def test_import_concept_quizzes_copies_json_and_updates_manifests(tmp_path: Path
 
     assert result["imported"] == 1
     quiz_id = result["quiz_ids"][0]
-    assert (quiz_files_root / f"{quiz_id}.json").exists()
+    imported_quiz = json.loads((quiz_files_root / f"{quiz_id}.json").read_text(encoding="utf-8"))
+    assert imported_quiz["title"] == "Videnskabsteori og orienteringspunkter"
 
     concept_payload = json.loads(concept_manifest.read_text(encoding="utf-8"))
     assert concept_payload["entries"][0]["quiz_id"] == quiz_id

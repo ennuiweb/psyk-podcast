@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:27:56+00:00",
+  "generated_at": "2026-06-01T13:28:12+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1683,6 +1683,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L2/W07L2%20-%20Slide%20lecture:%2014.%20Humanistisk%20psykologi20%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1k2m5-oHOvtLknI_mzXTHfWvmEPVdMH2f"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W07L2/[Short] W07L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ba7895}.mp3",
+      "source_name": "[Short] W07L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ba7895}.mp3",
+      "source_path": "W07L2/[Short] W07L2 - Giorgi (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=a3ba7895}.mp3",
+      "path_parts": [
+        "W07L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 11542210,
+      "sha256": "39bccb908f8716c11326b7d56625f480f7141e9e6bd5bdb45dd9ec63799abe46",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:28:09+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L2/%5BShort%5D%20W07L2%20-%20Giorgi%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Da3ba7895%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W07L2/[Short] W07L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=short hash=8ad377a0}.mp3",
+      "source_name": "[Short] W07L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=short hash=8ad377a0}.mp3",
+      "source_path": "W07L2/[Short] W07L2 - Maslow (1968) [EN] {type=audio lang=en format=deep-dive length=short hash=8ad377a0}.mp3",
+      "path_parts": [
+        "W07L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10338383,
+      "sha256": "81ad99dd033a23eeffeaab441cb33d9bf53978eede7aa591e7bc6e7e16e3fedd",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:28:09+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L2/%5BShort%5D%20W07L2%20-%20Maslow%20%281968%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D8ad377a0%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W08L1/W08L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=05aabf10}.mp3",

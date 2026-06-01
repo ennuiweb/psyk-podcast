@@ -544,6 +544,11 @@ def is_auth_error(output: str) -> bool:
     return any(token in lowered for token in tokens)
 
 
+def is_media_html_error(output: str) -> bool:
+    lowered = output.lower()
+    return "received html instead of media file" in lowered
+
+
 def is_timeout_error(output: str) -> bool:
     lowered = output.lower()
     return "timeout" in lowered or "timed out" in lowered
@@ -636,12 +641,29 @@ def wait_and_download(
     )
     if artifact_type == "quiz" and output_format:
         download_cmd.extend(["--format", output_format])
-    ok, output = run_cmd(download_cmd)
-    if not ok:
+
+    deadline = time.monotonic() + timeout if timeout is not None and timeout > 0 else None
+    while True:
+        ok, output = run_cmd(download_cmd)
+        if ok:
+            return True, "ok"
+
+        if is_media_html_error(output):
+            if deadline is not None and time.monotonic() >= deadline:
+                return False, "wait"
+            sleep_seconds = interval if interval is not None and interval > 0 else 30
+            if deadline is not None:
+                sleep_seconds = max(1, min(sleep_seconds, int(deadline - time.monotonic())))
+            print(
+                "Media URL returned HTML after artifact completion; "
+                f"retrying in {sleep_seconds}s..."
+            )
+            time.sleep(sleep_seconds)
+            continue
+
         if is_auth_error(output):
             return False, "auth"
         return False, "download"
-    return True, "ok"
 
 
 def find_repo_root(start: Path) -> Path:

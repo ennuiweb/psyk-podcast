@@ -218,3 +218,42 @@ def test_wait_and_download_keeps_real_wait_timeout_as_wait(monkeypatch, tmp_path
 
     assert ok is False
     assert reason == "wait"
+
+
+def test_wait_and_download_retries_completed_artifact_media_html(
+    monkeypatch, tmp_path: Path
+) -> None:
+    calls: list[list[str]] = []
+    sleeps: list[int] = []
+
+    def fake_run_cmd(command: list[str]) -> tuple[bool, str]:
+        calls.append(command)
+        if "artifact" in command and "wait" in command:
+            return True, "completed"
+        if len([call for call in calls if "download" in call]) == 1:
+            return (
+                False,
+                "Download failed: received HTML instead of media file. "
+                "Authentication may have expired.",
+            )
+        return True, "downloaded"
+
+    monkeypatch.setattr(download_week, "run_cmd", fake_run_cmd)
+    monkeypatch.setattr(download_week.time, "sleep", lambda seconds: sleeps.append(seconds))
+
+    ok, reason = download_week.wait_and_download(
+        tmp_path / "notebooklm",
+        "artifact-id",
+        "notebook-id",
+        "audio",
+        tmp_path / "episode.mp3",
+        60,
+        5,
+        str(tmp_path / "owner-profile.json"),
+        None,
+    )
+
+    assert ok is True
+    assert reason == "ok"
+    assert sleeps == [5]
+    assert len([call for call in calls if "download" in call]) == 2

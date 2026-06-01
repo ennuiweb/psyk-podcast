@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:02:35+00:00",
+  "generated_at": "2026-06-01T13:02:53+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1357,6 +1357,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Spinelli%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=9387149c}.mp3",
+      "source_name": "[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=9387149c}.mp3",
+      "source_path": "W06L1/[Short] W06L1 - Grundbog kapitel 4 - Fænomenologisk personlighedspsykologi [EN] {type=audio lang=en format=deep-dive length=short hash=9387149c}.mp3",
+      "path_parts": [
+        "W06L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10800916,
+      "sha256": "fc4234421c7404b2cf35b3d4689692e60ffdfbbc8b95f5150b4e24af1c050cf4",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:02:51+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Grundbog%20kapitel%204%20-%20F%C3%A6nomenologisk%20personlighedspsykologi%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D9387149c%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",

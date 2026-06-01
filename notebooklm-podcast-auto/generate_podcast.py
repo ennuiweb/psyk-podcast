@@ -1209,6 +1209,7 @@ async def _generate_quiz_with_retry(
     notebook_id: str,
     *,
     instructions: str,
+    language: str,
     quantity: QuizQuantity | None,
     difficulty: QuizDifficulty | None,
     retries: int,
@@ -1217,12 +1218,36 @@ async def _generate_quiz_with_retry(
     last_exc: Exception | None = None
     for attempt in range(retries + 1):
         try:
-            status = await client.artifacts.generate_quiz(
-                notebook_id,
-                instructions=instructions or None,
-                quantity=quantity,
-                difficulty=difficulty,
-            )
+            previous_language: str | None = None
+            language_changed = False
+            try:
+                if language:
+                    previous_language = await client.settings.get_output_language()
+                    if previous_language != language:
+                        current_language = await client.settings.set_output_language(language)
+                        if current_language is not None and current_language != language:
+                            raise RuntimeError(
+                                f"NotebookLM output language did not switch to {language}: {current_language}"
+                            )
+                        language_changed = True
+                status = await client.artifacts.generate_quiz(
+                    notebook_id,
+                    instructions=instructions or None,
+                    language=language,
+                    quantity=quantity,
+                    difficulty=difficulty,
+                )
+            finally:
+                if language_changed:
+                    restore_language = previous_language or "en"
+                    try:
+                        await client.settings.set_output_language(restore_language)
+                    except Exception as restore_exc:
+                        print(
+                            "Warning: failed to restore NotebookLM output language "
+                            f"to {restore_language}: {restore_exc}",
+                            file=sys.stderr,
+                        )
             if not status.task_id:
                 if getattr(status, "error", None):
                     raise RuntimeError(status.error)
@@ -1372,6 +1397,7 @@ async def _generate_podcast(args: argparse.Namespace) -> int:
                         client,
                         nb.id,
                         instructions=args.instructions,
+                        language=args.language,
                         quantity=_quiz_quantity(args.quiz_quantity),
                         difficulty=_quiz_difficulty(args.quiz_difficulty),
                         retries=args.artifact_retries,

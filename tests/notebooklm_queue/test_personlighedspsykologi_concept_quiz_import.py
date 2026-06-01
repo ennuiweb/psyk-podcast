@@ -157,3 +157,104 @@ def test_import_concept_quizzes_rejects_empty_quiz_payload(tmp_path: Path, monke
 
     with pytest.raises(SystemExit, match="Missing generated quiz JSON"):
         importer.import_quizzes(output_root=output_root)
+
+
+def test_import_concept_quizzes_rejects_english_quiz_payload(tmp_path: Path, monkeypatch) -> None:
+    lab_manifest = tmp_path / "lab" / "manifest.json"
+    output_root = tmp_path / "output"
+    source = output_root / "W90L1" / "english {type=quiz difficulty=medium}.json"
+    source.parent.mkdir(parents=True)
+    source.write_text(
+        json.dumps(
+            {
+                "questions": [
+                    {
+                        "question": "What is meant by ontological assumptions in personality psychology?",
+                        "answerOptions": [
+                            {"text": "They concern what kind of reality the theory assumes.", "isCorrect": True},
+                            {"text": "They are only about test reliability.", "isCorrect": False},
+                        ],
+                    },
+                    {
+                        "question": "Which concept describes how knowledge is justified?",
+                        "answerOptions": [
+                            {"text": "Epistemology", "isCorrect": True},
+                            {"text": "A random context marker", "isCorrect": False},
+                        ],
+                    },
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    lab_manifest.parent.mkdir(parents=True)
+    lab_manifest.write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "lecture_key": "W90L1",
+                        "slug": "videnskabsteori-orienteringspunkter",
+                        "title": "Videnskabsteori og orienteringspunkter",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(importer, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(importer, "LAB_MANIFEST_PATH", lab_manifest)
+    monkeypatch.setattr(importer, "QUIZ_FILES_ROOT", tmp_path / "quiz-files")
+    monkeypatch.setattr(importer, "CONCEPT_MANIFEST_PATH", tmp_path / "concept_quiz_manifest.json")
+    monkeypatch.setattr(importer, "QUIZ_LINKS_PATH", tmp_path / "quiz_links.json")
+
+    with pytest.raises(SystemExit, match="appears to be English"):
+        importer.import_quizzes(output_root=output_root)
+
+
+def test_import_concept_quizzes_rejects_source_provenance_wording(tmp_path: Path, monkeypatch) -> None:
+    lab_manifest = tmp_path / "lab" / "manifest.json"
+    output_root = tmp_path / "output"
+    source = output_root / "W90L1" / "provenance {type=quiz difficulty=medium}.json"
+    source.parent.mkdir(parents=True)
+    source.write_text(
+        json.dumps(
+            {
+                "questions": [
+                    {
+                        "question": "Hvad betyder ontologi ifølge matrixen?",
+                        "answerOptions": [
+                            {"text": "Antagelser om hvad der findes", "isCorrect": True},
+                            {"text": "En metode til stikprøver", "isCorrect": False},
+                        ],
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    lab_manifest.parent.mkdir(parents=True)
+    lab_manifest.write_text(
+        json.dumps(
+            {
+                "packs": [
+                    {
+                        "lecture_key": "W90L1",
+                        "slug": "videnskabsteori-orienteringspunkter",
+                        "title": "Videnskabsteori og orienteringspunkter",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(importer, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(importer, "LAB_MANIFEST_PATH", lab_manifest)
+    monkeypatch.setattr(importer, "QUIZ_FILES_ROOT", tmp_path / "quiz-files")
+    monkeypatch.setattr(importer, "CONCEPT_MANIFEST_PATH", tmp_path / "concept_quiz_manifest.json")
+    monkeypatch.setattr(importer, "QUIZ_LINKS_PATH", tmp_path / "quiz_links.json")
+
+    with pytest.raises(SystemExit, match="provenance/source wording leaked"):
+        importer.import_quizzes(output_root=output_root)

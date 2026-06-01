@@ -42,6 +42,7 @@ class ShowAdapter:
     default_content_types: tuple[str, ...] = ("audio", "infographic", "quiz")
     strict_download_output_root: bool = False
     include_profile_env_args: bool = False
+    respect_only_short_env: bool = True
     generate_extra_args: tuple[str, ...] = ()
     download_extra_args: tuple[str, ...] = ()
 
@@ -125,7 +126,7 @@ class ShowAdapter:
                 option="--profiles-file",
                 env_name="NOTEBOOKLM_PROFILES_FILE",
             )
-        if _truthy_env("NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS"):
+        if self.respect_only_short_env and _truthy_env("NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS"):
             command.append("--only-short")
         if wait:
             command.append("--wait")
@@ -236,6 +237,7 @@ SHOW_ADAPTERS: dict[str, ShowAdapter] = {
         default_content_types=("quiz",),
         strict_download_output_root=True,
         include_profile_env_args=True,
+        respect_only_short_env=False,
         generate_extra_args=(
             "--sources-root",
             "notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/sources",

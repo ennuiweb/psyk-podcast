@@ -1,11 +1,25 @@
 {
   "language": "da",
+  "prompt_locale": "da",
   "languages": [
     {
       "code": "da",
-      "suffix": ""
+      "suffix": "",
+      "prompt_locale": "da"
     }
   ],
+  "prompt_localization": {
+    "enabled": true,
+    "default_locale": "en",
+    "locales": {
+      "da": {
+        "prompt_overrides_path": "../locales/da.prompt.json",
+        "course_context_translations_path": "../locales/da.course_context.json",
+        "omit_untranslated_course_context": true,
+        "fail_on_missing_course_context_translations": false
+      }
+    }
+  },
   "course_title": "Personlighedspsykologi",
   "quiz": {
     "quantity": "more",

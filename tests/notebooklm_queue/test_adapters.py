@@ -67,3 +67,29 @@ def test_bioneuro_download_command_does_not_receive_personligheds_profile_args(m
 
     assert "--profile-priority" not in command
     assert "--profiles-file" not in command
+
+
+def test_concept_quiz_generate_command_ignores_global_only_short_env(monkeypatch):
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS", "1")
+
+    command = SHOW_ADAPTERS["personlighedspsykologi-concept-quizzes"].build_generate_command(
+        Path("/opt/podcasts"),
+        lecture_key="W90L1",
+        content_types=("quiz",),
+        dry_run=False,
+    )
+
+    assert "--only-short" not in command
+
+
+def test_personligheds_generate_command_still_honors_only_short_env(monkeypatch):
+    monkeypatch.setenv("NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS", "1")
+
+    command = SHOW_ADAPTERS["personlighedspsykologi-en"].build_generate_command(
+        Path("/opt/podcasts"),
+        lecture_key="W01L1",
+        content_types=("audio",),
+        dry_run=False,
+    )
+
+    assert "--only-short" in command

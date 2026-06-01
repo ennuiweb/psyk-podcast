@@ -374,7 +374,20 @@ def _pack_markdown(pack: ConceptQuizPack, note_sections: dict[str, str]) -> str:
 def _prompt_config() -> dict[str, Any]:
     return {
         "language": "da",
-        "languages": [{"code": "da", "suffix": ""}],
+        "prompt_locale": "da",
+        "languages": [{"code": "da", "suffix": "", "prompt_locale": "da"}],
+        "prompt_localization": {
+            "enabled": True,
+            "default_locale": "en",
+            "locales": {
+                "da": {
+                    "prompt_overrides_path": "../locales/da.prompt.json",
+                    "course_context_translations_path": "../locales/da.course_context.json",
+                    "omit_untranslated_course_context": True,
+                    "fail_on_missing_course_context_translations": False,
+                }
+            },
+        },
         "course_title": "Personlighedspsykologi",
         "quiz": {
             "quantity": "more",
@@ -481,7 +494,16 @@ def export() -> dict[str, Any]:
         "```\n\n"
         "The live generation path is the Hetzner NotebookLM queue show "
         "`personlighedspsykologi-concept-quizzes`; it uses medium difficulty as the single "
-        "normal quiz level.\n",
+        "normal quiz level. The show is quiz-only and intentionally ignores "
+        "`NOTEBOOKLM_QUEUE_ONLY_SHORT_OUTPUTS` so it cannot inherit short-output settings "
+        "from podcast services.\n\n"
+        "Import with:\n\n"
+        "```bash\n"
+        ".venv/bin/python scripts/import_personlighedspsykologi_concept_quizzes.py "
+        "--output-root notebooklm-podcast-auto/personlighedspsykologi/concept_quiz_lab/output\n"
+        "```\n\n"
+        "The importer rejects empty quizzes, likely English output, and leaked source/provenance "
+        "wording such as matrix/source-material references before writing Freudd quiz files.\n",
         encoding="utf-8",
     )
     return {"packs": exported_packs}

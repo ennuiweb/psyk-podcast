@@ -19,6 +19,37 @@ QUIZ_FILES_ROOT = REPO_ROOT / "freudd_portal/quiz_files/personlighedspsykologi"
 CONCEPT_MANIFEST_PATH = REPO_ROOT / "shows/personlighedspsykologi-en/concept_quizzes/concept_quiz_manifest.json"
 QUIZ_LINKS_PATH = REPO_ROOT / "shows/personlighedspsykologi-en/quiz_links.json"
 CFG_TAG_RE = re.compile(r"\{[^{}]*\btype=quiz\b[^{}]*\bdifficulty=(?P<difficulty>[a-z0-9._:+-]+)\b[^{}]*\}", re.IGNORECASE)
+ENGLISH_MARKER_RE = re.compile(
+    r"\b("
+    r"what|which|why|how|according|context|personality|psychology|concept|term|"
+    r"does|do|is|are|the|and|of|in|to|from|between|following"
+    r")\b",
+    re.IGNORECASE,
+)
+DANISH_MARKER_RE = re.compile(
+    r"\b("
+    r"hvad|hvilken|hvilket|hvilke|hvorfor|hvordan|hvor|er|som|og|ikke|"
+    r"begreb|begrebet|forstås|forstår|personlighed|psykologi|mellem|ifølge|"
+    r"teori|teorien|tradition|traditionen|svarmulighed|forklaring"
+    r")\b|[æøå]",
+    re.IGNORECASE,
+)
+ENGLISH_QUESTION_START_RE = re.compile(
+    r"^\s*(what|which|why|how|in the context|according to|two people|a student|when)\b",
+    re.IGNORECASE,
+)
+PROVENANCE_RE = re.compile(
+    r"\bmatrix(?:en)?\b|"
+    r"\bifølge\s+(?:matrixen|kilden|kilderne|noterne|materialet|dokumentet)\b|"
+    r"\b(?:dette|det)\s+dokument\b|"
+    r"\bkildepakke(?:n)?\b|"
+    r"\bnoterne\b|"
+    r"\bprovenance\b|"
+    r"\baccording\s+to\s+(?:the\s+)?(?:source|sources|matrix|material)\b|"
+    r"\bsource\s+material\b|"
+    r"\bprovided\s+material\b",
+    re.IGNORECASE,
+)
 
 
 def _load_json(path: Path) -> Any:
@@ -32,6 +63,65 @@ def _write_json(path: Path, payload: Any) -> None:
 
 def _quiz_payload_is_valid(payload: Any) -> bool:
     return _question_count(payload) > 0
+
+
+def _iter_text(value: Any) -> list[str]:
+    if isinstance(value, str):
+        stripped = value.strip()
+        return [stripped] if stripped else []
+    if isinstance(value, list):
+        texts: list[str] = []
+        for item in value:
+            texts.extend(_iter_text(item))
+        return texts
+    if isinstance(value, dict):
+        texts = []
+        for item in value.values():
+            texts.extend(_iter_text(item))
+        return texts
+    return []
+
+
+def _question_texts(payload: Any) -> list[str]:
+    if isinstance(payload, dict):
+        questions = payload.get("questions")
+        if isinstance(questions, list):
+            return [str(item.get("question") or "").strip() for item in questions if isinstance(item, dict)]
+        quiz = payload.get("quiz")
+        if isinstance(quiz, list):
+            return [str(item.get("question") or "").strip() for item in quiz if isinstance(item, dict)]
+    if isinstance(payload, list):
+        return [str(item.get("question") or "").strip() for item in payload if isinstance(item, dict)]
+    return []
+
+
+def _quiz_payload_validation_errors(payload: Any) -> list[str]:
+    errors: list[str] = []
+    if _question_count(payload) <= 0:
+        errors.append("empty quiz payload")
+
+    texts = _iter_text(payload)
+    combined = "\n".join(texts)
+    provenance_match = PROVENANCE_RE.search(combined)
+    if provenance_match:
+        errors.append(f"provenance/source wording leaked: {provenance_match.group(0)!r}")
+
+    english_markers = len(ENGLISH_MARKER_RE.findall(combined))
+    danish_markers = len(DANISH_MARKER_RE.findall(combined))
+    question_starts = [text for text in _question_texts(payload) if text]
+    english_question_starts = sum(1 for text in question_starts if ENGLISH_QUESTION_START_RE.search(text))
+    if english_markers >= 6 and danish_markers < max(6, english_markers // 2):
+        errors.append(
+            "quiz text appears to be English "
+            f"(english_markers={english_markers}, danish_markers={danish_markers})"
+        )
+    elif question_starts and english_question_starts >= max(2, len(question_starts) // 2):
+        errors.append(
+            "quiz questions appear to be English "
+            f"(english_question_starts={english_question_starts}/{len(question_starts)})"
+        )
+
+    return errors
 
 
 def _question_count(payload: Any) -> int:
@@ -151,6 +241,12 @@ def import_quizzes(*, output_root: Path, dry_run: bool = False) -> dict[str, Any
             missing.append(lecture_key)
             continue
         payload = _load_json(source)
+        validation_errors = _quiz_payload_validation_errors(payload)
+        if validation_errors:
+            raise SystemExit(
+                "Rejected generated concept quiz JSON "
+                f"{_display_path(source)}: {'; '.join(validation_errors)}"
+            )
         difficulty = _difficulty_from_name(source)
         if difficulty != "medium":
             continue

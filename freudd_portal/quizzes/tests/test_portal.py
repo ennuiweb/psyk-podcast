@@ -2633,7 +2633,7 @@ class QuizPortalTests(TestCase):
         )
         self.assertEqual(missing_response.status_code, 404)
 
-    def test_subject_detail_and_open_slide_route_allow_all_slide_categories_for_elevated_user(self) -> None:
+    def test_subject_detail_and_open_slide_route_blocks_elevated_non_admin_user(self) -> None:
         self._write_slides_catalog_file(
             slides=[
                 {
@@ -2687,7 +2687,7 @@ class QuizPortalTests(TestCase):
         detail_url = reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
         response = self.client.get(detail_url)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Åben slides", count=3)
+        self.assertNotContains(response, "Åben slides")
 
         lecture_open_url = reverse(
             "subject-open-slide",
@@ -2711,13 +2711,13 @@ class QuizPortalTests(TestCase):
             },
         )
 
-        self.assertContains(response, f'href="{lecture_open_url}"')
-        self.assertContains(response, f'href="{seminar_open_url}"')
-        self.assertContains(response, f'href="{exercise_open_url}"')
+        self.assertNotContains(response, f'href="{lecture_open_url}"')
+        self.assertNotContains(response, f'href="{seminar_open_url}"')
+        self.assertNotContains(response, f'href="{exercise_open_url}"')
 
-        self.assertEqual(self.client.get(lecture_open_url).status_code, 200)
-        self.assertEqual(self.client.get(seminar_open_url).status_code, 200)
-        self.assertEqual(self.client.get(exercise_open_url).status_code, 200)
+        self.assertEqual(self.client.get(lecture_open_url).status_code, 404)
+        self.assertEqual(self.client.get(seminar_open_url).status_code, 404)
+        self.assertEqual(self.client.get(exercise_open_url).status_code, 404)
 
     def test_subject_detail_and_open_slide_route_allow_all_slide_categories_for_staff_user(self) -> None:
         self._write_slides_catalog_file(
@@ -3331,7 +3331,7 @@ class QuizPortalTests(TestCase):
         self.assertContains(response, 'class="tracking-toggle-button')
         self.assertContains(response, 'aria-label="Markér lyttet"')
 
-    def test_subject_detail_shows_open_reading_link_for_available_file(self) -> None:
+    def test_subject_detail_shows_open_reading_link_only_for_admin_pdf_access(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
 
@@ -3339,6 +3339,13 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 200)
         lecture = response.context["active_lecture"]
         reading = lecture["readings"][0]
+        expected_open_url = reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading["reading_key"],
+            },
+        )
         expected_pdf_url = reverse(
             "subject-open-reading-pdf",
             kwargs={
@@ -3358,13 +3365,45 @@ class QuizPortalTests(TestCase):
             f"{expected_absolute_pdf_url}\n"
             "Jeg studerer psykologi på universitetet. Hjælp mig med denne tekst."
         )
+        self.assertEqual(reading["open_url"], "")
+        self.assertEqual(reading["open_pdf_url"], "")
+        self.assertEqual(reading["chatgpt_prompt"], "")
+        self.assertNotContains(response, f'class="reading-action-button reading-action-open" href="{expected_pdf_url}"')
+        self.assertNotContains(response, "Åben tekst")
+        self.assertNotContains(response, "Send til ChatGPT")
+        self.assertNotContains(response, 'class="reading-action-button reading-action-chatgpt" type="button"')
+        self.assertEqual(self.client.get(expected_open_url).status_code, 404)
+        self.assertEqual(self.client.get(expected_chatgpt_launch_url).status_code, 404)
+
+        call_command(
+            "elevated_reading_access",
+            "--user",
+            user.username,
+            "--enable",
+            stdout=io.StringIO(),
+        )
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        reading = response.context["active_lecture"]["readings"][0]
+        self.assertEqual(reading["open_url"], "")
+        self.assertEqual(reading["open_pdf_url"], "")
+        self.assertEqual(reading["chatgpt_prompt"], "")
+        self.assertEqual(self.client.get(expected_pdf_url).status_code, 404)
+
+        staff_user = self._create_user(username="pdf-admin")
+        staff_user.is_staff = True
+        staff_user.save(update_fields=["is_staff"])
+        self.client.force_login(staff_user)
+        response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
+        self.assertEqual(response.status_code, 200)
+        reading = response.context["active_lecture"]["readings"][0]
         self.assertEqual(reading["chatgpt_prompt"], expected_prompt)
         self.assertNotIn("Titel:", reading["chatgpt_prompt"])
         self.assertNotContains(response, f'data-open-url="{expected_pdf_url}"')
         self.assertContains(response, f'class="reading-action-button reading-action-open" href="{expected_pdf_url}"')
         self.assertContains(response, "Åben tekst")
         self.assertContains(response, "Send til ChatGPT")
-        self.assertContains(response, "data-chatgpt-reading")
+        self.assertContains(response, 'class="reading-action-button reading-action-chatgpt" type="button"')
         self.assertNotContains(response, "data-reading-url=")
         self.assertNotContains(response, "data-reading-text-url=")
         self.assertContains(response, f'data-reading-pdf-url="{expected_pdf_url}"')
@@ -3571,27 +3610,26 @@ class QuizPortalTests(TestCase):
         self.assertNotContains(response, "Forelæsningsoversigt")
         self.assertNotContains(response, "Kort overblik")
 
-    def test_subject_open_reading_is_public(self) -> None:
+    def test_subject_open_reading_blocks_pdf_for_anonymous_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        open_url = reverse(
+            "subject-open-reading",
+            kwargs={
+                "subject_slug": "personlighedspsykologi",
+                "reading_key": reading_key,
+            },
+        )
+        authenticated_response = self.client.get(open_url)
+        self.assertEqual(authenticated_response.status_code, 404)
         self.client.logout()
 
-        response = self.client.get(
-            reverse(
-                "subject-open-reading",
-                kwargs={
-                    "subject_slug": "personlighedspsykologi",
-                    "reading_key": reading_key,
-                },
-            )
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["Content-Type"], "application/pdf")
-        self.assertIn("inline", response.get("Content-Disposition", ""))
+        response = self.client.get(open_url)
+        self.assertEqual(response.status_code, 404)
 
-    def test_subject_open_reading_pdf_is_public(self) -> None:
+    def test_subject_open_reading_pdf_blocks_anonymous_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
@@ -3607,11 +3645,9 @@ class QuizPortalTests(TestCase):
                 },
             )
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["Content-Type"], "application/pdf")
-        self.assertIn("inline", response.get("Content-Disposition", ""))
+        self.assertEqual(response.status_code, 404)
 
-    def test_subject_open_reading_pdf_head_is_public(self) -> None:
+    def test_subject_open_reading_pdf_head_blocks_anonymous_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
@@ -3627,12 +3663,12 @@ class QuizPortalTests(TestCase):
                 },
             )
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["Content-Type"], "application/pdf")
-        self.assertIn("inline", response.get("Content-Disposition", ""))
+        self.assertEqual(response.status_code, 404)
 
-    def test_subject_open_reading_serves_pdf_inline(self) -> None:
-        user = self._create_user()
+    def test_subject_open_reading_serves_pdf_inline_for_staff_user(self) -> None:
+        user = self._create_user(username="pdf-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
@@ -3650,7 +3686,7 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response["Content-Type"], "application/pdf")
         self.assertIn("inline", response.get("Content-Disposition", ""))
 
-    def test_subject_open_reading_text_is_public(self) -> None:
+    def test_subject_open_reading_text_blocks_pdf_for_anonymous_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
         detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
@@ -3666,9 +3702,7 @@ class QuizPortalTests(TestCase):
                 },
             )
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["Content-Type"], "text/plain; charset=utf-8")
-        self.assertIn("Titel:", response.content.decode("utf-8"))
+        self.assertEqual(response.status_code, 404)
 
     def test_subject_open_reading_text_blocks_excluded_reading_keys(self) -> None:
         user = self._create_user()
@@ -3731,6 +3765,40 @@ class QuizPortalTests(TestCase):
         )
         self.assertIn("attachment", response.get("Content-Disposition", ""))
 
+    def test_subject_open_reading_non_pdf_is_public(self) -> None:
+        (self.reading_files_root / "W01L1" / "Custom.docx").write_bytes(b"DOCX")
+
+        with patch(
+            "quizzes.views.load_subject_content_manifest",
+            return_value={
+                "lectures": [
+                    {
+                        "lecture_key": "W01L1",
+                        "readings": [
+                            {
+                                "reading_key": "w01l1-custom-1234",
+                                "source_filename": "Custom.docx",
+                            }
+                        ],
+                    }
+                ]
+            },
+        ):
+            response = self.client.get(
+                reverse(
+                    "subject-open-reading",
+                    kwargs={
+                        "subject_slug": "personlighedspsykologi",
+                        "reading_key": "w01l1-custom-1234",
+                    },
+                )
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response["Content-Type"],
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        )
+
     def test_subject_open_reading_pdf_returns_404_for_non_pdf_source(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
@@ -3764,7 +3832,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_subject_open_reading_uses_subject_specific_files_root(self) -> None:
-        user = self._create_user()
+        user = self._create_user(username="bioneuro-reading-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
 
         bioneuro_root = Path(self.temp_dir.name) / "bioneuro-reading-files"
@@ -3859,7 +3929,9 @@ class QuizPortalTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_subject_open_reading_normalizes_source_filename_path_separators(self) -> None:
-        user = self._create_user()
+        user = self._create_user(username="path-reading-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         (self.reading_files_root / "W01L1" / "Freud (1984-1905).pdf").write_bytes(b"%PDF-1.4\n%freud\n")
 
@@ -3951,8 +4023,8 @@ class QuizPortalTests(TestCase):
     def test_subject_open_reading_allows_excluded_for_elevated_access_user(self) -> None:
         user = self._create_user()
         self.client.force_login(user)
-        detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
-        reading_key = detail.context["active_lecture"]["readings"][0]["reading_key"]
+        (self.reading_files_root / "W01L1" / "Custom.docx").write_bytes(b"DOCX")
+        reading_key = "w01l1-custom-1234"
         open_url = reverse(
             "subject-open-reading",
             kwargs={
@@ -3983,17 +4055,45 @@ class QuizPortalTests(TestCase):
             stdout=io.StringIO(),
         )
 
-        allowed_detail = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
-        readings = allowed_detail.context["active_lecture"]["readings"]
-        reading = next(item for item in readings if item.get("reading_key") == reading_key)
-        self.assertFalse(reading["download_excluded"])
-        self.assertEqual(reading["open_url"], open_url)
+        learning_path = {
+            "lectures": [
+                {
+                    "lecture_key": "W01L1",
+                    "lecture_title": "W01L1 Intro",
+                    "status": "active",
+                    "completed_quizzes": 0,
+                    "total_quizzes": 0,
+                    "lecture_assets": {"quizzes": [], "podcasts": []},
+                    "readings": [
+                        {
+                            "reading_key": reading_key,
+                            "reading_title": "Custom",
+                            "source_filename": "Custom.docx",
+                            "completed_quizzes": 0,
+                            "total_quizzes": 0,
+                            "status": "not_started",
+                            "assets": {"quizzes": [], "podcasts": []},
+                        }
+                    ],
+                }
+            ],
+            "source_meta": {},
+        }
 
-        allowed_open = self.client.get(open_url)
-        self.assertEqual(allowed_open.status_code, 200)
+        with patch("quizzes.views.get_subject_learning_path_snapshot", return_value=learning_path):
+            allowed_detail = self.client.get(
+                reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"})
+            )
+            readings = allowed_detail.context["active_lecture"]["readings"]
+            reading = next(item for item in readings if item.get("reading_key") == reading_key)
+            self.assertFalse(reading["download_excluded"])
+            self.assertEqual(reading["open_url"], open_url)
 
-        allowed_text = self.client.get(text_url)
-        self.assertEqual(allowed_text.status_code, 200)
+            allowed_open = self.client.get(open_url)
+            self.assertEqual(allowed_open.status_code, 200)
+
+            allowed_text = self.client.get(text_url)
+            self.assertEqual(allowed_text.status_code, 200)
 
     def test_subject_reading_tracking_toggle_is_idempotent(self) -> None:
         user = self._create_user()
@@ -4914,7 +5014,9 @@ class QuizPortalTests(TestCase):
         FREUDD_NEW_USER_NOTIFY_EMAIL="alerts@test.freudd.dk",
     )
     def test_subject_open_reading_does_not_notify_by_default(self) -> None:
-        user = self._create_user()
+        user = self._create_user(username="reading-notify-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]
@@ -4928,7 +5030,6 @@ class QuizPortalTests(TestCase):
         self.assertEqual(head_response.status_code, 200)
         self.assertEqual(len(mail.outbox), 0)
 
-        self.client.logout()
         first_response = self.client.get(open_url)
         self.assertEqual(first_response.status_code, 200)
 
@@ -4941,7 +5042,9 @@ class QuizPortalTests(TestCase):
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_opened"],
     )
     def test_subject_open_reading_notifies_once_for_get_and_skips_head_when_enabled(self) -> None:
-        user = self._create_user()
+        user = self._create_user(username="reading-notify-enabled-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]
@@ -4955,7 +5058,6 @@ class QuizPortalTests(TestCase):
         self.assertEqual(head_response.status_code, 200)
         self.assertEqual(len(mail.outbox), 0)
 
-        self.client.logout()
         first_response = self.client.get(open_url)
         self.assertEqual(first_response.status_code, 200)
         second_response = self.client.get(open_url)
@@ -4973,7 +5075,9 @@ class QuizPortalTests(TestCase):
         FREUDD_ACTIVITY_NOTIFY_EVENTS=["reading_sent_to_chatgpt"],
     )
     def test_subject_chatgpt_reading_redirects_and_notifies_once(self) -> None:
-        user = self._create_user()
+        user = self._create_user(username="chatgpt-reading-staff")
+        user.is_staff = True
+        user.save(update_fields=["is_staff"])
         self.client.force_login(user)
         detail_response = self.client.get(reverse("subject-detail", kwargs={"subject_slug": "personlighedspsykologi"}))
         reading_key = detail_response.context["active_lecture"]["readings"][0]["reading_key"]

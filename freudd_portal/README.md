@@ -71,7 +71,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - Active lecture card renders sections in this order: `Tekster`, `Slides`, optional `Podcasts` (only when podcast rows exist), `Quiz for alle kilder`.
 - Subject detail can render optional manually authored summaries from the show summary caches: lecture-level overviews above the content sections and per-tekst summaries inside each reading card.
 - Authenticated and anonymous subject-detail snapshots both preserve manifest-backed lecture and reading summaries.
-- `Slides` viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
+- `Slides` vises kun for admin-brugere (`is_staff`/`is_superuser`) og viser kun underkategorier med mindst én slide (`slides fra forelæsning`, `slides fra seminarhold`, `slides fra øvelseshold`); hvis ingen slides findes for forelæsningen, skjules hele `Slides`-sektionen.
 - Slide mapping er manuel-only for alle fag; automatisk mapping med script er ikke tilladt (`freudd_portal/docs/slides-mapping-policy.md`).
 - Quiz assets are surfaced only in `Quiz for alle kilder`, podcast assets only in `Podcasts`, and tekststatus/progress only in `Tekster`.
 - Flashcard decks are surfaced as `flashcards`, outside `Quiz for alle kilder`,
@@ -94,7 +94,7 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
   internal artifact metadata such as `source_file` and `generated_at`.
 - If no podcasts are available for the active lecture, the `Podcasts` section is hidden.
 - Tekstkort and `Quizzer` sections render quiz rows in mockup format (`<sværhedsgrad> quiz` + `<rigtige>/<total> rigtige • <point>/150 point`) when question counts are available.
-- Tekstkort include a `Send til ChatGPT` quick action that routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
+- Tekstkort include a `Send til ChatGPT` quick action for admin-only PDF access; it routes through a server-side Freudd launch URL, emits an activity notification when enabled, and then opens a new ChatGPT chat with a prefilled prompt that includes the absolute PDF URL plus fixed study-context guidance.
 - Lecture rail rows render extra-compact marker dots on mobile (without index numbers) plus lecture copy (week label + cleaned lecture title).
 - Module headers in subject detail are rendered as a combined headline (`Uge x, forelæsning x: <titel>`), with cleaned lecture title metadata.
 - Quiz labels are rendered from cleaned `episode_title` metadata (`modul` + `titel`) instead of raw file/tag strings.
@@ -139,10 +139,10 @@ Django portal for authentication, quiz state, and quiz-driven gamification on to
 - `POST /leaderboard/profile`
 - `GET /subjects/<subject_slug>`
 - `GET /subjects/<subject_slug>/cards/<deck_slug>`
-- `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (public tekst-fil adgang; blocked if excluded in config unless authenticated user has elevated reading access)
-- `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (public tekstudtræk til ChatGPT; blocked if excluded in config unless authenticated user has elevated reading access)
-- `GET /subjects/<subject_slug>/tekster/chatgpt/<reading_key>` (server-side tracked ChatGPT launch for PDF tekster; redirects to ChatGPT)
-- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (kræver autentificeret elevated access eller `is_staff`/`is_superuser` for alle slide-kategorier)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>` (non-PDF tekst-fil adgang er public unless excluded in config; PDF-kilder kræver `is_staff`/`is_superuser`)
+- `GET /subjects/<subject_slug>/tekster/open/<reading_key>/text` (non-PDF tekstudtræk til ChatGPT er public unless excluded in config; PDF-kilder kræver `is_staff`/`is_superuser`)
+- `GET /subjects/<subject_slug>/tekster/chatgpt/<reading_key>` (admin-only server-side tracked ChatGPT launch for PDF tekster; redirects to ChatGPT)
+- `GET /subjects/<subject_slug>/slides/open/<slide_key>` (kræver `is_staff`/`is_superuser` for alle slide-kategorier)
 - `POST /subjects/<subject_slug>/enroll`
 - `POST /subjects/<subject_slug>/unenroll`
 - `POST /subjects/<subject_slug>/tracking/tekst`
@@ -230,7 +230,7 @@ Optional per-subject `paths` overrides let a subject use its own reading key, RS
 - Used by `GET /subjects/<subject_slug>/tekster/open/<reading_key>` and subject detail link rendering.
 - `excluded_reading_keys` blocks selected `reading_key` values from being opened/downloaded.
 - Keys must match the manifest `readings[].reading_key` values exactly.
-- Elevated access override: authenticated users in group `elevated-reading-access` (or `is_staff`/`is_superuser`) can still open excluded readings and all slide categories (`lecture`/`seminar`/`exercise`).
+- Elevated access override: authenticated users in group `elevated-reading-access` can still open excluded non-PDF readings. Admin users (`is_staff`/`is_superuser`) can also open PDF readings and all slide categories (`lecture`/`seminar`/`exercise`).
 
 ```json
 {
@@ -345,6 +345,7 @@ validation rules.
 
 ## Management commands (no admin panel required)
 Prerequisite: der skal eksistere en brugerkonto (via signup eller `createsuperuser`) før per-user extension-commands kan køres.
+`elevated_reading_access` bypasser kun `reading_download_exclusions.json` for ikke-PDF tekster; PDF'er og slides kræver admin (`is_staff`/`is_superuser`).
 
 ```bash
 cd /Users/oskar/repo/podcasts/freudd_portal

@@ -33,7 +33,11 @@ from django.urls import reverse
 from django.views.decorators.http import require_GET, require_http_methods, require_POST, require_safe
 from pypdf import PdfReader
 
-from .access_services import user_has_elevated_reading_access, user_has_elevated_slide_access
+from .access_services import (
+    user_has_admin_material_access,
+    user_has_elevated_reading_access,
+    user_has_elevated_slide_access,
+)
 from .activity_notifications import (
     notify_podcast_marked,
     notify_quiz_completed,
@@ -840,6 +844,13 @@ def _resolve_subject_reading_file_or_404(
         raise Http404("Tekst ikke fundet i fagets læringssti.")
     if not found_source_filename:
         raise Http404("Tekst-filen blev ikke fundet.")
+    if _is_reading_download_blocked_for_user(
+        subject_slug=subject.slug,
+        reading_key=normalized_reading_key,
+        user=request.user,
+        source_filename=found_source_filename,
+    ):
+        raise Http404("Tekst ikke fundet i fagets læringssti.")
 
     file_path = _reading_file_path_or_404(
         subject_slug=subject.slug,
@@ -1014,15 +1025,22 @@ def _is_reading_download_excluded(*, subject_slug: str, reading_key: str) -> boo
     return reading_key in excluded
 
 
+def _is_pdf_reading_source(source_filename: object) -> bool:
+    return Path(str(source_filename or "").strip()).suffix.lower() == ".pdf"
+
+
 def _is_reading_download_blocked_for_user(
     *,
     subject_slug: str,
     reading_key: str,
     user: object | None,
+    source_filename: object | None = None,
 ) -> bool:
-    if not _is_reading_download_excluded(subject_slug=subject_slug, reading_key=reading_key):
+    if _is_pdf_reading_source(source_filename):
+        return not user_has_admin_material_access(user)
+    if user_has_elevated_reading_access(user):
         return False
-    return not user_has_elevated_reading_access(user)
+    return _is_reading_download_excluded(subject_slug=subject_slug, reading_key=reading_key)
 
 
 def _auth_url_with_next(route_name: str, next_path: str) -> str:
@@ -3376,7 +3394,6 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
         )
         active_lecture["quiz_progress_totals"] = _active_lecture_quiz_progress_totals(active_lecture)
         active_lecture["podcast_rows"] = _flatten_podcast_rows(active_lecture)
-        can_bypass_reading_exclusions = user_has_elevated_reading_access(request.user)
         readings = active_lecture.get("readings") if isinstance(active_lecture.get("readings"), list) else []
         for reading in readings:
             if not isinstance(reading, dict):
@@ -3395,7 +3412,8 @@ def subject_detail_view(request: HttpRequest, subject_slug: str) -> HttpResponse
                 and _is_reading_download_blocked_for_user(
                     subject_slug=subject.slug,
                     reading_key=normalized_reading_key,
-                    user=request.user if can_bypass_reading_exclusions else None,
+                    user=request.user,
+                    source_filename=source_filename,
                 )
             )
             if source_filename and normalized_reading_key and not reading["download_excluded"]:

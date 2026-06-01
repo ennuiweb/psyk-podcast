@@ -13,7 +13,7 @@ def _user_authenticated(user: object | None) -> bool:
 def user_has_elevated_reading_access(user: object | None) -> bool:
     if not _user_authenticated(user):
         return False
-    if bool(getattr(user, "is_superuser", False) or getattr(user, "is_staff", False)):
+    if user_has_admin_material_access(user):
         return True
 
     cached = getattr(user, _ELEVATED_READING_ACCESS_CACHE_ATTR, None)
@@ -26,9 +26,14 @@ def user_has_elevated_reading_access(user: object | None) -> bool:
     return has_access
 
 
+def user_has_admin_material_access(user: object | None) -> bool:
+    if not _user_authenticated(user):
+        return False
+    return bool(getattr(user, "is_superuser", False) or getattr(user, "is_staff", False))
+
+
 def user_has_elevated_slide_access(user: object | None) -> bool:
-    # Slide downloads reuse the same elevated access model as reading downloads.
-    return user_has_elevated_reading_access(user)
+    return user_has_admin_material_access(user)
 
 
 def set_user_elevated_reading_access(*, user: object, enabled: bool) -> bool:

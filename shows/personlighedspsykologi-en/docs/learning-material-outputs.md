@@ -434,7 +434,7 @@ Slide-specific criteria:
 
 - slide decks should be attached to the correct lecture and subcategory
 - seminar and exercise slides should not be mistaken for lecture slides
-- slide file paths should remain stable enough for elevated/admin Freudd links
+- slide file paths should remain stable enough for admin-only Freudd links
   and study workflows
 - manually mapped slides should stay clearly separated from generated
   Course Understanding artifacts

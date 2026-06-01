@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:29:37+00:00",
+  "generated_at": "2026-06-01T13:42:57+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -2671,6 +2671,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/W12L1%20-%20Grundbog%20kapitel%208%20-%20Personlighed%2C%20subjektivitet%20og%20historicitet%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1JO24eJdCVY0YxctEYqcZWqbb8XTMXW-3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W12L1/[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=513cef0b}.mp3",
+      "source_name": "[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=513cef0b}.mp3",
+      "source_path": "W12L1/[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=513cef0b}.mp3",
+      "path_parts": [
+        "W12L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10149266,
+      "sha256": "b4f0c7c89f5703c39cfa8796d96d5c5d05dbc844a4715c9ed3eaf86dd2f798b3",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:42:55+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W12L1/%5BShort%5D%20W12L1%20-%20Elias%20%282000%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D513cef0b%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W12L1/[Short] W12L1 - Elias (2000) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",

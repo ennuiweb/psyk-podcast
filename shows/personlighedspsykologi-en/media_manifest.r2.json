@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T12:26:21+00:00",
+  "generated_at": "2026-06-01T12:39:33+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -941,6 +941,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/W04L2%20-%20Slide%20lecture:%208.%20Psykoanalytisk%20personlighedsstruktur%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1V2TOEHb1D2IEqFwKjq-tl5YNHFKNZb0i"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W04L2/[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=915f7277}.mp3",
+      "source_name": "[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=915f7277}.mp3",
+      "source_path": "W04L2/[Short] W04L2 - Lacan (1966) [EN] {type=audio lang=en format=deep-dive length=short hash=915f7277}.mp3",
+      "path_parts": [
+        "W04L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9406478,
+      "sha256": "69a2c2ce980f483db323b0e5e21fa69c57094350f5cca6fc0b112e96217b4e1c",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:27+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/%5BShort%5D%20W04L2%20-%20Lacan%20%281966%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D915f7277%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W04L2/[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=short hash=2d10519e}.mp3",
+      "source_name": "[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=short hash=2d10519e}.mp3",
+      "source_path": "W04L2/[Short] W04L2 - Laplanche, J. (1970). Liv og død i psykoanalysen (pp. 18‐38) [EN] {type=audio lang=en format=deep-dive length=short hash=2d10519e}.mp3",
+      "path_parts": [
+        "W04L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 6388776,
+      "sha256": "1180752df535315af9a30450cb48373313d9c73fa8a04d04ae682ced7b7ace1c",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:27+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W04L2/%5BShort%5D%20W04L2%20-%20Laplanche%2C%20J.%20%281970%29.%20Liv%20og%20d%C3%B8d%20i%20psykoanalysen%20%28pp.%2018%E2%80%9038%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D2d10519e%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W05L1/W05L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=4a2a338f}.mp3",
@@ -2333,6 +2363,51 @@
       "stable_guid": "1EXnJ6HAxGCGyUM9216UrrYrB2R8bBe0K"
     },
     {
+      "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+      "source_name": "[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9028360,
+      "sha256": "c7823a40c7369e29d6a655acbf572fd396526dc6c4041da984d637fb421de8ea",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Bruner%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Debf1e4a3%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+      "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10252357,
+      "sha256": "dfb773d538781b96af9e884cf87a9bde96e921a2f4315c1e804d9eddf9115bc7",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Grundbog%20kapitel%209%20-%20Narrative%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Df1204331%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+      "source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9680757,
+      "sha256": "3ecc8769736a75608a86cafd7c313658de01ccca11d9c4c253a50ec8cf5fd4f0",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20McAdams%20%26%20Pals%20%282006%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D6e085086%7D.mp3"
+    },
+    {
       "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
       "source_drive_file_id": "142BtDIoeO1dXaCkb2sI6EL2TsxZnBTLd",
       "source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",
@@ -2348,6 +2423,21 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20McAdams%20%26%20Pals%20%282006%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc3f67e82%7D.mp3",
       "stable_guid": "142BtDIoeO1dXaCkb2sI6EL2TsxZnBTLd"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+      "source_name": "[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+      "source_path": "W11L2/[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+      "path_parts": [
+        "W11L2"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10191847,
+      "sha256": "c851f0603f2f3db08f1d3761aaf73f9e1e05951111472abbe8c230e517abbfbf",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:39:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Raggatt%20%282002%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D03e3c6e1%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=c3f67e82}.mp3",

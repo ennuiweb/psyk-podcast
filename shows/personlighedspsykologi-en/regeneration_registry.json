@@ -2,7 +2,7 @@
   "schema_version": 1,
   "subject_slug": "personlighedspsykologi-en",
   "source_inventory_path": "/opt/podcasts/shows/personlighedspsykologi-en/episode_inventory.json",
-  "generated_at": "2026-06-01T12:28:02Z",
+  "generated_at": "2026-06-01T12:39:21Z",
   "campaign": "prompt-rollout-2026-04",
   "summary": {
     "total_entries": 157,
@@ -16,13 +16,13 @@
       "weekly_readings_only": 22
     },
     "rollout_state_counts": {
-      "b_active": 61,
-      "original_only": 88,
+      "b_active": 64,
+      "original_only": 85,
       "out_of_scope": 8
     },
     "active_variant_counts": {
-      "A": 96,
-      "B": 61
+      "A": 93,
+      "B": 64
     }
   },
   "entries": [
@@ -9590,13 +9590,13 @@
       "title": "U11F2 · [Kort] · Bruner (1999)",
       "canonical_source_name": "[Short] W11L2 - Bruner (1999) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-06-01T12:39:21Z"
       },
       "variants": {
         "A": {
@@ -9618,27 +9618,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+          "canonical_source_name": "[Short] W11L2 - Bruner (1999) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "ebf1e4a3"
+          },
+          "config_hash": "ebf1e4a3",
+          "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Bruner%20%281999%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Debf1e4a3%7D.mp3",
+          "published_at": "2026-06-01T12:39:07+00:00",
+          "title": "U11F2 · [Kort] · Bruner (1999)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "c7823a40c7369e29d6a655acbf572fd396526dc6c4041da984d637fb421de8ea",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-06-01T12:39:07+00:00",
+          "registered_at": "2026-06-01T12:39:21Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 9028360,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-06-01T12:39:21Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Bruner (1999) [EN] {type=audio lang=en format=deep-dive length=short hash=ebf1e4a3}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -9651,11 +9665,11 @@
       "inventory_present": true,
       "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
         "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-06-01T12:39:21Z"
       },
       "variants": {
         "A": {
@@ -9678,26 +9692,40 @@
         },
         "B": {
           "status": "published",
-          "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=285f9a5f}.mp3",
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": "285f9a5f",
-          "episode_key": "1y7D1O2ns5hLz3AziTg2_uDNf8Jcdb9rj",
-          "audio_url": "https://drive.google.com/uc?export=download&id=1y7D1O2ns5hLz3AziTg2_uDNf8Jcdb9rj",
-          "published_at": "2026-04-19T22:25:24Z",
-          "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier",
+          "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+          "canonical_source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "f1204331"
+          },
+          "config_hash": "f1204331",
+          "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Grundbog%20kapitel%209%20-%20Narrative%20teorier%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Df1204331%7D.mp3",
+          "published_at": "2026-06-01T12:39:07+00:00",
+          "title": "U11F2 · [Kort] · Grundbog 9: Narrative teorier ✦",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "dfb773d538781b96af9e884cf87a9bde96e921a2f4315c1e804d9eddf9115bc7",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-06-01T12:39:07+00:00",
+          "registered_at": "2026-06-01T12:39:21Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 10252357,
           "drive_md5": null,
-          "history": [],
+          "history": [
+            {
+              "at": "2026-06-01T12:39:21Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Grundbog kapitel 9 - Narrative teorier [EN] {type=audio lang=en format=deep-dive length=short hash=f1204331}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ],
           "promoted_at": "2026-04-19T22:25:24Z",
           "promoted_from": "evaluation/episode_ab_review/runs/2026-04-before-baseline"
         }
@@ -9710,13 +9738,13 @@
       "title": "U11F2 · [Kort] · McAdams & Pals (2006)",
       "canonical_source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-06-01T12:39:21Z"
       },
       "variants": {
         "A": {
@@ -9738,27 +9766,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+          "canonical_source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "6e085086"
+          },
+          "config_hash": "6e085086",
+          "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20McAdams%20%26%20Pals%20%282006%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D6e085086%7D.mp3",
+          "published_at": "2026-06-01T12:39:07+00:00",
+          "title": "U11F2 · [Kort] · McAdams & Pals (2006)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "3ecc8769736a75608a86cafd7c313658de01ccca11d9c4c253a50ec8cf5fd4f0",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-06-01T12:39:07+00:00",
+          "registered_at": "2026-06-01T12:39:21Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 9680757,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-06-01T12:39:21Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - McAdams & Pals (2006) [EN] {type=audio lang=en format=deep-dive length=short hash=6e085086}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },
@@ -9769,13 +9811,13 @@
       "title": "U11F2 · [Kort] · Raggatt (2002)",
       "canonical_source_name": "[Short] W11L2 - Raggatt (2002) [EN].mp3",
       "inventory_present": true,
-      "active_variant": "A",
+      "active_variant": "B",
       "rollout": {
-        "campaign": "prompt-rollout-2026-04",
+        "campaign": "podcast-v1-regen-2026-05-07",
         "in_scope": true,
-        "state": "original_only",
+        "state": "b_active",
         "notes": [],
-        "activated_at": null
+        "activated_at": "2026-06-01T12:39:21Z"
       },
       "variants": {
         "A": {
@@ -9797,27 +9839,41 @@
           "audio_sha256": null
         },
         "B": {
-          "status": "not_generated",
-          "source_name": null,
-          "canonical_source_name": null,
-          "config_tags": {},
-          "config_hash": null,
-          "episode_key": null,
-          "audio_url": null,
-          "published_at": null,
-          "title": null,
+          "status": "published",
+          "source_name": "[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+          "canonical_source_name": "[Short] W11L2 - Raggatt (2002) [EN].mp3",
+          "config_tags": {
+            "type": "audio",
+            "lang": "en",
+            "format": "deep-dive",
+            "length": "short",
+            "hash": "03e3c6e1"
+          },
+          "config_hash": "03e3c6e1",
+          "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+          "audio_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W11L2/%5BShort%5D%20W11L2%20-%20Raggatt%20%282002%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D03e3c6e1%7D.mp3",
+          "published_at": "2026-06-01T12:39:07+00:00",
+          "title": "U11F2 · [Kort] · Raggatt (2002)",
           "local_audio_path": null,
           "staging_drive_id": null,
-          "audio_sha256": null,
+          "audio_sha256": "c851f0603f2f3db08f1d3761aaf73f9e1e05951111472abbe8c230e517abbfbf",
           "generated_at": null,
-          "uploaded_at": null,
-          "registered_at": null,
+          "uploaded_at": "2026-06-01T12:39:07+00:00",
+          "registered_at": "2026-06-01T12:39:21Z",
           "transcribed_at": null,
           "judged_at": null,
-          "review_outcome": null,
-          "size_bytes": null,
+          "review_outcome": "queue_auto_activated",
+          "size_bytes": 10191847,
           "drive_md5": null,
-          "history": []
+          "history": [
+            {
+              "at": "2026-06-01T12:39:21Z",
+              "event": "queue_auto_activated",
+              "source_name": "[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+              "episode_key": "shows/personlighedspsykologi-en/W11L2/[Short] W11L2 - Raggatt (2002) [EN] {type=audio lang=en format=deep-dive length=short hash=03e3c6e1}.mp3",
+              "campaign": "podcast-v1-regen-2026-05-07"
+            }
+          ]
         }
       }
     },

@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T12:55:50+00:00",
+  "generated_at": "2026-06-01T12:58:16+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1357,6 +1357,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/W06L1%20-%20Spinelli%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dlong%20hash%3Dfa9adbcf%7D.mp3",
       "stable_guid": "1o_5v_JxAQOvnWuFqL3QWZ25yozVoKFys"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",
+      "source_name": "[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",
+      "source_path": "W06L1/[Short] W06L1 - Moeskær Hansen & Roald (2022) [EN] {type=audio lang=en format=deep-dive length=short hash=190b72f6}.mp3",
+      "path_parts": [
+        "W06L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10393664,
+      "sha256": "e321fb95d3acce504c10f7a6bf32c10754a9e3056a4930de7007ab01988e46c8",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:58:14+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Moesk%C3%A6r%20Hansen%20%26%20Roald%20%282022%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D190b72f6%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W06L1/[Short] W06L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=c4b32856}.mp3",
+      "source_name": "[Short] W06L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=c4b32856}.mp3",
+      "source_path": "W06L1/[Short] W06L1 - Spinelli (2005) [EN] {type=audio lang=en format=deep-dive length=short hash=c4b32856}.mp3",
+      "path_parts": [
+        "W06L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9933256,
+      "sha256": "d7d27afa0bf63d6e0c0def2566133f6da82d5ae097c84486ffa4288e6c0b078f",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T12:58:14+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W06L1/%5BShort%5D%20W06L1%20-%20Spinelli%20%282005%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Dc4b32856%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W06L1/[TTS] W06L1 - Grundbog kapitel 04 - Fænomenologisk personlighedspsykologi {type=tts voice=da-DK__chirp3_hd__da-DK-Chirp3-HD-Algenib date=2026-02-14}.mp3",

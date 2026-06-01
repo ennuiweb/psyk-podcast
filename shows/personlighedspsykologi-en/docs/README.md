@@ -5,6 +5,10 @@ Show-level plan and source-of-truth map: `plan.md`.
 Oral exam study plan for the 2026-06-03 exam:
 `oral-exam-study-plan-2026.md`.
 
+Course-grounded notes for philosophical key terms used across the
+personality-psychology theories:
+`begrebsnoter-filosofiske-noeglebegreber.md`.
+
 Plan for using older high-performing student notes as a validated
 student-synthesis/exam-orientation layer:
 `student-synthesis-integration-plan.md`.

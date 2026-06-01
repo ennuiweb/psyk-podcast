@@ -3,7 +3,7 @@
   "provider": "r2",
   "bucket": "freudd",
   "prefix": "shows/personlighedspsykologi-en",
-  "generated_at": "2026-06-01T13:12:51+00:00",
+  "generated_at": "2026-06-01T13:13:08+00:00",
   "items": [
     {
       "object_key": "shows/personlighedspsykologi-en/W01L1/W01L1 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=2 hash=f104a13e}.mp3",
@@ -1568,6 +1568,36 @@
       "bucket": "freudd",
       "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/W07L1%20-%20Slide%20lecture:%2013.%20Eksistens%20II.%202026%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Ddefault%20hash%3D973c491c%7D.mp3",
       "stable_guid": "1SgRo_3aeK9EE4xGpKDBRlW7o3Yl-E9z6"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W07L1/[Short] W07L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=short hash=aab8a7a4}.mp3",
+      "source_name": "[Short] W07L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=short hash=aab8a7a4}.mp3",
+      "source_path": "W07L1/[Short] W07L1 - Cooper (2003) [EN] {type=audio lang=en format=deep-dive length=short hash=aab8a7a4}.mp3",
+      "path_parts": [
+        "W07L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 10256093,
+      "sha256": "7b032de35f21cd2948e15e4ba778b79afca7b6b356e824aa4fb8c8c8a8855a04",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:13:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/%5BShort%5D%20W07L1%20-%20Cooper%20%282003%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3Daab8a7a4%7D.mp3"
+    },
+    {
+      "object_key": "shows/personlighedspsykologi-en/W07L1/[Short] W07L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=37f42cd3}.mp3",
+      "source_name": "[Short] W07L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=37f42cd3}.mp3",
+      "source_path": "W07L1/[Short] W07L1 - Jacobsen (2021) [EN] {type=audio lang=en format=deep-dive length=short hash=37f42cd3}.mp3",
+      "path_parts": [
+        "W07L1"
+      ],
+      "mime_type": "audio/mpeg",
+      "size": 9817465,
+      "sha256": "34393deaa324fd2e4961cff3035ead8b0cf8c6d31c2ab9ed0c3eed26b9eb3317",
+      "artifact_type": "audio",
+      "published_at": "2026-06-01T13:13:07+00:00",
+      "bucket": "freudd",
+      "public_url": "https://pub-fe942499398a478c8a8f432207051244.r2.dev/shows/personlighedspsykologi-en/W07L1/%5BShort%5D%20W07L1%20-%20Jacobsen%20%282021%29%20%5BEN%5D%20%7Btype%3Daudio%20lang%3Den%20format%3Ddeep-dive%20length%3Dshort%20hash%3D37f42cd3%7D.mp3"
     },
     {
       "object_key": "shows/personlighedspsykologi-en/W07L2/W07L2 - Alle kilder (undtagen slides) [EN] {type=audio lang=en format=deep-dive length=long sources=3 hash=1b3d31bc}.mp3",

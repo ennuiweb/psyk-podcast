@@ -51,6 +51,7 @@ githooks/*.log
 *.request.json.json
 *.request.done.json
 *.request.error.json
+*.request.*.json
 .aimemory/worktrees/
 notebooklm-podcast-auto/bioneuro/W*/
 .claude/
